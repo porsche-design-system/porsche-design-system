@@ -1,10 +1,6 @@
-import {
-  BreakpointCustomizable,
-  getTagName,
-  observeChildren,
-  pxToRemWithUnit,
-  unobserveChildren,
-} from '../../../utils';
+import type { BreakpointCustomizable } from '../../../utils';
+import { getTagName, observeChildren, unobserveChildren } from '../../../utils';
+import { pxToRemWithUnit } from '../../../styles/styles';
 import { Accordion } from './accordion';
 
 const ACCORDION_SIZE = ['small', 'medium'] as const;

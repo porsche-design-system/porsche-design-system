@@ -1,17 +1,16 @@
 import type { BreakpointCustomizable, JssStyle, Styles } from '../utils';
+import type { GetStylesFunction } from '../utils';
+import type { LinkButtonVariant, ThemeExtendedElectric } from '../types';
+import { buildResponsiveStyles, isThemeDark } from '../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  buildResponsiveStyles,
   getFocusStyles,
   getInset,
-  GetStylesFunction,
   getTransition,
-  isThemeDark,
   pxToRemWithUnit,
-} from '../utils';
+} from '../styles/styles';
 import { color } from '@porsche-design-system/utilities';
-import type { LinkButtonVariant, ThemeExtendedElectric } from '../types';
 import { getThemedColors, getThemedColorsDarken } from './colors';
 
 const { darkTheme } = color;

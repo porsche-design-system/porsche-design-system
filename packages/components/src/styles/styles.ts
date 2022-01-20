@@ -1,7 +1,7 @@
 import type { Breakpoint } from '@porsche-design-system/utilities';
 import { breakpoint, color, fontWeight } from '@porsche-design-system/utilities';
-import type { JssStyle, Styles } from '.';
-import { isThemeDark } from '.';
+import type { JssStyle, Styles } from '../utils';
+import { isThemeDark } from '../utils';
 import type { Theme } from '../types';
 import type { PropertiesHyphen } from 'csstype';
 import { getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';

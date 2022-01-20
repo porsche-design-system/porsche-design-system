@@ -1,15 +1,7 @@
-import {
-  addImportantToEachRule,
-  buildResponsiveStyles,
-  getCss,
-  getTextHiddenJssStyle,
-  getTransition,
-  isThemeElectricLight,
-  mergeDeep,
-  pxToRemWithUnit,
-} from '../../../utils';
 import type { BreakpointCustomizable, JssStyle, GetStylesFunction } from '../../../utils';
 import type { AlignLabel, AlignLabelType, ThemeExtendedElectric } from '../../../types';
+import { buildResponsiveStyles, getCss, isThemeElectricLight, mergeDeep } from '../../../utils';
+import { addImportantToEachRule, getTextHiddenJssStyle, getTransition, pxToRemWithUnit } from '../../../styles/styles';
 import { color, spacing } from '@porsche-design-system/utilities';
 import { getThemedColors, getThemedColorsDarken } from '../../../styles/colors';
 

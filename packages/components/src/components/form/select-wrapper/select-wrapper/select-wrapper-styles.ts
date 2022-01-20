@@ -1,15 +1,12 @@
-import {
-  addImportantToEachRule,
-  buildSlottedStyles,
-  getBaseSlottedStyles,
-  getCss,
-  getTransition,
-  isThemeDark,
-  mergeDeep,
-  pxToRemWithUnit,
-} from '../../../../utils';
 import type { BreakpointCustomizable } from '../../../../utils';
 import type { FormState, Theme } from '../../../../types';
+import { buildSlottedStyles, getCss, isThemeDark, mergeDeep } from '../../../../utils';
+import {
+  addImportantToEachRule,
+  getBaseSlottedStyles,
+  getTransition,
+  pxToRemWithUnit,
+} from '../../../../styles/styles';
 import { color } from '@porsche-design-system/utilities';
 import { getBaseChildStyles, getLabelStyles } from '../../../../styles/form-styles';
 import { isVisibleFormState } from '../../../../utils/form-state';

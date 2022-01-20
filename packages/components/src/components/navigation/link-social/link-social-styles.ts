@@ -1,17 +1,15 @@
+import type { Theme } from '../../../types';
+import type { SocialIconName } from './link-social-utils';
+import type { BreakpointCustomizable } from '../../../utils';
+import { buildResponsiveStyles, getCss, isThemeDark } from '../../../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  BreakpointCustomizable,
-  buildResponsiveStyles,
-  getCss,
   getFocusStyles,
   getTransition,
-  isThemeDark,
   pxToRemWithUnit,
-} from '../../../utils';
+} from '../../../styles/styles';
 import { color } from '@porsche-design-system/utilities';
-import type { Theme } from '../../../types';
-import type { SocialIconName } from './link-social-utils';
 import { getIconStyles, getLabelStyles, getRootStyles, getSlottedLinkStyles } from '../../../styles/link-button-styles';
 import { getThemedColorsDarken } from '../../../styles/colors';
 

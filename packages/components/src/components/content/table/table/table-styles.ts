@@ -1,12 +1,11 @@
+import { buildSlottedStyles, getCss } from '../../../../utils';
 import {
   addImportantToRule,
-  buildSlottedStyles,
   getBaseSlottedStyles,
-  getCss,
   getFocusStyles,
   mediaQuery,
   pxToRemWithUnit,
-} from '../../../../utils';
+} from '../../../../styles/styles';
 import { color, defaultFontFamilyAndWeight, fontSize, spacing } from '@porsche-design-system/utilities';
 
 export const getComponentCss = (): string => {

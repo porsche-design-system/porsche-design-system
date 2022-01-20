@@ -1,5 +1,3 @@
-import type { GetStylesFunction, JssStyle } from '../../../../utils';
-import { addImportantToEachRule, buildResponsiveHostStyles, getCss, mergeDeep } from '../../../../utils';
 import type {
   FlexAlignContent,
   FlexAlignItems,
@@ -14,6 +12,9 @@ import type {
   FlexAlignItemsType,
   FlexAlignContentType,
 } from './flex-utils';
+import type { GetStylesFunction, JssStyle } from '../../../../utils';
+import { buildResponsiveHostStyles, getCss, mergeDeep } from '../../../../utils';
+import { addImportantToEachRule } from '../../../../styles/styles';
 
 const getInlineStyles: GetStylesFunction = (inline: FlexInlineType): JssStyle => ({
   display: inline ? 'inline-flex' : 'flex',

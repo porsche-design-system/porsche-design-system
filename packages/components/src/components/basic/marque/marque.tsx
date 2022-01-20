@@ -1,10 +1,11 @@
-import { Component, Element, Host, JSX, h, Prop } from '@stencil/core';
-import { attachComponentCss, breakpoint, parseAndGetAriaAttributes } from '../../../utils';
 import type { LinkTarget, SelectedAriaAttributes } from '../../../types';
-import { buildSrcSet, cdnBaseUrl, getInnerManifest } from './marque-utils';
 import type { MarqueSize } from './marque-utils';
-import { getComponentCss } from './marque-styles';
 import type { MarqueAriaAttributes } from './marque-utils';
+import { Component, Element, Host, JSX, h, Prop } from '@stencil/core';
+import { attachComponentCss, parseAndGetAriaAttributes } from '../../../utils';
+import { breakpoint } from '../../../styles/styles';
+import { buildSrcSet, cdnBaseUrl, getInnerManifest } from './marque-utils';
+import { getComponentCss } from './marque-styles';
 import { MARQUE_ARIA_ATTRIBUTES } from './marque-utils';
 
 @Component({

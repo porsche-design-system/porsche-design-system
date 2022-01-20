@@ -1,7 +1,8 @@
-import { addImportantToRule, getCss, mergeDeep } from '../../../utils';
-import { headline4, headline5, spacing } from '@porsche-design-system/utilities';
 import type { FormState, Theme } from '../../../types';
 import type { FieldsetWrapperLabelSize } from './fieldset-wrapper-utils';
+import { getCss, mergeDeep } from '../../../utils';
+import { addImportantToRule } from '../../../styles/styles';
+import { headline4, headline5, spacing } from '@porsche-design-system/utilities';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { getThemedColors } from '../../../styles/colors';

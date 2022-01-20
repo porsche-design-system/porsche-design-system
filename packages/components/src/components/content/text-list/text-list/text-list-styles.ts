@@ -1,5 +1,6 @@
-import { addImportantToRule, buildSlottedStyles, getBaseSlottedStyles, getCss } from '../../../../utils';
 import type { Theme } from '../../../../types';
+import { buildSlottedStyles, getCss } from '../../../../utils';
+import { addImportantToRule, getBaseSlottedStyles } from '../../../../styles/styles';
 import { defaultFontFamilyAndWeight, fontSize } from '@porsche-design-system/utilities';
 import { getThemedColors } from '../../../../styles/colors';
 

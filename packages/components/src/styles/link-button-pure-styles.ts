@@ -1,19 +1,16 @@
 import type { BreakpointCustomizable, GetStylesFunction, JssStyle, Styles } from '../utils';
+import type { AlignLabel, AlignLabelType, LinkButtonPureIconName, TextSize, ThemeExtendedElectricDark } from '../types';
+import type { FontSizeLineHeight } from '@porsche-design-system/utilities';
+import { buildResponsiveStyles, generateTypeScale, hasVisibleIcon, mergeDeep, paramCaseToCamelCase } from '../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  buildResponsiveStyles,
-  generateTypeScale,
   getFocusStyles,
   getInset,
   getTransition,
-  hasVisibleIcon,
-  mergeDeep,
-  paramCaseToCamelCase,
   pxToRemWithUnit,
-} from '../utils';
-import { fontSize, FontSizeLineHeight } from '@porsche-design-system/utilities';
-import type { AlignLabel, AlignLabelType, LinkButtonPureIconName, TextSize, ThemeExtendedElectricDark } from '../types';
+} from '../styles/styles';
+import { fontSize } from '@porsche-design-system/utilities';
 import { isSizeInherit } from '../components/basic/typography/text/text-utils';
 import { getThemedColors } from './colors';
 import { getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';

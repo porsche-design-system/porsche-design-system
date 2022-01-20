@@ -1,17 +1,16 @@
 import type { Styles } from '../utils';
+import type { BreakpointCustomizable } from '../utils';
+import type { FormState, Theme } from '../types';
+import type { JssStyle } from '../utils';
+import { buildResponsiveStyles, isThemeDark } from '../utils';
 import {
   addImportantToRule,
-  BreakpointCustomizable,
-  buildResponsiveStyles,
   getFormTextHiddenJssStyle,
   getInset,
   getTransition,
-  isThemeDark,
   pxToRemWithUnit,
-} from '../utils';
+} from '../styles/styles';
 import { color, defaultFontFamilyAndWeight, fontSize } from '@porsche-design-system/utilities';
-import type { FormState, Theme } from '../types';
-import type { JssStyle } from '../utils';
 import { isVisibleFormState } from '../utils/form-state';
 import { getThemedColors, getThemedFormStateColors } from './colors';
 
