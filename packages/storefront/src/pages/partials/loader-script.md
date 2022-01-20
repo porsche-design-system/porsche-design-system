@@ -31,11 +31,11 @@ export default class Code extends Vue {
     },
     { 
       value: "{ prefix: 'my-prefix' }",
-      comment: 'With custom prefix'
+      comment: 'with custom prefix'
     },
     { 
       value: "{ prefix: ['my-prefix', 'another-prefix'] }",
-      comment: 'With multiple custom prefixes'
+      comment: 'with multiple custom prefixes'
     },
   ];
 }
