@@ -3545,10 +3545,10 @@
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.21.tgz#5de5a2385a35309427f6011992b544514d559aa1"
   integrity sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==
 
-"@porsche-design-system/browser-notification@4.0.0":
-  version "4.0.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/browser-notification/-/@porsche-design-system/browser-notification-4.0.0.tgz#8f1c082d682ba2c9a68dcdfaa9d3c6ba4142b900"
-  integrity sha1-jxwILWgrosmmjc36qdPGukFCuQA=
+"@porsche-design-system/browser-notification@4.1.1":
+  version "4.1.1"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/browser-notification/-/@porsche-design-system/browser-notification-4.1.1.tgz#f553e114b2fa4903dfe38ea4add682d13a47ec72"
+  integrity sha1-9VPhFLL6SQPf446krdaC0TpH7HI=
 
 "@porsche-design-system/prettier-config@^1.0.0":
   version "1.0.0"
