@@ -5,7 +5,7 @@ import {
   getFocusStyles,
   mediaQuery,
   pxToRemWithUnit,
-} from '../../../../styles/styles';
+} from '../../../../styles/common';
 import { color, defaultFontFamilyAndWeight, fontSize, spacing } from '@porsche-design-system/utilities';
 
 export const getComponentCss = (): string => {

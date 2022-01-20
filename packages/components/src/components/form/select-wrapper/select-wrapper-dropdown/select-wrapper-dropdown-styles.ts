@@ -2,7 +2,7 @@ import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper
 import type { FormState, Theme } from '../../../../types';
 import type { JssStyle, Styles } from '../../../../utils';
 import { getCss, isThemeDark, mergeDeep } from '../../../../utils';
-import { getInset, getTextHiddenJssStyle, getTransition, pxToRemWithUnit } from '../../../../styles/styles';
+import { getInset, getTextHiddenJssStyle, getTransition, pxToRemWithUnit } from '../../../../styles/common';
 import { color, defaultFontFamilyAndWeight, fontFamily, fontSize, fontWeight } from '@porsche-design-system/utilities';
 import { OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 import { INPUT_HEIGHT } from '../../../../styles/form-styles';

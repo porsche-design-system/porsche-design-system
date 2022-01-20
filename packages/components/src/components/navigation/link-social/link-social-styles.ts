@@ -8,7 +8,7 @@ import {
   getFocusStyles,
   getTransition,
   pxToRemWithUnit,
-} from '../../../styles/styles';
+} from '../../../styles/common';
 import { color } from '@porsche-design-system/utilities';
 import { getIconStyles, getLabelStyles, getRootStyles, getSlottedLinkStyles } from '../../../styles/link-button-styles';
 import { getThemedColorsDarken } from '../../../styles/colors';

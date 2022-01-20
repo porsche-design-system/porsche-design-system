@@ -1,7 +1,7 @@
 import type { BreakpointCustomizable, Theme } from '../types';
 import type { JssStyle } from '../utils';
 import { buildResponsiveStyles } from '../utils';
-import { getFormCheckboxRadioHiddenJssStyle, getTransition } from '../styles/styles';
+import { getFormCheckboxRadioHiddenJssStyle, getTransition } from './common';
 import { getThemedColors } from './colors';
 
 export const getCheckboxRadioLabelJssStyle = (

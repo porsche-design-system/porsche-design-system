@@ -9,7 +9,7 @@ import {
   getInset,
   getTransition,
   pxToRemWithUnit,
-} from '../styles/styles';
+} from './common';
 import { color } from '@porsche-design-system/utilities';
 import { getThemedColors, getThemedColorsDarken } from './colors';
 

@@ -1,7 +1,7 @@
 import type { GetStylesFunction, JssStyle } from '../../../utils';
 import type { ButtonGroupDirectionType, ButtonGroupDirection } from './button-group-utils';
 import { buildResponsiveStyles, getCss } from '../../../utils';
-import { addImportantToEachRule } from '../../../styles/styles';
+import { addImportantToEachRule } from '../../../styles/common';
 import { spacing } from '@porsche-design-system/utilities';
 
 const getDirectionStyles: GetStylesFunction = (direction: ButtonGroupDirectionType): JssStyle => {

@@ -1,7 +1,7 @@
 import type { BreakpointCustomizable } from '../../../utils';
 import type { FormState, Theme } from '../../../types';
 import { buildSlottedStyles, getCss } from '../../../utils';
-import { addImportantToEachRule, getBaseSlottedStyles, getTransition, pxToRemWithUnit } from '../../../styles/styles';
+import { addImportantToEachRule, getBaseSlottedStyles, getTransition, pxToRemWithUnit } from '../../../styles/common';
 import { isVisibleFormState } from '../../../utils/form-state';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';

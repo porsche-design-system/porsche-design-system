@@ -1,5 +1,5 @@
 import { getCss } from '../../../../utils';
-import { pxToRemWithUnit } from '../../../../styles/styles';
+import { pxToRemWithUnit } from '../../../../styles/common';
 
 export const getComponentCss = (): string => {
   return getCss({

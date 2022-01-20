@@ -1,5 +1,5 @@
 import { getCss } from '../../../../utils';
-import { addImportantToEachRule, getTransition } from '../../../../styles/styles';
+import { addImportantToEachRule, getTransition } from '../../../../styles/common';
 import { color } from '@porsche-design-system/utilities';
 
 export const getComponentCss = (): string => {

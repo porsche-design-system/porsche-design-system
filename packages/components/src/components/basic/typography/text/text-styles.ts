@@ -1,7 +1,7 @@
 import type { BreakpointCustomizable, JssStyle } from '../../../../utils';
 import type { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
 import { buildSlottedStyles, getCss, buildResponsiveStyles, paramCaseToCamelCase } from '../../../../utils';
-import { addImportantToEachRule, getBaseSlottedStyles } from '../../../../styles/styles';
+import { addImportantToEachRule, getBaseSlottedStyles } from '../../../../styles/common';
 import { fontFamily, fontWeight, text } from '@porsche-design-system/utilities';
 import { getEllipsisStyles, getSlottedTypographyStyles } from '../../../../styles/typography-styles';
 import { getThemedTextColors } from '../../../../styles/colors';

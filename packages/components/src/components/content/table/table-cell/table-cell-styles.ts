@@ -1,5 +1,5 @@
 import { getCss } from '../../../../utils';
-import { addImportantToEachRule, pxToRemWithUnit } from '../../../../styles/styles';
+import { addImportantToEachRule, pxToRemWithUnit } from '../../../../styles/common';
 import { color } from '@porsche-design-system/utilities';
 
 export const getComponentCss = (multiline: boolean): string => {

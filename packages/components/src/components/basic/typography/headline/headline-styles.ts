@@ -1,7 +1,7 @@
 import type { JssStyle } from '../../../../utils';
 import type { HeadlineVariant, TextAlign, TextColor, Theme, VariantType } from '../../../../types';
 import { buildSlottedStyles, getCss, mergeDeep } from '../../../../utils';
-import { addImportantToEachRule, getBaseSlottedStyles } from '../../../../styles/styles';
+import { addImportantToEachRule, getBaseSlottedStyles } from '../../../../styles/common';
 // eslint-disable-next-line no-restricted-imports
 import { titleLarge, headline } from '@porsche-design-system/utilities';
 import { getEllipsisStyles, getSlottedTypographyStyles } from '../../../../styles/typography-styles';

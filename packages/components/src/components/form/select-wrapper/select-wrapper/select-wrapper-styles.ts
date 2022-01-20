@@ -6,7 +6,7 @@ import {
   getBaseSlottedStyles,
   getTransition,
   pxToRemWithUnit,
-} from '../../../../styles/styles';
+} from '../../../../styles/common';
 import { color } from '@porsche-design-system/utilities';
 import { getBaseChildStyles, getLabelStyles } from '../../../../styles/form-styles';
 import { isVisibleFormState } from '../../../../utils/form-state';

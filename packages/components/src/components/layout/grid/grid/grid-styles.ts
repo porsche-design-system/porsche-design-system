@@ -8,7 +8,7 @@ import type {
 } from './grid-utils';
 import type { GetStylesFunction, JssStyle } from '../../../../utils';
 import { buildResponsiveHostStyles, getCss, mergeDeep, throwIfValueIsInvalid } from '../../../../utils';
-import { addImportantToEachRule, pxToRemWithUnit } from '../../../../styles/styles';
+import { addImportantToEachRule, pxToRemWithUnit } from '../../../../styles/common';
 import { GRID_GUTTERS } from './grid-utils';
 
 const getDirectionStyles: GetStylesFunction = (flexDirection: GridDirectionType): JssStyle => ({ flexDirection });

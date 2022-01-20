@@ -6,7 +6,7 @@ import {
   getTextHiddenJssStyle,
   getTransition,
   pxToRemWithUnit,
-} from '../../../../styles/styles';
+} from '../../../../styles/common';
 import { color, fontFamily, fontSize, fontWeight, spacing } from '@porsche-design-system/utilities';
 
 export const getComponentCss = (): string => {

@@ -1,5 +1,5 @@
 import type { FormState } from '../../../types';
-import { pxToRemWithUnit } from '../../../styles/styles';
+import { pxToRemWithUnit } from '../../../styles/common';
 
 export const UNIT_POSITIONS = ['prefix', 'suffix'] as const;
 export type TextFieldWrapperUnitPosition = typeof UNIT_POSITIONS[number];
