@@ -42,7 +42,8 @@
             const needsTag = value.includes('withoutTags');
             const openingScriptTag = needsTag ? `<${scriptTag}>` : '';
             const closingScriptTag = needsTag ? `</${scriptTag}>` : '';
-            const isFirstWithoutTags = index <= array.findIndex(({ value }) => value.includes('withoutTags'));
+            const isFirstWithoutTags =
+              needsTag && index <= array.findIndex(({ value }) => value.includes('withoutTags'));
 
             return [
               isFirstWithoutTags && '<!-- Without tags -->',
