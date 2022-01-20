@@ -12,25 +12,25 @@ const FOCUS_STATE: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
 const FOCUS_HOVER_STATE = HOVER_STATE.concat(FOCUS_STATE);
 
 const allThemes: ThemeExtendedElectricDark[] = ['light', 'dark', 'light-electric', 'dark-electric'];
-const allStates: string[] = ['hover', 'focus', 'focus-hover'];
+const ALL_STATES = ['hover', 'focus', 'focus-hover'] as const;
+
+export type StateType = typeof ALL_STATES[number];
 
 export type GetMarkup = () => string;
 export type GetThemedMarkup = (theme: ThemeExtendedElectricDark) => string;
 
 export const getBodyMarkup = (getElements: GetMarkup) =>
-  allStates
-    .map(
-      (state) => `<div class="playground light ${state}">
+  ALL_STATES.map(
+    (state) => `<div class="playground light ${state}">
   ${getElements()}
 </div>`
-    )
-    .join('\n');
+  ).join('\n');
 
 export const getThemedBodyMarkup = (
   getThemedElements: GetThemedMarkup,
-  opts?: { themes?: ThemeExtendedElectricDark[]; states?: string[] }
+  opts?: { themes?: ThemeExtendedElectricDark[]; states?: StateType[] }
 ): string => {
-  const { themes = ['light', 'dark'], states = allStates } = opts ?? {};
+  const { themes = ['light', 'dark'], states = ALL_STATES } = opts ?? {};
 
   return states
     .map((state) =>

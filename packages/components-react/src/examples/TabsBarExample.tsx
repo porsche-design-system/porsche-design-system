@@ -8,39 +8,40 @@ export const TabsBarExamplePage = (): JSX.Element => {
     setTabIndex(e.detail.activeTabIndex);
   }, []);
 
+  const tabPanels: string[] = ['One', 'Two', 'Three'];
+
   return (
     <>
-      <PTabsBar activeTabIndex={tabIndex} onTabChange={onTabChange}>
-        {['One', 'Two', 'Three'].map((tabPanel, idx) => (
-          <button type="button" id={`tab-item-${idx + 1}`} aria-controls={`tab-panel-${idx + 1}`}>
-            Tab {tabPanel}
-          </button>
-        ))}
-      </PTabsBar>
-
       <style>{`
         div[role=tabpanel] {
           outline: 1px solid transparent;
-          outline-offset: 1px;
+          outline-offset: 2px;
           margin-top: 8px;
         }
         div[role=tabpanel]:focus {
-          outline-color: black;
+          outline-color: #000;
         }
         div[role=tabpanel]:focus:not(:focus-visible) {
           outline-color: transparent;
         }
       `}</style>
+      <PTabsBar activeTabIndex={tabIndex} onTabChange={onTabChange}>
+        {tabPanels.map((tabPanel, i) => (
+          <button type="button" id={`tab-item-${i}`} aria-controls={`tab-panel-${i}`}>
+            Tab {tabPanel}
+          </button>
+        ))}
+      </PTabsBar>
 
-      {[0, 1, 2].map((idx) => (
+      {tabPanels.map((content, i) => (
         <div
           role="tabpanel"
-          id={`tab-panel-${idx + 1}`}
-          hidden={tabIndex !== idx}
-          tabIndex={tabIndex === idx ? 0 : -1}
-          aria-labelledby={`tab-item-${idx + 1}`}
+          id={`tab-panel-${i}`}
+          hidden={tabIndex !== i}
+          tabIndex={tabIndex === i ? 0 : -1}
+          aria-labelledby={`tab-item-${i}`}
         >
-          <PText>Your content of Tab {idx + 1}</PText>
+          <PText>Your content of Tab {i + 1}</PText>
         </div>
       ))}
     </>
