@@ -19,6 +19,12 @@ The following showcases the most common ways.
 
 You can find an implemented example in our [Sample VanillaJS Integration](https://github.com/porscheui/sample-integration-vanillajs), [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular) or [Sample React Integration](https://github.com/porscheui/sample-integration-react)
 
+## Result
+
+The result of this partial looks like this:
+
+<pre><code class="language-html readonly">{{this.metaTagsAndIconLinks}}</code></pre>
+
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
@@ -26,7 +32,7 @@ import { getMetaTagsAndIconLinks } from '@porsche-design-system/components-js/pa
 
 @Component
 export default class Code extends Vue {
-  public metaTagsAndIconLinks: string = getMetaTagsAndIconLinks({ appTitle: 'TITLE_OF_YOUR_APP' }).replaceAll('><', '>\n<');
+  public metaTagsAndIconLinks = getMetaTagsAndIconLinks({ appTitle: 'TITLE_OF_YOUR_APP' }).replaceAll('><', '>\n<');
   public params = [
     {
       value: "{ appTitle: 'TITLE_OF_YOUR_APP' }",
@@ -39,9 +45,3 @@ export default class Code extends Vue {
   ];
 }
 </script>
-
-## Result
-
-The result of this partial looks like this:
-
-<pre><code class="language-html readonly">{{this.metaTagsAndIconLinks}}</code></pre>
