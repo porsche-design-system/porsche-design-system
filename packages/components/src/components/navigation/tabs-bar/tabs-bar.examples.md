@@ -143,54 +143,72 @@ const TabsBarPage = (): JSX.Element => {
   gradientColorScheme = 'surface';
 
   basicButton =
-`<p-tabs-bar>
-${['One', 'Two', 'Three'].map(buildButton).join('\n')}
-</p-tabs-bar>`;
+    `<p-tabs-bar>
+    ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
+    </p-tabs-bar>`;
 
   basicAnchor =
-`<p-tabs-bar>
-${['One', 'Two', 'Three'].map(buildAnchor).join('\n')}
-</p-tabs-bar>`;
+    `<p-tabs-bar>
+    ${['One', 'Two', 'Three'].map(buildAnchor).join('\n')}
+    </p-tabs-bar>`;
 
-  accessibility =
-`<p-tabs-bar active-tab-index="0">
-  <button type="button" id="tab-item-1" aria-controls="tab-panel-1">Tab One</button>
-  <button type="button" id="tab-item-2" aria-controls="tab-panel-2">Tab Two</button>
-  <button type="button" id="tab-item-3" aria-controls="tab-panel-3">Tab Three</button>
-</p-tabs-bar>
+  accessibility = 
+    `<p-tabs-bar active-tab-index="0">
+      <button type="button" id="tab-item-1" aria-controls="tab-panel-1">Tab One</button>
+      <button type="button" id="tab-item-2" aria-controls="tab-panel-2">Tab Two</button>
+      <button type="button" id="tab-item-3" aria-controls="tab-panel-3">Tab Three</button>
+    </p-tabs-bar>
  
-${[1, 2, 3].map(buildTabPanel).join('\n')}`;
+    ${[1, 2, 3].map(buildTabPanel).join('\n')}`;
 
   get sizeMarkup() {
     return `<p-tabs-bar size="${this.size}">
-${['One', 'Two', 'Three'].map(buildButton).join('\n')}
-</p-tabs-bar>`;
+      ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
+    </p-tabs-bar>`;
   }
 
   get weightMarkup() {
     return `<p-tabs-bar weight="${this.weight}">
-${['One', 'Two', 'Three'].map(buildButton).join('\n')}
-</p-tabs-bar>`;
-    }
+      ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
+    </p-tabs-bar>`;
+  }
     
   get gradientMarkup() {
     return `<p-tabs-bar gradient-color-scheme="${this.gradientColorScheme}">
-${['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty']
-  .map(buildButton).join('\n')}
-</p-tabs-bar>`;
+      ${['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty'].map(buildButton).join('\n')}
+    </p-tabs-bar>`;
   }
     
   activeTab =
-`<p-tabs-bar active-tab-index="0">
-${['One', 'Two', 'Three'].map(buildButton).join('\n')}
-</p-tabs-bar>`;
-    
+    `<p-tabs-bar active-tab-index="0">
+      ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
+    </p-tabs-bar>`;
+
+  updateActiveTabIndex(tabs: HTMLElement, newIndex: number = 0) {
+    /* manipulate code only section only in order to not rerender component and loose animations */
+    const example = tabs.parentElement.parentElement;
+    const demo = example.querySelector('.demo');
+    const code = example.querySelector('code');
+
+    /* manipulate hidden attribute in code of accessibility playground */
+    const panels = Array.from(demo.querySelectorAll('[role="tabpanel"]'));
+    panels.forEach((panel, i) => {
+      if (i === newIndex) {
+        panel.removeAttribute('hidden');
+        panel.setAttribute('tabindex', '0');
+      } else {
+        panel.setAttribute('hidden', '');
+        panel.setAttribute('tabindex', '-1');
+      }
+    });
+  };
+
   mounted(){
     /* initially update tabsBars with activeTabIndex attribute in playground */
-   this.updateAndRegister();
+    this.updateAndRegister();
     
     /* theme switch needs to register event listeners again */
-    const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');      
+    const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');
     themeTabs.forEach(tab => tab.addEventListener('tabChange', () => {
       this.updateAndRegister(); 
     }));    
@@ -212,34 +230,9 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
     /* bind tabsBars with activeTabIndex set as attribute */
     const tabsBarsWithActiveIndex = this.$el.querySelectorAll('.playground-tabs-bar .example .demo p-tabs-bar');
     tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('tabChange', (e: CustomEvent<TabChangeEvent>)=> {
-      this.onTabChange(e);
+      e.target.activeTabIndex = e.detail.activeTabIndex;
       this.updateActiveTabIndex(e.target, e.detail.activeTabIndex);
     }));
-  }
-  
-  onTabChange =  (e: CustomEvent) => {
-      e.target.activeTabIndex = e.detail.activeTabIndex;
-  }
-
-  updateActiveTabIndex = (tabs: HTMLElement, newIndex: number = 0) => {
-    /* manipulate code only section only in order to not rerender component and loose animations */
-    const example = tabs.parentElement.parentElement;
-    const demo = example.querySelector('.demo');
-    const code = example.querySelector('code');
-
-    /* manipulate hidden attribute in code of accessibility playground */
-    if (code.innerHTML.includes('Your content of Tab')) {
-      const panels = Array.from(demo.querySelectorAll('[role="tabpanel"]'));
-      panels.forEach((panel, i) => {
-        if (i === newIndex) {
-          panel.removeAttribute('hidden');
-          panel.setAttribute('tabindex', '0');
-        } else {
-          panel.setAttribute('hidden', '');
-          panel.setAttribute('tabindex', '-1');
-        }
-      });
-    }
   }
 }
 </script>
