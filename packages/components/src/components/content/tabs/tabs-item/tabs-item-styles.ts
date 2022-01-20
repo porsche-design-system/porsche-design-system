@@ -1,17 +1,17 @@
 import { addImportantToEachRule, getCss, getFocusStyles, getThemedColors } from '../../../../utils';
 import type { ThemeExtendedElectric } from '../../../../types';
-import type { JssStyle } from '../../../../utils';
 
 export const getComponentCss = (theme: ThemeExtendedElectric): string => {
   const { baseColor } = getThemedColors(theme);
 
-  const hostFocusStyle: JssStyle = getFocusStyles({ color: baseColor });
-  Object.keys(hostFocusStyle).forEach((item) => {
-    if (item.charAt(0) === '&') {
-      hostFocusStyle[`&(${item.slice(1)})`] = hostFocusStyle[item];
-      delete hostFocusStyle[item];
+  const hostFocusStyle = Object.entries(getFocusStyles({ color: baseColor })).reduce((newObj, [key, val]) => {
+    if (key.startsWith('&')) {
+      newObj[`&(${key.slice(1)})`] = val;
+    } else {
+      newObj[key] = val;
     }
-  });
+    return newObj;
+  }, {});
 
   return getCss({
     ':host': addImportantToEachRule({

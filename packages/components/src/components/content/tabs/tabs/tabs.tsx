@@ -51,10 +51,10 @@ export class Tabs {
   }
 
   public connectedCallback(): void {
+    attachComponentCss(this.host, getComponentCss);
     this.defineTabsItemElements();
     this.initMutationObserver();
     this.observeProperties();
-    attachComponentCss(this.host, getComponentCss);
   }
 
   public componentDidLoad(): void {

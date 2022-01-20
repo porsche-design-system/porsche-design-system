@@ -249,16 +249,16 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 
   ::v-deep div[role=tabpanel] {
     outline: 1px solid transparent;
-    outline-offset: 1px;
+    outline-offset: 2px;
     margin-top: p-px-to-rem(8px);
   }
 
   ::v-deep .example--light div[role=tabpanel]:focus {
-    outline-color: black;
+    outline-color: #000;
   }
 
   ::v-deep .example--dark div[role=tabpanel]:focus {
-    outline-color: white;
+    outline-color: #FFF;
   }
 
   ::v-deep div[role=tabpanel]:focus:not(:focus-visible) {
