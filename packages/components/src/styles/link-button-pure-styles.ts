@@ -12,10 +12,11 @@ import {
   paramCaseToCamelCase,
   pxToRemWithUnit,
 } from '../utils';
-import { fontSize, FontSizeLineHeight, srOnly } from '@porsche-design-system/utilities';
+import { fontSize, FontSizeLineHeight } from '@porsche-design-system/utilities';
 import type { AlignLabel, AlignLabelType, LinkButtonPureIconName, TextSize, ThemeExtendedElectricDark } from '../types';
 import { isSizeInherit } from '../components/basic/typography/text/text-utils';
 import { getThemedColors } from './colors';
+import { getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
 
 const getHostStyles: GetStylesFunction = (stretch: boolean): JssStyle => ({
   display: addImportantToRule(stretch ? 'block' : 'inline-block'),
@@ -65,7 +66,7 @@ const getSizeStyles: GetStylesFunction = (textSize: TextSize): JssStyle => {
 
 const getVisibilityStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel
-    ? (srOnly() as JssStyle)
+    ? getScreenReaderOnlyJssStyle()
     : {
         position: 'static',
         width: 'auto',
@@ -194,7 +195,7 @@ export const getLinkButtonPureStyles = (
       subline: {
         display: 'flex',
         transition: getTransition('color'),
-        marginTop: addImportantToRule('4px'), // override due to reset of srOnly in getVisibilityStyles
+        marginTop: addImportantToRule('4px'), // override due to reset of getScreenReaderOnlyJssStyle() in getVisibilityStyles
         color: isDisabledOrLoading ? disabledColor : active ? activeColor : baseColor,
         ...(hasIcon && {
           ...buildResponsiveStyles(hideLabel, getVisibilityStyles),
