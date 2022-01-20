@@ -36,8 +36,8 @@ const getSizeStyles: GetStylesFunction = (textSize: TextSize): JssStyle => {
     const sublineSize: { [key in Exclude<TextSize, 'inherit'>]: FontSizeLineHeight } = {
       'x-small': fontSize.xSmall,
       small: fontSize.small,
-      medium: fontSize['20'],
-      large: fontSize['30'],
+      medium: { fontSize: '1.25rem', lineHeight: 1.4 },
+      large: { fontSize: '1.875rem', lineHeight: 1.3333333333 },
       'x-large': fontSize.large,
     };
 
