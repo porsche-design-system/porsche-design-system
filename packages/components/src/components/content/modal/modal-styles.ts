@@ -53,6 +53,21 @@ export const isFullscreenForXl = (fullscreen: BreakpointCustomizable<boolean>): 
   }
 };
 
+const getSlottedFullWidthStyles = (isFirstChild: boolean) => {
+  const getMarginTop = (marginTop: number) => `${isFirstChild ? pxToRemWithUnit(marginTop) : 0}`;
+  const getMargin = (marginValue: number) => `${getMarginTop(marginValue)} ${pxToRemWithUnit(marginValue)} 0`;
+
+  return addImportantToEachRule({
+    margin: getMargin(-32),
+    [mediaQuery('m')]: {
+      margin: getMargin(-40),
+    },
+    [mediaQuery('xxl')]: {
+      margin: getMargin(-64),
+    },
+  });
+};
+
 export const getComponentCss = (
   open: boolean,
   fullscreen: BreakpointCustomizable<boolean>,
@@ -116,24 +131,8 @@ export const getComponentCss = (
         padding: `0 0 ${pxToRemWithUnit(32)}`,
       },
     },
-    '::slotted(div.stretch-to-full-modal-width)': addImportantToEachRule({
-      margin: `0 ${pxToRemWithUnit(-32)} 0`,
-      [mediaQuery('m')]: {
-        margin: `0 ${pxToRemWithUnit(-40)} 0`,
-      },
-      [mediaQuery('xxl')]: {
-        margin: `0 ${pxToRemWithUnit(-64)} 0`,
-      },
-    }),
-    '::slotted(div.stretch-to-full-modal-width:first-child)': addImportantToEachRule({
-      marginTop: pxToRemWithUnit(-32),
-      [mediaQuery('m')]: {
-        marginTop: pxToRemWithUnit(-40),
-      },
-      [mediaQuery('xxl')]: {
-        marginTop: pxToRemWithUnit(-64),
-      },
-    }),
+    '::slotted(div.stretch-to-full-modal-width)': getSlottedFullWidthStyles(false),
+    '::slotted(div.stretch-to-full-modal-width:first-child)': getSlottedFullWidthStyles(true),
     close: {
       padding: pxToRemWithUnit(6),
       border: `${pxToRemWithUnit(6)} solid ${color.background.default}`,
