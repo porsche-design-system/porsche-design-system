@@ -1,5 +1,5 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { spacing, font } from '@porsche-design-system/utilities';
+import { spacing, font } from '@porsche-design-system/utilities-v2';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import { ExtendedProp } from './DataStructureBuilder';
 import type { AdditionalFile } from './AbstractWrapperGenerator';

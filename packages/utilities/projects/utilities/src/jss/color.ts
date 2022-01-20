@@ -89,6 +89,7 @@ export const themeDark: ColorTheme = {
     surface: '#262b2e',
     shading: 'rgba(14, 20, 24, 0.9)',
   },
+  // TODO: remove neutral?
   neutralContrast: {
     high: '#e3e4e5',
     medium: '#b0b1b2',

@@ -5,8 +5,11 @@ import {
   getFocusStyles,
   mediaQuery,
   pxToRemWithUnit,
-} from '../../../../styles/common';
-import { color, defaultFontFamilyAndWeight, fontSize, spacing } from '@porsche-design-system/utilities';
+  getThemedColors,
+} from '../../../../styles';
+import { textSmall, spacing } from '@porsche-design-system/utilities-v2';
+
+const { baseColor } = getThemedColors('light');
 
 export const getComponentCss = (): string => {
   return getCss({
@@ -30,10 +33,9 @@ export const getComponentCss = (): string => {
       position: 'relative',
       width: '100%',
       display: 'table',
-      ...defaultFontFamilyAndWeight,
-      ...fontSize.small,
+      ...textSmall,
       textAlign: 'left',
-      color: color.default,
+      color: baseColor,
       whiteSpace: 'nowrap',
     },
     'scroll-trigger': {

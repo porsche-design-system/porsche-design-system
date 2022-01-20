@@ -6,13 +6,14 @@ import {
   getBaseSlottedStyles,
   getTransition,
   pxToRemWithUnit,
-} from '../../../../styles/common';
-import { color } from '@porsche-design-system/utilities';
+  getThemedColors,
+} from '../../../../styles';
 import { getBaseChildStyles, getLabelStyles } from '../../../../styles/form-styles';
 import { isVisibleFormState } from '../../../../utils/form-state';
 import { getFunctionalComponentRequiredStyles } from '../../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../../common/state-message/state-message-styles';
-import { getThemedColors } from '../../../../styles/colors';
+
+const { baseColor: themeLightBaseColor } = getThemedColors('light');
 
 export const OPTION_HEIGHT = 32; // optgroups are higher and ignored
 
@@ -38,7 +39,7 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
         }),
         {
           '::slotted(select:disabled)': {
-            background: isDarkTheme ? color.default : backgroundColor, // 🤷
+            background: isDarkTheme ? themeLightBaseColor : backgroundColor, // 🤷
           },
         }
       )

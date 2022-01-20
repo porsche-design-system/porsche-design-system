@@ -2,8 +2,13 @@ import type { JssStyle } from '../../../utils';
 import type { Theme } from '../../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
 import { buildSlottedStyles, getCss } from '../../../utils';
-import { addImportantToEachRule, getBaseSlottedStyles, mediaQuery, pxToRemWithUnit } from '../../../styles/common';
-import { getThemedColors } from '../../../styles/colors';
+import {
+  addImportantToEachRule,
+  getBaseSlottedStyles,
+  mediaQuery,
+  pxToRemWithUnit,
+  getThemedColors,
+} from '../../../styles';
 
 const mediaQueryS = mediaQuery('s');
 

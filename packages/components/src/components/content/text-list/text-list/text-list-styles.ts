@@ -1,8 +1,7 @@
 import type { Theme } from '../../../../types';
 import { buildSlottedStyles, getCss } from '../../../../utils';
-import { addImportantToRule, getBaseSlottedStyles } from '../../../../styles/common';
-import { defaultFontFamilyAndWeight, fontSize } from '@porsche-design-system/utilities';
-import { getThemedColors } from '../../../../styles/colors';
+import { addImportantToRule, getBaseSlottedStyles, getThemedColors } from '../../../../styles';
+import { textSmall } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (theme: Theme): string => {
   return getCss({
@@ -15,8 +14,7 @@ export const getComponentCss = (theme: Theme): string => {
       padding: 0,
       margin: 0,
       color: getThemedColors(theme).baseColor,
-      ...defaultFontFamilyAndWeight,
-      ...fontSize.small,
+      ...textSmall,
     },
   });
 };

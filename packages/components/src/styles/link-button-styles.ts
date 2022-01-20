@@ -9,11 +9,12 @@ import {
   getInset,
   getTransition,
   pxToRemWithUnit,
-} from './common';
-import { color } from '@porsche-design-system/utilities';
-import { getThemedColors, getThemedColorsDarken } from './colors';
+  getThemedColors,
+  getThemedColorsDarken,
+} from './';
 
-const { darkTheme } = color;
+const { baseColor: darkThemeBaseColor } = getThemedColors('dark');
+const { baseColor: lightThemeBaseColor } = getThemedColors('light');
 
 const getVariantColors = (
   variant: LinkButtonVariant,
@@ -31,12 +32,12 @@ const getVariantColors = (
       primary: {
         primaryColor: brandColor,
         primaryColorHover: hoverColorDarken,
-        baseColor: darkTheme.default,
+        baseColor: darkThemeBaseColor,
       },
       secondary: {
         primaryColor: contrastHighColor,
         primaryColorHover: contrastHighColorDarken,
-        baseColor: darkTheme.default,
+        baseColor: darkThemeBaseColor,
       },
       tertiary: {
         primaryColor: contrastHighColor,
@@ -48,16 +49,16 @@ const getVariantColors = (
       primary: {
         primaryColor: brandColor,
         primaryColorHover: hoverColorDarken,
-        baseColor: darkTheme.default,
+        baseColor: darkThemeBaseColor,
       },
       secondary: {
-        primaryColor: darkTheme.default,
+        primaryColor: darkThemeBaseColor,
         primaryColorHover: baseColorDarken,
-        baseColor: color.default,
+        baseColor: lightThemeBaseColor,
       },
       tertiary: {
-        primaryColor: darkTheme.default,
-        primaryColorHover: darkTheme.default,
+        primaryColor: darkThemeBaseColor,
+        primaryColorHover: darkThemeBaseColor,
         baseColor,
       },
     },
@@ -65,12 +66,12 @@ const getVariantColors = (
       primary: {
         primaryColor: brandColor,
         primaryColorHover: hoverColorDarken,
-        baseColor: darkTheme.default,
+        baseColor: darkThemeBaseColor,
       },
       secondary: {
         primaryColor: contrastHighColor,
         primaryColorHover: contrastHighColorDarken,
-        baseColor: darkTheme.default,
+        baseColor: darkThemeBaseColor,
       },
       tertiary: {
         primaryColor: contrastHighColor,
@@ -190,7 +191,7 @@ export const getLinkButtonStyles = (
           ...(isTertiary && {
             backgroundColor: 'currentColor',
             '& $label, & $icon': {
-              color: isDarkTheme ? color.default : darkTheme.default,
+              color: isDarkTheme ? lightThemeBaseColor : darkThemeBaseColor,
             },
           }),
         },

@@ -8,25 +8,29 @@ import {
   getFocusStyles,
   getTransition,
   pxToRemWithUnit,
-} from '../../../styles/common';
-import { color } from '@porsche-design-system/utilities';
+  getThemedColors,
+  getThemedColorsDarken,
+} from '../../../styles';
+import { colorExternal } from '@porsche-design-system/utilities-v2';
 import { getIconStyles, getLabelStyles, getRootStyles, getSlottedLinkStyles } from '../../../styles/link-button-styles';
-import { getThemedColorsDarken } from '../../../styles/colors';
+
+const { contrastHighColor: themeLightContrastHighColor, baseColor: themeLightBaseColor } = getThemedColors('light');
+const { baseColor: themeDarkBaseColor } = getThemedColors('dark');
 
 const getColors = (
   icon: SocialIconName,
   theme: Theme
 ): { baseColor: string; baseColorHover: string; textColor: string; textColorHover: string } => {
   const isDarkTheme = isThemeDark(theme);
-  const { darkTheme } = color;
   const { contrastHighColorDarken, baseColorDarken } = getThemedColorsDarken(theme);
-  const externalBrandColor = color.external[icon?.split('-')[1]];
+  const externalBrandColor = colorExternal[icon?.split('-')[1]];
 
   return {
-    baseColor: isDarkTheme ? darkTheme.default : color.neutralContrast.high,
+    baseColor: isDarkTheme ? themeDarkBaseColor : themeLightContrastHighColor,
     baseColorHover: externalBrandColor || (isDarkTheme ? baseColorDarken : contrastHighColorDarken),
-    textColor: isDarkTheme ? color.default : darkTheme.default,
-    textColorHover: icon === 'logo-kakaotalk' ? color.default : externalBrandColor ? darkTheme.default : undefined,
+    textColor: isDarkTheme ? themeLightBaseColor : themeDarkBaseColor,
+    textColorHover:
+      icon === 'logo-kakaotalk' ? themeLightBaseColor : externalBrandColor ? themeDarkBaseColor : undefined,
   };
 };
 

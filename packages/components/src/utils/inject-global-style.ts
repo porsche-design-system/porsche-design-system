@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import { FONT_FACE_CDN_URL } from '@porsche-design-system/utilities';
 
 export const injectGlobalStyle = (): void => {

@@ -1,7 +1,6 @@
-import type { Styles } from '../utils';
+import type { Styles, JssStyle } from '../utils';
 import type { BreakpointCustomizable } from '../utils';
 import type { FormState, Theme } from '../types';
-import type { JssStyle } from '../utils';
 import { buildResponsiveStyles, isThemeDark } from '../utils';
 import {
   addImportantToRule,
@@ -9,10 +8,13 @@ import {
   getInset,
   getTransition,
   pxToRemWithUnit,
-} from './common';
-import { color, defaultFontFamilyAndWeight, fontSize } from '@porsche-design-system/utilities';
+  getThemedColors,
+  getThemedFormStateColors,
+} from './';
+import { textSmall } from '@porsche-design-system/utilities-v2';
 import { isVisibleFormState } from '../utils/form-state';
-import { getThemedColors, getThemedFormStateColors } from './colors';
+
+const { disabledColor: lightThemeDisabledColor } = getThemedColors('light');
 
 export const INPUT_HEIGHT = 48;
 
@@ -28,7 +30,6 @@ export const getBaseChildStyles = (
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
   const hasVisibleState = isVisibleFormState(state);
 
-  const { disabled } = color.state; // 🤷 no theming here
   // TODO: Add readonly color to utilities package
   const readonly = '#ebebeb'; // 🤷
 
@@ -49,8 +50,7 @@ export const getBaseChildStyles = (
       borderRadius: 0,
       backgroundColor,
       opacity: 1,
-      ...defaultFontFamilyAndWeight,
-      ...fontSize.small,
+      ...textSmall,
       textIndent: 0,
       color: baseColor,
       transition: ['color', 'border-color', 'background-color'].map(getTransition).join(','),
@@ -64,9 +64,9 @@ export const getBaseChildStyles = (
     },
     [`::slotted(${child}:disabled)`]: {
       cursor: 'not-allowed',
-      color: disabled, // 🤷
-      borderColor: disabled,
-      WebkitTextFillColor: disabled, // fix placeholder color bug in Safari
+      color: lightThemeDisabledColor, // 🤷 no theming here
+      borderColor: lightThemeDisabledColor, // 🤷 no theming here
+      WebkitTextFillColor: lightThemeDisabledColor, // 🤷 no theming here; fix placeholder color bug in Safari
     },
     ...(child !== 'select' && {
       [`::slotted(${child}[readonly])`]: {

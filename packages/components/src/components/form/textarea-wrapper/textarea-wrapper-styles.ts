@@ -1,12 +1,11 @@
 import type { Styles, BreakpointCustomizable } from '../../../utils';
 import type { FormState, Theme } from '../../../types';
 import { buildSlottedStyles, getCss, mergeDeep } from '../../../utils';
-import { addImportantToEachRule, getBaseSlottedStyles, pxToRemWithUnit } from '../../../styles/common';
+import { addImportantToEachRule, getBaseSlottedStyles, pxToRemWithUnit, getThemedColors } from '../../../styles';
 import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles';
 import { isVisibleFormState } from '../../../utils/form-state';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
-import { getThemedColors } from '../../../styles/colors';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,

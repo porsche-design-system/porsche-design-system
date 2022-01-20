@@ -1,10 +1,9 @@
 import type { BreakpointCustomizable, JssStyle } from '../../../../utils';
 import type { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
 import { buildSlottedStyles, getCss, buildResponsiveStyles, paramCaseToCamelCase } from '../../../../utils';
-import { addImportantToEachRule, getBaseSlottedStyles } from '../../../../styles/common';
-import { fontFamily, fontWeight, text } from '@porsche-design-system/utilities';
+import { addImportantToEachRule, getBaseSlottedStyles, getThemedTextColors } from '../../../../styles';
+import { fontFamily, fontWeight, text } from '@porsche-design-system/utilities-v2';
 import { getEllipsisStyles, getSlottedTypographyStyles } from '../../../../styles/typography-styles';
-import { getThemedTextColors } from '../../../../styles/colors';
 
 const getSizeStyles = (size: TextSize): Pick<JssStyle, 'lineHeight' | 'fontSize'> => {
   if (size === 'inherit') {

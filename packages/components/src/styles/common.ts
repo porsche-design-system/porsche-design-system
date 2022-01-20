@@ -1,10 +1,9 @@
-import type { Breakpoint } from '@porsche-design-system/utilities';
-import { breakpoint, color, fontWeight } from '@porsche-design-system/utilities';
+import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 import type { JssStyle, Styles } from '../utils';
-import { isThemeDark } from '../utils';
 import type { Theme } from '../types';
 import type { PropertiesHyphen } from 'csstype';
-import { getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
+import { breakpoint, fontWeight, getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
+import { getThemedColors } from './';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
 const transitionTimingFunction = 'ease';
@@ -46,7 +45,7 @@ export const getHoverStyles = ({ theme }: GetHoverStylesOptions = { theme: 'ligh
   return {
     transition: getTransition('color'),
     '&:hover': {
-      color: (isThemeDark(theme) ? color.darkTheme : color).state.hover,
+      color: getThemedColors(theme).hoverColor,
     },
   };
 };
@@ -70,7 +69,7 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
     offset: outlineOffset,
     color: outlineColor,
   }: GetFocusStylesOptions = {
-    color: color.state.focus,
+    color: 'currentColor',
     offset: 2,
     pseudo: undefined,
     ...opts,
@@ -121,7 +120,7 @@ export type GetFocusSlottedPseudoStylesOptions = {
  */
 export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOptions): Styles<'& a'> => {
   const { offset: outlineOffset, color: outlineColor }: GetFocusSlottedPseudoStylesOptions = {
-    color: color.state.focus,
+    color: 'currentColor',
     offset: 2,
     ...opts,
   };
@@ -152,7 +151,7 @@ export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOp
   };
 };
 
-export { Breakpoint, breakpoint } from '@porsche-design-system/utilities';
+export { Breakpoint, breakpoint } from '@porsche-design-system/utilities-v2';
 export const mediaQuery = (minBreakpoint: Breakpoint): string => `@media (min-width: ${breakpoint[minBreakpoint]}px)`;
 
 export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withDarkTheme: true }): Styles => {

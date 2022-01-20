@@ -1,6 +1,5 @@
 import { getCss } from '../../../../utils';
-import { addImportantToEachRule, getTransition } from '../../../../styles/common';
-import { color } from '@porsche-design-system/utilities';
+import { addImportantToEachRule, getTransition, getThemedColors } from '../../../../styles';
 
 export const getComponentCss = (): string => {
   return getCss({
@@ -8,7 +7,7 @@ export const getComponentCss = (): string => {
       display: 'table-row',
       transition: getTransition('background-color'),
       '&(:hover)': {
-        backgroundColor: color.background.surface,
+        backgroundColor: getThemedColors('light').backgroundSurfaceColor,
       },
     }),
   });
