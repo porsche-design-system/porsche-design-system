@@ -35,7 +35,41 @@
       const placeholder = `PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_${constantCase(this.name.replace('get', ''))}`;
       const scriptTag = 'script';
 
-      const examplesReact =
+      const angularPartials = this.params
+        .filter(({ value }) => !value.includes('withoutTags'))
+        .map(({ value, comment }, index) =>
+          [, comment && `// ${comment}`, (index !== 0 ? 'partialContent = ' : '') + `${this.name}(${value});`]
+            .filter((x) => x)
+            .join('\n  ')
+        )
+        .join('\n\n  ');
+
+      const exampleAngular = `<!-- prerequisite -->
+  <!-- docs: https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack#index-transform -->
+  npm i -D @angular-builders/custom-webpack
+
+  <!-- angular.json -->
+  ...
+  "architect": {
+    "build": {
+  -   "builder": "@angular-devkit/build-angular:browser",
+  +   "builder": "@angular-builders/custom-webpack:browser",
+      "options": {
+        "outputPath": "dist/components-angular",
+  +     "indexTransform": "./scripts/transformIndexHtml.ts"
+        ...
+
+  <!-- ./scripts/transformIndexHtml.ts -->
+  import type { TargetOptions } from '@angular-builders/custom-webpack';
+  import { ${this.name} } from '@porsche-design-system/components-angular/partials';
+
+  export default (targetOptions: TargetOptions, indexHtml: string): string => {
+    let partialContent = ${angularPartials}
+
+    return indexHtml.replace(/(<\\/${this.location}>)/, \`\\n\${partialContent}$1\`);
+  };`;
+
+      const exampleReact =
         `<${this.location}>\n  ` +
         this.params
           .map(({ value, comment, usage }, index, array) => {
@@ -57,22 +91,22 @@
           .join('\n\n  ') +
         `\n</${this.location}>`;
 
-      const examplesJs = `// index.html
-<${this.location}>
-  <!--${placeholder}-->
-</${this.location}>
+      const exampleJs = `<!-- index.html -->
+  <${this.location}>
+    <!--${placeholder}-->
+  </${this.location}>
 
-// package.json (tested on macOS, the script may need to be adjusted depending on the operating system used)
-// make sure to adjust the path to the index.html file
-"scripts": {
-  "prestart": "yarn replace",
-  "replace": "placeholder='<!--${placeholder}-->' && partial=$placeholder$(node -e 'console.log(${partialImportPathJs}(${paramsJs}))') && regex=$placeholder'.*' && sed -i '' -E -e \\"s@$regex@$partial@\\" index.html"
-}`;
+  <!-- package.json (tested on macOS, the script may need to be adjusted depending on the operating system used) -->
+  <!-- make sure to adjust the path to the index.html file -->
+  "scripts": {
+    "prestart": "yarn replace",
+    "replace": "placeholder='<!--${placeholder}-->' && partial=$placeholder$(node -e 'console.log(${partialImportPathJs}(${paramsJs}))') && regex=$placeholder'.*' && sed -i '' -E -e \\"s@$regex@$partial@\\" index.html"
+  }`;
 
       return {
-        'vanilla-js': examplesJs,
-        react: examplesReact,
-        angular: `coming soon`,
+        'vanilla-js': exampleJs,
+        angular: exampleAngular,
+        react: exampleReact,
       };
     }
   }
