@@ -30,37 +30,8 @@ Include the **Cookie Notification** into your project by importing and calling t
 | **enabled**                | ✗           |
 | **disabled**               | ✓           |
 
-#### React / Vue JS
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Some title</title>
-  </head>
-  <body>
-    <div id="app"></div>
-
-    <!-- inline version of the cookie-overlay init script -->
-    <%= require('@porsche-design-system/browser-notification').includeCookieOverlay() %>
-  </body>
-</html>
-```
-
-#### Angular / Vanilla JS
-
-```
-// index.html
-<body>
-  <!--PLACEHOLDER-->
-</body>
-
-// package.json
-"scripts": {
-  "cookie-overlay": "partial=$(node -e 'console.log(require(\"@porsche-design-system/browser-notification\").includeCookieOverlay().replace((\\\\[bd\\/]|&)/g, \"\\\\$1\"))') && regex='<!--PLACEHOLDER-->|<script>.*cookie-notification.*<\\/script>' && sed -i'' -E -e \"s@$regex@$partial@\" index.html"
-}
-```
+#### Example
+<PartialDocs name="includeCookieOverlay" :partialPackageName="partialPackageName" location="body"></PartialDocs>
 
 ### Translations
 
@@ -85,3 +56,14 @@ There always might be a case where something goes wrong. Here are some possible 
    **A:** The translation key has not the correct format (see "Translations")
 2. **Q:** Why are there no implementation guidelines for my JS framework?  
    **A:** Implementing a third party script can be done in many ways regarding the setup of your application. So there isn't a solely true way to integrate it in a specific framework. Just one rule of thumb: **It should be initialized as late as possible.**
+
+<script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+
+@Component
+export default class Code extends Vue {
+  public partialPackageName = 'browser-notification';
+}
+</script>
