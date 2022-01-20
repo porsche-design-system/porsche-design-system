@@ -19,7 +19,7 @@ By default, our core is always preloaded when using this partial.
 Project integration differs based on the project setup.  
 The following showcases the most common ways.
 
-**Note:** Make sure to preload only components chunks which are really needed initially!
+**Note:** Make sure to preload only component chunks which are really needed initially!
 
 <PartialDocs name="getComponentChunkLinks" :params="params" location="head"></PartialDocs>
 
