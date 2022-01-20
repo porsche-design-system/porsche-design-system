@@ -1,7 +1,8 @@
 import type { Theme } from '../../../types';
-import { buildResponsiveStyles, getCss, getFocusStyles, getTransition, pxToRemWithUnit } from '../../../utils';
 import type { BreakpointCustomizable } from '../../../types';
 import type { NumberOfPageLinks } from './pagination-utils';
+import { buildResponsiveStyles, getCss } from '../../../utils';
+import { getFocusStyles, getTransition, pxToRemWithUnit } from '../../../styles/styles';
 import { defaultFontFamilyAndWeight, fontSize } from '@porsche-design-system/utilities';
 import { getThemedColors } from '../../../styles/colors';
 

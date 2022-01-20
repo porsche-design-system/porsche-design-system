@@ -1,4 +1,7 @@
-import type { GetFocusSlottedPseudoStylesOptions, GetFocusStylesOptions, JssStyle } from './';
+import type { PropertiesHyphen } from 'csstype';
+import type { FormState, Theme } from '../types';
+import type { GetFocusSlottedPseudoStylesOptions, GetFocusStylesOptions } from './styles';
+import type { JssStyle } from '../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
@@ -12,9 +15,7 @@ import {
   mediaQuery,
   pxToRem,
   pxToRemWithUnit,
-} from './';
-import type { PropertiesHyphen } from 'csstype';
-import type { FormState, Theme } from '../types';
+} from './styles';
 
 describe('getTransition()', () => {
   it.each<[keyof PropertiesHyphen, string]>([

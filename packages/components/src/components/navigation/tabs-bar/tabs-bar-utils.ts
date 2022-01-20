@@ -1,5 +1,6 @@
-import { getPrefixedTagNames, getScrollByX, getTagName, pxToRemWithUnit } from '../../../utils';
 import type { TextWeight } from '../../../types';
+import { getPrefixedTagNames, getScrollByX, getTagName } from '../../../utils';
+import { pxToRemWithUnit } from '../../../styles/styles';
 
 const TAB_SIZE = ['small', 'medium'] as const;
 export type TabSize = typeof TAB_SIZE[number];

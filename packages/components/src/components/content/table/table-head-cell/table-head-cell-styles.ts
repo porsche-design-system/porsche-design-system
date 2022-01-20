@@ -1,12 +1,12 @@
+import { getCss } from '../../../../utils';
 import {
   addImportantToEachRule,
-  getCss,
   getFocusStyles,
   getHoverStyles,
   getTextHiddenJssStyle,
   getTransition,
   pxToRemWithUnit,
-} from '../../../../utils';
+} from '../../../../styles/styles';
 import { color, fontFamily, fontSize, fontWeight, spacing } from '@porsche-design-system/utilities';
 
 export const getComponentCss = (): string => {

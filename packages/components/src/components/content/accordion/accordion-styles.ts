@@ -1,14 +1,8 @@
-import {
-  buildResponsiveStyles,
-  getCss,
-  getFocusStyles,
-  getTransition,
-  pxToRemWithUnit,
-  transitionDuration,
-} from '../../../utils';
 import type { BreakpointCustomizable } from '../../../utils';
 import type { ThemeExtendedElectric } from '../../../types';
 import type { AccordionSize } from './accordion-utils';
+import { buildResponsiveStyles, getCss } from '../../../utils';
+import { getFocusStyles, getTransition, pxToRemWithUnit, transitionDuration } from '../../../styles/styles';
 import { fontFamily, fontWeight, fontSize, spacing } from '@porsche-design-system/utilities';
 import { getThemedColors } from '../../../styles/colors';
 

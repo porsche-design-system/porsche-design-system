@@ -1,16 +1,12 @@
 import type { BreakpointCustomizable, GetStylesFunction, JssStyle, BreakpointKey } from '../../../utils';
+import { BREAKPOINTS, buildResponsiveStyles, getCss, mergeDeep, parseJSON } from '../../../utils';
 import {
   addImportantToEachRule,
-  BREAKPOINTS,
-  buildResponsiveStyles,
   contentWrapperVars,
-  getCss,
   getInset,
   mediaQuery,
-  mergeDeep,
-  parseJSON,
   pxToRemWithUnit,
-} from '../../../utils';
+} from '../../../styles/styles';
 import { color } from '@porsche-design-system/utilities';
 import { MODAL_Z_INDEX } from '../../../constants';
 

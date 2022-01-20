@@ -8,8 +8,8 @@ import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
 import type { BreakpointCustomizable } from './breakpoint-customizable';
 import { parseJSON } from './breakpoint-customizable';
 import { getShadowRootHTMLElement } from './dom';
-import { addImportantToEachRule, mediaQuery } from './styles';
-import type { Breakpoint } from './styles';
+import { addImportantToEachRule, mediaQuery } from '../styles/styles';
+import type { Breakpoint } from '../styles/styles';
 import type { TagName } from '@porsche-design-system/shared';
 import { getTagName, getTagNameWithoutPrefix } from './tag-name';
 

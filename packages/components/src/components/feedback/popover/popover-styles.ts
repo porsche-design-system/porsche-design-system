@@ -1,13 +1,7 @@
-import {
-  addImportantToEachRule,
-  buildSlottedStyles,
-  getBaseSlottedStyles,
-  getCss,
-  mediaQuery,
-  pxToRemWithUnit,
-} from '../../../utils';
 import type { PopoverDirection } from './popover-utils';
 import type { JssStyle } from '../../../utils';
+import { buildSlottedStyles, getCss } from '../../../utils';
+import { addImportantToEachRule, getBaseSlottedStyles, mediaQuery, pxToRemWithUnit } from '../../../styles/styles';
 import { color, textSmall } from '@porsche-design-system/utilities';
 import { POPOVER_Z_INDEX } from '../../../constants';
 

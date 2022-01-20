@@ -1,13 +1,8 @@
-import type { GetStylesFunction, JssStyle } from '../../../../utils';
-import {
-  addImportantToEachRule,
-  buildResponsiveHostStyles,
-  getCss,
-  mergeDeep,
-  pxToRemWithUnit,
-} from '../../../../utils';
 import type { GridGutter, GridGutterType } from '../grid/grid-utils';
 import type { GridItemOffset, GridItemOffsetType, GridItemSize, GridItemSizeType } from './grid-item-utils';
+import type { GetStylesFunction, JssStyle } from '../../../../utils';
+import { buildResponsiveHostStyles, getCss, mergeDeep } from '../../../../utils';
+import { addImportantToEachRule, pxToRemWithUnit } from '../../../../styles/styles';
 
 const gridItemWidths = [
   0, 8.333333, 16.666667, 25, 33.333333, 41.666667, 50, 58.333333, 66.666667, 75, 83.333333, 91.666667, 100,

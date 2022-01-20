@@ -1,18 +1,17 @@
+import type { FormState, Theme } from '../../../types';
+import type { BreakpointCustomizable } from '../../../utils';
+import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
+import { buildSlottedStyles, getCss } from '../../../utils';
 import {
   addImportantToEachRule,
-  buildSlottedStyles,
   getBaseSlottedStyles,
-  getCss,
   getFocusStyles,
   getTransition,
   pxToRemWithUnit,
-} from '../../../utils';
-import type { BreakpointCustomizable } from '../../../utils';
-import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
+} from '../../../styles/styles';
 import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles';
 import { isVisibleFormState } from '../../../utils/form-state';
 import { getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
-import type { FormState, Theme } from '../../../types';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { getThemedColors } from '../../../styles/colors';
