@@ -5,11 +5,11 @@ If you use the Porsche Design System components we inject a stylesheet with all 
 Regarding which font-styles you use on your page, these fonts are downloaded from our CDN. This can lead (for the first time) to a decent rendering glitch of your texts. 
 To improve rendering we recommend that you load the stylesheet on your own. 
 
-Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages called `getFontFaceStylesheet()` which needs to be injected into the `<head>` of your `index.html`.
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages which needs to be injected into the `<head>` of your `index.html`.
 
 ## Supported options
-- **cdn:** 'auto' | 'cn' = 'auto'
-- **withoutTags**: boolean = false
+- **cdn:** `'auto' | 'cn' = 'auto'`
+- **withoutTags:** `boolean = false`
 
 ## Examples
 
