@@ -1,5 +1,6 @@
 import type { Theme, ThemeDefault } from '@porsche-design-system/utilities-v2';
 import type { FormState, TextColor } from '../types';
+// eslint-disable-next-line no-restricted-imports
 import { color } from '@porsche-design-system/utilities-v2';
 
 type ThemedColorsKey =
@@ -25,6 +26,7 @@ type ThemedColorsKey =
 
 type ThemedColors = { [key in ThemedColorsKey]: string };
 
+// TODO: try to abstract from ThemedColors
 type ThemedColorsDarken = {
   [K in keyof Pick<
     ThemedColors,
@@ -32,6 +34,7 @@ type ThemedColorsDarken = {
   > as `${K}Darken`]: string;
 };
 
+// TODO: build colors during build step
 const getStaticThemedColors = (theme: Theme): ThemedColors => {
   const {
     base: baseColor,

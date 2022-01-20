@@ -2,9 +2,8 @@ import type { BreakpointCustomizable } from '../../../types';
 import type { TabGradientColorTheme, TabSize, TabWeight } from './tabs-bar-utils';
 import type { ThemeExtendedElectric } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
-import { addImportantToEachRule, addImportantToRule, getTransition } from '../../../styles/common';
-import { fontFamily, fontSize, fontWeight } from '@porsche-design-system/utilities';
-import { getThemedColors } from '../../../styles/colors';
+import { addImportantToEachRule, addImportantToRule, getTransition, getThemedColors } from '../../../styles';
+import { fontFamily, fontSize, fontWeight } from '@porsche-design-system/utilities-v2';
 
 const tabsTransitionDuration = '.4s';
 

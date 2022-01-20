@@ -1,4 +1,4 @@
-import { font } from '@porsche-design-system/utilities';
+import { font } from '@porsche-design-system/utilities-v2';
 import * as path from 'path';
 import * as fs from 'fs';
 

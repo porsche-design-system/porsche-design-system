@@ -1,8 +1,7 @@
-import { getCss } from '../../../utils';
-import { addImportantToRule, getFocusStyles, mediaQuery } from '../../../styles/common';
-import { color } from '@porsche-design-system/utilities';
 import type { MarqueSize } from './marque-utils';
 import type { JssStyle } from '../../../utils';
+import { getCss } from '../../../utils';
+import { addImportantToRule, getFocusStyles, mediaQuery, getThemedColors } from '../../../styles';
 
 const baseSizes: { [key in Exclude<MarqueSize, 'responsive'>]: Pick<JssStyle, 'height' | 'width'> } = {
   small: {
@@ -26,7 +25,7 @@ export const getComponentCss = (size: MarqueSize): string => {
       a: {
         display: 'block',
         textDecoration: 'none',
-        ...getFocusStyles({ color: color.default, offset: 0 }),
+        ...getFocusStyles({ color: getThemedColors('light').baseColor, offset: 0 }),
       },
       picture: {
         display: 'block',

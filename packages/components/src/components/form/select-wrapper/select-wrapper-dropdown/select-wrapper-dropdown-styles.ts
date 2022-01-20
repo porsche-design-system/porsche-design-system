@@ -2,11 +2,20 @@ import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper
 import type { FormState, Theme } from '../../../../types';
 import type { JssStyle, Styles } from '../../../../utils';
 import { getCss, isThemeDark, mergeDeep } from '../../../../utils';
-import { getInset, getTextHiddenJssStyle, getTransition, pxToRemWithUnit } from '../../../../styles/common';
-import { color, defaultFontFamilyAndWeight, fontFamily, fontSize, fontWeight } from '@porsche-design-system/utilities';
+import {
+  getInset,
+  getTextHiddenJssStyle,
+  getTransition,
+  pxToRemWithUnit,
+  getThemedColors,
+  getThemedFormStateColors,
+} from '../../../../styles';
+import { fontFamily, fontSize, fontWeight, textSmall } from '@porsche-design-system/utilities-v2';
 import { OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 import { INPUT_HEIGHT } from '../../../../styles/form-styles';
-import { getThemedColors, getThemedFormStateColors } from '../../../../styles/colors';
+
+const { baseColor: themeLightBaseColor, backgroundSurfaceColor: themeLightBackgroundSurfaceColor } =
+  getThemedColors('light');
 
 const dropdownPositionVar = '--p-dropdown-position';
 
@@ -71,8 +80,7 @@ export const getFilterStyles = (isOpen: boolean, disabled: boolean, state: FormS
         boxSizing: 'border-box',
         border: 'none',
         opacity: 0,
-        ...defaultFontFamilyAndWeight,
-        ...fontSize.small,
+        ...textSmall,
         textIndent: 0,
         cursor: disabled ? 'not-allowed' : 'text',
         color: baseColor,
@@ -122,7 +130,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
     disabledColor,
   } = getThemedColors(theme);
 
-  const highlightedSelectedColor = isDarkTheme ? color.default : color.background.surface; // TODO: strange that surfaceColor isn't used for dark theme
+  const highlightedSelectedColor = isDarkTheme ? themeLightBaseColor : themeLightBackgroundSurfaceColor; // TODO: strange that surfaceColor isn't used for dark theme
 
   const baseDirectionPseudoStyle: JssStyle = {
     content: '""',

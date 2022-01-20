@@ -1,9 +1,15 @@
 import type { BreakpointCustomizable, JssStyle, GetStylesFunction } from '../../../utils';
 import type { AlignLabel, AlignLabelType, ThemeExtendedElectric } from '../../../types';
 import { buildResponsiveStyles, getCss, isThemeElectricLight, mergeDeep } from '../../../utils';
-import { addImportantToEachRule, getTextHiddenJssStyle, getTransition, pxToRemWithUnit } from '../../../styles/common';
-import { color, spacing } from '@porsche-design-system/utilities';
-import { getThemedColors, getThemedColorsDarken } from '../../../styles/colors';
+import {
+  addImportantToEachRule,
+  getTextHiddenJssStyle,
+  getTransition,
+  pxToRemWithUnit,
+  getThemedColors,
+  getThemedColorsDarken,
+} from '../../../styles';
+import { spacing } from '@porsche-design-system/utilities-v2';
 
 const getColors = (
   checked: boolean,
@@ -21,6 +27,7 @@ const getColors = (
 } => {
   const { backgroundColor, baseColor, contrastHighColor, successColor, disabledColor, brandColor } =
     getThemedColors(theme);
+  const { backgroundColor: lightThemeBackgroundColor } = getThemedColors('light');
   const { successColorDarken, hoverColorDarken } = getThemedColorsDarken(theme);
   const isLightElectricTheme = isThemeElectricLight(theme);
   const checkedColor = isLightElectricTheme ? brandColor : successColor;
@@ -37,8 +44,8 @@ const getColors = (
         : successColorDarken
       : 'transparent',
     toggleBackgroundColor:
-      (!checked && disabledOrLoadingColor) || (checked ? color.background.default : contrastHighColor),
-    toggleBackgroundColorHover: checked ? color.background.default : baseColor,
+      (!checked && disabledOrLoadingColor) || (checked ? lightThemeBackgroundColor : contrastHighColor),
+    toggleBackgroundColorHover: checked ? lightThemeBackgroundColor : baseColor,
     textColor: disabledOrLoadingColor || baseColor,
   };
 };

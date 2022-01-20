@@ -1,5 +1,5 @@
 import { getCss } from '../../../../utils';
-import { addImportantToEachRule, contentWrapperVars, mediaQuery, pxToRemWithUnit } from '../../../../styles/common';
+import { addImportantToEachRule, contentWrapperVars, mediaQuery, pxToRemWithUnit } from '../../../../styles';
 import { TOAST_Z_INDEX } from '../../../../constants';
 import { getAnimationIn, getAnimationOut, getKeyframesMobile } from '../../banner/banner-styles';
 import { TOAST_ANIMATION_DURATION_VAR } from './toast-manager';

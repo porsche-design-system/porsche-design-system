@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable, GetStylesFunction, JssStyle, Styles } from '../utils';
 import type { AlignLabel, AlignLabelType, LinkButtonPureIconName, TextSize, ThemeExtendedElectricDark } from '../types';
-import type { FontSizeLineHeight } from '@porsche-design-system/utilities';
+import type { FontSizeLineHeight } from '@porsche-design-system/utilities-v2';
 import { buildResponsiveStyles, generateTypeScale, hasVisibleIcon, mergeDeep, paramCaseToCamelCase } from '../utils';
 import {
   addImportantToEachRule,
@@ -9,11 +9,10 @@ import {
   getInset,
   getTransition,
   pxToRemWithUnit,
-} from './common';
-import { fontSize } from '@porsche-design-system/utilities';
+  getThemedColors,
+} from './';
+import { fontSize, getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
 import { isSizeInherit } from '../components/basic/typography/text/text-utils';
-import { getThemedColors } from './colors';
-import { getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
 
 const getHostStyles: GetStylesFunction = (stretch: boolean): JssStyle => ({
   display: addImportantToRule(stretch ? 'block' : 'inline-block'),
