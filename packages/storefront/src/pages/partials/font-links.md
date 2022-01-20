@@ -5,13 +5,13 @@ Fonts should be loaded as soon as possible but only those which are needed.
 The Porsche Design System is not able to determine which components you use on the site and which fonts to be provided **initially**.
 That's why the font face stylesheet of the Porsche Design System handles the correct font to be loaded by unicode-range definition but during runtime and after bootstrapping of your application, which might result in FOUT.
 
-Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages called `getFontLinks()` which needs to be injected into the `<head>` of your `index.html`.
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages which needs to be injected into the `<head>` of your `index.html`.
 
 ## Supported options
-- **subset**: 'latin' | 'greek' | 'cyril' = 'latin'
-- **weights**: ('thin' | 'regular' | 'semi-bold' | 'bold')[] = ['regular']
-- **cdn:** 'auto' | 'cn' = 'auto'
-- **withoutTags**: boolean = false
+- **subset:** `'latin' | 'greek' | 'cyril' = 'latin'`
+- **weights:** `('thin' | 'regular' | 'semi-bold' | 'bold')[] = ['regular']`
+- **cdn:** `'auto' | 'cn' = 'auto'`
+- **withoutTags:** `boolean = false`
 
 ## Examples
 

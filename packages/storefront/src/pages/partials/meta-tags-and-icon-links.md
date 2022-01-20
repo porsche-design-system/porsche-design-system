@@ -4,9 +4,11 @@
 Meta Icons are a set of icons to be used for the following purposes: **Favicon**, **Apple Touch Icons**, **Android Touch Icons** and **Microsoft Windows Tiles**.
 To simplify the implementation process we provide a `getMetaTagsAndIconLinks` partial.
 
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages which needs to be injected into the `<head>` of your `index.html`.
+
 ## Supported options
-- **appTitle:** string
-- **cdn:** 'auto' | 'cn' = 'auto'
+- **appTitle:** `string`
+- **cdn:** `'auto' | 'cn' = 'auto'`
 
 ## Examples
 

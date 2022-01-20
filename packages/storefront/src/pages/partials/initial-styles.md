@@ -4,11 +4,11 @@
 If you use `Porsche Design System` components, we take care that your application only renders those if they are fully styled.
 However, it takes a moment until our core is fully loaded and only then we can take action. This short timespan has to be covered.
 
-Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages called `getInitialStyles()` which needs to be injected into the `<head>` of your `index.html`.
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages which needs to be injected into the `<head>` of your `index.html`.
 
 ## Supported options
-- **prefix:** string = ''
-- **withoutTags**: boolean = false
+- **prefix:** `string = ''`
+- **withoutTags:** `boolean = false`
 
 ## Examples
 

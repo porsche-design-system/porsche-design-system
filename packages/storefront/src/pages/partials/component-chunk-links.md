@@ -5,12 +5,12 @@ Porsche Design System components load dynamically from a CDN as soon as they are
 This results in a waterfall like loading behaviour where your application bootstraps first, then loads the Porsche Design System Core and when any component rendered the corresponding component chunk gets loaded afterwards.  
 This can be optimized by fetching used chunks in parallel while the application is bootstrapping.
 
-Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages called `getComponentChunkLinks()` which needs to be injected into the `<head>` of your `index.html`.
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages which needs to be injected into the `<head>` of your `index.html`.
 
 ## Supported options
-- **components**: ({{this.componentChunks}})[] = []
-- **cdn:** 'auto' | 'cn' = 'auto'
-- **withoutTags**: boolean = false
+- **components:** `({{this.componentChunks}})[] = []`
+- **cdn:** `'auto' | 'cn' = 'auto'`
+- **withoutTags:** `boolean = false`
 
 By default, our core is always preloaded when using this partial.
 

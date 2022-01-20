@@ -4,11 +4,11 @@
 When using `porsche-design-system/components-{angular|react}` our core loader gets bundled into your application.  
 This impacts the loading behavior of Porsche Design System components because the code gets executed **later**, once the framework bootstraps.
 
-To achieve this bootstrapping **earlier** we provide a partial called `getLoaderScript()` in all `@porsche-design-system/components-{js|angular|react}` packages which needs to be injected into the `<body>` of your `index.html`.
+To achieve this bootstrapping **earlier** we provide a partial in all `@porsche-design-system/components-{js|angular|react}` packages which needs to be injected into the `<body>` of your `index.html`.
 
 ## Supported options
-- **prefix**: string | string[] = undefined
-- **withoutTags**: boolean = false
+- **prefix:** `string | string[] = undefined`
+- **withoutTags:** `boolean = false`
 
 ## Examples
 
