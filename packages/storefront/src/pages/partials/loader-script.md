@@ -37,9 +37,6 @@ export default class Code extends Vue {
       value: "{ prefix: ['my-prefix', 'another-prefix'] }",
       comment: 'With multiple custom prefixes'
     },
-    {
-      value: "{ withoutTags: true }"
-    }
   ];
 }
 </script>

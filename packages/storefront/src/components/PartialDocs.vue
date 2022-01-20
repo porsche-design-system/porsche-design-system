@@ -12,7 +12,6 @@
   type Param = {
     value: string;
     comment?: string;
-    usage?: string;
   };
 
   @Component
@@ -33,12 +32,13 @@
       const partialImportPathJs = partialImportPath.replace('vanilla-js', 'js').replace(/'/g, '\\"');
       const paramsJs = this.params.map(({ value }) => value.replace(/'/g, '\\"'))[0];
       const placeholder = `PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_${constantCase(this.name.replace('get', ''))}`;
-      const scriptTag = 'script';
 
       const angularPartials = this.params
-        .filter(({ value }) => !value.includes('withoutTags'))
         .map(({ value, comment }, index) =>
-          [, comment && `// ${comment}`, (index !== 0 ? 'partialContent = ' : '') + `${this.name}(${value});`]
+          [
+            comment && `// Alternative: ${comment}`,
+            (index !== 0 ? 'partialContent = ' : '') + `${this.name}(${value});`,
+          ]
             .filter((x) => x)
             .join('\n  ')
         )
@@ -46,7 +46,9 @@
 
       const exampleAngular = `<!-- prerequisite -->
   <!-- docs: https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack#index-transform -->
-  npm i -D @angular-builders/custom-webpack
+  npm install --save-dev @angular-builders/custom-webpack
+  <!-- or via yarn -->
+  yarn add --dev @angular-builders/custom-webpack
 
   <!-- angular.json -->
   ...
@@ -56,7 +58,7 @@
   +   "builder": "@angular-builders/custom-webpack:browser",
       "options": {
         "outputPath": "dist/components-angular",
-  +     "indexTransform": "./scripts/transformIndexHtml.ts"
+  +     "indexTransform": "./scripts/transformIndexHtml.ts",
         ...
 
   <!-- ./scripts/transformIndexHtml.ts -->
@@ -72,22 +74,11 @@
       const exampleReact =
         `<${this.location}>\n  ` +
         this.params
-          .map(({ value, comment, usage }, index, array) => {
-            const needsTag = value.includes('withoutTags');
-            const openingScriptTag = needsTag ? `<${scriptTag}>` : '';
-            const closingScriptTag = needsTag ? `</${scriptTag}>` : '';
-            const isFirstWithoutTags =
-              needsTag && index <= array.findIndex(({ value }) => value.includes('withoutTags'));
-
-            return [
-              isFirstWithoutTags && '<!-- Without tags -->',
-              comment && `<!-- ${comment} -->`,
-              usage?.replace('$$$PARTIAL$$$', `${partialImportPath}(${value})`) ||
-                `${openingScriptTag}<%= ${partialImportPath}(${value}) %>${closingScriptTag}`,
-            ]
+          .map(
+            { value, comment }[(comment && `<!-- Alternative: ${comment} -->`, `<%= ${partialImportPath}(${value}) %>`)]
               .filter((x) => x)
-              .join('\n  ');
-          })
+              .join('\n  ')
+          )
           .join('\n\n  ') +
         `\n</${this.location}>`;
 
