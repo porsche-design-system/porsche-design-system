@@ -110,14 +110,14 @@ export const routes: RouteType[] = [
     component: fromPages.ModalFullscreenPage,
   },
   {
-    name: 'Modal Full Width Slot',
-    path: '/modal-full-width-slot',
-    component: fromPages.ModalFullWidthSlot,
-  },
-  {
     name: 'Modal Fullscreen Breakpoint',
     path: '/modal-fullscreen-breakpoint',
     component: fromPages.ModalFullscreenBreakpointPage,
+  },
+  {
+    name: 'Modal Full Width Slot',
+    path: '/modal-full-width-slot',
+    component: fromPages.ModalFullWidthSlot,
   },
   {
     name: 'Modal No Heading',
