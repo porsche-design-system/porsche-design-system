@@ -37,6 +37,6 @@ Windows, macOS, iOS and Android have at least one supported browser pre-installe
 
 ### Browser Notification
 
-To help inform the user about the **end of support of Microsoft Internet Explorer 11 and EdgeHTML** we provide a **Browser Notification Banner** and **Overlay** in form of a npm package `@porsche-design-system/browser-notification`.
+To help inform the user about the **end of support of Microsoft Internet Explorer 11 and EdgeHTML** we provide a **Browser Notification Banner** and **Overlay** in form of an npm package `@porsche-design-system/browser-notification`.
 
 For information on how to use it, see [Browser Notification](partials/browser-notifications/browser-support-notification).

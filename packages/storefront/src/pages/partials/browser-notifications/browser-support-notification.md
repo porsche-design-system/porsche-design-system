@@ -12,7 +12,7 @@ Include the **Browser Notification** into your project by importing and calling 
 
 ### Banner notification
 
-The **Banner** variant is meant to inform the user if they access the application with a browser which doesn't get full support by the application. The banner is placed above the page and can be closed by the user.
+The **Banner** variant is meant to inform the user when they access the application with a browser which doesn't get full support by the application. The banner is placed above the page and can be closed by the user.
 
 Integration through `includeBanner()` partial.
 
