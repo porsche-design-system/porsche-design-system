@@ -23,7 +23,7 @@ Include the **Cookie Notification** into your project by importing and calling t
 Automatic translations for the following languages are provided:  
 `'de' | 'ru' | 'fr' | 'en' | 'it' | 'pt' | 'es' | 'ja' | 'ko' | 'zh' | 'nl' | 'pl' | 'cs' | 'da' | 'et' | 'fi' | 'lt' | 'lv' | 'no' | 'sl' | 'sv' | 'tr' | 'uk'`
 
-The **Browser Notification** is looking once as soon as the script initializes for the obligatory `lang` attribute defined in the `html` tag. Support is given for the following formats, e.g.:
+As soon as the **Cookie Notification** script initializes, it looks for the obligatory `lang` attribute defined in the `html` tag. Support is given for the following formats, e.g.:
 
 - `lang="en"`
 - `lang="en_US"`
