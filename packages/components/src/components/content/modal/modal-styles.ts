@@ -3,7 +3,9 @@ import {
   addImportantToEachRule,
   BREAKPOINTS,
   buildResponsiveStyles,
+  buildSlottedStyles,
   contentWrapperVars,
+  getBaseSlottedStyles,
   getCss,
   getInset,
   mediaQuery,
@@ -145,4 +147,12 @@ export const getComponentCss = (
       right: 0,
     },
   });
+};
+
+export const getSlottedCss = (host: HTMLElement): string => {
+  return getCss(
+    buildSlottedStyles(host, {
+      ...getBaseSlottedStyles(),
+    })
+  );
 };

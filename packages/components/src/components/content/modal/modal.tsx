@@ -1,16 +1,17 @@
 import { Component, Element, Event, EventEmitter, Host, JSX, Prop, Watch, h } from '@stencil/core';
 import type { BreakpointCustomizable, SelectedAriaAttributes } from '../../../types';
-import { attachComponentCss, getPrefixedTagNames, parseAndGetAriaAttributes } from '../../../utils';
+import { attachComponentCss, attachSlottedCss, getPrefixedTagNames, parseAndGetAriaAttributes } from '../../../utils';
 import type { ModalAriaAttributes } from './modal-utils';
 import {
   getFirstAndLastElement,
   getFocusableElements,
   getScrollTopOnTouch,
+  hasSlottedHeading,
   MODAL_ARIA_ATTRIBUTES,
   setScrollLock,
   warnIfAriaAndHeadingPropsAreUndefined,
 } from './modal-utils';
-import { getComponentCss } from './modal-styles';
+import { getComponentCss, getSlottedCss } from './modal-styles';
 
 @Component({
   tag: 'p-modal',
@@ -73,6 +74,7 @@ export class Modal {
 
   public componentWillRender(): void {
     attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen, this.disableCloseButton);
+    attachSlottedCss(this.host, getSlottedCss);
     warnIfAriaAndHeadingPropsAreUndefined(this.host, this.heading, this.aria);
     this.ariaLabelAttribute =
       parseAndGetAriaAttributes(this.aria, MODAL_ARIA_ATTRIBUTES)?.['aria-label'] ?? this.heading;
@@ -92,6 +94,7 @@ export class Modal {
   }
 
   public render(): JSX.Element {
+    const hasHeader = this.heading || hasSlottedHeading(this.host);
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
@@ -103,11 +106,14 @@ export class Modal {
           aria-label={this.ariaLabelAttribute}
           aria-hidden={!this.open ? 'true' : 'false'}
         >
-          {this.heading && (
+          {hasHeader && (
             <div class="header">
-              <PrefixedTagNames.pHeadline variant={{ base: 'medium', m: 'large' }}>
-                {this.heading}
-              </PrefixedTagNames.pHeadline>
+              {this.heading && (
+                <PrefixedTagNames.pHeadline variant={{ base: 'medium', m: 'large' }}>
+                  {this.heading}
+                </PrefixedTagNames.pHeadline>
+              )}
+              {hasSlottedHeading(this.host) && <slot name="heading" />}
             </div>
           )}
           {!this.disableCloseButton && (

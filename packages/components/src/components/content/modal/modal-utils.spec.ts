@@ -1,7 +1,8 @@
 import {
   getFirstAndLastElement,
-  getScrollTopOnTouch,
   getFocusableElements,
+  getScrollTopOnTouch,
+  hasSlottedHeading,
   setScrollLock,
   warnIfAriaAndHeadingPropsAreUndefined,
 } from './modal-utils';
@@ -170,5 +171,21 @@ describe('warnIfAriaAndHeadingPropsAreUndefined()', () => {
     warnIfAriaAndHeadingPropsAreUndefined(host, undefined, "{'aria-label': 'OtherHeading'}");
     warnIfAriaAndHeadingPropsAreUndefined(host, 'Heading', "{'aria-label': 'OtherHeading'}");
     expect(console.warn).toBeCalledTimes(2);
+  });
+});
+
+describe('hasSlottedHeading()', () => {
+  it('should return true with slotted heading', () => {
+    const host = document.createElement('p-modal');
+    const header = document.createElement('header');
+    header.slot = 'heading';
+    host.appendChild(header);
+
+    expect(hasSlottedHeading(host)).toBe(true);
+  });
+
+  it('should return false without heading', () => {
+    const host = document.createElement('p-modal');
+    expect(hasSlottedHeading(host)).toBe(false);
   });
 });
