@@ -6,14 +6,14 @@
   }
 </style>
 
-<div class="playground light" title="should display a full width image when using .stretch-to-full-modal-width">
+<div class="playground light" title="should display a full width div when using .stretch-to-full-modal-width">
   <p-content-wrapper>
     <div style="background: deeppink; height: 100vh"></div>
   </p-content-wrapper>
-  <p-modal open>
+  <p-modal open aria="{'aria-label': 'Some Heading'}">
     <div class="stretch-to-full-modal-width">
       <div style="background: deeppink; width: 100%; height: 200px"></div>
     </div>
-    Some Content below a full width slotted div</p-modal
-  >
+    Some Content below a full width slotted div
+  </p-modal>
 </div>

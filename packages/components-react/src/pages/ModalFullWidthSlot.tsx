@@ -12,14 +12,11 @@ export const ModalFullWidthSlot = (): JSX.Element => {
   return (
     <>
       <style children={style} />
-      <div
-        className="playground light"
-        title="should display a full width image when using .stretch-to-full-modal-width"
-      >
+      <div className="playground light" title="should display a full width div when using .stretch-to-full-modal-width">
         <PContentWrapper>
           <div style={{ background: 'deeppink', height: '100vh' }} />
         </PContentWrapper>
-        <PModal open>
+        <PModal open aria={{ 'aria-label': 'Some Headline' }}>
           <div className="stretch-to-full-modal-width">
             <div style={{ background: 'deeppink', width: '100%', height: 200 }}></div>
           </div>

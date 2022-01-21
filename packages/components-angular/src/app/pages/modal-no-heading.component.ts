@@ -16,7 +16,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-content-wrapper>
         <div style="background: deeppink; height: 100vh"></div>
       </p-content-wrapper>
-      <p-modal [open]="true">Some Content without a heading that will be covered by the close button</p-modal>
+      <p-modal [open]="true" [aria]="{ 'aria-label': 'Some Heading' }">
+        Some Content without a heading that will be covered by the close button
+      </p-modal>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
