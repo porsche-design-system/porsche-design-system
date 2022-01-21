@@ -1,8 +1,6 @@
-# Browser Notifications
+# Cookie Notification 
 
 <TableOfContents></TableOfContents>
-
-## Cookie Notification 
 
 ## Usage
 
