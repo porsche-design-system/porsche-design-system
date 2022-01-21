@@ -47,6 +47,14 @@ If the Modal's content does not fit into the current boundaries the content beco
 
 <Playground :markup="scrollable"></Playground>
 
+## Slotted heading
+
+Sometimes it's useful to be able to render markup for `heading`. Therefore, a named slot can be used. Make sure **not** to define
+the corresponding property on the host element when a named slot is used (because a property definition is preferred over a named slot).  
+Make sure to set the `aria` property with a descriptive `aria-label` value when using slotted heading.  
+
+<Playground :markup="slottedHeading" :config="config"></Playground>
+
 ## Without Heading
 
 Passing a `heading` to the modal is optional.
@@ -66,8 +74,8 @@ If you want to disable closing the Modal by clicking the backdrop, you can set t
 ## Full Width Content
 
 It is possible to make containers stretch into the padding safe-zone by adding the `stretch-to-full-modal-width` class.
-Make sure to set the `aria` property with a descriptive `aria-label` value when omitting the heading.  
 Make sure to omit the `heading` when using the `stretch-to-full-modal-width` class.
+Make sure to set the `aria` property with a descriptive `aria-label` value when omitting the heading.  
 
 <Playground :markup="fullWidthContent"></Playground>
 
@@ -176,6 +184,16 @@ const ModalPage = (): JSX.Element => {
     <p-button>Save</p-button>
     <p-button type="button" variant="tertiary" icon="close">Close</p-button>
   </p-button-group>
+</p-modal>`;
+
+  slottedHeading = 
+`<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
+<p-modal open="false" aria="{'aria-label': 'Some Heading'}">
+  <header slot="heading">
+    <p-text tag="div" role="doc-subtitle">Some subtitle</p-text>
+    <p-headline tag="h2">Some Heading</p-headline>        
+  </header>
+  <p-text>Some Content</p-text>
 </p-modal>`;
 
   withoutHeading =
