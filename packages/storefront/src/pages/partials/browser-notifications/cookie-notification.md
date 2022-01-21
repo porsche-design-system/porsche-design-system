@@ -2,7 +2,7 @@
 
 <TableOfContents></TableOfContents>
 
-# Cookie Notification 
+## Cookie Notification 
 
 ## Usage
 
