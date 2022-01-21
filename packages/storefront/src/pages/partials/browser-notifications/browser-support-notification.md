@@ -2,7 +2,7 @@
 
 <TableOfContents></TableOfContents>
 
-# Browser Support Notification
+## Browser Support Notification
 
 ## Usage
 
