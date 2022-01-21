@@ -14,25 +14,23 @@
     comment?: string;
   };
 
-  type PartialPackageName = 'components' | 'browser-notification';
+  type PartialPackageName = 'components-js' | 'browser-notification';
 
   @Component
   export default class PartialDocs extends Vue {
     @Prop({ default: '' }) public name!: string;
-    @Prop({ default: [{ value: '' }] }) public params!: Param[];
+    @Prop({ default: () => [{ value: '' }] }) public params!: Param[];
     @Prop({ default: 'body' }) public location!: string;
-    @Prop({ default: 'components' }) public partialPackageName!: PartialPackageName;
+    @Prop({ default: 'components-js' }) public partialPackageName!: PartialPackageName;
+
     public get activeFramework(): Framework {
       return this.$store.getters.selectedFramework;
     }
 
     public get frameworkMarkup(): FrameworkMarkup {
-      const isComponents = this.partialPackageName === 'components';
-      const packageName = isComponents ? `${this.partialPackageName}-js/partials'` : this.partialPackageName;
-
-      let partialPackage = `@porsche-design-system/${packageName}`;
-      if (isComponents) {
-        partialPackage = '@porsche-design-system/components-js/partials'.replace('js', this.activeFramework);
+      let partialPackage = `@porsche-design-system/${this.partialPackageName}`;
+      if (this.partialPackageName === 'components-js') {
+        partialPackage = `${partialPackage}/partials`.replace('js', this.activeFramework);
       }
 
       const glue = '\n  ';
@@ -89,7 +87,7 @@
           .join('\n\n  ') +
         `\n</${this.location}>`;
 
-      const placeholder = `PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_${constantCase(this.name.replace('get', ''))}`;
+      const placeholder = `PLACEHOLDER_${constantCase(this.name.replace('get', ''))}`;
       const jsPartials = this.params
         .map(({ value, comment }) => {
           const partialCall = `${partialRequirePathJs}(${value})`.replace(/'/g, '\\"'); // transform quotes
