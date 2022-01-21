@@ -113,7 +113,7 @@ export class Modal {
                   {this.heading}
                 </PrefixedTagNames.pHeadline>
               )}
-              {hasSlottedHeading(this.host) && <slot name="heading" />}
+              {!this.heading && hasSlottedHeading(this.host) && <slot name="heading" />}
             </div>
           )}
           {!this.disableCloseButton && (
