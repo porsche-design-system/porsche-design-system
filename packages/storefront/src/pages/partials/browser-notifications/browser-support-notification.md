@@ -6,7 +6,7 @@
 
 ## Usage
 
-We provide two notifications variants to show the user the corresponding information in regard to its used browser.
+We provide two notification variants to show the user the corresponding information in regard to its used browser.
 
 Include the **Browser Notification** into your project by importing and calling the provided `includeBanner()` or `includeOverlay()` function within your `index.html` just before the closing `</body>` tag (requires a bundler like Webpack, Rollup or a small Node JS script). This adds a `<script>` tag with pre-defined browser- and feature detection pointing to the corresponding browser notification JS snippet hosted on a CDN.
 
