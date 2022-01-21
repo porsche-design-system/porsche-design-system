@@ -138,7 +138,7 @@ Object {
 
 exports[`getThemedFormStateColors() should return correct colors for theme: 'dark' and state: 'error' 1`] = `
 Object {
-  "formStateColor": undefined,
+  "formStateColor": "#fc1717",
   "formStateHoverColor": "#d30303",
 }
 `;
@@ -152,14 +152,14 @@ Object {
 
 exports[`getThemedFormStateColors() should return correct colors for theme: 'dark' and state: 'success' 1`] = `
 Object {
-  "formStateColor": undefined,
+  "formStateColor": "#01ba1d",
   "formStateHoverColor": "#017d14",
 }
 `;
 
 exports[`getThemedFormStateColors() should return correct colors for theme: 'light' and state: 'error' 1`] = `
 Object {
-  "formStateColor": undefined,
+  "formStateColor": "#e00000",
   "formStateHoverColor": "#a30000",
 }
 `;
@@ -173,7 +173,7 @@ Object {
 
 exports[`getThemedFormStateColors() should return correct colors for theme: 'light' and state: 'success' 1`] = `
 Object {
-  "formStateColor": undefined,
+  "formStateColor": "#018a16",
   "formStateHoverColor": "#014d0c",
 }
 `;
