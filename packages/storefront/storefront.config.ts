@@ -713,14 +713,18 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       () => import('@/pages/partials/meta-tags-and-icon-links.md'),
     ],
-    Notifications: {
-      'Browser Notification': [
+    'Browser Notifications': {
+      Introduction: [
         // @ts-ignore
-        () => import('@/pages/partials/browser-notification.md'),
+        () => import('@/pages/partials/browser-notifications/introduction.md'),
+      ],
+      'Browser Support Notification': [
+        // @ts-ignore
+        () => import('@/pages/partials/browser-notifications/browser-support-notification.md'),
       ],
       'Cookie Notification': [
         // @ts-ignore
-        () => import('@/pages/partials/cookie-notification.md'),
+        () => import('@/pages/partials/browser-notifications/cookie-notification.md'),
       ],
     },
   },

@@ -1,25 +1,10 @@
-# Notifications
+# Browser Notifications
 
 <TableOfContents></TableOfContents>
 
-## Cookie Notification 
+# Cookie Notification 
 
-### Install
-
-The Cookie Notification partial is provided by the `@porsche-design-system/browser-notification`. 
-
-It's necessary to have access to the Porsche Design System private npm registry to be able to install the `@porsche-design-system/browser-notification` npm package.
-If you don't have an account yet, please first [read more about getting started as developer](start-coding/introduction).  
-
-```
-// install with npm:
-npm install @porsche-design-system/browser-notification
-
-// install with yarn:
-yarn add @porsche-design-system/browser-notification
-```
-
-### Usage
+## Usage
 
 We provide an overlay variant which asks the visitor to activate his cookies.
 
@@ -30,10 +15,10 @@ Include the **Cookie Notification** into your project by importing and calling t
 | **enabled**                | ✗           |
 | **disabled**               | ✓           |
 
-#### Example
+### Example
 <PartialDocs name="includeCookieOverlay" :partialPackageName="partialPackageName" location="body"></PartialDocs>
 
-### Translations
+## Translations
 
 Automatic translations for the following languages are provided:  
 `'de' | 'ru' | 'fr' | 'en' | 'it' | 'pt' | 'es' | 'ja' | 'ko' | 'zh' | 'nl' | 'pl' | 'cs' | 'da' | 'et' | 'fi' | 'lt' | 'lv' | 'no' | 'sl' | 'sv' | 'tr' | 'uk'`
@@ -46,7 +31,7 @@ The **Browser Notification** is looking once as soon as the script initializes f
 
 If none of these languages can be found, it will fall back to `en`.
 
-### Troubleshooting
+## Troubleshooting
 
 There always might be a case where something goes wrong. Here are some possible answers:
 
