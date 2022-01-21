@@ -16,7 +16,6 @@ fi
 is_version_published() {
   echo "task: [$(date)] \"is_version_published\" ${PACKAGE_NAME}@${PACKAGE_VERSION}"
   http_status_code="$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: Bearer ${PORSCHE_NPM_REGISTRY_TOKEN}" "https://porscheui.jfrog.io/porscheui/api/npm/npm/${PACKAGE_NAME}/${PACKAGE_VERSION}")"
-
   if [[ ${http_status_code} == 200 ]]; then
     return 0 # true
   else
