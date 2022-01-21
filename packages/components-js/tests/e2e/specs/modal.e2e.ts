@@ -27,6 +27,7 @@ describe('modal', () => {
   afterEach(async () => await page.close());
 
   const getHost = () => selectNode(page, 'p-modal');
+  const getHeader = () => selectNode(page, 'p-modal >>> .header');
   const getModal = () => selectNode(page, 'p-modal >>> .root');
   const getModalCloseButton = () => selectNode(page, 'p-modal >>> p-button-pure.close');
   const getBodyOverflow = async () => getElementStyle(await selectNode(page, 'body'), 'overflow');
@@ -36,13 +37,17 @@ describe('modal', () => {
     content?: string;
     heading?: string;
     aria?: SelectedAriaAttributes<ModalAriaAttributes>;
+    hasSlottedHeading?: boolean;
   }): Promise<void> => {
-    const { isOpen = true, content = 'Some Content', heading = 'Some Heading', aria } = opts ?? {};
+    const { isOpen = true, content = 'Some Content', heading = 'Some Heading', aria, hasSlottedHeading } = opts ?? {};
 
     return setContentWithDesignSystem(
       page,
       `
-      <p-modal heading="${heading}"${isOpen ? ' open' : ''}${aria ? ` aria="${aria}"` : ''}>
+      <p-modal ${hasSlottedHeading ? '' : `heading="${heading}"`}${isOpen ? ' open' : ''}${
+        aria ? ` aria="${aria}"` : ''
+      }>
+        ${hasSlottedHeading ? '<header slot="heading">Some Heading</header>' : ''}
         ${content}
       </p-modal>`
     );
@@ -51,8 +56,7 @@ describe('modal', () => {
   const initAdvancedModal = (): Promise<void> => {
     return setContentWithDesignSystem(
       page,
-      `
-      <p-modal heading="Some Heading">
+      `<p-modal heading="Some Heading">
         Some Content
         <p-button id="btn-content-1">Content Button 1</p-button>
         <p-button id="btn-content-2">Content Button 2</p-button>
@@ -389,6 +393,25 @@ describe('modal', () => {
         'componentDidLoad: all | (p-button-pure -> p-text, p-icon), (p-headline -> p-text), p-modal'
       ).toBe(6);
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all | p-modal, (p-headline -> p-text)').toBe(3);
+    });
+  });
+
+  describe('slotted heading', () => {
+    it('should set slotted heading', async () => {
+      await initBasicModal({ hasSlottedHeading: true });
+      const header = await getHeader();
+
+      expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot('"<slot name=\\"heading\\"></slot>"');
+    });
+
+    it('should overwrite slotted heading when setting heading prop', async () => {
+      await initBasicModal({ hasSlottedHeading: true });
+      const host = await getHost();
+
+      const header = await getHeader();
+      await setProperty(host, 'heading', 'Some Heading');
+
+      expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot('"<p-headline>Some Heading</p-headline>"');
     });
   });
 
