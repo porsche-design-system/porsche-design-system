@@ -26,6 +26,7 @@ export * from './ModalFullWidthSlot';
 export * from './ModalNoHeading';
 export * from './ModalPrefixed';
 export * from './ModalScrollable';
+export * from './ModalSlottedHeading';
 export * from './Overview';
 export * from './Pagination';
 export * from './Popover';

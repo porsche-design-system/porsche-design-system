@@ -27,6 +27,7 @@ import { ModalFullWidthSlotComponent } from './modal-full-width-slot.component';
 import { ModalNoHeadingComponent } from './modal-no-heading.component';
 import { ModalPrefixedComponent } from './modal-prefixed.component';
 import { ModalScrollableComponent } from './modal-scrollable.component';
+import { ModalSlottedHeadingComponent } from './modal-slotted-heading.component';
 import { OverviewComponent } from './overview.component';
 import { PaginationComponent } from './pagination.component';
 import { PopoverComponent } from './popover.component';
@@ -81,6 +82,7 @@ export const pages = [
   ModalNoHeadingComponent,
   ModalPrefixedComponent,
   ModalScrollableComponent,
+  ModalSlottedHeadingComponent,
   OverviewComponent,
   PaginationComponent,
   PopoverComponent,
@@ -135,6 +137,7 @@ export * from './modal-full-width-slot.component';
 export * from './modal-no-heading.component';
 export * from './modal-prefixed.component';
 export * from './modal-scrollable.component';
+export * from './modal-slotted-heading.component';
 export * from './overview.component';
 export * from './pagination.component';
 export * from './popover.component';

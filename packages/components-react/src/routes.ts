@@ -135,6 +135,11 @@ export const routes: RouteType[] = [
     component: fromPages.ModalScrollablePage,
   },
   {
+    name: 'Modal Slotted Heading',
+    path: '/modal-slotted-heading',
+    component: fromPages.ModalSlottedHeadingPage,
+  },
+  {
     name: 'Pagination',
     path: '/pagination',
     component: fromPages.PaginationPage,
