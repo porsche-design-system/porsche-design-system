@@ -173,63 +173,63 @@ const ModalPage = (): JSX.Element => {
 </p-modal>`;}
   
   scrollable =
-`<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
-<p-modal id="modal-scrollable" heading="Some Heading" open="false">
-  <p-text>Some Content</p-text>
-  <div style="height: 40vh;"></div>
-  <p-text>More Content</p-text>
-  <div style="height: 40vh;"></div>
-  <p-text>Even More Content</p-text>
-  <p-button-group class="footer">
-    <p-button>Save</p-button>
-    <p-button type="button" variant="tertiary" icon="close">Close</p-button>
-  </p-button-group>
-</p-modal>`;
+    `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
+    <p-modal id="modal-scrollable" heading="Some Heading" open="false">
+      <p-text>Some Content</p-text>
+      <div style="height: 40vh;"></div>
+      <p-text>More Content</p-text>
+      <div style="height: 40vh;"></div>
+      <p-text>Even More Content</p-text>
+      <p-button-group class="footer">
+        <p-button>Save</p-button>
+        <p-button type="button" variant="tertiary" icon="close">Close</p-button>
+      </p-button-group>
+    </p-modal>`;
 
   slottedHeading = 
-`<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
-<p-modal open="false" aria="{'aria-label': 'Some Heading'}">
-  <header slot="heading">
-    <p-text tag="div" role="doc-subtitle">Some subtitle</p-text>
-    <p-headline tag="h2">Some Heading</p-headline>        
-  </header>
-  <p-text>Some Content</p-text>
-</p-modal>`;
+    `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
+    <p-modal open="false" aria="{'aria-label': 'Some Heading'}">
+      <header slot="heading">
+        <p-text tag="div" role="doc-subtitle">Some subtitle</p-text>
+        <p-headline tag="h2">Some Heading</p-headline>        
+      </header>
+      <p-text>Some Content</p-text>
+    </p-modal>`;
 
   withoutHeading =
-`<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
-<p-modal open="false" aria="{'aria-label': 'Some Heading'}">
-  <p-text>Some Content</p-text>
-</p-modal>`;
+    `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
+    <p-modal open="false" aria="{'aria-label': 'Some Heading'}">
+      <p-text>Some Content</p-text>
+    </p-modal>`;
 
   withoutCloseButton =
-`<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
-<p-modal heading="Some Heading" disable-close-button open="false">
-  <p-text>Some Content</p-text>
-</p-modal>`;
+    `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
+    <p-modal heading="Some Heading" disable-close-button open="false">
+      <p-text>Some Content</p-text>
+    </p-modal>`;
 
   fullWidthContent =
-`<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
-<p-modal open="false" aria="{'aria-label': 'Some Heading'}">
-  <div class="stretch-to-full-modal-width">
-    <div style="width: 100%; height: 200px; background-color: lightskyblue;"></div>
-  </div>
-  <p-text>Some Content</p-text>
-</p-modal>`;
+    `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
+    <p-modal open="false" aria="{'aria-label': 'Some Heading'}">
+      <div class="stretch-to-full-modal-width">
+        <div style="width: 100%; height: 200px; background-color: lightskyblue;"></div>
+      </div>
+      <p-text>Some Content</p-text>
+    </p-modal>`;
 
   fullscreen =
-`<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
-<p-modal heading="Some Heading" open="false" fullscreen="{ base: true, s: false }">
-  <p-flex direction="column" class="fullscreen-container">
-    <p-flex-item grow="1">
-      <p-text>Some Content</p-text>
-    </p-flex-item>
-    <p-button-group class="footer">
-      <p-button>Save</p-button>
-      <p-button type="button" variant="tertiary" icon="close">Close</p-button>
-    </p-button-group>
-  </p-flex>
-</p-modal>`;
+    `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
+    <p-modal heading="Some Heading" open="false" fullscreen="{ base: true, s: false }">
+      <p-flex direction="column" class="fullscreen-container">
+        <p-flex-item grow="1">
+          <p-text>Some Content</p-text>
+        </p-flex-item>
+        <p-button-group class="footer">
+          <p-button>Save</p-button>
+          <p-button type="button" variant="tertiary" icon="close">Close</p-button>
+        </p-button-group>
+      </p-flex>
+    </p-modal>`;
 
   openModal(index: number): void {
     this.modals[index].open = true;
