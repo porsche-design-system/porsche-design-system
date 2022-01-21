@@ -63,7 +63,7 @@ There always might be a case where something goes wrong. Here are some possible 
 1. **Q:** Why does the translation not get recognized automatically?  
    **A:** Mostly this is a result of false order of script loading and setting translation key by the application. It's required that the `lang` attribute in the `html` tag is defined with the correct value before the **Browser Notification** script gets initialized.  
    **A:** The translation key is not part of the provided keys (see "Translations")  
-   **A:** The translation key has not the correct format (see "Translations")
+   **A:** The translation key does no have the correct format (see "Translations")
 2. **Q:** Why are there no implementation guidelines for my JS framework?  
    **A:** Implementing a third party script can be done in many ways regarding the setup of your application. So there isn't a solely true way to integrate it in a specific framework. Just one rule of thumb: **It should be initialized as late as possible.**
 
