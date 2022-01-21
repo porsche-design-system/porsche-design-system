@@ -141,8 +141,8 @@ export const getComponentCss = (
       border: `${pxToRemWithUnit(6)} solid ${color.background.default}`,
       backgroundColor: color.background.default,
       position: 'absolute',
-      top: pxToRemWithUnit(1),
-      right: pxToRemWithUnit(1),
+      top: 0,
+      right: 0,
     },
   });
 };
