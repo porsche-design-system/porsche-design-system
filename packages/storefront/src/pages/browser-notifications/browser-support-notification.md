@@ -1,8 +1,6 @@
-# Browser Notifications
+# Browser Support Notification
 
 <TableOfContents></TableOfContents>
-
-## Browser Support Notification
 
 ## Usage
 
