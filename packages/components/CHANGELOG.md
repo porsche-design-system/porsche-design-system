@@ -13,7 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Modal` class for slotted elements to make content full-width
 
 #### Changed
-- `Button Pure` and `Link Pure` removed `position: relative` imposition
+- `Button Pure` and `Link Pure` removed `position: relative` imposition, make sure to **not** override it with `position: static`
+
+#### Fixed
+- `Modal` close button styles when no heading is passed
 
 ### [2.9.0-beta.0] - 2022-01-18
 
