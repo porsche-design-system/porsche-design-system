@@ -21,6 +21,7 @@ import {
   addInputEventListener,
   hasCounterAndIsTypeText,
   hasUnitAndIsTypeNumber,
+  setCharacterCountInnerHtml,
   setCounterInnerHtml,
   setInputStyles,
   throwIfUnitLengthExceeded,
@@ -59,6 +60,7 @@ export class TextFieldWrapper {
 
   private input: HTMLInputElement;
   private unitOrCounterElement: HTMLElement;
+  private characterCountElement: HTMLSpanElement;
   private isPassword: boolean;
   private hasCounter: boolean;
   private hasUnit: boolean;
@@ -83,8 +85,9 @@ export class TextFieldWrapper {
 
   public componentDidLoad(): void {
     if (this.hasCounter) {
-      addInputEventListener(this.input, this.unitOrCounterElement, this.setInputStyles);
+      addInputEventListener(this.input, this.unitOrCounterElement, this.characterCountElement, this.setInputStyles);
       setCounterInnerHtml(this.input, this.unitOrCounterElement); // initial value
+      setCharacterCountInnerHtml(this.input, this.characterCountElement);
     }
   }
 
@@ -162,6 +165,14 @@ export class TextFieldWrapper {
               </PrefixedTagNames.pText>
             )}
             <slot />
+            {this.hasCounter && (
+              <div
+                class="sr-only"
+                id={this.input.getAttribute('aria-describedby')}
+                ref={(el) => (this.characterCountElement = el)}
+                aria-live="polite"
+              />
+            )}
           </label>
           {this.isPassword ? (
             <button
