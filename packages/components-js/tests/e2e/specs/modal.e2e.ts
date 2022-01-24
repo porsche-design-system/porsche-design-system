@@ -47,7 +47,11 @@ describe('modal', () => {
       <p-modal ${hasSlottedHeading ? '' : `heading="${heading}"`}${isOpen ? ' open' : ''}${
         aria ? ` aria="${aria}"` : ''
       }>
-        ${hasSlottedHeading ? '<header slot="heading">Some Heading</header>' : ''}
+        ${
+          hasSlottedHeading
+            ? '<header slot="heading">Some Heading<a href="https://porsche.com">Some link</a></header>'
+            : ''
+        }
         ${content}
       </p-modal>`
     );
@@ -211,7 +215,7 @@ describe('modal', () => {
     });
   });
 
-  describe('can be controlled via keyboard', () => {
+  describe('focus behavior', () => {
     it('should focus first focusable element', async () => {
       await initAdvancedModal();
       const host = await getHost();
@@ -226,6 +230,103 @@ describe('modal', () => {
       expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE'); // close button
     });
 
+    it('should focus close button when there is a focusable content element', async () => {
+      await initBasicModal({
+        isOpen: false,
+        content: `<a href="https://porsche.com">Some link in content</a>`,
+        aria: "{'aria-label': 'Some Heading'}",
+      });
+      const host = await getHost();
+      await openModal();
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE'); // close button
+    });
+
+    it('should have correct focus order when there is a focusable content element and focusable slotted element in header', async () => {
+      await initBasicModal({
+        isOpen: false,
+        content: `<p-button">Some focusable button in content</p-button>`,
+        aria: "{'aria-label': 'Some Heading'}",
+        hasSlottedHeading: true,
+      });
+      const host = await getHost();
+      await openModal();
+
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE'); // close button
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('a'); // slotted header anchor
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('p-button'); // slotted content button
+    });
+
+    it('should focus nothing when there is no focusable element', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+        <p-modal heading="Some Heading" disable-close-button>
+          Some Content
+        </p-modal>`
+      );
+      await openModal();
+      const activeElementTagName = await getActiveElementTagName(page);
+      expect(activeElementTagName).toBe('BODY');
+    });
+
+    it('should not allow focusing element behind of modal', async () => {
+      await initBasicModal({ isOpen: false, content: '<p-text>Some text content</p-text>' });
+      await page.evaluate(() => {
+        const button = document.createElement('btn-behind');
+        button.id = 'button';
+        document.body.append(button);
+      });
+      const host = await getHost();
+      await openModal();
+
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE'); // close button
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE'); // close button
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE'); // close button
+    });
+
+    it('should focus last focused element after modal is closed', async () => {
+      await setContentWithDesignSystem(
+        page,
+        `
+      <button id="btn-open"></button>
+      <p-modal id="modal" heading="Some Heading">
+        Some Content
+      </p-modal>
+      <script>
+        const modal = document.getElementById('modal');
+        document.getElementById('btn-open').addEventListener('click', () => {
+          modal.open = true;
+        });
+        modal.addEventListener('close', () => {
+          modal.open = false;
+        });
+      </script>`
+      );
+      await page.waitForTimeout(CSS_TRANSITION_DURATION);
+
+      expect(await getModalVisibility(), 'initial').toBe('hidden');
+      expect(await getActiveElementTagName(page)).toBe('BODY');
+
+      await (await selectNode(page, '#btn-open')).click();
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(CSS_TRANSITION_DURATION);
+
+      expect(await getModalVisibility()).toBe('visible');
+
+      await page.keyboard.press('Escape');
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(CSS_TRANSITION_DURATION); // transition delay for visibility
+
+      expect(await getModalVisibility(), 'after escape').toBe('hidden');
+      expect(await getActiveElementId(page)).toBe('btn-open');
+    });
+  });
+
+  describe('can be controlled via keyboard', () => {
     it('should cycle tab events within modal', async () => {
       await initAdvancedModal();
       const host = await getHost();
@@ -263,73 +364,6 @@ describe('modal', () => {
       expect(await getActiveElementTagNameInShadowRoot(host), 'finally').toBe('P-BUTTON-PURE'); // close button
       await page.keyboard.up('ShiftLeft');
     });
-
-    it('should focus nothing when there is no focusable element', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-modal heading="Some Heading" disable-close-button>
-          Some Content
-        </p-modal>`
-      );
-      await openModal();
-      const activeElementTagName = await getActiveElementTagName(page);
-      expect(activeElementTagName).toBe('BODY');
-    });
-
-    it('should not allow focusing element behind of modal', async () => {
-      await initBasicModal({ isOpen: false, content: '<p-text>Some text content</p-text>' });
-      await page.evaluate(() => {
-        const button = document.createElement('btn-behind');
-        button.id = 'button';
-        document.body.append(button);
-      });
-      const host = await getHost();
-      await openModal();
-
-      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE'); // close button
-      await page.keyboard.press('Tab');
-      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE'); // close button
-      await page.keyboard.press('Tab');
-      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE'); // close button
-    });
-  });
-
-  it('should focus last focused element after modal is closed', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-      <button id="btn-open"></button>
-      <p-modal id="modal" heading="Some Heading">
-        Some Content
-      </p-modal>
-      <script>
-        const modal = document.getElementById('modal');
-        document.getElementById('btn-open').addEventListener('click', () => {
-          modal.open = true;
-        });
-        modal.addEventListener('close', () => {
-          modal.open = false;
-        });
-      </script>`
-    );
-    await page.waitForTimeout(CSS_TRANSITION_DURATION);
-
-    expect(await getModalVisibility(), 'initial').toBe('hidden');
-    expect(await getActiveElementTagName(page)).toBe('BODY');
-
-    await (await selectNode(page, '#btn-open')).click();
-    await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_TRANSITION_DURATION);
-
-    expect(await getModalVisibility()).toBe('visible');
-
-    await page.keyboard.press('Escape');
-    await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_TRANSITION_DURATION); // transition delay for visibility
-
-    expect(await getModalVisibility(), 'after escape').toBe('hidden');
-    expect(await getActiveElementId(page)).toBe('btn-open');
   });
 
   it('should prevent page from scrolling when open', async () => {
