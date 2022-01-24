@@ -19,28 +19,28 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, frameWo
     .filter((_, i) => i === 0)
     .forEach(([fileName, fileContent]) => {
       if (frameWorkType === 'angular') {
+        fileContent = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+@Component({
+  selector: 'page-${fileName}',
+  template: \`${fileContent}\`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ${pascalCase(fileName)}Component {}`;
         fileName = `${fileName}.component.ts`;
         fileName = path.resolve(rootDirectory, '../components-angular/src/app/pages', fileName);
-
-        fileContent = `<div class="playground light" title="should render accordion on light background">
-                <p-accordion [heading]="'Some heading'">
-                  {{ content }}
-                </p-accordion>
-            </div>`;
       } else if (frameWorkType === 'react') {
+        fileContent = `import { P${pascalCase(fileName)} } from '@porsche-design-system/components-react';
+
+export const ${pascalCase(fileName)}Page = (): JSX.Element => {
+  return (
+    <>
+      ${fileContent}
+    </>
+  );
+};`;
         fileName = `${pascalCase(fileName)}.tsx`;
-
         fileName = path.resolve(rootDirectory, '../components-react/src/pages', fileName);
-        fileContent = `
-           <div className="playground light" title="should render accordion on light background">
-              <PAccordion heading="Some heading">{content}</PAccordion>
-            </div>
-
-            <div className="playground dark" title="should render accordion on dark background">
-              <PAccordion heading="Some heading" theme="dark">
-                {content}
-              </PAccordion>
-            </div>`;
       }
       fs.writeFileSync(fileName, fileContent);
       console.log(`Generated ${fileName}`);
