@@ -15,7 +15,7 @@ describe('verifySpinnerSize()', () => {
 
     verifySpinnerSize(size);
 
-    expect(console.warn).toBeCalledTimes(warningAmount);
+    expect(spy).toBeCalledTimes(warningAmount);
     spy.mockRestore();
   });
 });

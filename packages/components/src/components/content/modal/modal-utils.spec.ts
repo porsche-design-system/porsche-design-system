@@ -158,19 +158,20 @@ describe('getFirstAndLastElement()', () => {
 });
 
 describe('warnIfAriaAndHeadingPropsAreUndefined()', () => {
-  beforeEach(() => {
-    jest.spyOn(global.console, 'warn').mockImplementation(() => {});
-  });
-
   it('should print warning when aria and heading props are undefined', () => {
+    const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
     const host = document.createElement('p-modal');
 
-    warnIfAriaAndHeadingPropsAreUndefined(host, undefined, undefined);
-    warnIfAriaAndHeadingPropsAreUndefined(host, null, null);
     warnIfAriaAndHeadingPropsAreUndefined(host, 'Heading', undefined);
     warnIfAriaAndHeadingPropsAreUndefined(host, undefined, "{'aria-label': 'OtherHeading'}");
     warnIfAriaAndHeadingPropsAreUndefined(host, 'Heading', "{'aria-label': 'OtherHeading'}");
-    expect(console.warn).toBeCalledTimes(2);
+
+    expect(spy).toBeCalledTimes(0);
+
+    warnIfAriaAndHeadingPropsAreUndefined(host, undefined, undefined);
+    warnIfAriaAndHeadingPropsAreUndefined(host, null, null);
+
+    expect(spy).toBeCalledTimes(2);
   });
 });
 
