@@ -28,8 +28,5 @@
     "tslib": "^2.3.0",
     "ts-node": "^10.3.0",
     "typescript": "~4.4.3"
-  },
-  "dependencies": {
-    "csstype": "^3.0.9"
   }
 }

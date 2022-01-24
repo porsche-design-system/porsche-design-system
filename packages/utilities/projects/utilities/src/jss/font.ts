@@ -1,8 +1,6 @@
-import type { Properties } from 'csstype';
-
 export type FontSize = 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge';
 export type FontWeight = 'thin' | 'regular' | 'semibold' | 'bold';
-export type FontSizeLineHeight = Pick<Properties, 'fontSize' | 'lineHeight'>;
+export type FontSizeLineHeight = { fontSize: string; lineHeight: number };
 type Font = {
   family: string;
   weight: { [key in FontWeight]: number };
