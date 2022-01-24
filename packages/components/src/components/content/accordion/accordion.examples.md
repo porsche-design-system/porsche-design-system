@@ -91,7 +91,7 @@ export default class Code extends Vue {
     }
   
   get sizeMarkup() {
-    const size = this.size  === 'responsive' ? "{ base: 'small', l: 'medium' }": this.size;
+    const size = this.size === 'responsive' ? "{ base: 'small', l: 'medium' }": this.size;
     return `<p-accordion heading="Some Heading" tag="h3" size="${size}">
   ${this.content}
 </p-accordion>
