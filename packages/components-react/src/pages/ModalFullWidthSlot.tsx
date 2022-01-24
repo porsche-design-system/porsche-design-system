@@ -18,7 +18,7 @@ export const ModalFullWidthSlot = (): JSX.Element => {
         </PContentWrapper>
         <PModal open aria={{ 'aria-label': 'Some Headline' }}>
           <div className="stretch-to-full-modal-width">
-            <div style={{ background: 'deeppink', width: '100%', height: 200 }}></div>
+            <div style={{ background: 'deeppink', height: 200 }}></div>
           </div>
           Some Content below a full width slotted div
         </PModal>

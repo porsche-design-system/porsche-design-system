@@ -18,7 +18,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-content-wrapper>
       <p-modal [open]="true" [aria]="{ 'aria-label': 'Some Heading' }">
         <div class="stretch-to-full-modal-width">
-          <div style="background: deeppink; width: 100%; height: 200px"></div>
+          <div style="background: deeppink; height: 200px"></div>
         </div>
         Some Content below a full width slotted div
       </p-modal>
