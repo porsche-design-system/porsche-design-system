@@ -187,7 +187,7 @@ const ModalPage = (): JSX.Element => {
 
   slottedHeading = 
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
-<p-modal open="false" aria="{'aria-label': 'Some Heading'}">
+<p-modal open="false" aria="{ 'aria-label': 'Some Heading' }">
   <header slot="heading">
     <p-text tag="div" role="doc-subtitle">Some subtitle</p-text>
     <p-headline tag="h2">Some Heading</p-headline>        
@@ -197,7 +197,7 @@ const ModalPage = (): JSX.Element => {
 
   withoutHeading =
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
-<p-modal open="false" aria="{'aria-label': 'Some Heading'}">
+<p-modal open="false" aria="{ 'aria-label': 'Some Heading' }">
   <p-text>Some Content</p-text>
 </p-modal>`;
 
@@ -209,7 +209,7 @@ const ModalPage = (): JSX.Element => {
 
   fullWidthContent =
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
-<p-modal open="false" aria="{'aria-label': 'Some Heading'}">
+<p-modal open="false" aria="{ 'aria-label': 'Some Heading' }">
   <div class="stretch-to-full-modal-width">
     <div style="width: 100%; height: 200px; background-color: lightskyblue;"></div>
   </div>
