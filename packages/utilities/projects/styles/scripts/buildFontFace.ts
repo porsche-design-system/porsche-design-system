@@ -25,7 +25,7 @@ type Options = {
   addSuffix?: string;
 };
 
-const buildFontFace = (opts: Options): string => {
+const buildFontFaceStylesheet = (opts: Options): string => {
   const { baseUrl, addContentBasedHash, addSuffix } = opts;
 
   const style = jss
@@ -46,7 +46,7 @@ const buildFontFace = (opts: Options): string => {
   return targetFilename;
 };
 
-const buildFontFaceCDN = (fontFaceCdnFileName: string, fontFaceCdnFileNameCn: string): void => {
+const buildFontFaceManifest = (fontFaceCdnFileName: string, fontFaceCdnFileNameCn: string): void => {
   const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_STYLES}/'`;
   // extract the condition from cdn config to use its result in a constant
   const cdnCondition = CDN_BASE_URL_DYNAMIC.substr(0, CDN_BASE_URL_DYNAMIC.lastIndexOf('?') - 1).slice(1);
@@ -70,15 +70,15 @@ export const FONT_FACE_CDN_URL = ${url};
   fs.writeFileSync(targetPath, content);
 };
 
-buildFontFace({ baseUrl: 'http://localhost:3001/fonts', addContentBasedHash: false });
-const fontFaceCdnFileName = buildFontFace({
+buildFontFaceStylesheet({ baseUrl: 'http://localhost:3001/fonts', addContentBasedHash: false });
+const fontFaceCdnFileName = buildFontFaceStylesheet({
   baseUrl: `${CDN_BASE_URL}/${CDN_BASE_PATH_FONTS}`,
   addContentBasedHash: true,
 });
-const fontFaceCdnFileNameCn = buildFontFace({
+const fontFaceCdnFileNameCn = buildFontFaceStylesheet({
   baseUrl: `${CDN_BASE_URL_CN}/${CDN_BASE_PATH_FONTS}`,
   addContentBasedHash: true,
   addSuffix: 'cn',
 });
 
-buildFontFaceCDN(fontFaceCdnFileName, fontFaceCdnFileNameCn);
+buildFontFaceManifest(fontFaceCdnFileName, fontFaceCdnFileNameCn);
