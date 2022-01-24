@@ -60,6 +60,7 @@ export class Modal {
   }
 
   public connectedCallback(): void {
+    attachSlottedCss(this.host, getSlottedCss);
     if (this.open) {
       // in case modal is rendered with open prop
       this.setKeyboardListener(true);
@@ -74,7 +75,6 @@ export class Modal {
 
   public componentWillRender(): void {
     attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen, this.disableCloseButton);
-    attachSlottedCss(this.host, getSlottedCss);
     warnIfAriaAndHeadingPropsAreUndefined(this.host, this.heading, this.aria);
     this.ariaLabelAttribute =
       parseAndGetAriaAttributes(this.aria, MODAL_ARIA_ATTRIBUTES)?.['aria-label'] ?? this.heading;
