@@ -244,7 +244,7 @@ describe('modal', () => {
     it('should have correct focus order when there is a focusable content element and focusable slotted element in header', async () => {
       await initBasicModal({
         isOpen: false,
-        content: `<p-button">Some focusable button in content</p-button>`,
+        content: `<p-button>Some focusable button in content</p-button>`,
         aria: "{'aria-label': 'Some Heading'}",
         hasSlottedHeading: true,
       });
@@ -253,9 +253,9 @@ describe('modal', () => {
 
       expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE'); // close button
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('a'); // slotted header anchor
+      expect(await getActiveElementTagName(page)).toBe('A'); // slotted header anchor
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('p-button'); // slotted content button
+      expect(await getActiveElementTagName(page)).toBe('P-BUTTON'); // slotted content button
     });
 
     it('should focus nothing when there is no focusable element', async () => {
