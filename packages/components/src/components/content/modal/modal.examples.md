@@ -188,10 +188,10 @@ const ModalPage = (): JSX.Element => {
   slottedHeading = 
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
 <p-modal open="false" aria="{ 'aria-label': 'Some Heading' }">
-  <header slot="heading">
-    <p-text tag="div" role="doc-subtitle">Some subtitle</p-text>
+  <div slot="heading">
+    <p-text>Some subtitle</p-text>
     <p-headline tag="h2">Some Heading</p-headline>        
-  </header>
+  </div>
   <p-text>Some Content</p-text>
 </p-modal>`;
 
