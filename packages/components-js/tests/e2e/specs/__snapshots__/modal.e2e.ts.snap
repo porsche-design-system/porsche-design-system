@@ -6,17 +6,6 @@ Object {
     Object {
       "children": Array [
         Object {
-          "name": "Some Heading",
-          "role": "StaticText",
-        },
-      ],
-      "level": 1,
-      "name": "Some Heading",
-      "role": "heading",
-    },
-    Object {
-      "children": Array [
-        Object {
           "children": Array [
             Object {
               "children": Array [
@@ -35,6 +24,17 @@ Object {
       ],
       "name": "",
       "role": "generic",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "name": "Some Heading",
+          "role": "StaticText",
+        },
+      ],
+      "level": 1,
+      "name": "Some Heading",
+      "role": "heading",
     },
     Object {
       "name": "Some Content",

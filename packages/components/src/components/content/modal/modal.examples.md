@@ -211,7 +211,7 @@ const ModalPage = (): JSX.Element => {
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
 <p-modal open="false" aria="{ 'aria-label': 'Some Heading' }">
   <div class="stretch-to-full-modal-width">
-    <div style="width: 100%; height: 200px; background-color: lightskyblue;"></div>
+    <div style="height: 200px; background-color: lightskyblue;"></div>
   </div>
   <p-text>Some Content</p-text>
 </p-modal>`;

@@ -125,11 +125,14 @@ export const getComponentCss = (
     },
     '::slotted': {
       '&(.stretch-to-full-modal-width)': addImportantToEachRule({
+        width: 'calc(100% + 64px)',
         margin: getMargin(-32),
         [mediaQuery('m')]: {
+          width: 'calc(100% + 80px)',
           margin: getMargin(-40),
         },
         [mediaQuery('xxl')]: {
+          width: 'calc(100% + 128px)',
           margin: getMargin(-64),
         },
       }),
