@@ -153,20 +153,16 @@ export const getComponentCss = (
       }),
     },
     close: {
-      padding: pxToRemWithUnit(8),
-      border: `${pxToRemWithUnit(6)} solid ${color.background.default}`,
-      backgroundColor: color.background.default,
       position: 'absolute',
       top: 0,
       right: 0,
+      padding: pxToRemWithUnit(8),
+      border: `${pxToRemWithUnit(6)} solid ${color.background.default}`,
+      backgroundColor: color.background.default,
     },
   });
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(
-    buildSlottedStyles(host, {
-      ...getBaseSlottedStyles(),
-    })
-  );
+  return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
 };
