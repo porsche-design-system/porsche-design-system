@@ -1,5 +1,5 @@
 # compiled output
 /dist
 
-# auto generated lib
-/src/jss/lib
+# auto generated files
+/src/jss/typography.ts

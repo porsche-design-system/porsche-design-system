@@ -14,10 +14,13 @@ export const mediaQueryMin = (minBreakpoint: Breakpoint): string => {
   return `@media (min-width: ${breakpoint[minBreakpoint]}px)`;
 };
 
-export const mediaQueryMax = (maxBreakpoint: Breakpoint): string => {
+export const mediaQueryMax = (maxBreakpoint: Exclude<Breakpoint, 'xxs'>): string => {
   return `@media (max-width: ${breakpoint[maxBreakpoint] - 1}px)`;
 };
 
-export const mediaQueryMinMax = (minBreakpoint: Breakpoint, maxBreakpoint: Breakpoint): string => {
+export const mediaQueryMinMax = (
+  minBreakpoint: Exclude<Breakpoint, 'xxl'>,
+  maxBreakpoint: Exclude<Breakpoint, 'xxs'>
+): string => {
   return `${mediaQueryMin(minBreakpoint)} and (max-width: ${breakpoint[maxBreakpoint] - 1}px)`;
 };
