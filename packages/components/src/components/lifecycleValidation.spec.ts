@@ -174,7 +174,6 @@ it.each<TagName>(tagNamesWithJss)('should call attachComponentCss() in correct l
 
 it.each<TagName>(tagNamesWithJss)('should call attachSlottedCss() in correct lifecycle for %s', (tagName) => {
   const spy = jest.spyOn(slottedStylesUtils, 'attachSlottedCss');
-  let spyCalls = 0;
 
   const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
   component.host = document.createElement(tagName);
@@ -187,7 +186,6 @@ it.each<TagName>(tagNamesWithJss)('should call attachSlottedCss() in correct lif
 
     if (spy.mock.calls.length) {
       expect(spy).toBeCalledWith(component.host, expect.any(Function)); // 2 parameters within connectedCallback
-      spyCalls++;
     }
   }
 
@@ -208,6 +206,4 @@ it.each<TagName>(tagNamesWithJss)('should call attachSlottedCss() in correct lif
 
     expect(spy.mock.calls.length).toBe(0); // currently there are no attachSlottedCss calls in componentWillRender
   }
-
-  expect(spyCalls).toBe(1); // via connectedCallback
 });

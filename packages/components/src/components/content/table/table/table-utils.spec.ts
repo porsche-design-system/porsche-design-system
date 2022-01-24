@@ -1,19 +1,26 @@
 import { warnIfCaptionIsUndefined } from './table-utils';
 
 describe('warnIfCaptionIsUndefined()', () => {
+  let spy;
   beforeEach(() => {
-    jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+    spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+  });
+  afterEach(() => {
+    spy.mockRestore();
   });
 
   it('should print warning when no caption as prop or named slot is defined', () => {
     const host = document.createElement('p-table');
 
+    warnIfCaptionIsUndefined(host, 'some valid caption');
+
+    expect(spy).toBeCalledTimes(0);
+
     warnIfCaptionIsUndefined(host, '');
     warnIfCaptionIsUndefined(host, undefined);
     warnIfCaptionIsUndefined(host, null);
-    warnIfCaptionIsUndefined(host, 'some valid caption');
 
-    expect(console.warn).toBeCalledTimes(3);
+    expect(spy).toBeCalledTimes(3);
   });
 
   it('should not print warning when caption as slot is defined', () => {
@@ -25,6 +32,6 @@ describe('warnIfCaptionIsUndefined()', () => {
     warnIfCaptionIsUndefined(host, undefined);
     warnIfCaptionIsUndefined(host, 'some valid caption');
 
-    expect(console.warn).toBeCalledTimes(0);
+    expect(spy).toBeCalledTimes(0);
   });
 });
