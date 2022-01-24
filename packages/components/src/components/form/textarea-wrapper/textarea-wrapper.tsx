@@ -15,7 +15,12 @@ import {
 import type { BreakpointCustomizable, FormState } from '../../../types';
 import { getComponentCss, getSlottedCss } from './textarea-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
-import { hasCounter, addInputEventListener, setCounterInnerHtml } from '../text-field-wrapper/text-field-wrapper-utils';
+import {
+  hasCounter,
+  addInputEventListener,
+  setCounterInnerHtml,
+  setCharacterCountInnerHtml,
+} from '../text-field-wrapper/text-field-wrapper-utils';
 import { Required } from '../../common/required/required';
 
 @Component({
@@ -42,6 +47,7 @@ export class TextareaWrapper {
 
   private textarea: HTMLTextAreaElement;
   private counterElement: HTMLSpanElement;
+  private characterCountElement: HTMLSpanElement;
   private hasCounter: boolean;
 
   public connectedCallback(): void {
@@ -57,8 +63,9 @@ export class TextareaWrapper {
 
   public componentDidLoad(): void {
     if (this.hasCounter) {
-      addInputEventListener(this.textarea, this.counterElement);
+      addInputEventListener(this.textarea, this.counterElement, this.characterCountElement);
       setCounterInnerHtml(this.textarea, this.counterElement); // initial value
+      setCharacterCountInnerHtml(this.textarea, this.characterCountElement);
     }
   }
 
@@ -120,6 +127,14 @@ export class TextareaWrapper {
             />
           )}
           <slot />
+          {this.hasCounter && (
+            <div
+              class="sr-only"
+              id={this.textarea.getAttribute('aria-describedby')}
+              ref={(el) => (this.characterCountElement = el)}
+              aria-live="polite"
+            />
+          )}
         </label>
         {hasMessage(this.host, this.message, this.state) && (
           <StateMessage state={this.state} message={this.message} host={this.host} />

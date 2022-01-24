@@ -9,19 +9,12 @@ export const hasCounterAndIsTypeText = (el: HTMLInputElement): boolean => el.typ
 export const hasUnitAndIsTypeNumber = (el: HTMLInputElement, unit: string): boolean => !!unit && el.type === 'number';
 export const setCounterInnerHtml = (el: HTMLTextAreaElement | HTMLInputElement, counterElement: HTMLElement): void => {
   counterElement.innerText = `${el.value.length}/${el.maxLength}`;
-  // const remainingChars: number = el.maxLength - el.value.length;
-  // if (el.value.length > el.maxLength * 0.9) {
-  const newAlert = counterElement.parentElement;
-  console.log('-> newAlert', newAlert);
-  newAlert.setAttribute('aria-live', 'polite');
-  newAlert.appendChild(document.createTextNode('you have some left'));
-  newAlert.setAttribute('class', 'sr-only');
-  // const msg = document.createTextNode(
-  //   `You have ${remainingChars} character${remainingChars === 1 ? '' : 's'} of ${el.maxLength} left`
-  // );
-  // newAlert.appendChild(msg);
-  // document.body.appendChild(newAlert);
-  // }
+};
+export const setCharacterCountInnerHtml = (
+  el: HTMLTextAreaElement | HTMLInputElement,
+  characterCountElementer: HTMLSpanElement
+): void => {
+  characterCountElementer.innerText = `You have ${el.maxLength - el.value.length} of ${el.maxLength} characters left`;
 };
 
 export const getInputPadding = (
@@ -58,11 +51,13 @@ export const throwIfUnitLengthExceeded = (unit: string): void => {
 
 export const addInputEventListener = (
   input: HTMLTextAreaElement | HTMLInputElement,
-  counterElement: HTMLElement,
+  counterElement: HTMLSpanElement,
+  characterCountElement: HTMLSpanElement,
   inputChangeCallback?: () => void
 ): void => {
   input.addEventListener('input', (e) => {
     setCounterInnerHtml(e.target as HTMLTextAreaElement | HTMLInputElement, counterElement);
+    setCharacterCountInnerHtml(e.target as HTMLTextAreaElement | HTMLInputElement, characterCountElement);
     if (inputChangeCallback) {
       inputChangeCallback();
     }
