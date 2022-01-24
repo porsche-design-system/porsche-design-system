@@ -73,8 +73,7 @@ If you want to disable closing the Modal by clicking the backdrop, you can set t
 
 ## Full Width Content
 
-It is possible to make containers stretch into the padding safe-zone by adding the `stretch-to-full-modal-width` class.
-Make sure to omit the `heading` when using the `stretch-to-full-modal-width` class.
+It is possible to make containers or elements (e.g. `div`, `img` etc.) stretch into the padding safe-zone by adding the `stretch-to-full-modal-width` class.
 Make sure to set the `aria` property with a descriptive `aria-label` value when omitting the heading.  
 
 <Playground :markup="fullWidthContent"></Playground>

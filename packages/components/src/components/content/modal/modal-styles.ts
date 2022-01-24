@@ -55,20 +55,7 @@ export const isFullscreenForXl = (fullscreen: BreakpointCustomizable<boolean>): 
   }
 };
 
-const getSlottedFullWidthStyles = (isFirstChild: boolean) => {
-  const getMarginTop = (marginTop: number) => `${isFirstChild ? pxToRemWithUnit(marginTop) : 0}`;
-  const getMargin = (marginValue: number) => `${getMarginTop(marginValue)} ${pxToRemWithUnit(marginValue)} 0`;
-
-  return addImportantToEachRule({
-    margin: getMargin(-32),
-    [mediaQuery('m')]: {
-      margin: getMargin(-40),
-    },
-    [mediaQuery('xxl')]: {
-      margin: getMargin(-64),
-    },
-  });
-};
+const getMargin = (marginValue: number): string => `0 ${pxToRemWithUnit(marginValue)} 0`;
 
 export const getComponentCss = (
   open: boolean,
@@ -136,8 +123,35 @@ export const getComponentCss = (
         ...(!disableCloseButton && { marginRight: 0 }),
       },
     },
-    '::slotted(div.stretch-to-full-modal-width)': getSlottedFullWidthStyles(false),
-    '::slotted(div.stretch-to-full-modal-width:first-child)': getSlottedFullWidthStyles(true),
+    '::slotted': {
+      '&(.stretch-to-full-modal-width)': addImportantToEachRule({
+        margin: getMargin(-32),
+        [mediaQuery('m')]: {
+          margin: getMargin(-40),
+        },
+        [mediaQuery('xxl')]: {
+          margin: getMargin(-64),
+        },
+      }),
+      '&(.stretch-to-full-modal-width:first-child)': addImportantToEachRule({
+        marginTop: pxToRemWithUnit(-32),
+        [mediaQuery('m')]: {
+          marginTop: pxToRemWithUnit(-40),
+        },
+        [mediaQuery('xxl')]: {
+          marginTop: pxToRemWithUnit(-64),
+        },
+      }),
+      '&(.stretch-to-full-modal-width:last-child)': addImportantToEachRule({
+        marginBottom: pxToRemWithUnit(-32),
+        [mediaQuery('m')]: {
+          marginBottom: pxToRemWithUnit(-40),
+        },
+        [mediaQuery('xxl')]: {
+          marginBottom: pxToRemWithUnit(-64),
+        },
+      }),
+    },
     close: {
       padding: pxToRemWithUnit(8),
       border: `${pxToRemWithUnit(6)} solid ${color.background.default}`,
