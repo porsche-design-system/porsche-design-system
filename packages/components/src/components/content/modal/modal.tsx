@@ -44,7 +44,6 @@ export class Modal {
   private focusedElBeforeOpen: HTMLElement;
   private focusableElements: HTMLElement[] = [];
   private closeBtn: HTMLElement;
-  private ariaLabelAttribute: SelectedAriaAttributes<ModalAriaAttributes>;
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
@@ -76,8 +75,6 @@ export class Modal {
   public componentWillRender(): void {
     attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen, this.disableCloseButton);
     warnIfAriaAndHeadingPropsAreUndefined(this.host, this.heading, this.aria);
-    this.ariaLabelAttribute =
-      parseAndGetAriaAttributes(this.aria, MODAL_ARIA_ATTRIBUTES)?.['aria-label'] ?? this.heading;
   }
 
   public componentDidUpdate(): void {
@@ -103,7 +100,7 @@ export class Modal {
           class="root"
           role="dialog"
           aria-modal="true"
-          aria-label={this.ariaLabelAttribute}
+          aria-label={parseAndGetAriaAttributes(this.aria, MODAL_ARIA_ATTRIBUTES)?.['aria-label'] ?? this.heading}
           aria-hidden={!this.open ? 'true' : 'false'}
         >
           {!this.disableCloseButton && (
@@ -125,7 +122,7 @@ export class Modal {
                   {this.heading}
                 </PrefixedTagNames.pHeadline>
               )}
-              {!this.heading && hasSlottedHeading(this.host) && <slot name="heading" />}
+              {!this.heading && hasHeader && <slot name="heading" />}
             </div>
           )}
           <slot />

@@ -1,7 +1,5 @@
 import { Modal } from './modal';
 import * as modalUtils from './modal-utils';
-import * as a11yUtils from '../../../utils/a11y';
-import { MODAL_ARIA_ATTRIBUTES } from './modal-utils';
 
 jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
@@ -44,9 +42,8 @@ describe('modal', () => {
   });
 
   describe('componentWillRender', () => {
-    it('should call warnIfAriaAndHeadingPropsAreUndefined() and parseAndGetAriaAttributes()', () => {
+    it('should call warnIfAriaAndHeadingPropsAreUndefined()', () => {
       const spyWarnIfAriaAndHeadingPropsAreUndefined = jest.spyOn(modalUtils, 'warnIfAriaAndHeadingPropsAreUndefined');
-      const spyParseAndGetAriaAttributes = jest.spyOn(a11yUtils, 'parseAndGetAriaAttributes');
       component.host.attachShadow({ mode: 'open' });
 
       component.componentWillRender();
@@ -56,7 +53,6 @@ describe('modal', () => {
         component.heading,
         component.aria
       );
-      expect(spyParseAndGetAriaAttributes).toBeCalledWith(component.aria, MODAL_ARIA_ATTRIBUTES);
     });
   });
 
