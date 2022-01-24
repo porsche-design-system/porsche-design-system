@@ -8,13 +8,6 @@ Partials are utility functions that return static code or markup that is very dy
 The partials are provided in the private `@porsche-design-system/browser-notification` npm package.
 If you don't have access yet, please first [read more about getting started as developer](start-coding/introduction).
 
-### Available partials
-
-<ul> 
-  <li><a href="browser-notification/browser-support-notificaion">Browser Support Notification</a></li>
-  <li><a href="browser-notification/cookie-notification">Cookie Notification</a></li>
-</ul>
-
 ```
 // install with npm:
 npm install @porsche-design-system/browser-notification
@@ -22,3 +15,8 @@ npm install @porsche-design-system/browser-notification
 // install with yarn:
 yarn add @porsche-design-system/browser-notification
 ```
+
+### Available partials
+
+- [Browser Support Notification](browser-notifications/browser-support-notification)
+- [Cookie Notification](browser-notifications/cookie-notification)
