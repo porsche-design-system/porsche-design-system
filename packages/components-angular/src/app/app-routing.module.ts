@@ -140,8 +140,8 @@ export const routes: ExtendedRoute[] = [
     component: fromPages.ModalScrollableComponent,
   },
   {
-    name: 'Modal Slotted Modal',
-    path: 'modal-slotted-modal',
+    name: 'Modal Slotted Heading',
+    path: 'modal-slotted-heading',
     component: fromPages.ModalSlottedHeadingComponent,
   },
   {
