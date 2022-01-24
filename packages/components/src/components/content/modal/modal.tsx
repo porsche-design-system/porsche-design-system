@@ -106,16 +106,6 @@ export class Modal {
           aria-label={this.ariaLabelAttribute}
           aria-hidden={!this.open ? 'true' : 'false'}
         >
-          {hasHeader && (
-            <div class="header">
-              {this.heading && (
-                <PrefixedTagNames.pHeadline variant={{ base: 'medium', m: 'large' }}>
-                  {this.heading}
-                </PrefixedTagNames.pHeadline>
-              )}
-              {!this.heading && hasSlottedHeading(this.host) && <slot name="heading" />}
-            </div>
-          )}
           {!this.disableCloseButton && (
             <PrefixedTagNames.pButtonPure
               class="close"
@@ -127,6 +117,16 @@ export class Modal {
             >
               Close modal
             </PrefixedTagNames.pButtonPure>
+          )}
+          {hasHeader && (
+            <div class="header">
+              {this.heading && (
+                <PrefixedTagNames.pHeadline variant={{ base: 'medium', m: 'large' }}>
+                  {this.heading}
+                </PrefixedTagNames.pHeadline>
+              )}
+              {!this.heading && hasSlottedHeading(this.host) && <slot name="heading" />}
+            </div>
           )}
           <slot />
         </div>
