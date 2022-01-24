@@ -118,19 +118,19 @@ const buildTypography = (): void => {
       )
       .join('\n\n');
 
-  const imports = "import { fontFamily, fontWeight } from '../font';";
+  const imports = "import { fontFamily, fontWeight } from './font';";
   const titles = objectToConst(title, 'title');
   const headlines = objectToConst(headline, 'headline');
   const texts = objectToConst(text, 'text');
 
   const content = [imports, titles, headlines, texts].join('\n\n');
 
-  const targetDirectory = path.normalize('./src/jss/lib');
-  fs.mkdirSync(path.resolve(targetDirectory), { recursive: true });
+  const targetDirectory = path.normalize('./src/jss');
+  const targetFilename = 'typography.ts';
+  const targetPath = path.resolve(targetDirectory, targetFilename);
 
-  const targetFileName = 'typography.ts';
-  const targetFile = path.resolve(targetDirectory, targetFileName);
-  fs.writeFileSync(targetFile, content);
+  fs.mkdirSync(path.resolve(targetDirectory), { recursive: true });
+  fs.writeFileSync(targetPath, content);
 };
 
 buildTypography();

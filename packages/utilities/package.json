@@ -7,7 +7,7 @@
     "start-app": "yarn start",
     "build": "yarn --cwd ./projects/utilities build && yarn --cwd ./projects/styles build",
     "test": "yarn test:unit && yarn test:vrt",
-    "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
+    "test:unit": "yarn --cwd ./projects/utilities test:unit",
     "test:vrt": "PORT=3000 BROWSER=none jest --colors -c tests/vrt/config/jest.config.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log && yarn --cwd ./projects/utilities clean:node_modules && yarn --cwd ./projects/styles clean:node_modules",
