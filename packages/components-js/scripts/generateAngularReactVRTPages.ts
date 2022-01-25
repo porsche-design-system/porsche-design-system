@@ -1,7 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { paramCase, pascalCase } from 'change-case';
+import { pascalCase } from 'change-case';
 import * as globby from 'globby';
+
 const rootDirectory = path.resolve(__dirname, '..');
 
 const generateAngularReactVRTPages = (): void => {
@@ -11,22 +12,29 @@ const generateAngularReactVRTPages = (): void => {
   const htmlFileContentMap: { [key: string]: string } = htmlFiles
     .map((filePath) => [path.basename(filePath).split('.')[0], fs.readFileSync(filePath, 'utf8')])
     .reduce((result, [key, content]) => ({ ...result, [key]: content }), {});
+
   generateVRTPages(htmlFileContentMap, 'angular');
   generateVRTPages(htmlFileContentMap, 'react');
 };
+
 const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, frameWorkType: 'angular' | 'react'): void => {
   Object.entries(htmlFileContentMap)
     .filter((_, i) => i === 0)
     .forEach(([fileName, fileContent]) => {
+      fileContent = fileContent.trim();
+
       if (frameWorkType === 'angular') {
         fileContent = `import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-${fileName}',
-  template: \`${fileContent}\`,
+  template: \`
+    ${fileContent.replace(/(\n)/g, '$1    ')}
+  \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ${pascalCase(fileName)}Component {}`;
+
         fileName = `${fileName}.component.ts`;
         fileName = path.resolve(rootDirectory, '../components-angular/src/app/pages', fileName);
       } else if (frameWorkType === 'react') {
@@ -35,13 +43,15 @@ export class ${pascalCase(fileName)}Component {}`;
 export const ${pascalCase(fileName)}Page = (): JSX.Element => {
   return (
     <>
-      ${fileContent}
+      ${fileContent.replace(/(\n)/g, '$1      ')}
     </>
   );
 };`;
+
         fileName = `${pascalCase(fileName)}.tsx`;
         fileName = path.resolve(rootDirectory, '../components-react/src/pages', fileName);
       }
+
       fs.writeFileSync(fileName, fileContent);
       console.log(`Generated ${fileName}`);
     });
