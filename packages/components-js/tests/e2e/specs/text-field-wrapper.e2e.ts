@@ -12,6 +12,7 @@ import {
   waitForEventSerialization,
   waitForStencilLifecycle,
   getElementInnerText,
+  setAttribute,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 import { FormState } from '@porsche-design-system/components/src/types';
@@ -409,6 +410,17 @@ describe('text-field-wrapper', () => {
     await input.press('Backspace');
     await input.press('Backspace');
     expect(await getElementInnerText(counter)).toBe('0/20');
+  });
+
+  it('should render characterCountElement when maxlength is set', async () => {
+    await initTextField();
+    const input = await getInput();
+
+    expect(await selectNode(page, 'p-text-field-wrapper >>> label .sr-only')).toBeNull();
+
+    await setAttribute(input, 'maxlength', '20');
+
+    expect(await selectNode(page, 'p-text-field-wrapper >>> label .sr-only')).toBeDefined();
   });
 
   describe('lifecycle', () => {
