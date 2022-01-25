@@ -57,10 +57,8 @@ describe('componentWillLoad', () => {
 });
 
 describe('componentDidLoad', () => {
-  it('should call addInputEventListener(), setCounterInnerHtml() and setAriaElementInnerHtml() if hasCounter is true', () => {
+  it('should call addInputEventListener() if hasCounter is true', () => {
     const addInputEventListenerSpy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListener');
-    const setCounterInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCounterInnerHtml');
-    const setAriaElementInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setAriaElementInnerHtml');
 
     const textarea = document.createElement('textarea');
     const counter = document.createElement('span');
@@ -73,14 +71,10 @@ describe('componentDidLoad', () => {
 
     component.componentDidLoad();
     expect(addInputEventListenerSpy).toHaveBeenCalledTimes(0);
-    expect(setCounterInnerHtmlSpy).toHaveBeenCalledTimes(0);
-    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledTimes(0);
 
     component['hasCounter'] = true;
     component.componentDidLoad();
     expect(addInputEventListenerSpy).toHaveBeenCalledWith(textarea, counter, ariaElement);
-    expect(setCounterInnerHtmlSpy).toHaveBeenCalledWith(textarea, counter);
-    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledWith(textarea, ariaElement);
   });
 });
 

@@ -92,10 +92,8 @@ describe('componentWillRender', () => {
 });
 
 describe('componentDidLoad', () => {
-  it('should call addInputEventListener(), setCounterInnerHtml() and setCharacterCountInnerHtml() if hasCounter is true', () => {
+  it('should call addInputEventListener() if hasCounter is true', () => {
     const addInputEventListenerSpy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListener');
-    const setCounterInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCounterInnerHtml');
-    const setAriaElementInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setAriaElementInnerHtml');
 
     const input = document.createElement('input');
     input.type = 'text';
@@ -109,14 +107,10 @@ describe('componentDidLoad', () => {
 
     component.componentDidLoad();
     expect(addInputEventListenerSpy).toHaveBeenCalledTimes(0);
-    expect(setCounterInnerHtmlSpy).toHaveBeenCalledTimes(0);
-    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledTimes(0);
 
     component['hasCounter'] = true;
     component.componentDidLoad();
     expect(addInputEventListenerSpy).toHaveBeenCalledWith(input, counter, ariaElement, component['setInputStyles']);
-    expect(setCounterInnerHtmlSpy).toHaveBeenCalledWith(input, counter);
-    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledWith(input, ariaElement);
   });
 });
 

@@ -182,6 +182,22 @@ describe('addInputEventListener()', () => {
     expect(spy).toHaveBeenCalledWith('input', expect.anything());
   });
 
+  it('should initially call setCounterInnerHtml() and setAriaElementInnerHtml()', () => {
+    const inputElement = getInputElement();
+    const counterElement = getCounterElement();
+    const ariaElement = getAriaElement();
+
+    const setCounterInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCounterInnerHtml');
+    const setAriaElementInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setAriaElementInnerHtml');
+    addInputEventListener(inputElement, counterElement, ariaElement);
+
+    expect(setCounterInnerHtmlSpy).toHaveBeenCalledWith(inputElement, counterElement);
+    expect(setCounterInnerHtmlSpy).toHaveBeenCalledTimes(1);
+
+    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledWith(inputElement, ariaElement);
+    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledTimes(1);
+  });
+
   it('should on input event call setCounterInnerHtml() and setAriaElementInnerHtml()', () => {
     const inputElement = getInputElement();
     const counterElement = getCounterElement();
@@ -193,7 +209,10 @@ describe('addInputEventListener()', () => {
 
     inputElement.dispatchEvent(new Event('input'));
     expect(setCounterInnerHtmlSpy).toHaveBeenCalledWith(inputElement, counterElement);
+    expect(setCounterInnerHtmlSpy).toHaveBeenCalledTimes(2);
+
     expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledWith(inputElement, ariaElement);
+    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledTimes(2);
   });
 
   it('should on input event call inputChangeCallback() if supplied', () => {

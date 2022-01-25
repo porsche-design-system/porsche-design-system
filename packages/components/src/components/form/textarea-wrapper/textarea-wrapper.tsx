@@ -15,12 +15,7 @@ import {
 import type { BreakpointCustomizable, FormState } from '../../../types';
 import { getComponentCss, getSlottedCss } from './textarea-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
-import {
-  hasCounter,
-  addInputEventListener,
-  setCounterInnerHtml,
-  setAriaElementInnerHtml,
-} from '../text-field-wrapper/text-field-wrapper-utils';
+import { hasCounter, addInputEventListener } from '../text-field-wrapper/text-field-wrapper-utils';
 import { Required } from '../../common/required/required';
 
 @Component({
@@ -64,8 +59,6 @@ export class TextareaWrapper {
   public componentDidLoad(): void {
     if (this.hasCounter) {
       addInputEventListener(this.textarea, this.counterElement, this.ariaElement);
-      setCounterInnerHtml(this.textarea, this.counterElement); // initial value
-      setAriaElementInnerHtml(this.textarea, this.ariaElement); // initial value
     }
   }
 
