@@ -1,7 +1,7 @@
 import { JssStyle } from '../../../utils';
 import type { SpinnerSize, SpinnerSizeType } from './spinner-utils';
 import type { ThemeExtendedElectricDark } from '../../../types';
-import { buildResponsiveStyles, buildSlottedStyles, getCss, isThemeDark, isThemeElectricDark } from '../../../utils';
+import { buildResponsiveStyles, buildSlottedStyles, getCss, isThemeDark, isThemeDarkElectric } from '../../../utils';
 import { getBaseSlottedStyles, pxToRemWithUnit, getThemedColors } from '../../../styles';
 import { getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
 
@@ -42,7 +42,7 @@ export const getComponentCss = (size: SpinnerSize, theme: ThemeExtendedElectricD
         transform: 'translate3d(0,0,0)',
       },
       circle: {
-        stroke: isThemeDark(theme) || isThemeElectricDark(theme) ? baseColor : contrastHighColor,
+        stroke: isThemeDark(theme) || isThemeDarkElectric(theme) ? baseColor : contrastHighColor,
         '&:first-child': {
           opacity: 0.4,
         },

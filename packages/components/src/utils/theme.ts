@@ -4,11 +4,11 @@ export const isThemeDark = (theme: Theme): boolean => {
   return theme === 'dark';
 };
 
-export const isThemeElectricLight = (theme: Theme): boolean => {
+export const isThemeLightElectric = (theme: Theme): boolean => {
   return theme === 'light-electric';
 };
 
-export const isThemeElectricDark = (theme: Theme): boolean => {
+export const isThemeDarkElectric = (theme: Theme): boolean => {
   return theme === 'dark-electric';
 };
 
