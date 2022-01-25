@@ -1,4 +1,4 @@
-import { PContentWrapper, PModal } from '@porsche-design-system/components-react';
+import { PContentWrapper, PModal, PText } from '@porsche-design-system/components-react';
 
 export const ModalFullWidthSlot = (): JSX.Element => {
   const style = `
@@ -17,10 +17,11 @@ export const ModalFullWidthSlot = (): JSX.Element => {
           <div style={{ background: 'deeppink', height: '100vh' }} />
         </PContentWrapper>
         <PModal open aria={{ 'aria-label': 'Some Headline' }}>
-          <div className="stretch-to-full-modal-width">
-            <div style={{ background: 'deeppink', height: 200 }}></div>
-          </div>
-          Some Content below a full width slotted div
+          <div className="stretch-to-full-modal-width" style={{ background: 'deeppink', height: 200 }}></div>
+          <PText>Some Content between two full width slotted divs</PText>
+          <div className="stretch-to-full-modal-width" style={{ background: 'deeppink', height: 200 }}></div>
+          <PText>Some Content between two full width slotted divs</PText>
+          <div className="stretch-to-full-modal-width" style={{ background: 'deeppink', height: 200 }}></div>
         </PModal>
       </div>
     </>
