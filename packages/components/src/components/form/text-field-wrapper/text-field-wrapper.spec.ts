@@ -77,30 +77,6 @@ describe('componentWillLoad', () => {
   });
 });
 
-describe('componentDidLoad', () => {
-  it('should call addInputEventListener and setCounterInnerHtml if hasCounter is true', () => {
-    const addInputEventListenerSpy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListener');
-    const setCounterInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCounterInnerHtml');
-
-    const input = document.createElement('input');
-    input.type = 'text';
-    const counter = document.createElement('span');
-
-    const component = new TextFieldWrapper();
-    component['input'] = input;
-    component['unitOrCounterElement'] = counter;
-
-    component.componentDidLoad();
-    expect(addInputEventListenerSpy).toHaveBeenCalledTimes(0);
-    expect(setCounterInnerHtmlSpy).toHaveBeenCalledTimes(0);
-
-    component['hasCounter'] = true;
-    component.componentDidLoad();
-    expect(addInputEventListenerSpy).toHaveBeenCalledWith(input, counter, component['setInputStyles']);
-    expect(setCounterInnerHtmlSpy).toHaveBeenCalledWith(input, counter);
-  });
-});
-
 describe('componentWillRender', () => {
   it('should call throwIfUnitLengthExceeded()', () => {
     const component = new TextFieldWrapper();
@@ -136,6 +112,35 @@ describe('componentDidRender', () => {
 
     component.componentDidRender();
     expect(spy).toBeCalledWith(input, { label: 'Some label', message: 'Some message', state: 'success' });
+  });
+});
+
+describe('componentDidLoad', () => {
+  it('should call addInputEventListener(), setCounterInnerHtml() and setCharacterCountInnerHtml() if hasCounter is true', () => {
+    const addInputEventListenerSpy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListener');
+    const setCounterInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCounterInnerHtml');
+    const setCharacterCountInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCharacterCountInnerHtml');
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    const counter = document.createElement('span');
+    const characterCount = document.createElement('span');
+
+    const component = new TextFieldWrapper();
+    component['input'] = input;
+    component['unitOrCounterElement'] = counter;
+    component['characterCountElement'] = characterCount;
+
+    component.componentDidLoad();
+    expect(addInputEventListenerSpy).toHaveBeenCalledTimes(0);
+    expect(setCounterInnerHtmlSpy).toHaveBeenCalledTimes(0);
+    expect(setCharacterCountInnerHtmlSpy).toHaveBeenCalledTimes(0);
+
+    component['hasCounter'] = true;
+    component.componentDidLoad();
+    expect(addInputEventListenerSpy).toHaveBeenCalledWith(input, counter, characterCount, component['setInputStyles']);
+    expect(setCounterInnerHtmlSpy).toHaveBeenCalledWith(input, counter);
+    expect(setCharacterCountInnerHtmlSpy).toHaveBeenCalledWith(input, characterCount);
   });
 });
 

@@ -12,9 +12,9 @@ export const setCounterInnerHtml = (el: HTMLTextAreaElement | HTMLInputElement, 
 };
 export const setCharacterCountInnerHtml = (
   el: HTMLTextAreaElement | HTMLInputElement,
-  characterCountElementer: HTMLSpanElement
+  characterCountElement: HTMLSpanElement
 ): void => {
-  characterCountElementer.innerText = `You have ${el.maxLength - el.value.length} of ${el.maxLength} characters left`;
+  characterCountElement.innerText = `You have ${el.maxLength - el.value.length} of ${el.maxLength} characters left`;
 };
 
 export const getInputPadding = (
