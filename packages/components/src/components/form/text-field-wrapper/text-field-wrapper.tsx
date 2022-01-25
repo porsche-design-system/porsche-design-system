@@ -166,12 +166,7 @@ export class TextFieldWrapper {
             )}
             <slot />
             {this.hasCounter && (
-              <div
-                class="sr-only"
-                id={this.input.getAttribute('aria-describedby')}
-                ref={(el) => (this.characterCountElement = el)}
-                aria-live="polite"
-              />
+              <span class="sr-only" ref={(el) => (this.characterCountElement = el)} aria-live="polite" />
             )}
           </label>
           {this.isPassword ? (
