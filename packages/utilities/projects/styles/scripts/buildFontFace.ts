@@ -8,9 +8,9 @@ import {
   CDN_BASE_URL,
   CDN_BASE_URL_CN,
   CDN_BASE_PATH_FONTS,
-  CDN_BASE_URL_DYNAMIC,
   CDN_KEY_TYPE_DEFINITION,
   CDN_BASE_PATH_STYLES,
+  CDN_BASE_URL_CN_CONDITION,
 } from '../../../../../cdn.config';
 
 jss.setup(preset());
@@ -46,21 +46,13 @@ const buildFontFaceStylesheet = (opts: Options): string => {
   return targetFilename;
 };
 
-const buildFontFaceManifest = (fontFaceCdnFileName: string, fontFaceCdnFileNameCn: string): void => {
-  const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_STYLES}/'`;
-  // extract the condition from cdn config to use its result in a constant
-  const cdnCondition = CDN_BASE_URL_DYNAMIC.substr(0, CDN_BASE_URL_DYNAMIC.lastIndexOf('?') - 1).slice(1);
-  const cdnResult = `const isCdnCn = ${cdnCondition};`;
-  const url = `${cdn.replace(
-    cdnCondition,
-    'isCdnCn'
-  )} + (isCdnCn ? '${fontFaceCdnFileNameCn}' : '${fontFaceCdnFileName}')`;
-
+const buildFontFaceManifest = (hashedFontFaceFilename: string, hashedFontFaceFilenameCn: string): void => {
+  const cdnFontFacePath = `${CDN_BASE_URL}/${CDN_BASE_PATH_STYLES}/${hashedFontFaceFilename}`;
+  const cdnFontFacePathCn = `${CDN_BASE_URL_CN}/${CDN_BASE_PATH_STYLES}/${hashedFontFaceFilenameCn}`;
   const content = `
 ${CDN_KEY_TYPE_DEFINITION}
 
-${cdnResult}
-export const FONT_FACE_CDN_URL = ${url};
+export const FONT_FACE_CDN_URL = (${CDN_BASE_URL_CN_CONDITION} ? '${cdnFontFacePathCn}' : '${cdnFontFacePath}');
 `;
 
   const targetDirectory = './src/lib';
@@ -71,14 +63,14 @@ export const FONT_FACE_CDN_URL = ${url};
 };
 
 buildFontFaceStylesheet({ baseUrl: 'http://localhost:3001/fonts', addContentBasedHash: false });
-const fontFaceCdnFileName = buildFontFaceStylesheet({
+const fontFaceFilename = buildFontFaceStylesheet({
   baseUrl: `${CDN_BASE_URL}/${CDN_BASE_PATH_FONTS}`,
   addContentBasedHash: true,
 });
-const fontFaceCdnFileNameCn = buildFontFaceStylesheet({
+const fontFaceFilenameCn = buildFontFaceStylesheet({
   baseUrl: `${CDN_BASE_URL_CN}/${CDN_BASE_PATH_FONTS}`,
   addContentBasedHash: true,
   addSuffix: 'cn',
 });
 
-buildFontFaceManifest(fontFaceCdnFileName, fontFaceCdnFileNameCn);
+buildFontFaceManifest(fontFaceFilename, fontFaceFilenameCn);
