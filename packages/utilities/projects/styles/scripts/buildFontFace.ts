@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import jss from 'jss';
 import preset from 'jss-preset-default';
-import { getPorscheNextFontFaceStyles } from '../src/font-face';
+import { getPorscheNextFontFaceStyles } from '../src/font-face-styles';
 import {
   CDN_BASE_URL,
   CDN_BASE_URL_CN,

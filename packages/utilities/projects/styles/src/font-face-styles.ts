@@ -17,14 +17,16 @@ export const getPorscheNextFontFaceStyles = (opts: Options): Styles => {
 
   return {
     '@font-face': Object.entries(FONTS_MANIFEST).map(([name, resource]) => {
+      // @ts-ignore
       const [, charset, weight] = /porscheNextW(La|Gr|Cy)(Thin|Regular|SemiBold|Bold)/.exec(name);
 
       return {
         fontFamily: 'Porsche Next',
         fontStyle: 'normal',
+        // @ts-ignore
         fontWeight: fontWeight[weight.toLowerCase()],
-        src: `url('${baseUrl}/${resource.woff2}') format('woff2')`,
-        fallbacks: [{ src: `url('${baseUrl}/${resource.woff}') format('woff')` }],
+        src: `url('${baseUrl}/${resource.woff2}') format('woff2'), url('${baseUrl}/${resource.woff}') format('woff')`,
+        // @ts-ignore
         unicodeRange: unicodeRangeMap[charset.toLowerCase()],
         fontDisplay: 'swap',
       };
