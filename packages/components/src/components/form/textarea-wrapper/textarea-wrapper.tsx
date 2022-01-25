@@ -15,7 +15,7 @@ import {
 import type { BreakpointCustomizable, FormState } from '../../../types';
 import { getComponentCss, getSlottedCss } from './textarea-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
-import { hasCounter, addInputEventListener, setCounterInnerHtml } from '../text-field-wrapper/text-field-wrapper-utils';
+import { hasCounter, addInputEventListener } from '../text-field-wrapper/text-field-wrapper-utils';
 import { Required } from '../../common/required/required';
 
 @Component({
@@ -42,6 +42,7 @@ export class TextareaWrapper {
 
   private textarea: HTMLTextAreaElement;
   private counterElement: HTMLSpanElement;
+  private ariaElement: HTMLSpanElement;
   private hasCounter: boolean;
 
   public connectedCallback(): void {
@@ -57,8 +58,7 @@ export class TextareaWrapper {
 
   public componentDidLoad(): void {
     if (this.hasCounter) {
-      addInputEventListener(this.textarea, this.counterElement);
-      setCounterInnerHtml(this.textarea, this.counterElement); // initial value
+      addInputEventListener(this.textarea, this.counterElement, this.ariaElement);
     }
   }
 
@@ -120,6 +120,7 @@ export class TextareaWrapper {
             />
           )}
           <slot />
+          {this.hasCounter && <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />}
         </label>
         {hasMessage(this.host, this.message, this.state) && (
           <StateMessage state={this.state} message={this.message} host={this.host} />
