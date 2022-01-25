@@ -116,7 +116,7 @@ export class TextFieldWrapper {
     if (this.hasCounter) {
       addInputEventListener(this.input, this.unitOrCounterElement, this.characterCountElement, this.setInputStyles);
       setCounterInnerHtml(this.input, this.unitOrCounterElement); // initial value
-      setCharacterCountInnerHtml(this.input, this.characterCountElement);
+      setCharacterCountInnerHtml(this.input, this.characterCountElement); // initial value
     }
   }
 
