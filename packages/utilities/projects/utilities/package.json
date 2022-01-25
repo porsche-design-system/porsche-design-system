@@ -17,7 +17,7 @@
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:build": "rm -rf ./dist && rm -rf ./src/jss/lib"
+    "clean:build": "rm -rf ./dist && rm -rf ./src/jss/typography.ts"
   },
   "devDependencies": {
     "@porsche-design-system/fonts": "0.0.0",
