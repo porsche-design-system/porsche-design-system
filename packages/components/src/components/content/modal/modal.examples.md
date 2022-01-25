@@ -210,9 +210,7 @@ const ModalPage = (): JSX.Element => {
   fullWidthContent =
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
 <p-modal open="false" aria="{ 'aria-label': 'Some Heading' }">
-  <div class="stretch-to-full-modal-width">
-    <div style="height: 200px; background-color: lightskyblue;"></div>
-  </div>
+  <img src="${require('@/assets/porsche-992-carrera-s.jpg')}" class="stretch-to-full-modal-width">
   <p-text style="padding-top: 1.5rem">Some subtitle</p-text>
   <p-headline tag="h2">Some Heading</p-headline>
   <p-text>Some Content</p-text>
