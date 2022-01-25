@@ -19,15 +19,23 @@ const generateAngularReactVRTPages = (): void => {
 
 const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, frameWorkType: 'angular' | 'react'): void => {
   Object.entries(htmlFileContentMap)
-    .filter((_, i) => i === 0)
+    .filter((_, i) => i === 1)
     .forEach(([fileName, fileContent]) => {
       fileContent = fileContent.trim();
 
+      // extract and replace style if there is any
+      const styleRegEx = /<style.*>((?:.|\s)*?)<\/style>\s+/;
+      let [, style] = fileContent.match(styleRegEx) || [];
+      fileContent = fileContent.replace(styleRegEx, '');
+
       if (frameWorkType === 'angular') {
+        style = style.trim().replace(/(\n)/g, '$1    ');
+        const styles = style ? `\n  styles: [\n    \`\n      ${style}\n    \`,\n  ],` : '';
+
         fileContent = `import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'page-${fileName}',
+  selector: 'page-${fileName}',${styles}
   template: \`
     ${fileContent.replace(/(\n)/g, '$1    ')}
   \`,
@@ -38,11 +46,15 @@ export class ${pascalCase(fileName)}Component {}`;
         fileName = `${fileName}.component.ts`;
         fileName = path.resolve(rootDirectory, '../components-angular/src/app/pages', fileName);
       } else if (frameWorkType === 'react') {
+        style = style.trim().replace(/(\n)/g, '$1  ');
+        const styleConst = style ? `\n  const style = \`\n    ${style}\n  \`;\n` : '';
+        const styleJsx = style ? '\n      <style children={style} />\n' : '';
+
         fileContent = `import { P${pascalCase(fileName)} } from '@porsche-design-system/components-react';
 
-export const ${pascalCase(fileName)}Page = (): JSX.Element => {
+export const ${pascalCase(fileName)}Page = (): JSX.Element => {${styleConst}
   return (
-    <>
+    <>${styleJsx}
       ${fileContent.replace(/(\n)/g, '$1      ')}
     </>
   );
