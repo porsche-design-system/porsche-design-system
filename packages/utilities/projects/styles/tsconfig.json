@@ -8,7 +8,7 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node"
   },
-  "include": ["./src/lib"],
+  "include": ["./src"],
   "ts-node": {
     "transpileOnly": true,
     "compilerOptions": {
