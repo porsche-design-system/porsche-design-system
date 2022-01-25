@@ -444,6 +444,7 @@ describe('modal', () => {
 
       const header = await getHeader();
       await setProperty(host, 'heading', 'Some Heading');
+      await waitForStencilLifecycle(page);
 
       expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot('"<p-headline>Some Heading</p-headline>"');
     });
@@ -480,6 +481,7 @@ describe('modal', () => {
       const host = await getHost();
       const modal = await getModal();
       await setProperty(host, 'aria', "{'aria-label': 'Other Heading'}");
+      await waitForStencilLifecycle(page);
 
       expect(await getProperty(modal, 'ariaLabel')).toBe('Other Heading');
     });
@@ -489,6 +491,7 @@ describe('modal', () => {
       const host = await getHost();
       const modal = await getModal();
       await setProperty(host, 'aria', undefined);
+      await waitForStencilLifecycle(page);
 
       expect(await getProperty(modal, 'ariaLabel')).toBe('Some Heading');
     });
