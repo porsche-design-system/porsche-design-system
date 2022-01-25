@@ -61,14 +61,6 @@ export class TextareaWrapper {
     this.hasCounter = hasCounter(this.textarea);
   }
 
-  public componentDidLoad(): void {
-    if (this.hasCounter) {
-      addInputEventListener(this.textarea, this.counterElement, this.characterCountElement);
-      setCounterInnerHtml(this.textarea, this.counterElement); // initial value
-      setCharacterCountInnerHtml(this.textarea, this.characterCountElement);
-    }
-  }
-
   public componentWillRender(): void {
     attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.hasCounter);
   }
@@ -84,6 +76,14 @@ export class TextareaWrapper {
       message: this.message || this.description,
       state: this.state,
     });
+  }
+
+  public componentDidLoad(): void {
+    if (this.hasCounter) {
+      addInputEventListener(this.textarea, this.counterElement, this.characterCountElement);
+      setCounterInnerHtml(this.textarea, this.counterElement); // initial value
+      setCharacterCountInnerHtml(this.textarea, this.characterCountElement);
+    }
   }
 
   public disconnectedCallback(): void {
