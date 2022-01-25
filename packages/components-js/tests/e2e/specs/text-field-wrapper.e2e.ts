@@ -28,9 +28,6 @@ describe('text-field-wrapper', () => {
 
   const getHost = () => selectNode(page, 'p-text-field-wrapper');
   const getInput = () => selectNode(page, 'p-text-field-wrapper input');
-  const getLabelLink = () => selectNode(page, 'p-text-field-wrapper [slot="label"] a');
-  const getDescriptionLink = () => selectNode(page, 'p-text-field-wrapper [slot="description"] a');
-  const getMessageLink = () => selectNode(page, 'p-text-field-wrapper [slot="message"] a');
   const getLabel = () => selectNode(page, 'p-text-field-wrapper >>> .label__text');
   const getCounterOrUnit = () => selectNode(page, 'p-text-field-wrapper >>> .unit');
   const getButton = () => selectNode(page, 'p-text-field-wrapper >>> button');
