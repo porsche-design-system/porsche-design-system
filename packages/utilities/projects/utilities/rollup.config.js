@@ -11,7 +11,7 @@ export default [
       name: pkg.name,
       exports: 'named',
     },
-    plugins: [typescript({ declaration: true, declarationDir: 'dist/jss/types', rootDir: 'src' })],
+    plugins: [typescript({ declaration: true, declarationDir: 'dist/jss/types', rootDir: 'src/jss' })],
   },
   {
     input: 'src/jss/index.ts',
