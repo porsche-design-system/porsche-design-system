@@ -24,9 +24,17 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, frameWo
       fileContent = fileContent.trim();
 
       // extract and replace style if there is any
-      const styleRegEx = /<style.*>((?:.|\s)*?)<\/style>\s+/;
+      const styleRegEx = /<style.*>((?:.|\s)*?)<\/style>\s*/;
       let [, style] = fileContent.match(styleRegEx) || [];
       fileContent = fileContent.replace(styleRegEx, '');
+
+      // extract and replace script if there is any
+      const scriptRegEx = /<script.*>((?:.|\s)*?)<\/script>\s*/;
+      let [, script] = fileContent.match(scriptRegEx) || [];
+      fileContent = fileContent.replace(scriptRegEx, '');
+      // TODO: transform script content
+
+      fileContent = fileContent.trim();
 
       if (frameWorkType === 'angular') {
         style = style.trim().replace(/(\n)/g, '$1    ');
