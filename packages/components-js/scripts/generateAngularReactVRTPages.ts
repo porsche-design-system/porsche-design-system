@@ -2,6 +2,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { paramCase, pascalCase } from 'change-case';
 import * as globby from 'globby';
+import { convertToAngular } from '@porsche-design-system/storefront/src/utils/convertToAngular';
+import { convertToReact } from '@porsche-design-system/storefront/src/utils/convertToReact';
 const rootDirectory = path.resolve(__dirname, '..');
 
 const generateAngularReactVRTPages = (): void => {
@@ -23,19 +25,25 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, frameWo
 
 @Component({
   selector: 'page-${fileName}',
-  template: \`${fileContent}\`,
+  template: \`${convertToAngular(fileContent)}\`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ${pascalCase(fileName)}Component {}`;
         fileName = `${fileName}.component.ts`;
         fileName = path.resolve(rootDirectory, '../components-angular/src/app/pages', fileName);
       } else if (frameWorkType === 'react') {
-        fileContent = `import { P${pascalCase(fileName)} } from '@porsche-design-system/components-react';
+        const array = Array.from(fileContent.matchAll(/<(p-[\w-]+)/g))
+          .map(([, tagName]) => tagName)
+          .filter((tagName, index, arr) => arr.findIndex((t) => t === tagName) === index)
+          .map((tagName) => pascalCase(tagName))
+          .join(', ');
+        console.log(array);
+        fileContent = `import { ${array} } from '@porsche-design-system/components-react';
 
 export const ${pascalCase(fileName)}Page = (): JSX.Element => {
   return (
     <>
-      ${fileContent}
+       ${convertToReact(fileContent)}
     </>
   );
 };`;
