@@ -17,11 +17,11 @@ export const ModalFullWidthSlot = (): JSX.Element => {
           <div style={{ background: 'deeppink', height: '100vh' }} />
         </PContentWrapper>
         <PModal open aria={{ 'aria-label': 'Some Headline' }}>
-          <div className="stretch-to-full-modal-width" style={{ background: 'deeppink', height: 50 }}></div>
+          <div className="stretch-to-full-modal-width" style={{ background: 'deeppink', height: 60 }}></div>
           <PText>Some Content between two full width slotted divs</PText>
-          <div className="stretch-to-full-modal-width" style={{ background: 'deeppink', height: 50 }}></div>
+          <div className="stretch-to-full-modal-width" style={{ background: 'deeppink', height: 60 }}></div>
           <PText>Some Content between two full width slotted divs</PText>
-          <div className="stretch-to-full-modal-width" style={{ background: 'deeppink', height: 50 }}></div>
+          <div className="stretch-to-full-modal-width" style={{ background: 'deeppink', height: 60 }}></div>
         </PModal>
       </div>
     </>
