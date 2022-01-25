@@ -26,15 +26,24 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, frameWo
       fileContent = fileContent.trim();
 
       // extract and replace style if there is any
-      const styleRegEx = /<style.*>((?:.|\s)*?)<\/style>\s*/;
+      const styleRegEx = /\s*<style.*>((?:.|\s)*?)<\/style>\s*/;
       let [, style] = fileContent.match(styleRegEx) || [];
-      fileContent = fileContent.replace(styleRegEx, '');
+      fileContent = fileContent.replace(styleRegEx, '\n');
 
       // extract and replace script if there is any
-      const scriptRegEx = /<script.*>((?:.|\s)*?)<\/script>\s*/;
+      const scriptRegEx = /\s*<script.*>((?:.|\s)*?)<\/script>\s*/;
       let [, script] = fileContent.match(scriptRegEx) || [];
-      fileContent = fileContent.replace(scriptRegEx, '');
+      fileContent = fileContent.replace(scriptRegEx, '\n');
       // TODO: transform script content
+      console.log(script);
+
+      // extract and replace template if there is any
+      const templateRegEx = /\s*(<template.*>(?:.|\s)*?<\/template>)\s*/;
+      let [, template] = fileContent.match(templateRegEx) || [];
+      template = template.replace(/(<\/?)template/g, '$1div');
+      fileContent = fileContent.replace(templateRegEx, '\n');
+      // TODO: transform template content
+      console.log(template);
 
       fileContent = fileContent.trim();
 
@@ -79,7 +88,7 @@ export const ${pascalCase(fileName)}Page = (): JSX.Element => {${styleConst}
       }
 
       fs.writeFileSync(fileName, fileContent);
-      console.log(`Generated ${fileName}`);
+      console.log(`Generated ${fileName.replace(path.resolve(rootDirectory, '..'), '')}`);
     });
 };
 
