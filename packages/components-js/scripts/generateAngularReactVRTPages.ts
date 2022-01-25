@@ -48,11 +48,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   selector: 'page-${fileName}',${styles}
   template: \`
-    ${fileContent.replace(/(\n)/g, '$1    ')}
+    ${fileContent.replace(/(\n)([ <]+)/g, '$1    $2')}
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ${pascalCase(fileName)}Component {}`;
+export class ${pascalCase(fileName)}Component {}
+`;
 
         fileName = `${fileName}.component.ts`;
         fileName = path.resolve(rootDirectory, '../components-angular/src/app/pages', fileName);
@@ -67,10 +68,11 @@ import { P${pascalCase(fileName)} } from '@porsche-design-system/components-reac
 export const ${pascalCase(fileName)}Page = (): JSX.Element => {${styleConst}
   return (
     <>${styleJsx}
-      ${fileContent.replace(/(\n)/g, '$1      ')}
+      ${fileContent.replace(/(\n)([ <]+)/g, '$1      $2')}
     </>
   );
-};`;
+};
+`;
 
         fileName = `${pascalCase(fileName)}.tsx`;
         fileName = path.resolve(rootDirectory, '../components-react/src/pages', fileName);
