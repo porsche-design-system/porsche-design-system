@@ -88,6 +88,21 @@ describe('transformCustomElementTagName()', () => {
 </PSomeTag>`
     );
   });
+
+  it('should transform multiline tag-name to PascalCase', () => {
+    const multiLineMarkup = `<p-some-tag
+  attribute="some value"
+  class="some-class"
+>
+</p-some-tag>`;
+    expect(transformCustomElementTagName(multiLineMarkup)).toBe(
+      `<PSomeTag
+  attribute="some value"
+  class="some-class"
+>
+</PSomeTag>`
+    );
+  });
 });
 
 describe('transformInputs()', () => {
