@@ -12,6 +12,7 @@ import {
   selectNode,
   setContentWithDesignSystem,
   setProperty,
+  waitForComponentsReady,
   waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -445,8 +446,11 @@ describe('modal', () => {
       const header = await getHeader();
       await setProperty(host, 'heading', 'Some Heading');
       await waitForStencilLifecycle(page);
+      await waitForComponentsReady(page); // wait for p-headline to initialize
 
-      expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot('"<p-headline>Some Heading</p-headline>"');
+      expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot(
+        '"<p-headline class=\\"hydrated\\">Some Heading</p-headline>"'
+      );
     });
   });
 
