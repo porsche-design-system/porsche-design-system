@@ -18,6 +18,8 @@ const generateAngularReactVRTPages = (): void => {
 };
 
 const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, frameWorkType: 'angular' | 'react'): void => {
+  const comment = '/* Auto Generated File */';
+
   Object.entries(htmlFileContentMap)
     .filter((_, i) => i === 1)
     .forEach(([fileName, fileContent]) => {
@@ -40,7 +42,8 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, frameWo
         style = style.trim().replace(/(\n)/g, '$1    ');
         const styles = style ? `\n  styles: [\n    \`\n      ${style}\n    \`,\n  ],` : '';
 
-        fileContent = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+        fileContent = `${comment}
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-${fileName}',${styles}
@@ -58,7 +61,8 @@ export class ${pascalCase(fileName)}Component {}`;
         const styleConst = style ? `\n  const style = \`\n    ${style}\n  \`;\n` : '';
         const styleJsx = style ? '\n      <style children={style} />\n' : '';
 
-        fileContent = `import { P${pascalCase(fileName)} } from '@porsche-design-system/components-react';
+        fileContent = `${comment}
+import { P${pascalCase(fileName)} } from '@porsche-design-system/components-react';
 
 export const ${pascalCase(fileName)}Page = (): JSX.Element => {${styleConst}
   return (
