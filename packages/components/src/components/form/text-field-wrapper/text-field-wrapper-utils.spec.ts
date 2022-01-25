@@ -112,7 +112,7 @@ describe('setCounterInnerHtml()', () => {
 
 describe('setCharacterCountInnerHtml()', () => {
   const getAccessibilityMessage = (remainingCharacter: number, maxCharacter: number) =>
-    `You have ${remainingCharacter} of ${maxCharacter} characters left`;
+    `You have ${remainingCharacter} out of ${maxCharacter} characters left`;
 
   it('should set correct character count text for screenreader as innerText on element ', () => {
     const characterCountElement = getCharacterCountElement();

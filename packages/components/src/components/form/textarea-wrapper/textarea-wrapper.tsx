@@ -82,7 +82,7 @@ export class TextareaWrapper {
     if (this.hasCounter) {
       addInputEventListener(this.textarea, this.counterElement, this.characterCountElement);
       setCounterInnerHtml(this.textarea, this.counterElement); // initial value
-      setCharacterCountInnerHtml(this.textarea, this.characterCountElement);
+      setCharacterCountInnerHtml(this.textarea, this.characterCountElement); // initial value
     }
   }
 
