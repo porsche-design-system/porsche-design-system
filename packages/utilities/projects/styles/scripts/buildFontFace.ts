@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import jss from 'jss';
 import preset from 'jss-preset-default';
-import { getPorscheNextFontFaceStyles } from '../src/font-face.jss';
+import { getPorscheNextFontFaceStyles } from '../src/font-face';
 import {
   CDN_BASE_URL,
   CDN_BASE_URL_CN,
@@ -62,15 +62,19 @@ export const FONT_FACE_CDN_URL = (${CDN_BASE_URL_CN_CONDITION} ? '${cdnFontFaceP
   fs.writeFileSync(targetPath, content);
 };
 
-buildFontFaceStylesheet({ baseUrl: 'http://localhost:3001/fonts', addContentBasedHash: false });
-const fontFaceFilename = buildFontFaceStylesheet({
-  baseUrl: `${CDN_BASE_URL}/${CDN_BASE_PATH_FONTS}`,
-  addContentBasedHash: true,
-});
-const fontFaceFilenameCn = buildFontFaceStylesheet({
-  baseUrl: `${CDN_BASE_URL_CN}/${CDN_BASE_PATH_FONTS}`,
-  addContentBasedHash: true,
-  addSuffix: 'cn',
-});
+const buildFontFace = (): void => {
+  buildFontFaceStylesheet({ baseUrl: 'http://localhost:3001/fonts', addContentBasedHash: false });
+  const fontFaceFilename = buildFontFaceStylesheet({
+    baseUrl: `${CDN_BASE_URL}/${CDN_BASE_PATH_FONTS}`,
+    addContentBasedHash: true,
+  });
+  const fontFaceFilenameCn = buildFontFaceStylesheet({
+    baseUrl: `${CDN_BASE_URL_CN}/${CDN_BASE_PATH_FONTS}`,
+    addContentBasedHash: true,
+    addSuffix: 'cn',
+  });
 
-buildFontFaceManifest(fontFaceFilename, fontFaceFilenameCn);
+  buildFontFaceManifest(fontFaceFilename, fontFaceFilenameCn);
+};
+
+buildFontFace();

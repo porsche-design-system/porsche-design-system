@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable, JssStyle, GetStylesFunction } from '../../../utils';
 import type { AlignLabel, AlignLabelType, ThemeExtendedElectric } from '../../../types';
-import { buildResponsiveStyles, getCss, isThemeElectricLight, mergeDeep } from '../../../utils';
+import { buildResponsiveStyles, getCss, isThemeLightElectric, mergeDeep } from '../../../utils';
 import {
   addImportantToEachRule,
   getTextHiddenJssStyle,
@@ -29,7 +29,7 @@ const getColors = (
     getThemedColors(theme);
   const { backgroundColor: lightThemeBackgroundColor } = getThemedColors('light');
   const { successColorDarken, hoverColorDarken } = getThemedColorsDarken(theme);
-  const isLightElectricTheme = isThemeElectricLight(theme);
+  const isLightElectricTheme = isThemeLightElectric(theme);
   const checkedColor = isLightElectricTheme ? brandColor : successColor;
   const disabledOrLoadingColor = isDisabledOrLoading && disabledColor;
 

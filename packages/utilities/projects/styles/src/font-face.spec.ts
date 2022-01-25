@@ -1,4 +1,4 @@
-import { getPorscheNextFontFaceStyles } from './font-face.jss';
+import { getPorscheNextFontFaceStyles } from './font-face';
 
 describe('getContentWrapperJssStyle()', () => {
   it.each<Parameters<typeof getPorscheNextFontFaceStyles>>([

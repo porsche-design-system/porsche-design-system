@@ -1,6 +1,6 @@
-import { isThemeDark, getThemeDarkAttribute, isThemeElectricLight, isThemeElectricDark } from './theme';
+import { isThemeDark, getThemeDarkAttribute, isThemeLightElectric, isThemeDarkElectric } from './theme';
 
-describe('isDark()', () => {
+describe('isThemeDark()', () => {
   it('should return true for "dark"', () => {
     expect(isThemeDark('dark')).toBe(true);
   });
@@ -14,31 +14,31 @@ describe('isDark()', () => {
   });
 });
 
-describe('isLightElectric()', () => {
+describe('isThemeLightElectric()', () => {
   it('should return true for "light-electric"', () => {
-    expect(isThemeElectricLight('light-electric')).toBe(true);
+    expect(isThemeLightElectric('light-electric')).toBe(true);
   });
 
   it('should return false for "light"', () => {
-    expect(isThemeElectricLight('light')).toBe(false);
+    expect(isThemeLightElectric('light')).toBe(false);
   });
 
   it('should return false for everything else', () => {
-    expect(isThemeElectricLight('unknown' as any)).toBe(false);
+    expect(isThemeLightElectric('unknown' as any)).toBe(false);
   });
 });
 
-describe('isDarkElectric()', () => {
+describe('isThemeDarkElectric()', () => {
   it('should return true for "dark-electric"', () => {
-    expect(isThemeElectricDark('dark-electric')).toBe(true);
+    expect(isThemeDarkElectric('dark-electric')).toBe(true);
   });
 
   it('should return false for "light"', () => {
-    expect(isThemeElectricDark('light')).toBe(false);
+    expect(isThemeDarkElectric('light')).toBe(false);
   });
 
   it('should return false for everything else', () => {
-    expect(isThemeElectricDark('unknown' as any)).toBe(false);
+    expect(isThemeDarkElectric('unknown' as any)).toBe(false);
   });
 });
 
