@@ -8,6 +8,7 @@ import {
   hasCounterAndIsTypeText,
   setCounterInnerHtml,
   addInputEventListener,
+  setCharacterCountInnerHtml,
 } from './text-field-wrapper-utils';
 import * as textFieldWrapperUtils from './text-field-wrapper-utils';
 import { FormState } from '../../../types';
@@ -20,6 +21,12 @@ const getInputElement = (): HTMLInputElement => {
 const getCounterElement = (): HTMLSpanElement => {
   const el = document.createElement('span');
   el.id = 'counter';
+  return el;
+};
+
+const getCharacterCountElement = (): HTMLSpanElement => {
+  const el = document.createElement('span');
+  el.id = 'characterCount';
   return el;
 };
 
@@ -103,6 +110,26 @@ describe('setCounterInnerHtml()', () => {
   });
 });
 
+describe('setCharacterCountInnerHtml()', () => {
+  const getAccessibilityMessage = (remainingCharacter: number, maxCharacter: number) =>
+    `You have ${remainingCharacter} of ${maxCharacter} characters left`;
+
+  it('should set correct character count text for screenreader as innerText on element ', () => {
+    const characterCountElement = getCharacterCountElement();
+    const inputElement = getInputElement();
+
+    inputElement.maxLength = 20;
+    inputElement.value = 'some';
+    setCharacterCountInnerHtml(inputElement, characterCountElement);
+    expect(characterCountElement.innerText).toBe(getAccessibilityMessage(16, 20));
+
+    inputElement.maxLength = 25;
+    inputElement.value = 'Hi';
+    setCharacterCountInnerHtml(inputElement, characterCountElement);
+    expect(characterCountElement.innerText).toBe(getAccessibilityMessage(23, 25));
+  });
+});
+
 describe('getInputPadding()', () => {
   it.each<[TextFieldWrapperUnitPosition, FormState, string]>([
     ['prefix', 'none', '0.6875rem 0.6875rem 0.6875rem 3.75rem'],
@@ -148,27 +175,33 @@ describe('addInputEventListener()', () => {
   it('should register event listener on element', () => {
     const inputElement = getInputElement();
     const counterElement = getCounterElement();
+    const characterCountElement = getCharacterCountElement();
     const spy = jest.spyOn(inputElement, 'addEventListener');
 
-    addInputEventListener(inputElement, counterElement);
+    addInputEventListener(inputElement, counterElement, characterCountElement);
     expect(spy).toHaveBeenCalledWith('input', expect.anything());
   });
 
-  it('should on input event call setCounterInnerHtml()', () => {
+  it('should on input event call setCounterInnerHtml() and setCharacterCountInnerHtml()', () => {
     const inputElement = getInputElement();
     const counterElement = getCounterElement();
-    const spy = jest.spyOn(textFieldWrapperUtils, 'setCounterInnerHtml');
-    addInputEventListener(inputElement, counterElement);
+    const characterCountElement = getCharacterCountElement();
+
+    const setCounterInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCounterInnerHtml');
+    const setCharacterCountInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCharacterCountInnerHtml');
+    addInputEventListener(inputElement, counterElement, characterCountElement);
 
     inputElement.dispatchEvent(new Event('input'));
-    expect(spy).toHaveBeenCalledWith(inputElement, counterElement);
+    expect(setCounterInnerHtmlSpy).toHaveBeenCalledWith(inputElement, counterElement);
+    expect(setCharacterCountInnerHtmlSpy).toHaveBeenCalledWith(inputElement, characterCountElement);
   });
 
   it('should on input event call inputChangeCallback() if supplied', () => {
     const inputElement = getInputElement();
     const counterElement = getCounterElement();
+    const characterCountElement = getCharacterCountElement();
     const callback = jest.fn();
-    addInputEventListener(inputElement, counterElement, callback);
+    addInputEventListener(inputElement, counterElement, characterCountElement, callback);
 
     inputElement.dispatchEvent(new Event('input'));
     expect(callback).toHaveBeenCalledTimes(1);
