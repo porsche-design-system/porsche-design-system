@@ -44,6 +44,7 @@ export class Modal {
   private focusedElBeforeOpen: HTMLElement;
   private focusableElements: HTMLElement[] = [];
   private closeBtn: HTMLElement;
+  private hasHeader: boolean;
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
@@ -73,7 +74,8 @@ export class Modal {
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen, this.disableCloseButton);
+    this.hasHeader = !!this.heading || hasSlottedHeading(this.host);
+    attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen, this.disableCloseButton, this.hasHeader);
     warnIfAriaAndHeadingPropsAreUndefined(this.host, this.heading, this.aria);
   }
 
@@ -91,7 +93,6 @@ export class Modal {
   }
 
   public render(): JSX.Element {
-    const hasHeader = this.heading || hasSlottedHeading(this.host);
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
@@ -115,14 +116,14 @@ export class Modal {
               Close modal
             </PrefixedTagNames.pButtonPure>
           )}
-          {hasHeader && (
+          {this.hasHeader && (
             <div class="header">
               {this.heading && (
                 <PrefixedTagNames.pHeadline variant={{ base: 'medium', m: 'large' }}>
                   {this.heading}
                 </PrefixedTagNames.pHeadline>
               )}
-              {!this.heading && hasHeader && <slot name="heading" />}
+              {!this.heading && this.hasHeader && <slot name="heading" />}
             </div>
           )}
           <slot />

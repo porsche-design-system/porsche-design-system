@@ -3,14 +3,22 @@ import type { BreakpointCustomizable } from '../../../types';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    [false, false, false],
-    [false, true, true],
-    [true, false, false],
-    [true, true, true],
-    [true, true, false],
-    [true, false, true],
-    [true, { base: true, xs: false, s: true, m: false, l: true, xl: false }, false],
-  ])('should return correct css for open: %s and fullscreen: %o and disableCloseButton: %s', (...args) => {
+    [false, false, false, false],
+    [false, true, false, false],
+    [false, true, true, false],
+    [false, true, true, true],
+    [false, false, true, true],
+    [false, false, false, true],
+    [false, true, false, true],
+    [true, false, false, false],
+    [true, true, false, false],
+    [true, true, true, false],
+    [true, true, true, true],
+    [true, false, true, true],
+    [true, false, false, true],
+    [true, true, false, true],
+    [true, { base: true, xs: false, s: true, m: false, l: true, xl: false }, false, false],
+  ])('should return correct css for open: %s, fullscreen: %o, disableCloseButton: %s and hasHeader: %s', (...args) => {
     expect(getComponentCss(...args)).toMatchSnapshot();
   });
 });
