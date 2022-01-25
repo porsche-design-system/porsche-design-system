@@ -17,11 +17,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <div style="background: deeppink; height: 100vh"></div>
       </p-content-wrapper>
       <p-modal [open]="true" [aria]="{ 'aria-label': 'Some Heading' }">
-        <div class="stretch-to-full-modal-width" style="background: deeppink; height: 200px"></div>
+        <div class="stretch-to-full-modal-width" style="background: deeppink; height: 50px"></div>
         <p-text>Some Content between two full width slotted divs</p-text>
-        <div class="stretch-to-full-modal-width" style="background: deeppink; height: 200px"></div>
+        <div class="stretch-to-full-modal-width" style="background: deeppink; height: 50px"></div>
         <p-text>Some Content between two full width slotted divs</p-text>
-        <div class="stretch-to-full-modal-width" style="background: deeppink; height: 200px"></div>
+        <div class="stretch-to-full-modal-width" style="background: deeppink; height: 50px"></div>
       </p-modal>
     </div>
   `,
