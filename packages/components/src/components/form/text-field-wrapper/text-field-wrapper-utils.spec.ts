@@ -8,7 +8,7 @@ import {
   hasCounterAndIsTypeText,
   setCounterInnerHtml,
   addInputEventListener,
-  setCharacterCountInnerHtml,
+  setAriaElementInnerHtml,
 } from './text-field-wrapper-utils';
 import * as textFieldWrapperUtils from './text-field-wrapper-utils';
 import { FormState } from '../../../types';
@@ -24,9 +24,9 @@ const getCounterElement = (): HTMLSpanElement => {
   return el;
 };
 
-const getCharacterCountElement = (): HTMLSpanElement => {
+const getAriaElement = (): HTMLSpanElement => {
   const el = document.createElement('span');
-  el.id = 'characterCount';
+  el.id = 'ariaElement';
   return el;
 };
 
@@ -110,23 +110,23 @@ describe('setCounterInnerHtml()', () => {
   });
 });
 
-describe('setCharacterCountInnerHtml()', () => {
+describe('setAriaElementInnerHtml()', () => {
   const getAccessibilityMessage = (remainingCharacter: number, maxCharacter: number) =>
     `You have ${remainingCharacter} out of ${maxCharacter} characters left`;
 
   it('should set correct character count text for screenreader as innerText on element ', () => {
-    const characterCountElement = getCharacterCountElement();
+    const ariaElement = getAriaElement();
     const inputElement = getInputElement();
 
     inputElement.maxLength = 20;
     inputElement.value = 'some';
-    setCharacterCountInnerHtml(inputElement, characterCountElement);
-    expect(characterCountElement.innerText).toBe(getAccessibilityMessage(16, 20));
+    setAriaElementInnerHtml(inputElement, ariaElement);
+    expect(ariaElement.innerText).toBe(getAccessibilityMessage(16, 20));
 
     inputElement.maxLength = 25;
     inputElement.value = 'Hi';
-    setCharacterCountInnerHtml(inputElement, characterCountElement);
-    expect(characterCountElement.innerText).toBe(getAccessibilityMessage(23, 25));
+    setAriaElementInnerHtml(inputElement, ariaElement);
+    expect(ariaElement.innerText).toBe(getAccessibilityMessage(23, 25));
   });
 });
 
@@ -175,33 +175,33 @@ describe('addInputEventListener()', () => {
   it('should register event listener on element', () => {
     const inputElement = getInputElement();
     const counterElement = getCounterElement();
-    const characterCountElement = getCharacterCountElement();
+    const ariaElement = getAriaElement();
     const spy = jest.spyOn(inputElement, 'addEventListener');
 
-    addInputEventListener(inputElement, counterElement, characterCountElement);
+    addInputEventListener(inputElement, counterElement, ariaElement);
     expect(spy).toHaveBeenCalledWith('input', expect.anything());
   });
 
-  it('should on input event call setCounterInnerHtml() and setCharacterCountInnerHtml()', () => {
+  it('should on input event call setCounterInnerHtml() and setAriaElementInnerHtml()', () => {
     const inputElement = getInputElement();
     const counterElement = getCounterElement();
-    const characterCountElement = getCharacterCountElement();
+    const ariaElement = getAriaElement();
 
     const setCounterInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCounterInnerHtml');
-    const setCharacterCountInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCharacterCountInnerHtml');
-    addInputEventListener(inputElement, counterElement, characterCountElement);
+    const setAriaElementInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setAriaElementInnerHtml');
+    addInputEventListener(inputElement, counterElement, ariaElement);
 
     inputElement.dispatchEvent(new Event('input'));
     expect(setCounterInnerHtmlSpy).toHaveBeenCalledWith(inputElement, counterElement);
-    expect(setCharacterCountInnerHtmlSpy).toHaveBeenCalledWith(inputElement, characterCountElement);
+    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledWith(inputElement, ariaElement);
   });
 
   it('should on input event call inputChangeCallback() if supplied', () => {
     const inputElement = getInputElement();
     const counterElement = getCounterElement();
-    const characterCountElement = getCharacterCountElement();
+    const ariaElement = getAriaElement();
     const callback = jest.fn();
-    addInputEventListener(inputElement, counterElement, characterCountElement, callback);
+    addInputEventListener(inputElement, counterElement, ariaElement, callback);
 
     inputElement.dispatchEvent(new Event('input'));
     expect(callback).toHaveBeenCalledTimes(1);

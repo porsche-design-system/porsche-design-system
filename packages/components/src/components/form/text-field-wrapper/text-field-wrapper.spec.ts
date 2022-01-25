@@ -91,6 +91,35 @@ describe('componentWillRender', () => {
   });
 });
 
+describe('componentDidLoad', () => {
+  it('should call addInputEventListener(), setCounterInnerHtml() and setCharacterCountInnerHtml() if hasCounter is true', () => {
+    const addInputEventListenerSpy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListener');
+    const setCounterInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCounterInnerHtml');
+    const setAriaElementInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setAriaElementInnerHtml');
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    const counter = document.createElement('span');
+    const ariaElement = document.createElement('span');
+
+    const component = new TextFieldWrapper();
+    component['input'] = input;
+    component['unitOrCounterElement'] = counter;
+    component['ariaElement'] = ariaElement;
+
+    component.componentDidLoad();
+    expect(addInputEventListenerSpy).toHaveBeenCalledTimes(0);
+    expect(setCounterInnerHtmlSpy).toHaveBeenCalledTimes(0);
+    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledTimes(0);
+
+    component['hasCounter'] = true;
+    component.componentDidLoad();
+    expect(addInputEventListenerSpy).toHaveBeenCalledWith(input, counter, ariaElement, component['setInputStyles']);
+    expect(setCounterInnerHtmlSpy).toHaveBeenCalledWith(input, counter);
+    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledWith(input, ariaElement);
+  });
+});
+
 describe('componentDidRender', () => {
   it('should call setInputStyles()', () => {
     const component = new TextFieldWrapper();
@@ -112,35 +141,6 @@ describe('componentDidRender', () => {
 
     component.componentDidRender();
     expect(spy).toBeCalledWith(input, { label: 'Some label', message: 'Some message', state: 'success' });
-  });
-});
-
-describe('componentDidLoad', () => {
-  it('should call addInputEventListener(), setCounterInnerHtml() and setCharacterCountInnerHtml() if hasCounter is true', () => {
-    const addInputEventListenerSpy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListener');
-    const setCounterInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCounterInnerHtml');
-    const setCharacterCountInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCharacterCountInnerHtml');
-
-    const input = document.createElement('input');
-    input.type = 'text';
-    const counter = document.createElement('span');
-    const characterCount = document.createElement('span');
-
-    const component = new TextFieldWrapper();
-    component['input'] = input;
-    component['unitOrCounterElement'] = counter;
-    component['characterCountElement'] = characterCount;
-
-    component.componentDidLoad();
-    expect(addInputEventListenerSpy).toHaveBeenCalledTimes(0);
-    expect(setCounterInnerHtmlSpy).toHaveBeenCalledTimes(0);
-    expect(setCharacterCountInnerHtmlSpy).toHaveBeenCalledTimes(0);
-
-    component['hasCounter'] = true;
-    component.componentDidLoad();
-    expect(addInputEventListenerSpy).toHaveBeenCalledWith(input, counter, characterCount, component['setInputStyles']);
-    expect(setCounterInnerHtmlSpy).toHaveBeenCalledWith(input, counter);
-    expect(setCharacterCountInnerHtmlSpy).toHaveBeenCalledWith(input, characterCount);
   });
 });
 
