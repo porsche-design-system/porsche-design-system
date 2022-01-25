@@ -213,6 +213,8 @@ const ModalPage = (): JSX.Element => {
   <div class="stretch-to-full-modal-width">
     <div style="height: 200px; background-color: lightskyblue;"></div>
   </div>
+  <p-text style="padding-top: 1.5rem">Some subtitle</p-text>
+  <p-headline tag="h2">Some Heading</p-headline>
   <p-text>Some Content</p-text>
 </p-modal>`;
 
