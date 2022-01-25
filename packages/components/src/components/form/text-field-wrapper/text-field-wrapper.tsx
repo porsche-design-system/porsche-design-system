@@ -21,8 +21,6 @@ import {
   addInputEventListener,
   hasCounterAndIsTypeText,
   hasUnitAndIsTypeNumber,
-  setAriaElementInnerHtml,
-  setCounterInnerHtml,
   setInputStyles,
   throwIfUnitLengthExceeded,
 } from './text-field-wrapper-utils';
@@ -86,8 +84,6 @@ export class TextFieldWrapper {
   public componentDidLoad(): void {
     if (this.hasCounter) {
       addInputEventListener(this.input, this.unitOrCounterElement, this.ariaElement, this.setInputStyles);
-      setCounterInnerHtml(this.input, this.unitOrCounterElement); // initial value
-      setAriaElementInnerHtml(this.input, this.ariaElement); // initial value
     }
   }
 
