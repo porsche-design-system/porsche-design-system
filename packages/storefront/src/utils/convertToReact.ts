@@ -19,10 +19,7 @@ export const transformBooleanAndDigitValues = (markup: string): string =>
   markup.replace(/\s(\S+)="(true|false|-?\d*)"/g, ' $1={$2}');
 
 export const transformCustomElementTagName = (markup: string): string =>
-  markup.replace(
-    /<(\/?)(p-[\w-]+)(.*?)>/g,
-    (m, $slash, $tag, $attributes) => `<${$slash}${pascalCase($tag)}${$attributes}>`
-  );
+  markup.replace(/<(\/?)(p-[\w-]+)/g, (m, $slash, $tag) => `<${$slash}${pascalCase($tag)}`);
 
 export const transformInputs = (markup: string): string => markup.replace(/(<input(?:.[^/]*?))>/g, '$1 />');
 
