@@ -35,24 +35,23 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       // extract and replace script if there is any
       const scriptRegEx = /\s*<script.*>((?:.|\s)*?)<\/script>\s*/;
       let [, script] = fileContent.match(scriptRegEx) || [];
-      fileContent = fileContent.replace(scriptRegEx, '\n');
+
+      script = script?.replace(script, '\n');
       // TODO: transform script content
-      console.log(script);
 
       const usesComponentsReady = !!script?.match('componentsReady()');
 
       // extract and replace template if there is any
-      const templateRegEx = /\s*(<template.*>(?:.|\s)*?<\/template>)\s*/;
+      const templateRegEx = /(<template.*>(?:.|\s)*?<\/template>)/;
       let [, template] = fileContent.match(templateRegEx) || [];
-      template = template?.replace(/(<\/?)template/g, '$1div');
-      fileContent = fileContent.replace(templateRegEx, '\n');
+
       // TODO: transform template content
-      console.log(template);
+      // console.log(template);
 
       fileContent = fileContent.trim();
 
       if (framework === 'angular') {
-        style = style.trim().replace(/(\n)/g, '$1    ');
+        style = style?.trim().replace(/(\n)/g, '$1    ');
         const styles = style ? `\n  styles: [\n    \`\n      ${style}\n    \`,\n  ],` : '';
 
         const angularImports = ['ChangeDetectionStrategy', 'Component', script && 'OnInit'].filter((x) => x).join(', ');
@@ -62,6 +61,11 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
         const imports = [`import { ${angularImports} } from '@angular/core';`, pdsImports].filter((x) => x).join('\n');
 
         const classImplements = script ? 'implements OnInit ' : '';
+
+        template = template?.replace(/(<\/?)template\s/g, '$1div *ngIf="allReady" ');
+        template = template?.replace(/(<\/)template+(>)/g, '$1div>');
+        fileContent = fileContent.replace(templateRegEx, template);
+        fileContent = fileContent.replace(scriptRegEx, script);
 
         fileContent = `${comment}
 ${imports}
@@ -73,8 +77,22 @@ ${imports}
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ${pascalCase(fileName)}Component ${classImplements}{}
-`;
+${
+  classImplements === 'implements OnInit '
+    ? `export class ${pascalCase(fileName)}Component ${classImplements} {
+  public allReady: boolean = false;
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  ngOnInit() {
+  componentsReady().then(() => {
+     this.allReady = true;
+     this.cdr.markForCheck();
+    });
+  }
+}`
+    : `export class ${pascalCase(fileName)}Component ${classImplements} {}`
+}`;
 
         fileName = `${fileName}.component.ts`;
         fileName = path.resolve(rootDirectory, '../components-angular/src/app/pages', fileName);
@@ -87,10 +105,8 @@ export class ${pascalCase(fileName)}Component ${classImplements}{}
         const array = Array.from(fileContent.matchAll(/<(p-[\w-]+)/g))
           .map(([, tagName]) => tagName)
           .filter((tagName, index, arr) => arr.findIndex((t) => t === tagName) === index)
-          .map((tagName) => pascalCase(tagName))
-        const pdsImports = [...array, usesComponentsReady && 'componentsReady']
-          .filter((x) => x)
-          .join(', ');
+          .map((tagName) => pascalCase(tagName));
+        const pdsImports = [...array, usesComponentsReady && 'componentsReady'].filter((x) => x).join(', ');
         const imports = [reactImports, `import { ${pdsImports} } from '@porsche-design-system/components-react';`]
           .filter((x) => x)
           .join('\n');
@@ -115,7 +131,7 @@ export const ${pascalCase(fileName)}Page = (): JSX.Element => {${styleConst}
       // TODO: what about routing?
 
       fs.writeFileSync(fileName, fileContent);
-      console.log(`Generated ${fileName.replace(path.resolve(rootDirectory, '..'), '')}`);
+      //console.log(`Generated ${fileName.replace(path.resolve(rootDirectory, '..'), '')}`);
     });
 };
 
