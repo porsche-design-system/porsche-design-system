@@ -714,6 +714,20 @@ export const config: StorefrontConfig = {
       () => import('@/pages/partials/meta-tags-and-icon-links.md'),
     ],
   },
+  'Browser Notifications': {
+    Introduction: [
+      // @ts-ignore
+      () => import('@/pages/browser-notifications/introduction.md'),
+    ],
+    'Browser Support Notification': [
+      // @ts-ignore
+      () => import('@/pages/browser-notifications/browser-support-notification.md'),
+    ],
+    'Cookie Notification': [
+      // @ts-ignore
+      () => import('@/pages/browser-notifications/cookie-notification.md'),
+    ],
+  },
   Performance: {
     Cdn: [
       // @ts-ignore
