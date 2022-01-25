@@ -10,6 +10,12 @@ export const hasUnitAndIsTypeNumber = (el: HTMLInputElement, unit: string): bool
 export const setCounterInnerHtml = (el: HTMLTextAreaElement | HTMLInputElement, counterElement: HTMLElement): void => {
   counterElement.innerText = `${el.value.length}/${el.maxLength}`;
 };
+export const setAriaElementInnerHtml = (
+  el: HTMLTextAreaElement | HTMLInputElement,
+  ariaElement: HTMLSpanElement
+): void => {
+  ariaElement.innerText = `You have ${el.maxLength - el.value.length} out of ${el.maxLength} characters left`;
+};
 
 export const getInputPadding = (
   unitElementWidth: number,
@@ -45,11 +51,16 @@ export const throwIfUnitLengthExceeded = (unit: string): void => {
 
 export const addInputEventListener = (
   input: HTMLTextAreaElement | HTMLInputElement,
-  counterElement: HTMLElement,
+  counterElement: HTMLSpanElement,
+  characterCountElement: HTMLSpanElement,
   inputChangeCallback?: () => void
 ): void => {
+  setCounterInnerHtml(input, counterElement); // initial value
+  setAriaElementInnerHtml(input, characterCountElement); // initial value
+
   input.addEventListener('input', (e) => {
     setCounterInnerHtml(e.target as HTMLTextAreaElement | HTMLInputElement, counterElement);
+    setAriaElementInnerHtml(e.target as HTMLTextAreaElement | HTMLInputElement, characterCountElement);
     if (inputChangeCallback) {
       inputChangeCallback();
     }
