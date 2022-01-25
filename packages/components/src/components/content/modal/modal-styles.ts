@@ -111,19 +111,21 @@ export const getComponentCss = (
         margin: isFullscreenForXlAndXxl ? 0 : `10vh ${marginXxl}`,
       },
     }),
-    header: {
-      ...(!disableCloseButton && {
-        marginRight: pxToRemWithUnit(32),
-      }),
-      paddingBottom: pxToRemWithUnit(16),
-      [mediaQuery('m')]: {
-        paddingBottom: pxToRemWithUnit(24),
+    ...(hasHeader && {
+      header: {
+        ...(!disableCloseButton && {
+          marginRight: pxToRemWithUnit(32),
+        }),
+        paddingBottom: pxToRemWithUnit(16),
+        [mediaQuery('m')]: {
+          paddingBottom: pxToRemWithUnit(24),
+        },
+        [mediaQuery('xxl')]: {
+          paddingBottom: pxToRemWithUnit(32),
+          ...(!disableCloseButton && { marginRight: 0 }),
+        },
       },
-      [mediaQuery('xxl')]: {
-        paddingBottom: pxToRemWithUnit(32),
-        ...(!disableCloseButton && { marginRight: 0 }),
-      },
-    },
+    }),
     '::slotted': {
       '&(.stretch-to-full-modal-width)': addImportantToEachRule({
         width: `calc(100% + ${pxToRemWithUnit(64)})`,
