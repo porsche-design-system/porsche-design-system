@@ -16,8 +16,8 @@
   },
   {
     "chunkShortName": "button-pure",
-    "size": 7270,
-    "gzipSize": 3153
+    "size": 7235,
+    "gzipSize": 3148
   },
   {
     "chunkShortName": "checkbox-wrapper",
@@ -66,8 +66,8 @@
   },
   {
     "chunkShortName": "link-pure",
-    "size": 7318,
-    "gzipSize": 3162
+    "size": 7283,
+    "gzipSize": 3158
   },
   {
     "chunkShortName": "link-social",
@@ -77,7 +77,7 @@
   {
     "chunkShortName": "main",
     "size": 72192,
-    "gzipSize": 24036
+    "gzipSize": 24033
   },
   {
     "chunkShortName": "marque",
@@ -86,8 +86,8 @@
   },
   {
     "chunkShortName": "modal",
-    "size": 7567,
-    "gzipSize": 3061
+    "size": 7907,
+    "gzipSize": 3104
   },
   {
     "chunkShortName": "pagination",
