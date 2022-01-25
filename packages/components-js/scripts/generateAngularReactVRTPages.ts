@@ -62,7 +62,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
 
         const classImplements = script ? 'implements OnInit ' : '';
 
-        template = template?.replace(/(<\/?)template\s/g, '$1div *ngIf="allReady" ');
+        template = template?.replace(/template/g, '$1div *ngIf="allReady" ');
         template = template?.replace(/(<\/)template+(>)/g, '$1div>');
         fileContent = fileContent.replace(templateRegEx, template);
         fileContent = fileContent.replace(scriptRegEx, script);
