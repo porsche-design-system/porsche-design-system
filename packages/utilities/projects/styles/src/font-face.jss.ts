@@ -1,4 +1,5 @@
 import type { Styles } from 'jss';
+import type { FontWeight } from '@porsche-design-system/utilities-v2';
 import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
 import { fontWeight } from '@porsche-design-system/utilities-v2';
 
@@ -17,17 +18,14 @@ export const getPorscheNextFontFaceStyles = (opts: Options): Styles => {
 
   return {
     '@font-face': Object.entries(FONTS_MANIFEST).map(([name, resource]) => {
-      // @ts-ignore
-      const [, charset, weight] = /porscheNextW(La|Gr|Cy)(Thin|Regular|SemiBold|Bold)/.exec(name);
+      const [, charset, weight] = /porscheNextW(La|Gr|Cy)(Thin|Regular|SemiBold|Bold)/.exec(name) || [];
 
       return {
         fontFamily: 'Porsche Next',
         fontStyle: 'normal',
-        // @ts-ignore
-        fontWeight: fontWeight[weight.toLowerCase()],
+        fontWeight: fontWeight[weight.toLowerCase() as FontWeight],
         src: `url('${baseUrl}/${resource.woff2}') format('woff2'), url('${baseUrl}/${resource.woff}') format('woff')`,
-        // @ts-ignore
-        unicodeRange: unicodeRangeMap[charset.toLowerCase()],
+        unicodeRange: unicodeRangeMap[charset.toLowerCase() as keyof typeof unicodeRangeMap],
         fontDisplay: 'swap',
       };
     }),

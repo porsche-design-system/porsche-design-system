@@ -18,7 +18,7 @@ export default [
       name: pkg.name,
       exports: 'named',
     },
-    plugins: [...commonPlugins, typescript({ declaration: true, declarationDir: 'dist/js/types', rootDir: 'src/lib' })],
+    plugins: [...commonPlugins, typescript({ declaration: true, declarationDir: 'dist/js/types', rootDir: 'src' })],
   },
   {
     input: 'src/lib/index.ts',
