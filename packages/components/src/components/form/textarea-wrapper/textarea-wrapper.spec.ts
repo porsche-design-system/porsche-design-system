@@ -56,6 +56,34 @@ describe('componentWillLoad', () => {
   });
 });
 
+describe('componentDidLoad', () => {
+  it('should call addInputEventListener(), setCounterInnerHtml() and setAriaElementInnerHtml() if hasCounter is true', () => {
+    const addInputEventListenerSpy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListener');
+    const setCounterInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCounterInnerHtml');
+    const setAriaElementInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setAriaElementInnerHtml');
+
+    const textarea = document.createElement('textarea');
+    const counter = document.createElement('span');
+    const ariaElement = document.createElement('span');
+
+    const component = new TextareaWrapper();
+    component['textarea'] = textarea;
+    component['counterElement'] = counter;
+    component['ariaElement'] = ariaElement;
+
+    component.componentDidLoad();
+    expect(addInputEventListenerSpy).toHaveBeenCalledTimes(0);
+    expect(setCounterInnerHtmlSpy).toHaveBeenCalledTimes(0);
+    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledTimes(0);
+
+    component['hasCounter'] = true;
+    component.componentDidLoad();
+    expect(addInputEventListenerSpy).toHaveBeenCalledWith(textarea, counter, ariaElement);
+    expect(setCounterInnerHtmlSpy).toHaveBeenCalledWith(textarea, counter);
+    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledWith(textarea, ariaElement);
+  });
+});
+
 describe('componentDidRender', () => {
   it('should call setAriaAttributes()', () => {
     const spy = jest.spyOn(a11yUtils, 'setAriaAttributes');
@@ -68,34 +96,6 @@ describe('componentDidRender', () => {
 
     component.componentDidRender();
     expect(spy).toBeCalledWith(textarea, { label: 'Some label', message: 'Some message', state: 'success' });
-  });
-});
-
-describe('componentDidLoad', () => {
-  it('should call addInputEventListener(), setCounterInnerHtml() and setCharacterCountInnerHtml() if hasCounter is true', () => {
-    const addInputEventListenerSpy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListener');
-    const setCounterInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCounterInnerHtml');
-    const setCharacterCountInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCharacterCountInnerHtml');
-
-    const textarea = document.createElement('textarea');
-    const counter = document.createElement('span');
-    const characterCount = document.createElement('span');
-
-    const component = new TextareaWrapper();
-    component['textarea'] = textarea;
-    component['counterElement'] = counter;
-    component['characterCountElement'] = characterCount;
-
-    component.componentDidLoad();
-    expect(addInputEventListenerSpy).toHaveBeenCalledTimes(0);
-    expect(setCounterInnerHtmlSpy).toHaveBeenCalledTimes(0);
-    expect(setCharacterCountInnerHtmlSpy).toHaveBeenCalledTimes(0);
-
-    component['hasCounter'] = true;
-    component.componentDidLoad();
-    expect(addInputEventListenerSpy).toHaveBeenCalledWith(textarea, counter, characterCount);
-    expect(setCounterInnerHtmlSpy).toHaveBeenCalledWith(textarea, counter);
-    expect(setCharacterCountInnerHtmlSpy).toHaveBeenCalledWith(textarea, characterCount);
   });
 });
 

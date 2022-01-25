@@ -19,7 +19,7 @@ import {
   hasCounter,
   addInputEventListener,
   setCounterInnerHtml,
-  setCharacterCountInnerHtml,
+  setAriaElementInnerHtml,
 } from '../text-field-wrapper/text-field-wrapper-utils';
 import { Required } from '../../common/required/required';
 
@@ -47,7 +47,7 @@ export class TextareaWrapper {
 
   private textarea: HTMLTextAreaElement;
   private counterElement: HTMLSpanElement;
-  private characterCountElement: HTMLSpanElement;
+  private ariaElement: HTMLSpanElement;
   private hasCounter: boolean;
 
   public connectedCallback(): void {
@@ -59,6 +59,14 @@ export class TextareaWrapper {
     this.textarea = getHTMLElementAndThrowIfUndefined(this.host, 'textarea');
     this.observeAttributes(); // once initially
     this.hasCounter = hasCounter(this.textarea);
+  }
+
+  public componentDidLoad(): void {
+    if (this.hasCounter) {
+      addInputEventListener(this.textarea, this.counterElement, this.ariaElement);
+      setCounterInnerHtml(this.textarea, this.counterElement); // initial value
+      setAriaElementInnerHtml(this.textarea, this.ariaElement); // initial value
+    }
   }
 
   public componentWillRender(): void {
@@ -76,14 +84,6 @@ export class TextareaWrapper {
       message: this.message || this.description,
       state: this.state,
     });
-  }
-
-  public componentDidLoad(): void {
-    if (this.hasCounter) {
-      addInputEventListener(this.textarea, this.counterElement, this.characterCountElement);
-      setCounterInnerHtml(this.textarea, this.counterElement); // initial value
-      setCharacterCountInnerHtml(this.textarea, this.characterCountElement); // initial value
-    }
   }
 
   public disconnectedCallback(): void {
@@ -127,9 +127,7 @@ export class TextareaWrapper {
             />
           )}
           <slot />
-          {this.hasCounter && (
-            <span class="sr-only" ref={(el) => (this.characterCountElement = el)} aria-live="polite" />
-          )}
+          {this.hasCounter && <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />}
         </label>
         {hasMessage(this.host, this.message, this.state) && (
           <StateMessage state={this.state} message={this.message} host={this.host} />

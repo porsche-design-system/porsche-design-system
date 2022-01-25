@@ -21,7 +21,7 @@ import {
   addInputEventListener,
   hasCounterAndIsTypeText,
   hasUnitAndIsTypeNumber,
-  setCharacterCountInnerHtml,
+  setAriaElementInnerHtml,
   setCounterInnerHtml,
   setInputStyles,
   throwIfUnitLengthExceeded,
@@ -60,7 +60,7 @@ export class TextFieldWrapper {
 
   private input: HTMLInputElement;
   private unitOrCounterElement: HTMLElement;
-  private characterCountElement: HTMLSpanElement;
+  private ariaElement: HTMLSpanElement;
   private isPassword: boolean;
   private hasCounter: boolean;
   private hasUnit: boolean;
@@ -81,6 +81,14 @@ export class TextFieldWrapper {
     this.isPassword = this.input.type === 'password';
     this.hasCounter = hasCounterAndIsTypeText(this.input);
     this.hasUnit = hasUnitAndIsTypeNumber(this.input, this.unit);
+  }
+
+  public componentDidLoad(): void {
+    if (this.hasCounter) {
+      addInputEventListener(this.input, this.unitOrCounterElement, this.ariaElement, this.setInputStyles);
+      setCounterInnerHtml(this.input, this.unitOrCounterElement); // initial value
+      setAriaElementInnerHtml(this.input, this.ariaElement); // initial value
+    }
   }
 
   public componentWillRender(): void {
@@ -110,14 +118,6 @@ export class TextFieldWrapper {
       message: this.message || this.description,
       state: this.state,
     });
-  }
-
-  public componentDidLoad(): void {
-    if (this.hasCounter) {
-      addInputEventListener(this.input, this.unitOrCounterElement, this.characterCountElement, this.setInputStyles);
-      setCounterInnerHtml(this.input, this.unitOrCounterElement); // initial value
-      setCharacterCountInnerHtml(this.input, this.characterCountElement); // initial value
-    }
   }
 
   public disconnectedCallback(): void {
@@ -165,9 +165,7 @@ export class TextFieldWrapper {
               </PrefixedTagNames.pText>
             )}
             <slot />
-            {this.hasCounter && (
-              <span class="sr-only" ref={(el) => (this.characterCountElement = el)} aria-live="polite" />
-            )}
+            {this.hasCounter && <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />}
           </label>
           {this.isPassword ? (
             <button
