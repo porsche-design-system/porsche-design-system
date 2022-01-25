@@ -46,10 +46,6 @@ export const getComponentCss = (
     ...getLabelStyles('textarea', hideLabel, state, theme, hasCounter ? '$counter' : ''),
     ...getFunctionalComponentRequiredStyles(theme),
     ...getFunctionalComponentStateMessageStyles(theme, state),
-    'sr-only': {
-      ...srOnly(),
-      padding: 0,
-    },
     ...(hasCounter && {
       counter: {
         position: 'absolute',
@@ -57,6 +53,10 @@ export const getComponentCss = (
         right: pxToRemWithUnit(12),
         zIndex: 1,
         color: contrastMediumColor,
+      },
+      'sr-only': {
+        ...srOnly(),
+        padding: 0,
       },
     }),
   });
