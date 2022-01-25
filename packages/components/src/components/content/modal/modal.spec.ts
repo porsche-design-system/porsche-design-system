@@ -42,8 +42,10 @@ describe('modal', () => {
   });
 
   describe('componentWillRender', () => {
-    it('should call warnIfAriaAndHeadingPropsAreUndefined()', () => {
+    it('should call warnIfAriaAndHeadingPropsAreUndefined() and not call hasSlottedHeading()', () => {
       const spyWarnIfAriaAndHeadingPropsAreUndefined = jest.spyOn(modalUtils, 'warnIfAriaAndHeadingPropsAreUndefined');
+      const spyHasSlottedHeading = jest.spyOn(modalUtils, 'hasSlottedHeading');
+      component.heading = 'Some Heading';
       component.host.attachShadow({ mode: 'open' });
 
       component.componentWillRender();
@@ -53,6 +55,19 @@ describe('modal', () => {
         component.heading,
         component.aria
       );
+      expect(spyHasSlottedHeading).toHaveBeenCalledTimes(0);
+    });
+
+    it('should call hasSlottedHeading() when no heading is provided', () => {
+      const spyHasSlottedHeading = jest.spyOn(modalUtils, 'hasSlottedHeading');
+      const header = document.createElement('header');
+      header.slot = 'heading';
+      component.host.appendChild(header);
+      component.host.attachShadow({ mode: 'open' });
+
+      component.componentWillRender();
+
+      expect(spyHasSlottedHeading).toHaveBeenCalledWith(component.host);
     });
   });
 

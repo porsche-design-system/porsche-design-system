@@ -60,7 +60,8 @@ const getMargin = (marginValue: number): string => `0 ${pxToRemWithUnit(marginVa
 export const getComponentCss = (
   open: boolean,
   fullscreen: BreakpointCustomizable<boolean>,
-  disableCloseButton: boolean
+  disableCloseButton: boolean,
+  hasHeader: boolean
 ): string => {
   const isFullscreenForXlAndXxl = isFullscreenForXl(fullscreen);
 
@@ -136,14 +137,16 @@ export const getComponentCss = (
           margin: getMargin(-64),
         },
       }),
-      '&(.stretch-to-full-modal-width:first-child)': addImportantToEachRule({
-        marginTop: pxToRemWithUnit(-32),
-        [mediaQuery('m')]: {
-          marginTop: pxToRemWithUnit(-40),
-        },
-        [mediaQuery('xxl')]: {
-          marginTop: pxToRemWithUnit(-64),
-        },
+      ...(!hasHeader && {
+        '&(.stretch-to-full-modal-width:first-child)': addImportantToEachRule({
+          marginTop: pxToRemWithUnit(-32),
+          [mediaQuery('m')]: {
+            marginTop: pxToRemWithUnit(-40),
+          },
+          [mediaQuery('xxl')]: {
+            marginTop: pxToRemWithUnit(-64),
+          },
+        }),
       }),
       '&(.stretch-to-full-modal-width:last-child)': addImportantToEachRule({
         marginBottom: pxToRemWithUnit(-32),
