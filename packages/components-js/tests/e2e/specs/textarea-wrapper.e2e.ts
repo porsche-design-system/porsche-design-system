@@ -27,9 +27,6 @@ describe('textarea-wrapper', () => {
   const getMessage = () => selectNode(page, 'p-textarea-wrapper >>> .message');
   const getLabel = () => selectNode(page, 'p-textarea-wrapper >>> .label__text');
   const getCounter = () => selectNode(page, 'p-textarea-wrapper >>> .counter');
-  const getLabelLink = () => selectNode(page, 'p-textarea-wrapper [slot="label"] a');
-  const getDescriptionLink = () => selectNode(page, 'p-textarea-wrapper [slot="description"] a');
-  const getMessageLink = () => selectNode(page, 'p-textarea-wrapper [slot="message"] a');
 
   type InitOptions = {
     useSlottedLabel?: boolean;
