@@ -158,6 +158,8 @@ it.each<TagName>(tagNamesWithJss)('should call attachComponentCss() in correct l
 
     if (['p-checkbox-wrapper', 'p-radio-button-wrapper'].includes(tagName)) {
       component['input'] = document.createElement('input');
+    } else if (tagName === 'p-modal') {
+      component['aria'] = { 'aria-label': 'Some Heading' };
     }
 
     try {
