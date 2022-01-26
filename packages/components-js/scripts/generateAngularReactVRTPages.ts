@@ -133,13 +133,13 @@ useEffect(() => {
   componentsReady().then(() => {
     setAllReady(true);
   });
-}, []);
-`
+}, []);`
           : '';
         const componentLogic = [styleConst, state]
           .filter((x) => x)
           .join('\n')
           .replace(/^(.)/, '\n$1') // leading new line
+          .replace(/(.)$/, '$1\n') // trailing new line
           .replace(/(\n)(.)/g, '$1  $2'); // fix indentation
 
         // conditional template rendering
