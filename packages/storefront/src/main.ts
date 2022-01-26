@@ -7,6 +7,7 @@ import ColorBadge from '@/components/ColorBadge.vue';
 import TableOfContents from '@/components/TableOfContents.vue';
 import { componentsReady } from '@porsche-design-system/components-js';
 import A11yIcon from '@/components/A11yIcon.vue';
+import PartialDocs from '@/components/PartialDocs.vue';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -33,6 +34,7 @@ Vue.use({
     vue.component('ColorBadge', ColorBadge);
     vue.component('Playground', Playground);
     vue.component('TableOfContents', TableOfContents);
+    vue.component('PartialDocs', PartialDocs);
   },
 });
 
