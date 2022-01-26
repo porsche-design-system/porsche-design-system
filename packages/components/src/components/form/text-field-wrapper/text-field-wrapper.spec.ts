@@ -77,30 +77,6 @@ describe('componentWillLoad', () => {
   });
 });
 
-describe('componentDidLoad', () => {
-  it('should call addInputEventListener and setCounterInnerHtml if hasCounter is true', () => {
-    const addInputEventListenerSpy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListener');
-    const setCounterInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCounterInnerHtml');
-
-    const input = document.createElement('input');
-    input.type = 'text';
-    const counter = document.createElement('span');
-
-    const component = new TextFieldWrapper();
-    component['input'] = input;
-    component['unitOrCounterElement'] = counter;
-
-    component.componentDidLoad();
-    expect(addInputEventListenerSpy).toHaveBeenCalledTimes(0);
-    expect(setCounterInnerHtmlSpy).toHaveBeenCalledTimes(0);
-
-    component['hasCounter'] = true;
-    component.componentDidLoad();
-    expect(addInputEventListenerSpy).toHaveBeenCalledWith(input, counter, component['setInputStyles']);
-    expect(setCounterInnerHtmlSpy).toHaveBeenCalledWith(input, counter);
-  });
-});
-
 describe('componentWillRender', () => {
   it('should call throwIfUnitLengthExceeded()', () => {
     const component = new TextFieldWrapper();
@@ -112,6 +88,29 @@ describe('componentWillRender', () => {
     } catch (e) {}
 
     expect(spy).toBeCalledWith('123456');
+  });
+});
+
+describe('componentDidLoad', () => {
+  it('should call addInputEventListener() if hasCounter is true', () => {
+    const addInputEventListenerSpy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListener');
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    const counter = document.createElement('span');
+    const ariaElement = document.createElement('span');
+
+    const component = new TextFieldWrapper();
+    component['input'] = input;
+    component['unitOrCounterElement'] = counter;
+    component['ariaElement'] = ariaElement;
+
+    component.componentDidLoad();
+    expect(addInputEventListenerSpy).toHaveBeenCalledTimes(0);
+
+    component['hasCounter'] = true;
+    component.componentDidLoad();
+    expect(addInputEventListenerSpy).toHaveBeenCalledWith(input, counter, ariaElement, component['setInputStyles']);
   });
 });
 

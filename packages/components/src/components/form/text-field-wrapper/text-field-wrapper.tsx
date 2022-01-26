@@ -21,7 +21,6 @@ import {
   addInputEventListener,
   hasCounterAndIsTypeText,
   hasUnitAndIsTypeNumber,
-  setCounterInnerHtml,
   setInputStyles,
   throwIfUnitLengthExceeded,
 } from './text-field-wrapper-utils';
@@ -59,6 +58,7 @@ export class TextFieldWrapper {
 
   private input: HTMLInputElement;
   private unitOrCounterElement: HTMLElement;
+  private ariaElement: HTMLSpanElement;
   private isPassword: boolean;
   private hasCounter: boolean;
   private hasUnit: boolean;
@@ -83,8 +83,7 @@ export class TextFieldWrapper {
 
   public componentDidLoad(): void {
     if (this.hasCounter) {
-      addInputEventListener(this.input, this.unitOrCounterElement, this.setInputStyles);
-      setCounterInnerHtml(this.input, this.unitOrCounterElement); // initial value
+      addInputEventListener(this.input, this.unitOrCounterElement, this.ariaElement, this.setInputStyles);
     }
   }
 
@@ -162,6 +161,7 @@ export class TextFieldWrapper {
               </PrefixedTagNames.pText>
             )}
             <slot />
+            {this.hasCounter && <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />}
           </label>
           {this.isPassword ? (
             <button

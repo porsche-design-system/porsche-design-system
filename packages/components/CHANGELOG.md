@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- `:focus-visible` Content of selected Tab in `Tabs` component gets focus styling
+- improved accessibility of `Text Field Wrapper` and `Textarea Wrapper` when `maxlength` attribute is set
+
 ### [2.9.0-beta.0] - 2022-01-18
 
 #### Added
