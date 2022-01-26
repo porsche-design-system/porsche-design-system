@@ -32,7 +32,8 @@ const buildFontFaceStylesheet = (opts: Options): string => {
     .createStyleSheet(getPorscheNextFontFaceStyles({ baseUrl }))
     .toString()
     // removes default '.' before class name, all unneeded whitespace, semi colons, escaping backslashes and new lines
-    .replace(/\s\s+|\.\\(?=:)|[\n\\]+| (?={)|;(?=\s+})|(:|media)\s(?=.*;?)/g, '$1');
+    .replace(/\s\s+|\.\\(?=:)|[\n\\]+| (?={)|;(?=\s+})|(:|media)\s(?=.*;?)/g, '$1')
+    .replace(/,\s/g, ',');
 
   const suffix = addSuffix ? `.${addSuffix}` : '';
   const hash = addContentBasedHash ? `.${toHash(style)}` : '';
