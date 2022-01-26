@@ -23,7 +23,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
   const comment = '/* Auto Generated File */';
 
   Object.entries(htmlFileContentMap)
-    .filter((_, i) => i === 1)
+    .filter((_, i) => i === 2)
     .forEach(([fileName, fileContent]) => {
       fileContent = fileContent.trim();
 
@@ -35,8 +35,8 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       // extract and replace script if there is any
       const scriptRegEx = /\s*<script.*>((?:.|\s)*?)<\/script>\s*/;
       let [, script] = fileContent.match(scriptRegEx) || [];
+      console.log(script);
 
-      script = script?.replace(script, '\n');
       // TODO: transform script content
 
       const usesComponentsReady = !!script?.match('componentsReady()');
@@ -46,7 +46,6 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       let [, template] = fileContent.match(templateRegEx) || [];
 
       // TODO: transform template content
-      // console.log(template);
 
       fileContent = fileContent.trim();
 
@@ -65,7 +64,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
         template = template?.replace(/template/g, '$1div *ngIf="allReady" ');
         template = template?.replace(/(<\/)template+(>)/g, '$1div>');
         fileContent = fileContent.replace(templateRegEx, template);
-        fileContent = fileContent.replace(scriptRegEx, script);
+        fileContent = fileContent.replace(scriptRegEx, '\n');
 
         fileContent = `${comment}
 ${imports}
@@ -85,15 +84,11 @@ ${
   constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
-  componentsReady().then(() => {
-     this.allReady = true;
-     this.cdr.markForCheck();
-    });
+    ${script}
   }
 }`
     : `export class ${pascalCase(fileName)}Component ${classImplements} {}`
 }`;
-
         fileName = `${fileName}.component.ts`;
         fileName = path.resolve(rootDirectory, '../components-angular/src/app/pages', fileName);
       } else if (framework === 'react') {
