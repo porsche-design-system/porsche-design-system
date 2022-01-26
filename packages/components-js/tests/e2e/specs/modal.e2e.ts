@@ -41,13 +41,15 @@ describe('modal', () => {
     hasSlottedHeading?: boolean;
   }): Promise<void> => {
     const { isOpen = true, content = 'Some Content', heading = 'Some Heading', aria, hasSlottedHeading } = opts ?? {};
+    const slottedHeadingAttribute = hasSlottedHeading ? '' : ` heading="${heading}"`;
+    const openAttribute = isOpen ? ' open' : '';
+    const ariaAttributes = aria ? ` aria="${aria}"` : '';
+    const attributes = `${slottedHeadingAttribute}${openAttribute}${ariaAttributes}`;
 
     return setContentWithDesignSystem(
       page,
       `
-      <p-modal ${hasSlottedHeading ? '' : `heading="${heading}"`}${isOpen ? ' open' : ''}${
-        aria ? ` aria="${aria}"` : ''
-      }>
+      <p-modal${attributes}>
         ${
           hasSlottedHeading
             ? '<header slot="heading">Some Heading<a href="https://porsche.com">Some link</a></header>'
