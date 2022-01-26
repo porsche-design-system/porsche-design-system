@@ -18,9 +18,9 @@ export const transformAttributesWithDigitValue = (markup: string): string =>
     $key === 'name' ? ` [${$key}]="'${$value}'"` : ` [${camelCase($key)}]="${$value}"`
   );
 
-export const cleanBooleanValues = (markup: string): string =>
+export const cleanBooleanAndUndefinedValues = (markup: string): string =>
   // remove single quotes from boolean values
-  markup.replace(/\s(\[[A-Za-z]+\])="'(true|false)'"/g, ' $1="$2"');
+  markup.replace(/\s(\[[A-Za-z]+\])="'(true|false|undefined)'"/g, ' $1="$2"');
 
 export const cleanClassAndSlotAttributes = (markup: string): string =>
   // remove brackets from "class" and "slot("|slot) attributes
@@ -32,6 +32,6 @@ export const convertToAngular = (markup: string): string =>
     transformAttributesWithObjectValues,
     transformAttributesWithNotDigitValue,
     transformAttributesWithDigitValue,
-    cleanBooleanValues,
+    cleanBooleanAndUndefinedValues,
     cleanClassAndSlotAttributes,
   ].reduce((previousResult, fn) => fn(previousResult), markup);
