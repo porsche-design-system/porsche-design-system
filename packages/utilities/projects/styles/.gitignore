@@ -1,4 +1,5 @@
 # compiled output
 /dist
 
-/src/lib
+# contains auto generated files only
+/src
