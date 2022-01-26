@@ -101,6 +101,16 @@ export const getComponentCss = (
       transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
       padding: pxToRemWithUnit(32),
       backgroundColor: color.background.default,
+      [mediaQuery('m')]: {
+        padding: pxToRemWithUnit(40),
+      },
+      [mediaQuery('xl')]: {
+        margin: isFullscreenForXlAndXxl ? 0 : `10vh ${marginXl}`,
+      },
+      [mediaQuery('xxl')]: {
+        padding: pxToRemWithUnit(64),
+        margin: isFullscreenForXlAndXxl ? 0 : `10vh ${marginXxl}`,
+      },
     }),
     ...(hasHeader && {
       header: {
@@ -134,9 +144,6 @@ export const getComponentCss = (
     },
 
     [mediaQuery('m')]: {
-      root: {
-        padding: pxToRemWithUnit(40),
-      },
       ...(hasHeader && {
         header: {
           padding: `0 0 ${pxToRemWithUnit(16)}`,
@@ -157,16 +164,7 @@ export const getComponentCss = (
         },
       }),
     },
-    [mediaQuery('xl')]: {
-      root: {
-        margin: isFullscreenForXlAndXxl ? 0 : `10vh ${marginXl}`,
-      },
-    },
     [mediaQuery('xxl')]: {
-      root: {
-        padding: pxToRemWithUnit(64),
-        margin: isFullscreenForXlAndXxl ? 0 : `10vh ${marginXxl}`,
-      },
       ...(hasHeader && {
         header: {
           padding: `0 0 ${pxToRemWithUnit(16)}`,
