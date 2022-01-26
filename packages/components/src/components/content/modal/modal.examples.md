@@ -73,7 +73,7 @@ If you want to disable closing the Modal by clicking the backdrop, you can set t
 
 ## Full Width Content
 
-It is possible to make containers or elements (e.g. `div`, `img` etc.) stretch into the padding safe-zone by adding the `stretch-to-full-modal-width` class.
+It is possible to make containers or elements (e.g. `div`, `img` etc.) stretch into the padding safe-zone by adding the <code v-text="stretchClassName"></code> class.
 Make sure to set the `aria` property with a descriptive `aria-label` value when omitting the heading.  
 
 <Playground :markup="fullWidthContent"></Playground>
@@ -91,6 +91,7 @@ Of course, any combination of the available options is possible.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import {stretchToFullModalWidthClassName} from './modal-styles';
 
 @Component
 export default class Code extends Vue {
@@ -158,6 +159,9 @@ const ModalPage = (): JSX.Element => {
     });
   }
 
+  get stretchClassName(){
+    return stretchToFullModalWidthClassName; 
+  }
 
   get basic() {
     const content = this.width === 'maxWidth' ? '<div style="max-width: 100%; width: 100vw; height: 500px"><p-text>Some Content in responsive max width</p-text></div>' : '<p-text>Some Content</p-text>';
@@ -210,9 +214,8 @@ const ModalPage = (): JSX.Element => {
   fullWidthContent =
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
 <p-modal open="false" aria="{ 'aria-label': 'Some Heading' }">
-  <img src="${require('@/assets/porsche-992-carrera-s.jpg')}" class="stretch-to-full-modal-width">
-  <p-text style="padding-top: 1.5rem">Some subtitle</p-text>
-  <p-headline tag="h2">Some Heading</p-headline>
+  <img src="${require('@/assets/porsche-992-carrera-s.jpg')}" class="${stretchToFullModalWidthClassName}">  
+  <p-headline tag="h2" style="padding: 1.5rem 0">Some Heading</p-headline>
   <p-text>Some Content</p-text>
 </p-modal>`;
 
