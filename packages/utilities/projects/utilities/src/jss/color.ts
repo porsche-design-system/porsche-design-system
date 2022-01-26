@@ -10,7 +10,7 @@ type ColorTheme = {
     surface: string;
     shading: string;
   };
-  neutralContrast: {
+  contrast: {
     high: string;
     medium: string;
     low: string;
@@ -58,7 +58,7 @@ export const themeLight: ColorTheme = {
     surface: '#f2f2f2',
     shading: 'rgba(14, 20, 24, 0.9)',
   },
-  neutralContrast: {
+  contrast: {
     high: '#323639',
     medium: '#626669',
     low: '#e3e4e5',
@@ -90,7 +90,7 @@ export const themeDark: ColorTheme = {
     shading: 'rgba(14, 20, 24, 0.9)',
   },
   // TODO: remove neutral?
-  neutralContrast: {
+  contrast: {
     high: '#e3e4e5',
     medium: '#b0b1b2',
     low: '#4a4e51',

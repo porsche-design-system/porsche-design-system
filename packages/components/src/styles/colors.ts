@@ -40,7 +40,7 @@ const getStaticThemedColors = (theme: Theme): ThemedColors => {
     base: baseColor,
     brand: brandColor,
     background: { base: backgroundColor, surface: backgroundSurfaceColor },
-    neutralContrast: { low: contrastLowColor, medium: contrastMediumColor, high: contrastHighColor },
+    contrast: { low: contrastLowColor, medium: contrastMediumColor, high: contrastHighColor },
     state: { hover: hoverColor, active: activeColor, focus: focusColor, disabled: disabledColor },
     notification: {
       error: errorColor,
