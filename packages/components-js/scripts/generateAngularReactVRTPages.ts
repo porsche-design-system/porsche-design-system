@@ -106,7 +106,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
         fileName = path.resolve(rootDirectory, '../components-angular/src/app/pages', fileName);
       } else if (framework === 'react') {
         // imports
-        const reactImports = (script ? ['useEffect', 'useState'] : []).filter((x) => x).join(', ');
+        const reactImports = (usesComponentsReady ? ['useEffect', 'useState'] : []).filter((x) => x).join(', ');
         const componentImports = Array.from(fileContent.matchAll(/<(p-[\w-]+)/g))
           .map(([, tagName]) => tagName)
           .filter((tagName, index, arr) => arr.findIndex((t) => t === tagName) === index)
