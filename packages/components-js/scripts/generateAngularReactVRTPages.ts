@@ -35,36 +35,59 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       // extract and replace script if there is any
       const scriptRegEx = /\s*<script.*>((?:.|\s)*?)<\/script>\s*/;
       let [, script] = fileContent.match(scriptRegEx) || [];
+      fileContent = fileContent.replace(scriptRegEx, '\n');
       console.log(script);
-
       // TODO: transform script content
 
       const usesComponentsReady = !!script?.match('componentsReady()');
 
-      // extract and replace template if there is any
+      // extract template if there is any, replacing is framework specific
       const templateRegEx = /(<template.*>(?:.|\s)*?<\/template>)/;
       let [, template] = fileContent.match(templateRegEx) || [];
-
-      // TODO: transform template content
 
       fileContent = fileContent.trim();
 
       if (framework === 'angular') {
-        style = style?.trim().replace(/(\n)/g, '$1    ');
-        const styles = style ? `\n  styles: [\n    \`\n      ${style}\n    \`,\n  ],` : '';
-
-        const angularImports = ['ChangeDetectionStrategy', 'Component', script && 'OnInit'].filter((x) => x).join(', ');
+        // imports
+        const angularImports = [
+          'ChangeDetectionStrategy',
+          'Component',
+          ...(usesComponentsReady && ['OnInit', 'ChangeDetectorRef']),
+        ]
+          .sort()
+          .filter((x) => x)
+          .join(', ');
         const pdsImports = usesComponentsReady
           ? `import { componentsReady } from '@porsche-design-system/components-angular';`
           : '';
         const imports = [`import { ${angularImports} } from '@angular/core';`, pdsImports].filter((x) => x).join('\n');
 
-        const classImplements = script ? 'implements OnInit ' : '';
+        // decorator
+        style = style?.trim().replace(/(\n)/g, '$1    ');
+        const styles = style ? `\n  styles: [\n    \`\n      ${style}\n    \`,\n  ],` : '';
 
-        template = template?.replace(/template/g, '$1div *ngIf="allReady" ');
-        template = template?.replace(/(<\/)template+(>)/g, '$1div>');
+        // implementation
+        const classImplements = usesComponentsReady ? 'implements OnInit ' : '';
+        const classImplementation = usesComponentsReady
+          ? `
+  public allReady: boolean = false;
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  ngOnInit() {
+    componentsReady().then(() => {
+      this.allReady = true;
+      this.cdr.markForCheck();
+    });
+  }
+`
+          : '';
+
+        // conditional template rendering
+        template = template
+          ?.replace(/<template/g, '<div *ngIf="allReady"') // // add condition and replace opening tag
+          .replace(/<\/template>/g, '</div>'); // replace closing tag
         fileContent = fileContent.replace(templateRegEx, template);
-        fileContent = fileContent.replace(scriptRegEx, '\n');
 
         fileContent = `${comment}
 ${imports}
@@ -76,40 +99,60 @@ ${imports}
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-${
-  classImplements === 'implements OnInit '
-    ? `export class ${pascalCase(fileName)}Component ${classImplements} {
-  public allReady: boolean = false;
+export class ${pascalCase(fileName)}Component ${classImplements}{${classImplementation}}
+`;
 
-  constructor(private cdr: ChangeDetectorRef) {}
-
-  ngOnInit() {
-    ${script}
-  }
-}`
-    : `export class ${pascalCase(fileName)}Component ${classImplements} {}`
-}`;
         fileName = `${fileName}.component.ts`;
         fileName = path.resolve(rootDirectory, '../components-angular/src/app/pages', fileName);
       } else if (framework === 'react') {
-        style = style?.trim().replace(/(\n)/g, '$1  ');
-        const styleConst = style ? `\n  const style = \`\n    ${style}\n  \`;\n` : '';
-        const styleJsx = style ? '\n      <style children={style} />\n' : '';
-
-        const reactImports = '';
-        const array = Array.from(fileContent.matchAll(/<(p-[\w-]+)/g))
+        // imports
+        const reactImports = (script ? ['useEffect', 'useState'] : []).filter((x) => x).join(', ');
+        const componentImports = Array.from(fileContent.matchAll(/<(p-[\w-]+)/g))
           .map(([, tagName]) => tagName)
           .filter((tagName, index, arr) => arr.findIndex((t) => t === tagName) === index)
           .map((tagName) => pascalCase(tagName));
-        const pdsImports = [...array, usesComponentsReady && 'componentsReady'].filter((x) => x).join(', ');
-        const imports = [reactImports, `import { ${pdsImports} } from '@porsche-design-system/components-react';`]
+        const pdsImports = [...componentImports, usesComponentsReady && 'componentsReady']
+          .sort()
+          .filter((x) => x)
+          .join(', ');
+        const imports = [
+          `import { ${pdsImports} } from '@porsche-design-system/components-react';`,
+          reactImports && `import { ${reactImports} } from 'react';`,
+        ]
           .filter((x) => x)
           .join('\n');
+
+        // implementation
+        style = style?.trim();
+        const styleConst = style ? `const style = \`\n  ${style}\n\`;` : '';
+        const styleJsx = style ? '\n      <style children={style} />\n' : '';
+
+        const state = usesComponentsReady
+          ? `const [allReady, setAllReady] = useState(false);
+useEffect(() => {
+  componentsReady().then(() => {
+    setAllReady(true);
+  });
+}, []);
+`
+          : '';
+        const componentLogic = [styleConst, state]
+          .filter((x) => x)
+          .join('\n')
+          .replace(/^(.)/, '\n$1') // leading new line
+          .replace(/(\n)(.)/g, '$1  $2'); // fix indentation
+
+        // conditional template rendering
+        template = template
+          ?.replace(/<template/g, '{allReady && (\n  <div') // add condition and replace opening tag
+          .replace(/<\/template>/g, '</div>\n)}') // replace closing tag
+          .replace(/(\n)([ <)}]+)/g, '$1  $2'); // fix indentation
+        fileContent = fileContent.replace(templateRegEx, template);
 
         fileContent = `${comment}
 ${imports}
 
-export const ${pascalCase(fileName)}Page = (): JSX.Element => {${styleConst}
+export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
   return (
     <>${styleJsx}
       ${convertToReact(fileContent.replace(/(\n)([ <]+)/g, '$1      $2'))}
@@ -126,7 +169,7 @@ export const ${pascalCase(fileName)}Page = (): JSX.Element => {${styleConst}
       // TODO: what about routing?
 
       fs.writeFileSync(fileName, fileContent);
-      //console.log(`Generated ${fileName.replace(path.resolve(rootDirectory, '..'), '')}`);
+      console.log(`Generated ${fileName.replace(path.resolve(rootDirectory, '..'), '')}`);
     });
 };
 
