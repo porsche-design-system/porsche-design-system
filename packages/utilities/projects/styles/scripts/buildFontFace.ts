@@ -3,7 +3,6 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import jss from 'jss';
 import preset from 'jss-preset-default';
-import { getPorscheNextFontFaceStyles } from '../src/font-face';
 import {
   CDN_BASE_URL,
   CDN_BASE_URL_CN,
@@ -12,6 +11,7 @@ import {
   CDN_BASE_PATH_STYLES,
   CDN_BASE_URL_CN_CONDITION,
 } from '../../../../../cdn.config';
+import { getPorscheNextFontFaceStyles } from './fontFaceStyles';
 
 jss.setup(preset());
 
@@ -55,7 +55,7 @@ ${CDN_KEY_TYPE_DEFINITION}
 export const FONT_FACE_CDN_URL = (${CDN_BASE_URL_CN_CONDITION} ? '${cdnFontFacePathCn}' : '${cdnFontFacePath}');
 `;
 
-  const targetDirectory = './src/lib';
+  const targetDirectory = './src';
   const targetPath = path.normalize(`${targetDirectory}/index.ts`);
 
   fs.mkdirSync(path.resolve(targetDirectory), { recursive: true });

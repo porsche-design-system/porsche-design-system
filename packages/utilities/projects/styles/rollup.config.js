@@ -3,7 +3,7 @@ import pkg from './package.json';
 
 export default [
   {
-    input: 'src/lib/index.ts',
+    input: 'src/index.ts',
     output: {
       esModule: false,
       dir: 'dist/js',
@@ -11,10 +11,10 @@ export default [
       name: pkg.name,
       exports: 'named',
     },
-    plugins: [typescript({ declaration: true, declarationDir: 'dist/js/types', rootDir: 'src/lib' })],
+    plugins: [typescript({ declaration: true, declarationDir: 'dist/js/types', rootDir: 'src' })],
   },
   {
-    input: 'src/lib/index.ts',
+    input: 'src/index.ts',
     output: { dir: 'dist/js/esm', format: 'esm' },
     plugins: [typescript()],
   },
