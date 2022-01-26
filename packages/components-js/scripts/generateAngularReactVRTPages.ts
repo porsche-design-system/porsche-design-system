@@ -23,7 +23,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
   const comment = '/* Auto Generated File */';
 
   Object.entries(htmlFileContentMap)
-    .filter((_, i) => i === 2)
+    .filter((_, i) => i <= 2)
     .forEach(([fileName, fileContent]) => {
       fileContent = fileContent.trim();
 
@@ -95,7 +95,7 @@ ${imports}
 @Component({
   selector: 'page-${fileName}',${styles}
   template: \`
-    ${convertToAngular(fileContent.replace(/(\n)([ <]+)/g, '$1    $2'))}
+    ${convertToAngular(fileContent.replace(/(\n)([ <>]+)/g, '$1    $2'))}
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -155,7 +155,7 @@ ${imports}
 export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
   return (
     <>${styleJsx}
-      ${convertToReact(fileContent.replace(/(\n)([ <]+)/g, '$1      $2'))}
+      ${convertToReact(fileContent.replace(/(\n)([ <>]+)/g, '$1      $2'))}
     </>
   );
 };
