@@ -101,7 +101,7 @@ export class Modal {
           class="root"
           role="dialog"
           aria-modal="true"
-          aria-label={parseAndGetAriaAttributes(this.aria, MODAL_ARIA_ATTRIBUTES)?.['aria-label'] ?? this.heading}
+          {...{ ['aria-label']: this.heading, ...parseAndGetAriaAttributes(this.aria, MODAL_ARIA_ATTRIBUTES) }}
           aria-hidden={!this.open ? 'true' : 'false'}
         >
           {!this.disableCloseButton && (
