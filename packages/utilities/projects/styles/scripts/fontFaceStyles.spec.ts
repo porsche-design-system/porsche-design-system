@@ -1,10 +1,19 @@
-import { getPorscheNextFontFaceStyles } from './fontFaceStyles';
+import { cdnUrlMap, getMinifiedPorscheNextFontFaceCss, unicodeRangeMap } from './fontFaceStyles';
+
+it('should contain correct values for unicodeRangeMap', () => {
+  expect(unicodeRangeMap).toMatchSnapshot();
+});
+
+it('should contain correct values for cdnUrlMap', () => {
+  expect(cdnUrlMap).toMatchSnapshot();
+});
 
 describe('getContentWrapperJssStyle()', () => {
-  it.each<Parameters<typeof getPorscheNextFontFaceStyles>>([
-    [{ baseUrl: 'https://some-url' }],
-    [{ baseUrl: 'https://some-other-url' }],
+  it.each<Parameters<typeof getMinifiedPorscheNextFontFaceCss>>([
+    [{ cdn: 'com' }],
+    [{ cdn: 'cn' }],
+    [{ cdn: 'localhost' }],
   ])('should return correct css for opts: %s', (...args) => {
-    expect(getPorscheNextFontFaceStyles(...args)).toMatchSnapshot();
+    expect(getMinifiedPorscheNextFontFaceCss(...args)).toMatchSnapshot();
   });
 });
