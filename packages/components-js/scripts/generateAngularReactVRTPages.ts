@@ -23,7 +23,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
   const comment = '/* Auto Generated File */';
 
   Object.entries(htmlFileContentMap)
-    .filter((_, i) => i <= 2)
+    .filter((_, i) => i === 5)
     .forEach(([fileName, fileContent]) => {
       fileContent = fileContent.trim();
 
@@ -36,10 +36,13 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       const scriptRegEx = /\s*<script.*>((?:.|\s)*?)<\/script>\s*/;
       let [, script] = fileContent.match(scriptRegEx) || [];
       fileContent = fileContent.replace(scriptRegEx, '\n');
-      console.log(script);
+      script = script?.trim();
       // TODO: transform script content
+      console.log(script);
 
-      const usesComponentsReady = !!script?.match('componentsReady()');
+      const usesComponentsReady = script?.includes('componentsReady()');
+      const usesQuerySelector = script?.includes('querySelector');
+      console.log('usesQuerySelector', usesQuerySelector);
 
       // extract template if there is any, replacing is framework specific
       const templateRegEx = /(<template.*>(?:.|\s)*?<\/template>)/;
@@ -52,7 +55,8 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
         const angularImports = [
           'ChangeDetectionStrategy',
           'Component',
-          ...(usesComponentsReady && ['OnInit', 'ChangeDetectorRef']),
+          script && 'OnInit',
+          usesComponentsReady && 'ChangeDetectorRef',
         ]
           .sort()
           .filter((x) => x)
@@ -67,21 +71,27 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
         const styles = style ? `\n  styles: [\n    \`\n      ${style}\n    \`,\n  ],` : '';
 
         // implementation
-        const classImplements = usesComponentsReady ? 'implements OnInit ' : '';
-        const classImplementation = usesComponentsReady
-          ? `
-  public allReady: boolean = false;
+        const classImplements = script ? 'implements OnInit ' : '';
+        const classImplementation = (
+          usesComponentsReady
+            ? `public allReady: boolean = false;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+constructor(private cdr: ChangeDetectorRef) {}
 
-  ngOnInit() {
-    componentsReady().then(() => {
-      this.allReady = true;
-      this.cdr.markForCheck();
-    });
-  }
+ngOnInit() {
+  componentsReady().then(() => {
+    this.allReady = true;
+    this.cdr.markForCheck();
+  });
+}
 `
-          : '';
+            : usesQuerySelector
+            ? `ngOnInit() {\n  ${script}\n}`
+            : ''
+        )
+          .replace(/^/, '\n') // leading new line
+          .replace(/(\n)/g, '$1  ') // fix indentation
+          .replace(/$/, '\n'); // trailing new line
 
         // conditional template rendering
         template = template
@@ -106,7 +116,12 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
         fileName = path.resolve(rootDirectory, '../components-angular/src/app/pages', fileName);
       } else if (framework === 'react') {
         // imports
-        const reactImports = (usesComponentsReady ? ['useEffect', 'useState'] : []).filter((x) => x).join(', ');
+        const reactImports = [
+          (usesComponentsReady || usesQuerySelector) && 'useEffect',
+          usesComponentsReady && 'useState',
+        ]
+          .filter((x) => x)
+          .join(', ');
         const componentImports = Array.from(fileContent.matchAll(/<(p-[\w-]+)/g))
           .map(([, tagName]) => tagName)
           .filter((tagName, index, arr) => arr.findIndex((t) => t === tagName) === index)
@@ -127,7 +142,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
         const styleConst = style ? `const style = \`\n  ${style}\n\`;` : '';
         const styleJsx = style ? '\n      <style children={style} />\n' : '';
 
-        const state = usesComponentsReady
+        const useState = usesComponentsReady
           ? `const [allReady, setAllReady] = useState(false);
 useEffect(() => {
   componentsReady().then(() => {
@@ -135,7 +150,14 @@ useEffect(() => {
   });
 }, []);`
           : '';
-        const componentLogic = [styleConst, state]
+
+        const useEffect = usesQuerySelector
+          ? `useEffect(() => {
+  ${script}
+}, []);`
+          : '';
+
+        const componentLogic = [styleConst, useState, useEffect]
           .filter((x) => x)
           .join('\n')
           .replace(/^(.)/, '\n$1') // leading new line
@@ -148,6 +170,9 @@ useEffect(() => {
           .replace(/<\/template>/g, '</div>\n)}') // replace closing tag
           .replace(/(\n)([ <)}]+)/g, '$1  $2'); // fix indentation
         fileContent = fileContent.replace(templateRegEx, template);
+
+        // attribute conversion
+        fileContent = fileContent.replace(/ c(hecked)/g, ' defaultC$1');
 
         fileContent = `${comment}
 ${imports}
