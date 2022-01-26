@@ -6,7 +6,7 @@ import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles'
 import { isVisibleFormState } from '../../../utils/form-state';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
-import { srOnly } from '@porsche-design-system/utilities';
+import { getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
@@ -48,7 +48,7 @@ export const getComponentCss = (
         color: contrastMediumColor,
       },
       'sr-only': {
-        ...srOnly(),
+        ...getScreenReaderOnlyJssStyle(),
         padding: 0,
       },
     }),
