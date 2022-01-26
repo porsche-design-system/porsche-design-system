@@ -27,10 +27,10 @@
 
 <div class="playground light" title="should render in indeterminate mode">
   <p-checkbox-wrapper label="Some label">
-    <input type="checkbox" name="some-name" class="example-set-to-indeterminate" />
+    <input type="checkbox" name="some-name" class="set-to-indeterminate" />
   </p-checkbox-wrapper>
   <p-checkbox-wrapper label="Some label">
-    <input type="checkbox" name="some-name" checked class="example-set-to-indeterminate" />
+    <input type="checkbox" name="some-name" checked class="set-to-indeterminate" />
   </p-checkbox-wrapper>
 </div>
 
@@ -120,7 +120,7 @@
 </div>
 
 <script type="text/javascript">
-  document.querySelectorAll('.example-set-to-indeterminate').forEach(function (checkbox) {
+  document.body.querySelectorAll('.set-to-indeterminate').forEach((checkbox) => {
     checkbox.indeterminate = true;
   });
 </script>
