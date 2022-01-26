@@ -1,7 +1,8 @@
-import type { FontSizeLineHeight } from '../src/jss';
+import type { FontSizeLineHeight } from '../src/jss/font';
 import * as fs from 'fs';
 import * as path from 'path';
-import { font, fontWeight, breakpoint, mediaQueryMin, mediaQueryMinMax } from '../src/jss';
+import { font, fontWeight } from '../src/jss/font';
+import { mediaQueryMin, mediaQueryMinMax, breakpoint } from '../src/jss/media-query';
 import { pascalCase } from 'change-case';
 
 const buildTypography = (): void => {
