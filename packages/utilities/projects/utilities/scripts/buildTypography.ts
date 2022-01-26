@@ -1,7 +1,7 @@
+import type { FontSizeLineHeight } from '../src/jss';
 import * as fs from 'fs';
 import * as path from 'path';
-import { font, FontSizeLineHeight, fontWeight } from '../src/jss/font';
-import { mediaQueryMin, mediaQueryMinMax } from '../src/jss/media-query';
+import { font, fontWeight, breakpoint, mediaQueryMin, mediaQueryMinMax } from '../src/jss';
 import { pascalCase } from 'change-case';
 
 const buildTypography = (): void => {
@@ -95,14 +95,30 @@ const buildTypography = (): void => {
     xLarge: { ...baseText, ...font.size.xLarge },
   };
 
-  const flippedFontWeightMap = Object.entries(fontWeight)
-    .map(([key, value]) => [value, key])
-    .reduce((result, [key, value]) => ({ ...result, [key]: value }), {});
+  const getFlippedMap = (map: { [key: string]: number }): { [key: number]: string } => {
+    return Object.entries(map)
+      .map(([key, value]) => [value, key])
+      .reduce((result, [key, value]) => ({ ...result, [key]: value }), {});
+  };
+
+  const flippedFontWeightMap = getFlippedMap(fontWeight);
+  const flippedBreakpointMap = getFlippedMap(breakpoint);
 
   const formatValues = (obj: object): string =>
     JSON.stringify(obj, null, 2)
       .replace(/("fontFamily": .*)/, 'fontFamily,') // use reference
       .replace(/"fontWeight": (\d*)/, (match, group) => `fontWeight: fontWeight.${flippedFontWeightMap[group]}`) // use reference
+      .replace(
+        /"@media\s\(min-width:\s(\d*)px\)\sand\s\(max-width:\s(\d*)px\)"/g,
+        (match, minBreakpoint, maxBreakpoint) =>
+          `[mediaQueryMinMax('${flippedBreakpointMap[minBreakpoint]}', '${
+            flippedBreakpointMap[parseInt(maxBreakpoint, 10) + 1]
+          }')]`
+      ) // use style helper + reference
+      .replace(
+        /"@media\s\(min-width:\s(\d*)px\)"/,
+        (match, minBreakpoint) => `[mediaQueryMin('${flippedBreakpointMap[minBreakpoint]}')]`
+      ) // use style helper + reference
       .replace(/"([a-zA-Z]+)":/g, '$1:') // remove quotes around keys that don't need it
       .replace(/"/g, "'"); // replace quotes
 
@@ -118,7 +134,10 @@ const buildTypography = (): void => {
       )
       .join('\n\n');
 
-  const imports = "import { fontFamily, fontWeight } from './font';";
+  const imports = [
+    "import { fontFamily, fontWeight } from './font';",
+    "import { mediaQueryMin, mediaQueryMinMax } from './media-query';",
+  ].join('\n');
   const titles = objectToConst(title, 'title');
   const headlines = objectToConst(headline, 'headline');
   const texts = objectToConst(text, 'text');
