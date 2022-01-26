@@ -18,6 +18,7 @@ import { MODAL_Z_INDEX } from '../../../constants';
 
 const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
 const { maxWidth, margin, marginXl, marginXxl } = contentWrapperVars;
+export const stretchToFullModalWidthClassName = 'stretch-to-full-modal-width';
 
 export const getFullscreenStyles: GetStylesFunction = (fullscreen: boolean): JssStyle => {
   return fullscreen
@@ -100,66 +101,29 @@ export const getComponentCss = (
       transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
       padding: pxToRemWithUnit(32),
       backgroundColor: color.background.default,
-      [mediaQuery('m')]: {
-        padding: pxToRemWithUnit(40),
-      },
-      [mediaQuery('xl')]: {
-        margin: isFullscreenForXlAndXxl ? 0 : `10vh ${marginXl}`,
-      },
-      [mediaQuery('xxl')]: {
-        padding: pxToRemWithUnit(64),
-        margin: isFullscreenForXlAndXxl ? 0 : `10vh ${marginXxl}`,
-      },
     }),
     ...(hasHeader && {
       header: {
         ...(!disableCloseButton && {
-          marginRight: pxToRemWithUnit(32),
+          margin: `0 ${pxToRemWithUnit(32)} 0 0`,
         }),
-        paddingBottom: pxToRemWithUnit(16),
-        [mediaQuery('m')]: {
-          paddingBottom: pxToRemWithUnit(24),
-        },
-        [mediaQuery('xxl')]: {
-          paddingBottom: pxToRemWithUnit(32),
-          ...(!disableCloseButton && { marginRight: 0 }),
-        },
+        padding: `0 0 ${pxToRemWithUnit(16)}`,
       },
     }),
-    '::slotted': {
-      '&(.stretch-to-full-modal-width)': addImportantToEachRule({
+    '::slotted': addImportantToEachRule({
+      [`&(.${stretchToFullModalWidthClassName})`]: {
         width: `calc(100% + ${pxToRemWithUnit(64)})`,
         margin: getMargin(-32),
-        [mediaQuery('m')]: {
-          width: `calc(100% + ${pxToRemWithUnit(80)})`,
-          margin: getMargin(-40),
-        },
-        [mediaQuery('xxl')]: {
-          width: `calc(100% + ${pxToRemWithUnit(128)})`,
-          margin: getMargin(-64),
-        },
-      }),
+      },
       ...(!hasHeader && {
-        '&(.stretch-to-full-modal-width:first-child)': addImportantToEachRule({
+        [`&(.${stretchToFullModalWidthClassName}:first-child)`]: {
           marginTop: pxToRemWithUnit(-32),
-          [mediaQuery('m')]: {
-            marginTop: pxToRemWithUnit(-40),
-          },
-          [mediaQuery('xxl')]: {
-            marginTop: pxToRemWithUnit(-64),
-          },
-        }),
+        },
       }),
-      '&(.stretch-to-full-modal-width:last-child)': addImportantToEachRule({
+      [`&(.${stretchToFullModalWidthClassName}:last-child)`]: {
         marginBottom: pxToRemWithUnit(-32),
-        [mediaQuery('m')]: {
-          marginBottom: pxToRemWithUnit(-40),
-        },
-        [mediaQuery('xxl')]: {
-          marginBottom: pxToRemWithUnit(-64),
-        },
-      }),
-    },
+      },
+    }),
     close: {
       position: 'absolute',
       top: 0,
@@ -167,6 +131,62 @@ export const getComponentCss = (
       padding: pxToRemWithUnit(8),
       border: `${pxToRemWithUnit(6)} solid ${color.background.default}`,
       backgroundColor: color.background.default,
+    },
+
+    [mediaQuery('m')]: {
+      root: {
+        padding: pxToRemWithUnit(40),
+      },
+      ...(hasHeader && {
+        header: {
+          padding: `0 0 ${pxToRemWithUnit(16)}`,
+        },
+      }),
+      '::slotted': addImportantToEachRule({
+        [`&(.${stretchToFullModalWidthClassName})`]: {
+          width: `calc(100% + ${pxToRemWithUnit(80)})`,
+          margin: getMargin(-40),
+        },
+        ...(!hasHeader && {
+          [`&(.${stretchToFullModalWidthClassName}:first-child)`]: {
+            marginTop: pxToRemWithUnit(-40),
+          },
+        }),
+        [`&(.${stretchToFullModalWidthClassName}:last-child)`]: {
+          marginBottom: pxToRemWithUnit(-40),
+        },
+      }),
+    },
+    [mediaQuery('xl')]: {
+      root: {
+        margin: isFullscreenForXlAndXxl ? 0 : `10vh ${marginXl}`,
+      },
+    },
+    [mediaQuery('xxl')]: {
+      root: {
+        padding: pxToRemWithUnit(64),
+        margin: isFullscreenForXlAndXxl ? 0 : `10vh ${marginXxl}`,
+      },
+      ...(hasHeader && {
+        header: {
+          padding: `0 0 ${pxToRemWithUnit(16)}`,
+          ...(!disableCloseButton && { margin: 0 }),
+        },
+      }),
+      '::slotted': addImportantToEachRule({
+        [`&(.${stretchToFullModalWidthClassName})`]: {
+          width: `calc(100% + ${pxToRemWithUnit(128)})`,
+          margin: getMargin(-64),
+        },
+        ...(!hasHeader && {
+          [`&(.${stretchToFullModalWidthClassName}:first-child)`]: {
+            marginTop: pxToRemWithUnit(-64),
+          },
+        }),
+        [`&(.${stretchToFullModalWidthClassName}:last-child)`]: {
+          marginBottom: pxToRemWithUnit(-64),
+        },
+      }),
     },
   });
 };
