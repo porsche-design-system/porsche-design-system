@@ -10,7 +10,7 @@ Object {
     },
     "base": "#fff",
     "brand": "#d5001c",
-    "neutralContrast": Object {
+    "contrast": Object {
       "high": "#e3e4e5",
       "low": "#4a4e51",
       "medium": "#b0b1b2",
@@ -40,7 +40,7 @@ Object {
     },
     "base": "#fff",
     "brand": "#00b0f4",
-    "neutralContrast": Object {
+    "contrast": Object {
       "high": "#e3e4e5",
       "low": "#4a4e51",
       "medium": "#b0b1b2",
@@ -86,7 +86,7 @@ Object {
     },
     "base": "#000",
     "brand": "#d5001c",
-    "neutralContrast": Object {
+    "contrast": Object {
       "high": "#323639",
       "low": "#e3e4e5",
       "medium": "#626669",
@@ -116,7 +116,7 @@ Object {
     },
     "base": "#000",
     "brand": "#00b0f4",
-    "neutralContrast": Object {
+    "contrast": Object {
       "high": "#323639",
       "low": "#e3e4e5",
       "medium": "#626669",
@@ -169,7 +169,7 @@ Object {
   },
   "base": "#fff",
   "brand": "#d5001c",
-  "neutralContrast": Object {
+  "contrast": Object {
     "high": "#e3e4e5",
     "low": "#4a4e51",
     "medium": "#b0b1b2",
@@ -202,7 +202,7 @@ Object {
   },
   "base": "#fff",
   "brand": "#00b0f4",
-  "neutralContrast": Object {
+  "contrast": Object {
     "high": "#e3e4e5",
     "low": "#4a4e51",
     "medium": "#b0b1b2",
@@ -235,7 +235,7 @@ Object {
   },
   "base": "#000",
   "brand": "#d5001c",
-  "neutralContrast": Object {
+  "contrast": Object {
     "high": "#323639",
     "low": "#e3e4e5",
     "medium": "#626669",
@@ -268,7 +268,7 @@ Object {
   },
   "base": "#000",
   "brand": "#00b0f4",
-  "neutralContrast": Object {
+  "contrast": Object {
     "high": "#323639",
     "low": "#e3e4e5",
     "medium": "#626669",
