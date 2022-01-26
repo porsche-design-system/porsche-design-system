@@ -146,7 +146,7 @@ export const getComponentCss = (
     [mediaQuery('m')]: {
       ...(hasHeader && {
         header: {
-          padding: `0 0 ${pxToRemWithUnit(16)}`,
+          padding: `0 0 ${pxToRemWithUnit(24)}`,
         },
       }),
       '::slotted': addImportantToEachRule({
@@ -167,7 +167,7 @@ export const getComponentCss = (
     [mediaQuery('xxl')]: {
       ...(hasHeader && {
         header: {
-          padding: `0 0 ${pxToRemWithUnit(16)}`,
+          padding: `0 0 ${pxToRemWithUnit(32)}`,
           ...(!disableCloseButton && { margin: 0 }),
         },
       }),
