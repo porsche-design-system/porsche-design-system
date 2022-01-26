@@ -110,6 +110,7 @@ export const TAG_NAMES_CONSTRUCTOR_MAP: { [key in TagName]: new () => ClassType 
 
 const tagNamesWithRequiredChild = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredChild);
 const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).styling === 'jss');
+const tagNamesWithSlottedCss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasSlottedCss);
 
 it('should have same amount of elements in TAG_NAMES_CONSTRUCTOR_MAP as in TAG_NAMES', () => {
   expect(Object.keys(TAG_NAMES_CONSTRUCTOR_MAP).length).toBe(TAG_NAMES.length);
@@ -172,38 +173,16 @@ it.each<TagName>(tagNamesWithJss)('should call attachComponentCss() in correct l
   expect(spyCalls).toBe(1); // via connectedCallback or componentWillRender
 });
 
-it.each<TagName>(tagNamesWithJss)('should call attachSlottedCss() in correct lifecycle for %s', (tagName) => {
+it.each<TagName>(tagNamesWithSlottedCss)('should call attachSlottedCss() in correct lifecycle for %s', (tagName) => {
   const spy = jest.spyOn(slottedStylesUtils, 'attachSlottedCss');
 
   const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
   component.host = document.createElement(tagName);
   component.host.attachShadow({ mode: 'open' });
 
-  if (component.connectedCallback) {
-    try {
-      component.connectedCallback();
-    } catch (e) {}
+  try {
+    component.connectedCallback();
+  } catch (e) {}
 
-    if (spy.mock.calls.length) {
-      expect(spy).toBeCalledWith(component.host, expect.any(Function)); // 2 parameters within connectedCallback
-    }
-  }
-
-  if (component.componentWillRender) {
-    spy.mockClear(); // might contain something from previous call already
-
-    // some components like grid-item and text-list-item require a parent to apply styles
-    const parent = document.createElement('div');
-    parent.append(component.host);
-
-    if (['p-checkbox-wrapper', 'p-radio-button-wrapper'].includes(tagName)) {
-      component['input'] = document.createElement('input');
-    }
-
-    try {
-      component.componentWillRender();
-    } catch (e) {}
-
-    expect(spy.mock.calls.length).toBe(0); // currently there are no attachSlottedCss calls in componentWillRender
-  }
+  expect(spy).toBeCalledWith(component.host, expect.any(Function)); // 2 parameters within connectedCallback
 });
