@@ -1,6 +1,6 @@
 import {
   convertToReact,
-  transformBooleanAndDigitValues,
+  transformBooleanDigitAndUndefinedValues,
   transformClassAttribute,
   transformCustomElementTagName,
   transformEventsToReactSyntax,
@@ -9,7 +9,7 @@ import {
   transformStandardAttributes,
   transformStyleAttribute,
   transformToSelfClosingTags,
-} from '../../src/utils';
+} from '../../src/utils/convertToReact';
 import * as reactUtils from '../../src/utils/convertToReact';
 
 const markup = `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" negative-digit-attribute="-6" boolean-attribute="true">
@@ -66,14 +66,20 @@ describe('transformEventsToReactSyntax()', () => {
   });
 });
 
-describe('transformBooleanAndDigitValues()', () => {
+describe('transformBooleanDigitAndUndefinedValues()', () => {
   it('should remove quotes and add brackets to boolean and digit values', () => {
-    expect(transformBooleanAndDigitValues(markup)).toBe(
+    expect(transformBooleanDigitAndUndefinedValues(markup)).toBe(
       `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute={6} negative-digit-attribute={-6} boolean-attribute={true}>
   <span>Some text</span>
   <input type="checkbox">
   <button type="button"></button>
 </p-some-tag>`
+    );
+  });
+
+  it('should remove quotes and add brackets to undefined values', () => {
+    expect(transformBooleanDigitAndUndefinedValues(`<p-some-tag attribute="undefined"></p-some-tag>`)).toBe(
+      `<p-some-tag attribute={undefined}></p-some-tag>`
     );
   });
 });
@@ -148,12 +154,12 @@ describe('convertToReact()', () => {
   afterEach(() => jest.clearAllMocks());
 
   let previousSpy: jest.SpyInstance;
-  const transformFunctions = [
+  const transformFunctions: (keyof typeof reactUtils)[] = [
     'transformObjectValues',
     'transformStandardAttributes',
     'transformClassAttribute',
     'transformEventsToReactSyntax',
-    'transformBooleanAndDigitValues',
+    'transformBooleanDigitAndUndefinedValues',
     'transformCustomElementTagName',
     'transformInputs',
     'transformToSelfClosingTags',

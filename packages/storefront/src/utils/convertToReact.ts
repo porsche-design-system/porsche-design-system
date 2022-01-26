@@ -15,8 +15,8 @@ export const transformEventsToReactSyntax = (markup: string): string =>
   // transform to camelCase event binding syntax
   markup.replace(/\son(.+?)="(.*?)"/g, (m, $key, $value) => ` on${pascalCase($key)}={() => { ${$value} }}`);
 
-export const transformBooleanAndDigitValues = (markup: string): string =>
-  markup.replace(/\s(\S+)="(true|false|-?\d*)"/g, ' $1={$2}');
+export const transformBooleanDigitAndUndefinedValues = (markup: string): string =>
+  markup.replace(/\s(\S+)="(true|false|-?\d*|undefined)"/g, ' $1={$2}');
 
 export const transformCustomElementTagName = (markup: string): string =>
   markup.replace(/<(\/?)(p-[\w-]+)/g, (m, $slash, $tag) => `<${$slash}${pascalCase($tag)}`);
@@ -46,7 +46,7 @@ export const convertToReact = (markup: string): string =>
     transformStandardAttributes,
     transformClassAttribute,
     transformEventsToReactSyntax,
-    transformBooleanAndDigitValues,
+    transformBooleanDigitAndUndefinedValues,
     transformCustomElementTagName,
     transformInputs,
     transformToSelfClosingTags,
