@@ -13,8 +13,6 @@ import { getShadowRootHTMLElement } from './dom';
 import { addImportantToEachRule, mediaQuery } from '../styles';
 import { getTagName, getTagNameWithoutPrefix } from './tag-name';
 
-export type { Styles, JssStyle } from 'jss';
-
 /* eslint-disable @typescript-eslint/consistent-type-definitions */
 declare global {
   interface CSSStyleSheet {
