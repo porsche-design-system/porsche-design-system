@@ -17,10 +17,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <div style="background: deeppink; height: 100vh"></div>
       </p-content-wrapper>
       <p-modal [open]="true" [aria]="{ 'aria-label': 'Slotted Headline' }">
-        <header [slot]="'heading'">
+        <div [slot]="'heading'">
           <p-text [tag]="'div'" role="doc-subtitle">Slotted Subtitle</p-text>
           <p-headline [tag]="'h2'">Slotted Headline</p-headline>
-        </header>
+        </div>
         Some Content
       </p-modal>
     </div>
