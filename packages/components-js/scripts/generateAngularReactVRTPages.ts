@@ -20,7 +20,7 @@ const generateAngularReactVRTPages = (): void => {
 };
 
 const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framework: 'angular' | 'react'): void => {
-  const comment = '/* Auto Generated File */';
+  const comment = '/* Auto Generated File */\n// @ts-nocheck';
 
   Object.entries(htmlFileContentMap)
     .filter((_, i) => i === 5)
