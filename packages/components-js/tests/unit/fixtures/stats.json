@@ -97,22 +97,22 @@
   {
     "chunkShortName": "popover",
     "size": 6285,
-    "gzipSize": 2626
+    "gzipSize": 2627
   },
   {
     "chunkShortName": "radio-button-wrapper",
-    "size": 6085,
-    "gzipSize": 2545
+    "size": 6061,
+    "gzipSize": 2536
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 20517,
+    "size": 20509,
     "gzipSize": 6567
   },
   {
     "chunkShortName": "spinner",
     "size": 2890,
-    "gzipSize": 1476
+    "gzipSize": 1477
   },
   {
     "chunkShortName": "switch",
@@ -126,13 +126,13 @@
   },
   {
     "chunkShortName": "tabs",
-    "size": 2932,
-    "gzipSize": 1180
+    "size": 3127,
+    "gzipSize": 1275
   },
   {
     "chunkShortName": "tabs-bar",
     "size": 9095,
-    "gzipSize": 3295
+    "gzipSize": 3296
   },
   {
     "chunkShortName": "text",
@@ -141,18 +141,18 @@
   },
   {
     "chunkShortName": "text-field-wrapper",
-    "size": 10516,
-    "gzipSize": 3793
+    "size": 10692,
+    "gzipSize": 3862
   },
   {
     "chunkShortName": "text-list",
     "size": 3171,
-    "gzipSize": 1402
+    "gzipSize": 1403
   },
   {
     "chunkShortName": "textarea-wrapper",
-    "size": 7364,
-    "gzipSize": 2896
+    "size": 7609,
+    "gzipSize": 2983
   },
   {
     "chunkShortName": "toast",
