@@ -1,12 +1,4 @@
-import type { GetStylesFunction, JssStyle } from '../../../../utils';
-import {
-  addImportantToEachRule,
-  buildResponsiveHostStyles,
-  getCss,
-  mergeDeep,
-  pxToRemWithUnit,
-  throwIfValueIsInvalid,
-} from '../../../../utils';
+import type { JssStyle } from 'jss';
 import type {
   GridDirection,
   GridDirectionType,
@@ -15,6 +7,9 @@ import type {
   GridWrap,
   GridWrapType,
 } from './grid-utils';
+import type { GetStylesFunction } from '../../../../utils';
+import { buildResponsiveHostStyles, getCss, mergeDeep, throwIfValueIsInvalid } from '../../../../utils';
+import { addImportantToEachRule, pxToRemWithUnit } from '../../../../styles';
 import { GRID_GUTTERS } from './grid-utils';
 
 const getDirectionStyles: GetStylesFunction = (flexDirection: GridDirectionType): JssStyle => ({ flexDirection });

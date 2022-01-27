@@ -1,3 +1,5 @@
+import type { Theme } from '../../../../types';
+import type { ToastState } from '../toast/toast-utils';
 import { getCss } from '../../../../utils';
 import {
   getCloseIconStyles,
@@ -5,8 +7,6 @@ import {
   getNotificationIconStyles,
   getNotificationRootStyles,
 } from '../../inline-notification/inline-notification-styles';
-import type { Theme } from '../../../../types';
-import type { ToastState } from '../toast/toast-utils';
 import { getBoxShadow } from '../../banner/banner-styles';
 
 export const getComponentCss = (state: ToastState, theme: Theme): string => {
