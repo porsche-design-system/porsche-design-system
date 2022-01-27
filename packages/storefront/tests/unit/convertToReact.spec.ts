@@ -3,7 +3,7 @@ import {
   transformBooleanDigitAndUndefinedValues,
   transformClassAttribute,
   transformCustomElementTagName,
-  transformEventsToReactSyntax,
+  transformEvents,
   transformInputs,
   transformObjectValues,
   transformStandardAttributes,
@@ -54,9 +54,9 @@ describe('transformClassAttribute()', () => {
   });
 });
 
-describe('transformEventsToReactSyntax()', () => {
+describe('transformEvents()', () => {
   it('should transform events to react event binding syntax', () => {
-    expect(transformEventsToReactSyntax(markup)).toBe(
+    expect(transformEvents(markup)).toBe(
       `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onClick={() => { alert('click'); return false; }} onChange={() => { alert('change'); return false; }} digit-attribute="6" negative-digit-attribute="-6" boolean-attribute="true">
   <span>Some text</span>
   <input type="checkbox">
@@ -109,6 +109,11 @@ describe('transformCustomElementTagName()', () => {
 </PSomeTag>`
     );
   });
+
+  it('should transform single line tags to PascalCase', () => {
+    const input = `<p-some-tag><a href="#">Some link</a></p-some-tag>`;
+    expect(transformCustomElementTagName(input)).toBe('<PSomeTag><a href="#">Some link</a></PSomeTag>');
+  });
 });
 
 describe('transformInputs()', () => {
@@ -133,6 +138,12 @@ describe('transformToSelfClosingTags()', () => {
 </p-some-tag>`
     );
   });
+
+  it('should transform multiline tags without children to self-closing', () => {
+    const input = `<p-some-tag>
+</p-some-tag>`;
+    expect(transformToSelfClosingTags(input)).toBe('<p-some-tag />');
+  });
 });
 
 describe('transformStyleAttribute', () => {
@@ -140,10 +151,12 @@ describe('transformStyleAttribute', () => {
     const markup = '<div style="display: block"></div>';
     expect(transformStyleAttribute(markup)).toBe("<div style={{ display: 'block' }}></div>");
   });
+
   it('should transform properties to camelCase', () => {
     const markup = '<div style="text-align: center"></div>';
     expect(transformStyleAttribute(markup)).toBe("<div style={{ textAlign: 'center' }}></div>");
   });
+
   it('should handle multiple styles', () => {
     const markup = '<div style="text-align: center; font-size: 16px"></div>';
     expect(transformStyleAttribute(markup)).toBe("<div style={{ textAlign: 'center', fontSize: '16px' }}></div>");
@@ -158,7 +171,7 @@ describe('convertToReact()', () => {
     'transformObjectValues',
     'transformStandardAttributes',
     'transformClassAttribute',
-    'transformEventsToReactSyntax',
+    'transformEvents',
     'transformBooleanDigitAndUndefinedValues',
     'transformCustomElementTagName',
     'transformInputs',
@@ -190,5 +203,10 @@ describe('convertToReact()', () => {
   <button type="button" />
 </PSomeTag>`
     );
+  });
+
+  it('should not transform single line tags to self-closing', () => {
+    const input = `<p-some-tag><a href="#">Some link</a></p-some-tag>`;
+    expect(convertToReact(input)).toBe('<PSomeTag><a href="#">Some link</a></PSomeTag>');
   });
 });

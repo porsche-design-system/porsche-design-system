@@ -11,7 +11,7 @@ export const transformStandardAttributes = (markup: string): string =>
 export const transformClassAttribute = (markup: string): string =>
   markup.replace(/\sclass="(.*?)"/g, ' className="$1"');
 
-export const transformEventsToReactSyntax = (markup: string): string =>
+export const transformEvents = (markup: string): string =>
   // transform to camelCase event binding syntax
   markup.replace(/\son(.+?)="(.*?)"/g, (m, $key, $value) => ` on${pascalCase($key)}={() => { ${$value} }}`);
 
@@ -45,7 +45,7 @@ export const convertToReact = (markup: string): string =>
     transformObjectValues,
     transformStandardAttributes,
     transformClassAttribute,
-    transformEventsToReactSyntax,
+    transformEvents,
     transformBooleanDigitAndUndefinedValues,
     transformCustomElementTagName,
     transformInputs,
