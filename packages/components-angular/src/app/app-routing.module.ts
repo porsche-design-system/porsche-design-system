@@ -322,6 +322,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.TableExampleAdvancedComponent,
   },
   {
+    name: 'Tabs Bar Example',
+    path: 'tabs-bar-example',
+    component: fromExamples.TabsBarExampleComponent,
+  },
+  {
     name: 'Toast Example',
     path: 'toast-example',
     component: fromExamples.ToastExampleComponent,

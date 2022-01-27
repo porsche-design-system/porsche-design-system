@@ -13,6 +13,7 @@ import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles'
 import { isVisibleFormState } from '../../../utils/form-state';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
+import { srOnly } from '@porsche-design-system/utilities';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
@@ -52,6 +53,10 @@ export const getComponentCss = (
         right: pxToRemWithUnit(12),
         zIndex: 1,
         color: contrastMediumColor,
+      },
+      'sr-only': {
+        ...srOnly(),
+        padding: 0,
       },
     }),
   });

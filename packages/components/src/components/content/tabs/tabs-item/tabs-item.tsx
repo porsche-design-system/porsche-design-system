@@ -14,7 +14,13 @@ export class TabsItem {
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'pTabs');
-    attachComponentCss(this.host, getComponentCss);
+  }
+
+  public componentWillRender(): void {
+    const tabs = this.host.parentElement as HTMLPTabsElement;
+    if (tabs) {
+      attachComponentCss(this.host, getComponentCss, tabs.theme);
+    }
   }
 
   public render(): JSX.Element {
