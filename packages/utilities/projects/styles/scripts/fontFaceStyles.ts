@@ -1,3 +1,4 @@
+import type { Styles } from 'jss';
 import type { FontWeight } from '@porsche-design-system/utilities-v2';
 import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
 import { fontWeight } from '@porsche-design-system/utilities-v2';
@@ -27,7 +28,7 @@ export const cdnUrlMap: { [key in GetMinifiedPorscheNextFontFaceCssOptions['cdn'
 export const getMinifiedPorscheNextFontFaceCss = (opts: GetMinifiedPorscheNextFontFaceCssOptions): string => {
   const { cdn } = opts;
 
-  const style = {
+  const style: Styles = {
     '@font-face': Object.entries(FONTS_MANIFEST).map(([name, resource]) => {
       const [, charset, weight] = /porscheNextW(La|Gr|Cy)(Thin|Regular|SemiBold|Bold)/.exec(name) || [];
 
