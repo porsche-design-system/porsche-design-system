@@ -89,9 +89,9 @@ ngOnInit() {
             ? `ngOnInit() {\n  ${script}\n}`
             : ''
         )
-          .replace(/^/, '\n') // leading new line
+          .replace(/^(.)/, '\n$1') // leading new line if there is any content
           .replace(/(\n)/g, '$1  ') // fix indentation
-          .replace(/$/, '\n'); // trailing new line
+          .replace(/(.)$/, '$1\n'); // trailing new line if there is any content
 
         // conditional template rendering
         template = template
