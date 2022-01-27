@@ -34,13 +34,15 @@ type FontFaceStylesheetOptionsJsx = FontFaceStylesheetOptions & {
   const func = `export function getFontFaceStylesheet(opts?: FontFaceStylesheetOptionsHtml): string
 export function getFontFaceStylesheet(opts?: FontFaceStylesheetOptionsJsx): JSX.Element
 export function getFontFaceStylesheet(opts?: FontFaceStylesheetOptions): string | JSX.Element {
-  const options: FontFaceStylesheetOptions = {
+  const { cdn, withoutTags, format }: FontFaceStylesheetOptions = {
     cdn: 'auto',
     withoutTags: false,
     format: 'html',
     ...opts
   };
-  const { cdn, withoutTags, format } = options;
+
+  deprecationWarningWithoutTags('getFontFaceStylesheet', withoutTags);
+  
   const cdnBaseUrl = getCdnBaseUrl(cdn);
   const url = \`\${cdnBaseUrl}/${CDN_BASE_PATH_STYLES}/\${cdn === 'cn'
     ? '${cssFileCn}'
