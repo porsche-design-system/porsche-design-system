@@ -52,16 +52,14 @@ describe('getContentHeight()', () => {
 });
 
 describe('warnIfCompactAndSizeIsSet()', () => {
-  beforeEach(() => {
-    jest.spyOn(global.console, 'warn').mockImplementation(() => {});
-  });
-
   it('should print warning when compact and size is defined', () => {
+    const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
     const host = document.createElement('p-accordion');
 
     warnIfCompactAndSizeIsSet(host, true, 'small');
     warnIfCompactAndSizeIsSet(host, false, 'medium');
-    expect(console.warn).toBeCalledTimes(0);
+
+    expect(spy).toBeCalledTimes(0);
 
     warnIfCompactAndSizeIsSet(host, true, 'medium');
     warnIfCompactAndSizeIsSet(
@@ -70,7 +68,7 @@ describe('warnIfCompactAndSizeIsSet()', () => {
       '{"base":"small","xs":"small","s":"medium","m":"small","l":"medium","xl":"small"}'
     );
 
-    expect(console.warn).toBeCalledTimes(2);
+    expect(spy).toBeCalledTimes(2);
   });
 });
 
