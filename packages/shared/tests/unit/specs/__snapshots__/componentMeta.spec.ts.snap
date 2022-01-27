@@ -188,7 +188,7 @@ Object {
     "styling": "jss",
   },
   "p-modal": Object {
-    "hasSlottedCss": false,
+    "hasSlottedCss": true,
     "isDelegatingFocus": false,
     "isFocusable": true,
     "isThemeable": false,

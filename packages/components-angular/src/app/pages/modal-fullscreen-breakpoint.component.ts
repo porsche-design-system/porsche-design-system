@@ -20,8 +20,9 @@ import { Component } from '@angular/core';
         [heading]="'Some Heading with a very long title across multiple lines'"
         [open]="true"
         [fullscreen]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
-        >Some Content</p-modal
       >
+        Some Content
+      </p-modal>
     </div>
   `,
 })

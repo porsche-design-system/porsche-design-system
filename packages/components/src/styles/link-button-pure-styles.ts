@@ -4,7 +4,6 @@ import type { AlignLabel, AlignLabelType, LinkButtonPureIconName, TextSize, Them
 import type { FontSizeLineHeight } from '@porsche-design-system/utilities-v2';
 import { buildResponsiveStyles, generateTypeScale, hasVisibleIcon, mergeDeep, paramCaseToCamelCase } from '../utils';
 import {
-  addImportantToEachRule,
   addImportantToRule,
   getFocusStyles,
   getInset,
@@ -123,7 +122,8 @@ export const getLinkButtonPureStyles = (
 
   return {
     ':host': {
-      ...addImportantToEachRule({ position: 'relative', outline: 0 }),
+      position: 'relative',
+      outline: addImportantToRule(0),
       ...buildResponsiveStyles(hasSubline ? false : stretch, getHostStyles),
     },
     root: {

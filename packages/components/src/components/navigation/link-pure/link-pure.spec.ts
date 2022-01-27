@@ -2,7 +2,7 @@ import { LinkPure } from './link-pure';
 import * as transitionListenerUtils from '../../../utils/transition-listener';
 import * as linkValidationUtils from '../link-validation';
 
-describe('componentWillLoad()', () => {
+describe('componentWillLoad', () => {
   it('should call throwIfInvalidLinkUsage() ', () => {
     const spy = jest.spyOn(linkValidationUtils, 'throwIfInvalidLinkUsage');
 
@@ -15,7 +15,7 @@ describe('componentWillLoad()', () => {
   });
 });
 
-describe('componentDidLoad()', () => {
+describe('componentDidLoad', () => {
   let spy: jest.SpyInstance;
   beforeEach(() => {
     spy = jest.spyOn(transitionListenerUtils, 'transitionListener').mockImplementation(() => {});

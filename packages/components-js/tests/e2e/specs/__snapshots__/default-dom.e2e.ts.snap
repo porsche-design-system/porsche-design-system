@@ -440,14 +440,12 @@ exports[`should have no basic DOM regression for p-marque 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-modal 1`] = `
-"<aside class=\\"root\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\">
-  <header>
-    <p-button-pure class=\\"close hydrated\\">
-      Close modal</p-button-pure>
-  </header>
+"<div class=\\"root\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\">
+  <p-button-pure class=\\"close hydrated\\">
+    Close modal</p-button-pure>
   <slot>
   </slot>
-</aside>"
+</div>"
 `;
 
 exports[`should have no basic DOM regression for p-pagination 1`] = `
