@@ -1,13 +1,6 @@
-import {
-  addImportantToRule,
-  breakpoint,
-  buildSlottedStyles,
-  getBaseSlottedStyles,
-  getCss,
-  mediaQuery,
-  pxToRemWithUnit,
-} from '../../../utils';
-import type { JssStyle } from '../../../utils';
+import type { JssStyle } from 'jss';
+import { buildSlottedStyles, getCss } from '../../../utils';
+import { addImportantToRule, breakpoint, getBaseSlottedStyles, mediaQuery, pxToRemWithUnit } from '../../../styles';
 import { BANNER_Z_INDEX } from '../../../constants';
 
 const bannerPositionTypeVar = '--p-banner-position-type';

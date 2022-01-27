@@ -1,5 +1,5 @@
-import { addImportantToEachRule, getCss, pxToRemWithUnit } from '../../../../utils';
-import { color } from '@porsche-design-system/utilities';
+import { getCss } from '../../../../utils';
+import { addImportantToEachRule, pxToRemWithUnit, getThemedColors } from '../../../../styles';
 
 export const getComponentCss = (multiline: boolean): string => {
   return getCss({
@@ -8,7 +8,7 @@ export const getComponentCss = (multiline: boolean): string => {
       padding: pxToRemWithUnit(12),
       margin: 0,
       verticalAlign: 'middle',
-      borderBottom: `1px solid ${color.neutralContrast.low}`,
+      borderBottom: `1px solid ${getThemedColors('light').contrastLowColor}`,
       whiteSpace: multiline ? 'normal' : 'nowrap',
     }),
   });

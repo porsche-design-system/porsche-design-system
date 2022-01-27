@@ -1,19 +1,13 @@
-import {
-  addImportantToEachRule,
-  buildSlottedStyles,
-  getBaseSlottedStyles,
-  getCss,
-  getThemedColors,
-  mergeDeep,
-  pxToRemWithUnit,
-} from '../../../utils';
-import type { Styles, BreakpointCustomizable } from '../../../utils';
+import type { Styles } from 'jss';
+import type { BreakpointCustomizable } from '../../../utils';
 import type { FormState, Theme } from '../../../types';
+import { buildSlottedStyles, getCss, mergeDeep } from '../../../utils';
+import { addImportantToEachRule, getBaseSlottedStyles, pxToRemWithUnit, getThemedColors } from '../../../styles';
 import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles';
 import { isVisibleFormState } from '../../../utils/form-state';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
-import { srOnly } from '@porsche-design-system/utilities';
+import { getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
@@ -55,7 +49,7 @@ export const getComponentCss = (
         color: contrastMediumColor,
       },
       'sr-only': {
-        ...srOnly(),
+        ...getScreenReaderOnlyJssStyle(),
         padding: 0,
       },
     }),

@@ -3,7 +3,7 @@ import { minifyHTML } from './utils';
 import { CDN_BASE_PATH_STYLES } from '../../../../../cdn.config';
 
 export const generateFontFaceStylesheetPartial = (): string => {
-  const generatedUtilitiesPackage = fs.readFileSync(require.resolve('@porsche-design-system/utilities'), 'utf8');
+  const generatedUtilitiesPackage = fs.readFileSync(require.resolve('@porsche-design-system/styles'), 'utf8');
   const hashedFontFaceCssFiles = generatedUtilitiesPackage.match(/(font-face\.min[\w\d\.]*)/g);
 
   const types = `type FontFaceStylesheetOptions = {

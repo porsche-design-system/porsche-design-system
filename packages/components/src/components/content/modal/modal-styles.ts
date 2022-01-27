@@ -1,20 +1,19 @@
-import type { BreakpointCustomizable, GetStylesFunction, JssStyle, BreakpointKey } from '../../../utils';
+import type { JssStyle } from 'jss';
+import type { BreakpointCustomizable, GetStylesFunction, BreakpointKey } from '../../../utils';
+import { BREAKPOINTS, buildResponsiveStyles, getCss, mergeDeep, parseJSON, buildSlottedStyles } from '../../../utils';
 import {
   addImportantToEachRule,
-  BREAKPOINTS,
-  buildResponsiveStyles,
-  buildSlottedStyles,
   contentWrapperVars,
   getBaseSlottedStyles,
-  getCss,
   getInset,
+  getThemedColors,
   mediaQuery,
-  mergeDeep,
-  parseJSON,
   pxToRemWithUnit,
-} from '../../../utils';
-import { color } from '@porsche-design-system/utilities';
+} from '../../../styles';
 import { MODAL_Z_INDEX } from '../../../constants';
+
+const { backgroundColor: lightThemeBackgroundColor } = getThemedColors('light');
+const { backgroundColor: darkThemeBackgroundColor } = getThemedColors('dark');
 
 const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
 const { maxWidth, margin, marginXl, marginXxl } = contentWrapperVars;
@@ -91,7 +90,7 @@ export const getComponentCss = (
         content: '""',
         position: 'fixed',
         ...getInset(),
-        background: `${color.darkTheme.background.default}e6`, // e6 = 0.9 alpha
+        background: `${darkThemeBackgroundColor}e6`, // e6 = 0.9 alpha
       }),
     },
     root: mergeDeep(buildResponsiveStyles(fullscreen, getFullscreenStyles), {
@@ -100,7 +99,7 @@ export const getComponentCss = (
       transition: `transform .6s ${transitionTimingFunction}`,
       transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
       padding: pxToRemWithUnit(32),
-      backgroundColor: color.background.default,
+      backgroundColor: lightThemeBackgroundColor,
       [mediaQuery('m')]: {
         padding: pxToRemWithUnit(40),
       },
@@ -176,8 +175,8 @@ export const getComponentCss = (
       top: 0,
       right: 0,
       padding: pxToRemWithUnit(8),
-      border: `${pxToRemWithUnit(6)} solid ${color.background.default}`,
-      backgroundColor: color.background.default,
+      border: `${pxToRemWithUnit(6)} solid ${lightThemeBackgroundColor}`,
+      backgroundColor: lightThemeBackgroundColor,
     },
   });
 };

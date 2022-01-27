@@ -1,7 +1,5 @@
 # compiled output
 /dist
-scss.scss
 
-# generated output
-/src/styles/font-face.variables.scss
-/src/styles/font-face.variables.cn.scss
+# auto generated files
+/src/jss/typography.ts

@@ -1,15 +1,14 @@
-import {
-  addImportantToEachRule,
-  buildSlottedStyles,
-  getBaseSlottedStyles,
-  getCss,
-  getThemedColors,
-  JssStyle,
-  mediaQuery,
-  pxToRemWithUnit,
-} from '../../../utils';
+import type { JssStyle } from 'jss';
 import type { Theme } from '../../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
+import { buildSlottedStyles, getCss } from '../../../utils';
+import {
+  addImportantToEachRule,
+  getBaseSlottedStyles,
+  mediaQuery,
+  pxToRemWithUnit,
+  getThemedColors,
+} from '../../../styles';
 
 const mediaQueryS = mediaQuery('s');
 
