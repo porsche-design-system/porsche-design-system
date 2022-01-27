@@ -11,26 +11,35 @@ type ComponentChunkLinksOptions = {
   components?: ComponentChunkName[];
   cdn?: Cdn;
   withoutTags?: boolean;
+  format?: PartialFormat;
 };
 type ComponentChunkLinksOptionsWithTags = ComponentChunkLinksOptions & {
   withoutTags?: false;
 };
 type ComponentChunkLinksOptionsWithoutTags = ComponentChunkLinksOptions & {
   withoutTags?: true;
-};`;
-
-  const link = minifyHTML('<link rel="preload" href="${url}" as="script">');
+};
+type ComponentChunkLinksOptionsHtml = ComponentChunkLinksOptions & {
+  format: 'html';
+}
+type ComponentChunkLinksOptionsJsx = ComponentChunkLinksOptions & {
+  format: 'jsx';
+}`;
 
   const func = `export function getComponentChunkLinks(opts?: ComponentChunkLinksOptionsWithTags): string;
 export function getComponentChunkLinks(opts?: ComponentChunkLinksOptionsWithoutTags): string[];
-export function getComponentChunkLinks(opts?: ComponentChunkLinksOptions): string | string[] {
-  const options: ComponentChunkLinksOptions = {
+export function getComponentChunkLinks(opts?: ComponentChunkLinksOptionsHtml): string;
+export function getComponentChunkLinks(opts?: ComponentChunkLinksOptionsJsx): JSX.Element[];
+export function getComponentChunkLinks(opts?: ComponentChunkLinksOptions): string | string[] | JSX.Element[] {
+  const { components, cdn, withoutTags, format }: ComponentChunkLinksOptions = {
     components: [],
     cdn: 'auto',
     withoutTags: false,
+    format: 'html',
     ...opts
   };
-  const { components, cdn, withoutTags } = options;
+
+  deprecationWarningWithoutTags('getComponentChunkLinks', withoutTags);
 
   const supportedComponentChunkNames: ComponentChunkName[] = ${JSON.stringify(COMPONENT_CHUNK_NAMES)};
   const invalidComponentChunkNames = components.filter((x) => !supportedComponentChunkNames.includes(x));
@@ -46,12 +55,18 @@ Please use only valid component chunk names:
   const cdnBaseUrl = getCdnBaseUrl(cdn);
   const manifest = ${JSON.stringify(COMPONENT_CHUNKS_MANIFEST)};
   const urls = ['core'].concat(components).map((cmp) => \`\${cdnBaseUrl}/${CDN_BASE_PATH_COMPONENTS}/\${manifest[cmp]}\`);
-  const links = urls
-    .map((url) => \`${link}\`)
-    .map((link, idx) => idx === 0 ? link.replace('>', ' crossorigin>') : link) // core needs crossorigin attribute
-    .join('');
 
-  return withoutTags ? urls : links;
+
+
+  const linksHtml = urls
+     // core needs crossorigin attribute
+    .map((url, idx) => \`<link rel=preload href=\${url} as=script\${idx === 0 && " crossorigin"}>\`).join('');
+
+  const linksJsx = urls.map((url, idx) => <link rel="preload" href={url} as="script" {...(idx === 0 && { crossOrigin: 'true' })} />)
+
+  const markup = format === 'html' ? linksHtml : linksJsx
+
+  return withoutTags ? urls : markup;
 };`;
 
   return [types, func].join('\n\n');
