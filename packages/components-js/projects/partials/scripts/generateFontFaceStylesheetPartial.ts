@@ -27,7 +27,6 @@ type FontFaceStylesheetOptionsJsx = FontFaceStylesheetOptions & {
     .replace(/\$CDN_URL/g, '${cdnBaseUrl}');
   const linksJsx =
     `<><link rel="stylesheet" href="$URL" type="text/css" crossOrigin="true" /><link rel="preconnect" href="$CDN_URL" crossOrigin="true" /><link rel="dns-prefetch" href="$CDN_URL" crossOrigin="true" /></>`
-
       .replace('"$URL"', '{url}')
       .replace(/"\$CDN_URL"/g, '{cdnBaseUrl}');
 
@@ -42,7 +41,7 @@ export function getFontFaceStylesheet(opts?: FontFaceStylesheetOptions): string 
   };
 
   deprecationWarningWithoutTags('getFontFaceStylesheet', withoutTags);
-  
+
   const cdnBaseUrl = getCdnBaseUrl(cdn);
   const url = \`\${cdnBaseUrl}/${CDN_BASE_PATH_STYLES}/\${cdn === 'cn'
     ? '${cssFileCn}'
