@@ -1,6 +1,6 @@
 import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import type { FormState, Theme } from '../../../../types';
-import type { JssStyle, Styles } from '../../../../utils';
+import type { JssStyle, Styles } from 'jss';
 import { getCss, isThemeDark, mergeDeep } from '../../../../utils';
 import {
   getInset,

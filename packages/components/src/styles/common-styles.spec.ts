@@ -1,7 +1,7 @@
 import type { PropertiesHyphen } from 'csstype';
 import type { FormState, Theme } from '../types';
-import type { GetFocusSlottedPseudoStylesOptions, GetFocusStylesOptions } from './common';
-import type { JssStyle } from '../utils';
+import type { GetFocusSlottedPseudoStylesOptions, GetFocusStylesOptions } from './common-styles';
+import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   addImportantToRule,
@@ -15,7 +15,7 @@ import {
   mediaQuery,
   pxToRem,
   pxToRemWithUnit,
-} from './common';
+} from './common-styles';
 
 describe('getTransition()', () => {
   it.each<[keyof PropertiesHyphen, string]>([

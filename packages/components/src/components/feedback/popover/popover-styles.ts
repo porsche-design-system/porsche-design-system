@@ -1,5 +1,5 @@
 import type { PopoverDirection } from './popover-utils';
-import type { JssStyle } from '../../../utils';
+import type { JssStyle } from 'jss';
 import { buildSlottedStyles, getCss } from '../../../utils';
 import {
   addImportantToEachRule,

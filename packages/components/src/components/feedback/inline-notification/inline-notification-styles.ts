@@ -1,4 +1,4 @@
-import type { JssStyle } from '../../../utils';
+import type { JssStyle } from 'jss';
 import type { Theme } from '../../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
 import { buildSlottedStyles, getCss } from '../../../utils';

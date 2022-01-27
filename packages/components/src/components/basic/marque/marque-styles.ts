@@ -1,5 +1,5 @@
 import type { MarqueSize } from './marque-utils';
-import type { JssStyle } from '../../../utils';
+import type { JssStyle } from 'jss';
 import { getCss } from '../../../utils';
 import { addImportantToRule, getFocusStyles, mediaQuery, getThemedColors } from '../../../styles';
 
