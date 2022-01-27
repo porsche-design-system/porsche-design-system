@@ -50,11 +50,7 @@ describe('modal', () => {
       page,
       `
       <p-modal${attributes}>
-        ${
-          hasSlottedHeading
-            ? '<header slot="heading">Some Heading<a href="https://porsche.com">Some link</a></header>'
-            : ''
-        }
+        ${hasSlottedHeading ? '<div slot="heading">Some Heading<a href="https://porsche.com">Some link</a></div>' : ''}
         ${content}
       </p-modal>`
     );
