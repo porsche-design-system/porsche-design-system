@@ -8,7 +8,7 @@ on:
       - release/*
 name: 'Porsche Design System'
 env:
-  PDS_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/node:14.16.1-stretch-slim
+  PDS_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/node:14.18.3-stretch-slim
 jobs:
   components-unit:
     name: 'Components Unit'
@@ -567,7 +567,7 @@ jobs:
       - name: 'Store Utilities Artifact'
         uses: actions/upload-artifact@v2
         with:
-          name: utilities-full-build
+          name: utilities-deprecated-full-build
           path: ./packages/utilities-deprecated/projects/utilities # We have to provide the full directory to avoid nested directory in npm package (scss.scss in package directory)
   utilities:
     name: 'Utilities'
@@ -606,20 +606,57 @@ jobs:
         with:
           entrypoint: run-test-unit
           args: --utilities
+  utilities-deprecated:
+    name: 'Utilities Deprecated'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Cache node_modules'
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+      - name: 'Install'
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Build Core Dependencies'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --core-dependencies
+      - name: 'Unit Test'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-unit
+          args: --utilities-deprecated
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-vrt
-          args: --utilities
+          args: --utilities-deprecated
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v2
         with:
-          name: utilities-vrt-regression
+          name: utilities-deprecated-vrt-regression
           path: ./packages/utilities-deprecated/tests/vrt/results
   assets-deployment:
     name: 'Assets Deployment'
-    needs: [production-builds, components-unit, components-js-unit, components-js-e2e, components-js-vrt, components-angular, components-react, shared, storefront, utilities]
+    needs: [production-builds, components-unit, components-js-unit, components-js-e2e, components-js-vrt, components-angular, components-react, shared, storefront, utilities, utilities-deprecated]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -646,7 +683,7 @@ jobs:
           entrypoint: run-deploy-assets
   storefront-deployment:
     name: 'Storefront Deployment'
-    needs: [production-builds, components-unit, components-js-unit, components-js-e2e, components-js-vrt, components-angular, components-react, shared, storefront, utilities]
+    needs: [production-builds, components-unit, components-js-unit, components-js-e2e, components-js-vrt, components-angular, components-react, shared, storefront, utilities, utilities-deprecated]
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -890,8 +927,8 @@ jobs:
         with:
           entrypoint: run-release-npm
           args: packages/assets/dist
-  release-utilities:
-    name: 'Release Utilities'
+  release-utilities-deprecated:
+    name: 'Release Utilities Deprecated'
     needs: [smoke-test, storefront-deployment]
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
@@ -906,10 +943,10 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
         run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
-      - name: 'Restore Utilities Artifact'
+      - name: 'Restore Utilities Deprecated Artifact'
         uses: actions/download-artifact@v2
         with:
-          name: utilities-full-build
+          name: utilities-deprecated-full-build
           path: ./packages/utilities-deprecated/projects/utilities # See store artifact comment -> full directory and build of utilities
       - name: 'Publish NPM Package'
         uses: ./.github/actions/docker-run

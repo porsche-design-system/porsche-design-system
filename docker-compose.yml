@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   design-system:
-    image: ghcr.io/porscheui/porsche-design-system/node:14.16.1-stretch-slim
+    image: ghcr.io/porscheui/porsche-design-system/node:14.18.3-stretch-slim
     working_dir: /opt/porsche-design-system-app
     user: "${RUN_UID}:${RUN_GID}"
     ports:
@@ -50,31 +50,11 @@ services:
       - components-manager-core-node-modules:/opt/porsche-design-system-app/packages/components-js/projects/components-manager-core/node_modules
       - shared-node-modules:/opt/porsche-design-system-app/packages/shared/node_modules
       - storefront-node-modules:/opt/porsche-design-system-app/packages/storefront/node_modules
-      - utilities-node-modules:/opt/porsche-design-system-app/packages/utilities-deprecated/node_modules
-  change-volume-owner:
-    image: ghcr.io/porscheui/porsche-design-system/node:14.16.1-stretch-slim
-    volumes:
-      - home:/opt/porsche-design-system-volumes/home
-      - monorepo-node-modules:/opt/porsche-design-system-volumes/root-node_modules
-      - assets-node-modules:/opt/porsche-design-system-volumes/assets-node_modules
-      - components-node-modules:/opt/porsche-design-system-volumes/components-node_modules
-      - components-js-node-modules:/opt/porsche-design-system-volumes/components-js-node_modules
-      - components-angular-node-modules:/opt/porsche-design-system-volumes/components-angular-node_modules
-      - components-react-node-modules:/opt/porsche-design-system-volumes/components-react-node_modules
-      - components-react-uxpin-wrapper-node-modules:/opt/porsche-design-system-volumes/components-react-uxpin-wrapper-node_modules
-      - email-node-modules:/opt/porsche-design-system-volumes/email-node_modules
-      - fonts-node-modules:/opt/porsche-design-system-volumes/fonts-node_modules
-      - icons-node-modules:/opt/porsche-design-system-volumes/icons-node_modules
-      - marque-node-modules:/opt/porsche-design-system-volumes/marque-node_modules
-      - meta-icons-node-modules:/opt/porsche-design-system-volumes/meta-icons-node_modules
-      - partials-node-modules:/opt/porsche-design-system-volumes/partials-node_modules
-      - components-manager-cli-node-modules:/opt/porsche-design-system-volumes/components-manager-cli-node_modules
-      - components-manager-core-node-modules:/opt/porsche-design-system-volumes/components-manager-core-node_modules
-      - shared-node-modules:/opt/porsche-design-system-volumes/shared-node_modules
-      - storefront-node-modules:/opt/porsche-design-system-volumes/storefront-node_modules
-      - utilities-node-modules:/opt/porsche-design-system-volumes/utilities-node_modules
-    command: |
-      sh -c "chown ${RUN_UID}:${RUN_GID} /opt/porsche-design-system-volumes/*"
+      - utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/node_modules
+      - utilities-utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/projects/utilities/node_modules
+      - utilities-styles-node-modules:/opt/porsche-design-system-app/packages/utilities/projects/styles/node_modules
+      - utilities-deprecated-node-modules:/opt/porsche-design-system-app/packages/utilities-deprecated/node_modules
+      - utilities-deprecated-utilities-node-modules:/opt/porsche-design-system-app/packages/utilities-deprecated/projects/utilities/node_modules
 volumes:
   home:
   monorepo-node-modules:
@@ -95,3 +75,7 @@ volumes:
   shared-node-modules:
   storefront-node-modules:
   utilities-node-modules:
+  utilities-utilities-node-modules:
+  utilities-styles-node-modules:
+  utilities-deprecated-node-modules:
+  utilities-deprecated-utilities-node-modules:

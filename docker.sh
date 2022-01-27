@@ -9,6 +9,4 @@ export RUN_UID="$(id -u)"
 export RUN_GID="$(id -g)"
 export COMPOSE_PROJECT_NAME="porsche-design-system-v1"
 
-docker pull ghcr.io/porscheui/porsche-design-system/node:14.16.1-stretch-slim
-docker-compose -f "${SCRIPT_DIR}/docker-compose.yml" run --rm change-volume-owner
 docker-compose -f "${SCRIPT_DIR}/docker-compose.yml" run --service-ports --rm design-system "${@}"
