@@ -55,3 +55,25 @@ it.each(extendedViewports)(
     ).toBeFalsy();
   }
 );
+
+it.each(extendedViewports)('should have no visual regression for full-width-slot for viewport %s', async (viewport) => {
+  expect(
+    await vrtTest(getVisualRegressionTester(viewport), 'modal-full-width-slot', '/#modal-full-width-slot')
+  ).toBeFalsy();
+});
+
+it.each(extendedViewports)(
+  'should have no visual regression for modal without heading for viewport %s',
+  async (viewport) => {
+    expect(await vrtTest(getVisualRegressionTester(viewport), 'modal-no-heading', '/#modal-no-heading')).toBeFalsy();
+  }
+);
+
+it.each(extendedViewports)(
+  'should have no visual regression for modal with slotted heading for viewport %s',
+  async (viewport) => {
+    expect(
+      await vrtTest(getVisualRegressionTester(viewport), 'modal-slotted-heading', '/#modal-slotted-heading')
+    ).toBeFalsy();
+  }
+);

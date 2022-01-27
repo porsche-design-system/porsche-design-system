@@ -1,9 +1,10 @@
 import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable, GetStylesFunction, BreakpointKey } from '../../../utils';
-import { BREAKPOINTS, buildResponsiveStyles, getCss, mergeDeep, parseJSON } from '../../../utils';
+import { BREAKPOINTS, buildResponsiveStyles, getCss, mergeDeep, parseJSON, buildSlottedStyles } from '../../../utils';
 import {
   addImportantToEachRule,
   contentWrapperVars,
+  getBaseSlottedStyles,
   getInset,
   getThemedColors,
   mediaQuery,
@@ -16,6 +17,7 @@ const { backgroundColor: darkThemeBackgroundColor } = getThemedColors('dark');
 
 const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
 const { maxWidth, margin, marginXl, marginXxl } = contentWrapperVars;
+export const stretchToFullModalWidthClassName = 'stretch-to-full-modal-width';
 
 export const getFullscreenStyles: GetStylesFunction = (fullscreen: boolean): JssStyle => {
   return fullscreen
@@ -53,7 +55,14 @@ export const isFullscreenForXl = (fullscreen: BreakpointCustomizable<boolean>): 
   }
 };
 
-export const getComponentCss = (open: boolean, fullscreen: BreakpointCustomizable<boolean>): string => {
+const getMargin = (marginValue: number): string => `0 ${pxToRemWithUnit(marginValue)} 0`;
+
+export const getComponentCss = (
+  open: boolean,
+  fullscreen: BreakpointCustomizable<boolean>,
+  disableCloseButton: boolean,
+  hasHeader: boolean
+): string => {
   const isFullscreenForXlAndXxl = isFullscreenForXl(fullscreen);
 
   return getCss({
@@ -102,23 +111,76 @@ export const getComponentCss = (open: boolean, fullscreen: BreakpointCustomizabl
         margin: isFullscreenForXlAndXxl ? 0 : `10vh ${marginXxl}`,
       },
     }),
-    '@global': {
+    ...(hasHeader && {
       header: {
-        display: 'flex',
-        alignItems: 'flex-start',
-        justifyContent: 'space-between',
+        ...(!disableCloseButton && {
+          margin: `0 ${pxToRemWithUnit(32)} 0 0`,
+        }),
         padding: `0 0 ${pxToRemWithUnit(16)}`,
         [mediaQuery('m')]: {
           padding: `0 0 ${pxToRemWithUnit(24)}`,
         },
         [mediaQuery('xxl')]: {
           padding: `0 0 ${pxToRemWithUnit(32)}`,
+          ...(!disableCloseButton && { margin: 0 }),
         },
       },
-    },
+    }),
+
+    '::slotted': addImportantToEachRule({
+      [`&(.${stretchToFullModalWidthClassName})`]: {
+        width: `calc(100% + ${pxToRemWithUnit(64)})`,
+        margin: getMargin(-32),
+      },
+      ...(!hasHeader && {
+        [`&(.${stretchToFullModalWidthClassName}:first-child)`]: {
+          marginTop: pxToRemWithUnit(-32),
+        },
+      }),
+      [`&(.${stretchToFullModalWidthClassName}:last-child)`]: {
+        marginBottom: pxToRemWithUnit(-32),
+      },
+      [mediaQuery('m')]: {
+        [`&(.${stretchToFullModalWidthClassName})`]: {
+          width: `calc(100% + ${pxToRemWithUnit(80)})`,
+          margin: getMargin(-40),
+        },
+        ...(!hasHeader && {
+          [`&(.${stretchToFullModalWidthClassName}:first-child)`]: {
+            marginTop: pxToRemWithUnit(-40),
+          },
+        }),
+        [`&(.${stretchToFullModalWidthClassName}:last-child)`]: {
+          marginBottom: pxToRemWithUnit(-40),
+        },
+      },
+      [mediaQuery('xxl')]: {
+        [`&(.${stretchToFullModalWidthClassName})`]: {
+          width: `calc(100% + ${pxToRemWithUnit(128)})`,
+          margin: getMargin(-64),
+        },
+        ...(!hasHeader && {
+          [`&(.${stretchToFullModalWidthClassName}:first-child)`]: {
+            marginTop: pxToRemWithUnit(-64),
+          },
+        }),
+        [`&(.${stretchToFullModalWidthClassName}:last-child)`]: {
+          marginBottom: pxToRemWithUnit(-64),
+        },
+      },
+    }),
+
     close: {
-      margin: `${pxToRemWithUnit(-8)} ${pxToRemWithUnit(-8)} 0 ${pxToRemWithUnit(16)}`,
+      position: 'absolute',
+      top: 0,
+      right: 0,
       padding: pxToRemWithUnit(8),
+      border: `${pxToRemWithUnit(6)} solid ${lightThemeBackgroundColor}`,
+      backgroundColor: lightThemeBackgroundColor,
     },
   });
+};
+
+export const getSlottedCss = (host: HTMLElement): string => {
+  return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
 };
