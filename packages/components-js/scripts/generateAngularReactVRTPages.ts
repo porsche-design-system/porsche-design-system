@@ -144,22 +144,20 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
         const styleConst = style ? `const style = \`\n  ${style}\n\`;` : '';
         const styleJsx = style ? '\n      <style children={style} />\n' : '';
 
-        const useState = usesComponentsReady
+        const useStateOrEffect = usesComponentsReady
           ? `const [allReady, setAllReady] = useState(false);
 useEffect(() => {
   componentsReady().then(() => {
     setAllReady(true);
   });
 }, []);`
-          : '';
-
-        const useEffect = usesQuerySelector
+          : usesQuerySelector
           ? `useEffect(() => {
   ${script}
 }, []);`
           : '';
 
-        const componentLogic = [styleConst, useState, useEffect]
+        const componentLogic = [styleConst, useStateOrEffect]
           .filter((x) => x)
           .join('\n')
           .replace(/^(.)/, '\n$1') // leading new line
