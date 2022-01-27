@@ -9,12 +9,14 @@ export const getComponentCss = (theme: Theme): string => {
       counterReset: addImportantToRule('section'),
       display: 'block',
     },
-    root: {
-      display: 'block',
-      padding: 0,
-      margin: 0,
-      color: getThemedColors(theme).baseColor,
-      ...textSmall,
+    '@global': {
+      '[role]': {
+        display: 'block',
+        padding: 0,
+        margin: 0,
+        color: getThemedColors(theme).baseColor,
+        ...textSmall,
+      },
     },
   });
 };
