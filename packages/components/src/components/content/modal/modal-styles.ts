@@ -118,8 +118,16 @@ export const getComponentCss = (
           margin: `0 ${pxToRemWithUnit(32)} 0 0`,
         }),
         padding: `0 0 ${pxToRemWithUnit(16)}`,
+        [mediaQuery('m')]: {
+          padding: `0 0 ${pxToRemWithUnit(24)}`,
+        },
+        [mediaQuery('xxl')]: {
+          padding: `0 0 ${pxToRemWithUnit(32)}`,
+          ...(!disableCloseButton && { margin: 0 }),
+        },
       },
     }),
+
     '::slotted': addImportantToEachRule({
       [`&(.${stretchToFullModalWidthClassName})`]: {
         width: `calc(100% + ${pxToRemWithUnit(64)})`,
@@ -133,23 +141,7 @@ export const getComponentCss = (
       [`&(.${stretchToFullModalWidthClassName}:last-child)`]: {
         marginBottom: pxToRemWithUnit(-32),
       },
-    }),
-    close: {
-      position: 'absolute',
-      top: 0,
-      right: 0,
-      padding: pxToRemWithUnit(8),
-      border: `${pxToRemWithUnit(6)} solid ${color.background.default}`,
-      backgroundColor: color.background.default,
-    },
-
-    [mediaQuery('m')]: {
-      ...(hasHeader && {
-        header: {
-          padding: `0 0 ${pxToRemWithUnit(24)}`,
-        },
-      }),
-      '::slotted': addImportantToEachRule({
+      [mediaQuery('m')]: {
         [`&(.${stretchToFullModalWidthClassName})`]: {
           width: `calc(100% + ${pxToRemWithUnit(80)})`,
           margin: getMargin(-40),
@@ -162,16 +154,8 @@ export const getComponentCss = (
         [`&(.${stretchToFullModalWidthClassName}:last-child)`]: {
           marginBottom: pxToRemWithUnit(-40),
         },
-      }),
-    },
-    [mediaQuery('xxl')]: {
-      ...(hasHeader && {
-        header: {
-          padding: `0 0 ${pxToRemWithUnit(32)}`,
-          ...(!disableCloseButton && { margin: 0 }),
-        },
-      }),
-      '::slotted': addImportantToEachRule({
+      },
+      [mediaQuery('xxl')]: {
         [`&(.${stretchToFullModalWidthClassName})`]: {
           width: `calc(100% + ${pxToRemWithUnit(128)})`,
           margin: getMargin(-64),
@@ -184,7 +168,16 @@ export const getComponentCss = (
         [`&(.${stretchToFullModalWidthClassName}:last-child)`]: {
           marginBottom: pxToRemWithUnit(-64),
         },
-      }),
+      },
+    }),
+
+    close: {
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      padding: pxToRemWithUnit(8),
+      border: `${pxToRemWithUnit(6)} solid ${color.background.default}`,
+      backgroundColor: color.background.default,
     },
   });
 };
