@@ -1,8 +1,17 @@
-import { Component, Event, EventEmitter, Element, h, JSX, Prop, Watch, Host } from '@stencil/core';
-import type { BreakpointCustomizable } from '../../../types';
-import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
-import { getFirstAndLastElement, getFocusableElements, getScrollTopOnTouch, setScrollLock } from './modal-utils';
-import { getComponentCss } from './modal-styles';
+import { Component, Element, Event, EventEmitter, Host, JSX, Prop, Watch, h } from '@stencil/core';
+import type { BreakpointCustomizable, SelectedAriaAttributes } from '../../../types';
+import { attachComponentCss, attachSlottedCss, getPrefixedTagNames, parseAndGetAriaAttributes } from '../../../utils';
+import type { ModalAriaAttributes } from './modal-utils';
+import {
+  getFirstAndLastElement,
+  getFocusableElements,
+  getScrollTopOnTouch,
+  hasSlottedHeading,
+  MODAL_ARIA_ATTRIBUTES,
+  setScrollLock,
+  warnIfAriaAndHeadingPropsAreUndefined,
+} from './modal-utils';
+import { getComponentCss, getSlottedCss } from './modal-styles';
 
 @Component({
   tag: 'p-modal',
@@ -26,12 +35,16 @@ export class Modal {
   /** If true the modal uses max viewport height and width. Should only be used for mobile. */
   @Prop() public fullscreen?: BreakpointCustomizable<boolean> = false;
 
+  /** Add ARIA attributes. */
+  @Prop() public aria?: SelectedAriaAttributes<ModalAriaAttributes>;
+
   /** Emitted when the component requests to be closed. */
   @Event({ bubbles: false }) public close?: EventEmitter<void>;
 
   private focusedElBeforeOpen: HTMLElement;
   private focusableElements: HTMLElement[] = [];
   private closeBtn: HTMLElement;
+  private hasHeader: boolean;
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
@@ -47,6 +60,7 @@ export class Modal {
   }
 
   public connectedCallback(): void {
+    attachSlottedCss(this.host, getSlottedCss);
     if (this.open) {
       // in case modal is rendered with open prop
       this.setKeyboardListener(true);
@@ -60,7 +74,9 @@ export class Modal {
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen);
+    warnIfAriaAndHeadingPropsAreUndefined(this.host, this.heading, this.aria);
+    this.hasHeader = !!this.heading || hasSlottedHeading(this.host);
+    attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen, this.disableCloseButton, this.hasHeader);
   }
 
   public componentDidUpdate(): void {
@@ -77,41 +93,41 @@ export class Modal {
   }
 
   public render(): JSX.Element {
-    const hasHeader = this.heading || !this.disableCloseButton;
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host onMouseDown={!this.disableBackdropClick && this.onMouseDown}>
-        <aside
+        <div
           class="root"
           role="dialog"
           aria-modal="true"
-          aria-label={this.heading}
+          {...{ ['aria-label']: this.heading, ...parseAndGetAriaAttributes(this.aria, MODAL_ARIA_ATTRIBUTES) }}
           aria-hidden={!this.open ? 'true' : 'false'}
         >
-          {hasHeader && (
-            <header>
+          {!this.disableCloseButton && (
+            <PrefixedTagNames.pButtonPure
+              class="close"
+              type="button"
+              ref={(el) => (this.closeBtn = el)}
+              hideLabel
+              icon="close"
+              onClick={this.closeModal}
+            >
+              Close modal
+            </PrefixedTagNames.pButtonPure>
+          )}
+          {this.hasHeader && (
+            <div class="header">
               {this.heading && (
                 <PrefixedTagNames.pHeadline variant={{ base: 'medium', m: 'large' }}>
                   {this.heading}
                 </PrefixedTagNames.pHeadline>
               )}
-              {!this.disableCloseButton && (
-                <PrefixedTagNames.pButtonPure
-                  class="close"
-                  type="button"
-                  ref={(el) => (this.closeBtn = el)}
-                  hideLabel
-                  icon="close"
-                  onClick={this.closeModal}
-                >
-                  Close modal
-                </PrefixedTagNames.pButtonPure>
-              )}
-            </header>
+              {!this.heading && this.hasHeader && <slot name="heading" />}
+            </div>
           )}
           <slot />
-        </aside>
+        </div>
       </Host>
     );
   }

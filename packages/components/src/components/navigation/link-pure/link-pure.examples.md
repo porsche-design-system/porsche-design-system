@@ -1,9 +1,10 @@
 # Link Pure
 
-The `p-link-pure` component is essential for performing changes in **page routes**.
-A Link Pure can be used with or without a label, but it's recommended to keep the **label visible** for better **usability** whenever possible.
-When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers.
-In case you want the user to execute an action, you should select the [Button](components/button) or [Button Pure](components/button-pure) component instead.
+The `p-link-pure` component is essential for performing changes in **page routes**.  
+A Link Pure can be used with or without a label, but it's recommended to keep the **label visible** for better **usability** whenever possible.  
+When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers.  
+When overriding the `position` style of the `p-link-pure` component, make sure to not use `position: static`, which would make the click area expand to the entire viewport.    
+In case you want the user to execute an action, you should select the [Button](components/button) or [Button Pure](components/button-pure) component instead.  
 
 <TableOfContents></TableOfContents>
 
