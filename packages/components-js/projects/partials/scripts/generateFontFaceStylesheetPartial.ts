@@ -13,7 +13,11 @@ export const generateFontFaceStylesheetPartial = (): string => {
 
   const cssFileCn = hashedFontFaceCssFiles?.find((x) => x.includes('.cn.'));
   const cssFileCom = hashedFontFaceCssFiles?.find((x) => !x.includes('.cn.'));
-  const link = minifyHTML('<link rel="stylesheet" href="$URL" type="text/css" crossorigin>').replace('$URL', '${url}');
+  const links = minifyHTML(`<link rel="stylesheet" href="$URL" type="text/css" crossorigin>
+<link rel="preconnect" href="$CDN_URL">
+<link rel="dns-prefetch" href="$CDN_URL">`)
+    .replace('$URL', '${url}')
+    .replace(/\$CDN_URL/g, '${cdnBaseUrl}');
 
   const func = `export const getFontFaceStylesheet = (opts?: FontFaceStylesheetOptions): string => {
   const options: FontFaceStylesheetOptions = {
@@ -22,14 +26,15 @@ export const generateFontFaceStylesheetPartial = (): string => {
     ...opts
   };
   const { cdn, withoutTags } = options;
-  const url = \`\${getCdnBaseUrl(cdn)}/${CDN_BASE_PATH_STYLES}/\${cdn === 'cn'
+  const cdnBaseUrl = getCdnBaseUrl(cdn)
+  const url = \`\${cdnBaseUrl}/${CDN_BASE_PATH_STYLES}/\${cdn === 'cn'
     ? '${cssFileCn}'
     : '${cssFileCom}'
   }\`;
 
   return withoutTags
     ? url
-    : \`${link}\`;
+    : \`${links}\`;
 }`;
 
   return [types, func].join('\n\n');
