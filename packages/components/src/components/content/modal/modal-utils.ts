@@ -1,6 +1,7 @@
-import { getHTMLElements, getPrefixedTagNames, isIos } from '../../../utils';
+import { getHTMLElements, getPrefixedTagNames, getTagName, hasNamedSlot, isIos } from '../../../utils';
 import { FOCUSABLE_TAG_NAMES_CAMEL_CASE } from '@porsche-design-system/shared';
 import type { TagNameCamelCase } from '@porsche-design-system/shared';
+import type { SelectedAriaAttributes } from '../../../types';
 
 export const getFocusableElements = (host: HTMLElement, closeButton: HTMLElement): HTMLElement[] => {
   const PrefixedTagNames = getPrefixedTagNames(host);
@@ -46,4 +47,23 @@ export const getScrollTopOnTouch = (host: HTMLElement, e: TouchEvent): number =>
 
 export const getFirstAndLastElement = <T>(elements: T[]): T[] => {
   return [elements[0], elements[elements.length - 1]];
+};
+
+export const warnIfAriaAndHeadingPropsAreUndefined = (
+  host: HTMLElement,
+  heading: string,
+  aria: SelectedAriaAttributes<ModalAriaAttributes>
+): void => {
+  if (!heading && !aria) {
+    console.warn(
+      `Either heading or aria attributes on ${getTagName(host)} have to be set in order to ensure accessibility.`
+    );
+  }
+};
+
+export const MODAL_ARIA_ATTRIBUTES = ['aria-label'] as const;
+export type ModalAriaAttributes = typeof MODAL_ARIA_ATTRIBUTES[number];
+
+export const hasSlottedHeading = (host: HTMLElement): boolean => {
+  return hasNamedSlot(host, 'heading');
 };

@@ -115,6 +115,16 @@ export const routes: RouteType[] = [
     component: fromPages.ModalFullscreenBreakpointPage,
   },
   {
+    name: 'Modal Full Width Slot',
+    path: '/modal-full-width-slot',
+    component: fromPages.ModalFullWidthSlot,
+  },
+  {
+    name: 'Modal No Heading',
+    path: '/modal-no-heading',
+    component: fromPages.ModalNoHeading,
+  },
+  {
     name: 'Modal Prefixed',
     path: '/modal-prefixed',
     component: fromPages.ModalPrefixedPage,
@@ -123,6 +133,11 @@ export const routes: RouteType[] = [
     name: 'Modal Scrollable',
     path: '/modal-scrollable',
     component: fromPages.ModalScrollablePage,
+  },
+  {
+    name: 'Modal Slotted Heading',
+    path: '/modal-slotted-heading',
+    component: fromPages.ModalSlottedHeadingPage,
   },
   {
     name: 'Pagination',

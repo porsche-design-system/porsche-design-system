@@ -2,6 +2,7 @@ import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
 import type { TagName } from '@porsche-design-system/shared';
 import * as domUtils from '../utils/dom';
 import * as jssUtils from '../utils/jss';
+import * as slottedStylesUtils from '../utils/slotted-styles';
 
 /* Auto Generated Start */
 import { Button } from './action/button/button';
@@ -109,6 +110,7 @@ export const TAG_NAMES_CONSTRUCTOR_MAP: { [key in TagName]: new () => ClassType 
 
 const tagNamesWithRequiredChild = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredChild);
 const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).styling === 'jss');
+const tagNamesWithSlottedCss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasSlottedCss);
 
 it('should have same amount of elements in TAG_NAMES_CONSTRUCTOR_MAP as in TAG_NAMES', () => {
   expect(Object.keys(TAG_NAMES_CONSTRUCTOR_MAP).length).toBe(TAG_NAMES.length);
@@ -156,6 +158,8 @@ it.each<TagName>(tagNamesWithJss)('should call attachComponentCss() in correct l
 
     if (['p-checkbox-wrapper', 'p-radio-button-wrapper'].includes(tagName)) {
       component['input'] = document.createElement('input');
+    } else if (tagName === 'p-modal') {
+      component['aria'] = { 'aria-label': 'Some Heading' };
     }
 
     try {
@@ -169,4 +173,18 @@ it.each<TagName>(tagNamesWithJss)('should call attachComponentCss() in correct l
   }
 
   expect(spyCalls).toBe(1); // via connectedCallback or componentWillRender
+});
+
+it.each<TagName>(tagNamesWithSlottedCss)('should call attachSlottedCss() in correct lifecycle for %s', (tagName) => {
+  const spy = jest.spyOn(slottedStylesUtils, 'attachSlottedCss');
+
+  const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
+  component.host = document.createElement(tagName);
+  component.host.attachShadow({ mode: 'open' });
+
+  try {
+    component.connectedCallback();
+  } catch (e) {}
+
+  expect(spy).toBeCalledWith(component.host, expect.any(Function)); // 2 parameters within connectedCallback
 });
