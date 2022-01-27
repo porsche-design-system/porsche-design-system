@@ -23,6 +23,7 @@ import { InlineNotificationState } from "./components/feedback/inline-notificati
 import { LinkAriaAttributes } from "./components/navigation/link/link-utils";
 import { SocialIconName } from "./components/navigation/link-social/link-social-utils";
 import { MarqueAriaAttributes, MarqueSize } from "./components/basic/marque/marque-utils";
+import { ModalAriaAttributes } from "./components/content/modal/modal-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/navigation/pagination/pagination-utils";
 import { PopoverDirection } from "./components/feedback/popover/popover-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
@@ -574,6 +575,10 @@ export namespace Components {
         "trademark"?: boolean;
     }
     interface PModal {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<ModalAriaAttributes>;
         /**
           * If true, the modal will not be closable via backdrop click.
          */
@@ -1841,6 +1846,10 @@ declare namespace LocalJSX {
         "trademark"?: boolean;
     }
     interface PModal {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<ModalAriaAttributes>;
         /**
           * If true, the modal will not be closable via backdrop click.
          */

@@ -1,4 +1,11 @@
-import { getFirstAndLastElement, getScrollTopOnTouch, getFocusableElements, setScrollLock } from './modal-utils';
+import {
+  getFirstAndLastElement,
+  getFocusableElements,
+  getScrollTopOnTouch,
+  hasSlottedHeading,
+  setScrollLock,
+  warnIfAriaAndHeadingPropsAreUndefined,
+} from './modal-utils';
 import * as deviceDetectionUtils from '../../../utils/device-detection';
 import * as domUtils from '../../../utils/dom';
 
@@ -147,5 +154,39 @@ describe('getFirstAndLastElement()', () => {
     ],
   ])('should be called with %j and return %j', (initArray: any, resultArray) => {
     expect(getFirstAndLastElement(initArray)).toEqual(resultArray);
+  });
+});
+
+describe('warnIfAriaAndHeadingPropsAreUndefined()', () => {
+  it('should print warning when aria and heading props are undefined', () => {
+    const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+    const host = document.createElement('p-modal');
+
+    warnIfAriaAndHeadingPropsAreUndefined(host, 'Heading', undefined);
+    warnIfAriaAndHeadingPropsAreUndefined(host, undefined, "{'aria-label': 'OtherHeading'}");
+    warnIfAriaAndHeadingPropsAreUndefined(host, 'Heading', "{'aria-label': 'OtherHeading'}");
+
+    expect(spy).toBeCalledTimes(0);
+
+    warnIfAriaAndHeadingPropsAreUndefined(host, undefined, undefined);
+    warnIfAriaAndHeadingPropsAreUndefined(host, null, null);
+
+    expect(spy).toBeCalledTimes(2);
+  });
+});
+
+describe('hasSlottedHeading()', () => {
+  it('should return true with slotted heading', () => {
+    const host = document.createElement('p-modal');
+    const header = document.createElement('header');
+    header.slot = 'heading';
+    host.appendChild(header);
+
+    expect(hasSlottedHeading(host)).toBe(true);
+  });
+
+  it('should return false without heading', () => {
+    const host = document.createElement('p-modal');
+    expect(hasSlottedHeading(host)).toBe(false);
   });
 });
