@@ -23,8 +23,9 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
   const comment = '/* Auto Generated File */\n// @ts-nocheck';
 
   Object.entries(htmlFileContentMap)
-    .filter((_, i) => i === 24) // for easy debugging
-    // TODO: icon, flex, modal-prefixed, overview
+    .filter((_, i) => i >= 44) // for easy debugging
+    // TODO: icon, flex, modal-prefixed, overview, table
+    // TODO: toast-basic-dark, toast-basic-long-text, toast-basic, toast-offset, toast-prefixed
     // .filter(([component]) => component === 'icon') // for easy debugging
     .forEach(([fileName, fileContent]) => {
       fileContent = fileContent.trim();
@@ -172,6 +173,7 @@ useEffect(() => {
         fileContent = fileContent.replace(templateRegEx, template);
 
         // attribute conversion
+        // TODO: textarea defaultValue
         fileContent = fileContent.replace(/ c(hecked)/g, ' defaultC$1');
 
         fileContent = `${comment}
