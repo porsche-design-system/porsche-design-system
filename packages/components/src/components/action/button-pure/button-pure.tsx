@@ -89,6 +89,7 @@ export class ButtonPure {
   }
 
   public componentWillRender(): void {
+    warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon);
     attachComponentCss(
       this.host,
       getComponentCss,
@@ -102,7 +103,6 @@ export class ButtonPure {
       hasSlottedSubline(this.host),
       this.theme
     );
-    warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon);
   }
 
   public componentDidLoad(): void {

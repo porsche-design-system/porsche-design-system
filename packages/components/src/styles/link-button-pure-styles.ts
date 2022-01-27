@@ -1,6 +1,5 @@
 import type { BreakpointCustomizable, GetStylesFunction, JssStyle, Styles } from '../utils';
 import {
-  addImportantToEachRule,
   addImportantToRule,
   buildResponsiveStyles,
   generateTypeScale,
@@ -125,7 +124,8 @@ export const getLinkButtonPureStyles = (
 
   return {
     ':host': {
-      ...addImportantToEachRule({ position: 'relative', outline: 0 }),
+      position: 'relative',
+      outline: addImportantToRule(0),
       ...buildResponsiveStyles(hasSubline ? false : stretch, getHostStyles),
     },
     root: {
