@@ -1,6 +1,7 @@
+import type { JssStyle } from 'jss';
 import type { GridGutter, GridGutterType } from '../grid/grid-utils';
 import type { GridItemOffset, GridItemOffsetType, GridItemSize, GridItemSizeType } from './grid-item-utils';
-import type { GetStylesFunction, JssStyle } from '../../../../utils';
+import type { GetStylesFunction } from '../../../../utils';
 import { buildResponsiveHostStyles, getCss, mergeDeep } from '../../../../utils';
 import { addImportantToEachRule, pxToRemWithUnit } from '../../../../styles';
 

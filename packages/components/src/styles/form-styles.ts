@@ -1,4 +1,4 @@
-import type { Styles, JssStyle } from '../utils';
+import type { Styles, JssStyle } from 'jss';
 import type { BreakpointCustomizable } from '../utils';
 import type { FormState, Theme } from '../types';
 import { buildResponsiveStyles, isThemeDark } from '../utils';

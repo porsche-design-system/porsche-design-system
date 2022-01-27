@@ -1,5 +1,5 @@
+import type { Styles } from 'jss';
 import type { FormState, Theme } from '../../../types';
-import type { Styles } from '../../../utils';
 import { getTransition, getThemedFormStateColors } from '../../../styles';
 import { spacing } from '@porsche-design-system/utilities-v2';
 

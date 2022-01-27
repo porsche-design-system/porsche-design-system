@@ -1,3 +1,4 @@
+import type { JssStyle } from 'jss';
 import type {
   FlexItemAlignSelf,
   FlexItemAlignSelfType,
@@ -12,7 +13,7 @@ import type {
   FlexItemWidth,
   FlexItemWidthType,
 } from './flex-item-utils';
-import type { GetStylesFunction, JssStyle } from '../../../../utils';
+import type { GetStylesFunction } from '../../../../utils';
 import { buildResponsiveHostStyles, getCss, mergeDeep } from '../../../../utils';
 import { addImportantToEachRule } from '../../../../styles';
 

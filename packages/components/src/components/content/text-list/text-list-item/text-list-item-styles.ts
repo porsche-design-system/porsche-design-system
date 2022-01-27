@@ -1,4 +1,5 @@
-import type { GetStylesFunction, JssStyle } from '../../../../utils';
+import type { JssStyle } from 'jss';
+import type { GetStylesFunction } from '../../../../utils';
 import type { ListType, OrderType } from '../text-list/text-list-utils';
 import { getCss, mergeDeep } from '../../../../utils';
 import { addImportantToEachRule, pxToRemWithUnit } from '../../../../styles';
