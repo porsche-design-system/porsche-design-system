@@ -9,32 +9,49 @@ export const generateFontFaceStylesheetPartial = (): string => {
   const types = `type FontFaceStylesheetOptions = {
   cdn?: Cdn;
   withoutTags?: boolean;
+  format?: PartialFormat;
+}
+type FontFaceStylesheetOptionsHtml = FontFaceStylesheetOptions & {
+  format?: 'html'
+}
+type FontFaceStylesheetOptionsJsx = FontFaceStylesheetOptions & {
+  format?: 'jsx'
 }`;
 
   const cssFileCn = hashedFontFaceCssFiles?.find((x) => x.includes('.cn.'));
   const cssFileCom = hashedFontFaceCssFiles?.find((x) => !x.includes('.cn.'));
-  const links = minifyHTML(`<link rel="stylesheet" href="$URL" type="text/css" crossorigin>
-<link rel="preconnect" href="$CDN_URL">
-<link rel="dns-prefetch" href="$CDN_URL">`)
+  const linksHtml = minifyHTML(
+    `<link rel="stylesheet" href="$URL" type="text/css" crossorigin><link rel="preconnect" href="$CDN_URL"><link rel="dns-prefetch" href="$CDN_URL">`
+  )
     .replace('$URL', '${url}')
     .replace(/\$CDN_URL/g, '${cdnBaseUrl}');
+  const linksJsx =
+    `<><link rel="stylesheet" href="$URL" type="text/css" crossOrigin="true" /><link rel="preconnect" href="$CDN_URL" crossOrigin="true" /><link rel="dns-prefetch" href="$CDN_URL" crossOrigin="true" /></>`
 
-  const func = `export const getFontFaceStylesheet = (opts?: FontFaceStylesheetOptions): string => {
+      .replace('"$URL"', '{url}')
+      .replace(/"\$CDN_URL"/g, '{cdnBaseUrl}');
+
+  const func = `export function getFontFaceStylesheet(opts?: FontFaceStylesheetOptionsHtml): string
+export function getFontFaceStylesheet(opts?: FontFaceStylesheetOptionsJsx): JSX.Element
+export function getFontFaceStylesheet(opts?: FontFaceStylesheetOptions): string | JSX.Element {
   const options: FontFaceStylesheetOptions = {
     cdn: 'auto',
     withoutTags: false,
+    format: 'html',
     ...opts
   };
-  const { cdn, withoutTags } = options;
-  const cdnBaseUrl = getCdnBaseUrl(cdn)
+  const { cdn, withoutTags, format } = options;
+  const cdnBaseUrl = getCdnBaseUrl(cdn);
   const url = \`\${cdnBaseUrl}/${CDN_BASE_PATH_STYLES}/\${cdn === 'cn'
     ? '${cssFileCn}'
     : '${cssFileCom}'
   }\`;
 
+  const markup = format === 'html' ? \`${linksHtml}\` : ${linksJsx};
+
   return withoutTags
     ? url
-    : \`${links}\`;
+    : markup;
 }`;
 
   return [types, func].join('\n\n');

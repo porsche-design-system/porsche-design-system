@@ -35,11 +35,11 @@ export function getInitialStyles(opts?: InitialStylesOptions): string | JSX.Elem
     : x
   ).join(',') + '{visibility:hidden}';
 
-  const withTags = format === 'html' ? \`<style>\${styleInnerHtml}</style>\` : <style>{styleInnerHtml}</style>;
+  const markup = format === 'html' ? \`<style>\${styleInnerHtml}</style>\` : <style>{styleInnerHtml}</style>;
 
   return withoutTags
     ? styleInnerHtml
-    : withTags;
+    : markup;
 };`;
 
   return [types, func].join('\n\n');
