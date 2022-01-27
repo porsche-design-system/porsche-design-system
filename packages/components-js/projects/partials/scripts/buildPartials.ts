@@ -12,12 +12,19 @@ import { generateLoaderScriptPartial } from './generateLoaderScriptPartial';
 const generateSharedCode = (): string => {
   return `type Cdn = 'auto' | 'cn';
 
-const getCdnBaseUrl = (cdn: Cdn): string => cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}';`;
+type PartialFormat = 'html' | 'jsx';
+
+const getCdnBaseUrl = (cdn: Cdn): string => cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}';
+const deprecationWarningWithoutTags = (functionName: string, withoutTags: boolean): void => {
+ if (withoutTags){
+  console.warn(\`The option "{ withoutTags: true }" of partial \${functionName}() is deprecated and will be removed in v3\`);
+ }
+};`;
 };
 
 const generatePartials = async (): Promise<void> => {
   const targetDirectory = path.normalize('./src/lib');
-  const targetFile = path.resolve(targetDirectory, 'partials.ts');
+  const targetFile = path.resolve(targetDirectory, 'partials.tsx');
 
   const content = [
     generateSharedCode(),
