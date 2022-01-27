@@ -1,6 +1,8 @@
 import type { JssStyle } from 'jss';
 
-// Screen reader only styles to hide (text-)contents visually in the browser but grant access for screen readers
+/**
+ * Screen reader only styles to hide (text-)contents visually in the browser but grant access for screen readers
+ */
 export const getScreenReaderOnlyJssStyle = (): JssStyle => {
   return {
     position: 'absolute',

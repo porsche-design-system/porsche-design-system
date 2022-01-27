@@ -128,8 +128,8 @@ export const getThemedColorsDarken = (theme: Theme): ThemedColorsDarken => {
 };
 
 type ThemedFormStateColors = {
-  formStateColor: string | undefined;
-  formStateHoverColor: string | undefined;
+  formStateColor: string | undefined; // form state: "none" => undefined
+  formStateHoverColor: string | undefined; // form state: "none" => undefined
 };
 
 const getStaticThemedFormStateColors = (theme: ThemeDefault, state: FormState): ThemedFormStateColors => {
