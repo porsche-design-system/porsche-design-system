@@ -1,4 +1,5 @@
-import type { BreakpointCustomizable, GetStylesFunction, JssStyle, BreakpointKey } from '../../../utils';
+import type { JssStyle } from 'jss';
+import type { BreakpointCustomizable, GetStylesFunction, BreakpointKey } from '../../../utils';
 import { BREAKPOINTS, buildResponsiveStyles, getCss, mergeDeep, parseJSON } from '../../../utils';
 import {
   addImportantToEachRule,

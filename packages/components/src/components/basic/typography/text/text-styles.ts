@@ -1,4 +1,5 @@
-import type { BreakpointCustomizable, JssStyle } from '../../../../utils';
+import type { JssStyle } from 'jss';
+import type { BreakpointCustomizable } from '../../../../utils';
 import type { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
 import { buildSlottedStyles, getCss, buildResponsiveStyles, paramCaseToCamelCase } from '../../../../utils';
 import { addImportantToEachRule, getBaseSlottedStyles, getThemedTextColors } from '../../../../styles';

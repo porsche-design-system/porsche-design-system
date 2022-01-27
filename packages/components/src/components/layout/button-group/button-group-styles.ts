@@ -1,4 +1,5 @@
-import type { GetStylesFunction, JssStyle } from '../../../utils';
+import type { JssStyle } from 'jss';
+import type { GetStylesFunction } from '../../../utils';
 import type { ButtonGroupDirectionType, ButtonGroupDirection } from './button-group-utils';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import { addImportantToEachRule } from '../../../styles';

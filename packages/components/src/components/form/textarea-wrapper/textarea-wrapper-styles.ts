@@ -1,4 +1,5 @@
-import type { Styles, BreakpointCustomizable } from '../../../utils';
+import type { Styles } from 'jss';
+import type { BreakpointCustomizable } from '../../../utils';
 import type { FormState, Theme } from '../../../types';
 import { buildSlottedStyles, getCss, mergeDeep } from '../../../utils';
 import { addImportantToEachRule, getBaseSlottedStyles, pxToRemWithUnit, getThemedColors } from '../../../styles';

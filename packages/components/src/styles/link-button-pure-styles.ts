@@ -1,4 +1,5 @@
-import type { BreakpointCustomizable, GetStylesFunction, JssStyle, Styles } from '../utils';
+import type { Styles, JssStyle } from 'jss';
+import type { BreakpointCustomizable, GetStylesFunction } from '../utils';
 import type { AlignLabel, AlignLabelType, LinkButtonPureIconName, TextSize, ThemeExtendedElectricDark } from '../types';
 import type { FontSizeLineHeight } from '@porsche-design-system/utilities-v2';
 import { buildResponsiveStyles, generateTypeScale, hasVisibleIcon, mergeDeep, paramCaseToCamelCase } from '../utils';

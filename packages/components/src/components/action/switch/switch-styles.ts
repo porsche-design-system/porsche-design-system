@@ -1,4 +1,5 @@
-import type { BreakpointCustomizable, JssStyle, GetStylesFunction } from '../../../utils';
+import type { JssStyle } from 'jss';
+import type { BreakpointCustomizable, GetStylesFunction } from '../../../utils';
 import type { AlignLabel, AlignLabelType, ThemeExtendedElectric } from '../../../types';
 import { buildResponsiveStyles, getCss, isThemeLightElectric, mergeDeep } from '../../../utils';
 import {
