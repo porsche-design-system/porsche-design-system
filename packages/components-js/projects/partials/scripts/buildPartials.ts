@@ -1,13 +1,14 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { CDN_BASE_URL, CDN_BASE_URL_CN } from '../../../../../cdn.config';
-import { generateFontFaceStylesheetPartial } from './generateFontFaceStylesheetPartial';
-import { generateInitialStylesPartial } from './generateInitialStylesPartial';
-import { generateFontLinksPartial } from './generateFontLinksPartial';
-import { generateComponentChunkLinksPartial } from './generateComponentChunkLinksPartial';
-import { generateIconLinksPartial } from './generateIconLinksPartial';
-import { generateMetaTagsAndIconLinksPartial } from './generateMetaTagsAndIconLinksPartial';
-import { generateLoaderScriptPartial } from './generateLoaderScriptPartial';
+// import { generateFontFaceStylesheetPartial } from './generateFontFaceStylesheetPartial';
+// import { generateInitialStylesPartial } from './generateInitialStylesPartial';
+// import { generateFontLinksPartial } from './generateFontLinksPartial';
+// import { generateComponentChunkLinksPartial } from './generateComponentChunkLinksPartial';
+// import { generateIconLinksPartial } from './generateIconLinksPartial';
+// import { generateMetaTagsAndIconLinksPartial } from './generateMetaTagsAndIconLinksPartial';
+// import { generateLoaderScriptPartial } from './generateLoaderScriptPartial';
+import { generateSkeletonStylesPartial } from './generateSkeletonStylesPartial';
 
 const generateSharedCode = (): string => {
   return `type Cdn = 'auto' | 'cn';
@@ -21,13 +22,14 @@ const generatePartials = async (): Promise<void> => {
 
   const content = [
     generateSharedCode(),
-    generateFontFaceStylesheetPartial(),
-    generateInitialStylesPartial(),
-    generateFontLinksPartial(),
-    generateComponentChunkLinksPartial(),
-    generateMetaTagsAndIconLinksPartial(),
-    generateIconLinksPartial(),
-    generateLoaderScriptPartial(),
+    // generateFontFaceStylesheetPartial(),
+    // generateInitialStylesPartial(),
+    // generateFontLinksPartial(),
+    // generateComponentChunkLinksPartial(),
+    // generateMetaTagsAndIconLinksPartial(),
+    // generateIconLinksPartial(),
+    // generateLoaderScriptPartial(),
+    generateSkeletonStylesPartial(),
   ].join('\n\n');
 
   fs.mkdirSync(targetDirectory, { recursive: true });
