@@ -1,5 +1,5 @@
-import { getCss, pxToRemWithUnit } from '../../../utils';
-
+import { getCss } from '../../../utils';
+import { pxToRemWithUnit } from '../../../styles';
 export const getButtonSkeletonStyles = (): string => {
   // const buttonProperties: (keyof Button)[] = ['hideLabel', 'theme'];
 
