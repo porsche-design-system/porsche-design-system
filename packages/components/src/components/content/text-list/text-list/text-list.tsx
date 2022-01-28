@@ -5,7 +5,6 @@ import {
   getClosestHTMLElement,
   getPrefixedTagNames,
   getThemeDarkAttribute,
-  isDark,
   updateChildren,
 } from '../../../../utils';
 import type { Theme } from '../../../../types';
@@ -51,14 +50,9 @@ export class TextList {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const isNestedList = !!getClosestHTMLElement(this.host, PrefixedTagNames.pTextListItem);
 
-    const rootClasses = {
-      ['root']: true,
-      ['root--theme-dark']: isDark(this.theme),
-    };
-
     return (
       <Host nested={isNestedList} {...getThemeDarkAttribute(this.theme)}>
-        <TagType role="list" class={rootClasses}>
+        <TagType role="list">
           <slot />
         </TagType>
       </Host>

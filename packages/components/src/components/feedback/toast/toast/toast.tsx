@@ -1,8 +1,8 @@
+import type { ToastMessage } from './toast-manager';
+import type { Theme } from '../../../../types';
 import { Component, Element, Host, JSX, Method, Prop, h } from '@stencil/core';
 import { getComponentCss, toastCloseClassName } from './toast-styles';
-import type { ToastMessage } from './toast-manager';
 import { toastManager } from './toast-manager';
-import type { Theme } from '../../../../types';
 import { attachComponentCss, getPrefixedTagNames } from '../../../../utils';
 
 @Component({

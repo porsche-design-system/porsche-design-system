@@ -1,47 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`colorDarken should contain darker colors 1`] = `
-Object {
-  "darkTheme": Object {
-    "default": "#e0e0e0",
-    "neutralContrast": Object {
-      "high": "#c3c5c8",
-    },
-    "notification": Object {
-      "error": "#d30303",
-      "success": "#017d14",
-    },
-    "state": Object {
-      "hover": "#c4001a",
-    },
-  },
-  "default": "#000",
-  "lightElectricTheme": Object {
-    "default": "#000",
-    "neutralContrast": Object {
-      "high": "#151718",
-    },
-    "notification": Object {
-      "error": "#a30000",
-      "success": "#014d0c",
-    },
-    "state": Object {
-      "hover": "#0084b7",
-    },
-  },
-  "neutralContrast": Object {
-    "high": "#151718",
-  },
-  "notification": Object {
-    "error": "#a30000",
-    "success": "#014d0c",
-  },
-  "state": Object {
-    "hover": "#980014",
-  },
-}
-`;
-
 exports[`getThemedColors() should return correct colors for theme: dark 1`] = `
 Object {
   "activeColor": "#ff0223",
@@ -148,6 +106,16 @@ Object {
 }
 `;
 
+exports[`getThemedColorsDarken() should return correct colors for theme: dark-electric 1`] = `
+Object {
+  "baseColorDarken": "#e0e0e0",
+  "contrastHighColorDarken": "#c3c5c8",
+  "errorColorDarken": "#d30303",
+  "hoverColorDarken": "#0084b7",
+  "successColorDarken": "#017d14",
+}
+`;
+
 exports[`getThemedColorsDarken() should return correct colors for theme: light 1`] = `
 Object {
   "baseColorDarken": "#000",
@@ -170,42 +138,42 @@ Object {
 
 exports[`getThemedFormStateColors() should return correct colors for theme: 'dark' and state: 'error' 1`] = `
 Object {
-  "stateColor": "#fc1717",
-  "stateHoverColor": "#d30303",
+  "formStateColor": "#fc1717",
+  "formStateHoverColor": "#d30303",
 }
 `;
 
 exports[`getThemedFormStateColors() should return correct colors for theme: 'dark' and state: 'none' 1`] = `
 Object {
-  "stateColor": undefined,
-  "stateHoverColor": undefined,
+  "formStateColor": undefined,
+  "formStateHoverColor": undefined,
 }
 `;
 
 exports[`getThemedFormStateColors() should return correct colors for theme: 'dark' and state: 'success' 1`] = `
 Object {
-  "stateColor": "#01ba1d",
-  "stateHoverColor": "#017d14",
+  "formStateColor": "#01ba1d",
+  "formStateHoverColor": "#017d14",
 }
 `;
 
 exports[`getThemedFormStateColors() should return correct colors for theme: 'light' and state: 'error' 1`] = `
 Object {
-  "stateColor": "#e00000",
-  "stateHoverColor": "#a30000",
+  "formStateColor": "#e00000",
+  "formStateHoverColor": "#a30000",
 }
 `;
 
 exports[`getThemedFormStateColors() should return correct colors for theme: 'light' and state: 'none' 1`] = `
 Object {
-  "stateColor": undefined,
-  "stateHoverColor": undefined,
+  "formStateColor": undefined,
+  "formStateHoverColor": undefined,
 }
 `;
 
 exports[`getThemedFormStateColors() should return correct colors for theme: 'light' and state: 'success' 1`] = `
 Object {
-  "stateColor": "#018a16",
-  "stateHoverColor": "#014d0c",
+  "formStateColor": "#018a16",
+  "formStateHoverColor": "#014d0c",
 }
 `;

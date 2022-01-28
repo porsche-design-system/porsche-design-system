@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getFocusJssStyle() should return correct css for opts: %s 1`] = `
+Object {
+  "&::-moz-focus-inner": Object {
+    "border": "0",
+  },
+  "&:focus": Object {
+    "&:not(:focus-visible)": Object {
+      "outlineColor": "transparent",
+    },
+    "outlineColor": "currentColor",
+  },
+  "outline": "transparent solid 1px",
+  "outlineOffset": "2px",
+}
+`;
+
+exports[`getFocusJssStyle() should return correct css for opts: { color: 'deeppink' } 1`] = `
+Object {
+  "&::-moz-focus-inner": Object {
+    "border": "0",
+  },
+  "&:focus": Object {
+    "&:not(:focus-visible)": Object {
+      "outlineColor": "transparent",
+    },
+    "outlineColor": "deeppink",
+  },
+  "outline": "transparent solid 1px",
+  "outlineOffset": "2px",
+}
+`;
+
+exports[`getFocusJssStyle() should return correct css for opts: { offset: '5rem' } 1`] = `
+Object {
+  "&::-moz-focus-inner": Object {
+    "border": "0",
+  },
+  "&:focus": Object {
+    "&:not(:focus-visible)": Object {
+      "outlineColor": "transparent",
+    },
+    "outlineColor": "currentColor",
+  },
+  "outline": "transparent solid 1px",
+  "outlineOffset": "5rem",
+}
+`;

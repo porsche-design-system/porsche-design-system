@@ -1,5 +1,4 @@
-import type { GetStylesFunction, JssStyle } from '../../../../utils';
-import { addImportantToEachRule, buildResponsiveHostStyles, getCss, mergeDeep } from '../../../../utils';
+import type { JssStyle } from 'jss';
 import type {
   FlexItemAlignSelf,
   FlexItemAlignSelfType,
@@ -14,6 +13,9 @@ import type {
   FlexItemWidth,
   FlexItemWidthType,
 } from './flex-item-utils';
+import type { GetStylesFunction } from '../../../../utils';
+import { buildResponsiveHostStyles, getCss, mergeDeep } from '../../../../utils';
+import { addImportantToEachRule } from '../../../../styles';
 
 const flexItemWidths: { [key in Exclude<FlexItemWidthType, 'auto'>]: number } & { none: number; auto: string } = {
   none: 0,

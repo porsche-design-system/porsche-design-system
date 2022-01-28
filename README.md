@@ -297,23 +297,23 @@ When publishing a stable release then it's necessary an RC release is made immed
 
 1. Switch to **project root directory**
 1. Run `git pull origin {master- or v-branch}`
-1. Create a new branch e.g. **release/utilities-v1.2.3**
+1. Create a new branch e.g. **release/utilities-deprecated-v1.2.3**
 1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section **[Unreleased]** (this file will also be used to show on Storefront)
 
-- `./packages/utilities/projects/utilities/CHANGELOG.md`
+- `./packages/utilities-deprecated/projects/utilities/CHANGELOG.md`
 
-1. Run `./docker.sh run-prepare-release-utilities ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local changes before executing the task again.)
+1. Run `./docker.sh run-prepare-release-utilities-deprecated ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local changes before executing the task again.)
 
 ### Release
 
-1. Create a commit with following message structure `Release Porsche Design System - Utilities v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
-1. Push the local commit to release branch, e.g. `git push origin release/utilities-v1.2.3`
+1. Create a commit with following message structure `Release Porsche Design System - Utilities Deprecated v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
+1. Push the local commit to release branch, e.g. `git push origin release/utilities-deprecated-v1.2.3`
 1. Create pull request and start review
 1. Merge into **master- or v-branch** branch (then CI/CD will trigger a release automatically)
 
 ### Communicate
 
-1. Write a Slack notification by coping last entry of `./packages/utilities/projects/utilities/CHANGELOG.md` in public Porsche Design System Slack channel
+1. Write a Slack notification by coping last entry of `./packages/utilities-deprecated/projects/utilities/CHANGELOG.md` in public Porsche Design System Slack channel
 
 ---
 
