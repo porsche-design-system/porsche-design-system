@@ -12,10 +12,11 @@ export const generateFontFaceStylesheetPartial = (): string => {
   format?: PartialFormat;
 }
 type FontFaceStylesheetOptionsHtml = FontFaceStylesheetOptions & {
-  format?: 'html'
+  format?: 'html';
 }
 type FontFaceStylesheetOptionsJsx = FontFaceStylesheetOptions & {
-  format?: 'jsx'
+  withoutTags?: false;
+  format?: 'jsx';
 }`;
 
   const cssFileCn = hashedFontFaceCssFiles?.find((x) => x.includes('.cn.'));
