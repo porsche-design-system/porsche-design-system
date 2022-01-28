@@ -7,10 +7,11 @@ export const generateInitialStylesPartial = (): string => {
   format?: PartialFormat;
 }
 type InitalStylesOptionsHtml = InitialStylesOptions & {
-  format?: 'html'
+  format?: 'html';
 };
 type InitalStylesOptionsJsx = InitialStylesOptions & {
-   format?: 'jsx'
+   withoutTags?: 'false';
+   format?: 'jsx';
 };`;
 
   const tagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x))
