@@ -13,27 +13,38 @@ type FontPreloadLinkOptions = {
   weights?: FontWeight[];
   cdn?: Cdn;
   withoutTags?: boolean;
+  format?: PartialFormat;
 }
 type FontPreloadLinkOptionsWithTags = FontPreloadLinkOptions & {
   withoutTags?: false;
+  format?: 'html';
 };
 type FontPreloadLinkOptionsWithoutTags = FontPreloadLinkOptions & {
   withoutTags?: true;
-};`;
+  format?: 'html';
+};
+type FontPreloadLinkOptionsJsx = FontPreloadLinkOptions & {
+  withoutTags?: false;
+  format?: 'jsx';
+}`;
 
   const linkTemplate = minifyHTML('<link rel="preload" href="${url}" as="font" type="font/woff2" crossorigin>');
 
   const func = `export function getFontLinks(opts?: FontPreloadLinkOptionsWithTags): string;
 export function getFontLinks(opts?: FontPreloadLinkOptionsWithoutTags): string[];
-export function getFontLinks(opts?: FontPreloadLinkOptions): string | string[] {
+export function getFontLinks(opts?: FontPreloadLinkOptionsJsx): JSX.Element[];
+export function getFontLinks(opts?: FontPreloadLinkOptions): string | string[] | JSX.Element[] {
   const options: FontPreloadLinkOptions = {
     subset: 'latin',
     weights: ['regular'],
     cdn: 'auto',
     withoutTags: false,
+    format: 'html',
     ...opts
   };
-  const { subset, weights, cdn, withoutTags } = options;
+  const { subset, weights, cdn, withoutTags, format} = options;
+
+  deprecationWarningWithoutTags('getFontLinks', withoutTags);
 
   if (options['weight']) {
     throw new Error('Option "weight" is not supported, please use "weights" instead');
@@ -84,9 +95,11 @@ Please use only valid font weights:
   }
 
   const urls = weights.map((weight) => \`\${cdnBaseUrl}/${CDN_BASE_PATH_FONTS}/\${fonts[subset][weight]}\`);
-  const links = urls.map((url) => \`${linkTemplate}\`).join('');
+  const linksHtml = urls.map((url) => \`${linkTemplate}\`).join('');
+  const linksJsx = urls.map((url) => <link rel="preload" href={url} as="font" type="font/woff2" crossOrigin="true" />);
 
-  return withoutTags ? urls : links;
+  const markup = format === 'html' ? linksHtml : linksJsx
+  return withoutTags ? urls : markup;
 };`;
 
   return [types, func].join('\n\n');
