@@ -15,20 +15,19 @@ type ComponentChunkLinksOptions = {
 };
 type ComponentChunkLinksOptionsWithTags = ComponentChunkLinksOptions & {
   withoutTags?: false;
+  format?: 'html';
 };
 type ComponentChunkLinksOptionsWithoutTags = ComponentChunkLinksOptions & {
   withoutTags?: true;
+  format?: 'html';
 };
-type ComponentChunkLinksOptionsHtml = ComponentChunkLinksOptions & {
-  format: 'html';
-}
 type ComponentChunkLinksOptionsJsx = ComponentChunkLinksOptions & {
-  format: 'jsx';
+ withoutTags?: false;
+  format?: 'jsx';
 }`;
 
   const func = `export function getComponentChunkLinks(opts?: ComponentChunkLinksOptionsWithTags): string;
 export function getComponentChunkLinks(opts?: ComponentChunkLinksOptionsWithoutTags): string[];
-export function getComponentChunkLinks(opts?: ComponentChunkLinksOptionsHtml): string;
 export function getComponentChunkLinks(opts?: ComponentChunkLinksOptionsJsx): JSX.Element[];
 export function getComponentChunkLinks(opts?: ComponentChunkLinksOptions): string | string[] | JSX.Element[] {
   const { components, cdn, withoutTags, format }: ComponentChunkLinksOptions = {
