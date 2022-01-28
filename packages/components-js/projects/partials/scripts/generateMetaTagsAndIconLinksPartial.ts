@@ -13,6 +13,15 @@ const convertTemplates = (templates: Template[]): string[] => {
   });
 };
 
+const convertTemplatesJsx = (templates: Template[]): JSX.Element[] => {
+  return templates.map(({ template, value }) => {
+    return template
+      .replace('$value', value)
+      .replace('""$appTitle""', '{appTitle}')
+      .replace('""$cdnBaseUrl""', '{cdnBaseUrl}') as unknown as JSX.Element;
+  });
+};
+
 export const generateMetaTagsAndIconLinksPartial = (): string => {
   const metaIconCDNPath = `$cdnBaseUrl/${CDN_BASE_PATH_META_ICONS}`;
 
@@ -38,7 +47,7 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
       value: `${metaIconCDNPath}/${META_ICONS_MANIFEST.mstile.mstile_270x270}`,
     },
     {
-      template: '<meta name="msapplication-TileColor" content="$value">',
+      template: '<meta name="msapplication-TileColor" content="$value" />',
       value: '#FFFFFF',
     },
     {
@@ -53,31 +62,42 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
 
   const manifestLinkTemplates: Template[] = [
     {
-      template: '<link rel="manifest" href="$value">',
+      template: '<link rel="manifest" href="$value" />',
       value: `${CDN_BASE_URL}/${CDN_BASE_PATH_META_ICONS}/${META_ICONS_MANIFEST.webManifest.auto}`,
     },
     {
-      template: '<link rel="manifest" href="$value">',
+      template: '<link rel="manifest" href="$value" />',
       value: `${CDN_BASE_URL_CN}/${CDN_BASE_PATH_META_ICONS}/${META_ICONS_MANIFEST.webManifest.cn}`,
     },
   ];
 
   const metaIconTemplates = convertTemplates(metaIconLinkTemplates);
   const manifestTemplates = convertTemplates(manifestLinkTemplates);
+  const metaIconTemplatesJsx = convertTemplatesJsx(metaIconLinkTemplates);
+  const manifestTemplatesJsx = convertTemplatesJsx(manifestLinkTemplates);
 
   const types = `
 type MetaIconsOptions = {
   appTitle: string;
   cdn?: Cdn;
+  format?: PartialFormat;
+};
+type MetaIconsOptionsHtml = MetaIconsOptions & {
+  format?: 'html';
+};
+type MetaIconsOptionsJsx = MetaIconsOptions & {
+   format?: 'jsx';
 };`;
 
   const func = `
-export function getMetaTagsAndIconLinks(opts?: MetaIconsOptions): string {
-  const options: MetaIconsOptions = {
+export function getMetaTagsAndIconLinks(opts?: MetaIconsOptionsHtml): string;
+export function getMetaTagsAndIconLinks(opts?: MetaIconsOptionsJsx): JSX.Element[];
+export function getMetaTagsAndIconLinks(opts?: MetaIconsOptions): string | JSX.Element[] {
+  const { appTitle, cdn, format }: MetaIconsOptions = {
     cdn: 'auto',
+    format: 'html',
     ...opts
   };
-  const { appTitle, cdn } = options;
 
   if (!appTitle) {
     throw new Error('Option "appTitle" is required to output "<meta name="apple-mobile-web-app-title" content="appTitle" />');
@@ -87,10 +107,13 @@ export function getMetaTagsAndIconLinks(opts?: MetaIconsOptions): string {
   const metaIconTemplates = ${JSON.stringify(metaIconTemplates)};
   const manifestTemplates = ${JSON.stringify(manifestTemplates)};
 
+  const metaIconTagsJsx = [${metaIconTemplatesJsx}];
+  const manifestTagJsx = [${manifestTemplatesJsx}].find(item => JSON.stringify(item).includes(cdnBaseUrl));
+
   const metaIconTags = metaIconTemplates.map(metaIconTemplate => metaIconTemplate.replace('$appTitle', appTitle).replace('$cdnBaseUrl', cdnBaseUrl));
   const webManifestTag = manifestTemplates.find(item => item.includes(cdnBaseUrl));
 
-  return [...metaIconTags, webManifestTag].join('');
+  return format === 'html' ? [...metaIconTags, webManifestTag].join('') : [...metaIconTagsJsx, manifestTagJsx];
 };`;
 
   return [types, func].join('\n\n');
