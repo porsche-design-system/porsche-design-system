@@ -52,4 +52,13 @@ const skeletonStylesMap = {
 export const setAriaBusy = () => {
   // set on every key of skeletonStylesMap?
   // 'p-button'
+  const script = `<script>
+(window as any).porscheDesignSystem.componentsReady().then(()=>{
+  const componentTagNames = ['p-button', 'p-link'];
+  componentTagNames.forEach(tag => {
+      const element = document.querySelector(tag);
+      element.ariaBusy = "true";
+    })
+})
+</script>`;
 };
