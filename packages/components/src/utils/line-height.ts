@@ -1,4 +1,4 @@
-import type { FontSizeLineHeight } from '@porsche-design-system/utilities';
+import type { FontSizeLineHeight } from '@porsche-design-system/utilities-v2';
 
 /* Auto Generated Start */
 // prettier-ignore

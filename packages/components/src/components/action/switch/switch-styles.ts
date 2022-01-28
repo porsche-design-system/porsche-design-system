@@ -1,18 +1,16 @@
+import type { JssStyle } from 'jss';
+import type { BreakpointCustomizable, GetStylesFunction } from '../../../utils';
+import type { AlignLabel, AlignLabelType, ThemeExtendedElectric } from '../../../types';
+import { buildResponsiveStyles, getCss, isThemeLightElectric, mergeDeep } from '../../../utils';
 import {
   addImportantToEachRule,
-  buildResponsiveStyles,
-  getCss,
   getTextHiddenJssStyle,
+  getTransition,
+  pxToRemWithUnit,
   getThemedColors,
   getThemedColorsDarken,
-  getTransition,
-  isLightElectric,
-  mergeDeep,
-  pxToRemWithUnit,
-} from '../../../utils';
-import type { BreakpointCustomizable, JssStyle, GetStylesFunction } from '../../../utils';
-import type { AlignLabel, AlignLabelType, ThemeExtendedElectric } from '../../../types';
-import { color, spacing } from '@porsche-design-system/utilities';
+} from '../../../styles';
+import { spacing } from '@porsche-design-system/utilities-v2';
 
 const getColors = (
   checked: boolean,
@@ -30,8 +28,9 @@ const getColors = (
 } => {
   const { backgroundColor, baseColor, contrastHighColor, successColor, disabledColor, brandColor } =
     getThemedColors(theme);
+  const { backgroundColor: lightThemeBackgroundColor } = getThemedColors('light');
   const { successColorDarken, hoverColorDarken } = getThemedColorsDarken(theme);
-  const isLightElectricTheme = isLightElectric(theme);
+  const isLightElectricTheme = isThemeLightElectric(theme);
   const checkedColor = isLightElectricTheme ? brandColor : successColor;
   const disabledOrLoadingColor = isDisabledOrLoading && disabledColor;
 
@@ -46,8 +45,8 @@ const getColors = (
         : successColorDarken
       : 'transparent',
     toggleBackgroundColor:
-      (!checked && disabledOrLoadingColor) || (checked ? color.background.default : contrastHighColor),
-    toggleBackgroundColorHover: checked ? color.background.default : baseColor,
+      (!checked && disabledOrLoadingColor) || (checked ? lightThemeBackgroundColor : contrastHighColor),
+    toggleBackgroundColorHover: checked ? lightThemeBackgroundColor : baseColor,
     textColor: disabledOrLoadingColor || baseColor,
   };
 };

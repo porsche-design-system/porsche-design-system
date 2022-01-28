@@ -602,7 +602,7 @@ Object {
   "label__text,$unit": Object {
     "&:hover": Object {
       "&~::slotted(input:not(:disabled):not([readonly])), ::slotted(input:hover:not(:disabled):not([readonly]))": Object {
-        "borderColor": "#a30000 !important",
+        "borderColor": "#d30303 !important",
       },
     },
   },
@@ -892,7 +892,7 @@ Object {
   "label__text": Object {
     "&:hover": Object {
       "&~::slotted(textarea:not(:disabled):not([readonly])), ::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
-        "borderColor": "#a30000 !important",
+        "borderColor": "#d30303 !important",
       },
     },
   },
@@ -974,7 +974,7 @@ Object {
   "label__text": Object {
     "&:hover": Object {
       "&~::slotted(textarea:not(:disabled):not([readonly])), ::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
-        "borderColor": "#014d0c !important",
+        "borderColor": "#017d14 !important",
       },
     },
   },
@@ -1016,7 +1016,7 @@ Object {
   "label__text": Object {
     "&:hover": Object {
       "&~::slotted(textarea:not(:disabled):not([readonly])), ::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
-        "borderColor": "#a30000 !important",
+        "borderColor": "#d30303 !important",
       },
     },
   },
@@ -1100,7 +1100,7 @@ Object {
   "label__text": Object {
     "&:hover": Object {
       "&~::slotted(textarea:not(:disabled):not([readonly])), ::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
-        "borderColor": "#014d0c !important",
+        "borderColor": "#017d14 !important",
       },
     },
   },

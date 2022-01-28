@@ -1,15 +1,9 @@
-import {
-  addImportantToEachRule,
-  buildSlottedStyles,
-  getBaseSlottedStyles,
-  getCss,
-  getThemedTextColor,
-  buildResponsiveStyles,
-  paramCaseToCamelCase,
-} from '../../../../utils';
-import type { BreakpointCustomizable, JssStyle } from '../../../../utils';
+import type { JssStyle } from 'jss';
+import type { BreakpointCustomizable } from '../../../../utils';
 import type { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
-import { fontFamily, fontWeight, text } from '@porsche-design-system/utilities';
+import { buildSlottedStyles, getCss, buildResponsiveStyles, paramCaseToCamelCase } from '../../../../utils';
+import { addImportantToEachRule, getBaseSlottedStyles, getThemedTextColors } from '../../../../styles';
+import { fontFamily, fontWeight, text } from '@porsche-design-system/utilities-v2';
 import { getEllipsisStyles, getSlottedTypographyStyles } from '../../../../styles/typography-styles';
 
 const getSizeStyles = (size: TextSize): Pick<JssStyle, 'lineHeight' | 'fontSize'> => {
@@ -45,7 +39,7 @@ export const getComponentCss = (
       textAlign: align,
       fontFamily,
       fontWeight: fontWeight[weight],
-      color: getThemedTextColor(color, theme),
+      color: getThemedTextColors(theme, color),
       overflowWrap: 'break-word',
       wordWrap: 'break-word',
       hyphens: 'auto',

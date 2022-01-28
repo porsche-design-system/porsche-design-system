@@ -1,4 +1,5 @@
-import { addImportantToRule, getCss } from '../../../../utils';
+import { getCss } from '../../../../utils';
+import { addImportantToRule } from '../../../../styles';
 
 export const getComponentCss = (): string => {
   return getCss({

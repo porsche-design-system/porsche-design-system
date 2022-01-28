@@ -1,5 +1,5 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { spacing, font } from '@porsche-design-system/utilities';
+import { spacing } from '@porsche-design-system/utilities-v2';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import { ExtendedProp } from './DataStructureBuilder';
 import type { AdditionalFile } from './AbstractWrapperGenerator';
@@ -98,9 +98,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
     // override props
     if (component === 'p-text') {
-      const sizeValues = Object.keys(font.size)
-        .filter((x) => !x.match(/[a-z]/)) // only keep numeric values
-        .join(' | ');
+      const sizeValues = [12, 16, 18, 20, 22, 24, 28, 30, 32, 36, 42, 44, 48, 52, 60, 62, 72, 84].join(' | ');
       props = props.replace(/(size\?: )TextSize/, `$1${sizeValues}`);
     }
 

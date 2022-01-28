@@ -1,17 +1,9 @@
-import {
-  buildResponsiveStyles,
-  buildSlottedStyles,
-  getBaseSlottedStyles,
-  getCss,
-  getThemedColors,
-  isDark,
-  isDarkElectric,
-  pxToRemWithUnit,
-} from '../../../utils';
+import type { JssStyle } from 'jss';
 import type { SpinnerSize, SpinnerSizeType } from './spinner-utils';
-import { JssStyle } from 'jss';
-import { srOnly } from '@porsche-design-system/utilities';
-import { ThemeExtendedElectricDark } from '../../../types';
+import type { ThemeExtendedElectricDark } from '../../../types';
+import { buildResponsiveStyles, buildSlottedStyles, getCss, isThemeDark, isThemeDarkElectric } from '../../../utils';
+import { getBaseSlottedStyles, pxToRemWithUnit, getThemedColors } from '../../../styles';
+import { getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
 
 const sizeSmall = pxToRemWithUnit(48);
 const sizeMedium = pxToRemWithUnit(72);
@@ -41,7 +33,7 @@ export const getComponentCss = (size: SpinnerSize, theme: ThemeExtendedElectricD
       boxSizing: 'border-box',
       strokeWidth: 1,
     },
-    'sr-only': srOnly(),
+    'sr-only': getScreenReaderOnlyJssStyle(),
     '@global': {
       svg: {
         display: 'block',
@@ -50,7 +42,7 @@ export const getComponentCss = (size: SpinnerSize, theme: ThemeExtendedElectricD
         transform: 'translate3d(0,0,0)',
       },
       circle: {
-        stroke: isDark(theme) || isDarkElectric(theme) ? baseColor : contrastHighColor,
+        stroke: isThemeDark(theme) || isThemeDarkElectric(theme) ? baseColor : contrastHighColor,
         '&:first-child': {
           opacity: 0.4,
         },

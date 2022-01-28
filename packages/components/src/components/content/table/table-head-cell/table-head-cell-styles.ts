@@ -1,20 +1,23 @@
+import { getCss } from '../../../../utils';
 import {
   addImportantToEachRule,
-  getCss,
   getFocusStyles,
   getHoverStyles,
   getTextHiddenJssStyle,
   getTransition,
   pxToRemWithUnit,
-} from '../../../../utils';
-import { color, fontFamily, fontSize, fontWeight, spacing } from '@porsche-design-system/utilities';
+  getThemedColors,
+} from '../../../../styles';
+import { fontFamily, fontSize, fontWeight, spacing } from '@porsche-design-system/utilities-v2';
+
+const { contrastMediumColor, baseColor } = getThemedColors('light');
 
 export const getComponentCss = (): string => {
   return getCss({
     ':host': addImportantToEachRule({
       display: 'table-cell',
       padding: `${pxToRemWithUnit(2)} ${pxToRemWithUnit(12)} ${pxToRemWithUnit(8)}`,
-      borderBottom: `1px solid ${color.neutralContrast.medium}`,
+      borderBottom: `1px solid ${contrastMediumColor}`,
       verticalAlign: 'bottom',
       fontWeight: fontWeight.semibold,
       whiteSpace: 'nowrap',
@@ -30,7 +33,7 @@ export const getComponentCss = (): string => {
         fontFamily,
         fontWeight: fontWeight.semibold,
         ...fontSize.small,
-        color: color.default,
+        color: baseColor,
         textDecoration: 'none',
         textAlign: 'left',
         background: 'transparent',

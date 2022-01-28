@@ -1,7 +1,7 @@
-import { getCss } from '../../../utils';
-import { getLinkButtonStyles } from '../../../styles/link-button-styles';
 import type { BreakpointCustomizable } from '../../../utils';
 import type { ButtonVariant, ThemeExtendedElectric } from '../../../types';
+import { getCss } from '../../../utils';
+import { getLinkButtonStyles } from '../../../styles/link-button-styles';
 
 export const getComponentCss = (
   variant: ButtonVariant,
