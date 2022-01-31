@@ -22,9 +22,9 @@ export const cleanBooleanAndUndefinedValues = (markup: string): string =>
   // remove single quotes from boolean values
   markup.replace(/\s(\[[A-Za-z]+\])="'(true|false|undefined)'"/g, ' $1="$2"');
 
-export const cleanClassAndSlotAttributes = (markup: string): string =>
-  // remove brackets from "class" and "slot("|slot) attributes
-  markup.replace(/\s\[(class|slot)]="'(.*?)'"/g, ' $1="$2"');
+export const unbindNativeAttributes = (markup: string): string =>
+  // remove brackets from "class", "slot" and "title" attributes
+  markup.replace(/\s\[(class|slot|title)]="'(.*?)'"/g, ' $1="$2"');
 
 export const convertToAngular = (markup: string): string =>
   [
@@ -33,5 +33,5 @@ export const convertToAngular = (markup: string): string =>
     transformAttributesWithNotDigitValue,
     transformAttributesWithDigitValue,
     cleanBooleanAndUndefinedValues,
-    cleanClassAndSlotAttributes,
+    unbindNativeAttributes,
   ].reduce((previousResult, fn) => fn(previousResult), markup);
