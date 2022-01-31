@@ -11,7 +11,7 @@ describe('getMinifiedCss()', () => {
     },
     {
       input: { ':host': { display: 'block', width: 500, transition: 'width .25s ease' } },
-      result: ':host{display:block;width:500px;transition:width .25s ease}',
+      result: ':host{width:500px;display:block;transition:width .25s ease}',
     },
     {
       input: {
