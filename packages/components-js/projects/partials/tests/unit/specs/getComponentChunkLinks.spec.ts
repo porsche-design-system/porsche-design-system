@@ -60,8 +60,17 @@ describe('getComponentChunkLinks()', () => {
     const urlStartsWith = 'https://';
     const urlEndsWith = '.js';
 
+    let consoleWarnSpy;
+
+    beforeEach(() => (consoleWarnSpy = jest.spyOn(global.console, 'warn').mockImplementation(() => {})));
+    afterEach(() => jest.clearAllMocks());
+
     it('should return core url by default', () => {
       const result = getComponentChunkLinks({ withoutTags: true });
+
+      expect(consoleWarnSpy).toBeCalledWith(
+        'The option "{ withoutTags: true }" of partial getComponentChunkLinks() is deprecated and will be removed in v3'
+      );
       expect(result.length).toBe(1);
       expect(result[0].startsWith(urlStartsWith)).toBeTruthy();
       expect(result[0].endsWith(urlEndsWith)).toBeTruthy();
@@ -70,6 +79,10 @@ describe('getComponentChunkLinks()', () => {
 
     it('should return default core China CDN url', () => {
       const result = getComponentChunkLinks({ withoutTags: true, cdn: 'cn' });
+
+      expect(consoleWarnSpy).toBeCalledWith(
+        'The option "{ withoutTags: true }" of partial getComponentChunkLinks() is deprecated and will be removed in v3'
+      );
       expect(result.length).toBe(1);
       expect(result[0].startsWith(urlStartsWith)).toBeTruthy();
       expect(result[0].endsWith(urlEndsWith)).toBeTruthy();
@@ -78,6 +91,10 @@ describe('getComponentChunkLinks()', () => {
 
     it('should return multiple urls', () => {
       const result = getComponentChunkLinks({ withoutTags: true, components: ['button', 'button-pure', 'marque'] });
+
+      expect(consoleWarnSpy).toBeCalledWith(
+        'The option "{ withoutTags: true }" of partial getComponentChunkLinks() is deprecated and will be removed in v3'
+      );
       expect(result.length).toBe(4);
       expect(result[0]).toContain(cdnChunkUrlWithoutHash + 'v');
       expect(result[0].startsWith(urlStartsWith)).toBeTruthy();
@@ -89,6 +106,10 @@ describe('getComponentChunkLinks()', () => {
     COMPONENT_CHUNK_NAMES.forEach((chunkName: ComponentChunkName) => {
       it(`should return core and chunk url for ['${chunkName}']`, () => {
         const result = getComponentChunkLinks({ withoutTags: true, components: [chunkName] });
+
+        expect(consoleWarnSpy).toBeCalledWith(
+          'The option "{ withoutTags: true }" of partial getComponentChunkLinks() is deprecated and will be removed in v3'
+        );
         expect(result.length).toBe(2);
         expect(result[0]).toContain(cdnChunkUrlWithoutHash + 'v');
         expect(result[1].match(new RegExp(`${chunkBaseName}\\.${chunkName}\\.`)).length).toBe(1); // verify chunk number
