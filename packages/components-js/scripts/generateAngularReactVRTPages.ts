@@ -27,7 +27,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
 
   Object.entries(htmlFileContentMap)
     // TODO: icon, flex, overview, table
-    .filter(([component]) => component === 'textarea-wrapper') // for easy debugging
+    .filter(([component]) => component === 'icon') // for easy debugging
     .forEach(([fileName, fileContent]) => {
       fileContent = fileContent.trim();
 
@@ -45,25 +45,15 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       console.log(script);
 
       const usesComponentsReady = script?.includes('componentsReady()');
-      const usesIconNames = script?.includes('ICON_NAMES');
       const usesQuerySelector = script?.includes('querySelector');
       const usesPrefixing = fileContent.match(/<[a-z-]+-p-[\w-]+/);
       const usesToast = script?.includes('p-toast');
       const [, toastText] = script?.match(/text:\s?(['`].*?['`])/) || [];
       console.log('usesPrefixing', usesPrefixing);
 
-      script = script?.includes('ICON_NAMES')
-        ? `fetch('assets/assets.js')
-    .then((res) => res.text())
-    .then((content) => {
-      const [, str] = /const ICON_NAMES = (.*);/.exec(content);
-      const ICON_NAMES = eval(str);
-    })`
-        : script;
-
       //icon--- extract icons holder if there is any, replacing is frameworr specific
-      const iconsRegEx = /(<div class="[^"]*?overview[^"]*?" [^]*?>)/;
-      let [, iconsHolder] = fileContent.match(iconsRegEx) || [];
+      const isIconPage = fileName === 'icon';
+      const iconsRegEx = /(<div class="playground[\sa-z]+overview".*?>)\n(<\/div>)/;
 
       // extract template if there is any, replacing is framework specific
       const templateRegEx = /(<template.*>(?:.|\s)*?<\/template>)/;
@@ -85,19 +75,17 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
 
         const pdsImports = [
           usesComponentsReady && 'componentsReady',
-          usesIconNames && 'IconName',
+          isIconPage && 'IconName',
           usesToast && 'ToastManager',
         ]
           .filter((x) => x)
           .sort(sortFunc)
           .join(', ');
 
-        const pdsAssetsImports = usesIconNames ? `import { ICON_NAMES } from '@porsche-design-system/assets';` : '';
-
         const imports = [
           `import { ${angularImports} } from '@angular/core';`,
           pdsImports && `import { ${pdsImports} } from '@porsche-design-system/components-angular';`,
-          pdsAssetsImports,
+          isIconPage && `import { ICON_NAMES } from '@porsche-design-system/assets';`,
         ]
           .filter((x) => x)
           .join('\n');
@@ -107,7 +95,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
         const styles = style ? `\n  styles: [\n    \`\n      ${style}\n    \`,\n  ],` : '';
 
         // implementation
-        const classImplements = script ? 'implements OnInit ' : '';
+        const classImplements = script && !isIconPage ? 'implements OnInit ' : '';
         const classImplementation = (
           usesComponentsReady
             ? `public allReady: boolean = false;
@@ -121,8 +109,8 @@ ngOnInit() {
   });
 }
 `
-            : usesIconNames
-            ? `public icons = ICON_NAMES as IconName[];\n ngOnInit() {\n  ${script}\n}`
+            : isIconPage
+            ? `public icons = ICON_NAMES as IconName[];`
             : usesToast
             ? `constructor(private toastManager: ToastManager) {}
 
@@ -147,17 +135,20 @@ ngOnInit() {
         fileContent = fileContent.replace(/(<[\w-]+(p-[\w-]+))/g, '$1 $2');
 
         // create list of p-icons
-        iconsHolder = iconsHolder?.replace(
-          />(.*?)/g,
-          `>
-  <p-icon *ngFor="let icon of icons"
+        if (isIconPage) {
+          fileContent = fileContent.replace(
+            iconsRegEx,
+            `$1
+  <p-icon
+    *ngFor="let icon of icons"
     [name]="icon"
     [size]="'inherit'"
     [color]="'inherit'"
-    attr.aria-label]="icon + 'icon'"
-  ></p-icon>`
-        );
-        fileContent = fileContent.replace(iconsRegEx, iconsHolder);
+    [attr.aria-label]="icon + ' icon'"
+  ></p-icon>
+$2`
+          );
+        }
 
         fileContent = `${comment}
 ${imports}
@@ -248,8 +239,6 @@ useEffect(() => {
         }
 
         // attribute conversion
-        // TODO: textarea defaultValue
-
         fileContent = fileContent.replace(/(<textarea.*)>\s*(.+?)\s*(<\/textarea>)/g, '$1 defaultValue="$2">$3');
         fileContent = fileContent.replace(/ v(alue=)/g, ' defaultV$1'); // for input
         fileContent = fileContent.replace(/ c(hecked)/g, ' defaultC$1'); // for checkbox + radio
