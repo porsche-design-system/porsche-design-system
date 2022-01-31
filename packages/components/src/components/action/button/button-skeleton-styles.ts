@@ -1,20 +1,15 @@
-import { getCss } from '../../../utils/jss';
 import { pxToRemWithUnit } from '../../../styles';
-export const getButtonSkeletonStyles = (): string => {
-  // const buttonProperties: (keyof Button)[] = ['hideLabel', 'theme'];
-  // TODO: prefixing
+import { getMinifiedStyles } from '../../../../../shared/src/styles/getMinifiedStyles';
+import type { Theme } from '@porsche-design-system/utilities-v2';
 
-  return getCss({
-    'p-button:not(hydrated)': {
+export const getButtonSkeletonStyles = (prefix?: string, theme?: Theme): string => {
+  // const buttonProperties: (keyof Button)[] = ['hideLabel', 'theme'];
+
+  return getMinifiedStyles({
+    [`${prefix ? prefix : ''}p-button:not(hydrated)`]: {
       display: 'block',
       width: pxToRemWithUnit(300),
-      background: '#5e0202',
-      '&[hide-label="true"]': {
-        width: pxToRemWithUnit(200),
-      },
-      '&[theme="dark"]': {
-        background: '#fff',
-      },
+      background: theme === 'light' ? '#5e0202' : '#fff',
     },
   });
 };
