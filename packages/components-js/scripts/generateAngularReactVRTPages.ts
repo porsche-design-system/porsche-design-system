@@ -26,8 +26,8 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
   const comment = '/* Auto Generated File */\n// @ts-nocheck';
 
   Object.entries(htmlFileContentMap)
-    // TODO: icon, flex, table
-    .filter(([component]) => component === 'overview' || component === 'banner') // for easy debugging
+    // TODO: icon, table
+    .filter(([component]) => component === 'flex') // for easy debugging
     .forEach(([fileName, fileContent]) => {
       fileContent = fileContent.trim();
 
@@ -170,7 +170,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
           .filter((x) => x)
           .sort(sortFunc)
           .join(', ');
-        const componentImports = Array.from(fileContent.matchAll(/<(?:.*)(p-[\w-]+)/g))
+        const componentImports = Array.from(fileContent.matchAll(/<(?:[a-z-]*)(p-[\w-]+)/g))
           .map(([, tagName]) => tagName)
           .filter((tagName, index, arr) => arr.findIndex((t) => t === tagName) === index)
           .map((tagName) => pascalCase(tagName));
