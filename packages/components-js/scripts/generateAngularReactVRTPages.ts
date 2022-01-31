@@ -27,7 +27,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
 
   Object.entries(htmlFileContentMap)
     // TODO: icon, flex, table
-    .filter(([component]) => component === 'overview' || component === 'banner') // for easy debugging
+    .filter(([component]) => component === 'icon') // for easy debugging
     .forEach(([fileName, fileContent]) => {
       fileContent = fileContent.trim();
 
@@ -164,7 +164,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
       } else if (framework === 'react') {
         // imports
         const reactImports = [
-          (usesComponentsReady || usesQuerySelector) && 'useEffect',
+          (usesComponentsReady || usesQuerySelector) && !isIconPage && 'useEffect',
           usesComponentsReady && 'useState',
         ]
           .filter((x) => x)
@@ -203,6 +203,8 @@ useEffect(() => {
     setAllReady(true);
   });
 }, []);`
+          : isIconPage
+          ? ''
           : usesToast
           ? `const { addMessage } = useToastManager();
 useEffect(() => {
