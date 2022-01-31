@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getFontFaceStylesheet() should return multiple jsx links 1`] = `
+<link
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/styles/font-face.min"
+  rel="preconnect"
+/>
+`;
+
+exports[`getFontFaceStylesheet() should return multiple jsx links 2`] = `
+<link
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/styles/font-face.min"
+  rel="dns-prefetch"
+/>
+`;
+
+exports[`getFontFaceStylesheet() should return multiple jsx links 3`] = `
+<link
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/styles/font-face.min"
+  rel="stylesheet"
+  type="text/css"
+/>
+`;

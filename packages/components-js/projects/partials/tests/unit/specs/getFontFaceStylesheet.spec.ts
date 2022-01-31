@@ -56,6 +56,16 @@ describe('getFontFaceStylesheet()', () => {
     expect(result).not.toContain("'");
   });
 
+  it('should return multiple jsx links', () => {
+    const result = getFontFaceStylesheet({ format: 'jsx' });
+
+    result.forEach((element) => {
+      // href is variable due to hash and cant be overwritten so we clone the element
+      const link = { ...element, props: { ...element.props, href: cdnStyleUrlWithoutHash } };
+      expect(link).toMatchSnapshot();
+    });
+  });
+
   describe('option: { cdn: "cn" }', () => {
     it('should return correct url for china cdn', () => {
       const result = getFontFaceStylesheet({ withoutTags: true, cdn: 'cn' });
