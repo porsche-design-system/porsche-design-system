@@ -26,7 +26,7 @@ export const transformCustomElementTagName = (markup: string): string =>
 export const transformInputs = (markup: string): string => markup.replace(/(<input(?:.[^/]*?))>/g, '$1 />');
 
 export const transformToSelfClosingTags = (markup: string): string =>
-  markup.replace(/(<([A-Za-z]+).*?)(><\/\2)>/g, '$1 />');
+  markup.replace(/(<([A-Za-z-]+)[^>]*?)>\s*<\/\2>/g, '$1 />');
 
 export const transformStyleAttribute = (markup: string): string =>
   markup.replace(/style="(.*?)"/g, (m, $style: string) => {

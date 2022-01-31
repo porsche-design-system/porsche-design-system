@@ -148,6 +148,11 @@ describe('transformToSelfClosingTags()', () => {
 </p-some-tag>`;
     expect(transformToSelfClosingTags(input)).toBe('<p-some-tag />');
   });
+
+  it('should not transform single line tags to self-closing', () => {
+    const input = `<p-some-tag><a href="#">Some link</a></p-some-tag>`;
+    expect(transformToSelfClosingTags(input)).toBe('<p-some-tag><a href="#">Some link</a></p-some-tag>');
+  });
 });
 
 describe('transformStyleAttribute', () => {
@@ -207,10 +212,5 @@ describe('convertToReact()', () => {
   <button type="button" />
 </PSomeTag>`
     );
-  });
-
-  it('should not transform single line tags to self-closing', () => {
-    const input = `<p-some-tag><a href="#">Some link</a></p-some-tag>`;
-    expect(convertToReact(input)).toBe('<PSomeTag><a href="#">Some link</a></PSomeTag>');
   });
 });
