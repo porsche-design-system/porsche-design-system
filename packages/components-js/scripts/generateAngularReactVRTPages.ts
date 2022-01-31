@@ -24,20 +24,19 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
 
   Object.entries(htmlFileContentMap)
     .filter((_, i) => i < 44) // for easy debugging
-    // TODO: icon, flex, modal-prefixed, overview, table
-    // TODO: toast-basic-dark, toast-basic-long-text, toast-basic, toast-offset, toast-prefixed
-    .filter(([component]) => component === 'icon') // for easy debugging
+    // TODO: icon, flex, modal-prefixed, toast-prefixed, overview, table
+    // .filter(([component]) => component === 'modal-prefixed') // for easy debugging
     .forEach(([fileName, fileContent]) => {
       fileContent = fileContent.trim();
 
       // extract and replace style if there is any
       const styleRegEx = /\s*<style.*>((?:.|\s)*?)<\/style>\s*/;
-      let [, style] = fileContent?.match(styleRegEx) || [];
+      let [, style] = fileContent.match(styleRegEx) || [];
       fileContent = fileContent.replace(styleRegEx, '\n');
 
       // extract and replace script if there is any
       const scriptRegEx = /\s*<script.*>((?:.|\s)*?)<\/script>\s*/;
-      let [, script] = fileContent?.match(scriptRegEx) || [];
+      let [, script] = fileContent.match(scriptRegEx) || [];
       fileContent = fileContent.replace(scriptRegEx, '\n');
       script = script?.trim();
       // TODO: transform script content
@@ -46,9 +45,11 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       const usesComponentsReady = script?.includes('componentsReady()');
       const usesIconNames = script?.includes('ICON_NAMES');
       const usesQuerySelector = script?.includes('querySelector');
-      console.log('usesQuerySelector', usesQuerySelector);
+      const usesToast = script?.includes('p-toast');
+      const [, toastText] = script?.match(/text:\s?(['`].*?['`])/) || [];
+      console.log('usesToast', usesToast);
 
-      script = script.includes('ICON_NAMES')
+      script = script?.includes('ICON_NAMES')
         ? `fetch('assets/assets.js')
     .then((res) => res.text())
     .then((content) => {
@@ -59,14 +60,14 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
 
       //icon--- extract icons holder if there is any, replacing is frameworr specific
       const iconsRegEx = /(<div class="[^"]*?overview[^"]*?" [^]*?>)/;
-      let [, iconsHolder] = fileContent?.match(iconsRegEx) || [];
+      let [, iconsHolder] = fileContent.match(iconsRegEx) || [];
 
       // extract template if there is any, replacing is framework specific
       const templateRegEx = /(<template.*>(?:.|\s)*?<\/template>)/;
-      let [, template] = fileContent?.match(templateRegEx) || [];
+      let [, template] = fileContent.match(templateRegEx) || [];
 
       const textareaRegEx = /<textarea>(.*?)<\/textarea>/g;
-      let [, textarea] = fileContent?.match(textareaRegEx) || [];
+      let [, textarea] = fileContent.match(textareaRegEx) || [];
 
       fileContent = fileContent.trim();
 
@@ -83,16 +84,21 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
           .join(', ');
 
         const pdsImports = [
-          usesComponentsReady ? `import { componentsReady } from '@porsche-design-system/components-angular';` : '',
-          usesIconNames ? `import type { IconName } from '@porsche-design-system/components-angular';` : '',
+          usesComponentsReady && 'componentsReady',
+          usesIconNames && 'IconName',
+          usesToast && 'ToastManager',
         ]
-          .sort()
           .filter((x) => x)
+          .sort()
           .join(', ');
 
         const pdsAssetsImports = usesIconNames ? `import { ICON_NAMES } from '@porsche-design-system/assets';` : '';
 
-        const imports = [`import { ${angularImports} } from '@angular/core';`, pdsImports, pdsAssetsImports]
+        const imports = [
+          `import { ${angularImports} } from '@angular/core';`,
+          pdsImports && `import { ${pdsImports} } from '@porsche-design-system/components-angular';`,
+          pdsAssetsImports,
+        ]
           .filter((x) => x)
           .join('\n');
 
@@ -117,13 +123,19 @@ ngOnInit() {
 `
             : usesIconNames
             ? `public icons = ICON_NAMES as IconName[];\n ngOnInit() {\n  ${script}\n}`
+            : usesToast
+            ? `constructor(private toastManager: ToastManager) {}
+
+ngOnInit() {
+  this.toastManager.addMessage({ text: ${toastText} });
+}`
             : usesQuerySelector
             ? `ngOnInit() {\n  ${script}\n}`
             : ''
         )
           .replace(/^(.)/, '\n$1') // leading new line if there is any content
-          .replace(/(\n)/g, '$1  ') // fix indentation
-          .replace(/(.)$/, '$1\n'); // trailing new line if there is any content
+          .replace(/(.)$/, '$1\n') // trailing new line if there is any content
+          .replace(/(\n)(.)/g, '$1  $2'); // fix indentation
 
         // conditional template rendering
         template = template
@@ -167,11 +179,15 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
         ]
           .filter((x) => x)
           .join(', ');
-        const componentImports = Array.from(fileContent?.matchAll(/<(p-[\w-]+)/g))
+        const componentImports = Array.from(fileContent.matchAll(/<(p-[\w-]+)/g))
           .map(([, tagName]) => tagName)
           .filter((tagName, index, arr) => arr.findIndex((t) => t === tagName) === index)
           .map((tagName) => pascalCase(tagName));
-        const pdsImports = [...componentImports, usesComponentsReady && 'componentsReady']
+        const pdsImports = [
+          ...componentImports,
+          usesComponentsReady && 'componentsReady',
+          usesToast && 'useToastManager',
+        ]
           .sort()
           .filter((x) => x)
           .join(', ');
@@ -194,17 +210,23 @@ useEffect(() => {
     setAllReady(true);
   });
 }, []);`
+          : usesToast
+          ? `const { addMessage } = useToastManager();
+useEffect(() => {
+  addMessage({ text: ${toastText} });
+}, [addMessage]);
+`
           : usesQuerySelector
           ? `useEffect(() => {
   ${script}
 }, []);`
           : '';
 
-        const componentLogic = [styleConst, useStateOrEffect]
+        const componentLogic = [useStateOrEffect, styleConst]
           .filter((x) => x)
           .join('\n')
-          .replace(/^(.)/, '\n$1') // leading new line
-          .replace(/(.)$/, '$1\n') // trailing new line
+          .replace(/^(.)/, '\n$1') // leading new line if there is any content
+          .replace(/(.)$/, '$1\n') // trailing new line if there is any content
           .replace(/(\n)(.)/g, '$1  $2'); // fix indentation
 
         // conditional template rendering
@@ -226,7 +248,8 @@ useEffect(() => {
 
         fileContent = fileContent.replace(textareaRegEx, textarea);
 
-        fileContent = fileContent.replace(/ c(hecked)/g, ' defaultC$1');
+        fileContent = fileContent.replace(/ v(alue=)/g, ' defaultV$1'); // for input
+        fileContent = fileContent.replace(/ c(hecked)/g, ' defaultC$1'); // for checkbox + radio
 
         fileContent = `${comment}
 ${imports}
@@ -248,7 +271,7 @@ export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
       // TODO: what about routing?
 
       fs.writeFileSync(fileName, fileContent);
-      //console.log(`Generated ${fileName.replace(path.resolve(rootDirectory, '..'), '')}`);
+      console.log(`Generated ${fileName.replace(path.resolve(rootDirectory, '..'), '')}`);
     });
 };
 
