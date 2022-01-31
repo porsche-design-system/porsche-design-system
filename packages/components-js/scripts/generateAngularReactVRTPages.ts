@@ -166,7 +166,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
       } else if (framework === 'react') {
         // imports
         const reactImports = [
-          (usesComponentsReady || usesQuerySelector) && 'useEffect',
+          (usesComponentsReady || usesQuerySelector) && !isIconPage && 'useEffect',
           usesComponentsReady && 'useState',
         ]
           .filter((x) => x)
@@ -205,6 +205,8 @@ useEffect(() => {
     setAllReady(true);
   });
 }, []);`
+          : isIconPage
+          ? ''
           : usesToast
           ? `const { addMessage } = useToastManager();
 useEffect(() => {
