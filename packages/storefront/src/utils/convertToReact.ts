@@ -8,7 +8,8 @@ export const transformStandardAttributes = (markup: string): string =>
   // transform all standard attributes to camel case
   markup
     .replace(/\s(\S+)="(.*?)"/g, (m, $key, $value) => ` ${camelCase($key)}="${$value}"`)
-    .replace(/\sreadonly/g, ' readOnly');
+    .replace(/\sreadonly/g, ' readOnly')
+    .replace(/\smaxlength=/g, ' maxLength=');
 
 export const transformClassAttribute = (markup: string): string =>
   markup.replace(/\sclass="(.*?)"/g, ' className="$1"');

@@ -26,8 +26,8 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
   const comment = '/* Auto Generated File */\n// @ts-nocheck';
 
   Object.entries(htmlFileContentMap)
-    // TODO: icon, flex, overview, table
-    .filter(([component]) => component === 'icon') // for easy debugging
+    // TODO: icon, flex, table
+    .filter(([component]) => component === 'overview' || component === 'banner') // for easy debugging
     .forEach(([fileName, fileContent]) => {
       fileContent = fileContent.trim();
 
@@ -41,22 +41,19 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       let [, script] = fileContent.match(scriptRegEx) || [];
       fileContent = fileContent.replace(scriptRegEx, '\n');
       script = script?.trim();
-      // TODO: transform script content
-      console.log(script);
 
       const usesComponentsReady = script?.includes('componentsReady()');
       const usesQuerySelector = script?.includes('querySelector');
-      const usesPrefixing = fileContent.match(/<[a-z-]+-p-[\w-]+/);
+      const usesPrefixing = !!fileContent.match(/<[a-z-]+-p-[\w-]+/);
       const usesToast = script?.includes('p-toast');
       const [, toastText] = script?.match(/text:\s?(['`].*?['`])/) || [];
-      console.log('usesPrefixing', usesPrefixing);
 
-      //icon--- extract icons holder if there is any, replacing is frameworr specific
+      const isOverviewPage = fileName === 'overview';
       const isIconPage = fileName === 'icon';
       const iconsRegEx = /(<div class="playground[\sa-z]+overview".*?>)\n(<\/div>)/;
 
       // extract template if there is any, replacing is framework specific
-      const templateRegEx = /(<template.*>(?:.|\s)*?<\/template>)/;
+      const templateRegEx = /( *<template.*>(?:.|\s)*?<\/template>)/;
       let [, template] = fileContent.match(templateRegEx) || [];
 
       fileContent = fileContent.trim();
@@ -75,8 +72,8 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
 
         const pdsImports = [
           usesComponentsReady && 'componentsReady',
-          isIconPage && 'IconName',
           usesToast && 'ToastManager',
+          isIconPage && 'IconName',
         ]
           .filter((x) => x)
           .sort(sortFunc)
@@ -107,8 +104,7 @@ ngOnInit() {
     this.allReady = true;
     this.cdr.markForCheck();
   });
-}
-`
+}`
             : isIconPage
             ? `public icons = ICON_NAMES as IconName[];`
             : usesToast
@@ -127,14 +123,14 @@ ngOnInit() {
 
         // conditional template rendering
         template = template
-          ?.replace(/<template/g, '<div *ngIf="allReady"') // // add condition and replace opening tag
+          ?.replace(/<template/g, '<div *ngIf="allReady"') // add condition and replace opening tag
           .replace(/<\/template>/g, '</div>'); // replace closing tag
         fileContent = fileContent.replace(templateRegEx, template);
 
         // prefixing
         fileContent = fileContent.replace(/(<[\w-]+(p-[\w-]+))/g, '$1 $2');
 
-        // create list of p-icons
+        // icons
         if (isIconPage) {
           fileContent = fileContent.replace(
             iconsRegEx,
@@ -172,6 +168,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
           usesComponentsReady && 'useState',
         ]
           .filter((x) => x)
+          .sort(sortFunc)
           .join(', ');
         const componentImports = Array.from(fileContent.matchAll(/<(?:.*)(p-[\w-]+)/g))
           .map(([, tagName]) => tagName)
@@ -220,22 +217,21 @@ useEffect(() => {
 
         const componentLogic = [useStateOrEffect, styleConst]
           .filter((x) => x)
-          .join('\n')
+          .join('\n\n')
           .replace(/^(.)/, '\n$1') // leading new line if there is any content
           .replace(/(.)$/, '$1\n') // trailing new line if there is any content
           .replace(/(\n)(.)/g, '$1  $2'); // fix indentation
 
         // conditional template rendering
         template = template
-          ?.replace(/<template/g, '{allReady && (\n  <div') // add condition and replace opening tag
-          .replace(/<\/template>/g, '</div>\n)}') // replace closing tag
-          .replace(/(\n)([ <)}]+)/g, '$1  $2'); // fix indentation
+          ?.replace(/( *)<template/g, '$1{allReady && (\n$1<div') // add condition and replace opening tag
+          .replace(/( *)<\/template>/g, '$1</div>\n$1)}') // replace closing tag
+          .replace(/(\n)( +<)/g, '$1  $2'); // fix indentation
         fileContent = fileContent.replace(templateRegEx, template);
 
         // prefixing
+        const [, prefix] = fileContent.match(/<([\w-]+)-p-[\w-]+/) || [];
         if (usesPrefixing) {
-          const [, prefix] = fileContent.match(/<([\w-]+)-p-[\w-]+/) || [];
-          console.log('prefix', prefix);
           fileContent = fileContent.replace(new RegExp(`(<\/?)${prefix}-`, 'g'), '$1');
         }
 
@@ -255,7 +251,24 @@ $2`
         fileContent = fileContent.replace(/ v(alue=)/g, ' defaultV$1'); // for input
         fileContent = fileContent.replace(/ c(hecked)/g, ' defaultC$1'); // for checkbox + radio
 
-        const fragmentTag = usesPrefixing ? 'PorscheDesignSystemProvider' : '';
+        if (isOverviewPage) {
+          // wrap right column with PorscheDesignSystemProvider
+          let i = 0;
+          fileContent = fileContent.replace(/\n  <div style="flex: 1">(?:.|\s)*?\n  <\/div>/g, (match) => {
+            if (i === 1) {
+              match = match
+                .replace(
+                  match,
+                  `\n<PorscheDesignSystemProvider prefix="${prefix}">${match}\n</PorscheDesignSystemProvider>`
+                )
+                .replace(/(\n)(.)/g, '$1  $2'); // fix indentation
+            }
+            i++;
+            return match;
+          });
+        }
+
+        const fragmentTag = usesPrefixing && !isOverviewPage ? 'PorscheDesignSystemProvider' : '';
 
         fileContent = `${comment}
 ${imports}
