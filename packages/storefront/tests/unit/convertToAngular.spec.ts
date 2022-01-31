@@ -1,6 +1,6 @@
 import {
   cleanBooleanAndUndefinedValues,
-  cleanClassAndSlotAttributes,
+  unbindNativeAttributes,
   convertToAngular,
   transformAttributesWithDigitValue,
   transformAttributesWithNotDigitValue,
@@ -77,16 +77,20 @@ describe('cleanBooleanAndUndefinedValues()', () => {
   });
 });
 
-describe('cleanClassAndSlotAttributes()', () => {
-  it('should remove brackets from "class" and "slot("|slot) attributes after initial transform', () => {
+describe('unbindNativeAttributes()', () => {
+  it('should remove brackets from "class" and "slot" attributes after initial transform', () => {
     const transformedMarkup = transformAttributesWithNotDigitValue(markup);
 
-    expect(cleanClassAndSlotAttributes(transformedMarkup)).toBe(
+    expect(unbindNativeAttributes(transformedMarkup)).toBe(
       `<p-some-tag [someAttribute]="'some value'" [attribute]="'some value'" class="some-class" [anotherAttribute]="'{ bar: 'foo' }'" [onclick]="'alert('click'); return false;'" [onchange]="'alert('change'); return false;'" digit-attribute="6" negative-digit-attribute="-6" [booleanAttribute]="'true'" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
   <span slot="some-slot">some slot text</span>
 </p-some-tag>`
     );
+  });
+
+  it('should remove brackets from "title" attribute', () => {
+    expect(unbindNativeAttributes(`<div [title]="'hello'"></div>`)).toBe('<div title="hello"></div>');
   });
 });
 
@@ -100,7 +104,7 @@ describe('convertToAngular()', () => {
     'transformAttributesWithNotDigitValue',
     'transformAttributesWithDigitValue',
     'cleanBooleanAndUndefinedValues',
-    'cleanClassAndSlotAttributes',
+    'unbindNativeAttributes',
   ];
 
   it.each(transformFunctions)('should call %s()', (fn) => {

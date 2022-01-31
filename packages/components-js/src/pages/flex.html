@@ -1,5 +1,5 @@
 <style type="text/css">
-  p-flex-item > p {
+  p-flex-item p {
     width: 100%;
     height: 100%;
     margin: 0;
@@ -10,27 +10,27 @@
     background-color: lightskyblue;
   }
 
-  p-flex-item:nth-child(1n) > p {
+  p-flex-item:nth-child(1n) p {
     background-color: skyblue;
   }
 
-  p-flex-item:nth-child(2n) > p {
+  p-flex-item:nth-child(2n) p {
     background-color: deepskyblue;
   }
 
-  p-flex-item:nth-child(3n) > p {
+  p-flex-item:nth-child(3n) p {
     background-color: dodgerblue;
   }
 
-  p-flex-item:nth-child(4n) > p {
+  p-flex-item:nth-child(4n) p {
     background-color: royalblue;
   }
 
-  p-flex-item[align-self] > p {
+  p-flex-item.align-self p {
     background-color: deeppink;
   }
 
-  p-flex[wrap] p {
+  p-flex.wrap p {
     min-width: 10rem;
   }
 </style>
@@ -163,7 +163,7 @@
 </div>
 
 <div class="playground" title="should render flex items by wrap mode 'nowrap'">
-  <p-flex wrap="nowrap">
+  <p-flex class="wrap" wrap="nowrap">
     <p-flex-item>
       <p>1</p>
     </p-flex-item>
@@ -195,7 +195,7 @@
 </div>
 
 <div class="playground" title="should render flex items by wrap mode 'wrap'">
-  <p-flex wrap="wrap">
+  <p-flex class="wrap" wrap="wrap">
     <p-flex-item>
       <p>1</p>
     </p-flex-item>
@@ -227,7 +227,7 @@
 </div>
 
 <div class="playground" title="should render flex items by wrap mode 'wrap-reverse'">
-  <p-flex wrap="wrap-reverse">
+  <p-flex class="wrap" wrap="wrap-reverse">
     <p-flex-item>
       <p>1</p>
     </p-flex-item>
@@ -259,7 +259,7 @@
 </div>
 
 <div class="playground" title="should adapt wrap mode depending on viewport">
-  <p-flex wrap="{ base: 'nowrap', l: 'wrap-reverse' }">
+  <p-flex class="wrap" wrap="{ base: 'nowrap', l: 'wrap-reverse' }">
     <p-flex-item>
       <p>1</p>
     </p-flex-item>
@@ -473,7 +473,7 @@
 </div>
 
 <div class="playground" title="should render with align-content mode 'stretch'">
-  <p-flex wrap="wrap" align-content="stretch" style="height: 180px">
+  <p-flex class="wrap" wrap="wrap" align-content="stretch" style="height: 180px">
     <p-flex-item>
       <p>1</p>
     </p-flex-item>
@@ -505,7 +505,7 @@
 </div>
 
 <div class="playground" title="should render with align-content mode 'flex-start'">
-  <p-flex wrap="wrap" align-content="flex-start" style="height: 180px">
+  <p-flex class="wrap" wrap="wrap" align-content="flex-start" style="height: 180px">
     <p-flex-item>
       <p>1</p>
     </p-flex-item>
@@ -537,7 +537,7 @@
 </div>
 
 <div class="playground" title="should render with align-content mode 'flex-end'">
-  <p-flex wrap="wrap" align-content="flex-end" style="height: 180px">
+  <p-flex class="wrap" wrap="wrap" align-content="flex-end" style="height: 180px">
     <p-flex-item>
       <p>1</p>
     </p-flex-item>
@@ -569,7 +569,7 @@
 </div>
 
 <div class="playground" title="should render with align-content mode 'center'">
-  <p-flex wrap="wrap" align-content="center" style="height: 180px">
+  <p-flex class="wrap" wrap="wrap" align-content="center" style="height: 180px">
     <p-flex-item>
       <p>1</p>
     </p-flex-item>
@@ -601,7 +601,7 @@
 </div>
 
 <div class="playground" title="should render with align-content mode 'space-between'">
-  <p-flex wrap="wrap" align-content="space-between" style="height: 180px">
+  <p-flex class="wrap" wrap="wrap" align-content="space-between" style="height: 180px">
     <p-flex-item>
       <p>1</p>
     </p-flex-item>
@@ -633,7 +633,7 @@
 </div>
 
 <div class="playground" title="should render with align-content mode 'space-around'">
-  <p-flex wrap="wrap" align-content="space-around" style="height: 180px">
+  <p-flex class="wrap" wrap="wrap" align-content="space-around" style="height: 180px">
     <p-flex-item>
       <p>1</p>
     </p-flex-item>
@@ -665,7 +665,7 @@
 </div>
 
 <div class="playground" title="should render with align-content mode 'space-evenly'">
-  <p-flex wrap="wrap" align-content="space-evenly" style="height: 180px">
+  <p-flex class="wrap" wrap="wrap" align-content="space-evenly" style="height: 180px">
     <p-flex-item>
       <p>1</p>
     </p-flex-item>
@@ -697,7 +697,7 @@
 </div>
 
 <div class="playground" title="should adapt align-content mode depending on viewport">
-  <p-flex wrap="wrap" align-content="{ base: 'flex-start', l: 'flex-end' }" style="height: 180px">
+  <p-flex class="wrap" wrap="wrap" align-content="{ base: 'flex-start', l: 'flex-end' }" style="height: 180px">
     <p-flex-item>
       <p>1</p>
     </p-flex-item>
@@ -786,7 +786,7 @@
 </div>
 
 <div class="playground" title="should adapt width depending on viewport">
-  <p-flex wrap="wrap">
+  <p-flex class="wrap" wrap="wrap">
     <p-flex-item width="{ base: 'half', l: 'one-quarter' }">
       <p>1</p>
     </p-flex-item>
@@ -839,14 +839,14 @@
 </div>
 
 <div class="playground" title="should render with align-self mode 'auto'">
-  <p-flex style="height: 180px" align-items="flex-end">
-    <p-flex-item align-self="stretch">
+  <p-flex align-items="flex-end" style="height: 180px">
+    <p-flex-item class="align-self" align-self="stretch">
       <p>1</p>
     </p-flex-item>
     <p-flex-item>
       <p>2</p>
     </p-flex-item>
-    <p-flex-item align-self="auto">
+    <p-flex-item class="align-self" align-self="auto">
       <p>3</p>
     </p-flex-item>
     <p-flex-item>
@@ -863,7 +863,7 @@
     <p-flex-item>
       <p>2</p>
     </p-flex-item>
-    <p-flex-item align-self="stretch">
+    <p-flex-item class="align-self" align-self="stretch">
       <p>3</p>
     </p-flex-item>
     <p-flex-item>
@@ -880,7 +880,7 @@
     <p-flex-item>
       <p>2</p>
     </p-flex-item>
-    <p-flex-item align-self="flex-start">
+    <p-flex-item class="align-self" align-self="flex-start">
       <p>3</p>
     </p-flex-item>
     <p-flex-item>
@@ -897,7 +897,7 @@
     <p-flex-item>
       <p>2</p>
     </p-flex-item>
-    <p-flex-item align-self="flex-end">
+    <p-flex-item class="align-self" align-self="flex-end">
       <p>3</p>
     </p-flex-item>
     <p-flex-item>
@@ -914,7 +914,7 @@
     <p-flex-item>
       <p>2</p>
     </p-flex-item>
-    <p-flex-item align-self="center">
+    <p-flex-item class="align-self" align-self="center">
       <p>3</p>
     </p-flex-item>
     <p-flex-item>
@@ -925,13 +925,13 @@
 
 <div class="playground" title="should render with align-self mode 'baseline'">
   <p-flex style="height: 180px">
-    <p-flex-item align-self="baseline">
+    <p-flex-item class="align-self" align-self="baseline">
       <p>1</p>
     </p-flex-item>
     <p-flex-item>
       <p>2</p>
     </p-flex-item>
-    <p-flex-item align-self="baseline" style="margin-top: 1rem">
+    <p-flex-item class="align-self" align-self="baseline" style="margin-top: 1rem">
       <p>3</p>
     </p-flex-item>
     <p-flex-item>
@@ -948,7 +948,7 @@
     <p-flex-item>
       <p>2</p>
     </p-flex-item>
-    <p-flex-item align-self="{ base: 'flex-start', l: 'flex-end' }">
+    <p-flex-item class="align-self" align-self="{ base: 'flex-start', l: 'flex-end' }">
       <p>3</p>
     </p-flex-item>
     <p-flex-item>
