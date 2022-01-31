@@ -2,8 +2,13 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
 import { camelCase } from 'change-case';
+import { TagName } from '../src';
 
-const INTERNAL_TAG_NAMES = ['p-select-wrapper-dropdown', 'p-toast-item'];
+const INTERNAL_TAG_NAMES: TagName[] = ['p-select-wrapper-dropdown', 'p-toast-item'];
+
+// TODO: add form elements
+//'p-button-pure','p-link', 'p-link-pure'
+const TAG_NAMES_WITH_SKELETON: TagName[] = ['p-button'];
 
 const generateTagNames = (): void => {
   // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
@@ -26,7 +31,10 @@ export type TagName = typeof TAG_NAMES[number];
 // TODO: replace with generic in TS4.1: https://stackoverflow.com/questions/57807009/typescript-generic-to-turn-underscore-object-to-camel-case
 export type TagNameCamelCase = ${tags.map((x) => `'${camelCase(x)}'`).join(' | ')};
 
-export const INTERNAL_TAG_NAMES: TagName[] = [${INTERNAL_TAG_NAMES.map((x) => `'${x}'`).join(', ')}];`;
+export const INTERNAL_TAG_NAMES: TagName[] = [${INTERNAL_TAG_NAMES.map((x) => `'${x}'`).join(', ')}];
+
+export const TAG_NAMES_WITH_SKELETON: TagName[] = [${TAG_NAMES_WITH_SKELETON.map((x) => `'${x}'`).join(', ')}];
+`;
 
   const targetDirectory = path.normalize('./src/lib');
   fs.mkdirSync(path.resolve(targetDirectory), { recursive: true });
