@@ -15,10 +15,13 @@ const convertTemplates = (templates: Template[]): string[] => {
 
 const convertTemplatesJsx = (templates: Template[]): JSX.Element[] => {
   return templates.map(({ template, value }) => {
-    return template
-      .replace('$value', value)
-      .replace('""$appTitle""', '{appTitle}')
-      .replace('""$cdnBaseUrl""', '{cdnBaseUrl}') as unknown as JSX.Element;
+    if (value.includes('$cdnBaseUrl')) {
+      value = value.replace('$cdnBaseUrl', '${cdnBaseUrl}');
+      template = template.replace('"$value"', `{\`${value}\`}`);
+    } else {
+      template = template.replace('$value', value).replace('""$appTitle""', '{appTitle}');
+    }
+    return template as unknown as JSX.Element;
   });
 };
 
@@ -73,6 +76,7 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
 
   const metaIconTemplates = convertTemplates(metaIconLinkTemplates);
   const manifestTemplates = convertTemplates(manifestLinkTemplates);
+
   const metaIconTemplatesJsx = convertTemplatesJsx(metaIconLinkTemplates);
   const manifestTemplatesJsx = convertTemplatesJsx(manifestLinkTemplates);
 
