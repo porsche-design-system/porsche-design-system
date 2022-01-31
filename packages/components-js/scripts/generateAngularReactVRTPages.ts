@@ -189,6 +189,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
         const imports = [
           `import { ${pdsImports} } from '@porsche-design-system/components-react';`,
           reactImports && `import { ${reactImports} } from 'react';`,
+          isIconPage && `import { ICON_NAMES } from '@porsche-design-system/assets';`,
         ]
           .filter((x) => x)
           .join('\n');
@@ -238,6 +239,17 @@ useEffect(() => {
           fileContent = fileContent.replace(new RegExp(`(<\/?)${prefix}-`, 'g'), '$1');
         }
 
+        // create list of p-icons
+        if (isIconPage) {
+          fileContent = fileContent.replace(
+            iconsRegEx,
+            `$1
+  {ICON_NAMES.map((x) => (
+    <PIcon key={x} name={x as any} size="inherit" color="inherit" aria-label={\`\${x} icon\`} />
+  ))}
+$2`
+          );
+        }
         // attribute conversion
         fileContent = fileContent.replace(/(<textarea.*)>\s*(.+?)\s*(<\/textarea>)/g, '$1 defaultValue="$2">$3');
         fileContent = fileContent.replace(/ v(alue=)/g, ' defaultV$1'); // for input
