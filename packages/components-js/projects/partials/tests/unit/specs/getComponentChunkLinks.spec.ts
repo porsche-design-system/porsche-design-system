@@ -56,6 +56,37 @@ describe('getComponentChunkLinks()', () => {
     });
   });
 
+  describe('format jsx', () => {
+    it('should return core link markup by default', () => {
+      const result = getComponentChunkLinks({ format: 'jsx' });
+      result.forEach((element) => {
+        // href is variable due to hash and cant be overwritten so we clone the element
+        const link = { ...element, props: { ...element.props, href: cdnChunkUrlWithoutHash } };
+        expect(link).toMatchSnapshot();
+      });
+    });
+
+    it('should return multiple jsx links', () => {
+      const result = getComponentChunkLinks({ format: 'jsx', components: ['button', 'button-pure', 'marque'] });
+      result.forEach((element) => {
+        // href is variable due to hash and cant be overwritten so we clone the element
+        const link = { ...element, props: { ...element.props, href: cdnChunkUrlWithoutHash } };
+        expect(link).toMatchSnapshot();
+      });
+    });
+
+    COMPONENT_CHUNK_NAMES.forEach((chunkName: ComponentChunkName) => {
+      it(`should return core and chunk link for ['${chunkName}']`, () => {
+        const result = getComponentChunkLinks({ format: 'jsx', components: [chunkName] });
+        result.forEach((element) => {
+          // href is variable due to hash and cant be overwritten so we clone the element
+          const link = { ...element, props: { ...element.props, href: cdnChunkUrlWithoutHash } };
+          expect(link).toMatchSnapshot();
+        });
+      });
+    });
+  });
+
   describe('url without tag', () => {
     const urlStartsWith = 'https://';
     const urlEndsWith = '.js';

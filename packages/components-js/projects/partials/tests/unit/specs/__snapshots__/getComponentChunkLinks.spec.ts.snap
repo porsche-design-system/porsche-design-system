@@ -1,0 +1,570 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['accordion'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['accordion'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['banner'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['banner'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['button'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['button'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['button-pure'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['button-pure'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['checkbox-wrapper'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['checkbox-wrapper'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['content-wrapper'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['content-wrapper'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['divider'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['divider'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['fieldset-wrapper'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['fieldset-wrapper'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['flex'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['flex'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['grid'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['grid'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['headline'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['headline'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['icon'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['icon'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['link'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['link'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['link-pure'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['link-pure'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['link-social'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['link-social'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['marque'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['marque'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['modal'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['modal'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['pagination'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['pagination'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['popover'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['popover'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['radio-button-wrapper'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['radio-button-wrapper'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['select-wrapper'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['select-wrapper'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['spinner'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['spinner'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['switch'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['switch'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['table'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['table'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['tabs'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['tabs'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['tabs-bar'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['tabs-bar'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['text'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['text'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['text-field-wrapper'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['text-field-wrapper'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['text-list'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['text-list'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['textarea-wrapper'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['textarea-wrapper'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['toast'] 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core and chunk link for ['toast'] 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return core link markup by default 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return multiple jsx links 1`] = `
+<link
+  as="script"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return multiple jsx links 2`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return multiple jsx links 3`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
+
+exports[`getComponentChunkLinks() format jsx should return multiple jsx links 4`] = `
+<link
+  as="script"
+  href="https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system."
+  rel="preload"
+/>
+`;
