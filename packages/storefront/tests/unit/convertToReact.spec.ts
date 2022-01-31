@@ -44,6 +44,12 @@ describe('transformStandardAttributes()', () => {
   it('should transform readonly attribute to camelCase', () => {
     expect(transformStandardAttributes('<input type="text" readonly>')).toBe('<input type="text" readOnly>');
   });
+
+  it('should transform maxlength attribute to camelCase', () => {
+    expect(transformStandardAttributes('<input type="text" maxlength="20">')).toBe(
+      '<input type="text" maxLength="20">'
+    );
+  });
 });
 
 describe('transformClassAttribute()', () => {
