@@ -1,21 +1,21 @@
-import type { BreakpointCustomizable, JssStyle, Styles } from '../utils';
+import type { Styles, JssStyle } from 'jss';
+import type { BreakpointCustomizable } from '../utils';
+import type { GetStylesFunction } from '../utils';
+import type { LinkButtonVariant, ThemeExtendedElectric } from '../types';
+import { buildResponsiveStyles, isThemeDark } from '../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  buildResponsiveStyles,
   getFocusStyles,
   getInset,
-  GetStylesFunction,
+  getTransition,
+  pxToRemWithUnit,
   getThemedColors,
   getThemedColorsDarken,
-  getTransition,
-  isDark,
-  pxToRemWithUnit,
-} from '../utils';
-import { color } from '@porsche-design-system/utilities';
-import type { LinkButtonVariant, ThemeExtendedElectric } from '../types';
+} from './';
 
-const { darkTheme } = color;
+const { baseColor: darkThemeBaseColor } = getThemedColors('dark');
+const { baseColor: lightThemeBaseColor } = getThemedColors('light');
 
 const getVariantColors = (
   variant: LinkButtonVariant,
@@ -33,12 +33,12 @@ const getVariantColors = (
       primary: {
         primaryColor: brandColor,
         primaryColorHover: hoverColorDarken,
-        baseColor: darkTheme.default,
+        baseColor: darkThemeBaseColor,
       },
       secondary: {
         primaryColor: contrastHighColor,
         primaryColorHover: contrastHighColorDarken,
-        baseColor: darkTheme.default,
+        baseColor: darkThemeBaseColor,
       },
       tertiary: {
         primaryColor: contrastHighColor,
@@ -50,16 +50,16 @@ const getVariantColors = (
       primary: {
         primaryColor: brandColor,
         primaryColorHover: hoverColorDarken,
-        baseColor: darkTheme.default,
+        baseColor: darkThemeBaseColor,
       },
       secondary: {
-        primaryColor: darkTheme.default,
+        primaryColor: darkThemeBaseColor,
         primaryColorHover: baseColorDarken,
-        baseColor: color.default,
+        baseColor: lightThemeBaseColor,
       },
       tertiary: {
-        primaryColor: darkTheme.default,
-        primaryColorHover: darkTheme.default,
+        primaryColor: darkThemeBaseColor,
+        primaryColorHover: darkThemeBaseColor,
         baseColor,
       },
     },
@@ -67,12 +67,12 @@ const getVariantColors = (
       primary: {
         primaryColor: brandColor,
         primaryColorHover: hoverColorDarken,
-        baseColor: darkTheme.default,
+        baseColor: darkThemeBaseColor,
       },
       secondary: {
         primaryColor: contrastHighColor,
         primaryColorHover: contrastHighColorDarken,
-        baseColor: darkTheme.default,
+        baseColor: darkThemeBaseColor,
       },
       tertiary: {
         primaryColor: contrastHighColor,
@@ -152,7 +152,7 @@ export const getLinkButtonStyles = (
   hasSlottedAnchor: boolean,
   theme: ThemeExtendedElectric
 ): Styles => {
-  const isDarkTheme = isDark(theme);
+  const isDarkTheme = isThemeDark(theme);
   const isTertiary = variant === 'tertiary';
   const { primaryColor, primaryColorHover, baseColor } = getVariantColors(variant, theme);
   const { disabledColor } = getThemedColors(theme);
@@ -192,7 +192,7 @@ export const getLinkButtonStyles = (
           ...(isTertiary && {
             backgroundColor: 'currentColor',
             '& $label, & $icon': {
-              color: isDarkTheme ? color.default : darkTheme.default,
+              color: isDarkTheme ? lightThemeBaseColor : darkThemeBaseColor,
             },
           }),
         },

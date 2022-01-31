@@ -4,23 +4,18 @@ set -o errexit
 set -o pipefail
 
 if [[ -z "${1}" ]]; then
-  echo "Please provide a target version, e.g. './docker.sh run-prepare-release-utilities 1.2.3'"
+  echo "Please provide a target version, e.g. './docker.sh run-prepare-release-utilities-deprecated 1.2.3'"
   exit 1
 fi
 
-pushd "packages/utilities/projects/utilities"
+pushd "packages/utilities-deprecated/projects/utilities"
   yarn version --no-git-tag-version --new-version "${1}"
   sed -i -e "s/### \[Unreleased\]/### \[Unreleased\]\n\n### \[${1}\] - $(date +'%F')/" "./CHANGELOG.md"
 popd
 
-packages=( "assets" "components" "storefront" )
+packages=( "components" "storefront" )
 for pkg in ${packages[@]}; do
   pushd "./packages/${pkg}"
     sed -i -E -e 's$("@porsche-design-system/utilities": )(".*")$\1"'${1}'"$' package.json
   popd
 done
-
-# update "utilities" in partials project
-pushd "./packages/components-js/projects/partials"
-  sed -i -E -e 's$("@porsche-design-system/utilities": )(".*")$\1"'${1}'"$' package.json
-popd

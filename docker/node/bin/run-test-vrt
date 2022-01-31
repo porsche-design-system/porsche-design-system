@@ -8,7 +8,7 @@ if
   [[ "--components-angular" == "${1}" ]] ||
   [[ "--components-react" == "${1}" ]] ||
   [[ "--storefront" == "${1}" ]] ||
-  [[ "--utilities" == "${1}" ]]
+  [[ "--utilities-deprecated" == "${1}" ]]
 then
   yarn test:vrt:${1:2}
 else

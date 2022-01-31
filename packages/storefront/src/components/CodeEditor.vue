@@ -22,7 +22,7 @@
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
   import { Framework, Theme } from '@/models';
-  import { color } from '@porsche-design-system/utilities';
+  import { themeDark } from '@porsche-design-system/utilities-v2';
   import { getLoaderScript } from '@porsche-design-system/components-js/partials';
 
   @Component
@@ -57,7 +57,7 @@
         editors: '100',
         title: 'Porsche Design System',
         html: this.markup,
-        ...(this.theme === 'dark' && { css: `body { background: ${color.darkTheme.background.default}; }` }),
+        ...(this.theme === 'dark' && { css: `body { background: ${themeDark.background.base}; }` }),
         // js_external: `${path}${PDS_LOADER_FILENAME}`,
         js: getLoaderScript({ withoutTags: true }),
       });

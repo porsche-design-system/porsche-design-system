@@ -1,15 +1,9 @@
 import type { Theme } from '../../../types';
-import {
-  buildResponsiveStyles,
-  getCss,
-  getFocusStyles,
-  getThemedColors,
-  getTransition,
-  pxToRemWithUnit,
-} from '../../../utils';
 import type { BreakpointCustomizable } from '../../../types';
 import type { NumberOfPageLinks } from './pagination-utils';
-import { defaultFontFamilyAndWeight, fontSize } from '@porsche-design-system/utilities';
+import { buildResponsiveStyles, getCss } from '../../../utils';
+import { getFocusStyles, getTransition, pxToRemWithUnit, getThemedColors } from '../../../styles';
+import { textSmall } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
   maxNumberOfPageLinks: BreakpointCustomizable<NumberOfPageLinks>,
@@ -51,8 +45,7 @@ export const getComponentCss = (
         height: pxToRemWithUnit(40),
         boxSizing: 'border-box',
         textDecoration: 'none',
-        ...defaultFontFamilyAndWeight,
-        ...fontSize.small,
+        ...textSmall,
         cursor: 'pointer',
         color: baseColor,
         ...getFocusStyles({ color: focusColor, offset: 1 }),

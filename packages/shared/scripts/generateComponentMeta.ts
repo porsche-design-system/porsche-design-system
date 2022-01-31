@@ -142,7 +142,6 @@ const generateComponentMeta = (): void => {
     `export const componentMeta: ComponentsMeta = ${JSON.stringify(meta)};`,
     `export const getComponentMeta = (component: TagName): ComponentMeta => componentMeta[component];`,
     `export const FOCUSABLE_TAG_NAMES_CAMEL_CASE: TagNameCamelCase[] = ${JSON.stringify(focusableTagNames)};`,
-    ,
   ].join(glue);
 
   const content = [imports, types, functions].join(glue);

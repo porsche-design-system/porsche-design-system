@@ -1,0 +1,5 @@
+# compiled output
+/dist
+
+# contains auto generated files only
+/src

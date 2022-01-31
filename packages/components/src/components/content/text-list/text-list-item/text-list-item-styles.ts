@@ -1,7 +1,9 @@
-import { addImportantToEachRule, getCss, mergeDeep, pxToRemWithUnit } from '../../../../utils';
-import { textSmall } from '@porsche-design-system/utilities';
-import type { GetStylesFunction, JssStyle } from '../../../../utils';
+import type { JssStyle } from 'jss';
+import type { GetStylesFunction } from '../../../../utils';
 import type { ListType, OrderType } from '../text-list/text-list-utils';
+import { getCss, mergeDeep } from '../../../../utils';
+import { addImportantToEachRule, pxToRemWithUnit } from '../../../../styles';
+import { textSmall } from '@porsche-design-system/utilities-v2';
 
 const getNestedListStyles = (isNestedList: boolean, listType: ListType): JssStyle =>
   isNestedList &&

@@ -1,15 +1,17 @@
+import type { PopoverDirection } from './popover-utils';
+import type { JssStyle } from 'jss';
+import { buildSlottedStyles, getCss } from '../../../utils';
 import {
   addImportantToEachRule,
-  buildSlottedStyles,
   getBaseSlottedStyles,
-  getCss,
+  getThemedColors,
   mediaQuery,
   pxToRemWithUnit,
-} from '../../../utils';
-import type { PopoverDirection } from './popover-utils';
-import type { JssStyle } from '../../../utils';
-import { color, textSmall } from '@porsche-design-system/utilities';
+} from '../../../styles';
+import { textSmall } from '@porsche-design-system/utilities-v2';
 import { POPOVER_Z_INDEX } from '../../../constants';
+
+const { backgroundColor, baseColor } = getThemedColors('light');
 
 const mediaQueryXS = mediaQuery('xs');
 const mediaQueryForcedColors = '@media (forced-colors: active)';
@@ -39,7 +41,6 @@ const directionPositionMap: { [key in PopoverDirection]: JssStyle } = {
 
 const borderWidth = '.75rem';
 const transparentColor = 'transparent';
-const { default: backgroundColor } = color.background;
 const canvas = 'canvas';
 const canvasText = 'canvastext';
 const join = (...arr: (string | number)[]): string => arr.join(' ');
@@ -123,7 +124,7 @@ export const getComponentCss = (direction: PopoverDirection): string => {
       maxWidth: '90vw',
       width: 'max-content',
       boxSizing: 'border-box',
-      background: color.background.default,
+      background: backgroundColor,
       padding: '.5rem 1rem',
       pointerEvents: 'auto',
       ...directionPositionMap[direction],
@@ -134,7 +135,7 @@ export const getComponentCss = (direction: PopoverDirection): string => {
       hyphens: 'auto',
       listStyleType: 'none',
       // TODO: The styles above are our text styles should be extracted as soon as p-text is refactored with JSS
-      color: color.default,
+      color: baseColor,
       whiteSpace: 'inherit',
       [mediaQueryXS]: {
         maxWidth: pxToRemWithUnit(432),
