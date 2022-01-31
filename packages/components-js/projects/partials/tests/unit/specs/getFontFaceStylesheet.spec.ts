@@ -3,15 +3,21 @@ import { getFontFaceStylesheet } from '../../../src';
 describe('getFontFaceStylesheet()', () => {
   const cdnStyleUrlWithoutHash = `https://cdn.ui.porsche.com/porsche-design-system/styles/font-face.min`;
   const cdnStyleUrlCnWithoutHash = `https://cdn.ui.porsche.cn/porsche-design-system/styles/font-face.min`;
-  const linkStartsWith = '<link rel=stylesheet href=';
+  const linkStartsWith = '<link rel=preconnect href=';
   const linkEndsWith = 'type=text/css crossorigin>';
+  const linkStylesheet = '<link rel=stylesheet href=';
+  const linkDnsPrefetch = '<link rel=dns-prefetch href=';
   const urlStartsWith = 'https://';
   const urlEndsWith = '.css';
 
-  it('should return link with FONT_FACE_STYLE_CDN_URL', () => {
+  it('should return links with preconnect, dns-prefetch and FONT_FACE_STYLE_CDN_URL', () => {
     const result = getFontFaceStylesheet();
+    console.log(result);
     expect(result.startsWith(linkStartsWith)).toBeTruthy();
+    expect(result.match(/><link/g).length).toBe(2);
     expect(result.endsWith(linkEndsWith)).toBeTruthy();
+    expect(result).toContain(linkStylesheet);
+    expect(result).toContain(linkDnsPrefetch);
     expect(result).toContain(cdnStyleUrlWithoutHash);
   });
 
