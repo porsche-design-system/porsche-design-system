@@ -1,4 +1,4 @@
-import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
+import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
 
 export const generateInitialStylesPartial = (): string => {
   const types = `type InitialStylesOptions = {
@@ -6,7 +6,7 @@ export const generateInitialStylesPartial = (): string => {
   withoutTags?: boolean;
 }`;
 
-  const tagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x))
+  const tagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x) && !TAG_NAMES_WITH_SKELETON.includes(x))
     .map((x) => `'${x}'`)
     .join(', ');
 
