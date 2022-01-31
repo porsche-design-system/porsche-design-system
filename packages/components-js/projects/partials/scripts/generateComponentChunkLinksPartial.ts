@@ -58,8 +58,8 @@ Please use only valid component chunk names:
 
 
   const linksHtml = urls
-     // core needs crossorigin attribute
-    .map((url, idx) => \`<link rel=preload href=\${url} as=script\${idx === 0 && " crossorigin"}>\`).join('');
+     // core needs crossorigin attribute / we need ternary otherwise false is written into link
+    .map((url, idx) => \`<link rel=preload href=\${url} as=script\${idx === 0 ? " crossorigin" : ''}>\`).join('');
 
   const linksJsx = urls.map((url, idx) => <link rel="preload" href={url} as="script" {...(idx === 0 && { crossOrigin: 'true' })} />)
 
