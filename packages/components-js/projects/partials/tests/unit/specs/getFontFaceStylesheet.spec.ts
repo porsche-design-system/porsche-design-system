@@ -10,9 +10,14 @@ describe('getFontFaceStylesheet()', () => {
   const urlStartsWith = 'https://';
   const urlEndsWith = '.css';
 
+  let consoleWarnSpy;
+
+  beforeEach(() => (consoleWarnSpy = jest.spyOn(global.console, 'warn').mockImplementation(() => {})));
+  afterEach(() => jest.clearAllMocks());
+
   it('should return links with preconnect, dns-prefetch and FONT_FACE_STYLE_CDN_URL', () => {
     const result = getFontFaceStylesheet();
-    console.log(result);
+
     expect(result.startsWith(linkStartsWith)).toBeTruthy();
     expect(result.match(/><link/g).length).toBe(2);
     expect(result.endsWith(linkEndsWith)).toBeTruthy();
@@ -23,6 +28,11 @@ describe('getFontFaceStylesheet()', () => {
 
   it('should return only href', () => {
     const result = getFontFaceStylesheet({ withoutTags: true });
+
+    expect(consoleWarnSpy).toBeCalledWith(
+      'The option "{ withoutTags: true }" of partial getFontFaceStylesheet() is deprecated and will be removed in v3'
+    );
+
     expect(result.startsWith(urlStartsWith)).toBeTruthy();
     expect(result.endsWith(urlEndsWith)).toBeTruthy();
     expect(result).toContain(cdnStyleUrlWithoutHash);
@@ -30,6 +40,11 @@ describe('getFontFaceStylesheet()', () => {
 
   it('should return only href with cdn: "auto"', () => {
     const result = getFontFaceStylesheet({ withoutTags: true, cdn: 'auto' });
+
+    expect(consoleWarnSpy).toBeCalledWith(
+      'The option "{ withoutTags: true }" of partial getFontFaceStylesheet() is deprecated and will be removed in v3'
+    );
+
     expect(result.startsWith(urlStartsWith)).toBeTruthy();
     expect(result.endsWith(urlEndsWith)).toBeTruthy();
     expect(result).toContain(cdnStyleUrlWithoutHash);
@@ -44,6 +59,11 @@ describe('getFontFaceStylesheet()', () => {
   describe('option: { cdn: "cn" }', () => {
     it('should return correct url for china cdn', () => {
       const result = getFontFaceStylesheet({ withoutTags: true, cdn: 'cn' });
+
+      expect(consoleWarnSpy).toBeCalledWith(
+        'The option "{ withoutTags: true }" of partial getFontFaceStylesheet() is deprecated and will be removed in v3'
+      );
+
       expect(result.startsWith(urlStartsWith)).toBeTruthy();
       expect(result.endsWith(urlEndsWith)).toBeTruthy();
       expect(result).toContain(cdnStyleUrlCnWithoutHash);
