@@ -26,9 +26,8 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
   const comment = '/* Auto Generated File */\n// @ts-nocheck';
 
   Object.entries(htmlFileContentMap)
-    .filter((_, i) => i < 44) // for easy debugging
     // TODO: icon, flex, overview, table
-    // .filter(([component]) => component === 'overview') // for easy debugging
+    .filter(([component]) => component === 'textarea-wrapper') // for easy debugging
     .forEach(([fileName, fileContent]) => {
       fileContent = fileContent.trim();
 
@@ -69,9 +68,6 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       // extract template if there is any, replacing is framework specific
       const templateRegEx = /(<template.*>(?:.|\s)*?<\/template>)/;
       let [, template] = fileContent.match(templateRegEx) || [];
-
-      const textareaRegEx = /<textarea>(.*?)<\/textarea>/g;
-      let [, textarea] = fileContent.match(textareaRegEx) || [];
 
       fileContent = fileContent.trim();
 
@@ -253,15 +249,8 @@ useEffect(() => {
 
         // attribute conversion
         // TODO: textarea defaultValue
-        const attr = textarea?.match(/<textarea>(.*?)<\/textarea>/g).map(function (val) {
-          return val.replace(/<\/?textarea>/g, '');
-        });
-        textarea = textarea
-          ?.replace(/<textarea>/g, `<textarea defaultValue="${attr[0]}">`)
-          .replace(/<textarea.*>(.*?)<\/textarea>/g, ''); //how can i replace everythings between tags with ''?
 
-        fileContent = fileContent.replace(textareaRegEx, textarea);
-
+        fileContent = fileContent.replace(/(<textarea.*)>\s*(.+?)\s*(<\/textarea>)/g, '$1 defaultValue="$2">$3');
         fileContent = fileContent.replace(/ v(alue=)/g, ' defaultV$1'); // for input
         fileContent = fileContent.replace(/ c(hecked)/g, ' defaultC$1'); // for checkbox + radio
 
