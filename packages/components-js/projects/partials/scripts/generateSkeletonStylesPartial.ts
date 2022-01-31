@@ -1,5 +1,5 @@
 import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
-import { getButtonSkeletonStyles } from '@porsche-design-system/components/src/components/action/button/button-skeleton-styles';
+import { getButtonSkeletonStyles } from '../../../../components/src/components/action/button/button-skeleton-styles';
 // import { COMPONENT_CHUNK_NAMES } from '../../components-wrapper';
 // TODO: partial to be used after body tag
 export const generateSkeletonStylesPartial = (): string => {
@@ -33,7 +33,7 @@ type SkeletonStylesOptions = {
 
   const styleInnerHtml = tagNames.map((x) => {
       const key=  prefix ? \`\${prefix}-\${x}\` : x;
-      return \`\${key}{${skeletonStylesMap[x]()}}\`\;
+      return \`\${key}{\${skeletonStylesMap[x]()}}\`\;
   }).join('');
 
 

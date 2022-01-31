@@ -1,7 +1,8 @@
-import { getCss } from '../../../utils';
+import { getCss } from '../../../utils/jss';
 import { pxToRemWithUnit } from '../../../styles';
 export const getButtonSkeletonStyles = (): string => {
   // const buttonProperties: (keyof Button)[] = ['hideLabel', 'theme'];
+  // TODO: prefixing
 
   return getCss({
     'p-button:not(hydrated)': {
