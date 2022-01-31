@@ -12,6 +12,7 @@ const generateAngularReactVRTPages = (): void => {
   const htmlFiles = globby.sync(`${pagesDirectory}/**/*.html`);
 
   const htmlFileContentMap: { [key: string]: string } = htmlFiles
+    // TODO: filter blacklisted files that make no sense to vrt test?
     .map((filePath) => [path.basename(filePath).split('.')[0], fs.readFileSync(filePath, 'utf8')])
     .reduce((result, [key, content]) => ({ ...result, [key]: content }), {});
 
@@ -19,13 +20,15 @@ const generateAngularReactVRTPages = (): void => {
   generateVRTPages(htmlFileContentMap, 'react');
 };
 
+const sortFunc = (a: string, b: string): number => a.toLowerCase().localeCompare(b.toLowerCase());
+
 const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framework: 'angular' | 'react'): void => {
   const comment = '/* Auto Generated File */\n// @ts-nocheck';
 
   Object.entries(htmlFileContentMap)
     .filter((_, i) => i < 44) // for easy debugging
-    // TODO: icon, flex, modal-prefixed, toast-prefixed, overview, table
-    // .filter(([component]) => component === 'modal-prefixed') // for easy debugging
+    // TODO: icon, flex, overview, table
+    // .filter(([component]) => component === 'overview') // for easy debugging
     .forEach(([fileName, fileContent]) => {
       fileContent = fileContent.trim();
 
@@ -45,9 +48,10 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       const usesComponentsReady = script?.includes('componentsReady()');
       const usesIconNames = script?.includes('ICON_NAMES');
       const usesQuerySelector = script?.includes('querySelector');
+      const usesPrefixing = fileContent.match(/<[a-z-]+-p-[\w-]+/);
       const usesToast = script?.includes('p-toast');
       const [, toastText] = script?.match(/text:\s?(['`].*?['`])/) || [];
-      console.log('usesToast', usesToast);
+      console.log('usesPrefixing', usesPrefixing);
 
       script = script?.includes('ICON_NAMES')
         ? `fetch('assets/assets.js')
@@ -79,8 +83,8 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
           script && 'OnInit',
           usesComponentsReady && 'ChangeDetectorRef',
         ]
-          .sort()
           .filter((x) => x)
+          .sort(sortFunc)
           .join(', ');
 
         const pdsImports = [
@@ -89,7 +93,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
           usesToast && 'ToastManager',
         ]
           .filter((x) => x)
-          .sort()
+          .sort(sortFunc)
           .join(', ');
 
         const pdsAssetsImports = usesIconNames ? `import { ICON_NAMES } from '@porsche-design-system/assets';` : '';
@@ -143,6 +147,9 @@ ngOnInit() {
           .replace(/<\/template>/g, '</div>'); // replace closing tag
         fileContent = fileContent.replace(templateRegEx, template);
 
+        // prefixing
+        fileContent = fileContent.replace(/(<[\w-]+(p-[\w-]+))/g, '$1 $2');
+
         // create list of p-icons
         iconsHolder = iconsHolder?.replace(
           />(.*?)/g,
@@ -179,17 +186,18 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
         ]
           .filter((x) => x)
           .join(', ');
-        const componentImports = Array.from(fileContent.matchAll(/<(p-[\w-]+)/g))
+        const componentImports = Array.from(fileContent.matchAll(/<(?:.*)(p-[\w-]+)/g))
           .map(([, tagName]) => tagName)
           .filter((tagName, index, arr) => arr.findIndex((t) => t === tagName) === index)
           .map((tagName) => pascalCase(tagName));
         const pdsImports = [
           ...componentImports,
           usesComponentsReady && 'componentsReady',
+          usesPrefixing && 'PorscheDesignSystemProvider',
           usesToast && 'useToastManager',
         ]
-          .sort()
           .filter((x) => x)
+          .sort(sortFunc)
           .join(', ');
         const imports = [
           `import { ${pdsImports} } from '@porsche-design-system/components-react';`,
@@ -236,8 +244,14 @@ useEffect(() => {
           .replace(/(\n)([ <)}]+)/g, '$1  $2'); // fix indentation
         fileContent = fileContent.replace(templateRegEx, template);
 
-        // attribute conversion
+        // prefixing
+        if (usesPrefixing) {
+          const [, prefix] = fileContent.match(/<([\w-]+)-p-[\w-]+/) || [];
+          console.log('prefix', prefix);
+          fileContent = fileContent.replace(new RegExp(`(<\/?)${prefix}-`, 'g'), '$1');
+        }
 
+        // attribute conversion
         // TODO: textarea defaultValue
         const attr = textarea?.match(/<textarea>(.*?)<\/textarea>/g).map(function (val) {
           return val.replace(/<\/?textarea>/g, '');
@@ -251,14 +265,16 @@ useEffect(() => {
         fileContent = fileContent.replace(/ v(alue=)/g, ' defaultV$1'); // for input
         fileContent = fileContent.replace(/ c(hecked)/g, ' defaultC$1'); // for checkbox + radio
 
+        const fragmentTag = usesPrefixing ? 'PorscheDesignSystemProvider' : '';
+
         fileContent = `${comment}
 ${imports}
 
 export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
   return (
-    <>${styleJsx}
+    <${fragmentTag}>${styleJsx}
       ${convertToReact(fileContent.replace(/(\n)([ <>]+)/g, '$1      $2'))}
-    </>
+    </${fragmentTag}>
   );
 };
 `;
