@@ -23,36 +23,50 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
   const comment = '/* Auto Generated File */\n// @ts-nocheck';
 
   Object.entries(htmlFileContentMap)
-    .filter((_, i) => i == 40) // for easy debugging
+    .filter((_, i) => i < 44) // for easy debugging
     // TODO: icon, flex, modal-prefixed, overview, table
     // TODO: toast-basic-dark, toast-basic-long-text, toast-basic, toast-offset, toast-prefixed
-    // .filter(([component]) => component === 'icon') // for easy debugging
+    .filter(([component]) => component === 'icon') // for easy debugging
     .forEach(([fileName, fileContent]) => {
       fileContent = fileContent.trim();
 
       // extract and replace style if there is any
       const styleRegEx = /\s*<style.*>((?:.|\s)*?)<\/style>\s*/;
-      let [, style] = fileContent.match(styleRegEx) || [];
+      let [, style] = fileContent?.match(styleRegEx) || [];
       fileContent = fileContent.replace(styleRegEx, '\n');
 
       // extract and replace script if there is any
       const scriptRegEx = /\s*<script.*>((?:.|\s)*?)<\/script>\s*/;
-      let [, script] = fileContent.match(scriptRegEx) || [];
+      let [, script] = fileContent?.match(scriptRegEx) || [];
       fileContent = fileContent.replace(scriptRegEx, '\n');
       script = script?.trim();
       // TODO: transform script content
       console.log(script);
 
       const usesComponentsReady = script?.includes('componentsReady()');
+      const usesIconNames = script?.includes('ICON_NAMES');
       const usesQuerySelector = script?.includes('querySelector');
       console.log('usesQuerySelector', usesQuerySelector);
 
+      script = script.includes('ICON_NAMES')
+        ? `fetch('assets/assets.js')
+    .then((res) => res.text())
+    .then((content) => {
+      const [, str] = /const ICON_NAMES = (.*);/.exec(content);
+      const ICON_NAMES = eval(str);
+    })`
+        : script;
+
+      //icon--- extract icons holder if there is any, replacing is frameworr specific
+      const iconsRegEx = /(<div class="[^"]*?overview[^"]*?" [^]*?>)/;
+      let [, iconsHolder] = fileContent?.match(iconsRegEx) || [];
+
       // extract template if there is any, replacing is framework specific
       const templateRegEx = /(<template.*>(?:.|\s)*?<\/template>)/;
-      let [, template] = fileContent.match(templateRegEx) || [];
+      let [, template] = fileContent?.match(templateRegEx) || [];
 
       const textareaRegEx = /<textarea>(.*?)<\/textarea>/g;
-      let [, textarea] = fileContent.match(textareaRegEx) || [];
+      let [, textarea] = fileContent?.match(textareaRegEx) || [];
 
       fileContent = fileContent.trim();
 
@@ -67,10 +81,20 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
           .sort()
           .filter((x) => x)
           .join(', ');
-        const pdsImports = usesComponentsReady
-          ? `import { componentsReady } from '@porsche-design-system/components-angular';`
-          : '';
-        const imports = [`import { ${angularImports} } from '@angular/core';`, pdsImports].filter((x) => x).join('\n');
+
+        const pdsImports = [
+          usesComponentsReady ? `import { componentsReady } from '@porsche-design-system/components-angular';` : '',
+          usesIconNames ? `import type { IconName } from '@porsche-design-system/components-angular';` : '',
+        ]
+          .sort()
+          .filter((x) => x)
+          .join(', ');
+
+        const pdsAssetsImports = usesIconNames ? `import { ICON_NAMES } from '@porsche-design-system/assets';` : '';
+
+        const imports = [`import { ${angularImports} } from '@angular/core';`, pdsImports, pdsAssetsImports]
+          .filter((x) => x)
+          .join('\n');
 
         // decorator
         style = style?.trim().replace(/(\n)/g, '$1    ');
@@ -91,6 +115,8 @@ ngOnInit() {
   });
 }
 `
+            : usesIconNames
+            ? `public icons = ICON_NAMES as IconName[];\n ngOnInit() {\n  ${script}\n}`
             : usesQuerySelector
             ? `ngOnInit() {\n  ${script}\n}`
             : ''
@@ -104,6 +130,19 @@ ngOnInit() {
           ?.replace(/<template/g, '<div *ngIf="allReady"') // // add condition and replace opening tag
           .replace(/<\/template>/g, '</div>'); // replace closing tag
         fileContent = fileContent.replace(templateRegEx, template);
+
+        // create list of p-icons
+        iconsHolder = iconsHolder?.replace(
+          />(.*?)/g,
+          `>
+  <p-icon *ngFor="let icon of icons"
+    [name]="icon"
+    [size]="'inherit'"
+    [color]="'inherit'"
+    attr.aria-label]="icon + 'icon'"
+  ></p-icon>`
+        );
+        fileContent = fileContent.replace(iconsRegEx, iconsHolder);
 
         fileContent = `${comment}
 ${imports}
@@ -128,7 +167,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
         ]
           .filter((x) => x)
           .join(', ');
-        const componentImports = Array.from(fileContent.matchAll(/<(p-[\w-]+)/g))
+        const componentImports = Array.from(fileContent?.matchAll(/<(p-[\w-]+)/g))
           .map(([, tagName]) => tagName)
           .filter((tagName, index, arr) => arr.findIndex((t) => t === tagName) === index)
           .map((tagName) => pascalCase(tagName));
@@ -178,14 +217,12 @@ useEffect(() => {
         // attribute conversion
 
         // TODO: textarea defaultValue
-
-        const attr = textarea.match(/<textarea>(.*?)<\/textarea>/g).map(function (val) {
+        const attr = textarea?.match(/<textarea>(.*?)<\/textarea>/g).map(function (val) {
           return val.replace(/<\/?textarea>/g, '');
         });
         textarea = textarea
           ?.replace(/<textarea>/g, `<textarea defaultValue="${attr[0]}">`)
-          .replace(/<textarea defaultValue=${attr[0]}>(.*?)<\/textarea>/g, ''); //how can i replace everythings between tags with ''?
-        console.log('textarea1:', textarea);
+          .replace(/<textarea.*>(.*?)<\/textarea>/g, ''); //how can i replace everythings between tags with ''?
 
         fileContent = fileContent.replace(textareaRegEx, textarea);
 
@@ -211,7 +248,7 @@ export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
       // TODO: what about routing?
 
       fs.writeFileSync(fileName, fileContent);
-      console.log(`Generated ${fileName.replace(path.resolve(rootDirectory, '..'), '')}`);
+      //console.log(`Generated ${fileName.replace(path.resolve(rootDirectory, '..'), '')}`);
     });
 };
 
