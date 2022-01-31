@@ -46,4 +46,18 @@ describe('getMetaTagsAndIconLinks()', () => {
     const result = getMetaTagsAndIconLinks({ appTitle: 'Porsche UX', cdn: 'cn' });
     expect(result).toMatch(convertToRegex(expectedResult));
   });
+
+  it('should return valid jsx meta tags and icon links', () => {
+    const result = getMetaTagsAndIconLinks({ appTitle: 'Porsche UX', format: 'jsx' });
+    result.forEach((element) => {
+      // href is variable due to hash and cant be overwritten so we clone the element
+      if (JSON.stringify(element).includes('href')) {
+        const link = { ...element, props: { ...element.props, href: 'https://cdn.ui.porsche.com' } };
+        expect(link).toMatchSnapshot();
+      } else if (JSON.stringify(element).includes('content":"https')) {
+        const link = { ...element, props: { ...element.props, content: 'https://cdn.ui.porsche.com' } };
+        expect(link).toMatchSnapshot();
+      } else expect(element).toMatchSnapshot();
+    });
+  });
 });

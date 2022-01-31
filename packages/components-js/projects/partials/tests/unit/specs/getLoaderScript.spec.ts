@@ -14,23 +14,62 @@ describe('getLoaderScript()', () => {
     expect(result).toMatch(`<script>${fileContent}</script>`);
   });
 
-  it('should return content of components-js tmp build without script tag', () => {
-    const result = getLoaderScript({ withoutTags: true });
-    expect(result).toMatch(fileContent);
+  describe('withoutTags', () => {
+    let consoleWarnSpy;
+
+    beforeEach(() => (consoleWarnSpy = jest.spyOn(global.console, 'warn').mockImplementation(() => {})));
+    afterEach(() => jest.clearAllMocks());
+
+    it('should return content of components-js tmp build without script tag', () => {
+      const result = getLoaderScript({ withoutTags: true });
+
+      expect(consoleWarnSpy).toBeCalledWith(
+        'The option "{ withoutTags: true }" of partial getLoaderScript() is deprecated and will be removed in v3'
+      );
+      expect(result).toMatch(fileContent);
+    });
+
+    it('should call load method with supplied prefix', () => {
+      const result = getLoaderScript({ withoutTags: true, prefix: 'my-prefix' });
+
+      expect(consoleWarnSpy).toBeCalledWith(
+        'The option "{ withoutTags: true }" of partial getLoaderScript() is deprecated and will be removed in v3'
+      );
+      expect(result.endsWith("porscheDesignSystem.load({prefix:'my-prefix'})")).toBe(true);
+    });
+
+    it('should call load method with supplied prefixes', () => {
+      const result = getLoaderScript({ withoutTags: true, prefix: ['my-prefix', 'another-prefix'] });
+
+      expect(consoleWarnSpy).toBeCalledWith(
+        'The option "{ withoutTags: true }" of partial getLoaderScript() is deprecated and will be removed in v3'
+      );
+      expect(
+        result.endsWith(
+          "porscheDesignSystem.load({prefix:'my-prefix'});porscheDesignSystem.load({prefix:'another-prefix'})"
+        )
+      ).toBe(true);
+    });
   });
 
-  it('should call load method with supplied prefix', () => {
-    const result = getLoaderScript({ withoutTags: true, prefix: 'my-prefix' });
-    expect(result.endsWith("porscheDesignSystem.load({prefix:'my-prefix'})")).toBe(true);
-  });
+  describe('format jsx', () => {
+    it('should return content of components-js tmp build without script tag', () => {
+      const result = getLoaderScript({ format: 'jsx' });
 
-  it('should call load method with supplied prefixes', () => {
-    const result = getLoaderScript({ withoutTags: true, prefix: ['my-prefix', 'another-prefix'] });
-    expect(
-      result.endsWith(
-        "porscheDesignSystem.load({prefix:'my-prefix'});porscheDesignSystem.load({prefix:'another-prefix'})"
-      )
-    ).toBe(true);
+      expect(result).toMatchSnapshot();
+    });
+
+    it('should call load method with supplied prefix', () => {
+      const result = getLoaderScript({ format: 'jsx', prefix: 'my-prefix' });
+
+      expect(result).toMatchSnapshot();
+    });
+
+    it('should call load method with supplied prefixes', () => {
+      const result = getLoaderScript({ format: 'jsx', prefix: ['my-prefix', 'another-prefix'] });
+
+      expect(result).toMatchSnapshot();
+    });
   });
 
   it('should not contain componentsReady', () => {
