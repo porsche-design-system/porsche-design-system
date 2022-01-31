@@ -40,6 +40,10 @@ describe('transformStandardAttributes()', () => {
 </p-some-tag>`
     );
   });
+
+  it('should transform readonly attribute to camelCase', () => {
+    expect(transformStandardAttributes('<input type="text" readonly>')).toBe('<input type="text" readOnly>');
+  });
 });
 
 describe('transformClassAttribute()', () => {
