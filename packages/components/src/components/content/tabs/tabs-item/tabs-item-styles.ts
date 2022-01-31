@@ -1,5 +1,6 @@
-import { addImportantToEachRule, getCss, getFocusStyles, getThemedColors } from '../../../../utils';
 import type { ThemeExtendedElectric } from '../../../../types';
+import { getCss } from '../../../../utils';
+import { addImportantToEachRule, getFocusStyles, getThemedColors } from '../../../../styles';
 
 export const getComponentCss = (theme: ThemeExtendedElectric): string => {
   const { baseColor } = getThemedColors(theme);

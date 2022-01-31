@@ -1,6 +1,7 @@
 import type { BreakpointCustomizable } from '../../../utils';
-import { buildSlottedStyles, getCss, getFocusSlottedPseudoStyles } from '../../../utils';
 import type { AlignLabel, LinkButtonPureIconName, TextSize, ThemeExtendedElectricDark } from '../../../types';
+import { buildSlottedStyles, getCss } from '../../../utils';
+import { getFocusSlottedPseudoStyles } from '../../../styles';
 import { getLinkButtonPureStyles } from '../../../styles/link-button-pure-styles';
 
 export const getComponentCss = (

@@ -1,68 +1,31 @@
 {
-  "name": "@porsche-design-system/utilities",
-  "version": "5.3.0-beta.0",
+  "name": "@porsche-design-system/utilities-v2",
+  "version": "0.0.0",
+  "private": true,
   "scope": "@porsche-design-system",
-  "main": "dist/js/index.js",
-  "module": "dist/js/esm/index.js",
-  "types": "dist/js/types/index.d.ts",
+  "main": "dist/jss/index.js",
+  "module": "dist/jss/esm/index.js",
+  "types": "dist/jss/types/index.d.ts",
   "sideEffects": false,
-  "author": "Dr. Ing. h.c. F. Porsche AG",
-  "contributors": [
-    "Matthias Hägele <matthias.haegele@mhp.com>",
-    "Oliver Hook <oliver.hook@mhp.com>",
-    "Stephan Schröter <stephan.schroeter@mhp.com>",
-    "Bernd Hacker <bernd.hacker@mhp.com>",
-    "Anton Schmidt <anton.schmidt@mhp.com>"
-  ],
-  "license": "SEE LICENSE IN https://designsystem.porsche.com",
-  "description": "Porsche Design System Utilities",
-  "files": [
-    "dist/scss",
-    "dist/js",
-    "scss.scss"
-  ],
-  "keywords": [
-    "porsche",
-    "design",
-    "system",
-    "scss",
-    "js",
-    "utils",
-    "utilities",
-    "variables",
-    "functions",
-    "mixins"
-  ],
-  "homepage": "https://designsystem.porsche.com",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/porscheui/porsche-design-system.git"
-  },
-  "bugs": {
-    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
-  },
-  "publishConfig": {
-    "@porsche-design-system:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
-  },
   "scripts": {
-    "build": "yarn clean:build && yarn build:buildTypography && yarn build:bundleLib && yarn build:copyScss && yarn build:createGlobalCSS",
-    "build:buildTypography": "ts-node 'scripts/buildTypography.ts'",
-    "build:bundleLib": "rollup -c rollup.config.js",
-    "build:copyScss": "echo '@import \"dist/scss/index\";' > scss.scss && cp -r './src/scss/.' './dist/scss'",
-    "build:createGlobalCSS": "ts-node 'scripts/createGlobalCSS.ts'",
+    "build": "yarn clean:build && yarn build:typography && yarn build:bundle",
+    "build:typography": "ts-node 'scripts/buildTypography.ts'",
+    "build:bundle": "rollup -c rollup.config.js",
+    "test": "yarn test:unit",
+    "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:build": "rm -rf ./dist && rm -rf ./scss.scss"
+    "clean:build": "rm -rf ./dist && rm -rf ./src/jss/typography.ts"
   },
   "devDependencies": {
-    "@porsche-design-system/fonts": "0.0.0",
-    "@rollup/plugin-node-resolve": "^13.0.0",
     "@rollup/plugin-typescript": "^8.2.5",
+    "jest": "^27.4.4",
     "rollup": "^2.56.1",
-    "tslib": "^2.3.0",
+    "ts-jest": "^27.1.1",
+    "ts-node": "^10.3.0",
     "typescript": "~4.4.3"
   },
   "dependencies": {
-    "csstype": "^3.0.9"
+    "jss": "^10.9.0"
   }
 }

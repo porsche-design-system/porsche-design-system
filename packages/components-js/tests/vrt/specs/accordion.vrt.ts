@@ -12,7 +12,7 @@ import {
   getVisualRegressionTester,
   vrtTest,
 } from '@porsche-design-system/shared/testing';
-import { ThemeExtendedElectric } from '@porsche-design-system/utilities';
+import type { Theme } from '@porsche-design-system/utilities-v2';
 
 it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'accordion', '/#accordion')).toBeFalsy();
@@ -26,9 +26,10 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       const content = `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.`;
 
-      const getColorInlineStyle = (theme: ThemeExtendedElectric) => (theme === 'dark' ? ' style="color: white"' : '');
+      const getColorInlineStyle = (theme: Theme) =>
+        ['dark', 'electric-dark'].includes(theme) ? ' style="color: white"' : '';
 
-      const getElementsMarkup: GetThemedMarkup = (theme) => `
+      const getElementsMarkup: GetThemedMarkup = (theme: Theme) => `
         <p-accordion theme="${theme}" heading="Some heading">
           ${content}
         </p-accordion>

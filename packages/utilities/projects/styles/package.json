@@ -1,0 +1,31 @@
+{
+  "name": "@porsche-design-system/styles",
+  "version": "0.0.0",
+  "private": true,
+  "scope": "@porsche-design-system",
+  "main": "dist/js/index.js",
+  "module": "dist/js/esm/index.js",
+  "types": "dist/js/types/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "build": "yarn clean:build && yarn build:fontFace && yarn build:bundle",
+    "build:fontFace": "ts-node 'scripts/buildFontFace.ts'",
+    "build:bundle": "rollup -c rollup.config.js",
+    "test": "yarn test:unit",
+    "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
+    "clean": "yarn clean:node_modules && yarn clean:build",
+    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
+    "clean:build": "rm -rf ./dist && rm -rf ./src"
+  },
+  "devDependencies": {
+    "@porsche-design-system/fonts": "0.0.0",
+    "@rollup/plugin-typescript": "^8.2.5",
+    "jest": "^27.4.4",
+    "jss": "^10.9.0",
+    "jss-preset-default": "^10.9.0",
+    "rollup": "^2.56.1",
+    "ts-jest": "^27.1.1",
+    "ts-node": "^10.3.0",
+    "typescript": "~4.4.3"
+  }
+}

@@ -666,7 +666,7 @@ exports[`should have no basic DOM regression for p-text-field-wrapper 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-text-list 1`] = `
-"<ul role=\\"list\\" class=\\"root\\">
+"<ul role=\\"list\\">
   <slot>
   </slot>
 </ul>"
