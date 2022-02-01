@@ -38,13 +38,13 @@ const getRoutes = (importPaths: string[], framework: Framework): string => {
 
   return (
     importPaths
-      .map((x) =>
+      .map((importPath) =>
         [
           '{',
           ...[
-            `name: '${capitalCase(x)}'`,
-            `component: fromPages.${pascalCase(x)}${componentSuffix}`,
-            `path: '/${paramCase(x)}'`,
+            `name: '${capitalCase(importPath)}'`,
+            `component: fromPages.${pascalCase(importPath)}${componentSuffix}`,
+            `path: '/${paramCase(importPath)}'`,
           ].map((x) => `  ${x},`),
           '}',
         ]

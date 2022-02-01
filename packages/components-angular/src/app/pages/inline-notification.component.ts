@@ -1,13 +1,12 @@
+/* Auto Generated File */
+// @ts-nocheck
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-inline-notification',
   template: `
     <div class="playground light" title="should show inline-notification neutral on light background">
-      <p-inline-notification
-        [heading]="'Some neutral heading'"
-        [description]="'Some description'"
-      ></p-inline-notification>
+      <p-inline-notification [heading]="'Some neutral heading'" [description]="'Some description'"></p-inline-notification>
     </div>
 
     <div class="playground dark" title="should show inline-notification neutral on dark background">
@@ -72,14 +71,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="playground light" title="should show inline-notification with slotted content on light background">
       <p-inline-notification>
         <span slot="heading">Some slotted heading</span>
-        Some slotted description with a <a href="https://www.porsche.com/">LINK</a> element.
+        Some slotted description with a <a [href]="'https://www.porsche.com/'">LINK</a> element.
       </p-inline-notification>
     </div>
 
     <div class="playground dark" title="should show inline-notification with slotted content on dark background">
       <p-inline-notification [theme]="'dark'">
         <span slot="heading">Some slotted heading</span>
-        Some slotted description with a <a href="https://www.porsche.com/">LINK</a> element.
+        Some slotted description with a <a [href]="'https://www.porsche.com/'">LINK</a> element.
       </p-inline-notification>
     </div>
 

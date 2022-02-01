@@ -1,3 +1,5 @@
+/* Auto Generated File */
+// @ts-nocheck
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
@@ -28,21 +30,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should show pagination with 7 items (including ellipsis)">
-      <p-pagination
-        [totalItemsCount]="500"
-        [itemsPerPage]="25"
-        [activePage]="1"
-        [maxNumberOfPageLinks]="7"
-      ></p-pagination>
+      <p-pagination [totalItemsCount]="500" [itemsPerPage]="25" [activePage]="1" [maxNumberOfPageLinks]="7"></p-pagination>
     </div>
 
     <div class="playground light" title="should show pagination with 5 items (including ellipsis)">
-      <p-pagination
-        [totalItemsCount]="500"
-        [itemsPerPage]="25"
-        [activePage]="1"
-        [maxNumberOfPageLinks]="5"
-      ></p-pagination>
+      <p-pagination [totalItemsCount]="500" [itemsPerPage]="25" [activePage]="1" [maxNumberOfPageLinks]="5"></p-pagination>
     </div>
 
     <div

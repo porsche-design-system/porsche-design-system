@@ -1,3 +1,5 @@
+/* Auto Generated File */
+// @ts-nocheck
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
@@ -13,11 +15,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   ],
   template: `
     <div class="playground light" title="should show fullscreen modal on light background">
-      <p-modal
-        [heading]="'Some Heading with a very long title across multiple lines'"
-        [open]="true"
-        [fullscreen]="true"
-      >
+      <p-modal [heading]="'Some Heading with a very long title across multiple lines'" [open]="true" [fullscreen]="true">
         Some Content
       </p-modal>
     </div>
