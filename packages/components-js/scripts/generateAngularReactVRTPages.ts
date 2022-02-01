@@ -28,7 +28,6 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
   const comment = '/* Auto Generated File */\n// @ts-nocheck';
 
   Object.entries(htmlFileContentMap)
-    // TODO: icon
     .filter(([component]) => component === 'icon') // for easy debugging
     .forEach(([fileName, fileContent]) => {
       fileContent = fileContent.trim();
