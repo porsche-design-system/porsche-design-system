@@ -153,7 +153,12 @@ ${imports}
 @Component({
   selector: 'page-${fileName}',${styles}
   template: \`
-    ${convertToAngular(fileContent.replace(/(\n)([ <>]+)/g, '$1    $2'))}
+    ${convertToAngular(
+      fileContent
+        .replace(/(\n)([ <>]+)/g, '$1    $2')
+        .replace(/(<p-[a-z]+ .+?>)(\`)(<\/p-[a-z]+>)/g, '$1\\`$3')
+        .replace(/(<p-[a-z]+ .+?>)(\\)(<\/p-[a-z]+>)/g, '$1\\\\$3')
+    )}
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
