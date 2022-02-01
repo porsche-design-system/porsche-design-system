@@ -53,9 +53,21 @@ describe('transformStandardAttributes()', () => {
     expect(transformStandardAttributes('<input type="text" readonly>')).toBe('<input type="text" readOnly>');
   });
 
+  it('should not transform readonly innerText to camelCase', () => {
+    expect(transformStandardAttributes('<label>Some readonly label</label>')).toBe(
+      '<label>Some readonly label</label>'
+    );
+  });
+
   it('should transform maxlength attribute to camelCase', () => {
     expect(transformStandardAttributes('<input type="text" maxlength="20">')).toBe(
       '<input type="text" maxLength="20">'
+    );
+  });
+
+  it('should not transform maxlength innerText to camelCase', () => {
+    expect(transformStandardAttributes('<label>Some maxlength label</label>')).toBe(
+      '<label>Some maxlength label</label>'
     );
   });
 });
