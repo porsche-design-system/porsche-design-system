@@ -204,6 +204,19 @@ describe('transformStyleAttribute()', () => {
     const markup = '<div style="text-align: center; font-size: 16px"></div>';
     expect(transformStyleAttribute(markup)).toBe("<div style={{ textAlign: 'center', fontSize: '16px' }}></div>");
   });
+
+  it('should handle multiline style', () => {
+    const markup = `<div
+  style="
+    text-align: center;
+    font-size: 16px;
+  "
+></div>`;
+
+    expect(transformStyleAttribute(markup)).toBe(`<div
+  style={{ textAlign: 'center', fontSize: '16px' }}
+></div>`);
+  });
 });
 
 describe('convertToReact()', () => {

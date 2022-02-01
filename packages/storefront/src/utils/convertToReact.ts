@@ -31,17 +31,17 @@ export const transformToSelfClosingTags = (markup: string): string =>
   markup.replace(/(<([A-Za-z-]+)[^>]*?)>\s*<\/\2>/g, '$1 />');
 
 export const transformStyleAttribute = (markup: string): string =>
-  markup.replace(/style="(.*?)"/g, (m, $style: string) => {
+  markup.replace(/\sstyle="((?:.|\n)*?)"/g, (m, $style: string) => {
     $style = $style
       .replace(/;/g, ',') // transform semi colons to comma
-      .replace(/,$/g, ''); // remove last comma
+      .replace(/,\s*$/g, ''); // remove last comma
 
     const pairs = $style.split(',').map((p) => {
       const [prop, val] = p.split(':');
       return `${camelCase(prop)}: '${val.trim()}'`;
     });
 
-    return `style={{ ${pairs.join(', ')} }}`;
+    return ` style={{ ${pairs.join(', ')} }}`;
   });
 
 export const convertToReact = (markup: string): string =>
