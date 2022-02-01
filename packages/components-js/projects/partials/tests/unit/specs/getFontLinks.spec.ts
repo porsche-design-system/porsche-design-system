@@ -95,8 +95,18 @@ describe('getFontLinks()', () => {
   });
 
   describe('url without tag', () => {
+    let consoleWarnSpy;
+
+    beforeEach(() => (consoleWarnSpy = jest.spyOn(global.console, 'warn').mockImplementation(() => {})));
+    afterEach(() => jest.clearAllMocks());
+
     it('should return default url', () => {
       const result = getFontLinks({ withoutTags: true });
+
+      expect(consoleWarnSpy).toBeCalledWith(
+        'The option "{ withoutTags: true }" of partial getFontLinks() is deprecated and will be removed in v3'
+      );
+
       expect(result.length).toBe(1);
       expect(result[0].startsWith(urlStartsWith)).toBeTruthy();
       expect(result[0].endsWith(urlEndsWith)).toBeTruthy();
@@ -105,6 +115,11 @@ describe('getFontLinks()', () => {
 
     it('should return default China CDN url', () => {
       const result = getFontLinks({ withoutTags: true, cdn: 'cn' });
+
+      expect(consoleWarnSpy).toBeCalledWith(
+        'The option "{ withoutTags: true }" of partial getFontLinks() is deprecated and will be removed in v3'
+      );
+
       expect(result.length).toBe(1);
       expect(result[0].startsWith(urlStartsWith)).toBeTruthy();
       expect(result[0].endsWith(urlEndsWith)).toBeTruthy();
@@ -128,6 +143,11 @@ describe('getFontLinks()', () => {
       'should return %s subset and %s weight url',
       (subset: 'latin' | 'cyril' | 'greek', weight: 'thin' | 'regular' | 'semi-bold' | 'bold', expected) => {
         const result = getFontLinks({ withoutTags: true, subset, weights: [weight] });
+
+        expect(consoleWarnSpy).toBeCalledWith(
+          'The option "{ withoutTags: true }" of partial getFontLinks() is deprecated and will be removed in v3'
+        );
+
         expect(result.length).toBe(1);
         expect(result[0].startsWith(urlStartsWith)).toBeTruthy();
         expect(result[0].endsWith(urlEndsWith)).toBeTruthy();
@@ -137,6 +157,11 @@ describe('getFontLinks()', () => {
 
     it('should return multiple urls', () => {
       const result = getFontLinks({ withoutTags: true, weights: ['regular', 'semi-bold'] });
+
+      expect(consoleWarnSpy).toBeCalledWith(
+        'The option "{ withoutTags: true }" of partial getFontLinks() is deprecated and will be removed in v3'
+      );
+
       expect(result.length).toBe(2);
       expect(result[0].startsWith(urlStartsWith)).toBeTruthy();
       expect(result[0].endsWith(urlEndsWith)).toBeTruthy();
