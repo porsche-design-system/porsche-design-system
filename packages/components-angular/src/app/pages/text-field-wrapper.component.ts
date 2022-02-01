@@ -68,7 +68,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should render with counter">
       <p-text-field-wrapper [label]="'Counter'">
-        <input [type]="'text'" [maxlength]="20" [value]="'Some value'" />
+        <input [type]="'text'" [maxLength]="20" [value]="'Some value'" />
       </p-text-field-wrapper>
     </div>
 

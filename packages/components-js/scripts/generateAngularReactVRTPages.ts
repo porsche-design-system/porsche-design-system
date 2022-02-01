@@ -57,6 +57,7 @@ const getRoutes = (importPaths: string[], framework: Framework): string => {
 
 const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framework: Framework): void => {
   const comment = '/* Auto Generated File */\n// @ts-nocheck';
+  const pagesDirectory = framework === 'angular' ? angularPagesDirectory : reactPagesDirectory;
 
   const importPaths = Object.entries(htmlFileContentMap)
     // .filter(([component]) => component === 'icon') // for easy debugging
@@ -196,7 +197,7 @@ ${imports}
 export class ${pascalCase(fileName)}Component ${classImplements}{${classImplementation}}
 `;
 
-        fileName = path.resolve(angularPagesDirectory, `${fileName}.component.ts`);
+        fileName = `${fileName}.component.ts`;
       } else if (framework === 'react') {
         // imports
         const reactImports = [
@@ -324,10 +325,10 @@ export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
 };
 `;
 
-        fileName = path.resolve(reactPagesDirectory, `${pascalCase(fileName)}.tsx`);
+        fileName = `${pascalCase(fileName)}.tsx`;
       }
 
-      writeFile(fileName, fileContent);
+      writeFile(path.resolve(pagesDirectory, fileName), fileContent);
 
       return './' + path.parse(fileName).name;
     })
@@ -342,13 +343,13 @@ export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
     const separator = '/* Auto Generated Below */';
     const imports = [separator, ...importPaths.map((x) => `export * from '${x}';`)].join('\n');
 
-    const barreFilePath = path.resolve(reactPagesDirectory, 'index.ts');
+    const barreFilePath = path.resolve(pagesDirectory, 'index.ts');
     const barrelFileContent = fs.readFileSync(barreFilePath, 'utf8');
     const newBarrelFileContent = [barrelFileContent.split(separator)[0].trim(), imports].join('\n\n') + '\n';
 
     writeFile(barreFilePath, newBarrelFileContent);
 
-    const routesFilePath = path.resolve(reactPagesDirectory, '../routes.ts');
+    const routesFilePath = path.resolve(pagesDirectory, '../routes.ts');
     const routesFileContent = fs.readFileSync(routesFilePath, 'utf8');
     const newRoutesFileContent = routesFileContent.replace(
       /(\/\* Auto Generated Start \*\/\n)(?:.|\s)*?(\s+\/\* Auto Generated End \*\/)/,
