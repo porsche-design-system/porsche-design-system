@@ -3,7 +3,8 @@
     "module": "commonjs",
     "target": "es5",
     "esModuleInterop": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "jsx": "react-jsx"
   },
   "include": ["./projects/components-wrapper/environment.ts"]
 }
