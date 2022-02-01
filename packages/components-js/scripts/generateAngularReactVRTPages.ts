@@ -5,6 +5,8 @@ import * as globby from 'globby';
 import { convertToAngular } from '@porsche-design-system/storefront/src/utils/convertToAngular';
 import { convertToReact } from '@porsche-design-system/storefront/src/utils/convertToReact';
 
+const PAGES_TO_SKIP: string[] = ['table'];
+
 const rootDirectory = path.resolve(__dirname, '..');
 
 const generateAngularReactVRTPages = (): void => {
@@ -12,7 +14,7 @@ const generateAngularReactVRTPages = (): void => {
   const htmlFiles = globby.sync(`${pagesDirectory}/**/*.html`);
 
   const htmlFileContentMap: { [key: string]: string } = htmlFiles
-    // TODO: filter blacklisted files that make no sense to vrt test?
+    .filter((file) => !PAGES_TO_SKIP.map((page) => `${page}.html`).some((page) => file.endsWith(page)))
     .map((filePath) => [path.basename(filePath).split('.')[0], fs.readFileSync(filePath, 'utf8')])
     .reduce((result, [key, content]) => ({ ...result, [key]: content }), {});
 
@@ -26,7 +28,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
   const comment = '/* Auto Generated File */\n// @ts-nocheck';
 
   Object.entries(htmlFileContentMap)
-    // TODO: icon, table
+    // TODO: icon
     .filter(([component]) => component === 'icon') // for easy debugging
     .forEach(([fileName, fileContent]) => {
       fileContent = fileContent.trim();
