@@ -41,6 +41,14 @@ describe('transformStandardAttributes()', () => {
     );
   });
 
+  it('should not transform aria attributes', () => {
+    expect(
+      transformStandardAttributes(
+        '<div aria-label="some label" aria-checked="false" aria-disabled="false" aria-live="polite"></div>'
+      )
+    ).toBe('<div aria-label="some label" aria-checked="false" aria-disabled="false" aria-live="polite"></div>');
+  });
+
   it('should transform readonly attribute to camelCase', () => {
     expect(transformStandardAttributes('<input type="text" readonly>')).toBe('<input type="text" readOnly>');
   });
