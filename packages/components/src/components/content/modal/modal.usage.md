@@ -27,7 +27,7 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 | Without close icon | The Modal without close “x” will dont close the modal without any interaction. |
 | Without title | If the context is short and clear, the title can be skipped to avoid duplication. |
 | Without title and close icon | For descriptive content and the need to close the Modal with a interaction. |
-
+| Full width content | To use the full width of the modal, including safe-zone, for containers or elements (e.g. div or img). |
 
 ## Behavior
 
