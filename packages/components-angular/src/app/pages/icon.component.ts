@@ -1,6 +1,8 @@
+/* Auto Generated File */
+// @ts-nocheck
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { IconName } from '@porsche-design-system/components-angular';
 import { ICON_NAMES } from '@porsche-design-system/assets';
-import type { IconName } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-icon',
@@ -24,43 +26,40 @@ import type { IconName } from '@porsche-design-system/components-angular';
       <p-icon [size]="'small'" aria-label="Icon"></p-icon>
       <p-icon [size]="'medium'" aria-label="Icon"></p-icon>
       <p-icon [size]="'large'" aria-label="Icon"></p-icon>
-      <p-icon [size]="'inherit'" aria-label="Icon" style="width: 60px; height: 60px;"></p-icon>
+      <p-icon [size]="'inherit'" aria-label="Icon" style="width: 60px; height: 60px"></p-icon>
     </div>
 
     <div class="playground light" title="should render with predefined colors on light theme">
-      <p-icon [theme]="'light'" [color]="'brand'" aria-label="Icon" style="color: deeppink;"></p-icon>
-      <p-icon [theme]="'light'" [color]="'default'" aria-label="Icon" style="color: deeppink;"></p-icon>
-      <p-icon [theme]="'light'" [color]="'neutral-contrast-high'" aria-label="Icon" style="color: deeppink;"></p-icon>
-      <p-icon [theme]="'light'" [color]="'neutral-contrast-medium'" aria-label="Icon" style="color: deeppink;"></p-icon>
-      <p-icon [theme]="'light'" [color]="'neutral-contrast-low'" aria-label="Icon" style="color: deeppink;"></p-icon>
-      <p-icon [theme]="'light'" [color]="'notification-success'" aria-label="Icon" style="color: deeppink;"></p-icon>
-      <p-icon [theme]="'light'" [color]="'notification-warning'" aria-label="Icon" style="color: deeppink;"></p-icon>
-      <p-icon [theme]="'light'" [color]="'notification-error'" aria-label="Icon" style="color: deeppink;"></p-icon>
-      <p-icon [theme]="'light'" [color]="'notification-neutral'" aria-label="Icon" style="color: deeppink;"></p-icon>
-      <p-icon [theme]="'light'" [color]="'inherit'" aria-label="Icon" style="color: deeppink;"></p-icon>
+      <p-icon [theme]="'light'" [color]="'brand'" aria-label="Icon" style="color: deeppink"></p-icon>
+      <p-icon [theme]="'light'" [color]="'default'" aria-label="Icon" style="color: deeppink"></p-icon>
+      <p-icon [theme]="'light'" [color]="'neutral-contrast-high'" aria-label="Icon" style="color: deeppink"></p-icon>
+      <p-icon [theme]="'light'" [color]="'neutral-contrast-medium'" aria-label="Icon" style="color: deeppink"></p-icon>
+      <p-icon [theme]="'light'" [color]="'neutral-contrast-low'" aria-label="Icon" style="color: deeppink"></p-icon>
+      <p-icon [theme]="'light'" [color]="'notification-success'" aria-label="Icon" style="color: deeppink"></p-icon>
+      <p-icon [theme]="'light'" [color]="'notification-warning'" aria-label="Icon" style="color: deeppink"></p-icon>
+      <p-icon [theme]="'light'" [color]="'notification-error'" aria-label="Icon" style="color: deeppink"></p-icon>
+      <p-icon [theme]="'light'" [color]="'notification-neutral'" aria-label="Icon" style="color: deeppink"></p-icon>
+      <p-icon [theme]="'light'" [color]="'inherit'" aria-label="Icon" style="color: deeppink"></p-icon>
     </div>
 
     <div class="playground dark" title="should render with predefined colors on dark theme">
-      <p-icon [theme]="'dark'" [color]="'brand'" aria-label="Icon" style="color: deeppink;"></p-icon>
-      <p-icon [theme]="'dark'" [color]="'default'" aria-label="Icon" style="color: deeppink;"></p-icon>
-      <p-icon [theme]="'dark'" [color]="'neutral-contrast-high'" aria-label="Icon" style="color: deeppink;"></p-icon>
-      <p-icon [theme]="'dark'" [color]="'neutral-contrast-medium'" aria-label="Icon" style="color: deeppink;"></p-icon>
-      <p-icon [theme]="'dark'" [color]="'neutral-contrast-low'" aria-label="Icon" style="color: deeppink;"></p-icon>
-      <p-icon [theme]="'dark'" [color]="'notification-success'" aria-label="Icon" style="color: deeppink;"></p-icon>
-      <p-icon [theme]="'dark'" [color]="'notification-warning'" aria-label="Icon" style="color: deeppink;"></p-icon>
-      <p-icon [theme]="'dark'" [color]="'notification-error'" aria-label="Icon" style="color: deeppink;"></p-icon>
-      <p-icon [theme]="'dark'" [color]="'notification-neutral'" aria-label="Icon" style="color: deeppink;"></p-icon>
-      <p-icon [theme]="'dark'" [color]="'inherit'" aria-label="Icon" style="color: deeppink;"></p-icon>
+      <p-icon [theme]="'dark'" [color]="'brand'" aria-label="Icon" style="color: deeppink"></p-icon>
+      <p-icon [theme]="'dark'" [color]="'default'" aria-label="Icon" style="color: deeppink"></p-icon>
+      <p-icon [theme]="'dark'" [color]="'neutral-contrast-high'" aria-label="Icon" style="color: deeppink"></p-icon>
+      <p-icon [theme]="'dark'" [color]="'neutral-contrast-medium'" aria-label="Icon" style="color: deeppink"></p-icon>
+      <p-icon [theme]="'dark'" [color]="'neutral-contrast-low'" aria-label="Icon" style="color: deeppink"></p-icon>
+      <p-icon [theme]="'dark'" [color]="'notification-success'" aria-label="Icon" style="color: deeppink"></p-icon>
+      <p-icon [theme]="'dark'" [color]="'notification-warning'" aria-label="Icon" style="color: deeppink"></p-icon>
+      <p-icon [theme]="'dark'" [color]="'notification-error'" aria-label="Icon" style="color: deeppink"></p-icon>
+      <p-icon [theme]="'dark'" [color]="'notification-neutral'" aria-label="Icon" style="color: deeppink"></p-icon>
+      <p-icon [theme]="'dark'" [color]="'inherit'" aria-label="Icon" style="color: deeppink"></p-icon>
     </div>
 
     <div class="playground light" title="should render with custom icon">
-      <p-icon [source]="'assets/icon-custom-kaixin.svg'" aria-label="Icon for social media platform Kaixin"></p-icon>
+      <p-icon [source]="'./assets/icon-custom-kaixin.svg'" aria-label="Icon for social media platform Kaixin"></p-icon>
     </div>
 
-    <div
-      class="playground light overview"
-      title="should render all available icons and apply coloring programmatically"
-    >
+    <div class="playground light overview" title="should render all available icons and apply coloring programmatically">
       <p-icon
         *ngFor="let icon of icons"
         [name]="icon"

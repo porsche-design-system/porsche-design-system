@@ -19,7 +19,7 @@ export const ModalNoHeadingPage = (): JSX.Element => {
         <PContentWrapper>
           <div style={{ background: 'deeppink', height: '100vh' }} />
         </PContentWrapper>
-        <PModal open={true} aria={{'aria-label': 'Some Heading'}}>
+        <PModal open={true} aria={{ 'aria-label': 'Some Heading' }}>
           Some Content without a heading that will be covered by the close button
         </PModal>
       </div>

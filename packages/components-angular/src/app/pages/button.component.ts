@@ -1,3 +1,5 @@
+/* Auto Generated File */
+// @ts-nocheck
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
@@ -82,11 +84,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should render button secondary with specific icon">
       <p-button [icon]="'delete'">Some label</p-button>
-      <p-button [iconSource]="'assets/icon-custom-kaixin.svg'">Some label</p-button>
+      <p-button [iconSource]="'./assets/icon-custom-kaixin.svg'">Some label</p-button>
     </div>
 
     <div class="playground light" title="should render button with multiline label">
-      <p-button style="width: 240px;">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
+      <p-button style="width: 240px">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

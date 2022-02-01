@@ -1,29 +1,34 @@
+/* Auto Generated File */
+// @ts-nocheck
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { componentsReady } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-core-initializer',
   template: `
     <div class="playground light">
       <p-text-field-wrapper [label]="'Some Label'" [description]="'Some Description'">
-        <input type="text" />
+        <input [type]="'text'" />
       </p-text-field-wrapper>
 
-      <p-text-field-wrapper *ngIf="isEnabled" [label]="'Some Label'" [description]="'Some Description'">
-        <input type="text" />
-      </p-text-field-wrapper>
+      <div *ngIf="allReady">
+        <p-text-field-wrapper [label]="'Some Label'" [description]="'Some Description'">
+          <input [type]="'text'" />
+        </p-text-field-wrapper>
+      </div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CoreInitializerComponent implements OnInit {
-  public isEnabled = false;
+  public allReady: boolean = false;
 
   constructor(private cdr: ChangeDetectorRef) {}
 
-  public ngOnInit() {
-    setTimeout(() => {
-      this.isEnabled = true;
+  ngOnInit() {
+    componentsReady().then(() => {
+      this.allReady = true;
       this.cdr.markForCheck();
-    }, 1000);
+    });
   }
 }

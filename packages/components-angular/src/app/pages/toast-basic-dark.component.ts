@@ -1,8 +1,10 @@
+/* Auto Generated File */
+// @ts-nocheck
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ToastManager } from '@porsche-design-system/components-angular';
 
 @Component({
-  selector: 'toast-basic-dark',
+  selector: 'page-toast-basic-dark',
   styles: [
     `
       .playground {

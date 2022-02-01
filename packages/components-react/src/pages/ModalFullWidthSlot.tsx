@@ -19,7 +19,7 @@ export const ModalFullWidthSlotPage = (): JSX.Element => {
         <PContentWrapper>
           <div style={{ background: 'deeppink', height: '100vh' }} />
         </PContentWrapper>
-        <PModal open={true} aria={{'aria-label': 'Some Heading'}}>
+        <PModal open={true} aria={{ 'aria-label': 'Some Heading' }}>
           <div className="stretch-to-full-modal-width" style={{ background: 'deeppink', height: '60px' }} />
           <PText>Some Content between two full width slotted divs</PText>
           <div className="stretch-to-full-modal-width" style={{ background: 'deeppink', height: '60px' }} />
