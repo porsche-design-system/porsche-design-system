@@ -3,7 +3,7 @@ import * as path from 'path';
 import { CDN_BASE_URL, CDN_BASE_URL_CN } from '../../../../../cdn.config';
 // import { generateFontFaceStylesheetPartial } from './generateFontFaceStylesheetPartial';
 import { generateInitialStylesPartial } from './generateInitialStylesPartial';
-// import { generateFontLinksPartial } from './generateFontLinksPartial';
+import { generateFontLinksPartial } from './generateFontLinksPartial';
 // import { generateComponentChunkLinksPartial } from './generateComponentChunkLinksPartial';
 // import { generateIconLinksPartial } from './generateIconLinksPartial';
 // import { generateMetaTagsAndIconLinksPartial } from './generateMetaTagsAndIconLinksPartial';
@@ -23,7 +23,7 @@ const generatePartials = async (): Promise<void> => {
     generateSharedCode(),
     // generateFontFaceStylesheetPartial(),
     generateInitialStylesPartial(),
-    // generateFontLinksPartial(),
+    generateFontLinksPartial(),
     // generateComponentChunkLinksPartial(),
     // generateMetaTagsAndIconLinksPartial(),
     // generateIconLinksPartial(),
