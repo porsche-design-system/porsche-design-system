@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getFontLinks() format jsx should return cyril subset and bold weight url 1`] = `
+<link
+  as="font"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-"
+  rel="preload"
+  type="font/woff2"
+/>
+`;
+
+exports[`getFontLinks() format jsx should return cyril subset and regular weight url 1`] = `
+<link
+  as="font"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-"
+  rel="preload"
+  type="font/woff2"
+/>
+`;
+
+exports[`getFontLinks() format jsx should return cyril subset and semi-bold weight url 1`] = `
+<link
+  as="font"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-"
+  rel="preload"
+  type="font/woff2"
+/>
+`;
+
+exports[`getFontLinks() format jsx should return cyril subset and thin weight url 1`] = `
+<link
+  as="font"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-"
+  rel="preload"
+  type="font/woff2"
+/>
+`;
+
+exports[`getFontLinks() format jsx should return default url 1`] = `
+<link
+  as="font"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-"
+  rel="preload"
+  type="font/woff2"
+/>
+`;
+
+exports[`getFontLinks() format jsx should return greek subset and bold weight url 1`] = `
+<link
+  as="font"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-"
+  rel="preload"
+  type="font/woff2"
+/>
+`;
+
+exports[`getFontLinks() format jsx should return greek subset and regular weight url 1`] = `
+<link
+  as="font"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-"
+  rel="preload"
+  type="font/woff2"
+/>
+`;
+
+exports[`getFontLinks() format jsx should return greek subset and semi-bold weight url 1`] = `
+<link
+  as="font"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-"
+  rel="preload"
+  type="font/woff2"
+/>
+`;
+
+exports[`getFontLinks() format jsx should return greek subset and thin weight url 1`] = `
+<link
+  as="font"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-"
+  rel="preload"
+  type="font/woff2"
+/>
+`;
+
+exports[`getFontLinks() format jsx should return latin subset and bold weight url 1`] = `
+<link
+  as="font"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-"
+  rel="preload"
+  type="font/woff2"
+/>
+`;
+
+exports[`getFontLinks() format jsx should return latin subset and regular weight url 1`] = `
+<link
+  as="font"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-"
+  rel="preload"
+  type="font/woff2"
+/>
+`;
+
+exports[`getFontLinks() format jsx should return latin subset and semi-bold weight url 1`] = `
+<link
+  as="font"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-"
+  rel="preload"
+  type="font/woff2"
+/>
+`;
+
+exports[`getFontLinks() format jsx should return latin subset and thin weight url 1`] = `
+<link
+  as="font"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-"
+  rel="preload"
+  type="font/woff2"
+/>
+`;
+
+exports[`getFontLinks() format jsx should return multiple urls 1`] = `
+<link
+  as="font"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-"
+  rel="preload"
+  type="font/woff2"
+/>
+`;
+
+exports[`getFontLinks() format jsx should return multiple urls 2`] = `
+<link
+  as="font"
+  crossOrigin="true"
+  href="https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-w-"
+  rel="preload"
+  type="font/woff2"
+/>
+`;

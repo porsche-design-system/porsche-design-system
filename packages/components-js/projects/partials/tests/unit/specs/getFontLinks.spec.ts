@@ -171,4 +171,49 @@ describe('getFontLinks()', () => {
       expect(result[1]).toContain(cdnFontUrlWithoutHash + 'la-semi-bold');
     });
   });
+
+  describe('format jsx', () => {
+    it('should return default url', () => {
+      const result = getFontLinks({ format: 'jsx' });
+      result.forEach((element) => {
+        // href is variable due to hash and cant be overwritten so we clone the element
+        const link = { ...element, props: { ...element.props, href: cdnFontUrlWithoutHash } };
+        expect(link).toMatchSnapshot();
+      });
+    });
+
+    it.each([
+      ['latin', 'thin', 'la-thin'],
+      ['latin', 'regular', 'la-regular'],
+      ['latin', 'semi-bold', 'la-semi-bold'],
+      ['latin', 'bold', 'la-bold'],
+      ['greek', 'thin', 'gr-thin'],
+      ['greek', 'regular', 'gr-regular'],
+      ['greek', 'semi-bold', 'gr-semi-bold'],
+      ['greek', 'bold', 'gr-bold'],
+      ['cyril', 'thin', 'cy-thin'],
+      ['cyril', 'regular', 'cy-regular'],
+      ['cyril', 'semi-bold', 'cy-semi-bold'],
+      ['cyril', 'bold', 'cy-bold'],
+    ])(
+      'should return %s subset and %s weight url',
+      (subset: 'latin' | 'cyril' | 'greek', weight: 'thin' | 'regular' | 'semi-bold' | 'bold', expected) => {
+        const result = getFontLinks({ format: 'jsx', subset, weights: [weight] });
+        result.forEach((element) => {
+          // href is variable due to hash and cant be overwritten so we clone the element
+          const link = { ...element, props: { ...element.props, href: cdnFontUrlWithoutHash } };
+          expect(link).toMatchSnapshot();
+        });
+      }
+    );
+
+    it('should return multiple urls', () => {
+      const result = getFontLinks({ format: 'jsx', weights: ['regular', 'semi-bold'] });
+      result.forEach((element) => {
+        // href is variable due to hash and cant be overwritten so we clone the element
+        const link = { ...element, props: { ...element.props, href: cdnFontUrlWithoutHash } };
+        expect(link).toMatchSnapshot();
+      });
+    });
+  });
 });
