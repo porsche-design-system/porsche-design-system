@@ -1,13 +1,17 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { pascalCase } from 'change-case';
+import { capitalCase, paramCase, pascalCase } from 'change-case';
 import * as globby from 'globby';
 import { convertToAngular } from '@porsche-design-system/storefront/src/utils/convertToAngular';
 import { convertToReact } from '@porsche-design-system/storefront/src/utils/convertToReact';
 
 const PAGES_TO_SKIP: string[] = ['table'];
 
+type Framework = 'angular' | 'react';
+
 const rootDirectory = path.resolve(__dirname, '..');
+const angularPagesDirectory = path.resolve(rootDirectory, '../components-angular/src/app/pages');
+const reactPagesDirectory = path.resolve(rootDirectory, '../components-react/src/pages');
 
 const generateAngularReactVRTPages = (): void => {
   const pagesDirectory = path.resolve(rootDirectory, './src/pages');
@@ -15,7 +19,7 @@ const generateAngularReactVRTPages = (): void => {
 
   const htmlFileContentMap: { [key: string]: string } = htmlFiles
     .filter((file) => !PAGES_TO_SKIP.map((page) => `${page}.html`).some((page) => file.endsWith(page)))
-    .map((filePath) => [path.basename(filePath).split('.')[0], fs.readFileSync(filePath, 'utf8')])
+    .map((filePath) => [path.parse(filePath).name, fs.readFileSync(filePath, 'utf8')])
     .reduce((result, [key, content]) => ({ ...result, [key]: content }), {});
 
   generateVRTPages(htmlFileContentMap, 'angular');
@@ -24,12 +28,39 @@ const generateAngularReactVRTPages = (): void => {
 
 const sortFunc = (a: string, b: string): number => a.toLowerCase().localeCompare(b.toLowerCase());
 
-const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framework: 'angular' | 'react'): void => {
+const writeFile = (filePath: string, content: string): void => {
+  fs.writeFileSync(filePath, content);
+  console.log(`Generated ${filePath.replace(path.resolve(rootDirectory, '..'), '')}`);
+};
+
+const getRoutes = (importPaths: string[], framework: Framework): string => {
+  const componentSuffix = framework === 'angular' ? '' : 'Page';
+
+  return (
+    importPaths
+      .map((x) =>
+        [
+          '{',
+          ...[
+            `name: '${capitalCase(x)}'`,
+            `component: fromPages.${pascalCase(x)}${componentSuffix}`,
+            `path: '/${paramCase(x)}'`,
+          ].map((x) => `  ${x},`),
+          '}',
+        ]
+          .map((x) => `    ${x}`)
+          .join('\n')
+      )
+      .join(',\n') + ','
+  );
+};
+
+const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framework: Framework): void => {
   const comment = '/* Auto Generated File */\n// @ts-nocheck';
 
-  Object.entries(htmlFileContentMap)
+  const importPaths = Object.entries(htmlFileContentMap)
     // .filter(([component]) => component === 'icon') // for easy debugging
-    .forEach(([fileName, fileContent]) => {
+    .map(([fileName, fileContent]) => {
       fileContent = fileContent.trim();
 
       // extract and replace style if there is any
@@ -165,8 +196,7 @@ ${imports}
 export class ${pascalCase(fileName)}Component ${classImplements}{${classImplementation}}
 `;
 
-        fileName = `${fileName}.component.ts`;
-        fileName = path.resolve(rootDirectory, '../components-angular/src/app/pages', fileName);
+        fileName = path.resolve(angularPagesDirectory, `${fileName}.component.ts`);
       } else if (framework === 'react') {
         // imports
         const reactImports = [
@@ -294,16 +324,38 @@ export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
 };
 `;
 
-        fileName = `${pascalCase(fileName)}.tsx`;
-        fileName = path.resolve(rootDirectory, '../components-react/src/pages', fileName);
+        fileName = path.resolve(reactPagesDirectory, `${pascalCase(fileName)}.tsx`);
       }
 
-      // TODO: what about barrel file?
-      // TODO: what about routing?
+      writeFile(fileName, fileContent);
 
-      fs.writeFileSync(fileName, fileContent);
-      console.log(`Generated ${fileName.replace(path.resolve(rootDirectory, '..'), '')}`);
-    });
+      return './' + path.parse(fileName).name;
+    })
+    .sort(sortFunc);
+
+  // TODO: what about barrel file?
+  // TODO: what about routing?
+  const routes = getRoutes(importPaths, framework);
+
+  if (framework === 'angular') {
+  } else if (framework === 'react') {
+    const separator = '/* Auto Generated Below */';
+    const imports = [separator, ...importPaths.map((x) => `export * from '${x}';`)].join('\n');
+
+    const barreFilePath = path.resolve(reactPagesDirectory, 'index.ts');
+    const barrelFileContent = fs.readFileSync(barreFilePath, 'utf8');
+    const newBarrelFileContent = [barrelFileContent.split(separator)[0].trim(), imports].join('\n\n') + '\n';
+
+    writeFile(barreFilePath, newBarrelFileContent);
+
+    const routesFilePath = path.resolve(reactPagesDirectory, '../routes.ts');
+    const routesFileContent = fs.readFileSync(routesFilePath, 'utf8');
+    const newRoutesFileContent = routesFileContent.replace(
+      /(\/\* Auto Generated Start \*\/\n)(?:.|\s)*?(\s+\/\* Auto Generated End \*\/)/,
+      `$1${routes}$2`
+    );
+    writeFile(routesFilePath, newRoutesFileContent);
+  }
 };
 
 generateAngularReactVRTPages();
