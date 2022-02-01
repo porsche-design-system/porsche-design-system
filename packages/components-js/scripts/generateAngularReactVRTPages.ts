@@ -63,7 +63,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
         const angularImports = [
           'ChangeDetectionStrategy',
           'Component',
-          script && 'OnInit',
+          script && !isIconPage && 'OnInit',
           usesComponentsReady && 'ChangeDetectorRef',
         ]
           .filter((x) => x)
