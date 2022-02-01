@@ -68,7 +68,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should render with counter">
       <p-textarea-wrapper [label]="'Counter'">
-        <textarea [maxlength]="200">Some value</textarea>
+        <textarea [maxLength]="200">Some value</textarea>
       </p-textarea-wrapper>
     </div>
 
