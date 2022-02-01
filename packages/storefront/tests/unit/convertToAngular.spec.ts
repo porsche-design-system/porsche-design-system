@@ -92,6 +92,16 @@ describe('unbindNativeAttributes()', () => {
   it('should remove brackets from "title" attribute', () => {
     expect(unbindNativeAttributes(`<div [title]="'hello'"></div>`)).toBe('<div title="hello"></div>');
   });
+
+  it('should remove brackets from "id" attribute', () => {
+    expect(unbindNativeAttributes(`<div [id]="'hello'"></div>`)).toBe('<div id="hello"></div>');
+  });
+
+  it('should remove brackets from "style" attribute', () => {
+    expect(unbindNativeAttributes(`<div [style]="'background: yellow'"></div>`)).toBe(
+      '<div style="background: yellow"></div>'
+    );
+  });
 });
 
 describe('convertToAngular()', () => {

@@ -1,3 +1,5 @@
+/* Auto Generated File */
+// @ts-nocheck
 import { PContentWrapper, PHeadline, PModal, PText } from '@porsche-design-system/components-react';
 
 export const ModalSlottedHeadingPage = (): JSX.Element => {
@@ -12,15 +14,14 @@ export const ModalSlottedHeadingPage = (): JSX.Element => {
   return (
     <>
       <style children={style} />
+
       <div className="playground light" title="should display slotted heading">
         <PContentWrapper>
           <div style={{ background: 'deeppink', height: '100vh' }} />
         </PContentWrapper>
-        <PModal open aria={{ 'aria-label': 'Slotted Headline' }}>
+        <PModal open={true} aria={{'aria-label': 'Slotted Headline'}}>
           <div slot="heading">
-            <PText tag="div" role="doc-subtitle">
-              Slotted Subtitle
-            </PText>
+            <PText tag="div" role="doc-subtitle">Slotted Subtitle</PText>
             <PHeadline tag="h2">Slotted Headline</PHeadline>
           </div>
           Some Content

@@ -1,3 +1,5 @@
+/* Auto Generated File */
+// @ts-nocheck
 import { PSelectWrapper } from '@porsche-design-system/components-react';
 
 export const SelectWrapperPage = (): JSX.Element => {
@@ -42,7 +44,7 @@ export const SelectWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render without label and without description">
-        <PSelectWrapper label="Some label" description="Some description" hideLabel>
+        <PSelectWrapper label="Some label" description="Some description" hideLabel={true}>
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -51,7 +53,7 @@ export const SelectWrapperPage = (): JSX.Element => {
         </PSelectWrapper>
       </div>
       <div className="playground dark" title="should render without label and without description on dark theme">
-        <PSelectWrapper label="Some label" description="Some description" hideLabel theme="dark">
+        <PSelectWrapper label="Some label" description="Some description" hideLabel={true} theme="dark">
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -89,7 +91,7 @@ export const SelectWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with filter">
-        <PSelectWrapper label="Some label with filter" filter>
+        <PSelectWrapper label="Some label with filter" filter={true}>
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -98,7 +100,7 @@ export const SelectWrapperPage = (): JSX.Element => {
         </PSelectWrapper>
       </div>
       <div className="playground dark" title="should render with filter on dark theme">
-        <PSelectWrapper label="Some label with filter" filter theme="dark">
+        <PSelectWrapper label="Some label with filter" filter={true} theme="dark">
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -108,7 +110,7 @@ export const SelectWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render in disabled state with filter">
-        <PSelectWrapper label="Some label disabled with filter" filter>
+        <PSelectWrapper label="Some label disabled with filter" filter={true}>
           <select name="some-name" disabled>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -117,7 +119,7 @@ export const SelectWrapperPage = (): JSX.Element => {
         </PSelectWrapper>
       </div>
       <div className="playground dark" title="should render in disabled state with filter on dark theme">
-        <PSelectWrapper label="Some label disabled with filter" filter theme="dark">
+        <PSelectWrapper label="Some label disabled with filter" filter={true} theme="dark">
           <select name="some-name" disabled>
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -199,7 +201,7 @@ export const SelectWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with error state and error message with filter">
-        <PSelectWrapper label="Some label with filter" filter state="error" message="Some error message.">
+        <PSelectWrapper label="Some label with filter" filter={true} state="error" message="Some error message.">
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -207,11 +209,14 @@ export const SelectWrapperPage = (): JSX.Element => {
           </select>
         </PSelectWrapper>
       </div>
-      <div
-        className="playground dark"
-        title="should render with error state and error message with filter on dark theme"
-      >
-        <PSelectWrapper label="Some label with filter" filter state="error" message="Some error message." theme="dark">
+      <div className="playground dark" title="should render with error state and error message with filter on dark theme">
+        <PSelectWrapper
+          label="Some label with filter"
+          filter={true}
+          state="error"
+          message="Some error message."
+          theme="dark"
+        >
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -259,7 +264,7 @@ export const SelectWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with success state and success message with filter">
-        <PSelectWrapper label="Some label with filter" filter state="success" message="Some success message.">
+        <PSelectWrapper label="Some label with filter" filter={true} state="success" message="Some success message.">
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -267,13 +272,10 @@ export const SelectWrapperPage = (): JSX.Element => {
           </select>
         </PSelectWrapper>
       </div>
-      <div
-        className="playground dark"
-        title="should render with success state and success message with filter on dark theme"
-      >
+      <div className="playground dark" title="should render with success state and success message with filter on dark theme">
         <PSelectWrapper
           label="Some label with filter"
-          filter
+          filter={true}
           state="success"
           message="Some success message."
           theme="dark"
@@ -315,12 +317,7 @@ export const SelectWrapperPage = (): JSX.Element => {
         </PSelectWrapper>
       </div>
       <div className="playground dark" title="should render with default state and no message on dark theme">
-        <PSelectWrapper
-          label="Some label"
-          state="none"
-          message="Some message which should not be rendered."
-          theme="dark"
-        >
+        <PSelectWrapper label="Some label" state="none" message="Some message which should not be rendered." theme="dark">
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
@@ -329,25 +326,16 @@ export const SelectWrapperPage = (): JSX.Element => {
         </PSelectWrapper>
       </div>
 
-      <div
-        className="playground light"
-        title="should render label, description and message by slotted content with error state"
-      >
+      <div className="playground light" title="should render label, description and message by slotted content with error state">
         <PSelectWrapper state="error">
-          <span slot="label">
-            Some label with a <a href="https://designsystem.porsche.com">link</a>.
-          </span>
-          <span slot="description">
-            Some description with a <a href="https://designsystem.porsche.com">link</a>.
-          </span>
+          <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+          <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
           </select>
-          <span slot="message">
-            Some error message with a <a href="https://designsystem.porsche.com">link</a>.
-          </span>
+          <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
         </PSelectWrapper>
       </div>
       <div
@@ -355,20 +343,14 @@ export const SelectWrapperPage = (): JSX.Element => {
         title="should render label, description and message by slotted content with error state on dark theme"
       >
         <PSelectWrapper state="error" theme="dark">
-          <span slot="label">
-            Some label with a <a href="https://designsystem.porsche.com">link</a>.
-          </span>
-          <span slot="description">
-            Some description with a <a href="https://designsystem.porsche.com">link</a>.
-          </span>
+          <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+          <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
           </select>
-          <span slot="message">
-            Some error message with a <a href="https://designsystem.porsche.com">link</a>.
-          </span>
+          <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
         </PSelectWrapper>
       </div>
 
@@ -377,20 +359,14 @@ export const SelectWrapperPage = (): JSX.Element => {
         title="should render label, description and message by slotted content with success state"
       >
         <PSelectWrapper state="success">
-          <span slot="label">
-            Some label with a <a href="https://designsystem.porsche.com">link</a>.
-          </span>
-          <span slot="description">
-            Some description with a <a href="https://designsystem.porsche.com">link</a>.
-          </span>
+          <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+          <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
           </select>
-          <span slot="message">
-            Some success message with a <a href="https://designsystem.porsche.com">link</a>.
-          </span>
+          <span slot="message">Some success message with a <a href="https://designsystem.porsche.com">link</a>.</span>
         </PSelectWrapper>
       </div>
       <div
@@ -398,20 +374,14 @@ export const SelectWrapperPage = (): JSX.Element => {
         title="should render label, description and message by slotted content with success state on dark theme"
       >
         <PSelectWrapper state="success" theme="dark">
-          <span slot="label">
-            Some label with a <a href="https://designsystem.porsche.com">link</a>.
-          </span>
-          <span slot="description">
-            Some description with a <a href="https://designsystem.porsche.com">link</a>.
-          </span>
+          <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+          <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
           <select name="some-name">
             <option value="a">Option A</option>
             <option value="b">Option B</option>
             <option value="c">Option C</option>
           </select>
-          <span slot="message">
-            Some success message with a <a href="https://designsystem.porsche.com">link</a>.
-          </span>
+          <span slot="message">Some success message with a <a href="https://designsystem.porsche.com">link</a>.</span>
         </PSelectWrapper>
       </div>
 
@@ -424,7 +394,7 @@ export const SelectWrapperPage = (): JSX.Element => {
           description="Lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet"
           state="error"
           message="At vero eos et accusam et justo duo dolores et ea rebum."
-          style={{ width: 240 }}
+          style={{ width: '240px' }}
         >
           <select name="some-name">
             <option value="a">Lorem ipsum dolor sit amet, consetetur sadipscing elitr,</option>
@@ -443,7 +413,7 @@ export const SelectWrapperPage = (): JSX.Element => {
           state="error"
           message="At vero eos et accusam et justo duo dolores et ea rebum."
           theme="dark"
-          style={{ width: 240 }}
+          style={{ width: '240px' }}
         >
           <select name="some-name">
             <option value="a">Lorem ipsum dolor sit amet, consetetur sadipscing elitr,</option>

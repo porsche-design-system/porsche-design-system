@@ -1,3 +1,5 @@
+/* Auto Generated File */
+// @ts-nocheck
 import { PTextFieldWrapper } from '@porsche-design-system/components-react';
 
 export const TextFieldWrapperPage = (): JSX.Element => {
@@ -22,7 +24,7 @@ export const TextFieldWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render without label and without description">
-        <PTextFieldWrapper label="Some label" description="Some description" hideLabel>
+        <PTextFieldWrapper label="Some label" description="Some description" hideLabel={true}>
           <input type="text" defaultValue="Without label and description" />
         </PTextFieldWrapper>
       </div>
@@ -131,7 +133,7 @@ export const TextFieldWrapperPage = (): JSX.Element => {
           <input type="password" defaultValue="some password" readOnly />
         </PTextFieldWrapper>
         <br />
-        <PTextFieldWrapper label="Type password long text" style={{ width: 240 }}>
+        <PTextFieldWrapper label="Type password long text" style={{ width: '240px' }}>
           <input
             type="password"
             defaultValue="some really long password with many words and amazing special characters, letters big and small, numbers"
@@ -183,21 +185,12 @@ export const TextFieldWrapperPage = (): JSX.Element => {
         </PTextFieldWrapper>
       </div>
 
-      <div
-        className="playground light"
-        title="should render label, description and message by slotted content with error state"
-      >
+      <div className="playground light" title="should render label, description and message by slotted content with error state">
         <PTextFieldWrapper state="error">
-          <span slot="label">
-            Slotted error label with a <a href="#">link</a>
-          </span>
-          <span slot="description">
-            Slotted description with a <a href="#">link</a>
-          </span>
+          <span slot="label">Slotted error label with a <a href="#">link</a></span>
+          <span slot="description">Slotted description with a <a href="#">link</a></span>
           <input type="text" placeholder="Some placeholder" />
-          <span slot="message">
-            Slotted message with a <a href="#">link</a>
-          </span>
+          <span slot="message">Slotted message with a <a href="#">link</a></span>
         </PTextFieldWrapper>
       </div>
 
@@ -206,16 +199,10 @@ export const TextFieldWrapperPage = (): JSX.Element => {
         title="should render label, description and message by slotted content with success state"
       >
         <PTextFieldWrapper state="success">
-          <span slot="label">
-            Slotted success label with a <a href="#">link</a>
-          </span>
-          <span slot="description">
-            Slotted description with a <a href="#">link</a>
-          </span>
+          <span slot="label">Slotted success label with a <a href="#">link</a></span>
+          <span slot="description">Slotted description with a <a href="#">link</a></span>
           <input type="text" placeholder="Some placeholder" />
-          <span slot="message">
-            Slotted message with a <a href="#">link</a>
-          </span>
+          <span slot="message">Slotted message with a <a href="#">link</a></span>
         </PTextFieldWrapper>
       </div>
 
@@ -225,7 +212,7 @@ export const TextFieldWrapperPage = (): JSX.Element => {
           description="Multiline description lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet"
           state="error"
           message="Multiline message at vero eos et accusam et justo duo dolores et ea rebum."
-          style={{ width: 240 }}
+          style={{ width: '240px' }}
         >
           <input type="text" defaultValue="Lorem ipsum dolor sit amet, consetetur sadipscing elitr," />
         </PTextFieldWrapper>
@@ -233,13 +220,13 @@ export const TextFieldWrapperPage = (): JSX.Element => {
 
       <div className="playground light" title="should render with unit">
         <PTextFieldWrapper label="Label with unit" unit="km/h">
-          <input type="number" defaultValue="300" />
+          <input type="number" defaultValue={300} />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render with unit position suffix">
         <PTextFieldWrapper label="Label with unit position suffix" unit="kWh" unitPosition="suffix">
-          <input type="number" defaultValue="400" />
+          <input type="number" defaultValue={400} />
         </PTextFieldWrapper>
       </div>
     </>

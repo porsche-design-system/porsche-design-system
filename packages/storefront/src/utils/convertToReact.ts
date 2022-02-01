@@ -8,8 +8,8 @@ export const transformStandardAttributes = (markup: string): string =>
   // transform all standard attributes to camel case
   markup
     .replace(/\s(\S+)="(.*?)"/g, (m, $key, $value) => ` ${camelCase($key)}="${$value}"`)
-    .replace(/\sreadonly/g, ' readOnly')
-    .replace(/\smaxlength=/g, ' maxLength=')
+    .replace(/(<(?:input|textarea|select).*?)\sreadonly/g, '$1 readOnly')
+    .replace(/(<(?:input|textarea).*?)\smaxlength=/g, '$1 maxLength=')
     .replace(/\s(aria[A-Z][a-z]+)=/g, (m, $attr) => m.replace($attr, paramCase($attr)));
 
 export const transformClassAttribute = (markup: string): string =>
@@ -31,17 +31,17 @@ export const transformToSelfClosingTags = (markup: string): string =>
   markup.replace(/(<([A-Za-z-]+)[^>]*?)>\s*<\/\2>/g, '$1 />');
 
 export const transformStyleAttribute = (markup: string): string =>
-  markup.replace(/style="(.*?)"/g, (m, $style: string) => {
+  markup.replace(/\sstyle="((?:.|\n)*?)"/g, (m, $style: string) => {
     $style = $style
       .replace(/;/g, ',') // transform semi colons to comma
-      .replace(/,$/g, ''); // remove last comma
+      .replace(/,\s*$/g, ''); // remove last comma
 
     const pairs = $style.split(',').map((p) => {
       const [prop, val] = p.split(':');
       return `${camelCase(prop)}: '${val.trim()}'`;
     });
 
-    return `style={{ ${pairs.join(', ')} }}`;
+    return ` style={{ ${pairs.join(', ')} }}`;
   });
 
 export const convertToReact = (markup: string): string =>

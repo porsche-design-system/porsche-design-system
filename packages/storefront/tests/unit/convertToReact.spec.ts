@@ -53,10 +53,30 @@ describe('transformStandardAttributes()', () => {
     expect(transformStandardAttributes('<input type="text" readonly>')).toBe('<input type="text" readOnly>');
   });
 
+  it('should not transform readonly attribute value to camelCase', () => {
+    expect(transformStandardAttributes('<div attr="some readonly"></div>')).toBe('<div attr="some readonly"></div>');
+  });
+
+  it('should not transform readonly innerText to camelCase', () => {
+    expect(transformStandardAttributes('<label>Some readonly label</label>')).toBe(
+      '<label>Some readonly label</label>'
+    );
+  });
+
   it('should transform maxlength attribute to camelCase', () => {
     expect(transformStandardAttributes('<input type="text" maxlength="20">')).toBe(
       '<input type="text" maxLength="20">'
     );
+  });
+
+  it('should not transform maxlength innerText to camelCase', () => {
+    expect(transformStandardAttributes('<label>Some maxlength label</label>')).toBe(
+      '<label>Some maxlength label</label>'
+    );
+  });
+
+  it('should not transform maxlength attribute value to camelCase', () => {
+    expect(transformStandardAttributes('<div attr="some maxlength"></div>')).toBe('<div attr="some maxlength"></div>');
   });
 });
 
@@ -169,7 +189,7 @@ describe('transformToSelfClosingTags()', () => {
   });
 });
 
-describe('transformStyleAttribute', () => {
+describe('transformStyleAttribute()', () => {
   it('should quote values', () => {
     const markup = '<div style="display: block"></div>';
     expect(transformStyleAttribute(markup)).toBe("<div style={{ display: 'block' }}></div>");
@@ -183,6 +203,19 @@ describe('transformStyleAttribute', () => {
   it('should handle multiple styles', () => {
     const markup = '<div style="text-align: center; font-size: 16px"></div>';
     expect(transformStyleAttribute(markup)).toBe("<div style={{ textAlign: 'center', fontSize: '16px' }}></div>");
+  });
+
+  it('should handle multiline style', () => {
+    const markup = `<div
+  style="
+    text-align: center;
+    font-size: 16px;
+  "
+></div>`;
+
+    expect(transformStyleAttribute(markup)).toBe(`<div
+  style={{ textAlign: 'center', fontSize: '16px' }}
+></div>`);
   });
 });
 
