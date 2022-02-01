@@ -1,9 +1,11 @@
+/* Auto Generated File */
+// @ts-nocheck
 import { PButtonPure } from '@porsche-design-system/components-react';
 
 export const ButtonPurePage = (): JSX.Element => {
   const style = `
     p-button-pure:not(:last-child) {
-      margin-right: 8px;
+      margin-right: 0.5rem;
     }
     .stretched-buttons p-button-pure {
       margin-right: 0;
@@ -16,38 +18,24 @@ export const ButtonPurePage = (): JSX.Element => {
 
       <div className="playground light" title="should render button with label">
         <PButtonPure>Label default</PButtonPure>
-        <PButtonPure disabled>Label disabled</PButtonPure>
-        <PButtonPure loading>Label loading</PButtonPure>
+        <PButtonPure disabled={true}>Label disabled</PButtonPure>
+        <PButtonPure loading={true}>Label loading</PButtonPure>
       </div>
       <div className="playground dark" title="should render button with label on dark theme">
         <PButtonPure theme="dark">Label default</PButtonPure>
-        <PButtonPure disabled theme="dark">
-          Label disabled
-        </PButtonPure>
-        <PButtonPure loading theme="dark">
-          Label loading
-        </PButtonPure>
+        <PButtonPure disabled={true} theme="dark">Label disabled</PButtonPure>
+        <PButtonPure loading={true} theme="dark">Label loading</PButtonPure>
       </div>
 
       <div className="playground light" title="should render button without label">
-        <PButtonPure hideLabel>Some label</PButtonPure>
-        <PButtonPure hideLabel disabled>
-          Some label
-        </PButtonPure>
-        <PButtonPure hideLabel loading>
-          Some label
-        </PButtonPure>
+        <PButtonPure hideLabel={true}>Some label</PButtonPure>
+        <PButtonPure hideLabel={true} disabled={true}>Some label</PButtonPure>
+        <PButtonPure hideLabel={true} loading={true}>Some label</PButtonPure>
       </div>
       <div className="playground dark" title="should render button without label on dark theme">
-        <PButtonPure hideLabel theme="dark">
-          Some label
-        </PButtonPure>
-        <PButtonPure hideLabel disabled theme="dark">
-          Some label
-        </PButtonPure>
-        <PButtonPure hideLabel loading theme="dark">
-          Some label
-        </PButtonPure>
+        <PButtonPure hideLabel={true} theme="dark">Some label</PButtonPure>
+        <PButtonPure hideLabel={true} disabled={true} theme="dark">Some label</PButtonPure>
+        <PButtonPure hideLabel={true} loading={true} theme="dark">Some label</PButtonPure>
       </div>
 
       <div className="playground light" title="should render button with responsive label">
@@ -71,15 +59,13 @@ export const ButtonPurePage = (): JSX.Element => {
         <br />
         <PButtonPure size="x-large">Label size x-large</PButtonPure>
         <br />
-        <PButtonPure size="inherit" style={{ fontSize: 48 }}>
-          Label size inherit
-        </PButtonPure>
+        <PButtonPure size="inherit" style={{ fontSize: '48px' }}>Label size inherit</PButtonPure>
       </div>
 
       <div className="playground light" title="should render button with responsive size">
         <PButtonPure
           size={{ base: 'x-small', xs: 'small', s: 'medium', m: 'large', l: 'x-large', xl: 'inherit' }}
-          style={{ fontSize: 48 }}
+          style={{ fontSize: '48px' }}
         >
           Label size responsive
         </PButtonPure>
@@ -93,30 +79,20 @@ export const ButtonPurePage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with active state">
-        <PButtonPure active>Label active</PButtonPure>
-        <PButtonPure active disabled>
-          Label active disabled
-        </PButtonPure>
-        <PButtonPure active loading>
-          Label active loading
-        </PButtonPure>
-        <PButtonPure active>
+        <PButtonPure active={true}>Label active</PButtonPure>
+        <PButtonPure active={true} disabled={true}>Label active disabled</PButtonPure>
+        <PButtonPure active={true} loading={true}>Label active loading</PButtonPure>
+        <PButtonPure active={true}>
           Label active
           <p slot="subline">Some subline</p>
         </PButtonPure>
       </div>
 
       <div className="playground dark" title="should render with active state on dark background">
-        <PButtonPure active theme="dark">
-          Label active
-        </PButtonPure>
-        <PButtonPure active disabled theme="dark">
-          Label active disabled
-        </PButtonPure>
-        <PButtonPure active loading theme="dark">
-          Label active loading
-        </PButtonPure>
-        <PButtonPure active theme="dark">
+        <PButtonPure active={true} theme="dark">Label active</PButtonPure>
+        <PButtonPure active={true} disabled={true} theme="dark">Label active disabled</PButtonPure>
+        <PButtonPure active={true} loading={true} theme="dark">Label active loading</PButtonPure>
+        <PButtonPure active={true} theme="dark">
           Label active
           <p slot="subline">Some subline</p>
         </PButtonPure>
@@ -127,26 +103,18 @@ export const ButtonPurePage = (): JSX.Element => {
         <PButtonPure iconSource="./assets/icon-custom-kaixin.svg">Label with local icon-source</PButtonPure>
       </div>
 
-      <div className="playground dark" title="should render button with specific icon on dark background">
-        <PButtonPure icon="delete" theme="dark">
-          Label with specific icon
-        </PButtonPure>
-        <PButtonPure iconSource="./assets/icon-custom-kaixin.svg" theme="dark">
-          Label with local icon-source
-        </PButtonPure>
+      <div className="playground dark" title="should render button with specific icon on dark on dark background">
+        <PButtonPure icon="delete" theme="dark">Label with specific icon</PButtonPure>
+        <PButtonPure iconSource="./assets/icon-custom-kaixin.svg" theme="dark">Label with local icon-source</PButtonPure>
       </div>
 
       <div className="playground light" title="should render button with multiline label">
-        <PButtonPure style={{ width: 240 }}>
-          Label multiline lorem ipsum dolor sit amet, consetetur sadipscing
-        </PButtonPure>
+        <PButtonPure style={{ width: '240px' }}>Label multiline lorem ipsum dolor sit amet, consetetur sadipscing</PButtonPure>
       </div>
 
       <div className="playground light" title="should render button-pure with custom clickable area">
         <PButtonPure style={{ padding: '1rem' }}>Label with custom click-area</PButtonPure>
-        <PButtonPure hideLabel style={{ padding: '1rem' }}>
-          Label with custom click-area
-        </PButtonPure>
+        <PButtonPure hideLabel={true} style={{ padding: '1rem' }}>Label with custom click-area</PButtonPure>
       </div>
 
       <div className="playground light" title="should render with subline">
@@ -166,7 +134,7 @@ export const ButtonPurePage = (): JSX.Element => {
           Label size x-large
           <p slot="subline">Some subline</p>
         </PButtonPure>
-        <PButtonPure size="medium" disabled>
+        <PButtonPure size="medium" disabled={true}>
           Label size medium disabled
           <p slot="subline">Some subline</p>
         </PButtonPure>
@@ -181,10 +149,8 @@ export const ButtonPurePage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render icon if hide-label and icon none is set">
-        <PButtonPure hideLabel icon="none">
-          Label hide-label icon none
-        </PButtonPure>
-        <PButtonPure hideLabel size="small" icon="none">
+        <PButtonPure hideLabel={true} icon="none">Label hide-label icon none</PButtonPure>
+        <PButtonPure hideLabel={true} size="small" icon="none">
           Label hide-label icon none
           <p slot="subline">Some subline</p>
         </PButtonPure>
@@ -200,10 +166,8 @@ export const ButtonPurePage = (): JSX.Element => {
       </div>
 
       <div className="playground light stretched-buttons" title="should render with stretched label">
-        <PButtonPure stretch>Label stretch</PButtonPure>
-        <PButtonPure stretch alignLabel="left">
-          Label stretch align left
-        </PButtonPure>
+        <PButtonPure stretch={true}>Label stretch</PButtonPure>
+        <PButtonPure stretch={true} alignLabel="left">Label stretch align left</PButtonPure>
       </div>
       <div className="playground light" title="should render with stretched label depending on viewport">
         <PButtonPure stretch={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}>
@@ -216,7 +180,7 @@ export const ButtonPurePage = (): JSX.Element => {
           Label align left
           <p slot="subline">Some subline</p>
         </PButtonPure>
-        <PButtonPure stretch>
+        <PButtonPure stretch={true}>
           Label stretch
           <p slot="subline">Some subline</p>
         </PButtonPure>
