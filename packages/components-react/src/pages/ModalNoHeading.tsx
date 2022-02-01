@@ -1,3 +1,5 @@
+/* Auto Generated File */
+// @ts-nocheck
 import { PContentWrapper, PModal } from '@porsche-design-system/components-react';
 
 export const ModalNoHeadingPage = (): JSX.Element => {
@@ -12,11 +14,12 @@ export const ModalNoHeadingPage = (): JSX.Element => {
   return (
     <>
       <style children={style} />
+
       <div className="playground light" title="should display close button on the correct position without a heading">
         <PContentWrapper>
           <div style={{ background: 'deeppink', height: '100vh' }} />
         </PContentWrapper>
-        <PModal open aria={{ 'aria-label': 'Some Headline' }}>
+        <PModal open={true} aria={{'aria-label': 'Some Heading'}}>
           Some Content without a heading that will be covered by the close button
         </PModal>
       </div>

@@ -1,10 +1,14 @@
+/* Auto Generated File */
+// @ts-nocheck
+import { componentsReady, PTextFieldWrapper } from '@porsche-design-system/components-react';
 import { useEffect, useState } from 'react';
-import { PTextFieldWrapper } from '@porsche-design-system/components-react';
 
 export const CoreInitializerPage = (): JSX.Element => {
-  const [isEnabled, setIsEnabled] = useState(false);
+  const [allReady, setAllReady] = useState(false);
   useEffect(() => {
-    setTimeout(() => setIsEnabled(true), 1000);
+    componentsReady().then(() => {
+      setAllReady(true);
+    });
   }, []);
 
   return (
@@ -14,10 +18,12 @@ export const CoreInitializerPage = (): JSX.Element => {
           <input type="text" />
         </PTextFieldWrapper>
 
-        {isEnabled && (
-          <PTextFieldWrapper label="Some Label" description="Some Description">
-            <input type="text" />
-          </PTextFieldWrapper>
+        {allReady && (
+          <div>
+            <PTextFieldWrapper label="Some Label" description="Some Description">
+              <input type="text" />
+            </PTextFieldWrapper>
+          </div>
         )}
       </div>
     </>
