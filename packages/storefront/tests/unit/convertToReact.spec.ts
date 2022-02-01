@@ -189,7 +189,7 @@ describe('transformToSelfClosingTags()', () => {
   });
 });
 
-describe('transformStyleAttribute', () => {
+describe('transformStyleAttribute()', () => {
   it('should quote values', () => {
     const markup = '<div style="display: block"></div>';
     expect(transformStyleAttribute(markup)).toBe("<div style={{ display: 'block' }}></div>");
