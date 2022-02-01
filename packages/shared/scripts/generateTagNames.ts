@@ -8,7 +8,7 @@ const INTERNAL_TAG_NAMES: TagName[] = ['p-select-wrapper-dropdown', 'p-toast-ite
 
 // TODO: add form elements
 //'p-button-pure','p-link', 'p-link-pure'
-const TAG_NAMES_WITH_SKELETON: TagName[] = ['p-button'];
+const TAG_NAMES_WITH_SKELETON: TagName[] = ['p-button', 'p-select-wrapper'];
 
 const generateTagNames = (): void => {
   // can't resolve @porsche-design-system/components without building it first, therefore we use relative path

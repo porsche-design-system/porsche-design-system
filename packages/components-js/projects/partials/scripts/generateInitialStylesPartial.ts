@@ -1,5 +1,7 @@
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
 import { getButtonSkeletonStyles } from '../../../../components/src/components/action/button/button-skeleton-styles';
+import { getSelectWrapperSkeletonStyles } from '../../../../components/src/components/form/select-wrapper/select-wrapper/select-wrapper-skeleton-styles';
+import { joinArrayElementsToString } from './utils';
 export const generateInitialStylesPartial = (): string => {
   const types = `type InitialStylesOptions = {
   prefix?: string;
@@ -11,11 +13,14 @@ export const generateInitialStylesPartial = (): string => {
 
   const skeletonStyles: { [key: string]: string } = {
     'p-button': getButtonSkeletonStyles(),
+    'p-select-wrapper': getSelectWrapperSkeletonStyles(),
   };
 
-  const tagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x) && !TAG_NAMES_WITH_SKELETON.includes(x))
-    .map((x) => `'${x}'`)
-    .join(', ');
+  const tagNames = joinArrayElementsToString(
+    TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x) && !TAG_NAMES_WITH_SKELETON.includes(x))
+  );
+
+  const tagNamesWithSkeleton = joinArrayElementsToString(TAG_NAMES_WITH_SKELETON);
 
   const func = `export const getInitialStyles = (opts?: InitialStylesOptions): string => {
   const options: InitialStylesOptions = {
@@ -25,12 +30,6 @@ export const generateInitialStylesPartial = (): string => {
     ...opts
   };
   const { prefix, withoutTags, theme } = options;
-  const skeletonStyles =  ${JSON.stringify(skeletonStyles)};
-  let styleStringWithPrefix = prefix
-    ? \`\${prefix}-\${skeletonStyles['p-button']}\`
-    : skeletonStyles['p-button']
-
-  styleStringWithPrefix = styleStringWithPrefix.replace('PDS_REPLACE_WITH_THEME_COLOR',\`\${theme === 'light' ? '#000': '#fff'}\`);
 
 
   const tagNames = [${tagNames}];
@@ -39,7 +38,17 @@ export const generateInitialStylesPartial = (): string => {
     : x
   ).join(',') + '{visibility:hidden}';
 
-  styleInnerHtml += styleStringWithPrefix;
+  const tagNamesWithSkeleton = [${tagNamesWithSkeleton}];
+
+  const skeletonStyles =  ${JSON.stringify(skeletonStyles)};
+
+  let skeletonStyleStringWithPrefix = tagNamesWithSkeleton.map( (x)=> prefix
+    ? \`\${prefix}-\${skeletonStyles[x]}\`
+    : skeletonStyles[x]).join('')
+
+  skeletonStyleStringWithPrefix = skeletonStyleStringWithPrefix.replace(/PDS_REPLACE_WITH_THEME_COLOR/g,\`\${theme === 'light' ? '#9A9A9A': '#383838'}\`);
+
+  styleInnerHtml += skeletonStyleStringWithPrefix;
 
   styleInnerHtml += '\\\\${skeletonKeyframes}';
 
