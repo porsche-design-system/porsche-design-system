@@ -23,8 +23,8 @@ export const cleanBooleanAndUndefinedValues = (markup: string): string =>
   markup.replace(/\s(\[[A-Za-z]+\])="'(true|false|undefined)'"/g, ' $1="$2"');
 
 export const unbindNativeAttributes = (markup: string): string =>
-  // remove brackets from "class", "slot" and "title" attributes
-  markup.replace(/\s\[(class|slot|title)]="'(.*?)'"/g, ' $1="$2"');
+  // remove brackets from "id", "class", "style, "slot" and "title" attributes
+  markup.replace(/\s\[(id|class|style|slot|title)]="'(.*?)'"/g, ' $1="$2"');
 
 export const convertToAngular = (markup: string): string =>
   [
