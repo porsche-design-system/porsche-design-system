@@ -4,10 +4,12 @@ import { getMinifiedStyles } from '../../../../../shared/src/styles/getMinifiedS
 export const getButtonSkeletonStyles = (): string => {
   return getMinifiedStyles({
     '@global': {
-      'p-button:not(hydrated)': {
+      'p-button:not(.hydrated)': {
         display: 'block',
         width: pxToRemWithUnit(300),
+        height: pxToRemWithUnit(150),
         background: 'PDS_REPLACE_WITH_THEME_COLOR',
+        visibility: 'visible',
       },
     },
   });
