@@ -117,12 +117,12 @@ export const routes: RouteType[] = [
   {
     name: 'Modal Full Width Slot',
     path: '/modal-full-width-slot',
-    component: fromPages.ModalFullWidthSlot,
+    component: fromPages.ModalFullWidthSlotPage,
   },
   {
     name: 'Modal No Heading',
     path: '/modal-no-heading',
-    component: fromPages.ModalNoHeading,
+    component: fromPages.ModalNoHeadingPage,
   },
   {
     name: 'Modal Prefixed',

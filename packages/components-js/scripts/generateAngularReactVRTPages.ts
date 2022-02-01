@@ -28,7 +28,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
   const comment = '/* Auto Generated File */\n// @ts-nocheck';
 
   Object.entries(htmlFileContentMap)
-    .filter(([component]) => component === 'icon') // for easy debugging
+    // .filter(([component]) => component === 'icon') // for easy debugging
     .forEach(([fileName, fileContent]) => {
       fileContent = fileContent.trim();
 
@@ -238,7 +238,7 @@ useEffect(() => {
           fileContent = fileContent.replace(new RegExp(`(<\/?)${prefix}-`, 'g'), '$1');
         }
 
-        // create list of p-icons
+        // icons
         if (isIconPage) {
           fileContent = fileContent.replace(
             iconsRegEx,
@@ -249,6 +249,7 @@ useEffect(() => {
 $2`
           );
         }
+
         // attribute conversion
         fileContent = fileContent.replace(/(<textarea.*)>\s*(.+?)\s*(<\/textarea>)/g, '$1 defaultValue="$2">$3');
         fileContent = fileContent.replace(/ v(alue=)/g, ' defaultV$1'); // for input

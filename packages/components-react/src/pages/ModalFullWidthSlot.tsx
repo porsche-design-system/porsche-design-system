@@ -1,6 +1,6 @@
 import { PContentWrapper, PModal, PText } from '@porsche-design-system/components-react';
 
-export const ModalFullWidthSlot = (): JSX.Element => {
+export const ModalFullWidthSlotPage = (): JSX.Element => {
   const style = `
     .playground {
       height: 500px;

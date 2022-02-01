@@ -1,6 +1,6 @@
 import { PContentWrapper, PModal } from '@porsche-design-system/components-react';
 
-export const ModalNoHeading = (): JSX.Element => {
+export const ModalNoHeadingPage = (): JSX.Element => {
   const style = `
     .playground {
       height: 500px;
