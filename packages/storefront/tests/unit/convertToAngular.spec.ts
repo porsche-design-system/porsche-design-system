@@ -93,6 +93,16 @@ describe('unbindNativeAttributes()', () => {
     expect(unbindNativeAttributes(`<div [title]="'hello'"></div>`)).toBe('<div title="hello"></div>');
   });
 
+  it('should transform maxlength to maxLength', () => {
+    expect(
+      unbindNativeAttributes(
+        `<p-textarea-wrapper [label]="'Counter'"><textarea [maxlength]="200">Some value</textarea></p-textarea-wrapper>\``
+      )
+    ).toBe(
+      '<p-textarea-wrapper [label]="\'Counter\'"><textarea [maxLength]="200">Some value</textarea></p-textarea-wrapper>`'
+    );
+  });
+
   it('should remove brackets from "id" attribute', () => {
     expect(unbindNativeAttributes(`<div [id]="'hello'"></div>`)).toBe('<div id="hello"></div>');
   });
