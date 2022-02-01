@@ -12,3 +12,5 @@ export const minifyHTML = (str: string): string => {
     quoteCharacter: '"',
   });
 };
+
+export const joinArrayElementsToString = (array: string[]): string => array.map((x) => `'${x}'`).join(', ');
