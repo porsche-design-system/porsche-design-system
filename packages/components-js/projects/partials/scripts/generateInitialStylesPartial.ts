@@ -2,6 +2,7 @@ import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_SKELETON } from '@porsche
 import { getButtonSkeletonStyles } from '../../../../components/src/components/action/button/button-skeleton-styles';
 import { getSelectWrapperSkeletonStyles } from '../../../../components/src/components/form/select-wrapper/select-wrapper/select-wrapper-skeleton-styles';
 import { joinArrayElementsToString } from './utils';
+
 export const generateInitialStylesPartial = (): string => {
   const types = `type InitialStylesOptions = {
   prefix?: string;
@@ -46,7 +47,7 @@ export const generateInitialStylesPartial = (): string => {
     ? \`\${prefix}-\${skeletonStyles[x]}\`
     : skeletonStyles[x]).join('')
 
-  skeletonStyleStringWithPrefix = skeletonStyleStringWithPrefix.replace(/PDS_REPLACE_WITH_THEME_COLOR/g,\`\${theme === 'light' ? '#9A9A9A': '#383838'}\`);
+  skeletonStyleStringWithPrefix = skeletonStyleStringWithPrefix.replace(/PDS_REPLACE_WITH_THEME_COLOR/g,\`\${theme === 'light' ? '#E3E4E5': '#656871'}\`);
 
   styleInnerHtml += skeletonStyleStringWithPrefix;
 
