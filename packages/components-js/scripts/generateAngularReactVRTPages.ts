@@ -252,8 +252,8 @@ $2`
 
         // attribute conversion
         fileContent = fileContent.replace(/(<textarea.*)>\s*(.+?)\s*(<\/textarea>)/g, '$1 defaultValue="$2">$3');
-        fileContent = fileContent.replace(/ v(alue=)/g, ' defaultV$1'); // for input
-        fileContent = fileContent.replace(/ c(hecked)/g, ' defaultC$1'); // for checkbox + radio
+        fileContent = fileContent.replace(/(<input(?:.|\n)*?) v(alue=)/g, '$1 defaultV$2'); // for input
+        fileContent = fileContent.replace(/(<input(?:.|\n)*?) c(hecked)/g, '$1 defaultC$2'); // for checkbox + radio
 
         if (isOverviewPage) {
           // wrap right column with PorscheDesignSystemProvider
