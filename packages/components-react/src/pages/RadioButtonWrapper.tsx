@@ -1,3 +1,5 @@
+/* Auto Generated File */
+// @ts-nocheck
 import { PRadioButtonWrapper } from '@porsche-design-system/components-react';
 
 export const RadioButtonWrapperPage = (): JSX.Element => {
@@ -21,10 +23,10 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render without label">
-        <PRadioButtonWrapper label="Some label" hideLabel>
+        <PRadioButtonWrapper label="Some label" hideLabel={true}>
           <input type="radio" name="some-name-2" />
         </PRadioButtonWrapper>
-        <PRadioButtonWrapper label="Some label" hideLabel>
+        <PRadioButtonWrapper label="Some label" hideLabel={true}>
           <input type="radio" name="some-name-2" defaultChecked />
         </PRadioButtonWrapper>
       </div>
@@ -80,10 +82,7 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
         </PRadioButtonWrapper>
       </div>
 
-      <div
-        className="playground light"
-        title="should render with success state but without success message and not checked"
-      >
+      <div className="playground light" title="should render with success state but without success message and not checked">
         <PRadioButtonWrapper label="Some label" state="success">
           <input type="radio" name="some-name-6" />
         </PRadioButtonWrapper>
@@ -101,10 +100,7 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
         </PRadioButtonWrapper>
       </div>
 
-      <div
-        className="playground light"
-        title="should render with error state but without error message and not checked"
-      >
+      <div className="playground light" title="should render with error state but without error message and not checked">
         <PRadioButtonWrapper label="Some label" state="error">
           <input type="radio" name="some-name-8" />
         </PRadioButtonWrapper>
@@ -115,42 +111,28 @@ export const RadioButtonWrapperPage = (): JSX.Element => {
 
       <div className="playground light" title="should render with slotted content with error state and message">
         <PRadioButtonWrapper state="error">
-          <span slot="label">
-            Some label with a <a href="https://designsystem.porsche.com">link</a>.
-          </span>
+          <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
           <input type="radio" name="some-name-9" />
         </PRadioButtonWrapper>
         <PRadioButtonWrapper state="error">
-          <span slot="label">
-            Some label with a <a href="https://designsystem.porsche.com">link</a>.
-          </span>
+          <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
           <input type="radio" name="some-name-9" />
-          <span slot="message">
-            Some error message with a <a href="https://designsystem.porsche.com">link</a>.
-          </span>
+          <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
         </PRadioButtonWrapper>
       </div>
 
       <div className="playground light" title="should render with multiline label">
-        <PRadioButtonWrapper
-          state="error"
-          label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-          style={{ width: 240 }}
-        >
+        <PRadioButtonWrapper state="error" label="Lorem ipsum dolor sit amet, consetetur sadipscing" style={{ width: '240px' }}>
           <input type="radio" name="some-name-11" />
         </PRadioButtonWrapper>
-        <PRadioButtonWrapper
-          state="error"
-          label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-          style={{ width: 240 }}
-        >
+        <PRadioButtonWrapper state="error" label="Lorem ipsum dolor sit amet, consetetur sadipscing" style={{ width: '240px' }}>
           <input type="radio" name="some-name-11" />
         </PRadioButtonWrapper>
         <PRadioButtonWrapper
           label="Lorem ipsum dolor sit amet, consetetur sadipscing"
           state="error"
           message="At vero eos et accusam et justo duo dolores et ea rebum."
-          style={{ width: 240 }}
+          style={{ width: '240px' }}
         >
           <input type="radio" name="some-name-11" />
         </PRadioButtonWrapper>
