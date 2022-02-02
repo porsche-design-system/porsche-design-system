@@ -43,9 +43,15 @@ export const generateInitialStylesPartial = (): string => {
 
   const skeletonStyles =  ${JSON.stringify(skeletonStyles)};
 
-  let skeletonStyleStringWithPrefix = tagNamesWithSkeleton.map( (x)=> prefix
-    ? \`\${prefix}-\${skeletonStyles[x]}\`
-    : skeletonStyles[x]).join('')
+  let skeletonStyleStringWithPrefix = tagNamesWithSkeleton.map((tagName)=> {
+    if(prefix){
+      const tagRegExp = new RegExp(tagName, 'g');
+      return \`\${skeletonStyles[tagName].replace(tagRegExp, \`\${prefix}-\${tagName}\`)}\`;
+    } else {
+      return skeletonStyles[tagName];
+    }
+  }).join('');
+
 
   skeletonStyleStringWithPrefix = skeletonStyleStringWithPrefix.replace(/PDS_REPLACE_WITH_THEME_COLOR/g,\`\${theme === 'light' ? '#E3E4E5': '#656871'}\`);
 
