@@ -6,7 +6,9 @@ export const getSelectWrapperSkeletonStyles = (): string => {
   return getMinifiedStyles({
     '@global': {
       'p-select-wrapper:not(.hydrated)': {
-        height: pxToRemWithUnit(150),
+        maxWidth: pxToRemWithUnit(450),
+        height: pxToRemWithUnit(48),
+
         ...getBaseSkeletonStyles(),
       },
     },
