@@ -15,12 +15,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - improved accessibility of `Text Field Wrapper` and `Textarea Wrapper` when `maxlength` attribute is set
 - `Modal` aria property
 - `Modal` class for slotted elements to make content full-width
+- `getFontFaceStylesheet` returns additional `<link>` tags with `rel="preconnect"` and `rel="dns-prefetch"`
+- Option `format` to partials `getFontFaceStylesheet`, `getComponentChunkLinks()`, `getFontLinks()`, `getIconLinks()`, `getInitialStyles()`, `getLoaderScript()` and `getMetaTagsAndIconLinks()`
 
 #### Changed
 - `Button Pure` and `Link Pure` removed `position: relative` imposition, make sure to **not** override it with `position: static`
 
 #### Fixed
 - `Modal` close button styles when no heading is passed
+
+#### Deprecated
+- The option `withoutTags` of partials `getFontFaceStylesheet`, `getComponentChunkLinks()`, `getFontLinks()`, `getIconLinks()`, `getInitialStyles()`, `getLoaderScript()` and `getMetaTagsAndIconLinks()`
+is deprecated and will be removed in `v3.0.0`. Please use `format` instead.
+```diff
+- <link rel="stylesheet" href={getFontFaceStylesheet({ withoutTags: true })} crossOrigin="true" />
++ {getFontFaceStylesheet({ format: 'jsx' })}
+```
 
 ### [2.9.0-beta.0] - 2022-01-18
 
