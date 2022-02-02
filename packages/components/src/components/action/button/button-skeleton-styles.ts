@@ -23,8 +23,11 @@ export const getBaseSkeletonStyles = (): Styles => {
     display: 'block',
     background: `${SKELETON_COLOR_THEME_PLACEHOLDER}`,
     visibility: 'visible',
+    position: 'relative',
     color: 'transparent',
-
+    '& > *': {
+      display: 'none',
+    },
     '&::before': {
       position: 'absolute',
       content: '""',
