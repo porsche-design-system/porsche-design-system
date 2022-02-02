@@ -39,6 +39,7 @@ const isE2EPage = (importPath: string): boolean => PAGES_FOR_E2E.includes(normal
 
 const getRoutes = (importPaths: string[], framework: Framework): string => {
   const componentSuffix = framework === 'angular' ? '' : 'Page';
+  const pathPrefix = framework === 'angular' ? '' : '/';
 
   return (
     importPaths
@@ -47,9 +48,9 @@ const getRoutes = (importPaths: string[], framework: Framework): string => {
         [
           '{',
           ...[
-            `name: '${capitalCase(importPath)}'`,
+            `name: '${capitalCase(normalizeImportPath(importPath))}'`,
+            `path: '${pathPrefix}${normalizeImportPath(importPath)}'`,
             `component: ${pascalCase(importPath)}${componentSuffix}`,
-            `path: '/${paramCase(importPath)}'`,
           ].map((x) => `  ${x},`),
           '}',
         ]
@@ -61,14 +62,18 @@ const getRoutes = (importPaths: string[], framework: Framework): string => {
 };
 
 const getImportsAndExports = (importPaths: string[], framework: Framework): string => {
-  const componentSuffix = framework === 'angular' ? '' : 'Page';
+  const isAngular = framework === 'angular';
+  const componentSuffix = isAngular ? '' : 'Page';
 
   return importPaths
-    .map((importPath) =>
-      isE2EPage(importPath)
-        ? `export * from '${importPath}';`
-        : `import { ${pascalCase(importPath)}${componentSuffix} } from '${importPath}';`
-    )
+    .map((importPath) => {
+      const componentImport = `import { ${pascalCase(importPath)}${componentSuffix} } from '${importPath}';`;
+      return isE2EPage(importPath)
+        ? [`export * from '${importPath}';`, isAngular && `${componentImport}`]
+        : [componentImport];
+    })
+    .flat()
+    .filter((x) => x)
     .sort((a) => (a.startsWith('export') ? -1 : 1))
     .join('\n');
 };
@@ -178,10 +183,6 @@ ngOnInit() {
           .replace(/<\/template>/g, '</div>'); // replace closing tag
         fileContent = fileContent.replace(templateRegEx, template);
 
-        fileContent = fileContent.replace(/(\n)([ <>]+)/g, '$1    $2'); // fix indentation
-        fileContent = fileContent.replace(/\\/g, '\\\\'); // fix \\ in generated output
-        fileContent = fileContent.replace(/\`/g, '\\`'); // fix \` in generated output
-
         // prefixing
         fileContent = fileContent.replace(/(<[\w-]+(p-[\w-]+))/g, '$1 $2');
 
@@ -200,6 +201,10 @@ ngOnInit() {
 $2`
           );
         }
+
+        fileContent = fileContent.replace(/(\n)([ <>]+)/g, '$1    $2'); // fix indentation
+        fileContent = fileContent.replace(/\\/g, '\\\\'); // fix \\ in generated output
+        fileContent = fileContent.replace(/\`/g, '\\`'); // fix \` in generated output
 
         fileContent = `${comment}
 ${imports}
@@ -361,14 +366,11 @@ export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
 
   if (framework === 'angular') {
     frameworkImports = [separator, importsAndExports].join('\n');
-    frameworkRoutes = `export const generatedRoutes: ExtendedRoute[] = [\n${routes}\n];
+    frameworkRoutes = `export const generatedPages = [
+  ${importPaths.map((importPath) => pascalCase(importPath)).join(',\n  ')},
+];
 
-export const generatedPages = [
-  ${importPaths
-    .filter((importPath) => !isE2EPage(importPath))
-    .map((importPath) => pascalCase(importPath))
-    .join(',\n  ')}
-];`;
+export const generatedRoutes: ExtendedRoute[] = [\n${routes}\n];`;
   } else if (framework === 'react') {
     const eslintRule = '/* eslint-disable import/first */';
     frameworkImports = [separator, eslintRule, importsAndExports].join('\n');
@@ -380,10 +382,7 @@ export const generatedPages = [
   const newBarrelFileContent =
     [barrelFileContent.split(separator)[0].trim(), frameworkImports, frameworkRoutes].join('\n\n') + '\n';
 
-  // TODO: angular doesn't build anymore
-  if (framework === 'react') {
-    writeFile(barreFilePath, newBarrelFileContent);
-  }
+  writeFile(barreFilePath, newBarrelFileContent);
 };
 
 generateAngularReactVRTPages();
