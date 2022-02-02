@@ -7,6 +7,9 @@ To improve rendering we recommend that you load the stylesheet on your own.
 
 Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages which needs to be injected into the `<head>` of your `index.html`.
 
+We suggest that `getFontFaceStylesheet()` partial is implemented in every application that uses the Porsche Design System therefore the partial
+provides additional link tags with `rel="preconnect"` and `rel="dns-prefetch"` to improve the performance of the initial connection to our cdn.
+
 ## Supported options
 - **cdn:** `'auto' | 'cn' = 'auto'`
 - **withoutTags:** `boolean = false`
