@@ -383,6 +383,7 @@ export const generatedRoutes: ExtendedRoute[] = [\n${routes}\n];`;
     [barrelFileContent.split(separator)[0].trim(), frameworkImports, frameworkRoutes].join('\n\n') + '\n';
 
   writeFile(barreFilePath, newBarrelFileContent);
+  console.log(`Generated VRT pages for components-${framework}`);
 };
 
 generateAngularReactVRTPages();
