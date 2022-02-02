@@ -10,12 +10,12 @@ Therefore, we provide a ready to use partial in all `@porsche-design-system/comp
 
 ## Supported options
 
-| Option        | Attribute              | Description                                                                                                                                                                                           | Type       | Default              |
-|---------------|------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|----------------------|
-| `icons`       | `[{{this.iconNames}}]` | All icons listed in the array are loaded from the CDN.                                                                                                                                                | `string[]` | `['arrowHeadRight']` |
-| `cdn`         | `auto, cn`             | Decides from which CDN the resources are loaded. With `auto` the selection is made automatically.                                                                                                     | `string`   | `auto`               |
-| `withoutTags` | `false, true`          | <span style='color:red'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format` instead.<br/>If true, it returns an array of strings with urls to the location of the resources. | `boolean`  | `false`              |
-| `format`      | `'html', 'jsx'`        | Defines the output format of the partial. By default it returns a string, with `jsx` it returns valid jsx elements.                                                                                   | `string`   | `html`               |
+| Option        | Description                                                                                                                                                                                               | Type                   | Default              |
+|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|----------------------|
+| `icons`       | All icons listed in the array are loaded from the CDN.                                                                                                                                                    | `[{{this.iconNames}}]` | `['arrowHeadRight']` |
+| `cdn`         | Decides from which CDN the resources are loaded.                                                                                                                                                          | `auto` `cn`            | `auto`               |
+| `withoutTags` | <span style='color:red'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format` instead.<br/>If true, it returns an array of strings with urls to the cdn location of the resources. | `boolean`              | `false`              |
+| `format`      | Defines the output format of the partial. By default it returns a string, with `jsx` it returns valid jsx elements.                                                                                        | `'html'` `'jsx'`       | `html`               |
 
 ## Examples
 
