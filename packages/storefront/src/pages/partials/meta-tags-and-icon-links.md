@@ -7,8 +7,12 @@ To simplify the implementation process we provide a `getMetaTagsAndIconLinks` pa
 Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages which needs to be injected into the `<head>` of your `index.html`.
 
 ## Supported options
-- **appTitle:** `string`
-- **cdn:** `'auto' | 'cn' = 'auto'`
+
+| Option        | Description                                                                                                                                                                      | Type                   | Default  |
+|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |------------------------|----------|
+| `appTitle`     | **Mandatory:** title of your app which will be reflected in the meta tag                                                                                                         | `string`               |    --    |
+| `cdn`         | Decides from which CDN the resources are loaded.                                                                                                                                 | `auto` `cn`            | `auto`   |
+| `format`      | Defines the output format of the partial. By default it returns a string, with `jsx` it returns valid jsx elements.                                                               | `'html'` `'jsx'`       | `html`   |
 
 ## Examples
 

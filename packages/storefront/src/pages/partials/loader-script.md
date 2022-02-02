@@ -7,8 +7,12 @@ This impacts the loading behavior of Porsche Design System components because th
 To achieve this bootstrapping **earlier** we provide a partial in all `@porsche-design-system/components-{js|angular|react}` packages which needs to be injected into the `<body>` of your `index.html`.
 
 ## Supported options
-- **prefix:** `string | string[] = undefined`
-- **withoutTags:** `boolean = false`
+
+| Option        | Description                                                                                                                                                                      | Type                   | Default  |
+|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |------------------------|----------|
+| `prefix`       | Prefix will be added to the component names                                                                                                                                       | `auto` `cn`            | `auto`   |
+| `withoutTags` | <span style='color:red'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format` instead.<br/>If true, it returns the loader script as string.               | `boolean`              | `false`  |
+| `format`      | Defines the output format of the partial. By default it returns a string, with `jsx` it returns valid jsx elements.                                                               | `'html'` `'jsx'`       | `html`   |
 
 ## Examples
 
