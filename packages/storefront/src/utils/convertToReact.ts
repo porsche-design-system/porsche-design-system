@@ -37,8 +37,9 @@ export const transformStyleAttribute = (markup: string): string =>
       .replace(/,\s*$/g, ''); // remove last comma
 
     const pairs = $style.split(',').map((p) => {
-      const [prop, val] = p.split(':');
-      return `${camelCase(prop)}: '${val.trim()}'`;
+      const [prop, val] = p.split(':').map((x) => x.trim());
+      const value = val.match(/^\d+(?:\.\d+)?$/) ? val : `'${val}'`; // numbers don't need quotes
+      return `${camelCase(prop)}: ${value}`;
     });
 
     return ` style={{ ${pairs.join(', ')} }}`;

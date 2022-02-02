@@ -217,6 +217,12 @@ describe('transformStyleAttribute()', () => {
   style={{ textAlign: 'center', fontSize: '16px' }}
 ></div>`);
   });
+
+  it('should correctly convert number values', () => {
+    expect(transformStyleAttribute('<div style="font-size: 60px; line-height: 1.5; font-weight: 100"></div>')).toBe(
+      `<div style={{ fontSize: '60px', lineHeight: 1.5, fontWeight: 100 }}></div>`
+    );
+  });
 });
 
 describe('convertToReact()', () => {

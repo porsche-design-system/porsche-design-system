@@ -49,7 +49,7 @@ export const OverviewPage = (): JSX.Element => {
       <style children={style} />
 
       <div style={{ display: 'flex' }}>
-        <div style={{ flex: '1' }}>
+        <div style={{ flex: 1 }}>
           <div className="playground light" title="should render default headline">
             <PHeadline>Default Components</PHeadline>
           </div>
@@ -230,7 +230,7 @@ export const OverviewPage = (): JSX.Element => {
         </div>
 
         <PorscheDesignSystemProvider prefix="my-prefix">
-          <div style={{ flex: '1' }}>
+          <div style={{ flex: 1 }}>
             <div className="playground light" title="should render default headline with custom prefix">
               <PHeadline>Prefixed Components</PHeadline>
             </div>
