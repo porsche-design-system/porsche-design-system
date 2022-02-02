@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { componentsReady, PBanner } from '@porsche-design-system/components-react';
 import { useEffect, useState } from 'react';
 

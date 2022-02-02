@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({

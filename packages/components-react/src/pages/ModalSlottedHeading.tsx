@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PContentWrapper, PHeadline, PModal, PText } from '@porsche-design-system/components-react';
 
 export const ModalSlottedHeadingPage = (): JSX.Element => {

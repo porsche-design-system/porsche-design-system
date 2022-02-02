@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PTextFieldWrapper } from '@porsche-design-system/components-react';
 
 export const TextFieldWrapperPage = (): JSX.Element => {

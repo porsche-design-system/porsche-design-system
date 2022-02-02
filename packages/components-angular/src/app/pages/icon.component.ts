@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { IconName } from '@porsche-design-system/components-angular';
 import { ICON_NAMES } from '@porsche-design-system/assets';

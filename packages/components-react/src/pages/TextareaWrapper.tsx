@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PTextareaWrapper } from '@porsche-design-system/components-react';
 
 export const TextareaWrapperPage = (): JSX.Element => {

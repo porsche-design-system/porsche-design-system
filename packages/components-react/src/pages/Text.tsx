@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PText } from '@porsche-design-system/components-react';
 
 export const TextPage = (): JSX.Element => {

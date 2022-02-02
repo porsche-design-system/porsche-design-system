@@ -1,12 +1,11 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PCheckboxWrapper } from '@porsche-design-system/components-react';
 import { useEffect } from 'react';
 
 export const CheckboxWrapperPage = (): JSX.Element => {
   useEffect(() => {
     document.body.querySelectorAll('.set-to-indeterminate').forEach((checkbox) => {
-      checkbox.indeterminate = true;
+      (checkbox as any).indeterminate = true;
     });
   }, []);
 

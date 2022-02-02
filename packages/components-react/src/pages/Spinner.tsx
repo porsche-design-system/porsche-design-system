@@ -1,11 +1,10 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PSpinner } from '@porsche-design-system/components-react';
 import { useEffect } from 'react';
 
 export const SpinnerPage = (): JSX.Element => {
   useEffect(() => {
-    document.querySelector('#setSizeToUndefined').size = undefined;
+    (document.querySelector('#setSizeToUndefined') as any).size = undefined;
   }, []);
 
   return (

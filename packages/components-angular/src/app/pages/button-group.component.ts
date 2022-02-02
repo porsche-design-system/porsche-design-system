@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
@@ -54,6 +53,6 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class ButtonGroupComponent implements OnInit {
   ngOnInit() {
-    document.querySelector('#setDirectionToUndefined').direction = undefined;
+    (document.querySelector('#setDirectionToUndefined') as any).direction = undefined;
   }
 }

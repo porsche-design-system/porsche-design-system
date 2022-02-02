@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PLink } from '@porsche-design-system/components-react';
 
 export const LinkPage = (): JSX.Element => {

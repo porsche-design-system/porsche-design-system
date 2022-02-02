@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PTabs, PTabsItem } from '@porsche-design-system/components-react';
 
 export const TabsPage = (): JSX.Element => {

@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
@@ -32,6 +31,6 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class SpinnerComponent implements OnInit {
   ngOnInit() {
-    document.querySelector('#setSizeToUndefined').size = undefined;
+    (document.querySelector('#setSizeToUndefined') as any).size = undefined;
   }
 }

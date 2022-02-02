@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PMarque } from '@porsche-design-system/components-react';
 
 export const MarquePage = (): JSX.Element => {

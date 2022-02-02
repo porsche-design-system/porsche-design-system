@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PDivider } from '@porsche-design-system/components-react';
 
 export const DividerPage = (): JSX.Element => {

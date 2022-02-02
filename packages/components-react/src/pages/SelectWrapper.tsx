@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PSelectWrapper } from '@porsche-design-system/components-react';
 
 export const SelectWrapperPage = (): JSX.Element => {

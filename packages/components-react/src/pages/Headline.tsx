@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PHeadline } from '@porsche-design-system/components-react';
 
 export const HeadlinePage = (): JSX.Element => {

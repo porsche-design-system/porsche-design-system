@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PPopover } from '@porsche-design-system/components-react';
 
 export const PopoverPage = (): JSX.Element => {

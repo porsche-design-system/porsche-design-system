@@ -1,11 +1,10 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PButton, PButtonGroup, PButtonPure } from '@porsche-design-system/components-react';
 import { useEffect } from 'react';
 
 export const ButtonGroupPage = (): JSX.Element => {
   useEffect(() => {
-    document.querySelector('#setDirectionToUndefined').direction = undefined;
+    (document.querySelector('#setDirectionToUndefined') as any).direction = undefined;
   }, []);
 
   return (

@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PTextList, PTextListItem } from '@porsche-design-system/components-react';
 
 export const TextListPage = (): JSX.Element => {

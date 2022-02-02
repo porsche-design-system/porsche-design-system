@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PContentWrapper, PModal, PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
 
 export const ModalPrefixedPage = (): JSX.Element => {
