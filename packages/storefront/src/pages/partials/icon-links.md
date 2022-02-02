@@ -1,17 +1,21 @@
 # Icon Links
+
 **Function name:** `getIconLinks()`
 
 Porsche Design System icons are loaded dynamically from a CDN as soon as they are used for the first time.  
 This results in a waterfall like loading behaviour where your application is bootstrapped first, then loads the Porsche Design System Core and when any icon is rendered the corresponding icon is loaded afterwards.  
-This can be optimized by prefetching used icons in parallel while the application is being bootstrapped.
-Keep in mind that prefetching is not yet supported on Safari and Safari on iOS, so you will not see a performance benefit there. [Current prefetch status on CanIUse](https://caniuse.com/link-rel-prefetch)
+This can be optimized by prefetching used icons in parallel while the application is being bootstrapped. Keep in mind that prefetching is not yet supported on Safari and Safari on iOS, so you will not see a performance benefit there. [Current prefetch status on CanIUse](https://caniuse.com/link-rel-prefetch)
 
 Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages which needs to be injected into the `<head>` of your `index.html`.
 
 ## Supported options
-- **icons:** `({{this.iconNames}})[] = []`
-- **cdn:** `'auto' | 'cn' = 'auto'`
-- **withoutTags:** `boolean = false`
+
+| Option        | Attribute              | Description                                                                                                                                                                                           | Type       | Default              |
+|---------------|------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|----------------------|
+| `icons`       | `[{{this.iconNames}}]` | All icons listed in the array are loaded from the CDN.                                                                                                                                                | `string[]` | `['arrowHeadRight']` |
+| `cdn`         | `auto, cn`             | Decides from which CDN the resources are loaded. With `auto` the selection is made automatically.                                                                                                     | `string`   | `auto`               |
+| `withoutTags` | `false, true`          | <span style='color:red'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format` instead.<br/>If true, it returns an array of strings with urls to the location of the resources. | `boolean`  | `false`              |
+| `format`      | `'html', 'jsx'`        | Defines the output format of the partial. By default it returns a string, with `jsx` it returns valid jsx elements.                                                                                   | `string`   | `html`               |
 
 ## Examples
 
