@@ -76,7 +76,7 @@ export const HeadlinePage = (): JSX.Element => {
         <div style={{ height: '72px', borderLeft: '10px solid deeppink' }}>
           <PHeadline
             variant="inherit"
-            style={{ fontSize: '60px', lineHeight: '10', fontFamily: 'serif', fontWeight: '100', color: 'deeppink', textAlign: 'right', borderLeft: '10px solid deepskyblue' }}
+            style={{ fontSize: '60px', lineHeight: 10, fontFamily: 'serif', fontWeight: 100, color: 'deeppink', textAlign: 'right', borderLeft: '10px solid deepskyblue' }}
           >
             ABC
           </PHeadline>
@@ -85,10 +85,10 @@ export const HeadlinePage = (): JSX.Element => {
         <div style={{ height: '72px', borderLeft: '10px solid deeppink' }}>
           <PHeadline
             variant="inherit"
-            style={{ fontSize: '60px', lineHeight: '10', fontFamily: 'serif', fontWeight: '100', color: 'deeppink', textAlign: 'right', borderLeft: '10px solid deepskyblue' }}
+            style={{ fontSize: '60px', lineHeight: 10, fontFamily: 'serif', fontWeight: 100, color: 'deeppink', textAlign: 'right', borderLeft: '10px solid deepskyblue' }}
           >
             <h3
-              style={{ margin: '100px', padding: '100px', fontSize: '200px', lineHeight: '5', fontFamily: 'serif', fontWeight: '100', color: 'deeppink', textAlign: 'right' }}
+              style={{ margin: '100px', padding: '100px', fontSize: '200px', lineHeight: 5, fontFamily: 'serif', fontWeight: 100, color: 'deeppink', textAlign: 'right' }}
             >
               ABC
             </h3>
