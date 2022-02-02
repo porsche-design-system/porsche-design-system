@@ -56,6 +56,11 @@ describe('transformAttributesWithDigitValue()', () => {
 </p-some-tag>`
     );
   });
+  fit('transform maxlength with maxLength', () => {
+    expect(transformAttributesWithDigitValue('<textarea maxlength="200">Some value</textarea>')).toBe(
+      '<textarea [maxLength]="200">Some value</textarea>'
+    );
+  });
 });
 
 describe('cleanBooleanAndUndefinedValues()', () => {
@@ -91,16 +96,6 @@ describe('unbindNativeAttributes()', () => {
 
   it('should remove brackets from "title" attribute', () => {
     expect(unbindNativeAttributes(`<div [title]="'hello'"></div>`)).toBe('<div title="hello"></div>');
-  });
-
-  it('should transform maxlength to maxLength', () => {
-    expect(
-      unbindNativeAttributes(
-        `<p-textarea-wrapper [label]="'Counter'"><textarea [maxlength]="200">Some value</textarea></p-textarea-wrapper>\``
-      )
-    ).toBe(
-      '<p-textarea-wrapper [label]="\'Counter\'"><textarea [maxLength]="200">Some value</textarea></p-textarea-wrapper>`'
-    );
   });
 
   it('should remove brackets from "id" attribute', () => {
