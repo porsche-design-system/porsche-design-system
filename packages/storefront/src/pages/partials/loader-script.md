@@ -8,11 +8,11 @@ To achieve this bootstrapping **earlier** we provide a partial in all `@porsche-
 
 ## Supported options
 
-| Option        | Description                                                                                                                                                                      | Type                   | Default  |
-|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |------------------------|----------|
-| `prefix`       | Prefix will be added to the component names                                                                                                                                       | `auto` `cn`            | `auto`   |
-| `withoutTags` | <span style='color:red'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format` instead.<br/>If true, it returns the loader script as string.               | `boolean`              | `false`  |
-| `format`      | Defines the output format of the partial. By default it returns a string, with `jsx` it returns valid jsx elements.                                                               | `'html'` `'jsx'`       | `html`   |
+| Option        | Description                                                                                                                                                        | Type             | Default     |
+|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|-------------|
+| `prefix`      | Prefix will be added to the component names.                                                                                                                       | `string`         | `undefined` |
+| `withoutTags` | <span style='color:red'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format` instead.<br/>If true, it returns the loader script as string. | `boolean`        | `false`     |
+| `format`      | Defines the output format of the partial. By default it returns a string, with `jsx` it returns valid jsx elements.                                                | `'html'` `'jsx'` | `'html'`    |
 
 ## Examples
 

@@ -12,11 +12,11 @@ provides additional link tags with `rel="preconnect"` and `rel="dns-prefetch"` t
 
 ## Supported options
 
-| Option        | Description                                                                                                                                                                      | Type                   | Default  |
-|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |------------------------|----------|
-| `cdn`         | Decides from which CDN the resources are loaded.                                                                                                                                 | `auto` `cn`            | `auto`   |
-| `withoutTags` | <span style='color:red'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format` instead.<br/>If true, it returns a url to the cdn location of the resource. | `boolean`              | `false`  |
-| `format`      | Defines the output format of the partial. By default it returns a string, with `jsx` it returns valid jsx elements.                                                               | `'html'` `'jsx'`       | `html`   |
+| Option        | Description                                                                                                                                                                      | Type             | Default  |
+|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|----------|
+| `cdn`         | Decides from which CDN the resources are loaded.                                                                                                                                 | `'auto'` `'cn'`  | `'auto'` |
+| `withoutTags` | <span style='color:red'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format` instead.<br/>If true, it returns a url to the cdn location of the resource. | `boolean`        | `false`  |
+| `format`      | Defines the output format of the partial. By default it returns a string, with `jsx` it returns valid jsx elements.                                                              | `'html'` `'jsx'` | `'html'` |
 
 ## Examples
 

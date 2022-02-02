@@ -8,11 +8,11 @@ Therefore, we provide a ready to use partial in all `@porsche-design-system/comp
 
 ## Supported options
 
-| Option        | Description                                                                                                                                                                      | Type                   | Default  |
-|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |------------------------|----------|
-| `appTitle`     | **Mandatory:** title of your app which will be reflected in the meta tag                                                                                                         | `string`               |    --    |
-| `cdn`         | Decides from which CDN the resources are loaded.                                                                                                                                 | `auto` `cn`            | `auto`   |
-| `format`      | Defines the output format of the partial. By default it returns a string, with `jsx` it returns valid jsx elements.                                                               | `'html'` `'jsx'`       | `html`   |
+| Option     | Description                                                                                                         | Type             | Default     |
+|------------|---------------------------------------------------------------------------------------------------------------------|------------------|-------------|
+| `appTitle` | **Mandatory:** Title of your app which will be reflected in the meta tag.                                           | `string`         | `undefined` |
+| `cdn`      | Decides from which CDN the resources are loaded.                                                                    | `'auto'` `'cn'`  | `'auto'`    |
+| `format`   | Defines the output format of the partial. By default it returns a string, with `jsx` it returns valid jsx elements. | `'html'` `'jsx'` | `'html'`    |
 
 ## Examples
 
