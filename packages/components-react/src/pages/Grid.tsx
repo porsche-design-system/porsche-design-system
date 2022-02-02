@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PGrid, PGridItem } from '@porsche-design-system/components-react';
 
 export const GridPage = (): JSX.Element => {

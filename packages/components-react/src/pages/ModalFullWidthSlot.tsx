@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PContentWrapper, PModal, PText } from '@porsche-design-system/components-react';
 
 export const ModalFullWidthSlotPage = (): JSX.Element => {

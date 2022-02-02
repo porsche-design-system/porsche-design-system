@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PButton } from '@porsche-design-system/components-react';
 
 export const ButtonPage = (): JSX.Element => {

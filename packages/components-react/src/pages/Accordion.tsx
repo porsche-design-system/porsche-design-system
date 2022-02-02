@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PAccordion, PLinkPure } from '@porsche-design-system/components-react';
 
 export const AccordionPage = (): JSX.Element => {

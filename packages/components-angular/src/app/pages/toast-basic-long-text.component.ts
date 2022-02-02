@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ToastManager } from '@porsche-design-system/components-angular';
 

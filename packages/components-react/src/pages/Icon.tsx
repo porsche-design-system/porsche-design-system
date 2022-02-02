@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PIcon } from '@porsche-design-system/components-react';
 import { ICON_NAMES } from '@porsche-design-system/assets';
 

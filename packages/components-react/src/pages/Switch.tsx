@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PSwitch } from '@porsche-design-system/components-react';
 
 export const SwitchPage = (): JSX.Element => {

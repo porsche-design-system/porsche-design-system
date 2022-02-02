@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
@@ -131,7 +130,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 export class CheckboxWrapperComponent implements OnInit {
   ngOnInit() {
     document.body.querySelectorAll('.set-to-indeterminate').forEach((checkbox) => {
-      checkbox.indeterminate = true;
+      (checkbox as any).indeterminate = true;
     });
   }
 }

@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PLinkSocial } from '@porsche-design-system/components-react';
 
 export const LinkSocialPage = (): JSX.Element => {

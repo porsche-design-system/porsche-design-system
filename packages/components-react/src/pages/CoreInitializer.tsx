@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { componentsReady, PTextFieldWrapper } from '@porsche-design-system/components-react';
 import { useEffect, useState } from 'react';
 

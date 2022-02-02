@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
@@ -102,7 +101,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-button-pure [iconSource]="'./assets/icon-custom-kaixin.svg'">Label with local icon-source</p-button-pure>
     </div>
 
-    <div class="playground dark" title="should render button with specific icon on dark on dark background">
+    <div class="playground dark" title="should render button with specific icon on dark background">
       <p-button-pure [icon]="'delete'" [theme]="'dark'">Label with specific icon</p-button-pure>
       <p-button-pure [iconSource]="'./assets/icon-custom-kaixin.svg'" [theme]="'dark'">Label with local icon-source</p-button-pure>
     </div>

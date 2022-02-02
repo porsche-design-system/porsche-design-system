@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PorscheDesignSystemProvider, PToast, useToastManager } from '@porsche-design-system/components-react';
 import { useEffect } from 'react';
 

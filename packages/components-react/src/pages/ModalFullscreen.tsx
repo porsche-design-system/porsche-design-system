@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PModal } from '@porsche-design-system/components-react';
 
 export const ModalFullscreenPage = (): JSX.Element => {

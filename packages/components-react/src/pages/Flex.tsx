@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PFlex, PFlexItem } from '@porsche-design-system/components-react';
 
 export const FlexPage = (): JSX.Element => {

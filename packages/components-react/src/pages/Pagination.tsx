@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PPagination } from '@porsche-design-system/components-react';
 
 export const PaginationPage = (): JSX.Element => {

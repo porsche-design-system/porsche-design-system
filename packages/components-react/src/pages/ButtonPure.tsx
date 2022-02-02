@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PButtonPure } from '@porsche-design-system/components-react';
 
 export const ButtonPurePage = (): JSX.Element => {
@@ -103,7 +102,7 @@ export const ButtonPurePage = (): JSX.Element => {
         <PButtonPure iconSource="./assets/icon-custom-kaixin.svg">Label with local icon-source</PButtonPure>
       </div>
 
-      <div className="playground dark" title="should render button with specific icon on dark on dark background">
+      <div className="playground dark" title="should render button with specific icon on dark background">
         <PButtonPure icon="delete" theme="dark">Label with specific icon</PButtonPure>
         <PButtonPure iconSource="./assets/icon-custom-kaixin.svg" theme="dark">Label with local icon-source</PButtonPure>
       </div>

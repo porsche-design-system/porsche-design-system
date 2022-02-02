@@ -26,7 +26,7 @@ const generateAngularReactVRTPages = (): void => {
   generateVRTPages(htmlFileContentMap, 'react');
 };
 
-const sortFunc = (a: string, b: string): number => a.toLowerCase().localeCompare(b.toLowerCase());
+const byAlphabet = (a: string, b: string): number => a.toLowerCase().localeCompare(b.toLowerCase());
 
 const writeFile = (filePath: string, content: string): void => {
   fs.writeFileSync(filePath, content);
@@ -56,7 +56,7 @@ const getRoutes = (importPaths: string[], framework: Framework): string => {
 };
 
 const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framework: Framework): void => {
-  const comment = '/* Auto Generated File */\n// @ts-nocheck';
+  const comment = '/* Auto Generated File */';
   const pagesDirectory = framework === 'angular' ? angularPagesDirectory : reactPagesDirectory;
 
   const importPaths = Object.entries(htmlFileContentMap)
@@ -73,7 +73,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       const scriptRegEx = /\s*<script.*>((?:.|\s)*?)<\/script>\s*/;
       let [, script] = fileContent.match(scriptRegEx) || [];
       fileContent = fileContent.replace(scriptRegEx, '\n');
-      script = script?.trim();
+      script = script?.trim().replace(/([\w.#'()\[\]]+)(\.\w+\s=)/g, '($1 as any)$2'); // handle untyped prop assignments
 
       const usesComponentsReady = script?.includes('componentsReady()');
       const usesQuerySelector = script?.includes('querySelector');
@@ -100,7 +100,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
           usesComponentsReady && 'ChangeDetectorRef',
         ]
           .filter((x) => x)
-          .sort(sortFunc)
+          .sort(byAlphabet)
           .join(', ');
 
         const pdsImports = [
@@ -109,7 +109,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
           isIconPage && 'IconName',
         ]
           .filter((x) => x)
-          .sort(sortFunc)
+          .sort(byAlphabet)
           .join(', ');
 
         const imports = [
@@ -205,7 +205,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
           usesComponentsReady && 'useState',
         ]
           .filter((x) => x)
-          .sort(sortFunc)
+          .sort(byAlphabet)
           .join(', ');
         const componentImports = Array.from(fileContent.matchAll(/<(?:[a-z-]*)(p-[\w-]+)/g))
           .map(([, tagName]) => tagName)
@@ -218,7 +218,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
           usesToast && 'useToastManager',
         ]
           .filter((x) => x)
-          .sort(sortFunc)
+          .sort(byAlphabet)
           .join(', ');
         const imports = [
           `import { ${pdsImports} } from '@porsche-design-system/components-react';`,
@@ -332,7 +332,7 @@ export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
 
       return './' + path.parse(fileName).name;
     })
-    .sort(sortFunc);
+    .sort(byAlphabet);
 
   // TODO: what about barrel file?
   // TODO: what about routing?

@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PCheckboxWrapper, PFieldsetWrapper, PRadioButtonWrapper, PSelectWrapper, PTextareaWrapper, PTextFieldWrapper } from '@porsche-design-system/components-react';
 
 export const FieldsetWrapperPage = (): JSX.Element => {

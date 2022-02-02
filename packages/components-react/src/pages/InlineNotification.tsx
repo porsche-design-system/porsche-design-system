@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PInlineNotification } from '@porsche-design-system/components-react';
 
 export const InlineNotificationPage = (): JSX.Element => {

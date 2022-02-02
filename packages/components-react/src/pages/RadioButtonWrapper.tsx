@@ -1,5 +1,4 @@
 /* Auto Generated File */
-// @ts-nocheck
 import { PRadioButtonWrapper } from '@porsche-design-system/components-react';
 
 export const RadioButtonWrapperPage = (): JSX.Element => {
