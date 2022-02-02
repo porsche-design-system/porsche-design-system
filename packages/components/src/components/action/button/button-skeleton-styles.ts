@@ -6,8 +6,8 @@ export const getButtonSkeletonStyles = (): string => {
   return getMinifiedStyles({
     '@global': {
       'p-button:not(.hydrated)': {
-        width: pxToRemWithUnit(300),
-        height: pxToRemWithUnit(150),
+        width: pxToRemWithUnit(134),
+        height: pxToRemWithUnit(48),
         ...getBaseSkeletonStyles(),
       },
     },
@@ -15,7 +15,9 @@ export const getButtonSkeletonStyles = (): string => {
 };
 
 export const SKELETON_COLOR_THEME_PLACEHOLDER = 'PDS_REPLACE_WITH_THEME_COLOR';
-export const SKELETON_LINEAR_GRADIENT_COLOR = 'PDS_REPLACE_WITH_LINEAR_GRADIENT';
+
+export const SKELETON_LINEAR_GRADIENT_COLOR_1 = 'PDS_REPLACE_WITH_LINEAR_GRADIENT_1';
+export const SKELETON_LINEAR_GRADIENT_COLOR_2 = 'PDS_REPLACE_WITH_LINEAR_GRADIENT_2';
 
 export const getBaseSkeletonStyles = (): Styles => {
   return {
@@ -26,14 +28,14 @@ export const getBaseSkeletonStyles = (): Styles => {
     position: 'relative',
     color: 'transparent',
     '& > *': {
-      display: 'none',
+      visibility: 'hidden',
     },
     '&::before': {
       position: 'absolute',
       content: '""',
       height: '100%',
       width: '100%',
-      backgroundImage: `linear-gradient(to right, ${SKELETON_COLOR_THEME_PLACEHOLDER} 0%, ${SKELETON_LINEAR_GRADIENT_COLOR} 20%, ${SKELETON_COLOR_THEME_PLACEHOLDER} 40%, ${SKELETON_COLOR_THEME_PLACEHOLDER} 100%)`,
+      backgroundImage: `linear-gradient(to right, ${SKELETON_LINEAR_GRADIENT_COLOR_1} 0%, ${SKELETON_LINEAR_GRADIENT_COLOR_2} 20%, ${SKELETON_LINEAR_GRADIENT_COLOR_1} 40%, ${SKELETON_LINEAR_GRADIENT_COLOR_1} 100%)`,
       backgroundRepeat: 'no-repeat',
       backgroundSize: '450px 400px',
       animation: 'shimmer 1s linear infinite',

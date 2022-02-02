@@ -2,7 +2,8 @@ import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_SKELETON } from '@porsche
 import {
   getButtonSkeletonStyles,
   SKELETON_COLOR_THEME_PLACEHOLDER,
-  SKELETON_LINEAR_GRADIENT_COLOR,
+  SKELETON_LINEAR_GRADIENT_COLOR_1,
+  SKELETON_LINEAR_GRADIENT_COLOR_2,
 } from '../../../../components/src/components/action/button/button-skeleton-styles';
 import { getSelectWrapperSkeletonStyles } from '../../../../components/src/components/form/select-wrapper/select-wrapper/select-wrapper-skeleton-styles';
 import { joinArrayElementsToString } from './utils';
@@ -57,8 +58,9 @@ export const generateInitialStylesPartial = (): string => {
   }).join('');
 
 
-  skeletonStyleStringWithPrefix = skeletonStyleStringWithPrefix.replace(/${SKELETON_COLOR_THEME_PLACEHOLDER}/g,\`\${theme === 'light' ? '#E3E4E5': '#656871'}\`);
-  skeletonStyleStringWithPrefix = skeletonStyleStringWithPrefix.replace(/${SKELETON_LINEAR_GRADIENT_COLOR}/g,\`\${theme === 'light' ? '#0000000d': '#888b94'}\`);
+  skeletonStyleStringWithPrefix = skeletonStyleStringWithPrefix.replace(/${SKELETON_COLOR_THEME_PLACEHOLDER}/g,\`\${theme === 'light' ? '#E3E4E5': '#626669'}\`);
+  skeletonStyleStringWithPrefix = skeletonStyleStringWithPrefix.replace(/${SKELETON_LINEAR_GRADIENT_COLOR_1}/g,\`\${theme === 'light' ? '#E3E4E5': '#656871'}\`);
+  skeletonStyleStringWithPrefix = skeletonStyleStringWithPrefix.replace(/${SKELETON_LINEAR_GRADIENT_COLOR_2}/g,\`\${theme === 'light' ? '#0000000d': '#888b94'}\`);
 
   styleInnerHtml += skeletonStyleStringWithPrefix;
 
