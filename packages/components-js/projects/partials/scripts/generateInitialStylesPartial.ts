@@ -1,5 +1,9 @@
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
-import { getButtonSkeletonStyles } from '../../../../components/src/components/action/button/button-skeleton-styles';
+import {
+  getButtonSkeletonStyles,
+  SKELETON_COLOR_THEME_PLACEHOLDER,
+  SKELETON_LINEAR_GRADIENT_COLOR,
+} from '../../../../components/src/components/action/button/button-skeleton-styles';
 import { getSelectWrapperSkeletonStyles } from '../../../../components/src/components/form/select-wrapper/select-wrapper/select-wrapper-skeleton-styles';
 import { joinArrayElementsToString } from './utils';
 
@@ -53,7 +57,8 @@ export const generateInitialStylesPartial = (): string => {
   }).join('');
 
 
-  skeletonStyleStringWithPrefix = skeletonStyleStringWithPrefix.replace(/PDS_REPLACE_WITH_THEME_COLOR/g,\`\${theme === 'light' ? '#E3E4E5': '#656871'}\`);
+  skeletonStyleStringWithPrefix = skeletonStyleStringWithPrefix.replace(/${SKELETON_COLOR_THEME_PLACEHOLDER}/g,\`\${theme === 'light' ? '#E3E4E5': '#656871'}\`);
+  skeletonStyleStringWithPrefix = skeletonStyleStringWithPrefix.replace(/${SKELETON_LINEAR_GRADIENT_COLOR}/g,\`\${theme === 'light' ? '#0000000d': '#888b94'}\`);
 
   styleInnerHtml += skeletonStyleStringWithPrefix;
 

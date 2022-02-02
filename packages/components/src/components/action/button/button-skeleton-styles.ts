@@ -15,6 +15,7 @@ export const getButtonSkeletonStyles = (): string => {
 };
 
 export const SKELETON_COLOR_THEME_PLACEHOLDER = 'PDS_REPLACE_WITH_THEME_COLOR';
+export const SKELETON_LINEAR_GRADIENT_COLOR = 'PDS_REPLACE_WITH_LINEAR_GRADIENT';
 
 export const getBaseSkeletonStyles = (): Styles => {
   return {
@@ -29,7 +30,7 @@ export const getBaseSkeletonStyles = (): Styles => {
       content: '""',
       height: '100%',
       width: '100%',
-      backgroundImage: `linear-gradient(to right, ${SKELETON_COLOR_THEME_PLACEHOLDER} 0%, rgba(0,0,0,0.05) 20%, ${SKELETON_COLOR_THEME_PLACEHOLDER} 40%, ${SKELETON_COLOR_THEME_PLACEHOLDER} 100%)`,
+      backgroundImage: `linear-gradient(to right, ${SKELETON_COLOR_THEME_PLACEHOLDER} 0%, ${SKELETON_LINEAR_GRADIENT_COLOR} 20%, ${SKELETON_COLOR_THEME_PLACEHOLDER} 40%, ${SKELETON_COLOR_THEME_PLACEHOLDER} 100%)`,
       backgroundRepeat: 'no-repeat',
       backgroundSize: '450px 400px',
       animation: 'shimmer 1s linear infinite',
