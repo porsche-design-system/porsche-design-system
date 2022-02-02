@@ -34,12 +34,15 @@ const writeFile = (filePath: string, content: string): void => {
   console.log(`Generated ${filePath.replace(path.resolve(rootDirectory, '..'), '')}`);
 };
 
+const normalizeImportPath = (input: string): string => paramCase(input.replace('.component', ''));
+const isE2EPage = (importPath: string): boolean => PAGES_FOR_E2E.includes(normalizeImportPath(importPath));
+
 const getRoutes = (importPaths: string[], framework: Framework): string => {
   const componentSuffix = framework === 'angular' ? '' : 'Page';
 
   return (
     importPaths
-      .filter((importPath) => !PAGES_FOR_E2E.includes(paramCase(importPath)))
+      .filter((importPath) => !isE2EPage(importPath))
       .map((importPath) =>
         [
           '{',
@@ -62,7 +65,7 @@ const getImportsAndExports = (importPaths: string[], framework: Framework): stri
 
   return importPaths
     .map((importPath) =>
-      PAGES_FOR_E2E.includes(paramCase(importPath))
+      isE2EPage(importPath)
         ? `export * from '${importPath}';`
         : `import { ${pascalCase(importPath)}${componentSuffix} } from '${importPath}';`
     )
@@ -349,23 +352,37 @@ export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
     })
     .sort(byAlphabet);
 
-  // TODO: what about barrel file?
-  // TODO: what about routing?
+  // imports, exports and routes into barrel file
   const routes = getRoutes(importPaths, framework);
-  const imports = getImportsAndExports(importPaths, framework);
+  const importsAndExports = getImportsAndExports(importPaths, framework);
+  const separator = '/* Auto Generated Below */';
+
+  let frameworkImports: string;
+  let frameworkRoutes: string;
 
   if (framework === 'angular') {
+    frameworkImports = [separator, importsAndExports].join('\n');
+    frameworkRoutes = `export const generatedRoutes: ExtendedRoute[] = [\n${routes}\n];
+
+export const generatedPages = [
+  ${importPaths
+    .filter((importPath) => !isE2EPage(importPath))
+    .map((importPath) => pascalCase(importPath))
+    .join(',\n  ')}
+];`;
   } else if (framework === 'react') {
-    const separator = '/* Auto Generated Below */';
     const eslintRule = '/* eslint-disable import/first */';
-    const reactImports = [separator, eslintRule, imports].join('\n');
-    const reactRoutes = `export const generatedRoutes: RouteType[] = [\n${routes}\n];`;
+    frameworkImports = [separator, eslintRule, importsAndExports].join('\n');
+    frameworkRoutes = `export const generatedRoutes: RouteType[] = [\n${routes}\n];`;
+  }
 
-    const barreFilePath = path.resolve(pagesDirectory, 'index.ts');
-    const barrelFileContent = fs.readFileSync(barreFilePath, 'utf8');
-    const newBarrelFileContent =
-      [barrelFileContent.split(separator)[0].trim(), reactImports, reactRoutes].join('\n\n') + '\n';
+  const barreFilePath = path.resolve(pagesDirectory, 'index.ts');
+  const barrelFileContent = fs.readFileSync(barreFilePath, 'utf8');
+  const newBarrelFileContent =
+    [barrelFileContent.split(separator)[0].trim(), frameworkImports, frameworkRoutes].join('\n\n') + '\n';
 
+  // TODO: angular doesn't build anymore
+  if (framework === 'react') {
     writeFile(barreFilePath, newBarrelFileContent);
   }
 };
