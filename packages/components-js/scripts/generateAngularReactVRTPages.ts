@@ -178,6 +178,10 @@ ngOnInit() {
           .replace(/<\/template>/g, '</div>'); // replace closing tag
         fileContent = fileContent.replace(templateRegEx, template);
 
+        fileContent = fileContent.replace(/(\n)([ <>]+)/g, '$1    $2'); // fix indentation
+        fileContent = fileContent.replace(/\\/g, '\\\\'); // fix \\ in generated output
+        fileContent = fileContent.replace(/\`/g, '\\`'); // fix \` in generated output
+
         // prefixing
         fileContent = fileContent.replace(/(<[\w-]+(p-[\w-]+))/g, '$1 $2');
 
@@ -203,12 +207,7 @@ ${imports}
 @Component({
   selector: 'page-${fileName}',${styles}
   template: \`
-    ${convertToAngular(
-      fileContent
-        .replace(/(\n)([ <>]+)/g, '$1    $2')
-        .replace(/(<p-[a-z]+ .+?>)(\`)(<\/p-[a-z]+>)/g, '$1\\`$3')
-        .replace(/(<p-[a-z]+ .+?>)(\\)(<\/p-[a-z]+>)/g, '$1\\\\$3')
-    )}
+    ${convertToAngular(fileContent)}
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
