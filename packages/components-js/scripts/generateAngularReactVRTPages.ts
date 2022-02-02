@@ -6,6 +6,7 @@ import { convertToAngular } from '@porsche-design-system/storefront/src/utils/co
 import { convertToReact } from '@porsche-design-system/storefront/src/utils/convertToReact';
 
 const PAGES_TO_SKIP: string[] = ['table'];
+const PAGES_FOR_E2E: string[] = ['core-initializer', 'overview'];
 
 type Framework = 'angular' | 'react';
 
@@ -38,21 +39,35 @@ const getRoutes = (importPaths: string[], framework: Framework): string => {
 
   return (
     importPaths
+      .filter((importPath) => !PAGES_FOR_E2E.includes(paramCase(importPath)))
       .map((importPath) =>
         [
           '{',
           ...[
             `name: '${capitalCase(importPath)}'`,
-            `component: fromPages.${pascalCase(importPath)}${componentSuffix}`,
+            `component: ${pascalCase(importPath)}${componentSuffix}`,
             `path: '/${paramCase(importPath)}'`,
           ].map((x) => `  ${x},`),
           '}',
         ]
-          .map((x) => `    ${x}`)
+          .map((x) => `  ${x}`)
           .join('\n')
       )
       .join(',\n') + ','
   );
+};
+
+const getImportsAndExports = (importPaths: string[], framework: Framework): string => {
+  const componentSuffix = framework === 'angular' ? '' : 'Page';
+
+  return importPaths
+    .map((importPath) =>
+      PAGES_FOR_E2E.includes(paramCase(importPath))
+        ? `export * from '${importPath}';`
+        : `import { ${pascalCase(importPath)}${componentSuffix} } from '${importPath}';`
+    )
+    .sort((a) => (a.startsWith('export') ? -1 : 1))
+    .join('\n');
 };
 
 const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framework: Framework): void => {
@@ -337,25 +352,21 @@ export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
   // TODO: what about barrel file?
   // TODO: what about routing?
   const routes = getRoutes(importPaths, framework);
+  const imports = getImportsAndExports(importPaths, framework);
 
   if (framework === 'angular') {
   } else if (framework === 'react') {
     const separator = '/* Auto Generated Below */';
-    const imports = [separator, ...importPaths.map((x) => `export * from '${x}';`)].join('\n');
+    const eslintRule = '/* eslint-disable import/first */';
+    const reactImports = [separator, eslintRule, imports].join('\n');
+    const reactRoutes = `export const generatedRoutes: RouteType[] = [\n${routes}\n];`;
 
     const barreFilePath = path.resolve(pagesDirectory, 'index.ts');
     const barrelFileContent = fs.readFileSync(barreFilePath, 'utf8');
-    const newBarrelFileContent = [barrelFileContent.split(separator)[0].trim(), imports].join('\n\n') + '\n';
+    const newBarrelFileContent =
+      [barrelFileContent.split(separator)[0].trim(), reactImports, reactRoutes].join('\n\n') + '\n';
 
     writeFile(barreFilePath, newBarrelFileContent);
-
-    const routesFilePath = path.resolve(pagesDirectory, '../routes.ts');
-    const routesFileContent = fs.readFileSync(routesFilePath, 'utf8');
-    const newRoutesFileContent = routesFileContent.replace(
-      /(\/\* Auto Generated Start \*\/\n)(?:.|\s)*?(\s+\/\* Auto Generated End \*\/)/,
-      `$1${routes}$2`
-    );
-    writeFile(routesFilePath, newRoutesFileContent);
   }
 };
 
