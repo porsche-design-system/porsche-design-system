@@ -56,19 +56,7 @@ describe('getLoaderScript()', () => {
     it('should return content of components-js tmp build without script tag', () => {
       const result = getLoaderScript({ format: 'jsx' });
 
-      expect(result).toMatchSnapshot();
-    });
-
-    it('should call load method with supplied prefix', () => {
-      const result = getLoaderScript({ format: 'jsx', prefix: 'my-prefix' });
-
-      expect(result).toMatchSnapshot();
-    });
-
-    it('should call load method with supplied prefixes', () => {
-      const result = getLoaderScript({ format: 'jsx', prefix: ['my-prefix', 'another-prefix'] });
-
-      expect(result).toMatchSnapshot();
+      expect(result).toEqual(<script dangerouslySetInnerHTML={{ __html: fileContent }} />);
     });
   });
 
