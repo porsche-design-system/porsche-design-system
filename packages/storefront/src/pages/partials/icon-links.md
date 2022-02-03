@@ -13,9 +13,9 @@ Therefore, we provide a ready to use partial in all `@porsche-design-system/comp
 | Option        | Description                                                                                                                                                                                               | Type                     | Default              |
 |---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|----------------------|
 | `icons`       | All icons listed in the array are loaded from the CDN.                                                                                                                                                    | `({{this.iconNames}})[]` | `['arrowHeadRight']` |
-| `cdn`         | Decides from which CDN the resources are loaded.                                                                                                                                                          | `'auto'` `'cn'`          | `'auto'`             |
+| `cdn`         | Decides from which CDN the resources are loaded.                                                                                                                                                          | `'auto' | 'cn'`                | `'auto'`             |
 | `withoutTags` | <span style='color:red'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format` instead.<br/>If true, it returns an array of strings with urls to the cdn location of the resources. | `boolean`                | `false`              |
-| `format`      | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements.                                                                                  | `'html'` `'jsx'`         | `'html'`             |
+| `format`      | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements.                                                                                  | `'html'                  | 'jsx'`               | `'html'`             |
 
 ## Examples
 
@@ -25,8 +25,6 @@ The following showcases the most common ways.
 **Note:** Make sure to preload only icons which are really needed initially!
 
 <PartialDocs name="getIconLinks" :params="params" location="head"></PartialDocs>
-
-You can find an implemented example in our [Sample VanillaJS Integration](https://github.com/porscheui/sample-integration-vanillajs), [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular) or [Sample React Integration](https://github.com/porscheui/sample-integration-react)
 
 <script lang="ts">
 import Vue from 'vue';
