@@ -1,12 +1,13 @@
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
+import { getSelectWrapperSkeletonStyles } from '../../../../components/src/components/form/select-wrapper/select-wrapper/select-wrapper-skeleton-styles';
+import { joinArrayElementsToString } from './utils';
 import {
-  getButtonSkeletonStyles,
   SKELETON_COLOR_THEME_PLACEHOLDER,
   SKELETON_LINEAR_GRADIENT_COLOR_1,
   SKELETON_LINEAR_GRADIENT_COLOR_2,
-} from '../../../../components/src/components/action/button/button-skeleton-styles';
-import { getSelectWrapperSkeletonStyles } from '../../../../components/src/components/form/select-wrapper/select-wrapper/select-wrapper-skeleton-styles';
-import { joinArrayElementsToString } from './utils';
+} from '../../../../components/src/styles/skeleton-base-styles';
+
+import { getButtonSkeletonStyles } from '../../../../components/src/components/action/button/button-skeleton-styles';
 
 export const generateInitialStylesPartial = (): string => {
   const types = `type InitialStylesOptions = {
