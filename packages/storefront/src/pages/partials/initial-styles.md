@@ -11,7 +11,7 @@ Therefore, we provide a ready to use partial in all `@porsche-design-system/comp
 | Option        | Description                                                                                                                                       | Type           | Default |
 |---------------|---------------------------------------------------------------------------------------------------------------------------------------------------|----------------|---------|
 | `prefix`      | Prefix will be added to the component names.                                                                                                      | `string`       | `''`    |
-| `withoutTags` | <span style='color:red'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format` instead.<br/>If true, it returns css styles. | `boolean`      | `false` |
+| `withoutTags` | <span style='color:red'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format: 'jsx'` instead.<br/>If true, it returns css styles. | `boolean`      | `false` |
 | `format`      | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements.                          | `'html' | 'jsx'`  | `'html'` |
 
 ## Examples
