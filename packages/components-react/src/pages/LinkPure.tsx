@@ -95,8 +95,8 @@ export const LinkPurePage = (): JSX.Element => {
         <PLinkPure active={true}><a href="https://www.porsche.com">Label slotted active</a></PLinkPure>
         <PLinkPure href="https://www.porsche.com" active={true}>
           Label active
-          <p slot="subline">Some subline</p></PLinkPure
-        >
+          <p slot="subline">Some subline</p>
+        </PLinkPure>
       </div>
 
       <div className="playground dark" title="should render with active state on dark background">
@@ -104,8 +104,8 @@ export const LinkPurePage = (): JSX.Element => {
         <PLinkPure active={true} theme="dark"><a href="https://www.porsche.com">Label slotted active</a></PLinkPure>
         <PLinkPure href="https://www.porsche.com" active={true} theme="dark">
           Label active
-          <p slot="subline">Some subline</p></PLinkPure
-        >
+          <p slot="subline">Some subline</p>
+        </PLinkPure>
       </div>
 
       <div className="playground light" title="should render with specific icon">
@@ -147,24 +147,24 @@ export const LinkPurePage = (): JSX.Element => {
       <div className="playground light" title="should render with subline">
         <PLinkPure href="https://www.porsche.com" size="small">
           Label size small
-          <p slot="subline">Some subline</p></PLinkPure
-        >
+          <p slot="subline">Some subline</p>
+        </PLinkPure>
         <PLinkPure href="https://www.porsche.com" size="medium">
           Label size medium
-          <p slot="subline">Some subline</p></PLinkPure
-        >
+          <p slot="subline">Some subline</p>
+        </PLinkPure>
         <PLinkPure href="https://www.porsche.com" size="large">
           Label size large
-          <p slot="subline">Some subline</p></PLinkPure
-        >
+          <p slot="subline">Some subline</p>
+        </PLinkPure>
         <PLinkPure href="https://www.porsche.com" size="x-large">
           Label size x-large
-          <p slot="subline">Some subline</p></PLinkPure
-        >
+          <p slot="subline">Some subline</p>
+        </PLinkPure>
         <PLinkPure size="large">
           <a href="https://www.porsche.com">Label slotted size large</a>
-          <p slot="subline">Some subline</p></PLinkPure
-        >
+          <p slot="subline">Some subline</p>
+        </PLinkPure>
       </div>
 
       <div className="playground light" title="should render with no icon">
@@ -172,8 +172,8 @@ export const LinkPurePage = (): JSX.Element => {
         <PLinkPure icon="none"><a href="https://www.porsche.com">Label slotted icon none</a></PLinkPure>
         <PLinkPure href="https://www.porsche.com" size="small" icon="none">
           Label icon none
-          <p slot="subline">Some subline</p></PLinkPure
-        >
+          <p slot="subline">Some subline</p>
+        </PLinkPure>
       </div>
 
       <div className="playground light" title="should render icon if hide-label and icon none is set">
@@ -183,8 +183,8 @@ export const LinkPurePage = (): JSX.Element => {
         </PLinkPure>
         <PLinkPure hideLabel={true} size="small" icon="none">
           <a href="https://www.porsche.com">Label hide-label icon none</a>
-          <p slot="subline">Some subline</p></PLinkPure
-        >
+          <p slot="subline">Some subline</p>
+        </PLinkPure>
       </div>
 
       <div className="playground light" title="should align label to the left">
@@ -217,8 +217,8 @@ export const LinkPurePage = (): JSX.Element => {
           href="https://www.porsche.com"
           stretch={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
         >
-          Label stretch responsive</PLinkPure
-        >
+          Label stretch responsive
+        </PLinkPure>
         <PLinkPure stretch={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}>
           <a href="https://www.porsche.com">Label slotted stretch responsive</a>
         </PLinkPure>

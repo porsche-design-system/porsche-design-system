@@ -107,7 +107,7 @@ export const OverviewPage = (): JSX.Element => {
           <div className="playground light" title="should render default select-wrapper">
             <PSelectWrapper label="Some label">
               <select>
-                <option defaultValue="a">Option A</option>
+                <option value="a">Option A</option>
                 <option value="b">Option B</option>
                 <option value="c">Option C</option>
               </select>
@@ -293,7 +293,7 @@ export const OverviewPage = (): JSX.Element => {
             <div className="playground light" title="should render default select-wrapper with custom prefix">
               <PSelectWrapper label="Some label">
                 <select>
-                  <option defaultValue="a">Option A</option>
+                  <option value="a">Option A</option>
                   <option value="b">Option B</option>
                   <option value="c">Option C</option>
                 </select>
