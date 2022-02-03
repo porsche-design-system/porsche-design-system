@@ -40,7 +40,7 @@
     "@angular/language-service": "^13.2.1",
     "@porsche-design-system/assets": "4.0.0",
     "@porsche-design-system/shared": "0.0.0",
-    "@types/node": "^16.10.3",
+    "@types/node": "^17.0.14",
     "concurrently": "^6.3.0",
     "jest-preset-angular": "^11.1.0",
     "local-web-server": "^5.1.1",
