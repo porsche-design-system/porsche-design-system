@@ -59,7 +59,7 @@
     "sass": "^1.49.7",
     "sass-loader": "^10.1.1",
     "ts-node": "^10.3.0",
-    "typescript": "~4.4.3",
+    "typescript": "~4.5.5",
     "vue-template-compiler": "^2.6.14",
     "wait-on": "^6.0.0"
   },
