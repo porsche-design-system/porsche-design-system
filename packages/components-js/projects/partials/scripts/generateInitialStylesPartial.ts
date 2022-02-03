@@ -57,7 +57,7 @@ export const generateInitialStylesPartial = (): string => {
 
   const tagNamesWithSkeleton = [${tagNamesWithSkeleton}];
   const prefixedTagNamesWithSkeleton = getPrefixedTagNames(tagNamesWithSkeleton, prefix);
-
+  // TODO: figure out how without tags is supposed to work with skeleton script
   const result = withoutTags ? styleInnerHtml : \`<style>\${styleInnerHtml}\${getSkeletonStyles({prefixedTagNamesWithSkeleton, prefix, theme})}</style><script>\${setAriaAttributesOnSkeleton(prefixedTagNamesWithSkeleton)}</script>\`;
   return result;
 };`;
