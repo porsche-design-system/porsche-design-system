@@ -13,7 +13,7 @@ type FontPreloadLinkOptions = {
   weights?: FontWeight[];
   cdn?: Cdn;
   withoutTags?: boolean;
-  format?: PartialFormat;
+  format?: Format;
 }
 type FontPreloadLinkOptionsWithTags = FontPreloadLinkOptions & {
   withoutTags?: false;
@@ -34,7 +34,7 @@ type FontPreloadLinkOptionsJsx = FontPreloadLinkOptions & {
 export function getFontLinks(opts?: FontPreloadLinkOptionsWithoutTags): string[];
 export function getFontLinks(opts?: FontPreloadLinkOptionsJsx): JSX.Element[];
 export function getFontLinks(opts?: FontPreloadLinkOptions): string | string[] | JSX.Element[] {
-  const options: FontPreloadLinkOptions = {
+  const { subset, weights, cdn, withoutTags, format }: FontPreloadLinkOptions = {
     subset: 'latin',
     weights: ['regular'],
     cdn: 'auto',
@@ -42,11 +42,8 @@ export function getFontLinks(opts?: FontPreloadLinkOptions): string | string[] |
     format: 'html',
     ...opts
   };
-  const { subset, weights, cdn, withoutTags, format} = options;
 
-  deprecationWarningWithoutTags('getFontLinks', withoutTags);
-
-  if (options['weight']) {
+  if (opts['weight']) {
     throw new Error('Option "weight" is not supported, please use "weights" instead');
   }
 

@@ -6,7 +6,7 @@ export const generateLoaderScriptPartial = (): string => {
   const types = `type LoaderScriptOptions = {
   prefix?: string | string[];
   withoutTags?: boolean;
-  format?: PartialFormat
+  format?: Format;
 }
 type LoaderScriptOptionsHtml = LoaderScriptOptions & {
   format?: 'html';
@@ -30,8 +30,6 @@ export function getLoaderScript(opts?: LoaderScriptOptions): string | JSX.Elemen
     format: 'html',
     ...opts
   };
-
-  deprecationWarningWithoutTags('getLoaderScript', withoutTags);
 
   const loadCalls = prefix
     ? Array.isArray(prefix)

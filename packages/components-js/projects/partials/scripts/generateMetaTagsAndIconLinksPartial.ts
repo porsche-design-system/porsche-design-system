@@ -40,7 +40,7 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
 type MetaIconsOptions = {
   appTitle: string;
   cdn?: Cdn;
-  format?: PartialFormat;
+  format?: Format;
 };
 type MetaIconsOptionsHtml = MetaIconsOptions & {
   format?: 'html';

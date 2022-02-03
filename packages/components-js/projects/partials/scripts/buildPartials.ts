@@ -12,14 +12,9 @@ import { generateLoaderScriptPartial } from './generateLoaderScriptPartial';
 const generateSharedCode = (): string => {
   return `type Cdn = 'auto' | 'cn';
 
-type PartialFormat = 'html' | 'jsx';
+type Format = 'html' | 'jsx';
 
-const getCdnBaseUrl = (cdn: Cdn): string => cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}';
-const deprecationWarningWithoutTags = (functionName: string, withoutTags: boolean): void => {
- if (withoutTags){
-  console.warn(\`The option "{ withoutTags: true }" of partial \${functionName}() is deprecated and will be removed in v3\`);
- }
-};`;
+const getCdnBaseUrl = (cdn: Cdn): string => cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}';`;
 };
 
 const generatePartials = async (): Promise<void> => {

@@ -9,7 +9,7 @@ export const generateFontFaceStylesheetPartial = (): string => {
   const types = `type FontFaceStylesheetOptions = {
   cdn?: Cdn;
   withoutTags?: boolean;
-  format?: PartialFormat;
+  format?: Format;
 }
 type FontFaceStylesheetOptionsHtml = FontFaceStylesheetOptions & {
   format?: 'html';
@@ -40,8 +40,6 @@ export function getFontFaceStylesheet(opts?: FontFaceStylesheetOptions): string 
     format: 'html',
     ...opts
   };
-
-  deprecationWarningWithoutTags('getFontFaceStylesheet', withoutTags);
 
   const cdnBaseUrl = getCdnBaseUrl(cdn);
   const url = \`\${cdnBaseUrl}/${CDN_BASE_PATH_STYLES}/\${cdn === 'cn'
