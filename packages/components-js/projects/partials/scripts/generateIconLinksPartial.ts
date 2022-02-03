@@ -10,7 +10,7 @@ type IconLinksOptions = {
   icons?: IconNameCamelCase[];
   cdn?: Cdn;
   withoutTags?: boolean;
-  format?: PartialFormat
+  format?: Format;
 };
 type IconLinksOptionsWithTags = IconLinksOptions & {
   withoutTags?: false;
@@ -38,8 +38,6 @@ export function getIconLinks(opts?: IconLinksOptions): string | string[] | JSX.E
     format: 'html',
     ...opts
   };
-
-  deprecationWarningWithoutTags('getIconLinks', withoutTags);
 
   const supportedIconNames: IconNameCamelCase[] = ${JSON.stringify(ICON_NAMES)};
   const invalidIconNames = icons.filter((x) => !supportedIconNames.includes(x));

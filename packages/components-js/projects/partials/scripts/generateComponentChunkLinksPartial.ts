@@ -10,8 +10,11 @@ export const generateComponentChunkLinksPartial = (): string => {
 type ComponentChunkLinksOptions = {
   components?: ComponentChunkName[];
   cdn?: Cdn;
+  /**
+  * @deprecated withoutTags is deprecated and will be removed in v3
+  **/
   withoutTags?: boolean;
-  format?: PartialFormat;
+  format?: Format;
 };
 type ComponentChunkLinksOptionsWithTags = ComponentChunkLinksOptions & {
   withoutTags?: false;
@@ -37,8 +40,6 @@ export function getComponentChunkLinks(opts?: ComponentChunkLinksOptions): strin
     format: 'html',
     ...opts
   };
-
-  deprecationWarningWithoutTags('getComponentChunkLinks', withoutTags);
 
   const supportedComponentChunkNames: ComponentChunkName[] = ${JSON.stringify(COMPONENT_CHUNK_NAMES)};
   const invalidComponentChunkNames = components.filter((x) => !supportedComponentChunkNames.includes(x));

@@ -4,7 +4,7 @@ export const generateInitialStylesPartial = (): string => {
   const types = `type InitialStylesOptions = {
   prefix?: string;
   withoutTags?: boolean;
-  format?: PartialFormat;
+  format?: Format;
 }
 type InitalStylesOptionsHtml = InitialStylesOptions & {
   format?: 'html';
@@ -27,8 +27,6 @@ export function getInitialStyles(opts?: InitialStylesOptions): string | JSX.Elem
     format: 'html',
     ...opts
   };
-
-  deprecationWarningWithoutTags('getInitialStyles', withoutTags);
 
   const tagNames = [${tagNames}];
   const styleInnerHtml = tagNames.map((x) => prefix

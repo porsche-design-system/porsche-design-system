@@ -4,7 +4,6 @@
     "target": "es5",
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "jsx": "react-jsx"
   },
   "include": ["./projects/components-wrapper/environment.ts"]
 }
