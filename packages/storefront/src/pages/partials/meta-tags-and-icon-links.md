@@ -8,11 +8,11 @@ Therefore, we provide a ready to use partial in all `@porsche-design-system/comp
 
 ## Supported options
 
-| Option     | Description                                                                                                              | Type             | Default     |
-|------------|--------------------------------------------------------------------------------------------------------------------------|------------------|-------------|
-| `appTitle` | **Mandatory:** Title of your app which will be reflected in the meta tag.                                                | `string`         | `undefined` |
-| `cdn`      | Decides from which CDN the resources are loaded.                                                                         | `'auto'` `'cn'`  | `'auto'`    |
-| `format`   | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements. | `'html'` `'jsx'` | `'html'`    |
+| Option     | Description                                                                                                              | Type          | Default    |
+|------------|--------------------------------------------------------------------------------------------------------------------------|---------------|------------|
+| `appTitle` | **Mandatory:** Title of your app which will be reflected in the meta tag.                                                | `string`      | `undefined` |
+| `cdn`      | Decides from which CDN the resources are loaded.                                                                         | `'auto' | 'cn'`      | `'auto'` |
+| `format`   | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements. | `'html'       | 'jsx'`      | `'html'`|
 
 ## Examples
 
@@ -20,8 +20,6 @@ Project integration differs based on the project setup.
 The following showcases the most common ways.
 
 <PartialDocs name="getMetaTagsAndIconLinks" :params="params" location="head"></PartialDocs>
-
-You can find an implemented example in our [Sample VanillaJS Integration](https://github.com/porscheui/sample-integration-vanillajs), [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular) or [Sample React Integration](https://github.com/porscheui/sample-integration-react)
 
 ## Result
 

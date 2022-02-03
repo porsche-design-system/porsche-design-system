@@ -12,11 +12,11 @@ provides additional link tags with `rel="preconnect"` and `rel="dns-prefetch"` t
 
 ## Supported options
 
-| Option        | Description                                                                                                                                                                      | Type             | Default  |
-|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|----------|
-| `cdn`         | Decides from which CDN the resources are loaded.                                                                                                                                 | `'auto'` `'cn'`  | `'auto'` |
-| `withoutTags` | <span style='color:red'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format` instead.<br/>If true, it returns a url to the cdn location of the resource. | `boolean`        | `false`  |
-| `format`      | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements.                                                         | `'html'` `'jsx'` | `'html'` |
+| Option        | Description                                                                                                                                                                      | Type           | Default |
+|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|---------|
+| `cdn`         | Decides from which CDN the resources are loaded.                                                                                                                                 | `'auto'        | 'cn'`   | `'auto'` |
+| `withoutTags` | <span style='color:red'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format` instead.<br/>If true, it returns a url to the cdn location of the resource. | `boolean`      | `false` |
+| `format`      | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements.                                                         | `'html' | 'jsx'`  | `'html'` |
 
 ## Examples
 
@@ -24,8 +24,6 @@ Project integration differs based on the project setup.
 The following showcases the most common ways.
 
 <PartialDocs name="getFontFaceStylesheet" :params="params" location="head"></PartialDocs>
-
-You can find an implemented example in our [Sample VanillaJS Integration](https://github.com/porscheui/sample-integration-vanillajs), [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular) or [Sample React Integration](https://github.com/porscheui/sample-integration-react)
 
 <script lang="ts">
 import Vue from 'vue';
