@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@juggle/resize-observer": "^3.3.1",
-    "@rollup/plugin-replace": "^3.0.0",
+    "@rollup/plugin-replace": "^3.0.1",
     "@types/react": "^17.0.38",
     "@types/throttle-debounce": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
@@ -57,7 +57,7 @@
     "dts-bundle-generator": "^5.8.0",
     "eslint": "^7.30.0",
     "eslint-plugin-prefer-arrow": "^1.2.3",
-    "eslint-plugin-react": "^7.26.0",
+    "eslint-plugin-react": "^7.28.0",
     "globby": "^11.0.4",
     "ts-node": "^10.3.0",
     "typescript": "~4.4.3",
