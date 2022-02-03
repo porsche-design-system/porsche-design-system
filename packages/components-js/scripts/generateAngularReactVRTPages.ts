@@ -6,7 +6,7 @@ import { convertToAngular } from '@porsche-design-system/storefront/src/utils/co
 import { convertToReact } from '@porsche-design-system/storefront/src/utils/convertToReact';
 
 const PAGES_TO_SKIP: string[] = ['table'];
-const PAGES_FOR_E2E: string[] = ['core-initializer', 'overview'];
+const PAGES_FOR_E2E: string[] = ['core-initializer', 'overview']; // TODO: overview is vrt page
 
 type Framework = 'angular' | 'react';
 
@@ -106,6 +106,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       const usesQuerySelector = script?.includes('querySelector');
       const usesPrefixing = !!fileContent.match(/<[a-z-]+-p-[\w-]+/);
       const usesToast = script?.includes('p-toast');
+      // TODO: add usesToast to check
       const [, toastText] = script?.match(/text:\s?(['`].*?['`])/) || [];
 
       const isOverviewPage = fileName === 'overview';
@@ -123,7 +124,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
         const angularImports = [
           'ChangeDetectionStrategy',
           'Component',
-          script && !isIconPage && 'OnInit',
+          script && !isIconPage && 'OnInit', // TODO: use own variable
           usesComponentsReady && 'ChangeDetectorRef',
         ]
           .filter((x) => x)
@@ -259,6 +260,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
         const styleConst = style ? `const style = \`\n  ${style}\n\`;` : '';
         const styleJsx = style ? '\n      <style children={style} />\n' : '';
 
+        // TODO: if else
         const useStateOrEffect = usesComponentsReady
           ? `const [allReady, setAllReady] = useState(false);
 useEffect(() => {
@@ -266,7 +268,7 @@ useEffect(() => {
     setAllReady(true);
   });
 }, []);`
-          : isIconPage
+          : isIconPage // TODO: really needed?
           ? ''
           : usesToast
           ? `const { addMessage } = useToastManager();
@@ -338,6 +340,7 @@ $2`
         }
 
         const fragmentTag = usesPrefixing && !isOverviewPage ? 'PorscheDesignSystemProvider' : '';
+        fileContent = fileContent.replace(/(\n)([ <>]+)/g, '$1      $2');
 
         fileContent = `${comment}
 ${imports}
@@ -345,7 +348,7 @@ ${imports}
 export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
   return (
     <${fragmentTag}>${styleJsx}
-      ${convertToReact(fileContent.replace(/(\n)([ <>]+)/g, '$1      $2'))}
+      ${convertToReact(fileContent)}
     </${fragmentTag}>
   );
 };
