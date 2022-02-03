@@ -72,7 +72,7 @@ export function getMetaTagsAndIconLinks(opts?: MetaIconsOptions): string | JSX.E
   const webManifestTag = ${minifiedManifestsHTML}.find(item => item.includes(cdnBaseUrl));
 
   return format === 'html' ? [...metaIconTags, webManifestTag].join('') : [...metaIconTagsJsx, manifestTagJsx];
-};`;
+}`;
 
   return [types, func].join('\n\n');
 };

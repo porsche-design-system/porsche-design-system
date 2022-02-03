@@ -14,7 +14,7 @@ type FontPreloadLinkOptions = {
   cdn?: Cdn;
   withoutTags?: boolean;
   format?: Format;
-}
+};
 type FontPreloadLinkOptionsWithTags = FontPreloadLinkOptions & {
   withoutTags?: false;
   format?: 'html';
@@ -26,7 +26,7 @@ type FontPreloadLinkOptionsWithoutTags = FontPreloadLinkOptions & {
 type FontPreloadLinkOptionsJsx = FontPreloadLinkOptions & {
   withoutTags?: false;
   format?: 'jsx';
-}`;
+};`;
 
   const linkTemplate = minifyHTML('<link rel="preload" href="${url}" as="font" type="font/woff2" crossorigin>');
 
@@ -95,7 +95,7 @@ Please use only valid font weights:
   const linksHtml = urls.map((url) => \`${linkTemplate}\`).join('');
   const linksJsx = urls.map((url) => <link rel="preload" href={url} as="font" type="font/woff2" crossOrigin="true" />);
 
-  const markup = format === 'html' ? linksHtml : linksJsx
+  const markup = format === 'html' ? linksHtml : linksJsx;
   return withoutTags ? urls : markup;
 };`;
 

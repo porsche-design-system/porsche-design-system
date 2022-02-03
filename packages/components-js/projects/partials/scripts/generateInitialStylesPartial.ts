@@ -5,7 +5,7 @@ export const generateInitialStylesPartial = (): string => {
   prefix?: string;
   withoutTags?: boolean;
   format?: Format;
-}
+};
 type InitalStylesOptionsHtml = InitialStylesOptions & {
   format?: 'html';
 };

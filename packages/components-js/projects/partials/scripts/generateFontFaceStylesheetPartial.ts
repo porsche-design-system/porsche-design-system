@@ -10,14 +10,14 @@ export const generateFontFaceStylesheetPartial = (): string => {
   cdn?: Cdn;
   withoutTags?: boolean;
   format?: Format;
-}
+};
 type FontFaceStylesheetOptionsHtml = FontFaceStylesheetOptions & {
   format?: 'html';
-}
+};
 type FontFaceStylesheetOptionsJsx = FontFaceStylesheetOptions & {
   withoutTags?: false;
   format?: 'jsx';
-}`;
+};`;
 
   const cssFileCn = hashedFontFaceCssFiles?.find((x) => x.includes('.cn.'));
   const cssFileCom = hashedFontFaceCssFiles?.find((x) => !x.includes('.cn.'));
@@ -31,8 +31,8 @@ type FontFaceStylesheetOptionsJsx = FontFaceStylesheetOptions & {
       .replace('"$URL"', '{url}')
       .replace(/"\$CDN_URL"/g, '{cdnBaseUrl}');
 
-  const func = `export function getFontFaceStylesheet(opts?: FontFaceStylesheetOptionsHtml): string
-export function getFontFaceStylesheet(opts?: FontFaceStylesheetOptionsJsx): JSX.Element[]
+  const func = `export function getFontFaceStylesheet(opts?: FontFaceStylesheetOptionsHtml): string;
+export function getFontFaceStylesheet(opts?: FontFaceStylesheetOptionsJsx): JSX.Element[];
 export function getFontFaceStylesheet(opts?: FontFaceStylesheetOptions): string | JSX.Element[] {
   const { cdn, withoutTags, format }: FontFaceStylesheetOptions = {
     cdn: 'auto',

@@ -14,7 +14,7 @@ const generateSharedCode = (): string => {
 
 type Format = 'html' | 'jsx';
 
-const getCdnBaseUrl = (cdn: Cdn): string => cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}';`;
+const getCdnBaseUrl = (cdn: Cdn): string => (cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}');`;
 };
 
 const generatePartials = async (): Promise<void> => {

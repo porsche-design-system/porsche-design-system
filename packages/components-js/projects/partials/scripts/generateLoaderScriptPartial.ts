@@ -7,7 +7,7 @@ export const generateLoaderScriptPartial = (): string => {
   prefix?: string | string[];
   withoutTags?: boolean;
   format?: Format;
-}
+};
 type LoaderScriptOptionsHtml = LoaderScriptOptions & {
   format?: 'html';
 };
@@ -43,7 +43,7 @@ export function getLoaderScript(opts?: LoaderScriptOptions): string | JSX.Elemen
   const markup = format === 'html' ? \`<script>\${scriptContent}</script>\` : <script dangerouslySetInnerHTML={{__html: scriptContent}} />;
 
   return withoutTags ? scriptContent : markup;
-};`;
+}`;
 
   return [types, func].join('\n\n');
 };
