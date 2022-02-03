@@ -56,7 +56,7 @@ describe('transformAttributesWithDigitValue()', () => {
 </p-some-tag>`
     );
   });
-  fit('transform maxlength with maxLength', () => {
+  it('transform maxlength with maxLength', () => {
     expect(transformAttributesWithDigitValue('<textarea maxlength="200">Some value</textarea>')).toBe(
       '<textarea [maxLength]="200">Some value</textarea>'
     );
