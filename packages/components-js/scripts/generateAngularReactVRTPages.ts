@@ -27,7 +27,11 @@ const generateAngularReactVRTPages = (): void => {
   generateVRTPages(htmlFileContentMap, 'react');
 };
 
-const byAlphabet = (a: string, b: string): number => a.toLowerCase().localeCompare(b.toLowerCase());
+const byAlphabet = (a: string, b: string): number =>
+  a
+    .toLowerCase()
+    .replace(/(\w+)(?:component|page)/, '$1')
+    .localeCompare(b.toLowerCase().replace(/(\w+)(?:component|page)/, '$1'));
 
 const writeFile = (filePath: string, content: string): void => {
   fs.writeFileSync(filePath, content);
@@ -74,7 +78,7 @@ const getImportsAndExports = (importPaths: string[], framework: Framework): stri
     })
     .flat()
     .filter((x) => x)
-    .sort((a) => (a.startsWith('export') ? -1 : 1))
+    .sort(byAlphabet)
     .join('\n');
 };
 

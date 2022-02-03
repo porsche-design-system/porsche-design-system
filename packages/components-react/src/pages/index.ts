@@ -7,8 +7,8 @@ export * from './Table';
 
 /* Auto Generated Below */
 /* eslint-disable import/first */
-export * from './Overview';
 export * from './CoreInitializer';
+export * from './Overview';
 import { AccordionPage } from './Accordion';
 import { BannerPage } from './Banner';
 import { ButtonPage } from './Button';
