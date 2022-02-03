@@ -144,7 +144,7 @@ export const FieldsetWrapperPage = (): JSX.Element => {
           </PCheckboxWrapper>
           <PSelectWrapper label="Some label">
             <select name="some-name" required>
-              <option defaultValue="a">Option A</option>
+              <option value="a">Option A</option>
               <option value="b">Option B</option>
               <option value="c">Option C</option>
             </select>
