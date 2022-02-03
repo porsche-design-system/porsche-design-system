@@ -27,7 +27,7 @@ type ComponentChunkLinksOptionsWithoutTags = ComponentChunkLinksOptions & {
 type ComponentChunkLinksOptionsJsx = ComponentChunkLinksOptions & {
  withoutTags?: false;
   format?: 'jsx';
-}`;
+};`;
 
   const func = `export function getComponentChunkLinks(opts?: ComponentChunkLinksOptionsWithTags): string;
 export function getComponentChunkLinks(opts?: ComponentChunkLinksOptionsWithoutTags): string[];
@@ -64,7 +64,7 @@ Please use only valid component chunk names:
 
   const linksJsx = urls.map((url, idx) => <link rel="preload" href={url} as="script" {...(idx === 0 && { crossOrigin: 'true' })} />)
 
-  const markup = format === 'html' ? linksHtml : linksJsx
+  const markup = format === 'html' ? linksHtml : linksJsx;
 
   return withoutTags ? urls : markup;
 };`;

@@ -23,7 +23,7 @@ type IconLinksOptionsWithoutTags = IconLinksOptions & {
 type IconLinksOptionsJsx = IconLinksOptions & {
   withoutTags?: false;
   format?: 'jsx';
-}`;
+};`;
 
   const link = minifyHTML('<link rel="prefetch" href="${url}" as="image" type="image/svg+xml" crossorigin>');
 
@@ -58,9 +58,9 @@ Please use only valid icon names:
     .join('');
   const linksJsx = urls.map((url) => <link rel="prefetch" href={url} as="image" type="image/svg+xml" crossOrigin="true" />);
 
-  const markup = format === 'html' ? linksHtml : linksJsx
+  const markup = format === 'html' ? linksHtml : linksJsx;
   return withoutTags ? urls : markup;
-};`;
+}`;
 
   return [types, func].join('\n\n');
 };
