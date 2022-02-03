@@ -1,5 +1,4 @@
 import { COMPONENT_CHUNK_NAMES, COMPONENT_CHUNKS_MANIFEST } from '../../components-wrapper';
-import { minifyHTML } from './utils';
 import { CDN_BASE_PATH_COMPONENTS } from '../../../../../cdn.config';
 
 export const generateComponentChunkLinksPartial = (): string => {
