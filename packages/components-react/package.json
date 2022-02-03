@@ -38,7 +38,7 @@
   "devDependencies": {
     "@porsche-design-system/assets": "4.0.0",
     "@porsche-design-system/shared": "0.0.0",
-    "@rollup/plugin-commonjs": "^21.0.0",
+    "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "@rollup/plugin-typescript": "^8.2.5",
     "@testing-library/jest-dom": "^5.14.1",

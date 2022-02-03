@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@juggle/resize-observer": "^3.3.1",
-    "@rollup/plugin-replace": "^3.0.0",
+    "@rollup/plugin-replace": "^3.0.1",
     "@types/react": "^17.0.38",
     "@types/throttle-debounce": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
