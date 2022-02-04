@@ -106,8 +106,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       const usesQuerySelector = script?.includes('querySelector');
       const usesPrefixing = !!fileContent.match(/<[a-z-]+-p-[\w-]+/);
       const usesToast = script?.includes('p-toast');
-      // TODO: add usesToast to check
-      const [, toastText] = script?.match(/text:\s?(['`].*?['`])/) || [];
+      const [, toastText] = (usesToast && script?.match(/text:\s?(['`].*?['`])/)) || [];
 
       const isOverviewPage = fileName === 'overview';
       const isIconPage = fileName === 'icon';
