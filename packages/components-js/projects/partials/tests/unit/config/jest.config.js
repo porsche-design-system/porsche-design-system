@@ -1,6 +1,6 @@
 module.exports = {
   preset: 'ts-jest',
-  testEnvironment: 'node',
+  testEnvironment: 'jsdom',
   verbose: true,
   rootDir: '../../../',
   globals: {
