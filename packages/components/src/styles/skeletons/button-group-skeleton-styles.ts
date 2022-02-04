@@ -1,9 +1,10 @@
 import { getMinifiedStyles } from '@porsche-design-system/shared-src/src/styles/getMinifiedStyles';
 import {
-  getButtonGroupColumnStyles,
-  getButtonGroupRowStyles,
-  getButtonGroupSlottedColumnStyles,
-  getButtonGroupSlottedRowStyles,
+  addImportantToRule,
+  getButtonGroupColumnJssStyle,
+  getButtonGroupRowJssStyle,
+  getButtonGroupSlottedColumnJssStyle,
+  getButtonGroupSlottedRowJssStyle,
   mediaQuery,
   pxToRemWithUnit,
 } from '../common-styles';
@@ -16,15 +17,18 @@ export const getButtonGroupSkeletonStyles = (): string => {
       'p-button-group:not(.hydrated)': {
         display: 'flex',
         marginTop: `-${spacing[16]}`,
-        ...getButtonGroupColumnStyles(),
-        [mediaQuery('xs')]: getButtonGroupRowStyles(),
+        ...getButtonGroupColumnJssStyle(),
+        [mediaQuery('xs')]: {
+          ...getButtonGroupRowJssStyle(),
+          marginRight: 0,
+        },
         '& > *': {
           marginTop: spacing[16],
-          ...getButtonGroupSlottedColumnStyles(),
-          width: '100%',
+          ...getButtonGroupSlottedColumnJssStyle(),
+          width: addImportantToRule('100%'),
           [mediaQuery('xs')]: {
-            ...getButtonGroupSlottedRowStyles(),
-            width: pxToRemWithUnit(BUTTON_LINK_SKELETON_WIDTH),
+            ...getButtonGroupSlottedRowJssStyle(),
+            width: addImportantToRule(pxToRemWithUnit(BUTTON_LINK_SKELETON_WIDTH)),
           },
         },
       },
