@@ -111,6 +111,8 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
 
       const isOverviewPage = fileName === 'overview';
       const isIconPage = fileName === 'icon';
+      const isOnInit = script && !isIconPage;
+
       const iconsRegEx = /(<div class="playground[\sa-z]+overview".*?>)\n(<\/div>)/;
 
       // extract template if there is any, replacing is framework specific
@@ -124,7 +126,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
         const angularImports = [
           'ChangeDetectionStrategy',
           'Component',
-          script && !isIconPage && 'OnInit', // TODO: use own variable
+          isOnInit && 'OnInit',
           usesComponentsReady && 'ChangeDetectorRef',
         ]
           .filter((x) => x)
