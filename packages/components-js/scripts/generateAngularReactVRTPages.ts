@@ -227,6 +227,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
         fileName = `${fileName}.component.ts`;
       } else if (framework === 'react') {
         // imports
+
         const reactImports = [
           (usesComponentsReady || usesQuerySelector) && !isIconPage && 'useEffect',
           usesComponentsReady && 'useState',
@@ -260,27 +261,25 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
         const styleConst = style ? `const style = \`\n  ${style}\n\`;` : '';
         const styleJsx = style ? '\n      <style children={style} />\n' : '';
 
-        // TODO: if else
-        const useStateOrEffect = usesComponentsReady
-          ? `const [allReady, setAllReady] = useState(false);
+        let useStateOrEffect = '';
+        if (usesComponentsReady) {
+          useStateOrEffect = `const [allReady, setAllReady] = useState(false);
 useEffect(() => {
   componentsReady().then(() => {
     setAllReady(true);
   });
-}, []);`
-          : isIconPage // TODO: really needed?
-          ? ''
-          : usesToast
-          ? `const { addMessage } = useToastManager();
+}, []);`;
+        } else if (usesToast) {
+          useStateOrEffect = `const { addMessage } = useToastManager();
 useEffect(() => {
   addMessage({ text: ${toastText} });
 }, [addMessage]);
-`
-          : usesQuerySelector
-          ? `useEffect(() => {
+`;
+        } else if (!isIconPage && usesQuerySelector) {
+          useStateOrEffect = `useEffect(() => {
   ${script}
-}, []);`
-          : '';
+}, []);`;
+        } else useStateOrEffect = '';
 
         const componentLogic = [useStateOrEffect, styleConst]
           .filter((x) => x)
