@@ -22,7 +22,7 @@ type FontFaceStylesheetOptionsJsx = FontFaceStylesheetOptions & {
   const cssFileCn = hashedFontFaceCssFiles?.find((x) => x.includes('.cn.'));
   const cssFileCom = hashedFontFaceCssFiles?.find((x) => !x.includes('.cn.'));
   const linksHtml = minifyHTML(
-    `<link rel="preconnect" href="$CDN_URL"><link rel="dns-prefetch" href="$CDN_URL"><link rel="stylesheet" href="$URL" type="text/css" crossorigin>`
+    `<link rel="preconnect" href="$CDN_URL" crossorigin><link rel="dns-prefetch" href="$CDN_URL" crossorigin><link rel="stylesheet" href="$URL" type="text/css" crossorigin>`
   )
     .replace('$URL', '${url}')
     .replace(/\$CDN_URL/g, '${cdnBaseUrl}');
