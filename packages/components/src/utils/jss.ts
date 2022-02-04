@@ -118,6 +118,7 @@ export const buildResponsiveHostStyles = <T>(
 ): Styles<':host'> => ({ ':host': buildResponsiveStyles(rawValue, getStyles) });
 
 export const buildResponsiveStyles = <T>(rawValue: BreakpointCustomizable<T>, getStyles: GetStylesFunction): Styles => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const value = parseJSON(rawValue as any);
 
   return typeof value === 'object'
