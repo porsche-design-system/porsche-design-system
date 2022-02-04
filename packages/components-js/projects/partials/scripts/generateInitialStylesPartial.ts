@@ -1,13 +1,19 @@
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
-import { getSelectWrapperSkeletonStyles } from '../../../../components/src/components/form/select-wrapper/select-wrapper/select-wrapper-skeleton-styles';
 import { joinArrayElementsToString } from './utils';
 import {
   SKELETON_COLOR_THEME_PLACEHOLDER,
   SKELETON_LINEAR_GRADIENT_COLOR_1,
   SKELETON_LINEAR_GRADIENT_COLOR_2,
-} from '../../../../components/src/styles/skeleton-base-styles';
-
-import { getButtonSkeletonStyles } from '../../../../components/src/components/action/button/button-skeleton-styles';
+  getButtonSkeletonStyles,
+  getButtonPureSkeletonStyles,
+  getButtonGroupSkeletonStyles,
+  getLinkSkeletonStyles,
+  getLinkPureSkeletonStyles,
+  getCheckboxWrapperSkeletonStyles,
+  getRadioButtonWrapperSkeletonStyles,
+  getSelectWrapperSkeletonStyles,
+  getTextFieldWrapperSkeletonStyles,
+} from '../../../../components/src/styles/skeletons';
 
 export const generateInitialStylesPartial = (): string => {
   const types = `type InitialStylesOptions = {
@@ -26,7 +32,14 @@ export const generateInitialStylesPartial = (): string => {
 
   const skeletonStyles: { [key: string]: string } = {
     'p-button': getButtonSkeletonStyles(),
+    'p-button-pure': getButtonPureSkeletonStyles(),
+    'p-button-group': getButtonGroupSkeletonStyles(),
+    'p-checkbox-wrapper': getCheckboxWrapperSkeletonStyles(),
+    'p-link': getLinkSkeletonStyles(),
+    'p-link-pure': getLinkPureSkeletonStyles(),
+    'p-radio-button-wrapper': getRadioButtonWrapperSkeletonStyles(),
     'p-select-wrapper': getSelectWrapperSkeletonStyles(),
+    'p-text-field-wrapper': getTextFieldWrapperSkeletonStyles(),
   };
 
   const tagNames = joinArrayElementsToString(
@@ -94,7 +107,8 @@ export const generateInitialStylesPartial = (): string => {
   skeletonStyleStringWithPrefix = skeletonStyleStringWithPrefix.replace(/${SKELETON_LINEAR_GRADIENT_COLOR_2}/g,\`\${theme === 'light' ? '#0000000d': '#888b94'}\`);
 
   // escape the "at" sign for sed replace command to work properly
-  return skeletonStyleStringWithPrefix + '\\\\${skeletonKeyframes}';
+  const result = skeletonStyleStringWithPrefix + '${skeletonKeyframes}';
+  return result.replace(/(@)/g, '\\\\$1');
 };`;
 
   const ariaAttributeFunction = `const setAriaAttributesOnSkeleton = (prefixedSkeletonTagNames: string[]): string => \`

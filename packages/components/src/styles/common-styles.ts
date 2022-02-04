@@ -2,7 +2,7 @@ import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 import type { JssStyle, Styles } from 'jss';
 import type { Theme } from '../types';
 import type { PropertiesHyphen } from 'csstype';
-import { breakpoint, fontWeight, getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
+import { breakpoint, fontWeight, getScreenReaderOnlyJssStyle, spacing } from '@porsche-design-system/utilities-v2';
 import { getThemedColors } from './';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
@@ -198,4 +198,28 @@ export const getFormCheckboxRadioHiddenJssStyle = (isHidden: boolean): JssStyle 
   ...getTextHiddenJssStyle(isHidden),
   width: 'auto',
   padding: `0 0 0 ${pxToRemWithUnit(8)}`,
+});
+
+export const getButtonGroupColumnStyles = (): JssStyle => ({
+  flexFlow: 'column nowrap',
+  alignItems: 'stretch',
+  marginRight: 0,
+  marginLeft: 0,
+});
+
+export const getButtonGroupRowStyles = (): JssStyle => ({
+  flexFlow: 'row wrap',
+  alignItems: 'center',
+  marginRight: `-${spacing[8]}`,
+  marginLeft: `-${spacing[8]}`,
+});
+
+export const getButtonGroupSlottedColumnStyles = (): JssStyle => ({
+  marginRight: 0,
+  marginLeft: 0,
+});
+
+export const getButtonGroupSlottedRowStyles = (): JssStyle => ({
+  marginRight: spacing[8],
+  marginLeft: spacing[8],
 });
