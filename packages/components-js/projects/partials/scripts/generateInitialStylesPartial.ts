@@ -1,18 +1,13 @@
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
 import { joinArrayElementsToString } from './utils';
 import {
+  getButtonLinkPureSkeletonStyles,
+  getButtonLinkSkeletonStyles,
+  getCheckboxRadioWrapperSkeletonStyles,
+  getSelectTextFieldWrapperSkeletonStyles,
   SKELETON_COLOR_THEME_PLACEHOLDER,
   SKELETON_LINEAR_GRADIENT_COLOR_1,
   SKELETON_LINEAR_GRADIENT_COLOR_2,
-  getButtonSkeletonStyles,
-  getButtonPureSkeletonStyles,
-  getButtonGroupSkeletonStyles,
-  getLinkSkeletonStyles,
-  getLinkPureSkeletonStyles,
-  getCheckboxWrapperSkeletonStyles,
-  getRadioButtonWrapperSkeletonStyles,
-  getSelectWrapperSkeletonStyles,
-  getTextFieldWrapperSkeletonStyles,
 } from '../../../../components/src/styles/skeletons';
 
 export const generateInitialStylesPartial = (): string => {
@@ -27,20 +22,14 @@ export const generateInitialStylesPartial = (): string => {
   theme?: 'light' | 'dark';
 }`;
 
-  const skeletonKeyframes: string =
-    '@keyframes shimmer{0%{background-position:-450px 0}100%{background-position:450px 0}}';
+  const skeletonKeyframes = '@keyframes shimmer{0%{background-position:-450px 0}100%{background-position:450px 0}}';
 
-  const skeletonStyles: { [key: string]: string } = {
-    'p-button': getButtonSkeletonStyles(),
-    'p-button-pure': getButtonPureSkeletonStyles(),
-    'p-button-group': getButtonGroupSkeletonStyles(),
-    'p-checkbox-wrapper': getCheckboxWrapperSkeletonStyles(),
-    'p-link': getLinkSkeletonStyles(),
-    'p-link-pure': getLinkPureSkeletonStyles(),
-    'p-radio-button-wrapper': getRadioButtonWrapperSkeletonStyles(),
-    'p-select-wrapper': getSelectWrapperSkeletonStyles(),
-    'p-text-field-wrapper': getTextFieldWrapperSkeletonStyles(),
-  };
+  const skeletonStyles = [
+    getButtonLinkSkeletonStyles(),
+    getButtonLinkPureSkeletonStyles(),
+    getCheckboxRadioWrapperSkeletonStyles(),
+    getSelectTextFieldWrapperSkeletonStyles(),
+  ].join('');
 
   const tagNames = joinArrayElementsToString(
     TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x) && !TAG_NAMES_WITH_SKELETON.includes(x))
@@ -85,29 +74,23 @@ export const generateInitialStylesPartial = (): string => {
   };
   const { prefixedTagNamesWithSkeleton, prefix, theme } = options;
 
-  const skeletonStyles = ${JSON.stringify(skeletonStyles)};
+  let skeletonStyles = '${skeletonStyles}';
 
-  const skeletonStylesWithPrefix = [];
-
-  prefixedTagNamesWithSkeleton.forEach(prefixedTagName =>{
-    const prefixRegExp = new RegExp(prefix+"-", 'g');
-    const tagName = prefixedTagName.replace(prefixRegExp, '');
-    if(prefix){
+  if(prefix){
+    prefixedTagNamesWithSkeleton.forEach(prefixedTagName =>{
+      const prefixRegExp = new RegExp(\`\${prefix}-\`, 'g');
+      const tagName = prefixedTagName.replace(prefixRegExp, '');
       const tagRegExp = new RegExp(tagName, 'g');
-      skeletonStylesWithPrefix.push(\`\${skeletonStyles[tagName].replace(tagRegExp, prefixedTagName)}\`);
-    } else {
-      skeletonStylesWithPrefix.push(skeletonStyles[tagName]);
-    }
-  });
+      skeletonStyles = skeletonStyles.replace(tagRegExp, prefixedTagName);
+    });
+  }
 
-  let skeletonStyleStringWithPrefix = skeletonStylesWithPrefix.join('');
+  skeletonStyles = skeletonStyles.replace(/${SKELETON_COLOR_THEME_PLACEHOLDER}/g,\`\${theme === 'light' ? '#E3E4E5': '#626669'}\`);
+  skeletonStyles = skeletonStyles.replace(/${SKELETON_LINEAR_GRADIENT_COLOR_1}/g,\`\${theme === 'light' ? '#E3E4E5': '#656871'}\`);
+  skeletonStyles = skeletonStyles.replace(/${SKELETON_LINEAR_GRADIENT_COLOR_2}/g,\`\${theme === 'light' ? '#0000000d': '#888b94'}\`);
 
-  skeletonStyleStringWithPrefix = skeletonStyleStringWithPrefix.replace(/${SKELETON_COLOR_THEME_PLACEHOLDER}/g,\`\${theme === 'light' ? '#E3E4E5': '#626669'}\`);
-  skeletonStyleStringWithPrefix = skeletonStyleStringWithPrefix.replace(/${SKELETON_LINEAR_GRADIENT_COLOR_1}/g,\`\${theme === 'light' ? '#E3E4E5': '#656871'}\`);
-  skeletonStyleStringWithPrefix = skeletonStyleStringWithPrefix.replace(/${SKELETON_LINEAR_GRADIENT_COLOR_2}/g,\`\${theme === 'light' ? '#0000000d': '#888b94'}\`);
-
+  const result = skeletonStyles + '${skeletonKeyframes}';
   // escape the "at" sign for sed replace command to work properly
-  const result = skeletonStyleStringWithPrefix + '${skeletonKeyframes}';
   return result.replace(/(@)/g, '\\\\$1');
 };`;
 
