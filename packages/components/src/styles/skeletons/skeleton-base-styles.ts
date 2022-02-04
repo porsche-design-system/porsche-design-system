@@ -4,6 +4,7 @@ import { pxToRemWithUnit } from '../common-styles';
 export const SKELETON_COLOR_THEME_PLACEHOLDER = 'PDS_REPLACE_WITH_THEME_COLOR';
 export const SKELETON_LINEAR_GRADIENT_COLOR_1 = 'PDS_REPLACE_WITH_LINEAR_GRADIENT_1';
 export const SKELETON_LINEAR_GRADIENT_COLOR_2 = 'PDS_REPLACE_WITH_LINEAR_GRADIENT_2';
+export const BUTTON_LINK_SKELETON_WIDTH = 100;
 
 export const getBaseSkeletonStyles = (): Styles => {
   return {
@@ -30,10 +31,19 @@ export const getBaseSkeletonStyles = (): Styles => {
   };
 };
 
+export const getButtonLinkSkeletonStyles = (): Styles => {
+  return {
+    display: 'flex',
+    width: pxToRemWithUnit(BUTTON_LINK_SKELETON_WIDTH),
+    height: pxToRemWithUnit(48),
+  };
+};
+
 export const getButtonLinkPureSkeletonStyles = (): Styles => {
   return {
-    width: pxToRemWithUnit(134),
-    height: pxToRemWithUnit(48),
+    display: 'flex',
+    width: pxToRemWithUnit(BUTTON_LINK_SKELETON_WIDTH),
+    height: pxToRemWithUnit(24),
   };
 };
 
