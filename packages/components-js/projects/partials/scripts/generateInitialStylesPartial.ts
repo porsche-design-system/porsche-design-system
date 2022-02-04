@@ -1,6 +1,7 @@
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
 import { joinArrayElementsToString } from './utils';
 import {
+  getButtonGroupSkeletonStyles,
   getButtonLinkPureSkeletonStyles,
   getButtonLinkSkeletonStyles,
   getCheckboxRadioWrapperSkeletonStyles,
@@ -25,6 +26,7 @@ export const generateInitialStylesPartial = (): string => {
   const skeletonKeyframes = '@keyframes shimmer{0%{background-position:-450px 0}100%{background-position:450px 0}}';
 
   const skeletonStyles = [
+    getButtonGroupSkeletonStyles(),
     getButtonLinkSkeletonStyles(),
     getButtonLinkPureSkeletonStyles(),
     getCheckboxRadioWrapperSkeletonStyles(),
@@ -80,7 +82,7 @@ export const generateInitialStylesPartial = (): string => {
     prefixedTagNamesWithSkeleton.forEach(prefixedTagName =>{
       const prefixRegExp = new RegExp(\`\${prefix}-\`, 'g');
       const tagName = prefixedTagName.replace(prefixRegExp, '');
-      const tagRegExp = new RegExp(tagName, 'g');
+      const tagRegExp = new RegExp(\`\${tagName}(?!-)\`, 'g');
       skeletonStyles = skeletonStyles.replace(tagRegExp, prefixedTagName);
     });
   }

@@ -4,25 +4,25 @@ import type { ButtonGroupDirectionType, ButtonGroupDirection } from './button-gr
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import {
   addImportantToEachRule,
-  getButtonGroupColumnStyles,
-  getButtonGroupRowStyles,
-  getButtonGroupSlottedColumnStyles,
-  getButtonGroupSlottedRowStyles,
+  getButtonGroupColumnJssStyle,
+  getButtonGroupRowJssStyle,
+  getButtonGroupSlottedColumnJssStyle,
+  getButtonGroupSlottedRowJssStyle,
 } from '../../../styles';
 import { spacing } from '@porsche-design-system/utilities-v2';
 
 const getDirectionStyles: GetStylesFunction = (direction: ButtonGroupDirectionType): JssStyle => {
   const styles: { [key in ButtonGroupDirectionType]: JssStyle } = {
-    column: getButtonGroupColumnStyles(),
-    row: getButtonGroupRowStyles(),
+    column: getButtonGroupColumnJssStyle(),
+    row: getButtonGroupRowJssStyle(),
   };
   return styles[direction];
 };
 
 const getDirectionSlottedStyles: GetStylesFunction = (direction: ButtonGroupDirectionType): JssStyle => {
   const styles: { [key in ButtonGroupDirectionType]: JssStyle } = {
-    column: getButtonGroupSlottedColumnStyles(),
-    row: getButtonGroupSlottedRowStyles(),
+    column: getButtonGroupSlottedColumnJssStyle(),
+    row: getButtonGroupSlottedRowJssStyle(),
   };
   return styles[direction];
 };
