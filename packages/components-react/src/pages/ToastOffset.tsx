@@ -8,7 +8,6 @@ export const ToastOffsetPage = (): JSX.Element => {
     addMessage({ text: 'Some message' });
   }, [addMessage]);
 
-
   const style = `
     .playground {
       height: 300px;

@@ -5,8 +5,10 @@ import * as globby from 'globby';
 import { convertToAngular } from '@porsche-design-system/storefront/src/utils/convertToAngular';
 import { convertToReact } from '@porsche-design-system/storefront/src/utils/convertToReact';
 
+/** array of html file names that don't get converted */
 const PAGES_TO_SKIP: string[] = ['table'];
-const PAGES_FOR_E2E: string[] = ['core-initializer', 'overview']; // TODO: overview is vrt page
+/** array of html file names that are converted but without route since it is maintained manually */
+const PAGES_WITHOUT_ROUTE: string[] = ['core-initializer', 'overview'];
 
 type Framework = 'angular' | 'react';
 
@@ -39,7 +41,8 @@ const writeFile = (filePath: string, content: string): void => {
 };
 
 const normalizeImportPath = (input: string): string => paramCase(input.replace('.component', ''));
-const isE2EPage = (importPath: string): boolean => PAGES_FOR_E2E.includes(normalizeImportPath(importPath));
+const isPageWithoutRoute = (importPath: string): boolean =>
+  PAGES_WITHOUT_ROUTE.includes(normalizeImportPath(importPath));
 
 const getRoutes = (importPaths: string[], framework: Framework): string => {
   const componentSuffix = framework === 'angular' ? '' : 'Page';
@@ -47,7 +50,7 @@ const getRoutes = (importPaths: string[], framework: Framework): string => {
 
   return (
     importPaths
-      .filter((importPath) => !isE2EPage(importPath))
+      .filter((importPath) => !isPageWithoutRoute(importPath))
       .map((importPath) =>
         [
           '{',
@@ -72,7 +75,7 @@ const getImportsAndExports = (importPaths: string[], framework: Framework): stri
   return importPaths
     .map((importPath) => {
       const componentImport = `import { ${pascalCase(importPath)}${componentSuffix} } from '${importPath}';`;
-      return isE2EPage(importPath)
+      return isPageWithoutRoute(importPath)
         ? [`export * from '${importPath}';`, isAngular && `${componentImport}`]
         : [componentImport];
     })
@@ -110,7 +113,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
 
       const isOverviewPage = fileName === 'overview';
       const isIconPage = fileName === 'icon';
-      const isOnInit = script && !isIconPage;
+      const usesOnInit = script && !isIconPage;
 
       const iconsRegEx = /(<div class="playground[\sa-z]+overview".*?>)\n(<\/div>)/;
 
@@ -125,7 +128,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
         const angularImports = [
           'ChangeDetectionStrategy',
           'Component',
-          isOnInit && 'OnInit',
+          usesOnInit && 'OnInit',
           usesComponentsReady && 'ChangeDetectorRef',
         ]
           .filter((x) => x)
@@ -154,10 +157,10 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
         const styles = style ? `\n  styles: [\n    \`\n      ${style}\n    \`,\n  ],` : '';
 
         // implementation
-        const classImplements = script && !isIconPage ? 'implements OnInit ' : '';
-        const classImplementation = (
-          usesComponentsReady
-            ? `public allReady: boolean = false;
+        const classImplements = usesOnInit ? 'implements OnInit ' : '';
+        let classImplementation = '';
+        if (usesComponentsReady) {
+          classImplementation = `public allReady: boolean = false;
 
 constructor(private cdr: ChangeDetectorRef) {}
 
@@ -166,19 +169,20 @@ ngOnInit() {
     this.allReady = true;
     this.cdr.markForCheck();
   });
-}`
-            : isIconPage
-            ? `public icons = ICON_NAMES as IconName[];`
-            : usesToast
-            ? `constructor(private toastManager: ToastManager) {}
+}`;
+        } else if (isIconPage) {
+          classImplementation = `public icons = ICON_NAMES as IconName[];`;
+        } else if (usesToast) {
+          classImplementation = `constructor(private toastManager: ToastManager) {}
 
 ngOnInit() {
   this.toastManager.addMessage({ text: ${toastText} });
-}`
-            : usesQuerySelector
-            ? `ngOnInit() {\n  ${script}\n}`
-            : ''
-        )
+}`;
+        } else if (usesQuerySelector) {
+          classImplementation = `ngOnInit() {\n  ${script}\n}`;
+        }
+
+        classImplementation = classImplementation
           .replace(/^(.)/, '\n$1') // leading new line if there is any content
           .replace(/(.)$/, '$1\n') // trailing new line if there is any content
           .replace(/(\n)(.)/g, '$1  $2'); // fix indentation
@@ -208,9 +212,10 @@ $2`
           );
         }
 
-        fileContent = fileContent.replace(/(\n)([ <>]+)/g, '$1    $2'); // fix indentation
-        fileContent = fileContent.replace(/\\/g, '\\\\'); // fix \\ in generated output
-        fileContent = fileContent.replace(/\`/g, '\\`'); // fix \` in generated output
+        fileContent = fileContent
+          .replace(/(\n)([ <>]+)/g, '$1    $2') // fix indentation
+          .replace(/\\/g, '\\\\') // fix \\ in generated output
+          .replace(/\`/g, '\\`'); // fix \` in generated output
 
         fileContent = `${comment}
 ${imports}
@@ -228,7 +233,6 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
         fileName = `${fileName}.component.ts`;
       } else if (framework === 'react') {
         // imports
-
         const reactImports = [
           (usesComponentsReady || usesQuerySelector) && !isIconPage && 'useEffect',
           usesComponentsReady && 'useState',
@@ -236,6 +240,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
           .filter((x) => x)
           .sort(byAlphabet)
           .join(', ');
+
         const componentImports = Array.from(fileContent.matchAll(/<(?:[a-z-]*)(p-[\w-]+)/g))
           .map(([, tagName]) => tagName)
           .filter((tagName, index, arr) => arr.findIndex((t) => t === tagName) === index)
@@ -249,6 +254,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
           .filter((x) => x)
           .sort(byAlphabet)
           .join(', ');
+
         const imports = [
           `import { ${pdsImports} } from '@porsche-design-system/components-react';`,
           reactImports && `import { ${reactImports} } from 'react';`,
@@ -274,13 +280,12 @@ useEffect(() => {
           useStateOrEffect = `const { addMessage } = useToastManager();
 useEffect(() => {
   addMessage({ text: ${toastText} });
-}, [addMessage]);
-`;
+}, [addMessage]);`;
         } else if (!isIconPage && usesQuerySelector) {
           useStateOrEffect = `useEffect(() => {
   ${script}
 }, []);`;
-        } else useStateOrEffect = '';
+        }
 
         const componentLogic = [useStateOrEffect, styleConst]
           .filter((x) => x)
