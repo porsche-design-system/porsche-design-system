@@ -16,7 +16,6 @@ export const getButtonGroupSkeletonStyles = (): string => {
     '@global': {
       'p-button-group:not(.hydrated)': {
         display: 'flex',
-        marginTop: `-${spacing[16]}`,
         ...getButtonGroupColumnJssStyle(),
         [mediaQuery('xs')]: {
           ...getButtonGroupRowJssStyle(),

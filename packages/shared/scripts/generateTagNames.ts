@@ -12,11 +12,14 @@ const TAG_NAMES_WITH_SKELETON: TagName[] = [
   'p-button',
   'p-button-pure',
   'p-button-group',
+  'p-checkbox-wrapper',
+  'p-content-wrapper',
+  'p-flex',
+  'p-grid',
   'p-select-wrapper',
   'p-link',
   'p-link-pure',
   'p-radio-button-wrapper',
-  'p-checkbox-wrapper',
   'p-text-field-wrapper',
 ];
 

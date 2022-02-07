@@ -5,6 +5,9 @@ import {
   getButtonLinkPureSkeletonStyles,
   getButtonLinkSkeletonStyles,
   getCheckboxRadioWrapperSkeletonStyles,
+  getContentWrapperSkeletonStyles,
+  getFlexSkeletonStyles,
+  getGridSkeletonStyles,
   getSelectTextFieldWrapperSkeletonStyles,
   SKELETON_COLOR_THEME_PLACEHOLDER,
   SKELETON_LINEAR_GRADIENT_COLOR_1,
@@ -30,6 +33,9 @@ export const generateInitialStylesPartial = (): string => {
     getButtonLinkSkeletonStyles(),
     getButtonLinkPureSkeletonStyles(),
     getCheckboxRadioWrapperSkeletonStyles(),
+    getContentWrapperSkeletonStyles(),
+    getFlexSkeletonStyles(),
+    getGridSkeletonStyles(),
     getSelectTextFieldWrapperSkeletonStyles(),
   ].join('');
 
