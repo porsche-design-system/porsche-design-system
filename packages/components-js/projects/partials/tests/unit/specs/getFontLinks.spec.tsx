@@ -168,15 +168,15 @@ describe('getFontLinks()', () => {
     type FontWeight = 'regular' | 'thin' | 'semi-bold' | 'bold';
 
     const getRenderedInnerHtml = (opts?: { subset?: 'latin' | 'greek' | 'cyril'; weights?: FontWeight[] }): string => {
-      const { subset = 'latin', weights = ['regular'] } = opts;
+      const { subset = 'latin', weights = ['regular'] } = opts || {};
 
       const { container } = render(<>{getFontLinks({ subset, weights, format: 'jsx' })}</>);
       return container.innerHTML.replace(/"/g, '');
     };
 
     it('should return default url', () => {
-      const result = getRenderedInnerHtml({ subset: 'latin' });
-
+      const { container } = render(<>{getFontLinks({ format: 'jsx' })}</>);
+      const result = container.innerHTML.replace(/"/g, '');
       expect(result).toMatch(getPartialResultRegEx({ format: 'jsx' }));
     });
 
