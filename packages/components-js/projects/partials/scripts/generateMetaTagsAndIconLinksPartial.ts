@@ -42,16 +42,16 @@ type MetaIconsOptions = {
   cdn?: Cdn;
   format?: Format;
 };
-type MetaIconsOptionsHtml = MetaIconsOptions & {
+type MetaIconsOptionsFormatHtml = MetaIconsOptions & {
   format?: 'html';
 };
-type MetaIconsOptionsJsx = MetaIconsOptions & {
+type MetaIconsOptionsFormatJsx = MetaIconsOptions & {
    format?: 'jsx';
 };`;
 
   const func = `
-export function getMetaTagsAndIconLinks(opts?: MetaIconsOptionsHtml): string;
-export function getMetaTagsAndIconLinks(opts?: MetaIconsOptionsJsx): JSX.Element[];
+export function getMetaTagsAndIconLinks(opts?: MetaIconsOptionsFormatHtml): string;
+export function getMetaTagsAndIconLinks(opts?: MetaIconsOptionsFormatJsx): JSX.Element[];
 export function getMetaTagsAndIconLinks(opts?: MetaIconsOptions): string | JSX.Element[] {
   const { appTitle, cdn, format }: MetaIconsOptions = {
     cdn: 'auto',

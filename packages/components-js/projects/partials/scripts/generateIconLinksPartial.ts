@@ -20,7 +20,7 @@ type IconLinksOptionsWithoutTags = IconLinksOptions & {
   withoutTags?: true;
   format?: 'html';
 };
-type IconLinksOptionsJsx = IconLinksOptions & {
+type IconLinksOptionsFormatJsx = IconLinksOptions & {
   withoutTags?: false;
   format?: 'jsx';
 };`;
@@ -29,7 +29,7 @@ type IconLinksOptionsJsx = IconLinksOptions & {
 
   const func = `export function getIconLinks(opts?: IconLinksOptionsWithTags): string;
 export function getIconLinks(opts?: IconLinksOptionsWithoutTags): string[];
-export function getIconLinks(opts?: IconLinksOptionsJsx): JSX.Element[];
+export function getIconLinks(opts?: IconLinksOptionsFormatJsx): JSX.Element[];
 export function getIconLinks(opts?: IconLinksOptions): string | string[] | JSX.Element[] {
   const { icons, cdn, withoutTags, format }: IconLinksOptions = {
     icons: ['arrowHeadRight'],

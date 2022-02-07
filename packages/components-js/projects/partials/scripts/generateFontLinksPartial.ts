@@ -23,7 +23,7 @@ type FontPreloadLinkOptionsWithoutTags = FontPreloadLinkOptions & {
   withoutTags?: true;
   format?: 'html';
 };
-type FontPreloadLinkOptionsJsx = FontPreloadLinkOptions & {
+type FontPreloadLinkOptionsFormatJsx = FontPreloadLinkOptions & {
   withoutTags?: false;
   format?: 'jsx';
 };`;
@@ -32,7 +32,7 @@ type FontPreloadLinkOptionsJsx = FontPreloadLinkOptions & {
 
   const func = `export function getFontLinks(opts?: FontPreloadLinkOptionsWithTags): string;
 export function getFontLinks(opts?: FontPreloadLinkOptionsWithoutTags): string[];
-export function getFontLinks(opts?: FontPreloadLinkOptionsJsx): JSX.Element[];
+export function getFontLinks(opts?: FontPreloadLinkOptionsFormatJsx): JSX.Element[];
 export function getFontLinks(opts?: FontPreloadLinkOptions): string | string[] | JSX.Element[] {
   const { subset, weights, cdn, withoutTags, format }: FontPreloadLinkOptions = {
     subset: 'latin',
