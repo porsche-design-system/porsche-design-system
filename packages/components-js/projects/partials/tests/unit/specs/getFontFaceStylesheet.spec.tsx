@@ -1,20 +1,11 @@
-import { CDN_BASE_URL, CDN_BASE_URL_CN } from '../../../../../../../cdn.config';
 import { getFontFaceStylesheet } from '../../../src';
 import { render } from '@testing-library/react';
+import { getCdnBaseUrl, transformToRegex } from '../helpers/shared';
 
 describe('getFontFaceStylesheet()', () => {
-  const getCdnBaseUrl = (cdn: string): string => {
-    return cdn === 'auto' ? CDN_BASE_URL : CDN_BASE_URL_CN;
-  };
-
   const getUrl = (cdn: string = 'auto'): string => {
     const suffix = cdn === 'auto' ? '' : '.cn';
     return `${getCdnBaseUrl(cdn)}/porsche-design-system/styles/font-face.min${suffix}.*.css`;
-  };
-
-  const transformToRegex = (markup: string): RegExp => {
-    // ^ and $ ensure that the string does not contain any other values before or after the expected
-    return new RegExp(`^${markup.replace(/(\/|\.|\+)/g, '\\$1').replace(/\*/g, '[a-z0-9]+')}$`);
   };
 
   const getExpectedPartialResultStringRegEx = (cdn: string = 'auto', format: string = 'html') => {
