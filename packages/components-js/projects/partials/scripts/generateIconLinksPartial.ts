@@ -1,4 +1,4 @@
-import { minifyHTML } from './utils';
+import { minifyHTML, withoutTagsOption } from './utils';
 import { CDN_BASE_PATH_ICONS } from '../../../../../cdn.config';
 import { ICON_NAMES, ICONS_MANIFEST } from '@porsche-design-system/icons';
 
@@ -6,32 +6,30 @@ export const generateIconLinksPartial = (): string => {
   const iconType = ICON_NAMES.map((x) => `'${x}'`).join(' | ');
   const types = `type IconNameCamelCase = ${iconType};
 
-type IconLinksOptions = {
+type GetIconLinks = {
   icons?: IconNameCamelCase[];
   cdn?: Cdn;
-  withoutTags?: boolean;
+  ${withoutTagsOption}
   format?: Format;
 };
-type IconLinksOptionsWithTags = IconLinksOptions & {
-  withoutTags?: false;
-  format?: 'html';
+type GetIconLinksFormatHtml = Omit<GetIconLinks, 'withoutTags'> & {
+  format: 'html';
 };
-type IconLinksOptionsWithoutTags = IconLinksOptions & {
-  withoutTags?: true;
-  format?: 'html';
+type GetIconLinksFormatJsx = Omit<GetIconLinks, 'withoutTags'> & {
+  format: 'jsx';
 };
-type IconLinksOptionsFormatJsx = IconLinksOptions & {
-  withoutTags?: false;
-  format?: 'jsx';
+type GetIconLinksWithoutTags = Omit<GetIconLinks, 'format'> & {
+  withoutTags: true;
 };`;
 
   const link = minifyHTML('<link rel="prefetch" href="${url}" as="image" type="image/svg+xml" crossorigin>');
 
-  const func = `export function getIconLinks(opts?: IconLinksOptionsWithTags): string;
-export function getIconLinks(opts?: IconLinksOptionsWithoutTags): string[];
-export function getIconLinks(opts?: IconLinksOptionsFormatJsx): JSX.Element[];
-export function getIconLinks(opts?: IconLinksOptions): string | string[] | JSX.Element[] {
-  const { icons, cdn, withoutTags, format }: IconLinksOptions = {
+  const func = `export function getIconLinks(opts?: GetIconLinksFormatJsx): JSX.Element;
+export function getIconLinks(opts?: GetIconLinksFormatHtml): string;
+export function getIconLinks(opts?: GetIconLinksWithoutTags): string[];
+export function getIconLinks(opts?: GetIconLinks): string;
+export function getIconLinks(opts?: GetIconLinks): string | string[] | JSX.Element {
+  const { icons, cdn, withoutTags, format }: GetIconLinks = {
     icons: ['arrowHeadRight'],
     cdn: 'auto',
     withoutTags: false,
@@ -56,9 +54,9 @@ Please use only valid icon names:
   const linksHtml = urls
     .map((url) => \`${link}\`)
     .join('');
-  const linksJsx = urls.map((url) => <link rel="prefetch" href={url} as="image" type="image/svg+xml" crossOrigin="true" />);
+  const linksJsx = urls.map((url, index) => <link key={index} rel="prefetch" href={url} as="image" type="image/svg+xml" crossOrigin="true" />);
 
-  const markup = format === 'html' ? linksHtml : linksJsx;
+  const markup = format === 'html' ? linksHtml : <>{linksJsx}</>;
   return withoutTags ? urls : markup;
 }`;
 
