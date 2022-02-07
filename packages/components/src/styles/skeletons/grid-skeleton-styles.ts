@@ -18,7 +18,7 @@ export const getGridSkeletonStyles = (): string => {
       'p-grid-item': {
         '&:not(.hydrated)': {
           boxSizing: 'border-box',
-          width: `${gridItemWidth}%`,
+          // width: `${gridItemWidth}%`,
           minWidth: `${gridItemWidth}%`,
           marginLeft: '0%',
           paddingLeft: getGutterRem(16),
