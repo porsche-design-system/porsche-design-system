@@ -41,17 +41,10 @@ type MetaIconsOptions = {
   appTitle: string;
   cdn?: Cdn;
   format?: Format;
-};
-type MetaIconsOptionsFormatHtml = MetaIconsOptions & {
-  format?: 'html';
-};
-type MetaIconsOptionsFormatJsx = MetaIconsOptions & {
-   format?: 'jsx';
 };`;
 
-  const func = `
-export function getMetaTagsAndIconLinks(opts?: MetaIconsOptionsFormatHtml): string;
-export function getMetaTagsAndIconLinks(opts?: MetaIconsOptionsFormatJsx): JSX.Element[];
+  const func = `export function getMetaTagsAndIconLinks(opts?: MetaIconsOptions & { format?: 'html'}): string;
+export function getMetaTagsAndIconLinks(opts?: MetaIconsOptions & { format?: 'jsx'}): JSX.Element[];
 export function getMetaTagsAndIconLinks(opts?: MetaIconsOptions): string | JSX.Element[] {
   const { appTitle, cdn, format }: MetaIconsOptions = {
     cdn: 'auto',
