@@ -1,4 +1,6 @@
 import { getMetaTagsAndIconLinks } from '../../../src';
+import { render } from '@testing-library/react';
+import { transformToRegex } from '../helpers/shared';
 
 describe('getMetaTagsAndIconLinks()', () => {
   const convertToRegex = (link: string): RegExp => {
@@ -48,16 +50,21 @@ describe('getMetaTagsAndIconLinks()', () => {
   });
 
   it('should return valid jsx meta tags and icon links', () => {
-    const result = getMetaTagsAndIconLinks({ appTitle: 'Porsche UX', format: 'jsx' });
-    result.forEach((element) => {
-      // href is variable due to hash and cant be overwritten so we clone the element
-      if (JSON.stringify(element).includes('href')) {
-        const link = { ...element, props: { ...element.props, href: 'https://cdn.ui.porsche.com' } };
-        expect(link).toMatchSnapshot();
-      } else if (JSON.stringify(element).includes('content":"https')) {
-        const link = { ...element, props: { ...element.props, content: 'https://cdn.ui.porsche.com' } };
-        expect(link).toMatchSnapshot();
-      } else expect(element).toMatchSnapshot();
-    });
+    const expectedResult = [
+      '<meta name="theme-color" content="#FFFFFF">',
+      '<meta name="apple-mobile-web-app-capable" content="yes">',
+      '<meta name="apple-mobile-web-app-status-bar-style" content="white">',
+      '<meta name="apple-mobile-web-app-title" content="Porsche UX">',
+      '<meta name="msapplication-TileImage" content="https://cdn.ui.porsche.com/porsche-design-system/meta-icons/mstile-270x270.*.png">',
+      '<meta name="msapplication-TileColor" content="#FFFFFF">',
+      '<link rel="icon" type="image/png" sizes="32x32" href="https://cdn.ui.porsche.com/porsche-design-system/meta-icons/favicon-32x32.*.png">',
+      '<link rel="apple-touch-icon" href="https://cdn.ui.porsche.com/porsche-design-system/meta-icons/apple-touch-icon-180x180.*.png">',
+      '<link rel="manifest" href="https://cdn.ui.porsche.com/porsche-design-system/meta-icons/manifest.*.webmanifest">',
+    ].join('');
+
+    const { container } = render(<>{getMetaTagsAndIconLinks({ appTitle: 'Porsche UX', format: 'jsx' })}</>);
+    const result = container.innerHTML;
+
+    expect(result).toMatch(transformToRegex(expectedResult));
   });
 });

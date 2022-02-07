@@ -15,35 +15,21 @@ describe('getLoaderScript()', () => {
   });
 
   describe('withoutTags', () => {
-    let consoleWarnSpy;
-
-    beforeEach(() => (consoleWarnSpy = jest.spyOn(global.console, 'warn').mockImplementation(() => {})));
-    afterEach(() => jest.clearAllMocks());
-
     it('should return content of components-js tmp build without script tag', () => {
       const result = getLoaderScript({ withoutTags: true });
 
-      expect(consoleWarnSpy).toBeCalledWith(
-        'The option "{ withoutTags: true }" of partial getLoaderScript() is deprecated and will be removed in v3'
-      );
       expect(result).toMatch(fileContent);
     });
 
     it('should call load method with supplied prefix', () => {
       const result = getLoaderScript({ withoutTags: true, prefix: 'my-prefix' });
 
-      expect(consoleWarnSpy).toBeCalledWith(
-        'The option "{ withoutTags: true }" of partial getLoaderScript() is deprecated and will be removed in v3'
-      );
       expect(result.endsWith("porscheDesignSystem.load({prefix:'my-prefix'})")).toBe(true);
     });
 
     it('should call load method with supplied prefixes', () => {
       const result = getLoaderScript({ withoutTags: true, prefix: ['my-prefix', 'another-prefix'] });
 
-      expect(consoleWarnSpy).toBeCalledWith(
-        'The option "{ withoutTags: true }" of partial getLoaderScript() is deprecated and will be removed in v3'
-      );
       expect(
         result.endsWith(
           "porscheDesignSystem.load({prefix:'my-prefix'});porscheDesignSystem.load({prefix:'another-prefix'})"
