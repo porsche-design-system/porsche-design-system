@@ -1,21 +1,20 @@
 import { Page } from 'puppeteer';
 import { getLifecycleStatus, goto, selectNode, waitForComponentsReady } from '../helpers';
 
-describe('stencil-lifecycles', () => {
-  let page: Page;
-  beforeEach(async () => (page = await browser.newPage()));
-  afterEach(async () => await page.close());
+let page: Page;
+beforeEach(async () => (page = await browser.newPage()));
+afterEach(async () => await page.close());
 
-  it('should not trigger updates on non-default props', async () => {
-    // Throttle cpu 6x
-    const client = await page.target().createCDPSession();
-    await client.send('Emulation.setCPUThrottlingRate', { rate: 6 });
+it('should not trigger updates on non-default props', async () => {
+  // Throttle cpu 6x
+  const client = await page.target().createCDPSession();
+  await client.send('Emulation.setCPUThrottlingRate', { rate: 6 });
 
-    await goto(page, 'stencil-lifecycles');
+  await goto(page, 'stencil-lifecycles');
 
-    await page.evaluate(() => {
-      const script = document.createElement('script');
-      script.text = `
+  await page.evaluate(() => {
+    const script = document.createElement('script');
+    script.text = `
       const LIFECYCLE_STATUS_KEY = 'stencilLifecycleStatus';
 
       // initial status
@@ -44,37 +43,34 @@ describe('stencil-lifecycles', () => {
 
         });
       }`;
-      document.body.appendChild(script);
-    });
-
-    const button = await selectNode(page, 'button');
-    const status = await getLifecycleStatus(page);
-
-    expect(status.componentDidUpdate.all, 'initial componentDidUpdate: all').toBe(0);
-    expect(status.componentDidLoad.all, 'initial componentDidLoad: all').toBe(0);
-
-    // Renders PLinkPure on site
-    await button.click();
-    await waitForComponentsReady(page);
-
-    const status1 = await getLifecycleStatus(page);
-
-    expect(status1.componentDidUpdate['p-link-pure'], 'status after first render componentDidUpdate: p-link-pure').toBe(
-      0
-    );
-    expect(status1.componentDidUpdate.all, 'status after first render componentDidUpdate: all').toBe(0);
-    expect(status1.componentDidLoad.all, 'status after first render componentDidLoad: all').toBe(3);
-
-    // Changes key attribute on PLinkPure
-    await button.click();
-    await waitForComponentsReady(page);
-
-    const status2 = await getLifecycleStatus(page);
-
-    expect(status2.componentDidUpdate['p-link-pure'], 'status after key change componentDidUpdate: p-link-pure').toBe(
-      0
-    );
-    expect(status2.componentDidUpdate.all, 'status after key change componentDidUpdate: all').toBe(0);
-    expect(status2.componentDidLoad.all, 'status after key change componentDidLoad: all').toBe(6);
+    document.body.appendChild(script);
   });
+
+  const button = await selectNode(page, 'button');
+  const status = await getLifecycleStatus(page);
+
+  expect(status.componentDidUpdate.all, 'initial componentDidUpdate: all').toBe(0);
+  expect(status.componentDidLoad.all, 'initial componentDidLoad: all').toBe(0);
+
+  // Renders PLinkPure on site
+  await button.click();
+  await waitForComponentsReady(page);
+
+  const status1 = await getLifecycleStatus(page);
+
+  expect(status1.componentDidUpdate['p-link-pure'], 'status after first render componentDidUpdate: p-link-pure').toBe(
+    0
+  );
+  expect(status1.componentDidUpdate.all, 'status after first render componentDidUpdate: all').toBe(0);
+  expect(status1.componentDidLoad.all, 'status after first render componentDidLoad: all').toBe(3);
+
+  // Changes key attribute on PLinkPure
+  await button.click();
+  await waitForComponentsReady(page);
+
+  const status2 = await getLifecycleStatus(page);
+
+  expect(status2.componentDidUpdate['p-link-pure'], 'status after key change componentDidUpdate: p-link-pure').toBe(0);
+  expect(status2.componentDidUpdate.all, 'status after key change componentDidUpdate: all').toBe(0);
+  expect(status2.componentDidLoad.all, 'status after key change componentDidLoad: all').toBe(6);
 });

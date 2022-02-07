@@ -1,3 +1,4 @@
+/* Auto Generated File */
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
@@ -49,14 +50,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should color full width although width 'basic' is enabled">
-      <p-content-wrapper [width]="'basic'" style="background: deeppink;">
+      <p-content-wrapper [width]="'basic'" style="background: deeppink">
         <p>Some content</p>
       </p-content-wrapper>
     </div>
 
     <div class="playground" title="should not cut off to wide content">
       <p-content-wrapper [width]="'basic'">
-        <p style="margin-left: -2000px; margin-right: -2000px;">Some content</p>
+        <p style="margin-left: -2000px; margin-right: -2000px">Some content</p>
       </p-content-wrapper>
     </div>
 

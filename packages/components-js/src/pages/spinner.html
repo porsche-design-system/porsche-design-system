@@ -18,10 +18,9 @@
 </div>
 
 <div class="playground light" title="should show spinner small when size is undefined">
-  <p-spinner class="setSizeToUndefined"></p-spinner>
+  <p-spinner id="setSizeToUndefined"></p-spinner>
 </div>
 
 <script>
-  const spinner = document.querySelector('.setSizeToUndefined');
-  spinner.size = undefined;
+  document.querySelector('#setSizeToUndefined').size = undefined;
 </script>
