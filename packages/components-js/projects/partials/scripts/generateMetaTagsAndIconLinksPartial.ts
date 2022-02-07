@@ -4,10 +4,11 @@ import { CDN_BASE_PATH_META_ICONS, CDN_BASE_URL, CDN_BASE_URL_CN } from '../../.
 
 const convertToJSX = (templates: string[]): JSX.Element[] => {
   return templates.map(
-    (template) =>
+    (template, index) =>
       template
         .replace(/'\$cdnBaseUrl(.*?)'/g, '{`${cdnBaseUrl}$1`}')
-        .replace('"$appTitle"', '{appTitle}') as unknown as JSX.Element
+        .replace('"$appTitle"', '{appTitle}')
+        .replace('/>', `key={${index}} />`) as unknown as JSX.Element
   );
 };
 
@@ -44,8 +45,8 @@ type MetaIconsOptions = {
 };`;
 
   const func = `export function getMetaTagsAndIconLinks(opts?: MetaIconsOptions & { format?: 'html'}): string;
-export function getMetaTagsAndIconLinks(opts?: MetaIconsOptions & { format?: 'jsx'}): JSX.Element[];
-export function getMetaTagsAndIconLinks(opts?: MetaIconsOptions): string | JSX.Element[] {
+export function getMetaTagsAndIconLinks(opts?: MetaIconsOptions & { format?: 'jsx'}): JSX.Element;
+export function getMetaTagsAndIconLinks(opts?: MetaIconsOptions): string | JSX.Element {
   const { appTitle, cdn, format }: MetaIconsOptions = {
     cdn: 'auto',
     format: 'html',
@@ -64,7 +65,7 @@ export function getMetaTagsAndIconLinks(opts?: MetaIconsOptions): string | JSX.E
   const metaIconTags = ${minifiedMetaIconsHTML}.map(metaIconTemplate => metaIconTemplate.replace('$appTitle', \`"\${appTitle}"\`).replace('$cdnBaseUrl', cdnBaseUrl));
   const webManifestTag = ${minifiedManifestsHTML}.find(item => item.includes(cdnBaseUrl));
 
-  return format === 'html' ? [...metaIconTags, webManifestTag].join('') : [...metaIconTagsJsx, manifestTagJsx];
+  return format === 'html' ? [...metaIconTags, webManifestTag].join('') : <>{metaIconTagsJsx}{manifestTagJsx}</>;
 }`;
 
   return [types, func].join('\n\n');
