@@ -17,26 +17,20 @@
 </div>
 
 <div class="playground light" title="should render with responsive label">
-  <p-checkbox-wrapper
-    label="Some label"
-    hide-label="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
-  >
+  <p-checkbox-wrapper label="Some label" hide-label="{ base: true, xs: false, s: true, m: false, l: true, xl: false }">
     <input type="checkbox" name="some-name" />
   </p-checkbox-wrapper>
-  <p-checkbox-wrapper
-    label="Some label"
-    hide-label="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
-  >
+  <p-checkbox-wrapper label="Some label" hide-label="{ base: true, xs: false, s: true, m: false, l: true, xl: false }">
     <input type="checkbox" name="some-name" checked />
   </p-checkbox-wrapper>
 </div>
 
 <div class="playground light" title="should render in indeterminate mode">
   <p-checkbox-wrapper label="Some label">
-    <input type="checkbox" name="some-name" class="example-set-to-indeterminate" />
+    <input type="checkbox" name="some-name" class="set-to-indeterminate" />
   </p-checkbox-wrapper>
   <p-checkbox-wrapper label="Some label">
-    <input type="checkbox" name="some-name" checked class="example-set-to-indeterminate" />
+    <input type="checkbox" name="some-name" checked class="set-to-indeterminate" />
   </p-checkbox-wrapper>
 </div>
 
@@ -124,8 +118,9 @@
     <input type="checkbox" name="some-name" />
   </p-checkbox-wrapper>
 </div>
-<script type="text/javascript">
-  document.querySelectorAll('.example-set-to-indeterminate').forEach(function (checkbox) {
+
+<script>
+  document.body.querySelectorAll('.set-to-indeterminate').forEach((checkbox) => {
     checkbox.indeterminate = true;
   });
 </script>

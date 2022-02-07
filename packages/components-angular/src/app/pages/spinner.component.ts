@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+/* Auto Generated File */
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'page-spinner',
@@ -15,7 +16,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-spinner [size]="'small'"></p-spinner>
       <p-spinner [size]="'medium'"></p-spinner>
       <p-spinner [size]="'large'"></p-spinner>
-      <p-spinner [size]="'inherit'" style="width: 24px;"></p-spinner>
+      <p-spinner [size]="'inherit'" style="width: 24px"></p-spinner>
     </div>
 
     <div class="playground light" title="should show spinner in different sizes on different viewports">
@@ -23,9 +24,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should show spinner small when size is undefined">
-      <p-spinner [size]="undefined"></p-spinner>
+      <p-spinner id="setSizeToUndefined"></p-spinner>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SpinnerComponent {}
+export class SpinnerComponent implements OnInit {
+  ngOnInit() {
+    (document.querySelector('#setSizeToUndefined') as any).size = undefined;
+  }
+}

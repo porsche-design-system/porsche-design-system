@@ -1,10 +1,11 @@
+/* Auto Generated File */
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-flex',
   styles: [
     `
-      p-flex-item > p {
+      p-flex-item p {
         width: 100%;
         height: 100%;
         margin: 0;
@@ -14,36 +15,28 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         color: white;
         background-color: lightskyblue;
       }
-
-      p-flex-item:nth-child(1n) > p {
+    
+      p-flex-item:nth-child(1n) p {
         background-color: skyblue;
       }
-
-      p-flex-item:nth-child(2n) > p {
+    
+      p-flex-item:nth-child(2n) p {
         background-color: deepskyblue;
       }
-
-      p-flex-item:nth-child(3n) > p {
+    
+      p-flex-item:nth-child(3n) p {
         background-color: dodgerblue;
       }
-
-      p-flex-item:nth-child(4n) > p {
+    
+      p-flex-item:nth-child(4n) p {
         background-color: royalblue;
       }
-
-      .wide {
-        width: 80%;
-      }
-
-      .fixed-height {
-        height: 180px;
-      }
-
-      p-flex-item.highlight > p {
+    
+      p-flex-item.align-self p {
         background-color: deeppink;
       }
-
-      .wrap p {
+    
+      p-flex.wrap p {
         min-width: 10rem;
       }
     `,
@@ -177,7 +170,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render flex items by wrap mode 'nowrap'">
-      <p-flex [wrap]="'nowrap'" class="wrap">
+      <p-flex class="wrap" [wrap]="'nowrap'">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -209,7 +202,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render flex items by wrap mode 'wrap'">
-      <p-flex [wrap]="'wrap'" class="wrap">
+      <p-flex class="wrap" [wrap]="'wrap'">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -241,7 +234,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render flex items by wrap mode 'wrap-reverse'">
-      <p-flex [wrap]="'wrap-reverse'" class="wrap">
+      <p-flex class="wrap" [wrap]="'wrap-reverse'">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -273,7 +266,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should adapt wrap mode depending on viewport">
-      <p-flex [wrap]="{ base: 'nowrap', l: 'wrap-reverse' }" class="wrap">
+      <p-flex class="wrap" [wrap]="{ base: 'nowrap', l: 'wrap-reverse' }">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -403,7 +396,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-items mode 'stretch'">
-      <p-flex [alignItems]="'stretch'" class="fixed-height">
+      <p-flex [alignItems]="'stretch'" style="height: 180px">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -417,7 +410,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-items mode 'flex-start'">
-      <p-flex [alignItems]="'flex-start'" class="fixed-height">
+      <p-flex [alignItems]="'flex-start'" style="height: 180px">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -431,7 +424,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-items mode 'flex-end'">
-      <p-flex [alignItems]="'flex-end'" class="fixed-height">
+      <p-flex [alignItems]="'flex-end'" style="height: 180px">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -445,7 +438,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-items mode 'center'">
-      <p-flex [alignItems]="'center'" class="fixed-height">
+      <p-flex [alignItems]="'center'" style="height: 180px">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -459,7 +452,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-items mode 'baseline'">
-      <p-flex [alignItems]="'baseline'" class="fixed-height">
+      <p-flex [alignItems]="'baseline'" style="height: 180px">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -473,7 +466,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should adapt align-items mode depending on viewport">
-      <p-flex [alignItems]="{ base: 'flex-start', l: 'flex-end' }" class="fixed-height">
+      <p-flex [alignItems]="{ base: 'flex-start', l: 'flex-end' }" style="height: 180px">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -487,7 +480,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-content mode 'stretch'">
-      <p-flex [wrap]="'wrap'" [alignContent]="'stretch'" class="fixed-height wrap">
+      <p-flex class="wrap" [wrap]="'wrap'" [alignContent]="'stretch'" style="height: 180px">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -519,7 +512,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-content mode 'flex-start'">
-      <p-flex [wrap]="'wrap'" [alignContent]="'flex-start'" class="fixed-height wrap">
+      <p-flex class="wrap" [wrap]="'wrap'" [alignContent]="'flex-start'" style="height: 180px">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -551,7 +544,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-content mode 'flex-end'">
-      <p-flex [wrap]="'wrap'" [alignContent]="'flex-end'" class="fixed-height wrap">
+      <p-flex class="wrap" [wrap]="'wrap'" [alignContent]="'flex-end'" style="height: 180px">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -583,7 +576,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-content mode 'center'">
-      <p-flex [wrap]="'wrap'" [alignContent]="'center'" class="fixed-height wrap">
+      <p-flex class="wrap" [wrap]="'wrap'" [alignContent]="'center'" style="height: 180px">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -615,7 +608,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-content mode 'space-between'">
-      <p-flex [wrap]="'wrap'" [alignContent]="'space-between'" class="fixed-height wrap">
+      <p-flex class="wrap" [wrap]="'wrap'" [alignContent]="'space-between'" style="height: 180px">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -647,7 +640,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-content mode 'space-around'">
-      <p-flex [wrap]="'wrap'" [alignContent]="'space-around'" class="fixed-height wrap">
+      <p-flex class="wrap" [wrap]="'wrap'" [alignContent]="'space-around'" style="height: 180px">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -679,7 +672,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-content mode 'space-evenly'">
-      <p-flex [wrap]="'wrap'" [alignContent]="'space-evenly'" class="fixed-height wrap">
+      <p-flex class="wrap" [wrap]="'wrap'" [alignContent]="'space-evenly'" style="height: 180px">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -711,7 +704,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should adapt align-content mode depending on viewport">
-      <p-flex [wrap]="'wrap'" [alignContent]="{ base: 'flex-start', l: 'flex-end' }" class="fixed-height wrap">
+      <p-flex class="wrap" [wrap]="'wrap'" [alignContent]="{ base: 'flex-start', l: 'flex-end' }" style="height: 180px">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
@@ -800,7 +793,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should adapt width depending on viewport">
-      <p-flex [wrap]="'wrap'" class="wrap">
+      <p-flex class="wrap" [wrap]="'wrap'">
         <p-flex-item [width]="{ base: 'half', l: 'one-quarter' }">
           <p>1</p>
         </p-flex-item>
@@ -853,14 +846,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-self mode 'auto'">
-      <p-flex class="fixed-height" [alignItems]="'flex-end'">
-        <p-flex-item class="highlight" [alignSelf]="'stretch'">
+      <p-flex [alignItems]="'flex-end'" style="height: 180px">
+        <p-flex-item class="align-self" [alignSelf]="'stretch'">
           <p>1</p>
         </p-flex-item>
         <p-flex-item>
           <p>2</p>
         </p-flex-item>
-        <p-flex-item class="highlight" [alignSelf]="'auto'">
+        <p-flex-item class="align-self" [alignSelf]="'auto'">
           <p>3</p>
         </p-flex-item>
         <p-flex-item>
@@ -870,14 +863,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-self mode 'stretch'">
-      <p-flex class="fixed-height">
+      <p-flex style="height: 180px">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
         <p-flex-item>
           <p>2</p>
         </p-flex-item>
-        <p-flex-item class="highlight" [alignSelf]="'stretch'">
+        <p-flex-item class="align-self" [alignSelf]="'stretch'">
           <p>3</p>
         </p-flex-item>
         <p-flex-item>
@@ -887,14 +880,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-self mode 'flex-start'">
-      <p-flex class="fixed-height">
+      <p-flex style="height: 180px">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
         <p-flex-item>
           <p>2</p>
         </p-flex-item>
-        <p-flex-item class="highlight" [alignSelf]="'flex-start'">
+        <p-flex-item class="align-self" [alignSelf]="'flex-start'">
           <p>3</p>
         </p-flex-item>
         <p-flex-item>
@@ -904,14 +897,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-self mode 'flex-end'">
-      <p-flex class="fixed-height">
+      <p-flex style="height: 180px">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
         <p-flex-item>
           <p>2</p>
         </p-flex-item>
-        <p-flex-item class="highlight" [alignSelf]="'flex-end'">
+        <p-flex-item class="align-self" [alignSelf]="'flex-end'">
           <p>3</p>
         </p-flex-item>
         <p-flex-item>
@@ -921,14 +914,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-self mode 'center'">
-      <p-flex class="fixed-height">
+      <p-flex style="height: 180px">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
         <p-flex-item>
           <p>2</p>
         </p-flex-item>
-        <p-flex-item class="highlight" [alignSelf]="'center'">
+        <p-flex-item class="align-self" [alignSelf]="'center'">
           <p>3</p>
         </p-flex-item>
         <p-flex-item>
@@ -938,14 +931,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should render with align-self mode 'baseline'">
-      <p-flex class="fixed-height">
-        <p-flex-item class="highlight" [alignSelf]="'baseline'">
+      <p-flex style="height: 180px">
+        <p-flex-item class="align-self" [alignSelf]="'baseline'">
           <p>1</p>
         </p-flex-item>
         <p-flex-item>
           <p>2</p>
         </p-flex-item>
-        <p-flex-item class="highlight" [alignSelf]="'baseline'" style="margin-top: 1rem;">
+        <p-flex-item class="align-self" [alignSelf]="'baseline'" style="margin-top: 1rem">
           <p>3</p>
         </p-flex-item>
         <p-flex-item>
@@ -955,14 +948,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground" title="should adapt align-self mode depending on viewport">
-      <p-flex class="fixed-height">
+      <p-flex style="height: 180px">
         <p-flex-item>
           <p>1</p>
         </p-flex-item>
         <p-flex-item>
           <p>2</p>
         </p-flex-item>
-        <p-flex-item class="highlight" [alignSelf]="{ base: 'flex-start', l: 'flex-end' }">
+        <p-flex-item class="align-self" [alignSelf]="{ base: 'flex-start', l: 'flex-end' }">
           <p>3</p>
         </p-flex-item>
         <p-flex-item>
@@ -1006,10 +999,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground" title="should render by shrink mode '1'">
       <p-flex>
-        <p-flex-item [shrink]="1" class="wide">
+        <p-flex-item [shrink]="1" style="width: 80%">
           <p>1</p>
         </p-flex-item>
-        <p-flex-item class="wide">
+        <p-flex-item style="width: 80%">
           <p>2</p>
         </p-flex-item>
       </p-flex>
@@ -1017,10 +1010,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground" title="should render by shrink mode '0'">
       <p-flex>
-        <p-flex-item [shrink]="0" class="wide">
+        <p-flex-item [shrink]="0" style="width: 80%">
           <p>1</p>
         </p-flex-item>
-        <p-flex-item class="wide">
+        <p-flex-item style="width: 80%">
           <p>2</p>
         </p-flex-item>
       </p-flex>
@@ -1028,10 +1021,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground" title="should adapt shrink mode depending on viewport">
       <p-flex>
-        <p-flex-item [shrink]="{ base: 0, l: 1 }" class="wide">
+        <p-flex-item [shrink]="{ base: 0, l: 1 }" style="width: 80%">
           <p>1</p>
         </p-flex-item>
-        <p-flex-item class="wide">
+        <p-flex-item style="width: 80%">
           <p>2</p>
         </p-flex-item>
       </p-flex>

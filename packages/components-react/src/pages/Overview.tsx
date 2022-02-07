@@ -1,67 +1,22 @@
-import {
-  componentsReady,
-  PAccordion,
-  PBanner,
-  PInlineNotification,
-  PButton,
-  PButtonGroup,
-  PButtonPure,
-  PCheckboxWrapper,
-  PContentWrapper,
-  PDivider,
-  PFieldsetWrapper,
-  PFlex,
-  PFlexItem,
-  PGrid,
-  PGridItem,
-  PHeadline,
-  PIcon,
-  PLink,
-  PLinkPure,
-  PLinkSocial,
-  PMarque,
-  PorscheDesignSystemProvider,
-  PPagination,
-  PPopover,
-  PRadioButtonWrapper,
-  PSelectWrapper,
-  PSpinner,
-  PTable,
-  PTableBody,
-  PTableCell,
-  PTableHead,
-  PTableHeadCell,
-  PTableHeadRow,
-  PTableRow,
-  PTabs,
-  PTabsBar,
-  PTabsItem,
-  PText,
-  PTextareaWrapper,
-  PTextFieldWrapper,
-  PTextList,
-  PTextListItem,
-} from '@porsche-design-system/components-react';
+/* Auto Generated File */
+import { componentsReady, PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCheckboxWrapper, PContentWrapper, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PSelectWrapper, PSpinner, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react';
 import { useEffect, useState } from 'react';
 
 export const OverviewPage = (): JSX.Element => {
-  // solve race-condition between non-prefixed and prefixed banner focus
   const [allReady, setAllReady] = useState(false);
-
   useEffect(() => {
     componentsReady().then(() => {
       setAllReady(true);
     });
   }, []);
 
-  const prefix = 'my-prefix';
   const style = `
     p-flex-item > p,
-    ${prefix}-p-flex-item > p,
+    my-prefix-p-flex-item > p,
     p-grid-item > p,
-    ${prefix}-p-grid-item > p,
+    my-prefix-p-grid-item > p,
     p-content-wrapper > p,
-    ${prefix}-p-content-wrapper > p {
+    my-prefix-p-content-wrapper > p {
       margin: 0;
       padding: 4px 2vw;
       text-align: center;
@@ -70,27 +25,27 @@ export const OverviewPage = (): JSX.Element => {
     }
 
     p-flex-item:nth-child(1n) > p,
-    ${prefix}-p-flex-item:nth-child(1n) > p,
+    my-prefix-p-flex-item:nth-child(1n) > p,
     p-grid-item:nth-child(1n) > p,
-    ${prefix}-p-grid-item:nth-child(1n) > p {
+    my-prefix-p-grid-item:nth-child(1n) > p {
       background-color: skyblue;
     }
 
     p-flex-item:nth-child(2n) > p,
-    ${prefix}-p-flex-item:nth-child(2n) > p,
+    my-prefix-p-flex-item:nth-child(2n) > p,
     p-grid-item:nth-child(2n) > p,
-    ${prefix}-p-grid-item:nth-child(2n) > p {
+    my-prefix-p-grid-item:nth-child(2n) > p {
       background-color: deepskyblue;
     }
 
     p-banner,
-    ${prefix}-p-banner {
+    my-prefix-p-banner {
       --p-banner-position-type: static;
     }
   `;
 
   return (
-    <div>
+    <>
       <style children={style} />
 
       <div style={{ display: 'flex' }}>
@@ -172,7 +127,7 @@ export const OverviewPage = (): JSX.Element => {
           </div>
 
           <div className="playground light" title="should render default fieldset-wrapper">
-            <PFieldsetWrapper label="Some label"></PFieldsetWrapper>
+            <PFieldsetWrapper label="Some label" />
           </div>
 
           <div className="playground light" title="should render default content-wrapper">
@@ -204,9 +159,7 @@ export const OverviewPage = (): JSX.Element => {
           </div>
 
           <div className="playground light" title="should render default link-social">
-            <PLinkSocial href="https://www.porsche.com" icon="logo-facebook">
-              Some label
-            </PLinkSocial>
+            <PLinkSocial href="https://www.porsche.com" icon="logo-facebook">Some label</PLinkSocial>
           </div>
 
           <div className="playground light" title="should render default marque">
@@ -235,7 +188,7 @@ export const OverviewPage = (): JSX.Element => {
           </div>
 
           <div className="playground light" title="should render default tabs">
-            <PTabs>
+            <PTabs activeTabIndex={0}>
               <PTabsItem label="Tab1">Content 1</PTabsItem>
               <PTabsItem label="Tab2">Content 2</PTabsItem>
               <PTabsItem label="Tab3">Content 3</PTabsItem>
@@ -252,8 +205,8 @@ export const OverviewPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default accordion">
             <PAccordion heading="Some accordion heading">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+              dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
             </PAccordion>
           </div>
 
@@ -263,28 +216,20 @@ export const OverviewPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default flex">
             <PFlex>
-              <PFlexItem>
-                <p>1</p>
-              </PFlexItem>
-              <PFlexItem>
-                <p>2</p>
-              </PFlexItem>
+              <PFlexItem><p>1</p></PFlexItem>
+              <PFlexItem><p>2</p></PFlexItem>
             </PFlex>
           </div>
 
           <div className="playground light" title="should render default grid">
             <PGrid>
-              <PGridItem size={6}>
-                <p>1</p>
-              </PGridItem>
-              <PGridItem size={6}>
-                <p>2</p>
-              </PGridItem>
+              <PGridItem size={6}><p>1</p></PGridItem>
+              <PGridItem size={6}><p>2</p></PGridItem>
             </PGrid>
           </div>
         </div>
 
-        <PorscheDesignSystemProvider prefix={prefix}>
+        <PorscheDesignSystemProvider prefix="my-prefix">
           <div style={{ flex: 1 }}>
             <div className="playground light" title="should render default headline with custom prefix">
               <PHeadline>Prefixed Components</PHeadline>
@@ -294,17 +239,20 @@ export const OverviewPage = (): JSX.Element => {
               <PHeadline variant={{ base: 'large', l: 'x-large' }}>Prefixed Components</PHeadline>
             </div>
 
-            <div className="playground light" title="should render default banner with custom prefix">
-              {allReady && (
+            {allReady && (
+              <div className="playground light" title="should render default banner with custom prefix">
                 <PBanner>
                   <span slot="title">Some slotted banner title</span>
                   <span slot="description">Some slotted banner description</span>
                 </PBanner>
-              )}
-            </div>
+              </div>
+            )}
 
             <div className="playground light" title="should render default inline-notification with custom prefix">
-              <PInlineNotification heading="Some heading" description="Some description" />
+              <PInlineNotification
+                heading="Some heading"
+                description="Some description"
+               />
             </div>
 
             <div className="playground light" title="should render default popover with custom prefix">
@@ -365,7 +313,7 @@ export const OverviewPage = (): JSX.Element => {
             </div>
 
             <div className="playground light" title="should render default fieldset-wrapper with custom prefix">
-              <PFieldsetWrapper label="Some label"></PFieldsetWrapper>
+              <PFieldsetWrapper label="Some label" />
             </div>
 
             <div className="playground light" title="should render default content-wrapper with custom prefix">
@@ -397,9 +345,7 @@ export const OverviewPage = (): JSX.Element => {
             </div>
 
             <div className="playground light" title="should render default link-social with custom prefix">
-              <PLinkSocial href="https://www.porsche.com" icon="logo-facebook">
-                Some label
-              </PLinkSocial>
+              <PLinkSocial href="https://www.porsche.com" icon="logo-facebook">Some label</PLinkSocial>
             </div>
 
             <div className="playground light" title="should render default marque with custom prefix">
@@ -445,9 +391,8 @@ export const OverviewPage = (): JSX.Element => {
 
             <div className="playground light" title="should render default accordion with custom prefix">
               <PAccordion heading="Some accordion heading">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
-                ea rebum.
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+                dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
               </PAccordion>
             </div>
 
@@ -457,28 +402,20 @@ export const OverviewPage = (): JSX.Element => {
 
             <div className="playground light" title="should render default flex with custom prefix">
               <PFlex>
-                <PFlexItem>
-                  <p>1</p>
-                </PFlexItem>
-                <PFlexItem>
-                  <p>2</p>
-                </PFlexItem>
+                <PFlexItem><p>1</p></PFlexItem>
+                <PFlexItem><p>2</p></PFlexItem>
               </PFlex>
             </div>
 
             <div className="playground light" title="should render default grid with custom prefix">
               <PGrid>
-                <PGridItem size={6}>
-                  <p>1</p>
-                </PGridItem>
-                <PGridItem size={6}>
-                  <p>2</p>
-                </PGridItem>
+                <PGridItem size={6}><p>1</p></PGridItem>
+                <PGridItem size={6}><p>2</p></PGridItem>
               </PGrid>
             </div>
           </div>
         </PorscheDesignSystemProvider>
       </div>
-    </div>
+    </>
   );
 };
