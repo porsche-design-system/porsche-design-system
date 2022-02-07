@@ -11,10 +11,10 @@ export const generateFontFaceStylesheetPartial = (): string => {
   withoutTags?: boolean;
   format?: Format;
 };
-type FontFaceStylesheetOptionsHtml = FontFaceStylesheetOptions & {
+type FontFaceStylesheetOptionsFormatHtml = FontFaceStylesheetOptions & {
   format?: 'html';
 };
-type FontFaceStylesheetOptionsJsx = FontFaceStylesheetOptions & {
+type FontFaceStylesheetOptionsFormatJsx = FontFaceStylesheetOptions & {
   withoutTags?: false;
   format?: 'jsx';
 };`;
@@ -31,8 +31,8 @@ type FontFaceStylesheetOptionsJsx = FontFaceStylesheetOptions & {
       .replace('"$URL"', '{url}')
       .replace(/"\$CDN_URL"/g, '{cdnBaseUrl}');
 
-  const func = `export function getFontFaceStylesheet(opts?: FontFaceStylesheetOptionsHtml): string;
-export function getFontFaceStylesheet(opts?: FontFaceStylesheetOptionsJsx): JSX.Element[];
+  const func = `export function getFontFaceStylesheet(opts?: FontFaceStylesheetOptionsFormatHtml): string;
+export function getFontFaceStylesheet(opts?: FontFaceStylesheetOptionsFormatJsx): JSX.Element[];
 export function getFontFaceStylesheet(opts?: FontFaceStylesheetOptions): string | JSX.Element[] {
   const { cdn, withoutTags, format }: FontFaceStylesheetOptions = {
     cdn: 'auto',

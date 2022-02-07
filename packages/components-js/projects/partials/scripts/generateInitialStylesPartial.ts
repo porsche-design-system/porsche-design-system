@@ -6,10 +6,10 @@ export const generateInitialStylesPartial = (): string => {
   withoutTags?: boolean;
   format?: Format;
 };
-type InitalStylesOptionsHtml = InitialStylesOptions & {
+type InitalStylesOptionsFormatHtml = InitialStylesOptions & {
   format?: 'html';
 };
-type InitalStylesOptionsJsx = InitialStylesOptions & {
+type InitalStylesOptionsFormatJsx = InitialStylesOptions & {
    withoutTags?: 'false';
    format?: 'jsx';
 };`;
@@ -18,8 +18,8 @@ type InitalStylesOptionsJsx = InitialStylesOptions & {
     .map((x) => `'${x}'`)
     .join(', ');
 
-  const func = `export function getInitialStyles(opts?: InitalStylesOptionsHtml): string;
-export function getInitialStyles(opts?: InitalStylesOptionsJsx): JSX.Element;
+  const func = `export function getInitialStyles(opts?: InitalStylesOptionsFormatHtml): string;
+export function getInitialStyles(opts?: InitalStylesOptionsFormatJsx): JSX.Element;
 export function getInitialStyles(opts?: InitialStylesOptions): string | JSX.Element {
   const { prefix, withoutTags, format }: InitialStylesOptions = {
     prefix: '',

@@ -8,10 +8,10 @@ export const generateLoaderScriptPartial = (): string => {
   withoutTags?: boolean;
   format?: Format;
 };
-type LoaderScriptOptionsHtml = LoaderScriptOptions & {
+type LoaderScriptOptionsFormatHtml = LoaderScriptOptions & {
   format?: 'html';
 };
-type LoaderScriptOptionsJsx = LoaderScriptOptions & {
+type LoaderScriptOptionsFormatJsx = LoaderScriptOptions & {
    withoutTags?: 'false';
    format?: 'jsx';
 };`;
@@ -21,8 +21,8 @@ type LoaderScriptOptionsJsx = LoaderScriptOptions & {
   const tmpFilePath = path.resolve(packageDir, npmDistTmpSubPath, 'index.js');
   const fileContent = fs.readFileSync(tmpFilePath, 'utf8');
 
-  const func = `export function getLoaderScript(opts?: LoaderScriptOptionsHtml): string;
-export function getLoaderScript(opts?: LoaderScriptOptionsJsx): JSX.Element;
+  const func = `export function getLoaderScript(opts?: LoaderScriptOptionsFormatHtml): string;
+export function getLoaderScript(opts?: LoaderScriptOptionsFormatJsx): JSX.Element;
 export function getLoaderScript(opts?: LoaderScriptOptions): string | JSX.Element {
   const { prefix, withoutTags, format }: LoaderScriptOptions = {
     prefix: undefined,
