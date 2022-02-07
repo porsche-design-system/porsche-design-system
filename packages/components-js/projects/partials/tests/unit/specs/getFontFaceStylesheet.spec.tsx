@@ -1,62 +1,61 @@
 import { getFontFaceStylesheet } from '../../../src';
 import { render } from '@testing-library/react';
-import { getCdnBaseUrl, transformToRegex } from '../helpers/shared';
 
 describe('getFontFaceStylesheet()', () => {
-  const getUrl = (cdn: string = 'auto'): string => {
-    const suffix = cdn === 'auto' ? '' : '.cn';
-    return `${getCdnBaseUrl(cdn)}/porsche-design-system/styles/font-face.min${suffix}.*.css`;
-  };
+  const baseUrlCom = 'https://cdn.ui.porsche.com';
+  const baseUrlCn = 'https://cdn.ui.porsche.cn';
+  const hrefCom = `${baseUrlCom}/porsche-design-system/styles/font-face.min.[a-z0-9]{32}.css`;
+  const hrefCn = `${baseUrlCn}/porsche-design-system/styles/font-face.min.cn.[a-z0-9]{32}.css`;
 
-  const getExpectedPartialResultStringRegEx = (cdn: string = 'auto', format: string = 'html') => {
-    return transformToRegex(
-      `<link rel=preconnect href=${getCdnBaseUrl(cdn)} crossorigin${
-        format === 'jsx' ? '=true' : ''
-      }><link rel=dns-prefetch href=${getCdnBaseUrl(cdn)} crossorigin${
-        format === 'jsx' ? '=true' : ''
-      }><link rel=stylesheet href=${getUrl(cdn)} type=text/css crossorigin${format === 'jsx' ? '=true' : ''}>`
-    );
-  };
+  describe('format: html', () => {
+    it('should return default links', () => {
+      const result = getFontFaceStylesheet();
+      const regex = new RegExp(
+        `^<link rel=preconnect href=${baseUrlCom} crossorigin><link rel=dns-prefetch href=${baseUrlCom} crossorigin><link rel=stylesheet href=${hrefCom} type=text/css crossorigin>$`
+      );
 
-  it('should return links with preconnect, dns-prefetch and FONT_FACE_STYLE_CDN_URL', () => {
-    const result = getFontFaceStylesheet();
-    expect(result).toMatch(getExpectedPartialResultStringRegEx());
+      expect(result).toMatch(regex);
+    });
+
+    it('should return default links for china cdn', () => {
+      const result = getFontFaceStylesheet({ cdn: 'cn' });
+      const regex = new RegExp(
+        `^<link rel=preconnect href=${baseUrlCn} crossorigin><link rel=dns-prefetch href=${baseUrlCn} crossorigin><link rel=stylesheet href=${hrefCn} type=text/css crossorigin>$`
+      );
+
+      expect(result).toMatch(regex);
+    });
   });
 
-  it('should return only href', () => {
-    const result = getFontFaceStylesheet({ withoutTags: true });
-    expect(result).toMatch(transformToRegex(getUrl()));
+  describe('format: jsx', () => {
+    it('should return default links as jsx', () => {
+      const { container } = render(getFontFaceStylesheet({ format: 'jsx' }));
+      const regex = new RegExp(
+        `^<link rel="preconnect" href="${baseUrlCom}" crossorigin="true"><link rel="dns-prefetch" href="${baseUrlCom}" crossorigin="true"><link rel="stylesheet" href="${hrefCom}" type="text/css" crossorigin="true">$`
+      );
+
+      expect(container.innerHTML).toMatch(regex);
+    });
+
+    it('should return jsx links for china cdn', () => {
+      const { container } = render(getFontFaceStylesheet({ cdn: 'cn', format: 'jsx' }));
+      const regex = new RegExp(
+        `^<link rel="preconnect" href="${baseUrlCn}" crossorigin="true"><link rel="dns-prefetch" href="${baseUrlCn}" crossorigin="true"><link rel="stylesheet" href="${hrefCn}" type="text/css" crossorigin="true">$`
+      );
+
+      expect(container.innerHTML).toMatch(regex);
+    });
   });
 
-  it('should be minified', () => {
-    const result = getFontFaceStylesheet();
-    expect(result).not.toContain('"');
-    expect(result).not.toContain("'");
-  });
-
-  it('should return multiple jsx links', () => {
-    const { container } = render(<>{getFontFaceStylesheet({ format: 'jsx' })}</>);
-    const result = container.innerHTML.replace(/"/g, '');
-    expect(result).toMatch(getExpectedPartialResultStringRegEx('auto', 'jsx'));
-  });
-
-  describe('option: { cdn: "cn" }', () => {
-    const cdn = 'cn';
-
-    it('should return links with preconnect, dns-prefetch and FONT_FACE_STYLE_CDN_URL for china cdn', () => {
-      const result = getFontFaceStylesheet({ cdn });
-      expect(result).toMatch(getExpectedPartialResultStringRegEx(cdn));
+  describe('withoutTags: true', () => {
+    it('should return only href', () => {
+      const result = getFontFaceStylesheet({ withoutTags: true });
+      expect(result).toMatch(new RegExp(`${hrefCom}`));
     });
 
     it('should return only href for china cdn', () => {
-      const result = getFontFaceStylesheet({ withoutTags: true, cdn });
-      expect(result).toMatch(transformToRegex(getUrl(cdn)));
-    });
-
-    it('should return multiple jsx links for china cdn', () => {
-      const { container } = render(<>{getFontFaceStylesheet({ cdn, format: 'jsx' })}</>);
-      const result = container.innerHTML.replace(/"/g, '');
-      expect(result).toMatch(getExpectedPartialResultStringRegEx(cdn, 'jsx'));
+      const result = getFontFaceStylesheet({ withoutTags: true, cdn: 'cn' });
+      expect(result).toMatch(new RegExp(`${hrefCn}`));
     });
   });
 });
