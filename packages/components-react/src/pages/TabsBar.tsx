@@ -1,113 +1,220 @@
+/* Auto Generated File */
 import { PTabsBar } from '@porsche-design-system/components-react';
 
 export const TabsBarPage = (): JSX.Element => {
-  const renderTabs = (amount: number): JSX.Element[] =>
-    Array.from(Array(amount)).map((_, i) => (
-      <a key={i} href="#">
-        Tab {i + 1}
-      </a>
-    ));
-
   return (
     <>
       <div className="playground light" title="should render tabs-bar on light background">
-        <PTabsBar activeTabIndex={0}>{renderTabs(7)}</PTabsBar>
+        <PTabsBar activeTabIndex={0}>
+          <a href="#">Tab 1</a>
+          <a href="#">Tab 2</a>
+          <a href="#">Tab 3</a>
+          <a href="#">Tab 4</a>
+          <a href="#">Tab 5</a>
+          <a href="#">Tab 6</a>
+          <a href="#">Tab 7</a>
+        </PTabsBar>
       </div>
 
       <div className="playground dark" title="should render tabs-bar on dark background">
         <PTabsBar activeTabIndex={0} theme="dark">
-          {renderTabs(7)}
+          <a href="#">Tab 1</a>
+          <a href="#">Tab 2</a>
+          <a href="#">Tab 3</a>
+          <a href="#">Tab 4</a>
+          <a href="#">Tab 5</a>
+          <a href="#">Tab 6</a>
+          <a href="#">Tab 7</a>
         </PTabsBar>
       </div>
 
       <div className="playground light" title="should render tabs-bar with last tab selected on light background">
-        <PTabsBar activeTabIndex={6}>{renderTabs(7)}</PTabsBar>
+        <PTabsBar activeTabIndex={6}>
+          <a href="#">Tab 1</a>
+          <a href="#">Tab 2</a>
+          <a href="#">Tab 3</a>
+          <a href="#">Tab 4</a>
+          <a href="#">Tab 5</a>
+          <a href="#">Tab 6</a>
+          <a href="#">Tab 7</a>
+        </PTabsBar>
       </div>
 
       <div className="playground dark" title="should render tabs-bar with last tab selected on dark background">
         <PTabsBar activeTabIndex={6} theme="dark">
-          {renderTabs(7)}
+          <a href="#">Tab 1</a>
+          <a href="#">Tab 2</a>
+          <a href="#">Tab 3</a>
+          <a href="#">Tab 4</a>
+          <a href="#">Tab 5</a>
+          <a href="#">Tab 6</a>
+          <a href="#">Tab 7</a>
         </PTabsBar>
       </div>
 
       <div className="playground light" title="should render tabs-bar size medium on light background">
         <PTabsBar activeTabIndex={0} size="medium">
-          {renderTabs(7)}
+          <a href="#">Tab 1</a>
+          <a href="#">Tab 2</a>
+          <a href="#">Tab 3</a>
+          <a href="#">Tab 4</a>
+          <a href="#">Tab 5</a>
+          <a href="#">Tab 6</a>
+          <a href="#">Tab 7</a>
         </PTabsBar>
       </div>
 
       <div className="playground dark" title="should render tabs-bar size medium on dark background">
         <PTabsBar activeTabIndex={0} theme="dark" size="medium">
-          {renderTabs(7)}
+          <a href="#">Tab 1</a>
+          <a href="#">Tab 2</a>
+          <a href="#">Tab 3</a>
+          <a href="#">Tab 4</a>
+          <a href="#">Tab 5</a>
+          <a href="#">Tab 6</a>
+          <a href="#">Tab 7</a>
         </PTabsBar>
       </div>
 
-      <div
-        className="playground light"
-        title="should render tabs-bar size medium with last tab selected on light background"
-      >
+      <div className="playground light" title="should render tabs-bar size medium with last tab selected on light background">
         <PTabsBar activeTabIndex={6} size="medium">
-          {renderTabs(7)}
+          <a href="#">Tab 1</a>
+          <a href="#">Tab 2</a>
+          <a href="#">Tab 3</a>
+          <a href="#">Tab 4</a>
+          <a href="#">Tab 5</a>
+          <a href="#">Tab 6</a>
+          <a href="#">Tab 7</a>
         </PTabsBar>
       </div>
 
-      <div
-        className="playground dark"
-        title="should render tabs-bar size medium with last tab selected on dark background"
-      >
+      <div className="playground dark" title="should render tabs-bar size medium with last tab selected on dark background">
         <PTabsBar activeTabIndex={6} theme="dark" size="medium">
-          {renderTabs(7)}
+          <a href="#">Tab 1</a>
+          <a href="#">Tab 2</a>
+          <a href="#">Tab 3</a>
+          <a href="#">Tab 4</a>
+          <a href="#">Tab 5</a>
+          <a href="#">Tab 6</a>
+          <a href="#">Tab 7</a>
         </PTabsBar>
       </div>
 
       <div className="playground light" title="should render tabs-bar semibold on light background">
         <PTabsBar activeTabIndex={0} weight="semibold">
-          {renderTabs(7)}
+          <a href="#">Tab 1</a>
+          <a href="#">Tab 2</a>
+          <a href="#">Tab 3</a>
+          <a href="#">Tab 4</a>
+          <a href="#">Tab 5</a>
+          <a href="#">Tab 6</a>
+          <a href="#">Tab 7</a>
         </PTabsBar>
       </div>
 
       <div className="playground dark" title="should render tabs-bar semibold on dark background">
         <PTabsBar activeTabIndex={0} theme="dark" weight="semibold">
-          {renderTabs(7)}
+          <a href="#">Tab 1</a>
+          <a href="#">Tab 2</a>
+          <a href="#">Tab 3</a>
+          <a href="#">Tab 4</a>
+          <a href="#">Tab 5</a>
+          <a href="#">Tab 6</a>
+          <a href="#">Tab 7</a>
         </PTabsBar>
       </div>
 
       <div className="playground light" title="should render tabs-bar semibold and medium on light background">
         <PTabsBar activeTabIndex={0} weight="semibold" size="medium">
-          {renderTabs(7)}
+          <a href="#">Tab 1</a>
+          <a href="#">Tab 2</a>
+          <a href="#">Tab 3</a>
+          <a href="#">Tab 4</a>
+          <a href="#">Tab 5</a>
+          <a href="#">Tab 6</a>
+          <a href="#">Tab 7</a>
         </PTabsBar>
       </div>
 
       <div className="playground dark" title="should render tabs-bar semibold and medium on dark background">
         <PTabsBar activeTabIndex={0} theme="dark" weight="semibold" size="medium">
-          {renderTabs(7)}
+          <a href="#">Tab 1</a>
+          <a href="#">Tab 2</a>
+          <a href="#">Tab 3</a>
+          <a href="#">Tab 4</a>
+          <a href="#">Tab 5</a>
+          <a href="#">Tab 6</a>
+          <a href="#">Tab 7</a>
         </PTabsBar>
       </div>
 
       <div className="playground light" title="should render tabs-bar gradientColorScheme surface on light background">
         <PTabsBar activeTabIndex={0} gradientColorScheme="surface">
-          {renderTabs(7)}
+          <a href="#">Tab 1</a>
+          <a href="#">Tab 2</a>
+          <a href="#">Tab 3</a>
+          <a href="#">Tab 4</a>
+          <a href="#">Tab 5</a>
+          <a href="#">Tab 6</a>
+          <a href="#">Tab 7</a>
         </PTabsBar>
       </div>
 
       <div className="playground dark" title="should render tabs-bar gradientColorScheme surface on dark background">
         <PTabsBar activeTabIndex={0} theme="dark" gradientColorScheme="surface">
-          {renderTabs(7)}
+          <a href="#">Tab 1</a>
+          <a href="#">Tab 2</a>
+          <a href="#">Tab 3</a>
+          <a href="#">Tab 4</a>
+          <a href="#">Tab 5</a>
+          <a href="#">Tab 6</a>
+          <a href="#">Tab 7</a>
         </PTabsBar>
       </div>
 
       <div className="playground light" title="should render selected tab in viewport on light background">
-        <PTabsBar activeTabIndex={3}>{renderTabs(10)}</PTabsBar>
+        <PTabsBar activeTabIndex={3}>
+          <a href="#">Tab 1</a>
+          <a href="#">Tab 2</a>
+          <a href="#">Tab 3</a>
+          <a href="#">Tab 4</a>
+          <a href="#">Tab 5</a>
+          <a href="#">Tab 6</a>
+          <a href="#">Tab 7</a>
+          <a href="#">Tab 8</a>
+          <a href="#">Tab 9</a>
+          <a href="#">Tab 10</a>
+        </PTabsBar>
       </div>
 
       <div className="playground dark" title="should render selected tab in viewport in viewport on dark background">
         <PTabsBar activeTabIndex={3} theme="dark">
-          {renderTabs(10)}
+          <a href="#">Tab 1</a>
+          <a href="#">Tab 2</a>
+          <a href="#">Tab 3</a>
+          <a href="#">Tab 4</a>
+          <a href="#">Tab 5</a>
+          <a href="#">Tab 6</a>
+          <a href="#">Tab 7</a>
+          <a href="#">Tab 8</a>
+          <a href="#">Tab 9</a>
+          <a href="#">Tab 10</a>
         </PTabsBar>
       </div>
 
       <div className="playground light" title="should render no selected tab when active-tab-index is not set">
-        <PTabsBar>{renderTabs(10)}</PTabsBar>
+        <PTabsBar>
+          <a href="#">Tab 1</a>
+          <a href="#">Tab 2</a>
+          <a href="#">Tab 3</a>
+          <a href="#">Tab 4</a>
+          <a href="#">Tab 5</a>
+          <a href="#">Tab 6</a>
+          <a href="#">Tab 7</a>
+          <a href="#">Tab 8</a>
+          <a href="#">Tab 9</a>
+          <a href="#">Tab 10</a>
+        </PTabsBar>
       </div>
     </>
   );

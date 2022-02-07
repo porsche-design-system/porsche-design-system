@@ -1,3 +1,4 @@
+/* Auto Generated File */
 import { PGrid, PGridItem } from '@porsche-design-system/components-react';
 
 export const GridPage = (): JSX.Element => {
@@ -14,6 +15,7 @@ export const GridPage = (): JSX.Element => {
       margin-top: 4px;
     }
   `;
+
   return (
     <>
       <style children={style} />

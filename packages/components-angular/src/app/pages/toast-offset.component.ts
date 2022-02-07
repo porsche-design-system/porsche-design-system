@@ -1,8 +1,9 @@
+/* Auto Generated File */
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ToastManager } from '@porsche-design-system/components-angular';
 
 @Component({
-  selector: 'toast-offset',
+  selector: 'page-toast-offset',
   styles: [
     `
       .playground {
@@ -11,7 +12,7 @@ import { ToastManager } from '@porsche-design-system/components-angular';
         transform: translateX(0);
         border: 1px solid deeppink;
       }
-
+    
       p-toast {
         --p-toast-position-bottom: 200px;
       }

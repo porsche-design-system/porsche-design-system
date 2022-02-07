@@ -9,13 +9,7 @@ export const StencilLifecyclesPage = (): JSX.Element => {
 
   return (
     <>
-      <button
-        onClick={() => {
-          setKey((prev) => prev + 1);
-        }}
-      >
-        Render Link and Change key on click
-      </button>
+      <button onClick={() => setKey((prev) => prev + 1)}>Render Link and Change key on click</button>
 
       {key > 0 && (
         <PLinkPure key={key} size="large" href="https://porsche.com">

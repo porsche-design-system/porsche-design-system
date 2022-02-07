@@ -1,3 +1,4 @@
+/* Auto Generated File */
 import { PPagination } from '@porsche-design-system/components-react';
 
 export const PaginationPage = (): JSX.Element => {
@@ -44,7 +45,7 @@ export const PaginationPage = (): JSX.Element => {
           itemsPerPage={25}
           activePage={1}
           maxNumberOfPageLinks={{ base: 5, s: 7, l: 5 }}
-        />
+         />
       </div>
     </>
   );
