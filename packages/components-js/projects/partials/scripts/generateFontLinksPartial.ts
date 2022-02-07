@@ -32,8 +32,8 @@ type FontPreloadLinkOptionsFormatJsx = FontPreloadLinkOptions & {
 
   const func = `export function getFontLinks(opts?: FontPreloadLinkOptionsWithTags): string;
 export function getFontLinks(opts?: FontPreloadLinkOptionsWithoutTags): string[];
-export function getFontLinks(opts?: FontPreloadLinkOptionsFormatJsx): JSX.Element[];
-export function getFontLinks(opts?: FontPreloadLinkOptions): string | string[] | JSX.Element[] {
+export function getFontLinks(opts?: FontPreloadLinkOptionsFormatJsx): JSX.Element;
+export function getFontLinks(opts?: FontPreloadLinkOptions): string | string[] | JSX.Element {
   const { subset, weights, cdn, withoutTags, format }: FontPreloadLinkOptions = {
     subset: 'latin',
     weights: ['regular'],
@@ -43,7 +43,7 @@ export function getFontLinks(opts?: FontPreloadLinkOptions): string | string[] |
     ...opts
   };
 
-  if (opts['weight']) {
+  if (opts?.['weight']) {
     throw new Error('Option "weight" is not supported, please use "weights" instead');
   }
 
@@ -93,9 +93,9 @@ Please use only valid font weights:
 
   const urls = weights.map((weight) => \`\${cdnBaseUrl}/${CDN_BASE_PATH_FONTS}/\${fonts[subset][weight]}\`);
   const linksHtml = urls.map((url) => \`${linkTemplate}\`).join('');
-  const linksJsx = urls.map((url) => <link rel="preload" href={url} as="font" type="font/woff2" crossOrigin="true" />);
+  const linksJsx = urls.map((url, index) => <link key={index} rel="preload" href={url} as="font" type="font/woff2" crossOrigin="true" />);
 
-  const markup = format === 'html' ? linksHtml : linksJsx;
+  const markup = format === 'html' ? linksHtml : <>{linksJsx}</>;
   return withoutTags ? urls : markup;
 };`;
 
