@@ -1,6 +1,8 @@
 import { getIconLinks } from '../../../src';
 import { ICON_NAMES, IconNameCamelCase } from '@porsche-design-system/icons';
 import { paramCase } from 'change-case';
+import { transformToRegex } from '../helpers/shared';
+import { render } from '@testing-library/react';
 
 describe('getIconLinks()', () => {
   const getUrl = (iconName: IconNameCamelCase, cdn: string): string => {
@@ -9,14 +11,17 @@ describe('getIconLinks()', () => {
   };
 
   const getIconUrlRegEx = (iconName: IconNameCamelCase, cdn: string = 'auto'): RegExp => {
-    return new RegExp(
-      `${getUrl(iconName, cdn)
-        .replace(/(\/|\.|\+)/g, '\\$1')
-        .replace(/\*/g, '[a-z0-9]+')}`
-    );
+    return transformToRegex(getUrl(iconName, cdn));
   };
-  const getIconLinkRegEx = (iconName: IconNameCamelCase, cdn: string = 'auto'): RegExp => {
-    const link = `<link rel=prefetch href=${getUrl(iconName, cdn)} as=image type=image/svg+xml crossorigin>`;
+
+  const getIconLinkRegEx = (
+    iconName: IconNameCamelCase,
+    cdn: string = 'auto',
+    format: 'html' | 'jsx' = 'html'
+  ): RegExp => {
+    const link = `<link rel=prefetch href=${getUrl(iconName, cdn)} as=image type=image/svg+xml crossorigin${
+      format === 'jsx' ? '=true' : ''
+    }>`;
     return new RegExp(`${link.replace(/(\/|\.|\+)/g, '\\$1').replace(/\*/g, '[a-z0-9]+')}`);
   };
 
@@ -59,44 +64,38 @@ describe('getIconLinks()', () => {
   });
 
   describe('format jsx', () => {
+    const getRenderedInnerHtml = (opts?: { icons?: IconNameCamelCase[] }): string => {
+      const { icons = ['arrowHeadRight'] } = opts || {};
+
+      const { container } = render(<>{getIconLinks({ icons, format: 'jsx' })}</>);
+      return container.innerHTML.replace(/"/g, '');
+    };
+
     it('should return "arrowHeadRight" link by default', () => {
-      const result = getIconLinks();
-      expect(result).toMatch(getIconLinkRegEx('arrowHeadRight'));
+      const { container } = render(<>{getIconLinks({ format: 'jsx' })}</>);
+      const result = container.innerHTML.replace(/"/g, '');
+      expect(result).toMatch(getIconLinkRegEx('arrowHeadRight', 'auto', 'jsx'));
     });
 
     it('should return multiple links', () => {
-      const result = getIconLinks({ format: 'jsx', icons: ['truck', 'volumeUp', 'mobile'] });
-      result.forEach((element) => {
-        // href is variable due to hash and cant be overwritten so we clone the element
-        const link = { ...element, props: { ...element.props, href: getUrl('truck', 'auto') } };
-        expect(link).toMatchSnapshot();
-      });
+      const result = getRenderedInnerHtml({ icons: ['truck', 'volumeUp', 'mobile'] });
+
+      expect(result).toMatch(getIconLinkRegEx('truck', 'auto', 'jsx'));
+      expect(result).toMatch(getIconLinkRegEx('volumeUp', 'auto', 'jsx'));
+      expect(result).toMatch(getIconLinkRegEx('mobile', 'auto', 'jsx'));
     });
 
     ICON_NAMES.forEach((iconName: IconNameCamelCase) => {
       it(`should return icon link for ['${iconName}']`, () => {
-        const result = getIconLinks({ format: 'jsx', icons: [iconName] });
-        result.forEach((element) => {
-          // href is variable due to hash and cant be overwritten so we clone the element
-          const link = { ...element, props: { ...element.props, href: getUrl(iconName, 'auto') } };
-          expect(link).toMatchSnapshot();
-        });
+        const result = getRenderedInnerHtml({ icons: [iconName] });
+        expect(result).toMatch(getIconLinkRegEx(iconName, 'auto', 'jsx'));
       });
     });
   });
 
   describe('url without tag', () => {
-    let consoleWarnSpy;
-
-    beforeEach(() => (consoleWarnSpy = jest.spyOn(global.console, 'warn').mockImplementation(() => {})));
-    afterEach(() => jest.clearAllMocks());
-
     it('should return "arrowHeadRight" url by default', () => {
       const result = getIconLinks({ withoutTags: true });
-
-      expect(consoleWarnSpy).toBeCalledWith(
-        'The option "{ withoutTags: true }" of partial getIconLinks() is deprecated and will be removed in v3'
-      );
 
       expect(result.length).toBe(1);
       expect(result[0]).toMatch(getIconUrlRegEx('arrowHeadRight'));
@@ -105,20 +104,12 @@ describe('getIconLinks()', () => {
     it('should return default "arrowHeadRight" China CDN url', () => {
       const result = getIconLinks({ withoutTags: true, cdn: 'cn' });
 
-      expect(consoleWarnSpy).toBeCalledWith(
-        'The option "{ withoutTags: true }" of partial getIconLinks() is deprecated and will be removed in v3'
-      );
-
       expect(result.length).toBe(1);
       expect(result[0]).toMatch(getIconUrlRegEx('arrowHeadRight', 'cn'));
     });
 
     it('should return multiple urls', () => {
       const result = getIconLinks({ withoutTags: true, icons: ['truck', 'volumeUp', 'mobile', 'arrowDoubleUp'] });
-
-      expect(consoleWarnSpy).toBeCalledWith(
-        'The option "{ withoutTags: true }" of partial getIconLinks() is deprecated and will be removed in v3'
-      );
 
       expect(result.length).toBe(4);
       expect(result[0]).toMatch(getIconUrlRegEx('truck'));
@@ -130,10 +121,6 @@ describe('getIconLinks()', () => {
     ICON_NAMES.forEach((iconName: IconNameCamelCase) => {
       it(`should return icon url for ['${iconName}']`, () => {
         const result = getIconLinks({ withoutTags: true, icons: [iconName] });
-
-        expect(consoleWarnSpy).toBeCalledWith(
-          'The option "{ withoutTags: true }" of partial getIconLinks() is deprecated and will be removed in v3'
-        );
 
         expect(result.length).toBe(1);
         expect(result[0]).toMatch(getIconUrlRegEx(iconName));
