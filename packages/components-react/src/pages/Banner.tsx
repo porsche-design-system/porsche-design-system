@@ -1,7 +1,15 @@
+/* Auto Generated File */
 import { componentsReady, PBanner } from '@porsche-design-system/components-react';
 import { useEffect, useState } from 'react';
 
 export const BannerPage = (): JSX.Element => {
+  const [allReady, setAllReady] = useState(false);
+  useEffect(() => {
+    componentsReady().then(() => {
+      setAllReady(true);
+    });
+  }, []);
+
   const style = `
     .playground p-banner {
       --p-banner-position-type: static;
@@ -10,13 +18,6 @@ export const BannerPage = (): JSX.Element => {
       padding: 300px 0;
     }
   `;
-  const [allReady, setAllReady] = useState(false);
-
-  useEffect(() => {
-    componentsReady().then(() => {
-      setAllReady(true);
-    });
-  }, []);
 
   return (
     <>
@@ -109,7 +110,7 @@ export const BannerPage = (): JSX.Element => {
             <PBanner width="fluid">
               <span slot="title">Some notification title</span>
               <span slot="description">
-                Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
+              Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
               </span>
             </PBanner>
           </div>

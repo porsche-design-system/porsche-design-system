@@ -7,7 +7,7 @@ import * as fromPages from './pages';
 import * as fromExamples from './examples';
 
 @NgModule({
-  declarations: [AppComponent, ...fromPages.pages, ...fromExamples.examples],
+  declarations: [AppComponent, ...fromPages.pages, ...fromPages.generatedPages, ...fromExamples.examples],
   imports: [
     BrowserModule,
     AppRoutingModule,

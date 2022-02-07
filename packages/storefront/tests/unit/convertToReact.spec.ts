@@ -1,15 +1,15 @@
 import {
   convertToReact,
-  transformBooleanAndDigitValues,
+  transformBooleanDigitAndUndefinedValues,
   transformClassAttribute,
   transformCustomElementTagName,
-  transformEventsToReactSyntax,
+  transformEvents,
   transformInputs,
   transformObjectValues,
   transformStandardAttributes,
   transformStyleAttribute,
   transformToSelfClosingTags,
-} from '../../src/utils';
+} from '../../src/utils/convertToReact';
 import * as reactUtils from '../../src/utils/convertToReact';
 
 const markup = `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" negative-digit-attribute="-6" boolean-attribute="true">
@@ -40,6 +40,44 @@ describe('transformStandardAttributes()', () => {
 </p-some-tag>`
     );
   });
+
+  it('should not transform aria attributes', () => {
+    expect(
+      transformStandardAttributes(
+        '<div aria-label="some label" aria-checked="false" aria-disabled="false" aria-live="polite"></div>'
+      )
+    ).toBe('<div aria-label="some label" aria-checked="false" aria-disabled="false" aria-live="polite"></div>');
+  });
+
+  it('should transform readonly attribute to camelCase', () => {
+    expect(transformStandardAttributes('<input type="text" readonly>')).toBe('<input type="text" readOnly>');
+  });
+
+  it('should not transform readonly attribute value to camelCase', () => {
+    expect(transformStandardAttributes('<div attr="some readonly"></div>')).toBe('<div attr="some readonly"></div>');
+  });
+
+  it('should not transform readonly innerText to camelCase', () => {
+    expect(transformStandardAttributes('<label>Some readonly label</label>')).toBe(
+      '<label>Some readonly label</label>'
+    );
+  });
+
+  it('should transform maxlength attribute to camelCase', () => {
+    expect(transformStandardAttributes('<input type="text" maxlength="20">')).toBe(
+      '<input type="text" maxLength="20">'
+    );
+  });
+
+  it('should not transform maxlength innerText to camelCase', () => {
+    expect(transformStandardAttributes('<label>Some maxlength label</label>')).toBe(
+      '<label>Some maxlength label</label>'
+    );
+  });
+
+  it('should not transform maxlength attribute value to camelCase', () => {
+    expect(transformStandardAttributes('<div attr="some maxlength"></div>')).toBe('<div attr="some maxlength"></div>');
+  });
 });
 
 describe('transformClassAttribute()', () => {
@@ -54,9 +92,9 @@ describe('transformClassAttribute()', () => {
   });
 });
 
-describe('transformEventsToReactSyntax()', () => {
+describe('transformEvents()', () => {
   it('should transform events to react event binding syntax', () => {
-    expect(transformEventsToReactSyntax(markup)).toBe(
+    expect(transformEvents(markup)).toBe(
       `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onClick={() => { alert('click'); return false; }} onChange={() => { alert('change'); return false; }} digit-attribute="6" negative-digit-attribute="-6" boolean-attribute="true">
   <span>Some text</span>
   <input type="checkbox">
@@ -66,14 +104,20 @@ describe('transformEventsToReactSyntax()', () => {
   });
 });
 
-describe('transformBooleanAndDigitValues()', () => {
+describe('transformBooleanDigitAndUndefinedValues()', () => {
   it('should remove quotes and add brackets to boolean and digit values', () => {
-    expect(transformBooleanAndDigitValues(markup)).toBe(
+    expect(transformBooleanDigitAndUndefinedValues(markup)).toBe(
       `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute={6} negative-digit-attribute={-6} boolean-attribute={true}>
   <span>Some text</span>
   <input type="checkbox">
   <button type="button"></button>
 </p-some-tag>`
+    );
+  });
+
+  it('should remove quotes and add brackets to undefined values', () => {
+    expect(transformBooleanDigitAndUndefinedValues(`<p-some-tag attribute="undefined"></p-some-tag>`)).toBe(
+      `<p-some-tag attribute={undefined}></p-some-tag>`
     );
   });
 });
@@ -87,6 +131,26 @@ describe('transformCustomElementTagName()', () => {
   <button type="button"></button>
 </PSomeTag>`
     );
+  });
+
+  it('should transform multiline tag-name to PascalCase', () => {
+    const multiLineMarkup = `<p-some-tag
+  attribute="some value"
+  class="some-class"
+>
+</p-some-tag>`;
+    expect(transformCustomElementTagName(multiLineMarkup)).toBe(
+      `<PSomeTag
+  attribute="some value"
+  class="some-class"
+>
+</PSomeTag>`
+    );
+  });
+
+  it('should transform single line tags to PascalCase', () => {
+    const input = `<p-some-tag><a href="#">Some link</a></p-some-tag>`;
+    expect(transformCustomElementTagName(input)).toBe('<PSomeTag><a href="#">Some link</a></PSomeTag>');
   });
 });
 
@@ -112,20 +176,52 @@ describe('transformToSelfClosingTags()', () => {
 </p-some-tag>`
     );
   });
+
+  it('should transform multiline tags without children to self-closing', () => {
+    const input = `<p-some-tag>
+</p-some-tag>`;
+    expect(transformToSelfClosingTags(input)).toBe('<p-some-tag />');
+  });
+
+  it('should not transform single line tags to self-closing', () => {
+    const input = `<p-some-tag><a href="#">Some link</a></p-some-tag>`;
+    expect(transformToSelfClosingTags(input)).toBe('<p-some-tag><a href="#">Some link</a></p-some-tag>');
+  });
 });
 
-describe('transformStyleAttribute', () => {
+describe('transformStyleAttribute()', () => {
   it('should quote values', () => {
     const markup = '<div style="display: block"></div>';
     expect(transformStyleAttribute(markup)).toBe("<div style={{ display: 'block' }}></div>");
   });
+
   it('should transform properties to camelCase', () => {
     const markup = '<div style="text-align: center"></div>';
     expect(transformStyleAttribute(markup)).toBe("<div style={{ textAlign: 'center' }}></div>");
   });
+
   it('should handle multiple styles', () => {
     const markup = '<div style="text-align: center; font-size: 16px"></div>';
     expect(transformStyleAttribute(markup)).toBe("<div style={{ textAlign: 'center', fontSize: '16px' }}></div>");
+  });
+
+  it('should handle multiline style', () => {
+    const markup = `<div
+  style="
+    text-align: center;
+    font-size: 16px;
+  "
+></div>`;
+
+    expect(transformStyleAttribute(markup)).toBe(`<div
+  style={{ textAlign: 'center', fontSize: '16px' }}
+></div>`);
+  });
+
+  it('should correctly convert number values', () => {
+    expect(transformStyleAttribute('<div style="font-size: 60px; line-height: 1.5; font-weight: 100"></div>')).toBe(
+      `<div style={{ fontSize: '60px', lineHeight: 1.5, fontWeight: 100 }}></div>`
+    );
   });
 });
 
@@ -133,12 +229,12 @@ describe('convertToReact()', () => {
   afterEach(() => jest.clearAllMocks());
 
   let previousSpy: jest.SpyInstance;
-  const transformFunctions = [
+  const transformFunctions: (keyof typeof reactUtils)[] = [
     'transformObjectValues',
     'transformStandardAttributes',
     'transformClassAttribute',
-    'transformEventsToReactSyntax',
-    'transformBooleanAndDigitValues',
+    'transformEvents',
+    'transformBooleanDigitAndUndefinedValues',
     'transformCustomElementTagName',
     'transformInputs',
     'transformToSelfClosingTags',
