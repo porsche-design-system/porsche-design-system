@@ -1,4 +1,5 @@
 import { getInitialStyles } from '../../../src';
+import { render } from '@testing-library/react';
 
 describe('getInitialStyles()', () => {
   it('should return style element with Porsche Design System components', () => {
@@ -9,12 +10,7 @@ describe('getInitialStyles()', () => {
   });
 
   it('should return core styles without style tag', () => {
-    const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
     const result = getInitialStyles({ withoutTags: true });
-
-    expect(spy).toBeCalledWith(
-      'The option "{ withoutTags: true }" of partial getInitialStyles() is deprecated and will be removed in v3'
-    );
 
     expect(result).not.toContain('<style>');
     expect(result).toContain('p-button');
@@ -34,12 +30,19 @@ describe('getInitialStyles()', () => {
   });
   describe('format jsx', () => {
     it('should return core styles', () => {
-      const result = getInitialStyles({ format: 'jsx' });
-      expect(result).toMatchSnapshot();
+      const { container } = render(<>{getInitialStyles({ format: 'jsx' })}</>);
+      const result = container.innerHTML;
+
+      expect(result).toContain('<style>');
+      expect(result).toContain('p-button');
+      expect(result).toContain('p-textarea-wrapper');
     });
     it('should add custom prefix', () => {
-      const result = getInitialStyles({ format: 'jsx', prefix: 'custom-prefix' });
-      expect(result).toMatchSnapshot();
+      const { container } = render(<>{getInitialStyles({ format: 'jsx', prefix: 'custom-prefix' })}</>);
+      const result = container.innerHTML;
+
+      expect(result).toContain('custom-prefix-p-button');
+      expect(result).toContain('custom-prefix-p-textarea-wrapper');
     });
   });
 });
