@@ -18,16 +18,13 @@ type GetIconLinksFormatHtml = Omit<GetIconLinks, 'withoutTags'> & {
 type GetIconLinksFormatJsx = Omit<GetIconLinks, 'withoutTags'> & {
   format: 'jsx';
 };
-type GetIconLinksWithoutTags = Omit<GetIconLinks, 'format'> & {
-  withoutTags: true;
-};`;
+type GetIconLinksWithoutTags = Omit<GetIconLinks, 'format'>`;
 
   const link = minifyHTML('<link rel="prefetch" href="${url}" as="image" type="image/svg+xml" crossorigin>');
 
   const func = `export function getIconLinks(opts?: GetIconLinksFormatJsx): JSX.Element;
 export function getIconLinks(opts?: GetIconLinksFormatHtml): string;
 export function getIconLinks(opts?: GetIconLinksWithoutTags): string[];
-export function getIconLinks(opts?: GetIconLinks): string;
 export function getIconLinks(opts?: GetIconLinks): string | string[] | JSX.Element {
   const { icons, cdn, withoutTags, format }: GetIconLinks = {
     icons: ['arrowHeadRight'],

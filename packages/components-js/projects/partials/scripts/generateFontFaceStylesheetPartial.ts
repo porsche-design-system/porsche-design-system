@@ -17,9 +17,7 @@ type GetFontFaceStylesheetFormatHtml = Omit<GetFontFaceStylesheet, 'withoutTags'
 type GetFontFaceStylesheetFormatJsx =  Omit<GetFontFaceStylesheet, 'withoutTags'> & {
   format: 'jsx';
 };
-type GetFontFaceStylesheetWithoutTags =  Omit<GetFontFaceStylesheet, 'format'> & {
-  withoutTags: true;
-};`;
+type GetFontFaceStylesheetWithoutTags =  Omit<GetFontFaceStylesheet, 'format'>;`;
 
   const cssFileCn = hashedFontFaceCssFiles?.find((x) => x.includes('.cn.'));
   const cssFileCom = hashedFontFaceCssFiles?.find((x) => !x.includes('.cn.'));
@@ -36,7 +34,6 @@ type GetFontFaceStylesheetWithoutTags =  Omit<GetFontFaceStylesheet, 'format'> &
   const func = `export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetFormatHtml): string;
 export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetFormatJsx): JSX.Element;
 export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetWithoutTags): string;
-export function getFontFaceStylesheet(opts?: GetFontFaceStylesheet): string;
 export function getFontFaceStylesheet(opts?: GetFontFaceStylesheet): string | JSX.Element {
   const { cdn, withoutTags, format }: GetFontFaceStylesheet = {
     cdn: 'auto',
