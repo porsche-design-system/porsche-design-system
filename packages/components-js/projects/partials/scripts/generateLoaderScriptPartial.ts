@@ -1,19 +1,22 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { npmDistTmpSubPath } from '../../components-wrapper/environment';
+import { withoutTagsOption } from './utils';
 
 export const generateLoaderScriptPartial = (): string => {
-  const types = `type LoaderScriptOptions = {
+  const types = `type GetLoaderScript = {
   prefix?: string | string[];
-  withoutTags?: boolean;
+  ${withoutTagsOption}
   format?: Format;
 };
-type LoaderScriptOptionsFormatHtml = LoaderScriptOptions & {
-  format?: 'html';
+type GetLoaderScriptFormatHtml = Omit<GetLoaderScript, 'withoutTags'> & {
+  format: 'html';
 };
-type LoaderScriptOptionsFormatJsx = LoaderScriptOptions & {
-   withoutTags?: 'false';
-   format?: 'jsx';
+type GetLoaderScriptFormatJsx = Omit<GetLoaderScript, 'withoutTags'> & {
+   format: 'jsx';
+};
+type GetLoaderScriptWithoutTags = Omit<GetLoaderScript, 'format'> & {
+   withoutTags: true;
 };`;
 
   const componentsJsFilePath = require.resolve('@porsche-design-system/components-js');
@@ -21,10 +24,12 @@ type LoaderScriptOptionsFormatJsx = LoaderScriptOptions & {
   const tmpFilePath = path.resolve(packageDir, npmDistTmpSubPath, 'index.js');
   const fileContent = fs.readFileSync(tmpFilePath, 'utf8');
 
-  const func = `export function getLoaderScript(opts?: LoaderScriptOptionsFormatHtml): string;
-export function getLoaderScript(opts?: LoaderScriptOptionsFormatJsx): JSX.Element;
-export function getLoaderScript(opts?: LoaderScriptOptions): string | JSX.Element {
-  const { prefix, withoutTags, format }: LoaderScriptOptions = {
+  const func = `export function getLoaderScript(opts?: GetLoaderScriptFormatHtml): string;
+export function getLoaderScript(opts?: GetLoaderScriptFormatJsx): JSX.Element;
+export function getLoaderScript(opts?: GetLoaderScriptWithoutTags): string;
+export function getLoaderScript(opts?: GetLoaderScript): string;
+export function getLoaderScript(opts?: GetLoaderScript): string | JSX.Element {
+  const { prefix, withoutTags, format }: GetLoaderScript = {
     prefix: undefined,
     withoutTags: false,
     format: 'html',
