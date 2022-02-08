@@ -7,20 +7,22 @@ const hash = '[a-z0-9]{32}';
 const baseHrefCom = 'https://cdn.ui.porsche.com/porsche-design-system/icons';
 const baseHrefCn = 'https://cdn.ui.porsche.cn/porsche-design-system/icons';
 
-it('should throw error on invalid icons parameter', () => {
-  let error;
-  try {
-    getIconLinks({ icons: ['some-invalid-icon'] as any[] });
-  } catch (e) {
-    error = e.message;
-  }
+describe('validation', () => {
+  it('should throw error on invalid icons parameter', () => {
+    let error;
+    try {
+      getIconLinks({ icons: ['some-invalid-icon'] as any[] });
+    } catch (e) {
+      error = e.message;
+    }
 
-  expect(error).toContain('The following supplied icon names are invalid:');
-  expect(error).toContain('some-invalid-icon');
+    expect(error).toContain('The following supplied icon names are invalid:');
+    expect(error).toContain('some-invalid-icon');
+  });
 });
 
 describe('format: html', () => {
-  it('should return "arrowHeadRight" link by default', () => {
+  it('should return default link', () => {
     const result = getIconLinks();
     const regex = new RegExp(
       `^<link rel=prefetch href=${baseHrefCom}/arrow-head-right.min.${hash}.svg as=image type=image/svg\\+xml crossorigin>$`
@@ -28,7 +30,7 @@ describe('format: html', () => {
     expect(result).toMatch(regex);
   });
 
-  it('should return default "arrowHeadRight" China CDN link', () => {
+  it('should return default link for china cdn', () => {
     const result = getIconLinks({ cdn: 'cn' });
     const regex = new RegExp(
       `^<link rel=prefetch href=${baseHrefCn}/arrow-head-right.min.${hash}.svg as=image type=image/svg\\+xml crossorigin>$`
@@ -59,7 +61,7 @@ describe('format: html', () => {
 });
 
 describe('format jsx', () => {
-  it('should return "arrowHeadRight" link by default', () => {
+  it('should return default link', () => {
     const { container } = render(getIconLinks({ format: 'jsx' }));
     const regex = new RegExp(
       `^<link rel="prefetch" href="${baseHrefCom}/arrow-head-right.min.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin="true">$`
@@ -67,7 +69,7 @@ describe('format jsx', () => {
     expect(container.innerHTML).toMatch(regex);
   });
 
-  it('should return "arrowHeadRight" link for china cdn', () => {
+  it('should return default link for china cdn', () => {
     const { container } = render(getIconLinks({ format: 'jsx', cdn: 'cn' }));
     const regex = new RegExp(
       `^<link rel="prefetch" href="${baseHrefCn}/arrow-head-right.min.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin="true">$`
@@ -97,7 +99,7 @@ describe('format jsx', () => {
 });
 
 describe('withoutTags: true', () => {
-  it('should return "arrowHeadRight" url by default', () => {
+  it('should return default url', () => {
     const result = getIconLinks({ withoutTags: true });
     const regex = new RegExp(`^${baseHrefCom}/arrow-head-right.min.${hash}.svg$`);
 
@@ -105,7 +107,7 @@ describe('withoutTags: true', () => {
     expect(result[0]).toMatch(regex);
   });
 
-  it('should return default "arrowHeadRight" China CDN url', () => {
+  it('should return default url for china cdn', () => {
     const result = getIconLinks({ withoutTags: true, cdn: 'cn' });
     const regex = new RegExp(`^${baseHrefCn}/arrow-head-right.min.${hash}.svg$`);
 

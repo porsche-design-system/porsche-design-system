@@ -32,7 +32,7 @@ describe('format: html', () => {
 });
 
 describe('format: jsx', () => {
-  it('should return jsx meta tags and icon links', () => {
+  it('should return meta tags and icon links', () => {
     const { container } = render(getMetaTagsAndIconLinks({ format: 'jsx', appTitle: 'Porsche UX Platform' }));
     const regex = new RegExp(
       `^<meta name="theme-color" content="#FFFFFF"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="white"><meta name="apple-mobile-web-app-title" content="Porsche UX Platform"><meta name="msapplication-TileImage" content="${baseHrefCom}/mstile-270x270.${hash}.png"><meta name="msapplication-TileColor" content="#FFFFFF"><link rel="icon" type="image/png" sizes="32x32" href="${baseHrefCom}/favicon-32x32.${hash}.png"><link rel="apple-touch-icon" href="${baseHrefCom}/apple-touch-icon-180x180.${hash}.png"><link rel="manifest" href="${baseHrefCom}/manifest.${hash}.webmanifest">$`
@@ -40,7 +40,7 @@ describe('format: jsx', () => {
     expect(container.innerHTML).toMatch(regex);
   });
 
-  it('should return jsx meta tags and icon links for china cdn', () => {
+  it('should return meta tags and icon links for china cdn', () => {
     const { container } = render(
       getMetaTagsAndIconLinks({ format: 'jsx', appTitle: 'Porsche UX Platform', cdn: 'cn' })
     );

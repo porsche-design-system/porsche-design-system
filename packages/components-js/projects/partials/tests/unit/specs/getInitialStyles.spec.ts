@@ -7,13 +7,13 @@ const tagNames = filteredTagNames.join(',');
 const prefixedTagNames = filteredTagNames.map((x) => `custom-prefix-${x}`).join(',');
 
 describe('format: html', () => {
-  it('should return style element with Porsche Design System components', () => {
+  it('should return core styles', () => {
     const result = getInitialStyles();
     const regex = new RegExp(`<style>${tagNames}{visibility:hidden}</style>`);
     expect(result).toMatch(regex);
   });
 
-  it('should add custom prefixes to style names', () => {
+  it('should add custom prefixes to component names', () => {
     const result = getInitialStyles({ prefix: 'custom-prefix' });
     const regex = new RegExp(`<style>${prefixedTagNames}{visibility:hidden}</style>`);
     expect(result).toMatch(regex);
@@ -27,7 +27,7 @@ describe('format: jsx', () => {
     expect(container.innerHTML).toMatch(regex);
   });
 
-  it('should add custom prefix', () => {
+  it('should add custom prefix to component names', () => {
     const { container } = render(getInitialStyles({ format: 'jsx', prefix: 'custom-prefix' }));
     const regex = new RegExp(`<style>${prefixedTagNames}{visibility:hidden}</style>`);
     expect(container.innerHTML).toMatch(regex);
