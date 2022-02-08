@@ -31,17 +31,17 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
 
   const metaIconTemplatesJSX = convertToJSX(metaIconLinks).join('');
 
-  const types = `type GetMetaTagsAndIconLinks = {
+  const types = `type GetMetaTagsAndIconLinksOptions = {
   appTitle: string;
   cdn?: Cdn;
   format?: Format;
 };`;
 
-  const func = `export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinks & { format: 'html'}): string;
-export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinks & { format: 'jsx'}): JSX.Element;
-export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinks): string;
-export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinks): string | JSX.Element {
-  const { appTitle, cdn, format }: GetMetaTagsAndIconLinks
+  const func = `export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions & { format: 'html'}): string;
+export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions & { format: 'jsx'}): JSX.Element;
+export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): string;
+export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): string | JSX.Element {
+  const { appTitle, cdn, format }: GetMetaTagsAndIconLinksOptions
   = {
     cdn: 'auto',
     format: 'html',
