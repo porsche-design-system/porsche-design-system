@@ -93,101 +93,70 @@
       code,
       pre {
         color: $p-color-default;
-        text-shadow: 0 1px rgba(255, 255, 255, 0.3);
       }
 
       pre {
         code ::v-deep {
-          // source: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vs.css#L60-L148
+          // source: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-one-light.css#L81-L139
 
           .token.comment,
           .token.prolog,
-          .token.doctype,
           .token.cdata {
-            color: #008000;
-            font-style: italic;
+            color: hsl(230, 4%, 64%);
           }
 
-          .token.namespace {
-            opacity: 0.7;
-          }
-
-          .token.string {
-            color: #a31515;
-          }
-
+          .token.doctype,
           .token.punctuation,
-          .token.operator {
-            color: #393a34; /* no highlight */
-          }
-
-          .token.url,
-          .token.symbol,
-          .token.number,
-          .token.boolean,
-          .token.variable,
-          .token.constant,
-          .token.inserted {
-            color: #36acaa;
-          }
-
-          .token.atrule,
-          .token.keyword,
-          .token.attr-value,
-          .language-autohotkey .token.selector,
-          .language-json .token.boolean,
-          .language-json .token.number,
-          code[class*='language-css'] {
-            color: #0000ff;
-          }
-
-          .token.function {
-            color: #393a34;
-          }
-
-          .token.deleted,
-          .language-autohotkey .token.tag {
-            color: #9a050f;
-          }
-
-          .token.selector,
-          .language-autohotkey .token.keyword {
-            color: #00009f;
-          }
-
-          .token.important {
-            color: #e90;
-          }
-
-          .token.important,
-          .token.bold {
-            font-weight: bold;
-          }
-
-          .token.italic {
-            font-style: italic;
-          }
-
-          .token.class-name,
-          .language-json .token.property {
-            color: #2b91af;
-          }
-
-          .token.tag,
-          .token.selector {
-            color: #800000;
+          .token.entity {
+            color: hsl(230, 8%, 24%);
           }
 
           .token.attr-name,
-          .token.property,
-          .token.regex,
-          .token.entity {
-            color: #ff0000;
+          .token.class-name,
+          .token.boolean,
+          .token.constant,
+          .token.number,
+          .token.atrule {
+            color: hsl(35, 99%, 36%);
           }
 
-          .token.directive.tag .tag {
-            background: #ffff00;
-            color: #393a34;
+          .token.keyword {
+            color: hsl(301, 63%, 40%);
+          }
+
+          .token.property,
+          .token.tag,
+          .token.symbol,
+          .token.deleted,
+          .token.important {
+            color: hsl(5, 74%, 59%);
+          }
+
+          .token.selector,
+          .token.string,
+          .token.char,
+          .token.builtin,
+          .token.inserted,
+          .token.regex,
+          .token.attr-value,
+          .token.attr-value > .token.punctuation {
+            color: hsl(119, 34%, 47%);
+          }
+
+          .token.variable,
+          .token.operator,
+          .token.function {
+            color: hsl(221, 87%, 60%);
+          }
+
+          .token.url {
+            color: hsl(198, 99%, 37%);
+          }
+
+          /* HTML overrides */
+          .token.attr-value > .token.punctuation.attr-equals,
+          .token.special-attr > .token.attr-value > .token.value.css {
+            color: hsl(230, 8%, 24%);
           }
         }
       }
@@ -197,226 +166,70 @@
       code,
       pre {
         color: $p-color-theme-dark-default;
-        text-shadow: 0 1px rgba(0, 0, 0, 0.3);
       }
 
       pre {
         code ::v-deep {
-          // source: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css#L50-L262
-
-          /*********************************************************
-          * Tokens
-          */
-          .namespace {
-            opacity: 0.7;
-          }
-
-          .token.doctype .token.doctype-tag {
-            color: #569cd6;
-          }
-
-          .token.doctype .token.name {
-            color: #9cdcfe;
-          }
+          // source: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-one-dark.css#L92-L150
 
           .token.comment,
-          .token.prolog {
-            color: #6a9955;
+          .token.prolog,
+          .token.cdata {
+            color: hsl(220, 10%, 40%);
           }
 
+          .token.doctype,
           .token.punctuation,
-          .language-html .language-css .token.punctuation,
-          .language-html .language-javascript .token.punctuation {
-            color: #d4d4d4;
+          .token.entity {
+            color: hsl(220, 14%, 71%);
+          }
+
+          .token.attr-name,
+          .token.class-name,
+          .token.boolean,
+          .token.constant,
+          .token.number,
+          .token.atrule {
+            color: hsl(29, 54%, 61%);
+          }
+
+          .token.keyword {
+            color: hsl(286, 60%, 67%);
           }
 
           .token.property,
           .token.tag,
-          .token.boolean,
-          .token.number,
-          .token.constant,
           .token.symbol,
-          .token.inserted,
-          .token.unit {
-            color: #b5cea8;
+          .token.deleted,
+          .token.important {
+            color: hsl(355, 65%, 65%);
           }
 
           .token.selector,
-          .token.attr-name,
           .token.string,
           .token.char,
           .token.builtin,
-          .token.deleted {
-            color: #ce9178;
-          }
-
-          .language-css .token.string.url {
-            text-decoration: underline;
-          }
-
-          .token.operator,
-          .token.entity {
-            color: #d4d4d4;
-          }
-
-          .token.operator.arrow {
-            color: #569cd6;
-          }
-
-          .token.atrule {
-            color: #ce9178;
-          }
-
-          .token.atrule .token.rule {
-            color: #c586c0;
-          }
-
-          .token.atrule .token.url {
-            color: #9cdcfe;
-          }
-
-          .token.atrule .token.url .token.function {
-            color: #dcdcaa;
-          }
-
-          .token.atrule .token.url .token.punctuation {
-            color: #d4d4d4;
-          }
-
-          .token.keyword {
-            color: #569cd6;
-          }
-
-          .token.keyword.module,
-          .token.keyword.control-flow {
-            color: #c586c0;
-          }
-
-          .token.function,
-          .token.function .token.maybe-class-name {
-            color: #dcdcaa;
-          }
-
-          .token.regex {
-            color: #d16969;
-          }
-
-          .token.important {
-            color: #569cd6;
-          }
-
-          .token.italic {
-            font-style: italic;
-          }
-
-          .token.constant {
-            color: #9cdcfe;
-          }
-
-          .token.class-name,
-          .token.maybe-class-name {
-            color: #4ec9b0;
-          }
-
-          .token.console {
-            color: #9cdcfe;
-          }
-
-          .token.parameter {
-            color: #9cdcfe;
-          }
-
-          .token.interpolation {
-            color: #9cdcfe;
-          }
-
-          .token.punctuation.interpolation-punctuation {
-            color: #569cd6;
-          }
-
-          .token.boolean {
-            color: #569cd6;
-          }
-
-          .token.property,
-          .token.variable,
-          .token.imports .token.maybe-class-name,
-          .token.exports .token.maybe-class-name {
-            color: #9cdcfe;
-          }
-
-          .token.selector {
-            color: #d7ba7d;
-          }
-
-          .token.escape {
-            color: #d7ba7d;
-          }
-
-          .token.tag {
-            color: #569cd6;
-          }
-
-          .token.tag .token.punctuation {
-            color: #808080;
-          }
-
-          .token.cdata {
-            color: #808080;
-          }
-
-          .token.attr-name {
-            color: #9cdcfe;
-          }
-
+          .token.inserted,
+          .token.regex,
           .token.attr-value,
-          .token.attr-value .token.punctuation {
-            color: #ce9178;
+          .token.attr-value > .token.punctuation {
+            color: hsl(95, 38%, 62%);
           }
 
-          .token.attr-value .token.punctuation.attr-equals {
-            color: #d4d4d4;
+          .token.variable,
+          .token.operator,
+          .token.function {
+            color: hsl(207, 82%, 66%);
           }
 
-          .token.entity {
-            color: #569cd6;
+          .token.url {
+            color: hsl(187, 47%, 55%);
           }
 
-          .token.namespace {
-            color: #4ec9b0;
-          }
-
-          /*********************************************************
-          * Language Specific
-          */
-
-          pre[class*='language-javascript'],
-          code[class*='language-javascript'],
-          pre[class*='language-jsx'],
-          code[class*='language-jsx'],
-          pre[class*='language-typescript'],
-          code[class*='language-typescript'],
-          pre[class*='language-tsx'],
-          code[class*='language-tsx'] {
-            color: #9cdcfe;
-          }
-
-          pre[class*='language-css'],
-          code[class*='language-css'] {
-            color: #ce9178;
-          }
-
-          pre[class*='language-html'],
-          code[class*='language-html'] {
-            color: #d4d4d4;
-          }
-
-          .language-regex .token.anchor {
-            color: #dcdcaa;
-          }
-
-          .language-html .token.punctuation {
-            color: #808080;
+          /* HTML overrides */
+          .token.attr-value > .token.punctuation.attr-equals,
+          .token.special-attr > .token.attr-value > .token.value.css {
+            color: hsl(220, 14%, 71%);
           }
         }
       }
@@ -444,6 +257,10 @@
     margin-top: $p-spacing-16;
 
     code ::v-deep {
+      .token.namespace {
+        opacity: 0.8;
+      }
+
       .token.important,
       .token.bold {
         font-weight: bold;
