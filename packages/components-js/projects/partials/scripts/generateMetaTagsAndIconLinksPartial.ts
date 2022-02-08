@@ -4,11 +4,11 @@ import { CDN_BASE_PATH_META_ICONS, CDN_BASE_URL, CDN_BASE_URL_CN } from '../../.
 
 const convertToJSX = (templates: string[]): JSX.Element[] => {
   return templates.map(
-    (template, index) =>
+    (template) =>
       template
         .replace(/'\$cdnBaseUrl(.*?)'/g, '{`${cdnBaseUrl}$1`}')
         .replace('"$appTitle"', '{appTitle}')
-        .replace('/>', `key={${index}} />`) as unknown as JSX.Element
+        .replace('"$manifestUrl"', '{manifestUrl}') as unknown as JSX.Element
   );
 };
 
@@ -24,18 +24,12 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
     '<meta name="msapplication-TileColor" content="#FFFFFF" />',
     `<link rel="icon" type="image/png" sizes="32x32" href='${metaIconCDNPath}/${META_ICONS_MANIFEST.favicon.favicon_32x32}'/>`,
     `<link rel="apple-touch-icon" href='${metaIconCDNPath}/${META_ICONS_MANIFEST.touchIcon.appleTouchIcon_180x180}' />`,
-  ];
-
-  const manifestLinks: string[] = [
-    `<link rel="manifest" href='${CDN_BASE_URL}/${CDN_BASE_PATH_META_ICONS}/${META_ICONS_MANIFEST.webManifest.auto}' />`,
-    `<link rel="manifest" href='${CDN_BASE_URL_CN}/${CDN_BASE_PATH_META_ICONS}/${META_ICONS_MANIFEST.webManifest.cn}' />`,
+    `<link rel="manifest" href="$manifestUrl" />`,
   ];
 
   const minifiedMetaIconsHTML = JSON.stringify(metaIconLinks.map((template) => minifyHTML(template)));
-  const minifiedManifestsHTML = JSON.stringify(manifestLinks.map((template) => minifyHTML(template)));
 
-  const metaIconTemplatesJSX = convertToJSX(metaIconLinks);
-  const manifestTemplatesJSX = convertToJSX(manifestLinks);
+  const metaIconTemplatesJSX = convertToJSX(metaIconLinks).join('');
 
   const types = `type GetMetaTagsAndIconLinks = {
   appTitle: string;
@@ -59,14 +53,13 @@ export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinks ): string
   }
 
   const cdnBaseUrl = getCdnBaseUrl(cdn);
+  const manifestUrlCom = '${CDN_BASE_URL}/${CDN_BASE_PATH_META_ICONS}/${META_ICONS_MANIFEST.webManifest.auto}';
+  const manifestUrlCn = '${CDN_BASE_URL_CN}/${CDN_BASE_PATH_META_ICONS}/${META_ICONS_MANIFEST.webManifest.cn}';
+  const manifestUrl = cdn === 'auto' ? manifestUrlCom : manifestUrlCn;
 
-  const metaIconTagsJsx = [${metaIconTemplatesJSX}];
-  const manifestTagJsx = [${manifestTemplatesJSX}].find(item => JSON.stringify(item).includes(cdnBaseUrl));
+  const metaIconTags = ${minifiedMetaIconsHTML}.map(metaIconTemplate => metaIconTemplate.replace('$appTitle', \`"\${appTitle}"\`).replace('$cdnBaseUrl', cdnBaseUrl).replace('$manifestUrl', manifestUrl));
 
-  const metaIconTags = ${minifiedMetaIconsHTML}.map(metaIconTemplate => metaIconTemplate.replace('$appTitle', \`"\${appTitle}"\`).replace('$cdnBaseUrl', cdnBaseUrl));
-  const webManifestTag = ${minifiedManifestsHTML}.find(item => item.includes(cdnBaseUrl));
-
-  return format === 'html' ? [...metaIconTags, webManifestTag].join('') : <>{metaIconTagsJsx}{manifestTagJsx}</>;
+  return format === 'html' ? metaIconTags.join('') : <>${metaIconTemplatesJSX}</>;
 }`;
 
   return [types, func].join('\n\n');
