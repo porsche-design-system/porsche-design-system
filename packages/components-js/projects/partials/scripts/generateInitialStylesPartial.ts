@@ -1,27 +1,28 @@
 import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
+import { withoutTagsOption } from './utils';
 
 export const generateInitialStylesPartial = (): string => {
-  const types = `type InitialStylesOptions = {
+  const types = `type GetInitialStyles = {
   prefix?: string;
-  withoutTags?: boolean;
+  ${withoutTagsOption}
   format?: Format;
 };
-type InitalStylesOptionsFormatHtml = InitialStylesOptions & {
-  format?: 'html';
+type GetInitialStylesFormatHtml = Omit<GetInitialStyles, 'withoutTags'> & {
+  format: 'html';
 };
-type InitalStylesOptionsFormatJsx = InitialStylesOptions & {
-   withoutTags?: 'false';
-   format?: 'jsx';
+type GetInitialStylesFormatJsx = Omit<GetInitialStyles, 'withoutTags'> & {
+   format: 'jsx';
 };`;
 
   const tagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x))
     .map((x) => `'${x}'`)
     .join(', ');
 
-  const func = `export function getInitialStyles(opts?: InitalStylesOptionsFormatHtml): string;
-export function getInitialStyles(opts?: InitalStylesOptionsFormatJsx): JSX.Element;
-export function getInitialStyles(opts?: InitialStylesOptions): string | JSX.Element {
-  const { prefix, withoutTags, format }: InitialStylesOptions = {
+  const func = `export function getInitialStyles(opts?: GetInitialStylesFormatHtml): string;
+export function getInitialStyles(opts?: GetInitialStylesFormatJsx): JSX.Element;
+export function getInitialStyles(opts?: GetInitialStyles): string;
+export function getInitialStyles(opts?: GetInitialStyles): string | JSX.Element {
+  const { prefix, withoutTags, format }: GetInitialStyles = {
     prefix: '',
     withoutTags: false,
     format: 'html',
