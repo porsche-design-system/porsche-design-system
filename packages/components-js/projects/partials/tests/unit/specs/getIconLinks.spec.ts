@@ -67,12 +67,19 @@ describe('format jsx', () => {
     expect(container.innerHTML).toMatch(regex);
   });
 
+  it('should return "arrowHeadRight" link for china cdn', () => {
+    const { container } = render(getIconLinks({ format: 'jsx', cdn: 'cn' }));
+    const regex = new RegExp(
+      `^<link rel="prefetch" href="${baseHrefCn}/arrow-head-right.min.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin="true">$`
+    );
+    expect(container.innerHTML).toMatch(regex);
+  });
+
   it('should return multiple links', () => {
     const { container } = render(getIconLinks({ format: 'jsx', icons: ['truck', 'volumeUp', 'mobile'] }));
     const regex = new RegExp(
       `^<link rel="prefetch" href="${baseHrefCom}/truck.min.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin="true"><link rel="prefetch" href="${baseHrefCom}/volume-up.min.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin="true"><link rel="prefetch" href="${baseHrefCom}/mobile.min.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin="true">$`
     );
-
     expect(container.innerHTML).toMatch(regex);
   });
 
