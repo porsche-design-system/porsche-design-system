@@ -6,18 +6,10 @@ import { TagName } from '../src';
 
 const INTERNAL_TAG_NAMES: TagName[] = ['p-select-wrapper-dropdown', 'p-toast-item'];
 
-// TODO: add form elements
-//'p-button-pure','p-link', 'p-link-pure'
 const TAG_NAMES_WITH_SKELETON: TagName[] = [
   'p-button',
   'p-button-pure',
-  'p-button-group',
   'p-checkbox-wrapper',
-  'p-content-wrapper',
-  'p-flex',
-  'p-flex-item',
-  'p-grid',
-  'p-grid-item',
   'p-select-wrapper',
   'p-link',
   'p-link-pure',

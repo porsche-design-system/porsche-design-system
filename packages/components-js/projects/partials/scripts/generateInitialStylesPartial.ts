@@ -1,13 +1,9 @@
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
 import { joinArrayElementsToString } from './utils';
 import {
-  getButtonGroupSkeletonStyles,
   getButtonLinkPureSkeletonStyles,
   getButtonLinkSkeletonStyles,
   getCheckboxRadioWrapperSkeletonStyles,
-  getContentWrapperSkeletonStyles,
-  getFlexSkeletonStyles,
-  getGridSkeletonStyles,
   getSelectTextFieldWrapperSkeletonStyles,
   SKELETON_COLOR_THEME_PLACEHOLDER,
   SKELETON_LINEAR_GRADIENT_COLOR_1,
@@ -29,13 +25,9 @@ export const generateInitialStylesPartial = (): string => {
   const skeletonKeyframes = '@keyframes shimmer{0%{background-position:-450px 0}100%{background-position:450px 0}}';
 
   const skeletonStyles = [
-    getButtonGroupSkeletonStyles(),
     getButtonLinkSkeletonStyles(),
     getButtonLinkPureSkeletonStyles(),
     getCheckboxRadioWrapperSkeletonStyles(),
-    getContentWrapperSkeletonStyles(),
-    getFlexSkeletonStyles(),
-    getGridSkeletonStyles(),
     getSelectTextFieldWrapperSkeletonStyles(),
   ].join('');
 
@@ -44,12 +36,6 @@ export const generateInitialStylesPartial = (): string => {
   );
 
   const tagNamesWithSkeleton = joinArrayElementsToString(TAG_NAMES_WITH_SKELETON);
-
-  const joinArrayElementsToStringFunction = joinArrayElementsToString.toString();
-  const joinArrayElementsFunctionBody = joinArrayElementsToStringFunction.slice(
-    joinArrayElementsToStringFunction.indexOf('{') + 1,
-    joinArrayElementsToStringFunction.lastIndexOf('}')
-  );
 
   const initialStylesFunction = `export const getInitialStyles = (opts?: InitialStylesOptions): string => {
   const options: InitialStylesOptions = {
@@ -68,8 +54,8 @@ export const generateInitialStylesPartial = (): string => {
 
   const tagNamesWithSkeleton = [${tagNamesWithSkeleton}];
   const prefixedTagNamesWithSkeleton = getPrefixedTagNames(tagNamesWithSkeleton, prefix);
-  // TODO: figure out how without tags is supposed to work with skeleton script
-  const result = withoutTags ? styleInnerHTML : \`<style>\${styleInnerHTML}\${getSkeletonStyles({prefixedTagNamesWithSkeleton, prefix, theme})}</style><script>\${setAriaAttributesOnSkeleton(prefixedTagNamesWithSkeleton)}</script>\`;
+
+  const result = withoutTags ? styleInnerHTML : \`<style>\${styleInnerHTML}\${getSkeletonStyles({prefixedTagNamesWithSkeleton, prefix, theme})}</style>\`;
   return result;
 };`;
 
@@ -102,74 +88,10 @@ export const generateInitialStylesPartial = (): string => {
   return result.replace(/(@)/g, '\\\\$1');
 };`;
 
-  const ariaAttributeFunction = `const setAriaAttributesOnSkeleton = (prefixedSkeletonTagNames: string[]): string => \`
-  window.onload = () => {
-    const toggleAriaAttributes = (target, state) => {
-      if(state){
-        target.ariaBusy = state;
-        target.ariaHidden = state;
-      } else {
-        delete target.ariaBusy;
-        delete target.ariaHidden;
-      }
-    };
-
-    const setSkeletonAriaProperties = (target) => {
-      if (target.className.includes("hydrated")) {
-        toggleAriaAttributes(target, false);
-        unobserveAttributes(target);
-      } else {
-        toggleAriaAttributes(target, true);
-      }
-    };
-
-    const attributeMutationMap = new Map();
-
-    const attributeObserver = new MutationObserver((mutations) => {
-      mutations
-        .filter((mutation) =>{
-          /* reduce array to only entries that have really a changed value */
-          return  mutation.oldValue !== mutation.target.getAttribute(mutation.attributeName)
-        }).filter((mutation, idx, arr) => {
-          /* remove duplicates so we execute callback only once per node */
-          return arr.findIndex((m) => m.target === mutation.target) === idx
-        }).forEach((mutation) => attributeMutationMap.get(mutation.target)?.(mutation.target));
-    });
-
-    const observeAttributes = (node, attributes, callback) => {
-      /* node might not be defined in connectedCallback */
-      if (node) {
-        attributeMutationMap.set(node, callback);
-        attributeObserver.observe(node, { attributeFilter: attributes, attributeOldValue: true });
-      }
-    };
-
-    const unobserveAttributes = (node) => {
-      attributeMutationMap.delete(node);
-    };
-
-    [\${joinArrayElementsToString(prefixedSkeletonTagNames)}].forEach(tagName => {
-      const el = document.querySelector(tagName);
-      toggleAriaAttributes(el, true);
-      observeAttributes(el, ['class'], setSkeletonAriaProperties);
-    });
-  };
-\`;`;
-
-  const helperFunctions = `const getPrefixedTagNames = (tagNames: string[], prefix?: string): string[] => {
+  const helperFunction = `const getPrefixedTagNames = (tagNames: string[], prefix?: string): string[] => {
   return prefix ? tagNames.map((x) => \`\${prefix}-\${x}\`) : tagNames;
 }
-const joinArrayElementsToString = (array: string[]): string => {
-${joinArrayElementsFunctionBody}
-};
 `;
 
-  return [
-    types,
-    skeletonTypes,
-    helperFunctions,
-    initialStylesFunction,
-    skeletonStylesFunction,
-    ariaAttributeFunction.replace(/\n/g, ''),
-  ].join('\n\n');
+  return [types, skeletonTypes, helperFunction, initialStylesFunction, skeletonStylesFunction].join('\n\n');
 };
