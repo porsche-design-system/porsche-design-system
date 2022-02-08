@@ -60,7 +60,7 @@ describe('format: html', () => {
   });
 });
 
-describe('format jsx', () => {
+describe('format: jsx', () => {
   it('should return default link', () => {
     const { container } = render(getIconLinks({ format: 'jsx' }));
     const regex = new RegExp(
