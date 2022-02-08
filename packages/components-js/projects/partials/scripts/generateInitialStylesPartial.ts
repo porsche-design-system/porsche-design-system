@@ -12,6 +12,9 @@ type GetInitialStylesFormatHtml = Omit<GetInitialStyles, 'withoutTags'> & {
 };
 type GetInitialStylesFormatJsx = Omit<GetInitialStyles, 'withoutTags'> & {
    format: 'jsx';
+};
+type GetInitialStylesWithoutTags = Omit<GetInitialStyles, 'format'> & {
+   withoutTags: true;
 };`;
 
   const tagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x))
@@ -20,6 +23,7 @@ type GetInitialStylesFormatJsx = Omit<GetInitialStyles, 'withoutTags'> & {
 
   const func = `export function getInitialStyles(opts?: GetInitialStylesFormatHtml): string;
 export function getInitialStyles(opts?: GetInitialStylesFormatJsx): JSX.Element;
+export function getInitialStyles(opts?: GetInitialStylesWithoutTags): string;
 export function getInitialStyles(opts?: GetInitialStyles): string;
 export function getInitialStyles(opts?: GetInitialStyles): string | JSX.Element {
   const { prefix, withoutTags, format }: GetInitialStyles = {
