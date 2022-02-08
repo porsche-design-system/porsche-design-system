@@ -46,7 +46,7 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
   const func = `export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinks & { format: 'html'}): string;
 export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinks & { format: 'jsx'}): JSX.Element;
 export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinks): string;
-export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLink ): string | JSX.Element {
+export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinks ): string | JSX.Element {
   const { appTitle, cdn, format }: GetMetaTagsAndIconLinks
   = {
     cdn: 'auto',
