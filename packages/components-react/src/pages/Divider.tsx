@@ -1,11 +1,12 @@
+/* Auto Generated File */
 import { PDivider } from '@porsche-design-system/components-react';
 
 export const DividerPage = (): JSX.Element => {
   const style = `
     .divider-vertical-container-example {
-        display: flex;
-        height: 100px;
-      }
+      display: flex;
+      height: 100px;
+    }
 
     @media (min-width: 480px) and (max-width: 759px), (min-width: 1000px) and (max-width: 1299px), (min-width: 1760px) {
       .divider-vertical-responsive-container-example {
@@ -14,6 +15,7 @@ export const DividerPage = (): JSX.Element => {
       }
     }
   `;
+
   return (
     <>
       <style children={style} />
@@ -31,15 +33,8 @@ export const DividerPage = (): JSX.Element => {
       <div className="playground light" title="should show responsive vertical divider">
         <div className="divider-vertical-responsive-container-example">
           <PDivider
-            orientation={{
-              base: 'horizontal',
-              xs: 'vertical',
-              s: 'horizontal',
-              m: 'vertical',
-              l: 'horizontal',
-              xl: 'vertical',
-            }}
-          />
+            orientation={{ base: 'horizontal', xs: 'vertical', s: 'horizontal', m: 'vertical', l: 'horizontal', xl: 'vertical' }}
+           />
         </div>
       </div>
 

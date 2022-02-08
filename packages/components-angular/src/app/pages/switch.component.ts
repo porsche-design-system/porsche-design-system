@@ -1,3 +1,4 @@
+/* Auto Generated File */
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
@@ -57,7 +58,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-switch [hideLabel]="true">Some label</p-switch>
     </div>
     <div class="playground light" title="should render with or without label depending on viewport">
-      <p-switch [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"> Some label </p-switch>
+      <p-switch [hideLabel]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }">Some label</p-switch>
     </div>
 
     <div class="playground light" title="should render with stretched label">
@@ -69,14 +70,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render with multiline label">
-      <p-switch style="width: 240px"
-        >This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long
-        one.</p-switch
-      >
-      <p-switch style="width: 240px" [alignLabel]="'left'"
-        >This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long
-        one.</p-switch
-      >
+      <p-switch style="width: 240px">
+        This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
+      </p-switch>
+      <p-switch style="width: 240px" [alignLabel]="'left'">
+        This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
+      </p-switch>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

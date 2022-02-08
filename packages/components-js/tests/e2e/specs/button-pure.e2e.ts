@@ -118,6 +118,7 @@ describe('button-pure', () => {
     }
     await waitForEventSerialization(page); // 🙈
     await waitForEventSerialization(page); // 🙈
+    await waitForEventSerialization(page); // 🙈
 
     expect(calls).toBe(2);
   });
