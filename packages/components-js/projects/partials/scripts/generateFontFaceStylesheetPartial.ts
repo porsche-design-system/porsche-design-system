@@ -6,18 +6,18 @@ export const generateFontFaceStylesheetPartial = (): string => {
   const generatedUtilitiesPackage = fs.readFileSync(require.resolve('@porsche-design-system/styles'), 'utf8');
   const hashedFontFaceCssFiles = generatedUtilitiesPackage.match(/(font-face\.min[\w\d\.]*)/g);
 
-  const types = `type GetFontFaceStylesheet = {
+  const types = `type GetFontFaceStylesheetOptions = {
   cdn?: Cdn;
   ${withoutTagsOption}
   format?: Format;
 };
-type GetFontFaceStylesheetFormatHtml = Omit<GetFontFaceStylesheet, 'withoutTags'> & {
+type GetFontFaceStylesheetOptionsFormatHtml = Omit<GetFontFaceStylesheetOptions, 'withoutTags'> & {
   format: 'html';
 };
-type GetFontFaceStylesheetFormatJsx =  Omit<GetFontFaceStylesheet, 'withoutTags'> & {
+type GetFontFaceStylesheetOptionsFormatJsx =  Omit<GetFontFaceStylesheetOptions, 'withoutTags'> & {
   format: 'jsx';
 };
-type GetFontFaceStylesheetWithoutTags =  Omit<GetFontFaceStylesheet, 'format'>;`;
+type GetFontFaceStylesheetOptionsWithoutTags =  Omit<GetFontFaceStylesheetOptions, 'format'>;`;
 
   const cssFileCn = hashedFontFaceCssFiles?.find((x) => x.includes('.cn.'));
   const cssFileCom = hashedFontFaceCssFiles?.find((x) => !x.includes('.cn.'));
@@ -31,11 +31,11 @@ type GetFontFaceStylesheetWithoutTags =  Omit<GetFontFaceStylesheet, 'format'>;`
       .replace('"$URL"', '{url}')
       .replace(/"\$CDN_URL"/g, '{cdnBaseUrl}');
 
-  const func = `export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetFormatHtml): string;
-export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetFormatJsx): JSX.Element;
-export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetWithoutTags): string;
-export function getFontFaceStylesheet(opts?: GetFontFaceStylesheet): string | JSX.Element {
-  const { cdn, withoutTags, format }: GetFontFaceStylesheet = {
+  const func = `export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetOptionsFormatHtml): string;
+export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetOptionsFormatJsx): JSX.Element;
+export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetOptionsWithoutTags): string;
+export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetOptions): string | JSX.Element {
+  const { cdn, withoutTags, format }: GetFontFaceStylesheetOptions = {
     cdn: 'auto',
     withoutTags: false,
     format: 'html',

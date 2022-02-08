@@ -4,29 +4,29 @@ import { npmDistTmpSubPath } from '../../components-wrapper/environment';
 import { withoutTagsOption } from './utils';
 
 export const generateLoaderScriptPartial = (): string => {
-  const types = `type GetLoaderScript = {
+  const types = `type GetLoaderScriptOptions = {
   prefix?: string | string[];
   ${withoutTagsOption}
   format?: Format;
 };
-type GetLoaderScriptFormatHtml = Omit<GetLoaderScript, 'withoutTags'> & {
+type GetLoaderScriptOptionsFormatHtml = Omit<GetLoaderScriptOptions, 'withoutTags'> & {
   format: 'html';
 };
-type GetLoaderScriptFormatJsx = Omit<GetLoaderScript, 'withoutTags'> & {
+type GetLoaderScriptOptionsFormatJsx = Omit<GetLoaderScriptOptions, 'withoutTags'> & {
    format: 'jsx';
 };
-type GetLoaderScriptWithoutTags = Omit<GetLoaderScript, 'format'>;`;
+type GetLoaderScriptOptionsWithoutTags = Omit<GetLoaderScriptOptions, 'format'>;`;
 
   const componentsJsFilePath = require.resolve('@porsche-design-system/components-js');
   const packageDir = path.resolve(path.dirname(componentsJsFilePath), '../..');
   const tmpFilePath = path.resolve(packageDir, npmDistTmpSubPath, 'index.js');
   const fileContent = fs.readFileSync(tmpFilePath, 'utf8');
 
-  const func = `export function getLoaderScript(opts?: GetLoaderScriptFormatHtml): string;
-export function getLoaderScript(opts?: GetLoaderScriptFormatJsx): JSX.Element;
-export function getLoaderScript(opts?: GetLoaderScriptWithoutTags): string;
-export function getLoaderScript(opts?: GetLoaderScript): string | JSX.Element {
-  const { prefix, withoutTags, format }: GetLoaderScript = {
+  const func = `export function getLoaderScript(opts?: GetLoaderScriptOptionsFormatHtml): string;
+export function getLoaderScript(opts?: GetLoaderScriptOptionsFormatJsx): JSX.Element;
+export function getLoaderScript(opts?: GetLoaderScriptOptionsWithoutTags): string;
+export function getLoaderScript(opts?: GetLoaderScriptOptions): string | JSX.Element {
+  const { prefix, withoutTags, format }: GetLoaderScriptOptions = {
     prefix: undefined,
     withoutTags: false,
     format: 'html',

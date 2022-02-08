@@ -7,25 +7,25 @@ export const generateComponentChunkLinksPartial = (): string => {
   // 'any' is fallback when COMPONENT_CHUNK_NAMES is an empty array because components-js wasn't built, yet
   const types = `type ComponentChunkName = ${chunkNamesTypeLiteral || 'any'};
 
-type GetComponentChunkLinks = {
+type GetComponentChunkLinksOptions = {
   components?: ComponentChunkName[];
   cdn?: Cdn;
   ${withoutTagsOption}
   format?: Format;
 };
-type GetComponentChunkLinksFormatHtml = Omit<GetComponentChunkLinks, 'withoutTags'> & {
+type GetComponentChunkLinksOptionsFormatHtml = Omit<GetComponentChunkLinksOptions, 'withoutTags'> & {
   format: 'html';
 };
-type GetComponentChunkLinksFormatJsx = Omit<GetComponentChunkLinks, 'withoutTags'> & {
+type GetComponentChunkLinksOptionsFormatJsx = Omit<GetComponentChunkLinksOptions, 'withoutTags'> & {
   format: 'jsx';
 };
-type GetComponentChunkLinksWithoutTags =  Omit<GetComponentChunkLinks, 'format'>;`;
+type GetComponentChunkLinksOptionsWithoutTags =  Omit<GetComponentChunkLinksOptions, 'format'>;`;
 
-  const func = `export function getComponentChunkLinks(opts?: GetComponentChunkLinksFormatJsx): JSX.Element;
-export function getComponentChunkLinks(opts?: GetComponentChunkLinksFormatHtml): string;
-export function getComponentChunkLinks(opts?: GetComponentChunkLinksWithoutTags): string[];
-export function getComponentChunkLinks(opts?: GetComponentChunkLinks): string | string[] | JSX.Element {
-  const { components, cdn, withoutTags, format }: GetComponentChunkLinks = {
+  const func = `export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptionsFormatJsx): JSX.Element;
+export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptionsFormatHtml): string;
+export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptionsWithoutTags): string[];
+export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptions): string | string[] | JSX.Element {
+  const { components, cdn, withoutTags, format }: GetComponentChunkLinksOptions = {
     components: [],
     cdn: 'auto',
     withoutTags: false,

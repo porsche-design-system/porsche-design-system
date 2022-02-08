@@ -6,27 +6,27 @@ export const generateIconLinksPartial = (): string => {
   const iconType = ICON_NAMES.map((x) => `'${x}'`).join(' | ');
   const types = `type IconNameCamelCase = ${iconType};
 
-type GetIconLinks = {
+type GetIconLinksOptions = {
   icons?: IconNameCamelCase[];
   cdn?: Cdn;
   ${withoutTagsOption}
   format?: Format;
 };
-type GetIconLinksFormatHtml = Omit<GetIconLinks, 'withoutTags'> & {
+type GetIconLinksOptionsFormatHtml = Omit<GetIconLinksOptions, 'withoutTags'> & {
   format: 'html';
 };
-type GetIconLinksFormatJsx = Omit<GetIconLinks, 'withoutTags'> & {
+type GetIconLinksOptionsFormatJsx = Omit<GetIconLinksOptions, 'withoutTags'> & {
   format: 'jsx';
 };
-type GetIconLinksWithoutTags = Omit<GetIconLinks, 'format'>`;
+type GetIconLinksOptionsWithoutTags = Omit<GetIconLinksOptions, 'format'>`;
 
   const link = minifyHTML('<link rel="prefetch" href="${url}" as="image" type="image/svg+xml" crossorigin>');
 
-  const func = `export function getIconLinks(opts?: GetIconLinksFormatJsx): JSX.Element;
-export function getIconLinks(opts?: GetIconLinksFormatHtml): string;
-export function getIconLinks(opts?: GetIconLinksWithoutTags): string[];
-export function getIconLinks(opts?: GetIconLinks): string | string[] | JSX.Element {
-  const { icons, cdn, withoutTags, format }: GetIconLinks = {
+  const func = `export function getIconLinks(opts?: GetIconLinksOptionsFormatJsx): JSX.Element;
+export function getIconLinks(opts?: GetIconLinksOptionsFormatHtml): string;
+export function getIconLinks(opts?: GetIconLinksOptionsWithoutTags): string[];
+export function getIconLinks(opts?: GetIconLinksOptions): string | string[] | JSX.Element {
+  const { icons, cdn, withoutTags, format }: GetIconLinksOptions = {
     icons: ['arrowHeadRight'],
     cdn: 'auto',
     withoutTags: false,
