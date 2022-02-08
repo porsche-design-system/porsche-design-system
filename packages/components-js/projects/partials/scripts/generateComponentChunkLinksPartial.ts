@@ -19,14 +19,11 @@ type GetComponentChunkLinksFormatHtml = Omit<GetComponentChunkLinks, 'withoutTag
 type GetComponentChunkLinksFormatJsx = Omit<GetComponentChunkLinks, 'withoutTags'> & {
   format: 'jsx';
 };
-type GetComponentChunkLinksWithoutTags =  Omit<GetComponentChunkLinks, 'format'> & {
-  withoutTags: true;
-};`;
+type GetComponentChunkLinksWithoutTags =  Omit<GetComponentChunkLinks, 'format'>;`;
 
   const func = `export function getComponentChunkLinks(opts?: GetComponentChunkLinksFormatJsx): JSX.Element;
 export function getComponentChunkLinks(opts?: GetComponentChunkLinksFormatHtml): string;
 export function getComponentChunkLinks(opts?: GetComponentChunkLinksWithoutTags): string[];
-export function getComponentChunkLinks(opts?: GetComponentChunkLinks): string;
 export function getComponentChunkLinks(opts?: GetComponentChunkLinks): string | string[] | JSX.Element {
   const { components, cdn, withoutTags, format }: GetComponentChunkLinks = {
     components: [],

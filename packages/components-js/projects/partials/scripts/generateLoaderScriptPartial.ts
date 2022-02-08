@@ -15,9 +15,7 @@ type GetLoaderScriptFormatHtml = Omit<GetLoaderScript, 'withoutTags'> & {
 type GetLoaderScriptFormatJsx = Omit<GetLoaderScript, 'withoutTags'> & {
    format: 'jsx';
 };
-type GetLoaderScriptWithoutTags = Omit<GetLoaderScript, 'format'> & {
-   withoutTags: true;
-};`;
+type GetLoaderScriptWithoutTags = Omit<GetLoaderScript, 'format'>;`;
 
   const componentsJsFilePath = require.resolve('@porsche-design-system/components-js');
   const packageDir = path.resolve(path.dirname(componentsJsFilePath), '../..');
@@ -27,7 +25,6 @@ type GetLoaderScriptWithoutTags = Omit<GetLoaderScript, 'format'> & {
   const func = `export function getLoaderScript(opts?: GetLoaderScriptFormatHtml): string;
 export function getLoaderScript(opts?: GetLoaderScriptFormatJsx): JSX.Element;
 export function getLoaderScript(opts?: GetLoaderScriptWithoutTags): string;
-export function getLoaderScript(opts?: GetLoaderScript): string;
 export function getLoaderScript(opts?: GetLoaderScript): string | JSX.Element {
   const { prefix, withoutTags, format }: GetLoaderScript = {
     prefix: undefined,

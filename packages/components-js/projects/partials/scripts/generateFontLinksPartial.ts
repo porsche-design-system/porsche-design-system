@@ -21,16 +21,13 @@ type GetFontLinksOptionsFormatHtml = Omit<GetFontLinksOptions, 'withoutTags'> & 
 type GetFontLinksOptionsFormatJsx = Omit<GetFontLinksOptions, 'withoutTags'> & {
   format: 'jsx';
 };
-type GetFontLinksOptionsWithoutTags = Omit<GetFontLinksOptions, 'format'> & {
-  withoutTags: true;
-};`;
+type GetFontLinksOptionsWithoutTags = Omit<GetFontLinksOptions, 'format'>;`;
 
   const linkTemplate = minifyHTML('<link rel="preload" href="${url}" as="font" type="font/woff2" crossorigin>');
 
   const func = `export function getFontLinks(opts?: GetFontLinksOptionsFormatJsx): JSX.Element;
 export function getFontLinks(opts?: GetFontLinksOptionsFormatHtml): string;
 export function getFontLinks(opts?: GetFontLinksOptionsWithoutTags): string[];
-export function getFontLinks(opts?: GetFontLinksOptions): string;
 export function getFontLinks(opts?: GetFontLinksOptions): string | string[] | JSX.Element {
   const { subset, weights, cdn, withoutTags, format }: GetFontLinksOptions = {
     subset: 'latin',
