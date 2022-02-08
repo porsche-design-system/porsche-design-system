@@ -39,7 +39,7 @@
     </div>
 
     <div class="playground light" title="should render headline for variant large">
-      <p-headline variant="{'base': 'large', 'l': 'x-large'}">Default Components</p-headline>
+      <p-headline variant="{ base: 'large', l: 'x-large' }">Default Components</p-headline>
     </div>
 
     <div class="playground light" title="should render default banner">
@@ -219,15 +219,15 @@
     </div>
 
     <div class="playground light" title="should render headline for variant large with custom prefix">
-      <my-prefix-p-headline variant="{'base': 'large', 'l': 'x-large'}">Prefixed Components</my-prefix-p-headline>
+      <my-prefix-p-headline variant="{ base: 'large', l: 'x-large' }">Prefixed Components</my-prefix-p-headline>
     </div>
 
-    <div class="playground light" title="should render default banner with custom prefix">
+    <template class="playground light" title="should render default banner with custom prefix">
       <my-prefix-p-banner>
         <span slot="title">Some slotted banner title</span>
         <span slot="description">Some slotted banner description</span>
       </my-prefix-p-banner>
-    </div>
+    </template>
 
     <div class="playground light" title="should render default inline-notification with custom prefix">
       <my-prefix-p-inline-notification
@@ -396,3 +396,10 @@
     </div>
   </div>
 </div>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    const template = document.querySelector('template');
+    template.outerHTML = template.outerHTML.replace(/template/g, 'div');
+  });
+</script>

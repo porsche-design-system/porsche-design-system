@@ -1,24 +1,19 @@
-import {
-  PFieldsetWrapper,
-  PTextFieldWrapper,
-  PCheckboxWrapper,
-  PRadioButtonWrapper,
-  PSelectWrapper,
-  PTextareaWrapper,
-} from '@porsche-design-system/components-react';
+/* Auto Generated File */
+import { PCheckboxWrapper, PFieldsetWrapper, PRadioButtonWrapper, PSelectWrapper, PTextareaWrapper, PTextFieldWrapper } from '@porsche-design-system/components-react';
 
 export const FieldsetWrapperPage = (): JSX.Element => {
   const style = `
-      p-fieldset-wrapper > *:not(:last-child) {
+    p-fieldset-wrapper > *:not(:last-child) {
       margin-bottom: 2px;
     }
   `;
+
   return (
     <>
       <style children={style} />
 
       <div className="playground light" title="should render with label">
-        <PFieldsetWrapper label="Some label"></PFieldsetWrapper>
+        <PFieldsetWrapper label="Some label" />
       </div>
 
       <div className="playground light" title="should render with label and text-field-wrapper with defined spacing">
@@ -30,7 +25,7 @@ export const FieldsetWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with required">
-        <PFieldsetWrapper label="Some label" required>
+        <PFieldsetWrapper label="Some label" required={true}>
           <PCheckboxWrapper label="Some label">
             <input type="checkbox" name="some-name-1" />
           </PCheckboxWrapper>
@@ -64,7 +59,7 @@ export const FieldsetWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with label size small and required">
-        <PFieldsetWrapper label="Some label" labelSize="small" required>
+        <PFieldsetWrapper label="Some label" labelSize="small" required={true}>
           <PRadioButtonWrapper label="Some label">
             <input type="radio" name="some-name-1" />
           </PRadioButtonWrapper>
@@ -134,12 +129,12 @@ export const FieldsetWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render required only on fieldset">
-        <PFieldsetWrapper label="Some label" labelSize="small" required>
+        <PFieldsetWrapper label="Some label" labelSize="small" required={true}>
           <PTextFieldWrapper label="Some label" state="error">
             <input type="text" name="some-name" required />
           </PTextFieldWrapper>
-          <PTextareaWrapper label="Some label" hide-label="false">
-            <textarea name="some-name" required></textarea>
+          <PTextareaWrapper label="Some label" hideLabel={false}>
+            <textarea name="some-name" required />
           </PTextareaWrapper>
           <PRadioButtonWrapper label="Some label">
             <input type="radio" name="some-name-1" required />

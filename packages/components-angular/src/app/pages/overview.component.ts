@@ -1,3 +1,4 @@
+/* Auto Generated File */
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { componentsReady } from '@porsche-design-system/components-angular';
 
@@ -17,21 +18,21 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         color: white;
         background-color: lightskyblue;
       }
-
+    
       p-flex-item:nth-child(1n) > p,
       my-prefix-p-flex-item:nth-child(1n) > p,
       p-grid-item:nth-child(1n) > p,
       my-prefix-p-grid-item:nth-child(1n) > p {
         background-color: skyblue;
       }
-
+    
       p-flex-item:nth-child(2n) > p,
       my-prefix-p-flex-item:nth-child(2n) > p,
       p-grid-item:nth-child(2n) > p,
       my-prefix-p-grid-item:nth-child(2n) > p {
         background-color: deepskyblue;
       }
-
+    
       p-banner,
       my-prefix-p-banner {
         --p-banner-position-type: static;
@@ -39,8 +40,8 @@ import { componentsReady } from '@porsche-design-system/components-angular';
     `,
   ],
   template: `
-    <div style="display: flex;">
-      <div style="flex: 1;">
+    <div style="display: flex">
+      <div style="flex: 1">
         <div class="playground light" title="should render default headline">
           <p-headline>Default Components</p-headline>
         </div>
@@ -85,29 +86,29 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 
         <div class="playground light" title="should render default checkbox-wrapper">
           <p-checkbox-wrapper [label]="'Some label'">
-            <input type="checkbox" />
+            <input [type]="'checkbox'" />
           </p-checkbox-wrapper>
         </div>
 
         <div class="playground light" title="should render default radio-button-wrapper">
           <p-radio-button-wrapper [label]="'Some label'">
-            <input type="radio" />
+            <input [type]="'radio'" />
           </p-radio-button-wrapper>
         </div>
 
         <div class="playground light" title="should render default select-wrapper">
           <p-select-wrapper [label]="'Some label'">
             <select>
-              <option value="a">Option A</option>
-              <option value="b">Option B</option>
-              <option value="c">Option C</option>
+              <option [value]="'a'">Option A</option>
+              <option [value]="'b'">Option B</option>
+              <option [value]="'c'">Option C</option>
             </select>
           </p-select-wrapper>
         </div>
 
         <div class="playground light" title="should render default text-field-wrapper">
           <p-text-field-wrapper [label]="'Some label'">
-            <input type="text" />
+            <input [type]="'text'" />
           </p-text-field-wrapper>
         </div>
 
@@ -179,7 +180,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         </div>
 
         <div class="playground light" title="should render default tabs">
-          <p-tabs>
+          <p-tabs [activeTabIndex]="0">
             <p-tabs-item [label]="'Tab1'">Content 1</p-tabs-item>
             <p-tabs-item [label]="'Tab2'">Content 2</p-tabs-item>
             <p-tabs-item [label]="'Tab3'">Content 3</p-tabs-item>
@@ -220,27 +221,24 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         </div>
       </div>
 
-      <div style="flex: 1;">
+      <div style="flex: 1">
         <div class="playground light" title="should render default headline with custom prefix">
           <my-prefix-p-headline p-headline>Prefixed Components</my-prefix-p-headline>
         </div>
 
         <div class="playground light" title="should render headline for variant large with custom prefix">
-          <my-prefix-p-headline p-headline [variant]="{ base: 'large', l: 'x-large' }">
-            Prefixed Components
-          </my-prefix-p-headline>
+          <my-prefix-p-headline p-headline [variant]="{ base: 'large', l: 'x-large' }">Prefixed Components</my-prefix-p-headline>
         </div>
 
-        <div class="playground light" title="should render default banner with custom prefix">
-          <my-prefix-p-banner p-banner *ngIf="allReady">
+        <div *ngIf="allReady" class="playground light" title="should render default banner with custom prefix">
+          <my-prefix-p-banner p-banner>
             <span slot="title">Some slotted banner title</span>
             <span slot="description">Some slotted banner description</span>
           </my-prefix-p-banner>
         </div>
 
         <div class="playground light" title="should render default inline-notification with custom prefix">
-          <my-prefix-p-inline-notification
-            p-inline-notification
+          <my-prefix-p-inline-notification p-inline-notification
             [heading]="'Some heading'"
             [description]="'Some description'"
           ></my-prefix-p-inline-notification>
@@ -271,29 +269,29 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 
         <div class="playground light" title="should render default checkbox-wrapper with custom prefix">
           <my-prefix-p-checkbox-wrapper p-checkbox-wrapper [label]="'Some label'">
-            <input type="checkbox" />
+            <input [type]="'checkbox'" />
           </my-prefix-p-checkbox-wrapper>
         </div>
 
         <div class="playground light" title="should render default radio-button-wrapper with custom prefix">
           <my-prefix-p-radio-button-wrapper p-radio-button-wrapper [label]="'Some label'">
-            <input type="radio" />
+            <input [type]="'radio'" />
           </my-prefix-p-radio-button-wrapper>
         </div>
 
         <div class="playground light" title="should render default select-wrapper with custom prefix">
           <my-prefix-p-select-wrapper p-select-wrapper [label]="'Some label'">
             <select>
-              <option value="a">Option A</option>
-              <option value="b">Option B</option>
-              <option value="c">Option C</option>
+              <option [value]="'a'">Option A</option>
+              <option [value]="'b'">Option B</option>
+              <option [value]="'c'">Option C</option>
             </select>
           </my-prefix-p-select-wrapper>
         </div>
 
         <div class="playground light" title="should render default text-field-wrapper with custom prefix">
           <my-prefix-p-text-field-wrapper p-text-field-wrapper [label]="'Some label'">
-            <input type="text" />
+            <input [type]="'text'" />
           </my-prefix-p-text-field-wrapper>
         </div>
 
@@ -319,7 +317,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 
         <div class="playground light" title="should render default text-list with custom prefix">
           <my-prefix-p-text-list p-text-list>
-            <my-prefix-p-text-list-item>The quick brown fox jumps over the lazy dog </my-prefix-p-text-list-item>
+            <my-prefix-p-text-list-item p-text-list-item>The quick brown fox jumps over the lazy dog</my-prefix-p-text-list-item>
           </my-prefix-p-text-list>
         </div>
 
@@ -336,9 +334,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         </div>
 
         <div class="playground light" title="should render default link-social with custom prefix">
-          <my-prefix-p-link-social p-link-social [href]="'https://www.porsche.com'" [icon]="'logo-facebook'"
-            >Some label
-          </my-prefix-p-link-social>
+          <my-prefix-p-link-social p-link-social [href]="'https://www.porsche.com'" [icon]="'logo-facebook'">Some label</my-prefix-p-link-social>
         </div>
 
         <div class="playground light" title="should render default marque with custom prefix">
@@ -346,26 +342,21 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         </div>
 
         <div class="playground light" title="should render default pagination with custom prefix">
-          <my-prefix-p-pagination
-            p-pagination
-            [totalItemsCount]="500"
-            [itemsPerPage]="25"
-            [activePage]="1"
-          ></my-prefix-p-pagination>
+          <my-prefix-p-pagination p-pagination [totalItemsCount]="500" [itemsPerPage]="25" [activePage]="1"></my-prefix-p-pagination>
         </div>
 
         <div class="playground light" title="should render default table with custom prefix">
-          <my-prefix-p-table>
-            <my-prefix-p-table-head>
-              <my-prefix-p-table-head-row>
-                <my-prefix-p-table-head-cell>Column 1</my-prefix-p-table-head-cell>
-                <my-prefix-p-table-head-cell>Column 2</my-prefix-p-table-head-cell>
+          <my-prefix-p-table p-table>
+            <my-prefix-p-table-head p-table-head>
+              <my-prefix-p-table-head-row p-table-head-row>
+                <my-prefix-p-table-head-cell p-table-head-cell>Column 1</my-prefix-p-table-head-cell>
+                <my-prefix-p-table-head-cell p-table-head-cell>Column 2</my-prefix-p-table-head-cell>
               </my-prefix-p-table-head-row>
             </my-prefix-p-table-head>
-            <my-prefix-p-table-body>
-              <my-prefix-p-table-row>
-                <my-prefix-p-table-cell>Cell 1</my-prefix-p-table-cell>
-                <my-prefix-p-table-cell>Cell 2</my-prefix-p-table-cell>
+            <my-prefix-p-table-body p-table-body>
+              <my-prefix-p-table-row p-table-row>
+                <my-prefix-p-table-cell p-table-cell>Cell 1</my-prefix-p-table-cell>
+                <my-prefix-p-table-cell p-table-cell>Cell 2</my-prefix-p-table-cell>
               </my-prefix-p-table-row>
             </my-prefix-p-table-body>
           </my-prefix-p-table>
@@ -417,7 +408,6 @@ import { componentsReady } from '@porsche-design-system/components-angular';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OverviewComponent implements OnInit {
-  // solve race-condition between non-prefixed and prefixed banner focus
   public allReady: boolean = false;
 
   constructor(private cdr: ChangeDetectorRef) {}

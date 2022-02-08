@@ -1,3 +1,4 @@
+/* Auto Generated File */
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({

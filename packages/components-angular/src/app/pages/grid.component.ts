@@ -1,3 +1,4 @@
+/* Auto Generated File */
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
@@ -11,7 +12,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         color: white;
         background-color: lightskyblue;
       }
-
+    
       p-grid ~ p-grid p {
         margin-top: 4px;
       }

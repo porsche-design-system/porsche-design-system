@@ -1,3 +1,4 @@
+/* Auto Generated File */
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
@@ -11,13 +12,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should render with label and placeholder">
       <p-textarea-wrapper [label]="'Label with placeholder'">
-        <textarea placeholder="Some placeholder"></textarea>
+        <textarea [placeholder]="'Some placeholder'"></textarea>
       </p-textarea-wrapper>
     </div>
 
     <div class="playground light" title="should render with label, description and placeholder">
       <p-textarea-wrapper [label]="'Label with description and placeholder'" [description]="'Some description'">
-        <textarea placeholder="Some placeholder"></textarea>
+        <textarea [placeholder]="'Some placeholder'"></textarea>
       </p-textarea-wrapper>
     </div>
 
@@ -54,7 +55,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should render with placeholder in disabled state">
       <p-textarea-wrapper [label]="'Disabled placeholder'">
-        <textarea disabled placeholder="Some placeholder"></textarea>
+        <textarea disabled [placeholder]="'Some placeholder'"></textarea>
       </p-textarea-wrapper>
     </div>
 
@@ -66,7 +67,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should render with counter">
       <p-textarea-wrapper [label]="'Counter'">
-        <textarea maxlength="200">Some value</textarea>
+        <textarea [maxLength]="200">Some value</textarea>
       </p-textarea-wrapper>
     </div>
 
@@ -95,24 +96,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render with default state and no message">
-      <p-textarea-wrapper
-        [label]="'Default without message'"
-        [state]="'none'"
-        [message]="'this message should be hidden'"
-      >
+      <p-textarea-wrapper [label]="'Default without message'" [state]="'none'" [message]="'this message should be hidden'">
         <textarea>Some value</textarea>
       </p-textarea-wrapper>
     </div>
 
-    <div
-      class="playground light"
-      title="should render label, description and message by slotted content with error state"
-    >
+    <div class="playground light" title="should render label, description and message by slotted content with error state">
       <p-textarea-wrapper [state]="'error'">
-        <span slot="label">Slotted error label with a <a href="#">link</a></span>
-        <span slot="description">Slotted description with a <a href="#">link</a></span>
+        <span slot="label">Slotted error label with a <a [href]="'#'">link</a></span>
+        <span slot="description">Slotted description with a <a [href]="'#'">link</a></span>
         <textarea>Some value</textarea>
-        <span slot="message">Slotted message with a <a href="#">link</a></span>
+        <span slot="message">Slotted message with a <a [href]="'#'">link</a></span>
       </p-textarea-wrapper>
     </div>
 
@@ -121,34 +115,32 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should render label, description and message by slotted content with success state"
     >
       <p-textarea-wrapper [state]="'success'">
-        <span slot="label">Slotted success label with a <a href="#">link</a></span>
-        <span slot="description">Slotted description with a <a href="#">link</a></span>
+        <span slot="label">Slotted success label with a <a [href]="'#'">link</a></span>
+        <span slot="description">Slotted description with a <a [href]="'#'">link</a></span>
         <textarea>Some value</textarea>
-        <span slot="message">Slotted message with a <a href="#">link</a></span>
+        <span slot="message">Slotted message with a <a [href]="'#'">link</a></span>
       </p-textarea-wrapper>
     </div>
 
     <div class="playground light" title="should render with multiline label, description, message and text">
       <p-textarea-wrapper
         [label]="'Multiline label lorem ipsum dolor sit amet, consetetur sadipscing'"
-        [description]="
-          'Multiline description lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet'
-        "
+        [description]="'Multiline description lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet'"
         [state]="'error'"
         [message]="'Multiline message at vero eos et accusam et justo duo dolores et ea rebum.'"
-        style="width: 240px;"
+        style="width: 240px"
       >
         <textarea>
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,</textarea
-        >
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,
+        </textarea>
       </p-textarea-wrapper>
     </div>
 
     <div class="playground light" title="should render with label and multiline text">
       <p-textarea-wrapper [label]="'Multiline text'">
         <textarea>
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,</textarea
-        >
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,
+        </textarea>
       </p-textarea-wrapper>
     </div>
   `,
