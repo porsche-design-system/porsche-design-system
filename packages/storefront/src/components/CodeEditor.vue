@@ -2,8 +2,8 @@
   <form action="https://codepen.io/pen/define" method="POST" target="_blank">
     <input type="hidden" name="data" :value="codepen" />
     <p-button
-      :theme="theme"
       type="submit"
+      :theme="theme"
       :icon-source="codepenIcon"
       :disabled="framework !== 'vanilla-js'"
       :title="framework !== 'vanilla-js' && 'CodePen is only available for Vanilla JS'"
@@ -23,7 +23,11 @@
   import { Prop } from 'vue-property-decorator';
   import { Framework, Theme } from '@/models';
   import { themeDark } from '@porsche-design-system/utilities-v2';
-  import { getLoaderScript } from '@porsche-design-system/components-js/partials';
+  import {
+    getFontFaceStylesheet,
+    getInitialStyles,
+    getLoaderScript,
+  } from '@porsche-design-system/components-js/partials';
 
   @Component
   export default class CodeEditor extends Vue {
@@ -52,10 +56,10 @@
     public get codepen(): string {
       // https://blog.codepen.io/documentation/prefill/
       return JSON.stringify({
-        // css_external: 'https://...css',
-        layout: 'left',
-        editors: '100',
         title: 'Porsche Design System',
+        editors: '100', // html open, css closed, js closed
+        css: getInitialStyles({ withoutTags: true }),
+        css_external: getFontFaceStylesheet({ withoutTags: true }),
         html: this.markup,
         ...(this.theme === 'dark' && { css: `body { background: ${themeDark.background.base}; }` }),
         // js_external: `${path}${PDS_LOADER_FILENAME}`,
