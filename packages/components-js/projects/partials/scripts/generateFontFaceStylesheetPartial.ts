@@ -35,6 +35,7 @@ type GetFontFaceStylesheetWithoutTags =  Omit<GetFontFaceStylesheet, 'format'> &
 
   const func = `export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetFormatHtml): string;
 export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetFormatJsx): JSX.Element;
+export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetWithoutTags): string;
 export function getFontFaceStylesheet(opts?: GetFontFaceStylesheet): string;
 export function getFontFaceStylesheet(opts?: GetFontFaceStylesheet): string | JSX.Element {
   const { cdn, withoutTags, format }: GetFontFaceStylesheet = {
