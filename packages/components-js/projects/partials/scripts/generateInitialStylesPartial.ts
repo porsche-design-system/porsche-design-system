@@ -5,6 +5,7 @@ import {
   getButtonLinkSkeletonStyles,
   getCheckboxRadioWrapperSkeletonStyles,
   getSelectTextFieldWrapperSkeletonStyles,
+  getTextareaWrapperSkeletonStyles,
   SKELETON_COLOR_THEME_PLACEHOLDER,
   SKELETON_LINEAR_GRADIENT_COLOR_1,
   SKELETON_LINEAR_GRADIENT_COLOR_2,
@@ -29,6 +30,7 @@ export const generateInitialStylesPartial = (): string => {
     getButtonLinkPureSkeletonStyles(),
     getCheckboxRadioWrapperSkeletonStyles(),
     getSelectTextFieldWrapperSkeletonStyles(),
+    getTextareaWrapperSkeletonStyles(),
   ].join('');
 
   const tagNames = joinArrayElementsToString(
