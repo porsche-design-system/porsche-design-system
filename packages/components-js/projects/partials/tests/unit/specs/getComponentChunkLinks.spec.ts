@@ -57,7 +57,7 @@ describe('format: html', () => {
   });
 });
 
-describe('format jsx', () => {
+describe('format: jsx', () => {
   const coreLinkCom = `<link rel="preload" href="${baseHrefCom}/porsche-design-system.v${version}.${hash}.js" as="script" crossorigin="true">`;
 
   it('should return core link', () => {
