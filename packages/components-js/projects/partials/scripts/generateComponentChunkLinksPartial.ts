@@ -1,38 +1,34 @@
 import { COMPONENT_CHUNK_NAMES, COMPONENT_CHUNKS_MANIFEST } from '../../components-wrapper';
 import { CDN_BASE_PATH_COMPONENTS } from '../../../../../cdn.config';
+import { withoutTagsOption } from './utils';
 
 export const generateComponentChunkLinksPartial = (): string => {
   const chunkNamesTypeLiteral = COMPONENT_CHUNK_NAMES.map((x) => `'${x}'`).join(' | ');
   // 'any' is fallback when COMPONENT_CHUNK_NAMES is an empty array because components-js wasn't built, yet
   const types = `type ComponentChunkName = ${chunkNamesTypeLiteral || 'any'};
 
-type ComponentChunkLinksOptions = {
+type GetComponentChunkLinks = {
   components?: ComponentChunkName[];
   cdn?: Cdn;
-  /**
-  * @deprecated withoutTags is deprecated and will be removed in v3
-  **/
-  withoutTags?: boolean;
+  ${withoutTagsOption}
   format?: Format;
 };
-type ComponentChunkLinksOptionsWithTags = ComponentChunkLinksOptions & {
-  withoutTags?: false;
-  format?: 'html';
+type GetComponentChunkLinksFormatHtml = Omit<GetComponentChunkLinks, 'withoutTags'> & {
+  format: 'html';
 };
-type ComponentChunkLinksOptionsWithoutTags = ComponentChunkLinksOptions & {
-  withoutTags?: true;
-  format?: 'html';
+type GetComponentChunkLinksFormatJsx = Omit<GetComponentChunkLinks, 'withoutTags'> & {
+  format: 'jsx';
 };
-type ComponentChunkLinksOptionsFormatJsx = ComponentChunkLinksOptions & {
-  withoutTags?: false;
-  format?: 'jsx';
+type GetComponentChunkLinksWithoutTags =  Omit<GetComponentChunkLinks, 'format'> & {
+  withoutTags: true;
 };`;
 
-  const func = `export function getComponentChunkLinks(opts?: ComponentChunkLinksOptionsWithTags): string;
-export function getComponentChunkLinks(opts?: ComponentChunkLinksOptionsWithoutTags): string[];
-export function getComponentChunkLinks(opts?: ComponentChunkLinksOptionsFormatJsx): JSX.Element[];
-export function getComponentChunkLinks(opts?: ComponentChunkLinksOptions): string | string[] | JSX.Element[] {
-  const { components, cdn, withoutTags, format }: ComponentChunkLinksOptions = {
+  const func = `export function getComponentChunkLinks(opts?: GetComponentChunkLinksFormatJsx): JSX.Element;
+export function getComponentChunkLinks(opts?: GetComponentChunkLinksFormatHtml): string;
+export function getComponentChunkLinks(opts?: GetComponentChunkLinksWithoutTags): string[];
+export function getComponentChunkLinks(opts?: GetComponentChunkLinks): string;
+export function getComponentChunkLinks(opts?: GetComponentChunkLinks): string | string[] | JSX.Element {
+  const { components, cdn, withoutTags, format }: GetComponentChunkLinks = {
     components: [],
     cdn: 'auto',
     withoutTags: false,
@@ -61,9 +57,9 @@ Please use only valid component chunk names:
      // core needs crossorigin attribute / we need ternary otherwise false is written into link
     .map((url, idx) => \`<link rel=preload href=\${url} as=script\${idx === 0 ? " crossorigin" : ''}>\`).join('');
 
-  const linksJsx = urls.map((url, idx) => <link rel="preload" href={url} as="script" {...(idx === 0 && { crossOrigin: 'true' })} />)
+  const linksJsx = urls.map((url, index) => <link key={index} rel="preload" href={url} as="script" {...(index === 0 && { crossOrigin: 'true' })} />)
 
-  const markup = format === 'html' ? linksHtml : linksJsx;
+  const markup = format === 'html' ? linksHtml : <>{linksJsx}</>;
 
   return withoutTags ? urls : markup;
 };`;
