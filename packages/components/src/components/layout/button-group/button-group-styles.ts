@@ -2,27 +2,37 @@ import type { JssStyle } from 'jss';
 import type { GetStylesFunction } from '../../../utils';
 import type { ButtonGroupDirectionType, ButtonGroupDirection } from './button-group-utils';
 import { buildResponsiveStyles, getCss } from '../../../utils';
-import {
-  addImportantToEachRule,
-  getButtonGroupColumnJssStyle,
-  getButtonGroupRowJssStyle,
-  getButtonGroupSlottedColumnJssStyle,
-  getButtonGroupSlottedRowJssStyle,
-} from '../../../styles';
+import { addImportantToEachRule } from '../../../styles';
 import { spacing } from '@porsche-design-system/utilities-v2';
 
 const getDirectionStyles: GetStylesFunction = (direction: ButtonGroupDirectionType): JssStyle => {
   const styles: { [key in ButtonGroupDirectionType]: JssStyle } = {
-    column: getButtonGroupColumnJssStyle(),
-    row: getButtonGroupRowJssStyle(),
+    column: {
+      flexFlow: 'column nowrap',
+      alignItems: 'stretch',
+      marginRight: 0,
+      marginLeft: 0,
+    },
+    row: {
+      flexFlow: 'row wrap',
+      alignItems: 'center',
+      marginRight: `-${spacing[8]}`,
+      marginLeft: `-${spacing[8]}`,
+    },
   };
   return styles[direction];
 };
 
 const getDirectionSlottedStyles: GetStylesFunction = (direction: ButtonGroupDirectionType): JssStyle => {
   const styles: { [key in ButtonGroupDirectionType]: JssStyle } = {
-    column: getButtonGroupSlottedColumnJssStyle(),
-    row: getButtonGroupSlottedRowJssStyle(),
+    column: {
+      marginRight: 0,
+      marginLeft: 0,
+    },
+    row: {
+      marginRight: spacing[8],
+      marginLeft: spacing[8],
+    },
   };
   return styles[direction];
 };
