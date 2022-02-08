@@ -199,27 +199,3 @@ export const getFormCheckboxRadioHiddenJssStyle = (isHidden: boolean): JssStyle 
   width: 'auto',
   padding: `0 0 0 ${pxToRemWithUnit(8)}`,
 });
-
-export const getButtonGroupColumnJssStyle = (): JssStyle => ({
-  flexFlow: 'column nowrap',
-  alignItems: 'stretch',
-  marginRight: 0,
-  marginLeft: 0,
-});
-
-export const getButtonGroupRowJssStyle = (): JssStyle => ({
-  flexFlow: 'row wrap',
-  alignItems: 'center',
-  marginRight: `-${spacing[8]}`,
-  marginLeft: `-${spacing[8]}`,
-});
-
-export const getButtonGroupSlottedColumnJssStyle = (): JssStyle => ({
-  marginRight: 0,
-  marginLeft: 0,
-});
-
-export const getButtonGroupSlottedRowJssStyle = (): JssStyle => ({
-  marginRight: spacing[8],
-  marginLeft: spacing[8],
-});
