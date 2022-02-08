@@ -8,28 +8,29 @@ export const generateFontLinksPartial = (): string => {
 
   const types = `type FontSubset = ${fontSubsets.map((x) => `'${x}'`).join(' | ')};
 type FontWeight = ${fontWeights.map((x) => `'${x}'`).join(' | ')};
-type GetFontLinksOptions = {
+type GetFontLinks = {
   subset?: FontSubset;
   weights?: FontWeight[];
   cdn?: Cdn;
   ${withoutTagsOption}
   format?: Format;
 };
-type GetFontLinksOptionsFormatHtml = Omit<GetFontLinksOptions, 'withoutTags'> & {
+type GetFontLinksFormatHtml = Omit<GetFontLinks, 'withoutTags'> & {
   format: 'html';
 };
-type GetFontLinksOptionsFormatJsx = Omit<GetFontLinksOptions, 'withoutTags'> & {
+type GetFontLinksFormatJsx = Omit<GetFontLinks, 'withoutTags'> & {
   format: 'jsx';
 };
-type GetFontLinksOptionsWithoutTags = Omit<GetFontLinksOptions, 'format'>;`;
+type GetFontLinksWithoutTags = Omit<GetFontLinks, 'format'>;`;
 
   const linkTemplate = minifyHTML('<link rel="preload" href="${url}" as="font" type="font/woff2" crossorigin>');
 
-  const func = `export function getFontLinks(opts?: GetFontLinksOptionsFormatJsx): JSX.Element;
-export function getFontLinks(opts?: GetFontLinksOptionsFormatHtml): string;
-export function getFontLinks(opts?: GetFontLinksOptionsWithoutTags): string[];
-export function getFontLinks(opts?: GetFontLinksOptions): string | string[] | JSX.Element {
-  const { subset, weights, cdn, withoutTags, format }: GetFontLinksOptions = {
+  const func = `export function getFontLinks(opts?: GetFontLinksFormatJsx): JSX.Element;
+export function getFontLinks(opts?: GetFontLinksFormatHtml): string;
+export function getFontLinks(opts?: GetFontLinksWithoutTags): string[];
+export function getFontLinks(opts?: GetFontLinks): string;
+export function getFontLinks(opts?: GetFontLinks): string | string[] | JSX.Element {
+  const { subset, weights, cdn, withoutTags, format }: GetFontLinks = {
     subset: 'latin',
     weights: ['regular'],
     cdn: 'auto',
