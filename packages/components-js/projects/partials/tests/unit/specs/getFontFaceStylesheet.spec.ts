@@ -7,7 +7,7 @@ const hrefCom = `${baseUrlCdnCom}/porsche-design-system/styles/font-face.min.[a-
 const hrefCn = `${baseUrlCdnCn}/porsche-design-system/styles/font-face.min.cn.[a-z0-9]{32}.css`;
 
 describe('format: html', () => {
-  it('should return default links', () => {
+  it('should return links', () => {
     const result = getFontFaceStylesheet();
     const regex = new RegExp(
       `^<link rel=preconnect href=${baseUrlCdnCom} crossorigin><link rel=dns-prefetch href=${baseUrlCdnCom} crossorigin><link rel=stylesheet href=${hrefCom} type=text/css crossorigin>$`
@@ -16,7 +16,7 @@ describe('format: html', () => {
     expect(result).toMatch(regex);
   });
 
-  it('should return default links for china cdn', () => {
+  it('should return links for china cdn', () => {
     const result = getFontFaceStylesheet({ cdn: 'cn' });
     const regex = new RegExp(
       `^<link rel=preconnect href=${baseUrlCdnCn} crossorigin><link rel=dns-prefetch href=${baseUrlCdnCn} crossorigin><link rel=stylesheet href=${hrefCn} type=text/css crossorigin>$`
@@ -27,7 +27,7 @@ describe('format: html', () => {
 });
 
 describe('format: jsx', () => {
-  it('should return default links as jsx', () => {
+  it('should return links', () => {
     const { container } = render(getFontFaceStylesheet({ format: 'jsx' }));
     const regex = new RegExp(
       `^<link rel="preconnect" href="${baseUrlCdnCom}" crossorigin="true"><link rel="dns-prefetch" href="${baseUrlCdnCom}" crossorigin="true"><link rel="stylesheet" href="${hrefCom}" type="text/css" crossorigin="true">$`
@@ -36,7 +36,7 @@ describe('format: jsx', () => {
     expect(container.innerHTML).toMatch(regex);
   });
 
-  it('should return jsx links for china cdn', () => {
+  it('should return links for china cdn', () => {
     const { container } = render(getFontFaceStylesheet({ cdn: 'cn', format: 'jsx' }));
     const regex = new RegExp(
       `^<link rel="preconnect" href="${baseUrlCdnCn}" crossorigin="true"><link rel="dns-prefetch" href="${baseUrlCdnCn}" crossorigin="true"><link rel="stylesheet" href="${hrefCn}" type="text/css" crossorigin="true">$`
@@ -47,12 +47,12 @@ describe('format: jsx', () => {
 });
 
 describe('withoutTags: true', () => {
-  it('should return only href', () => {
+  it('should return only url', () => {
     const result = getFontFaceStylesheet({ withoutTags: true });
     expect(result).toMatch(new RegExp(hrefCom));
   });
 
-  it('should return only href for china cdn', () => {
+  it('should return only url for china cdn', () => {
     const result = getFontFaceStylesheet({ withoutTags: true, cdn: 'cn' });
     expect(result).toMatch(new RegExp(hrefCn));
   });

@@ -138,45 +138,12 @@ describe('format: html', () => {
   });
 });
 
-describe('withoutTags: true', () => {
-  it('should return default url', () => {
-    const result = getFontLinks({ withoutTags: true });
-    const regex = new RegExp(`^${baseHrefCom}/porsche-next-w-la-regular\.min\.${hash}\.woff2$`);
-
-    expect(result[0]).toMatch(regex);
-    expect(result.length).toBe(1);
-  });
-
-  it('should return default China CDN url', () => {
-    const result = getFontLinks({ withoutTags: true, cdn: 'cn' });
-    const regex = new RegExp(`^${baseHrefCn}\/porsche-next-w-la-regular\.min\.${hash}\.woff2$`);
-
-    expect(result[0]).toMatch(regex);
-    expect(result.length).toBe(1);
-  });
-
-  it('should return multiple urls', () => {
-    const result = getFontLinks({ withoutTags: true, weights: ['regular', 'semi-bold'] });
-    const regexRegular = new RegExp(`^${baseHrefCom}/porsche-next-w-la-regular\.min\.${hash}\.woff2$`);
-    const regexSemiBold = new RegExp(`^${baseHrefCom}/porsche-next-w-la-semi-bold\.min\.${hash}\.woff2$`);
-
-    expect(result[0]).toMatch(regexRegular);
-    expect(result[1]).toMatch(regexSemiBold);
-    expect(result.length).toBe(2);
-  });
-});
-
 describe('format: jsx', () => {
-  const regex = new RegExp(
-    `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-la-(?:thin|regular|semi-bold|bold)\.min\.${hash}\.woff2" as="font" type="font/woff2" crossorigin="true">$`
-  );
-
-  it('should return default url', () => {
+  it('should return default link', () => {
     const { container } = render(getFontLinks({ format: 'jsx' }));
     const regex = new RegExp(
       `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-la-regular\.min\.${hash}\.woff2" as="font" type="font/woff2" crossorigin="true">$`
     );
-
     expect(container.innerHTML).toMatch(regex);
   });
 
@@ -255,12 +222,40 @@ describe('format: jsx', () => {
     });
   });
 
-  it('should return multiple urls', () => {
+  it('should return multiple links', () => {
     const { container } = render(getFontLinks({ format: 'jsx', weights: ['regular', 'semi-bold'] }));
     const regex = new RegExp(
       `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-la-regular\.min\.${hash}\.woff2" as="font" type="font/woff2" crossorigin="true"><link rel="preload" href="${baseHrefCom}/porsche-next-w-la-semi-bold\.min\.${hash}\.woff2" as="font" type="font/woff2" crossorigin="true">$`
     );
 
     expect(container.innerHTML).toMatch(regex);
+  });
+});
+
+describe('withoutTags: true', () => {
+  it('should return default url', () => {
+    const result = getFontLinks({ withoutTags: true });
+    const regex = new RegExp(`^${baseHrefCom}/porsche-next-w-la-regular\.min\.${hash}\.woff2$`);
+
+    expect(result[0]).toMatch(regex);
+    expect(result.length).toBe(1);
+  });
+
+  it('should return default china cdn url', () => {
+    const result = getFontLinks({ withoutTags: true, cdn: 'cn' });
+    const regex = new RegExp(`^${baseHrefCn}\/porsche-next-w-la-regular\.min\.${hash}\.woff2$`);
+
+    expect(result[0]).toMatch(regex);
+    expect(result.length).toBe(1);
+  });
+
+  it('should return multiple urls', () => {
+    const result = getFontLinks({ withoutTags: true, weights: ['regular', 'semi-bold'] });
+    const regexRegular = new RegExp(`^${baseHrefCom}/porsche-next-w-la-regular\.min\.${hash}\.woff2$`);
+    const regexSemiBold = new RegExp(`^${baseHrefCom}/porsche-next-w-la-semi-bold\.min\.${hash}\.woff2$`);
+
+    expect(result[0]).toMatch(regexRegular);
+    expect(result[1]).toMatch(regexSemiBold);
+    expect(result.length).toBe(2);
   });
 });
