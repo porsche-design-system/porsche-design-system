@@ -12,12 +12,14 @@ import { generateFontLinksPartial } from './generateFontLinksPartial';
 const generateSharedCode = (): string => {
   return `type Cdn = 'auto' | 'cn';
 
-const getCdnBaseUrl = (cdn: Cdn): string => cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}';`;
+type Format = 'html' | 'jsx';
+
+const getCdnBaseUrl = (cdn: Cdn): string => (cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}');`;
 };
 
 const generatePartials = async (): Promise<void> => {
   const targetDirectory = path.normalize('./src/lib');
-  const targetFile = path.resolve(targetDirectory, 'partials.ts');
+  const targetFile = path.resolve(targetDirectory, 'partials.tsx');
 
   const content = [
     generateSharedCode(),

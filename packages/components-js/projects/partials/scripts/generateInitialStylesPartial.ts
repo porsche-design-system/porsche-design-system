@@ -1,3 +1,5 @@
+import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
+import { withoutTagsOption } from './utils';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
 import { joinArrayElementsToString } from './utils';
 import {
@@ -12,11 +14,20 @@ import {
 } from '../../../../components/src/styles/skeletons';
 
 export const generateInitialStylesPartial = (): string => {
-  const types = `type InitialStylesOptions = {
+  const types = `type GetInitialStylesOptions = {
   prefix?: string;
-  withoutTags?: boolean;
+  ${withoutTagsOption}
   theme?: 'light' | 'dark';
-}`;
+  format?: Format;
+};
+type GetInitialStylesOptionsFormatHtml = Omit<GetInitialStylesOptions, 'withoutTags'> & {
+  format: 'html';
+};
+type GetInitialStylesOptionsFormatJsx = Omit<GetInitialStylesOptions, 'withoutTags'> & {
+   format: 'jsx';
+};
+type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'>;`;
+
   const skeletonTypes = `type SkeletonStylesOptions = {
   prefixedTagNamesWithSkeleton: string[];
   prefix?: string;
@@ -39,26 +50,32 @@ export const generateInitialStylesPartial = (): string => {
 
   const tagNamesWithSkeleton = joinArrayElementsToString(TAG_NAMES_WITH_SKELETON);
 
-  const initialStylesFunction = `export const getInitialStyles = (opts?: InitialStylesOptions): string => {
-  const options: InitialStylesOptions = {
+  const initialStylesFunction = `export function getInitialStyles(opts?: GetInitialStylesOptionsFormatHtml): string;
+export function getInitialStyles(opts?: GetInitialStylesOptionsFormatJsx): JSX.Element;
+export function getInitialStyles(opts?: GetInitialStylesOptionsWithoutTags): string;
+export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.Element {
+  const { prefix, withoutTags, theme, format }: GetInitialStylesOptions = {
     prefix: '',
     withoutTags: false,
     theme: 'light',
+    format: 'html',
     ...opts
   };
-  const { prefix, withoutTags, theme } = options;
-
 
   const tagNames = [${tagNames}];
   const prefixedTagNames = getPrefixedTagNames(tagNames, prefix)
 
-  const styleInnerHTML= prefixedTagNames.join(',') + '{visibility:hidden}';
+  const initialVisibilityHiddenStyles = prefixedTagNames.join(',') + '{visibility:hidden}';
 
   const tagNamesWithSkeleton = [${tagNamesWithSkeleton}];
   const prefixedTagNamesWithSkeleton = getPrefixedTagNames(tagNamesWithSkeleton, prefix);
 
-  const result = withoutTags ? styleInnerHTML : \`<style>\${styleInnerHTML}\${getSkeletonStyles({prefixedTagNamesWithSkeleton, prefix, theme})}</style>\`;
-  return result;
+  const mergedStyles = \`\${initialVisibilityHiddenStyles}\${getSkeletonStyles({prefixedTagNamesWithSkeleton, prefix, theme})}\`;
+  const markup = format === 'html' ?  \`<style>\${mergedStyles}</style>\` : <style>{mergedStyles}</style>;
+
+  return withoutTags
+    ? mergedStyles
+    : markup;
 };`;
 
   const skeletonStylesFunction = `const getSkeletonStyles = (opts?: SkeletonStylesOptions): string => {

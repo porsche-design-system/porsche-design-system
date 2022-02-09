@@ -1,8 +1,9 @@
+/* Auto Generated File */
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ToastManager } from '@porsche-design-system/components-angular';
 
 @Component({
-  selector: 'toast-basic-long-text',
+  selector: 'page-toast-basic-long-text',
   styles: [
     `
       .playground {
@@ -24,8 +25,6 @@ export class ToastBasicLongTextComponent implements OnInit {
   constructor(private toastManager: ToastManager) {}
 
   ngOnInit() {
-    this.toastManager.addMessage({
-      text: 'Some message with a very long text across multiple lines that will break once the max width of 42rem is exceeded.',
-    });
+    this.toastManager.addMessage({ text: 'Some message with a very long text across multiple lines that will break once the max width of 42rem is exceeded.' });
   }
 }
