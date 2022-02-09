@@ -1,9 +1,11 @@
 import {
   getFirstAndLastElement,
+  getFirstAndLastFocusableElement,
   getFocusableElements,
   getScrollTopOnTouch,
   hasSlottedHeading,
   setScrollLock,
+  unpackChildren,
   warnIfAriaAndHeadingPropsAreUndefined,
 } from './modal-utils';
 import * as deviceDetectionUtils from '../../../utils/device-detection';
@@ -74,6 +76,111 @@ describe('setScrollLock()', () => {
       expect(documentSpy).toBeCalledWith('touchmove', expect.anything(), false);
       expect(hostSpy).toBeCalledWith('touchmove', expect.anything());
     });
+  });
+});
+
+xdescribe('getHTMLElementsWithShadowRoot()', () => {
+  // TODO
+});
+
+describe('unpackChildren()', () => {
+  let container: HTMLElement;
+  beforeEach(() => {
+    container = document.createElement('div');
+  });
+
+  it('should return array with single child', () => {
+    const child = document.createElement('div');
+    container.append(child);
+    expect(unpackChildren(container)).toEqual([child]);
+  });
+
+  it('should return array with several children', () => {
+    const child1 = document.createElement('div');
+    const child2 = document.createElement('span');
+    const child3 = document.createElement('p');
+    container.append(child1, child2, child3);
+    expect(unpackChildren(container)).toEqual([child1, child2, child3]);
+  });
+
+  it('should return array with single child and nested child', () => {
+    const child = document.createElement('div');
+    const nestedChild = document.createElement('span');
+    child.append(nestedChild);
+    container.append(child);
+    expect(unpackChildren(container)).toEqual([child, nestedChild]);
+  });
+
+  it('should return array with single child and deeply nested children', () => {
+    const child = document.createElement('div');
+    const nestedChild = document.createElement('p');
+    const nestedNestedChild = document.createElement('span');
+    const nestedNestedNestedChild = document.createElement('input');
+    child.append(nestedChild);
+    nestedChild.append(nestedNestedChild);
+    nestedNestedChild.append(nestedNestedNestedChild);
+    container.append(child);
+    expect(unpackChildren(container)).toEqual([child, nestedChild, nestedNestedChild, nestedNestedNestedChild]);
+  });
+
+  it('should return array with several children and nested children', () => {
+    const child1 = document.createElement('div');
+    const nestedChild1 = document.createElement('span');
+    const nestedNestedChild1 = document.createElement('input');
+    const child2 = document.createElement('p');
+    const nestedChild2 = document.createElement('span');
+    const child3 = document.createElement('h1');
+    nestedChild1.append(nestedNestedChild1);
+    child1.append(nestedChild1);
+    child2.append(nestedChild2);
+    container.append(child1, child2, child3);
+    expect(unpackChildren(container)).toEqual([child1, nestedChild1, nestedNestedChild1, child2, nestedChild2, child3]);
+  });
+});
+
+describe('getFirstAndLastFocusableElement()', () => {
+  describe('with closeButton', () => {
+    let container: HTMLElement;
+    const closeButton = document.createElement('button');
+    closeButton.id = ' btn-close';
+
+    beforeEach(() => {
+      container = document.createElement('div');
+    });
+
+    it('should return correct elements for single child', () => {
+      const input = document.createElement('input');
+      input.type = 'text';
+      container.append(input);
+
+      expect(getFirstAndLastFocusableElement(container, closeButton)).toEqual([closeButton, input]);
+    });
+
+    it('should return correct elements for multiple children', () => {
+      const input1 = document.createElement('input');
+      input1.type = 'text';
+      const input2 = document.createElement('input');
+      input2.type = 'number';
+      container.append(input1, input2);
+
+      expect(getFirstAndLastFocusableElement(container, closeButton)).toEqual([closeButton, input1]);
+    });
+
+    it('should return correct elements for within shadow dom', () => {
+      const input = document.createElement('input');
+      input.type = 'text';
+      const host = document.createElement('div');
+      host.attachShadow({ mode: 'open' });
+      host.shadowRoot.append(input);
+
+      container.append(host);
+
+      expect(getFirstAndLastFocusableElement(container, closeButton)).toEqual([closeButton, input]);
+    });
+  });
+
+  describe('without closeButton', () => {
+    it('should return correct elements', () => {});
   });
 });
 
