@@ -95,7 +95,7 @@ import Component from 'vue-class-component';
 import { getTabsBarCodeSamples } from '@porsche-design-system/shared';
 
 const buildButton = (name: string) => `  <button type="button">Tab ${name}</button>`;
-const buildAnchor = (name: string) => `  <a href="https://porsche.com">Tab ${name}</a>`;
+const buildAnchor = (name: string) => `  <a href="https://porsche.com" target="_blank">Tab ${name}</a>`;
 const buildTabPanel = (id: number) => `<div id="tab-panel-${id}" hidden tabindex="-1" role="tabpanel" aria-labelledby="tab-item-${id}">
   <p-text>Your content of Tab ${id}</p-text> 
 </div>`;
@@ -129,12 +129,12 @@ import { PTabsBar } from '@porsche-design-system/components-react';
 import type { TabChangeEvent } from '@porsche-design-system/components-react';
 
 const TabsBarPage = (): JSX.Element => {
-    const [tabIndex, setTabIndex] = useState<number>();
-    const onTabChange = useCallback((e: CustomEvent<TabChangeEvent>) => {
-        setTabIndex(e.detail.activeTabIndex);
-    }, []);
+  const [tabIndex, setTabIndex] = useState<number>();
+  const onTabChange = useCallback((e: CustomEvent<TabChangeEvent>) => {
+    setTabIndex(e.detail.activeTabIndex);
+  }, []);
 
-    return <PTabsBar activeTabIndex={tabIndex} onTabChange={onTabChange}>...</PTabsBar>
+  return <PTabsBar activeTabIndex={tabIndex} onTabChange={onTabChange}>...</PTabsBar>
 }`,
     };
 
@@ -184,9 +184,9 @@ ${['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'
 ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
 
-  updateActiveTabIndex(tabs: HTMLElement, newIndex: number = 0) {
-    /* manipulate code only section only in order to not rerender component and loose animations */
-    const example = tabs.parentElement.parentElement;
+  updateActiveTabIndex(tabsBar: HTMLElement, newIndex: number = 0) {
+    /* manipulate code only in order to not rerender component and loose animations */
+    const example = tabsBar.parentElement.parentElement;
     const demo = example.querySelector('.demo');
     const code = example.querySelector('code');
 
@@ -203,8 +203,8 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
     });
   };
 
-  mounted(){
-    /* initially update tabsBars with activeTabIndex attribute in playground */
+  mounted() {
+    /* initially update tabsBars with activeTabIndex in playground */
     this.updateAndRegister();
     
     /* theme switch needs to register event listeners again */
@@ -214,7 +214,7 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
     }));    
   }
   
-  updated(){
+  updated() {
     this.registerEvents();
   }
 
@@ -230,9 +230,13 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
     /* bind tabsBars with activeTabIndex set as attribute */
     const tabsBarsWithActiveIndex = this.$el.querySelectorAll('.playground-tabs-bar .example .demo p-tabs-bar');
     tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('tabChange', (e: CustomEvent<TabChangeEvent>)=> {
-      e.target.activeTabIndex = e.detail.activeTabIndex;
+      this.onTabChange(e);
       this.updateActiveTabIndex(e.target, e.detail.activeTabIndex);
     }));
+  }
+
+  onTabChange = (e: CustomEvent) => {
+    e.target.activeTabIndex = e.detail.activeTabIndex;
   }
 }
 </script>
