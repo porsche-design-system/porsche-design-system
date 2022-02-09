@@ -215,6 +215,7 @@ describe('button', () => {
 
     await page.keyboard.press('Tab');
     await waitForEventSerialization(page);
+    await waitForEventSerialization(page); // 🙈
     expect(beforeFocusCalls, 'beforeFocusCalls after 1st tab').toBe(1);
     expect(buttonFocusCalls, 'buttonFocusCalls after 1st tab').toBe(0);
     expect(buttonFocusInCalls, 'buttonFocusInCalls after 1st tab').toBe(0);
