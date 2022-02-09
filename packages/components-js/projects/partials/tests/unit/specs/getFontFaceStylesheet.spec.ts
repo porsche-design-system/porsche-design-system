@@ -1,46 +1,59 @@
 import { getFontFaceStylesheet } from '../../../src';
+import { render } from '@testing-library/react';
 
-describe('getFontFaceStylesheet()', () => {
-  const cdnStyleUrlWithoutHash = `https://cdn.ui.porsche.com/porsche-design-system/styles/font-face.min`;
-  const cdnStyleUrlCnWithoutHash = `https://cdn.ui.porsche.cn/porsche-design-system/styles/font-face.min`;
-  const linkStartsWith = '<link rel=stylesheet href=';
-  const linkEndsWith = 'type=text/css crossorigin>';
-  const urlStartsWith = 'https://';
-  const urlEndsWith = '.css';
+const baseUrlCdnCom = 'https://cdn.ui.porsche.com';
+const baseUrlCdnCn = 'https://cdn.ui.porsche.cn';
+const hrefCom = `${baseUrlCdnCom}/porsche-design-system/styles/font-face.min.[a-z0-9]{32}.css`;
+const hrefCn = `${baseUrlCdnCn}/porsche-design-system/styles/font-face.min.cn.[a-z0-9]{32}.css`;
 
-  it('should return link with FONT_FACE_STYLE_CDN_URL', () => {
+describe('format: html', () => {
+  it('should return links', () => {
     const result = getFontFaceStylesheet();
-    expect(result.startsWith(linkStartsWith)).toBeTruthy();
-    expect(result.endsWith(linkEndsWith)).toBeTruthy();
-    expect(result).toContain(cdnStyleUrlWithoutHash);
+    const regex = new RegExp(
+      `^<link rel=preconnect href=${baseUrlCdnCom} crossorigin><link rel=dns-prefetch href=${baseUrlCdnCom} crossorigin><link rel=stylesheet href=${hrefCom} type=text/css crossorigin>$`
+    );
+
+    expect(result).toMatch(regex);
   });
 
-  it('should return only href', () => {
+  it('should return links for china cdn', () => {
+    const result = getFontFaceStylesheet({ cdn: 'cn' });
+    const regex = new RegExp(
+      `^<link rel=preconnect href=${baseUrlCdnCn} crossorigin><link rel=dns-prefetch href=${baseUrlCdnCn} crossorigin><link rel=stylesheet href=${hrefCn} type=text/css crossorigin>$`
+    );
+
+    expect(result).toMatch(regex);
+  });
+});
+
+describe('format: jsx', () => {
+  it('should return links', () => {
+    const { container } = render(getFontFaceStylesheet({ format: 'jsx' }));
+    const regex = new RegExp(
+      `^<link rel="preconnect" href="${baseUrlCdnCom}" crossorigin="true"><link rel="dns-prefetch" href="${baseUrlCdnCom}" crossorigin="true"><link rel="stylesheet" href="${hrefCom}" type="text/css" crossorigin="true">$`
+    );
+
+    expect(container.innerHTML).toMatch(regex);
+  });
+
+  it('should return links for china cdn', () => {
+    const { container } = render(getFontFaceStylesheet({ cdn: 'cn', format: 'jsx' }));
+    const regex = new RegExp(
+      `^<link rel="preconnect" href="${baseUrlCdnCn}" crossorigin="true"><link rel="dns-prefetch" href="${baseUrlCdnCn}" crossorigin="true"><link rel="stylesheet" href="${hrefCn}" type="text/css" crossorigin="true">$`
+    );
+
+    expect(container.innerHTML).toMatch(regex);
+  });
+});
+
+describe('withoutTags: true', () => {
+  it('should return only url', () => {
     const result = getFontFaceStylesheet({ withoutTags: true });
-    expect(result.startsWith(urlStartsWith)).toBeTruthy();
-    expect(result.endsWith(urlEndsWith)).toBeTruthy();
-    expect(result).toContain(cdnStyleUrlWithoutHash);
+    expect(result).toMatch(new RegExp(hrefCom));
   });
 
-  it('should return only href with cdn: "auto"', () => {
-    const result = getFontFaceStylesheet({ withoutTags: true, cdn: 'auto' });
-    expect(result.startsWith(urlStartsWith)).toBeTruthy();
-    expect(result.endsWith(urlEndsWith)).toBeTruthy();
-    expect(result).toContain(cdnStyleUrlWithoutHash);
-  });
-
-  it('should be minified', () => {
-    const result = getFontFaceStylesheet();
-    expect(result).not.toContain('"');
-    expect(result).not.toContain("'");
-  });
-
-  describe('option: { cdn: "cn" }', () => {
-    it('should return correct url for china cdn', () => {
-      const result = getFontFaceStylesheet({ withoutTags: true, cdn: 'cn' });
-      expect(result.startsWith(urlStartsWith)).toBeTruthy();
-      expect(result.endsWith(urlEndsWith)).toBeTruthy();
-      expect(result).toContain(cdnStyleUrlCnWithoutHash);
-    });
+  it('should return only url for china cdn', () => {
+    const result = getFontFaceStylesheet({ withoutTags: true, cdn: 'cn' });
+    expect(result).toMatch(new RegExp(hrefCn));
   });
 });

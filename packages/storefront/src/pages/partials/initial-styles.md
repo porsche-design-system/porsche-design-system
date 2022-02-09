@@ -7,8 +7,12 @@ However, it takes a moment until our core is fully loaded and only then we can t
 Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages which needs to be injected into the `<head>` of your `index.html`.
 
 ## Supported options
-- **prefix:** `string = ''`
-- **withoutTags:** `boolean = false`
+
+| Option        | Description                                                                                                                                       | Type           | Default |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------|----------------|---------|
+| `prefix`      | Prefix will be added to the component names.                                                                                                      | `string`       | `''`    |
+| `withoutTags` | <span style='color:red'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format: 'jsx'` instead.<br/>If true, it returns css styles. | `boolean`      | `false` |
+| `format`      | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements.                          | `'html' | 'jsx'`  | `'html'` |
 
 ## Examples
 
@@ -16,8 +20,6 @@ Project integration differs based on the project setup.
 The following showcases the most common ways.
 
 <PartialDocs name="getInitialStyles" :params="params" location="head"></PartialDocs>
-
-You can find an implemented example in our [Sample VanillaJS Integration](https://github.com/porscheui/sample-integration-vanillajs), [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular) or [Sample React Integration](https://github.com/porscheui/sample-integration-react)
 
 <script lang="ts">
 import Vue from 'vue';

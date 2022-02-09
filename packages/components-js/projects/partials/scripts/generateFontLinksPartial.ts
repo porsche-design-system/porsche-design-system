@@ -1,4 +1,4 @@
-import { minifyHTML } from './utils';
+import { minifyHTML, withoutTagsOption } from './utils';
 import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
 import { CDN_BASE_PATH_FONTS } from '../../../../../cdn.config';
 
@@ -8,34 +8,38 @@ export const generateFontLinksPartial = (): string => {
 
   const types = `type FontSubset = ${fontSubsets.map((x) => `'${x}'`).join(' | ')};
 type FontWeight = ${fontWeights.map((x) => `'${x}'`).join(' | ')};
-type FontPreloadLinkOptions = {
+type GetFontLinksOptions = {
   subset?: FontSubset;
   weights?: FontWeight[];
   cdn?: Cdn;
-  withoutTags?: boolean;
-}
-type FontPreloadLinkOptionsWithTags = FontPreloadLinkOptions & {
-  withoutTags?: false;
+  ${withoutTagsOption}
+  format?: Format;
 };
-type FontPreloadLinkOptionsWithoutTags = FontPreloadLinkOptions & {
-  withoutTags?: true;
-};`;
+type GetFontLinksOptionsFormatHtml = Omit<GetFontLinksOptions, 'withoutTags'> & {
+  format: 'html';
+};
+type GetFontLinksOptionsFormatJsx = Omit<GetFontLinksOptions, 'withoutTags'> & {
+  format: 'jsx';
+};
+type GetFontLinksOptionsWithoutTags = Omit<GetFontLinksOptions, 'format'>;`;
 
   const linkTemplate = minifyHTML('<link rel="preload" href="${url}" as="font" type="font/woff2" crossorigin>');
 
-  const func = `export function getFontLinks(opts?: FontPreloadLinkOptionsWithTags): string;
-export function getFontLinks(opts?: FontPreloadLinkOptionsWithoutTags): string[];
-export function getFontLinks(opts?: FontPreloadLinkOptions): string | string[] {
-  const options: FontPreloadLinkOptions = {
+  const func = `export function getFontLinks(opts?: GetFontLinksOptionsFormatJsx): JSX.Element;
+export function getFontLinks(opts?: GetFontLinksOptionsFormatHtml): string;
+export function getFontLinks(opts?: GetFontLinksOptionsWithoutTags): string[];
+export function getFontLinks(opts?: GetFontLinksOptions): string;
+export function getFontLinks(opts?: GetFontLinksOptions): string | string[] | JSX.Element {
+  const { subset, weights, cdn, withoutTags, format }: GetFontLinksOptions = {
     subset: 'latin',
     weights: ['regular'],
     cdn: 'auto',
     withoutTags: false,
+    format: 'html',
     ...opts
   };
-  const { subset, weights, cdn, withoutTags } = options;
 
-  if (options['weight']) {
+  if (opts?.['weight']) {
     throw new Error('Option "weight" is not supported, please use "weights" instead');
   }
 
@@ -84,9 +88,11 @@ Please use only valid font weights:
   }
 
   const urls = weights.map((weight) => \`\${cdnBaseUrl}/${CDN_BASE_PATH_FONTS}/\${fonts[subset][weight]}\`);
-  const links = urls.map((url) => \`${linkTemplate}\`).join('');
+  const linksHtml = urls.map((url) => \`${linkTemplate}\`).join('');
+  const linksJsx = urls.map((url, index) => <link key={index} rel="preload" href={url} as="font" type="font/woff2" crossOrigin="true" />);
 
-  return withoutTags ? urls : links;
+  const markup = format === 'html' ? linksHtml : <>{linksJsx}</>;
+  return withoutTags ? urls : markup;
 };`;
 
   return [types, func].join('\n\n');
