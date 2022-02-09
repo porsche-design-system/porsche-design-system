@@ -3,7 +3,7 @@ module.exports = {
   rootDir: '../../../',
   verbose: true,
   testEnvironment: 'node',
-  testMatch: ['**/tests/unit/specs/**/*.spec.ts'],
+  testMatch: ['**/tests/unit/specs/**/*.spec.ts', '!**/projects/**'],
   modulePathIgnorePatterns: ['<rootDir>/dist'],
   globals: {
     'ts-jest': {

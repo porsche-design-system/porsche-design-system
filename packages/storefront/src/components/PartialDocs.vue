@@ -1,5 +1,15 @@
 <template>
-  <Playground :frameworkMarkup="frameworkMarkup"></Playground>
+  <div>
+    <Playground :frameworkMarkup="frameworkMarkup"></Playground>
+    <br /><br />
+    <p-text>
+      You can find an implemented example in our
+      <a href="https://github.com/porscheui/sample-integration-vanillajs">Sample VanillaJS Integration</a>,
+      <a href="https://github.com/porscheui/sample-integration-angular">Sample Angular Integration</a>,
+      <a href="https://github.com/porscheui/sample-integration-react">Sample React Integration</a> or
+      <a href="https://github.com/porscheui/sample-integration-nextjs">Sample NextJS Integration</a>
+    </p-text>
+  </div>
 </template>
 
 <script lang="ts">
