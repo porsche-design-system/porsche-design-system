@@ -44,9 +44,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
     getTextareaWrapperSkeletonStyles(),
   ].join('');
 
-  const tagNames = joinArrayElementsToString(
-    TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x) && !TAG_NAMES_WITH_SKELETON.includes(x))
-  );
+  const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
 
   const tagNamesWithSkeleton = joinArrayElementsToString(TAG_NAMES_WITH_SKELETON);
 
