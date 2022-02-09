@@ -1,18 +1,10 @@
-import { getHTMLElements, getPrefixedTagNames, getTagName, hasNamedSlot, isIos } from '../../../utils';
-import { FOCUSABLE_TAG_NAMES_CAMEL_CASE } from '@porsche-design-system/shared';
-import type { TagNameCamelCase } from '@porsche-design-system/shared';
+import { getHTMLElements, getTagName, hasNamedSlot, isIos } from '../../../utils';
 import type { SelectedAriaAttributes } from '../../../types';
 
+// TODO: make recursively respect shadowRoots and return first + last element only
 export const getFocusableElements = (host: HTMLElement, closeButton: HTMLElement): HTMLElement[] => {
-  const PrefixedTagNames = getPrefixedTagNames(host);
-
   const notDisabled = ':not([disabled])';
-  const selector =
-    Object.entries(PrefixedTagNames)
-      .filter((entry) => FOCUSABLE_TAG_NAMES_CAMEL_CASE.includes(entry[0] as TagNameCamelCase)) // key
-      .map((entry) => entry[1]) // value
-      .join(',') +
-    `,[href],input${notDisabled},select${notDisabled},textarea${notDisabled},button${notDisabled},[tabindex]:not([tabindex="-1"]`;
+  const selector = `[href],input${notDisabled},select${notDisabled},textarea${notDisabled},button${notDisabled},[tabindex]:not([tabindex="-1"]`;
 
   return [closeButton].concat(getHTMLElements(host, selector));
 };
