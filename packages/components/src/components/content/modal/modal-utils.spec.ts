@@ -77,7 +77,7 @@ describe('setScrollLock()', () => {
   });
 });
 
-describe('getFocusableElements()', () => {
+xdescribe('getFocusableElements()', () => {
   it('should return focusable elements', () => {
     const host = document.createElement('div');
     const closeButton = document.createElement('button');
