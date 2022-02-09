@@ -155,18 +155,20 @@ describe('table', () => {
   });
 });
 
-it('accordion should emit events once', async () => {
-  await goto(page, 'events');
+describe('accordion', () => {
+  it('should emit events once', async () => {
+    await goto(page, 'events');
 
-  const accordionButton = await selectNode(page, 'p-accordion >>> button');
-  const accordionChangeEventCounter = await selectNode(page, 'p-accordion + p');
+    const accordionButton = await selectNode(page, 'p-accordion >>> button');
+    const accordionChangeEventCounter = await selectNode(page, 'p-accordion + p');
 
-  await clickElement(accordionButton);
-  expect(await getCounterValue(accordionChangeEventCounter)).toBe('1');
+    await clickElement(accordionButton);
+    expect(await getCounterValue(accordionChangeEventCounter)).toBe('1');
 
-  await clickElement(accordionButton);
-  expect(await getCounterValue(accordionChangeEventCounter)).toBe('2');
+    await clickElement(accordionButton);
+    expect(await getCounterValue(accordionChangeEventCounter)).toBe('2');
 
-  await clickElement(accordionButton);
-  expect(await getCounterValue(accordionChangeEventCounter)).toBe('3');
+    await clickElement(accordionButton);
+    expect(await getCounterValue(accordionChangeEventCounter)).toBe('3');
+  });
 });

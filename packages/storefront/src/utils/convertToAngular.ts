@@ -14,17 +14,21 @@ export const transformAttributesWithNotDigitValue = (markup: string): string =>
 
 export const transformAttributesWithDigitValue = (markup: string): string =>
   markup.replace(/\s([a-z-]+)="(-?\d*)"/g, (m, $key, $value) =>
-    // surround numeric "name" attribute values with single quotes
-    $key === 'name' ? ` [${$key}]="'${$value}'"` : ` [${camelCase($key)}]="${$value}"`
+    $key === 'maxlength'
+      ? ` [maxLength]="${$value}"`
+      : // surround numeric "name" attribute values with single quotes
+      $key === 'name'
+      ? ` [${$key}]="'${$value}'"`
+      : ` [${camelCase($key)}]="${$value}"`
   );
 
-export const cleanBooleanValues = (markup: string): string =>
+export const cleanBooleanAndUndefinedValues = (markup: string): string =>
   // remove single quotes from boolean values
-  markup.replace(/\s(\[[A-Za-z]+\])="'(true|false)'"/g, ' $1="$2"');
+  markup.replace(/\s(\[[A-Za-z]+\])="'(true|false|undefined)'"/g, ' $1="$2"');
 
-export const cleanClassAndSlotAttributes = (markup: string): string =>
-  // remove brackets from "class" and "slot("|slot) attributes
-  markup.replace(/\s\[(class|slot)]="'(.*?)'"/g, ' $1="$2"');
+export const unbindNativeAttributes = (markup: string): string =>
+  // remove brackets from "id", "class", "style, "slot" and "title" attributes
+  markup.replace(/\s\[(id|class|style|slot|title)]="'(.*?)'"/g, ' $1="$2"');
 
 export const convertToAngular = (markup: string): string =>
   [
@@ -32,6 +36,6 @@ export const convertToAngular = (markup: string): string =>
     transformAttributesWithObjectValues,
     transformAttributesWithNotDigitValue,
     transformAttributesWithDigitValue,
-    cleanBooleanValues,
-    cleanClassAndSlotAttributes,
+    cleanBooleanAndUndefinedValues,
+    unbindNativeAttributes,
   ].reduce((previousResult, fn) => fn(previousResult), markup);

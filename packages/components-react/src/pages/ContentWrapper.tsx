@@ -1,15 +1,17 @@
+/* Auto Generated File */
 import { PContentWrapper } from '@porsche-design-system/components-react';
 
 export const ContentWrapperPage = (): JSX.Element => {
   const style = `
-    p-content-wrapper p {
+    p-content-wrapper > p {
       margin: 0;
-      padding: 4px 0;
+      padding: 4px 2vw;
       text-align: center;
-      color: #fff;
+      color: white;
       background-color: lightskyblue;
     }
   `;
+
   return (
     <>
       <style children={style} />
@@ -32,11 +34,7 @@ export const ContentWrapperPage = (): JSX.Element => {
         </PContentWrapper>
       </div>
 
-      <div
-        className="playground"
-        title="should render with 'default' background color"
-        style={{ background: 'deeppink' }}
-      >
+      <div className="playground" title="should render with 'default' background color" style={{ background: 'deeppink' }}>
         <PContentWrapper backgroundColor="default">
           <p>Some content</p>
         </PContentWrapper>
@@ -60,12 +58,12 @@ export const ContentWrapperPage = (): JSX.Element => {
 
       <div className="playground" title="should not cut off to wide content">
         <PContentWrapper width="basic">
-          <p style={{ margin: '0 -2000px' }}>Some content</p>
+          <p style={{ marginLeft: '-2000px', marginRight: '-2000px' }}>Some content</p>
         </PContentWrapper>
       </div>
 
       <div className="playground" title="should render background for set height" style={{ background: 'deeppink' }}>
-        <PContentWrapper backgroundColor="default" style={{ height: 100 }}>
+        <PContentWrapper backgroundColor="default" style={{ height: '100px' }}>
           <p>Some content</p>
         </PContentWrapper>
       </div>

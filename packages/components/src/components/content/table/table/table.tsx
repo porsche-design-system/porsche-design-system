@@ -20,7 +20,7 @@ export class Table {
   @Element() public host!: HTMLElement;
 
   /** A caption describing the contents of the table for accessibility only. This won't be visible in the browser.
-   * Use an element with an attribute of slot="name" for a visible caption. */
+   * Use an element with an attribute of `slot="caption"` for a visible caption. */
   @Prop() public caption?: string;
 
   /** Emitted when sorting is changed. */

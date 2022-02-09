@@ -1,3 +1,4 @@
+/* Auto Generated File */
 import { PContentWrapper, PModal } from '@porsche-design-system/components-react';
 
 export const ModalBasicPage = (): JSX.Element => {
@@ -12,13 +13,12 @@ export const ModalBasicPage = (): JSX.Element => {
   return (
     <>
       <style children={style} />
+
       <div className="playground light" title="should show basic modal on light background">
         <PContentWrapper>
           <div style={{ background: 'deeppink', height: '100vh' }} />
         </PContentWrapper>
-        <PModal heading="Some Heading" open>
-          Some Content
-        </PModal>
+        <PModal heading="Some Heading" open={true}>Some Content</PModal>
       </div>
     </>
   );

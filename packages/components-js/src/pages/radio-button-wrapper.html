@@ -1,3 +1,9 @@
+<style>
+  .playground > * {
+    margin-bottom: 2px;
+  }
+</style>
+
 <div class="playground light" title="should render with label">
   <p-radio-button-wrapper label="Some label">
     <input type="radio" name="some-name-1" />
@@ -19,13 +25,13 @@
 <div class="playground light" title="should render with responsive label">
   <p-radio-button-wrapper
     label="Some label"
-    hide-label="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
+    hide-label="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
   >
     <input type="radio" name="some-name-3" />
   </p-radio-button-wrapper>
   <p-radio-button-wrapper
     label="Some label"
-    hide-label="{'base': true, 'xs': false, 's': true, 'm': false, 'l': true, 'xl': false}"
+    hide-label="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
   >
     <input type="radio" name="some-name-3" checked />
   </p-radio-button-wrapper>
@@ -122,9 +128,3 @@
     <input type="radio" name="some-name-11" />
   </p-radio-button-wrapper>
 </div>
-
-<style>
-  .playground > * {
-    margin-bottom: 2px;
-  }
-</style>

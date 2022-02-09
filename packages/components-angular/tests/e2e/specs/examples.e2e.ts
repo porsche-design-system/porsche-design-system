@@ -19,7 +19,9 @@ const fileContent = fs.readFileSync(filePath, 'utf-8');
 
 const [, rawRoutes] = /const routes.*(\[(?:.|\s)*\]);/.exec(fileContent) || [];
 const routes: { name: string; path: string; component: string }[] = eval(
-  rawRoutes.replace(/(from(?:Pages|Examples)\.\w+)/g, "'$1'")
+  rawRoutes
+    .replace(/\.\.\.\[(?:.|\s)*?\].*/, '') // get rid of generatedRoutes
+    .replace(/(from(?:Pages|Examples)\.\w+)/g, "'$1'")
 );
 
 const exampleRoutes = routes.filter((item) => item.component?.startsWith('fromExamples.'));
