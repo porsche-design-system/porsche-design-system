@@ -17,15 +17,23 @@ export const getFocusableElements = (host: HTMLElement, closeButton: HTMLElement
   return [closeButton].concat(getHTMLElements(host, selector));
 };
 
-export const setScrollLock = (host: HTMLElement, lock: boolean, listener: (e: TouchEvent) => void): void => {
-  document.body.style.overflow = lock ? 'hidden' : '';
+const documentTouchListener = (e: TouchEvent) => e.preventDefault();
+const hostTouchListener = (e: TouchEvent & { target: HTMLElement }) =>
+  (e.target.scrollTop = getScrollTopOnTouch(e.target, e));
+
+export const setScrollLock = (
+  host: HTMLElement,
+  isLocked: boolean,
+  keyboardEventHandler: (e: KeyboardEvent) => void
+): void => {
+  const addOrRemoveEventListener = `${isLocked ? 'add' : 'remove'}EventListener`;
+  document.body.style.overflow = isLocked ? 'hidden' : '';
+  document[addOrRemoveEventListener]('keydown', keyboardEventHandler);
 
   // prevent scrolling of background on iOS
   if (isIos()) {
-    const addOrRemoveEventListener = lock ? 'addEventListener' : 'removeEventListener';
-    document[addOrRemoveEventListener]('touchmove', (e: TouchEvent) => e.preventDefault(), false);
-    // eslint-disable-next-line @typescript-eslint/unbound-method
-    host[addOrRemoveEventListener]('touchmove', listener);
+    document[addOrRemoveEventListener]('touchmove', documentTouchListener, false);
+    host[addOrRemoveEventListener]('touchmove', hostTouchListener);
   }
 };
 
@@ -35,10 +43,12 @@ export const getScrollTopOnTouch = (host: HTMLElement, e: TouchEvent): number =>
   let result = scrollTop;
   const currentScroll = scrollTop + offsetHeight;
 
-  if (scrollTop === 0 && currentScroll === scrollHeight) {
-    e.preventDefault();
-  } else if (scrollTop === 0) {
-    result = 1;
+  if (scrollTop === 0) {
+    if (currentScroll === scrollHeight) {
+      e.preventDefault();
+    } else {
+      result = 1;
+    }
   } else if (currentScroll === scrollHeight) {
     result = scrollTop - 1;
   }

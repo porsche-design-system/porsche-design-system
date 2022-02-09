@@ -10,54 +10,69 @@ import * as deviceDetectionUtils from '../../../utils/device-detection';
 import * as domUtils from '../../../utils/dom';
 
 describe('setScrollLock()', () => {
-  const listener = () => {};
+  const keyboardEventHandler = () => {};
   const host = document.createElement('div');
 
-  it('should add body style overflow hidden', () => {
-    setScrollLock(host, true, listener);
+  it('should add body style overflow: hidden', () => {
+    setScrollLock(host, true, keyboardEventHandler);
 
     expect(document.body.style.overflow).toBe('hidden');
   });
 
-  it('should remove body style overflow hidden', () => {
-    setScrollLock(host, true, listener);
-    setScrollLock(host, false, listener);
+  it('should remove body style overflow: hidden', () => {
+    setScrollLock(host, true, keyboardEventHandler);
+    setScrollLock(host, false, keyboardEventHandler);
 
     expect(document.body.style.overflow).toBe('');
   });
 
-  describe('add/removeEventListener', () => {
-    it('should add touchmove eventListener', () => {
+  describe('add event listeners', () => {
+    it('should add keydown event listener', () => {
+      const documentSpy = jest.spyOn(document, 'addEventListener');
+      setScrollLock(host, true, keyboardEventHandler);
+
+      expect(documentSpy).toBeCalledWith('keydown', keyboardEventHandler);
+    });
+
+    it('should add touchmove event listeners for iOS', () => {
       jest.spyOn(deviceDetectionUtils, 'isIos').mockImplementation(() => true);
       const documentSpy = jest.spyOn(document, 'addEventListener');
       const hostSpy = jest.spyOn(host, 'addEventListener');
 
-      setScrollLock(host, true, listener);
+      setScrollLock(host, true, keyboardEventHandler);
       expect(documentSpy).toBeCalledWith('touchmove', expect.anything(), false);
-      expect(hostSpy).toBeCalledWith('touchmove', listener);
+      expect(hostSpy).toBeCalledWith('touchmove', expect.anything());
     });
 
-    it('should remove touchmove eventListener', () => {
-      jest.spyOn(deviceDetectionUtils, 'isIos').mockImplementation(() => true);
-      const documentSpy = jest.spyOn(document, 'removeEventListener');
-      const hostSpy = jest.spyOn(host, 'removeEventListener');
-
-      setScrollLock(host, true, listener);
-      setScrollLock(host, false, listener);
-
-      expect(documentSpy).toBeCalledWith('touchmove', expect.anything(), false);
-      expect(hostSpy).toBeCalledWith('touchmove', listener);
-    });
-
-    it('should not add eventListener if not iOS', () => {
+    it('should not add touchmove event listeners if not iOS', () => {
       jest.spyOn(deviceDetectionUtils, 'isIos').mockImplementation(() => false);
       const documentSpy = jest.spyOn(document, 'addEventListener');
       const hostSpy = jest.spyOn(host, 'addEventListener');
+      setScrollLock(host, true, keyboardEventHandler);
 
-      setScrollLock(host, true, listener);
-
-      expect(documentSpy).toBeCalledTimes(0);
+      expect(documentSpy).toBeCalledWith('keydown', keyboardEventHandler);
       expect(hostSpy).toBeCalledTimes(0);
+    });
+  });
+
+  describe('remove event listeners', () => {
+    it('should remove keydown event listener', () => {
+      const documentSpy = jest.spyOn(document, 'removeEventListener');
+      setScrollLock(host, true, keyboardEventHandler);
+      setScrollLock(host, false, keyboardEventHandler);
+
+      expect(documentSpy).toBeCalledWith('keydown', keyboardEventHandler);
+    });
+
+    it('should remove touchmove event listeners', () => {
+      jest.spyOn(deviceDetectionUtils, 'isIos').mockImplementation(() => true);
+      const documentSpy = jest.spyOn(document, 'removeEventListener');
+      const hostSpy = jest.spyOn(host, 'removeEventListener');
+      setScrollLock(host, true, keyboardEventHandler);
+      setScrollLock(host, false, keyboardEventHandler);
+
+      expect(documentSpy).toBeCalledWith('touchmove', expect.anything(), false);
+      expect(hostSpy).toBeCalledWith('touchmove', expect.anything());
     });
   });
 });
