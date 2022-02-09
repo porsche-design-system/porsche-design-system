@@ -1,10 +1,6 @@
 <template>
   <div class="playground">
-    <p-tabs-bar
-      v-if="mergedConfig.themeable"
-      :active-tab-index="activeThemeTabIndex"
-      v-on:tabChange="onActiveTabIndexChange"
-    >
+    <p-tabs-bar v-if="mergedConfig.themeable" :active-tab-index="activeThemeTabIndex">
       <button type="button" @click="switchTheme('light')">Light theme</button>
       <button type="button" @click="switchTheme('dark')">Dark theme</button>
     </p-tabs-bar>
@@ -88,16 +84,8 @@
     @Prop({ default: () => ({}) }) public frameworkMarkup!: FrameworkMarkup;
     @Prop({ default: '' }) public markup!: string;
 
-    public theme: Theme = 'light';
-    public activeThemeTabIndex = 0;
-
-    public onActiveTabIndexChange(e: CustomEvent<{ activeTabIndex: number }>): void {
-      this.activeThemeTabIndex = e.detail.activeTabIndex;
-    }
-
     public switchTheme(theme: Theme): void {
-      this.theme = theme;
-      this.$emit('onThemeChange', this.theme);
+      this.$store.commit('setTheme', theme);
     }
 
     public get cleanedEditorMarkup(): string {
@@ -136,6 +124,14 @@
 
     public get hasFrameworkMarkup(): boolean {
       return Object.keys(this.frameworkMarkup).length !== 0;
+    }
+
+    public get activeThemeTabIndex(): number {
+      return ['light', 'dark'].indexOf(this.theme);
+    }
+
+    public get theme(): Theme {
+      return this.config.themeable ? this.$store.getters.theme : 'light';
     }
   }
 </script>
