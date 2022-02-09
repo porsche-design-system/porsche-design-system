@@ -5,7 +5,6 @@ import type { ModalAriaAttributes } from './modal-utils';
 import {
   getFirstAndLastElement,
   getFocusableElements,
-  getScrollTopOnTouch,
   hasSlottedHeading,
   MODAL_ARIA_ATTRIBUTES,
   setScrollLock,
@@ -48,8 +47,7 @@ export class Modal {
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
-    this.setKeyboardListener(isOpen);
-    setScrollLock(this.host, isOpen, this.setScrollTop);
+    setScrollLock(this.host, isOpen, this.onKeyboardEvent);
 
     if (isOpen) {
       this.focusableElements = getFocusableElements(this.host, this.closeBtn);
@@ -63,8 +61,7 @@ export class Modal {
     attachSlottedCss(this.host, getSlottedCss);
     if (this.open) {
       // in case modal is rendered with open prop
-      this.setKeyboardListener(true);
-      setScrollLock(this.host, true, this.setScrollTop);
+      setScrollLock(this.host, true, this.onKeyboardEvent);
     }
   }
 
@@ -88,8 +85,7 @@ export class Modal {
   }
 
   public disconnectedCallback(): void {
-    this.setKeyboardListener(false);
-    setScrollLock(this.host, false, this.setScrollTop);
+    setScrollLock(this.host, false, this.onKeyboardEvent);
   }
 
   public render(): JSX.Element {
@@ -131,14 +127,6 @@ export class Modal {
       </Host>
     );
   }
-
-  private setScrollTop = (e: TouchEvent): void => {
-    this.host.scrollTop = getScrollTopOnTouch(this.host, e);
-  };
-
-  private setKeyboardListener = (active: boolean): void => {
-    document[active ? 'addEventListener' : 'removeEventListener']('keydown', this.onKeyboardEvent);
-  };
 
   private onKeyboardEvent = (e: KeyboardEvent): void => {
     const { key, shiftKey } = e;
