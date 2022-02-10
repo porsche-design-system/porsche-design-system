@@ -86,13 +86,13 @@
   },
   {
     "chunkShortName": "modal",
-    "size": 8079,
-    "gzipSize": 3156
+    "size": 8175,
+    "gzipSize": 3197
   },
   {
     "chunkShortName": "pagination",
-    "size": 5484,
-    "gzipSize": 2334
+    "size": 5503,
+    "gzipSize": 2344
   },
   {
     "chunkShortName": "popover",
