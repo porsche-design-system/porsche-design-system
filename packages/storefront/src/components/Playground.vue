@@ -150,7 +150,7 @@
 
     private syncThemeIntoDemoComponents(): void {
       (this.$refs.demo as HTMLElement)
-        .querySelectorAll(themableComponentsSelector)
+        ?.querySelectorAll(themableComponentsSelector)
         .forEach((el) => ((el as any).theme = this.theme));
     }
   }
