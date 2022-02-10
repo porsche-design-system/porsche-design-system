@@ -1,8 +1,7 @@
-import type { Theme } from '../../../types';
-import type { BreakpointCustomizable } from '../../../types';
+import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { NumberOfPageLinks } from './pagination-utils';
 import { buildResponsiveStyles, getCss } from '../../../utils';
-import { getFocusStyles, getTransition, pxToRemWithUnit, getThemedColors } from '../../../styles';
+import { addImportantToRule, getFocusStyles, getThemedColors, getTransition, pxToRemWithUnit } from '../../../styles';
 import { textSmall } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
@@ -14,6 +13,7 @@ export const getComponentCss = (
   return getCss({
     ':host': {
       display: 'block',
+      outline: addImportantToRule(0),
     },
     '@global': {
       nav: {
