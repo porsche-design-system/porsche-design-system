@@ -10,7 +10,7 @@ jss.setup({
   plugins: [...preset().plugins, jssPluginSortMediaQueries({ combineMediaQueries: true })],
 });
 
-export const getMinifiedStyles = (style: Styles): string => {
+export const getMinifiedCss = (style: Styles): string => {
   return jss
     .createStyleSheet(style)
     .toString()

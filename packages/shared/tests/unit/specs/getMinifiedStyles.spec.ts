@@ -1,5 +1,5 @@
 import type { Styles } from 'jss';
-import { getMinifiedStyles } from '../../../src/styles/getMinifiedStyles';
+import { getMinifiedCss } from '../../../src/styles/getMinifiedCss';
 
 describe('getMinifiedCss()', () => {
   const data: { input: Styles; result: string }[] = [
@@ -52,6 +52,6 @@ describe('getMinifiedCss()', () => {
       result,
     ])
   )(`should transform '%s' to %s`, (_, __, input: Styles, result: string) => {
-    expect(getMinifiedStyles(input)).toBe(result);
+    expect(getMinifiedCss(input)).toBe(result);
   });
 });

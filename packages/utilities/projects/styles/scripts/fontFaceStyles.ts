@@ -2,7 +2,7 @@ import type { FontWeight } from '@porsche-design-system/utilities-v2';
 import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
 import { fontWeight } from '@porsche-design-system/utilities-v2';
 import { CDN_BASE_PATH_FONTS, CDN_BASE_URL, CDN_BASE_URL_CN } from '../../../../../cdn.config';
-import { getMinifiedStyles } from '@porsche-design-system/shared-src/src/styles/getMinifiedStyles';
+import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
 import type { Styles } from 'jss';
 
 export type GetMinifiedPorscheNextFontFaceCssOptions = {
@@ -38,5 +38,5 @@ export const getMinifiedPorscheNextFontFaceCss = (opts: GetMinifiedPorscheNextFo
       };
     }),
   };
-  return getMinifiedStyles(style);
+  return getMinifiedCss(style);
 };

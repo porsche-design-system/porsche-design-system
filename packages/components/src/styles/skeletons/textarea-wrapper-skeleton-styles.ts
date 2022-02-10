@@ -1,15 +1,15 @@
-import { getMinifiedStyles } from '@porsche-design-system/shared-src/src/styles/getMinifiedStyles';
+import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
 import { getBaseSkeletonStyles } from './';
 import { pxToRemWithUnit } from '../common-styles';
 
-export const getTextareaWrapperSkeletonStyles = (): string => {
-  return getMinifiedStyles({
+export const getTextareaWrapperSkeletonCss = (): string => {
+  return getMinifiedCss({
     '@global': {
       'p-textarea-wrapper': {
         '&:not(.hydrated)': {
           display: 'block',
-          minHeight: pxToRemWithUnit(192),
           height: '100%',
+          minHeight: pxToRemWithUnit(192),
           margin: `${pxToRemWithUnit(28)} 0 0 0`,
           ...getBaseSkeletonStyles(),
         },
