@@ -20,6 +20,6 @@
   },
   "devDependencies": {
     "@types/glob": "^7.1.4",
-    "typescript": "^4.3.5"
+    "typescript": "^4.5.5"
   }
 }
