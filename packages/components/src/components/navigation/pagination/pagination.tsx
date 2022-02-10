@@ -89,7 +89,7 @@ export class Pagination {
             const spanProps = {
               role: 'button',
               onClick: () => this.onClick(value),
-              onKeyDown: (e) => this.onKeyDown(e, value),
+              onKeyDown: (e: KeyboardEvent) => this.onKeyDown(e, value),
             };
 
             switch (type) {
