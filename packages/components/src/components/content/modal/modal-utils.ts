@@ -1,23 +1,23 @@
-import { getHTMLElements, getTagName, hasNamedSlot, isIos } from '../../../utils';
+import { getTagName, isIos } from '../../../utils';
 import type { SelectedAriaAttributes } from '../../../types';
 
-// ionic
-const focusableQueryString =
-  '[tabindex]:not([tabindex^="-"]),input:not([type=hidden]):not([tabindex^="-"]),textarea:not([tabindex^="-"]),button:not([tabindex^="-"]),select:not([tabindex^="-"]),.ion-focusable:not([tabindex^="-"])';
-const innerFocusableQueryString = 'input:not([type=hidden]),textarea,button,select';
-
-// material
-const candidatesSelector = [
-  'input',
-  'select',
-  'textarea',
-  'a[href]',
-  'button',
-  '[tabindex]',
-  'audio[controls]',
-  'video[controls]',
-  '[contenteditable]:not([contenteditable="false"])',
-].join(',');
+// // ionic
+// const focusableQueryString =
+//   '[tabindex]:not([tabindex^="-"]),input:not([type=hidden]):not([tabindex^="-"]),textarea:not([tabindex^="-"]),button:not([tabindex^="-"]),select:not([tabindex^="-"]),.ion-focusable:not([tabindex^="-"])';
+// const innerFocusableQueryString = 'input:not([type=hidden]),textarea,button,select';
+//
+// // material
+// const candidatesSelector = [
+//   'input',
+//   'select',
+//   'textarea',
+//   'a[href]',
+//   'button',
+//   '[tabindex]',
+//   'audio[controls]',
+//   'video[controls]',
+//   '[contenteditable]:not([contenteditable="false"])',
+// ].join(',');
 
 export const unpackChildren = (el: HTMLElement | ShadowRoot): HTMLElement[] => {
   return (Array.from(el.children) as HTMLElement[])
@@ -40,19 +40,12 @@ export const isFocusableElement = (el: HTMLInputElement): boolean => {
   );
 };
 
-export const getFirstAndLastFocusableElement = (host: HTMLElement, closeButton: HTMLElement): HTMLElement[] => {
-  const allNodes = unpackChildren(host);
-
+export const getFirstAndLastFocusableElement = (
+  host: HTMLElement,
+  closeButton: HTMLElement
+): [HTMLElement, HTMLElement] => {
   const [first, last] = [closeButton].concat(unpackChildren(host).filter(isFocusableElement));
   return [first, last];
-};
-
-// TODO: make recursively respect shadowRoots and return first + last element only
-export const getFocusableElements = (host: HTMLElement, closeButton: HTMLElement): HTMLElement[] => {
-  const notDisabled = ':not([disabled])';
-  const selector = `[href],input${notDisabled},select${notDisabled},textarea${notDisabled},button${notDisabled},[tabindex]:not([tabindex="-1"]`;
-
-  return [closeButton].concat(getHTMLElements(host, selector));
 };
 
 const documentTouchListener = (e: TouchEvent) => e.preventDefault();
@@ -93,10 +86,6 @@ export const getScrollTopOnTouch = (host: HTMLElement, e: TouchEvent): number =>
   return result;
 };
 
-export const getFirstAndLastElement = <T>(elements: T[]): T[] => {
-  return [elements[0], elements[elements.length - 1]];
-};
-
 export const warnIfAriaAndHeadingPropsAreUndefined = (
   host: HTMLElement,
   heading: string,
@@ -111,7 +100,3 @@ export const warnIfAriaAndHeadingPropsAreUndefined = (
 
 export const MODAL_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type ModalAriaAttributes = typeof MODAL_ARIA_ATTRIBUTES[number];
-
-export const hasSlottedHeading = (host: HTMLElement): boolean => {
-  return hasNamedSlot(host, 'heading');
-};
