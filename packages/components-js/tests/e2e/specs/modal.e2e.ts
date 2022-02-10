@@ -17,9 +17,10 @@ import {
   waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
-import { Page } from 'puppeteer';
+import type { Page } from 'puppeteer';
 import type { SelectedAriaAttributes } from '@porsche-design-system/components/src/types';
 import type { ModalAriaAttributes } from '@porsche-design-system/components/src/components/content/modal/modal-utils';
+import type { TagName } from '@porsche-design-system/shared';
 
 describe('modal', () => {
   let page: Page;
@@ -40,9 +41,23 @@ describe('modal', () => {
     heading?: string;
     aria?: SelectedAriaAttributes<ModalAriaAttributes>;
     hasSlottedHeading?: boolean;
+    disableCloseButton?: boolean;
   }): Promise<void> => {
-    const { isOpen = true, content = 'Some Content', heading = 'Some Heading', aria, hasSlottedHeading } = opts ?? {};
-    const attributes = [!hasSlottedHeading && `heading="${heading}"`, isOpen && 'open', aria && `aria="${aria}"`]
+    const {
+      isOpen = true,
+      content = 'Some Content',
+      heading = 'Some Heading',
+      aria,
+      hasSlottedHeading,
+      disableCloseButton,
+    } = opts ?? {};
+
+    const attributes = [
+      !hasSlottedHeading && `heading="${heading}"`,
+      isOpen && 'open',
+      aria && `aria="${aria}"`,
+      disableCloseButton && 'disable-close-button',
+    ]
       .filter((x) => x)
       .join(' ');
 
@@ -83,6 +98,14 @@ describe('modal', () => {
   };
 
   const getModalVisibility = async () => await getElementStyle(await getModal(), 'visibility');
+
+  const addButtonBehindModal = () =>
+    page.evaluate(() => {
+      const button = document.createElement('button');
+      button.innerText = 'Button Behind';
+      button.id = 'btn-behind';
+      document.body.append(button);
+    });
 
   const expectCloseButtonToBeFocused = async (failMessage?: string) => {
     const host = await getHost();
@@ -259,26 +282,9 @@ describe('modal', () => {
       expect(await getActiveElementTagName(page)).toBe('P-BUTTON'); // slotted content button
     });
 
-    it('should focus nothing when there is no focusable element', async () => {
-      await setContentWithDesignSystem(
-        page,
-        `
-        <p-modal heading="Some Heading" disable-close-button>
-          Some Content
-        </p-modal>`
-      );
-      await openModal();
-      const activeElementTagName = await getActiveElementTagName(page);
-      expect(activeElementTagName).toBe('BODY');
-    });
-
     it('should not allow focusing element behind of modal', async () => {
       await initBasicModal({ isOpen: false, content: '<p-text>Some text content</p-text>' });
-      await page.evaluate(() => {
-        const button = document.createElement('btn-behind');
-        button.id = 'button';
-        document.body.append(button);
-      });
+      await addButtonBehindModal();
       await openModal();
 
       await expectCloseButtonToBeFocused();
@@ -324,12 +330,87 @@ describe('modal', () => {
       expect(await getModalVisibility(), 'after escape').toBe('hidden');
       expect(await getActiveElementId(page)).toBe('btn-open');
     });
+
+    describe('after content change', () => {
+      it('should focus close button again', async () => {
+        await initAdvancedModal();
+        await openModal();
+        await expectCloseButtonToBeFocused('initially');
+
+        await page.keyboard.press('Tab');
+        expect(await getActiveElementId(page), 'after tab').toBe('btn-content-1');
+
+        const host = await getHost();
+        await host.evaluate((el) => {
+          el.innerHTML = '<button id="btn-new">New Button</button>';
+        });
+        await expectCloseButtonToBeFocused('after content change');
+
+        await page.keyboard.press('Tab');
+        expect(await getActiveElementId(page), 'after 2nd tab').toBe('btn-new');
+
+        await page.keyboard.press('Tab');
+        await expectCloseButtonToBeFocused('after 3rd tab');
+      });
+
+      it('should not allow focusing element behind of modal', async () => {
+        await initAdvancedModal();
+        await addButtonBehindModal();
+        await openModal();
+        await expectCloseButtonToBeFocused('initially');
+
+        const host = await getHost();
+        await host.evaluate((el) => {
+          el.innerHTML = '';
+        });
+        await expectCloseButtonToBeFocused('after content change');
+
+        await page.keyboard.press('Tab');
+        await expectCloseButtonToBeFocused('after tab');
+      });
+    });
+
+    describe('with disable-close-button', () => {
+      it('should focus body when there is no focusable element', async () => {
+        await initBasicModal({ isOpen: false, disableCloseButton: true });
+        await openModal();
+        expect(await getActiveElementTagName(page)).toBe('BODY');
+      });
+
+      const otherFocusableElement = '<button type="button">Another focusable element</button>';
+
+      it.each<TagName | keyof HTMLElementTagNameMap>([
+        'p-button',
+        'p-button-pure',
+        'p-link',
+        'p-link-pure',
+        'p-link-social',
+        'p-switch',
+        'p-accordion',
+        'input',
+        'textarea',
+        'select',
+        'button',
+        'a',
+      ])('should focus first focusable element: %s', async (tagName) => {
+        const attributes = tagName.includes('link') || tagName === 'a' ? ' href="#"' : '';
+        await initBasicModal({
+          isOpen: false,
+          disableCloseButton: true,
+          content:
+            (tagName === 'input'
+              ? `<${tagName} type="text" />`
+              : `<${tagName}${attributes}>Some element</${tagName}>`) + otherFocusableElement,
+        });
+        await openModal();
+        expect(await getActiveElementTagName(page)).toBe(tagName.toUpperCase());
+      });
+    });
   });
 
   describe('can be controlled via keyboard', () => {
     it('should cycle tab events within modal', async () => {
       await initAdvancedModal();
-      const host = await getHost();
       await openModal();
       await expectCloseButtonToBeFocused('initially');
 
@@ -347,7 +428,6 @@ describe('modal', () => {
 
     it('should reverse cycle tab events within modal', async () => {
       await initAdvancedModal();
-      const host = await getHost();
       await openModal();
       await expectCloseButtonToBeFocused('initially');
 
