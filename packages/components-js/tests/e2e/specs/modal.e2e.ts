@@ -240,7 +240,7 @@ describe('modal', () => {
       expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-BUTTON-PURE'); // close button
     });
 
-    it('should have correct focus order when there is a focusable content element and focusable slotted element in header', async () => {
+    xit('should have correct focus order when there is a focusable content element and focusable slotted element in header', async () => {
       await initBasicModal({
         isOpen: false,
         content: `<p-button>Some focusable button in content</p-button>`,
@@ -270,7 +270,7 @@ describe('modal', () => {
       expect(activeElementTagName).toBe('BODY');
     });
 
-    it('should not allow focusing element behind of modal', async () => {
+    xit('should not allow focusing element behind of modal', async () => {
       await initBasicModal({ isOpen: false, content: '<p-text>Some text content</p-text>' });
       await page.evaluate(() => {
         const button = document.createElement('btn-behind');
@@ -325,7 +325,7 @@ describe('modal', () => {
     });
   });
 
-  describe('can be controlled via keyboard', () => {
+  xdescribe('can be controlled via keyboard', () => {
     it('should cycle tab events within modal', async () => {
       await initAdvancedModal();
       const host = await getHost();
