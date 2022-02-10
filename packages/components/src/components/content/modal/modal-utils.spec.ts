@@ -1,4 +1,5 @@
 import {
+  FirstAndLastFocusableElement,
   getFirstAndLastFocusableElement,
   getScrollTopOnTouch,
   isFocusableElement,
@@ -9,18 +10,22 @@ import {
 import * as deviceDetectionUtils from '../../../utils/device-detection';
 
 describe('setScrollLock()', () => {
-  const keyboardEventHandler = () => {};
+  const keydownEventHandler = () => {};
   const host = document.createElement('div');
+  const focusableElements: FirstAndLastFocusableElement = [
+    document.createElement('button'),
+    document.createElement('button'),
+  ];
 
   it('should add body style overflow: hidden', () => {
-    setScrollLock(host, true, keyboardEventHandler);
+    setScrollLock(host, true, focusableElements, keydownEventHandler);
 
     expect(document.body.style.overflow).toBe('hidden');
   });
 
   it('should remove body style overflow: hidden', () => {
-    setScrollLock(host, true, keyboardEventHandler);
-    setScrollLock(host, false, keyboardEventHandler);
+    setScrollLock(host, true, focusableElements, keydownEventHandler);
+    setScrollLock(host, false, focusableElements, keydownEventHandler);
 
     expect(document.body.style.overflow).toBe('');
   });
@@ -28,9 +33,9 @@ describe('setScrollLock()', () => {
   describe('add event listeners', () => {
     it('should add keydown event listener', () => {
       const documentSpy = jest.spyOn(document, 'addEventListener');
-      setScrollLock(host, true, keyboardEventHandler);
+      setScrollLock(host, true, focusableElements, keydownEventHandler);
 
-      expect(documentSpy).toBeCalledWith('keydown', keyboardEventHandler);
+      expect(documentSpy).toBeCalledWith('keydown', keydownEventHandler);
     });
 
     it('should add touchmove event listeners for iOS', () => {
@@ -38,7 +43,7 @@ describe('setScrollLock()', () => {
       const documentSpy = jest.spyOn(document, 'addEventListener');
       const hostSpy = jest.spyOn(host, 'addEventListener');
 
-      setScrollLock(host, true, keyboardEventHandler);
+      setScrollLock(host, true, focusableElements, keydownEventHandler);
       expect(documentSpy).toBeCalledWith('touchmove', expect.anything(), false);
       expect(hostSpy).toBeCalledWith('touchmove', expect.anything());
     });
@@ -47,9 +52,9 @@ describe('setScrollLock()', () => {
       jest.spyOn(deviceDetectionUtils, 'isIos').mockImplementation(() => false);
       const documentSpy = jest.spyOn(document, 'addEventListener');
       const hostSpy = jest.spyOn(host, 'addEventListener');
-      setScrollLock(host, true, keyboardEventHandler);
+      setScrollLock(host, true, focusableElements, keydownEventHandler);
 
-      expect(documentSpy).toBeCalledWith('keydown', keyboardEventHandler);
+      expect(documentSpy).toBeCalledWith('keydown', keydownEventHandler);
       expect(hostSpy).toBeCalledTimes(0);
     });
   });
@@ -57,18 +62,18 @@ describe('setScrollLock()', () => {
   describe('remove event listeners', () => {
     it('should remove keydown event listener', () => {
       const documentSpy = jest.spyOn(document, 'removeEventListener');
-      setScrollLock(host, true, keyboardEventHandler);
-      setScrollLock(host, false, keyboardEventHandler);
+      setScrollLock(host, true, focusableElements, keydownEventHandler);
+      setScrollLock(host, false, focusableElements, keydownEventHandler);
 
-      expect(documentSpy).toBeCalledWith('keydown', keyboardEventHandler);
+      expect(documentSpy).toBeCalledWith('keydown', keydownEventHandler);
     });
 
     it('should remove touchmove event listeners', () => {
       jest.spyOn(deviceDetectionUtils, 'isIos').mockImplementation(() => true);
       const documentSpy = jest.spyOn(document, 'removeEventListener');
       const hostSpy = jest.spyOn(host, 'removeEventListener');
-      setScrollLock(host, true, keyboardEventHandler);
-      setScrollLock(host, false, keyboardEventHandler);
+      setScrollLock(host, true, focusableElements, keydownEventHandler);
+      setScrollLock(host, false, focusableElements, keydownEventHandler);
 
       expect(documentSpy).toBeCalledWith('touchmove', expect.anything(), false);
       expect(hostSpy).toBeCalledWith('touchmove', expect.anything());

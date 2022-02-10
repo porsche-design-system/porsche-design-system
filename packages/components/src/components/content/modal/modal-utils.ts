@@ -40,10 +40,11 @@ export const isFocusableElement = (el: HTMLInputElement): boolean => {
   );
 };
 
+export type FirstAndLastFocusableElement = [HTMLElement, HTMLElement];
 export const getFirstAndLastFocusableElement = (
   host: HTMLElement,
   closeButton: HTMLElement
-): [HTMLElement, HTMLElement] => {
+): FirstAndLastFocusableElement => {
   const focusableElements = (closeButton ? [closeButton] : []).concat(unpackChildren(host).filter(isFocusableElement));
   return [focusableElements[0], focusableElements[focusableElements.length - 1]];
 };
@@ -55,17 +56,54 @@ const hostTouchListener = (e: TouchEvent & { target: HTMLElement }) =>
 export const setScrollLock = (
   host: HTMLElement,
   isLocked: boolean,
-  keyboardEventHandler: (e: KeyboardEvent) => void
+  focusableElements: FirstAndLastFocusableElement,
+  keydownEventHandler: (e: KeyboardEvent) => void
 ): void => {
   const addOrRemoveEventListener = `${isLocked ? 'add' : 'remove'}EventListener`;
   document.body.style.overflow = isLocked ? 'hidden' : '';
-  document[addOrRemoveEventListener]('keydown', keyboardEventHandler);
+  document[addOrRemoveEventListener]('keydown', keydownEventHandler);
+
+  if (isLocked) {
+    addFirstAndLastFocusableElementKeydownListener(focusableElements);
+  } else {
+    removeFirstAndLastFocusableElementKeydownListener();
+  }
 
   // prevent scrolling of background on iOS
   if (isIos()) {
     document[addOrRemoveEventListener]('touchmove', documentTouchListener, false);
     host[addOrRemoveEventListener]('touchmove', hostTouchListener);
   }
+};
+
+// cache for previous event pari of event listeners so we are able to remove them again
+const keydownEventListenerMap: Map<
+  FirstAndLastFocusableElement,
+  [(e: KeyboardEvent) => void, (e: KeyboardEvent) => void]
+> = new Map();
+const getFirstAndLastFocusableElementKeydownListeners = (
+  focusableElements: FirstAndLastFocusableElement
+): [(e: KeyboardEvent) => void, (e: KeyboardEvent) => void] =>
+  focusableElements.map((_, idx) => (e: KeyboardEvent) => {
+    if (e.key === 'Tab' && ((idx === 0 && e.shiftKey) || (idx === 1 && !e.shiftKey))) {
+      e.preventDefault();
+      focusableElements[idx === 0 ? 1 : 0].focus();
+    }
+  }) as [(e: KeyboardEvent) => void, (e: KeyboardEvent) => void];
+
+const removeFirstAndLastFocusableElementKeydownListener = (): void => {
+  // remove previous listeners if there are any
+  Array.from(keydownEventListenerMap.entries()).forEach(([els, listeners]) =>
+    els.forEach((el, idx) => el.removeEventListener('keydown', listeners[idx]))
+  );
+  keydownEventListenerMap.clear();
+};
+
+const addFirstAndLastFocusableElementKeydownListener = (focusableElements: FirstAndLastFocusableElement): void => {
+  // create, apply and save new listeners for future removal
+  const keydownListeners = getFirstAndLastFocusableElementKeydownListeners(focusableElements);
+  focusableElements.forEach((el, idx) => el.addEventListener('keydown', keydownListeners[idx]));
+  keydownEventListenerMap.set(focusableElements, keydownListeners);
 };
 
 export const getScrollTopOnTouch = (host: HTMLElement, e: TouchEvent): number => {

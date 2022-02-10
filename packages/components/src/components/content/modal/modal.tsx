@@ -7,7 +7,7 @@ import {
   hasNamedSlot,
   parseAndGetAriaAttributes,
 } from '../../../utils';
-import type { ModalAriaAttributes } from './modal-utils';
+import type { FirstAndLastFocusableElement, ModalAriaAttributes } from './modal-utils';
 import {
   getFirstAndLastFocusableElement,
   MODAL_ARIA_ATTRIBUTES,
@@ -45,16 +45,16 @@ export class Modal {
   @Event({ bubbles: false }) public close?: EventEmitter<void>;
 
   private focusedElBeforeOpen: HTMLElement;
-  private focusableElements: [HTMLElement, HTMLElement] | [] = [];
+  private focusableElements: FirstAndLastFocusableElement = [] as unknown as FirstAndLastFocusableElement;
   private closeBtn: HTMLElement;
   private hasHeader: boolean;
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
-    setScrollLock(this.host, isOpen, this.onKeyboardEvent);
+    this.focusableElements = getFirstAndLastFocusableElement(this.host, this.closeBtn);
+    setScrollLock(this.host, isOpen, this.focusableElements, this.onKeydownEvent);
 
     if (isOpen) {
-      this.focusableElements = getFirstAndLastFocusableElement(this.host, this.closeBtn);
       this.focusedElBeforeOpen = document.activeElement as HTMLElement;
     } else {
       this.focusedElBeforeOpen?.focus();
@@ -63,15 +63,14 @@ export class Modal {
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
-    if (this.open) {
-      // in case modal is rendered with open prop
-      setScrollLock(this.host, true, this.onKeyboardEvent);
-    }
   }
 
   public componentDidLoad(): void {
     // in case modal is rendered with open prop
-    this.focusableElements = getFirstAndLastFocusableElement(this.host, this.closeBtn);
+    if (this.open) {
+      this.focusableElements = getFirstAndLastFocusableElement(this.host, this.closeBtn);
+      setScrollLock(this.host, true, this.focusableElements, this.onKeydownEvent);
+    }
     // TODO: watch for slot changes
   }
 
@@ -90,7 +89,7 @@ export class Modal {
   }
 
   public disconnectedCallback(): void {
-    setScrollLock(this.host, false, this.onKeyboardEvent);
+    setScrollLock(this.host, false, this.focusableElements, this.onKeydownEvent);
   }
 
   public render(): JSX.Element {
@@ -133,38 +132,10 @@ export class Modal {
     );
   }
 
-  private onKeyboardEvent = (e: KeyboardEvent): void => {
-    const { key, shiftKey } = e;
-    if (!this.disableCloseButton && (key === 'Esc' || key === 'Escape')) {
+  private onKeydownEvent = (e: KeyboardEvent): void => {
+    if (!this.disableCloseButton && (e.key === 'Esc' || e.key === 'Escape')) {
       this.closeModal();
-    } else if (key === 'Tab') {
-      // TODO: try blur eventListener?
-      // cycle focus within modal elements
-      const [firstEl, lastEl] = this.focusableElements;
-      if (this.focusableElements.length <= 1) {
-        e.preventDefault();
-        firstEl?.focus();
-      } else {
-        const { activeElement: activeElLight } = document;
-        const { activeElement: activeElShadow } = this.host.shadowRoot;
-
-        if (shiftKey) {
-          if (activeElLight === firstEl || activeElShadow === firstEl) {
-            e.preventDefault();
-            lastEl.focus();
-          }
-        } else {
-          if (activeElLight === lastEl || activeElShadow === lastEl) {
-            e.preventDefault();
-            firstEl.focus();
-          }
-        }
-      }
     }
-  };
-
-  private closeModal = (): void => {
-    this.close.emit();
   };
 
   private onMouseDown = (e: MouseEvent): void => {
@@ -172,5 +143,9 @@ export class Modal {
     if (firstEl === this.host) {
       this.closeModal();
     }
+  };
+
+  private closeModal = (): void => {
+    this.close.emit();
   };
 }
