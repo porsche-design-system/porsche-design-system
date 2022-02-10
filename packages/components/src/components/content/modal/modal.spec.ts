@@ -1,5 +1,6 @@
 import { Modal } from './modal';
 import * as modalUtils from './modal-utils';
+import * as domUtils from '../../../utils/dom';
 
 jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
@@ -10,6 +11,7 @@ describe('modal', () => {
   beforeEach(() => {
     component = new Modal();
     component.host = document.createElement('p-modal');
+    component.host.attachShadow({ mode: 'open' });
   });
 
   describe('connectedCallback', () => {
@@ -32,8 +34,8 @@ describe('modal', () => {
   });
 
   describe('componentDidLoad', () => {
-    it('should call getFocusableElements()', () => {
-      const spy = jest.spyOn(modalUtils, 'getFocusableElements');
+    it('should call getFirstAndLastFocusableElement()', () => {
+      const spy = jest.spyOn(modalUtils, 'getFirstAndLastFocusableElement');
 
       component.componentDidLoad();
 
@@ -42,32 +44,40 @@ describe('modal', () => {
   });
 
   describe('componentWillRender', () => {
-    it('should call warnIfAriaAndHeadingPropsAreUndefined() and not call hasSlottedHeading()', () => {
-      const spyWarnIfAriaAndHeadingPropsAreUndefined = jest.spyOn(modalUtils, 'warnIfAriaAndHeadingPropsAreUndefined');
-      const spyHasSlottedHeading = jest.spyOn(modalUtils, 'hasSlottedHeading');
-      component.heading = 'Some Heading';
-      component.host.attachShadow({ mode: 'open' });
+    beforeEach(() => {
+      jest.spyOn(console, 'warn').mockImplementation(() => {});
+    });
+
+    it('should call warnIfAriaAndHeadingPropsAreUndefined()', () => {
+      const warnIfAriaAndHeadingPropsAreUndefinedSpy = jest.spyOn(modalUtils, 'warnIfAriaAndHeadingPropsAreUndefined');
 
       component.componentWillRender();
 
-      expect(spyWarnIfAriaAndHeadingPropsAreUndefined).toBeCalledWith(
+      expect(warnIfAriaAndHeadingPropsAreUndefinedSpy).toBeCalledWith(
         component.host,
         component.heading,
         component.aria
       );
-      expect(spyHasSlottedHeading).toHaveBeenCalledTimes(0);
     });
 
-    it('should call hasSlottedHeading() when no heading is provided', () => {
-      const spyHasSlottedHeading = jest.spyOn(modalUtils, 'hasSlottedHeading');
-      const header = document.createElement('header');
-      header.slot = 'heading';
-      component.host.appendChild(header);
-      component.host.attachShadow({ mode: 'open' });
+    it('should not call hasNamedSlot() when heading is provided', () => {
+      const hasNamedSlotSpy = jest.spyOn(domUtils, 'hasNamedSlot');
+      component.heading = 'Some Heading';
 
       component.componentWillRender();
 
-      expect(spyHasSlottedHeading).toHaveBeenCalledWith(component.host);
+      expect(hasNamedSlotSpy).not.toHaveBeenCalled();
+    });
+
+    it('should call hasNamedSlot() when no heading is provided', () => {
+      const hasNamedSlotSpy = jest.spyOn(domUtils, 'hasNamedSlot');
+      const header = document.createElement('header');
+      header.slot = 'heading';
+      component.host.appendChild(header);
+
+      component.componentWillRender();
+
+      expect(hasNamedSlotSpy).toHaveBeenCalledWith(component.host, 'heading');
     });
   });
 
