@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { Framework } from '@/models';
+import type { Framework, Theme } from '@/models';
 
 Vue.use(Vuex);
 
@@ -9,6 +9,7 @@ export type State = {
   lastTimeout?: number;
   isMenuActive: boolean;
   selectedFramework: Framework;
+  theme: Theme;
 };
 
 const initialState: State = {
@@ -16,6 +17,7 @@ const initialState: State = {
   lastTimeout: undefined,
   isMenuActive: false,
   selectedFramework: 'vanilla-js',
+  theme: 'light',
 };
 
 export default new Vuex.Store({
@@ -35,6 +37,9 @@ export default new Vuex.Store({
     },
     setSelectedFramework(state: State, payload: Framework): void {
       state.selectedFramework = payload;
+    },
+    setTheme(state: State, payload: Theme): void {
+      state.theme = payload;
     },
   },
   actions: {
@@ -57,6 +62,9 @@ export default new Vuex.Store({
     },
     selectedFramework(state: State): Framework {
       return state.selectedFramework;
+    },
+    theme(state: State): Theme {
+      return state.theme;
     },
   },
 });

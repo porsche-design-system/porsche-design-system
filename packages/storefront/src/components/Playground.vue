@@ -1,10 +1,6 @@
 <template>
   <div class="playground">
-    <p-tabs-bar
-      v-if="mergedConfig.themeable"
-      :active-tab-index="activeThemeTabIndex"
-      v-on:tabChange="onActiveTabIndexChange"
-    >
+    <p-tabs-bar v-if="mergedConfig.themeable" :active-tab-index="activeThemeTabIndex">
       <button type="button" @click="switchTheme('light')">Light theme</button>
       <button type="button" @click="switchTheme('dark')">Dark theme</button>
     </p-tabs-bar>
@@ -30,7 +26,7 @@
       >
         <slot :theme="theme" />
       </div>
-      <div v-if="markup" class="demo" v-html="cleanedDemoMarkup"></div>
+      <div v-if="markup" ref="demo" class="demo" v-html="cleanedDemoMarkup"></div>
       <template v-if="codeBlockMarkup">
         <CodeBlock
           :class="{ 'code-block--framework': hasFrameworkMarkup }"
@@ -58,6 +54,7 @@
   import CodeEditor from '@/components/CodeEditor.vue';
   import type { Framework, FrameworkMarkup, Theme } from '@/models';
   import { cleanMarkup, patchThemeIntoMarkup } from '@/utils';
+  import { componentMeta } from '@porsche-design-system/shared';
 
   export type PlaygroundConfig = {
     themeable: boolean;
@@ -77,6 +74,11 @@
     withoutDemo: false,
   };
 
+  const themableComponentsSelector = Object.entries(componentMeta)
+    .filter(([, meta]) => meta.isThemeable)
+    .map(([tagName]) => tagName)
+    .join(',');
+
   @Component({
     components: {
       CodeBlock,
@@ -88,16 +90,16 @@
     @Prop({ default: () => ({}) }) public frameworkMarkup!: FrameworkMarkup;
     @Prop({ default: '' }) public markup!: string;
 
-    public theme: Theme = 'light';
-    public activeThemeTabIndex = 0;
+    public mounted(): void {
+      this.syncThemeIntoDemoComponents();
+    }
 
-    public onActiveTabIndexChange(e: CustomEvent<{ activeTabIndex: number }>): void {
-      this.activeThemeTabIndex = e.detail.activeTabIndex;
+    public updated(): void {
+      this.syncThemeIntoDemoComponents();
     }
 
     public switchTheme(theme: Theme): void {
-      this.theme = theme;
-      this.$emit('onThemeChange', this.theme);
+      this.$store.commit('setTheme', theme);
     }
 
     public get cleanedEditorMarkup(): string {
@@ -113,7 +115,7 @@
     }
 
     public get cleanedDemoMarkup(): string {
-      return this.config.withoutDemo ? '' : patchThemeIntoMarkup(this.markup.replace(/\n/g, ''), this.theme);
+      return this.config.withoutDemo ? '' : this.markup.replace(/\n/g, '');
     }
 
     public get frameworks(): Framework[] {
@@ -136,6 +138,20 @@
 
     public get hasFrameworkMarkup(): boolean {
       return Object.keys(this.frameworkMarkup).length !== 0;
+    }
+
+    public get activeThemeTabIndex(): number {
+      return ['light', 'dark'].indexOf(this.theme);
+    }
+
+    public get theme(): Theme {
+      return this.config.themeable ? this.$store.getters.theme : 'light';
+    }
+
+    private syncThemeIntoDemoComponents(): void {
+      (this.$refs.demo as HTMLElement)
+        ?.querySelectorAll(themableComponentsSelector)
+        .forEach((el) => ((el as any).theme = this.theme));
     }
   }
 </script>

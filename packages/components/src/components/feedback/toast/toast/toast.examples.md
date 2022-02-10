@@ -22,7 +22,7 @@ type ToastMessage = {
 };
 ```
 
-<Playground :frameworkMarkup="basic" :config="config" @onThemeChange="onThemeChange">
+<Playground :frameworkMarkup="basic" :config="config">
   <label>
     State:
     <select v-model="toastState">
@@ -51,7 +51,7 @@ Content and user interactions should always be understandable and usable without
 
 The bottom position of the `p-toast` can be adjusted via the `--p-toast-position-bottom` CSS variable.
 
-<Playground :markup="offsetMarkup" :config="{...config, withoutDemo: true}" @onThemeChange="onThemeChange">
+<Playground :markup="offsetMarkup" :config="{...config, withoutDemo: true}">
   <label>
     Position Bottom
     <input type="number" min="0" max="200" step="5" v-model="positionBottom">
@@ -61,7 +61,7 @@ The bottom position of the `p-toast` can be adjusted via the `--p-toast-position
 </Playground>
 
 <!-- shared across playgrounds -->
-<p-toast ref="toast" :style="`--p-toast-position-bottom: ${positionBottom}px`"></p-toast>
+<p-toast ref="toast" :theme="theme" :style="`--p-toast-position-bottom: ${positionBottom}px`"></p-toast>
 
 <script lang="ts">
 import Vue from 'vue';
@@ -96,8 +96,8 @@ export default class Code extends Vue {
     this.toastCounter++;
   }
 
-  onThemeChange(theme: Theme): void {
-    this.$refs.toast.theme = theme;
+  get theme(): Theme {
+    return this.$store.getters.theme;
   }
 }
 </script>
