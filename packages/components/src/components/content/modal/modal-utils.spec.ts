@@ -4,6 +4,7 @@ import {
   getFocusableElements,
   getScrollTopOnTouch,
   hasSlottedHeading,
+  isFocusableElement,
   setScrollLock,
   unpackChildren,
   warnIfAriaAndHeadingPropsAreUndefined,
@@ -195,11 +196,92 @@ describe('unpackChildren()', () => {
   });
 });
 
+describe('isFocusableElement()', () => {
+  type CreateElementOptions = {
+    disabled?: boolean;
+    tabIndex?: number;
+    type?: string;
+    href?: string;
+  };
+  const createElement = <K extends keyof HTMLElementTagNameMap>(
+    tagName: K,
+    opts: CreateElementOptions = {}
+  ): HTMLElementTagNameMap[K] => {
+    const el = document.createElement(tagName);
+    Object.entries(opts).forEach(([prop, value]) => {
+      el[prop] = value;
+    });
+    return el;
+  };
+
+  describe('input', () => {
+    it.each<[keyof HTMLElementTagNameMap, CreateElementOptions, boolean]>([
+      ['input', { type: 'text' }, true],
+      ['input', { type: 'number' }, true],
+      ['input', { type: 'email' }, true],
+      ['input', { type: 'tel' }, true],
+      ['input', { type: 'search' }, true],
+      ['input', { type: 'url' }, true],
+      ['input', { type: 'date' }, true],
+      ['input', { type: 'time' }, true],
+      ['input', { type: 'month' }, true],
+      ['input', { type: 'week' }, true],
+      ['input', { type: 'password' }, true],
+      ['input', { type: 'text', tabIndex: 1 }, true],
+      ['input', { type: 'text', tabIndex: 0 }, true],
+      ['input', { type: 'text', tabIndex: -1 }, false],
+      ['input', { type: 'text', tabIndex: -5 }, false],
+      ['input', { type: 'text', disabled: true }, false],
+      ['input', { type: 'text', disabled: true, tabIndex: 1 }, false],
+      ['input', { type: 'hidden' }, false],
+      ['input', { type: 'hidden', tabIndex: 1 }, false],
+      ['textarea', undefined, true],
+      ['textarea', { tabIndex: 0 }, true],
+      ['textarea', { tabIndex: 1 }, true],
+      ['textarea', { tabIndex: -1 }, false],
+      ['textarea', { tabIndex: -5 }, false],
+      ['textarea', { disabled: true }, false],
+      ['textarea', { disabled: true, tabIndex: 1 }, false],
+      ['select', undefined, true],
+      ['select', { tabIndex: 0 }, true],
+      ['select', { tabIndex: 1 }, true],
+      ['select', { tabIndex: -1 }, false],
+      ['select', { tabIndex: -5 }, false],
+      ['select', { disabled: true }, false],
+      ['select', { disabled: true, tabIndex: 1 }, false],
+      ['button', undefined, true],
+      ['button', { tabIndex: 0 }, true],
+      ['button', { tabIndex: 1 }, true],
+      ['button', { tabIndex: -1 }, false],
+      ['button', { tabIndex: -5 }, false],
+      ['button', { disabled: true }, false],
+      ['button', { disabled: true, tabIndex: 1 }, false],
+      ['a', undefined, false],
+      ['a', { tabIndex: 0 }, false],
+      ['a', { tabIndex: 1 }, false],
+      ['a', { tabIndex: -1 }, false],
+      ['a', { tabIndex: -5 }, false],
+      ['a', { disabled: true }, false],
+      ['a', { disabled: true, tabIndex: 1 }, false],
+      ['a', { href: '#' }, true],
+      ['a', { href: '#', tabIndex: 0 }, true],
+      ['a', { href: '#', tabIndex: 1 }, true],
+      ['a', { href: '#', tabIndex: -1 }, false],
+      ['a', { href: '#', tabIndex: -5 }, false],
+      ['a', { href: '#', disabled: true }, false],
+      ['a', { href: '#', disabled: true, tabIndex: 1 }, false],
+    ])('should for tagName: %s and properties: %o return: %s', (tagName, opts, result) => {
+      const el = createElement(tagName, opts);
+      expect(isFocusableElement(el as HTMLInputElement)).toBe(result);
+    });
+  });
+});
+
 describe('getFirstAndLastFocusableElement()', () => {
   describe('with closeButton', () => {
     let container: HTMLElement;
     const closeButton = document.createElement('button');
-    closeButton.id = ' btn-close';
+    closeButton.id = 'btn-close';
 
     beforeEach(() => {
       container = document.createElement('div');

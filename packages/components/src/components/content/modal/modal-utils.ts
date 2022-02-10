@@ -27,14 +27,23 @@ export const unpackChildren = (el: HTMLElement | ShadowRoot): HTMLElement[] => {
     .flat();
 };
 
+export const isFocusableElement = (el: HTMLInputElement): boolean => {
+  const { nodeName } = el;
+  return (
+    ((nodeName === 'INPUT' && el.type !== 'hidden') ||
+      nodeName === 'TEXTAREA' ||
+      nodeName === 'SELECT' ||
+      nodeName === 'BUTTON' ||
+      (nodeName === 'A' && !!(el as any).href)) &&
+    el.tabIndex >= 0 &&
+    !el.disabled
+  );
+};
+
 export const getFirstAndLastFocusableElement = (host: HTMLElement, closeButton: HTMLElement): HTMLElement[] => {
-  const notDisabled = ':not([disabled])';
-  const selector = `[href],input${notDisabled},select${notDisabled},textarea${notDisabled},button${notDisabled},[tabindex]:not([tabindex="-1"]`;
-
   const allNodes = unpackChildren(host);
-  console.log(allNodes);
 
-  const [first, last] = [closeButton].concat(getHTMLElements(host, selector));
+  const [first, last] = [closeButton].concat(unpackChildren(host).filter(isFocusableElement));
   return [first, last];
 };
 
