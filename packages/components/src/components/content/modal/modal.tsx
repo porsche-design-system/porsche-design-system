@@ -51,8 +51,7 @@ export class Modal {
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
-    this.focusableElements = getFirstAndLastFocusableElement(this.host, this.closeBtn);
-    setScrollLock(this.host, isOpen, this.focusableElements, this.onKeydownEvent);
+    this.updateScrollLock(isOpen);
 
     if (isOpen) {
       this.focusedElBeforeOpen = document.activeElement as HTMLElement;
@@ -68,8 +67,7 @@ export class Modal {
   public componentDidLoad(): void {
     // in case modal is rendered with open prop
     if (this.open) {
-      this.focusableElements = getFirstAndLastFocusableElement(this.host, this.closeBtn);
-      setScrollLock(this.host, true, this.focusableElements, this.onKeydownEvent);
+      this.updateScrollLock(true);
     }
     // TODO: watch for slot changes
   }
@@ -101,7 +99,7 @@ export class Modal {
           class="root"
           role="dialog"
           aria-modal="true"
-          {...{ ['aria-label']: this.heading, ...parseAndGetAriaAttributes(this.aria, MODAL_ARIA_ATTRIBUTES) }}
+          {...{ 'aria-label': this.heading, ...parseAndGetAriaAttributes(this.aria, MODAL_ARIA_ATTRIBUTES) }}
           aria-hidden={!this.open ? 'true' : 'false'}
         >
           {!this.disableCloseButton && (
@@ -118,18 +116,24 @@ export class Modal {
           )}
           {this.hasHeader && (
             <div class="header">
-              {this.heading && (
+              {this.heading ? (
                 <PrefixedTagNames.pHeadline variant={{ base: 'medium', m: 'large' }}>
                   {this.heading}
                 </PrefixedTagNames.pHeadline>
+              ) : (
+                <slot name="heading" />
               )}
-              {!this.heading && this.hasHeader && <slot name="heading" />}
             </div>
           )}
           <slot />
         </div>
       </Host>
     );
+  }
+
+  private updateScrollLock(isOpen: boolean): void {
+    this.focusableElements = getFirstAndLastFocusableElement(this.host, this.closeBtn);
+    setScrollLock(this.host, isOpen, this.focusableElements, this.onKeydownEvent);
   }
 
   private onKeydownEvent = (e: KeyboardEvent): void => {
