@@ -65,7 +65,7 @@
     "@types/js-beautify": "^1.13.3",
     "@types/node": "^16.10.3",
     "@types/terser-webpack-plugin": "^5.2.0",
-    "concurrently": "^6.3.0",
+    "concurrently": "^7.0.0",
     "devtools-protocol": "^0.0.923255",
     "globby": "^11.0.4",
     "js-beautify": "^1.14.0",
