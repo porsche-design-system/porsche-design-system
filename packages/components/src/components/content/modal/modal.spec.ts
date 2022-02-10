@@ -26,6 +26,8 @@ describe('modal', () => {
       getFirstAndLastFocusableElementSpy = jest
         .spyOn(modalUtils, 'getFirstAndLastFocusableElement')
         .mockImplementation(() => focusableElements);
+
+      jest.spyOn(domUtils, 'getShadowRootHTMLElement').mockImplementation(() => document.createElement('slot'));
     });
 
     describe('modal is open', () => {
