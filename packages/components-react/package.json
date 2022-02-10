@@ -52,7 +52,7 @@
     "globby": "^11.0.4",
     "local-web-server": "^5.1.1",
     "react-scripts": "^4.0.2",
-    "rollup": "^2.67.1",
+    "rollup": "^2.67.2",
     "rollup-plugin-modify": "^3.0.0",
     "rollup-plugin-polyfill": "^3.0.0",
     "rollup-plugin-terser": "^7.0.2",
