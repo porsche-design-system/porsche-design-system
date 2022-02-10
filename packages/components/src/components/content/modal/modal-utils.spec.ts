@@ -274,14 +274,14 @@ describe('isFocusableElement()', () => {
 });
 
 describe('getFirstAndLastFocusableElement()', () => {
+  let container: HTMLElement;
+  beforeEach(() => {
+    container = document.createElement('div');
+  });
+
   describe('with closeButton', () => {
-    let container: HTMLElement;
     const closeButton = document.createElement('button');
     closeButton.id = 'btn-close';
-
-    beforeEach(() => {
-      container = document.createElement('div');
-    });
 
     it('should return correct elements for single child', () => {
       const input = document.createElement('input');
@@ -298,10 +298,10 @@ describe('getFirstAndLastFocusableElement()', () => {
       input2.type = 'number';
       container.append(input1, input2);
 
-      expect(getFirstAndLastFocusableElement(container, closeButton)).toEqual([closeButton, input1]);
+      expect(getFirstAndLastFocusableElement(container, closeButton)).toEqual([closeButton, input2]);
     });
 
-    it('should return correct elements for within shadow dom', () => {
+    it('should return correct elements from within shadow dom', () => {
       const input = document.createElement('input');
       input.type = 'text';
       const host = document.createElement('div');
@@ -315,7 +315,37 @@ describe('getFirstAndLastFocusableElement()', () => {
   });
 
   describe('without closeButton', () => {
-    it('should return correct elements', () => {});
+    const closeButton = undefined;
+
+    it('should return correct elements for single child', () => {
+      const input = document.createElement('input');
+      input.type = 'text';
+      container.append(input);
+
+      expect(getFirstAndLastFocusableElement(container, closeButton)).toEqual([input, input]);
+    });
+
+    it('should return correct elements for multiple children', () => {
+      const input1 = document.createElement('input');
+      input1.type = 'text';
+      const input2 = document.createElement('input');
+      input2.type = 'number';
+      container.append(input1, input2);
+
+      expect(getFirstAndLastFocusableElement(container, closeButton)).toEqual([input1, input2]);
+    });
+
+    it('should return correct elements from within shadow dom', () => {
+      const input = document.createElement('input');
+      input.type = 'text';
+      const host = document.createElement('div');
+      host.attachShadow({ mode: 'open' });
+      host.shadowRoot.append(input);
+
+      container.append(host);
+
+      expect(getFirstAndLastFocusableElement(container, closeButton)).toEqual([input, input]);
+    });
   });
 });
 

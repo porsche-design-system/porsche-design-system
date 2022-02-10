@@ -44,8 +44,8 @@ export const getFirstAndLastFocusableElement = (
   host: HTMLElement,
   closeButton: HTMLElement
 ): [HTMLElement, HTMLElement] => {
-  const [first, last] = [closeButton].concat(unpackChildren(host).filter(isFocusableElement));
-  return [first, last];
+  const focusableElements = (closeButton ? [closeButton] : []).concat(unpackChildren(host).filter(isFocusableElement));
+  return [focusableElements[0], focusableElements[focusableElements.length - 1]];
 };
 
 const documentTouchListener = (e: TouchEvent) => e.preventDefault();
