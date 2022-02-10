@@ -1,11 +1,15 @@
 import { Component, Element, Event, EventEmitter, Host, JSX, Prop, Watch, h } from '@stencil/core';
 import type { BreakpointCustomizable, SelectedAriaAttributes } from '../../../types';
-import { attachComponentCss, attachSlottedCss, getPrefixedTagNames, parseAndGetAriaAttributes } from '../../../utils';
+import {
+  attachComponentCss,
+  attachSlottedCss,
+  getPrefixedTagNames,
+  hasNamedSlot,
+  parseAndGetAriaAttributes,
+} from '../../../utils';
 import type { ModalAriaAttributes } from './modal-utils';
 import {
-  getFirstAndLastElement,
-  getFocusableElements,
-  hasSlottedHeading,
+  getFirstAndLastFocusableElement,
   MODAL_ARIA_ATTRIBUTES,
   setScrollLock,
   warnIfAriaAndHeadingPropsAreUndefined,
@@ -41,7 +45,7 @@ export class Modal {
   @Event({ bubbles: false }) public close?: EventEmitter<void>;
 
   private focusedElBeforeOpen: HTMLElement;
-  private focusableElements: HTMLElement[] = [];
+  private focusableElements: [HTMLElement, HTMLElement] | [] = [];
   private closeBtn: HTMLElement;
   private hasHeader: boolean;
 
@@ -50,7 +54,7 @@ export class Modal {
     setScrollLock(this.host, isOpen, this.onKeyboardEvent);
 
     if (isOpen) {
-      this.focusableElements = getFocusableElements(this.host, this.closeBtn);
+      this.focusableElements = getFirstAndLastFocusableElement(this.host, this.closeBtn);
       this.focusedElBeforeOpen = document.activeElement as HTMLElement;
     } else {
       this.focusedElBeforeOpen?.focus();
@@ -67,18 +71,19 @@ export class Modal {
 
   public componentDidLoad(): void {
     // in case modal is rendered with open prop
-    this.focusableElements = getFocusableElements(this.host, this.closeBtn);
+    this.focusableElements = getFirstAndLastFocusableElement(this.host, this.closeBtn);
+    // TODO: watch for slot changes
   }
 
   public componentWillRender(): void {
     warnIfAriaAndHeadingPropsAreUndefined(this.host, this.heading, this.aria);
-    this.hasHeader = !!this.heading || hasSlottedHeading(this.host);
+    this.hasHeader = !!this.heading || hasNamedSlot(this.host, 'heading');
     attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen, this.disableCloseButton, this.hasHeader);
   }
 
   public componentDidUpdate(): void {
     if (this.open) {
-      /* the close button is not immediately visible when the  @Watch('open') triggers,
+      /* the close button is not immediately visible when the @Watch('open') triggers,
        so we focus it in componentDidUpdate() */
       this.focusableElements[0]?.focus();
     }
@@ -133,13 +138,13 @@ export class Modal {
     if (!this.disableCloseButton && (key === 'Esc' || key === 'Escape')) {
       this.closeModal();
     } else if (key === 'Tab') {
+      // TODO: try blur eventListener?
       // cycle focus within modal elements
+      const [firstEl, lastEl] = this.focusableElements;
       if (this.focusableElements.length <= 1) {
         e.preventDefault();
-        this.focusableElements[0]?.focus();
+        firstEl?.focus();
       } else {
-        const [firstEl, lastEl] = getFirstAndLastElement(this.focusableElements);
-
         const { activeElement: activeElLight } = document;
         const { activeElement: activeElShadow } = this.host.shadowRoot;
 
