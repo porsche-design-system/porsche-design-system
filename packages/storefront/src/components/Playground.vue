@@ -26,7 +26,7 @@
       >
         <slot :theme="theme" />
       </div>
-      <div v-if="markup" class="demo" v-html="cleanedDemoMarkup"></div>
+      <div v-if="markup" ref="demo" class="demo" v-html="cleanedDemoMarkup"></div>
       <template v-if="codeBlockMarkup">
         <CodeBlock
           :class="{ 'code-block--framework': hasFrameworkMarkup }"
@@ -54,6 +54,7 @@
   import CodeEditor from '@/components/CodeEditor.vue';
   import type { Framework, FrameworkMarkup, Theme } from '@/models';
   import { cleanMarkup, patchThemeIntoMarkup } from '@/utils';
+  import { componentMeta } from '@porsche-design-system/shared';
 
   export type PlaygroundConfig = {
     themeable: boolean;
@@ -73,6 +74,11 @@
     withoutDemo: false,
   };
 
+  const themableComponentsSelector = Object.entries(componentMeta)
+    .filter(([, meta]) => meta.isThemeable)
+    .map(([tagName]) => tagName)
+    .join(',');
+
   @Component({
     components: {
       CodeBlock,
@@ -83,6 +89,14 @@
     @Prop({ default: () => ({}) }) public config!: Partial<PlaygroundConfig>;
     @Prop({ default: () => ({}) }) public frameworkMarkup!: FrameworkMarkup;
     @Prop({ default: '' }) public markup!: string;
+
+    public mounted(): void {
+      this.syncThemeIntoDemoComponents();
+    }
+
+    public updated(): void {
+      this.syncThemeIntoDemoComponents();
+    }
 
     public switchTheme(theme: Theme): void {
       this.$store.commit('setTheme', theme);
@@ -101,7 +115,7 @@
     }
 
     public get cleanedDemoMarkup(): string {
-      return this.config.withoutDemo ? '' : patchThemeIntoMarkup(this.markup.replace(/\n/g, ''), this.theme);
+      return this.config.withoutDemo ? '' : this.markup.replace(/\n/g, '');
     }
 
     public get frameworks(): Framework[] {
@@ -132,6 +146,12 @@
 
     public get theme(): Theme {
       return this.config.themeable ? this.$store.getters.theme : 'light';
+    }
+
+    private syncThemeIntoDemoComponents(): void {
+      (this.$refs.demo as HTMLElement)
+        .querySelectorAll(themableComponentsSelector)
+        .forEach((el) => ((el as any).theme = this.theme));
     }
   }
 </script>
