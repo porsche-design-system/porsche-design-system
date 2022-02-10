@@ -1,10 +1,6 @@
 import { getHTMLElements, getTagName, hasNamedSlot, isIos } from '../../../utils';
 import type { SelectedAriaAttributes } from '../../../types';
 
-const getHTMLElementsWithShadowRoot = (container: HTMLElement): HTMLElement[] => {
-  return Array.from(container.querySelectorAll<HTMLElement>('*')).filter((el) => !!el.shadowRoot);
-};
-
 // ionic
 const focusableQueryString =
   '[tabindex]:not([tabindex^="-"]),input:not([type=hidden]):not([tabindex^="-"]),textarea:not([tabindex^="-"]),button:not([tabindex^="-"]),select:not([tabindex^="-"]),.ion-focusable:not([tabindex^="-"])';
@@ -23,14 +19,20 @@ const candidatesSelector = [
   '[contenteditable]:not([contenteditable="false"])',
 ].join(',');
 
-export const unpackChildren = (el: HTMLElement): HTMLElement[] =>
-  (Array.from(el.children) as HTMLElement[])
-    .map((child) => (child.children ? [child, ...unpackChildren(child)] : child))
+export const unpackChildren = (el: HTMLElement | ShadowRoot): HTMLElement[] => {
+  return (Array.from(el.children) as HTMLElement[])
+    .map((child) => (child.children ? [child].concat(unpackChildren(child)) : child))
+    .flat()
+    .map((child) => (child.shadowRoot ? [child].concat(unpackChildren(child.shadowRoot)) : child))
     .flat();
+};
 
 export const getFirstAndLastFocusableElement = (host: HTMLElement, closeButton: HTMLElement): HTMLElement[] => {
   const notDisabled = ':not([disabled])';
   const selector = `[href],input${notDisabled},select${notDisabled},textarea${notDisabled},button${notDisabled},[tabindex]:not([tabindex="-1"]`;
+
+  const allNodes = unpackChildren(host);
+  console.log(allNodes);
 
   const [first, last] = [closeButton].concat(getHTMLElements(host, selector));
   return [first, last];
