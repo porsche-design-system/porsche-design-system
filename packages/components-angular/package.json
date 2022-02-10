@@ -41,7 +41,7 @@
     "@porsche-design-system/assets": "4.0.0",
     "@porsche-design-system/shared": "0.0.0",
     "@types/node": "^16.10.3",
-    "concurrently": "^6.3.0",
+    "concurrently": "^7.0.0",
     "jest-preset-angular": "^11.0.1",
     "local-web-server": "^5.1.1",
     "ng-packagr": "^13.1.1",
