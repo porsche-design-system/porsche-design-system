@@ -1,4 +1,3 @@
-import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 import { withoutTagsOption } from './utils';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
 import { joinArrayElementsToString } from './utils';
@@ -15,8 +14,19 @@ import {
 
 // TODO: use array of components to provide skeletons
 // TODO: remove skeleton styles after all are hydrated
+
+const skeletonChunkNamesTypeLiteral = joinArrayElementsToString(TAG_NAMES_WITH_SKELETON, ' | ');
+
+const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
+
+const tagNamesWithSkeleton = joinArrayElementsToString(TAG_NAMES_WITH_SKELETON);
+
 export const generateInitialStylesPartial = (): string => {
-  const types = `type GetInitialStylesOptions = {
+  // 'any' is fallback when COMPONENT_CHUNK_NAMES is an empty array because components-js wasn't built, yet
+  const types = `type SkeletonComponentChunkName = ${skeletonChunkNamesTypeLiteral || 'any'};
+
+  type GetInitialStylesOptions = {
+  skeletonComponents?: SkeletonComponentChunkName[];
   prefix?: string;
   ${withoutTagsOption}
   theme?: 'light' | 'dark';
@@ -38,23 +48,20 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
 
   const skeletonKeyframes = '@keyframes shimmer{0%{background-position:-450px 0}100%{background-position:450px 0}}';
 
-  const skeletonStyles = [
-    getButtonLinkSkeletonCss(),
-    getButtonLinkPureSkeletonCss(),
-    getCheckboxRadioWrapperSkeletonCss(),
-    getSelectTextFieldWrapperSkeletonCss(),
-    getTextareaWrapperSkeletonCss(),
-  ].join('');
-
-  const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
-
-  const tagNamesWithSkeleton = joinArrayElementsToString(TAG_NAMES_WITH_SKELETON);
+  const skeletonStyles = {
+    'p-button|p-link': getButtonLinkSkeletonCss(),
+    'p-button-pure|p-link-pure': getButtonLinkPureSkeletonCss(),
+    'p-checkbox-wrapper|p-radio-button-wrapper': getCheckboxRadioWrapperSkeletonCss(),
+    'p-select-wrapper|p-text-field-wrapper': getSelectTextFieldWrapperSkeletonCss(),
+    'p-textarea-wrapper': getTextareaWrapperSkeletonCss(),
+  };
 
   const initialStylesFunction = `export function getInitialStyles(opts?: GetInitialStylesOptionsFormatHtml): string;
 export function getInitialStyles(opts?: GetInitialStylesOptionsFormatJsx): JSX.Element;
 export function getInitialStyles(opts?: GetInitialStylesOptionsWithoutTags): string;
 export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.Element {
-  const { prefix, withoutTags, theme, format }: GetInitialStylesOptions = {
+  const { skeletonComponents, prefix, withoutTags, theme, format }: GetInitialStylesOptions = {
+    skeletonComponents: [${tagNamesWithSkeleton}],
     prefix: '',
     withoutTags: false,
     theme: 'light',
@@ -63,12 +70,24 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
   };
 
   const tagNames = [${tagNames}];
-  const prefixedTagNames = getPrefixedTagNames(tagNames, prefix)
+  const prefixedTagNames = getPrefixedTagNames(tagNames, prefix);
+
+  const tagNamesWithSkeleton: SkeletonComponentChunkName[] = [${tagNamesWithSkeleton}];
+
+  const invalidComponentChunkNames = skeletonComponents.filter((x) => !tagNamesWithSkeleton.includes(x));
+
+  if (invalidComponentChunkNames.length) {
+    throw new Error(\`The following supplied skeleton component names are invalid:
+  \${invalidComponentChunkNames.join(', ')}
+
+Please use only valid component chunk names:
+  \${tagNamesWithSkeleton.join(', ')}\`);
+  }
+
+  const filteredTagNamesWithSkeleton = tagNamesWithSkeleton.filter((skeletonTagName) => skeletonComponents.includes(skeletonTagName));
+  const prefixedTagNamesWithSkeleton = getPrefixedTagNames(filteredTagNamesWithSkeleton, prefix);
 
   const initialVisibilityHiddenStyles = prefixedTagNames.join(',') + '{visibility:hidden}';
-
-  const tagNamesWithSkeleton = [${tagNamesWithSkeleton}];
-  const prefixedTagNamesWithSkeleton = getPrefixedTagNames(tagNamesWithSkeleton, prefix);
 
   const mergedStyles = \`\${initialVisibilityHiddenStyles}\${getSkeletonStyles({prefixedTagNamesWithSkeleton, prefix, theme})}\`;
   const markup = format === 'html' ?  \`<style>\${mergedStyles}</style>\` : <style>{mergedStyles}</style>;
@@ -87,16 +106,27 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
   };
   const { prefixedTagNamesWithSkeleton, prefix, theme } = options;
 
-  let skeletonStyles = '${skeletonStyles}';
+  const skeletonStylesWithKey = ${JSON.stringify(skeletonStyles)};
+  let skeletonStyles = prefixedTagNamesWithSkeleton.map((prefixedTagName)=>{
+    let tagNameToFind = prefixedTagName;
 
-  if(prefix){
-    prefixedTagNamesWithSkeleton.forEach(prefixedTagName =>{
+    if(prefix){
       const prefixRegExp = new RegExp(\`\${prefix}-\`, 'g');
-      const tagName = prefixedTagName.replace(prefixRegExp, '');
-      const tagRegExp = new RegExp(\`\${tagName}(?!-)\`, 'g');
-      skeletonStyles = skeletonStyles.replace(tagRegExp, prefixedTagName);
-    });
-  }
+      tagNameToFind = prefixedTagName.replace(prefixRegExp, '');
+    }
+    const tagNameToFindRegExp = new RegExp(\`(\${tagNameToFind}(?!-))\`, 'g');
+
+    const skeletonStyleKey = Object.keys(skeletonStylesWithKey)[
+        Object.keys(skeletonStylesWithKey).findIndex(
+          (skeletonStyleKey) => skeletonStyleKey.split('|').some((x) => x.match(tagNameToFindRegExp))
+        )
+    ];
+    const skeletonStyle = skeletonStylesWithKey[skeletonStyleKey];
+
+    delete skeletonStylesWithKey[skeletonStyleKey];
+
+    return skeletonStyle;
+  }).join('');
 
   skeletonStyles = skeletonStyles.replace(/${SKELETON_COLOR_THEME_PLACEHOLDER}/g,\`\${theme === 'light' ? '#E3E4E5': '#626669'}\`);
   skeletonStyles = skeletonStyles.replace(/${SKELETON_LINEAR_GRADIENT_COLOR_1}/g,\`\${theme === 'light' ? '#E3E4E5': '#656871'}\`);
