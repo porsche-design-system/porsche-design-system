@@ -4,6 +4,7 @@ import {
   attachComponentCss,
   attachSlottedCss,
   getPrefixedTagNames,
+  getShadowRootHTMLElement,
   hasNamedSlot,
   parseAndGetAriaAttributes,
 } from '../../../utils';
@@ -69,7 +70,13 @@ export class Modal {
     if (this.open) {
       this.updateScrollLock(true);
     }
-    // TODO: watch for slot changes
+
+    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', () => {
+      if (this.open) {
+        this.updateScrollLock(true);
+        this.focusableElements[0]?.focus(); // set initial focus
+      }
+    });
   }
 
   public componentWillRender(): void {
