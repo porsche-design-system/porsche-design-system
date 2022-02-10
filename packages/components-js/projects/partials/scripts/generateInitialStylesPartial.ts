@@ -3,16 +3,18 @@ import { withoutTagsOption } from './utils';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
 import { joinArrayElementsToString } from './utils';
 import {
-  getButtonLinkPureSkeletonStyles,
-  getButtonLinkSkeletonStyles,
-  getCheckboxRadioWrapperSkeletonStyles,
-  getSelectTextFieldWrapperSkeletonStyles,
-  getTextareaWrapperSkeletonStyles,
+  getButtonLinkPureSkeletonCss,
+  getButtonLinkSkeletonCss,
+  getCheckboxRadioWrapperSkeletonCss,
+  getSelectTextFieldWrapperSkeletonCss,
+  getTextareaWrapperSkeletonCss,
   SKELETON_COLOR_THEME_PLACEHOLDER,
   SKELETON_LINEAR_GRADIENT_COLOR_1,
   SKELETON_LINEAR_GRADIENT_COLOR_2,
 } from '../../../../components/src/styles/skeletons';
 
+// TODO: use array of components to provide skeletons
+// TODO: remove skeleton styles after all are hydrated
 export const generateInitialStylesPartial = (): string => {
   const types = `type GetInitialStylesOptions = {
   prefix?: string;
@@ -37,11 +39,11 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
   const skeletonKeyframes = '@keyframes shimmer{0%{background-position:-450px 0}100%{background-position:450px 0}}';
 
   const skeletonStyles = [
-    getButtonLinkSkeletonStyles(),
-    getButtonLinkPureSkeletonStyles(),
-    getCheckboxRadioWrapperSkeletonStyles(),
-    getSelectTextFieldWrapperSkeletonStyles(),
-    getTextareaWrapperSkeletonStyles(),
+    getButtonLinkSkeletonCss(),
+    getButtonLinkPureSkeletonCss(),
+    getCheckboxRadioWrapperSkeletonCss(),
+    getSelectTextFieldWrapperSkeletonCss(),
+    getTextareaWrapperSkeletonCss(),
   ].join('');
 
   const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
