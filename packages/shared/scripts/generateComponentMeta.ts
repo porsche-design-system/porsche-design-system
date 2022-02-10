@@ -11,7 +11,7 @@ const generateComponentMeta = (): void => {
   const sourceDirectory = path.resolve('../components/src/components');
   const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
 
-  const imports = [`import type { TagName, TagNameCamelCase } from './tagNames'`].join('\n');
+  const imports = `import type { TagName } from './tagNames'`;
 
   const types = [
     `export type ComponentMeta = {
