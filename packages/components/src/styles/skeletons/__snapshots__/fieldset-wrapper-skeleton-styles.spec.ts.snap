@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getFieldsetWrapperSkeletonCss() should return correct css 1`] = `"p-fieldset-wrapper:not(.hydrated){margin:1.75rem 0 0 0;visibility:visible}"`;
