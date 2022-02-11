@@ -8,7 +8,7 @@ export const getSelectTextFieldWrapperSkeletonCss = (): string => {
       'p-select-wrapper, p-text-field-wrapper': {
         '&:not(.hydrated)': {
           minWidth: pxToRemWithUnit(BUTTON_LINK_SKELETON_WIDTH),
-          minHeight: pxToRemWithUnit(ELEMENT_SKELETON_HEIGHT),
+          height: pxToRemWithUnit(ELEMENT_SKELETON_HEIGHT),
           margin: `${pxToRemWithUnit(28)} 0 0 0`,
           ...getBaseSkeletonStyles(),
         },
