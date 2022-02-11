@@ -77,7 +77,7 @@
   {
     "chunkShortName": "main",
     "size": 70891,
-    "gzipSize": 23733
+    "gzipSize": 23732
   },
   {
     "chunkShortName": "marque",
@@ -86,8 +86,8 @@
   },
   {
     "chunkShortName": "modal",
-    "size": 8175,
-    "gzipSize": 3197
+    "size": 8280,
+    "gzipSize": 3221
   },
   {
     "chunkShortName": "pagination",
