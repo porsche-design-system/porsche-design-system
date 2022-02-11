@@ -57,7 +57,7 @@ const getRoutes = (importPaths: string[], framework: Framework): string => {
           ...[
             `name: '${capitalCase(normalizeImportPath(importPath))}'`,
             `path: '${pathPrefix}${normalizeImportPath(importPath)}'`,
-            `component: ${pascalCase(importPath)}${componentSuffix}`,
+            `element: <${pascalCase(importPath)}${componentSuffix} />`,
           ].map((x) => `  ${x},`),
           '}',
         ]
@@ -376,6 +376,8 @@ export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
   let frameworkImports: string;
   let frameworkRoutes: string;
 
+  let barreFilePath = path.resolve(pagesDirectory, 'index.ts');
+
   if (framework === 'angular') {
     frameworkImports = [separator, importsAndExports].join('\n');
     frameworkRoutes = `export const generatedPages = [
@@ -387,9 +389,9 @@ export const generatedRoutes: ExtendedRoute[] = [\n${routes}\n];`;
     const eslintRule = '/* eslint-disable import/first */';
     frameworkImports = [separator, eslintRule, importsAndExports].join('\n');
     frameworkRoutes = `export const generatedRoutes: RouteType[] = [\n${routes}\n];`;
+    barreFilePath = path.resolve(pagesDirectory, 'index.tsx');
   }
 
-  const barreFilePath = path.resolve(pagesDirectory, 'index.ts');
   const barrelFileContent = fs.readFileSync(barreFilePath, 'utf8');
   const newBarrelFileContent =
     [barrelFileContent.split(separator)[0].trim(), frameworkImports, frameworkRoutes].join('\n\n') + '\n';

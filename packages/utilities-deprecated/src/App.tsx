@@ -1,41 +1,41 @@
-import { HashRouter, Switch, RouteProps, Route, Redirect } from 'react-router-dom';
+import { HashRouter, Routes, RouteProps, Route } from 'react-router-dom';
 import { JsFocus, JsVariables, JsHelper, ScssFocus, ScssVariables, ScssHelper } from './pages';
 import './styles.css';
 
 const routes: RouteProps[] = [
   {
     path: '/js-variables',
-    component: JsVariables,
+    element: <JsVariables />,
   },
   {
     path: '/js-focus',
-    component: JsFocus,
+    element: <JsFocus />,
   },
   {
     path: '/js-helper',
-    component: JsHelper,
+    element: <JsHelper />,
   },
   {
     path: '/scss-variables',
-    component: ScssVariables,
+    element: <ScssVariables />,
   },
   {
     path: '/scss-focus',
-    component: ScssFocus,
+    element: <ScssFocus />,
   },
   {
     path: '/scss-helper',
-    component: ScssHelper,
+    element: <ScssHelper />,
   },
 ];
 
 export const App = (): JSX.Element => (
   <HashRouter>
-    <Switch>
+    <Routes>
       {routes.map((route, idx) => (
-        <Route key={idx} {...route} exact />
+        <Route key={idx} {...route} />
       ))}
-      <Redirect path="*" to={routes[0].path as string} />
-    </Switch>
+      <Route path="*" element={routes[0].element} />
+    </Routes>
   </HashRouter>
 );
