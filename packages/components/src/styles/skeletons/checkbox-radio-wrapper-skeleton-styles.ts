@@ -8,7 +8,7 @@ export const getCheckboxRadioWrapperSkeletonCss = (): string => {
       'p-checkbox-wrapper, p-radio-button-wrapper': {
         '&:not(.hydrated)': {
           minWidth: pxToRemWithUnit(BUTTON_LINK_SKELETON_WIDTH),
-          minHeight: pxToRemWithUnit(ELEMENT_SKELETON_HEIGHT / 2),
+          height: pxToRemWithUnit(ELEMENT_SKELETON_HEIGHT / 2),
           ...getBaseSkeletonStyles(),
         },
       },

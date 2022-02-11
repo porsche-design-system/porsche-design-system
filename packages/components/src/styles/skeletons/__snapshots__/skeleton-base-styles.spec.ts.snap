@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getBaseSkeletonStyles() should return correct styles 1`] = `
+Object {
+  "&::after": Object {
+    "animation": "shimmer 1s linear infinite",
+    "backgroundImage": "linear-gradient(to right, PDS_REPLACE_WITH_LINEAR_GRADIENT_1 0%, PDS_REPLACE_WITH_LINEAR_GRADIENT_2 20%, PDS_REPLACE_WITH_LINEAR_GRADIENT_1 40%, PDS_REPLACE_WITH_LINEAR_GRADIENT_1 100%)",
+    "backgroundRepeat": "no-repeat",
+    "backgroundSize": "450px 400px",
+    "content": "\\"\\"",
+    "height": "100%",
+    "left": "0",
+    "position": "absolute",
+    "top": "0",
+    "visibility": "visible",
+    "width": "100%",
+  },
+  "&::before": Object {
+    "background": "PDS_REPLACE_WITH_THEME_COLOR",
+    "content": "\\"\\"",
+    "height": "100%",
+    "left": "0",
+    "position": "absolute",
+    "top": "0",
+    "visibility": "visible",
+    "width": "100%",
+  },
+  "color": "transparent",
+  "display": "block",
+  "position": "relative",
+}
+`;
