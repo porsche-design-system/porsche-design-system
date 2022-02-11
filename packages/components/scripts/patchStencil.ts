@@ -15,14 +15,14 @@ const patchStencil = (): void => {
                           self.shadowRoot.appendChild(skeletonSlot)
                         }
 `;
-    const removeSkeletonSlotScript = `            if (elm.tagName.includes('${FIELDSET_TAG_NAME.toUpperCase()}')) {
-              ${removeSkeletonFirstChild}
-            }
+    const removeSkeletonSlotScript = `    if (elm.tagName.includes('${FIELDSET_TAG_NAME.toUpperCase()}')) {
+        ${removeSkeletonFirstChild}
+    }
 `;
 
     const patchedStencilIndexFile = stencilIndexFile
       .replace(/(self\.attachShadow\(\{ mode: 'open' \}\);\n.*?\}\n)/g, `$1${skeletonSlotScript}`) // add skeleton slot script
-      .replace(/(.*?addHydratedFlag\(elm\);)/g, `${removeSkeletonSlotScript}$1`); // remove skeleton slot script
+      .replace(/(.*?if \(BUILD\.style && isInitialLoad\) \{)/g, `${removeSkeletonSlotScript}$1`); // remove skeleton slot script
 
     fs.writeFileSync(stencilIndexFilePath, patchedStencilIndexFile);
     process.stdout.write(`Successfully patched skeleton slot for ${FIELDSET_TAG_NAME} into stencil.\n`);
