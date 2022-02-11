@@ -144,8 +144,12 @@ export class Modal {
   }
 
   private onKeydownEvent = (e: KeyboardEvent): void => {
-    if (!this.disableCloseButton && (e.key === 'Esc' || e.key === 'Escape')) {
+    const { key } = e;
+    if (!this.disableCloseButton && (key === 'Esc' || key === 'Escape')) {
       this.closeModal();
+    } else if (!this.focusableElements.filter((x) => x).length && key === 'Tab') {
+      // if we don't have any focusableElements we need to prevent Tab here
+      e.preventDefault();
     }
   };
 

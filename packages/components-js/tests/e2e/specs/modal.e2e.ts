@@ -368,12 +368,53 @@ describe('modal', () => {
         await page.keyboard.press('Tab');
         await expectCloseButtonToBeFocused('after tab');
       });
+
+      it('should correctly focus close button from appended focusable element', async () => {
+        await initAdvancedModal();
+        await openModal();
+
+        const host = await getHost();
+        await host.evaluate((el) => {
+          const button = document.createElement('button');
+          button.innerText = 'New Button';
+          button.id = 'btn-new';
+          el.append(button);
+        });
+        await expectCloseButtonToBeFocused('after button appended');
+
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+        expect(await getActiveElementId(page)).toBe('btn-footer-2');
+
+        await page.keyboard.press('Tab');
+        expect(await getActiveElementId(page)).toBe('btn-new');
+
+        await page.keyboard.press('Tab');
+        await expectCloseButtonToBeFocused('finally');
+      });
     });
 
     describe('with disable-close-button', () => {
+      const initModalOpts = { isOpen: false, disableCloseButton: true };
+
       it('should focus body when there is no focusable element', async () => {
-        await initBasicModal({ isOpen: false, disableCloseButton: true });
+        await initBasicModal(initModalOpts);
         await openModal();
+        expect(await getActiveElementTagName(page)).toBe('BODY');
+      });
+
+      it('should not focus element behind modal if modal has no focusable element', async () => {
+        await initBasicModal(initModalOpts);
+        await addButtonBehindModal();
+        await openModal();
+        expect(await getActiveElementTagName(page)).toBe('BODY');
+
+        await page.keyboard.press('Tab');
+        expect(await getActiveElementTagName(page)).toBe('BODY');
+
+        await page.keyboard.press('Tab');
         expect(await getActiveElementTagName(page)).toBe('BODY');
       });
 
@@ -395,8 +436,7 @@ describe('modal', () => {
       ])('should focus first focusable element: %s', async (tagName) => {
         const attributes = tagName.includes('link') || tagName === 'a' ? ' href="#"' : '';
         await initBasicModal({
-          isOpen: false,
-          disableCloseButton: true,
+          ...initModalOpts,
           content:
             (tagName === 'input'
               ? `<${tagName} type="text" />`

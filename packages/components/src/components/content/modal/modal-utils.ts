@@ -63,11 +63,7 @@ export const setScrollLock = (
   document.body.style.overflow = isLocked ? 'hidden' : '';
   document[addOrRemoveEventListener]('keydown', keydownEventHandler);
 
-  if (isLocked) {
-    addFirstAndLastFocusableElementKeydownListener(focusableElements);
-  } else {
-    removeFirstAndLastFocusableElementKeydownListener();
-  }
+  setFirstAndLastFocusableElementKeydownListener(focusableElements);
 
   // prevent scrolling of background on iOS
   if (isIos()) {
@@ -91,19 +87,19 @@ const getFirstAndLastFocusableElementKeydownListeners = (
     }
   }) as [(e: KeyboardEvent) => void, (e: KeyboardEvent) => void];
 
-const removeFirstAndLastFocusableElementKeydownListener = (): void => {
+const setFirstAndLastFocusableElementKeydownListener = (focusableElements: FirstAndLastFocusableElement): void => {
   // remove previous listeners if there are any
   Array.from(keydownEventListenerMap.entries()).forEach(([els, listeners]) =>
-    els.forEach((el, idx) => el.removeEventListener('keydown', listeners[idx]))
+    els.forEach((el, idx) => el?.removeEventListener('keydown', listeners[idx]))
   );
   keydownEventListenerMap.clear();
-};
 
-const addFirstAndLastFocusableElementKeydownListener = (focusableElements: FirstAndLastFocusableElement): void => {
   // create, apply and save new listeners for future removal
-  const keydownListeners = getFirstAndLastFocusableElementKeydownListeners(focusableElements);
-  focusableElements.forEach((el, idx) => el.addEventListener('keydown', keydownListeners[idx]));
-  keydownEventListenerMap.set(focusableElements, keydownListeners);
+  if (focusableElements) {
+    const keydownListeners = getFirstAndLastFocusableElementKeydownListeners(focusableElements);
+    focusableElements.forEach((el, idx) => el?.addEventListener('keydown', keydownListeners[idx]));
+    keydownEventListenerMap.set(focusableElements, keydownListeners);
+  }
 };
 
 export const getScrollTopOnTouch = (host: HTMLElement, e: TouchEvent): number => {
