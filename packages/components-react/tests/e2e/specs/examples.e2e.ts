@@ -11,7 +11,7 @@ beforeEach(async () => {
 });
 afterEach(async () => await page.close());
 
-const filePath = path.resolve(require.resolve('@porsche-design-system/components-react'), '../../../src/routes.ts');
+const filePath = path.resolve(require.resolve('@porsche-design-system/components-react'), '../../../src/routes.tsx');
 const fileContent = fs.readFileSync(filePath, 'utf-8');
 
 const [, rawRoutes] = /const routes.*(\[(?:.|\s)*\]);/.exec(fileContent) || [];
