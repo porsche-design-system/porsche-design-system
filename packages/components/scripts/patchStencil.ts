@@ -15,7 +15,7 @@ const patchStencil = (): void => {
                           self.shadowRoot.appendChild(skeletonSlot)
                         }
 `;
-    const removeSkeletonSlotScript = `            if (elm.tagName === '${FIELDSET_TAG_NAME.toUpperCase()}') {
+    const removeSkeletonSlotScript = `            if (elm.tagName.includes('${FIELDSET_TAG_NAME.toUpperCase()}')) {
               ${removeSkeletonFirstChild}
             }
 `;
