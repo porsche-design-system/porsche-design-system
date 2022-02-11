@@ -5,6 +5,7 @@ import {
   getButtonLinkPureSkeletonCss,
   getButtonLinkSkeletonCss,
   getCheckboxRadioWrapperSkeletonCss,
+  getFieldsetWrapperSkeletonCss,
   getSelectTextFieldWrapperSkeletonCss,
   getTextareaWrapperSkeletonCss,
   SKELETON_COLOR_THEME_PLACEHOLDER,
@@ -52,6 +53,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
     'p-button|p-link': getButtonLinkSkeletonCss(),
     'p-button-pure|p-link-pure': getButtonLinkPureSkeletonCss(),
     'p-checkbox-wrapper|p-radio-button-wrapper': getCheckboxRadioWrapperSkeletonCss(),
+    'p-fieldset-wrapper': getFieldsetWrapperSkeletonCss(),
     'p-select-wrapper|p-text-field-wrapper': getSelectTextFieldWrapperSkeletonCss(),
     'p-textarea-wrapper': getTextareaWrapperSkeletonCss(),
   };
