@@ -45,8 +45,9 @@ const isPageWithoutRoute = (importPath: string): boolean =>
   PAGES_WITHOUT_ROUTE.includes(normalizeImportPath(importPath));
 
 const getRoutes = (importPaths: string[], framework: Framework): string => {
-  const componentSuffix = framework === 'angular' ? '' : 'Page';
-  const pathPrefix = framework === 'angular' ? '' : '/';
+  const isAngular = framework === 'angular';
+  const componentSuffix = isAngular ? '' : 'Page';
+  const pathPrefix = isAngular ? '' : '/';
 
   return (
     importPaths
@@ -57,7 +58,9 @@ const getRoutes = (importPaths: string[], framework: Framework): string => {
           ...[
             `name: '${capitalCase(normalizeImportPath(importPath))}'`,
             `path: '${pathPrefix}${normalizeImportPath(importPath)}'`,
-            `element: <${pascalCase(importPath)}${componentSuffix} />`,
+            isAngular
+              ? `component: ${pascalCase(importPath)}${componentSuffix}`
+              : `element: <${pascalCase(importPath)}${componentSuffix} />`,
           ].map((x) => `  ${x},`),
           '}',
         ]
