@@ -1,4 +1,4 @@
-import { RouteProps, RouteObject } from 'react-router-dom';
+import { RouteObject } from 'react-router-dom';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
 
