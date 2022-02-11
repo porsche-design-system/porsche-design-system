@@ -121,11 +121,20 @@ Please use only valid component chunk names:
           (skeletonStyleKey) => skeletonStyleKey.split('|').some((x) => x.match(tagNameToFindRegExp))
         )
     ];
-    const skeletonStyle = skeletonStylesWithKey[skeletonStyleKey];
+    let skeletonStyle = skeletonStylesWithKey[skeletonStyleKey];
+    if (skeletonStyle) {
+      if (prefix) {
+        skeletonStyleKey.split('|').forEach(key => {
+          skeletonStyle = skeletonStyle.replace(new RegExp(\`(\${key}(?!-))\`, 'g'), prefix + '-' + key);
+        });
+      };
 
-    delete skeletonStylesWithKey[skeletonStyleKey];
+      delete skeletonStylesWithKey[skeletonStyleKey];
 
-    return skeletonStyle;
+      return skeletonStyle;
+    } else {
+      return '';
+    }
   }).join('');
 
   skeletonStyles = skeletonStyles.replace(/${SKELETON_COLOR_THEME_PLACEHOLDER}/g,\`\${theme === 'light' ? '#E3E4E5': '#626669'}\`);
