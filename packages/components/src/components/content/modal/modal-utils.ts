@@ -97,13 +97,10 @@ export let KEYDOWN_EVENT_HANDLER_CACHE: KeyboardHandlerTuple | [] = [];
 export const setFirstAndLastFocusableElementKeydownListener = (
   focusableElements: FirstAndLastFocusableElement
 ): void => {
-  console.log('setFirstAndLastFocusableElementKeydownListener');
   // remove previous handlers if there are any
   if (FOCUSABLE_ELEMENT_CACHE.length) {
     FOCUSABLE_ELEMENT_CACHE.forEach((el, idx) => el.removeEventListener('keydown', KEYDOWN_EVENT_HANDLER_CACHE[idx]));
   }
-
-  console.log(focusableElements);
 
   // create, apply and save new handlers for future removal
   if (focusableElements?.filter((x) => x).length) {
