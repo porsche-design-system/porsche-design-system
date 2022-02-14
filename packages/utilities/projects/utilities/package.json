@@ -4,7 +4,6 @@
   "private": true,
   "scope": "@porsche-design-system",
   "main": "dist/jss/index.js",
-  "module": "dist/jss/esm/index.js",
   "types": "dist/jss/types/index.d.ts",
   "sideEffects": false,
   "scripts": {
