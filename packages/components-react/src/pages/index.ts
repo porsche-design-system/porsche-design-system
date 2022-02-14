@@ -2,6 +2,7 @@ import type { RouteType } from '../routes';
 
 export * from './CoreClassNames';
 export * from './Events';
+export * from './ModalFocusCycle';
 export * from './StencilLifecycles';
 export * from './Table';
 
