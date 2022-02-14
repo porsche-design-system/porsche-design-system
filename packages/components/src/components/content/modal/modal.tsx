@@ -94,7 +94,7 @@ export class Modal {
   }
 
   public disconnectedCallback(): void {
-    setScrollLock(this.host, false, null, this.onKeydownEvent);
+    setScrollLock(this.host, false);
   }
 
   public render(): JSX.Element {
@@ -139,19 +139,9 @@ export class Modal {
   }
 
   private updateScrollLock(isOpen: boolean): void {
-    this.focusableElements = getFirstAndLastFocusableElement(this.host, this.closeBtn);
-    setScrollLock(this.host, isOpen, this.focusableElements, this.onKeydownEvent);
+    this.focusableElements = getFirstAndLastFocusableElement(this.host, !this.disableCloseButton && this.closeBtn);
+    setScrollLock(this.host, isOpen, this.focusableElements, !this.disableCloseButton && this.closeModal);
   }
-
-  private onKeydownEvent = (e: KeyboardEvent): void => {
-    const { key } = e;
-    if (!this.disableCloseButton && (key === 'Esc' || key === 'Escape')) {
-      this.closeModal();
-    } else if (!this.focusableElements.filter((x) => x).length && key === 'Tab') {
-      // if we don't have any focusableElements we need to prevent Tab here
-      e.preventDefault();
-    }
-  };
 
   private onMouseDown = (e: MouseEvent): void => {
     const [firstEl] = e.composedPath() as HTMLElement[];

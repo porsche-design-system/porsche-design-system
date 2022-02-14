@@ -49,30 +49,45 @@ export const getFirstAndLastFocusableElement = (
   return [focusableElements[0], focusableElements[focusableElements.length - 1]];
 };
 
-const documentTouchListener = (e: TouchEvent) => e.preventDefault();
-const hostTouchListener = (e: TouchEvent & { target: HTMLElement }) =>
+export let documentKeydownListener: (e: KeyboardEvent) => void;
+export const documentTouchListener = (e: TouchEvent) => e.preventDefault();
+export const hostTouchListener = (e: TouchEvent & { target: HTMLElement }) =>
   (e.target.scrollTop = getScrollTopOnTouch(e.target, e));
 
 export const setScrollLock = (
   host: HTMLElement,
-  isLocked: boolean,
-  focusableElements: FirstAndLastFocusableElement,
-  keydownEventHandler: (e: KeyboardEvent) => void
+  isOpen: boolean,
+  focusableElements?: FirstAndLastFocusableElement,
+  closeModal?: () => void
 ): void => {
-  const addOrRemoveEventListener = `${isLocked ? 'add' : 'remove'}EventListener`;
-  document.body.style.overflow = isLocked ? 'hidden' : '';
-  document[addOrRemoveEventListener]('keydown', keydownEventHandler);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+
+  document.removeEventListener('keydown', documentKeydownListener);
+  if (isOpen) {
+    documentKeydownListener = (e: KeyboardEvent): void => {
+      const { key } = e;
+      if (key === 'Esc' || key === 'Escape') {
+        closeModal?.();
+      } else if (!focusableElements?.filter((x) => x).length && key === 'Tab') {
+        // if we don't have any focusableElements we need to prevent Tab here
+        e.preventDefault();
+      }
+    };
+    document.addEventListener('keydown', documentKeydownListener);
+  }
 
   setFirstAndLastFocusableElementKeydownListener(focusableElements);
 
   // prevent scrolling of background on iOS
   if (isIos()) {
+    const addOrRemoveEventListener = `${isOpen ? 'add' : 'remove'}EventListener`;
     document[addOrRemoveEventListener]('touchmove', documentTouchListener, false);
     host[addOrRemoveEventListener]('touchmove', hostTouchListener);
   }
 };
 
 type KeyboardHandlerTuple = [(e: KeyboardEvent) => void, (e: KeyboardEvent) => void];
+
 /** cache of previous event handler pair so we are able to remove them again */
 export const keydownEventHandlerMap: Map<FirstAndLastFocusableElement, KeyboardHandlerTuple> = new Map();
 

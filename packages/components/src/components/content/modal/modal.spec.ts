@@ -105,7 +105,7 @@ describe('modal', () => {
       const utilsSpy = jest.spyOn(modalUtils, 'setScrollLock');
       component.disconnectedCallback();
 
-      expect(utilsSpy).toHaveBeenCalledWith(component.host, false, null, expect.anything());
+      expect(utilsSpy).toHaveBeenCalledWith(component.host, false);
     });
   });
 });

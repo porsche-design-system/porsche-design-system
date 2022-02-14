@@ -1,7 +1,10 @@
 import {
+  documentKeydownListener,
+  documentTouchListener,
   FirstAndLastFocusableElement,
   getFirstAndLastFocusableElement,
   getScrollTopOnTouch,
+  hostTouchListener,
   isFocusableElement,
   keydownEventHandlerMap,
   setFirstAndLastFocusableElementKeydownListener,
@@ -294,7 +297,7 @@ describe('getFirstAndLastFocusableElement()', () => {
 });
 
 describe('setScrollLock()', () => {
-  const keydownEventHandler = () => {};
+  const closeModal = () => {};
   const host = document.createElement('div');
   const focusableElements: FirstAndLastFocusableElement = [
     document.createElement('button'),
@@ -302,21 +305,21 @@ describe('setScrollLock()', () => {
   ];
 
   it('should add body style overflow: hidden', () => {
-    setScrollLock(host, true, focusableElements, keydownEventHandler);
+    setScrollLock(host, true, focusableElements, closeModal);
 
     expect(document.body.style.overflow).toBe('hidden');
   });
 
   it('should remove body style overflow: hidden', () => {
-    setScrollLock(host, true, focusableElements, keydownEventHandler);
-    setScrollLock(host, false, focusableElements, keydownEventHandler);
+    setScrollLock(host, true, focusableElements, closeModal);
+    setScrollLock(host, false, focusableElements, closeModal);
 
     expect(document.body.style.overflow).toBe('');
   });
 
   it('should call setFirstAndLastFocusableElementKeydownListener()', () => {
     const spy = jest.spyOn(modalUtils, 'setFirstAndLastFocusableElementKeydownListener');
-    setScrollLock(host, true, focusableElements, keydownEventHandler);
+    setScrollLock(host, true, focusableElements, closeModal);
 
     expect(spy).toHaveBeenCalledWith(focusableElements);
   });
@@ -324,9 +327,9 @@ describe('setScrollLock()', () => {
   describe('add event handlers', () => {
     it('should add keydown event handler', () => {
       const documentSpy = jest.spyOn(document, 'addEventListener');
-      setScrollLock(host, true, focusableElements, keydownEventHandler);
+      setScrollLock(host, true, focusableElements, closeModal);
 
-      expect(documentSpy).toBeCalledWith('keydown', keydownEventHandler);
+      expect(documentSpy).toBeCalledWith('keydown', documentKeydownListener);
     });
 
     it('should add touchmove event handlers for iOS', () => {
@@ -334,40 +337,91 @@ describe('setScrollLock()', () => {
       const documentSpy = jest.spyOn(document, 'addEventListener');
       const hostSpy = jest.spyOn(host, 'addEventListener');
 
-      setScrollLock(host, true, focusableElements, keydownEventHandler);
-      expect(documentSpy).toBeCalledWith('touchmove', expect.anything(), false);
-      expect(hostSpy).toBeCalledWith('touchmove', expect.anything());
+      setScrollLock(host, true, focusableElements, closeModal);
+      expect(documentSpy).toBeCalledWith('touchmove', documentTouchListener, false);
+      expect(hostSpy).toBeCalledWith('touchmove', hostTouchListener);
     });
 
     it('should not add touchmove event handlers if not iOS', () => {
       jest.spyOn(deviceDetectionUtils, 'isIos').mockImplementation(() => false);
       const documentSpy = jest.spyOn(document, 'addEventListener');
       const hostSpy = jest.spyOn(host, 'addEventListener');
-      setScrollLock(host, true, focusableElements, keydownEventHandler);
+      setScrollLock(host, true, focusableElements, closeModal);
 
-      expect(documentSpy).toBeCalledWith('keydown', keydownEventHandler);
+      expect(documentSpy).toBeCalledWith('keydown', documentKeydownListener);
       expect(hostSpy).toBeCalledTimes(0);
     });
   });
 
   describe('remove event handlers', () => {
     it('should remove keydown event handler', () => {
-      const documentSpy = jest.spyOn(document, 'removeEventListener');
-      setScrollLock(host, true, focusableElements, keydownEventHandler);
-      setScrollLock(host, false, focusableElements, keydownEventHandler);
+      setScrollLock(host, true, focusableElements, closeModal);
+      const documentAddSpy = jest.spyOn(document, 'addEventListener');
+      const documentRemoveSpy = jest.spyOn(document, 'removeEventListener');
+      setScrollLock(host, false, focusableElements, closeModal);
 
-      expect(documentSpy).toBeCalledWith('keydown', keydownEventHandler);
+      expect(documentRemoveSpy).toBeCalledWith('keydown', documentKeydownListener);
+      expect(documentAddSpy).not.toHaveBeenCalled();
     });
 
     it('should remove touchmove event handlers', () => {
       jest.spyOn(deviceDetectionUtils, 'isIos').mockImplementation(() => true);
       const documentSpy = jest.spyOn(document, 'removeEventListener');
       const hostSpy = jest.spyOn(host, 'removeEventListener');
-      setScrollLock(host, true, focusableElements, keydownEventHandler);
-      setScrollLock(host, false, focusableElements, keydownEventHandler);
+      setScrollLock(host, true, focusableElements, closeModal);
+      setScrollLock(host, false, focusableElements, closeModal);
 
-      expect(documentSpy).toBeCalledWith('touchmove', expect.anything(), false);
-      expect(hostSpy).toBeCalledWith('touchmove', expect.anything());
+      expect(documentSpy).toBeCalledWith('touchmove', documentTouchListener, false);
+      expect(hostSpy).toBeCalledWith('touchmove', hostTouchListener);
+    });
+  });
+
+  describe('documentKeydownListener', () => {
+    it('should call closeModal() via Esc and Escape key if it exists', () => {
+      const closeModalMock = jest.fn();
+      setScrollLock(host, true, focusableElements, closeModalMock);
+
+      documentKeydownListener(new KeyboardEvent('keydown', { key: 'Esc' }));
+      expect(closeModalMock).toHaveBeenCalledWith();
+      documentKeydownListener(new KeyboardEvent('keydown', { key: 'Escape' }));
+      expect(closeModalMock).toHaveBeenCalledTimes(2);
+    });
+
+    it('should not fail via Esc key if closeModal is undefined', () => {
+      setScrollLock(host, true, focusableElements);
+
+      documentKeydownListener(new KeyboardEvent('keydown', { key: 'Esc' }));
+      expect(true).toBe(true);
+    });
+
+    it('should call preventDefault() via Tab when no focusableElements exist', () => {
+      const event = new KeyboardEvent('keydown', { key: 'Tab' });
+      const spy = jest.spyOn(event, 'preventDefault');
+      setScrollLock(host, true);
+
+      documentKeydownListener(event);
+      expect(spy).toHaveBeenCalled();
+
+      setScrollLock(host, true, [] as any);
+      documentKeydownListener(event);
+      expect(spy).toHaveBeenCalledTimes(2);
+
+      setScrollLock(host, true, null);
+      documentKeydownListener(event);
+      expect(spy).toHaveBeenCalledTimes(3);
+
+      setScrollLock(host, true, [undefined, undefined]);
+      documentKeydownListener(event);
+      expect(spy).toHaveBeenCalledTimes(4);
+    });
+
+    it('should not call preventDefault() via Tab when focusableElements exist', () => {
+      const event = new KeyboardEvent('keydown', { key: 'Tab' });
+      const spy = jest.spyOn(event, 'preventDefault');
+      setScrollLock(host, true, focusableElements);
+
+      documentKeydownListener(event);
+      expect(spy).not.toHaveBeenCalled();
     });
   });
 });
