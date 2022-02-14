@@ -1,18 +1,19 @@
+import * as modalUtils from './modal-utils';
 import {
   documentKeydownListener,
   documentTouchListener,
   FirstAndLastFocusableElement,
+  FOCUSABLE_ELEMENT_CACHE,
   getFirstAndLastFocusableElement,
   getScrollTopOnTouch,
   hostTouchListener,
   isFocusableElement,
-  keydownEventHandlerMap,
+  KEYDOWN_EVENT_HANDLER_CACHE,
   setFirstAndLastFocusableElementKeydownListener,
   setScrollLock,
   unpackChildren,
   warnIfAriaAndHeadingPropsAreUndefined,
 } from './modal-utils';
-import * as modalUtils from './modal-utils';
 import * as deviceDetectionUtils from '../../../utils/device-detection';
 
 describe('unpackChildren()', () => {
@@ -387,13 +388,6 @@ describe('setScrollLock()', () => {
       expect(closeModalMock).toHaveBeenCalledTimes(2);
     });
 
-    it('should not fail via Esc key if closeModal is undefined', () => {
-      setScrollLock(host, true, focusableElements);
-
-      documentKeydownListener(new KeyboardEvent('keydown', { key: 'Esc' }));
-      expect(true).toBe(true);
-    });
-
     it('should call preventDefault() via Tab when no focusableElements exist', () => {
       const event = new KeyboardEvent('keydown', { key: 'Tab' });
       const spy = jest.spyOn(event, 'preventDefault');
@@ -428,53 +422,76 @@ describe('setScrollLock()', () => {
 
 describe('setFirstAndLastFocusableElementKeydownListener()', () => {
   const el1 = document.createElement('button');
-  el1.id = 'btn-1';
   const el2 = document.createElement('button');
-  el2.id = 'btn-2';
   const focusableElements: FirstAndLastFocusableElement = [el1, el2];
 
   const otherElements: FirstAndLastFocusableElement = [document.createElement('a'), document.createElement('input')];
 
   beforeEach(() => {
-    keydownEventHandlerMap.clear();
+    FOCUSABLE_ELEMENT_CACHE.length = 0;
+    KEYDOWN_EVENT_HANDLER_CACHE.length = 0;
   });
 
   it('should add new handlers on elements and cache them', () => {
-    expect(keydownEventHandlerMap.size).toBe(0);
+    expect(FOCUSABLE_ELEMENT_CACHE.length).toBe(0);
+    expect(KEYDOWN_EVENT_HANDLER_CACHE.length).toBe(0);
     const el1Spy = jest.spyOn(el1, 'addEventListener');
     const el2Spy = jest.spyOn(el2, 'addEventListener');
 
     setFirstAndLastFocusableElementKeydownListener(focusableElements);
 
-    const handlers = keydownEventHandlerMap.get(focusableElements);
-    const [handler1, handler2] = handlers;
+    const [handler1, handler2] = KEYDOWN_EVENT_HANDLER_CACHE;
     expect(el1Spy).toHaveBeenCalledWith('keydown', handler1);
     expect(el2Spy).toHaveBeenCalledWith('keydown', handler2);
+    expect(FOCUSABLE_ELEMENT_CACHE).toEqual(focusableElements);
+  });
+
+  it('should not add new handlers if there are no focusableElements', () => {
+    setFirstAndLastFocusableElementKeydownListener([] as any);
+    setFirstAndLastFocusableElementKeydownListener(null);
+    setFirstAndLastFocusableElementKeydownListener([undefined, undefined]);
+
+    expect(KEYDOWN_EVENT_HANDLER_CACHE.length).toBe(0);
+  });
+
+  it('should remove previous handlers from elements and cache if there are any', () => {
+    expect(KEYDOWN_EVENT_HANDLER_CACHE.length).toBe(0);
+    console.log('Yea');
+    setFirstAndLastFocusableElementKeydownListener(focusableElements);
+    expect(KEYDOWN_EVENT_HANDLER_CACHE.length).toBe(2);
+
+    const el1Spy = jest.spyOn(el1, 'removeEventListener');
+    const el2Spy = jest.spyOn(el2, 'removeEventListener');
+    const [handler1, handler2] = KEYDOWN_EVENT_HANDLER_CACHE;
+    setFirstAndLastFocusableElementKeydownListener(otherElements);
+
+    expect(el1Spy).toHaveBeenCalledWith('keydown', handler1);
+    expect(el2Spy).toHaveBeenCalledWith('keydown', handler2);
+    expect(KEYDOWN_EVENT_HANDLER_CACHE).not.toEqual([handler1, handler2]);
+    expect(KEYDOWN_EVENT_HANDLER_CACHE.length).toBe(2);
   });
 
   describe('handlers', () => {
     it('should have only 2 handlers cached', () => {
-      expect(keydownEventHandlerMap.size).toBe(0);
+      expect(FOCUSABLE_ELEMENT_CACHE.length).toBe(0);
       setFirstAndLastFocusableElementKeydownListener(focusableElements);
 
-      expect(keydownEventHandlerMap.size).toBe(1);
-      const handlers = keydownEventHandlerMap.get(focusableElements);
-      const [handler1, handler2] = handlers;
+      expect(FOCUSABLE_ELEMENT_CACHE.length).toBe(2);
+      const [handler1, handler2] = KEYDOWN_EVENT_HANDLER_CACHE;
 
-      expect(handlers.length).toBe(2);
+      expect(KEYDOWN_EVENT_HANDLER_CACHE.length).toBe(2);
       expect(typeof handler1).toBe('function');
       expect(typeof handler2).toBe('function');
 
       setFirstAndLastFocusableElementKeydownListener(otherElements);
-      expect(keydownEventHandlerMap.size).toBe(1);
-      expect(keydownEventHandlerMap.get(focusableElements)).toBe(undefined);
-      expect(keydownEventHandlerMap.get(otherElements)).toEqual([expect.anything(), expect.anything()]);
+      expect(KEYDOWN_EVENT_HANDLER_CACHE.length).toBe(2);
+      expect(KEYDOWN_EVENT_HANDLER_CACHE).toEqual([expect.anything(), expect.anything()]);
     });
 
     it('should call focus() on 2nd element when 1st handler is invoked with Tab and Shift', () => {
       setFirstAndLastFocusableElementKeydownListener(focusableElements);
       const el2Spy = jest.spyOn(el2, 'focus');
-      const [handler1] = keydownEventHandlerMap.get(focusableElements);
+      const [handler1] = KEYDOWN_EVENT_HANDLER_CACHE;
 
       handler1(new KeyboardEvent('keydown', { key: 'Tab' }));
       expect(el2Spy).not.toHaveBeenCalled();
@@ -486,7 +503,7 @@ describe('setFirstAndLastFocusableElementKeydownListener()', () => {
     it('should call focus() on 1st element when 2nd handler is invoked with Tab', () => {
       setFirstAndLastFocusableElementKeydownListener(focusableElements);
       const el1Spy = jest.spyOn(el1, 'focus');
-      const [, handler2] = keydownEventHandlerMap.get(focusableElements);
+      const [, handler2] = KEYDOWN_EVENT_HANDLER_CACHE;
 
       handler2(new KeyboardEvent('keydown', { key: 'Tab', shiftKey: true }));
       expect(el1Spy).not.toHaveBeenCalled();
@@ -494,31 +511,6 @@ describe('setFirstAndLastFocusableElementKeydownListener()', () => {
       handler2(new KeyboardEvent('keydown', { key: 'Tab' }));
       expect(el1Spy).toHaveBeenCalledWith();
     });
-  });
-
-  it('should not add new handlers if there are no focusableElements', () => {
-    setFirstAndLastFocusableElementKeydownListener([] as any);
-    setFirstAndLastFocusableElementKeydownListener(null);
-    setFirstAndLastFocusableElementKeydownListener([undefined, undefined]);
-
-    expect(keydownEventHandlerMap.size).toBe(0);
-  });
-
-  it('should remove previous handlers from elements and cache if there are any', () => {
-    setFirstAndLastFocusableElementKeydownListener(focusableElements);
-    expect(keydownEventHandlerMap.size).toBe(1);
-
-    const el1Spy = jest.spyOn(el1, 'removeEventListener');
-    const el2Spy = jest.spyOn(el2, 'removeEventListener');
-    const handlers = keydownEventHandlerMap.get(focusableElements);
-    const [handler1, handler2] = handlers;
-    setFirstAndLastFocusableElementKeydownListener(otherElements);
-
-    expect(el1Spy).toHaveBeenCalledWith('keydown', handler1);
-    expect(el2Spy).toHaveBeenCalledWith('keydown', handler2);
-    expect(keydownEventHandlerMap.get(focusableElements)).toBe(undefined);
-    expect(keydownEventHandlerMap.get(otherElements)).toEqual([expect.anything(), expect.anything()]);
-    expect(keydownEventHandlerMap.size).toBe(1);
   });
 });
 
