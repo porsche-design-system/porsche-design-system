@@ -94,7 +94,7 @@ export class Modal {
   }
 
   public disconnectedCallback(): void {
-    setScrollLock(this.host, false, this.focusableElements, this.onKeydownEvent);
+    setScrollLock(this.host, false, null, this.onKeydownEvent);
   }
 
   public render(): JSX.Element {
