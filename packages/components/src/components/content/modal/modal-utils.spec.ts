@@ -364,7 +364,7 @@ describe('setScrollLock()', () => {
   });
 });
 
-fdescribe('setFirstAndLastFocusableElementKeydownListener()', () => {
+describe('setFirstAndLastFocusableElementKeydownListener()', () => {
   const el1 = document.createElement('button');
   el1.id = 'btn-1';
   const el2 = document.createElement('button');
