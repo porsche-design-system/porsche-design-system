@@ -6,7 +6,9 @@ import {
   getButtonLinkSkeletonCss,
   getCheckboxRadioWrapperSkeletonCss,
   getFieldsetWrapperSkeletonCss,
+  getHeadlineSkeletonCss,
   getSelectTextFieldWrapperSkeletonCss,
+  getTextSkeletonCss,
   getTextareaWrapperSkeletonCss,
   SKELETON_COLOR_THEME_PLACEHOLDER,
   SKELETON_LINEAR_GRADIENT_COLOR_1,
@@ -47,14 +49,17 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
   theme?: 'light' | 'dark';
 }`;
 
-  const skeletonKeyframes = '@keyframes shimmer{0%{background-position:-450px 0}100%{background-position:450px 0}}';
+  const skeletonKeyframes =
+    '@keyframes shimmer{0%{background-position:-450px 0}100%{background-position:450px 0}}@keyframes pulse{0%{opacity:1}50%{opacity: 0.5}}100%{opacity:1}';
 
   const skeletonStyles = {
     'p-button|p-link': getButtonLinkSkeletonCss(),
     'p-button-pure|p-link-pure': getButtonLinkPureSkeletonCss(),
     'p-checkbox-wrapper|p-radio-button-wrapper': getCheckboxRadioWrapperSkeletonCss(),
     'p-fieldset-wrapper': getFieldsetWrapperSkeletonCss(),
+    'p-headline': getHeadlineSkeletonCss(),
     'p-select-wrapper|p-text-field-wrapper': getSelectTextFieldWrapperSkeletonCss(),
+    'p-text': getTextSkeletonCss(),
     'p-textarea-wrapper': getTextareaWrapperSkeletonCss(),
   };
 
