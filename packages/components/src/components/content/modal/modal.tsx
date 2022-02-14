@@ -140,17 +140,18 @@ export class Modal {
 
   private updateScrollLock(isOpen: boolean): void {
     this.focusableElements = getFirstAndLastFocusableElement(this.host, !this.disableCloseButton && this.closeBtn);
-    setScrollLock(this.host, isOpen, this.focusableElements, !this.disableCloseButton && this.closeModal);
+    setScrollLock(this.host, isOpen, this.focusableElements, this.closeModal);
   }
 
   private onMouseDown = (e: MouseEvent): void => {
-    const [firstEl] = e.composedPath() as HTMLElement[];
-    if (firstEl === this.host) {
+    if ((e.composedPath() as HTMLElement[])[0] === this.host) {
       this.closeModal();
     }
   };
 
   private closeModal = (): void => {
-    this.close.emit();
+    if (!this.disableCloseButton) {
+      this.close.emit();
+    }
   };
 }
