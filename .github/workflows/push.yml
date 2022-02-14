@@ -688,6 +688,12 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
+      - name: 'Cache node_modules'
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: 'Login to GitHub Container Registry'
         uses: docker/login-action@v1
         with:
@@ -696,18 +702,18 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
         run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
-      - name: 'Restore Build Artifact'
-        uses: actions/download-artifact@v2
-        with:
-          name: storefront-build
-          path: ./packages/storefront/dist
-      - name: 'Install'
+      - name: 'Install' # needed for algolia
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
+      - name: 'Restore Build Artifact'
+        uses: actions/download-artifact@v2
+        with:
+          name: storefront-build
+          path: ./packages/storefront/dist
       - name: 'Deploy'
         uses: ./.github/actions/docker-run
         env:

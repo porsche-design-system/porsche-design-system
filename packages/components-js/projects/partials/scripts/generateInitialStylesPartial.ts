@@ -26,7 +26,7 @@ const tagNamesWithSkeleton = joinArrayElementsToString(TAG_NAMES_WITH_SKELETON);
 
 export const generateInitialStylesPartial = (): string => {
   // 'any' is fallback when COMPONENT_CHUNK_NAMES is an empty array because components-js wasn't built, yet
-  const types = `type SkeletonComponentChunkName = ${skeletonChunkNamesTypeLiteral || 'any'};
+  const types = `export type SkeletonComponentChunkName = ${skeletonChunkNamesTypeLiteral || 'any'};
 
   type GetInitialStylesOptions = {
   skeletonComponents?: SkeletonComponentChunkName[];
@@ -45,6 +45,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
 
   const skeletonTypes = `type SkeletonStylesOptions = {
   prefixedTagNamesWithSkeleton: string[];
+  prefixedUnusedTagNamesWithSkeleton: string[];
   prefix?: string;
   theme?: 'light' | 'dark';
 }`;
@@ -68,7 +69,7 @@ export function getInitialStyles(opts?: GetInitialStylesOptionsFormatJsx): JSX.E
 export function getInitialStyles(opts?: GetInitialStylesOptionsWithoutTags): string;
 export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.Element {
   const { skeletonComponents, prefix, withoutTags, theme, format }: GetInitialStylesOptions = {
-    skeletonComponents: [${tagNamesWithSkeleton}],
+    skeletonComponents: [],
     prefix: '',
     withoutTags: false,
     theme: 'light',
@@ -91,12 +92,13 @@ Please use only valid component chunk names:
   \${tagNamesWithSkeleton.join(', ')}\`);
   }
 
-  const filteredTagNamesWithSkeleton = tagNamesWithSkeleton.filter((skeletonTagName) => skeletonComponents.includes(skeletonTagName));
-  const prefixedTagNamesWithSkeleton = getPrefixedTagNames(filteredTagNamesWithSkeleton, prefix);
+  const usedTagNamesWithSkeleton = tagNamesWithSkeleton.filter((skeletonTagName) => skeletonComponents.includes(skeletonTagName));
+  const prefixedTagNamesWithSkeleton = getPrefixedTagNames(usedTagNamesWithSkeleton, prefix);
+  const prefixedUnusedTagNamesWithSkeleton = getPrefixedTagNames(tagNamesWithSkeleton.filter((skeletonTagName) => !skeletonComponents.includes(skeletonTagName)), prefix);
 
   const initialVisibilityHiddenStyles = prefixedTagNames.join(',') + '{visibility:hidden}';
 
-  const mergedStyles = \`\${initialVisibilityHiddenStyles}\${getSkeletonStyles({prefixedTagNamesWithSkeleton, prefix, theme})}\`;
+  const mergedStyles = \`\${initialVisibilityHiddenStyles}\${getSkeletonStyles({prefixedTagNamesWithSkeleton,prefixedUnusedTagNamesWithSkeleton, prefix, theme})}\`;
   const markup = format === 'html' ?  \`<style>\${mergedStyles}</style>\` : <style>{mergedStyles}</style>;
 
   return withoutTags
@@ -107,11 +109,12 @@ Please use only valid component chunk names:
   const skeletonStylesFunction = `const getSkeletonStyles = (opts?: SkeletonStylesOptions): string => {
   const options: SkeletonStylesOptions = {
      prefixedTagNamesWithSkeleton: [],
+     prefixedUnusedTagNamesWithSkeleton: [],
      prefix: '',
      theme: 'light',
      ...opts
   };
-  const { prefixedTagNamesWithSkeleton, prefix, theme } = options;
+  const { prefixedTagNamesWithSkeleton, prefixedUnusedTagNamesWithSkeleton, prefix, theme } = options;
 
   const skeletonStylesWithKey = ${JSON.stringify(skeletonStyles)};
   let skeletonStyles = prefixedTagNamesWithSkeleton.map((prefixedTagName)=>{
@@ -144,11 +147,17 @@ Please use only valid component chunk names:
     }
   }).join('');
 
+  // remove unused skeleton selectors
+  prefixedUnusedTagNamesWithSkeleton.forEach((tagName) => {
+    const unusedSkeletonTagName = new RegExp(\`((?:,)*\${tagName}:not\\\\(\\\\.hydrated\\\\)(?:\\\\:\\\\:(?:after|before))*)\`, 'g');
+    skeletonStyles = skeletonStyles.replace(unusedSkeletonTagName, '');
+  });
+
   skeletonStyles = skeletonStyles.replace(/${SKELETON_COLOR_THEME_PLACEHOLDER}/g,\`\${theme === 'light' ? '#E3E4E5': '#626669'}\`);
   skeletonStyles = skeletonStyles.replace(/${SKELETON_LINEAR_GRADIENT_COLOR_1}/g,\`\${theme === 'light' ? '#E3E4E5': '#656871'}\`);
   skeletonStyles = skeletonStyles.replace(/${SKELETON_LINEAR_GRADIENT_COLOR_2}/g,\`\${theme === 'light' ? '#0000000d': '#888b94'}\`);
 
-  const result = skeletonStyles + '${skeletonKeyframes}';
+  const result = skeletonStyles + \`\${prefixedTagNamesWithSkeleton.length ? '${skeletonKeyframes}' : ''}\`;
   // escape the "at" sign for sed replace command to work properly
   return result.replace(/(@)/g, '\\\\$1');
 };`;
