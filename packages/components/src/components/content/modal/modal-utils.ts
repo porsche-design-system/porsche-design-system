@@ -72,11 +72,9 @@ export const setScrollLock = (
   }
 };
 
+type KeyboardHandlerTuple = [(e: KeyboardEvent) => void, (e: KeyboardEvent) => void];
 /** cache of previous event handler pair so we are able to remove them again */
-export const keydownEventHandlerMap: Map<
-  FirstAndLastFocusableElement,
-  [(e: KeyboardEvent) => void, (e: KeyboardEvent) => void]
-> = new Map();
+export const keydownEventHandlerMap: Map<FirstAndLastFocusableElement, KeyboardHandlerTuple> = new Map();
 
 export const setFirstAndLastFocusableElementKeydownListener = (
   focusableElements: FirstAndLastFocusableElement
@@ -90,14 +88,17 @@ export const setFirstAndLastFocusableElementKeydownListener = (
   }
 
   // create, apply and save new handlers for future removal
-  if (focusableElements) {
-    const keydownHandlers = focusableElements.map((_, idx) => (e: KeyboardEvent) => {
-      if (e.key === 'Tab' && ((idx === 0 && e.shiftKey) || (idx === 1 && !e.shiftKey))) {
-        e.preventDefault();
-        focusableElements[idx === 0 ? 1 : 0].focus();
-      }
-    }) as [(e: KeyboardEvent) => void, (e: KeyboardEvent) => void];
-    focusableElements.forEach((el, idx) => el.addEventListener('keydown', keydownHandlers[idx]));
+  if (focusableElements && focusableElements.filter((x) => x).length) {
+    const keydownHandlers = focusableElements.map((el, idx) => {
+      const handler = (e: KeyboardEvent) => {
+        if (e.key === 'Tab' && ((idx === 0 && e.shiftKey) || (idx === 1 && !e.shiftKey))) {
+          e.preventDefault();
+          focusableElements[idx === 0 ? 1 : 0].focus();
+        }
+      };
+      el.addEventListener('keydown', handler);
+      return handler;
+    }) as KeyboardHandlerTuple;
     keydownEventHandlerMap.set(focusableElements, keydownHandlers);
   }
 };

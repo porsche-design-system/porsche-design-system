@@ -248,6 +248,10 @@ describe('getFirstAndLastFocusableElement()', () => {
 
       expect(getFirstAndLastFocusableElement(container, closeButton)).toEqual([closeButton, input]);
     });
+
+    it('should return correct elements with no children', () => {
+      expect(getFirstAndLastFocusableElement(container, closeButton)).toEqual([closeButton, closeButton]);
+    });
   });
 
   describe('without closeButton', () => {
@@ -281,6 +285,10 @@ describe('getFirstAndLastFocusableElement()', () => {
       container.append(host);
 
       expect(getFirstAndLastFocusableElement(container, closeButton)).toEqual([input, input]);
+    });
+
+    it('should return correct elements with no children', () => {
+      expect(getFirstAndLastFocusableElement(container, closeButton)).toEqual([undefined, undefined]);
     });
   });
 });
@@ -437,6 +445,7 @@ describe('setFirstAndLastFocusableElementKeydownListener()', () => {
   it('should not add new handlers if there are no focusableElements', () => {
     setFirstAndLastFocusableElementKeydownListener([] as any);
     setFirstAndLastFocusableElementKeydownListener(null);
+    setFirstAndLastFocusableElementKeydownListener([undefined, undefined]);
 
     expect(keydownEventHandlerMap.size).toBe(0);
   });
