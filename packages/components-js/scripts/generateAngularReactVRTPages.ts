@@ -379,7 +379,7 @@ export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
   let frameworkImports: string;
   let frameworkRoutes: string;
 
-  let barreFilePath = path.resolve(pagesDirectory, 'index.ts');
+  let barrelFilePath = path.resolve(pagesDirectory, 'index.ts');
 
   if (framework === 'angular') {
     frameworkImports = [separator, importsAndExports].join('\n');
@@ -392,14 +392,14 @@ export const generatedRoutes: ExtendedRoute[] = [\n${routes}\n];`;
     const eslintRule = '/* eslint-disable import/first */';
     frameworkImports = [separator, eslintRule, importsAndExports].join('\n');
     frameworkRoutes = `export const generatedRoutes: RouteType[] = [\n${routes}\n];`;
-    barreFilePath = path.resolve(pagesDirectory, 'index.tsx');
+    barrelFilePath = path.resolve(pagesDirectory, 'index.tsx');
   }
 
-  const barrelFileContent = fs.readFileSync(barreFilePath, 'utf8');
+  const barrelFileContent = fs.readFileSync(barrelFilePath, 'utf8');
   const newBarrelFileContent =
     [barrelFileContent.split(separator)[0].trim(), frameworkImports, frameworkRoutes].join('\n\n') + '\n';
 
-  writeFile(barreFilePath, newBarrelFileContent);
+  writeFile(barrelFilePath, newBarrelFileContent);
   console.log(`Generated VRT pages for components-${framework}`);
 };
 
