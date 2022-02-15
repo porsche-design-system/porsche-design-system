@@ -90,9 +90,28 @@ ORDER BY "date" DESC;
 
 ## Queries
 
+### General
+
 ```sql
 SELECT * FROM "s3_access_logs_db"."cloudfront-pixel" WHERE referrer LIKE '%porn%' limit 50;
 ```
+
+### Manual Partitions
+
+In case partitions could not be created automatically via AWS Lambda function we need to create them manually.  
+To verify existing partitions, run this query.
+
+```
+SELECT * FROM s3_athena."tracking_data$partitions" WHERE "year"='2022'
+```
+
+To generate queries for missing partitions, adjust `generateAthenaPartitionQueries.ts` and execute it via
+
+```
+../../node_modules/.bin/ts-node generateAthenaPartitionQueries.ts
+```
+
+Then execute the resulting queries (or the ones missing) inside AWS Athena.
 
 ### Useful Where Clauses
 
