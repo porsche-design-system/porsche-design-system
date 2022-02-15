@@ -187,7 +187,7 @@ Every week, we update our NPM packages:
 1. Make sure you pulled the latest version before starting
 1. NPM registry is linked to a private one (jFrog Artifactory). Make sure you've followed instructions mentioned in **Getting started** section to be able to authenticate during NPM dependency update process.
 1. To avoid corrupting the `yarn.lock` start with Angular (by using `ng update`). The following upgrades should be grouped e.g. if React types can be upgraded also look if React can be upgraded.
-1. Don't upgrade too many dependencies at once, keep them logically together
+1. Don't upgrade too many dependencies at once, keep them logically together.
 
 ## Build status
 
