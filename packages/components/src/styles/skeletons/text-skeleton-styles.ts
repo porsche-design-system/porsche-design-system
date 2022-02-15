@@ -1,5 +1,6 @@
 import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
 import { pxToRemWithUnit } from '../common-styles';
+import { SKELETON_COLOR_THEME_PLACEHOLDER } from './skeleton-base-styles';
 
 export const getTextSkeletonCss = (): string => {
   return getMinifiedCss({
@@ -8,7 +9,7 @@ export const getTextSkeletonCss = (): string => {
         '&:not(.hydrated)': {
           display: 'block',
           position: 'relative',
-          minHeight: pxToRemWithUnit(96),
+          minHeight: pxToRemWithUnit(24),
           '&::before': {
             position: 'absolute',
             content: '""',
@@ -17,7 +18,8 @@ export const getTextSkeletonCss = (): string => {
             visibility: 'visible',
             left: '0',
             top: '0',
-            background: 'repeating-linear-gradient(180deg, #626669, #626669 16px, transparent 16px, transparent 24px)',
+            // background: `repeating-linear-gradient(180deg, ${SKELETON_COLOR_THEME_PLACEHOLDER}, ${SKELETON_COLOR_THEME_PLACEHOLDER} 16px, transparent 16px, transparent 24px)`,
+            background: `linear-gradient(180deg, ${SKELETON_COLOR_THEME_PLACEHOLDER}, ${SKELETON_COLOR_THEME_PLACEHOLDER} 16px, transparent 16px, transparent 24px)`,
             animation: 'pulse 2s linear infinite',
           },
         },

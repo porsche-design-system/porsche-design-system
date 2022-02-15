@@ -25,21 +25,19 @@ export const getPseudoElementStyles = (): Styles => {
   };
 };
 
-const labelSkeletonStyles = (): Styles<'&::before'> => ({
-  '&::before': {
-    ...getPseudoElementStyles(),
-    height: pxToRemWithUnit(LABEL_HEIGHT),
-    width: pxToRemWithUnit(128),
-    top: '0',
-  },
-});
-
 export const getBaseSkeletonStyles = (withLabel = true): Styles => {
   return {
     display: 'block',
     position: 'relative',
     color: 'transparent',
-    ...(withLabel && labelSkeletonStyles()),
+    ...(withLabel && {
+      '&::before': {
+        ...getPseudoElementStyles(),
+        height: pxToRemWithUnit(LABEL_HEIGHT),
+        width: pxToRemWithUnit(128),
+        top: '0',
+      },
+    }),
     '&::after': {
       ...getPseudoElementStyles(),
       top: pxToRemWithUnit(withLabel ? LABEL_HEIGHT_WITH_SPACING : 0),

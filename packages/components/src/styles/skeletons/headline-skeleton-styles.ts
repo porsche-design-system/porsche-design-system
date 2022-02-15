@@ -11,7 +11,7 @@ export const getHeadlineSkeletonCss = (): string => {
           position: 'relative',
           height: pxToRemWithUnit(36),
           margin: `${pxToRemWithUnit(6)} 0`,
-          ...getBaseSkeletonStyles(),
+          ...getBaseSkeletonStyles(false),
         },
       },
     },

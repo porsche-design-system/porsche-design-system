@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getTextSkeletonCss() should return correct css 1`] = `"p-text:not(.hydrated){display:block;position:relative;min-height:6rem}p-text:not(.hydrated)::before{top:0;left:0;width:100%;height:100%;content:\\"\\";position:absolute;animation:pulse 2s linear infinite;background:repeating-linear-gradient(180deg,#626669,#626669 16px,transparent 16px,transparent 24px);visibility:visible}"`;
