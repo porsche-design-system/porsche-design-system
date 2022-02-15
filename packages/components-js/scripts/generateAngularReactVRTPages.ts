@@ -376,10 +376,9 @@ export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
   const importsAndExports = getImportsAndExports(importPaths, framework);
   const separator = '/* Auto Generated Below */';
 
+  let barrelFilePath: string;
   let frameworkImports: string;
   let frameworkRoutes: string;
-
-  let barrelFilePath = path.resolve(pagesDirectory, 'index.ts');
 
   if (framework === 'angular') {
     frameworkImports = [separator, importsAndExports].join('\n');
@@ -388,6 +387,7 @@ export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
 ];
 
 export const generatedRoutes: ExtendedRoute[] = [\n${routes}\n];`;
+    barrelFilePath = path.resolve(pagesDirectory, 'index.ts');
   } else if (framework === 'react') {
     const eslintRule = '/* eslint-disable import/first */';
     frameworkImports = [separator, eslintRule, importsAndExports].join('\n');
