@@ -1,4 +1,4 @@
-import { font } from '@porsche-design-system/utilities-v2';
+import { fontSize } from '@porsche-design-system/utilities-v2';
 import * as path from 'path';
 import * as fs from 'fs';
 
@@ -9,9 +9,10 @@ const buildStaticLineHeightMap = (): void => {
   const filePath = path.resolve(rootDirectory, fileName);
   const fileContent = fs.readFileSync(filePath, 'utf8');
 
-  const lineHeightMap = Object.entries(font.size)
-    .map<[number, number]>(([key, val]) => [parseInt(key, 10), val.lineHeight as number])
-    .filter(([key]) => !isNaN(key as any));
+  const lineHeightMap = Object.entries(fontSize).map<[number, number]>(([, val]) => [
+    parseFloat(val.fontSize.replace('rem', '')),
+    val.lineHeight as number,
+  ]);
 
   const staticValues = `// prettier-ignore
 const STATIC_VALUES: [number, number][] = ${JSON.stringify(lineHeightMap)};`;
