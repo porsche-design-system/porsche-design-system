@@ -50,8 +50,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
   theme?: 'light' | 'dark';
 }`;
 
-  const skeletonKeyframes =
-    '@keyframes shimmer{0%{background-position:-450px 0}100%{background-position:450px 0}}@keyframes pulse{0%{opacity:1}50%{opacity: 0.5}}100%{opacity:1}';
+  const skeletonKeyframes = '@keyframes pulse{0%{opacity:1}50%{opacity: 0.75}}100%{opacity:1}';
 
   const skeletonStyles = {
     'p-button|p-link': getButtonLinkSkeletonCss(),

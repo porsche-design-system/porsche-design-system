@@ -1,4 +1,5 @@
 import { Styles } from 'jss';
+import { pxToRemWithUnit } from '../common-styles';
 
 export const SKELETON_COLOR_THEME_PLACEHOLDER = 'PDS_REPLACE_WITH_THEME_COLOR';
 export const SKELETON_LINEAR_GRADIENT_COLOR_1 = 'PDS_REPLACE_WITH_LINEAR_GRADIENT_1';
@@ -12,29 +13,31 @@ const getPseudoElementStyles = (): Styles => {
   return {
     position: 'absolute',
     content: '""',
-    height: '100%',
-    width: '100%',
     visibility: 'visible',
     left: '0',
-    top: '0',
+    animation: 'pulse 2s linear infinite',
+    background: `${SKELETON_COLOR_THEME_PLACEHOLDER}`,
   };
 };
 
-export const getBaseSkeletonStyles = (): Styles => {
+export const getBaseSkeletonStyles = (withLabel = true): Styles => {
   return {
     display: 'block',
     position: 'relative',
     color: 'transparent',
-    '&::before': {
-      ...getPseudoElementStyles(),
-      background: `${SKELETON_COLOR_THEME_PLACEHOLDER}`,
-    },
+    ...(withLabel && {
+      '&::before': {
+        ...getPseudoElementStyles(),
+        height: pxToRemWithUnit(24),
+        width: pxToRemWithUnit(128),
+        top: '0',
+      },
+    }),
     '&::after': {
       ...getPseudoElementStyles(),
-      backgroundImage: `linear-gradient(to right, ${SKELETON_LINEAR_GRADIENT_COLOR_1} 0%, ${SKELETON_LINEAR_GRADIENT_COLOR_2} 20%, ${SKELETON_LINEAR_GRADIENT_COLOR_1} 40%, ${SKELETON_LINEAR_GRADIENT_COLOR_1} 100%)`,
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: '450px 400px',
-      animation: 'shimmer 1s linear infinite',
+      top: pxToRemWithUnit(withLabel ? 28 : 0),
+      width: '100%',
+      height: withLabel ? 'calc(100% - 28px)' : '100%',
     },
   };
 };

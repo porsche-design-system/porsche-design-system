@@ -10,7 +10,6 @@ export const getTextareaWrapperSkeletonCss = (): string => {
           display: 'block',
           height: '100%',
           minHeight: pxToRemWithUnit(192),
-          margin: `${pxToRemWithUnit(28)} 0 0 0`,
           ...getBaseSkeletonStyles(),
         },
       },
