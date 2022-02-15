@@ -71,7 +71,6 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
   }: GetFocusStylesOptions = {
     color: 'currentColor',
     offset: 2,
-    pseudo: undefined,
     ...opts,
   };
 
@@ -191,7 +190,7 @@ export const getTextHiddenJssStyle = (isHidden: boolean): JssStyle =>
 export const getFormTextHiddenJssStyle = (isHidden: boolean): JssStyle => ({
   ...getTextHiddenJssStyle(isHidden),
   width: 'fit-content',
-  padding: `0 0 ${pxToRemWithUnit(4)} 0`,
+  padding: `0 0 ${pxToRemWithUnit(4)}`,
 });
 
 export const getFormCheckboxRadioHiddenJssStyle = (isHidden: boolean): JssStyle => ({
