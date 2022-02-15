@@ -1,5 +1,10 @@
 import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
-import { BUTTON_LINK_SKELETON_WIDTH, ELEMENT_SKELETON_HEIGHT, getBaseSkeletonStyles } from './';
+import {
+  BUTTON_LINK_SKELETON_WIDTH,
+  ELEMENT_SKELETON_HEIGHT,
+  getBaseSkeletonStyles,
+  getSkeletonElementHeight,
+} from './';
 import { pxToRemWithUnit } from '../common-styles';
 
 export const getButtonLinkSkeletonCss = (): string => {
@@ -9,7 +14,7 @@ export const getButtonLinkSkeletonCss = (): string => {
         '&:not(.hydrated)': {
           display: 'flex',
           minWidth: pxToRemWithUnit(BUTTON_LINK_SKELETON_WIDTH),
-          minHeight: pxToRemWithUnit(ELEMENT_SKELETON_HEIGHT),
+          minHeight: getSkeletonElementHeight(ELEMENT_SKELETON_HEIGHT, false),
           ...getBaseSkeletonStyles(false),
         },
       },
