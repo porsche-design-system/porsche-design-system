@@ -2,11 +2,11 @@ import type { FontSizeLineHeight } from '@porsche-design-system/utilities-v2';
 
 /* Auto Generated Start */
 // prettier-ignore
-const STATIC_VALUES: [number, number][] = [[0.75,1.6666666667],[1,1.5],[1.5,1.5],[2.25,1.3333333333],[3.25,1.2307692308]];
+const STATIC_VALUES: [number, number][] = [[12,1.6666666667],[16,1.5],[24,1.5],[36,1.3333333333],[52,1.2307692308]];
 /* Auto Generated End */
 
 // map is prefilled with static values from utilities package
-const lineHeightMap = new Map<number, number>(STATIC_VALUES);
+export const lineHeightMap = new Map<number, number>(STATIC_VALUES);
 
 export const calculateLineHeight = (fontSize: number): number => {
   if (!lineHeightMap.has(fontSize)) {
