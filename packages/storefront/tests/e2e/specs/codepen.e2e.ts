@@ -29,6 +29,6 @@ it('should have working codepen button', async () => {
   // get innerText, strip line numbers and weird ​ special char
   const codeMirrorInnerText = (await codeMirror.evaluate((el: HTMLElement) => el.innerText)).replace(/\d+\n|​/g, '');
 
-  expect(page.url()).toBe('https://codepen.io/pen/?&editors=100');
+  expect(page.url()).toMatch(/https:\/\/codepen|.io\/pen\/?\?&editors=100/);
   expect(codepenData.html).toBe(codeMirrorInnerText);
 });
