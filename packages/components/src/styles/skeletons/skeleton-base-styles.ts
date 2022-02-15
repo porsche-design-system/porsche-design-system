@@ -8,8 +8,13 @@ export const SKELETON_LINEAR_GRADIENT_COLOR_2 = 'PDS_REPLACE_WITH_LINEAR_GRADIEN
 // to prevent layout shift when shadow dom is appended
 export const BUTTON_LINK_SKELETON_WIDTH = 192;
 export const ELEMENT_SKELETON_HEIGHT = 48;
+export const LABEL_HEIGHT = 24;
+export const LABEL_HEIGHT_WITH_SPACING = 28;
 
-const getPseudoElementStyles = (): Styles => {
+export const getSkeletonElementHeight = (height: number, withLabel = true): string =>
+  withLabel ? pxToRemWithUnit(height + LABEL_HEIGHT_WITH_SPACING) : pxToRemWithUnit(height);
+
+export const getPseudoElementStyles = (): Styles => {
   return {
     position: 'absolute',
     content: '""',
@@ -20,24 +25,26 @@ const getPseudoElementStyles = (): Styles => {
   };
 };
 
+const labelSkeletonStyles = (): Styles<'&::before'> => ({
+  '&::before': {
+    ...getPseudoElementStyles(),
+    height: pxToRemWithUnit(LABEL_HEIGHT),
+    width: pxToRemWithUnit(128),
+    top: '0',
+  },
+});
+
 export const getBaseSkeletonStyles = (withLabel = true): Styles => {
   return {
     display: 'block',
     position: 'relative',
     color: 'transparent',
-    ...(withLabel && {
-      '&::before': {
-        ...getPseudoElementStyles(),
-        height: pxToRemWithUnit(24),
-        width: pxToRemWithUnit(128),
-        top: '0',
-      },
-    }),
+    ...(withLabel && labelSkeletonStyles()),
     '&::after': {
       ...getPseudoElementStyles(),
-      top: pxToRemWithUnit(withLabel ? 28 : 0),
+      top: pxToRemWithUnit(withLabel ? LABEL_HEIGHT_WITH_SPACING : 0),
       width: '100%',
-      height: withLabel ? 'calc(100% - 28px)' : '100%',
+      height: withLabel ? `calc(100% - ${pxToRemWithUnit(LABEL_HEIGHT_WITH_SPACING)})` : '100%',
     },
   };
 };
