@@ -73,9 +73,10 @@
         margin-right: -16px;
       }
     }
-    .grid-item {
+    .grid-item, .grid-item-top {
       box-sizing: border-box;
-      min-width: 8.3333%;
+      min-width: 100%;
+      width: 100%;
       margin-left: 0%;
       padding-left: 8px;
       padding-right: 8px;
@@ -84,21 +85,38 @@
       .grid-item {
         padding-left: 12px;
         padding-right: 12px;
+        min-width: 83.3333%;
+        width: 83.3333%;
       }
     }
     @media (min-width: 1000px) {
-      .grid-item {
-        padding-left: 16px;
-        padding-right: 16px;
+      .grid-item, .grid-item-top {
+        padding-left: 18px;
+        padding-right: 18px;
+        min-width: 66.66667%;
+        width: 66.6666667%;
       }
     }
+      @media (min-width: 1300px) {
+        .grid-item {
+          padding-left: 18px;
+          padding-right: 18px;
+          min-width: 50%;
+          width: 50%;
+        }
+      }
     .flex {
       display: flex;
       flex-wrap: nowrap;
       align-items: stretch;
       align-content: stretch;
-      flex-direction: row;
+      flex-direction: column;
       justify-content: flex-start;
+    }
+    @media (min-width: 1000px) {
+      .flex {
+      flex-direction: row;
+      }
     }
     .flex-item {
       flex: initial;
@@ -144,8 +162,8 @@
 <body style="background: #0E1418; color: white;">
 <div class="content-wrapper" theme="dark">
   <div class="grid form-top-spacing">
-    <div class="grid-item" size="{ base: 12, m: 8 }">
-      <my-prefix-p-headline tag="h1" theme="dark" variant="headline-2">Get in touch with Porsche</my-prefix-p-headline>
+    <div class="grid-item-top" size="{ base: 12, m: 8 }">
+        <my-prefix-p-headline variant="headline-2" tag="h1" theme="dark">Get in touch with Porsche</my-prefix-p-headline>
       <my-prefix-p-text class="spacing-mt-8" size="{ base: 'small', l: 'medium' }" theme="dark"> Do you have any
         specific
         questions
