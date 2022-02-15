@@ -15,13 +15,13 @@ const filePath = path.resolve(require.resolve('@porsche-design-system/components
 const fileContent = fs.readFileSync(filePath, 'utf-8');
 
 const [, rawRoutes] = /const routes.*(\[(?:.|\s)*\]);/.exec(fileContent) || [];
-const routes: { name: string; path: string; component: string }[] = eval(
+const routes: { name: string; path: string; element: string }[] = eval(
   rawRoutes
     .replace(/\.\.\.\[(?:.|\s)*?\].*/, '') // get rid of generatedRoutes
-    .replace(/(<from(?:Pages|Examples)\.\w+\s\/>)/g, "'$1'")
+    .replace(/<(from(?:Pages|Examples)\.\w+)\s\/>/g, "'$1'")
 );
 
-const exampleRoutes = routes.filter((item) => item.component?.startsWith('fromExamples.'));
+const exampleRoutes = routes.filter((item) => item.element?.startsWith('fromExamples.'));
 const exampleUrls = exampleRoutes.map((item) => item.path.substr(1));
 
 it.each(exampleUrls)('should work without error for %s', async (exampleUrl) => {
