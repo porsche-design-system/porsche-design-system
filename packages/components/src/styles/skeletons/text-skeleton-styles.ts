@@ -1,6 +1,5 @@
 import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
-import { pxToRemWithUnit } from '../common-styles';
-import { SKELETON_COLOR_THEME_PLACEHOLDER } from './skeleton-base-styles';
+import { SKELETON_COLOR_THEME_PLACEHOLDER, getSkeletonElementHeight } from './skeleton-base-styles';
 
 export const getTextSkeletonCss = (): string => {
   return getMinifiedCss({
@@ -9,18 +8,18 @@ export const getTextSkeletonCss = (): string => {
         '&:not(.hydrated)': {
           display: 'block',
           position: 'relative',
-          minHeight: pxToRemWithUnit(24),
-          '&::before': {
-            position: 'absolute',
+          color: 'transparent',
+          height: getSkeletonElementHeight(24, false),
+          '&::after': {
             content: '""',
-            height: '100%',
-            width: '100%',
-            visibility: 'visible',
+            position: 'absolute',
             left: '0',
             top: '0',
-            // background: `repeating-linear-gradient(180deg, ${SKELETON_COLOR_THEME_PLACEHOLDER}, ${SKELETON_COLOR_THEME_PLACEHOLDER} 16px, transparent 16px, transparent 24px)`,
-            background: `linear-gradient(180deg, ${SKELETON_COLOR_THEME_PLACEHOLDER}, ${SKELETON_COLOR_THEME_PLACEHOLDER} 16px, transparent 16px, transparent 24px)`,
+            visibility: 'visible',
             animation: 'pulse 2s linear infinite',
+            background: `linear-gradient(transparent, transparent 4px, ${SKELETON_COLOR_THEME_PLACEHOLDER} 4px, ${SKELETON_COLOR_THEME_PLACEHOLDER} 20px, transparent 20px, transparent 24px)`,
+            width: '100%',
+            height: '100%',
           },
         },
       },
