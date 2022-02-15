@@ -2,10 +2,6 @@ import * as lineHeightUtil from './line-height';
 import { calcLineHeightForElement, calculateLineHeight, generateTypeScale, lineHeightMap } from './line-height';
 
 describe('calculateLineHeight()', () => {
-  beforeEach(() => {
-    lineHeightMap.clear();
-  });
-
   it('should use line-height from map', () => {
     calculateLineHeight(12);
     expect(lineHeightMap).toMatchSnapshot();
