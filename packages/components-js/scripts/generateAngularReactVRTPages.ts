@@ -46,7 +46,6 @@ const isPageWithoutRoute = (importPath: string): boolean =>
 
 const getRoutes = (importPaths: string[], framework: Framework): string => {
   const isAngular = framework === 'angular';
-  const componentSuffix = isAngular ? '' : 'Page';
   const pathPrefix = isAngular ? '' : '/';
 
   return (
@@ -58,9 +57,7 @@ const getRoutes = (importPaths: string[], framework: Framework): string => {
           ...[
             `name: '${capitalCase(normalizeImportPath(importPath))}'`,
             `path: '${pathPrefix}${normalizeImportPath(importPath)}'`,
-            isAngular
-              ? `component: ${pascalCase(importPath)}${componentSuffix}`
-              : `element: <${pascalCase(importPath)}${componentSuffix} />`,
+            isAngular ? `component: ${pascalCase(importPath)}` : `element: <${pascalCase(importPath)}Page />`,
           ].map((x) => `  ${x},`),
           '}',
         ]
@@ -376,7 +373,7 @@ export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
   const importsAndExports = getImportsAndExports(importPaths, framework);
   const separator = '/* Auto Generated Below */';
 
-  let barrelFilePath: string;
+  let barrelFileName: string;
   let frameworkImports: string;
   let frameworkRoutes: string;
 
@@ -387,14 +384,15 @@ export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
 ];
 
 export const generatedRoutes: ExtendedRoute[] = [\n${routes}\n];`;
-    barrelFilePath = path.resolve(pagesDirectory, 'index.ts');
+    barrelFileName = 'index.ts';
   } else if (framework === 'react') {
     const eslintRule = '/* eslint-disable import/first */';
     frameworkImports = [separator, eslintRule, importsAndExports].join('\n');
     frameworkRoutes = `export const generatedRoutes: RouteType[] = [\n${routes}\n];`;
-    barrelFilePath = path.resolve(pagesDirectory, 'index.tsx');
+    barrelFileName = 'index.tsx';
   }
 
+  const barrelFilePath = path.resolve(pagesDirectory, barrelFileName);
   const barrelFileContent = fs.readFileSync(barrelFilePath, 'utf8');
   const newBarrelFileContent =
     [barrelFileContent.split(separator)[0].trim(), frameworkImports, frameworkRoutes].join('\n\n') + '\n';
