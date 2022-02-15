@@ -38,7 +38,7 @@
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/utilities": "5.3.0-beta.0",
     "@porsche-design-system/utilities-v2": "0.0.0",
-    "@stencil/core": "~2.13.0",
+    "@stencil/core": "~2.14.0",
     "jss": "^10.9.0",
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.9.0",
@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@juggle/resize-observer": "^3.3.1",
-    "@rollup/plugin-replace": "^3.0.1",
+    "@rollup/plugin-replace": "^3.1.0",
     "@types/react": "^17.0.29",
     "@types/throttle-debounce": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
