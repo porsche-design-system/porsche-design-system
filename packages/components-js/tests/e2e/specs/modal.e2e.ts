@@ -67,7 +67,7 @@ describe('modal', () => {
       <p-modal ${attributes}>
         ${hasSlottedHeading ? '<div slot="heading">Some Heading<a href="https://porsche.com">Some link</a></div>' : ''}
         ${content}
-      </p-modal${attributes}>`
+      </p-modal>`
     );
   };
 
