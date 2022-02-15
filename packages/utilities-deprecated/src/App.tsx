@@ -35,7 +35,7 @@ export const App = (): JSX.Element => (
       {routes.map((route, idx) => (
         <Route key={idx} {...route} />
       ))}
+      <Route path="*" element={<Navigate replace to={routes[0].path as string} />} />
     </Routes>
-    <Navigate to={routes[0].path as string} />
   </HashRouter>
 );
