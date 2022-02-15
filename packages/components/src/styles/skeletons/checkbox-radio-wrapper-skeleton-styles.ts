@@ -9,7 +9,7 @@ export const getCheckboxRadioWrapperSkeletonCss = (): string => {
         '&:not(.hydrated)': {
           minWidth: pxToRemWithUnit(BUTTON_LINK_SKELETON_WIDTH),
           height: pxToRemWithUnit(ELEMENT_SKELETON_HEIGHT / 2),
-          ...getBaseSkeletonStyles(),
+          ...getBaseSkeletonStyles(false),
         },
       },
     },

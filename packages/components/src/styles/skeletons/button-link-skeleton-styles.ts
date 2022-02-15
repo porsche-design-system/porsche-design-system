@@ -10,7 +10,7 @@ export const getButtonLinkSkeletonCss = (): string => {
           display: 'flex',
           minWidth: pxToRemWithUnit(BUTTON_LINK_SKELETON_WIDTH),
           minHeight: pxToRemWithUnit(ELEMENT_SKELETON_HEIGHT),
-          ...getBaseSkeletonStyles(),
+          ...getBaseSkeletonStyles(false),
         },
       },
     },
