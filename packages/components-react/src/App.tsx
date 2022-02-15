@@ -28,8 +28,8 @@ export const App = (): JSX.Element => {
         <Routes>
           {routes
             .filter((route) => !route.isDisabled)
-            .map(({ element, ...rest }, i) => (
-              <Route key={i} {...rest} element={element} />
+            .map((route, i) => (
+              <Route key={i} {...route} />
             ))}
         </Routes>
       </div>
