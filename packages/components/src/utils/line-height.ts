@@ -2,7 +2,7 @@ import type { FontSizeLineHeight } from '@porsche-design-system/utilities-v2';
 
 /* Auto Generated Start */
 // prettier-ignore
-const STATIC_VALUES: [number, number][] = [[12,1.6666666667],[16,1.5],[18,1.5555555556],[20,1.4],[22,1.4545454545],[24,1.5],[28,1.4285714286],[30,1.3333333333],[32,1.375],[36,1.3333333333],[42,1.2380952381],[44,1.1818181818],[48,1.25],[52,1.2307692308],[60,1.2],[62,1.2258064516],[72,1.2222222222],[84,1.1904761905]];
+const STATIC_VALUES: [number, number][] = [[0.75,1.6666666667],[1,1.5],[1.5,1.5],[2.25,1.3333333333],[3.25,1.2307692308]];
 /* Auto Generated End */
 
 // map is prefilled with static values from utilities package
