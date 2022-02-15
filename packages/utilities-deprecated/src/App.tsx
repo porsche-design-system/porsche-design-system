@@ -1,4 +1,4 @@
-import { HashRouter, Routes, RouteProps, Route } from 'react-router-dom';
+import { HashRouter, Routes, RouteProps, Route, Navigate } from 'react-router-dom';
 import { JsFocus, JsVariables, JsHelper, ScssFocus, ScssVariables, ScssHelper } from './pages';
 import './styles.css';
 
@@ -35,7 +35,7 @@ export const App = (): JSX.Element => (
       {routes.map((route, idx) => (
         <Route key={idx} {...route} />
       ))}
-      <Route path="*" element={routes[0].element} />
     </Routes>
+    <Navigate to={routes[0].path as string} />
   </HashRouter>
 );
