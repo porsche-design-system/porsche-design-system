@@ -1,18 +1,29 @@
-import type { Styles, JssStyle } from 'jss';
+import type { JssStyle, Styles } from 'jss';
 import type { BreakpointCustomizable } from '../utils';
-import type { FormState, Theme } from '../types';
 import { buildResponsiveStyles, isThemeDark } from '../utils';
+import type { FormState, Theme } from '../types';
 import {
   addImportantToRule,
   getFormTextHiddenJssStyle,
   getInset,
+  getThemedColors,
   getTransition,
   pxToRemWithUnit,
-  getThemedColors,
-  getThemedFormStateColors,
 } from './';
-import { textSmall } from '@porsche-design-system/utilities-v2';
+import { textSmall, ThemeDefault } from '@porsche-design-system/utilities-v2';
 import { isVisibleFormState } from '../utils/form-state';
+
+type ThemedFormStateColors = {
+  formStateColor: string | undefined; // form state: "none" => undefined
+  formStateHoverColor: string | undefined; // form state: "none" => undefined
+};
+
+export const getThemedFormStateColors = (theme: ThemeDefault, state: FormState): ThemedFormStateColors => {
+  return {
+    formStateColor: getThemedColors(theme)[`${state}Color`],
+    formStateHoverColor: getThemedColors(theme)[`${state}ColorDarken`],
+  };
+};
 
 const { disabledColor: lightThemeDisabledColor } = getThemedColors('light');
 
