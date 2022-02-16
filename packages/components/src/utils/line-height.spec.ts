@@ -24,7 +24,7 @@ describe('calculateLineHeight()', () => {
     [24, 1.5],
     [36, 1.3333333333],
     [52, 1.2307692308],
-  ])('should return correct lineHeight for fontSize %s', (fontSize, lineHeight) => {
+  ])('should be called with fontsize: "%s" and return lineHeight: "%s"', (fontSize, lineHeight) => {
     expect(calculateLineHeight(fontSize)).toBe(lineHeight);
   });
 });
