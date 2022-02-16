@@ -6,9 +6,9 @@ export const getTextareaWrapperSkeletonCss = (): string => {
     '@global': {
       'p-textarea-wrapper': {
         '&:not(.hydrated)': {
+          ...getBaseSkeletonStyles(),
           height: '100%',
           minHeight: getSkeletonElementHeight(192),
-          ...getBaseSkeletonStyles(),
         },
       },
     },
