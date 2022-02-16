@@ -45,8 +45,8 @@ const isPageWithoutRoute = (importPath: string): boolean =>
   PAGES_WITHOUT_ROUTE.includes(normalizeImportPath(importPath));
 
 const getRoutes = (importPaths: string[], framework: Framework): string => {
-  const componentSuffix = framework === 'angular' ? '' : 'Page';
-  const pathPrefix = framework === 'angular' ? '' : '/';
+  const isAngular = framework === 'angular';
+  const pathPrefix = isAngular ? '' : '/';
 
   return (
     importPaths
@@ -57,7 +57,7 @@ const getRoutes = (importPaths: string[], framework: Framework): string => {
           ...[
             `name: '${capitalCase(normalizeImportPath(importPath))}'`,
             `path: '${pathPrefix}${normalizeImportPath(importPath)}'`,
-            `component: ${pascalCase(importPath)}${componentSuffix}`,
+            isAngular ? `component: ${pascalCase(importPath)}` : `element: <${pascalCase(importPath)}Page />`,
           ].map((x) => `  ${x},`),
           '}',
         ]
@@ -373,6 +373,7 @@ export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
   const importsAndExports = getImportsAndExports(importPaths, framework);
   const separator = '/* Auto Generated Below */';
 
+  let barrelFileName: string;
   let frameworkImports: string;
   let frameworkRoutes: string;
 
@@ -383,18 +384,20 @@ export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
 ];
 
 export const generatedRoutes: ExtendedRoute[] = [\n${routes}\n];`;
+    barrelFileName = 'index.ts';
   } else if (framework === 'react') {
     const eslintRule = '/* eslint-disable import/first */';
     frameworkImports = [separator, eslintRule, importsAndExports].join('\n');
     frameworkRoutes = `export const generatedRoutes: RouteType[] = [\n${routes}\n];`;
+    barrelFileName = 'index.tsx';
   }
 
-  const barreFilePath = path.resolve(pagesDirectory, 'index.ts');
-  const barrelFileContent = fs.readFileSync(barreFilePath, 'utf8');
+  const barrelFilePath = path.resolve(pagesDirectory, barrelFileName);
+  const barrelFileContent = fs.readFileSync(barrelFilePath, 'utf8');
   const newBarrelFileContent =
     [barrelFileContent.split(separator)[0].trim(), frameworkImports, frameworkRoutes].join('\n\n') + '\n';
 
-  writeFile(barreFilePath, newBarrelFileContent);
+  writeFile(barrelFilePath, newBarrelFileContent);
   console.log(`Generated VRT pages for components-${framework}`);
 };
 
