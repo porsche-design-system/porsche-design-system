@@ -130,10 +130,8 @@ export const getComponentCss = (
     ),
     ...(hasHeader && {
       header: {
-        ...(!disableCloseButton && {
-          margin: `0 ${pxToRemWithUnit(32)} 0 0`,
-        }),
         padding: `0 0 ${pxToRemWithUnit(16)}`,
+        ...(!disableCloseButton && { margin: `0 ${pxToRemWithUnit(32)} 0 0` }),
         [mediaQueryM]: {
           padding: `0 0 ${pxToRemWithUnit(24)}`,
         },
