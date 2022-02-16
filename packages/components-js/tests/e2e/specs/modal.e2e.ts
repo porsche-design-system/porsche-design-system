@@ -107,11 +107,19 @@ describe('modal', () => {
       document.body.append(button);
     });
 
+  const expectDialogToBeFocused = async (failMessage?: string) => {
+    const host = await getHost();
+    expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('DIV');
+    expect(await getActiveElementClassNameInShadowRoot(host), failMessage).toBe('root');
+  };
+
   const expectCloseButtonToBeFocused = async (failMessage?: string) => {
     const host = await getHost();
-    expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('P-BUTTON-PURE'); // close button
+    expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('P-BUTTON-PURE');
     expect(await getActiveElementClassNameInShadowRoot(host), failMessage).toContain('close');
   };
+
+  const waitForSlotChange = () => new Promise((resolve) => setTimeout(resolve));
 
   it('should render and be visible when open', async () => {
     await initBasicModal();
@@ -244,26 +252,26 @@ describe('modal', () => {
   });
 
   describe('focus behavior', () => {
-    it('should focus first focusable element', async () => {
+    it('should focus dialog', async () => {
       await initAdvancedModal();
       await openModal();
-      await expectCloseButtonToBeFocused();
+      await expectDialogToBeFocused();
     });
 
-    it('should focus close button when there is no focusable content element', async () => {
+    it('should focus dialog when there is no focusable content element', async () => {
       await initBasicModal({ isOpen: false });
       await openModal();
-      await expectCloseButtonToBeFocused();
+      await expectDialogToBeFocused();
     });
 
-    it('should focus close button when there is a focusable content element', async () => {
+    it('should focus dialog when there is a focusable content element', async () => {
       await initBasicModal({
         isOpen: false,
         content: `<a href="https://porsche.com">Some link in content</a>`,
         aria: "{'aria-label': 'Some Heading'}",
       });
       await openModal();
-      await expectCloseButtonToBeFocused();
+      await expectDialogToBeFocused();
     });
 
     it('should have correct focus order when there is a focusable content element and focusable slotted element in header', async () => {
@@ -275,6 +283,8 @@ describe('modal', () => {
       });
       await openModal();
 
+      await expectDialogToBeFocused();
+      await page.keyboard.press('Tab');
       await expectCloseButtonToBeFocused();
       await page.keyboard.press('Tab');
       expect(await getActiveElementTagName(page)).toBe('A'); // slotted header anchor
@@ -287,7 +297,7 @@ describe('modal', () => {
       await addButtonBehindModal();
       await openModal();
 
-      await expectCloseButtonToBeFocused();
+      await expectDialogToBeFocused();
       await page.keyboard.press('Tab');
       await expectCloseButtonToBeFocused();
       await page.keyboard.press('Tab');
@@ -335,38 +345,49 @@ describe('modal', () => {
       it('should focus close button again', async () => {
         await initAdvancedModal();
         await openModal();
-        await expectCloseButtonToBeFocused('initially');
+        await expectDialogToBeFocused('initially');
 
         await page.keyboard.press('Tab');
-        expect(await getActiveElementId(page), 'after tab').toBe('btn-content-1');
+        await expectCloseButtonToBeFocused('after 1st tab');
+        await page.keyboard.press('Tab');
+        expect(await getActiveElementId(page), 'after 2nd tab').toBe('btn-content-1');
 
         const host = await getHost();
         await host.evaluate((el) => {
           el.innerHTML = '<button id="btn-new">New Button</button>';
         });
-        await expectCloseButtonToBeFocused('after content change');
+        await waitForSlotChange();
+        await expectDialogToBeFocused('after content change');
 
         await page.keyboard.press('Tab');
-        expect(await getActiveElementId(page), 'after 2nd tab').toBe('btn-new');
+        await expectCloseButtonToBeFocused('after content change 1st tab');
+        await page.keyboard.press('Tab');
+        expect(await getActiveElementId(page), 'after content change 2nd tab').toBe('btn-new');
 
         await page.keyboard.press('Tab');
-        await expectCloseButtonToBeFocused('after 3rd tab');
+        await expectCloseButtonToBeFocused('after content change 3rd tab');
       });
 
       it('should not allow focusing element behind of modal', async () => {
         await initAdvancedModal();
         await addButtonBehindModal();
         await openModal();
-        await expectCloseButtonToBeFocused('initially');
+        await expectDialogToBeFocused('initially');
+        await page.keyboard.press('Tab');
+        await expectCloseButtonToBeFocused('after tab');
 
         const host = await getHost();
         await host.evaluate((el) => {
           el.innerHTML = '';
         });
-        await expectCloseButtonToBeFocused('after content change');
+        await waitForSlotChange();
+        await expectDialogToBeFocused('after content change');
 
         await page.keyboard.press('Tab');
-        await expectCloseButtonToBeFocused('after tab');
+        await expectCloseButtonToBeFocused('after content change 1st tab');
+
+        await page.keyboard.press('Tab');
+        await expectCloseButtonToBeFocused('after content change 2nd tab');
       });
 
       it('should correctly focus close button from appended focusable element', async () => {
@@ -380,7 +401,11 @@ describe('modal', () => {
           button.id = 'btn-new';
           el.append(button);
         });
-        await expectCloseButtonToBeFocused('after button appended');
+        await waitForSlotChange();
+        await expectDialogToBeFocused('after button appended');
+
+        await page.keyboard.press('Tab');
+        await expectCloseButtonToBeFocused('after button appended 1st tab');
 
         await page.keyboard.press('Tab');
         await page.keyboard.press('Tab');
@@ -402,20 +427,17 @@ describe('modal', () => {
       it('should focus body when there is no focusable element', async () => {
         await initBasicModal(initModalOpts);
         await openModal();
-        expect(await getActiveElementTagName(page)).toBe('BODY');
+        await expectDialogToBeFocused();
       });
 
       it('should not focus element behind modal if modal has no focusable element', async () => {
         await initBasicModal(initModalOpts);
         await addButtonBehindModal();
         await openModal();
-        expect(await getActiveElementTagName(page)).toBe('BODY');
+        await expectDialogToBeFocused();
 
         await page.keyboard.press('Tab');
-        expect(await getActiveElementTagName(page)).toBe('BODY');
-
-        await page.keyboard.press('Tab');
-        expect(await getActiveElementTagName(page)).toBe('BODY');
+        await expectDialogToBeFocused();
       });
 
       const otherFocusableElement = '<button type="button">Another focusable element</button>';
@@ -443,6 +465,9 @@ describe('modal', () => {
               : `<${tagName}${attributes}>Some element</${tagName}>`) + otherFocusableElement,
         });
         await openModal();
+        await expectDialogToBeFocused();
+
+        await page.keyboard.press('Tab');
         expect(await getActiveElementTagName(page)).toBe(tagName.toUpperCase());
       });
     });
@@ -452,7 +477,10 @@ describe('modal', () => {
     it('should cycle tab events within modal', async () => {
       await initAdvancedModal();
       await openModal();
-      await expectCloseButtonToBeFocused('initially');
+      await expectDialogToBeFocused('initially');
+
+      await page.keyboard.press('Tab');
+      await expectCloseButtonToBeFocused('after 1st tab');
 
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-content-1');
@@ -469,7 +497,10 @@ describe('modal', () => {
     it('should reverse cycle tab events within modal', async () => {
       await initAdvancedModal();
       await openModal();
-      await expectCloseButtonToBeFocused('initially');
+      await expectDialogToBeFocused('initially');
+
+      await page.keyboard.press('Tab');
+      await expectCloseButtonToBeFocused('after 1st tab');
 
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');
