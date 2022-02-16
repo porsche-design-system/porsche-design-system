@@ -2,8 +2,11 @@ import * as lineHeightUtil from './line-height';
 import { calcLineHeightForElement, calculateLineHeight, generateTypeScale, lineHeightMap } from './line-height';
 
 describe('calculateLineHeight()', () => {
-  it('should use line-height from map', () => {
+  it('should not extend lineHeightMap if fontSize already exists', () => {
+    const spy = jest.spyOn(lineHeightMap, 'set');
     calculateLineHeight(12);
+
+    expect(spy).not.toBeCalled();
     expect(lineHeightMap).toMatchSnapshot();
   });
 
@@ -27,27 +30,37 @@ describe('calculateLineHeight()', () => {
 });
 
 describe('calcLineHeightForElement()', () => {
-  const element = document.createElement('div');
-  it('should not call calculateLineHeight when font size is ""', () => {
-    const spy = jest.spyOn(lineHeightUtil, 'calculateLineHeight');
-    calcLineHeightForElement(element);
-
-    expect(spy).not.toBeCalled();
-  });
   it('should call calculateLineHeight', () => {
     const spy = jest.spyOn(lineHeightUtil, 'calculateLineHeight');
+
+    const element = document.createElement('div');
     element.style.fontSize = '12px';
     calcLineHeightForElement(element);
 
     expect(spy).toBeCalledWith(12);
   });
+  it('should not call calculateLineHeight when font size is ""', () => {
+    const spy = jest.spyOn(lineHeightUtil, 'calculateLineHeight');
+
+    const element = document.createElement('div');
+    calcLineHeightForElement(element);
+
+    expect(spy).not.toBeCalled();
+  });
 });
 
 describe('generateTypeScale()', () => {
   it.each([
-    { fontSize: '0.75rem', expected: { fontSize: '0.75rem', lineHeight: 1.6666666667 } },
-    { fontSize: '1rem', expected: { fontSize: '1rem', lineHeight: 1.5 } },
-  ])('should return correct fontSize and lineHeight for %o', ({ fontSize, expected }) => {
+    ['0.75rem', { fontSize: '0.75rem', lineHeight: 1.6666666667 }],
+    ['1rem', { fontSize: '1rem', lineHeight: 1.5 }],
+  ])('should be called with fontsize: "%s" and return %o', (fontSize, expected) => {
     expect(generateTypeScale(fontSize)).toEqual(expected);
+  });
+
+  it('should call calculateLineHeight', () => {
+    const spy = jest.spyOn(lineHeightUtil, 'calculateLineHeight');
+    generateTypeScale('0.75rem');
+
+    expect(spy).toBeCalledWith(parseFloat('0.75rem') * 16);
   });
 });
