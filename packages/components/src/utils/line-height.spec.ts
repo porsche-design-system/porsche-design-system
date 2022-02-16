@@ -7,24 +7,18 @@ describe('calculateLineHeight()', () => {
   });
 
   it('should not extend lineHeightMap if fontSize already exists', () => {
-    const spy = jest.spyOn(lineHeightMap, 'set');
-
     const lineHeightMapSizeBefore = lineHeightMap.size;
     calculateLineHeight(12);
 
-    expect(spy).not.toBeCalled();
-    expect(lineHeightMapSizeBefore).toEqual(lineHeightMap.size);
+    expect(lineHeightMapSizeBefore).toBe(lineHeightMap.size);
   });
 
   it('should extend lineHeightMap if called with new fontsize', () => {
-    const spy = jest.spyOn(lineHeightMap, 'set');
-
     const lineHeightMapSizeBefore = lineHeightMap.size;
     calculateLineHeight(48);
 
-    expect(spy).toBeCalled();
-    expect(lineHeightMapSizeBefore).not.toEqual(lineHeightMap.size);
-    expect(Array.from(lineHeightMap.entries()).pop()).toEqual([48, 1.25]);
+    expect(lineHeightMapSizeBefore + 1).toBe(lineHeightMap.size);
+    expect(lineHeightMap.get(48)).toBe(1.25);
   });
 
   it.each<[number, number]>([
