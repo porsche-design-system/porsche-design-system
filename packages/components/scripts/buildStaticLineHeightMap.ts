@@ -10,7 +10,7 @@ const buildStaticLineHeightMap = (): void => {
   const fileContent = fs.readFileSync(filePath, 'utf8');
 
   const lineHeightMap = Object.entries(fontSize).map<[number, number]>(([, val]) => [
-    parseFloat(val.fontSize.replace('rem', '')) * 16,
+    parseFloat(val.fontSize) * 16,
     val.lineHeight as number,
   ]);
 
