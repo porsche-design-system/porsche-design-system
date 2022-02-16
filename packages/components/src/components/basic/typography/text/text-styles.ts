@@ -5,7 +5,7 @@ import { buildSlottedStyles, getCss, buildResponsiveStyles, paramCaseToCamelCase
 import { addImportantToEachRule, getBaseSlottedStyles } from '../../../../styles';
 import { fontFamily, fontWeight, text } from '@porsche-design-system/utilities-v2';
 import { getEllipsisStyles, getSlottedTypographyStyles } from '../../../../styles/typography-styles';
-import { getThemedTextColors } from '../../../../styles/text-icon-styles';
+import { getThemedTextColor } from '../../../../styles/text-icon-styles';
 
 const getSizeStyles = (size: TextSize): Pick<JssStyle, 'lineHeight' | 'fontSize'> => {
   if (size === 'inherit') {
@@ -40,7 +40,7 @@ export const getComponentCss = (
       textAlign: align,
       fontFamily,
       fontWeight: fontWeight[weight],
-      color: getThemedTextColors(theme, color),
+      color: getThemedTextColor(theme, color),
       overflowWrap: 'break-word',
       wordWrap: 'break-word',
       hyphens: 'auto',
