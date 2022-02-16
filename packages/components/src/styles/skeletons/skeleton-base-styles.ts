@@ -25,24 +25,34 @@ export const getPseudoElementStyles = (): Styles => {
   };
 };
 
-export const getBaseSkeletonStyles = (withLabel = true): Styles => {
+export const getBaseSkeletonStyles = (withLabel = true, elementHeight = ELEMENT_SKELETON_HEIGHT): Styles => {
   return {
     position: 'relative',
     color: 'transparent',
-    ...(withLabel && {
-      '&::before': {
-        ...getPseudoElementStyles(),
-        height: pxToRemWithUnit(LABEL_HEIGHT),
-        width: pxToRemWithUnit(128),
-        top: '0',
-        background: `linear-gradient(transparent, transparent 4px, ${SKELETON_COLOR_THEME_PLACEHOLDER} 4px, ${SKELETON_COLOR_THEME_PLACEHOLDER} 20px, transparent 20px, transparent 24px)`,
-      },
-    }),
+    ...(withLabel
+      ? {
+          display: 'block',
+          '&::before': {
+            ...getPseudoElementStyles(),
+            height: pxToRemWithUnit(LABEL_HEIGHT),
+            width: pxToRemWithUnit(128),
+            top: '0',
+            background: `linear-gradient(transparent, transparent 4px, ${SKELETON_COLOR_THEME_PLACEHOLDER} 4px, ${SKELETON_COLOR_THEME_PLACEHOLDER} 20px, transparent 20px, transparent 24px)`,
+          },
+        }
+      : {
+          minHeight: pxToRemWithUnit(elementHeight),
+        }),
     '&::after': {
+      ...(!withLabel && {
+        display: 'block',
+      }),
       ...getPseudoElementStyles(),
       top: pxToRemWithUnit(withLabel ? LABEL_HEIGHT_WITH_SPACING : 0),
       width: '100%',
-      height: withLabel ? `calc(100% - ${pxToRemWithUnit(LABEL_HEIGHT_WITH_SPACING)})` : '100%',
+      minHeight: withLabel
+        ? `calc(100% - ${pxToRemWithUnit(LABEL_HEIGHT_WITH_SPACING)})`
+        : pxToRemWithUnit(elementHeight),
     },
   };
 };
