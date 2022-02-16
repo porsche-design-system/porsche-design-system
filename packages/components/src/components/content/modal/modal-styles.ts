@@ -5,6 +5,7 @@ import {
   addImportantToEachRule,
   contentWrapperVars,
   getBaseSlottedStyles,
+  getFocusStyles,
   getInset,
   getThemedColors,
   mediaQuery,
@@ -105,24 +106,28 @@ export const getComponentCss = (
         background: `${darkThemeBackgroundColor}e6`, // e6 = 0.9 alpha
       }),
     },
-    root: mergeDeep(buildResponsiveStyles(fullscreen, getFullscreenStyles), {
-      position: 'relative',
-      boxSizing: 'border-box',
-      transition: `transform .6s ${transitionTimingFunction}`,
-      transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
-      padding: pxToRemWithUnit(32),
-      backgroundColor: lightThemeBackgroundColor,
-      [mediaQueryM]: {
-        padding: pxToRemWithUnit(40),
+    root: mergeDeep(
+      {
+        position: 'relative',
+        boxSizing: 'border-box',
+        transition: `transform .6s ${transitionTimingFunction}`,
+        transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
+        padding: pxToRemWithUnit(32),
+        backgroundColor: lightThemeBackgroundColor,
+        ...getFocusStyles({ color: lightThemeBackgroundColor }),
+        [mediaQueryM]: {
+          padding: pxToRemWithUnit(40),
+        },
+        [mediaQueryXl]: {
+          margin: isFullscreenForXlAndXxl ? 0 : `10vh ${contentWrapperVars.marginXl}`,
+        },
+        [mediaQueryXxl]: {
+          padding: pxToRemWithUnit(64),
+          margin: isFullscreenForXlAndXxl ? 0 : `10vh ${contentWrapperVars.marginXxl}`,
+        },
       },
-      [mediaQueryXl]: {
-        margin: isFullscreenForXlAndXxl ? 0 : `10vh ${contentWrapperVars.marginXl}`,
-      },
-      [mediaQueryXxl]: {
-        padding: pxToRemWithUnit(64),
-        margin: isFullscreenForXlAndXxl ? 0 : `10vh ${contentWrapperVars.marginXxl}`,
-      },
-    }),
+      buildResponsiveStyles(fullscreen, getFullscreenStyles) as any
+    ),
     ...(hasHeader && {
       header: {
         ...(!disableCloseButton && {
@@ -149,7 +154,7 @@ export const getComponentCss = (
       right: 0,
       padding: pxToRemWithUnit(8),
       border: `${pxToRemWithUnit(6)} solid ${lightThemeBackgroundColor}`,
-      backgroundColor: lightThemeBackgroundColor,
+      background: lightThemeBackgroundColor,
     },
   });
 };
