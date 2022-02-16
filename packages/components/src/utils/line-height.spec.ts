@@ -2,6 +2,12 @@ import * as lineHeightUtil from './line-height';
 import { calcLineHeightForElement, calculateLineHeight, generateTypeScale, lineHeightMap } from './line-height';
 
 describe('calculateLineHeight()', () => {
+  const defaultLineHeightMap: Map<number, number> = new Map(lineHeightMap);
+  beforeEach(() => {
+    lineHeightMap.clear();
+    defaultLineHeightMap.forEach((value, key) => lineHeightMap.set(key, value));
+  });
+
   it('should have default values in lineHeightMap', () => {
     expect(lineHeightMap).toMatchSnapshot();
   });
@@ -17,7 +23,7 @@ describe('calculateLineHeight()', () => {
     const lineHeightMapSizeBefore = lineHeightMap.size;
     calculateLineHeight(48);
 
-    expect(lineHeightMapSizeBefore + 1).toBe(lineHeightMap.size);
+    expect(lineHeightMap.size).toBe(lineHeightMapSizeBefore + 1);
     expect(lineHeightMap.get(48)).toBe(1.25);
   });
 
