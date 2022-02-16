@@ -32,7 +32,7 @@ export type ThemedColors = { [key in ThemedColorsKey]: string };
 const themedColorsMap: { [key in Theme]: ThemedColors } = {
   light: {
     baseColor: '#000',
-    baseColorDarken: '#000',
+    baseColorDarken: '#000000',
     brandColor: '#d5001c',
     backgroundColor: '#fff',
     backgroundSurfaceColor: '#f2f2f2',
@@ -84,7 +84,7 @@ const themedColorsMap: { [key in Theme]: ThemedColors } = {
   },
   'light-electric': {
     baseColor: '#000',
-    baseColorDarken: '#000',
+    baseColorDarken: '#000000',
     brandColor: '#00b0f4',
     backgroundColor: '#fff',
     backgroundSurfaceColor: '#f2f2f2',
