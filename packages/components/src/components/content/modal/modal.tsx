@@ -83,11 +83,9 @@ export class Modal {
     attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen, this.disableCloseButton, this.hasHeader);
   }
 
-  public componentDidUpdate(): void {
+  public componentDidRender(): void {
     if (this.open) {
-      /* the close button is not immediately visible when the @Watch('open') triggers,
-       so we focus it in componentDidUpdate() */
-      this.dialog.focus();
+      this.dialog.focus(); // needs to happen after render
     }
   }
 
