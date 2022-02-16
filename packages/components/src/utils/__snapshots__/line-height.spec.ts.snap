@@ -11,7 +11,7 @@ Map {
 }
 `;
 
-exports[`calculateLineHeight() should use line-height from map 1`] = `
+exports[`calculateLineHeight() should not extend lineHeightMap if fontSize already exists 1`] = `
 Map {
   12 => 1.6666666667,
   16 => 1.5,
