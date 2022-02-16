@@ -1,6 +1,14 @@
 import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable, GetStylesFunction, BreakpointKey } from '../../../utils';
-import { BREAKPOINTS, buildResponsiveStyles, getCss, mergeDeep, parseJSON, buildSlottedStyles } from '../../../utils';
+import {
+  BREAKPOINTS,
+  buildResponsiveStyles,
+  getCss,
+  mergeDeep,
+  parseJSON,
+  buildSlottedStyles,
+  isSafari,
+} from '../../../utils';
 import {
   addImportantToEachRule,
   contentWrapperVars,
@@ -114,7 +122,8 @@ export const getComponentCss = (
         transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
         padding: pxToRemWithUnit(32),
         backgroundColor: lightThemeBackgroundColor,
-        ...getFocusStyles({ color: lightThemeBackgroundColor }),
+        // TODO: remove safari fallback once :focus-visible is supported
+        ...(isSafari ? { outline: 0 } : getFocusStyles({ color: lightThemeBackgroundColor })),
         [mediaQueryM]: {
           padding: pxToRemWithUnit(40),
         },
