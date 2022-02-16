@@ -1,19 +1,10 @@
-import { getThemedColors, getThemedColorsDarken, getThemedFormStateColors } from './colors';
+import { getThemedColors, getThemedFormStateColors } from './colors';
 
 describe('getThemedColors()', () => {
   it.each<Parameters<typeof getThemedColors>>([['light'], ['dark'], ['light-electric'], ['dark-electric']])(
     'should return correct colors for theme: %s',
     (theme) => {
       expect(getThemedColors(theme)).toMatchSnapshot();
-    }
-  );
-});
-
-describe('getThemedColorsDarken()', () => {
-  it.each<Parameters<typeof getThemedColorsDarken>>([['light'], ['dark'], ['light-electric'], ['dark-electric']])(
-    'should return correct colors for theme: %s',
-    (theme) => {
-      expect(getThemedColorsDarken(theme)).toMatchSnapshot();
     }
   );
 });

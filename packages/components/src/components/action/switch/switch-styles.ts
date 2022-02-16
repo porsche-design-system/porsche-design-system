@@ -8,7 +8,6 @@ import {
   getTransition,
   pxToRemWithUnit,
   getThemedColors,
-  getThemedColorsDarken,
 } from '../../../styles';
 import { spacing } from '@porsche-design-system/utilities-v2';
 
@@ -26,10 +25,17 @@ const getColors = (
   toggleBackgroundColorHover: string;
   textColor: string;
 } => {
-  const { backgroundColor, baseColor, contrastHighColor, successColor, disabledColor, brandColor } =
-    getThemedColors(theme);
+  const {
+    backgroundColor,
+    baseColor,
+    contrastHighColor,
+    successColor,
+    successColorDarken,
+    hoverColorDarken,
+    disabledColor,
+    brandColor,
+  } = getThemedColors(theme);
   const { backgroundColor: lightThemeBackgroundColor } = getThemedColors('light');
-  const { successColorDarken, hoverColorDarken } = getThemedColorsDarken(theme);
   const isLightElectricTheme = isThemeLightElectric(theme);
   const checkedColor = isLightElectricTheme ? brandColor : successColor;
   const disabledOrLoadingColor = isDisabledOrLoading && disabledColor;
