@@ -1,6 +1,7 @@
 import type { TextColor, IconSize, ThemeExtendedElectricDark } from '../../../types';
 import { getCss } from '../../../utils';
-import { pxToRemWithUnit, getThemedTextColors } from '../../../styles';
+import { pxToRemWithUnit } from '../../../styles';
+import { getThemedTextColors } from '../../../styles/text-icon-styles';
 
 const sizeMap: { [key in IconSize]: string } = {
   small: pxToRemWithUnit(24),
