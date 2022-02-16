@@ -64,7 +64,6 @@ const themeDarkElectricDarken: ThemedColorsDarken = {
   hoverColorDarken: '#0084b7',
 };
 
-// color map is created once, which boosts performance instead of reinitializing it each time within function call
 const themedColorsDarkenMap: { [key in Theme]: ThemedColorsDarken } = {
   light: themeLightDarken,
   dark: themeDarkDarken,
@@ -122,7 +121,6 @@ const getStaticThemedColors = (theme: Theme): ThemedColors => {
   };
 };
 
-// color map is created once, which boosts performance instead of reinitializing it each time within function call
 const themedColorsMap: { [key in Theme]: ThemedColors } = {
   light: getStaticThemedColors('light'),
   dark: getStaticThemedColors('dark'),
@@ -139,36 +137,9 @@ type ThemedFormStateColors = {
   formStateHoverColor: string | undefined; // form state: "none" => undefined
 };
 
-const getStaticThemedFormStateColors = (theme: ThemeDefault, state: FormState): ThemedFormStateColors => {
+export const getThemedFormStateColors = (theme: ThemeDefault, state: FormState): ThemedFormStateColors => {
   return {
     formStateColor: getThemedColors(theme)[`${state}Color`],
     formStateHoverColor: getThemedColors(theme)[`${state}ColorDarken`],
   };
-};
-
-const themeLightFormState: { [key in FormState]: ThemedFormStateColors } = {
-  success: getStaticThemedFormStateColors('light', 'success'),
-  error: getStaticThemedFormStateColors('light', 'error'),
-  none: getStaticThemedFormStateColors('light', 'none'),
-};
-
-const themeDarkFormState: { [key in FormState]: ThemedFormStateColors } = {
-  success: getStaticThemedFormStateColors('dark', 'success'),
-  error: getStaticThemedFormStateColors('dark', 'error'),
-  none: getStaticThemedFormStateColors('dark', 'none'),
-};
-
-// color map is created once, which boosts performance instead of reinitializing it each time within function call
-const themedFormStateColorsMap: {
-  [themeDefault in ThemeDefault]: {
-    [formState in FormState]: ThemedFormStateColors;
-  };
-} = {
-  light: themeLightFormState,
-  dark: themeDarkFormState,
-};
-
-// TODO: Could also be part of getThemedColors()?
-export const getThemedFormStateColors = (theme: ThemeDefault, state: FormState): ThemedFormStateColors => {
-  return themedFormStateColorsMap[theme][state];
 };

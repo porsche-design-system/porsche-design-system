@@ -1,7 +1,7 @@
-import { getThemedTextColors } from './text-icon-styles';
+import { getThemedTextColor } from './text-icon-styles';
 
-describe('getThemedTextColors()', () => {
-  it.each<Parameters<typeof getThemedTextColors>>([
+describe('getThemedTextColor()', () => {
+  it.each<Parameters<typeof getThemedTextColor>>([
     ['light', 'brand'],
     ['light', 'default'],
     ['light', 'neutral-contrast-high'],
@@ -23,6 +23,6 @@ describe('getThemedTextColors()', () => {
     ['dark', 'notification-neutral'],
     ['dark', 'inherit'],
   ])('should return correct css for theme: %s and textColor: %s', (...args) => {
-    expect(getThemedTextColors(...args)).toMatchSnapshot();
+    expect(getThemedTextColor(...args)).toMatchSnapshot();
   });
 });

@@ -2,7 +2,7 @@ import type { Theme } from '@porsche-design-system/utilities-v2';
 import type { TextColor } from '../types';
 import { getThemedColors } from './colors';
 
-export const getThemedTextColors = (theme: Theme, textColor: TextColor): string => {
+export const getThemedTextColor = (theme: Theme, textColor: TextColor): string => {
   const {
     baseColor,
     brandColor,
