@@ -1,5 +1,5 @@
 import type { Theme, ThemeDefault } from '@porsche-design-system/utilities-v2';
-import type { FormState, TextColor } from '../types';
+import type { FormState } from '../types';
 // eslint-disable-next-line no-restricted-imports
 import { color } from '@porsche-design-system/utilities-v2';
 
@@ -164,33 +164,4 @@ const themedFormStateColorsMap: {
 // TODO: Could also be part of getThemedColors()?
 export const getThemedFormStateColors = (theme: ThemeDefault, state: FormState): ThemedFormStateColors => {
   return themedFormStateColorsMap[theme][state];
-};
-
-export const getThemedTextColors = (theme: Theme, textColor: TextColor): string => {
-  const {
-    baseColor,
-    brandColor,
-    contrastHighColor,
-    contrastMediumColor,
-    contrastLowColor,
-    successColor,
-    errorColor,
-    warningColor,
-    neutralColor,
-  } = getThemedColors(theme);
-
-  // TODO: isn't it more like a text/icon style mapper and should live somewhere else?
-  const colorMap: { [key in TextColor]: string } = {
-    brand: brandColor,
-    default: baseColor,
-    'neutral-contrast-high': contrastHighColor,
-    'neutral-contrast-medium': contrastMediumColor,
-    'neutral-contrast-low': contrastLowColor,
-    'notification-success': successColor,
-    'notification-warning': warningColor,
-    'notification-error': errorColor,
-    'notification-neutral': neutralColor,
-    inherit: 'currentColor',
-  };
-  return colorMap[textColor];
 };
