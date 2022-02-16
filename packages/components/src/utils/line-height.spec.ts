@@ -2,17 +2,29 @@ import * as lineHeightUtil from './line-height';
 import { calcLineHeightForElement, calculateLineHeight, generateTypeScale, lineHeightMap } from './line-height';
 
 describe('calculateLineHeight()', () => {
-  it('should not extend lineHeightMap if fontSize already exists', () => {
-    const spy = jest.spyOn(lineHeightMap, 'set');
-    calculateLineHeight(12);
-
-    expect(spy).not.toBeCalled();
+  it('should have default values in lineHeightMap', () => {
     expect(lineHeightMap).toMatchSnapshot();
   });
 
-  it('should extend lineHeightMap', () => {
+  it('should not extend lineHeightMap if fontSize already exists', () => {
+    const spy = jest.spyOn(lineHeightMap, 'set');
+
+    const lineHeightMapSizeBefore = lineHeightMap.size;
+    calculateLineHeight(12);
+
+    expect(spy).not.toBeCalled();
+    expect(lineHeightMapSizeBefore).toEqual(lineHeightMap.size);
+  });
+
+  it('should extend lineHeightMap if called with new fontsize', () => {
+    const spy = jest.spyOn(lineHeightMap, 'set');
+
+    const lineHeightMapSizeBefore = lineHeightMap.size;
     calculateLineHeight(48);
-    expect(lineHeightMap).toMatchSnapshot();
+
+    expect(spy).toBeCalled();
+    expect(lineHeightMapSizeBefore).not.toEqual(lineHeightMap.size);
+    expect(Array.from(lineHeightMap.entries()).pop()).toEqual([48, 1.25]);
   });
 
   it.each<[number, number]>([
