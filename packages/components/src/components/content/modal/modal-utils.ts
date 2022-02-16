@@ -1,24 +1,6 @@
 import { getTagName, isIos } from '../../../utils';
 import type { SelectedAriaAttributes } from '../../../types';
 
-// // ionic
-// const focusableQueryString =
-//   '[tabindex]:not([tabindex^="-"]),input:not([type=hidden]):not([tabindex^="-"]),textarea:not([tabindex^="-"]),button:not([tabindex^="-"]),select:not([tabindex^="-"]),.ion-focusable:not([tabindex^="-"])';
-// const innerFocusableQueryString = 'input:not([type=hidden]),textarea,button,select';
-//
-// // material
-// const candidatesSelector = [
-//   'input',
-//   'select',
-//   'textarea',
-//   'a[href]',
-//   'button',
-//   '[tabindex]',
-//   'audio[controls]',
-//   'video[controls]',
-//   '[contenteditable]:not([contenteditable="false"])',
-// ].join(',');
-
 export const unpackChildren = (el: HTMLElement | ShadowRoot): HTMLElement[] => {
   return (Array.from(el.children) as HTMLElement[])
     .map((child) => (child.children ? [child].concat(unpackChildren(child)) : child))
@@ -27,6 +9,7 @@ export const unpackChildren = (el: HTMLElement | ShadowRoot): HTMLElement[] => {
     .flat();
 };
 
+// TODO: could be extended by audio[controls], video[controls], [contenteditable]:not([contenteditable="false"]) or iframe
 export const isFocusableElement = (el: HTMLInputElement): boolean => {
   const { nodeName } = el;
   return (
@@ -40,7 +23,7 @@ export const isFocusableElement = (el: HTMLInputElement): boolean => {
   );
 };
 
-export type FirstAndLastFocusableElement = [HTMLElement, HTMLElement];
+export type FirstAndLastFocusableElement = [HTMLElement, HTMLElement] | [];
 export const getFirstAndLastFocusableElement = (
   host: HTMLElement,
   closeButton: HTMLElement
@@ -58,13 +41,15 @@ export const hostTouchListener = (e: TouchEvent & { target: HTMLElement }): void
 export const setScrollLock = (
   host: HTMLElement,
   isOpen: boolean,
-  focusableElements?: FirstAndLastFocusableElement, // irrelevant for disconnectedCallback
+  closeBtn?: HTMLElement, // irrelevant for disconnectedCallback
   closeModal?: () => void // irrelevant for disconnectedCallback
 ): void => {
+  let focusableElements: FirstAndLastFocusableElement = [];
   document.body.style.overflow = isOpen ? 'hidden' : '';
 
   document.removeEventListener('keydown', documentKeydownListener);
   if (isOpen) {
+    focusableElements = getFirstAndLastFocusableElement(host, closeBtn);
     documentKeydownListener = (e: KeyboardEvent): void => {
       const { key } = e;
       if (key === 'Esc' || key === 'Escape') {
@@ -87,12 +72,12 @@ export const setScrollLock = (
   }
 };
 
-type KeyboardHandlerTuple = [(e: KeyboardEvent) => void, (e: KeyboardEvent) => void];
+type KeyboardHandlerTuple = [(e: KeyboardEvent) => void, (e: KeyboardEvent) => void] | [];
 
 /** cache of previous first and last focusable element so we are able to remove them again */
-export let FOCUSABLE_ELEMENT_CACHE: FirstAndLastFocusableElement | [] = [];
+export let FOCUSABLE_ELEMENT_CACHE: FirstAndLastFocusableElement = [];
 /** cache of previous event handler pair so we are able to remove them again */
-export let KEYDOWN_EVENT_HANDLER_CACHE: KeyboardHandlerTuple | [] = [];
+export let KEYDOWN_EVENT_HANDLER_CACHE: KeyboardHandlerTuple = [];
 
 export const setFirstAndLastFocusableElementKeydownListener = (
   focusableElements: FirstAndLastFocusableElement

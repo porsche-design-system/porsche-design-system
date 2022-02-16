@@ -8,13 +8,8 @@ import {
   hasNamedSlot,
   parseAndGetAriaAttributes,
 } from '../../../utils';
-import type { FirstAndLastFocusableElement, ModalAriaAttributes } from './modal-utils';
-import {
-  getFirstAndLastFocusableElement,
-  MODAL_ARIA_ATTRIBUTES,
-  setScrollLock,
-  warnIfAriaAndHeadingPropsAreUndefined,
-} from './modal-utils';
+import type { ModalAriaAttributes } from './modal-utils';
+import { MODAL_ARIA_ATTRIBUTES, setScrollLock, warnIfAriaAndHeadingPropsAreUndefined } from './modal-utils';
 import { getComponentCss, getSlottedCss } from './modal-styles';
 
 @Component({
@@ -46,9 +41,9 @@ export class Modal {
   @Event({ bubbles: false }) public close?: EventEmitter<void>;
 
   private focusedElBeforeOpen: HTMLElement;
-  private focusableElements: FirstAndLastFocusableElement = [] as unknown as FirstAndLastFocusableElement;
   private closeBtn: HTMLElement;
   private hasHeader: boolean;
+  private dialog: HTMLElement;
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
@@ -73,8 +68,11 @@ export class Modal {
 
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', () => {
       if (this.open) {
-        this.updateScrollLock(true);
-        this.focusableElements[0]?.focus(); // set initial focus
+        // 1 tick delay is needed so that web components can be bootstrapped
+        setTimeout(() => {
+          this.updateScrollLock(true);
+          this.dialog.focus(); // set initial focus
+        });
       }
     });
   }
@@ -89,7 +87,7 @@ export class Modal {
     if (this.open) {
       /* the close button is not immediately visible when the @Watch('open') triggers,
        so we focus it in componentDidUpdate() */
-      this.focusableElements[0]?.focus();
+      this.dialog.focus();
     }
   }
 
@@ -108,6 +106,8 @@ export class Modal {
           aria-modal="true"
           {...{ 'aria-label': this.heading, ...parseAndGetAriaAttributes(this.aria, MODAL_ARIA_ATTRIBUTES) }}
           aria-hidden={!this.open ? 'true' : 'false'}
+          tabIndex={-1}
+          ref={(el) => (this.dialog = el)}
         >
           {!this.disableCloseButton && (
             <PrefixedTagNames.pButtonPure
@@ -139,8 +139,7 @@ export class Modal {
   }
 
   private updateScrollLock(isOpen: boolean): void {
-    this.focusableElements = getFirstAndLastFocusableElement(this.host, !this.disableCloseButton && this.closeBtn);
-    setScrollLock(this.host, isOpen, this.focusableElements, this.closeModal);
+    setScrollLock(this.host, isOpen, !this.disableCloseButton && this.closeBtn, this.closeModal);
   }
 
   private onMouseDown = (e: MouseEvent): void => {

@@ -13,6 +13,7 @@ describe('modal', () => {
     component = new Modal();
     component.host = document.createElement('p-modal');
     component.host.attachShadow({ mode: 'open' });
+    component['closeBtn'] = document.createElement('button');
   });
 
   describe('componentDidLoad', () => {
@@ -30,38 +31,19 @@ describe('modal', () => {
       jest.spyOn(domUtils, 'getShadowRootHTMLElement').mockImplementation(() => document.createElement('slot'));
     });
 
-    describe('modal is open', () => {
-      beforeEach(() => {
-        component.open = true;
-      });
+    it('should call setScrollLock() if modal is open', () => {
+      const utilsSpy = jest.spyOn(modalUtils, 'setScrollLock');
+      component.open = true;
+      component.componentDidLoad();
 
-      it('should call getFirstAndLastFocusableElement()', () => {
-        component.componentDidLoad();
-
-        expect(getFirstAndLastFocusableElementSpy).toBeCalledWith(component.host, undefined);
-      });
-
-      it('should call setScrollLock()', () => {
-        const utilsSpy = jest.spyOn(modalUtils, 'setScrollLock');
-        component.componentDidLoad();
-
-        expect(utilsSpy).toHaveBeenCalledWith(component.host, true, focusableElements, expect.anything());
-      });
+      expect(utilsSpy).toHaveBeenCalledWith(component.host, true, component['closeBtn'], component['closeModal']);
     });
 
-    describe('if modal is not open', () => {
-      it('should not call getFirstAndLastFocusableElement()', () => {
-        component.componentDidLoad();
+    it('should not call setScrollLock() if modal is not open', () => {
+      const utilsSpy = jest.spyOn(modalUtils, 'setScrollLock');
+      component.componentDidLoad();
 
-        expect(getFirstAndLastFocusableElementSpy).not.toHaveBeenCalled();
-      });
-
-      it('should not call setScrollLock()', () => {
-        const utilsSpy = jest.spyOn(modalUtils, 'setScrollLock');
-        component.componentDidLoad();
-
-        expect(utilsSpy).not.toHaveBeenCalled();
-      });
+      expect(utilsSpy).not.toHaveBeenCalled();
     });
   });
 
