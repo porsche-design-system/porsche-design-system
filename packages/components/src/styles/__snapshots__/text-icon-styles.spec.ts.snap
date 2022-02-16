@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getThemedTextColors() should return correct css for theme: dark and textColor: brand 1`] = `"#d5001c"`;
+
+exports[`getThemedTextColors() should return correct css for theme: dark and textColor: default 1`] = `"#fff"`;
+
+exports[`getThemedTextColors() should return correct css for theme: dark and textColor: inherit 1`] = `"currentColor"`;
+
+exports[`getThemedTextColors() should return correct css for theme: dark and textColor: neutral-contrast-high 1`] = `"#e3e4e5"`;
+
+exports[`getThemedTextColors() should return correct css for theme: dark and textColor: neutral-contrast-low 1`] = `"#4a4e51"`;
+
+exports[`getThemedTextColors() should return correct css for theme: dark and textColor: neutral-contrast-medium 1`] = `"#b0b1b2"`;
+
+exports[`getThemedTextColors() should return correct css for theme: dark and textColor: notification-error 1`] = `"#fc1717"`;
+
+exports[`getThemedTextColors() should return correct css for theme: dark and textColor: notification-neutral 1`] = `"#2193ff"`;
+
+exports[`getThemedTextColors() should return correct css for theme: dark and textColor: notification-success 1`] = `"#01ba1d"`;
+
+exports[`getThemedTextColors() should return correct css for theme: dark and textColor: notification-warning 1`] = `"#ff9b00"`;
+
+exports[`getThemedTextColors() should return correct css for theme: light and textColor: brand 1`] = `"#d5001c"`;
+
+exports[`getThemedTextColors() should return correct css for theme: light and textColor: default 1`] = `"#000"`;
+
+exports[`getThemedTextColors() should return correct css for theme: light and textColor: inherit 1`] = `"currentColor"`;
+
+exports[`getThemedTextColors() should return correct css for theme: light and textColor: neutral-contrast-high 1`] = `"#323639"`;
+
+exports[`getThemedTextColors() should return correct css for theme: light and textColor: neutral-contrast-low 1`] = `"#e3e4e5"`;
+
+exports[`getThemedTextColors() should return correct css for theme: light and textColor: neutral-contrast-medium 1`] = `"#626669"`;
+
+exports[`getThemedTextColors() should return correct css for theme: light and textColor: notification-error 1`] = `"#e00000"`;
+
+exports[`getThemedTextColors() should return correct css for theme: light and textColor: notification-neutral 1`] = `"#0061bd"`;
+
+exports[`getThemedTextColors() should return correct css for theme: light and textColor: notification-success 1`] = `"#018a16"`;
+
+exports[`getThemedTextColors() should return correct css for theme: light and textColor: notification-warning 1`] = `"#ff9b00"`;
