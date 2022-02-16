@@ -1,13 +1,13 @@
 import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
 
-export const getFieldsetWrapperSkeletonCss = (): string => {
+export const getFieldsetTextListWrapperSkeletonCss = (): string => {
   return getMinifiedCss({
     '@global': {
-      'p-fieldset-wrapper': {
+      'p-fieldset-wrapper, p-text-list': {
         '&:not(.hydrated)': {
-          visibility: 'visible',
           display: 'block',
           position: 'relative',
+          visibility: 'visible',
         },
       },
     },

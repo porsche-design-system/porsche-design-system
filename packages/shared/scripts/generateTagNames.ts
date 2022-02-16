@@ -17,6 +17,8 @@ const TAG_NAMES_WITH_SKELETON: TagName[] = [
   'p-radio-button-wrapper',
   'p-select-wrapper',
   'p-text',
+  'p-text-list',
+  'p-text-list-item',
   'p-textarea-wrapper',
   'p-text-field-wrapper',
 ];
