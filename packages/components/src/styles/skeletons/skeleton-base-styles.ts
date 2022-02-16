@@ -27,7 +27,6 @@ export const getPseudoElementStyles = (): Styles => {
 
 export const getBaseSkeletonStyles = (withLabel = true): Styles => {
   return {
-    display: 'block',
     position: 'relative',
     color: 'transparent',
     ...(withLabel && {
@@ -36,6 +35,7 @@ export const getBaseSkeletonStyles = (withLabel = true): Styles => {
         height: pxToRemWithUnit(LABEL_HEIGHT),
         width: pxToRemWithUnit(128),
         top: '0',
+        background: `linear-gradient(transparent, transparent 4px, ${SKELETON_COLOR_THEME_PLACEHOLDER} 4px, ${SKELETON_COLOR_THEME_PLACEHOLDER} 20px, transparent 20px, transparent 24px)`,
       },
     }),
     '&::after': {
