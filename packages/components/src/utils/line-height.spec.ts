@@ -62,7 +62,7 @@ describe('calcLineHeightForElement()', () => {
 });
 
 describe('generateTypeScale()', () => {
-  it.each([
+  it.each<[string, { fontSize: string; lineHeight: number }]>([
     ['0.75rem', { fontSize: '0.75rem', lineHeight: 1.6666666667 }],
     ['1rem', { fontSize: '1rem', lineHeight: 1.5 }],
   ])('should be called with fontsize: "%s" and return %o', (fontSize, expected) => {
