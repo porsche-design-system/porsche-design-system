@@ -50,6 +50,7 @@
     "@rollup/plugin-replace": "^3.1.0",
     "@types/react": "^17.0.29",
     "@types/throttle-debounce": "^2.1.0",
+    "@types/tinycolor2": "^1.4.3",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
     "change-case": "^4.1.2",
@@ -60,6 +61,7 @@
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-react": "^7.28.0",
     "globby": "^11.0.4",
+    "tinycolor2": "^1.4.2",
     "ts-node": "^10.5.0",
     "typescript": "~4.5.5",
     "whatwg-fetch": "^3.6.2"

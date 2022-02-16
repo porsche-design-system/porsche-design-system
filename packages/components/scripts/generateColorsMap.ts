@@ -3,46 +3,9 @@ import type { ThemedColors } from '../src/styles';
 import * as path from 'path';
 import * as fs from 'fs';
 import { color } from '@porsche-design-system/utilities-v2';
+import tinycolor2 from 'tinycolor2';
 
-type ThemedColorsDarken = {
-  [K in keyof Pick<
-    ThemedColors,
-    'baseColor' | 'contrastHighColor' | 'successColor' | 'errorColor' | 'hoverColor'
-  > as `${K}Darken`]: string;
-};
-
-const themeLightDarken: ThemedColorsDarken = {
-  baseColorDarken: '#000',
-  contrastHighColorDarken: '#151718',
-  successColorDarken: '#014d0c',
-  errorColorDarken: '#a30000',
-  hoverColorDarken: '#980014',
-};
-
-const themeDarkDarken: ThemedColorsDarken = {
-  baseColorDarken: '#e0e0e0',
-  contrastHighColorDarken: '#c3c5c8',
-  successColorDarken: '#017d14',
-  errorColorDarken: '#d30303',
-  hoverColorDarken: '#c4001a',
-};
-
-const themeLightElectricDarken: ThemedColorsDarken = {
-  ...themeLightDarken,
-  hoverColorDarken: '#0084b7',
-};
-
-const themeDarkElectricDarken: ThemedColorsDarken = {
-  ...themeDarkDarken,
-  hoverColorDarken: '#0084b7',
-};
-
-const themedColorsDarkenMap: { [key in Theme]: ThemedColorsDarken } = {
-  light: themeLightDarken,
-  dark: themeDarkDarken,
-  'light-electric': themeLightElectricDarken,
-  'dark-electric': themeDarkElectricDarken,
-};
+const darkenColor = (color: string) => tinycolor2(color).darken(12).toHexString();
 
 const getStaticThemedColors = (theme: Theme): ThemedColors => {
   const {
@@ -63,35 +26,39 @@ const getStaticThemedColors = (theme: Theme): ThemedColors => {
     },
   } = color[theme];
 
-  const { baseColorDarken, contrastHighColorDarken, successColorDarken, errorColorDarken, hoverColorDarken } =
-    themedColorsDarkenMap[theme];
-
   return {
     baseColor,
-    baseColorDarken,
+    baseColorDarken: darkenColor(baseColor),
     brandColor,
     backgroundColor,
     backgroundSurfaceColor,
     contrastLowColor,
     contrastMediumColor,
     contrastHighColor,
-    contrastHighColorDarken,
+    contrastHighColorDarken: darkenColor(contrastHighColor),
     hoverColor,
-    hoverColorDarken,
+    hoverColorDarken: darkenColor(hoverColor),
     activeColor,
     focusColor,
     disabledColor,
     errorColor,
-    errorColorDarken,
+    errorColorDarken: darkenColor(errorColor),
     errorSoftColor,
     successColor,
-    successColorDarken,
+    successColorDarken: darkenColor(successColor),
     successSoftColor,
     warningColor,
     warningSoftColor,
     neutralColor,
     neutralSoftColor,
   };
+};
+
+const themedColorsMap: { [key in Theme]: ThemedColors } = {
+  light: getStaticThemedColors('light'),
+  dark: getStaticThemedColors('dark'),
+  'light-electric': getStaticThemedColors('light-electric'),
+  'dark-electric': getStaticThemedColors('dark-electric'),
 };
 
 const formatValues = (obj: object): string => {
@@ -106,17 +73,12 @@ const generateColorsMap = (): void => {
   const targetFilename = 'colors.ts';
   const targetPath = path.resolve(targetDirectory, targetFilename);
 
-  const themedColorsMap = `const themedColorsMap: { [key in Theme]: ThemedColors } = ${formatValues({
-    light: getStaticThemedColors('light'),
-    dark: getStaticThemedColors('dark'),
-    'light-electric': getStaticThemedColors('light-electric'),
-    'dark-electric': getStaticThemedColors('dark-electric'),
-  })};`;
+  const content = `const themedColorsMap: { [key in Theme]: ThemedColors } = ${formatValues(themedColorsMap)};`;
 
   const fileContent = fs.readFileSync(targetPath, 'utf8');
   const newFileContent = fileContent.replace(
     /(\/\* Auto Generated Start \*\/\s)(?:.|\s)*?(\s\/\* Auto Generated End \*\/)/,
-    `$1${themedColorsMap}$2`
+    `$1${content}$2`
   );
   fs.writeFileSync(targetPath, newFileContent);
   console.log(`Injected static colors map into '${targetPath}'`);
