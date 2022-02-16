@@ -12,6 +12,7 @@ export const getInnerManifest = (trademark?: boolean): InnerManifest =>
   MARQUES_MANIFEST[`porscheMarque${trademark ? 'Trademark' : ''}`];
 
 export const buildSrcSet = (innerManifest: InnerManifest, size: MarqueSize, format: MarqueFormat): string =>
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   Object.entries(innerManifest[size])
     .map(([resolution, fileName]) => `${cdnBaseUrl}/${fileName[format]} ${resolution}`)
     .join(',');
