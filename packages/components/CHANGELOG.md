@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Fixed
+- `Modal` focus trap respecting elements in shadow DOM and dynamically added/removed elements on first level
+- `TabsItem` focus outline on click in Safari
+
 ### [2.9.0-rc.0] - 2022-02-16
 
 #### Added
@@ -21,9 +25,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - <link rel="stylesheet" href={getFontFaceStylesheet({ withoutTags: true })} crossOrigin="true" />
 + {getFontFaceStylesheet({ format: 'jsx' })}
 ```
-
-#### Fixed
-- `Modal` focus trap respecting elements in shadow DOM and dynamically added/removed elements on root level
 
 ### [2.9.0-beta.1] - 2022-01-27
 
