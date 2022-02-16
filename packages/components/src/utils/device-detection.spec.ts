@@ -35,7 +35,7 @@ describe('isIos()', () => {
     [{ platform: 'MacIntel', maxTouchPoints: 2 }, true],
     [{ platform: 'Win32' }, false],
     [{ platform: 'Win32', maxTouchPoints: 2 }, false],
-  ])('should for navigator %j return %s', (navigator: Navigator, result) => {
+  ])('should for navigator %o equal %s', (navigator: Navigator, result) => {
     jest.spyOn(window, 'navigator', 'get').mockImplementation(() => navigator);
     expect(isIos()).toBe(result);
   });
