@@ -1,5 +1,4 @@
-import type { Theme, ThemeDefault } from '@porsche-design-system/utilities-v2';
-import type { FormState } from '../types';
+import type { Theme } from '@porsche-design-system/utilities-v2';
 // eslint-disable-next-line no-restricted-imports
 import { color } from '@porsche-design-system/utilities-v2';
 
@@ -130,16 +129,4 @@ const themedColorsMap: { [key in Theme]: ThemedColors } = {
 
 export const getThemedColors = (theme: Theme): ThemedColors => {
   return themedColorsMap[theme];
-};
-
-type ThemedFormStateColors = {
-  formStateColor: string | undefined; // form state: "none" => undefined
-  formStateHoverColor: string | undefined; // form state: "none" => undefined
-};
-
-export const getThemedFormStateColors = (theme: ThemeDefault, state: FormState): ThemedFormStateColors => {
-  return {
-    formStateColor: getThemedColors(theme)[`${state}Color`],
-    formStateHoverColor: getThemedColors(theme)[`${state}ColorDarken`],
-  };
 };

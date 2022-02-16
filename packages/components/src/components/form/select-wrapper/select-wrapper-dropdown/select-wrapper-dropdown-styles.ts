@@ -2,17 +2,10 @@ import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper
 import type { FormState, Theme } from '../../../../types';
 import type { JssStyle, Styles } from 'jss';
 import { getCss, isThemeDark, mergeDeep } from '../../../../utils';
-import {
-  getInset,
-  getTextHiddenJssStyle,
-  getTransition,
-  pxToRemWithUnit,
-  getThemedColors,
-  getThemedFormStateColors,
-} from '../../../../styles';
+import { getInset, getTextHiddenJssStyle, getTransition, pxToRemWithUnit, getThemedColors } from '../../../../styles';
 import { fontFamily, fontSize, fontWeight, textSmall } from '@porsche-design-system/utilities-v2';
 import { OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
-import { INPUT_HEIGHT } from '../../../../styles/form-styles';
+import { getThemedFormStateColors, INPUT_HEIGHT } from '../../../../styles/form-styles';
 
 const { baseColor: themeLightBaseColor, backgroundSurfaceColor: themeLightBackgroundSurfaceColor } =
   getThemedColors('light');
