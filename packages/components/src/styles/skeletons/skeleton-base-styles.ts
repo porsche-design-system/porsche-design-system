@@ -17,11 +17,11 @@ export const getSkeletonElementHeight = (height: number, withLabel = true): stri
 export const getPseudoElementStyles = (): Styles => {
   return {
     position: 'absolute',
+    left: '0',
     content: '""',
     visibility: 'visible',
-    left: '0',
-    animation: 'pulse 2s linear infinite',
     background: `${SKELETON_COLOR_THEME_PLACEHOLDER}`,
+    animation: 'pulse 2s linear infinite',
   };
 };
 

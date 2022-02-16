@@ -2,7 +2,9 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 const patchStencil = (): void => {
-  const FIELDSET_TAG_NAME = 'p-fieldset-wrapper';
+  const tagNamesToAddSlotTo = ['p-fieldset-wrapper', 'p-text-list'];
+  const tagNamesToAddSlotToAsString = `[${tagNamesToAddSlotTo.map((x) => `'${x}'`).join(', ')}]`;
+
   const rootDirectory = path.resolve(__dirname, '../../../');
   const stencilIndexFilePath = path.resolve(rootDirectory, 'node_modules/@stencil/core/internal/client', 'index.js');
   const stencilIndexFile = fs.readFileSync(stencilIndexFilePath, 'utf-8');
@@ -10,22 +12,27 @@ const patchStencil = (): void => {
   const removeSkeletonFirstChild = 'elm.shadowRoot.removeChild(elm.shadowRoot.firstChild);';
 
   if (!stencilIndexFile.includes(removeSkeletonFirstChild)) {
-    const skeletonSlotScript = `                        if (cmpMeta.$tagName$ === '${FIELDSET_TAG_NAME}') {
+    const addSkeletonSlotScript = `                        if (${tagNamesToAddSlotToAsString}.includes(cmpMeta.$tagName$)) {
                           const skeletonSlot = document.createElement('slot');
                           self.shadowRoot.appendChild(skeletonSlot)
                         }
 `;
-    const removeSkeletonSlotScript = `    if (elm.tagName.includes('${FIELDSET_TAG_NAME.toUpperCase()}')) {
+    const removeSkeletonSlotScript = `    const hasPatchedSkeletonSlot = ${tagNamesToAddSlotToAsString}.some(tagName => {
+        const tagNameRegExp = new RegExp(\`\${tagName.toUpperCase()}(?!-)\`);
+        return elm.tagName.match(tagNameRegExp);
+    });
+    if (hasPatchedSkeletonSlot) {
+        console.log(elm.shadowRoot);
         ${removeSkeletonFirstChild}
     }
 `;
 
     const patchedStencilIndexFile = stencilIndexFile
-      .replace(/(self\.attachShadow\(\{ mode: 'open' \}\);\n.*?\}\n)/g, `$1${skeletonSlotScript}`) // add skeleton slot script
+      .replace(/(self\.attachShadow\(\{ mode: 'open' \}\);\n.*?\}\n)/g, `$1${addSkeletonSlotScript}`) // add skeleton slot script
       .replace(/(.*?if \(BUILD\.style && isInitialLoad\) \{)/g, `${removeSkeletonSlotScript}$1`); // remove skeleton slot script
 
     fs.writeFileSync(stencilIndexFilePath, patchedStencilIndexFile);
-    process.stdout.write(`Successfully patched skeleton slot for ${FIELDSET_TAG_NAME} into stencil.\n`);
+    process.stdout.write(`Successfully patched skeleton slot for ${tagNamesToAddSlotToAsString} into stencil.\n`);
   }
 };
 
