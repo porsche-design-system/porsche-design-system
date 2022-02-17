@@ -19,9 +19,10 @@ type ThemedFormStateColors = {
 };
 
 export const getThemedFormStateColors = (theme: ThemeDefault, state: FormState): ThemedFormStateColors => {
+  const themedColors = getThemedColors(theme);
   return {
-    formStateColor: getThemedColors(theme)[`${state}Color`],
-    formStateHoverColor: getThemedColors(theme)[`${state}ColorDarken`],
+    formStateColor: themedColors[`${state}Color`],
+    formStateHoverColor: themedColors[`${state}ColorDarken`],
   };
 };
 
