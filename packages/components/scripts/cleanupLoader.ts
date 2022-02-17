@@ -17,6 +17,10 @@ const cleanupLoader = () => {
   const fileContent = fs.readFileSync(filePath, 'utf8');
   const [, browserImport] = /export \{.*?isBrowser(?:\$1)? as (\w+).*?};/.exec(fileContent) || [];
 
+  if (browserImport === undefined) {
+    throw new Error('browserImport could not be extracted.');
+  }
+
   const isBrowserImport = `import { ${browserImport} as isBrowser } from './${fileName}'`;
 
   const content = `${lazyImport};
