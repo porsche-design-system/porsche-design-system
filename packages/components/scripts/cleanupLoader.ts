@@ -12,7 +12,7 @@ const cleanupLoader = () => {
 
   const directory = path.resolve(srcFilePath, '..');
   // find the file that contains definition of isBrowser util
-  const [fileName] = fs.readdirSync(directory).filter((el) => !!el.match(/^jss-[\d\w]*.js$/));
+  const [fileName] = fs.readdirSync(directory).filter((el) => !!el.match(/^ssr-handling-[\d\w]*.js$/));
   const filePath = path.resolve(directory, fileName);
   const fileContent = fs.readFileSync(filePath, 'utf8');
   const [, browserImport] = /export \{.*?isBrowser(?:\$1)? as (\w+).*?};/.exec(fileContent) || [];
