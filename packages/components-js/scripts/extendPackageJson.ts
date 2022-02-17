@@ -8,7 +8,7 @@ const pkgJson = require('../dist/components-wrapper/package.json');
 
 // add dependency
 Object.assign(pkgJson, {
-  dependencies: { '@porsche-design-system/components-js/utilities-jss': 'file:utilities/jss' },
+  dependencies: { '@porsche-design-system/utilities-jss': 'file:utilities/jss' },
 });
 
 fs.writeFileSync(path.resolve(targetDirectory, 'package.json'), JSON.stringify(pkgJson, null, 2));
