@@ -40,7 +40,7 @@ export class SelectWrapper {
   @Prop() public message?: string = '';
 
   /** Show or hide label. For better accessibility it is recommended to show the label. */
-  @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
+  @Prop({ reflect: true }) public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Filters select options by typing a character */
   @Prop() public filter?: boolean = false;
