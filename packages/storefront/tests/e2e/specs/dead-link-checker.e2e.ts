@@ -124,12 +124,12 @@ const linkCheckLoop = async (): Promise<{ amount: number; invalidUrls: string[] 
   return { amount: links.length, invalidUrls };
 };
 
-it('should check all a tags for correct response', async () => {
+it('should open all links and check headline', async () => {
   await page.goto(baseURL, { waitUntil: 'networkidle0' });
   const { amount, invalidUrls } = await linkCheckLoop();
   console.log('Whitelisted Urls', whitelistedUrls);
   console.log('Invalid Urls', invalidUrls);
 
   expect(invalidUrls.length, 'invalidUrls').toBe(0);
-  expect(amount, 'amount').toBeLessThanOrEqual(400); // detect exponential increase of links, e.g. table of contents
+  expect(amount, 'amount').toBeLessThanOrEqual(420); // detect exponential increase of links, e.g. table of contents
 });
