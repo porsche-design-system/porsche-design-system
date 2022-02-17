@@ -1,26 +1,46 @@
-import { Page } from 'puppeteer';
+import type { ElementHandle, Page } from 'puppeteer';
 import { baseURL } from '../helpers';
 
-const console = require('console');
+const console = require('console'); // workaround for nicer logs
 jest.setTimeout(2147483647);
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
-const getHref = (el: Element): string => el.getAttribute('href');
 const getBodyLinks = () => page.$$('body [href]');
 const getMarkdownLinks = () => page.$$('.markdown [href]');
+const evaluateGetHref = (handle: ElementHandle<Element>): Promise<string> =>
+  handle.evaluate((el) => el.getAttribute('href'));
+
+const mapAsync = <T, U>(array: T[], callbackFn: (value: T, index: number, array: T[]) => Promise<U>): Promise<U[]> => {
+  return Promise.all(array.map(callbackFn));
+};
+
+const filterAsync = async <T>(
+  array: T[],
+  callbackFn: (value: T, index: number, array: T[]) => Promise<boolean>
+): Promise<T[]> => {
+  const filterMap = await mapAsync(array, callbackFn);
+  return array.filter((value, index) => filterMap[index]);
+};
 
 const scanForLinks = async (): Promise<string[]> => {
   const bodyLinks = await getBodyLinks();
 
-  const bodyHrefs: string[] = await Promise.all(bodyLinks.map((x) => x.evaluate(getHref)));
+  const bodyHrefs: string[] = await mapAsync(
+    // get rid of toc links since anchor links lead to the same page they where found on
+    await filterAsync(
+      bodyLinks,
+      async (link) => (await link.evaluate((x) => x.parentElement.parentElement.parentElement.className)) !== 'toc'
+    ),
+    evaluateGetHref
+  );
 
   const markdownLinks = await getMarkdownLinks();
-  const markdownHrefs: string[] = await Promise.all(markdownLinks.map((x) => x.evaluate(getHref)));
+  const markdownHrefs: string[] = await mapAsync(markdownLinks, evaluateGetHref);
 
-  const markdownHrefsStartingWithSlash = markdownHrefs.filter((url: string) => url.startsWith('/'));
+  const markdownHrefsStartingWithSlash = markdownHrefs.filter((url) => url.startsWith('/'));
   if (markdownHrefsStartingWithSlash.length) {
     console.error('Link(s) starting with "/" were found:', markdownHrefsStartingWithSlash);
   }
@@ -56,7 +76,7 @@ const whitelistedUrls: string[] = [
   'sketch://add-library?url=https%3A%2F%2Fdesignsystem.porsche.com%2Fporsche-design-system-web.sketch.xml',
 ];
 
-const linkCheckLoop = async () => {
+const linkCheckLoop = async (): Promise<{ amount: number; invalidUrls: string[] }> => {
   const invalidUrls: string[] = [];
   let links = await scanForLinks();
 
@@ -101,13 +121,15 @@ const linkCheckLoop = async () => {
       invalidUrls.push(href);
     }
   }
-  return invalidUrls;
+  return { amount: links.length, invalidUrls };
 };
 
 it('should check all a tags for correct response', async () => {
   await page.goto(baseURL, { waitUntil: 'networkidle0' });
-  const invalidUrls = await linkCheckLoop();
+  const { amount, invalidUrls } = await linkCheckLoop();
   console.log('Whitelisted Urls', whitelistedUrls);
   console.log('Invalid Urls', invalidUrls);
+
   expect(invalidUrls.length, 'invalidUrls').toBe(0);
+  expect(amount, 'amount').toBeLessThanOrEqual(400); // detect exponential increase of links, e.g. table of contents
 });
