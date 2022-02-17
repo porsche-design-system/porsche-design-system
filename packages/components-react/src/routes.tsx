@@ -42,6 +42,11 @@ export const routes: RouteType[] = [
     element: <fromPages.EventsPage />,
   },
   {
+    name: 'Modal Focus Cycle',
+    path: '/modal-focus-cycle',
+    element: <fromPages.ModalFocusCyclePage />,
+  },
+  {
     name: 'Stencil Lifecycle',
     path: '/stencil-lifecycles',
     element: <fromPages.StencilLifecyclesPage />,
