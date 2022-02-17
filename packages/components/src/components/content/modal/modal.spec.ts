@@ -1,5 +1,7 @@
 import { Modal } from './modal';
 import * as modalUtils from './modal-utils';
+import * as domUtils from '../../../utils/dom';
+import { FirstAndLastFocusableElement } from './modal-utils';
 
 jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
@@ -10,74 +12,82 @@ describe('modal', () => {
   beforeEach(() => {
     component = new Modal();
     component.host = document.createElement('p-modal');
+    component.host.attachShadow({ mode: 'open' });
+    component['closeBtn'] = document.createElement('button');
   });
 
-  describe('connectedCallback', () => {
+  describe('componentDidLoad', () => {
+    let getFirstAndLastFocusableElementSpy: jest.SpyInstance;
+    const focusableElements: FirstAndLastFocusableElement = [
+      document.createElement('button'),
+      document.createElement('button'),
+    ];
+
+    beforeEach(() => {
+      getFirstAndLastFocusableElementSpy = jest
+        .spyOn(modalUtils, 'getFirstAndLastFocusableElement')
+        .mockImplementation(() => focusableElements);
+
+      jest.spyOn(domUtils, 'getShadowRootHTMLElement').mockImplementation(() => document.createElement('slot'));
+    });
+
     it('should call setScrollLock() if modal is open', () => {
-      component.open = true;
       const utilsSpy = jest.spyOn(modalUtils, 'setScrollLock');
+      component.open = true;
+      component.componentDidLoad();
 
-      component.connectedCallback();
-
-      expect(utilsSpy).toHaveBeenCalledWith(component.host, true, expect.anything());
+      expect(utilsSpy).toHaveBeenCalledWith(component.host, true, component['closeBtn'], component['closeModal']);
     });
 
     it('should not call setScrollLock() if modal is not open', () => {
       const utilsSpy = jest.spyOn(modalUtils, 'setScrollLock');
-
-      component.connectedCallback();
+      component.componentDidLoad();
 
       expect(utilsSpy).not.toHaveBeenCalled();
     });
   });
 
-  describe('componentDidLoad', () => {
-    it('should call getFocusableElements()', () => {
-      const spy = jest.spyOn(modalUtils, 'getFocusableElements');
-
-      component.componentDidLoad();
-
-      expect(spy).toBeCalledWith(component.host, undefined);
-    });
-  });
-
   describe('componentWillRender', () => {
-    it('should call warnIfAriaAndHeadingPropsAreUndefined() and not call hasSlottedHeading()', () => {
-      const spyWarnIfAriaAndHeadingPropsAreUndefined = jest.spyOn(modalUtils, 'warnIfAriaAndHeadingPropsAreUndefined');
-      const spyHasSlottedHeading = jest.spyOn(modalUtils, 'hasSlottedHeading');
-      component.heading = 'Some Heading';
-      component.host.attachShadow({ mode: 'open' });
+    beforeEach(() => {
+      jest.spyOn(console, 'warn').mockImplementation(() => {});
+    });
 
+    it('should call warnIfAriaAndHeadingPropsAreUndefined()', () => {
+      const warnIfAriaAndHeadingPropsAreUndefinedSpy = jest.spyOn(modalUtils, 'warnIfAriaAndHeadingPropsAreUndefined');
       component.componentWillRender();
 
-      expect(spyWarnIfAriaAndHeadingPropsAreUndefined).toBeCalledWith(
+      expect(warnIfAriaAndHeadingPropsAreUndefinedSpy).toBeCalledWith(
         component.host,
         component.heading,
         component.aria
       );
-      expect(spyHasSlottedHeading).toHaveBeenCalledTimes(0);
     });
 
-    it('should call hasSlottedHeading() when no heading is provided', () => {
-      const spyHasSlottedHeading = jest.spyOn(modalUtils, 'hasSlottedHeading');
+    it('should not call hasNamedSlot() when heading is provided', () => {
+      const hasNamedSlotSpy = jest.spyOn(domUtils, 'hasNamedSlot');
+      component.heading = 'Some Heading';
+      component.componentWillRender();
+
+      expect(hasNamedSlotSpy).not.toHaveBeenCalled();
+    });
+
+    it('should call hasNamedSlot() when no heading is provided', () => {
+      const hasNamedSlotSpy = jest.spyOn(domUtils, 'hasNamedSlot');
       const header = document.createElement('header');
       header.slot = 'heading';
       component.host.appendChild(header);
-      component.host.attachShadow({ mode: 'open' });
-
       component.componentWillRender();
 
-      expect(spyHasSlottedHeading).toHaveBeenCalledWith(component.host);
+      expect(hasNamedSlotSpy).toHaveBeenCalledWith(component.host, 'heading');
     });
   });
 
   describe('disconnectedCallback', () => {
     it('should call setScrollLock()', () => {
       const utilsSpy = jest.spyOn(modalUtils, 'setScrollLock');
-
       component.disconnectedCallback();
 
-      expect(utilsSpy).toHaveBeenCalledWith(component.host, false, expect.anything());
+      expect(utilsSpy).toHaveBeenCalledWith(component.host, false);
     });
   });
 });

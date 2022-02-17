@@ -71,22 +71,21 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
   }: GetFocusStylesOptions = {
     color: 'currentColor',
     offset: 2,
-    pseudo: undefined,
     ...opts,
   };
 
   return pseudo
     ? {
-        outline: 'transparent none',
+        outline: 0,
         '&::-moz-focus-inner': {
           border: 0,
         },
         [`&${pseudo}`]: {
-          outline: 'transparent solid 1px',
-          outlineOffset: `${outlineOffset}px`,
           content: '""',
           position: 'absolute',
           ...getInset(),
+          outline: '1px solid transparent',
+          outlineOffset: `${outlineOffset}px`,
         },
         [`&:focus${pseudo}`]: {
           outlineColor,
@@ -96,10 +95,10 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
         },
       }
     : {
-        outline: 'transparent solid 1px',
+        outline: '1px solid transparent',
         outlineOffset: `${outlineOffset}px`,
         '&::-moz-focus-inner': {
-          border: '0',
+          border: 0,
         },
         '&:focus': {
           outlineColor,
@@ -191,7 +190,7 @@ export const getTextHiddenJssStyle = (isHidden: boolean): JssStyle =>
 export const getFormTextHiddenJssStyle = (isHidden: boolean): JssStyle => ({
   ...getTextHiddenJssStyle(isHidden),
   width: 'fit-content',
-  padding: `0 0 ${pxToRemWithUnit(4)} 0`,
+  padding: `0 0 ${pxToRemWithUnit(4)}`,
 });
 
 export const getFormCheckboxRadioHiddenJssStyle = (isHidden: boolean): JssStyle => ({
