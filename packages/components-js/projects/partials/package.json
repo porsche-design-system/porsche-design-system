@@ -50,12 +50,12 @@
     "@porsche-design-system/styles": "0.0.0"
   },
   "devDependencies": {
-    "@rollup/plugin-typescript": "^8.2.5",
-    "@types/html-minifier": "^4.0.1",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "@types/html-minifier": "^4.0.2",
     "html-minifier": "^4.0.0",
-    "rollup": "^2.56.1",
+    "rollup": "^2.67.2",
     "tslib": "^2.3.0",
-    "typescript": "~4.4.3"
+    "typescript": "~4.5.5"
   },
   "files": [
     "dist/"
