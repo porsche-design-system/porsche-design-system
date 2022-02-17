@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 const patchStencil = (): void => {
-  const tagNamesToAddSlotTo = ['p-fieldset-wrapper', 'p-text-list'];
+  const tagNamesToAddSlotTo = ['p-fieldset-wrapper', 'p-text-list', 'p-text-list-item'];
   const tagNamesToAddSlotToAsString = `[${tagNamesToAddSlotTo.map((x) => `'${x}'`).join(', ')}]`;
 
   const rootDirectory = path.resolve(__dirname, '../../../');

@@ -1,15 +1,16 @@
-import { withoutTagsOption } from './utils';
+import { joinArrayElementsToString, withoutTagsOption } from './utils';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
-import { joinArrayElementsToString } from './utils';
 import {
   getButtonLinkPureSkeletonCss,
   getButtonLinkSkeletonCss,
   getCheckboxRadioWrapperSkeletonCss,
-  getFieldsetTextListWrapperSkeletonCss,
+  getFieldsetWrapperSkeletonCss,
   getHeadlineSkeletonCss,
   getSelectTextFieldWrapperSkeletonCss,
-  getTextAndTextListSkeletonCss,
   getTextareaWrapperSkeletonCss,
+  getTextListItemSkeletonCss,
+  getTextListSkeletonCss,
+  getTextSkeletonCss,
   SKELETON_COLOR_THEME_PLACEHOLDER,
   SKELETON_LINEAR_GRADIENT_COLOR_1,
   SKELETON_LINEAR_GRADIENT_COLOR_2,
@@ -56,10 +57,12 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
     'p-button|p-link': getButtonLinkSkeletonCss(),
     'p-button-pure|p-link-pure': getButtonLinkPureSkeletonCss(),
     'p-checkbox-wrapper|p-radio-button-wrapper': getCheckboxRadioWrapperSkeletonCss(),
-    'p-fieldset-wrapper|p-text-list': getFieldsetTextListWrapperSkeletonCss(),
+    'p-fieldset-wrapper': getFieldsetWrapperSkeletonCss(),
     'p-headline': getHeadlineSkeletonCss(),
     'p-select-wrapper|p-text-field-wrapper': getSelectTextFieldWrapperSkeletonCss(),
-    'p-text|p-text-list-item': getTextAndTextListSkeletonCss(),
+    'p-text': getTextSkeletonCss(),
+    'p-text-list': getTextListSkeletonCss(),
+    'p-text-list-item': getTextListItemSkeletonCss(),
     'p-textarea-wrapper': getTextareaWrapperSkeletonCss(),
   };
 

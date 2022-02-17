@@ -1,7 +1,7 @@
-import { getTextAndTextListSkeletonCss } from './text-skeleton-styles';
+import { getTextSkeletonCss } from './text-skeleton-styles';
 
 describe('getTextSkeletonCss()', () => {
   it('should return correct css', () => {
-    expect(getTextAndTextListSkeletonCss()).toMatchSnapshot();
+    expect(getTextSkeletonCss()).toMatchSnapshot();
   });
 });
