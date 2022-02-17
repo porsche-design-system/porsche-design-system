@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Added
+- `getInitialStyles` now accepts a `skeletonComponents` array of component names that will initially have skeleton styles while the Porsche Design System is loading
+- `Button`, `Button Pure`, `Checkbox Wrapper`, `Fieldset Wrapper`, `Headline`, `Link`, `Link Pure`, `Radio Button Wrapper`, `Select Wrapper`, `Text Field Wrapper`, `Text List`, `Text List Item`, `Textarea Wrapper` can now have skeleton styles based on their default attributes
 - `getFontFaceStylesheet` returns additional `<link>` tags with `rel="preconnect"` and `rel="dns-prefetch"`
 - Option `format` to partials `getFontFaceStylesheet`, `getComponentChunkLinks()`, `getFontLinks()`, `getIconLinks()`, `getInitialStyles()`, `getLoaderScript()` and `getMetaTagsAndIconLinks()`
 
