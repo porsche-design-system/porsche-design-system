@@ -15,14 +15,6 @@ export const getSelectTextFieldWrapperSkeletonCss = (): string => {
           minWidth: pxToRemWithUnit(BUTTON_LINK_SKELETON_WIDTH),
           height: getSkeletonElementHeight(ELEMENT_SKELETON_HEIGHT),
           ...getBaseSkeletonStyles(),
-          '&[hide-label=true]': {
-            '&::before': {
-              content: 'none',
-            },
-            '&::after': {
-              top: 0,
-            },
-          },
         },
       },
     },
