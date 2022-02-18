@@ -12,7 +12,7 @@ import { isVisibleFormState } from '../../../utils/form-state';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { getCheckboxRadioLabelJssStyle } from '../../../styles/checkbox-radio-styles';
-import { getThemedFormStateColors } from '../../../styles/form-styles';
+import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,

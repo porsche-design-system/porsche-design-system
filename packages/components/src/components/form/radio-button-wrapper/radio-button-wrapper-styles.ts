@@ -13,7 +13,7 @@ import { getFunctionalComponentRequiredStyles } from '../../common/required/requ
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { buildSlottedStyles, getCss } from '../../../utils';
 import { isVisibleFormState } from '../../../utils/form-state';
-import { getThemedFormStateColors } from '../../../styles/form-styles';
+import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 
 const theme: Theme = 'light';
 
