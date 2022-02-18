@@ -41,6 +41,7 @@ Object {
       "role": "StaticText",
     },
   ],
+  "focused": true,
   "modal": true,
   "name": "Some Heading",
   "role": "dialog",
