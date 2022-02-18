@@ -6,7 +6,7 @@ const targetDirectory = path.resolve(rootDirectory, 'dist/components-wrapper');
 
 const pkgJson = require('../dist/components-wrapper/package.json');
 
-// add dependency
+// add dependencies to package.json
 Object.assign(pkgJson, {
   dependencies: { '@porsche-design-system/partials': 'file:partials' },
 });
