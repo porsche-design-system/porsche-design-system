@@ -10,21 +10,9 @@ import {
   getTransition,
   pxToRemWithUnit,
 } from './';
-import { textSmall, ThemeDefault } from '@porsche-design-system/utilities-v2';
+import { textSmall } from '@porsche-design-system/utilities-v2';
 import { isVisibleFormState } from '../utils/form-state';
-
-type ThemedFormStateColors = {
-  formStateColor: string | undefined; // form state: "none" => undefined
-  formStateHoverColor: string | undefined; // form state: "none" => undefined
-};
-
-export const getThemedFormStateColors = (theme: ThemeDefault, state: FormState): ThemedFormStateColors => {
-  const themedColors = getThemedColors(theme);
-  return {
-    formStateColor: themedColors[`${state}Color`],
-    formStateHoverColor: themedColors[`${state}ColorDarken`],
-  };
-};
+import { getThemedFormStateColors } from './form-state-color-styles';
 
 const { disabledColor: lightThemeDisabledColor } = getThemedColors('light');
 

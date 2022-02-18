@@ -1,17 +1,4 @@
-import { getBaseChildStyles, getLabelStyles, getThemedFormStateColors } from './form-styles';
-
-describe('getThemedFormStateColors()', () => {
-  it.each<Parameters<typeof getThemedFormStateColors>>([
-    ['light', 'none'],
-    ['light', 'success'],
-    ['light', 'error'],
-    ['dark', 'none'],
-    ['dark', 'success'],
-    ['dark', 'error'],
-  ])('should return correct colors for theme: %o and state: %o', (theme, state) => {
-    expect(getThemedFormStateColors(theme, state)).toMatchSnapshot();
-  });
-});
+import { getBaseChildStyles, getLabelStyles } from './form-styles';
 
 describe('getBaseChildStyles()', () => {
   it.each<Parameters<typeof getBaseChildStyles>>([
