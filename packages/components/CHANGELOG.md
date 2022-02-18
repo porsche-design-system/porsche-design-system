@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [2.9.0-rc.1] - 2022-02-17
 
 #### Fixed
+- `Modal` focus trap respecting elements in shadow DOM and dynamically added/removed elements on first level
+- `TabsItem` focus outline on click in Safari
 - error while using partials in Vanilla JS and Angular
 
 ### [2.9.0-rc.0] - 2022-02-16

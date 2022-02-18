@@ -25,7 +25,7 @@ exports[`should have no basic DOM regression for p-banner 1`] = `
     color: inherit !important;
     text-decoration: underline !important;
     transition: color var(--p-transition-duration, .24s) ease !important;
-    outline: transparent solid 1px !important;
+    outline: 1px solid transparent !important;
     outline-offset: 1px !important
   }
 
@@ -67,7 +67,7 @@ exports[`should have no basic DOM regression for p-button 1`] = `
     color: inherit !important;
     text-decoration: underline !important;
     transition: color var(--p-transition-duration, .24s) ease !important;
-    outline: transparent solid 1px !important;
+    outline: 1px solid transparent !important;
     outline-offset: 1px !important
   }
 
@@ -124,7 +124,7 @@ exports[`should have no basic DOM regression for p-button-pure 1`] = `
     color: inherit !important;
     text-decoration: underline !important;
     transition: color var(--p-transition-duration, .24s) ease !important;
-    outline: transparent solid 1px !important;
+    outline: 1px solid transparent !important;
     outline-offset: 1px !important
   }
 
@@ -233,7 +233,7 @@ exports[`should have no basic DOM regression for p-inline-notification 1`] = `
     color: inherit !important;
     text-decoration: underline !important;
     transition: color var(--p-transition-duration, .24s) ease !important;
-    outline: transparent solid 1px !important;
+    outline: 1px solid transparent !important;
     outline-offset: 1px !important
   }
 
@@ -285,7 +285,7 @@ exports[`should have no basic DOM regression for p-link 1`] = `
     color: inherit !important;
     text-decoration: underline !important;
     transition: color var(--p-transition-duration, .24s) ease !important;
-    outline: transparent solid 1px !important;
+    outline: 1px solid transparent !important;
     outline-offset: 1px !important
   }
 
@@ -335,7 +335,7 @@ exports[`should have no basic DOM regression for p-link-pure 1`] = `
     color: inherit !important;
     text-decoration: underline !important;
     transition: color var(--p-transition-duration, .24s) ease !important;
-    outline: transparent solid 1px !important;
+    outline: 1px solid transparent !important;
     outline-offset: 1px !important
   }
 
@@ -385,7 +385,7 @@ exports[`should have no basic DOM regression for p-link-social 1`] = `
     color: inherit !important;
     text-decoration: underline !important;
     transition: color var(--p-transition-duration, .24s) ease !important;
-    outline: transparent solid 1px !important;
+    outline: 1px solid transparent !important;
     outline-offset: 1px !important
   }
 
@@ -440,7 +440,7 @@ exports[`should have no basic DOM regression for p-marque 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-modal 1`] = `
-"<div class=\\"root\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\">
+"<div class=\\"root\\" role=\\"dialog\\" aria-modal=\\"true\\" aria-hidden=\\"true\\" tabindex=\\"-1\\">
   <p-button-pure class=\\"close hydrated\\">
     Close modal</p-button-pure>
   <slot>
@@ -515,7 +515,7 @@ exports[`should have no basic DOM regression for p-switch 1`] = `
     color: inherit !important;
     text-decoration: underline !important;
     transition: color var(--p-transition-duration, .24s) ease !important;
-    outline: transparent solid 1px !important;
+    outline: 1px solid transparent !important;
     outline-offset: 1px !important
   }
 
