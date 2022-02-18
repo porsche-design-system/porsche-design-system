@@ -1,18 +1,29 @@
 import typescript from '@rollup/plugin-typescript';
-import { nodeResolve } from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
 import pkg from './package.json';
+
+const input = 'src/index.ts';
+const external = ['react/jsx-runtime'];
 
 export default [
   {
-    input: 'src/index.ts',
+    input,
+    external,
     output: {
       esModule: false,
       dir: 'dist',
       format: 'umd',
       name: pkg.name,
       exports: 'named',
+      globals: {
+        'react/jsx-runtime': 'jsxRuntime',
+      },
     },
-    plugins: [typescript({ declaration: true, declarationDir: 'dist', rootDir: 'src' }), nodeResolve(), commonjs()],
+    plugins: [typescript({ declaration: true, declarationDir: 'dist', rootDir: 'src' })],
+  },
+  {
+    input,
+    external,
+    output: { dir: 'dist/esm', format: 'esm' },
+    plugins: [typescript()],
   },
 ];
