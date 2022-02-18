@@ -4,6 +4,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { color } from '@porsche-design-system/utilities-v2';
 import tinycolor2 from 'tinycolor2';
+import { pascalCase } from 'change-case';
 
 const darkenColor = (color: string) => tinycolor2(color).darken(12).toHexString();
 
@@ -54,17 +55,48 @@ const getStaticThemedColors = (theme: Theme): ThemedColors => {
   };
 };
 
-const themedColorsMap: { [key in Theme]: ThemedColors } = {
+const themes: { [key in Theme]: ThemedColors } = {
   light: getStaticThemedColors('light'),
   dark: getStaticThemedColors('dark'),
   'light-electric': getStaticThemedColors('light-electric'),
   'dark-electric': getStaticThemedColors('dark-electric'),
 };
 
-const formatValues = (obj: object): string => {
-  return JSON.stringify(obj, null, 2)
+const objectToConst = (obj: object, constName: string): string =>
+  Object.entries(obj)
+    .map(
+      ([theme, colors]) =>
+        `const ${constName + pascalCase(theme)} = ${formatValues(theme as Theme, colors as ThemedColors)};`
+    )
+    .concat(
+      `export const ${constName}s = {
+  ${Object.keys(obj)
+    .map((key) => `'${key}': ${constName + pascalCase(key)}`)
+    .join(',\n  ')}
+};`
+    )
+    .join('\n\n');
+
+const formatValues = (theme: Theme, colors: ThemedColors): string => {
+  const res = Object.fromEntries(
+    Object.entries(colors).filter(([key, color]) => {
+      const { light: lightTheme, dark: darkTheme } = themes;
+      return (
+        ['light', 'dark'].includes(theme) ||
+        // @ts-ignore
+        (/light-/i.test(theme) && lightTheme[key] !== color) ||
+        // @ts-ignore
+        (/dark-/i.test(theme) && darkTheme[key] !== color)
+      );
+    })
+  );
+
+  return JSON.stringify(res, null, 2)
+    .replace(/{/, () => {
+      return ['light', 'dark'].includes(theme) ? '{' : `{\n  ...theme${/light-/i.test(theme) ? 'Light' : 'Dark'},`; // object composition with base themes
+    })
     .replace(/"([a-zA-Z]+)":/g, '$1:') // remove quotes around keys that don't need it
-    .replace(/"/g, "'"); // replace quotes
+    .replace(/"/g, "'"); // replace quotes;
 };
 
 const generateColorsMap = (): void => {
@@ -73,7 +105,7 @@ const generateColorsMap = (): void => {
   const targetFilename = 'colors.ts';
   const targetPath = path.resolve(targetDirectory, targetFilename);
 
-  const content = `const themedColorsMap: { [key in Theme]: ThemedColors } = ${formatValues(themedColorsMap)};`;
+  const content = objectToConst(themes, 'theme');
 
   const fileContent = fs.readFileSync(targetPath, 'utf8');
   const newFileContent = fileContent.replace(
