@@ -2,13 +2,11 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 const rootDirectory = path.resolve(__dirname, '..');
-const targetDirectory = path.resolve(rootDirectory, 'dist');
 
 // read and remove props from package.json
 const propsToRemove = [
   'private',
   'scope',
-  'sideEffects',
   'author',
   'contributors',
   'license',
@@ -35,4 +33,4 @@ Object.keys(pkgJson['dependencies']).forEach((key) => {
 const propsToClean = ['main', 'module', 'types'];
 propsToClean.forEach((prop) => (pkgJson[prop] = pkgJson[prop].replace('dist/', '')));
 
-fs.writeFileSync(path.resolve(targetDirectory, 'package.json'), JSON.stringify(pkgJson, null, 2));
+fs.writeFileSync(path.resolve(rootDirectory, 'package.template.json'), JSON.stringify(pkgJson, null, 2));
