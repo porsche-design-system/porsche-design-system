@@ -1,6 +1,6 @@
 import type { Theme } from '@porsche-design-system/utilities-v2';
 
-type ThemedColorsKey =
+type ThemedColor =
   | 'baseColor'
   | 'baseColorDarken'
   | 'brandColor'
@@ -26,7 +26,7 @@ type ThemedColorsKey =
   | 'neutralColor'
   | 'neutralSoftColor';
 
-export type ThemedColors = { [key in ThemedColorsKey]: string };
+export type ThemedColors = { [key in ThemedColor]: string };
 
 /* Auto Generated Start */
 const themeLight = {
@@ -99,7 +99,7 @@ const themeDarkElectric = {
   activeColor: '#00b0f4'
 };
 
-export const themes = {
+const themes = {
   'light': themeLight,
   'dark': themeDark,
   'light-electric': themeLightElectric,
