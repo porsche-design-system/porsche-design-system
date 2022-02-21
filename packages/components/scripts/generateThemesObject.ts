@@ -63,13 +63,10 @@ const themes: { [key in Theme]: ThemedColors } = {
 };
 
 const objectToConst = (obj: object, constName: string): string =>
-  Object.entries(obj)
-    .map(
-      ([theme, colors]) =>
-        `const ${constName + pascalCase(theme)} = ${formatValues(theme as Theme, colors as ThemedColors)};`
-    )
+  (Object.entries(obj) as [Theme, ThemedColors][])
+    .map(([theme, colors]) => `const ${constName + pascalCase(theme)} = ${formatValues(theme, colors)};`)
     .concat(
-      `export const ${constName}s = {
+      `const ${constName}s = {
   ${Object.keys(obj)
     .map((key) => `'${key}': ${constName + pascalCase(key)}`)
     .join(',\n  ')}
@@ -78,28 +75,34 @@ const objectToConst = (obj: object, constName: string): string =>
     .join('\n\n');
 
 const formatValues = (theme: Theme, colors: ThemedColors): string => {
-  const res = Object.fromEntries(
-    Object.entries(colors).filter(([key, color]) => {
+  const isBaseTheme = ['light', 'dark'].includes(theme);
+
+  // reduce themed colors object for themes other than base theme 'light' and 'dark'
+  const reducedThemedColors: Partial<ThemedColors> = Object.fromEntries(
+    (Object.entries(colors) as [keyof ThemedColors, string][]).filter(([key, color]) => {
       const { light: lightTheme, dark: darkTheme } = themes;
       return (
-        ['light', 'dark'].includes(theme) ||
-        // @ts-ignore
-        (/light-/i.test(theme) && lightTheme[key] !== color) ||
-        // @ts-ignore
-        (/dark-/i.test(theme) && darkTheme[key] !== color)
+        isBaseTheme ||
+        (/^light-/i.test(theme) && lightTheme[key] !== color) ||
+        (/^dark-/i.test(theme) && darkTheme[key] !== color)
       );
     })
   );
 
-  return JSON.stringify(res, null, 2)
-    .replace(/{/, () => {
-      return ['light', 'dark'].includes(theme) ? '{' : `{\n  ...theme${/light-/i.test(theme) ? 'Light' : 'Dark'},`; // object composition with base themes
-    })
+  // clean up colors object
+  let result = JSON.stringify(reducedThemedColors, null, 2)
     .replace(/"([a-zA-Z]+)":/g, '$1:') // remove quotes around keys that don't need it
-    .replace(/"/g, "'"); // replace quotes;
+    .replace(/"/g, "'"); // replace quotes
+
+  // colors object composition with base themes
+  if (!isBaseTheme) {
+    result = result.replace(/^{/, `{\n  ...theme${/dark-/i.test(theme) ? 'Dark' : 'Light'},`);
+  }
+
+  return result;
 };
 
-const generateColorsMap = (): void => {
+const generateThemesObject = (): void => {
   const rootDirectory = path.resolve(__dirname, '..');
   const targetDirectory = path.resolve(rootDirectory, './src/styles');
   const targetFilename = 'colors.ts';
@@ -116,4 +119,4 @@ const generateColorsMap = (): void => {
   console.log(`Injected static colors map into '${targetPath}'`);
 };
 
-generateColorsMap();
+generateThemesObject();
