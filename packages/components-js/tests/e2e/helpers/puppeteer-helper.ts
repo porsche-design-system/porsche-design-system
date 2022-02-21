@@ -173,6 +173,10 @@ export const getActiveElementTagNameInShadowRoot = async (element: ElementHandle
   return element.evaluate((el) => el.shadowRoot.activeElement.tagName);
 };
 
+export const getActiveElementClassNameInShadowRoot = async (element: ElementHandle): Promise<string> => {
+  return element.evaluate((el) => el.shadowRoot.activeElement.className);
+};
+
 export const getActiveElementId = async (page: Page): Promise<string> => {
   return page.evaluate(() => document.activeElement.id);
 };
