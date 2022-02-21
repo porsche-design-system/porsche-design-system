@@ -32,7 +32,7 @@ export default {
     }),
     // patch conditions into build to allow opt out of CDN requests
     modify({
-      // tracking pixel and font-face css
+      // font-face css
       find: /appGlobals\.globalScripts\(\);/,
       replace: (match) => `if(!window.PDS_SKIP_FETCH) { ${match} }`,
     }),
