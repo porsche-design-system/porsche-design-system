@@ -110,11 +110,11 @@ export const getIconStyles: GetStylesFunction = (hideLabel: boolean): JssStyle =
 export const getLabelStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel
     ? {
-        width: 1,
-        height: 1,
+        width: '1px',
+        height: '1px',
         margin: '0 0 0 -1px',
         overflow: 'hidden',
-        textIndent: -1,
+        textIndent: '-1px',
       }
     : {
         width: '100%',

@@ -23,7 +23,7 @@ export const getComponentCss = (color: DividerColor, orientation: DividerOrienta
         textAlign: 'left',
         background: colorMap[color],
         ...buildResponsiveStyles(orientation, (o: DividerOrientation) =>
-          o === 'horizontal' ? { height: 1, width: '100%' } : { height: '100%', width: 1 }
+          o === 'horizontal' ? { height: '1px', width: '100%' } : { height: '100%', width: '1px' }
         ),
       },
     },
