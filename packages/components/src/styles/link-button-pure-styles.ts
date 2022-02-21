@@ -88,7 +88,7 @@ const getSlottedAnchorVisibilityStyles: GetStylesFunction = (hideLabel: boolean)
         position: 'absolute',
         ...getInset(),
         whiteSpace: 'nowrap',
-        textIndent: -999999,
+        textIndent: '-999999px',
       }
     : {
         position: 'static',
