@@ -26,7 +26,7 @@ export class Button {
   @Element() public host!: HTMLElement;
 
   /** To remove the element from tab order.
-   * @deprecated since v2.8.0, use tabindex="-1" instead
+   * @deprecated since v2.8.0, use `tabindex="-1"` instead
    */
   @Prop() public tabbable?: boolean = true;
 
