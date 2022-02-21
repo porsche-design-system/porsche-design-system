@@ -5,12 +5,12 @@ import { addImportantToRule, getFocusStyles, mediaQuery, getThemedColors } from 
 
 const baseSizes: { [key in Exclude<MarqueSize, 'responsive'>]: Pick<JssStyle, 'height' | 'width'> } = {
   small: {
-    width: 100,
-    height: 60,
+    width: '100px',
+    height: '60px',
   },
   medium: {
-    width: 120,
-    height: 72,
+    width: '120px',
+    height: '72px',
   },
 };
 

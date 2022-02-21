@@ -112,7 +112,7 @@ export const getComponentCss = (
       position: 'absolute',
       top: 0,
       height: '100%',
-      width: 1,
+      width: '1px',
       visibility: 'hidden',
       '&:first-of-type': {
         left: 0,
@@ -124,7 +124,7 @@ export const getComponentCss = (
     action: {
       display: 'flex',
       position: 'absolute',
-      top: 4,
+      top: '4px',
       transform: 'translate3d(0,0,0)',
       '&--prev': {
         left: 0,
@@ -146,7 +146,7 @@ export const getComponentCss = (
     },
     gradient: {
       position: 'absolute',
-      top: -4,
+      top: '-4px',
       bottom: '-.5em',
       width: '2em',
       pointerEvents: 'none',

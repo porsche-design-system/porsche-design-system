@@ -15,13 +15,13 @@ import type { JssStyle, Styles } from 'jss';
 
 describe('getCss()', () => {
   const data: { input: Styles; result: string }[] = [
-    { input: { ':host': { display: 'block', marginLeft: 5 } }, result: ':host{display:block;margin-left:5px}' },
+    { input: { ':host': { display: 'block', marginLeft: '5px' } }, result: ':host{display:block;margin-left:5px}' },
     {
       input: { ':host': { display: 'block', marginLeft: '5px !important' } },
       result: ':host{display:block;margin-left:5px !important}',
     },
     {
-      input: { ':host': { display: 'block', width: 500, transition: 'width .25s ease' } },
+      input: { ':host': { display: 'block', width: '500px', transition: 'width .25s ease' } },
       result: ':host{display:block;width:500px;transition:width .25s ease}',
     },
     {

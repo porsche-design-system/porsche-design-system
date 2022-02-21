@@ -28,7 +28,7 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
       button: {
         position: 'absolute',
         top: 0,
-        height: INPUT_HEIGHT,
+        height: `${INPUT_HEIGHT}px`,
         width: '100%',
         padding: 0,
         background: 'transparent',
@@ -192,7 +192,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
           top: 'calc(100%-3px)',
           opacity: 0,
           overflow: 'hidden',
-          height: 1,
+          height: '1px',
           pointerEvents: 'none',
         }),
       },

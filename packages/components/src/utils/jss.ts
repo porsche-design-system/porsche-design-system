@@ -4,7 +4,6 @@ import type { Breakpoint } from '../styles';
 import type { JssStyle, Rule, Styles } from 'jss';
 import { create } from 'jss';
 import jssPluginCamelCase from 'jss-plugin-camel-case';
-import jssPluginDefaultUnit from 'jss-plugin-default-unit';
 import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
@@ -29,7 +28,6 @@ const jss = create({
     jssPluginGlobal(),
     jssPluginNested(),
     jssPluginCamelCase(),
-    jssPluginDefaultUnit(),
     jssPluginSortMediaQueries({ combineMediaQueries: true }),
   ],
 });
