@@ -14,7 +14,6 @@ import {
   SKELETON_COLOR_THEME_PLACEHOLDER,
 } from '../../../../components/src/styles/skeletons';
 
-// TODO: use array of components to provide skeletons
 // TODO: remove skeleton styles after all are hydrated
 
 const skeletonChunkNamesTypeLiteral = joinArrayElementsToString(TAG_NAMES_WITH_SKELETON, ' | ');

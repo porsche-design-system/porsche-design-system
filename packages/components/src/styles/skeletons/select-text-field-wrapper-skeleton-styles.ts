@@ -12,15 +12,17 @@ export const getSelectTextFieldWrapperSkeletonCss = (): string => {
     '@global': {
       'p-select-wrapper, p-text-field-wrapper': {
         '&:not(.hydrated)': {
+          ...getBaseSkeletonStyles(),
           minWidth: pxToRemWithUnit(BUTTON_LINK_SKELETON_WIDTH),
           height: getSkeletonElementHeight(ELEMENT_SKELETON_HEIGHT),
-          ...getBaseSkeletonStyles(),
-          '&[hide-label=true]': {
+          '&[hide-label=true], &.PDS-Skeleton--hide-label': {
+            height: getSkeletonElementHeight(ELEMENT_SKELETON_HEIGHT, false),
             '&::before': {
               content: 'none',
             },
             '&::after': {
               top: 0,
+              minHeight: '100%',
             },
           },
         },
