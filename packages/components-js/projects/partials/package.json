@@ -34,11 +34,12 @@
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "scripts": {
-    "build": "yarn clean:build && yarn build:partials && yarn build:package && yarn build:generatePackageJson && yarn build:copyToComponentsJs",
+    "build": "yarn clean:build && yarn build:partials && yarn build:package && yarn build:generatePackageJsonTemplate && yarn build:copyPackageJsonTemplate && yarn build:copyToComponentsJs",
     "build:package": "rollup -c rollup.config.js",
     "build:partials": "ts-node scripts/buildPartials.ts",
     "build:copyToComponentsJs": "TARGET=../../dist/components-wrapper/partials && rm -rf $TARGET && mkdir -p $TARGET && cp -r ./dist/. $TARGET",
-    "build:generatePackageJson": "ts-node scripts/generatePackageJson.ts",
+    "build:copyPackageJsonTemplate": "cp package.template.json ./dist/package.json",
+    "build:generatePackageJsonTemplate": "ts-node scripts/generatePackageJsonTemplate.ts",
     "test": "yarn test:unit",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
     "test:watch": "yarn test --watch",
