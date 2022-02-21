@@ -5,18 +5,22 @@ import {
   addImportantToEachRule,
   contentWrapperVars,
   getBaseSlottedStyles,
+  getFocusStyles,
   getInset,
   getThemedColors,
   mediaQuery,
   pxToRemWithUnit,
 } from '../../../styles';
 import { MODAL_Z_INDEX } from '../../../constants';
+import { getFocusVisibleFallback } from '../../../styles/focus-visible-fallback';
 
+const mediaQueryM = mediaQuery('m');
+const mediaQueryXl = mediaQuery('xl');
+const mediaQueryXxl = mediaQuery('xxl');
 const { backgroundColor: lightThemeBackgroundColor } = getThemedColors('light');
 const { backgroundColor: darkThemeBackgroundColor } = getThemedColors('dark');
 
 const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
-const { maxWidth, margin, marginXl, marginXxl } = contentWrapperVars;
 export const stretchToFullModalWidthClassName = 'stretch-to-full-modal-width';
 
 export const getFullscreenStyles: GetStylesFunction = (fullscreen: boolean): JssStyle => {
@@ -29,9 +33,9 @@ export const getFullscreenStyles: GetStylesFunction = (fullscreen: boolean): Jss
       }
     : {
         minWidth: pxToRemWithUnit(272),
-        maxWidth,
+        maxWidth: contentWrapperVars.maxWidth,
         minHeight: 'auto',
-        margin: `7vh ${margin}`,
+        margin: `7vh ${contentWrapperVars.margin}`,
       };
 };
 
@@ -41,21 +45,31 @@ export const isFullscreenForXl = (fullscreen: BreakpointCustomizable<boolean>): 
   if (typeof fullscreenParsed === 'boolean') {
     return fullscreenParsed;
   } else {
-    const entries = Object.entries(fullscreenParsed);
-    const lastTrueBreakpoint = entries
-      .filter(([, val]) => val)
-      .map(([key]) => key)
-      .pop() as BreakpointKey;
-    const lastFalseBreakpoint = entries
-      .filter(([, val]) => !val)
-      .map(([key]) => key)
-      .pop() as BreakpointKey;
+    const entries = Object.entries(fullscreenParsed) as [BreakpointKey, boolean][];
+    const [lastTrueBreakpoint] = entries.filter(([, val]) => val).pop() || [];
+    const [lastFalseBreakpoint] = entries.filter(([, val]) => !val).pop() || [];
 
     return BREAKPOINTS.indexOf(lastTrueBreakpoint) > BREAKPOINTS.indexOf(lastFalseBreakpoint);
   }
 };
 
-const getMargin = (marginValue: number): string => `0 ${pxToRemWithUnit(marginValue)} 0`;
+const getSlottedJssStyle = (marginValue: number, hasHeader: boolean): JssStyle => {
+  const marginRem = pxToRemWithUnit(-marginValue);
+  return {
+    [`&(.${stretchToFullModalWidthClassName})`]: {
+      width: `calc(100% + ${pxToRemWithUnit(marginValue * 2)})`,
+      margin: `0 ${marginRem}`,
+    },
+    ...(!hasHeader && {
+      [`&(.${stretchToFullModalWidthClassName}:first-child)`]: {
+        marginTop: marginRem,
+      },
+    }),
+    [`&(.${stretchToFullModalWidthClassName}:last-child)`]: {
+      marginBottom: marginRem,
+    },
+  };
+};
 
 export const getComponentCss = (
   open: boolean,
@@ -93,90 +107,53 @@ export const getComponentCss = (
         background: `${darkThemeBackgroundColor}e6`, // e6 = 0.9 alpha
       }),
     },
-    root: mergeDeep(buildResponsiveStyles(fullscreen, getFullscreenStyles), {
-      position: 'relative',
-      boxSizing: 'border-box',
-      transition: `transform .6s ${transitionTimingFunction}`,
-      transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
-      padding: pxToRemWithUnit(32),
-      backgroundColor: lightThemeBackgroundColor,
-      [mediaQuery('m')]: {
-        padding: pxToRemWithUnit(40),
+    root: mergeDeep(
+      {
+        position: 'relative',
+        boxSizing: 'border-box',
+        transition: `transform .6s ${transitionTimingFunction}`,
+        transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
+        padding: pxToRemWithUnit(32),
+        backgroundColor: lightThemeBackgroundColor,
+        ...getFocusVisibleFallback(getFocusStyles({ color: lightThemeBackgroundColor })),
+        [mediaQueryM]: {
+          padding: pxToRemWithUnit(40),
+        },
+        [mediaQueryXl]: {
+          margin: isFullscreenForXlAndXxl ? 0 : `10vh ${contentWrapperVars.marginXl}`,
+        },
+        [mediaQueryXxl]: {
+          padding: pxToRemWithUnit(64),
+          margin: isFullscreenForXlAndXxl ? 0 : `10vh ${contentWrapperVars.marginXxl}`,
+        },
       },
-      [mediaQuery('xl')]: {
-        margin: isFullscreenForXlAndXxl ? 0 : `10vh ${marginXl}`,
-      },
-      [mediaQuery('xxl')]: {
-        padding: pxToRemWithUnit(64),
-        margin: isFullscreenForXlAndXxl ? 0 : `10vh ${marginXxl}`,
-      },
-    }),
+      buildResponsiveStyles(fullscreen, getFullscreenStyles) as any
+    ),
     ...(hasHeader && {
       header: {
-        ...(!disableCloseButton && {
-          margin: `0 ${pxToRemWithUnit(32)} 0 0`,
-        }),
         padding: `0 0 ${pxToRemWithUnit(16)}`,
-        [mediaQuery('m')]: {
+        ...(!disableCloseButton && { margin: `0 ${pxToRemWithUnit(32)} 0 0` }),
+        [mediaQueryM]: {
           padding: `0 0 ${pxToRemWithUnit(24)}`,
         },
-        [mediaQuery('xxl')]: {
+        [mediaQueryXxl]: {
           padding: `0 0 ${pxToRemWithUnit(32)}`,
           ...(!disableCloseButton && { margin: 0 }),
         },
       },
     }),
-
     '::slotted': addImportantToEachRule({
-      [`&(.${stretchToFullModalWidthClassName})`]: {
-        width: `calc(100% + ${pxToRemWithUnit(64)})`,
-        margin: getMargin(-32),
-      },
-      ...(!hasHeader && {
-        [`&(.${stretchToFullModalWidthClassName}:first-child)`]: {
-          marginTop: pxToRemWithUnit(-32),
-        },
-      }),
-      [`&(.${stretchToFullModalWidthClassName}:last-child)`]: {
-        marginBottom: pxToRemWithUnit(-32),
-      },
-      [mediaQuery('m')]: {
-        [`&(.${stretchToFullModalWidthClassName})`]: {
-          width: `calc(100% + ${pxToRemWithUnit(80)})`,
-          margin: getMargin(-40),
-        },
-        ...(!hasHeader && {
-          [`&(.${stretchToFullModalWidthClassName}:first-child)`]: {
-            marginTop: pxToRemWithUnit(-40),
-          },
-        }),
-        [`&(.${stretchToFullModalWidthClassName}:last-child)`]: {
-          marginBottom: pxToRemWithUnit(-40),
-        },
-      },
-      [mediaQuery('xxl')]: {
-        [`&(.${stretchToFullModalWidthClassName})`]: {
-          width: `calc(100% + ${pxToRemWithUnit(128)})`,
-          margin: getMargin(-64),
-        },
-        ...(!hasHeader && {
-          [`&(.${stretchToFullModalWidthClassName}:first-child)`]: {
-            marginTop: pxToRemWithUnit(-64),
-          },
-        }),
-        [`&(.${stretchToFullModalWidthClassName}:last-child)`]: {
-          marginBottom: pxToRemWithUnit(-64),
-        },
-      },
+      ...getSlottedJssStyle(32, hasHeader),
+      [mediaQueryM]: getSlottedJssStyle(40, hasHeader),
+      [mediaQueryXxl]: getSlottedJssStyle(64, hasHeader),
     }),
-
     close: {
       position: 'absolute',
       top: 0,
       right: 0,
       padding: pxToRemWithUnit(8),
       border: `${pxToRemWithUnit(6)} solid ${lightThemeBackgroundColor}`,
-      backgroundColor: lightThemeBackgroundColor,
+      background: lightThemeBackgroundColor,
     },
   });
 };
