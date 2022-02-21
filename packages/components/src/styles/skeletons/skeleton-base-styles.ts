@@ -2,11 +2,11 @@ import { Styles } from 'jss';
 import { pxToRemWithUnit } from '../common-styles';
 
 export const SKELETON_COLOR_THEME_PLACEHOLDER = 'PDS_REPLACE_WITH_THEME_COLOR';
-export const SKELETON_LINEAR_GRADIENT_COLOR_1 = 'PDS_REPLACE_WITH_LINEAR_GRADIENT_1';
-export const SKELETON_LINEAR_GRADIENT_COLOR_2 = 'PDS_REPLACE_WITH_LINEAR_GRADIENT_2';
+
 // Firefox has the widest input field with 192px
 // to prevent layout shift when shadow dom is appended
 export const BUTTON_LINK_SKELETON_WIDTH = 192;
+
 export const ELEMENT_SKELETON_HEIGHT = 48;
 export const LABEL_HEIGHT = 24;
 export const LABEL_HEIGHT_WITH_SPACING = 28;
@@ -32,7 +32,7 @@ export const getPseudoElementStyles = (): Styles => {
     content: '""',
     visibility: 'visible',
     background: `${SKELETON_COLOR_THEME_PLACEHOLDER}`,
-    animation: 'pulse 2s linear infinite',
+    animation: 'opacity 1.5s ease-in-out infinite',
   };
 };
 
