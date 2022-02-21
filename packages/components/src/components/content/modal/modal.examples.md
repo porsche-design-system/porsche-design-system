@@ -7,6 +7,12 @@ Modals are flexible in the context and can include other components of the Porsc
 It is a controlled component.
 This grants you flexible control over the Modal's behavior especially whether it should stay open after user interaction like submission of a form.
 
+<p-inline-notification heading="Important note" state="warning" persistent="true">
+  This component activates a focus trap to keep the focus within while being open.<br>
+  This is achieved by detecting the first and last focusable child element after the modal is opened.<br>
+  Further DOM changes like adding or removing DOM nodes can only be detected on the first level, hence direct children of the modal. 
+</p-inline-notification>
+
 <TableOfContents></TableOfContents>
 
 ## Basic
@@ -246,7 +252,6 @@ const ModalPage = (): JSX.Element => {
 <style scoped lang="scss">
   @import '~@porsche-design-system/utilities/scss';
 
-  
   ::v-deep .footer {  
     padding: p-px-to-rem(32px) 0 0;
   }
