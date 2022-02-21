@@ -12,8 +12,6 @@ import {
   getTextListSkeletonCss,
   getTextSkeletonCss,
   SKELETON_COLOR_THEME_PLACEHOLDER,
-  SKELETON_LINEAR_GRADIENT_COLOR_1,
-  SKELETON_LINEAR_GRADIENT_COLOR_2,
 } from '../../../../components/src/styles/skeletons';
 
 // TODO: use array of components to provide skeletons
@@ -51,7 +49,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
   theme?: 'light' | 'dark';
 }`;
 
-  const skeletonKeyframes = '@keyframes pulse{0%{opacity:1}50%{opacity: 0.75}}100%{opacity:1}';
+  const skeletonKeyframes = '@keyframes opacity{0%{opacity:0.35}50%{opacity:0.15}100%{opacity:0.35}';
 
   const skeletonStyles = {
     'p-button|p-link': getButtonLinkSkeletonCss(),
@@ -154,15 +152,13 @@ Please use only valid component chunk names:
     const unusedSkeletonTagName = new RegExp(\`((?:,)*\${tagName}:not\\\\(\\\\.hydrated\\\\)(?:\\\\:\\\\:(?:after|before))*)\`, 'g');
     skeletonStyles = skeletonStyles.replace(unusedSkeletonTagName, '');
   });
-
-  skeletonStyles = skeletonStyles.replace(/${SKELETON_COLOR_THEME_PLACEHOLDER}/g,\`\${theme === 'light' ? '#E3E4E5': '#626669'}\`);
-  skeletonStyles = skeletonStyles.replace(/${SKELETON_LINEAR_GRADIENT_COLOR_1}/g,\`\${theme === 'light' ? '#E3E4E5': '#656871'}\`);
-  skeletonStyles = skeletonStyles.replace(/${SKELETON_LINEAR_GRADIENT_COLOR_2}/g,\`\${theme === 'light' ? '#0000000d': '#888b94'}\`);
+  skeletonStyles = skeletonStyles.replace(/${SKELETON_COLOR_THEME_PLACEHOLDER}/g,\`\${theme === 'light' ? '#626669': '#b0b1b2'}\`);
 
   const result = skeletonStyles + \`\${prefixedTagNamesWithSkeleton.length ? '${skeletonKeyframes}' : ''}\`;
   // escape the "at" sign for sed replace command to work properly
   return result.replace(/(@)/g, '\\\\$1');
 };`;
+  // TODO: find a way to use getThemedColors(theme).contrastMediumColor
 
   const helperFunction = `const getPrefixedTagNames = (tagNames: string[], prefix?: string): string[] => {
   return prefix ? tagNames.map((x) => \`\${prefix}-\${x}\`) : tagNames;
