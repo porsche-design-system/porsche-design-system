@@ -1,196 +1,112 @@
-import type { Theme, ThemeDefault } from '@porsche-design-system/utilities-v2';
-import type { FormState, TextColor } from '../types';
-// eslint-disable-next-line no-restricted-imports
-import { color } from '@porsche-design-system/utilities-v2';
+import type { Theme } from '@porsche-design-system/utilities-v2';
 
-type ThemedColorsKey =
+type ThemedColor =
   | 'baseColor'
+  | 'baseColorDarken'
   | 'brandColor'
   | 'backgroundColor'
   | 'backgroundSurfaceColor'
   | 'contrastLowColor'
   | 'contrastMediumColor'
   | 'contrastHighColor'
+  | 'contrastHighColorDarken'
   | 'hoverColor'
+  | 'hoverColorDarken'
   | 'activeColor'
   | 'focusColor'
   | 'disabledColor'
   | 'errorColor'
+  | 'errorColorDarken'
   | 'errorSoftColor'
   | 'successColor'
+  | 'successColorDarken'
   | 'successSoftColor'
   | 'warningColor'
   | 'warningSoftColor'
   | 'neutralColor'
   | 'neutralSoftColor';
 
-type ThemedColors = { [key in ThemedColorsKey]: string };
+export type ThemedColors = { [key in ThemedColor]: string };
 
-// TODO: try to abstract from ThemedColors
-type ThemedColorsDarken = {
-  [K in keyof Pick<
-    ThemedColors,
-    'baseColor' | 'contrastHighColor' | 'successColor' | 'errorColor' | 'hoverColor'
-  > as `${K}Darken`]: string;
+/* Auto Generated Start */
+const themeLight = {
+  baseColor: '#000',
+  baseColorDarken: '#000000',
+  brandColor: '#d5001c',
+  backgroundColor: '#fff',
+  backgroundSurfaceColor: '#f2f2f2',
+  contrastLowColor: '#e3e4e5',
+  contrastMediumColor: '#626669',
+  contrastHighColor: '#323639',
+  contrastHighColorDarken: '#151718',
+  hoverColor: '#d5001c',
+  hoverColorDarken: '#980014',
+  activeColor: '#d5001c',
+  focusColor: 'currentColor',
+  disabledColor: '#96989a',
+  errorColor: '#e00000',
+  errorColorDarken: '#a30000',
+  errorSoftColor: '#fae6e6',
+  successColor: '#018a16',
+  successColorDarken: '#014d0c',
+  successSoftColor: '#e5f3e7',
+  warningColor: '#ff9b00',
+  warningSoftColor: '#fff5e5',
+  neutralColor: '#0061bd',
+  neutralSoftColor: '#e5eff8'
 };
 
-// TODO: build colors during build step
-const getStaticThemedColors = (theme: Theme): ThemedColors => {
-  const {
-    base: baseColor,
-    brand: brandColor,
-    background: { base: backgroundColor, surface: backgroundSurfaceColor },
-    contrast: { low: contrastLowColor, medium: contrastMediumColor, high: contrastHighColor },
-    state: { hover: hoverColor, active: activeColor, focus: focusColor, disabled: disabledColor },
-    notification: {
-      error: errorColor,
-      errorSoft: errorSoftColor,
-      success: successColor,
-      successSoft: successSoftColor,
-      warning: warningColor,
-      warningSoft: warningSoftColor,
-      neutral: neutralColor,
-      neutralSoft: neutralSoftColor,
-    },
-  } = color[theme];
-
-  return {
-    baseColor,
-    brandColor,
-    backgroundColor,
-    backgroundSurfaceColor,
-    contrastLowColor,
-    contrastMediumColor,
-    contrastHighColor,
-    hoverColor,
-    activeColor,
-    focusColor,
-    disabledColor,
-    errorColor,
-    errorSoftColor,
-    successColor,
-    successSoftColor,
-    warningColor,
-    warningSoftColor,
-    neutralColor,
-    neutralSoftColor,
-  };
+const themeDark = {
+  baseColor: '#fff',
+  baseColorDarken: '#e0e0e0',
+  brandColor: '#d5001c',
+  backgroundColor: '#0e1418',
+  backgroundSurfaceColor: '#262b2e',
+  contrastLowColor: '#4a4e51',
+  contrastMediumColor: '#b0b1b2',
+  contrastHighColor: '#e3e4e5',
+  contrastHighColorDarken: '#c3c5c8',
+  hoverColor: '#ff0223',
+  hoverColorDarken: '#c4001a',
+  activeColor: '#ff0223',
+  focusColor: 'currentColor',
+  disabledColor: '#7c7f81',
+  errorColor: '#fc1717',
+  errorColorDarken: '#d30303',
+  errorSoftColor: '#fec5c5',
+  successColor: '#01ba1d',
+  successColorDarken: '#017d14',
+  successSoftColor: '#bfeec6',
+  warningColor: '#ff9b00',
+  warningSoftColor: '#ffe6bf',
+  neutralColor: '#2193ff',
+  neutralSoftColor: '#c7e4ff'
 };
 
-// color map is created once, which boosts performance instead of reinitializing it each time within function call
-const themedColorsMap: { [key in Theme]: ThemedColors } = {
-  light: getStaticThemedColors('light'),
-  dark: getStaticThemedColors('dark'),
-  'light-electric': getStaticThemedColors('light-electric'),
-  'dark-electric': getStaticThemedColors('dark-electric'),
+const themeLightElectric = {
+  ...themeLight,
+  brandColor: '#00b0f4',
+  hoverColor: '#00b0f4',
+  hoverColorDarken: '#0084b7',
+  activeColor: '#00b0f4'
 };
+
+const themeDarkElectric = {
+  ...themeDark,
+  brandColor: '#00b0f4',
+  hoverColor: '#00b0f4',
+  hoverColorDarken: '#0084b7',
+  activeColor: '#00b0f4'
+};
+
+const themes = {
+  'light': themeLight,
+  'dark': themeDark,
+  'light-electric': themeLightElectric,
+  'dark-electric': themeDarkElectric
+};
+/* Auto Generated End */
 
 export const getThemedColors = (theme: Theme): ThemedColors => {
-  return themedColorsMap[theme];
-};
-
-const themeLightDarken: ThemedColorsDarken = {
-  baseColorDarken: '#000',
-  contrastHighColorDarken: '#151718',
-  successColorDarken: '#014d0c',
-  errorColorDarken: '#a30000',
-  hoverColorDarken: '#980014',
-};
-
-const themeDarkDarken: ThemedColorsDarken = {
-  baseColorDarken: '#e0e0e0',
-  contrastHighColorDarken: '#c3c5c8',
-  successColorDarken: '#017d14',
-  errorColorDarken: '#d30303',
-  hoverColorDarken: '#c4001a',
-};
-
-const themeLightElectricDarken: ThemedColorsDarken = {
-  ...themeLightDarken,
-  hoverColorDarken: '#0084b7',
-};
-
-const themeDarkElectricDarken: ThemedColorsDarken = {
-  ...themeDarkDarken,
-  hoverColorDarken: '#0084b7',
-};
-
-// color map is created once, which boosts performance instead of reinitializing it each time within function call
-const themedColorsDarkenMap: { [key in Theme]: ThemedColorsDarken } = {
-  light: themeLightDarken,
-  dark: themeDarkDarken,
-  'light-electric': themeLightElectricDarken,
-  'dark-electric': themeDarkElectricDarken,
-};
-
-export const getThemedColorsDarken = (theme: Theme): ThemedColorsDarken => {
-  return themedColorsDarkenMap[theme];
-};
-
-type ThemedFormStateColors = {
-  formStateColor: string | undefined; // form state: "none" => undefined
-  formStateHoverColor: string | undefined; // form state: "none" => undefined
-};
-
-const getStaticThemedFormStateColors = (theme: ThemeDefault, state: FormState): ThemedFormStateColors => {
-  return {
-    formStateColor: getThemedColors(theme)[`${state}Color`],
-    formStateHoverColor: getThemedColorsDarken(theme)[`${state}ColorDarken`],
-  };
-};
-
-const themeLightFormState: { [key in FormState]: ThemedFormStateColors } = {
-  success: getStaticThemedFormStateColors('light', 'success'),
-  error: getStaticThemedFormStateColors('light', 'error'),
-  none: getStaticThemedFormStateColors('light', 'none'),
-};
-
-const themeDarkFormState: { [key in FormState]: ThemedFormStateColors } = {
-  success: getStaticThemedFormStateColors('dark', 'success'),
-  error: getStaticThemedFormStateColors('dark', 'error'),
-  none: getStaticThemedFormStateColors('dark', 'none'),
-};
-
-// color map is created once, which boosts performance instead of reinitializing it each time within function call
-const themedFormStateColorsMap: {
-  [themeDefault in ThemeDefault]: {
-    [formState in FormState]: ThemedFormStateColors;
-  };
-} = {
-  light: themeLightFormState,
-  dark: themeDarkFormState,
-};
-
-// TODO: Could also be part of getThemedColors()?
-export const getThemedFormStateColors = (theme: ThemeDefault, state: FormState): ThemedFormStateColors => {
-  return themedFormStateColorsMap[theme][state];
-};
-
-export const getThemedTextColors = (theme: Theme, textColor: TextColor): string => {
-  const {
-    baseColor,
-    brandColor,
-    contrastHighColor,
-    contrastMediumColor,
-    contrastLowColor,
-    successColor,
-    errorColor,
-    warningColor,
-    neutralColor,
-  } = getThemedColors(theme);
-
-  // TODO: isn't it more like a text/icon style mapper and should live somewhere else?
-  const colorMap: { [key in TextColor]: string } = {
-    brand: brandColor,
-    default: baseColor,
-    'neutral-contrast-high': contrastHighColor,
-    'neutral-contrast-medium': contrastMediumColor,
-    'neutral-contrast-low': contrastLowColor,
-    'notification-success': successColor,
-    'notification-warning': warningColor,
-    'notification-error': errorColor,
-    'notification-neutral': neutralColor,
-    inherit: 'currentColor',
-  };
-  return colorMap[textColor];
+  return themes[theme];
 };
