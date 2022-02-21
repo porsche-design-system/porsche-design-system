@@ -9,24 +9,21 @@ export const SKELETON_LINEAR_GRADIENT_COLOR_2 = 'PDS_REPLACE_WITH_LINEAR_GRADIEN
 export const BUTTON_LINK_SKELETON_WIDTH = 192;
 export const ELEMENT_SKELETON_HEIGHT = 48;
 export const LABEL_HEIGHT = 24;
-export const SMALL_TEXT_HEIGHT = 24;
 export const LABEL_HEIGHT_WITH_SPACING = 28;
-export const LINE_HEIGHT_SPACING_SMALL = 4;
 export const LINE_HEIGHT_SPACING = 6;
+export const LINE_HEIGHT_SPACING_SMALL = 4;
+export const SMALL_TEXT_HEIGHT = 28;
 
 export const getSkeletonElementHeight = (height: number, withLabel = true): string =>
   withLabel ? pxToRemWithUnit(height + LABEL_HEIGHT_WITH_SPACING) : pxToRemWithUnit(height);
 
-export const getElementBackgroundGradient = (elHeight: number) =>
-  `linear-gradient(transparent, transparent ${
-    elHeight > SMALL_TEXT_HEIGHT ? LINE_HEIGHT_SPACING : LINE_HEIGHT_SPACING_SMALL
-  }px, ${SKELETON_COLOR_THEME_PLACEHOLDER} ${
-    elHeight > SMALL_TEXT_HEIGHT ? LINE_HEIGHT_SPACING : LINE_HEIGHT_SPACING_SMALL
-  }px, ${SKELETON_COLOR_THEME_PLACEHOLDER} ${
+export const getElementBackgroundGradient = (elHeight: number) => {
+  const topGradientSpacing = `${elHeight > SMALL_TEXT_HEIGHT ? LINE_HEIGHT_SPACING : LINE_HEIGHT_SPACING_SMALL}px`;
+  const bottomGradientSpacing = `${
     elHeight > SMALL_TEXT_HEIGHT ? elHeight - LINE_HEIGHT_SPACING : elHeight - LINE_HEIGHT_SPACING_SMALL
-  }px, transparent ${
-    elHeight > SMALL_TEXT_HEIGHT ? elHeight - LINE_HEIGHT_SPACING : elHeight - LINE_HEIGHT_SPACING_SMALL
-  }px, transparent ${elHeight}px)`;
+  }px`;
+  return `linear-gradient(transparent, transparent ${topGradientSpacing}, ${SKELETON_COLOR_THEME_PLACEHOLDER} ${topGradientSpacing}, ${SKELETON_COLOR_THEME_PLACEHOLDER} ${bottomGradientSpacing}, transparent ${bottomGradientSpacing}, transparent ${elHeight}px)`;
+};
 
 export const getPseudoElementStyles = (): Styles => {
   return {
