@@ -50,12 +50,13 @@
     "Anton Schmidt <anton.schmidt@mhp.com>"
   ],
   "scripts": {
-    "preinstall": "yarn preinstall:assets && yarn preinstall:components-manager-cli && yarn preinstall:components-js && yarn preinstall:components-angular && yarn preinstall:components-react && yarn preinstall:shared",
+    "preinstall": "yarn preinstall:assets && yarn preinstall:components-manager-cli && yarn preinstall:components-js && yarn preinstall:partials && yarn preinstall:components-angular && yarn preinstall:components-react && yarn preinstall:shared",
     "preinstall:assets": "mkdir -p ./packages/assets/bin && touch ./packages/assets/bin/serve-cdn.js",
     "preinstall:components-manager-cli": "mkdir -p ./packages/components-js/projects/components-manager-cli/dist/bin && touch ./packages/components-js/projects/components-manager-cli/dist/bin/cm.js",
     "preinstall:components-js": "TARGET=./packages/components-js/dist/components-wrapper && mkdir -p $TARGET && cp ./packages/components-js/projects/components-wrapper/package.json $TARGET",
     "preinstall:components-angular": "TARGET=./packages/components-angular/dist/components-wrapper && mkdir -p $TARGET && cp ./packages/components-angular/projects/components-wrapper/package.json $TARGET",
     "preinstall:components-react": "TARGET=./packages/components-react/dist/components-wrapper && mkdir -p $TARGET && cp ./packages/components-react/projects/components-wrapper/package.json $TARGET",
+    "preinstall:partials": "TARGET=./packages/components-js/dist/components-wrapper/partials && mkdir -p $TARGET && cp ./packages/components-js/projects/partials/package.json $TARGET",
     "preinstall:shared": "TARGET=./packages/shared/dist && mkdir -p $TARGET && sed -E -e \"s@shared-src@shared@\" ./packages/shared/package.json > $TARGET/package.json",
     "start": "yarn start:storefront",
     "start:components": "yarn --cwd ./packages/components start",
