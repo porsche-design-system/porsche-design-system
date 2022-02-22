@@ -9,83 +9,83 @@ exports[`getComponentCss() should return correct css for direction: {
   xl: 'column'
 } 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 div {
-  display:flex;
-  margin-top:-1rem;
-  flex-flow:row wrap;
-  align-items:center;
-  margin-right:-0.5rem;
-  margin-left:-0.5rem;
+  display: flex;
+  margin-top: -1rem;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
 }
 ::slotted(*) {
-  margin-top:1rem !important;
-  margin-right:0.5rem !important;
-  margin-left:0.5rem !important;
+  margin-top: 1rem !important;
+  margin-right: 0.5rem !important;
+  margin-left: 0.5rem !important;
 }
-@media(min-width:480px) {
+@media (min-width: 480px) {
   div {
-    flex-flow:column nowrap;
-    align-items:stretch;
-    margin-right:0;
-    margin-left:0;
+    flex-flow: column nowrap;
+    align-items: stretch;
+    margin-right: 0;
+    margin-left: 0;
   }
   ::slotted(*) {
-    margin-right:0 !important;
-    margin-left:0 !important;
-  }
-}
-
-@media(min-width:760px) {
-  div {
-    flex-flow:row wrap;
-    align-items:center;
-    margin-right:-0.5rem;
-    margin-left:-0.5rem;
-  }
-  ::slotted(*) {
-    margin-right:0.5rem !important;
-    margin-left:0.5rem !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
   }
 }
 
-@media(min-width:1000px) {
+@media (min-width: 760px) {
   div {
-    flex-flow:column nowrap;
-    align-items:stretch;
-    margin-right:0;
-    margin-left:0;
+    flex-flow: row wrap;
+    align-items: center;
+    margin-right: -0.5rem;
+    margin-left: -0.5rem;
   }
   ::slotted(*) {
-    margin-right:0 !important;
-    margin-left:0 !important;
+    margin-right: 0.5rem !important;
+    margin-left: 0.5rem !important;
   }
 }
 
-@media(min-width:1300px) {
+@media (min-width: 1000px) {
   div {
-    flex-flow:row wrap;
-    align-items:center;
-    margin-right:-0.5rem;
-    margin-left:-0.5rem;
+    flex-flow: column nowrap;
+    align-items: stretch;
+    margin-right: 0;
+    margin-left: 0;
   }
   ::slotted(*) {
-    margin-right:0.5rem !important;
-    margin-left:0.5rem !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
   }
 }
 
-@media(min-width:1760px) {
+@media (min-width: 1300px) {
   div {
-    flex-flow:column nowrap;
-    align-items:stretch;
-    margin-right:0;
-    margin-left:0;
+    flex-flow: row wrap;
+    align-items: center;
+    margin-right: -0.5rem;
+    margin-left: -0.5rem;
   }
   ::slotted(*) {
-    margin-right:0 !important;
-    margin-left:0 !important;
+    margin-right: 0.5rem !important;
+    margin-left: 0.5rem !important;
+  }
+}
+
+@media (min-width: 1760px) {
+  div {
+    flex-flow: column nowrap;
+    align-items: stretch;
+    margin-right: 0;
+    margin-left: 0;
+  }
+  ::slotted(*) {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
   }
 }
 "
@@ -93,31 +93,31 @@ div {
 
 exports[`getComponentCss() should return correct css for direction: { base: 'column', xs: 'row' } 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 div {
-  display:flex;
-  margin-top:-1rem;
-  flex-flow:column nowrap;
-  align-items:stretch;
-  margin-right:0;
-  margin-left:0;
+  display: flex;
+  margin-top: -1rem;
+  flex-flow: column nowrap;
+  align-items: stretch;
+  margin-right: 0;
+  margin-left: 0;
 }
 ::slotted(*) {
-  margin-top:1rem !important;
-  margin-right:0 !important;
-  margin-left:0 !important;
+  margin-top: 1rem !important;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
 }
-@media(min-width:480px) {
+@media (min-width: 480px) {
   div {
-    flex-flow:row wrap;
-    align-items:center;
-    margin-right:-0.5rem;
-    margin-left:-0.5rem;
+    flex-flow: row wrap;
+    align-items: center;
+    margin-right: -0.5rem;
+    margin-left: -0.5rem;
   }
   ::slotted(*) {
-    margin-right:0.5rem !important;
-    margin-left:0.5rem !important;
+    margin-right: 0.5rem !important;
+    margin-left: 0.5rem !important;
   }
 }
 "
@@ -125,38 +125,38 @@ div {
 
 exports[`getComponentCss() should return correct css for direction: column 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 div {
-  display:flex;
-  margin-top:-1rem;
-  flex-flow:column nowrap;
-  align-items:stretch;
-  margin-right:0;
-  margin-left:0;
+  display: flex;
+  margin-top: -1rem;
+  flex-flow: column nowrap;
+  align-items: stretch;
+  margin-right: 0;
+  margin-left: 0;
 }
 ::slotted(*) {
-  margin-top:1rem !important;
-  margin-right:0 !important;
-  margin-left:0 !important;
+  margin-top: 1rem !important;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for direction: row 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 div {
-  display:flex;
-  margin-top:-1rem;
-  flex-flow:row wrap;
-  align-items:center;
-  margin-right:-0.5rem;
-  margin-left:-0.5rem;
+  display: flex;
+  margin-top: -1rem;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
 }
 ::slotted(*) {
-  margin-top:1rem !important;
-  margin-right:0.5rem !important;
-  margin-left:0.5rem !important;
+  margin-top: 1rem !important;
+  margin-right: 0.5rem !important;
+  margin-left: 0.5rem !important;
 }"
 `;

@@ -2,60 +2,60 @@
 
 exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 ":host {
-  display:block !important;
-  outline:1px solid transparent !important;
-  outline-offset:2px !important;
+  display: block !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
 }
 :host([hidden]) {
-  display:none !important;
+  display: none !important;
 }
 :host(::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :host(:focus) {
-  outline-color:#fff !important;
+  outline-color: #fff !important;
 }
 :host(:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for theme: light 1`] = `
 ":host {
-  display:block !important;
-  outline:1px solid transparent !important;
-  outline-offset:2px !important;
+  display: block !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
 }
 :host([hidden]) {
-  display:none !important;
+  display: none !important;
 }
 :host(::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :host(:focus) {
-  outline-color:#000 !important;
+  outline-color: #000 !important;
 }
 :host(:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for theme: light-electric 1`] = `
 ":host {
-  display:block !important;
-  outline:1px solid transparent !important;
-  outline-offset:2px !important;
+  display: block !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
 }
 :host([hidden]) {
-  display:none !important;
+  display: none !important;
 }
 :host(::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :host(:focus) {
-  outline-color:#000 !important;
+  outline-color: #000 !important;
 }
 :host(:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;

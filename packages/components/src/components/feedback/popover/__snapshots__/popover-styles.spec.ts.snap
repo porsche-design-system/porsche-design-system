@@ -2,74 +2,74 @@
 
 exports[`getComponentCss() should return correct css for direction: bottom 1`] = `
 ":host {
-  vertical-align:top;
-  position:relative !important;
-  display:inline-block !important;
+  vertical-align: top;
+  position: relative !important;
+  display: inline-block !important;
 }
 .spacer {
-  position:absolute;
-  z-index:9999;
-  top:-1rem;
-  left:-1rem;
-  right:-1rem;
-  bottom:-1rem;
-  filter:drop-shadow(0 0 1rem rgba(0,0,0,.3));
-  pointer-events:none;
-  animation:240ms keyframes-fadeIn ease forwards;
+  position: absolute;
+  z-index: 9999;
+  top: -1rem;
+  left: -1rem;
+  right: -1rem;
+  bottom: -1rem;
+  filter: drop-shadow(0 0 1rem rgba(0,0,0,.3));
+  pointer-events: none;
+  animation: 240ms keyframes-fadeIn ease forwards;
 }
 .spacer::before {
-  content:\\"\\";
-  position:absolute;
-  border-style:solid;
-  bottom:0;
-  left:50%;
-  transform:translateX(-50%);
-  border-width:0 .75rem .75rem;
-  border-color:transparent transparent #fff;
+  content: \\"\\";
+  position: absolute;
+  border-style: solid;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 .75rem .75rem;
+  border-color: transparent transparent #fff;
 }
 .popover {
-  position:absolute;
-  max-width:90vw;
-  width:max-content;
-  box-sizing:border-box;
-  background:#fff;
-  padding:.5rem 1rem;
-  pointer-events:auto;
-  top:100%;
-  left:50%;
-  transform:translateX(-50%);
-  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight:400;
-  font-size:1rem;
-  line-height:1.5;
-  -webkit-text-size-adjust:none;
-  overflow-wrap:break-word;
-  word-wrap:break-word;
-  hyphens:auto;
-  list-style-type:none;
-  color:#000;
-  white-space:inherit;
+  position: absolute;
+  max-width: 90vw;
+  width: max-content;
+  box-sizing: border-box;
+  background: #fff;
+  padding: .5rem 1rem;
+  pointer-events: auto;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  list-style-type: none;
+  color: #000;
+  white-space: inherit;
 }
 @keyframes keyframes-fadeIn {
   from {
-    opacity:0;
+    opacity: 0;
   }
   to {
-    opacity:1;
+    opacity: 1;
   }
 }
-@media(min-width:480px) {
+@media (min-width: 480px) {
     .popover {
-      max-width:27rem;
+      max-width: 27rem;
     }
 }
 
-@media(forced-colors:active) {
+@media (forced-colors: active) {
     .spacer::before {
-      border-color:canvas canvas canvastext;
+      border-color: canvas canvas canvastext;
     }
     .popover {
-      outline:1px solid canvastext;
+      outline: 1px solid canvastext;
     }
 }
 "
@@ -77,74 +77,74 @@ exports[`getComponentCss() should return correct css for direction: bottom 1`] =
 
 exports[`getComponentCss() should return correct css for direction: left 1`] = `
 ":host {
-  vertical-align:top;
-  position:relative !important;
-  display:inline-block !important;
+  vertical-align: top;
+  position: relative !important;
+  display: inline-block !important;
 }
 .spacer {
-  position:absolute;
-  z-index:9999;
-  top:-1rem;
-  left:-1rem;
-  right:-1rem;
-  bottom:-1rem;
-  filter:drop-shadow(0 0 1rem rgba(0,0,0,.3));
-  pointer-events:none;
-  animation:240ms keyframes-fadeIn ease forwards;
+  position: absolute;
+  z-index: 9999;
+  top: -1rem;
+  left: -1rem;
+  right: -1rem;
+  bottom: -1rem;
+  filter: drop-shadow(0 0 1rem rgba(0,0,0,.3));
+  pointer-events: none;
+  animation: 240ms keyframes-fadeIn ease forwards;
 }
 .spacer::before {
-  content:\\"\\";
-  position:absolute;
-  border-style:solid;
-  top:50%;
-  left:0;
-  transform:translateY(-50%);
-  border-width:.75rem 0 .75rem .75rem;
-  border-color:transparent transparent transparent #fff;
+  content: \\"\\";
+  position: absolute;
+  border-style: solid;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  border-width: .75rem 0 .75rem .75rem;
+  border-color: transparent transparent transparent #fff;
 }
 .popover {
-  position:absolute;
-  max-width:90vw;
-  width:max-content;
-  box-sizing:border-box;
-  background:#fff;
-  padding:.5rem 1rem;
-  pointer-events:auto;
-  top:50%;
-  right:100%;
-  transform:translateY(-50%);
-  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight:400;
-  font-size:1rem;
-  line-height:1.5;
-  -webkit-text-size-adjust:none;
-  overflow-wrap:break-word;
-  word-wrap:break-word;
-  hyphens:auto;
-  list-style-type:none;
-  color:#000;
-  white-space:inherit;
+  position: absolute;
+  max-width: 90vw;
+  width: max-content;
+  box-sizing: border-box;
+  background: #fff;
+  padding: .5rem 1rem;
+  pointer-events: auto;
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  list-style-type: none;
+  color: #000;
+  white-space: inherit;
 }
 @keyframes keyframes-fadeIn {
   from {
-    opacity:0;
+    opacity: 0;
   }
   to {
-    opacity:1;
+    opacity: 1;
   }
 }
-@media(min-width:480px) {
+@media (min-width: 480px) {
     .popover {
-      max-width:27rem;
+      max-width: 27rem;
     }
 }
 
-@media(forced-colors:active) {
+@media (forced-colors: active) {
     .spacer::before {
-      border-color:canvas canvas canvas canvastext;
+      border-color: canvas canvas canvas canvastext;
     }
     .popover {
-      outline:1px solid canvastext;
+      outline: 1px solid canvastext;
     }
 }
 "
@@ -152,74 +152,74 @@ exports[`getComponentCss() should return correct css for direction: left 1`] = `
 
 exports[`getComponentCss() should return correct css for direction: right 1`] = `
 ":host {
-  vertical-align:top;
-  position:relative !important;
-  display:inline-block !important;
+  vertical-align: top;
+  position: relative !important;
+  display: inline-block !important;
 }
 .spacer {
-  position:absolute;
-  z-index:9999;
-  top:-1rem;
-  left:-1rem;
-  right:-1rem;
-  bottom:-1rem;
-  filter:drop-shadow(0 0 1rem rgba(0,0,0,.3));
-  pointer-events:none;
-  animation:240ms keyframes-fadeIn ease forwards;
+  position: absolute;
+  z-index: 9999;
+  top: -1rem;
+  left: -1rem;
+  right: -1rem;
+  bottom: -1rem;
+  filter: drop-shadow(0 0 1rem rgba(0,0,0,.3));
+  pointer-events: none;
+  animation: 240ms keyframes-fadeIn ease forwards;
 }
 .spacer::before {
-  content:\\"\\";
-  position:absolute;
-  border-style:solid;
-  top:50%;
-  right:0;
-  transform:translateY(-50%);
-  border-width:.75rem .75rem .75rem 0;
-  border-color:transparent #fff transparent transparent;
+  content: \\"\\";
+  position: absolute;
+  border-style: solid;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  border-width: .75rem .75rem .75rem 0;
+  border-color: transparent #fff transparent transparent;
 }
 .popover {
-  position:absolute;
-  max-width:90vw;
-  width:max-content;
-  box-sizing:border-box;
-  background:#fff;
-  padding:.5rem 1rem;
-  pointer-events:auto;
-  top:50%;
-  left:100%;
-  transform:translateY(-50%);
-  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight:400;
-  font-size:1rem;
-  line-height:1.5;
-  -webkit-text-size-adjust:none;
-  overflow-wrap:break-word;
-  word-wrap:break-word;
-  hyphens:auto;
-  list-style-type:none;
-  color:#000;
-  white-space:inherit;
+  position: absolute;
+  max-width: 90vw;
+  width: max-content;
+  box-sizing: border-box;
+  background: #fff;
+  padding: .5rem 1rem;
+  pointer-events: auto;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  list-style-type: none;
+  color: #000;
+  white-space: inherit;
 }
 @keyframes keyframes-fadeIn {
   from {
-    opacity:0;
+    opacity: 0;
   }
   to {
-    opacity:1;
+    opacity: 1;
   }
 }
-@media(min-width:480px) {
+@media (min-width: 480px) {
     .popover {
-      max-width:27rem;
+      max-width: 27rem;
     }
 }
 
-@media(forced-colors:active) {
+@media (forced-colors: active) {
     .spacer::before {
-      border-color:canvas canvastext canvas canvas;
+      border-color: canvas canvastext canvas canvas;
     }
     .popover {
-      outline:1px solid canvastext;
+      outline: 1px solid canvastext;
     }
 }
 "
@@ -227,74 +227,74 @@ exports[`getComponentCss() should return correct css for direction: right 1`] = 
 
 exports[`getComponentCss() should return correct css for direction: top 1`] = `
 ":host {
-  vertical-align:top;
-  position:relative !important;
-  display:inline-block !important;
+  vertical-align: top;
+  position: relative !important;
+  display: inline-block !important;
 }
 .spacer {
-  position:absolute;
-  z-index:9999;
-  top:-1rem;
-  left:-1rem;
-  right:-1rem;
-  bottom:-1rem;
-  filter:drop-shadow(0 0 1rem rgba(0,0,0,.3));
-  pointer-events:none;
-  animation:240ms keyframes-fadeIn ease forwards;
+  position: absolute;
+  z-index: 9999;
+  top: -1rem;
+  left: -1rem;
+  right: -1rem;
+  bottom: -1rem;
+  filter: drop-shadow(0 0 1rem rgba(0,0,0,.3));
+  pointer-events: none;
+  animation: 240ms keyframes-fadeIn ease forwards;
 }
 .spacer::before {
-  content:\\"\\";
-  position:absolute;
-  border-style:solid;
-  top:0;
-  left:50%;
-  transform:translateX(-50%);
-  border-width:.75rem .75rem 0;
-  border-color:#fff transparent transparent;
+  content: \\"\\";
+  position: absolute;
+  border-style: solid;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: .75rem .75rem 0;
+  border-color: #fff transparent transparent;
 }
 .popover {
-  position:absolute;
-  max-width:90vw;
-  width:max-content;
-  box-sizing:border-box;
-  background:#fff;
-  padding:.5rem 1rem;
-  pointer-events:auto;
-  bottom:100%;
-  left:50%;
-  transform:translateX(-50%);
-  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight:400;
-  font-size:1rem;
-  line-height:1.5;
-  -webkit-text-size-adjust:none;
-  overflow-wrap:break-word;
-  word-wrap:break-word;
-  hyphens:auto;
-  list-style-type:none;
-  color:#000;
-  white-space:inherit;
+  position: absolute;
+  max-width: 90vw;
+  width: max-content;
+  box-sizing: border-box;
+  background: #fff;
+  padding: .5rem 1rem;
+  pointer-events: auto;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  list-style-type: none;
+  color: #000;
+  white-space: inherit;
 }
 @keyframes keyframes-fadeIn {
   from {
-    opacity:0;
+    opacity: 0;
   }
   to {
-    opacity:1;
+    opacity: 1;
   }
 }
-@media(min-width:480px) {
+@media (min-width: 480px) {
     .popover {
-      max-width:27rem;
+      max-width: 27rem;
     }
 }
 
-@media(forced-colors:active) {
+@media (forced-colors: active) {
     .spacer::before {
-      border-color:canvastext canvas canvas;
+      border-color: canvastext canvas canvas;
     }
     .popover {
-      outline:1px solid canvastext;
+      outline: 1px solid canvastext;
     }
 }
 "
@@ -302,62 +302,62 @@ exports[`getComponentCss() should return correct css for direction: top 1`] = `
 
 exports[`getSlottedCss() should return correct css 1`] = `
 "p-popover a {
-  color:inherit !important;
-  text-decoration:underline !important;
-  transition:color var(--p-transition-duration, .24s) ease !important;
-  outline:1px solid transparent !important;
-  outline-offset:1px !important;
+  color: inherit !important;
+  text-decoration: underline !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
 }
 p-popover[theme=\\"dark\\"] a:hover {
-  color:#ff0223 !important;
+  color: #ff0223 !important;
 }
 p-popover b, p-popover strong {
-  font-weight:700 !important;
+  font-weight: 700 !important;
 }
 p-popover em, p-popover i {
-  font-style:normal !important;
+  font-style: normal !important;
 }
 p-popover a:hover {
-  color:#d5001c !important;
+  color: #d5001c !important;
 }
 p-popover a::-moz-focus-inner {
-  border:0 !important;
+  border: 0 !important;
 }
 p-popover a:focus {
-  outline-color:currentColor !important;
+  outline-color: currentColor !important;
 }
 p-popover a:focus:not(:focus-visible) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getSlottedCss() should return correct css with prefix 1`] = `
 "prefixed-p-popover a {
-  color:inherit !important;
-  text-decoration:underline !important;
-  transition:color var(--p-transition-duration, .24s) ease !important;
-  outline:1px solid transparent !important;
-  outline-offset:1px !important;
+  color: inherit !important;
+  text-decoration: underline !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
 }
 prefixed-p-popover[theme=\\"dark\\"] a:hover {
-  color:#ff0223 !important;
+  color: #ff0223 !important;
 }
 prefixed-p-popover b, prefixed-p-popover strong {
-  font-weight:700 !important;
+  font-weight: 700 !important;
 }
 prefixed-p-popover em, prefixed-p-popover i {
-  font-style:normal !important;
+  font-style: normal !important;
 }
 prefixed-p-popover a:hover {
-  color:#d5001c !important;
+  color: #d5001c !important;
 }
 prefixed-p-popover a::-moz-focus-inner {
-  border:0 !important;
+  border: 0 !important;
 }
 prefixed-p-popover a:focus {
-  outline-color:currentColor !important;
+  outline-color: currentColor !important;
 }
 prefixed-p-popover a:focus:not(:focus-visible) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;

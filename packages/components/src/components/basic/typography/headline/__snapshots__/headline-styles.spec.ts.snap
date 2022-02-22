@@ -2,63 +2,63 @@
 
 exports[`getComponentCss() should return correct css for variant: "headline-1", align: left, color: default, ellipsis: false and theme: light 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 :\\\\:slotted(h1), :\\\\:slotted(h2), :\\\\:slotted(h3), :\\\\:slotted(h4), :\\\\:slotted(h5), :\\\\:slotted(h6) {
-  margin:inherit !important;
-  padding:inherit !important;
-  font-family:inherit !important;
-  font-weight:inherit !important;
-  font-size:inherit !important;
-  line-height:inherit !important;
-  font-style:normal !important;
-  color:inherit !important;
-  text-align:inherit !important;
-  overflow-wrap:inherit !important;
-  word-wrap:inherit !important;
-  hyphens:inherit !important;
-  white-space:inherit !important;
+  margin: inherit !important;
+  padding: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-style: normal !important;
+  color: inherit !important;
+  text-align: inherit !important;
+  overflow-wrap: inherit !important;
+  word-wrap: inherit !important;
+  hyphens: inherit !important;
+  white-space: inherit !important;
 }
 .root {
-  padding:0;
-  margin:0;
-  -webkit-text-size-adjust:none;
-  text-align:left;
-  color:#000;
-  overflow-wrap:break-word;
-  word-wrap:break-word;
-  hyphens:auto;
-  white-space:inherit;
-  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight:600;
-  font-size:1.75rem;
-  line-height:1.4285714286;
+  padding: 0;
+  margin: 0;
+  -webkit-text-size-adjust: none;
+  text-align: left;
+  color: #000;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: inherit;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight: 600;
+  font-size: 1.75rem;
+  line-height: 1.4285714286;
 }
-@media(min-width:760px) and (max-width:999px) {
+@media (min-width: 760px) and (max-width: 999px) {
   .root {
-    font-size:2.25rem;
-    line-height:1.3333333333;
+    font-size: 2.25rem;
+    line-height: 1.3333333333;
   }
 }
 
-@media(min-width:1000px) and (max-width:1299px) {
+@media (min-width: 1000px) and (max-width: 1299px) {
   .root {
-    font-size:2.75rem;
-    line-height:1.1818181818;
+    font-size: 2.75rem;
+    line-height: 1.1818181818;
   }
 }
 
-@media(min-width:1300px) and (max-width:1759px) {
+@media (min-width: 1300px) and (max-width: 1759px) {
   .root {
-    font-size:3.25rem;
-    line-height:1.2307692308;
+    font-size: 3.25rem;
+    line-height: 1.2307692308;
   }
 }
 
-@media(min-width:1760px) {
+@media (min-width: 1760px) {
   .root {
-    font-size:3.75rem;
-    line-height:1.2;
+    font-size: 3.75rem;
+    line-height: 1.2;
   }
 }
 "
@@ -66,66 +66,66 @@ exports[`getComponentCss() should return correct css for variant: "headline-1", 
 
 exports[`getComponentCss() should return correct css for variant: "headline-2", align: center, color: inherit, ellipsis: true and theme: dark 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 :\\\\:slotted(h1), :\\\\:slotted(h2), :\\\\:slotted(h3), :\\\\:slotted(h4), :\\\\:slotted(h5), :\\\\:slotted(h6) {
-  margin:inherit !important;
-  padding:inherit !important;
-  font-family:inherit !important;
-  font-weight:inherit !important;
-  font-size:inherit !important;
-  line-height:inherit !important;
-  font-style:normal !important;
-  color:inherit !important;
-  text-align:inherit !important;
-  overflow-wrap:inherit !important;
-  word-wrap:inherit !important;
-  hyphens:inherit !important;
-  white-space:inherit !important;
+  margin: inherit !important;
+  padding: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-style: normal !important;
+  color: inherit !important;
+  text-align: inherit !important;
+  overflow-wrap: inherit !important;
+  word-wrap: inherit !important;
+  hyphens: inherit !important;
+  white-space: inherit !important;
 }
 .root {
-  padding:0;
-  margin:0;
-  -webkit-text-size-adjust:none;
-  text-align:center;
-  color:inherit;
-  overflow-wrap:break-word;
-  word-wrap:break-word;
-  hyphens:auto;
-  white-space:nowrap;
-  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight:600;
-  font-size:1.5rem;
-  line-height:1.5;
-  max-width:100%;
-  overflow:hidden;
-  text-overflow:ellipsis;
+  padding: 0;
+  margin: 0;
+  -webkit-text-size-adjust: none;
+  text-align: center;
+  color: inherit;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: nowrap;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-@media(min-width:760px) and (max-width:999px) {
+@media (min-width: 760px) and (max-width: 999px) {
   .root {
-    font-size:1.875rem;
-    line-height:1.3333333333;
+    font-size: 1.875rem;
+    line-height: 1.3333333333;
   }
 }
 
-@media(min-width:1000px) and (max-width:1299px) {
+@media (min-width: 1000px) and (max-width: 1299px) {
   .root {
-    font-size:2.25rem;
-    line-height:1.3333333333;
+    font-size: 2.25rem;
+    line-height: 1.3333333333;
   }
 }
 
-@media(min-width:1300px) and (max-width:1759px) {
+@media (min-width: 1300px) and (max-width: 1759px) {
   .root {
-    font-size:2.625rem;
-    line-height:1.2380952381;
+    font-size: 2.625rem;
+    line-height: 1.2380952381;
   }
 }
 
-@media(min-width:1760px) {
+@media (min-width: 1760px) {
   .root {
-    font-size:3rem;
-    line-height:1.25;
+    font-size: 3rem;
+    line-height: 1.25;
   }
 }
 "
@@ -133,66 +133,66 @@ exports[`getComponentCss() should return correct css for variant: "headline-2", 
 
 exports[`getComponentCss() should return correct css for variant: "headline-3", align: center, color: inherit, ellipsis: true and theme: dark 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 :\\\\:slotted(h1), :\\\\:slotted(h2), :\\\\:slotted(h3), :\\\\:slotted(h4), :\\\\:slotted(h5), :\\\\:slotted(h6) {
-  margin:inherit !important;
-  padding:inherit !important;
-  font-family:inherit !important;
-  font-weight:inherit !important;
-  font-size:inherit !important;
-  line-height:inherit !important;
-  font-style:normal !important;
-  color:inherit !important;
-  text-align:inherit !important;
-  overflow-wrap:inherit !important;
-  word-wrap:inherit !important;
-  hyphens:inherit !important;
-  white-space:inherit !important;
+  margin: inherit !important;
+  padding: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-style: normal !important;
+  color: inherit !important;
+  text-align: inherit !important;
+  overflow-wrap: inherit !important;
+  word-wrap: inherit !important;
+  hyphens: inherit !important;
+  white-space: inherit !important;
 }
 .root {
-  padding:0;
-  margin:0;
-  -webkit-text-size-adjust:none;
-  text-align:center;
-  color:inherit;
-  overflow-wrap:break-word;
-  word-wrap:break-word;
-  hyphens:auto;
-  white-space:nowrap;
-  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight:600;
-  font-size:1.25rem;
-  line-height:1.4;
-  max-width:100%;
-  overflow:hidden;
-  text-overflow:ellipsis;
+  padding: 0;
+  margin: 0;
+  -webkit-text-size-adjust: none;
+  text-align: center;
+  color: inherit;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: nowrap;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-@media(min-width:760px) and (max-width:999px) {
+@media (min-width: 760px) and (max-width: 999px) {
   .root {
-    font-size:1.5rem;
-    line-height:1.5;
+    font-size: 1.5rem;
+    line-height: 1.5;
   }
 }
 
-@media(min-width:1000px) and (max-width:1299px) {
+@media (min-width: 1000px) and (max-width: 1299px) {
   .root {
-    font-size:1.75rem;
-    line-height:1.4285714286;
+    font-size: 1.75rem;
+    line-height: 1.4285714286;
   }
 }
 
-@media(min-width:1300px) and (max-width:1759px) {
+@media (min-width: 1300px) and (max-width: 1759px) {
   .root {
-    font-size:2rem;
-    line-height:1.375;
+    font-size: 2rem;
+    line-height: 1.375;
   }
 }
 
-@media(min-width:1760px) {
+@media (min-width: 1760px) {
   .root {
-    font-size:2.25rem;
-    line-height:1.3333333333;
+    font-size: 2.25rem;
+    line-height: 1.3333333333;
   }
 }
 "
@@ -200,66 +200,66 @@ exports[`getComponentCss() should return correct css for variant: "headline-3", 
 
 exports[`getComponentCss() should return correct css for variant: "headline-4", align: center, color: inherit, ellipsis: true and theme: dark 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 :\\\\:slotted(h1), :\\\\:slotted(h2), :\\\\:slotted(h3), :\\\\:slotted(h4), :\\\\:slotted(h5), :\\\\:slotted(h6) {
-  margin:inherit !important;
-  padding:inherit !important;
-  font-family:inherit !important;
-  font-weight:inherit !important;
-  font-size:inherit !important;
-  line-height:inherit !important;
-  font-style:normal !important;
-  color:inherit !important;
-  text-align:inherit !important;
-  overflow-wrap:inherit !important;
-  word-wrap:inherit !important;
-  hyphens:inherit !important;
-  white-space:inherit !important;
+  margin: inherit !important;
+  padding: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-style: normal !important;
+  color: inherit !important;
+  text-align: inherit !important;
+  overflow-wrap: inherit !important;
+  word-wrap: inherit !important;
+  hyphens: inherit !important;
+  white-space: inherit !important;
 }
 .root {
-  padding:0;
-  margin:0;
-  -webkit-text-size-adjust:none;
-  text-align:center;
-  color:inherit;
-  overflow-wrap:break-word;
-  word-wrap:break-word;
-  hyphens:auto;
-  white-space:nowrap;
-  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight:600;
-  font-size:1rem;
-  line-height:1.5;
-  max-width:100%;
-  overflow:hidden;
-  text-overflow:ellipsis;
+  padding: 0;
+  margin: 0;
+  -webkit-text-size-adjust: none;
+  text-align: center;
+  color: inherit;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: nowrap;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-@media(min-width:760px) and (max-width:999px) {
+@media (min-width: 760px) and (max-width: 999px) {
   .root {
-    font-size:1.125rem;
-    line-height:1.5555555556;
+    font-size: 1.125rem;
+    line-height: 1.5555555556;
   }
 }
 
-@media(min-width:1000px) and (max-width:1299px) {
+@media (min-width: 1000px) and (max-width: 1299px) {
   .root {
-    font-size:1.25rem;
-    line-height:1.4;
+    font-size: 1.25rem;
+    line-height: 1.4;
   }
 }
 
-@media(min-width:1300px) and (max-width:1759px) {
+@media (min-width: 1300px) and (max-width: 1759px) {
   .root {
-    font-size:1.375rem;
-    line-height:1.4545454545;
+    font-size: 1.375rem;
+    line-height: 1.4545454545;
   }
 }
 
-@media(min-width:1760px) {
+@media (min-width: 1760px) {
   .root {
-    font-size:1.5rem;
-    line-height:1.5;
+    font-size: 1.5rem;
+    line-height: 1.5;
   }
 }
 "
@@ -267,138 +267,138 @@ exports[`getComponentCss() should return correct css for variant: "headline-4", 
 
 exports[`getComponentCss() should return correct css for variant: "headline-5", align: center, color: inherit, ellipsis: true and theme: dark 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 :\\\\:slotted(h1), :\\\\:slotted(h2), :\\\\:slotted(h3), :\\\\:slotted(h4), :\\\\:slotted(h5), :\\\\:slotted(h6) {
-  margin:inherit !important;
-  padding:inherit !important;
-  font-family:inherit !important;
-  font-weight:inherit !important;
-  font-size:inherit !important;
-  line-height:inherit !important;
-  font-style:normal !important;
-  color:inherit !important;
-  text-align:inherit !important;
-  overflow-wrap:inherit !important;
-  word-wrap:inherit !important;
-  hyphens:inherit !important;
-  white-space:inherit !important;
+  margin: inherit !important;
+  padding: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-style: normal !important;
+  color: inherit !important;
+  text-align: inherit !important;
+  overflow-wrap: inherit !important;
+  word-wrap: inherit !important;
+  hyphens: inherit !important;
+  white-space: inherit !important;
 }
 .root {
-  padding:0;
-  margin:0;
-  -webkit-text-size-adjust:none;
-  text-align:center;
-  color:inherit;
-  overflow-wrap:break-word;
-  word-wrap:break-word;
-  hyphens:auto;
-  white-space:nowrap;
-  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight:600;
-  font-size:1rem;
-  line-height:1.5;
-  max-width:100%;
-  overflow:hidden;
-  text-overflow:ellipsis;
+  padding: 0;
+  margin: 0;
+  -webkit-text-size-adjust: none;
+  text-align: center;
+  color: inherit;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: nowrap;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: "inherit", align: left, color: default, ellipsis: false and theme: light 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 :\\\\:slotted(h1), :\\\\:slotted(h2), :\\\\:slotted(h3), :\\\\:slotted(h4), :\\\\:slotted(h5), :\\\\:slotted(h6) {
-  margin:inherit !important;
-  padding:inherit !important;
-  font-family:inherit !important;
-  font-weight:inherit !important;
-  font-size:inherit !important;
-  line-height:inherit !important;
-  font-style:normal !important;
-  color:inherit !important;
-  text-align:inherit !important;
-  overflow-wrap:inherit !important;
-  word-wrap:inherit !important;
-  hyphens:inherit !important;
-  white-space:inherit !important;
+  margin: inherit !important;
+  padding: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-style: normal !important;
+  color: inherit !important;
+  text-align: inherit !important;
+  overflow-wrap: inherit !important;
+  word-wrap: inherit !important;
+  hyphens: inherit !important;
+  white-space: inherit !important;
 }
 .root {
-  padding:0;
-  margin:0;
-  -webkit-text-size-adjust:none;
-  text-align:left;
-  color:#000;
-  overflow-wrap:break-word;
-  word-wrap:break-word;
-  hyphens:auto;
-  white-space:inherit;
-  font-size:inherit;
+  padding: 0;
+  margin: 0;
+  -webkit-text-size-adjust: none;
+  text-align: left;
+  color: #000;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: inherit;
+  font-size: inherit;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: "large-title", align: center, color: inherit, ellipsis: true and theme: dark 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 :\\\\:slotted(h1), :\\\\:slotted(h2), :\\\\:slotted(h3), :\\\\:slotted(h4), :\\\\:slotted(h5), :\\\\:slotted(h6) {
-  margin:inherit !important;
-  padding:inherit !important;
-  font-family:inherit !important;
-  font-weight:inherit !important;
-  font-size:inherit !important;
-  line-height:inherit !important;
-  font-style:normal !important;
-  color:inherit !important;
-  text-align:inherit !important;
-  overflow-wrap:inherit !important;
-  word-wrap:inherit !important;
-  hyphens:inherit !important;
-  white-space:inherit !important;
+  margin: inherit !important;
+  padding: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-style: normal !important;
+  color: inherit !important;
+  text-align: inherit !important;
+  overflow-wrap: inherit !important;
+  word-wrap: inherit !important;
+  hyphens: inherit !important;
+  white-space: inherit !important;
 }
 .root {
-  padding:0;
-  margin:0;
-  -webkit-text-size-adjust:none;
-  text-align:center;
-  color:inherit;
-  overflow-wrap:break-word;
-  word-wrap:break-word;
-  hyphens:auto;
-  white-space:nowrap;
-  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight:600;
-  font-size:2rem;
-  line-height:1.375;
-  max-width:100%;
-  overflow:hidden;
-  text-overflow:ellipsis;
+  padding: 0;
+  margin: 0;
+  -webkit-text-size-adjust: none;
+  text-align: center;
+  color: inherit;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: nowrap;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 1.375;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-@media(min-width:760px) and (max-width:999px) {
+@media (min-width: 760px) and (max-width: 999px) {
   .root {
-    font-size:2.625rem;
-    line-height:1.2380952381;
+    font-size: 2.625rem;
+    line-height: 1.2380952381;
   }
 }
 
-@media(min-width:1000px) and (max-width:1299px) {
+@media (min-width: 1000px) and (max-width: 1299px) {
   .root {
-    font-size:3.25rem;
-    line-height:1.2307692308;
+    font-size: 3.25rem;
+    line-height: 1.2307692308;
   }
 }
 
-@media(min-width:1300px) and (max-width:1759px) {
+@media (min-width: 1300px) and (max-width: 1759px) {
   .root {
-    font-size:3.875rem;
-    line-height:1.2258064516;
+    font-size: 3.875rem;
+    line-height: 1.2258064516;
   }
 }
 
-@media(min-width:1760px) {
+@media (min-width: 1760px) {
   .root {
-    font-size:4.5rem;
-    line-height:1.2222222222;
+    font-size: 4.5rem;
+    line-height: 1.2222222222;
   }
 }
 "
@@ -406,94 +406,94 @@ exports[`getComponentCss() should return correct css for variant: "large-title",
 
 exports[`getComponentCss() should return correct css for variant: {"base":"small","xs":"large","s":"small","m":"large","l":"small","xl":"large"}, align: right, color: inherit, ellipsis: false and theme: dark 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 :\\\\:slotted(h1), :\\\\:slotted(h2), :\\\\:slotted(h3), :\\\\:slotted(h4), :\\\\:slotted(h5), :\\\\:slotted(h6) {
-  margin:inherit !important;
-  padding:inherit !important;
-  font-family:inherit !important;
-  font-weight:inherit !important;
-  font-size:inherit !important;
-  line-height:inherit !important;
-  font-style:normal !important;
-  color:inherit !important;
-  text-align:inherit !important;
-  overflow-wrap:inherit !important;
-  word-wrap:inherit !important;
-  hyphens:inherit !important;
-  white-space:inherit !important;
+  margin: inherit !important;
+  padding: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-style: normal !important;
+  color: inherit !important;
+  text-align: inherit !important;
+  overflow-wrap: inherit !important;
+  word-wrap: inherit !important;
+  hyphens: inherit !important;
+  white-space: inherit !important;
 }
 .root {
-  padding:0;
-  margin:0;
-  -webkit-text-size-adjust:none;
-  text-align:right;
-  color:inherit;
-  overflow-wrap:break-word;
-  word-wrap:break-word;
-  hyphens:auto;
-  white-space:inherit;
+  padding: 0;
+  margin: 0;
+  -webkit-text-size-adjust: none;
+  text-align: right;
+  color: inherit;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: inherit;
 }"
 `;
 
 exports[`getSlottedCss() should return correct css 1`] = `
 "p-headline a {
-  color:inherit !important;
-  text-decoration:none !important;
-  transition:color var(--p-transition-duration, .24s) ease !important;
-  outline:1px solid transparent !important;
-  outline-offset:1px !important;
+  color: inherit !important;
+  text-decoration: none !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
 }
 p-headline[theme=\\"dark\\"] a:hover {
-  color:#ff0223 !important;
+  color: #ff0223 !important;
 }
 p-headline b, p-headline strong {
-  font-weight:700 !important;
+  font-weight: 700 !important;
 }
 p-headline em, p-headline i {
-  font-style:normal !important;
+  font-style: normal !important;
 }
 p-headline a:hover {
-  color:#d5001c !important;
+  color: #d5001c !important;
 }
 p-headline a::-moz-focus-inner {
-  border:0 !important;
+  border: 0 !important;
 }
 p-headline a:focus {
-  outline-color:currentColor !important;
+  outline-color: currentColor !important;
 }
 p-headline a:focus:not(:focus-visible) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getSlottedCss() should return correct css with prefix 1`] = `
 "prefixed-p-headline a {
-  color:inherit !important;
-  text-decoration:none !important;
-  transition:color var(--p-transition-duration, .24s) ease !important;
-  outline:1px solid transparent !important;
-  outline-offset:1px !important;
+  color: inherit !important;
+  text-decoration: none !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
 }
 prefixed-p-headline[theme=\\"dark\\"] a:hover {
-  color:#ff0223 !important;
+  color: #ff0223 !important;
 }
 prefixed-p-headline b, prefixed-p-headline strong {
-  font-weight:700 !important;
+  font-weight: 700 !important;
 }
 prefixed-p-headline em, prefixed-p-headline i {
-  font-style:normal !important;
+  font-style: normal !important;
 }
 prefixed-p-headline a:hover {
-  color:#d5001c !important;
+  color: #d5001c !important;
 }
 prefixed-p-headline a::-moz-focus-inner {
-  border:0 !important;
+  border: 0 !important;
 }
 prefixed-p-headline a:focus {
-  outline-color:currentColor !important;
+  outline-color: currentColor !important;
 }
 prefixed-p-headline a:focus:not(:focus-visible) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;

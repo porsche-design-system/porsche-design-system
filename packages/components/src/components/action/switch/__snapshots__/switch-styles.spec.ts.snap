@@ -2,688 +2,688 @@
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"left","hideLabel":true,"stretch":false,"checked":false,"loading":false,"isDisabledOrLoading":false,"theme":"light"} 1`] = `
 ":host {
-  display:flex !important;
-  outline:0 !important;
+  display: flex !important;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  min-width:0;
-  min-height:0;
-  cursor:pointer;
-  width:auto;
-  justify-content:flex-start;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  cursor: pointer;
+  width: auto;
+  justify-content: flex-start;
 }
 button {
-  position:relative;
-  width:3rem;
-  height:1.5rem;
-  flex-shrink:0;
-  display:block;
-  margin:0;
-  padding:0;
-  appearance:none;
-  box-sizing:border-box;
-  color:#323639;
-  border:1px solid currentColor;
-  border-radius:0.75rem;
-  background-color:transparent;
-  outline:none;
-  cursor:pointer;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  position: relative;
+  width: 3rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  display: block;
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  box-sizing: border-box;
+  color: #323639;
+  border: 1px solid currentColor;
+  border-radius: 0.75rem;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 button:hover {
-  color:#000;
-  background-color:transparent;
+  color: #000;
+  background-color: transparent;
 }
 button:focus {
-  box-shadow:0 0 0 2px #fff, 0 0 0 3px currentColor;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px currentColor;
 }
 button:not(:focus-visible) {
-  box-shadow:none;
+  box-shadow: none;
 }
 button:hover .toggle {
-  background-color:#000;
+  background-color: #000;
 }
 .text {
-  min-width:0;
-  min-height:0;
-  color:#000;
-  order:0;
-  padding-left:0;
-  padding-right:0.5rem;
-  position:absolute;
-  height:1px;
-  width:1px;
-  border:0;
-  margin:-1px;
-  overflow:hidden;
-  clip:rect(1px,1px,1px,1px);
-  clip-path:inset(50%);
-  white-space:nowrap;
+  min-width: 0;
+  min-height: 0;
+  color: #000;
+  order: 0;
+  padding-left: 0;
+  padding-right: 0.5rem;
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 .toggle {
-  position:absolute;
-  top:0.125rem;
-  left:0.125rem;
-  width:1.125rem;
-  height:1.125rem;
-  display:block;
-  border-radius:50%;
-  background-color:#323639;
-  transform:translate3d(0, 0, 0);
-  transition:background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  top: 0.125rem;
+  left: 0.125rem;
+  width: 1.125rem;
+  height: 1.125rem;
+  display: block;
+  border-radius: 50%;
+  background-color: #323639;
+  transform: translate3d(0, 0, 0);
+  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":false,"checked":false,"loading":false,"isDisabledOrLoading":false,"theme":"light"} 1`] = `
 ":host {
-  display:flex !important;
-  outline:0 !important;
+  display: flex !important;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  min-width:0;
-  min-height:0;
-  cursor:pointer;
-  width:auto;
-  justify-content:flex-start;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  cursor: pointer;
+  width: auto;
+  justify-content: flex-start;
 }
 button {
-  position:relative;
-  width:3rem;
-  height:1.5rem;
-  flex-shrink:0;
-  display:block;
-  margin:0;
-  padding:0;
-  appearance:none;
-  box-sizing:border-box;
-  color:#323639;
-  border:1px solid currentColor;
-  border-radius:0.75rem;
-  background-color:transparent;
-  outline:none;
-  cursor:pointer;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  position: relative;
+  width: 3rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  display: block;
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  box-sizing: border-box;
+  color: #323639;
+  border: 1px solid currentColor;
+  border-radius: 0.75rem;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 button:hover {
-  color:#000;
-  background-color:transparent;
+  color: #000;
+  background-color: transparent;
 }
 button:focus {
-  box-shadow:0 0 0 2px #fff, 0 0 0 3px currentColor;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px currentColor;
 }
 button:not(:focus-visible) {
-  box-shadow:none;
+  box-shadow: none;
 }
 button:hover .toggle {
-  background-color:#000;
+  background-color: #000;
 }
 .text {
-  min-width:0;
-  min-height:0;
-  color:#000;
-  order:1;
-  padding-left:0.5rem;
-  padding-right:0;
-  position:static;
-  width:auto;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  clip:auto;
-  clip-path:none;
-  white-space:normal;
+  min-width: 0;
+  min-height: 0;
+  color: #000;
+  order: 1;
+  padding-left: 0.5rem;
+  padding-right: 0;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
 }
 .toggle {
-  position:absolute;
-  top:0.125rem;
-  left:0.125rem;
-  width:1.125rem;
-  height:1.125rem;
-  display:block;
-  border-radius:50%;
-  background-color:#323639;
-  transform:translate3d(0, 0, 0);
-  transition:background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  top: 0.125rem;
+  left: 0.125rem;
+  width: 1.125rem;
+  height: 1.125rem;
+  display: block;
+  border-radius: 50%;
+  background-color: #323639;
+  transform: translate3d(0, 0, 0);
+  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":true,"checked":false,"loading":false,"isDisabledOrLoading":false,"theme":"light"} 1`] = `
 ":host {
-  display:flex !important;
-  outline:0 !important;
+  display: flex !important;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  min-width:0;
-  min-height:0;
-  cursor:pointer;
-  width:100%;
-  justify-content:space-between;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  cursor: pointer;
+  width: 100%;
+  justify-content: space-between;
 }
 button {
-  position:relative;
-  width:3rem;
-  height:1.5rem;
-  flex-shrink:0;
-  display:block;
-  margin:0;
-  padding:0;
-  appearance:none;
-  box-sizing:border-box;
-  color:#323639;
-  border:1px solid currentColor;
-  border-radius:0.75rem;
-  background-color:transparent;
-  outline:none;
-  cursor:pointer;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  position: relative;
+  width: 3rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  display: block;
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  box-sizing: border-box;
+  color: #323639;
+  border: 1px solid currentColor;
+  border-radius: 0.75rem;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 button:hover {
-  color:#000;
-  background-color:transparent;
+  color: #000;
+  background-color: transparent;
 }
 button:focus {
-  box-shadow:0 0 0 2px #fff, 0 0 0 3px currentColor;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px currentColor;
 }
 button:not(:focus-visible) {
-  box-shadow:none;
+  box-shadow: none;
 }
 button:hover .toggle {
-  background-color:#000;
+  background-color: #000;
 }
 .text {
-  min-width:0;
-  min-height:0;
-  color:#000;
-  order:1;
-  padding-left:0.5rem;
-  padding-right:0;
-  position:static;
-  width:auto;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  clip:auto;
-  clip-path:none;
-  white-space:normal;
+  min-width: 0;
+  min-height: 0;
+  color: #000;
+  order: 1;
+  padding-left: 0.5rem;
+  padding-right: 0;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
 }
 .toggle {
-  position:absolute;
-  top:0.125rem;
-  left:0.125rem;
-  width:1.125rem;
-  height:1.125rem;
-  display:block;
-  border-radius:50%;
-  background-color:#323639;
-  transform:translate3d(0, 0, 0);
-  transition:background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  top: 0.125rem;
+  left: 0.125rem;
+  width: 1.125rem;
+  height: 1.125rem;
+  display: block;
+  border-radius: 50%;
+  background-color: #323639;
+  transform: translate3d(0, 0, 0);
+  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":true,"checked":false,"loading":false,"isDisabledOrLoading":true,"theme":"dark"} 1`] = `
 ":host {
-  display:flex !important;
-  outline:0 !important;
+  display: flex !important;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  min-width:0;
-  min-height:0;
-  cursor:auto;
-  width:100%;
-  justify-content:space-between;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  cursor: auto;
+  width: 100%;
+  justify-content: space-between;
 }
 button {
-  position:relative;
-  width:3rem;
-  height:1.5rem;
-  flex-shrink:0;
-  display:block;
-  margin:0;
-  padding:0;
-  appearance:none;
-  box-sizing:border-box;
-  color:#7c7f81;
-  border:1px solid currentColor;
-  border-radius:0.75rem;
-  background-color:transparent;
-  outline:none;
-  cursor:not-allowed;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  position: relative;
+  width: 3rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  display: block;
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  box-sizing: border-box;
+  color: #7c7f81;
+  border: 1px solid currentColor;
+  border-radius: 0.75rem;
+  background-color: transparent;
+  outline: none;
+  cursor: not-allowed;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 button:focus {
-  box-shadow:0 0 0 2px #0e1418, 0 0 0 3px currentColor;
+  box-shadow: 0 0 0 2px #0e1418, 0 0 0 3px currentColor;
 }
 button:not(:focus-visible) {
-  box-shadow:none;
+  box-shadow: none;
 }
 .text {
-  min-width:0;
-  min-height:0;
-  color:#7c7f81;
-  order:1;
-  padding-left:0.5rem;
-  padding-right:0;
-  position:static;
-  width:auto;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  clip:auto;
-  clip-path:none;
-  white-space:normal;
+  min-width: 0;
+  min-height: 0;
+  color: #7c7f81;
+  order: 1;
+  padding-left: 0.5rem;
+  padding-right: 0;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
 }
 .toggle {
-  position:absolute;
-  top:0.125rem;
-  left:0.125rem;
-  width:1.125rem;
-  height:1.125rem;
-  display:block;
-  border-radius:50%;
-  background-color:#7c7f81;
-  transform:translate3d(0, 0, 0);
-  transition:background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  top: 0.125rem;
+  left: 0.125rem;
+  width: 1.125rem;
+  height: 1.125rem;
+  display: block;
+  border-radius: 50%;
+  background-color: #7c7f81;
+  transform: translate3d(0, 0, 0);
+  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":true,"checked":false,"loading":false,"isDisabledOrLoading":true,"theme":"light"} 1`] = `
 ":host {
-  display:flex !important;
-  outline:0 !important;
+  display: flex !important;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  min-width:0;
-  min-height:0;
-  cursor:auto;
-  width:100%;
-  justify-content:space-between;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  cursor: auto;
+  width: 100%;
+  justify-content: space-between;
 }
 button {
-  position:relative;
-  width:3rem;
-  height:1.5rem;
-  flex-shrink:0;
-  display:block;
-  margin:0;
-  padding:0;
-  appearance:none;
-  box-sizing:border-box;
-  color:#96989a;
-  border:1px solid currentColor;
-  border-radius:0.75rem;
-  background-color:transparent;
-  outline:none;
-  cursor:not-allowed;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  position: relative;
+  width: 3rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  display: block;
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  box-sizing: border-box;
+  color: #96989a;
+  border: 1px solid currentColor;
+  border-radius: 0.75rem;
+  background-color: transparent;
+  outline: none;
+  cursor: not-allowed;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 button:focus {
-  box-shadow:0 0 0 2px #fff, 0 0 0 3px currentColor;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px currentColor;
 }
 button:not(:focus-visible) {
-  box-shadow:none;
+  box-shadow: none;
 }
 .text {
-  min-width:0;
-  min-height:0;
-  color:#96989a;
-  order:1;
-  padding-left:0.5rem;
-  padding-right:0;
-  position:static;
-  width:auto;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  clip:auto;
-  clip-path:none;
-  white-space:normal;
+  min-width: 0;
+  min-height: 0;
+  color: #96989a;
+  order: 1;
+  padding-left: 0.5rem;
+  padding-right: 0;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
 }
 .toggle {
-  position:absolute;
-  top:0.125rem;
-  left:0.125rem;
-  width:1.125rem;
-  height:1.125rem;
-  display:block;
-  border-radius:50%;
-  background-color:#96989a;
-  transform:translate3d(0, 0, 0);
-  transition:background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  top: 0.125rem;
+  left: 0.125rem;
+  width: 1.125rem;
+  height: 1.125rem;
+  display: block;
+  border-radius: 50%;
+  background-color: #96989a;
+  transform: translate3d(0, 0, 0);
+  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":true,"checked":false,"loading":true,"isDisabledOrLoading":false,"theme":"light"} 1`] = `
 ":host {
-  display:flex !important;
-  outline:0 !important;
+  display: flex !important;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  min-width:0;
-  min-height:0;
-  cursor:pointer;
-  width:100%;
-  justify-content:space-between;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  cursor: pointer;
+  width: 100%;
+  justify-content: space-between;
 }
 button {
-  position:relative;
-  width:3rem;
-  height:1.5rem;
-  flex-shrink:0;
-  display:block;
-  margin:0;
-  padding:0;
-  appearance:none;
-  box-sizing:border-box;
-  color:#323639;
-  border:1px solid currentColor;
-  border-radius:0.75rem;
-  background-color:transparent;
-  outline:none;
-  cursor:pointer;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  position: relative;
+  width: 3rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  display: block;
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  box-sizing: border-box;
+  color: #323639;
+  border: 1px solid currentColor;
+  border-radius: 0.75rem;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 button:hover {
-  color:#000;
-  background-color:transparent;
+  color: #000;
+  background-color: transparent;
 }
 button:focus {
-  box-shadow:0 0 0 2px #fff, 0 0 0 3px currentColor;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px currentColor;
 }
 button:not(:focus-visible) {
-  box-shadow:none;
+  box-shadow: none;
 }
 button:hover .toggle {
-  background-color:#000;
+  background-color: #000;
 }
 .text {
-  min-width:0;
-  min-height:0;
-  color:#000;
-  order:1;
-  padding-left:0.5rem;
-  padding-right:0;
-  position:static;
-  width:auto;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  clip:auto;
-  clip-path:none;
-  white-space:normal;
+  min-width: 0;
+  min-height: 0;
+  color: #000;
+  order: 1;
+  padding-left: 0.5rem;
+  padding-right: 0;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
 }
 .toggle {
-  position:absolute;
-  top:0.125rem;
-  left:0.125rem;
-  width:1.125rem;
-  height:1.125rem;
-  display:block;
-  border-radius:50%;
-  background-color:#323639;
-  transform:translate3d(0, 0, 0);
-  transition:background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  top: 0.125rem;
+  left: 0.125rem;
+  width: 1.125rem;
+  height: 1.125rem;
+  display: block;
+  border-radius: 50%;
+  background-color: #323639;
+  transform: translate3d(0, 0, 0);
+  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
 }
 .spinner {
-  position:absolute;
-  top:-0.1875rem;
-  left:-0.1875rem;
-  width:1.5rem;
-  height:1.5rem;
+  position: absolute;
+  top: -0.1875rem;
+  left: -0.1875rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":true,"checked":true,"loading":false,"isDisabledOrLoading":false,"theme":"light"} 1`] = `
 ":host {
-  display:flex !important;
-  outline:0 !important;
+  display: flex !important;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  min-width:0;
-  min-height:0;
-  cursor:pointer;
-  width:100%;
-  justify-content:space-between;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  cursor: pointer;
+  width: 100%;
+  justify-content: space-between;
 }
 button {
-  position:relative;
-  width:3rem;
-  height:1.5rem;
-  flex-shrink:0;
-  display:block;
-  margin:0;
-  padding:0;
-  appearance:none;
-  box-sizing:border-box;
-  color:#018a16;
-  border:1px solid currentColor;
-  border-radius:0.75rem;
-  background-color:#018a16;
-  outline:none;
-  cursor:pointer;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  position: relative;
+  width: 3rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  display: block;
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  box-sizing: border-box;
+  color: #018a16;
+  border: 1px solid currentColor;
+  border-radius: 0.75rem;
+  background-color: #018a16;
+  outline: none;
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 button:hover {
-  color:#014d0c;
-  background-color:#014d0c;
+  color: #014d0c;
+  background-color: #014d0c;
 }
 button:focus {
-  box-shadow:0 0 0 2px #fff, 0 0 0 3px currentColor;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px currentColor;
 }
 button:not(:focus-visible) {
-  box-shadow:none;
+  box-shadow: none;
 }
 button:hover .toggle {
-  background-color:#fff;
+  background-color: #fff;
 }
 .text {
-  min-width:0;
-  min-height:0;
-  color:#000;
-  order:1;
-  padding-left:0.5rem;
-  padding-right:0;
-  position:static;
-  width:auto;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  clip:auto;
-  clip-path:none;
-  white-space:normal;
+  min-width: 0;
+  min-height: 0;
+  color: #000;
+  order: 1;
+  padding-left: 0.5rem;
+  padding-right: 0;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
 }
 .toggle {
-  position:absolute;
-  top:0.125rem;
-  left:0.125rem;
-  width:1.125rem;
-  height:1.125rem;
-  display:block;
-  border-radius:50%;
-  background-color:#fff;
-  transform:translate3d(1.5rem, 0, 0);
-  transition:background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  top: 0.125rem;
+  left: 0.125rem;
+  width: 1.125rem;
+  height: 1.125rem;
+  display: block;
+  border-radius: 50%;
+  background-color: #fff;
+  transform: translate3d(1.5rem, 0, 0);
+  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"left","xs":"right","s":"left","m":"right","l":"left","xl":"right"},"hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"stretch":{"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true},"checked":false,"loading":false,"isDisabledOrLoading":false,"theme":"light"} 1`] = `
 ":host {
-  display:flex !important;
-  outline:0 !important;
+  display: flex !important;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  min-width:0;
-  min-height:0;
-  cursor:pointer;
-  width:auto;
-  justify-content:flex-start;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  cursor: pointer;
+  width: auto;
+  justify-content: flex-start;
 }
 button {
-  position:relative;
-  width:3rem;
-  height:1.5rem;
-  flex-shrink:0;
-  display:block;
-  margin:0;
-  padding:0;
-  appearance:none;
-  box-sizing:border-box;
-  color:#323639;
-  border:1px solid currentColor;
-  border-radius:0.75rem;
-  background-color:transparent;
-  outline:none;
-  cursor:pointer;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  position: relative;
+  width: 3rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  display: block;
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  box-sizing: border-box;
+  color: #323639;
+  border: 1px solid currentColor;
+  border-radius: 0.75rem;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 button:hover {
-  color:#000;
-  background-color:transparent;
+  color: #000;
+  background-color: transparent;
 }
 button:focus {
-  box-shadow:0 0 0 2px #fff, 0 0 0 3px currentColor;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px currentColor;
 }
 button:not(:focus-visible) {
-  box-shadow:none;
+  box-shadow: none;
 }
 button:hover .toggle {
-  background-color:#000;
+  background-color: #000;
 }
 .text {
-  min-width:0;
-  min-height:0;
-  color:#000;
-  order:0;
-  padding-left:0;
-  padding-right:0.5rem;
-  position:absolute;
-  height:1px;
-  width:1px;
-  border:0;
-  margin:-1px;
-  overflow:hidden;
-  clip:rect(1px,1px,1px,1px);
-  clip-path:inset(50%);
-  white-space:nowrap;
+  min-width: 0;
+  min-height: 0;
+  color: #000;
+  order: 0;
+  padding-left: 0;
+  padding-right: 0.5rem;
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 .toggle {
-  position:absolute;
-  top:0.125rem;
-  left:0.125rem;
-  width:1.125rem;
-  height:1.125rem;
-  display:block;
-  border-radius:50%;
-  background-color:#323639;
-  transform:translate3d(0, 0, 0);
-  transition:background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  top: 0.125rem;
+  left: 0.125rem;
+  width: 1.125rem;
+  height: 1.125rem;
+  display: block;
+  border-radius: 50%;
+  background-color: #323639;
+  transform: translate3d(0, 0, 0);
+  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
 }
-@media(min-width:480px) {
+@media (min-width: 480px) {
   .root {
-    width:100%;
-    justify-content:space-between;
+    width: 100%;
+    justify-content: space-between;
   }
   .text {
-    order:1;
-    padding-left:0.5rem;
-    padding-right:0;
-    position:static;
-    width:auto;
-    height:auto;
-    margin:0;
-    overflow:visible;
-    clip:auto;
-    clip-path:none;
-    white-space:normal;
-  }
-}
-
-@media(min-width:760px) {
-  .root {
-    width:auto;
-    justify-content:flex-start;
-  }
-  .text {
-    order:0;
-    padding-left:0;
-    padding-right:0.5rem;
-    position:absolute;
-    height:1px;
-    width:1px;
-    border:0;
-    margin:-1px;
-    overflow:hidden;
-    clip:rect(1px,1px,1px,1px);
-    clip-path:inset(50%);
-    white-space:nowrap;
+    order: 1;
+    padding-left: 0.5rem;
+    padding-right: 0;
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
   }
 }
 
-@media(min-width:1000px) {
+@media (min-width: 760px) {
   .root {
-    width:100%;
-    justify-content:space-between;
+    width: auto;
+    justify-content: flex-start;
   }
   .text {
-    order:1;
-    padding-left:0.5rem;
-    padding-right:0;
-    position:static;
-    width:auto;
-    height:auto;
-    margin:0;
-    overflow:visible;
-    clip:auto;
-    clip-path:none;
-    white-space:normal;
+    order: 0;
+    padding-left: 0;
+    padding-right: 0.5rem;
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    border: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(1px,1px,1px,1px);
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 }
 
-@media(min-width:1300px) {
+@media (min-width: 1000px) {
   .root {
-    width:auto;
-    justify-content:flex-start;
+    width: 100%;
+    justify-content: space-between;
   }
   .text {
-    order:0;
-    padding-left:0;
-    padding-right:0.5rem;
-    position:absolute;
-    height:1px;
-    width:1px;
-    border:0;
-    margin:-1px;
-    overflow:hidden;
-    clip:rect(1px,1px,1px,1px);
-    clip-path:inset(50%);
-    white-space:nowrap;
+    order: 1;
+    padding-left: 0.5rem;
+    padding-right: 0;
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
   }
 }
 
-@media(min-width:1760px) {
+@media (min-width: 1300px) {
   .root {
-    width:100%;
-    justify-content:space-between;
+    width: auto;
+    justify-content: flex-start;
   }
   .text {
-    order:1;
-    padding-left:0.5rem;
-    padding-right:0;
-    position:static;
-    width:auto;
-    height:auto;
-    margin:0;
-    overflow:visible;
-    clip:auto;
-    clip-path:none;
-    white-space:normal;
+    order: 0;
+    padding-left: 0;
+    padding-right: 0.5rem;
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    border: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(1px,1px,1px,1px);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 1760px) {
+  .root {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .text {
+    order: 1;
+    padding-left: 0.5rem;
+    padding-right: 0;
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
   }
 }
 "

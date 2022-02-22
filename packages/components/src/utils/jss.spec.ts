@@ -15,14 +15,17 @@ import type { JssStyle, Styles } from 'jss';
 
 describe('getCss()', () => {
   const data: { input: Styles; result: string }[] = [
-    { input: { ':host': { display: 'block', marginLeft: '5px' } }, result: ':host{display:block;margin-left:5px}' },
+    {
+      input: { ':host': { display: 'block', marginLeft: '5px' } },
+      result: ':host {\n  display: block;\n  margin-left: 5px;\n}',
+    },
     {
       input: { ':host': { display: 'block', marginLeft: '5px !important' } },
-      result: ':host{display:block;margin-left:5px !important}',
+      result: ':host {\n  display: block;\n  margin-left: 5px !important;\n}',
     },
     {
       input: { ':host': { display: 'block', width: '500px', transition: 'width .25s ease' } },
-      result: ':host{display:block;width:500px;transition:width .25s ease}',
+      result: ':host {\n  display: block;\n  width: 500px;\n  transition: width .25s ease;\n}',
     },
     {
       input: {
@@ -30,7 +33,7 @@ describe('getCss()', () => {
         '@media (min-width: 760px)': { ':host': { marginRight: '5px !important' } },
       },
       result:
-        ':host{display:block;margin-left:5px !important}@media(min-width:760px){:host{margin-right:5px !important}}',
+        ':host {\n  display: block;\n  margin-left: 5px !important;\n}\n@media (min-width: 760px) {\n  :host {\n    margin-right: 5px !important;\n  }\n}\n',
     },
     {
       input: {
@@ -39,7 +42,7 @@ describe('getCss()', () => {
         '@media (min-width: 1000px)': { ':host': { marginRight: '10px !important' } },
       },
       result:
-        ':host{display:block;margin-left:5px !important}@media(min-width:760px){:host{margin-right:5px !important}}@media(min-width:1000px){:host{margin-right:10px !important}}',
+        ':host {\n  display: block;\n  margin-left: 5px !important;\n}\n@media (min-width: 760px) {\n  :host {\n    margin-right: 5px !important;\n  }\n}\n\n@media (min-width: 1000px) {\n  :host {\n    margin-right: 10px !important;\n  }\n}\n',
     },
     {
       input: {
@@ -48,11 +51,11 @@ describe('getCss()', () => {
         '@media (min-width: 760px)': { ':host': { marginRight: '5px !important' } },
       },
       result:
-        ':host{display:block;margin-left:5px !important}@media(min-width:760px){:host{margin-right:5px !important}}@media(min-width:1000px){:host{margin-right:10px !important}}',
+        ':host {\n  display: block;\n  margin-left: 5px !important;\n}\n@media (min-width: 760px) {\n  :host {\n    margin-right: 5px !important;\n  }\n}\n\n@media (min-width: 1000px) {\n  :host {\n    margin-right: 10px !important;\n  }\n}\n',
     },
     {
       input: { '@global': { div: { display: 'block' } } },
-      result: 'div{display:block}',
+      result: 'div {\n  display: block;\n}',
     },
   ];
   it.each(
