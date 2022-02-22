@@ -38,8 +38,8 @@ export const getCss = (jssStyles: Styles): string =>
       generateId: (rule: Rule) => rule.key,
     })
     .toString()
-    // removes default '.' before class name, all unneeded whitespace, semi colons, escaping backslashes and new lines
-    .replace(/\s\s+|\.\\(?=:)|[\n\\]+| (?={)|;(?=\s+})|(:|media)\s(?=.*;?)/g, '$1');
+    // removes default '.' before class name
+    .replace(/\.\\(?=:)/g, '');
 
 export const supportsConstructableStylesheets = (): boolean => {
   try {

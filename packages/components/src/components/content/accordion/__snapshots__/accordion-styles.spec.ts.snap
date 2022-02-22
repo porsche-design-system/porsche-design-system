@@ -1,15 +1,564 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for size: "medium", compact: false, open: true and theme: light 1`] = `":host{display:block}button{display:flex;justify-content:space-between;margin:0.25rem 0;width:100%;text-decoration:none;border:0;background:transparent;cursor:pointer;transition:color var(--p-transition-duration, .24s) ease;overflow:hidden;text-align:left;color:#000;overflow-wrap:break-word;word-wrap:break-word;hyphens:auto;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:600;font-size:1.5rem;line-height:1.5;padding:1.25rem 0;outline:1px solid transparent;outline-offset:2px}button::-moz-focus-inner{border:0}button:focus{outline-color:currentColor}button:focus:not(:focus-visible){outline-color:transparent}button:hover{color:#d5001c}:host(:first-of-type) .root{border-top:1px solid #e3e4e5}.root{border-bottom:1px solid #e3e4e5}.heading{margin:0;padding:0}.icon{width:1.5em;height:1.5em;margin-left:1.5rem;transform-origin:50% 50%;transform:rotate3d(0,0,1,180deg);transition:transform var(--p-transition-duration, .24s) ease}.collapsible{padding:0;overflow:hidden;height:auto;padding-bottom:2.5rem;visibility:visible;transition:height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s);animation:keyframes-open var(--p-transition-duration, .24s) ease forwards}@keyframes keyframes-open{0%,99%{overflow:hidden}100%{overflow:visible}}"`;
+exports[`getComponentCss() should return correct css for size: "medium", compact: false, open: true and theme: light 1`] = `
+":host {
+  display:block;
+}
+button {
+  display:flex;
+  justify-content:space-between;
+  margin:0.25rem 0;
+  width:100%;
+  text-decoration:none;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  transition:color var(--p-transition-duration, .24s) ease;
+  overflow:hidden;
+  text-align:left;
+  color:#000;
+  overflow-wrap:break-word;
+  word-wrap:break-word;
+  hyphens:auto;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:600;
+  font-size:1.5rem;
+  line-height:1.5;
+  padding:1.25rem 0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+}
+button::-moz-focus-inner {
+  border:0;
+}
+button:focus {
+  outline-color:currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color:transparent;
+}
+button:hover {
+  color:#d5001c;
+}
+:host\\\\(\\\\:first-of-type\\\\)\\\\ \\\\.root {
+  border-top:1px solid #e3e4e5;
+}
+.root {
+  border-bottom:1px solid #e3e4e5;
+}
+.heading {
+  margin:0;
+  padding:0;
+}
+.icon {
+  width:1.5em;
+  height:1.5em;
+  margin-left:1.5rem;
+  transform-origin:50% 50%;
+  transform:rotate3d(0,0,1,180deg);
+  transition:transform var(--p-transition-duration, .24s) ease;
+}
+.collapsible {
+  padding:0;
+  overflow:hidden;
+  height:auto;
+  padding-bottom:2.5rem;
+  visibility:visible;
+  transition:height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s);
+  animation:keyframes-open var(--p-transition-duration, .24s) ease forwards;
+}
+@keyframes keyframes-open {
+  0%,99% {
+    overflow:hidden;
+  }
+  100% {
+    overflow:visible;
+  }
+}"
+`;
 
-exports[`getComponentCss() should return correct css for size: "small", compact: false, open: false and theme: light 1`] = `":host{display:block}button{display:flex;justify-content:space-between;margin:0.25rem 0;width:100%;text-decoration:none;border:0;background:transparent;cursor:pointer;transition:color var(--p-transition-duration, .24s) ease;overflow:hidden;text-align:left;color:#000;overflow-wrap:break-word;word-wrap:break-word;hyphens:auto;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:600;font-size:1rem;line-height:1.5;padding:0.75rem 0;outline:1px solid transparent;outline-offset:2px}button::-moz-focus-inner{border:0}button:focus{outline-color:currentColor}button:focus:not(:focus-visible){outline-color:transparent}button:hover{color:#d5001c}:host(:first-of-type) .root{border-top:1px solid #e3e4e5}.root{border-bottom:1px solid #e3e4e5}.heading{margin:0;padding:0}.icon{width:1.5em;height:1.5em;margin-left:1.5rem;transform-origin:50% 50%;transform:rotate3d(0,0,1,0.0001deg);transition:transform var(--p-transition-duration, .24s) ease}.collapsible{padding:0;overflow:hidden;height:0;visibility:hidden;transition:height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s) linear var(--p-transition-duration, .24s)}@keyframes keyframes-open{0%,99%{overflow:hidden}100%{overflow:visible}}"`;
+exports[`getComponentCss() should return correct css for size: "small", compact: false, open: false and theme: light 1`] = `
+":host {
+  display:block;
+}
+button {
+  display:flex;
+  justify-content:space-between;
+  margin:0.25rem 0;
+  width:100%;
+  text-decoration:none;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  transition:color var(--p-transition-duration, .24s) ease;
+  overflow:hidden;
+  text-align:left;
+  color:#000;
+  overflow-wrap:break-word;
+  word-wrap:break-word;
+  hyphens:auto;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:600;
+  font-size:1rem;
+  line-height:1.5;
+  padding:0.75rem 0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+}
+button::-moz-focus-inner {
+  border:0;
+}
+button:focus {
+  outline-color:currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color:transparent;
+}
+button:hover {
+  color:#d5001c;
+}
+:host\\\\(\\\\:first-of-type\\\\)\\\\ \\\\.root {
+  border-top:1px solid #e3e4e5;
+}
+.root {
+  border-bottom:1px solid #e3e4e5;
+}
+.heading {
+  margin:0;
+  padding:0;
+}
+.icon {
+  width:1.5em;
+  height:1.5em;
+  margin-left:1.5rem;
+  transform-origin:50% 50%;
+  transform:rotate3d(0,0,1,0.0001deg);
+  transition:transform var(--p-transition-duration, .24s) ease;
+}
+.collapsible {
+  padding:0;
+  overflow:hidden;
+  height:0;
+  visibility:hidden;
+  transition:height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s) linear var(--p-transition-duration, .24s);
+}
+@keyframes keyframes-open {
+  0%,99% {
+    overflow:hidden;
+  }
+  100% {
+    overflow:visible;
+  }
+}"
+`;
 
-exports[`getComponentCss() should return correct css for size: "small", compact: false, open: true and theme: dark 1`] = `":host{display:block}button{display:flex;justify-content:space-between;margin:0.25rem 0;width:100%;text-decoration:none;border:0;background:transparent;cursor:pointer;transition:color var(--p-transition-duration, .24s) ease;overflow:hidden;text-align:left;color:#fff;overflow-wrap:break-word;word-wrap:break-word;hyphens:auto;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:600;font-size:1rem;line-height:1.5;padding:0.75rem 0;outline:1px solid transparent;outline-offset:2px}button::-moz-focus-inner{border:0}button:focus{outline-color:currentColor}button:focus:not(:focus-visible){outline-color:transparent}button:hover{color:#ff0223}:host(:first-of-type) .root{border-top:1px solid #4a4e51}.root{border-bottom:1px solid #4a4e51}.heading{margin:0;padding:0}.icon{width:1.5em;height:1.5em;margin-left:1.5rem;transform-origin:50% 50%;transform:rotate3d(0,0,1,180deg);transition:transform var(--p-transition-duration, .24s) ease}.collapsible{padding:0;overflow:hidden;height:auto;padding-bottom:2.5rem;visibility:visible;transition:height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s);animation:keyframes-open var(--p-transition-duration, .24s) ease forwards}@keyframes keyframes-open{0%,99%{overflow:hidden}100%{overflow:visible}}"`;
+exports[`getComponentCss() should return correct css for size: "small", compact: false, open: true and theme: dark 1`] = `
+":host {
+  display:block;
+}
+button {
+  display:flex;
+  justify-content:space-between;
+  margin:0.25rem 0;
+  width:100%;
+  text-decoration:none;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  transition:color var(--p-transition-duration, .24s) ease;
+  overflow:hidden;
+  text-align:left;
+  color:#fff;
+  overflow-wrap:break-word;
+  word-wrap:break-word;
+  hyphens:auto;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:600;
+  font-size:1rem;
+  line-height:1.5;
+  padding:0.75rem 0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+}
+button::-moz-focus-inner {
+  border:0;
+}
+button:focus {
+  outline-color:currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color:transparent;
+}
+button:hover {
+  color:#ff0223;
+}
+:host\\\\(\\\\:first-of-type\\\\)\\\\ \\\\.root {
+  border-top:1px solid #4a4e51;
+}
+.root {
+  border-bottom:1px solid #4a4e51;
+}
+.heading {
+  margin:0;
+  padding:0;
+}
+.icon {
+  width:1.5em;
+  height:1.5em;
+  margin-left:1.5rem;
+  transform-origin:50% 50%;
+  transform:rotate3d(0,0,1,180deg);
+  transition:transform var(--p-transition-duration, .24s) ease;
+}
+.collapsible {
+  padding:0;
+  overflow:hidden;
+  height:auto;
+  padding-bottom:2.5rem;
+  visibility:visible;
+  transition:height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s);
+  animation:keyframes-open var(--p-transition-duration, .24s) ease forwards;
+}
+@keyframes keyframes-open {
+  0%,99% {
+    overflow:hidden;
+  }
+  100% {
+    overflow:visible;
+  }
+}"
+`;
 
-exports[`getComponentCss() should return correct css for size: "small", compact: false, open: true and theme: light 1`] = `":host{display:block}button{display:flex;justify-content:space-between;margin:0.25rem 0;width:100%;text-decoration:none;border:0;background:transparent;cursor:pointer;transition:color var(--p-transition-duration, .24s) ease;overflow:hidden;text-align:left;color:#000;overflow-wrap:break-word;word-wrap:break-word;hyphens:auto;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:600;font-size:1rem;line-height:1.5;padding:0.75rem 0;outline:1px solid transparent;outline-offset:2px}button::-moz-focus-inner{border:0}button:focus{outline-color:currentColor}button:focus:not(:focus-visible){outline-color:transparent}button:hover{color:#d5001c}:host(:first-of-type) .root{border-top:1px solid #e3e4e5}.root{border-bottom:1px solid #e3e4e5}.heading{margin:0;padding:0}.icon{width:1.5em;height:1.5em;margin-left:1.5rem;transform-origin:50% 50%;transform:rotate3d(0,0,1,180deg);transition:transform var(--p-transition-duration, .24s) ease}.collapsible{padding:0;overflow:hidden;height:auto;padding-bottom:2.5rem;visibility:visible;transition:height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s);animation:keyframes-open var(--p-transition-duration, .24s) ease forwards}@keyframes keyframes-open{0%,99%{overflow:hidden}100%{overflow:visible}}"`;
+exports[`getComponentCss() should return correct css for size: "small", compact: false, open: true and theme: light 1`] = `
+":host {
+  display:block;
+}
+button {
+  display:flex;
+  justify-content:space-between;
+  margin:0.25rem 0;
+  width:100%;
+  text-decoration:none;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  transition:color var(--p-transition-duration, .24s) ease;
+  overflow:hidden;
+  text-align:left;
+  color:#000;
+  overflow-wrap:break-word;
+  word-wrap:break-word;
+  hyphens:auto;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:600;
+  font-size:1rem;
+  line-height:1.5;
+  padding:0.75rem 0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+}
+button::-moz-focus-inner {
+  border:0;
+}
+button:focus {
+  outline-color:currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color:transparent;
+}
+button:hover {
+  color:#d5001c;
+}
+:host\\\\(\\\\:first-of-type\\\\)\\\\ \\\\.root {
+  border-top:1px solid #e3e4e5;
+}
+.root {
+  border-bottom:1px solid #e3e4e5;
+}
+.heading {
+  margin:0;
+  padding:0;
+}
+.icon {
+  width:1.5em;
+  height:1.5em;
+  margin-left:1.5rem;
+  transform-origin:50% 50%;
+  transform:rotate3d(0,0,1,180deg);
+  transition:transform var(--p-transition-duration, .24s) ease;
+}
+.collapsible {
+  padding:0;
+  overflow:hidden;
+  height:auto;
+  padding-bottom:2.5rem;
+  visibility:visible;
+  transition:height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s);
+  animation:keyframes-open var(--p-transition-duration, .24s) ease forwards;
+}
+@keyframes keyframes-open {
+  0%,99% {
+    overflow:hidden;
+  }
+  100% {
+    overflow:visible;
+  }
+}"
+`;
 
-exports[`getComponentCss() should return correct css for size: "small", compact: true, open: false and theme: light 1`] = `":host{display:block}button{display:flex;justify-content:space-between;margin:0.25rem 0;width:100%;text-decoration:none;border:0;background:transparent;cursor:pointer;transition:color var(--p-transition-duration, .24s) ease;overflow:hidden;text-align:left;color:#000;overflow-wrap:break-word;word-wrap:break-word;hyphens:auto;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:600;font-size:1rem;line-height:1.5;padding:0.25rem 0;outline:1px solid transparent;outline-offset:2px}button::-moz-focus-inner{border:0}button:focus{outline-color:currentColor}button:focus:not(:focus-visible){outline-color:transparent}button:hover{color:#d5001c}.heading{margin:0;padding:0}.icon{width:1.5em;height:1.5em;margin-left:1.5rem;transform-origin:50% 50%;transform:rotate3d(0,0,1,0.0001deg);transition:transform var(--p-transition-duration, .24s) ease}.collapsible{padding:0;overflow:hidden;height:0;visibility:hidden;transition:height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s) linear var(--p-transition-duration, .24s)}@keyframes keyframes-open{0%,99%{overflow:hidden}100%{overflow:visible}}"`;
+exports[`getComponentCss() should return correct css for size: "small", compact: true, open: false and theme: light 1`] = `
+":host {
+  display:block;
+}
+button {
+  display:flex;
+  justify-content:space-between;
+  margin:0.25rem 0;
+  width:100%;
+  text-decoration:none;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  transition:color var(--p-transition-duration, .24s) ease;
+  overflow:hidden;
+  text-align:left;
+  color:#000;
+  overflow-wrap:break-word;
+  word-wrap:break-word;
+  hyphens:auto;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:600;
+  font-size:1rem;
+  line-height:1.5;
+  padding:0.25rem 0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+}
+button::-moz-focus-inner {
+  border:0;
+}
+button:focus {
+  outline-color:currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color:transparent;
+}
+button:hover {
+  color:#d5001c;
+}
+.heading {
+  margin:0;
+  padding:0;
+}
+.icon {
+  width:1.5em;
+  height:1.5em;
+  margin-left:1.5rem;
+  transform-origin:50% 50%;
+  transform:rotate3d(0,0,1,0.0001deg);
+  transition:transform var(--p-transition-duration, .24s) ease;
+}
+.collapsible {
+  padding:0;
+  overflow:hidden;
+  height:0;
+  visibility:hidden;
+  transition:height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s) linear var(--p-transition-duration, .24s);
+}
+@keyframes keyframes-open {
+  0%,99% {
+    overflow:hidden;
+  }
+  100% {
+    overflow:visible;
+  }
+}"
+`;
 
-exports[`getComponentCss() should return correct css for size: "small", compact: true, open: true and theme: light 1`] = `":host{display:block}button{display:flex;justify-content:space-between;margin:0.25rem 0;width:100%;text-decoration:none;border:0;background:transparent;cursor:pointer;transition:color var(--p-transition-duration, .24s) ease;overflow:hidden;text-align:left;color:#000;overflow-wrap:break-word;word-wrap:break-word;hyphens:auto;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:600;font-size:1rem;line-height:1.5;padding:0.25rem 0;outline:1px solid transparent;outline-offset:2px}button::-moz-focus-inner{border:0}button:focus{outline-color:currentColor}button:focus:not(:focus-visible){outline-color:transparent}button:hover{color:#d5001c}.heading{margin:0;padding:0}.icon{width:1.5em;height:1.5em;margin-left:1.5rem;transform-origin:50% 50%;transform:rotate3d(0,0,1,180deg);transition:transform var(--p-transition-duration, .24s) ease}.collapsible{padding:0;overflow:hidden;height:auto;padding-bottom:0.5rem;visibility:visible;transition:height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s);animation:keyframes-open var(--p-transition-duration, .24s) ease forwards}@keyframes keyframes-open{0%,99%{overflow:hidden}100%{overflow:visible}}"`;
+exports[`getComponentCss() should return correct css for size: "small", compact: true, open: true and theme: light 1`] = `
+":host {
+  display:block;
+}
+button {
+  display:flex;
+  justify-content:space-between;
+  margin:0.25rem 0;
+  width:100%;
+  text-decoration:none;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  transition:color var(--p-transition-duration, .24s) ease;
+  overflow:hidden;
+  text-align:left;
+  color:#000;
+  overflow-wrap:break-word;
+  word-wrap:break-word;
+  hyphens:auto;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:600;
+  font-size:1rem;
+  line-height:1.5;
+  padding:0.25rem 0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+}
+button::-moz-focus-inner {
+  border:0;
+}
+button:focus {
+  outline-color:currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color:transparent;
+}
+button:hover {
+  color:#d5001c;
+}
+.heading {
+  margin:0;
+  padding:0;
+}
+.icon {
+  width:1.5em;
+  height:1.5em;
+  margin-left:1.5rem;
+  transform-origin:50% 50%;
+  transform:rotate3d(0,0,1,180deg);
+  transition:transform var(--p-transition-duration, .24s) ease;
+}
+.collapsible {
+  padding:0;
+  overflow:hidden;
+  height:auto;
+  padding-bottom:0.5rem;
+  visibility:visible;
+  transition:height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s);
+  animation:keyframes-open var(--p-transition-duration, .24s) ease forwards;
+}
+@keyframes keyframes-open {
+  0%,99% {
+    overflow:hidden;
+  }
+  100% {
+    overflow:visible;
+  }
+}"
+`;
 
-exports[`getComponentCss() should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"}, compact: false, open: true and theme: dark 1`] = `":host{display:block}button{display:flex;justify-content:space-between;margin:0.25rem 0;width:100%;text-decoration:none;border:0;background:transparent;cursor:pointer;transition:color var(--p-transition-duration, .24s) ease;overflow:hidden;text-align:left;color:#fff;overflow-wrap:break-word;word-wrap:break-word;hyphens:auto;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:600;font-size:1rem;line-height:1.5;padding:0.75rem 0;outline:1px solid transparent;outline-offset:2px}button::-moz-focus-inner{border:0}button:focus{outline-color:currentColor}button:focus:not(:focus-visible){outline-color:transparent}button:hover{color:#ff0223}@media(min-width:480px){button{font-size:1.5rem;line-height:1.5;padding:1.25rem 0}}@media(min-width:760px){button{font-size:1rem;line-height:1.5;padding:0.75rem 0}}@media(min-width:1000px){button{font-size:1.5rem;line-height:1.5;padding:1.25rem 0}}@media(min-width:1300px){button{font-size:1rem;line-height:1.5;padding:0.75rem 0}}@media(min-width:1760px){button{font-size:1.5rem;line-height:1.5;padding:1.25rem 0}}:host(:first-of-type) .root{border-top:1px solid #4a4e51}.root{border-bottom:1px solid #4a4e51}.heading{margin:0;padding:0}.icon{width:1.5em;height:1.5em;margin-left:1.5rem;transform-origin:50% 50%;transform:rotate3d(0,0,1,180deg);transition:transform var(--p-transition-duration, .24s) ease}.collapsible{padding:0;overflow:hidden;height:auto;padding-bottom:2.5rem;visibility:visible;transition:height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s);animation:keyframes-open var(--p-transition-duration, .24s) ease forwards}@keyframes keyframes-open{0%,99%{overflow:hidden}100%{overflow:visible}}"`;
+exports[`getComponentCss() should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"}, compact: false, open: true and theme: dark 1`] = `
+":host {
+  display:block;
+}
+button {
+  display:flex;
+  justify-content:space-between;
+  margin:0.25rem 0;
+  width:100%;
+  text-decoration:none;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  transition:color var(--p-transition-duration, .24s) ease;
+  overflow:hidden;
+  text-align:left;
+  color:#fff;
+  overflow-wrap:break-word;
+  word-wrap:break-word;
+  hyphens:auto;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:600;
+  font-size:1rem;
+  line-height:1.5;
+  padding:0.75rem 0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+}
+button::-moz-focus-inner {
+  border:0;
+}
+button:focus {
+  outline-color:currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color:transparent;
+}
+button:hover {
+  color:#ff0223;
+}
+@media(min-width:480px) {
+  button {
+    font-size:1.5rem;
+    line-height:1.5;
+    padding:1.25rem 0;
+  }
+}
+
+@media(min-width:760px) {
+  button {
+    font-size:1rem;
+    line-height:1.5;
+    padding:0.75rem 0;
+  }
+}
+
+@media(min-width:1000px) {
+  button {
+    font-size:1.5rem;
+    line-height:1.5;
+    padding:1.25rem 0;
+  }
+}
+
+@media(min-width:1300px) {
+  button {
+    font-size:1rem;
+    line-height:1.5;
+    padding:0.75rem 0;
+  }
+}
+
+@media(min-width:1760px) {
+  button {
+    font-size:1.5rem;
+    line-height:1.5;
+    padding:1.25rem 0;
+  }
+}
+
+:host\\\\(\\\\:first-of-type\\\\)\\\\ \\\\.root {
+  border-top:1px solid #4a4e51;
+}
+.root {
+  border-bottom:1px solid #4a4e51;
+}
+.heading {
+  margin:0;
+  padding:0;
+}
+.icon {
+  width:1.5em;
+  height:1.5em;
+  margin-left:1.5rem;
+  transform-origin:50% 50%;
+  transform:rotate3d(0,0,1,180deg);
+  transition:transform var(--p-transition-duration, .24s) ease;
+}
+.collapsible {
+  padding:0;
+  overflow:hidden;
+  height:auto;
+  padding-bottom:2.5rem;
+  visibility:visible;
+  transition:height var(--p-transition-duration, .24s) ease,visibility var(--p-transition-duration, .24s);
+  animation:keyframes-open var(--p-transition-duration, .24s) ease forwards;
+}
+@keyframes keyframes-open {
+  0%,99% {
+    overflow:hidden;
+  }
+  100% {
+    overflow:visible;
+  }
+}"
+`;

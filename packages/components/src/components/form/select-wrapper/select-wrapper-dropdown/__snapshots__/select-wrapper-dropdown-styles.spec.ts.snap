@@ -1,85 +1,4196 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getButtonStyles() should return correct css for isOpen: false, state: 'error' and theme: 'dark' 1`] = `"button{position:absolute;top:0;height:48px;width:100%;padding:0;background:transparent;border:2px solid currentColor;outline:1px solid transparent;outline-offset:2px;cursor:pointer;color:currentColor;transition:color var(--p-transition-duration, .24s) ease}button:focus{outline-color:#fc1717}button:hover:not(:disabled) ~ ul{border-color:#e3e4e5}button:disabled{cursor:not-allowed}"`;
+exports[`getButtonStyles() should return correct css for isOpen: false, state: 'error' and theme: 'dark' 1`] = `
+"button {
+  position:absolute;
+  top:0;
+  height:48px;
+  width:100%;
+  padding:0;
+  background:transparent;
+  border:2px solid currentColor;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  cursor:pointer;
+  color:currentColor;
+  transition:color var(--p-transition-duration, .24s) ease;
+}
+button:focus {
+  outline-color:#fc1717;
+}
+button:hover:not(:disabled) ~ ul {
+  border-color:#e3e4e5;
+}
+button:disabled {
+  cursor:not-allowed;
+}"
+`;
 
-exports[`getButtonStyles() should return correct css for isOpen: false, state: 'none' and theme: 'dark' 1`] = `"button{position:absolute;top:0;height:48px;width:100%;padding:0;background:transparent;border:1px solid currentColor;outline:1px solid transparent;outline-offset:2px;cursor:pointer;color:currentColor;transition:color var(--p-transition-duration, .24s) ease}button:focus{outline-color:#b0b1b2}button:hover:not(:disabled) ~ ul{border-color:#e3e4e5}button:disabled{cursor:not-allowed}"`;
+exports[`getButtonStyles() should return correct css for isOpen: false, state: 'none' and theme: 'dark' 1`] = `
+"button {
+  position:absolute;
+  top:0;
+  height:48px;
+  width:100%;
+  padding:0;
+  background:transparent;
+  border:1px solid currentColor;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  cursor:pointer;
+  color:currentColor;
+  transition:color var(--p-transition-duration, .24s) ease;
+}
+button:focus {
+  outline-color:#b0b1b2;
+}
+button:hover:not(:disabled) ~ ul {
+  border-color:#e3e4e5;
+}
+button:disabled {
+  cursor:not-allowed;
+}"
+`;
 
-exports[`getButtonStyles() should return correct css for isOpen: false, state: 'success' and theme: 'dark' 1`] = `"button{position:absolute;top:0;height:48px;width:100%;padding:0;background:transparent;border:2px solid currentColor;outline:1px solid transparent;outline-offset:2px;cursor:pointer;color:currentColor;transition:color var(--p-transition-duration, .24s) ease}button:focus{outline-color:#01ba1d}button:hover:not(:disabled) ~ ul{border-color:#e3e4e5}button:disabled{cursor:not-allowed}"`;
+exports[`getButtonStyles() should return correct css for isOpen: false, state: 'success' and theme: 'dark' 1`] = `
+"button {
+  position:absolute;
+  top:0;
+  height:48px;
+  width:100%;
+  padding:0;
+  background:transparent;
+  border:2px solid currentColor;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  cursor:pointer;
+  color:currentColor;
+  transition:color var(--p-transition-duration, .24s) ease;
+}
+button:focus {
+  outline-color:#01ba1d;
+}
+button:hover:not(:disabled) ~ ul {
+  border-color:#e3e4e5;
+}
+button:disabled {
+  cursor:not-allowed;
+}"
+`;
 
-exports[`getButtonStyles() should return correct css for isOpen: true, state: 'error' and theme: 'light' 1`] = `"button{position:absolute;top:0;height:48px;width:100%;padding:0;background:transparent;border:2px solid currentColor;outline:1px solid transparent;outline-offset:2px;cursor:pointer;color:currentColor;transition:color var(--p-transition-duration, .24s) ease;outline-color:#e00000}button:focus{outline-color:#e00000}button:hover:not(:disabled) ~ ul{border-color:#323639}button:disabled{cursor:not-allowed}"`;
+exports[`getButtonStyles() should return correct css for isOpen: true, state: 'error' and theme: 'light' 1`] = `
+"button {
+  position:absolute;
+  top:0;
+  height:48px;
+  width:100%;
+  padding:0;
+  background:transparent;
+  border:2px solid currentColor;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  cursor:pointer;
+  color:currentColor;
+  transition:color var(--p-transition-duration, .24s) ease;
+  outline-color:#e00000;
+}
+button:focus {
+  outline-color:#e00000;
+}
+button:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+button:disabled {
+  cursor:not-allowed;
+}"
+`;
 
-exports[`getButtonStyles() should return correct css for isOpen: true, state: 'none' and theme: 'light' 1`] = `"button{position:absolute;top:0;height:48px;width:100%;padding:0;background:transparent;border:1px solid currentColor;outline:1px solid transparent;outline-offset:2px;cursor:pointer;color:currentColor;transition:color var(--p-transition-duration, .24s) ease;outline-color:#626669}button:focus{outline-color:#626669}button:hover:not(:disabled) ~ ul{border-color:#323639}button:disabled{cursor:not-allowed}"`;
+exports[`getButtonStyles() should return correct css for isOpen: true, state: 'none' and theme: 'light' 1`] = `
+"button {
+  position:absolute;
+  top:0;
+  height:48px;
+  width:100%;
+  padding:0;
+  background:transparent;
+  border:1px solid currentColor;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  cursor:pointer;
+  color:currentColor;
+  transition:color var(--p-transition-duration, .24s) ease;
+  outline-color:#626669;
+}
+button:focus {
+  outline-color:#626669;
+}
+button:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+button:disabled {
+  cursor:not-allowed;
+}"
+`;
 
-exports[`getButtonStyles() should return correct css for isOpen: true, state: 'success' and theme: 'light' 1`] = `"button{position:absolute;top:0;height:48px;width:100%;padding:0;background:transparent;border:2px solid currentColor;outline:1px solid transparent;outline-offset:2px;cursor:pointer;color:currentColor;transition:color var(--p-transition-duration, .24s) ease;outline-color:#018a16}button:focus{outline-color:#018a16}button:hover:not(:disabled) ~ ul{border-color:#323639}button:disabled{cursor:not-allowed}"`;
+exports[`getButtonStyles() should return correct css for isOpen: true, state: 'success' and theme: 'light' 1`] = `
+"button {
+  position:absolute;
+  top:0;
+  height:48px;
+  width:100%;
+  padding:0;
+  background:transparent;
+  border:2px solid currentColor;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  cursor:pointer;
+  color:currentColor;
+  transition:color var(--p-transition-duration, .24s) ease;
+  outline-color:#018a16;
+}
+button:focus {
+  outline-color:#018a16;
+}
+button:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+button:disabled {
+  cursor:not-allowed;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, disabled: false, state: none, filter: false and theme: light 1`] = `":host{--p-dropdown-position:absolute;display:block;position:var(--p-dropdown-position);margin-top:-3rem;padding-top:3rem;left:0;right:0;color:#626669}:host(:hover){color:#000}button{position:absolute;top:0;height:48px;width:100%;padding:0;background:transparent;border:1px solid currentColor;outline:1px solid transparent;outline-offset:2px;cursor:pointer;color:currentColor;transition:color var(--p-transition-duration, .24s) ease}button:focus{outline-color:#626669}button:hover:not(:disabled) ~ ul{border-color:#323639}button:disabled{cursor:not-allowed}ul{display:block;position:var(--p-dropdown-position);padding:0;margin:0;margin-top:-0.0625rem;color:#000;background:#fff;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;line-height:1.5;z-index:10;left:0;right:0;max-height:19.25rem;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;border:1px solid #626669;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0);outline:none;top:calc(100%-3px);border-top:none;box-shadow:0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);opacity:0;overflow:hidden;height:1px;pointer-events:none}ul:hover{border-color:#323639}ul::before{content:\\"\\";display:block;position:sticky;width:100%;height:1px;background:#e3e4e5;top:0}.option{display:flex;padding:0.25rem 0.6875rem;min-height:2rem;cursor:pointer;text-align:left;word-break:break-word;box-sizing:border-box;transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease}.option[role=\\"status\\"]{cursor:not-allowed}.option__sr{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.option:not([aria-disabled]):not([role=\\"status\\"]):hover{color:#d5001c;background:#f2f2f2}.option--highlighted, .option--selected{color:#d5001c;background:#f2f2f2}.option--selected{cursor:default;pointer-events:none}.option--disabled{cursor:not-allowed;color:#96989a}.option--hidden{display:none}.icon{margin-left:0.25rem}.optgroup{display:block;padding:0.5rem 0.75rem;margin-top:0.5rem;font-weight:700}.optgroup~.option{padding-left:1.5rem}.sr-text{display:none}"`;
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, disabled: false, state: none, filter: false and theme: light 1`] = `
+":host {
+  --p-dropdown-position:absolute;
+  display:block;
+  position:var(--p-dropdown-position);
+  margin-top:-3rem;
+  padding-top:3rem;
+  left:0;
+  right:0;
+  color:#626669;
+}
+:host(:hover) {
+  color:#000;
+}
+button {
+  position:absolute;
+  top:0;
+  height:48px;
+  width:100%;
+  padding:0;
+  background:transparent;
+  border:1px solid currentColor;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  cursor:pointer;
+  color:currentColor;
+  transition:color var(--p-transition-duration, .24s) ease;
+}
+button:focus {
+  outline-color:#626669;
+}
+button:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+button:disabled {
+  cursor:not-allowed;
+}
+ul {
+  display:block;
+  position:var(--p-dropdown-position);
+  padding:0;
+  margin:0;
+  margin-top:-0.0625rem;
+  color:#000;
+  background:#fff;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size:1rem;
+  line-height:1.5;
+  z-index:10;
+  left:0;
+  right:0;
+  max-height:19.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  border:1px solid #626669;
+  scrollbar-width:thin;
+  scrollbar-color:auto;
+  transition:border-color var(--p-transition-duration, .24s) ease;
+  transform:translate3d(0,0,0);
+  outline:none;
+  top:calc(100%-3px);
+  border-top:none;
+  box-shadow:0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
+  opacity:0;
+  overflow:hidden;
+  height:1px;
+  pointer-events:none;
+}
+ul:hover {
+  border-color:#323639;
+}
+ul::before {
+  content:\\"\\";
+  display:block;
+  position:sticky;
+  width:100%;
+  height:1px;
+  background:#e3e4e5;
+  top:0;
+}
+.option {
+  display:flex;
+  padding:0.25rem 0.6875rem;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:left;
+  word-break:break-word;
+  box-sizing:border-box;
+  transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+}
+.option[role=\\"status\\"] {
+  cursor:not-allowed;
+}
+.option__sr {
+  position:absolute;
+  height:1px;
+  width:1px;
+  border:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--highlighted, .option--selected {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--selected {
+  cursor:default;
+  pointer-events:none;
+}
+.option--disabled {
+  cursor:not-allowed;
+  color:#96989a;
+}
+.option--hidden {
+  display:none;
+}
+.icon {
+  margin-left:0.25rem;
+}
+.optgroup {
+  display:block;
+  padding:0.5rem 0.75rem;
+  margin-top:0.5rem;
+  font-weight:700;
+}
+.optgroup~.option {
+  padding-left:1.5rem;
+}
+.sr-text {
+  display:none;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, disabled: false, state: none, filter: true and theme: light 1`] = `":host{--p-dropdown-position:absolute;display:block;position:var(--p-dropdown-position);margin-top:-3rem;padding-top:3rem;left:0;right:0;color:#626669}:host(:hover){color:#000}input{display:block;position:absolute;z-index:1;bottom:0.125rem;left:0.125rem;width:calc(100% - 2.75rem);height:2.75rem;padding:0.625rem;outline:none;appearance:none;box-sizing:border-box;border:none;opacity:0;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:400;font-size:1rem;line-height:1.5;text-indent:0;cursor:text;color:#000;background:#fff}input::placeholder{opacity:1;color:#000}input::-webkit-input-placeholder{opacity:1;color:#000}input::-moz-placeholder{opacity:1;color:#000}input:focus{opacity:1}input:hover:not(:disabled) ~ ul{border-color:#323639}input+span{position:absolute;top:0;left:0;right:0;bottom:0;outline:1px solid transparent;outline-offset:2px;transition:color var(--p-transition-duration, .24s) ease;pointer-events:all;cursor:pointer;border:1px solid currentColor}input:focus+span{outline-color:#626669}ul{display:block;position:var(--p-dropdown-position);padding:0;margin:0;margin-top:-0.0625rem;color:#000;background:#fff;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;line-height:1.5;z-index:10;left:0;right:0;max-height:19.25rem;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;border:1px solid #626669;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0);outline:none;top:calc(100%-3px);border-top:none;box-shadow:0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);opacity:0;overflow:hidden;height:1px;pointer-events:none}ul:hover{border-color:#323639}ul::before{content:\\"\\";display:block;position:sticky;width:100%;height:1px;background:#e3e4e5;top:0}.option{display:flex;padding:0.25rem 0.6875rem;min-height:2rem;cursor:pointer;text-align:left;word-break:break-word;box-sizing:border-box;transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease}.option[role=\\"status\\"]{cursor:not-allowed}.option__sr{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.option:not([aria-disabled]):not([role=\\"status\\"]):hover{color:#d5001c;background:#f2f2f2}.option--highlighted, .option--selected{color:#d5001c;background:#f2f2f2}.option--selected{cursor:default;pointer-events:none}.option--disabled{cursor:not-allowed;color:#96989a}.option--hidden{display:none}.icon{margin-left:0.25rem}.optgroup{display:block;padding:0.5rem 0.75rem;margin-top:0.5rem;font-weight:700}.optgroup~.option{padding-left:1.5rem}.sr-text{display:none}"`;
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, disabled: false, state: none, filter: true and theme: light 1`] = `
+":host {
+  --p-dropdown-position:absolute;
+  display:block;
+  position:var(--p-dropdown-position);
+  margin-top:-3rem;
+  padding-top:3rem;
+  left:0;
+  right:0;
+  color:#626669;
+}
+:host(:hover) {
+  color:#000;
+}
+input {
+  display:block;
+  position:absolute;
+  z-index:1;
+  bottom:0.125rem;
+  left:0.125rem;
+  width:calc(100% - 2.75rem);
+  height:2.75rem;
+  padding:0.625rem;
+  outline:none;
+  appearance:none;
+  box-sizing:border-box;
+  border:none;
+  opacity:0;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:400;
+  font-size:1rem;
+  line-height:1.5;
+  text-indent:0;
+  cursor:text;
+  color:#000;
+  background:#fff;
+}
+input::placeholder {
+  opacity:1;
+  color:#000;
+}
+input::-webkit-input-placeholder {
+  opacity:1;
+  color:#000;
+}
+input::-moz-placeholder {
+  opacity:1;
+  color:#000;
+}
+input:focus {
+  opacity:1;
+}
+input:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+input+span {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  transition:color var(--p-transition-duration, .24s) ease;
+  pointer-events:all;
+  cursor:pointer;
+  border:1px solid currentColor;
+}
+input:focus+span {
+  outline-color:#626669;
+}
+ul {
+  display:block;
+  position:var(--p-dropdown-position);
+  padding:0;
+  margin:0;
+  margin-top:-0.0625rem;
+  color:#000;
+  background:#fff;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size:1rem;
+  line-height:1.5;
+  z-index:10;
+  left:0;
+  right:0;
+  max-height:19.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  border:1px solid #626669;
+  scrollbar-width:thin;
+  scrollbar-color:auto;
+  transition:border-color var(--p-transition-duration, .24s) ease;
+  transform:translate3d(0,0,0);
+  outline:none;
+  top:calc(100%-3px);
+  border-top:none;
+  box-shadow:0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
+  opacity:0;
+  overflow:hidden;
+  height:1px;
+  pointer-events:none;
+}
+ul:hover {
+  border-color:#323639;
+}
+ul::before {
+  content:\\"\\";
+  display:block;
+  position:sticky;
+  width:100%;
+  height:1px;
+  background:#e3e4e5;
+  top:0;
+}
+.option {
+  display:flex;
+  padding:0.25rem 0.6875rem;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:left;
+  word-break:break-word;
+  box-sizing:border-box;
+  transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+}
+.option[role=\\"status\\"] {
+  cursor:not-allowed;
+}
+.option__sr {
+  position:absolute;
+  height:1px;
+  width:1px;
+  border:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--highlighted, .option--selected {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--selected {
+  cursor:default;
+  pointer-events:none;
+}
+.option--disabled {
+  cursor:not-allowed;
+  color:#96989a;
+}
+.option--hidden {
+  display:none;
+}
+.icon {
+  margin-left:0.25rem;
+}
+.optgroup {
+  display:block;
+  padding:0.5rem 0.75rem;
+  margin-top:0.5rem;
+  font-weight:700;
+}
+.optgroup~.option {
+  padding-left:1.5rem;
+}
+.sr-text {
+  display:none;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, disabled: true, state: none, filter: false and theme: light 1`] = `":host{--p-dropdown-position:absolute;display:block;position:var(--p-dropdown-position);margin-top:-3rem;padding-top:3rem;left:0;right:0;color:#96989a}button{position:absolute;top:0;height:48px;width:100%;padding:0;background:transparent;border:1px solid currentColor;outline:1px solid transparent;outline-offset:2px;cursor:pointer;color:currentColor;transition:color var(--p-transition-duration, .24s) ease}button:focus{outline-color:#626669}button:hover:not(:disabled) ~ ul{border-color:#323639}button:disabled{cursor:not-allowed}ul{display:block;position:var(--p-dropdown-position);padding:0;margin:0;margin-top:-0.0625rem;color:#000;background:#fff;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;line-height:1.5;z-index:10;left:0;right:0;max-height:19.25rem;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;border:1px solid #626669;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0);outline:none;top:calc(100%-3px);border-top:none;box-shadow:0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);opacity:0;overflow:hidden;height:1px;pointer-events:none}ul:hover{border-color:#323639}ul::before{content:\\"\\";display:block;position:sticky;width:100%;height:1px;background:#e3e4e5;top:0}.option{display:flex;padding:0.25rem 0.6875rem;min-height:2rem;cursor:pointer;text-align:left;word-break:break-word;box-sizing:border-box;transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease}.option[role=\\"status\\"]{cursor:not-allowed}.option__sr{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.option:not([aria-disabled]):not([role=\\"status\\"]):hover{color:#d5001c;background:#f2f2f2}.option--highlighted, .option--selected{color:#d5001c;background:#f2f2f2}.option--selected{cursor:default;pointer-events:none}.option--disabled{cursor:not-allowed;color:#96989a}.option--hidden{display:none}.icon{margin-left:0.25rem}.optgroup{display:block;padding:0.5rem 0.75rem;margin-top:0.5rem;font-weight:700}.optgroup~.option{padding-left:1.5rem}.sr-text{display:none}"`;
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, disabled: true, state: none, filter: false and theme: light 1`] = `
+":host {
+  --p-dropdown-position:absolute;
+  display:block;
+  position:var(--p-dropdown-position);
+  margin-top:-3rem;
+  padding-top:3rem;
+  left:0;
+  right:0;
+  color:#96989a;
+}
+button {
+  position:absolute;
+  top:0;
+  height:48px;
+  width:100%;
+  padding:0;
+  background:transparent;
+  border:1px solid currentColor;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  cursor:pointer;
+  color:currentColor;
+  transition:color var(--p-transition-duration, .24s) ease;
+}
+button:focus {
+  outline-color:#626669;
+}
+button:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+button:disabled {
+  cursor:not-allowed;
+}
+ul {
+  display:block;
+  position:var(--p-dropdown-position);
+  padding:0;
+  margin:0;
+  margin-top:-0.0625rem;
+  color:#000;
+  background:#fff;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size:1rem;
+  line-height:1.5;
+  z-index:10;
+  left:0;
+  right:0;
+  max-height:19.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  border:1px solid #626669;
+  scrollbar-width:thin;
+  scrollbar-color:auto;
+  transition:border-color var(--p-transition-duration, .24s) ease;
+  transform:translate3d(0,0,0);
+  outline:none;
+  top:calc(100%-3px);
+  border-top:none;
+  box-shadow:0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
+  opacity:0;
+  overflow:hidden;
+  height:1px;
+  pointer-events:none;
+}
+ul:hover {
+  border-color:#323639;
+}
+ul::before {
+  content:\\"\\";
+  display:block;
+  position:sticky;
+  width:100%;
+  height:1px;
+  background:#e3e4e5;
+  top:0;
+}
+.option {
+  display:flex;
+  padding:0.25rem 0.6875rem;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:left;
+  word-break:break-word;
+  box-sizing:border-box;
+  transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+}
+.option[role=\\"status\\"] {
+  cursor:not-allowed;
+}
+.option__sr {
+  position:absolute;
+  height:1px;
+  width:1px;
+  border:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--highlighted, .option--selected {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--selected {
+  cursor:default;
+  pointer-events:none;
+}
+.option--disabled {
+  cursor:not-allowed;
+  color:#96989a;
+}
+.option--hidden {
+  display:none;
+}
+.icon {
+  margin-left:0.25rem;
+}
+.optgroup {
+  display:block;
+  padding:0.5rem 0.75rem;
+  margin-top:0.5rem;
+  font-weight:700;
+}
+.optgroup~.option {
+  padding-left:1.5rem;
+}
+.sr-text {
+  display:none;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, disabled: true, state: none, filter: true and theme: light 1`] = `":host{--p-dropdown-position:absolute;display:block;position:var(--p-dropdown-position);margin-top:-3rem;padding-top:3rem;left:0;right:0;color:#96989a}input{display:block;position:absolute;z-index:1;bottom:0.125rem;left:0.125rem;width:calc(100% - 2.75rem);height:2.75rem;padding:0.625rem;outline:none;appearance:none;box-sizing:border-box;border:none;opacity:0;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:400;font-size:1rem;line-height:1.5;text-indent:0;cursor:not-allowed;color:#000;background:#fff}input::placeholder{opacity:1;color:#96989a}input::-webkit-input-placeholder{opacity:1;color:#96989a}input::-moz-placeholder{opacity:1;color:#96989a}input:focus{opacity:0}input:hover:not(:disabled) ~ ul{border-color:#323639}input+span{position:absolute;top:0;left:0;right:0;bottom:0;outline:1px solid transparent;outline-offset:2px;transition:color var(--p-transition-duration, .24s) ease;pointer-events:all;cursor:not-allowed;border:1px solid currentColor}input:focus+span{outline-color:#626669}ul{display:block;position:var(--p-dropdown-position);padding:0;margin:0;margin-top:-0.0625rem;color:#000;background:#fff;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;line-height:1.5;z-index:10;left:0;right:0;max-height:19.25rem;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;border:1px solid #626669;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0);outline:none;top:calc(100%-3px);border-top:none;box-shadow:0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);opacity:0;overflow:hidden;height:1px;pointer-events:none}ul:hover{border-color:#323639}ul::before{content:\\"\\";display:block;position:sticky;width:100%;height:1px;background:#e3e4e5;top:0}.option{display:flex;padding:0.25rem 0.6875rem;min-height:2rem;cursor:pointer;text-align:left;word-break:break-word;box-sizing:border-box;transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease}.option[role=\\"status\\"]{cursor:not-allowed}.option__sr{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.option:not([aria-disabled]):not([role=\\"status\\"]):hover{color:#d5001c;background:#f2f2f2}.option--highlighted, .option--selected{color:#d5001c;background:#f2f2f2}.option--selected{cursor:default;pointer-events:none}.option--disabled{cursor:not-allowed;color:#96989a}.option--hidden{display:none}.icon{margin-left:0.25rem}.optgroup{display:block;padding:0.5rem 0.75rem;margin-top:0.5rem;font-weight:700}.optgroup~.option{padding-left:1.5rem}.sr-text{display:none}"`;
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, disabled: true, state: none, filter: true and theme: light 1`] = `
+":host {
+  --p-dropdown-position:absolute;
+  display:block;
+  position:var(--p-dropdown-position);
+  margin-top:-3rem;
+  padding-top:3rem;
+  left:0;
+  right:0;
+  color:#96989a;
+}
+input {
+  display:block;
+  position:absolute;
+  z-index:1;
+  bottom:0.125rem;
+  left:0.125rem;
+  width:calc(100% - 2.75rem);
+  height:2.75rem;
+  padding:0.625rem;
+  outline:none;
+  appearance:none;
+  box-sizing:border-box;
+  border:none;
+  opacity:0;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:400;
+  font-size:1rem;
+  line-height:1.5;
+  text-indent:0;
+  cursor:not-allowed;
+  color:#000;
+  background:#fff;
+}
+input::placeholder {
+  opacity:1;
+  color:#96989a;
+}
+input::-webkit-input-placeholder {
+  opacity:1;
+  color:#96989a;
+}
+input::-moz-placeholder {
+  opacity:1;
+  color:#96989a;
+}
+input:focus {
+  opacity:0;
+}
+input:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+input+span {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  transition:color var(--p-transition-duration, .24s) ease;
+  pointer-events:all;
+  cursor:not-allowed;
+  border:1px solid currentColor;
+}
+input:focus+span {
+  outline-color:#626669;
+}
+ul {
+  display:block;
+  position:var(--p-dropdown-position);
+  padding:0;
+  margin:0;
+  margin-top:-0.0625rem;
+  color:#000;
+  background:#fff;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size:1rem;
+  line-height:1.5;
+  z-index:10;
+  left:0;
+  right:0;
+  max-height:19.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  border:1px solid #626669;
+  scrollbar-width:thin;
+  scrollbar-color:auto;
+  transition:border-color var(--p-transition-duration, .24s) ease;
+  transform:translate3d(0,0,0);
+  outline:none;
+  top:calc(100%-3px);
+  border-top:none;
+  box-shadow:0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
+  opacity:0;
+  overflow:hidden;
+  height:1px;
+  pointer-events:none;
+}
+ul:hover {
+  border-color:#323639;
+}
+ul::before {
+  content:\\"\\";
+  display:block;
+  position:sticky;
+  width:100%;
+  height:1px;
+  background:#e3e4e5;
+  top:0;
+}
+.option {
+  display:flex;
+  padding:0.25rem 0.6875rem;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:left;
+  word-break:break-word;
+  box-sizing:border-box;
+  transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+}
+.option[role=\\"status\\"] {
+  cursor:not-allowed;
+}
+.option__sr {
+  position:absolute;
+  height:1px;
+  width:1px;
+  border:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--highlighted, .option--selected {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--selected {
+  cursor:default;
+  pointer-events:none;
+}
+.option--disabled {
+  cursor:not-allowed;
+  color:#96989a;
+}
+.option--hidden {
+  display:none;
+}
+.icon {
+  margin-left:0.25rem;
+}
+.optgroup {
+  display:block;
+  padding:0.5rem 0.75rem;
+  margin-top:0.5rem;
+  font-weight:700;
+}
+.optgroup~.option {
+  padding-left:1.5rem;
+}
+.sr-text {
+  display:none;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, disabled: false, state: none, filter: false and theme: light 1`] = `":host{--p-dropdown-position:absolute;display:block;position:var(--p-dropdown-position);margin-top:-3rem;padding-top:3rem;left:0;right:0;color:#626669}:host(:hover){color:#000}button{position:absolute;top:0;height:48px;width:100%;padding:0;background:transparent;border:1px solid currentColor;outline:1px solid transparent;outline-offset:2px;cursor:pointer;color:currentColor;transition:color var(--p-transition-duration, .24s) ease;outline-color:#626669}button:focus{outline-color:#626669}button:hover:not(:disabled) ~ ul{border-color:#323639}button:disabled{cursor:not-allowed}ul{display:block;position:var(--p-dropdown-position);padding:0;margin:0;margin-top:-0.0625rem;color:#000;background:#fff;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;line-height:1.5;z-index:10;left:0;right:0;max-height:19.25rem;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;border:1px solid #626669;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0);outline:none;top:calc(100%-1px);border-top:none;box-shadow:0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1)}ul:hover{border-color:#323639}ul::before{content:\\"\\";display:block;position:sticky;width:100%;height:1px;background:#e3e4e5;top:0}.option{display:flex;padding:0.25rem 0.6875rem;min-height:2rem;cursor:pointer;text-align:left;word-break:break-word;box-sizing:border-box;transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease}.option[role=\\"status\\"]{cursor:not-allowed}.option__sr{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.option:not([aria-disabled]):not([role=\\"status\\"]):hover{color:#d5001c;background:#f2f2f2}.option--highlighted, .option--selected{color:#d5001c;background:#f2f2f2}.option--selected{cursor:default;pointer-events:none}.option--disabled{cursor:not-allowed;color:#96989a}.option--hidden{display:none}.icon{margin-left:0.25rem}.optgroup{display:block;padding:0.5rem 0.75rem;margin-top:0.5rem;font-weight:700}.optgroup~.option{padding-left:1.5rem}.sr-text{display:none}"`;
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, disabled: false, state: none, filter: false and theme: light 1`] = `
+":host {
+  --p-dropdown-position:absolute;
+  display:block;
+  position:var(--p-dropdown-position);
+  margin-top:-3rem;
+  padding-top:3rem;
+  left:0;
+  right:0;
+  color:#626669;
+}
+:host(:hover) {
+  color:#000;
+}
+button {
+  position:absolute;
+  top:0;
+  height:48px;
+  width:100%;
+  padding:0;
+  background:transparent;
+  border:1px solid currentColor;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  cursor:pointer;
+  color:currentColor;
+  transition:color var(--p-transition-duration, .24s) ease;
+  outline-color:#626669;
+}
+button:focus {
+  outline-color:#626669;
+}
+button:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+button:disabled {
+  cursor:not-allowed;
+}
+ul {
+  display:block;
+  position:var(--p-dropdown-position);
+  padding:0;
+  margin:0;
+  margin-top:-0.0625rem;
+  color:#000;
+  background:#fff;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size:1rem;
+  line-height:1.5;
+  z-index:10;
+  left:0;
+  right:0;
+  max-height:19.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  border:1px solid #626669;
+  scrollbar-width:thin;
+  scrollbar-color:auto;
+  transition:border-color var(--p-transition-duration, .24s) ease;
+  transform:translate3d(0,0,0);
+  outline:none;
+  top:calc(100%-1px);
+  border-top:none;
+  box-shadow:0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
+}
+ul:hover {
+  border-color:#323639;
+}
+ul::before {
+  content:\\"\\";
+  display:block;
+  position:sticky;
+  width:100%;
+  height:1px;
+  background:#e3e4e5;
+  top:0;
+}
+.option {
+  display:flex;
+  padding:0.25rem 0.6875rem;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:left;
+  word-break:break-word;
+  box-sizing:border-box;
+  transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+}
+.option[role=\\"status\\"] {
+  cursor:not-allowed;
+}
+.option__sr {
+  position:absolute;
+  height:1px;
+  width:1px;
+  border:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--highlighted, .option--selected {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--selected {
+  cursor:default;
+  pointer-events:none;
+}
+.option--disabled {
+  cursor:not-allowed;
+  color:#96989a;
+}
+.option--hidden {
+  display:none;
+}
+.icon {
+  margin-left:0.25rem;
+}
+.optgroup {
+  display:block;
+  padding:0.5rem 0.75rem;
+  margin-top:0.5rem;
+  font-weight:700;
+}
+.optgroup~.option {
+  padding-left:1.5rem;
+}
+.sr-text {
+  display:none;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, disabled: false, state: none, filter: true and theme: light 1`] = `":host{--p-dropdown-position:absolute;display:block;position:var(--p-dropdown-position);margin-top:-3rem;padding-top:3rem;left:0;right:0;color:#626669}:host(:hover){color:#000}input{display:block;position:absolute;z-index:1;bottom:0.125rem;left:0.125rem;width:calc(100% - 2.75rem);height:2.75rem;padding:0.625rem;outline:none;appearance:none;box-sizing:border-box;border:none;opacity:0;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:400;font-size:1rem;line-height:1.5;text-indent:0;cursor:text;color:#000;background:#fff}input::placeholder{opacity:1;color:#000}input::-webkit-input-placeholder{opacity:1;color:#000}input::-moz-placeholder{opacity:1;color:#000}input:focus{opacity:1}input:hover:not(:disabled) ~ ul{border-color:#323639}input+span{position:absolute;top:0;left:0;right:0;bottom:0;outline:1px solid transparent;outline-offset:2px;transition:color var(--p-transition-duration, .24s) ease;pointer-events:all;cursor:pointer;border:1px solid currentColor;outline-color:#626669}input:focus+span{outline-color:#626669}ul{display:block;position:var(--p-dropdown-position);padding:0;margin:0;margin-top:-0.0625rem;color:#000;background:#fff;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;line-height:1.5;z-index:10;left:0;right:0;max-height:19.25rem;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;border:1px solid #626669;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0);outline:none;top:calc(100%-1px);border-top:none;box-shadow:0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1)}ul:hover{border-color:#323639}ul::before{content:\\"\\";display:block;position:sticky;width:100%;height:1px;background:#e3e4e5;top:0}.option{display:flex;padding:0.25rem 0.6875rem;min-height:2rem;cursor:pointer;text-align:left;word-break:break-word;box-sizing:border-box;transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease}.option[role=\\"status\\"]{cursor:not-allowed}.option__sr{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.option:not([aria-disabled]):not([role=\\"status\\"]):hover{color:#d5001c;background:#f2f2f2}.option--highlighted, .option--selected{color:#d5001c;background:#f2f2f2}.option--selected{cursor:default;pointer-events:none}.option--disabled{cursor:not-allowed;color:#96989a}.option--hidden{display:none}.icon{margin-left:0.25rem}.optgroup{display:block;padding:0.5rem 0.75rem;margin-top:0.5rem;font-weight:700}.optgroup~.option{padding-left:1.5rem}.sr-text{display:none}"`;
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, disabled: false, state: none, filter: true and theme: light 1`] = `
+":host {
+  --p-dropdown-position:absolute;
+  display:block;
+  position:var(--p-dropdown-position);
+  margin-top:-3rem;
+  padding-top:3rem;
+  left:0;
+  right:0;
+  color:#626669;
+}
+:host(:hover) {
+  color:#000;
+}
+input {
+  display:block;
+  position:absolute;
+  z-index:1;
+  bottom:0.125rem;
+  left:0.125rem;
+  width:calc(100% - 2.75rem);
+  height:2.75rem;
+  padding:0.625rem;
+  outline:none;
+  appearance:none;
+  box-sizing:border-box;
+  border:none;
+  opacity:0;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:400;
+  font-size:1rem;
+  line-height:1.5;
+  text-indent:0;
+  cursor:text;
+  color:#000;
+  background:#fff;
+}
+input::placeholder {
+  opacity:1;
+  color:#000;
+}
+input::-webkit-input-placeholder {
+  opacity:1;
+  color:#000;
+}
+input::-moz-placeholder {
+  opacity:1;
+  color:#000;
+}
+input:focus {
+  opacity:1;
+}
+input:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+input+span {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  transition:color var(--p-transition-duration, .24s) ease;
+  pointer-events:all;
+  cursor:pointer;
+  border:1px solid currentColor;
+  outline-color:#626669;
+}
+input:focus+span {
+  outline-color:#626669;
+}
+ul {
+  display:block;
+  position:var(--p-dropdown-position);
+  padding:0;
+  margin:0;
+  margin-top:-0.0625rem;
+  color:#000;
+  background:#fff;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size:1rem;
+  line-height:1.5;
+  z-index:10;
+  left:0;
+  right:0;
+  max-height:19.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  border:1px solid #626669;
+  scrollbar-width:thin;
+  scrollbar-color:auto;
+  transition:border-color var(--p-transition-duration, .24s) ease;
+  transform:translate3d(0,0,0);
+  outline:none;
+  top:calc(100%-1px);
+  border-top:none;
+  box-shadow:0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
+}
+ul:hover {
+  border-color:#323639;
+}
+ul::before {
+  content:\\"\\";
+  display:block;
+  position:sticky;
+  width:100%;
+  height:1px;
+  background:#e3e4e5;
+  top:0;
+}
+.option {
+  display:flex;
+  padding:0.25rem 0.6875rem;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:left;
+  word-break:break-word;
+  box-sizing:border-box;
+  transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+}
+.option[role=\\"status\\"] {
+  cursor:not-allowed;
+}
+.option__sr {
+  position:absolute;
+  height:1px;
+  width:1px;
+  border:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--highlighted, .option--selected {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--selected {
+  cursor:default;
+  pointer-events:none;
+}
+.option--disabled {
+  cursor:not-allowed;
+  color:#96989a;
+}
+.option--hidden {
+  display:none;
+}
+.icon {
+  margin-left:0.25rem;
+}
+.optgroup {
+  display:block;
+  padding:0.5rem 0.75rem;
+  margin-top:0.5rem;
+  font-weight:700;
+}
+.optgroup~.option {
+  padding-left:1.5rem;
+}
+.sr-text {
+  display:none;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, disabled: true, state: none, filter: false and theme: light 1`] = `":host{--p-dropdown-position:absolute;display:block;position:var(--p-dropdown-position);margin-top:-3rem;padding-top:3rem;left:0;right:0;color:#96989a}button{position:absolute;top:0;height:48px;width:100%;padding:0;background:transparent;border:1px solid currentColor;outline:1px solid transparent;outline-offset:2px;cursor:pointer;color:currentColor;transition:color var(--p-transition-duration, .24s) ease;outline-color:#626669}button:focus{outline-color:#626669}button:hover:not(:disabled) ~ ul{border-color:#323639}button:disabled{cursor:not-allowed}ul{display:block;position:var(--p-dropdown-position);padding:0;margin:0;margin-top:-0.0625rem;color:#000;background:#fff;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;line-height:1.5;z-index:10;left:0;right:0;max-height:19.25rem;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;border:1px solid #626669;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0);outline:none;top:calc(100%-1px);border-top:none;box-shadow:0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1)}ul:hover{border-color:#323639}ul::before{content:\\"\\";display:block;position:sticky;width:100%;height:1px;background:#e3e4e5;top:0}.option{display:flex;padding:0.25rem 0.6875rem;min-height:2rem;cursor:pointer;text-align:left;word-break:break-word;box-sizing:border-box;transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease}.option[role=\\"status\\"]{cursor:not-allowed}.option__sr{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.option:not([aria-disabled]):not([role=\\"status\\"]):hover{color:#d5001c;background:#f2f2f2}.option--highlighted, .option--selected{color:#d5001c;background:#f2f2f2}.option--selected{cursor:default;pointer-events:none}.option--disabled{cursor:not-allowed;color:#96989a}.option--hidden{display:none}.icon{margin-left:0.25rem}.optgroup{display:block;padding:0.5rem 0.75rem;margin-top:0.5rem;font-weight:700}.optgroup~.option{padding-left:1.5rem}.sr-text{display:none}"`;
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, disabled: true, state: none, filter: false and theme: light 1`] = `
+":host {
+  --p-dropdown-position:absolute;
+  display:block;
+  position:var(--p-dropdown-position);
+  margin-top:-3rem;
+  padding-top:3rem;
+  left:0;
+  right:0;
+  color:#96989a;
+}
+button {
+  position:absolute;
+  top:0;
+  height:48px;
+  width:100%;
+  padding:0;
+  background:transparent;
+  border:1px solid currentColor;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  cursor:pointer;
+  color:currentColor;
+  transition:color var(--p-transition-duration, .24s) ease;
+  outline-color:#626669;
+}
+button:focus {
+  outline-color:#626669;
+}
+button:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+button:disabled {
+  cursor:not-allowed;
+}
+ul {
+  display:block;
+  position:var(--p-dropdown-position);
+  padding:0;
+  margin:0;
+  margin-top:-0.0625rem;
+  color:#000;
+  background:#fff;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size:1rem;
+  line-height:1.5;
+  z-index:10;
+  left:0;
+  right:0;
+  max-height:19.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  border:1px solid #626669;
+  scrollbar-width:thin;
+  scrollbar-color:auto;
+  transition:border-color var(--p-transition-duration, .24s) ease;
+  transform:translate3d(0,0,0);
+  outline:none;
+  top:calc(100%-1px);
+  border-top:none;
+  box-shadow:0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
+}
+ul:hover {
+  border-color:#323639;
+}
+ul::before {
+  content:\\"\\";
+  display:block;
+  position:sticky;
+  width:100%;
+  height:1px;
+  background:#e3e4e5;
+  top:0;
+}
+.option {
+  display:flex;
+  padding:0.25rem 0.6875rem;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:left;
+  word-break:break-word;
+  box-sizing:border-box;
+  transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+}
+.option[role=\\"status\\"] {
+  cursor:not-allowed;
+}
+.option__sr {
+  position:absolute;
+  height:1px;
+  width:1px;
+  border:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--highlighted, .option--selected {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--selected {
+  cursor:default;
+  pointer-events:none;
+}
+.option--disabled {
+  cursor:not-allowed;
+  color:#96989a;
+}
+.option--hidden {
+  display:none;
+}
+.icon {
+  margin-left:0.25rem;
+}
+.optgroup {
+  display:block;
+  padding:0.5rem 0.75rem;
+  margin-top:0.5rem;
+  font-weight:700;
+}
+.optgroup~.option {
+  padding-left:1.5rem;
+}
+.sr-text {
+  display:none;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, disabled: true, state: none, filter: true and theme: light 1`] = `":host{--p-dropdown-position:absolute;display:block;position:var(--p-dropdown-position);margin-top:-3rem;padding-top:3rem;left:0;right:0;color:#96989a}input{display:block;position:absolute;z-index:1;bottom:0.125rem;left:0.125rem;width:calc(100% - 2.75rem);height:2.75rem;padding:0.625rem;outline:none;appearance:none;box-sizing:border-box;border:none;opacity:0;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:400;font-size:1rem;line-height:1.5;text-indent:0;cursor:not-allowed;color:#000;background:#fff}input::placeholder{opacity:1;color:#96989a}input::-webkit-input-placeholder{opacity:1;color:#96989a}input::-moz-placeholder{opacity:1;color:#96989a}input:focus{opacity:0}input:hover:not(:disabled) ~ ul{border-color:#323639}input+span{position:absolute;top:0;left:0;right:0;bottom:0;outline:1px solid transparent;outline-offset:2px;transition:color var(--p-transition-duration, .24s) ease;pointer-events:all;cursor:not-allowed;border:1px solid currentColor;outline-color:#626669}input:focus+span{outline-color:#626669}ul{display:block;position:var(--p-dropdown-position);padding:0;margin:0;margin-top:-0.0625rem;color:#000;background:#fff;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;line-height:1.5;z-index:10;left:0;right:0;max-height:19.25rem;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;border:1px solid #626669;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0);outline:none;top:calc(100%-1px);border-top:none;box-shadow:0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1)}ul:hover{border-color:#323639}ul::before{content:\\"\\";display:block;position:sticky;width:100%;height:1px;background:#e3e4e5;top:0}.option{display:flex;padding:0.25rem 0.6875rem;min-height:2rem;cursor:pointer;text-align:left;word-break:break-word;box-sizing:border-box;transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease}.option[role=\\"status\\"]{cursor:not-allowed}.option__sr{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.option:not([aria-disabled]):not([role=\\"status\\"]):hover{color:#d5001c;background:#f2f2f2}.option--highlighted, .option--selected{color:#d5001c;background:#f2f2f2}.option--selected{cursor:default;pointer-events:none}.option--disabled{cursor:not-allowed;color:#96989a}.option--hidden{display:none}.icon{margin-left:0.25rem}.optgroup{display:block;padding:0.5rem 0.75rem;margin-top:0.5rem;font-weight:700}.optgroup~.option{padding-left:1.5rem}.sr-text{display:none}"`;
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, disabled: true, state: none, filter: true and theme: light 1`] = `
+":host {
+  --p-dropdown-position:absolute;
+  display:block;
+  position:var(--p-dropdown-position);
+  margin-top:-3rem;
+  padding-top:3rem;
+  left:0;
+  right:0;
+  color:#96989a;
+}
+input {
+  display:block;
+  position:absolute;
+  z-index:1;
+  bottom:0.125rem;
+  left:0.125rem;
+  width:calc(100% - 2.75rem);
+  height:2.75rem;
+  padding:0.625rem;
+  outline:none;
+  appearance:none;
+  box-sizing:border-box;
+  border:none;
+  opacity:0;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:400;
+  font-size:1rem;
+  line-height:1.5;
+  text-indent:0;
+  cursor:not-allowed;
+  color:#000;
+  background:#fff;
+}
+input::placeholder {
+  opacity:1;
+  color:#96989a;
+}
+input::-webkit-input-placeholder {
+  opacity:1;
+  color:#96989a;
+}
+input::-moz-placeholder {
+  opacity:1;
+  color:#96989a;
+}
+input:focus {
+  opacity:0;
+}
+input:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+input+span {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  transition:color var(--p-transition-duration, .24s) ease;
+  pointer-events:all;
+  cursor:not-allowed;
+  border:1px solid currentColor;
+  outline-color:#626669;
+}
+input:focus+span {
+  outline-color:#626669;
+}
+ul {
+  display:block;
+  position:var(--p-dropdown-position);
+  padding:0;
+  margin:0;
+  margin-top:-0.0625rem;
+  color:#000;
+  background:#fff;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size:1rem;
+  line-height:1.5;
+  z-index:10;
+  left:0;
+  right:0;
+  max-height:19.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  border:1px solid #626669;
+  scrollbar-width:thin;
+  scrollbar-color:auto;
+  transition:border-color var(--p-transition-duration, .24s) ease;
+  transform:translate3d(0,0,0);
+  outline:none;
+  top:calc(100%-1px);
+  border-top:none;
+  box-shadow:0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
+}
+ul:hover {
+  border-color:#323639;
+}
+ul::before {
+  content:\\"\\";
+  display:block;
+  position:sticky;
+  width:100%;
+  height:1px;
+  background:#e3e4e5;
+  top:0;
+}
+.option {
+  display:flex;
+  padding:0.25rem 0.6875rem;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:left;
+  word-break:break-word;
+  box-sizing:border-box;
+  transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+}
+.option[role=\\"status\\"] {
+  cursor:not-allowed;
+}
+.option__sr {
+  position:absolute;
+  height:1px;
+  width:1px;
+  border:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--highlighted, .option--selected {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--selected {
+  cursor:default;
+  pointer-events:none;
+}
+.option--disabled {
+  cursor:not-allowed;
+  color:#96989a;
+}
+.option--hidden {
+  display:none;
+}
+.icon {
+  margin-left:0.25rem;
+}
+.optgroup {
+  display:block;
+  padding:0.5rem 0.75rem;
+  margin-top:0.5rem;
+  font-weight:700;
+}
+.optgroup~.option {
+  padding-left:1.5rem;
+}
+.sr-text {
+  display:none;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, disabled: false, state: none, filter: false and theme: light 1`] = `":host{--p-dropdown-position:absolute;display:block;position:var(--p-dropdown-position);margin-top:-3rem;padding-top:3rem;left:0;right:0;color:#626669}:host(:hover){color:#000}button{position:absolute;top:0;height:48px;width:100%;padding:0;background:transparent;border:1px solid currentColor;outline:1px solid transparent;outline-offset:2px;cursor:pointer;color:currentColor;transition:color var(--p-transition-duration, .24s) ease}button:focus{outline-color:#626669}button:hover:not(:disabled) ~ ul{border-color:#323639}button:disabled{cursor:not-allowed}ul{display:block;position:var(--p-dropdown-position);padding:0;margin:0;margin-top:-0.0625rem;color:#000;background:#fff;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;line-height:1.5;z-index:10;left:0;right:0;max-height:19.25rem;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;border:1px solid #626669;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0);outline:none;bottom:2.9375rem;border-bottom:none;box-shadow:0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);top:calc(100%-3px);opacity:0;overflow:hidden;height:1px;pointer-events:none}ul:hover{border-color:#323639}ul::after{content:\\"\\";display:block;position:sticky;width:100%;height:1px;background:#e3e4e5;bottom:0}.option{display:flex;padding:0.25rem 0.6875rem;min-height:2rem;cursor:pointer;text-align:left;word-break:break-word;box-sizing:border-box;transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease}.option[role=\\"status\\"]{cursor:not-allowed}.option__sr{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.option:not([aria-disabled]):not([role=\\"status\\"]):hover{color:#d5001c;background:#f2f2f2}.option--highlighted, .option--selected{color:#d5001c;background:#f2f2f2}.option--selected{cursor:default;pointer-events:none}.option--disabled{cursor:not-allowed;color:#96989a}.option--hidden{display:none}.icon{margin-left:0.25rem}.optgroup{display:block;padding:0.5rem 0.75rem;margin-top:0.5rem;font-weight:700}.optgroup~.option{padding-left:1.5rem}.sr-text{display:none}"`;
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, disabled: false, state: none, filter: false and theme: light 1`] = `
+":host {
+  --p-dropdown-position:absolute;
+  display:block;
+  position:var(--p-dropdown-position);
+  margin-top:-3rem;
+  padding-top:3rem;
+  left:0;
+  right:0;
+  color:#626669;
+}
+:host(:hover) {
+  color:#000;
+}
+button {
+  position:absolute;
+  top:0;
+  height:48px;
+  width:100%;
+  padding:0;
+  background:transparent;
+  border:1px solid currentColor;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  cursor:pointer;
+  color:currentColor;
+  transition:color var(--p-transition-duration, .24s) ease;
+}
+button:focus {
+  outline-color:#626669;
+}
+button:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+button:disabled {
+  cursor:not-allowed;
+}
+ul {
+  display:block;
+  position:var(--p-dropdown-position);
+  padding:0;
+  margin:0;
+  margin-top:-0.0625rem;
+  color:#000;
+  background:#fff;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size:1rem;
+  line-height:1.5;
+  z-index:10;
+  left:0;
+  right:0;
+  max-height:19.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  border:1px solid #626669;
+  scrollbar-width:thin;
+  scrollbar-color:auto;
+  transition:border-color var(--p-transition-duration, .24s) ease;
+  transform:translate3d(0,0,0);
+  outline:none;
+  bottom:2.9375rem;
+  border-bottom:none;
+  box-shadow:0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
+  top:calc(100%-3px);
+  opacity:0;
+  overflow:hidden;
+  height:1px;
+  pointer-events:none;
+}
+ul:hover {
+  border-color:#323639;
+}
+ul::after {
+  content:\\"\\";
+  display:block;
+  position:sticky;
+  width:100%;
+  height:1px;
+  background:#e3e4e5;
+  bottom:0;
+}
+.option {
+  display:flex;
+  padding:0.25rem 0.6875rem;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:left;
+  word-break:break-word;
+  box-sizing:border-box;
+  transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+}
+.option[role=\\"status\\"] {
+  cursor:not-allowed;
+}
+.option__sr {
+  position:absolute;
+  height:1px;
+  width:1px;
+  border:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--highlighted, .option--selected {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--selected {
+  cursor:default;
+  pointer-events:none;
+}
+.option--disabled {
+  cursor:not-allowed;
+  color:#96989a;
+}
+.option--hidden {
+  display:none;
+}
+.icon {
+  margin-left:0.25rem;
+}
+.optgroup {
+  display:block;
+  padding:0.5rem 0.75rem;
+  margin-top:0.5rem;
+  font-weight:700;
+}
+.optgroup~.option {
+  padding-left:1.5rem;
+}
+.sr-text {
+  display:none;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, disabled: false, state: none, filter: true and theme: light 1`] = `":host{--p-dropdown-position:absolute;display:block;position:var(--p-dropdown-position);margin-top:-3rem;padding-top:3rem;left:0;right:0;color:#626669}:host(:hover){color:#000}input{display:block;position:absolute;z-index:1;bottom:0.125rem;left:0.125rem;width:calc(100% - 2.75rem);height:2.75rem;padding:0.625rem;outline:none;appearance:none;box-sizing:border-box;border:none;opacity:0;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:400;font-size:1rem;line-height:1.5;text-indent:0;cursor:text;color:#000;background:#fff}input::placeholder{opacity:1;color:#000}input::-webkit-input-placeholder{opacity:1;color:#000}input::-moz-placeholder{opacity:1;color:#000}input:focus{opacity:1}input:hover:not(:disabled) ~ ul{border-color:#323639}input+span{position:absolute;top:0;left:0;right:0;bottom:0;outline:1px solid transparent;outline-offset:2px;transition:color var(--p-transition-duration, .24s) ease;pointer-events:all;cursor:pointer;border:1px solid currentColor}input:focus+span{outline-color:#626669}ul{display:block;position:var(--p-dropdown-position);padding:0;margin:0;margin-top:-0.0625rem;color:#000;background:#fff;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;line-height:1.5;z-index:10;left:0;right:0;max-height:19.25rem;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;border:1px solid #626669;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0);outline:none;bottom:2.9375rem;border-bottom:none;box-shadow:0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);top:calc(100%-3px);opacity:0;overflow:hidden;height:1px;pointer-events:none}ul:hover{border-color:#323639}ul::after{content:\\"\\";display:block;position:sticky;width:100%;height:1px;background:#e3e4e5;bottom:0}.option{display:flex;padding:0.25rem 0.6875rem;min-height:2rem;cursor:pointer;text-align:left;word-break:break-word;box-sizing:border-box;transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease}.option[role=\\"status\\"]{cursor:not-allowed}.option__sr{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.option:not([aria-disabled]):not([role=\\"status\\"]):hover{color:#d5001c;background:#f2f2f2}.option--highlighted, .option--selected{color:#d5001c;background:#f2f2f2}.option--selected{cursor:default;pointer-events:none}.option--disabled{cursor:not-allowed;color:#96989a}.option--hidden{display:none}.icon{margin-left:0.25rem}.optgroup{display:block;padding:0.5rem 0.75rem;margin-top:0.5rem;font-weight:700}.optgroup~.option{padding-left:1.5rem}.sr-text{display:none}"`;
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, disabled: false, state: none, filter: true and theme: light 1`] = `
+":host {
+  --p-dropdown-position:absolute;
+  display:block;
+  position:var(--p-dropdown-position);
+  margin-top:-3rem;
+  padding-top:3rem;
+  left:0;
+  right:0;
+  color:#626669;
+}
+:host(:hover) {
+  color:#000;
+}
+input {
+  display:block;
+  position:absolute;
+  z-index:1;
+  bottom:0.125rem;
+  left:0.125rem;
+  width:calc(100% - 2.75rem);
+  height:2.75rem;
+  padding:0.625rem;
+  outline:none;
+  appearance:none;
+  box-sizing:border-box;
+  border:none;
+  opacity:0;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:400;
+  font-size:1rem;
+  line-height:1.5;
+  text-indent:0;
+  cursor:text;
+  color:#000;
+  background:#fff;
+}
+input::placeholder {
+  opacity:1;
+  color:#000;
+}
+input::-webkit-input-placeholder {
+  opacity:1;
+  color:#000;
+}
+input::-moz-placeholder {
+  opacity:1;
+  color:#000;
+}
+input:focus {
+  opacity:1;
+}
+input:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+input+span {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  transition:color var(--p-transition-duration, .24s) ease;
+  pointer-events:all;
+  cursor:pointer;
+  border:1px solid currentColor;
+}
+input:focus+span {
+  outline-color:#626669;
+}
+ul {
+  display:block;
+  position:var(--p-dropdown-position);
+  padding:0;
+  margin:0;
+  margin-top:-0.0625rem;
+  color:#000;
+  background:#fff;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size:1rem;
+  line-height:1.5;
+  z-index:10;
+  left:0;
+  right:0;
+  max-height:19.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  border:1px solid #626669;
+  scrollbar-width:thin;
+  scrollbar-color:auto;
+  transition:border-color var(--p-transition-duration, .24s) ease;
+  transform:translate3d(0,0,0);
+  outline:none;
+  bottom:2.9375rem;
+  border-bottom:none;
+  box-shadow:0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
+  top:calc(100%-3px);
+  opacity:0;
+  overflow:hidden;
+  height:1px;
+  pointer-events:none;
+}
+ul:hover {
+  border-color:#323639;
+}
+ul::after {
+  content:\\"\\";
+  display:block;
+  position:sticky;
+  width:100%;
+  height:1px;
+  background:#e3e4e5;
+  bottom:0;
+}
+.option {
+  display:flex;
+  padding:0.25rem 0.6875rem;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:left;
+  word-break:break-word;
+  box-sizing:border-box;
+  transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+}
+.option[role=\\"status\\"] {
+  cursor:not-allowed;
+}
+.option__sr {
+  position:absolute;
+  height:1px;
+  width:1px;
+  border:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--highlighted, .option--selected {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--selected {
+  cursor:default;
+  pointer-events:none;
+}
+.option--disabled {
+  cursor:not-allowed;
+  color:#96989a;
+}
+.option--hidden {
+  display:none;
+}
+.icon {
+  margin-left:0.25rem;
+}
+.optgroup {
+  display:block;
+  padding:0.5rem 0.75rem;
+  margin-top:0.5rem;
+  font-weight:700;
+}
+.optgroup~.option {
+  padding-left:1.5rem;
+}
+.sr-text {
+  display:none;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, disabled: true, state: none, filter: false and theme: light 1`] = `":host{--p-dropdown-position:absolute;display:block;position:var(--p-dropdown-position);margin-top:-3rem;padding-top:3rem;left:0;right:0;color:#96989a}button{position:absolute;top:0;height:48px;width:100%;padding:0;background:transparent;border:1px solid currentColor;outline:1px solid transparent;outline-offset:2px;cursor:pointer;color:currentColor;transition:color var(--p-transition-duration, .24s) ease}button:focus{outline-color:#626669}button:hover:not(:disabled) ~ ul{border-color:#323639}button:disabled{cursor:not-allowed}ul{display:block;position:var(--p-dropdown-position);padding:0;margin:0;margin-top:-0.0625rem;color:#000;background:#fff;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;line-height:1.5;z-index:10;left:0;right:0;max-height:19.25rem;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;border:1px solid #626669;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0);outline:none;bottom:2.9375rem;border-bottom:none;box-shadow:0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);top:calc(100%-3px);opacity:0;overflow:hidden;height:1px;pointer-events:none}ul:hover{border-color:#323639}ul::after{content:\\"\\";display:block;position:sticky;width:100%;height:1px;background:#e3e4e5;bottom:0}.option{display:flex;padding:0.25rem 0.6875rem;min-height:2rem;cursor:pointer;text-align:left;word-break:break-word;box-sizing:border-box;transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease}.option[role=\\"status\\"]{cursor:not-allowed}.option__sr{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.option:not([aria-disabled]):not([role=\\"status\\"]):hover{color:#d5001c;background:#f2f2f2}.option--highlighted, .option--selected{color:#d5001c;background:#f2f2f2}.option--selected{cursor:default;pointer-events:none}.option--disabled{cursor:not-allowed;color:#96989a}.option--hidden{display:none}.icon{margin-left:0.25rem}.optgroup{display:block;padding:0.5rem 0.75rem;margin-top:0.5rem;font-weight:700}.optgroup~.option{padding-left:1.5rem}.sr-text{display:none}"`;
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, disabled: true, state: none, filter: false and theme: light 1`] = `
+":host {
+  --p-dropdown-position:absolute;
+  display:block;
+  position:var(--p-dropdown-position);
+  margin-top:-3rem;
+  padding-top:3rem;
+  left:0;
+  right:0;
+  color:#96989a;
+}
+button {
+  position:absolute;
+  top:0;
+  height:48px;
+  width:100%;
+  padding:0;
+  background:transparent;
+  border:1px solid currentColor;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  cursor:pointer;
+  color:currentColor;
+  transition:color var(--p-transition-duration, .24s) ease;
+}
+button:focus {
+  outline-color:#626669;
+}
+button:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+button:disabled {
+  cursor:not-allowed;
+}
+ul {
+  display:block;
+  position:var(--p-dropdown-position);
+  padding:0;
+  margin:0;
+  margin-top:-0.0625rem;
+  color:#000;
+  background:#fff;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size:1rem;
+  line-height:1.5;
+  z-index:10;
+  left:0;
+  right:0;
+  max-height:19.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  border:1px solid #626669;
+  scrollbar-width:thin;
+  scrollbar-color:auto;
+  transition:border-color var(--p-transition-duration, .24s) ease;
+  transform:translate3d(0,0,0);
+  outline:none;
+  bottom:2.9375rem;
+  border-bottom:none;
+  box-shadow:0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
+  top:calc(100%-3px);
+  opacity:0;
+  overflow:hidden;
+  height:1px;
+  pointer-events:none;
+}
+ul:hover {
+  border-color:#323639;
+}
+ul::after {
+  content:\\"\\";
+  display:block;
+  position:sticky;
+  width:100%;
+  height:1px;
+  background:#e3e4e5;
+  bottom:0;
+}
+.option {
+  display:flex;
+  padding:0.25rem 0.6875rem;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:left;
+  word-break:break-word;
+  box-sizing:border-box;
+  transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+}
+.option[role=\\"status\\"] {
+  cursor:not-allowed;
+}
+.option__sr {
+  position:absolute;
+  height:1px;
+  width:1px;
+  border:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--highlighted, .option--selected {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--selected {
+  cursor:default;
+  pointer-events:none;
+}
+.option--disabled {
+  cursor:not-allowed;
+  color:#96989a;
+}
+.option--hidden {
+  display:none;
+}
+.icon {
+  margin-left:0.25rem;
+}
+.optgroup {
+  display:block;
+  padding:0.5rem 0.75rem;
+  margin-top:0.5rem;
+  font-weight:700;
+}
+.optgroup~.option {
+  padding-left:1.5rem;
+}
+.sr-text {
+  display:none;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, disabled: true, state: none, filter: true and theme: light 1`] = `":host{--p-dropdown-position:absolute;display:block;position:var(--p-dropdown-position);margin-top:-3rem;padding-top:3rem;left:0;right:0;color:#96989a}input{display:block;position:absolute;z-index:1;bottom:0.125rem;left:0.125rem;width:calc(100% - 2.75rem);height:2.75rem;padding:0.625rem;outline:none;appearance:none;box-sizing:border-box;border:none;opacity:0;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:400;font-size:1rem;line-height:1.5;text-indent:0;cursor:not-allowed;color:#000;background:#fff}input::placeholder{opacity:1;color:#96989a}input::-webkit-input-placeholder{opacity:1;color:#96989a}input::-moz-placeholder{opacity:1;color:#96989a}input:focus{opacity:0}input:hover:not(:disabled) ~ ul{border-color:#323639}input+span{position:absolute;top:0;left:0;right:0;bottom:0;outline:1px solid transparent;outline-offset:2px;transition:color var(--p-transition-duration, .24s) ease;pointer-events:all;cursor:not-allowed;border:1px solid currentColor}input:focus+span{outline-color:#626669}ul{display:block;position:var(--p-dropdown-position);padding:0;margin:0;margin-top:-0.0625rem;color:#000;background:#fff;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;line-height:1.5;z-index:10;left:0;right:0;max-height:19.25rem;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;border:1px solid #626669;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0);outline:none;bottom:2.9375rem;border-bottom:none;box-shadow:0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);top:calc(100%-3px);opacity:0;overflow:hidden;height:1px;pointer-events:none}ul:hover{border-color:#323639}ul::after{content:\\"\\";display:block;position:sticky;width:100%;height:1px;background:#e3e4e5;bottom:0}.option{display:flex;padding:0.25rem 0.6875rem;min-height:2rem;cursor:pointer;text-align:left;word-break:break-word;box-sizing:border-box;transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease}.option[role=\\"status\\"]{cursor:not-allowed}.option__sr{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.option:not([aria-disabled]):not([role=\\"status\\"]):hover{color:#d5001c;background:#f2f2f2}.option--highlighted, .option--selected{color:#d5001c;background:#f2f2f2}.option--selected{cursor:default;pointer-events:none}.option--disabled{cursor:not-allowed;color:#96989a}.option--hidden{display:none}.icon{margin-left:0.25rem}.optgroup{display:block;padding:0.5rem 0.75rem;margin-top:0.5rem;font-weight:700}.optgroup~.option{padding-left:1.5rem}.sr-text{display:none}"`;
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, disabled: true, state: none, filter: true and theme: light 1`] = `
+":host {
+  --p-dropdown-position:absolute;
+  display:block;
+  position:var(--p-dropdown-position);
+  margin-top:-3rem;
+  padding-top:3rem;
+  left:0;
+  right:0;
+  color:#96989a;
+}
+input {
+  display:block;
+  position:absolute;
+  z-index:1;
+  bottom:0.125rem;
+  left:0.125rem;
+  width:calc(100% - 2.75rem);
+  height:2.75rem;
+  padding:0.625rem;
+  outline:none;
+  appearance:none;
+  box-sizing:border-box;
+  border:none;
+  opacity:0;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:400;
+  font-size:1rem;
+  line-height:1.5;
+  text-indent:0;
+  cursor:not-allowed;
+  color:#000;
+  background:#fff;
+}
+input::placeholder {
+  opacity:1;
+  color:#96989a;
+}
+input::-webkit-input-placeholder {
+  opacity:1;
+  color:#96989a;
+}
+input::-moz-placeholder {
+  opacity:1;
+  color:#96989a;
+}
+input:focus {
+  opacity:0;
+}
+input:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+input+span {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  transition:color var(--p-transition-duration, .24s) ease;
+  pointer-events:all;
+  cursor:not-allowed;
+  border:1px solid currentColor;
+}
+input:focus+span {
+  outline-color:#626669;
+}
+ul {
+  display:block;
+  position:var(--p-dropdown-position);
+  padding:0;
+  margin:0;
+  margin-top:-0.0625rem;
+  color:#000;
+  background:#fff;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size:1rem;
+  line-height:1.5;
+  z-index:10;
+  left:0;
+  right:0;
+  max-height:19.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  border:1px solid #626669;
+  scrollbar-width:thin;
+  scrollbar-color:auto;
+  transition:border-color var(--p-transition-duration, .24s) ease;
+  transform:translate3d(0,0,0);
+  outline:none;
+  bottom:2.9375rem;
+  border-bottom:none;
+  box-shadow:0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
+  top:calc(100%-3px);
+  opacity:0;
+  overflow:hidden;
+  height:1px;
+  pointer-events:none;
+}
+ul:hover {
+  border-color:#323639;
+}
+ul::after {
+  content:\\"\\";
+  display:block;
+  position:sticky;
+  width:100%;
+  height:1px;
+  background:#e3e4e5;
+  bottom:0;
+}
+.option {
+  display:flex;
+  padding:0.25rem 0.6875rem;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:left;
+  word-break:break-word;
+  box-sizing:border-box;
+  transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+}
+.option[role=\\"status\\"] {
+  cursor:not-allowed;
+}
+.option__sr {
+  position:absolute;
+  height:1px;
+  width:1px;
+  border:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--highlighted, .option--selected {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--selected {
+  cursor:default;
+  pointer-events:none;
+}
+.option--disabled {
+  cursor:not-allowed;
+  color:#96989a;
+}
+.option--hidden {
+  display:none;
+}
+.icon {
+  margin-left:0.25rem;
+}
+.optgroup {
+  display:block;
+  padding:0.5rem 0.75rem;
+  margin-top:0.5rem;
+  font-weight:700;
+}
+.optgroup~.option {
+  padding-left:1.5rem;
+}
+.sr-text {
+  display:none;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, disabled: false, state: none, filter: false and theme: light 1`] = `":host{--p-dropdown-position:absolute;display:block;position:var(--p-dropdown-position);margin-top:-3rem;padding-top:3rem;left:0;right:0;color:#626669}:host(:hover){color:#000}button{position:absolute;top:0;height:48px;width:100%;padding:0;background:transparent;border:1px solid currentColor;outline:1px solid transparent;outline-offset:2px;cursor:pointer;color:currentColor;transition:color var(--p-transition-duration, .24s) ease;outline-color:#626669}button:focus{outline-color:#626669}button:hover:not(:disabled) ~ ul{border-color:#323639}button:disabled{cursor:not-allowed}ul{display:block;position:var(--p-dropdown-position);padding:0;margin:0;margin-top:-0.0625rem;color:#000;background:#fff;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;line-height:1.5;z-index:10;left:0;right:0;max-height:19.25rem;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;border:1px solid #626669;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0);outline:none;bottom:2.9375rem;border-bottom:none;box-shadow:0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075)}ul:hover{border-color:#323639}ul::after{content:\\"\\";display:block;position:sticky;width:100%;height:1px;background:#e3e4e5;bottom:0}.option{display:flex;padding:0.25rem 0.6875rem;min-height:2rem;cursor:pointer;text-align:left;word-break:break-word;box-sizing:border-box;transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease}.option[role=\\"status\\"]{cursor:not-allowed}.option__sr{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.option:not([aria-disabled]):not([role=\\"status\\"]):hover{color:#d5001c;background:#f2f2f2}.option--highlighted, .option--selected{color:#d5001c;background:#f2f2f2}.option--selected{cursor:default;pointer-events:none}.option--disabled{cursor:not-allowed;color:#96989a}.option--hidden{display:none}.icon{margin-left:0.25rem}.optgroup{display:block;padding:0.5rem 0.75rem;margin-top:0.5rem;font-weight:700}.optgroup~.option{padding-left:1.5rem}.sr-text{display:none}"`;
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, disabled: false, state: none, filter: false and theme: light 1`] = `
+":host {
+  --p-dropdown-position:absolute;
+  display:block;
+  position:var(--p-dropdown-position);
+  margin-top:-3rem;
+  padding-top:3rem;
+  left:0;
+  right:0;
+  color:#626669;
+}
+:host(:hover) {
+  color:#000;
+}
+button {
+  position:absolute;
+  top:0;
+  height:48px;
+  width:100%;
+  padding:0;
+  background:transparent;
+  border:1px solid currentColor;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  cursor:pointer;
+  color:currentColor;
+  transition:color var(--p-transition-duration, .24s) ease;
+  outline-color:#626669;
+}
+button:focus {
+  outline-color:#626669;
+}
+button:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+button:disabled {
+  cursor:not-allowed;
+}
+ul {
+  display:block;
+  position:var(--p-dropdown-position);
+  padding:0;
+  margin:0;
+  margin-top:-0.0625rem;
+  color:#000;
+  background:#fff;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size:1rem;
+  line-height:1.5;
+  z-index:10;
+  left:0;
+  right:0;
+  max-height:19.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  border:1px solid #626669;
+  scrollbar-width:thin;
+  scrollbar-color:auto;
+  transition:border-color var(--p-transition-duration, .24s) ease;
+  transform:translate3d(0,0,0);
+  outline:none;
+  bottom:2.9375rem;
+  border-bottom:none;
+  box-shadow:0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
+}
+ul:hover {
+  border-color:#323639;
+}
+ul::after {
+  content:\\"\\";
+  display:block;
+  position:sticky;
+  width:100%;
+  height:1px;
+  background:#e3e4e5;
+  bottom:0;
+}
+.option {
+  display:flex;
+  padding:0.25rem 0.6875rem;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:left;
+  word-break:break-word;
+  box-sizing:border-box;
+  transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+}
+.option[role=\\"status\\"] {
+  cursor:not-allowed;
+}
+.option__sr {
+  position:absolute;
+  height:1px;
+  width:1px;
+  border:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--highlighted, .option--selected {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--selected {
+  cursor:default;
+  pointer-events:none;
+}
+.option--disabled {
+  cursor:not-allowed;
+  color:#96989a;
+}
+.option--hidden {
+  display:none;
+}
+.icon {
+  margin-left:0.25rem;
+}
+.optgroup {
+  display:block;
+  padding:0.5rem 0.75rem;
+  margin-top:0.5rem;
+  font-weight:700;
+}
+.optgroup~.option {
+  padding-left:1.5rem;
+}
+.sr-text {
+  display:none;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, disabled: false, state: none, filter: true and theme: light 1`] = `":host{--p-dropdown-position:absolute;display:block;position:var(--p-dropdown-position);margin-top:-3rem;padding-top:3rem;left:0;right:0;color:#626669}:host(:hover){color:#000}input{display:block;position:absolute;z-index:1;bottom:0.125rem;left:0.125rem;width:calc(100% - 2.75rem);height:2.75rem;padding:0.625rem;outline:none;appearance:none;box-sizing:border-box;border:none;opacity:0;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:400;font-size:1rem;line-height:1.5;text-indent:0;cursor:text;color:#000;background:#fff}input::placeholder{opacity:1;color:#000}input::-webkit-input-placeholder{opacity:1;color:#000}input::-moz-placeholder{opacity:1;color:#000}input:focus{opacity:1}input:hover:not(:disabled) ~ ul{border-color:#323639}input+span{position:absolute;top:0;left:0;right:0;bottom:0;outline:1px solid transparent;outline-offset:2px;transition:color var(--p-transition-duration, .24s) ease;pointer-events:all;cursor:pointer;border:1px solid currentColor;outline-color:#626669}input:focus+span{outline-color:#626669}ul{display:block;position:var(--p-dropdown-position);padding:0;margin:0;margin-top:-0.0625rem;color:#000;background:#fff;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;line-height:1.5;z-index:10;left:0;right:0;max-height:19.25rem;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;border:1px solid #626669;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0);outline:none;bottom:2.9375rem;border-bottom:none;box-shadow:0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075)}ul:hover{border-color:#323639}ul::after{content:\\"\\";display:block;position:sticky;width:100%;height:1px;background:#e3e4e5;bottom:0}.option{display:flex;padding:0.25rem 0.6875rem;min-height:2rem;cursor:pointer;text-align:left;word-break:break-word;box-sizing:border-box;transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease}.option[role=\\"status\\"]{cursor:not-allowed}.option__sr{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.option:not([aria-disabled]):not([role=\\"status\\"]):hover{color:#d5001c;background:#f2f2f2}.option--highlighted, .option--selected{color:#d5001c;background:#f2f2f2}.option--selected{cursor:default;pointer-events:none}.option--disabled{cursor:not-allowed;color:#96989a}.option--hidden{display:none}.icon{margin-left:0.25rem}.optgroup{display:block;padding:0.5rem 0.75rem;margin-top:0.5rem;font-weight:700}.optgroup~.option{padding-left:1.5rem}.sr-text{display:none}"`;
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, disabled: false, state: none, filter: true and theme: light 1`] = `
+":host {
+  --p-dropdown-position:absolute;
+  display:block;
+  position:var(--p-dropdown-position);
+  margin-top:-3rem;
+  padding-top:3rem;
+  left:0;
+  right:0;
+  color:#626669;
+}
+:host(:hover) {
+  color:#000;
+}
+input {
+  display:block;
+  position:absolute;
+  z-index:1;
+  bottom:0.125rem;
+  left:0.125rem;
+  width:calc(100% - 2.75rem);
+  height:2.75rem;
+  padding:0.625rem;
+  outline:none;
+  appearance:none;
+  box-sizing:border-box;
+  border:none;
+  opacity:0;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:400;
+  font-size:1rem;
+  line-height:1.5;
+  text-indent:0;
+  cursor:text;
+  color:#000;
+  background:#fff;
+}
+input::placeholder {
+  opacity:1;
+  color:#000;
+}
+input::-webkit-input-placeholder {
+  opacity:1;
+  color:#000;
+}
+input::-moz-placeholder {
+  opacity:1;
+  color:#000;
+}
+input:focus {
+  opacity:1;
+}
+input:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+input+span {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  transition:color var(--p-transition-duration, .24s) ease;
+  pointer-events:all;
+  cursor:pointer;
+  border:1px solid currentColor;
+  outline-color:#626669;
+}
+input:focus+span {
+  outline-color:#626669;
+}
+ul {
+  display:block;
+  position:var(--p-dropdown-position);
+  padding:0;
+  margin:0;
+  margin-top:-0.0625rem;
+  color:#000;
+  background:#fff;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size:1rem;
+  line-height:1.5;
+  z-index:10;
+  left:0;
+  right:0;
+  max-height:19.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  border:1px solid #626669;
+  scrollbar-width:thin;
+  scrollbar-color:auto;
+  transition:border-color var(--p-transition-duration, .24s) ease;
+  transform:translate3d(0,0,0);
+  outline:none;
+  bottom:2.9375rem;
+  border-bottom:none;
+  box-shadow:0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
+}
+ul:hover {
+  border-color:#323639;
+}
+ul::after {
+  content:\\"\\";
+  display:block;
+  position:sticky;
+  width:100%;
+  height:1px;
+  background:#e3e4e5;
+  bottom:0;
+}
+.option {
+  display:flex;
+  padding:0.25rem 0.6875rem;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:left;
+  word-break:break-word;
+  box-sizing:border-box;
+  transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+}
+.option[role=\\"status\\"] {
+  cursor:not-allowed;
+}
+.option__sr {
+  position:absolute;
+  height:1px;
+  width:1px;
+  border:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--highlighted, .option--selected {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--selected {
+  cursor:default;
+  pointer-events:none;
+}
+.option--disabled {
+  cursor:not-allowed;
+  color:#96989a;
+}
+.option--hidden {
+  display:none;
+}
+.icon {
+  margin-left:0.25rem;
+}
+.optgroup {
+  display:block;
+  padding:0.5rem 0.75rem;
+  margin-top:0.5rem;
+  font-weight:700;
+}
+.optgroup~.option {
+  padding-left:1.5rem;
+}
+.sr-text {
+  display:none;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, disabled: true, state: none, filter: false and theme: light 1`] = `":host{--p-dropdown-position:absolute;display:block;position:var(--p-dropdown-position);margin-top:-3rem;padding-top:3rem;left:0;right:0;color:#96989a}button{position:absolute;top:0;height:48px;width:100%;padding:0;background:transparent;border:1px solid currentColor;outline:1px solid transparent;outline-offset:2px;cursor:pointer;color:currentColor;transition:color var(--p-transition-duration, .24s) ease;outline-color:#626669}button:focus{outline-color:#626669}button:hover:not(:disabled) ~ ul{border-color:#323639}button:disabled{cursor:not-allowed}ul{display:block;position:var(--p-dropdown-position);padding:0;margin:0;margin-top:-0.0625rem;color:#000;background:#fff;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;line-height:1.5;z-index:10;left:0;right:0;max-height:19.25rem;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;border:1px solid #626669;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0);outline:none;bottom:2.9375rem;border-bottom:none;box-shadow:0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075)}ul:hover{border-color:#323639}ul::after{content:\\"\\";display:block;position:sticky;width:100%;height:1px;background:#e3e4e5;bottom:0}.option{display:flex;padding:0.25rem 0.6875rem;min-height:2rem;cursor:pointer;text-align:left;word-break:break-word;box-sizing:border-box;transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease}.option[role=\\"status\\"]{cursor:not-allowed}.option__sr{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.option:not([aria-disabled]):not([role=\\"status\\"]):hover{color:#d5001c;background:#f2f2f2}.option--highlighted, .option--selected{color:#d5001c;background:#f2f2f2}.option--selected{cursor:default;pointer-events:none}.option--disabled{cursor:not-allowed;color:#96989a}.option--hidden{display:none}.icon{margin-left:0.25rem}.optgroup{display:block;padding:0.5rem 0.75rem;margin-top:0.5rem;font-weight:700}.optgroup~.option{padding-left:1.5rem}.sr-text{display:none}"`;
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, disabled: true, state: none, filter: false and theme: light 1`] = `
+":host {
+  --p-dropdown-position:absolute;
+  display:block;
+  position:var(--p-dropdown-position);
+  margin-top:-3rem;
+  padding-top:3rem;
+  left:0;
+  right:0;
+  color:#96989a;
+}
+button {
+  position:absolute;
+  top:0;
+  height:48px;
+  width:100%;
+  padding:0;
+  background:transparent;
+  border:1px solid currentColor;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  cursor:pointer;
+  color:currentColor;
+  transition:color var(--p-transition-duration, .24s) ease;
+  outline-color:#626669;
+}
+button:focus {
+  outline-color:#626669;
+}
+button:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+button:disabled {
+  cursor:not-allowed;
+}
+ul {
+  display:block;
+  position:var(--p-dropdown-position);
+  padding:0;
+  margin:0;
+  margin-top:-0.0625rem;
+  color:#000;
+  background:#fff;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size:1rem;
+  line-height:1.5;
+  z-index:10;
+  left:0;
+  right:0;
+  max-height:19.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  border:1px solid #626669;
+  scrollbar-width:thin;
+  scrollbar-color:auto;
+  transition:border-color var(--p-transition-duration, .24s) ease;
+  transform:translate3d(0,0,0);
+  outline:none;
+  bottom:2.9375rem;
+  border-bottom:none;
+  box-shadow:0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
+}
+ul:hover {
+  border-color:#323639;
+}
+ul::after {
+  content:\\"\\";
+  display:block;
+  position:sticky;
+  width:100%;
+  height:1px;
+  background:#e3e4e5;
+  bottom:0;
+}
+.option {
+  display:flex;
+  padding:0.25rem 0.6875rem;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:left;
+  word-break:break-word;
+  box-sizing:border-box;
+  transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+}
+.option[role=\\"status\\"] {
+  cursor:not-allowed;
+}
+.option__sr {
+  position:absolute;
+  height:1px;
+  width:1px;
+  border:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--highlighted, .option--selected {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--selected {
+  cursor:default;
+  pointer-events:none;
+}
+.option--disabled {
+  cursor:not-allowed;
+  color:#96989a;
+}
+.option--hidden {
+  display:none;
+}
+.icon {
+  margin-left:0.25rem;
+}
+.optgroup {
+  display:block;
+  padding:0.5rem 0.75rem;
+  margin-top:0.5rem;
+  font-weight:700;
+}
+.optgroup~.option {
+  padding-left:1.5rem;
+}
+.sr-text {
+  display:none;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, disabled: true, state: none, filter: true and theme: light 1`] = `":host{--p-dropdown-position:absolute;display:block;position:var(--p-dropdown-position);margin-top:-3rem;padding-top:3rem;left:0;right:0;color:#96989a}input{display:block;position:absolute;z-index:1;bottom:0.125rem;left:0.125rem;width:calc(100% - 2.75rem);height:2.75rem;padding:0.625rem;outline:none;appearance:none;box-sizing:border-box;border:none;opacity:0;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:400;font-size:1rem;line-height:1.5;text-indent:0;cursor:not-allowed;color:#000;background:#fff}input::placeholder{opacity:1;color:#96989a}input::-webkit-input-placeholder{opacity:1;color:#96989a}input::-moz-placeholder{opacity:1;color:#96989a}input:focus{opacity:0}input:hover:not(:disabled) ~ ul{border-color:#323639}input+span{position:absolute;top:0;left:0;right:0;bottom:0;outline:1px solid transparent;outline-offset:2px;transition:color var(--p-transition-duration, .24s) ease;pointer-events:all;cursor:not-allowed;border:1px solid currentColor;outline-color:#626669}input:focus+span{outline-color:#626669}ul{display:block;position:var(--p-dropdown-position);padding:0;margin:0;margin-top:-0.0625rem;color:#000;background:#fff;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;line-height:1.5;z-index:10;left:0;right:0;max-height:19.25rem;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;border:1px solid #626669;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0);outline:none;bottom:2.9375rem;border-bottom:none;box-shadow:0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075)}ul:hover{border-color:#323639}ul::after{content:\\"\\";display:block;position:sticky;width:100%;height:1px;background:#e3e4e5;bottom:0}.option{display:flex;padding:0.25rem 0.6875rem;min-height:2rem;cursor:pointer;text-align:left;word-break:break-word;box-sizing:border-box;transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease}.option[role=\\"status\\"]{cursor:not-allowed}.option__sr{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.option:not([aria-disabled]):not([role=\\"status\\"]):hover{color:#d5001c;background:#f2f2f2}.option--highlighted, .option--selected{color:#d5001c;background:#f2f2f2}.option--selected{cursor:default;pointer-events:none}.option--disabled{cursor:not-allowed;color:#96989a}.option--hidden{display:none}.icon{margin-left:0.25rem}.optgroup{display:block;padding:0.5rem 0.75rem;margin-top:0.5rem;font-weight:700}.optgroup~.option{padding-left:1.5rem}.sr-text{display:none}"`;
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, disabled: true, state: none, filter: true and theme: light 1`] = `
+":host {
+  --p-dropdown-position:absolute;
+  display:block;
+  position:var(--p-dropdown-position);
+  margin-top:-3rem;
+  padding-top:3rem;
+  left:0;
+  right:0;
+  color:#96989a;
+}
+input {
+  display:block;
+  position:absolute;
+  z-index:1;
+  bottom:0.125rem;
+  left:0.125rem;
+  width:calc(100% - 2.75rem);
+  height:2.75rem;
+  padding:0.625rem;
+  outline:none;
+  appearance:none;
+  box-sizing:border-box;
+  border:none;
+  opacity:0;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:400;
+  font-size:1rem;
+  line-height:1.5;
+  text-indent:0;
+  cursor:not-allowed;
+  color:#000;
+  background:#fff;
+}
+input::placeholder {
+  opacity:1;
+  color:#96989a;
+}
+input::-webkit-input-placeholder {
+  opacity:1;
+  color:#96989a;
+}
+input::-moz-placeholder {
+  opacity:1;
+  color:#96989a;
+}
+input:focus {
+  opacity:0;
+}
+input:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+input+span {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  transition:color var(--p-transition-duration, .24s) ease;
+  pointer-events:all;
+  cursor:not-allowed;
+  border:1px solid currentColor;
+  outline-color:#626669;
+}
+input:focus+span {
+  outline-color:#626669;
+}
+ul {
+  display:block;
+  position:var(--p-dropdown-position);
+  padding:0;
+  margin:0;
+  margin-top:-0.0625rem;
+  color:#000;
+  background:#fff;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size:1rem;
+  line-height:1.5;
+  z-index:10;
+  left:0;
+  right:0;
+  max-height:19.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  border:1px solid #626669;
+  scrollbar-width:thin;
+  scrollbar-color:auto;
+  transition:border-color var(--p-transition-duration, .24s) ease;
+  transform:translate3d(0,0,0);
+  outline:none;
+  bottom:2.9375rem;
+  border-bottom:none;
+  box-shadow:0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
+}
+ul:hover {
+  border-color:#323639;
+}
+ul::after {
+  content:\\"\\";
+  display:block;
+  position:sticky;
+  width:100%;
+  height:1px;
+  background:#e3e4e5;
+  bottom:0;
+}
+.option {
+  display:flex;
+  padding:0.25rem 0.6875rem;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:left;
+  word-break:break-word;
+  box-sizing:border-box;
+  transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+}
+.option[role=\\"status\\"] {
+  cursor:not-allowed;
+}
+.option__sr {
+  position:absolute;
+  height:1px;
+  width:1px;
+  border:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--highlighted, .option--selected {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--selected {
+  cursor:default;
+  pointer-events:none;
+}
+.option--disabled {
+  cursor:not-allowed;
+  color:#96989a;
+}
+.option--hidden {
+  display:none;
+}
+.icon {
+  margin-left:0.25rem;
+}
+.optgroup {
+  display:block;
+  padding:0.5rem 0.75rem;
+  margin-top:0.5rem;
+  font-weight:700;
+}
+.optgroup~.option {
+  padding-left:1.5rem;
+}
+.sr-text {
+  display:none;
+}"
+`;
 
-exports[`getFilterStyles() should return correct css for isOpen: false, disabled: false, state: 'error' and theme: 'dark' 1`] = `"input{display:block;position:absolute;z-index:1;bottom:0.125rem;left:0.125rem;width:calc(100% - 2.75rem);height:2.75rem;padding:0.625rem;outline:none;appearance:none;box-sizing:border-box;border:none;opacity:0;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:400;font-size:1rem;line-height:1.5;text-indent:0;cursor:text;color:#fff;background:#0e1418}input::placeholder{opacity:1;color:#fff}input::-webkit-input-placeholder{opacity:1;color:#fff}input::-moz-placeholder{opacity:1;color:#fff}input:focus{opacity:1}input:hover:not(:disabled) ~ ul{border-color:#e3e4e5}input+span{position:absolute;top:0;left:0;right:0;bottom:0;outline:1px solid transparent;outline-offset:2px;transition:color var(--p-transition-duration, .24s) ease;pointer-events:all;cursor:pointer;border:2px solid currentColor}input:focus+span{outline-color:#fc1717}"`;
+exports[`getFilterStyles() should return correct css for isOpen: false, disabled: false, state: 'error' and theme: 'dark' 1`] = `
+"input {
+  display:block;
+  position:absolute;
+  z-index:1;
+  bottom:0.125rem;
+  left:0.125rem;
+  width:calc(100% - 2.75rem);
+  height:2.75rem;
+  padding:0.625rem;
+  outline:none;
+  appearance:none;
+  box-sizing:border-box;
+  border:none;
+  opacity:0;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:400;
+  font-size:1rem;
+  line-height:1.5;
+  text-indent:0;
+  cursor:text;
+  color:#fff;
+  background:#0e1418;
+}
+input::placeholder {
+  opacity:1;
+  color:#fff;
+}
+input::-webkit-input-placeholder {
+  opacity:1;
+  color:#fff;
+}
+input::-moz-placeholder {
+  opacity:1;
+  color:#fff;
+}
+input:focus {
+  opacity:1;
+}
+input:hover:not(:disabled) ~ ul {
+  border-color:#e3e4e5;
+}
+input+span {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  transition:color var(--p-transition-duration, .24s) ease;
+  pointer-events:all;
+  cursor:pointer;
+  border:2px solid currentColor;
+}
+input:focus+span {
+  outline-color:#fc1717;
+}"
+`;
 
-exports[`getFilterStyles() should return correct css for isOpen: false, disabled: false, state: 'none' and theme: 'dark' 1`] = `"input{display:block;position:absolute;z-index:1;bottom:0.125rem;left:0.125rem;width:calc(100% - 2.75rem);height:2.75rem;padding:0.625rem;outline:none;appearance:none;box-sizing:border-box;border:none;opacity:0;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:400;font-size:1rem;line-height:1.5;text-indent:0;cursor:text;color:#fff;background:#0e1418}input::placeholder{opacity:1;color:#fff}input::-webkit-input-placeholder{opacity:1;color:#fff}input::-moz-placeholder{opacity:1;color:#fff}input:focus{opacity:1}input:hover:not(:disabled) ~ ul{border-color:#e3e4e5}input+span{position:absolute;top:0;left:0;right:0;bottom:0;outline:1px solid transparent;outline-offset:2px;transition:color var(--p-transition-duration, .24s) ease;pointer-events:all;cursor:pointer;border:1px solid currentColor}input:focus+span{outline-color:#b0b1b2}"`;
+exports[`getFilterStyles() should return correct css for isOpen: false, disabled: false, state: 'none' and theme: 'dark' 1`] = `
+"input {
+  display:block;
+  position:absolute;
+  z-index:1;
+  bottom:0.125rem;
+  left:0.125rem;
+  width:calc(100% - 2.75rem);
+  height:2.75rem;
+  padding:0.625rem;
+  outline:none;
+  appearance:none;
+  box-sizing:border-box;
+  border:none;
+  opacity:0;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:400;
+  font-size:1rem;
+  line-height:1.5;
+  text-indent:0;
+  cursor:text;
+  color:#fff;
+  background:#0e1418;
+}
+input::placeholder {
+  opacity:1;
+  color:#fff;
+}
+input::-webkit-input-placeholder {
+  opacity:1;
+  color:#fff;
+}
+input::-moz-placeholder {
+  opacity:1;
+  color:#fff;
+}
+input:focus {
+  opacity:1;
+}
+input:hover:not(:disabled) ~ ul {
+  border-color:#e3e4e5;
+}
+input+span {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  transition:color var(--p-transition-duration, .24s) ease;
+  pointer-events:all;
+  cursor:pointer;
+  border:1px solid currentColor;
+}
+input:focus+span {
+  outline-color:#b0b1b2;
+}"
+`;
 
-exports[`getFilterStyles() should return correct css for isOpen: false, disabled: false, state: 'success' and theme: 'dark' 1`] = `"input{display:block;position:absolute;z-index:1;bottom:0.125rem;left:0.125rem;width:calc(100% - 2.75rem);height:2.75rem;padding:0.625rem;outline:none;appearance:none;box-sizing:border-box;border:none;opacity:0;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:400;font-size:1rem;line-height:1.5;text-indent:0;cursor:text;color:#fff;background:#0e1418}input::placeholder{opacity:1;color:#fff}input::-webkit-input-placeholder{opacity:1;color:#fff}input::-moz-placeholder{opacity:1;color:#fff}input:focus{opacity:1}input:hover:not(:disabled) ~ ul{border-color:#e3e4e5}input+span{position:absolute;top:0;left:0;right:0;bottom:0;outline:1px solid transparent;outline-offset:2px;transition:color var(--p-transition-duration, .24s) ease;pointer-events:all;cursor:pointer;border:2px solid currentColor}input:focus+span{outline-color:#01ba1d}"`;
+exports[`getFilterStyles() should return correct css for isOpen: false, disabled: false, state: 'success' and theme: 'dark' 1`] = `
+"input {
+  display:block;
+  position:absolute;
+  z-index:1;
+  bottom:0.125rem;
+  left:0.125rem;
+  width:calc(100% - 2.75rem);
+  height:2.75rem;
+  padding:0.625rem;
+  outline:none;
+  appearance:none;
+  box-sizing:border-box;
+  border:none;
+  opacity:0;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:400;
+  font-size:1rem;
+  line-height:1.5;
+  text-indent:0;
+  cursor:text;
+  color:#fff;
+  background:#0e1418;
+}
+input::placeholder {
+  opacity:1;
+  color:#fff;
+}
+input::-webkit-input-placeholder {
+  opacity:1;
+  color:#fff;
+}
+input::-moz-placeholder {
+  opacity:1;
+  color:#fff;
+}
+input:focus {
+  opacity:1;
+}
+input:hover:not(:disabled) ~ ul {
+  border-color:#e3e4e5;
+}
+input+span {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  transition:color var(--p-transition-duration, .24s) ease;
+  pointer-events:all;
+  cursor:pointer;
+  border:2px solid currentColor;
+}
+input:focus+span {
+  outline-color:#01ba1d;
+}"
+`;
 
-exports[`getFilterStyles() should return correct css for isOpen: false, disabled: true, state: 'error' and theme: 'dark' 1`] = `"input{display:block;position:absolute;z-index:1;bottom:0.125rem;left:0.125rem;width:calc(100% - 2.75rem);height:2.75rem;padding:0.625rem;outline:none;appearance:none;box-sizing:border-box;border:none;opacity:0;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:400;font-size:1rem;line-height:1.5;text-indent:0;cursor:not-allowed;color:#fff;background:#0e1418}input::placeholder{opacity:1;color:#7c7f81}input::-webkit-input-placeholder{opacity:1;color:#7c7f81}input::-moz-placeholder{opacity:1;color:#7c7f81}input:focus{opacity:0}input:hover:not(:disabled) ~ ul{border-color:#e3e4e5}input+span{position:absolute;top:0;left:0;right:0;bottom:0;outline:1px solid transparent;outline-offset:2px;transition:color var(--p-transition-duration, .24s) ease;pointer-events:all;cursor:not-allowed;border:2px solid currentColor}input:focus+span{outline-color:#fc1717}"`;
+exports[`getFilterStyles() should return correct css for isOpen: false, disabled: true, state: 'error' and theme: 'dark' 1`] = `
+"input {
+  display:block;
+  position:absolute;
+  z-index:1;
+  bottom:0.125rem;
+  left:0.125rem;
+  width:calc(100% - 2.75rem);
+  height:2.75rem;
+  padding:0.625rem;
+  outline:none;
+  appearance:none;
+  box-sizing:border-box;
+  border:none;
+  opacity:0;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:400;
+  font-size:1rem;
+  line-height:1.5;
+  text-indent:0;
+  cursor:not-allowed;
+  color:#fff;
+  background:#0e1418;
+}
+input::placeholder {
+  opacity:1;
+  color:#7c7f81;
+}
+input::-webkit-input-placeholder {
+  opacity:1;
+  color:#7c7f81;
+}
+input::-moz-placeholder {
+  opacity:1;
+  color:#7c7f81;
+}
+input:focus {
+  opacity:0;
+}
+input:hover:not(:disabled) ~ ul {
+  border-color:#e3e4e5;
+}
+input+span {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  transition:color var(--p-transition-duration, .24s) ease;
+  pointer-events:all;
+  cursor:not-allowed;
+  border:2px solid currentColor;
+}
+input:focus+span {
+  outline-color:#fc1717;
+}"
+`;
 
-exports[`getFilterStyles() should return correct css for isOpen: false, disabled: true, state: 'none' and theme: 'dark' 1`] = `"input{display:block;position:absolute;z-index:1;bottom:0.125rem;left:0.125rem;width:calc(100% - 2.75rem);height:2.75rem;padding:0.625rem;outline:none;appearance:none;box-sizing:border-box;border:none;opacity:0;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:400;font-size:1rem;line-height:1.5;text-indent:0;cursor:not-allowed;color:#fff;background:#0e1418}input::placeholder{opacity:1;color:#7c7f81}input::-webkit-input-placeholder{opacity:1;color:#7c7f81}input::-moz-placeholder{opacity:1;color:#7c7f81}input:focus{opacity:0}input:hover:not(:disabled) ~ ul{border-color:#e3e4e5}input+span{position:absolute;top:0;left:0;right:0;bottom:0;outline:1px solid transparent;outline-offset:2px;transition:color var(--p-transition-duration, .24s) ease;pointer-events:all;cursor:not-allowed;border:1px solid currentColor}input:focus+span{outline-color:#b0b1b2}"`;
+exports[`getFilterStyles() should return correct css for isOpen: false, disabled: true, state: 'none' and theme: 'dark' 1`] = `
+"input {
+  display:block;
+  position:absolute;
+  z-index:1;
+  bottom:0.125rem;
+  left:0.125rem;
+  width:calc(100% - 2.75rem);
+  height:2.75rem;
+  padding:0.625rem;
+  outline:none;
+  appearance:none;
+  box-sizing:border-box;
+  border:none;
+  opacity:0;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:400;
+  font-size:1rem;
+  line-height:1.5;
+  text-indent:0;
+  cursor:not-allowed;
+  color:#fff;
+  background:#0e1418;
+}
+input::placeholder {
+  opacity:1;
+  color:#7c7f81;
+}
+input::-webkit-input-placeholder {
+  opacity:1;
+  color:#7c7f81;
+}
+input::-moz-placeholder {
+  opacity:1;
+  color:#7c7f81;
+}
+input:focus {
+  opacity:0;
+}
+input:hover:not(:disabled) ~ ul {
+  border-color:#e3e4e5;
+}
+input+span {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  transition:color var(--p-transition-duration, .24s) ease;
+  pointer-events:all;
+  cursor:not-allowed;
+  border:1px solid currentColor;
+}
+input:focus+span {
+  outline-color:#b0b1b2;
+}"
+`;
 
-exports[`getFilterStyles() should return correct css for isOpen: false, disabled: true, state: 'success' and theme: 'dark' 1`] = `"input{display:block;position:absolute;z-index:1;bottom:0.125rem;left:0.125rem;width:calc(100% - 2.75rem);height:2.75rem;padding:0.625rem;outline:none;appearance:none;box-sizing:border-box;border:none;opacity:0;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:400;font-size:1rem;line-height:1.5;text-indent:0;cursor:not-allowed;color:#fff;background:#0e1418}input::placeholder{opacity:1;color:#7c7f81}input::-webkit-input-placeholder{opacity:1;color:#7c7f81}input::-moz-placeholder{opacity:1;color:#7c7f81}input:focus{opacity:0}input:hover:not(:disabled) ~ ul{border-color:#e3e4e5}input+span{position:absolute;top:0;left:0;right:0;bottom:0;outline:1px solid transparent;outline-offset:2px;transition:color var(--p-transition-duration, .24s) ease;pointer-events:all;cursor:not-allowed;border:2px solid currentColor}input:focus+span{outline-color:#01ba1d}"`;
+exports[`getFilterStyles() should return correct css for isOpen: false, disabled: true, state: 'success' and theme: 'dark' 1`] = `
+"input {
+  display:block;
+  position:absolute;
+  z-index:1;
+  bottom:0.125rem;
+  left:0.125rem;
+  width:calc(100% - 2.75rem);
+  height:2.75rem;
+  padding:0.625rem;
+  outline:none;
+  appearance:none;
+  box-sizing:border-box;
+  border:none;
+  opacity:0;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:400;
+  font-size:1rem;
+  line-height:1.5;
+  text-indent:0;
+  cursor:not-allowed;
+  color:#fff;
+  background:#0e1418;
+}
+input::placeholder {
+  opacity:1;
+  color:#7c7f81;
+}
+input::-webkit-input-placeholder {
+  opacity:1;
+  color:#7c7f81;
+}
+input::-moz-placeholder {
+  opacity:1;
+  color:#7c7f81;
+}
+input:focus {
+  opacity:0;
+}
+input:hover:not(:disabled) ~ ul {
+  border-color:#e3e4e5;
+}
+input+span {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  transition:color var(--p-transition-duration, .24s) ease;
+  pointer-events:all;
+  cursor:not-allowed;
+  border:2px solid currentColor;
+}
+input:focus+span {
+  outline-color:#01ba1d;
+}"
+`;
 
-exports[`getFilterStyles() should return correct css for isOpen: true, disabled: false, state: 'error' and theme: 'light' 1`] = `"input{display:block;position:absolute;z-index:1;bottom:0.125rem;left:0.125rem;width:calc(100% - 2.75rem);height:2.75rem;padding:0.625rem;outline:none;appearance:none;box-sizing:border-box;border:none;opacity:0;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:400;font-size:1rem;line-height:1.5;text-indent:0;cursor:text;color:#000;background:#fff}input::placeholder{opacity:1;color:#000}input::-webkit-input-placeholder{opacity:1;color:#000}input::-moz-placeholder{opacity:1;color:#000}input:focus{opacity:1}input:hover:not(:disabled) ~ ul{border-color:#323639}input+span{position:absolute;top:0;left:0;right:0;bottom:0;outline:1px solid transparent;outline-offset:2px;transition:color var(--p-transition-duration, .24s) ease;pointer-events:all;cursor:pointer;border:2px solid currentColor;outline-color:#e00000}input:focus+span{outline-color:#e00000}"`;
+exports[`getFilterStyles() should return correct css for isOpen: true, disabled: false, state: 'error' and theme: 'light' 1`] = `
+"input {
+  display:block;
+  position:absolute;
+  z-index:1;
+  bottom:0.125rem;
+  left:0.125rem;
+  width:calc(100% - 2.75rem);
+  height:2.75rem;
+  padding:0.625rem;
+  outline:none;
+  appearance:none;
+  box-sizing:border-box;
+  border:none;
+  opacity:0;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:400;
+  font-size:1rem;
+  line-height:1.5;
+  text-indent:0;
+  cursor:text;
+  color:#000;
+  background:#fff;
+}
+input::placeholder {
+  opacity:1;
+  color:#000;
+}
+input::-webkit-input-placeholder {
+  opacity:1;
+  color:#000;
+}
+input::-moz-placeholder {
+  opacity:1;
+  color:#000;
+}
+input:focus {
+  opacity:1;
+}
+input:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+input+span {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  transition:color var(--p-transition-duration, .24s) ease;
+  pointer-events:all;
+  cursor:pointer;
+  border:2px solid currentColor;
+  outline-color:#e00000;
+}
+input:focus+span {
+  outline-color:#e00000;
+}"
+`;
 
-exports[`getFilterStyles() should return correct css for isOpen: true, disabled: false, state: 'none' and theme: 'light' 1`] = `"input{display:block;position:absolute;z-index:1;bottom:0.125rem;left:0.125rem;width:calc(100% - 2.75rem);height:2.75rem;padding:0.625rem;outline:none;appearance:none;box-sizing:border-box;border:none;opacity:0;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:400;font-size:1rem;line-height:1.5;text-indent:0;cursor:text;color:#000;background:#fff}input::placeholder{opacity:1;color:#000}input::-webkit-input-placeholder{opacity:1;color:#000}input::-moz-placeholder{opacity:1;color:#000}input:focus{opacity:1}input:hover:not(:disabled) ~ ul{border-color:#323639}input+span{position:absolute;top:0;left:0;right:0;bottom:0;outline:1px solid transparent;outline-offset:2px;transition:color var(--p-transition-duration, .24s) ease;pointer-events:all;cursor:pointer;border:1px solid currentColor;outline-color:#626669}input:focus+span{outline-color:#626669}"`;
+exports[`getFilterStyles() should return correct css for isOpen: true, disabled: false, state: 'none' and theme: 'light' 1`] = `
+"input {
+  display:block;
+  position:absolute;
+  z-index:1;
+  bottom:0.125rem;
+  left:0.125rem;
+  width:calc(100% - 2.75rem);
+  height:2.75rem;
+  padding:0.625rem;
+  outline:none;
+  appearance:none;
+  box-sizing:border-box;
+  border:none;
+  opacity:0;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:400;
+  font-size:1rem;
+  line-height:1.5;
+  text-indent:0;
+  cursor:text;
+  color:#000;
+  background:#fff;
+}
+input::placeholder {
+  opacity:1;
+  color:#000;
+}
+input::-webkit-input-placeholder {
+  opacity:1;
+  color:#000;
+}
+input::-moz-placeholder {
+  opacity:1;
+  color:#000;
+}
+input:focus {
+  opacity:1;
+}
+input:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+input+span {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  transition:color var(--p-transition-duration, .24s) ease;
+  pointer-events:all;
+  cursor:pointer;
+  border:1px solid currentColor;
+  outline-color:#626669;
+}
+input:focus+span {
+  outline-color:#626669;
+}"
+`;
 
-exports[`getFilterStyles() should return correct css for isOpen: true, disabled: false, state: 'success' and theme: 'light' 1`] = `"input{display:block;position:absolute;z-index:1;bottom:0.125rem;left:0.125rem;width:calc(100% - 2.75rem);height:2.75rem;padding:0.625rem;outline:none;appearance:none;box-sizing:border-box;border:none;opacity:0;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:400;font-size:1rem;line-height:1.5;text-indent:0;cursor:text;color:#000;background:#fff}input::placeholder{opacity:1;color:#000}input::-webkit-input-placeholder{opacity:1;color:#000}input::-moz-placeholder{opacity:1;color:#000}input:focus{opacity:1}input:hover:not(:disabled) ~ ul{border-color:#323639}input+span{position:absolute;top:0;left:0;right:0;bottom:0;outline:1px solid transparent;outline-offset:2px;transition:color var(--p-transition-duration, .24s) ease;pointer-events:all;cursor:pointer;border:2px solid currentColor;outline-color:#018a16}input:focus+span{outline-color:#018a16}"`;
+exports[`getFilterStyles() should return correct css for isOpen: true, disabled: false, state: 'success' and theme: 'light' 1`] = `
+"input {
+  display:block;
+  position:absolute;
+  z-index:1;
+  bottom:0.125rem;
+  left:0.125rem;
+  width:calc(100% - 2.75rem);
+  height:2.75rem;
+  padding:0.625rem;
+  outline:none;
+  appearance:none;
+  box-sizing:border-box;
+  border:none;
+  opacity:0;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:400;
+  font-size:1rem;
+  line-height:1.5;
+  text-indent:0;
+  cursor:text;
+  color:#000;
+  background:#fff;
+}
+input::placeholder {
+  opacity:1;
+  color:#000;
+}
+input::-webkit-input-placeholder {
+  opacity:1;
+  color:#000;
+}
+input::-moz-placeholder {
+  opacity:1;
+  color:#000;
+}
+input:focus {
+  opacity:1;
+}
+input:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+input+span {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  transition:color var(--p-transition-duration, .24s) ease;
+  pointer-events:all;
+  cursor:pointer;
+  border:2px solid currentColor;
+  outline-color:#018a16;
+}
+input:focus+span {
+  outline-color:#018a16;
+}"
+`;
 
-exports[`getFilterStyles() should return correct css for isOpen: true, disabled: true, state: 'error' and theme: 'light' 1`] = `"input{display:block;position:absolute;z-index:1;bottom:0.125rem;left:0.125rem;width:calc(100% - 2.75rem);height:2.75rem;padding:0.625rem;outline:none;appearance:none;box-sizing:border-box;border:none;opacity:0;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:400;font-size:1rem;line-height:1.5;text-indent:0;cursor:not-allowed;color:#000;background:#fff}input::placeholder{opacity:1;color:#96989a}input::-webkit-input-placeholder{opacity:1;color:#96989a}input::-moz-placeholder{opacity:1;color:#96989a}input:focus{opacity:0}input:hover:not(:disabled) ~ ul{border-color:#323639}input+span{position:absolute;top:0;left:0;right:0;bottom:0;outline:1px solid transparent;outline-offset:2px;transition:color var(--p-transition-duration, .24s) ease;pointer-events:all;cursor:not-allowed;border:2px solid currentColor;outline-color:#e00000}input:focus+span{outline-color:#e00000}"`;
+exports[`getFilterStyles() should return correct css for isOpen: true, disabled: true, state: 'error' and theme: 'light' 1`] = `
+"input {
+  display:block;
+  position:absolute;
+  z-index:1;
+  bottom:0.125rem;
+  left:0.125rem;
+  width:calc(100% - 2.75rem);
+  height:2.75rem;
+  padding:0.625rem;
+  outline:none;
+  appearance:none;
+  box-sizing:border-box;
+  border:none;
+  opacity:0;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:400;
+  font-size:1rem;
+  line-height:1.5;
+  text-indent:0;
+  cursor:not-allowed;
+  color:#000;
+  background:#fff;
+}
+input::placeholder {
+  opacity:1;
+  color:#96989a;
+}
+input::-webkit-input-placeholder {
+  opacity:1;
+  color:#96989a;
+}
+input::-moz-placeholder {
+  opacity:1;
+  color:#96989a;
+}
+input:focus {
+  opacity:0;
+}
+input:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+input+span {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  transition:color var(--p-transition-duration, .24s) ease;
+  pointer-events:all;
+  cursor:not-allowed;
+  border:2px solid currentColor;
+  outline-color:#e00000;
+}
+input:focus+span {
+  outline-color:#e00000;
+}"
+`;
 
-exports[`getFilterStyles() should return correct css for isOpen: true, disabled: true, state: 'none' and theme: 'light' 1`] = `"input{display:block;position:absolute;z-index:1;bottom:0.125rem;left:0.125rem;width:calc(100% - 2.75rem);height:2.75rem;padding:0.625rem;outline:none;appearance:none;box-sizing:border-box;border:none;opacity:0;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:400;font-size:1rem;line-height:1.5;text-indent:0;cursor:not-allowed;color:#000;background:#fff}input::placeholder{opacity:1;color:#96989a}input::-webkit-input-placeholder{opacity:1;color:#96989a}input::-moz-placeholder{opacity:1;color:#96989a}input:focus{opacity:0}input:hover:not(:disabled) ~ ul{border-color:#323639}input+span{position:absolute;top:0;left:0;right:0;bottom:0;outline:1px solid transparent;outline-offset:2px;transition:color var(--p-transition-duration, .24s) ease;pointer-events:all;cursor:not-allowed;border:1px solid currentColor;outline-color:#626669}input:focus+span{outline-color:#626669}"`;
+exports[`getFilterStyles() should return correct css for isOpen: true, disabled: true, state: 'none' and theme: 'light' 1`] = `
+"input {
+  display:block;
+  position:absolute;
+  z-index:1;
+  bottom:0.125rem;
+  left:0.125rem;
+  width:calc(100% - 2.75rem);
+  height:2.75rem;
+  padding:0.625rem;
+  outline:none;
+  appearance:none;
+  box-sizing:border-box;
+  border:none;
+  opacity:0;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:400;
+  font-size:1rem;
+  line-height:1.5;
+  text-indent:0;
+  cursor:not-allowed;
+  color:#000;
+  background:#fff;
+}
+input::placeholder {
+  opacity:1;
+  color:#96989a;
+}
+input::-webkit-input-placeholder {
+  opacity:1;
+  color:#96989a;
+}
+input::-moz-placeholder {
+  opacity:1;
+  color:#96989a;
+}
+input:focus {
+  opacity:0;
+}
+input:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+input+span {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  transition:color var(--p-transition-duration, .24s) ease;
+  pointer-events:all;
+  cursor:not-allowed;
+  border:1px solid currentColor;
+  outline-color:#626669;
+}
+input:focus+span {
+  outline-color:#626669;
+}"
+`;
 
-exports[`getFilterStyles() should return correct css for isOpen: true, disabled: true, state: 'success' and theme: 'light' 1`] = `"input{display:block;position:absolute;z-index:1;bottom:0.125rem;left:0.125rem;width:calc(100% - 2.75rem);height:2.75rem;padding:0.625rem;outline:none;appearance:none;box-sizing:border-box;border:none;opacity:0;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:400;font-size:1rem;line-height:1.5;text-indent:0;cursor:not-allowed;color:#000;background:#fff}input::placeholder{opacity:1;color:#96989a}input::-webkit-input-placeholder{opacity:1;color:#96989a}input::-moz-placeholder{opacity:1;color:#96989a}input:focus{opacity:0}input:hover:not(:disabled) ~ ul{border-color:#323639}input+span{position:absolute;top:0;left:0;right:0;bottom:0;outline:1px solid transparent;outline-offset:2px;transition:color var(--p-transition-duration, .24s) ease;pointer-events:all;cursor:not-allowed;border:2px solid currentColor;outline-color:#018a16}input:focus+span{outline-color:#018a16}"`;
+exports[`getFilterStyles() should return correct css for isOpen: true, disabled: true, state: 'success' and theme: 'light' 1`] = `
+"input {
+  display:block;
+  position:absolute;
+  z-index:1;
+  bottom:0.125rem;
+  left:0.125rem;
+  width:calc(100% - 2.75rem);
+  height:2.75rem;
+  padding:0.625rem;
+  outline:none;
+  appearance:none;
+  box-sizing:border-box;
+  border:none;
+  opacity:0;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight:400;
+  font-size:1rem;
+  line-height:1.5;
+  text-indent:0;
+  cursor:not-allowed;
+  color:#000;
+  background:#fff;
+}
+input::placeholder {
+  opacity:1;
+  color:#96989a;
+}
+input::-webkit-input-placeholder {
+  opacity:1;
+  color:#96989a;
+}
+input::-moz-placeholder {
+  opacity:1;
+  color:#96989a;
+}
+input:focus {
+  opacity:0;
+}
+input:hover:not(:disabled) ~ ul {
+  border-color:#323639;
+}
+input+span {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  outline:1px solid transparent;
+  outline-offset:2px;
+  transition:color var(--p-transition-duration, .24s) ease;
+  pointer-events:all;
+  cursor:not-allowed;
+  border:2px solid currentColor;
+  outline-color:#018a16;
+}
+input:focus+span {
+  outline-color:#018a16;
+}"
+`;
 
-exports[`getListStyles() should return correct css for direction: down, isOpen: false and theme: dark 1`] = `"ul{display:block;position:var(--p-dropdown-position);padding:0;margin:0;margin-top:-0.0625rem;color:#fff;background:#0e1418;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;line-height:1.5;z-index:10;left:0;right:0;max-height:19.25rem;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;border:1px solid #b0b1b2;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0);outline:none;top:calc(100%-3px);border-top:none;box-shadow:0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);opacity:0;overflow:hidden;height:1px;pointer-events:none}ul:hover{border-color:#e3e4e5}ul::before{content:\\"\\";display:block;position:sticky;width:100%;height:1px;background:#4a4e51;top:0}.option{display:flex;padding:0.25rem 0.6875rem;min-height:2rem;cursor:pointer;text-align:left;word-break:break-word;box-sizing:border-box;transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease}.option[role=\\"status\\"]{cursor:not-allowed}.option__sr{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.option:not([aria-disabled]):not([role=\\"status\\"]):hover{color:#ff0223;background:#000}.option--highlighted, .option--selected{color:#ff0223;background:#000}.option--selected{cursor:default;pointer-events:none}.option--disabled{cursor:not-allowed;color:#7c7f81}.option--hidden{display:none}.icon{margin-left:0.25rem}.optgroup{display:block;padding:0.5rem 0.75rem;margin-top:0.5rem;font-weight:700}.optgroup~.option{padding-left:1.5rem}.sr-text{display:none}"`;
+exports[`getListStyles() should return correct css for direction: down, isOpen: false and theme: dark 1`] = `
+"ul {
+  display:block;
+  position:var(--p-dropdown-position);
+  padding:0;
+  margin:0;
+  margin-top:-0.0625rem;
+  color:#fff;
+  background:#0e1418;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size:1rem;
+  line-height:1.5;
+  z-index:10;
+  left:0;
+  right:0;
+  max-height:19.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  border:1px solid #b0b1b2;
+  scrollbar-width:thin;
+  scrollbar-color:auto;
+  transition:border-color var(--p-transition-duration, .24s) ease;
+  transform:translate3d(0,0,0);
+  outline:none;
+  top:calc(100%-3px);
+  border-top:none;
+  box-shadow:0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
+  opacity:0;
+  overflow:hidden;
+  height:1px;
+  pointer-events:none;
+}
+ul:hover {
+  border-color:#e3e4e5;
+}
+ul::before {
+  content:\\"\\";
+  display:block;
+  position:sticky;
+  width:100%;
+  height:1px;
+  background:#4a4e51;
+  top:0;
+}
+.option {
+  display:flex;
+  padding:0.25rem 0.6875rem;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:left;
+  word-break:break-word;
+  box-sizing:border-box;
+  transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+}
+.option[role=\\"status\\"] {
+  cursor:not-allowed;
+}
+.option__sr {
+  position:absolute;
+  height:1px;
+  width:1px;
+  border:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  color:#ff0223;
+  background:#000;
+}
+.option--highlighted, .option--selected {
+  color:#ff0223;
+  background:#000;
+}
+.option--selected {
+  cursor:default;
+  pointer-events:none;
+}
+.option--disabled {
+  cursor:not-allowed;
+  color:#7c7f81;
+}
+.option--hidden {
+  display:none;
+}
+.icon {
+  margin-left:0.25rem;
+}
+.optgroup {
+  display:block;
+  padding:0.5rem 0.75rem;
+  margin-top:0.5rem;
+  font-weight:700;
+}
+.optgroup~.option {
+  padding-left:1.5rem;
+}
+.sr-text {
+  display:none;
+}"
+`;
 
-exports[`getListStyles() should return correct css for direction: down, isOpen: false and theme: light 1`] = `"ul{display:block;position:var(--p-dropdown-position);padding:0;margin:0;margin-top:-0.0625rem;color:#000;background:#fff;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;line-height:1.5;z-index:10;left:0;right:0;max-height:19.25rem;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;border:1px solid #626669;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0);outline:none;top:calc(100%-3px);border-top:none;box-shadow:0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);opacity:0;overflow:hidden;height:1px;pointer-events:none}ul:hover{border-color:#323639}ul::before{content:\\"\\";display:block;position:sticky;width:100%;height:1px;background:#e3e4e5;top:0}.option{display:flex;padding:0.25rem 0.6875rem;min-height:2rem;cursor:pointer;text-align:left;word-break:break-word;box-sizing:border-box;transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease}.option[role=\\"status\\"]{cursor:not-allowed}.option__sr{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.option:not([aria-disabled]):not([role=\\"status\\"]):hover{color:#d5001c;background:#f2f2f2}.option--highlighted, .option--selected{color:#d5001c;background:#f2f2f2}.option--selected{cursor:default;pointer-events:none}.option--disabled{cursor:not-allowed;color:#96989a}.option--hidden{display:none}.icon{margin-left:0.25rem}.optgroup{display:block;padding:0.5rem 0.75rem;margin-top:0.5rem;font-weight:700}.optgroup~.option{padding-left:1.5rem}.sr-text{display:none}"`;
+exports[`getListStyles() should return correct css for direction: down, isOpen: false and theme: light 1`] = `
+"ul {
+  display:block;
+  position:var(--p-dropdown-position);
+  padding:0;
+  margin:0;
+  margin-top:-0.0625rem;
+  color:#000;
+  background:#fff;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size:1rem;
+  line-height:1.5;
+  z-index:10;
+  left:0;
+  right:0;
+  max-height:19.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  border:1px solid #626669;
+  scrollbar-width:thin;
+  scrollbar-color:auto;
+  transition:border-color var(--p-transition-duration, .24s) ease;
+  transform:translate3d(0,0,0);
+  outline:none;
+  top:calc(100%-3px);
+  border-top:none;
+  box-shadow:0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
+  opacity:0;
+  overflow:hidden;
+  height:1px;
+  pointer-events:none;
+}
+ul:hover {
+  border-color:#323639;
+}
+ul::before {
+  content:\\"\\";
+  display:block;
+  position:sticky;
+  width:100%;
+  height:1px;
+  background:#e3e4e5;
+  top:0;
+}
+.option {
+  display:flex;
+  padding:0.25rem 0.6875rem;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:left;
+  word-break:break-word;
+  box-sizing:border-box;
+  transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+}
+.option[role=\\"status\\"] {
+  cursor:not-allowed;
+}
+.option__sr {
+  position:absolute;
+  height:1px;
+  width:1px;
+  border:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--highlighted, .option--selected {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--selected {
+  cursor:default;
+  pointer-events:none;
+}
+.option--disabled {
+  cursor:not-allowed;
+  color:#96989a;
+}
+.option--hidden {
+  display:none;
+}
+.icon {
+  margin-left:0.25rem;
+}
+.optgroup {
+  display:block;
+  padding:0.5rem 0.75rem;
+  margin-top:0.5rem;
+  font-weight:700;
+}
+.optgroup~.option {
+  padding-left:1.5rem;
+}
+.sr-text {
+  display:none;
+}"
+`;
 
-exports[`getListStyles() should return correct css for direction: down, isOpen: true and theme: dark 1`] = `"ul{display:block;position:var(--p-dropdown-position);padding:0;margin:0;margin-top:-0.0625rem;color:#fff;background:#0e1418;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;line-height:1.5;z-index:10;left:0;right:0;max-height:19.25rem;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;border:1px solid #b0b1b2;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0);outline:none;top:calc(100%-1px);border-top:none;box-shadow:0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1)}ul:hover{border-color:#e3e4e5}ul::before{content:\\"\\";display:block;position:sticky;width:100%;height:1px;background:#4a4e51;top:0}.option{display:flex;padding:0.25rem 0.6875rem;min-height:2rem;cursor:pointer;text-align:left;word-break:break-word;box-sizing:border-box;transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease}.option[role=\\"status\\"]{cursor:not-allowed}.option__sr{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.option:not([aria-disabled]):not([role=\\"status\\"]):hover{color:#ff0223;background:#000}.option--highlighted, .option--selected{color:#ff0223;background:#000}.option--selected{cursor:default;pointer-events:none}.option--disabled{cursor:not-allowed;color:#7c7f81}.option--hidden{display:none}.icon{margin-left:0.25rem}.optgroup{display:block;padding:0.5rem 0.75rem;margin-top:0.5rem;font-weight:700}.optgroup~.option{padding-left:1.5rem}.sr-text{display:none}"`;
+exports[`getListStyles() should return correct css for direction: down, isOpen: true and theme: dark 1`] = `
+"ul {
+  display:block;
+  position:var(--p-dropdown-position);
+  padding:0;
+  margin:0;
+  margin-top:-0.0625rem;
+  color:#fff;
+  background:#0e1418;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size:1rem;
+  line-height:1.5;
+  z-index:10;
+  left:0;
+  right:0;
+  max-height:19.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  border:1px solid #b0b1b2;
+  scrollbar-width:thin;
+  scrollbar-color:auto;
+  transition:border-color var(--p-transition-duration, .24s) ease;
+  transform:translate3d(0,0,0);
+  outline:none;
+  top:calc(100%-1px);
+  border-top:none;
+  box-shadow:0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
+}
+ul:hover {
+  border-color:#e3e4e5;
+}
+ul::before {
+  content:\\"\\";
+  display:block;
+  position:sticky;
+  width:100%;
+  height:1px;
+  background:#4a4e51;
+  top:0;
+}
+.option {
+  display:flex;
+  padding:0.25rem 0.6875rem;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:left;
+  word-break:break-word;
+  box-sizing:border-box;
+  transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+}
+.option[role=\\"status\\"] {
+  cursor:not-allowed;
+}
+.option__sr {
+  position:absolute;
+  height:1px;
+  width:1px;
+  border:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  color:#ff0223;
+  background:#000;
+}
+.option--highlighted, .option--selected {
+  color:#ff0223;
+  background:#000;
+}
+.option--selected {
+  cursor:default;
+  pointer-events:none;
+}
+.option--disabled {
+  cursor:not-allowed;
+  color:#7c7f81;
+}
+.option--hidden {
+  display:none;
+}
+.icon {
+  margin-left:0.25rem;
+}
+.optgroup {
+  display:block;
+  padding:0.5rem 0.75rem;
+  margin-top:0.5rem;
+  font-weight:700;
+}
+.optgroup~.option {
+  padding-left:1.5rem;
+}
+.sr-text {
+  display:none;
+}"
+`;
 
-exports[`getListStyles() should return correct css for direction: down, isOpen: true and theme: light 1`] = `"ul{display:block;position:var(--p-dropdown-position);padding:0;margin:0;margin-top:-0.0625rem;color:#000;background:#fff;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;line-height:1.5;z-index:10;left:0;right:0;max-height:19.25rem;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;border:1px solid #626669;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0);outline:none;top:calc(100%-1px);border-top:none;box-shadow:0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1)}ul:hover{border-color:#323639}ul::before{content:\\"\\";display:block;position:sticky;width:100%;height:1px;background:#e3e4e5;top:0}.option{display:flex;padding:0.25rem 0.6875rem;min-height:2rem;cursor:pointer;text-align:left;word-break:break-word;box-sizing:border-box;transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease}.option[role=\\"status\\"]{cursor:not-allowed}.option__sr{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.option:not([aria-disabled]):not([role=\\"status\\"]):hover{color:#d5001c;background:#f2f2f2}.option--highlighted, .option--selected{color:#d5001c;background:#f2f2f2}.option--selected{cursor:default;pointer-events:none}.option--disabled{cursor:not-allowed;color:#96989a}.option--hidden{display:none}.icon{margin-left:0.25rem}.optgroup{display:block;padding:0.5rem 0.75rem;margin-top:0.5rem;font-weight:700}.optgroup~.option{padding-left:1.5rem}.sr-text{display:none}"`;
+exports[`getListStyles() should return correct css for direction: down, isOpen: true and theme: light 1`] = `
+"ul {
+  display:block;
+  position:var(--p-dropdown-position);
+  padding:0;
+  margin:0;
+  margin-top:-0.0625rem;
+  color:#000;
+  background:#fff;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size:1rem;
+  line-height:1.5;
+  z-index:10;
+  left:0;
+  right:0;
+  max-height:19.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  border:1px solid #626669;
+  scrollbar-width:thin;
+  scrollbar-color:auto;
+  transition:border-color var(--p-transition-duration, .24s) ease;
+  transform:translate3d(0,0,0);
+  outline:none;
+  top:calc(100%-1px);
+  border-top:none;
+  box-shadow:0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
+}
+ul:hover {
+  border-color:#323639;
+}
+ul::before {
+  content:\\"\\";
+  display:block;
+  position:sticky;
+  width:100%;
+  height:1px;
+  background:#e3e4e5;
+  top:0;
+}
+.option {
+  display:flex;
+  padding:0.25rem 0.6875rem;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:left;
+  word-break:break-word;
+  box-sizing:border-box;
+  transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+}
+.option[role=\\"status\\"] {
+  cursor:not-allowed;
+}
+.option__sr {
+  position:absolute;
+  height:1px;
+  width:1px;
+  border:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--highlighted, .option--selected {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--selected {
+  cursor:default;
+  pointer-events:none;
+}
+.option--disabled {
+  cursor:not-allowed;
+  color:#96989a;
+}
+.option--hidden {
+  display:none;
+}
+.icon {
+  margin-left:0.25rem;
+}
+.optgroup {
+  display:block;
+  padding:0.5rem 0.75rem;
+  margin-top:0.5rem;
+  font-weight:700;
+}
+.optgroup~.option {
+  padding-left:1.5rem;
+}
+.sr-text {
+  display:none;
+}"
+`;
 
-exports[`getListStyles() should return correct css for direction: up, isOpen: false and theme: dark 1`] = `"ul{display:block;position:var(--p-dropdown-position);padding:0;margin:0;margin-top:-0.0625rem;color:#fff;background:#0e1418;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;line-height:1.5;z-index:10;left:0;right:0;max-height:19.25rem;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;border:1px solid #b0b1b2;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0);outline:none;bottom:2.9375rem;border-bottom:none;box-shadow:0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);top:calc(100%-3px);opacity:0;overflow:hidden;height:1px;pointer-events:none}ul:hover{border-color:#e3e4e5}ul::after{content:\\"\\";display:block;position:sticky;width:100%;height:1px;background:#4a4e51;bottom:0}.option{display:flex;padding:0.25rem 0.6875rem;min-height:2rem;cursor:pointer;text-align:left;word-break:break-word;box-sizing:border-box;transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease}.option[role=\\"status\\"]{cursor:not-allowed}.option__sr{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.option:not([aria-disabled]):not([role=\\"status\\"]):hover{color:#ff0223;background:#000}.option--highlighted, .option--selected{color:#ff0223;background:#000}.option--selected{cursor:default;pointer-events:none}.option--disabled{cursor:not-allowed;color:#7c7f81}.option--hidden{display:none}.icon{margin-left:0.25rem}.optgroup{display:block;padding:0.5rem 0.75rem;margin-top:0.5rem;font-weight:700}.optgroup~.option{padding-left:1.5rem}.sr-text{display:none}"`;
+exports[`getListStyles() should return correct css for direction: up, isOpen: false and theme: dark 1`] = `
+"ul {
+  display:block;
+  position:var(--p-dropdown-position);
+  padding:0;
+  margin:0;
+  margin-top:-0.0625rem;
+  color:#fff;
+  background:#0e1418;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size:1rem;
+  line-height:1.5;
+  z-index:10;
+  left:0;
+  right:0;
+  max-height:19.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  border:1px solid #b0b1b2;
+  scrollbar-width:thin;
+  scrollbar-color:auto;
+  transition:border-color var(--p-transition-duration, .24s) ease;
+  transform:translate3d(0,0,0);
+  outline:none;
+  bottom:2.9375rem;
+  border-bottom:none;
+  box-shadow:0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
+  top:calc(100%-3px);
+  opacity:0;
+  overflow:hidden;
+  height:1px;
+  pointer-events:none;
+}
+ul:hover {
+  border-color:#e3e4e5;
+}
+ul::after {
+  content:\\"\\";
+  display:block;
+  position:sticky;
+  width:100%;
+  height:1px;
+  background:#4a4e51;
+  bottom:0;
+}
+.option {
+  display:flex;
+  padding:0.25rem 0.6875rem;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:left;
+  word-break:break-word;
+  box-sizing:border-box;
+  transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+}
+.option[role=\\"status\\"] {
+  cursor:not-allowed;
+}
+.option__sr {
+  position:absolute;
+  height:1px;
+  width:1px;
+  border:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  color:#ff0223;
+  background:#000;
+}
+.option--highlighted, .option--selected {
+  color:#ff0223;
+  background:#000;
+}
+.option--selected {
+  cursor:default;
+  pointer-events:none;
+}
+.option--disabled {
+  cursor:not-allowed;
+  color:#7c7f81;
+}
+.option--hidden {
+  display:none;
+}
+.icon {
+  margin-left:0.25rem;
+}
+.optgroup {
+  display:block;
+  padding:0.5rem 0.75rem;
+  margin-top:0.5rem;
+  font-weight:700;
+}
+.optgroup~.option {
+  padding-left:1.5rem;
+}
+.sr-text {
+  display:none;
+}"
+`;
 
-exports[`getListStyles() should return correct css for direction: up, isOpen: false and theme: light 1`] = `"ul{display:block;position:var(--p-dropdown-position);padding:0;margin:0;margin-top:-0.0625rem;color:#000;background:#fff;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;line-height:1.5;z-index:10;left:0;right:0;max-height:19.25rem;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;border:1px solid #626669;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0);outline:none;bottom:2.9375rem;border-bottom:none;box-shadow:0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);top:calc(100%-3px);opacity:0;overflow:hidden;height:1px;pointer-events:none}ul:hover{border-color:#323639}ul::after{content:\\"\\";display:block;position:sticky;width:100%;height:1px;background:#e3e4e5;bottom:0}.option{display:flex;padding:0.25rem 0.6875rem;min-height:2rem;cursor:pointer;text-align:left;word-break:break-word;box-sizing:border-box;transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease}.option[role=\\"status\\"]{cursor:not-allowed}.option__sr{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.option:not([aria-disabled]):not([role=\\"status\\"]):hover{color:#d5001c;background:#f2f2f2}.option--highlighted, .option--selected{color:#d5001c;background:#f2f2f2}.option--selected{cursor:default;pointer-events:none}.option--disabled{cursor:not-allowed;color:#96989a}.option--hidden{display:none}.icon{margin-left:0.25rem}.optgroup{display:block;padding:0.5rem 0.75rem;margin-top:0.5rem;font-weight:700}.optgroup~.option{padding-left:1.5rem}.sr-text{display:none}"`;
+exports[`getListStyles() should return correct css for direction: up, isOpen: false and theme: light 1`] = `
+"ul {
+  display:block;
+  position:var(--p-dropdown-position);
+  padding:0;
+  margin:0;
+  margin-top:-0.0625rem;
+  color:#000;
+  background:#fff;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size:1rem;
+  line-height:1.5;
+  z-index:10;
+  left:0;
+  right:0;
+  max-height:19.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  border:1px solid #626669;
+  scrollbar-width:thin;
+  scrollbar-color:auto;
+  transition:border-color var(--p-transition-duration, .24s) ease;
+  transform:translate3d(0,0,0);
+  outline:none;
+  bottom:2.9375rem;
+  border-bottom:none;
+  box-shadow:0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
+  top:calc(100%-3px);
+  opacity:0;
+  overflow:hidden;
+  height:1px;
+  pointer-events:none;
+}
+ul:hover {
+  border-color:#323639;
+}
+ul::after {
+  content:\\"\\";
+  display:block;
+  position:sticky;
+  width:100%;
+  height:1px;
+  background:#e3e4e5;
+  bottom:0;
+}
+.option {
+  display:flex;
+  padding:0.25rem 0.6875rem;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:left;
+  word-break:break-word;
+  box-sizing:border-box;
+  transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+}
+.option[role=\\"status\\"] {
+  cursor:not-allowed;
+}
+.option__sr {
+  position:absolute;
+  height:1px;
+  width:1px;
+  border:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--highlighted, .option--selected {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--selected {
+  cursor:default;
+  pointer-events:none;
+}
+.option--disabled {
+  cursor:not-allowed;
+  color:#96989a;
+}
+.option--hidden {
+  display:none;
+}
+.icon {
+  margin-left:0.25rem;
+}
+.optgroup {
+  display:block;
+  padding:0.5rem 0.75rem;
+  margin-top:0.5rem;
+  font-weight:700;
+}
+.optgroup~.option {
+  padding-left:1.5rem;
+}
+.sr-text {
+  display:none;
+}"
+`;
 
-exports[`getListStyles() should return correct css for direction: up, isOpen: true and theme: dark 1`] = `"ul{display:block;position:var(--p-dropdown-position);padding:0;margin:0;margin-top:-0.0625rem;color:#fff;background:#0e1418;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;line-height:1.5;z-index:10;left:0;right:0;max-height:19.25rem;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;border:1px solid #b0b1b2;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0);outline:none;bottom:2.9375rem;border-bottom:none;box-shadow:0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075)}ul:hover{border-color:#e3e4e5}ul::after{content:\\"\\";display:block;position:sticky;width:100%;height:1px;background:#4a4e51;bottom:0}.option{display:flex;padding:0.25rem 0.6875rem;min-height:2rem;cursor:pointer;text-align:left;word-break:break-word;box-sizing:border-box;transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease}.option[role=\\"status\\"]{cursor:not-allowed}.option__sr{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.option:not([aria-disabled]):not([role=\\"status\\"]):hover{color:#ff0223;background:#000}.option--highlighted, .option--selected{color:#ff0223;background:#000}.option--selected{cursor:default;pointer-events:none}.option--disabled{cursor:not-allowed;color:#7c7f81}.option--hidden{display:none}.icon{margin-left:0.25rem}.optgroup{display:block;padding:0.5rem 0.75rem;margin-top:0.5rem;font-weight:700}.optgroup~.option{padding-left:1.5rem}.sr-text{display:none}"`;
+exports[`getListStyles() should return correct css for direction: up, isOpen: true and theme: dark 1`] = `
+"ul {
+  display:block;
+  position:var(--p-dropdown-position);
+  padding:0;
+  margin:0;
+  margin-top:-0.0625rem;
+  color:#fff;
+  background:#0e1418;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size:1rem;
+  line-height:1.5;
+  z-index:10;
+  left:0;
+  right:0;
+  max-height:19.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  border:1px solid #b0b1b2;
+  scrollbar-width:thin;
+  scrollbar-color:auto;
+  transition:border-color var(--p-transition-duration, .24s) ease;
+  transform:translate3d(0,0,0);
+  outline:none;
+  bottom:2.9375rem;
+  border-bottom:none;
+  box-shadow:0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
+}
+ul:hover {
+  border-color:#e3e4e5;
+}
+ul::after {
+  content:\\"\\";
+  display:block;
+  position:sticky;
+  width:100%;
+  height:1px;
+  background:#4a4e51;
+  bottom:0;
+}
+.option {
+  display:flex;
+  padding:0.25rem 0.6875rem;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:left;
+  word-break:break-word;
+  box-sizing:border-box;
+  transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+}
+.option[role=\\"status\\"] {
+  cursor:not-allowed;
+}
+.option__sr {
+  position:absolute;
+  height:1px;
+  width:1px;
+  border:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  color:#ff0223;
+  background:#000;
+}
+.option--highlighted, .option--selected {
+  color:#ff0223;
+  background:#000;
+}
+.option--selected {
+  cursor:default;
+  pointer-events:none;
+}
+.option--disabled {
+  cursor:not-allowed;
+  color:#7c7f81;
+}
+.option--hidden {
+  display:none;
+}
+.icon {
+  margin-left:0.25rem;
+}
+.optgroup {
+  display:block;
+  padding:0.5rem 0.75rem;
+  margin-top:0.5rem;
+  font-weight:700;
+}
+.optgroup~.option {
+  padding-left:1.5rem;
+}
+.sr-text {
+  display:none;
+}"
+`;
 
-exports[`getListStyles() should return correct css for direction: up, isOpen: true and theme: light 1`] = `"ul{display:block;position:var(--p-dropdown-position);padding:0;margin:0;margin-top:-0.0625rem;color:#000;background:#fff;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-size:1rem;line-height:1.5;z-index:10;left:0;right:0;max-height:19.25rem;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;border:1px solid #626669;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0);outline:none;bottom:2.9375rem;border-bottom:none;box-shadow:0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075)}ul:hover{border-color:#323639}ul::after{content:\\"\\";display:block;position:sticky;width:100%;height:1px;background:#e3e4e5;bottom:0}.option{display:flex;padding:0.25rem 0.6875rem;min-height:2rem;cursor:pointer;text-align:left;word-break:break-word;box-sizing:border-box;transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease}.option[role=\\"status\\"]{cursor:not-allowed}.option__sr{position:absolute;height:1px;width:1px;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.option:not([aria-disabled]):not([role=\\"status\\"]):hover{color:#d5001c;background:#f2f2f2}.option--highlighted, .option--selected{color:#d5001c;background:#f2f2f2}.option--selected{cursor:default;pointer-events:none}.option--disabled{cursor:not-allowed;color:#96989a}.option--hidden{display:none}.icon{margin-left:0.25rem}.optgroup{display:block;padding:0.5rem 0.75rem;margin-top:0.5rem;font-weight:700}.optgroup~.option{padding-left:1.5rem}.sr-text{display:none}"`;
+exports[`getListStyles() should return correct css for direction: up, isOpen: true and theme: light 1`] = `
+"ul {
+  display:block;
+  position:var(--p-dropdown-position);
+  padding:0;
+  margin:0;
+  margin-top:-0.0625rem;
+  color:#000;
+  background:#fff;
+  font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size:1rem;
+  line-height:1.5;
+  z-index:10;
+  left:0;
+  right:0;
+  max-height:19.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  border:1px solid #626669;
+  scrollbar-width:thin;
+  scrollbar-color:auto;
+  transition:border-color var(--p-transition-duration, .24s) ease;
+  transform:translate3d(0,0,0);
+  outline:none;
+  bottom:2.9375rem;
+  border-bottom:none;
+  box-shadow:0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
+}
+ul:hover {
+  border-color:#323639;
+}
+ul::after {
+  content:\\"\\";
+  display:block;
+  position:sticky;
+  width:100%;
+  height:1px;
+  background:#e3e4e5;
+  bottom:0;
+}
+.option {
+  display:flex;
+  padding:0.25rem 0.6875rem;
+  min-height:2rem;
+  cursor:pointer;
+  text-align:left;
+  word-break:break-word;
+  box-sizing:border-box;
+  transition:color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+}
+.option[role=\\"status\\"] {
+  cursor:not-allowed;
+}
+.option__sr {
+  position:absolute;
+  height:1px;
+  width:1px;
+  border:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.option:not([aria-disabled]):not([role=\\"status\\"]):hover {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--highlighted, .option--selected {
+  color:#d5001c;
+  background:#f2f2f2;
+}
+.option--selected {
+  cursor:default;
+  pointer-events:none;
+}
+.option--disabled {
+  cursor:not-allowed;
+  color:#96989a;
+}
+.option--hidden {
+  display:none;
+}
+.icon {
+  margin-left:0.25rem;
+}
+.optgroup {
+  display:block;
+  padding:0.5rem 0.75rem;
+  margin-top:0.5rem;
+  font-weight:700;
+}
+.optgroup~.option {
+  padding-left:1.5rem;
+}
+.sr-text {
+  display:none;
+}"
+`;
