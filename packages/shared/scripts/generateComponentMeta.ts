@@ -6,17 +6,19 @@ import { TAG_NAMES, TAG_NAMES_WITH_SKELETON, TagName, TagNameCamelCase } from '.
 
 const glue = '\n\n';
 // TODO: typing as component property string
-const SIZE_RELEVANT_PROPS = [
-  'compact',
-  'description',
-  'hideLabel',
-  'itemsPerPage',
-  'labelSize',
-  'open',
-  'size',
-  'stretch',
-  'totalItemsCount',
-  'variant',
+type SkeletonRelevantProps = { propName: string; shouldStringifyValue: boolean }[];
+const SKELETON_RELEVANT_PROPS: SkeletonRelevantProps = [
+  { propName: 'compact', shouldStringifyValue: false },
+  { propName: 'description', shouldStringifyValue: false },
+  { propName: 'hideLabel', shouldStringifyValue: false },
+  { propName: 'itemsPerPage ', shouldStringifyValue: true },
+  { propName: 'labelSize', shouldStringifyValue: false },
+  { propName: 'open', shouldStringifyValue: false },
+  { propName: 'size', shouldStringifyValue: true },
+  { propName: 'stretch', shouldStringifyValue: false },
+  { propName: 'theme', shouldStringifyValue: true },
+  { propName: 'totalItemsCount', shouldStringifyValue: false },
+  { propName: 'variant', shouldStringifyValue: true },
 ];
 
 const generateComponentMeta = (): void => {
@@ -38,7 +40,7 @@ const generateComponentMeta = (): void => {
   }[];
   hasSlottedCss: boolean;
   hasSkeleton: boolean;
-  skeletonProps?: string[];
+  skeletonProps?: { propName: string; shouldStringifyValue: boolean }[];
   styling: 'jss' | 'scss' | 'hybrid';
 };`,
     `type ComponentsMeta = { [key in TagName]: ComponentMeta };`,
@@ -55,7 +57,7 @@ const generateComponentMeta = (): void => {
     }[];
     hasSlottedCss: boolean;
     hasSkeleton: boolean;
-    skeletonProps?: string[];
+    skeletonProps?: { propName: string; shouldStringifyValue: boolean }[];
     styling: 'jss' | 'scss' | 'hybrid';
   };
 
@@ -129,10 +131,10 @@ const generateComponentMeta = (): void => {
 
     const skeletonProps: ComponentMeta['skeletonProps'] = [];
     if (hasSkeleton) {
-      SIZE_RELEVANT_PROPS.forEach((sizeRelevantProp) => {
-        const [match] = new RegExp(`@Prop\\(\\) public ${sizeRelevantProp}\\?: .+;`).exec(source) ?? [];
+      SKELETON_RELEVANT_PROPS.forEach(({ propName, shouldStringifyValue }) => {
+        const [match] = new RegExp(`@Prop\\(\\) public ${propName}\\?: .+;`).exec(source) ?? [];
         if (match) {
-          skeletonProps.push(sizeRelevantProp);
+          skeletonProps.push({ propName, shouldStringifyValue });
         }
       });
     }
