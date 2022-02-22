@@ -46,9 +46,10 @@ export default [
   {
     input: `${BASE_DIR}/src/partials.ts`,
     external,
+    // Partials provide esm build which is treeshakable. By bundling it as esm, the correct build is used.
     output: {
       dir: DIST_DIR,
-      format: 'cjs',
+      format: 'esm',
       exports: 'named',
     },
     plugins: [typescript(typescriptOpts)],
