@@ -7,7 +7,7 @@ export * from './change-case';
 export * from './children-observer';
 export * from './device-detection';
 export * from './dom';
-export * from './tag-name';
+export * from './inject-global-style'; // to trick bundling and avoid separate jss chunk 🤷
 export * from './jss';
 export * from './line-height';
 export * from './pds-fetch';
@@ -16,7 +16,7 @@ export * from './scrolling';
 export * from './slotted-styles';
 export * from './ssr-handling';
 export * from './sync';
+export * from './tag-name';
 export * from './theme';
-export * from './tracking';
 export * from './transition-listener';
 export * from './validation';
