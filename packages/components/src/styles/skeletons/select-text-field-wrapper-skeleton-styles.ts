@@ -14,13 +14,13 @@ export const getSelectTextFieldWrapperSkeletonCss = (): string => {
     '@global': {
       'p-select-wrapper, p-text-field-wrapper': {
         '&:not(.hydrated)': {
-          ...extendPseudoWithTheme(getBaseSkeletonStyles, 'light'),
+          ...extendPseudoWithTheme('light', getBaseSkeletonStyles),
 
           minWidth: pxToRemWithUnit(BUTTON_LINK_SKELETON_WIDTH),
           height: getSkeletonElementHeight(ELEMENT_SKELETON_HEIGHT),
           // TODO: mark skeletons as experimental in changelog
           // TODO: use constants for getComponentMeta for "property" class and values
-          [`&[hide-label=true], &.${PDS_SKELETON_CLASS_PREFIX}hide-label-true`]: {
+          [`&[hide-label=true], &.${PDS_SKELETON_CLASS_PREFIX}hide-label`]: {
             height: getSkeletonElementHeight(ELEMENT_SKELETON_HEIGHT, false),
             '&::before': {
               content: 'none',
@@ -31,7 +31,7 @@ export const getSelectTextFieldWrapperSkeletonCss = (): string => {
             },
           },
           [`&[theme=dark], &.${PDS_SKELETON_CLASS_PREFIX}theme-dark`]: {
-            ...extendPseudoWithTheme(getBaseSkeletonStyles, 'dark'),
+            ...extendPseudoWithTheme('dark'),
           },
         },
       },
