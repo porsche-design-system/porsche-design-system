@@ -2,9 +2,9 @@
 
 exports[`getComponentCss() should return correct css 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 .root {
-  margin-bottom:0.5rem;
+  margin-bottom: 0.5rem;
 }"
 `;

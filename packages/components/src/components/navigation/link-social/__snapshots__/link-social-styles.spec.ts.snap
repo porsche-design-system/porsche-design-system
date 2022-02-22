@@ -2,2343 +2,2343 @@
 
 exports[`getComponentCss() should return correct css for variant: logo-facebook, hideLabel: false, hasHref: false and theme: dark 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#fff;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #fff;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#1877f2;
+  color: #1877f2;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#000;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #000;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#000;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#fff !important;
+  outline-color: #fff !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#1877f2 !important;
+  outline-color: #1877f2 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-facebook, hideLabel: false, hasHref: false and theme: light 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#323639;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #323639;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#1877f2;
+  color: #1877f2;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#fff;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#fff;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#323639 !important;
+  outline-color: #323639 !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#1877f2 !important;
+  outline-color: #1877f2 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-google, hideLabel: false, hasHref: false and theme: dark 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#fff;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #fff;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#4285f4;
+  color: #4285f4;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#000;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #000;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#000;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#fff !important;
+  outline-color: #fff !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#4285f4 !important;
+  outline-color: #4285f4 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-google, hideLabel: false, hasHref: false and theme: light 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#323639;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #323639;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#4285f4;
+  color: #4285f4;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#fff;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#fff;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#323639 !important;
+  outline-color: #323639 !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#4285f4 !important;
+  outline-color: #4285f4 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-instagram, hideLabel: false, hasHref: false and theme: dark 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#fff;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #fff;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#e1306c;
+  color: #e1306c;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#000;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #000;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#000;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#fff !important;
+  outline-color: #fff !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#e1306c !important;
+  outline-color: #e1306c !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-instagram, hideLabel: false, hasHref: false and theme: light 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#323639;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #323639;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#e1306c;
+  color: #e1306c;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#fff;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#fff;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#323639 !important;
+  outline-color: #323639 !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#e1306c !important;
+  outline-color: #e1306c !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-kakaotalk, hideLabel: false, hasHref: false and theme: dark 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#fff;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #fff;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#fae300;
+  color: #fae300;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#000;
+  color: #000;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#000;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #000;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#000;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#fff !important;
+  outline-color: #fff !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#fae300 !important;
+  outline-color: #fae300 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-kakaotalk, hideLabel: false, hasHref: false and theme: light 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#323639;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #323639;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#fae300;
+  color: #fae300;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#000;
+  color: #000;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#fff;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#fff;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#323639 !important;
+  outline-color: #323639 !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#fae300 !important;
+  outline-color: #fae300 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-linkedin, hideLabel: false, hasHref: false and theme: dark 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#fff;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #fff;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#0077b5;
+  color: #0077b5;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#000;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #000;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#000;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#fff !important;
+  outline-color: #fff !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#0077b5 !important;
+  outline-color: #0077b5 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-linkedin, hideLabel: false, hasHref: false and theme: light 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#323639;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #323639;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#0077b5;
+  color: #0077b5;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#fff;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#fff;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#323639 !important;
+  outline-color: #323639 !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#0077b5 !important;
+  outline-color: #0077b5 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-naver, hideLabel: false, hasHref: false and theme: dark 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#fff;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #fff;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#03cf5d;
+  color: #03cf5d;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#000;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #000;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#000;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#fff !important;
+  outline-color: #fff !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#03cf5d !important;
+  outline-color: #03cf5d !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-naver, hideLabel: false, hasHref: false and theme: light 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#323639;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #323639;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#03cf5d;
+  color: #03cf5d;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#fff;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#fff;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#323639 !important;
+  outline-color: #323639 !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#03cf5d !important;
+  outline-color: #03cf5d !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-pinterest, hideLabel: false, hasHref: false and theme: dark 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#fff;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #fff;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#e60023;
+  color: #e60023;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#000;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #000;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#000;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#fff !important;
+  outline-color: #fff !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#e60023 !important;
+  outline-color: #e60023 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-pinterest, hideLabel: false, hasHref: false and theme: light 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#323639;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #323639;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#e60023;
+  color: #e60023;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#fff;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#fff;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#323639 !important;
+  outline-color: #323639 !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#e60023 !important;
+  outline-color: #e60023 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-reddit, hideLabel: false, hasHref: false and theme: dark 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#fff;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #fff;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#ff4500;
+  color: #ff4500;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#000;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #000;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#000;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#fff !important;
+  outline-color: #fff !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#ff4500 !important;
+  outline-color: #ff4500 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-reddit, hideLabel: false, hasHref: false and theme: light 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#323639;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #323639;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#ff4500;
+  color: #ff4500;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#fff;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#fff;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#323639 !important;
+  outline-color: #323639 !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#ff4500 !important;
+  outline-color: #ff4500 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-tiktok, hideLabel: false, hasHref: false and theme: dark 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#fff;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #fff;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#fe2c55;
+  color: #fe2c55;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#000;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #000;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#000;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#fff !important;
+  outline-color: #fff !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#fe2c55 !important;
+  outline-color: #fe2c55 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-tiktok, hideLabel: false, hasHref: false and theme: light 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#323639;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #323639;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#fe2c55;
+  color: #fe2c55;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#fff;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#fff;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#323639 !important;
+  outline-color: #323639 !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#fe2c55 !important;
+  outline-color: #fe2c55 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-twitter, hideLabel: false, hasHref: false and theme: dark 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#fff;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #fff;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#1da1f2;
+  color: #1da1f2;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#000;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #000;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#000;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#fff !important;
+  outline-color: #fff !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#1da1f2 !important;
+  outline-color: #1da1f2 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-twitter, hideLabel: false, hasHref: false and theme: light 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#323639;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #323639;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#1da1f2;
+  color: #1da1f2;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#fff;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#fff;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#323639 !important;
+  outline-color: #323639 !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#1da1f2 !important;
+  outline-color: #1da1f2 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-wechat, hideLabel: false, hasHref: false and theme: dark 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#fff;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #fff;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#1aad19;
+  color: #1aad19;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#000;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #000;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#000;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#fff !important;
+  outline-color: #fff !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#1aad19 !important;
+  outline-color: #1aad19 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-wechat, hideLabel: false, hasHref: false and theme: light 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#323639;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #323639;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#1aad19;
+  color: #1aad19;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#fff;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#fff;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#323639 !important;
+  outline-color: #323639 !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#1aad19 !important;
+  outline-color: #1aad19 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-whatsapp, hideLabel: false, hasHref: false and theme: dark 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#fff;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #fff;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#25d366;
+  color: #25d366;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#000;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #000;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#000;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#fff !important;
+  outline-color: #fff !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#25d366 !important;
+  outline-color: #25d366 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-whatsapp, hideLabel: false, hasHref: false and theme: light 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#323639;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #323639;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#25d366;
+  color: #25d366;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#fff;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#fff;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#323639 !important;
+  outline-color: #323639 !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#25d366 !important;
+  outline-color: #25d366 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-xing, hideLabel: false, hasHref: false and theme: dark 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#fff;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #fff;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#006567;
+  color: #006567;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#000;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #000;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#000;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#fff !important;
+  outline-color: #fff !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#006567 !important;
+  outline-color: #006567 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-xing, hideLabel: false, hasHref: false and theme: light 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#323639;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #323639;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#006567;
+  color: #006567;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#fff;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#fff;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#323639 !important;
+  outline-color: #323639 !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#006567 !important;
+  outline-color: #006567 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-youtube, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, hasHref: false and theme: light 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#323639;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #323639;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#ff0000;
+  color: #ff0000;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#fff;
-  pointer-events:none;
-  left:50%;
-  top:50%;
-  transform:translate3d(-50%, -50%, 0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
+  pointer-events: none;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#fff;
-  width:1px;
-  height:1px;
-  margin:0 0 0 -1px;
-  overflow:hidden;
-  text-indent:-1px;
+  display: block;
+  box-sizing: border-box;
+  color: #fff;
+  width: 1px;
+  height: 1px;
+  margin: 0 0 0 -1px;
+  overflow: hidden;
+  text-indent: -1px;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:absolute !important;
-  top:0 !important;
-  left:0 !important;
-  right:0 !important;
-  bottom:0 !important;
-  padding:0 !important;
-  overflow:hidden !important;
-  white-space:nowrap !important;
-  text-indent:99999px !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-indent: 99999px !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#323639 !important;
+  outline-color: #323639 !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#ff0000 !important;
+  outline-color: #ff0000 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }
-@media(min-width:480px) {
+@media (min-width: 480px) {
   .icon {
-    left:0.6875rem;
-    top:0.6875rem;
-    transform:translate3d(0,0,0);
+    left: 0.6875rem;
+    top: 0.6875rem;
+    transform: translate3d(0,0,0);
   }
   .label {
-    width:100%;
-    height:auto;
-    margin:0;
-    overflow:visible;
-    text-indent:0;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    text-indent: 0;
   }
   :\\\\:slotted(a) {
-    position:static !important;
-    top:auto !important;
-    left:auto !important;
-    right:auto !important;
-    bottom:auto !important;
-    padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-    overflow:visible !important;
-    white-space:normal !important;
-    text-indent:0 !important;
-  }
-}
-
-@media(min-width:760px) {
-  .icon {
-    left:50%;
-    top:50%;
-    transform:translate3d(-50%, -50%, 0);
-  }
-  .label {
-    width:1px;
-    height:1px;
-    margin:0 0 0 -1px;
-    overflow:hidden;
-    text-indent:-1px;
-  }
-  :\\\\:slotted(a) {
-    position:absolute !important;
-    top:0 !important;
-    left:0 !important;
-    right:0 !important;
-    bottom:0 !important;
-    padding:0 !important;
-    overflow:hidden !important;
-    white-space:nowrap !important;
-    text-indent:99999px !important;
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+    overflow: visible !important;
+    white-space: normal !important;
+    text-indent: 0 !important;
   }
 }
 
-@media(min-width:1000px) {
+@media (min-width: 760px) {
   .icon {
-    left:0.6875rem;
-    top:0.6875rem;
-    transform:translate3d(0,0,0);
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
   }
   .label {
-    width:100%;
-    height:auto;
-    margin:0;
-    overflow:visible;
-    text-indent:0;
+    width: 1px;
+    height: 1px;
+    margin: 0 0 0 -1px;
+    overflow: hidden;
+    text-indent: -1px;
   }
   :\\\\:slotted(a) {
-    position:static !important;
-    top:auto !important;
-    left:auto !important;
-    right:auto !important;
-    bottom:auto !important;
-    padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-    overflow:visible !important;
-    white-space:normal !important;
-    text-indent:0 !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    text-indent: 99999px !important;
   }
 }
 
-@media(min-width:1300px) {
+@media (min-width: 1000px) {
   .icon {
-    left:50%;
-    top:50%;
-    transform:translate3d(-50%, -50%, 0);
+    left: 0.6875rem;
+    top: 0.6875rem;
+    transform: translate3d(0,0,0);
   }
   .label {
-    width:1px;
-    height:1px;
-    margin:0 0 0 -1px;
-    overflow:hidden;
-    text-indent:-1px;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    text-indent: 0;
   }
   :\\\\:slotted(a) {
-    position:absolute !important;
-    top:0 !important;
-    left:0 !important;
-    right:0 !important;
-    bottom:0 !important;
-    padding:0 !important;
-    overflow:hidden !important;
-    white-space:nowrap !important;
-    text-indent:99999px !important;
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+    overflow: visible !important;
+    white-space: normal !important;
+    text-indent: 0 !important;
   }
 }
 
-@media(min-width:1760px) {
+@media (min-width: 1300px) {
   .icon {
-    left:0.6875rem;
-    top:0.6875rem;
-    transform:translate3d(0,0,0);
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
   }
   .label {
-    width:100%;
-    height:auto;
-    margin:0;
-    overflow:visible;
-    text-indent:0;
+    width: 1px;
+    height: 1px;
+    margin: 0 0 0 -1px;
+    overflow: hidden;
+    text-indent: -1px;
   }
   :\\\\:slotted(a) {
-    position:static !important;
-    top:auto !important;
-    left:auto !important;
-    right:auto !important;
-    bottom:auto !important;
-    padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-    overflow:visible !important;
-    white-space:normal !important;
-    text-indent:0 !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    text-indent: 99999px !important;
+  }
+}
+
+@media (min-width: 1760px) {
+  .icon {
+    left: 0.6875rem;
+    top: 0.6875rem;
+    transform: translate3d(0,0,0);
+  }
+  .label {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    text-indent: 0;
+  }
+  :\\\\:slotted(a) {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+    overflow: visible !important;
+    white-space: normal !important;
+    text-indent: 0 !important;
   }
 }
 "
@@ -2346,385 +2346,385 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
 
 exports[`getComponentCss() should return correct css for variant: logo-youtube, hideLabel: false, hasHref: false and theme: dark 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#fff;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #fff;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#ff0000;
+  color: #ff0000;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#000;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #000;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#000;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#fff !important;
+  outline-color: #fff !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#ff0000 !important;
+  outline-color: #ff0000 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-youtube, hideLabel: false, hasHref: false and theme: light 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#323639;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #323639;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#ff0000;
+  color: #ff0000;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#fff;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#fff;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#323639 !important;
+  outline-color: #323639 !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#ff0000 !important;
+  outline-color: #ff0000 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-youtube, hideLabel: false, hasHref: true and theme: light 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem;
-  box-sizing:border-box;
-  outline:1px solid transparent;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#323639;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-  outline-offset:2px;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem;
+  box-sizing: border-box;
+  outline: 1px solid transparent;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #323639;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  outline-offset: 2px;
 }
 .root:hover, .root:active {
-  color:#ff0000;
+  color: #ff0000;
 }
 .root::-moz-focus-inner {
-  border:0;
+  border: 0;
 }
 .root:focus {
-  outline-color:currentColor;
+  outline-color: currentColor;
 }
 .root:focus:not(:focus-visible) {
-  outline-color:transparent;
+  outline-color: transparent;
 }
 .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color:#fff;
+  color: #fff;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#fff;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#fff;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: undefined, hideLabel: false, hasHref: false and theme: dark 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#fff;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #fff;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#e0e0e0;
+  color: #e0e0e0;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#000;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #000;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#000;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#fff !important;
+  outline-color: #fff !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#e0e0e0 !important;
+  outline-color: #e0e0e0 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for variant: undefined, hideLabel: false, hasHref: false and theme: light 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
-  outline:0 !important;
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 .root {
-  display:flex;
-  width:100%;
-  min-width:3rem;
-  min-height:3rem;
-  position:relative;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  outline:transparent none;
-  appearance:none;
-  cursor:pointer;
-  text-decoration:none;
-  text-align:left;
-  border:1px solid currentColor;
-  background-color:currentColor;
-  color:#323639;
-  transition:background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  display: flex;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: transparent none;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid currentColor;
+  background-color: currentColor;
+  color: #323639;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
 .root:hover, .root:active {
-  color:#151718;
+  color: #151718;
 }
 .icon {
-  position:absolute;
-  width:1.5rem;
-  height:1.5rem;
-  color:#fff;
-  pointer-events:none;
-  left:0.6875rem;
-  top:0.6875rem;
-  transform:translate3d(0,0,0);
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
+  pointer-events: none;
+  left: 0.6875rem;
+  top: 0.6875rem;
+  transform: translate3d(0,0,0);
 }
 .label {
-  display:block;
-  box-sizing:border-box;
-  color:#fff;
-  width:100%;
-  height:auto;
-  margin:0;
-  overflow:visible;
-  text-indent:0;
+  display: block;
+  box-sizing: border-box;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 :\\\\:slotted(a) {
-  display:block !important;
-  text-decoration:none !important;
-  color:inherit !important;
-  line-height:inherit !important;
-  outline:transparent solid 1px !important;
-  outline-offset:3px !important;
-  position:static !important;
-  top:auto !important;
-  left:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  padding:0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow:visible !important;
-  white-space:normal !important;
-  text-indent:0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
 }
 :\\\\:slotted(a::-moz-focus-inner) {
-  border:0 !important;
+  border: 0 !important;
 }
 :\\\\:slotted(a:focus) {
-  outline-color:#323639 !important;
+  outline-color: #323639 !important;
 }
 :\\\\:slotted(a:hover:focus) {
-  outline-color:#151718 !important;
+  outline-color: #151718 !important;
 }
 :\\\\:slotted(a:focus:not(:focus-visible)) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;

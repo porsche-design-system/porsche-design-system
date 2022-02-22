@@ -2,169 +2,169 @@
 
 exports[`getComponentCss() should return correct css for color: neutral-contrast-high, orientation: "horizontal" and theme dark 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 hr {
-  margin:0;
-  padding:0;
-  border:none;
-  text-align:left;
-  background:#e3e4e5;
-  height:1px;
-  width:100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-align: left;
+  background: #e3e4e5;
+  height: 1px;
+  width: 100%;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for color: neutral-contrast-high, orientation: "horizontal" and theme light 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 hr {
-  margin:0;
-  padding:0;
-  border:none;
-  text-align:left;
-  background:#323639;
-  height:1px;
-  width:100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-align: left;
+  background: #323639;
+  height: 1px;
+  width: 100%;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for color: neutral-contrast-high, orientation: "vertical" and theme dark 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 hr {
-  margin:0;
-  padding:0;
-  border:none;
-  text-align:left;
-  background:#e3e4e5;
-  height:100%;
-  width:1px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-align: left;
+  background: #e3e4e5;
+  height: 100%;
+  width: 1px;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for color: neutral-contrast-high, orientation: "vertical" and theme light 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 hr {
-  margin:0;
-  padding:0;
-  border:none;
-  text-align:left;
-  background:#323639;
-  height:100%;
-  width:1px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-align: left;
+  background: #323639;
+  height: 100%;
+  width: 1px;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for color: neutral-contrast-low, orientation: "horizontal" and theme dark 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 hr {
-  margin:0;
-  padding:0;
-  border:none;
-  text-align:left;
-  background:#4a4e51;
-  height:1px;
-  width:100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-align: left;
+  background: #4a4e51;
+  height: 1px;
+  width: 100%;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for color: neutral-contrast-low, orientation: "horizontal" and theme light 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 hr {
-  margin:0;
-  padding:0;
-  border:none;
-  text-align:left;
-  background:#e3e4e5;
-  height:1px;
-  width:100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-align: left;
+  background: #e3e4e5;
+  height: 1px;
+  width: 100%;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for color: neutral-contrast-low, orientation: "vertical" and theme dark 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 hr {
-  margin:0;
-  padding:0;
-  border:none;
-  text-align:left;
-  background:#4a4e51;
-  height:100%;
-  width:1px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-align: left;
+  background: #4a4e51;
+  height: 100%;
+  width: 1px;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for color: neutral-contrast-low, orientation: "vertical" and theme light 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 hr {
-  margin:0;
-  padding:0;
-  border:none;
-  text-align:left;
-  background:#e3e4e5;
-  height:100%;
-  width:1px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-align: left;
+  background: #e3e4e5;
+  height: 100%;
+  width: 1px;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for color: neutral-contrast-low, orientation: {"base":"horizontal","xs":"vertical","s":"horizontal","m":"vertical","l":"horizontal","xl":"vertical"} and theme light 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 hr {
-  margin:0;
-  padding:0;
-  border:none;
-  text-align:left;
-  background:#e3e4e5;
-  height:1px;
-  width:100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-align: left;
+  background: #e3e4e5;
+  height: 1px;
+  width: 100%;
 }
-@media(min-width:480px) {
+@media (min-width: 480px) {
   hr {
-    height:100%;
-    width:1px;
+    height: 100%;
+    width: 1px;
   }
 }
 
-@media(min-width:760px) {
+@media (min-width: 760px) {
   hr {
-    height:1px;
-    width:100%;
+    height: 1px;
+    width: 100%;
   }
 }
 
-@media(min-width:1000px) {
+@media (min-width: 1000px) {
   hr {
-    height:100%;
-    width:1px;
+    height: 100%;
+    width: 1px;
   }
 }
 
-@media(min-width:1300px) {
+@media (min-width: 1300px) {
   hr {
-    height:1px;
-    width:100%;
+    height: 1px;
+    width: 100%;
   }
 }
 
-@media(min-width:1760px) {
+@media (min-width: 1760px) {
   hr {
-    height:100%;
-    width:1px;
+    height: 100%;
+    width: 1px;
   }
 }
 "
@@ -172,60 +172,60 @@ hr {
 
 exports[`getComponentCss() should return correct css for color: neutral-contrast-medium, orientation: "horizontal" and theme dark 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 hr {
-  margin:0;
-  padding:0;
-  border:none;
-  text-align:left;
-  background:#b0b1b2;
-  height:1px;
-  width:100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-align: left;
+  background: #b0b1b2;
+  height: 1px;
+  width: 100%;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for color: neutral-contrast-medium, orientation: "horizontal" and theme light 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 hr {
-  margin:0;
-  padding:0;
-  border:none;
-  text-align:left;
-  background:#626669;
-  height:1px;
-  width:100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-align: left;
+  background: #626669;
+  height: 1px;
+  width: 100%;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for color: neutral-contrast-medium, orientation: "vertical" and theme dark 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 hr {
-  margin:0;
-  padding:0;
-  border:none;
-  text-align:left;
-  background:#b0b1b2;
-  height:100%;
-  width:1px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-align: left;
+  background: #b0b1b2;
+  height: 100%;
+  width: 1px;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for color: neutral-contrast-medium, orientation: "vertical" and theme light 1`] = `
 ":host {
-  display:block;
+  display: block;
 }
 hr {
-  margin:0;
-  padding:0;
-  border:none;
-  text-align:left;
-  background:#626669;
-  height:100%;
-  width:1px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-align: left;
+  background: #626669;
+  height: 100%;
+  width: 1px;
 }"
 `;

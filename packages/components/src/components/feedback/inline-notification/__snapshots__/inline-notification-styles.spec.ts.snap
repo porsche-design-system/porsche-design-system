@@ -8,32 +8,32 @@ Object {
 
 exports[`getComponentCss() should return correct css for state: error, hasAction: false, hasClose: false and theme: dark 1`] = `
 ":host {
-  display:grid !important;
-  grid-template-columns:1fr auto !important;
-  grid-template-rows:auto !important;
-  grid-row-gap:1rem !important;
-  align-items:start !important;
-  justify-items:start !important;
-  padding:1rem !important;
-  background:#fec5c5 !important;
-  border-left:0.25rem solid #fc1717 !important;
+  display: grid !important;
+  grid-template-columns: 1fr auto !important;
+  grid-template-rows: auto !important;
+  grid-row-gap: 1rem !important;
+  align-items: start !important;
+  justify-items: start !important;
+  padding: 1rem !important;
+  background: #fec5c5 !important;
+  border-left: 0.25rem solid #fc1717 !important;
 }
 .icon {
-  display:none;
+  display: none;
 }
 .content {
-  display:grid;
-  grid-gap:0.25rem;
-  max-width:50rem;
+  display: grid;
+  grid-gap: 0.25rem;
+  max-width: 50rem;
 }
-@media(min-width:760px) {
+@media (min-width: 760px) {
   :host {
-    grid-template-columns:auto 1fr auto auto !important;
+    grid-template-columns: auto 1fr auto auto !important;
   }
   .icon {
-    display:inline-flex;
-    margin-right:0.5rem;
-    color:#e00000;
+    display: inline-flex;
+    margin-right: 0.5rem;
+    color: #e00000;
   }
 }
 "
@@ -41,32 +41,32 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
 
 exports[`getComponentCss() should return correct css for state: error, hasAction: false, hasClose: false and theme: light 1`] = `
 ":host {
-  display:grid !important;
-  grid-template-columns:1fr auto !important;
-  grid-template-rows:auto !important;
-  grid-row-gap:1rem !important;
-  align-items:start !important;
-  justify-items:start !important;
-  padding:1rem !important;
-  background:#fae6e6 !important;
-  border-left:0.25rem solid #e00000 !important;
+  display: grid !important;
+  grid-template-columns: 1fr auto !important;
+  grid-template-rows: auto !important;
+  grid-row-gap: 1rem !important;
+  align-items: start !important;
+  justify-items: start !important;
+  padding: 1rem !important;
+  background: #fae6e6 !important;
+  border-left: 0.25rem solid #e00000 !important;
 }
 .icon {
-  display:none;
+  display: none;
 }
 .content {
-  display:grid;
-  grid-gap:0.25rem;
-  max-width:50rem;
+  display: grid;
+  grid-gap: 0.25rem;
+  max-width: 50rem;
 }
-@media(min-width:760px) {
+@media (min-width: 760px) {
   :host {
-    grid-template-columns:auto 1fr auto auto !important;
+    grid-template-columns: auto 1fr auto auto !important;
   }
   .icon {
-    display:inline-flex;
-    margin-right:0.5rem;
-    color:#e00000;
+    display: inline-flex;
+    margin-right: 0.5rem;
+    color: #e00000;
   }
 }
 "
@@ -74,32 +74,32 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
 
 exports[`getComponentCss() should return correct css for state: neutral, hasAction: false, hasClose: false and theme: dark 1`] = `
 ":host {
-  display:grid !important;
-  grid-template-columns:1fr auto !important;
-  grid-template-rows:auto !important;
-  grid-row-gap:1rem !important;
-  align-items:start !important;
-  justify-items:start !important;
-  padding:1rem !important;
-  background:#c7e4ff !important;
-  border-left:0.25rem solid #2193ff !important;
+  display: grid !important;
+  grid-template-columns: 1fr auto !important;
+  grid-template-rows: auto !important;
+  grid-row-gap: 1rem !important;
+  align-items: start !important;
+  justify-items: start !important;
+  padding: 1rem !important;
+  background: #c7e4ff !important;
+  border-left: 0.25rem solid #2193ff !important;
 }
 .icon {
-  display:none;
+  display: none;
 }
 .content {
-  display:grid;
-  grid-gap:0.25rem;
-  max-width:50rem;
+  display: grid;
+  grid-gap: 0.25rem;
+  max-width: 50rem;
 }
-@media(min-width:760px) {
+@media (min-width: 760px) {
   :host {
-    grid-template-columns:auto 1fr auto auto !important;
+    grid-template-columns: auto 1fr auto auto !important;
   }
   .icon {
-    display:inline-flex;
-    margin-right:0.5rem;
-    color:#0061bd;
+    display: inline-flex;
+    margin-right: 0.5rem;
+    color: #0061bd;
   }
 }
 "
@@ -107,32 +107,32 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 
 exports[`getComponentCss() should return correct css for state: neutral, hasAction: false, hasClose: false and theme: light 1`] = `
 ":host {
-  display:grid !important;
-  grid-template-columns:1fr auto !important;
-  grid-template-rows:auto !important;
-  grid-row-gap:1rem !important;
-  align-items:start !important;
-  justify-items:start !important;
-  padding:1rem !important;
-  background:#e5eff8 !important;
-  border-left:0.25rem solid #0061bd !important;
+  display: grid !important;
+  grid-template-columns: 1fr auto !important;
+  grid-template-rows: auto !important;
+  grid-row-gap: 1rem !important;
+  align-items: start !important;
+  justify-items: start !important;
+  padding: 1rem !important;
+  background: #e5eff8 !important;
+  border-left: 0.25rem solid #0061bd !important;
 }
 .icon {
-  display:none;
+  display: none;
 }
 .content {
-  display:grid;
-  grid-gap:0.25rem;
-  max-width:50rem;
+  display: grid;
+  grid-gap: 0.25rem;
+  max-width: 50rem;
 }
-@media(min-width:760px) {
+@media (min-width: 760px) {
   :host {
-    grid-template-columns:auto 1fr auto auto !important;
+    grid-template-columns: auto 1fr auto auto !important;
   }
   .icon {
-    display:inline-flex;
-    margin-right:0.5rem;
-    color:#0061bd;
+    display: inline-flex;
+    margin-right: 0.5rem;
+    color: #0061bd;
   }
 }
 "
@@ -140,35 +140,35 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 
 exports[`getComponentCss() should return correct css for state: neutral, hasAction: false, hasClose: true and theme: dark 1`] = `
 ":host {
-  display:grid !important;
-  grid-template-columns:1fr auto !important;
-  grid-template-rows:auto !important;
-  grid-row-gap:1rem !important;
-  align-items:start !important;
-  justify-items:start !important;
-  padding:1rem !important;
-  background:#c7e4ff !important;
-  border-left:0.25rem solid #2193ff !important;
+  display: grid !important;
+  grid-template-columns: 1fr auto !important;
+  grid-template-rows: auto !important;
+  grid-row-gap: 1rem !important;
+  align-items: start !important;
+  justify-items: start !important;
+  padding: 1rem !important;
+  background: #c7e4ff !important;
+  border-left: 0.25rem solid #2193ff !important;
 }
 .icon {
-  display:none;
+  display: none;
 }
 .content {
-  display:grid;
-  grid-gap:0.25rem;
-  max-width:50rem;
+  display: grid;
+  grid-gap: 0.25rem;
+  max-width: 50rem;
 }
 .close {
-  margin-left:1rem;
+  margin-left: 1rem;
 }
-@media(min-width:760px) {
+@media (min-width: 760px) {
   :host {
-    grid-template-columns:auto 1fr auto auto !important;
+    grid-template-columns: auto 1fr auto auto !important;
   }
   .icon {
-    display:inline-flex;
-    margin-right:0.5rem;
-    color:#0061bd;
+    display: inline-flex;
+    margin-right: 0.5rem;
+    color: #0061bd;
   }
 }
 "
@@ -176,35 +176,35 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 
 exports[`getComponentCss() should return correct css for state: neutral, hasAction: false, hasClose: true and theme: light 1`] = `
 ":host {
-  display:grid !important;
-  grid-template-columns:1fr auto !important;
-  grid-template-rows:auto !important;
-  grid-row-gap:1rem !important;
-  align-items:start !important;
-  justify-items:start !important;
-  padding:1rem !important;
-  background:#e5eff8 !important;
-  border-left:0.25rem solid #0061bd !important;
+  display: grid !important;
+  grid-template-columns: 1fr auto !important;
+  grid-template-rows: auto !important;
+  grid-row-gap: 1rem !important;
+  align-items: start !important;
+  justify-items: start !important;
+  padding: 1rem !important;
+  background: #e5eff8 !important;
+  border-left: 0.25rem solid #0061bd !important;
 }
 .icon {
-  display:none;
+  display: none;
 }
 .content {
-  display:grid;
-  grid-gap:0.25rem;
-  max-width:50rem;
+  display: grid;
+  grid-gap: 0.25rem;
+  max-width: 50rem;
 }
 .close {
-  margin-left:1rem;
+  margin-left: 1rem;
 }
-@media(min-width:760px) {
+@media (min-width: 760px) {
   :host {
-    grid-template-columns:auto 1fr auto auto !important;
+    grid-template-columns: auto 1fr auto auto !important;
   }
   .icon {
-    display:inline-flex;
-    margin-right:0.5rem;
-    color:#0061bd;
+    display: inline-flex;
+    margin-right: 0.5rem;
+    color: #0061bd;
   }
 }
 "
@@ -212,41 +212,41 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 
 exports[`getComponentCss() should return correct css for state: neutral, hasAction: true, hasClose: false and theme: dark 1`] = `
 ":host {
-  display:grid !important;
-  grid-template-columns:1fr auto !important;
-  grid-template-rows:auto !important;
-  grid-row-gap:1rem !important;
-  align-items:start !important;
-  justify-items:start !important;
-  padding:1rem !important;
-  background:#c7e4ff !important;
-  border-left:0.25rem solid #2193ff !important;
+  display: grid !important;
+  grid-template-columns: 1fr auto !important;
+  grid-template-rows: auto !important;
+  grid-row-gap: 1rem !important;
+  align-items: start !important;
+  justify-items: start !important;
+  padding: 1rem !important;
+  background: #c7e4ff !important;
+  border-left: 0.25rem solid #2193ff !important;
 }
 .icon {
-  display:none;
+  display: none;
 }
 .content {
-  display:grid;
-  grid-gap:0.25rem;
-  max-width:50rem;
+  display: grid;
+  grid-gap: 0.25rem;
+  max-width: 50rem;
 }
 .action {
-  grid-column-start:1;
-  grid-row-start:2;
+  grid-column-start: 1;
+  grid-row-start: 2;
 }
-@media(min-width:760px) {
+@media (min-width: 760px) {
   :host {
-    grid-template-columns:auto 1fr auto auto !important;
+    grid-template-columns: auto 1fr auto auto !important;
   }
   .icon {
-    display:inline-flex;
-    margin-right:0.5rem;
-    color:#0061bd;
+    display: inline-flex;
+    margin-right: 0.5rem;
+    color: #0061bd;
   }
   .action {
-    grid-column-start:3;
-    grid-row-start:1;
-    margin-left:1rem;
+    grid-column-start: 3;
+    grid-row-start: 1;
+    margin-left: 1rem;
   }
 }
 "
@@ -254,41 +254,41 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 
 exports[`getComponentCss() should return correct css for state: neutral, hasAction: true, hasClose: false and theme: light 1`] = `
 ":host {
-  display:grid !important;
-  grid-template-columns:1fr auto !important;
-  grid-template-rows:auto !important;
-  grid-row-gap:1rem !important;
-  align-items:start !important;
-  justify-items:start !important;
-  padding:1rem !important;
-  background:#e5eff8 !important;
-  border-left:0.25rem solid #0061bd !important;
+  display: grid !important;
+  grid-template-columns: 1fr auto !important;
+  grid-template-rows: auto !important;
+  grid-row-gap: 1rem !important;
+  align-items: start !important;
+  justify-items: start !important;
+  padding: 1rem !important;
+  background: #e5eff8 !important;
+  border-left: 0.25rem solid #0061bd !important;
 }
 .icon {
-  display:none;
+  display: none;
 }
 .content {
-  display:grid;
-  grid-gap:0.25rem;
-  max-width:50rem;
+  display: grid;
+  grid-gap: 0.25rem;
+  max-width: 50rem;
 }
 .action {
-  grid-column-start:1;
-  grid-row-start:2;
+  grid-column-start: 1;
+  grid-row-start: 2;
 }
-@media(min-width:760px) {
+@media (min-width: 760px) {
   :host {
-    grid-template-columns:auto 1fr auto auto !important;
+    grid-template-columns: auto 1fr auto auto !important;
   }
   .icon {
-    display:inline-flex;
-    margin-right:0.5rem;
-    color:#0061bd;
+    display: inline-flex;
+    margin-right: 0.5rem;
+    color: #0061bd;
   }
   .action {
-    grid-column-start:3;
-    grid-row-start:1;
-    margin-left:1rem;
+    grid-column-start: 3;
+    grid-row-start: 1;
+    margin-left: 1rem;
   }
 }
 "
@@ -296,44 +296,44 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 
 exports[`getComponentCss() should return correct css for state: neutral, hasAction: true, hasClose: true and theme: dark 1`] = `
 ":host {
-  display:grid !important;
-  grid-template-columns:1fr auto !important;
-  grid-template-rows:auto !important;
-  grid-row-gap:1rem !important;
-  align-items:start !important;
-  justify-items:start !important;
-  padding:1rem !important;
-  background:#c7e4ff !important;
-  border-left:0.25rem solid #2193ff !important;
+  display: grid !important;
+  grid-template-columns: 1fr auto !important;
+  grid-template-rows: auto !important;
+  grid-row-gap: 1rem !important;
+  align-items: start !important;
+  justify-items: start !important;
+  padding: 1rem !important;
+  background: #c7e4ff !important;
+  border-left: 0.25rem solid #2193ff !important;
 }
 .icon {
-  display:none;
+  display: none;
 }
 .content {
-  display:grid;
-  grid-gap:0.25rem;
-  max-width:50rem;
+  display: grid;
+  grid-gap: 0.25rem;
+  max-width: 50rem;
 }
 .action {
-  grid-column-start:1;
-  grid-row-start:2;
+  grid-column-start: 1;
+  grid-row-start: 2;
 }
 .close {
-  margin-left:1rem;
+  margin-left: 1rem;
 }
-@media(min-width:760px) {
+@media (min-width: 760px) {
   :host {
-    grid-template-columns:auto 1fr auto auto !important;
+    grid-template-columns: auto 1fr auto auto !important;
   }
   .icon {
-    display:inline-flex;
-    margin-right:0.5rem;
-    color:#0061bd;
+    display: inline-flex;
+    margin-right: 0.5rem;
+    color: #0061bd;
   }
   .action {
-    grid-column-start:3;
-    grid-row-start:1;
-    margin-left:1rem;
+    grid-column-start: 3;
+    grid-row-start: 1;
+    margin-left: 1rem;
   }
 }
 "
@@ -341,44 +341,44 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 
 exports[`getComponentCss() should return correct css for state: neutral, hasAction: true, hasClose: true and theme: light 1`] = `
 ":host {
-  display:grid !important;
-  grid-template-columns:1fr auto !important;
-  grid-template-rows:auto !important;
-  grid-row-gap:1rem !important;
-  align-items:start !important;
-  justify-items:start !important;
-  padding:1rem !important;
-  background:#e5eff8 !important;
-  border-left:0.25rem solid #0061bd !important;
+  display: grid !important;
+  grid-template-columns: 1fr auto !important;
+  grid-template-rows: auto !important;
+  grid-row-gap: 1rem !important;
+  align-items: start !important;
+  justify-items: start !important;
+  padding: 1rem !important;
+  background: #e5eff8 !important;
+  border-left: 0.25rem solid #0061bd !important;
 }
 .icon {
-  display:none;
+  display: none;
 }
 .content {
-  display:grid;
-  grid-gap:0.25rem;
-  max-width:50rem;
+  display: grid;
+  grid-gap: 0.25rem;
+  max-width: 50rem;
 }
 .action {
-  grid-column-start:1;
-  grid-row-start:2;
+  grid-column-start: 1;
+  grid-row-start: 2;
 }
 .close {
-  margin-left:1rem;
+  margin-left: 1rem;
 }
-@media(min-width:760px) {
+@media (min-width: 760px) {
   :host {
-    grid-template-columns:auto 1fr auto auto !important;
+    grid-template-columns: auto 1fr auto auto !important;
   }
   .icon {
-    display:inline-flex;
-    margin-right:0.5rem;
-    color:#0061bd;
+    display: inline-flex;
+    margin-right: 0.5rem;
+    color: #0061bd;
   }
   .action {
-    grid-column-start:3;
-    grid-row-start:1;
-    margin-left:1rem;
+    grid-column-start: 3;
+    grid-row-start: 1;
+    margin-left: 1rem;
   }
 }
 "
@@ -386,32 +386,32 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 
 exports[`getComponentCss() should return correct css for state: success, hasAction: false, hasClose: false and theme: dark 1`] = `
 ":host {
-  display:grid !important;
-  grid-template-columns:1fr auto !important;
-  grid-template-rows:auto !important;
-  grid-row-gap:1rem !important;
-  align-items:start !important;
-  justify-items:start !important;
-  padding:1rem !important;
-  background:#bfeec6 !important;
-  border-left:0.25rem solid #01ba1d !important;
+  display: grid !important;
+  grid-template-columns: 1fr auto !important;
+  grid-template-rows: auto !important;
+  grid-row-gap: 1rem !important;
+  align-items: start !important;
+  justify-items: start !important;
+  padding: 1rem !important;
+  background: #bfeec6 !important;
+  border-left: 0.25rem solid #01ba1d !important;
 }
 .icon {
-  display:none;
+  display: none;
 }
 .content {
-  display:grid;
-  grid-gap:0.25rem;
-  max-width:50rem;
+  display: grid;
+  grid-gap: 0.25rem;
+  max-width: 50rem;
 }
-@media(min-width:760px) {
+@media (min-width: 760px) {
   :host {
-    grid-template-columns:auto 1fr auto auto !important;
+    grid-template-columns: auto 1fr auto auto !important;
   }
   .icon {
-    display:inline-flex;
-    margin-right:0.5rem;
-    color:#018a16;
+    display: inline-flex;
+    margin-right: 0.5rem;
+    color: #018a16;
   }
 }
 "
@@ -419,32 +419,32 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
 
 exports[`getComponentCss() should return correct css for state: success, hasAction: false, hasClose: false and theme: light 1`] = `
 ":host {
-  display:grid !important;
-  grid-template-columns:1fr auto !important;
-  grid-template-rows:auto !important;
-  grid-row-gap:1rem !important;
-  align-items:start !important;
-  justify-items:start !important;
-  padding:1rem !important;
-  background:#e5f3e7 !important;
-  border-left:0.25rem solid #018a16 !important;
+  display: grid !important;
+  grid-template-columns: 1fr auto !important;
+  grid-template-rows: auto !important;
+  grid-row-gap: 1rem !important;
+  align-items: start !important;
+  justify-items: start !important;
+  padding: 1rem !important;
+  background: #e5f3e7 !important;
+  border-left: 0.25rem solid #018a16 !important;
 }
 .icon {
-  display:none;
+  display: none;
 }
 .content {
-  display:grid;
-  grid-gap:0.25rem;
-  max-width:50rem;
+  display: grid;
+  grid-gap: 0.25rem;
+  max-width: 50rem;
 }
-@media(min-width:760px) {
+@media (min-width: 760px) {
   :host {
-    grid-template-columns:auto 1fr auto auto !important;
+    grid-template-columns: auto 1fr auto auto !important;
   }
   .icon {
-    display:inline-flex;
-    margin-right:0.5rem;
-    color:#018a16;
+    display: inline-flex;
+    margin-right: 0.5rem;
+    color: #018a16;
   }
 }
 "
@@ -452,32 +452,32 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
 
 exports[`getComponentCss() should return correct css for state: warning, hasAction: false, hasClose: false and theme: dark 1`] = `
 ":host {
-  display:grid !important;
-  grid-template-columns:1fr auto !important;
-  grid-template-rows:auto !important;
-  grid-row-gap:1rem !important;
-  align-items:start !important;
-  justify-items:start !important;
-  padding:1rem !important;
-  background:#ffe6bf !important;
-  border-left:0.25rem solid #ff9b00 !important;
+  display: grid !important;
+  grid-template-columns: 1fr auto !important;
+  grid-template-rows: auto !important;
+  grid-row-gap: 1rem !important;
+  align-items: start !important;
+  justify-items: start !important;
+  padding: 1rem !important;
+  background: #ffe6bf !important;
+  border-left: 0.25rem solid #ff9b00 !important;
 }
 .icon {
-  display:none;
+  display: none;
 }
 .content {
-  display:grid;
-  grid-gap:0.25rem;
-  max-width:50rem;
+  display: grid;
+  grid-gap: 0.25rem;
+  max-width: 50rem;
 }
-@media(min-width:760px) {
+@media (min-width: 760px) {
   :host {
-    grid-template-columns:auto 1fr auto auto !important;
+    grid-template-columns: auto 1fr auto auto !important;
   }
   .icon {
-    display:inline-flex;
-    margin-right:0.5rem;
-    color:#ff9b00;
+    display: inline-flex;
+    margin-right: 0.5rem;
+    color: #ff9b00;
   }
 }
 "
@@ -485,32 +485,32 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
 
 exports[`getComponentCss() should return correct css for state: warning, hasAction: false, hasClose: false and theme: light 1`] = `
 ":host {
-  display:grid !important;
-  grid-template-columns:1fr auto !important;
-  grid-template-rows:auto !important;
-  grid-row-gap:1rem !important;
-  align-items:start !important;
-  justify-items:start !important;
-  padding:1rem !important;
-  background:#fff5e5 !important;
-  border-left:0.25rem solid #ff9b00 !important;
+  display: grid !important;
+  grid-template-columns: 1fr auto !important;
+  grid-template-rows: auto !important;
+  grid-row-gap: 1rem !important;
+  align-items: start !important;
+  justify-items: start !important;
+  padding: 1rem !important;
+  background: #fff5e5 !important;
+  border-left: 0.25rem solid #ff9b00 !important;
 }
 .icon {
-  display:none;
+  display: none;
 }
 .content {
-  display:grid;
-  grid-gap:0.25rem;
-  max-width:50rem;
+  display: grid;
+  grid-gap: 0.25rem;
+  max-width: 50rem;
 }
-@media(min-width:760px) {
+@media (min-width: 760px) {
   :host {
-    grid-template-columns:auto 1fr auto auto !important;
+    grid-template-columns: auto 1fr auto auto !important;
   }
   .icon {
-    display:inline-flex;
-    margin-right:0.5rem;
-    color:#ff9b00;
+    display: inline-flex;
+    margin-right: 0.5rem;
+    color: #ff9b00;
   }
 }
 "
@@ -706,56 +706,56 @@ Object {
 
 exports[`getSlottedCss() should return correct css 1`] = `
 "p-inline-notification a {
-  color:inherit !important;
-  text-decoration:underline !important;
-  transition:color var(--p-transition-duration, .24s) ease !important;
-  outline:1px solid transparent !important;
-  outline-offset:1px !important;
+  color: inherit !important;
+  text-decoration: underline !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
 }
 p-inline-notification b, p-inline-notification strong {
-  font-weight:700 !important;
+  font-weight: 700 !important;
 }
 p-inline-notification em, p-inline-notification i {
-  font-style:normal !important;
+  font-style: normal !important;
 }
 p-inline-notification a:hover {
-  color:#d5001c !important;
+  color: #d5001c !important;
 }
 p-inline-notification a::-moz-focus-inner {
-  border:0 !important;
+  border: 0 !important;
 }
 p-inline-notification a:focus {
-  outline-color:currentColor !important;
+  outline-color: currentColor !important;
 }
 p-inline-notification a:focus:not(:focus-visible) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;
 
 exports[`getSlottedCss() should return correct css with prefix 1`] = `
 "prefixed-p-inline-notification a {
-  color:inherit !important;
-  text-decoration:underline !important;
-  transition:color var(--p-transition-duration, .24s) ease !important;
-  outline:1px solid transparent !important;
-  outline-offset:1px !important;
+  color: inherit !important;
+  text-decoration: underline !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
 }
 prefixed-p-inline-notification b, prefixed-p-inline-notification strong {
-  font-weight:700 !important;
+  font-weight: 700 !important;
 }
 prefixed-p-inline-notification em, prefixed-p-inline-notification i {
-  font-style:normal !important;
+  font-style: normal !important;
 }
 prefixed-p-inline-notification a:hover {
-  color:#d5001c !important;
+  color: #d5001c !important;
 }
 prefixed-p-inline-notification a::-moz-focus-inner {
-  border:0 !important;
+  border: 0 !important;
 }
 prefixed-p-inline-notification a:focus {
-  outline-color:currentColor !important;
+  outline-color: currentColor !important;
 }
 prefixed-p-inline-notification a:focus:not(:focus-visible) {
-  outline-color:transparent !important;
+  outline-color: transparent !important;
 }"
 `;

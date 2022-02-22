@@ -2,25 +2,25 @@
 
 exports[`getComponentCss() should return correct css for color: brand, size: small and theme: light 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
+  display: inline-flex;
+  vertical-align: top;
 }
 .root {
-  display:flex;
-  flex-shrink:0;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  width:1.5rem;
-  height:1.5rem;
-  color:#d5001c;
+  display: flex;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #d5001c;
 }
 .root > svg {
-  fill:currentColor;
+  fill: currentColor;
 }
-@media(forced-colors:active) {
+@media (forced-colors: active) {
   .root > svg {
-    fill:canvasText;
+    fill: canvasText;
   }
 }
 "
@@ -28,25 +28,25 @@ exports[`getComponentCss() should return correct css for color: brand, size: sma
 
 exports[`getComponentCss() should return correct css for color: default, size: inherit and theme: light 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
+  display: inline-flex;
+  vertical-align: top;
 }
 .root {
-  display:flex;
-  flex-shrink:0;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  width:inherit;
-  height:inherit;
-  color:#000;
+  display: flex;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: inherit;
+  height: inherit;
+  color: #000;
 }
 .root > svg {
-  fill:currentColor;
+  fill: currentColor;
 }
-@media(forced-colors:active) {
+@media (forced-colors: active) {
   .root > svg {
-    fill:canvasText;
+    fill: canvasText;
   }
 }
 "
@@ -54,25 +54,25 @@ exports[`getComponentCss() should return correct css for color: default, size: i
 
 exports[`getComponentCss() should return correct css for color: default, size: large and theme: light 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
+  display: inline-flex;
+  vertical-align: top;
 }
 .root {
-  display:flex;
-  flex-shrink:0;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  width:3rem;
-  height:3rem;
-  color:#000;
+  display: flex;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 3rem;
+  height: 3rem;
+  color: #000;
 }
 .root > svg {
-  fill:currentColor;
+  fill: currentColor;
 }
-@media(forced-colors:active) {
+@media (forced-colors: active) {
   .root > svg {
-    fill:canvasText;
+    fill: canvasText;
   }
 }
 "
@@ -80,25 +80,25 @@ exports[`getComponentCss() should return correct css for color: default, size: l
 
 exports[`getComponentCss() should return correct css for color: default, size: small and theme: dark 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
+  display: inline-flex;
+  vertical-align: top;
 }
 .root {
-  display:flex;
-  flex-shrink:0;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  width:1.5rem;
-  height:1.5rem;
-  color:#fff;
+  display: flex;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
 }
 .root > svg {
-  fill:currentColor;
+  fill: currentColor;
 }
-@media(forced-colors:active) {
+@media (forced-colors: active) {
   .root > svg {
-    fill:canvasText;
+    fill: canvasText;
   }
 }
 "
@@ -106,25 +106,25 @@ exports[`getComponentCss() should return correct css for color: default, size: s
 
 exports[`getComponentCss() should return correct css for color: default, size: small and theme: light 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
+  display: inline-flex;
+  vertical-align: top;
 }
 .root {
-  display:flex;
-  flex-shrink:0;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  width:1.5rem;
-  height:1.5rem;
-  color:#000;
+  display: flex;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #000;
 }
 .root > svg {
-  fill:currentColor;
+  fill: currentColor;
 }
-@media(forced-colors:active) {
+@media (forced-colors: active) {
   .root > svg {
-    fill:canvasText;
+    fill: canvasText;
   }
 }
 "
@@ -132,25 +132,25 @@ exports[`getComponentCss() should return correct css for color: default, size: s
 
 exports[`getComponentCss() should return correct css for color: inherit, size: small and theme: light 1`] = `
 ":host {
-  display:inline-flex;
-  vertical-align:top;
+  display: inline-flex;
+  vertical-align: top;
 }
 .root {
-  display:flex;
-  flex-shrink:0;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  width:1.5rem;
-  height:1.5rem;
-  color:currentColor;
+  display: flex;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: currentColor;
 }
 .root > svg {
-  fill:currentColor;
+  fill: currentColor;
 }
-@media(forced-colors:active) {
+@media (forced-colors: active) {
   .root > svg {
-    fill:canvasText;
+    fill: canvasText;
   }
 }
 "
