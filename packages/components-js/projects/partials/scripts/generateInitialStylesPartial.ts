@@ -11,7 +11,6 @@ import {
   getTextListItemSkeletonCss,
   getTextListSkeletonCss,
   getTextSkeletonCss,
-  SKELETON_COLOR_THEME_PLACEHOLDER,
 } from '../../../../components/src/styles/skeletons';
 
 // TODO: remove skeleton styles after all are hydrated
@@ -151,13 +150,11 @@ Please use only valid component chunk names:
     const unusedSkeletonTagName = new RegExp(\`((?:,)*\${tagName}:not\\\\(\\\\.hydrated\\\\)(?:\\\\:\\\\:(?:after|before))*)\`, 'g');
     skeletonStyles = skeletonStyles.replace(unusedSkeletonTagName, '');
   });
-  skeletonStyles = skeletonStyles.replace(/${SKELETON_COLOR_THEME_PLACEHOLDER}/g,\`\${theme === 'light' ? '#626669': '#b0b1b2'}\`);
 
   const result = skeletonStyles + \`\${prefixedTagNamesWithSkeleton.length ? '${skeletonKeyframes}' : ''}\`;
   // escape the "at" sign for sed replace command to work properly
   return result.replace(/(@)/g, '\\\\$1');
 };`;
-  // TODO: find a way to use getThemedColors(theme).contrastMediumColor
 
   const helperFunction = `const getPrefixedTagNames = (tagNames: string[], prefix?: string): string[] => {
   return prefix ? tagNames.map((x) => \`\${prefix}-\${x}\`) : tagNames;

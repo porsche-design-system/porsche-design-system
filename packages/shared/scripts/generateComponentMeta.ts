@@ -2,9 +2,22 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
 import { camelCase, paramCase } from 'change-case';
-import { TAG_NAMES, TagName, TagNameCamelCase } from '../src/lib/tagNames';
+import { TAG_NAMES, TAG_NAMES_WITH_SKELETON, TagName, TagNameCamelCase } from '../src/lib/tagNames';
 
 const glue = '\n\n';
+// TODO: typing as component property string
+const SIZE_RELEVANT_PROPS = [
+  'compact',
+  'description',
+  'hideLabel',
+  'itemsPerPage',
+  'labelSize',
+  'open',
+  'size',
+  'stretch',
+  'totalItemsCount',
+  'variant',
+];
 
 const generateComponentMeta = (): void => {
   // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
@@ -24,6 +37,8 @@ const generateComponentMeta = (): void => {
     [propName: string]: string;
   }[];
   hasSlottedCss: boolean;
+  hasSkeleton: boolean;
+  skeletonProps?: string[];
   styling: 'jss' | 'scss' | 'hybrid';
 };`,
     `type ComponentsMeta = { [key in TagName]: ComponentMeta };`,
@@ -39,6 +54,8 @@ const generateComponentMeta = (): void => {
       [propName: string]: string;
     }[];
     hasSlottedCss: boolean;
+    hasSkeleton: boolean;
+    skeletonProps?: string[];
     styling: 'jss' | 'scss' | 'hybrid';
   };
 
@@ -74,6 +91,7 @@ const generateComponentMeta = (): void => {
       atomicFocusableTagNames.some((x) => source.includes(`PrefixedTagNames.${camelCase(x)}`));
     const isThemeable = source.includes('public theme?: Theme');
     const hasSlottedCss = source.includes('attachSlottedCss');
+    const hasSkeleton = TAG_NAMES_WITH_SKELETON.includes(tagName);
     const usesScss = source.includes('styleUrl:');
     const usesJss = source.includes('attachComponentCss');
     const styling = usesScss && usesJss ? 'hybrid' : usesJss ? 'jss' : 'scss';
@@ -109,6 +127,16 @@ const generateComponentMeta = (): void => {
       requiredProps = [{ [requiredProp]: propType }];
     }
 
+    const skeletonProps: ComponentMeta['skeletonProps'] = [];
+    if (hasSkeleton) {
+      SIZE_RELEVANT_PROPS.forEach((sizeRelevantProp) => {
+        const [match] = new RegExp(`@Prop\\(\\) public ${sizeRelevantProp}\\?: .+;`).exec(source) ?? [];
+        if (match) {
+          skeletonProps.push(sizeRelevantProp);
+        }
+      });
+    }
+
     result[tagName] = {
       isDelegatingFocus,
       isFocusable,
@@ -117,6 +145,8 @@ const generateComponentMeta = (): void => {
       requiredChild,
       requiredProps,
       hasSlottedCss,
+      hasSkeleton,
+      skeletonProps,
       styling,
     };
     return result;

@@ -1,7 +1,8 @@
-import { Styles } from 'jss';
+import { JssStyle } from 'jss';
 import { pxToRemWithUnit } from '../common-styles';
+import { getThemedColors } from '../colors';
 
-export const SKELETON_COLOR_THEME_PLACEHOLDER = 'PDS_REPLACE_WITH_THEME_COLOR';
+export const PDS_SKELETON_CLASS_PREFIX = 'PDS-Skeleton--';
 
 // Firefox has the widest input field with 192px
 // to prevent layout shift when shadow dom is appended
@@ -22,21 +23,23 @@ export const getElementBackgroundGradient = (elHeight: number) => {
   const bottomGradientSpacing = `${
     elHeight > SMALL_TEXT_HEIGHT ? elHeight - LINE_HEIGHT_SPACING : elHeight - LINE_HEIGHT_SPACING_SMALL
   }px`;
-  return `linear-gradient(transparent, transparent ${topGradientSpacing}, ${SKELETON_COLOR_THEME_PLACEHOLDER} ${topGradientSpacing}, ${SKELETON_COLOR_THEME_PLACEHOLDER} ${bottomGradientSpacing}, transparent ${bottomGradientSpacing}, transparent ${elHeight}px)`;
+  return `linear-gradient(transparent, transparent ${topGradientSpacing}, currentColor ${topGradientSpacing}, currentColor ${bottomGradientSpacing}, transparent ${bottomGradientSpacing}, transparent ${elHeight}px)`;
 };
+// TODO: remove color theme placeholder, use currentColor, adjust color in before/after based on theme property OR skeletonClass
+// TODO: check return types (check focus jss styles)
 
-export const getPseudoElementStyles = (): Styles => {
+export const getPseudoElementStyles = (): JssStyle => {
   return {
     position: 'absolute',
     left: '0',
     content: '""',
     visibility: 'visible',
-    background: `${SKELETON_COLOR_THEME_PLACEHOLDER}`,
+    background: 'currentColor',
     animation: 'opacity 1.5s ease-in-out infinite',
   };
 };
 
-export const getBaseSkeletonStyles = (withLabel = true, elementHeight = ELEMENT_SKELETON_HEIGHT): Styles => {
+export const getBaseSkeletonStyles = (withLabel = true, elementHeight = ELEMENT_SKELETON_HEIGHT): JssStyle => {
   return {
     position: 'relative',
     color: 'transparent',
@@ -67,3 +70,20 @@ export const getBaseSkeletonStyles = (withLabel = true, elementHeight = ELEMENT_
     },
   };
 };
+
+const pseudoElementSelectors = ['&::before', '&::after'];
+type PseudoElementSelectors = typeof pseudoElementSelectors;
+
+export const extendPseudoWithTheme = (
+  stylesFunction: () => JssStyle,
+  theme: 'light' | 'dark',
+  pseudosToExtend: PseudoElementSelectors = ['&::before', '&::after']
+): JssStyle => ({
+  ...stylesFunction(),
+  ...pseudosToExtend.map((pseudo) => ({
+    [pseudo]: {
+      ...stylesFunction()[pseudo],
+      color: getThemedColors(theme).contrastMediumColor,
+    },
+  })),
+});
