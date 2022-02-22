@@ -26,8 +26,5 @@
   "bugs": {
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
-  "main": "index.js",
-  "dependencies": {
-    "@porsche-design-system/partials": "file:partials"
-  }
+  "main": "index.js"
 }
