@@ -4,8 +4,5 @@
   "main": "index.js",
   "module": "esm/index.js",
   "types": "index.d.ts",
-  "sideEffects": false,
-  "dependencies": {
-    "react": "^17.0.2"
-  }
+  "sideEffects": false
 }
