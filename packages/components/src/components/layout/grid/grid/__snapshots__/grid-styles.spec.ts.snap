@@ -1,25 +1,332 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for direction: "column" 1`] = `":host{display:flex !important;flex:auto !important;width:auto !important;flex-direction:column !important;flex-wrap:wrap !important;margin-left:-0.5rem !important;margin-right:-0.5rem !important}@media(min-width:760px){:host{margin-left:-0.75rem !important;margin-right:-0.75rem !important}}@media(min-width:1000px){:host{margin-left:-1.125rem !important;margin-right:-1.125rem !important}}"`;
+exports[`getComponentCss() should return correct css for direction: "column" 1`] = `
+":host {
+  display:flex !important;
+  flex:auto !important;
+  width:auto !important;
+  flex-direction:column !important;
+  flex-wrap:wrap !important;
+  margin-left:-0.5rem !important;
+  margin-right:-0.5rem !important;
+}
+@media(min-width:760px) {
+  :host {
+    margin-left:-0.75rem !important;
+    margin-right:-0.75rem !important;
+  }
+}
 
-exports[`getComponentCss() should return correct css for direction: "column-reverse" 1`] = `":host{display:flex !important;flex:auto !important;width:auto !important;flex-direction:column-reverse !important;flex-wrap:wrap !important;margin-left:-0.5rem !important;margin-right:-0.5rem !important}@media(min-width:760px){:host{margin-left:-0.75rem !important;margin-right:-0.75rem !important}}@media(min-width:1000px){:host{margin-left:-1.125rem !important;margin-right:-1.125rem !important}}"`;
+@media(min-width:1000px) {
+  :host {
+    margin-left:-1.125rem !important;
+    margin-right:-1.125rem !important;
+  }
+}
+"
+`;
 
-exports[`getComponentCss() should return correct css for direction: "row" 1`] = `":host{display:flex !important;flex:auto !important;width:auto !important;flex-direction:row !important;flex-wrap:wrap !important;margin-left:-0.5rem !important;margin-right:-0.5rem !important}@media(min-width:760px){:host{margin-left:-0.75rem !important;margin-right:-0.75rem !important}}@media(min-width:1000px){:host{margin-left:-1.125rem !important;margin-right:-1.125rem !important}}"`;
+exports[`getComponentCss() should return correct css for direction: "column-reverse" 1`] = `
+":host {
+  display:flex !important;
+  flex:auto !important;
+  width:auto !important;
+  flex-direction:column-reverse !important;
+  flex-wrap:wrap !important;
+  margin-left:-0.5rem !important;
+  margin-right:-0.5rem !important;
+}
+@media(min-width:760px) {
+  :host {
+    margin-left:-0.75rem !important;
+    margin-right:-0.75rem !important;
+  }
+}
 
-exports[`getComponentCss() should return correct css for direction: "row-reverse" 1`] = `":host{display:flex !important;flex:auto !important;width:auto !important;flex-direction:row-reverse !important;flex-wrap:wrap !important;margin-left:-0.5rem !important;margin-right:-0.5rem !important}@media(min-width:760px){:host{margin-left:-0.75rem !important;margin-right:-0.75rem !important}}@media(min-width:1000px){:host{margin-left:-1.125rem !important;margin-right:-1.125rem !important}}"`;
+@media(min-width:1000px) {
+  :host {
+    margin-left:-1.125rem !important;
+    margin-right:-1.125rem !important;
+  }
+}
+"
+`;
 
-exports[`getComponentCss() should return correct css for direction: {"base":"column","xs":"row","s":"column","m":"row","l":"column","xl":"row"} 1`] = `":host{display:flex !important;flex:auto !important;width:auto !important;flex-direction:column !important;flex-wrap:wrap !important;margin-left:-0.5rem !important;margin-right:-0.5rem !important}@media(min-width:480px){:host{flex-direction:row !important}}@media(min-width:760px){:host{flex-direction:column !important;margin-left:-0.75rem !important;margin-right:-0.75rem !important}}@media(min-width:1000px){:host{flex-direction:row !important;margin-left:-1.125rem !important;margin-right:-1.125rem !important}}@media(min-width:1300px){:host{flex-direction:column !important}}@media(min-width:1760px){:host{flex-direction:row !important}}"`;
+exports[`getComponentCss() should return correct css for direction: "row" 1`] = `
+":host {
+  display:flex !important;
+  flex:auto !important;
+  width:auto !important;
+  flex-direction:row !important;
+  flex-wrap:wrap !important;
+  margin-left:-0.5rem !important;
+  margin-right:-0.5rem !important;
+}
+@media(min-width:760px) {
+  :host {
+    margin-left:-0.75rem !important;
+    margin-right:-0.75rem !important;
+  }
+}
 
-exports[`getComponentCss() should return correct css for gutter: {"base":16,"xs":24,"s":36,"m":16,"l":24,"xl":36} 1`] = `":host{display:flex !important;flex:auto !important;width:auto !important;flex-direction:row !important;flex-wrap:wrap !important;margin-left:-0.5rem !important;margin-right:-0.5rem !important}@media(min-width:480px){:host{margin-left:-0.75rem !important;margin-right:-0.75rem !important}}@media(min-width:760px){:host{margin-left:-1.125rem !important;margin-right:-1.125rem !important}}@media(min-width:1000px){:host{margin-left:-0.5rem !important;margin-right:-0.5rem !important}}@media(min-width:1300px){:host{margin-left:-0.75rem !important;margin-right:-0.75rem !important}}@media(min-width:1760px){:host{margin-left:-1.125rem !important;margin-right:-1.125rem !important}}"`;
+@media(min-width:1000px) {
+  :host {
+    margin-left:-1.125rem !important;
+    margin-right:-1.125rem !important;
+  }
+}
+"
+`;
 
-exports[`getComponentCss() should return correct css for gutter: 16 1`] = `":host{display:flex !important;flex:auto !important;width:auto !important;flex-direction:row !important;flex-wrap:wrap !important;margin-left:-0.5rem !important;margin-right:-0.5rem !important}"`;
+exports[`getComponentCss() should return correct css for direction: "row-reverse" 1`] = `
+":host {
+  display:flex !important;
+  flex:auto !important;
+  width:auto !important;
+  flex-direction:row-reverse !important;
+  flex-wrap:wrap !important;
+  margin-left:-0.5rem !important;
+  margin-right:-0.5rem !important;
+}
+@media(min-width:760px) {
+  :host {
+    margin-left:-0.75rem !important;
+    margin-right:-0.75rem !important;
+  }
+}
 
-exports[`getComponentCss() should return correct css for gutter: 24 1`] = `":host{display:flex !important;flex:auto !important;width:auto !important;flex-direction:row !important;flex-wrap:wrap !important;margin-left:-0.75rem !important;margin-right:-0.75rem !important}"`;
+@media(min-width:1000px) {
+  :host {
+    margin-left:-1.125rem !important;
+    margin-right:-1.125rem !important;
+  }
+}
+"
+`;
 
-exports[`getComponentCss() should return correct css for gutter: 36 1`] = `":host{display:flex !important;flex:auto !important;width:auto !important;flex-direction:row !important;flex-wrap:wrap !important;margin-left:-1.125rem !important;margin-right:-1.125rem !important}"`;
+exports[`getComponentCss() should return correct css for direction: {"base":"column","xs":"row","s":"column","m":"row","l":"column","xl":"row"} 1`] = `
+":host {
+  display:flex !important;
+  flex:auto !important;
+  width:auto !important;
+  flex-direction:column !important;
+  flex-wrap:wrap !important;
+  margin-left:-0.5rem !important;
+  margin-right:-0.5rem !important;
+}
+@media(min-width:480px) {
+  :host {
+    flex-direction:row !important;
+  }
+}
 
-exports[`getComponentCss() should return correct css for wrap: "nowrap" 1`] = `":host{display:flex !important;flex:auto !important;width:auto !important;flex-direction:row !important;flex-wrap:nowrap !important;margin-left:-0.5rem !important;margin-right:-0.5rem !important}@media(min-width:760px){:host{margin-left:-0.75rem !important;margin-right:-0.75rem !important}}@media(min-width:1000px){:host{margin-left:-1.125rem !important;margin-right:-1.125rem !important}}"`;
+@media(min-width:760px) {
+  :host {
+    flex-direction:column !important;
+    margin-left:-0.75rem !important;
+    margin-right:-0.75rem !important;
+  }
+}
 
-exports[`getComponentCss() should return correct css for wrap: "wrap" 1`] = `":host{display:flex !important;flex:auto !important;width:auto !important;flex-direction:row !important;flex-wrap:wrap !important;margin-left:-0.5rem !important;margin-right:-0.5rem !important}@media(min-width:760px){:host{margin-left:-0.75rem !important;margin-right:-0.75rem !important}}@media(min-width:1000px){:host{margin-left:-1.125rem !important;margin-right:-1.125rem !important}}"`;
+@media(min-width:1000px) {
+  :host {
+    flex-direction:row !important;
+    margin-left:-1.125rem !important;
+    margin-right:-1.125rem !important;
+  }
+}
 
-exports[`getComponentCss() should return correct css for wrap: {"base":"wrap","xs":"nowrap","s":"wrap","m":"nowrap","l":"wrap","xl":"nowrap"} 1`] = `":host{display:flex !important;flex:auto !important;width:auto !important;flex-direction:row !important;flex-wrap:wrap !important;margin-left:-0.5rem !important;margin-right:-0.5rem !important}@media(min-width:480px){:host{flex-wrap:nowrap !important}}@media(min-width:760px){:host{flex-wrap:wrap !important;margin-left:-0.75rem !important;margin-right:-0.75rem !important}}@media(min-width:1000px){:host{flex-wrap:nowrap !important;margin-left:-1.125rem !important;margin-right:-1.125rem !important}}@media(min-width:1300px){:host{flex-wrap:wrap !important}}@media(min-width:1760px){:host{flex-wrap:nowrap !important}}"`;
+@media(min-width:1300px) {
+  :host {
+    flex-direction:column !important;
+  }
+}
+
+@media(min-width:1760px) {
+  :host {
+    flex-direction:row !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for gutter: {"base":16,"xs":24,"s":36,"m":16,"l":24,"xl":36} 1`] = `
+":host {
+  display:flex !important;
+  flex:auto !important;
+  width:auto !important;
+  flex-direction:row !important;
+  flex-wrap:wrap !important;
+  margin-left:-0.5rem !important;
+  margin-right:-0.5rem !important;
+}
+@media(min-width:480px) {
+  :host {
+    margin-left:-0.75rem !important;
+    margin-right:-0.75rem !important;
+  }
+}
+
+@media(min-width:760px) {
+  :host {
+    margin-left:-1.125rem !important;
+    margin-right:-1.125rem !important;
+  }
+}
+
+@media(min-width:1000px) {
+  :host {
+    margin-left:-0.5rem !important;
+    margin-right:-0.5rem !important;
+  }
+}
+
+@media(min-width:1300px) {
+  :host {
+    margin-left:-0.75rem !important;
+    margin-right:-0.75rem !important;
+  }
+}
+
+@media(min-width:1760px) {
+  :host {
+    margin-left:-1.125rem !important;
+    margin-right:-1.125rem !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for gutter: 16 1`] = `
+":host {
+  display:flex !important;
+  flex:auto !important;
+  width:auto !important;
+  flex-direction:row !important;
+  flex-wrap:wrap !important;
+  margin-left:-0.5rem !important;
+  margin-right:-0.5rem !important;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for gutter: 24 1`] = `
+":host {
+  display:flex !important;
+  flex:auto !important;
+  width:auto !important;
+  flex-direction:row !important;
+  flex-wrap:wrap !important;
+  margin-left:-0.75rem !important;
+  margin-right:-0.75rem !important;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for gutter: 36 1`] = `
+":host {
+  display:flex !important;
+  flex:auto !important;
+  width:auto !important;
+  flex-direction:row !important;
+  flex-wrap:wrap !important;
+  margin-left:-1.125rem !important;
+  margin-right:-1.125rem !important;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for wrap: "nowrap" 1`] = `
+":host {
+  display:flex !important;
+  flex:auto !important;
+  width:auto !important;
+  flex-direction:row !important;
+  flex-wrap:nowrap !important;
+  margin-left:-0.5rem !important;
+  margin-right:-0.5rem !important;
+}
+@media(min-width:760px) {
+  :host {
+    margin-left:-0.75rem !important;
+    margin-right:-0.75rem !important;
+  }
+}
+
+@media(min-width:1000px) {
+  :host {
+    margin-left:-1.125rem !important;
+    margin-right:-1.125rem !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for wrap: "wrap" 1`] = `
+":host {
+  display:flex !important;
+  flex:auto !important;
+  width:auto !important;
+  flex-direction:row !important;
+  flex-wrap:wrap !important;
+  margin-left:-0.5rem !important;
+  margin-right:-0.5rem !important;
+}
+@media(min-width:760px) {
+  :host {
+    margin-left:-0.75rem !important;
+    margin-right:-0.75rem !important;
+  }
+}
+
+@media(min-width:1000px) {
+  :host {
+    margin-left:-1.125rem !important;
+    margin-right:-1.125rem !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for wrap: {"base":"wrap","xs":"nowrap","s":"wrap","m":"nowrap","l":"wrap","xl":"nowrap"} 1`] = `
+":host {
+  display:flex !important;
+  flex:auto !important;
+  width:auto !important;
+  flex-direction:row !important;
+  flex-wrap:wrap !important;
+  margin-left:-0.5rem !important;
+  margin-right:-0.5rem !important;
+}
+@media(min-width:480px) {
+  :host {
+    flex-wrap:nowrap !important;
+  }
+}
+
+@media(min-width:760px) {
+  :host {
+    flex-wrap:wrap !important;
+    margin-left:-0.75rem !important;
+    margin-right:-0.75rem !important;
+  }
+}
+
+@media(min-width:1000px) {
+  :host {
+    flex-wrap:nowrap !important;
+    margin-left:-1.125rem !important;
+    margin-right:-1.125rem !important;
+  }
+}
+
+@media(min-width:1300px) {
+  :host {
+    flex-wrap:wrap !important;
+  }
+}
+
+@media(min-width:1760px) {
+  :host {
+    flex-wrap:nowrap !important;
+  }
+}
+"
+`;
