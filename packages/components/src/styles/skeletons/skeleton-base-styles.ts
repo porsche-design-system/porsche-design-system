@@ -75,15 +75,20 @@ const pseudoElementSelectors = ['&::before', '&::after'];
 type PseudoElementSelectors = typeof pseudoElementSelectors;
 
 export const extendPseudoWithTheme = (
-  stylesFunction: () => JssStyle,
   theme: 'light' | 'dark',
+  stylesFunction: () => JssStyle = () => ({}),
   pseudosToExtend: PseudoElementSelectors = ['&::before', '&::after']
-): JssStyle => ({
-  ...stylesFunction(),
-  ...pseudosToExtend.map((pseudo) => ({
-    [pseudo]: {
-      ...stylesFunction()[pseudo],
-      color: getThemedColors(theme).contrastMediumColor,
-    },
-  })),
-});
+): JssStyle => {
+  return {
+    ...stylesFunction(),
+    ...pseudosToExtend.reduce((prevValue: JssStyle, pseudo) => {
+      return {
+        ...prevValue,
+        [pseudo]: {
+          ...stylesFunction()[pseudo],
+          color: getThemedColors(theme).contrastMediumColor,
+        },
+      };
+    }, {} as JssStyle),
+  };
+};
