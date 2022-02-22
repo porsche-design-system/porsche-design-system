@@ -3507,14 +3507,6 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/browser-notification/-/@porsche-design-system/browser-notification-4.1.1.tgz#f553e114b2fa4903dfe38ea4add682d13a47ec72"
   integrity sha1-9VPhFLL6SQPf446krdaC0TpH7HI=
 
-"@porsche-design-system/partials@file:packages/components-js/dist/components-wrapper/partials":
-  version "0.0.0"
-  dependencies:
-    "@porsche-design-system/assets" "4.0.0"
-    "@porsche-design-system/shared" "0.0.0"
-    "@porsche-design-system/styles" "0.0.0"
-    react "^17.0.2"
-
 "@porsche-design-system/prettier-config@^1.0.0":
   version "1.0.0"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/prettier-config/-/@porsche-design-system/prettier-config-1.0.0.tgz#3ab128c42d98cb049ffc0b141362f6963e0a93d7"
