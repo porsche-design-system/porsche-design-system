@@ -2,6 +2,8 @@ import type { TagName } from '@porsche-design-system/shared';
 import { camelCase, paramCase, pascalCase } from 'change-case';
 import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
+import { getComponentMeta } from '@porsche-design-system/shared';
+import { PDS_SKELETON_CLASS_PREFIX } from '../../src/styles/skeletons';
 
 export class ReactWrapperGenerator extends AbstractWrapperGenerator {
   protected packageDir = 'components-react';
@@ -100,9 +102,20 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
           ];
     const componentEffects = propsToSync.length ? componentEffectsArr.join('\n    ') : '';
 
+    let skeletonClassNames: string = '';
+
+    if (getComponentMeta(component).hasSkeleton) {
+      skeletonClassNames = getComponentMeta(component)
+        .skeletonProps.map(
+          (prop) => `\${prop ? ' ${PDS_SKELETON_CLASS_PREFIX}${paramCase(prop)}-${JSON.stringify(prop)}' : ''}`
+        )
+        .join('');
+    }
+    const classNameWithSkeleton: string = `\${className ?? ''}${skeletonClassNames}`;
+
     const componentPropsArr: string[] = [
       '...rest',
-      'class: useMergedClass(elementRef, className)',
+      `class: useMergedClass(elementRef, ${classNameWithSkeleton}`,
       'ref: syncRef(elementRef, ref)',
     ];
 
