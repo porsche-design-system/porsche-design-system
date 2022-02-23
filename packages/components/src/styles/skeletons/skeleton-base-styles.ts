@@ -8,23 +8,20 @@ export const PDS_SKELETON_CLASS_PREFIX = 'PDS-Skeleton--';
 // to prevent layout shift when shadow dom is appended
 export const BUTTON_LINK_SKELETON_WIDTH = 192;
 
-export const ELEMENT_SKELETON_HEIGHT = 48;
-export const LABEL_HEIGHT = 24;
-export const LABEL_HEIGHT_WITH_SPACING = 28;
-export const LINE_HEIGHT_SPACING = 6;
-export const LINE_HEIGHT_SPACING_SMALL = 4;
-export const SMALL_TEXT_HEIGHT = 28;
+export const ELEMENT_SKELETON_DIMENSION = 48;
+const LABEL_HEIGHT = 24;
+const LABEL_HEIGHT_WITH_SPACING = 28;
+const LABEL_HEIGHT_SPACING = 4;
 
 export const getSkeletonElementHeight = (height: number, withLabel = true): string =>
   withLabel ? pxToRemWithUnit(height + LABEL_HEIGHT_WITH_SPACING) : pxToRemWithUnit(height);
 
-export const getElementBackgroundGradient = (elHeight: number) => {
-  const topGradientSpacing = `${elHeight > SMALL_TEXT_HEIGHT ? LINE_HEIGHT_SPACING : LINE_HEIGHT_SPACING_SMALL}px`;
-  const bottomGradientSpacing = `${
-    elHeight > SMALL_TEXT_HEIGHT ? elHeight - LINE_HEIGHT_SPACING : elHeight - LINE_HEIGHT_SPACING_SMALL
-  }px`;
+export const getElementBackgroundGradient = (elHeight: number, topGradientSpacing = LABEL_HEIGHT_SPACING) => {
+  const topGradientSpacing = `${topGradientSpacing}px`;
+  const bottomGradientSpacing = `${elHeight - topGradientSpacing}px`;
   return `linear-gradient(transparent, transparent ${topGradientSpacing}, currentColor ${topGradientSpacing}, currentColor ${bottomGradientSpacing}, transparent ${bottomGradientSpacing}, transparent ${elHeight}px)`;
 };
+
 // TODO: remove color theme placeholder, use currentColor, adjust color in before/after based on theme property OR skeletonClass
 // TODO: check return types (check focus jss styles)
 
@@ -39,7 +36,7 @@ export const getPseudoElementStyles = (): JssStyle => {
   };
 };
 
-export const getBaseSkeletonStyles = (withLabel = true, elementHeight = ELEMENT_SKELETON_HEIGHT): JssStyle => {
+export const getBaseSkeletonStyles = (withLabel = true, elementHeight = ELEMENT_SKELETON_DIMENSION): JssStyle => {
   return {
     position: 'relative',
     color: 'transparent',
@@ -71,14 +68,17 @@ export const getBaseSkeletonStyles = (withLabel = true, elementHeight = ELEMENT_
   };
 };
 
-const pseudoElementSelectors = ['&::before', '&::after'];
-type PseudoElementSelectors = typeof pseudoElementSelectors;
+const PSEUDO_ELEMENT_SELECTORS = ['&::before', '&::after'] as const;
+type PseudoElementSelectorsType = typeof PSEUDO_ELEMENT_SELECTORS[number];
 
-export const extendPseudoWithTheme = (
-  theme: 'light' | 'dark',
-  stylesFunction: () => JssStyle = () => ({}),
-  pseudosToExtend: PseudoElementSelectors = ['&::before', '&::after']
-): JssStyle => {
+type ExtendPseudoWithThemeOptions = {
+  theme?: 'light' | 'dark';
+  stylesFunction?: () => JssStyle;
+  pseudosToExtend?: PseudoElementSelectorsType[];
+};
+export const extendPseudoWithTheme = (opts?: ExtendPseudoWithThemeOptions): JssStyle => {
+  const { theme = 'light', stylesFunction = () => ({}), pseudosToExtend = ['&::after'] } = opts ?? {};
+
   return {
     ...stylesFunction(),
     ...pseudosToExtend.reduce((prevValue: JssStyle, pseudo) => {

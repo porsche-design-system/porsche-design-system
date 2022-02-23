@@ -1,5 +1,11 @@
 import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
-import { BUTTON_LINK_SKELETON_WIDTH, getBaseSkeletonStyles } from './';
+import {
+  BUTTON_LINK_SKELETON_WIDTH,
+  ELEMENT_SKELETON_DIMENSION,
+  extendPseudoWithTheme,
+  getBaseSkeletonStyles,
+  PDS_SKELETON_CLASS_PREFIX,
+} from './';
 import { pxToRemWithUnit } from '../common-styles';
 
 export const getButtonLinkSkeletonCss = (): string => {
@@ -7,9 +13,15 @@ export const getButtonLinkSkeletonCss = (): string => {
     '@global': {
       'p-button, p-link': {
         '&:not(.hydrated)': {
-          ...getBaseSkeletonStyles(false),
+          ...extendPseudoWithTheme({ stylesFunction: () => getBaseSkeletonStyles(false) }),
           display: 'inline-flex',
           minWidth: pxToRemWithUnit(BUTTON_LINK_SKELETON_WIDTH),
+          [`&[hide-label=true], &.${PDS_SKELETON_CLASS_PREFIX}hide-label`]: {
+            minWidth: pxToRemWithUnit(ELEMENT_SKELETON_DIMENSION),
+          },
+          [`&[theme=dark], &.${PDS_SKELETON_CLASS_PREFIX}theme-dark`]: {
+            ...extendPseudoWithTheme({ theme: 'dark' }),
+          },
         },
       },
     },
