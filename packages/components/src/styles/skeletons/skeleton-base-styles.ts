@@ -17,9 +17,9 @@ export const getSkeletonElementHeight = (height: number, withLabel = true): stri
   withLabel ? pxToRemWithUnit(height + LABEL_HEIGHT_WITH_SPACING) : pxToRemWithUnit(height);
 
 export const getElementBackgroundGradient = (elHeight: number, topGradientSpacing = LABEL_HEIGHT_SPACING) => {
-  const topGradientSpacing = `${topGradientSpacing}px`;
-  const bottomGradientSpacing = `${elHeight - topGradientSpacing}px`;
-  return `linear-gradient(transparent, transparent ${topGradientSpacing}, currentColor ${topGradientSpacing}, currentColor ${bottomGradientSpacing}, transparent ${bottomGradientSpacing}, transparent ${elHeight}px)`;
+  const topGradientSpacingPx = `${topGradientSpacing}px`;
+  const bottomGradientSpacingPx = `${elHeight - topGradientSpacing}px`;
+  return `linear-gradient(transparent, transparent ${topGradientSpacingPx}, currentColor ${topGradientSpacingPx}, currentColor ${bottomGradientSpacingPx}, transparent ${bottomGradientSpacingPx}, transparent ${elHeight}px)`;
 };
 
 // TODO: remove color theme placeholder, use currentColor, adjust color in before/after based on theme property OR skeletonClass
