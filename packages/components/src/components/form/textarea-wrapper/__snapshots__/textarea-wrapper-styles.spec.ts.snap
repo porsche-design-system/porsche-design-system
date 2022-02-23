@@ -87,7 +87,7 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text\\\\:hover~::slotted(textarea:not(:disabled):not([readonly])), \\\\.counter:hover~::slotted(textarea:not(:disabled):not([readonly])) {
+.label__text:hover~::slotted(textarea:not(:disabled):not([readonly])), .counter:hover~::slotted(textarea:not(:disabled):not([readonly])) {
   border-color: #000 !important;
 }
 .required {
@@ -381,7 +381,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text\\\\:hover~::slotted(textarea:not(:disabled):not([readonly])), .label__text\\\\:hover ::slotted(textarea:hover:not(:disabled):not([readonly])), \\\\.counter:hover~::slotted(textarea:not(:disabled):not([readonly])), \\\\.counter:hover ::slotted(textarea:hover:not(:disabled):not([readonly])) {
+.label__text:hover~::slotted(textarea:not(:disabled):not([readonly])), .label__text:hover ::slotted(textarea:hover:not(:disabled):not([readonly])), .counter:hover~::slotted(textarea:not(:disabled):not([readonly])), .counter:hover ::slotted(textarea:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
 }
 .required {
@@ -603,7 +603,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text\\\\:hover~::slotted(textarea:not(:disabled):not([readonly])), \\\\.counter:hover~::slotted(textarea:not(:disabled):not([readonly])) {
+.label__text:hover~::slotted(textarea:not(:disabled):not([readonly])), .counter:hover~::slotted(textarea:not(:disabled):not([readonly])) {
   border-color: #000 !important;
 }
 .required {
@@ -825,7 +825,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text\\\\:hover~::slotted(textarea:not(:disabled):not([readonly])), .label__text\\\\:hover ::slotted(textarea:hover:not(:disabled):not([readonly])), \\\\.counter:hover~::slotted(textarea:not(:disabled):not([readonly])), \\\\.counter:hover ::slotted(textarea:hover:not(:disabled):not([readonly])) {
+.label__text:hover~::slotted(textarea:not(:disabled):not([readonly])), .label__text:hover ::slotted(textarea:hover:not(:disabled):not([readonly])), .counter:hover~::slotted(textarea:not(:disabled):not([readonly])), .counter:hover ::slotted(textarea:hover:not(:disabled):not([readonly])) {
   border-color: #014d0c !important;
 }
 .required {
@@ -1050,7 +1050,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text\\\\:hover~::slotted(textarea:not(:disabled):not([readonly])), .label__text\\\\:hover ::slotted(textarea:hover:not(:disabled):not([readonly])), \\\\.counter:hover~::slotted(textarea:not(:disabled):not([readonly])), \\\\.counter:hover ::slotted(textarea:hover:not(:disabled):not([readonly])) {
+.label__text:hover~::slotted(textarea:not(:disabled):not([readonly])), .label__text:hover ::slotted(textarea:hover:not(:disabled):not([readonly])), .counter:hover~::slotted(textarea:not(:disabled):not([readonly])), .counter:hover ::slotted(textarea:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
 }
 .required {
@@ -1274,7 +1274,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text\\\\:hover~::slotted(textarea:not(:disabled):not([readonly])), \\\\.counter:hover~::slotted(textarea:not(:disabled):not([readonly])) {
+.label__text:hover~::slotted(textarea:not(:disabled):not([readonly])), .counter:hover~::slotted(textarea:not(:disabled):not([readonly])) {
   border-color: #000 !important;
 }
 .required {
@@ -1498,7 +1498,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text\\\\:hover~::slotted(textarea:not(:disabled):not([readonly])), .label__text\\\\:hover ::slotted(textarea:hover:not(:disabled):not([readonly])), \\\\.counter:hover~::slotted(textarea:not(:disabled):not([readonly])), \\\\.counter:hover ::slotted(textarea:hover:not(:disabled):not([readonly])) {
+.label__text:hover~::slotted(textarea:not(:disabled):not([readonly])), .label__text:hover ::slotted(textarea:hover:not(:disabled):not([readonly])), .counter:hover~::slotted(textarea:not(:disabled):not([readonly])), .counter:hover ::slotted(textarea:hover:not(:disabled):not([readonly])) {
   border-color: #014d0c !important;
 }
 .required {

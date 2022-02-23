@@ -49,14 +49,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 .root:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-:\\\\:slotted(.stretch-to-full-modal-width) {
+::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 4rem) !important;
   margin: 0 -2rem !important;
 }
-:\\\\:slotted(.stretch-to-full-modal-width:first-child) {
+::slotted(.stretch-to-full-modal-width:first-child) {
   margin-top: -2rem !important;
 }
-:\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
 .close {
@@ -71,14 +71,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   .root {
     padding: 2.5rem;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
     margin: 0 -2.5rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:first-child) {
+  ::slotted(.stretch-to-full-modal-width:first-child) {
     margin-top: -2.5rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
   }
 }
@@ -94,14 +94,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
     padding: 4rem;
     margin: 10vh 12rem;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 8rem) !important;
     margin: 0 -4rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:first-child) {
+  ::slotted(.stretch-to-full-modal-width:first-child) {
     margin-top: -4rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -4rem !important;
   }
 }
@@ -161,11 +161,11 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   padding: 0 0 1rem;
   margin: 0 2rem 0 0;
 }
-:\\\\:slotted(.stretch-to-full-modal-width) {
+::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 4rem) !important;
   margin: 0 -2rem !important;
 }
-:\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
 .close {
@@ -183,11 +183,11 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   .header {
     padding: 0 0 1.5rem;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
     margin: 0 -2.5rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
   }
 }
@@ -207,11 +207,11 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
     padding: 0 0 2rem;
     margin: 0;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 8rem) !important;
     margin: 0 -4rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -4rem !important;
   }
 }
@@ -270,11 +270,11 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 .header {
   padding: 0 0 1rem;
 }
-:\\\\:slotted(.stretch-to-full-modal-width) {
+::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 4rem) !important;
   margin: 0 -2rem !important;
 }
-:\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
 .close {
@@ -292,11 +292,11 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   .header {
     padding: 0 0 1.5rem;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
     margin: 0 -2.5rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
   }
 }
@@ -315,11 +315,11 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   .header {
     padding: 0 0 2rem;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 8rem) !important;
     margin: 0 -4rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -4rem !important;
   }
 }
@@ -375,14 +375,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 .root:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-:\\\\:slotted(.stretch-to-full-modal-width) {
+::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 4rem) !important;
   margin: 0 -2rem !important;
 }
-:\\\\:slotted(.stretch-to-full-modal-width:first-child) {
+::slotted(.stretch-to-full-modal-width:first-child) {
   margin-top: -2rem !important;
 }
-:\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
 .close {
@@ -397,14 +397,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   .root {
     padding: 2.5rem;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
     margin: 0 -2.5rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:first-child) {
+  ::slotted(.stretch-to-full-modal-width:first-child) {
     margin-top: -2.5rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
   }
 }
@@ -420,14 +420,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
     padding: 4rem;
     margin: 0;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 8rem) !important;
     margin: 0 -4rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:first-child) {
+  ::slotted(.stretch-to-full-modal-width:first-child) {
     margin-top: -4rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -4rem !important;
   }
 }
@@ -487,11 +487,11 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   padding: 0 0 1rem;
   margin: 0 2rem 0 0;
 }
-:\\\\:slotted(.stretch-to-full-modal-width) {
+::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 4rem) !important;
   margin: 0 -2rem !important;
 }
-:\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
 .close {
@@ -509,11 +509,11 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   .header {
     padding: 0 0 1.5rem;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
     margin: 0 -2.5rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
   }
 }
@@ -533,11 +533,11 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
     padding: 0 0 2rem;
     margin: 0;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 8rem) !important;
     margin: 0 -4rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -4rem !important;
   }
 }
@@ -593,14 +593,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 .root:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-:\\\\:slotted(.stretch-to-full-modal-width) {
+::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 4rem) !important;
   margin: 0 -2rem !important;
 }
-:\\\\:slotted(.stretch-to-full-modal-width:first-child) {
+::slotted(.stretch-to-full-modal-width:first-child) {
   margin-top: -2rem !important;
 }
-:\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
 .close {
@@ -615,14 +615,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   .root {
     padding: 2.5rem;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
     margin: 0 -2.5rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:first-child) {
+  ::slotted(.stretch-to-full-modal-width:first-child) {
     margin-top: -2.5rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
   }
 }
@@ -638,14 +638,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
     padding: 4rem;
     margin: 0;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 8rem) !important;
     margin: 0 -4rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:first-child) {
+  ::slotted(.stretch-to-full-modal-width:first-child) {
     margin-top: -4rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -4rem !important;
   }
 }
@@ -704,11 +704,11 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 .header {
   padding: 0 0 1rem;
 }
-:\\\\:slotted(.stretch-to-full-modal-width) {
+::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 4rem) !important;
   margin: 0 -2rem !important;
 }
-:\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
 .close {
@@ -726,11 +726,11 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   .header {
     padding: 0 0 1.5rem;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
     margin: 0 -2.5rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
   }
 }
@@ -749,11 +749,11 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   .header {
     padding: 0 0 2rem;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 8rem) !important;
     margin: 0 -4rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -4rem !important;
   }
 }
@@ -809,14 +809,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 .root:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-:\\\\:slotted(.stretch-to-full-modal-width) {
+::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 4rem) !important;
   margin: 0 -2rem !important;
 }
-:\\\\:slotted(.stretch-to-full-modal-width:first-child) {
+::slotted(.stretch-to-full-modal-width:first-child) {
   margin-top: -2rem !important;
 }
-:\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
 .close {
@@ -853,14 +853,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
     min-height: auto;
     margin: 7vh 7vw;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
     margin: 0 -2.5rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:first-child) {
+  ::slotted(.stretch-to-full-modal-width:first-child) {
     margin-top: -2.5rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
   }
 }
@@ -888,14 +888,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
     padding: 4rem;
     margin: 10vh 12rem;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 8rem) !important;
     margin: 0 -4rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:first-child) {
+  ::slotted(.stretch-to-full-modal-width:first-child) {
     margin-top: -4rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -4rem !important;
   }
 }
@@ -951,14 +951,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 .root:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-:\\\\:slotted(.stretch-to-full-modal-width) {
+::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 4rem) !important;
   margin: 0 -2rem !important;
 }
-:\\\\:slotted(.stretch-to-full-modal-width:first-child) {
+::slotted(.stretch-to-full-modal-width:first-child) {
   margin-top: -2rem !important;
 }
-:\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
 .close {
@@ -973,14 +973,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   .root {
     padding: 2.5rem;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
     margin: 0 -2.5rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:first-child) {
+  ::slotted(.stretch-to-full-modal-width:first-child) {
     margin-top: -2.5rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
   }
 }
@@ -996,14 +996,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
     padding: 4rem;
     margin: 10vh 12rem;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 8rem) !important;
     margin: 0 -4rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:first-child) {
+  ::slotted(.stretch-to-full-modal-width:first-child) {
     margin-top: -4rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -4rem !important;
   }
 }
@@ -1063,11 +1063,11 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   padding: 0 0 1rem;
   margin: 0 2rem 0 0;
 }
-:\\\\:slotted(.stretch-to-full-modal-width) {
+::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 4rem) !important;
   margin: 0 -2rem !important;
 }
-:\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
 .close {
@@ -1085,11 +1085,11 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   .header {
     padding: 0 0 1.5rem;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
     margin: 0 -2.5rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
   }
 }
@@ -1109,11 +1109,11 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
     padding: 0 0 2rem;
     margin: 0;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 8rem) !important;
     margin: 0 -4rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -4rem !important;
   }
 }
@@ -1172,11 +1172,11 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 .header {
   padding: 0 0 1rem;
 }
-:\\\\:slotted(.stretch-to-full-modal-width) {
+::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 4rem) !important;
   margin: 0 -2rem !important;
 }
-:\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
 .close {
@@ -1194,11 +1194,11 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   .header {
     padding: 0 0 1.5rem;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
     margin: 0 -2.5rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
   }
 }
@@ -1217,11 +1217,11 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   .header {
     padding: 0 0 2rem;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 8rem) !important;
     margin: 0 -4rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -4rem !important;
   }
 }
@@ -1277,14 +1277,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 .root:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-:\\\\:slotted(.stretch-to-full-modal-width) {
+::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 4rem) !important;
   margin: 0 -2rem !important;
 }
-:\\\\:slotted(.stretch-to-full-modal-width:first-child) {
+::slotted(.stretch-to-full-modal-width:first-child) {
   margin-top: -2rem !important;
 }
-:\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
 .close {
@@ -1299,14 +1299,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   .root {
     padding: 2.5rem;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
     margin: 0 -2.5rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:first-child) {
+  ::slotted(.stretch-to-full-modal-width:first-child) {
     margin-top: -2.5rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
   }
 }
@@ -1322,14 +1322,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
     padding: 4rem;
     margin: 0;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 8rem) !important;
     margin: 0 -4rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:first-child) {
+  ::slotted(.stretch-to-full-modal-width:first-child) {
     margin-top: -4rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -4rem !important;
   }
 }
@@ -1389,11 +1389,11 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   padding: 0 0 1rem;
   margin: 0 2rem 0 0;
 }
-:\\\\:slotted(.stretch-to-full-modal-width) {
+::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 4rem) !important;
   margin: 0 -2rem !important;
 }
-:\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
 .close {
@@ -1411,11 +1411,11 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   .header {
     padding: 0 0 1.5rem;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
     margin: 0 -2.5rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
   }
 }
@@ -1435,11 +1435,11 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
     padding: 0 0 2rem;
     margin: 0;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 8rem) !important;
     margin: 0 -4rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -4rem !important;
   }
 }
@@ -1495,14 +1495,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 .root:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-:\\\\:slotted(.stretch-to-full-modal-width) {
+::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 4rem) !important;
   margin: 0 -2rem !important;
 }
-:\\\\:slotted(.stretch-to-full-modal-width:first-child) {
+::slotted(.stretch-to-full-modal-width:first-child) {
   margin-top: -2rem !important;
 }
-:\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
 .close {
@@ -1517,14 +1517,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   .root {
     padding: 2.5rem;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
     margin: 0 -2.5rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:first-child) {
+  ::slotted(.stretch-to-full-modal-width:first-child) {
     margin-top: -2.5rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
   }
 }
@@ -1540,14 +1540,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
     padding: 4rem;
     margin: 0;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 8rem) !important;
     margin: 0 -4rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:first-child) {
+  ::slotted(.stretch-to-full-modal-width:first-child) {
     margin-top: -4rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -4rem !important;
   }
 }
@@ -1606,11 +1606,11 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 .header {
   padding: 0 0 1rem;
 }
-:\\\\:slotted(.stretch-to-full-modal-width) {
+::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 4rem) !important;
   margin: 0 -2rem !important;
 }
-:\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+::slotted(.stretch-to-full-modal-width:last-child) {
   margin-bottom: -2rem !important;
 }
 .close {
@@ -1628,11 +1628,11 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   .header {
     padding: 0 0 1.5rem;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 5rem) !important;
     margin: 0 -2.5rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -2.5rem !important;
   }
 }
@@ -1651,11 +1651,11 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   .header {
     padding: 0 0 2rem;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width) {
+  ::slotted(.stretch-to-full-modal-width) {
     width: calc(100% + 8rem) !important;
     margin: 0 -4rem !important;
   }
-  :\\\\:slotted(.stretch-to-full-modal-width:last-child) {
+  ::slotted(.stretch-to-full-modal-width:last-child) {
     margin-bottom: -4rem !important;
   }
 }
