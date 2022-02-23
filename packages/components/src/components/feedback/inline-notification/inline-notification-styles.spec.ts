@@ -1,9 +1,9 @@
 import {
-  getCloseIconStyles,
+  getCloseIconStyle,
   getComponentCss,
-  getNotificationContentStyles,
-  getNotificationIconStyles,
-  getNotificationRootStyles,
+  getNotificationContentStyle,
+  getNotificationIconStyle,
+  getNotificationRootStyle,
   getSlottedCss,
 } from './inline-notification-styles';
 import type { InlineNotificationState } from './inline-notification-utils';
@@ -42,7 +42,7 @@ describe('getSlottedCss()', () => {
 });
 
 describe('getNotificationRootStyles()', () => {
-  it.each<Parameters<typeof getNotificationRootStyles>>([
+  it.each<Parameters<typeof getNotificationRootStyle>>([
     ['neutral', 'light'],
     ['success', 'light'],
     ['error', 'light'],
@@ -52,7 +52,7 @@ describe('getNotificationRootStyles()', () => {
     ['error', 'dark'],
     ['warning', 'dark'],
   ])('should return correct JssStyle for state: %s and theme: %s', (...args) => {
-    expect(getNotificationRootStyles(...args)).toMatchSnapshot();
+    expect(getNotificationRootStyle(...args)).toMatchSnapshot();
   });
 });
 
@@ -60,19 +60,19 @@ describe('getNotificationIconStyles()', () => {
   it.each<InlineNotificationState>(['neutral', 'success', 'error', 'warning'])(
     'should return correct JssStyle for state: %s ',
     (state) => {
-      expect(getNotificationIconStyles(state)).toMatchSnapshot();
+      expect(getNotificationIconStyle(state)).toMatchSnapshot();
     }
   );
 });
 
 describe('getNotificationContentStyles()', () => {
   it('should return correct JssStyle', () => {
-    expect(getNotificationContentStyles()).toMatchSnapshot();
+    expect(getNotificationContentStyle()).toMatchSnapshot();
   });
 });
 
 describe('getCloseIconStyles()', () => {
   it('should return correct JssStyle', () => {
-    expect(getCloseIconStyles()).toMatchSnapshot();
+    expect(getCloseIconStyle()).toMatchSnapshot();
   });
 });

@@ -19,9 +19,9 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   return getCss({
-    ':host': addImportantToEachRule(getNotificationRootStyles(state, theme)),
-    icon: getNotificationIconStyles(state),
-    content: getNotificationContentStyles(),
+    ':host': addImportantToEachRule(getNotificationRootStyle(state, theme)),
+    icon: getNotificationIconStyle(state),
+    content: getNotificationContentStyle(),
     ...(hasAction && {
       action: {
         gridColumnStart: 1,
@@ -33,7 +33,7 @@ export const getComponentCss = (
         },
       },
     }),
-    ...(hasClose && { close: getCloseIconStyles() }),
+    ...(hasClose && { close: getCloseIconStyle() }),
   });
 };
 
@@ -41,7 +41,7 @@ export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(buildSlottedStyles(host, getBaseSlottedStyles({ withDarkTheme: false })));
 };
 
-export const getNotificationRootStyles = (state: InlineNotificationState, theme: Theme): JssStyle => {
+export const getNotificationRootStyle = (state: InlineNotificationState, theme: Theme): JssStyle => {
   const themedColors = getThemedColors(theme);
   return {
     display: 'grid',
@@ -59,7 +59,7 @@ export const getNotificationRootStyles = (state: InlineNotificationState, theme:
   };
 };
 
-export const getNotificationIconStyles = (state: InlineNotificationState): JssStyle => ({
+export const getNotificationIconStyle = (state: InlineNotificationState): JssStyle => ({
   display: 'none',
   [mediaQueryS]: {
     display: 'inline-flex',
@@ -68,12 +68,12 @@ export const getNotificationIconStyles = (state: InlineNotificationState): JssSt
   },
 });
 
-export const getNotificationContentStyles = (): JssStyle => ({
+export const getNotificationContentStyle = (): JssStyle => ({
   display: 'grid',
   gridGap: pxToRemWithUnit(4),
   maxWidth: pxToRemWithUnit(800),
 });
 
-export const getCloseIconStyles = (): JssStyle => ({
+export const getCloseIconStyle = (): JssStyle => ({
   marginLeft: pxToRemWithUnit(16),
 });

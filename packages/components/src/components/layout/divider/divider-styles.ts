@@ -1,6 +1,6 @@
 import type { DividerColor, DividerOrientation } from './divider-utils';
 import type { Theme } from '../../../types';
-import { buildResponsiveStyles, getCss } from '../../../utils';
+import { buildResponsiveStyle, getCss } from '../../../utils';
 import { getThemedColors } from '../../../styles';
 
 export const getComponentCss = (color: DividerColor, orientation: DividerOrientation, theme: Theme): string => {
@@ -22,7 +22,7 @@ export const getComponentCss = (color: DividerColor, orientation: DividerOrienta
         border: 'none',
         textAlign: 'left',
         background: colorMap[color],
-        ...buildResponsiveStyles(orientation, (o: DividerOrientation) =>
+        ...buildResponsiveStyle(orientation, (o: DividerOrientation) =>
           o === 'horizontal' ? { height: 1, width: '100%' } : { height: '100%', width: 1 }
         ),
       },

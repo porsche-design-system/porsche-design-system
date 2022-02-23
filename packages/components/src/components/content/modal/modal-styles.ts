@@ -1,11 +1,11 @@
 import type { JssStyle } from 'jss';
-import type { BreakpointCustomizable, GetStylesFunction, BreakpointKey } from '../../../utils';
-import { BREAKPOINTS, buildResponsiveStyles, getCss, mergeDeep, parseJSON, buildSlottedStyles } from '../../../utils';
+import type { BreakpointCustomizable, GetStyleFunction, BreakpointKey } from '../../../utils';
+import { BREAKPOINTS, buildResponsiveStyle, getCss, mergeDeep, parseJSON, buildSlottedStyles } from '../../../utils';
 import {
   addImportantToEachRule,
   contentWrapperVars,
   getBaseSlottedStyles,
-  getInset,
+  getInsetStyle,
   getThemedColors,
   mediaQuery,
   pxToRemWithUnit,
@@ -19,7 +19,7 @@ const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
 const { maxWidth, margin, marginXl, marginXxl } = contentWrapperVars;
 export const stretchToFullModalWidthClassName = 'stretch-to-full-modal-width';
 
-export const getFullscreenStyles: GetStylesFunction = (fullscreen: boolean): JssStyle => {
+export const getFullscreenStyle: GetStyleFunction = (fullscreen: boolean): JssStyle => {
   return fullscreen
     ? {
         minWidth: '100%',
@@ -69,7 +69,7 @@ export const getComponentCss = (
     ':host': {
       ...addImportantToEachRule({
         position: 'fixed',
-        ...getInset(),
+        ...getInsetStyle(),
         zIndex: MODAL_Z_INDEX,
         display: 'flex',
         alignItems: 'center',
@@ -89,11 +89,11 @@ export const getComponentCss = (
       '&::before': addImportantToEachRule({
         content: '""',
         position: 'fixed',
-        ...getInset(),
+        ...getInsetStyle(),
         background: `${darkThemeBackgroundColor}e6`, // e6 = 0.9 alpha
       }),
     },
-    root: mergeDeep(buildResponsiveStyles(fullscreen, getFullscreenStyles), {
+    root: mergeDeep(buildResponsiveStyle(fullscreen, getFullscreenStyle), {
       position: 'relative',
       boxSizing: 'border-box',
       transition: `transform .6s ${transitionTimingFunction}`,

@@ -1,10 +1,10 @@
 import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable } from '../../../../utils';
 import type { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
-import { buildSlottedStyles, getCss, buildResponsiveStyles, paramCaseToCamelCase } from '../../../../utils';
+import { buildSlottedStyles, getCss, buildResponsiveStyle, paramCaseToCamelCase } from '../../../../utils';
 import { addImportantToEachRule, getBaseSlottedStyles, getThemedTextColors } from '../../../../styles';
 import { fontFamily, fontWeight, text } from '@porsche-design-system/utilities-v2';
-import { getEllipsisStyles, getSlottedTypographyStyles } from '../../../../styles/typography-styles';
+import { getEllipsisStyle, getSlottedTypographyStyle } from '../../../../styles/typography-styles';
 
 const getSizeStyles = (size: TextSize): Pick<JssStyle, 'lineHeight' | 'fontSize'> => {
   if (size === 'inherit') {
@@ -29,7 +29,7 @@ export const getComponentCss = (
     },
     '::slotted': {
       '&(p),&(address),&(blockquote),&(figcaption),&(cite),&(time),&(legend)': addImportantToEachRule(
-        getSlottedTypographyStyles()
+        getSlottedTypographyStyle()
       ),
     },
     root: {
@@ -47,8 +47,8 @@ export const getComponentCss = (
       whiteSpace: 'inherit',
       transition: 'font-size 1ms linear',
       WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
-      ...(ellipsis && getEllipsisStyles()),
-      ...buildResponsiveStyles(size, getSizeStyles),
+      ...(ellipsis && getEllipsisStyle()),
+      ...buildResponsiveStyle(size, getSizeStyles),
     },
   });
 };

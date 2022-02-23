@@ -1,18 +1,18 @@
 import type { Theme } from '../../../types';
 import type { SocialIconName } from './link-social-utils';
 import type { BreakpointCustomizable } from '../../../utils';
-import { buildResponsiveStyles, getCss, isThemeDark } from '../../../utils';
+import { buildResponsiveStyle, getCss, isThemeDark } from '../../../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  getFocusStyles,
+  getFocusStyle,
   getTransition,
   pxToRemWithUnit,
   getThemedColors,
   getThemedColorsDarken,
 } from '../../../styles';
 import { colorExternal } from '@porsche-design-system/utilities-v2';
-import { getIconStyles, getLabelStyles, getRootStyles, getSlottedLinkStyles } from '../../../styles/link-button-styles';
+import { getIconStyle, getLabelStyle, getRootStyle, getSlottedLinkStyle } from '../../../styles/link-button-styles';
 
 const { contrastHighColor: themeLightContrastHighColor, baseColor: themeLightBaseColor } = getThemedColors('light');
 const { baseColor: themeDarkBaseColor } = getThemedColors('dark');
@@ -74,8 +74,8 @@ export const getComponentCss = (
         },
       },
       ...(hasHref && {
-        ...buildResponsiveStyles(hideLabel, getRootStyles),
-        ...getFocusStyles(),
+        ...buildResponsiveStyle(hideLabel, getRootStyle),
+        ...getFocusStyle(),
       }),
     },
     icon: {
@@ -84,13 +84,13 @@ export const getComponentCss = (
       height: pxToRemWithUnit(24),
       color: textColor,
       pointerEvents: 'none',
-      ...buildResponsiveStyles(hideLabel, getIconStyles),
+      ...buildResponsiveStyle(hideLabel, getIconStyle),
     },
     label: {
       display: 'block',
       boxSizing: 'border-box',
       color: textColor,
-      ...buildResponsiveStyles(hideLabel, getLabelStyles),
+      ...buildResponsiveStyle(hideLabel, getLabelStyle),
     },
     ...(!hasHref &&
       addImportantToEachRule({
@@ -102,7 +102,7 @@ export const getComponentCss = (
             lineHeight: 'inherit',
             outline: 'transparent solid 1px',
             outlineOffset: '3px',
-            ...buildResponsiveStyles(hideLabel, getSlottedLinkStyles),
+            ...buildResponsiveStyle(hideLabel, getSlottedLinkStyle),
           },
           '&(a::-moz-focus-inner)': {
             border: 0,
