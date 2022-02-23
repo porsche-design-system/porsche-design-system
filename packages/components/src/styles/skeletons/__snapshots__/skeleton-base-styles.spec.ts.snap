@@ -1,21 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getBaseSkeletonStyles() should return correct styles 1`] = `
+exports[`should return correct styles 1`] = `
 Object {
   "&::after": Object {
-    "animation": "pulse 2s linear infinite",
-    "background": "PDS_REPLACE_WITH_THEME_COLOR",
+    "animation": "opacity 1.5s ease-in-out infinite",
+    "background": "currentColor",
     "content": "\\"\\"",
-    "height": "calc(100% - 1.75rem)",
     "left": "0",
+    "minHeight": "calc(100% - 1.75rem)",
     "position": "absolute",
     "top": "1.75rem",
     "visibility": "visible",
     "width": "100%",
   },
   "&::before": Object {
-    "animation": "pulse 2s linear infinite",
-    "background": "PDS_REPLACE_WITH_THEME_COLOR",
+    "animation": "opacity 1.5s ease-in-out infinite",
+    "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px)",
     "content": "\\"\\"",
     "height": "1.5rem",
     "left": "0",
