@@ -16,9 +16,8 @@ const polyfills = [
 export default {
   input: 'projects/jsdom-polyfill/src/index.js',
   output: {
-    esModule: false,
     file: 'dist/components-wrapper/jsdom-polyfill/index.js',
-    format: 'umd',
+    format: 'cjs',
     name: pkg.name,
     extend: true,
   },

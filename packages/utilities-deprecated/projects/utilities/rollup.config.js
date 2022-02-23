@@ -12,9 +12,8 @@ export default [
   {
     input: 'src/js/index.ts',
     output: {
-      esModule: false,
       dir: 'dist/js',
-      format: 'umd',
+      format: 'cjs',
       name: pkg.name,
       exports: 'named',
     },

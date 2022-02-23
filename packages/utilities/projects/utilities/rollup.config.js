@@ -5,9 +5,8 @@ export default [
   {
     input: 'src/jss/index.ts',
     output: {
-      esModule: false,
       dir: 'dist/jss',
-      format: 'umd',
+      format: 'cjs',
       name: pkg.name,
       exports: 'named',
     },
