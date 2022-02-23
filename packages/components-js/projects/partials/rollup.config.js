@@ -2,8 +2,6 @@ import typescript from '@rollup/plugin-typescript';
 import commonjs from '@rollup/plugin-commonjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 
-import pkg from './package.json';
-
 const input = 'src/index.ts';
 
 export default [
@@ -13,8 +11,6 @@ export default [
     output: {
       dir: 'dist',
       format: 'cjs',
-      name: pkg.name,
-      exports: 'named',
     },
     // Our partials return jsx from react/jsx-runtime. We need to resolve the dependency into the build to make it readable in VanillaJS and Angular.
     plugins: [typescript({ declaration: true, declarationDir: 'dist', rootDir: 'src' }), nodeResolve(), commonjs()],

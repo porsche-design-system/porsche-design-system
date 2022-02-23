@@ -22,7 +22,6 @@ export default [
     output: {
       dir: DIST_DIR,
       format: 'cjs',
-      exports: 'named',
     },
     plugins: [
       typescript({
@@ -39,7 +38,6 @@ export default [
     output: {
       dir: `${DIST_DIR}/esm`,
       format: 'esm',
-      exports: 'named',
     },
     plugins: [typescript(typescriptOpts)],
   },
@@ -50,7 +48,6 @@ export default [
     output: {
       dir: DIST_DIR,
       format: 'esm',
-      exports: 'named',
     },
     plugins: [typescript(typescriptOpts)],
   },
@@ -60,7 +57,6 @@ export default [
     output: {
       dir: DIST_DIR,
       format: 'cjs',
-      exports: 'named',
     },
     plugins: [typescript(typescriptOpts)],
   },
