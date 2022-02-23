@@ -14,7 +14,7 @@ export const getButtonLinkSkeletonCss = (): string => {
     '@global': {
       'p-button, p-link': {
         '&:not(.hydrated)': {
-          ...extendPseudoWithTheme({ stylesFunction: () => getBaseSkeletonStyle(false) }),
+          ...extendPseudoWithTheme({ styleFunction: () => getBaseSkeletonStyle(false) }),
           display: 'inline-flex',
           minWidth: pxToRemWithUnit(BUTTON_LINK_SKELETON_WIDTH),
           [`&[hide-label=true], &.${PDS_SKELETON_CLASS_PREFIX}hide-label`]: {

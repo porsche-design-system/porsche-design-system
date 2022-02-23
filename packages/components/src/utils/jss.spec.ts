@@ -136,7 +136,7 @@ describe('buildResponsiveHostStyle()', () => {
   });
 });
 
-describe('buildResponsiveStyles()', () => {
+describe('buildResponsiveStyle()', () => {
   describe('for simple getStyle', () => {
     const getStyle = (val: number): JssStyle => ({ width: 100 * val });
 

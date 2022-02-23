@@ -7,7 +7,7 @@ export const getTextareaWrapperSkeletonCss = (): string => {
       'p-textarea-wrapper': {
         '&:not(.hydrated)': {
           ...extendPseudoWithTheme({
-            stylesFunction: getBaseSkeletonStyle,
+            styleFunction: getBaseSkeletonStyle,
           }),
           height: '100%',
           minHeight: getSkeletonElementHeight(192),
