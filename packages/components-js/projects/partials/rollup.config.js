@@ -11,7 +11,6 @@ export default [
     input,
     // Packages that use the partials via node are not able to read esm syntax, therefore we need a cjs build
     output: {
-      esModule: false,
       dir: 'dist',
       format: 'cjs',
       name: pkg.name,
