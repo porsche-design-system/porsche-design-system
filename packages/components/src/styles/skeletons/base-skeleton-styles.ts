@@ -61,9 +61,7 @@ export const getBaseSkeletonStyle = (withLabel = true, elementHeight = ELEMENT_S
       ...getPseudoElementStyle(),
       top: pxToRemWithUnit(withLabel ? LABEL_HEIGHT_WITH_SPACING : 0),
       width: '100%',
-      minHeight: withLabel
-        ? `calc(100% - ${pxToRemWithUnit(LABEL_HEIGHT_WITH_SPACING)})`
-        : pxToRemWithUnit(elementHeight),
+      minHeight: withLabel ? `calc(100% - ${pxToRemWithUnit(LABEL_HEIGHT_WITH_SPACING)})` : '100%',
     },
   };
 };
