@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getCloseIconStyles() should return correct JssStyle 1`] = `
+exports[`getCloseIconStyle() should return correct JssStyle 1`] = `
 Object {
   "marginLeft": "1rem",
 }
@@ -34,7 +34,7 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
 
 exports[`getComponentCss() should return correct css for state: warning, hasAction: false, hasClose: false and theme: light 1`] = `":host{display:grid !important;grid-template-columns:1fr auto !important;grid-template-rows:auto !important;grid-row-gap:1rem !important;align-items:start !important;justify-items:start !important;padding:1rem !important;background:#fff5e5 !important;border-left:0.25rem solid #ff9b00 !important}.icon{display:none}.content{display:grid;grid-gap:0.25rem;max-width:50rem}@media(min-width:760px){:host{grid-template-columns:auto 1fr auto auto !important}.icon{display:inline-flex;margin-right:0.5rem;color:#ff9b00}}"`;
 
-exports[`getNotificationContentStyles() should return correct JssStyle 1`] = `
+exports[`getNotificationContentStyle() should return correct JssStyle 1`] = `
 Object {
   "display": "grid",
   "gridGap": "0.25rem",
@@ -42,7 +42,7 @@ Object {
 }
 `;
 
-exports[`getNotificationIconStyles() should return correct JssStyle for state: error  1`] = `
+exports[`getNotificationIconStyle() should return correct JssStyle for state: error  1`] = `
 Object {
   "@media (min-width: 760px)": Object {
     "color": "#e00000",
@@ -53,7 +53,7 @@ Object {
 }
 `;
 
-exports[`getNotificationIconStyles() should return correct JssStyle for state: neutral  1`] = `
+exports[`getNotificationIconStyle() should return correct JssStyle for state: neutral  1`] = `
 Object {
   "@media (min-width: 760px)": Object {
     "color": "#0061bd",
@@ -64,7 +64,7 @@ Object {
 }
 `;
 
-exports[`getNotificationIconStyles() should return correct JssStyle for state: success  1`] = `
+exports[`getNotificationIconStyle() should return correct JssStyle for state: success  1`] = `
 Object {
   "@media (min-width: 760px)": Object {
     "color": "#018a16",
@@ -75,7 +75,7 @@ Object {
 }
 `;
 
-exports[`getNotificationIconStyles() should return correct JssStyle for state: warning  1`] = `
+exports[`getNotificationIconStyle() should return correct JssStyle for state: warning  1`] = `
 Object {
   "@media (min-width: 760px)": Object {
     "color": "#ff9b00",
