@@ -8,8 +8,6 @@ export default [
     output: {
       dir: 'dist',
       format: 'cjs',
-      name: pkg.name,
-      exports: 'named',
     },
     plugins: [
       copy({
@@ -29,7 +27,6 @@ export default [
     output: {
       dir: 'dist',
       format: 'cjs',
-      exports: 'named',
     },
     plugins: [typescript()],
   },
@@ -38,7 +35,6 @@ export default [
     output: {
       dir: 'dist/testing',
       format: 'cjs',
-      exports: 'named',
     },
     plugins: [typescript()],
   },
@@ -47,7 +43,6 @@ export default [
     output: {
       dir: 'dist/testing',
       format: 'cjs',
-      exports: 'named',
     },
     plugins: [typescript()],
   },

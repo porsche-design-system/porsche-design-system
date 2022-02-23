@@ -1,6 +1,5 @@
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
-import pkg from './package.json';
 
 const commonPlugins = [
   resolve({
@@ -14,8 +13,6 @@ export default [
     output: {
       dir: 'dist',
       format: 'cjs',
-      name: pkg.name,
-      exports: 'named',
     },
     plugins: [...commonPlugins, typescript({ declaration: true, declarationDir: 'dist/types', rootDir: 'src' })],
   },

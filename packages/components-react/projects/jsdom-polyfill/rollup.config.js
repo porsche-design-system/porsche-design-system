@@ -18,7 +18,6 @@ export default {
   output: {
     file: 'dist/components-wrapper/jsdom-polyfill/index.js',
     format: 'cjs',
-    name: pkg.name,
     extend: true,
   },
   plugins: [

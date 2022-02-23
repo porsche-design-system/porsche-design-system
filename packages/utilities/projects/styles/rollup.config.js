@@ -1,5 +1,4 @@
 import typescript from '@rollup/plugin-typescript';
-import pkg from './package.json';
 
 export default [
   {
@@ -7,8 +6,6 @@ export default [
     output: {
       dir: 'dist/js',
       format: 'cjs',
-      name: pkg.name,
-      exports: 'named',
     },
     plugins: [typescript({ declaration: true, declarationDir: 'dist/js/types', rootDir: 'src' })],
   },
