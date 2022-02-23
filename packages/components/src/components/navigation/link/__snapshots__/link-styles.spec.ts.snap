@@ -258,7 +258,7 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -275,16 +275,16 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #d5001c !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #c4001a !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -337,7 +337,7 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -354,16 +354,16 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #d5001c !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #980014 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -416,7 +416,7 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -433,16 +433,16 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #fff !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #e0e0e0 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -495,7 +495,7 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -512,16 +512,16 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #151718 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -578,7 +578,7 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -595,16 +595,16 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #fff !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #fff !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -661,7 +661,7 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -678,16 +678,16 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #151718 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;

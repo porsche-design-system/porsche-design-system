@@ -4,7 +4,7 @@ exports[`getComponentCss() should return correct css for size: "inherit", weight
 ":host {
   display: block;
 }
-:\\\\:slotted(p), :\\\\:slotted(address), :\\\\:slotted(blockquote), :\\\\:slotted(figcaption), :\\\\:slotted(cite), :\\\\:slotted(time), :\\\\:slotted(legend) {
+::slotted(p), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
   padding: inherit !important;
   font-family: inherit !important;
@@ -43,7 +43,7 @@ exports[`getComponentCss() should return correct css for size: "large", weight: 
 ":host {
   display: block;
 }
-:\\\\:slotted(p), :\\\\:slotted(address), :\\\\:slotted(blockquote), :\\\\:slotted(figcaption), :\\\\:slotted(cite), :\\\\:slotted(time), :\\\\:slotted(legend) {
+::slotted(p), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
   padding: inherit !important;
   font-family: inherit !important;
@@ -85,7 +85,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ":host {
   display: block;
 }
-:\\\\:slotted(p), :\\\\:slotted(address), :\\\\:slotted(blockquote), :\\\\:slotted(figcaption), :\\\\:slotted(cite), :\\\\:slotted(time), :\\\\:slotted(legend) {
+::slotted(p), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
   padding: inherit !important;
   font-family: inherit !important;
@@ -127,7 +127,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ":host {
   display: block;
 }
-:\\\\:slotted(p), :\\\\:slotted(address), :\\\\:slotted(blockquote), :\\\\:slotted(figcaption), :\\\\:slotted(cite), :\\\\:slotted(time), :\\\\:slotted(legend) {
+::slotted(p), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
   padding: inherit !important;
   font-family: inherit !important;
@@ -166,7 +166,7 @@ exports[`getComponentCss() should return correct css for size: "x-large", weight
 ":host {
   display: block;
 }
-:\\\\:slotted(p), :\\\\:slotted(address), :\\\\:slotted(blockquote), :\\\\:slotted(figcaption), :\\\\:slotted(cite), :\\\\:slotted(time), :\\\\:slotted(legend) {
+::slotted(p), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
   padding: inherit !important;
   font-family: inherit !important;
@@ -205,7 +205,7 @@ exports[`getComponentCss() should return correct css for size: "x-large", weight
 ":host {
   display: block;
 }
-:\\\\:slotted(p), :\\\\:slotted(address), :\\\\:slotted(blockquote), :\\\\:slotted(figcaption), :\\\\:slotted(cite), :\\\\:slotted(time), :\\\\:slotted(legend) {
+::slotted(p), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
   padding: inherit !important;
   font-family: inherit !important;
@@ -247,7 +247,7 @@ exports[`getComponentCss() should return correct css for size: "x-small", weight
 ":host {
   display: block;
 }
-:\\\\:slotted(p), :\\\\:slotted(address), :\\\\:slotted(blockquote), :\\\\:slotted(figcaption), :\\\\:slotted(cite), :\\\\:slotted(time), :\\\\:slotted(legend) {
+::slotted(p), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
   padding: inherit !important;
   font-family: inherit !important;
@@ -286,7 +286,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 ":host {
   display: block;
 }
-:\\\\:slotted(p), :\\\\:slotted(address), :\\\\:slotted(blockquote), :\\\\:slotted(figcaption), :\\\\:slotted(cite), :\\\\:slotted(time), :\\\\:slotted(legend) {
+::slotted(p), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
   margin: inherit !important;
   padding: inherit !important;
   font-family: inherit !important;

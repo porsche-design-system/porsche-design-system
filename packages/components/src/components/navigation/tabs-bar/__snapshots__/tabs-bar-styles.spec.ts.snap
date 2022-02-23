@@ -5,7 +5,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   display: block;
   position: relative !important;
 }
-:\\\\:slotted\\\\(a\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\) {
+::slotted(a),::slotted(button) {
   display: inline-block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -27,19 +27,19 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   cursor: pointer !important;
   transition: color var(--p-transition-duration, .24s) ease !important;
 }
-:\\\\:slotted\\\\(a\\\\:hover\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:hover\\\\) {
+::slotted(a:hover),::slotted(button:hover) {
   color: #ff0223 !important;
 }
-:\\\\:slotted\\\\(a\\\\:active\\\\)\\\\,\\\\:\\\\:slotted\\\\(a\\\\[aria-selected\\\\=\\\\\\"true\\\\\\"\\\\]\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:active\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\[aria-selected\\\\=\\\\\\"true\\\\\\"\\\\]\\\\) {
+::slotted(a:active),::slotted(a[aria-selected=\\"true\\"]),::slotted(button:active),::slotted(button[aria-selected=\\"true\\"]) {
   color: #ff0223 !important;
 }
-:\\\\:slotted\\\\(a\\\\:focus\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:focus\\\\) {
+::slotted(a:focus),::slotted(button:focus) {
   outline-color: currentColor !important;
 }
-:\\\\:slotted\\\\(a\\\\:focus\\\\:not\\\\(\\\\:focus-visible\\\\)\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:focus\\\\:not\\\\(\\\\:focus-visible\\\\)\\\\) {
+::slotted(a:focus:not(:focus-visible)),::slotted(button:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-:\\\\:slotted\\\\(a\\\\:not\\\\(\\\\:last-child\\\\)\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:not\\\\(\\\\:last-child\\\\)\\\\) {
+::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
 .root {
@@ -131,7 +131,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   display: block;
   position: relative !important;
 }
-:\\\\:slotted\\\\(a\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\) {
+::slotted(a),::slotted(button) {
   display: inline-block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -153,19 +153,19 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   cursor: pointer !important;
   transition: color var(--p-transition-duration, .24s) ease !important;
 }
-:\\\\:slotted\\\\(a\\\\:hover\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:hover\\\\) {
+::slotted(a:hover),::slotted(button:hover) {
   color: #d5001c !important;
 }
-:\\\\:slotted\\\\(a\\\\:active\\\\)\\\\,\\\\:\\\\:slotted\\\\(a\\\\[aria-selected\\\\=\\\\\\"true\\\\\\"\\\\]\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:active\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\[aria-selected\\\\=\\\\\\"true\\\\\\"\\\\]\\\\) {
+::slotted(a:active),::slotted(a[aria-selected=\\"true\\"]),::slotted(button:active),::slotted(button[aria-selected=\\"true\\"]) {
   color: #d5001c !important;
 }
-:\\\\:slotted\\\\(a\\\\:focus\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:focus\\\\) {
+::slotted(a:focus),::slotted(button:focus) {
   outline-color: currentColor !important;
 }
-:\\\\:slotted\\\\(a\\\\:focus\\\\:not\\\\(\\\\:focus-visible\\\\)\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:focus\\\\:not\\\\(\\\\:focus-visible\\\\)\\\\) {
+::slotted(a:focus:not(:focus-visible)),::slotted(button:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-:\\\\:slotted\\\\(a\\\\:not\\\\(\\\\:last-child\\\\)\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:not\\\\(\\\\:last-child\\\\)\\\\) {
+::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
 .root {
@@ -257,7 +257,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   display: block;
   position: relative !important;
 }
-:\\\\:slotted\\\\(a\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\) {
+::slotted(a),::slotted(button) {
   display: inline-block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -279,19 +279,19 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   cursor: pointer !important;
   transition: color var(--p-transition-duration, .24s) ease !important;
 }
-:\\\\:slotted\\\\(a\\\\:hover\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:hover\\\\) {
+::slotted(a:hover),::slotted(button:hover) {
   color: #00b0f4 !important;
 }
-:\\\\:slotted\\\\(a\\\\:active\\\\)\\\\,\\\\:\\\\:slotted\\\\(a\\\\[aria-selected\\\\=\\\\\\"true\\\\\\"\\\\]\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:active\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\[aria-selected\\\\=\\\\\\"true\\\\\\"\\\\]\\\\) {
+::slotted(a:active),::slotted(a[aria-selected=\\"true\\"]),::slotted(button:active),::slotted(button[aria-selected=\\"true\\"]) {
   color: #00b0f4 !important;
 }
-:\\\\:slotted\\\\(a\\\\:focus\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:focus\\\\) {
+::slotted(a:focus),::slotted(button:focus) {
   outline-color: currentColor !important;
 }
-:\\\\:slotted\\\\(a\\\\:focus\\\\:not\\\\(\\\\:focus-visible\\\\)\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:focus\\\\:not\\\\(\\\\:focus-visible\\\\)\\\\) {
+::slotted(a:focus:not(:focus-visible)),::slotted(button:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-:\\\\:slotted\\\\(a\\\\:not\\\\(\\\\:last-child\\\\)\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:not\\\\(\\\\:last-child\\\\)\\\\) {
+::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
 .root {
@@ -383,7 +383,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   display: block;
   position: relative !important;
 }
-:\\\\:slotted\\\\(a\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\) {
+::slotted(a),::slotted(button) {
   display: inline-block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -405,19 +405,19 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   cursor: pointer !important;
   transition: color var(--p-transition-duration, .24s) ease !important;
 }
-:\\\\:slotted\\\\(a\\\\:hover\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:hover\\\\) {
+::slotted(a:hover),::slotted(button:hover) {
   color: #ff0223 !important;
 }
-:\\\\:slotted\\\\(a\\\\:active\\\\)\\\\,\\\\:\\\\:slotted\\\\(a\\\\[aria-selected\\\\=\\\\\\"true\\\\\\"\\\\]\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:active\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\[aria-selected\\\\=\\\\\\"true\\\\\\"\\\\]\\\\) {
+::slotted(a:active),::slotted(a[aria-selected=\\"true\\"]),::slotted(button:active),::slotted(button[aria-selected=\\"true\\"]) {
   color: #ff0223 !important;
 }
-:\\\\:slotted\\\\(a\\\\:focus\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:focus\\\\) {
+::slotted(a:focus),::slotted(button:focus) {
   outline-color: currentColor !important;
 }
-:\\\\:slotted\\\\(a\\\\:focus\\\\:not\\\\(\\\\:focus-visible\\\\)\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:focus\\\\:not\\\\(\\\\:focus-visible\\\\)\\\\) {
+::slotted(a:focus:not(:focus-visible)),::slotted(button:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-:\\\\:slotted\\\\(a\\\\:not\\\\(\\\\:last-child\\\\)\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:not\\\\(\\\\:last-child\\\\)\\\\) {
+::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
 .root {
@@ -509,7 +509,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   display: block;
   position: relative !important;
 }
-:\\\\:slotted\\\\(a\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\) {
+::slotted(a),::slotted(button) {
   display: inline-block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -531,19 +531,19 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   cursor: pointer !important;
   transition: color var(--p-transition-duration, .24s) ease !important;
 }
-:\\\\:slotted\\\\(a\\\\:hover\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:hover\\\\) {
+::slotted(a:hover),::slotted(button:hover) {
   color: #d5001c !important;
 }
-:\\\\:slotted\\\\(a\\\\:active\\\\)\\\\,\\\\:\\\\:slotted\\\\(a\\\\[aria-selected\\\\=\\\\\\"true\\\\\\"\\\\]\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:active\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\[aria-selected\\\\=\\\\\\"true\\\\\\"\\\\]\\\\) {
+::slotted(a:active),::slotted(a[aria-selected=\\"true\\"]),::slotted(button:active),::slotted(button[aria-selected=\\"true\\"]) {
   color: #d5001c !important;
 }
-:\\\\:slotted\\\\(a\\\\:focus\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:focus\\\\) {
+::slotted(a:focus),::slotted(button:focus) {
   outline-color: currentColor !important;
 }
-:\\\\:slotted\\\\(a\\\\:focus\\\\:not\\\\(\\\\:focus-visible\\\\)\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:focus\\\\:not\\\\(\\\\:focus-visible\\\\)\\\\) {
+::slotted(a:focus:not(:focus-visible)),::slotted(button:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-:\\\\:slotted\\\\(a\\\\:not\\\\(\\\\:last-child\\\\)\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:not\\\\(\\\\:last-child\\\\)\\\\) {
+::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
 .root {
@@ -635,7 +635,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   display: block;
   position: relative !important;
 }
-:\\\\:slotted\\\\(a\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\) {
+::slotted(a),::slotted(button) {
   display: inline-block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -657,19 +657,19 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   cursor: pointer !important;
   transition: color var(--p-transition-duration, .24s) ease !important;
 }
-:\\\\:slotted\\\\(a\\\\:hover\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:hover\\\\) {
+::slotted(a:hover),::slotted(button:hover) {
   color: #00b0f4 !important;
 }
-:\\\\:slotted\\\\(a\\\\:active\\\\)\\\\,\\\\:\\\\:slotted\\\\(a\\\\[aria-selected\\\\=\\\\\\"true\\\\\\"\\\\]\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:active\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\[aria-selected\\\\=\\\\\\"true\\\\\\"\\\\]\\\\) {
+::slotted(a:active),::slotted(a[aria-selected=\\"true\\"]),::slotted(button:active),::slotted(button[aria-selected=\\"true\\"]) {
   color: #00b0f4 !important;
 }
-:\\\\:slotted\\\\(a\\\\:focus\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:focus\\\\) {
+::slotted(a:focus),::slotted(button:focus) {
   outline-color: currentColor !important;
 }
-:\\\\:slotted\\\\(a\\\\:focus\\\\:not\\\\(\\\\:focus-visible\\\\)\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:focus\\\\:not\\\\(\\\\:focus-visible\\\\)\\\\) {
+::slotted(a:focus:not(:focus-visible)),::slotted(button:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-:\\\\:slotted\\\\(a\\\\:not\\\\(\\\\:last-child\\\\)\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:not\\\\(\\\\:last-child\\\\)\\\\) {
+::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
 .root {
@@ -761,7 +761,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   display: block;
   position: relative !important;
 }
-:\\\\:slotted\\\\(a\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\) {
+::slotted(a),::slotted(button) {
   display: inline-block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -783,19 +783,19 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   cursor: pointer !important;
   transition: color var(--p-transition-duration, .24s) ease !important;
 }
-:\\\\:slotted\\\\(a\\\\:hover\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:hover\\\\) {
+::slotted(a:hover),::slotted(button:hover) {
   color: #d5001c !important;
 }
-:\\\\:slotted\\\\(a\\\\:active\\\\)\\\\,\\\\:\\\\:slotted\\\\(a\\\\[aria-selected\\\\=\\\\\\"true\\\\\\"\\\\]\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:active\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\[aria-selected\\\\=\\\\\\"true\\\\\\"\\\\]\\\\) {
+::slotted(a:active),::slotted(a[aria-selected=\\"true\\"]),::slotted(button:active),::slotted(button[aria-selected=\\"true\\"]) {
   color: #d5001c !important;
 }
-:\\\\:slotted\\\\(a\\\\:focus\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:focus\\\\) {
+::slotted(a:focus),::slotted(button:focus) {
   outline-color: currentColor !important;
 }
-:\\\\:slotted\\\\(a\\\\:focus\\\\:not\\\\(\\\\:focus-visible\\\\)\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:focus\\\\:not\\\\(\\\\:focus-visible\\\\)\\\\) {
+::slotted(a:focus:not(:focus-visible)),::slotted(button:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-:\\\\:slotted\\\\(a\\\\:not\\\\(\\\\:last-child\\\\)\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:not\\\\(\\\\:last-child\\\\)\\\\) {
+::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
 .root {
@@ -887,7 +887,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   display: block;
   position: relative !important;
 }
-:\\\\:slotted\\\\(a\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\) {
+::slotted(a),::slotted(button) {
   display: inline-block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -909,19 +909,19 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   cursor: pointer !important;
   transition: color var(--p-transition-duration, .24s) ease !important;
 }
-:\\\\:slotted\\\\(a\\\\:hover\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:hover\\\\) {
+::slotted(a:hover),::slotted(button:hover) {
   color: #d5001c !important;
 }
-:\\\\:slotted\\\\(a\\\\:active\\\\)\\\\,\\\\:\\\\:slotted\\\\(a\\\\[aria-selected\\\\=\\\\\\"true\\\\\\"\\\\]\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:active\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\[aria-selected\\\\=\\\\\\"true\\\\\\"\\\\]\\\\) {
+::slotted(a:active),::slotted(a[aria-selected=\\"true\\"]),::slotted(button:active),::slotted(button[aria-selected=\\"true\\"]) {
   color: #d5001c !important;
 }
-:\\\\:slotted\\\\(a\\\\:focus\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:focus\\\\) {
+::slotted(a:focus),::slotted(button:focus) {
   outline-color: currentColor !important;
 }
-:\\\\:slotted\\\\(a\\\\:focus\\\\:not\\\\(\\\\:focus-visible\\\\)\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:focus\\\\:not\\\\(\\\\:focus-visible\\\\)\\\\) {
+::slotted(a:focus:not(:focus-visible)),::slotted(button:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-:\\\\:slotted\\\\(a\\\\:not\\\\(\\\\:last-child\\\\)\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:not\\\\(\\\\:last-child\\\\)\\\\) {
+::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
 .root {
@@ -1013,7 +1013,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   display: block;
   position: relative !important;
 }
-:\\\\:slotted\\\\(a\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\) {
+::slotted(a),::slotted(button) {
   display: inline-block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -1035,19 +1035,19 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   cursor: pointer !important;
   transition: color var(--p-transition-duration, .24s) ease !important;
 }
-:\\\\:slotted\\\\(a\\\\:hover\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:hover\\\\) {
+::slotted(a:hover),::slotted(button:hover) {
   color: #d5001c !important;
 }
-:\\\\:slotted\\\\(a\\\\:active\\\\)\\\\,\\\\:\\\\:slotted\\\\(a\\\\[aria-selected\\\\=\\\\\\"true\\\\\\"\\\\]\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:active\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\[aria-selected\\\\=\\\\\\"true\\\\\\"\\\\]\\\\) {
+::slotted(a:active),::slotted(a[aria-selected=\\"true\\"]),::slotted(button:active),::slotted(button[aria-selected=\\"true\\"]) {
   color: #d5001c !important;
 }
-:\\\\:slotted\\\\(a\\\\:focus\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:focus\\\\) {
+::slotted(a:focus),::slotted(button:focus) {
   outline-color: currentColor !important;
 }
-:\\\\:slotted\\\\(a\\\\:focus\\\\:not\\\\(\\\\:focus-visible\\\\)\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:focus\\\\:not\\\\(\\\\:focus-visible\\\\)\\\\) {
+::slotted(a:focus:not(:focus-visible)),::slotted(button:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-:\\\\:slotted\\\\(a\\\\:not\\\\(\\\\:last-child\\\\)\\\\)\\\\,\\\\:\\\\:slotted\\\\(button\\\\:not\\\\(\\\\:last-child\\\\)\\\\) {
+::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
 .root {

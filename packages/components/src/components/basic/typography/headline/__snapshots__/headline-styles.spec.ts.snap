@@ -4,7 +4,7 @@ exports[`getComponentCss() should return correct css for variant: "headline-1", 
 ":host {
   display: block;
 }
-:\\\\:slotted(h1), :\\\\:slotted(h2), :\\\\:slotted(h3), :\\\\:slotted(h4), :\\\\:slotted(h5), :\\\\:slotted(h6) {
+::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
   margin: inherit !important;
   padding: inherit !important;
   font-family: inherit !important;
@@ -68,7 +68,7 @@ exports[`getComponentCss() should return correct css for variant: "headline-2", 
 ":host {
   display: block;
 }
-:\\\\:slotted(h1), :\\\\:slotted(h2), :\\\\:slotted(h3), :\\\\:slotted(h4), :\\\\:slotted(h5), :\\\\:slotted(h6) {
+::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
   margin: inherit !important;
   padding: inherit !important;
   font-family: inherit !important;
@@ -135,7 +135,7 @@ exports[`getComponentCss() should return correct css for variant: "headline-3", 
 ":host {
   display: block;
 }
-:\\\\:slotted(h1), :\\\\:slotted(h2), :\\\\:slotted(h3), :\\\\:slotted(h4), :\\\\:slotted(h5), :\\\\:slotted(h6) {
+::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
   margin: inherit !important;
   padding: inherit !important;
   font-family: inherit !important;
@@ -202,7 +202,7 @@ exports[`getComponentCss() should return correct css for variant: "headline-4", 
 ":host {
   display: block;
 }
-:\\\\:slotted(h1), :\\\\:slotted(h2), :\\\\:slotted(h3), :\\\\:slotted(h4), :\\\\:slotted(h5), :\\\\:slotted(h6) {
+::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
   margin: inherit !important;
   padding: inherit !important;
   font-family: inherit !important;
@@ -269,7 +269,7 @@ exports[`getComponentCss() should return correct css for variant: "headline-5", 
 ":host {
   display: block;
 }
-:\\\\:slotted(h1), :\\\\:slotted(h2), :\\\\:slotted(h3), :\\\\:slotted(h4), :\\\\:slotted(h5), :\\\\:slotted(h6) {
+::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
   margin: inherit !important;
   padding: inherit !important;
   font-family: inherit !important;
@@ -308,7 +308,7 @@ exports[`getComponentCss() should return correct css for variant: "inherit", ali
 ":host {
   display: block;
 }
-:\\\\:slotted(h1), :\\\\:slotted(h2), :\\\\:slotted(h3), :\\\\:slotted(h4), :\\\\:slotted(h5), :\\\\:slotted(h6) {
+::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
   margin: inherit !important;
   padding: inherit !important;
   font-family: inherit !important;
@@ -341,7 +341,7 @@ exports[`getComponentCss() should return correct css for variant: "large-title",
 ":host {
   display: block;
 }
-:\\\\:slotted(h1), :\\\\:slotted(h2), :\\\\:slotted(h3), :\\\\:slotted(h4), :\\\\:slotted(h5), :\\\\:slotted(h6) {
+::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
   margin: inherit !important;
   padding: inherit !important;
   font-family: inherit !important;
@@ -408,7 +408,7 @@ exports[`getComponentCss() should return correct css for variant: {"base":"small
 ":host {
   display: block;
 }
-:\\\\:slotted(h1), :\\\\:slotted(h2), :\\\\:slotted(h3), :\\\\:slotted(h4), :\\\\:slotted(h5), :\\\\:slotted(h6) {
+::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
   margin: inherit !important;
   padding: inherit !important;
   font-family: inherit !important;

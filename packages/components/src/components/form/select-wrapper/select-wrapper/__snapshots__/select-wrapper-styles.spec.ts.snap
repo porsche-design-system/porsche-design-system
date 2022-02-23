@@ -86,7 +86,7 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text\\\\:hover~::slotted(select:not(:disabled):not([readonly])), \\\\.icon:hover~::slotted(select:not(:disabled):not([readonly])) {
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])) {
   border-color: #000 !important;
 }
 .required {
@@ -272,7 +272,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #7c7f81;
   cursor: not-allowed;
 }
-.label__text\\\\:hover~::slotted(select:not(:disabled):not([readonly])), .label__text\\\\:hover ::slotted(select:hover:not(:disabled):not([readonly])), \\\\.icon:hover~::slotted(select:not(:disabled):not([readonly])), \\\\.icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
   border-color: #d30303 !important;
 }
 .required {
@@ -387,7 +387,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text\\\\:hover~::slotted(select:not(:disabled):not([readonly])), .label__text\\\\:hover ::slotted(select:hover:not(:disabled):not([readonly])), \\\\.icon:hover~::slotted(select:not(:disabled):not([readonly])), \\\\.icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
 }
 .required {
@@ -502,7 +502,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #7c7f81;
   cursor: not-allowed;
 }
-.label__text\\\\:hover~::slotted(select:not(:disabled):not([readonly])), \\\\.icon:hover~::slotted(select:not(:disabled):not([readonly])) {
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])) {
   border-color: #fff !important;
 }
 .required {
@@ -616,7 +616,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text\\\\:hover~::slotted(select:not(:disabled):not([readonly])), \\\\.icon:hover~::slotted(select:not(:disabled):not([readonly])) {
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])) {
   border-color: #000 !important;
 }
 .required {
@@ -730,7 +730,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #7c7f81;
   cursor: not-allowed;
 }
-.label__text\\\\:hover~::slotted(select:not(:disabled):not([readonly])), .label__text\\\\:hover ::slotted(select:hover:not(:disabled):not([readonly])), \\\\.icon:hover~::slotted(select:not(:disabled):not([readonly])), \\\\.icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
   border-color: #017d14 !important;
 }
 .required {
@@ -845,7 +845,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text\\\\:hover~::slotted(select:not(:disabled):not([readonly])), .label__text\\\\:hover ::slotted(select:hover:not(:disabled):not([readonly])), \\\\.icon:hover~::slotted(select:not(:disabled):not([readonly])), \\\\.icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
   border-color: #014d0c !important;
 }
 .required {
@@ -961,7 +961,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #7c7f81;
   cursor: not-allowed;
 }
-.label__text\\\\:hover~::slotted(select:not(:disabled):not([readonly])), .label__text\\\\:hover ::slotted(select:hover:not(:disabled):not([readonly])), \\\\.icon:hover~::slotted(select:not(:disabled):not([readonly])), \\\\.icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
   border-color: #d30303 !important;
 }
 .required {
@@ -1077,7 +1077,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text\\\\:hover~::slotted(select:not(:disabled):not([readonly])), .label__text\\\\:hover ::slotted(select:hover:not(:disabled):not([readonly])), \\\\.icon:hover~::slotted(select:not(:disabled):not([readonly])), \\\\.icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
 }
 .required {
@@ -1193,7 +1193,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #7c7f81;
   cursor: not-allowed;
 }
-.label__text\\\\:hover~::slotted(select:not(:disabled):not([readonly])), \\\\.icon:hover~::slotted(select:not(:disabled):not([readonly])) {
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])) {
   border-color: #fff !important;
 }
 .required {
@@ -1308,7 +1308,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text\\\\:hover~::slotted(select:not(:disabled):not([readonly])), \\\\.icon:hover~::slotted(select:not(:disabled):not([readonly])) {
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])) {
   border-color: #000 !important;
 }
 .required {
@@ -1423,7 +1423,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #7c7f81;
   cursor: not-allowed;
 }
-.label__text\\\\:hover~::slotted(select:not(:disabled):not([readonly])), .label__text\\\\:hover ::slotted(select:hover:not(:disabled):not([readonly])), \\\\.icon:hover~::slotted(select:not(:disabled):not([readonly])), \\\\.icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
   border-color: #017d14 !important;
 }
 .required {
@@ -1539,7 +1539,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text\\\\:hover~::slotted(select:not(:disabled):not([readonly])), .label__text\\\\:hover ::slotted(select:hover:not(:disabled):not([readonly])), \\\\.icon:hover~::slotted(select:not(:disabled):not([readonly])), \\\\.icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
   border-color: #014d0c !important;
 }
 .required {

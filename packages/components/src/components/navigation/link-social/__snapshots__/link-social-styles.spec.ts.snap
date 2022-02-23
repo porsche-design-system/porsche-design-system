@@ -51,7 +51,7 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -68,16 +68,16 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #fff !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #1877f2 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -133,7 +133,7 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -150,16 +150,16 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #1877f2 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -215,7 +215,7 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -232,16 +232,16 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #fff !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #4285f4 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -297,7 +297,7 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -314,16 +314,16 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #4285f4 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -379,7 +379,7 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -396,16 +396,16 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #fff !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #e1306c !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -461,7 +461,7 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -478,16 +478,16 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #e1306c !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -543,7 +543,7 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -560,16 +560,16 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #fff !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #fae300 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -625,7 +625,7 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -642,16 +642,16 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #fae300 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -707,7 +707,7 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -724,16 +724,16 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #fff !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #0077b5 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -789,7 +789,7 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -806,16 +806,16 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #0077b5 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -871,7 +871,7 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -888,16 +888,16 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #fff !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #03cf5d !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -953,7 +953,7 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -970,16 +970,16 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #03cf5d !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -1035,7 +1035,7 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -1052,16 +1052,16 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #fff !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #e60023 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -1117,7 +1117,7 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -1134,16 +1134,16 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #e60023 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -1199,7 +1199,7 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -1216,16 +1216,16 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #fff !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #ff4500 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -1281,7 +1281,7 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -1298,16 +1298,16 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #ff4500 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -1363,7 +1363,7 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -1380,16 +1380,16 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #fff !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #fe2c55 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -1445,7 +1445,7 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -1462,16 +1462,16 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #fe2c55 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -1527,7 +1527,7 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -1544,16 +1544,16 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #fff !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #1da1f2 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -1609,7 +1609,7 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -1626,16 +1626,16 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #1da1f2 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -1691,7 +1691,7 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -1708,16 +1708,16 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #fff !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #1aad19 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -1773,7 +1773,7 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -1790,16 +1790,16 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #1aad19 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -1855,7 +1855,7 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -1872,16 +1872,16 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #fff !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #25d366 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -1937,7 +1937,7 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -1954,16 +1954,16 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #25d366 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -2019,7 +2019,7 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -2036,16 +2036,16 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #fff !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #006567 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -2101,7 +2101,7 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -2118,16 +2118,16 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #006567 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -2183,7 +2183,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   overflow: hidden;
   text-indent: -1px;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -2200,16 +2200,16 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   white-space: nowrap !important;
   text-indent: 99999px !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #ff0000 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
 @media (min-width: 480px) {
@@ -2225,7 +2225,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
     overflow: visible;
     text-indent: 0;
   }
-  :\\\\:slotted(a) {
+  ::slotted(a) {
     position: static !important;
     top: auto !important;
     left: auto !important;
@@ -2251,7 +2251,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
     overflow: hidden;
     text-indent: -1px;
   }
-  :\\\\:slotted(a) {
+  ::slotted(a) {
     position: absolute !important;
     top: 0 !important;
     left: 0 !important;
@@ -2277,7 +2277,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
     overflow: visible;
     text-indent: 0;
   }
-  :\\\\:slotted(a) {
+  ::slotted(a) {
     position: static !important;
     top: auto !important;
     left: auto !important;
@@ -2303,7 +2303,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
     overflow: hidden;
     text-indent: -1px;
   }
-  :\\\\:slotted(a) {
+  ::slotted(a) {
     position: absolute !important;
     top: 0 !important;
     left: 0 !important;
@@ -2329,7 +2329,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
     overflow: visible;
     text-indent: 0;
   }
-  :\\\\:slotted(a) {
+  ::slotted(a) {
     position: static !important;
     top: auto !important;
     left: auto !important;
@@ -2395,7 +2395,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -2412,16 +2412,16 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #fff !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #ff0000 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -2477,7 +2477,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -2494,16 +2494,16 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #ff0000 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -2619,7 +2619,7 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -2636,16 +2636,16 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #fff !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #e0e0e0 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;
@@ -2698,7 +2698,7 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
   overflow: visible;
   text-indent: 0;
 }
-:\\\\:slotted(a) {
+::slotted(a) {
   display: block !important;
   text-decoration: none !important;
   color: inherit !important;
@@ -2715,16 +2715,16 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
   white-space: normal !important;
   text-indent: 0 !important;
 }
-:\\\\:slotted(a::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
-:\\\\:slotted(a:focus) {
+::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-:\\\\:slotted(a:hover:focus) {
+::slotted(a:hover:focus) {
   outline-color: #151718 !important;
 }
-:\\\\:slotted(a:focus:not(:focus-visible)) {
+::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }"
 `;

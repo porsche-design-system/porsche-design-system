@@ -40,7 +40,7 @@ button:focus:not(:focus-visible) {
 button:hover {
   color: #d5001c;
 }
-:host\\\\(\\\\:first-of-type\\\\)\\\\ \\\\.root {
+:host(:first-of-type) .root {
   border-top: 1px solid #e3e4e5;
 }
 .root {
@@ -117,7 +117,7 @@ button:focus:not(:focus-visible) {
 button:hover {
   color: #d5001c;
 }
-:host\\\\(\\\\:first-of-type\\\\)\\\\ \\\\.root {
+:host(:first-of-type) .root {
   border-top: 1px solid #e3e4e5;
 }
 .root {
@@ -192,7 +192,7 @@ button:focus:not(:focus-visible) {
 button:hover {
   color: #ff0223;
 }
-:host\\\\(\\\\:first-of-type\\\\)\\\\ \\\\.root {
+:host(:first-of-type) .root {
   border-top: 1px solid #4a4e51;
 }
 .root {
@@ -269,7 +269,7 @@ button:focus:not(:focus-visible) {
 button:hover {
   color: #d5001c;
 }
-:host\\\\(\\\\:first-of-type\\\\)\\\\ \\\\.root {
+:host(:first-of-type) .root {
   border-top: 1px solid #e3e4e5;
 }
 .root {
@@ -526,7 +526,7 @@ button:hover {
   }
 }
 
-:host\\\\(\\\\:first-of-type\\\\)\\\\ \\\\.root {
+:host(:first-of-type) .root {
   border-top: 1px solid #4a4e51;
 }
 .root {
