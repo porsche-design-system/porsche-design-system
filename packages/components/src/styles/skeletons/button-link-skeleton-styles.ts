@@ -4,6 +4,7 @@ import {
   ELEMENT_SKELETON_DIMENSION,
   extendPseudoWithTheme,
   getBaseSkeletonStyles,
+  getThemedPseudoStyles,
   PDS_SKELETON_CLASS_PREFIX,
 } from './';
 import { pxToRemWithUnit } from '../common-styles';
@@ -19,9 +20,7 @@ export const getButtonLinkSkeletonCss = (): string => {
           [`&[hide-label=true], &.${PDS_SKELETON_CLASS_PREFIX}hide-label`]: {
             minWidth: pxToRemWithUnit(ELEMENT_SKELETON_DIMENSION),
           },
-          [`&[theme=dark], &.${PDS_SKELETON_CLASS_PREFIX}theme-dark`]: {
-            ...extendPseudoWithTheme({ theme: 'dark' }),
-          },
+          ...getThemedPseudoStyles(),
         },
       },
     },

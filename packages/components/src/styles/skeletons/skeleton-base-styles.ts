@@ -92,3 +92,15 @@ export const extendPseudoWithTheme = (opts?: ExtendPseudoWithThemeOptions): JssS
     }, {} as JssStyle),
   };
 };
+
+export const getThemedPseudoStyles = (hasLabel?: boolean): JssStyle => {
+  let pseudoElements: PseudoElementSelectorsType[];
+  if (hasLabel) {
+    pseudoElements = ['&::before', '&::after'];
+  }
+  return {
+    [`&[theme=dark], &.${PDS_SKELETON_CLASS_PREFIX}theme-dark`]: {
+      ...extendPseudoWithTheme({ theme: 'dark', pseudosToExtend: pseudoElements }),
+    },
+  };
+};
