@@ -1,14 +1,14 @@
 import { getComponentCss, getSlottedCss, isFullscreenForXl } from './modal-styles';
 import type { BreakpointCustomizable } from '../../../types';
 import * as focusVisibleFallbackUtils from '../../../styles/focus-visible-fallback';
-import { getFocusStyles } from '../../../styles';
+import { getFocusStyle } from '../../../styles';
 
 describe('getComponentCss()', () => {
   it('should call getFocusVisibleFallback()', () => {
     const spy = jest.spyOn(focusVisibleFallbackUtils, 'getFocusVisibleFallback');
     getComponentCss(true, true, true, true);
 
-    expect(spy).toHaveBeenCalledWith(getFocusStyles({ color: '#fff' }));
+    expect(spy).toHaveBeenCalledWith(getFocusStyle({ color: '#fff' }));
   });
 
   it.each<Parameters<typeof getComponentCss>>([

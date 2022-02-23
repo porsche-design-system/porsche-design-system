@@ -14,7 +14,7 @@ export const getButtonLinkPureSkeletonCss = (): string => {
       'p-button-pure, p-link-pure': {
         '&:not(.hydrated)': {
           ...extendPseudoWithTheme({
-            stylesFunction: () => getBaseSkeletonStyle(false, ELEMENT_SKELETON_DIMENSION / 2),
+            styleFunction: () => getBaseSkeletonStyle(false, ELEMENT_SKELETON_DIMENSION / 2),
           }),
           display: 'inline-block',
           minWidth: pxToRemWithUnit(BUTTON_LINK_SKELETON_WIDTH),

@@ -16,7 +16,7 @@ export const getTextSkeletonCss = (): string => {
       'p-text, p-text-list-item': {
         '&:not(.hydrated)': {
           ...extendPseudoWithTheme({
-            stylesFunction: () => getTextHeadlineSkeletonStyle(),
+            styleFunction: () => getTextHeadlineSkeletonStyle(),
           }),
           ...getThemedPseudoStyle(),
         },

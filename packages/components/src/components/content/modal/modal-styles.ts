@@ -1,12 +1,12 @@
 import type { JssStyle } from 'jss';
-import type { BreakpointCustomizable, GetStylesFunction, BreakpointKey } from '../../../utils';
-import { BREAKPOINTS, buildResponsiveStyles, getCss, mergeDeep, parseJSON, buildSlottedStyles } from '../../../utils';
+import type { BreakpointCustomizable, GetStyleFunction, BreakpointKey } from '../../../utils';
+import { BREAKPOINTS, buildResponsiveStyle, getCss, mergeDeep, parseJSON, buildSlottedStyles } from '../../../utils';
 import {
   addImportantToEachRule,
   contentWrapperVars,
   getBaseSlottedStyles,
-  getFocusStyles,
-  getInset,
+  getFocusStyle,
+  getInsetStyle,
   getThemedColors,
   mediaQuery,
   pxToRemWithUnit,
@@ -23,7 +23,7 @@ const { backgroundColor: darkThemeBackgroundColor } = getThemedColors('dark');
 const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
 export const stretchToFullModalWidthClassName = 'stretch-to-full-modal-width';
 
-export const getFullscreenStyles: GetStylesFunction = (fullscreen: boolean): JssStyle => {
+export const getFullscreenStyle: GetStyleFunction = (fullscreen: boolean): JssStyle => {
   return fullscreen
     ? {
         minWidth: '100%',
@@ -83,7 +83,7 @@ export const getComponentCss = (
     ':host': {
       ...addImportantToEachRule({
         position: 'fixed',
-        ...getInset(),
+        ...getInsetStyle(),
         zIndex: MODAL_Z_INDEX,
         display: 'flex',
         alignItems: 'center',
@@ -103,7 +103,7 @@ export const getComponentCss = (
       '&::before': addImportantToEachRule({
         content: '""',
         position: 'fixed',
-        ...getInset(),
+        ...getInsetStyle(),
         background: `${darkThemeBackgroundColor}e6`, // e6 = 0.9 alpha
       }),
     },
@@ -115,7 +115,7 @@ export const getComponentCss = (
         transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
         padding: pxToRemWithUnit(32),
         backgroundColor: lightThemeBackgroundColor,
-        ...getFocusVisibleFallback(getFocusStyles({ color: lightThemeBackgroundColor })),
+        ...getFocusVisibleFallback(getFocusStyle({ color: lightThemeBackgroundColor })),
         [mediaQueryM]: {
           padding: pxToRemWithUnit(40),
         },
@@ -127,7 +127,7 @@ export const getComponentCss = (
           margin: isFullscreenForXlAndXxl ? 0 : `10vh ${contentWrapperVars.marginXxl}`,
         },
       },
-      buildResponsiveStyles(fullscreen, getFullscreenStyles) as any
+      buildResponsiveStyle(fullscreen, getFullscreenStyle) as any
     ),
     ...(hasHeader && {
       header: {

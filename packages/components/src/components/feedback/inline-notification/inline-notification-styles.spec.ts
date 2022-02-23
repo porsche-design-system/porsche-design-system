@@ -56,7 +56,7 @@ describe('getNotificationRootStyles()', () => {
   });
 });
 
-describe('getNotificationIconStyles()', () => {
+describe('getNotificationIconStyle()', () => {
   it.each<InlineNotificationState>(['neutral', 'success', 'error', 'warning'])(
     'should return correct JssStyle for state: %s ',
     (state) => {
@@ -65,13 +65,13 @@ describe('getNotificationIconStyles()', () => {
   );
 });
 
-describe('getNotificationContentStyles()', () => {
+describe('getNotificationContentStyle()', () => {
   it('should return correct JssStyle', () => {
     expect(getNotificationContentStyle()).toMatchSnapshot();
   });
 });
 
-describe('getCloseIconStyles()', () => {
+describe('getCloseIconStyle()', () => {
   it('should return correct JssStyle', () => {
     expect(getCloseIconStyle()).toMatchSnapshot();
   });

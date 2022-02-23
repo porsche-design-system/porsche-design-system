@@ -1,6 +1,5 @@
 import type { Styles, JssStyle } from 'jss';
-import type { BreakpointCustomizable } from '../utils';
-import type { GetStyleFunction } from '../utils';
+import type { BreakpointCustomizable, GetStyleFunction } from '../utils';
 import type { LinkButtonVariant, ThemeExtendedElectric } from '../types';
 import { buildResponsiveStyle, isThemeDark } from '../utils';
 import {

@@ -2,7 +2,13 @@ import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper
 import type { FormState, Theme } from '../../../../types';
 import type { JssStyle, Styles } from 'jss';
 import { getCss, isThemeDark, mergeDeep } from '../../../../utils';
-import { getInset, getTextHiddenJssStyle, getTransition, pxToRemWithUnit, getThemedColors } from '../../../../styles';
+import {
+  getInsetStyle,
+  getTextHiddenJssStyle,
+  getTransition,
+  pxToRemWithUnit,
+  getThemedColors,
+} from '../../../../styles';
 import { fontFamily, fontSize, fontWeight, textSmall } from '@porsche-design-system/utilities-v2';
 import { OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 import { getThemedFormStateColors } from '../../../../styles/form-state-color-styles';
@@ -49,11 +55,16 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
   };
 };
 
-export const getFilterStyles = (isOpen: boolean, disabled: boolean, state: FormState, theme: Theme): Styles => {
+export const getFilterStyles = (
+  isOpen: boolean,
+  disabled: boolean,
+  state: FormState,
+  theme: Theme
+): Styles<'@global'> => {
   const { baseColor, backgroundColor, contrastHighColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
   const { formStateColor } = getThemedFormStateColors(theme, state);
 
-  const placeHolderStyles: JssStyle = {
+  const placeHolderStyle: JssStyle = {
     opacity: 1,
     color: disabled ? disabledColor : baseColor,
   };
@@ -79,9 +90,9 @@ export const getFilterStyles = (isOpen: boolean, disabled: boolean, state: FormS
         cursor: disabled ? 'not-allowed' : 'text',
         color: baseColor,
         background: backgroundColor,
-        '&::placeholder': placeHolderStyles,
-        '&::-webkit-input-placeholder': placeHolderStyles,
-        '&::-moz-placeholder': placeHolderStyles,
+        '&::placeholder': placeHolderStyle,
+        '&::-webkit-input-placeholder': placeHolderStyle,
+        '&::-moz-placeholder': placeHolderStyle,
         '&:focus': {
           opacity: disabled ? 0 : 1, // to display value while typing
           '&+span': {
@@ -94,7 +105,7 @@ export const getFilterStyles = (isOpen: boolean, disabled: boolean, state: FormS
         '&+span': {
           // for focus outline and click event on arrow
           position: 'absolute',
-          ...getInset(),
+          ...getInsetStyle(),
           outline: '1px solid transparent',
           outlineOffset: '2px',
           transition: getTransition('color'),

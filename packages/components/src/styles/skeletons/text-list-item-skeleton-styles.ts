@@ -9,7 +9,7 @@ export const getTextListItemSkeletonCss = (): string => {
       'p-text-list-item': {
         '&:not(.hydrated)': {
           ...extendPseudoWithTheme({
-            stylesFunction: () => getTextHeadlineSkeletonStyle(),
+            styleFunction: () => getTextHeadlineSkeletonStyle(),
           }),
           minHeight: pxToRemWithUnit(24),
           height: 'auto',
