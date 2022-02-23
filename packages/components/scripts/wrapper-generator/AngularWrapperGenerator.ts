@@ -1,7 +1,9 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { camelCase, pascalCase } from 'change-case';
+import { camelCase, paramCase, pascalCase } from 'change-case';
 import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
+import { getComponentMeta } from '@porsche-design-system/shared';
+import { PDS_SKELETON_CLASS_PREFIX } from './ReactWrapperGenerator';
 
 export class AngularWrapperGenerator extends AbstractWrapperGenerator {
   protected packageDir = 'components-angular';
@@ -24,6 +26,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
       'ElementRef',
       ...(hasEventProps ? ['EventEmitter'] : []),
       'NgZone',
+      ...(getComponentMeta(component).hasSkeleton ? ['OnInit'] : []),
     ];
     const importsFromAngular = `import { ${angularImports.join(', ')} } from '@angular/core';`;
 
@@ -72,6 +75,26 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
       ...outputProps.map((x) => `${x.key}!: EventEmitter<CustomEvent<${x.rawValueType.match(/<(.*?)>/)?.[1]}>>;`),
     ].join('\n  ');
 
+    const skeletonPropertyClassBindings = getComponentMeta(component)
+      .skeletonProps.map(({ propName, shouldStringifyValue }) => {
+        return `this.${propName} && this.el.classList.add(\`${PDS_SKELETON_CLASS_PREFIX}${paramCase(propName)}${
+          shouldStringifyValue ? `-\${JSON.stringify(this.${propName}).replace(/"/g, '')}` : ''
+        }\`);`;
+      })
+      .join('\n    ');
+
+    const getSkeletonOnInit = () => {
+      let result: string = '';
+      if (getComponentMeta(component).hasSkeleton) {
+        result = `
+
+  ngOnInit(){
+    ${skeletonPropertyClassBindings}
+  }`;
+      }
+      return result;
+    };
+
     const constructorCode = [
       'c.detach();',
       'this.el = r.nativeElement;',
@@ -79,6 +102,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     ].join('\n    ');
 
     const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
+    const implementsOnInit = getComponentMeta(component).hasSkeleton ? ' implements OnInit' : '';
 
     return `${inputsAndOutputs}
 
@@ -88,12 +112,12 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
 @Component({
   ${componentOpts}
 })
-export class ${this.generateComponentName(component)}${genericType} {
+export class ${this.generateComponentName(component)}${genericType}${implementsOnInit} {
   ${classMembers}
 
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     ${constructorCode}
-  }
+  }${getSkeletonOnInit()}
 }`;
   }
 
