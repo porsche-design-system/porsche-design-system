@@ -1,7 +1,7 @@
 import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
 import {
   BUTTON_LINK_SKELETON_WIDTH,
-  ELEMENT_SKELETON_HEIGHT,
+  ELEMENT_SKELETON_DIMENSION,
   extendPseudoWithTheme,
   getBaseSkeletonStyles,
   getSkeletonElementHeight,
@@ -14,14 +14,17 @@ export const getSelectTextFieldWrapperSkeletonCss = (): string => {
     '@global': {
       'p-select-wrapper, p-text-field-wrapper': {
         '&:not(.hydrated)': {
-          ...extendPseudoWithTheme('light', getBaseSkeletonStyles),
+          ...extendPseudoWithTheme({
+            stylesFunction: getBaseSkeletonStyles,
+            pseudosToExtend: ['&::before', '&::after'],
+          }),
 
           minWidth: pxToRemWithUnit(BUTTON_LINK_SKELETON_WIDTH),
-          height: getSkeletonElementHeight(ELEMENT_SKELETON_HEIGHT),
+          height: getSkeletonElementHeight(ELEMENT_SKELETON_DIMENSION),
           // TODO: mark skeletons as experimental in changelog
           // TODO: use constants for getComponentMeta for "property" class and values
           [`&[hide-label=true], &.${PDS_SKELETON_CLASS_PREFIX}hide-label`]: {
-            height: getSkeletonElementHeight(ELEMENT_SKELETON_HEIGHT, false),
+            height: getSkeletonElementHeight(ELEMENT_SKELETON_DIMENSION, false),
             '&::before': {
               content: 'none',
             },
@@ -31,7 +34,7 @@ export const getSelectTextFieldWrapperSkeletonCss = (): string => {
             },
           },
           [`&[theme=dark], &.${PDS_SKELETON_CLASS_PREFIX}theme-dark`]: {
-            ...extendPseudoWithTheme('dark'),
+            ...extendPseudoWithTheme({ theme: 'dark', pseudosToExtend: ['&::before', '&::after'] }),
           },
         },
       },
