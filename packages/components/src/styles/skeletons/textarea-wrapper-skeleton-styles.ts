@@ -1,5 +1,5 @@
 import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
-import { extendPseudoWithTheme, getBaseSkeletonStyles, getSkeletonElementHeight, getThemedPseudoStyles } from './';
+import { extendPseudoWithTheme, getBaseSkeletonStyle, getSkeletonElementHeight, getThemedPseudoStyle } from './';
 
 export const getTextareaWrapperSkeletonCss = (): string => {
   return getMinifiedCss({
@@ -7,11 +7,11 @@ export const getTextareaWrapperSkeletonCss = (): string => {
       'p-textarea-wrapper': {
         '&:not(.hydrated)': {
           ...extendPseudoWithTheme({
-            stylesFunction: getBaseSkeletonStyles,
+            stylesFunction: getBaseSkeletonStyle,
           }),
           height: '100%',
           minHeight: getSkeletonElementHeight(192),
-          ...getThemedPseudoStyles(true),
+          ...getThemedPseudoStyle(true),
         },
       },
     },

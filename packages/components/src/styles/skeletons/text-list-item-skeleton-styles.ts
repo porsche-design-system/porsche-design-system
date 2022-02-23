@@ -1,7 +1,7 @@
 import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
 import { pxToRemWithUnit } from '../common-styles';
-import { getTextHeadlineSkeletonStyles } from './text-skeleton-styles';
-import { extendPseudoWithTheme, getThemedPseudoStyles } from './skeleton-base-styles';
+import { getTextHeadlineSkeletonStyle } from './text-skeleton-styles';
+import { extendPseudoWithTheme, getThemedPseudoStyle } from './skeleton-base-styles';
 
 export const getTextListItemSkeletonCss = (): string => {
   return getMinifiedCss({
@@ -9,11 +9,11 @@ export const getTextListItemSkeletonCss = (): string => {
       'p-text-list-item': {
         '&:not(.hydrated)': {
           ...extendPseudoWithTheme({
-            stylesFunction: () => getTextHeadlineSkeletonStyles(),
+            stylesFunction: () => getTextHeadlineSkeletonStyle(),
           }),
           minHeight: pxToRemWithUnit(24),
           height: 'auto',
-          ...getThemedPseudoStyles(),
+          ...getThemedPseudoStyle(),
         },
       },
     },

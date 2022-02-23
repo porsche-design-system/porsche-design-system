@@ -1,12 +1,12 @@
 import type { JssStyle } from 'jss';
-import type { GetStylesFunction } from '../../../utils';
+import type { GetStyleFunction } from '../../../utils';
 import type { ButtonGroupDirectionType, ButtonGroupDirection } from './button-group-utils';
-import { buildResponsiveStyles, getCss } from '../../../utils';
+import { buildResponsiveStyle, getCss } from '../../../utils';
 import { addImportantToEachRule } from '../../../styles';
 import { spacing } from '@porsche-design-system/utilities-v2';
 
-const getDirectionStyles: GetStylesFunction = (direction: ButtonGroupDirectionType): JssStyle => {
-  const styles: { [key in ButtonGroupDirectionType]: JssStyle } = {
+const getDirectionStyle: GetStyleFunction = (direction: ButtonGroupDirectionType): JssStyle => {
+  const style: { [key in ButtonGroupDirectionType]: JssStyle } = {
     column: {
       flexFlow: 'column nowrap',
       alignItems: 'stretch',
@@ -20,11 +20,11 @@ const getDirectionStyles: GetStylesFunction = (direction: ButtonGroupDirectionTy
       marginLeft: `-${spacing[8]}`,
     },
   };
-  return styles[direction];
+  return style[direction];
 };
 
-const getDirectionSlottedStyles: GetStylesFunction = (direction: ButtonGroupDirectionType): JssStyle => {
-  const styles: { [key in ButtonGroupDirectionType]: JssStyle } = {
+const getDirectionSlottedStyle: GetStyleFunction = (direction: ButtonGroupDirectionType): JssStyle => {
+  const style: { [key in ButtonGroupDirectionType]: JssStyle } = {
     column: {
       marginRight: 0,
       marginLeft: 0,
@@ -34,7 +34,7 @@ const getDirectionSlottedStyles: GetStylesFunction = (direction: ButtonGroupDire
       marginLeft: spacing[8],
     },
   };
-  return styles[direction];
+  return style[direction];
 };
 
 export const getComponentCss = (direction: ButtonGroupDirection): string => {
@@ -46,11 +46,11 @@ export const getComponentCss = (direction: ButtonGroupDirection): string => {
       div: {
         display: 'flex',
         marginTop: `-${spacing[16]}`,
-        ...buildResponsiveStyles(direction, getDirectionStyles),
+        ...buildResponsiveStyle(direction, getDirectionStyle),
       },
       '::slotted(*)': addImportantToEachRule({
         marginTop: spacing[16],
-        ...buildResponsiveStyles(direction, getDirectionSlottedStyles),
+        ...buildResponsiveStyle(direction, getDirectionSlottedStyle),
       }),
     },
   });

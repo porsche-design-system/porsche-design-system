@@ -110,14 +110,14 @@ export const buildSlottedStyles = (host: HTMLElement, jssStyle: JssStyle): Style
   },
 });
 
-export type GetStylesFunction = (value?: any) => JssStyle;
+export type GetStyleFunction = (value?: any) => JssStyle;
 
 export const buildResponsiveHostStyles = <T>(
   rawValue: BreakpointCustomizable<T>,
-  getStyles: GetStylesFunction
-): Styles<':host'> => ({ ':host': buildResponsiveStyles(rawValue, getStyles) });
+  getStyles: GetStyleFunction
+): Styles<':host'> => ({ ':host': buildResponsiveStyle(rawValue, getStyles) });
 
-export const buildResponsiveStyles = <T>(rawValue: BreakpointCustomizable<T>, getStyles: GetStylesFunction): Styles => {
+export const buildResponsiveStyle = <T>(rawValue: BreakpointCustomizable<T>, getStyle: GetStyleFunction): JssStyle => {
   const value = parseJSON(rawValue as any);
 
   return typeof value === 'object'
@@ -128,11 +128,11 @@ export const buildResponsiveStyles = <T>(rawValue: BreakpointCustomizable<T>, ge
         .reduce(
           (result, breakpointValue: Breakpoint) => ({
             ...result,
-            [mediaQuery(breakpointValue)]: getStyles(value[breakpointValue]) as Styles,
+            [mediaQuery(breakpointValue)]: getStyle(value[breakpointValue]),
           }),
-          getStyles(value.base) as Styles
+          getStyle(value.base)
         )
-    : (getStyles(value) as Styles);
+    : getStyle(value);
 };
 
 export const isObject = <T extends Record<string, any>>(obj: T): boolean =>

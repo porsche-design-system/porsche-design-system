@@ -1,7 +1,7 @@
 import type { JssStyle } from 'jss';
-import type { BreakpointCustomizable, GetStylesFunction } from '../../../utils';
+import type { BreakpointCustomizable, GetStyleFunction } from '../../../utils';
 import type { AlignLabel, AlignLabelType, ThemeExtendedElectric } from '../../../types';
-import { buildResponsiveStyles, getCss, isThemeLightElectric, mergeDeep } from '../../../utils';
+import { buildResponsiveStyle, getCss, isThemeLightElectric, mergeDeep } from '../../../utils';
 import {
   addImportantToEachRule,
   getTextHiddenJssStyle,
@@ -51,7 +51,7 @@ const getColors = (
   };
 };
 
-const getAlignLabelStyles: GetStylesFunction = (alignLabel: AlignLabelType): JssStyle => {
+const getAlignLabelStyle: GetStyleFunction = (alignLabel: AlignLabelType): JssStyle => {
   const styles: { [key in AlignLabelType]: JssStyle } = {
     left: {
       order: 0,
@@ -67,7 +67,7 @@ const getAlignLabelStyles: GetStylesFunction = (alignLabel: AlignLabelType): Jss
   return styles[alignLabel];
 };
 
-const getStretchStyles: GetStylesFunction = (stretch: boolean): JssStyle => {
+const getStretchStyle: GetStyleFunction = (stretch: boolean): JssStyle => {
   return stretch
     ? {
         width: '100%',
@@ -109,7 +109,7 @@ export const getComponentCss = (
       minWidth: 0, // prevents flex child to overflow max available parent size
       minHeight: 0, // prevents flex child to overflow max available parent size
       cursor: isDisabledOrLoading ? 'auto' : 'pointer',
-      ...buildResponsiveStyles(stretch, getStretchStyles),
+      ...buildResponsiveStyle(stretch, getStretchStyle),
     },
     '@global': {
       button: {
@@ -151,8 +151,8 @@ export const getComponentCss = (
       minHeight: 0, // prevents flex child to overflow max available parent size
       color: textColor,
       ...mergeDeep(
-        buildResponsiveStyles(alignLabel, getAlignLabelStyles),
-        buildResponsiveStyles(hideLabel, getTextHiddenJssStyle)
+        buildResponsiveStyle(alignLabel, getAlignLabelStyle),
+        buildResponsiveStyle(hideLabel, getTextHiddenJssStyle)
       ),
     },
     toggle: {

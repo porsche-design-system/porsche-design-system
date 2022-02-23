@@ -1,7 +1,7 @@
 import {
   attachComponentCss,
   buildResponsiveHostStyles,
-  buildResponsiveStyles,
+  buildResponsiveStyle,
   buildSlottedStyles,
   getCachedComponentCss,
   getCss,
@@ -91,16 +91,16 @@ describe('buildSlottedStyles()', () => {
   });
 });
 
-describe('buildResponsiveHostStyles()', () => {
-  describe('for simple getStyles', () => {
-    const getStyles = (val: number): JssStyle => ({ width: 100 * val });
+describe('buildResponsiveHostStyle()', () => {
+  describe('for simple getStyle', () => {
+    const getStyle = (val: number): JssStyle => ({ width: 100 * val });
 
     it('should return flat jss for simple type', () => {
-      expect(buildResponsiveHostStyles(6, getStyles)).toStrictEqual({ ':host': { width: 600 } });
+      expect(buildResponsiveHostStyles(6, getStyle)).toStrictEqual({ ':host': { width: 600 } });
     });
 
     it('should return nested jss for responsive type', () => {
-      expect(buildResponsiveHostStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyles)).toStrictEqual({
+      expect(buildResponsiveHostStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyle)).toStrictEqual({
         ':host': {
           width: 600,
           '@media (min-width: 480px)': { width: 300 },
@@ -113,15 +113,15 @@ describe('buildResponsiveHostStyles()', () => {
     });
   });
 
-  describe('for complex getStyles', () => {
-    const getStyles = (val: number): JssStyle => ({ width: 100 * val, display: 'block' });
+  describe('for complex getStyle', () => {
+    const getStyle = (val: number): JssStyle => ({ width: 100 * val, display: 'block' });
 
     it('should return flat jss for simple type', () => {
-      expect(buildResponsiveHostStyles(6, getStyles)).toStrictEqual({ ':host': { width: 600, display: 'block' } });
+      expect(buildResponsiveHostStyles(6, getStyle)).toStrictEqual({ ':host': { width: 600, display: 'block' } });
     });
 
     it('should return nested jss for responsive type', () => {
-      expect(buildResponsiveHostStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyles)).toStrictEqual({
+      expect(buildResponsiveHostStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyle)).toStrictEqual({
         ':host': {
           width: 600,
           display: 'block',
@@ -137,15 +137,15 @@ describe('buildResponsiveHostStyles()', () => {
 });
 
 describe('buildResponsiveStyles()', () => {
-  describe('for simple getStyles', () => {
-    const getStyles = (val: number): JssStyle => ({ width: 100 * val });
+  describe('for simple getStyle', () => {
+    const getStyle = (val: number): JssStyle => ({ width: 100 * val });
 
     it('should return flat jss for simple type', () => {
-      expect(buildResponsiveStyles(6, getStyles)).toStrictEqual({ width: 600 });
+      expect(buildResponsiveStyle(6, getStyle)).toStrictEqual({ width: 600 });
     });
 
     it('should return nested jss for responsive type', () => {
-      expect(buildResponsiveStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyles)).toStrictEqual({
+      expect(buildResponsiveStyle({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyle)).toStrictEqual({
         width: 600,
         '@media (min-width: 480px)': { width: 300 },
         '@media (min-width: 760px)': { width: 400 },
@@ -156,15 +156,15 @@ describe('buildResponsiveStyles()', () => {
     });
   });
 
-  describe('for complex getStyles', () => {
-    const getStyles = (val: number): JssStyle => ({ width: 100 * val, display: 'block' });
+  describe('for complex getStyle', () => {
+    const getStyle = (val: number): JssStyle => ({ width: 100 * val, display: 'block' });
 
     it('should return flat jss for simple type', () => {
-      expect(buildResponsiveStyles(6, getStyles)).toStrictEqual({ width: 600, display: 'block' });
+      expect(buildResponsiveStyle(6, getStyle)).toStrictEqual({ width: 600, display: 'block' });
     });
 
     it('should return nested jss for responsive type', () => {
-      expect(buildResponsiveStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyles)).toStrictEqual({
+      expect(buildResponsiveStyle({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyle)).toStrictEqual({
         width: 600,
         display: 'block',
         '@media (min-width: 480px)': { width: 300, display: 'block' },

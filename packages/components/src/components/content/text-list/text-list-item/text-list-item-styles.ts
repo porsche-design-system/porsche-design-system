@@ -1,11 +1,11 @@
 import type { JssStyle } from 'jss';
-import type { GetStylesFunction } from '../../../../utils';
+import type { GetStyleFunction } from '../../../../utils';
 import type { ListType, OrderType } from '../text-list/text-list-utils';
 import { getCss, mergeDeep } from '../../../../utils';
 import { addImportantToEachRule, pxToRemWithUnit } from '../../../../styles';
 import { textSmall } from '@porsche-design-system/utilities-v2';
 
-const getNestedListStyles = (isNestedList: boolean, listType: ListType): JssStyle =>
+const getNestedListStyle = (isNestedList: boolean, listType: ListType): JssStyle =>
   isNestedList &&
   listType === 'unordered' && {
     '&:before': {
@@ -15,7 +15,7 @@ const getNestedListStyles = (isNestedList: boolean, listType: ListType): JssStyl
     },
   };
 
-const getOrderedStyles: GetStylesFunction = (): JssStyle => ({
+const getOrderedStyle: GetStyleFunction = (): JssStyle => ({
   paddingLeft: pxToRemWithUnit(40),
   '&:before': {
     right: 'calc(100% - 24px)',
@@ -29,7 +29,7 @@ const getOrderedStyles: GetStylesFunction = (): JssStyle => ({
   },
 });
 
-const getUnorderedStyles: GetStylesFunction = (): JssStyle => ({
+const getUnorderedStyle: GetStyleFunction = (): JssStyle => ({
   '&:before': {
     content: '""',
     left: 0,
@@ -40,28 +40,28 @@ const getUnorderedStyles: GetStylesFunction = (): JssStyle => ({
   },
 });
 
-const getNumberedStyles: GetStylesFunction = (isNestedList: boolean): JssStyle => ({
+const getNumberedStyle: GetStyleFunction = (isNestedList: boolean): JssStyle => ({
   '&:before': {
     content: `counters(section, ".", decimal) ${isNestedList ? '' : '"."'}`,
   },
 });
 
-const getAlphabeticallyStyles: GetStylesFunction = (isNestedList: boolean): JssStyle => ({
+const getAlphabeticallyStyle: GetStyleFunction = (isNestedList: boolean): JssStyle => ({
   '&:before': {
     content: `counters(section, ".", lower-latin) ${isNestedList ? '' : '"."'}`,
   },
 });
 
-const getTypeStyles = (listType: ListType, orderType: OrderType, isNestedList: boolean): JssStyle => {
+const getTypeStyle = (listType: ListType, orderType: OrderType, isNestedList: boolean): JssStyle => {
   const isOrderedList = listType === 'ordered';
 
   return mergeDeep(
     isOrderedList
       ? mergeDeep(
-          getOrderedStyles(),
-          orderType === 'numbered' ? getNumberedStyles(isNestedList) : getAlphabeticallyStyles(isNestedList)
+          getOrderedStyle(),
+          orderType === 'numbered' ? getNumberedStyle(isNestedList) : getAlphabeticallyStyle(isNestedList)
         )
-      : getUnorderedStyles()
+      : getUnorderedStyle()
   );
 };
 
@@ -81,8 +81,8 @@ export const getComponentCss = (listType: ListType, orderType: OrderType, isNest
     ':host': addImportantToEachRule(
       mergeDeep(
         baseComponentStyle,
-        getTypeStyles(listType, orderType, isNestedList),
-        getNestedListStyles(isNestedList, listType)
+        getTypeStyle(listType, orderType, isNestedList),
+        getNestedListStyle(isNestedList, listType)
       )
     ),
   });

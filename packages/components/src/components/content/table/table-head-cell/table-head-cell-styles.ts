@@ -1,8 +1,8 @@
 import { getCss } from '../../../../utils';
 import {
   addImportantToEachRule,
-  getFocusStyles,
-  getHoverStyles,
+  getFocusStyle,
+  getHoverStyle,
   getTextHiddenJssStyle,
   getTransition,
   pxToRemWithUnit,
@@ -38,8 +38,8 @@ export const getComponentCss = (): string => {
         textAlign: 'left',
         background: 'transparent',
         cursor: 'pointer',
-        ...getHoverStyles(),
-        ...getFocusStyles({ offset: 1 }),
+        ...getHoverStyle(),
+        ...getFocusStyle({ offset: 1 }),
         '&:hover, &:focus': {
           '& .icon': {
             opacity: 1,

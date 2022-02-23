@@ -1,11 +1,11 @@
 import type { ThemeExtendedElectric } from '../../../../types';
 import { getCss } from '../../../../utils';
-import { addImportantToEachRule, getFocusStyles, getThemedColors } from '../../../../styles';
+import { addImportantToEachRule, getFocusStyle, getThemedColors } from '../../../../styles';
 
 export const getComponentCss = (theme: ThemeExtendedElectric): string => {
   const { baseColor } = getThemedColors(theme);
 
-  const hostFocusStyle = Object.entries(getFocusStyles({ color: baseColor })).reduce((newObj, [key, val]) => {
+  const hostFocusStyle = Object.entries(getFocusStyle({ color: baseColor })).reduce((newObj, [key, val]) => {
     if (key.startsWith('&')) {
       newObj[`&(${key.slice(1)})`] = val;
     } else {
