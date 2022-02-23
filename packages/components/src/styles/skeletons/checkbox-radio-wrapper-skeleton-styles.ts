@@ -5,7 +5,7 @@ import {
   ELEMENT_SKELETON_DIMENSION,
   extendPseudoWithTheme,
   getBaseSkeletonStyles,
-  PDS_SKELETON_CLASS_PREFIX,
+  getThemedPseudoStyles,
 } from './skeleton-base-styles';
 
 export const getCheckboxRadioWrapperSkeletonCss = (): string => {
@@ -18,9 +18,7 @@ export const getCheckboxRadioWrapperSkeletonCss = (): string => {
           }),
           display: 'block',
           minWidth: pxToRemWithUnit(BUTTON_LINK_SKELETON_WIDTH),
-          [`&[theme=dark], &.${PDS_SKELETON_CLASS_PREFIX}theme-dark`]: {
-            ...extendPseudoWithTheme({ theme: 'dark' }),
-          },
+          ...getThemedPseudoStyles(),
         },
       },
     },

@@ -1,17 +1,30 @@
 import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
-import { getElementBackgroundGradient, getPseudoElementStyles, getSkeletonElementHeight } from './skeleton-base-styles';
-import type { Styles } from 'jss';
+import {
+  extendPseudoWithTheme,
+  getElementBackgroundGradient,
+  getPseudoElementStyles,
+  getSkeletonElementHeight,
+  getThemedPseudoStyles,
+} from './skeleton-base-styles';
+import { textSmall } from '@porsche-design-system/utilities-v2';
+import { JssStyle } from 'jss';
+import { getTypographyElementHeight } from './headline-skeleton-styles';
 
 export const getTextSkeletonCss = (): string => {
   return getMinifiedCss({
     '@global': {
       'p-text, p-text-list-item': {
-        '&:not(.hydrated)': getTextHeadlineSkeletonStyles(),
+        '&:not(.hydrated)': {
+          ...extendPseudoWithTheme({
+            stylesFunction: () => getTextHeadlineSkeletonStyles(),
+          }),
+          ...getThemedPseudoStyles(),
+        },
       },
     },
   });
 };
-export const getTextHeadlineSkeletonStyles = (elHeight = 24): Styles => ({
+export const getTextHeadlineSkeletonStyles = (elHeight = getTypographyElementHeight(textSmall)): JssStyle => ({
   display: 'block',
   position: 'relative',
   color: 'transparent',
