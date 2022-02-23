@@ -1,7 +1,7 @@
 import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
 import { pxToRemWithUnit } from '../common-styles';
 import { getTextHeadlineSkeletonStyle } from './text-skeleton-styles';
-import { extendPseudoWithTheme, getThemedPseudoStyle } from './skeleton-base-styles';
+import { extendPseudoWithTheme, getThemedPseudoStyle } from './base-skeleton-styles';
 
 export const getTextListItemSkeletonCss = (): string => {
   return getMinifiedCss({

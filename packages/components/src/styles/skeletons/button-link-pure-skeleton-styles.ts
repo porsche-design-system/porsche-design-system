@@ -5,7 +5,7 @@ import {
   extendPseudoWithTheme,
   getBaseSkeletonStyle,
   getThemedPseudoStyle,
-} from './skeleton-base-styles';
+} from './base-skeleton-styles';
 import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
 
 export const getButtonLinkPureSkeletonCss = (): string => {

@@ -5,7 +5,7 @@ import {
   getPseudoElementStyle,
   getSkeletonElementHeight,
   getThemedPseudoStyle,
-} from './skeleton-base-styles';
+} from './base-skeleton-styles';
 import { textSmall } from '@porsche-design-system/utilities-v2';
 import { JssStyle } from 'jss';
 import { getTypographyElementHeight } from './headline-skeleton-styles';

@@ -6,7 +6,7 @@ import {
   extendPseudoWithTheme,
   getBaseSkeletonStyle,
   getThemedPseudoStyle,
-} from './skeleton-base-styles';
+} from './base-skeleton-styles';
 
 export const getCheckboxRadioWrapperSkeletonCss = (): string => {
   return getMinifiedCss({

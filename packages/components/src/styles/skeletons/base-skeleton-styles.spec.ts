@@ -1,4 +1,4 @@
-import { getBaseSkeletonStyle } from './skeleton-base-styles';
+import { getBaseSkeletonStyle } from './base-skeleton-styles';
 
 it('should return correct styles', () => {
   expect(getBaseSkeletonStyle()).toMatchSnapshot();

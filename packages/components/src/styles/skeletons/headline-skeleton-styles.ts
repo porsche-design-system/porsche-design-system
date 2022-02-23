@@ -6,7 +6,7 @@ import {
   getSkeletonElementHeight,
   getThemedPseudoStyle,
   PDS_SKELETON_CLASS_PREFIX,
-} from './skeleton-base-styles';
+} from './base-skeleton-styles';
 import { mediaQueryMin, mediaQueryMinMax } from '@porsche-design-system/utilities-v2/src/jss';
 import type { JssStyle } from 'jss';
 import {
