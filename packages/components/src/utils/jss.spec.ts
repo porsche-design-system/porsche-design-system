@@ -259,7 +259,7 @@ describe('attachComponentCss()', () => {
 
   describe('without CSSStyleSheet support', () => {
     it('should create style node and prepend it in shadowRoot', () => {
-      const spy = jest.spyOn(jssUtils, 'supportsConstructableStylesheets').mockImplementation(() => false);
+      const spy = jest.spyOn(jssUtils, 'getHasConstructableStylesheetSupport').mockReturnValue(false);
 
       const div = document.createElement('p-some-component');
       div.attachShadow({ mode: 'open' });

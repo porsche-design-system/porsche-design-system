@@ -6,15 +6,20 @@ const cleanupLoader = () => {
   const srcFile = path.normalize(srcFilePath);
   const srcContent = fs.readFileSync(srcFile, 'utf8');
 
-  const [, lazyImport] = new RegExp(/(import.*?bootstrapLazy.*?);/).exec(srcContent) ?? [];
-  const [, globalScriptsImport] = new RegExp(/(import.*?globalScripts.*?);/).exec(srcContent) ?? [];
-  const [, lazyData] = new RegExp(/bootstrapLazy\(\[(.*)],/).exec(srcContent) ?? [];
+  const [, lazyImport] = /(import.*?bootstrapLazy.*?);/.exec(srcContent) || [];
+  const [, globalScriptsImport] = /(import.*?globalScripts.*?);/.exec(srcContent) || [];
+  const [, lazyData] = /bootstrapLazy\(\[(.*)],/.exec(srcContent) || [];
 
   const directory = path.resolve(srcFilePath, '..');
+  // find the file that contains definition of isBrowser util
   const [fileName] = fs.readdirSync(directory).filter((el) => !!el.match(/^ssr-handling-[\d\w]*.js$/));
   const filePath = path.resolve(directory, fileName);
   const fileContent = fs.readFileSync(filePath, 'utf8');
-  const [, browserImport] = new RegExp(/export.*\{.*(\w) };/).exec(fileContent) ?? [];
+  const [, browserImport] = /export \{.*?isBrowser(?:\$1)? as (\w+).*?};/.exec(fileContent) || [];
+
+  if (browserImport === undefined) {
+    throw new Error('browserImport could not be extracted.');
+  }
 
   const isBrowserImport = `import { ${browserImport} as isBrowser } from './${fileName}'`;
 

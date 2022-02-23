@@ -17,7 +17,7 @@ exports[`getBaseSlottedStyles() should return correct styles 1`] = `
 Object {
   "& a": Object {
     "&::-moz-focus-inner": Object {
-      "border": "0",
+      "border": 0,
     },
     "&:focus": Object {
       "outlineColor": "currentColor",
@@ -29,7 +29,7 @@ Object {
       "color": "#d5001c",
     },
     "color": "inherit",
-    "outline": "transparent solid 1px",
+    "outline": "1px solid transparent",
     "outlineOffset": "1px",
     "textDecoration": "underline",
     "transition": "color var(--p-transition-duration, .24s) ease",
@@ -50,7 +50,7 @@ exports[`getBaseSlottedStyles() should return correct styles without dark theme 
 Object {
   "& a": Object {
     "&::-moz-focus-inner": Object {
-      "border": "0",
+      "border": 0,
     },
     "&:focus": Object {
       "outlineColor": "currentColor",
@@ -62,7 +62,7 @@ Object {
       "color": "#d5001c",
     },
     "color": "inherit",
-    "outline": "transparent solid 1px",
+    "outline": "1px solid transparent",
     "outlineOffset": "1px",
     "textDecoration": "underline",
     "transition": "color var(--p-transition-duration, .24s) ease",
@@ -175,7 +175,7 @@ Object {
     "bottom": 0,
     "content": "\\"\\"",
     "left": 0,
-    "outline": "transparent solid 1px",
+    "outline": "1px solid transparent",
     "outlineOffset": "1px",
     "position": "absolute",
     "right": 0,
@@ -187,7 +187,7 @@ Object {
   "&:focus:not(:focus-visible)::before": Object {
     "outlineColor": "transparent",
   },
-  "outline": "transparent none",
+  "outline": 0,
 }
 `;
 
@@ -200,7 +200,7 @@ Object {
     "bottom": 0,
     "content": "\\"\\"",
     "left": 0,
-    "outline": "transparent solid 1px",
+    "outline": "1px solid transparent",
     "outlineOffset": "2px",
     "position": "absolute",
     "right": 0,
@@ -212,14 +212,14 @@ Object {
   "&:focus:not(:focus-visible)::after": Object {
     "outlineColor": "transparent",
   },
-  "outline": "transparent none",
+  "outline": 0,
 }
 `;
 
 exports[`getFocusStyles() should return correct JssStyle for params: { color: 'deeppink', offset: 3 } 1`] = `
 Object {
   "&::-moz-focus-inner": Object {
-    "border": "0",
+    "border": 0,
   },
   "&:focus": Object {
     "outlineColor": "deeppink",
@@ -227,7 +227,7 @@ Object {
   "&:focus:not(:focus-visible)": Object {
     "outlineColor": "transparent",
   },
-  "outline": "transparent solid 1px",
+  "outline": "1px solid transparent",
   "outlineOffset": "3px",
 }
 `;
@@ -235,7 +235,7 @@ Object {
 exports[`getFocusStyles() should return correct JssStyle for params: { color: 'red' } 1`] = `
 Object {
   "&::-moz-focus-inner": Object {
-    "border": "0",
+    "border": 0,
   },
   "&:focus": Object {
     "outlineColor": "red",
@@ -243,7 +243,7 @@ Object {
   "&:focus:not(:focus-visible)": Object {
     "outlineColor": "transparent",
   },
-  "outline": "transparent solid 1px",
+  "outline": "1px solid transparent",
   "outlineOffset": "2px",
 }
 `;
@@ -251,7 +251,7 @@ Object {
 exports[`getFocusStyles() should return correct JssStyle for params: { offset: 1 } 1`] = `
 Object {
   "&::-moz-focus-inner": Object {
-    "border": "0",
+    "border": 0,
   },
   "&:focus": Object {
     "outlineColor": "currentColor",
@@ -259,7 +259,7 @@ Object {
   "&:focus:not(:focus-visible)": Object {
     "outlineColor": "transparent",
   },
-  "outline": "transparent solid 1px",
+  "outline": "1px solid transparent",
   "outlineOffset": "1px",
 }
 `;
@@ -267,7 +267,7 @@ Object {
 exports[`getFocusStyles() should return correct JssStyle for params: {} 1`] = `
 Object {
   "&::-moz-focus-inner": Object {
-    "border": "0",
+    "border": 0,
   },
   "&:focus": Object {
     "outlineColor": "currentColor",
@@ -275,7 +275,7 @@ Object {
   "&:focus:not(:focus-visible)": Object {
     "outlineColor": "transparent",
   },
-  "outline": "transparent solid 1px",
+  "outline": "1px solid transparent",
   "outlineOffset": "2px",
 }
 `;
@@ -287,7 +287,7 @@ Object {
   "height": "auto",
   "margin": 0,
   "overflow": "visible",
-  "padding": "0 0 0.25rem 0",
+  "padding": "0 0 0.25rem",
   "position": "static",
   "whiteSpace": "normal",
   "width": "fit-content",
@@ -302,7 +302,7 @@ Object {
   "height": "1px",
   "margin": "-1px",
   "overflow": "hidden",
-  "padding": "0 0 0.25rem 0",
+  "padding": "0 0 0.25rem",
   "position": "absolute",
   "whiteSpace": "nowrap",
   "width": "fit-content",

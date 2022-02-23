@@ -45,12 +45,16 @@ export const getCss = (jssStyles: Styles): string =>
 
 export const supportsConstructableStylesheets = (): boolean => {
   try {
-    new CSSStyleSheet();
     return typeof new CSSStyleSheet().replaceSync === 'function';
-  } catch (e) {
+  } catch {
     return false;
   }
 };
+
+// determine it once
+const hasConstructableStylesheetSupport = supportsConstructableStylesheets();
+// getter for easy mocking
+export const getHasConstructableStylesheetSupport = (): boolean => hasConstructableStylesheetSupport;
 
 type CssCacheMap = Map<string, string>;
 export const componentCssMap = new Map<TagName, CssCacheMap>();
@@ -83,7 +87,7 @@ export const attachComponentCss = <T extends (...p: any[]) => string>(
 ): void => {
   const css = getCachedComponentCss(host, getComponentCss, ...args);
 
-  if (supportsConstructableStylesheets()) {
+  if (getHasConstructableStylesheetSupport()) {
     const [sheet] = host.shadowRoot.adoptedStyleSheets;
     if (sheet) {
       sheet.replaceSync(css);
@@ -110,14 +114,18 @@ export const buildSlottedStyles = (host: HTMLElement, jssStyle: JssStyle): Style
   },
 });
 
-export type GetStyleFunction = (value?: any) => JssStyle;
+export type GetStylesFunction = (value?: any) => JssStyle;
 
+/**
+ * @deprecated use buildResponsiveStyles() directly
+ */
 export const buildResponsiveHostStyles = <T>(
   rawValue: BreakpointCustomizable<T>,
-  getStyles: GetStyleFunction
-): Styles<':host'> => ({ ':host': buildResponsiveStyle(rawValue, getStyles) });
+  getStyles: GetStylesFunction
+): Styles<':host'> => ({ ':host': buildResponsiveStyles(rawValue, getStyles) });
 
-export const buildResponsiveStyle = <T>(rawValue: BreakpointCustomizable<T>, getStyle: GetStyleFunction): JssStyle => {
+export const buildResponsiveStyles = <T>(rawValue: BreakpointCustomizable<T>, getStyles: GetStylesFunction): Styles => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const value = parseJSON(rawValue as any);
 
   return typeof value === 'object'
@@ -128,11 +136,11 @@ export const buildResponsiveStyle = <T>(rawValue: BreakpointCustomizable<T>, get
         .reduce(
           (result, breakpointValue: Breakpoint) => ({
             ...result,
-            [mediaQuery(breakpointValue)]: getStyle(value[breakpointValue]),
+            [mediaQuery(breakpointValue)]: getStyles(value[breakpointValue]) as Styles,
           }),
-          getStyle(value.base)
+          getStyles(value.base) as Styles
         )
-    : getStyle(value);
+    : (getStyles(value) as Styles);
 };
 
 export const isObject = <T extends Record<string, any>>(obj: T): boolean =>

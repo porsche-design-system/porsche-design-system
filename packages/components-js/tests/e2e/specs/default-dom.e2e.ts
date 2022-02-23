@@ -5,8 +5,8 @@ import {
   selectNode,
   waitForComponentsReady,
 } from '../helpers';
-import { Page } from 'puppeteer';
-import { INTERNAL_TAG_NAMES, TAG_NAMES, TagName } from '@porsche-design-system/shared';
+import type { Page } from 'puppeteer';
+import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));

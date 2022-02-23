@@ -9,7 +9,6 @@ import {
   getTransition,
   pxToRemWithUnit,
   getThemedColors,
-  getThemedColorsDarken,
 } from '../../../styles';
 import { colorExternal } from '@porsche-design-system/utilities-v2';
 import { getIconStyle, getLabelStyle, getRootStyle, getSlottedLinkStyle } from '../../../styles/link-button-styles';
@@ -22,7 +21,7 @@ const getColors = (
   theme: Theme
 ): { baseColor: string; baseColorHover: string; textColor: string; textColorHover: string } => {
   const isDarkTheme = isThemeDark(theme);
-  const { contrastHighColorDarken, baseColorDarken } = getThemedColorsDarken(theme);
+  const { contrastHighColorDarken, baseColorDarken } = getThemedColors(theme);
   const externalBrandColor = colorExternal[icon?.split('-')[1]];
 
   return {
