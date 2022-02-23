@@ -4,7 +4,7 @@ import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
 import { getComponentMeta } from '@porsche-design-system/shared';
 
-const PDS_SKELETON_CLASS_PREFIX = 'PDS-Skeleton--';
+export const PDS_SKELETON_CLASS_PREFIX = 'PDS-Skeleton--';
 
 export class ReactWrapperGenerator extends AbstractWrapperGenerator {
   protected packageDir = 'components-react';
@@ -103,10 +103,10 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
           ];
     const componentEffects = propsToSync.length ? componentEffectsArr.join('\n    ') : '';
 
-    let skeletonClassNames;
+    let skeletonClassNames: string = '';
     if (getComponentMeta(component).hasSkeleton) {
       skeletonClassNames = getComponentMeta(component)
-        .skeletonProps?.map(({ propName, shouldStringifyValue }) => {
+        .skeletonProps.map(({ propName, shouldStringifyValue }) => {
           return `\${${propName} ? \` ${PDS_SKELETON_CLASS_PREFIX}${paramCase(propName)}${
             shouldStringifyValue ? `-\${JSON.stringify(${propName}).replace(/"/g, '')}` : ''
           }\` : ''}`;

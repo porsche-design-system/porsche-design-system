@@ -40,7 +40,7 @@ const generateComponentMeta = (): void => {
   }[];
   hasSlottedCss: boolean;
   hasSkeleton: boolean;
-  skeletonProps?: { propName: string; shouldStringifyValue: boolean }[];
+  skeletonProps: { propName: string; shouldStringifyValue: boolean }[];
   styling: 'jss' | 'scss' | 'hybrid';
 };`,
     `type ComponentsMeta = { [key in TagName]: ComponentMeta };`,
@@ -57,7 +57,7 @@ const generateComponentMeta = (): void => {
     }[];
     hasSlottedCss: boolean;
     hasSkeleton: boolean;
-    skeletonProps?: { propName: string; shouldStringifyValue: boolean }[];
+    skeletonProps: { propName: string; shouldStringifyValue: boolean }[];
     styling: 'jss' | 'scss' | 'hybrid';
   };
 
