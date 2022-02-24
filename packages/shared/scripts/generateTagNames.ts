@@ -14,6 +14,7 @@ const TAG_NAMES_WITH_SKELETON: TagName[] = [
   'p-headline',
   'p-link',
   'p-link-pure',
+  'p-link-social',
   'p-radio-button-wrapper',
   'p-select-wrapper',
   'p-text',

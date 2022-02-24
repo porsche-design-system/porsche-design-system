@@ -12,7 +12,7 @@ import { pxToRemWithUnit } from '../common-styles';
 export const getButtonLinkSkeletonCss = (): string => {
   return getMinifiedCss({
     '@global': {
-      'p-button, p-link': {
+      'p-button, p-link, p-link-social': {
         '&:not(.hydrated)': {
           ...extendPseudoWithTheme({ styleFunction: () => getBaseSkeletonStyle(false) }),
           display: 'inline-flex',
