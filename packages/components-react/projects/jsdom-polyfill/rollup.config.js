@@ -1,6 +1,5 @@
 import resolve from '@rollup/plugin-node-resolve';
 import polyfill from 'rollup-plugin-polyfill';
-import pkg from '@porsche-design-system/js/package.json';
 import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 import modify from 'rollup-plugin-modify';
