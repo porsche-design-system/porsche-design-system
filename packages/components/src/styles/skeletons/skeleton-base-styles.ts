@@ -11,15 +11,40 @@ export const BUTTON_LINK_SKELETON_WIDTH = 192;
 export const ELEMENT_SKELETON_DIMENSION = 48;
 const LABEL_HEIGHT = 24;
 const LABEL_HEIGHT_WITH_SPACING = 28;
+export const LABEL_HEIGHT_WITH_DESCRIPTION = 52;
 const LABEL_HEIGHT_SPACING = 4;
 
-export const getSkeletonElementHeight = (height: number, withLabel = true): string =>
-  withLabel ? pxToRemWithUnit(height + LABEL_HEIGHT_WITH_SPACING) : pxToRemWithUnit(height);
+export const getSkeletonElementHeight = (height: number, withLabel = true, withDescription?: boolean): string => {
+  if (withLabel) {
+    if (withDescription) {
+      return pxToRemWithUnit(height + LABEL_HEIGHT_WITH_DESCRIPTION);
+    } else {
+      return pxToRemWithUnit(height + LABEL_HEIGHT_WITH_SPACING);
+    }
+  } else if (withDescription) {
+    return pxToRemWithUnit(height + LABEL_HEIGHT);
+  } else {
+    return pxToRemWithUnit(height);
+  }
+};
 
-export const getElementBackgroundGradient = (elHeight: number, topGradientSpacing = LABEL_HEIGHT_SPACING) => {
+export const getAfterMinHeight = (elHeight: number): string => `calc(100% - ${pxToRemWithUnit(elHeight)})`;
+
+export const getElementBackgroundGradient = (
+  elHeight: number,
+  topGradientSpacing = LABEL_HEIGHT_SPACING,
+  hasDescription?: boolean
+) => {
   const topGradientSpacingPx = `${topGradientSpacing}px`;
-  const bottomGradientSpacingPx = `${elHeight - topGradientSpacing}px`;
-  return `linear-gradient(transparent, transparent ${topGradientSpacingPx}, currentColor ${topGradientSpacingPx}, currentColor ${bottomGradientSpacingPx}, transparent ${bottomGradientSpacingPx}, transparent ${elHeight}px)`;
+  const descriptionBottomSpacing = 8;
+  const bottomGradientSpacingPx = `${(hasDescription ? LABEL_HEIGHT : elHeight) - topGradientSpacing}px`;
+  const topDescriptionGradientSpacingPx = `${LABEL_HEIGHT + LABEL_HEIGHT_SPACING}px`;
+  const bottomDescriptionGradientSpacingPx = `${elHeight - descriptionBottomSpacing - LABEL_HEIGHT_SPACING}px`;
+  return `linear-gradient(transparent, transparent ${topGradientSpacingPx}, currentColor ${topGradientSpacingPx}, currentColor ${bottomGradientSpacingPx}, transparent ${bottomGradientSpacingPx},${
+    hasDescription
+      ? `transparent ${topDescriptionGradientSpacingPx}, currentColor ${topDescriptionGradientSpacingPx}, currentColor ${bottomDescriptionGradientSpacingPx}, transparent ${bottomDescriptionGradientSpacingPx}`
+      : ''
+  } transparent ${elHeight}px)`;
 };
 
 // TODO: remove color theme placeholder, use currentColor, adjust color in before/after based on theme property OR skeletonClass
@@ -61,9 +86,7 @@ export const getBaseSkeletonStyles = (withLabel = true, elementHeight = ELEMENT_
       ...getPseudoElementStyles(),
       top: pxToRemWithUnit(withLabel ? LABEL_HEIGHT_WITH_SPACING : 0),
       width: '100%',
-      minHeight: withLabel
-        ? `calc(100% - ${pxToRemWithUnit(LABEL_HEIGHT_WITH_SPACING)})`
-        : pxToRemWithUnit(elementHeight),
+      minHeight: withLabel ? getAfterMinHeight(LABEL_HEIGHT_WITH_SPACING) : '100%',
     },
   };
 };
