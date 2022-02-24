@@ -31,7 +31,7 @@
     "replace:initialStyles": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_INITIAL_STYLES-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getInitialStyles())') && regex=$placeholder'.*' && sed -E -e \"s@$regex@$partial@\" public/index.html > public/index.tmp.html && rm public/index.html && mv public/index.tmp.html public/index.html",
     "replace:fontLatin": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_LATIN-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getFontLinks({ weights: [\"thin\", \"regular\", \"semi-bold\", \"bold\"] }).replace(/https:\\/\\/cdn\\.ui\\.porsche\\.com\\/porsche-design-system/g, \"http://localhost:3001\"))') && regex=$placeholder'.*' && sed -E -e \"s@$regex@$partial@\" public/index.html > public/index.tmp.html && rm public/index.html && mv public/index.tmp.html public/index.html",
     "generateAngularReactVRTPages": "ts-node scripts/generateAngularReactVRTPages.ts",
-    "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
+    "test": "yarn test:unit && yarn test:e2e && yarn test:vrt && yarn test:smoke",
     "test:unit": "yarn test:unit:components-manager-core && yarn test:unit:components-js && yarn test:unit:partials",
     "test:unit:components-manager-core": "yarn --cwd ./projects/components-manager-core test:unit",
     "test:unit:components-js": "jest --colors -c tests/unit/config/jest.config.js --coverage",
