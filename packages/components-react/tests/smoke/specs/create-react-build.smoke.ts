@@ -13,9 +13,10 @@ fs.readdirSync('./build/static/js').forEach((fileName) => {
 const reactMainChunkFileContent = fs.readFileSync(`build/static/js/${reactMainChunkFileName}`, 'utf8');
 
 it('should contain initial-styles partial', () => {
-  // resolve array into string before regex
-  const tagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)).map((x) => `"${x}"`);
-  const regex = new RegExp(`${tagNames}.*join(",")\+"{visibility:hidden}"`);
+  const tagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x));
+  const tagNamesArrayAsString = '"' + tagNames.join('","') + '"';
+
+  const regex = new RegExp(`\\[${tagNamesArrayAsString}\\].*join\\(","\\)\\+"{visibility:hidden}"`);
 
   expect(reactMainChunkFileContent).toMatch(regex);
 });
