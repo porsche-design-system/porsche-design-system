@@ -1,9 +1,9 @@
 import typescript from '@rollup/plugin-typescript';
 
 const BASE_DIR = 'projects/components-wrapper';
+const DIST_DIR = 'dist/components-wrapper';
 const input = `${BASE_DIR}/src/public-api.ts`;
 
-const DIST_DIR = 'dist/components-wrapper';
 const typescriptOpts = {
   tsconfig: `${BASE_DIR}/tsconfig.json`,
 };
