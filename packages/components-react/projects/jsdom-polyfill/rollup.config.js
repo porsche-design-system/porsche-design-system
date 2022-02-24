@@ -18,6 +18,7 @@ export default {
     file: 'dist/components-wrapper/jsdom-polyfill/index.js',
     format: 'cjs',
     extend: true,
+    exports: 'auto',
   },
   plugins: [
     commonjs({ dynamicRequireTargets: ['projects/jsdom-polyfill/src/**/*.js'] }),
