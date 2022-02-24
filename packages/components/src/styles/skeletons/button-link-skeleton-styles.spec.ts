@@ -1,5 +1,5 @@
-import { getButtonLinkSkeletonCss } from './button-link-skeleton-styles';
+import { getButtonLinkSocialSkeletonCss } from './button-link-social-skeleton-styles';
 
 it('should return correct css', () => {
-  expect(getButtonLinkSkeletonCss()).toMatchSnapshot();
+  expect(getButtonLinkSocialSkeletonCss()).toMatchSnapshot();
 });

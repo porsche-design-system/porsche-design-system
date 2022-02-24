@@ -1,4 +1,4 @@
-export * from './button-link-skeleton-styles';
+export * from './button-link-social-skeleton-styles';
 export * from './button-link-pure-skeleton-styles';
 export * from './checkbox-radio-wrapper-skeleton-styles';
 export * from './fieldset-wrapper-skeleton-styles';

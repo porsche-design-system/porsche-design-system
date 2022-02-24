@@ -2,7 +2,7 @@ import { joinArrayElementsToString, withoutTagsOption } from './utils';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
 import {
   getButtonLinkPureSkeletonCss,
-  getButtonLinkSkeletonCss,
+  getButtonLinkSocialSkeletonCss,
   getCheckboxRadioWrapperSkeletonCss,
   getFieldsetWrapperSkeletonCss,
   getHeadlineSkeletonCss,
@@ -50,7 +50,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
   const skeletonKeyframes = '@keyframes opacity{0%{opacity:0.35}50%{opacity:0.15}100%{opacity:0.35}';
 
   const skeletonStyles = {
-    'p-button|p-link': getButtonLinkSkeletonCss(),
+    'p-button|p-link': getButtonLinkSocialSkeletonCss(),
     'p-button-pure|p-link-pure': getButtonLinkPureSkeletonCss(),
     'p-checkbox-wrapper|p-radio-button-wrapper': getCheckboxRadioWrapperSkeletonCss(),
     'p-fieldset-wrapper': getFieldsetWrapperSkeletonCss(),

@@ -11,7 +11,7 @@ export const ELEMENT_SKELETON_DIMENSION = 48;
 export const LABEL_HEIGHT_WITH_DESCRIPTION = 52;
 export const LABEL_HEIGHT_SPACING = 4;
 
-const LABEL_HEIGHT = 24;
+export const LABEL_HEIGHT = 24;
 const LABEL_HEIGHT_WITH_SPACING = 28;
 
 export const getSkeletonElementHeight = (height: number, withLabel = true, withDescription?: boolean): string => {
