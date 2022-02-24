@@ -5,10 +5,11 @@ import {
   getPseudoElementStyle,
   getSkeletonElementHeight,
   getThemedPseudoStyle,
+  PDS_SKELETON_CLASS_PREFIX,
 } from './base-skeleton-styles';
-import { textSmall } from '@porsche-design-system/utilities-v2';
 import { JssStyle } from 'jss';
 import { getTypographyElementHeight } from './headline-skeleton-styles';
+import { textLarge, textSmall, textMedium, textXLarge, textXSmall } from '@porsche-design-system/utilities-v2';
 
 export const getTextSkeletonCss = (): string => {
   return getMinifiedCss({
@@ -18,6 +19,26 @@ export const getTextSkeletonCss = (): string => {
           ...extendPseudoWithTheme({
             styleFunction: () => getTextHeadlineSkeletonStyle(),
           }),
+          [`&[size=x-small], &.${PDS_SKELETON_CLASS_PREFIX}size-x-small`]: {
+            ...extendPseudoWithTheme({
+              styleFunction: () => getTextHeadlineSkeletonStyle(getTypographyElementHeight(textXSmall)),
+            }),
+          },
+          [`&[size=medium], &.${PDS_SKELETON_CLASS_PREFIX}size-medium`]: {
+            ...extendPseudoWithTheme({
+              styleFunction: () => getTextHeadlineSkeletonStyle(getTypographyElementHeight(textMedium)),
+            }),
+          },
+          [`&[size=large], &.${PDS_SKELETON_CLASS_PREFIX}size-large`]: {
+            ...extendPseudoWithTheme({
+              styleFunction: () => getTextHeadlineSkeletonStyle(getTypographyElementHeight(textLarge)),
+            }),
+          },
+          [`&[size=x-large], &.${PDS_SKELETON_CLASS_PREFIX}size-x-large`]: {
+            ...extendPseudoWithTheme({
+              styleFunction: () => getTextHeadlineSkeletonStyle(getTypographyElementHeight(textXLarge)),
+            }),
+          },
           ...getThemedPseudoStyle(),
         },
       },

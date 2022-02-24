@@ -23,9 +23,6 @@ type HeadlineType = typeof headline1;
 type TextType = typeof textSmall;
 
 export const getTypographyElementHeight = (typography: HeadlineType | TextType): number => {
-  if (!typography?.fontSize) {
-    process.stdout.write(`headline ${JSON.stringify(typography)}\n`);
-  }
   const fontSizeInPx = getFontSizeInPx(typography.fontSize);
   return fontSizeInPx * typography.lineHeight;
 };
