@@ -2,7 +2,7 @@
 
 | Option                         | UMD | CJS | ESM | ESM with `"type": "module"` | comment |
 | ------------------------------ | --- | --- | --- | --------------------------- | ------- |
-| treeshakable                   | ✗   | ✗   | ✓   |                             |
+| treeshakable                   | ✗   | ✗   | ✓   |                             | https://webpack.js.org/guides/tree-shaking/#conclusion
 | compatibility node -e          | ✓   | ✓   | ✗   |                             |
 | compatibility ts-node          | ✓   | ✓   | ✗   | ✗                           | ESM with type module works only with `NODE_OPTIONS='--loader ts-node/esm --experimental-specifier-resolution=node' ts-node ./myscript.ts`.
 | compatibility create-react-app | ✓   | ✓   | ✓   |                             |
@@ -41,3 +41,10 @@ Universal build which works everywhere but is not treeshakable, so it is usually
 ## Conclusion
 
 We provide a CJS build for build time tasks and an ESM build on top to ensure treeshakeability and should be used for every browser-related build. https://nodejs.org/dist./v14.10.0/docs/api/esm.html#esm_dual_commonjs_es_module_packages
+
+
+## Open questions
+
+- No visible effect by setting `sideEffects: false`?
+- Rollup removes pure annotations in some cases, which is not clear why?
+- All packages that are not bundled with rollup still use UMD and do not provide ESM?
