@@ -1,18 +1,18 @@
-import type { Styles, JssStyle } from 'jss';
+import type { JssStyle, Styles } from 'jss';
 import type { BreakpointCustomizable } from '../utils';
+import { buildResponsiveStyle, isThemeDark } from '../utils';
 import type { FormState, Theme } from '../types';
-import { buildResponsiveStyles, isThemeDark } from '../utils';
 import {
   addImportantToRule,
   getFormTextHiddenJssStyle,
-  getInset,
+  getInsetStyle,
+  getThemedColors,
   getTransition,
   pxToRemWithUnit,
-  getThemedColors,
-  getThemedFormStateColors,
 } from './';
 import { textSmall } from '@porsche-design-system/utilities-v2';
 import { isVisibleFormState } from '../utils/form-state';
+import { getThemedFormStateColors } from './form-state-color-styles';
 
 const { disabledColor: lightThemeDisabledColor } = getThemedColors('light');
 
@@ -37,7 +37,7 @@ export const getBaseChildStyles = (
     [`::slotted(${child})`]: {
       display: 'block',
       position: 'relative',
-      ...getInset(),
+      ...getInsetStyle(),
       width: '100%',
       ...(child !== 'textarea' && { height: pxToRemWithUnit(INPUT_HEIGHT) }),
       margin: 0,
@@ -110,7 +110,7 @@ export const getLabelStyles = (
         }),
       },
       '&__text': {
-        ...buildResponsiveStyles(hideLabel, getFormTextHiddenJssStyle),
+        ...buildResponsiveStyle(hideLabel, getFormTextHiddenJssStyle),
         display: 'block',
         width: 'fit-content',
         transition: getTransition('color'),

@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getFieldsetWrapperSkeletonCss() should return correct css 1`] = `"p-fieldset-wrapper:not(.hydrated){display:block;position:relative;visibility:visible}p-fieldset-wrapper:not(.hydrated)::before{width:100%;height:3.25rem;content:\\"\\";display:inline-block;visibility:visible}p-fieldset-wrapper:not(.hydrated)::after{top:0;left:0;width:8rem;height:2.25rem;content:\\"\\";position:absolute;animation:pulse 2s linear infinite;background:PDS_REPLACE_WITH_THEME_COLOR;visibility:visible}"`;
+exports[`should return correct css 1`] = `"p-fieldset-wrapper:not(.hydrated){display:block;position:relative;visibility:visible}"`;

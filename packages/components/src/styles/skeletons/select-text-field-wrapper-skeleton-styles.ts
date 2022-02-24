@@ -4,9 +4,9 @@ import {
   ELEMENT_SKELETON_DIMENSION,
   extendPseudoWithTheme,
   getAfterMinHeight,
-  getBaseSkeletonStyles,
+  getBaseSkeletonStyle,
   getSkeletonElementHeight,
-  getThemedPseudoStyles,
+  getThemedPseudoStyle,
   LABEL_HEIGHT_WITH_DESCRIPTION,
   PDS_SKELETON_CLASS_PREFIX,
 } from './';
@@ -18,7 +18,7 @@ export const getSelectTextFieldWrapperSkeletonCss = (): string => {
       'p-select-wrapper, p-text-field-wrapper': {
         '&:not(.hydrated)': {
           ...extendPseudoWithTheme({
-            stylesFunction: getBaseSkeletonStyles,
+            styleFunction: getBaseSkeletonStyle,
             pseudosToExtend: ['&::before', '&::after'],
           }),
 
@@ -46,7 +46,7 @@ export const getSelectTextFieldWrapperSkeletonCss = (): string => {
               minHeight: getAfterMinHeight(LABEL_HEIGHT_WITH_DESCRIPTION),
             },
           },
-          ...getThemedPseudoStyles(true),
+          ...getThemedPseudoStyle(true),
         },
       },
     },

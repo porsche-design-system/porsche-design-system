@@ -5,7 +5,7 @@ import { buildSlottedStyles, getCss } from '../../../utils';
 import {
   addImportantToEachRule,
   getBaseSlottedStyles,
-  getFocusStyles,
+  getFocusStyle,
   getTransition,
   pxToRemWithUnit,
   getThemedColors,
@@ -76,7 +76,7 @@ export const getComponentCss = (
         cursor: 'pointer',
         color: baseColor,
         transition: getTransition('color'),
-        ...getFocusStyles({ offset: hasVisibleState ? -5 : -4 }),
+        ...getFocusStyle({ offset: hasVisibleState ? -5 : -4 }),
         '&:hover': {
           color: hoverColor,
         },

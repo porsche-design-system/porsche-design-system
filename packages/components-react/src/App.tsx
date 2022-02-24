@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { Switch, Route, useHistory } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { routes } from './routes';
 
 export const App = (): JSX.Element => {
-  const history = useHistory();
-  const [selected, setSelected] = useState(history.location.pathname);
+  const navigate = useNavigate();
+  const [selected, setSelected] = useState(useLocation().pathname);
 
   return (
     <>
@@ -12,7 +12,7 @@ export const App = (): JSX.Element => {
         value={selected}
         onChange={(e) => {
           const { value } = e.target;
-          history.push(value);
+          navigate(value);
           setSelected(value);
         }}
       >
@@ -25,13 +25,13 @@ export const App = (): JSX.Element => {
       </select>
 
       <div id="app">
-        <Switch>
+        <Routes>
           {routes
             .filter((route) => !route.isDisabled)
             .map((route, i) => (
               <Route key={i} {...route} />
             ))}
-        </Switch>
+        </Routes>
       </div>
     </>
   );
