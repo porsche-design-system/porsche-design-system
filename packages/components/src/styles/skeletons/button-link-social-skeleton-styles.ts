@@ -9,7 +9,7 @@ import {
 } from './';
 import { pxToRemWithUnit } from '../common-styles';
 
-export const getButtonLinkSkeletonCss = (): string => {
+export const getButtonLinkSocialSkeletonCss = (): string => {
   return getMinifiedCss({
     '@global': {
       'p-button, p-link, p-link-social': {
