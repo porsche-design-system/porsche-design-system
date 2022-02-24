@@ -1,13 +1,32 @@
 # Bundling 23.02.22
 
-| Option                         | UMD | CJS | ESM | ESM with `"type": "module"` | comment |
+## Status Quo
+
+| Package                     | UMD | CJS | ESM |
+| --------------------------- | --- | --- | --- |
+| components-js               | ✓   |     |     |
+| components-js/partials      |     | ✓   | ✓   |
+| components-react            |     | ✓   | ✓   |
+| components-react/partials   |     |     | ✓   |
+| components-react/testing    |     | ✓   |     |
+| components-angular          |     |     | ✓   |
+| components-angular/partials |     | ✓   |     |
+| assets                      | ✗   | (✓) | ✓   |
+| utilities-deprecated        | ✗   | (✓) | ✓   |
+
+✗ = currently released
+(✓) = not released
+
+## Compatibility overview
+
+|                                | UMD | CJS | ESM | ESM with `"type": "module"` | comment |
 | ------------------------------ | --- | --- | --- | --------------------------- | ------- |
 | treeshakable                   | ✗   | ✗   | ✓   |                             | https://webpack.js.org/guides/tree-shaking/#conclusion
 | compatibility node -e          | ✓   | ✓   | ✗   |                             |
 | compatibility ts-node          | ✓   | ✓   | ✗   | ✗                           | ESM with type module works only with `NODE_OPTIONS='--loader ts-node/esm --experimental-specifier-resolution=node' ts-node ./myscript.ts`.
 | compatibility create-react-app | ✓   | ✓   | ✓   |                             |
 | compatibility nextJS           | ✓   | ✓   | ✓   |                             |
-| compatibility Angular CLI      | ✓   | ✓   | ✗   |                             |
+| compatibility Angular CLI      | ✓   | ✓   | ✗   |                             | When bundling partial entry point as ESM we get the error `Unexpected token 'export'`
 | compatibility Stencil          | ✓   | ✓   |     | ✓                           |
 | compatibility Vue CLI          | ✓   | ✓   |     | ✓                           |
 | compatibility Jest             | ✓   | ✓   |     | ✗                           |
@@ -16,7 +35,7 @@
 
 ESM with type module works in ts-node with following configuration: https://github.com/TypeStrong/ts-node#commonjs-vs-native-ecmascript-modules  
 This also causes follow-up work in our scripts e.g. `__dirname is not defined in ES module scope.`  
-Could be fixed via https://www.kindacode.com/article/node-js-using-**dirname-and-\_\_filename-with-es-modules/   
+Could be fixed via https://www.kindacode.com/article/node-js-using-**dirname-and-\_\_filename-with-es-modules/  
 Also using `"type": "module"` causes discrepancy in our typechecking and runtime errors:
 
 - e.g. `AbstractWrapperGenerator.ts` throws typing errors with unused parameters.
@@ -40,8 +59,8 @@ Universal build which works everywhere but is not treeshakable, so it is usually
 
 ## Conclusion
 
-We provide a CJS build for build time tasks and an ESM build on top to ensure treeshakeability and should be used for every browser-related build. https://nodejs.org/dist./v14.10.0/docs/api/esm.html#esm_dual_commonjs_es_module_packages
-
+We provide a CJS build for build time tasks and an ESM build on top to ensure treeshakeability and should be used for every browser-related build.  
+https://nodejs.org/dist./v14.10.0/docs/api/esm.html#esm_dual_commonjs_es_module_packages
 
 ## Open questions
 
