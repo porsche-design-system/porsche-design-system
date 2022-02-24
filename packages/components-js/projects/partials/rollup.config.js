@@ -17,7 +17,10 @@ export default [
   {
     input,
     external: ['react/jsx-runtime'],
-    output: { dir: 'dist/esm', format: 'esm' },
+    output: {
+      dir: 'dist/esm',
+      format: 'esm',
+    },
     plugins: [typescript()],
   },
 ];
