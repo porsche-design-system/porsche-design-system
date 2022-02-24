@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
-import { camelCase, paramCase } from 'change-case';
+import { paramCase } from 'change-case';
 import { TAG_NAMES, TAG_NAMES_WITH_SKELETON, TagName, TagNameCamelCase } from '../src/lib/tagNames';
 
 const glue = '\n\n';
@@ -12,6 +12,7 @@ const SKELETON_RELEVANT_PROPS: SkeletonRelevantProps = [
   { propName: 'description', shouldStringifyValue: false },
   { propName: 'hideLabel', shouldStringifyValue: false },
   { propName: 'itemsPerPage ', shouldStringifyValue: true },
+  { propName: 'label', shouldStringifyValue: false },
   { propName: 'labelSize', shouldStringifyValue: false },
   { propName: 'open', shouldStringifyValue: false },
   { propName: 'size', shouldStringifyValue: true },
