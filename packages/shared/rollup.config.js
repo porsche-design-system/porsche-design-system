@@ -2,9 +2,11 @@ import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
 import pkg from './package.json';
 
+const input = 'src/index.ts';
+
 export default [
   {
-    input: 'src/index.ts',
+    input,
     output: {
       dir: 'dist',
       format: 'cjs',
@@ -17,8 +19,11 @@ export default [
     ],
   },
   {
-    input: 'src/index.ts',
-    output: { dir: 'dist/esm', format: 'esm' },
+    input,
+    output: {
+      dir: 'dist/esm',
+      format: 'esm',
+    },
     plugins: [typescript()],
   },
   {
