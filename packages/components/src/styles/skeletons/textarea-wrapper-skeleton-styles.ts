@@ -7,6 +7,7 @@ import {
   getElementBackgroundGradient,
   getSkeletonElementHeight,
   getThemedPseudoStyle,
+  LABEL_HEIGHT,
   LABEL_HEIGHT_SPACING,
   LABEL_HEIGHT_WITH_DESCRIPTION,
   PDS_SKELETON_CLASS_PREFIX,
@@ -36,7 +37,19 @@ export const getTextareaWrapperSkeletonCss = (): string => {
               minHeight: '100%',
             },
           },
-          [`&[description], &.${PDS_SKELETON_CLASS_PREFIX}description`]: {
+          [`&[description]:not([label]), &.${PDS_SKELETON_CLASS_PREFIX}description &:not(.${PDS_SKELETON_CLASS_PREFIX}label)`]:
+            {
+              minHeight: getSkeletonElementHeight(TEXTAREA_SKELETON_HEIGHT, false, true),
+              '&::before': {
+                height: pxToRemWithUnit(LABEL_HEIGHT),
+                background: getElementBackgroundGradient(72, 6, true),
+              },
+              '&::after': {
+                top: pxToRemWithUnit(LABEL_HEIGHT),
+                minHeight: getAfterMinHeight(LABEL_HEIGHT),
+              },
+            },
+          [`&[description][label], &.${PDS_SKELETON_CLASS_PREFIX}description &.${PDS_SKELETON_CLASS_PREFIX}label`]: {
             minHeight: getSkeletonElementHeight(TEXTAREA_SKELETON_HEIGHT, true, true),
             '&::before': {
               height: pxToRemWithUnit(LABEL_HEIGHT_WITH_DESCRIPTION),
