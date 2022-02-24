@@ -5,7 +5,7 @@ set -o pipefail
 
 if
   [[ "--components-js" == "${1}" ]]
-  [[ "--components-js" == "${1}" ]]
+  [[ "--components-react" == "${1}" ]]
 then
   yarn test:smoke:${1:2}
 else
