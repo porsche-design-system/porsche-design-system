@@ -7,6 +7,7 @@ export const PDS_SKELETON_CLASS_PREFIX = 'PDS-Skeleton--';
 // Firefox has the widest input field with 192px
 // to prevent layout shift when shadow dom is appended
 export const BUTTON_LINK_SKELETON_WIDTH = 192;
+export const TEXTAREA_SKELETON_HEIGHT = 192;
 export const ELEMENT_SKELETON_DIMENSION = 48;
 export const LABEL_HEIGHT_WITH_DESCRIPTION = 52;
 export const LABEL_HEIGHT_SPACING = 4;
