@@ -1,6 +1,4 @@
 {
-  "name": "@porsche-design-system/partials",
-  "version": "0.0.0",
   "main": "index.js",
   "module": "esm/index.js",
   "types": "index.d.ts",
