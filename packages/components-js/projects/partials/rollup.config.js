@@ -7,18 +7,16 @@ const input = 'src/index.ts';
 export default [
   {
     input,
-    // Packages that use the partials via node are not able to read esm syntax, therefore we need a cjs build
     output: {
       dir: 'dist',
       format: 'cjs',
     },
-    // Our partials return jsx from react/jsx-runtime. We need to resolve the dependency into the build to make it readable in VanillaJS and Angular.
+    // Our partials contain jsx. We resolve react/jsx-runtime into the build to make it readable in VanillaJS and Angular.
     plugins: [typescript({ declaration: true, declarationDir: 'dist', rootDir: 'src' }), nodeResolve(), commonjs()],
   },
   {
     input,
     external: ['react/jsx-runtime'],
-    // To be treeshakable we need a esm build. See https://webpack.js.org/guides/tree-shaking/#conclusion
     output: { dir: 'dist/esm', format: 'esm' },
     plugins: [typescript()],
   },
