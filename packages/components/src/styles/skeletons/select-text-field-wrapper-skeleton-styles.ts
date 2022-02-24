@@ -5,8 +5,10 @@ import {
   extendPseudoWithTheme,
   getAfterMinHeight,
   getBaseSkeletonStyle,
+  getElementBackgroundGradient,
   getSkeletonElementHeight,
   getThemedPseudoStyle,
+  LABEL_HEIGHT_SPACING,
   LABEL_HEIGHT_WITH_DESCRIPTION,
   PDS_SKELETON_CLASS_PREFIX,
 } from './';
@@ -37,9 +39,10 @@ export const getSelectTextFieldWrapperSkeletonCss = (): string => {
             },
           },
           [`&[description], &.${PDS_SKELETON_CLASS_PREFIX}description`]: {
-            height: getSkeletonElementHeight(ELEMENT_SKELETON_DIMENSION, false, true),
+            height: getSkeletonElementHeight(ELEMENT_SKELETON_DIMENSION, true, true),
             '&::before': {
               height: pxToRemWithUnit(LABEL_HEIGHT_WITH_DESCRIPTION),
+              background: getElementBackgroundGradient(LABEL_HEIGHT_WITH_DESCRIPTION, LABEL_HEIGHT_SPACING, true),
             },
             '&::after': {
               top: pxToRemWithUnit(LABEL_HEIGHT_WITH_DESCRIPTION),

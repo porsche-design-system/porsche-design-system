@@ -7,12 +7,12 @@ export const PDS_SKELETON_CLASS_PREFIX = 'PDS-Skeleton--';
 // Firefox has the widest input field with 192px
 // to prevent layout shift when shadow dom is appended
 export const BUTTON_LINK_SKELETON_WIDTH = 192;
-
 export const ELEMENT_SKELETON_DIMENSION = 48;
+export const LABEL_HEIGHT_WITH_DESCRIPTION = 52;
+export const LABEL_HEIGHT_SPACING = 4;
+
 const LABEL_HEIGHT = 24;
 const LABEL_HEIGHT_WITH_SPACING = 28;
-export const LABEL_HEIGHT_WITH_DESCRIPTION = 52;
-const LABEL_HEIGHT_SPACING = 4;
 
 export const getSkeletonElementHeight = (height: number, withLabel = true, withDescription?: boolean): string => {
   if (withLabel) {
@@ -42,7 +42,7 @@ export const getElementBackgroundGradient = (
   const bottomDescriptionGradientSpacingPx = `${elHeight - descriptionBottomSpacing - LABEL_HEIGHT_SPACING}px`;
   return `linear-gradient(transparent, transparent ${topGradientSpacingPx}, currentColor ${topGradientSpacingPx}, currentColor ${bottomGradientSpacingPx}, transparent ${bottomGradientSpacingPx},${
     hasDescription
-      ? `transparent ${topDescriptionGradientSpacingPx}, currentColor ${topDescriptionGradientSpacingPx}, currentColor ${bottomDescriptionGradientSpacingPx}, transparent ${bottomDescriptionGradientSpacingPx}`
+      ? `transparent ${topDescriptionGradientSpacingPx}, currentColor ${topDescriptionGradientSpacingPx}, currentColor ${bottomDescriptionGradientSpacingPx}, transparent ${bottomDescriptionGradientSpacingPx},`
       : ''
   } transparent ${elHeight}px)`;
 };
