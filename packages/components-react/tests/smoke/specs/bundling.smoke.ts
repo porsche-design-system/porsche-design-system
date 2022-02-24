@@ -16,10 +16,11 @@ it('should only contain initial-styles partial', () => {
   // {50,70} & {10,20} quantifiers to increase accuracy of regex instead using .*
   const regex = new RegExp(`\\[${tagNames}\\].{50,70}\\.join\\(","\\)\\+"{visibility:hidden}".{10,20}"<style>"`);
 
+  expect(mainChunkFileContent).toMatch(regex);
+
   const withoutTagsMatches = mainChunkFileContent.match(/withoutTags/g);
   const formatHtmlMatches = mainChunkFileContent.match(/format:["']html["']/g);
 
-  expect(mainChunkFileContent).toMatch(regex);
   expect(withoutTagsMatches.length).toBe(2);
   expect(formatHtmlMatches.length).toBe(1);
 });
