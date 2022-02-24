@@ -50,7 +50,7 @@ export const getElementBackgroundGradient = (
 // TODO: remove color theme placeholder, use currentColor, adjust color in before/after based on theme property OR skeletonClass
 // TODO: check return types (check focus jss styles)
 
-export const getPseudoElementStyles = (): JssStyle => {
+export const getPseudoElementStyle = (): JssStyle => {
   return {
     position: 'absolute',
     left: '0',
@@ -61,7 +61,7 @@ export const getPseudoElementStyles = (): JssStyle => {
   };
 };
 
-export const getBaseSkeletonStyles = (withLabel = true, elementHeight = ELEMENT_SKELETON_DIMENSION): JssStyle => {
+export const getBaseSkeletonStyle = (withLabel = true, elementHeight = ELEMENT_SKELETON_DIMENSION): JssStyle => {
   return {
     position: 'relative',
     color: 'transparent',
@@ -69,7 +69,7 @@ export const getBaseSkeletonStyles = (withLabel = true, elementHeight = ELEMENT_
       ? {
           display: 'block',
           '&::before': {
-            ...getPseudoElementStyles(),
+            ...getPseudoElementStyle(),
             height: pxToRemWithUnit(LABEL_HEIGHT),
             width: pxToRemWithUnit(128),
             top: '0',
@@ -83,7 +83,7 @@ export const getBaseSkeletonStyles = (withLabel = true, elementHeight = ELEMENT_
       ...(!withLabel && {
         display: 'block',
       }),
-      ...getPseudoElementStyles(),
+      ...getPseudoElementStyle(),
       top: pxToRemWithUnit(withLabel ? LABEL_HEIGHT_WITH_SPACING : 0),
       width: '100%',
       minHeight: withLabel ? getAfterMinHeight(LABEL_HEIGHT_WITH_SPACING) : '100%',
@@ -96,19 +96,19 @@ type PseudoElementSelectorsType = typeof PSEUDO_ELEMENT_SELECTORS[number];
 
 type ExtendPseudoWithThemeOptions = {
   theme?: 'light' | 'dark';
-  stylesFunction?: () => JssStyle;
+  styleFunction?: () => JssStyle;
   pseudosToExtend?: PseudoElementSelectorsType[];
 };
 export const extendPseudoWithTheme = (opts?: ExtendPseudoWithThemeOptions): JssStyle => {
-  const { theme = 'light', stylesFunction = () => ({}), pseudosToExtend = ['&::after'] } = opts ?? {};
+  const { theme = 'light', styleFunction = () => ({}), pseudosToExtend = ['&::after'] } = opts ?? {};
 
   return {
-    ...stylesFunction(),
+    ...styleFunction(),
     ...pseudosToExtend.reduce((prevValue: JssStyle, pseudo) => {
       return {
         ...prevValue,
         [pseudo]: {
-          ...stylesFunction()[pseudo],
+          ...styleFunction()[pseudo],
           color: getThemedColors(theme).contrastMediumColor,
         },
       };
@@ -116,7 +116,7 @@ export const extendPseudoWithTheme = (opts?: ExtendPseudoWithThemeOptions): JssS
   };
 };
 
-export const getThemedPseudoStyles = (hasLabel?: boolean): JssStyle => {
+export const getThemedPseudoStyle = (hasLabel?: boolean): JssStyle => {
   let pseudoElements: PseudoElementSelectorsType[];
   if (hasLabel) {
     pseudoElements = ['&::before', '&::after'];

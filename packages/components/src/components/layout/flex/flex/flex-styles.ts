@@ -13,25 +13,25 @@ import type {
   FlexAlignItemsType,
   FlexAlignContentType,
 } from './flex-utils';
-import type { GetStylesFunction } from '../../../../utils';
+import type { GetStyleFunction } from '../../../../utils';
 import { buildResponsiveHostStyles, getCss, mergeDeep } from '../../../../utils';
 import { addImportantToEachRule } from '../../../../styles';
 
-const getInlineStyles: GetStylesFunction = (inline: FlexInlineType): JssStyle => ({
+const getInlineStyle: GetStyleFunction = (inline: FlexInlineType): JssStyle => ({
   display: inline ? 'inline-flex' : 'flex',
 });
 
-const getWrapStyles: GetStylesFunction = (flexWrap: FlexWrapType): JssStyle => ({ flexWrap });
+const getWrapStyle: GetStyleFunction = (flexWrap: FlexWrapType): JssStyle => ({ flexWrap });
 
-const getDirectionStyles: GetStylesFunction = (flexDirection: FlexDirectionType): JssStyle => ({ flexDirection });
+const getDirectionStyle: GetStyleFunction = (flexDirection: FlexDirectionType): JssStyle => ({ flexDirection });
 
-const getJustifyContentStyles: GetStylesFunction = (justifyContent: FlexJustifyContentType): JssStyle => ({
+const getJustifyContentStyle: GetStyleFunction = (justifyContent: FlexJustifyContentType): JssStyle => ({
   justifyContent,
 });
 
-const getAlignItemsStyles: GetStylesFunction = (alignItems: FlexAlignItemsType): JssStyle => ({ alignItems });
+const getAlignItemsStyle: GetStyleFunction = (alignItems: FlexAlignItemsType): JssStyle => ({ alignItems });
 
-const getAlignContentStyles: GetStylesFunction = (alignContent: FlexAlignContentType): JssStyle => ({ alignContent });
+const getAlignContentStyle: GetStyleFunction = (alignContent: FlexAlignContentType): JssStyle => ({ alignContent });
 
 export const getComponentCss = (
   inline: FlexInline,
@@ -44,12 +44,12 @@ export const getComponentCss = (
   return getCss(
     addImportantToEachRule(
       mergeDeep(
-        buildResponsiveHostStyles(inline, getInlineStyles),
-        buildResponsiveHostStyles(wrap, getWrapStyles),
-        buildResponsiveHostStyles(direction, getDirectionStyles),
-        buildResponsiveHostStyles(justifyContent, getJustifyContentStyles),
-        buildResponsiveHostStyles(alignItems, getAlignItemsStyles),
-        buildResponsiveHostStyles(alignContent, getAlignContentStyles)
+        buildResponsiveHostStyles(inline, getInlineStyle),
+        buildResponsiveHostStyles(wrap, getWrapStyle),
+        buildResponsiveHostStyles(direction, getDirectionStyle),
+        buildResponsiveHostStyles(justifyContent, getJustifyContentStyle),
+        buildResponsiveHostStyles(alignItems, getAlignItemsStyle),
+        buildResponsiveHostStyles(alignContent, getAlignContentStyle)
       )
     )
   );

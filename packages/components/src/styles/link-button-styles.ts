@@ -1,17 +1,15 @@
 import type { Styles, JssStyle } from 'jss';
-import type { BreakpointCustomizable } from '../utils';
-import type { GetStylesFunction } from '../utils';
+import type { BreakpointCustomizable, GetStyleFunction } from '../utils';
 import type { LinkButtonVariant, ThemeExtendedElectric } from '../types';
-import { buildResponsiveStyles, isThemeDark } from '../utils';
+import { buildResponsiveStyle, isThemeDark } from '../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  getFocusStyles,
-  getInset,
+  getFocusStyle,
+  getInsetStyle,
   getTransition,
   pxToRemWithUnit,
   getThemedColors,
-  getThemedColorsDarken,
 } from './';
 
 const { baseColor: darkThemeBaseColor } = getThemedColors('dark');
@@ -21,8 +19,8 @@ const getVariantColors = (
   variant: LinkButtonVariant,
   theme: ThemeExtendedElectric
 ): { primaryColor: string; primaryColorHover: string; baseColor: string } => {
-  const { brandColor, baseColor, contrastHighColor } = getThemedColors(theme);
-  const { hoverColorDarken, contrastHighColorDarken, baseColorDarken } = getThemedColorsDarken(theme);
+  const { brandColor, baseColor, contrastHighColor, hoverColorDarken, contrastHighColorDarken, baseColorDarken } =
+    getThemedColors(theme);
 
   const colors: {
     [t in ThemeExtendedElectric]: {
@@ -87,13 +85,13 @@ const getVariantColors = (
 
 const linkButtonPadding = `${pxToRemWithUnit(11)} ${pxToRemWithUnit(15)} ${pxToRemWithUnit(11)} ${pxToRemWithUnit(39)}`;
 
-export const getRootStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
+export const getRootStyle: GetStyleFunction = (hideLabel: boolean): JssStyle => {
   return {
     padding: hideLabel ? 0 : linkButtonPadding,
   };
 };
 
-export const getIconStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
+export const getIconStyle: GetStyleFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel
     ? {
         left: '50%',
@@ -107,7 +105,7 @@ export const getIconStyles: GetStylesFunction = (hideLabel: boolean): JssStyle =
       };
 };
 
-export const getLabelStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
+export const getLabelStyle: GetStyleFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel
     ? {
         width: 1,
@@ -125,11 +123,11 @@ export const getLabelStyles: GetStylesFunction = (hideLabel: boolean): JssStyle 
       };
 };
 
-export const getSlottedLinkStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
+export const getSlottedLinkStyle: GetStyleFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel
     ? {
         position: 'absolute',
-        ...getInset(),
+        ...getInsetStyle(),
         padding: 0,
         overflow: 'hidden',
         whiteSpace: 'nowrap',
@@ -137,7 +135,7 @@ export const getSlottedLinkStyles: GetStylesFunction = (hideLabel: boolean): Jss
       }
     : {
         position: 'static',
-        ...getInset('auto'),
+        ...getInsetStyle('auto'),
         padding: linkButtonPadding,
         overflow: 'visible',
         whiteSpace: 'normal',
@@ -183,8 +181,8 @@ export const getLinkButtonStyles = (
       color: isDisabledOrLoading ? disabledColor : primaryColor,
       transition: ['background-color', 'border-color', 'color'].map(getTransition).join(','),
       ...(!hasSlottedAnchor && {
-        ...buildResponsiveStyles(hideLabel, getRootStyles),
-        ...getFocusStyles(),
+        ...buildResponsiveStyle(hideLabel, getRootStyle),
+        ...getFocusStyle(),
       }),
       ...(!isDisabledOrLoading && {
         '&:hover, &:active': {
@@ -204,13 +202,13 @@ export const getLinkButtonStyles = (
       height: pxToRemWithUnit(24),
       color: iconLabelColor,
       pointerEvents: 'none',
-      ...buildResponsiveStyles(hideLabel, getIconStyles),
+      ...buildResponsiveStyle(hideLabel, getIconStyle),
     },
     label: {
       display: 'block',
       boxSizing: 'border-box',
       color: iconLabelColor,
-      ...buildResponsiveStyles(hideLabel, getLabelStyles),
+      ...buildResponsiveStyle(hideLabel, getLabelStyle),
     },
     ...(hasSlottedAnchor && {
       '::slotted': addImportantToEachRule({
@@ -221,7 +219,7 @@ export const getLinkButtonStyles = (
           lineHeight: 'inherit',
           outline: 'transparent solid 1px',
           outlineOffset: '3px',
-          ...buildResponsiveStyles(hideLabel, getSlottedLinkStyles),
+          ...buildResponsiveStyle(hideLabel, getSlottedLinkStyle),
         },
         '&(a::-moz-focus-inner)': {
           border: 0,

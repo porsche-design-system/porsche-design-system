@@ -41,7 +41,7 @@ type GetHoverStylesOptions = {
   theme?: Theme;
 };
 
-export const getHoverStyles = ({ theme }: GetHoverStylesOptions = { theme: 'light' }): JssStyle => {
+export const getHoverStyle = ({ theme }: GetHoverStylesOptions = { theme: 'light' }): JssStyle => {
   return {
     transition: getTransition('color'),
     '&:hover': {
@@ -56,14 +56,14 @@ export type GetFocusStylesOptions = {
   pseudo?: '::after' | '::before';
 };
 
-export const getInset = (value: 'auto' | number = 0): JssStyle => ({
+export const getInsetStyle = (value: 'auto' | number = 0): JssStyle => ({
   top: value,
   left: value,
   right: value,
   bottom: value,
 });
 
-export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
+export const getFocusStyle = (opts?: GetFocusStylesOptions): JssStyle => {
   const {
     pseudo,
     offset: outlineOffset,
@@ -71,22 +71,21 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
   }: GetFocusStylesOptions = {
     color: 'currentColor',
     offset: 2,
-    pseudo: undefined,
     ...opts,
   };
 
   return pseudo
     ? {
-        outline: 'transparent none',
+        outline: 0,
         '&::-moz-focus-inner': {
           border: 0,
         },
         [`&${pseudo}`]: {
-          outline: 'transparent solid 1px',
-          outlineOffset: `${outlineOffset}px`,
           content: '""',
           position: 'absolute',
-          ...getInset(),
+          ...getInsetStyle(),
+          outline: '1px solid transparent',
+          outlineOffset: `${outlineOffset}px`,
         },
         [`&:focus${pseudo}`]: {
           outlineColor,
@@ -96,10 +95,10 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
         },
       }
     : {
-        outline: 'transparent solid 1px',
+        outline: '1px solid transparent',
         outlineOffset: `${outlineOffset}px`,
         '&::-moz-focus-inner': {
-          border: '0',
+          border: 0,
         },
         '&:focus': {
           outlineColor,
@@ -137,7 +136,7 @@ export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOp
         content: '""',
         display: 'block',
         position: 'absolute',
-        ...getInset(),
+        ...getInsetStyle(),
         outline: '1px solid transparent',
         outlineOffset: `${outlineOffset}px`,
       },
@@ -159,11 +158,11 @@ export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withD
     '& a': {
       color: 'inherit',
       textDecoration: 'underline',
-      ...getHoverStyles(),
-      ...getFocusStyles({ offset: 1 }),
+      ...getHoverStyle(),
+      ...getFocusStyle({ offset: 1 }),
     },
     ...(opts.withDarkTheme && {
-      '&[theme="dark"] a:hover': getHoverStyles({ theme: 'dark' })['&:hover'],
+      '&[theme="dark"] a:hover': getHoverStyle({ theme: 'dark' })['&:hover'],
     }),
     '& b, & strong': {
       fontWeight: fontWeight.bold,
@@ -191,7 +190,7 @@ export const getTextHiddenJssStyle = (isHidden: boolean): JssStyle =>
 export const getFormTextHiddenJssStyle = (isHidden: boolean): JssStyle => ({
   ...getTextHiddenJssStyle(isHidden),
   width: 'fit-content',
-  padding: `0 0 ${pxToRemWithUnit(4)} 0`,
+  padding: `0 0 ${pxToRemWithUnit(4)}`,
 });
 
 export const getFormCheckboxRadioHiddenJssStyle = (isHidden: boolean): JssStyle => ({

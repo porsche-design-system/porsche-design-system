@@ -1,7 +1,7 @@
 import type { JssStyle } from 'jss';
 import type { SpinnerSize, SpinnerSizeType } from './spinner-utils';
 import type { ThemeExtendedElectricDark } from '../../../types';
-import { buildResponsiveStyles, buildSlottedStyles, getCss, isThemeDark, isThemeDarkElectric } from '../../../utils';
+import { buildResponsiveStyle, buildSlottedStyles, getCss, isThemeDark, isThemeDarkElectric } from '../../../utils';
 import { getBaseSlottedStyles, pxToRemWithUnit, getThemedColors } from '../../../styles';
 import { getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
 
@@ -27,7 +27,7 @@ export const getComponentCss = (size: SpinnerSize, theme: ThemeExtendedElectricD
     },
     root: {
       display: 'block',
-      ...buildResponsiveStyles(size, (s: SpinnerSizeType) => sizeMap[s]),
+      ...buildResponsiveStyle(size, (s: SpinnerSizeType) => sizeMap[s]),
       margin: 0,
       padding: 0,
       boxSizing: 'border-box',

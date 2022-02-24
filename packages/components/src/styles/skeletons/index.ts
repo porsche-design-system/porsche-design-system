@@ -4,7 +4,7 @@ export * from './checkbox-radio-wrapper-skeleton-styles';
 export * from './fieldset-wrapper-skeleton-styles';
 export * from './headline-skeleton-styles';
 export * from './select-text-field-wrapper-skeleton-styles';
-export * from './skeleton-base-styles';
+export * from './base-skeleton-styles';
 export * from './text-list-item-skeleton-styles';
 export * from './text-list-skeleton-styles';
 export * from './text-skeleton-styles';

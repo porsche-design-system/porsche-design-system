@@ -7,9 +7,9 @@ import {
   addImportantToRule,
   getBaseSlottedStyles,
   getFocusSlottedPseudoStyles,
-  getFocusStyles,
+  getFocusStyle,
   getFormTextHiddenJssStyle,
-  getHoverStyles,
+  getHoverStyle,
   getTextHiddenJssStyle,
   getTransition,
   mediaQuery,
@@ -82,7 +82,7 @@ describe('addImportantToEachRule()', () => {
 
 describe('getHoverStyles()', () => {
   it.each<Theme>(['light', 'dark'])('should return correct JssStyle for theme: %o', (theme) => {
-    expect(getHoverStyles({ theme })).toMatchSnapshot();
+    expect(getHoverStyle({ theme })).toMatchSnapshot();
   });
 });
 
@@ -95,7 +95,7 @@ describe('getFocusStyles()', () => {
     { color: 'deeppink', offset: 2, pseudo: '::after' },
     { color: 'deeppink', offset: 3 },
   ])('should return correct JssStyle for params: %o', (params) => {
-    expect(getFocusStyles(params)).toMatchSnapshot();
+    expect(getFocusStyle(params)).toMatchSnapshot();
   });
 });
 

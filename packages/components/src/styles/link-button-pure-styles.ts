@@ -1,25 +1,18 @@
 import type { Styles, JssStyle } from 'jss';
-import type { BreakpointCustomizable, GetStylesFunction } from '../utils';
+import type { BreakpointCustomizable, GetStyleFunction } from '../utils';
 import type { AlignLabel, AlignLabelType, LinkButtonPureIconName, TextSize, ThemeExtendedElectricDark } from '../types';
 import type { FontSizeLineHeight } from '@porsche-design-system/utilities-v2';
-import { buildResponsiveStyles, generateTypeScale, hasVisibleIcon, mergeDeep, paramCaseToCamelCase } from '../utils';
-import {
-  addImportantToRule,
-  getFocusStyles,
-  getInset,
-  getTransition,
-  pxToRemWithUnit,
-  getThemedColors,
-} from './';
+import { buildResponsiveStyle, generateTypeScale, hasVisibleIcon, mergeDeep, paramCaseToCamelCase } from '../utils';
+import { addImportantToRule, getFocusStyle, getInsetStyle, getTransition, pxToRemWithUnit, getThemedColors } from './';
 import { fontSize, getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
 import { isSizeInherit } from '../components/basic/typography/text/text-utils';
 
-const getHostStyles: GetStylesFunction = (stretch: boolean): JssStyle => ({
+const getHostStyle: GetStyleFunction = (stretch: boolean): JssStyle => ({
   display: addImportantToRule(stretch ? 'block' : 'inline-block'),
   ...(!stretch && { verticalAlign: 'top' }),
 });
 
-const getSizeStyles: GetStylesFunction = (textSize: TextSize): JssStyle => {
+const getSizeStyle: GetStyleFunction = (textSize: TextSize): JssStyle => {
   if (isSizeInherit(textSize)) {
     return {
       fontSize: 'inherit',
@@ -31,7 +24,7 @@ const getSizeStyles: GetStylesFunction = (textSize: TextSize): JssStyle => {
     };
   } else {
     // TODO: We should split this function into 3 separate and use it in root / icon / subline as soon as calculateLineHeight() is performant
-    const { fontSize: size, lineHeight } = fontSize[paramCaseToCamelCase(textSize)];
+    const { fontSize: size, lineHeight }: FontSizeLineHeight = fontSize[paramCaseToCamelCase(textSize)];
     const lineHeightWithUnit = `${lineHeight}em`;
     const sublineSize: { [key in Exclude<TextSize, 'inherit'>]: FontSizeLineHeight } = {
       'x-small': fontSize.xSmall,
@@ -60,7 +53,7 @@ const getSizeStyles: GetStylesFunction = (textSize: TextSize): JssStyle => {
   }
 };
 
-const getVisibilityStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
+const getVisibilityStyle: GetStyleFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel
     ? getScreenReaderOnlyJssStyle()
     : {
@@ -76,7 +69,7 @@ const getVisibilityStyles: GetStylesFunction = (hideLabel: boolean): JssStyle =>
       };
 };
 
-const getLabelAlignmentStyles: GetStylesFunction = (alignLabel: AlignLabelType): JssStyle => {
+const getLabelAlignmentStyle: GetStyleFunction = (alignLabel: AlignLabelType): JssStyle => {
   return alignLabel === 'left'
     ? {
         padding: `0 ${pxToRemWithUnit(4)} 0 0`,
@@ -89,17 +82,17 @@ const getLabelAlignmentStyles: GetStylesFunction = (alignLabel: AlignLabelType):
 };
 
 /* Needed for slotted anchor and hidden label, which then enlarges the hidden label to equal host size and indents the text to be visually hidden. */
-const getSlottedAnchorVisibilityStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
+const getSlottedAnchorVisibilityStyle: GetStyleFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel
     ? {
         position: 'absolute',
-        ...getInset(),
+        ...getInsetStyle(),
         whiteSpace: 'nowrap',
         textIndent: -999999,
       }
     : {
         position: 'static',
-        ...getInset('auto'),
+        ...getInsetStyle('auto'),
         whiteSpace: 'inherit',
         textIndent: 0,
       };
@@ -124,7 +117,7 @@ export const getLinkButtonPureStyles = (
     ':host': {
       position: 'relative',
       outline: addImportantToRule(0),
-      ...buildResponsiveStyles(hasSubline ? false : stretch, getHostStyles),
+      ...buildResponsiveStyle(hasSubline ? false : stretch, getHostStyle),
     },
     root: {
       display: 'flex',
@@ -142,7 +135,7 @@ export const getLinkButtonPureStyles = (
       background: 'transparent',
       color: isDisabledOrLoading ? disabledColor : active ? activeColor : baseColor,
       transition: `${getTransition('color')}, font-size 1ms linear`, // used for transitionend event listener
-      ...(!hasSlottedAnchor && getFocusStyles({ offset: 1, pseudo: '::before' })),
+      ...(!hasSlottedAnchor && getFocusStyle({ offset: 1, pseudo: '::before' })),
       ...(!isDisabledOrLoading && {
         '&:hover': {
           color: hoverColor,
@@ -163,13 +156,13 @@ export const getLinkButtonPureStyles = (
       }),
       ...mergeDeep(
         !hasSubline &&
-          buildResponsiveStyles(
+          buildResponsiveStyle(
             stretch,
             (stretched: boolean): JssStyle => ({
               justifyContent: stretched ? 'space-between' : 'flex-start',
             })
           ),
-        buildResponsiveStyles(size, getSizeStyles)
+        buildResponsiveStyle(size, getSizeStyle)
       ),
     },
     ...(hasIcon && {
@@ -180,8 +173,8 @@ export const getLinkButtonPureStyles = (
       },
       label: {
         ...mergeDeep(
-          buildResponsiveStyles(hideLabel, !hasSlottedAnchor ? getVisibilityStyles : getSlottedAnchorVisibilityStyles),
-          !hasSubline && buildResponsiveStyles(alignLabel, getLabelAlignmentStyles)
+          buildResponsiveStyle(hideLabel, !hasSlottedAnchor ? getVisibilityStyle : getSlottedAnchorVisibilityStyle),
+          !hasSubline && buildResponsiveStyle(alignLabel, getLabelAlignmentStyle)
         ),
         ...(hasSubline && {
           paddingLeft: pxToRemWithUnit(4),
@@ -195,7 +188,7 @@ export const getLinkButtonPureStyles = (
         marginTop: addImportantToRule('4px'), // override due to reset of getScreenReaderOnlyJssStyle() in getVisibilityStyles
         color: isDisabledOrLoading ? disabledColor : active ? activeColor : baseColor,
         ...(hasIcon && {
-          ...buildResponsiveStyles(hideLabel, getVisibilityStyles),
+          ...buildResponsiveStyle(hideLabel, getVisibilityStyle),
           paddingLeft: pxToRemWithUnit(4),
           '&::before': {
             content: '""',

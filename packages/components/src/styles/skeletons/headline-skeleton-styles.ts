@@ -1,12 +1,12 @@
 import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
-import { getTextHeadlineSkeletonStyles } from './text-skeleton-styles';
+import { getTextHeadlineSkeletonStyle } from './text-skeleton-styles';
 import {
   extendPseudoWithTheme,
   getElementBackgroundGradient,
   getSkeletonElementHeight,
-  getThemedPseudoStyles,
+  getThemedPseudoStyle,
   PDS_SKELETON_CLASS_PREFIX,
-} from './skeleton-base-styles';
+} from './base-skeleton-styles';
 import { mediaQueryMin, mediaQueryMinMax } from '@porsche-design-system/utilities-v2/src/jss';
 import type { JssStyle } from 'jss';
 import {
@@ -36,39 +36,39 @@ export const getHeadlineSkeletonCss = (): string => {
       'p-headline': {
         '&:not(.hydrated)': {
           ...extendPseudoWithTheme({
-            stylesFunction: () => getTextHeadlineSkeletonStyles(getTypographyElementHeight(headline1)),
+            styleFunction: () => getTextHeadlineSkeletonStyle(getTypographyElementHeight(headline1)),
           }),
-          ...getHeadlineSkeletonStyles(headline1),
+          ...getHeadlineSkeletonStyle(headline1),
           [`&[variant=large-title], &.${PDS_SKELETON_CLASS_PREFIX}variant-large-title`]: {
             ...extendPseudoWithTheme({
-              stylesFunction: () => getTextHeadlineSkeletonStyles(getTypographyElementHeight(titleLarge)),
+              styleFunction: () => getTextHeadlineSkeletonStyle(getTypographyElementHeight(titleLarge)),
             }),
-            ...getHeadlineSkeletonStyles(titleLarge),
+            ...getHeadlineSkeletonStyle(titleLarge),
           },
           [`&[variant=headline-2], &.${PDS_SKELETON_CLASS_PREFIX}variant-headline-2`]: {
             ...extendPseudoWithTheme({
-              stylesFunction: () => getTextHeadlineSkeletonStyles(getTypographyElementHeight(headline2)),
+              styleFunction: () => getTextHeadlineSkeletonStyle(getTypographyElementHeight(headline2)),
             }),
-            ...getHeadlineSkeletonStyles(headline2),
+            ...getHeadlineSkeletonStyle(headline2),
           },
           [`&[variant=headline-3], &.${PDS_SKELETON_CLASS_PREFIX}variant-headline-3`]: {
             ...extendPseudoWithTheme({
-              stylesFunction: () => getTextHeadlineSkeletonStyles(getTypographyElementHeight(headline3)),
+              styleFunction: () => getTextHeadlineSkeletonStyle(getTypographyElementHeight(headline3)),
             }),
-            ...getHeadlineSkeletonStyles(headline3),
+            ...getHeadlineSkeletonStyle(headline3),
           },
           [`&[variant=headline-4], &.${PDS_SKELETON_CLASS_PREFIX}variant-headline-4`]: {
             ...extendPseudoWithTheme({
-              stylesFunction: () => getTextHeadlineSkeletonStyles(getTypographyElementHeight(headline4)),
+              styleFunction: () => getTextHeadlineSkeletonStyle(getTypographyElementHeight(headline4)),
             }),
-            ...getHeadlineSkeletonStyles(headline4),
+            ...getHeadlineSkeletonStyle(headline4),
           },
           [`&[variant=headline-5], &.${PDS_SKELETON_CLASS_PREFIX}variant-headline-5`]: {
             ...extendPseudoWithTheme({
-              stylesFunction: () => getTextHeadlineSkeletonStyles(getTypographyElementHeight(headline5)),
+              styleFunction: () => getTextHeadlineSkeletonStyle(getTypographyElementHeight(headline5)),
             }),
           },
-          ...getThemedPseudoStyles(),
+          ...getThemedPseudoStyle(),
         },
       },
     },
@@ -77,20 +77,20 @@ export const getHeadlineSkeletonCss = (): string => {
 
 const getFontSizeInPx = (fontSize: string): number => parseFloat(fontSize.replace('rem', '')) * 16;
 
-const getHeadlineSkeletonStyles = (headline: HeadlineType): JssStyle => ({
-  ...getHeadlineStylesByBreakpoint(headline, mediaQueryMinMax('s', 'm')),
-  ...getHeadlineStylesByBreakpoint(headline, mediaQueryMinMax('m', 'l')),
-  ...getHeadlineStylesByBreakpoint(headline, mediaQueryMinMax('l', 'xl')),
-  ...getHeadlineStylesByBreakpoint(headline, mediaQueryMin('xl')),
+const getHeadlineSkeletonStyle = (headline: HeadlineType): JssStyle => ({
+  ...getHeadlineStyleByBreakpoint(headline, mediaQueryMinMax('s', 'm')),
+  ...getHeadlineStyleByBreakpoint(headline, mediaQueryMinMax('m', 'l')),
+  ...getHeadlineStyleByBreakpoint(headline, mediaQueryMinMax('l', 'xl')),
+  ...getHeadlineStyleByBreakpoint(headline, mediaQueryMin('xl')),
 });
 
-const getHeadlineStylesByBreakpoint = (headline: HeadlineType, breakpoint: string): JssStyle => {
+const getHeadlineStyleByBreakpoint = (headline: HeadlineType, breakpoint: string): JssStyle => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  return { [breakpoint]: getHeadlineBreakpointStyles(headline[breakpoint].fontSize, headline[breakpoint].lineHeight) };
+  return { [breakpoint]: getHeadlineBreakpointStyle(headline[breakpoint].fontSize, headline[breakpoint].lineHeight) };
 };
 
-const getHeadlineBreakpointStyles = (fontSize: string, lineHeight: number): JssStyle => {
+const getHeadlineBreakpointStyle = (fontSize: string, lineHeight: number): JssStyle => {
   const fontSizeInPx = getFontSizeInPx(fontSize);
   const elHeight = fontSizeInPx * lineHeight;
   const topGradientSpacing = (elHeight - fontSizeInPx) / 2;

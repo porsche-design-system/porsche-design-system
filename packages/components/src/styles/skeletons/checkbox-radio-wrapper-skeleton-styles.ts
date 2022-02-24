@@ -4,9 +4,9 @@ import {
   BUTTON_LINK_SKELETON_WIDTH,
   ELEMENT_SKELETON_DIMENSION,
   extendPseudoWithTheme,
-  getBaseSkeletonStyles,
-  getThemedPseudoStyles,
-} from './skeleton-base-styles';
+  getBaseSkeletonStyle,
+  getThemedPseudoStyle,
+} from './base-skeleton-styles';
 
 export const getCheckboxRadioWrapperSkeletonCss = (): string => {
   return getMinifiedCss({
@@ -14,11 +14,11 @@ export const getCheckboxRadioWrapperSkeletonCss = (): string => {
       'p-checkbox-wrapper, p-radio-button-wrapper': {
         '&:not(.hydrated)': {
           ...extendPseudoWithTheme({
-            stylesFunction: () => getBaseSkeletonStyles(false, ELEMENT_SKELETON_DIMENSION / 2),
+            styleFunction: () => getBaseSkeletonStyle(false, ELEMENT_SKELETON_DIMENSION / 2),
           }),
           display: 'block',
           minWidth: pxToRemWithUnit(BUTTON_LINK_SKELETON_WIDTH),
-          ...getThemedPseudoStyles(),
+          ...getThemedPseudoStyle(),
         },
       },
     },
