@@ -17,8 +17,7 @@ export default {
   output: {
     file: 'dist/components-wrapper/jsdom-polyfill/index.js',
     format: 'cjs',
-    extend: true,
-    exports: 'auto',
+    exports: 'auto', // fixes rollup warning
   },
   plugins: [
     commonjs({ dynamicRequireTargets: ['projects/jsdom-polyfill/src/**/*.js'] }),
