@@ -8,9 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.9.0-rc.1] - 2022-02-25
+
 #### Fixed
 - `Modal` focus trap respecting elements in shadow DOM and dynamically added/removed elements on first level
 - `TabsItem` focus outline on click in Safari
+- Error while using partials in Vanilla JS and Angular
 
 ### [2.9.0-rc.0] - 2022-02-16
 
@@ -30,7 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Added
 - `:focus-visible` content of selected Tab in `Tabs` component gets focus styling
-- improved accessibility of `Text Field Wrapper` and `Textarea Wrapper` when `maxlength` attribute is set
+- Improved accessibility of `Text Field Wrapper` and `Textarea Wrapper` when `maxlength` attribute is set
 - `Modal` aria property
 - `Modal` class for slotted elements to make content full-width
 
