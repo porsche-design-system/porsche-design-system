@@ -26,7 +26,7 @@
 | compatibility ts-node          | ✓   | ✓   | ✗   | ✗                           | ESM with type module works only with `NODE_OPTIONS='--loader ts-node/esm --experimental-specifier-resolution=node' ts-node ./myscript.ts`.
 | compatibility create-react-app | ✓   | ✓   | ✓   |                             |
 | compatibility nextJS           | ✓   | ✓   | ✓   |                             |
-| compatibility Angular CLI      | ✓   | ✓   | ✗   |                             | When bundling partial entry point as ESM we get the error `Unexpected token 'export'`
+| compatibility Angular CLI      | ✓   | ✓   | ✓   |                             | When bundling partial entry point as ESM we get the error `Unexpected token 'export'`
 | compatibility Stencil          | ✓   | ✓   |     | ✓                           |
 | compatibility Vue CLI          | ✓   | ✓   |     | ✓                           |
 | compatibility Jest             | ✓   | ✓   |     | ✗                           |
@@ -46,7 +46,7 @@ Maybe we can make it work by passing flags / changing configuration, but this wo
 
 ## ESM
 
-If we provide only ESM, it can`t be used due to Syntax Errors like `Unexpected token 'export'` in jest, ts-node and node and vanillaJs.  
+If we provide only ESM, it can't be used due to Syntax Errors like `Unexpected token 'export'` in jest, ts-node and node and vanillaJs.  
 On the other hand we need to provide an ESM bundle, because it is treeshakeable.
 
 ## CJS
