@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
-### [2.9.0-rc.1] - 2022-02-24
+### [2.9.0-rc.1] - 2022-02-25
 
 #### Fixed
 - `Modal` focus trap respecting elements in shadow DOM and dynamically added/removed elements on first level
