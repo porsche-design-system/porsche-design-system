@@ -32,9 +32,9 @@ export const getSkeletonElementHeight = (height: number, withLabel = true, withD
 export const getAfterMinHeight = (elHeight: number): string => `calc(100% - ${pxToRemWithUnit(elHeight)})`;
 
 export const getElementBackgroundGradient = (
-  elHeight: number,
-  topGradientSpacing = LABEL_HEIGHT_SPACING,
-  hasDescription?: boolean
+  elHeight: number, // !== 52 || !== 24 => not a label => no description
+  topGradientSpacing = LABEL_HEIGHT_SPACING, // !== 4 => label => no height needed
+  hasDescription?: boolean // true => label => no height needed
 ) => {
   const topGradientSpacingPx = `${topGradientSpacing}px`;
   const descriptionBottomSpacing = 8;
@@ -43,7 +43,7 @@ export const getElementBackgroundGradient = (
   const bottomDescriptionGradientSpacingPx = `${elHeight - descriptionBottomSpacing - LABEL_HEIGHT_SPACING}px`;
   return `linear-gradient(transparent, transparent ${topGradientSpacingPx}, currentColor ${topGradientSpacingPx}, currentColor ${bottomGradientSpacingPx}, transparent ${bottomGradientSpacingPx},${
     hasDescription
-      ? `transparent ${topDescriptionGradientSpacingPx}, currentColor ${topDescriptionGradientSpacingPx}, currentColor ${bottomDescriptionGradientSpacingPx}, transparent ${bottomDescriptionGradientSpacingPx},`
+      ? ` transparent ${topDescriptionGradientSpacingPx}, currentColor ${topDescriptionGradientSpacingPx}, currentColor ${bottomDescriptionGradientSpacingPx}, transparent ${bottomDescriptionGradientSpacingPx},`
       : ''
   } transparent ${elHeight}px)`;
 };
@@ -100,6 +100,7 @@ type ExtendPseudoWithThemeOptions = {
   styleFunction?: () => JssStyle;
   pseudosToExtend?: PseudoElementSelectorsType[];
 };
+
 export const extendPseudoWithTheme = (opts?: ExtendPseudoWithThemeOptions): JssStyle => {
   const { theme = 'light', styleFunction = () => ({}), pseudosToExtend = ['&::after'] } = opts ?? {};
 
