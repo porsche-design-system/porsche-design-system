@@ -15,18 +15,18 @@ import {
 
 // TODO: remove skeleton styles after all are hydrated
 
-const skeletonChunkNamesTypeLiteral = joinArrayElementsToString(TAG_NAMES_WITH_SKELETON, ' | ');
+const skeletonTagNamesTypeLiteral = joinArrayElementsToString(TAG_NAMES_WITH_SKELETON, ' | ');
 
 const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
 
 const tagNamesWithSkeleton = joinArrayElementsToString(TAG_NAMES_WITH_SKELETON);
 
 export const generateInitialStylesPartial = (): string => {
-  // 'any' is fallback when COMPONENT_CHUNK_NAMES is an empty array because components-js wasn't built, yet
-  const types = `export type SkeletonComponentChunkName = ${skeletonChunkNamesTypeLiteral || 'any'};
+  // 'any' is fallback when TAG_NAMES_WITH_SKELETON is an empty array because shared wasn't built, yet
+  const types = `export type SkeletonTagName = ${skeletonTagNamesTypeLiteral || 'any'};
 
   type GetInitialStylesOptions = {
-  skeletonComponents?: SkeletonComponentChunkName[];
+  skeletonTagNames?: SkeletonTagName[];
   prefix?: string;
   ${withoutTagsOption}
   theme?: 'light' | 'dark';
@@ -66,8 +66,8 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
 export function getInitialStyles(opts?: GetInitialStylesOptionsFormatJsx): JSX.Element;
 export function getInitialStyles(opts?: GetInitialStylesOptionsWithoutTags): string;
 export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.Element {
-  const { skeletonComponents, prefix, withoutTags, theme, format }: GetInitialStylesOptions = {
-    skeletonComponents: [],
+  const { skeletonTagNames, prefix, withoutTags, theme, format }: GetInitialStylesOptions = {
+    skeletonTagNames: [],
     prefix: '',
     withoutTags: false,
     theme: 'light',
@@ -78,21 +78,21 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
   const tagNames = [${tagNames}];
   const prefixedTagNames = getPrefixedTagNames(tagNames, prefix);
 
-  const tagNamesWithSkeleton: SkeletonComponentChunkName[] = [${tagNamesWithSkeleton}];
+  const tagNamesWithSkeleton: SkeletonTagName[] = [${tagNamesWithSkeleton}];
 
-  const invalidComponentChunkNames = skeletonComponents.filter((x) => !tagNamesWithSkeleton.includes(x));
+  const invalidComponentTagNames = skeletonTagNames.filter((x) => !tagNamesWithSkeleton.includes(x));
 
-  if (invalidComponentChunkNames.length) {
-    throw new Error(\`The following supplied skeleton component names are invalid:
-  \${invalidComponentChunkNames.join(', ')}
+  if (invalidComponentTagNames.length) {
+    throw new Error(\`The following supplied skeleton tag names are invalid:
+  \${invalidComponentTagNames.join(', ')}
 
-Please use only valid component chunk names:
+Please use only valid component tag names:
   \${tagNamesWithSkeleton.join(', ')}\`);
   }
 
-  const usedTagNamesWithSkeleton = tagNamesWithSkeleton.filter((skeletonTagName) => skeletonComponents.includes(skeletonTagName));
+  const usedTagNamesWithSkeleton = tagNamesWithSkeleton.filter((skeletonTagName) => skeletonTagNames.includes(skeletonTagName));
   const prefixedTagNamesWithSkeleton = getPrefixedTagNames(usedTagNamesWithSkeleton, prefix);
-  const prefixedUnusedTagNamesWithSkeleton = getPrefixedTagNames(tagNamesWithSkeleton.filter((skeletonTagName) => !skeletonComponents.includes(skeletonTagName)), prefix);
+  const prefixedUnusedTagNamesWithSkeleton = getPrefixedTagNames(tagNamesWithSkeleton.filter((skeletonTagName) => !skeletonTagNames.includes(skeletonTagName)), prefix);
 
   const initialVisibilityHiddenStyles = prefixedTagNames.join(',') + '{visibility:hidden}';
 
