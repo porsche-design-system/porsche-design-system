@@ -4,6 +4,9 @@ exports[`getComponentCss() should return correct css for size: "medium", compact
 ":host {
   display: block;
 }
+:host(:first-of-type) .root {
+  border-top: 1px solid #e3e4e5;
+}
 button {
   display: flex;
   justify-content: space-between;
@@ -39,9 +42,6 @@ button:focus:not(:focus-visible) {
 }
 button:hover {
   color: #d5001c;
-}
-:host(:first-of-type) .root {
-  border-top: 1px solid #e3e4e5;
 }
 .root {
   border-bottom: 1px solid #e3e4e5;
@@ -81,6 +81,9 @@ exports[`getComponentCss() should return correct css for size: "small", compact:
 ":host {
   display: block;
 }
+:host(:first-of-type) .root {
+  border-top: 1px solid #e3e4e5;
+}
 button {
   display: flex;
   justify-content: space-between;
@@ -116,9 +119,6 @@ button:focus:not(:focus-visible) {
 }
 button:hover {
   color: #d5001c;
-}
-:host(:first-of-type) .root {
-  border-top: 1px solid #e3e4e5;
 }
 .root {
   border-bottom: 1px solid #e3e4e5;
@@ -156,6 +156,9 @@ exports[`getComponentCss() should return correct css for size: "small", compact:
 ":host {
   display: block;
 }
+:host(:first-of-type) .root {
+  border-top: 1px solid #4a4e51;
+}
 button {
   display: flex;
   justify-content: space-between;
@@ -191,9 +194,6 @@ button:focus:not(:focus-visible) {
 }
 button:hover {
   color: #ff0223;
-}
-:host(:first-of-type) .root {
-  border-top: 1px solid #4a4e51;
 }
 .root {
   border-bottom: 1px solid #4a4e51;
@@ -233,6 +233,9 @@ exports[`getComponentCss() should return correct css for size: "small", compact:
 ":host {
   display: block;
 }
+:host(:first-of-type) .root {
+  border-top: 1px solid #e3e4e5;
+}
 button {
   display: flex;
   justify-content: space-between;
@@ -268,9 +271,6 @@ button:focus:not(:focus-visible) {
 }
 button:hover {
   color: #d5001c;
-}
-:host(:first-of-type) .root {
-  border-top: 1px solid #e3e4e5;
 }
 .root {
   border-bottom: 1px solid #e3e4e5;
@@ -450,6 +450,9 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 ":host {
   display: block;
 }
+:host(:first-of-type) .root {
+  border-top: 1px solid #4a4e51;
+}
 button {
   display: flex;
   justify-content: space-between;
@@ -526,9 +529,6 @@ button:hover {
   }
 }
 
-:host(:first-of-type) .root {
-  border-top: 1px solid #4a4e51;
-}
 .root {
   border-bottom: 1px solid #4a4e51;
 }

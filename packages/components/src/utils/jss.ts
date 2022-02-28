@@ -35,7 +35,7 @@ const jss = create({
 export const getCss = (jssStyles: Styles): string =>
   jss
     .createStyleSheet(jssStyles, {
-      generateId: (rule: Rule) => rule.key,
+      generateId: (rule) => rule.key,
     })
     .toString();
 

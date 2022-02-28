@@ -3,12 +3,14 @@ import { addImportantToEachRule, getTransition, getThemedColors } from '../../..
 
 export const getComponentCss = (): string => {
   return getCss({
-    ':host': addImportantToEachRule({
-      display: 'table-row',
-      transition: getTransition('background-color'),
-      '&(:hover)': {
-        backgroundColor: getThemedColors('light').backgroundSurfaceColor,
-      },
-    }),
+    '@global': {
+      ':host': addImportantToEachRule({
+        display: 'table-row',
+        transition: getTransition('background-color'),
+        '&(:hover)': {
+          backgroundColor: getThemedColors('light').backgroundSurfaceColor,
+        },
+      }),
+    },
   });
 };
