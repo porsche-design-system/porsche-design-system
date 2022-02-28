@@ -221,7 +221,7 @@ describe('toast-item', () => {
     const animationIn = await getElementStyle(toastItem, 'animation');
 
     expect(animationIn, 'for animationIn').toMatchInlineSnapshot(
-      '"0.6s cubic-bezier(0.45, 0, 0.55, 1) 0s 1 normal forwards running keyframes-in"'
+      '"0.6s cubic-bezier(0.45, 0, 0.55, 1) 0s 1 normal forwards running in"'
     );
 
     // toast stay open for a total of 1000ms, we need to hit the middle of closing animation
@@ -229,7 +229,7 @@ describe('toast-item', () => {
     const animationOut = await getElementStyle(toastItem, 'animation');
 
     expect(animationOut, 'for animationOut').toMatchInlineSnapshot(
-      '"0.6s cubic-bezier(0.5, 1, 0.89, 1) 0s 1 normal forwards running keyframes-out"'
+      '"0.6s cubic-bezier(0.5, 1, 0.89, 1) 0s 1 normal forwards running out"'
     );
 
     await waitForAnimationFinish(); // wait another 600ms to be sure animation has finished
