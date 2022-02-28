@@ -11,7 +11,6 @@ import {
   getTransition,
   pxToRemWithUnit,
   getThemedColors,
-  getThemedColorsDarken,
 } from './';
 
 const { baseColor: darkThemeBaseColor } = getThemedColors('dark');
@@ -21,8 +20,8 @@ const getVariantColors = (
   variant: LinkButtonVariant,
   theme: ThemeExtendedElectric
 ): { primaryColor: string; primaryColorHover: string; baseColor: string } => {
-  const { brandColor, baseColor, contrastHighColor } = getThemedColors(theme);
-  const { hoverColorDarken, contrastHighColorDarken, baseColorDarken } = getThemedColorsDarken(theme);
+  const { brandColor, baseColor, contrastHighColor, hoverColorDarken, contrastHighColorDarken, baseColorDarken } =
+    getThemedColors(theme);
 
   const colors: {
     [t in ThemeExtendedElectric]: {
