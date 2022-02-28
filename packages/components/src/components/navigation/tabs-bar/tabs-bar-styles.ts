@@ -22,51 +22,53 @@ export const getComponentCss = (
   const gradientColorTransparent = gradientColor + (gradientColor.length === 4 ? '0' : '00');
 
   return getCss({
-    ':host': {
-      display: 'block',
-      position: addImportantToRule('relative'),
+    '@global': {
+      ':host': {
+        display: 'block',
+        position: addImportantToRule('relative'),
+      },
+      ...addImportantToEachRule({
+        // would be nice to use shared selector like '::slotted([role])'
+        // but this doesn't work reliably when rendering in browser
+        [transformSelector('::slotted([role])')]: {
+          display: 'inline-block',
+          margin: 0,
+          padding: 0,
+          verticalAlign: 'top',
+          fontFamily,
+          fontWeight: 'inherit',
+          fontSize: 'inherit',
+          lineHeight: 'inherit',
+          boxSizing: 'border-box',
+          WebkitAppearance: 'none',
+          appearance: 'none',
+          outline: '1px solid transparent',
+          outlineOffset: '1px',
+          textDecoration: 'none',
+          textAlign: 'left',
+          border: 0,
+          background: 'transparent',
+          color: baseColor,
+          cursor: 'pointer',
+          transition: getTransition('color'),
+        },
+        [transformSelector('::slotted([role]:hover)')]: {
+          color: hoverColor,
+        },
+        [transformSelector('::slotted([role]:active),::slotted([role][aria-selected="true"])')]: {
+          color: activeColor,
+        },
+        [transformSelector('::slotted([role]:focus)')]: {
+          outlineColor: focusColor,
+        },
+        [transformSelector('::slotted([role]:focus:not(:focus-visible))')]: {
+          outlineColor: 'transparent',
+        },
+        [transformSelector('::slotted([role]:not(:last-child))')]: {
+          marginRight: '1em',
+        },
+      }),
     },
-    ...addImportantToEachRule({
-      // would be nice to use shared selector like '::slotted([role])'
-      // but this doesn't work reliably when rendering in browser
-      [transformSelector('::slotted([role])')]: {
-        display: 'inline-block',
-        margin: 0,
-        padding: 0,
-        verticalAlign: 'top',
-        fontFamily,
-        fontWeight: 'inherit',
-        fontSize: 'inherit',
-        lineHeight: 'inherit',
-        boxSizing: 'border-box',
-        WebkitAppearance: 'none',
-        appearance: 'none',
-        outline: '1px solid transparent',
-        outlineOffset: '1px',
-        textDecoration: 'none',
-        textAlign: 'left',
-        border: 0,
-        background: 'transparent',
-        color: baseColor,
-        cursor: 'pointer',
-        transition: getTransition('color'),
-      },
-      [transformSelector('::slotted([role]:hover)')]: {
-        color: hoverColor,
-      },
-      [transformSelector('::slotted([role]:active),::slotted([role][aria-selected="true"])')]: {
-        color: activeColor,
-      },
-      [transformSelector('::slotted([role]:focus)')]: {
-        outlineColor: focusColor,
-      },
-      [transformSelector('::slotted([role]:focus:not(:focus-visible))')]: {
-        outlineColor: 'transparent',
-      },
-      [transformSelector('::slotted([role]:not(:last-child))')]: {
-        marginRight: '1em',
-      },
-    }),
     root: {
       position: 'relative',
       ...fontSize.small,
