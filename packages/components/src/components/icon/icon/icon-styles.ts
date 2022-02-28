@@ -13,9 +13,11 @@ export const getComponentCss = (color: TextColor, size: IconSize, theme: ThemeEx
   const dimension = sizeMap[size];
 
   return getCss({
-    ':host': {
-      display: 'inline-flex',
-      verticalAlign: 'top',
+    '@global': {
+      ':host': {
+        display: 'inline-flex',
+        verticalAlign: 'top',
+      },
     },
     root: {
       display: 'flex',
