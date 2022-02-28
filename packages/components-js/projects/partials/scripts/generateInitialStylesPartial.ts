@@ -29,7 +29,6 @@ export const generateInitialStylesPartial = (): string => {
   skeletonTagNames?: SkeletonTagName[];
   prefix?: string;
   ${withoutTagsOption}
-  theme?: 'light' | 'dark';
   format?: Format;
 };
 type GetInitialStylesOptionsFormatHtml = Omit<GetInitialStylesOptions, 'withoutTags'> & {
@@ -44,7 +43,6 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
   prefixedTagNamesWithSkeleton: string[];
   prefixedUnusedTagNamesWithSkeleton: string[];
   prefix?: string;
-  theme?: 'light' | 'dark';
 }`;
 
   const skeletonKeyframes = '@keyframes opacity{0%{opacity:0.35}50%{opacity:0.15}100%{opacity:0.35}';
@@ -66,11 +64,10 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
 export function getInitialStyles(opts?: GetInitialStylesOptionsFormatJsx): JSX.Element;
 export function getInitialStyles(opts?: GetInitialStylesOptionsWithoutTags): string;
 export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.Element {
-  const { skeletonTagNames, prefix, withoutTags, theme, format }: GetInitialStylesOptions = {
+  const { skeletonTagNames, prefix, withoutTags, format }: GetInitialStylesOptions = {
     skeletonTagNames: [],
     prefix: '',
     withoutTags: false,
-    theme: 'light',
     format: 'html',
     ...opts
   };
@@ -96,7 +93,7 @@ Please use only valid component tag names:
 
   const initialVisibilityHiddenStyles = prefixedTagNames.join(',') + '{visibility:hidden}';
 
-  const mergedStyles = \`\${initialVisibilityHiddenStyles}\${getSkeletonStyles({prefixedTagNamesWithSkeleton,prefixedUnusedTagNamesWithSkeleton, prefix, theme})}\`;
+  const mergedStyles = \`\${initialVisibilityHiddenStyles}\${getSkeletonStyles({prefixedTagNamesWithSkeleton,prefixedUnusedTagNamesWithSkeleton, prefix})}\`;
   const markup = format === 'html' ?  \`<style>\${mergedStyles}</style>\` : <style>{mergedStyles}</style>;
 
   return withoutTags
@@ -109,10 +106,9 @@ Please use only valid component tag names:
      prefixedTagNamesWithSkeleton: [],
      prefixedUnusedTagNamesWithSkeleton: [],
      prefix: '',
-     theme: 'light',
      ...opts
   };
-  const { prefixedTagNamesWithSkeleton, prefixedUnusedTagNamesWithSkeleton, prefix, theme } = options;
+  const { prefixedTagNamesWithSkeleton, prefixedUnusedTagNamesWithSkeleton, prefix } = options;
 
   const skeletonStylesWithKey = ${JSON.stringify(skeletonStyles)};
   let skeletonStyles = prefixedTagNamesWithSkeleton.map((prefixedTagName)=>{
