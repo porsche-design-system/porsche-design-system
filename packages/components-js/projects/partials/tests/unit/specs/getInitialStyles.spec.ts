@@ -15,7 +15,7 @@ describe('format: html', () => {
   });
 
   it('should return core and skeleton styles', () => {
-    const result = getInitialStyles({ skeletonComponents: TAG_NAMES_WITH_SKELETON as SkeletonComponentChunkName[] });
+    const result = getInitialStyles({ skeletonTagNames: TAG_NAMES_WITH_SKELETON as SkeletonComponentChunkName[] });
     expect(result).toMatchSnapshot();
   });
 
@@ -28,7 +28,7 @@ describe('format: html', () => {
   it('should add custom prefixes to skeleton component names', () => {
     const result = getInitialStyles({
       prefix: 'custom-prefix',
-      skeletonComponents: TAG_NAMES_WITH_SKELETON as SkeletonComponentChunkName[],
+      skeletonTagNames: TAG_NAMES_WITH_SKELETON as SkeletonComponentChunkName[],
     });
     expect(result).toMatchSnapshot();
   });
@@ -44,7 +44,7 @@ describe('format: jsx', () => {
   it('should return core and skeleton styles', () => {
     const result = getInitialStyles({
       format: 'jsx',
-      skeletonComponents: TAG_NAMES_WITH_SKELETON as SkeletonComponentChunkName[],
+      skeletonTagNames: TAG_NAMES_WITH_SKELETON as SkeletonComponentChunkName[],
     });
     expect(result).toMatchSnapshot();
   });
@@ -64,11 +64,11 @@ describe('withoutTags: true', () => {
   });
 });
 
-describe('skeletonComponents subset', () => {
+describe('skeletonTagNames subset', () => {
   const skeletonTagNamesWithoutButton = TAG_NAMES_WITH_SKELETON.filter((x) => x !== 'p-button');
 
   it('should return core and p-button skeleton styles', () => {
-    const result = getInitialStyles({ skeletonComponents: ['p-button'] });
+    const result = getInitialStyles({ skeletonTagNames: ['p-button'] });
 
     expect(result.includes('p-button:not(.hydrated)')).toBe(true);
 
@@ -82,7 +82,7 @@ describe('skeletonComponents subset', () => {
   it('should return prefixed core and p-button skeleton styles', () => {
     const prefixedTagNamesWithSkeleton = skeletonTagNamesWithoutButton.map((x) => `custom-prefix-${x}`);
 
-    const result = getInitialStyles({ prefix: 'custom-prefix', skeletonComponents: ['p-button'] });
+    const result = getInitialStyles({ prefix: 'custom-prefix', skeletonTagNames: ['p-button'] });
 
     expect(result.includes('custom-prefix-p-button:not(.hydrated)')).toBe(true);
 
