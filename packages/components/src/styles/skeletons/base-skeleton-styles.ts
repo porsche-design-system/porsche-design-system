@@ -29,26 +29,26 @@ export const getSkeletonElementHeight = (height: number, withLabel = true, withD
   }
 };
 
-export const getAfterMinHeight = (elHeight: number): string => `calc(100% - ${pxToRemWithUnit(elHeight)})`;
+export const getAfterMinHeight = (elementHeight: number): string => `calc(100% - ${pxToRemWithUnit(elementHeight)})`;
 
 export const getElementBackgroundGradient = (
-  elHeight: number, // !== 52 || !== 24 => not a label => no description
+  elementHeight: number, // !== 52 || !== 24 => not a label => no description
   topGradientSpacing = LABEL_HEIGHT_SPACING, // !== 4 => label => no height needed
   hasDescription?: boolean // true => label => no height needed
 ): string => {
   // calculate the "gap" at the top and bottom of the gradient
   const topGradientSpacingPx = `${topGradientSpacing}px`;
   const descriptionBottomSpacing = 8;
-  const bottomGradientSpacingPx = `${(hasDescription ? LABEL_HEIGHT : elHeight) - topGradientSpacing}px`;
+  const bottomGradientSpacingPx = `${(hasDescription ? LABEL_HEIGHT : elementHeight) - topGradientSpacing}px`;
   const topDescriptionGradientSpacingPx = `${LABEL_HEIGHT + LABEL_HEIGHT_SPACING}px`;
-  const bottomDescriptionGradientSpacingPx = `${elHeight - descriptionBottomSpacing - LABEL_HEIGHT_SPACING}px`;
+  const bottomDescriptionGradientSpacingPx = `${elementHeight - descriptionBottomSpacing - LABEL_HEIGHT_SPACING}px`;
 
   // by using a gradient we can "simulate" text with a specific line height inside an element
   return `linear-gradient(transparent, transparent ${topGradientSpacingPx}, currentColor ${topGradientSpacingPx}, currentColor ${bottomGradientSpacingPx}, transparent ${bottomGradientSpacingPx},${
     hasDescription
       ? ` transparent ${topDescriptionGradientSpacingPx}, currentColor ${topDescriptionGradientSpacingPx}, currentColor ${bottomDescriptionGradientSpacingPx}, transparent ${bottomDescriptionGradientSpacingPx},`
       : ''
-  } transparent ${elHeight}px)`;
+  } transparent ${elementHeight}px)`;
 };
 
 export const getPseudoElementStyle = (): JssStyle => {
@@ -62,11 +62,11 @@ export const getPseudoElementStyle = (): JssStyle => {
   };
 };
 
-export const getBaseSkeletonStyle = (withLabel = true, elementHeight = ELEMENT_SKELETON_DIMENSION): JssStyle => {
+export const getBaseSkeletonStyle = (hasLabel = true, elementHeight = ELEMENT_SKELETON_DIMENSION): JssStyle => {
   return {
     position: 'relative',
     color: 'transparent',
-    ...(withLabel
+    ...(hasLabel
       ? {
           display: 'block',
           '&::before': {
@@ -81,13 +81,13 @@ export const getBaseSkeletonStyle = (withLabel = true, elementHeight = ELEMENT_S
           minHeight: pxToRemWithUnit(elementHeight),
         }),
     '&::after': {
-      ...(!withLabel && {
+      ...(!hasLabel && {
         display: 'block',
       }),
       ...getPseudoElementStyle(),
-      top: pxToRemWithUnit(withLabel ? LABEL_HEIGHT_WITH_SPACING : 0),
+      top: pxToRemWithUnit(hasLabel ? LABEL_HEIGHT_WITH_SPACING : 0),
       width: '100%',
-      minHeight: withLabel ? getAfterMinHeight(LABEL_HEIGHT_WITH_SPACING) : '100%',
+      minHeight: hasLabel ? getAfterMinHeight(LABEL_HEIGHT_WITH_SPACING) : '100%',
     },
   };
 };

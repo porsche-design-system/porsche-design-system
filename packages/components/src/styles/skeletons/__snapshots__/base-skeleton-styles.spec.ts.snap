@@ -1,6 +1,80 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should return correct style for getBaseSkeletonStyle() 1`] = `
+exports[`extendPseudoWithTheme() should match style snapshot for parameters: {
+  styleFunction: [Function: styleFunction] { [length]: 0, [name]: 'styleFunction' }
+}  1`] = `
+Object {
+  "&::after": Object {
+    "color": "#626669",
+  },
+  "display": "block",
+}
+`;
+
+exports[`extendPseudoWithTheme() should match style snapshot for parameters: {
+  theme: 'dark',
+  styleFunction: [Function: styleFunction] { [length]: 0, [name]: 'styleFunction' },
+  pseudosToExtend: [ '&::after', '&::before', [length]: 2 ]
+}  1`] = `
+Object {
+  "&::after": Object {
+    "color": "#b0b1b2",
+  },
+  "&::before": Object {
+    "color": "#b0b1b2",
+  },
+  "display": "block",
+}
+`;
+
+exports[`extendPseudoWithTheme() should match style snapshot for parameters: { pseudosToExtend: [ '&::after', '&::before', [length]: 2 ] }  1`] = `
+Object {
+  "&::after": Object {
+    "color": "#626669",
+  },
+  "&::before": Object {
+    "color": "#626669",
+  },
+}
+`;
+
+exports[`extendPseudoWithTheme() should match style snapshot for parameters: { theme: 'dark' }  1`] = `
+Object {
+  "&::after": Object {
+    "color": "#b0b1b2",
+  },
+}
+`;
+
+exports[`extendPseudoWithTheme() should match style snapshot for parameters: {}  1`] = `
+Object {
+  "&::after": Object {
+    "color": "#626669",
+  },
+}
+`;
+
+exports[`getBaseSkeletonStyle() should match style snapshot for hasLabel: false and elementHeight: 24 1`] = `
+Object {
+  "&::after": Object {
+    "animation": "opacity 1.5s ease-in-out infinite",
+    "background": "currentColor",
+    "content": "\\"\\"",
+    "display": "block",
+    "left": "0",
+    "minHeight": "100%",
+    "position": "absolute",
+    "top": "0rem",
+    "visibility": "visible",
+    "width": "100%",
+  },
+  "color": "transparent",
+  "minHeight": "1.5rem",
+  "position": "relative",
+}
+`;
+
+exports[`getBaseSkeletonStyle() should match style snapshot for hasLabel: true and elementHeight: 48 1`] = `
 Object {
   "&::after": Object {
     "animation": "opacity 1.5s ease-in-out infinite",
@@ -27,5 +101,28 @@ Object {
   "color": "transparent",
   "display": "block",
   "position": "relative",
+}
+`;
+
+exports[`getThemedPseudoStyle() should match style snapshot for hasLabel: false 1`] = `
+Object {
+  "&[theme=dark], &.PDS-Skeleton--theme-dark": Object {
+    "&::after": Object {
+      "color": "#b0b1b2",
+    },
+  },
+}
+`;
+
+exports[`getThemedPseudoStyle() should match style snapshot for hasLabel: true 1`] = `
+Object {
+  "&[theme=dark], &.PDS-Skeleton--theme-dark": Object {
+    "&::after": Object {
+      "color": "#b0b1b2",
+    },
+    "&::before": Object {
+      "color": "#b0b1b2",
+    },
+  },
 }
 `;
