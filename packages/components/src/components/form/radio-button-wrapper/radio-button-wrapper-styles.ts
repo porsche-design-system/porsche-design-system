@@ -45,10 +45,10 @@ export const getComponentCss = (
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
 
   return getCss({
-    ':host': {
-      display: 'block',
-    },
     '@global': {
+      ':host': {
+        display: 'block',
+      },
       '::slotted': addImportantToEachRule({
         '&(input)': {
           position: 'static',

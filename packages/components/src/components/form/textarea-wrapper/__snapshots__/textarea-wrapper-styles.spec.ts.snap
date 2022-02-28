@@ -80,6 +80,9 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(textarea:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -87,7 +90,14 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(textarea:not(:disabled):not([readonly])), .counter:hover~::slotted(textarea:not(:disabled):not([readonly])) {
+.counter {
+  position: absolute;
+  bottom: 0.375rem;
+  right: 0.75rem;
+  z-index: 1;
+  color: #626669;
+}
+.counter:hover~::slotted(textarea:not(:disabled):not([readonly])) {
   border-color: #000 !important;
 }
 .required {
@@ -101,13 +111,6 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-.counter {
-  position: absolute;
-  bottom: 0.375rem;
-  right: 0.75rem;
-  z-index: 1;
-  color: #626669;
 }
 .sr-only {
   position: absolute;
@@ -274,11 +277,11 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #626669;
 }
-.label--disabled .label__text {
-  color: #96989a;
-}
 .label__text:hover~::slotted(textarea:not(:disabled):not([readonly])), .label__text:hover ::slotted(textarea:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
+}
+.label--disabled .label__text {
+  color: #96989a;
 }
 .required {
   user-select: none;
@@ -374,6 +377,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(textarea:not(:disabled):not([readonly])), .label__text:hover ::slotted(textarea:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -381,7 +387,14 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(textarea:not(:disabled):not([readonly])), .label__text:hover ::slotted(textarea:hover:not(:disabled):not([readonly])), .counter:hover~::slotted(textarea:not(:disabled):not([readonly])), .counter:hover ::slotted(textarea:hover:not(:disabled):not([readonly])) {
+.counter {
+  position: absolute;
+  bottom: 0.375rem;
+  right: 0.75rem;
+  z-index: 1;
+  color: #626669;
+}
+.counter:hover~::slotted(textarea:not(:disabled):not([readonly])), .counter:hover ::slotted(textarea:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
 }
 .required {
@@ -396,13 +409,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-.counter {
-  position: absolute;
-  bottom: 0.375rem;
-  right: 0.75rem;
-  z-index: 1;
-  color: #626669;
 }
 .sr-only {
   position: absolute;
@@ -497,11 +503,11 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #626669;
 }
-.label--disabled .label__text {
-  color: #96989a;
-}
 .label__text:hover~::slotted(textarea:not(:disabled):not([readonly])) {
   border-color: #000 !important;
+}
+.label--disabled .label__text {
+  color: #96989a;
 }
 .required {
   user-select: none;
@@ -596,6 +602,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(textarea:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -603,7 +612,14 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(textarea:not(:disabled):not([readonly])), .counter:hover~::slotted(textarea:not(:disabled):not([readonly])) {
+.counter {
+  position: absolute;
+  bottom: 0.375rem;
+  right: 0.75rem;
+  z-index: 1;
+  color: #626669;
+}
+.counter:hover~::slotted(textarea:not(:disabled):not([readonly])) {
   border-color: #000 !important;
 }
 .required {
@@ -617,13 +633,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-.counter {
-  position: absolute;
-  bottom: 0.375rem;
-  right: 0.75rem;
-  z-index: 1;
-  color: #626669;
 }
 .sr-only {
   position: absolute;
@@ -718,11 +727,11 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #626669;
 }
-.label--disabled .label__text {
-  color: #96989a;
-}
 .label__text:hover~::slotted(textarea:not(:disabled):not([readonly])), .label__text:hover ::slotted(textarea:hover:not(:disabled):not([readonly])) {
   border-color: #014d0c !important;
+}
+.label--disabled .label__text {
+  color: #96989a;
 }
 .required {
   user-select: none;
@@ -818,6 +827,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(textarea:not(:disabled):not([readonly])), .label__text:hover ::slotted(textarea:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -825,7 +837,14 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(textarea:not(:disabled):not([readonly])), .label__text:hover ::slotted(textarea:hover:not(:disabled):not([readonly])), .counter:hover~::slotted(textarea:not(:disabled):not([readonly])), .counter:hover ::slotted(textarea:hover:not(:disabled):not([readonly])) {
+.counter {
+  position: absolute;
+  bottom: 0.375rem;
+  right: 0.75rem;
+  z-index: 1;
+  color: #626669;
+}
+.counter:hover~::slotted(textarea:not(:disabled):not([readonly])), .counter:hover ::slotted(textarea:hover:not(:disabled):not([readonly])) {
   border-color: #014d0c !important;
 }
 .required {
@@ -840,13 +859,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-.counter {
-  position: absolute;
-  bottom: 0.375rem;
-  right: 0.75rem;
-  z-index: 1;
-  color: #626669;
 }
 .sr-only {
   position: absolute;
@@ -942,11 +954,11 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label__text--description {
   color: #626669;
 }
-.label--disabled .label__text {
-  color: #96989a;
-}
 .label__text:hover~::slotted(textarea:not(:disabled):not([readonly])), .label__text:hover ::slotted(textarea:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
+}
+.label--disabled .label__text {
+  color: #96989a;
 }
 .required {
   user-select: none;
@@ -1043,6 +1055,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(textarea:not(:disabled):not([readonly])), .label__text:hover ::slotted(textarea:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -1050,7 +1065,14 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(textarea:not(:disabled):not([readonly])), .label__text:hover ::slotted(textarea:hover:not(:disabled):not([readonly])), .counter:hover~::slotted(textarea:not(:disabled):not([readonly])), .counter:hover ::slotted(textarea:hover:not(:disabled):not([readonly])) {
+.counter {
+  position: absolute;
+  bottom: 0.375rem;
+  right: 0.75rem;
+  z-index: 1;
+  color: #626669;
+}
+.counter:hover~::slotted(textarea:not(:disabled):not([readonly])), .counter:hover ::slotted(textarea:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
 }
 .required {
@@ -1065,13 +1087,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-.counter {
-  position: absolute;
-  bottom: 0.375rem;
-  right: 0.75rem;
-  z-index: 1;
-  color: #626669;
 }
 .sr-only {
   position: absolute;
@@ -1167,11 +1182,11 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label__text--description {
   color: #626669;
 }
-.label--disabled .label__text {
-  color: #96989a;
-}
 .label__text:hover~::slotted(textarea:not(:disabled):not([readonly])) {
   border-color: #000 !important;
+}
+.label--disabled .label__text {
+  color: #96989a;
 }
 .required {
   user-select: none;
@@ -1267,6 +1282,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(textarea:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -1274,7 +1292,14 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(textarea:not(:disabled):not([readonly])), .counter:hover~::slotted(textarea:not(:disabled):not([readonly])) {
+.counter {
+  position: absolute;
+  bottom: 0.375rem;
+  right: 0.75rem;
+  z-index: 1;
+  color: #626669;
+}
+.counter:hover~::slotted(textarea:not(:disabled):not([readonly])) {
   border-color: #000 !important;
 }
 .required {
@@ -1288,13 +1313,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-.counter {
-  position: absolute;
-  bottom: 0.375rem;
-  right: 0.75rem;
-  z-index: 1;
-  color: #626669;
 }
 .sr-only {
   position: absolute;
@@ -1390,11 +1408,11 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label__text--description {
   color: #626669;
 }
-.label--disabled .label__text {
-  color: #96989a;
-}
 .label__text:hover~::slotted(textarea:not(:disabled):not([readonly])), .label__text:hover ::slotted(textarea:hover:not(:disabled):not([readonly])) {
   border-color: #014d0c !important;
+}
+.label--disabled .label__text {
+  color: #96989a;
 }
 .required {
   user-select: none;
@@ -1491,6 +1509,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(textarea:not(:disabled):not([readonly])), .label__text:hover ::slotted(textarea:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -1498,7 +1519,14 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(textarea:not(:disabled):not([readonly])), .label__text:hover ::slotted(textarea:hover:not(:disabled):not([readonly])), .counter:hover~::slotted(textarea:not(:disabled):not([readonly])), .counter:hover ::slotted(textarea:hover:not(:disabled):not([readonly])) {
+.counter {
+  position: absolute;
+  bottom: 0.375rem;
+  right: 0.75rem;
+  z-index: 1;
+  color: #626669;
+}
+.counter:hover~::slotted(textarea:not(:disabled):not([readonly])), .counter:hover ::slotted(textarea:hover:not(:disabled):not([readonly])) {
   border-color: #014d0c !important;
 }
 .required {
@@ -1513,13 +1541,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-.counter {
-  position: absolute;
-  bottom: 0.375rem;
-  right: 0.75rem;
-  z-index: 1;
-  color: #626669;
 }
 .sr-only {
   position: absolute;
