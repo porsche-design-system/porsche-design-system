@@ -1,10 +1,10 @@
 import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
 import {
-  ELEMENT_SKELETON_DIMENSION,
   extendPseudoWithTheme,
   getAfterMinHeight,
   getBaseSkeletonStyle,
   getElementBackgroundGradient,
+  getHiddenLabelStyle,
   getSkeletonElementHeight,
   getThemedPseudoStyle,
   LABEL_HEIGHT,
@@ -27,16 +27,8 @@ export const getTextareaWrapperSkeletonCss = (): string => {
           minHeight: getSkeletonElementHeight(TEXTAREA_SKELETON_HEIGHT),
 
           // TODO: use constants for getComponentMeta for "property" class and values
-          [`&[hide-label=true], &.${PDS_SKELETON_CLASS_PREFIX}hide-label`]: {
-            minHeight: getSkeletonElementHeight(ELEMENT_SKELETON_DIMENSION, false),
-            '&::before': {
-              content: 'none',
-            },
-            '&::after': {
-              top: 0,
-              minHeight: '100%',
-            },
-          },
+          [`&[hide-label=true], :not([label]), &.${PDS_SKELETON_CLASS_PREFIX}hide-label, &:not(.${PDS_SKELETON_CLASS_PREFIX}label`]:
+            getHiddenLabelStyle(),
           [`&[description]:not([label]), &.${PDS_SKELETON_CLASS_PREFIX}description &:not(.${PDS_SKELETON_CLASS_PREFIX}label)`]:
             {
               minHeight: getSkeletonElementHeight(TEXTAREA_SKELETON_HEIGHT, false, true),

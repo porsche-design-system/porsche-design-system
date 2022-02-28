@@ -3,6 +3,7 @@ import {
   getAfterMinHeight,
   getBaseSkeletonStyle,
   getElementBackgroundGradient,
+  getHiddenLabelStyle,
   getSkeletonElementHeight,
   getThemedPseudoStyle,
 } from './base-skeleton-styles';
@@ -83,4 +84,10 @@ describe('getThemedPseudoStyle()', () => {
       expect(getThemedPseudoStyle(...args)).toMatchSnapshot();
     }
   );
+});
+
+describe('getHiddenLabelStyle()', () => {
+  it('should match style snapshot', () => {
+    expect(getHiddenLabelStyle()).toMatchSnapshot();
+  });
 });
