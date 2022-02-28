@@ -39,12 +39,18 @@ export const getComponentCss = (
       ':host': addImportantToEachRule({
         boxSizing: 'border-box',
         ...mergeDeep(
-          buildResponsiveStyles(width, (width: FlexItemWidthType) => ({ width: `${flexItemWidths[width]}%` })),
-          buildResponsiveStyles(offset, (offset: FlexItemOffsetType) => ({ marginLeft: `${flexItemWidths[offset]}%` })),
-          buildResponsiveStyles(alignSelf, (alignSelf: FlexItemAlignSelfType) => ({ alignSelf })),
+          buildResponsiveStyles(width, (widthResponsive: FlexItemWidthType) => ({
+            width: `${flexItemWidths[widthResponsive]}%`,
+          })),
+          buildResponsiveStyles(offset, (offsetResponsive: FlexItemOffsetType) => ({
+            marginLeft: `${flexItemWidths[offsetResponsive]}%`,
+          })),
+          buildResponsiveStyles(alignSelf, (alignSelfResponsive: FlexItemAlignSelfType) => ({
+            alignSelf: alignSelfResponsive,
+          })),
           flex !== 'initial' // flex shorthand conflicts with grow and shrink, which means even default grow or shrink props would override flex
-            ? buildResponsiveStyles(flex, (flex: FlexItemFlexType) => ({
-                flex: flex === 'equal' ? '1 1 0' : flex,
+            ? buildResponsiveStyles(flex, (flexResponsive: FlexItemFlexType) => ({
+                flex: flexResponsive === 'equal' ? '1 1 0' : flexResponsive,
               }))
             : mergeDeep(
                 buildResponsiveStyles(grow, (flexGrow: FlexItemGrowType) => ({ flexGrow })),

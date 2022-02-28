@@ -13,15 +13,15 @@ export const getComponentCss = (size: GridItemSize, offset: GridItemOffset, gutt
       ':host': addImportantToEachRule({
         boxSizing: 'border-box',
         ...mergeDeep(
-          buildResponsiveStyles(size, (size: GridItemSizeType) => ({
-            width: `${gridItemWidths[size]}%`,
-            minWidth: `${gridItemWidths[size]}%`,
+          buildResponsiveStyles(size, (sizeResponsive: GridItemSizeType) => ({
+            width: `${gridItemWidths[sizeResponsive]}%`,
+            minWidth: `${gridItemWidths[sizeResponsive]}%`,
           })),
-          buildResponsiveStyles(offset, (offset: GridItemOffsetType) => ({
-            marginLeft: `${gridItemWidths[offset]}%`,
+          buildResponsiveStyles(offset, (offsetResponsive: GridItemOffsetType) => ({
+            marginLeft: `${gridItemWidths[offsetResponsive]}%`,
           })),
-          buildResponsiveStyles(gutter, (gutter: GridGutterType) => {
-            const gutterRem = pxToRemWithUnit(gutter / 2);
+          buildResponsiveStyles(gutter, (gutterResponsive: GridGutterType) => {
+            const gutterRem = pxToRemWithUnit(gutterResponsive / 2);
             return {
               paddingLeft: gutterRem,
               paddingRight: gutterRem,
