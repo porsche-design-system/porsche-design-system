@@ -11,7 +11,10 @@ export default [
   },
   {
     input: 'src/jss/index.ts',
-    output: { dir: 'dist/jss/esm', format: 'esm' },
+    output: {
+      dir: 'dist/jss/esm',
+      format: 'esm',
+    },
     plugins: [typescript()],
   },
 ];
