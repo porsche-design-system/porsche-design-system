@@ -41,7 +41,7 @@ describe('syncRefs', () => {
     // mocked usePrefix so we don't have to use PorscheDesignSystemProvider
     jest.spyOn(hooks, 'usePrefix').mockImplementation((tagName: string) => tagName);
   });
-
+  const SKELETON_PROPERTY_CLASS_NAMES = 'PDS-Skeleton--theme-light PDS-Skeleton--variant-secondary';
   const INITIAL_CLASS_NAME = 'initialClass';
   const CLASS_NAME = 'someClass1 hydrated';
 
@@ -67,7 +67,7 @@ describe('syncRefs', () => {
     const { getByTestId } = render(<Sample />);
     const button = getByTestId('button');
 
-    expect(button.className).toBe(INITIAL_CLASS_NAME);
+    expect(button.className).toBe(`${INITIAL_CLASS_NAME} ${SKELETON_PROPERTY_CLASS_NAMES}`);
 
     userEvent.click(button);
 
@@ -78,7 +78,7 @@ describe('syncRefs', () => {
     const { getByTestId } = render(<Sample isRefCallback />);
     const button = getByTestId('button');
 
-    expect(button.className).toBe(INITIAL_CLASS_NAME);
+    expect(button.className).toBe(`${INITIAL_CLASS_NAME} ${SKELETON_PROPERTY_CLASS_NAMES}`);
 
     userEvent.click(button);
 
