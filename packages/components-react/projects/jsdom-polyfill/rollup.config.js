@@ -1,6 +1,5 @@
 import resolve from '@rollup/plugin-node-resolve';
 import polyfill from 'rollup-plugin-polyfill';
-import pkg from '@porsche-design-system/js/package.json';
 import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 import modify from 'rollup-plugin-modify';
@@ -16,11 +15,9 @@ const polyfills = [
 export default {
   input: 'projects/jsdom-polyfill/src/index.js',
   output: {
-    esModule: false,
     file: 'dist/components-wrapper/jsdom-polyfill/index.js',
-    format: 'umd',
-    name: pkg.name,
-    extend: true,
+    format: 'cjs',
+    exports: 'auto', // fixes rollup warning
   },
   plugins: [
     commonjs({ dynamicRequireTargets: ['projects/jsdom-polyfill/src/**/*.js'] }),
