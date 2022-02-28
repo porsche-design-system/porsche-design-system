@@ -1,7 +1,7 @@
 import type { TagName } from '@porsche-design-system/shared';
 import type { BreakpointCustomizable } from './breakpoint-customizable';
 import type { Breakpoint } from '../styles';
-import type { JssStyle, Rule, Styles } from 'jss';
+import type { JssStyle, Styles } from 'jss';
 import { create } from 'jss';
 import jssPluginCamelCase from 'jss-plugin-camel-case';
 import jssPluginGlobal from 'jss-plugin-global';
