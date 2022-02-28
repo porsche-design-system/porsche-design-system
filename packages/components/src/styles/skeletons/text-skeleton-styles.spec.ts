@@ -10,7 +10,7 @@ describe('getTextSkeletonCss()', () => {
 
 describe('getTextHeadlineSkeletonStyle()', () => {
   it.each([[32], [getTypographyElementHeight(headline2)]])(
-    'should for elementHeight: %j return %s',
+    'should for elementHeight: %s return %s',
     (elementHeight) => {
       expect(getTextHeadlineSkeletonStyle(elementHeight)).toMatchSnapshot();
     }
