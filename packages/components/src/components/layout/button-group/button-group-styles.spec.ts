@@ -7,7 +7,7 @@ describe('getComponentCss()', () => {
     'column',
     'row',
     { base: 'row', xs: 'column', s: 'row', m: 'column', l: 'row', xl: 'column' },
-  ])('should return correct css for direction: %s', (direction) => {
+  ])('should return correct css for direction: %j', (direction) => {
     expect(getComponentCss(direction)).toMatchSnapshot();
   });
 });

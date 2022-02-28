@@ -24,13 +24,15 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   return getCss({
-    ':host': {
-      display: 'block',
-    },
-    '::slotted': {
-      '&(p),&(address),&(blockquote),&(figcaption),&(cite),&(time),&(legend)': addImportantToEachRule(
-        getSlottedTypographyStyles()
-      ),
+    '@global': {
+      ':host': {
+        display: 'block',
+      },
+      '::slotted': {
+        '&(p),&(address),&(blockquote),&(figcaption),&(cite),&(time),&(legend)': addImportantToEachRule(
+          getSlottedTypographyStyles()
+        ),
+      },
     },
     root: {
       display: 'inherit',

@@ -5,14 +5,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
   display: flex !important;
   outline: 0 !important;
 }
-.root {
-  display: flex;
-  min-width: 0;
-  min-height: 0;
-  cursor: pointer;
-  width: auto;
-  justify-content: flex-start;
-}
 button {
   position: relative;
   width: 3rem;
@@ -43,6 +35,14 @@ button:not(:focus-visible) {
 }
 button:hover .toggle {
   background-color: #000;
+}
+.root {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  cursor: pointer;
+  width: auto;
+  justify-content: flex-start;
 }
 .text {
   min-width: 0;
@@ -80,14 +80,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   display: flex !important;
   outline: 0 !important;
 }
-.root {
-  display: flex;
-  min-width: 0;
-  min-height: 0;
-  cursor: pointer;
-  width: auto;
-  justify-content: flex-start;
-}
 button {
   position: relative;
   width: 3rem;
@@ -118,6 +110,14 @@ button:not(:focus-visible) {
 }
 button:hover .toggle {
   background-color: #000;
+}
+.root {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  cursor: pointer;
+  width: auto;
+  justify-content: flex-start;
 }
 .text {
   min-width: 0;
@@ -154,14 +154,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   display: flex !important;
   outline: 0 !important;
 }
-.root {
-  display: flex;
-  min-width: 0;
-  min-height: 0;
-  cursor: pointer;
-  width: 100%;
-  justify-content: space-between;
-}
 button {
   position: relative;
   width: 3rem;
@@ -192,6 +184,14 @@ button:not(:focus-visible) {
 }
 button:hover .toggle {
   background-color: #000;
+}
+.root {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  cursor: pointer;
+  width: 100%;
+  justify-content: space-between;
 }
 .text {
   min-width: 0;
@@ -228,14 +228,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   display: flex !important;
   outline: 0 !important;
 }
-.root {
-  display: flex;
-  min-width: 0;
-  min-height: 0;
-  cursor: auto;
-  width: 100%;
-  justify-content: space-between;
-}
 button {
   position: relative;
   width: 3rem;
@@ -259,6 +251,14 @@ button:focus {
 }
 button:not(:focus-visible) {
   box-shadow: none;
+}
+.root {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  cursor: auto;
+  width: 100%;
+  justify-content: space-between;
 }
 .text {
   min-width: 0;
@@ -295,14 +295,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   display: flex !important;
   outline: 0 !important;
 }
-.root {
-  display: flex;
-  min-width: 0;
-  min-height: 0;
-  cursor: auto;
-  width: 100%;
-  justify-content: space-between;
-}
 button {
   position: relative;
   width: 3rem;
@@ -326,6 +318,14 @@ button:focus {
 }
 button:not(:focus-visible) {
   box-shadow: none;
+}
+.root {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  cursor: auto;
+  width: 100%;
+  justify-content: space-between;
 }
 .text {
   min-width: 0;
@@ -362,14 +362,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   display: flex !important;
   outline: 0 !important;
 }
-.root {
-  display: flex;
-  min-width: 0;
-  min-height: 0;
-  cursor: pointer;
-  width: 100%;
-  justify-content: space-between;
-}
 button {
   position: relative;
   width: 3rem;
@@ -400,6 +392,14 @@ button:not(:focus-visible) {
 }
 button:hover .toggle {
   background-color: #000;
+}
+.root {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  cursor: pointer;
+  width: 100%;
+  justify-content: space-between;
 }
 .text {
   min-width: 0;
@@ -443,14 +443,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   display: flex !important;
   outline: 0 !important;
 }
-.root {
-  display: flex;
-  min-width: 0;
-  min-height: 0;
-  cursor: pointer;
-  width: 100%;
-  justify-content: space-between;
-}
 button {
   position: relative;
   width: 3rem;
@@ -481,6 +473,14 @@ button:not(:focus-visible) {
 }
 button:hover .toggle {
   background-color: #fff;
+}
+.root {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  cursor: pointer;
+  width: 100%;
+  justify-content: space-between;
 }
 .text {
   min-width: 0;
@@ -517,14 +517,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   display: flex !important;
   outline: 0 !important;
 }
-.root {
-  display: flex;
-  min-width: 0;
-  min-height: 0;
-  cursor: pointer;
-  width: auto;
-  justify-content: flex-start;
-}
 button {
   position: relative;
   width: 3rem;
@@ -555,6 +547,14 @@ button:not(:focus-visible) {
 }
 button:hover .toggle {
   background-color: #000;
+}
+.root {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  cursor: pointer;
+  width: auto;
+  justify-content: flex-start;
 }
 .text {
   min-width: 0;

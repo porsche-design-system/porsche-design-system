@@ -6,6 +6,39 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 0 !important;
   display: block !important;
 }
+@media (min-width: 480px) {
+  :host {
+    display: inline-block !important;
+    vertical-align: top;
+  }
+}
+
+@media (min-width: 760px) {
+  :host {
+    display: block !important;
+  }
+}
+
+@media (min-width: 1000px) {
+  :host {
+    display: inline-block !important;
+    vertical-align: top;
+  }
+}
+
+@media (min-width: 1300px) {
+  :host {
+    display: block !important;
+  }
+}
+
+@media (min-width: 1760px) {
+  :host {
+    display: inline-block !important;
+    vertical-align: top;
+  }
+}
+
 .root {
   display: flex;
   align-items: flex-start;
@@ -82,10 +115,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   order: -1;
 }
 @media (min-width: 480px) {
-  :host {
-    display: inline-block !important;
-    vertical-align: top;
-  }
   .root {
     justify-content: flex-start;
     font-size: 1rem;
@@ -119,9 +148,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 
 @media (min-width: 760px) {
-  :host {
-    display: block !important;
-  }
   .root {
     justify-content: space-between;
     font-size: 1.5rem;
@@ -155,10 +181,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 
 @media (min-width: 1000px) {
-  :host {
-    display: inline-block !important;
-    vertical-align: top;
-  }
   .root {
     justify-content: flex-start;
     font-size: 2.25rem;
@@ -192,9 +214,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 
 @media (min-width: 1300px) {
-  :host {
-    display: block !important;
-  }
   .root {
     justify-content: space-between;
     font-size: 3.25rem;
@@ -228,10 +247,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 
 @media (min-width: 1760px) {
-  :host {
-    display: inline-block !important;
-    vertical-align: top;
-  }
   .root {
     justify-content: flex-start;
     font-size: inherit;

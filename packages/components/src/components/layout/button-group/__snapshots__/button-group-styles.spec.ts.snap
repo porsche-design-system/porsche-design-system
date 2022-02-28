@@ -1,13 +1,76 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for direction: {
-  base: 'row',
-  xs: 'column',
-  s: 'row',
-  m: 'column',
-  l: 'row',
-  xl: 'column'
-} 1`] = `
+exports[`getComponentCss() should return correct css for direction: "column" 1`] = `
+":host {
+  display: block;
+}
+div {
+  display: flex;
+  margin-top: -1rem;
+  flex-flow: column nowrap;
+  align-items: stretch;
+  margin-right: 0;
+  margin-left: 0;
+}
+::slotted(*) {
+  margin-top: 1rem !important;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for direction: "row" 1`] = `
+":host {
+  display: block;
+}
+div {
+  display: flex;
+  margin-top: -1rem;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+}
+::slotted(*) {
+  margin-top: 1rem !important;
+  margin-right: 0.5rem !important;
+  margin-left: 0.5rem !important;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for direction: {"base":"column","xs":"row"} 1`] = `
+":host {
+  display: block;
+}
+div {
+  display: flex;
+  margin-top: -1rem;
+  flex-flow: column nowrap;
+  align-items: stretch;
+  margin-right: 0;
+  margin-left: 0;
+}
+::slotted(*) {
+  margin-top: 1rem !important;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+@media (min-width: 480px) {
+  div {
+    flex-flow: row wrap;
+    align-items: center;
+    margin-right: -0.5rem;
+    margin-left: -0.5rem;
+  }
+  ::slotted(*) {
+    margin-right: 0.5rem !important;
+    margin-left: 0.5rem !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: {"base":"row","xs":"column","s":"row","m":"column","l":"row","xl":"column"} 1`] = `
 ":host {
   display: block;
 }
@@ -89,74 +152,4 @@ div {
   }
 }
 "
-`;
-
-exports[`getComponentCss() should return correct css for direction: { base: 'column', xs: 'row' } 1`] = `
-":host {
-  display: block;
-}
-div {
-  display: flex;
-  margin-top: -1rem;
-  flex-flow: column nowrap;
-  align-items: stretch;
-  margin-right: 0;
-  margin-left: 0;
-}
-::slotted(*) {
-  margin-top: 1rem !important;
-  margin-right: 0 !important;
-  margin-left: 0 !important;
-}
-@media (min-width: 480px) {
-  div {
-    flex-flow: row wrap;
-    align-items: center;
-    margin-right: -0.5rem;
-    margin-left: -0.5rem;
-  }
-  ::slotted(*) {
-    margin-right: 0.5rem !important;
-    margin-left: 0.5rem !important;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for direction: column 1`] = `
-":host {
-  display: block;
-}
-div {
-  display: flex;
-  margin-top: -1rem;
-  flex-flow: column nowrap;
-  align-items: stretch;
-  margin-right: 0;
-  margin-left: 0;
-}
-::slotted(*) {
-  margin-top: 1rem !important;
-  margin-right: 0 !important;
-  margin-left: 0 !important;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for direction: row 1`] = `
-":host {
-  display: block;
-}
-div {
-  display: flex;
-  margin-top: -1rem;
-  flex-flow: row wrap;
-  align-items: center;
-  margin-right: -0.5rem;
-  margin-left: -0.5rem;
-}
-::slotted(*) {
-  margin-top: 1rem !important;
-  margin-right: 0.5rem !important;
-  margin-left: 0.5rem !important;
-}"
 `;
