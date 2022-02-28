@@ -12,10 +12,10 @@ export const getComponentCss = (color: DividerColor, orientation: DividerOrienta
   };
 
   return getCss({
-    ':host': {
-      display: 'block',
-    },
     '@global': {
+      ':host': {
+        display: 'block',
+      },
       hr: {
         margin: 0,
         padding: 0,
