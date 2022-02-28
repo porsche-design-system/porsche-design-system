@@ -42,10 +42,12 @@ In order to get notified when the active tabs change, you need to register an ev
 
 The `p-tabs-bar` component is detached from the content which belongs to the active tab. We provide the necessary `role="tab"`, `tabindex` and `aria-selected` on the tabs inside the component.
 
-To be truly accessible you need to provide some more information because every tab needs an `aria-controls` attribute which points to the corresponding `id` of the `tabpanel`. 
+To be truly accessible you need to provide some more information because every tab needs an `aria-controls` attribute which points to the corresponding `id` of the `tabpanel`.
 The content placeholder needs the `role="tabpanel"` and the attribute `aria-labelledby` which points to the unique id of the corresponding tab (`aria-controls`).
 
-<Playground class="playground-tabs-bar" :markup="accessibility" :config="config"></Playground>
+You must also take care of the focus handling of the tabpanel. Therefor the active tab panel must have an `tabindex="0"` to receive keyboard focus and the focus indicator must be styled accordingly.
+
+<Playground class="playground-tabs-bar" :frameworkMarkup="codeExample" :markup="accessibility" :config="config"></Playground>
 
 ---
 ## Active Tab
@@ -90,16 +92,19 @@ The background and gradient has to align to your chosen background.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { getTabsBarCodeSamples } from '@porsche-design-system/shared';
 
 const buildButton = (name: string) => `  <button type="button">Tab ${name}</button>`;
-const buildAnchor = (name: string) => `  <a href="https://porsche.com">Tab ${name}</a>`;
-const buildTabPanel = (id: number) => `<div id="tab-panel-${id}" hidden role="tabpanel" aria-labelledby="tab-item-${id}">
+const buildAnchor = (name: string) => `  <a href="https://porsche.com" target="_blank">Tab ${name}</a>`;
+const buildTabPanel = (id: number) => `<div id="tab-panel-${id}" hidden tabindex="-1" role="tabpanel" aria-labelledby="tab-item-${id}">
   <p-text>Your content of Tab ${id}</p-text> 
 </div>`;
   
 @Component
 export default class Code extends Vue {
   config = { themeable: true };
+
+  codeExample = getTabsBarCodeSamples();
 
   frameworks = {
     'vanilla-js': `tabsBar.addEventListener('tabChange', (e) => {
@@ -124,12 +129,12 @@ import { PTabsBar } from '@porsche-design-system/components-react';
 import type { TabChangeEvent } from '@porsche-design-system/components-react';
 
 const TabsBarPage = (): JSX.Element => {
-    const [tabIndex, setTabIndex] = useState<number>();
-    const onTabChange = useCallback((e: CustomEvent<TabChangeEvent>) => {
-        setTabIndex(e.detail.activeTabIndex);
-    }, []);
+  const [tabIndex, setTabIndex] = useState<number>();
+  const onTabChange = useCallback((e: CustomEvent<TabChangeEvent>) => {
+    setTabIndex(e.detail.activeTabIndex);
+  }, []);
 
-    return <PTabsBar activeTabIndex={tabIndex} onTabChange={onTabChange}>...</PTabsBar>
+  return <PTabsBar activeTabIndex={tabIndex} onTabChange={onTabChange}>...</PTabsBar>
 }`,
     };
 
@@ -138,23 +143,23 @@ const TabsBarPage = (): JSX.Element => {
   gradientColorScheme = 'surface';
 
   basicButton =
-`<p-tabs-bar>
+    `<p-tabs-bar>
 ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
 
   basicAnchor =
-`<p-tabs-bar>
+    `<p-tabs-bar>
 ${['One', 'Two', 'Three'].map(buildAnchor).join('\n')}
 </p-tabs-bar>`;
 
-  accessibility =
-`<p-tabs-bar active-tab-index="0">
+  accessibility = 
+    `<p-tabs-bar active-tab-index="0">
   <button type="button" id="tab-item-1" aria-controls="tab-panel-1">Tab One</button>
   <button type="button" id="tab-item-2" aria-controls="tab-panel-2">Tab Two</button>
   <button type="button" id="tab-item-3" aria-controls="tab-panel-3">Tab Three</button>
 </p-tabs-bar>
  
-${[1, 2, 3].map(buildTabPanel).join('\n')}`;
+    ${[1, 2, 3].map(buildTabPanel).join('\n')}`;
 
   get sizeMarkup() {
     return `<p-tabs-bar size="${this.size}">
@@ -166,32 +171,50 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
     return `<p-tabs-bar weight="${this.weight}">
 ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
-    }
+  }
     
   get gradientMarkup() {
     return `<p-tabs-bar gradient-color-scheme="${this.gradientColorScheme}">
-${['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty']
-  .map(buildButton).join('\n')}
+${['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
   }
     
   activeTab =
-`<p-tabs-bar active-tab-index="0">
+    `<p-tabs-bar active-tab-index="0">
 ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 </p-tabs-bar>`;
+
+  updateActiveTabIndex(tabsBar: HTMLElement, newIndex: number = 0) {
+    /* manipulate code only in order to not rerender component and loose animations */
+    const example = tabsBar.parentElement.parentElement;
+    const demo = example.querySelector('.demo');
+    const code = example.querySelector('code');
+
+    /* manipulate hidden attribute in code of accessibility playground */
+    const panels = Array.from(demo.querySelectorAll('[role="tabpanel"]'));
+    panels.forEach((panel, i) => {
+      if (i === newIndex) {
+        panel.removeAttribute('hidden');
+        panel.setAttribute('tabindex', '0');
+      } else {
+        panel.setAttribute('hidden', '');
+        panel.setAttribute('tabindex', '-1');
+      }
+    });
+  };
+
+  mounted() {
+    /* initially update tabsBars with activeTabIndex in playground */
+    this.updateAndRegister();
     
-  mounted(){
-    // initially update tabsBars with activeTabIndex attribute in playground
-   this.updateAndRegister();
-    
-    // theme switch needs to register event listeners again
-    const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');      
+    /* theme switch needs to register event listeners again */
+    const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');
     themeTabs.forEach(tab => tab.addEventListener('tabChange', () => {
       this.updateAndRegister(); 
     }));    
   }
   
-  updated(){
+  updated() {
     this.registerEvents();
   }
 
@@ -204,57 +227,38 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
     const tabsBars = this.$el.querySelectorAll('.playground:not(.playground-tabs-bar) .example .demo p-tabs-bar');
     tabsBars.forEach(tabsBar => tabsBar.addEventListener('tabChange', this.onTabChange));
 
-    //bind tabsBars with activeTabIndex set as attribute
+    /* bind tabsBars with activeTabIndex set as attribute */
     const tabsBarsWithActiveIndex = this.$el.querySelectorAll('.playground-tabs-bar .example .demo p-tabs-bar');
     tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('tabChange', (e: CustomEvent<TabChangeEvent>)=> {
       this.onTabChange(e);
       this.updateActiveTabIndex(e.target, e.detail.activeTabIndex);
     }));
   }
-  
-  hiddenNodes = null;
-  onTabChange =  (e: CustomEvent) => {
-      e.target.activeTabIndex = e.detail.activeTabIndex;
-  }
 
-  updateActiveTabIndex = (tabs: HTMLElement, newIndex: number = 0) => {
-    // manipulate code only section only in order to not rerender component and loose animations
-    const example = tabs.parentElement.parentElement;
-    const demo = example.querySelector('.demo');
-    const code = example.querySelector('code');
-    const attrs = code.querySelectorAll('.token:first-child .attr-value');
-    
-    // manipulate activeTabIndex
-    if (attrs.length) {
-      attrs[attrs.length - 1].innerText = `="${newIndex}"`; 
-    }
-    
-    // manipulate hidden attribute in code of accessibility playground
-    if (code.innerHTML.includes('Your content of Tab')) {
-      if (!this.hiddenNodes) {
-        this.hiddenNodes = document.evaluate("//span[text()='hidden']", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
-      }
-
-      // hide/show and adjust offset of hidden attribute
-      for (let i = 0; i < this.hiddenNodes.snapshotLength; i++) {
-        const item = this.hiddenNodes.snapshotItem(i);
-        item.style.marginLeft = '';
-        item.innerText = 'hidden';
-        
-        if (i === newIndex) {
-          item.style.marginLeft = '-9px';
-          item.innerText = '';
-        }
-      }
-      
-      const panels = Array.from(demo.querySelectorAll('[role="tabpanel"]'));
-      panels.forEach((panel, i) => {
-        panel.setAttribute('hidden', '');
-        if (i === newIndex) {
-          panel.removeAttribute('hidden');
-        }
-      });
-    }
+  onTabChange = (e: CustomEvent) => {
+    e.target.activeTabIndex = e.detail.activeTabIndex;
   }
 }
 </script>
+
+<style scoped lang="scss">
+  @import '~@porsche-design-system/utilities/scss';
+
+  ::v-deep div[role=tabpanel] {
+    outline: 1px solid transparent;
+    outline-offset: 2px;
+    margin-top: p-px-to-rem(8px);
+  }
+
+  ::v-deep .example--light div[role=tabpanel]:focus {
+    outline-color: #000;
+  }
+
+  ::v-deep .example--dark div[role=tabpanel]:focus {
+    outline-color: #FFF;
+  }
+
+  ::v-deep div[role=tabpanel]:focus:not(:focus-visible) {
+    outline-color: transparent;
+  }
+</style>

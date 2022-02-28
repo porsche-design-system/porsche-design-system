@@ -1,3 +1,4 @@
+/* Auto Generated File */
 import { PContentWrapper, PModal, PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
 
 export const ModalPrefixedPage = (): JSX.Element => {
@@ -10,18 +11,15 @@ export const ModalPrefixedPage = (): JSX.Element => {
   `;
 
   return (
-    <>
+    <PorscheDesignSystemProvider>
       <style children={style} />
+
       <div className="playground light" title="should show prefixed modal on light background">
-        <PorscheDesignSystemProvider prefix="my-prefix">
-          <PContentWrapper>
-            <div style={{ background: 'deeppink', height: '100vh' }} />
-          </PContentWrapper>
-          <PModal heading="Some Heading" open>
-            Some Content
-          </PModal>
-        </PorscheDesignSystemProvider>
+        <PContentWrapper>
+          <div style={{ background: 'deeppink', height: '100vh' }} />
+        </PContentWrapper>
+        <PModal heading="Some Heading" open={true}>Some Content</PModal>
       </div>
-    </>
+    </PorscheDesignSystemProvider>
   );
 };

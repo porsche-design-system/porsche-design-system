@@ -1,6 +1,6 @@
+import type { Theme } from '@porsche-design-system/utilities-v2';
 import Protocol from 'devtools-protocol';
 import { CDPSession, Page } from 'puppeteer';
-import { ThemeExtendedElectric, ThemeExtendedElectricDark } from '@porsche-design-system/utilities';
 import NodeId = Protocol.DOM.NodeId;
 import BackendNodeId = Protocol.DOM.BackendNodeId;
 
@@ -11,28 +11,28 @@ const HOVER_STATE: ForcedPseudoClasses[] = ['hover'];
 const FOCUS_STATE: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
 const FOCUS_HOVER_STATE = HOVER_STATE.concat(FOCUS_STATE);
 
-const allThemes: ThemeExtendedElectricDark[] = ['light', 'dark', 'light-electric', 'dark-electric'];
-const allStates = ['hover', 'focus', 'focus-hover'];
+const allThemes: Theme[] = ['light', 'dark', 'light-electric', 'dark-electric'];
+const ALL_STATES = ['hover', 'focus', 'focus-hover'] as const;
+
+export type StateType = typeof ALL_STATES[number];
 
 export type GetMarkup = () => string;
-export type GetThemedMarkup = (theme: ThemeExtendedElectricDark) => string;
+export type GetThemedMarkup = (theme: Theme) => string;
 
 export const getBodyMarkup = (getElements: GetMarkup) =>
-  allStates
-    .map(
-      (state) => `<div class="playground light ${state}">
+  ALL_STATES.map(
+    (state) => `<div class="playground light ${state}">
   ${getElements()}
 </div>`
-    )
-    .join('\n');
+  ).join('\n');
 
 export const getThemedBodyMarkup = (
   getThemedElements: GetThemedMarkup,
-  opts?: { themes?: ThemeExtendedElectricDark[] }
+  opts?: { themes?: Theme[]; states?: StateType[] }
 ): string => {
-  const { themes = ['light', 'dark'] } = opts ?? {};
+  const { themes = ['light', 'dark'], states = ALL_STATES } = opts ?? {};
 
-  return allStates
+  return states
     .map((state) =>
       allThemes
         .filter((theme) => themes.includes(theme))

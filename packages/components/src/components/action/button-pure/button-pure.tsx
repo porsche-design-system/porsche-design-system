@@ -34,7 +34,7 @@ export class ButtonPure {
   @Element() public host!: HTMLElement;
 
   /** To remove the element from tab order.
-   * @deprecated since v2.8.0, use tabindex="-1" instead
+   * @deprecated since v2.8.0, use `tabindex="-1"` instead
    */
   @Prop() public tabbable?: boolean = true;
 
@@ -89,6 +89,7 @@ export class ButtonPure {
   }
 
   public componentWillRender(): void {
+    warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon);
     attachComponentCss(
       this.host,
       getComponentCss,
@@ -102,7 +103,6 @@ export class ButtonPure {
       hasSlottedSubline(this.host),
       this.theme
     );
-    warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon);
   }
 
   public componentDidLoad(): void {

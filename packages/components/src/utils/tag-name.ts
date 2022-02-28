@@ -23,6 +23,5 @@ export const getPrefixedTagNames = (host: HTMLElement): PrefixedTagNames => {
 };
 
 export const getTagNameWithoutPrefix = (host: HTMLElement): TagName => {
-  const [, tagName] = /^(?:.*-)?(p-.*)$/i.exec(getTagName(host)) as unknown as [any, TagName];
-  return tagName;
+  return /^(?:.*-)?(p-.*)$/i.exec(getTagName(host))[1] as TagName;
 };

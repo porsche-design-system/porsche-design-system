@@ -1,16 +1,26 @@
 import typescript from '@rollup/plugin-typescript';
-import pkg from './package.json';
+import commonjs from '@rollup/plugin-commonjs';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+
+const input = 'src/index.ts';
 
 export default [
   {
-    input: 'src/index.ts',
+    input,
     output: {
-      esModule: false,
       dir: 'dist',
-      format: 'umd',
-      name: pkg.name,
-      exports: 'named',
+      format: 'cjs',
     },
-    plugins: [typescript({ declaration: true, declarationDir: 'dist', rootDir: 'src' })],
+    // Our partials contain jsx. We resolve react/jsx-runtime into the build to make it readable in VanillaJS and Angular.
+    plugins: [typescript({ declaration: true, declarationDir: 'dist', rootDir: 'src' }), nodeResolve(), commonjs()],
+  },
+  {
+    input,
+    external: ['react/jsx-runtime'],
+    output: {
+      dir: 'dist/esm',
+      format: 'esm',
+    },
+    plugins: [typescript()],
   },
 ];

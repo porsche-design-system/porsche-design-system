@@ -23,6 +23,7 @@ import { InlineNotificationState } from "./components/feedback/inline-notificati
 import { LinkAriaAttributes } from "./components/navigation/link/link-utils";
 import { SocialIconName } from "./components/navigation/link-social/link-social-utils";
 import { MarqueAriaAttributes, MarqueSize } from "./components/basic/marque/marque-utils";
+import { ModalAriaAttributes } from "./components/content/modal/modal-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/navigation/pagination/pagination-utils";
 import { PopoverDirection } from "./components/feedback/popover/popover-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
@@ -106,7 +107,7 @@ export namespace Components {
         "loading"?: boolean;
         /**
           * To remove the element from tab order.
-          * @deprecated since v2.8.0, use tabindex="-1" instead
+          * @deprecated since v2.8.0, use `tabindex="-1"` instead
          */
         "tabbable"?: boolean;
         /**
@@ -171,7 +172,7 @@ export namespace Components {
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * To remove the element from tab order.
-          * @deprecated since v2.8.0, use tabindex="-1" instead
+          * @deprecated since v2.8.0, use `tabindex="-1"` instead
          */
         "tabbable"?: boolean;
         /**
@@ -575,6 +576,10 @@ export namespace Components {
     }
     interface PModal {
         /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<ModalAriaAttributes>;
+        /**
           * If true, the modal will not be closable via backdrop click.
          */
         "disableBackdropClick"?: boolean;
@@ -758,7 +763,7 @@ export namespace Components {
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * To remove the element from tab order.
-          * @deprecated since v2.8.0, use tabindex="-1" instead
+          * @deprecated since v2.8.0, use `tabindex="-1"` instead
          */
         "tabbable"?: boolean;
         /**
@@ -768,7 +773,7 @@ export namespace Components {
     }
     interface PTable {
         /**
-          * A caption describing the contents of the table for accessibility only. This won't be visible in the browser. Use an element with an attribute of slot="name" for a visible caption.
+          * A caption describing the contents of the table for accessibility only. This won't be visible in the browser. Use an element with an attribute of `slot="caption"` for a visible caption.
          */
         "caption"?: string;
     }
@@ -1365,7 +1370,7 @@ declare namespace LocalJSX {
         "loading"?: boolean;
         /**
           * To remove the element from tab order.
-          * @deprecated since v2.8.0, use tabindex="-1" instead
+          * @deprecated since v2.8.0, use `tabindex="-1"` instead
          */
         "tabbable"?: boolean;
         /**
@@ -1430,7 +1435,7 @@ declare namespace LocalJSX {
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * To remove the element from tab order.
-          * @deprecated since v2.8.0, use tabindex="-1" instead
+          * @deprecated since v2.8.0, use `tabindex="-1"` instead
          */
         "tabbable"?: boolean;
         /**
@@ -1842,6 +1847,10 @@ declare namespace LocalJSX {
     }
     interface PModal {
         /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<ModalAriaAttributes>;
+        /**
           * If true, the modal will not be closable via backdrop click.
          */
         "disableBackdropClick"?: boolean;
@@ -2037,7 +2046,7 @@ declare namespace LocalJSX {
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * To remove the element from tab order.
-          * @deprecated since v2.8.0, use tabindex="-1" instead
+          * @deprecated since v2.8.0, use `tabindex="-1"` instead
          */
         "tabbable"?: boolean;
         /**
@@ -2047,7 +2056,7 @@ declare namespace LocalJSX {
     }
     interface PTable {
         /**
-          * A caption describing the contents of the table for accessibility only. This won't be visible in the browser. Use an element with an attribute of slot="name" for a visible caption.
+          * A caption describing the contents of the table for accessibility only. This won't be visible in the browser. Use an element with an attribute of `slot="caption"` for a visible caption.
          */
         "caption"?: string;
         /**

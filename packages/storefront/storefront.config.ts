@@ -29,26 +29,38 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       () => import('@/pages/start-coding/introduction.md'),
     ],
-    Angular: [
+    Angular: {
       // @ts-ignore
-      () => import('@/pages/start-coding/angular.md'),
-    ],
-    React: [
+      'Getting Started': [() => import('@/pages/start-coding/angular/getting-started.md')],
       // @ts-ignore
-      () => import('@/pages/start-coding/react.md'),
-    ],
-    'Vanilla Js': [
+      Advanced: [() => import('@/pages/start-coding/angular/advanced.md')],
+    },
+    React: {
       // @ts-ignore
-      () => import('@/pages/start-coding/vanilla-js.md'),
-    ],
-    'Next Js': [
+      'Getting Started': [() => import('@/pages/start-coding/react/getting-started.md')],
       // @ts-ignore
-      () => import('@/pages/start-coding/next-js.md'),
-    ],
-    Gatsby: [
+      Testing: [() => import('@/pages/start-coding/react/testing.md')],
       // @ts-ignore
-      () => import('@/pages/start-coding/gatsby.md'),
-    ],
+      Advanced: [() => import('@/pages/start-coding/react/advanced.md')],
+    },
+    'Vanilla Js': {
+      // @ts-ignore
+      'Getting Started': [() => import('@/pages/start-coding/vanilla-js/getting-started.md')],
+      // @ts-ignore
+      Advanced: [() => import('@/pages/start-coding/vanilla-js/advanced.md')],
+    },
+    'Next Js': {
+      // @ts-ignore
+      'Getting Started': [() => import('@/pages/start-coding/next-js/getting-started.md')],
+      // @ts-ignore
+      Testing: [() => import('@/pages/start-coding/next-js/testing.md')],
+    },
+    Gatsby: {
+      // @ts-ignore
+      'Getting Started': [() => import('@/pages/start-coding/gatsby/getting-started.md')],
+      // @ts-ignore
+      Testing: [() => import('@/pages/start-coding/gatsby/testing.md')],
+    },
   },
   News: {
     Changelog: {
@@ -64,7 +76,7 @@ export const config: StorefrontConfig = {
       ],
       Utilities: [
         // @ts-ignore
-        () => import('@/../../utilities/projects/utilities/CHANGELOG.md'),
+        () => import('@/../../utilities-deprecated/projects/utilities/CHANGELOG.md'),
       ],
       Assets: [
         // @ts-ignore
@@ -669,6 +681,10 @@ export const config: StorefrontConfig = {
     },
   },
   Partials: {
+    Introduction: [
+      // @ts-ignore
+      () => import('@/pages/partials/introduction.md'),
+    ],
     'Loader Script': [
       // @ts-ignore
       () => import('@/pages/partials/loader-script.md'),
@@ -696,6 +712,20 @@ export const config: StorefrontConfig = {
     'Meta Tags And Icon Links': [
       // @ts-ignore
       () => import('@/pages/partials/meta-tags-and-icon-links.md'),
+    ],
+  },
+  'Browser Notifications': {
+    Introduction: [
+      // @ts-ignore
+      () => import('@/pages/browser-notifications/introduction.md'),
+    ],
+    'Browser Support Notification': [
+      // @ts-ignore
+      () => import('@/pages/browser-notifications/browser-support-notification.md'),
+    ],
+    'Cookie Notification': [
+      // @ts-ignore
+      () => import('@/pages/browser-notifications/cookie-notification.md'),
     ],
   },
   Performance: {

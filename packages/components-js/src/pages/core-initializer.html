@@ -2,18 +2,17 @@
   <p-text-field-wrapper label="Some Label" description="Some Description">
     <input type="text" />
   </p-text-field-wrapper>
+
+  <template>
+    <p-text-field-wrapper label="Some Label" description="Some Description">
+      <input type="text" />
+    </p-text-field-wrapper>
+  </template>
 </div>
 
 <script>
-  setTimeout(() => {
-    const el = document.createElement('p-text-field-wrapper');
-    el.setAttribute('label', 'Some Label');
-    el.setAttribute('description', 'Some Description');
-
-    const input = document.createElement('input');
-    input.type = 'text';
-    el.appendChild(input);
-
-    document.querySelector('.playground').appendChild(el);
-  }, 1000);
+  porscheDesignSystem.componentsReady().then(() => {
+    const template = document.querySelector('template');
+    template.outerHTML = template.outerHTML.replace(/template/g, 'div');
+  });
 </script>

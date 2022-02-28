@@ -5,56 +5,42 @@ Fonts should be loaded as soon as possible but only those which are needed.
 The Porsche Design System is not able to determine which components you use on the site and which fonts to be provided **initially**.
 That's why the font face stylesheet of the Porsche Design System handles the correct font to be loaded by unicode-range definition but during runtime and after bootstrapping of your application, which might result in FOUT.
 
-Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages called `getFontLinks()` which needs to be imported into the `<head>` of your `index.html`.
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages which needs to be injected into the `<head>` of your `index.html`.
 
-##### Supported options:
-- **subset**: 'latin' | 'greek' | 'cyril' = 'latin'
-- **weights**: ('thin' | 'regular' | 'semi-bold' | 'bold')[] = ['regular']
-- **cdn:** 'auto' | 'cn' = 'auto'
-- **withoutTags**: boolean = false
+## Supported options
+`type FontWeight = 'thin' | 'regular' | 'semi-bold' | 'bold'`
 
-#### Example usage with dynamic template
+| Option        | Description                                                                                                                                                                                                   | Type                        | Default          |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------|------------------|
+| `subset`      | Defines which font subset should be loaded.                                                                                                                                                                   | `'latin' | 'greek' | 'cyril'` | `'latin'`     |
+| `weights`     | Defines which font weights should be loaded.                                                                                                                                                                  | `FontWeight[]`              | `['regular']`    |
+| `cdn`         | Decides from which CDN the resources are loaded.                                                                                                                                                              | `'auto'                     | 'cn'`            | `'auto'`      |
+| `withoutTags` | <span style='color:red'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format: 'jsx'` instead.<br/>If true, it returns an array of strings with urls to the cdn location of the resources. | `boolean`                   | `false`          |
+| `format`      | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements.                                                                                      | `'html'                     | 'jsx'`           | `'html'`      |
 
-The example shows how to implement the partial in a webpack (or similar) project.
+## Examples
 
-```html
-// index.html
+Project integration differs based on the project setup.  
+The following showcases the most common ways.
 
-<head>
-  // Using template syntax (make sure to preload only fonts which are really needed initially!)
-  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontLinks({ weights: ['regular', 'semi-bold'] }) %>
-</head>
+**Note:** Make sure to preload only fonts which are really needed initially!
 
-<head>
-  // force using China CDN
-  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontLinks({ cdn: 'cn' }) %>
-</head>
+<PartialDocs name="getFontLinks" :params="params"></PartialDocs>
 
-<head>
-  // without link tags
-  <link rel="preload" href="<%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontLinks({ withoutTags: true })[0] %>" as="font" type="font/woff2" crossorigin>
-</head>
-```
+<script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
-#### Alternative: Example usage with placeholder
-
-If your bundler (webpack or similar) does not work with the syntax of the previous example you can put a placeholder in your markup and replace its content with a script.
-
-```html
-// index.html
-
-<head>
-  <!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_LATIN-->
-</head>
-``` 
-
-```json
-// package.json (tested on macOS, the script may need to be adjusted depending on the operating system used), make sure to adjust the path to the index.html file and use the correct partials package import from your framework {js|angular|react}
-
-"scripts": {
-  "prestart": "yarn replace",
-  "replace": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_FONT_LATIN-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getFontLinks({ weights: [\"regular\", \"semi-bold\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s@$regex@$partial@\" index.html",
+@Component
+export default class Code extends Vue {
+  public params = [
+    { 
+      value: "{ weights: ['regular', 'semi-bold'] }"
+    },
+    { 
+      value: "{ cdn: 'cn' ",
+      comment: 'force using China CDN'
+    },
+  ];
 }
-``` 
-
-You can find an implemented example in our [Sample VanillaJS Integration](https://github.com/porscheui/sample-integration-vanillajs), [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular) or [Sample React Integration](https://github.com/porscheui/sample-integration-react)
+</script>

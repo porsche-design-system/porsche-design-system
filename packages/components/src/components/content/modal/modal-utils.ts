@@ -1,30 +1,105 @@
-import { getHTMLElements, getPrefixedTagNames, isIos } from '../../../utils';
-import { FOCUSABLE_TAG_NAMES_CAMEL_CASE } from '@porsche-design-system/shared';
-import type { TagNameCamelCase } from '@porsche-design-system/shared';
+import { getTagName, isIos } from '../../../utils';
+import type { SelectedAriaAttributes } from '../../../types';
 
-export const getFocusableElements = (host: HTMLElement, closeButton: HTMLElement): HTMLElement[] => {
-  const PrefixedTagNames = getPrefixedTagNames(host);
-
-  const notDisabled = ':not([disabled])';
-  const selector =
-    Object.entries(PrefixedTagNames)
-      .filter((entry) => FOCUSABLE_TAG_NAMES_CAMEL_CASE.includes(entry[0] as TagNameCamelCase)) // key
-      .map((entry) => entry[1]) // value
-      .join(',') +
-    `,[href],input${notDisabled},select${notDisabled},textarea${notDisabled},button${notDisabled},[tabindex]:not([tabindex="-1"]`;
-
-  return [closeButton].concat(getHTMLElements(host, selector));
+export const unpackChildren = (el: HTMLElement | ShadowRoot): HTMLElement[] => {
+  return (Array.from(el.children) as HTMLElement[])
+    .map((child) => (child.children ? [child].concat(unpackChildren(child)) : child))
+    .flat()
+    .map((child) => (child.shadowRoot ? [child].concat(unpackChildren(child.shadowRoot)) : child))
+    .flat();
 };
 
-export const setScrollLock = (host: HTMLElement, lock: boolean, listener: (e: TouchEvent) => void): void => {
-  document.body.style.overflow = lock ? 'hidden' : '';
+// TODO: could be extended by audio[controls], video[controls], [contenteditable]:not([contenteditable="false"]) or iframe
+export const isFocusableElement = (el: HTMLInputElement): boolean => {
+  const { nodeName } = el;
+  return (
+    ((nodeName === 'INPUT' && el.type !== 'hidden') ||
+      nodeName === 'TEXTAREA' ||
+      nodeName === 'SELECT' ||
+      nodeName === 'BUTTON' ||
+      (nodeName === 'A' && !!(el as any).href)) &&
+    el.tabIndex >= 0 &&
+    !el.disabled
+  );
+};
+
+export type FirstAndLastFocusableElement = [HTMLElement, HTMLElement] | [];
+export const getFirstAndLastFocusableElement = (
+  host: HTMLElement,
+  closeButton: HTMLElement
+): FirstAndLastFocusableElement => {
+  const focusableElements = (closeButton ? [closeButton] : []).concat(unpackChildren(host).filter(isFocusableElement));
+  return [focusableElements[0], focusableElements[focusableElements.length - 1]];
+};
+
+export let documentKeydownListener: (e: KeyboardEvent) => void;
+export const documentTouchListener = (e: TouchEvent): void => e.preventDefault();
+export const hostTouchListener = (e: TouchEvent & { target: HTMLElement }): void => {
+  e.target.scrollTop = getScrollTopOnTouch(e.target, e);
+};
+
+export const setScrollLock = (
+  host: HTMLElement,
+  isOpen: boolean,
+  closeBtn?: HTMLElement, // irrelevant for disconnectedCallback
+  closeModal?: () => void // irrelevant for disconnectedCallback
+): void => {
+  let focusableElements: FirstAndLastFocusableElement = [];
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+
+  document.removeEventListener('keydown', documentKeydownListener);
+  if (isOpen) {
+    focusableElements = getFirstAndLastFocusableElement(host, closeBtn);
+    documentKeydownListener = (e: KeyboardEvent): void => {
+      const { key } = e;
+      if (key === 'Esc' || key === 'Escape') {
+        closeModal();
+      } else if (!focusableElements?.filter((x) => x).length && key === 'Tab') {
+        // if we don't have any focusableElements we need to prevent Tab here
+        e.preventDefault();
+      }
+    };
+    document.addEventListener('keydown', documentKeydownListener);
+  }
+
+  setFirstAndLastFocusableElementKeydownListener(focusableElements);
 
   // prevent scrolling of background on iOS
   if (isIos()) {
-    const addOrRemoveEventListener = lock ? 'addEventListener' : 'removeEventListener';
-    document[addOrRemoveEventListener]('touchmove', (e: TouchEvent) => e.preventDefault(), false);
-    // eslint-disable-next-line @typescript-eslint/unbound-method
-    host[addOrRemoveEventListener]('touchmove', listener);
+    const addOrRemoveEventListener = `${isOpen ? 'add' : 'remove'}EventListener`;
+    document[addOrRemoveEventListener]('touchmove', documentTouchListener, false);
+    host[addOrRemoveEventListener]('touchmove', hostTouchListener);
+  }
+};
+
+type KeyboardHandlerTuple = [(e: KeyboardEvent) => void, (e: KeyboardEvent) => void] | [];
+
+/** cache of previous first and last focusable element so we are able to remove them again */
+export let FOCUSABLE_ELEMENT_CACHE: FirstAndLastFocusableElement = [];
+/** cache of previous event handler pair so we are able to remove them again */
+export let KEYDOWN_EVENT_HANDLER_CACHE: KeyboardHandlerTuple = [];
+
+export const setFirstAndLastFocusableElementKeydownListener = (
+  focusableElements: FirstAndLastFocusableElement
+): void => {
+  // remove previous handlers if there are any
+  if (FOCUSABLE_ELEMENT_CACHE.length) {
+    FOCUSABLE_ELEMENT_CACHE.forEach((el, idx) => el.removeEventListener('keydown', KEYDOWN_EVENT_HANDLER_CACHE[idx]));
+  }
+
+  // create, apply and save new handlers for future removal
+  if (focusableElements?.filter((x) => x).length) {
+    FOCUSABLE_ELEMENT_CACHE = [...focusableElements]; // prevent mutation
+    KEYDOWN_EVENT_HANDLER_CACHE = focusableElements.map((el, idx) => {
+      const handler = (e: KeyboardEvent): void => {
+        if (e.key === 'Tab' && ((idx === 0 && e.shiftKey) || (idx === 1 && !e.shiftKey))) {
+          e.preventDefault();
+          focusableElements[idx === 0 ? 1 : 0].focus();
+        }
+      };
+      el.addEventListener('keydown', handler);
+      return handler;
+    }) as KeyboardHandlerTuple;
   }
 };
 
@@ -34,16 +109,29 @@ export const getScrollTopOnTouch = (host: HTMLElement, e: TouchEvent): number =>
   let result = scrollTop;
   const currentScroll = scrollTop + offsetHeight;
 
-  if (scrollTop === 0 && currentScroll === scrollHeight) {
-    e.preventDefault();
-  } else if (scrollTop === 0) {
-    result = 1;
+  if (scrollTop === 0) {
+    if (currentScroll === scrollHeight) {
+      e.preventDefault();
+    } else {
+      result = 1;
+    }
   } else if (currentScroll === scrollHeight) {
     result = scrollTop - 1;
   }
   return result;
 };
 
-export const getFirstAndLastElement = <T>(elements: T[]): T[] => {
-  return [elements[0], elements[elements.length - 1]];
+export const warnIfAriaAndHeadingPropsAreUndefined = (
+  host: HTMLElement,
+  heading: string,
+  aria: SelectedAriaAttributes<ModalAriaAttributes>
+): void => {
+  if (!heading && !aria) {
+    console.warn(
+      `Either heading or aria attributes on ${getTagName(host)} have to be set in order to ensure accessibility.`
+    );
+  }
 };
+
+export const MODAL_ARIA_ATTRIBUTES = ['aria-label'] as const;
+export type ModalAriaAttributes = typeof MODAL_ARIA_ATTRIBUTES[number];

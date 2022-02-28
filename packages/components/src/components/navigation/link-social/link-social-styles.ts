@@ -1,34 +1,35 @@
+import type { Theme } from '../../../types';
+import type { SocialIconName } from './link-social-utils';
+import type { BreakpointCustomizable } from '../../../utils';
+import { buildResponsiveStyles, getCss, isThemeDark } from '../../../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  BreakpointCustomizable,
-  buildResponsiveStyles,
-  getCss,
   getFocusStyles,
-  getThemedColorsDarken,
   getTransition,
-  isDark,
   pxToRemWithUnit,
-} from '../../../utils';
-import { color } from '@porsche-design-system/utilities';
-import type { Theme } from '../../../types';
-import type { SocialIconName } from './link-social-utils';
+  getThemedColors,
+} from '../../../styles';
+import { colorExternal } from '@porsche-design-system/utilities-v2';
 import { getIconStyles, getLabelStyles, getRootStyles, getSlottedLinkStyles } from '../../../styles/link-button-styles';
+
+const { contrastHighColor: themeLightContrastHighColor, baseColor: themeLightBaseColor } = getThemedColors('light');
+const { baseColor: themeDarkBaseColor } = getThemedColors('dark');
 
 const getColors = (
   icon: SocialIconName,
   theme: Theme
 ): { baseColor: string; baseColorHover: string; textColor: string; textColorHover: string } => {
-  const isDarkTheme = isDark(theme);
-  const { darkTheme } = color;
-  const { contrastHighColorDarken, baseColorDarken } = getThemedColorsDarken(theme);
-  const externalBrandColor = color.external[icon?.split('-')[1]];
+  const isDarkTheme = isThemeDark(theme);
+  const { contrastHighColorDarken, baseColorDarken } = getThemedColors(theme);
+  const externalBrandColor = colorExternal[icon?.split('-')[1]];
 
   return {
-    baseColor: isDarkTheme ? darkTheme.default : color.neutralContrast.high,
+    baseColor: isDarkTheme ? themeDarkBaseColor : themeLightContrastHighColor,
     baseColorHover: externalBrandColor || (isDarkTheme ? baseColorDarken : contrastHighColorDarken),
-    textColor: isDarkTheme ? color.default : darkTheme.default,
-    textColorHover: icon === 'logo-kakaotalk' ? color.default : externalBrandColor ? darkTheme.default : undefined,
+    textColor: isDarkTheme ? themeLightBaseColor : themeDarkBaseColor,
+    textColorHover:
+      icon === 'logo-kakaotalk' ? themeLightBaseColor : externalBrandColor ? themeDarkBaseColor : undefined,
   };
 };
 

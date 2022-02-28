@@ -4,58 +4,37 @@
 If you use `Porsche Design System` components, we take care that your application only renders those if they are fully styled.
 However, it takes a moment until our core is fully loaded and only then we can take action. This short timespan has to be covered.
 
-Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages called `getInitialStyles()` which needs to be imported into the `<head>` of your `index.html`.
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages which needs to be injected into the `<head>` of your `index.html`.
 
-<TableOfContents></TableOfContents>
+## Supported options
 
-## Supported options:
-- **prefix:** string = ''
-- **withoutTags**: boolean = false
+| Option        | Description                                                                                                                                       | Type           | Default |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------|----------------|---------|
+| `prefix`      | Prefix will be added to the component names.                                                                                                      | `string`       | `''`    |
+| `withoutTags` | <span style='color:red'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format: 'jsx'` instead.<br/>If true, it returns css styles. | `boolean`      | `false` |
+| `format`      | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements.                          | `'html' | 'jsx'`  | `'html'` |
 
-### Example usage with dynamic template 
+## Examples
 
-The example shows how to implement the partial in a webpack (or similar) project.
+Project integration differs based on the project setup.  
+The following showcases the most common ways.
 
-```html
-// index.html
+<PartialDocs name="getInitialStyles" :params="params" location="head"></PartialDocs>
 
-<head>
-  // without parameters
-  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getInitialStyles() %>
-</head>
+<script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
-<head>
-  // with custom prefix to match your prefixed components
-  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getInitialStyles({ prefix: 'custom-prefix' }) %>
-</head>
-
-<head>
-  // without style tags
-  <style>
-    <%= require('@porsche-design-system/components-{js|angular|react}/partials').getInitialStyles({ withoutTags: true }) %>
-  </style>
-</head>
-``` 
-
-### Alternative: Example usage with placeholder 
-
-If your bundler (webpack or similar) does not work with the syntax of the previous example you can put a placeholder in your markup and replace its content with a script.
-
-```html
-// index.html
-
-<head>
-  <!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_INITIAL_STYLES-->
-</head>
-``` 
-
-```json
-// package.json (tested on macOS, the script may need to be adjusted depending on the operating system used), make sure to adjust the path to the index.html file and use the correct partials package import from your framework {js|angular|react}
-
-"scripts": {
-  "prestart": "yarn replace",
-  "replace": "placeholder='<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_INITIAL_STYLES-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getInitialStyles())') && regex=$placeholder'.*' && sed -i '' -E -e \"s@$regex@$partial@\" index.html",
-} 
-``` 
-
-You can find an implemented example in our [Sample VanillaJS Integration](https://github.com/porscheui/sample-integration-vanillajs), [Sample Angular Integration](https://github.com/porscheui/sample-integration-angular) or [Sample React Integration](https://github.com/porscheui/sample-integration-react)
+@Component
+export default class Code extends Vue {
+  public params = [
+    {
+      value: ""
+    },
+    {
+      value: "{ prefix: 'custom-prefix' }",
+      comment: 'with custom prefix to match your prefixed components',
+    },
+  ];
+}
+</script>

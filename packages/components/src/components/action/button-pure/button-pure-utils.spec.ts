@@ -1,17 +1,17 @@
 import { warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 
 describe('warnIfIsLoadingAndIconIsNone()', () => {
-  beforeEach(() => {
-    jest.spyOn(global.console, 'warn').mockImplementation(() => {});
-  });
-
   it('should print warning if property icon = none and loading = true', () => {
+    const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
     const host = document.createElement('p-button-pure');
 
-    warnIfIsLoadingAndIconIsNone(host, true, 'none');
     warnIfIsLoadingAndIconIsNone(host, true, 'highway');
     warnIfIsLoadingAndIconIsNone(host, false, 'none');
 
-    expect(console.warn).toBeCalledTimes(1);
+    expect(spy).toBeCalledTimes(0);
+
+    warnIfIsLoadingAndIconIsNone(host, true, 'none');
+
+    expect(spy).toBeCalledTimes(1);
   });
 });

@@ -104,27 +104,28 @@ export default class Code extends Vue {
 </p-fieldset-wrapper>`;
 
   get stateMarkup() {
-    const attr = ` state=${this.state} message="${this.state === 'error' ? 'Some error message' : 'Some success message'}" `;
-    return `<p-fieldset-wrapper label="Some legend label"${attr} class="state-markup">
-  <p-text-field-wrapper label="Some label" state=${this.state}>
+    const message = this.state === 'error' ? 'Some error message' : 'Some success message';
+    const attr = `state="${this.state}" message="${message}"`;
+    return `<p-fieldset-wrapper label="Some legend label" ${attr} class="state-markup">
+  <p-text-field-wrapper label="Some label" state="${this.state}">
     <input type="text" name="some-name" />
   </p-text-field-wrapper>
-  <p-checkbox-wrapper label="Some label" hide-label="false" state=${this.state}>
+  <p-checkbox-wrapper label="Some label" hide-label="false" state="${this.state}">
    <input type="checkbox" name="some-name" />
   </p-checkbox-wrapper>
-  <p-checkbox-wrapper label="Some label" hide-label="false" state=${this.state}>
+  <p-checkbox-wrapper label="Some label" hide-label="false" state="${this.state}">
     <input type="checkbox" name="some-name" />
   </p-checkbox-wrapper>
 </p-fieldset-wrapper>`;
   }
 
   get slottedMessageMarkup() {
-    const attr = `${this.slottedMessage === 'error' ? 'Some error message' : 'Some success message'}`;
+    const content = this.slottedMessage === 'error' ? 'Some error message' : 'Some success message';
     return `<p-fieldset-wrapper label="Some legend label" state=${this.slottedMessage}>
   <p-text-field-wrapper label="Some label" state=${this.slottedMessage}>
     <input type="text" name="some-name" />
   </p-text-field-wrapper>
-  <span slot="message">${attr}</span>
+  <span slot="message">${content}</span>
 </p-fieldset-wrapper>`;
   }
 }

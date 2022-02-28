@@ -100,7 +100,7 @@ export const throwIfRootNodeIsNotOfKind = (host: HTMLElement, tagName: TagNameCa
   }
 };
 
-export const isParentOfKind = (host: HTMLElement, tagName: string): boolean => {
+export const isParentOfKind = (host: HTMLElement, tagName: TagNameCamelCase): boolean => {
   return host.parentElement && getTagName(host.parentElement) === getPrefixedTagNames(host)[tagName];
 };
 

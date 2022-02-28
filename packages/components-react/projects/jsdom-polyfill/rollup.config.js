@@ -1,6 +1,5 @@
 import resolve from '@rollup/plugin-node-resolve';
 import polyfill from 'rollup-plugin-polyfill';
-import pkg from '@porsche-design-system/js/package.json';
 import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 import modify from 'rollup-plugin-modify';
@@ -16,11 +15,9 @@ const polyfills = [
 export default {
   input: 'projects/jsdom-polyfill/src/index.js',
   output: {
-    esModule: false,
     file: 'dist/components-wrapper/jsdom-polyfill/index.js',
-    format: 'umd',
-    name: pkg.name,
-    extend: true,
+    format: 'cjs',
+    exports: 'auto', // fixes rollup warning
   },
   plugins: [
     commonjs({ dynamicRequireTargets: ['projects/jsdom-polyfill/src/**/*.js'] }),
@@ -32,17 +29,17 @@ export default {
     }),
     // patch conditions into build to allow opt out of CDN requests
     modify({
-      // tracking pixel and font-face css
+      // font-face css
       find: /appGlobals\.globalScripts\(\);/,
       replace: (match) => `if(!window.PDS_SKIP_FETCH) { ${match} }`,
     }),
     modify({
       // icon svgs
       find: /(const pdsFetch = \(input, init\) =>) (fetch\(input, init\);)/,
-      replace: (_, $1, $2) => `${$1} window.PDS_SKIP_FETCH ? undefined : ${$2}`,
+      replace: (_, $1, $2) => `${$1} window.PDS_SKIP_FETCH ? Promise.resolve({ ok:true, text: () => ''}) : ${$2}`,
     }),
     modify({
-      // marque
+      // marque assets
       find: /(const picture =)( (?:.|\s)*?;)/,
       replace: (_, $1, $2) => `${$1} window.PDS_SKIP_FETCH ? undefined : ${$2}`,
     }),

@@ -1,19 +1,19 @@
+import type { Styles } from 'jss';
+import type { BreakpointCustomizable } from '../../../utils';
+import type { FormState, Theme } from '../../../types';
 import {
   addImportantToEachRule,
-  buildSlottedStyles,
   getBaseSlottedStyles,
-  getCss,
-  getThemedColors,
-  getThemedFormStateColors,
   getTransition,
   pxToRemWithUnit,
-} from '../../../utils';
-import { isVisibleFormState } from '../../../utils/form-state';
-import type { BreakpointCustomizable, Styles } from '../../../utils';
-import type { FormState, Theme } from '../../../types';
+  getThemedColors,
+} from '../../../styles';
+import { getCheckboxRadioLabelJssStyle } from '../../../styles/checkbox-radio-styles';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
-import { getCheckboxRadioLabelJssStyle } from '../../../styles/checkbox-radio-styles';
+import { buildSlottedStyles, getCss } from '../../../utils';
+import { isVisibleFormState } from '../../../utils/form-state';
+import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 
 const theme: Theme = 'light';
 
@@ -42,7 +42,7 @@ export const getComponentCss = (
   const size = pxToRemWithUnit(28);
   const hasVisibleState = isVisibleFormState(state);
   const { baseColor, backgroundColor, contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
-  const { stateColor, stateHoverColor } = getThemedFormStateColors(theme, state);
+  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
 
   return getCss({
     ':host': {
@@ -70,24 +70,28 @@ export const getComponentCss = (
           borderRadius: '50%',
           outline: 'none',
           cursor: 'pointer',
-          ...getBackgroundImageStyles(hasVisibleState, backgroundColor, stateColor || contrastMediumColor),
+          ...getBackgroundImageStyles(hasVisibleState, backgroundColor, formStateColor || contrastMediumColor),
         },
         '&(input:checked)': getBackgroundImageStyles(
           hasVisibleState,
-          stateColor || contrastHighColor,
-          stateColor || contrastHighColor
+          formStateColor || contrastHighColor,
+          formStateColor || contrastHighColor
         ),
         '&(input:not(:disabled):not(:checked):hover), .label:hover ~ &(input:not(:disabled):not(:checked))':
-          getBackgroundImageStyles(hasVisibleState, backgroundColor, stateHoverColor || baseColor),
+          getBackgroundImageStyles(hasVisibleState, backgroundColor, formStateHoverColor || baseColor),
         '&(input:not(:disabled):checked:hover), .label:hover ~ &(input:not(:disabled):checked)':
-          getBackgroundImageStyles(hasVisibleState, stateColor || contrastHighColor, stateHoverColor || baseColor),
+          getBackgroundImageStyles(
+            hasVisibleState,
+            formStateColor || contrastHighColor,
+            formStateHoverColor || baseColor
+          ),
         '&(input:disabled)': {
           cursor: 'not-allowed',
           ...getBackgroundImageStyles(hasVisibleState, backgroundColor, disabledColor),
         },
         '&(input:checked:disabled)': getBackgroundImageStyles(hasVisibleState, disabledColor, disabledColor),
         '&(input:focus)': {
-          boxShadow: `0 0 0 1px ${stateColor || contrastMediumColor}`,
+          boxShadow: `0 0 0 1px ${formStateColor || contrastMediumColor}`,
         },
         '&(input:focus:not(:focus-visible))': {
           boxShadow: 'none',

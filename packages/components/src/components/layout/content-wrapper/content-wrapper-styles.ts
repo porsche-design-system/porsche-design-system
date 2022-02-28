@@ -1,24 +1,8 @@
-import { contentWrapperVars, getCss, getThemedColors, JssStyle, mediaQuery } from '../../../utils';
 import type { Theme } from '../../../types';
 import type { ContentWrapperWidth, ContentWrapperBackgroundColor } from './content-wrapper-utils';
-
-const { margin, marginXl, marginXxl, maxWidth, maxWidthExtended } = contentWrapperVars;
-
-const widthMap: { [key in ContentWrapperWidth]?: JssStyle } = {
-  basic: {
-    maxWidth,
-    padding: `0 ${margin}`,
-    [mediaQuery('xl')]: {
-      padding: `0 ${marginXl}`,
-    },
-    [mediaQuery('xxl')]: {
-      padding: `0 ${marginXxl}`,
-    },
-  },
-  extended: {
-    maxWidth: maxWidthExtended,
-  },
-};
+import { getCss } from '../../../utils';
+import { getContentWrapperJssStyle } from '@porsche-design-system/utilities-v2';
+import { getThemedColors } from '../../../styles';
 
 export const getComponentCss = (
   width: ContentWrapperWidth,
@@ -30,11 +14,8 @@ export const getComponentCss = (
       display: 'flex',
     },
     root: {
-      margin: '0 auto',
+      ...getContentWrapperJssStyle(width),
       backgroundColor: backgroundColor === 'default' ? getThemedColors(theme).backgroundColor : 'transparent',
-      width: '100%',
-      minWidth: 0,
-      ...widthMap[width],
     },
   });
 };

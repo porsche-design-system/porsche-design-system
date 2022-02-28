@@ -1,9 +1,10 @@
 # Button Pure
 
-The `p-button-pure` component is essential to perform events for **interactions**.
-A Button can be used with or without a label, but it's recommended to keep the **label visible** for better **usability** whenever possible.
-When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers.
-Whenever you want to provide navigational elements, stick to the [Link](components/link) or [Link Pure](components/link-pure) component instead.
+The `p-button-pure` component is essential to perform events for **interactions**.  
+A Button can be used with or without a label, but it's recommended to keep the **label visible** for better **usability** whenever possible.  
+When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers.  
+When overriding the `position` style of the `p-button-pure` component, make sure to not use `position: static`, which would make the click area expand to the entire viewport.     
+Whenever you want to provide navigational elements, stick to the [Link](components/link) or [Link Pure](components/link-pure) component instead.  
 
 <TableOfContents></TableOfContents>
 

@@ -1,3 +1,6 @@
+import type { TagName } from '@porsche-design-system/shared';
+import type { BreakpointCustomizable } from './breakpoint-customizable';
+import type { Breakpoint } from '../styles';
 import type { JssStyle, Rule, Styles } from 'jss';
 import { create } from 'jss';
 import jssPluginCamelCase from 'jss-plugin-camel-case';
@@ -5,15 +8,10 @@ import jssPluginDefaultUnit from 'jss-plugin-default-unit';
 import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
-import type { BreakpointCustomizable } from './breakpoint-customizable';
 import { parseJSON } from './breakpoint-customizable';
 import { getShadowRootHTMLElement } from './dom';
-import { addImportantToEachRule, mediaQuery } from './styles';
-import type { Breakpoint } from './styles';
-import type { TagName } from '@porsche-design-system/shared';
+import { addImportantToEachRule, mediaQuery } from '../styles';
 import { getTagName, getTagNameWithoutPrefix } from './tag-name';
-
-export type { Styles, JssStyle } from 'jss';
 
 /* eslint-disable @typescript-eslint/consistent-type-definitions */
 declare global {
@@ -47,12 +45,16 @@ export const getCss = (jssStyles: Styles): string =>
 
 export const supportsConstructableStylesheets = (): boolean => {
   try {
-    new CSSStyleSheet();
     return typeof new CSSStyleSheet().replaceSync === 'function';
-  } catch (e) {
+  } catch {
     return false;
   }
 };
+
+// determine it once
+const hasConstructableStylesheetSupport = supportsConstructableStylesheets();
+// getter for easy mocking
+export const getHasConstructableStylesheetSupport = (): boolean => hasConstructableStylesheetSupport;
 
 type CssCacheMap = Map<string, string>;
 export const componentCssMap = new Map<TagName, CssCacheMap>();
@@ -85,7 +87,7 @@ export const attachComponentCss = <T extends (...p: any[]) => string>(
 ): void => {
   const css = getCachedComponentCss(host, getComponentCss, ...args);
 
-  if (supportsConstructableStylesheets()) {
+  if (getHasConstructableStylesheetSupport()) {
     const [sheet] = host.shadowRoot.adoptedStyleSheets;
     if (sheet) {
       sheet.replaceSync(css);
@@ -114,12 +116,16 @@ export const buildSlottedStyles = (host: HTMLElement, jssStyle: JssStyle): Style
 
 export type GetStylesFunction = (value?: any) => JssStyle;
 
+/**
+ * @deprecated use buildResponsiveStyles() directly
+ */
 export const buildResponsiveHostStyles = <T>(
   rawValue: BreakpointCustomizable<T>,
   getStyles: GetStylesFunction
 ): Styles<':host'> => ({ ':host': buildResponsiveStyles(rawValue, getStyles) });
 
 export const buildResponsiveStyles = <T>(rawValue: BreakpointCustomizable<T>, getStyles: GetStylesFunction): Styles => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const value = parseJSON(rawValue as any);
 
   return typeof value === 'object'

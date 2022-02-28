@@ -1,8 +1,16 @@
-import { Component, Event, EventEmitter, Element, h, JSX, Prop, Watch, Host } from '@stencil/core';
-import type { BreakpointCustomizable } from '../../../types';
-import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
-import { getFirstAndLastElement, getFocusableElements, getScrollTopOnTouch, setScrollLock } from './modal-utils';
-import { getComponentCss } from './modal-styles';
+import { Component, Element, Event, EventEmitter, Host, JSX, Prop, Watch, h } from '@stencil/core';
+import type { BreakpointCustomizable, SelectedAriaAttributes } from '../../../types';
+import {
+  attachComponentCss,
+  attachSlottedCss,
+  getPrefixedTagNames,
+  getShadowRootHTMLElement,
+  hasNamedSlot,
+  parseAndGetAriaAttributes,
+} from '../../../utils';
+import type { ModalAriaAttributes } from './modal-utils';
+import { MODAL_ARIA_ATTRIBUTES, setScrollLock, warnIfAriaAndHeadingPropsAreUndefined } from './modal-utils';
+import { getComponentCss, getSlottedCss } from './modal-styles';
 
 @Component({
   tag: 'p-modal',
@@ -26,20 +34,22 @@ export class Modal {
   /** If true the modal uses max viewport height and width. Should only be used for mobile. */
   @Prop() public fullscreen?: BreakpointCustomizable<boolean> = false;
 
+  /** Add ARIA attributes. */
+  @Prop() public aria?: SelectedAriaAttributes<ModalAriaAttributes>;
+
   /** Emitted when the component requests to be closed. */
   @Event({ bubbles: false }) public close?: EventEmitter<void>;
 
   private focusedElBeforeOpen: HTMLElement;
-  private focusableElements: HTMLElement[] = [];
   private closeBtn: HTMLElement;
+  private hasHeader: boolean;
+  private dialog: HTMLElement;
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
-    this.setKeyboardListener(isOpen);
-    setScrollLock(this.host, isOpen, this.setScrollTop);
+    this.updateScrollLock(isOpen);
 
     if (isOpen) {
-      this.focusableElements = getFocusableElements(this.host, this.closeBtn);
       this.focusedElBeforeOpen = document.activeElement as HTMLElement;
     } else {
       this.focusedElBeforeOpen?.focus();
@@ -47,121 +57,98 @@ export class Modal {
   }
 
   public connectedCallback(): void {
-    if (this.open) {
-      // in case modal is rendered with open prop
-      this.setKeyboardListener(true);
-      setScrollLock(this.host, true, this.setScrollTop);
-    }
+    attachSlottedCss(this.host, getSlottedCss);
   }
 
   public componentDidLoad(): void {
     // in case modal is rendered with open prop
-    this.focusableElements = getFocusableElements(this.host, this.closeBtn);
+    if (this.open) {
+      this.updateScrollLock(true);
+    }
+
+    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', () => {
+      if (this.open) {
+        // 1 tick delay is needed so that web components can be bootstrapped
+        setTimeout(() => {
+          this.updateScrollLock(true);
+          this.dialog.focus(); // set initial focus
+        });
+      }
+    });
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen);
+    warnIfAriaAndHeadingPropsAreUndefined(this.host, this.heading, this.aria);
+    this.hasHeader = !!this.heading || hasNamedSlot(this.host, 'heading');
+    attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen, this.disableCloseButton, this.hasHeader);
   }
 
-  public componentDidUpdate(): void {
+  public componentDidRender(): void {
     if (this.open) {
-      /* the close button is not immediately visible when the  @Watch('open') triggers,
-       so we focus it in componentDidUpdate() */
-      this.focusableElements[0]?.focus();
+      this.dialog.focus(); // needs to happen after render
     }
   }
 
   public disconnectedCallback(): void {
-    this.setKeyboardListener(false);
-    setScrollLock(this.host, false, this.setScrollTop);
+    setScrollLock(this.host, false);
   }
 
   public render(): JSX.Element {
-    const hasHeader = this.heading || !this.disableCloseButton;
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host onMouseDown={!this.disableBackdropClick && this.onMouseDown}>
-        <aside
+        <div
           class="root"
           role="dialog"
           aria-modal="true"
-          aria-label={this.heading}
+          {...{ 'aria-label': this.heading, ...parseAndGetAriaAttributes(this.aria, MODAL_ARIA_ATTRIBUTES) }}
           aria-hidden={!this.open ? 'true' : 'false'}
+          tabIndex={-1}
+          ref={(el) => (this.dialog = el)}
         >
-          {hasHeader && (
-            <header>
-              {this.heading && (
+          {!this.disableCloseButton && (
+            <PrefixedTagNames.pButtonPure
+              class="close"
+              type="button"
+              ref={(el) => (this.closeBtn = el)}
+              hideLabel
+              icon="close"
+              onClick={this.closeModal}
+            >
+              Close modal
+            </PrefixedTagNames.pButtonPure>
+          )}
+          {this.hasHeader && (
+            <div class="header">
+              {this.heading ? (
                 <PrefixedTagNames.pHeadline variant={{ base: 'medium', m: 'large' }}>
                   {this.heading}
                 </PrefixedTagNames.pHeadline>
+              ) : (
+                <slot name="heading" />
               )}
-              {!this.disableCloseButton && (
-                <PrefixedTagNames.pButtonPure
-                  class="close"
-                  type="button"
-                  ref={(el) => (this.closeBtn = el)}
-                  hideLabel
-                  icon="close"
-                  onClick={this.closeModal}
-                >
-                  Close modal
-                </PrefixedTagNames.pButtonPure>
-              )}
-            </header>
+            </div>
           )}
           <slot />
-        </aside>
+        </div>
       </Host>
     );
   }
 
-  private setScrollTop = (e: TouchEvent): void => {
-    this.host.scrollTop = getScrollTopOnTouch(this.host, e);
-  };
+  private updateScrollLock(isOpen: boolean): void {
+    setScrollLock(this.host, isOpen, !this.disableCloseButton && this.closeBtn, this.closeModal);
+  }
 
-  private setKeyboardListener = (active: boolean): void => {
-    document[active ? 'addEventListener' : 'removeEventListener']('keydown', this.onKeyboardEvent);
-  };
-
-  private onKeyboardEvent = (e: KeyboardEvent): void => {
-    const { key, shiftKey } = e;
-    if (!this.disableCloseButton && (key === 'Esc' || key === 'Escape')) {
+  private onMouseDown = (e: MouseEvent): void => {
+    if ((e.composedPath() as HTMLElement[])[0] === this.host) {
       this.closeModal();
-    } else if (key === 'Tab') {
-      // cycle focus within modal elements
-      if (this.focusableElements.length <= 1) {
-        e.preventDefault();
-        this.focusableElements[0]?.focus();
-      } else {
-        const [firstEl, lastEl] = getFirstAndLastElement(this.focusableElements);
-
-        const { activeElement: activeElLight } = document;
-        const { activeElement: activeElShadow } = this.host.shadowRoot;
-
-        if (shiftKey) {
-          if (activeElLight === firstEl || activeElShadow === firstEl) {
-            e.preventDefault();
-            lastEl.focus();
-          }
-        } else {
-          if (activeElLight === lastEl || activeElShadow === lastEl) {
-            e.preventDefault();
-            firstEl.focus();
-          }
-        }
-      }
     }
   };
 
   private closeModal = (): void => {
-    this.close.emit();
-  };
-
-  private onMouseDown = (e: MouseEvent): void => {
-    const [firstEl] = e.composedPath() as HTMLElement[];
-    if (firstEl === this.host) {
-      this.closeModal();
+    if (!this.disableCloseButton) {
+      this.close.emit();
     }
   };
 }

@@ -1,28 +1,17 @@
-import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
-import pkg from './package.json';
-
-const commonPlugins = [
-  resolve({
-    resolveOnly: [/^@porsche-design-system\/.*$/],
-  }),
-];
 
 export default [
   {
-    input: 'src/js/index.ts',
+    input: 'src/jss/index.ts',
     output: {
-      esModule: false,
-      dir: 'dist/js',
-      format: 'umd',
-      name: pkg.name,
-      exports: 'named',
+      dir: 'dist/jss',
+      format: 'cjs',
     },
-    plugins: [...commonPlugins, typescript({ declaration: true, declarationDir: 'dist/js/types', rootDir: 'src/js' })],
+    plugins: [typescript({ declaration: true, declarationDir: 'dist/jss/types', rootDir: 'src/jss' })],
   },
   {
-    input: 'src/js/index.ts',
-    output: { dir: 'dist/js/esm', format: 'esm' },
-    plugins: [...commonPlugins, typescript()],
+    input: 'src/jss/index.ts',
+    output: { dir: 'dist/jss/esm', format: 'esm' },
+    plugins: [typescript()],
   },
 ];

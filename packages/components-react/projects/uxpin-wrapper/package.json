@@ -14,15 +14,15 @@
     "dump": "./node_modules/.bin/uxpin-merge dump"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "2.8.0",
+    "@porsche-design-system/components-js": "2.9.0",
     "react": "^17.0.2"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "^7.14.5",
-    "@types/react": "^17.0.29",
-    "@uxpin/merge-cli": "^2.7.8",
-    "babel-loader": "^8.2.2",
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/react": "^17.0.38",
+    "@uxpin/merge-cli": "^2.7.10",
+    "babel-loader": "^8.2.3",
     "eslint-loader": "^4.0.2",
-    "typescript": "~4.4.3"
+    "typescript": "~4.5.5"
   }
 }

@@ -1,14 +1,33 @@
-import { getComponentCss, isFullscreenForXl } from './modal-styles';
+import { getComponentCss, getSlottedCss, isFullscreenForXl } from './modal-styles';
 import type { BreakpointCustomizable } from '../../../types';
+import * as focusVisibleFallbackUtils from '../../../styles/focus-visible-fallback';
+import { getFocusStyles } from '../../../styles';
 
 describe('getComponentCss()', () => {
+  it('should call getFocusVisibleFallback()', () => {
+    const spy = jest.spyOn(focusVisibleFallbackUtils, 'getFocusVisibleFallback');
+    getComponentCss(true, true, true, true);
+
+    expect(spy).toHaveBeenCalledWith(getFocusStyles({ color: '#fff' }));
+  });
+
   it.each<Parameters<typeof getComponentCss>>([
-    [false, false],
-    [false, true],
-    [true, false],
-    [true, true],
-    [true, { base: true, xs: false, s: true, m: false, l: true, xl: false }],
-  ])('should return correct css for open: %s and fullscreen: %o', (...args) => {
+    [false, false, false, false],
+    [false, true, false, false],
+    [false, true, true, false],
+    [false, true, true, true],
+    [false, false, true, true],
+    [false, false, false, true],
+    [false, true, false, true],
+    [true, false, false, false],
+    [true, true, false, false],
+    [true, true, true, false],
+    [true, true, true, true],
+    [true, false, true, true],
+    [true, false, false, true],
+    [true, true, false, true],
+    [true, { base: true, xs: false, s: true, m: false, l: true, xl: false }, false, false],
+  ])('should return correct css for open: %s, fullscreen: %o, disableCloseButton: %s and hasHeader: %s', (...args) => {
     expect(getComponentCss(...args)).toMatchSnapshot();
   });
 });
@@ -41,5 +60,17 @@ describe('isFullscreenForXL()', () => {
     [{ base: false, xs: false, s: false, m: false, l: false, xl: false }, false],
   ])('should for fullscreen: %o return: %s', (fullscreen, result) => {
     expect(isFullscreenForXl(fullscreen)).toBe(result);
+  });
+});
+
+describe('getSlottedCss()', () => {
+  it('should return correct css', () => {
+    const host = document.createElement('p-modal');
+    expect(getSlottedCss(host)).toMatchSnapshot();
+  });
+
+  it('should return correct css with prefix', () => {
+    const host = document.createElement('prefixed-p-modal');
+    expect(getSlottedCss(host)).toMatchSnapshot();
   });
 });

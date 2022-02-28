@@ -8,6 +8,51 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.9.0] - 2022-02-28
+
+### [2.9.0-rc.1] - 2022-02-25
+
+#### Fixed
+- `Modal` focus trap respecting elements in shadow DOM and dynamically added/removed elements on first level
+- `TabsItem` focus outline on click in Safari
+- Error while using partials in Vanilla JS and Angular
+
+### [2.9.0-rc.0] - 2022-02-16
+
+#### Added
+- `getFontFaceStylesheet` returns additional `<link>` tags with `rel="preconnect"` and `rel="dns-prefetch"`
+- Option `format` to partials `getFontFaceStylesheet`, `getComponentChunkLinks()`, `getFontLinks()`, `getIconLinks()`, `getInitialStyles()`, `getLoaderScript()` and `getMetaTagsAndIconLinks()`
+
+#### Deprecated
+- The option `withoutTags` of partials `getFontFaceStylesheet`, `getComponentChunkLinks()`, `getFontLinks()`, `getIconLinks()`, `getInitialStyles()`, `getLoaderScript()` and `getMetaTagsAndIconLinks()`
+  is deprecated and will be removed in `v3.0.0`. Please use `format: 'jsx'` instead.
+```diff
+- <link rel="stylesheet" href={getFontFaceStylesheet({ withoutTags: true })} crossOrigin="true" />
++ {getFontFaceStylesheet({ format: 'jsx' })}
+```
+
+### [2.9.0-beta.1] - 2022-01-27
+
+#### Added
+- `:focus-visible` content of selected Tab in `Tabs` component gets focus styling
+- Improved accessibility of `Text Field Wrapper` and `Textarea Wrapper` when `maxlength` attribute is set
+- `Modal` aria property
+- `Modal` class for slotted elements to make content full-width
+
+#### Changed
+- `Button Pure` and `Link Pure` removed `position: relative` imposition, make sure to **not** override it with `position: static`
+
+#### Fixed
+- `Modal` close button styles when no heading is passed
+
+### [2.9.0-beta.0] - 2022-01-18
+
+#### Added
+- React: `getByRoleShadowed`, `getByLabelTextShadowed` and `getByTextShadowed` utilities which uses `@testing-library/dom` queries internally to support Shadow DOM  
+
+#### Fixed
+- React: `UnhandledPromiseRejectionWarning` when using `skipPorscheDesignSystemCDNRequestsDuringTests()`
+
 ### [2.8.0] - 2022-01-17
 
 #### Fixed
@@ -16,7 +61,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [2.8.0-rc.0] - 2022-01-14
 
 #### Added
-- support for `tabindex` attribute on `Button`, `Button Pure`, `Switch`, `Link`, `Link Pure` and `Link Social`
+- Support for `tabindex` attribute on `Button`, `Button Pure`, `Switch`, `Link`, `Link Pure` and `Link Social`
 
 #### Changed
 - `:focus-visible` style matches outline color of `Button` while hovered
@@ -24,8 +69,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Deprecated
 - The `tabbable` property of `Button`, `Button Pure` and `Switch` is deprecated and will be removed in `v3.0.0`. Please use `tabindex` instead.
 ```diff
--   <p-button tabbable="false">Some button</p-button>
-+   <p-button tabindex="-1">Some button</p-button>
+- <p-button tabbable="false">Some button</p-button>
++ <p-button tabindex="-1">Some button</p-button>
 ```
 
 ### [2.8.0-beta.3] - 2021-12-22

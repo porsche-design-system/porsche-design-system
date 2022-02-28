@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+/* Auto Generated File */
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-modal-fullscreen-breakpoint',
@@ -12,7 +13,7 @@ import { Component } from '@angular/core';
     `,
   ],
   template: `
-    <div class="playground light" title="should show fullscreen modal on light background">
+    <div class="playground light" title="should show fullscreen breakpoint modal on light background">
       <p-content-wrapper>
         <div style="background: deeppink; height: 100vh"></div>
       </p-content-wrapper>
@@ -20,9 +21,11 @@ import { Component } from '@angular/core';
         [heading]="'Some Heading with a very long title across multiple lines'"
         [open]="true"
         [fullscreen]="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
-        >Some Content</p-modal
       >
+        Some Content
+      </p-modal>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalFullscreenBreakpointComponent {}

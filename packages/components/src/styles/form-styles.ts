@@ -1,21 +1,20 @@
-import type { Styles } from '../utils';
+import type { JssStyle, Styles } from 'jss';
+import type { BreakpointCustomizable } from '../utils';
+import { buildResponsiveStyles, isThemeDark } from '../utils';
+import type { FormState, Theme } from '../types';
 import {
   addImportantToRule,
-  BreakpointCustomizable,
-  buildResponsiveStyles,
-  colorDarken,
   getFormTextHiddenJssStyle,
   getInset,
   getThemedColors,
-  getThemedFormStateColors,
   getTransition,
-  isDark,
   pxToRemWithUnit,
-} from '../utils';
-import { color, defaultFontFamilyAndWeight, fontSize } from '@porsche-design-system/utilities';
-import type { FormState, Theme } from '../types';
-import type { JssStyle } from '../utils';
+} from './';
+import { textSmall } from '@porsche-design-system/utilities-v2';
 import { isVisibleFormState } from '../utils/form-state';
+import { getThemedFormStateColors } from './form-state-color-styles';
+
+const { disabledColor: lightThemeDisabledColor } = getThemedColors('light');
 
 export const INPUT_HEIGHT = 48;
 
@@ -28,10 +27,9 @@ export const getBaseChildStyles = (
   additionalDefaultJssStyle?: JssStyle
 ): Styles => {
   const { baseColor, backgroundColor, contrastHighColor, contrastMediumColor } = getThemedColors(theme);
-  const { stateColor, stateHoverColor } = getThemedFormStateColors(theme, state);
+  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
   const hasVisibleState = isVisibleFormState(state);
 
-  const { disabled } = color.state; // 🤷 no theming here
   // TODO: Add readonly color to utilities package
   const readonly = '#ebebeb'; // 🤷
 
@@ -48,28 +46,27 @@ export const getBaseChildStyles = (
       WebkitAppearance: 'none', // iOS safari
       appearance: 'none',
       boxSizing: 'border-box',
-      border: hasVisibleState ? `2px solid ${stateColor}` : `1px solid ${contrastMediumColor}`,
+      border: hasVisibleState ? `2px solid ${formStateColor}` : `1px solid ${contrastMediumColor}`,
       borderRadius: 0,
       backgroundColor,
       opacity: 1,
-      ...defaultFontFamilyAndWeight,
-      ...fontSize.small,
+      ...textSmall,
       textIndent: 0,
       color: baseColor,
       transition: ['color', 'border-color', 'background-color'].map(getTransition).join(','),
       ...additionalDefaultJssStyle,
     },
     [`::slotted(${child}:hover)`]: {
-      borderColor: stateHoverColor || (isDark(theme) ? contrastHighColor : baseColor),
+      borderColor: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
     },
     [`::slotted(${child}:focus)`]: {
-      outlineColor: stateColor || contrastMediumColor,
+      outlineColor: formStateColor || contrastMediumColor,
     },
     [`::slotted(${child}:disabled)`]: {
       cursor: 'not-allowed',
-      color: disabled, // 🤷
-      borderColor: disabled,
-      WebkitTextFillColor: disabled, // fix placeholder color bug in Safari
+      color: lightThemeDisabledColor, // 🤷 no theming here
+      borderColor: lightThemeDisabledColor, // 🤷 no theming here
+      WebkitTextFillColor: lightThemeDisabledColor, // 🤷 no theming here; fix placeholder color bug in Safari
     },
     ...(child !== 'select' && {
       [`::slotted(${child}[readonly])`]: {
@@ -94,6 +91,7 @@ export const getLabelStyles = (
   additionalRefForInputHover?: string
 ): Styles => {
   const { baseColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
+  const { formStateHoverColor } = getThemedFormStateColors(theme, state);
   const hasVisibleState = isVisibleFormState(state);
 
   return {
@@ -129,7 +127,7 @@ export const getLabelStyles = (
       '&:hover': {
         [`&~::slotted(${child}:not(:disabled):not([readonly]))` +
         (hasVisibleState ? `, ::slotted(${child}:hover:not(:disabled):not([readonly]))` : '')]: {
-          borderColor: addImportantToRule(hasVisibleState ? colorDarken.notification[state] : baseColor),
+          borderColor: addImportantToRule(hasVisibleState ? formStateHoverColor : baseColor),
         },
       },
     },
