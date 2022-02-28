@@ -16,7 +16,22 @@ which needs to be injected into the `<head>` of your `index.html`.
 | `prefix`             | Prefix will be added to the component names.                                                                                                             | `string`        | `''`    |
 | `withoutTags`        | <span style='color:red'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format: 'jsx'` instead.<br/>If true, it returns css styles. | `boolean`       | `false` |
 | `format`             | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements.                                 | `'html'         | 'jsx'`  | `'html'` |
-| `skeletonComponents` | <span style='color:red'>**[EXPERIMENTAL]**</span> Components will have a built-in skeleton solution. Default are all supported components.               | `Array<string>` | `[]`    |
+| `skeletonTagNames` | <span style='color:red'>**[EXPERIMENTAL]**</span> Components will have a built-in skeleton solution. By default no skeletons are used.               | `({{this.skeletonTagNames}})[]` | `[]`    |
+
+## Skeleton Behavior
+
+<p-inline-notification heading="Important note" state="warning" persistent="true">
+  Be aware that Skeletons are currently an <span style='color:red'>[EXPERIMENTAL]</span> feature.<br>
+  Their API and behaviour might change in future releases
+</p-inline-notification>
+
+The skeletons provided by this partial cover the timespan between the page load and initialization of each component provided in the `skeletonTagNames` array.  
+They are **not** meant to be used as asynchronous loading indicators for content inside the initialized components.  
+To further minimize the time it takes for the components to initialize use our [Component Chunk Links Partial](partials/component-chunk-links) to preload the components.  
+
+Be aware that skeletons do **not** work when wrapped inside any of the following layout components: `Button Group`, `Content Wrapper`, `Grid`, `Flex`.  
+Using them inside said layout components will lead to flashes of skeletons.  
+When using skeletons with `Fieldset Wrapper` be aware that layout shifts will happen, when providing a `label` property.
 
 ## Examples
 
@@ -28,9 +43,11 @@ The following showcases the most common ways.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import {TAG_NAMES_WITH_SKELETON} from "@porsche-design-system/shared"; 
 
 @Component
 export default class Code extends Vue {
+  public skeletonTagNames = TAG_NAMES_WITH_SKELETON.map(x => `'${x}'`).join(' | ');
   public params = [
     {
       value: ""
@@ -40,7 +57,7 @@ export default class Code extends Vue {
       comment: 'with custom prefix to match your prefixed components',
     },
     {
-      value: "{ skeletonComponents: ['p-button', 'p-button-pure', 'p-checkbox-wrapper', 'p-headline', 'p-fieldset-wrapper', 'p-link', 'p-link-pure', 'p-radio-button-wrapper', 'p-select-wrapper', 'p-text', 'p-text-list', 'p-text-list-item', 'p-textarea-wrapper', 'p-text-field-wrapper'] }",
+      value: "{ skeletonTagNames: ['p-button', 'p-button-pure', 'p-checkbox-wrapper', 'p-headline', 'p-fieldset-wrapper', 'p-link', 'p-link-pure', 'p-radio-button-wrapper', 'p-select-wrapper', 'p-text', 'p-text-list', 'p-text-list-item', 'p-textarea-wrapper', 'p-text-field-wrapper'] }",
       comment: 'with all components that come with a built-in skeleton'
     }
   ];
