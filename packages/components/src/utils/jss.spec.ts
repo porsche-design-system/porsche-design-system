@@ -1,6 +1,5 @@
 import {
   attachComponentCss,
-  buildResponsiveHostStyles,
   buildResponsiveStyles,
   buildSlottedStyles,
   getCachedComponentCss,
@@ -89,51 +88,6 @@ describe('buildSlottedStyles()', () => {
     const el = document.createElement('p-button');
     expect(buildSlottedStyles(el, { div: { marginLeft: 5 } })).toStrictEqual({
       '@global': { 'p-button': { div: { marginLeft: '5 !important' } } },
-    });
-  });
-});
-
-describe('buildResponsiveHostStyles()', () => {
-  describe('for simple getStyles', () => {
-    const getStyles = (val: number): JssStyle => ({ width: 100 * val });
-
-    it('should return flat jss for simple type', () => {
-      expect(buildResponsiveHostStyles(6, getStyles)).toStrictEqual({ ':host': { width: 600 } });
-    });
-
-    it('should return nested jss for responsive type', () => {
-      expect(buildResponsiveHostStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyles)).toStrictEqual({
-        ':host': {
-          width: 600,
-          '@media (min-width: 480px)': { width: 300 },
-          '@media (min-width: 760px)': { width: 400 },
-          '@media (min-width: 1000px)': { width: 500 },
-          '@media (min-width: 1300px)': { width: 600 },
-          '@media (min-width: 1760px)': { width: 700 },
-        },
-      });
-    });
-  });
-
-  describe('for complex getStyles', () => {
-    const getStyles = (val: number): JssStyle => ({ width: 100 * val, display: 'block' });
-
-    it('should return flat jss for simple type', () => {
-      expect(buildResponsiveHostStyles(6, getStyles)).toStrictEqual({ ':host': { width: 600, display: 'block' } });
-    });
-
-    it('should return nested jss for responsive type', () => {
-      expect(buildResponsiveHostStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyles)).toStrictEqual({
-        ':host': {
-          width: 600,
-          display: 'block',
-          '@media (min-width: 480px)': { width: 300, display: 'block' },
-          '@media (min-width: 760px)': { width: 400, display: 'block' },
-          '@media (min-width: 1000px)': { width: 500, display: 'block' },
-          '@media (min-width: 1300px)': { width: 600, display: 'block' },
-          '@media (min-width: 1760px)': { width: 700, display: 'block' },
-        },
-      });
     });
   });
 });

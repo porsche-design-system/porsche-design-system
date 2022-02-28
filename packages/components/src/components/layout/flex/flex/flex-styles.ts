@@ -1,4 +1,3 @@
-import type { JssStyle } from 'jss';
 import type {
   FlexAlignContent,
   FlexAlignItems,
@@ -13,25 +12,8 @@ import type {
   FlexAlignItemsType,
   FlexAlignContentType,
 } from './flex-utils';
-import type { GetStylesFunction } from '../../../../utils';
-import { buildResponsiveHostStyles, getCss, mergeDeep } from '../../../../utils';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../../../utils';
 import { addImportantToEachRule } from '../../../../styles';
-
-const getInlineStyles: GetStylesFunction = (inline: FlexInlineType): JssStyle => ({
-  display: inline ? 'inline-flex' : 'flex',
-});
-
-const getWrapStyles: GetStylesFunction = (flexWrap: FlexWrapType): JssStyle => ({ flexWrap });
-
-const getDirectionStyles: GetStylesFunction = (flexDirection: FlexDirectionType): JssStyle => ({ flexDirection });
-
-const getJustifyContentStyles: GetStylesFunction = (justifyContent: FlexJustifyContentType): JssStyle => ({
-  justifyContent,
-});
-
-const getAlignItemsStyles: GetStylesFunction = (alignItems: FlexAlignItemsType): JssStyle => ({ alignItems });
-
-const getAlignContentStyles: GetStylesFunction = (alignContent: FlexAlignContentType): JssStyle => ({ alignContent });
 
 export const getComponentCss = (
   inline: FlexInline,
@@ -41,16 +23,18 @@ export const getComponentCss = (
   alignItems: FlexAlignItems,
   alignContent: FlexAlignContent
 ): string => {
-  return getCss(
-    addImportantToEachRule(
-      mergeDeep(
-        buildResponsiveHostStyles(inline, getInlineStyles),
-        buildResponsiveHostStyles(wrap, getWrapStyles),
-        buildResponsiveHostStyles(direction, getDirectionStyles),
-        buildResponsiveHostStyles(justifyContent, getJustifyContentStyles),
-        buildResponsiveHostStyles(alignItems, getAlignItemsStyles),
-        buildResponsiveHostStyles(alignContent, getAlignContentStyles)
-      )
-    )
-  );
+  return getCss({
+    '@global': {
+      ':host': addImportantToEachRule(
+        mergeDeep(
+          buildResponsiveStyles(inline, (inline: FlexInlineType) => ({ display: inline ? 'inline-flex' : 'flex' })),
+          buildResponsiveStyles(wrap, (flexWrap: FlexWrapType) => ({ flexWrap })),
+          buildResponsiveStyles(direction, (flexDirection: FlexDirectionType) => ({ flexDirection })),
+          buildResponsiveStyles(justifyContent, (justifyContent: FlexJustifyContentType) => ({ justifyContent })),
+          buildResponsiveStyles(alignItems, (alignItems: FlexAlignItemsType) => ({ alignItems })),
+          buildResponsiveStyles(alignContent, (alignContent: FlexAlignContentType) => ({ alignContent }))
+        )
+      ),
+    },
+  });
 };
