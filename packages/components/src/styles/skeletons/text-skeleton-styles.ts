@@ -45,15 +45,15 @@ export const getTextSkeletonCss = (): string => {
     },
   });
 };
-export const getTextHeadlineSkeletonStyle = (elHeight = getTypographyElementHeight(textSmall)): JssStyle => ({
+export const getTextHeadlineSkeletonStyle = (elementHeight = getTypographyElementHeight(textSmall)): JssStyle => ({
   display: 'block',
   position: 'relative',
   color: 'transparent',
-  height: getSkeletonElementHeight(elHeight, false),
+  height: getSkeletonElementHeight(elementHeight, false),
   '&::after': {
     ...getPseudoElementStyle(),
     top: '0',
-    background: getElementBackgroundGradient(elHeight),
+    background: getElementBackgroundGradient(elementHeight),
     width: '100%',
     height: '100%',
   },

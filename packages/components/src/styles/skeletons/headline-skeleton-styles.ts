@@ -89,13 +89,13 @@ const getHeadlineStyleByBreakpoint = (headline: HeadlineType, breakpoint: string
 
 const getHeadlineBreakpointStyle = (fontSize: string, lineHeight: number): JssStyle => {
   const fontSizeInPx = getFontSizeInPx(fontSize);
-  const elHeight = fontSizeInPx * lineHeight;
-  const topGradientSpacing = (elHeight - fontSizeInPx) / 2;
+  const elementHeight = fontSizeInPx * lineHeight;
+  const topGradientSpacing = (elementHeight - fontSizeInPx) / 2;
 
   return {
-    height: getSkeletonElementHeight(elHeight, false),
+    height: getSkeletonElementHeight(elementHeight, false),
     '&::after': {
-      background: getElementBackgroundGradient(elHeight, topGradientSpacing),
+      background: getElementBackgroundGradient(elementHeight, topGradientSpacing),
     },
   };
 };
