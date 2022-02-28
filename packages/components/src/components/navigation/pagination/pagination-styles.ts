@@ -11,11 +11,11 @@ export const getComponentCss = (
   const { baseColor, brandColor, disabledColor, hoverColor, activeColor, focusColor } = getThemedColors(theme);
 
   return getCss({
-    ':host': {
-      display: 'block',
-      outline: addImportantToRule(0),
-    },
     '@global': {
+      ':host': {
+        display: 'block',
+        outline: addImportantToRule(0),
+      },
       nav: {
         display: 'flex',
         justifyContent: 'center',
