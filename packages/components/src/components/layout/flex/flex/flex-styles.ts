@@ -27,12 +27,22 @@ export const getComponentCss = (
     '@global': {
       ':host': addImportantToEachRule(
         mergeDeep(
-          buildResponsiveStyles(inline, (inline: FlexInlineType) => ({ display: inline ? 'inline-flex' : 'flex' })),
-          buildResponsiveStyles(wrap, (flexWrap: FlexWrapType) => ({ flexWrap })),
-          buildResponsiveStyles(direction, (flexDirection: FlexDirectionType) => ({ flexDirection })),
-          buildResponsiveStyles(justifyContent, (justifyContent: FlexJustifyContentType) => ({ justifyContent })),
-          buildResponsiveStyles(alignItems, (alignItems: FlexAlignItemsType) => ({ alignItems })),
-          buildResponsiveStyles(alignContent, (alignContent: FlexAlignContentType) => ({ alignContent }))
+          buildResponsiveStyles(inline, (inlineResponsive: FlexInlineType) => ({
+            display: inlineResponsive ? 'inline-flex' : 'flex',
+          })),
+          buildResponsiveStyles(wrap, (flexWrapResponsive: FlexWrapType) => ({ flexWrap: flexWrapResponsive })),
+          buildResponsiveStyles(direction, (flexDirectionResponsive: FlexDirectionType) => ({
+            flexDirection: flexDirectionResponsive,
+          })),
+          buildResponsiveStyles(justifyContent, (justifyContentResponsive: FlexJustifyContentType) => ({
+            justifyContent: justifyContentResponsive,
+          })),
+          buildResponsiveStyles(alignItems, (alignItemsResponsive: FlexAlignItemsType) => ({
+            alignItems: alignItemsResponsive,
+          })),
+          buildResponsiveStyles(alignContent, (alignContentResponsive: FlexAlignContentType) => ({
+            alignContent: alignContentResponsive,
+          }))
         )
       ),
     },
