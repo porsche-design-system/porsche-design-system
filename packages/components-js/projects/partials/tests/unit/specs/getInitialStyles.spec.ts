@@ -1,5 +1,5 @@
 import { getInitialStyles } from '../../../src';
-import type { SkeletonComponentChunkName } from '../../../src';
+import type { SkeletonTagName } from '../../../src';
 import { render } from '@testing-library/react';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
 
@@ -15,7 +15,7 @@ describe('format: html', () => {
   });
 
   it('should return core and skeleton styles', () => {
-    const result = getInitialStyles({ skeletonTagNames: TAG_NAMES_WITH_SKELETON as SkeletonComponentChunkName[] });
+    const result = getInitialStyles({ skeletonTagNames: TAG_NAMES_WITH_SKELETON as SkeletonTagName[] });
     expect(result).toMatchSnapshot();
   });
 
@@ -28,7 +28,7 @@ describe('format: html', () => {
   it('should add custom prefixes to skeleton component names', () => {
     const result = getInitialStyles({
       prefix: 'custom-prefix',
-      skeletonTagNames: TAG_NAMES_WITH_SKELETON as SkeletonComponentChunkName[],
+      skeletonTagNames: TAG_NAMES_WITH_SKELETON as SkeletonTagName[],
     });
     expect(result).toMatchSnapshot();
   });
@@ -44,7 +44,7 @@ describe('format: jsx', () => {
   it('should return core and skeleton styles', () => {
     const result = getInitialStyles({
       format: 'jsx',
-      skeletonTagNames: TAG_NAMES_WITH_SKELETON as SkeletonComponentChunkName[],
+      skeletonTagNames: TAG_NAMES_WITH_SKELETON as SkeletonTagName[],
     });
     expect(result).toMatchSnapshot();
   });
