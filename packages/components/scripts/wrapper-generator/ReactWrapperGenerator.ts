@@ -106,8 +106,8 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     let skeletonClassNames: string = '';
     if (getComponentMeta(component).hasSkeleton) {
       skeletonClassNames = getComponentMeta(component)
-        .skeletonProps.map(({ propName, shouldStringifyValue }) => {
-          return `\${${propName} ? \` ${PDS_SKELETON_CLASS_PREFIX}${paramCase(propName)}${
+        .skeletonProps.map(({ propName, shouldStringifyValue }, index) => {
+          return `\${${propName} ? \`${index === 0 ? '' : ' '}${PDS_SKELETON_CLASS_PREFIX}${paramCase(propName)}${
             shouldStringifyValue ? `-\${JSON.stringify(${propName}).replace(/"/g, '')}` : ''
           }\` : ''}`;
         })
@@ -116,7 +116,9 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
 
     const componentPropsArr: string[] = [
       '...rest',
-      `class: useMergedClass(elementRef, \`\${className ?? ''}${skeletonClassNames ? skeletonClassNames : ''}\`)`,
+      `class: useMergedClass(elementRef, \`\${className ? className + ' ' : ''}${
+        skeletonClassNames ? skeletonClassNames : ''
+      }\`)`,
       'ref: syncRef(elementRef, ref)',
     ];
 
