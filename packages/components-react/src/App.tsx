@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { routes } from './routes';
+import { getInitialStyles } from '@porsche-design-system/components-react/partials';
 
 export const App = (): JSX.Element => {
   const navigate = useNavigate();
@@ -8,6 +9,8 @@ export const App = (): JSX.Element => {
 
   return (
     <>
+      {/* Needs to be called to test treeshaking in bundle */}
+      {getInitialStyles({ format: 'jsx' })}
       <select
         value={selected}
         onChange={(e) => {

@@ -82,8 +82,8 @@ const generateCodeSamples = (): void => {
           componentsAngularPath + '/tabs-bar-example.component.ts',
           componentsReactPath + '/TabsBarExample.tsx',
         ],
-      ]
-    }
+      ],
+    },
   ];
 
   const packagesFolder = path.resolve(__dirname, '../../');

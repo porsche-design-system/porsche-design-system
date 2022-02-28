@@ -4,6 +4,7 @@
   "private": true,
   "scope": "@porsche-design-system",
   "main": "dist/index.js",
+  "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "author": "Dr. Ing. h.c. F. Porsche AG",
@@ -33,9 +34,10 @@
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "scripts": {
-    "build": "yarn clean:build && yarn build:partials && yarn build:package && yarn build:copyToComponentsJs",
+    "build": "yarn clean:build && yarn build:partials && yarn build:package && yarn build:copyPackageJsonTemplate && yarn build:copyToComponentsJs",
     "build:package": "rollup -c rollup.config.js",
-    "build:partials": "ts-node './scripts/buildPartials.ts'",
+    "build:partials": "ts-node scripts/buildPartials.ts",
+    "build:copyPackageJsonTemplate": "cp package.template.json ./dist/package.json",
     "build:copyToComponentsJs": "TARGET=../../dist/components-wrapper/partials && rm -rf $TARGET && mkdir -p $TARGET && cp -r ./dist/. $TARGET",
     "test": "yarn test:unit",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
@@ -50,6 +52,8 @@
     "@porsche-design-system/styles": "0.0.0"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.1.3",
     "@rollup/plugin-typescript": "^8.3.0",
     "@types/html-minifier": "^4.0.2",
     "html-minifier": "^4.0.0",
