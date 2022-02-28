@@ -35,21 +35,21 @@ export const getElementBackgroundGradient = (
   elHeight: number, // !== 52 || !== 24 => not a label => no description
   topGradientSpacing = LABEL_HEIGHT_SPACING, // !== 4 => label => no height needed
   hasDescription?: boolean // true => label => no height needed
-) => {
+): string => {
+  // calculate the "gap" at the top and bottom of the gradient
   const topGradientSpacingPx = `${topGradientSpacing}px`;
   const descriptionBottomSpacing = 8;
   const bottomGradientSpacingPx = `${(hasDescription ? LABEL_HEIGHT : elHeight) - topGradientSpacing}px`;
   const topDescriptionGradientSpacingPx = `${LABEL_HEIGHT + LABEL_HEIGHT_SPACING}px`;
   const bottomDescriptionGradientSpacingPx = `${elHeight - descriptionBottomSpacing - LABEL_HEIGHT_SPACING}px`;
+
+  // by using a gradient we can "simulate" text with a specific line height inside an element
   return `linear-gradient(transparent, transparent ${topGradientSpacingPx}, currentColor ${topGradientSpacingPx}, currentColor ${bottomGradientSpacingPx}, transparent ${bottomGradientSpacingPx},${
     hasDescription
       ? ` transparent ${topDescriptionGradientSpacingPx}, currentColor ${topDescriptionGradientSpacingPx}, currentColor ${bottomDescriptionGradientSpacingPx}, transparent ${bottomDescriptionGradientSpacingPx},`
       : ''
   } transparent ${elHeight}px)`;
 };
-
-// TODO: remove color theme placeholder, use currentColor, adjust color in before/after based on theme property OR skeletonClass
-// TODO: check return types (check focus jss styles)
 
 export const getPseudoElementStyle = (): JssStyle => {
   return {
