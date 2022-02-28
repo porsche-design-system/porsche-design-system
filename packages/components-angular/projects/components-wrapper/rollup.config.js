@@ -16,7 +16,6 @@ export default {
   output: {
     dir: DIST_DIR,
     format: 'cjs',
-    exports: 'named',
   },
   plugins: [typescript(typescriptOpts)],
 };

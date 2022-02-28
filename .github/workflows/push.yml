@@ -357,6 +357,11 @@ jobs:
         with:
           name: components-react-vrt-regression
           path: ./packages/components-react/tests/vrt/results
+      - name: 'Smoke Test'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-smoke
+          args: --components-react
   shared:
     name: 'Shared'
     runs-on: ubuntu-latest
