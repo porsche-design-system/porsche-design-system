@@ -61,37 +61,39 @@ const getKeyframesDesktop = (direction: KeyframesDirection, topVar: string): Jss
 
 export const getComponentCss = (): string => {
   return getCss({
-    ':host': {
-      // TODO: Why is nothing set as important here?
-      [bannerPositionTopVar]: pxToRemWithUnit(56),
-      [bannerPositionBottomVar]: pxToRemWithUnit(56),
-      display: 'block',
-      position: `var(${bannerPositionTypeVar},fixed)`,
-      zIndex: `var(${bannerZIndexVar},${BANNER_Z_INDEX})`,
-      opacity: 0,
-      left: 0,
-      right: 0,
-      willChange: 'opacity,transform',
-      [mediaQueryXxs]: {
-        bottom: `var(${bannerPositionBottomVar})`,
+    '@global': {
+      ':host': {
+        // TODO: Why is nothing set as important here?
+        [bannerPositionTopVar]: pxToRemWithUnit(56),
+        [bannerPositionBottomVar]: pxToRemWithUnit(56),
+        display: 'block',
+        position: `var(${bannerPositionTypeVar},fixed)`,
+        zIndex: `var(${bannerZIndexVar},${BANNER_Z_INDEX})`,
+        opacity: 0,
+        left: 0,
+        right: 0,
+        willChange: 'opacity,transform',
+        [mediaQueryXxs]: {
+          bottom: `var(${bannerPositionBottomVar})`,
+        },
+        [mediaQueryS]: {
+          top: `var(${bannerPositionTopVar})`,
+        },
+        '&(.hydrated)': {
+          [mediaQueryXxs]: getAnimationIn('mobileIn', bannerAnimationDurationVar),
+          [mediaQueryS]: getAnimationIn('desktopIn', bannerAnimationDurationVar),
+        },
+        '&(.banner--close)': {
+          [mediaQueryXxs]: getAnimationOut('mobileOut'),
+          [mediaQueryS]: getAnimationOut('desktopOut'),
+        },
       },
-      [mediaQueryS]: {
-        top: `var(${bannerPositionTopVar})`,
-      },
-      '&(.hydrated)': {
-        [mediaQueryXxs]: getAnimationIn('mobileIn', bannerAnimationDurationVar),
-        [mediaQueryS]: getAnimationIn('desktopIn', bannerAnimationDurationVar),
-      },
-      '&(.banner--close)': {
-        [mediaQueryXxs]: getAnimationOut('mobileOut'),
-        [mediaQueryS]: getAnimationOut('desktopOut'),
-      },
+      '@keyframes mobileIn': getKeyframesMobile('in', bannerPositionBottomVar),
+      '@keyframes mobileOut': getKeyframesMobile('out', bannerPositionBottomVar),
+      '@keyframes desktopIn': getKeyframesDesktop('in', bannerPositionTopVar),
+      '@keyframes desktopOut': getKeyframesDesktop('out', bannerPositionTopVar),
     },
     root: getBoxShadow(),
-    '@keyframes mobileIn': getKeyframesMobile('in', bannerPositionBottomVar),
-    '@keyframes mobileOut': getKeyframesMobile('out', bannerPositionBottomVar),
-    '@keyframes desktopIn': getKeyframesDesktop('in', bannerPositionTopVar),
-    '@keyframes desktopOut': getKeyframesDesktop('out', bannerPositionTopVar),
   });
 };
 

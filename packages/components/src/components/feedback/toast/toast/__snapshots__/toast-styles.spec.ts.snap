@@ -10,13 +10,7 @@ exports[`getComponentCss() should return correct css 1`] = `
   max-width: 42rem !important;
   z-index: 999999 !important;
 }
-.hydrated {
-  animation: 600ms keyframes-in cubic-bezier(0.45,0,0.55,1) forwards;
-}
-.close {
-  animation: 600ms keyframes-out cubic-bezier(0.5,1,0.89,1) forwards !important;
-}
-@keyframes keyframes-in {
+@keyframes in {
   from {
     opacity: 0;
     transform: translate3d(0,calc(var(--p-toast-position-bottom-internal) + 100%),0);
@@ -26,7 +20,7 @@ exports[`getComponentCss() should return correct css 1`] = `
     transform: translate3d(0,0,0);
   }
 }
-@keyframes keyframes-out {
+@keyframes out {
   from {
     opacity: 1;
     transform: translate3d(0,0,0);
@@ -44,5 +38,11 @@ exports[`getComponentCss() should return correct css 1`] = `
       bottom: var(--p-toast-position-bottom-internal) !important;
     }
 }
-"
+
+  .hydrated {
+    animation: 600ms in cubic-bezier(0.45,0,0.55,1) forwards;
+  }
+  .close {
+    animation: 600ms out cubic-bezier(0.5,1,0.89,1) forwards !important;
+  }"
 `;
