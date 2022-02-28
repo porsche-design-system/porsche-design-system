@@ -57,12 +57,12 @@ export type GetFocusStylesOptions = {
 };
 
 export const getInset = (value: 'auto' | number = 0): JssStyle => {
-  const renderValue = value > 0 ? `${value}px` : value;
+  value = value > 0 ? (`${value}px` as any) : value;
   return {
-    top: renderValue,
-    left: renderValue,
-    right: renderValue,
-    bottom: renderValue,
+    top: value,
+    left: value,
+    right: value,
+    bottom: value,
   };
 };
 

@@ -40,6 +40,7 @@ export const getCss = (jssStyles: Styles): string =>
     .toString()
     // removes default '.' before class name, all unneeded whitespace, semi colons, escaping backslashes and new lines
     .replace(/\.\\(?=:)|[\\]+/g, '');
+
 export const supportsConstructableStylesheets = (): boolean => {
   try {
     new CSSStyleSheet();
