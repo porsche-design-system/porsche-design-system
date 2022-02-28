@@ -16,12 +16,12 @@ const baseSizes: { [key in Exclude<MarqueSize, 'responsive'>]: Pick<JssStyle, 'h
 
 export const getComponentCss = (size: MarqueSize): string => {
   return getCss({
-    ':host': {
-      display: 'inline-flex',
-      verticalAlign: 'top',
-      outline: addImportantToRule(0),
-    },
     '@global': {
+      ':host': {
+        display: 'inline-flex',
+        verticalAlign: 'top',
+        outline: addImportantToRule(0),
+      },
       a: {
         display: 'block',
         textDecoration: 'none',

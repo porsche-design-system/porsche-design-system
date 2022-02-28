@@ -216,6 +216,35 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   vertical-align: top;
   outline: 0 !important;
 }
+::slotted(a) {
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
+}
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline-color: #d5001c !important;
+}
+::slotted(a:hover:focus) {
+  outline-color: #c4001a !important;
+}
+::slotted(a:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
+}
 .root {
   display: flex;
   width: 100%;
@@ -257,6 +286,14 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   margin: 0;
   overflow: visible;
   text-indent: 0;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for variant: primary, hideLabel: false, hasSlottedAnchor: true and theme: light 1`] = `
+":host {
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 ::slotted(a) {
   display: block !important;
@@ -282,18 +319,10 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   outline-color: #d5001c !important;
 }
 ::slotted(a:hover:focus) {
-  outline-color: #c4001a !important;
+  outline-color: #980014 !important;
 }
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for variant: primary, hideLabel: false, hasSlottedAnchor: true and theme: light 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top;
-  outline: 0 !important;
 }
 .root {
   display: flex;
@@ -336,6 +365,14 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   margin: 0;
   overflow: visible;
   text-indent: 0;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for variant: secondary, hideLabel: false, hasSlottedAnchor: true and theme: dark 1`] = `
+":host {
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 ::slotted(a) {
   display: block !important;
@@ -358,21 +395,13 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   border: 0 !important;
 }
 ::slotted(a:focus) {
-  outline-color: #d5001c !important;
+  outline-color: #fff !important;
 }
 ::slotted(a:hover:focus) {
-  outline-color: #980014 !important;
+  outline-color: #e0e0e0 !important;
 }
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for variant: secondary, hideLabel: false, hasSlottedAnchor: true and theme: dark 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top;
-  outline: 0 !important;
 }
 .root {
   display: flex;
@@ -415,35 +444,6 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}
-::slotted(a) {
-  display: block !important;
-  text-decoration: none !important;
-  color: inherit !important;
-  line-height: inherit !important;
-  outline: transparent solid 1px !important;
-  outline-offset: 3px !important;
-  position: static !important;
-  top: auto !important;
-  left: auto !important;
-  right: auto !important;
-  bottom: auto !important;
-  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow: visible !important;
-  white-space: normal !important;
-  text-indent: 0 !important;
-}
-::slotted(a::-moz-focus-inner) {
-  border: 0 !important;
-}
-::slotted(a:focus) {
-  outline-color: #fff !important;
-}
-::slotted(a:hover:focus) {
-  outline-color: #e0e0e0 !important;
-}
-::slotted(a:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
 }"
 `;
 
@@ -453,6 +453,35 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
   vertical-align: top;
   outline: 0 !important;
 }
+::slotted(a) {
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
+}
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline-color: #323639 !important;
+}
+::slotted(a:hover:focus) {
+  outline-color: #151718 !important;
+}
+::slotted(a:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
+}
 .root {
   display: flex;
   width: 100%;
@@ -494,35 +523,6 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}
-::slotted(a) {
-  display: block !important;
-  text-decoration: none !important;
-  color: inherit !important;
-  line-height: inherit !important;
-  outline: transparent solid 1px !important;
-  outline-offset: 3px !important;
-  position: static !important;
-  top: auto !important;
-  left: auto !important;
-  right: auto !important;
-  bottom: auto !important;
-  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow: visible !important;
-  white-space: normal !important;
-  text-indent: 0 !important;
-}
-::slotted(a::-moz-focus-inner) {
-  border: 0 !important;
-}
-::slotted(a:focus) {
-  outline-color: #323639 !important;
-}
-::slotted(a:hover:focus) {
-  outline-color: #151718 !important;
-}
-::slotted(a:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
 }"
 `;
 
@@ -532,6 +532,35 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
   vertical-align: top;
   outline: 0 !important;
 }
+::slotted(a) {
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  line-height: inherit !important;
+  outline: transparent solid 1px !important;
+  outline-offset: 3px !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
+}
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline-color: #fff !important;
+}
+::slotted(a:hover:focus) {
+  outline-color: #fff !important;
+}
+::slotted(a:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
+}
 .root {
   display: flex;
   width: 100%;
@@ -577,6 +606,14 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
   margin: 0;
   overflow: visible;
   text-indent: 0;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for variant: tertiary, hideLabel: false, hasSlottedAnchor: true and theme: light 1`] = `
+":host {
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
 }
 ::slotted(a) {
   display: block !important;
@@ -599,21 +636,13 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
   border: 0 !important;
 }
 ::slotted(a:focus) {
-  outline-color: #fff !important;
+  outline-color: #323639 !important;
 }
 ::slotted(a:hover:focus) {
-  outline-color: #fff !important;
+  outline-color: #151718 !important;
 }
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for variant: tertiary, hideLabel: false, hasSlottedAnchor: true and theme: light 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top;
-  outline: 0 !important;
 }
 .root {
   display: flex;
@@ -660,34 +689,5 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}
-::slotted(a) {
-  display: block !important;
-  text-decoration: none !important;
-  color: inherit !important;
-  line-height: inherit !important;
-  outline: transparent solid 1px !important;
-  outline-offset: 3px !important;
-  position: static !important;
-  top: auto !important;
-  left: auto !important;
-  right: auto !important;
-  bottom: auto !important;
-  padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem !important;
-  overflow: visible !important;
-  white-space: normal !important;
-  text-indent: 0 !important;
-}
-::slotted(a::-moz-focus-inner) {
-  border: 0 !important;
-}
-::slotted(a:focus) {
-  outline-color: #323639 !important;
-}
-::slotted(a:hover:focus) {
-  outline-color: #151718 !important;
-}
-::slotted(a:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
 }"
 `;
