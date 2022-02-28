@@ -6,6 +6,7 @@ import {
   getAfterMinHeight,
   getBaseSkeletonStyle,
   getElementBackgroundGradient,
+  getHiddenLabelStyle,
   getSkeletonElementHeight,
   getThemedPseudoStyle,
   LABEL_HEIGHT,
@@ -29,16 +30,9 @@ export const getSelectTextFieldWrapperSkeletonCss = (): string => {
           height: getSkeletonElementHeight(ELEMENT_SKELETON_DIMENSION),
 
           // TODO: use constants for getComponentMeta for "property" class and values
-          [`&[hide-label=true], &.${PDS_SKELETON_CLASS_PREFIX}hide-label`]: {
-            height: getSkeletonElementHeight(ELEMENT_SKELETON_DIMENSION, false),
-            '&::before': {
-              content: 'none',
-            },
-            '&::after': {
-              top: 0,
-              minHeight: '100%',
-            },
-          },
+          [`&[hide-label=true], :not([label]), &.${PDS_SKELETON_CLASS_PREFIX}hide-label, &:not(.${PDS_SKELETON_CLASS_PREFIX}label`]:
+            getHiddenLabelStyle(),
+
           [`&[description]:not([label]), &.${PDS_SKELETON_CLASS_PREFIX}description &:not(.${PDS_SKELETON_CLASS_PREFIX}label)`]:
             {
               height: getSkeletonElementHeight(ELEMENT_SKELETON_DIMENSION, false, true),

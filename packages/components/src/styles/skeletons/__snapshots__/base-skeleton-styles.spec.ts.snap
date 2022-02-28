@@ -104,6 +104,19 @@ Object {
 }
 `;
 
+exports[`getHiddenLabelStyle() should match style snapshot 1`] = `
+Object {
+  "&::after": Object {
+    "minHeight": "100%",
+    "top": 0,
+  },
+  "&::before": Object {
+    "content": "none",
+  },
+  "height": "3rem",
+}
+`;
+
 exports[`getThemedPseudoStyle() should match style snapshot for hasLabel: false 1`] = `
 Object {
   "&[theme=dark], &.PDS-Skeleton--theme-dark": Object {

@@ -129,3 +129,14 @@ export const getThemedPseudoStyle = (hasLabel?: boolean): JssStyle => {
     },
   };
 };
+
+export const getHiddenLabelStyle = (): JssStyle => ({
+  height: getSkeletonElementHeight(ELEMENT_SKELETON_DIMENSION, false),
+  '&::before': {
+    content: 'none',
+  },
+  '&::after': {
+    top: 0,
+    minHeight: '100%',
+  },
+});
