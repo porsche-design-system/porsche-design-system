@@ -24,7 +24,7 @@ type TextType = typeof textSmall;
 
 export const getTypographyElementHeight = (typography: HeadlineType | TextType): number => {
   const fontSizeInPx = getFontSizeInPx(typography.fontSize);
-  return fontSizeInPx * typography.lineHeight;
+  return Math.round(fontSizeInPx * typography.lineHeight);
 };
 
 export const getHeadlineSkeletonCss = (): string => {
@@ -89,7 +89,7 @@ const getHeadlineStyleByBreakpoint = (headline: HeadlineType, breakpoint: string
 
 const getHeadlineBreakpointStyle = (fontSize: string, lineHeight: number): JssStyle => {
   const fontSizeInPx = getFontSizeInPx(fontSize);
-  const elementHeight = fontSizeInPx * lineHeight;
+  const elementHeight = Math.round(fontSizeInPx * lineHeight);
   const topGradientSpacing = (elementHeight - fontSizeInPx) / 2;
 
   return {
