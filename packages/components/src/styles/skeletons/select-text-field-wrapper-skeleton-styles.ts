@@ -30,7 +30,7 @@ export const getSelectTextFieldWrapperSkeletonCss = (): string => {
           height: getSkeletonElementHeight(ELEMENT_SKELETON_DIMENSION),
 
           // TODO: use constants for getComponentMeta for "property" class and values
-          [`&[hide-label=true], :not([label]), &.${PDS_SKELETON_CLASS_PREFIX}hide-label, &:not(.${PDS_SKELETON_CLASS_PREFIX}label`]:
+          [`&[hide-label=true], :not([label]), &.${PDS_SKELETON_CLASS_PREFIX}hide-label, &:not(.${PDS_SKELETON_CLASS_PREFIX}label)`]:
             getHiddenLabelStyle(),
 
           [`&[description]:not([label]), &.${PDS_SKELETON_CLASS_PREFIX}description &:not(.${PDS_SKELETON_CLASS_PREFIX}label)`]:
