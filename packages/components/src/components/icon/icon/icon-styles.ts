@@ -1,6 +1,7 @@
 import type { TextColor, IconSize, ThemeExtendedElectricDark } from '../../../types';
 import { getCss } from '../../../utils';
-import { pxToRemWithUnit, getThemedTextColors } from '../../../styles';
+import { pxToRemWithUnit } from '../../../styles';
+import { getThemedTextColor } from '../../../styles/text-icon-styles';
 
 const sizeMap: { [key in IconSize]: string } = {
   small: pxToRemWithUnit(24),
@@ -27,7 +28,7 @@ export const getComponentCss = (color: TextColor, size: IconSize, theme: ThemeEx
       boxSizing: 'border-box',
       width: dimension,
       height: dimension,
-      color: getThemedTextColors(theme, color),
+      color: getThemedTextColor(theme, color),
       '& > svg': {
         fill: 'currentColor',
         // TODO: This is a temporary fallback for Chromium and should be removed if this bug is resolved: https://bugs.chromium.org/p/chromium/issues/detail?id=1242706

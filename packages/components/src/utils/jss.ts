@@ -41,12 +41,16 @@ export const getCss = (jssStyles: Styles): string =>
 
 export const supportsConstructableStylesheets = (): boolean => {
   try {
-    new CSSStyleSheet();
     return typeof new CSSStyleSheet().replaceSync === 'function';
-  } catch (e) {
+  } catch {
     return false;
   }
 };
+
+// determine it once
+const hasConstructableStylesheetSupport = supportsConstructableStylesheets();
+// getter for easy mocking
+export const getHasConstructableStylesheetSupport = (): boolean => hasConstructableStylesheetSupport;
 
 type CssCacheMap = Map<string, string>;
 export const componentCssMap = new Map<TagName, CssCacheMap>();
@@ -79,7 +83,7 @@ export const attachComponentCss = <T extends (...p: any[]) => string>(
 ): void => {
   const css = getCachedComponentCss(host, getComponentCss, ...args);
 
-  if (supportsConstructableStylesheets()) {
+  if (getHasConstructableStylesheetSupport()) {
     const [sheet] = host.shadowRoot.adoptedStyleSheets;
     if (sheet) {
       sheet.replaceSync(css);
