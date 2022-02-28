@@ -8,12 +8,9 @@ import { getEllipsisStyles, getSlottedTypographyStyles } from '../../../../style
 import { getThemedTextColor } from '../../../../styles/text-icon-styles';
 
 const getSizeStyles = (size: TextSize): Pick<JssStyle, 'lineHeight' | 'fontSize'> => {
-  if (size === 'inherit') {
-    return { lineHeight: 'inherit', fontSize: 'inherit' };
-  } else {
-    const { lineHeight, fontSize } = text[paramCaseToCamelCase(size)];
-    return { lineHeight, fontSize };
-  }
+  return size === 'inherit'
+    ? { lineHeight: size, fontSize: size }
+    : (({ lineHeight, fontSize }) => ({ lineHeight, fontSize }))(text[paramCaseToCamelCase(size)]);
 };
 
 export const getComponentCss = (
