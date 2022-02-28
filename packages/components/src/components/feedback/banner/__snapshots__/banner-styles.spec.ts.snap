@@ -36,10 +36,7 @@ exports[`getComponentCss() should return correct css 1`] = `
   right: 0;
   will-change: opacity,transform;
 }
-.root {
-  box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2);
-}
-@keyframes keyframes-mobileIn {
+@keyframes mobileIn {
   from {
     opacity: 0;
     transform: translate3d(0,calc(var(--p-banner-position-bottom) + 100%),0);
@@ -49,7 +46,7 @@ exports[`getComponentCss() should return correct css 1`] = `
     transform: translate3d(0,0,0);
   }
 }
-@keyframes keyframes-mobileOut {
+@keyframes mobileOut {
   from {
     opacity: 1;
     transform: translate3d(0,0,0);
@@ -59,7 +56,7 @@ exports[`getComponentCss() should return correct css 1`] = `
     transform: translate3d(0,calc(var(--p-banner-position-bottom) + 100%),0);
   }
 }
-@keyframes keyframes-desktopIn {
+@keyframes desktopIn {
   from {
     opacity: 0;
     transform: translate3d(0,calc(-100% - var(--p-banner-position-top)),0);
@@ -69,7 +66,7 @@ exports[`getComponentCss() should return correct css 1`] = `
     transform: translate3d(0,0,0);
   }
 }
-@keyframes keyframes-desktopOut {
+@keyframes desktopOut {
   from {
     opacity: 1;
     transform: translate3d(0,0,0);
@@ -84,10 +81,10 @@ exports[`getComponentCss() should return correct css 1`] = `
       bottom: var(--p-banner-position-bottom);
     }
     :host(.banner--close) {
-      animation: 600ms keyframes-mobileOut cubic-bezier(0.5,1,0.89,1) forwards !important;
+      animation: 600ms mobileOut cubic-bezier(0.5,1,0.89,1) forwards !important;
     }
     :host(.hydrated) {
-      animation: var(--p-animation-duration__banner,600ms) keyframes-mobileIn cubic-bezier(0.45,0,0.55,1) forwards;
+      animation: var(--p-animation-duration__banner,600ms) mobileIn cubic-bezier(0.45,0,0.55,1) forwards;
     }
 }
 
@@ -96,13 +93,16 @@ exports[`getComponentCss() should return correct css 1`] = `
       top: var(--p-banner-position-top);
     }
     :host(.banner--close) {
-      animation: 600ms keyframes-desktopOut cubic-bezier(0.5,1,0.89,1) forwards !important;
+      animation: 600ms desktopOut cubic-bezier(0.5,1,0.89,1) forwards !important;
     }
     :host(.hydrated) {
-      animation: var(--p-animation-duration__banner,600ms) keyframes-desktopIn cubic-bezier(0.45,0,0.55,1) forwards;
+      animation: var(--p-animation-duration__banner,600ms) desktopIn cubic-bezier(0.45,0,0.55,1) forwards;
     }
 }
-"
+
+  .root {
+    box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2);
+  }"
 `;
 
 exports[`getKeyframesMobile() should return correct JssStyle for direction: in and bottomVar: --p-bottom-var 1`] = `

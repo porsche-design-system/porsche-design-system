@@ -5,26 +5,6 @@ exports[`getComponentCss() should return correct css for size: "inherit" and the
   display: inline-flex;
   vertical-align: top;
 }
-.root {
-  display: block;
-  height: inherit;
-  width: inherit;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  stroke-width: 1;
-}
-.sr-only {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
 svg {
   display: block;
   position: relative;
@@ -60,7 +40,27 @@ circle:last-child {
     stroke-dasharray: 30, 1000;
     stroke-dashoffset: -52;
   }
-}"
+}
+  .root {
+    display: block;
+    height: inherit;
+    width: inherit;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    stroke-width: 1;
+  }
+  .sr-only {
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    border: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(1px,1px,1px,1px);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for size: "inherit" and theme light 1`] = `
@@ -68,26 +68,6 @@ exports[`getComponentCss() should return correct css for size: "inherit" and the
   display: inline-flex;
   vertical-align: top;
 }
-.root {
-  display: block;
-  height: inherit;
-  width: inherit;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  stroke-width: 1;
-}
-.sr-only {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
 svg {
   display: block;
   position: relative;
@@ -123,7 +103,27 @@ circle:last-child {
     stroke-dasharray: 30, 1000;
     stroke-dashoffset: -52;
   }
-}"
+}
+  .root {
+    display: block;
+    height: inherit;
+    width: inherit;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    stroke-width: 1;
+  }
+  .sr-only {
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    border: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(1px,1px,1px,1px);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for size: "large" and theme dark 1`] = `
@@ -131,26 +131,6 @@ exports[`getComponentCss() should return correct css for size: "large" and theme
   display: inline-flex;
   vertical-align: top;
 }
-.root {
-  display: block;
-  height: 6.5rem;
-  width: 6.5rem;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  stroke-width: 1;
-}
-.sr-only {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
 svg {
   display: block;
   position: relative;
@@ -186,7 +166,27 @@ circle:last-child {
     stroke-dasharray: 30, 1000;
     stroke-dashoffset: -52;
   }
-}"
+}
+  .root {
+    display: block;
+    height: 6.5rem;
+    width: 6.5rem;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    stroke-width: 1;
+  }
+  .sr-only {
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    border: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(1px,1px,1px,1px);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for size: "large" and theme light 1`] = `
@@ -194,26 +194,6 @@ exports[`getComponentCss() should return correct css for size: "large" and theme
   display: inline-flex;
   vertical-align: top;
 }
-.root {
-  display: block;
-  height: 6.5rem;
-  width: 6.5rem;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  stroke-width: 1;
-}
-.sr-only {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
 svg {
   display: block;
   position: relative;
@@ -249,7 +229,27 @@ circle:last-child {
     stroke-dasharray: 30, 1000;
     stroke-dashoffset: -52;
   }
-}"
+}
+  .root {
+    display: block;
+    height: 6.5rem;
+    width: 6.5rem;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    stroke-width: 1;
+  }
+  .sr-only {
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    border: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(1px,1px,1px,1px);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for size: "medium" and theme dark 1`] = `
@@ -257,26 +257,6 @@ exports[`getComponentCss() should return correct css for size: "medium" and them
   display: inline-flex;
   vertical-align: top;
 }
-.root {
-  display: block;
-  height: 4.5rem;
-  width: 4.5rem;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  stroke-width: 1;
-}
-.sr-only {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
 svg {
   display: block;
   position: relative;
@@ -312,7 +292,27 @@ circle:last-child {
     stroke-dasharray: 30, 1000;
     stroke-dashoffset: -52;
   }
-}"
+}
+  .root {
+    display: block;
+    height: 4.5rem;
+    width: 4.5rem;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    stroke-width: 1;
+  }
+  .sr-only {
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    border: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(1px,1px,1px,1px);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for size: "medium" and theme light 1`] = `
@@ -320,26 +320,6 @@ exports[`getComponentCss() should return correct css for size: "medium" and them
   display: inline-flex;
   vertical-align: top;
 }
-.root {
-  display: block;
-  height: 4.5rem;
-  width: 4.5rem;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  stroke-width: 1;
-}
-.sr-only {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
 svg {
   display: block;
   position: relative;
@@ -375,7 +355,27 @@ circle:last-child {
     stroke-dasharray: 30, 1000;
     stroke-dashoffset: -52;
   }
-}"
+}
+  .root {
+    display: block;
+    height: 4.5rem;
+    width: 4.5rem;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    stroke-width: 1;
+  }
+  .sr-only {
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    border: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(1px,1px,1px,1px);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for size: "small" and theme dark 1`] = `
@@ -383,26 +383,6 @@ exports[`getComponentCss() should return correct css for size: "small" and theme
   display: inline-flex;
   vertical-align: top;
 }
-.root {
-  display: block;
-  height: 3rem;
-  width: 3rem;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  stroke-width: 1;
-}
-.sr-only {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
 svg {
   display: block;
   position: relative;
@@ -438,33 +418,33 @@ circle:last-child {
     stroke-dasharray: 30, 1000;
     stroke-dashoffset: -52;
   }
-}"
+}
+  .root {
+    display: block;
+    height: 3rem;
+    width: 3rem;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    stroke-width: 1;
+  }
+  .sr-only {
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    border: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(1px,1px,1px,1px);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for size: "small" and theme light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
-}
-.root {
-  display: block;
-  height: 3rem;
-  width: 3rem;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  stroke-width: 1;
-}
-.sr-only {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
 }
 svg {
   display: block;
@@ -501,33 +481,33 @@ circle:last-child {
     stroke-dasharray: 30, 1000;
     stroke-dashoffset: -52;
   }
-}"
+}
+  .root {
+    display: block;
+    height: 3rem;
+    width: 3rem;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    stroke-width: 1;
+  }
+  .sr-only {
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    border: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(1px,1px,1px,1px);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for size: {"base":"medium","xs":"small","s":"medium","m":"small","l":"medium","xl":"small"} and theme dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
-}
-.root {
-  display: block;
-  height: 4.5rem;
-  width: 4.5rem;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  stroke-width: 1;
-}
-.sr-only {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
 }
 svg {
   display: block;
@@ -565,6 +545,26 @@ circle:last-child {
     stroke-dashoffset: -52;
   }
 }
+  .root {
+    display: block;
+    height: 4.5rem;
+    width: 4.5rem;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    stroke-width: 1;
+  }
+  .sr-only {
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    border: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(1px,1px,1px,1px);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
 @media (min-width: 480px) {
     .root {
       height: 3rem;
@@ -607,26 +607,6 @@ exports[`getComponentCss() should return correct css for size: {"base":"medium",
   display: inline-flex;
   vertical-align: top;
 }
-.root {
-  display: block;
-  height: 4.5rem;
-  width: 4.5rem;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  stroke-width: 1;
-}
-.sr-only {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
 svg {
   display: block;
   position: relative;
@@ -663,6 +643,26 @@ circle:last-child {
     stroke-dashoffset: -52;
   }
 }
+  .root {
+    display: block;
+    height: 4.5rem;
+    width: 4.5rem;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    stroke-width: 1;
+  }
+  .sr-only {
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    border: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(1px,1px,1px,1px);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
 @media (min-width: 480px) {
     .root {
       height: 3rem;
