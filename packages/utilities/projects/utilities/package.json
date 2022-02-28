@@ -8,10 +8,10 @@
   "types": "dist/jss/types/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "build": "yarn clean:build && yarn build:typography && yarn build:bundle && yarn build:preparePackage",
+    "build": "yarn clean:build && yarn build:typography && yarn build:bundle && yarn build:copyPackageJsonTemplate",
     "build:typography": "ts-node 'scripts/buildTypography.ts'",
     "build:bundle": "rollup -c rollup.config.js",
-    "build:preparePackage": "ts-node 'scripts/preparePackage.ts'",
+    "build:copyPackageJsonTemplate": "cp package.template.json ./dist/jss/package.json",
     "test": "yarn test:unit",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
     "clean": "yarn clean:node_modules && yarn clean:build",
