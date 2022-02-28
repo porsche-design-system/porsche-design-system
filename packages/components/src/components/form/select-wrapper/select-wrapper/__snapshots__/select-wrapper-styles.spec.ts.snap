@@ -79,6 +79,9 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -86,7 +89,19 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])) {
+.icon {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  color: #000;
+  pointer-events: none;
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.icon:hover~::slotted(select:not(:disabled):not([readonly])) {
   border-color: #000 !important;
 }
 .required {
@@ -100,18 +115,6 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-.icon {
-  position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
-  color: #000;
-  pointer-events: none;
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.icon--open {
-  transform: rotate3d(0,0,1,180deg);
 }
 @media (min-width: 480px) {
   .label__text {
@@ -265,6 +268,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #b0b1b2;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #d30303 !important;
+}
 .label--disabled .label__text {
   color: #7c7f81;
 }
@@ -272,7 +278,19 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #7c7f81;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+.icon {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  color: #fff;
+  pointer-events: none;
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
   border-color: #d30303 !important;
 }
 .required {
@@ -287,18 +305,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-.icon {
-  position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
-  color: #fff;
-  pointer-events: none;
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.icon--open {
-  transform: rotate3d(0,0,1,180deg);
 }"
 `;
 
@@ -380,6 +386,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -387,7 +396,19 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+.icon {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  color: #000;
+  pointer-events: none;
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
 }
 .required {
@@ -402,18 +423,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-.icon {
-  position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
-  color: #000;
-  pointer-events: none;
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.icon--open {
-  transform: rotate3d(0,0,1,180deg);
 }"
 `;
 
@@ -495,6 +504,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #b0b1b2;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])) {
+  border-color: #fff !important;
+}
 .label--disabled .label__text {
   color: #7c7f81;
 }
@@ -502,7 +514,19 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #7c7f81;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])) {
+.icon {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  color: #fff;
+  pointer-events: none;
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.icon:hover~::slotted(select:not(:disabled):not([readonly])) {
   border-color: #fff !important;
 }
 .required {
@@ -516,18 +540,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-.icon {
-  position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
-  color: #fff;
-  pointer-events: none;
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.icon--open {
-  transform: rotate3d(0,0,1,180deg);
 }"
 `;
 
@@ -609,6 +621,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -616,7 +631,19 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])) {
+.icon {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  color: #000;
+  pointer-events: none;
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.icon:hover~::slotted(select:not(:disabled):not([readonly])) {
   border-color: #000 !important;
 }
 .required {
@@ -630,18 +657,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-.icon {
-  position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
-  color: #000;
-  pointer-events: none;
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.icon--open {
-  transform: rotate3d(0,0,1,180deg);
 }"
 `;
 
@@ -723,6 +738,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #b0b1b2;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #017d14 !important;
+}
 .label--disabled .label__text {
   color: #7c7f81;
 }
@@ -730,7 +748,19 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #7c7f81;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+.icon {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  color: #fff;
+  pointer-events: none;
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
   border-color: #017d14 !important;
 }
 .required {
@@ -745,18 +775,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-.icon {
-  position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
-  color: #fff;
-  pointer-events: none;
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.icon--open {
-  transform: rotate3d(0,0,1,180deg);
 }"
 `;
 
@@ -838,6 +856,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -845,7 +866,19 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+.icon {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  color: #000;
+  pointer-events: none;
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
   border-color: #014d0c !important;
 }
 .required {
@@ -860,18 +893,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-.icon {
-  position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
-  color: #000;
-  pointer-events: none;
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.icon--open {
-  transform: rotate3d(0,0,1,180deg);
 }"
 `;
 
@@ -954,6 +975,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label__text--description {
   color: #b0b1b2;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #d30303 !important;
+}
 .label--disabled .label__text {
   color: #7c7f81;
 }
@@ -961,7 +985,19 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #7c7f81;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+.icon {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  color: #fff;
+  pointer-events: none;
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
   border-color: #d30303 !important;
 }
 .required {
@@ -976,18 +1012,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-.icon {
-  position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
-  color: #fff;
-  pointer-events: none;
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.icon--open {
-  transform: rotate3d(0,0,1,180deg);
 }"
 `;
 
@@ -1070,6 +1094,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -1077,7 +1104,19 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+.icon {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  color: #000;
+  pointer-events: none;
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
 }
 .required {
@@ -1092,18 +1131,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-.icon {
-  position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
-  color: #000;
-  pointer-events: none;
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.icon--open {
-  transform: rotate3d(0,0,1,180deg);
 }"
 `;
 
@@ -1186,6 +1213,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label__text--description {
   color: #b0b1b2;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])) {
+  border-color: #fff !important;
+}
 .label--disabled .label__text {
   color: #7c7f81;
 }
@@ -1193,7 +1223,19 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #7c7f81;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])) {
+.icon {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  color: #fff;
+  pointer-events: none;
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.icon:hover~::slotted(select:not(:disabled):not([readonly])) {
   border-color: #fff !important;
 }
 .required {
@@ -1207,18 +1249,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-.icon {
-  position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
-  color: #fff;
-  pointer-events: none;
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.icon--open {
-  transform: rotate3d(0,0,1,180deg);
 }"
 `;
 
@@ -1301,6 +1331,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -1308,7 +1341,19 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])) {
+.icon {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  color: #000;
+  pointer-events: none;
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.icon:hover~::slotted(select:not(:disabled):not([readonly])) {
   border-color: #000 !important;
 }
 .required {
@@ -1322,18 +1367,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-.icon {
-  position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
-  color: #000;
-  pointer-events: none;
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.icon--open {
-  transform: rotate3d(0,0,1,180deg);
 }"
 `;
 
@@ -1416,6 +1449,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label__text--description {
   color: #b0b1b2;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #017d14 !important;
+}
 .label--disabled .label__text {
   color: #7c7f81;
 }
@@ -1423,7 +1459,19 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #7c7f81;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+.icon {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  color: #fff;
+  pointer-events: none;
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
   border-color: #017d14 !important;
 }
 .required {
@@ -1438,18 +1486,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-.icon {
-  position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
-  color: #fff;
-  pointer-events: none;
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.icon--open {
-  transform: rotate3d(0,0,1,180deg);
 }"
 `;
 
@@ -1532,6 +1568,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -1539,7 +1578,19 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])), .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+.icon {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  color: #000;
+  pointer-events: none;
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
   border-color: #014d0c !important;
 }
 .required {
@@ -1554,18 +1605,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-.icon {
-  position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
-  color: #000;
-  pointer-events: none;
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.icon--open {
-  transform: rotate3d(0,0,1,180deg);
 }"
 `;
 

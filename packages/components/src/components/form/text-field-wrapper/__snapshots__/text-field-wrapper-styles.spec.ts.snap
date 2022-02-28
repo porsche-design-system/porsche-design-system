@@ -57,7 +57,7 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -130,11 +130,11 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
-.label--disabled .label__text {
-  color: #96989a;
-}
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
   border-color: #000 !important;
+}
+.label--disabled .label__text {
+  color: #96989a;
 }
 .required {
   user-select: none;
@@ -291,7 +291,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -363,11 +363,11 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
-.label--disabled .label__text {
-  color: #96989a;
-}
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
+}
+.label--disabled .label__text {
+  color: #96989a;
 }
 .required {
   user-select: none;
@@ -453,10 +453,10 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-::slotted(input[type=\\"password\\"]), ::slotted(input[type=\\"text\\"]) {
+::slotted(input[type=\\"password\\"]),::slotted(input[type=\\"text\\"]) {
   padding-right: 3rem !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -528,11 +528,11 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
-.label--disabled .label__text {
-  color: #96989a;
-}
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
+}
+.label--disabled .label__text {
+  color: #96989a;
 }
 .required {
   user-select: none;
@@ -617,7 +617,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -689,6 +689,9 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -696,7 +699,16 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])), .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+.unit {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0.75rem;
+  z-index: 1;
+  box-sizing: border-box;
+  color: #626669;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
 }
 .required {
@@ -723,15 +735,6 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-.unit {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 0.75rem;
-  z-index: 1;
-  box-sizing: border-box;
-  color: #626669;
 }"
 `;
 
@@ -791,7 +794,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -863,6 +866,9 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -870,7 +876,16 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])), .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+.unit {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0.75rem;
+  z-index: 1;
+  box-sizing: border-box;
+  color: #626669;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
 }
 .required {
@@ -897,15 +912,6 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-.unit {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  padding: 0.75rem;
-  z-index: 1;
-  box-sizing: border-box;
-  color: #626669;
 }"
 `;
 
@@ -966,7 +972,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -1038,11 +1044,11 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
-.label--disabled .label__text {
-  color: #96989a;
-}
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
   border-color: #000 !important;
+}
+.label--disabled .label__text {
+  color: #96989a;
 }
 .required {
   user-select: none;
@@ -1127,10 +1133,10 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-::slotted(input[type=\\"password\\"]), ::slotted(input[type=\\"text\\"]) {
+::slotted(input[type=\\"password\\"]),::slotted(input[type=\\"text\\"]) {
   padding-right: 3rem !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -1202,11 +1208,11 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
-.label--disabled .label__text {
-  color: #96989a;
-}
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
   border-color: #000 !important;
+}
+.label--disabled .label__text {
+  color: #96989a;
 }
 .required {
   user-select: none;
@@ -1290,7 +1296,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -1362,6 +1368,9 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -1369,7 +1378,16 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover~::slotted(input:not(:disabled):not([readonly])) {
+.unit {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0.75rem;
+  z-index: 1;
+  box-sizing: border-box;
+  color: #626669;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])) {
   border-color: #000 !important;
 }
 .required {
@@ -1395,15 +1413,6 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-.unit {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 0.75rem;
-  z-index: 1;
-  box-sizing: border-box;
-  color: #626669;
 }"
 `;
 
@@ -1463,7 +1472,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -1535,6 +1544,9 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -1542,7 +1554,16 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover~::slotted(input:not(:disabled):not([readonly])) {
+.unit {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0.75rem;
+  z-index: 1;
+  box-sizing: border-box;
+  color: #626669;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])) {
   border-color: #000 !important;
 }
 .required {
@@ -1568,15 +1589,6 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-.unit {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  padding: 0.75rem;
-  z-index: 1;
-  box-sizing: border-box;
-  color: #626669;
 }"
 `;
 
@@ -1637,7 +1649,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -1709,11 +1721,11 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
-.label--disabled .label__text {
-  color: #96989a;
-}
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #014d0c !important;
+}
+.label--disabled .label__text {
+  color: #96989a;
 }
 .required {
   user-select: none;
@@ -1799,10 +1811,10 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-::slotted(input[type=\\"password\\"]), ::slotted(input[type=\\"text\\"]) {
+::slotted(input[type=\\"password\\"]),::slotted(input[type=\\"text\\"]) {
   padding-right: 3rem !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -1874,11 +1886,11 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
-.label--disabled .label__text {
-  color: #96989a;
-}
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #014d0c !important;
+}
+.label--disabled .label__text {
+  color: #96989a;
 }
 .required {
   user-select: none;
@@ -1963,7 +1975,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -2035,6 +2047,9 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -2042,7 +2057,16 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])), .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+.unit {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0.75rem;
+  z-index: 1;
+  box-sizing: border-box;
+  color: #626669;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #014d0c !important;
 }
 .required {
@@ -2069,15 +2093,6 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-.unit {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 0.75rem;
-  z-index: 1;
-  box-sizing: border-box;
-  color: #626669;
 }"
 `;
 
@@ -2137,7 +2152,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -2209,6 +2224,9 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -2216,7 +2234,16 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])), .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+.unit {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0.75rem;
+  z-index: 1;
+  box-sizing: border-box;
+  color: #626669;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #014d0c !important;
 }
 .required {
@@ -2243,15 +2270,6 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-.unit {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  padding: 0.75rem;
-  z-index: 1;
-  box-sizing: border-box;
-  color: #626669;
 }"
 `;
 
@@ -2312,7 +2330,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -2385,11 +2403,11 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
-.label--disabled .label__text {
-  color: #96989a;
-}
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
+}
+.label--disabled .label__text {
+  color: #96989a;
 }
 .required {
   user-select: none;
@@ -2475,10 +2493,10 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-::slotted(input[type=\\"password\\"]), ::slotted(input[type=\\"text\\"]) {
+::slotted(input[type=\\"password\\"]),::slotted(input[type=\\"text\\"]) {
   padding-right: 3rem !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -2551,11 +2569,11 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
-.label--disabled .label__text {
-  color: #96989a;
-}
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
+}
+.label--disabled .label__text {
+  color: #96989a;
 }
 .required {
   user-select: none;
@@ -2640,7 +2658,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -2713,6 +2731,9 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -2720,7 +2741,16 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])), .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+.unit {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0.75rem;
+  z-index: 1;
+  box-sizing: border-box;
+  color: #626669;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
 }
 .required {
@@ -2747,15 +2777,6 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-.unit {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 0.75rem;
-  z-index: 1;
-  box-sizing: border-box;
-  color: #626669;
 }"
 `;
 
@@ -2815,7 +2836,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -2888,6 +2909,9 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -2895,7 +2919,16 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])), .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+.unit {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0.75rem;
+  z-index: 1;
+  box-sizing: border-box;
+  color: #626669;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
 }
 .required {
@@ -2922,15 +2955,6 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-.unit {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 0.75rem;
-  z-index: 1;
-  box-sizing: border-box;
-  color: #626669;
 }"
 `;
 
@@ -2991,7 +3015,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -3064,11 +3088,11 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
-.label--disabled .label__text {
-  color: #96989a;
-}
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
   border-color: #000 !important;
+}
+.label--disabled .label__text {
+  color: #96989a;
 }
 .required {
   user-select: none;
@@ -3153,10 +3177,10 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-::slotted(input[type=\\"password\\"]), ::slotted(input[type=\\"text\\"]) {
+::slotted(input[type=\\"password\\"]),::slotted(input[type=\\"text\\"]) {
   padding-right: 3rem !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -3229,11 +3253,11 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
-.label--disabled .label__text {
-  color: #96989a;
-}
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
   border-color: #000 !important;
+}
+.label--disabled .label__text {
+  color: #96989a;
 }
 .required {
   user-select: none;
@@ -3317,7 +3341,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -3390,6 +3414,9 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -3397,7 +3424,16 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover~::slotted(input:not(:disabled):not([readonly])) {
+.unit {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0.75rem;
+  z-index: 1;
+  box-sizing: border-box;
+  color: #626669;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])) {
   border-color: #000 !important;
 }
 .required {
@@ -3423,15 +3459,6 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-.unit {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 0.75rem;
-  z-index: 1;
-  box-sizing: border-box;
-  color: #626669;
 }"
 `;
 
@@ -3491,7 +3518,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -3564,6 +3591,9 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -3571,7 +3601,16 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover~::slotted(input:not(:disabled):not([readonly])) {
+.unit {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0.75rem;
+  z-index: 1;
+  box-sizing: border-box;
+  color: #626669;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])) {
   border-color: #000 !important;
 }
 .required {
@@ -3597,15 +3636,6 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-.unit {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 0.75rem;
-  z-index: 1;
-  box-sizing: border-box;
-  color: #626669;
 }"
 `;
 
@@ -3666,7 +3696,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -3739,11 +3769,11 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
-.label--disabled .label__text {
-  color: #96989a;
-}
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #014d0c !important;
+}
+.label--disabled .label__text {
+  color: #96989a;
 }
 .required {
   user-select: none;
@@ -3829,10 +3859,10 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-::slotted(input[type=\\"password\\"]), ::slotted(input[type=\\"text\\"]) {
+::slotted(input[type=\\"password\\"]),::slotted(input[type=\\"text\\"]) {
   padding-right: 3rem !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -3905,11 +3935,11 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
-.label--disabled .label__text {
-  color: #96989a;
-}
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #014d0c !important;
+}
+.label--disabled .label__text {
+  color: #96989a;
 }
 .required {
   user-select: none;
@@ -3994,7 +4024,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -4067,6 +4097,9 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -4074,7 +4107,16 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])), .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+.unit {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0.75rem;
+  z-index: 1;
+  box-sizing: border-box;
+  color: #626669;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #014d0c !important;
 }
 .required {
@@ -4101,15 +4143,6 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-.unit {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 0.75rem;
-  z-index: 1;
-  box-sizing: border-box;
-  color: #626669;
 }"
 `;
 
@@ -4169,7 +4202,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input[type=\\"number\\"]) {
   -moz-appearance: textfield !important;
 }
-::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
 ::slotted(input[type=\\"search\\"]) {
@@ -4242,6 +4275,9 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
+}
 .label--disabled .label__text {
   color: #96989a;
 }
@@ -4249,7 +4285,16 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])), .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+.unit {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0.75rem;
+  z-index: 1;
+  box-sizing: border-box;
+  color: #626669;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #014d0c !important;
 }
 .required {
@@ -4276,15 +4321,6 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-.unit {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 0.75rem;
-  z-index: 1;
-  box-sizing: border-box;
-  color: #626669;
 }"
 `;
 

@@ -88,11 +88,23 @@ export const getLabelStyles = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   theme: Theme,
-  additionalRefForInputHover?: string
+  counterOrUnitOrIconStyles?: Styles<'counter'> | Styles<'unit'> | Styles<'icon'>
 ): Styles => {
   const { baseColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
   const { formStateHoverColor } = getThemedFormStateColors(theme, state);
   const hasVisibleState = isVisibleFormState(state);
+
+  // jss prefers flat and simple selectors, therefore we reuse properties
+  const labelTextHoverJssStyle: JssStyle = {
+    '&:hover': {
+      [`&~::slotted(${child}:not(:disabled):not([readonly]))` +
+      (hasVisibleState ? `,::slotted(${child}:hover:not(:disabled):not([readonly]))` : '')]: {
+        borderColor: addImportantToRule(hasVisibleState ? formStateHoverColor : baseColor),
+      },
+    },
+  };
+
+  const counterOrUnitOrIconStylesKey = Object.keys(counterOrUnitOrIconStyles)[0];
 
   return {
     label: {
@@ -102,8 +114,8 @@ export const getLabelStyles = (
         '& .label__text': {
           color: disabledColor,
         },
-        ...(additionalRefForInputHover && {
-          [`& ${additionalRefForInputHover}`]: {
+        ...(counterOrUnitOrIconStyles && {
+          [`& $${counterOrUnitOrIconStylesKey}`]: {
             color: disabledColor,
             cursor: 'not-allowed',
           },
@@ -121,15 +133,14 @@ export const getLabelStyles = (
         '&--description': {
           color: contrastMediumColor,
         },
+        ...labelTextHoverJssStyle,
       },
     },
-    ['label__text' + (additionalRefForInputHover ? `,${additionalRefForInputHover}` : '')]: {
-      '&:hover': {
-        [`&~::slotted(${child}:not(:disabled):not([readonly]))` +
-        (hasVisibleState ? `, ::slotted(${child}:hover:not(:disabled):not([readonly]))` : '')]: {
-          borderColor: addImportantToRule(hasVisibleState ? formStateHoverColor : baseColor),
-        },
+    ...(counterOrUnitOrIconStyles && {
+      [counterOrUnitOrIconStylesKey]: {
+        ...counterOrUnitOrIconStyles[counterOrUnitOrIconStylesKey],
+        ...labelTextHoverJssStyle,
       },
-    },
+    }),
   };
 };

@@ -259,26 +259,30 @@ export const getComponentCss = (
   const { baseColor, contrastHighColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
 
-  return getCss({
-    ':host': {
-      [dropdownPositionVar]: 'absolute', // TODO: make conditional only for tests
-      display: 'block',
-      position: `var(${dropdownPositionVar})`, // for vrt tests
-      marginTop: pxToRemWithUnit(-INPUT_HEIGHT),
-      paddingTop: pxToRemWithUnit(INPUT_HEIGHT),
-      left: 0,
-      right: 0,
-      color: disabled ? disabledColor : formStateColor || contrastMediumColor,
-      ...(!disabled && {
-        '&(:hover)': {
-          color: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
+  return getCss(
+    // merge because of global styles
+    mergeDeep(
+      {
+        '@global': {
+          ':host': {
+            [dropdownPositionVar]: 'absolute', // TODO: make conditional only for tests
+            display: 'block',
+            position: `var(${dropdownPositionVar})`, // for vrt tests
+            marginTop: pxToRemWithUnit(-INPUT_HEIGHT),
+            paddingTop: pxToRemWithUnit(INPUT_HEIGHT),
+            left: 0,
+            right: 0,
+            color: disabled ? disabledColor : formStateColor || contrastMediumColor,
+            ...(!disabled && {
+              '&(:hover)': {
+                color: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
+              },
+            }),
+          },
         },
-      }),
-    },
-    ...mergeDeep(
-      // merge because of global styles
+      },
       filter ? getFilterStyles(isOpen, disabled, state, theme) : getButtonStyles(isOpen, state, theme),
       getListStyles(direction, isOpen, theme)
-    ),
-  });
+    )
+  );
 };
