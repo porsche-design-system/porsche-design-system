@@ -15,10 +15,15 @@ export const getComponentCss = (
   const border = `1px solid ${contrastLowColor}`;
 
   return getCss({
-    ':host': {
-      display: 'block',
-    },
     '@global': {
+      ':host': {
+        display: 'block',
+        ...(!compact && {
+          '&(:first-of-type) .root': {
+            borderTop: border,
+          },
+        }),
+      },
       button: {
         display: 'flex',
         justifyContent: 'space-between',
@@ -51,9 +56,6 @@ export const getComponentCss = (
       },
     },
     ...(!compact && {
-      ':host(:first-of-type) .root': {
-        borderTop: border,
-      },
       root: {
         borderBottom: border,
       },
@@ -87,6 +89,7 @@ export const getComponentCss = (
             transition: getTransition('height') + `,visibility ${transitionDuration} linear ${transitionDuration}`,
           }),
     },
+    // TODO: this doesn't get shortened and results in `keyframes-open` for some unknown reason
     '@keyframes open': {
       '0%,99%': {
         overflow: 'hidden',

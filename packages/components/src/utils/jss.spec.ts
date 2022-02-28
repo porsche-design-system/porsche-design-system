@@ -160,6 +160,40 @@ describe('getCss()', () => {
 `,
     },
     {
+      // .class and global media query
+      input: {
+        '@global': {
+          ':host': {
+            display: 'block',
+            marginLeft: '5px !important',
+            '@media (min-width: 1000px)': {
+              marginRight: '10px !important',
+            },
+          },
+        },
+        '@media (min-width: 1000px)': {
+          root: { display: 'block' },
+        },
+      },
+      // causes two identical media queries for now
+      result: `:host {
+  display: block;
+  margin-left: 5px !important;
+}
+@media (min-width: 1000px) {
+  :host {
+    margin-right: 10px !important;
+  }
+}
+
+@media (min-width: 1000px) {
+  .root {
+    display: block;
+  }
+}
+`,
+    },
+    {
       input: {
         '@global': {
           div: { display: 'block' },

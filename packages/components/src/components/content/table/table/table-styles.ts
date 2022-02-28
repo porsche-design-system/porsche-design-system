@@ -13,8 +13,10 @@ const { baseColor } = getThemedColors('light');
 
 export const getComponentCss = (): string => {
   return getCss({
-    ':host': {
-      display: addImportantToRule('block'),
+    '@global': {
+      ':host': {
+        display: addImportantToRule('block'),
+      },
     },
     caption: {
       marginBottom: spacing[8],

@@ -10,6 +10,7 @@ exports[`getComponentCss() should return correct css for listType: ordered, orde
 }
 :host:before {
   position: absolute !important;
+  content: counters(section, \\".\\", lower-latin) \\".\\" !important;
   right: calc(100% - 24px) !important;
   top: 0 !important;
   width: auto !important;
@@ -21,7 +22,6 @@ exports[`getComponentCss() should return correct css for listType: ordered, orde
   font-weight: 400 !important;
   font-size: 1rem !important;
   line-height: 1.5 !important;
-  content: counters(section, \\".\\", lower-latin) \\".\\" !important;
 }"
 `;
 
@@ -35,6 +35,7 @@ exports[`getComponentCss() should return correct css for listType: ordered, orde
 }
 :host:before {
   position: absolute !important;
+  content: counters(section, \\".\\", lower-latin)  !important;
   right: calc(100% - 24px) !important;
   top: 0 !important;
   width: auto !important;
@@ -46,7 +47,6 @@ exports[`getComponentCss() should return correct css for listType: ordered, orde
   font-weight: 400 !important;
   font-size: 1rem !important;
   line-height: 1.5 !important;
-  content: counters(section, \\".\\", lower-latin)  !important;
 }"
 `;
 
@@ -60,6 +60,7 @@ exports[`getComponentCss() should return correct css for listType: ordered, orde
 }
 :host:before {
   position: absolute !important;
+  content: counters(section, \\".\\", decimal) \\".\\" !important;
   right: calc(100% - 24px) !important;
   top: 0 !important;
   width: auto !important;
@@ -71,7 +72,6 @@ exports[`getComponentCss() should return correct css for listType: ordered, orde
   font-weight: 400 !important;
   font-size: 1rem !important;
   line-height: 1.5 !important;
-  content: counters(section, \\".\\", decimal) \\".\\" !important;
 }"
 `;
 
@@ -85,6 +85,7 @@ exports[`getComponentCss() should return correct css for listType: ordered, orde
 }
 :host:before {
   position: absolute !important;
+  content: counters(section, \\".\\", decimal)  !important;
   right: calc(100% - 24px) !important;
   top: 0 !important;
   width: auto !important;
@@ -96,7 +97,6 @@ exports[`getComponentCss() should return correct css for listType: ordered, orde
   font-weight: 400 !important;
   font-size: 1rem !important;
   line-height: 1.5 !important;
-  content: counters(section, \\".\\", decimal)  !important;
 }"
 `;
 
