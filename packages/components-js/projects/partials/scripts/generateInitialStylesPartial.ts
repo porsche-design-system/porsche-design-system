@@ -142,10 +142,11 @@ Please use only valid component tag names:
   }).join('');
 
   // remove unused skeleton selectors
-  prefixedUnusedTagNamesWithSkeleton.forEach((tagName) => {
-    const unusedSkeletonTagName = new RegExp(\`((?:,)*\${tagName}:not\\\\(\\\\.hydrated\\\\)(?:\\\\:\\\\:(?:after|before))*)\`, 'g');
-    skeletonStyles = skeletonStyles.replace(unusedSkeletonTagName, '');
-  });
+  // TODO: adjust cleanup script to not remove wrong styles (e.g. when using p-text-field-wrapper in skeletonTagNames, the after is removed)
+  // prefixedUnusedTagNamesWithSkeleton.forEach((tagName) => {
+  //   const unusedSkeletonTagName = new RegExp(\`((?:,)*\${tagName}:not\\\\(\\\\.hydrated\\\\)(?:\\\\:\\\\:(?:after|before))*)\`, 'g');
+  //   skeletonStyles = skeletonStyles.replace(unusedSkeletonTagName, '');
+  // });
 
   const result = skeletonStyles + \`\${prefixedTagNamesWithSkeleton.length ? '${skeletonKeyframes}' : ''}\`;
   // escape the "at" sign for sed replace command to work properly
