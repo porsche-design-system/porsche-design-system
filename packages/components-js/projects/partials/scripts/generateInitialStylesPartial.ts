@@ -149,8 +149,7 @@ Please use only valid component tag names:
   // });
 
   const result = skeletonStyles + \`\${prefixedTagNamesWithSkeleton.length ? '${skeletonKeyframes}' : ''}\`;
-  // escape the "at" sign for sed replace command to work properly
-  return result.replace(/(@)/g, '\\\\$1');
+  return result;
 };`;
 
   const helperFunction = `const getPrefixedTagNames = (tagNames: string[], prefix?: string): string[] => {
