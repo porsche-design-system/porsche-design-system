@@ -9,34 +9,43 @@ More details about the actual backlog and work in progress can be found in our p
 ## Milestones in Progress
 Legend: ✅ Completed
 
+### Generic Components
+* Step
+* Step Navigation
+* Tags
+* Cards
+* Map Styles & Components
+
 ### Platforms
-* Finalize UX platform
 * Migrate generic content from Design System- to UX platform
 * Optimize icon workflow
 * Consolidate published npm packages
-* Enable search feature for Design System- and UX platform
-
-### Generic components
-* Switch ✅
-* Data Table ✅
-* Accordion ✅
-* Toast ✅
-* Progress Indicator
-* Popover ✅
+* Enable search feature for Design System ✅
+* Finalize UX platform ✅
 
 ### Loading Behavior
 * Improve Loading of layout components
 * Skeleton Loading
 * Re-enable SSR support ✅
 
-### UXPin
-* Optimize Components for UXPin ✅
-* Enable Design System for UXPin ✅
-
 ---
 
 ## Milestones Completed and Released
 Legend: ✅ Completed
+
+### Testing
+* Support Testing-Library ✅
+
+### Generic Components
+* Switch ✅
+* Data Table ✅
+* Accordion ✅
+* Toast ✅
+* Popover ✅
+
+### UXPin
+* Optimize Components for UXPin ✅
+* Enable Design System for UXPin ✅
 
 ### Version 2.0 Stable
 * 2.0 stable release ✅
