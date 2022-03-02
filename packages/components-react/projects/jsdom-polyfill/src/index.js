@@ -5,7 +5,7 @@ require('scroll-behavior-polyfill');
 require('whatwg-fetch');
 global.ResizeObserver = require('@juggle/resize-observer').ResizeObserver;
 
-// skip initial tracking pixel / stylesheet fetch
+// skip initial stylesheet fetch
 window.PDS_SKIP_FETCH = true;
 
 // workaround for WebComponentManager not working in JSDOM
