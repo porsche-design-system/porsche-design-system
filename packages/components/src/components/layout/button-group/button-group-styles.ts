@@ -39,10 +39,10 @@ const getDirectionSlottedStyles: GetStylesFunction = (direction: ButtonGroupDire
 
 export const getComponentCss = (direction: ButtonGroupDirection): string => {
   return getCss({
-    ':host': {
-      display: 'block',
-    },
     '@global': {
+      ':host': {
+        display: 'block',
+      },
       div: {
         display: 'flex',
         marginTop: `-${spacing[16]}`,
