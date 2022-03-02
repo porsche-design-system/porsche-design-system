@@ -11,7 +11,7 @@ Review the [notification decision tree](components/notifications/decision-tree) 
 The `p-banner` component is positioned absolute above the page content by default. For personal adjustments, go to "Custom styling" section.
 
 <Playground :markup="basic" :config="config">
-  <select v-model="state">
+  <select v-model="state" aria-label="Select state">
     <option disabled>Select a state</option>
     <option value="neutral">Neutral</option>
     <option value="warning">Warning</option>
@@ -28,7 +28,7 @@ If the **Banner** shouldn't be removable by the user, add `persistent` prop.
 The `p-banner` behaves the same as the **ContentWrapper** component and can be adapted to the same widths to match with your layout.
 
 <Playground :markup="markupWidth" :config="config">
-  <select v-model="width">
+  <select v-model="width" aria-label="Select width">
     <option disabled>Select a width</option>
     <option value="basic">Basic</option>
     <option value="extended">Extended</option>

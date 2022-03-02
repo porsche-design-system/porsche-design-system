@@ -40,7 +40,7 @@ It's possible to define a preferred direction in which the popover should open, 
 it will be opened in the direction with most available space automatically.
 
 <Playground :markup="directionMarkup" :config="config">
-  <select v-model="direction">
+  <select v-model="direction" aria-label="Select direction">
     <option disabled>Select a direction</option>
     <option value="top">Top</option>
     <option value="right">Right</option>

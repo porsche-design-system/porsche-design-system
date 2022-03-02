@@ -14,7 +14,7 @@ Can be used along with [Grid](components/grid), [Flex](components/flex) or with 
 * **Fluid**: full width
 
 <Playground :markup="basic" :config="config">
-  <select v-model="width">
+  <select v-model="width" aria-label="Select width mode">
     <option disabled>Select a width mode</option>
     <option value="basic">Basic</option>
     <option value="extended">Extended</option>
@@ -28,7 +28,7 @@ Can be used along with [Grid](components/grid), [Flex](components/flex) or with 
 * **default**: uses surface color depending on theming
 
 <Playground :markup="transparent" class="playground-content-wrapper-background-color" :config="config">
-  <select v-model="backgroundColor">
+  <select v-model="backgroundColor" aria-label="Select background color">
     <option disabled>Select a background color</option>
     <option value="transparent">Transparent</option>
     <option value="default">Default</option>    

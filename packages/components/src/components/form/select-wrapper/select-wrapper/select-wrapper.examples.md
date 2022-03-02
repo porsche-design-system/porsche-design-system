@@ -12,7 +12,7 @@ When used without a label, it's best practice to provide a descriptive label tex
 ## Basic example
 
 <Playground :markup="basic" :config="config">
-  <select v-model="label">
+  <select v-model="label" aria-label="Select label mode">
     <option disabled>Select a label mode</option>
     <option value="show">With label</option>
     <option value="hide">Without label</option>
@@ -28,7 +28,7 @@ To ensure the user makes a conscious choice, use `<option></option>` as placehol
 If the select is required, use `<option hidden></option>` to enforce a selection.
 
 <Playground :markup="basicNoPreselection" :config="config">
-  <select v-model="isRequired">
+  <select v-model="isRequired" aria-label="Select label mode">
     <option disabled>Select a label mode</option>
     <option value="false">optional</option>
     <option value="true">required</option>
@@ -54,7 +54,7 @@ The filter reduces the amount of option items by searching for the typed charact
 ## Dropdown direction
 
 <Playground :markup="direction" :config="config">
-  <select v-model="dropdownDirection">
+  <select v-model="dropdownDirection" aria-label="Select dropdown direction">
     <option disabled>Select a dropdown mode</option>
     <option value="down">Direction down</option>
     <option value="up">Direction up</option>
@@ -94,7 +94,7 @@ A good practice when to use the disabled state is during **form submission** to 
 The `p-select-wrapper` component supports the visualisation of inline validation.
 
 <Playground :markup="validationStates" :config="config">
-  <select v-model="state">
+  <select v-model="state" aria-label="Select validation state">
     <option disabled>Select a validation state</option>
     <option value="error">Error</option>
     <option value="success">Success</option>

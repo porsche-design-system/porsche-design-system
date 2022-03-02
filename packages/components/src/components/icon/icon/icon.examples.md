@@ -29,7 +29,7 @@ With the use of SVG icons, there are options to enhance accessibility to users u
 There are default sizes for the icon component which should cover most use cases. If a specific size is needed, the size can be set to `inherit` in order to specify the size from outside.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <select v-model="size">
+  <select v-model="size" aria-label="Select size">
     <option disabled>Select a size</option>
     <option>small</option>
     <option>medium</option>
@@ -44,7 +44,7 @@ There are default sizes for the icon component which should cover most use cases
 Predefined colors associated with its theme are available. Furthermore, inherit mode can be used to define a custom color.
 
 <Playground :markup="colorMarkup" :config="config">
-  <select v-model="color">
+  <select v-model="color" aria-label="Select color">
     <option disabled>Select a color</option>
     <option value="brand">Brand</option>
     <option value="default">Default</option>
