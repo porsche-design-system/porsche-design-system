@@ -52,12 +52,12 @@
     "@porsche-design-system/styles": "0.0.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-commonjs": "^21.0.2",
     "@rollup/plugin-node-resolve": "^13.1.3",
-    "@rollup/plugin-typescript": "^8.3.0",
+    "@rollup/plugin-typescript": "^8.3.1",
     "@types/html-minifier": "^4.0.2",
     "html-minifier": "^4.0.0",
-    "rollup": "^2.67.2",
+    "rollup": "^2.68.0",
     "tslib": "^2.3.0",
     "typescript": "~4.6.2"
   },
