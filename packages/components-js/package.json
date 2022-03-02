@@ -63,10 +63,10 @@
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@types/js-beautify": "^1.13.3",
-    "@types/node": "^17.0.18",
+    "@types/node": "^17.0.21",
     "@types/terser-webpack-plugin": "^5.2.0",
     "concurrently": "^7.0.0",
-    "devtools-protocol": "^0.0.970707",
+    "devtools-protocol": "^0.0.975963",
     "globby": "^11.0.4",
     "js-beautify": "^1.14.0",
     "jsdom": "^17.0.0",
