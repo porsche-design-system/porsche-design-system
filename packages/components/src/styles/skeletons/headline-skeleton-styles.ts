@@ -1,5 +1,5 @@
 import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
-import { getTextHeadlineSkeletonStyle } from './text-skeleton-styles';
+import { getTextHeadlineSkeletonBaseStyle, getTextHeadlineSkeletonSubStyle } from './text-skeleton-styles';
 import {
   extendPseudoWithTheme,
   getElementBackgroundGradient,
@@ -15,8 +15,8 @@ import {
   headline3,
   headline4,
   headline5,
-  titleLarge,
   textSmall,
+  titleLarge,
 } from '@porsche-design-system/utilities-v2';
 
 type HeadlineType = typeof headline1;
@@ -33,36 +33,36 @@ export const getHeadlineSkeletonCss = (): string => {
       'p-headline': {
         '&:not(.hydrated)': {
           ...extendPseudoWithTheme({
-            styleFunction: () => getTextHeadlineSkeletonStyle(getTypographyElementHeight(headline1)),
+            styleFunction: () => getTextHeadlineSkeletonBaseStyle(getTypographyElementHeight(headline1)),
           }),
           ...getHeadlineSkeletonStyle(headline1),
           [`&[variant=large-title], &.${PDS_SKELETON_CLASS_PREFIX}variant-large-title`]: {
             ...extendPseudoWithTheme({
-              styleFunction: () => getTextHeadlineSkeletonStyle(getTypographyElementHeight(titleLarge)),
+              styleFunction: () => getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(titleLarge)),
             }),
             ...getHeadlineSkeletonStyle(titleLarge),
           },
           [`&[variant=headline-2], &.${PDS_SKELETON_CLASS_PREFIX}variant-headline-2`]: {
             ...extendPseudoWithTheme({
-              styleFunction: () => getTextHeadlineSkeletonStyle(getTypographyElementHeight(headline2)),
+              styleFunction: () => getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(headline2)),
             }),
             ...getHeadlineSkeletonStyle(headline2),
           },
           [`&[variant=headline-3], &.${PDS_SKELETON_CLASS_PREFIX}variant-headline-3`]: {
             ...extendPseudoWithTheme({
-              styleFunction: () => getTextHeadlineSkeletonStyle(getTypographyElementHeight(headline3)),
+              styleFunction: () => getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(headline3)),
             }),
             ...getHeadlineSkeletonStyle(headline3),
           },
           [`&[variant=headline-4], &.${PDS_SKELETON_CLASS_PREFIX}variant-headline-4`]: {
             ...extendPseudoWithTheme({
-              styleFunction: () => getTextHeadlineSkeletonStyle(getTypographyElementHeight(headline4)),
+              styleFunction: () => getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(headline4)),
             }),
             ...getHeadlineSkeletonStyle(headline4),
           },
           [`&[variant=headline-5], &.${PDS_SKELETON_CLASS_PREFIX}variant-headline-5`]: {
             ...extendPseudoWithTheme({
-              styleFunction: () => getTextHeadlineSkeletonStyle(getTypographyElementHeight(headline5)),
+              styleFunction: () => getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(headline5)),
             }),
           },
           ...getThemedPseudoStyle(),
