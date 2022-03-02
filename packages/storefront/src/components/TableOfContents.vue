@@ -25,7 +25,10 @@
     returnIcon = require('../assets/icon-return.svg');
 
     mounted(): void {
-      const currentUrl = document.location.pathname.slice(1);
+      // strip away base href url path
+      const baseHref = document.querySelector('base')!.getAttribute('href')!;
+      const currentUrl = document.location.pathname.replace(baseHref, '');
+
       this.links = Array.from<HTMLElement>(this.$el.parentElement!.parentElement!.querySelectorAll('h2')).map((h2) => {
         const { innerText } = h2;
         const id = paramCase(innerText);
