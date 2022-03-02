@@ -114,6 +114,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       const isOverviewPage = fileName === 'overview';
       const isIconPage = fileName === 'icon';
       const usesOnInit = script && !isIconPage;
+      const isSkeleton = fileName.includes('skeleton');
 
       const iconsRegEx = /(<div class="playground[\sa-z]+overview".*?>)\n(<\/div>)/;
 
@@ -129,14 +130,14 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
           'ChangeDetectionStrategy',
           'Component',
           usesOnInit && 'OnInit',
-          usesComponentsReady && 'ChangeDetectorRef',
+          usesComponentsReady && !isSkeleton && 'ChangeDetectorRef',
         ]
           .filter((x) => x)
           .sort(byAlphabet)
           .join(', ');
 
         const pdsImports = [
-          usesComponentsReady && 'componentsReady',
+          (usesComponentsReady || isSkeleton) && 'componentsReady',
           usesToast && 'ToastManager',
           isIconPage && 'IconName',
         ]
@@ -159,7 +160,9 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
         // implementation
         const classImplements = usesOnInit ? 'implements OnInit ' : '';
         let classImplementation = '';
-        if (usesComponentsReady) {
+        if (isSkeleton) {
+          classImplementation = `ngOnInit() {\n  ${script.replace('porscheDesignSystem.', '')}\n}`;
+        } else if (usesComponentsReady) {
           classImplementation = `public allReady: boolean = false;
 
 constructor(private cdr: ChangeDetectorRef) {}
@@ -235,7 +238,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
         // imports
         const reactImports = [
           (usesComponentsReady || usesQuerySelector) && !isIconPage && 'useEffect',
-          usesComponentsReady && 'useState',
+          usesComponentsReady && !isSkeleton && 'useState',
         ]
           .filter((x) => x)
           .sort(byAlphabet)
@@ -247,7 +250,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
           .map((tagName) => pascalCase(tagName));
         const pdsImports = [
           ...componentImports,
-          usesComponentsReady && 'componentsReady',
+          (usesComponentsReady || isSkeleton) && 'componentsReady',
           usesPrefixing && 'PorscheDesignSystemProvider',
           usesToast && 'useToastManager',
         ]
@@ -269,7 +272,11 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
         const styleJsx = style ? '\n      <style children={style} />\n' : '';
 
         let useStateOrEffect = '';
-        if (usesComponentsReady) {
+        if (isSkeleton) {
+          useStateOrEffect = `useEffect(() => {
+  ${script.replace('porscheDesignSystem.', '')}
+}, []);`;
+        } else if (usesComponentsReady) {
           useStateOrEffect = `const [allReady, setAllReady] = useState(false);
 useEffect(() => {
   componentsReady().then(() => {

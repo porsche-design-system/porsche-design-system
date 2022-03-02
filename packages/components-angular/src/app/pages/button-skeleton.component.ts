@@ -1,5 +1,6 @@
 /* Auto Generated File */
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { componentsReady } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-button-skeleton',
@@ -33,8 +34,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class ButtonSkeletonComponent implements OnInit {
   ngOnInit() {
-    // TODO: wait for components ready
-    customElements.whenDefined('p-button').then(() => {
+    componentsReady().then(() => {
       document.querySelectorAll('p-button').forEach((button) => {
         button.classList.remove('hydrated');
       });

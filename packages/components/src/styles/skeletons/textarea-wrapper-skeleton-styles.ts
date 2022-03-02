@@ -41,7 +41,7 @@ export const getTextareaWrapperSkeletonCss = (): string => {
                 minHeight: getAfterMinHeight(LABEL_HEIGHT),
               },
             },
-          [`&[description][label], &.${PDS_SKELETON_CLASS_PREFIX}description &.${PDS_SKELETON_CLASS_PREFIX}label`]: {
+          [`&[description][label], &.${PDS_SKELETON_CLASS_PREFIX}description.${PDS_SKELETON_CLASS_PREFIX}label`]: {
             minHeight: getSkeletonElementHeight(TEXTAREA_SKELETON_HEIGHT, true, true),
             '&::before': {
               height: pxToRemWithUnit(LABEL_HEIGHT_WITH_DESCRIPTION),
