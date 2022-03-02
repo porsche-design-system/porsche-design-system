@@ -1,0 +1,32 @@
+<style type="text/css">
+  p-button:not(:last-child) {
+    margin-right: 0.5rem;
+  }
+</style>
+
+<div class="playground light" title="should render button skeleton">
+  <p-button>Some label</p-button>
+</div>
+<div class="playground dark" title="should render button skeleton on dark theme">
+  <p-button theme="dark">Some label</p-button>
+</div>
+
+<div class="playground light" title="should render button skeleton without label">
+  <p-button hide-label="true">Some label</p-button>
+</div>
+<div class="playground dark" title="should render button skeleton without label on dark theme">
+  <p-button hide-label="true" theme="dark">Some label</p-button>
+</div>
+
+<div class="playground light" title="should render button skeleton with multiline label">
+  <p-button style="width: 240px">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
+</div>
+
+<script>
+  // TODO: wait for components ready
+  customElements.whenDefined('p-button').then(() => {
+    document.querySelectorAll('p-button').forEach((button) => {
+      button.classList.remove('hydrated');
+    });
+  });
+</script>
