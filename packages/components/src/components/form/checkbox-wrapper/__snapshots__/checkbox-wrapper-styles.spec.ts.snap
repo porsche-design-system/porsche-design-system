@@ -1,31 +1,1281 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none and isDisabled: true 1`] = `":host{display:block}::slotted(input){position:static !important;width:1.5rem !important;height:1.5rem !important;flex-shrink:0 !important;display:block !important;margin:0 !important;padding:0 !important;-webkit-appearance:none !important;appearance:none !important;box-sizing:border-box !important;background-size:1.5rem !important;background-position:-1px -1px !important;background-color:#fff !important;transition:border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;opacity:1 !important;border:1px solid #626669 !important;border-radius:0 !important;outline:1px solid transparent !important;outline-offset:2px !important;cursor:pointer !important}::slotted(input:checked){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important}::slotted(input:indeterminate){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important}::slotted(input:checked), ::slotted(input:indeterminate){border-color:#323639 !important;background-color:#323639 !important}::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)){border-color:#000 !important}::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled){background-color:#96989a !important}::slotted(input:disabled){border-color:#96989a !important;cursor:not-allowed !important}::slotted(input:focus){outline-color:#626669 !important}::slotted(input:focus:not(:focus-visible)){outline-color:transparent !important}label{position:relative;display:flex}.label{order:1;display:inline-block;cursor:default;outline:none;color:#96989a;transition:color var(--p-transition-duration, .24s) ease;position:absolute;height:1px;width:auto;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap;padding:0 0 0 0.5rem}.required{user-select:none;color:#e00000}.message{display:flex;margin-top:0.25rem;transition:color var(--p-transition-duration, .24s) ease}.message__icon{margin-right:0.25rem}@media(min-width:480px){.label{position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto;clip-path:none;white-space:normal;padding:0 0 0 0.5rem}}@media(min-width:760px){.label{position:absolute;height:1px;width:auto;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap;padding:0 0 0 0.5rem}}@media(min-width:1000px){.label{position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto;clip-path:none;white-space:normal;padding:0 0 0 0.5rem}}@media(min-width:1300px){.label{position:absolute;height:1px;width:auto;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap;padding:0 0 0 0.5rem}}@media(min-width:1760px){.label{position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto;clip-path:none;white-space:normal;padding:0 0 0 0.5rem}}"`;
+exports[`getComponentCss() should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none and isDisabled: true 1`] = `
+":host {
+  display: block;
+}
+::slotted(input) {
+  position: static !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  background-size: 1.5rem !important;
+  background-position: -1px -1px !important;
+  background-color: #fff !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  opacity: 1 !important;
+  border: 1px solid #626669 !important;
+  border-radius: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
+  cursor: pointer !important;
+}
+::slotted(input:checked) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+}
+::slotted(input:checked), ::slotted(input:indeterminate) {
+  border-color: #323639 !important;
+  background-color: #323639 !important;
+}
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #000 !important;
+}
+::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
+  background-color: #96989a !important;
+}
+::slotted(input:disabled) {
+  border-color: #96989a !important;
+  cursor: not-allowed !important;
+}
+::slotted(input:focus) {
+  outline-color: #626669 !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
+}
+label {
+  position: relative;
+  display: flex;
+}
+.label {
+  order: 1;
+  display: inline-block;
+  cursor: default;
+  outline: none;
+  color: #96989a;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  height: 1px;
+  width: auto;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0 0 0 0.5rem;
+}
+.required {
+  user-select: none;
+  color: #e00000;
+}
+.message {
+  display: flex;
+  margin-top: 0.25rem;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.message__icon {
+  margin-right: 0.25rem;
+}
+@media (min-width: 480px) {
+  .label {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
+    padding: 0 0 0 0.5rem;
+  }
+}
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: error and isDisabled: false 1`] = `":host{display:block}::slotted(input){position:static !important;width:1.5rem !important;height:1.5rem !important;flex-shrink:0 !important;display:block !important;margin:0 !important;padding:0 !important;-webkit-appearance:none !important;appearance:none !important;box-sizing:border-box !important;background-size:1.5rem !important;background-position:-2px -2px !important;background-color:#fff !important;transition:border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;opacity:1 !important;border:2px solid #e00000 !important;border-radius:0 !important;outline:1px solid transparent !important;outline-offset:2px !important;cursor:pointer !important}::slotted(input:checked){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important}::slotted(input:indeterminate){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important}::slotted(input:checked), ::slotted(input:indeterminate){border-color:#e00000 !important;background-color:#e00000 !important}::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)){border-color:#a30000 !important}::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled){background-color:#96989a !important}::slotted(input:disabled){border-color:#96989a !important;cursor:not-allowed !important}::slotted(input:focus){outline-color:#e00000 !important}::slotted(input:focus:not(:focus-visible)){outline-color:transparent !important}label{position:relative;display:flex}.label{order:1;display:inline-block;cursor:pointer;outline:none;color:#000;transition:color var(--p-transition-duration, .24s) ease;position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto;clip-path:none;white-space:normal;padding:0 0 0 0.5rem}.required{user-select:none;color:#e00000}.message{display:flex;margin-top:0.25rem;color:#e00000;transition:color var(--p-transition-duration, .24s) ease}.message__icon{margin-right:0.25rem}"`;
+@media (min-width: 760px) {
+  .label {
+    position: absolute;
+    height: 1px;
+    width: auto;
+    border: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(1px,1px,1px,1px);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    padding: 0 0 0 0.5rem;
+  }
+}
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: error and isDisabled: true 1`] = `":host{display:block}::slotted(input){position:static !important;width:1.5rem !important;height:1.5rem !important;flex-shrink:0 !important;display:block !important;margin:0 !important;padding:0 !important;-webkit-appearance:none !important;appearance:none !important;box-sizing:border-box !important;background-size:1.5rem !important;background-position:-2px -2px !important;background-color:#fff !important;transition:border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;opacity:1 !important;border:2px solid #e00000 !important;border-radius:0 !important;outline:1px solid transparent !important;outline-offset:2px !important;cursor:pointer !important}::slotted(input:checked){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important}::slotted(input:indeterminate){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important}::slotted(input:checked), ::slotted(input:indeterminate){border-color:#e00000 !important;background-color:#e00000 !important}::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)){border-color:#a30000 !important}::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled){background-color:#96989a !important}::slotted(input:disabled){border-color:#96989a !important;cursor:not-allowed !important}::slotted(input:focus){outline-color:#e00000 !important}::slotted(input:focus:not(:focus-visible)){outline-color:transparent !important}label{position:relative;display:flex}.label{order:1;display:inline-block;cursor:default;outline:none;color:#96989a;transition:color var(--p-transition-duration, .24s) ease;position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto;clip-path:none;white-space:normal;padding:0 0 0 0.5rem}.required{user-select:none;color:#e00000}.message{display:flex;margin-top:0.25rem;color:#e00000;transition:color var(--p-transition-duration, .24s) ease}.message__icon{margin-right:0.25rem}"`;
+@media (min-width: 1000px) {
+  .label {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
+    padding: 0 0 0 0.5rem;
+  }
+}
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none and isDisabled: false 1`] = `":host{display:block}::slotted(input){position:static !important;width:1.5rem !important;height:1.5rem !important;flex-shrink:0 !important;display:block !important;margin:0 !important;padding:0 !important;-webkit-appearance:none !important;appearance:none !important;box-sizing:border-box !important;background-size:1.5rem !important;background-position:-1px -1px !important;background-color:#fff !important;transition:border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;opacity:1 !important;border:1px solid #626669 !important;border-radius:0 !important;outline:1px solid transparent !important;outline-offset:2px !important;cursor:pointer !important}::slotted(input:checked){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important}::slotted(input:indeterminate){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important}::slotted(input:checked), ::slotted(input:indeterminate){border-color:#323639 !important;background-color:#323639 !important}::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)){border-color:#000 !important}::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled){background-color:#96989a !important}::slotted(input:disabled){border-color:#96989a !important;cursor:not-allowed !important}::slotted(input:focus){outline-color:#626669 !important}::slotted(input:focus:not(:focus-visible)){outline-color:transparent !important}label{position:relative;display:flex}.label{order:1;display:inline-block;cursor:pointer;outline:none;color:#000;transition:color var(--p-transition-duration, .24s) ease;position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto;clip-path:none;white-space:normal;padding:0 0 0 0.5rem}.required{user-select:none;color:#e00000}.message{display:flex;margin-top:0.25rem;transition:color var(--p-transition-duration, .24s) ease}.message__icon{margin-right:0.25rem}"`;
+@media (min-width: 1300px) {
+  .label {
+    position: absolute;
+    height: 1px;
+    width: auto;
+    border: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(1px,1px,1px,1px);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    padding: 0 0 0 0.5rem;
+  }
+}
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none and isDisabled: true 1`] = `":host{display:block}::slotted(input){position:static !important;width:1.5rem !important;height:1.5rem !important;flex-shrink:0 !important;display:block !important;margin:0 !important;padding:0 !important;-webkit-appearance:none !important;appearance:none !important;box-sizing:border-box !important;background-size:1.5rem !important;background-position:-1px -1px !important;background-color:#fff !important;transition:border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;opacity:1 !important;border:1px solid #626669 !important;border-radius:0 !important;outline:1px solid transparent !important;outline-offset:2px !important;cursor:pointer !important}::slotted(input:checked){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important}::slotted(input:indeterminate){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important}::slotted(input:checked), ::slotted(input:indeterminate){border-color:#323639 !important;background-color:#323639 !important}::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)){border-color:#000 !important}::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled){background-color:#96989a !important}::slotted(input:disabled){border-color:#96989a !important;cursor:not-allowed !important}::slotted(input:focus){outline-color:#626669 !important}::slotted(input:focus:not(:focus-visible)){outline-color:transparent !important}label{position:relative;display:flex}.label{order:1;display:inline-block;cursor:default;outline:none;color:#96989a;transition:color var(--p-transition-duration, .24s) ease;position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto;clip-path:none;white-space:normal;padding:0 0 0 0.5rem}.required{user-select:none;color:#e00000}.message{display:flex;margin-top:0.25rem;transition:color var(--p-transition-duration, .24s) ease}.message__icon{margin-right:0.25rem}"`;
+@media (min-width: 1760px) {
+  .label {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
+    padding: 0 0 0 0.5rem;
+  }
+}
+"
+`;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: success and isDisabled: false 1`] = `":host{display:block}::slotted(input){position:static !important;width:1.5rem !important;height:1.5rem !important;flex-shrink:0 !important;display:block !important;margin:0 !important;padding:0 !important;-webkit-appearance:none !important;appearance:none !important;box-sizing:border-box !important;background-size:1.5rem !important;background-position:-2px -2px !important;background-color:#fff !important;transition:border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;opacity:1 !important;border:2px solid #018a16 !important;border-radius:0 !important;outline:1px solid transparent !important;outline-offset:2px !important;cursor:pointer !important}::slotted(input:checked){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important}::slotted(input:indeterminate){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important}::slotted(input:checked), ::slotted(input:indeterminate){border-color:#018a16 !important;background-color:#018a16 !important}::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)){border-color:#014d0c !important}::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled){background-color:#96989a !important}::slotted(input:disabled){border-color:#96989a !important;cursor:not-allowed !important}::slotted(input:focus){outline-color:#018a16 !important}::slotted(input:focus:not(:focus-visible)){outline-color:transparent !important}label{position:relative;display:flex}.label{order:1;display:inline-block;cursor:pointer;outline:none;color:#000;transition:color var(--p-transition-duration, .24s) ease;position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto;clip-path:none;white-space:normal;padding:0 0 0 0.5rem}.required{user-select:none;color:#e00000}.message{display:flex;margin-top:0.25rem;color:#018a16;transition:color var(--p-transition-duration, .24s) ease}.message__icon{margin-right:0.25rem}"`;
+exports[`getComponentCss() should return correct css for hideLabel: false, state: error and isDisabled: false 1`] = `
+":host {
+  display: block;
+}
+::slotted(input) {
+  position: static !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  background-size: 1.5rem !important;
+  background-position: -2px -2px !important;
+  background-color: #fff !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  opacity: 1 !important;
+  border: 2px solid #e00000 !important;
+  border-radius: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
+  cursor: pointer !important;
+}
+::slotted(input:checked) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+}
+::slotted(input:checked), ::slotted(input:indeterminate) {
+  border-color: #e00000 !important;
+  background-color: #e00000 !important;
+}
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #a30000 !important;
+}
+::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
+  background-color: #96989a !important;
+}
+::slotted(input:disabled) {
+  border-color: #96989a !important;
+  cursor: not-allowed !important;
+}
+::slotted(input:focus) {
+  outline-color: #e00000 !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
+}
+label {
+  position: relative;
+  display: flex;
+}
+.label {
+  order: 1;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  color: #000;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+  padding: 0 0 0 0.5rem;
+}
+.required {
+  user-select: none;
+  color: #e00000;
+}
+.message {
+  display: flex;
+  margin-top: 0.25rem;
+  color: #e00000;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.message__icon {
+  margin-right: 0.25rem;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: success and isDisabled: true 1`] = `":host{display:block}::slotted(input){position:static !important;width:1.5rem !important;height:1.5rem !important;flex-shrink:0 !important;display:block !important;margin:0 !important;padding:0 !important;-webkit-appearance:none !important;appearance:none !important;box-sizing:border-box !important;background-size:1.5rem !important;background-position:-2px -2px !important;background-color:#fff !important;transition:border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;opacity:1 !important;border:2px solid #018a16 !important;border-radius:0 !important;outline:1px solid transparent !important;outline-offset:2px !important;cursor:pointer !important}::slotted(input:checked){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important}::slotted(input:indeterminate){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important}::slotted(input:checked), ::slotted(input:indeterminate){border-color:#018a16 !important;background-color:#018a16 !important}::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)){border-color:#014d0c !important}::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled){background-color:#96989a !important}::slotted(input:disabled){border-color:#96989a !important;cursor:not-allowed !important}::slotted(input:focus){outline-color:#018a16 !important}::slotted(input:focus:not(:focus-visible)){outline-color:transparent !important}label{position:relative;display:flex}.label{order:1;display:inline-block;cursor:default;outline:none;color:#96989a;transition:color var(--p-transition-duration, .24s) ease;position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto;clip-path:none;white-space:normal;padding:0 0 0 0.5rem}.required{user-select:none;color:#e00000}.message{display:flex;margin-top:0.25rem;color:#018a16;transition:color var(--p-transition-duration, .24s) ease}.message__icon{margin-right:0.25rem}"`;
+exports[`getComponentCss() should return correct css for hideLabel: false, state: error and isDisabled: true 1`] = `
+":host {
+  display: block;
+}
+::slotted(input) {
+  position: static !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  background-size: 1.5rem !important;
+  background-position: -2px -2px !important;
+  background-color: #fff !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  opacity: 1 !important;
+  border: 2px solid #e00000 !important;
+  border-radius: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
+  cursor: pointer !important;
+}
+::slotted(input:checked) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+}
+::slotted(input:checked), ::slotted(input:indeterminate) {
+  border-color: #e00000 !important;
+  background-color: #e00000 !important;
+}
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #a30000 !important;
+}
+::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
+  background-color: #96989a !important;
+}
+::slotted(input:disabled) {
+  border-color: #96989a !important;
+  cursor: not-allowed !important;
+}
+::slotted(input:focus) {
+  outline-color: #e00000 !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
+}
+label {
+  position: relative;
+  display: flex;
+}
+.label {
+  order: 1;
+  display: inline-block;
+  cursor: default;
+  outline: none;
+  color: #96989a;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+  padding: 0 0 0 0.5rem;
+}
+.required {
+  user-select: none;
+  color: #e00000;
+}
+.message {
+  display: flex;
+  margin-top: 0.25rem;
+  color: #e00000;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.message__icon {
+  margin-right: 0.25rem;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: error and isDisabled: false 1`] = `":host{display:block}::slotted(input){position:static !important;width:1.5rem !important;height:1.5rem !important;flex-shrink:0 !important;display:block !important;margin:0 !important;padding:0 !important;-webkit-appearance:none !important;appearance:none !important;box-sizing:border-box !important;background-size:1.5rem !important;background-position:-2px -2px !important;background-color:#fff !important;transition:border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;opacity:1 !important;border:2px solid #e00000 !important;border-radius:0 !important;outline:1px solid transparent !important;outline-offset:2px !important;cursor:pointer !important}::slotted(input:checked){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important}::slotted(input:indeterminate){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important}::slotted(input:checked), ::slotted(input:indeterminate){border-color:#e00000 !important;background-color:#e00000 !important}::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)){border-color:#a30000 !important}::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled){background-color:#96989a !important}::slotted(input:disabled){border-color:#96989a !important;cursor:not-allowed !important}::slotted(input:focus){outline-color:#e00000 !important}::slotted(input:focus:not(:focus-visible)){outline-color:transparent !important}label{position:relative;display:flex}.label{order:1;display:inline-block;cursor:pointer;outline:none;color:#000;transition:color var(--p-transition-duration, .24s) ease;position:absolute;height:1px;width:auto;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap;padding:0 0 0 0.5rem}.required{user-select:none;color:#e00000}.message{display:flex;margin-top:0.25rem;color:#e00000;transition:color var(--p-transition-duration, .24s) ease}.message__icon{margin-right:0.25rem}"`;
+exports[`getComponentCss() should return correct css for hideLabel: false, state: none and isDisabled: false 1`] = `
+":host {
+  display: block;
+}
+::slotted(input) {
+  position: static !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  background-size: 1.5rem !important;
+  background-position: -1px -1px !important;
+  background-color: #fff !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  opacity: 1 !important;
+  border: 1px solid #626669 !important;
+  border-radius: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
+  cursor: pointer !important;
+}
+::slotted(input:checked) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+}
+::slotted(input:checked), ::slotted(input:indeterminate) {
+  border-color: #323639 !important;
+  background-color: #323639 !important;
+}
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #000 !important;
+}
+::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
+  background-color: #96989a !important;
+}
+::slotted(input:disabled) {
+  border-color: #96989a !important;
+  cursor: not-allowed !important;
+}
+::slotted(input:focus) {
+  outline-color: #626669 !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
+}
+label {
+  position: relative;
+  display: flex;
+}
+.label {
+  order: 1;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  color: #000;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+  padding: 0 0 0 0.5rem;
+}
+.required {
+  user-select: none;
+  color: #e00000;
+}
+.message {
+  display: flex;
+  margin-top: 0.25rem;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.message__icon {
+  margin-right: 0.25rem;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: error and isDisabled: true 1`] = `":host{display:block}::slotted(input){position:static !important;width:1.5rem !important;height:1.5rem !important;flex-shrink:0 !important;display:block !important;margin:0 !important;padding:0 !important;-webkit-appearance:none !important;appearance:none !important;box-sizing:border-box !important;background-size:1.5rem !important;background-position:-2px -2px !important;background-color:#fff !important;transition:border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;opacity:1 !important;border:2px solid #e00000 !important;border-radius:0 !important;outline:1px solid transparent !important;outline-offset:2px !important;cursor:pointer !important}::slotted(input:checked){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important}::slotted(input:indeterminate){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important}::slotted(input:checked), ::slotted(input:indeterminate){border-color:#e00000 !important;background-color:#e00000 !important}::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)){border-color:#a30000 !important}::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled){background-color:#96989a !important}::slotted(input:disabled){border-color:#96989a !important;cursor:not-allowed !important}::slotted(input:focus){outline-color:#e00000 !important}::slotted(input:focus:not(:focus-visible)){outline-color:transparent !important}label{position:relative;display:flex}.label{order:1;display:inline-block;cursor:default;outline:none;color:#96989a;transition:color var(--p-transition-duration, .24s) ease;position:absolute;height:1px;width:auto;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap;padding:0 0 0 0.5rem}.required{user-select:none;color:#e00000}.message{display:flex;margin-top:0.25rem;color:#e00000;transition:color var(--p-transition-duration, .24s) ease}.message__icon{margin-right:0.25rem}"`;
+exports[`getComponentCss() should return correct css for hideLabel: false, state: none and isDisabled: true 1`] = `
+":host {
+  display: block;
+}
+::slotted(input) {
+  position: static !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  background-size: 1.5rem !important;
+  background-position: -1px -1px !important;
+  background-color: #fff !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  opacity: 1 !important;
+  border: 1px solid #626669 !important;
+  border-radius: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
+  cursor: pointer !important;
+}
+::slotted(input:checked) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+}
+::slotted(input:checked), ::slotted(input:indeterminate) {
+  border-color: #323639 !important;
+  background-color: #323639 !important;
+}
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #000 !important;
+}
+::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
+  background-color: #96989a !important;
+}
+::slotted(input:disabled) {
+  border-color: #96989a !important;
+  cursor: not-allowed !important;
+}
+::slotted(input:focus) {
+  outline-color: #626669 !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
+}
+label {
+  position: relative;
+  display: flex;
+}
+.label {
+  order: 1;
+  display: inline-block;
+  cursor: default;
+  outline: none;
+  color: #96989a;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+  padding: 0 0 0 0.5rem;
+}
+.required {
+  user-select: none;
+  color: #e00000;
+}
+.message {
+  display: flex;
+  margin-top: 0.25rem;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.message__icon {
+  margin-right: 0.25rem;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: none and isDisabled: false 1`] = `":host{display:block}::slotted(input){position:static !important;width:1.5rem !important;height:1.5rem !important;flex-shrink:0 !important;display:block !important;margin:0 !important;padding:0 !important;-webkit-appearance:none !important;appearance:none !important;box-sizing:border-box !important;background-size:1.5rem !important;background-position:-1px -1px !important;background-color:#fff !important;transition:border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;opacity:1 !important;border:1px solid #626669 !important;border-radius:0 !important;outline:1px solid transparent !important;outline-offset:2px !important;cursor:pointer !important}::slotted(input:checked){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important}::slotted(input:indeterminate){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important}::slotted(input:checked), ::slotted(input:indeterminate){border-color:#323639 !important;background-color:#323639 !important}::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)){border-color:#000 !important}::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled){background-color:#96989a !important}::slotted(input:disabled){border-color:#96989a !important;cursor:not-allowed !important}::slotted(input:focus){outline-color:#626669 !important}::slotted(input:focus:not(:focus-visible)){outline-color:transparent !important}label{position:relative;display:flex}.label{order:1;display:inline-block;cursor:pointer;outline:none;color:#000;transition:color var(--p-transition-duration, .24s) ease;position:absolute;height:1px;width:auto;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap;padding:0 0 0 0.5rem}.required{user-select:none;color:#e00000}.message{display:flex;margin-top:0.25rem;transition:color var(--p-transition-duration, .24s) ease}.message__icon{margin-right:0.25rem}"`;
+exports[`getComponentCss() should return correct css for hideLabel: false, state: success and isDisabled: false 1`] = `
+":host {
+  display: block;
+}
+::slotted(input) {
+  position: static !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  background-size: 1.5rem !important;
+  background-position: -2px -2px !important;
+  background-color: #fff !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  opacity: 1 !important;
+  border: 2px solid #018a16 !important;
+  border-radius: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
+  cursor: pointer !important;
+}
+::slotted(input:checked) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+}
+::slotted(input:checked), ::slotted(input:indeterminate) {
+  border-color: #018a16 !important;
+  background-color: #018a16 !important;
+}
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #014d0c !important;
+}
+::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
+  background-color: #96989a !important;
+}
+::slotted(input:disabled) {
+  border-color: #96989a !important;
+  cursor: not-allowed !important;
+}
+::slotted(input:focus) {
+  outline-color: #018a16 !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
+}
+label {
+  position: relative;
+  display: flex;
+}
+.label {
+  order: 1;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  color: #000;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+  padding: 0 0 0 0.5rem;
+}
+.required {
+  user-select: none;
+  color: #e00000;
+}
+.message {
+  display: flex;
+  margin-top: 0.25rem;
+  color: #018a16;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.message__icon {
+  margin-right: 0.25rem;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: none and isDisabled: true 1`] = `":host{display:block}::slotted(input){position:static !important;width:1.5rem !important;height:1.5rem !important;flex-shrink:0 !important;display:block !important;margin:0 !important;padding:0 !important;-webkit-appearance:none !important;appearance:none !important;box-sizing:border-box !important;background-size:1.5rem !important;background-position:-1px -1px !important;background-color:#fff !important;transition:border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;opacity:1 !important;border:1px solid #626669 !important;border-radius:0 !important;outline:1px solid transparent !important;outline-offset:2px !important;cursor:pointer !important}::slotted(input:checked){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important}::slotted(input:indeterminate){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important}::slotted(input:checked), ::slotted(input:indeterminate){border-color:#323639 !important;background-color:#323639 !important}::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)){border-color:#000 !important}::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled){background-color:#96989a !important}::slotted(input:disabled){border-color:#96989a !important;cursor:not-allowed !important}::slotted(input:focus){outline-color:#626669 !important}::slotted(input:focus:not(:focus-visible)){outline-color:transparent !important}label{position:relative;display:flex}.label{order:1;display:inline-block;cursor:default;outline:none;color:#96989a;transition:color var(--p-transition-duration, .24s) ease;position:absolute;height:1px;width:auto;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap;padding:0 0 0 0.5rem}.required{user-select:none;color:#e00000}.message{display:flex;margin-top:0.25rem;transition:color var(--p-transition-duration, .24s) ease}.message__icon{margin-right:0.25rem}"`;
+exports[`getComponentCss() should return correct css for hideLabel: false, state: success and isDisabled: true 1`] = `
+":host {
+  display: block;
+}
+::slotted(input) {
+  position: static !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  background-size: 1.5rem !important;
+  background-position: -2px -2px !important;
+  background-color: #fff !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  opacity: 1 !important;
+  border: 2px solid #018a16 !important;
+  border-radius: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
+  cursor: pointer !important;
+}
+::slotted(input:checked) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+}
+::slotted(input:checked), ::slotted(input:indeterminate) {
+  border-color: #018a16 !important;
+  background-color: #018a16 !important;
+}
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #014d0c !important;
+}
+::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
+  background-color: #96989a !important;
+}
+::slotted(input:disabled) {
+  border-color: #96989a !important;
+  cursor: not-allowed !important;
+}
+::slotted(input:focus) {
+  outline-color: #018a16 !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
+}
+label {
+  position: relative;
+  display: flex;
+}
+.label {
+  order: 1;
+  display: inline-block;
+  cursor: default;
+  outline: none;
+  color: #96989a;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+  padding: 0 0 0 0.5rem;
+}
+.required {
+  user-select: none;
+  color: #e00000;
+}
+.message {
+  display: flex;
+  margin-top: 0.25rem;
+  color: #018a16;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.message__icon {
+  margin-right: 0.25rem;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: success and isDisabled: false 1`] = `":host{display:block}::slotted(input){position:static !important;width:1.5rem !important;height:1.5rem !important;flex-shrink:0 !important;display:block !important;margin:0 !important;padding:0 !important;-webkit-appearance:none !important;appearance:none !important;box-sizing:border-box !important;background-size:1.5rem !important;background-position:-2px -2px !important;background-color:#fff !important;transition:border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;opacity:1 !important;border:2px solid #018a16 !important;border-radius:0 !important;outline:1px solid transparent !important;outline-offset:2px !important;cursor:pointer !important}::slotted(input:checked){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important}::slotted(input:indeterminate){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important}::slotted(input:checked), ::slotted(input:indeterminate){border-color:#018a16 !important;background-color:#018a16 !important}::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)){border-color:#014d0c !important}::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled){background-color:#96989a !important}::slotted(input:disabled){border-color:#96989a !important;cursor:not-allowed !important}::slotted(input:focus){outline-color:#018a16 !important}::slotted(input:focus:not(:focus-visible)){outline-color:transparent !important}label{position:relative;display:flex}.label{order:1;display:inline-block;cursor:pointer;outline:none;color:#000;transition:color var(--p-transition-duration, .24s) ease;position:absolute;height:1px;width:auto;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap;padding:0 0 0 0.5rem}.required{user-select:none;color:#e00000}.message{display:flex;margin-top:0.25rem;color:#018a16;transition:color var(--p-transition-duration, .24s) ease}.message__icon{margin-right:0.25rem}"`;
+exports[`getComponentCss() should return correct css for hideLabel: true, state: error and isDisabled: false 1`] = `
+":host {
+  display: block;
+}
+::slotted(input) {
+  position: static !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  background-size: 1.5rem !important;
+  background-position: -2px -2px !important;
+  background-color: #fff !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  opacity: 1 !important;
+  border: 2px solid #e00000 !important;
+  border-radius: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
+  cursor: pointer !important;
+}
+::slotted(input:checked) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+}
+::slotted(input:checked), ::slotted(input:indeterminate) {
+  border-color: #e00000 !important;
+  background-color: #e00000 !important;
+}
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #a30000 !important;
+}
+::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
+  background-color: #96989a !important;
+}
+::slotted(input:disabled) {
+  border-color: #96989a !important;
+  cursor: not-allowed !important;
+}
+::slotted(input:focus) {
+  outline-color: #e00000 !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
+}
+label {
+  position: relative;
+  display: flex;
+}
+.label {
+  order: 1;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  color: #000;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  height: 1px;
+  width: auto;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0 0 0 0.5rem;
+}
+.required {
+  user-select: none;
+  color: #e00000;
+}
+.message {
+  display: flex;
+  margin-top: 0.25rem;
+  color: #e00000;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.message__icon {
+  margin-right: 0.25rem;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: success and isDisabled: true 1`] = `":host{display:block}::slotted(input){position:static !important;width:1.5rem !important;height:1.5rem !important;flex-shrink:0 !important;display:block !important;margin:0 !important;padding:0 !important;-webkit-appearance:none !important;appearance:none !important;box-sizing:border-box !important;background-size:1.5rem !important;background-position:-2px -2px !important;background-color:#fff !important;transition:border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;opacity:1 !important;border:2px solid #018a16 !important;border-radius:0 !important;outline:1px solid transparent !important;outline-offset:2px !important;cursor:pointer !important}::slotted(input:checked){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important}::slotted(input:indeterminate){background-image:url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important}::slotted(input:checked), ::slotted(input:indeterminate){border-color:#018a16 !important;background-color:#018a16 !important}::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)){border-color:#014d0c !important}::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled){background-color:#96989a !important}::slotted(input:disabled){border-color:#96989a !important;cursor:not-allowed !important}::slotted(input:focus){outline-color:#018a16 !important}::slotted(input:focus:not(:focus-visible)){outline-color:transparent !important}label{position:relative;display:flex}.label{order:1;display:inline-block;cursor:default;outline:none;color:#96989a;transition:color var(--p-transition-duration, .24s) ease;position:absolute;height:1px;width:auto;border:0;margin:-1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap;padding:0 0 0 0.5rem}.required{user-select:none;color:#e00000}.message{display:flex;margin-top:0.25rem;color:#018a16;transition:color var(--p-transition-duration, .24s) ease}.message__icon{margin-right:0.25rem}"`;
+exports[`getComponentCss() should return correct css for hideLabel: true, state: error and isDisabled: true 1`] = `
+":host {
+  display: block;
+}
+::slotted(input) {
+  position: static !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  background-size: 1.5rem !important;
+  background-position: -2px -2px !important;
+  background-color: #fff !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  opacity: 1 !important;
+  border: 2px solid #e00000 !important;
+  border-radius: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
+  cursor: pointer !important;
+}
+::slotted(input:checked) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+}
+::slotted(input:checked), ::slotted(input:indeterminate) {
+  border-color: #e00000 !important;
+  background-color: #e00000 !important;
+}
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #a30000 !important;
+}
+::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
+  background-color: #96989a !important;
+}
+::slotted(input:disabled) {
+  border-color: #96989a !important;
+  cursor: not-allowed !important;
+}
+::slotted(input:focus) {
+  outline-color: #e00000 !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
+}
+label {
+  position: relative;
+  display: flex;
+}
+.label {
+  order: 1;
+  display: inline-block;
+  cursor: default;
+  outline: none;
+  color: #96989a;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  height: 1px;
+  width: auto;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0 0 0 0.5rem;
+}
+.required {
+  user-select: none;
+  color: #e00000;
+}
+.message {
+  display: flex;
+  margin-top: 0.25rem;
+  color: #e00000;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.message__icon {
+  margin-right: 0.25rem;
+}"
+`;
 
-exports[`getSlottedCss() should return correct css 1`] = `"p-checkbox-wrapper a{color:inherit !important;text-decoration:underline !important;transition:color var(--p-transition-duration, .24s) ease !important;outline:1px solid transparent !important;outline-offset:1px !important}p-checkbox-wrapper[theme=\\"dark\\"] a:hover{color:#ff0223 !important}p-checkbox-wrapper b, p-checkbox-wrapper strong{font-weight:700 !important}p-checkbox-wrapper em, p-checkbox-wrapper i{font-style:normal !important}p-checkbox-wrapper a:hover{color:#d5001c !important}p-checkbox-wrapper a::-moz-focus-inner{border:0 !important}p-checkbox-wrapper a:focus{outline-color:currentColor !important}p-checkbox-wrapper a:focus:not(:focus-visible){outline-color:transparent !important}"`;
+exports[`getComponentCss() should return correct css for hideLabel: true, state: none and isDisabled: false 1`] = `
+":host {
+  display: block;
+}
+::slotted(input) {
+  position: static !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  background-size: 1.5rem !important;
+  background-position: -1px -1px !important;
+  background-color: #fff !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  opacity: 1 !important;
+  border: 1px solid #626669 !important;
+  border-radius: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
+  cursor: pointer !important;
+}
+::slotted(input:checked) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+}
+::slotted(input:checked), ::slotted(input:indeterminate) {
+  border-color: #323639 !important;
+  background-color: #323639 !important;
+}
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #000 !important;
+}
+::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
+  background-color: #96989a !important;
+}
+::slotted(input:disabled) {
+  border-color: #96989a !important;
+  cursor: not-allowed !important;
+}
+::slotted(input:focus) {
+  outline-color: #626669 !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
+}
+label {
+  position: relative;
+  display: flex;
+}
+.label {
+  order: 1;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  color: #000;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  height: 1px;
+  width: auto;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0 0 0 0.5rem;
+}
+.required {
+  user-select: none;
+  color: #e00000;
+}
+.message {
+  display: flex;
+  margin-top: 0.25rem;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.message__icon {
+  margin-right: 0.25rem;
+}"
+`;
 
-exports[`getSlottedCss() should return correct css with prefix 1`] = `"prefixed-p-checkbox-wrapper a{color:inherit !important;text-decoration:underline !important;transition:color var(--p-transition-duration, .24s) ease !important;outline:1px solid transparent !important;outline-offset:1px !important}prefixed-p-checkbox-wrapper[theme=\\"dark\\"] a:hover{color:#ff0223 !important}prefixed-p-checkbox-wrapper b, prefixed-p-checkbox-wrapper strong{font-weight:700 !important}prefixed-p-checkbox-wrapper em, prefixed-p-checkbox-wrapper i{font-style:normal !important}prefixed-p-checkbox-wrapper a:hover{color:#d5001c !important}prefixed-p-checkbox-wrapper a::-moz-focus-inner{border:0 !important}prefixed-p-checkbox-wrapper a:focus{outline-color:currentColor !important}prefixed-p-checkbox-wrapper a:focus:not(:focus-visible){outline-color:transparent !important}"`;
+exports[`getComponentCss() should return correct css for hideLabel: true, state: none and isDisabled: true 1`] = `
+":host {
+  display: block;
+}
+::slotted(input) {
+  position: static !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  background-size: 1.5rem !important;
+  background-position: -1px -1px !important;
+  background-color: #fff !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  opacity: 1 !important;
+  border: 1px solid #626669 !important;
+  border-radius: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
+  cursor: pointer !important;
+}
+::slotted(input:checked) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+}
+::slotted(input:checked), ::slotted(input:indeterminate) {
+  border-color: #323639 !important;
+  background-color: #323639 !important;
+}
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #000 !important;
+}
+::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
+  background-color: #96989a !important;
+}
+::slotted(input:disabled) {
+  border-color: #96989a !important;
+  cursor: not-allowed !important;
+}
+::slotted(input:focus) {
+  outline-color: #626669 !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
+}
+label {
+  position: relative;
+  display: flex;
+}
+.label {
+  order: 1;
+  display: inline-block;
+  cursor: default;
+  outline: none;
+  color: #96989a;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  height: 1px;
+  width: auto;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0 0 0 0.5rem;
+}
+.required {
+  user-select: none;
+  color: #e00000;
+}
+.message {
+  display: flex;
+  margin-top: 0.25rem;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.message__icon {
+  margin-right: 0.25rem;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: true, state: success and isDisabled: false 1`] = `
+":host {
+  display: block;
+}
+::slotted(input) {
+  position: static !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  background-size: 1.5rem !important;
+  background-position: -2px -2px !important;
+  background-color: #fff !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  opacity: 1 !important;
+  border: 2px solid #018a16 !important;
+  border-radius: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
+  cursor: pointer !important;
+}
+::slotted(input:checked) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+}
+::slotted(input:checked), ::slotted(input:indeterminate) {
+  border-color: #018a16 !important;
+  background-color: #018a16 !important;
+}
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #014d0c !important;
+}
+::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
+  background-color: #96989a !important;
+}
+::slotted(input:disabled) {
+  border-color: #96989a !important;
+  cursor: not-allowed !important;
+}
+::slotted(input:focus) {
+  outline-color: #018a16 !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
+}
+label {
+  position: relative;
+  display: flex;
+}
+.label {
+  order: 1;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  color: #000;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  height: 1px;
+  width: auto;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0 0 0 0.5rem;
+}
+.required {
+  user-select: none;
+  color: #e00000;
+}
+.message {
+  display: flex;
+  margin-top: 0.25rem;
+  color: #018a16;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.message__icon {
+  margin-right: 0.25rem;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: true, state: success and isDisabled: true 1`] = `
+":host {
+  display: block;
+}
+::slotted(input) {
+  position: static !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  background-size: 1.5rem !important;
+  background-position: -2px -2px !important;
+  background-color: #fff !important;
+  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  opacity: 1 !important;
+  border: 2px solid #018a16 !important;
+  border-radius: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
+  cursor: pointer !important;
+}
+::slotted(input:checked) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M9 19l-6-7h1.5l4.49 5.36L19.5 5H21L9 19z\\"/></svg>') !important;
+}
+::slotted(input:indeterminate) {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\"><path fill=\\"%23fff\\" d=\\"M3 11h18v1H3z\\"/></svg>') !important;
+}
+::slotted(input:checked), ::slotted(input:indeterminate) {
+  border-color: #018a16 !important;
+  background-color: #018a16 !important;
+}
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #014d0c !important;
+}
+::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
+  background-color: #96989a !important;
+}
+::slotted(input:disabled) {
+  border-color: #96989a !important;
+  cursor: not-allowed !important;
+}
+::slotted(input:focus) {
+  outline-color: #018a16 !important;
+}
+::slotted(input:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
+}
+label {
+  position: relative;
+  display: flex;
+}
+.label {
+  order: 1;
+  display: inline-block;
+  cursor: default;
+  outline: none;
+  color: #96989a;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: absolute;
+  height: 1px;
+  width: auto;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0 0 0 0.5rem;
+}
+.required {
+  user-select: none;
+  color: #e00000;
+}
+.message {
+  display: flex;
+  margin-top: 0.25rem;
+  color: #018a16;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.message__icon {
+  margin-right: 0.25rem;
+}"
+`;
+
+exports[`getSlottedCss() should return correct css 1`] = `
+"p-checkbox-wrapper a {
+  color: inherit !important;
+  text-decoration: underline !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
+}
+p-checkbox-wrapper[theme=\\"dark\\"] a:hover {
+  color: #ff0223 !important;
+}
+p-checkbox-wrapper b, p-checkbox-wrapper strong {
+  font-weight: 700 !important;
+}
+p-checkbox-wrapper em, p-checkbox-wrapper i {
+  font-style: normal !important;
+}
+p-checkbox-wrapper a:hover {
+  color: #d5001c !important;
+}
+p-checkbox-wrapper a::-moz-focus-inner {
+  border: 0 !important;
+}
+p-checkbox-wrapper a:focus {
+  outline-color: currentColor !important;
+}
+p-checkbox-wrapper a:focus:not(:focus-visible) {
+  outline-color: transparent !important;
+}"
+`;
+
+exports[`getSlottedCss() should return correct css with prefix 1`] = `
+"prefixed-p-checkbox-wrapper a {
+  color: inherit !important;
+  text-decoration: underline !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
+}
+prefixed-p-checkbox-wrapper[theme=\\"dark\\"] a:hover {
+  color: #ff0223 !important;
+}
+prefixed-p-checkbox-wrapper b, prefixed-p-checkbox-wrapper strong {
+  font-weight: 700 !important;
+}
+prefixed-p-checkbox-wrapper em, prefixed-p-checkbox-wrapper i {
+  font-style: normal !important;
+}
+prefixed-p-checkbox-wrapper a:hover {
+  color: #d5001c !important;
+}
+prefixed-p-checkbox-wrapper a::-moz-focus-inner {
+  border: 0 !important;
+}
+prefixed-p-checkbox-wrapper a:focus {
+  outline-color: currentColor !important;
+}
+prefixed-p-checkbox-wrapper a:focus:not(:focus-visible) {
+  outline-color: transparent !important;
+}"
+`;

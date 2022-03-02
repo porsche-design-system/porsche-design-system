@@ -1,7 +1,145 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css 1`] = `":host{display:block !important}.caption{margin-bottom:0.5rem}.root{position:relative}.scroll-area{overflow:auto visible;outline:1px solid transparent;outline-offset:-1px}.scroll-area::-moz-focus-inner{border:0}.scroll-area:focus{outline-color:currentColor}.scroll-area:focus:not(:focus-visible){outline-color:transparent}.table{position:relative;width:100%;display:table;font-family:'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;font-weight:400;font-size:1rem;line-height:1.5;text-align:left;color:#000;white-space:nowrap}.scroll-trigger{position:absolute;top:0;right:1px;width:1px;height:1px;visibility:hidden}.scroll-indicator{position:absolute;top:0;right:0;bottom:0;padding-left:2rem;pointer-events:none;display:flex;align-items:center;background:linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%)}.scroll-indicator::before{content:\\"\\";position:absolute;top:0;right:0;bottom:0;width:3rem;pointer-events:auto}.scroll-button{padding:0.75rem;pointer-events:auto}@media(min-width:1000px){.caption{margin-bottom:1rem}}"`;
+exports[`getComponentCss() should return correct css 1`] = `
+":host {
+  display: block !important;
+}
+.caption {
+  margin-bottom: 0.5rem;
+}
+.root {
+  position: relative;
+}
+.scroll-area {
+  overflow: auto visible;
+  outline: 1px solid transparent;
+  outline-offset: -1px;
+}
+.scroll-area::-moz-focus-inner {
+  border: 0;
+}
+.scroll-area:focus {
+  outline-color: currentColor;
+}
+.scroll-area:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+.table {
+  position: relative;
+  width: 100%;
+  display: table;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: left;
+  color: #000;
+  white-space: nowrap;
+}
+.scroll-trigger {
+  position: absolute;
+  top: 0;
+  right: 1px;
+  width: 1px;
+  height: 1px;
+  visibility: hidden;
+}
+.scroll-indicator {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding-left: 2rem;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%);
+}
+.scroll-indicator::before {
+  content: \\"\\";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 3rem;
+  pointer-events: auto;
+}
+.scroll-button {
+  padding: 0.75rem;
+  pointer-events: auto;
+}
+@media (min-width: 1000px) {
+  .caption {
+    margin-bottom: 1rem;
+  }
+}
+"
+`;
 
-exports[`getSlottedCss() should return correct css 1`] = `"p-table a{color:inherit !important;text-decoration:underline !important;transition:color var(--p-transition-duration, .24s) ease !important;outline:1px solid transparent !important;outline-offset:1px !important}p-table[theme=\\"dark\\"] a:hover{color:#ff0223 !important}p-table b, p-table strong{font-weight:700 !important}p-table em, p-table i{font-style:normal !important}p-table img{vertical-align:middle !important}p-table a:hover{color:#d5001c !important}p-table a::-moz-focus-inner{border:0 !important}p-table a:focus{outline-color:currentColor !important}p-table a:focus:not(:focus-visible){outline-color:transparent !important}"`;
+exports[`getSlottedCss() should return correct css 1`] = `
+"p-table a {
+  color: inherit !important;
+  text-decoration: underline !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
+}
+p-table[theme=\\"dark\\"] a:hover {
+  color: #ff0223 !important;
+}
+p-table b, p-table strong {
+  font-weight: 700 !important;
+}
+p-table em, p-table i {
+  font-style: normal !important;
+}
+p-table img {
+  vertical-align: middle !important;
+}
+p-table a:hover {
+  color: #d5001c !important;
+}
+p-table a::-moz-focus-inner {
+  border: 0 !important;
+}
+p-table a:focus {
+  outline-color: currentColor !important;
+}
+p-table a:focus:not(:focus-visible) {
+  outline-color: transparent !important;
+}"
+`;
 
-exports[`getSlottedCss() should return correct css with prefix 1`] = `"prefixed-p-table a{color:inherit !important;text-decoration:underline !important;transition:color var(--p-transition-duration, .24s) ease !important;outline:1px solid transparent !important;outline-offset:1px !important}prefixed-p-table[theme=\\"dark\\"] a:hover{color:#ff0223 !important}prefixed-p-table b, prefixed-p-table strong{font-weight:700 !important}prefixed-p-table em, prefixed-p-table i{font-style:normal !important}prefixed-p-table img{vertical-align:middle !important}prefixed-p-table a:hover{color:#d5001c !important}prefixed-p-table a::-moz-focus-inner{border:0 !important}prefixed-p-table a:focus{outline-color:currentColor !important}prefixed-p-table a:focus:not(:focus-visible){outline-color:transparent !important}"`;
+exports[`getSlottedCss() should return correct css with prefix 1`] = `
+"prefixed-p-table a {
+  color: inherit !important;
+  text-decoration: underline !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
+}
+prefixed-p-table[theme=\\"dark\\"] a:hover {
+  color: #ff0223 !important;
+}
+prefixed-p-table b, prefixed-p-table strong {
+  font-weight: 700 !important;
+}
+prefixed-p-table em, prefixed-p-table i {
+  font-style: normal !important;
+}
+prefixed-p-table img {
+  vertical-align: middle !important;
+}
+prefixed-p-table a:hover {
+  color: #d5001c !important;
+}
+prefixed-p-table a::-moz-focus-inner {
+  border: 0 !important;
+}
+prefixed-p-table a:focus {
+  outline-color: currentColor !important;
+}
+prefixed-p-table a:focus:not(:focus-visible) {
+  outline-color: transparent !important;
+}"
+`;

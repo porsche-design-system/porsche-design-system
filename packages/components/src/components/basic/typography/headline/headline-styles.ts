@@ -18,11 +18,13 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   return getCss({
-    ':host': {
-      display: 'block',
-    },
-    '::slotted': {
-      '&(h1),&(h2),&(h3),&(h4),&(h5),&(h6)': addImportantToEachRule(getSlottedTypographyStyles()),
+    '@global': {
+      ':host': {
+        display: 'block',
+      },
+      '::slotted': {
+        '&(h1),&(h2),&(h3),&(h4),&(h5),&(h6)': addImportantToEachRule(getSlottedTypographyStyles()),
+      },
     },
     root: {
       padding: 0,

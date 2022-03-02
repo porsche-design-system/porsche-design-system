@@ -42,10 +42,37 @@ export const getComponentCss = (
   const { baseColor, baseColorHover, textColor, textColorHover } = getColors(icon, theme);
 
   return getCss({
-    ':host': {
-      display: 'inline-flex',
-      verticalAlign: 'top',
-      outline: addImportantToRule(0),
+    '@global': {
+      ':host': {
+        display: 'inline-flex',
+        verticalAlign: 'top',
+        outline: addImportantToRule(0),
+      },
+      ...(!hasHref && {
+        '::slotted': addImportantToEachRule({
+          '&(a)': {
+            display: 'block',
+            textDecoration: 'none',
+            color: 'inherit',
+            lineHeight: 'inherit',
+            outline: 'transparent solid 1px',
+            outlineOffset: '3px',
+            ...buildResponsiveStyles(hideLabel, getSlottedLinkStyles),
+          },
+          '&(a::-moz-focus-inner)': {
+            border: 0,
+          },
+          '&(a:focus)': {
+            outlineColor: baseColor,
+          },
+          '&(a:hover:focus)': {
+            outlineColor: baseColorHover,
+          },
+          '&(a:focus:not(:focus-visible))': {
+            outlineColor: 'transparent',
+          },
+        }),
+      }),
     },
     root: {
       display: 'flex',
@@ -91,31 +118,5 @@ export const getComponentCss = (
       color: textColor,
       ...buildResponsiveStyles(hideLabel, getLabelStyles),
     },
-    ...(!hasHref &&
-      addImportantToEachRule({
-        '::slotted': {
-          '&(a)': {
-            display: 'block',
-            textDecoration: 'none',
-            color: 'inherit',
-            lineHeight: 'inherit',
-            outline: 'transparent solid 1px',
-            outlineOffset: '3px',
-            ...buildResponsiveStyles(hideLabel, getSlottedLinkStyles),
-          },
-          '&(a::-moz-focus-inner)': {
-            border: 0,
-          },
-          '&(a:focus)': {
-            outlineColor: baseColor,
-          },
-          '&(a:hover:focus)': {
-            outlineColor: baseColorHover,
-          },
-          '&(a:focus:not(:focus-visible))': {
-            outlineColor: 'transparent',
-          },
-        },
-      })),
   });
 };

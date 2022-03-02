@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable } from '../../../utils';
 import type { AlignLabel, LinkButtonPureIconName, TextSize, ThemeExtendedElectricDark } from '../../../types';
-import { buildSlottedStyles, getCss } from '../../../utils';
+import { buildSlottedStyles, getCss, mergeDeep } from '../../../utils';
 import { getFocusSlottedPseudoStyles } from '../../../styles';
 import { getLinkButtonPureStyles } from '../../../styles/link-button-pure-styles';
 
@@ -15,24 +15,30 @@ export const getComponentCss = (
   hasSlottedAnchor: boolean,
   theme: ThemeExtendedElectricDark
 ): string => {
-  return getCss({
-    ...getLinkButtonPureStyles(
-      icon,
-      active,
-      false,
-      stretch,
-      size,
-      hideLabel,
-      alignLabel,
-      hasSubline,
-      hasSlottedAnchor,
-      theme
-    ),
-    // TODO:V3 should be removed, we shouldn't support this although some CMS are rendering an <a> with a wrapped <p>. Instead CMS output shall be post processed because it's necessary to use the PDS component anyway.
-    '::slotted(p)': {
-      margin: 0,
-    },
-  });
+  return getCss(
+    mergeDeep(
+      getLinkButtonPureStyles(
+        icon,
+        active,
+        false,
+        stretch,
+        size,
+        hideLabel,
+        alignLabel,
+        hasSubline,
+        hasSlottedAnchor,
+        theme
+      ),
+      // TODO:V3 should be removed, we shouldn't support this although some CMS are rendering an <a> with a wrapped <p>. Instead CMS output shall be post processed because it's necessary to use the PDS component anyway.
+      {
+        '@global': {
+          '::slotted(p)': {
+            margin: 0,
+          },
+        },
+      }
+    )
+  );
 };
 
 // TODO:V3 ::slotted(a) should be used instead

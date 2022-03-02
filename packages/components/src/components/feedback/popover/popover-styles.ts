@@ -92,12 +92,14 @@ export const getComponentCss = (direction: PopoverDirection): string => {
   const spacerBox = '-1rem';
 
   return getCss({
-    ':host': {
-      verticalAlign: 'top',
-      ...addImportantToEachRule({
-        position: 'relative',
-        display: 'inline-block',
-      }),
+    '@global': {
+      ':host': {
+        verticalAlign: 'top',
+        ...addImportantToEachRule({
+          position: 'relative',
+          display: 'inline-block',
+        }),
+      },
     },
     spacer: {
       position: 'absolute',
