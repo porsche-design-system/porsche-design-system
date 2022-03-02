@@ -39,8 +39,8 @@
   "dependencies": {
     "@alex_neo/jest-expect-message": "^1.0.5",
     "@porsche-design-system/visual-regression-tester": "^4.3.0",
-    "@types/jest": "^27.4.0",
-    "@types/jest-environment-puppeteer": "^4.4.1",
+    "@types/jest": "^27.4.1",
+    "@types/jest-environment-puppeteer": "^5.0.0",
     "@types/jest-expect-message": "^1.0.3",
     "jest": "^27.5.1",
     "jest-puppeteer": "^6.1.0",
