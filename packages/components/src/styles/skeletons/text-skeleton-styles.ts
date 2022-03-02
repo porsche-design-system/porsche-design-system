@@ -17,26 +17,26 @@ export const getTextSkeletonCss = (): string => {
       'p-text, p-text-list-item': {
         '&:not(.hydrated)': {
           ...extendPseudoWithTheme({
-            styleFunction: () => getTextHeadlineSkeletonStyle(),
+            styleFunction: () => getTextHeadlineSkeletonBaseStyle(),
           }),
           [`&[size=x-small], &.${PDS_SKELETON_CLASS_PREFIX}size-x-small`]: {
             ...extendPseudoWithTheme({
-              styleFunction: () => getTextHeadlineSkeletonStyle(getTypographyElementHeight(textXSmall)),
+              styleFunction: () => getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(textXSmall)),
             }),
           },
           [`&[size=medium], &.${PDS_SKELETON_CLASS_PREFIX}size-medium`]: {
             ...extendPseudoWithTheme({
-              styleFunction: () => getTextHeadlineSkeletonStyle(getTypographyElementHeight(textMedium)),
+              styleFunction: () => getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(textMedium)),
             }),
           },
           [`&[size=large], &.${PDS_SKELETON_CLASS_PREFIX}size-large`]: {
             ...extendPseudoWithTheme({
-              styleFunction: () => getTextHeadlineSkeletonStyle(getTypographyElementHeight(textLarge)),
+              styleFunction: () => getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(textLarge)),
             }),
           },
           [`&[size=x-large], &.${PDS_SKELETON_CLASS_PREFIX}size-x-large`]: {
             ...extendPseudoWithTheme({
-              styleFunction: () => getTextHeadlineSkeletonStyle(getTypographyElementHeight(textXLarge)),
+              styleFunction: () => getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(textXLarge)),
             }),
           },
           ...getThemedPseudoStyle(),
@@ -45,7 +45,14 @@ export const getTextSkeletonCss = (): string => {
     },
   });
 };
-export const getTextHeadlineSkeletonStyle = (elementHeight = getTypographyElementHeight(textSmall)): JssStyle => ({
+export const getTextHeadlineSkeletonSubStyle = (elementHeight = getTypographyElementHeight(textSmall)): JssStyle => ({
+  height: getSkeletonElementHeight(elementHeight, false),
+  '&::after': {
+    background: getElementBackgroundGradient(elementHeight),
+  },
+});
+
+export const getTextHeadlineSkeletonBaseStyle = (elementHeight = getTypographyElementHeight(textSmall)): JssStyle => ({
   display: 'block',
   position: 'relative',
   color: 'transparent',
