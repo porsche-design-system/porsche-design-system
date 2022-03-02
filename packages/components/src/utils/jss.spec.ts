@@ -1,6 +1,5 @@
 import {
   attachComponentCss,
-  buildResponsiveHostStyles,
   buildResponsiveStyles,
   buildSlottedStyles,
   getCachedComponentCss,
@@ -15,56 +14,202 @@ import type { JssStyle, Styles } from 'jss';
 
 describe('getCss()', () => {
   const data: { input: Styles; result: string }[] = [
-    { input: { ':host': { display: 'block', marginLeft: 5 } }, result: ':host{display:block;margin-left:5px}' },
     {
-      input: { ':host': { display: 'block', marginLeft: '5px !important' } },
-      result: ':host{display:block;margin-left:5px !important}',
-    },
-    {
-      input: { ':host': { display: 'block', width: 500, transition: 'width .25s ease' } },
-      result: ':host{display:block;width:500px;transition:width .25s ease}',
+      input: {
+        '@global': {
+          ':host': { display: 'block', marginLeft: '5px' },
+        },
+      },
+      result: `:host {
+  display: block;
+  margin-left: 5px;
+}`,
     },
     {
       input: {
-        ':host': { display: 'block', marginLeft: '5px !important' },
-        '@media (min-width: 760px)': { ':host': { marginRight: '5px !important' } },
+        '@global': {
+          ':host': { display: 'block', marginLeft: '5px !important' },
+        },
       },
-      result:
-        ':host{display:block;margin-left:5px !important}@media(min-width:760px){:host{margin-right:5px !important}}',
+      result: `:host {
+  display: block;
+  margin-left: 5px !important;
+}`,
     },
     {
       input: {
-        ':host': { display: 'block', marginLeft: '5px !important' },
-        '@media (min-width: 760px)': { ':host': { marginRight: '5px !important' } },
-        '@media (min-width: 1000px)': { ':host': { marginRight: '10px !important' } },
+        '@global': {
+          ':host': { display: 'block', width: '500px', transition: 'width .25s ease' },
+        },
       },
-      result:
-        ':host{display:block;margin-left:5px !important}@media(min-width:760px){:host{margin-right:5px !important}}@media(min-width:1000px){:host{margin-right:10px !important}}',
+      result: `:host {
+  display: block;
+  width: 500px;
+  transition: width .25s ease;
+}`,
     },
     {
       input: {
-        ':host': { display: 'block', marginLeft: '5px !important' },
-        '@media (min-width: 1000px)': { ':host': { marginRight: '10px !important' } },
-        '@media (min-width: 760px)': { ':host': { marginRight: '5px !important' } },
+        '@global': {
+          ':host': { display: 'block', marginLeft: '5px !important' },
+        },
+        '@media (min-width: 760px)': {
+          '@global': { ':host': { marginRight: '5px !important' } },
+        },
       },
-      result:
-        ':host{display:block;margin-left:5px !important}@media(min-width:760px){:host{margin-right:5px !important}}@media(min-width:1000px){:host{margin-right:10px !important}}',
+      result: `:host {
+  display: block;
+  margin-left: 5px !important;
+}
+@media (min-width: 760px) {
+  :host {
+    margin-right: 5px !important;
+  }
+}
+`,
     },
     {
-      input: { '@global': { div: { display: 'block' } } },
-      result: 'div{display:block}',
+      input: {
+        '@global': {
+          ':host': { display: 'block', marginLeft: '5px !important' },
+        },
+        '@media (min-width: 760px)': {
+          '@global': {
+            ':host': { marginRight: '5px !important' },
+          },
+        },
+        '@media (min-width: 1000px)': {
+          '@global': {
+            ':host': { marginRight: '10px !important' },
+          },
+        },
+      },
+      result: `:host {
+  display: block;
+  margin-left: 5px !important;
+}
+@media (min-width: 760px) {
+  :host {
+    margin-right: 5px !important;
+  }
+}
+
+@media (min-width: 1000px) {
+  :host {
+    margin-right: 10px !important;
+  }
+}
+`,
+    },
+    {
+      // flat media query
+      input: {
+        '@global': {
+          ':host': { display: 'block', marginLeft: '5px !important' },
+        },
+        '@media (min-width: 1000px)': {
+          '@global': {
+            ':host': { marginRight: '10px !important' },
+          },
+        },
+        '@media (min-width: 760px)': {
+          '@global': {
+            ':host': { marginRight: '5px !important' },
+          },
+        },
+      },
+      result: `:host {
+  display: block;
+  margin-left: 5px !important;
+}
+@media (min-width: 760px) {
+  :host {
+    margin-right: 5px !important;
+  }
+}
+
+@media (min-width: 1000px) {
+  :host {
+    margin-right: 10px !important;
+  }
+}
+`,
+    },
+    {
+      // nested media query
+      input: {
+        '@global': {
+          ':host': {
+            display: 'block',
+            marginLeft: '5px !important',
+            '@media (min-width: 1000px)': {
+              marginRight: '10px !important',
+            },
+          },
+        },
+      },
+      result: `:host {
+  display: block;
+  margin-left: 5px !important;
+}
+@media (min-width: 1000px) {
+  :host {
+    margin-right: 10px !important;
+  }
+}
+`,
+    },
+    {
+      // .class and global media query
+      input: {
+        '@global': {
+          ':host': {
+            display: 'block',
+            marginLeft: '5px !important',
+            '@media (min-width: 1000px)': {
+              marginRight: '10px !important',
+            },
+          },
+        },
+        '@media (min-width: 1000px)': {
+          root: { display: 'block' },
+        },
+      },
+      // causes two identical media queries for now
+      result: `:host {
+  display: block;
+  margin-left: 5px !important;
+}
+@media (min-width: 1000px) {
+  :host {
+    margin-right: 10px !important;
+  }
+}
+
+@media (min-width: 1000px) {
+  .root {
+    display: block;
+  }
+}
+`,
+    },
+    {
+      input: {
+        '@global': {
+          div: { display: 'block' },
+        },
+      },
+      result: `div {
+  display: block;
+}`,
     },
   ];
-  it.each(
-    data.map(({ input, result }) => [
-      JSON.stringify(input), // for test description
-      JSON.stringify(result), // for test description
-      input,
-      result,
-    ])
-  )(`should transform '%s' to %s`, (_, __, input: Styles, result: string) => {
-    expect(getCss(input)).toBe(result);
-  });
+  it.each(data.map(({ input, result }) => [input, result]))(
+    `should correctly transform %j`,
+    (input: Styles, result: string) => {
+      expect(getCss(input)).toBe(result);
+    }
+  );
 });
 
 describe('supportsConstructableStylesheets()', () => {
@@ -86,51 +231,6 @@ describe('buildSlottedStyles()', () => {
     const el = document.createElement('p-button');
     expect(buildSlottedStyles(el, { div: { marginLeft: 5 } })).toStrictEqual({
       '@global': { 'p-button': { div: { marginLeft: '5 !important' } } },
-    });
-  });
-});
-
-describe('buildResponsiveHostStyles()', () => {
-  describe('for simple getStyles', () => {
-    const getStyles = (val: number): JssStyle => ({ width: 100 * val });
-
-    it('should return flat jss for simple type', () => {
-      expect(buildResponsiveHostStyles(6, getStyles)).toStrictEqual({ ':host': { width: 600 } });
-    });
-
-    it('should return nested jss for responsive type', () => {
-      expect(buildResponsiveHostStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyles)).toStrictEqual({
-        ':host': {
-          width: 600,
-          '@media (min-width: 480px)': { width: 300 },
-          '@media (min-width: 760px)': { width: 400 },
-          '@media (min-width: 1000px)': { width: 500 },
-          '@media (min-width: 1300px)': { width: 600 },
-          '@media (min-width: 1760px)': { width: 700 },
-        },
-      });
-    });
-  });
-
-  describe('for complex getStyles', () => {
-    const getStyles = (val: number): JssStyle => ({ width: 100 * val, display: 'block' });
-
-    it('should return flat jss for simple type', () => {
-      expect(buildResponsiveHostStyles(6, getStyles)).toStrictEqual({ ':host': { width: 600, display: 'block' } });
-    });
-
-    it('should return nested jss for responsive type', () => {
-      expect(buildResponsiveHostStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyles)).toStrictEqual({
-        ':host': {
-          width: 600,
-          display: 'block',
-          '@media (min-width: 480px)': { width: 300, display: 'block' },
-          '@media (min-width: 760px)': { width: 400, display: 'block' },
-          '@media (min-width: 1000px)': { width: 500, display: 'block' },
-          '@media (min-width: 1300px)': { width: 600, display: 'block' },
-          '@media (min-width: 1760px)': { width: 700, display: 'block' },
-        },
-      });
     });
   });
 });

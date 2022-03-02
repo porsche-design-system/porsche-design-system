@@ -7,11 +7,6 @@ import { addImportantToRule, getFocusStyles, getInset, getTransition, pxToRemWit
 import { fontSize, getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
 import { isSizeInherit } from '../components/basic/typography/text/text-utils';
 
-const getHostStyles: GetStylesFunction = (stretch: boolean): JssStyle => ({
-  display: addImportantToRule(stretch ? 'block' : 'inline-block'),
-  ...(!stretch && { verticalAlign: 'top' }),
-});
-
 const getSizeStyles: GetStylesFunction = (textSize: TextSize): JssStyle => {
   if (isSizeInherit(textSize)) {
     return {
@@ -88,7 +83,7 @@ const getSlottedAnchorVisibilityStyles: GetStylesFunction = (hideLabel: boolean)
         position: 'absolute',
         ...getInset(),
         whiteSpace: 'nowrap',
-        textIndent: -999999,
+        textIndent: '-999999px',
       }
     : {
         position: 'static',
@@ -114,10 +109,15 @@ export const getLinkButtonPureStyles = (
   const hasIcon = hasVisibleIcon(icon);
 
   return {
-    ':host': {
-      position: 'relative',
-      outline: addImportantToRule(0),
-      ...buildResponsiveStyles(hasSubline ? false : stretch, getHostStyles),
+    '@global': {
+      ':host': {
+        position: 'relative',
+        outline: addImportantToRule(0),
+        ...buildResponsiveStyles(hasSubline ? false : stretch, (responsiveStretch: boolean) => ({
+          display: addImportantToRule(responsiveStretch ? 'block' : 'inline-block'),
+          ...(!responsiveStretch && { verticalAlign: 'top' }),
+        })),
+      },
     },
     root: {
       display: 'flex',
@@ -156,12 +156,9 @@ export const getLinkButtonPureStyles = (
       }),
       ...mergeDeep(
         !hasSubline &&
-          buildResponsiveStyles(
-            stretch,
-            (stretched: boolean): JssStyle => ({
-              justifyContent: stretched ? 'space-between' : 'flex-start',
-            })
-          ),
+          buildResponsiveStyles(stretch, (stretched: boolean) => ({
+            justifyContent: stretched ? 'space-between' : 'flex-start',
+          })),
         buildResponsiveStyles(size, getSizeStyles)
       ),
     },
@@ -174,11 +171,8 @@ export const getLinkButtonPureStyles = (
       label: {
         ...mergeDeep(
           buildResponsiveStyles(hideLabel, !hasSlottedAnchor ? getVisibilityStyles : getSlottedAnchorVisibilityStyles),
-          !hasSubline && buildResponsiveStyles(alignLabel, getLabelAlignmentStyles)
+          hasSubline ? { paddingLeft: pxToRemWithUnit(4) } : buildResponsiveStyles(alignLabel, getLabelAlignmentStyles)
         ),
-        ...(hasSubline && {
-          paddingLeft: pxToRemWithUnit(4),
-        }),
       },
     }),
     ...(hasSubline && {

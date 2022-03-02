@@ -56,12 +56,15 @@ export type GetFocusStylesOptions = {
   pseudo?: '::after' | '::before';
 };
 
-export const getInset = (value: 'auto' | number = 0): JssStyle => ({
-  top: value,
-  left: value,
-  right: value,
-  bottom: value,
-});
+export const getInset = (value: 'auto' | number = 0): JssStyle => {
+  value = value > 0 ? (`${value}px` as any) : value;
+  return {
+    top: value,
+    left: value,
+    right: value,
+    bottom: value,
+  };
+};
 
 export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
   const {

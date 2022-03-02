@@ -78,7 +78,9 @@ export class Modal {
   }
 
   public componentWillRender(): void {
-    warnIfAriaAndHeadingPropsAreUndefined(this.host, this.heading, this.aria);
+    if (this.open) {
+      warnIfAriaAndHeadingPropsAreUndefined(this.host, this.heading, this.aria);
+    }
     this.hasHeader = !!this.heading || hasNamedSlot(this.host, 'heading');
     attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen, this.disableCloseButton, this.hasHeader);
   }
