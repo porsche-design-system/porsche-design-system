@@ -24,7 +24,86 @@ Object {
 }
 `;
 
-exports[`getComponentCss() should return correct css 1`] = `":host{--p-banner-position-top:3.5rem;--p-banner-position-bottom:3.5rem;display:block;position:var(--p-banner-position-type,fixed);z-index:var(--p-banner-z-index,99);opacity:0;left:0;right:0;will-change:opacity,transform}.root{box-shadow:0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2)}@keyframes keyframes-mobileIn{from{opacity:0;transform:translate3d(0,calc(var(--p-banner-position-bottom) + 100%),0)}to{opacity:1;transform:translate3d(0,0,0)}}@keyframes keyframes-mobileOut{from{opacity:1;transform:translate3d(0,0,0)}to{opacity:0;transform:translate3d(0,calc(var(--p-banner-position-bottom) + 100%),0)}}@keyframes keyframes-desktopIn{from{opacity:0;transform:translate3d(0,calc(-100% - var(--p-banner-position-top)),0)}to{opacity:1;transform:translate3d(0,0,0)}}@keyframes keyframes-desktopOut{from{opacity:1;transform:translate3d(0,0,0)}to{opacity:0;transform:translate3d(0,calc(-100% - var(--p-banner-position-top)),0)}}@media(min-width:0px) and (max-width:760px){:host{bottom:var(--p-banner-position-bottom)}:host(.banner--close){animation:600ms keyframes-mobileOut cubic-bezier(0.5,1,0.89,1) forwards !important}:host(.hydrated){animation:var(--p-animation-duration__banner,600ms) keyframes-mobileIn cubic-bezier(0.45,0,0.55,1) forwards}}@media(min-width:760px){:host{top:var(--p-banner-position-top)}:host(.banner--close){animation:600ms keyframes-desktopOut cubic-bezier(0.5,1,0.89,1) forwards !important}:host(.hydrated){animation:var(--p-animation-duration__banner,600ms) keyframes-desktopIn cubic-bezier(0.45,0,0.55,1) forwards}}"`;
+exports[`getComponentCss() should return correct css 1`] = `
+":host {
+  --p-banner-position-top: 3.5rem;
+  --p-banner-position-bottom: 3.5rem;
+  display: block;
+  position: var(--p-banner-position-type,fixed);
+  z-index: var(--p-banner-z-index,99);
+  opacity: 0;
+  left: 0;
+  right: 0;
+  will-change: opacity,transform;
+}
+@keyframes mobileIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0,calc(var(--p-banner-position-bottom) + 100%),0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0,0,0);
+  }
+}
+@keyframes mobileOut {
+  from {
+    opacity: 1;
+    transform: translate3d(0,0,0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0,calc(var(--p-banner-position-bottom) + 100%),0);
+  }
+}
+@keyframes desktopIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0,calc(-100% - var(--p-banner-position-top)),0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0,0,0);
+  }
+}
+@keyframes desktopOut {
+  from {
+    opacity: 1;
+    transform: translate3d(0,0,0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0,calc(-100% - var(--p-banner-position-top)),0);
+  }
+}
+@media (min-width: 0px) and (max-width: 760px) {
+    :host {
+      bottom: var(--p-banner-position-bottom);
+    }
+    :host(.banner--close) {
+      animation: 600ms mobileOut cubic-bezier(0.5,1,0.89,1) forwards !important;
+    }
+    :host(.hydrated) {
+      animation: var(--p-animation-duration__banner,600ms) mobileIn cubic-bezier(0.45,0,0.55,1) forwards;
+    }
+}
+
+@media (min-width: 760px) {
+    :host {
+      top: var(--p-banner-position-top);
+    }
+    :host(.banner--close) {
+      animation: 600ms desktopOut cubic-bezier(0.5,1,0.89,1) forwards !important;
+    }
+    :host(.hydrated) {
+      animation: var(--p-animation-duration__banner,600ms) desktopIn cubic-bezier(0.45,0,0.55,1) forwards;
+    }
+}
+
+  .root {
+    box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2);
+  }"
+`;
 
 exports[`getKeyframesMobile() should return correct JssStyle for direction: in and bottomVar: --p-bottom-var 1`] = `
 Object {
@@ -52,6 +131,58 @@ Object {
 }
 `;
 
-exports[`getSlottedCss() should return correct css 1`] = `"p-banner a{color:inherit !important;text-decoration:underline !important;transition:color var(--p-transition-duration, .24s) ease !important;outline:1px solid transparent !important;outline-offset:1px !important}p-banner b, p-banner strong{font-weight:700 !important}p-banner em, p-banner i{font-style:normal !important}p-banner a:hover{color:#d5001c !important}p-banner a::-moz-focus-inner{border:0 !important}p-banner a:focus{outline-color:currentColor !important}p-banner a:focus:not(:focus-visible){outline-color:transparent !important}"`;
+exports[`getSlottedCss() should return correct css 1`] = `
+"p-banner a {
+  color: inherit !important;
+  text-decoration: underline !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
+}
+p-banner b, p-banner strong {
+  font-weight: 700 !important;
+}
+p-banner em, p-banner i {
+  font-style: normal !important;
+}
+p-banner a:hover {
+  color: #d5001c !important;
+}
+p-banner a::-moz-focus-inner {
+  border: 0 !important;
+}
+p-banner a:focus {
+  outline-color: currentColor !important;
+}
+p-banner a:focus:not(:focus-visible) {
+  outline-color: transparent !important;
+}"
+`;
 
-exports[`getSlottedCss() should return correct css with prefix 1`] = `"prefixed-p-banner a{color:inherit !important;text-decoration:underline !important;transition:color var(--p-transition-duration, .24s) ease !important;outline:1px solid transparent !important;outline-offset:1px !important}prefixed-p-banner b, prefixed-p-banner strong{font-weight:700 !important}prefixed-p-banner em, prefixed-p-banner i{font-style:normal !important}prefixed-p-banner a:hover{color:#d5001c !important}prefixed-p-banner a::-moz-focus-inner{border:0 !important}prefixed-p-banner a:focus{outline-color:currentColor !important}prefixed-p-banner a:focus:not(:focus-visible){outline-color:transparent !important}"`;
+exports[`getSlottedCss() should return correct css with prefix 1`] = `
+"prefixed-p-banner a {
+  color: inherit !important;
+  text-decoration: underline !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
+}
+prefixed-p-banner b, prefixed-p-banner strong {
+  font-weight: 700 !important;
+}
+prefixed-p-banner em, prefixed-p-banner i {
+  font-style: normal !important;
+}
+prefixed-p-banner a:hover {
+  color: #d5001c !important;
+}
+prefixed-p-banner a::-moz-focus-inner {
+  border: 0 !important;
+}
+prefixed-p-banner a:focus {
+  outline-color: currentColor !important;
+}
+prefixed-p-banner a:focus:not(:focus-visible) {
+  outline-color: transparent !important;
+}"
+`;

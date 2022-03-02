@@ -1,4 +1,3 @@
-import type { JssStyle } from 'jss';
 import type {
   FlexItemAlignSelf,
   FlexItemAlignSelfType,
@@ -13,8 +12,7 @@ import type {
   FlexItemWidth,
   FlexItemWidthType,
 } from './flex-item-utils';
-import type { GetStylesFunction } from '../../../../utils';
-import { buildResponsiveHostStyles, getCss, mergeDeep } from '../../../../utils';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../../../utils';
 import { addImportantToEachRule } from '../../../../styles';
 
 const flexItemWidths: { [key in Exclude<FlexItemWidthType, 'auto'>]: number } & { none: number; auto: string } = {
@@ -28,24 +26,6 @@ const flexItemWidths: { [key in Exclude<FlexItemWidthType, 'auto'>]: number } & 
   auto: 'auto',
 };
 
-const getWidthStyles: GetStylesFunction = (width: FlexItemWidthType): JssStyle => ({
-  width: `${flexItemWidths[width]}%`,
-});
-
-const getOffsetStyles: GetStylesFunction = (offset: FlexItemOffsetType): JssStyle => ({
-  marginLeft: `${flexItemWidths[offset]}%`,
-});
-
-const getAlignSelfStyles: GetStylesFunction = (alignSelf: FlexItemAlignSelfType): JssStyle => ({ alignSelf });
-
-const getGrowStyles: GetStylesFunction = (flexGrow: FlexItemGrowType): JssStyle => ({ flexGrow });
-
-const getShrinkStyles: GetStylesFunction = (flexShrink: FlexItemShrinkType): JssStyle => ({ flexShrink });
-
-const getFlexStyles: GetStylesFunction = (flex: FlexItemFlexType): JssStyle => ({
-  flex: flex === 'equal' ? '1 1 0' : flex,
-});
-
 export const getComponentCss = (
   width: FlexItemWidth,
   offset: FlexItemOffset,
@@ -54,24 +34,30 @@ export const getComponentCss = (
   shrink: FlexItemShrink,
   flex: FlexItemFlex
 ): string => {
-  return getCss(
-    addImportantToEachRule(
-      mergeDeep(
-        {
-          ':host': {
-            boxSizing: 'border-box',
-          },
-        },
-        buildResponsiveHostStyles(width, getWidthStyles),
-        buildResponsiveHostStyles(offset, getOffsetStyles),
-        buildResponsiveHostStyles(alignSelf, getAlignSelfStyles),
-        flex !== 'initial' // flex shorthand conflicts with grow and shrink, which means even default grow or shrink props would override flex
-          ? buildResponsiveHostStyles(flex, getFlexStyles)
-          : mergeDeep(
-              buildResponsiveHostStyles(grow, getGrowStyles),
-              buildResponsiveHostStyles(shrink, getShrinkStyles)
-            )
-      )
-    )
-  );
+  return getCss({
+    '@global': {
+      ':host': addImportantToEachRule({
+        boxSizing: 'border-box',
+        ...mergeDeep(
+          buildResponsiveStyles(width, (widthResponsive: FlexItemWidthType) => ({
+            width: `${flexItemWidths[widthResponsive]}%`,
+          })),
+          buildResponsiveStyles(offset, (offsetResponsive: FlexItemOffsetType) => ({
+            marginLeft: `${flexItemWidths[offsetResponsive]}%`,
+          })),
+          buildResponsiveStyles(alignSelf, (alignSelfResponsive: FlexItemAlignSelfType) => ({
+            alignSelf: alignSelfResponsive,
+          })),
+          flex !== 'initial' // flex shorthand conflicts with grow and shrink, which means even default grow or shrink props would override flex
+            ? buildResponsiveStyles(flex, (flexResponsive: FlexItemFlexType) => ({
+                flex: flexResponsive === 'equal' ? '1 1 0' : flexResponsive,
+              }))
+            : mergeDeep(
+                buildResponsiveStyles(grow, (flexGrow: FlexItemGrowType) => ({ flexGrow })),
+                buildResponsiveStyles(shrink, (flexShrink: FlexItemShrinkType) => ({ flexShrink }))
+              )
+        ),
+      }),
+    },
+  });
 };

@@ -20,34 +20,43 @@ export const getComponentCss = (
   const defaultPadding = pxToRemWithUnit(hasVisibleState ? 10 : 11);
 
   return getCss({
-    ':host': {
-      display: 'block',
-    },
-    '@global': mergeDeep(
-      addImportantToEachRule(
-        getBaseChildStyles('textarea', state, theme, {
-          // 36 = 2 * 6 + 24 where 6 is the bottom distance and 24 the height of the text
-          padding: hasCounter ? [defaultPadding, defaultPadding, pxToRemWithUnit(36)].join(' ') : defaultPadding,
-          resize: 'vertical',
-        })
+    '@global': {
+      ':host': {
+        display: 'block',
+      },
+      ...mergeDeep(
+        addImportantToEachRule(
+          getBaseChildStyles('textarea', state, theme, {
+            // 36 = 2 * 6 + 24 where 6 is the bottom distance and 24 the height of the text
+            padding: hasCounter ? [defaultPadding, defaultPadding, pxToRemWithUnit(36)].join(' ') : defaultPadding,
+            resize: 'vertical',
+          })
+        ),
+        {
+          '::slotted(textarea)': {
+            minHeight: pxToRemWithUnit(192), // min-height should be overridable
+          },
+        } as Styles
       ),
-      {
-        '::slotted(textarea)': {
-          minHeight: pxToRemWithUnit(192), // min-height should be overridable
+    },
+    ...getLabelStyles(
+      'textarea',
+      hideLabel,
+      state,
+      theme,
+      hasCounter && {
+        counter: {
+          position: 'absolute',
+          bottom: pxToRemWithUnit(6),
+          right: pxToRemWithUnit(12),
+          zIndex: 1,
+          color: contrastMediumColor,
         },
-      } as Styles
+      }
     ),
-    ...getLabelStyles('textarea', hideLabel, state, theme, hasCounter ? '$counter' : ''),
     ...getFunctionalComponentRequiredStyles(theme),
     ...getFunctionalComponentStateMessageStyles(theme, state),
     ...(hasCounter && {
-      counter: {
-        position: 'absolute',
-        bottom: pxToRemWithUnit(6),
-        right: pxToRemWithUnit(12),
-        zIndex: 1,
-        color: contrastMediumColor,
-      },
       'sr-only': {
         ...getScreenReaderOnlyJssStyle(),
         padding: 0,

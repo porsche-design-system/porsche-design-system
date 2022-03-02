@@ -10,8 +10,10 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   return getCss({
-    ':host': {
-      display: 'flex',
+    '@global': {
+      ':host': {
+        display: 'flex',
+      },
     },
     root: {
       ...getContentWrapperJssStyle(width),

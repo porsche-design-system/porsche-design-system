@@ -106,18 +106,11 @@ export const getComponentCss = (
   } = getColors(checked, isDisabledOrLoading, theme);
 
   return getCss({
-    ':host': addImportantToEachRule({
-      display: 'flex',
-      outline: 0,
-    }),
-    root: {
-      display: 'flex',
-      minWidth: 0, // prevents flex child to overflow max available parent size
-      minHeight: 0, // prevents flex child to overflow max available parent size
-      cursor: isDisabledOrLoading ? 'auto' : 'pointer',
-      ...buildResponsiveStyles(stretch, getStretchStyles),
-    },
     '@global': {
+      ':host': addImportantToEachRule({
+        display: 'flex',
+        outline: 0,
+      }),
       button: {
         position: 'relative',
         width: pxToRemWithUnit(48),
@@ -151,6 +144,13 @@ export const getComponentCss = (
           boxShadow: 'none',
         },
       },
+    },
+    root: {
+      display: 'flex',
+      minWidth: 0, // prevents flex child to overflow max available parent size
+      minHeight: 0, // prevents flex child to overflow max available parent size
+      cursor: isDisabledOrLoading ? 'auto' : 'pointer',
+      ...buildResponsiveStyles(stretch, getStretchStyles),
     },
     text: {
       minWidth: 0, // prevents flex child to overflow max available parent size

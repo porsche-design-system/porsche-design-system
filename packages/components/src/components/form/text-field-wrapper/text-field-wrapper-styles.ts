@@ -28,10 +28,10 @@ export const getComponentCss = (
   const hasVisibleState = isVisibleFormState(state);
 
   return getCss({
-    ':host': {
-      display: 'block',
-    },
     '@global': {
+      ':host': {
+        display: 'block',
+      },
       ...addImportantToEachRule({
         ...getBaseChildStyles(
           'input',
@@ -46,12 +46,12 @@ export const getComponentCss = (
           MozAppearance: 'textfield', // hides up/down spin button for Firefox
         },
         // Reset webkit autofill styles
-        '::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus)':
+        '::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus)':
           {
             WebkitBackgroundClip: 'padding-box',
           },
         ...(isPassword && {
-          '::slotted(input[type="password"]), ::slotted(input[type="text"])': {
+          '::slotted(input[type="password"]),::slotted(input[type="text"])': {
             paddingRight: pxToRemWithUnit(48),
           },
         }),
@@ -93,24 +93,29 @@ export const getComponentCss = (
       display: 'block',
       position: 'relative',
     },
-    ...getLabelStyles('input', hideLabel, state, theme, hasUnitOrCounter ? '$unit' : ''),
+    ...getLabelStyles(
+      'input',
+      hideLabel,
+      state,
+      theme,
+      hasUnitOrCounter && {
+        unit: {
+          position: 'absolute',
+          bottom: 0,
+          [unitPosition === 'suffix' ? 'right' : 'left']: 0,
+          padding: pxToRemWithUnit(12),
+          zIndex: 1,
+          boxSizing: 'border-box',
+          color: contrastMediumColor,
+        },
+      }
+    ),
     ...getFunctionalComponentRequiredStyles(theme),
     ...getFunctionalComponentStateMessageStyles(theme, state),
     'sr-only': {
       ...getScreenReaderOnlyJssStyle(),
       padding: 0,
     },
-    ...(hasUnitOrCounter && {
-      unit: {
-        position: 'absolute',
-        bottom: 0,
-        [unitPosition === 'suffix' ? 'right' : 'left']: 0,
-        padding: pxToRemWithUnit(12),
-        zIndex: 1,
-        boxSizing: 'border-box',
-        color: contrastMediumColor,
-      },
-    }),
   });
 };
 
