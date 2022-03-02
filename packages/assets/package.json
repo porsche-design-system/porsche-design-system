@@ -58,8 +58,8 @@
     "@types/http-server": "^0.12.1",
     "http-server": "^14.1.0",
     "rollup": "^2.67.2",
-    "ts-node": "^10.5.0",
-    "typescript": "~4.5.5"
+    "ts-node": "^10.6.0",
+    "typescript": "~4.6.2"
   },
   "files": [
     "dist/"

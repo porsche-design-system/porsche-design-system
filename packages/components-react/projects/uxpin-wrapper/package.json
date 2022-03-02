@@ -23,6 +23,6 @@
     "@uxpin/merge-cli": "^2.7.10",
     "babel-loader": "^8.2.3",
     "eslint-loader": "^4.0.2",
-    "typescript": "~4.5.5"
+    "typescript": "~4.6.2"
   }
 }
