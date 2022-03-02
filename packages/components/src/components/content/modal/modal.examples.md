@@ -28,7 +28,7 @@ In order to get notified when the Modal gets closed by clicking the `x` button, 
 The size of `p-modal` adjusts itself to the content with a predefined min/max width.
 
 <Playground :markup="basic">
-  <select v-model="width">
+  <select v-model="width" aria-label="Select width">
     <option disabled>Select a modal width</option>
     <option value="minWidth">min width</option>
     <option value="maxWidth">max width</option>

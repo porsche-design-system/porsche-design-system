@@ -18,7 +18,7 @@ Review the [notification decision tree](components/notifications/decision-tree) 
 Coloring can be controlled via the `state` property.
 
 <Playground :markup="stateDemo" :config="config">
-  <select v-model="state">
+  <select v-model="state" aria-label="Select state">
     <option disabled>Select a state</option>
     <option value="neutral">Neutral</option>
     <option value="success">Success</option>
