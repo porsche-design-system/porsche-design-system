@@ -1,3 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css 1`] = `":host{display:block}.root{margin-bottom:0.5rem}"`;
+exports[`getComponentCss() should return correct css 1`] = `
+":host {
+  display: block;
+}
+.root {
+  margin-bottom: 0.5rem;
+}"
+`;

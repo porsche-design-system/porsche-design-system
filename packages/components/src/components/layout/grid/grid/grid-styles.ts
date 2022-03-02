@@ -8,13 +8,9 @@ import type {
   GridWrapType,
 } from './grid-utils';
 import type { GetStylesFunction } from '../../../../utils';
-import { buildResponsiveHostStyles, getCss, mergeDeep, throwIfValueIsInvalid } from '../../../../utils';
+import { buildResponsiveStyles, getCss, mergeDeep, throwIfValueIsInvalid } from '../../../../utils';
 import { addImportantToEachRule, pxToRemWithUnit } from '../../../../styles';
 import { GRID_GUTTERS } from './grid-utils';
-
-const getDirectionStyles: GetStylesFunction = (flexDirection: GridDirectionType): JssStyle => ({ flexDirection });
-
-const getWrapStyles: GetStylesFunction = (flexWrap: GridWrapType): JssStyle => ({ flexWrap });
 
 const getGutterStyles: GetStylesFunction = (gutter: GridGutterType): JssStyle => {
   throwIfValueIsInvalid(gutter, GRID_GUTTERS, 'gutter');
@@ -27,20 +23,18 @@ const getGutterStyles: GetStylesFunction = (gutter: GridGutterType): JssStyle =>
 };
 
 export const getComponentCss = (direction: GridDirection, wrap: GridWrap, gutter: GridGutter): string => {
-  return getCss(
-    addImportantToEachRule(
-      mergeDeep(
-        {
-          ':host': {
-            display: 'flex',
-            flex: 'auto',
-            width: 'auto',
-          },
-        },
-        buildResponsiveHostStyles(direction, getDirectionStyles),
-        buildResponsiveHostStyles(wrap, getWrapStyles),
-        buildResponsiveHostStyles(gutter, getGutterStyles)
-      )
-    )
-  );
+  return getCss({
+    '@global': {
+      ':host': addImportantToEachRule({
+        display: 'flex',
+        flex: 'auto',
+        width: 'auto',
+        ...mergeDeep(
+          buildResponsiveStyles(direction, (flexDirection: GridDirectionType) => ({ flexDirection })),
+          buildResponsiveStyles(wrap, (flexWrap: GridWrapType) => ({ flexWrap })),
+          buildResponsiveStyles(gutter, getGutterStyles)
+        ),
+      }),
+    },
+  });
 };
