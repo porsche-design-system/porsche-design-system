@@ -5,26 +5,26 @@
 </style>
 
 <div class="playground light" title="should render button skeleton">
-  <p-button>Some label</p-button>
+  <p-button-pure>Some label</p-button-pure>
 </div>
 <div class="playground dark" title="should render button skeleton on dark theme">
-  <p-button theme="dark">Some label</p-button>
+  <p-button-pure theme="dark">Some label</p-button-pure>
 </div>
 
 <div class="playground light" title="should render button skeleton without label">
-  <p-button hide-label="true">Some label</p-button>
+  <p-button-pure hide-label="true">Some label</p-button-pure>
 </div>
 <div class="playground dark" title="should render button skeleton without label on dark theme">
-  <p-button hide-label="true" theme="dark">Some label</p-button>
+  <p-button-pure hide-label="true" theme="dark">Some label</p-button-pure>
 </div>
 
 <div class="playground light" title="should render button skeleton with multiline label">
-  <p-button style="width: 240px">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button>
+  <p-button-pure style="width: 240px">Lorem ipsum dolor sit amet, consetetur sadipscing</p-button-pure>
 </div>
 
 <script>
    porscheDesignSystem.componentsReady().then(() => {
-    document.querySelectorAll('p-button').forEach((button) => {
+    document.querySelectorAll('p-button-pure').forEach((button) => {
       button.classList.remove('hydrated');
     });
   });

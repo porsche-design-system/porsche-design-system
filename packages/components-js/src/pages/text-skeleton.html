@@ -1,0 +1,49 @@
+<div class="playground" title="should show text skeleton in different sizes">
+  <p-text size="x-small">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text>The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="medium">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="large">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="x-large">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text size="inherit" style="font-size: 48px">The quick brown fox jumps over the lazy dog</p-text>
+</div>
+
+<div class="playground" title="should show text skeleton text in different sizes on different viewports">
+  <p-text size="{ base: 'small', m: 'inherit', l: 'medium' }" style="font-size: 80px">
+    The quick brown fox jumps over the lazy dog
+  </p-text>
+</div>
+
+<div class="playground dark" title="should show text skeleton with different color variants on dark background">
+  <p-text theme="dark" color="default" style="color: deeppink">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text theme="dark" color="brand" style="color: deeppink">The quick brown fox jumps over the lazy dog</p-text>
+  <p-text theme="dark" color="neutral-contrast-high" style="color: deeppink">
+    The quick brown fox jumps over the lazy dog
+  </p-text>
+  <p-text theme="dark" color="neutral-contrast-medium" style="color: deeppink">
+    The quick brown fox jumps over the lazy dog
+  </p-text>
+  <p-text theme="dark" color="neutral-contrast-low" style="color: deeppink">
+    The quick brown fox jumps over the lazy dog
+  </p-text>
+  <p-text theme="dark" color="notification-success" style="color: deeppink">
+    The quick brown fox jumps over the lazy dog
+  </p-text>
+  <p-text theme="dark" color="notification-warning" style="color: deeppink">
+    The quick brown fox jumps over the lazy dog
+  </p-text>
+  <p-text theme="dark" color="notification-error" style="color: deeppink">
+    The quick brown fox jumps over the lazy dog
+  </p-text>
+  <p-text theme="dark" color="notification-neutral" style="color: deeppink">
+    The quick brown fox jumps over the lazy dog
+  </p-text>
+  <p-text theme="dark" color="inherit" style="color: deeppink">The quick brown fox jumps over the lazy dog</p-text>
+</div>
+
+<script>
+   porscheDesignSystem.componentsReady().then(() => {
+    document.querySelectorAll('p-text').forEach((text) => {
+      text.classList.remove('hydrated');
+    });
+  });
+</script>
