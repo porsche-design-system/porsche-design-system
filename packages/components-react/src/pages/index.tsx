@@ -15,18 +15,26 @@ import { BannerPage } from './Banner';
 import { ButtonPage } from './Button';
 import { ButtonGroupPage } from './ButtonGroup';
 import { ButtonPurePage } from './ButtonPure';
+import { ButtonPureSkeletonPage } from './ButtonPureSkeleton';
+import { ButtonSkeletonPage } from './ButtonSkeleton';
 import { CheckboxWrapperPage } from './CheckboxWrapper';
+import { CheckboxWrapperSkeletonPage } from './CheckboxWrapperSkeleton';
 import { ContentWrapperPage } from './ContentWrapper';
 import { DividerPage } from './Divider';
 import { FieldsetWrapperPage } from './FieldsetWrapper';
+import { FieldsetWrapperSkeletonPage } from './FieldsetWrapperSkeleton';
 import { FlexPage } from './Flex';
 import { GridPage } from './Grid';
 import { HeadlinePage } from './Headline';
+import { HeadlineSkeletonPage } from './HeadlineSkeleton';
 import { IconPage } from './Icon';
 import { InlineNotificationPage } from './InlineNotification';
 import { LinkPage } from './Link';
 import { LinkPurePage } from './LinkPure';
+import { LinkPureSkeletonPage } from './LinkPureSkeleton';
+import { LinkSkeletonPage } from './LinkSkeleton';
 import { LinkSocialPage } from './LinkSocial';
+import { LinkSocialSkeletonPage } from './LinkSocialSkeleton';
 import { MarquePage } from './Marque';
 import { ModalBasicPage } from './ModalBasic';
 import { ModalFullscreenPage } from './ModalFullscreen';
@@ -39,15 +47,20 @@ import { ModalSlottedHeadingPage } from './ModalSlottedHeading';
 import { PaginationPage } from './Pagination';
 import { PopoverPage } from './Popover';
 import { RadioButtonWrapperPage } from './RadioButtonWrapper';
+import { RadioButtonWrapperSkeletonPage } from './RadioButtonWrapperSkeleton';
 import { SelectWrapperPage } from './SelectWrapper';
+import { SelectWrapperSkeletonPage } from './SelectWrapperSkeleton';
 import { SpinnerPage } from './Spinner';
 import { SwitchPage } from './Switch';
 import { TabsPage } from './Tabs';
 import { TabsBarPage } from './TabsBar';
 import { TextPage } from './Text';
 import { TextareaWrapperPage } from './TextareaWrapper';
+import { TextareaWrapperSkeletonPage } from './TextareaWrapperSkeleton';
 import { TextFieldWrapperPage } from './TextFieldWrapper';
+import { TextFieldWrapperSkeletonPage } from './TextFieldWrapperSkeleton';
 import { TextListPage } from './TextList';
+import { TextSkeletonPage } from './TextSkeleton';
 import { ToastBasicPage } from './ToastBasic';
 import { ToastBasicDarkPage } from './ToastBasicDark';
 import { ToastBasicLongTextPage } from './ToastBasicLongText';
@@ -85,9 +98,24 @@ export const generatedRoutes: RouteType[] = [
     element: <ButtonPurePage />,
   },
   {
+    name: 'Button Pure Skeleton',
+    path: '/button-pure-skeleton',
+    element: <ButtonPureSkeletonPage />,
+  },
+  {
+    name: 'Button Skeleton',
+    path: '/button-skeleton',
+    element: <ButtonSkeletonPage />,
+  },
+  {
     name: 'Checkbox Wrapper',
     path: '/checkbox-wrapper',
     element: <CheckboxWrapperPage />,
+  },
+  {
+    name: 'Checkbox Wrapper Skeleton',
+    path: '/checkbox-wrapper-skeleton',
+    element: <CheckboxWrapperSkeletonPage />,
   },
   {
     name: 'Content Wrapper',
@@ -105,6 +133,11 @@ export const generatedRoutes: RouteType[] = [
     element: <FieldsetWrapperPage />,
   },
   {
+    name: 'Fieldset Wrapper Skeleton',
+    path: '/fieldset-wrapper-skeleton',
+    element: <FieldsetWrapperSkeletonPage />,
+  },
+  {
     name: 'Flex',
     path: '/flex',
     element: <FlexPage />,
@@ -118,6 +151,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Headline',
     path: '/headline',
     element: <HeadlinePage />,
+  },
+  {
+    name: 'Headline Skeleton',
+    path: '/headline-skeleton',
+    element: <HeadlineSkeletonPage />,
   },
   {
     name: 'Icon',
@@ -140,9 +178,24 @@ export const generatedRoutes: RouteType[] = [
     element: <LinkPurePage />,
   },
   {
+    name: 'Link Pure Skeleton',
+    path: '/link-pure-skeleton',
+    element: <LinkPureSkeletonPage />,
+  },
+  {
+    name: 'Link Skeleton',
+    path: '/link-skeleton',
+    element: <LinkSkeletonPage />,
+  },
+  {
     name: 'Link Social',
     path: '/link-social',
     element: <LinkSocialPage />,
+  },
+  {
+    name: 'Link Social Skeleton',
+    path: '/link-social-skeleton',
+    element: <LinkSocialSkeletonPage />,
   },
   {
     name: 'Marque',
@@ -205,9 +258,19 @@ export const generatedRoutes: RouteType[] = [
     element: <RadioButtonWrapperPage />,
   },
   {
+    name: 'Radio Button Wrapper Skeleton',
+    path: '/radio-button-wrapper-skeleton',
+    element: <RadioButtonWrapperSkeletonPage />,
+  },
+  {
     name: 'Select Wrapper',
     path: '/select-wrapper',
     element: <SelectWrapperPage />,
+  },
+  {
+    name: 'Select Wrapper Skeleton',
+    path: '/select-wrapper-skeleton',
+    element: <SelectWrapperSkeletonPage />,
   },
   {
     name: 'Spinner',
@@ -240,14 +303,29 @@ export const generatedRoutes: RouteType[] = [
     element: <TextareaWrapperPage />,
   },
   {
+    name: 'Textarea Wrapper Skeleton',
+    path: '/textarea-wrapper-skeleton',
+    element: <TextareaWrapperSkeletonPage />,
+  },
+  {
     name: 'Text Field Wrapper',
     path: '/text-field-wrapper',
     element: <TextFieldWrapperPage />,
   },
   {
+    name: 'Text Field Wrapper Skeleton',
+    path: '/text-field-wrapper-skeleton',
+    element: <TextFieldWrapperSkeletonPage />,
+  },
+  {
     name: 'Text List',
     path: '/text-list',
     element: <TextListPage />,
+  },
+  {
+    name: 'Text Skeleton',
+    path: '/text-skeleton',
+    element: <TextSkeletonPage />,
   },
   {
     name: 'Toast Basic',

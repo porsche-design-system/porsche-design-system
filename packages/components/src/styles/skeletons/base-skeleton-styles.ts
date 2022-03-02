@@ -58,7 +58,7 @@ export const getPseudoElementStyle = (): JssStyle => {
     content: '""',
     visibility: 'visible',
     background: 'currentColor',
-    animation: 'opacity 1.5s ease-in-out infinite',
+    animation: 'opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite',
   };
 };
 
