@@ -5,7 +5,12 @@
         {{ framework }}
       </button>
     </p-tabs-bar>
-    <pre :class="highlightedLanguage"><code v-html="highlightedMarkup"></code></pre>
+    <pre
+      :class="highlightedLanguage"
+      tabindex="0"
+      role="region"
+      aria-label="Code sample"
+    ><code v-html="highlightedMarkup"></code></pre>
   </div>
 </template>
 
@@ -249,6 +254,9 @@
     max-height: 20rem;
     overflow: auto;
     margin-top: $p-spacing-16;
+    &:focus-visible {
+      @include p-focus;
+    }
 
     code ::v-deep {
       .token.important,

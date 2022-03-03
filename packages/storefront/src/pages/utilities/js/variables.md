@@ -7,7 +7,7 @@
 A light (default) and dark theme is available depending on which background it's used.
 
 <br>
-<select id="theme-selector" v-model="theme" :data-selected="theme">
+<select id="theme-selector" v-model="theme" :data-selected="theme" aria-label="Select theme">
   <option disabled>Select a theme</option>
   <option value="light">Theme light</option>
   <option value="dark">Theme dark</option>
