@@ -1,18 +1,26 @@
 module.exports = {
+  multipass: true,
   floatPrecision: 3,
   plugins: [
-    // { name: 'removeViewBox' }, // ensures view box is not changed
-    { name: 'cleanupIDs' },
-    { name: 'removeDimensions' }, // ensures custom width + height is settable by addAttributesToSVGElement plugin
-    { name: 'sortAttrs' }, // sort element attributes for epic readability
     {
-      name: 'removeAttrs',
+      name: 'preset-default',
       params: {
-        attrs: '(stroke|fill)', // ensures coloring is applicable by CSS
+        overrides: {
+          removeViewBox: false, // ensures view box is not changed
+        },
+      },
+    },
+    'sortAttrs', // sort element attributes for epic readability
+    'convertStyleToAttrs', // convert styles into attributes
+    {
+      name: 'removeAttrs', // remove attributes by pattern
+      params: {
+        elemSeparator: '>',
+        attrs: '(stroke|fill|xml:space)', // ensures coloring is applicable by CSS
       },
     },
     {
-      name: 'addAttributesToSVGElement',
+      name: 'addAttributesToSVGElement', // adds attributes to an outer <svg> element
       params: {
         attributes: [
           { width: '100%' }, // ensures optimal scaling behaviour
@@ -20,7 +28,5 @@ module.exports = {
         ],
       },
     },
-    { name: 'convertPathData', params: { noSpaceAfterFlags: false } },
-    { name: 'mergePaths', params: { noSpaceAfterFlags: false } },
   ],
 };
