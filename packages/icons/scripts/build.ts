@@ -12,7 +12,7 @@ type Manifest = {
 
 const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
 
-const createManifestAndOptimizeIcons = async (cdn: string, files: string[], config: OptimizeOptions): Promise<void> => {
+const createManifestAndOptimizeIcons = (cdn: string, files: string[], config: OptimizeOptions): void => {
   fs.rmdirSync(path.normalize('./dist'), { recursive: true });
   fs.mkdirSync(path.normalize('./dist/icons'), { recursive: true });
 
@@ -22,7 +22,7 @@ const createManifestAndOptimizeIcons = async (cdn: string, files: string[], conf
     const svgRawPath = path.normalize(file);
     const svgRawName = path.basename(svgRawPath, '.svg');
     const svgRawData = fs.readFileSync(svgRawPath, 'utf8');
-    const svgOptimizedData = ((await optimize(svgRawData, config)) as OptimizedSvg).data;
+    const svgOptimizedData = (optimize(svgRawData, config) as OptimizedSvg).data;
     const svgOptimizedHash = toHash(svgOptimizedData);
     const svgOptimizedFilename = `${paramCase(svgRawName)}.min.${svgOptimizedHash}.svg`;
     const svgOptimizedPath = path.normalize(`./dist/icons/${svgOptimizedFilename}`);
@@ -79,10 +79,7 @@ const generate = (): void => {
   const files = globby.sync('./src/**/*.svg').sort();
   const config: OptimizeOptions = require('../svgo.config.js');
 
-  createManifestAndOptimizeIcons(cdn, files, config).catch((e) => {
-    console.error(e);
-    process.exit(1);
-  });
+  createManifestAndOptimizeIcons(cdn, files, config);
 };
 
 generate();
