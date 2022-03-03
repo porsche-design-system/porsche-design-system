@@ -50,6 +50,7 @@
     "concurrently": "^7.0.0",
     "globby": "^11.0.4",
     "local-web-server": "^5.1.1",
+    "postcss-normalize": "^10.0.1",
     "react-scripts": "^5.0.0",
     "rollup": "^2.69.0",
     "rollup-plugin-modify": "^3.0.0",
