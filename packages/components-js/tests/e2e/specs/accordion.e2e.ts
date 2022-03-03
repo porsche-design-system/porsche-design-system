@@ -172,7 +172,7 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
       return content.style.cssText;
     });
 
-    expect(inlineStyle).toMatchInlineSnapshot(`"height: 1.656rem;"`);
+    expect(inlineStyle).toMatchInlineSnapshot(`"height: 1.625rem;"`);
   });
 
   it('should set correct inline content height using MutationObserver and window resize listener', async () => {
@@ -192,7 +192,7 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
       return content.style.cssText;
     });
 
-    expect(inlineStyle).toMatchInlineSnapshot(`"height: 1.656rem;"`);
+    expect(inlineStyle).toMatchInlineSnapshot(`"height: 1.625rem;"`);
   });
 
   describe('events', () => {
