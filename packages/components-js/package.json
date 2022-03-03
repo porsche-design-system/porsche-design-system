@@ -69,7 +69,7 @@
     "devtools-protocol": "^0.0.975963",
     "globby": "^11.0.4",
     "js-beautify": "^1.14.0",
-    "jsdom": "^17.0.0",
+    "jsdom": "^19.0.0",
     "local-web-server": "^5.1.1",
     "ts-node": "^10.6.0",
     "typescript": "~4.6.2",
