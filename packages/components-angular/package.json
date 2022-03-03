@@ -13,8 +13,8 @@
     "build-app": "ng build --configuration production",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
-    "test:e2e": "yarn build-app && PORT=4200 BROWSER=none jest --colors -c tests/e2e/config/jest.config.ts",
-    "test:vrt": "if [ \"$CI\" != true ]; then yarn build-app; fi && PORT=4200 BROWSER=none jest --colors -c tests/vrt/config/jest.config.ts",
+    "test:e2e": "yarn build-app && PORT=4200 jest --colors -c tests/e2e/config/jest.config.ts",
+    "test:vrt": "if [ \"$CI\" != true ]; then yarn build-app; fi && PORT=4200 jest --colors -c tests/vrt/config/jest.config.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist && rm -rf ./tmp && rm -rf ./out-tsc && rm -rf ./bazel-out"
