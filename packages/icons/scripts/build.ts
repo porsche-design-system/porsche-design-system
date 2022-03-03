@@ -1,8 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
-import * as yaml from 'js-yaml';
-import SVGO = require('svgo');
+import { optimize, OptimizedSvg, OptimizeOptions } from 'svgo';
 import globby from 'globby';
 import { paramCase, camelCase } from 'change-case';
 import { CDN_BASE_URL_DYNAMIC, CDN_BASE_PATH_ICONS, CDN_KEY_TYPE_DEFINITION } from '../../../cdn.config';
@@ -13,18 +12,17 @@ type Manifest = {
 
 const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
 
-const createManifestAndOptimizeIcons = async (cdn: string, files: string[], config: SVGO.Options): Promise<void> => {
+const createManifestAndOptimizeIcons = async (cdn: string, files: string[], config: OptimizeOptions): Promise<void> => {
   fs.rmdirSync(path.normalize('./dist'), { recursive: true });
   fs.mkdirSync(path.normalize('./dist/icons'), { recursive: true });
 
   const manifest: Manifest = {};
-  const svgo = new SVGO(config);
 
   for (const file of files) {
     const svgRawPath = path.normalize(file);
     const svgRawName = path.basename(svgRawPath, '.svg');
     const svgRawData = fs.readFileSync(svgRawPath, 'utf8');
-    const svgOptimizedData = (await svgo.optimize(svgRawData)).data;
+    const svgOptimizedData = ((await optimize(svgRawData, config)) as OptimizedSvg).data;
     const svgOptimizedHash = toHash(svgOptimizedData);
     const svgOptimizedFilename = `${paramCase(svgRawName)}.min.${svgOptimizedHash}.svg`;
     const svgOptimizedPath = path.normalize(`./dist/icons/${svgOptimizedFilename}`);
@@ -79,7 +77,7 @@ export type IconNameCamelCase = ${sortedManifestKeys.map((x) => `'${x}'`).join('
 const generate = (): void => {
   const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_ICONS}'`;
   const files = globby.sync('./src/**/*.svg').sort();
-  const config = yaml.load(fs.readFileSync(path.normalize('./.svgo.yml'), 'utf8')) as SVGO.Options;
+  const config: OptimizeOptions = require('../svgo.config.js');
 
   createManifestAndOptimizeIcons(cdn, files, config).catch((e) => {
     console.error(e);
