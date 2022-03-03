@@ -1,11 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 import * as globby from 'globby';
-import { npmDistTmpSubPath } from '../../../../components-js/projects/components-wrapper/environment';
 import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 
 const buildDirectory = path.resolve('./build/static/js');
-const [mainChunkFilePath] = globby.sync(`${buildDirectory}/main.*.chunk.js`);
+const [mainChunkFilePath] = globby.sync(`${buildDirectory}/main.*.js`);
 
 const mainChunkFileContent = fs.readFileSync(mainChunkFilePath, 'utf8');
 
