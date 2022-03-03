@@ -229,13 +229,8 @@ describe('link', () => {
       const link = await getLink();
       const icon = await getIcon();
 
-      const snapshotIcon = await page.accessibility.snapshot({
-        root: icon,
-        interestingOnly: false,
-      });
-
-      await expectA11yToMatchSnapshot(page, link, { interestingOnly: false });
-      expect(snapshotIcon).toBeNull();
+      await expectA11yToMatchSnapshot(page, link);
+      await expectA11yToMatchSnapshot(page, icon, { interestingOnly: false });
     });
 
     it('should expose correct accessibility tree if accessibility properties are set', async () => {
