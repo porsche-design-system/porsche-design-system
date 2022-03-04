@@ -109,7 +109,7 @@ This will force any text to never wrap into a new line and in case it's to long 
 
 ---
 
-## Text with a link and bold text as children
+## Text with a link, button and bold text as children
 
 <Playground :markup="textWithLink" :config="config"></Playground>
 
@@ -160,6 +160,6 @@ export default class Code extends Vue {
 `<p-text ellipsis="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>`;
 
   textWithLink =
-`<p-text>Lorem ipsum dolor sit amet <a href="https://porsche.com">linked text</a> et, <b>bold text</b> & <strong>strong text</strong></p-text>`;
+`<p-text>Lorem ipsum dolor sit amet <a href="https://porsche.com">linked text</a> et <button>button text</button>, <b>bold text</b> & <strong>strong text</strong></p-text>`;
 }
 </script>
