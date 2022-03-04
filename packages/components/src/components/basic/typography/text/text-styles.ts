@@ -6,7 +6,6 @@ import { addImportantToEachRule, getBaseSlottedStyles, getFocusStyles, getHoverS
 import { fontFamily, fontWeight, text } from '@porsche-design-system/utilities-v2';
 import { getEllipsisStyles, getSlottedTypographyStyles } from '../../../../styles/typography-styles';
 import { getThemedTextColor } from '../../../../styles/text-icon-styles';
-import { getNativeLinkButtonResetStyles } from '../../../../styles/link-button-pure-styles';
 
 const getSizeStyles = (size: TextSize): Pick<JssStyle, 'lineHeight' | 'fontSize'> => {
   return size === 'inherit'
@@ -57,7 +56,14 @@ export const getComponentCss = (
 const getSlottedButtonStyles = (): Styles => {
   return {
     '& button': {
-      ...getNativeLinkButtonResetStyles(false),
+      margin: 0,
+      padding: 0,
+      boxSizing: 'border-box',
+      outline: 'transparent none',
+      appearance: 'none',
+      cursor: 'pointer',
+      textAlign: 'left',
+      border: 'none',
       background: 'transparent',
       color: 'inherit',
       textDecoration: 'underline',
