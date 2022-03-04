@@ -57,6 +57,10 @@ export class Button {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttributes>;
 
+  private get isDisabledOrLoading(): boolean {
+    return isDisabledOrLoading(this.disabled, this.loading);
+  }
+
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
     if (this.isDisabledOrLoading) {
@@ -112,9 +116,5 @@ export class Button {
         </PrefixedTagNames.pText>
       </button>
     );
-  }
-
-  private get isDisabledOrLoading(): boolean {
-    return isDisabledOrLoading(this.disabled, this.loading);
   }
 }
