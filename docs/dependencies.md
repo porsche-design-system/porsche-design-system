@@ -14,9 +14,19 @@ In addition `sass-loader` can't be updated because it needs at least Webpack 5 b
 * `@vue/cli-plugin-unit-jest`
 * `@vue/cli-plugin-vuex`
 * `@vue/cli-service`
-* `@vue/eslint-config-typescript`
 * `@vue/test-utils`
 * `sass-loader`
+
+---
+
+## Angular
+Angular Compiler decides by itself which TypeScript version it supports.
+As soon as an unsupported TypeScript version is installed then the Angular build will fail.
+
+### Affected dependencies:
+* `typescript`
+
+---
 
 ## Globby
 `globby` decided to provide just a modern *ESM* build with their latest npm package. 
