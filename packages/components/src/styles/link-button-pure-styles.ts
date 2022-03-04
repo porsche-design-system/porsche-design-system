@@ -93,20 +93,6 @@ const getSlottedAnchorVisibilityStyles: GetStylesFunction = (hideLabel: boolean)
       };
 };
 
-export const getNativeLinkButtonResetStyles = (isDisabledOrLoading: boolean): JssStyle => {
-  return {
-    margin: 0,
-    padding: 0,
-    boxSizing: 'border-box',
-    outline: 'transparent none',
-    appearance: 'none',
-    cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
-    textDecoration: 'none',
-    textAlign: 'left',
-    border: 'none',
-  };
-};
-
 export const getLinkButtonPureStyles = (
   icon: LinkButtonPureIconName,
   active: boolean,
@@ -137,7 +123,15 @@ export const getLinkButtonPureStyles = (
       display: 'flex',
       alignItems: 'flex-start',
       width: '100%',
-      ...getNativeLinkButtonResetStyles(isDisabledOrLoading),
+      margin: 0,
+      padding: 0,
+      boxSizing: 'border-box',
+      outline: 'transparent none',
+      appearance: 'none',
+      cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
+      textDecoration: 'none',
+      textAlign: 'left',
+      border: 'none',
       background: 'transparent',
       color: isDisabledOrLoading ? disabledColor : active ? activeColor : baseColor,
       transition: `${getTransition('color')}, font-size 1ms linear`, // used for transitionend event listener

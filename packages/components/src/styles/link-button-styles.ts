@@ -12,7 +12,6 @@ import {
   pxToRemWithUnit,
   getThemedColors,
 } from './';
-import { getNativeLinkButtonResetStyles } from './link-button-pure-styles';
 
 const { baseColor: darkThemeBaseColor } = getThemedColors('dark');
 const { baseColor: lightThemeBaseColor } = getThemedColors('light');
@@ -197,7 +196,14 @@ export const getLinkButtonStyles = (
       minWidth: pxToRemWithUnit(48),
       minHeight: pxToRemWithUnit(48),
       position: 'relative',
-      ...getNativeLinkButtonResetStyles(isDisabledOrLoading),
+      margin: 0,
+      padding: 0,
+      boxSizing: 'border-box',
+      outline: 'transparent none',
+      appearance: 'none',
+      cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
+      textDecoration: 'none',
+      textAlign: 'left',
       border: '1px solid currentColor',
       backgroundColor: isTertiary ? 'transparent' : 'currentColor',
       color: isDisabledOrLoading ? disabledColor : primaryColor,
