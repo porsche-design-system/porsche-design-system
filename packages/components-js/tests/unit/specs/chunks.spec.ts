@@ -225,20 +225,10 @@ describe('chunk content', () => {
   });
 
   describe('css inset property', () => {
-    it.each(chunkFileNames.filter(isCoreChunk))('should contain css inset property in %s', (chunkFileName) => {
+    it.each(chunkFileNames)('should not contain css inset property in %s', (chunkFileName) => {
       const content = getChunkContent(chunkFileName);
-      // including inset: exactly once is okay because of JSS default units
-      // https://github.com/cssinjs/jss/blob/dbef5de51eaa7e59a05ff7eeb099e9c6fcc94fa5/packages/jss-plugin-default-unit/src/defaultUnits.js#L98
-      expect(content.match(/inset:/).length).toBe(1);
+      expect(content).not.toContain('inset:');
     });
-
-    it.each(chunkFileNames.filter((x) => !isCoreChunk(x)))(
-      'should not contain css inset property in %s',
-      (chunkFileName) => {
-        const content = getChunkContent(chunkFileName);
-        expect(content).not.toContain('inset:');
-      }
-    );
   });
 
   describe('ResizeObserver', () => {

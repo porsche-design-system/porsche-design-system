@@ -109,11 +109,11 @@ export const getIconStyles: GetStylesFunction = (hideLabel: boolean): JssStyle =
 export const getLabelStyles: GetStylesFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel
     ? {
-        width: 1,
-        height: 1,
+        width: '1px',
+        height: '1px',
         margin: '0 0 0 -1px',
         overflow: 'hidden',
-        textIndent: -1,
+        textIndent: '-1px',
       }
     : {
         width: '100%',
@@ -158,10 +158,37 @@ export const getLinkButtonStyles = (
   const iconLabelColor = isDisabledOrLoading ? (isTertiary ? disabledColor : 'rgba(255,255,255,0.55)') : baseColor;
 
   return {
-    ':host': {
-      display: 'inline-flex',
-      verticalAlign: 'top',
-      outline: addImportantToRule(0),
+    '@global': {
+      ':host': {
+        display: 'inline-flex',
+        verticalAlign: 'top',
+        outline: addImportantToRule(0),
+      },
+      ...(hasSlottedAnchor && {
+        '::slotted': addImportantToEachRule({
+          '&(a)': {
+            display: 'block',
+            textDecoration: 'none',
+            color: 'inherit',
+            lineHeight: 'inherit',
+            outline: 'transparent solid 1px',
+            outlineOffset: '3px',
+            ...buildResponsiveStyles(hideLabel, getSlottedLinkStyles),
+          },
+          '&(a::-moz-focus-inner)': {
+            border: 0,
+          },
+          '&(a:focus)': {
+            outlineColor: primaryColor,
+          },
+          '&(a:hover:focus)': {
+            outlineColor: primaryColorHover,
+          },
+          '&(a:focus:not(:focus-visible))': {
+            outlineColor: 'transparent',
+          },
+        }),
+      }),
     },
     root: {
       display: 'flex',
@@ -211,30 +238,5 @@ export const getLinkButtonStyles = (
       color: iconLabelColor,
       ...buildResponsiveStyles(hideLabel, getLabelStyles),
     },
-    ...(hasSlottedAnchor && {
-      '::slotted': addImportantToEachRule({
-        '&(a)': {
-          display: 'block',
-          textDecoration: 'none',
-          color: 'inherit',
-          lineHeight: 'inherit',
-          outline: 'transparent solid 1px',
-          outlineOffset: '3px',
-          ...buildResponsiveStyles(hideLabel, getSlottedLinkStyles),
-        },
-        '&(a::-moz-focus-inner)': {
-          border: 0,
-        },
-        '&(a:focus)': {
-          outlineColor: primaryColor,
-        },
-        '&(a:hover:focus)': {
-          outlineColor: primaryColorHover,
-        },
-        '&(a:focus:not(:focus-visible))': {
-          outlineColor: 'transparent',
-        },
-      }),
-    }),
   };
 };

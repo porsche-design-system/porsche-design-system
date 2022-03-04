@@ -506,7 +506,7 @@ Object {
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: input, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: error, theme: dark and additionalRefForInputHover: $unit 1`] = `
+exports[`getLabelStyles() should return correct css for child: input, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: error, theme: dark and additionalRefForInputHover: { unit: [Object] } 1`] = `
 Object {
   "label": Object {
     "&--disabled": Object {
@@ -525,6 +525,11 @@ Object {
       },
       "&--description": Object {
         "color": "#b0b1b2",
+      },
+      "&:hover": Object {
+        "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:hover:not(:disabled):not([readonly]))": Object {
+          "borderColor": "#d30303 !important",
+        },
       },
       "@media (min-width: 1000px)": Object {
         "clip": "auto",
@@ -599,17 +604,18 @@ Object {
     "display": "block",
     "position": "relative",
   },
-  "label__text,$unit": Object {
+  "unit": Object {
     "&:hover": Object {
-      "&~::slotted(input:not(:disabled):not([readonly])), ::slotted(input:hover:not(:disabled):not([readonly]))": Object {
+      "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:hover:not(:disabled):not([readonly]))": Object {
         "borderColor": "#d30303 !important",
       },
     },
+    "display": "block ",
   },
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: error, theme: light and additionalRefForInputHover: undefined 1`] = `
+exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: error, theme: light and additionalRefForInputHover: false 1`] = `
 Object {
   "label": Object {
     "&--disabled": Object {
@@ -624,6 +630,11 @@ Object {
       },
       "&--description": Object {
         "color": "#626669",
+      },
+      "&:hover": Object {
+        "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:hover:not(:disabled):not([readonly]))": Object {
+          "borderColor": "#a30000 !important",
+        },
       },
       "clip": "auto",
       "clipPath": "none",
@@ -640,17 +651,10 @@ Object {
     "display": "block",
     "position": "relative",
   },
-  "label__text": Object {
-    "&:hover": Object {
-      "&~::slotted(input:not(:disabled):not([readonly])), ::slotted(input:hover:not(:disabled):not([readonly]))": Object {
-        "borderColor": "#a30000 !important",
-      },
-    },
-  },
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: none, theme: light and additionalRefForInputHover: undefined 1`] = `
+exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: none, theme: light and additionalRefForInputHover: false 1`] = `
 Object {
   "label": Object {
     "&--disabled": Object {
@@ -665,6 +669,11 @@ Object {
       },
       "&--description": Object {
         "color": "#626669",
+      },
+      "&:hover": Object {
+        "&~::slotted(input:not(:disabled):not([readonly]))": Object {
+          "borderColor": "#000 !important",
+        },
       },
       "clip": "auto",
       "clipPath": "none",
@@ -681,17 +690,10 @@ Object {
     "display": "block",
     "position": "relative",
   },
-  "label__text": Object {
-    "&:hover": Object {
-      "&~::slotted(input:not(:disabled):not([readonly]))": Object {
-        "borderColor": "#000 !important",
-      },
-    },
-  },
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: success, theme: light and additionalRefForInputHover: undefined 1`] = `
+exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: success, theme: light and additionalRefForInputHover: false 1`] = `
 Object {
   "label": Object {
     "&--disabled": Object {
@@ -706,6 +708,11 @@ Object {
       },
       "&--description": Object {
         "color": "#626669",
+      },
+      "&:hover": Object {
+        "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:hover:not(:disabled):not([readonly]))": Object {
+          "borderColor": "#014d0c !important",
+        },
       },
       "clip": "auto",
       "clipPath": "none",
@@ -722,17 +729,10 @@ Object {
     "display": "block",
     "position": "relative",
   },
-  "label__text": Object {
-    "&:hover": Object {
-      "&~::slotted(input:not(:disabled):not([readonly])), ::slotted(input:hover:not(:disabled):not([readonly]))": Object {
-        "borderColor": "#014d0c !important",
-      },
-    },
-  },
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: input, hideLabel: true, state: error, theme: light and additionalRefForInputHover: undefined 1`] = `
+exports[`getLabelStyles() should return correct css for child: input, hideLabel: true, state: error, theme: light and additionalRefForInputHover: false 1`] = `
 Object {
   "label": Object {
     "&--disabled": Object {
@@ -747,6 +747,11 @@ Object {
       },
       "&--description": Object {
         "color": "#626669",
+      },
+      "&:hover": Object {
+        "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:hover:not(:disabled):not([readonly]))": Object {
+          "borderColor": "#a30000 !important",
+        },
       },
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
@@ -764,17 +769,10 @@ Object {
     "display": "block",
     "position": "relative",
   },
-  "label__text": Object {
-    "&:hover": Object {
-      "&~::slotted(input:not(:disabled):not([readonly])), ::slotted(input:hover:not(:disabled):not([readonly]))": Object {
-        "borderColor": "#a30000 !important",
-      },
-    },
-  },
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: input, hideLabel: true, state: none, theme: light and additionalRefForInputHover: undefined 1`] = `
+exports[`getLabelStyles() should return correct css for child: input, hideLabel: true, state: none, theme: light and additionalRefForInputHover: false 1`] = `
 Object {
   "label": Object {
     "&--disabled": Object {
@@ -790,6 +788,11 @@ Object {
       "&--description": Object {
         "color": "#626669",
       },
+      "&:hover": Object {
+        "&~::slotted(input:not(:disabled):not([readonly]))": Object {
+          "borderColor": "#000 !important",
+        },
+      },
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
@@ -806,17 +809,10 @@ Object {
     "display": "block",
     "position": "relative",
   },
-  "label__text": Object {
-    "&:hover": Object {
-      "&~::slotted(input:not(:disabled):not([readonly]))": Object {
-        "borderColor": "#000 !important",
-      },
-    },
-  },
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: input, hideLabel: true, state: success, theme: light and additionalRefForInputHover: undefined 1`] = `
+exports[`getLabelStyles() should return correct css for child: input, hideLabel: true, state: success, theme: light and additionalRefForInputHover: false 1`] = `
 Object {
   "label": Object {
     "&--disabled": Object {
@@ -832,6 +828,11 @@ Object {
       "&--description": Object {
         "color": "#626669",
       },
+      "&:hover": Object {
+        "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:hover:not(:disabled):not([readonly]))": Object {
+          "borderColor": "#014d0c !important",
+        },
+      },
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
@@ -848,17 +849,10 @@ Object {
     "display": "block",
     "position": "relative",
   },
-  "label__text": Object {
-    "&:hover": Object {
-      "&~::slotted(input:not(:disabled):not([readonly])), ::slotted(input:hover:not(:disabled):not([readonly]))": Object {
-        "borderColor": "#014d0c !important",
-      },
-    },
-  },
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: false, state: error, theme: dark and additionalRefForInputHover: undefined 1`] = `
+exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: false, state: error, theme: dark and additionalRefForInputHover: false 1`] = `
 Object {
   "label": Object {
     "&--disabled": Object {
@@ -873,6 +867,11 @@ Object {
       },
       "&--description": Object {
         "color": "#b0b1b2",
+      },
+      "&:hover": Object {
+        "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
+          "borderColor": "#d30303 !important",
+        },
       },
       "clip": "auto",
       "clipPath": "none",
@@ -889,17 +888,10 @@ Object {
     "display": "block",
     "position": "relative",
   },
-  "label__text": Object {
-    "&:hover": Object {
-      "&~::slotted(textarea:not(:disabled):not([readonly])), ::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
-        "borderColor": "#d30303 !important",
-      },
-    },
-  },
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: false, state: none, theme: dark and additionalRefForInputHover: undefined 1`] = `
+exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: false, state: none, theme: dark and additionalRefForInputHover: false 1`] = `
 Object {
   "label": Object {
     "&--disabled": Object {
@@ -914,6 +906,11 @@ Object {
       },
       "&--description": Object {
         "color": "#b0b1b2",
+      },
+      "&:hover": Object {
+        "&~::slotted(textarea:not(:disabled):not([readonly]))": Object {
+          "borderColor": "#fff !important",
+        },
       },
       "clip": "auto",
       "clipPath": "none",
@@ -930,17 +927,10 @@ Object {
     "display": "block",
     "position": "relative",
   },
-  "label__text": Object {
-    "&:hover": Object {
-      "&~::slotted(textarea:not(:disabled):not([readonly]))": Object {
-        "borderColor": "#fff !important",
-      },
-    },
-  },
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: false, state: success, theme: dark and additionalRefForInputHover: undefined 1`] = `
+exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: false, state: success, theme: dark and additionalRefForInputHover: false 1`] = `
 Object {
   "label": Object {
     "&--disabled": Object {
@@ -955,6 +945,11 @@ Object {
       },
       "&--description": Object {
         "color": "#b0b1b2",
+      },
+      "&:hover": Object {
+        "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
+          "borderColor": "#017d14 !important",
+        },
       },
       "clip": "auto",
       "clipPath": "none",
@@ -971,17 +966,10 @@ Object {
     "display": "block",
     "position": "relative",
   },
-  "label__text": Object {
-    "&:hover": Object {
-      "&~::slotted(textarea:not(:disabled):not([readonly])), ::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
-        "borderColor": "#017d14 !important",
-      },
-    },
-  },
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: true, state: error, theme: dark and additionalRefForInputHover: undefined 1`] = `
+exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: true, state: error, theme: dark and additionalRefForInputHover: false 1`] = `
 Object {
   "label": Object {
     "&--disabled": Object {
@@ -996,6 +984,11 @@ Object {
       },
       "&--description": Object {
         "color": "#b0b1b2",
+      },
+      "&:hover": Object {
+        "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
+          "borderColor": "#d30303 !important",
+        },
       },
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
@@ -1013,17 +1006,10 @@ Object {
     "display": "block",
     "position": "relative",
   },
-  "label__text": Object {
-    "&:hover": Object {
-      "&~::slotted(textarea:not(:disabled):not([readonly])), ::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
-        "borderColor": "#d30303 !important",
-      },
-    },
-  },
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: true, state: none, theme: dark and additionalRefForInputHover: undefined 1`] = `
+exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: true, state: none, theme: dark and additionalRefForInputHover: false 1`] = `
 Object {
   "label": Object {
     "&--disabled": Object {
@@ -1038,6 +1024,11 @@ Object {
       },
       "&--description": Object {
         "color": "#b0b1b2",
+      },
+      "&:hover": Object {
+        "&~::slotted(textarea:not(:disabled):not([readonly]))": Object {
+          "borderColor": "#fff !important",
+        },
       },
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
@@ -1055,17 +1046,10 @@ Object {
     "display": "block",
     "position": "relative",
   },
-  "label__text": Object {
-    "&:hover": Object {
-      "&~::slotted(textarea:not(:disabled):not([readonly]))": Object {
-        "borderColor": "#fff !important",
-      },
-    },
-  },
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: true, state: success, theme: dark and additionalRefForInputHover: undefined 1`] = `
+exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: true, state: success, theme: dark and additionalRefForInputHover: false 1`] = `
 Object {
   "label": Object {
     "&--disabled": Object {
@@ -1080,6 +1064,11 @@ Object {
       },
       "&--description": Object {
         "color": "#b0b1b2",
+      },
+      "&:hover": Object {
+        "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
+          "borderColor": "#017d14 !important",
+        },
       },
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
@@ -1096,13 +1085,6 @@ Object {
     },
     "display": "block",
     "position": "relative",
-  },
-  "label__text": Object {
-    "&:hover": Object {
-      "&~::slotted(textarea:not(:disabled):not([readonly])), ::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
-        "borderColor": "#017d14 !important",
-      },
-    },
   },
 }
 `;
