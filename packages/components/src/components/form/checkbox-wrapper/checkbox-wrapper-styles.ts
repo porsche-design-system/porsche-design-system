@@ -27,10 +27,10 @@ export const getComponentCss = (
   const iconColor = backgroundColor.replace('#', '%23');
 
   return getCss({
-    ':host': {
-      display: 'block',
-    },
     '@global': {
+      ':host': {
+        display: 'block',
+      },
       '::slotted': addImportantToEachRule({
         '&(input)': {
           position: 'static',

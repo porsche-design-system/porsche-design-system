@@ -8,12 +8,9 @@ import { getEllipsisStyles, getSlottedTypographyStyles } from '../../../../style
 import { getThemedTextColor } from '../../../../styles/text-icon-styles';
 
 const getSizeStyles = (size: TextSize): Pick<JssStyle, 'lineHeight' | 'fontSize'> => {
-  if (size === 'inherit') {
-    return { lineHeight: 'inherit', fontSize: 'inherit' };
-  } else {
-    const { lineHeight, fontSize } = text[paramCaseToCamelCase(size)];
-    return { lineHeight, fontSize };
-  }
+  return size === 'inherit'
+    ? { lineHeight: size, fontSize: size }
+    : (({ lineHeight, fontSize }) => ({ lineHeight, fontSize }))(text[paramCaseToCamelCase(size)]);
 };
 
 export const getComponentCss = (
@@ -25,13 +22,15 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   return getCss({
-    ':host': {
-      display: 'block',
-    },
-    '::slotted': {
-      '&(p),&(address),&(blockquote),&(figcaption),&(cite),&(time),&(legend)': addImportantToEachRule(
-        getSlottedTypographyStyles()
-      ),
+    '@global': {
+      ':host': {
+        display: 'block',
+      },
+      '::slotted': {
+        '&(p),&(address),&(blockquote),&(figcaption),&(cite),&(time),&(legend)': addImportantToEachRule(
+          getSlottedTypographyStyles()
+        ),
+      },
     },
     root: {
       display: 'inherit',

@@ -5,23 +5,23 @@ import { addImportantToRule, getFocusStyles, mediaQuery, getThemedColors } from 
 
 const baseSizes: { [key in Exclude<MarqueSize, 'responsive'>]: Pick<JssStyle, 'height' | 'width'> } = {
   small: {
-    width: 100,
-    height: 60,
+    width: '100px',
+    height: '60px',
   },
   medium: {
-    width: 120,
-    height: 72,
+    width: '120px',
+    height: '72px',
   },
 };
 
 export const getComponentCss = (size: MarqueSize): string => {
   return getCss({
-    ':host': {
-      display: 'inline-flex',
-      verticalAlign: 'top',
-      outline: addImportantToRule(0),
-    },
     '@global': {
+      ':host': {
+        display: 'inline-flex',
+        verticalAlign: 'top',
+        outline: addImportantToRule(0),
+      },
       a: {
         display: 'block',
         textDecoration: 'none',
