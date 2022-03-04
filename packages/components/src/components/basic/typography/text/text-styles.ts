@@ -1,11 +1,12 @@
-import type { JssStyle } from 'jss';
+import type { JssStyle, Styles } from 'jss';
 import type { BreakpointCustomizable } from '../../../../utils';
 import type { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
-import { buildSlottedStyles, getCss, buildResponsiveStyles, paramCaseToCamelCase } from '../../../../utils';
-import { addImportantToEachRule, getBaseSlottedStyles } from '../../../../styles';
+import { buildSlottedStyles, getCss, buildResponsiveStyles, paramCaseToCamelCase, mergeDeep } from '../../../../utils';
+import { addImportantToEachRule, getBaseSlottedStyles, getFocusStyles, getHoverStyles } from '../../../../styles';
 import { fontFamily, fontWeight, text } from '@porsche-design-system/utilities-v2';
 import { getEllipsisStyles, getSlottedTypographyStyles } from '../../../../styles/typography-styles';
 import { getThemedTextColor } from '../../../../styles/text-icon-styles';
+import { getNativeLinkButtonResetStyles } from '../../../../styles/link-button-pure-styles';
 
 const getSizeStyles = (size: TextSize): Pick<JssStyle, 'lineHeight' | 'fontSize'> => {
   return size === 'inherit'
@@ -53,6 +54,19 @@ export const getComponentCss = (
   });
 };
 
+const getSlottedButtonStyles = (): Styles => {
+  return {
+    '& button': {
+      ...getNativeLinkButtonResetStyles(false),
+      color: 'inherit',
+      textDecoration: 'underline',
+      font: 'inherit',
+      ...getHoverStyles(),
+      ...getFocusStyles({ offset: 1 }),
+    },
+  };
+};
+
 export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
+  return getCss(buildSlottedStyles(host, mergeDeep(getBaseSlottedStyles(), getSlottedButtonStyles())));
 };
