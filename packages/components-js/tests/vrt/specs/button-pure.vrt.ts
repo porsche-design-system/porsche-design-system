@@ -17,6 +17,12 @@ it.each(defaultViewports)('should have no visual regression for viewport %s', as
   expect(await vrtTest(getVisualRegressionTester(viewport), 'button-pure', '/#button-pure')).toBeFalsy();
 });
 
+it.each(defaultViewports)('should have no skeleton visual regression for viewport %s', async (viewport) => {
+  expect(
+    await vrtTest(getVisualRegressionTester(viewport), 'button-pure-skeleton', '/#button-pure-skeleton')
+  ).toBeFalsy();
+});
+
 it('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(

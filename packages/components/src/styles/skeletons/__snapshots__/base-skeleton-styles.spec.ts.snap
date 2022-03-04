@@ -57,7 +57,7 @@ Object {
 exports[`getBaseSkeletonStyle() should match style snapshot for hasLabel: false and elementHeight: 24 1`] = `
 Object {
   "&::after": Object {
-    "animation": "opacity 1.5s ease-in-out infinite",
+    "animation": "opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite",
     "background": "currentColor",
     "content": "\\"\\"",
     "display": "block",
@@ -77,7 +77,7 @@ Object {
 exports[`getBaseSkeletonStyle() should match style snapshot for hasLabel: true and elementHeight: 48 1`] = `
 Object {
   "&::after": Object {
-    "animation": "opacity 1.5s ease-in-out infinite",
+    "animation": "opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite",
     "background": "currentColor",
     "content": "\\"\\"",
     "left": "0",
@@ -88,7 +88,7 @@ Object {
     "width": "100%",
   },
   "&::before": Object {
-    "animation": "opacity 1.5s ease-in-out infinite",
+    "animation": "opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite",
     "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px)",
     "content": "\\"\\"",
     "height": "1.5rem",
