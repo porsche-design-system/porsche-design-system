@@ -58,6 +58,7 @@ const getSlottedButtonStyles = (): Styles => {
   return {
     '& button': {
       ...getNativeLinkButtonResetStyles(false),
+      background: 'transparent',
       color: 'inherit',
       textDecoration: 'underline',
       font: 'inherit',
