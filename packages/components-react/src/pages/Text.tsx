@@ -83,7 +83,7 @@ export const TextPage = (): JSX.Element => {
         <PText>
           <span>
             Some slotted and deeply nested <a href="#">link</a> and <button>button</button>, <b>bold</b>,
-            <strong>strong</strong>, {' '}<em>emphasized</em> and <i>italic</i> text
+            {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text
           </span>
         </PText>
       </div>
