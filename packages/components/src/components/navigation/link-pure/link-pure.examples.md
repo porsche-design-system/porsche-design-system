@@ -40,7 +40,7 @@ By choosing `icon="none"` the component is shown without icon.
 
 The variant without icon is only recommended in the context of menus, where it is clearly evident that the component is clickable. If it is required in flowing text,
 a native link within the `p-text` component can be used.  
-See [text documentation](/components/typography/text#text-with-a-link-button-and-bold-text-as-children).
+See [text documentation](components/typography/text#text-with-a-link-button-and-bold-text-as-children).
 
 **Caution:** You can't combine  this with the prop `hideLabel`
 
