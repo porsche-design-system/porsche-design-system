@@ -11,7 +11,7 @@ it.each(defaultViewports)('should have no skeleton visual regression for viewpor
     await vrtTest(
       getVisualRegressionTester(viewport),
       'radio-button-wrapper-skeleton',
-      '/#radio-button-wrapper-skeleton'
+      '/radio-button-wrapper-skeleton'
     )
   ).toBeFalsy();
 });
