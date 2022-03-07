@@ -1,6 +1,6 @@
 import type { GridGutter, GridGutterType } from '../grid/grid-utils';
 import type { GridItemOffset, GridItemOffsetType, GridItemSize, GridItemSizeType } from './grid-item-utils';
-import { buildResponsiveStyle, getCss, mergeDeep } from '../../../../utils';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../../../utils';
 import { addImportantToEachRule, pxToRemWithUnit } from '../../../../styles';
 
 const gridItemWidths = [
@@ -13,14 +13,14 @@ export const getComponentCss = (size: GridItemSize, offset: GridItemOffset, gutt
       ':host': addImportantToEachRule({
         boxSizing: 'border-box',
         ...mergeDeep(
-          buildResponsiveStyle(size, (sizeResponsive: GridItemSizeType) => ({
+          buildResponsiveStyles(size, (sizeResponsive: GridItemSizeType) => ({
             width: `${gridItemWidths[sizeResponsive]}%`,
             minWidth: `${gridItemWidths[sizeResponsive]}%`,
           })),
-          buildResponsiveStyle(offset, (offsetResponsive: GridItemOffsetType) => ({
+          buildResponsiveStyles(offset, (offsetResponsive: GridItemOffsetType) => ({
             marginLeft: `${gridItemWidths[offsetResponsive]}%`,
           })),
-          buildResponsiveStyle(gutter, (gutterResponsive: GridGutterType) => {
+          buildResponsiveStyles(gutter, (gutterResponsive: GridGutterType) => {
             const gutterRem = pxToRemWithUnit(gutterResponsive / 2);
             return {
               paddingLeft: gutterRem,

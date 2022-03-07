@@ -1,6 +1,6 @@
 import type { JssStyle, Styles } from 'jss';
 import type { BreakpointCustomizable } from '../utils';
-import { buildResponsiveStyle, isThemeDark } from '../utils';
+import { buildResponsiveStyles, isThemeDark } from '../utils';
 import type { FormState, Theme } from '../types';
 import {
   addImportantToRule,
@@ -122,7 +122,7 @@ export const getLabelStyles = (
         }),
       },
       '&__text': {
-        ...buildResponsiveStyle(hideLabel, getFormTextHiddenJssStyle),
+        ...buildResponsiveStyles(hideLabel, getFormTextHiddenJssStyle),
         display: 'block',
         width: 'fit-content',
         transition: getTransition('color'),

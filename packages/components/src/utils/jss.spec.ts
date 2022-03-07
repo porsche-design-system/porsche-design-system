@@ -1,6 +1,6 @@
 import {
   attachComponentCss,
-  buildResponsiveStyle,
+  buildResponsiveStyles,
   buildSlottedStyles,
   getCachedComponentCss,
   getCss,
@@ -235,16 +235,16 @@ describe('buildSlottedStyles()', () => {
   });
 });
 
-describe('buildResponsiveStyle()', () => {
+describe('buildResponsiveStyles()', () => {
   describe('for simple getStyle', () => {
     const getStyle = (val: number): JssStyle => ({ width: 100 * val });
 
     it('should return flat jss for simple type', () => {
-      expect(buildResponsiveStyle(6, getStyle)).toStrictEqual({ width: 600 });
+      expect(buildResponsiveStyles(6, getStyle)).toStrictEqual({ width: 600 });
     });
 
     it('should return nested jss for responsive type', () => {
-      expect(buildResponsiveStyle({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyle)).toStrictEqual({
+      expect(buildResponsiveStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyle)).toStrictEqual({
         width: 600,
         '@media (min-width: 480px)': { width: 300 },
         '@media (min-width: 760px)': { width: 400 },
@@ -259,11 +259,11 @@ describe('buildResponsiveStyle()', () => {
     const getStyle = (val: number): JssStyle => ({ width: 100 * val, display: 'block' });
 
     it('should return flat jss for simple type', () => {
-      expect(buildResponsiveStyle(6, getStyle)).toStrictEqual({ width: 600, display: 'block' });
+      expect(buildResponsiveStyles(6, getStyle)).toStrictEqual({ width: 600, display: 'block' });
     });
 
     it('should return nested jss for responsive type', () => {
-      expect(buildResponsiveStyle({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyle)).toStrictEqual({
+      expect(buildResponsiveStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getStyle)).toStrictEqual({
         width: 600,
         display: 'block',
         '@media (min-width: 480px)': { width: 300, display: 'block' },
