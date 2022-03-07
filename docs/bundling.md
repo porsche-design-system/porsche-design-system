@@ -155,5 +155,6 @@ const themeDarkElectric = /*#__PURE__*/ {
 ```
 
 This results in `themeDarkElectric` is treeshaken but `themeDark` will be in the bundle even when there is no usage of it in App.tsx.
+Using Object.assign instead of spreed makes no difference.
 
 
