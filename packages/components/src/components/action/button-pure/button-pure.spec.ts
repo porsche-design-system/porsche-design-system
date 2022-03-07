@@ -4,38 +4,36 @@ import * as buttonLinkPureUtils from '../../../utils/button-link-pure-utils';
 
 jest.mock('../../../utils/button-handling');
 
-describe('button-pure', () => {
-  describe('connectedCallback', () => {
-    it('should call throwIfParentIsPTextAndIconIsNone()', () => {
-      const spy = jest.spyOn(buttonLinkPureUtils, 'throwIfParentIsPTextAndIconIsNone');
+describe('connectedCallback', () => {
+  it('should call throwIfParentIsPTextAndIconIsNone()', () => {
+    const spy = jest.spyOn(buttonLinkPureUtils, 'throwIfParentIsPTextAndIconIsNone');
 
-      const component = new ButtonPure();
-      component.host = document.createElement('p-button-pure');
-      component.connectedCallback();
+    const component = new ButtonPure();
+    component.host = document.createElement('p-button-pure');
+    component.connectedCallback();
 
-      expect(spy).toBeCalledWith(component.host, component.icon);
-    });
+    expect(spy).toBeCalledWith(component.host, component.icon);
+  });
+});
+
+describe('componentDidLoad', () => {
+  let spy: jest.SpyInstance;
+  beforeEach(() => {
+    spy = jest.spyOn(transitionListenerUtils, 'transitionListener').mockImplementation(() => {});
   });
 
-  describe('componentDidLoad', () => {
-    let spy: jest.SpyInstance;
-    beforeEach(() => {
-      spy = jest.spyOn(transitionListenerUtils, 'transitionListener').mockImplementation(() => {});
-    });
+  it('should not call transitionListener for default size', () => {
+    const component = new ButtonPure();
+    component.componentDidLoad();
 
-    it('should not call transitionListener for default size', () => {
-      const component = new ButtonPure();
-      component.componentDidLoad();
+    expect(spy).toBeCalledTimes(0);
+  });
 
-      expect(spy).toBeCalledTimes(0);
-    });
+  it('should call transitionListener when size="inherit"', () => {
+    const component = new ButtonPure();
+    component.size = 'inherit';
+    component.componentDidLoad();
 
-    it('should call transitionListener when size="inherit"', () => {
-      const component = new ButtonPure();
-      component.size = 'inherit';
-      component.componentDidLoad();
-
-      expect(spy).toBeCalledWith(undefined, 'font-size', expect.anything());
-    });
+    expect(spy).toBeCalledWith(undefined, 'font-size', expect.anything());
   });
 });
