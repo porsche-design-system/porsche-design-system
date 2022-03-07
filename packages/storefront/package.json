@@ -58,7 +58,7 @@
     "local-web-server": "^5.1.1",
     "sass": "^1.49.9",
     "sass-loader": "^10.1.1",
-    "ts-node": "^10.6.0",
+    "ts-node": "^10.7.0",
     "typescript": "~4.6.2",
     "vue-template-compiler": "^2.6.14",
     "wait-on": "^6.0.1"

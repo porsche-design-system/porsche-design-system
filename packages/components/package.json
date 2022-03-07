@@ -62,7 +62,7 @@
     "eslint-plugin-react": "^7.29.3",
     "globby": "^11.0.4",
     "tinycolor2": "^1.4.2",
-    "ts-node": "^10.6.0",
+    "ts-node": "^10.7.0",
     "typescript": "~4.6.2",
     "whatwg-fetch": "^3.6.2"
   },

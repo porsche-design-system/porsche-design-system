@@ -52,10 +52,10 @@
     "local-web-server": "^5.1.1",
     "postcss-normalize": "^10.0.1",
     "react-scripts": "^5.0.0",
-    "rollup": "^2.69.0",
+    "rollup": "^2.70.0",
     "rollup-plugin-modify": "^3.0.0",
     "rollup-plugin-terser": "^7.0.2",
-    "ts-node": "^10.6.0",
+    "ts-node": "^10.7.0",
     "typescript": "~4.6.2"
   },
   "eslintConfig": {
