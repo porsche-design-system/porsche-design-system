@@ -12,7 +12,7 @@ import type {
   FlexItemWidth,
   FlexItemWidthType,
 } from './flex-item-utils';
-import { buildResponsiveStyle, getCss, mergeDeep } from '../../../../utils';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../../../utils';
 import { addImportantToEachRule } from '../../../../styles';
 
 const flexItemWidths: { [key in Exclude<FlexItemWidthType, 'auto'>]: number } & { none: number; auto: string } = {
@@ -39,22 +39,22 @@ export const getComponentCss = (
       ':host': addImportantToEachRule({
         boxSizing: 'border-box',
         ...mergeDeep(
-          buildResponsiveStyle(width, (widthResponsive: FlexItemWidthType) => ({
+          buildResponsiveStyles(width, (widthResponsive: FlexItemWidthType) => ({
             width: `${flexItemWidths[widthResponsive]}%`,
           })),
-          buildResponsiveStyle(offset, (offsetResponsive: FlexItemOffsetType) => ({
+          buildResponsiveStyles(offset, (offsetResponsive: FlexItemOffsetType) => ({
             marginLeft: `${flexItemWidths[offsetResponsive]}%`,
           })),
-          buildResponsiveStyle(alignSelf, (alignSelfResponsive: FlexItemAlignSelfType) => ({
+          buildResponsiveStyles(alignSelf, (alignSelfResponsive: FlexItemAlignSelfType) => ({
             alignSelf: alignSelfResponsive,
           })),
           flex !== 'initial' // flex shorthand conflicts with grow and shrink, which means even default grow or shrink props would override flex
-            ? buildResponsiveStyle(flex, (flexResponsive: FlexItemFlexType) => ({
+            ? buildResponsiveStyles(flex, (flexResponsive: FlexItemFlexType) => ({
                 flex: flexResponsive === 'equal' ? '1 1 0' : flexResponsive,
               }))
             : mergeDeep(
-                buildResponsiveStyle(grow, (flexGrow: FlexItemGrowType) => ({ flexGrow })),
-                buildResponsiveStyle(shrink, (flexShrink: FlexItemShrinkType) => ({ flexShrink }))
+                buildResponsiveStyles(grow, (flexGrow: FlexItemGrowType) => ({ flexGrow })),
+                buildResponsiveStyles(shrink, (flexShrink: FlexItemShrinkType) => ({ flexShrink }))
               )
         ),
       }),

@@ -1,7 +1,7 @@
 import type { JssStyle } from 'jss';
 import type { GetStyleFunction } from '../../../utils';
 import type { ButtonGroupDirectionType, ButtonGroupDirection } from './button-group-utils';
-import { buildResponsiveStyle, getCss } from '../../../utils';
+import { buildResponsiveStyles, getCss } from '../../../utils';
 import { addImportantToEachRule } from '../../../styles';
 import { spacing } from '@porsche-design-system/utilities-v2';
 
@@ -46,11 +46,11 @@ export const getComponentCss = (direction: ButtonGroupDirection): string => {
       div: {
         display: 'flex',
         marginTop: `-${spacing[16]}`,
-        ...buildResponsiveStyle(direction, getDirectionStyle),
+        ...buildResponsiveStyles(direction, getDirectionStyle),
       },
       '::slotted(*)': addImportantToEachRule({
         marginTop: spacing[16],
-        ...buildResponsiveStyle(direction, getDirectionSlottedStyle),
+        ...buildResponsiveStyles(direction, getDirectionSlottedStyle),
       }),
     },
   });

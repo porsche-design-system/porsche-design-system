@@ -12,7 +12,7 @@ import type {
   FlexAlignItemsType,
   FlexAlignContentType,
 } from './flex-utils';
-import { buildResponsiveStyle, getCss, mergeDeep } from '../../../../utils';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../../../utils';
 import { addImportantToEachRule } from '../../../../styles';
 
 export const getComponentCss = (
@@ -27,20 +27,20 @@ export const getComponentCss = (
     '@global': {
       ':host': addImportantToEachRule(
         mergeDeep(
-          buildResponsiveStyle(inline, (inlineResponsive: FlexInlineType) => ({
+          buildResponsiveStyles(inline, (inlineResponsive: FlexInlineType) => ({
             display: inlineResponsive ? 'inline-flex' : 'flex',
           })),
-          buildResponsiveStyle(wrap, (flexWrapResponsive: FlexWrapType) => ({ flexWrap: flexWrapResponsive })),
-          buildResponsiveStyle(direction, (flexDirectionResponsive: FlexDirectionType) => ({
+          buildResponsiveStyles(wrap, (flexWrapResponsive: FlexWrapType) => ({ flexWrap: flexWrapResponsive })),
+          buildResponsiveStyles(direction, (flexDirectionResponsive: FlexDirectionType) => ({
             flexDirection: flexDirectionResponsive,
           })),
-          buildResponsiveStyle(justifyContent, (justifyContentResponsive: FlexJustifyContentType) => ({
+          buildResponsiveStyles(justifyContent, (justifyContentResponsive: FlexJustifyContentType) => ({
             justifyContent: justifyContentResponsive,
           })),
-          buildResponsiveStyle(alignItems, (alignItemsResponsive: FlexAlignItemsType) => ({
+          buildResponsiveStyles(alignItems, (alignItemsResponsive: FlexAlignItemsType) => ({
             alignItems: alignItemsResponsive,
           })),
-          buildResponsiveStyle(alignContent, (alignContentResponsive: FlexAlignContentType) => ({
+          buildResponsiveStyles(alignContent, (alignContentResponsive: FlexAlignContentType) => ({
             alignContent: alignContentResponsive,
           }))
         )
