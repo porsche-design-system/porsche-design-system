@@ -6,17 +6,19 @@ import type { JssStyle } from 'jss';
 
 export const getComponentCss = (theme: ThemeExtendedElectric): string => {
   return getCss({
-    ':host': addImportantToEachRule({
-      display: 'block',
-      '&([hidden])': {
-        display: 'none',
-      },
-      ...getFocusVisibleFallback(
-        Object.entries(getFocusStyle({ color: getThemedColors(theme).baseColor })).reduce((result, [key, val]) => {
-          result[key.startsWith('&') ? `&(${key.slice(1)})` : key] = val;
-          return result;
-        }, {} as JssStyle)
-      ),
-    }),
+    '@global': {
+      ':host': addImportantToEachRule({
+        display: 'block',
+        '&([hidden])': {
+          display: 'none',
+        },
+        ...getFocusVisibleFallback(
+          Object.entries(getFocusStyle({ color: getThemedColors(theme).baseColor })).reduce((result, [key, val]) => {
+            result[key.startsWith('&') ? `&(${key.slice(1)})` : key] = val;
+            return result;
+          }, {} as JssStyle)
+        ),
+      }),
+    },
   });
 };

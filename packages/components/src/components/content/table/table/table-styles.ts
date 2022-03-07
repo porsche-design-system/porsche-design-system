@@ -13,8 +13,10 @@ const { baseColor } = getThemedColors('light');
 
 export const getComponentCss = (): string => {
   return getCss({
-    ':host': {
-      display: addImportantToRule('block'),
+    '@global': {
+      ':host': {
+        display: addImportantToRule('block'),
+      },
     },
     caption: {
       marginBottom: spacing[8],
@@ -41,9 +43,9 @@ export const getComponentCss = (): string => {
     'scroll-trigger': {
       position: 'absolute',
       top: 0,
-      right: 1,
-      width: 1,
-      height: 1,
+      right: '1px',
+      width: '1px',
+      height: '1px',
       visibility: 'hidden',
     },
     'scroll-indicator': {

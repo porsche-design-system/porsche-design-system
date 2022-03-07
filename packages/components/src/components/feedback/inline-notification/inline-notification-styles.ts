@@ -19,7 +19,9 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   return getCss({
-    ':host': addImportantToEachRule(getNotificationRootStyle(state, theme)),
+    '@global': {
+      ':host': addImportantToEachRule(getNotificationRootStyle(state, theme)),
+    },
     icon: getNotificationIconStyle(state),
     content: getNotificationContentStyle(),
     ...(hasAction && {

@@ -146,6 +146,17 @@ describe('getComponentCss()', () => {
     {
       icon: 'arrow-head-right',
       active: false,
+      stretch: false,
+      size: 'small',
+      hideLabel: true,
+      alignLabel: 'right',
+      hasSubline: false,
+      hasSlottedAnchor: true,
+      theme: 'light',
+    },
+    {
+      icon: 'arrow-head-right',
+      active: false,
       stretch: breakpointCustomizableBoolean,
       size: breakpointCustomizableSize,
       hideLabel: breakpointCustomizableBoolean,

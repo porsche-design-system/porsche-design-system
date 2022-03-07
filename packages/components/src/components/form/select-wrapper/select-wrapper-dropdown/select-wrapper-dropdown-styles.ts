@@ -28,7 +28,7 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
       button: {
         position: 'absolute',
         top: 0,
-        height: INPUT_HEIGHT,
+        height: `${INPUT_HEIGHT}px`,
         width: '100%',
         padding: 0,
         background: 'transparent',
@@ -197,7 +197,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
           top: 'calc(100%-3px)',
           opacity: 0,
           overflow: 'hidden',
-          height: 1,
+          height: '1px',
           pointerEvents: 'none',
         }),
       },
@@ -264,26 +264,30 @@ export const getComponentCss = (
   const { baseColor, contrastHighColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
 
-  return getCss({
-    ':host': {
-      [dropdownPositionVar]: 'absolute', // TODO: make conditional only for tests
-      display: 'block',
-      position: `var(${dropdownPositionVar})`, // for vrt tests
-      marginTop: pxToRemWithUnit(-INPUT_HEIGHT),
-      paddingTop: pxToRemWithUnit(INPUT_HEIGHT),
-      left: 0,
-      right: 0,
-      color: disabled ? disabledColor : formStateColor || contrastMediumColor,
-      ...(!disabled && {
-        '&(:hover)': {
-          color: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
+  return getCss(
+    // merge because of global styles
+    mergeDeep(
+      {
+        '@global': {
+          ':host': {
+            [dropdownPositionVar]: 'absolute', // TODO: make conditional only for tests
+            display: 'block',
+            position: `var(${dropdownPositionVar})`, // for vrt tests
+            marginTop: pxToRemWithUnit(-INPUT_HEIGHT),
+            paddingTop: pxToRemWithUnit(INPUT_HEIGHT),
+            left: 0,
+            right: 0,
+            color: disabled ? disabledColor : formStateColor || contrastMediumColor,
+            ...(!disabled && {
+              '&(:hover)': {
+                color: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
+              },
+            }),
+          },
         },
-      }),
-    },
-    ...mergeDeep(
-      // merge because of global styles
+      },
       filter ? getFilterStyles(isOpen, disabled, state, theme) : getButtonStyles(isOpen, state, theme),
       getListStyles(direction, isOpen, theme)
-    ),
-  });
+    )
+  );
 };

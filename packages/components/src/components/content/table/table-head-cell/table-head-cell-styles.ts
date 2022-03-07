@@ -14,15 +14,15 @@ const { contrastMediumColor, baseColor } = getThemedColors('light');
 
 export const getComponentCss = (): string => {
   return getCss({
-    ':host': addImportantToEachRule({
-      display: 'table-cell',
-      padding: `${pxToRemWithUnit(2)} ${pxToRemWithUnit(12)} ${pxToRemWithUnit(8)}`,
-      borderBottom: `1px solid ${contrastMediumColor}`,
-      verticalAlign: 'bottom',
-      fontWeight: fontWeight.semibold,
-      whiteSpace: 'nowrap',
-    }),
     '@global': {
+      ':host': addImportantToEachRule({
+        display: 'table-cell',
+        padding: `${pxToRemWithUnit(2)} ${pxToRemWithUnit(12)} ${pxToRemWithUnit(8)}`,
+        borderBottom: `1px solid ${contrastMediumColor}`,
+        verticalAlign: 'bottom',
+        fontWeight: fontWeight.semibold,
+        whiteSpace: 'nowrap',
+      }),
       button: {
         display: 'flex',
         alignItems: 'flex-end',

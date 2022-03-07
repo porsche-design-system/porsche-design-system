@@ -1,7 +1,7 @@
 import type { Theme } from '../../../types';
 import type { SocialIconName } from './link-social-utils';
 import type { BreakpointCustomizable } from '../../../utils';
-import { buildResponsiveStyle, getCss, isThemeDark } from '../../../utils';
+import { buildResponsiveStyles, getCss, isThemeDark } from '../../../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
@@ -42,10 +42,37 @@ export const getComponentCss = (
   const { baseColor, baseColorHover, textColor, textColorHover } = getColors(icon, theme);
 
   return getCss({
-    ':host': {
-      display: 'inline-flex',
-      verticalAlign: 'top',
-      outline: addImportantToRule(0),
+    '@global': {
+      ':host': {
+        display: 'inline-flex',
+        verticalAlign: 'top',
+        outline: addImportantToRule(0),
+      },
+      ...(!hasHref && {
+        '::slotted': addImportantToEachRule({
+          '&(a)': {
+            display: 'block',
+            textDecoration: 'none',
+            color: 'inherit',
+            lineHeight: 'inherit',
+            outline: 'transparent solid 1px',
+            outlineOffset: '3px',
+            ...buildResponsiveStyles(hideLabel, getSlottedLinkStyle),
+          },
+          '&(a::-moz-focus-inner)': {
+            border: 0,
+          },
+          '&(a:focus)': {
+            outlineColor: baseColor,
+          },
+          '&(a:hover:focus)': {
+            outlineColor: baseColorHover,
+          },
+          '&(a:focus:not(:focus-visible))': {
+            outlineColor: 'transparent',
+          },
+        }),
+      }),
     },
     root: {
       display: 'flex',
@@ -73,7 +100,7 @@ export const getComponentCss = (
         },
       },
       ...(hasHref && {
-        ...buildResponsiveStyle(hideLabel, getRootStyle),
+        ...buildResponsiveStyles(hideLabel, getRootStyle),
         ...getFocusStyle(),
       }),
     },
@@ -83,39 +110,13 @@ export const getComponentCss = (
       height: pxToRemWithUnit(24),
       color: textColor,
       pointerEvents: 'none',
-      ...buildResponsiveStyle(hideLabel, getIconStyle),
+      ...buildResponsiveStyles(hideLabel, getIconStyle),
     },
     label: {
       display: 'block',
       boxSizing: 'border-box',
       color: textColor,
-      ...buildResponsiveStyle(hideLabel, getLabelStyle),
+      ...buildResponsiveStyles(hideLabel, getLabelStyle),
     },
-    ...(!hasHref &&
-      addImportantToEachRule({
-        '::slotted': {
-          '&(a)': {
-            display: 'block',
-            textDecoration: 'none',
-            color: 'inherit',
-            lineHeight: 'inherit',
-            outline: 'transparent solid 1px',
-            outlineOffset: '3px',
-            ...buildResponsiveStyle(hideLabel, getSlottedLinkStyle),
-          },
-          '&(a::-moz-focus-inner)': {
-            border: 0,
-          },
-          '&(a:focus)': {
-            outlineColor: baseColor,
-          },
-          '&(a:hover:focus)': {
-            outlineColor: baseColorHover,
-          },
-          '&(a:focus:not(:focus-visible))': {
-            outlineColor: 'transparent',
-          },
-        },
-      })),
   });
 };

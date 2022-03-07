@@ -7,6 +7,7 @@ import {
   addImportantToRule,
   getBaseSlottedStyles,
   getFocusSlottedPseudoStyles,
+  getInsetStyle,
   getFocusStyle,
   getFormTextHiddenJssStyle,
   getHoverStyle,
@@ -84,6 +85,15 @@ describe('getHoverStyles()', () => {
   it.each<Theme>(['light', 'dark'])('should return correct JssStyle for theme: %o', (theme) => {
     expect(getHoverStyle({ theme })).toMatchSnapshot();
   });
+});
+
+describe('getInsetStyle()', () => {
+  it.each<Parameters<typeof getInsetStyle>>([[undefined], ['auto'], [2]])(
+    'should return correct JssStyle for parameter: %o',
+    (value) => {
+      expect(getInsetStyle(value)).toMatchSnapshot();
+    }
+  );
 });
 
 describe('getFocusStyles()', () => {
