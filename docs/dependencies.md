@@ -36,3 +36,12 @@ Unfortunately there's no stable way of using it with Node or TS-Node.
 
 ### Affected dependencies:
 * `globby`
+
+---
+
+## Components-react
+
+The following dependencies had to be installed manually since they are not downloaded although referenced via `yarn.lock`
+
+* `postcss-normalize`
+* `@babel/plugin-proposal-private-property-in-object`
