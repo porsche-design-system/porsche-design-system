@@ -8,7 +8,6 @@ In addition `sass-loader` can't be updated because it needs at least Webpack 5 b
 * `vue`
 * `vue-router`
 * `vuex`
-* `@vue/cli-plugin-babel`
 * `@vue/cli-plugin-router`
 * `@vue/cli-plugin-typescript`
 * `@vue/cli-plugin-unit-jest`
@@ -31,6 +30,9 @@ As soon as an unsupported TypeScript version is installed then the Angular build
 ## Globby
 `globby` decided to provide just a modern *ESM* build with their latest npm package. 
 Unfortunately there's no stable way of using it with Node or TS-Node.
+
+* [Pure ESM package](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c#how-can-i-make-my-typescript-project-output-esm)
+* [ESM support: soliciting feedback](https://github.com/TypeStrong/ts-node/issues/1007)
 
 ### Affected dependencies:
 * `globby`

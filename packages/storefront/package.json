@@ -36,12 +36,11 @@
     "vue-property-decorator": "^9.0.0",
     "vue-router": "^3.5.2",
     "vuex": "^3.6.0",
-    "yup": "^0.29.3"
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/node": "~17.0.21",
     "@types/prismjs": "^1.26.0",
-    "@types/yup": "^0.29.10",
     "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@typescript-eslint/parser": "^5.13.0",
     "@vue/cli-plugin-babel": "^5.0.1",
