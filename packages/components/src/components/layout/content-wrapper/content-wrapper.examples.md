@@ -68,7 +68,7 @@ export default class Code extends Vue {
   
   ::v-deep .example-content {
     @include p-text-small;
-    color: $p-color-theme-dark-default;
+    color: $p-color-theme-light-default;
     text-align: center;
     background: lightskyblue;
   }
