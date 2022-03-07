@@ -26,7 +26,7 @@ If a specific text size is needed, the size can be set to `inherit` to specify t
 
 <Playground :markup="sizeMarkup" :config="config">
   <select v-model="size" aria-label="Select size">
-    <option disabled>Select a size</option>
+    <option disabled>Select size</option>
     <option>x-small</option>
     <option>small</option>
     <option>medium</option>
@@ -93,7 +93,7 @@ There are predefined default text weights for copy text. Be aware of using the `
 
 <Playground :markup="alignment" :config="config">
   <select v-model="align" aria-label="Select alignment">
-    <option disabled>Select an alignment</option>
+    <option disabled>Select alignment</option>
     <option value="left">Left</option>
     <option value="center">Center</option>
     <option value="right">Right</option>

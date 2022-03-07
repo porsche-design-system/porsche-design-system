@@ -27,7 +27,7 @@ Predefined colors associated with its theme are available.
 
 <Playground :markup="colors" :config="config">
   <select v-model="color" aria-label="Select color">
-    <option disabled>Select a color</option>
+    <option disabled>Select color</option>
     <option>neutral-contrast-low</option>
     <option>neutral-contrast-medium</option>
     <option>neutral-contrast-high</option>

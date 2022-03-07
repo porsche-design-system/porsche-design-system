@@ -41,7 +41,7 @@ it will be opened in the direction with most available space automatically.
 
 <Playground :markup="directionMarkup" :config="config">
   <select v-model="direction" aria-label="Select direction">
-    <option disabled>Select a direction</option>
+    <option disabled>Select direction</option>
     <option value="top">Top</option>
     <option value="right">Right</option>
     <option value="bottom">Bottom</option>

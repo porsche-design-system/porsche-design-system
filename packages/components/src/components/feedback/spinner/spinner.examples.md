@@ -14,7 +14,7 @@ If a specific size is needed, the size can be set to `inherit` to specify the te
 
 <Playground :markup="sizeMarkup" :config="config">
   <select v-model="size" aria-label="Select size">
-    <option disabled>Select a size</option>
+    <option disabled>Select size</option>
     <option>small</option>
     <option>medium</option>
     <option>large</option>

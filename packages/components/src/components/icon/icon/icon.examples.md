@@ -30,7 +30,7 @@ There are default sizes for the icon component which should cover most use cases
 
 <Playground :markup="sizeMarkup" :config="config">
   <select v-model="size" aria-label="Select size">
-    <option disabled>Select a size</option>
+    <option disabled>Select size</option>
     <option>small</option>
     <option>medium</option>
     <option>large</option>
@@ -45,7 +45,7 @@ Predefined colors associated with its theme are available. Furthermore, inherit 
 
 <Playground :markup="colorMarkup" :config="config">
   <select v-model="color" aria-label="Select color">
-    <option disabled>Select a color</option>
+    <option disabled>Select color</option>
     <option value="brand">Brand</option>
     <option value="default">Default</option>
     <option value="neutral-contrast-high">Neutral Contrast High</option>

@@ -10,7 +10,7 @@ Choose between a set of pre-defined social icons.
 
 <Playground :markup="variants" :config="config">
   <select v-model="platform" aria-label="Select social platform">
-    <option disabled>Select a social platform</option>
+    <option disabled>Select social platform</option>
     <option value="Facebook">Facebook</option>
     <option value="Google">Google</option>
     <option value="Instagram">Instagram</option>
