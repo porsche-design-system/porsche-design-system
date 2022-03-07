@@ -38,7 +38,7 @@ By default, the sizing is responsive, but can be changed to a static size when n
 
 <Playground :markup="sizeMarkup">
   <select v-model="size" aria-label="Select size">
-    <option disabled>Select a size variant</option>
+    <option disabled>Select size variant</option>
     <option value="responsive">Responsive</option>
     <option value="small">Small</option>
     <option value="medium">Medium</option>

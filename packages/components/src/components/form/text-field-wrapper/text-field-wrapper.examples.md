@@ -12,7 +12,7 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 
 <Playground :markup="basic" :config="config">
   <select v-model="label" aria-label="Select label mode">
-    <option disabled>Select a label mode</option>
+    <option disabled>Select label mode</option>
     <option value="show">With label</option>
     <option value="hide">Without label</option>
     <option value="responsive">Responsive</option>
@@ -57,7 +57,7 @@ For better accessibility it's recommended to **not** reset these browser default
 
 <Playground :markup="typesBasic" :config="config">
   <select v-model="type" aria-label="Select input type">
-    <option disabled>Select a type</option>
+    <option disabled>Select input type</option>
     <option value="text">Text</option>
     <option value="number">Number</option>
     <option value="email">Email</option>
@@ -78,7 +78,7 @@ A description of the used unit should be provided to ensure accessibility.
 
 <Playground :markup="typesNumber" :config="config">
   <select v-model="unitPosition" aria-label="Select unit position">
-    <option disabled>Select a unit position</option>
+    <option disabled>Select unit position</option>
     <option value="prefix">Prefix</option>
     <option value="suffix">Suffix</option>    
   </select>
@@ -98,7 +98,7 @@ The `p-text-field-wrapper` component supports the visualisation of inline valida
 
 <Playground :markup="validationStates" :config="config">
   <select v-model="state" aria-label="Select validation state">
-    <option disabled>Select a validation state</option>
+    <option disabled>Select validation state</option>
     <option value="error">Error</option>
     <option value="success">Success</option>
     <option value="none">None</option>

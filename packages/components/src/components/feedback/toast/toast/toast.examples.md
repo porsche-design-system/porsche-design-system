@@ -26,7 +26,7 @@ type ToastMessage = {
   <label>
     State:
     <select v-model="toastState" aria-label="Select state">
-      <option disabled>Select a state</option>
+      <option disabled>Select state</option>
       <option value="neutral">Neutral</option>
       <option value="success">Success</option>
     </select>

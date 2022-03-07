@@ -12,7 +12,7 @@ The `p-banner` component is positioned absolute above the page content by defaul
 
 <Playground :markup="basic" :config="config">
   <select v-model="state" aria-label="Select state">
-    <option disabled>Select a state</option>
+    <option disabled>Select state</option>
     <option value="neutral">Neutral</option>
     <option value="warning">Warning</option>
     <option value="error">Error</option>
@@ -29,7 +29,7 @@ The `p-banner` behaves the same as the **ContentWrapper** component and can be a
 
 <Playground :markup="markupWidth" :config="config">
   <select v-model="width" aria-label="Select width">
-    <option disabled>Select a width</option>
+    <option disabled>Select width</option>
     <option value="basic">Basic</option>
     <option value="extended">Extended</option>
     <option value="fluid">Fluid</option>

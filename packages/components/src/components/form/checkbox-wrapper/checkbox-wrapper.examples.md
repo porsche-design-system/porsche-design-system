@@ -57,7 +57,7 @@ The `p-checkbox-wrapper` component supports the visualisation of inline validati
 
 <Playground :markup="validation" :config="config">
   <select v-model="state" aria-label="Select validation state">
-    <option disabled>Select a validation state</option>
+    <option disabled>Select validation state</option>
     <option value="error">Error</option>
     <option value="success">Success</option>
     <option value="none">None</option>

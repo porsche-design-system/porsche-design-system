@@ -54,7 +54,7 @@ e.g. setting a font-size of **"44px"** will not generate a box with a **"44px"**
 
 <Playground :markup="markupSize" :config="config">
   <select v-model="size" aria-label="Select size">
-    <option disabled>Select a size</option>
+    <option disabled>Select size</option>
     <option>x-small</option>
     <option>small</option>
     <option>medium</option>
@@ -78,7 +78,7 @@ There are predefined default text weights. Be aware of using the `thin` variant 
 
 <Playground :markup="markupWeight" :config="config">
   <select v-model="weight" aria-label="Select weight">
-    <option disabled>Select a weight</option>
+    <option disabled>Select weight</option>
     <option>thin</option>
     <option>regular</option>
     <option>bold</option>
@@ -166,8 +166,8 @@ If you need additional information on your button, we provide a `<p slot="sublin
 The size of the *subline* changes according to the size of the *label*. We do not support `size="inherit"`, `stretch` and `alignLabel` in this pattern so far.
 
 <Playground :markup="subline" :config="configInline">
-  <select v-model="sublineSize" aria-label="Select a size">
-    <option disabled>Select a size</option>
+  <select v-model="sublineSize" aria-label="Select size">
+    <option disabled>Select size</option>
     <option>small</option>
     <option>medium</option>
     <option>large</option>

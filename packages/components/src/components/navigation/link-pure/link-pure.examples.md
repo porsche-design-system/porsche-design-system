@@ -52,7 +52,7 @@ e.g. setting a font-size of **"44px"** will not generate a box with a **"44px"**
 
 <Playground :markup="sizeMarkup" :config="config">
   <select v-model="size" aria-label="Select style variant">
-    <option disabled>Select a style variant</option>
+    <option disabled>Select style variant</option>
     <option>x-small</option>
     <option>small</option>
     <option>medium</option>
@@ -76,7 +76,7 @@ There are predefined default text weights. Be aware of using the `thin` variant 
 
 <Playground :markup="weightMarkup" :config="config">
   <select v-model="weight" aria-label="Select weight">
-    <option disabled>Select a weight</option>
+    <option disabled>Select weight</option>
     <option>thin</option>
     <option>regular</option>
     <option>bold</option>
@@ -141,6 +141,7 @@ The `label` can be aligned to the `right` (default) or to the `left` of the icon
 
 <Playground :markup="alignmentMarkup" :config="config">
   <select v-model="alignLabel" aria-label="Select alignment">
+    <option disabled>Select alignment</option>
     <option value="left">Left</option>
     <option value="right">Right</option>
     <option value="{ base: 'left', l: 'right' }">Responsive</option>
@@ -200,7 +201,7 @@ The size of the *subline* changes according to the size of the *label*. We do no
 
 <Playground :markup="subline" :config="configInline">
   <select v-model="sublineSize" aria-label="Select size">
-    <option disabled>Select a size</option>
+    <option disabled>Select size</option>
     <option>small</option>
     <option>medium</option>
     <option>large</option>
