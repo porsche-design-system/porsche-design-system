@@ -1,9 +1,22 @@
 import * as transitionListenerUtils from '../../../utils/transition-listener';
 import { ButtonPure } from './button-pure';
+import * as buttonLinkPureUtils from '../../../utils/button-link-pure-utils';
 
 jest.mock('../../../utils/button-handling');
 
 describe('button-pure', () => {
+  describe('connectedCallback', () => {
+    it('should call throwIfParentIsPTextAndIconIsNone()', () => {
+      const spy = jest.spyOn(buttonLinkPureUtils, 'throwIfParentIsPTextAndIconIsNone');
+
+      const component = new ButtonPure();
+      component.host = document.createElement('p-button-pure');
+      component.connectedCallback();
+
+      expect(spy).toBeCalledWith(component.host, component.icon);
+    });
+  });
+
   describe('componentDidLoad', () => {
     let spy: jest.SpyInstance;
     beforeEach(() => {
