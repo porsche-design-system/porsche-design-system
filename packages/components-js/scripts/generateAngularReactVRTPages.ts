@@ -325,8 +325,8 @@ $2`
           .replace(/(<input[^>]*?) v(alue=)/g, '$1 defaultV$2') // for input
           .replace(/(<input[^>]*?) c(hecked)/g, '$1 defaultC$2'); // for checkbox + radio
 
-        const regex = fileName === 'text' ? '<strong>strong</strong>' : '<em>emphasized</em>';
-        fileContent = fileContent.replace(new RegExp(`(${regex})`, 'g'), "{' '}$1"); // for forced whitespace
+        const pattern = fileName === 'text' ? '<strong>strong</strong>' : '<em>emphasized</em>';
+        fileContent = fileContent.replace(new RegExp(`(${pattern})`, 'g'), "{' '}$1"); // for forced whitespace
 
         if (isOverviewPage) {
           // wrap right column with PorscheDesignSystemProvider
