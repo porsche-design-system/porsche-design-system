@@ -1,3 +1,11 @@
+// mock MutationObserver
+// @ts-ignore
+global.MutationObserver = class {
+  constructor(callback) {}
+  disconnect() {}
+  observe(element, initObject) {}
+};
+
 import * as fs from 'fs';
 import * as path from 'path';
 import { CDN_BASE_URL, CDN_BASE_URL_CN } from '../../../../../cdn.config';

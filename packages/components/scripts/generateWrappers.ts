@@ -1,3 +1,11 @@
+// mock MutationObserver
+// @ts-ignore
+global.MutationObserver = class {
+  constructor(callback) {}
+  disconnect() {}
+  observe(element, initObject) {}
+};
+
 import { WrapperGenerator } from './wrapper-generator';
 
 const generateWrappers = (): void => {

@@ -1,10 +1,9 @@
 import type { TagName } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/shared';
 import { camelCase, paramCase, pascalCase } from 'change-case';
 import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
-import { getComponentMeta } from '@porsche-design-system/shared';
-
-export const PDS_SKELETON_CLASS_PREFIX = 'PDS-Skeleton--';
+import { PDS_SKELETON_CLASS_PREFIX } from '../../src/styles/skeletons';
 
 export class ReactWrapperGenerator extends AbstractWrapperGenerator {
   protected packageDir = 'components-react';
