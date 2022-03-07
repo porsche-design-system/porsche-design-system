@@ -23,7 +23,7 @@ export const TextSkeletonPage = (): JSX.Element => {
 
       <div className="playground dark" title="should show text skeleton in different sizes on dark theme">
         <PText theme="dark" size="x-small">The quick brown fox jumps over the lazy dog</PText>
-        <PText theme="dark" size="x-small">The quick brown fox jumps over the lazy dog</PText>
+        <PText theme="dark">The quick brown fox jumps over the lazy dog</PText>
         <PText theme="dark" size="medium">The quick brown fox jumps over the lazy dog</PText>
         <PText theme="dark" size="large">The quick brown fox jumps over the lazy dog</PText>
         <PText theme="dark" size="x-large">The quick brown fox jumps over the lazy dog</PText>

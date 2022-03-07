@@ -19,26 +19,18 @@ export const getTextSkeletonCss = (): string => {
           ...extendPseudoWithTheme({
             styleFunction: () => getTextHeadlineSkeletonBaseStyle(),
           }),
-          [`&[size=x-small], &.${PDS_SKELETON_CLASS_PREFIX}size-x-small`]: {
-            ...extendPseudoWithTheme({
-              styleFunction: () => getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(textXSmall)),
-            }),
-          },
-          [`&[size=medium], &.${PDS_SKELETON_CLASS_PREFIX}size-medium`]: {
-            ...extendPseudoWithTheme({
-              styleFunction: () => getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(textMedium)),
-            }),
-          },
-          [`&[size=large], &.${PDS_SKELETON_CLASS_PREFIX}size-large`]: {
-            ...extendPseudoWithTheme({
-              styleFunction: () => getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(textLarge)),
-            }),
-          },
-          [`&[size=x-large], &.${PDS_SKELETON_CLASS_PREFIX}size-x-large`]: {
-            ...extendPseudoWithTheme({
-              styleFunction: () => getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(textXLarge)),
-            }),
-          },
+          [`&[size=x-small], &.${PDS_SKELETON_CLASS_PREFIX}size-x-small`]: getTextHeadlineSkeletonSubStyle(
+            getTypographyElementHeight(textXSmall)
+          ),
+          [`&[size=medium], &.${PDS_SKELETON_CLASS_PREFIX}size-medium`]: getTextHeadlineSkeletonSubStyle(
+            getTypographyElementHeight(textMedium)
+          ),
+          [`&[size=large], &.${PDS_SKELETON_CLASS_PREFIX}size-large`]: getTextHeadlineSkeletonSubStyle(
+            getTypographyElementHeight(textLarge)
+          ),
+          [`&[size=x-large], &.${PDS_SKELETON_CLASS_PREFIX}size-x-large`]: getTextHeadlineSkeletonSubStyle(
+            getTypographyElementHeight(textXLarge)
+          ),
           ...getThemedPseudoStyle(),
         },
       },

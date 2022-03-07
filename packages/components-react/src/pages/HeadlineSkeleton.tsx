@@ -23,12 +23,12 @@ export const HeadlineSkeletonPage = (): JSX.Element => {
       </div>
 
       <div className="playground dark" title="should show skeleton headlines with different style variants on dark background">
-        <PHeadline variant="large-title">The quick brown fox jumps over the lazy dog</PHeadline>
-        <PHeadline variant="headline-1">The quick brown fox jumps over the lazy dog</PHeadline>
-        <PHeadline variant="headline-2">The quick brown fox jumps over the lazy dog</PHeadline>
-        <PHeadline variant="headline-3">The quick brown fox jumps over the lazy dog</PHeadline>
-        <PHeadline variant="headline-4">The quick brown fox jumps over the lazy dog</PHeadline>
-        <PHeadline variant="headline-5">The quick brown fox jumps over the lazy dog</PHeadline>
+        <PHeadline theme="dark" variant="large-title">The quick brown fox jumps over the lazy dog</PHeadline>
+        <PHeadline theme="dark" variant="headline-1">The quick brown fox jumps over the lazy dog</PHeadline>
+        <PHeadline theme="dark" variant="headline-2">The quick brown fox jumps over the lazy dog</PHeadline>
+        <PHeadline theme="dark" variant="headline-3">The quick brown fox jumps over the lazy dog</PHeadline>
+        <PHeadline theme="dark" variant="headline-4">The quick brown fox jumps over the lazy dog</PHeadline>
+        <PHeadline theme="dark" variant="headline-5">The quick brown fox jumps over the lazy dog</PHeadline>
       </div>
     </>
   );

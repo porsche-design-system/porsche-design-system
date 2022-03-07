@@ -15,7 +15,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 
     <div class="playground dark" title="should show text skeleton in different sizes on dark theme">
       <p-text [theme]="'dark'" [size]="'x-small'">The quick brown fox jumps over the lazy dog</p-text>
-      <p-text [theme]="'dark'" [size]="'x-small'">The quick brown fox jumps over the lazy dog</p-text>
+      <p-text [theme]="'dark'">The quick brown fox jumps over the lazy dog</p-text>
       <p-text [theme]="'dark'" [size]="'medium'">The quick brown fox jumps over the lazy dog</p-text>
       <p-text [theme]="'dark'" [size]="'large'">The quick brown fox jumps over the lazy dog</p-text>
       <p-text [theme]="'dark'" [size]="'x-large'">The quick brown fox jumps over the lazy dog</p-text>

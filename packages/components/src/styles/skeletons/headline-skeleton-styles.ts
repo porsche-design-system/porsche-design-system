@@ -37,34 +37,24 @@ export const getHeadlineSkeletonCss = (): string => {
           }),
           ...getHeadlineSkeletonStyle(headline1),
           [`&[variant=large-title], &.${PDS_SKELETON_CLASS_PREFIX}variant-large-title`]: {
-            ...extendPseudoWithTheme({
-              styleFunction: () => getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(titleLarge)),
-            }),
+            ...getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(titleLarge)),
             ...getHeadlineSkeletonStyle(titleLarge),
           },
           [`&[variant=headline-2], &.${PDS_SKELETON_CLASS_PREFIX}variant-headline-2`]: {
-            ...extendPseudoWithTheme({
-              styleFunction: () => getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(headline2)),
-            }),
+            ...getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(headline2)),
             ...getHeadlineSkeletonStyle(headline2),
           },
           [`&[variant=headline-3], &.${PDS_SKELETON_CLASS_PREFIX}variant-headline-3`]: {
-            ...extendPseudoWithTheme({
-              styleFunction: () => getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(headline3)),
-            }),
+            ...getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(headline3)),
             ...getHeadlineSkeletonStyle(headline3),
           },
           [`&[variant=headline-4], &.${PDS_SKELETON_CLASS_PREFIX}variant-headline-4`]: {
-            ...extendPseudoWithTheme({
-              styleFunction: () => getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(headline4)),
-            }),
+            ...getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(headline4)),
             ...getHeadlineSkeletonStyle(headline4),
           },
-          [`&[variant=headline-5], &.${PDS_SKELETON_CLASS_PREFIX}variant-headline-5`]: {
-            ...extendPseudoWithTheme({
-              styleFunction: () => getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(headline5)),
-            }),
-          },
+          [`&[variant=headline-5], &.${PDS_SKELETON_CLASS_PREFIX}variant-headline-5`]: getTextHeadlineSkeletonSubStyle(
+            getTypographyElementHeight(headline5)
+          ),
           ...getThemedPseudoStyle(),
         },
       },

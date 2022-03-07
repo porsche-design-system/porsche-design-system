@@ -18,7 +18,10 @@ import { componentsReady } from '@porsche-design-system/components-angular';
     </div>
 
     <div class="playground light" title="should render checkbox skeleton with multiline label">
-      <p-checkbox-wrapper [label]="'Lorem ipsum dolor sit amet, consetetur sadipscing'" style="width: 240px; margin-bottom: 32px;">
+      <p-checkbox-wrapper
+        [label]="'Lorem ipsum dolor sit amet, consetetur sadipscing'"
+        style="width: 240px; margin-bottom: 32px"
+      >
         <input [type]="'checkbox'" [name]="'some-name'" />
       </p-checkbox-wrapper>
       <p-checkbox-wrapper

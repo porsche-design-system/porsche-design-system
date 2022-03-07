@@ -327,7 +327,7 @@ Object {
 }
 `;
 
-exports[`getInset() should return correct JssStyle for parameter: 'auto' 1`] = `
+exports[`getInsetStyle() should return correct JssStyle for parameter: 'auto' 1`] = `
 Object {
   "bottom": "auto",
   "left": "auto",
@@ -336,7 +336,7 @@ Object {
 }
 `;
 
-exports[`getInset() should return correct JssStyle for parameter: 2 1`] = `
+exports[`getInsetStyle() should return correct JssStyle for parameter: 2 1`] = `
 Object {
   "bottom": "2px",
   "left": "2px",
@@ -345,7 +345,7 @@ Object {
 }
 `;
 
-exports[`getInset() should return correct JssStyle for parameter: undefined 1`] = `
+exports[`getInsetStyle() should return correct JssStyle for parameter: undefined 1`] = `
 Object {
   "bottom": 0,
   "left": 0,
