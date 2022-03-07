@@ -63,16 +63,17 @@ exports[`should have no basic DOM regression for p-banner 1`] = `
 
 exports[`should have no basic DOM regression for p-button 1`] = `
 "<style>
-  p-text a {
-    color: inherit !important;
-    text-decoration: underline !important;
-    transition: color var(--p-transition-duration, .24s) ease !important;
-    outline: 1px solid transparent !important;
-    outline-offset: 1px !important;
-  }
-
-  p-text[theme=\\"dark\\"] a:hover {
-    color: #ff0223 !important;
+  p-text button {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    outline: transparent none !important;
+    appearance: none !important;
+    cursor: pointer !important;
+    text-align: left !important;
+    border: none !important;
+    background: transparent !important;
+    font: inherit !important;
   }
 
   p-text b,
@@ -85,52 +86,37 @@ exports[`should have no basic DOM regression for p-button 1`] = `
     font-style: normal !important;
   }
 
+  p-text a,
   p-text button {
-    margin: 0 !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-    outline: 1px solid transparent !important;
-    appearance: none !important;
-    cursor: pointer !important;
-    text-decoration: underline !important;
-    text-align: left !important;
-    border: none !important;
-    background: transparent !important;
     color: inherit !important;
-    font: inherit !important;
+    text-decoration: underline !important;
     transition: color var(--p-transition-duration, .24s) ease !important;
+    outline: 1px solid transparent !important;
     outline-offset: 1px !important;
   }
 
+  p-text[theme=\\"dark\\"] a:hover,
+  p-text[theme=\\"dark\\"] button:hover {
+    color: #ff0223 !important;
+  }
+
+  p-text a:hover,
   p-text button:hover {
     color: #d5001c !important;
   }
 
+  p-text a::-moz-focus-inner,
   p-text button::-moz-focus-inner {
     border: 0 !important;
   }
 
+  p-text a:focus,
   p-text button:focus {
     outline-color: currentColor !important;
   }
 
+  p-text a:focus:not(:focus-visible),
   p-text button:focus:not(:focus-visible) {
-    outline-color: transparent !important;
-  }
-
-  p-text a:hover {
-    color: #d5001c !important;
-  }
-
-  p-text a::-moz-focus-inner {
-    border: 0 !important;
-  }
-
-  p-text a:focus {
-    outline-color: currentColor !important;
-  }
-
-  p-text a:focus:not(:focus-visible) {
     outline-color: transparent !important;
   }
 </style>
@@ -153,16 +139,17 @@ exports[`should have no basic DOM regression for p-button-group 1`] = `
 
 exports[`should have no basic DOM regression for p-button-pure 1`] = `
 "<style>
-  p-text a {
-    color: inherit !important;
-    text-decoration: underline !important;
-    transition: color var(--p-transition-duration, .24s) ease !important;
-    outline: 1px solid transparent !important;
-    outline-offset: 1px !important;
-  }
-
-  p-text[theme=\\"dark\\"] a:hover {
-    color: #ff0223 !important;
+  p-text button {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    outline: transparent none !important;
+    appearance: none !important;
+    cursor: pointer !important;
+    text-align: left !important;
+    border: none !important;
+    background: transparent !important;
+    font: inherit !important;
   }
 
   p-text b,
@@ -175,52 +162,37 @@ exports[`should have no basic DOM regression for p-button-pure 1`] = `
     font-style: normal !important;
   }
 
+  p-text a,
   p-text button {
-    margin: 0 !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-    outline: 1px solid transparent !important;
-    appearance: none !important;
-    cursor: pointer !important;
-    text-decoration: underline !important;
-    text-align: left !important;
-    border: none !important;
-    background: transparent !important;
     color: inherit !important;
-    font: inherit !important;
+    text-decoration: underline !important;
     transition: color var(--p-transition-duration, .24s) ease !important;
+    outline: 1px solid transparent !important;
     outline-offset: 1px !important;
   }
 
+  p-text[theme=\\"dark\\"] a:hover,
+  p-text[theme=\\"dark\\"] button:hover {
+    color: #ff0223 !important;
+  }
+
+  p-text a:hover,
   p-text button:hover {
     color: #d5001c !important;
   }
 
+  p-text a::-moz-focus-inner,
   p-text button::-moz-focus-inner {
     border: 0 !important;
   }
 
+  p-text a:focus,
   p-text button:focus {
     outline-color: currentColor !important;
   }
 
+  p-text a:focus:not(:focus-visible),
   p-text button:focus:not(:focus-visible) {
-    outline-color: transparent !important;
-  }
-
-  p-text a:hover {
-    color: #d5001c !important;
-  }
-
-  p-text a::-moz-focus-inner {
-    border: 0 !important;
-  }
-
-  p-text a:focus {
-    outline-color: currentColor !important;
-  }
-
-  p-text a:focus:not(:focus-visible) {
     outline-color: transparent !important;
   }
 </style>
@@ -295,16 +267,17 @@ exports[`should have no basic DOM regression for p-icon 1`] = `
 
 exports[`should have no basic DOM regression for p-inline-notification 1`] = `
 "<style>
-  p-text a {
-    color: inherit !important;
-    text-decoration: underline !important;
-    transition: color var(--p-transition-duration, .24s) ease !important;
-    outline: 1px solid transparent !important;
-    outline-offset: 1px !important;
-  }
-
-  p-text[theme=\\"dark\\"] a:hover {
-    color: #ff0223 !important;
+  p-text button {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    outline: transparent none !important;
+    appearance: none !important;
+    cursor: pointer !important;
+    text-align: left !important;
+    border: none !important;
+    background: transparent !important;
+    font: inherit !important;
   }
 
   p-text b,
@@ -317,52 +290,37 @@ exports[`should have no basic DOM regression for p-inline-notification 1`] = `
     font-style: normal !important;
   }
 
+  p-text a,
   p-text button {
-    margin: 0 !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-    outline: 1px solid transparent !important;
-    appearance: none !important;
-    cursor: pointer !important;
-    text-decoration: underline !important;
-    text-align: left !important;
-    border: none !important;
-    background: transparent !important;
     color: inherit !important;
-    font: inherit !important;
+    text-decoration: underline !important;
     transition: color var(--p-transition-duration, .24s) ease !important;
+    outline: 1px solid transparent !important;
     outline-offset: 1px !important;
   }
 
+  p-text[theme=\\"dark\\"] a:hover,
+  p-text[theme=\\"dark\\"] button:hover {
+    color: #ff0223 !important;
+  }
+
+  p-text a:hover,
   p-text button:hover {
     color: #d5001c !important;
   }
 
+  p-text a::-moz-focus-inner,
   p-text button::-moz-focus-inner {
     border: 0 !important;
   }
 
+  p-text a:focus,
   p-text button:focus {
     outline-color: currentColor !important;
   }
 
+  p-text a:focus:not(:focus-visible),
   p-text button:focus:not(:focus-visible) {
-    outline-color: transparent !important;
-  }
-
-  p-text a:hover {
-    color: #d5001c !important;
-  }
-
-  p-text a::-moz-focus-inner {
-    border: 0 !important;
-  }
-
-  p-text a:focus {
-    outline-color: currentColor !important;
-  }
-
-  p-text a:focus:not(:focus-visible) {
     outline-color: transparent !important;
   }
 </style>
@@ -380,16 +338,17 @@ exports[`should have no basic DOM regression for p-inline-notification 1`] = `
 
 exports[`should have no basic DOM regression for p-link 1`] = `
 "<style>
-  p-text a {
-    color: inherit !important;
-    text-decoration: underline !important;
-    transition: color var(--p-transition-duration, .24s) ease !important;
-    outline: 1px solid transparent !important;
-    outline-offset: 1px !important;
-  }
-
-  p-text[theme=\\"dark\\"] a:hover {
-    color: #ff0223 !important;
+  p-text button {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    outline: transparent none !important;
+    appearance: none !important;
+    cursor: pointer !important;
+    text-align: left !important;
+    border: none !important;
+    background: transparent !important;
+    font: inherit !important;
   }
 
   p-text b,
@@ -402,52 +361,37 @@ exports[`should have no basic DOM regression for p-link 1`] = `
     font-style: normal !important;
   }
 
+  p-text a,
   p-text button {
-    margin: 0 !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-    outline: 1px solid transparent !important;
-    appearance: none !important;
-    cursor: pointer !important;
-    text-decoration: underline !important;
-    text-align: left !important;
-    border: none !important;
-    background: transparent !important;
     color: inherit !important;
-    font: inherit !important;
+    text-decoration: underline !important;
     transition: color var(--p-transition-duration, .24s) ease !important;
+    outline: 1px solid transparent !important;
     outline-offset: 1px !important;
   }
 
+  p-text[theme=\\"dark\\"] a:hover,
+  p-text[theme=\\"dark\\"] button:hover {
+    color: #ff0223 !important;
+  }
+
+  p-text a:hover,
   p-text button:hover {
     color: #d5001c !important;
   }
 
+  p-text a::-moz-focus-inner,
   p-text button::-moz-focus-inner {
     border: 0 !important;
   }
 
+  p-text a:focus,
   p-text button:focus {
     outline-color: currentColor !important;
   }
 
+  p-text a:focus:not(:focus-visible),
   p-text button:focus:not(:focus-visible) {
-    outline-color: transparent !important;
-  }
-
-  p-text a:hover {
-    color: #d5001c !important;
-  }
-
-  p-text a::-moz-focus-inner {
-    border: 0 !important;
-  }
-
-  p-text a:focus {
-    outline-color: currentColor !important;
-  }
-
-  p-text a:focus:not(:focus-visible) {
     outline-color: transparent !important;
   }
 </style>
@@ -463,16 +407,17 @@ exports[`should have no basic DOM regression for p-link 1`] = `
 
 exports[`should have no basic DOM regression for p-link-pure 1`] = `
 "<style>
-  p-text a {
-    color: inherit !important;
-    text-decoration: underline !important;
-    transition: color var(--p-transition-duration, .24s) ease !important;
-    outline: 1px solid transparent !important;
-    outline-offset: 1px !important;
-  }
-
-  p-text[theme=\\"dark\\"] a:hover {
-    color: #ff0223 !important;
+  p-text button {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    outline: transparent none !important;
+    appearance: none !important;
+    cursor: pointer !important;
+    text-align: left !important;
+    border: none !important;
+    background: transparent !important;
+    font: inherit !important;
   }
 
   p-text b,
@@ -485,52 +430,37 @@ exports[`should have no basic DOM regression for p-link-pure 1`] = `
     font-style: normal !important;
   }
 
+  p-text a,
   p-text button {
-    margin: 0 !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-    outline: 1px solid transparent !important;
-    appearance: none !important;
-    cursor: pointer !important;
-    text-decoration: underline !important;
-    text-align: left !important;
-    border: none !important;
-    background: transparent !important;
     color: inherit !important;
-    font: inherit !important;
+    text-decoration: underline !important;
     transition: color var(--p-transition-duration, .24s) ease !important;
+    outline: 1px solid transparent !important;
     outline-offset: 1px !important;
   }
 
+  p-text[theme=\\"dark\\"] a:hover,
+  p-text[theme=\\"dark\\"] button:hover {
+    color: #ff0223 !important;
+  }
+
+  p-text a:hover,
   p-text button:hover {
     color: #d5001c !important;
   }
 
+  p-text a::-moz-focus-inner,
   p-text button::-moz-focus-inner {
     border: 0 !important;
   }
 
+  p-text a:focus,
   p-text button:focus {
     outline-color: currentColor !important;
   }
 
+  p-text a:focus:not(:focus-visible),
   p-text button:focus:not(:focus-visible) {
-    outline-color: transparent !important;
-  }
-
-  p-text a:hover {
-    color: #d5001c !important;
-  }
-
-  p-text a::-moz-focus-inner {
-    border: 0 !important;
-  }
-
-  p-text a:focus {
-    outline-color: currentColor !important;
-  }
-
-  p-text a:focus:not(:focus-visible) {
     outline-color: transparent !important;
   }
 </style>
@@ -546,16 +476,17 @@ exports[`should have no basic DOM regression for p-link-pure 1`] = `
 
 exports[`should have no basic DOM regression for p-link-social 1`] = `
 "<style>
-  p-text a {
-    color: inherit !important;
-    text-decoration: underline !important;
-    transition: color var(--p-transition-duration, .24s) ease !important;
-    outline: 1px solid transparent !important;
-    outline-offset: 1px !important;
-  }
-
-  p-text[theme=\\"dark\\"] a:hover {
-    color: #ff0223 !important;
+  p-text button {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    outline: transparent none !important;
+    appearance: none !important;
+    cursor: pointer !important;
+    text-align: left !important;
+    border: none !important;
+    background: transparent !important;
+    font: inherit !important;
   }
 
   p-text b,
@@ -568,52 +499,37 @@ exports[`should have no basic DOM regression for p-link-social 1`] = `
     font-style: normal !important;
   }
 
+  p-text a,
   p-text button {
-    margin: 0 !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-    outline: 1px solid transparent !important;
-    appearance: none !important;
-    cursor: pointer !important;
-    text-decoration: underline !important;
-    text-align: left !important;
-    border: none !important;
-    background: transparent !important;
     color: inherit !important;
-    font: inherit !important;
+    text-decoration: underline !important;
     transition: color var(--p-transition-duration, .24s) ease !important;
+    outline: 1px solid transparent !important;
     outline-offset: 1px !important;
   }
 
+  p-text[theme=\\"dark\\"] a:hover,
+  p-text[theme=\\"dark\\"] button:hover {
+    color: #ff0223 !important;
+  }
+
+  p-text a:hover,
   p-text button:hover {
     color: #d5001c !important;
   }
 
+  p-text a::-moz-focus-inner,
   p-text button::-moz-focus-inner {
     border: 0 !important;
   }
 
+  p-text a:focus,
   p-text button:focus {
     outline-color: currentColor !important;
   }
 
+  p-text a:focus:not(:focus-visible),
   p-text button:focus:not(:focus-visible) {
-    outline-color: transparent !important;
-  }
-
-  p-text a:hover {
-    color: #d5001c !important;
-  }
-
-  p-text a::-moz-focus-inner {
-    border: 0 !important;
-  }
-
-  p-text a:focus {
-    outline-color: currentColor !important;
-  }
-
-  p-text a:focus:not(:focus-visible) {
     outline-color: transparent !important;
   }
 </style>
@@ -709,16 +625,17 @@ exports[`should have no basic DOM regression for p-spinner 1`] = `
 
 exports[`should have no basic DOM regression for p-switch 1`] = `
 "<style>
-  p-text a {
-    color: inherit !important;
-    text-decoration: underline !important;
-    transition: color var(--p-transition-duration, .24s) ease !important;
-    outline: 1px solid transparent !important;
-    outline-offset: 1px !important;
-  }
-
-  p-text[theme=\\"dark\\"] a:hover {
-    color: #ff0223 !important;
+  p-text button {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    outline: transparent none !important;
+    appearance: none !important;
+    cursor: pointer !important;
+    text-align: left !important;
+    border: none !important;
+    background: transparent !important;
+    font: inherit !important;
   }
 
   p-text b,
@@ -731,52 +648,37 @@ exports[`should have no basic DOM regression for p-switch 1`] = `
     font-style: normal !important;
   }
 
+  p-text a,
   p-text button {
-    margin: 0 !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-    outline: 1px solid transparent !important;
-    appearance: none !important;
-    cursor: pointer !important;
-    text-decoration: underline !important;
-    text-align: left !important;
-    border: none !important;
-    background: transparent !important;
     color: inherit !important;
-    font: inherit !important;
+    text-decoration: underline !important;
     transition: color var(--p-transition-duration, .24s) ease !important;
+    outline: 1px solid transparent !important;
     outline-offset: 1px !important;
   }
 
+  p-text[theme=\\"dark\\"] a:hover,
+  p-text[theme=\\"dark\\"] button:hover {
+    color: #ff0223 !important;
+  }
+
+  p-text a:hover,
   p-text button:hover {
     color: #d5001c !important;
   }
 
+  p-text a::-moz-focus-inner,
   p-text button::-moz-focus-inner {
     border: 0 !important;
   }
 
+  p-text a:focus,
   p-text button:focus {
     outline-color: currentColor !important;
   }
 
+  p-text a:focus:not(:focus-visible),
   p-text button:focus:not(:focus-visible) {
-    outline-color: transparent !important;
-  }
-
-  p-text a:hover {
-    color: #d5001c !important;
-  }
-
-  p-text a::-moz-focus-inner {
-    border: 0 !important;
-  }
-
-  p-text a:focus {
-    outline-color: currentColor !important;
-  }
-
-  p-text a:focus:not(:focus-visible) {
     outline-color: transparent !important;
   }
 </style>
