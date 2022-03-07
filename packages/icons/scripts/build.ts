@@ -13,7 +13,7 @@ type Manifest = {
 const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
 
 const createManifestAndOptimizeIcons = (cdn: string, files: string[], config: OptimizeOptions): void => {
-  fs.rmdirSync(path.normalize('./dist'), { recursive: true });
+  fs.rmSync(path.normalize('./dist'), { force: true, recursive: true });
   fs.mkdirSync(path.normalize('./dist/icons'), { recursive: true });
 
   const manifest: Manifest = {};
