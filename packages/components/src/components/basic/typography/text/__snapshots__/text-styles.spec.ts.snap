@@ -360,15 +360,17 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 `;
 
 exports[`getSlottedCss() should return correct css 1`] = `
-"p-text a {
-  color: inherit !important;
-  text-decoration: underline !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
-}
-p-text[theme=\\"dark\\"] a:hover {
-  color: #ff0223 !important;
+"p-text button {
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  outline: transparent none !important;
+  appearance: none !important;
+  cursor: pointer !important;
+  text-align: left !important;
+  border: none !important;
+  background: transparent !important;
+  font: inherit !important;
 }
 p-text b, p-text strong {
   font-weight: 700 !important;
@@ -376,58 +378,42 @@ p-text b, p-text strong {
 p-text em, p-text i {
   font-style: normal !important;
 }
-p-text button {
-  margin: 0 !important;
-  padding: 0 !important;
-  box-sizing: border-box !important;
-  outline: 1px solid transparent !important;
-  appearance: none !important;
-  cursor: pointer !important;
-  text-decoration: underline !important;
-  text-align: left !important;
-  border: none !important;
-  background: transparent !important;
+p-text a, p-text button {
   color: inherit !important;
-  font: inherit !important;
+  text-decoration: underline !important;
   transition: color var(--p-transition-duration, .24s) ease !important;
+  outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
-p-text button:hover {
+p-text[theme=\\"dark\\"] a:hover, p-text[theme=\\"dark\\"] button:hover {
+  color: #ff0223 !important;
+}
+p-text a:hover, p-text button:hover {
   color: #d5001c !important;
 }
-p-text button::-moz-focus-inner {
+p-text a::-moz-focus-inner, p-text button::-moz-focus-inner {
   border: 0 !important;
 }
-p-text button:focus {
+p-text a:focus, p-text button:focus {
   outline-color: currentColor !important;
 }
-p-text button:focus:not(:focus-visible) {
-  outline-color: transparent !important;
-}
-p-text a:hover {
-  color: #d5001c !important;
-}
-p-text a::-moz-focus-inner {
-  border: 0 !important;
-}
-p-text a:focus {
-  outline-color: currentColor !important;
-}
-p-text a:focus:not(:focus-visible) {
+p-text a:focus:not(:focus-visible), p-text button:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }"
 `;
 
 exports[`getSlottedCss() should return correct css with prefix 1`] = `
-"prefixed-p-text a {
-  color: inherit !important;
-  text-decoration: underline !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
-}
-prefixed-p-text[theme=\\"dark\\"] a:hover {
-  color: #ff0223 !important;
+"prefixed-p-text button {
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  outline: transparent none !important;
+  appearance: none !important;
+  cursor: pointer !important;
+  text-align: left !important;
+  border: none !important;
+  background: transparent !important;
+  font: inherit !important;
 }
 prefixed-p-text b, prefixed-p-text strong {
   font-weight: 700 !important;
@@ -435,44 +421,26 @@ prefixed-p-text b, prefixed-p-text strong {
 prefixed-p-text em, prefixed-p-text i {
   font-style: normal !important;
 }
-prefixed-p-text button {
-  margin: 0 !important;
-  padding: 0 !important;
-  box-sizing: border-box !important;
-  outline: 1px solid transparent !important;
-  appearance: none !important;
-  cursor: pointer !important;
-  text-decoration: underline !important;
-  text-align: left !important;
-  border: none !important;
-  background: transparent !important;
+prefixed-p-text a, prefixed-p-text button {
   color: inherit !important;
-  font: inherit !important;
+  text-decoration: underline !important;
   transition: color var(--p-transition-duration, .24s) ease !important;
+  outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
-prefixed-p-text button:hover {
+prefixed-p-text[theme=\\"dark\\"] a:hover, prefixed-p-text[theme=\\"dark\\"] button:hover {
+  color: #ff0223 !important;
+}
+prefixed-p-text a:hover, prefixed-p-text button:hover {
   color: #d5001c !important;
 }
-prefixed-p-text button::-moz-focus-inner {
+prefixed-p-text a::-moz-focus-inner, prefixed-p-text button::-moz-focus-inner {
   border: 0 !important;
 }
-prefixed-p-text button:focus {
+prefixed-p-text a:focus, prefixed-p-text button:focus {
   outline-color: currentColor !important;
 }
-prefixed-p-text button:focus:not(:focus-visible) {
-  outline-color: transparent !important;
-}
-prefixed-p-text a:hover {
-  color: #d5001c !important;
-}
-prefixed-p-text a::-moz-focus-inner {
-  border: 0 !important;
-}
-prefixed-p-text a:focus {
-  outline-color: currentColor !important;
-}
-prefixed-p-text a:focus:not(:focus-visible) {
+prefixed-p-text a:focus:not(:focus-visible), prefixed-p-text button:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }"
 `;
