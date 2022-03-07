@@ -91,7 +91,7 @@
 
           <p-fieldset-wrapper
             label="Grouped short input"
-            v-bind:state="getState('day') || getState('month') || getState('year')"
+            v-bind:state="[getState('day'), getState('month'), getState('year')].includes('error') ? 'error' : 'none'"
             class="form-section-spacing"
           >
             <p-grid>
