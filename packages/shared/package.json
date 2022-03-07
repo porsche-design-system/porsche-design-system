@@ -51,9 +51,9 @@
     "@rollup/plugin-typescript": "^8.3.1",
     "change-case": "^4.1.2",
     "globby": "^11.0.4",
-    "rollup": "^2.69.0",
+    "rollup": "^2.70.0",
     "rollup-plugin-copy": "^3.4.0",
-    "ts-node": "^10.6.0",
+    "ts-node": "^10.7.0",
     "typescript": "~4.6.2"
   }
 }
