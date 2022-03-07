@@ -1,7 +1,7 @@
 import type { JssStyle } from 'jss';
 import type { SpinnerSize, SpinnerSizeType } from './spinner-utils';
 import type { ThemeExtendedElectricDark } from '../../../types';
-import { buildResponsiveStyle, buildSlottedStyles, getCss, isThemeDark, isThemeDarkElectric } from '../../../utils';
+import { buildResponsiveStyles, buildSlottedStyles, getCss, isThemeDark, isThemeDarkElectric } from '../../../utils';
 import { getBaseSlottedStyles, pxToRemWithUnit, getThemedColors } from '../../../styles';
 import { getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
 
@@ -21,20 +21,11 @@ export const getComponentCss = (size: SpinnerSize, theme: ThemeExtendedElectricD
   const animationDuration = 'var(--p-animation-duration__spinner, 2s)';
 
   return getCss({
-    ':host': {
-      display: 'inline-flex',
-      verticalAlign: 'top',
-    },
-    root: {
-      display: 'block',
-      ...buildResponsiveStyle(size, (s: SpinnerSizeType) => sizeMap[s]),
-      margin: 0,
-      padding: 0,
-      boxSizing: 'border-box',
-      strokeWidth: 1,
-    },
-    'sr-only': getScreenReaderOnlyJssStyle(),
     '@global': {
+      ':host': {
+        display: 'inline-flex',
+        verticalAlign: 'top',
+      },
       svg: {
         display: 'block',
         position: 'relative',
@@ -72,6 +63,15 @@ export const getComponentCss = (size: SpinnerSize, theme: ThemeExtendedElectricD
         },
       },
     },
+    root: {
+      display: 'block',
+      ...buildResponsiveStyles(size, (s: SpinnerSizeType) => sizeMap[s]),
+      margin: 0,
+      padding: 0,
+      boxSizing: 'border-box',
+      strokeWidth: 1,
+    },
+    'sr-only': getScreenReaderOnlyJssStyle(),
   });
 };
 

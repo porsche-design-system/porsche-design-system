@@ -19,19 +19,25 @@ describe('getBaseChildStyles()', () => {
 
 describe('getLabelStyles()', () => {
   it.each<Parameters<typeof getLabelStyles>>([
-    ['input', false, 'none', 'light', undefined],
-    ['input', false, 'success', 'light', undefined],
-    ['input', false, 'error', 'light', undefined],
-    ['input', true, 'none', 'light', undefined],
-    ['input', true, 'success', 'light', undefined],
-    ['input', true, 'error', 'light', undefined],
-    ['textarea', false, 'none', 'dark', undefined],
-    ['textarea', false, 'success', 'dark', undefined],
-    ['textarea', false, 'error', 'dark', undefined],
-    ['textarea', true, 'none', 'dark', undefined],
-    ['textarea', true, 'success', 'dark', undefined],
-    ['textarea', true, 'error', 'dark', undefined],
-    ['input', { base: true, xs: false, s: true, m: false, l: true, xl: false }, 'error', 'dark', '$unit'],
+    ['input', false, 'none', 'light', false],
+    ['input', false, 'success', 'light', false],
+    ['input', false, 'error', 'light', false],
+    ['input', true, 'none', 'light', false],
+    ['input', true, 'success', 'light', false],
+    ['input', true, 'error', 'light', false],
+    ['textarea', false, 'none', 'dark', false],
+    ['textarea', false, 'success', 'dark', false],
+    ['textarea', false, 'error', 'dark', false],
+    ['textarea', true, 'none', 'dark', false],
+    ['textarea', true, 'success', 'dark', false],
+    ['textarea', true, 'error', 'dark', false],
+    [
+      'input',
+      { base: true, xs: false, s: true, m: false, l: true, xl: false },
+      'error',
+      'dark',
+      { unit: { display: 'block ' } },
+    ],
   ])(
     'should return correct css for child: %s, hideLabel: %o, state: %s, theme: %s and additionalRefForInputHover: %s',
     (...args) => {

@@ -11,7 +11,12 @@ import { getBoxShadow } from '../../banner/banner-styles';
 
 export const getComponentCss = (state: ToastState, theme: Theme): string => {
   return getCss({
-    ':host': { ...getNotificationRootStyle(state, theme), ...getBoxShadow() },
+    '@global': {
+      ':host': {
+        ...getNotificationRootStyle(state, theme),
+        ...getBoxShadow(),
+      },
+    },
     icon: getNotificationIconStyle(state),
     content: getNotificationContentStyle(),
     close: getCloseIconStyle(),

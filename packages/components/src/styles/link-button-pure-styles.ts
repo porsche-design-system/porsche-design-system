@@ -2,15 +2,10 @@ import type { Styles, JssStyle } from 'jss';
 import type { BreakpointCustomizable, GetStyleFunction } from '../utils';
 import type { AlignLabel, AlignLabelType, LinkButtonPureIconName, TextSize, ThemeExtendedElectricDark } from '../types';
 import type { FontSizeLineHeight } from '@porsche-design-system/utilities-v2';
-import { buildResponsiveStyle, generateTypeScale, hasVisibleIcon, mergeDeep, paramCaseToCamelCase } from '../utils';
+import { buildResponsiveStyles, generateTypeScale, hasVisibleIcon, mergeDeep, paramCaseToCamelCase } from '../utils';
 import { addImportantToRule, getFocusStyle, getInsetStyle, getTransition, pxToRemWithUnit, getThemedColors } from './';
 import { fontSize, getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
 import { isSizeInherit } from '../components/basic/typography/text/text-utils';
-
-const getHostStyle: GetStyleFunction = (stretch: boolean): JssStyle => ({
-  display: addImportantToRule(stretch ? 'block' : 'inline-block'),
-  ...(!stretch && { verticalAlign: 'top' }),
-});
 
 const getSizeStyle: GetStyleFunction = (textSize: TextSize): JssStyle => {
   if (isSizeInherit(textSize)) {
@@ -88,7 +83,7 @@ const getSlottedAnchorVisibilityStyle: GetStyleFunction = (hideLabel: boolean): 
         position: 'absolute',
         ...getInsetStyle(),
         whiteSpace: 'nowrap',
-        textIndent: -999999,
+        textIndent: '-999999px',
       }
     : {
         position: 'static',
@@ -114,10 +109,15 @@ export const getLinkButtonPureStyles = (
   const hasIcon = hasVisibleIcon(icon);
 
   return {
-    ':host': {
-      position: 'relative',
-      outline: addImportantToRule(0),
-      ...buildResponsiveStyle(hasSubline ? false : stretch, getHostStyle),
+    '@global': {
+      ':host': {
+        position: 'relative',
+        outline: addImportantToRule(0),
+        ...buildResponsiveStyles(hasSubline ? false : stretch, (responsiveStretch: boolean) => ({
+          display: addImportantToRule(responsiveStretch ? 'block' : 'inline-block'),
+          ...(!responsiveStretch && { verticalAlign: 'top' }),
+        })),
+      },
     },
     root: {
       display: 'flex',
@@ -156,13 +156,10 @@ export const getLinkButtonPureStyles = (
       }),
       ...mergeDeep(
         !hasSubline &&
-          buildResponsiveStyle(
-            stretch,
-            (stretched: boolean): JssStyle => ({
-              justifyContent: stretched ? 'space-between' : 'flex-start',
-            })
-          ),
-        buildResponsiveStyle(size, getSizeStyle)
+          buildResponsiveStyles(stretch, (stretched: boolean) => ({
+            justifyContent: stretched ? 'space-between' : 'flex-start',
+          })),
+        buildResponsiveStyles(size, getSizeStyle)
       ),
     },
     ...(hasIcon && {
@@ -173,22 +170,19 @@ export const getLinkButtonPureStyles = (
       },
       label: {
         ...mergeDeep(
-          buildResponsiveStyle(hideLabel, !hasSlottedAnchor ? getVisibilityStyle : getSlottedAnchorVisibilityStyle),
-          !hasSubline && buildResponsiveStyle(alignLabel, getLabelAlignmentStyle)
+          buildResponsiveStyles(hideLabel, !hasSlottedAnchor ? getVisibilityStyle : getSlottedAnchorVisibilityStyle),
+          hasSubline ? { paddingLeft: pxToRemWithUnit(4) } : buildResponsiveStyles(alignLabel, getLabelAlignmentStyle)
         ),
-        ...(hasSubline && {
-          paddingLeft: pxToRemWithUnit(4),
-        }),
       },
     }),
     ...(hasSubline && {
       subline: {
         display: 'flex',
         transition: getTransition('color'),
-        marginTop: addImportantToRule('4px'), // override due to reset of getScreenReaderOnlyJssStyle() in getVisibilityStyles
+        marginTop: addImportantToRule('4px'), // override due to reset of getScreenReaderOnlyJssStyle() in getVisibilityStyle
         color: isDisabledOrLoading ? disabledColor : active ? activeColor : baseColor,
         ...(hasIcon && {
-          ...buildResponsiveStyle(hideLabel, getVisibilityStyle),
+          ...buildResponsiveStyles(hideLabel, getVisibilityStyle),
           paddingLeft: pxToRemWithUnit(4),
           '&::before': {
             content: '""',

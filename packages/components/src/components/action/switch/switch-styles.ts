@@ -1,7 +1,7 @@
 import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable, GetStyleFunction } from '../../../utils';
 import type { AlignLabel, AlignLabelType, ThemeExtendedElectric } from '../../../types';
-import { buildResponsiveStyle, getCss, isThemeLightElectric, mergeDeep } from '../../../utils';
+import { buildResponsiveStyles, getCss, isThemeLightElectric, mergeDeep } from '../../../utils';
 import {
   addImportantToEachRule,
   getTextHiddenJssStyle,
@@ -106,18 +106,11 @@ export const getComponentCss = (
   } = getColors(checked, isDisabledOrLoading, theme);
 
   return getCss({
-    ':host': addImportantToEachRule({
-      display: 'flex',
-      outline: 0,
-    }),
-    root: {
-      display: 'flex',
-      minWidth: 0, // prevents flex child to overflow max available parent size
-      minHeight: 0, // prevents flex child to overflow max available parent size
-      cursor: isDisabledOrLoading ? 'auto' : 'pointer',
-      ...buildResponsiveStyle(stretch, getStretchStyle),
-    },
     '@global': {
+      ':host': addImportantToEachRule({
+        display: 'flex',
+        outline: 0,
+      }),
       button: {
         position: 'relative',
         width: pxToRemWithUnit(48),
@@ -152,13 +145,20 @@ export const getComponentCss = (
         },
       },
     },
+    root: {
+      display: 'flex',
+      minWidth: 0, // prevents flex child to overflow max available parent size
+      minHeight: 0, // prevents flex child to overflow max available parent size
+      cursor: isDisabledOrLoading ? 'auto' : 'pointer',
+      ...buildResponsiveStyles(stretch, getStretchStyle),
+    },
     text: {
       minWidth: 0, // prevents flex child to overflow max available parent size
       minHeight: 0, // prevents flex child to overflow max available parent size
       color: textColor,
       ...mergeDeep(
-        buildResponsiveStyle(alignLabel, getAlignLabelStyle),
-        buildResponsiveStyle(hideLabel, getTextHiddenJssStyle)
+        buildResponsiveStyles(alignLabel, getAlignLabelStyle),
+        buildResponsiveStyles(hideLabel, getTextHiddenJssStyle)
       ),
     },
     toggle: {

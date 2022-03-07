@@ -1,69 +1,610 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for alignContent: "center" 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:stretch !important;align-content:center !important}"`;
+exports[`getComponentCss() should return correct css for alignContent: "center" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: center !important;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for alignContent: "flex-end" 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:stretch !important;align-content:flex-end !important}"`;
+exports[`getComponentCss() should return correct css for alignContent: "flex-end" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: flex-end !important;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for alignContent: "flex-start" 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:stretch !important;align-content:flex-start !important}"`;
+exports[`getComponentCss() should return correct css for alignContent: "flex-start" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: flex-start !important;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for alignContent: "space-around" 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:stretch !important;align-content:space-around !important}"`;
+exports[`getComponentCss() should return correct css for alignContent: "space-around" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: space-around !important;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for alignContent: "space-between" 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:stretch !important;align-content:space-between !important}"`;
+exports[`getComponentCss() should return correct css for alignContent: "space-between" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: space-between !important;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for alignContent: "space-evenly" 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:stretch !important;align-content:space-evenly !important}"`;
+exports[`getComponentCss() should return correct css for alignContent: "space-evenly" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: space-evenly !important;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for alignContent: "stretch" 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:stretch !important;align-content:stretch !important}"`;
+exports[`getComponentCss() should return correct css for alignContent: "stretch" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for alignContent: {"base":"stretch","xs":"center","s":"stretch","m":"center","l":"stretch","xl":"center"} 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:stretch !important;align-content:stretch !important}@media(min-width:480px){:host{align-content:center !important}}@media(min-width:760px){:host{align-content:stretch !important}}@media(min-width:1000px){:host{align-content:center !important}}@media(min-width:1300px){:host{align-content:stretch !important}}@media(min-width:1760px){:host{align-content:center !important}}"`;
+exports[`getComponentCss() should return correct css for alignContent: {"base":"stretch","xs":"center","s":"stretch","m":"center","l":"stretch","xl":"center"} 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}
+@media (min-width: 480px) {
+  :host {
+    align-content: center !important;
+  }
+}
 
-exports[`getComponentCss() should return correct css for alignItems: "baseline" 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:baseline !important;align-content:stretch !important}"`;
+@media (min-width: 760px) {
+  :host {
+    align-content: stretch !important;
+  }
+}
 
-exports[`getComponentCss() should return correct css for alignItems: "center" 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:center !important;align-content:stretch !important}"`;
+@media (min-width: 1000px) {
+  :host {
+    align-content: center !important;
+  }
+}
 
-exports[`getComponentCss() should return correct css for alignItems: "flex-end" 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:flex-end !important;align-content:stretch !important}"`;
+@media (min-width: 1300px) {
+  :host {
+    align-content: stretch !important;
+  }
+}
 
-exports[`getComponentCss() should return correct css for alignItems: "flex-start" 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:flex-start !important;align-content:stretch !important}"`;
+@media (min-width: 1760px) {
+  :host {
+    align-content: center !important;
+  }
+}
+"
+`;
 
-exports[`getComponentCss() should return correct css for alignItems: "stretch" 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:stretch !important;align-content:stretch !important}"`;
+exports[`getComponentCss() should return correct css for alignItems: "baseline" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: baseline !important;
+  align-content: stretch !important;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for alignItems: {"base":"stretch","xs":"center","s":"stretch","m":"center","l":"stretch","xl":"center"} 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:stretch !important;align-content:stretch !important}@media(min-width:480px){:host{align-items:center !important}}@media(min-width:760px){:host{align-items:stretch !important}}@media(min-width:1000px){:host{align-items:center !important}}@media(min-width:1300px){:host{align-items:stretch !important}}@media(min-width:1760px){:host{align-items:center !important}}"`;
+exports[`getComponentCss() should return correct css for alignItems: "center" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  align-content: stretch !important;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for all props being breakpoint customizable 1`] = `":host{display:inline-flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:stretch !important;align-content:stretch !important}@media(min-width:480px){:host{display:flex !important;flex-wrap:wrap !important;flex-direction:column !important;justify-content:center !important;align-items:center !important;align-content:center !important}}@media(min-width:760px){:host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:stretch !important;align-content:stretch !important}}@media(min-width:1000px){:host{display:inline-flex !important;flex-wrap:wrap !important;flex-direction:column !important;justify-content:center !important;align-items:center !important;align-content:center !important}}@media(min-width:1300px){:host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:stretch !important;align-content:stretch !important}}@media(min-width:1760px){:host{display:inline-flex !important;flex-wrap:wrap !important;flex-direction:column !important;justify-content:center !important;align-items:center !important;align-content:center !important}}"`;
+exports[`getComponentCss() should return correct css for alignItems: "flex-end" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: flex-end !important;
+  align-content: stretch !important;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for direction: "column" 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:column !important;justify-content:flex-start !important;align-items:stretch !important;align-content:stretch !important}"`;
+exports[`getComponentCss() should return correct css for alignItems: "flex-start" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  align-content: stretch !important;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for direction: "column-reverse" 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:column-reverse !important;justify-content:flex-start !important;align-items:stretch !important;align-content:stretch !important}"`;
+exports[`getComponentCss() should return correct css for alignItems: "stretch" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for direction: "row" 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:stretch !important;align-content:stretch !important}"`;
+exports[`getComponentCss() should return correct css for alignItems: {"base":"stretch","xs":"center","s":"stretch","m":"center","l":"stretch","xl":"center"} 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}
+@media (min-width: 480px) {
+  :host {
+    align-items: center !important;
+  }
+}
 
-exports[`getComponentCss() should return correct css for direction: "row-reverse" 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row-reverse !important;justify-content:flex-start !important;align-items:stretch !important;align-content:stretch !important}"`;
+@media (min-width: 760px) {
+  :host {
+    align-items: stretch !important;
+  }
+}
 
-exports[`getComponentCss() should return correct css for direction: {"base":"row","xs":"column","s":"row","m":"column","l":"row","xl":"column"} 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:stretch !important;align-content:stretch !important}@media(min-width:480px){:host{flex-direction:column !important}}@media(min-width:760px){:host{flex-direction:row !important}}@media(min-width:1000px){:host{flex-direction:column !important}}@media(min-width:1300px){:host{flex-direction:row !important}}@media(min-width:1760px){:host{flex-direction:column !important}}"`;
+@media (min-width: 1000px) {
+  :host {
+    align-items: center !important;
+  }
+}
 
-exports[`getComponentCss() should return correct css for inline: {"base":true,"xs":false,"s":false,"m":true,"l":false,"xl":true} 1`] = `":host{display:inline-flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:stretch !important;align-content:stretch !important}@media(min-width:480px){:host{display:flex !important}}@media(min-width:760px){:host{display:flex !important}}@media(min-width:1000px){:host{display:inline-flex !important}}@media(min-width:1300px){:host{display:flex !important}}@media(min-width:1760px){:host{display:inline-flex !important}}"`;
+@media (min-width: 1300px) {
+  :host {
+    align-items: stretch !important;
+  }
+}
 
-exports[`getComponentCss() should return correct css for inline: false 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:stretch !important;align-content:stretch !important}"`;
+@media (min-width: 1760px) {
+  :host {
+    align-items: center !important;
+  }
+}
+"
+`;
 
-exports[`getComponentCss() should return correct css for inline: true 1`] = `":host{display:inline-flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:stretch !important;align-content:stretch !important}"`;
+exports[`getComponentCss() should return correct css for all props being breakpoint customizable 1`] = `
+":host {
+  display: inline-flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}
+@media (min-width: 480px) {
+  :host {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    align-content: center !important;
+  }
+}
 
-exports[`getComponentCss() should return correct css for justifyContent: "center" 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:center !important;align-items:stretch !important;align-content:stretch !important}"`;
+@media (min-width: 760px) {
+  :host {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+    align-content: stretch !important;
+  }
+}
 
-exports[`getComponentCss() should return correct css for justifyContent: "flex-end" 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-end !important;align-items:stretch !important;align-content:stretch !important}"`;
+@media (min-width: 1000px) {
+  :host {
+    display: inline-flex !important;
+    flex-wrap: wrap !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    align-content: center !important;
+  }
+}
 
-exports[`getComponentCss() should return correct css for justifyContent: "flex-start" 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:stretch !important;align-content:stretch !important}"`;
+@media (min-width: 1300px) {
+  :host {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+    align-content: stretch !important;
+  }
+}
 
-exports[`getComponentCss() should return correct css for justifyContent: "space-around" 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:space-around !important;align-items:stretch !important;align-content:stretch !important}"`;
+@media (min-width: 1760px) {
+  :host {
+    display: inline-flex !important;
+    flex-wrap: wrap !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    align-content: center !important;
+  }
+}
+"
+`;
 
-exports[`getComponentCss() should return correct css for justifyContent: "space-between" 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:space-between !important;align-items:stretch !important;align-content:stretch !important}"`;
+exports[`getComponentCss() should return correct css for direction: "column" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for justifyContent: "space-evenly" 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:space-evenly !important;align-items:stretch !important;align-content:stretch !important}"`;
+exports[`getComponentCss() should return correct css for direction: "column-reverse" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: column-reverse !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for justifyContent: {"base":"flex-start","xs":"center","s":"flex-start","m":"center","l":"flex-start","xl":"center"} 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:stretch !important;align-content:stretch !important}@media(min-width:480px){:host{justify-content:center !important}}@media(min-width:760px){:host{justify-content:flex-start !important}}@media(min-width:1000px){:host{justify-content:center !important}}@media(min-width:1300px){:host{justify-content:flex-start !important}}@media(min-width:1760px){:host{justify-content:center !important}}"`;
+exports[`getComponentCss() should return correct css for direction: "row" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for wrap: "nowrap" 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:stretch !important;align-content:stretch !important}"`;
+exports[`getComponentCss() should return correct css for direction: "row-reverse" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row-reverse !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}"
+`;
 
-exports[`getComponentCss() should return correct css for wrap: "wrap" 1`] = `":host{display:flex !important;flex-wrap:wrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:stretch !important;align-content:stretch !important}"`;
+exports[`getComponentCss() should return correct css for direction: {"base":"row","xs":"column","s":"row","m":"column","l":"row","xl":"column"} 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}
+@media (min-width: 480px) {
+  :host {
+    flex-direction: column !important;
+  }
+}
 
-exports[`getComponentCss() should return correct css for wrap: "wrap-reverse" 1`] = `":host{display:flex !important;flex-wrap:wrap-reverse !important;flex-direction:row !important;justify-content:flex-start !important;align-items:stretch !important;align-content:stretch !important}"`;
+@media (min-width: 760px) {
+  :host {
+    flex-direction: row !important;
+  }
+}
 
-exports[`getComponentCss() should return correct css for wrap: {"base":"nowrap","xs":"wrap","s":"nowrap","m":"wrap","l":"nowrap","xl":"wrap"} 1`] = `":host{display:flex !important;flex-wrap:nowrap !important;flex-direction:row !important;justify-content:flex-start !important;align-items:stretch !important;align-content:stretch !important}@media(min-width:480px){:host{flex-wrap:wrap !important}}@media(min-width:760px){:host{flex-wrap:nowrap !important}}@media(min-width:1000px){:host{flex-wrap:wrap !important}}@media(min-width:1300px){:host{flex-wrap:nowrap !important}}@media(min-width:1760px){:host{flex-wrap:wrap !important}}"`;
+@media (min-width: 1000px) {
+  :host {
+    flex-direction: column !important;
+  }
+}
+
+@media (min-width: 1300px) {
+  :host {
+    flex-direction: row !important;
+  }
+}
+
+@media (min-width: 1760px) {
+  :host {
+    flex-direction: column !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for inline: {"base":true,"xs":false,"s":false,"m":true,"l":false,"xl":true} 1`] = `
+":host {
+  display: inline-flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}
+@media (min-width: 480px) {
+  :host {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 760px) {
+  :host {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 1000px) {
+  :host {
+    display: inline-flex !important;
+  }
+}
+
+@media (min-width: 1300px) {
+  :host {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 1760px) {
+  :host {
+    display: inline-flex !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for inline: false 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for inline: true 1`] = `
+":host {
+  display: inline-flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for justifyContent: "center" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for justifyContent: "flex-end" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-end !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for justifyContent: "flex-start" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for justifyContent: "space-around" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: space-around !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for justifyContent: "space-between" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for justifyContent: "space-evenly" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: space-evenly !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for justifyContent: {"base":"flex-start","xs":"center","s":"flex-start","m":"center","l":"flex-start","xl":"center"} 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}
+@media (min-width: 480px) {
+  :host {
+    justify-content: center !important;
+  }
+}
+
+@media (min-width: 760px) {
+  :host {
+    justify-content: flex-start !important;
+  }
+}
+
+@media (min-width: 1000px) {
+  :host {
+    justify-content: center !important;
+  }
+}
+
+@media (min-width: 1300px) {
+  :host {
+    justify-content: flex-start !important;
+  }
+}
+
+@media (min-width: 1760px) {
+  :host {
+    justify-content: center !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for wrap: "nowrap" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for wrap: "wrap" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for wrap: "wrap-reverse" 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: wrap-reverse !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for wrap: {"base":"nowrap","xs":"wrap","s":"nowrap","m":"wrap","l":"nowrap","xl":"wrap"} 1`] = `
+":host {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  align-content: stretch !important;
+}
+@media (min-width: 480px) {
+  :host {
+    flex-wrap: wrap !important;
+  }
+}
+
+@media (min-width: 760px) {
+  :host {
+    flex-wrap: nowrap !important;
+  }
+}
+
+@media (min-width: 1000px) {
+  :host {
+    flex-wrap: wrap !important;
+  }
+}
+
+@media (min-width: 1300px) {
+  :host {
+    flex-wrap: nowrap !important;
+  }
+}
+
+@media (min-width: 1760px) {
+  :host {
+    flex-wrap: wrap !important;
+  }
+}
+"
+`;

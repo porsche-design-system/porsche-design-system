@@ -1,10 +1,9 @@
 import type { TagName } from '@porsche-design-system/shared';
 import type { BreakpointCustomizable } from './breakpoint-customizable';
 import type { Breakpoint } from '../styles';
-import type { JssStyle, Rule, Styles } from 'jss';
+import type { JssStyle, Styles } from 'jss';
 import { create } from 'jss';
 import jssPluginCamelCase from 'jss-plugin-camel-case';
-import jssPluginDefaultUnit from 'jss-plugin-default-unit';
 import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
@@ -29,7 +28,6 @@ const jss = create({
     jssPluginGlobal(),
     jssPluginNested(),
     jssPluginCamelCase(),
-    jssPluginDefaultUnit(),
     jssPluginSortMediaQueries({ combineMediaQueries: true }),
   ],
 });
@@ -37,11 +35,9 @@ const jss = create({
 export const getCss = (jssStyles: Styles): string =>
   jss
     .createStyleSheet(jssStyles, {
-      generateId: (rule: Rule) => rule.key,
+      generateId: (rule) => rule.key,
     })
-    .toString()
-    // removes default '.' before class name, all unneeded whitespace, semi colons, escaping backslashes and new lines
-    .replace(/\s\s+|\.\\(?=:)|[\n\\]+| (?={)|;(?=\s+})|(:|media)\s(?=.*;?)/g, '$1');
+    .toString();
 
 export const supportsConstructableStylesheets = (): boolean => {
   try {
@@ -116,15 +112,7 @@ export const buildSlottedStyles = (host: HTMLElement, jssStyle: JssStyle): Style
 
 export type GetStyleFunction = (value?: any) => JssStyle;
 
-/**
- * @deprecated use buildResponsiveStyles() directly
- */
-export const buildResponsiveHostStyles = <T>(
-  rawValue: BreakpointCustomizable<T>,
-  getStyles: GetStyleFunction
-): Styles<':host'> => ({ ':host': buildResponsiveStyle(rawValue, getStyles) });
-
-export const buildResponsiveStyle = <T>(rawValue: BreakpointCustomizable<T>, getStyles: GetStyleFunction): JssStyle => {
+export const buildResponsiveStyles = <T>(rawValue: BreakpointCustomizable<T>, getStyle: GetStyleFunction): Styles => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const value = parseJSON(rawValue as any);
 
@@ -136,11 +124,11 @@ export const buildResponsiveStyle = <T>(rawValue: BreakpointCustomizable<T>, get
         .reduce(
           (result, breakpointValue: Breakpoint) => ({
             ...result,
-            [mediaQuery(breakpointValue)]: getStyles(value[breakpointValue]) as Styles,
+            [mediaQuery(breakpointValue)]: getStyle(value[breakpointValue]) as Styles,
           }),
-          getStyles(value.base)
+          getStyle(value.base) as Styles
         )
-    : getStyles(value);
+    : (getStyle(value) as Styles);
 };
 
 export const isObject = <T extends Record<string, any>>(obj: T): boolean =>

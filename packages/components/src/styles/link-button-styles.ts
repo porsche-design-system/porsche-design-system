@@ -1,7 +1,8 @@
 import type { Styles, JssStyle } from 'jss';
-import type { BreakpointCustomizable, GetStyleFunction } from '../utils';
+import type { BreakpointCustomizable } from '../utils';
+import type { GetStyleFunction } from '../utils';
 import type { LinkButtonVariant, ThemeExtendedElectric } from '../types';
-import { buildResponsiveStyle, isThemeDark } from '../utils';
+import { buildResponsiveStyles, isThemeDark } from '../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
@@ -108,11 +109,11 @@ export const getIconStyle: GetStyleFunction = (hideLabel: boolean): JssStyle => 
 export const getLabelStyle: GetStyleFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel
     ? {
-        width: 1,
-        height: 1,
+        width: '1px',
+        height: '1px',
         margin: '0 0 0 -1px',
         overflow: 'hidden',
-        textIndent: -1,
+        textIndent: '-1px',
       }
     : {
         width: '100%',
@@ -157,10 +158,37 @@ export const getLinkButtonStyles = (
   const iconLabelColor = isDisabledOrLoading ? (isTertiary ? disabledColor : 'rgba(255,255,255,0.55)') : baseColor;
 
   return {
-    ':host': {
-      display: 'inline-flex',
-      verticalAlign: 'top',
-      outline: addImportantToRule(0),
+    '@global': {
+      ':host': {
+        display: 'inline-flex',
+        verticalAlign: 'top',
+        outline: addImportantToRule(0),
+      },
+      ...(hasSlottedAnchor && {
+        '::slotted': addImportantToEachRule({
+          '&(a)': {
+            display: 'block',
+            textDecoration: 'none',
+            color: 'inherit',
+            lineHeight: 'inherit',
+            outline: 'transparent solid 1px',
+            outlineOffset: '3px',
+            ...buildResponsiveStyles(hideLabel, getSlottedLinkStyle),
+          },
+          '&(a::-moz-focus-inner)': {
+            border: 0,
+          },
+          '&(a:focus)': {
+            outlineColor: primaryColor,
+          },
+          '&(a:hover:focus)': {
+            outlineColor: primaryColorHover,
+          },
+          '&(a:focus:not(:focus-visible))': {
+            outlineColor: 'transparent',
+          },
+        }),
+      }),
     },
     root: {
       display: 'flex',
@@ -181,7 +209,7 @@ export const getLinkButtonStyles = (
       color: isDisabledOrLoading ? disabledColor : primaryColor,
       transition: ['background-color', 'border-color', 'color'].map(getTransition).join(','),
       ...(!hasSlottedAnchor && {
-        ...buildResponsiveStyle(hideLabel, getRootStyle),
+        ...buildResponsiveStyles(hideLabel, getRootStyle),
         ...getFocusStyle(),
       }),
       ...(!isDisabledOrLoading && {
@@ -202,38 +230,13 @@ export const getLinkButtonStyles = (
       height: pxToRemWithUnit(24),
       color: iconLabelColor,
       pointerEvents: 'none',
-      ...buildResponsiveStyle(hideLabel, getIconStyle),
+      ...buildResponsiveStyles(hideLabel, getIconStyle),
     },
     label: {
       display: 'block',
       boxSizing: 'border-box',
       color: iconLabelColor,
-      ...buildResponsiveStyle(hideLabel, getLabelStyle),
+      ...buildResponsiveStyles(hideLabel, getLabelStyle),
     },
-    ...(hasSlottedAnchor && {
-      '::slotted': addImportantToEachRule({
-        '&(a)': {
-          display: 'block',
-          textDecoration: 'none',
-          color: 'inherit',
-          lineHeight: 'inherit',
-          outline: 'transparent solid 1px',
-          outlineOffset: '3px',
-          ...buildResponsiveStyle(hideLabel, getSlottedLinkStyle),
-        },
-        '&(a::-moz-focus-inner)': {
-          border: 0,
-        },
-        '&(a:focus)': {
-          outlineColor: primaryColor,
-        },
-        '&(a:hover:focus)': {
-          outlineColor: primaryColorHover,
-        },
-        '&(a:focus:not(:focus-visible))': {
-          outlineColor: 'transparent',
-        },
-      }),
-    }),
   };
 };

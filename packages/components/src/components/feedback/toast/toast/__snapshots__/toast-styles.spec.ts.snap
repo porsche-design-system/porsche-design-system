@@ -1,3 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css 1`] = `":host{position:fixed !important;left:7vw !important;right:7vw !important;--p-toast-position-bottom-internal:var(--p-toast-position-bottom, 3.5rem) !important;bottom:var(--p-toast-position-bottom-internal) !important;max-width:42rem !important;z-index:999999 !important}.hydrated{animation:600ms keyframes-in cubic-bezier(0.45,0,0.55,1) forwards}.close{animation:600ms keyframes-out cubic-bezier(0.5,1,0.89,1) forwards !important}@keyframes keyframes-in{from{opacity:0;transform:translate3d(0,calc(var(--p-toast-position-bottom-internal) + 100%),0)}to{opacity:1;transform:translate3d(0,0,0)}}@keyframes keyframes-out{from{opacity:1;transform:translate3d(0,0,0)}to{opacity:0;transform:translate3d(0,calc(var(--p-toast-position-bottom-internal) + 100%),0)}}@media(min-width:760px){:host{left:4rem !important;right:auto !important;--p-toast-position-bottom-internal:var(--p-toast-position-bottom, 4rem) !important;bottom:var(--p-toast-position-bottom-internal) !important}}"`;
+exports[`getComponentCss() should return correct css 1`] = `
+":host {
+  position: fixed !important;
+  left: 7vw !important;
+  right: 7vw !important;
+  --p-toast-position-bottom-internal: var(--p-toast-position-bottom, 3.5rem) !important;
+  bottom: var(--p-toast-position-bottom-internal) !important;
+  max-width: 42rem !important;
+  z-index: 999999 !important;
+}
+@keyframes in {
+  from {
+    opacity: 0;
+    transform: translate3d(0,calc(var(--p-toast-position-bottom-internal) + 100%),0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0,0,0);
+  }
+}
+@keyframes out {
+  from {
+    opacity: 1;
+    transform: translate3d(0,0,0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0,calc(var(--p-toast-position-bottom-internal) + 100%),0);
+  }
+}
+@media (min-width: 760px) {
+    :host {
+      left: 4rem !important;
+      right: auto !important;
+      --p-toast-position-bottom-internal: var(--p-toast-position-bottom, 4rem) !important;
+      bottom: var(--p-toast-position-bottom-internal) !important;
+    }
+}
+
+  .hydrated {
+    animation: 600ms in cubic-bezier(0.45,0,0.55,1) forwards;
+  }
+  .close {
+    animation: 600ms out cubic-bezier(0.5,1,0.89,1) forwards !important;
+  }"
+`;

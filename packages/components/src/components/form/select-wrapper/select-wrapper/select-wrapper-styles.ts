@@ -23,47 +23,50 @@ export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, stat
   const defaultPadding = pxToRemWithUnit(isVisibleFormState(state) ? 10 : 11);
 
   return getCss({
-    ':host': {
-      display: 'block',
+    '@global': {
+      ':host': {
+        display: 'block',
+      },
+      ...addImportantToEachRule(
+        mergeDeep(
+          getBaseChildStyles('select', state, theme, {
+            position: 'static',
+            cursor: 'pointer',
+            padding: [defaultPadding, pxToRemWithUnit(47), defaultPadding, defaultPadding].join(' '),
+            '&@-moz-document url-prefix()': {
+              // fix for 3px text-indention in FF
+              paddingLeft: pxToRemWithUnit(8),
+            },
+          }),
+          {
+            '::slotted(select:disabled)': {
+              background: isDarkTheme ? themeLightBaseColor : backgroundColor, // 🤷
+            },
+          }
+        )
+      ),
     },
-    '@global': addImportantToEachRule(
-      mergeDeep(
-        getBaseChildStyles('select', state, theme, {
-          position: 'static',
-          cursor: 'pointer',
-          padding: [defaultPadding, pxToRemWithUnit(47), defaultPadding, defaultPadding].join(' '),
-          '&@-moz-document url-prefix()': {
-            // fix for 3px text-indention in FF
-            paddingLeft: pxToRemWithUnit(8),
-          },
-        }),
-        {
-          '::slotted(select:disabled)': {
-            background: isDarkTheme ? themeLightBaseColor : backgroundColor, // 🤷
-          },
-        }
-      )
-    ),
     root: {
       display: 'block',
       position: 'relative',
       color: baseColor, // for dark theme on .label__text
     },
-    ...getLabelStyles('select', hideLabel, state, theme, '$icon'),
+    ...getLabelStyles('select', hideLabel, state, theme, {
+      icon: {
+        position: 'absolute',
+        bottom: pxToRemWithUnit(12),
+        right: pxToRemWithUnit(12),
+        color: baseColor,
+        pointerEvents: 'none', // let events through to select which is visually underneath
+        transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little bit more than 0 for correct direction in safari
+        transition: getTransition('transform'),
+        '&--open': {
+          transform: 'rotate3d(0,0,1,180deg)',
+        },
+      },
+    }),
     ...getFunctionalComponentRequiredStyles(theme),
     ...getFunctionalComponentStateMessageStyles(theme, state),
-    icon: {
-      position: 'absolute',
-      bottom: pxToRemWithUnit(12),
-      right: pxToRemWithUnit(12),
-      color: baseColor,
-      pointerEvents: 'none', // let events through to select which is visually underneath
-      transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little bit more than 0 for correct direction in safari
-      transition: getTransition('transform'),
-      '&--open': {
-        transform: 'rotate3d(0,0,1,180deg)',
-      },
-    },
   });
 };
 

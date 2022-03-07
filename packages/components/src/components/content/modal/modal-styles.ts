@@ -1,6 +1,6 @@
 import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable, GetStyleFunction, BreakpointKey } from '../../../utils';
-import { BREAKPOINTS, buildResponsiveStyle, getCss, mergeDeep, parseJSON, buildSlottedStyles } from '../../../utils';
+import { BREAKPOINTS, buildResponsiveStyles, getCss, mergeDeep, parseJSON, buildSlottedStyles } from '../../../utils';
 import {
   addImportantToEachRule,
   contentWrapperVars,
@@ -23,7 +23,7 @@ const { backgroundColor: darkThemeBackgroundColor } = getThemedColors('dark');
 const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
 export const stretchToFullModalWidthClassName = 'stretch-to-full-modal-width';
 
-export const getFullscreenStyle: GetStyleFunction = (fullscreen: boolean): JssStyle => {
+export const getFullscreenStyles: GetStyleFunction = (fullscreen: boolean): JssStyle => {
   return fullscreen
     ? {
         minWidth: '100%',
@@ -80,31 +80,38 @@ export const getComponentCss = (
   const isFullscreenForXlAndXxl = isFullscreenForXl(fullscreen);
 
   return getCss({
-    ':host': {
-      ...addImportantToEachRule({
-        position: 'fixed',
-        ...getInsetStyle(),
-        zIndex: MODAL_Z_INDEX,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexWrap: 'wrap',
-        transition: `opacity .2s ${transitionTimingFunction},visibility 0s linear .2s`,
-        opacity: 0,
-        visibility: 'hidden',
-        ...(open && {
-          transition: `opacity .6s ${transitionTimingFunction}`,
-          opacity: 1,
-          visibility: 'inherit',
+    '@global': {
+      ':host': {
+        ...addImportantToEachRule({
+          position: 'fixed',
+          ...getInsetStyle(),
+          zIndex: MODAL_Z_INDEX,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+          transition: `opacity .2s ${transitionTimingFunction},visibility 0s linear .2s`,
+          opacity: 0,
+          visibility: 'hidden',
+          ...(open && {
+            transition: `opacity .6s ${transitionTimingFunction}`,
+            opacity: 1,
+            visibility: 'inherit',
+          }),
+          // workaround via pseudo element to fix stacking (black) background in safari
+          '&::before': {
+            content: '""',
+            position: 'fixed',
+            ...getInsetStyle(),
+            background: `${darkThemeBackgroundColor}e6`, // e6 = 0.9 alpha
+          },
         }),
-      }),
-      overflowY: 'auto', // overrideable
-      // workaround via pseudo element to fix stacking (black) background in safari
-      '&::before': addImportantToEachRule({
-        content: '""',
-        position: 'fixed',
-        ...getInsetStyle(),
-        background: `${darkThemeBackgroundColor}e6`, // e6 = 0.9 alpha
+        overflowY: 'auto', // overrideable
+      },
+      '::slotted': addImportantToEachRule({
+        ...getSlottedJssStyle(32, hasHeader),
+        [mediaQueryM]: getSlottedJssStyle(40, hasHeader),
+        [mediaQueryXxl]: getSlottedJssStyle(64, hasHeader),
       }),
     },
     root: mergeDeep(
@@ -127,7 +134,7 @@ export const getComponentCss = (
           margin: isFullscreenForXlAndXxl ? 0 : `10vh ${contentWrapperVars.marginXxl}`,
         },
       },
-      buildResponsiveStyle(fullscreen, getFullscreenStyle) as any
+      buildResponsiveStyles(fullscreen, getFullscreenStyles) as any
     ),
     ...(hasHeader && {
       header: {
@@ -141,11 +148,6 @@ export const getComponentCss = (
           ...(!disableCloseButton && { margin: 0 }),
         },
       },
-    }),
-    '::slotted': addImportantToEachRule({
-      ...getSlottedJssStyle(32, hasHeader),
-      [mediaQueryM]: getSlottedJssStyle(40, hasHeader),
-      [mediaQueryXxl]: getSlottedJssStyle(64, hasHeader),
     }),
     close: {
       position: 'absolute',
