@@ -1,6 +1,7 @@
 import { JssStyle } from 'jss';
 import { pxToRemWithUnit } from '../common-styles';
 import { getThemedColors } from '../colors';
+import { INPUT_HEIGHT } from '../form-styles';
 
 export const PDS_SKELETON_CLASS_PREFIX = 'PDS-Skeleton--';
 
@@ -12,7 +13,7 @@ export const ELEMENT_SKELETON_DIMENSION = 48;
 export const LABEL_HEIGHT_WITH_DESCRIPTION = 52;
 export const LABEL_HEIGHT_SPACING = 4;
 
-export const LABEL_HEIGHT = 24;
+export const LABEL_HEIGHT = INPUT_HEIGHT;
 const LABEL_HEIGHT_WITH_SPACING = 28;
 
 export const getSkeletonElementHeight = (height: number, withLabel = true, withDescription?: boolean): string => {
