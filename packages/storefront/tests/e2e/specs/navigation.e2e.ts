@@ -57,7 +57,7 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
         expect(await isLinkActive(linkElement), 'link should be inactive initially').toBe(false);
 
         await linkElement.click();
-        await browserPage.waitForSelector('.vmark');
+        await browserPage.waitForNetworkIdle();
         await browserPage.evaluate(() => (window as any).componentsReady());
 
         expect(await isLinkActive(linkElement), 'link should be active after click').toBe(true);
@@ -66,29 +66,21 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
 
         if (!Array.isArray(tabs)) {
           for (const [index, tab] of Object.entries(Object.keys(tabs))) {
-            const [tabElement] = await browserPage.$x(
-              `//p-tabs-bar//a[contains(., '${tab}')][@href='\/${paramCase(category)}\/${paramCase(page)}\/${paramCase(
-                tab
-              )}']`
-            );
+            const tabHref = `\/${paramCase(category)}\/${paramCase(page)}\/${paramCase(tab)}`;
+            const [tabElement] = await browserPage.$x(`//p-tabs-bar//a[contains(., '${tab}')][@href='${tabHref}']`);
 
+            const isTabElementActiveInitially = await isLinkActive(tabElement);
             if (parseInt(index) === 0) {
-              expect(await getClassNames(tabElement), 'should have first tab active initially').toContain(
-                'router-link-active'
-              );
+              expect(isTabElementActiveInitially, 'should have first tab active initially').toBe(true);
             } else {
-              expect(await getClassNames(tabElement), 'should have tab not active initially').not.toContain(
-                'router-link-active'
-              );
+              expect(isTabElementActiveInitially, 'should not have tab active initially').toBe(false);
             }
 
             await tabElement.click();
-            await browserPage.waitForSelector('.vmark');
+            await browserPage.waitForNetworkIdle();
             await browserPage.evaluate(() => (window as any).componentsReady());
 
-            expect(await getClassNames(tabElement), 'should have tab active after click').toContain(
-              'router-link-active'
-            );
+            expect(await isLinkActive(tabElement), 'should have tab active after click').toBe(true);
             expect(await getMainTitle(browserPage), 'should show correct main title for tab view').toBe(page);
             expect(await hasPageObjectObject(browserPage), 'should not contain [object Object]').toBe(false);
             expect(getConsoleErrorsAmount(), `Errors on ${category}/${page} in tag ${tab}`).toBe(0);

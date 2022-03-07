@@ -20,11 +20,36 @@ exports[`switch accessibility should expose correct initial accessibility tree 1
 Object {
   "children": Array [
     Object {
-      "name": "Some Label",
-      "role": "StaticText",
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "name": "Some Label",
+                      "role": "StaticText",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+          ],
+          "role": "none",
+        },
+      ],
+      "role": "none",
     },
     Object {
       "checked": false,
+      "children": Array [
+        Object {
+          "role": "none",
+        },
+      ],
       "name": "Some Label",
       "role": "switch",
     },

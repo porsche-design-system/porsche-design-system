@@ -46,6 +46,10 @@ export class Switch {
   /** Emitted when checked status is changed. */
   @Event({ bubbles: false }) public switchChange: EventEmitter<SwitchChangeEvent>;
 
+  private get isDisabledOrLoading(): boolean {
+    return isDisabledOrLoading(this.disabled, this.loading);
+  }
+
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
     if (this.isDisabledOrLoading) {
@@ -111,8 +115,4 @@ export class Switch {
   private onSwitchClick = (): void => {
     this.switchChange.emit({ checked: !this.checked });
   };
-
-  private get isDisabledOrLoading(): boolean {
-    return isDisabledOrLoading(this.disabled, this.loading);
-  }
 }

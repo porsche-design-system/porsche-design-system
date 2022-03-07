@@ -23,13 +23,18 @@ Object {
 
 exports[`link accessibility should expose correct initial accessibility tree properties 1`] = `
 Object {
-  "children": Array [
-    Object {
-      "name": "Some label",
-      "role": "StaticText",
-    },
-  ],
   "name": "Some label",
   "role": "link",
+}
+`;
+
+exports[`link accessibility should expose correct initial accessibility tree properties 2`] = `
+Object {
+  "children": Array [
+    Object {
+      "role": "none",
+    },
+  ],
+  "role": "none",
 }
 `;
