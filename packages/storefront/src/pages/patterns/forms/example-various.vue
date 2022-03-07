@@ -150,10 +150,11 @@
 </template>
 
 <script lang="ts">
+  import type { ValidationBag } from '@/utils';
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { boolean, number, object, string } from 'yup';
-  import { validateName, getState, validateField, validateForm, ValidationBag, getInitialErrors } from '../../../utils';
+  import { validateName, getState, validateField, validateForm, getInitialErrors } from '../../../utils';
 
   const initialData = {
     check: {
@@ -177,11 +178,11 @@
     private bag: ValidationBag<FormModel> = {
       data: { ...initialData },
       errors: getInitialErrors(initialData),
-      schema: object<FormModel>({
-        check: object<FormModel['check']>({
-          check1: boolean(),
-          check2: boolean(),
-          check3: boolean(),
+      schema: object({
+        check: object({
+          check1: boolean().defined(),
+          check2: boolean().defined(),
+          check3: boolean().defined(),
         })
           .required()
           .test('customTest', 'Please select at least one option', (obj) =>
@@ -198,7 +199,7 @@
           .min(1, 'Please enter valid month 01-12')
           .max(12, 'Please enter valid month 01-12')
           .typeError('Please enter a month'),
-        year: number(),
+        year: number().defined(),
       }),
     };
 

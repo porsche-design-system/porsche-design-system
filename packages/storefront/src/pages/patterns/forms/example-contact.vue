@@ -321,18 +321,18 @@
     private bag: ValidationBag<FormModel> = {
       data: { ...initialData },
       errors: getInitialErrors(initialData),
-      schema: object<FormModel>({
+      schema: object({
         category: string().required('What kind of request do you have?'),
         subject: string().required('Let us know what your inquiry is about'),
         message: string().required(
           'Describe your request in a few sentences. This will help us to find a suitable contact person for you'
         ),
         salutation: string().required('Please select a form of salutation'),
-        title: string(),
+        title: string().defined(),
         firstName: string().required('Please enter your name'),
         lastName: string().required('Please enter your last name'),
         email: string().email('Email address seems invalid').required('Please enter your email address'),
-        phone: string(),
+        phone: string().defined(),
         vin: string().required('We can’t find the vehicle. Please check your entry'),
         gear: string().required('Please tell us the type of your vehicles transmission'),
         date: date()
