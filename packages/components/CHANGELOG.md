@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Added
-- Styles for slotted native `<button>` in `Text`
+- Styles for slotted `<button>` in `Text`
 
 #### Changed
 - `Modal` heading and aria validation happens only when open
