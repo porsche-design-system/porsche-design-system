@@ -36,6 +36,7 @@
     "whatwg-fetch": "^3.6.2"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.16.7",
     "@porsche-design-system/assets": "4.0.0",
     "@porsche-design-system/shared": "0.0.0",
     "@rollup/plugin-commonjs": "^21.0.2",
