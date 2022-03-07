@@ -12,7 +12,10 @@ import { componentsReady } from '@porsche-design-system/components-angular';
     `,
   ],
   template: `
-    <div class="playground light" title="should render fieldset skeleton with label and text-field-wrapper with defined spacing">
+    <div
+      class="playground light"
+      title="should render fieldset skeleton with label and text-field-wrapper with defined spacing"
+    >
       <p-fieldset-wrapper [label]="'Some label'">
         <p-text-field-wrapper [label]="'Some label'">
           <input [type]="'text'" [name]="'some-name'" />

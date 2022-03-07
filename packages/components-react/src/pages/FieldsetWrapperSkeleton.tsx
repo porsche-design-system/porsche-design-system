@@ -21,7 +21,10 @@ export const FieldsetWrapperSkeletonPage = (): JSX.Element => {
     <>
       <style children={style} />
 
-      <div className="playground light" title="should render fieldset skeleton with label and text-field-wrapper with defined spacing">
+      <div
+        className="playground light"
+        title="should render fieldset skeleton with label and text-field-wrapper with defined spacing"
+      >
         <PFieldsetWrapper label="Some label">
           <PTextFieldWrapper label="Some label">
             <input type="text" name="some-name" />
