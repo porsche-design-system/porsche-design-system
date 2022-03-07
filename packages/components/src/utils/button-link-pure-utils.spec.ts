@@ -39,7 +39,7 @@ describe('throwIfParentIsPTextAndIconIsNone()', () => {
   });
 
   it('should not warn if iconName !== "none"', () => {
-    const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+    const spy = jest.spyOn(global.console, 'warn');
     const parent = document.createElement('p-text');
     const child = document.createElement('button');
     parent.appendChild(child);
@@ -50,7 +50,7 @@ describe('throwIfParentIsPTextAndIconIsNone()', () => {
   });
 
   it('should not warn if parent element is !== "p-text"', () => {
-    const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+    const spy = jest.spyOn(global.console, 'warn');
     const child = document.createElement('button');
 
     throwIfParentIsPTextAndIconIsNone(child, 'none');
