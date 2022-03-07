@@ -28,6 +28,14 @@ export class FieldsetWrapper {
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
 
+  private get hasLabel(): boolean {
+    return hasLabel(this.host, this.label);
+  }
+
+  private get hasMessage(): boolean {
+    return hasMessage(this.host, this.message, this.state);
+  }
+
   public componentWillRender(): void {
     attachComponentCss(this.host, getComponentCss, this.state, this.labelSize, this.hasLabel);
   }
@@ -47,13 +55,5 @@ export class FieldsetWrapper {
         {this.hasMessage && <StateMessage id={messageId} state={this.state} message={this.message} host={this.host} />}
       </fieldset>
     );
-  }
-
-  private get hasLabel(): boolean {
-    return hasLabel(this.host, this.label);
-  }
-
-  private get hasMessage(): boolean {
-    return hasMessage(this.host, this.message, this.state);
   }
 }

@@ -216,13 +216,8 @@ describe('link-pure', () => {
       const link = await getLink();
       const icon = await getIcon();
 
-      const snapshotIcon = await page.accessibility.snapshot({
-        root: icon,
-        interestingOnly: false,
-      });
-
       await expectA11yToMatchSnapshot(page, link);
-      expect(snapshotIcon).toBeNull();
+      await expectA11yToMatchSnapshot(page, icon, { interestingOnly: false });
     });
 
     it('should expose correct accessibility tree if label is hidden', async () => {
