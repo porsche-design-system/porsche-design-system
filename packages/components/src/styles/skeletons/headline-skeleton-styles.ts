@@ -72,9 +72,16 @@ const getHeadlineSkeletonStyle = (headline: HeadlineType): JssStyle => ({
 });
 
 const getHeadlineStyleByBreakpoint = (headline: HeadlineType, breakpoint: string): JssStyle => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  return { [breakpoint]: getHeadlineBreakpointStyle(headline[breakpoint].fontSize, headline[breakpoint].lineHeight) };
+  return {
+    [breakpoint]: getHeadlineBreakpointStyle(
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      headline[breakpoint].fontSize as string,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      headline[breakpoint].lineHeight as number
+    ),
+  };
 };
 
 const getHeadlineBreakpointStyle = (fontSize: string, lineHeight: number): JssStyle => {
