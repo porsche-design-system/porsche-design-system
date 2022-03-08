@@ -363,13 +363,9 @@ exports[`getSlottedCss() should return correct css 1`] = `
 "p-text button {
   margin: 0 !important;
   padding: 0 !important;
-  box-sizing: border-box !important;
-  outline: transparent none !important;
-  appearance: none !important;
+  background: 0 !important;
+  border: 0 !important;
   cursor: pointer !important;
-  text-align: left !important;
-  border: none !important;
-  background: transparent !important;
   font: inherit !important;
 }
 p-text a, p-text button {
@@ -406,13 +402,9 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
 "prefixed-p-text button {
   margin: 0 !important;
   padding: 0 !important;
-  box-sizing: border-box !important;
-  outline: transparent none !important;
-  appearance: none !important;
+  background: 0 !important;
+  border: 0 !important;
   cursor: pointer !important;
-  text-align: left !important;
-  border: none !important;
-  background: transparent !important;
   font: inherit !important;
 }
 prefixed-p-text a, prefixed-p-text button {
