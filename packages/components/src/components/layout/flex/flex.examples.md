@@ -491,7 +491,7 @@ export default class Code extends Vue {
     & > * {
       @include p-text-small;
       padding: 0 6vw;
-      color: $p-color-theme-dark-default;
+      color: $p-color-theme-light-default;
       text-align: center;
 
       &:nth-child(1n) {

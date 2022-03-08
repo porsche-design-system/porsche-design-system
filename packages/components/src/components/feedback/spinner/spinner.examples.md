@@ -13,8 +13,8 @@ There are predefined sizes for the component available which should cover most u
 If a specific size is needed, the size can be set to `inherit` to specify the text size from outside.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <select v-model="size">
-    <option disabled>Select a size</option>
+  <select v-model="size" aria-label="Select size">
+    <option disabled>Select size</option>
     <option>small</option>
     <option>medium</option>
     <option>large</option>

@@ -59,7 +59,7 @@ You must also take care of the focus handling of the tabpanel. Therefor the acti
 ## Size
 
 <Playground :markup="sizeMarkup" :config="config">
-  <select v-model="size">
+  <select v-model="size" aria-label="Select size">
     <option disabled>Select size</option>
     <option value="small">Small</option>
     <option value="medium">Medium</option>
@@ -69,7 +69,7 @@ You must also take care of the focus handling of the tabpanel. Therefor the acti
 ## Weight
 
 <Playground :markup="weightMarkup" :config="config">
-  <select v-model="weight">
+  <select v-model="weight" aria-label="Select weight">
     <option disabled>Select weight</option>
     <option value="regular">Regular</option>
     <option value="semibold">SemiBold</option>
@@ -82,7 +82,7 @@ If the amount of tabs exceeds the viewport, the component renders arrow-buttons 
 The background and gradient has to align to your chosen background.
 
 <Playground :markup="gradientMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
-  <select v-model="gradientColorScheme">
+  <select v-model="gradientColorScheme" aria-label="Select color scheme">
     <option disabled>Select gradient-color-scheme</option>
     <option value="default">Default</option>
     <option value="surface">Surface</option>
