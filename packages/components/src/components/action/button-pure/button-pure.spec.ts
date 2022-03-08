@@ -1,6 +1,6 @@
-import * as transitionListenerUtils from '../../../utils/transition-listener';
 import { ButtonPure } from './button-pure';
 import * as buttonLinkPureUtils from '../../../utils/button-link-pure-utils';
+import * as transitionListenerUtils from '../../../utils/transition-listener';
 
 jest.mock('../../../utils/button-handling');
 
@@ -10,6 +10,7 @@ describe('componentWillRender', () => {
 
     const component = new ButtonPure();
     component.host = document.createElement('p-button-pure');
+    component.host.attachShadow({ mode: 'open' });
     component.componentWillRender();
 
     expect(spy).toBeCalledWith(component.host, component.icon);
