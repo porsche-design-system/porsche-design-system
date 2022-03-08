@@ -78,7 +78,7 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import { boolean, object, string } from 'yup';
+  import { boolean, object, ObjectSchema, SchemaOf, string } from 'yup';
   import {
     validateName,
     getState,
@@ -106,10 +106,10 @@
     private bag: ValidationBag<FormModel> = {
       data: { ...initialData },
       errors: getInitialErrors(initialData),
-      schema: object<FormModel>({
+      schema: object({
         email: string().email('Please check your entry').required('Please enter your email address or Porsche ID'),
         password: string().required('Please enter your password'),
-        isChecked: boolean(),
+        isChecked: boolean().defined(),
       }),
     };
 
