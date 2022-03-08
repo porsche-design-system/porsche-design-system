@@ -1,10 +1,7 @@
-// mock MutationObserver
+import { MutationObserverMock } from '../src/utils/mutation-observer-mock';
+
 // @ts-ignore
-global.MutationObserver = class {
-  constructor(callback) {}
-  disconnect() {}
-  observe(element, initObject) {}
-};
+global.MutationObserver = MutationObserverMock;
 
 import { WrapperGenerator } from './wrapper-generator';
 
