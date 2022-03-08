@@ -15,7 +15,13 @@ import InstantSearch from 'vue-instantsearch';
 
 Vue.use(InstantSearch);
 
-(window as any).componentsReady = componentsReady; // for vrt
+declare global {
+  interface Window {
+    componentsReady: typeof componentsReady;
+  }
+}
+
+window.componentsReady = componentsReady; // for vrt
 
 /**
  * TODO: Bugfix for macOS + Slack automatic hash escaping (e.g. Slack on macOS manipulates following url
@@ -32,6 +38,7 @@ Vue.use({
   install(vue: VueConstructor) {
     vue.component('A11yIcon', A11yIcon);
     vue.component('ColorBadge', ColorBadge);
+    // eslint-disable-next-line vue/multi-word-component-names
     vue.component('Playground', Playground);
     vue.component('TableOfContents', TableOfContents);
     vue.component('PartialDocs', PartialDocs);

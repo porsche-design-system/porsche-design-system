@@ -191,9 +191,9 @@
     private bag: ValidationBag<FormModel> = {
       data: { ...initialData },
       errors: getInitialErrors(initialData),
-      schema: object<FormModel>({
+      schema: object({
         salutation: string().required('How can we address you?'),
-        title: string(),
+        title: string().defined(),
         firstName: string().required('Please enter your name'),
         lastName: string().required('Please enter your last name'),
         email: string()

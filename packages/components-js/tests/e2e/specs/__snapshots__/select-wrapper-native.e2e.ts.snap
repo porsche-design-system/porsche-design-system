@@ -17,6 +17,7 @@ Object {
       "role": "menuitem",
     },
   ],
+  "haspopup": "menu",
   "name": "Some label. Some message",
   "role": "combobox",
   "value": "Option A",
@@ -27,8 +28,39 @@ exports[`select-wrapper native accessibility should update accessibility tree wi
 Object {
   "children": Array [
     Object {
-      "name": "Some error message.",
-      "role": "StaticText",
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                        Object {
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+            Object {
+              "name": "Some error message.",
+              "role": "StaticText",
+            },
+          ],
+          "role": "none",
+        },
+      ],
+      "role": "none",
     },
   ],
   "name": "",
@@ -40,8 +72,36 @@ exports[`select-wrapper native accessibility should update accessibility tree wi
 Object {
   "children": Array [
     Object {
-      "name": "Some success message.",
-      "role": "StaticText",
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+            Object {
+              "name": "Some success message.",
+              "role": "StaticText",
+            },
+          ],
+          "role": "none",
+        },
+      ],
+      "role": "none",
     },
   ],
   "name": "",
@@ -66,6 +126,7 @@ Object {
       "role": "menuitem",
     },
   ],
+  "haspopup": "menu",
   "invalid": "true",
   "name": "Some label. Some error message.",
   "role": "combobox",
@@ -90,6 +151,7 @@ Object {
       "role": "menuitem",
     },
   ],
+  "haspopup": "menu",
   "name": "Some label. Some description",
   "role": "combobox",
   "value": "Option A",
@@ -113,6 +175,7 @@ Object {
       "role": "menuitem",
     },
   ],
+  "haspopup": "menu",
   "name": "Some label. Some success message.",
   "role": "combobox",
   "value": "Option A",

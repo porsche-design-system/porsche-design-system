@@ -10,8 +10,41 @@ Object {
             Object {
               "children": Array [
                 Object {
-                  "name": "Close modal",
-                  "role": "StaticText",
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "name": "Close modal",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
                 },
               ],
               "name": "",
@@ -28,17 +61,52 @@ Object {
     Object {
       "children": Array [
         Object {
-          "name": "Some Heading",
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "name": "Some Heading",
+                                  "role": "StaticText",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "level": 1,
+              "name": "Some Heading",
+              "role": "heading",
+            },
+          ],
+          "role": "none",
+        },
+      ],
+      "role": "none",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "name": "Some Content",
           "role": "StaticText",
         },
       ],
-      "level": 1,
-      "name": "Some Heading",
-      "role": "heading",
-    },
-    Object {
-      "name": "Some Content",
-      "role": "StaticText",
+      "role": "none",
     },
   ],
   "focused": true,
