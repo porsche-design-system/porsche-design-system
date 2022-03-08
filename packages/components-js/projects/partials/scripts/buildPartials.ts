@@ -1,10 +1,7 @@
-// mock MutationObserver
+import { MutationObserverMock } from '@porsche-design-system/components/src/utils/mutation-observer-mock';
+
 // @ts-ignore
-global.MutationObserver = class {
-  constructor(callback) {}
-  disconnect() {}
-  observe(element, initObject) {}
-};
+global.MutationObserver = MutationObserverMock;
 
 import * as fs from 'fs';
 import * as path from 'path';
