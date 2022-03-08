@@ -4,7 +4,7 @@ import * as globby from 'globby';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
 
 const buildDirectory = path.resolve('./build/static/js');
-const [mainChunkFilePath] = globby.sync(`${buildDirectory}/main.*.chunk.js`);
+const [mainChunkFilePath] = globby.sync(`${buildDirectory}/main.*.js`);
 
 const mainChunkFileContent = fs.readFileSync(mainChunkFilePath, 'utf8');
 

@@ -151,6 +151,7 @@
     private syncThemeIntoDemoComponents(): void {
       (this.$refs.demo as HTMLElement)
         ?.querySelectorAll(themableComponentsSelector)
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .forEach((el) => ((el as any).theme = this.theme));
     }
   }

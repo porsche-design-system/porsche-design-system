@@ -28,7 +28,8 @@ it('should focus correct element', async () => {
     expect(className, failMessage).toContain('close');
   };
 
-  const waitForSlotChange = () => new Promise((resolve) => setTimeout(resolve));
+  /** slot change has 1 tick delay before focusing, so we have to wait a little  */
+  const waitForSlotChange = () => new Promise((resolve) => setTimeout(resolve, 5));
 
   const getActiveElementTagName = () => page.evaluate(() => document.activeElement.tagName);
   const getActiveElementId = () => page.evaluate(() => document.activeElement.id);
