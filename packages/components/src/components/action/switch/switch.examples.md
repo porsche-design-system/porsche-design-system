@@ -16,7 +16,8 @@ A `label` is a caption which informs the user which action is followed by intera
 When used with hidden label, it's best practice to provide a descriptive label text for screen readers.
 
 <Playground :markup="basic" :config="config">
-  <select v-model="label">
+  <select v-model="label" aria-label="Select label mode">
+    <option disabled>Select label mode</option>
     <option value="show">With label</option>
     <option value="hide">Without label</option>
     <option value="responsive">Responsive</option>
@@ -46,7 +47,8 @@ When used with hidden label, it's best practice to provide a descriptive label t
 The `label` can be aligned to the `right` (default) or to the `left` in addition with enabled `stretch` property which is recommended on mobile views.
 
 <Playground :markup="alignment" :config="config">
-  <select v-model="alignLabel">
+  <select v-model="alignLabel" aria-label="Select alignment">
+    <option disabled>Select alignment</option>
     <option value="right">Right</option>
     <option value="left">Left</option>
     <option value="responsive">Responsive</option>
