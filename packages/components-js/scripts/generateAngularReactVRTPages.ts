@@ -325,7 +325,7 @@ $2`
           .replace(/(<input[^>]*?) v(alue=)/g, '$1 defaultV$2') // for input
           .replace(/(<input[^>]*?) c(hecked)/g, '$1 defaultC$2'); // for checkbox + radio
 
-        fileContent = fileContent.replace(/(>,\n{1}\s{6,})(<(?:strong|em)>)/g, "$1{' '}$2"); // for forced whitespace
+        fileContent = fileContent.replace(/(\n +)(<(?:strong|em)>)/g, "$1{' '}$2"); // for forced whitespace
 
         if (isOverviewPage) {
           // wrap right column with PorscheDesignSystemProvider
