@@ -8,7 +8,7 @@ on:
       - release/*
 name: 'Porsche Design System'
 env:
-  PDS_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/node:14.18.3-stretch-slim
+  PDS_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/node:16.14.0-stretch-slim
 jobs:
   components-unit:
     name: 'Components Unit'

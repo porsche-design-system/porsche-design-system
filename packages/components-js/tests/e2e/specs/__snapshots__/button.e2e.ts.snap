@@ -9,7 +9,7 @@ Object {
 
 exports[`button accessibility should expose correct accessibility tree if accessibility properties are set: aria-pressed attribute 1`] = `
 Object {
-  "name": "",
+  "name": "Some label",
   "pressed": true,
   "role": "button",
 }

@@ -1,5 +1,6 @@
 const path = require('path');
 
+// Source: https://merge-tech.slack.com/archives/C01SWQ67CSW/p1620356760000200
 module.exports = {
   entry: ['./src/index.tsx'],
   output: {
@@ -14,21 +15,6 @@ module.exports = {
   devtool: 'source-map',
   module: {
     rules: [
-      {
-        test: /\.svg$/,
-        exclude: /node_modules/,
-        loader: 'svg-react-loader',
-      },
-      {
-        test: /\.(js|ts|tsx)$/,
-        exclude: /node_modules/,
-        enforce: 'pre',
-        loader: 'eslint-loader',
-        options: {
-          failOnWarning: false,
-          failOnError: true,
-        },
-      },
       {
         loader: 'babel-loader',
         options: {

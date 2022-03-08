@@ -13,3 +13,14 @@ Object {
   "role": "link",
 }
 `;
+
+exports[`link-social accessibility should expose correct initial accessibility tree properties 2`] = `
+Object {
+  "children": Array [
+    Object {
+      "role": "none",
+    },
+  ],
+  "role": "none",
+}
+`;

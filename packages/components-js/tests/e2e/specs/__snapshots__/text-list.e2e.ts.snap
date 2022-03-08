@@ -6,44 +6,50 @@ Object {
     Object {
       "children": Array [
         Object {
-          "name": "The quick brown fox jumps over the lazy dog",
-          "role": "StaticText",
-        },
-      ],
-      "level": 1,
-      "name": "",
-      "role": "listitem",
-    },
-    Object {
-      "children": Array [
-        Object {
-          "name": "The quick",
-          "role": "StaticText",
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "name": "The quick brown fox jumps over the lazy dog",
+                  "role": "StaticText",
+                },
+              ],
+              "role": "none",
+            },
+          ],
+          "level": 1,
+          "name": "",
+          "role": "listitem",
         },
         Object {
           "children": Array [
             Object {
-              "name": "brown fox",
-              "role": "StaticText",
+              "children": Array [
+                Object {
+                  "name": "The quick",
+                  "role": "StaticText",
+                },
+                Object {
+                  "children": Array [
+                    Object {
+                      "name": "brown fox",
+                      "role": "StaticText",
+                    },
+                  ],
+                  "name": "brown fox",
+                  "role": "link",
+                },
+                Object {
+                  "name": "jumps over the lazy dog",
+                  "role": "StaticText",
+                },
+              ],
+              "role": "none",
             },
           ],
-          "name": "brown fox",
-          "role": "link",
-        },
-        Object {
-          "name": "jumps over the lazy dog",
-          "role": "StaticText",
-        },
-      ],
-      "level": 1,
-      "name": "",
-      "role": "listitem",
-    },
-    Object {
-      "children": Array [
-        Object {
-          "name": "The quick brown fox jumps over the lazy dog",
-          "role": "StaticText",
+          "level": 1,
+          "name": "",
+          "role": "listitem",
         },
         Object {
           "children": Array [
@@ -53,19 +59,48 @@ Object {
                   "name": "The quick brown fox jumps over the lazy dog",
                   "role": "StaticText",
                 },
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "The quick brown fox jumps over the lazy dog",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "level": 2,
+                              "name": "",
+                              "role": "listitem",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "name": "",
+                      "role": "list",
+                    },
+                  ],
+                  "role": "none",
+                },
               ],
-              "level": 2,
-              "name": "",
-              "role": "listitem",
+              "role": "none",
             },
           ],
+          "level": 1,
           "name": "",
-          "role": "list",
+          "role": "listitem",
         },
       ],
-      "level": 1,
-      "name": "",
-      "role": "listitem",
+      "role": "none",
     },
   ],
   "name": "",

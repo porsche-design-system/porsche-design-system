@@ -24,306 +24,469 @@ Object {
             Object {
               "children": Array [
                 Object {
-                  "name": "Column 1",
-                  "role": "StaticText",
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Column 1",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "name": "Column 1",
+                          "role": "columnheader",
+                        },
+                        Object {
+                          "name": ",",
+                          "role": "StaticText",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Column 2",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "name": "Column 2",
+                          "role": "columnheader",
+                        },
+                        Object {
+                          "name": ",",
+                          "role": "StaticText",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Column 3",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "name": "Column 3",
+                          "role": "columnheader",
+                        },
+                        Object {
+                          "name": ",",
+                          "role": "StaticText",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Column 4",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "name": "Column 4",
+                          "role": "columnheader",
+                        },
+                        Object {
+                          "name": ",",
+                          "role": "StaticText",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Column 5",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "name": "Column 5",
+                          "role": "columnheader",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "name": "",
+                  "role": "row",
                 },
               ],
-              "name": "Column 1",
-              "role": "columnheader",
-            },
-            Object {
-              "name": ",",
-              "role": "StaticText",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Column 2",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Column 2",
-              "role": "columnheader",
-            },
-            Object {
-              "name": ",",
-              "role": "StaticText",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Column 3",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Column 3",
-              "role": "columnheader",
-            },
-            Object {
-              "name": ",",
-              "role": "StaticText",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Column 4",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Column 4",
-              "role": "columnheader",
-            },
-            Object {
-              "name": ",",
-              "role": "StaticText",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Column 5",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Column 5",
-              "role": "columnheader",
+              "role": "none",
             },
           ],
           "name": "",
-          "role": "row",
+          "role": "rowgroup",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "name": "Row 1 Cell 1",
+                                  "role": "StaticText",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "name": "Row 1 Cell 1",
+                          "role": "gridcell",
+                        },
+                        Object {
+                          "name": ",",
+                          "role": "StaticText",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "name": "Row 1 Cell 2",
+                                  "role": "StaticText",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "name": "Row 1 Cell 2",
+                          "role": "gridcell",
+                        },
+                        Object {
+                          "name": ",",
+                          "role": "StaticText",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "name": "Row 1 Cell 3",
+                                  "role": "StaticText",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "name": "Row 1 Cell 3",
+                          "role": "gridcell",
+                        },
+                        Object {
+                          "name": ",",
+                          "role": "StaticText",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "name": "Row 1 Cell 4",
+                                  "role": "StaticText",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "name": "Row 1 Cell 4",
+                          "role": "gridcell",
+                        },
+                        Object {
+                          "name": ",",
+                          "role": "StaticText",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "name": "Row 1 Cell 5",
+                                  "role": "StaticText",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "name": "Row 1 Cell 5",
+                          "role": "gridcell",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "name": "",
+                  "role": "row",
+                },
+                Object {
+                  "name": ",",
+                  "role": "StaticText",
+                },
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "name": "Row 2 Cell 1",
+                                  "role": "StaticText",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "name": "Row 2 Cell 1",
+                          "role": "gridcell",
+                        },
+                        Object {
+                          "name": ",",
+                          "role": "StaticText",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "name": "Row 2 Cell 2",
+                                  "role": "StaticText",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "name": "Row 2 Cell 2",
+                          "role": "gridcell",
+                        },
+                        Object {
+                          "name": ",",
+                          "role": "StaticText",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "name": "Row 2 Cell 3",
+                                  "role": "StaticText",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "name": "Row 2 Cell 3",
+                          "role": "gridcell",
+                        },
+                        Object {
+                          "name": ",",
+                          "role": "StaticText",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "name": "Row 2 Cell 4",
+                                  "role": "StaticText",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "name": "Row 2 Cell 4",
+                          "role": "gridcell",
+                        },
+                        Object {
+                          "name": ",",
+                          "role": "StaticText",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "name": "Row 2 Cell 5",
+                                  "role": "StaticText",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "name": "Row 2 Cell 5",
+                          "role": "gridcell",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "name": "",
+                  "role": "row",
+                },
+                Object {
+                  "name": ",",
+                  "role": "StaticText",
+                },
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "name": "Row 3 Cell 1",
+                                  "role": "StaticText",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "name": "Row 3 Cell 1",
+                          "role": "gridcell",
+                        },
+                        Object {
+                          "name": ",",
+                          "role": "StaticText",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "name": "Row 3 Cell 2",
+                                  "role": "StaticText",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "name": "Row 3 Cell 2",
+                          "role": "gridcell",
+                        },
+                        Object {
+                          "name": ",",
+                          "role": "StaticText",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "name": "Row 3 Cell 3",
+                                  "role": "StaticText",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "name": "Row 3 Cell 3",
+                          "role": "gridcell",
+                        },
+                        Object {
+                          "name": ",",
+                          "role": "StaticText",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "name": "Row 3 Cell 4",
+                                  "role": "StaticText",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "name": "Row 3 Cell 4",
+                          "role": "gridcell",
+                        },
+                        Object {
+                          "name": ",",
+                          "role": "StaticText",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "name": "Row 3 Cell 5",
+                                  "role": "StaticText",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "name": "Row 3 Cell 5",
+                          "role": "gridcell",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "name": "",
+                  "role": "row",
+                },
+              ],
+              "role": "none",
+            },
+          ],
+          "name": "",
+          "role": "rowgroup",
         },
       ],
-      "name": "",
-      "role": "rowgroup",
+      "role": "none",
     },
     Object {
-      "children": Array [
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Row 1 Cell 1",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Row 1 Cell 1",
-              "role": "gridcell",
-            },
-            Object {
-              "name": ",",
-              "role": "StaticText",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Row 1 Cell 2",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Row 1 Cell 2",
-              "role": "gridcell",
-            },
-            Object {
-              "name": ",",
-              "role": "StaticText",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Row 1 Cell 3",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Row 1 Cell 3",
-              "role": "gridcell",
-            },
-            Object {
-              "name": ",",
-              "role": "StaticText",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Row 1 Cell 4",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Row 1 Cell 4",
-              "role": "gridcell",
-            },
-            Object {
-              "name": ",",
-              "role": "StaticText",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Row 1 Cell 5",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Row 1 Cell 5",
-              "role": "gridcell",
-            },
-          ],
-          "name": "",
-          "role": "row",
-        },
-        Object {
-          "name": ",",
-          "role": "StaticText",
-        },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Row 2 Cell 1",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Row 2 Cell 1",
-              "role": "gridcell",
-            },
-            Object {
-              "name": ",",
-              "role": "StaticText",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Row 2 Cell 2",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Row 2 Cell 2",
-              "role": "gridcell",
-            },
-            Object {
-              "name": ",",
-              "role": "StaticText",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Row 2 Cell 3",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Row 2 Cell 3",
-              "role": "gridcell",
-            },
-            Object {
-              "name": ",",
-              "role": "StaticText",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Row 2 Cell 4",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Row 2 Cell 4",
-              "role": "gridcell",
-            },
-            Object {
-              "name": ",",
-              "role": "StaticText",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Row 2 Cell 5",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Row 2 Cell 5",
-              "role": "gridcell",
-            },
-          ],
-          "name": "",
-          "role": "row",
-        },
-        Object {
-          "name": ",",
-          "role": "StaticText",
-        },
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Row 3 Cell 1",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Row 3 Cell 1",
-              "role": "gridcell",
-            },
-            Object {
-              "name": ",",
-              "role": "StaticText",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Row 3 Cell 2",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Row 3 Cell 2",
-              "role": "gridcell",
-            },
-            Object {
-              "name": ",",
-              "role": "StaticText",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Row 3 Cell 3",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Row 3 Cell 3",
-              "role": "gridcell",
-            },
-            Object {
-              "name": ",",
-              "role": "StaticText",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Row 3 Cell 4",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Row 3 Cell 4",
-              "role": "gridcell",
-            },
-            Object {
-              "name": ",",
-              "role": "StaticText",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Row 3 Cell 5",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Row 3 Cell 5",
-              "role": "gridcell",
-            },
-          ],
-          "name": "",
-          "role": "row",
-        },
-      ],
-      "name": "",
-      "role": "rowgroup",
+      "role": "none",
     },
   ],
   "name": "",

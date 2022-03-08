@@ -4,8 +4,39 @@ exports[`textarea-wrapper accessibility should add/remove accessibility tree pro
 Object {
   "children": Array [
     Object {
-      "name": "Some error message.",
-      "role": "StaticText",
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                        Object {
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+            Object {
+              "name": "Some error message.",
+              "role": "StaticText",
+            },
+          ],
+          "role": "none",
+        },
+      ],
+      "role": "none",
     },
   ],
   "name": "",
@@ -17,8 +48,36 @@ exports[`textarea-wrapper accessibility should add/remove accessibility tree pro
 Object {
   "children": Array [
     Object {
-      "name": "Some success message.",
-      "role": "StaticText",
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+            Object {
+              "name": "Some success message.",
+              "role": "StaticText",
+            },
+          ],
+          "role": "none",
+        },
+      ],
+      "role": "none",
     },
   ],
   "name": "",
@@ -55,8 +114,39 @@ exports[`textarea-wrapper accessibility should expose correct accessibility tree
 Object {
   "children": Array [
     Object {
-      "name": "Some error message",
-      "role": "StaticText",
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                        Object {
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+            Object {
+              "name": "Some error message",
+              "role": "StaticText",
+            },
+          ],
+          "role": "none",
+        },
+      ],
+      "role": "none",
     },
   ],
   "name": "",
