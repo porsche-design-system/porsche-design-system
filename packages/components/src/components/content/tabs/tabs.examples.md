@@ -21,7 +21,7 @@ Every `p-tabs-item` holds a `slot` to display content which can be individually 
 ## Size
 
 <Playground :markup="sizeMarkup" :config="config">
-  <select v-model="size">
+  <select v-model="size" aria-label="Select size">
     <option disabled>Select size</option>
     <option value="small">Small</option>
     <option value="medium">Medium</option>
@@ -31,7 +31,7 @@ Every `p-tabs-item` holds a `slot` to display content which can be individually 
 ## Weight
 
 <Playground :markup="weightMarkup" :config="config">
-  <select v-model="weight">
+  <select v-model="weight" aria-label="Select weight">
     <option disabled>Select weight</option>
     <option value="regular">Regular</option>
     <option value="semibold">SemiBold</option>
@@ -44,8 +44,8 @@ If the amount of tabs exceeds the viewport, the component renders arrow-buttons 
 The background and gradient has to align to your chosen background.
 
 <Playground :markup="gradientMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
-  <select v-model="gradientColorScheme">
-    <option disabled>Select gradient-color-scheme</option>
+  <select v-model="gradientColorScheme" aria-label="Select gradient color scheme">
+    <option disabled>Select gradient color scheme</option>
     <option value="default">Default</option>
     <option value="surface">Surface</option>
   </select>
