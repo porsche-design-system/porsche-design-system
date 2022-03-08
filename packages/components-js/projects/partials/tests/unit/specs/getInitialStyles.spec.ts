@@ -1,4 +1,4 @@
-import { getInitialStyles } from '../../../src';
+import { getComponentChunkLinks, getInitialStyles } from '../../../src';
 import type { SkeletonTagName } from '../../../src';
 import { render } from '@testing-library/react';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
@@ -90,5 +90,19 @@ xdescribe('skeletonTagNames subset', () => {
     prefixedTagNamesWithSkeleton.forEach((tagName) => expect(result.includes(`${tagName}:not(.hydrated)`)).toBe(false));
 
     expect(result).toMatchSnapshot();
+  });
+});
+
+describe('validation', () => {
+  it('should throw error on invalid skeleton tag names parameter', () => {
+    let error;
+    try {
+      getInitialStyles({ skeletonTagNames: ['some-invalid-component'] as any[] });
+    } catch (e) {
+      error = e.message;
+    }
+
+    expect(error).toContain('The following supplied skeleton tag names are invalid:');
+    expect(error).toContain('some-invalid-component');
   });
 });
