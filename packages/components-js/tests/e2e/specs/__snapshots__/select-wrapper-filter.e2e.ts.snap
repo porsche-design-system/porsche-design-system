@@ -25,8 +25,21 @@ Object {
     Object {
       "children": Array [
         Object {
-          "name": "No results found",
-          "role": "StaticText",
+          "children": Array [
+            Object {
+              "role": "none",
+            },
+          ],
+          "role": "none",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "name": "No results found",
+              "role": "StaticText",
+            },
+          ],
+          "role": "none",
         },
       ],
       "name": "",
@@ -34,6 +47,7 @@ Object {
     },
   ],
   "name": "Some label",
+  "orientation": "vertical",
   "role": "listbox",
 }
 `;
@@ -42,6 +56,9 @@ exports[`select-wrapper filter accessibility should expose correct initial acces
 Object {
   "autocomplete": "list",
   "children": Array [
+    Object {
+      "role": "none",
+    },
     Object {
       "name": "",
       "role": "generic",

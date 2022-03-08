@@ -81,6 +81,10 @@ export class ButtonPure {
   private buttonTag: HTMLElement;
   private iconTag: HTMLElement;
 
+  private get isDisabledOrLoading(): boolean {
+    return isDisabledOrLoading(this.disabled, this.loading);
+  }
+
   // this stops click events when button is disabled
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
@@ -174,9 +178,5 @@ export class ButtonPure {
         )}
       </Host>
     );
-  }
-
-  private get isDisabledOrLoading(): boolean {
-    return isDisabledOrLoading(this.disabled, this.loading);
   }
 }

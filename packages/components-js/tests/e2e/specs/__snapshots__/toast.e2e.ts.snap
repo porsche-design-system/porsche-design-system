@@ -4,8 +4,18 @@ exports[`toast-item accessibility should expose correct accessibility tree prope
 Object {
   "children": Array [
     Object {
-      "name": "Some message",
-      "role": "StaticText",
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "name": "Some message",
+              "role": "StaticText",
+            },
+          ],
+          "role": "none",
+        },
+      ],
+      "role": "none",
     },
   ],
   "name": "",

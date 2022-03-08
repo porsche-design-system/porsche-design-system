@@ -6,8 +6,13 @@ Object {
     Object {
       "children": Array [
         Object {
-          "name": "Content 1",
-          "role": "StaticText",
+          "children": Array [
+            Object {
+              "name": "Content 1",
+              "role": "StaticText",
+            },
+          ],
+          "role": "none",
         },
       ],
       "name": "",
