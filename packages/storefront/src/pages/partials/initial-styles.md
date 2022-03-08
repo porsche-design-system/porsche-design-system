@@ -22,14 +22,17 @@ which needs to be injected into the `<head>` of your `index.html`.
 
 <p-inline-notification heading="Important note" state="warning" persistent="true">
   Be aware that Skeletons are currently an <span style='color:red'>[EXPERIMENTAL]</span> feature.<br>
-  Their API and behaviour might change in future releases
+  Their API and behaviour might change in future releases.
 </p-inline-notification>
 
-The skeletons provided by this partial cover the timespan between the page load and initialization of each component provided in the `skeletonTagNames` array.  
+The skeletons provided by this partial cover the timespan between the page load and initialization of each component
+provided in the `skeletonTagNames` array.  
 They are **not** meant to be used as asynchronous loading indicators for content inside the initialized components.  
-To further minimize the time it takes for the components to initialize use our [Component Chunk Links Partial](partials/component-chunk-links) to preload the components.  
+To further minimize the time it takes for the components to initialize use
+our [Component Chunk Links Partial](partials/component-chunk-links) to preload the components.
 
-Be aware that skeletons do **not** work when wrapped inside any of the following layout components: `Button Group`, `Content Wrapper`, `Grid`, `Flex`.  
+Be aware that skeletons do **not** work when wrapped inside any of the following layout components: `Button Group`
+, `Content Wrapper`, `Grid`, `Flex`.  
 Using them inside said layout components will lead to flashes of skeletons.  
 When using skeletons with `Fieldset Wrapper` be aware that layout shifts will happen, when providing a `label` property.
 
