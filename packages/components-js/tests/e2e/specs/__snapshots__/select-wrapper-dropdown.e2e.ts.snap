@@ -37,6 +37,14 @@ Object {
     Object {
       "children": Array [
         Object {
+          "role": "none",
+        },
+      ],
+      "role": "none",
+    },
+    Object {
+      "children": Array [
+        Object {
           "name": "Some optgroup label 1",
           "role": "StaticText",
         },
@@ -45,6 +53,24 @@ Object {
             Object {
               "name": "Option A",
               "role": "StaticText",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
             },
           ],
           "name": "Option A",
@@ -87,6 +113,7 @@ Object {
         },
       ],
       "name": "Some label",
+      "orientation": "vertical",
       "role": "listbox",
     },
   ],
@@ -144,10 +171,36 @@ Object {
     Object {
       "children": Array [
         Object {
+          "role": "none",
+        },
+      ],
+      "role": "none",
+    },
+    Object {
+      "children": Array [
+        Object {
           "children": Array [
             Object {
               "name": "Option A",
               "role": "StaticText",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
             },
           ],
           "name": "Option A",
@@ -177,6 +230,7 @@ Object {
         },
       ],
       "name": "Some label",
+      "orientation": "vertical",
       "role": "listbox",
     },
   ],
