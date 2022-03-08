@@ -372,12 +372,6 @@ exports[`getSlottedCss() should return correct css 1`] = `
   background: transparent !important;
   font: inherit !important;
 }
-p-text b, p-text strong {
-  font-weight: 700 !important;
-}
-p-text em, p-text i {
-  font-style: normal !important;
-}
 p-text a, p-text button {
   color: inherit !important;
   text-decoration: underline !important;
@@ -387,6 +381,12 @@ p-text a, p-text button {
 }
 p-text[theme=\\"dark\\"] a:hover, p-text[theme=\\"dark\\"] button:hover {
   color: #ff0223 !important;
+}
+p-text b, p-text strong {
+  font-weight: 700 !important;
+}
+p-text em, p-text i {
+  font-style: normal !important;
 }
 p-text a:hover, p-text button:hover {
   color: #d5001c !important;
@@ -415,12 +415,6 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
   background: transparent !important;
   font: inherit !important;
 }
-prefixed-p-text b, prefixed-p-text strong {
-  font-weight: 700 !important;
-}
-prefixed-p-text em, prefixed-p-text i {
-  font-style: normal !important;
-}
 prefixed-p-text a, prefixed-p-text button {
   color: inherit !important;
   text-decoration: underline !important;
@@ -430,6 +424,12 @@ prefixed-p-text a, prefixed-p-text button {
 }
 prefixed-p-text[theme=\\"dark\\"] a:hover, prefixed-p-text[theme=\\"dark\\"] button:hover {
   color: #ff0223 !important;
+}
+prefixed-p-text b, prefixed-p-text strong {
+  font-weight: 700 !important;
+}
+prefixed-p-text em, prefixed-p-text i {
+  font-style: normal !important;
 }
 prefixed-p-text a:hover, prefixed-p-text button:hover {
   color: #d5001c !important;
