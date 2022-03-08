@@ -44,8 +44,8 @@ If the amount of tabs exceeds the viewport, the component renders arrow-buttons 
 The background and gradient has to align to your chosen background.
 
 <Playground :markup="gradientMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
-  <select v-model="gradientColorScheme" aria-label="Select color scheme">
-    <option disabled>Select gradient-color-scheme</option>
+  <select v-model="gradientColorScheme" aria-label="Select gradient color scheme">
+    <option disabled>Select gradient color scheme</option>
     <option value="default">Default</option>
     <option value="surface">Surface</option>
   </select>

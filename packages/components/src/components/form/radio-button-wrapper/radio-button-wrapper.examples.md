@@ -11,6 +11,7 @@ A `label` is a caption which informs the user what information a particular form
 
 <Playground :markup="basic" :config="config">
   <select v-model="label" aria-label="Select label mode">
+    <option disabled>Select label mode</option>
     <option value="show">With label</option>
     <option value="hide">Without label</option>
     <option value="responsive">Responsive</option>

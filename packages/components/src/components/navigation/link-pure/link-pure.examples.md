@@ -157,6 +157,7 @@ It is recommended to use stretch only on `left` alignment and small viewports, e
 
 <Playground :markup="stretchMarkup" :config="config">
   <select v-model="stretch" aria-label="Select stretch and alignment">
+    <option disabled>Select stretch and alignment</option>
     <option value='stretch="true" align-label="left"'>stretch true, align-label left</option>
     <option value='stretch="true" align-label="right"'>stretch true, align-label right</option>
     <option value='stretch="false" align-label="left"'>stretch false, align-label left</option>

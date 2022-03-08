@@ -57,7 +57,7 @@ Predefined colors associated with its theme are available but also inherit mode 
 
 <Playground :markup="colorMarkup" :config="config">
   <select v-model="color" aria-label="Select color">
-    <option disabled>Select a color</option>
+    <option disabled>Select color</option>
     <option value="brand">Brand</option>
     <option value="default">Default</option>
     <option value="neutral-contrast-high">Neutral Contrast High</option>
@@ -79,7 +79,7 @@ There are predefined default text weights for copy text. Be aware of using the `
 
 <Playground :markup="weightMarkup" :config="config">
   <select v-model="weight" aria-label="Select weight">
-    <option disabled>Select a weight</option>
+    <option disabled>Select weight</option>
     <option value="thin">Thin</option>
     <option value="regular">Regular</option>
     <option value="semibold">Semibold</option>

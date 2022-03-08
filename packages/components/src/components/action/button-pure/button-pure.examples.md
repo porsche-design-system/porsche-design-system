@@ -108,6 +108,7 @@ The `label` can be aligned to the `right` (default) or to the `left` of the icon
 
 <Playground :markup="markupAlignment" :config="config">
   <select v-model="alignLabel" aria-label="Select alignment">
+    <option disabled>Select alignment</option>
     <option value="left">Left</option>
     <option value="right">Right</option>
     <option value="{ base: 'left', l: 'right' }">Responsive</option>
@@ -123,6 +124,7 @@ It is recommended to use stretch only on `left` alignment and small viewports, e
 
 <Playground :markup="markupStretch" :config="config">
   <select v-model="stretch" aria-label="Select stretching and alignment">
+    <option disabled>Select stretching and alignment</option>
     <option value='stretch="true" align-label="left"'>stretch true, align-label left</option>
     <option value='stretch="true" align-label="right"'>stretch true, align-label right</option>
     <option value='stretch="false" align-label="left"'>stretch false, align-label left</option>
