@@ -9,11 +9,11 @@ export const PDS_SKELETON_CLASS_PREFIX = 'PDS-Skeleton--';
 // to prevent layout shift when shadow dom is appended
 export const BUTTON_LINK_SKELETON_WIDTH = 192;
 export const TEXTAREA_SKELETON_HEIGHT = 192;
-export const ELEMENT_SKELETON_DIMENSION = 48;
+export const ELEMENT_SKELETON_DIMENSION = INPUT_HEIGHT;
 export const LABEL_HEIGHT_WITH_DESCRIPTION = 52;
 export const LABEL_HEIGHT_SPACING = 4;
 
-export const LABEL_HEIGHT = INPUT_HEIGHT;
+export const LABEL_HEIGHT = 24;
 const LABEL_HEIGHT_WITH_SPACING = 28;
 
 export const getSkeletonElementHeight = (height: number, withLabel = true, withDescription?: boolean): string => {
