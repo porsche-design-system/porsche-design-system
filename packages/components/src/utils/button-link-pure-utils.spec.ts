@@ -45,7 +45,7 @@ describe('warnIfParentIsPTextAndIconIsNone()', () => {
 
     warnIfParentIsPTextAndIconIsNone(child, 'highway');
 
-    expect(spy).toBeCalledTimes(0);
+    expect(spy).not.toBeCalled();
   });
 
   it('should not warn if parent element is !== "p-text"', () => {
@@ -53,6 +53,6 @@ describe('warnIfParentIsPTextAndIconIsNone()', () => {
     const child = document.createElement('button');
 
     warnIfParentIsPTextAndIconIsNone(child, 'none');
-    expect(spy).toBeCalledTimes(0);
+    expect(spy).not.toBeCalled();
   });
 });
