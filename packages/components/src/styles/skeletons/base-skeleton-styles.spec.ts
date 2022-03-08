@@ -5,8 +5,11 @@ import {
   getElementBackgroundGradient,
   getHiddenLabelStyle,
   getSkeletonElementHeight,
+  getSkeletonPropertyNames,
   getThemedPseudoStyle,
 } from './base-skeleton-styles';
+import { TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared-src/src';
+import { TagName } from '@porsche-design-system/shared';
 
 describe('getSkeletonElementHeight()', () => {
   it.each([
@@ -90,4 +93,13 @@ describe('getHiddenLabelStyle()', () => {
   it('should match style snapshot', () => {
     expect(getHiddenLabelStyle()).toMatchSnapshot();
   });
+});
+
+describe('getSkeletonPropertyNames()', () => {
+  it.each<TagName[]>(TAG_NAMES_WITH_SKELETON.map((tagName: TagName) => [tagName]))(
+    'should match get correct skeleton property names %s',
+    (tagName) => {
+      expect(getSkeletonPropertyNames(tagName)).toMatchSnapshot();
+    }
+  );
 });

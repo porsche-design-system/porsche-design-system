@@ -4,6 +4,7 @@ import {
   extendPseudoWithTheme,
   getElementBackgroundGradient,
   getSkeletonElementHeight,
+  getSkeletonPropertyNames,
   getThemedPseudoStyle,
   PDS_SKELETON_CLASS_PREFIX,
 } from './base-skeleton-styles';
@@ -28,6 +29,8 @@ export const getTypographyElementHeight = (typography: HeadlineType | TextType):
 };
 
 export const getHeadlineSkeletonCss = (): string => {
+  const skeletonPropertyNames = getSkeletonPropertyNames('p-headline');
+
   return getMinifiedCss({
     '@global': {
       'p-headline': {
@@ -36,25 +39,28 @@ export const getHeadlineSkeletonCss = (): string => {
             styleFunction: () => getTextHeadlineSkeletonBaseStyle(getTypographyElementHeight(headline1)),
           }),
           ...getHeadlineSkeletonStyle(headline1),
-          [`&[variant=large-title], &.${PDS_SKELETON_CLASS_PREFIX}variant-large-title`]: {
-            ...getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(titleLarge)),
-            ...getHeadlineSkeletonStyle(titleLarge),
-          },
-          [`&[variant=headline-2], &.${PDS_SKELETON_CLASS_PREFIX}variant-headline-2`]: {
-            ...getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(headline2)),
-            ...getHeadlineSkeletonStyle(headline2),
-          },
-          [`&[variant=headline-3], &.${PDS_SKELETON_CLASS_PREFIX}variant-headline-3`]: {
-            ...getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(headline3)),
-            ...getHeadlineSkeletonStyle(headline3),
-          },
-          [`&[variant=headline-4], &.${PDS_SKELETON_CLASS_PREFIX}variant-headline-4`]: {
-            ...getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(headline4)),
-            ...getHeadlineSkeletonStyle(headline4),
-          },
-          [`&[variant=headline-5], &.${PDS_SKELETON_CLASS_PREFIX}variant-headline-5`]: getTextHeadlineSkeletonSubStyle(
-            getTypographyElementHeight(headline5)
-          ),
+          [`&[${skeletonPropertyNames.variant}=large-title], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.variant}-large-title`]:
+            {
+              ...getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(titleLarge)),
+              ...getHeadlineSkeletonStyle(titleLarge),
+            },
+          [`&[${skeletonPropertyNames.variant}=headline-2], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.variant}-headline-2`]:
+            {
+              ...getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(headline2)),
+              ...getHeadlineSkeletonStyle(headline2),
+            },
+          [`&[${skeletonPropertyNames.variant}=headline-3], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.variant}-headline-3`]:
+            {
+              ...getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(headline3)),
+              ...getHeadlineSkeletonStyle(headline3),
+            },
+          [`&[${skeletonPropertyNames.variant}=headline-4], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.variant}-headline-4`]:
+            {
+              ...getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(headline4)),
+              ...getHeadlineSkeletonStyle(headline4),
+            },
+          [`&[${skeletonPropertyNames.variant}=headline-5], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.variant}-headline-5`]:
+            getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(headline5)),
           ...getThemedPseudoStyle(),
         },
       },

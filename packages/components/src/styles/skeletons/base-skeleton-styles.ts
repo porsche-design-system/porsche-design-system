@@ -2,6 +2,10 @@ import { JssStyle } from 'jss';
 import { pxToRemWithUnit } from '../common-styles';
 import { getThemedColors } from '../colors';
 import { INPUT_HEIGHT } from '../form-styles';
+import { getComponentMeta, TagName } from '@porsche-design-system/shared';
+import { paramCase } from 'change-case';
+
+export type SkeletonPropertyName = { [property: string]: string };
 
 export const PDS_SKELETON_CLASS_PREFIX = 'PDS-Skeleton--';
 
@@ -141,3 +145,9 @@ export const getHiddenLabelStyle = (): JssStyle => ({
     minHeight: '100%',
   },
 });
+
+export const getSkeletonPropertyNames = (tagName: TagName) => {
+  return getComponentMeta(tagName).skeletonProps.reduce((prev, current) => {
+    return { ...prev, [current.propName]: paramCase(current.propName) };
+  }, {} as SkeletonPropertyName);
+};

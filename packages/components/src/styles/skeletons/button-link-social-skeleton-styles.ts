@@ -4,12 +4,15 @@ import {
   ELEMENT_SKELETON_DIMENSION,
   extendPseudoWithTheme,
   getBaseSkeletonStyle,
+  getSkeletonPropertyNames,
   getThemedPseudoStyle,
   PDS_SKELETON_CLASS_PREFIX,
 } from './';
 import { pxToRemWithUnit } from '../common-styles';
 
 export const getButtonLinkSocialSkeletonCss = (): string => {
+  const skeletonPropertyNames = getSkeletonPropertyNames('p-button');
+
   return getMinifiedCss({
     '@global': {
       'p-button, p-link, p-link-social': {
@@ -17,9 +20,10 @@ export const getButtonLinkSocialSkeletonCss = (): string => {
           ...extendPseudoWithTheme({ styleFunction: () => getBaseSkeletonStyle(false) }),
           display: 'inline-flex',
           minWidth: pxToRemWithUnit(BUTTON_LINK_SKELETON_WIDTH),
-          [`&[hide-label=true], &.${PDS_SKELETON_CLASS_PREFIX}hide-label`]: {
-            minWidth: pxToRemWithUnit(ELEMENT_SKELETON_DIMENSION),
-          },
+          [`&[${skeletonPropertyNames.hideLabel}=true], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.hideLabel}`]:
+            {
+              minWidth: pxToRemWithUnit(ELEMENT_SKELETON_DIMENSION),
+            },
           ...getThemedPseudoStyle(),
         },
       },

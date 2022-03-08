@@ -4,12 +4,15 @@ import {
   ELEMENT_SKELETON_DIMENSION,
   extendPseudoWithTheme,
   getBaseSkeletonStyle,
+  getSkeletonPropertyNames,
   getThemedPseudoStyle,
   PDS_SKELETON_CLASS_PREFIX,
 } from './base-skeleton-styles';
 import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
 
 export const getButtonLinkPureSkeletonCss = (): string => {
+  const skeletonPropertyNames = getSkeletonPropertyNames('p-button-pure');
+
   return getMinifiedCss({
     '@global': {
       'p-button-pure, p-link-pure': {
@@ -21,24 +24,30 @@ export const getButtonLinkPureSkeletonCss = (): string => {
           minWidth: pxToRemWithUnit(BUTTON_LINK_SKELETON_WIDTH),
           ...getThemedPseudoStyle(),
 
-          [`&[hide-label=true], &.${PDS_SKELETON_CLASS_PREFIX}hide-label`]: {
-            minWidth: pxToRemWithUnit(ELEMENT_SKELETON_DIMENSION),
-          },
-          [`&[stretch=true], &.${PDS_SKELETON_CLASS_PREFIX}stretch`]: {
-            display: 'block',
-          },
-          [`&[size=medium], &.${PDS_SKELETON_CLASS_PREFIX}size-medium`]: {
-            minHeight: pxToRemWithUnit(36),
-          },
-          [`&[size=x-small], &.${PDS_SKELETON_CLASS_PREFIX}size-x-small`]: {
-            minHeight: pxToRemWithUnit(20),
-          },
-          [`&[size=large], &.${PDS_SKELETON_CLASS_PREFIX}size-large`]: {
-            minHeight: pxToRemWithUnit(48),
-          },
-          [`&[size=x-large], &.${PDS_SKELETON_CLASS_PREFIX}size-x-large`]: {
-            minHeight: pxToRemWithUnit(64),
-          },
+          [`&[${skeletonPropertyNames.hideLabel}=true], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.hideLabel}`]:
+            {
+              minWidth: pxToRemWithUnit(ELEMENT_SKELETON_DIMENSION),
+            },
+          [`&[${skeletonPropertyNames.stretch}=true], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.stretch}`]:
+            {
+              display: 'block',
+            },
+          [`&[${skeletonPropertyNames.size}=medium], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.size}-medium`]:
+            {
+              minHeight: pxToRemWithUnit(36),
+            },
+          [`&[${skeletonPropertyNames.size}=x-small], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.size}-x-small`]:
+            {
+              minHeight: pxToRemWithUnit(20),
+            },
+          [`&[${skeletonPropertyNames.size}=large], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.size}-large`]:
+            {
+              minHeight: pxToRemWithUnit(48),
+            },
+          [`&[${skeletonPropertyNames.size}=x-large], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.size}-x-large`]:
+            {
+              minHeight: pxToRemWithUnit(64),
+            },
         },
       },
     },
