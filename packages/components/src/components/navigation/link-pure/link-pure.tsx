@@ -80,7 +80,6 @@ export class LinkPure {
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
-    warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
   }
 
   public componentWillLoad(): void {
@@ -88,6 +87,7 @@ export class LinkPure {
   }
 
   public componentWillRender(): void {
+    warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
     attachComponentCss(
       this.host,
       getComponentCss,
