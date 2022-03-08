@@ -4,13 +4,13 @@ import * as buttonLinkPureUtils from '../../../utils/button-link-pure-utils';
 
 jest.mock('../../../utils/button-handling');
 
-describe('connectedCallback', () => {
+describe('componentWillRender', () => {
   it('should call throwIfParentIsPTextAndIconIsNone()', () => {
     const spy = jest.spyOn(buttonLinkPureUtils, 'warnIfParentIsPTextAndIconIsNone');
 
     const component = new ButtonPure();
     component.host = document.createElement('p-button-pure');
-    component.connectedCallback();
+    component.componentWillRender();
 
     expect(spy).toBeCalledWith(component.host, component.icon);
   });
