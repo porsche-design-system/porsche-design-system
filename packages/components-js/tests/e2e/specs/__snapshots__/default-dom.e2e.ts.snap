@@ -76,16 +76,6 @@ exports[`should have no basic DOM regression for p-button 1`] = `
     font: inherit !important;
   }
 
-  p-text b,
-  p-text strong {
-    font-weight: 700 !important;
-  }
-
-  p-text em,
-  p-text i {
-    font-style: normal !important;
-  }
-
   p-text a,
   p-text button {
     color: inherit !important;
@@ -98,6 +88,16 @@ exports[`should have no basic DOM regression for p-button 1`] = `
   p-text[theme=\\"dark\\"] a:hover,
   p-text[theme=\\"dark\\"] button:hover {
     color: #ff0223 !important;
+  }
+
+  p-text b,
+  p-text strong {
+    font-weight: 700 !important;
+  }
+
+  p-text em,
+  p-text i {
+    font-style: normal !important;
   }
 
   p-text a:hover,
@@ -152,16 +152,6 @@ exports[`should have no basic DOM regression for p-button-pure 1`] = `
     font: inherit !important;
   }
 
-  p-text b,
-  p-text strong {
-    font-weight: 700 !important;
-  }
-
-  p-text em,
-  p-text i {
-    font-style: normal !important;
-  }
-
   p-text a,
   p-text button {
     color: inherit !important;
@@ -174,6 +164,16 @@ exports[`should have no basic DOM regression for p-button-pure 1`] = `
   p-text[theme=\\"dark\\"] a:hover,
   p-text[theme=\\"dark\\"] button:hover {
     color: #ff0223 !important;
+  }
+
+  p-text b,
+  p-text strong {
+    font-weight: 700 !important;
+  }
+
+  p-text em,
+  p-text i {
+    font-style: normal !important;
   }
 
   p-text a:hover,
@@ -280,16 +280,6 @@ exports[`should have no basic DOM regression for p-inline-notification 1`] = `
     font: inherit !important;
   }
 
-  p-text b,
-  p-text strong {
-    font-weight: 700 !important;
-  }
-
-  p-text em,
-  p-text i {
-    font-style: normal !important;
-  }
-
   p-text a,
   p-text button {
     color: inherit !important;
@@ -302,6 +292,16 @@ exports[`should have no basic DOM regression for p-inline-notification 1`] = `
   p-text[theme=\\"dark\\"] a:hover,
   p-text[theme=\\"dark\\"] button:hover {
     color: #ff0223 !important;
+  }
+
+  p-text b,
+  p-text strong {
+    font-weight: 700 !important;
+  }
+
+  p-text em,
+  p-text i {
+    font-style: normal !important;
   }
 
   p-text a:hover,
@@ -351,16 +351,6 @@ exports[`should have no basic DOM regression for p-link 1`] = `
     font: inherit !important;
   }
 
-  p-text b,
-  p-text strong {
-    font-weight: 700 !important;
-  }
-
-  p-text em,
-  p-text i {
-    font-style: normal !important;
-  }
-
   p-text a,
   p-text button {
     color: inherit !important;
@@ -373,6 +363,16 @@ exports[`should have no basic DOM regression for p-link 1`] = `
   p-text[theme=\\"dark\\"] a:hover,
   p-text[theme=\\"dark\\"] button:hover {
     color: #ff0223 !important;
+  }
+
+  p-text b,
+  p-text strong {
+    font-weight: 700 !important;
+  }
+
+  p-text em,
+  p-text i {
+    font-style: normal !important;
   }
 
   p-text a:hover,
@@ -420,16 +420,6 @@ exports[`should have no basic DOM regression for p-link-pure 1`] = `
     font: inherit !important;
   }
 
-  p-text b,
-  p-text strong {
-    font-weight: 700 !important;
-  }
-
-  p-text em,
-  p-text i {
-    font-style: normal !important;
-  }
-
   p-text a,
   p-text button {
     color: inherit !important;
@@ -442,6 +432,16 @@ exports[`should have no basic DOM regression for p-link-pure 1`] = `
   p-text[theme=\\"dark\\"] a:hover,
   p-text[theme=\\"dark\\"] button:hover {
     color: #ff0223 !important;
+  }
+
+  p-text b,
+  p-text strong {
+    font-weight: 700 !important;
+  }
+
+  p-text em,
+  p-text i {
+    font-style: normal !important;
   }
 
   p-text a:hover,
@@ -489,16 +489,6 @@ exports[`should have no basic DOM regression for p-link-social 1`] = `
     font: inherit !important;
   }
 
-  p-text b,
-  p-text strong {
-    font-weight: 700 !important;
-  }
-
-  p-text em,
-  p-text i {
-    font-style: normal !important;
-  }
-
   p-text a,
   p-text button {
     color: inherit !important;
@@ -511,6 +501,16 @@ exports[`should have no basic DOM regression for p-link-social 1`] = `
   p-text[theme=\\"dark\\"] a:hover,
   p-text[theme=\\"dark\\"] button:hover {
     color: #ff0223 !important;
+  }
+
+  p-text b,
+  p-text strong {
+    font-weight: 700 !important;
+  }
+
+  p-text em,
+  p-text i {
+    font-style: normal !important;
   }
 
   p-text a:hover,
@@ -638,16 +638,6 @@ exports[`should have no basic DOM regression for p-switch 1`] = `
     font: inherit !important;
   }
 
-  p-text b,
-  p-text strong {
-    font-weight: 700 !important;
-  }
-
-  p-text em,
-  p-text i {
-    font-style: normal !important;
-  }
-
   p-text a,
   p-text button {
     color: inherit !important;
@@ -660,6 +650,16 @@ exports[`should have no basic DOM regression for p-switch 1`] = `
   p-text[theme=\\"dark\\"] a:hover,
   p-text[theme=\\"dark\\"] button:hover {
     color: #ff0223 !important;
+  }
+
+  p-text b,
+  p-text strong {
+    font-weight: 700 !important;
+  }
+
+  p-text em,
+  p-text i {
+    font-style: normal !important;
   }
 
   p-text a:hover,
