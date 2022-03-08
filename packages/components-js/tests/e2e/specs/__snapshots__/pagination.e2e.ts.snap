@@ -23,6 +23,26 @@ Object {
         Object {
           "children": Array [
             Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
               "disabled": true,
               "name": "Previous page",
               "role": "button",
@@ -122,12 +142,17 @@ Object {
             Object {
               "children": Array [
                 Object {
-                  "name": "…",
-                  "role": "StaticText",
+                  "children": Array [
+                    Object {
+                      "name": "…",
+                      "role": "StaticText",
+                    },
+                  ],
+                  "name": "",
+                  "role": "generic",
                 },
               ],
-              "name": "",
-              "role": "generic",
+              "role": "none",
             },
           ],
           "level": 1,
@@ -154,6 +179,26 @@ Object {
         Object {
           "children": Array [
             Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
               "name": "Next page",
               "role": "button",
             },

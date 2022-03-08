@@ -63,6 +63,10 @@ export class SelectWrapperDropdown {
   private inputElement: HTMLInputElement;
   private listElement: HTMLUListElement;
 
+  private get selectedIndex(): number {
+    return this.selectRef.selectedIndex;
+  }
+
   public connectedCallback(): void {
     throwIfRootNodeIsNotOfKind(this.host, 'pSelectWrapper');
   }
@@ -311,10 +315,6 @@ export class SelectWrapperDropdown {
         }
     }
   };
-
-  private get selectedIndex(): number {
-    return this.selectRef.selectedIndex;
-  }
 
   private syncSelectedIndex = (): void => {
     this.optionMaps = setSelectedOptionMaps(this.optionMaps, this.selectedIndex);

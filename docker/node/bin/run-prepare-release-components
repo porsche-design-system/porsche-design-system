@@ -9,7 +9,6 @@ if [[ -z "${1}" ]]; then
 fi
 
 pushd "./packages/components"
-  # version is needed for tracking pixel to work properly
   yarn version --no-git-tag-version --new-version "${1}"
   sed -i -e "s/### \[Unreleased\]/### \[Unreleased\]\n\n### \[${1}\] - $(date +'%F')/" "./CHANGELOG.md"
 popd
