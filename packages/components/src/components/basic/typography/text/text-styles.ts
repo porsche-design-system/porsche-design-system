@@ -54,8 +54,6 @@ export const getComponentCss = (
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
-  const baseSlottedStyles = getBaseSlottedStyles();
-
   return getCss(
     buildSlottedStyles(host, {
       '& button': {
@@ -70,13 +68,13 @@ export const getSlottedCss = (host: HTMLElement): string => {
         background: 'transparent',
         font: 'inherit',
       },
-      ...baseSlottedStyles,
-      '& a': {},
-      '& a,button': baseSlottedStyles['& a'],
-      '&[theme="dark"] a:hover': {},
-      '&[theme="dark"]': {
-        '& a:hover, button:hover': baseSlottedStyles['&[theme="dark"] a:hover'],
-      },
+      // Extend keys of baseSlottedStyles to be applied on button and link
+      ...Object.fromEntries(
+        Object.entries(getBaseSlottedStyles()).map(([key, value]) => [
+          key.includes(' a') ? `${key},${key.replace(' a', ' button')}` : key,
+          value,
+        ])
+      ),
     })
   );
 };
