@@ -25,7 +25,10 @@
     returnIcon = require('../assets/icon-return.svg');
 
     mounted(): void {
-      const currentUrl = document.location.pathname.slice(1);
+      // strip away base href url path
+      const baseHref = document.querySelector('base')!.getAttribute('href')!;
+      const currentUrl = document.location.pathname.replace(baseHref, '');
+
       this.links = Array.from<HTMLElement>(this.$el.parentElement!.parentElement!.querySelectorAll('h2')).map((h2) => {
         const { innerText } = h2;
         const id = paramCase(innerText);
@@ -33,11 +36,13 @@
 
         // add anchor link to headline
         const link = document.createElement('p-link-pure');
+        /* eslint-disable @typescript-eslint/no-explicit-any */
         (link as any).size = 'inherit';
         (link as any).innerText = '#';
         (link as any).title = 'Link to this heading';
         (link as any).icon = 'none';
         (link as any).href = href;
+        /* eslint-enable */
         link.addEventListener('click', (e) => {
           this.onLinkClick({ title: '', href }, e);
         });
