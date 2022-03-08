@@ -26,7 +26,7 @@ describe('componentDidLoad', () => {
     const component = new ButtonPure();
     component.componentDidLoad();
 
-    expect(spy).toBeCalledTimes(0);
+    expect(spy).not.toHaveBeenCalled();
   });
 
   it('should call transitionListener when size="inherit"', () => {

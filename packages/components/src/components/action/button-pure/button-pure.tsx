@@ -9,7 +9,7 @@ import {
   transitionListener,
   attachComponentCss,
   parseAndGetAriaAttributes,
-  throwIfParentIsPTextAndIconIsNone,
+  warnIfParentIsPTextAndIconIsNone,
 } from '../../../utils';
 import type {
   SelectedAriaAttributes,
@@ -94,7 +94,7 @@ export class ButtonPure {
   }
 
   public connectedCallback(): void {
-    throwIfParentIsPTextAndIconIsNone(this.host, this.icon);
+    warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
   }
 
   public componentWillRender(): void {
