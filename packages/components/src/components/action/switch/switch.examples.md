@@ -17,6 +17,7 @@ When used with hidden label, it's best practice to provide a descriptive label t
 
 <Playground :markup="basic" :config="config">
   <select v-model="label" aria-label="Select label mode">
+    <option disabled>Select label mode</option>
     <option value="show">With label</option>
     <option value="hide">Without label</option>
     <option value="responsive">Responsive</option>
@@ -47,6 +48,7 @@ The `label` can be aligned to the `right` (default) or to the `left` in addition
 
 <Playground :markup="alignment" :config="config">
   <select v-model="alignLabel" aria-label="Select alignment">
+    <option disabled>Select alignment</option>
     <option value="right">Right</option>
     <option value="left">Left</option>
     <option value="responsive">Responsive</option>
