@@ -59,16 +59,12 @@ export const getSlottedCss = (host: HTMLElement): string => {
       '& button': {
         margin: 0,
         padding: 0,
-        boxSizing: 'border-box',
-        outline: 'transparent none',
-        appearance: 'none',
+        background: 0,
+        border: 0,
         cursor: 'pointer',
-        textAlign: 'left',
-        border: 'none',
-        background: 'transparent',
         font: 'inherit',
       },
-      // Extend keys of baseSlottedStyles to be applied on button and link
+      // adjust keys of baseSlottedStyles to be applied on both, `a` and `button` tag
       ...Object.fromEntries(
         Object.entries(getBaseSlottedStyles()).map(([key, value]) => [
           key.includes(' a') ? `${key},${key.replace(' a', ' button')}` : key,
