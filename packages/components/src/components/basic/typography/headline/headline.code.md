@@ -35,8 +35,8 @@ If you need more control over sizing and responsiveness, you can use predefined 
 **Note:** If you choose a custom responsive size, you have to take care of your **semantic tag hierarchy**. It defaults to `h1` for every combination.
 
 <Playground :markup="customVariantMarkup" :config="config">
- <select v-model="customVariant">
-    <option disabled>Select an custom variant</option>
+ <select v-model="customVariant" aria-label="Select custom variant">
+    <option disabled>Select custom variant</option>
     <option value="{ base: 'small', l: 'medium' }">Custom Breakpoints</option>
     <option value="inherit">Inherit</option>
   </select>
@@ -55,8 +55,8 @@ If a custom tag hierarchy is needed, **individual headline tags** can be set fro
 A predefined default color associated with its theme is available but also inherit mode can be used to define a custom color.
 
 <Playground :markup="colorMarkup" :config="config">
-  <select v-model="color">
-    <option disabled>Select a color</option>
+  <select v-model="color" aria-label="Select color">
+    <option disabled>Select color</option>
     <option value="default">Default</option>
     <option value="inherit">Inherit</option>
   </select>
@@ -67,8 +67,8 @@ A predefined default color associated with its theme is available but also inher
 ## Alignment
 
 <Playground :markup="alignment" :config="config">
-  <select v-model="align">
-    <option disabled>Select an alignment</option>
+  <select v-model="align" aria-label="Select alignment">
+    <option disabled>Select alignment</option>
     <option value="left">Left</option>
     <option value="center">Center</option>
     <option value="right">Right</option>

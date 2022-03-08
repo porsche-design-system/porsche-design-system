@@ -11,7 +11,12 @@
     </p-text>
 
     <label>
-      <select v-on:change="onVersionChange" class="versionSelect" style="margin-top: 0.5rem">
+      <select
+        v-on:change="onVersionChange"
+        class="versionSelect"
+        style="margin-top: 0.5rem"
+        aria-label="Switch Version"
+      >
         <optgroup class="versionSelectOptGroup" label="">
           <option disabled selected>Switch Version</option>
           <option v-for="option in versionOptions" :key="option" v-bind:value="option">{{ option }}</option>
