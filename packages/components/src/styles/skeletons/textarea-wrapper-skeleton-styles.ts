@@ -30,8 +30,10 @@ export const getTextareaWrapperSkeletonCss = (): string => {
           minHeight: getSkeletonElementHeight(TEXTAREA_SKELETON_HEIGHT),
 
           // TODO: use constants for getComponentMeta for "property" class and values
+          // hideLabel or no description and no label
           [`&[${skeletonPropertyNames.hideLabel}=true], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.hideLabel}, &:not([${skeletonPropertyNames.description}]):not([${skeletonPropertyNames.label}]):not(.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.description}):not(.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.label})`]:
             getHiddenLabelStyle(),
+          // description no label and no hideLabel
           [`&[${skeletonPropertyNames.description}]:not([${skeletonPropertyNames.label}]):not(.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.label}), &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.description}:not(.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.label})`]:
             {
               minHeight: getSkeletonElementHeight(TEXTAREA_SKELETON_HEIGHT, false, true),
@@ -44,7 +46,8 @@ export const getTextareaWrapperSkeletonCss = (): string => {
                 minHeight: getAfterMinHeight(LABEL_HEIGHT),
               },
             },
-          [`&[${skeletonPropertyNames.description}][${skeletonPropertyNames.label}], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.description}.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.label}`]:
+          // description, label and not hideLabel
+          [`&[${skeletonPropertyNames.description}][${skeletonPropertyNames.label}]:not([${skeletonPropertyNames.hideLabel}=true]), &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.description}.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.label}:not(.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.label})`]:
             {
               minHeight: getSkeletonElementHeight(TEXTAREA_SKELETON_HEIGHT, true, true),
               '&::before': {
