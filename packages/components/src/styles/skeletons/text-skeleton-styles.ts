@@ -4,6 +4,7 @@ import {
   getElementBackgroundGradient,
   getPseudoElementStyle,
   getSkeletonElementHeight,
+  getSkeletonPropertyNames,
   getThemedPseudoStyle,
   PDS_SKELETON_CLASS_PREFIX,
 } from './base-skeleton-styles';
@@ -12,6 +13,8 @@ import { getTypographyElementHeight } from './headline-skeleton-styles';
 import { textLarge, textSmall, textMedium, textXLarge, textXSmall } from '@porsche-design-system/utilities-v2';
 
 export const getTextSkeletonCss = (): string => {
+  const skeletonPropertyNames = getSkeletonPropertyNames('p-text');
+
   return getMinifiedCss({
     '@global': {
       'p-text, p-text-list-item': {
@@ -19,18 +22,14 @@ export const getTextSkeletonCss = (): string => {
           ...extendPseudoWithTheme({
             styleFunction: () => getTextHeadlineSkeletonBaseStyle(),
           }),
-          [`&[size=x-small], &.${PDS_SKELETON_CLASS_PREFIX}size-x-small`]: getTextHeadlineSkeletonSubStyle(
-            getTypographyElementHeight(textXSmall)
-          ),
-          [`&[size=medium], &.${PDS_SKELETON_CLASS_PREFIX}size-medium`]: getTextHeadlineSkeletonSubStyle(
-            getTypographyElementHeight(textMedium)
-          ),
-          [`&[size=large], &.${PDS_SKELETON_CLASS_PREFIX}size-large`]: getTextHeadlineSkeletonSubStyle(
-            getTypographyElementHeight(textLarge)
-          ),
-          [`&[size=x-large], &.${PDS_SKELETON_CLASS_PREFIX}size-x-large`]: getTextHeadlineSkeletonSubStyle(
-            getTypographyElementHeight(textXLarge)
-          ),
+          [`&[${skeletonPropertyNames.size}=x-small], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.size}-x-small`]:
+            getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(textXSmall)),
+          [`&[${skeletonPropertyNames.size}=medium], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.size}-medium`]:
+            getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(textMedium)),
+          [`&[${skeletonPropertyNames.size}=large], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.size}-large`]:
+            getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(textLarge)),
+          [`&[${skeletonPropertyNames.size}=x-large], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.size}-x-large`]:
+            getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(textXLarge)),
           ...getThemedPseudoStyle(),
         },
       },

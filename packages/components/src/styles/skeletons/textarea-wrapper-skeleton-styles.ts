@@ -6,6 +6,7 @@ import {
   getElementBackgroundGradient,
   getHiddenLabelStyle,
   getSkeletonElementHeight,
+  getSkeletonPropertyNames,
   getThemedPseudoStyle,
   LABEL_HEIGHT,
   LABEL_HEIGHT_SPACING,
@@ -16,6 +17,8 @@ import {
 import { pxToRemWithUnit } from '../common-styles';
 
 export const getTextareaWrapperSkeletonCss = (): string => {
+  const skeletonPropertyNames = getSkeletonPropertyNames('p-textarea-wrapper');
+
   return getMinifiedCss({
     '@global': {
       'p-textarea-wrapper': {
@@ -27,9 +30,9 @@ export const getTextareaWrapperSkeletonCss = (): string => {
           minHeight: getSkeletonElementHeight(TEXTAREA_SKELETON_HEIGHT),
 
           // TODO: use constants for getComponentMeta for "property" class and values
-          [`&[hide-label=true], &.${PDS_SKELETON_CLASS_PREFIX}hide-label, &:not([description]):not([label]):not(.${PDS_SKELETON_CLASS_PREFIX}description):not(.${PDS_SKELETON_CLASS_PREFIX}label)`]:
+          [`&[${skeletonPropertyNames.hideLabel}=true], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.hideLabel}, &:not([${skeletonPropertyNames.description}]):not([${skeletonPropertyNames.label}]):not(.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.description}):not(.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.label})`]:
             getHiddenLabelStyle(),
-          [`&[description]:not([label]):not(.${PDS_SKELETON_CLASS_PREFIX}label), &.${PDS_SKELETON_CLASS_PREFIX}description:not(.${PDS_SKELETON_CLASS_PREFIX}label)`]:
+          [`&[${skeletonPropertyNames.description}]:not([${skeletonPropertyNames.label}]):not(.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.label}), &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.description}:not(.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.label})`]:
             {
               minHeight: getSkeletonElementHeight(TEXTAREA_SKELETON_HEIGHT, false, true),
               '&::before': {
@@ -41,17 +44,18 @@ export const getTextareaWrapperSkeletonCss = (): string => {
                 minHeight: getAfterMinHeight(LABEL_HEIGHT),
               },
             },
-          [`&[description][label], &.${PDS_SKELETON_CLASS_PREFIX}description.${PDS_SKELETON_CLASS_PREFIX}label`]: {
-            minHeight: getSkeletonElementHeight(TEXTAREA_SKELETON_HEIGHT, true, true),
-            '&::before': {
-              height: pxToRemWithUnit(LABEL_HEIGHT_WITH_DESCRIPTION),
-              background: getElementBackgroundGradient(LABEL_HEIGHT_WITH_DESCRIPTION, LABEL_HEIGHT_SPACING, true),
+          [`&[${skeletonPropertyNames.description}][${skeletonPropertyNames.label}], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.description}.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.label}`]:
+            {
+              minHeight: getSkeletonElementHeight(TEXTAREA_SKELETON_HEIGHT, true, true),
+              '&::before': {
+                height: pxToRemWithUnit(LABEL_HEIGHT_WITH_DESCRIPTION),
+                background: getElementBackgroundGradient(LABEL_HEIGHT_WITH_DESCRIPTION, LABEL_HEIGHT_SPACING, true),
+              },
+              '&::after': {
+                top: pxToRemWithUnit(LABEL_HEIGHT_WITH_DESCRIPTION),
+                minHeight: getAfterMinHeight(LABEL_HEIGHT_WITH_DESCRIPTION),
+              },
             },
-            '&::after': {
-              top: pxToRemWithUnit(LABEL_HEIGHT_WITH_DESCRIPTION),
-              minHeight: getAfterMinHeight(LABEL_HEIGHT_WITH_DESCRIPTION),
-            },
-          },
 
           ...getThemedPseudoStyle(true),
         },
