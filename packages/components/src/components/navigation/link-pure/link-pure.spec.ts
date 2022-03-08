@@ -5,7 +5,7 @@ import * as buttonLinkPureUtils from '../../../utils/button-link-pure-utils';
 
 describe('connectedCallback', () => {
   it('should call throwIfParentIsPTextAndIconIsNone()', () => {
-    const spy = jest.spyOn(buttonLinkPureUtils, 'throwIfParentIsPTextAndIconIsNone');
+    const spy = jest.spyOn(buttonLinkPureUtils, 'warnIfParentIsPTextAndIconIsNone');
 
     const component = new LinkPure();
     component.host = document.createElement('p-link-pure');

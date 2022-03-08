@@ -6,7 +6,7 @@ jest.mock('../../../utils/button-handling');
 
 describe('connectedCallback', () => {
   it('should call throwIfParentIsPTextAndIconIsNone()', () => {
-    const spy = jest.spyOn(buttonLinkPureUtils, 'throwIfParentIsPTextAndIconIsNone');
+    const spy = jest.spyOn(buttonLinkPureUtils, 'warnIfParentIsPTextAndIconIsNone');
 
     const component = new ButtonPure();
     component.host = document.createElement('p-button-pure');
