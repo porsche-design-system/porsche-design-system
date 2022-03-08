@@ -1,5 +1,4 @@
 import { hasVisibleIcon, hasSlottedSubline, warnIfParentIsPTextAndIconIsNone } from './button-link-pure-utils';
-import { LinkButtonPureIconName } from '../types';
 
 describe('hasVisibleIcon()', () => {
   it('should return true if called with valid iconName', () => {
