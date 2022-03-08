@@ -1,5 +1,5 @@
 <template>
-  <p-text-field-wrapper>
+  <p-text-field-wrapper hide-label="true" label="Search">
     <input
       type="search"
       name="search"

@@ -53,8 +53,8 @@ If a specific text size is needed, the size can be set to `inherit` to specify t
 e.g. setting a font-size of **"44px"** will not generate a box with a **"44px"** width/height but instead a box size generated out of Porsche type-scaling formula which will end in **"52px"** width/height.
 
 <Playground :markup="markupSize" :config="config">
-  <select v-model="size">
-    <option disabled>Select a size</option>
+  <select v-model="size" aria-label="Select size">
+    <option disabled>Select size</option>
     <option>x-small</option>
     <option>small</option>
     <option>medium</option>
@@ -77,8 +77,8 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 There are predefined default text weights. Be aware of using the `thin` variant only with larger text sizes.
 
 <Playground :markup="markupWeight" :config="config">
-  <select v-model="weight">
-    <option disabled>Select a weight</option>
+  <select v-model="weight" aria-label="Select weight">
+    <option disabled>Select weight</option>
     <option>thin</option>
     <option>regular</option>
     <option>bold</option>
@@ -107,7 +107,8 @@ If another icon needs to be implemented, just replace the default icon with anot
 The `label` can be aligned to the `right` (default) or to the `left` of the icon.
 
 <Playground :markup="markupAlignment" :config="config">
-  <select v-model="alignLabel">
+  <select v-model="alignLabel" aria-label="Select alignment">
+    <option disabled>Select alignment</option>
     <option value="left">Left</option>
     <option value="right">Right</option>
     <option value="{ base: 'left', l: 'right' }">Responsive</option>
@@ -122,7 +123,8 @@ The `stretch` property extends the area between icon and label to the maximum av
 It is recommended to use stretch only on `left` alignment and small viewports, e.g. mobile views.
 
 <Playground :markup="markupStretch" :config="config">
-  <select v-model="stretch">
+  <select v-model="stretch" aria-label="Select stretching and alignment">
+    <option disabled>Select stretching and alignment</option>
     <option value='stretch="true" align-label="left"'>stretch true, align-label left</option>
     <option value='stretch="true" align-label="right"'>stretch true, align-label right</option>
     <option value='stretch="false" align-label="left"'>stretch false, align-label left</option>
@@ -166,8 +168,8 @@ If you need additional information on your button, we provide a `<p slot="sublin
 The size of the *subline* changes according to the size of the *label*. We do not support `size="inherit"`, `stretch` and `alignLabel` in this pattern so far.
 
 <Playground :markup="subline" :config="configInline">
-  <select v-model="sublineSize">
-    <option disabled>Select a size</option>
+  <select v-model="sublineSize" aria-label="Select size">
+    <option disabled>Select size</option>
     <option>small</option>
     <option>medium</option>
     <option>large</option>

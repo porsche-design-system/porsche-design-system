@@ -79,8 +79,8 @@ Additional text sizes can be defined based on the Porsche type scale system.
 
 ### Type Scale Calculator
   
-Enter a font-size in px unit based on Porsche Type Scale.  
-<input type="number" v-model="size" />
+<label for="px-unit">Enter a font-size in px unit based on Porsche Type Scale.</label>  
+<input type="number" v-model="size" id="px-unit" />
 
 ```
 {{this.typeScale(size +'px')}}
@@ -248,7 +248,7 @@ impact on the origin character of the company typeface. This includes:
     margin-right: 1rem;
     
     &.highlight {
-      color: #00D5B9;
+      color: $p-color-theme-light-notification-success;
     }
     
     &.f-18 {
