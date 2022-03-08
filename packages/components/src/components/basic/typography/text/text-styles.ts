@@ -54,6 +54,8 @@ export const getComponentCss = (
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
+  const baseSlottedStyles = getBaseSlottedStyles();
+
   return getCss(
     buildSlottedStyles(host, {
       '& button': {
@@ -68,12 +70,12 @@ export const getSlottedCss = (host: HTMLElement): string => {
         background: 'transparent',
         font: 'inherit',
       },
-      ...getBaseSlottedStyles(),
+      ...baseSlottedStyles,
       '& a': {},
-      '& a,button': getBaseSlottedStyles()['& a'],
+      '& a,button': baseSlottedStyles['& a'],
       '&[theme="dark"] a:hover': {},
       '&[theme="dark"]': {
-        '& a:hover, button:hover': getBaseSlottedStyles()['&[theme="dark"] a:hover'],
+        '& a:hover, button:hover': baseSlottedStyles['&[theme="dark"] a:hover'],
       },
     })
   );
