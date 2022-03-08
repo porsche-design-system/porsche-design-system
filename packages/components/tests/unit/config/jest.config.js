@@ -12,7 +12,7 @@ module.exports = {
   globals: {
     ROLLUP_REPLACE_IS_STAGING: 'production',
     'ts-jest': {
-      isolatedModules: true, // this fixes typing issues with jasmine
+      isolatedModules: true, // disables type checking 😢
     },
   },
   clearMocks: true,

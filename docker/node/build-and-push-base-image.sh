@@ -2,7 +2,7 @@
 
 REGISTRY=ghcr.io/porscheui/porsche-design-system
 IMAGE=node
-TAG=14.18.3-stretch-slim
+TAG=16.14.0-stretch-slim
 
 docker pull $REGISTRY/$IMAGE:latest
 

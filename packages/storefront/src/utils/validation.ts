@@ -1,10 +1,11 @@
-import { ObjectSchema, ValidationError } from 'yup';
+import type { SchemaOf } from 'yup';
+import { ValidationError } from 'yup';
 
 /* eslint-disable @typescript-eslint/ban-types */
 export type ValidationBag<T extends object> = {
   data: T;
   errors: { [key in keyof T]: string };
-  schema: ObjectSchema<T | undefined>;
+  schema: SchemaOf<T>;
 };
 
 export const getInitialErrors = <T>(data: T): { [key in keyof T]: string } => {

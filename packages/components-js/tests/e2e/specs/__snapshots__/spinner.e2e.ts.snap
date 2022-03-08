@@ -4,8 +4,24 @@ exports[`spinner accessibility should expose correct accessibility tree if acces
 Object {
   "children": Array [
     Object {
-      "name": " ",
-      "role": "StaticText",
+      "children": Array [
+        Object {
+          "name": " ",
+          "role": "StaticText",
+        },
+      ],
+      "role": "none",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "role": "none",
+        },
+        Object {
+          "role": "none",
+        },
+      ],
+      "role": "none",
     },
   ],
   "name": "Loading page content",
@@ -17,8 +33,24 @@ exports[`spinner accessibility should expose correct initial accessibility tree 
 Object {
   "children": Array [
     Object {
-      "name": " ",
-      "role": "StaticText",
+      "children": Array [
+        Object {
+          "name": " ",
+          "role": "StaticText",
+        },
+      ],
+      "role": "none",
+    },
+    Object {
+      "children": Array [
+        Object {
+          "role": "none",
+        },
+        Object {
+          "role": "none",
+        },
+      ],
+      "role": "none",
     },
   ],
   "name": "",

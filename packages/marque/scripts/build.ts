@@ -53,7 +53,7 @@ const createManifestAndCopyMarque = (): void => {
   const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_MARQUE}'`;
   const files = globby.sync('./src/**/*.{png,webp}').sort();
 
-  fs.rmdirSync(path.normalize('./dist'), { recursive: true });
+  fs.rmSync(path.normalize('./dist'), { force: true, recursive: true });
   fs.mkdirSync(path.normalize('./dist/marque'), { recursive: true });
 
   const manifest: Manifest = {};
