@@ -14,7 +14,7 @@ describe('warnIfCaptionIsUndefined()', () => {
 
     warnIfCaptionIsUndefined(host, 'some valid caption');
 
-    expect(spy).toBeCalledTimes(0);
+    expect(spy).not.toBeCalled();
 
     warnIfCaptionIsUndefined(host, '');
     warnIfCaptionIsUndefined(host, undefined);
@@ -32,6 +32,6 @@ describe('warnIfCaptionIsUndefined()', () => {
     warnIfCaptionIsUndefined(host, undefined);
     warnIfCaptionIsUndefined(host, 'some valid caption');
 
-    expect(spy).toBeCalledTimes(0);
+    expect(spy).not.toBeCalled();
   });
 });

@@ -70,7 +70,7 @@ describe('componentDidLoad', () => {
     component['ariaElement'] = ariaElement;
 
     component.componentDidLoad();
-    expect(addInputEventListenerSpy).toHaveBeenCalledTimes(0);
+    expect(addInputEventListenerSpy).not.toBeCalled();
 
     component['hasCounter'] = true;
     component.componentDidLoad();

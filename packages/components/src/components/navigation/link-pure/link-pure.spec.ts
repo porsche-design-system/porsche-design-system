@@ -39,7 +39,7 @@ describe('componentDidLoad', () => {
     const component = new LinkPure();
     component.componentDidLoad();
 
-    expect(spy).toBeCalledTimes(0);
+    expect(spy).not.toBeCalled();
   });
 
   it('should call transitionListener when size="inherit"', () => {

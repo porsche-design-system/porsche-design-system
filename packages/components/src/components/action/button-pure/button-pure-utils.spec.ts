@@ -8,7 +8,7 @@ describe('warnIfIsLoadingAndIconIsNone()', () => {
     warnIfIsLoadingAndIconIsNone(host, true, 'highway');
     warnIfIsLoadingAndIconIsNone(host, false, 'none');
 
-    expect(spy).toBeCalledTimes(0);
+    expect(spy).not.toBeCalled();
 
     warnIfIsLoadingAndIconIsNone(host, true, 'none');
 

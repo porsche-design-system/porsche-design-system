@@ -42,7 +42,7 @@ describe('getFocusVisibleFallback()', () => {
     getFocusVisibleFallback(input);
 
     expect(getHasFocusVisibleSupportSpy).toHaveBeenCalledTimes(1);
-    expect(supportsFocusVisibleSpy).not.toHaveBeenCalled();
+    expect(supportsFocusVisibleSpy).not.toBeCalled();
   });
 
   it('should return input if :focus-visible is supported', () => {
