@@ -1,4 +1,4 @@
-import { hasVisibleIcon, hasSlottedSubline, throwIfParentIsPTextAndIconIsNone } from './button-link-pure-utils';
+import { hasVisibleIcon, hasSlottedSubline, warnIfParentIsPTextAndIconIsNone } from './button-link-pure-utils';
 import { LinkButtonPureIconName } from '../types';
 
 describe('hasVisibleIcon()', () => {
@@ -27,14 +27,14 @@ describe('hasSlottedSubline()', () => {
   });
 });
 
-describe('throwIfParentIsPTextAndIconIsNone()', () => {
+describe('warnIfParentIsPTextAndIconIsNone()', () => {
   it('should print warning if parent is p-text and icon is none', () => {
     const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
     const parent = document.createElement('p-text');
     const child = document.createElement('button');
     parent.appendChild(child);
 
-    throwIfParentIsPTextAndIconIsNone(child, 'none');
+    warnIfParentIsPTextAndIconIsNone(child, 'none');
     expect(spy).toBeCalledTimes(1);
   });
 
@@ -44,7 +44,7 @@ describe('throwIfParentIsPTextAndIconIsNone()', () => {
     const child = document.createElement('button');
     parent.appendChild(child);
 
-    throwIfParentIsPTextAndIconIsNone(child, 'highway');
+    warnIfParentIsPTextAndIconIsNone(child, 'highway');
 
     expect(spy).toBeCalledTimes(0);
   });
@@ -53,7 +53,7 @@ describe('throwIfParentIsPTextAndIconIsNone()', () => {
     const spy = jest.spyOn(global.console, 'warn');
     const child = document.createElement('button');
 
-    throwIfParentIsPTextAndIconIsNone(child, 'none');
+    warnIfParentIsPTextAndIconIsNone(child, 'none');
     expect(spy).toBeCalledTimes(0);
   });
 });
