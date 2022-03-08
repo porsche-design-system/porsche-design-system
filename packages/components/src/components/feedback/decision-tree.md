@@ -51,7 +51,7 @@ Status: Success
 
 ---
 
-## Inform/confirm that the user is taking actions or an event occurs that is not desirable or might have effects.
+## Inform/confirm that the user is taking actions or an event occurs that is not desirable or might have effects - variant 1.
 
 Status: Warning
 
@@ -71,7 +71,7 @@ Status: Warning
 
 ---
 
-## Inform/confirm that the user is taking actions or an event occurs that is not desirable or might have effects.
+## Inform/confirm that the user is taking actions or an event occurs that is not desirable or might have effects - variant 2.
 
 Status: Error
 

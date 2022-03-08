@@ -25,8 +25,8 @@ If a specific text size is needed, the size can be set to `inherit` to specify t
 **Hint:** Be aware of that the line-height will be calculated based on the Porsche type-scaling formula automatically. This is the case for predefined text sizes as well as for `inherit` mode.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <select v-model="size">
-    <option disabled>Select a size</option>
+  <select v-model="size" aria-label="Select size">
+    <option disabled>Select size</option>
     <option>x-small</option>
     <option>small</option>
     <option>medium</option>
@@ -56,8 +56,8 @@ To provide more contextual HTML semantics you can either pass them with the `tag
 Predefined colors associated with its theme are available but also inherit mode can be used to define a custom color.
 
 <Playground :markup="colorMarkup" :config="config">
-  <select v-model="color">
-    <option disabled>Select a color</option>
+  <select v-model="color" aria-label="Select color">
+    <option disabled>Select color</option>
     <option value="brand">Brand</option>
     <option value="default">Default</option>
     <option value="neutral-contrast-high">Neutral Contrast High</option>
@@ -78,8 +78,8 @@ Predefined colors associated with its theme are available but also inherit mode 
 There are predefined default text weights for copy text. Be aware of using the `thin` variant only with larger text sizes.
 
 <Playground :markup="weightMarkup" :config="config">
-  <select v-model="weight">
-    <option disabled>Select a weight</option>
+  <select v-model="weight" aria-label="Select weight">
+    <option disabled>Select weight</option>
     <option value="thin">Thin</option>
     <option value="regular">Regular</option>
     <option value="semibold">Semibold</option>
@@ -92,8 +92,8 @@ There are predefined default text weights for copy text. Be aware of using the `
 ## Alignment
 
 <Playground :markup="alignment" :config="config">
-  <select v-model="align">
-    <option disabled>Select an alignment</option>
+  <select v-model="align" aria-label="Select alignment">
+    <option disabled>Select alignment</option>
     <option value="left">Left</option>
     <option value="center">Center</option>
     <option value="right">Right</option>
