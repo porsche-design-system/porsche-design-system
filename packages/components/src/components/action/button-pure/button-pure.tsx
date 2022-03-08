@@ -93,12 +93,9 @@ export class ButtonPure {
     }
   }
 
-  public connectedCallback(): void {
-    warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
-  }
-
   public componentWillRender(): void {
     warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon);
+    warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
     attachComponentCss(
       this.host,
       getComponentCss,
