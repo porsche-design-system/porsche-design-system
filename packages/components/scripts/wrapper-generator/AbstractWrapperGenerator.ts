@@ -44,7 +44,7 @@ export abstract class AbstractWrapperGenerator {
   }
 
   private generateDir(dirName: string): void {
-    fs.rmdirSync(dirName, { recursive: true });
+    fs.rmSync(dirName, { force: true, recursive: true });
     fs.mkdirSync(dirName, { recursive: true });
   }
 
