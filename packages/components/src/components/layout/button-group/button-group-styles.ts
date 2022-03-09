@@ -1,11 +1,11 @@
 import type { JssStyle } from 'jss';
-import type { GetStyleFunction } from '../../../utils';
+import type { GetJssStyleFunction } from '../../../utils';
 import type { ButtonGroupDirectionType, ButtonGroupDirection } from './button-group-utils';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import { addImportantToEachRule } from '../../../styles';
 import { spacing } from '@porsche-design-system/utilities-v2';
 
-const getDirectionStyle: GetStyleFunction = (direction: ButtonGroupDirectionType): JssStyle => {
+const getDirectionJssStyle: GetJssStyleFunction = (direction: ButtonGroupDirectionType): JssStyle => {
   const style: { [key in ButtonGroupDirectionType]: JssStyle } = {
     column: {
       flexFlow: 'column nowrap',
@@ -23,7 +23,7 @@ const getDirectionStyle: GetStyleFunction = (direction: ButtonGroupDirectionType
   return style[direction];
 };
 
-const getDirectionSlottedStyle: GetStyleFunction = (direction: ButtonGroupDirectionType): JssStyle => {
+const getDirectionSlottedJssStyle: GetJssStyleFunction = (direction: ButtonGroupDirectionType): JssStyle => {
   const style: { [key in ButtonGroupDirectionType]: JssStyle } = {
     column: {
       marginRight: 0,
@@ -46,11 +46,11 @@ export const getComponentCss = (direction: ButtonGroupDirection): string => {
       div: {
         display: 'flex',
         marginTop: `-${spacing[16]}`,
-        ...buildResponsiveStyles(direction, getDirectionStyle),
+        ...buildResponsiveStyles(direction, getDirectionJssStyle),
       },
       '::slotted(*)': addImportantToEachRule({
         marginTop: spacing[16],
-        ...buildResponsiveStyles(direction, getDirectionSlottedStyle),
+        ...buildResponsiveStyles(direction, getDirectionSlottedJssStyle),
       }),
     },
   });

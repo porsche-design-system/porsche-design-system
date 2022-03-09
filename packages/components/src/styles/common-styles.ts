@@ -41,7 +41,7 @@ type GetHoverStylesOptions = {
   theme?: Theme;
 };
 
-export const getHoverStyle = ({ theme }: GetHoverStylesOptions = { theme: 'light' }): JssStyle => {
+export const getHoverJssStyle = ({ theme }: GetHoverStylesOptions = { theme: 'light' }): JssStyle => {
   return {
     transition: getTransition('color'),
     '&:hover': {
@@ -56,7 +56,7 @@ export type GetFocusStylesOptions = {
   pseudo?: '::after' | '::before';
 };
 
-export const getInsetStyle = (value: 'auto' | number = 0): JssStyle => {
+export const getInsetJssStyle = (value: 'auto' | number = 0): JssStyle => {
   value = value > 0 ? (`${value}px` as any) : value;
   return {
     top: value,
@@ -66,7 +66,7 @@ export const getInsetStyle = (value: 'auto' | number = 0): JssStyle => {
   };
 };
 
-export const getFocusStyle = (opts?: GetFocusStylesOptions): JssStyle => {
+export const getFocusJssStyle = (opts?: GetFocusStylesOptions): JssStyle => {
   const {
     pseudo,
     offset: outlineOffset,
@@ -86,7 +86,7 @@ export const getFocusStyle = (opts?: GetFocusStylesOptions): JssStyle => {
         [`&${pseudo}`]: {
           content: '""',
           position: 'absolute',
-          ...getInsetStyle(),
+          ...getInsetJssStyle(),
           outline: '1px solid transparent',
           outlineOffset: `${outlineOffset}px`,
         },
@@ -139,7 +139,7 @@ export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOp
         content: '""',
         display: 'block',
         position: 'absolute',
-        ...getInsetStyle(),
+        ...getInsetJssStyle(),
         outline: '1px solid transparent',
         outlineOffset: `${outlineOffset}px`,
       },
@@ -161,11 +161,11 @@ export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withD
     '& a': {
       color: 'inherit',
       textDecoration: 'underline',
-      ...getHoverStyle(),
-      ...getFocusStyle({ offset: 1 }),
+      ...getHoverJssStyle(),
+      ...getFocusJssStyle({ offset: 1 }),
     },
     ...(opts.withDarkTheme && {
-      '&[theme="dark"] a:hover': getHoverStyle({ theme: 'dark' })['&:hover'],
+      '&[theme="dark"] a:hover': getHoverJssStyle({ theme: 'dark' })['&:hover'],
     }),
     '& b, & strong': {
       fontWeight: fontWeight.bold,

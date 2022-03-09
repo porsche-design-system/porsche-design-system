@@ -1,6 +1,6 @@
 import type { ThemeExtendedElectric } from '../../../../types';
 import { getCss } from '../../../../utils';
-import { addImportantToEachRule, getFocusStyle, getThemedColors } from '../../../../styles';
+import { addImportantToEachRule, getFocusJssStyle, getThemedColors } from '../../../../styles';
 import { getFocusVisibleFallback } from '../../../../styles/focus-visible-fallback';
 import type { JssStyle } from 'jss';
 
@@ -13,7 +13,7 @@ export const getComponentCss = (theme: ThemeExtendedElectric): string => {
           display: 'none',
         },
         ...getFocusVisibleFallback(
-          Object.entries(getFocusStyle({ color: getThemedColors(theme).baseColor })).reduce((result, [key, val]) => {
+          Object.entries(getFocusJssStyle({ color: getThemedColors(theme).baseColor })).reduce((result, [key, val]) => {
             result[key.startsWith('&') ? `&(${key.slice(1)})` : key] = val;
             return result;
           }, {} as JssStyle)
