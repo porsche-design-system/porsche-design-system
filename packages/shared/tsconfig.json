@@ -6,7 +6,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
-  "include": ["./src"],
+  "include": ["./src", "./scripts"],
   "ts-node": {
     "transpileOnly": true,
     "compilerOptions": {
