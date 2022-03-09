@@ -1,9 +1,10 @@
 import { ElementHandle, Page } from 'puppeteer';
 import { goto, selectNode } from '../helpers';
+import { PDS_SKELETON_CLASS_PREFIX } from '../../../../components/src/styles/skeletons';
 
 const SOME_CLASS_1 = 'someClass1';
 const SOME_CLASS_2 = 'someClass2';
-const SKELETON_PROPERTY_CLASS_NAMES = 'PDS-Skeleton--theme-light PDS-Skeleton--variant-secondary';
+const SKELETON_CLASSES = `${PDS_SKELETON_CLASS_PREFIX}theme-light ${PDS_SKELETON_CLASS_PREFIX}variant-secondary`;
 const HYDRATED_CLASS = 'hydrated';
 
 let page: Page;
@@ -22,9 +23,7 @@ it('should map className to class initially', async () => {
   await goto(page, 'core-class-names');
 
   const button = await getButton1();
-  expect(await getClassName(button)).toBe(
-    `${SOME_CLASS_1} ${SOME_CLASS_2} ${SKELETON_PROPERTY_CLASS_NAMES} ${HYDRATED_CLASS}`
-  );
+  expect(await getClassName(button)).toBe(`${SOME_CLASS_1} ${SOME_CLASS_2} ${SKELETON_CLASSES} ${HYDRATED_CLASS}`);
 });
 
 it('should keep hydrated class on rerender with className change', async () => {
@@ -49,14 +48,12 @@ it('should keep added class on rerender with className change', async () => {
   }, addedClass);
 
   expect(await getClassName(button)).toBe(
-    `${SOME_CLASS_1} ${SOME_CLASS_2} ${SKELETON_PROPERTY_CLASS_NAMES} ${HYDRATED_CLASS} ${addedClass}`
+    `${SOME_CLASS_1} ${SOME_CLASS_2} ${SKELETON_CLASSES} ${HYDRATED_CLASS} ${addedClass}`
   );
 
   await button.click();
 
-  expect(await getClassName(button)).toBe(
-    `${SOME_CLASS_1} ${SKELETON_PROPERTY_CLASS_NAMES} ${HYDRATED_CLASS} ${addedClass}`
-  );
+  expect(await getClassName(button)).toBe(`${SOME_CLASS_1} ${SKELETON_CLASSES} ${HYDRATED_CLASS} ${addedClass}`);
 });
 
 it('should keep other classes if one is removed', async () => {
@@ -64,13 +61,11 @@ it('should keep other classes if one is removed', async () => {
 
   const button = await getButton1();
 
-  expect(await getClassName(button)).toBe(
-    `${SOME_CLASS_1} ${SOME_CLASS_2} ${SKELETON_PROPERTY_CLASS_NAMES} ${HYDRATED_CLASS}`
-  );
+  expect(await getClassName(button)).toBe(`${SOME_CLASS_1} ${SOME_CLASS_2} ${SKELETON_CLASSES} ${HYDRATED_CLASS}`);
 
   await button.click();
 
-  expect(await getClassName(button)).toBe(`${SOME_CLASS_1} ${SKELETON_PROPERTY_CLASS_NAMES} ${HYDRATED_CLASS}`);
+  expect(await getClassName(button)).toBe(`${SOME_CLASS_1} ${SKELETON_CLASSES} ${HYDRATED_CLASS}`);
 });
 
 it('should not interfere with classNames of another PButton', async () => {
@@ -82,16 +77,16 @@ it('should not interfere with classNames of another PButton', async () => {
   await button1.click();
 
   expect(await getClassName(button1), 'button 1 after button 1 click').toBe(
-    `${SOME_CLASS_1} ${SKELETON_PROPERTY_CLASS_NAMES} ${HYDRATED_CLASS}`
+    `${SOME_CLASS_1} ${SKELETON_CLASSES} ${HYDRATED_CLASS}`
   );
 
   await button2.click();
 
   expect(await getClassName(button1), 'button 1 after button 2 click').toBe(
-    `${SOME_CLASS_1} ${SKELETON_PROPERTY_CLASS_NAMES} ${HYDRATED_CLASS}`
+    `${SOME_CLASS_1} ${SKELETON_CLASSES} ${HYDRATED_CLASS}`
   );
 
   expect(await getClassName(button2), 'button 2 after button 2 click').toBe(
-    `${SOME_CLASS_1} ${SKELETON_PROPERTY_CLASS_NAMES} ${HYDRATED_CLASS}`
+    `${SOME_CLASS_1} ${SKELETON_CLASSES} ${HYDRATED_CLASS}`
   );
 });

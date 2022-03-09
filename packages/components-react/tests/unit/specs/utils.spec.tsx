@@ -7,6 +7,7 @@ import {
   skipPorscheDesignSystemCDNRequestsDuringTests,
 } from '../../../projects/components-wrapper/src/utils';
 import * as hooks from '../../../projects/components-wrapper/src/hooks';
+import { PDS_SKELETON_CLASS_PREFIX } from '@porsche-design-system/components/src/styles/skeletons';
 
 describe('getMergedClassName', () => {
   test.each`
@@ -41,7 +42,7 @@ describe('syncRefs', () => {
     // mocked usePrefix so we don't have to use PorscheDesignSystemProvider
     jest.spyOn(hooks, 'usePrefix').mockImplementation((tagName: string) => tagName);
   });
-  const SKELETON_PROPERTY_CLASS_NAMES = 'PDS-Skeleton--theme-light PDS-Skeleton--variant-secondary';
+  const SKELETON_CLASSES = `${PDS_SKELETON_CLASS_PREFIX}theme-light ${PDS_SKELETON_CLASS_PREFIX}variant-secondary`;
   const INITIAL_CLASS_NAME = 'initialClass';
   const CLASS_NAME = 'someClass1 hydrated';
 
@@ -67,7 +68,7 @@ describe('syncRefs', () => {
     const { getByTestId } = render(<Sample />);
     const button = getByTestId('button');
 
-    expect(button.className).toBe(`${INITIAL_CLASS_NAME} ${SKELETON_PROPERTY_CLASS_NAMES}`);
+    expect(button.className).toBe(`${INITIAL_CLASS_NAME} ${SKELETON_CLASSES}`);
 
     userEvent.click(button);
 
@@ -78,7 +79,7 @@ describe('syncRefs', () => {
     const { getByTestId } = render(<Sample isRefCallback />);
     const button = getByTestId('button');
 
-    expect(button.className).toBe(`${INITIAL_CLASS_NAME} ${SKELETON_PROPERTY_CLASS_NAMES}`);
+    expect(button.className).toBe(`${INITIAL_CLASS_NAME} ${SKELETON_CLASSES}`);
 
     userEvent.click(button);
 
