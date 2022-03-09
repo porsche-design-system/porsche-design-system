@@ -7,30 +7,19 @@ import { componentsReady } from '@porsche-design-system/components-angular';
   template: `
     <div class="playground light" title="should render checkbox skeleton with label">
       <p-checkbox-wrapper [label]="'Some label'">
-        <input [type]="'checkbox'" [name]="'some-name'" />
+        <input [type]="'checkbox'" />
       </p-checkbox-wrapper>
     </div>
 
     <div class="playground light" title="should render checkbox skeleton without label">
       <p-checkbox-wrapper [label]="'Some label'" [hideLabel]="true">
-        <input [type]="'checkbox'" [name]="'some-name'" />
+        <input [type]="'checkbox'" />
       </p-checkbox-wrapper>
     </div>
 
     <div class="playground light" title="should render checkbox skeleton with multiline label">
-      <p-checkbox-wrapper
-        [label]="'Lorem ipsum dolor sit amet, consetetur sadipscing'"
-        style="width: 240px; margin-bottom: 32px"
-      >
-        <input [type]="'checkbox'" [name]="'some-name'" />
-      </p-checkbox-wrapper>
-      <p-checkbox-wrapper
-        [state]="'error'"
-        [label]="'Lorem ipsum dolor sit amet, consetetur sadipscing'"
-        [message]="'Lorem ipsum dolor sit amet, consetetur sadipscing'"
-        style="width: 240px"
-      >
-        <input [type]="'checkbox'" [name]="'some-name'" />
+      <p-checkbox-wrapper [label]="'Lorem ipsum dolor sit amet, consetetur sadipscing'" style="width: 240px">
+        <input [type]="'checkbox'" />
       </p-checkbox-wrapper>
     </div>
   `,

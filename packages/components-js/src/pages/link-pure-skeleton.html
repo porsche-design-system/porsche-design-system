@@ -1,4 +1,7 @@
 <style>
+  h4 {
+    color: deeppink;
+  }
   p-link-pure:not(:last-child) {
     margin-right: 0.5rem;
   }
@@ -8,52 +11,51 @@
 </style>
 
 <div class="playground light" title="should render link pure skeleton with label">
-  <p-link-pure href="https://www.porsche.com">Label default</p-link-pure>
+  <h4>With label</h4>
+  <p-link-pure href="https://www.porsche.com">Some Label</p-link-pure>
 </div>
+
 <div class="playground dark" title="should render link pure skeleton with label on dark background">
-  <p-link-pure href="https://www.porsche.com" theme="dark">Label default</p-link-pure>
+  <h4>With label dark</h4>
+  <p-link-pure href="https://www.porsche.com" theme="dark">Some Label</p-link-pure>
 </div>
 
 <div class="playground light" title="should render link pure skeleton without label">
+  <h4>Hidden label</h4>
   <p-link-pure href="https://www.porsche.com" hide-label="true">Some label</p-link-pure>
 </div>
 <div class="playground dark" title="should render link pure skeleton without label on dark background">
+  <h4>Hidden label dark</h4>
   <p-link-pure href="https://www.porsche.com" hide-label="true" theme="dark">Some label</p-link-pure>
 </div>
 
-<div class="playground light" title="should render link pure skeleton with specific icon">
-  <p-link-pure href="https://www.porsche.com" icon="phone">Label with specific icon</p-link-pure>
-</div>
-
-<div class="playground dark" title="should render link pure skeleton with specific icon on dark background">
-  <p-link-pure href="https://www.porsche.com" icon="phone" theme="dark">Label with specific icon</p-link-pure>
-</div>
-
 <div class="playground light" title="should render link pure skeleton with multiline label">
+  <h4>Multiline label</h4>
   <p-link-pure href="https://www.porsche.com" style="width: 240px">
     Label multiline lorem ipsum dolor sit amet, consetetur sadipscing
   </p-link-pure>
 </div>
 
 <div class="playground light" title="should render link pure skeleton with no icon">
-  <p-link-pure href="https://www.porsche.com" icon="none">Label icon none</p-link-pure>
+  <h4>No icon</h4>
+  <p-link-pure href="https://www.porsche.com" icon="none">Some Label</p-link-pure>
 </div>
 
 <div class="playground light" title="should render link pure skeleton icon if hide-label and icon none is set">
-  <p-link-pure href="https://www.porsche.com" hide-label="true" icon="none">Label hide-label icon none</p-link-pure>
+  <h4>No icon and hidden label</h4>
+  <p-link-pure href="https://www.porsche.com" hide-label="true" icon="none">Some Label</p-link-pure>
 </div>
 
 <div class="playground light stretched-links" title="should render link pure skeleton with stretched label">
-  <p-link-pure href="https://www.porsche.com" stretch="true">Label stretch</p-link-pure>
+  <h4>Stretch</h4>
+  <p-link-pure href="https://www.porsche.com" stretch="true">Some Label</p-link-pure>
 </div>
 
 <div class="playground light stretched-links" title="should render with stretched label depending on viewport">
-  <p-link-pure
-    href="https://www.porsche.com"
-    stretch="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
+  <h4>Stretch BreakpointCustomizable</h4>
+  <p-link-pure href="https://www.porsche.com" stretch="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
+    >Some Label</p-link-pure
   >
-    Label stretch responsive
-  </p-link-pure>
 </div>
 
 <script>

@@ -15,30 +15,19 @@ export const CheckboxWrapperSkeletonPage = (): JSX.Element => {
     <>
       <div className="playground light" title="should render checkbox skeleton with label">
         <PCheckboxWrapper label="Some label">
-          <input type="checkbox" name="some-name" />
+          <input type="checkbox" />
         </PCheckboxWrapper>
       </div>
 
       <div className="playground light" title="should render checkbox skeleton without label">
         <PCheckboxWrapper label="Some label" hideLabel={true}>
-          <input type="checkbox" name="some-name" />
+          <input type="checkbox" />
         </PCheckboxWrapper>
       </div>
 
       <div className="playground light" title="should render checkbox skeleton with multiline label">
-        <PCheckboxWrapper
-          label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-          style={{ width: '240px', marginBottom: '32px' }}
-        >
-          <input type="checkbox" name="some-name" />
-        </PCheckboxWrapper>
-        <PCheckboxWrapper
-          state="error"
-          label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-          message="Lorem ipsum dolor sit amet, consetetur sadipscing"
-          style={{ width: '240px' }}
-        >
-          <input type="checkbox" name="some-name" />
+        <PCheckboxWrapper label="Lorem ipsum dolor sit amet, consetetur sadipscing" style={{ width: '240px' }}>
+          <input type="checkbox" />
         </PCheckboxWrapper>
       </div>
     </>

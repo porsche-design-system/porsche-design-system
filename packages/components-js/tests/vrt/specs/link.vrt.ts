@@ -8,6 +8,7 @@ import {
 } from '../helpers';
 import {
   defaultViewports,
+  getVisualRegressionSkeletonTester,
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
   vrtTest,
@@ -17,8 +18,8 @@ it.each(defaultViewports)('should have no visual regression for viewport %s', as
   expect(await vrtTest(getVisualRegressionTester(viewport), 'link', '/#link')).toBeFalsy();
 });
 
-it.each(defaultViewports)('should have no skeleton visual regression for viewport %s', async (viewport) => {
-  expect(await vrtTest(getVisualRegressionTester(viewport), 'link-skeleton', '/#link-skeleton')).toBeFalsy();
+it('should have no visual regression for skeleton', async () => {
+  expect(await vrtTest(getVisualRegressionSkeletonTester(), 'link-skeleton', '/#link-skeleton')).toBeFalsy();
 });
 
 it('should have no visual regression for :hover + :focus-visible', async () => {
