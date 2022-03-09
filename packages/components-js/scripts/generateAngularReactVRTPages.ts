@@ -105,7 +105,6 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       fileContent = fileContent.replace(scriptRegEx, '\n');
       script = script?.trim().replace(/([\w.#'()\[\]]+)(\.\w+\s=)/g, '($1 as any)$2'); // handle untyped prop assignments
 
-      const usesComponentsReady = script?.includes('componentsReady()');
       const usesQuerySelector = script?.includes('querySelector');
       const usesPrefixing = !!fileContent.match(/<[a-z-]+-p-[\w-]+/);
       const usesToast = script?.includes('p-toast');
@@ -115,6 +114,8 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       const isIconPage = fileName === 'icon';
       const usesOnInit = script && !isIconPage;
       const isSkeleton = fileName.includes('skeleton');
+      const skeletonScript = isSkeleton && script.replace('porscheDesignSystem.', '');
+      const usesSetAllReady = !isSkeleton && script?.includes('componentsReady()');
 
       const iconsRegEx = /(<div class="playground[\sa-z]+overview".*?>)\n(<\/div>)/;
 
@@ -130,14 +131,14 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
           'ChangeDetectionStrategy',
           'Component',
           usesOnInit && 'OnInit',
-          usesComponentsReady && !isSkeleton && 'ChangeDetectorRef',
+          usesSetAllReady && 'ChangeDetectorRef',
         ]
           .filter((x) => x)
           .sort(byAlphabet)
           .join(', ');
 
         const pdsImports = [
-          (usesComponentsReady || isSkeleton) && 'componentsReady',
+          (usesSetAllReady || isSkeleton) && 'componentsReady',
           usesToast && 'ToastManager',
           isIconPage && 'IconName',
         ]
@@ -161,8 +162,10 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
         const classImplements = usesOnInit ? 'implements OnInit ' : '';
         let classImplementation = '';
         if (isSkeleton) {
-          classImplementation = `ngOnInit() {\n  ${script.replace('porscheDesignSystem.', '')}\n}`;
-        } else if (usesComponentsReady) {
+          classImplementation = `ngOnInit() {
+  ${skeletonScript}
+}`;
+        } else if (usesSetAllReady) {
           classImplementation = `public allReady: boolean = false;
 
 constructor(private cdr: ChangeDetectorRef) {}
@@ -182,7 +185,9 @@ ngOnInit() {
   this.toastManager.addMessage({ text: ${toastText} });
 }`;
         } else if (usesQuerySelector) {
-          classImplementation = `ngOnInit() {\n  ${script}\n}`;
+          classImplementation = `ngOnInit() {
+  ${script}
+}`;
         }
 
         classImplementation = classImplementation
@@ -237,8 +242,8 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
       } else if (framework === 'react') {
         // imports
         const reactImports = [
-          (usesComponentsReady || usesQuerySelector) && !isIconPage && 'useEffect',
-          usesComponentsReady && !isSkeleton && 'useState',
+          (usesSetAllReady || usesQuerySelector) && !isIconPage && 'useEffect',
+          usesSetAllReady && 'useState',
         ]
           .filter((x) => x)
           .sort(byAlphabet)
@@ -250,7 +255,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
           .map((tagName) => pascalCase(tagName));
         const pdsImports = [
           ...componentImports,
-          (usesComponentsReady || isSkeleton) && 'componentsReady',
+          (usesSetAllReady || isSkeleton) && 'componentsReady',
           usesPrefixing && 'PorscheDesignSystemProvider',
           usesToast && 'useToastManager',
         ]
@@ -274,9 +279,9 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
         let useStateOrEffect = '';
         if (isSkeleton) {
           useStateOrEffect = `useEffect(() => {
-  ${script.replace('porscheDesignSystem.', '')}
+  ${skeletonScript}
 }, []);`;
-        } else if (usesComponentsReady) {
+        } else if (usesSetAllReady) {
           useStateOrEffect = `const [allReady, setAllReady] = useState(false);
 useEffect(() => {
   componentsReady().then(() => {
