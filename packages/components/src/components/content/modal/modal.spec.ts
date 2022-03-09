@@ -43,7 +43,7 @@ describe('modal', () => {
       const utilsSpy = jest.spyOn(modalUtils, 'setScrollLock');
       component.componentDidLoad();
 
-      expect(utilsSpy).not.toHaveBeenCalled();
+      expect(utilsSpy).not.toBeCalled();
     });
   });
 
@@ -77,7 +77,7 @@ describe('modal', () => {
       component.heading = 'Some Heading';
       component.componentWillRender();
 
-      expect(hasNamedSlotSpy).not.toHaveBeenCalled();
+      expect(hasNamedSlotSpy).not.toBeCalled();
     });
 
     it('should call hasNamedSlot() when no heading is provided', () => {
