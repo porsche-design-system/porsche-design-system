@@ -11,23 +11,15 @@ export const FieldsetWrapperSkeletonPage = (): JSX.Element => {
     });
   }, []);
 
-  const style = `
-    p-fieldset-wrapper > *:not(:last-child) {
-      margin-bottom: 2px;
-    }
-  `;
-
   return (
     <>
-      <style children={style} />
-
       <div
         className="playground light"
         title="should render fieldset skeleton with label and text-field-wrapper with defined spacing"
       >
         <PFieldsetWrapper label="Some label">
           <PTextFieldWrapper label="Some label">
-            <input type="text" name="some-name" />
+            <input type="text" />
           </PTextFieldWrapper>
         </PFieldsetWrapper>
       </div>

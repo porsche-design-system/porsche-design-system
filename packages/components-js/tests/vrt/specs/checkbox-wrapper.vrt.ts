@@ -8,6 +8,7 @@ import {
 } from '../helpers';
 import {
   defaultViewports,
+  getVisualRegressionSkeletonTester,
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
   vrtTest,
@@ -17,9 +18,9 @@ it.each(defaultViewports)('should have no visual regression for viewport %s', as
   expect(await vrtTest(getVisualRegressionTester(viewport), 'checkbox-wrapper', '/#checkbox-wrapper')).toBeFalsy();
 });
 
-it.each(defaultViewports)('should have no skeleton visual regression for viewport %s', async (viewport) => {
+it('should have no visual regression for skeleton', async () => {
   expect(
-    await vrtTest(getVisualRegressionTester(viewport), 'checkbox-wrapper-skeleton', '/#checkbox-wrapper-skeleton')
+    await vrtTest(getVisualRegressionSkeletonTester(), 'checkbox-wrapper-skeleton', '/#checkbox-wrapper-skeleton')
   ).toBeFalsy();
 });
 
