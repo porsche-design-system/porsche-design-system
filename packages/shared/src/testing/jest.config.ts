@@ -12,6 +12,7 @@ export const config: Config.InitialOptions = {
     '^.+\\.ts?$': 'ts-jest',
   },
   maxWorkers: process.env.CI === 'true' ? 1 : 4,
+  testSequencer: '@signed/jest-alphabetical-sequencer',
   globals: {
     'ts-jest': {
       isolatedModules: true, // disable type-checking and compile each file as an isolated module
