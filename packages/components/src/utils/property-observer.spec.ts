@@ -10,8 +10,8 @@ describe('observeProperties()', () => {
     const spyGet = jest.spyOn(node, 'checked', 'get').mockReturnValueOnce(false);
     const spySet = jest.spyOn(node, 'checked', 'set');
 
-    expect(spyGet).toHaveBeenCalledTimes(0);
-    expect(spySet).toHaveBeenCalledTimes(0);
+    expect(spyGet).not.toBeCalled();
+    expect(spySet).not.toBeCalled();
 
     expect(node.checked).toBe(false);
     expect(spyGet).toHaveBeenCalledTimes(1);
@@ -34,9 +34,9 @@ describe('observeProperties()', () => {
     const spyIndeterminateGet = jest.spyOn(node, 'indeterminate', 'get');
     const spyIndeterminateSet = jest.spyOn(node, 'indeterminate', 'set');
 
-    expect(spyCheckedGet).toHaveBeenCalledTimes(0);
-    expect(spyDisabledGet).toHaveBeenCalledTimes(0);
-    expect(spyIndeterminateGet).toHaveBeenCalledTimes(0);
+    expect(spyCheckedGet).not.toBeCalled();
+    expect(spyDisabledGet).not.toBeCalled();
+    expect(spyIndeterminateGet).not.toBeCalled();
 
     node.checked = true;
     node.disabled = true;
@@ -59,7 +59,7 @@ describe('observeProperties()', () => {
     const node = document.createElement('input');
     observeProperties(node, ['checked'], callback);
 
-    expect(callback).toHaveBeenCalledTimes(0);
+    expect(callback).not.toBeCalled();
     node.checked = true;
     expect(callback).toHaveBeenCalledTimes(1);
   });

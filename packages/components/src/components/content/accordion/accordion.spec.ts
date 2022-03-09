@@ -29,7 +29,7 @@ describe('accordion', () => {
       component.connectedCallback();
 
       expect(component['contentObserver']).toBeUndefined();
-      expect(utilsSpy).not.toHaveBeenCalled();
+      expect(utilsSpy).not.toBeCalled();
     });
 
     it('should add resize event listener to window if ResizeObserver is unavailable', () => {
