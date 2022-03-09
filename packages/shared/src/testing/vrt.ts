@@ -98,6 +98,7 @@ export const vrtTest = (vrt: VisualRegressionTester, snapshotId: string, url: st
 
       // componentsReady is undefined in utilities package
       await page.evaluate(() => (window as any).componentsReady?.());
+      await new Promise((resolve) => setTimeout(resolve, 50));
 
       if (scenario) {
         await scenario(page);
