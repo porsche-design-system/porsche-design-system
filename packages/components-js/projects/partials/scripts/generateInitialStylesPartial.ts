@@ -48,7 +48,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
   const skeletonKeyframes = '@keyframes opacity{0%{opacity:0.35}50%{opacity:0.15}100%{opacity:0.35}';
 
   const skeletonStyles = {
-    'p-button|p-link': getButtonLinkSocialSkeletonCss(),
+    'p-button|p-link|p-link-social': getButtonLinkSocialSkeletonCss(),
     'p-button-pure|p-link-pure': getButtonLinkPureSkeletonCss(),
     'p-checkbox-wrapper|p-radio-button-wrapper': getCheckboxRadioWrapperSkeletonCss(),
     'p-fieldset-wrapper': getFieldsetWrapperSkeletonCss(),
