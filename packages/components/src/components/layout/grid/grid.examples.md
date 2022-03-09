@@ -228,7 +228,7 @@ ${Array.from(Array(11)).map((x, i) => `<p-grid class="example-grid">
   
   ::v-deep .example-grid p-grid-item {
     @include p-text-small;
-    color: $p-color-theme-dark-default;
+    color: $p-color-theme-light-default;
     text-align: center;
     background: lightskyblue;
     background-clip: content-box;

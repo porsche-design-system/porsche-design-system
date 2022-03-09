@@ -20,8 +20,8 @@ Can be used along with [Grid](components/grid), [Flex](components/flex) or with 
 * **Fluid**: full width
 
 <Playground :markup="basic" :config="config">
-  <select v-model="width">
-    <option disabled>Select a width mode</option>
+  <select v-model="width" aria-label="Select width">
+    <option disabled>Select width</option>
     <option value="basic">Basic</option>
     <option value="extended">Extended</option>
     <option value="fluid">Fluid</option>
@@ -34,8 +34,8 @@ Can be used along with [Grid](components/grid), [Flex](components/flex) or with 
 * **default**: uses surface color depending on theming
 
 <Playground :markup="transparent" class="playground-content-wrapper-background-color" :config="config">
-  <select v-model="backgroundColor">
-    <option disabled>Select a background color</option>
+  <select v-model="backgroundColor" aria-label="Select background color">
+    <option disabled>Select background color</option>
     <option value="transparent">Transparent</option>
     <option value="default">Default</option>    
   </select>
@@ -74,7 +74,7 @@ export default class Code extends Vue {
   
   ::v-deep .example-content {
     @include p-text-small;
-    color: $p-color-theme-dark-default;
+    color: $p-color-theme-light-default;
     text-align: center;
     background: lightskyblue;
   }

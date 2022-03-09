@@ -32,7 +32,7 @@ For instance our example accordions use heading level 3 because they are contain
 ## Size
 
 <Playground :markup="sizeMarkup" :config="config">
-  <select v-model="size">
+  <select v-model="size" aria-label="Select size">
     <option disabled>Select size</option>
     <option value="small">Small</option>
     <option value="medium">Medium</option>

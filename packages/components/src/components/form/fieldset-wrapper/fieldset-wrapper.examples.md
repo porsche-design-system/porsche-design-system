@@ -21,8 +21,8 @@ You can see some usage examples on our [form patterns section](patterns/forms/re
 ## Size
 
 <Playground :markup="sizeMarkup" :config="config">
-  <select v-model="size">
-    <option disabled>Select a label-size</option>
+  <select v-model="size" aria-label="Select label size">
+    <option disabled>Select label size</option>
     <option value="small">small</option>
     <option value="medium">medium</option>
   </select>
@@ -43,8 +43,8 @@ You should still set required on the input of the wrapped form elements to ensur
 ## State
 
 <Playground :markup="stateMarkup" :config="config">
-  <select v-model="state">
-    <option disabled>Select a state</option>
+  <select v-model="state" aria-label="Select validation state">
+    <option disabled>Select validation state</option>
     <option value="error">error</option>
     <option value="success">success</option>
   </select>
@@ -55,8 +55,8 @@ You should still set required on the input of the wrapped form elements to ensur
 ## Slotted message
 
 <Playground :markup="slottedMessageMarkup" :config="config">
-  <select v-model="slottedMessage">
-    <option disabled>Select a state</option>
+  <select v-model="slottedMessage" aria-label="Select validation state">
+    <option disabled>Select validation state</option>
     <option value="error">error</option>
     <option value="success">success</option>
   </select>
