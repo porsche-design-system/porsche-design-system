@@ -59,7 +59,7 @@ describe('warnIfCompactAndSizeIsSet()', () => {
     warnIfCompactAndSizeIsSet(host, true, 'small');
     warnIfCompactAndSizeIsSet(host, false, 'medium');
 
-    expect(spy).toBeCalledTimes(0);
+    expect(spy).not.toBeCalled();
 
     warnIfCompactAndSizeIsSet(host, true, 'medium');
     warnIfCompactAndSizeIsSet(
@@ -146,7 +146,7 @@ describe('observeResize()', () => {
 
       await tick();
       expect(cb1).toBeCalledTimes(1);
-      expect(cb2).toBeCalledTimes(0);
+      expect(cb2).not.toBeCalled();
     });
 
     it('should pass ResizeObserverEntry to callback', async () => {
