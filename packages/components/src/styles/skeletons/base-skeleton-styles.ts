@@ -7,7 +7,7 @@ import { paramCase } from 'change-case';
 
 export type SkeletonPropertyNames = { [property: string]: string };
 
-export const PDS_SKELETON_CLASS_PREFIX = 'PDS-Skeleton--';
+export const PDS_SKELETON_CLASS_PREFIX = 'pds-skeleton--';
 
 // Firefox has the widest input field with 192px
 // to prevent layout shift when shadow dom is appended
