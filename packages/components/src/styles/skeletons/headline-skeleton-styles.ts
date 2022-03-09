@@ -1,5 +1,5 @@
 import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
-import { getTextHeadlineSkeletonBaseStyle, getTextHeadlineSkeletonSubStyle } from './text-skeleton-styles';
+import { getTextHeadlineSkeletonBaseStyle, getTextHeadlineSkeletonSubStyle, TextType } from './text-skeleton-styles';
 import {
   extendPseudoWithTheme,
   getElementBackgroundGradient,
@@ -10,18 +10,10 @@ import {
 } from './base-skeleton-styles';
 import { mediaQueryMin, mediaQueryMinMax } from '@porsche-design-system/utilities-v2/src/jss';
 import type { JssStyle } from 'jss';
-import {
-  headline1,
-  headline2,
-  headline3,
-  headline4,
-  headline5,
-  textSmall,
-  titleLarge,
-} from '@porsche-design-system/utilities-v2';
+import { headline1, headline2, headline3, headline4, headline5, titleLarge } from '@porsche-design-system/utilities-v2';
+import { VariantType } from '../../components/basic/typography/headline/headline-utils';
 
 type HeadlineType = typeof headline1;
-type TextType = typeof textSmall;
 
 export const getTypographyElementHeight = (typography: HeadlineType | TextType): number => {
   const fontSizeInPx = getFontSizeInPx(typography.fontSize);
@@ -31,6 +23,23 @@ export const getTypographyElementHeight = (typography: HeadlineType | TextType):
 export const getHeadlineSkeletonCss = (): string => {
   const skeletonPropertyNames = getSkeletonPropertyNames('p-headline');
 
+  const variantToTypographyMap: { [key in Exclude<VariantType, 'headline-5'>]: HeadlineType } = {
+    'large-title': titleLarge,
+    'headline-1': headline1,
+    'headline-2': headline2,
+    'headline-3': headline3,
+    'headline-4': headline4,
+  };
+
+  const getHeadlineVariantStyle = (): JssStyle =>
+    Object.entries(variantToTypographyMap).map(([key, value]) => ({
+      [`&[${skeletonPropertyNames.variant}=${key}, &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.variant}-${key}`]:
+        {
+          ...getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(value)),
+          ...getHeadlineSkeletonStyle(value),
+        },
+    }));
+
   return getMinifiedCss({
     '@global': {
       'p-headline': {
@@ -39,26 +48,7 @@ export const getHeadlineSkeletonCss = (): string => {
             styleFunction: () => getTextHeadlineSkeletonBaseStyle(getTypographyElementHeight(headline1)),
           }),
           ...getHeadlineSkeletonStyle(headline1),
-          [`&[${skeletonPropertyNames.variant}=large-title], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.variant}-large-title`]:
-            {
-              ...getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(titleLarge)),
-              ...getHeadlineSkeletonStyle(titleLarge),
-            },
-          [`&[${skeletonPropertyNames.variant}=headline-2], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.variant}-headline-2`]:
-            {
-              ...getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(headline2)),
-              ...getHeadlineSkeletonStyle(headline2),
-            },
-          [`&[${skeletonPropertyNames.variant}=headline-3], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.variant}-headline-3`]:
-            {
-              ...getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(headline3)),
-              ...getHeadlineSkeletonStyle(headline3),
-            },
-          [`&[${skeletonPropertyNames.variant}=headline-4], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.variant}-headline-4`]:
-            {
-              ...getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(headline4)),
-              ...getHeadlineSkeletonStyle(headline4),
-            },
+          ...getHeadlineVariantStyle(),
           [`&[${skeletonPropertyNames.variant}=headline-5], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.variant}-headline-5`]:
             getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(headline5)),
           ...getThemedPseudoStyle(),
