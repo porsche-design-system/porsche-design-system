@@ -1,4 +1,5 @@
 import typescript from '@rollup/plugin-typescript';
+import generatePackageJson from 'rollup-plugin-generate-package-json';
 
 const BASE_DIR = 'projects/components-wrapper';
 const DIST_DIR = 'dist/components-wrapper';
@@ -44,11 +45,25 @@ export default [
   {
     input: `${BASE_DIR}/src/partials.ts`,
     external,
-    // Partials provide esm build which is treeshakable. By bundling it as esm, the correct build is used.
-    output: {
-      dir: DIST_DIR,
-      format: 'esm',
-    },
+    output: [
+      {
+        file: `${DIST_DIR}/partials/index.js`,
+        format: 'cjs',
+        plugins: [
+          generatePackageJson({
+            baseContents: {
+              main: 'index.js',
+              module: 'esm/index.js',
+              sideEffects: false,
+            },
+          }),
+        ],
+      },
+      {
+        file: `${DIST_DIR}/partials/esm/index.js`,
+        format: 'esm',
+      },
+    ],
     plugins: [typescript(typescriptOpts)],
   },
   {

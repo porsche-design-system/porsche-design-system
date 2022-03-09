@@ -7,7 +7,7 @@
 | components-js               | ✓   |     |     |
 | components-js/partials      |     | ✓   | ✓   |
 | components-react            |     | ✓   | ✓   |
-| components-react/partials   |     |     | ✓   |
+| components-react/partials   |     | ✓   | ✓   |
 | components-react/testing    |     | ✓   |     |
 | components-angular          |     |     | ✓   |
 | components-angular/partials |     | ✓   |     |
