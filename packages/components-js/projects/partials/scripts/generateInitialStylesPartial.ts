@@ -21,6 +21,7 @@ const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG
 
 const tagNamesWithSkeleton = joinArrayElementsToString(TAG_NAMES_WITH_SKELETON);
 
+// includes skeleton styles
 export const generateInitialStylesPartial = (): string => {
   // 'any' is fallback when TAG_NAMES_WITH_SKELETON is an empty array because shared wasn't built, yet
   const types = `export type SkeletonTagName = ${skeletonTagNamesTypeLiteral || 'any'};
@@ -47,6 +48,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
 
   const skeletonKeyframes = '@keyframes opacity{0%{opacity:0.35}50%{opacity:0.15}100%{opacity:0.35}';
 
+  // combining tagNames avoids redundant CSS
   const skeletonStyles = {
     'p-button|p-link|p-link-social': getButtonLinkSocialSkeletonCss(),
     'p-button-pure|p-link-pure': getButtonLinkPureSkeletonCss(),
@@ -114,12 +116,15 @@ Please use only valid component tag names:
   let skeletonStyles = prefixedTagNamesWithSkeleton.map((prefixedTagName)=>{
     let tagNameToFind = prefixedTagName;
 
+    // if prefix is used it has to be removed and the tagName has to be reassigned
+    // in order to find tagName in keys of skeletonStyles
     if(prefix){
       const prefixRegExp = new RegExp(\`\${prefix}-\`, 'g');
       tagNameToFind = prefixedTagName.replace(prefixRegExp, '');
     }
     const tagNameToFindRegExp = new RegExp(\`(\${tagNameToFind}(?!-))\`, 'g');
 
+    // returns tagName in combined keys of skeletonStyles
     const skeletonStyleKey = Object.keys(skeletonStylesWithKey)[
         Object.keys(skeletonStylesWithKey).findIndex(
           (skeletonStyleKey) => skeletonStyleKey.split('|').some((x) => x.match(tagNameToFindRegExp))
@@ -128,11 +133,14 @@ Please use only valid component tag names:
     let skeletonStyle = skeletonStylesWithKey[skeletonStyleKey];
     if (skeletonStyle) {
       if (prefix) {
+        // add prefix to style
         skeletonStyleKey.split('|').forEach(key => {
           skeletonStyle = skeletonStyle.replace(new RegExp(\`(\${key}(?!-))\`, 'g'), prefix + '-' + key);
         });
       };
 
+      // if tagName is found, the key-value-pair can be removed since the style is already applied
+      // e.g. 'p-button' is found => check for 'p-link' or 'p-link-social' is redundant
       delete skeletonStylesWithKey[skeletonStyleKey];
 
       return skeletonStyle;
