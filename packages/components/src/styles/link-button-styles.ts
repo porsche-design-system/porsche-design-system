@@ -1,13 +1,13 @@
 import type { Styles, JssStyle } from 'jss';
 import type { BreakpointCustomizable } from '../utils';
-import type { GetStyleFunction } from '../utils';
+import type { GetJssStyleFunction } from '../utils';
 import type { LinkButtonVariant, ThemeExtendedElectric } from '../types';
 import { buildResponsiveStyles, isThemeDark } from '../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  getFocusStyle,
-  getInsetStyle,
+  getFocusJssStyle,
+  getInsetJssStyle,
   getTransition,
   pxToRemWithUnit,
   getThemedColors,
@@ -86,13 +86,13 @@ const getVariantColors = (
 
 const linkButtonPadding = `${pxToRemWithUnit(11)} ${pxToRemWithUnit(15)} ${pxToRemWithUnit(11)} ${pxToRemWithUnit(39)}`;
 
-export const getRootStyle: GetStyleFunction = (hideLabel: boolean): JssStyle => {
+export const getRootJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
   return {
     padding: hideLabel ? 0 : linkButtonPadding,
   };
 };
 
-export const getIconStyle: GetStyleFunction = (hideLabel: boolean): JssStyle => {
+export const getIconJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel
     ? {
         left: '50%',
@@ -106,7 +106,7 @@ export const getIconStyle: GetStyleFunction = (hideLabel: boolean): JssStyle => 
       };
 };
 
-export const getLabelStyle: GetStyleFunction = (hideLabel: boolean): JssStyle => {
+export const getLabelJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel
     ? {
         width: '1px',
@@ -124,11 +124,11 @@ export const getLabelStyle: GetStyleFunction = (hideLabel: boolean): JssStyle =>
       };
 };
 
-export const getSlottedLinkStyle: GetStyleFunction = (hideLabel: boolean): JssStyle => {
+export const getSlottedLinkJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel
     ? {
         position: 'absolute',
-        ...getInsetStyle(),
+        ...getInsetJssStyle(),
         padding: 0,
         overflow: 'hidden',
         whiteSpace: 'nowrap',
@@ -136,7 +136,7 @@ export const getSlottedLinkStyle: GetStyleFunction = (hideLabel: boolean): JssSt
       }
     : {
         position: 'static',
-        ...getInsetStyle('auto'),
+        ...getInsetJssStyle('auto'),
         padding: linkButtonPadding,
         overflow: 'visible',
         whiteSpace: 'normal',
@@ -173,7 +173,7 @@ export const getLinkButtonStyles = (
             lineHeight: 'inherit',
             outline: 'transparent solid 1px',
             outlineOffset: '3px',
-            ...buildResponsiveStyles(hideLabel, getSlottedLinkStyle),
+            ...buildResponsiveStyles(hideLabel, getSlottedLinkJssStyle),
           },
           '&(a::-moz-focus-inner)': {
             border: 0,
@@ -212,8 +212,8 @@ export const getLinkButtonStyles = (
       color: isDisabledOrLoading ? disabledColor : primaryColor,
       transition: ['background-color', 'border-color', 'color'].map(getTransition).join(','),
       ...(!hasSlottedAnchor && {
-        ...buildResponsiveStyles(hideLabel, getRootStyle),
-        ...getFocusStyle(),
+        ...buildResponsiveStyles(hideLabel, getRootJssStyle),
+        ...getFocusJssStyle(),
       }),
       ...(!isDisabledOrLoading && {
         '&:hover, &:active': {
@@ -233,13 +233,13 @@ export const getLinkButtonStyles = (
       height: pxToRemWithUnit(24),
       color: iconLabelColor,
       pointerEvents: 'none',
-      ...buildResponsiveStyles(hideLabel, getIconStyle),
+      ...buildResponsiveStyles(hideLabel, getIconJssStyle),
     },
     label: {
       display: 'block',
       boxSizing: 'border-box',
       color: iconLabelColor,
-      ...buildResponsiveStyles(hideLabel, getLabelStyle),
+      ...buildResponsiveStyles(hideLabel, getLabelJssStyle),
     },
   };
 };

@@ -2,7 +2,7 @@ import { buildSlottedStyles, getCss } from '../../../../utils';
 import {
   addImportantToRule,
   getBaseSlottedStyles,
-  getFocusStyle,
+  getFocusJssStyle,
   mediaQuery,
   pxToRemWithUnit,
   getThemedColors,
@@ -29,7 +29,7 @@ export const getComponentCss = (): string => {
     },
     'scroll-area': {
       overflow: 'auto visible',
-      ...getFocusStyle({ offset: -1 }),
+      ...getFocusJssStyle({ offset: -1 }),
     },
     table: {
       position: 'relative',

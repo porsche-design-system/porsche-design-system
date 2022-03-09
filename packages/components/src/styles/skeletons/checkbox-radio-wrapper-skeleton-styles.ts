@@ -3,10 +3,10 @@ import { pxToRemWithUnit } from '../common-styles';
 import {
   BUTTON_LINK_SKELETON_WIDTH,
   ELEMENT_SKELETON_DIMENSION,
-  extendPseudoWithTheme,
-  getBaseSkeletonStyle,
+  extendPseudoWithThemeJssStyle,
+  getBaseSkeletonJssStyle,
   getSkeletonPropertyNames,
-  getThemedPseudoStyle,
+  getThemedPseudoJssStyle,
   PDS_SKELETON_CLASS_PREFIX,
 } from './base-skeleton-styles';
 
@@ -18,8 +18,8 @@ export const getCheckboxRadioWrapperSkeletonCss = (): string => {
     '@global': {
       'p-checkbox-wrapper, p-radio-button-wrapper': {
         '&:not(.hydrated)': {
-          ...extendPseudoWithTheme({
-            styleFunction: () => getBaseSkeletonStyle(false, checkboxRadioElementHeight),
+          ...extendPseudoWithThemeJssStyle({
+            styleFunction: () => getBaseSkeletonJssStyle(false, checkboxRadioElementHeight),
           }),
           display: 'block',
           minWidth: pxToRemWithUnit(BUTTON_LINK_SKELETON_WIDTH),
@@ -27,7 +27,7 @@ export const getCheckboxRadioWrapperSkeletonCss = (): string => {
             {
               minWidth: pxToRemWithUnit(checkboxRadioElementHeight),
             },
-          ...getThemedPseudoStyle(),
+          ...getThemedPseudoJssStyle(),
         },
       },
     },
