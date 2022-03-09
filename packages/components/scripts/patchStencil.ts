@@ -8,8 +8,7 @@ const patchStencil = (): void => {
   }, []);
   const tagNamesToAddSlotToAsString = `[${tagNamesToAddSlotTo.map((x) => `'${x}'`).join(', ')}]`;
 
-  const rootDirectory = path.resolve(__dirname, '../../../');
-  const stencilIndexFilePath = path.resolve(rootDirectory, 'node_modules/@stencil/core/internal/client', 'index.js');
+  const stencilIndexFilePath = path.resolve(require.resolve('@stencil/core'), '../../client', 'index.js');
   const stencilIndexFile = fs.readFileSync(stencilIndexFilePath, 'utf-8');
 
   const removeSkeletonFirstChild = 'elm.shadowRoot.removeChild(elm.shadowRoot.firstChild);';
