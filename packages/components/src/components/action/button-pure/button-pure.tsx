@@ -9,6 +9,7 @@ import {
   transitionListener,
   attachComponentCss,
   parseAndGetAriaAttributes,
+  warnIfParentIsPTextAndIconIsNone,
 } from '../../../utils';
 import type {
   SelectedAriaAttributes,
@@ -94,6 +95,7 @@ export class ButtonPure {
 
   public componentWillRender(): void {
     warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon);
+    warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
     attachComponentCss(
       this.host,
       getComponentCss,

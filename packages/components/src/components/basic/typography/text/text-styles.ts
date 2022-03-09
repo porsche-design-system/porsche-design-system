@@ -54,5 +54,23 @@ export const getComponentCss = (
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
+  return getCss(
+    buildSlottedStyles(host, {
+      '& button': {
+        margin: 0,
+        padding: 0,
+        background: 0,
+        border: 0,
+        cursor: 'pointer',
+        font: 'inherit',
+      },
+      // adjust keys of baseSlottedStyles to be applied on both, `a` and `button` tag
+      ...Object.fromEntries(
+        Object.entries(getBaseSlottedStyles()).map(([key, value]) => [
+          key.includes(' a') ? `${key},${key.replace(' a', ' button')}` : key,
+          value,
+        ])
+      ),
+    })
+  );
 };
