@@ -12,7 +12,7 @@ describe('text', () => {
       const component = new Text();
       component.componentDidLoad();
 
-      expect(spy).toBeCalledTimes(0);
+      expect(spy).not.toBeCalled();
     });
 
     it('should call transitionListener when size="inherit"', () => {
