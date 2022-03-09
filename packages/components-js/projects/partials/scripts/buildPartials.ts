@@ -1,7 +1,4 @@
-import { MutationObserverMock } from '@porsche-design-system/components/src/utils/mutation-observer-mock';
-
-// @ts-ignore
-global.MutationObserver = MutationObserverMock;
+import '../../../../components/scripts/mockMutationObserver';
 
 import * as fs from 'fs';
 import * as path from 'path';

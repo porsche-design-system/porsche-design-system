@@ -48,7 +48,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
   const skeletonKeyframes = '@keyframes opacity{0%{opacity:0.35}50%{opacity:0.15}100%{opacity:0.35}';
 
   const skeletonStyles = {
-    'p-button|p-link': getButtonLinkSocialSkeletonCss(),
+    'p-button|p-link|p-link-social': getButtonLinkSocialSkeletonCss(),
     'p-button-pure|p-link-pure': getButtonLinkPureSkeletonCss(),
     'p-checkbox-wrapper|p-radio-button-wrapper': getCheckboxRadioWrapperSkeletonCss(),
     'p-fieldset-wrapper': getFieldsetWrapperSkeletonCss(),
@@ -77,11 +77,11 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
 
   const tagNamesWithSkeleton: SkeletonTagName[] = [${tagNamesWithSkeleton}];
 
-  const invalidComponentTagNames = skeletonTagNames.filter((x) => !tagNamesWithSkeleton.includes(x));
+  const invalidSkeletonComponentTagNames = skeletonTagNames.filter((x) => !tagNamesWithSkeleton.includes(x));
 
-  if (invalidComponentTagNames.length) {
+  if (invalidSkeletonComponentTagNames.length) {
     throw new Error(\`The following supplied skeleton tag names are invalid:
-  \${invalidComponentTagNames.join(', ')}
+  \${invalidSkeletonComponentTagNames.join(', ')}
 
 Please use only valid component tag names:
   \${tagNamesWithSkeleton.join(', ')}\`);
