@@ -5,6 +5,12 @@ The `p-content-wrapper` defines the outer spacings between the content area and 
 
 Can be used along with [Grid](components/grid), [Flex](components/flex) or with any custom content.
 
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  The Content Wrapper component is deprecated and might be removed in a future major release, extracted into a separate package or being provided as proprietary implementation for Angular and React.
+  The component is categorized as "Layout Component" which has high impact on Cumulative Layout Shift (CLS).
+  Therefore we recommend to use our new utilities package (coming soon!) instead which provides SCSS, JSS and Styled Components syntax to boost performance.
+</p-inline-notification>
+
 <TableOfContents></TableOfContents>
 
 ## Width

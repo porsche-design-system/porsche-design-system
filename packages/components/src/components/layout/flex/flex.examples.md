@@ -4,6 +4,12 @@ The Porsche Design System flex layout system is based on standard CSS Flexbox br
 It can be used to quickly layout standard content blocks or components. 
 It does not replace the [Grid](components/grid) component which should be used to define basic page structures.
 
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  The Flex component is deprecated and might be removed in a future major release, extracted into a separate package or being provided as proprietary implementation for Angular and React.
+  The component is categorized as "Layout Component" which has high impact on Cumulative Layout Shift (CLS).
+  Therefore we recommend to use native CSS Flex implementation instead to boost performance, <a target="_blank" href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Complete Guide to Flexbox</a>.
+</p-inline-notification>
+
 <TableOfContents></TableOfContents>
 
 ## Flex

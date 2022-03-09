@@ -8,6 +8,12 @@ For this, the [Flex](components/flex) component is the right choice.
 
 In order to prevent horizontal scrolling and correct alignment it's recommended to use the **Grid** wrapped within [**Content Wrapper**](components/content-wrapper).
 
+<p-inline-notification heading="Important note" state="error" persistent="true">
+  The Grid component is deprecated and might be removed in a future major release, extracted into a separate package or being provided as proprietary implementation for Angular and React.
+  The component is categorized as "Layout Component" which has high impact on Cumulative Layout Shift (CLS).
+  Therefore we recommend to use native CSS Grid implementation instead to boost performance, <a target="_blank" href="https://css-tricks.com/snippets/css/complete-guide-grid/">A Complete Guide to Grid</a>.
+</p-inline-notification>
+
 <TableOfContents></TableOfContents>
 
 ## Grid size
