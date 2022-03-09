@@ -77,11 +77,11 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
 
   const tagNamesWithSkeleton: SkeletonTagName[] = [${tagNamesWithSkeleton}];
 
-  const invalidComponentTagNames = skeletonTagNames.filter((x) => !tagNamesWithSkeleton.includes(x));
+  const invalidSkeletonComponentTagNames = skeletonTagNames.filter((x) => !tagNamesWithSkeleton.includes(x));
 
-  if (invalidComponentTagNames.length) {
+  if (invalidSkeletonComponentTagNames.length) {
     throw new Error(\`The following supplied skeleton tag names are invalid:
-  \${invalidComponentTagNames.join(', ')}
+  \${invalidSkeletonComponentTagNames.join(', ')}
 
 Please use only valid component tag names:
   \${tagNamesWithSkeleton.join(', ')}\`);
