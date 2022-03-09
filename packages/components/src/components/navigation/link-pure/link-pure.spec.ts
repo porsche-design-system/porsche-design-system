@@ -1,9 +1,10 @@
 import { LinkPure } from './link-pure';
+import * as buttonLinkPureUtils from '../../../utils/button-link-pure-utils';
 import * as transitionListenerUtils from '../../../utils/transition-listener';
 import * as linkValidationUtils from '../link-validation';
 
 describe('componentWillLoad', () => {
-  it('should call throwIfInvalidLinkUsage() ', () => {
+  it('should call throwIfInvalidLinkUsage()', () => {
     const spy = jest.spyOn(linkValidationUtils, 'throwIfInvalidLinkUsage');
 
     const component = new LinkPure();
@@ -12,6 +13,20 @@ describe('componentWillLoad', () => {
     component.componentWillLoad();
 
     expect(spy).toBeCalledWith(component.host, component.href);
+  });
+});
+
+describe('componentWillRender', () => {
+  it('should call warnIfParentIsPTextAndIconIsNone()', () => {
+    const spy = jest.spyOn(buttonLinkPureUtils, 'warnIfParentIsPTextAndIconIsNone');
+
+    const component = new LinkPure();
+    component.host = document.createElement('p-link-pure');
+    component.host.attachShadow({ mode: 'open' });
+    component.href = '#';
+    component.componentWillRender();
+
+    expect(spy).toBeCalledWith(component.host, component.icon);
   });
 });
 
@@ -25,7 +40,7 @@ describe('componentDidLoad', () => {
     const component = new LinkPure();
     component.componentDidLoad();
 
-    expect(spy).toBeCalledTimes(0);
+    expect(spy).not.toBeCalled();
   });
 
   it('should call transitionListener when size="inherit"', () => {
