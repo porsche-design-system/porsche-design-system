@@ -15,12 +15,6 @@ export const LinkPureSkeletonPage = (): JSX.Element => {
     h4 {
       color: deeppink;
     }
-    p-link-pure:not(:last-child) {
-      margin-right: 0.5rem;
-    }
-    .stretched-links p-link-pure {
-      margin-right: 0;
-    }
   `;
 
   return (

@@ -11,16 +11,8 @@ export const ButtonPureSkeletonPage = (): JSX.Element => {
     });
   }, []);
 
-  const style = `
-    p-button:not(:last-child) {
-      margin-right: 0.5rem;
-    }
-  `;
-
   return (
     <>
-      <style children={style} />
-
       <div className="playground light" title="should render button skeleton">
         <PButtonPure>Some label</PButtonPure>
       </div>

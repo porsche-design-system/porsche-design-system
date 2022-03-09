@@ -4,13 +4,6 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-link-social-skeleton',
-  styles: [
-    `
-      p-link-social:not(:last-child) {
-        margin-right: 0.5rem;
-      }
-    `,
-  ],
   template: `
     <div class="playground light" title="should render link social skeleton with label">
       <p-link-social [href]="'https://www.facebook.com'" [icon]="'logo-facebook'">Some label</p-link-social>
