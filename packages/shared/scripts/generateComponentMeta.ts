@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
 import { paramCase } from 'change-case';
-import { TAG_NAMES, TAG_NAMES_WITH_SKELETON, TagName, TagNameCamelCase } from '../src/lib/tagNames';
+import { TAG_NAMES, TAG_NAMES_WITH_SKELETON, TagName } from '../src/lib/tagNames';
 
 const glue = '\n\n';
 // TODO: typing as component property string
@@ -22,6 +22,8 @@ const SKELETON_RELEVANT_PROPS: SkeletonRelevantProps = [
   { propName: 'variant', shouldStringifyValue: true },
 ];
 
+const tagNamesToAddSlotTo: TagName[] = ['p-fieldset-wrapper', 'p-text-list', 'p-text-list-item'];
+
 const generateComponentMeta = (): void => {
   // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
   const sourceDirectory = path.resolve('../components/src/components');
@@ -40,6 +42,7 @@ const generateComponentMeta = (): void => {
   }[];
   hasSlottedCss: boolean;
   hasSkeleton: boolean;
+  shouldPatchSlot: boolean;
   skeletonProps: { propName: string; shouldStringifyValue: boolean }[];
   styling: 'jss' | 'scss' | 'hybrid';
 };`,
@@ -56,6 +59,7 @@ const generateComponentMeta = (): void => {
     }[];
     hasSlottedCss: boolean;
     hasSkeleton: boolean;
+    shouldPatchSlot: boolean;
     skeletonProps: { propName: string; shouldStringifyValue: boolean }[];
     styling: 'jss' | 'scss' | 'hybrid';
   };
@@ -81,6 +85,7 @@ const generateComponentMeta = (): void => {
     const isThemeable = source.includes('public theme?: Theme');
     const hasSlottedCss = source.includes('attachSlottedCss');
     const hasSkeleton = TAG_NAMES_WITH_SKELETON.includes(tagName);
+    const shouldPatchSlot = tagNamesToAddSlotTo.includes(tagName);
     const usesScss = source.includes('styleUrl:');
     const usesJss = source.includes('attachComponentCss');
     const styling = usesScss && usesJss ? 'hybrid' : usesJss ? 'jss' : 'scss';
@@ -118,6 +123,7 @@ const generateComponentMeta = (): void => {
 
     const skeletonProps: ComponentMeta['skeletonProps'] = [];
     if (hasSkeleton) {
+      // extract all matching skeleton relevant props into an array
       SKELETON_RELEVANT_PROPS.forEach(({ propName, shouldStringifyValue }) => {
         const [match] = new RegExp(`@Prop\\(\\) public ${propName}\\?: .+;`).exec(source) ?? [];
         if (match) {
@@ -134,6 +140,7 @@ const generateComponentMeta = (): void => {
       requiredProps,
       hasSlottedCss,
       hasSkeleton,
+      shouldPatchSlot,
       skeletonProps,
       styling,
     };

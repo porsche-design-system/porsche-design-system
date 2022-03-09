@@ -1,10 +1,13 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { componentMeta } from '@porsche-design-system/shared';
 
 const patchStencil = (): void => {
-  const tagNamesToAddSlotTo = ['p-fieldset-wrapper', 'p-text-list', 'p-text-list-item'];
+  const tagNamesToAddSlotTo = Object.entries(componentMeta).reduce((prev, [tagName, value]) => {
+    return value.shouldPatchSlot ? [...prev, tagName] : prev;
+  }, []);
   const tagNamesToAddSlotToAsString = `[${tagNamesToAddSlotTo.map((x) => `'${x}'`).join(', ')}]`;
-
+  move;
   const rootDirectory = path.resolve(__dirname, '../../../');
   const stencilIndexFilePath = path.resolve(rootDirectory, 'node_modules/@stencil/core/internal/client', 'index.js');
   const stencilIndexFile = fs.readFileSync(stencilIndexFilePath, 'utf-8');
