@@ -11,25 +11,17 @@ export const RadioButtonWrapperSkeletonPage = (): JSX.Element => {
     });
   }, []);
 
-  const style = `
-    .playground > * {
-      margin-bottom: 2px;
-    }
-  `;
-
   return (
     <>
-      <style children={style} />
-
       <div className="playground light" title="should render radio button skeleton with label">
         <PRadioButtonWrapper label="Some label">
-          <input type="radio" name="some-name-1" />
+          <input type="radio" />
         </PRadioButtonWrapper>
       </div>
 
       <div className="playground light" title="should render radio button skeleton without label">
         <PRadioButtonWrapper label="Some label" hideLabel={true}>
-          <input type="radio" name="some-name-2" />
+          <input type="radio" />
         </PRadioButtonWrapper>
       </div>
 
@@ -40,7 +32,7 @@ export const RadioButtonWrapperSkeletonPage = (): JSX.Element => {
           message="At vero eos et accusam et justo duo dolores et ea rebum."
           style={{ width: '240px' }}
         >
-          <input type="radio" name="some-name-11" />
+          <input type="radio" />
         </PRadioButtonWrapper>
       </div>
     </>

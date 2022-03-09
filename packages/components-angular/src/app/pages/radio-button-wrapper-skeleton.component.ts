@@ -4,23 +4,16 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-radio-button-wrapper-skeleton',
-  styles: [
-    `
-      .playground > * {
-        margin-bottom: 2px;
-      }
-    `,
-  ],
   template: `
     <div class="playground light" title="should render radio button skeleton with label">
       <p-radio-button-wrapper [label]="'Some label'">
-        <input [type]="'radio'" [name]="'some-name-1'" />
+        <input [type]="'radio'" />
       </p-radio-button-wrapper>
     </div>
 
     <div class="playground light" title="should render radio button skeleton without label">
       <p-radio-button-wrapper [label]="'Some label'" [hideLabel]="true">
-        <input [type]="'radio'" [name]="'some-name-2'" />
+        <input [type]="'radio'" />
       </p-radio-button-wrapper>
     </div>
 
@@ -31,7 +24,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         [message]="'At vero eos et accusam et justo duo dolores et ea rebum.'"
         style="width: 240px"
       >
-        <input [type]="'radio'" [name]="'some-name-11'" />
+        <input [type]="'radio'" />
       </p-radio-button-wrapper>
     </div>
   `,

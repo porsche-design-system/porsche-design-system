@@ -38,6 +38,14 @@ export const getVisualRegressionTester = (viewport: Viewport): VisualRegressionT
   });
 };
 
+export const getVisualRegressionSkeletonTester = (): VisualRegressionTester => {
+  return new VisualRegressionTester(browser, {
+    ...defaultOptions,
+    ...customOptions,
+    viewports: [1000],
+  });
+};
+
 export const getVisualRegressionStatesTester = (): VisualRegressionTester => {
   return new VisualRegressionTester(browser, {
     ...defaultOptions,
