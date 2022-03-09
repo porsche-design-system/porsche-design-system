@@ -11,9 +11,25 @@ import {
 import { JssStyle } from 'jss';
 import { getTypographyElementHeight } from './headline-skeleton-styles';
 import { textLarge, textSmall, textMedium, textXLarge, textXSmall } from '@porsche-design-system/utilities-v2';
+import { TextSize } from '../../components/basic/typography/text/text-utils';
+
+export type TextType = typeof textSmall;
 
 export const getTextSkeletonCss = (): string => {
   const skeletonPropertyNames = getSkeletonPropertyNames('p-text');
+
+  const textSizeToTypographyMap: { [key in Exclude<TextSize, 'inherit' | 'small'>]: TextType } = {
+    'x-small': textXSmall,
+    medium: textMedium,
+    large: textLarge,
+    'x-large': textXLarge,
+  };
+
+  const getTextSizeStyle = (): JssStyle =>
+    Object.entries(textSizeToTypographyMap).map(([key, value]) => ({
+      [`&[${skeletonPropertyNames.size}=${key}], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.size}-${key}`]:
+        getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(value)),
+    }));
 
   return getMinifiedCss({
     '@global': {
@@ -22,14 +38,7 @@ export const getTextSkeletonCss = (): string => {
           ...extendPseudoWithTheme({
             styleFunction: () => getTextHeadlineSkeletonBaseStyle(),
           }),
-          [`&[${skeletonPropertyNames.size}=x-small], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.size}-x-small`]:
-            getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(textXSmall)),
-          [`&[${skeletonPropertyNames.size}=medium], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.size}-medium`]:
-            getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(textMedium)),
-          [`&[${skeletonPropertyNames.size}=large], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.size}-large`]:
-            getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(textLarge)),
-          [`&[${skeletonPropertyNames.size}=x-large], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.size}-x-large`]:
-            getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(textXLarge)),
+          ...getTextSizeStyle(),
           ...getThemedPseudoStyle(),
         },
       },
