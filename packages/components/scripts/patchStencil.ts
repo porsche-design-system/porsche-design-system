@@ -7,7 +7,7 @@ const patchStencil = (): void => {
     return value.shouldPatchSlot ? [...prev, tagName] : prev;
   }, []);
   const tagNamesToAddSlotToAsString = `[${tagNamesToAddSlotTo.map((x) => `'${x}'`).join(', ')}]`;
-  move;
+
   const rootDirectory = path.resolve(__dirname, '../../../');
   const stencilIndexFilePath = path.resolve(rootDirectory, 'node_modules/@stencil/core/internal/client', 'index.js');
   const stencilIndexFile = fs.readFileSync(stencilIndexFilePath, 'utf-8');
