@@ -190,6 +190,9 @@ export const getLinkButtonStyles = (
         }),
       }),
     },
+    // TODO: reduce to only necessary styles (e.g. why boxSizing?)
+    // TODO: overhead in link styles when slotted anchor is used
+    // TODO: overhead due that link does not need same "reset" styles as button
     root: {
       display: 'flex',
       width: '100%',

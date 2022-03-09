@@ -481,7 +481,7 @@ describe('onDocumentMousedown()', () => {
     const clickEvent = new MouseEvent('mousedown');
     const spy1 = jest.spyOn(clickEvent, 'composedPath');
     onDocumentMousedown(clickEvent);
-    expect(spy1).toBeCalledTimes(0);
+    expect(spy1).not.toBeCalled();
 
     popover.open = true;
     onDocumentMousedown(clickEvent);
@@ -545,7 +545,7 @@ describe('onDocumentKeydown()', () => {
       const keyboardEvent = new KeyboardEvent('keydown', { key });
       const spy1 = jest.spyOn(keyboardEvent, 'composedPath');
       onDocumentKeydown(keyboardEvent);
-      expect(spy1).toBeCalledTimes(0);
+      expect(spy1).not.toBeCalled();
 
       popover.open = true;
       onDocumentKeydown(keyboardEvent);
@@ -566,7 +566,7 @@ describe('onDocumentKeydown()', () => {
     const spy = jest.spyOn(keyboardEvent, 'composedPath');
     onDocumentKeydown(keyboardEvent);
 
-    expect(spy).toBeCalledTimes(0);
+    expect(spy).not.toBeCalled();
   });
 
   it('should close correct popover', () => {
