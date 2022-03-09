@@ -70,17 +70,17 @@ describe('libraryHandler', function () {
     loadComponentLibrary({ ...defaultOptions, version: '1.0.0' });
     expect(registerComponentsSpy1).toHaveBeenCalledTimes(1);
     expect(registerComponentsSpy1).toHaveBeenCalledWith('');
-    expect(registerComponentsSpy2).not.toHaveBeenCalled();
+    expect(registerComponentsSpy2).not.toBeCalled();
 
     loadComponentLibrary({ ...defaultOptions, version: '1.0.0' });
     expect(registerComponentsSpy1).toHaveBeenCalledTimes(1);
     expect(registerComponentsSpy1).toHaveBeenCalledWith('');
-    expect(registerComponentsSpy2).not.toHaveBeenCalled();
+    expect(registerComponentsSpy2).not.toBeCalled();
 
     loadComponentLibrary({ ...defaultOptions, version: '1.0.0', prefix: 'some-prefix' });
     expect(registerComponentsSpy1).toHaveBeenCalledTimes(2);
     expect(registerComponentsSpy1).toHaveBeenCalledWith('some-prefix');
-    expect(registerComponentsSpy2).not.toHaveBeenCalled();
+    expect(registerComponentsSpy2).not.toBeCalled();
 
     loadComponentLibrary({ ...defaultOptions, version: '2.0.0' });
     expect(registerComponentsSpy1).toHaveBeenCalledTimes(2);
@@ -92,10 +92,10 @@ describe('libraryHandler', function () {
   it('should call the "RegisterCustomElementsCallback" also if it was not yet registered as soon as it\'s registered for library prefixes that have been loaded before', async () => {
     const registerComponentsSpy1 = jest.fn();
     loadComponentLibrary({ ...defaultOptions, version: '1.0.0' });
-    expect(registerComponentsSpy1).not.toHaveBeenCalled();
+    expect(registerComponentsSpy1).not.toBeCalled();
 
     loadComponentLibrary({ ...defaultOptions, version: '1.0.0', prefix: 'some-prefix' });
-    expect(registerComponentsSpy1).not.toHaveBeenCalled();
+    expect(registerComponentsSpy1).not.toBeCalled();
 
     setRegisterComponentsCallback(registerComponentsSpy1, '1.0.0');
     expect(registerComponentsSpy1).toHaveBeenCalledTimes(2);
