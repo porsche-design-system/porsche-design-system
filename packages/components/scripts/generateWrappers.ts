@@ -1,7 +1,4 @@
-import { MutationObserverMock } from '../src/utils/mutation-observer-mock';
-
-// @ts-ignore
-global.MutationObserver = MutationObserverMock;
+import './mockMutationObserver';
 
 import { WrapperGenerator } from './wrapper-generator';
 
