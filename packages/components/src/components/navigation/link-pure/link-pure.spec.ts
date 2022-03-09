@@ -17,7 +17,7 @@ describe('componentWillLoad', () => {
 });
 
 describe('componentWillRender', () => {
-  it('should call throwIfParentIsPTextAndIconIsNone()', () => {
+  it('should call warnIfParentIsPTextAndIconIsNone()', () => {
     const spy = jest.spyOn(buttonLinkPureUtils, 'warnIfParentIsPTextAndIconIsNone');
 
     const component = new LinkPure();
