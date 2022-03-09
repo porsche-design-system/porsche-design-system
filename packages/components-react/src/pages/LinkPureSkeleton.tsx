@@ -12,6 +12,9 @@ export const LinkPureSkeletonPage = (): JSX.Element => {
   }, []);
 
   const style = `
+    h4 {
+      color: deeppink;
+    }
     p-link-pure:not(:last-child) {
       margin-right: 0.5rem;
     }
@@ -25,52 +28,51 @@ export const LinkPureSkeletonPage = (): JSX.Element => {
       <style children={style} />
 
       <div className="playground light" title="should render link pure skeleton with label">
-        <PLinkPure href="https://www.porsche.com">Label default</PLinkPure>
+        <h4>With label</h4>
+        <PLinkPure href="https://www.porsche.com">Some Label</PLinkPure>
       </div>
+
       <div className="playground dark" title="should render link pure skeleton with label on dark background">
-        <PLinkPure href="https://www.porsche.com" theme="dark">Label default</PLinkPure>
+        <h4>With label dark</h4>
+        <PLinkPure href="https://www.porsche.com" theme="dark">Some Label</PLinkPure>
       </div>
 
       <div className="playground light" title="should render link pure skeleton without label">
+        <h4>Hidden label</h4>
         <PLinkPure href="https://www.porsche.com" hideLabel={true}>Some label</PLinkPure>
       </div>
       <div className="playground dark" title="should render link pure skeleton without label on dark background">
+        <h4>Hidden label dark</h4>
         <PLinkPure href="https://www.porsche.com" hideLabel={true} theme="dark">Some label</PLinkPure>
       </div>
 
-      <div className="playground light" title="should render link pure skeleton with specific icon">
-        <PLinkPure href="https://www.porsche.com" icon="phone">Label with specific icon</PLinkPure>
-      </div>
-
-      <div className="playground dark" title="should render link pure skeleton with specific icon on dark background">
-        <PLinkPure href="https://www.porsche.com" icon="phone" theme="dark">Label with specific icon</PLinkPure>
-      </div>
-
       <div className="playground light" title="should render link pure skeleton with multiline label">
+        <h4>Multiline label</h4>
         <PLinkPure href="https://www.porsche.com" style={{ width: '240px' }}>
           Label multiline lorem ipsum dolor sit amet, consetetur sadipscing
         </PLinkPure>
       </div>
 
       <div className="playground light" title="should render link pure skeleton with no icon">
-        <PLinkPure href="https://www.porsche.com" icon="none">Label icon none</PLinkPure>
+        <h4>No icon</h4>
+        <PLinkPure href="https://www.porsche.com" icon="none">Some Label</PLinkPure>
       </div>
 
       <div className="playground light" title="should render link pure skeleton icon if hide-label and icon none is set">
-        <PLinkPure href="https://www.porsche.com" hideLabel={true} icon="none">Label hide-label icon none</PLinkPure>
+        <h4>No icon and hidden label</h4>
+        <PLinkPure href="https://www.porsche.com" hideLabel={true} icon="none">Some Label</PLinkPure>
       </div>
 
       <div className="playground light stretched-links" title="should render link pure skeleton with stretched label">
-        <PLinkPure href="https://www.porsche.com" stretch={true}>Label stretch</PLinkPure>
+        <h4>Stretch</h4>
+        <PLinkPure href="https://www.porsche.com" stretch={true}>Some Label</PLinkPure>
       </div>
 
       <div className="playground light stretched-links" title="should render with stretched label depending on viewport">
-        <PLinkPure
-          href="https://www.porsche.com"
-          stretch={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
+        <h4>Stretch BreakpointCustomizable</h4>
+        <PLinkPure href="https://www.porsche.com" stretch={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
+          >Some Label</PLinkPure
         >
-          Label stretch responsive
-        </PLinkPure>
       </div>
     </>
   );

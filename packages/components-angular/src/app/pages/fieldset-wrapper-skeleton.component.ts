@@ -4,13 +4,6 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-fieldset-wrapper-skeleton',
-  styles: [
-    `
-      p-fieldset-wrapper > *:not(:last-child) {
-        margin-bottom: 2px;
-      }
-    `,
-  ],
   template: `
     <div
       class="playground light"
@@ -18,7 +11,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
     >
       <p-fieldset-wrapper [label]="'Some label'">
         <p-text-field-wrapper [label]="'Some label'">
-          <input [type]="'text'" [name]="'some-name'" />
+          <input [type]="'text'" />
         </p-text-field-wrapper>
       </p-fieldset-wrapper>
     </div>

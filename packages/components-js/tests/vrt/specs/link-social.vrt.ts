@@ -8,6 +8,7 @@ import {
 } from '../helpers';
 import {
   defaultViewports,
+  getVisualRegressionSkeletonTester,
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
   vrtTest,
@@ -17,9 +18,9 @@ it.each(defaultViewports)('should have no visual regression for viewport %s', as
   expect(await vrtTest(getVisualRegressionTester(viewport), 'link-social', '/#link-social')).toBeFalsy();
 });
 
-it.each(defaultViewports)('should have no skeleton visual regression for viewport %s', async (viewport) => {
+it('should have no visual regression for skeleton', async () => {
   expect(
-    await vrtTest(getVisualRegressionTester(viewport), 'link-social-skeleton', '/#link-social-skeleton')
+    await vrtTest(getVisualRegressionSkeletonTester(), 'link-social-skeleton', '/#link-social-skeleton')
   ).toBeFalsy();
 });
 
