@@ -9,7 +9,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "yarn clean:build && yarn build:fontFace && yarn build:bundle",
-    "build:fontFace": "ts-node 'scripts/buildFontFace.ts'",
+    "build:fontFace": "ts-node scripts/buildFontFace.ts",
     "build:bundle": "rollup -c rollup.config.js",
     "test": "yarn test:unit",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
