@@ -20,10 +20,10 @@ export const getComponentCss = (
 ): string => {
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule(getNotificationRootStyle(state, theme)),
+      ':host': addImportantToEachRule(getNotificationRootJssStyle(state, theme)),
     },
-    icon: getNotificationIconStyle(state),
-    content: getNotificationContentStyle(),
+    icon: getNotificationIconJssStyle(state),
+    content: getNotificationContentJssStyle(),
     ...(hasAction && {
       action: {
         gridColumnStart: 1,
@@ -35,7 +35,7 @@ export const getComponentCss = (
         },
       },
     }),
-    ...(hasClose && { close: getCloseIconStyle() }),
+    ...(hasClose && { close: getCloseIconJssStyle() }),
   });
 };
 
@@ -43,7 +43,7 @@ export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(buildSlottedStyles(host, getBaseSlottedStyles({ withDarkTheme: false })));
 };
 
-export const getNotificationRootStyle = (state: InlineNotificationState, theme: Theme): JssStyle => {
+export const getNotificationRootJssStyle = (state: InlineNotificationState, theme: Theme): JssStyle => {
   const themedColors = getThemedColors(theme);
   return {
     display: 'grid',
@@ -61,7 +61,7 @@ export const getNotificationRootStyle = (state: InlineNotificationState, theme: 
   };
 };
 
-export const getNotificationIconStyle = (state: InlineNotificationState): JssStyle => ({
+export const getNotificationIconJssStyle = (state: InlineNotificationState): JssStyle => ({
   display: 'none',
   [mediaQueryS]: {
     display: 'inline-flex',
@@ -70,12 +70,12 @@ export const getNotificationIconStyle = (state: InlineNotificationState): JssSty
   },
 });
 
-export const getNotificationContentStyle = (): JssStyle => ({
+export const getNotificationContentJssStyle = (): JssStyle => ({
   display: 'grid',
   gridGap: pxToRemWithUnit(4),
   maxWidth: pxToRemWithUnit(800),
 });
 
-export const getCloseIconStyle = (): JssStyle => ({
+export const getCloseIconJssStyle = (): JssStyle => ({
   marginLeft: pxToRemWithUnit(16),
 });

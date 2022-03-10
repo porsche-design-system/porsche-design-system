@@ -17,6 +17,7 @@ declare global {
   interface CSSStyleSheet {
     replaceSync(style: string): void;
   }
+
   interface ShadowRoot {
     adoptedStyleSheets: CSSStyleSheet[];
   }
@@ -110,9 +111,12 @@ export const buildSlottedStyles = (host: HTMLElement, jssStyle: JssStyle): Style
   },
 });
 
-export type GetStyleFunction = (value?: any) => JssStyle;
+export type GetJssStyleFunction = (value?: any) => JssStyle;
 
-export const buildResponsiveStyles = <T>(rawValue: BreakpointCustomizable<T>, getStyle: GetStyleFunction): Styles => {
+export const buildResponsiveStyles = <T>(
+  rawValue: BreakpointCustomizable<T>,
+  getStyle: GetJssStyleFunction
+): Styles => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const value = parseJSON(rawValue as any);
 

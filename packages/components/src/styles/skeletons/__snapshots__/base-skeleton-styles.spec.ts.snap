@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`extendPseudoWithTheme() should match style snapshot for parameters: {
+exports[`extendPseudoWithThemeJssStyle() should match style snapshot for parameters: {
   styleFunction: [Function: styleFunction] { [length]: 0, [name]: 'styleFunction' }
 }  1`] = `
 Object {
@@ -11,7 +11,7 @@ Object {
 }
 `;
 
-exports[`extendPseudoWithTheme() should match style snapshot for parameters: {
+exports[`extendPseudoWithThemeJssStyle() should match style snapshot for parameters: {
   theme: 'dark',
   styleFunction: [Function: styleFunction] { [length]: 0, [name]: 'styleFunction' },
   pseudosToExtend: [ '&::after', '&::before', [length]: 2 ]
@@ -27,7 +27,7 @@ Object {
 }
 `;
 
-exports[`extendPseudoWithTheme() should match style snapshot for parameters: { pseudosToExtend: [ '&::after', '&::before', [length]: 2 ] }  1`] = `
+exports[`extendPseudoWithThemeJssStyle() should match style snapshot for parameters: { pseudosToExtend: [ '&::after', '&::before', [length]: 2 ] }  1`] = `
 Object {
   "&::after": Object {
     "color": "#626669",
@@ -38,7 +38,7 @@ Object {
 }
 `;
 
-exports[`extendPseudoWithTheme() should match style snapshot for parameters: { theme: 'dark' }  1`] = `
+exports[`extendPseudoWithThemeJssStyle() should match style snapshot for parameters: { theme: 'dark' }  1`] = `
 Object {
   "&::after": Object {
     "color": "#b0b1b2",
@@ -46,7 +46,7 @@ Object {
 }
 `;
 
-exports[`extendPseudoWithTheme() should match style snapshot for parameters: {}  1`] = `
+exports[`extendPseudoWithThemeJssStyle() should match style snapshot for parameters: {}  1`] = `
 Object {
   "&::after": Object {
     "color": "#626669",
@@ -54,7 +54,7 @@ Object {
 }
 `;
 
-exports[`getBaseSkeletonStyle() should match style snapshot for hasLabel: false and elementHeight: 24 1`] = `
+exports[`getBaseSkeletonJssStyle() should match style snapshot for hasLabel: false and elementHeight: 24 1`] = `
 Object {
   "&::after": Object {
     "animation": "opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite",
@@ -74,7 +74,7 @@ Object {
 }
 `;
 
-exports[`getBaseSkeletonStyle() should match style snapshot for hasLabel: true and elementHeight: 48 1`] = `
+exports[`getBaseSkeletonJssStyle() should match style snapshot for hasLabel: true and elementHeight: 48 1`] = `
 Object {
   "&::after": Object {
     "animation": "opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite",
@@ -104,7 +104,7 @@ Object {
 }
 `;
 
-exports[`getHiddenLabelStyle() should match style snapshot 1`] = `
+exports[`getHiddenLabelJssStyle() should match style snapshot 1`] = `
 Object {
   "&::after": Object {
     "minHeight": "100%",
@@ -226,9 +226,9 @@ Object {
 }
 `;
 
-exports[`getThemedPseudoStyle() should match style snapshot for hasLabel: false 1`] = `
+exports[`getThemedPseudoJssStyle() should match style snapshot for hasLabel: false 1`] = `
 Object {
-  "&[theme=dark], &.PDS-Skeleton--theme-dark": Object {
+  "&[theme=dark], &.pds-skeleton--theme-dark": Object {
     "&::after": Object {
       "color": "#b0b1b2",
     },
@@ -236,9 +236,9 @@ Object {
 }
 `;
 
-exports[`getThemedPseudoStyle() should match style snapshot for hasLabel: true 1`] = `
+exports[`getThemedPseudoJssStyle() should match style snapshot for hasLabel: true 1`] = `
 Object {
-  "&[theme=dark], &.PDS-Skeleton--theme-dark": Object {
+  "&[theme=dark], &.pds-skeleton--theme-dark": Object {
     "&::after": Object {
       "color": "#b0b1b2",
     },

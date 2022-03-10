@@ -1,6 +1,6 @@
 import {
-  getTextHeadlineSkeletonBaseStyle,
-  getTextHeadlineSkeletonSubStyle,
+  getTextHeadlineSkeletonBaseJssStyle,
+  getTextHeadlineSkeletonSubJssStyle,
   getTextSkeletonCss,
 } from './text-skeleton-styles';
 import { headline2 } from '@porsche-design-system/utilities-v2';
@@ -12,20 +12,20 @@ describe('getTextSkeletonCss()', () => {
   });
 });
 
-describe('getTextHeadlineSkeletonSubStyle()', () => {
+describe('getTextHeadlineSkeletonSubJssStyle()', () => {
   it.each([[32], [getTypographyElementHeight(headline2)]])(
     'should for elementHeight: %s return %s',
     (elementHeight) => {
-      expect(getTextHeadlineSkeletonSubStyle(elementHeight)).toMatchSnapshot();
+      expect(getTextHeadlineSkeletonSubJssStyle(elementHeight)).toMatchSnapshot();
     }
   );
 });
 
-describe('getTextHeadlineSkeletonBaseStyle()', () => {
+describe('getTextHeadlineSkeletonBaseJssStyle()', () => {
   it.each([[32], [getTypographyElementHeight(headline2)]])(
     'should for elementHeight: %s return %s',
     (elementHeight) => {
-      expect(getTextHeadlineSkeletonBaseStyle(elementHeight)).toMatchSnapshot();
+      expect(getTextHeadlineSkeletonBaseJssStyle(elementHeight)).toMatchSnapshot();
     }
   );
 });

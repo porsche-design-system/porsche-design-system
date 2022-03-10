@@ -1,5 +1,5 @@
 import type { JssStyle } from 'jss';
-import type { BreakpointCustomizable, GetStyleFunction } from '../../../utils';
+import type { BreakpointCustomizable, GetJssStyleFunction } from '../../../utils';
 import type { AlignLabel, AlignLabelType, ThemeExtendedElectric } from '../../../types';
 import { buildResponsiveStyles, getCss, isThemeLightElectric, mergeDeep } from '../../../utils';
 import {
@@ -57,7 +57,7 @@ const getColors = (
   };
 };
 
-const getAlignLabelStyle: GetStyleFunction = (alignLabel: AlignLabelType): JssStyle => {
+const getAlignLabelStyle: GetJssStyleFunction = (alignLabel: AlignLabelType): JssStyle => {
   const styles: { [key in AlignLabelType]: JssStyle } = {
     left: {
       order: 0,
@@ -73,7 +73,7 @@ const getAlignLabelStyle: GetStyleFunction = (alignLabel: AlignLabelType): JssSt
   return styles[alignLabel];
 };
 
-const getStretchStyle: GetStyleFunction = (stretch: boolean): JssStyle => {
+const getStretchStyle: GetJssStyleFunction = (stretch: boolean): JssStyle => {
   return stretch
     ? {
         width: '100%',

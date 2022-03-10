@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getCloseIconStyle() should return correct JssStyle 1`] = `
+exports[`getCloseIconJssStyle() should return correct JssStyle 1`] = `
 Object {
   "marginLeft": "1rem",
 }
@@ -558,7 +558,7 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
 "
 `;
 
-exports[`getNotificationContentStyle() should return correct JssStyle 1`] = `
+exports[`getNotificationContentJssStyle() should return correct JssStyle 1`] = `
 Object {
   "display": "grid",
   "gridGap": "0.25rem",
@@ -566,7 +566,7 @@ Object {
 }
 `;
 
-exports[`getNotificationIconStyle() should return correct JssStyle for state: error  1`] = `
+exports[`getNotificationIconJssStyle() should return correct JssStyle for state: error  1`] = `
 Object {
   "@media (min-width: 760px)": Object {
     "color": "#e00000",
@@ -577,7 +577,7 @@ Object {
 }
 `;
 
-exports[`getNotificationIconStyle() should return correct JssStyle for state: neutral  1`] = `
+exports[`getNotificationIconJssStyle() should return correct JssStyle for state: neutral  1`] = `
 Object {
   "@media (min-width: 760px)": Object {
     "color": "#0061bd",
@@ -588,7 +588,7 @@ Object {
 }
 `;
 
-exports[`getNotificationIconStyle() should return correct JssStyle for state: success  1`] = `
+exports[`getNotificationIconJssStyle() should return correct JssStyle for state: success  1`] = `
 Object {
   "@media (min-width: 760px)": Object {
     "color": "#018a16",
@@ -599,7 +599,7 @@ Object {
 }
 `;
 
-exports[`getNotificationIconStyle() should return correct JssStyle for state: warning  1`] = `
+exports[`getNotificationIconJssStyle() should return correct JssStyle for state: warning  1`] = `
 Object {
   "@media (min-width: 760px)": Object {
     "color": "#ff9b00",
@@ -610,7 +610,7 @@ Object {
 }
 `;
 
-exports[`getNotificationRootStyles() should return correct JssStyle for state: error and theme: dark 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: error and theme: dark 1`] = `
 Object {
   "@media (min-width: 760px)": Object {
     "gridTemplateColumns": "auto 1fr auto auto",
@@ -627,7 +627,7 @@ Object {
 }
 `;
 
-exports[`getNotificationRootStyles() should return correct JssStyle for state: error and theme: light 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: error and theme: light 1`] = `
 Object {
   "@media (min-width: 760px)": Object {
     "gridTemplateColumns": "auto 1fr auto auto",
@@ -644,7 +644,7 @@ Object {
 }
 `;
 
-exports[`getNotificationRootStyles() should return correct JssStyle for state: neutral and theme: dark 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: neutral and theme: dark 1`] = `
 Object {
   "@media (min-width: 760px)": Object {
     "gridTemplateColumns": "auto 1fr auto auto",
@@ -661,7 +661,7 @@ Object {
 }
 `;
 
-exports[`getNotificationRootStyles() should return correct JssStyle for state: neutral and theme: light 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: neutral and theme: light 1`] = `
 Object {
   "@media (min-width: 760px)": Object {
     "gridTemplateColumns": "auto 1fr auto auto",
@@ -678,7 +678,7 @@ Object {
 }
 `;
 
-exports[`getNotificationRootStyles() should return correct JssStyle for state: success and theme: dark 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: success and theme: dark 1`] = `
 Object {
   "@media (min-width: 760px)": Object {
     "gridTemplateColumns": "auto 1fr auto auto",
@@ -695,7 +695,7 @@ Object {
 }
 `;
 
-exports[`getNotificationRootStyles() should return correct JssStyle for state: success and theme: light 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: success and theme: light 1`] = `
 Object {
   "@media (min-width: 760px)": Object {
     "gridTemplateColumns": "auto 1fr auto auto",
@@ -712,7 +712,7 @@ Object {
 }
 `;
 
-exports[`getNotificationRootStyles() should return correct JssStyle for state: warning and theme: dark 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: warning and theme: dark 1`] = `
 Object {
   "@media (min-width: 760px)": Object {
     "gridTemplateColumns": "auto 1fr auto auto",
@@ -729,7 +729,7 @@ Object {
 }
 `;
 
-exports[`getNotificationRootStyles() should return correct JssStyle for state: warning and theme: light 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: warning and theme: light 1`] = `
 Object {
   "@media (min-width: 760px)": Object {
     "gridTemplateColumns": "auto 1fr auto auto",

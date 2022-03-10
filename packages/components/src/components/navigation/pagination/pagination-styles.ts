@@ -1,7 +1,7 @@
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { NumberOfPageLinks } from './pagination-utils';
 import { buildResponsiveStyles, getCss } from '../../../utils';
-import { addImportantToRule, getFocusStyle, getThemedColors, getTransition, pxToRemWithUnit } from '../../../styles';
+import { addImportantToRule, getFocusJssStyle, getThemedColors, getTransition, pxToRemWithUnit } from '../../../styles';
 import { textSmall } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
@@ -48,7 +48,7 @@ export const getComponentCss = (
         ...textSmall,
         cursor: 'pointer',
         color: baseColor,
-        ...getFocusStyle({ color: focusColor, offset: 1 }),
+        ...getFocusJssStyle({ color: focusColor, offset: 1 }),
         '&:hover': {
           color: hoverColor,
         },

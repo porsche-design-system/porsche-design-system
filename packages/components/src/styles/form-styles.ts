@@ -5,7 +5,7 @@ import type { FormState, Theme } from '../types';
 import {
   addImportantToRule,
   getFormTextHiddenJssStyle,
-  getInsetStyle,
+  getInsetJssStyle,
   getThemedColors,
   getTransition,
   pxToRemWithUnit,
@@ -37,7 +37,7 @@ export const getBaseChildStyles = (
     [`::slotted(${child})`]: {
       display: 'block',
       position: 'relative',
-      ...getInsetStyle(),
+      ...getInsetJssStyle(),
       width: '100%',
       ...(child !== 'textarea' && { height: pxToRemWithUnit(INPUT_HEIGHT) }),
       margin: 0,

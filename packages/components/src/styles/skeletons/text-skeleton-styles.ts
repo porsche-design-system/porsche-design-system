@@ -1,11 +1,11 @@
 import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
 import {
-  extendPseudoWithTheme,
+  extendPseudoWithThemeJssStyle,
   getElementBackgroundGradient,
-  getPseudoElementStyle,
+  getPseudoElementJssStyle,
   getSkeletonElementHeight,
   getSkeletonPropertyNames,
-  getThemedPseudoStyle,
+  getThemedPseudoJssStyle,
   PDS_SKELETON_CLASS_PREFIX,
 } from './base-skeleton-styles';
 import { JssStyle } from 'jss';
@@ -25,12 +25,12 @@ export const getTextSkeletonCss = (): string => {
     'x-large': textXLarge,
   };
 
-  const getTextSizeStyle = (): JssStyle =>
+  const getTextSizeJssStyle = (): JssStyle =>
     Object.entries(textSizeToTypographyMap).reduce(
       (prevValue, [key, value]) => ({
         ...prevValue,
         [`&[${skeletonPropertyNames.size}=${key}], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.size}-${key}`]:
-          getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(value)),
+          getTextHeadlineSkeletonSubJssStyle(getTypographyElementHeight(value)),
       }),
       {}
     );
@@ -39,30 +39,34 @@ export const getTextSkeletonCss = (): string => {
     '@global': {
       'p-text, p-text-list-item': {
         '&:not(.hydrated)': {
-          ...extendPseudoWithTheme({
-            styleFunction: () => getTextHeadlineSkeletonBaseStyle(),
+          ...extendPseudoWithThemeJssStyle({
+            styleFunction: () => getTextHeadlineSkeletonBaseJssStyle(),
           }),
-          ...getTextSizeStyle(),
-          ...getThemedPseudoStyle(),
+          ...getTextSizeJssStyle(),
+          ...getThemedPseudoJssStyle(),
         },
       },
     },
   });
 };
-export const getTextHeadlineSkeletonSubStyle = (elementHeight = getTypographyElementHeight(textSmall)): JssStyle => ({
+export const getTextHeadlineSkeletonSubJssStyle = (
+  elementHeight = getTypographyElementHeight(textSmall)
+): JssStyle => ({
   height: getSkeletonElementHeight(elementHeight, false),
   '&::after': {
     background: getElementBackgroundGradient(elementHeight),
   },
 });
 
-export const getTextHeadlineSkeletonBaseStyle = (elementHeight = getTypographyElementHeight(textSmall)): JssStyle => ({
+export const getTextHeadlineSkeletonBaseJssStyle = (
+  elementHeight = getTypographyElementHeight(textSmall)
+): JssStyle => ({
   display: 'block',
   position: 'relative',
   color: 'transparent',
   height: getSkeletonElementHeight(elementHeight, false),
   '&::after': {
-    ...getPseudoElementStyle(),
+    ...getPseudoElementJssStyle(),
     top: '0',
     background: getElementBackgroundGradient(elementHeight),
     width: '100%',

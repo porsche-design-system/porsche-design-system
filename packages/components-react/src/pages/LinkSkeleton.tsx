@@ -11,16 +11,8 @@ export const LinkSkeletonPage = (): JSX.Element => {
     });
   }, []);
 
-  const style = `
-    p-link:not(:last-child) {
-      margin-right: 0.5rem;
-    }
-  `;
-
   return (
     <>
-      <style children={style} />
-
       <div className="playground light" title="should render link skeleton with label">
         <PLink variant="primary" href="https://www.porsche.com">Some label</PLink>
       </div>
