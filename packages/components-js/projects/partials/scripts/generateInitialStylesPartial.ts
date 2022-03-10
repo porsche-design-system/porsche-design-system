@@ -95,13 +95,14 @@ Please use only valid component tag names:
   }
 
   const usedTagNamesWithSkeleton = tagNamesWithSkeleton.filter((skeletonTagName) => skeletonTagNames.includes(skeletonTagName));
+  const usesSkeleton = usedTagNamesWithSkeleton.length ? ' uses-skeleton': '';
   const prefixedTagNamesWithSkeleton = getPrefixedTagNames(usedTagNamesWithSkeleton, prefix);
   const prefixedUnusedTagNamesWithSkeleton = getPrefixedTagNames(tagNamesWithSkeleton.filter((skeletonTagName) => !skeletonTagNames.includes(skeletonTagName)), prefix);
 
   const initialVisibilityHiddenStyles = prefixedTagNames.join(',') + '{visibility:hidden}';
 
   const mergedStyles = \`\${initialVisibilityHiddenStyles}\${getSkeletonStyles({prefixedTagNamesWithSkeleton,prefixedUnusedTagNamesWithSkeleton, prefix})}\`;
-  const markup = format === 'html' ?  \`<style>\${mergedStyles}</style>\` : <style>{mergedStyles}</style>;
+  const markup = format === 'html' ?  \`<style\$\{usesSkeleton\}>\${mergedStyles}</style>\` : <style>{mergedStyles}</style>;
 
   return withoutTags
     ? mergedStyles

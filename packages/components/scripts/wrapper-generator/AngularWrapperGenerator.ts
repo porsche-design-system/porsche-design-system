@@ -15,10 +15,13 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
   public getComponentFileName(component: TagName, withOutExtension?: boolean): string {
     return `${component.replace('p-', '')}.wrapper${withOutExtension ? '' : '.ts'}`;
   }
+  public hasSkeleton(component: TagName): boolean {
+    return getComponentMeta(component).hasSkeleton;
+  }
 
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
     const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
-
+    const hasSkeleton = this.hasSkeleton(component);
     const angularImports = [
       'ChangeDetectionStrategy',
       'ChangeDetectorRef',
@@ -26,9 +29,13 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
       'ElementRef',
       ...(hasEventProps ? ['EventEmitter'] : []),
       'NgZone',
-      ...(getComponentMeta(component).hasSkeleton ? ['OnInit'] : []),
+      ...(hasSkeleton ? ['Inject', 'OnInit'] : []),
     ];
     const importsFromAngular = `import { ${angularImports.join(', ')} } from '@angular/core';`;
+
+    const importsFromComponentsWrapperModule = hasSkeleton
+      ? `import {USES_SKELETONS} from "../../components-wrapper.module"`
+      : '';
 
     const providerImports = ['ProxyCmp', ...(hasEventProps ? ['proxyOutputs'] : [])];
     const importsFromProvider = `import { ${providerImports.join(', ')} } from '../../utils';`;
@@ -36,7 +43,9 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     const typesImports = nonPrimitiveTypes;
     const importsFromTypes = typesImports.length ? `import type { ${typesImports.join(', ')} } from '../types';` : '';
 
-    return [importsFromAngular, importsFromProvider, importsFromTypes].filter((x) => x).join('\n');
+    return [importsFromAngular, importsFromProvider, importsFromTypes, importsFromComponentsWrapperModule]
+      .filter((x) => x)
+      .join('\n');
   }
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
@@ -75,9 +84,11 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
       ...outputProps.map((x) => `${x.key}!: EventEmitter<CustomEvent<${x.rawValueType.match(/<(.*?)>/)?.[1]}>>;`),
     ].join('\n  ');
 
+    const hasSkeleton = this.hasSkeleton(component);
+
     const skeletonPropertyClassBindings = getComponentMeta(component)
       .skeletonProps.map(({ propName, shouldStringifyValue }) => {
-        return `this.${propName} && this.el.classList.add(\`${PDS_SKELETON_CLASS_PREFIX}${paramCase(propName)}${
+        return `  this.${propName} && this.el.classList.add(\`${PDS_SKELETON_CLASS_PREFIX}${paramCase(propName)}${
           shouldStringifyValue ? `-\${JSON.stringify(this.${propName}).replace(/"/g, '')}` : ''
         }\`);`;
       })
@@ -85,11 +96,13 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
 
     const getSkeletonOnInit = () => {
       let result: string = '';
-      if (getComponentMeta(component).hasSkeleton) {
+      if (hasSkeleton) {
         result = `
 
   ngOnInit(){
+    if (this.usesSkeletons) {
     ${skeletonPropertyClassBindings}
+    }
   }`;
       }
       return result;
@@ -102,7 +115,8 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     ].join('\n    ');
 
     const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
-    const implementsOnInit = getComponentMeta(component).hasSkeleton ? ' implements OnInit' : '';
+    const implementsOnInit = hasSkeleton ? ' implements OnInit' : '';
+    const usesSkeletonsInjectionToken = hasSkeleton ? ', @Inject(USES_SKELETONS) public usesSkeletons: boolean' : '';
 
     return `${inputsAndOutputs}
 
@@ -115,7 +129,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
 export class ${this.generateComponentName(component)}${genericType}${implementsOnInit} {
   ${classMembers}
 
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone${usesSkeletonsInjectionToken}) {
     ${constructorCode}
   }${getSkeletonOnInit()}
 }`;
