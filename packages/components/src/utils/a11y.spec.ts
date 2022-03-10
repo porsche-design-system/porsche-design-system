@@ -30,7 +30,7 @@ describe('setAriaAttributes()', () => {
     if (options.label && !options.message) {
       expect(setAttributeSpy).toHaveBeenCalledWith(node, 'aria-label', options.label);
     } else if (!options.label && options.message) {
-      expect(setAttributeSpy).toHaveBeenCalledTimes(0);
+      expect(setAttributeSpy).not.toBeCalled();
     } else if (options.label && options.message) {
       expect(setAttributeSpy).toHaveBeenCalledWith(node, 'aria-label', options.label + '. ' + options.message);
     }

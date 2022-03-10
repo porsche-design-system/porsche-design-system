@@ -8,6 +8,7 @@ import {
   attachComponentCss,
   attachSlottedCss,
   parseAndGetAriaAttributes,
+  warnIfParentIsPTextAndIconIsNone,
 } from '../../../utils';
 import type {
   SelectedAriaAttributes,
@@ -86,6 +87,7 @@ export class LinkPure {
   }
 
   public componentWillRender(): void {
+    warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
     attachComponentCss(
       this.host,
       getComponentCss,
