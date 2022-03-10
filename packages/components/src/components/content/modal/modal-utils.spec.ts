@@ -361,7 +361,7 @@ describe('setScrollLock()', () => {
       setScrollLock(host, true, closeBtn, closeModal);
 
       expect(documentSpy).toBeCalledWith('keydown', documentKeydownListener);
-      expect(hostSpy).toBeCalledTimes(0);
+      expect(hostSpy).not.toBeCalled();
     });
   });
 
@@ -373,7 +373,7 @@ describe('setScrollLock()', () => {
       setScrollLock(host, false, closeBtn, closeModal);
 
       expect(documentRemoveSpy).toBeCalledWith('keydown', documentKeydownListener);
-      expect(documentAddSpy).not.toHaveBeenCalled();
+      expect(documentAddSpy).not.toBeCalled();
     });
 
     it('should remove touchmove event handlers', () => {
@@ -414,7 +414,7 @@ describe('setScrollLock()', () => {
       setScrollLock(host, true, closeBtn);
 
       documentKeydownListener(event);
-      expect(spy).not.toHaveBeenCalled();
+      expect(spy).not.toBeCalled();
     });
   });
 });
@@ -492,7 +492,7 @@ describe('setFirstAndLastFocusableElementKeydownListener()', () => {
       const [handler1] = KEYDOWN_EVENT_HANDLER_CACHE;
 
       handler1(new KeyboardEvent('keydown', { key: 'Tab' }));
-      expect(el2Spy).not.toHaveBeenCalled();
+      expect(el2Spy).not.toBeCalled();
 
       handler1(new KeyboardEvent('keydown', { key: 'Tab', shiftKey: true }));
       expect(el2Spy).toHaveBeenCalledWith();
@@ -504,7 +504,7 @@ describe('setFirstAndLastFocusableElementKeydownListener()', () => {
       const [, handler2] = KEYDOWN_EVENT_HANDLER_CACHE;
 
       handler2(new KeyboardEvent('keydown', { key: 'Tab', shiftKey: true }));
-      expect(el1Spy).not.toHaveBeenCalled();
+      expect(el1Spy).not.toBeCalled();
 
       handler2(new KeyboardEvent('keydown', { key: 'Tab' }));
       expect(el1Spy).toHaveBeenCalledWith();
@@ -540,7 +540,7 @@ describe('warnIfAriaAndHeadingPropsAreUndefined()', () => {
     warnIfAriaAndHeadingPropsAreUndefined(host, undefined, "{'aria-label': 'OtherHeading'}");
     warnIfAriaAndHeadingPropsAreUndefined(host, 'Heading', "{'aria-label': 'OtherHeading'}");
 
-    expect(spy).toBeCalledTimes(0);
+    expect(spy).not.toBeCalled();
 
     warnIfAriaAndHeadingPropsAreUndefined(host, undefined, undefined);
     warnIfAriaAndHeadingPropsAreUndefined(host, null, null);
