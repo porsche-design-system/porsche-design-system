@@ -123,42 +123,58 @@ const buildTypography = (): void => {
       .replace(/"([a-zA-Z]+)":/g, '$1:') // remove quotes around keys that don't need it
       .replace(/"/g, "'"); // replace quotes
 
-  const objectToConst = (obj: object, constName: string): string =>
-    Object.entries(obj)
-      .map(([key, value]) => `export const ${constName + pascalCase(key)} = ${formatValues(value)};`)
-      .concat(
-        `export const ${constName} = {
+  const objectToConstArr = (obj: object, constName: string): { constName: string; content: string }[] => {
+    return Object.entries(obj)
+      .map(([key, value]) => ({
+        constName: constName + pascalCase(key),
+        content: `export const ${constName + pascalCase(key)} = ${formatValues(value)};`,
+      }))
+      .concat({
+        constName,
+        content: `export const ${constName} = {
   ${Object.keys(obj)
     .map((key) => `${key}: ${constName + pascalCase(key)}`)
     .join(',\n  ')}
-};`
-      )
-      .join('\n\n');
+};`,
+      });
+  };
 
-  const targetDirectory = path.normalize('./src/jss/typography');
+  const targetDirectory = path.normalize('./src/jss/typography/lib');
   fs.mkdirSync(path.resolve(targetDirectory), { recursive: true });
 
   const comment = '/* Auto Generated File */';
-  const fontImport = "import { fontFamily, fontWeight } from '../font/font';";
-  const mediaQueryImport = "import { mediaQueryMin, mediaQueryMinMax } from '../media-query';";
+  const fontImport = "import { fontFamily, fontWeight } from '../../font/font';";
+  const mediaQueryImport = "import { mediaQueryMin, mediaQueryMinMax } from '../../media-query';";
 
-  const inputs: { [fileName: string]: [string, string | object, object?] } = {
-    title: [fontImport, mediaQueryImport, title],
-    headline: [fontImport, mediaQueryImport, headline],
-    text: [fontImport, text],
-  };
+  const inputs: { fileName: string; imports: string[]; contents: object }[] = [
+    { fileName: 'title', imports: [fontImport, mediaQueryImport], contents: title },
+    { fileName: 'headline', imports: [fontImport, mediaQueryImport], contents: headline },
+    { fileName: 'text', imports: [fontImport], contents: text },
+  ];
 
-  Object.entries(inputs)
-    .map(([fileName, contents]) => [
-      fileName,
-      [
-        comment,
-        ...contents.map((content, idx, arr) =>
-          idx === arr.length - 1 ? '\n' + objectToConst(content as object, fileName) : content
-        ),
-      ].join('\n'),
-    ])
-    .forEach(([fileName, content]) => {
+  inputs
+    .map(({ fileName, imports, contents }) => {
+      const contentObjects = objectToConstArr(contents, fileName);
+      const childImports = contentObjects.slice(0, -1).map(({ constName }) => constName);
+
+      return contentObjects.map(({ constName, content }) => ({
+        fileName: constName,
+        content: [
+          [
+            comment,
+            constName === fileName
+              ? childImports.map((childImport) => `import { ${childImport} } from './${childImport}';`)
+              : imports,
+          ]
+            .flat()
+            .join('\n'),
+          content,
+          ...(constName === fileName ? [`export { ${childImports.join(', ')} };\n`] : []),
+        ].join('\n\n'),
+      }));
+    })
+    .flat()
+    .forEach(({ fileName, content }) => {
       const targetFilename = `${fileName}.ts`;
       const targetPath = path.resolve(targetDirectory, targetFilename);
 
