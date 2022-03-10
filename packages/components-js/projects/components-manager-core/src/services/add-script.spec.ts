@@ -51,7 +51,7 @@ describe('addScript', () => {
   it("should not add script if the browser doesn't support module syntax", () => {
     mockSupportsEs2015ModulesOnce(false);
     addScript(url);
-    expect(document.body.appendChild).toHaveBeenCalledTimes(0);
+    expect(document.body.appendChild).not.toBeCalled();
   });
 
   it('should add crossorigin attribute to scripts', () => {

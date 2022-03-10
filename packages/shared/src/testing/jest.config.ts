@@ -1,5 +1,10 @@
 import type { Config } from '@jest/types';
 
+const defaultWorkers = process.env.CI === 'true' ? 1 : 2;
+const maxWorkers = process.env.TYPE === 'VRT' ? defaultWorkers : defaultWorkers * 2;
+
+console.log('Running Jest with maxWorkers:', maxWorkers);
+
 export const config: Config.InitialOptions = {
   preset: 'jest-puppeteer',
   rootDir: '..',
@@ -11,7 +16,8 @@ export const config: Config.InitialOptions = {
   transform: {
     '^.+\\.ts?$': 'ts-jest',
   },
-  maxWorkers: process.env.CI === 'true' ? 2 : 4,
+  maxWorkers: maxWorkers,
+  testSequencer: '@signed/jest-alphabetical-sequencer',
   globals: {
     'ts-jest': {
       isolatedModules: true, // disable type-checking and compile each file as an isolated module

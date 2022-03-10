@@ -10,7 +10,8 @@ A `label` is a caption which informs the user what information a particular form
 ## Basic examples
 
 <Playground :markup="basic" :config="config">
-  <select v-model="label">
+  <select v-model="label" aria-label="Select label mode">
+    <option disabled>Select label mode</option>
     <option value="show">With label</option>
     <option value="hide">Without label</option>
     <option value="responsive">Responsive</option>
@@ -41,8 +42,8 @@ A good practice when to use the disabled state is during **form submission** to 
 The `p-radio-button-wrapper` component supports the visualisation of inline validation. The `message` and `radio` is colored and visible/hidden depending on the defined `state`.
 
 <Playground :markup="validation" :config="config">
-  <select v-model="state">
-    <option disabled>Select a validation state</option>
+  <select v-model="state" aria-label="Select validation state">
+    <option disabled>Select validation state</option>
     <option value="error">Error</option>
     <option value="success">Success</option>
     <option value="none">None</option>

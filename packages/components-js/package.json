@@ -37,8 +37,8 @@
     "test:unit:components-manager-core": "yarn --cwd ./projects/components-manager-core test:unit",
     "test:unit:components-js": "jest --colors -c tests/unit/config/jest.config.js --coverage",
     "test:unit:partials": "yarn --cwd ./projects/partials test:unit",
-    "test:e2e": "PORT=8575 jest --colors -c tests/e2e/config/jest.config.ts",
-    "test:vrt": "PORT=8575 jest --colors -c tests/vrt/config/jest.config.ts",
+    "test:e2e": "TYPE=E2E PORT=8575 jest --colors -c tests/e2e/config/jest.config.ts",
+    "test:vrt": "TYPE=VRT PORT=8575 jest --colors -c tests/vrt/config/jest.config.ts",
     "test:smoke": "jest --colors -c tests/smoke/config/jest.config.ts",
     "clean": "yarn clean:build && yarn clean:node_modules",
     "clean:build": "yarn clean:app:build && yarn clean:components-wrapper:build && yarn clean:components-manager-core:build && yarn clean:components-manager-cli:build && yarn clean:partials:build",
@@ -56,8 +56,8 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "4.0.0",
-    "@porsche-design-system/components": "2.9.0",
-    "@porsche-design-system/components-js": "2.9.0",
+    "@porsche-design-system/components": "2.9.1",
+    "@porsche-design-system/components-js": "2.9.1",
     "@porsche-design-system/components-manager-cli": "0.0.0",
     "@porsche-design-system/partials": "0.0.0"
   },
