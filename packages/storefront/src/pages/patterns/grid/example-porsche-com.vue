@@ -88,7 +88,7 @@
 }
 
 .home-stage {
-  margin-top: $p-layout-medium;
+  margin-top: $p-layout-large;
   grid-column: content-start / content-end;
 
   // some custom grid
@@ -111,13 +111,13 @@
 }
 
 .headline {
-  height: 3rem;
+  height: 6rem;
   margin-top: $p-layout-xx-large;
   grid-column: content-start / content-end;
 }
 
 .car-range {
-  margin-top: $p-layout-medium;
+  margin-top: $p-layout-large;
   grid-column: main-start / main-end;
 
   // some custom grid
@@ -152,19 +152,24 @@
   }
 
   & > * {
-    height: 20rem;
-
     @include p-media-query('m') {
       grid-row-start: 1;
+      height: 40rem;
     }
   }
 
   & > :nth-of-type(1) {
     border: 1rem solid deeppink;
+    @include p-media-query('xxs', 'm') {
+      height: 20rem;
+    }
   }
 
   & > :nth-of-type(2) {
     background: deeppink;
+    @include p-media-query('xxs', 'm') {
+      height: 40rem;
+    }
   }
 
   @include p-media-query('m') {
@@ -187,7 +192,7 @@
 }
 
 .story {
-  margin-top: $p-layout-medium;
+  margin-top: $p-layout-large;
   grid-column: main-start / main-end;
 
   // some custom grid
