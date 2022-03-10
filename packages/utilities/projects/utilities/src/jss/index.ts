@@ -5,4 +5,4 @@ export * from './font/font';
 export * from './media-query';
 export * from './screen-reader';
 export * from './spacing';
-export * from './typography';
+export * from './typography/typography';
