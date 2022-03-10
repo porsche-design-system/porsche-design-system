@@ -9,7 +9,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "yarn clean:build && yarn build:typography && yarn build:bundle && yarn build:copyPackageJsonTemplate",
-    "build:typography": "ts-node 'scripts/buildTypography.ts'",
+    "build:typography": "ts-node scripts/buildTypography.ts",
     "build:bundle": "rollup -c rollup.config.js",
     "build:copyPackageJsonTemplate": "cp package.template.json ./dist/jss/package.json",
     "test": "yarn test:unit",

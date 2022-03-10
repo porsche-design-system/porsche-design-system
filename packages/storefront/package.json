@@ -8,7 +8,7 @@
     "start": "concurrently -k -s 'first' -n 'cdn,vue' 'serve-cdn' 'vue-cli-service serve'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws --spa index.html -p 8080 -d ./dist'",
     "build": "vue-cli-service build --silent",
-    "updateAlgolia": "ts-node --project './tsconfig.node.json' './scripts/updateAlgoliaIndex.ts'",
+    "updateAlgolia": "ts-node --project tsconfig.node.json scripts/updateAlgoliaIndex.ts",
     "lint": "eslint -c .eslintrc.js --ext .js,.ts,.vue ./src",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
     "test:unit": "vue-cli-service test:unit",

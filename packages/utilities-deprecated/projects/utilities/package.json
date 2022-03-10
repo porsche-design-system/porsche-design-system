@@ -46,10 +46,10 @@
   },
   "scripts": {
     "build": "yarn clean:build && yarn build:buildTypography && yarn build:bundleLib && yarn build:copyScss && yarn build:createGlobalCSS",
-    "build:buildTypography": "ts-node 'scripts/buildTypography.ts'",
+    "build:buildTypography": "ts-node scripts/buildTypography.ts",
     "build:bundleLib": "rollup -c rollup.config.js",
     "build:copyScss": "echo '@import \"dist/scss/index\";' > scss.scss && cp -r './src/scss/.' './dist/scss'",
-    "build:createGlobalCSS": "ts-node 'scripts/createGlobalCSS.ts'",
+    "build:createGlobalCSS": "ts-node scripts/createGlobalCSS.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist && rm -rf ./scss.scss"
