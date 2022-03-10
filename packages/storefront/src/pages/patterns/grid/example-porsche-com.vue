@@ -152,12 +152,19 @@
   }
 
   & > * {
-    border: 1rem solid deeppink;
     height: 20rem;
 
     @include p-media-query('m') {
       grid-row-start: 1;
     }
+  }
+
+  & > :nth-of-type(1) {
+    border: 1rem solid deeppink;
+  }
+
+  & > :nth-of-type(2) {
+    background: deeppink;
   }
 
   @include p-media-query('m') {
