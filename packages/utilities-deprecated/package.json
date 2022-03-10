@@ -8,7 +8,7 @@
     "build": "yarn --cwd ./projects/utilities build",
     "test": "yarn test:unit && yarn test:vrt",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
-    "test:vrt": "PORT=3000 BROWSER=none jest --colors -c tests/vrt/config/jest.config.ts",
+    "test:vrt": "TYPE=VRT PORT=3000 BROWSER=none jest --colors -c tests/vrt/config/jest.config.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log && yarn --cwd ./projects/utilities clean:node_modules",
     "clean:build": "rm -rf ./dist && yarn --cwd ./projects/utilities clean:build"
