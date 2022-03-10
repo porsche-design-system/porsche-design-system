@@ -1,4 +1,4 @@
-export * from './color';
+export * from './color/color';
 export * from './content-wrapper';
 export * from './focus';
 export * from './font';

@@ -9,6 +9,7 @@ export default [
     output: {
       dir: 'dist/jss',
       format: 'cjs',
+      preserveModules: true,
       plugins: [
         generatePackageJson({
           baseContents: {
@@ -31,6 +32,7 @@ export default [
     output: {
       dir: 'dist/jss/esm',
       format: 'esm',
+      preserveModules: true,
     },
     plugins: [typescript()],
   },
