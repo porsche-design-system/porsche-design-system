@@ -25,8 +25,8 @@ type ToastMessage = {
 <Playground :frameworkMarkup="basic" :config="config">
   <label>
     State:
-    <select v-model="toastState">
-      <option disabled>Select a state</option>
+    <select v-model="toastState" aria-label="Select state">
+      <option disabled>Select state</option>
       <option value="neutral">Neutral</option>
       <option value="success">Success</option>
     </select>

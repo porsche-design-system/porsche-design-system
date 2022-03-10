@@ -64,7 +64,7 @@ describe('observeChildren()', () => {
 
       await tick();
       expect(cb1).toBeCalledTimes(1);
-      expect(cb2).toBeCalledTimes(0);
+      expect(cb2).not.toBeCalled();
     });
 
     it('should run callback once when multiple attributes are changed', async () => {
