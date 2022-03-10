@@ -7,6 +7,7 @@ Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
     "isThemeable": true,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -15,6 +16,7 @@ Object {
     "hasSlottedCss": true,
     "isDelegatingFocus": false,
     "isThemeable": true,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -23,6 +25,7 @@ Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": true,
     "isThemeable": true,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [
       Object {
         "propName": "hideLabel",
@@ -44,6 +47,7 @@ Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
     "isThemeable": false,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -52,6 +56,7 @@ Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": true,
     "isThemeable": true,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [
       Object {
         "propName": "hideLabel",
@@ -78,6 +83,7 @@ Object {
     "isDelegatingFocus": false,
     "isThemeable": false,
     "requiredChild": "input type=\\"checkbox\\"",
+    "shouldPatchSlot": false,
     "skeletonProps": Array [
       Object {
         "propName": "hideLabel",
@@ -95,6 +101,7 @@ Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
     "isThemeable": true,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -103,6 +110,7 @@ Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
     "isThemeable": true,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -111,6 +119,7 @@ Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
     "isThemeable": false,
+    "shouldPatchSlot": true,
     "skeletonProps": Array [
       Object {
         "propName": "label",
@@ -128,6 +137,7 @@ Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
     "isThemeable": false,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -137,6 +147,7 @@ Object {
     "isDelegatingFocus": false,
     "isThemeable": false,
     "requiredParent": "p-flex",
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -145,6 +156,7 @@ Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
     "isThemeable": false,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -154,6 +166,7 @@ Object {
     "isDelegatingFocus": false,
     "isThemeable": false,
     "requiredParent": "p-grid",
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -162,6 +175,7 @@ Object {
     "hasSlottedCss": true,
     "isDelegatingFocus": false,
     "isThemeable": true,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [
       Object {
         "propName": "theme",
@@ -179,6 +193,7 @@ Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
     "isThemeable": true,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -187,6 +202,7 @@ Object {
     "hasSlottedCss": true,
     "isDelegatingFocus": false,
     "isThemeable": true,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -200,6 +216,7 @@ Object {
         "href": "string",
       },
     ],
+    "shouldPatchSlot": false,
     "skeletonProps": Array [
       Object {
         "propName": "hideLabel",
@@ -226,6 +243,7 @@ Object {
         "href": "string",
       },
     ],
+    "shouldPatchSlot": false,
     "skeletonProps": Array [
       Object {
         "propName": "hideLabel",
@@ -256,6 +274,7 @@ Object {
         "href": "string",
       },
     ],
+    "shouldPatchSlot": false,
     "skeletonProps": Array [
       Object {
         "propName": "hideLabel",
@@ -273,6 +292,7 @@ Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": true,
     "isThemeable": false,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -281,6 +301,7 @@ Object {
     "hasSlottedCss": true,
     "isDelegatingFocus": false,
     "isThemeable": false,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -289,6 +310,7 @@ Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": true,
     "isThemeable": true,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -297,6 +319,7 @@ Object {
     "hasSlottedCss": true,
     "isDelegatingFocus": false,
     "isThemeable": false,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -306,6 +329,7 @@ Object {
     "isDelegatingFocus": false,
     "isThemeable": false,
     "requiredChild": "input type=\\"radio\\"",
+    "shouldPatchSlot": false,
     "skeletonProps": Array [
       Object {
         "propName": "hideLabel",
@@ -324,6 +348,7 @@ Object {
     "isDelegatingFocus": false,
     "isThemeable": true,
     "requiredChild": "select",
+    "shouldPatchSlot": false,
     "skeletonProps": Array [
       Object {
         "propName": "description",
@@ -349,6 +374,7 @@ Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
     "isThemeable": true,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -357,6 +383,7 @@ Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
     "isThemeable": true,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -365,6 +392,7 @@ Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": true,
     "isThemeable": true,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -373,6 +401,7 @@ Object {
     "hasSlottedCss": true,
     "isDelegatingFocus": false,
     "isThemeable": false,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -382,6 +411,7 @@ Object {
     "isDelegatingFocus": false,
     "isThemeable": false,
     "requiredParent": "p-table",
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -391,6 +421,7 @@ Object {
     "isDelegatingFocus": false,
     "isThemeable": false,
     "requiredParent": "p-table-row",
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -400,6 +431,7 @@ Object {
     "isDelegatingFocus": false,
     "isThemeable": false,
     "requiredParent": "p-table",
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -409,6 +441,7 @@ Object {
     "isDelegatingFocus": false,
     "isThemeable": false,
     "requiredParent": "p-table-head-row",
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -418,6 +451,7 @@ Object {
     "isDelegatingFocus": false,
     "isThemeable": false,
     "requiredParent": "p-table-head",
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -427,6 +461,7 @@ Object {
     "isDelegatingFocus": false,
     "isThemeable": false,
     "requiredParent": "p-table-body",
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -435,6 +470,7 @@ Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
     "isThemeable": true,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -443,6 +479,7 @@ Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
     "isThemeable": true,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -452,6 +489,7 @@ Object {
     "isDelegatingFocus": false,
     "isThemeable": false,
     "requiredParent": "p-tabs",
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -460,6 +498,7 @@ Object {
     "hasSlottedCss": true,
     "isDelegatingFocus": false,
     "isThemeable": true,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [
       Object {
         "propName": "size",
@@ -478,6 +517,7 @@ Object {
     "isDelegatingFocus": false,
     "isThemeable": false,
     "requiredChild": "input type=text",
+    "shouldPatchSlot": false,
     "skeletonProps": Array [
       Object {
         "propName": "description",
@@ -499,6 +539,7 @@ Object {
     "hasSlottedCss": true,
     "isDelegatingFocus": false,
     "isThemeable": true,
+    "shouldPatchSlot": true,
     "skeletonProps": Array [
       Object {
         "propName": "theme",
@@ -513,6 +554,7 @@ Object {
     "isDelegatingFocus": false,
     "isThemeable": false,
     "requiredParent": "p-text-list",
+    "shouldPatchSlot": true,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -522,6 +564,7 @@ Object {
     "isDelegatingFocus": false,
     "isThemeable": false,
     "requiredChild": "textarea",
+    "shouldPatchSlot": false,
     "skeletonProps": Array [
       Object {
         "propName": "description",
@@ -543,6 +586,7 @@ Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
     "isThemeable": true,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
@@ -551,6 +595,7 @@ Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
     "isThemeable": true,
+    "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
   },
