@@ -3,24 +3,46 @@
     <div class="main-nav"></div>
     <div class="p-grid">
       <div class="teaser"></div>
-      <div class="home-stage"></div>
-      <div class="home-stage"></div>
-      <div class="home-stage"></div>
+      <div class="home-stage">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
       <div class="headline"></div>
-      <div class="car-range"></div>
-      <div class="car-range"></div>
-      <div class="car-range"></div>
-      <div class="car-range"></div>
-      <div class="car-range"></div>
-      <div class="car-range"></div>
-      <div class="content-info"></div>
-      <div class="content-info"></div>
+      <div class="car-range">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="content-info">
+        <div></div>
+        <div></div>
+      </div>
+      <div class="content-info">
+        <div></div>
+        <div></div>
+      </div>
       <div class="headline"></div>
-      <div class="story"></div>
+      <div class="story">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
       <div class="headline"></div>
-      <div class="home-stage"></div>
-      <div class="home-stage"></div>
-      <div class="home-stage"></div>
+      <div class="home-stage">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
     <div class="main-footer"></div>
   </div>
@@ -56,39 +78,35 @@
 }
 
 .p-grid > div {
-  background: $p-color-neutral-contrast-medium;
+  background: rgba(0,0,255,0.25);
 }
 
 .teaser {
   height: calc(100vh - 8rem);
   grid-column: main-start / main-end;
+  margin-bottom: $p-layout-x-large;
 }
 
 .home-stage {
-  margin-top: $p-layout-x-large;
-  height: 20rem;
-  grid-column: content-start / span 1;
+  margin-top: $p-layout-medium;
+  grid-column: content-start / content-end;
 
-  @include p-media-query('xs') {
-    grid-column: content-start / span 2;
+  // some custom grid
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: $p-grid-gutter;
+
+  @include p-media-query('s') {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: $p-grid-gutter-s;
+  }
+  @include p-media-query('m') {
+    grid-gap: $p-grid-gutter-m;
   }
 
-  @include p-media-query('l') {
-    grid-column: content-start / span 4;
-  }
-}
-
-.home-stage + .home-stage {
-  @include p-media-query('xxs', 'xs') {
-    margin-top: $p-layout-medium;
-  }
-
-  @include p-media-query('xs') {
-    grid-column: auto / span 2;
-  }
-
-  @include p-media-query('l') {
-    grid-column: auto / span 4;
+  & > * {
+    border: 1rem solid deeppink;
+    height: 20rem;
   }
 }
 
@@ -99,39 +117,191 @@
 }
 
 .car-range {
-  height: 20rem;
   margin-top: $p-layout-medium;
   grid-column: main-start / main-end;
 
+  // some custom grid
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: $p-grid-gutter;
+
+  @include p-media-query('s') {
+    grid-gap: $p-grid-gutter-s;
+  }
   @include p-media-query('m') {
-    margin-top: $p-layout-large;
-    grid-column: main-start / span 4;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: $p-grid-gutter-m;
   }
 
-  @include p-media-query('l') {
-    grid-column: main-start / span 7;
-  }
-}
-
-.car-range:nth-of-type(odd) {
-  @include p-media-query('m') {
-    grid-column: span 4 / main-end;
-  }
-
-  @include p-media-query('l') {
-    grid-column: span 7 / main-end;
+  & > * {
+    border: 1rem solid deeppink;
+    height: 20rem;
   }
 }
 
 .content-info {
-  height: 20rem;
-  margin-top: $p-layout-x-large;
+  margin-top: $p-layout-xx-large;
   grid-column: main-start / main-end;
+
+  // some custom grid
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @include p-media-query('m') {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  & > * {
+    border: 1rem solid deeppink;
+    height: 20rem;
+
+    @include p-media-query('m') {
+      grid-row-start: 1;
+    }
+  }
+
+  @include p-media-query('m') {
+    &:nth-of-type(odd) > :first-child {
+      grid-column: 1 / 5;
+    }
+
+    &:nth-of-type(odd) > :last-child {
+      grid-column: 5 / 7;
+    }
+
+    &:nth-of-type(even) > :first-child {
+      grid-column: 3 / 7;
+    }
+
+    &:nth-of-type(even) > :last-child {
+      grid-column: 1 / 3;
+    }
+  }
 }
 
 .story {
-  height: 40rem;
   margin-top: $p-layout-medium;
   grid-column: main-start / main-end;
+
+  // some custom grid
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-gap: .75rem;
+  height: 40rem;
+
+  & > * {
+    border: 1rem solid deeppink;
+  }
+
+  @include p-media-query('xxs', 's') {
+    grid-template-columns: 1fr 1fr;
+
+    & > :nth-of-type(1) {
+      grid-column: 1 / 3;
+      grid-row: 1 / 3;
+    }
+
+    & > :nth-of-type(2) {
+      grid-column: 1 / 2;
+      grid-row: 3 / 4;
+    }
+
+    & > :nth-of-type(3) {
+      grid-column: 2 / 3;
+      grid-row: 3 / 4;
+    }
+
+    & > :nth-of-type(3) ~ * {
+      display: none;
+    }
+  }
+
+  @include p-media-query('s', 'm') {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    & > :nth-of-type(1) {
+      grid-column: 1 / 3;
+      grid-row: 1 / 3;
+    }
+
+    & > :nth-of-type(2) {
+      grid-column: 1 / 2;
+      grid-row: 3 / 4;
+    }
+
+    & > :nth-of-type(3) {
+      grid-column: 2 / 3;
+      grid-row: 3 / 4;
+    }
+
+    & > :nth-of-type(4) {
+      grid-column: 3 / 4;
+      grid-row: 1 / 2;
+    }
+
+    & > :nth-of-type(5) {
+      grid-column: 4 / 5;
+      grid-row: 1 / 2;
+    }
+
+    & > :nth-of-type(6) {
+      grid-column: 3 / 5;
+      grid-row: 2 / 4;
+    }
+
+    & > :nth-of-type(6) ~ * {
+      display: none;
+    }
+  }
+
+  @include p-media-query('m') {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+
+    & > :nth-of-type(1) {
+      grid-column: 1 / 3;
+      grid-row: 1 / 3;
+    }
+
+    & > :nth-of-type(2) {
+      grid-column: 1 / 2;
+      grid-row: 3 / 4;
+    }
+
+    & > :nth-of-type(3) {
+      grid-column: 2 / 3;
+      grid-row: 3 / 4;
+    }
+
+    & > :nth-of-type(4) {
+      grid-column: 3 / 4;
+      grid-row: 1 / 2;
+    }
+
+    & > :nth-of-type(5) {
+      grid-column: 4 / 5;
+      grid-row: 1 / 2;
+    }
+
+    & > :nth-of-type(6) {
+      grid-column: 3 / 5;
+      grid-row: 2 / 4;
+    }
+
+    & > :nth-of-type(7) {
+      grid-column: 5 / 7;
+      grid-row: 1 / 3;
+    }
+
+    & > :nth-of-type(8) {
+      grid-column: 5 / 6;
+      grid-row: 3 / 4;
+    }
+
+    & > :nth-of-type(9) {
+      grid-column: 6 / 7;
+      grid-row: 3 / 4;
+    }
+  }
 }
+
 </style>
