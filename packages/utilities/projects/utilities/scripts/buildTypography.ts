@@ -135,22 +135,35 @@ const buildTypography = (): void => {
       )
       .join('\n\n');
 
-  const imports = [
-    "import { fontFamily, fontWeight } from './font/font';",
-    "import { mediaQueryMin, mediaQueryMinMax } from './media-query';",
-  ].join('\n');
-  const titles = objectToConst(title, 'title');
-  const headlines = objectToConst(headline, 'headline');
-  const texts = objectToConst(text, 'text');
-
-  const content = [imports, titles, headlines, texts].join('\n\n');
-
-  const targetDirectory = path.normalize('./src/jss');
-  const targetFilename = 'typography.ts';
-  const targetPath = path.resolve(targetDirectory, targetFilename);
-
+  const targetDirectory = path.normalize('./src/jss/typography');
   fs.mkdirSync(path.resolve(targetDirectory), { recursive: true });
-  fs.writeFileSync(targetPath, content);
+
+  const comment = '/* Auto Generated File */';
+  const fontImport = "import { fontFamily, fontWeight } from '../font/font';";
+  const mediaQueryImport = "import { mediaQueryMin, mediaQueryMinMax } from '../media-query';";
+
+  const inputs: { [fileName: string]: [string, string | object, object?] } = {
+    title: [fontImport, mediaQueryImport, title],
+    headline: [fontImport, mediaQueryImport, headline],
+    text: [fontImport, text],
+  };
+
+  Object.entries(inputs)
+    .map(([fileName, contents]) => [
+      fileName,
+      [
+        comment,
+        ...contents.map((content, idx, arr) =>
+          idx === arr.length - 1 ? '\n' + objectToConst(content as object, fileName) : content
+        ),
+      ].join('\n'),
+    ])
+    .forEach(([fileName, content]) => {
+      const targetFilename = `${fileName}.ts`;
+      const targetPath = path.resolve(targetDirectory, targetFilename);
+
+      fs.writeFileSync(targetPath, content);
+    });
 };
 
 buildTypography();

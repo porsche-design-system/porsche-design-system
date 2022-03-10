@@ -2,4 +2,6 @@
 /dist
 
 # auto generated files
-/src/jss/typography.ts
+/src/jss/typography/text.ts
+/src/jss/typography/title.ts
+/src/jss/typography/headline.ts
