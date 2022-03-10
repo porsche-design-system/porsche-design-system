@@ -15,4 +15,4 @@ const font: Font = {
   size: fontSize,
 };
 
-export { font, fontFamily, fontSize, fontWeight };
+export { font, fontFamily, fontSize, fontWeight, FontSizeLineHeight };
