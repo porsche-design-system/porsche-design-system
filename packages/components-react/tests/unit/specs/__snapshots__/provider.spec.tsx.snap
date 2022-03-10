@@ -3,17 +3,17 @@
 exports[`PorscheDesignSystemProvider should render components wrapped with nested provider and prefix 1`] = `
 <div>
   <my-prefix-p-button
-    class="PDS-Skeleton--theme-light PDS-Skeleton--variant-secondary"
+    class="pds-skeleton--theme-light pds-skeleton--variant-secondary"
   >
     Some Button
   </my-prefix-p-button>
   <another-prefix-p-button
-    class="PDS-Skeleton--theme-light PDS-Skeleton--variant-secondary"
+    class="pds-skeleton--theme-light pds-skeleton--variant-secondary"
   >
     Some Button
   </another-prefix-p-button>
   <p-button
-    class="PDS-Skeleton--theme-light PDS-Skeleton--variant-secondary"
+    class="pds-skeleton--theme-light pds-skeleton--variant-secondary"
   >
     Some Button
   </p-button>
@@ -23,7 +23,7 @@ exports[`PorscheDesignSystemProvider should render components wrapped with neste
 exports[`PorscheDesignSystemProvider should render prefixed components 1`] = `
 <div>
   <my-prefix-p-button
-    class="PDS-Skeleton--theme-light PDS-Skeleton--variant-secondary"
+    class="pds-skeleton--theme-light pds-skeleton--variant-secondary"
   >
     Some Button
   </my-prefix-p-button>
@@ -33,7 +33,7 @@ exports[`PorscheDesignSystemProvider should render prefixed components 1`] = `
 exports[`PorscheDesignSystemProvider should render unprefixed components 1`] = `
 <div>
   <p-button
-    class="PDS-Skeleton--theme-light PDS-Skeleton--variant-secondary"
+    class="pds-skeleton--theme-light pds-skeleton--variant-secondary"
   >
     Some Button
   </p-button>
@@ -43,7 +43,7 @@ exports[`PorscheDesignSystemProvider should render unprefixed components 1`] = `
 exports[`PorscheDesignSystemProvider should support changing prefix at runtime 1`] = `
 <div>
   <my-prefix-p-button
-    class="PDS-Skeleton--theme-light PDS-Skeleton--variant-secondary"
+    class="pds-skeleton--theme-light pds-skeleton--variant-secondary"
     data-testid="button"
   >
     Some Button
@@ -54,7 +54,7 @@ exports[`PorscheDesignSystemProvider should support changing prefix at runtime 1
 exports[`PorscheDesignSystemProvider should support changing prefix at runtime 2`] = `
 <div>
   <new-prefix-p-button
-    class="PDS-Skeleton--theme-light PDS-Skeleton--variant-secondary"
+    class="pds-skeleton--theme-light pds-skeleton--variant-secondary"
     data-testid="button"
   >
     Some Button
