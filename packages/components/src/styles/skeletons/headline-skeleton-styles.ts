@@ -25,20 +25,23 @@ export const getHeadlineSkeletonCss = (): string => {
 
   const variantToTypographyMap: { [key in Exclude<VariantType, 'headline-5'>]: HeadlineType } = {
     'large-title': titleLarge,
-    'headline-1': headline1,
     'headline-2': headline2,
     'headline-3': headline3,
     'headline-4': headline4,
   };
 
   const getHeadlineVariantStyle = (): JssStyle =>
-    Object.entries(variantToTypographyMap).map(([key, value]) => ({
-      [`&[${skeletonPropertyNames.variant}=${key}, &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.variant}-${key}`]:
-        {
-          ...getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(value)),
-          ...getHeadlineSkeletonStyle(value),
-        },
-    }));
+    Object.entries(variantToTypographyMap).reduce(
+      (prevValue, [key, value]) => ({
+        ...prevValue,
+        [`&[${skeletonPropertyNames.variant}=${key}, &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.variant}-${key}`]:
+          {
+            ...getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(value)),
+            ...getHeadlineSkeletonStyle(value),
+          },
+      }),
+      {}
+    );
 
   return getMinifiedCss({
     '@global': {
