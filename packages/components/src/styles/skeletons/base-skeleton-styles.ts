@@ -56,7 +56,7 @@ export const getElementBackgroundGradient = (
   } transparent ${elementHeight}px)`;
 };
 
-export const getPseudoElementStyle = (): JssStyle => {
+export const getPseudoElementJssStyle = (): JssStyle => {
   return {
     position: 'absolute',
     left: '0',
@@ -67,7 +67,7 @@ export const getPseudoElementStyle = (): JssStyle => {
   };
 };
 
-export const getBaseSkeletonStyle = (hasLabel = true, elementHeight = ELEMENT_SKELETON_DIMENSION): JssStyle => {
+export const getBaseSkeletonJssStyle = (hasLabel = true, elementHeight = ELEMENT_SKELETON_DIMENSION): JssStyle => {
   return {
     position: 'relative',
     color: 'transparent',
@@ -75,7 +75,7 @@ export const getBaseSkeletonStyle = (hasLabel = true, elementHeight = ELEMENT_SK
       ? {
           display: 'block',
           '&::before': {
-            ...getPseudoElementStyle(),
+            ...getPseudoElementJssStyle(),
             height: pxToRemWithUnit(LABEL_HEIGHT),
             width: pxToRemWithUnit(128),
             top: '0',
@@ -89,7 +89,7 @@ export const getBaseSkeletonStyle = (hasLabel = true, elementHeight = ELEMENT_SK
       ...(!hasLabel && {
         display: 'block',
       }),
-      ...getPseudoElementStyle(),
+      ...getPseudoElementJssStyle(),
       top: pxToRemWithUnit(hasLabel ? LABEL_HEIGHT_WITH_SPACING : 0),
       width: '100%',
       minHeight: hasLabel ? getAfterMinHeight(LABEL_HEIGHT_WITH_SPACING) : '100%',
@@ -106,7 +106,7 @@ type ExtendPseudoWithThemeOptions = {
   pseudosToExtend?: PseudoElementSelectorsType[];
 };
 
-export const extendPseudoWithTheme = (opts?: ExtendPseudoWithThemeOptions): JssStyle => {
+export const extendPseudoWithThemeJssStyle = (opts?: ExtendPseudoWithThemeOptions): JssStyle => {
   const { theme = 'light', styleFunction = () => ({}), pseudosToExtend = ['&::after'] } = opts ?? {};
 
   return {
@@ -123,19 +123,19 @@ export const extendPseudoWithTheme = (opts?: ExtendPseudoWithThemeOptions): JssS
   };
 };
 
-export const getThemedPseudoStyle = (hasLabel?: boolean): JssStyle => {
+export const getThemedPseudoJssStyle = (hasLabel?: boolean): JssStyle => {
   let pseudoElements: PseudoElementSelectorsType[];
   if (hasLabel) {
     pseudoElements = ['&::before', '&::after'];
   }
   return {
     [`&[theme=dark], &.${PDS_SKELETON_CLASS_PREFIX}theme-dark`]: {
-      ...extendPseudoWithTheme({ theme: 'dark', pseudosToExtend: pseudoElements }),
+      ...extendPseudoWithThemeJssStyle({ theme: 'dark', pseudosToExtend: pseudoElements }),
     },
   };
 };
 
-export const getHiddenLabelStyle = (): JssStyle => ({
+export const getHiddenLabelJssStyle = (): JssStyle => ({
   height: getSkeletonElementHeight(ELEMENT_SKELETON_DIMENSION, false),
   '&::before': {
     content: 'none',

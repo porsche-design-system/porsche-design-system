@@ -11,16 +11,8 @@ export const LinkSocialSkeletonPage = (): JSX.Element => {
     });
   }, []);
 
-  const style = `
-    p-link-social:not(:last-child) {
-      margin-right: 0.5rem;
-    }
-  `;
-
   return (
     <>
-      <style children={style} />
-
       <div className="playground light" title="should render link social skeleton with label">
         <PLinkSocial href="https://www.facebook.com" icon="logo-facebook">Some label</PLinkSocial>
       </div>

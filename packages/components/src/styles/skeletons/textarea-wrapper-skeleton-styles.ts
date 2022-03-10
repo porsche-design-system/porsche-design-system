@@ -1,13 +1,13 @@
 import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
 import {
-  extendPseudoWithTheme,
+  extendPseudoWithThemeJssStyle,
   getAfterMinHeight,
-  getBaseSkeletonStyle,
+  getBaseSkeletonJssStyle,
   getElementBackgroundGradient,
-  getHiddenLabelStyle,
+  getHiddenLabelJssStyle,
   getSkeletonElementHeight,
   getSkeletonPropertyNames,
-  getThemedPseudoStyle,
+  getThemedPseudoJssStyle,
   LABEL_HEIGHT,
   LABEL_HEIGHT_SPACING,
   LABEL_HEIGHT_WITH_DESCRIPTION,
@@ -23,8 +23,8 @@ export const getTextareaWrapperSkeletonCss = (): string => {
     '@global': {
       'p-textarea-wrapper': {
         '&:not(.hydrated)': {
-          ...extendPseudoWithTheme({
-            styleFunction: getBaseSkeletonStyle,
+          ...extendPseudoWithThemeJssStyle({
+            styleFunction: getBaseSkeletonJssStyle,
             pseudosToExtend: ['&::before', '&::after'],
           }),
           minHeight: getSkeletonElementHeight(TEXTAREA_SKELETON_HEIGHT),
@@ -32,7 +32,7 @@ export const getTextareaWrapperSkeletonCss = (): string => {
           // TODO: use constants for getComponentMeta for "property" class and values
           // hideLabel or no description and no label
           [`&[${skeletonPropertyNames.hideLabel}=true], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.hideLabel}, &:not([${skeletonPropertyNames.description}]):not([${skeletonPropertyNames.label}]):not(.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.description}):not(.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.label})`]:
-            getHiddenLabelStyle(),
+            getHiddenLabelJssStyle(),
           // description no label and no hideLabel
           [`&[${skeletonPropertyNames.description}]:not([${skeletonPropertyNames.label}]):not(.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.label}), &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.description}:not(.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.label})`]:
             {
@@ -60,7 +60,7 @@ export const getTextareaWrapperSkeletonCss = (): string => {
               },
             },
 
-          ...getThemedPseudoStyle(true),
+          ...getThemedPseudoJssStyle(true),
         },
       },
     },

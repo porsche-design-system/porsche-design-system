@@ -2,7 +2,7 @@ import type { BreakpointCustomizable } from '../../../utils';
 import type { ThemeExtendedElectric } from '../../../types';
 import type { AccordionSize } from './accordion-utils';
 import { buildResponsiveStyles, getCss } from '../../../utils';
-import { getFocusStyle, getTransition, pxToRemWithUnit, transitionDuration, getThemedColors } from '../../../styles';
+import { getFocusJssStyle, getTransition, pxToRemWithUnit, transitionDuration, getThemedColors } from '../../../styles';
 import { fontFamily, fontWeight, fontSize, spacing } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
@@ -49,7 +49,7 @@ export const getComponentCss = (
               ...fontSize[s],
               padding: `${pxToRemWithUnit(s === 'medium' ? 20 : 12)} 0`,
             }))),
-        ...getFocusStyle({ color: focusColor }),
+        ...getFocusJssStyle({ color: focusColor }),
         '&:hover': {
           color: hoverColor,
         },

@@ -4,13 +4,6 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-button-skeleton',
-  styles: [
-    `
-      p-button:not(:last-child) {
-        margin-right: 0.5rem;
-      }
-    `,
-  ],
   template: `
     <div class="playground light" title="should render button skeleton">
       <p-button>Some label</p-button>

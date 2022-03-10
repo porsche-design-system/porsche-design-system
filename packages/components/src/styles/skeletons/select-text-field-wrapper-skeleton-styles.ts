@@ -2,14 +2,14 @@ import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/get
 import {
   BUTTON_LINK_SKELETON_WIDTH,
   ELEMENT_SKELETON_DIMENSION,
-  extendPseudoWithTheme,
+  extendPseudoWithThemeJssStyle,
   getAfterMinHeight,
-  getBaseSkeletonStyle,
+  getBaseSkeletonJssStyle,
   getElementBackgroundGradient,
-  getHiddenLabelStyle,
+  getHiddenLabelJssStyle,
   getSkeletonElementHeight,
   getSkeletonPropertyNames,
-  getThemedPseudoStyle,
+  getThemedPseudoJssStyle,
   LABEL_HEIGHT,
   LABEL_HEIGHT_SPACING,
   LABEL_HEIGHT_WITH_DESCRIPTION,
@@ -24,8 +24,8 @@ export const getSelectTextFieldWrapperSkeletonCss = (): string => {
     '@global': {
       'p-select-wrapper, p-text-field-wrapper': {
         '&:not(.hydrated)': {
-          ...extendPseudoWithTheme({
-            styleFunction: getBaseSkeletonStyle,
+          ...extendPseudoWithThemeJssStyle({
+            styleFunction: getBaseSkeletonJssStyle,
             pseudosToExtend: ['&::before', '&::after'],
           }),
 
@@ -35,7 +35,7 @@ export const getSelectTextFieldWrapperSkeletonCss = (): string => {
           // TODO: use constants for getComponentMeta for "property" class and values
           // hideLabel or no description and no label
           [`&[${skeletonPropertyNames.hideLabel}=true], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.hideLabel}, &:not([${skeletonPropertyNames.description}]):not([${skeletonPropertyNames.label}]):not(.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.description}):not(.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.label})`]:
-            getHiddenLabelStyle(),
+            getHiddenLabelJssStyle(),
           // description no label and no hideLabel
           [`&[${skeletonPropertyNames.description}]:not([${skeletonPropertyNames.label}]):not(.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.label}), &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.description}:not(.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.label})`]:
             {
@@ -62,7 +62,7 @@ export const getSelectTextFieldWrapperSkeletonCss = (): string => {
                 minHeight: getAfterMinHeight(LABEL_HEIGHT_WITH_DESCRIPTION),
               },
             },
-          ...getThemedPseudoStyle(true),
+          ...getThemedPseudoJssStyle(true),
         },
       },
     },

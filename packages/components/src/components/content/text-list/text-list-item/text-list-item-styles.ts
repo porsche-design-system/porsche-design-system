@@ -4,7 +4,7 @@ import { getCss, mergeDeep } from '../../../../utils';
 import { addImportantToEachRule, pxToRemWithUnit } from '../../../../styles';
 import { textSmall } from '@porsche-design-system/utilities-v2';
 
-const getNestedListStyle = (isNestedList: boolean, listType: ListType): JssStyle =>
+const getNestedListJssStyle = (isNestedList: boolean, listType: ListType): JssStyle =>
   isNestedList &&
   listType === 'unordered' && {
     '&:before': {
@@ -14,7 +14,7 @@ const getNestedListStyle = (isNestedList: boolean, listType: ListType): JssStyle
     },
   };
 
-const getTypeStyle = (listType: ListType, orderType: OrderType, isNestedList: boolean): JssStyle => {
+const getTypeJssStyle = (listType: ListType, orderType: OrderType, isNestedList: boolean): JssStyle => {
   return listType === 'ordered'
     ? {
         paddingLeft: pxToRemWithUnit(40),
@@ -59,8 +59,8 @@ export const getComponentCss = (listType: ListType, orderType: OrderType, isNest
               position: 'absolute',
             },
           },
-          getTypeStyle(listType, orderType, isNestedList),
-          getNestedListStyle(isNestedList, listType)
+          getTypeJssStyle(listType, orderType, isNestedList),
+          getNestedListJssStyle(isNestedList, listType)
         )
       ),
     },

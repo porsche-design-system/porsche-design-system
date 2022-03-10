@@ -1,6 +1,6 @@
 import type { JssStyle } from 'jss';
 
-export const getSlottedTypographyStyle = (): JssStyle => {
+export const getSlottedTypographyJssStyle = (): JssStyle => {
   return {
     margin: 'inherit',
     padding: 'inherit',
@@ -18,7 +18,7 @@ export const getSlottedTypographyStyle = (): JssStyle => {
   };
 };
 
-export const getEllipsisStyle = (): JssStyle => {
+export const getEllipsisJssStyle = (): JssStyle => {
   return {
     maxWidth: '100%',
     overflow: 'hidden',

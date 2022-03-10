@@ -4,7 +4,7 @@ import type { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../..
 import { buildSlottedStyles, getCss, buildResponsiveStyles, paramCaseToCamelCase } from '../../../../utils';
 import { addImportantToEachRule, getBaseSlottedStyles } from '../../../../styles';
 import { fontFamily, fontWeight, text } from '@porsche-design-system/utilities-v2';
-import { getEllipsisStyle, getSlottedTypographyStyle } from '../../../../styles/typography-styles';
+import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../../../styles/typography-styles';
 import { getThemedTextColor } from '../../../../styles/text-icon-styles';
 
 const getSizeStyle = (size: TextSize): Pick<JssStyle, 'lineHeight' | 'fontSize'> => {
@@ -28,7 +28,7 @@ export const getComponentCss = (
       },
       '::slotted': {
         '&(p),&(address),&(blockquote),&(figcaption),&(cite),&(time),&(legend)': addImportantToEachRule(
-          getSlottedTypographyStyle()
+          getSlottedTypographyJssStyle()
         ),
       },
     },
@@ -47,7 +47,7 @@ export const getComponentCss = (
       whiteSpace: 'inherit',
       transition: 'font-size 1ms linear',
       WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
-      ...(ellipsis && getEllipsisStyle()),
+      ...(ellipsis && getEllipsisJssStyle()),
       ...buildResponsiveStyles(size, getSizeStyle),
     },
   });

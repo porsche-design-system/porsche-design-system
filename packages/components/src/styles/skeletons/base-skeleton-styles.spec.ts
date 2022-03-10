@@ -1,12 +1,12 @@
 import {
-  extendPseudoWithTheme,
+  extendPseudoWithThemeJssStyle,
   getAfterMinHeight,
-  getBaseSkeletonStyle,
+  getBaseSkeletonJssStyle,
   getElementBackgroundGradient,
-  getHiddenLabelStyle,
+  getHiddenLabelJssStyle,
   getSkeletonElementHeight,
   getSkeletonPropertyNames,
-  getThemedPseudoStyle,
+  getThemedPseudoJssStyle,
 } from './base-skeleton-styles';
 import { TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared-src/src';
 import { TagName } from '@porsche-design-system/shared';
@@ -59,39 +59,39 @@ describe('getElementBackgroundGradient()', () => {
   );
 });
 
-describe('getBaseSkeletonStyle()', () => {
-  it.each<Parameters<typeof getBaseSkeletonStyle>>([
+describe('getBaseSkeletonJssStyle()', () => {
+  it.each<Parameters<typeof getBaseSkeletonJssStyle>>([
     [true, 48],
     [false, 24],
   ])('should match style snapshot for hasLabel: %s and elementHeight: %s', (...args) => {
-    expect(getBaseSkeletonStyle(...args)).toMatchSnapshot();
+    expect(getBaseSkeletonJssStyle(...args)).toMatchSnapshot();
   });
 });
 
-describe('extendPseudoWithTheme()', () => {
-  it.each<Parameters<typeof extendPseudoWithTheme>>([
+describe('extendPseudoWithThemeJssStyle()', () => {
+  it.each<Parameters<typeof extendPseudoWithThemeJssStyle>>([
     [{}],
     [{ theme: 'dark' }],
     [{ styleFunction: () => ({ display: 'block' }) }],
     [{ pseudosToExtend: ['&::after', '&::before'] }],
     [{ theme: 'dark', styleFunction: () => ({ display: 'block' }), pseudosToExtend: ['&::after', '&::before'] }],
   ])('should match style snapshot for parameters: %o ', (...args) => {
-    expect(extendPseudoWithTheme(...args)).toMatchSnapshot();
+    expect(extendPseudoWithThemeJssStyle(...args)).toMatchSnapshot();
   });
 });
 
-describe('getThemedPseudoStyle()', () => {
-  it.each<Parameters<typeof getThemedPseudoStyle>>([[true], [false]])(
+describe('getThemedPseudoJssStyle()', () => {
+  it.each<Parameters<typeof getThemedPseudoJssStyle>>([[true], [false]])(
     'should match style snapshot for hasLabel: %s',
     (...args) => {
-      expect(getThemedPseudoStyle(...args)).toMatchSnapshot();
+      expect(getThemedPseudoJssStyle(...args)).toMatchSnapshot();
     }
   );
 });
 
-describe('getHiddenLabelStyle()', () => {
+describe('getHiddenLabelJssStyle()', () => {
   it('should match style snapshot', () => {
-    expect(getHiddenLabelStyle()).toMatchSnapshot();
+    expect(getHiddenLabelJssStyle()).toMatchSnapshot();
   });
 });
 
