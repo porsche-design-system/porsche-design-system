@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.9.1] - 2022-03-10
+
+### [2.9.1-rc.0] - 2022-03-09
+
 #### Added
 - **[EXPERIMENTAL]** `getInitialStyles` now accepts a `skeletonTagNames` array of component names that will initially have skeleton styles while the Porsche Design System is loading
 - **[EXPERIMENTAL]** `Button`, `Button Pure`, `Checkbox Wrapper`, `Fieldset Wrapper`, `Headline`, `Link`, `Link Pure`, `Link Social`, `Radio Button Wrapper`, `Select Wrapper`, `Text Field Wrapper`, `Text List`, `Text List Item`, `Textarea Wrapper` can now have skeleton styles based on their default attributes
@@ -15,6 +19,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Changed
 - `Modal` heading and aria validation happens only when open
+
+#### Fixed
+- React: bundling format of partials
 
 ### [2.9.0] - 2022-02-28
 
