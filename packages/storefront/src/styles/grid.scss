@@ -1,0 +1,102 @@
+@import "~@porsche-design-system/utilities/scss";
+
+@function debug-grid-column-width($columns) {
+  @return calc((100% - (var(--p-grid-safe-zone) * 2) - (var(--p-grid-gutter) * #{$columns - 1})) / #{$columns});
+}
+
+@function debug-grid-column-start-pos($column, $columns) {
+  @return calc(var(--p-grid-safe-zone) + (var(--p-grid-gutter) + #{debug-grid-column-width($columns)}) * #{$column - 1});
+}
+
+@function debug-grid-column-end-pos($column, $columns) {
+  @return calc(debug-grid-column-start-pos($column, $columns) + calc(#{debug-grid-column-width($columns)}));
+}
+
+@mixin p-grid($debug: false) {
+  --p-grid-columns: 1; // shall be overwritable by consumer
+  --p-grid-gutter: 1rem !important;
+  --p-grid-safe-zone: 7vw !important;
+  --p-grid-safe-zone-calc: calc(var(--p-grid-safe-zone) - var(--p-grid-gutter)) !important; // should be better a scss variable
+  display: grid !important;
+  grid-column-gap: var(--p-grid-gutter) !important;
+  grid-template-columns:
+    [main-start]
+      var(--p-grid-safe-zone-calc)
+      [content-start]
+        repeat(var(--p-grid-columns), minmax(0, 1fr))
+      [content-end]
+      var(--p-grid-safe-zone-calc)
+    [main-end] !important;
+  max-width: 120rem !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+
+  @include p-media-query('xs') {
+    --p-grid-columns: 6;
+  }
+
+  @include p-media-query('s') {
+    --p-grid-gutter: 1.5rem !important;
+  }
+
+  @include p-media-query('m') {
+    --p-grid-gutter: 2.25rem !important;
+  }
+
+  @include p-media-query('l') {
+    --p-grid-columns: 12;
+  }
+
+  @include p-media-query('xl') {
+    --p-grid-safe-zone: 10vw !important;
+  }
+
+  @include p-media-query('xxl') {
+    --p-grid-safe-zone: 12rem !important;
+  }
+
+  @if $debug {
+    // for visualization reasons only, shall never be rolled out to costumer
+    &::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999999;
+      max-width: 120rem !important;
+      margin: 0 auto !important;
+
+      $debug-grid-column-color: rgba(255, 0, 0, 0.25);
+      $debug-grid-gutter-color: transparent;
+      $debug-grid-safe-zone: linear-gradient(90deg,
+        $debug-grid-column-color 0, $debug-grid-column-color var(--p-grid-safe-zone-calc),
+        $debug-grid-gutter-color var(--p-grid-safe-zone-calc), $debug-grid-gutter-color 100%,
+      ),
+      linear-gradient(90deg,
+          $debug-grid-gutter-color 0, $debug-grid-gutter-color calc(100% - var(--p-grid-safe-zone-calc)),
+          $debug-grid-column-color calc(100% - var(--p-grid-safe-zone-calc)), $debug-grid-column-color 100%,
+      );
+
+      $debug-grid: ('xxs': 1, 'xs': 6, 'l': 12);
+
+      @each $breakpoint, $columns in $debug-grid {
+        @include p-media-query($breakpoint) {
+          $debug-grid-background: $debug-grid-safe-zone;
+
+          $debug-grid-columns: $columns;
+          @for $i from 1 through $debug-grid-columns {
+            $debug-grid-column-start: debug-grid-column-start-pos($i, $debug-grid-columns);
+            $debug-grid-column-end: debug-grid-column-end-pos($i, $debug-grid-columns);
+
+            $debug-grid-background: $debug-grid-background, linear-gradient(90deg,
+              $debug-grid-gutter-color 0, $debug-grid-gutter-color $debug-grid-column-start,
+              $debug-grid-column-color $debug-grid-column-start, $debug-grid-column-color $debug-grid-column-end,
+              $debug-grid-gutter-color $debug-grid-column-end, $debug-grid-gutter-color 100%,
+            );
+          }
+
+          background: $debug-grid-background;
+        }
+      }
+    }
+  }
+}

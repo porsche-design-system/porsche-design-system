@@ -17,50 +17,11 @@
 
 <style lang="scss" scoped>
 @import "~@porsche-design-system/utilities/scss";
+@import '../../../styles/grid.scss';
 
 .p-grid {
-  --p-grid-columns: 1;
-  --p-grid-gutter: 1rem;
-  --p-grid-safe-zone: 7vw;
-  display: grid !important;
-  grid-column-gap: var(--p-grid-gutter) !important;
-  grid-template-columns:
-    [main-start]
-      calc(var(--p-grid-safe-zone) - var(--p-grid-gutter))
-      [content-start]
-        repeat(var(--p-grid-columns), minmax(0, 1fr))
-      [content-end]
-      calc(var(--p-grid-safe-zone) - var(--p-grid-gutter))
-    [main-end] !important;
-  max-width: 120rem !important;
-  margin: 0 auto !important;
-  padding: 0 !important;
-
-  @include p-media-query('xs') {
-    --p-grid-columns: 6;
-  }
-
-  @include p-media-query('s') {
-    --p-grid-gutter: 1.5rem;
-  }
-
-  @include p-media-query('m') {
-    --p-grid-gutter: 2.25rem;
-  }
-
-  @include p-media-query('l') {
-    --p-grid-columns: 12;
-  }
-
-  @include p-media-query('xl') {
-    --p-grid-safe-zone: 10vw;
-  }
-
-  @include p-media-query('xxl') {
-    --p-grid-safe-zone: 12rem;
-  }
+  @include p-grid(true);
 }
-
 
 /* ********* CONSUMER ********* CONSUMER ********* */
 
@@ -118,6 +79,4 @@
   margin: $p-layout-x-large 0;
   grid-column: content-start / content-end;
 }
-
-
 </style>
