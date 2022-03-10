@@ -17,7 +17,7 @@
     "build:type:addMissingTypeExport": "ts-node --project './tsconfig.node.json' './scripts/addMissingTypeExport.ts'",
     "build:type:bundle": "dts-bundle-generator -o ./dist/types/bundle.d.ts ./dist/types/index.d.ts --inline-declare-global --external-types --no-banner",
     "build:cleanReadmes": "ts-node --project './tsconfig.node.json' './scripts/cleanReadmes.ts'",
-    "build:copyCjsBuildToComponentsReact": "rm -rf ../components-react/projects/jsdom-polyfill/src/lib && cp -r dist/cjs ../components-react/projects/jsdom-polyfill/src/lib",
+    "build:copyCjsBuildToComponentsReact": "TARGET=../components-react/projects/jsdom-polyfill/src/lib && rm -rf $TARGET && cp -r dist/cjs $TARGET",
     "build:addTableOfContents": "ts-node --project './tsconfig.node.json' './scripts/addTableOfContents.ts'",
     "build:clean": "yarn build:clean:loader && yarn build:clean:deletePolyfills && yarn build:clean:deleteGeneratedLoader",
     "build:clean:loader": "ts-node  --project './tsconfig.node.json' './scripts/cleanupLoader.ts'",
