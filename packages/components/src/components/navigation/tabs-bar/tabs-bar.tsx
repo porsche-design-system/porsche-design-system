@@ -60,6 +60,15 @@ export class TabsBar {
   private prevActiveTabIndex: number;
   private hasPTabsParent: boolean;
 
+  private get focusedTabIndex(): number {
+    if (this.hasPTabsParent) {
+      return this.activeTabIndex ?? 0;
+    } else {
+      const indexOfActiveElement = this.tabElements.indexOf(document?.activeElement as HTMLElement);
+      return indexOfActiveElement < 0 ? 0 : indexOfActiveElement;
+    }
+  }
+
   @Watch('activeTabIndex')
   public activeTabHandler(newValue: number, oldValue: number): void {
     this.activeTabIndex = sanitizeActiveTabIndex(newValue, this.tabElements.length);
@@ -322,15 +331,6 @@ export class TabsBar {
     const scrollPosition = getScrollPositionAfterPrevNextClick(this.tabElements, this.scrollAreaElement, direction);
     scrollElementTo(this.scrollAreaElement, scrollPosition);
   };
-
-  private get focusedTabIndex(): number {
-    if (this.hasPTabsParent) {
-      return this.activeTabIndex ?? 0;
-    } else {
-      const indexOfActiveElement = this.tabElements.indexOf(document?.activeElement as HTMLElement);
-      return indexOfActiveElement < 0 ? 0 : indexOfActiveElement;
-    }
-  }
 
   private getPrevNextTabIndex = (direction: Direction): number => {
     const tabsLength = this.tabElements.length;

@@ -1,3 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css 1`] = `":host{display:table-row !important;transition:background-color var(--p-transition-duration, .24s) ease !important}:host(:hover){background-color:#f2f2f2 !important}"`;
+exports[`getComponentCss() should return correct css 1`] = `
+":host {
+  display: table-row !important;
+  transition: background-color var(--p-transition-duration, .24s) ease !important;
+}
+:host(:hover) {
+  background-color: #f2f2f2 !important;
+}"
+`;

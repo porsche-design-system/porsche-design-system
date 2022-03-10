@@ -9,6 +9,7 @@ import {
   transitionListener,
   attachComponentCss,
   parseAndGetAriaAttributes,
+  warnIfParentIsPTextAndIconIsNone,
 } from '../../../utils';
 import type {
   SelectedAriaAttributes,
@@ -80,6 +81,10 @@ export class ButtonPure {
   private buttonTag: HTMLElement;
   private iconTag: HTMLElement;
 
+  private get isDisabledOrLoading(): boolean {
+    return isDisabledOrLoading(this.disabled, this.loading);
+  }
+
   // this stops click events when button is disabled
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
@@ -90,6 +95,7 @@ export class ButtonPure {
 
   public componentWillRender(): void {
     warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon);
+    warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
     attachComponentCss(
       this.host,
       getComponentCss,
@@ -169,9 +175,5 @@ export class ButtonPure {
         )}
       </Host>
     );
-  }
-
-  private get isDisabledOrLoading(): boolean {
-    return isDisabledOrLoading(this.disabled, this.loading);
   }
 }

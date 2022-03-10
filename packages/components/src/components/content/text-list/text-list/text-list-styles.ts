@@ -5,11 +5,11 @@ import { textSmall } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (theme: Theme): string => {
   return getCss({
-    ':host': {
-      counterReset: addImportantToRule('section'),
-      display: 'block',
-    },
     '@global': {
+      ':host': {
+        counterReset: addImportantToRule('section'),
+        display: 'block',
+      },
       '[role]': {
         display: 'block',
         padding: 0,

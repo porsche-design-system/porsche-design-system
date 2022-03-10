@@ -26,33 +26,33 @@ exports[`should have no basic DOM regression for p-banner 1`] = `
     text-decoration: underline !important;
     transition: color var(--p-transition-duration, .24s) ease !important;
     outline: 1px solid transparent !important;
-    outline-offset: 1px !important
+    outline-offset: 1px !important;
   }
 
   p-inline-notification b,
   p-inline-notification strong {
-    font-weight: 700 !important
+    font-weight: 700 !important;
   }
 
   p-inline-notification em,
   p-inline-notification i {
-    font-style: normal !important
+    font-style: normal !important;
   }
 
   p-inline-notification a:hover {
-    color: #d5001c !important
+    color: #d5001c !important;
   }
 
   p-inline-notification a::-moz-focus-inner {
-    border: 0 !important
+    border: 0 !important;
   }
 
   p-inline-notification a:focus {
-    outline-color: currentColor !important
+    outline-color: currentColor !important;
   }
 
   p-inline-notification a:focus:not(:focus-visible) {
-    outline-color: transparent !important
+    outline-color: transparent !important;
   }
 </style>
 <p-content-wrapper class=\\"hydrated\\">
@@ -63,42 +63,57 @@ exports[`should have no basic DOM regression for p-banner 1`] = `
 
 exports[`should have no basic DOM regression for p-button 1`] = `
 "<style>
-  p-text a {
+  p-text button {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: 0 !important;
+    border: 0 !important;
+    cursor: pointer !important;
+    font: inherit !important;
+  }
+
+  p-text a,
+  p-text button {
     color: inherit !important;
     text-decoration: underline !important;
     transition: color var(--p-transition-duration, .24s) ease !important;
     outline: 1px solid transparent !important;
-    outline-offset: 1px !important
+    outline-offset: 1px !important;
   }
 
-  p-text[theme=\\"dark\\"] a:hover {
-    color: #ff0223 !important
+  p-text[theme=\\"dark\\"] a:hover,
+  p-text[theme=\\"dark\\"] button:hover {
+    color: #ff0223 !important;
   }
 
   p-text b,
   p-text strong {
-    font-weight: 700 !important
+    font-weight: 700 !important;
   }
 
   p-text em,
   p-text i {
-    font-style: normal !important
+    font-style: normal !important;
   }
 
-  p-text a:hover {
-    color: #d5001c !important
+  p-text a:hover,
+  p-text button:hover {
+    color: #d5001c !important;
   }
 
-  p-text a::-moz-focus-inner {
-    border: 0 !important
+  p-text a::-moz-focus-inner,
+  p-text button::-moz-focus-inner {
+    border: 0 !important;
   }
 
-  p-text a:focus {
-    outline-color: currentColor !important
+  p-text a:focus,
+  p-text button:focus {
+    outline-color: currentColor !important;
   }
 
-  p-text a:focus:not(:focus-visible) {
-    outline-color: transparent !important
+  p-text a:focus:not(:focus-visible),
+  p-text button:focus:not(:focus-visible) {
+    outline-color: transparent !important;
   }
 </style>
 <button class=\\"root\\" type=\\"submit\\" tabindex=\\"0\\">
@@ -120,42 +135,57 @@ exports[`should have no basic DOM regression for p-button-group 1`] = `
 
 exports[`should have no basic DOM regression for p-button-pure 1`] = `
 "<style>
-  p-text a {
+  p-text button {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: 0 !important;
+    border: 0 !important;
+    cursor: pointer !important;
+    font: inherit !important;
+  }
+
+  p-text a,
+  p-text button {
     color: inherit !important;
     text-decoration: underline !important;
     transition: color var(--p-transition-duration, .24s) ease !important;
     outline: 1px solid transparent !important;
-    outline-offset: 1px !important
+    outline-offset: 1px !important;
   }
 
-  p-text[theme=\\"dark\\"] a:hover {
-    color: #ff0223 !important
+  p-text[theme=\\"dark\\"] a:hover,
+  p-text[theme=\\"dark\\"] button:hover {
+    color: #ff0223 !important;
   }
 
   p-text b,
   p-text strong {
-    font-weight: 700 !important
+    font-weight: 700 !important;
   }
 
   p-text em,
   p-text i {
-    font-style: normal !important
+    font-style: normal !important;
   }
 
-  p-text a:hover {
-    color: #d5001c !important
+  p-text a:hover,
+  p-text button:hover {
+    color: #d5001c !important;
   }
 
-  p-text a::-moz-focus-inner {
-    border: 0 !important
+  p-text a::-moz-focus-inner,
+  p-text button::-moz-focus-inner {
+    border: 0 !important;
   }
 
-  p-text a:focus {
-    outline-color: currentColor !important
+  p-text a:focus,
+  p-text button:focus {
+    outline-color: currentColor !important;
   }
 
-  p-text a:focus:not(:focus-visible) {
-    outline-color: transparent !important
+  p-text a:focus:not(:focus-visible),
+  p-text button:focus:not(:focus-visible) {
+    outline-color: transparent !important;
   }
 </style>
 <button class=\\"root\\" type=\\"submit\\" tabindex=\\"0\\">
@@ -221,7 +251,7 @@ exports[`should have no basic DOM regression for p-headline 1`] = `
 exports[`should have no basic DOM regression for p-icon 1`] = `
 "<i class=\\"root\\">
   <svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\" width=\\"100%\\" height=\\"100%\\">
-    <path d=\\"M14.75 12l-6 8h1.26L16 12l-5.99-8H8.75l6 8z\\">
+    <path d=\\"m14.75 12-6 8h1.26L16 12l-5.99-8H8.75l6 8z\\">
     </path>
   </svg>
 </i>"
@@ -229,42 +259,57 @@ exports[`should have no basic DOM regression for p-icon 1`] = `
 
 exports[`should have no basic DOM regression for p-inline-notification 1`] = `
 "<style>
-  p-text a {
+  p-text button {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: 0 !important;
+    border: 0 !important;
+    cursor: pointer !important;
+    font: inherit !important;
+  }
+
+  p-text a,
+  p-text button {
     color: inherit !important;
     text-decoration: underline !important;
     transition: color var(--p-transition-duration, .24s) ease !important;
     outline: 1px solid transparent !important;
-    outline-offset: 1px !important
+    outline-offset: 1px !important;
   }
 
-  p-text[theme=\\"dark\\"] a:hover {
-    color: #ff0223 !important
+  p-text[theme=\\"dark\\"] a:hover,
+  p-text[theme=\\"dark\\"] button:hover {
+    color: #ff0223 !important;
   }
 
   p-text b,
   p-text strong {
-    font-weight: 700 !important
+    font-weight: 700 !important;
   }
 
   p-text em,
   p-text i {
-    font-style: normal !important
+    font-style: normal !important;
   }
 
-  p-text a:hover {
-    color: #d5001c !important
+  p-text a:hover,
+  p-text button:hover {
+    color: #d5001c !important;
   }
 
-  p-text a::-moz-focus-inner {
-    border: 0 !important
+  p-text a::-moz-focus-inner,
+  p-text button::-moz-focus-inner {
+    border: 0 !important;
   }
 
-  p-text a:focus {
-    outline-color: currentColor !important
+  p-text a:focus,
+  p-text button:focus {
+    outline-color: currentColor !important;
   }
 
-  p-text a:focus:not(:focus-visible) {
-    outline-color: transparent !important
+  p-text a:focus:not(:focus-visible),
+  p-text button:focus:not(:focus-visible) {
+    outline-color: transparent !important;
   }
 </style>
 <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
@@ -281,42 +326,57 @@ exports[`should have no basic DOM regression for p-inline-notification 1`] = `
 
 exports[`should have no basic DOM regression for p-link 1`] = `
 "<style>
-  p-text a {
+  p-text button {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: 0 !important;
+    border: 0 !important;
+    cursor: pointer !important;
+    font: inherit !important;
+  }
+
+  p-text a,
+  p-text button {
     color: inherit !important;
     text-decoration: underline !important;
     transition: color var(--p-transition-duration, .24s) ease !important;
     outline: 1px solid transparent !important;
-    outline-offset: 1px !important
+    outline-offset: 1px !important;
   }
 
-  p-text[theme=\\"dark\\"] a:hover {
-    color: #ff0223 !important
+  p-text[theme=\\"dark\\"] a:hover,
+  p-text[theme=\\"dark\\"] button:hover {
+    color: #ff0223 !important;
   }
 
   p-text b,
   p-text strong {
-    font-weight: 700 !important
+    font-weight: 700 !important;
   }
 
   p-text em,
   p-text i {
-    font-style: normal !important
+    font-style: normal !important;
   }
 
-  p-text a:hover {
-    color: #d5001c !important
+  p-text a:hover,
+  p-text button:hover {
+    color: #d5001c !important;
   }
 
-  p-text a::-moz-focus-inner {
-    border: 0 !important
+  p-text a::-moz-focus-inner,
+  p-text button::-moz-focus-inner {
+    border: 0 !important;
   }
 
-  p-text a:focus {
-    outline-color: currentColor !important
+  p-text a:focus,
+  p-text button:focus {
+    outline-color: currentColor !important;
   }
 
-  p-text a:focus:not(:focus-visible) {
-    outline-color: transparent !important
+  p-text a:focus:not(:focus-visible),
+  p-text button:focus:not(:focus-visible) {
+    outline-color: transparent !important;
   }
 </style>
 <a class=\\"root\\" href=\\"string\\" target=\\"_self\\">
@@ -331,42 +391,57 @@ exports[`should have no basic DOM regression for p-link 1`] = `
 
 exports[`should have no basic DOM regression for p-link-pure 1`] = `
 "<style>
-  p-text a {
+  p-text button {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: 0 !important;
+    border: 0 !important;
+    cursor: pointer !important;
+    font: inherit !important;
+  }
+
+  p-text a,
+  p-text button {
     color: inherit !important;
     text-decoration: underline !important;
     transition: color var(--p-transition-duration, .24s) ease !important;
     outline: 1px solid transparent !important;
-    outline-offset: 1px !important
+    outline-offset: 1px !important;
   }
 
-  p-text[theme=\\"dark\\"] a:hover {
-    color: #ff0223 !important
+  p-text[theme=\\"dark\\"] a:hover,
+  p-text[theme=\\"dark\\"] button:hover {
+    color: #ff0223 !important;
   }
 
   p-text b,
   p-text strong {
-    font-weight: 700 !important
+    font-weight: 700 !important;
   }
 
   p-text em,
   p-text i {
-    font-style: normal !important
+    font-style: normal !important;
   }
 
-  p-text a:hover {
-    color: #d5001c !important
+  p-text a:hover,
+  p-text button:hover {
+    color: #d5001c !important;
   }
 
-  p-text a::-moz-focus-inner {
-    border: 0 !important
+  p-text a::-moz-focus-inner,
+  p-text button::-moz-focus-inner {
+    border: 0 !important;
   }
 
-  p-text a:focus {
-    outline-color: currentColor !important
+  p-text a:focus,
+  p-text button:focus {
+    outline-color: currentColor !important;
   }
 
-  p-text a:focus:not(:focus-visible) {
-    outline-color: transparent !important
+  p-text a:focus:not(:focus-visible),
+  p-text button:focus:not(:focus-visible) {
+    outline-color: transparent !important;
   }
 </style>
 <a class=\\"root\\" href=\\"string\\" target=\\"_self\\">
@@ -381,42 +456,57 @@ exports[`should have no basic DOM regression for p-link-pure 1`] = `
 
 exports[`should have no basic DOM regression for p-link-social 1`] = `
 "<style>
-  p-text a {
+  p-text button {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: 0 !important;
+    border: 0 !important;
+    cursor: pointer !important;
+    font: inherit !important;
+  }
+
+  p-text a,
+  p-text button {
     color: inherit !important;
     text-decoration: underline !important;
     transition: color var(--p-transition-duration, .24s) ease !important;
     outline: 1px solid transparent !important;
-    outline-offset: 1px !important
+    outline-offset: 1px !important;
   }
 
-  p-text[theme=\\"dark\\"] a:hover {
-    color: #ff0223 !important
+  p-text[theme=\\"dark\\"] a:hover,
+  p-text[theme=\\"dark\\"] button:hover {
+    color: #ff0223 !important;
   }
 
   p-text b,
   p-text strong {
-    font-weight: 700 !important
+    font-weight: 700 !important;
   }
 
   p-text em,
   p-text i {
-    font-style: normal !important
+    font-style: normal !important;
   }
 
-  p-text a:hover {
-    color: #d5001c !important
+  p-text a:hover,
+  p-text button:hover {
+    color: #d5001c !important;
   }
 
-  p-text a::-moz-focus-inner {
-    border: 0 !important
+  p-text a::-moz-focus-inner,
+  p-text button::-moz-focus-inner {
+    border: 0 !important;
   }
 
-  p-text a:focus {
-    outline-color: currentColor !important
+  p-text a:focus,
+  p-text button:focus {
+    outline-color: currentColor !important;
   }
 
-  p-text a:focus:not(:focus-visible) {
-    outline-color: transparent !important
+  p-text a:focus:not(:focus-visible),
+  p-text button:focus:not(:focus-visible) {
+    outline-color: transparent !important;
   }
 </style>
 <a class=\\"root\\" href=\\"string\\" target=\\"_self\\">
@@ -511,42 +601,57 @@ exports[`should have no basic DOM regression for p-spinner 1`] = `
 
 exports[`should have no basic DOM regression for p-switch 1`] = `
 "<style>
-  p-text a {
+  p-text button {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: 0 !important;
+    border: 0 !important;
+    cursor: pointer !important;
+    font: inherit !important;
+  }
+
+  p-text a,
+  p-text button {
     color: inherit !important;
     text-decoration: underline !important;
     transition: color var(--p-transition-duration, .24s) ease !important;
     outline: 1px solid transparent !important;
-    outline-offset: 1px !important
+    outline-offset: 1px !important;
   }
 
-  p-text[theme=\\"dark\\"] a:hover {
-    color: #ff0223 !important
+  p-text[theme=\\"dark\\"] a:hover,
+  p-text[theme=\\"dark\\"] button:hover {
+    color: #ff0223 !important;
   }
 
   p-text b,
   p-text strong {
-    font-weight: 700 !important
+    font-weight: 700 !important;
   }
 
   p-text em,
   p-text i {
-    font-style: normal !important
+    font-style: normal !important;
   }
 
-  p-text a:hover {
-    color: #d5001c !important
+  p-text a:hover,
+  p-text button:hover {
+    color: #d5001c !important;
   }
 
-  p-text a::-moz-focus-inner {
-    border: 0 !important
+  p-text a::-moz-focus-inner,
+  p-text button::-moz-focus-inner {
+    border: 0 !important;
   }
 
-  p-text a:focus {
-    outline-color: currentColor !important
+  p-text a:focus,
+  p-text button:focus {
+    outline-color: currentColor !important;
   }
 
-  p-text a:focus:not(:focus-visible) {
-    outline-color: transparent !important
+  p-text a:focus:not(:focus-visible),
+  p-text button:focus:not(:focus-visible) {
+    outline-color: transparent !important;
   }
 </style>
 <label class=\\"root\\">

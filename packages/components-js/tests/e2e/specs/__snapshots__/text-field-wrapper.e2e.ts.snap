@@ -26,8 +26,39 @@ exports[`text-field-wrapper accessibility should add/remove accessibility tree p
 Object {
   "children": Array [
     Object {
-      "name": "Some error message.",
-      "role": "StaticText",
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                        Object {
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+            Object {
+              "name": "Some error message.",
+              "role": "StaticText",
+            },
+          ],
+          "role": "none",
+        },
+      ],
+      "role": "none",
     },
   ],
   "name": "",
@@ -39,8 +70,36 @@ exports[`text-field-wrapper accessibility should add/remove accessibility tree p
 Object {
   "children": Array [
     Object {
-      "name": "Some success message.",
-      "role": "StaticText",
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+            Object {
+              "name": "Some success message.",
+              "role": "StaticText",
+            },
+          ],
+          "role": "none",
+        },
+      ],
+      "role": "none",
     },
   ],
   "name": "",
@@ -60,8 +119,39 @@ exports[`text-field-wrapper accessibility should expose correct accessibility tr
 Object {
   "children": Array [
     Object {
-      "name": "Some error message",
-      "role": "StaticText",
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                        Object {
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+            Object {
+              "name": "Some error message",
+              "role": "StaticText",
+            },
+          ],
+          "role": "none",
+        },
+      ],
+      "role": "none",
     },
   ],
   "name": "",

@@ -10,10 +10,10 @@ export const getComponentCss = (state: FormState, labelSize: FieldsetWrapperLabe
   const theme: Theme = 'light';
 
   return getCss({
-    ':host': {
-      display: addImportantToRule('block'),
-    },
     '@global': {
+      ':host': {
+        display: addImportantToRule('block'),
+      },
       fieldset: {
         margin: 0,
         padding: 0,

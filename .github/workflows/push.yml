@@ -8,7 +8,7 @@ on:
       - release/*
 name: 'Porsche Design System'
 env:
-  PDS_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/node:14.18.3-stretch-slim
+  PDS_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/node:16.14.0-stretch-slim
 jobs:
   components-unit:
     name: 'Components Unit'
@@ -399,8 +399,8 @@ jobs:
         with:
           entrypoint: run-test-unit
           args: --shared
-  storefront:
-    name: 'Storefront'
+  storefront-unit-e2e:
+    name: 'Storefront Unit/E2E'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -456,6 +456,48 @@ jobs:
         with:
           entrypoint: run-test-e2e
           args: --storefront
+  storefront-vrt:
+    name: 'Storefront VRT'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Cache node_modules'
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+      - name: 'Install'
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: ./.github/actions/docker-run
+        env:
+          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+        with:
+          entrypoint: run-install
+      - name: 'Build Core Dependencies'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --core-dependencies
+      - name: 'Build Components'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components
+      - name: 'Build Components JS'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-js
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run
         with:
@@ -661,7 +703,19 @@ jobs:
           path: ./packages/utilities-deprecated/tests/vrt/results
   assets-deployment:
     name: 'Assets Deployment'
-    needs: [production-builds, components-unit, components-js-unit, components-js-e2e, components-js-vrt, components-angular, components-react, shared, storefront, utilities, utilities-deprecated]
+    needs:
+      - production-builds
+      - components-unit
+      - components-js-unit
+      - components-js-e2e
+      - components-js-vrt
+      - components-angular
+      - components-react
+      - shared
+      - storefront-unit-e2e
+      - storefront-vrt
+      - utilities
+      - utilities-deprecated
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -688,7 +742,19 @@ jobs:
           entrypoint: run-deploy-assets
   storefront-deployment:
     name: 'Storefront Deployment'
-    needs: [production-builds, components-unit, components-js-unit, components-js-e2e, components-js-vrt, components-angular, components-react, shared, storefront, utilities, utilities-deprecated]
+    needs:
+      - production-builds
+      - components-unit
+      - components-js-unit
+      - components-js-e2e
+      - components-js-vrt
+      - components-angular
+      - components-react
+      - shared
+      - storefront-unit-e2e
+      - storefront-vrt
+      - utilities
+      - utilities-deprecated
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -730,7 +796,8 @@ jobs:
           entrypoint: run-deploy-storefront
   smoke-test:
     name: 'Smoke Test'
-    needs: [assets-deployment]
+    needs:
+      - assets-deployment
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -776,7 +843,8 @@ jobs:
           args: --components-js
   release-components-uxpin:
     name: 'Release Components UXPin'
-    needs: [smoke-test]
+    needs:
+      - smoke-test
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -824,7 +892,10 @@ jobs:
           entrypoint: run-release-uxpin
   release-components-js:
     name: 'Release Components JS'
-    needs: [smoke-test, storefront-deployment, release-components-uxpin]
+    needs:
+      - smoke-test
+      - storefront-deployment
+      - release-components-uxpin
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
@@ -853,7 +924,8 @@ jobs:
           args: packages/components-js/dist/components-wrapper
   release-components-angular:
     name: 'Release Components Angular'
-    needs: [release-components-js]
+    needs:
+      - release-components-js
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
@@ -882,7 +954,8 @@ jobs:
           args: packages/components-angular/dist/components-wrapper
   release-components-react:
     name: 'Release Components React'
-    needs: [release-components-js]
+    needs:
+      - release-components-js
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
@@ -911,7 +984,9 @@ jobs:
           args: packages/components-react/dist/components-wrapper
   release-assets:
     name: 'Release Assets'
-    needs: [smoke-test, storefront-deployment]
+    needs:
+      - smoke-test
+      - storefront-deployment
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
@@ -940,7 +1015,9 @@ jobs:
           args: packages/assets/dist
   release-utilities-deprecated:
     name: 'Release Utilities Deprecated'
-    needs: [smoke-test, storefront-deployment]
+    needs:
+      - smoke-test
+      - storefront-deployment
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
@@ -969,7 +1046,9 @@ jobs:
           args: packages/utilities-deprecated/projects/utilities
   release-sketch-libraries:
     name: 'Release Sketch Libraries'
-    needs: [smoke-test, storefront-deployment]
+    needs:
+      - smoke-test
+      - storefront-deployment
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:

@@ -3,8 +3,10 @@ import { addImportantToRule } from '../../../../styles';
 
 export const getComponentCss = (): string => {
   return getCss({
-    ':host': {
-      display: addImportantToRule('table-row'),
+    '@global': {
+      ':host': {
+        display: addImportantToRule('table-row'),
+      },
     },
   });
 };
