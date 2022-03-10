@@ -1,16 +1,16 @@
-import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
 import { pxToRemWithUnit } from '../common-styles';
-import { getWrapperSkeletonStyles } from './fieldset-wrapper-skeleton-styles';
+import { getWrapperSkeletonJssStyle } from './fieldset-wrapper-skeleton-styles';
+import { Styles } from 'jss';
 
-export const getTextListSkeletonCss = (): string => {
-  return getMinifiedCss({
+export const getTextListSkeletonStyles = (): Styles<'@global'> => {
+  return {
     '@global': {
       'p-text-list': {
         '&:not(.hydrated)': {
-          ...getWrapperSkeletonStyles(),
+          ...getWrapperSkeletonJssStyle(),
           marginTop: pxToRemWithUnit(6),
         },
       },
     },
-  });
+  };
 };

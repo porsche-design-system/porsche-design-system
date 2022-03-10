@@ -1,17 +1,18 @@
 import { joinArrayElementsToString, withoutTagsOption } from './utils';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
 import {
-  getButtonLinkPureSkeletonCss,
-  getButtonLinkSocialSkeletonCss,
-  getCheckboxRadioWrapperSkeletonCss,
-  getFieldsetWrapperSkeletonCss,
-  getHeadlineSkeletonCss,
-  getSelectTextFieldWrapperSkeletonCss,
-  getTextareaWrapperSkeletonCss,
-  getTextListItemSkeletonCss,
-  getTextListSkeletonCss,
-  getTextSkeletonCss,
+  getButtonLinkPureSkeletonJssStyle,
+  getButtonLinkSocialSkeletonJssStyle,
+  getCheckboxRadioWrapperSkeletonJssStyle,
+  getFieldsetWrapperSkeletonJssStyle,
+  getHeadlineSkeletonJssStyle,
+  getSelectTextFieldWrapperSkeletonJssStyle,
+  getTextareaWrapperSkeletonJssStyle,
+  getTextListItemSkeletonJssStyle,
+  getTextListSkeletonJssStyle,
+  getTextSkeletonJssStyle,
 } from '../../../../components/src/styles/skeletons';
+import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
 
 // TODO: remove skeleton styles after all are hydrated
 
@@ -49,18 +50,22 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
   const skeletonKeyframes = '@keyframes opacity{0%{opacity:0.35}50%{opacity:0.15}100%{opacity:0.35}';
 
   // combining tagNames avoids redundant CSS
-  const skeletonStyles = {
-    'p-button|p-link|p-link-social': getButtonLinkSocialSkeletonCss(),
-    'p-button-pure|p-link-pure': getButtonLinkPureSkeletonCss(),
-    'p-checkbox-wrapper|p-radio-button-wrapper': getCheckboxRadioWrapperSkeletonCss(),
-    'p-fieldset-wrapper': getFieldsetWrapperSkeletonCss(),
-    'p-headline': getHeadlineSkeletonCss(),
-    'p-select-wrapper|p-text-field-wrapper': getSelectTextFieldWrapperSkeletonCss(),
-    'p-text': getTextSkeletonCss(),
-    'p-text-list': getTextListSkeletonCss(),
-    'p-text-list-item': getTextListItemSkeletonCss(),
-    'p-textarea-wrapper': getTextareaWrapperSkeletonCss(),
+  const skeletonJssStyles = {
+    'p-button|p-link|p-link-social': getButtonLinkSocialSkeletonJssStyle(),
+    'p-button-pure|p-link-pure': getButtonLinkPureSkeletonJssStyle(),
+    'p-checkbox-wrapper|p-radio-button-wrapper': getCheckboxRadioWrapperSkeletonJssStyle(),
+    'p-fieldset-wrapper': getFieldsetWrapperSkeletonJssStyle(),
+    'p-headline': getHeadlineSkeletonJssStyle(),
+    'p-select-wrapper|p-text-field-wrapper': getSelectTextFieldWrapperSkeletonJssStyle(),
+    'p-text': getTextSkeletonJssStyle(),
+    'p-text-list': getTextListSkeletonJssStyle(),
+    'p-text-list-item': getTextListItemSkeletonJssStyle(),
+    'p-textarea-wrapper': getTextareaWrapperSkeletonJssStyle(),
   };
+  const minifiedSkeletonStyles = Object.entries(skeletonJssStyles).reduce(
+    (prevValue, [key, value]) => ({ ...prevValue, [key]: getMinifiedCss(value) }),
+    {}
+  );
 
   const initialStylesFunction = `export function getInitialStyles(opts?: GetInitialStylesOptionsFormatHtml): string;
 export function getInitialStyles(opts?: GetInitialStylesOptionsFormatJsx): JSX.Element;
@@ -112,7 +117,7 @@ Please use only valid component tag names:
   };
   const { prefixedTagNamesWithSkeleton, prefixedUnusedTagNamesWithSkeleton, prefix } = options;
 
-  const skeletonStylesWithKey = ${JSON.stringify(skeletonStyles)};
+  const skeletonStylesWithKey = ${JSON.stringify(minifiedSkeletonStyles)};
   let skeletonStyles = prefixedTagNamesWithSkeleton.map((prefixedTagName)=>{
     let tagNameToFind = prefixedTagName;
 

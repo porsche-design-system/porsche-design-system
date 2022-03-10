@@ -1,3 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should return correct css 1`] = `"p-text-list-item:not(.hydrated){color:transparent;height:auto;display:block;position:relative;min-height:1.5rem}p-text-list-item:not(.hydrated)::after{top:0;left:0;color:#626669;width:100%;height:100%;content:\\"\\";position:absolute;animation:opacity var(--p-override-skeleton-animation-duration,1.5s) ease-in-out infinite;background:linear-gradient(transparent,transparent 4px,currentColor 4px,currentColor 20px,transparent 20px,transparent 24px);visibility:visible}p-text-list-item:not(.hydrated)[theme=dark]::after,p-text-list-item:not(.hydrated).pds-skeleton--theme-dark::after{color:#b0b1b2}"`;
+exports[`should return correct css 1`] = `
+Object {
+  "@global": Object {
+    "p-text-list-item": Object {
+      "&:not(.hydrated)": Object {
+        "&::after": Object {
+          "animation": "opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite",
+          "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px)",
+          "color": "#626669",
+          "content": "\\"\\"",
+          "height": "100%",
+          "left": "0",
+          "position": "absolute",
+          "top": "0",
+          "visibility": "visible",
+          "width": "100%",
+        },
+        "&[theme=dark], &.pds-skeleton--theme-dark": Object {
+          "&::after": Object {
+            "color": "#b0b1b2",
+          },
+        },
+        "color": "transparent",
+        "display": "block",
+        "height": "auto",
+        "minHeight": "1.5rem",
+        "position": "relative",
+      },
+    },
+  },
+}
+`;

@@ -8,12 +8,12 @@ import {
   getThemedPseudoJssStyle,
   PDS_SKELETON_CLASS_PREFIX,
 } from './base-skeleton-styles';
-import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
+import { Styles } from 'jss';
 
-export const getButtonLinkPureSkeletonCss = (): string => {
+export const getButtonLinkPureSkeletonStyles = (): Styles<'@global'> => {
   const skeletonPropertyNames = getSkeletonPropertyNames('p-button-pure');
 
-  return getMinifiedCss({
+  return {
     '@global': {
       'p-button-pure, p-link-pure': {
         '&:not(.hydrated)': {
@@ -51,5 +51,5 @@ export const getButtonLinkPureSkeletonCss = (): string => {
         },
       },
     },
-  });
+  };
 };

@@ -1,4 +1,3 @@
-import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
 import {
   BUTTON_LINK_SKELETON_WIDTH,
   ELEMENT_SKELETON_DIMENSION,
@@ -9,11 +8,12 @@ import {
   PDS_SKELETON_CLASS_PREFIX,
 } from './';
 import { pxToRemWithUnit } from '../common-styles';
+import type { Styles } from 'jss';
 
-export const getButtonLinkSocialSkeletonCss = (): string => {
+export const getButtonLinkSocialSkeletonStyles = (): Styles<'@global'> => {
   const skeletonPropertyNames = getSkeletonPropertyNames('p-button');
 
-  return getMinifiedCss({
+  return {
     '@global': {
       'p-button, p-link, p-link-social': {
         '&:not(.hydrated)': {
@@ -28,5 +28,5 @@ export const getButtonLinkSocialSkeletonCss = (): string => {
         },
       },
     },
-  });
+  };
 };

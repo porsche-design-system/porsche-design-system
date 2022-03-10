@@ -1,5 +1,5 @@
-import { getFieldsetWrapperSkeletonCss } from './fieldset-wrapper-skeleton-styles';
+import { getFieldsetWrapperSkeletonStyles } from './fieldset-wrapper-skeleton-styles';
 
 it('should return correct css', () => {
-  expect(getFieldsetWrapperSkeletonCss()).toMatchSnapshot();
+  expect(getFieldsetWrapperSkeletonStyles()).toMatchSnapshot();
 });

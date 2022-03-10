@@ -1,5 +1,5 @@
-import { getButtonLinkPureSkeletonCss } from './button-link-pure-skeleton-styles';
+import { getButtonLinkPureSkeletonStyles } from './button-link-pure-skeleton-styles';
 
 it('should return correct css', () => {
-  expect(getButtonLinkPureSkeletonCss()).toMatchSnapshot();
+  expect(getButtonLinkPureSkeletonStyles()).toMatchSnapshot();
 });

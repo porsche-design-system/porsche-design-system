@@ -1,4 +1,3 @@
-import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
 import { pxToRemWithUnit } from '../common-styles';
 import {
   BUTTON_LINK_SKELETON_WIDTH,
@@ -9,12 +8,13 @@ import {
   getThemedPseudoJssStyle,
   PDS_SKELETON_CLASS_PREFIX,
 } from './base-skeleton-styles';
+import { Styles } from 'jss';
 
-export const getCheckboxRadioWrapperSkeletonCss = (): string => {
+export const getCheckboxRadioWrapperSkeletonStyles = (): Styles<'@global'> => {
   const checkboxRadioElementHeight = ELEMENT_SKELETON_DIMENSION / 2;
   const skeletonPropertyNames = getSkeletonPropertyNames('p-checkbox-wrapper');
 
-  return getMinifiedCss({
+  return {
     '@global': {
       'p-checkbox-wrapper, p-radio-button-wrapper': {
         '&:not(.hydrated)': {
@@ -31,5 +31,5 @@ export const getCheckboxRadioWrapperSkeletonCss = (): string => {
         },
       },
     },
-  });
+  };
 };
