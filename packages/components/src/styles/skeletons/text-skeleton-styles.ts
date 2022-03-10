@@ -26,10 +26,14 @@ export const getTextSkeletonCss = (): string => {
   };
 
   const getTextSizeStyle = (): JssStyle =>
-    Object.entries(textSizeToTypographyMap).map(([key, value]) => ({
-      [`&[${skeletonPropertyNames.size}=${key}], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.size}-${key}`]:
-        getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(value)),
-    }));
+    Object.entries(textSizeToTypographyMap).reduce(
+      (prevValue, [key, value]) => ({
+        ...prevValue,
+        [`&[${skeletonPropertyNames.size}=${key}], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.size}-${key}`]:
+          getTextHeadlineSkeletonSubStyle(getTypographyElementHeight(value)),
+      }),
+      {}
+    );
 
   return getMinifiedCss({
     '@global': {
