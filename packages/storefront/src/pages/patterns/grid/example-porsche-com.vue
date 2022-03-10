@@ -175,6 +175,7 @@
   @include p-media-query('m') {
     &:nth-of-type(odd) > :first-child {
       grid-column: 1 / 5;
+      border-right: 0;
     }
 
     &:nth-of-type(odd) > :last-child {
@@ -183,6 +184,7 @@
 
     &:nth-of-type(even) > :first-child {
       grid-column: 3 / 7;
+      border-left: 0;
     }
 
     &:nth-of-type(even) > :last-child {
