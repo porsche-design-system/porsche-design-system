@@ -24,7 +24,7 @@
     "build:components-wrapper:cm": "PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} cm build && PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} TMP_BUILD=1 cm build",
     "build:components-wrapper:replaceCdnBaseUrlDynamicPlaceholder": "ts-node scripts/replaceCdnBaseUrlDynamicPlaceholder.ts",
     "build:components-wrapper:generateChunksManifest": "ts-node scripts/generateChunksManifest.ts",
-    "build:copyUtilitiesBuildToComponentsJs": "rm -rf dist/components-wrapper/utilities && cp -r ../utilities/projects/utilities/dist dist/components-wrapper/utilities",
+    "build:copyUtilitiesBuildToComponentsJs": "TARGET=./dist/components-wrapper/utilities && rm -rf $TARGET && cp -r ../utilities/projects/utilities/dist $TARGET",
     "build:cleanEnvironment": "rm -f ../../cdn.config.js && rm -rf ./projects/components-wrapper/environment.js",
     "build-prod": "PORSCHE_DESIGN_SYSTEM_DEV=0 yarn build",
     "build:partials": "yarn --cwd ./projects/partials build",
