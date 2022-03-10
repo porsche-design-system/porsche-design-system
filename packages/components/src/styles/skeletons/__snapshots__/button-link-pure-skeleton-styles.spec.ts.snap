@@ -1,3 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should return correct css 1`] = `"p-button-pure:not(.hydrated),p-link-pure:not(.hydrated){color:transparent;display:inline-block;position:relative;min-width:12rem;min-height:1.5rem}p-button-pure:not(.hydrated)::after,p-link-pure:not(.hydrated)::after{top:0rem;left:0;color:#626669;width:100%;content:\\"\\";display:block;position:absolute;animation:opacity var(--p-override-skeleton-animation-duration,1.5s) ease-in-out infinite;background:currentColor;min-height:100%;visibility:visible}p-button-pure:not(.hydrated)[hide-label=true],p-button-pure:not(.hydrated).pds-skeleton--hide-label,p-link-pure:not(.hydrated)[hide-label=true],p-link-pure:not(.hydrated).pds-skeleton--hide-label{min-width:3rem}p-button-pure:not(.hydrated)[stretch=true],p-button-pure:not(.hydrated).pds-skeleton--stretch,p-link-pure:not(.hydrated)[stretch=true],p-link-pure:not(.hydrated).pds-skeleton--stretch{display:block}p-button-pure:not(.hydrated)[size=medium],p-button-pure:not(.hydrated).pds-skeleton--size-medium,p-link-pure:not(.hydrated)[size=medium],p-link-pure:not(.hydrated).pds-skeleton--size-medium{min-height:2.25rem}p-button-pure:not(.hydrated)[size=x-small],p-button-pure:not(.hydrated).pds-skeleton--size-x-small,p-link-pure:not(.hydrated)[size=x-small],p-link-pure:not(.hydrated).pds-skeleton--size-x-small{min-height:1.25rem}p-button-pure:not(.hydrated)[size=large],p-button-pure:not(.hydrated).pds-skeleton--size-large,p-link-pure:not(.hydrated)[size=large],p-link-pure:not(.hydrated).pds-skeleton--size-large{min-height:3rem}p-button-pure:not(.hydrated)[size=x-large],p-button-pure:not(.hydrated).pds-skeleton--size-x-large,p-link-pure:not(.hydrated)[size=x-large],p-link-pure:not(.hydrated).pds-skeleton--size-x-large{min-height:4rem}p-button-pure:not(.hydrated)[theme=dark]::after,p-button-pure:not(.hydrated).pds-skeleton--theme-dark::after,p-link-pure:not(.hydrated)[theme=dark]::after,p-link-pure:not(.hydrated).pds-skeleton--theme-dark::after{color:#b0b1b2}"`;
+exports[`should return correct css 1`] = `
+Object {
+  "@global": Object {
+    "p-button-pure, p-link-pure": Object {
+      "&:not(.hydrated)": Object {
+        "&::after": Object {
+          "animation": "opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite",
+          "background": "currentColor",
+          "color": "#626669",
+          "content": "\\"\\"",
+          "display": "block",
+          "left": "0",
+          "minHeight": "100%",
+          "position": "absolute",
+          "top": "0rem",
+          "visibility": "visible",
+          "width": "100%",
+        },
+        "&[hide-label=true], &.pds-skeleton--hide-label": Object {
+          "minWidth": "3rem",
+        },
+        "&[size=large], &.pds-skeleton--size-large": Object {
+          "minHeight": "3rem",
+        },
+        "&[size=medium], &.pds-skeleton--size-medium": Object {
+          "minHeight": "2.25rem",
+        },
+        "&[size=x-large], &.pds-skeleton--size-x-large": Object {
+          "minHeight": "4rem",
+        },
+        "&[size=x-small], &.pds-skeleton--size-x-small": Object {
+          "minHeight": "1.25rem",
+        },
+        "&[stretch=true], &.pds-skeleton--stretch": Object {
+          "display": "block",
+        },
+        "&[theme=dark], &.pds-skeleton--theme-dark": Object {
+          "&::after": Object {
+            "color": "#b0b1b2",
+          },
+        },
+        "color": "transparent",
+        "display": "inline-block",
+        "minHeight": "1.5rem",
+        "minWidth": "12rem",
+        "position": "relative",
+      },
+    },
+  },
+}
+`;

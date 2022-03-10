@@ -1,4 +1,3 @@
-import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
 import {
   BUTTON_LINK_SKELETON_WIDTH,
   ELEMENT_SKELETON_DIMENSION,
@@ -16,11 +15,12 @@ import {
   PDS_SKELETON_CLASS_PREFIX,
 } from './';
 import { pxToRemWithUnit } from '../common-styles';
+import type { Styles } from 'jss';
 
-export const getSelectTextFieldWrapperSkeletonCss = (): string => {
+export const getSelectTextFieldWrapperSkeletonStyles = (): Styles<'@global'> => {
   const skeletonPropertyNames = getSkeletonPropertyNames('p-select-wrapper');
 
-  return getMinifiedCss({
+  return {
     '@global': {
       'p-select-wrapper, p-text-field-wrapper': {
         '&:not(.hydrated)': {
@@ -66,5 +66,5 @@ export const getSelectTextFieldWrapperSkeletonCss = (): string => {
         },
       },
     },
-  });
+  };
 };

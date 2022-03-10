@@ -1,17 +1,16 @@
-import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
-import type { Styles } from 'jss';
+import type { JssStyle, Styles } from 'jss';
 
-export const getFieldsetWrapperSkeletonCss = (): string => {
-  return getMinifiedCss({
+export const getFieldsetWrapperSkeletonStyles = (): Styles<'@global'> => {
+  return {
     '@global': {
       'p-fieldset-wrapper': {
-        '&:not(.hydrated)': getWrapperSkeletonStyles(),
+        '&:not(.hydrated)': getWrapperSkeletonJssStyle(),
       },
     },
-  });
+  };
 };
 
-export const getWrapperSkeletonStyles = (): Styles => ({
+export const getWrapperSkeletonJssStyle = (): JssStyle => ({
   display: 'block',
   position: 'relative',
   visibility: 'visible',

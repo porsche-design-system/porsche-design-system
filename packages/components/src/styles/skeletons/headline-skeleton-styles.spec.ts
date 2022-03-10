@@ -1,4 +1,4 @@
-import { getHeadlineSkeletonCss, getTypographyElementHeight } from './headline-skeleton-styles';
+import { getHeadlineSkeletonStyles, getTypographyElementHeight } from './headline-skeleton-styles';
 import {
   headline1,
   headline2,
@@ -9,9 +9,9 @@ import {
   textSmall,
 } from '@porsche-design-system/utilities-v2';
 
-describe('getHeadlineSkeletonCss()', () => {
+describe('getHeadlineSkeletonStyles()', () => {
   it('should return correct css', () => {
-    expect(getHeadlineSkeletonCss()).toMatchSnapshot();
+    expect(getHeadlineSkeletonStyles()).toMatchSnapshot();
   });
 });
 

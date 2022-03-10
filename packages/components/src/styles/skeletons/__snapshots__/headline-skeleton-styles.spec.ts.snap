@@ -1,3 +1,183 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getHeadlineSkeletonCss() should return correct css 1`] = `"p-headline:not(.hydrated){color:transparent;height:2.5rem;display:block;position:relative}p-headline:not(.hydrated)::after{top:0;left:0;color:#626669;width:100%;height:100%;content:\\"\\";position:absolute;animation:opacity var(--p-override-skeleton-animation-duration,1.5s) ease-in-out infinite;background:linear-gradient(transparent,transparent 4px,currentColor 4px,currentColor 36px,transparent 36px,transparent 40px);visibility:visible}p-headline:not(.hydrated)[variant=large-title,p-headline:not(.hydrated).pds-skeleton--variant-large-title{height:2.75rem}p-headline:not(.hydrated)[variant=headline-2,p-headline:not(.hydrated).pds-skeleton--variant-headline-2{height:2.25rem}p-headline:not(.hydrated)[variant=headline-3,p-headline:not(.hydrated).pds-skeleton--variant-headline-3{height:1.75rem}p-headline:not(.hydrated)[variant=headline-4,p-headline:not(.hydrated).pds-skeleton--variant-headline-4{height:1.5rem}p-headline:not(.hydrated)[variant=headline-5],p-headline:not(.hydrated).pds-skeleton--variant-headline-5{height:1.5rem}p-headline:not(.hydrated)[theme=dark]::after,p-headline:not(.hydrated).pds-skeleton--theme-dark::after{color:#b0b1b2}p-headline:not(.hydrated)[variant=headline-5]::after,p-headline:not(.hydrated).pds-skeleton--variant-headline-5::after{background:linear-gradient(transparent,transparent 4px,currentColor 4px,currentColor 20px,transparent 20px,transparent 24px)}p-headline:not(.hydrated)[variant=headline-4::after,p-headline:not(.hydrated).pds-skeleton--variant-headline-4::after{background:linear-gradient(transparent,transparent 4px,currentColor 4px,currentColor 20px,transparent 20px,transparent 24px)}p-headline:not(.hydrated)[variant=headline-3::after,p-headline:not(.hydrated).pds-skeleton--variant-headline-3::after{background:linear-gradient(transparent,transparent 4px,currentColor 4px,currentColor 24px,transparent 24px,transparent 28px)}p-headline:not(.hydrated)[variant=headline-2::after,p-headline:not(.hydrated).pds-skeleton--variant-headline-2::after{background:linear-gradient(transparent,transparent 4px,currentColor 4px,currentColor 32px,transparent 32px,transparent 36px)}p-headline:not(.hydrated)[variant=large-title::after,p-headline:not(.hydrated).pds-skeleton--variant-large-title::after{background:linear-gradient(transparent,transparent 4px,currentColor 4px,currentColor 40px,transparent 40px,transparent 44px)}@media(min-width:760px) and (max-width:999px){p-headline:not(.hydrated){height:3rem}p-headline:not(.hydrated)::after{background:linear-gradient(transparent,transparent 6px,currentColor 6px,currentColor 42px,transparent 42px,transparent 48px)}p-headline:not(.hydrated)[variant=headline-4,p-headline:not(.hydrated).pds-skeleton--variant-headline-4{height:1.75rem}p-headline:not(.hydrated)[variant=headline-4::after,p-headline:not(.hydrated).pds-skeleton--variant-headline-4::after{background:linear-gradient(transparent,transparent 5px,currentColor 5px,currentColor 23px,transparent 23px,transparent 28px)}p-headline:not(.hydrated)[variant=headline-3,p-headline:not(.hydrated).pds-skeleton--variant-headline-3{height:2.25rem}p-headline:not(.hydrated)[variant=headline-3::after,p-headline:not(.hydrated).pds-skeleton--variant-headline-3::after{background:linear-gradient(transparent,transparent 6px,currentColor 6px,currentColor 30px,transparent 30px,transparent 36px)}p-headline:not(.hydrated)[variant=headline-2,p-headline:not(.hydrated).pds-skeleton--variant-headline-2{height:2.5rem}p-headline:not(.hydrated)[variant=headline-2::after,p-headline:not(.hydrated).pds-skeleton--variant-headline-2::after{background:linear-gradient(transparent,transparent 5px,currentColor 5px,currentColor 35px,transparent 35px,transparent 40px)}p-headline:not(.hydrated)[variant=large-title,p-headline:not(.hydrated).pds-skeleton--variant-large-title{height:3.25rem}p-headline:not(.hydrated)[variant=large-title::after,p-headline:not(.hydrated).pds-skeleton--variant-large-title::after{background:linear-gradient(transparent,transparent 5px,currentColor 5px,currentColor 47px,transparent 47px,transparent 52px)}}@media(min-width:1000px) and (max-width:1299px){p-headline:not(.hydrated){height:3.25rem}p-headline:not(.hydrated)::after{background:linear-gradient(transparent,transparent 4px,currentColor 4px,currentColor 48px,transparent 48px,transparent 52px)}p-headline:not(.hydrated)[variant=headline-4,p-headline:not(.hydrated).pds-skeleton--variant-headline-4{height:1.75rem}p-headline:not(.hydrated)[variant=headline-4::after,p-headline:not(.hydrated).pds-skeleton--variant-headline-4::after{background:linear-gradient(transparent,transparent 4px,currentColor 4px,currentColor 24px,transparent 24px,transparent 28px)}p-headline:not(.hydrated)[variant=headline-3,p-headline:not(.hydrated).pds-skeleton--variant-headline-3{height:2.5rem}p-headline:not(.hydrated)[variant=headline-3::after,p-headline:not(.hydrated).pds-skeleton--variant-headline-3::after{background:linear-gradient(transparent,transparent 6px,currentColor 6px,currentColor 34px,transparent 34px,transparent 40px)}p-headline:not(.hydrated)[variant=headline-2,p-headline:not(.hydrated).pds-skeleton--variant-headline-2{height:3rem}p-headline:not(.hydrated)[variant=headline-2::after,p-headline:not(.hydrated).pds-skeleton--variant-headline-2::after{background:linear-gradient(transparent,transparent 6px,currentColor 6px,currentColor 42px,transparent 42px,transparent 48px)}p-headline:not(.hydrated)[variant=large-title,p-headline:not(.hydrated).pds-skeleton--variant-large-title{height:4rem}p-headline:not(.hydrated)[variant=large-title::after,p-headline:not(.hydrated).pds-skeleton--variant-large-title::after{background:linear-gradient(transparent,transparent 6px,currentColor 6px,currentColor 58px,transparent 58px,transparent 64px)}}@media(min-width:1300px) and (max-width:1759px){p-headline:not(.hydrated){height:4rem}p-headline:not(.hydrated)::after{background:linear-gradient(transparent,transparent 6px,currentColor 6px,currentColor 58px,transparent 58px,transparent 64px)}p-headline:not(.hydrated)[variant=headline-4,p-headline:not(.hydrated).pds-skeleton--variant-headline-4{height:2rem}p-headline:not(.hydrated)[variant=headline-4::after,p-headline:not(.hydrated).pds-skeleton--variant-headline-4::after{background:linear-gradient(transparent,transparent 5px,currentColor 5px,currentColor 27px,transparent 27px,transparent 32px)}p-headline:not(.hydrated)[variant=headline-3,p-headline:not(.hydrated).pds-skeleton--variant-headline-3{height:2.75rem}p-headline:not(.hydrated)[variant=headline-3::after,p-headline:not(.hydrated).pds-skeleton--variant-headline-3::after{background:linear-gradient(transparent,transparent 6px,currentColor 6px,currentColor 38px,transparent 38px,transparent 44px)}p-headline:not(.hydrated)[variant=headline-2,p-headline:not(.hydrated).pds-skeleton--variant-headline-2{height:3.25rem}p-headline:not(.hydrated)[variant=headline-2::after,p-headline:not(.hydrated).pds-skeleton--variant-headline-2::after{background:linear-gradient(transparent,transparent 5px,currentColor 5px,currentColor 47px,transparent 47px,transparent 52px)}p-headline:not(.hydrated)[variant=large-title,p-headline:not(.hydrated).pds-skeleton--variant-large-title{height:4.75rem}p-headline:not(.hydrated)[variant=large-title::after,p-headline:not(.hydrated).pds-skeleton--variant-large-title::after{background:linear-gradient(transparent,transparent 7px,currentColor 7px,currentColor 69px,transparent 69px,transparent 76px)}}@media(min-width:1760px){p-headline:not(.hydrated){height:4.5rem}p-headline:not(.hydrated)::after{background:linear-gradient(transparent,transparent 6px,currentColor 6px,currentColor 66px,transparent 66px,transparent 72px)}p-headline:not(.hydrated)[variant=headline-4,p-headline:not(.hydrated).pds-skeleton--variant-headline-4{height:2.25rem}p-headline:not(.hydrated)[variant=headline-4::after,p-headline:not(.hydrated).pds-skeleton--variant-headline-4::after{background:linear-gradient(transparent,transparent 6px,currentColor 6px,currentColor 30px,transparent 30px,transparent 36px)}p-headline:not(.hydrated)[variant=headline-3,p-headline:not(.hydrated).pds-skeleton--variant-headline-3{height:3rem}p-headline:not(.hydrated)[variant=headline-3::after,p-headline:not(.hydrated).pds-skeleton--variant-headline-3::after{background:linear-gradient(transparent,transparent 6px,currentColor 6px,currentColor 42px,transparent 42px,transparent 48px)}p-headline:not(.hydrated)[variant=headline-2,p-headline:not(.hydrated).pds-skeleton--variant-headline-2{height:3.75rem}p-headline:not(.hydrated)[variant=headline-2::after,p-headline:not(.hydrated).pds-skeleton--variant-headline-2::after{background:linear-gradient(transparent,transparent 6px,currentColor 6px,currentColor 54px,transparent 54px,transparent 60px)}p-headline:not(.hydrated)[variant=large-title,p-headline:not(.hydrated).pds-skeleton--variant-large-title{height:5.5rem}p-headline:not(.hydrated)[variant=large-title::after,p-headline:not(.hydrated).pds-skeleton--variant-large-title::after{background:linear-gradient(transparent,transparent 8px,currentColor 8px,currentColor 80px,transparent 80px,transparent 88px)}}"`;
+exports[`getHeadlineSkeletonStyles() should return correct css 1`] = `
+Object {
+  "@global": Object {
+    "p-headline": Object {
+      "&:not(.hydrated)": Object {
+        "&::after": Object {
+          "animation": "opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite",
+          "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 36px, transparent 36px, transparent 40px)",
+          "color": "#626669",
+          "content": "\\"\\"",
+          "height": "100%",
+          "left": "0",
+          "position": "absolute",
+          "top": "0",
+          "visibility": "visible",
+          "width": "100%",
+        },
+        "&[theme=dark], &.pds-skeleton--theme-dark": Object {
+          "&::after": Object {
+            "color": "#b0b1b2",
+          },
+        },
+        "&[variant=headline-2], &.pds-skeleton--variant-headline-2": Object {
+          "&::after": Object {
+            "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 32px, transparent 32px, transparent 36px)",
+          },
+          "@media (min-width: 1000px) and (max-width: 1299px)": Object {
+            "&::after": Object {
+              "background": "linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 42px, transparent 42px, transparent 48px)",
+            },
+            "height": "3rem",
+          },
+          "@media (min-width: 1300px) and (max-width: 1759px)": Object {
+            "&::after": Object {
+              "background": "linear-gradient(transparent, transparent 5px, currentColor 5px, currentColor 47px, transparent 47px, transparent 52px)",
+            },
+            "height": "3.25rem",
+          },
+          "@media (min-width: 1760px)": Object {
+            "&::after": Object {
+              "background": "linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 54px, transparent 54px, transparent 60px)",
+            },
+            "height": "3.75rem",
+          },
+          "@media (min-width: 760px) and (max-width: 999px)": Object {
+            "&::after": Object {
+              "background": "linear-gradient(transparent, transparent 5px, currentColor 5px, currentColor 35px, transparent 35px, transparent 40px)",
+            },
+            "height": "2.5rem",
+          },
+          "height": "2.25rem",
+        },
+        "&[variant=headline-3], &.pds-skeleton--variant-headline-3": Object {
+          "&::after": Object {
+            "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 24px, transparent 24px, transparent 28px)",
+          },
+          "@media (min-width: 1000px) and (max-width: 1299px)": Object {
+            "&::after": Object {
+              "background": "linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 34px, transparent 34px, transparent 40px)",
+            },
+            "height": "2.5rem",
+          },
+          "@media (min-width: 1300px) and (max-width: 1759px)": Object {
+            "&::after": Object {
+              "background": "linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 38px, transparent 38px, transparent 44px)",
+            },
+            "height": "2.75rem",
+          },
+          "@media (min-width: 1760px)": Object {
+            "&::after": Object {
+              "background": "linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 42px, transparent 42px, transparent 48px)",
+            },
+            "height": "3rem",
+          },
+          "@media (min-width: 760px) and (max-width: 999px)": Object {
+            "&::after": Object {
+              "background": "linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 30px, transparent 30px, transparent 36px)",
+            },
+            "height": "2.25rem",
+          },
+          "height": "1.75rem",
+        },
+        "&[variant=headline-4], &.pds-skeleton--variant-headline-4": Object {
+          "&::after": Object {
+            "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px)",
+          },
+          "@media (min-width: 1000px) and (max-width: 1299px)": Object {
+            "&::after": Object {
+              "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 24px, transparent 24px, transparent 28px)",
+            },
+            "height": "1.75rem",
+          },
+          "@media (min-width: 1300px) and (max-width: 1759px)": Object {
+            "&::after": Object {
+              "background": "linear-gradient(transparent, transparent 5px, currentColor 5px, currentColor 27px, transparent 27px, transparent 32px)",
+            },
+            "height": "2rem",
+          },
+          "@media (min-width: 1760px)": Object {
+            "&::after": Object {
+              "background": "linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 30px, transparent 30px, transparent 36px)",
+            },
+            "height": "2.25rem",
+          },
+          "@media (min-width: 760px) and (max-width: 999px)": Object {
+            "&::after": Object {
+              "background": "linear-gradient(transparent, transparent 5px, currentColor 5px, currentColor 23px, transparent 23px, transparent 28px)",
+            },
+            "height": "1.75rem",
+          },
+          "height": "1.5rem",
+        },
+        "&[variant=headline-5], &.pds-skeleton--variant-headline-5": Object {
+          "&::after": Object {
+            "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px)",
+          },
+          "height": "1.5rem",
+        },
+        "&[variant=large-title], &.pds-skeleton--variant-large-title": Object {
+          "&::after": Object {
+            "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 40px, transparent 40px, transparent 44px)",
+          },
+          "@media (min-width: 1000px) and (max-width: 1299px)": Object {
+            "&::after": Object {
+              "background": "linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 58px, transparent 58px, transparent 64px)",
+            },
+            "height": "4rem",
+          },
+          "@media (min-width: 1300px) and (max-width: 1759px)": Object {
+            "&::after": Object {
+              "background": "linear-gradient(transparent, transparent 7px, currentColor 7px, currentColor 69px, transparent 69px, transparent 76px)",
+            },
+            "height": "4.75rem",
+          },
+          "@media (min-width: 1760px)": Object {
+            "&::after": Object {
+              "background": "linear-gradient(transparent, transparent 8px, currentColor 8px, currentColor 80px, transparent 80px, transparent 88px)",
+            },
+            "height": "5.5rem",
+          },
+          "@media (min-width: 760px) and (max-width: 999px)": Object {
+            "&::after": Object {
+              "background": "linear-gradient(transparent, transparent 5px, currentColor 5px, currentColor 47px, transparent 47px, transparent 52px)",
+            },
+            "height": "3.25rem",
+          },
+          "height": "2.75rem",
+        },
+        "@media (min-width: 1000px) and (max-width: 1299px)": Object {
+          "&::after": Object {
+            "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 48px, transparent 48px, transparent 52px)",
+          },
+          "height": "3.25rem",
+        },
+        "@media (min-width: 1300px) and (max-width: 1759px)": Object {
+          "&::after": Object {
+            "background": "linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 58px, transparent 58px, transparent 64px)",
+          },
+          "height": "4rem",
+        },
+        "@media (min-width: 1760px)": Object {
+          "&::after": Object {
+            "background": "linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 66px, transparent 66px, transparent 72px)",
+          },
+          "height": "4.5rem",
+        },
+        "@media (min-width: 760px) and (max-width: 999px)": Object {
+          "&::after": Object {
+            "background": "linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 42px, transparent 42px, transparent 48px)",
+          },
+          "height": "3rem",
+        },
+        "color": "transparent",
+        "display": "block",
+        "height": "2.5rem",
+        "position": "relative",
+      },
+    },
+  },
+}
+`;

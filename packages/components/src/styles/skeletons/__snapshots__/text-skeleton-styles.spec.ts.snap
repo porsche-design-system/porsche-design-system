@@ -58,4 +58,58 @@ Object {
 }
 `;
 
-exports[`getTextSkeletonCss() should return correct css 1`] = `"p-text:not(.hydrated),p-text-list-item:not(.hydrated){color:transparent;height:1.5rem;display:block;position:relative}p-text:not(.hydrated)::after,p-text-list-item:not(.hydrated)::after{top:0;left:0;color:#626669;width:100%;height:100%;content:\\"\\";position:absolute;animation:opacity var(--p-override-skeleton-animation-duration,1.5s) ease-in-out infinite;background:linear-gradient(transparent,transparent 4px,currentColor 4px,currentColor 20px,transparent 20px,transparent 24px);visibility:visible}p-text:not(.hydrated)[size=x-small],p-text:not(.hydrated).pds-skeleton--size-x-small,p-text-list-item:not(.hydrated)[size=x-small],p-text-list-item:not(.hydrated).pds-skeleton--size-x-small{height:1.25rem}p-text:not(.hydrated)[size=medium],p-text:not(.hydrated).pds-skeleton--size-medium,p-text-list-item:not(.hydrated)[size=medium],p-text-list-item:not(.hydrated).pds-skeleton--size-medium{height:2.25rem}p-text:not(.hydrated)[size=large],p-text:not(.hydrated).pds-skeleton--size-large,p-text-list-item:not(.hydrated)[size=large],p-text-list-item:not(.hydrated).pds-skeleton--size-large{height:3rem}p-text:not(.hydrated)[size=x-large],p-text:not(.hydrated).pds-skeleton--size-x-large,p-text-list-item:not(.hydrated)[size=x-large],p-text-list-item:not(.hydrated).pds-skeleton--size-x-large{height:4rem}p-text:not(.hydrated)[theme=dark]::after,p-text:not(.hydrated).pds-skeleton--theme-dark::after,p-text-list-item:not(.hydrated)[theme=dark]::after,p-text-list-item:not(.hydrated).pds-skeleton--theme-dark::after{color:#b0b1b2}p-text:not(.hydrated)[size=x-large]::after,p-text:not(.hydrated).pds-skeleton--size-x-large::after,p-text-list-item:not(.hydrated)[size=x-large]::after,p-text-list-item:not(.hydrated).pds-skeleton--size-x-large::after{background:linear-gradient(transparent,transparent 4px,currentColor 4px,currentColor 60px,transparent 60px,transparent 64px)}p-text:not(.hydrated)[size=large]::after,p-text:not(.hydrated).pds-skeleton--size-large::after,p-text-list-item:not(.hydrated)[size=large]::after,p-text-list-item:not(.hydrated).pds-skeleton--size-large::after{background:linear-gradient(transparent,transparent 4px,currentColor 4px,currentColor 44px,transparent 44px,transparent 48px)}p-text:not(.hydrated)[size=medium]::after,p-text:not(.hydrated).pds-skeleton--size-medium::after,p-text-list-item:not(.hydrated)[size=medium]::after,p-text-list-item:not(.hydrated).pds-skeleton--size-medium::after{background:linear-gradient(transparent,transparent 4px,currentColor 4px,currentColor 32px,transparent 32px,transparent 36px)}p-text:not(.hydrated)[size=x-small]::after,p-text:not(.hydrated).pds-skeleton--size-x-small::after,p-text-list-item:not(.hydrated)[size=x-small]::after,p-text-list-item:not(.hydrated).pds-skeleton--size-x-small::after{background:linear-gradient(transparent,transparent 4px,currentColor 4px,currentColor 16px,transparent 16px,transparent 20px)}"`;
+exports[`getTextSkeletonStyles() should return correct css 1`] = `
+Object {
+  "@global": Object {
+    "p-text, p-text-list-item": Object {
+      "&:not(.hydrated)": Object {
+        "&::after": Object {
+          "animation": "opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite",
+          "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px)",
+          "color": "#626669",
+          "content": "\\"\\"",
+          "height": "100%",
+          "left": "0",
+          "position": "absolute",
+          "top": "0",
+          "visibility": "visible",
+          "width": "100%",
+        },
+        "&[size=large], &.pds-skeleton--size-large": Object {
+          "&::after": Object {
+            "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 44px, transparent 44px, transparent 48px)",
+          },
+          "height": "3rem",
+        },
+        "&[size=medium], &.pds-skeleton--size-medium": Object {
+          "&::after": Object {
+            "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 32px, transparent 32px, transparent 36px)",
+          },
+          "height": "2.25rem",
+        },
+        "&[size=x-large], &.pds-skeleton--size-x-large": Object {
+          "&::after": Object {
+            "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 60px, transparent 60px, transparent 64px)",
+          },
+          "height": "4rem",
+        },
+        "&[size=x-small], &.pds-skeleton--size-x-small": Object {
+          "&::after": Object {
+            "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 16px, transparent 16px, transparent 20px)",
+          },
+          "height": "1.25rem",
+        },
+        "&[theme=dark], &.pds-skeleton--theme-dark": Object {
+          "&::after": Object {
+            "color": "#b0b1b2",
+          },
+        },
+        "color": "transparent",
+        "display": "block",
+        "height": "1.5rem",
+        "position": "relative",
+      },
+    },
+  },
+}
+`;

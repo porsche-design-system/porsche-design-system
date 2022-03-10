@@ -1,14 +1,14 @@
 import {
   getTextHeadlineSkeletonBaseJssStyle,
   getTextHeadlineSkeletonSubJssStyle,
-  getTextSkeletonCss,
+  getTextSkeletonStyles,
 } from './text-skeleton-styles';
 import { headline2 } from '@porsche-design-system/utilities-v2';
 import { getTypographyElementHeight } from './headline-skeleton-styles';
 
-describe('getTextSkeletonCss()', () => {
+describe('getTextSkeletonStyles()', () => {
   it('should return correct css', () => {
-    expect(getTextSkeletonCss()).toMatchSnapshot();
+    expect(getTextSkeletonStyles()).toMatchSnapshot();
   });
 });
 
