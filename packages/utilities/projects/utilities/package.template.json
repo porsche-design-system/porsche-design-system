@@ -1,8 +1,0 @@
-{
-  "name": "@porsche-design-system/utilities-jss",
-  "version": "0.0.0",
-  "main": "index.js",
-  "module": "esm/index.js",
-  "types": "types/index.d.ts",
-  "sideEffects": false
-}
