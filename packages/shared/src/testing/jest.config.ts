@@ -11,7 +11,7 @@ export const config: Config.InitialOptions = {
   transform: {
     '^.+\\.ts?$': 'ts-jest',
   },
-  maxWorkers: process.env.CI === 'true' ? 1 : 4,
+  maxWorkers: process.env.CI === 'true' ? 1 : 2,
   testSequencer: '@signed/jest-alphabetical-sequencer',
   globals: {
     'ts-jest': {
