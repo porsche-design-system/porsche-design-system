@@ -1,3 +1,3 @@
-export * from './text';
-export * from './headline';
-export * from './title';
+export * from './lib/text';
+export * from './lib/headline';
+export * from './lib/title';
