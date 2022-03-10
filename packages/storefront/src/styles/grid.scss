@@ -12,22 +12,32 @@
   @return calc(debug-grid-column-start-pos($column, $columns) + calc(#{debug-grid-column-width($columns)}));
 }
 
+// maybe variables can be released and used by customers who want to create there own fully custom base grid system
+$p-grid-max-width: 120rem;
+$p-grid-gutter: 1rem;
+$p-grid-gutter-s: 1.5rem;
+$p-grid-gutter-m: 2.25rem;
+$p-grid-safe-zone: 7vw;
+$p-grid-safe-zone-xl: 10vw;
+$p-grid-safe-zone-xxl: 12rem;
+
+// JSS and Styled Components implementation is missing
 @mixin p-grid($debug: false) {
   --p-grid-columns: 1; // shall be overwritable by consumer
-  --p-grid-gutter: 1rem !important;
-  --p-grid-safe-zone: 7vw !important;
-  --p-grid-safe-zone-calc: calc(var(--p-grid-safe-zone) - var(--p-grid-gutter)) !important; // should be better a scss variable
+  --p-grid-gutter: #{$p-grid-gutter} !important;
+  --p-grid-safe-zone: #{$p-grid-safe-zone} !important;
+  $p-grid-safe-zone-calc: calc(var(--p-grid-safe-zone) - var(--p-grid-gutter));
   display: grid !important;
   grid-column-gap: var(--p-grid-gutter) !important;
   grid-template-columns:
     [main-start]
-      var(--p-grid-safe-zone-calc)
-      [content-start]
-        repeat(var(--p-grid-columns), minmax(0, 1fr))
-      [content-end]
-      var(--p-grid-safe-zone-calc)
+      #{$p-grid-safe-zone-calc}
+        [content-start]
+          repeat(var(--p-grid-columns), minmax(0, 1fr))
+        [content-end]
+      #{$p-grid-safe-zone-calc}
     [main-end] !important;
-  max-width: 120rem !important;
+  max-width: $p-grid-max-width !important;
   margin: 0 auto !important;
   padding: 0 !important;
 
@@ -36,11 +46,11 @@
   }
 
   @include p-media-query('s') {
-    --p-grid-gutter: 1.5rem !important;
+    --p-grid-gutter: #{$p-grid-gutter-s} !important;
   }
 
   @include p-media-query('m') {
-    --p-grid-gutter: 2.25rem !important;
+    --p-grid-gutter: #{$p-grid-gutter-m} !important;
   }
 
   @include p-media-query('l') {
@@ -48,32 +58,32 @@
   }
 
   @include p-media-query('xl') {
-    --p-grid-safe-zone: 10vw !important;
+    --p-grid-safe-zone: #{$p-grid-safe-zone-xl} !important;
   }
 
   @include p-media-query('xxl') {
-    --p-grid-safe-zone: 12rem !important;
+    --p-grid-safe-zone: #{$p-grid-safe-zone-xxl} !important;
   }
 
   @if $debug {
-    // for visualization reasons only, shall never be rolled out to costumer
+    // for visualization reasons in storefront only, shall never be rolled out to costumer
     &::after {
       content: '';
       position: fixed;
       inset: 0;
       z-index: 9999999;
-      max-width: 120rem !important;
+      max-width: $p-grid-max-width !important;
       margin: 0 auto !important;
 
       $debug-grid-column-color: rgba(255, 0, 0, 0.25);
       $debug-grid-gutter-color: transparent;
       $debug-grid-safe-zone: linear-gradient(90deg,
-        $debug-grid-column-color 0, $debug-grid-column-color var(--p-grid-safe-zone-calc),
-        $debug-grid-gutter-color var(--p-grid-safe-zone-calc), $debug-grid-gutter-color 100%,
+        $debug-grid-column-color 0, $debug-grid-column-color $p-grid-safe-zone-calc,
+        $debug-grid-gutter-color $p-grid-safe-zone-calc, $debug-grid-gutter-color 100%,
       ),
       linear-gradient(90deg,
-          $debug-grid-gutter-color 0, $debug-grid-gutter-color calc(100% - var(--p-grid-safe-zone-calc)),
-          $debug-grid-column-color calc(100% - var(--p-grid-safe-zone-calc)), $debug-grid-column-color 100%,
+          $debug-grid-gutter-color 0, $debug-grid-gutter-color calc(100% - #{$p-grid-safe-zone-calc}),
+          $debug-grid-column-color calc(100% - #{$p-grid-safe-zone-calc}), $debug-grid-column-color 100%,
       );
 
       $debug-grid: ('xxs': 1, 'xs': 6, 'l': 12);
