@@ -1,16 +1,16 @@
 import { joinArrayElementsToString, withoutTagsOption } from './utils';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
 import {
-  getButtonLinkPureSkeletonJssStyle,
-  getButtonLinkSocialSkeletonJssStyle,
-  getCheckboxRadioWrapperSkeletonJssStyle,
-  getFieldsetWrapperSkeletonJssStyle,
-  getHeadlineSkeletonJssStyle,
-  getSelectTextFieldWrapperSkeletonJssStyle,
-  getTextareaWrapperSkeletonJssStyle,
-  getTextListItemSkeletonJssStyle,
-  getTextListSkeletonJssStyle,
-  getTextSkeletonJssStyle,
+  getButtonLinkPureSkeletonStyles,
+  getButtonLinkSocialSkeletonStyles,
+  getCheckboxRadioWrapperSkeletonStyles,
+  getFieldsetWrapperSkeletonStyles,
+  getHeadlineSkeletonStyles,
+  getSelectTextFieldWrapperSkeletonStyles,
+  getTextareaWrapperSkeletonStyles,
+  getTextListItemSkeletonStyles,
+  getTextListSkeletonStyles,
+  getTextSkeletonStyles,
 } from '../../../../components/src/styles/skeletons';
 import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
 
@@ -50,19 +50,19 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
   const skeletonKeyframes = '@keyframes opacity{0%{opacity:0.35}50%{opacity:0.15}100%{opacity:0.35}';
 
   // combining tagNames avoids redundant CSS
-  const skeletonJssStyles = {
-    'p-button|p-link|p-link-social': getButtonLinkSocialSkeletonJssStyle(),
-    'p-button-pure|p-link-pure': getButtonLinkPureSkeletonJssStyle(),
-    'p-checkbox-wrapper|p-radio-button-wrapper': getCheckboxRadioWrapperSkeletonJssStyle(),
-    'p-fieldset-wrapper': getFieldsetWrapperSkeletonJssStyle(),
-    'p-headline': getHeadlineSkeletonJssStyle(),
-    'p-select-wrapper|p-text-field-wrapper': getSelectTextFieldWrapperSkeletonJssStyle(),
-    'p-text': getTextSkeletonJssStyle(),
-    'p-text-list': getTextListSkeletonJssStyle(),
-    'p-text-list-item': getTextListItemSkeletonJssStyle(),
-    'p-textarea-wrapper': getTextareaWrapperSkeletonJssStyle(),
+  const skeletonStyles = {
+    'p-button|p-link|p-link-social': getButtonLinkSocialSkeletonStyles(),
+    'p-button-pure|p-link-pure': getButtonLinkPureSkeletonStyles(),
+    'p-checkbox-wrapper|p-radio-button-wrapper': getCheckboxRadioWrapperSkeletonStyles(),
+    'p-fieldset-wrapper': getFieldsetWrapperSkeletonStyles(),
+    'p-headline': getHeadlineSkeletonStyles(),
+    'p-select-wrapper|p-text-field-wrapper': getSelectTextFieldWrapperSkeletonStyles(),
+    'p-text': getTextSkeletonStyles(),
+    'p-text-list': getTextListSkeletonStyles(),
+    'p-text-list-item': getTextListItemSkeletonStyles(),
+    'p-textarea-wrapper': getTextareaWrapperSkeletonStyles(),
   };
-  const minifiedSkeletonStyles = Object.entries(skeletonJssStyles).reduce(
+  const minifiedSkeletonStyles = Object.entries(skeletonStyles).reduce(
     (prevValue, [key, value]) => ({ ...prevValue, [key]: getMinifiedCss(value) }),
     {}
   );
