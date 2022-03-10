@@ -1,7 +1,7 @@
-import type { FontSizeLineHeight } from '../src/jss/font';
+import type { FontSizeLineHeight } from '../src/jss/font/shared';
 import * as fs from 'fs';
 import * as path from 'path';
-import { font, fontWeight } from '../src/jss/font';
+import { font, fontWeight } from '../src/jss/font/font';
 import { mediaQueryMin, mediaQueryMinMax, breakpoint } from '../src/jss/media-query';
 import { pascalCase } from 'change-case';
 
@@ -136,7 +136,7 @@ const buildTypography = (): void => {
       .join('\n\n');
 
   const imports = [
-    "import { fontFamily, fontWeight } from './font';",
+    "import { fontFamily, fontWeight } from './font/font';",
     "import { mediaQueryMin, mediaQueryMinMax } from './media-query';",
   ].join('\n');
   const titles = objectToConst(title, 'title');
