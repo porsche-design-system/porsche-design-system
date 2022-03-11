@@ -24,12 +24,11 @@
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "scripts": {
-    "build": "yarn clean:build && yarn build:generateTagNames && yarn build:generateComponentMeta && yarn build:generateCodeSamples && yarn build:bundle && yarn build:preparePackage",
+    "build": "yarn clean:build && yarn build:generateTagNames && yarn build:generateComponentMeta && yarn build:generateCodeSamples && yarn build:bundle",
     "build:generateTagNames": "ts-node scripts/generateTagNames.ts",
     "build:generateComponentMeta": "ts-node scripts/generateComponentMeta.ts",
     "build:generateCodeSamples": "ts-node scripts/generateCodeSamples.ts",
     "build:bundle": "rollup -c rollup.config.js",
-    "build:preparePackage": "ts-node scripts/preparePackage.ts",
     "test": "yarn test:unit",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
     "clean": "yarn clean:node_modules && yarn clean:build",
@@ -54,6 +53,7 @@
     "globby": "^11.0.4",
     "rollup": "^2.70.0",
     "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-generate-package-json": "^3.2.0",
     "ts-node": "^10.7.0",
     "typescript": "~4.6.2"
   }
