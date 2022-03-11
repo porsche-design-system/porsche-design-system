@@ -288,6 +288,33 @@ Object {
 }
 `;
 
+exports[`should contain correct values for title 1`] = `
+Object {
+  "large": Object {
+    "@media (min-width: 1000px) and (max-width: 1299px)": Object {
+      "fontSize": "3.25rem",
+      "lineHeight": 1.2307692308,
+    },
+    "@media (min-width: 1300px) and (max-width: 1759px)": Object {
+      "fontSize": "3.875rem",
+      "lineHeight": 1.2258064516,
+    },
+    "@media (min-width: 1760px)": Object {
+      "fontSize": "4.5rem",
+      "lineHeight": 1.2222222222,
+    },
+    "@media (min-width: 760px) and (max-width: 999px)": Object {
+      "fontSize": "2.625rem",
+      "lineHeight": 1.2380952381,
+    },
+    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "fontSize": "2rem",
+    "fontWeight": 600,
+    "lineHeight": 1.375,
+  },
+}
+`;
+
 exports[`should contain correct values for titleLarge 1`] = `
 Object {
   "@media (min-width: 1000px) and (max-width: 1299px)": Object {
