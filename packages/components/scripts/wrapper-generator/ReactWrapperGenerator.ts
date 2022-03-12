@@ -12,9 +12,13 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     return `${component.replace('p-', '')}.wrapper${withOutExtension ? '' : '.tsx'}`;
   }
 
+  public hasSkeleton(component: TagName): boolean {
+    return getComponentMeta(component).hasSkeleton;
+  }
+
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
     const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
-    const canBeObject = extendedProps.some(({ canBeObject }) => canBeObject);
+    const hasSkeleton = this.hasSkeleton(component);
 
     const reactImports = [
       'ForwardedRef',
@@ -30,6 +34,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       ...(hasEventProps ? ['useEventCallback'] : []),
       'useMergedClass',
       'usePrefix',
+      ...(hasSkeleton ? ['usesSkeletons'] : []),
     ];
     const importsFromHooks = `import { ${hooksImports.join(', ')} } from '../../hooks';`;
 
@@ -41,10 +46,6 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       : '';
 
     return [importsFromReact, importsFromHooks, importsFromUtils, importsFromTypes].filter((x) => x).join('\n');
-  }
-
-  private generatePropsName(component: TagName): string {
-    return `${pascalCase(component)}Props`;
   }
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
@@ -59,6 +60,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     const propsToDestructure = extendedProps;
     const propsToEventListener = extendedProps.filter(({ isEvent }) => isEvent);
     const propsToSync = extendedProps.filter(({ isEvent }) => !isEvent);
+    const hasSkeleton = this.hasSkeleton(component);
 
     const wrapperPropsArr: string[] = [
       ...propsToDestructure.map(({ key, defaultValue, isEvent }) =>
@@ -80,6 +82,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
         ({ key }) => `useEventCallback(elementRef, '${camelCase(key.substr(2))}', ${key} as any);`
       ),
       `const Tag = usePrefix('${component}');`,
+      ...(hasSkeleton ? ['const usesSkeleton = usesSkeletons();'] : []),
     ];
     const componentHooks = componentHooksArr.join('\n    ');
 
@@ -114,11 +117,13 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
         .join('');
     }
 
+    const skeletonStyles: string = hasSkeleton
+      ? `\${usesSkeleton ? \`${skeletonClassNames ? skeletonClassNames : ''}\` : ''}`
+      : '';
+
     const componentPropsArr: string[] = [
       '...rest',
-      `class: useMergedClass(elementRef, \`\${className ? className + ' ' : ''}${
-        skeletonClassNames ? skeletonClassNames : ''
-      }\`)`,
+      `class: useMergedClass(elementRef, \`\${className ? className + ' ' : ''}${skeletonStyles}\`)`,
       'ref: syncRef(elementRef, ref)',
     ];
 
@@ -138,5 +143,9 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     return <Tag {...props} />;
   }
 );`;
+  }
+
+  private generatePropsName(component: TagName): string {
+    return `${pascalCase(component)}Props`;
   }
 }
