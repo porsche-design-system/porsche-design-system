@@ -28,6 +28,11 @@ export const usePrefix = /*#__PURE__*/ (tagName: string): string => {
   }
 };
 
+export const usesSkeletons = /*#__PURE__*/ (): boolean => {
+  const { usesSkeletons } = useContext(PorscheDesignSystemContext);
+  return usesSkeletons;
+};
+
 export const useEventCallback = /*#__PURE__*/ (
   ref: MutableRefObject<HTMLElement>,
   eventName: string,
