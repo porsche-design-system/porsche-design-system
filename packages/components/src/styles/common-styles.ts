@@ -154,7 +154,6 @@ export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOp
 };
 
 export { Breakpoint, breakpoint } from '@porsche-design-system/utilities-v2';
-// export type { Breakpoint } from '@porsche-design-system/utilities-v2';
 export const mediaQuery = (minBreakpoint: Breakpoint): string => `@media (min-width: ${breakpoint[minBreakpoint]}px)`;
 
 export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withDarkTheme: true }): Styles => {
