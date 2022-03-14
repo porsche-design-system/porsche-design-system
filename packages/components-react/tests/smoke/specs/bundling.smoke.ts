@@ -15,7 +15,7 @@ it('should only contain initial-styles partial', () => {
   const tagNamesWithSkeleton = TAG_NAMES_WITH_SKELETON.map((x) => `"${x}"`).join(',');
   // quantifiers ({start, end}) to increase accuracy of regex instead using .*
   const regex = new RegExp(
-    `\\[${tagNames}\\].{0,10}\\[${tagNamesWithSkeleton}\\].{140,160}\\.join\\(", "\\)\\,.{50,70}\\.join\\(", "\\)\\)\\).{110,130}\\.join\\(","\\)\\+"{visibility:hidden}".{110,130}"<style>"`
+    `\\[${tagNames}\\].{0,10}\\[${tagNamesWithSkeleton}\\].{140,160}\\.join\\(", "\\)\\,.{50,70}\\.join\\(", "\\)\\)\\).{140,160}\\.join\\(","\\)\\+"{visibility:hidden}".{120,140}"<style".{20,40}"</style>"`
   );
 
   expect(mainChunkFileContent).toMatch(regex);
