@@ -17,6 +17,14 @@ const external = [
   'react/jsx-runtime',
 ];
 
+const packageJsonConfig = {
+  baseContents: {
+    main: 'index.js',
+    module: 'esm/index.js',
+    sideEffects: false,
+  },
+};
+
 export default [
   {
     input,
@@ -50,15 +58,7 @@ export default [
       {
         file: `${outputDir}/partials/index.js`,
         format: 'cjs',
-        plugins: [
-          generatePackageJson({
-            baseContents: {
-              main: 'index.js',
-              module: 'esm/index.js',
-              sideEffects: false,
-            },
-          }),
-        ],
+        plugins: [generatePackageJson(packageJsonConfig)],
       },
       {
         file: `${outputDir}/partials/esm/index.js`,
@@ -74,15 +74,7 @@ export default [
       {
         file: `${outputDir}/utilities/jss/index.js`,
         format: 'cjs',
-        plugins: [
-          generatePackageJson({
-            baseContents: {
-              main: 'index.js',
-              module: 'esm/index.js',
-              sideEffects: false,
-            },
-          }),
-        ],
+        plugins: [generatePackageJson(packageJsonConfig)],
       },
       {
         file: `${outputDir}/utilities/jss/esm/index.js`,
