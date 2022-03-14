@@ -3,15 +3,57 @@ import * as path from 'path';
 import * as globby from 'globby';
 import { paramCase } from 'change-case';
 import { TAG_NAMES, TAG_NAMES_WITH_SKELETON, TagName } from '../src/lib/tagNames';
+import { PAccordion } from '../../components-angular/dist/components-wrapper/lib/components/accordion.wrapper';
+import { PButton } from '../../components-angular/dist/components-wrapper/lib/components/button.wrapper';
+import { PButtonPure } from '../../components-angular/dist/components-wrapper/lib/components/button-pure.wrapper';
+import { PCheckboxWrapper } from '../../components-angular/dist/components-wrapper/lib/components/checkbox-wrapper.wrapper';
+import { PTabs } from '../../components-angular/dist/components-wrapper/lib/components/tabs.wrapper';
+import { PLink } from '../../components-angular/dist/components-wrapper/lib/components/link.wrapper';
+import { PSelectWrapper } from '../../components-angular/dist/components-wrapper/lib/components/select-wrapper.wrapper';
+import { PHeadline } from '../../components-angular/dist/components-wrapper/lib/components/headline.wrapper';
+import { PFieldsetWrapper } from '../../components-angular/dist/components-wrapper/lib/components/fieldset-wrapper.wrapper';
+import { PPagination } from '../../components-angular/dist/components-wrapper/lib/components/pagination.wrapper';
+import { PLinkPure } from '../../components-angular/dist/components-wrapper/lib/components/link-pure.wrapper';
+import { PTabsBar } from '../../components-angular/dist/components-wrapper/lib/components/tabs-bar.wrapper';
+import { PRadioButtonWrapper } from '../../components-angular/dist/components-wrapper/lib/components/radio-button-wrapper.wrapper';
+import { PTextFieldWrapper } from '../../components-angular/dist/components-wrapper/lib/components/text-field-wrapper.wrapper';
+import { PText } from '../../components-angular/dist/components-wrapper/lib/components/text.wrapper';
+import { PLinkSocial } from '../../components-angular/dist/components-wrapper/lib/components/link-social.wrapper';
+import { PMarque } from '../../components-angular/dist/components-wrapper/lib/components/marque.wrapper';
+import { PSwitch } from '../../components-angular/dist/components-wrapper/lib/components/switch.wrapper';
+import { PTextareaWrapper } from '../../components-angular/dist/components-wrapper/lib/components/textarea-wrapper.wrapper';
 
 const glue = '\n\n';
-// TODO: typing as component property string
-type SkeletonRelevantProps = { propName: string; shouldStringifyValue: boolean }[];
+
+type SkeletonRelevantProps = {
+  propName:
+    | Extract<keyof PAccordion, 'compact' | 'open' | 'size' | 'theme'>
+    | Extract<keyof PButton, 'hideLabel' | 'theme'>
+    | Extract<keyof PButtonPure, 'hideLabel' | 'size' | 'stretch' | 'theme'>
+    | Extract<keyof PCheckboxWrapper, 'hideLabel'>
+    | Extract<keyof PFieldsetWrapper, 'labelSize'>
+    | Extract<keyof PLink, 'hideLabel' | 'theme'>
+    | Extract<keyof PLinkPure, 'hideLabel' | 'size' | 'stretch' | 'theme'>
+    | Extract<keyof PLinkSocial, 'hideLabel' | 'theme'>
+    | Extract<keyof PMarque, 'size'>
+    | Extract<keyof PPagination, 'itemsPerPage' | 'totalItemsCount' | 'theme'>
+    | Extract<keyof PRadioButtonWrapper, 'hideLabel'>
+    | Extract<keyof PSelectWrapper, 'description' | 'hideLabel' | 'label' | 'theme'>
+    | Extract<keyof PSwitch, 'hideLabel' | 'stretch' | 'theme'>
+    | Extract<keyof PTabs, 'size' | 'theme'>
+    | Extract<keyof PTabsBar, 'size' | 'theme'>
+    | Extract<keyof PTextFieldWrapper, 'description' | 'hideLabel' | 'label'>
+    | Extract<keyof PTextareaWrapper, 'description' | 'hideLabel' | 'label'>
+    | Extract<keyof PHeadline, 'variant' | 'theme'>
+    | Extract<keyof PText, 'size' | 'theme'>;
+  shouldStringifyValue: boolean;
+}[];
+
 const SKELETON_RELEVANT_PROPS: SkeletonRelevantProps = [
   { propName: 'compact', shouldStringifyValue: false },
   { propName: 'description', shouldStringifyValue: false },
   { propName: 'hideLabel', shouldStringifyValue: false },
-  { propName: 'itemsPerPage ', shouldStringifyValue: true },
+  { propName: 'itemsPerPage', shouldStringifyValue: true },
   { propName: 'label', shouldStringifyValue: false },
   { propName: 'labelSize', shouldStringifyValue: false },
   { propName: 'open', shouldStringifyValue: false },
