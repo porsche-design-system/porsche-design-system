@@ -40,7 +40,7 @@ Object {
           },
           "height": "4.5rem",
         },
-        "&[description][label]:not([hide-label=true]), &.pds-skeleton--description.pds-skeleton--label:not(.pds-skeleton--label)": Object {
+        "&[description][label]:not([hide-label=true]), &.pds-skeleton--description.pds-skeleton--label:not(.pds-skeleton--hide-label)": Object {
           "&::after": Object {
             "minHeight": "calc(100% - 3.25rem)",
             "top": "3.25rem",
