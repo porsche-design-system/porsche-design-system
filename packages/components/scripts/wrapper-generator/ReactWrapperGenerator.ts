@@ -117,13 +117,15 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
         .join('');
     }
 
-    const skeletonStyles: string = hasSkeleton
-      ? `\${usesSkeleton ? \`${skeletonClassNames ? skeletonClassNames : ''}\` : ''}`
-      : '';
+    const mergedSkeletonClasses: string = hasSkeleton
+      ? `\`\${usesSkeleton ? \`\${className ? className + ' ' : ''}${
+          skeletonClassNames ? skeletonClassNames : ''
+        }\` : className }\``
+      : 'className';
 
     const componentPropsArr: string[] = [
       '...rest',
-      `class: useMergedClass(elementRef, \`\${className ? className + ' ' : ''}${skeletonStyles}\`)`,
+      `class: useMergedClass(elementRef, ${mergedSkeletonClasses})`,
       'ref: syncRef(elementRef, ref)',
     ];
 
