@@ -2,7 +2,7 @@ import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { componentsReady, PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
-import '@porsche-design-system/shared/css/styles.css';
+import '@porsche-design-system/shared/dist/css/styles.css'; // dist path is needed since package.json isn't copied
 import { App } from './App';
 
 ReactDOM.render(
