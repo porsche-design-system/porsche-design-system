@@ -41,7 +41,7 @@ type GetHoverStylesOptions = {
   theme?: Theme;
 };
 
-export const getHoverJssStyle = ({ theme }: GetHoverStylesOptions = { theme: 'light' }): JssStyle => {
+export const getHoverStyles = ({ theme }: GetHoverStylesOptions = { theme: 'light' }): Styles => {
   return {
     transition: getTransition('color'),
     '&:hover': {
@@ -153,7 +153,8 @@ export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOp
   };
 };
 
-export { Breakpoint, breakpoint } from '@porsche-design-system/utilities-v2';
+export { breakpoint } from '@porsche-design-system/utilities-v2';
+export type { Breakpoint } from '@porsche-design-system/utilities-v2';
 export const mediaQuery = (minBreakpoint: Breakpoint): string => `@media (min-width: ${breakpoint[minBreakpoint]}px)`;
 
 export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withDarkTheme: true }): Styles => {
@@ -161,11 +162,11 @@ export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withD
     '& a': {
       color: 'inherit',
       textDecoration: 'underline',
-      ...getHoverJssStyle(),
+      ...getHoverStyles(),
       ...getFocusJssStyle({ offset: 1 }),
     },
     ...(opts.withDarkTheme && {
-      '&[theme="dark"] a:hover': getHoverJssStyle({ theme: 'dark' })['&:hover'],
+      '&[theme="dark"] a:hover': getHoverStyles({ theme: 'dark' })['&:hover'],
     }),
     '& b, & strong': {
       fontWeight: fontWeight.bold,
