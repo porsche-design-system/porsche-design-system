@@ -1,3 +1,4 @@
+import '../../../../components/scripts/mockMutationObserver';
 import { ElementHandle, Page } from 'puppeteer';
 import { goto, selectNode } from '../helpers';
 import { PDS_SKELETON_CLASS_PREFIX } from '@porsche-design-system/components/src/styles/skeletons';
