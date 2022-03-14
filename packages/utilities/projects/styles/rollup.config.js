@@ -1,17 +1,29 @@
 import typescript from '@rollup/plugin-typescript';
 
+const input = 'src/index.ts';
+const outputDir = 'dist/js';
+
 export default [
   {
-    input: 'src/index.ts',
+    input,
     output: {
-      dir: 'dist/js',
+      dir: outputDir,
       format: 'cjs',
     },
-    plugins: [typescript({ declaration: true, declarationDir: 'dist/js/types', rootDir: 'src' })],
+    plugins: [
+      typescript({
+        declaration: true,
+        declarationDir: `${outputDir}/types`,
+        rootDir: 'src',
+      }),
+    ],
   },
   {
-    input: 'src/index.ts',
-    output: { dir: 'dist/js/esm', format: 'esm' },
+    input,
+    output: {
+      dir: `${outputDir}/esm`,
+      format: 'esm',
+    },
     plugins: [typescript()],
   },
 ];
