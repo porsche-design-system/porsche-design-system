@@ -1,5 +1,4 @@
 import { JSDOM, DOMWindow } from 'jsdom';
-import * as jssUtilities from '@porsche-design-system/components-js/utilities/jss';
 
 interface Global extends NodeJS.Global {
   document: Document;
@@ -46,24 +45,5 @@ describe('components-wrapper', () => {
       expect(typeof porscheDesignSystem.componentsReady).toBe('function');
       expect(typeof porscheDesignSystem.load).toBe('function');
     });
-  });
-});
-
-// verify utilities package exists
-describe('utilities/jss', () => {
-  it.each<keyof typeof jssUtilities>(['color', 'font', 'themeLight', 'themeDark'])(
-    'should be of type object: %s',
-    (util) => {
-      expect(typeof jssUtilities[util]).toBe('object');
-    }
-  );
-
-  it.each<keyof typeof jssUtilities>([
-    'getContentWrapperJssStyle',
-    'getFocusJssStyle',
-    'mediaQueryMin',
-    'getScreenReaderOnlyJssStyle',
-  ])('should be of type function: %s', (util) => {
-    expect(typeof jssUtilities[util]).toBe('function');
   });
 });
