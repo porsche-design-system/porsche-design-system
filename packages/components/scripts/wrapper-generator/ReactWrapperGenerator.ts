@@ -120,7 +120,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     const mergedSkeletonClasses: string = hasSkeleton
       ? `\`\${usesSkeleton ? \`\${className ? className + ' ' : ''}${
           skeletonClassNames ? skeletonClassNames : ''
-        }\` : className }\``
+        }\` : \`\${className ? className : ''}\`}\``
       : 'className';
 
     const componentPropsArr: string[] = [
