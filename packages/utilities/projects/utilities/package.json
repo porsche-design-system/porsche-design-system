@@ -5,7 +5,7 @@
   "scope": "@porsche-design-system",
   "main": "dist/jss/index.js",
   "module": "dist/jss/esm/index.js",
-  "types": "dist/jss/types/index.d.ts",
+  "types": "dist/jss/index.d.ts",
   "sideEffects": false,
   "scripts": {
     "build": "yarn clean:build && yarn build:typography && yarn build:bundle",
