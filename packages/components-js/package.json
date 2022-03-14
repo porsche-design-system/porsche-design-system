@@ -14,7 +14,7 @@
     "build:app:base": "mkdir -p ./www && cp -r ./src/. ./www && cp -r ./public/. ./www",
     "build:app:components": "cp ./dist/components-wrapper/index.js ./www",
     "build:app:assets": "cp ../assets/dist/esm/index.js ./www/assets/assets.js",
-    "build:app:shared": "cp ../shared/dist/esm/index.js ./www/assets/shared.js && cp ../shared/dist/css/styles.css ./www/assets/styles.css",
+    "build:app:shared": "cp ../shared/dist/esm/data/table-data-vrt.js ./www/assets/table-data-vrt.js && cp ../shared/dist/css/styles.css ./www/assets/styles.css",
     "build:app:componentsAngularReact": "yarn generateAngularReactVRTPages",
     "build:components-manager-cli": "yarn --cwd ./projects/components-manager-cli build",
     "build:components-manager-core": "yarn --cwd ./projects/components-manager-core build",
