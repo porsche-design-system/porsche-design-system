@@ -10,7 +10,7 @@ import {
   getInsetJssStyle,
   getFocusJssStyle,
   getFormTextHiddenJssStyle,
-  getHoverStyles,
+  getHoverJssStyle,
   getTextHiddenJssStyle,
   getTransition,
   mediaQuery,
@@ -83,7 +83,7 @@ describe('addImportantToEachRule()', () => {
 
 describe('getHoverJssStyles()', () => {
   it.each<Theme>(['light', 'dark'])('should return correct JssStyle for theme: %o', (theme) => {
-    expect(getHoverStyles({ theme })).toMatchSnapshot();
+    expect(getHoverJssStyle({ theme })).toMatchSnapshot();
   });
 });
 
