@@ -24,7 +24,7 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["@porsche-design-system/shared/dist/css/styles.css"],
+            "styles": ["@porsche-design-system/shared/css/styles.css"],
             "scripts": [],
             "indexTransform": "./scripts/transformIndexHtml.ts"
           },
