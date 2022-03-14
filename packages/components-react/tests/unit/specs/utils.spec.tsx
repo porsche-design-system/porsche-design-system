@@ -43,7 +43,6 @@ describe('syncRefs', () => {
     jest.spyOn(hooks, 'usePrefix').mockImplementation((tagName: string) => tagName);
     jest.spyOn(hooks, 'usesSkeletons');
   });
-  const SKELETON_CLASSES = `${PDS_SKELETON_CLASS_PREFIX}theme-light ${PDS_SKELETON_CLASS_PREFIX}variant-secondary`;
   const INITIAL_CLASS_NAME = 'initialClass';
   const CLASS_NAME = 'someClass1 hydrated';
 
@@ -69,7 +68,7 @@ describe('syncRefs', () => {
     const { getByTestId } = render(<Sample />);
     const button = getByTestId('button');
 
-    expect(button.className).toBe(`${INITIAL_CLASS_NAME} ${SKELETON_CLASSES}`);
+    expect(button.className).toBe(`${INITIAL_CLASS_NAME}`);
 
     userEvent.click(button);
 
@@ -80,7 +79,7 @@ describe('syncRefs', () => {
     const { getByTestId } = render(<Sample isRefCallback />);
     const button = getByTestId('button');
 
-    expect(button.className).toBe(`${INITIAL_CLASS_NAME} ${SKELETON_CLASSES}`);
+    expect(button.className).toBe(`${INITIAL_CLASS_NAME}`);
 
     userEvent.click(button);
 
