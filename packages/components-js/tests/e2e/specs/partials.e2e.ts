@@ -1,53 +1,12 @@
-import {
-  getComponentChunkLinks,
-  getFontFaceStylesheet,
-  getFontLinks,
-  getIconLinks,
-  getInitialStyles,
-  getLoaderScript,
-  getMetaTagsAndIconLinks,
-} from '@porsche-design-system/components-js/partials';
+import * as partials from '@porsche-design-system/components-js/partials';
 
-describe('partials', () => {
-  describe('getFontFaceStylesheet()', () => {
-    it('should be a function', () => {
-      expect(typeof getFontFaceStylesheet).toBe('function');
-    });
-  });
-
-  describe('getInitialStyles()', () => {
-    it('should be a function', () => {
-      expect(typeof getInitialStyles).toBe('function');
-    });
-  });
-
-  describe('getFontLinks()', () => {
-    it('should be a function', () => {
-      expect(typeof getFontLinks).toBe('function');
-    });
-  });
-
-  describe('getIconLinks()', () => {
-    it('should be a function', () => {
-      expect(typeof getIconLinks).toBe('function');
-    });
-  });
-
-  describe('getComponentChunkLinks()', () => {
-    it('should be a function', () => {
-      expect(typeof getComponentChunkLinks).toBe('function');
-    });
-  });
-
-  describe('getMetaTagsAndIconLinks()', () => {
-    it('should be a function', () => {
-      expect(typeof getMetaTagsAndIconLinks).toBe('function');
-    });
-  });
-
-  describe('getLoaderScript()', () => {
-    it('should be a function', () => {
-      expect(typeof getLoaderScript).toBe('function');
-    });
-  });
+it('should provide all partials', () => {
+  expect(Object.keys(partials).length).toBe(7);
 });
+
+it.each<keyof typeof partials>(Object.keys(partials) as (keyof typeof partials)[])(
+  'should be a function for partial: %s',
+  (partial) => {
+    expect(typeof partials[partial]).toBe('function');
+  }
+);
