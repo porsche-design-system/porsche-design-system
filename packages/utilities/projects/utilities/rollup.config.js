@@ -16,7 +16,7 @@ export default [
           baseContents: {
             main: 'index.js',
             module: 'esm/index.js',
-            types: 'types/index.d.ts',
+            types: 'index.d.ts',
             sideEffects: false,
           },
         }),
@@ -25,7 +25,7 @@ export default [
     plugins: [
       typescript({
         declaration: true,
-        declarationDir: `${outputDir}/types`,
+        declarationDir: outputDir,
         exclude: '**.spec.ts',
         rootDir: 'src/jss',
       }),
