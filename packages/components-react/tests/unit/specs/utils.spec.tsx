@@ -37,33 +37,32 @@ describe('getMergedClassName', () => {
   );
 });
 
+const INITIAL_CLASS_NAME = 'initialClass';
+const CLASS_NAME = 'someClass1 hydrated';
+
+type Props = { isRefCallback?: boolean };
+const Sample = ({ isRefCallback }: Props): JSX.Element => {
+  const buttonRef = useRef(undefined);
+
+  return (
+    <PButton
+      className={INITIAL_CLASS_NAME}
+      data-testid="button"
+      ref={isRefCallback ? (el) => (buttonRef.current = el) : buttonRef}
+      onClick={() => {
+        buttonRef.current.className = CLASS_NAME;
+      }}
+    >
+      Some Button
+    </PButton>
+  );
+};
+
 describe('syncRefs', () => {
   beforeEach(() => {
     // mocked usePrefix so we don't have to use PorscheDesignSystemProvider
-    jest.spyOn(hooks, 'usePrefix').mockImplementation((tagName: string) => tagName);
-    jest.spyOn(hooks, 'usesSkeletons');
+    jest.spyOn(hooks, 'usePrefix').mockImplementation((tagName) => tagName);
   });
-  const INITIAL_CLASS_NAME = 'initialClass';
-  const CLASS_NAME = 'someClass1 hydrated';
-
-  type Props = { isRefCallback?: boolean };
-  const Sample = ({ isRefCallback }: Props): JSX.Element => {
-    const buttonRef = useRef(undefined);
-
-    return (
-      <PButton
-        className={INITIAL_CLASS_NAME}
-        data-testid="button"
-        ref={isRefCallback ? (el) => (buttonRef.current = el) : buttonRef}
-        onClick={() => {
-          buttonRef.current.className = CLASS_NAME;
-        }}
-      >
-        Some Button
-      </PButton>
-    );
-  };
-
   it('should sync refs if ref is set directly', () => {
     const { getByTestId } = render(<Sample />);
     const button = getByTestId('button');
@@ -80,6 +79,23 @@ describe('syncRefs', () => {
     const button = getByTestId('button');
 
     expect(button.className).toBe(`${INITIAL_CLASS_NAME}`);
+
+    userEvent.click(button);
+
+    expect(button.className).toBe(CLASS_NAME);
+  });
+});
+
+describe('usesSkeletons', () => {
+  it('should set skeleton class', () => {
+    jest.spyOn(hooks, 'usePrefix').mockImplementation((tagName) => tagName);
+    jest.spyOn(hooks, 'usesSkeletons').mockImplementation(() => true);
+    const { getByTestId } = render(<Sample />);
+    const button = getByTestId('button');
+
+    expect(button.className).toBe(
+      `${INITIAL_CLASS_NAME} ${PDS_SKELETON_CLASS_PREFIX}theme-light ${PDS_SKELETON_CLASS_PREFIX}variant-secondary`
+    );
 
     userEvent.click(button);
 

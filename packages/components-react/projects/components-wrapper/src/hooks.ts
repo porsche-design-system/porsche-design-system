@@ -30,7 +30,7 @@ export const usePrefix = /*#__PURE__*/ (tagName: string): string => {
 
 export const usesSkeletons = /*#__PURE__*/ (): boolean => {
   if (process.env.NODE_ENV === 'test' && skipCheck) {
-    return true;
+    return false;
   } else {
     const { usesSkeletons } = useContext(PorscheDesignSystemContext); // eslint-disable-line react-hooks/rules-of-hooks
 
