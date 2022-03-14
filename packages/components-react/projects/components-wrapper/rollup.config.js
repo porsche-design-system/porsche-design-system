@@ -1,17 +1,18 @@
 import typescript from '@rollup/plugin-typescript';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 
-const BASE_DIR = 'projects/components-wrapper';
-const DIST_DIR = 'dist/components-wrapper';
-const input = `${BASE_DIR}/src/public-api.ts`;
+const projectDir = 'projects/components-wrapper';
+const outputDir = 'dist/components-wrapper';
+const input = `${projectDir}/src/public-api.ts`;
 
 const typescriptOpts = {
-  tsconfig: `${BASE_DIR}/tsconfig.json`,
+  tsconfig: `${projectDir}/tsconfig.json`,
 };
 
 const external = [
   '@porsche-design-system/components-js',
   '@porsche-design-system/components-js/partials',
+  '@porsche-design-system/components-js/utilities/jss',
   'react',
   'react/jsx-runtime',
 ];
@@ -21,14 +22,14 @@ export default [
     input,
     external,
     output: {
-      dir: DIST_DIR,
+      dir: outputDir,
       format: 'cjs',
     },
     plugins: [
       typescript({
         ...typescriptOpts,
         declaration: true,
-        declarationDir: DIST_DIR,
+        declarationDir: outputDir,
         rootDir: 'src',
       }),
     ],
@@ -37,17 +38,17 @@ export default [
     input,
     external,
     output: {
-      dir: `${DIST_DIR}/esm`,
+      dir: `${outputDir}/esm`,
       format: 'esm',
     },
     plugins: [typescript(typescriptOpts)],
   },
   {
-    input: `${BASE_DIR}/src/partials.ts`,
+    input: `${projectDir}/src/partials.ts`,
     external,
     output: [
       {
-        file: `${DIST_DIR}/partials/index.js`,
+        file: `${outputDir}/partials/index.js`,
         format: 'cjs',
         plugins: [
           generatePackageJson({
@@ -60,17 +61,41 @@ export default [
         ],
       },
       {
-        file: `${DIST_DIR}/partials/esm/index.js`,
+        file: `${outputDir}/partials/esm/index.js`,
         format: 'esm',
       },
     ],
     plugins: [typescript(typescriptOpts)],
   },
   {
-    input: `${BASE_DIR}/src/testing.ts`,
+    input: `${projectDir}/src/utilities/jss.ts`,
+    external,
+    output: [
+      {
+        file: `${outputDir}/utilities/jss/index.js`,
+        format: 'cjs',
+        plugins: [
+          generatePackageJson({
+            baseContents: {
+              main: 'index.js',
+              module: 'esm/index.js',
+              sideEffects: false,
+            },
+          }),
+        ],
+      },
+      {
+        file: `${outputDir}/utilities/jss/esm/index.js`,
+        format: 'esm',
+      },
+    ],
+    plugins: [typescript(typescriptOpts)],
+  },
+  {
+    input: `${projectDir}/src/testing.ts`,
     external: ['@testing-library/dom'],
     output: {
-      dir: DIST_DIR,
+      dir: outputDir,
       format: 'cjs',
     },
     plugins: [typescript(typescriptOpts)],
