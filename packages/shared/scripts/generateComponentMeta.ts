@@ -3,15 +3,84 @@ import * as path from 'path';
 import * as globby from 'globby';
 import { paramCase } from 'change-case';
 import { TAG_NAMES, TAG_NAMES_WITH_SKELETON, TagName } from '../src/lib/tagNames';
+import { PAccordion } from '../../components-angular/dist/components-wrapper/lib/components/accordion.wrapper';
+import { PButton } from '../../components-angular/dist/components-wrapper/lib/components/button.wrapper';
+import { PButtonPure } from '../../components-angular/dist/components-wrapper/lib/components/button-pure.wrapper';
+import { PCheckboxWrapper } from '../../components-angular/dist/components-wrapper/lib/components/checkbox-wrapper.wrapper';
+import { PTabs } from '../../components-angular/dist/components-wrapper/lib/components/tabs.wrapper';
+import { PLink } from '../../components-angular/dist/components-wrapper/lib/components/link.wrapper';
+import { PSelectWrapper } from '../../components-angular/dist/components-wrapper/lib/components/select-wrapper.wrapper';
+import { PHeadline } from '../../components-angular/dist/components-wrapper/lib/components/headline.wrapper';
+import { PFieldsetWrapper } from '../../components-angular/dist/components-wrapper/lib/components/fieldset-wrapper.wrapper';
+import { PPagination } from '../../components-angular/dist/components-wrapper/lib/components/pagination.wrapper';
+import { PLinkPure } from '../../components-angular/dist/components-wrapper/lib/components/link-pure.wrapper';
+import { PTabsBar } from '../../components-angular/dist/components-wrapper/lib/components/tabs-bar.wrapper';
+import { PRadioButtonWrapper } from '../../components-angular/dist/components-wrapper/lib/components/radio-button-wrapper.wrapper';
+import { PTextFieldWrapper } from '../../components-angular/dist/components-wrapper/lib/components/text-field-wrapper.wrapper';
+import { PText } from '../../components-angular/dist/components-wrapper/lib/components/text.wrapper';
+import { PLinkSocial } from '../../components-angular/dist/components-wrapper/lib/components/link-social.wrapper';
+import { PMarque } from '../../components-angular/dist/components-wrapper/lib/components/marque.wrapper';
+import { PSwitch } from '../../components-angular/dist/components-wrapper/lib/components/switch.wrapper';
+import { PTextareaWrapper } from '../../components-angular/dist/components-wrapper/lib/components/textarea-wrapper.wrapper';
 
 const glue = '\n\n';
-// TODO: typing as component property string
-type SkeletonRelevantProps = { propName: string; shouldStringifyValue: boolean }[];
+export type AccordionSkeletonProperties = Extract<keyof PAccordion, 'compact' | 'open' | 'size' | 'theme'>;
+export type ButtonSkeletonProperties = Extract<keyof PButton, 'hideLabel' | 'theme'>;
+export type ButtonPureSkeletonProperties = Extract<keyof PButtonPure, 'hideLabel' | 'size' | 'stretch' | 'theme'>;
+export type CheckboxWrapperSkeletonProperties = Extract<keyof PCheckboxWrapper, 'hideLabel'>;
+export type FieldsetWrapperSkeletonProperties = Extract<keyof PFieldsetWrapper, 'labelSize'>;
+export type LinkSkeletonProperties = Extract<keyof PLink, 'hideLabel' | 'theme'>;
+export type LinkPureSkeletonProperties = Extract<keyof PLinkPure, 'hideLabel' | 'size' | 'stretch' | 'theme'>;
+export type LinkSocialSkeletonProperties = Extract<keyof PLinkSocial, 'hideLabel' | 'theme'>;
+export type MarqueSkeletonProperties = Extract<keyof PMarque, 'size'>;
+export type PaginationSkeletonProperties = Extract<keyof PPagination, 'itemsPerPage' | 'totalItemsCount' | 'theme'>;
+export type RadioButtonWrapperSkeletonProperties = Extract<keyof PRadioButtonWrapper, 'hideLabel'>;
+export type SelectWrapperSkeletonProperties = Extract<
+  keyof PSelectWrapper,
+  'description' | 'hideLabel' | 'label' | 'theme'
+>;
+export type SwitchSkeletonProperties = Extract<keyof PSwitch, 'hideLabel' | 'stretch' | 'theme'>;
+export type TabsSkeletonProperties = Extract<keyof PTabs, 'size' | 'theme'>;
+export type TabsBarSkeletonProperties = Extract<keyof PTabsBar, 'size' | 'theme'>;
+export type TextFieldWrapperSkeletonProperties = Extract<
+  keyof PTextFieldWrapper,
+  'description' | 'hideLabel' | 'label'
+>;
+export type TextareaWrapperSkeletonProperties = Extract<keyof PTextareaWrapper, 'description' | 'hideLabel' | 'label'>;
+export type HeadlineSkeletonProperties = Extract<keyof PHeadline, 'variant' | 'theme'>;
+export type TextSkeletonProperties = Extract<keyof PText, 'size' | 'theme'>;
+
+export type SkeletonPropertyName =
+  | AccordionSkeletonProperties
+  | ButtonSkeletonProperties
+  | ButtonPureSkeletonProperties
+  | CheckboxWrapperSkeletonProperties
+  | FieldsetWrapperSkeletonProperties
+  | LinkSkeletonProperties
+  | LinkPureSkeletonProperties
+  | LinkSocialSkeletonProperties
+  | MarqueSkeletonProperties
+  | PaginationSkeletonProperties
+  | RadioButtonWrapperSkeletonProperties
+  | SelectWrapperSkeletonProperties
+  | SwitchSkeletonProperties
+  | TabsSkeletonProperties
+  | TabsBarSkeletonProperties
+  | TextFieldWrapperSkeletonProperties
+  | TextareaWrapperSkeletonProperties
+  | HeadlineSkeletonProperties
+  | TextSkeletonProperties;
+
+export type SkeletonRelevantProps = {
+  propName: SkeletonPropertyName;
+  shouldStringifyValue: boolean;
+}[];
+
 const SKELETON_RELEVANT_PROPS: SkeletonRelevantProps = [
   { propName: 'compact', shouldStringifyValue: false },
   { propName: 'description', shouldStringifyValue: false },
   { propName: 'hideLabel', shouldStringifyValue: false },
-  { propName: 'itemsPerPage ', shouldStringifyValue: true },
+  { propName: 'itemsPerPage', shouldStringifyValue: true },
   { propName: 'label', shouldStringifyValue: false },
   { propName: 'labelSize', shouldStringifyValue: false },
   { propName: 'open', shouldStringifyValue: false },
