@@ -4,7 +4,7 @@ import { load } from '@porsche-design-system/components-js';
 
 export const PorscheDesignSystemContext = createContext({
   prefix: undefined,
-  usesSkeletons: !!document.querySelector('style[uses-skeleton]'),
+  usesSkeletons: undefined,
 });
 
 type Props = { prefix?: string; usesSkeletons?: boolean };
@@ -16,7 +16,12 @@ export const PorscheDesignSystemProvider = ({
 }: PropsWithChildren<Props>): JSX.Element => {
   useEffect(() => {
     load({ prefix });
-  }, [prefix, usesSkeletons]);
+  }, [prefix]);
 
-  return <PorscheDesignSystemContext.Provider value={{ prefix, usesSkeletons }} {...props} />;
+  return (
+    <PorscheDesignSystemContext.Provider
+      value={{ prefix, usesSkeletons: !!document.querySelector('style[uses-skeleton]') }}
+      {...props}
+    />
+  );
 };

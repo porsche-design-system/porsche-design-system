@@ -29,8 +29,13 @@ export const usePrefix = /*#__PURE__*/ (tagName: string): string => {
 };
 
 export const usesSkeletons = /*#__PURE__*/ (): boolean => {
-  const { usesSkeletons } = useContext(PorscheDesignSystemContext);
-  return usesSkeletons;
+  if (process.env.NODE_ENV === 'test' && skipCheck) {
+    return true;
+  } else {
+    const { usesSkeletons } = useContext(PorscheDesignSystemContext); // eslint-disable-line react-hooks/rules-of-hooks
+
+    return usesSkeletons;
+  }
 };
 
 export const useEventCallback = /*#__PURE__*/ (

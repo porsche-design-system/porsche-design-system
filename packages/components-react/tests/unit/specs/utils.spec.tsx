@@ -41,6 +41,7 @@ describe('syncRefs', () => {
   beforeEach(() => {
     // mocked usePrefix so we don't have to use PorscheDesignSystemProvider
     jest.spyOn(hooks, 'usePrefix').mockImplementation((tagName: string) => tagName);
+    jest.spyOn(hooks, 'usesSkeletons');
   });
   const SKELETON_CLASSES = `${PDS_SKELETON_CLASS_PREFIX}theme-light ${PDS_SKELETON_CLASS_PREFIX}variant-secondary`;
   const INITIAL_CLASS_NAME = 'initialClass';

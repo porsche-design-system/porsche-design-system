@@ -37,9 +37,9 @@ export const getSkeletonElementHeight = (height: number, withLabel = true, withD
 export const getAfterMinHeight = (elementHeight: number): string => `calc(100% - ${pxToRemWithUnit(elementHeight)})`;
 
 export const getElementBackgroundGradient = (
-  elementHeight: number, // !== 52 || !== 24 => not a label => no description
-  topGradientSpacing = LABEL_HEIGHT_SPACING, // !== 4 => label => no height needed
-  hasDescription?: boolean // true => label => no height needed
+  elementHeight: number,
+  topGradientSpacing = LABEL_HEIGHT_SPACING,
+  hasDescription?: boolean
 ): string => {
   // calculate the "gap" at the top and bottom of the gradient
   const topGradientSpacingPx = `${topGradientSpacing}px`;
