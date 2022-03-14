@@ -24,28 +24,55 @@ import { PSwitch } from '../../components-angular/dist/components-wrapper/lib/co
 import { PTextareaWrapper } from '../../components-angular/dist/components-wrapper/lib/components/textarea-wrapper.wrapper';
 
 const glue = '\n\n';
+export type AccordionSkeletonProperties = Extract<keyof PAccordion, 'compact' | 'open' | 'size' | 'theme'>;
+export type ButtonSkeletonProperties = Extract<keyof PButton, 'hideLabel' | 'theme'>;
+export type ButtonPureSkeletonProperties = Extract<keyof PButtonPure, 'hideLabel' | 'size' | 'stretch' | 'theme'>;
+export type CheckboxWrapperSkeletonProperties = Extract<keyof PCheckboxWrapper, 'hideLabel'>;
+export type FieldsetWrapperSkeletonProperties = Extract<keyof PFieldsetWrapper, 'labelSize'>;
+export type LinkSkeletonProperties = Extract<keyof PLink, 'hideLabel' | 'theme'>;
+export type LinkPureSkeletonProperties = Extract<keyof PLinkPure, 'hideLabel' | 'size' | 'stretch' | 'theme'>;
+export type LinkSocialSkeletonProperties = Extract<keyof PLinkSocial, 'hideLabel' | 'theme'>;
+export type MarqueSkeletonProperties = Extract<keyof PMarque, 'size'>;
+export type PaginationSkeletonProperties = Extract<keyof PPagination, 'itemsPerPage' | 'totalItemsCount' | 'theme'>;
+export type RadioButtonWrapperSkeletonProperties = Extract<keyof PRadioButtonWrapper, 'hideLabel'>;
+export type SelectWrapperSkeletonProperties = Extract<
+  keyof PSelectWrapper,
+  'description' | 'hideLabel' | 'label' | 'theme'
+>;
+export type SwitchSkeletonProperties = Extract<keyof PSwitch, 'hideLabel' | 'stretch' | 'theme'>;
+export type TabsSkeletonProperties = Extract<keyof PTabs, 'size' | 'theme'>;
+export type TabsBarSkeletonProperties = Extract<keyof PTabsBar, 'size' | 'theme'>;
+export type TextFieldWrapperSkeletonProperties = Extract<
+  keyof PTextFieldWrapper,
+  'description' | 'hideLabel' | 'label'
+>;
+export type TextareaWrapperSkeletonProperties = Extract<keyof PTextareaWrapper, 'description' | 'hideLabel' | 'label'>;
+export type HeadlineSkeletonProperties = Extract<keyof PHeadline, 'variant' | 'theme'>;
+export type TextSkeletonProperties = Extract<keyof PText, 'size' | 'theme'>;
 
-type SkeletonRelevantProps = {
-  propName:
-    | Extract<keyof PAccordion, 'compact' | 'open' | 'size' | 'theme'>
-    | Extract<keyof PButton, 'hideLabel' | 'theme'>
-    | Extract<keyof PButtonPure, 'hideLabel' | 'size' | 'stretch' | 'theme'>
-    | Extract<keyof PCheckboxWrapper, 'hideLabel'>
-    | Extract<keyof PFieldsetWrapper, 'labelSize'>
-    | Extract<keyof PLink, 'hideLabel' | 'theme'>
-    | Extract<keyof PLinkPure, 'hideLabel' | 'size' | 'stretch' | 'theme'>
-    | Extract<keyof PLinkSocial, 'hideLabel' | 'theme'>
-    | Extract<keyof PMarque, 'size'>
-    | Extract<keyof PPagination, 'itemsPerPage' | 'totalItemsCount' | 'theme'>
-    | Extract<keyof PRadioButtonWrapper, 'hideLabel'>
-    | Extract<keyof PSelectWrapper, 'description' | 'hideLabel' | 'label' | 'theme'>
-    | Extract<keyof PSwitch, 'hideLabel' | 'stretch' | 'theme'>
-    | Extract<keyof PTabs, 'size' | 'theme'>
-    | Extract<keyof PTabsBar, 'size' | 'theme'>
-    | Extract<keyof PTextFieldWrapper, 'description' | 'hideLabel' | 'label'>
-    | Extract<keyof PTextareaWrapper, 'description' | 'hideLabel' | 'label'>
-    | Extract<keyof PHeadline, 'variant' | 'theme'>
-    | Extract<keyof PText, 'size' | 'theme'>;
+export type SkeletonPropertyName =
+  | AccordionSkeletonProperties
+  | ButtonSkeletonProperties
+  | ButtonPureSkeletonProperties
+  | CheckboxWrapperSkeletonProperties
+  | FieldsetWrapperSkeletonProperties
+  | LinkSkeletonProperties
+  | LinkPureSkeletonProperties
+  | LinkSocialSkeletonProperties
+  | MarqueSkeletonProperties
+  | PaginationSkeletonProperties
+  | RadioButtonWrapperSkeletonProperties
+  | SelectWrapperSkeletonProperties
+  | SwitchSkeletonProperties
+  | TabsSkeletonProperties
+  | TabsBarSkeletonProperties
+  | TextFieldWrapperSkeletonProperties
+  | TextareaWrapperSkeletonProperties
+  | HeadlineSkeletonProperties
+  | TextSkeletonProperties;
+
+export type SkeletonRelevantProps = {
+  propName: SkeletonPropertyName;
   shouldStringifyValue: boolean;
 }[];
 
