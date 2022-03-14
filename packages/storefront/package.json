@@ -54,7 +54,7 @@
     "concurrently": "^7.0.0",
     "eslint": "^8.10.0",
     "eslint-plugin-vue": "^8.5.0",
-    "local-web-server": "^5.1.1",
+    "local-web-server": "^5.2.0",
     "sass": "^1.49.9",
     "sass-loader": "^10.1.1",
     "ts-node": "^10.7.0",
