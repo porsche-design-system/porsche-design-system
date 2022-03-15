@@ -3,7 +3,7 @@ import {
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
   vrtTest,
-} from '@porsche-design-system/shared-src/src/testing/vrt';
+} from '@porsche-design-system/shared/testing';
 import {
   forceFocusHoverState,
   forceFocusState,
