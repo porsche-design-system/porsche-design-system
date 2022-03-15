@@ -73,7 +73,7 @@ const patchStencil = (): void => {
       );
     }
   } else {
-    process.stderr.write(`Stencil already patched. Doing nothing.\n`);
+    process.stdout.write(`Stencil already patched. Doing nothing.\n`);
   }
 };
 

@@ -15,6 +15,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
   public getComponentFileName(component: TagName, withOutExtension?: boolean): string {
     return `${component.replace('p-', '')}.wrapper${withOutExtension ? '' : '.ts'}`;
   }
+
   public hasSkeleton(component: TagName): boolean {
     return getComponentMeta(component).hasSkeleton;
   }
@@ -34,7 +35,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     const importsFromAngular = `import { ${angularImports.join(', ')} } from '@angular/core';`;
 
     const importsFromComponentsWrapperModule = hasSkeleton
-      ? `import {USES_SKELETONS} from "../../components-wrapper.module"`
+      ? `import { USES_SKELETONS } from '../../components-wrapper.module' `
       : '';
 
     const providerImports = ['ProxyCmp', ...(hasEventProps ? ['proxyOutputs'] : [])];
@@ -99,7 +100,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
       if (hasSkeleton) {
         result = `
 
-  ngOnInit(){
+  ngOnInit() {
     if (this.usesSkeletons) {
     ${skeletonPropertyClassBindings}
     }
