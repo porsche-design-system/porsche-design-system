@@ -28,11 +28,15 @@ export const usePrefix = /*#__PURE__*/ (tagName: string): string => {
   }
 };
 
-export const usesSkeletons = /*#__PURE__*/ (): boolean => {
+export const useSkeletons = /*#__PURE__*/ (): boolean => {
   if (process.env.NODE_ENV === 'test' && skipCheck) {
     return false;
   } else {
     const { usesSkeletons } = useContext(PorscheDesignSystemContext); // eslint-disable-line react-hooks/rules-of-hooks
+
+    if (usesSkeletons === undefined) {
+      throw new Error('It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it.');
+    }
 
     return usesSkeletons;
   }
