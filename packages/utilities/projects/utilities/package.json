@@ -15,7 +15,7 @@
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:build": "rm -rf ./dist && rm -rf ./src/jss/typography.ts"
+    "clean:build": "rm -rf ./dist && rm -rf ./src/jss/typography/lib"
   },
   "dependencies": {
     "jss": "^10.9.0"
