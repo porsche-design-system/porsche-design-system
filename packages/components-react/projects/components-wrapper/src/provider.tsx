@@ -7,6 +7,8 @@ export const PorscheDesignSystemContext = createContext({
   usesSkeletons: undefined,
 });
 
+export const hasSkeleton = (): boolean => !!document.querySelector('style[uses-skeleton]');
+
 type Props = { prefix?: string; usesSkeletons?: boolean };
 
 export const PorscheDesignSystemProvider = ({
@@ -18,10 +20,5 @@ export const PorscheDesignSystemProvider = ({
     load({ prefix });
   }, [prefix]);
 
-  return (
-    <PorscheDesignSystemContext.Provider
-      value={{ prefix, usesSkeletons: !!document.querySelector('style[uses-skeleton]') }}
-      {...props}
-    />
-  );
+  return <PorscheDesignSystemContext.Provider value={{ prefix, usesSkeletons: hasSkeleton() }} {...props} />;
 };
