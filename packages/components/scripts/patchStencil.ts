@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { componentMeta } from '@porsche-design-system/shared';
+
 const PDS_PATCH_START = '// PDS PATCH START';
 const PDS_PATCH_EMD = '// PDS PATCH END';
 
@@ -35,7 +36,6 @@ const patchStencil = (): void => {
         return elm.tagName.match(tagNameRegExp);
     });
     if (hasPatchedSkeletonSlot) {
-        console.log(elm.shadowRoot);
         elm.shadowRoot.removeChild(elm.shadowRoot.firstChild);
     }
     ${PDS_PATCH_EMD}
