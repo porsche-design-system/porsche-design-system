@@ -8,7 +8,7 @@ import {
   getSkeletonPropertyNames,
   getThemedPseudoJssStyle,
 } from './base-skeleton-styles';
-import { TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared-src/src';
+import { TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
 import { TagName } from '@porsche-design-system/shared';
 
 describe('getSkeletonElementHeight()', () => {
