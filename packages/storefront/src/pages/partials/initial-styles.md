@@ -16,7 +16,7 @@ which needs to be injected into the `<head>` of your `index.html`.
 | `prefix`             | Prefix will be added to the component names.                                                                                                             | `string`        | `''`    |
 | `withoutTags`        | <span style='color:red'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format: 'jsx'` instead.<br/>If true, it returns css styles. | `boolean`       | `false` |
 | `format`             | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements.                                 | `'html'         | 'jsx'`  | `'html'` |
-| `skeletonTagNames` | <span style='color:red'>**[EXPERIMENTAL]**</span> Components will have a built-in skeleton solution. By default no skeletons are used.               | `({{this.skeletonTagNames}})[]` | `[]`    |
+| `skeletonTagNames` | <span style='color:red'>**[EXPERIMENTAL]**</span> Components will have a built-in skeleton solution. By default no skeletons are used.               | `({{this.skeletonTagNamesType}})[]` | `[]`    |
 
 ## Skeleton Behavior
 
@@ -50,7 +50,8 @@ import {TAG_NAMES_WITH_SKELETON} from "@porsche-design-system/shared";
 
 @Component
 export default class Code extends Vue {
-  public skeletonTagNames = TAG_NAMES_WITH_SKELETON.map(x => `'${x}'`).join(' | ');
+  public skeletonTagNamesType = TAG_NAMES_WITH_SKELETON.map(x => `'${x}'`).join(' | ');
+  public skeletonTagNames = TAG_NAMES_WITH_SKELETON.map(x => `'${x}'`).join(', ');
   public params = [
     {
       value: ""
@@ -60,7 +61,7 @@ export default class Code extends Vue {
       comment: 'with custom prefix to match your prefixed components',
     },
     {
-      value: "{ skeletonTagNames: ['p-button', 'p-button-pure', 'p-checkbox-wrapper', 'p-headline', 'p-fieldset-wrapper', 'p-link', 'p-link-pure', 'p-radio-button-wrapper', 'p-select-wrapper', 'p-text', 'p-text-list', 'p-text-list-item', 'p-textarea-wrapper', 'p-text-field-wrapper'] }",
+      value: `{ skeletonTagNames: [${this.skeletonTagNames}] }`,
       comment: 'with all components that come with a built-in skeleton'
     }
   ];
