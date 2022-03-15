@@ -10,6 +10,8 @@ export class DefaultConfig implements Required<PorscheDesignSystemModuleConfig> 
   prefix = '';
 }
 
+export const usesSkeletons = (): boolean => !!document.querySelector('style[uses-skeleton]');
+
 export const USES_SKELETONS = new InjectionToken<boolean>('usesSkeletons');
 
 @NgModule({
@@ -21,6 +23,7 @@ export class PorscheDesignSystemModule {
     const configs = (configParam ?? ([new DefaultConfig()] as unknown)) as PorscheDesignSystemModuleConfig[];
     configs.forEach(({ prefix }) => load({ prefix }));
   }
+
   static load(config: PorscheDesignSystemModuleConfig): ModuleWithProviders<PorscheDesignSystemModule> {
     return {
       ngModule: PorscheDesignSystemModule,
@@ -30,7 +33,7 @@ export class PorscheDesignSystemModule {
           multi: true, // to support multiple prefixes in same module
           useValue: config,
         },
-        { provide: USES_SKELETONS, useValue: !!document.querySelector('style[uses-skeleton]') },
+        { provide: USES_SKELETONS, useValue: usesSkeletons() },
       ],
     };
   }
