@@ -1,21 +1,22 @@
-# Bundling 23.02.22
+# Bundling 15.03.2022
 
 ## Status Quo
 
-| Package                     | UMD | CJS | ESM |
-| --------------------------- | --- | --- | --- |
-| components-js               | ✓   |     |     |
-| components-js/partials      |     | ✓   | ✓   |
-| components-react            |     | ✓   | ✓   |
-| components-react/partials   |     | ✓   | ✓   |
-| components-react/testing    |     | ✓   |     |
-| components-angular          |     |     | ✓   |
-| components-angular/partials |     | ✓   |     |
-| assets                      | ✗   | (✓) | ✓   |
-| utilities-deprecated        | ✗   | (✓) | ✓   |
+| Package                          | UMD | CJS | ESM |
+| -------------------------------- | --- | --- | --- |
+| components-js                    | ✓   |     |     |
+| components-js/partials           |     | ✓   | ✓   |
+| components-react                 |     | ✓   | ✓   |
+| components-react/partials        |     | ✓   | ✓   |
+| components-react/testing         |     | ✓   |     |
+| components-react/utilities/jss   |     | ✓   | ✓   |
+| components-angular               |     |     | ✓   |
+| components-angular/partials      |     | ✓   | ✓   |
+| components-angular/utilities/jss |     | ✓   | ✓   |
+| assets                           | ✗   | (✓) | ✓   |
+| utilities-deprecated             | ✗   | (✓) | ✓   |
 
-✗ = currently released
-(✓) = not released
+✗ = currently released (✓) = not released
 
 ## Compatibility overview
 
@@ -68,12 +69,13 @@ https://nodejs.org/dist./v14.10.0/docs/api/esm.html#esm_dual_commonjs_es_module_
 - Rollup removes pure annotations in some cases, which is not clear why?
 - All packages that are not bundled with rollup still use UMD and do not provide ESM?
 
-## Treeshaking findings
+## Tree Shaking
+
+### Findings
 
 We experience that by using only `brand` in react, other objects and functions are in the final bundle.
 
-```
-App.tsx
+```tsx
 import { themeLight } from '@porsche-design-system/components-js/utilities/jss';
 
 export const App = (): JSX.Element => {
@@ -81,20 +83,20 @@ export const App = (): JSX.Element => {
   return (
     <>
       {brand}
-      <div id="app"></div>
     </>
   );
 };
 ```
 
-To improve treeshaking, following options can be approached:
+To improve tree shaking, following options can be approached:
 
-### Treeshake functions
+#### Functions
 
-#### Option 1
-mediaQueryMin is resolved in widthMap
+##### Option 1
 
-```
+`mediaQueryMin` is resolved in `widthMap`.
+
+```ts
 const mediaQueryMin = (minBreakpoint) => {
   return `@media (min-width: ${breakpoint[minBreakpoint]}px)`;
 };
@@ -111,10 +113,11 @@ const widthMap = {
 };
 ```
 
-#### Option 2
-Use __PURE__ annotation. It hast to be used before the function call and before the value where the function call happens.
+##### Option 2
 
-```
+Use `/*#__PURE__*/` annotation. It has to be used before the function call and before the value where the function call happens.
+
+```ts
 const mediaQueryMin = (minBreakpoint) => {
   return `@media (min-width: ${breakpoint[minBreakpoint]}px)`;
 };
@@ -131,13 +134,15 @@ const widthMap = {
 };
 ```
 
-### Treeshake unused Objects
-When an object uses another with spread operator, it can't be treeshaked out of the box.
+#### Unused objects
 
-#### Option 1
-Use __PURE__ annotations before the value where the spread operator happens.
+When an object uses another with spread operator, it can't be tree shaked out of the box.
 
-```
+##### Option 1
+
+Use `/*#__PURE__*/` annotations before the value where the spread operator happens.
+
+```ts
 const themeLightElectric = /*#__PURE__*/ {
   ...themeLight,
   brand: '#00b0f4',
@@ -145,16 +150,22 @@ const themeLightElectric = /*#__PURE__*/ {
 };
 ```
 
-### Treeshake unused Objects wich are spread into another
+#### Unused objects with spread operator
+
 So far there is no solution to mark objects that are spread into another object as side-effect free.
 
-```
+```ts
 const themeDarkElectric = /*#__PURE__*/ {
   ...themeDark,
 };
 ```
 
-This results in `themeDarkElectric` is treeshaken but `themeDark` will be in the bundle even when there is no usage of it in App.tsx.
-Using Object.assign instead of spreed makes no difference.
+This results in `themeDarkElectric` is tree shaken but `themeDark` will be in the bundle even when there is no usage of it in App.tsx.  
+Using `Object.assign` instead of spreed makes no difference.
 
+### Conclusion
 
+Having a healthy dependency tree is key to tree shaking.  
+If you don't have tree, it is hard to shake it.
+
+Tree in this context means export and imports from other files.
