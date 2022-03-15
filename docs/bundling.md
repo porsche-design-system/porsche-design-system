@@ -16,7 +16,8 @@
 | assets                           | ✗   | (✓) | ✓   |
 | utilities-deprecated             | ✗   | (✓) | ✓   |
 
-✗ = currently released (✓) = not released
+✗ = currently released  
+(✓) = not released
 
 ## Compatibility overview
 
