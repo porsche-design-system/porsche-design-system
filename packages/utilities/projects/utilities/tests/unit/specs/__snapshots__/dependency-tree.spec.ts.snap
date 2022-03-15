@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should have no regression for dependency tree 1`] = `
+Object {
+  "color/color.js": Array [
+    "color/theme-dark-electric.js",
+    "color/theme-dark.js",
+    "color/theme-light-electric.js",
+    "color/theme-light.js",
+  ],
+  "color/theme-dark-electric.js": Array [
+    "color/theme-dark.js",
+  ],
+  "color/theme-dark.js": Array [],
+  "color/theme-light-electric.js": Array [
+    "color/theme-light.js",
+  ],
+  "color/theme-light.js": Array [],
+  "content-wrapper.js": Array [
+    "media-query.js",
+  ],
+  "focus.js": Array [],
+  "font/font-family.js": Array [],
+  "font/font-size.js": Array [],
+  "font/font-weight.js": Array [],
+  "font/font.js": Array [
+    "font/font-family.js",
+    "font/font-size.js",
+    "font/font-weight.js",
+  ],
+  "index.js": Array [
+    "color/color.js",
+    "color/theme-dark-electric.js",
+    "color/theme-dark.js",
+    "color/theme-light-electric.js",
+    "color/theme-light.js",
+    "content-wrapper.js",
+    "focus.js",
+    "font/font-family.js",
+    "font/font-size.js",
+    "font/font-weight.js",
+    "font/font.js",
+    "media-query.js",
+    "screen-reader.js",
+    "spacing.js",
+    "typography/lib/headline.js",
+    "typography/lib/headline1.js",
+    "typography/lib/headline2.js",
+    "typography/lib/headline3.js",
+    "typography/lib/headline4.js",
+    "typography/lib/headline5.js",
+    "typography/lib/text.js",
+    "typography/lib/textLarge.js",
+    "typography/lib/textMedium.js",
+    "typography/lib/textSmall.js",
+    "typography/lib/textXLarge.js",
+    "typography/lib/textXSmall.js",
+    "typography/lib/title.js",
+    "typography/lib/titleLarge.js",
+  ],
+  "media-query.js": Array [],
+  "screen-reader.js": Array [],
+  "spacing.js": Array [],
+  "typography/lib/headline.js": Array [
+    "typography/lib/headline1.js",
+    "typography/lib/headline2.js",
+    "typography/lib/headline3.js",
+    "typography/lib/headline4.js",
+    "typography/lib/headline5.js",
+  ],
+  "typography/lib/headline1.js": Array [
+    "font/font-family.js",
+    "font/font-weight.js",
+    "media-query.js",
+  ],
+  "typography/lib/headline2.js": Array [
+    "font/font-family.js",
+    "font/font-weight.js",
+    "media-query.js",
+  ],
+  "typography/lib/headline3.js": Array [
+    "font/font-family.js",
+    "font/font-weight.js",
+    "media-query.js",
+  ],
+  "typography/lib/headline4.js": Array [
+    "font/font-family.js",
+    "font/font-weight.js",
+    "media-query.js",
+  ],
+  "typography/lib/headline5.js": Array [
+    "font/font-family.js",
+    "font/font-weight.js",
+  ],
+  "typography/lib/text.js": Array [
+    "typography/lib/textLarge.js",
+    "typography/lib/textMedium.js",
+    "typography/lib/textSmall.js",
+    "typography/lib/textXLarge.js",
+    "typography/lib/textXSmall.js",
+  ],
+  "typography/lib/textLarge.js": Array [
+    "font/font-family.js",
+    "font/font-weight.js",
+  ],
+  "typography/lib/textMedium.js": Array [
+    "font/font-family.js",
+    "font/font-weight.js",
+  ],
+  "typography/lib/textSmall.js": Array [
+    "font/font-family.js",
+    "font/font-weight.js",
+  ],
+  "typography/lib/textXLarge.js": Array [
+    "font/font-family.js",
+    "font/font-weight.js",
+  ],
+  "typography/lib/textXSmall.js": Array [
+    "font/font-family.js",
+    "font/font-weight.js",
+  ],
+  "typography/lib/title.js": Array [
+    "typography/lib/titleLarge.js",
+  ],
+  "typography/lib/titleLarge.js": Array [
+    "font/font-family.js",
+    "font/font-weight.js",
+    "media-query.js",
+  ],
+}
+`;

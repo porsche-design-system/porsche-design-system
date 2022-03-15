@@ -22,7 +22,9 @@
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3.1",
+    "@types/madge": "^5.0.0",
     "jest": "^27.5.1",
+    "madge": "^5.0.1",
     "rollup": "^2.70.1",
     "rollup-plugin-generate-package-json": "^3.2.0",
     "ts-jest": "^27.1.3",
