@@ -1,0 +1,126 @@
+@import '~@porsche-design-system/utilities/scss';
+
+@function debug-grid-column-width($columns) {
+  @return calc((100% - (var(--p-grid-safe-zone) * 2) - (var(--p-grid-gutter) * #{$columns - 1})) / #{$columns});
+}
+
+@function debug-grid-column-start-pos($column, $columns) {
+  @return calc(
+    var(--p-grid-safe-zone) + (var(--p-grid-gutter) + #{debug-grid-column-width($columns)}) * #{$column - 1}
+  );
+}
+
+@function debug-grid-column-end-pos($column, $columns) {
+  @return calc(debug-grid-column-start-pos($column, $columns) + calc(#{debug-grid-column-width($columns)}));
+}
+
+// variables should probably not be provided to consumer because they shall use `p-grid-main()`
+$p-grid-max-width: 120rem;
+$p-grid-gutter: 1rem;
+$p-grid-gutter-s: 1.5rem;
+$p-grid-gutter-m: 2.25rem;
+$p-grid-safe-zone: 7vw;
+$p-grid-safe-zone-xl: 10vw;
+$p-grid-safe-zone-xxl: 12rem;
+
+// can be used by customer to create a custom grid with proper grid gutter
+// should we only provide horizontal gutter? otherwise it can be easily overwritten by consumer
+@mixin p-grid-gutter() {
+  grid-gap: $p-grid-gutter;
+
+  @include p-media-query('s') {
+    grid-gap: $p-grid-gutter-s;
+  }
+  @include p-media-query('m') {
+    grid-gap: $p-grid-gutter-m;
+  }
+}
+
+// we could think of providing generic 12 column p-grid, p-grid--gapless, p-grid__item, p-grid__item--span-{1-12}-{xxs-xxl}
+// not sure if that's really necessary?
+
+// JSS and Styled Components implementation is missing
+@mixin p-grid-main($debug: false) {
+  --p-grid-gutter: #{$p-grid-gutter} !important;
+  --p-grid-safe-zone: #{$p-grid-safe-zone} !important;
+  $p-grid-safe-zone-calc: calc(var(--p-grid-safe-zone) - var(--p-grid-gutter));
+  display: grid !important;
+  grid-column-gap: var(--p-grid-gutter) !important;
+  grid-template-columns:
+    [full-start]
+    #{$p-grid-safe-zone-calc}
+    [content-start]
+    repeat(12, minmax(0, 1fr))
+    [content-end]
+    #{$p-grid-safe-zone-calc}
+    [full-end] !important;
+  max-width: $p-grid-max-width !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+
+  @include p-media-query('s') {
+    --p-grid-gutter: #{$p-grid-gutter-s} !important;
+  }
+
+  @include p-media-query('m') {
+    --p-grid-gutter: #{$p-grid-gutter-m} !important;
+  }
+
+  @include p-media-query('xl') {
+    --p-grid-safe-zone: #{$p-grid-safe-zone-xl} !important;
+  }
+
+  @include p-media-query('xxl') {
+    --p-grid-safe-zone: #{$p-grid-safe-zone-xxl} !important;
+  }
+
+  @if $debug {
+    // for visualization reasons in storefront only, shall never be rolled out to costumer
+    &::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999999;
+      max-width: $p-grid-max-width !important;
+      margin: 0 auto !important;
+
+      $debug-grid-column-color: rgba(255, 0, 0, 0.25);
+      $debug-grid-gutter-color: transparent;
+      $debug-grid-safe-zone: linear-gradient(
+          90deg,
+          $debug-grid-column-color 0,
+          $debug-grid-column-color $p-grid-safe-zone-calc,
+          $debug-grid-gutter-color $p-grid-safe-zone-calc,
+          $debug-grid-gutter-color 100%
+        ),
+        linear-gradient(
+          90deg,
+          $debug-grid-gutter-color 0,
+          $debug-grid-gutter-color calc(100% - #{$p-grid-safe-zone-calc}),
+          $debug-grid-column-color calc(100% - #{$p-grid-safe-zone-calc}),
+          $debug-grid-column-color 100%
+        );
+
+      $debug-grid-background: $debug-grid-safe-zone;
+
+      $debug-grid-columns: 12;
+      @for $i from 1 through $debug-grid-columns {
+        $debug-grid-column-start: debug-grid-column-start-pos($i, $debug-grid-columns);
+        $debug-grid-column-end: debug-grid-column-end-pos($i, $debug-grid-columns);
+
+        $debug-grid-background: $debug-grid-background,
+          linear-gradient(
+            90deg,
+            $debug-grid-gutter-color 0,
+            $debug-grid-gutter-color $debug-grid-column-start,
+            $debug-grid-column-color $debug-grid-column-start,
+            $debug-grid-column-color $debug-grid-column-end,
+            $debug-grid-gutter-color $debug-grid-column-end,
+            $debug-grid-gutter-color 100%
+          );
+      }
+
+      background: $debug-grid-background;
+    }
+  }
+}
