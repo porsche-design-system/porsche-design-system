@@ -12,7 +12,7 @@ import {
   getTextListSkeletonStyles,
   getTextSkeletonStyles,
 } from '../../../../components/src/styles/skeletons';
-import { getMinifiedCss } from '@porsche-design-system/shared-src/src/styles/getMinifiedCss';
+import { getMinifiedCss } from '@porsche-design-system/shared';
 
 // TODO: remove skeleton styles after all are hydrated
 
