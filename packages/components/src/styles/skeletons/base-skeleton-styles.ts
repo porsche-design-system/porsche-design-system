@@ -4,9 +4,8 @@ import { getThemedColors } from '../colors';
 import { INPUT_HEIGHT } from '../form-styles';
 import { getComponentMeta, TagName } from '@porsche-design-system/shared';
 import { paramCase } from 'change-case';
-import { SkeletonPropertyName } from '@porsche-design-system/shared-src/scripts/generateComponentMeta';
 
-export type SkeletonPropertyNames = { [key in SkeletonPropertyName]: string };
+export type SkeletonPropertyNames = { [property: string]: string };
 
 export const PDS_SKELETON_CLASS_PREFIX = 'pds-skeleton--';
 
