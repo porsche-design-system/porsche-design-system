@@ -4,6 +4,7 @@ import { getThemedColors } from '../colors';
 import { INPUT_HEIGHT } from '../form-styles';
 import { getComponentMeta, TagName } from '@porsche-design-system/shared';
 import { paramCase } from 'change-case';
+import type { Theme } from '../../types';
 
 export type SkeletonPropertyNames = { [property: string]: string };
 
@@ -101,7 +102,7 @@ const PSEUDO_ELEMENT_SELECTORS = ['&::before', '&::after'] as const;
 type PseudoElementSelectorsType = typeof PSEUDO_ELEMENT_SELECTORS[number];
 
 type ExtendPseudoWithThemeOptions = {
-  theme?: 'light' | 'dark';
+  theme?: Theme;
   styleFunction?: () => JssStyle;
   pseudosToExtend?: PseudoElementSelectorsType[];
 };
@@ -129,9 +130,10 @@ export const getThemedPseudoJssStyle = (hasLabel?: boolean): JssStyle => {
     pseudoElements = ['&::before', '&::after'];
   }
   return {
-    [`&[theme=dark], &.${PDS_SKELETON_CLASS_PREFIX}theme-dark`]: {
-      ...extendPseudoWithThemeJssStyle({ theme: 'dark', pseudosToExtend: pseudoElements }),
-    },
+    [`&[theme=dark], &.${PDS_SKELETON_CLASS_PREFIX}theme-dark`]: extendPseudoWithThemeJssStyle({
+      theme: 'dark',
+      pseudosToExtend: pseudoElements,
+    }),
   };
 };
 
