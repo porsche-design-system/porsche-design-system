@@ -171,7 +171,9 @@ const buildTypography = (): void => {
             comment,
             constName === fileName
               ? childImports.map((childImport) => `import { ${childImport} } from './${childImport}';`)
-              : imports,
+              : content.includes('mediaQuery')
+              ? imports
+              : imports.filter((importString) => importString !== mediaQueryImport),
           ]
             .flat()
             .join('\n'),
