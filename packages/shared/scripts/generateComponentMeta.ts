@@ -9,10 +9,10 @@ const glue = '\n\n';
 type SkeletonRelevantProps = { propName: string; shouldAddValueToClassName: boolean }[];
 
 /*
- * this array includes all properties that are relevant for the skeleton sizes,
+ * This array includes all properties that are relevant for the skeleton sizes,
  * it is used to add classes based on set properties in angular and react,
  * so that our skeleton style selectors can work and adjust
- * e.g. color based on the pds-skeleton--theme-dark class
+ * e.g. color based on the pds-skeleton--theme-dark class.
  */
 const SKELETON_RELEVANT_PROPS: SkeletonRelevantProps = [
   { propName: 'compact', shouldAddValueToClassName: false },
@@ -29,7 +29,12 @@ const SKELETON_RELEVANT_PROPS: SkeletonRelevantProps = [
   { propName: 'variant', shouldAddValueToClassName: true },
 ];
 
-const tagNamesToAddSlotTo: TagName[] = ['p-fieldset-wrapper', 'p-text-list', 'p-text-list-item'];
+/*
+ * An array of all tagNames that should be used when running patchStencil.
+ * These components will get a slot appended to, when Stencil attaches the shadowDOM
+ * and get this slot removed when hydration is finished, to ensure skeleton visibility of child components inside them.
+ */
+const TAG_NAMES_TO_ADD_SLOT_TO: TagName[] = ['p-fieldset-wrapper', 'p-text-list', 'p-text-list-item'];
 
 const generateComponentMeta = (): void => {
   // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
@@ -92,7 +97,7 @@ const generateComponentMeta = (): void => {
     const isThemeable = source.includes('public theme?: Theme');
     const hasSlottedCss = source.includes('attachSlottedCss');
     const hasSkeleton = TAG_NAMES_WITH_SKELETON.includes(tagName);
-    const shouldPatchSlot = tagNamesToAddSlotTo.includes(tagName);
+    const shouldPatchSlot = TAG_NAMES_TO_ADD_SLOT_TO.includes(tagName);
     const usesScss = source.includes('styleUrl:');
     const usesJss = source.includes('attachComponentCss');
     const styling = usesScss && usesJss ? 'hybrid' : usesJss ? 'jss' : 'scss';
