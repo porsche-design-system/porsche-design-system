@@ -36,7 +36,14 @@
   },
   "exports": {
     "./partials": {
-      "default": "./partials.js"
+      "types": "./partials/partials.d.ts",
+      "import": "./partials/esm/partials.js",
+      "require": "./partials/partials.js"
+    },
+    "./utilities/jss": {
+      "types": "./utilities/jss/jss.d.ts",
+      "import": "./utilities/jss/esm/jss.js",
+      "require": "./utilities/jss/jss.js"
     }
   }
 }
