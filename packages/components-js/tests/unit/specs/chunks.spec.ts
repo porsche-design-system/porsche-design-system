@@ -1,7 +1,8 @@
 import * as gzipSize from 'gzip-size';
 import * as path from 'path';
 import * as fs from 'fs';
-import { COMPONENT_CHUNKS_MANIFEST } from '../../../projects/components-wrapper';
+import { COMPONENT_CHUNKS_MANIFEST, ComponentChunkName } from '../../../projects/components-wrapper';
+import { colorExternal } from '@porsche-design-system/components-js/utilities/jss';
 
 const indexJsFile = require.resolve('@porsche-design-system/components-js');
 const { version } = JSON.parse(fs.readFileSync(path.resolve(indexJsFile, '../package.json'), 'utf8')) as {
@@ -265,44 +266,50 @@ describe('chunk content', () => {
 
   describe('hex colors', () => {
     const hexColorRegEx = /#[a-f\d]{3,6}/;
-    const containsReadonlyColor = (chunkFileName: string): boolean =>
-      ['select-wrapper', 'text-field-wrapper', 'textarea-wrapper'].some((x) => chunkFileName.includes(x));
+    const componentsWithHexColors: ComponentChunkName[] = [
+      'link-social',
+      'select-wrapper',
+      'text-field-wrapper',
+      'textarea-wrapper',
+    ];
 
-    it.each(chunkFileNames.filter(isCoreChunk))('should contain hex colors in %s', (chunkFileName) => {
-      const content = getChunkContent(chunkFileName);
-      expect(content.match(hexColorRegEx).length).toBeGreaterThan(0);
+    const containsHexColor = (chunkFileName: string): boolean =>
+      componentsWithHexColors.some((x) => chunkFileName.includes(x));
+
+    describe('core chunk', () => {
+      const content = getChunkContent(chunkFileNames[0]);
+
+      it('should contain hex colors', () => {
+        expect(content).toMatch(hexColorRegEx);
+      });
+
+      it('should not contain social hex colors', () => {
+        expect(content).not.toMatch(colorExternal.facebook);
+      });
     });
 
-    it.each(chunkFileNames.filter((x) => !isCoreChunk(x) && !containsReadonlyColor(x)))(
+    describe('link-social chunk', () => {
+      const content = getChunkContent(chunkFileNames.find((x) => x.includes('link-social')));
+
+      it('should contain social hex colors', () => {
+        expect(content).toMatch(colorExternal.facebook);
+      });
+    });
+
+    it.each(chunkFileNames.filter((x) => !isCoreChunk(x) && !containsHexColor(x)))(
       'should not contain hex colors in %s',
       (chunkFileName) => {
         const content = getChunkContent(chunkFileName);
-        expect((content.match(hexColorRegEx) || []).length).toBe(0);
+        expect(content).not.toMatch(hexColorRegEx);
       }
     );
 
-    it.each(chunkFileNames.filter((x) => !isCoreChunk(x) && containsReadonlyColor(x)))(
+    it.each(chunkFileNames.filter((x) => !isCoreChunk(x) && containsHexColor(x)))(
       'should contain single hex color in %s',
       (chunkFileName) => {
         const content = getChunkContent(chunkFileName);
+        expect(content).toMatch(hexColorRegEx);
         expect(content.match(hexColorRegEx).length).toBe(1);
-      }
-    );
-  });
-
-  describe('font', () => {
-    const porscheNextRegEx = /Porsche Next/;
-
-    it.each(chunkFileNames.filter(isCoreChunk))('should contain "Porsche Next" in %s', (chunkFileName) => {
-      const content = getChunkContent(chunkFileName);
-      expect(content.match(porscheNextRegEx).length).toBe(1);
-    });
-
-    it.each(chunkFileNames.filter((x) => !isCoreChunk(x)))(
-      'should not contain "Porsche Next" in %s',
-      (chunkFileName) => {
-        const content = getChunkContent(chunkFileName);
-        expect((content.match(porscheNextRegEx) || []).length).toBe(0);
       }
     );
   });
