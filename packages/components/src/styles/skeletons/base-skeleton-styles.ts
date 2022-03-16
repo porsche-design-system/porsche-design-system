@@ -2,13 +2,11 @@ import { JssStyle } from 'jss';
 import { pxToRemWithUnit } from '../common-styles';
 import { getThemedColors } from '../colors';
 import { INPUT_HEIGHT } from '../form-styles';
-import { getComponentMeta, TagName } from '@porsche-design-system/shared';
+import { getComponentMeta, PDS_SKELETON_CLASS_PREFIX, TagName } from '@porsche-design-system/shared';
 import { paramCase } from 'change-case';
 import type { Theme } from '../../types';
 
 export type SkeletonPropertyNames = { [property: string]: string };
-
-export const PDS_SKELETON_CLASS_PREFIX = 'pds-skeleton--';
 
 // Firefox has the widest input field with 192px
 // to prevent layout shift when shadow dom is appended

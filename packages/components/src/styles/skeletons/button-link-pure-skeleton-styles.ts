@@ -6,8 +6,8 @@ import {
   getBaseSkeletonJssStyle,
   getSkeletonPropertyNames,
   getThemedPseudoJssStyle,
-  PDS_SKELETON_CLASS_PREFIX,
 } from './base-skeleton-styles';
+import { PDS_SKELETON_CLASS_PREFIX } from '@porsche-design-system/shared';
 import { Styles } from 'jss';
 
 export const getButtonLinkPureSkeletonStyles = (): Styles<'@global'> => {
