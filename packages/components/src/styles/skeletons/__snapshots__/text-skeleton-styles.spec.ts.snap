@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getTextHeadlineSkeletonBaseJssStyle() should for elementHeight: 32 return %s 1`] = `
+exports[`getTextHeadlineSkeletonBaseJssStyle() should return correct jssStyle for elementHeight: 32 1`] = `
 Object {
   "&::after": Object {
     "animation": "opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite",
@@ -20,7 +20,7 @@ Object {
 }
 `;
 
-exports[`getTextHeadlineSkeletonBaseJssStyle() should for elementHeight: 36 return %s 1`] = `
+exports[`getTextHeadlineSkeletonBaseJssStyle() should return correct jssStyle for elementHeight: 36 1`] = `
 Object {
   "&::after": Object {
     "animation": "opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite",
@@ -40,7 +40,7 @@ Object {
 }
 `;
 
-exports[`getTextHeadlineSkeletonSubJssStyle() should for elementHeight: 32 return %s 1`] = `
+exports[`getTextHeadlineSkeletonSubJssStyle() should return correct jssStyle for elementHeight: 32 1`] = `
 Object {
   "&::after": Object {
     "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 28px, transparent 28px, transparent 32px)",
@@ -49,7 +49,7 @@ Object {
 }
 `;
 
-exports[`getTextHeadlineSkeletonSubJssStyle() should for elementHeight: 36 return %s 1`] = `
+exports[`getTextHeadlineSkeletonSubJssStyle() should return correct jssStyle for elementHeight: 36 1`] = `
 Object {
   "&::after": Object {
     "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 32px, transparent 32px, transparent 36px)",

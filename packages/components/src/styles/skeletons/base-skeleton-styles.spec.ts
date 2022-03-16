@@ -97,7 +97,7 @@ describe('getHiddenLabelJssStyle()', () => {
 
 describe('getSkeletonPropertyNames()', () => {
   it.each<TagName[]>(TAG_NAMES_WITH_SKELETON.map((tagName: TagName) => [tagName]))(
-    'should match get correct skeleton property names %s',
+    'should get correct skeleton property names %o',
     (tagName) => {
       expect(getSkeletonPropertyNames(tagName)).toMatchSnapshot();
     }
