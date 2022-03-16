@@ -13,8 +13,8 @@ describe('getTextSkeletonStyles()', () => {
 });
 
 describe('getTextHeadlineSkeletonSubJssStyle()', () => {
-  it.each([[32], [getTypographyElementHeight(headline2)]])(
-    'should for elementHeight: %s return %s',
+  it.each<number>([32, getTypographyElementHeight(headline2)])(
+    'should return correct jssStyle for elementHeight: %s',
     (elementHeight) => {
       expect(getTextHeadlineSkeletonSubJssStyle(elementHeight)).toMatchSnapshot();
     }
@@ -22,8 +22,8 @@ describe('getTextHeadlineSkeletonSubJssStyle()', () => {
 });
 
 describe('getTextHeadlineSkeletonBaseJssStyle()', () => {
-  it.each([[32], [getTypographyElementHeight(headline2)]])(
-    'should for elementHeight: %s return %s',
+  it.each<number>([32, getTypographyElementHeight(headline2)])(
+    'should return correct jssStyle for elementHeight: %s',
     (elementHeight) => {
       expect(getTextHeadlineSkeletonBaseJssStyle(elementHeight)).toMatchSnapshot();
     }

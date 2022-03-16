@@ -117,7 +117,7 @@ Object {
 }
 `;
 
-exports[`getSkeletonPropertyNames() should match get correct skeleton property names p-button 1`] = `
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-button' 1`] = `
 Object {
   "hideLabel": "hide-label",
   "theme": "theme",
@@ -125,7 +125,7 @@ Object {
 }
 `;
 
-exports[`getSkeletonPropertyNames() should match get correct skeleton property names p-button-pure 1`] = `
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-button-pure' 1`] = `
 Object {
   "hideLabel": "hide-label",
   "size": "size",
@@ -134,28 +134,28 @@ Object {
 }
 `;
 
-exports[`getSkeletonPropertyNames() should match get correct skeleton property names p-checkbox-wrapper 1`] = `
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-checkbox-wrapper' 1`] = `
 Object {
   "hideLabel": "hide-label",
   "label": "label",
 }
 `;
 
-exports[`getSkeletonPropertyNames() should match get correct skeleton property names p-fieldset-wrapper 1`] = `
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-fieldset-wrapper' 1`] = `
 Object {
   "label": "label",
   "labelSize": "label-size",
 }
 `;
 
-exports[`getSkeletonPropertyNames() should match get correct skeleton property names p-headline 1`] = `
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-headline' 1`] = `
 Object {
   "theme": "theme",
   "variant": "variant",
 }
 `;
 
-exports[`getSkeletonPropertyNames() should match get correct skeleton property names p-link 1`] = `
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-link' 1`] = `
 Object {
   "hideLabel": "hide-label",
   "theme": "theme",
@@ -163,7 +163,7 @@ Object {
 }
 `;
 
-exports[`getSkeletonPropertyNames() should match get correct skeleton property names p-link-pure 1`] = `
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-link-pure' 1`] = `
 Object {
   "hideLabel": "hide-label",
   "size": "size",
@@ -172,21 +172,21 @@ Object {
 }
 `;
 
-exports[`getSkeletonPropertyNames() should match get correct skeleton property names p-link-social 1`] = `
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-link-social' 1`] = `
 Object {
   "hideLabel": "hide-label",
   "theme": "theme",
 }
 `;
 
-exports[`getSkeletonPropertyNames() should match get correct skeleton property names p-radio-button-wrapper 1`] = `
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-radio-button-wrapper' 1`] = `
 Object {
   "hideLabel": "hide-label",
   "label": "label",
 }
 `;
 
-exports[`getSkeletonPropertyNames() should match get correct skeleton property names p-select-wrapper 1`] = `
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-select-wrapper' 1`] = `
 Object {
   "description": "description",
   "hideLabel": "hide-label",
@@ -195,14 +195,14 @@ Object {
 }
 `;
 
-exports[`getSkeletonPropertyNames() should match get correct skeleton property names p-text 1`] = `
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-text' 1`] = `
 Object {
   "size": "size",
   "theme": "theme",
 }
 `;
 
-exports[`getSkeletonPropertyNames() should match get correct skeleton property names p-text-field-wrapper 1`] = `
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-text-field-wrapper' 1`] = `
 Object {
   "description": "description",
   "hideLabel": "hide-label",
@@ -210,15 +210,17 @@ Object {
 }
 `;
 
-exports[`getSkeletonPropertyNames() should match get correct skeleton property names p-text-list 1`] = `
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-text-list' 1`] = `
 Object {
   "theme": "theme",
 }
 `;
 
-exports[`getSkeletonPropertyNames() should match get correct skeleton property names p-text-list-item 1`] = `Object {}`;
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-text-list-item' 1`] = `Object {}`;
 
-exports[`getSkeletonPropertyNames() should match get correct skeleton property names p-textarea-wrapper 1`] = `
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-text-list-item' 2`] = `Object {}`;
+
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-textarea-wrapper' 1`] = `
 Object {
   "description": "description",
   "hideLabel": "hide-label",
