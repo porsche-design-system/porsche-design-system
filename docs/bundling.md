@@ -1,3 +1,4 @@
+
 # Bundling 15.03.2022
 
 ## Status Quo
@@ -6,10 +7,11 @@
 | -------------------------------- | --- | --- | --- |
 | components-js                    | ✓   |     |     |
 | components-js/partials           |     | ✓   | ✓   |
+| components-js/utilities/jss      |     | ✓   | ✓   |
 | components-react                 |     | ✓   | ✓   |
 | components-react/partials        |     | ✓   | ✓   |
-| components-react/testing         |     | ✓   |     |
 | components-react/utilities/jss   |     | ✓   | ✓   |
+| components-react/testing         |     | ✓   |     |
 | components-angular               |     |     | ✓   |
 | components-angular/partials      |     | ✓   | ✓   |
 | components-angular/utilities/jss |     | ✓   | ✓   |
