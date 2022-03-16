@@ -92,6 +92,8 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
   const importPaths = Object.entries(htmlFileContentMap)
     // .filter(([component]) => component === 'icon') // for easy debugging
     .map(([fileName, fileContent]) => {
+      const isSkeleton = fileName.includes('skeleton');
+
       fileContent = fileContent.trim();
 
       // extract and replace style if there is any
@@ -104,6 +106,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       let [, script] = fileContent.match(scriptRegEx) || [];
       fileContent = fileContent.replace(scriptRegEx, '\n');
       script = script?.trim().replace(/([\w.#'()\[\]]+)(\.\w+\s=)/g, '($1 as any)$2'); // handle untyped prop assignments
+      script = isSkeleton ? script.replace('porscheDesignSystem.', '') : script;
 
       const usesQuerySelector = script?.includes('querySelector');
       const usesPrefixing = !!fileContent.match(/<[a-z-]+-p-[\w-]+/);
@@ -113,8 +116,6 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       const isOverviewPage = fileName === 'overview';
       const isIconPage = fileName === 'icon';
       const usesOnInit = script && !isIconPage;
-      const isSkeleton = fileName.includes('skeleton');
-      const skeletonScript = isSkeleton && script.replace('porscheDesignSystem.', '');
       const usesSetAllReady = !isSkeleton && script?.includes('componentsReady()');
 
       const iconsRegEx = /(<div class="playground[\sa-z]+overview".*?>)\n(<\/div>)/;
@@ -161,11 +162,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
         // implementation
         const classImplements = usesOnInit ? 'implements OnInit ' : '';
         let classImplementation = '';
-        if (isSkeleton) {
-          classImplementation = `ngOnInit() {
-  ${skeletonScript}
-}`;
-        } else if (usesSetAllReady) {
+        if (usesSetAllReady) {
           classImplementation = `public allReady: boolean = false;
 
 constructor(private cdr: ChangeDetectorRef) {}
