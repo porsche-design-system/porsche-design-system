@@ -89,17 +89,17 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
 
     const skeletonPropertyClassBindings = getComponentMeta(component)
       .skeletonProps.map(({ propName, shouldAddValueToClassName }) => {
-        return `  this.${propName} && this.el.classList.add(\`${PDS_SKELETON_CLASS_PREFIX}${paramCase(propName)}${
+        return `this.${propName} && \`${PDS_SKELETON_CLASS_PREFIX}${paramCase(propName)}${
           shouldAddValueToClassName ? `-\${JSON.stringify(this.${propName}).replace(/"/g, '')}` : ''
-        }\`);`;
+        }\``;
       })
-      .join('\n    ');
+      .join(', ');
 
     const skeletonsOnInit = hasSkeleton
       ? `
   ngOnInit() {
     if (this.usesSkeletons) {
-    ${skeletonPropertyClassBindings}
+      this.el.classList.add(${skeletonPropertyClassBindings});
     }
   }`
       : '';
