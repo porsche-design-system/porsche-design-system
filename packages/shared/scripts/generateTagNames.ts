@@ -6,35 +6,29 @@ import { TagName } from '../src';
 
 const INTERNAL_TAG_NAMES: TagName[] = ['p-select-wrapper-dropdown', 'p-toast-item'];
 
-const TAG_NAMES_WITH_SKELETON: TagName[] = [
-  'p-button',
-  'p-button-pure',
-  'p-checkbox-wrapper',
-  'p-fieldset-wrapper',
-  'p-headline',
-  'p-link',
-  'p-link-pure',
-  'p-link-social',
-  'p-radio-button-wrapper',
-  'p-select-wrapper',
-  'p-text',
-  'p-text-list',
-  'p-text-list-item',
-  'p-textarea-wrapper',
-  'p-text-field-wrapper',
-];
-
 const generateTagNames = (): void => {
   // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
-  const sourceDirectory = path.resolve('../components/src/components');
+  const componentsSourceDirectory = path.resolve('../components/src/components');
+  const componentsSkeletonDirectory = path.resolve('../components/src/styles/skeletons');
 
-  const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
+  const componentFiles = globby.sync(`${componentsSourceDirectory}/**/*.tsx`);
+  const skeletonFiles = globby.sync(`${componentsSkeletonDirectory}/**/*skeleton-styles.ts`);
+
   const tags = componentFiles
     .filter((file) => !file.includes('-utils')) // skip utils files that have tsx extension
     .map((file) => {
       const fileContent = fs.readFileSync(file, 'utf8');
       const [, tag] = /tag: '([a-z-]*)'/.exec(fileContent) || []; // functional components don't match here
       return tag;
+    })
+    .filter((x) => x) // filter out undefined values
+    .sort();
+
+  const tagNamesWithSkeleton = skeletonFiles
+    .flatMap((file) => {
+      const fileContent = fs.readFileSync(file, 'utf8');
+      const [, componentSelectors] = /@global': \{\n.*?'(.*?)'/.exec(fileContent) || [];
+      return componentSelectors?.replace(/\s+/g, '').split(',');
     })
     .filter((x) => x) // filter out undefined values
     .sort();
@@ -47,7 +41,7 @@ export type TagNameCamelCase = ${tags.map((x) => `'${camelCase(x)}'`).join(' | '
 
 export const INTERNAL_TAG_NAMES: TagName[] = [${INTERNAL_TAG_NAMES.map((x) => `'${x}'`).join(', ')}];
 
-export const TAG_NAMES_WITH_SKELETON: TagName[] = [${TAG_NAMES_WITH_SKELETON.map((x) => `'${x}'`).join(', ')}];
+export const TAG_NAMES_WITH_SKELETON: TagName[] = [${tagNamesWithSkeleton.map((x) => `'${x}'`).join(', ')}];
 
 export type SkeletonTagName = typeof TAG_NAMES_WITH_SKELETON[number];
 `;
