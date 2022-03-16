@@ -1,6 +1,7 @@
 import { Config } from '@stencil/core';
 import * as path from 'path';
 import replace from '@rollup/plugin-replace';
+import nodePolyfills from 'rollup-plugin-node-polyfills';
 import type { TagName } from '@porsche-design-system/shared';
 
 /**
@@ -65,6 +66,7 @@ export const config: Config = {
       replace({
         ROLLUP_REPLACE_IS_STAGING: isDevBuild ? '"staging"' : '"production"',
       }),
+      nodePolyfills(), // neded to solve build errors with shared package and visual-regression-tester
     ],
   },
   globalScript: 'src/setup.ts',
