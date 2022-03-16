@@ -99,7 +99,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
       ? `
   ngOnInit() {
     if (this.usesSkeletons) {
-      this.el.classList.add(${skeletonPropertyClassBindings});
+      this.el.classList.add(...[${skeletonPropertyClassBindings}].filter((x) => x));
     }
   }`
       : '';
