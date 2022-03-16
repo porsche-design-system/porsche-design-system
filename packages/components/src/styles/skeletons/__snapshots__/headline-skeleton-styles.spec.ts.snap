@@ -26,25 +26,25 @@ Object {
           "&::after": Object {
             "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 32px, transparent 32px, transparent 36px)",
           },
-          "@media (min-width: 1000px) and (max-width: 1299px)": Object {
+          "@media(min-width:1000px) and (max-width:1299px)": Object {
             "&::after": Object {
               "background": "linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 42px, transparent 42px, transparent 48px)",
             },
             "height": "3rem",
           },
-          "@media (min-width: 1300px) and (max-width: 1759px)": Object {
+          "@media(min-width:1300px) and (max-width:1759px)": Object {
             "&::after": Object {
               "background": "linear-gradient(transparent, transparent 5px, currentColor 5px, currentColor 47px, transparent 47px, transparent 52px)",
             },
             "height": "3.25rem",
           },
-          "@media (min-width: 1760px)": Object {
+          "@media(min-width:1760px)": Object {
             "&::after": Object {
               "background": "linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 54px, transparent 54px, transparent 60px)",
             },
             "height": "3.75rem",
           },
-          "@media (min-width: 760px) and (max-width: 999px)": Object {
+          "@media(min-width:760px) and (max-width:999px)": Object {
             "&::after": Object {
               "background": "linear-gradient(transparent, transparent 5px, currentColor 5px, currentColor 35px, transparent 35px, transparent 40px)",
             },
@@ -56,25 +56,25 @@ Object {
           "&::after": Object {
             "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 24px, transparent 24px, transparent 28px)",
           },
-          "@media (min-width: 1000px) and (max-width: 1299px)": Object {
+          "@media(min-width:1000px) and (max-width:1299px)": Object {
             "&::after": Object {
               "background": "linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 34px, transparent 34px, transparent 40px)",
             },
             "height": "2.5rem",
           },
-          "@media (min-width: 1300px) and (max-width: 1759px)": Object {
+          "@media(min-width:1300px) and (max-width:1759px)": Object {
             "&::after": Object {
               "background": "linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 38px, transparent 38px, transparent 44px)",
             },
             "height": "2.75rem",
           },
-          "@media (min-width: 1760px)": Object {
+          "@media(min-width:1760px)": Object {
             "&::after": Object {
               "background": "linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 42px, transparent 42px, transparent 48px)",
             },
             "height": "3rem",
           },
-          "@media (min-width: 760px) and (max-width: 999px)": Object {
+          "@media(min-width:760px) and (max-width:999px)": Object {
             "&::after": Object {
               "background": "linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 30px, transparent 30px, transparent 36px)",
             },
@@ -86,25 +86,25 @@ Object {
           "&::after": Object {
             "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px)",
           },
-          "@media (min-width: 1000px) and (max-width: 1299px)": Object {
+          "@media(min-width:1000px) and (max-width:1299px)": Object {
             "&::after": Object {
               "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 24px, transparent 24px, transparent 28px)",
             },
             "height": "1.75rem",
           },
-          "@media (min-width: 1300px) and (max-width: 1759px)": Object {
+          "@media(min-width:1300px) and (max-width:1759px)": Object {
             "&::after": Object {
               "background": "linear-gradient(transparent, transparent 5px, currentColor 5px, currentColor 27px, transparent 27px, transparent 32px)",
             },
             "height": "2rem",
           },
-          "@media (min-width: 1760px)": Object {
+          "@media(min-width:1760px)": Object {
             "&::after": Object {
               "background": "linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 30px, transparent 30px, transparent 36px)",
             },
             "height": "2.25rem",
           },
-          "@media (min-width: 760px) and (max-width: 999px)": Object {
+          "@media(min-width:760px) and (max-width:999px)": Object {
             "&::after": Object {
               "background": "linear-gradient(transparent, transparent 5px, currentColor 5px, currentColor 23px, transparent 23px, transparent 28px)",
             },
@@ -122,25 +122,25 @@ Object {
           "&::after": Object {
             "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 40px, transparent 40px, transparent 44px)",
           },
-          "@media (min-width: 1000px) and (max-width: 1299px)": Object {
+          "@media(min-width:1000px) and (max-width:1299px)": Object {
             "&::after": Object {
               "background": "linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 58px, transparent 58px, transparent 64px)",
             },
             "height": "4rem",
           },
-          "@media (min-width: 1300px) and (max-width: 1759px)": Object {
+          "@media(min-width:1300px) and (max-width:1759px)": Object {
             "&::after": Object {
               "background": "linear-gradient(transparent, transparent 7px, currentColor 7px, currentColor 69px, transparent 69px, transparent 76px)",
             },
             "height": "4.75rem",
           },
-          "@media (min-width: 1760px)": Object {
+          "@media(min-width:1760px)": Object {
             "&::after": Object {
               "background": "linear-gradient(transparent, transparent 8px, currentColor 8px, currentColor 80px, transparent 80px, transparent 88px)",
             },
             "height": "5.5rem",
           },
-          "@media (min-width: 760px) and (max-width: 999px)": Object {
+          "@media(min-width:760px) and (max-width:999px)": Object {
             "&::after": Object {
               "background": "linear-gradient(transparent, transparent 5px, currentColor 5px, currentColor 47px, transparent 47px, transparent 52px)",
             },
@@ -148,25 +148,25 @@ Object {
           },
           "height": "2.75rem",
         },
-        "@media (min-width: 1000px) and (max-width: 1299px)": Object {
+        "@media(min-width:1000px) and (max-width:1299px)": Object {
           "&::after": Object {
             "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 48px, transparent 48px, transparent 52px)",
           },
           "height": "3.25rem",
         },
-        "@media (min-width: 1300px) and (max-width: 1759px)": Object {
+        "@media(min-width:1300px) and (max-width:1759px)": Object {
           "&::after": Object {
             "background": "linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 58px, transparent 58px, transparent 64px)",
           },
           "height": "4rem",
         },
-        "@media (min-width: 1760px)": Object {
+        "@media(min-width:1760px)": Object {
           "&::after": Object {
             "background": "linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 66px, transparent 66px, transparent 72px)",
           },
           "height": "4.5rem",
         },
-        "@media (min-width: 760px) and (max-width: 999px)": Object {
+        "@media(min-width:760px) and (max-width:999px)": Object {
           "&::after": Object {
             "background": "linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 42px, transparent 42px, transparent 48px)",
           },

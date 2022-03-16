@@ -1,42 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`mediaQueryMax() should return correct css for maxBreakpoint: l 1`] = `"@media (max-width: 1299px)"`;
+exports[`mediaQueryMax() should return correct css for maxBreakpoint: l 1`] = `"@media(max-width:1299px)"`;
 
-exports[`mediaQueryMax() should return correct css for maxBreakpoint: m 1`] = `"@media (max-width: 999px)"`;
+exports[`mediaQueryMax() should return correct css for maxBreakpoint: m 1`] = `"@media(max-width:999px)"`;
 
-exports[`mediaQueryMax() should return correct css for maxBreakpoint: s 1`] = `"@media (max-width: 759px)"`;
+exports[`mediaQueryMax() should return correct css for maxBreakpoint: s 1`] = `"@media(max-width:759px)"`;
 
-exports[`mediaQueryMax() should return correct css for maxBreakpoint: xl 1`] = `"@media (max-width: 1759px)"`;
+exports[`mediaQueryMax() should return correct css for maxBreakpoint: xl 1`] = `"@media(max-width:1759px)"`;
 
-exports[`mediaQueryMax() should return correct css for maxBreakpoint: xs 1`] = `"@media (max-width: 479px)"`;
+exports[`mediaQueryMax() should return correct css for maxBreakpoint: xs 1`] = `"@media(max-width:479px)"`;
 
-exports[`mediaQueryMax() should return correct css for maxBreakpoint: xxl 1`] = `"@media (max-width: 1919px)"`;
+exports[`mediaQueryMax() should return correct css for maxBreakpoint: xxl 1`] = `"@media(max-width:1919px)"`;
 
-exports[`mediaQueryMin() should return correct css for minBreakpoint: l 1`] = `"@media (min-width: 1300px)"`;
+exports[`mediaQueryMin() should return correct css for minBreakpoint: l 1`] = `"@media(min-width:1300px)"`;
 
-exports[`mediaQueryMin() should return correct css for minBreakpoint: m 1`] = `"@media (min-width: 1000px)"`;
+exports[`mediaQueryMin() should return correct css for minBreakpoint: m 1`] = `"@media(min-width:1000px)"`;
 
-exports[`mediaQueryMin() should return correct css for minBreakpoint: s 1`] = `"@media (min-width: 760px)"`;
+exports[`mediaQueryMin() should return correct css for minBreakpoint: s 1`] = `"@media(min-width:760px)"`;
 
-exports[`mediaQueryMin() should return correct css for minBreakpoint: xl 1`] = `"@media (min-width: 1760px)"`;
+exports[`mediaQueryMin() should return correct css for minBreakpoint: xl 1`] = `"@media(min-width:1760px)"`;
 
-exports[`mediaQueryMin() should return correct css for minBreakpoint: xs 1`] = `"@media (min-width: 480px)"`;
+exports[`mediaQueryMin() should return correct css for minBreakpoint: xs 1`] = `"@media(min-width:480px)"`;
 
-exports[`mediaQueryMin() should return correct css for minBreakpoint: xxl 1`] = `"@media (min-width: 1920px)"`;
+exports[`mediaQueryMin() should return correct css for minBreakpoint: xxl 1`] = `"@media(min-width:1920px)"`;
 
-exports[`mediaQueryMin() should return correct css for minBreakpoint: xxs 1`] = `"@media (min-width: 0px)"`;
+exports[`mediaQueryMin() should return correct css for minBreakpoint: xxs 1`] = `"@media(min-width:0px)"`;
 
-exports[`mediaQueryMinMax() should return correct css for maxBreakpoint: l 1`] = `"@media (min-width: 1300px) and (max-width: 1759px)"`;
+exports[`mediaQueryMinMax() should return correct css for maxBreakpoint: l 1`] = `"@media(min-width:1300px) and (max-width:1759px)"`;
 
-exports[`mediaQueryMinMax() should return correct css for maxBreakpoint: m 1`] = `"@media (min-width: 1000px) and (max-width: 1299px)"`;
+exports[`mediaQueryMinMax() should return correct css for maxBreakpoint: m 1`] = `"@media(min-width:1000px) and (max-width:1299px)"`;
 
-exports[`mediaQueryMinMax() should return correct css for maxBreakpoint: s 1`] = `"@media (min-width: 760px) and (max-width: 999px)"`;
+exports[`mediaQueryMinMax() should return correct css for maxBreakpoint: s 1`] = `"@media(min-width:760px) and (max-width:999px)"`;
 
-exports[`mediaQueryMinMax() should return correct css for maxBreakpoint: xl 1`] = `"@media (min-width: 1760px) and (max-width: 1919px)"`;
+exports[`mediaQueryMinMax() should return correct css for maxBreakpoint: xl 1`] = `"@media(min-width:1760px) and (max-width:1919px)"`;
 
-exports[`mediaQueryMinMax() should return correct css for maxBreakpoint: xs 1`] = `"@media (min-width: 480px) and (max-width: 759px)"`;
+exports[`mediaQueryMinMax() should return correct css for maxBreakpoint: xs 1`] = `"@media(min-width:480px) and (max-width:759px)"`;
 
-exports[`mediaQueryMinMax() should return correct css for maxBreakpoint: xxs 1`] = `"@media (min-width: 0px) and (max-width: 479px)"`;
+exports[`mediaQueryMinMax() should return correct css for maxBreakpoint: xxs 1`] = `"@media(min-width:0px) and (max-width:479px)"`;
 
 exports[`should contain correct values for breakpoint 1`] = `
 Object {

@@ -67,28 +67,19 @@ export const getHeadlineSkeletonStyles = (): Styles<'@global'> => {
 const getFontSizeInPx = (fontSize: string): number => parseFloat(fontSize.replace('rem', '')) * 16;
 
 const getHeadlineSkeletonResponsiveJssStyle = (headline: HeadlineType): JssStyle => ({
-  ...getHeadlineJssStyleByBreakpoint(
-    headline,
-    mediaQueryMinMax('s', 'm') as '@media (min-width: 760px) and (max-width: 999px)'
-  ),
-  ...getHeadlineJssStyleByBreakpoint(
-    headline,
-    mediaQueryMinMax('m', 'l') as '@media (min-width: 1000px) and (max-width: 1299px)'
-  ),
-  ...getHeadlineJssStyleByBreakpoint(
-    headline,
-    mediaQueryMinMax('l', 'xl') as '@media (min-width: 1300px) and (max-width: 1759px)'
-  ),
-  ...getHeadlineJssStyleByBreakpoint(headline, mediaQueryMin('xl') as '@media (min-width: 1760px)'),
+  ...getHeadlineJssStyleByBreakpoint(headline, mediaQueryMinMax('s', 'm')),
+  ...getHeadlineJssStyleByBreakpoint(headline, mediaQueryMinMax('m', 'l')),
+  ...getHeadlineJssStyleByBreakpoint(headline, mediaQueryMinMax('l', 'xl')),
+  ...getHeadlineJssStyleByBreakpoint(headline, mediaQueryMin('xl')),
 });
 
 const getHeadlineJssStyleByBreakpoint = (
   headline: HeadlineType,
   breakpoint:
-    | '@media (min-width: 760px) and (max-width: 999px)'
-    | '@media (min-width: 1000px) and (max-width: 1299px)'
-    | '@media (min-width: 1300px) and (max-width: 1759px)'
-    | '@media (min-width: 1760px)'
+    | '@media(min-width:760px) and (max-width:999px)'
+    | '@media(min-width:1000px) and (max-width:1299px)'
+    | '@media(min-width:1300px) and (max-width:1759px)'
+    | '@media(min-width:1760px)'
 ): JssStyle => {
   return {
     [breakpoint]: getHeadlineBreakpointJssStyle(
