@@ -82,14 +82,7 @@ const getHeadlineJssStyleByBreakpoint = (
     | '@media(min-width:1760px)'
 ): JssStyle => {
   return {
-    [breakpoint]: getHeadlineBreakpointJssStyle(
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      headline[breakpoint].fontSize as string,
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      headline[breakpoint].lineHeight as number
-    ),
+    [breakpoint]: getHeadlineBreakpointJssStyle(headline[breakpoint].fontSize, headline[breakpoint].lineHeight),
   };
 };
 
