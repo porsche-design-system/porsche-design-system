@@ -29,15 +29,15 @@ Object {
     "skeletonProps": Array [
       Object {
         "propName": "hideLabel",
-        "shouldStringifyValue": false,
+        "shouldAddValueToClassName": false,
       },
       Object {
         "propName": "theme",
-        "shouldStringifyValue": true,
+        "shouldAddValueToClassName": true,
       },
       Object {
         "propName": "variant",
-        "shouldStringifyValue": true,
+        "shouldAddValueToClassName": true,
       },
     ],
     "styling": "jss",
@@ -60,19 +60,19 @@ Object {
     "skeletonProps": Array [
       Object {
         "propName": "hideLabel",
-        "shouldStringifyValue": false,
+        "shouldAddValueToClassName": false,
       },
       Object {
         "propName": "size",
-        "shouldStringifyValue": true,
+        "shouldAddValueToClassName": true,
       },
       Object {
         "propName": "stretch",
-        "shouldStringifyValue": false,
+        "shouldAddValueToClassName": false,
       },
       Object {
         "propName": "theme",
-        "shouldStringifyValue": true,
+        "shouldAddValueToClassName": true,
       },
     ],
     "styling": "jss",
@@ -87,11 +87,11 @@ Object {
     "skeletonProps": Array [
       Object {
         "propName": "hideLabel",
-        "shouldStringifyValue": false,
+        "shouldAddValueToClassName": false,
       },
       Object {
         "propName": "label",
-        "shouldStringifyValue": false,
+        "shouldAddValueToClassName": false,
       },
     ],
     "styling": "jss",
@@ -123,11 +123,11 @@ Object {
     "skeletonProps": Array [
       Object {
         "propName": "label",
-        "shouldStringifyValue": false,
+        "shouldAddValueToClassName": false,
       },
       Object {
         "propName": "labelSize",
-        "shouldStringifyValue": false,
+        "shouldAddValueToClassName": false,
       },
     ],
     "styling": "jss",
@@ -179,11 +179,11 @@ Object {
     "skeletonProps": Array [
       Object {
         "propName": "theme",
-        "shouldStringifyValue": true,
+        "shouldAddValueToClassName": true,
       },
       Object {
         "propName": "variant",
-        "shouldStringifyValue": true,
+        "shouldAddValueToClassName": true,
       },
     ],
     "styling": "jss",
@@ -220,15 +220,15 @@ Object {
     "skeletonProps": Array [
       Object {
         "propName": "hideLabel",
-        "shouldStringifyValue": false,
+        "shouldAddValueToClassName": false,
       },
       Object {
         "propName": "theme",
-        "shouldStringifyValue": true,
+        "shouldAddValueToClassName": true,
       },
       Object {
         "propName": "variant",
-        "shouldStringifyValue": true,
+        "shouldAddValueToClassName": true,
       },
     ],
     "styling": "jss",
@@ -247,19 +247,19 @@ Object {
     "skeletonProps": Array [
       Object {
         "propName": "hideLabel",
-        "shouldStringifyValue": false,
+        "shouldAddValueToClassName": false,
       },
       Object {
         "propName": "size",
-        "shouldStringifyValue": true,
+        "shouldAddValueToClassName": true,
       },
       Object {
         "propName": "stretch",
-        "shouldStringifyValue": false,
+        "shouldAddValueToClassName": false,
       },
       Object {
         "propName": "theme",
-        "shouldStringifyValue": true,
+        "shouldAddValueToClassName": true,
       },
     ],
     "styling": "jss",
@@ -278,11 +278,11 @@ Object {
     "skeletonProps": Array [
       Object {
         "propName": "hideLabel",
-        "shouldStringifyValue": false,
+        "shouldAddValueToClassName": false,
       },
       Object {
         "propName": "theme",
-        "shouldStringifyValue": true,
+        "shouldAddValueToClassName": true,
       },
     ],
     "styling": "jss",
@@ -333,11 +333,11 @@ Object {
     "skeletonProps": Array [
       Object {
         "propName": "hideLabel",
-        "shouldStringifyValue": false,
+        "shouldAddValueToClassName": false,
       },
       Object {
         "propName": "label",
-        "shouldStringifyValue": false,
+        "shouldAddValueToClassName": false,
       },
     ],
     "styling": "jss",
@@ -352,19 +352,19 @@ Object {
     "skeletonProps": Array [
       Object {
         "propName": "description",
-        "shouldStringifyValue": false,
+        "shouldAddValueToClassName": false,
       },
       Object {
         "propName": "hideLabel",
-        "shouldStringifyValue": false,
+        "shouldAddValueToClassName": false,
       },
       Object {
         "propName": "label",
-        "shouldStringifyValue": false,
+        "shouldAddValueToClassName": false,
       },
       Object {
         "propName": "theme",
-        "shouldStringifyValue": true,
+        "shouldAddValueToClassName": true,
       },
     ],
     "styling": "jss",
@@ -502,11 +502,11 @@ Object {
     "skeletonProps": Array [
       Object {
         "propName": "size",
-        "shouldStringifyValue": true,
+        "shouldAddValueToClassName": true,
       },
       Object {
         "propName": "theme",
-        "shouldStringifyValue": true,
+        "shouldAddValueToClassName": true,
       },
     ],
     "styling": "jss",
@@ -521,15 +521,15 @@ Object {
     "skeletonProps": Array [
       Object {
         "propName": "description",
-        "shouldStringifyValue": false,
+        "shouldAddValueToClassName": false,
       },
       Object {
         "propName": "hideLabel",
-        "shouldStringifyValue": false,
+        "shouldAddValueToClassName": false,
       },
       Object {
         "propName": "label",
-        "shouldStringifyValue": false,
+        "shouldAddValueToClassName": false,
       },
     ],
     "styling": "jss",
@@ -543,7 +543,7 @@ Object {
     "skeletonProps": Array [
       Object {
         "propName": "theme",
-        "shouldStringifyValue": true,
+        "shouldAddValueToClassName": true,
       },
     ],
     "styling": "jss",
@@ -568,15 +568,15 @@ Object {
     "skeletonProps": Array [
       Object {
         "propName": "description",
-        "shouldStringifyValue": false,
+        "shouldAddValueToClassName": false,
       },
       Object {
         "propName": "hideLabel",
-        "shouldStringifyValue": false,
+        "shouldAddValueToClassName": false,
       },
       Object {
         "propName": "label",
-        "shouldStringifyValue": false,
+        "shouldAddValueToClassName": false,
       },
     ],
     "styling": "jss",

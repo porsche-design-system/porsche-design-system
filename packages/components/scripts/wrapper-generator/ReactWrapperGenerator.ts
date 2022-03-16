@@ -109,9 +109,9 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     if (getComponentMeta(component).hasSkeleton) {
       const skeletonProps = getComponentMeta(component).skeletonProps;
       skeletonClassNames = skeletonProps
-        .map(({ propName, shouldStringifyValue }, index) => {
+        .map(({ propName, shouldAddValueToClassName }, index) => {
           return `\${${propName} ? \`${PDS_SKELETON_CLASS_PREFIX}${paramCase(propName)}${
-            shouldStringifyValue ? `-\${JSON.stringify(${propName}).replace(/"/g, '')}` : ''
+            shouldAddValueToClassName ? `-\${JSON.stringify(${propName}).replace(/"/g, '')}` : ''
           }${index < skeletonProps.length - 1 ? ' ' : ''}\` : ''}`;
         })
         .join('');
