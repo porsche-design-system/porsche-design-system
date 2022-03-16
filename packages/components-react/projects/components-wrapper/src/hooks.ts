@@ -58,7 +58,11 @@ export const useEventCallback = /*#__PURE__*/ (
 
 export const useMergedClass = /*#__PURE__*/ (ref: MutableRefObject<HTMLElement>, className: string) => {
   const prevComponentClassName = useRef<string>();
+
   return useMemo(() => {
+    if (!className) {
+      return undefined;
+    }
     const { current } = ref;
     let newClassName = className;
 
