@@ -1,4 +1,4 @@
-import type { Page, JSHandle } from 'puppeteer';
+import { Page, JSHandle } from 'puppeteer';
 
 type Options = { withBackground: boolean };
 

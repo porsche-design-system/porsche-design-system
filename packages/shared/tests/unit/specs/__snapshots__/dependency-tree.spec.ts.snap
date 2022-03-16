@@ -14,13 +14,9 @@ Object {
     "lib/codeSamples.js",
     "lib/componentMeta.js",
     "lib/tagNames.js",
-    "testing/vrt-helper.js",
-    "testing/vrt.js",
   ],
   "lib/codeSamples.js": Array [],
   "lib/componentMeta.js": Array [],
   "lib/tagNames.js": Array [],
-  "testing/vrt-helper.js": Array [],
-  "testing/vrt.js": Array [],
 }
 `;

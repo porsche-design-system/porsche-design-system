@@ -4,12 +4,10 @@ import generatePackageJson from 'rollup-plugin-generate-package-json';
 import pkg from './package.json';
 
 const input = 'src/index.ts';
-const external = Object.keys(pkg.dependencies);
 
 export default [
   {
     input,
-    external,
     output: {
       dir: 'dist',
       format: 'cjs',
@@ -38,11 +36,19 @@ export default [
   },
   {
     input,
-    external,
     output: {
       dir: 'dist/esm',
       format: 'esm',
       preserveModules: true,
+    },
+    plugins: [typescript()],
+  },
+  {
+    input: 'src/testing.ts',
+    external: Object.keys(pkg.dependencies),
+    output: {
+      dir: 'dist',
+      format: 'cjs',
     },
     plugins: [typescript()],
   },
