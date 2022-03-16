@@ -1,6 +1,5 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { PDS_SKELETON_CLASS_PREFIX } from '@porsche-design-system/shared';
-import { camelCase, paramCase, pascalCase } from 'change-case';
+import { camelCase, pascalCase } from 'change-case';
 import { AbstractWrapperGenerator, SkeletonProps } from './AbstractWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
 
@@ -104,18 +103,11 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
           ];
     const componentEffects = propsToSync.length ? componentEffectsArr.join('\n    ') : '';
 
-    const skeletonClassNames = skeletonProps
-      .map(({ propName, shouldAddValueToClassName }, index) => {
-        return `\${${propName} ? \`${PDS_SKELETON_CLASS_PREFIX}${paramCase(propName)}${
-          shouldAddValueToClassName ? `-\${JSON.stringify(${propName}).replace(/"/g, '')}` : ''
-        }${index < skeletonProps.length - 1 ? ' ' : ''}\` : ''}`;
-      })
-      .join('');
-
     const mergedSkeletonClasses: string = hasSkeleton
-      ? `\`\${usesSkeleton ? \`\${className ? className + ' ' : ''}${
-          skeletonClassNames ? skeletonClassNames : ''
-        }\` : \`\${className ? className : ''}\`}\``
+      ? `\`\${usesSkeleton ? \`\${className ? className + ' ' : ''}\${${this.getSkeletonClassNames(
+          skeletonProps,
+          false
+        )}.join(' ')}\` : \`\${className ? className : ''}\`}\``
       : 'className';
 
     const componentPropsArr: string[] = [

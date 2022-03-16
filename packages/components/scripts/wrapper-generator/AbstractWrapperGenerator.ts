@@ -1,6 +1,7 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { getComponentMeta, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
+import { getComponentMeta, INTERNAL_TAG_NAMES, PDS_SKELETON_CLASS_PREFIX } from '@porsche-design-system/shared';
 import { DataStructureBuilder, ExtendedProp } from './DataStructureBuilder';
+import { paramCase } from 'change-case';
 import { InputParser } from './InputParser';
 import * as path from 'path';
 import * as fs from 'fs';
@@ -146,6 +147,16 @@ export abstract class AbstractWrapperGenerator {
     }
   }
 
+  public getSkeletonClassNames(skeletonProps: SkeletonProps, isAngular: boolean): string {
+    const context = isAngular ? 'this.' : '';
+    return `[${skeletonProps
+      .map(({ propName, shouldAddValueToClassName }) => {
+        return `${context}${propName} && \`${PDS_SKELETON_CLASS_PREFIX}${paramCase(propName)}${
+          shouldAddValueToClassName ? `-\${JSON.stringify(${context}${propName}).replace(/"/g, '')}` : ''
+        }\``;
+      })
+      .join(',')}].filter((x) => x)`;
+  }
   // helper to possible inject additional contents into barrel file
   public getAdditionalBarrelFileContent(): string {
     return '';
