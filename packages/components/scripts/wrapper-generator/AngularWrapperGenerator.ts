@@ -95,19 +95,14 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
       })
       .join('\n    ');
 
-    const getSkeletonOnInit = () => {
-      let result: string = '';
-      if (hasSkeleton) {
-        result = `
-
+    const skeletonsOnInit = hasSkeleton
+      ? `
   ngOnInit() {
     if (this.usesSkeletons) {
     ${skeletonPropertyClassBindings}
     }
-  }`;
-      }
-      return result;
-    };
+  }`
+      : '';
 
     const constructorCode = [
       'c.detach();',
@@ -134,7 +129,7 @@ export class ${this.generateComponentName(component)}${genericType}${implementsO
 
   constructor(${constructorParams}) {
     ${constructorCode}
-  }${getSkeletonOnInit()}
+  }${skeletonsOnInit}
 }`;
   }
 
