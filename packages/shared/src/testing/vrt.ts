@@ -30,6 +30,14 @@ export const setCustomOptions = (opts: VisualRegressionTestOptions): void => {
   customOptions = opts;
 };
 
+export const getVisualRegressionTester = (viewport: Viewport): VisualRegressionTester => {
+  return new VisualRegressionTester(browser, {
+    ...defaultOptions,
+    ...customOptions,
+    viewports: [viewport],
+  });
+};
+
 export const getVisualRegressionStatesTester = (): VisualRegressionTester => {
   return new VisualRegressionTester(browser, {
     ...defaultOptions,
