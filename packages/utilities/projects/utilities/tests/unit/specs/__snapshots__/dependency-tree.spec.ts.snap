@@ -71,22 +71,18 @@ Object {
   "typography/lib/headline1.js": Array [
     "font/font-family.js",
     "font/font-weight.js",
-    "media-query.js",
   ],
   "typography/lib/headline2.js": Array [
     "font/font-family.js",
     "font/font-weight.js",
-    "media-query.js",
   ],
   "typography/lib/headline3.js": Array [
     "font/font-family.js",
     "font/font-weight.js",
-    "media-query.js",
   ],
   "typography/lib/headline4.js": Array [
     "font/font-family.js",
     "font/font-weight.js",
-    "media-query.js",
   ],
   "typography/lib/headline5.js": Array [
     "font/font-family.js",
@@ -125,7 +121,6 @@ Object {
   "typography/lib/titleLarge.js": Array [
     "font/font-family.js",
     "font/font-weight.js",
-    "media-query.js",
   ],
 }
 `;
