@@ -1,8 +1,8 @@
-import type { TagName } from '@porsche-design-system/shared';
-import { PDS_SKELETON_CLASS_PREFIX } from '@porsche-design-system/shared';
-import { camelCase, paramCase, pascalCase } from 'change-case';
-import { AbstractWrapperGenerator, SkeletonProps } from './AbstractWrapperGenerator';
-import type { ExtendedProp } from './DataStructureBuilder';
+import type {TagName} from '@porsche-design-system/shared';
+import {PDS_SKELETON_CLASS_PREFIX} from '@porsche-design-system/shared';
+import {camelCase, paramCase, pascalCase} from 'change-case';
+import {AbstractWrapperGenerator, SkeletonProps} from './AbstractWrapperGenerator';
+import type {ExtendedProp} from './DataStructureBuilder';
 
 export class AngularWrapperGenerator extends AbstractWrapperGenerator {
   protected packageDir = 'components-angular';
@@ -86,19 +86,19 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     ].join('\n  ');
 
     const hasSkeleton = !!skeletonProps.length;
-    const skeletonPropertyClassBindings = skeletonProps
-      .map(({ propName, shouldAddValueToClassName }) => {
-        return `  this.${propName} && this.el.classList.add(\`${PDS_SKELETON_CLASS_PREFIX}${paramCase(propName)}${
+
+    const skeletonPropertyClassBindings = skeletonProps.map(({ propName, shouldAddValueToClassName }) => {
+        return `this.${propName} && \`${PDS_SKELETON_CLASS_PREFIX}${paramCase(propName)}${
           shouldAddValueToClassName ? `-\${JSON.stringify(this.${propName}).replace(/"/g, '')}` : ''
-        }\`);`;
+        }\``;
       })
-      .join('\n    ');
+      .join(', ');
 
     const skeletonsOnInit = hasSkeleton
       ? `
   ngOnInit() {
     if (this.usesSkeletons) {
-    ${skeletonPropertyClassBindings}
+      this.el.classList.add(${skeletonPropertyClassBindings});
     }
   }`
       : '';
