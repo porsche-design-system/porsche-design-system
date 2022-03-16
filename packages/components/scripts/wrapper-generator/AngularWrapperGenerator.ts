@@ -117,7 +117,9 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
 
     const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
     const implementsOnInit = hasSkeleton ? ' implements OnInit' : '';
-    const usesSkeletonsInjectionToken = hasSkeleton ? ', @Inject(USES_SKELETONS) public usesSkeletons: boolean' : '';
+    const constructorParams = `c: ChangeDetectorRef, r: ElementRef, protected z: NgZone${
+      hasSkeleton ? ', @Inject(USES_SKELETONS) public usesSkeletons: boolean' : ''
+    }`;
 
     return `${inputsAndOutputs}
 
@@ -130,7 +132,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
 export class ${this.generateComponentName(component)}${genericType}${implementsOnInit} {
   ${classMembers}
 
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone${usesSkeletonsInjectionToken}) {
+  constructor(${constructorParams}) {
     ${constructorCode}
   }${getSkeletonOnInit()}
 }`;
