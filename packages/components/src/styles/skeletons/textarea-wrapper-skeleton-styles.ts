@@ -42,7 +42,7 @@ export const getTextareaWrapperSkeletonStyles = (): Styles<'@global'> => {
       'p-textarea-wrapper': {
         '&:not(.hydrated)': {
           ...extendPseudoWithThemeJssStyle({
-            styleFunction: getBaseSkeletonJssStyle,
+            jssStyle: getBaseSkeletonJssStyle(),
             pseudosToExtend: ['&::before', '&::after'],
           }),
           minHeight: getSkeletonElementHeight(TEXTAREA_SKELETON_HEIGHT),

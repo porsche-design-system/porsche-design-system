@@ -17,7 +17,7 @@ export const getButtonLinkSocialSkeletonStyles = (): Styles<'@global'> => {
     '@global': {
       'p-button, p-link, p-link-social': {
         '&:not(.hydrated)': {
-          ...extendPseudoWithThemeJssStyle({ styleFunction: () => getBaseSkeletonJssStyle(false) }),
+          ...extendPseudoWithThemeJssStyle({ jssStyle: getBaseSkeletonJssStyle(false) }),
           display: 'inline-flex',
           minWidth: pxToRemWithUnit(BUTTON_LINK_SKELETON_WIDTH),
           [`&[${skeletonPropertyNames.hideLabel}=true], &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.hideLabel}`]:

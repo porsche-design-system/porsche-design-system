@@ -39,7 +39,7 @@ export const getTextSkeletonStyles = (): Styles<'@global'> => {
       'p-text, p-text-list-item': {
         '&:not(.hydrated)': {
           ...extendPseudoWithThemeJssStyle({
-            styleFunction: () => getTextHeadlineSkeletonBaseJssStyle(),
+            jssStyle: getTextHeadlineSkeletonBaseJssStyle(),
           }),
           ...getTextSizeJssStyle(),
           ...getThemedPseudoJssStyle(),

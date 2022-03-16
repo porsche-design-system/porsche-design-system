@@ -101,20 +101,20 @@ type PseudoElementSelectorsType = typeof PSEUDO_ELEMENT_SELECTORS[number];
 
 type ExtendPseudoWithThemeOptions = {
   theme?: Theme;
-  styleFunction?: () => JssStyle;
+  jssStyle?: JssStyle;
   pseudosToExtend?: PseudoElementSelectorsType[];
 };
 
 export const extendPseudoWithThemeJssStyle = (opts?: ExtendPseudoWithThemeOptions): JssStyle => {
-  const { theme = 'light', styleFunction = () => ({}), pseudosToExtend = ['&::after'] } = opts ?? {};
+  const { theme = 'light', jssStyle = {}, pseudosToExtend = ['&::after'] } = opts ?? {};
 
   return {
-    ...styleFunction(),
+    ...jssStyle,
     ...pseudosToExtend.reduce((prevValue: JssStyle, pseudo) => {
       return {
         ...prevValue,
         [pseudo]: {
-          ...styleFunction()[pseudo],
+          ...(jssStyle[pseudo] ? jssStyle[pseudo] : {}),
           color: getThemedColors(theme).contrastMediumColor,
         },
       };

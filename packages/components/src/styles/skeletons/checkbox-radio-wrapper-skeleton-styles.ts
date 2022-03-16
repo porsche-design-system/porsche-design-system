@@ -19,7 +19,7 @@ export const getCheckboxRadioWrapperSkeletonStyles = (): Styles<'@global'> => {
       'p-checkbox-wrapper, p-radio-button-wrapper': {
         '&:not(.hydrated)': {
           ...extendPseudoWithThemeJssStyle({
-            styleFunction: () => getBaseSkeletonJssStyle(false, checkboxRadioElementHeight),
+            jssStyle: getBaseSkeletonJssStyle(false, checkboxRadioElementHeight),
           }),
           display: 'block',
           minWidth: pxToRemWithUnit(BUTTON_LINK_SKELETON_WIDTH),
