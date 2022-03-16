@@ -57,7 +57,7 @@ const getColors = (
   };
 };
 
-const getAlignLabelStyle: GetJssStyleFunction = (alignLabel: AlignLabelType): JssStyle => {
+const getAlignLabelJssStyle: GetJssStyleFunction = (alignLabel: AlignLabelType): JssStyle => {
   const styles: { [key in AlignLabelType]: JssStyle } = {
     left: {
       order: 0,
@@ -73,7 +73,7 @@ const getAlignLabelStyle: GetJssStyleFunction = (alignLabel: AlignLabelType): Js
   return styles[alignLabel];
 };
 
-const getStretchStyle: GetJssStyleFunction = (stretch: boolean): JssStyle => {
+const getStretchJssStyle: GetJssStyleFunction = (stretch: boolean): JssStyle => {
   return stretch
     ? {
         width: '100%',
@@ -150,14 +150,14 @@ export const getComponentCss = (
       minWidth: 0, // prevents flex child to overflow max available parent size
       minHeight: 0, // prevents flex child to overflow max available parent size
       cursor: isDisabledOrLoading ? 'auto' : 'pointer',
-      ...buildResponsiveStyles(stretch, getStretchStyle),
+      ...buildResponsiveStyles(stretch, getStretchJssStyle),
     },
     text: {
       minWidth: 0, // prevents flex child to overflow max available parent size
       minHeight: 0, // prevents flex child to overflow max available parent size
       color: textColor,
       ...mergeDeep(
-        buildResponsiveStyles(alignLabel, getAlignLabelStyle),
+        buildResponsiveStyles(alignLabel, getAlignLabelJssStyle),
         buildResponsiveStyles(hideLabel, getTextHiddenJssStyle)
       ),
     },
