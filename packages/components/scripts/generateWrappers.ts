@@ -1,5 +1,3 @@
-import './mockMutationObserver';
-
 import { WrapperGenerator } from './wrapper-generator';
 
 const generateWrappers = (): void => {

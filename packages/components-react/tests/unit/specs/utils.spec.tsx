@@ -7,7 +7,7 @@ import {
   skipPorscheDesignSystemCDNRequestsDuringTests,
 } from '../../../projects/components-wrapper/src/utils';
 import * as hooks from '../../../projects/components-wrapper/src/hooks';
-import { PDS_SKELETON_CLASS_PREFIX } from '@porsche-design-system/components/src/styles/skeletons';
+import { PDS_SKELETON_CLASS_PREFIX } from '@porsche-design-system/shared';
 
 describe('getMergedClassName', () => {
   test.each`
