@@ -24,7 +24,7 @@ export const getSelectTextFieldWrapperSkeletonStyles = (): Styles<'@global'> => 
       'p-select-wrapper, p-text-field-wrapper': {
         '&:not(.hydrated)': {
           ...extendPseudoWithThemeJssStyle({
-            styleFunction: getBaseSkeletonJssStyle,
+            jssStyle: getBaseSkeletonJssStyle(),
             pseudosToExtend: ['&::before', '&::after'],
           }),
 

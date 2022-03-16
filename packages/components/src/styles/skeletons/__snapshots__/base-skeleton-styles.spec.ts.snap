@@ -1,19 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`extendPseudoWithThemeJssStyle() should match style snapshot for parameters: {
-  styleFunction: [Function: styleFunction] { [length]: 0, [name]: 'styleFunction' }
-}  1`] = `
-Object {
-  "&::after": Object {
-    "color": "#626669",
-  },
-  "display": "block",
-}
-`;
-
-exports[`extendPseudoWithThemeJssStyle() should match style snapshot for parameters: {
   theme: 'dark',
-  styleFunction: [Function: styleFunction] { [length]: 0, [name]: 'styleFunction' },
+  jssStyle: { display: 'block' },
   pseudosToExtend: [ '&::after', '&::before', [length]: 2 ]
 }  1`] = `
 Object {
@@ -22,6 +11,15 @@ Object {
   },
   "&::before": Object {
     "color": "#b0b1b2",
+  },
+  "display": "block",
+}
+`;
+
+exports[`extendPseudoWithThemeJssStyle() should match style snapshot for parameters: { jssStyle: { display: 'block' } }  1`] = `
+Object {
+  "&::after": Object {
+    "color": "#626669",
   },
   "display": "block",
 }

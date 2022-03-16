@@ -72,9 +72,9 @@ describe('extendPseudoWithThemeJssStyle()', () => {
   it.each<Parameters<typeof extendPseudoWithThemeJssStyle>>([
     [{}],
     [{ theme: 'dark' }],
-    [{ styleFunction: () => ({ display: 'block' }) }],
+    [{ jssStyle: { display: 'block' } }],
     [{ pseudosToExtend: ['&::after', '&::before'] }],
-    [{ theme: 'dark', styleFunction: () => ({ display: 'block' }), pseudosToExtend: ['&::after', '&::before'] }],
+    [{ theme: 'dark', jssStyle: { display: 'block' }, pseudosToExtend: ['&::after', '&::before'] }],
   ])('should match style snapshot for parameters: %o ', (...args) => {
     expect(extendPseudoWithThemeJssStyle(...args)).toMatchSnapshot();
   });
