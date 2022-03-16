@@ -9,7 +9,7 @@ import {
 import { useLayoutEffect } from 'react';
 
 describe('skipCheckForPorscheDesignSystemProviderDuringTests()', () => {
-  it('should prevent usePrefix to throw exception', () => {
+  it('should prevent usePrefix or useSkeletons to throw exception', () => {
     const spy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
     let error1, error2;
 
