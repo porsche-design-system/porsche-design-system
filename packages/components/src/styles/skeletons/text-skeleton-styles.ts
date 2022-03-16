@@ -5,8 +5,8 @@ import {
   getSkeletonElementHeight,
   getSkeletonPropertyNames,
   getThemedPseudoJssStyle,
-  PDS_SKELETON_CLASS_PREFIX,
 } from './base-skeleton-styles';
+import { PDS_SKELETON_CLASS_PREFIX } from '@porsche-design-system/shared';
 import { JssStyle, Styles } from 'jss';
 import { getTypographyElementHeight } from './headline-skeleton-styles';
 import { textLarge, textMedium, textSmall, textXLarge, textXSmall } from '@porsche-design-system/utilities-v2';
