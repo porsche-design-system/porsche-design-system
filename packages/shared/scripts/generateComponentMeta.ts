@@ -7,6 +7,13 @@ import { TAG_NAMES, TAG_NAMES_WITH_SKELETON, TagName } from '../src/lib/tagNames
 const glue = '\n\n';
 // TODO: typing as component property string
 type SkeletonRelevantProps = { propName: string; shouldAddValueToClassName: boolean }[];
+
+/*
+ * this array includes all properties that are relevant for the skeleton sizes,
+ * it is used to add classes based on set properties in angular and react,
+ * so that our skeleton style selectors can work and adjust
+ * e.g. color based on the pds-skeleton--theme-dark class
+ */
 const SKELETON_RELEVANT_PROPS: SkeletonRelevantProps = [
   { propName: 'compact', shouldAddValueToClassName: false },
   { propName: 'description', shouldAddValueToClassName: false },
