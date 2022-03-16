@@ -3,7 +3,7 @@ import { getComponentMeta } from '@porsche-design-system/shared';
 import { camelCase, paramCase, pascalCase } from 'change-case';
 import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
-import { PDS_SKELETON_CLASS_PREFIX } from '../../src/styles/skeletons';
+import { PDS_SKELETON_CLASS_PREFIX } from '@porsche-design-system/shared';
 
 export class ReactWrapperGenerator extends AbstractWrapperGenerator {
   protected packageDir = 'components-react';
