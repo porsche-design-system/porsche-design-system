@@ -5,6 +5,13 @@ import { font, fontWeight } from '../src/jss/font/font';
 import { mediaQueryMin, mediaQueryMinMax, breakpoint } from '../src/jss/media-query';
 import { pascalCase } from 'change-case';
 
+/**
+ * This script is quite confusing. What happens is:
+ * 1. build barreled objects for `title`, `headline` and `text` with media query functions based on central fontSize definitions
+ * 2. process these objects into strings so that we can write them into files later
+ * 3. during processing keys and values like media queries, fontFamily and fontWeight are made references again that need to be imported
+ * 4. write each child object into a separate file and combine them in the barreled object of the initial structure for a nice dependency tree
+ */
 const buildTypography = (): void => {
   const { family, weight, size } = font;
   const fontSize: { [key: number]: FontSizeLineHeight } = {
