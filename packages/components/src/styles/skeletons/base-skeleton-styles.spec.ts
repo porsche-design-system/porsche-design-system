@@ -12,7 +12,7 @@ import { TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
 import { TagName } from '@porsche-design-system/shared';
 
 describe('getSkeletonElementHeight()', () => {
-  it.each([
+  it.each<[number, boolean, boolean, string]>([
     [48, true, true, '6.25rem'],
     [48, true, false, '4.75rem'],
     [48, false, true, '4.5rem'],
@@ -32,7 +32,7 @@ describe('getAfterMinHeight()', () => {
 });
 
 describe('getElementBackgroundGradient()', () => {
-  it.each([
+  it.each<[number, number, boolean, string]>([
     [
       36,
       4,
