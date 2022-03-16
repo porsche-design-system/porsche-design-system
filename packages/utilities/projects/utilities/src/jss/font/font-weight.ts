@@ -1,4 +1,4 @@
-import type { FontWeight } from './shared';
+import type { FontWeight } from './font-shared';
 
 export const fontWeight: { [key in FontWeight]: number } = {
   thin: 100,

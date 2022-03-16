@@ -1,4 +1,4 @@
-import type { ColorTheme } from './shared';
+import type { ColorTheme } from './color-shared';
 
 export const themeLight: ColorTheme = {
   brand: '#d5001c',

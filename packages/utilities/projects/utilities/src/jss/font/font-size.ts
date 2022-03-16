@@ -1,4 +1,4 @@
-import type { FontSize, FontSizeLineHeight } from './shared';
+import type { FontSize, FontSizeLineHeight } from './font-shared';
 
 export const fontSize: { [key in FontSize]: FontSizeLineHeight } = {
   xSmall: {

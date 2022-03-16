@@ -1,4 +1,4 @@
-import type { ColorTheme } from './shared';
+import type { ColorTheme } from './color-shared';
 
 export const themeDark: ColorTheme = {
   brand: '#d5001c',

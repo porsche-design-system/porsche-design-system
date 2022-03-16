@@ -1,4 +1,4 @@
-import type { FontSize, FontSizeLineHeight, FontWeight } from './shared';
+import type { FontSize, FontSizeLineHeight, FontWeight } from './font-shared';
 import { fontFamily } from './font-family';
 import { fontSize } from './font-size';
 import { fontWeight } from './font-weight';
