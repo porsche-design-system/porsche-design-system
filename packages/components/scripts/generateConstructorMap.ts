@@ -1,9 +1,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
+import type { TagName } from '@porsche-design-system/shared';
 import { TAG_NAMES } from '@porsche-design-system/shared';
 import { pascalCase } from 'change-case';
-import { TagName } from '@porsche-design-system/shared-src/src';
 
 const generateConstructorMap = (): void => {
   const sourceDirectory = path.resolve('./src/components');

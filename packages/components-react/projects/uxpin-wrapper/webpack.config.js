@@ -19,7 +19,12 @@ module.exports = {
         loader: 'babel-loader',
         options: {
           presets: [
-            '@babel/preset-env',
+            [
+              '@babel/preset-env',
+              {
+                targets: 'last 2 versions', // solution for local `yarn start` where optional chaining `.?` otherwise fails
+              },
+            ],
             [
               '@babel/preset-react',
               {

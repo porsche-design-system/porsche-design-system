@@ -1,10 +1,17 @@
-import type { FontSizeLineHeight } from '../src/jss/font';
+import type { FontSizeLineHeight } from '../src/jss/font/font-shared';
 import * as fs from 'fs';
 import * as path from 'path';
-import { font, fontWeight } from '../src/jss/font';
+import { font, fontWeight } from '../src/jss/font/font';
 import { mediaQueryMin, mediaQueryMinMax, breakpoint } from '../src/jss/media-query';
 import { pascalCase } from 'change-case';
 
+/**
+ * This script is quite confusing. What happens is:
+ * 1. build barreled objects for `title`, `headline` and `text` with media query functions based on central fontSize definitions
+ * 2. process these objects into strings so that we can write them into files later
+ * 3. during processing keys and values like media queries, fontFamily and fontWeight are made references again that need to be imported
+ * 4. write each child object into a separate file and combine them in the barreled object of the initial structure for a nice dependency tree
+ */
 const buildTypography = (): void => {
   const { family, weight, size } = font;
   const fontSize: { [key: number]: FontSizeLineHeight } = {
@@ -123,34 +130,63 @@ const buildTypography = (): void => {
       .replace(/"([a-zA-Z]+)":/g, '$1:') // remove quotes around keys that don't need it
       .replace(/"/g, "'"); // replace quotes
 
-  const objectToConst = (obj: object, constName: string): string =>
-    Object.entries(obj)
-      .map(([key, value]) => `export const ${constName + pascalCase(key)} = ${formatValues(value)};`)
-      .concat(
-        `export const ${constName} = {
+  const objectToConstArr = (obj: object, constName: string): { constName: string; content: string }[] => {
+    return Object.entries(obj)
+      .map(([key, value]) => ({
+        constName: constName + pascalCase(key),
+        content: `export const ${constName + pascalCase(key)} = ${formatValues(value)};`,
+      }))
+      .concat({
+        constName,
+        content: `export const ${constName} = {
   ${Object.keys(obj)
     .map((key) => `${key}: ${constName + pascalCase(key)}`)
     .join(',\n  ')}
-};`
-      )
-      .join('\n\n');
+};`,
+      });
+  };
 
-  const imports = [
-    "import { fontFamily, fontWeight } from './font';",
-    "import { mediaQueryMin, mediaQueryMinMax } from './media-query';",
-  ].join('\n');
-  const titles = objectToConst(title, 'title');
-  const headlines = objectToConst(headline, 'headline');
-  const texts = objectToConst(text, 'text');
-
-  const content = [imports, titles, headlines, texts].join('\n\n');
-
-  const targetDirectory = path.normalize('./src/jss');
-  const targetFilename = 'typography.ts';
-  const targetPath = path.resolve(targetDirectory, targetFilename);
-
+  const targetDirectory = path.normalize('./src/jss/typography/lib');
   fs.mkdirSync(path.resolve(targetDirectory), { recursive: true });
-  fs.writeFileSync(targetPath, content);
+
+  const comment = '/* Auto Generated File */';
+  const fontImport = "import { fontFamily, fontWeight } from '../../font/font';";
+  const mediaQueryImport = "import { mediaQueryMin, mediaQueryMinMax } from '../../media-query';";
+
+  const inputs: { fileName: string; imports: string[]; contents: object }[] = [
+    { fileName: 'title', imports: [fontImport, mediaQueryImport], contents: title },
+    { fileName: 'headline', imports: [fontImport, mediaQueryImport], contents: headline },
+    { fileName: 'text', imports: [fontImport], contents: text },
+  ];
+
+  inputs
+    .map(({ fileName, imports, contents }) => {
+      const contentObjects = objectToConstArr(contents, fileName);
+      const childImports = contentObjects.slice(0, -1).map(({ constName }) => constName);
+
+      return contentObjects.map(({ constName, content }) => ({
+        fileName: constName,
+        content: [
+          [
+            comment,
+            constName === fileName
+              ? childImports.map((childImport) => `import { ${childImport} } from './${childImport}';`)
+              : imports,
+          ]
+            .flat()
+            .join('\n'),
+          content,
+          ...(constName === fileName ? [`export { ${childImports.join(', ')} };\n`] : []),
+        ].join('\n\n'),
+      }));
+    })
+    .flat()
+    .forEach(({ fileName, content }) => {
+      const targetFilename = `${fileName}.ts`;
+      const targetPath = path.resolve(targetDirectory, targetFilename);
+
+      fs.writeFileSync(targetPath, content);
+    });
 };
 
 buildTypography();
