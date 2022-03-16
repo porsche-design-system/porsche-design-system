@@ -1,9 +1,8 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { getComponentMeta } from '@porsche-design-system/shared';
-import { camelCase, paramCase, pascalCase } from 'change-case';
-import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
-import type { ExtendedProp } from './DataStructureBuilder';
 import { PDS_SKELETON_CLASS_PREFIX } from '@porsche-design-system/shared';
+import { camelCase, paramCase, pascalCase } from 'change-case';
+import { AbstractWrapperGenerator, SkeletonProps } from './AbstractWrapperGenerator';
+import type { ExtendedProp } from './DataStructureBuilder';
 
 export class ReactWrapperGenerator extends AbstractWrapperGenerator {
   protected packageDir = 'components-react';
@@ -12,13 +11,13 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     return `${component.replace('p-', '')}.wrapper${withOutExtension ? '' : '.tsx'}`;
   }
 
-  public hasSkeleton(component: TagName): boolean {
-    return getComponentMeta(component).hasSkeleton;
-  }
-
-  public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
+  public generateImports(
+    component: TagName,
+    extendedProps: ExtendedProp[],
+    nonPrimitiveTypes: string[],
+    hasSkeleton?: boolean
+  ): string {
     const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
-    const hasSkeleton = this.hasSkeleton(component);
 
     const reactImports = [
       'ForwardedRef',
@@ -55,12 +54,12 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     )}${genericType} = HTMLAttributes<{}> & ${rawComponentInterface};`;
   }
 
-  public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
+  public generateComponent(component: TagName, extendedProps: ExtendedProp[], skeletonProps: SkeletonProps): string {
     const hasGeneric = this.inputParser.hasGeneric(component);
     const propsToDestructure = extendedProps;
     const propsToEventListener = extendedProps.filter(({ isEvent }) => isEvent);
     const propsToSync = extendedProps.filter(({ isEvent }) => !isEvent);
-    const hasSkeleton = this.hasSkeleton(component);
+    const hasSkeleton = !!skeletonProps.length;
 
     const wrapperPropsArr: string[] = [
       ...propsToDestructure.map(({ key, defaultValue, isEvent }) =>
@@ -105,17 +104,13 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
           ];
     const componentEffects = propsToSync.length ? componentEffectsArr.join('\n    ') : '';
 
-    let skeletonClassNames: string = '';
-    if (getComponentMeta(component).hasSkeleton) {
-      const skeletonProps = getComponentMeta(component).skeletonProps;
-      skeletonClassNames = skeletonProps
-        .map(({ propName, shouldAddValueToClassName }, index) => {
-          return `\${${propName} ? \`${PDS_SKELETON_CLASS_PREFIX}${paramCase(propName)}${
-            shouldAddValueToClassName ? `-\${JSON.stringify(${propName}).replace(/"/g, '')}` : ''
-          }${index < skeletonProps.length - 1 ? ' ' : ''}\` : ''}`;
-        })
-        .join('');
-    }
+    const skeletonClassNames = skeletonProps
+      .map(({ propName, shouldAddValueToClassName }, index) => {
+        return `\${${propName} ? \`${PDS_SKELETON_CLASS_PREFIX}${paramCase(propName)}${
+          shouldAddValueToClassName ? `-\${JSON.stringify(${propName}).replace(/"/g, '')}` : ''
+        }${index < skeletonProps.length - 1 ? ' ' : ''}\` : ''}`;
+      })
+      .join('');
 
     const mergedSkeletonClasses: string = hasSkeleton
       ? `\`\${usesSkeleton ? \`\${className ? className + ' ' : ''}${

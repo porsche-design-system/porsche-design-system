@@ -1,9 +1,8 @@
-import type { TagName } from '@porsche-design-system/shared';
-import { getComponentMeta } from '@porsche-design-system/shared';
-import { camelCase, paramCase, pascalCase } from 'change-case';
-import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
-import type { ExtendedProp } from './DataStructureBuilder';
-import { PDS_SKELETON_CLASS_PREFIX } from '@porsche-design-system/shared';
+import type {TagName} from '@porsche-design-system/shared';
+import {PDS_SKELETON_CLASS_PREFIX} from '@porsche-design-system/shared';
+import {camelCase, paramCase, pascalCase} from 'change-case';
+import {AbstractWrapperGenerator, SkeletonProps} from './AbstractWrapperGenerator';
+import type {ExtendedProp} from './DataStructureBuilder';
 
 export class AngularWrapperGenerator extends AbstractWrapperGenerator {
   protected packageDir = 'components-angular';
@@ -16,13 +15,14 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     return `${component.replace('p-', '')}.wrapper${withOutExtension ? '' : '.ts'}`;
   }
 
-  public hasSkeleton(component: TagName): boolean {
-    return getComponentMeta(component).hasSkeleton;
-  }
-
-  public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
+  public generateImports(
+    component: TagName,
+    extendedProps: ExtendedProp[],
+    nonPrimitiveTypes: string[],
+    hasSkeleton: boolean
+  ): string {
     const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
-    const hasSkeleton = this.hasSkeleton(component);
+
     const angularImports = [
       'ChangeDetectionStrategy',
       'ChangeDetectorRef',
@@ -53,7 +53,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     return '';
   }
 
-  public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
+  public generateComponent(component: TagName, extendedProps: ExtendedProp[], skeletonProps: SkeletonProps): string {
     const inputProps = extendedProps.filter(({ isEvent }) => !isEvent);
     const outputProps = extendedProps
       .filter(({ isEvent }) => isEvent)
@@ -85,10 +85,9 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
       ...outputProps.map((x) => `${x.key}!: EventEmitter<CustomEvent<${x.rawValueType.match(/<(.*?)>/)?.[1]}>>;`),
     ].join('\n  ');
 
-    const hasSkeleton = this.hasSkeleton(component);
+    const hasSkeleton = !!skeletonProps.length;
 
-    const skeletonPropertyClassBindings = getComponentMeta(component)
-      .skeletonProps.map(({ propName, shouldAddValueToClassName }) => {
+    const skeletonPropertyClassBindings = skeletonProps.map(({ propName, shouldAddValueToClassName }) => {
         return `this.${propName} && \`${PDS_SKELETON_CLASS_PREFIX}${paramCase(propName)}${
           shouldAddValueToClassName ? `-\${JSON.stringify(this.${propName}).replace(/"/g, '')}` : ''
         }\``;
