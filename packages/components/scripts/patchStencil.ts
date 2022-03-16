@@ -14,7 +14,7 @@ const PDS_PATCH_EMD = '// PDS PATCH END';
 const patchStencil = (): void => {
   const tagNamesToAddSlotTo = Object.entries(componentMeta).reduce((prev, [tagName, value]) => {
     return value.shouldPatchSlot ? [...prev, tagName] : prev;
-  }, []);
+  }, [] as string[]);
   const tagNamesToAddSlotToAsString = `[${tagNamesToAddSlotTo.map((x) => `'${x}'`).join(', ')}]`;
 
   const stencilIndexFilePath = path.resolve(require.resolve('@stencil/core'), '../../client', 'index.js');

@@ -3,7 +3,7 @@ import { getComponentMeta } from '@porsche-design-system/shared';
 import { camelCase, paramCase, pascalCase } from 'change-case';
 import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
-import { PDS_SKELETON_CLASS_PREFIX } from '../../src/styles/skeletons';
+import { PDS_SKELETON_CLASS_PREFIX } from '@porsche-design-system/shared';
 
 export class ReactWrapperGenerator extends AbstractWrapperGenerator {
   protected packageDir = 'components-react';
@@ -109,9 +109,9 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     if (getComponentMeta(component).hasSkeleton) {
       const skeletonProps = getComponentMeta(component).skeletonProps;
       skeletonClassNames = skeletonProps
-        .map(({ propName, shouldStringifyValue }, index) => {
+        .map(({ propName, shouldAddValueToClassName }, index) => {
           return `\${${propName} ? \`${PDS_SKELETON_CLASS_PREFIX}${paramCase(propName)}${
-            shouldStringifyValue ? `-\${JSON.stringify(${propName}).replace(/"/g, '')}` : ''
+            shouldAddValueToClassName ? `-\${JSON.stringify(${propName}).replace(/"/g, '')}` : ''
           }${index < skeletonProps.length - 1 ? ' ' : ''}\` : ''}`;
         })
         .join('');

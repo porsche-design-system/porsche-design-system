@@ -6,23 +6,35 @@ import { TAG_NAMES, TAG_NAMES_WITH_SKELETON, TagName } from '../src/lib/tagNames
 
 const glue = '\n\n';
 // TODO: typing as component property string
-type SkeletonRelevantProps = { propName: string; shouldStringifyValue: boolean }[];
+type SkeletonRelevantProps = { propName: string; shouldAddValueToClassName: boolean }[];
+
+/*
+ * This array includes all properties that are relevant for the skeleton sizes,
+ * it is used to add classes based on set properties in angular and react,
+ * so that our skeleton style selectors can work and adjust
+ * e.g. color based on the pds-skeleton--theme-dark class.
+ */
 const SKELETON_RELEVANT_PROPS: SkeletonRelevantProps = [
-  { propName: 'compact', shouldStringifyValue: false },
-  { propName: 'description', shouldStringifyValue: false },
-  { propName: 'hideLabel', shouldStringifyValue: false },
-  { propName: 'itemsPerPage ', shouldStringifyValue: true },
-  { propName: 'label', shouldStringifyValue: false },
-  { propName: 'labelSize', shouldStringifyValue: false },
-  { propName: 'open', shouldStringifyValue: false },
-  { propName: 'size', shouldStringifyValue: true },
-  { propName: 'stretch', shouldStringifyValue: false },
-  { propName: 'theme', shouldStringifyValue: true },
-  { propName: 'totalItemsCount', shouldStringifyValue: false },
-  { propName: 'variant', shouldStringifyValue: true },
+  { propName: 'compact', shouldAddValueToClassName: false },
+  { propName: 'description', shouldAddValueToClassName: false },
+  { propName: 'hideLabel', shouldAddValueToClassName: false },
+  { propName: 'itemsPerPage ', shouldAddValueToClassName: true },
+  { propName: 'label', shouldAddValueToClassName: false },
+  { propName: 'labelSize', shouldAddValueToClassName: false },
+  { propName: 'open', shouldAddValueToClassName: false },
+  { propName: 'size', shouldAddValueToClassName: true },
+  { propName: 'stretch', shouldAddValueToClassName: false },
+  { propName: 'theme', shouldAddValueToClassName: true },
+  { propName: 'totalItemsCount', shouldAddValueToClassName: false },
+  { propName: 'variant', shouldAddValueToClassName: true },
 ];
 
-const tagNamesToAddSlotTo: TagName[] = ['p-fieldset-wrapper', 'p-text-list', 'p-text-list-item'];
+/*
+ * An array of all tagNames that should be used when running patchStencil.
+ * These components will get a slot appended to, when Stencil attaches the shadowDOM
+ * and get this slot removed when hydration is finished, to ensure skeleton visibility of child components inside them.
+ */
+const TAG_NAMES_TO_ADD_SLOT_TO: TagName[] = ['p-fieldset-wrapper', 'p-text-list', 'p-text-list-item'];
 
 const generateComponentMeta = (): void => {
   // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
@@ -43,7 +55,7 @@ const generateComponentMeta = (): void => {
   hasSlottedCss: boolean;
   hasSkeleton: boolean;
   shouldPatchSlot: boolean;
-  skeletonProps: { propName: string; shouldStringifyValue: boolean }[];
+  skeletonProps: { propName: string; shouldAddValueToClassName: boolean }[];
   styling: 'jss' | 'scss' | 'hybrid';
 };`,
     `type ComponentsMeta = { [key in TagName]: ComponentMeta };`,
@@ -60,7 +72,7 @@ const generateComponentMeta = (): void => {
     hasSlottedCss: boolean;
     hasSkeleton: boolean;
     shouldPatchSlot: boolean;
-    skeletonProps: { propName: string; shouldStringifyValue: boolean }[];
+    skeletonProps: { propName: string; shouldAddValueToClassName: boolean }[];
     styling: 'jss' | 'scss' | 'hybrid';
   };
 
@@ -85,7 +97,7 @@ const generateComponentMeta = (): void => {
     const isThemeable = source.includes('public theme?: Theme');
     const hasSlottedCss = source.includes('attachSlottedCss');
     const hasSkeleton = TAG_NAMES_WITH_SKELETON.includes(tagName);
-    const shouldPatchSlot = tagNamesToAddSlotTo.includes(tagName);
+    const shouldPatchSlot = TAG_NAMES_TO_ADD_SLOT_TO.includes(tagName);
     const usesScss = source.includes('styleUrl:');
     const usesJss = source.includes('attachComponentCss');
     const styling = usesScss && usesJss ? 'hybrid' : usesJss ? 'jss' : 'scss';
@@ -124,10 +136,10 @@ const generateComponentMeta = (): void => {
     const skeletonProps: ComponentMeta['skeletonProps'] = [];
     if (hasSkeleton) {
       // extract all matching skeleton relevant props into an array
-      SKELETON_RELEVANT_PROPS.forEach(({ propName, shouldStringifyValue }) => {
+      SKELETON_RELEVANT_PROPS.forEach(({ propName, shouldAddValueToClassName }) => {
         const [match] = new RegExp(`@Prop\\(\\) public ${propName}\\?: .+;`).exec(source) ?? [];
         if (match) {
-          skeletonProps.push({ propName, shouldStringifyValue });
+          skeletonProps.push({ propName, shouldAddValueToClassName });
         }
       });
     }
