@@ -65,28 +65,28 @@ legend {
   font-size: 1rem;
   line-height: 1.5;
 }
-@media (min-width: 760px) and (max-width: 999px) {
+@media(min-width:760px) and (max-width:999px) {
   legend {
     font-size: 1.125rem;
     line-height: 1.5555555556;
   }
 }
 
-@media (min-width: 1000px) and (max-width: 1299px) {
+@media(min-width:1000px) and (max-width:1299px) {
   legend {
     font-size: 1.25rem;
     line-height: 1.4;
   }
 }
 
-@media (min-width: 1300px) and (max-width: 1759px) {
+@media(min-width:1300px) and (max-width:1759px) {
   legend {
     font-size: 1.375rem;
     line-height: 1.4545454545;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   legend {
     font-size: 1.5rem;
     line-height: 1.5;
