@@ -47,10 +47,9 @@ const patchStencil = (): void => {
     );
 
     if (getScriptPatchMarkerCount(patchedStencilIndexFile) !== 1) {
-      process.stderr.write(
+      throw new Error(
         `Failed patching skeleton slot for ${tagNamesToAddSlotToAsString} into stencil. Position for addSkeletonSlotScript not found.\n`
       );
-      return;
     }
     // remove skeleton slot script
     patchedStencilIndexFile = patchedStencilIndexFile.replace(
@@ -63,12 +62,12 @@ const patchStencil = (): void => {
       fs.writeFileSync(stencilIndexFilePath, patchedStencilIndexFile);
       process.stdout.write(`Successfully patched skeleton slot for ${tagNamesToAddSlotToAsString} into stencil.\n`);
     } else if (getScriptPatchMarkerCount(patchedStencilIndexFile) === 1) {
-      process.stderr.write(
+      throw new Error(
         `Failed patching skeleton slot for ${tagNamesToAddSlotToAsString} into stencil. Position for removeSkeletonSlotScript not found.\n`
       );
     } else {
       // something went wrong, not writing to file
-      process.stderr.write(
+      throw new Error(
         `Failed patching skeleton slot for ${tagNamesToAddSlotToAsString} into stencil. Not all markers were found.\n`
       );
     }
