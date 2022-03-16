@@ -62,9 +62,9 @@ describe('syncRefs', () => {
   beforeEach(() => {
     // mocked usePrefix so we don't have to use PorscheDesignSystemProvider
     jest.spyOn(hooks, 'usePrefix').mockImplementation((tagName) => tagName);
-    jest.spyOn(hooks, 'useSkeletons').mockImplementation(() => false);
   });
   it('should sync refs if ref is set directly', () => {
+    jest.spyOn(hooks, 'useSkeletons').mockImplementation(() => false);
     const { getByTestId } = render(<Sample />);
     const button = getByTestId('button');
 
@@ -76,6 +76,7 @@ describe('syncRefs', () => {
   });
 
   it('should sync refs if ref is set as callback', () => {
+    jest.spyOn(hooks, 'useSkeletons').mockImplementation(() => false);
     const { getByTestId } = render(<Sample isRefCallback />);
     const button = getByTestId('button');
 
@@ -85,11 +86,8 @@ describe('syncRefs', () => {
 
     expect(button.className).toBe(CLASS_NAME);
   });
-});
 
-describe('useSkeletons hook', () => {
-  it('should use hook and set skeleton class', () => {
-    jest.spyOn(hooks, 'usePrefix').mockImplementation((tagName) => tagName);
+  it('should use useSkeletons hook and set skeleton classes', () => {
     jest.spyOn(hooks, 'useSkeletons').mockImplementation(() => true);
     const { getByTestId } = render(<Sample />);
     const button = getByTestId('button');
@@ -97,19 +95,6 @@ describe('useSkeletons hook', () => {
     expect(button.className).toBe(
       `${INITIAL_CLASS_NAME} ${PDS_SKELETON_CLASS_PREFIX}theme-light ${PDS_SKELETON_CLASS_PREFIX}variant-secondary`
     );
-
-    userEvent.click(button);
-
-    expect(button.className).toBe(CLASS_NAME);
-  });
-
-  it('should set skeleton class', () => {
-    jest.spyOn(hooks, 'usePrefix').mockImplementation((tagName) => tagName);
-    jest.spyOn(hooks, 'useSkeletons').mockImplementation(() => undefined);
-    const { getByTestId } = render(<Sample isRefCallback />);
-    const button = getByTestId('button');
-
-    expect(button.className).toBe(INITIAL_CLASS_NAME);
 
     userEvent.click(button);
 
