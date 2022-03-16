@@ -276,7 +276,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
         let useStateOrEffect = '';
         if (isSkeleton) {
           useStateOrEffect = `useEffect(() => {
-  ${skeletonScript}
+  ${script}
 }, []);`;
         } else if (usesSetAllReady) {
           useStateOrEffect = `const [allReady, setAllReady] = useState(false);
