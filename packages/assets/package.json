@@ -35,10 +35,10 @@
   "scripts": {
     "start": "yarn build && node ./bin/serve-cdn.js",
     "build": "yarn clean:build && yarn build:bin && yarn build:manifest && yarn build:copyAssets && yarn build:preparePackage",
-    "build:bin": "tsc --build 'tsconfig.node.json' && chmod +x bin/serve-cdn.js",
-    "build:copyAssets": "COMPONENTS_ONLY=${COMPONENTS_ONLY:-0} ts-node --project 'tsconfig.node.json' 'scripts/copyAssets.ts'",
+    "build:bin": "tsc --build tsconfig.node.json && chmod +x bin/serve-cdn.js",
+    "build:copyAssets": "COMPONENTS_ONLY=${COMPONENTS_ONLY:-0} ts-node --project tsconfig.node.json scripts/copyAssets.ts",
     "build:manifest": "rollup -c rollup.config.js",
-    "build:preparePackage": "ts-node --project 'tsconfig.node.json' 'scripts/preparePackage.ts'",
+    "build:preparePackage": "ts-node --project tsconfig.node.json scripts/preparePackage.ts",
     "buildCopyComponentsOnly": "rm -rf ./cdn/components && COMPONENTS_ONLY=1 yarn build:copyAssets",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
@@ -57,7 +57,7 @@
     "@rollup/plugin-typescript": "^8.3.1",
     "@types/http-server": "^0.12.1",
     "http-server": "^14.1.0",
-    "rollup": "^2.70.0",
+    "rollup": "^2.70.1",
     "ts-node": "^10.7.0",
     "typescript": "~4.6.2"
   },

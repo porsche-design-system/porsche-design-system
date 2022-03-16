@@ -2,8 +2,10 @@ import {
   defaultViewports,
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
+  openPopoversAndHighlightSpacer,
   vrtTest,
 } from '@porsche-design-system/shared/testing';
+import type {GetMarkup} from '../helpers';
 import {
   forceFocusHoverState,
   forceFocusState,
@@ -11,9 +13,7 @@ import {
   getBodyMarkup,
   setContentWithDesignSystem,
 } from '../helpers';
-import type { GetMarkup } from '../helpers';
-import { openPopoversAndHighlightSpacer } from '@porsche-design-system/shared/testing';
-import { PopoverDirection } from '@porsche-design-system/components/src/components/feedback/popover/popover-utils';
+import {PopoverDirection} from '@porsche-design-system/components/src/components/feedback/popover/popover-utils';
 
 it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(
