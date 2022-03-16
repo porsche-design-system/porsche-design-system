@@ -1,3 +1,4 @@
+// @ts-ignore
 import madge from 'madge';
 
 it('should have no regression for dependency tree', async () => {
