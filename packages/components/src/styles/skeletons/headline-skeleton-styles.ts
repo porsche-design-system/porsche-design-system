@@ -16,7 +16,7 @@ import type { JssStyle, Styles } from 'jss';
 import { headline1, headline2, headline3, headline4, headline5, titleLarge } from '@porsche-design-system/utilities-v2';
 import { VariantType } from '../../components/basic/typography/headline/headline-utils';
 
-type HeadlineType = typeof headline1;
+export type HeadlineType = typeof headline1;
 
 export const getTypographyElementHeight = (typography: HeadlineType | TextType): number => {
   const fontSizeInPx = getFontSizeInPx(typography.fontSize);
