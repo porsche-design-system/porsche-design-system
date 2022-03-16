@@ -9,6 +9,7 @@
     "moduleResolution": "node"
   },
   "include": ["./src"],
+  "exclude": ["**/*.spec.ts"],
   "ts-node": {
     "transpileOnly": true,
     "compilerOptions": {
