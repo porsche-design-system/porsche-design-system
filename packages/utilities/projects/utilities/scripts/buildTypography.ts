@@ -1,4 +1,4 @@
-import type { FontSizeLineHeight } from '../src/jss/font/shared';
+import type { FontSizeLineHeight } from '../src/jss/font/font-shared';
 import * as fs from 'fs';
 import * as path from 'path';
 import { font, fontWeight } from '../src/jss/font/font';

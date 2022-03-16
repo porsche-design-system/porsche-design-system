@@ -1,4 +1,4 @@
-import type { ColorTheme } from './shared';
+import type { ColorTheme } from './color-shared';
 import { themeDark } from './theme-dark';
 
 export const themeDarkElectric: ColorTheme = {
