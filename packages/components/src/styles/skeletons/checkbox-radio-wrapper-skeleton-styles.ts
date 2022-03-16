@@ -6,9 +6,9 @@ import {
   getBaseSkeletonJssStyle,
   getSkeletonPropertyNames,
   getThemedPseudoJssStyle,
-  PDS_SKELETON_CLASS_PREFIX,
 } from './base-skeleton-styles';
 import { Styles } from 'jss';
+import { PDS_SKELETON_CLASS_PREFIX } from '@porsche-design-system/shared';
 
 export const getCheckboxRadioWrapperSkeletonStyles = (): Styles<'@global'> => {
   const checkboxRadioElementHeight = ELEMENT_SKELETON_DIMENSION / 2;

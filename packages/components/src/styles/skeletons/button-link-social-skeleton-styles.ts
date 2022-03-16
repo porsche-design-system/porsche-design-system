@@ -5,10 +5,10 @@ import {
   getBaseSkeletonJssStyle,
   getSkeletonPropertyNames,
   getThemedPseudoJssStyle,
-  PDS_SKELETON_CLASS_PREFIX,
 } from './';
 import { pxToRemWithUnit } from '../common-styles';
 import type { Styles } from 'jss';
+import { PDS_SKELETON_CLASS_PREFIX } from '@porsche-design-system/shared';
 
 export const getButtonLinkSocialSkeletonStyles = (): Styles<'@global'> => {
   const skeletonPropertyNames = getSkeletonPropertyNames('p-button');

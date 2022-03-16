@@ -10,9 +10,9 @@ import {
   LABEL_HEIGHT,
   LABEL_HEIGHT_SPACING,
   LABEL_HEIGHT_WITH_DESCRIPTION,
-  PDS_SKELETON_CLASS_PREFIX,
   TEXTAREA_SKELETON_HEIGHT,
 } from './';
+import { PDS_SKELETON_CLASS_PREFIX } from '@porsche-design-system/shared';
 import { pxToRemWithUnit } from '../common-styles';
 import { Styles } from 'jss';
 
