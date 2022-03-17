@@ -12,7 +12,7 @@ export const OverviewPage = (): JSX.Element => {
 
   const style = `
     /* high-level test that parent color doesn't affect components */
-    body {
+    .root {
       color: deeppink;
       /*font-family: serif;*/
       /*font-style: italic;*/
@@ -56,7 +56,7 @@ export const OverviewPage = (): JSX.Element => {
     <>
       <style children={style} />
 
-      <div style={{ display: 'flex' }}>
+      <div className="root" style={{ display: 'flex' }}>
         <div style={{ flex: 1 }}>
           <div className="playground light" title="should render default headline">
             <PHeadline>Default Components</PHeadline>

@@ -7,7 +7,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
   styles: [
     `
       /* high-level test that parent color doesn't affect components */
-      body {
+      .root {
         color: deeppink;
         /*font-family: serif;*/
         /*font-style: italic;*/
@@ -48,7 +48,7 @@ import { componentsReady } from '@porsche-design-system/components-angular';
     `,
   ],
   template: `
-    <div style="display: flex">
+    <div class="root" style="display: flex">
       <div style="flex: 1">
         <div class="playground light" title="should render default headline">
           <p-headline>Default Components</p-headline>
