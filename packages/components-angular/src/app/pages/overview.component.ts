@@ -24,21 +24,21 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         padding: 4px 2vw;
         text-align: center;
         color: white;
-        background-color: lightskyblue;
+        background: lightskyblue;
       }
     
       p-flex-item:nth-child(1n) > p,
       my-prefix-p-flex-item:nth-child(1n) > p,
       p-grid-item:nth-child(1n) > p,
       my-prefix-p-grid-item:nth-child(1n) > p {
-        background-color: skyblue;
+        background: skyblue;
       }
     
       p-flex-item:nth-child(2n) > p,
       my-prefix-p-flex-item:nth-child(2n) > p,
       p-grid-item:nth-child(2n) > p,
       my-prefix-p-grid-item:nth-child(2n) > p {
-        background-color: deepskyblue;
+        background: deepskyblue;
       }
     
       p-banner,
