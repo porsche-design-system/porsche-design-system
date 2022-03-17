@@ -117,14 +117,14 @@ const buildTypography = (): void => {
       .replace(/("fontFamily": .*)/, 'fontFamily,') // use reference
       .replace(/"fontWeight": (\d*)/, (match, group) => `fontWeight: fontWeight.${flippedFontWeightMap[group]}`) // use reference
       .replace(
-        /"@media\s\(min-width:\s(\d*)px\)\sand\s\(max-width:\s(\d*)px\)"/g,
+        /"@media\(min-width:(\d*)px\)\sand\s\(max-width:(\d*)px\)"/g,
         (match, minBreakpoint, maxBreakpoint) =>
           `[mediaQueryMinMax('${flippedBreakpointMap[minBreakpoint]}', '${
             flippedBreakpointMap[parseInt(maxBreakpoint, 10) + 1]
           }')]`
       ) // use style helper + reference
       .replace(
-        /"@media\s\(min-width:\s(\d*)px\)"/,
+        /"@media\(min-width:(\d*)px\)"/,
         (match, minBreakpoint) => `[mediaQueryMin('${flippedBreakpointMap[minBreakpoint]}')]`
       ) // use style helper + reference
       .replace(/"([a-zA-Z]+)":/g, '$1:') // remove quotes around keys that don't need it
@@ -151,10 +151,11 @@ const buildTypography = (): void => {
 
   const comment = '/* Auto Generated File */';
   const fontImport = "import { fontFamily, fontWeight } from '../../font/font';";
+  const mediaQueryImport = "import { mediaQueryMin, mediaQueryMinMax } from '../../media-query';";
 
   const inputs: { fileName: string; imports: string[]; contents: object }[] = [
-    { fileName: 'title', imports: [fontImport], contents: title },
-    { fileName: 'headline', imports: [fontImport], contents: headline },
+    { fileName: 'title', imports: [fontImport, mediaQueryImport], contents: title },
+    { fileName: 'headline', imports: [fontImport, mediaQueryImport], contents: headline },
     { fileName: 'text', imports: [fontImport], contents: text },
   ];
 
@@ -170,7 +171,9 @@ const buildTypography = (): void => {
             comment,
             constName === fileName
               ? childImports.map((childImport) => `import { ${childImport} } from './${childImport}';`)
-              : imports,
+              : content.includes('mediaQuery')
+              ? imports
+              : imports.filter((importString) => importString !== mediaQueryImport),
           ]
             .flat()
             .join('\n'),
