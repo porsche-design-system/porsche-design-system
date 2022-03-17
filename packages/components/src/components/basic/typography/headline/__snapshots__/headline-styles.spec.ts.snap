@@ -29,10 +29,7 @@ exports[`getComponentCss() should return correct css for variant: "headline-1", 
   word-wrap: break-word;
   hyphens: auto;
   white-space: inherit;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight: 600;
-  font-size: 1.75rem;
-  line-height: 1.4285714286;
+  font: normal normal 600 1.75rem/1.4285714286 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 @media (min-width: 760px) and (max-width: 999px) {
   .root {
@@ -93,10 +90,7 @@ exports[`getComponentCss() should return correct css for variant: "headline-2", 
   word-wrap: break-word;
   hyphens: auto;
   white-space: nowrap;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight: 600;
-  font-size: 1.5rem;
-  line-height: 1.5;
+  font: normal normal 600 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -160,10 +154,7 @@ exports[`getComponentCss() should return correct css for variant: "headline-3", 
   word-wrap: break-word;
   hyphens: auto;
   white-space: nowrap;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight: 600;
-  font-size: 1.25rem;
-  line-height: 1.4;
+  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -227,10 +218,7 @@ exports[`getComponentCss() should return correct css for variant: "headline-4", 
   word-wrap: break-word;
   hyphens: auto;
   white-space: nowrap;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight: 600;
-  font-size: 1rem;
-  line-height: 1.5;
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -294,10 +282,7 @@ exports[`getComponentCss() should return correct css for variant: "headline-5", 
   word-wrap: break-word;
   hyphens: auto;
   white-space: nowrap;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight: 600;
-  font-size: 1rem;
-  line-height: 1.5;
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -366,10 +351,7 @@ exports[`getComponentCss() should return correct css for variant: "large-title",
   word-wrap: break-word;
   hyphens: auto;
   white-space: nowrap;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight: 600;
-  font-size: 2rem;
-  line-height: 1.375;
+  font: normal normal 600 2rem/1.375 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;

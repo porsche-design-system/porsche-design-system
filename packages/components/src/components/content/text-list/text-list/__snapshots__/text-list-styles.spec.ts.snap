@@ -10,10 +10,7 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
   padding: 0;
   margin: 0;
   color: #fff;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.5;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }"
 `;
 
@@ -27,10 +24,7 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
   padding: 0;
   margin: 0;
   color: #000;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.5;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }"
 `;
 

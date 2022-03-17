@@ -74,7 +74,7 @@ export const getComponentCss = (
       ...fontSize.small,
       fontWeight: fontWeight[weight],
       margin: '0 -4px',
-      ...buildResponsiveStyles(size, (s: TabSize) => ({ ...fontSize[s] })),
+      ...buildResponsiveStyles(size, (s: TabSize) => fontSize[s]),
     },
     'scroll-area': {
       position: 'relative',

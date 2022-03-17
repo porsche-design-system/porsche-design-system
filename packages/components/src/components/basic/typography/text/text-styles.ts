@@ -15,11 +15,12 @@ export const getComponentCss = (
   ellipsis: boolean,
   theme: Theme
 ): string => {
-  const getSizeJssStyle = (size: TextSize): JssStyle => {
-    return {
-      ...(size === 'inherit' ? { lineHeight: size, fontSize: size } : text[paramCaseToCamelCase(size)]),
-      fontWeight: fontWeight[weight],
-    };
+  // function is local to reuse `weight` parameter
+  // TODO: font short hand isn't really the best choice but we don't have any better alternative atm
+  const getSizeJssStyle = (textSize: TextSize): JssStyle => {
+    return textSize === 'inherit'
+      ? { lineHeight: textSize, fontSize: textSize }
+      : { font: text[paramCaseToCamelCase(textSize)].font.replace('400', fontWeight[weight]) };
   };
 
   return getCss({
