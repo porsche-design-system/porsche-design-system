@@ -35,6 +35,7 @@ exports[`getComponentCss() should return correct css for size: "inherit", weight
   -webkit-text-size-adjust: none;
   line-height: inherit;
   font-size: inherit;
+  font-weight: 700;
 }"
 `;
 
@@ -316,6 +317,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   .root {
     line-height: inherit;
     font-size: inherit;
+    font-weight: 700;
   }
 }
 
