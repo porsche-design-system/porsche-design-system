@@ -13,6 +13,16 @@ body {
   padding: 0;
 }
 
+body {
+  color: deeppink;
+  font-family: serif;
+  font-style: italic;
+  font-weight: bold;
+  /*font-size: 30px;*/
+  /*line-height: 2;*/
+  font-variant: small-caps;
+}
+
 body > select {
   position: relative;
   z-index: 999999;
