@@ -16,10 +16,8 @@ button {
   box-sizing: border-box;
   appearance: none;
   border: none;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-weight: 600;
-  font-size: 1rem;
-  line-height: 1.5;
   color: #000;
   text-decoration: none;
   text-align: left;
