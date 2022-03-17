@@ -6,14 +6,6 @@ import { componentsReady } from '@porsche-design-system/components-angular';
   selector: 'page-overview',
   styles: [
     `
-      /* high-level test that parent color doesn't affect components */
-      body {
-        color: deeppink;
-        /*font-family: serif;*/
-        /*font-style: italic;*/
-        /*font-weight: bold;*/
-      }
-    
       p-flex-item > p,
       my-prefix-p-flex-item > p,
       p-grid-item > p,
