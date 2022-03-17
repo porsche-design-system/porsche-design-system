@@ -12,6 +12,7 @@ export default (targetOptions: TargetOptions, indexHtml: string): string => {
         'p-fieldset-wrapper',
         'p-link',
         'p-link-pure',
+        'p-link-social',
         'p-radio-button-wrapper',
         'p-select-wrapper',
         'p-text',
