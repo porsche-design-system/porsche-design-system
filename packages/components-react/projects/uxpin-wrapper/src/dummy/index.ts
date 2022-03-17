@@ -4,5 +4,6 @@ export * from './DummyDiv';
 export * from './DummyLink';
 export * from './DummyRadioButton';
 export * from './DummySelect';
+export * from './DummySpan';
 export * from './DummyTextarea';
 export * from './DummyTextField';
