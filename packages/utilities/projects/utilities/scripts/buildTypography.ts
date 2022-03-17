@@ -1,9 +1,10 @@
-import type { FontSizeLineHeight } from '../src/jss/font/font-shared';
+import type { FontSizeLineHeight, FontWeight } from '../src/jss/font/font-shared';
 import * as fs from 'fs';
 import * as path from 'path';
-import { font, fontWeight } from '../src/jss/font/font';
+import { font } from '../src/jss/font/font';
 import { mediaQueryMin, mediaQueryMinMax, breakpoint } from '../src/jss/media-query';
 import { pascalCase } from 'change-case';
+import type { JssStyle } from 'jss';
 
 /**
  * This script is quite confusing. What happens is:
@@ -14,6 +15,19 @@ import { pascalCase } from 'change-case';
  */
 const buildTypography = (): void => {
   const { family, weight, size } = font;
+
+  // font-style font-variant font-weight font-size/line-height font-family
+  const fontShortHandTemplate = `normal normal fontWeight fontSize/lineHeight ${family}`;
+
+  const getFontShortHandJssStyle = ({ fontSize, lineHeight }: FontSizeLineHeight, fontWeight: FontWeight): JssStyle => {
+    const fontValue = fontShortHandTemplate
+      .replace('fontWeight', `${weight[fontWeight]}`)
+      .replace('fontSize', fontSize)
+      .replace('lineHeight', `${lineHeight}`);
+
+    return { font: fontValue };
+  };
+
   const fontSize: { [key: number]: FontSizeLineHeight } = {
     12: size.xSmall,
     16: size.small,
@@ -35,15 +49,9 @@ const buildTypography = (): void => {
     84: { fontSize: '5.25rem', lineHeight: 1.1904761905 },
   };
 
-  const fontBase = {
-    fontFamily: family,
-    fontWeight: weight.semibold,
-  };
-
   const title = {
     large: {
-      ...fontBase,
-      ...fontSize[32],
+      ...getFontShortHandJssStyle(fontSize[32], 'semibold'),
       [mediaQueryMinMax('s', 'm')]: fontSize[42],
       [mediaQueryMinMax('m', 'l')]: fontSize[52],
       [mediaQueryMinMax('l', 'xl')]: fontSize[62],
@@ -53,54 +61,44 @@ const buildTypography = (): void => {
 
   const headline = {
     '1': {
-      ...fontBase,
-      ...fontSize[28],
+      ...getFontShortHandJssStyle(fontSize[28], 'semibold'),
       [mediaQueryMinMax('s', 'm')]: fontSize[36],
       [mediaQueryMinMax('m', 'l')]: fontSize[44],
       [mediaQueryMinMax('l', 'xl')]: fontSize[52],
       [mediaQueryMin('xl')]: fontSize[60],
     },
     '2': {
-      ...fontBase,
-      ...fontSize[24],
+      ...getFontShortHandJssStyle(fontSize[24], 'semibold'),
       [mediaQueryMinMax('s', 'm')]: fontSize[30],
       [mediaQueryMinMax('m', 'l')]: fontSize[36],
       [mediaQueryMinMax('l', 'xl')]: fontSize[42],
       [mediaQueryMin('xl')]: fontSize[48],
     },
     '3': {
-      ...fontBase,
-      ...fontSize[20],
+      ...getFontShortHandJssStyle(fontSize[20], 'semibold'),
       [mediaQueryMinMax('s', 'm')]: fontSize[24],
       [mediaQueryMinMax('m', 'l')]: fontSize[28],
       [mediaQueryMinMax('l', 'xl')]: fontSize[32],
       [mediaQueryMin('xl')]: fontSize[36],
     },
     '4': {
-      ...fontBase,
-      ...fontSize[16],
+      ...getFontShortHandJssStyle(fontSize[16], 'semibold'),
       [mediaQueryMinMax('s', 'm')]: fontSize[18],
       [mediaQueryMinMax('m', 'l')]: fontSize[20],
       [mediaQueryMinMax('l', 'xl')]: fontSize[22],
       [mediaQueryMin('xl')]: fontSize[24],
     },
     '5': {
-      ...fontBase,
-      ...fontSize[16],
+      ...getFontShortHandJssStyle(fontSize[16], 'semibold'),
     },
   };
 
-  const baseText = {
-    fontFamily: font.family,
-    fontWeight: font.weight.regular,
-  };
-
   const text = {
-    xSmall: { ...baseText, ...font.size.xSmall },
-    small: { ...baseText, ...font.size.small },
-    medium: { ...baseText, ...font.size.medium },
-    large: { ...baseText, ...font.size.large },
-    xLarge: { ...baseText, ...font.size.xLarge },
+    xSmall: getFontShortHandJssStyle(font.size.xSmall, 'regular'),
+    small: getFontShortHandJssStyle(font.size.small, 'regular'),
+    medium: getFontShortHandJssStyle(font.size.medium, 'regular'),
+    large: getFontShortHandJssStyle(font.size.large, 'regular'),
+    xLarge: getFontShortHandJssStyle(font.size.xLarge, 'regular'),
   };
 
   const getFlippedMap = (map: { [key: string]: number }): { [key: number]: string } => {
@@ -109,13 +107,17 @@ const buildTypography = (): void => {
       .reduce((result, [key, value]) => ({ ...result, [key]: value }), {});
   };
 
-  const flippedFontWeightMap = getFlippedMap(fontWeight);
+  const flippedFontWeightMap = getFlippedMap(weight);
   const flippedBreakpointMap = getFlippedMap(breakpoint);
 
   const formatValues = (obj: object): string =>
     JSON.stringify(obj, null, 2)
-      .replace(/("fontFamily": .*)/, 'fontFamily,') // use reference
-      .replace(/"fontWeight": (\d*)/, (match, group) => `fontWeight: fontWeight.${flippedFontWeightMap[group]}`) // use reference
+      .replace(
+        /("font": )"(\w+) (\w+) (\w+) ([\w\/\.]+) (.+)"/,
+        (match, key, fontStyle, fontVariant, fontWeight, fontSizeLineHeight, fontFamily) => {
+          return `${key}\`\${fontStyle} \${fontVariant} \${fontWeight.${flippedFontWeightMap[fontWeight]}} ${fontSizeLineHeight} \${fontFamily}\``;
+        }
+      ) // use const references in string interpolation instead of hardcoded strings
       .replace(
         /"@media\s\(min-width:\s(\d*)px\)\sand\s\(max-width:\s(\d*)px\)"/g,
         (match, minBreakpoint, maxBreakpoint) =>
@@ -150,7 +152,7 @@ const buildTypography = (): void => {
   fs.mkdirSync(path.resolve(targetDirectory), { recursive: true });
 
   const comment = '/* Auto Generated File */';
-  const fontImport = "import { fontFamily, fontWeight } from '../../font/font';";
+  const fontImport = "import { fontFamily, fontStyle, fontVariant, fontWeight } from '../../font/font';";
   const mediaQueryImport = "import { mediaQueryMin, mediaQueryMinMax } from '../../media-query';";
 
   const inputs: { fileName: string; imports: string[]; contents: object }[] = [
