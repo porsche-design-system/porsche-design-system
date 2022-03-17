@@ -87,6 +87,11 @@ export class Modal {
 
   public componentDidRender(): void {
     if (this.open) {
+      // if modal is scrollable the content is centered initially because of flex, so we have to scroll up
+      setTimeout(() => {
+        this.host.scrollTop = 0;
+      }, 5);
+
       this.dialog.focus(); // needs to happen after render
     }
   }

@@ -35,6 +35,7 @@ export const getFirstAndLastFocusableElement = (
 export let documentKeydownListener: (e: KeyboardEvent) => void;
 export const documentTouchListener = (e: TouchEvent): void => e.preventDefault();
 export const hostTouchListener = (e: TouchEvent & { target: HTMLElement }): void => {
+  console.log('hostTouchListener');
   e.target.scrollTop = getScrollTopOnTouch(e.target, e);
 };
 
@@ -109,15 +110,20 @@ export const getScrollTopOnTouch = (host: HTMLElement, e: TouchEvent): number =>
   let result = scrollTop;
   const currentScroll = scrollTop + offsetHeight;
 
-  if (scrollTop === 0) {
-    if (currentScroll === scrollHeight) {
-      e.preventDefault();
-    } else {
-      result = 1;
-    }
+  console.log({ scrollTop, scrollHeight, offsetHeight, currentScroll });
+
+  if (scrollTop === 0 && currentScroll === scrollHeight) {
+    console.log('if');
+    e.preventDefault();
+  } else if (scrollTop === 0) {
+    console.log('there');
+    result = 1;
   } else if (currentScroll === scrollHeight) {
+    console.log('else if');
     result = scrollTop - 1;
   }
+  console.log('result', result);
+
   return result;
 };
 
