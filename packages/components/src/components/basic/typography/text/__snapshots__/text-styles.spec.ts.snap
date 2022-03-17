@@ -11,7 +11,8 @@ exports[`getComponentCss() should return correct css for size: "inherit", weight
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  font-style: normal !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
   overflow-wrap: inherit !important;
@@ -50,7 +51,8 @@ exports[`getComponentCss() should return correct css for size: "large", weight: 
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  font-style: normal !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
   overflow-wrap: inherit !important;
@@ -89,7 +91,8 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  font-style: normal !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
   overflow-wrap: inherit !important;
@@ -128,7 +131,8 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  font-style: normal !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
   overflow-wrap: inherit !important;
@@ -164,7 +168,8 @@ exports[`getComponentCss() should return correct css for size: "x-large", weight
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  font-style: normal !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
   overflow-wrap: inherit !important;
@@ -200,7 +205,8 @@ exports[`getComponentCss() should return correct css for size: "x-large", weight
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  font-style: normal !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
   overflow-wrap: inherit !important;
@@ -239,7 +245,8 @@ exports[`getComponentCss() should return correct css for size: "x-small", weight
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  font-style: normal !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
   overflow-wrap: inherit !important;
@@ -275,7 +282,8 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  font-style: normal !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
   overflow-wrap: inherit !important;

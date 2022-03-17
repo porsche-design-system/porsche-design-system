@@ -11,7 +11,8 @@ exports[`getComponentCss() should return correct css for variant: "headline-1", 
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  font-style: normal !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
   overflow-wrap: inherit !important;
@@ -72,7 +73,8 @@ exports[`getComponentCss() should return correct css for variant: "headline-2", 
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  font-style: normal !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
   overflow-wrap: inherit !important;
@@ -136,7 +138,8 @@ exports[`getComponentCss() should return correct css for variant: "headline-3", 
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  font-style: normal !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
   overflow-wrap: inherit !important;
@@ -200,7 +203,8 @@ exports[`getComponentCss() should return correct css for variant: "headline-4", 
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  font-style: normal !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
   overflow-wrap: inherit !important;
@@ -264,7 +268,8 @@ exports[`getComponentCss() should return correct css for variant: "headline-5", 
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  font-style: normal !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
   overflow-wrap: inherit !important;
@@ -300,7 +305,8 @@ exports[`getComponentCss() should return correct css for variant: "inherit", ali
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  font-style: normal !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
   overflow-wrap: inherit !important;
@@ -333,7 +339,8 @@ exports[`getComponentCss() should return correct css for variant: "large-title",
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  font-style: normal !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
   overflow-wrap: inherit !important;
@@ -397,7 +404,8 @@ exports[`getComponentCss() should return correct css for variant: {"base":"small
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  font-style: normal !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
   overflow-wrap: inherit !important;
