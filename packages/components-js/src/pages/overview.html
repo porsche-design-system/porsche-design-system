@@ -1,6 +1,6 @@
 <style type="text/css">
   /* high-level test that parent color doesn't affect components */
-  body {
+  .root {
     color: deeppink;
     /*font-family: serif;*/
     /*font-style: italic;*/
@@ -40,7 +40,7 @@
   }
 </style>
 
-<div style="display: flex">
+<div class="root" style="display: flex">
   <div style="flex: 1">
     <div class="playground light" title="should render default headline">
       <p-headline>Default Components</p-headline>
