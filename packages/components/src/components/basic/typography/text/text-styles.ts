@@ -19,7 +19,7 @@ export const getComponentCss = (
   // TODO: font short hand isn't really the best choice but we don't have any better alternative atm
   const getSizeJssStyle = (textSize: TextSize): JssStyle => {
     return textSize === 'inherit'
-      ? { lineHeight: textSize, fontSize: textSize }
+      ? { lineHeight: textSize, fontSize: textSize, fontWeight: fontWeight[weight] }
       : { font: text[paramCaseToCamelCase(textSize)].font.replace('400', fontWeight[weight]) };
   };
 
