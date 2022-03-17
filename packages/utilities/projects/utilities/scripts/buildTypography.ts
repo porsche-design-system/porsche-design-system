@@ -151,11 +151,10 @@ const buildTypography = (): void => {
 
   const comment = '/* Auto Generated File */';
   const fontImport = "import { fontFamily, fontWeight } from '../../font/font';";
-  const mediaQueryImport = "import { mediaQueryMin, mediaQueryMinMax } from '../../media-query';";
 
   const inputs: { fileName: string; imports: string[]; contents: object }[] = [
-    { fileName: 'title', imports: [fontImport, mediaQueryImport], contents: title },
-    { fileName: 'headline', imports: [fontImport, mediaQueryImport], contents: headline },
+    { fileName: 'title', imports: [fontImport], contents: title },
+    { fileName: 'headline', imports: [fontImport], contents: headline },
     { fileName: 'text', imports: [fontImport], contents: text },
   ];
 
@@ -171,9 +170,7 @@ const buildTypography = (): void => {
             comment,
             constName === fileName
               ? childImports.map((childImport) => `import { ${childImport} } from './${childImport}';`)
-              : content.includes('@media')
-              ? imports
-              : imports.filter((importString) => importString !== mediaQueryImport),
+              : imports,
           ]
             .flat()
             .join('\n'),
