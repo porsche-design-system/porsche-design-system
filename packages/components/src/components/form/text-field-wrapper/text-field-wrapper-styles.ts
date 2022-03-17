@@ -17,7 +17,6 @@ import { getFunctionalComponentRequiredStyles } from '../../common/required/requ
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 
 export const getComponentCss = (
-  isDisabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   hasUnitOrCounter: boolean,
@@ -96,7 +95,6 @@ export const getComponentCss = (
     },
     ...getLabelStyles(
       'input',
-      isDisabled,
       hideLabel,
       state,
       theme,

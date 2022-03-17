@@ -2,20 +2,19 @@ import { getComponentCss, getSlottedCss } from './textarea-wrapper-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    [false, false, 'none', true],
-    [false, false, 'none', false],
-    [false, true, 'none', true],
-    [false, true, 'none', false],
-    [false, false, 'success', true],
-    [false, false, 'success', false],
-    [false, true, 'success', true],
-    [false, true, 'success', false],
-    [false, false, 'error', true],
-    [false, false, 'error', false],
-    [false, true, 'error', true],
-    [false, true, 'error', false],
-    [true, true, 'error', false],
-    [false, { base: true, xs: false, s: true, m: false, l: true, xl: false }, 'none', true],
+    [false, 'none', true],
+    [false, 'none', false],
+    [true, 'none', true],
+    [true, 'none', false],
+    [false, 'success', true],
+    [false, 'success', false],
+    [true, 'success', true],
+    [true, 'success', false],
+    [false, 'error', true],
+    [false, 'error', false],
+    [true, 'error', true],
+    [true, 'error', false],
+    [{ base: true, xs: false, s: true, m: false, l: true, xl: false }, 'none', true],
   ])('should return correct css for hideLabel: %o, state: %s and %s', (...args) => {
     expect(getComponentCss(...args)).toMatchSnapshot();
   });

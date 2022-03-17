@@ -63,7 +63,7 @@ export class TextareaWrapper {
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.textarea.disabled, this.hideLabel, this.state, this.hasCounter);
+    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.hasCounter);
   }
 
   public componentDidRender(): void {
@@ -84,6 +84,11 @@ export class TextareaWrapper {
   }
 
   public render(): JSX.Element {
+    const labelClasses = {
+      ['label']: true,
+      ['label--disabled']: this.textarea.disabled,
+    };
+
     const labelProps = {
       tag: 'span',
       color: 'inherit',
@@ -94,7 +99,7 @@ export class TextareaWrapper {
 
     return (
       <Host>
-        <label class="label">
+        <label class={labelClasses}>
           {hasLabel(this.host, this.label) && (
             <PrefixedTagNames.pText class="label__text" {...labelProps}>
               {this.label || <slot name="label" />}
