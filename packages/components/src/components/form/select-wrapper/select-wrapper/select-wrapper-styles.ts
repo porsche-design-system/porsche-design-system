@@ -17,12 +17,7 @@ const { baseColor: themeLightBaseColor } = getThemedColors('light');
 
 export const OPTION_HEIGHT = 32; // optgroups are higher and ignored
 
-export const getComponentCss = (
-  isDisabled: boolean,
-  hideLabel: BreakpointCustomizable<boolean>,
-  state: FormState,
-  theme: Theme
-): string => {
+export const getComponentCss = (hideLabel: BreakpointCustomizable<boolean>, state: FormState, theme: Theme): string => {
   const isDarkTheme = isThemeDark(theme);
   const { baseColor, backgroundColor } = getThemedColors(theme);
   const defaultPadding = pxToRemWithUnit(isVisibleFormState(state) ? 10 : 11);
@@ -54,8 +49,9 @@ export const getComponentCss = (
     root: {
       display: 'block',
       position: 'relative',
+      color: baseColor, // for dark theme on .label__text
     },
-    ...getLabelStyles('select', isDisabled, hideLabel, state, theme, {
+    ...getLabelStyles('select', hideLabel, state, theme, {
       icon: {
         position: 'absolute',
         bottom: pxToRemWithUnit(12),

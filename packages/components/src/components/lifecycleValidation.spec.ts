@@ -156,12 +156,8 @@ it.each<TagName>(tagNamesWithJss)('should call attachComponentCss() in correct l
     const parent = document.createElement('div');
     parent.append(component.host);
 
-    if (['p-checkbox-wrapper', 'p-radio-button-wrapper', 'p-text-field-wrapper'].includes(tagName)) {
+    if (['p-checkbox-wrapper', 'p-radio-button-wrapper'].includes(tagName)) {
       component['input'] = document.createElement('input');
-    } else if ('p-textarea-wrapper' === tagName) {
-      component['textarea'] = document.createElement('textarea');
-    } else if ('p-select-wrapper' === tagName) {
-      component['select'] = document.createElement('select');
     } else if (tagName === 'p-modal') {
       component['aria'] = { 'aria-label': 'Some Heading' };
     }

@@ -10,7 +10,6 @@ import { getFunctionalComponentStateMessageStyles } from '../../common/state-mes
 import { getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
-  isDisabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   hasCounter: boolean
@@ -42,7 +41,6 @@ export const getComponentCss = (
     },
     ...getLabelStyles(
       'textarea',
-      isDisabled,
       hideLabel,
       state,
       theme,

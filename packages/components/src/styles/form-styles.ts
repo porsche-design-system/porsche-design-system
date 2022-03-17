@@ -85,7 +85,6 @@ export const getBaseChildStyles = (
 
 export const getLabelStyles = (
   child: ChildSelector,
-  isDisabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   theme: Theme,
@@ -105,16 +104,26 @@ export const getLabelStyles = (
     },
   };
 
-  const counterOrUnitOrIconStylesKey = counterOrUnitOrIconStyles && Object.keys(counterOrUnitOrIconStyles)[0];
+  const counterOrUnitOrIconStylesKey = Object.keys(counterOrUnitOrIconStyles)[0];
 
   return {
     label: {
       display: 'block',
       position: 'relative', // for unit and counter
+      '&--disabled': {
+        '& .label__text': {
+          color: disabledColor,
+        },
+        ...(counterOrUnitOrIconStyles && {
+          [`& $${counterOrUnitOrIconStylesKey}`]: {
+            color: disabledColor,
+            cursor: 'not-allowed',
+          },
+        }),
+      },
       '&__text': {
         ...buildResponsiveStyles(hideLabel, getFormTextHiddenJssStyle),
         display: 'block',
-        color: isDisabled ? disabledColor : baseColor,
         width: 'fit-content',
         transition: getTransition('color'),
         '&+&--description': {
@@ -122,7 +131,7 @@ export const getLabelStyles = (
           paddingBottom: pxToRemWithUnit(8),
         },
         '&--description': {
-          color: isDisabled ? disabledColor : contrastMediumColor,
+          color: contrastMediumColor,
         },
         ...labelTextHoverJssStyle,
       },
@@ -130,10 +139,6 @@ export const getLabelStyles = (
     ...(counterOrUnitOrIconStyles && {
       [counterOrUnitOrIconStylesKey]: {
         ...counterOrUnitOrIconStyles[counterOrUnitOrIconStylesKey],
-        ...(isDisabled && {
-          color: disabledColor,
-          cursor: 'not-allowed',
-        }),
         ...labelTextHoverJssStyle,
       },
     }),
