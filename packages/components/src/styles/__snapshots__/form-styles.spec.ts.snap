@@ -12,12 +12,9 @@ Object {
     "boxSizing": "border-box",
     "color": "#000",
     "display": "block",
-    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "fontSize": "1rem",
-    "fontWeight": 400,
+    "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "height": "3rem",
     "left": 0,
-    "lineHeight": 1.5,
     "margin": 0,
     "opacity": 1,
     "outline": "1px solid transparent",
@@ -66,12 +63,9 @@ Object {
     "boxSizing": "border-box",
     "color": "#000",
     "display": "block",
-    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "fontSize": "1rem",
-    "fontWeight": 400,
+    "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "height": "3rem",
     "left": 0,
-    "lineHeight": 1.5,
     "margin": 0,
     "opacity": 1,
     "outline": "1px solid transparent",
@@ -120,12 +114,9 @@ Object {
     "boxSizing": "border-box",
     "color": "#000",
     "display": "block",
-    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "fontSize": "1rem",
-    "fontWeight": 400,
+    "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "height": "3rem",
     "left": 0,
-    "lineHeight": 1.5,
     "margin": 0,
     "opacity": 1,
     "outline": "1px solid transparent",
@@ -174,12 +165,9 @@ Object {
     "boxSizing": "border-box",
     "color": "#fff",
     "display": "block",
-    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "fontSize": "1rem",
-    "fontWeight": 400,
+    "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "height": "3rem",
     "left": 0,
-    "lineHeight": 1.5,
     "margin": 0,
     "opacity": 1,
     "outline": "1px solid transparent",
@@ -218,12 +206,9 @@ Object {
     "boxSizing": "border-box",
     "color": "#fff",
     "display": "block",
-    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "fontSize": "1rem",
-    "fontWeight": 400,
+    "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "height": "3rem",
     "left": 0,
-    "lineHeight": 1.5,
     "margin": 0,
     "opacity": 1,
     "outline": "1px solid transparent",
@@ -262,12 +247,9 @@ Object {
     "boxSizing": "border-box",
     "color": "#fff",
     "display": "block",
-    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "fontSize": "1rem",
-    "fontWeight": 400,
+    "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "height": "3rem",
     "left": 0,
-    "lineHeight": 1.5,
     "margin": 0,
     "opacity": 1,
     "outline": "1px solid transparent",
@@ -306,11 +288,8 @@ Object {
     "boxSizing": "border-box",
     "color": "#fff",
     "display": "block",
-    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "fontSize": "1rem",
-    "fontWeight": 400,
+    "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "left": 0,
-    "lineHeight": 1.5,
     "margin": 0,
     "opacity": 1,
     "outline": "1px solid transparent",
@@ -359,11 +338,8 @@ Object {
     "boxSizing": "border-box",
     "color": "#fff",
     "display": "block",
-    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "fontSize": "1rem",
-    "fontWeight": 400,
+    "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "left": 0,
-    "lineHeight": 1.5,
     "margin": 0,
     "opacity": 1,
     "outline": "1px solid transparent",
@@ -412,11 +388,8 @@ Object {
     "boxSizing": "border-box",
     "color": "#fff",
     "display": "block",
-    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "fontSize": "1rem",
-    "fontWeight": 400,
+    "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "left": 0,
-    "lineHeight": 1.5,
     "margin": 0,
     "opacity": 1,
     "outline": "1px solid transparent",
@@ -465,11 +438,8 @@ Object {
     "boxSizing": "border-box",
     "color": "#fff",
     "display": "block",
-    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "fontSize": "1rem",
-    "fontWeight": 400,
+    "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "left": 0,
-    "lineHeight": 1.5,
     "margin": 0,
     "opacity": 1,
     "outline": "1px solid transparent",
@@ -506,18 +476,9 @@ Object {
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: input, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: error, theme: dark and additionalRefForInputHover: { unit: [Object] } 1`] = `
+exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: { base: true, xs: false, s: true, m: false, l: true, xl: false }, theme: error and additionalRefForInputHover: dark 1`] = `
 Object {
   "label": Object {
-    "&--disabled": Object {
-      "& $unit": Object {
-        "color": "#7c7f81",
-        "cursor": "not-allowed",
-      },
-      "& .label__text": Object {
-        "color": "#7c7f81",
-      },
-    },
     "&__text": Object {
       "&+&--description": Object {
         "marginTop": "-0.25rem",
@@ -591,6 +552,7 @@ Object {
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
+      "color": "#fff",
       "display": "block",
       "height": "1px",
       "margin": "-1px",
@@ -615,14 +577,9 @@ Object {
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: error, theme: light and additionalRefForInputHover: false 1`] = `
+exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: false, theme: error and additionalRefForInputHover: light 1`] = `
 Object {
   "label": Object {
-    "&--disabled": Object {
-      "& .label__text": Object {
-        "color": "#96989a",
-      },
-    },
     "&__text": Object {
       "&+&--description": Object {
         "marginTop": "-0.25rem",
@@ -638,6 +595,7 @@ Object {
       },
       "clip": "auto",
       "clipPath": "none",
+      "color": "#000",
       "display": "block",
       "height": "auto",
       "margin": 0,
@@ -654,14 +612,9 @@ Object {
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: none, theme: light and additionalRefForInputHover: false 1`] = `
+exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: false, theme: none and additionalRefForInputHover: light 1`] = `
 Object {
   "label": Object {
-    "&--disabled": Object {
-      "& .label__text": Object {
-        "color": "#96989a",
-      },
-    },
     "&__text": Object {
       "&+&--description": Object {
         "marginTop": "-0.25rem",
@@ -677,6 +630,7 @@ Object {
       },
       "clip": "auto",
       "clipPath": "none",
+      "color": "#000",
       "display": "block",
       "height": "auto",
       "margin": 0,
@@ -693,14 +647,9 @@ Object {
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: success, theme: light and additionalRefForInputHover: false 1`] = `
+exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: false, theme: success and additionalRefForInputHover: light 1`] = `
 Object {
   "label": Object {
-    "&--disabled": Object {
-      "& .label__text": Object {
-        "color": "#96989a",
-      },
-    },
     "&__text": Object {
       "&+&--description": Object {
         "marginTop": "-0.25rem",
@@ -716,6 +665,7 @@ Object {
       },
       "clip": "auto",
       "clipPath": "none",
+      "color": "#000",
       "display": "block",
       "height": "auto",
       "margin": 0,
@@ -732,14 +682,9 @@ Object {
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: input, hideLabel: true, state: error, theme: light and additionalRefForInputHover: false 1`] = `
+exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: true, theme: error and additionalRefForInputHover: light 1`] = `
 Object {
   "label": Object {
-    "&--disabled": Object {
-      "& .label__text": Object {
-        "color": "#96989a",
-      },
-    },
     "&__text": Object {
       "&+&--description": Object {
         "marginTop": "-0.25rem",
@@ -756,6 +701,7 @@ Object {
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
+      "color": "#000",
       "display": "block",
       "height": "1px",
       "margin": "-1px",
@@ -772,14 +718,9 @@ Object {
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: input, hideLabel: true, state: none, theme: light and additionalRefForInputHover: false 1`] = `
+exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: true, theme: none and additionalRefForInputHover: light 1`] = `
 Object {
   "label": Object {
-    "&--disabled": Object {
-      "& .label__text": Object {
-        "color": "#96989a",
-      },
-    },
     "&__text": Object {
       "&+&--description": Object {
         "marginTop": "-0.25rem",
@@ -796,6 +737,7 @@ Object {
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
+      "color": "#000",
       "display": "block",
       "height": "1px",
       "margin": "-1px",
@@ -812,14 +754,9 @@ Object {
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: input, hideLabel: true, state: success, theme: light and additionalRefForInputHover: false 1`] = `
+exports[`getLabelStyles() should return correct css for child: input, hideLabel: false, state: true, theme: success and additionalRefForInputHover: light 1`] = `
 Object {
   "label": Object {
-    "&--disabled": Object {
-      "& .label__text": Object {
-        "color": "#96989a",
-      },
-    },
     "&__text": Object {
       "&+&--description": Object {
         "marginTop": "-0.25rem",
@@ -836,6 +773,7 @@ Object {
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
+      "color": "#000",
       "display": "block",
       "height": "1px",
       "margin": "-1px",
@@ -852,14 +790,45 @@ Object {
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: false, state: error, theme: dark and additionalRefForInputHover: false 1`] = `
+exports[`getLabelStyles() should return correct css for child: input, hideLabel: true, state: true, theme: error and additionalRefForInputHover: light 1`] = `
 Object {
   "label": Object {
-    "&--disabled": Object {
-      "& .label__text": Object {
-        "color": "#7c7f81",
+    "&__text": Object {
+      "&+&--description": Object {
+        "marginTop": "-0.25rem",
+        "paddingBottom": "0.5rem",
       },
+      "&--description": Object {
+        "color": "#96989a",
+      },
+      "&:hover": Object {
+        "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:hover:not(:disabled):not([readonly]))": Object {
+          "borderColor": "#a30000 !important",
+        },
+      },
+      "border": "0",
+      "clip": "rect(1px,1px,1px,1px)",
+      "clipPath": "inset(50%)",
+      "color": "#96989a",
+      "display": "block",
+      "height": "1px",
+      "margin": "-1px",
+      "overflow": "hidden",
+      "padding": "0 0 0.25rem",
+      "position": "absolute",
+      "transition": "color var(--p-transition-duration, .24s) ease",
+      "whiteSpace": "nowrap",
+      "width": "fit-content",
     },
+    "display": "block",
+    "position": "relative",
+  },
+}
+`;
+
+exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: false, state: false, theme: error and additionalRefForInputHover: dark 1`] = `
+Object {
+  "label": Object {
     "&__text": Object {
       "&+&--description": Object {
         "marginTop": "-0.25rem",
@@ -875,6 +844,7 @@ Object {
       },
       "clip": "auto",
       "clipPath": "none",
+      "color": "#fff",
       "display": "block",
       "height": "auto",
       "margin": 0,
@@ -891,14 +861,9 @@ Object {
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: false, state: none, theme: dark and additionalRefForInputHover: false 1`] = `
+exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: false, state: false, theme: none and additionalRefForInputHover: dark 1`] = `
 Object {
   "label": Object {
-    "&--disabled": Object {
-      "& .label__text": Object {
-        "color": "#7c7f81",
-      },
-    },
     "&__text": Object {
       "&+&--description": Object {
         "marginTop": "-0.25rem",
@@ -914,6 +879,7 @@ Object {
       },
       "clip": "auto",
       "clipPath": "none",
+      "color": "#fff",
       "display": "block",
       "height": "auto",
       "margin": 0,
@@ -930,14 +896,9 @@ Object {
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: false, state: success, theme: dark and additionalRefForInputHover: false 1`] = `
+exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: false, state: false, theme: success and additionalRefForInputHover: dark 1`] = `
 Object {
   "label": Object {
-    "&--disabled": Object {
-      "& .label__text": Object {
-        "color": "#7c7f81",
-      },
-    },
     "&__text": Object {
       "&+&--description": Object {
         "marginTop": "-0.25rem",
@@ -953,6 +914,7 @@ Object {
       },
       "clip": "auto",
       "clipPath": "none",
+      "color": "#fff",
       "display": "block",
       "height": "auto",
       "margin": 0,
@@ -969,14 +931,9 @@ Object {
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: true, state: error, theme: dark and additionalRefForInputHover: false 1`] = `
+exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: false, state: true, theme: error and additionalRefForInputHover: dark 1`] = `
 Object {
   "label": Object {
-    "&--disabled": Object {
-      "& .label__text": Object {
-        "color": "#7c7f81",
-      },
-    },
     "&__text": Object {
       "&+&--description": Object {
         "marginTop": "-0.25rem",
@@ -993,6 +950,7 @@ Object {
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
+      "color": "#fff",
       "display": "block",
       "height": "1px",
       "margin": "-1px",
@@ -1009,14 +967,9 @@ Object {
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: true, state: none, theme: dark and additionalRefForInputHover: false 1`] = `
+exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: false, state: true, theme: none and additionalRefForInputHover: dark 1`] = `
 Object {
   "label": Object {
-    "&--disabled": Object {
-      "& .label__text": Object {
-        "color": "#7c7f81",
-      },
-    },
     "&__text": Object {
       "&+&--description": Object {
         "marginTop": "-0.25rem",
@@ -1033,6 +986,7 @@ Object {
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
+      "color": "#fff",
       "display": "block",
       "height": "1px",
       "margin": "-1px",
@@ -1049,14 +1003,9 @@ Object {
 }
 `;
 
-exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: true, state: success, theme: dark and additionalRefForInputHover: false 1`] = `
+exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: false, state: true, theme: success and additionalRefForInputHover: dark 1`] = `
 Object {
   "label": Object {
-    "&--disabled": Object {
-      "& .label__text": Object {
-        "color": "#7c7f81",
-      },
-    },
     "&__text": Object {
       "&+&--description": Object {
         "marginTop": "-0.25rem",
@@ -1073,6 +1022,43 @@ Object {
       "border": "0",
       "clip": "rect(1px,1px,1px,1px)",
       "clipPath": "inset(50%)",
+      "color": "#fff",
+      "display": "block",
+      "height": "1px",
+      "margin": "-1px",
+      "overflow": "hidden",
+      "padding": "0 0 0.25rem",
+      "position": "absolute",
+      "transition": "color var(--p-transition-duration, .24s) ease",
+      "whiteSpace": "nowrap",
+      "width": "fit-content",
+    },
+    "display": "block",
+    "position": "relative",
+  },
+}
+`;
+
+exports[`getLabelStyles() should return correct css for child: textarea, hideLabel: true, state: true, theme: error and additionalRefForInputHover: dark 1`] = `
+Object {
+  "label": Object {
+    "&__text": Object {
+      "&+&--description": Object {
+        "marginTop": "-0.25rem",
+        "paddingBottom": "0.5rem",
+      },
+      "&--description": Object {
+        "color": "#7c7f81",
+      },
+      "&:hover": Object {
+        "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
+          "borderColor": "#d30303 !important",
+        },
+      },
+      "border": "0",
+      "clip": "rect(1px,1px,1px,1px)",
+      "clipPath": "inset(50%)",
+      "color": "#7c7f81",
       "display": "block",
       "height": "1px",
       "margin": "-1px",

@@ -12,7 +12,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         padding: 4px 2vw;
         box-sizing: border-box;
         text-align: center;
-        color: white;
         background-color: lightskyblue;
       }
     
@@ -33,7 +32,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       }
     
       p-flex-item.align-self p {
-        background-color: deeppink;
+        background-color: darkviolet;
       }
     
       p-flex.wrap p {

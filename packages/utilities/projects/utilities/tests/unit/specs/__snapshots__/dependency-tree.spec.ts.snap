@@ -22,10 +22,14 @@ Object {
   "focus.js": Array [],
   "font/font-family.js": Array [],
   "font/font-size.js": Array [],
+  "font/font-style.js": Array [],
+  "font/font-variant.js": Array [],
   "font/font-weight.js": Array [],
   "font/font.js": Array [
     "font/font-family.js",
     "font/font-size.js",
+    "font/font-style.js",
+    "font/font-variant.js",
     "font/font-weight.js",
   ],
   "index.js": Array [
@@ -38,6 +42,8 @@ Object {
     "focus.js",
     "font/font-family.js",
     "font/font-size.js",
+    "font/font-style.js",
+    "font/font-variant.js",
     "font/font-weight.js",
     "font/font.js",
     "media-query.js",
@@ -70,26 +76,36 @@ Object {
   ],
   "typography/lib/headline1.js": Array [
     "font/font-family.js",
+    "font/font-style.js",
+    "font/font-variant.js",
     "font/font-weight.js",
     "media-query.js",
   ],
   "typography/lib/headline2.js": Array [
     "font/font-family.js",
+    "font/font-style.js",
+    "font/font-variant.js",
     "font/font-weight.js",
     "media-query.js",
   ],
   "typography/lib/headline3.js": Array [
     "font/font-family.js",
+    "font/font-style.js",
+    "font/font-variant.js",
     "font/font-weight.js",
     "media-query.js",
   ],
   "typography/lib/headline4.js": Array [
     "font/font-family.js",
+    "font/font-style.js",
+    "font/font-variant.js",
     "font/font-weight.js",
     "media-query.js",
   ],
   "typography/lib/headline5.js": Array [
     "font/font-family.js",
+    "font/font-style.js",
+    "font/font-variant.js",
     "font/font-weight.js",
   ],
   "typography/lib/text.js": Array [
@@ -101,22 +117,32 @@ Object {
   ],
   "typography/lib/textLarge.js": Array [
     "font/font-family.js",
+    "font/font-style.js",
+    "font/font-variant.js",
     "font/font-weight.js",
   ],
   "typography/lib/textMedium.js": Array [
     "font/font-family.js",
+    "font/font-style.js",
+    "font/font-variant.js",
     "font/font-weight.js",
   ],
   "typography/lib/textSmall.js": Array [
     "font/font-family.js",
+    "font/font-style.js",
+    "font/font-variant.js",
     "font/font-weight.js",
   ],
   "typography/lib/textXLarge.js": Array [
     "font/font-family.js",
+    "font/font-style.js",
+    "font/font-variant.js",
     "font/font-weight.js",
   ],
   "typography/lib/textXSmall.js": Array [
     "font/font-family.js",
+    "font/font-style.js",
+    "font/font-variant.js",
     "font/font-weight.js",
   ],
   "typography/lib/title.js": Array [
@@ -124,6 +150,8 @@ Object {
   ],
   "typography/lib/titleLarge.js": Array [
     "font/font-family.js",
+    "font/font-style.js",
+    "font/font-variant.js",
     "font/font-weight.js",
     "media-query.js",
   ],

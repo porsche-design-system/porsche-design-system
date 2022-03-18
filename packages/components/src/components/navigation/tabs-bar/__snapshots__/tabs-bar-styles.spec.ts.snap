@@ -10,7 +10,9 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   margin: 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-family: inherit !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
@@ -44,10 +46,11 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 }
 .root {
   position: relative;
-  font-size: 1.5rem;
-  line-height: 1.5;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-weight: 400;
   margin: 0 -4px;
+  font-size: 1.5rem;
+  line-height: 1.5;
 }
 .scroll-area {
   position: relative;
@@ -136,7 +139,9 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   margin: 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-family: inherit !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
@@ -170,10 +175,11 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 }
 .root {
   position: relative;
-  font-size: 1.5rem;
-  line-height: 1.5;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-weight: 400;
   margin: 0 -4px;
+  font-size: 1.5rem;
+  line-height: 1.5;
 }
 .scroll-area {
   position: relative;
@@ -262,7 +268,9 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   margin: 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-family: inherit !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
@@ -296,10 +304,11 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 }
 .root {
   position: relative;
-  font-size: 1.5rem;
-  line-height: 1.5;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-weight: 400;
   margin: 0 -4px;
+  font-size: 1.5rem;
+  line-height: 1.5;
 }
 .scroll-area {
   position: relative;
@@ -388,7 +397,9 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   margin: 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-family: inherit !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
@@ -422,10 +433,11 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 }
 .root {
   position: relative;
-  font-size: 1rem;
-  line-height: 1.5;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-weight: 400;
   margin: 0 -4px;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 .scroll-area {
   position: relative;
@@ -514,7 +526,9 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   margin: 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-family: inherit !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
@@ -548,10 +562,11 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 }
 .root {
   position: relative;
-  font-size: 1rem;
-  line-height: 1.5;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-weight: 400;
   margin: 0 -4px;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 .scroll-area {
   position: relative;
@@ -640,7 +655,9 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   margin: 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-family: inherit !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
@@ -674,10 +691,11 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 }
 .root {
   position: relative;
-  font-size: 1rem;
-  line-height: 1.5;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-weight: 400;
   margin: 0 -4px;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 .scroll-area {
   position: relative;
@@ -766,7 +784,9 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   margin: 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-family: inherit !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
@@ -800,10 +820,11 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 }
 .root {
   position: relative;
-  font-size: 1rem;
-  line-height: 1.5;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-weight: 400;
   margin: 0 -4px;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 .scroll-area {
   position: relative;
@@ -892,7 +913,9 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   margin: 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-family: inherit !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
@@ -926,10 +949,11 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 }
 .root {
   position: relative;
-  font-size: 1rem;
-  line-height: 1.5;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-weight: 600;
   margin: 0 -4px;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 .scroll-area {
   position: relative;
@@ -1018,7 +1042,9 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   margin: 0 !important;
   padding: 0 !important;
   vertical-align: top !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  font-family: inherit !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
@@ -1052,10 +1078,11 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 }
 .root {
   position: relative;
-  font-size: 1rem;
-  line-height: 1.5;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-weight: 400;
   margin: 0 -4px;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 .scroll-area {
   position: relative;

@@ -3,15 +3,9 @@ import type { BreakpointCustomizable } from '../../../../utils';
 import type { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
 import { buildSlottedStyles, getCss, buildResponsiveStyles, paramCaseToCamelCase } from '../../../../utils';
 import { addImportantToEachRule, getBaseSlottedStyles } from '../../../../styles';
-import { fontFamily, fontWeight, text } from '@porsche-design-system/utilities-v2';
+import { textSmall, fontWeight, text } from '@porsche-design-system/utilities-v2';
 import { getEllipsisStyles, getSlottedTypographyStyles } from '../../../../styles/typography-styles';
 import { getThemedTextColor } from '../../../../styles/text-icon-styles';
-
-const getSizeStyles = (size: TextSize): Pick<JssStyle, 'lineHeight' | 'fontSize'> => {
-  return size === 'inherit'
-    ? { lineHeight: size, fontSize: size }
-    : (({ lineHeight, fontSize }) => ({ lineHeight, fontSize }))(text[paramCaseToCamelCase(size)]);
-};
 
 export const getComponentCss = (
   size: BreakpointCustomizable<TextSize>,
@@ -21,6 +15,14 @@ export const getComponentCss = (
   ellipsis: boolean,
   theme: Theme
 ): string => {
+  // function is local to reuse `weight` parameter
+  // TODO: font short hand isn't really the best choice but we don't have any better alternative atm
+  const getSizeJssStyle = (textSize: TextSize): JssStyle => {
+    return textSize === 'inherit'
+      ? { lineHeight: textSize, fontSize: textSize, fontWeight: fontWeight[weight] }
+      : { font: text[paramCaseToCamelCase(textSize)].font.replace('400', fontWeight[weight]) };
+  };
+
   return getCss({
     '@global': {
       ':host': {
@@ -37,8 +39,7 @@ export const getComponentCss = (
       padding: 0,
       margin: 0,
       textAlign: align,
-      fontFamily,
-      fontWeight: fontWeight[weight],
+      ...textSmall,
       color: getThemedTextColor(theme, color),
       overflowWrap: 'break-word',
       wordWrap: 'break-word',
@@ -48,7 +49,7 @@ export const getComponentCss = (
       transition: 'font-size 1ms linear',
       WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
       ...(ellipsis && getEllipsisStyles()),
-      ...buildResponsiveStyles(size, getSizeStyles),
+      ...buildResponsiveStyles(size, getSizeJssStyle),
     },
   });
 };
