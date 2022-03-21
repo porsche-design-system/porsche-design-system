@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
 import { paramCase } from 'change-case';
-import { TAG_NAMES, TAG_NAMES_WITH_SKELETON, TagName } from '../src/lib/tagNames';
+import { TAG_NAMES, SKELETON_TAG_NAMES, TagName } from '../src/lib/tagNames';
 
 const glue = '\n\n';
 // TODO: typing as component property string
@@ -96,7 +96,7 @@ const generateComponentMeta = (): void => {
     const isDelegatingFocus = source.includes('delegatesFocus: true');
     const isThemeable = source.includes('public theme?: Theme');
     const hasSlottedCss = source.includes('attachSlottedCss');
-    const hasSkeleton = TAG_NAMES_WITH_SKELETON.includes(tagName);
+    const hasSkeleton = SKELETON_TAG_NAMES.includes(tagName);
     const shouldPatchSlot = TAG_NAMES_TO_ADD_SLOT_TO.includes(tagName);
     const usesScss = source.includes('styleUrl:');
     const usesJss = source.includes('attachComponentCss');

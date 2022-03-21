@@ -1,7 +1,7 @@
 import { getComponentChunkLinks, getInitialStyles } from '../../../src';
 import type { SkeletonTagName } from '../../../src';
 import { render } from '@testing-library/react';
-import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
+import { INTERNAL_TAG_NAMES, TAG_NAMES, SKELETON_TAG_NAMES } from '@porsche-design-system/shared';
 
 const filteredTagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x));
 const tagNames = filteredTagNames.join(',');
@@ -15,7 +15,7 @@ describe('format: html', () => {
   });
 
   it('should return core and skeleton styles', () => {
-    const result = getInitialStyles({ skeletonTagNames: TAG_NAMES_WITH_SKELETON as SkeletonTagName[] });
+    const result = getInitialStyles({ skeletonTagNames: SKELETON_TAG_NAMES as SkeletonTagName[] });
     expect(result).toMatchSnapshot();
   });
 
@@ -28,7 +28,7 @@ describe('format: html', () => {
   it('should add custom prefixes to skeleton component names', () => {
     const result = getInitialStyles({
       prefix: 'custom-prefix',
-      skeletonTagNames: TAG_NAMES_WITH_SKELETON as SkeletonTagName[],
+      skeletonTagNames: SKELETON_TAG_NAMES as SkeletonTagName[],
     });
     expect(result).toMatchSnapshot();
   });
@@ -44,7 +44,7 @@ describe('format: jsx', () => {
   it('should return core and skeleton styles', () => {
     const result = getInitialStyles({
       format: 'jsx',
-      skeletonTagNames: TAG_NAMES_WITH_SKELETON as SkeletonTagName[],
+      skeletonTagNames: SKELETON_TAG_NAMES as SkeletonTagName[],
     });
     expect(result).toMatchSnapshot();
   });
@@ -66,7 +66,7 @@ describe('withoutTags: true', () => {
 
 // TODO: enable this test when adjust cleanup script to not remove wrong styles (e.g. when using p-text-field-wrapper in skeletonTagNames, the after is removed) is done
 xdescribe('skeletonTagNames subset', () => {
-  const skeletonTagNamesWithoutButton = TAG_NAMES_WITH_SKELETON.filter((x) => x !== 'p-button');
+  const skeletonTagNamesWithoutButton = SKELETON_TAG_NAMES.filter((x) => x !== 'p-button');
 
   it('should return core and p-button skeleton styles', () => {
     const result = getInitialStyles({ skeletonTagNames: ['p-button'] });

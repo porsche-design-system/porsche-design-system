@@ -1,5 +1,5 @@
 import { joinArrayElementsToString, withoutTagsOption } from './utils';
-import { getMinifiedCss, INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
+import { getMinifiedCss, INTERNAL_TAG_NAMES, TAG_NAMES, SKELETON_TAG_NAMES } from '@porsche-design-system/shared';
 import {
   getButtonLinkPureSkeletonStyles,
   getButtonLinkSocialSkeletonStyles,
@@ -11,15 +11,15 @@ import {
 
 // TODO: remove skeleton styles after all are hydrated
 
-const skeletonTagNamesTypeLiteral = joinArrayElementsToString(TAG_NAMES_WITH_SKELETON, ' | ');
+const skeletonTagNamesTypeLiteral = joinArrayElementsToString(SKELETON_TAG_NAMES, ' | ');
 
 const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
 
-const tagNamesWithSkeleton = joinArrayElementsToString(TAG_NAMES_WITH_SKELETON);
+const tagNamesWithSkeleton = joinArrayElementsToString(SKELETON_TAG_NAMES);
 
 // includes skeleton styles
 export const generateInitialStylesPartial = (): string => {
-  // 'any' is fallback when TAG_NAMES_WITH_SKELETON is an empty array because shared wasn't built, yet
+  // 'any' is fallback when SKELETON_TAG_NAMES is an empty array because shared wasn't built, yet
   const types = `export type SkeletonTagName = ${skeletonTagNamesTypeLiteral || 'any'};
 
   type GetInitialStylesOptions = {
