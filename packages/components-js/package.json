@@ -56,8 +56,8 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "4.0.0",
-    "@porsche-design-system/components": "2.9.1",
-    "@porsche-design-system/components-js": "2.9.1",
+    "@porsche-design-system/components": "v2.9.2-rc.0",
+    "@porsche-design-system/components-js": "v2.9.2-rc.0",
     "@porsche-design-system/components-manager-cli": "0.0.0",
     "@porsche-design-system/partials": "0.0.0"
   },
