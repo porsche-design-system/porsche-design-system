@@ -13,3 +13,7 @@ export const createSortedEventInitDictDetail = (sort: TableHeadCellSort): Custom
   bubbles: true,
   detail: { ...sort, active: true, direction: toggleDirection(sort.direction) },
 });
+
+export const isSortable = (active: boolean, direction: Direction) => {
+  return active !== undefined && direction !== undefined;
+};
