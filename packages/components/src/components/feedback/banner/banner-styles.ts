@@ -1,6 +1,7 @@
 import type { JssStyle } from 'jss';
+import { mediaQueryMin, mediaQueryMinMax } from '@porsche-design-system/utilities-v2';
 import { buildSlottedStyles, getCss } from '../../../utils';
-import { addImportantToRule, breakpoint, getBaseSlottedStyles, mediaQuery, pxToRemWithUnit } from '../../../styles';
+import { addImportantToRule, getBaseSlottedStyles, pxToRemWithUnit } from '../../../styles';
 import { BANNER_Z_INDEX } from '../../../constants';
 
 const bannerPositionTypeVar = '--p-banner-position-type';
@@ -13,8 +14,8 @@ const easeInQuad = 'cubic-bezier(0.45,0,0.55,1)';
 const easeOutQuad = 'cubic-bezier(0.5,1,0.89,1)';
 export const ANIMATION_DURATION = 600;
 
-const mediaQueryS = mediaQuery('s');
-const mediaQueryXxs = `${mediaQuery('xxs')} and (max-width: ${breakpoint.s}px)`;
+const mediaQueryS = mediaQueryMin('s');
+const mediaQueryXxs = mediaQueryMinMax('xxs', 's');
 
 export const getBoxShadow = (): JssStyle => ({
   boxShadow:
