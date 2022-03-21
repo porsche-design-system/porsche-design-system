@@ -87,6 +87,7 @@ export class Modal {
 
   public componentDidRender(): void {
     if (this.open) {
+      setTimeout(() => (this.host.scrollTop = 0), 25);
       this.dialog.focus(); // needs to happen after render
     }
   }
