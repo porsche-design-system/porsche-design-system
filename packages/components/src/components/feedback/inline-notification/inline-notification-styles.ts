@@ -1,16 +1,11 @@
 import type { JssStyle } from 'jss';
+import { mediaQueryMin } from '@porsche-design-system/utilities-v2';
 import type { Theme } from '../../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
 import { buildSlottedStyles, getCss } from '../../../utils';
-import {
-  addImportantToEachRule,
-  getBaseSlottedStyles,
-  mediaQuery,
-  pxToRemWithUnit,
-  getThemedColors,
-} from '../../../styles';
+import { addImportantToEachRule, getBaseSlottedStyles, pxToRemWithUnit, getThemedColors } from '../../../styles';
 
-const mediaQueryS = mediaQuery('s');
+const mediaQueryS = mediaQueryMin('s');
 
 export const getComponentCss = (
   state: InlineNotificationState,

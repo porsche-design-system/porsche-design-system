@@ -7,9 +7,10 @@ import jssPluginCamelCase from 'jss-plugin-camel-case';
 import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
+import { mediaQueryMin } from '@porsche-design-system/utilities-v2';
 import { parseJSON } from './breakpoint-customizable';
 import { getShadowRootHTMLElement } from './dom';
-import { addImportantToEachRule, mediaQuery } from '../styles';
+import { addImportantToEachRule } from '../styles';
 import { getTagName, getTagNameWithoutPrefix } from './tag-name';
 
 /* eslint-disable @typescript-eslint/consistent-type-definitions */
@@ -17,7 +18,6 @@ declare global {
   interface CSSStyleSheet {
     replaceSync(style: string): void;
   }
-
   interface ShadowRoot {
     adoptedStyleSheets: CSSStyleSheet[];
   }
@@ -128,7 +128,7 @@ export const buildResponsiveStyles = <T>(
         .reduce(
           (result, breakpointValue: Breakpoint) => ({
             ...result,
-            [mediaQuery(breakpointValue)]: getJssStyle(value[breakpointValue]) as Styles,
+            [mediaQueryMin(breakpointValue)]: getJssStyle(value[breakpointValue]) as Styles,
           }),
           getJssStyle(value.base) as Styles
         )

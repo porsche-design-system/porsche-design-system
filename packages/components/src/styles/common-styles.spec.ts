@@ -13,7 +13,6 @@ import {
   getHoverJssStyle,
   getTextHiddenJssStyle,
   getTransition,
-  mediaQuery,
   pxToRem,
   pxToRemWithUnit,
 } from './common-styles';
@@ -116,12 +115,6 @@ describe('getFocusSlottedPseudoStyles()', () => {
       expect(getFocusSlottedPseudoStyles()).toMatchSnapshot();
     }
   );
-});
-
-describe('mediaQuery()', () => {
-  it('should return correct media query', () => {
-    expect(mediaQuery('m')).toBe('@media (min-width: 1000px)');
-  });
 });
 
 describe('getBaseSlottedStyles()', () => {
