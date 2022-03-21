@@ -14,6 +14,6 @@ export const createSortedEventInitDictDetail = (sort: TableHeadCellSort): Custom
   detail: { ...sort, active: true, direction: toggleDirection(sort.direction) },
 });
 
-export const isSortable = (active: boolean, direction: Direction) => {
+export const isSortable = (active: boolean, direction: Direction): boolean => {
   return active !== undefined && direction !== undefined;
 };
