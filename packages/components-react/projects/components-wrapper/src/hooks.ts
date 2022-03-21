@@ -36,6 +36,10 @@ export const useSkeletons = /*#__PURE__*/ (): boolean => {
 
     if (usesSkeletons === undefined) {
       throw new Error('It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it.');
+    } else if (usesSkeletons && typeof window !== 'undefined' && !document.querySelector('style[uses-skeleton]')) {
+      throw new Error(
+        'It appears you are passing usesSkeletons=true on the <PorscheDesignSystemProvider /> either without using the getInitialStyles() function or without a proper skeletonTagNames array on the getInitialStyles() function.'
+      );
     }
 
     return usesSkeletons;
