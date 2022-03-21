@@ -6,13 +6,20 @@ import { TagName } from '../src';
 
 const INTERNAL_TAG_NAMES: TagName[] = ['p-select-wrapper-dropdown', 'p-toast-item'];
 
+const IGNORED_SKELETON_STYLES = ['headline', 'text-list', 'text-list-item', 'text'];
+const IGNORED_SKELETON_STYLES_FILE_NAMES = IGNORED_SKELETON_STYLES.map(
+  (component) => `**/${component}-skeleton-styles.ts`
+);
+
 const generateTagNames = (): void => {
   // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
   const componentsSourceDirectory = path.resolve('../components/src/components');
   const componentsSkeletonDirectory = path.resolve('../components/src/styles/skeletons');
 
   const componentFiles = globby.sync(`${componentsSourceDirectory}/**/*.tsx`);
-  const skeletonFiles = globby.sync(`${componentsSkeletonDirectory}/**/*skeleton-styles.ts`);
+  const skeletonFiles = globby.sync(`${componentsSkeletonDirectory}/**/*skeleton-styles.ts`, {
+    ignore: IGNORED_SKELETON_STYLES_FILE_NAMES,
+  });
 
   const tags = componentFiles
     .filter((file) => !file.includes('-utils')) // skip utils files that have tsx extension
