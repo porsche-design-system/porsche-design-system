@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css 1`] = `
+exports[`getComponentCss() should return correct css for active: false, direction: asc and hideLabel: false 1`] = `
 ":host {
   display: table-cell !important;
   padding: 0.125rem 0.75rem 0.5rem !important;
@@ -42,7 +42,189 @@ button:focus:not(:focus-visible) {
 button:hover .icon, button:focus .icon {
   opacity: 1;
 }
-.hidden {
+.icon {
+  margin-left: 0.25rem;
+  opacity: 0;
+  transform: rotate3d(0,0,1,180deg);
+  transform-origin: 50% 50%;
+  transition: opacity var(--p-transition-duration, .24s) ease;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for active: false, direction: desc and hideLabel: false 1`] = `
+":host {
+  display: table-cell !important;
+  padding: 0.125rem 0.75rem 0.5rem !important;
+  border-bottom: 1px solid #626669 !important;
+  vertical-align: bottom !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
+}
+button {
+  display: flex;
+  align-items: flex-end;
+  padding: 0;
+  box-sizing: border-box;
+  appearance: none;
+  border: none;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
+  text-align: left;
+  background: transparent;
+  cursor: pointer;
+  transition: color var(--p-transition-duration, .24s) ease;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+button:hover {
+  color: #d5001c;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+button:hover .icon, button:focus .icon {
+  opacity: 1;
+}
+.icon {
+  margin-left: 0.25rem;
+  opacity: 0;
+  transform: rotate3d(0,0,1,0deg);
+  transform-origin: 50% 50%;
+  transition: opacity var(--p-transition-duration, .24s) ease;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for active: true, direction: asc and hideLabel: false 1`] = `
+":host {
+  display: table-cell !important;
+  padding: 0.125rem 0.75rem 0.5rem !important;
+  border-bottom: 1px solid #626669 !important;
+  vertical-align: bottom !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
+}
+button {
+  display: flex;
+  align-items: flex-end;
+  padding: 0;
+  box-sizing: border-box;
+  appearance: none;
+  border: none;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
+  text-align: left;
+  background: transparent;
+  cursor: pointer;
+  transition: color var(--p-transition-duration, .24s) ease;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+button:hover {
+  color: #d5001c;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+button:hover .icon, button:focus .icon {
+  opacity: 1;
+}
+.icon {
+  margin-left: 0.25rem;
+  opacity: 1;
+  transform: rotate3d(0,0,1,180deg);
+  transform-origin: 50% 50%;
+  transition: opacity var(--p-transition-duration, .24s) ease;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for active: true, direction: desc and hideLabel: false 1`] = `
+":host {
+  display: table-cell !important;
+  padding: 0.125rem 0.75rem 0.5rem !important;
+  border-bottom: 1px solid #626669 !important;
+  vertical-align: bottom !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
+}
+button {
+  display: flex;
+  align-items: flex-end;
+  padding: 0;
+  box-sizing: border-box;
+  appearance: none;
+  border: none;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
+  text-align: left;
+  background: transparent;
+  cursor: pointer;
+  transition: color var(--p-transition-duration, .24s) ease;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
+}
+button:hover {
+  color: #d5001c;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+button:hover .icon, button:focus .icon {
+  opacity: 1;
+}
+.icon {
+  margin-left: 0.25rem;
+  opacity: 1;
+  transform: rotate3d(0,0,1,0deg);
+  transform-origin: 50% 50%;
+  transition: opacity var(--p-transition-duration, .24s) ease;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for active: undefined, direction: undefined and hideLabel: false 1`] = `
+":host {
+  display: table-cell !important;
+  padding: 0.125rem 0.75rem 0.5rem !important;
+  border-bottom: 1px solid #626669 !important;
+  vertical-align: bottom !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for active: undefined, direction: undefined and hideLabel: true 1`] = `
+":host {
+  display: table-cell !important;
+  padding: 0.125rem 0.75rem 0.5rem !important;
+  border-bottom: 1px solid #626669 !important;
+  vertical-align: bottom !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
+}
+span {
   position: absolute;
   height: 1px;
   width: 1px;
@@ -53,18 +235,5 @@ button:hover .icon, button:focus .icon {
   clip-path: inset(50%);
   white-space: nowrap;
   display: block;
-}
-.icon {
-  margin-left: 0.25rem;
-  opacity: 0;
-  transition: opacity var(--p-transition-duration, .24s) ease;
-  transform: rotate3d(0,0,1,0deg);
-  transform-origin: 50% 50%;
-}
-.icon--asc {
-  transform: rotate3d(0,0,1,180deg);
-}
-.icon--active {
-  opacity: 1;
 }"
 `;
