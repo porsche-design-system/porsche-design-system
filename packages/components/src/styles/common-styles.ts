@@ -1,9 +1,9 @@
-import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 import type { JssStyle, Styles } from 'jss';
 import type { Theme } from '../types';
 import type { PropertiesHyphen } from 'csstype';
-import { breakpoint, fontWeight, getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
+import { fontWeight, getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
 import { getThemedColors } from './';
+export { Breakpoint, breakpoint } from '@porsche-design-system/utilities-v2';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
 const transitionTimingFunction = 'ease';
@@ -152,9 +152,6 @@ export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOp
     },
   };
 };
-
-export { Breakpoint, breakpoint } from '@porsche-design-system/utilities-v2';
-export const mediaQuery = (minBreakpoint: Breakpoint): string => `@media (min-width: ${breakpoint[minBreakpoint]}px)`;
 
 export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withDarkTheme: true }): Styles => {
   return {
