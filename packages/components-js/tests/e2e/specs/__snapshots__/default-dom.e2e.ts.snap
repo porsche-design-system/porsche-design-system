@@ -695,7 +695,7 @@ exports[`should have no basic DOM regression for p-table-head 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-table-head-cell 1`] = `
-"<span class=\\"\\">
+"<span>
   <slot>
   </slot>
 </span>"
