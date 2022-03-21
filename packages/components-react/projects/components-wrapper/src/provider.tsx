@@ -7,7 +7,8 @@ export const PorscheDesignSystemContext = createContext({
   usesSkeletons: undefined,
 });
 
-export const hasSkeleton = (): boolean => !!document.querySelector('style[uses-skeleton]');
+export const hasSkeleton = (): boolean =>
+  typeof window !== 'undefined' && !!document.querySelector('style[uses-skeleton]');
 
 type Props = { prefix?: string; usesSkeletons?: boolean };
 

@@ -10,7 +10,8 @@ export class DefaultConfig implements Required<PorscheDesignSystemModuleConfig> 
   prefix = '';
 }
 
-export const usesSkeletons = (): boolean => !!document.querySelector('style[uses-skeleton]');
+export const usesSkeletons = (): boolean =>
+  typeof window !== 'undefined' && !!document.querySelector('style[uses-skeleton]');
 
 export const USES_SKELETONS = new InjectionToken<boolean>('usesSkeletons');
 
