@@ -87,7 +87,7 @@ export class Modal {
 
   public componentDidRender(): void {
     if (this.open) {
-      setTimeout(() => (this.host.scrollTop = 0), 25);
+      setTimeout(() => (this.host.scrollTop = 0), 25); // reset scroll top to zero in case content is longer than viewport height, - some timeout is needed although it shouldn't
       this.dialog.focus(); // needs to happen after render
     }
   }
