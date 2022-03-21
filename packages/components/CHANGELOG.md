@@ -9,8 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Fixed
-- `Modal` scrolling, pinch to zoom on iOS
-- `Modal` initial positioning if scrollable
+- `Modal` scrolling and pinch to zoom on iOS
+- Initial positioning if scrollable of `Modal`
+- `asc` + `desc` sort icon of `Table`
 
 ### [2.9.1] - 2022-03-10
 
