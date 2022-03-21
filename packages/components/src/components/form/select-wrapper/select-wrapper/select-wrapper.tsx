@@ -76,7 +76,7 @@ export class SelectWrapper {
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.select.disabled, this.hideLabel, this.state, this.theme);
   }
 
   public componentDidRender(): void {
@@ -97,11 +97,6 @@ export class SelectWrapper {
   public render(): JSX.Element {
     const { disabled } = this.select;
 
-    const labelClasses = {
-      ['label']: true,
-      ['label--disabled']: disabled,
-    };
-
     const labelProps = {
       tag: 'span',
       color: 'inherit',
@@ -116,7 +111,7 @@ export class SelectWrapper {
     return (
       <Host>
         <div class="root">
-          <label class={labelClasses}>
+          <label class="label">
             {hasLabel(this.host, this.label) && (
               <PrefixedTagNames.pText class="label__text" {...labelProps}>
                 {this.label || <slot name="label" />}

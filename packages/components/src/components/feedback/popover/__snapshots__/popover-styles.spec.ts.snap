@@ -38,10 +38,7 @@ exports[`getComponentCss() should return correct css for direction: bottom 1`] =
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.5;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -113,10 +110,7 @@ exports[`getComponentCss() should return correct css for direction: left 1`] = `
   top: 50%;
   right: 100%;
   transform: translateY(-50%);
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.5;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -188,10 +182,7 @@ exports[`getComponentCss() should return correct css for direction: right 1`] = 
   top: 50%;
   left: 100%;
   transform: translateY(-50%);
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.5;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -263,10 +254,7 @@ exports[`getComponentCss() should return correct css for direction: top 1`] = `
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.5;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   word-wrap: break-word;

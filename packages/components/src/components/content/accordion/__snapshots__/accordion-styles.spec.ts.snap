@@ -23,7 +23,7 @@ button {
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-weight: 600;
   font-size: 1.5rem;
   line-height: 1.5;
@@ -100,7 +100,7 @@ button {
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-weight: 600;
   font-size: 1rem;
   line-height: 1.5;
@@ -175,7 +175,7 @@ button {
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-weight: 600;
   font-size: 1rem;
   line-height: 1.5;
@@ -252,7 +252,7 @@ button {
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-weight: 600;
   font-size: 1rem;
   line-height: 1.5;
@@ -326,10 +326,8 @@ button {
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-weight: 600;
-  font-size: 1rem;
-  line-height: 1.5;
   padding: 0.25rem 0;
   outline: 1px solid transparent;
   outline-offset: 2px;
@@ -395,10 +393,8 @@ button {
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-weight: 600;
-  font-size: 1rem;
-  line-height: 1.5;
   padding: 0.25rem 0;
   outline: 1px solid transparent;
   outline-offset: 2px;
@@ -469,7 +465,7 @@ button {
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-weight: 600;
   font-size: 1rem;
   line-height: 1.5;
