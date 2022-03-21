@@ -95,7 +95,7 @@ Please use only valid component tag names:
   const initialVisibilityHiddenStyles = prefixedTagNames.join(',') + '{visibility:hidden}';
 
   const mergedStyles = \`\${initialVisibilityHiddenStyles}\${getSkeletonStyles({prefixedTagNamesWithSkeleton,prefixedUnusedTagNamesWithSkeleton, prefix})}\`;
-  const markup = format === 'html' ?  \`<style\$\{usesSkeleton\}>\${mergedStyles}</style>\` : <style {...usesSkeletonJsx}>{mergedStyles.replace(/content:""/g, "content:''")}</style>;
+  const markup = format === 'html' ?  \`<style\$\{usesSkeleton\}>\${mergedStyles}</style>\` : <style dangerouslySetInnerHTML={{__html: mergedStyles}} {...usesSkeletonJsx}/>;
 
   return withoutTags
     ? mergedStyles
