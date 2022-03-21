@@ -1,18 +1,13 @@
 import { joinArrayElementsToString, withoutTagsOption } from './utils';
-import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
+import { getMinifiedCss, INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
 import {
   getButtonLinkPureSkeletonStyles,
   getButtonLinkSocialSkeletonStyles,
   getCheckboxRadioWrapperSkeletonStyles,
   getFieldsetWrapperSkeletonStyles,
-  getHeadlineSkeletonStyles,
   getSelectTextFieldWrapperSkeletonStyles,
   getTextareaWrapperSkeletonStyles,
-  getTextListItemSkeletonStyles,
-  getTextListSkeletonStyles,
-  getTextSkeletonStyles,
 } from '../../../../components/src/styles/skeletons';
-import { getMinifiedCss } from '@porsche-design-system/shared';
 
 // TODO: remove skeleton styles after all are hydrated
 
@@ -55,11 +50,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
     'p-button-pure|p-link-pure': getButtonLinkPureSkeletonStyles(),
     'p-checkbox-wrapper|p-radio-button-wrapper': getCheckboxRadioWrapperSkeletonStyles(),
     'p-fieldset-wrapper': getFieldsetWrapperSkeletonStyles(),
-    'p-headline': getHeadlineSkeletonStyles(),
     'p-select-wrapper|p-text-field-wrapper': getSelectTextFieldWrapperSkeletonStyles(),
-    'p-text': getTextSkeletonStyles(),
-    'p-text-list': getTextListSkeletonStyles(),
-    'p-text-list-item': getTextListItemSkeletonStyles(),
     'p-textarea-wrapper': getTextareaWrapperSkeletonStyles(),
   };
   const minifiedSkeletonStyles = Object.entries(skeletonStyles).reduce(
