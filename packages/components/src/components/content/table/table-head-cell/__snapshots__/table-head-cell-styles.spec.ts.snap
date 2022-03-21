@@ -45,7 +45,7 @@ button:hover .icon, button:focus .icon {
 .icon {
   margin-left: 0.25rem;
   opacity: 0;
-  transform: rotate3d(0,0,1,180deg);
+  transform: rotate3d(0,0,1,0deg);
   transform-origin: 50% 50%;
   transition: opacity var(--p-transition-duration, .24s) ease;
 }"
@@ -96,7 +96,7 @@ button:hover .icon, button:focus .icon {
 .icon {
   margin-left: 0.25rem;
   opacity: 0;
-  transform: rotate3d(0,0,1,0deg);
+  transform: rotate3d(0,0,1,180deg);
   transform-origin: 50% 50%;
   transition: opacity var(--p-transition-duration, .24s) ease;
 }"
@@ -147,7 +147,7 @@ button:hover .icon, button:focus .icon {
 .icon {
   margin-left: 0.25rem;
   opacity: 1;
-  transform: rotate3d(0,0,1,180deg);
+  transform: rotate3d(0,0,1,0deg);
   transform-origin: 50% 50%;
   transition: opacity var(--p-transition-duration, .24s) ease;
 }"
@@ -198,7 +198,7 @@ button:hover .icon, button:focus .icon {
 .icon {
   margin-left: 0.25rem;
   opacity: 1;
-  transform: rotate3d(0,0,1,0deg);
+  transform: rotate3d(0,0,1,180deg);
   transform-origin: 50% 50%;
   transition: opacity var(--p-transition-duration, .24s) ease;
 }"
