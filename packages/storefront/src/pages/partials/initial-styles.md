@@ -36,6 +36,8 @@ Be aware that skeletons do **not** work when wrapped inside any of the following
 Using them inside said layout components will lead to flashes of skeletons.  
 When using skeletons with `Fieldset Wrapper` be aware that layout shifts will happen, when providing a `label` property.
 
+When using skeletons in an SSR or SSG context, make sure to set `usesSkeletons={true}` on the `PorscheDesignSystemProvider`
+
 ## Examples
 
 Project integration differs based on the project setup.  
@@ -43,8 +45,7 @@ The following showcases the most common ways.
 
 <PartialDocs name="getInitialStyles" :params="params" location="head"></PartialDocs>
 
-<script lang="ts">
-import Vue from 'vue';
+<script lang="ts">import Vue from 'vue';
 import Component from 'vue-class-component';
 import {SKELETON_TAG_NAMES} from "@porsche-design-system/shared"; 
 
