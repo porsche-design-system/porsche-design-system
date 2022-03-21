@@ -18,7 +18,7 @@ export const TabsPage = (): JSX.Element => {
 
       <div className="playground dark" title="should render tabs on dark background">
         <PTabs theme="dark">
-          <PTabsItem label="Tab 1"><div style={{ color: 'white' }}>Tab Content 1</div></PTabsItem>
+          <PTabsItem label="Tab 1">Tab Content 1</PTabsItem>
           <PTabsItem label="Tab 2">Tab Content 2</PTabsItem>
           <PTabsItem label="Tab 3">Tab Content 3</PTabsItem>
           <PTabsItem label="Tab 4">Tab Content 4</PTabsItem>
@@ -48,7 +48,7 @@ export const TabsPage = (): JSX.Element => {
           <PTabsItem label="Tab 4">Tab Content 4</PTabsItem>
           <PTabsItem label="Tab 5">Tab Content 5</PTabsItem>
           <PTabsItem label="Tab 6">Tab Content 6</PTabsItem>
-          <PTabsItem label="Tab 7"><div style={{ color: 'white' }}>Tab Content 7</div></PTabsItem>
+          <PTabsItem label="Tab 7">Tab Content 7</PTabsItem>
         </PTabs>
       </div>
 
@@ -66,7 +66,7 @@ export const TabsPage = (): JSX.Element => {
 
       <div className="playground dark" title="should render tabs size medium on dark background">
         <PTabs theme="dark" size="medium">
-          <PTabsItem label="Tab 1"><div style={{ color: 'white' }}>Tab Content 1</div></PTabsItem>
+          <PTabsItem label="Tab 1">Tab Content 1</PTabsItem>
           <PTabsItem label="Tab 2">Tab Content 2</PTabsItem>
           <PTabsItem label="Tab 3">Tab Content 3</PTabsItem>
           <PTabsItem label="Tab 4">Tab Content 4</PTabsItem>
@@ -96,7 +96,7 @@ export const TabsPage = (): JSX.Element => {
           <PTabsItem label="Tab 4">Tab Content 4</PTabsItem>
           <PTabsItem label="Tab 5">Tab Content 5</PTabsItem>
           <PTabsItem label="Tab 6">Tab Content 6</PTabsItem>
-          <PTabsItem label="Tab 7"><div style={{ color: 'white' }}>Tab Content 7</div></PTabsItem>
+          <PTabsItem label="Tab 7">Tab Content 7</PTabsItem>
         </PTabs>
       </div>
 
@@ -114,7 +114,7 @@ export const TabsPage = (): JSX.Element => {
 
       <div className="playground dark" title="should render tabs semibold on dark background">
         <PTabs theme="dark" weight="semibold">
-          <PTabsItem label="Tab 1"><div style={{ color: 'white' }}>Tab Content 1</div></PTabsItem>
+          <PTabsItem label="Tab 1">Tab Content 1</PTabsItem>
           <PTabsItem label="Tab 2">Tab Content 2</PTabsItem>
           <PTabsItem label="Tab 3">Tab Content 3</PTabsItem>
           <PTabsItem label="Tab 4">Tab Content 4</PTabsItem>
@@ -138,7 +138,7 @@ export const TabsPage = (): JSX.Element => {
 
       <div className="playground dark" title="should render tabs semibold and medium on dark background">
         <PTabs theme="dark" weight="semibold" size="medium">
-          <PTabsItem label="Tab 1"><div style={{ color: 'white' }}>Tab Content 1</div></PTabsItem>
+          <PTabsItem label="Tab 1">Tab Content 1</PTabsItem>
           <PTabsItem label="Tab 2">Tab Content 2</PTabsItem>
           <PTabsItem label="Tab 3">Tab Content 3</PTabsItem>
           <PTabsItem label="Tab 4">Tab Content 4</PTabsItem>
@@ -162,7 +162,7 @@ export const TabsPage = (): JSX.Element => {
 
       <div className="playground dark" title="should render tabs gradientColorScheme surface on dark background">
         <PTabs theme="dark" gradientColorScheme="surface">
-          <PTabsItem label="Tab 1"><div style={{ color: 'white' }}>Tab Content 1</div></PTabsItem>
+          <PTabsItem label="Tab 1">Tab Content 1</PTabsItem>
           <PTabsItem label="Tab 2">Tab Content 2</PTabsItem>
           <PTabsItem label="Tab 3">Tab Content 3</PTabsItem>
           <PTabsItem label="Tab 4">Tab Content 4</PTabsItem>
@@ -192,7 +192,7 @@ export const TabsPage = (): JSX.Element => {
           <PTabsItem label="Tab 1">Tab Content 1</PTabsItem>
           <PTabsItem label="Tab 2">Tab Content 2</PTabsItem>
           <PTabsItem label="Tab 3">Tab Content 3</PTabsItem>
-          <PTabsItem label="Tab 4"><div style={{ color: 'white' }}>Tab Content 4</div></PTabsItem>
+          <PTabsItem label="Tab 4">Tab Content 4</PTabsItem>
           <PTabsItem label="Tab 5">Tab Content 5</PTabsItem>
           <PTabsItem label="Tab 6">Tab Content 6</PTabsItem>
           <PTabsItem label="Tab 7">Tab Content 7</PTabsItem>

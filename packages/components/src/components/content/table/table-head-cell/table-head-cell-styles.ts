@@ -8,7 +8,7 @@ import {
   pxToRemWithUnit,
   getThemedColors,
 } from '../../../../styles';
-import { fontFamily, fontSize, fontWeight, spacing } from '@porsche-design-system/utilities-v2';
+import { fontWeight, spacing, textSmall } from '@porsche-design-system/utilities-v2';
 
 const { contrastMediumColor, baseColor } = getThemedColors('light');
 
@@ -30,9 +30,8 @@ export const getComponentCss = (): string => {
         boxSizing: 'border-box',
         appearance: 'none',
         border: 'none',
-        fontFamily,
+        ...textSmall,
         fontWeight: fontWeight.semibold,
-        ...fontSize.small,
         color: baseColor,
         textDecoration: 'none',
         textAlign: 'left',

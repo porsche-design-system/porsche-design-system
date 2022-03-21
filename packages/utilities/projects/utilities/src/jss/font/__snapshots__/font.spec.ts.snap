@@ -25,6 +25,8 @@ Object {
       "lineHeight": 1.6666666667,
     },
   },
+  "style": "normal",
+  "variant": "normal",
   "weight": Object {
     "bold": 700,
     "regular": 400,
@@ -60,6 +62,10 @@ Object {
   },
 }
 `;
+
+exports[`should contain correct values for fontStyle 1`] = `"normal"`;
+
+exports[`should contain correct values for fontVariant 1`] = `"normal"`;
 
 exports[`should contain correct values for fontWeight 1`] = `
 Object {

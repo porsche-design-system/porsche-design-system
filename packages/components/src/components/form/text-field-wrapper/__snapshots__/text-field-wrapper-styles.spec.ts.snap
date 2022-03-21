@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, hasUnitOrCounter: false, unitPosition: prefix and isPassword: false 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: false, hasUnitOrCounter: none, unitPosition: false and isPassword: prefix 1`] = `
 ":host {
   display: block;
 }
@@ -23,10 +23,7 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   border-radius: 0 !important;
   background-color: #fff !important;
   opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -110,17 +107,17 @@ button:disabled {
   position: relative;
 }
 .label__text {
-  position: absolute;
-  height: 1px;
+  position: static;
   width: fit-content;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
   padding: 0 0 0.25rem;
   display: block;
+  color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
@@ -128,13 +125,10 @@ button:disabled {
   padding-bottom: 0.5rem;
 }
 .label__text--description {
-  color: #626669;
+  color: #96989a;
 }
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
   border-color: #000 !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
 }
 .required {
   user-select: none;
@@ -159,82 +153,10 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (min-width: 480px) {
-  .label__text {
-    position: static;
-    width: fit-content;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    clip-path: none;
-    white-space: normal;
-    padding: 0 0 0.25rem;
-  }
-}
-
-@media (min-width: 760px) {
-  .label__text {
-    position: absolute;
-    height: 1px;
-    width: fit-content;
-    border: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(1px,1px,1px,1px);
-    clip-path: inset(50%);
-    white-space: nowrap;
-    padding: 0 0 0.25rem;
-  }
-}
-
-@media (min-width: 1000px) {
-  .label__text {
-    position: static;
-    width: fit-content;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    clip-path: none;
-    white-space: normal;
-    padding: 0 0 0.25rem;
-  }
-}
-
-@media (min-width: 1300px) {
-  .label__text {
-    position: absolute;
-    height: 1px;
-    width: fit-content;
-    border: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(1px,1px,1px,1px);
-    clip-path: inset(50%);
-    white-space: nowrap;
-    padding: 0 0 0.25rem;
-  }
-}
-
-@media (min-width: 1760px) {
-  .label__text {
-    position: static;
-    width: fit-content;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    clip-path: none;
-    white-space: normal;
-    padding: 0 0 0.25rem;
-  }
-}
-"
+}"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: error, hasUnitOrCounter: false, unitPosition: prefix and isPassword: false 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: false, hasUnitOrCounter: error, unitPosition: false and isPassword: prefix 1`] = `
 ":host {
   display: block;
 }
@@ -257,10 +179,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-radius: 0 !important;
   background-color: #fff !important;
   opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -354,6 +273,7 @@ button:disabled {
   white-space: normal;
   padding: 0 0 0.25rem;
   display: block;
+  color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
@@ -365,9 +285,6 @@ button:disabled {
 }
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
 }
 .required {
   user-select: none;
@@ -396,7 +313,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: error, hasUnitOrCounter: false, unitPosition: prefix and isPassword: true 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: false, hasUnitOrCounter: error, unitPosition: false and isPassword: prefix 2`] = `
 ":host {
   display: block;
 }
@@ -419,10 +336,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-radius: 0 !important;
   background-color: #fff !important;
   opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -519,6 +433,7 @@ button:disabled {
   white-space: normal;
   padding: 0 0 0.25rem;
   display: block;
+  color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
@@ -530,9 +445,6 @@ button:disabled {
 }
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
 }
 .required {
   user-select: none;
@@ -561,7 +473,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: error, hasUnitOrCounter: true, unitPosition: prefix and isPassword: false 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: false, hasUnitOrCounter: error, unitPosition: true and isPassword: prefix 1`] = `
 ":host {
   display: block;
 }
@@ -584,10 +496,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-radius: 0 !important;
   background-color: #fff !important;
   opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -680,6 +589,7 @@ button:disabled {
   white-space: normal;
   padding: 0 0 0.25rem;
   display: block;
+  color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
@@ -691,13 +601,6 @@ button:disabled {
 }
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
-}
-.label--disabled .unit {
-  color: #96989a;
-  cursor: not-allowed;
 }
 .unit {
   position: absolute;
@@ -738,7 +641,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: error, hasUnitOrCounter: true, unitPosition: suffix and isPassword: false 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: false, hasUnitOrCounter: error, unitPosition: true and isPassword: suffix 1`] = `
 ":host {
   display: block;
 }
@@ -761,10 +664,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-radius: 0 !important;
   background-color: #fff !important;
   opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -857,6 +757,7 @@ button:disabled {
   white-space: normal;
   padding: 0 0 0.25rem;
   display: block;
+  color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
@@ -868,13 +769,6 @@ button:disabled {
 }
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
-}
-.label--disabled .unit {
-  color: #96989a;
-  cursor: not-allowed;
 }
 .unit {
   position: absolute;
@@ -915,7 +809,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, hasUnitOrCounter: false, unitPosition: prefix and isPassword: false 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: false, hasUnitOrCounter: none, unitPosition: false and isPassword: prefix 1`] = `
 ":host {
   display: block;
 }
@@ -938,10 +832,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-radius: 0 !important;
   background-color: #fff !important;
   opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -1035,6 +926,7 @@ button:disabled {
   white-space: normal;
   padding: 0 0 0.25rem;
   display: block;
+  color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
@@ -1046,9 +938,6 @@ button:disabled {
 }
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
   border-color: #000 !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
 }
 .required {
   user-select: none;
@@ -1076,7 +965,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, hasUnitOrCounter: false, unitPosition: prefix and isPassword: true 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: false, hasUnitOrCounter: none, unitPosition: false and isPassword: prefix 2`] = `
 ":host {
   display: block;
 }
@@ -1099,10 +988,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-radius: 0 !important;
   background-color: #fff !important;
   opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -1199,6 +1085,7 @@ button:disabled {
   white-space: normal;
   padding: 0 0 0.25rem;
   display: block;
+  color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
@@ -1210,9 +1097,6 @@ button:disabled {
 }
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
   border-color: #000 !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
 }
 .required {
   user-select: none;
@@ -1240,7 +1124,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, hasUnitOrCounter: true, unitPosition: prefix and isPassword: false 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: false, hasUnitOrCounter: none, unitPosition: true and isPassword: prefix 1`] = `
 ":host {
   display: block;
 }
@@ -1263,10 +1147,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-radius: 0 !important;
   background-color: #fff !important;
   opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -1359,6 +1240,7 @@ button:disabled {
   white-space: normal;
   padding: 0 0 0.25rem;
   display: block;
+  color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
@@ -1370,13 +1252,6 @@ button:disabled {
 }
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
   border-color: #000 !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
-}
-.label--disabled .unit {
-  color: #96989a;
-  cursor: not-allowed;
 }
 .unit {
   position: absolute;
@@ -1416,7 +1291,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, hasUnitOrCounter: true, unitPosition: suffix and isPassword: false 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: false, hasUnitOrCounter: none, unitPosition: true and isPassword: suffix 1`] = `
 ":host {
   display: block;
 }
@@ -1439,10 +1314,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-radius: 0 !important;
   background-color: #fff !important;
   opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -1535,6 +1407,7 @@ button:disabled {
   white-space: normal;
   padding: 0 0 0.25rem;
   display: block;
+  color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
@@ -1546,13 +1419,6 @@ button:disabled {
 }
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
   border-color: #000 !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
-}
-.label--disabled .unit {
-  color: #96989a;
-  cursor: not-allowed;
 }
 .unit {
   position: absolute;
@@ -1592,7 +1458,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: success, hasUnitOrCounter: false, unitPosition: prefix and isPassword: false 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: false, hasUnitOrCounter: success, unitPosition: false and isPassword: prefix 1`] = `
 ":host {
   display: block;
 }
@@ -1615,10 +1481,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-radius: 0 !important;
   background-color: #fff !important;
   opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -1712,6 +1575,7 @@ button:disabled {
   white-space: normal;
   padding: 0 0 0.25rem;
   display: block;
+  color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
@@ -1723,9 +1587,6 @@ button:disabled {
 }
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #014d0c !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
 }
 .required {
   user-select: none;
@@ -1754,7 +1615,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: success, hasUnitOrCounter: false, unitPosition: prefix and isPassword: true 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: false, hasUnitOrCounter: success, unitPosition: false and isPassword: prefix 2`] = `
 ":host {
   display: block;
 }
@@ -1777,10 +1638,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-radius: 0 !important;
   background-color: #fff !important;
   opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -1877,6 +1735,7 @@ button:disabled {
   white-space: normal;
   padding: 0 0 0.25rem;
   display: block;
+  color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
@@ -1888,9 +1747,6 @@ button:disabled {
 }
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #014d0c !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
 }
 .required {
   user-select: none;
@@ -1919,7 +1775,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: success, hasUnitOrCounter: true, unitPosition: prefix and isPassword: false 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: false, hasUnitOrCounter: success, unitPosition: true and isPassword: prefix 1`] = `
 ":host {
   display: block;
 }
@@ -1942,10 +1798,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-radius: 0 !important;
   background-color: #fff !important;
   opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -2038,6 +1891,7 @@ button:disabled {
   white-space: normal;
   padding: 0 0 0.25rem;
   display: block;
+  color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
@@ -2049,13 +1903,6 @@ button:disabled {
 }
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #014d0c !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
-}
-.label--disabled .unit {
-  color: #96989a;
-  cursor: not-allowed;
 }
 .unit {
   position: absolute;
@@ -2096,7 +1943,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: success, hasUnitOrCounter: true, unitPosition: suffix and isPassword: false 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: false, hasUnitOrCounter: success, unitPosition: true and isPassword: suffix 1`] = `
 ":host {
   display: block;
 }
@@ -2119,10 +1966,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-radius: 0 !important;
   background-color: #fff !important;
   opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -2215,6 +2059,7 @@ button:disabled {
   white-space: normal;
   padding: 0 0 0.25rem;
   display: block;
+  color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
@@ -2226,13 +2071,6 @@ button:disabled {
 }
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #014d0c !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
-}
-.label--disabled .unit {
-  color: #96989a;
-  cursor: not-allowed;
 }
 .unit {
   position: absolute;
@@ -2273,7 +2111,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: error, hasUnitOrCounter: false, unitPosition: prefix and isPassword: false 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: false, hasUnitOrCounter: error, unitPosition: false and isPassword: prefix 1`] = `
 ":host {
   display: block;
 }
@@ -2296,10 +2134,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-radius: 0 !important;
   background-color: #fff !important;
   opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -2383,17 +2218,17 @@ button:disabled {
   position: relative;
 }
 .label__text {
-  position: absolute;
-  height: 1px;
+  position: static;
   width: fit-content;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
   padding: 0 0 0.25rem;
   display: block;
+  color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
@@ -2401,13 +2236,10 @@ button:disabled {
   padding-bottom: 0.5rem;
 }
 .label__text--description {
-  color: #626669;
+  color: #96989a;
 }
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
 }
 .required {
   user-select: none;
@@ -2436,7 +2268,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: error, hasUnitOrCounter: false, unitPosition: prefix and isPassword: true 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: false, hasUnitOrCounter: error, unitPosition: false and isPassword: prefix 2`] = `
 ":host {
   display: block;
 }
@@ -2459,10 +2291,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-radius: 0 !important;
   background-color: #fff !important;
   opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -2549,17 +2378,17 @@ button:disabled {
   position: relative;
 }
 .label__text {
-  position: absolute;
-  height: 1px;
+  position: static;
   width: fit-content;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
   padding: 0 0 0.25rem;
   display: block;
+  color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
@@ -2567,13 +2396,10 @@ button:disabled {
   padding-bottom: 0.5rem;
 }
 .label__text--description {
-  color: #626669;
+  color: #96989a;
 }
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
 }
 .required {
   user-select: none;
@@ -2602,7 +2428,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: error, hasUnitOrCounter: true, unitPosition: prefix and isPassword: false 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: false, hasUnitOrCounter: error, unitPosition: true and isPassword: prefix 1`] = `
 ":host {
   display: block;
 }
@@ -2625,10 +2451,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-radius: 0 !important;
   background-color: #fff !important;
   opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -2711,17 +2534,17 @@ button:disabled {
   position: relative;
 }
 .label__text {
-  position: absolute;
-  height: 1px;
+  position: static;
   width: fit-content;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
   padding: 0 0 0.25rem;
   display: block;
+  color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
@@ -2729,17 +2552,10 @@ button:disabled {
   padding-bottom: 0.5rem;
 }
 .label__text--description {
-  color: #626669;
+  color: #96989a;
 }
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
-}
-.label--disabled .unit {
-  color: #96989a;
-  cursor: not-allowed;
 }
 .unit {
   position: absolute;
@@ -2748,7 +2564,8 @@ button:disabled {
   padding: 0.75rem;
   z-index: 1;
   box-sizing: border-box;
-  color: #626669;
+  color: #96989a;
+  cursor: not-allowed;
 }
 .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
@@ -2780,7 +2597,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: error, hasUnitOrCounter: true, unitPosition: prefix and isPassword: false 2`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: false, hasUnitOrCounter: error, unitPosition: true and isPassword: prefix 2`] = `
 ":host {
   display: block;
 }
@@ -2803,10 +2620,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-radius: 0 !important;
   background-color: #fff !important;
   opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -2889,17 +2703,17 @@ button:disabled {
   position: relative;
 }
 .label__text {
-  position: absolute;
-  height: 1px;
+  position: static;
   width: fit-content;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
   padding: 0 0 0.25rem;
   display: block;
+  color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
@@ -2907,17 +2721,10 @@ button:disabled {
   padding-bottom: 0.5rem;
 }
 .label__text--description {
-  color: #626669;
+  color: #96989a;
 }
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
-}
-.label--disabled .unit {
-  color: #96989a;
-  cursor: not-allowed;
 }
 .unit {
   position: absolute;
@@ -2926,7 +2733,8 @@ button:disabled {
   padding: 0.75rem;
   z-index: 1;
   box-sizing: border-box;
-  color: #626669;
+  color: #96989a;
+  cursor: not-allowed;
 }
 .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #a30000 !important;
@@ -2958,7 +2766,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: none, hasUnitOrCounter: false, unitPosition: prefix and isPassword: false 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: false, hasUnitOrCounter: none, unitPosition: false and isPassword: prefix 1`] = `
 ":host {
   display: block;
 }
@@ -2981,10 +2789,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-radius: 0 !important;
   background-color: #fff !important;
   opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -3068,17 +2873,17 @@ button:disabled {
   position: relative;
 }
 .label__text {
-  position: absolute;
-  height: 1px;
+  position: static;
   width: fit-content;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
   padding: 0 0 0.25rem;
   display: block;
+  color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
@@ -3086,13 +2891,10 @@ button:disabled {
   padding-bottom: 0.5rem;
 }
 .label__text--description {
-  color: #626669;
+  color: #96989a;
 }
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
   border-color: #000 !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
 }
 .required {
   user-select: none;
@@ -3120,7 +2922,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: none, hasUnitOrCounter: false, unitPosition: prefix and isPassword: true 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: false, hasUnitOrCounter: none, unitPosition: false and isPassword: prefix 2`] = `
 ":host {
   display: block;
 }
@@ -3143,10 +2945,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-radius: 0 !important;
   background-color: #fff !important;
   opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -3233,17 +3032,17 @@ button:disabled {
   position: relative;
 }
 .label__text {
-  position: absolute;
-  height: 1px;
+  position: static;
   width: fit-content;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
   padding: 0 0 0.25rem;
   display: block;
+  color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
@@ -3251,13 +3050,10 @@ button:disabled {
   padding-bottom: 0.5rem;
 }
 .label__text--description {
-  color: #626669;
+  color: #96989a;
 }
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
   border-color: #000 !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
 }
 .required {
   user-select: none;
@@ -3285,7 +3081,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: none, hasUnitOrCounter: true, unitPosition: prefix and isPassword: false 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: false, hasUnitOrCounter: none, unitPosition: true and isPassword: prefix 1`] = `
 ":host {
   display: block;
 }
@@ -3308,10 +3104,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-radius: 0 !important;
   background-color: #fff !important;
   opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -3394,17 +3187,17 @@ button:disabled {
   position: relative;
 }
 .label__text {
-  position: absolute;
-  height: 1px;
+  position: static;
   width: fit-content;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
   padding: 0 0 0.25rem;
   display: block;
+  color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
@@ -3412,17 +3205,10 @@ button:disabled {
   padding-bottom: 0.5rem;
 }
 .label__text--description {
-  color: #626669;
+  color: #96989a;
 }
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
   border-color: #000 !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
-}
-.label--disabled .unit {
-  color: #96989a;
-  cursor: not-allowed;
 }
 .unit {
   position: absolute;
@@ -3431,7 +3217,8 @@ button:disabled {
   padding: 0.75rem;
   z-index: 1;
   box-sizing: border-box;
-  color: #626669;
+  color: #96989a;
+  cursor: not-allowed;
 }
 .unit:hover~::slotted(input:not(:disabled):not([readonly])) {
   border-color: #000 !important;
@@ -3462,7 +3249,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: none, hasUnitOrCounter: true, unitPosition: prefix and isPassword: false 2`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: false, hasUnitOrCounter: none, unitPosition: true and isPassword: prefix 2`] = `
 ":host {
   display: block;
 }
@@ -3485,10 +3272,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-radius: 0 !important;
   background-color: #fff !important;
   opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -3571,17 +3355,17 @@ button:disabled {
   position: relative;
 }
 .label__text {
-  position: absolute;
-  height: 1px;
+  position: static;
   width: fit-content;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
   padding: 0 0 0.25rem;
   display: block;
+  color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
@@ -3589,17 +3373,10 @@ button:disabled {
   padding-bottom: 0.5rem;
 }
 .label__text--description {
-  color: #626669;
+  color: #96989a;
 }
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
   border-color: #000 !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
-}
-.label--disabled .unit {
-  color: #96989a;
-  cursor: not-allowed;
 }
 .unit {
   position: absolute;
@@ -3608,7 +3385,8 @@ button:disabled {
   padding: 0.75rem;
   z-index: 1;
   box-sizing: border-box;
-  color: #626669;
+  color: #96989a;
+  cursor: not-allowed;
 }
 .unit:hover~::slotted(input:not(:disabled):not([readonly])) {
   border-color: #000 !important;
@@ -3639,7 +3417,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: success, hasUnitOrCounter: false, unitPosition: prefix and isPassword: false 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: false, hasUnitOrCounter: success, unitPosition: false and isPassword: prefix 1`] = `
 ":host {
   display: block;
 }
@@ -3662,10 +3440,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-radius: 0 !important;
   background-color: #fff !important;
   opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -3749,17 +3524,17 @@ button:disabled {
   position: relative;
 }
 .label__text {
-  position: absolute;
-  height: 1px;
+  position: static;
   width: fit-content;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
   padding: 0 0 0.25rem;
   display: block;
+  color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
@@ -3767,13 +3542,10 @@ button:disabled {
   padding-bottom: 0.5rem;
 }
 .label__text--description {
-  color: #626669;
+  color: #96989a;
 }
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
   border-color: #014d0c !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
 }
 .required {
   user-select: none;
@@ -3802,7 +3574,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: success, hasUnitOrCounter: false, unitPosition: prefix and isPassword: true 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: false, hasUnitOrCounter: success, unitPosition: false and isPassword: prefix 2`] = `
 ":host {
   display: block;
 }
@@ -3825,10 +3597,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-radius: 0 !important;
   background-color: #fff !important;
   opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -3839,6 +3608,504 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input:focus) {
   outline-color: #018a16 !important;
+}
+::slotted(input:disabled) {
+  cursor: not-allowed !important;
+  color: #96989a !important;
+  border-color: #96989a !important;
+  -webkit-text-fill-color: #96989a !important;
+}
+::slotted(input[readonly]) {
+  border-color: #ebebeb !important;
+  background-color: #ebebeb !important;
+}
+::slotted(input[readonly]:focus) {
+  outline-color: transparent !important;
+}
+::slotted(input[readonly]:not(:disabled)) {
+  color: #626669 !important;
+}
+::slotted(input[type=\\"number\\"]) {
+  -moz-appearance: textfield !important;
+}
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
+  -webkit-background-clip: padding-box !important;
+}
+::slotted(input[type=\\"password\\"]),::slotted(input[type=\\"text\\"]) {
+  padding-right: 3rem !important;
+}
+::slotted(input[type=\\"search\\"]) {
+  padding-right: 3rem !important;
+}
+button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.75rem;
+  box-sizing: border-box;
+  outline: 1px solid transparent;
+  appearance: none;
+  border: none;
+  text-decoration: none;
+  background: transparent;
+  cursor: pointer;
+  color: #000;
+  transition: color var(--p-transition-duration, .24s) ease;
+  outline-offset: -5px;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+button:hover {
+  color: #d5001c;
+}
+button:active {
+  color: #d5001c;
+}
+button:disabled {
+  color: #96989a;
+  cursor: not-allowed;
+}
+.root {
+  display: block;
+  position: relative;
+}
+.label {
+  display: block;
+  position: relative;
+}
+.label__text {
+  position: static;
+  width: fit-content;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+  padding: 0 0 0.25rem;
+  display: block;
+  color: #96989a;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.label__text+.label__text--description {
+  margin-top: -0.25rem;
+  padding-bottom: 0.5rem;
+}
+.label__text--description {
+  color: #96989a;
+}
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
+}
+.required {
+  user-select: none;
+  color: #e00000;
+}
+.message {
+  display: flex;
+  margin-top: 0.25rem;
+  color: #018a16;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.message__icon {
+  margin-right: 0.25rem;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: true, state: false, hasUnitOrCounter: success, unitPosition: true and isPassword: prefix 1`] = `
+":host {
+  display: block;
+}
+::slotted(input) {
+  display: block !important;
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 3rem !important;
+  margin: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  border: 2px solid #018a16 !important;
+  border-radius: 0 !important;
+  background-color: #fff !important;
+  opacity: 1 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-indent: 0 !important;
+  color: #000 !important;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+}
+::slotted(input:hover) {
+  border-color: #014d0c !important;
+}
+::slotted(input:focus) {
+  outline-color: #018a16 !important;
+}
+::slotted(input:disabled) {
+  cursor: not-allowed !important;
+  color: #96989a !important;
+  border-color: #96989a !important;
+  -webkit-text-fill-color: #96989a !important;
+}
+::slotted(input[readonly]) {
+  border-color: #ebebeb !important;
+  background-color: #ebebeb !important;
+}
+::slotted(input[readonly]:focus) {
+  outline-color: transparent !important;
+}
+::slotted(input[readonly]:not(:disabled)) {
+  color: #626669 !important;
+}
+::slotted(input[type=\\"number\\"]) {
+  -moz-appearance: textfield !important;
+}
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
+  -webkit-background-clip: padding-box !important;
+}
+::slotted(input[type=\\"search\\"]) {
+  padding-right: 3rem !important;
+}
+button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.75rem;
+  box-sizing: border-box;
+  outline: 1px solid transparent;
+  appearance: none;
+  border: none;
+  text-decoration: none;
+  background: transparent;
+  cursor: pointer;
+  color: #000;
+  transition: color var(--p-transition-duration, .24s) ease;
+  outline-offset: -5px;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+button:hover {
+  color: #d5001c;
+}
+button:active {
+  color: #d5001c;
+}
+button:disabled {
+  color: #96989a;
+  cursor: not-allowed;
+}
+.root {
+  display: block;
+  position: relative;
+}
+.label {
+  display: block;
+  position: relative;
+}
+.label__text {
+  position: static;
+  width: fit-content;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+  padding: 0 0 0.25rem;
+  display: block;
+  color: #96989a;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.label__text+.label__text--description {
+  margin-top: -0.25rem;
+  padding-bottom: 0.5rem;
+}
+.label__text--description {
+  color: #96989a;
+}
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
+}
+.unit {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0.75rem;
+  z-index: 1;
+  box-sizing: border-box;
+  color: #96989a;
+  cursor: not-allowed;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
+}
+.required {
+  user-select: none;
+  color: #e00000;
+}
+.message {
+  display: flex;
+  margin-top: 0.25rem;
+  color: #018a16;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.message__icon {
+  margin-right: 0.25rem;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: true, state: false, hasUnitOrCounter: success, unitPosition: true and isPassword: prefix 2`] = `
+":host {
+  display: block;
+}
+::slotted(input) {
+  display: block !important;
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 3rem !important;
+  margin: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  border: 2px solid #018a16 !important;
+  border-radius: 0 !important;
+  background-color: #fff !important;
+  opacity: 1 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-indent: 0 !important;
+  color: #000 !important;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+}
+::slotted(input:hover) {
+  border-color: #014d0c !important;
+}
+::slotted(input:focus) {
+  outline-color: #018a16 !important;
+}
+::slotted(input:disabled) {
+  cursor: not-allowed !important;
+  color: #96989a !important;
+  border-color: #96989a !important;
+  -webkit-text-fill-color: #96989a !important;
+}
+::slotted(input[readonly]) {
+  border-color: #ebebeb !important;
+  background-color: #ebebeb !important;
+}
+::slotted(input[readonly]:focus) {
+  outline-color: transparent !important;
+}
+::slotted(input[readonly]:not(:disabled)) {
+  color: #626669 !important;
+}
+::slotted(input[type=\\"number\\"]) {
+  -moz-appearance: textfield !important;
+}
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
+  -webkit-background-clip: padding-box !important;
+}
+::slotted(input[type=\\"search\\"]) {
+  padding-right: 3rem !important;
+}
+button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.75rem;
+  box-sizing: border-box;
+  outline: 1px solid transparent;
+  appearance: none;
+  border: none;
+  text-decoration: none;
+  background: transparent;
+  cursor: pointer;
+  color: #000;
+  transition: color var(--p-transition-duration, .24s) ease;
+  outline-offset: -5px;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+button:hover {
+  color: #d5001c;
+}
+button:active {
+  color: #d5001c;
+}
+button:disabled {
+  color: #96989a;
+  cursor: not-allowed;
+}
+.root {
+  display: block;
+  position: relative;
+}
+.label {
+  display: block;
+  position: relative;
+}
+.label__text {
+  position: static;
+  width: fit-content;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+  padding: 0 0 0.25rem;
+  display: block;
+  color: #96989a;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.label__text+.label__text--description {
+  margin-top: -0.25rem;
+  padding-bottom: 0.5rem;
+}
+.label__text--description {
+  color: #96989a;
+}
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
+}
+.unit {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0.75rem;
+  z-index: 1;
+  box-sizing: border-box;
+  color: #96989a;
+  cursor: not-allowed;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
+}
+.required {
+  user-select: none;
+  color: #e00000;
+}
+.message {
+  display: flex;
+  margin-top: 0.25rem;
+  color: #018a16;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.message__icon {
+  margin-right: 0.25rem;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: true, state: true, hasUnitOrCounter: error, unitPosition: false and isPassword: prefix 1`] = `
+":host {
+  display: block;
+}
+::slotted(input) {
+  display: block !important;
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 3rem !important;
+  margin: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  border: 2px solid #e00000 !important;
+  border-radius: 0 !important;
+  background-color: #fff !important;
+  opacity: 1 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-indent: 0 !important;
+  color: #000 !important;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  padding: 0.625rem !important;
+}
+::slotted(input:hover) {
+  border-color: #a30000 !important;
+}
+::slotted(input:focus) {
+  outline-color: #e00000 !important;
 }
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
@@ -3926,6 +4193,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0 0 0.25rem;
   display: block;
+  color: #96989a;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
@@ -3933,13 +4201,10 @@ button:disabled {
   padding-bottom: 0.5rem;
 }
 .label__text--description {
-  color: #626669;
+  color: #96989a;
 }
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-  border-color: #014d0c !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
+  border-color: #a30000 !important;
 }
 .required {
   user-select: none;
@@ -3948,363 +4213,7 @@ button:disabled {
 .message {
   display: flex;
   margin-top: 0.25rem;
-  color: #018a16;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 0.25rem;
-}
-.sr-only {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding: 0;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for hideLabel: true, state: success, hasUnitOrCounter: true, unitPosition: prefix and isPassword: false 1`] = `
-":host {
-  display: block;
-}
-::slotted(input) {
-  display: block !important;
-  position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: border-box !important;
-  border: 2px solid #018a16 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
-  text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-}
-::slotted(input:hover) {
-  border-color: #014d0c !important;
-}
-::slotted(input:focus) {
-  outline-color: #018a16 !important;
-}
-::slotted(input:disabled) {
-  cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
-}
-::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
-}
-::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
-}
-::slotted(input[type=\\"number\\"]) {
-  -moz-appearance: textfield !important;
-}
-::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
-  -webkit-background-clip: padding-box !important;
-}
-::slotted(input[type=\\"search\\"]) {
-  padding-right: 3rem !important;
-}
-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  padding: 0.75rem;
-  box-sizing: border-box;
-  outline: 1px solid transparent;
-  appearance: none;
-  border: none;
-  text-decoration: none;
-  background: transparent;
-  cursor: pointer;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  outline-offset: -5px;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-button:hover {
-  color: #d5001c;
-}
-button:active {
-  color: #d5001c;
-}
-button:disabled {
-  color: #96989a;
-  cursor: not-allowed;
-}
-.root {
-  display: block;
-  position: relative;
-}
-.label {
-  display: block;
-  position: relative;
-}
-.label__text {
-  position: absolute;
-  height: 1px;
-  width: fit-content;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding: 0 0 0.25rem;
-  display: block;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-}
-.label__text--description {
-  color: #626669;
-}
-.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-  border-color: #014d0c !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
-}
-.label--disabled .unit {
-  color: #96989a;
-  cursor: not-allowed;
-}
-.unit {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 0.75rem;
-  z-index: 1;
-  box-sizing: border-box;
-  color: #626669;
-}
-.unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-  border-color: #014d0c !important;
-}
-.required {
-  user-select: none;
   color: #e00000;
-}
-.message {
-  display: flex;
-  margin-top: 0.25rem;
-  color: #018a16;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.message__icon {
-  margin-right: 0.25rem;
-}
-.sr-only {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding: 0;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for hideLabel: true, state: success, hasUnitOrCounter: true, unitPosition: prefix and isPassword: false 2`] = `
-":host {
-  display: block;
-}
-::slotted(input) {
-  display: block !important;
-  position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  width: 100% !important;
-  height: 3rem !important;
-  margin: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: border-box !important;
-  border: 2px solid #018a16 !important;
-  border-radius: 0 !important;
-  background-color: #fff !important;
-  opacity: 1 !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
-  text-indent: 0 !important;
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-}
-::slotted(input:hover) {
-  border-color: #014d0c !important;
-}
-::slotted(input:focus) {
-  outline-color: #018a16 !important;
-}
-::slotted(input:disabled) {
-  cursor: not-allowed !important;
-  color: #96989a !important;
-  border-color: #96989a !important;
-  -webkit-text-fill-color: #96989a !important;
-}
-::slotted(input[readonly]) {
-  border-color: #ebebeb !important;
-  background-color: #ebebeb !important;
-}
-::slotted(input[readonly]:focus) {
-  outline-color: transparent !important;
-}
-::slotted(input[readonly]:not(:disabled)) {
-  color: #626669 !important;
-}
-::slotted(input[type=\\"number\\"]) {
-  -moz-appearance: textfield !important;
-}
-::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
-  -webkit-background-clip: padding-box !important;
-}
-::slotted(input[type=\\"search\\"]) {
-  padding-right: 3rem !important;
-}
-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  padding: 0.75rem;
-  box-sizing: border-box;
-  outline: 1px solid transparent;
-  appearance: none;
-  border: none;
-  text-decoration: none;
-  background: transparent;
-  cursor: pointer;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  outline-offset: -5px;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-button:hover {
-  color: #d5001c;
-}
-button:active {
-  color: #d5001c;
-}
-button:disabled {
-  color: #96989a;
-  cursor: not-allowed;
-}
-.root {
-  display: block;
-  position: relative;
-}
-.label {
-  display: block;
-  position: relative;
-}
-.label__text {
-  position: absolute;
-  height: 1px;
-  width: fit-content;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  padding: 0 0 0.25rem;
-  display: block;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.label__text+.label__text--description {
-  margin-top: -0.25rem;
-  padding-bottom: 0.5rem;
-}
-.label__text--description {
-  color: #626669;
-}
-.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-  border-color: #014d0c !important;
-}
-.label--disabled .label__text {
-  color: #96989a;
-}
-.label--disabled .unit {
-  color: #96989a;
-  cursor: not-allowed;
-}
-.unit {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 0.75rem;
-  z-index: 1;
-  box-sizing: border-box;
-  color: #626669;
-}
-.unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-  border-color: #014d0c !important;
-}
-.required {
-  user-select: none;
-  color: #e00000;
-}
-.message {
-  display: flex;
-  margin-top: 0.25rem;
-  color: #018a16;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .message__icon {

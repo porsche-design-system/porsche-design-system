@@ -14,6 +14,16 @@ body {
   padding: 0;
 }
 
+body {
+  color: deeppink;
+  font-family: serif;
+  font-style: italic;
+  font-weight: bold;
+  font-size: small;
+  line-height: normal;
+  font-variant: small-caps;
+}
+
 body > select {
   position: relative;
   z-index: 999999;
@@ -38,6 +48,8 @@ body > select {
 .playground.focus-hover::before {
   display: block;
   background: deeppink;
+  font-size: 16px;
+  line-height: normal;
   color: white;
   font-weight: bold;
   padding: 0.5rem;

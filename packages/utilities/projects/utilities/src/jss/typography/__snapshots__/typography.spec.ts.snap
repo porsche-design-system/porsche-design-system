@@ -19,10 +19,7 @@ Object {
       "fontSize": "2.25rem",
       "lineHeight": 1.3333333333,
     },
-    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "fontSize": "1.75rem",
-    "fontWeight": 600,
-    "lineHeight": 1.4285714286,
+    "font": "normal normal 600 1.75rem/1.4285714286 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   },
   "2": Object {
     "@media(min-width:1000px) and (max-width:1299px)": Object {
@@ -41,10 +38,7 @@ Object {
       "fontSize": "1.875rem",
       "lineHeight": 1.3333333333,
     },
-    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "fontSize": "1.5rem",
-    "fontWeight": 600,
-    "lineHeight": 1.5,
+    "font": "normal normal 600 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   },
   "3": Object {
     "@media(min-width:1000px) and (max-width:1299px)": Object {
@@ -63,10 +57,7 @@ Object {
       "fontSize": "1.5rem",
       "lineHeight": 1.5,
     },
-    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "fontSize": "1.25rem",
-    "fontWeight": 600,
-    "lineHeight": 1.4,
+    "font": "normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   },
   "4": Object {
     "@media(min-width:1000px) and (max-width:1299px)": Object {
@@ -85,16 +76,10 @@ Object {
       "fontSize": "1.125rem",
       "lineHeight": 1.5555555556,
     },
-    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "fontSize": "1rem",
-    "fontWeight": 600,
-    "lineHeight": 1.5,
+    "font": "normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   },
   "5": Object {
-    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "fontSize": "1rem",
-    "fontWeight": 600,
-    "lineHeight": 1.5,
+    "font": "normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   },
 }
 `;
@@ -117,10 +102,7 @@ Object {
     "fontSize": "2.25rem",
     "lineHeight": 1.3333333333,
   },
-  "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-  "fontSize": "1.75rem",
-  "fontWeight": 600,
-  "lineHeight": 1.4285714286,
+  "font": "normal normal 600 1.75rem/1.4285714286 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
 }
 `;
 
@@ -142,10 +124,7 @@ Object {
     "fontSize": "1.875rem",
     "lineHeight": 1.3333333333,
   },
-  "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-  "fontSize": "1.5rem",
-  "fontWeight": 600,
-  "lineHeight": 1.5,
+  "font": "normal normal 600 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
 }
 `;
 
@@ -167,10 +146,7 @@ Object {
     "fontSize": "1.5rem",
     "lineHeight": 1.5,
   },
-  "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-  "fontSize": "1.25rem",
-  "fontWeight": 600,
-  "lineHeight": 1.4,
+  "font": "normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
 }
 `;
 
@@ -192,99 +168,63 @@ Object {
     "fontSize": "1.125rem",
     "lineHeight": 1.5555555556,
   },
-  "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-  "fontSize": "1rem",
-  "fontWeight": 600,
-  "lineHeight": 1.5,
+  "font": "normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
 }
 `;
 
 exports[`should contain correct values for headline5 1`] = `
 Object {
-  "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-  "fontSize": "1rem",
-  "fontWeight": 600,
-  "lineHeight": 1.5,
+  "font": "normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
 }
 `;
 
 exports[`should contain correct values for text 1`] = `
 Object {
   "large": Object {
-    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "fontSize": "2.25rem",
-    "fontWeight": 400,
-    "lineHeight": 1.3333333333,
+    "font": "normal normal 400 2.25rem/1.3333333333 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   },
   "medium": Object {
-    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "fontSize": "1.5rem",
-    "fontWeight": 400,
-    "lineHeight": 1.5,
+    "font": "normal normal 400 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   },
   "small": Object {
-    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "fontSize": "1rem",
-    "fontWeight": 400,
-    "lineHeight": 1.5,
+    "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   },
   "xLarge": Object {
-    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "fontSize": "3.25rem",
-    "fontWeight": 400,
-    "lineHeight": 1.2307692308,
+    "font": "normal normal 400 3.25rem/1.2307692308 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   },
   "xSmall": Object {
-    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "fontSize": "0.75rem",
-    "fontWeight": 400,
-    "lineHeight": 1.6666666667,
+    "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   },
 }
 `;
 
 exports[`should contain correct values for textLarge 1`] = `
 Object {
-  "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-  "fontSize": "2.25rem",
-  "fontWeight": 400,
-  "lineHeight": 1.3333333333,
+  "font": "normal normal 400 2.25rem/1.3333333333 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
 }
 `;
 
 exports[`should contain correct values for textMedium 1`] = `
 Object {
-  "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-  "fontSize": "1.5rem",
-  "fontWeight": 400,
-  "lineHeight": 1.5,
+  "font": "normal normal 400 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
 }
 `;
 
 exports[`should contain correct values for textSmall 1`] = `
 Object {
-  "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-  "fontSize": "1rem",
-  "fontWeight": 400,
-  "lineHeight": 1.5,
+  "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
 }
 `;
 
 exports[`should contain correct values for textXLarge 1`] = `
 Object {
-  "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-  "fontSize": "3.25rem",
-  "fontWeight": 400,
-  "lineHeight": 1.2307692308,
+  "font": "normal normal 400 3.25rem/1.2307692308 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
 }
 `;
 
 exports[`should contain correct values for textXSmall 1`] = `
 Object {
-  "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-  "fontSize": "0.75rem",
-  "fontWeight": 400,
-  "lineHeight": 1.6666666667,
+  "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
 }
 `;
 
@@ -307,10 +247,7 @@ Object {
       "fontSize": "2.625rem",
       "lineHeight": 1.2380952381,
     },
-    "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "fontSize": "2rem",
-    "fontWeight": 600,
-    "lineHeight": 1.375,
+    "font": "normal normal 600 2rem/1.375 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   },
 }
 `;
@@ -333,9 +270,6 @@ Object {
     "fontSize": "2.625rem",
     "lineHeight": 1.2380952381,
   },
-  "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-  "fontSize": "2rem",
-  "fontWeight": 600,
-  "lineHeight": 1.375,
+  "font": "normal normal 600 2rem/1.375 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
 }
 `;

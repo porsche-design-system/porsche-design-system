@@ -28,10 +28,7 @@ exports[`getComponentCss() should return correct css 1`] = `
   position: relative;
   width: 100%;
   display: table;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.5;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-align: left;
   color: #000;
   white-space: nowrap;
