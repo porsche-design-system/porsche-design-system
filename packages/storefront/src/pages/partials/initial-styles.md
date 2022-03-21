@@ -46,12 +46,12 @@ The following showcases the most common ways.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import {TAG_NAMES_WITH_SKELETON} from "@porsche-design-system/shared"; 
+import {SKELETON_TAG_NAMES} from "@porsche-design-system/shared"; 
 
 @Component
 export default class Code extends Vue {
-  public skeletonTagNamesType = TAG_NAMES_WITH_SKELETON.map(x => `'${x}'`).join(' | ');
-  public skeletonTagNames = TAG_NAMES_WITH_SKELETON.map(x => `'${x}'`).join(', ');
+  public skeletonTagNamesType = SKELETON_TAG_NAMES.map(x => `'${x}'`).join(' | ');
+  public skeletonTagNames = SKELETON_TAG_NAMES.map(x => `'${x}'`).join(', ');
   public params = [
     {
       value: ""

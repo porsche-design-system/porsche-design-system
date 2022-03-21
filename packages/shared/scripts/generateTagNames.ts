@@ -48,9 +48,9 @@ export type TagNameCamelCase = ${tags.map((x) => `'${camelCase(x)}'`).join(' | '
 
 export const INTERNAL_TAG_NAMES: TagName[] = [${INTERNAL_TAG_NAMES.map((x) => `'${x}'`).join(', ')}];
 
-export const TAG_NAMES_WITH_SKELETON: TagName[] = [${tagNamesWithSkeleton.map((x) => `'${x}'`).join(', ')}];
+export const SKELETON_TAG_NAMES: TagName[] = [${tagNamesWithSkeleton.map((x) => `'${x}'`).join(', ')}];
 
-export type SkeletonTagName = typeof TAG_NAMES_WITH_SKELETON[number];
+export type SkeletonTagName = typeof SKELETON_TAG_NAMES[number];
 `;
 
   const targetDirectory = path.normalize('./src/lib');

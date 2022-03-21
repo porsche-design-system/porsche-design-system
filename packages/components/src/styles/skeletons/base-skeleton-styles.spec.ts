@@ -8,7 +8,7 @@ import {
   getSkeletonPropertyNames,
   getThemedPseudoJssStyle,
 } from './base-skeleton-styles';
-import { TAG_NAMES_WITH_SKELETON } from '@porsche-design-system/shared';
+import { SKELETON_TAG_NAMES } from '@porsche-design-system/shared';
 import { TagName } from '@porsche-design-system/shared';
 
 describe('getSkeletonElementHeight()', () => {
@@ -96,7 +96,7 @@ describe('getHiddenLabelJssStyle()', () => {
 });
 
 describe('getSkeletonPropertyNames()', () => {
-  it.each<TagName[]>(TAG_NAMES_WITH_SKELETON.map((tagName: TagName) => [tagName]))(
+  it.each<TagName[]>(SKELETON_TAG_NAMES.map((tagName: TagName) => [tagName]))(
     'should get correct skeleton property names %o',
     (tagName) => {
       expect(getSkeletonPropertyNames(tagName)).toMatchSnapshot();
