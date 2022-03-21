@@ -9,36 +9,8 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <script nomodule src="build/porsche-design-system.js"></script>
     <script type="module" src="build/porsche-design-system.esm.js"></script>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-      }
-    </style>
   </head>
   <body>
-    <button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</button>
-    <p style="height: 2000px; background: deeppink">Test</p>
-    <p>End</p>
-    <p-modal id="modal-scrollable" open="false">
-      <p>Some Content</p>
-      <div style="height: 200vh"></div>
-      <p>More Content</p>
-      <div style="height: 40vh"></div>
-      <p>Even More Content</p>
-    </p-modal>
-
-    <script>
-      const modal = document.querySelector('p-modal');
-      const button = document.querySelector('button');
-      button.addEventListener('click', () => {
-        modal.open = true;
-      });
-      modal.addEventListener('close', () => {
-        modal.open = false;
-      });
-    </script>
-
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
