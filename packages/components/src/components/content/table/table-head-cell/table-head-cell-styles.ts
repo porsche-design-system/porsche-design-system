@@ -15,7 +15,7 @@ import { isDirectionAsc, isSortable } from './table-head-cell-utils';
 const { contrastMediumColor, baseColor } = getThemedColors('light');
 
 export const getComponentCss = (active: boolean, direction: Direction, hideLabel: boolean): string => {
-  const _isSortable = isSortable(active, direction);
+  const sortable = isSortable(active, direction);
 
   return getCss({
     '@global': {
@@ -27,7 +27,7 @@ export const getComponentCss = (active: boolean, direction: Direction, hideLabel
         fontWeight: fontWeight.semibold,
         whiteSpace: 'nowrap',
       }),
-      ...(_isSortable && {
+      ...(sortable && {
         button: {
           display: 'flex',
           alignItems: 'flex-end',
@@ -51,7 +51,7 @@ export const getComponentCss = (active: boolean, direction: Direction, hideLabel
           },
         },
       }),
-      ...(!_isSortable &&
+      ...(!sortable &&
         hideLabel && {
           span: {
             ...getTextHiddenJssStyle(true),
@@ -60,7 +60,7 @@ export const getComponentCss = (active: boolean, direction: Direction, hideLabel
           },
         }),
     },
-    ...(_isSortable && {
+    ...(sortable && {
       icon: {
         marginLeft: spacing[4],
         opacity: active ? 1 : 0,
