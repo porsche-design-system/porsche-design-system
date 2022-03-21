@@ -1,5 +1,5 @@
 import type { PropertiesHyphen } from 'csstype';
-import type { FormState, Theme } from '../types';
+import type { Theme } from '../types';
 import type { GetFocusSlottedPseudoStylesOptions, GetFocusStylesOptions } from './common-styles';
 import type { JssStyle } from 'jss';
 import {
@@ -13,7 +13,6 @@ import {
   getHoverStyles,
   getTextHiddenJssStyle,
   getTransition,
-  mediaQuery,
   pxToRem,
   pxToRemWithUnit,
 } from './common-styles';
@@ -116,12 +115,6 @@ describe('getFocusSlottedPseudoStyles()', () => {
       expect(getFocusSlottedPseudoStyles()).toMatchSnapshot();
     }
   );
-});
-
-describe('mediaQuery()', () => {
-  it('should return correct media query', () => {
-    expect(mediaQuery('m')).toBe('@media (min-width: 1000px)');
-  });
 });
 
 describe('getBaseSlottedStyles()', () => {
