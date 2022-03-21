@@ -1,5 +1,6 @@
 import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable, GetJssStyleFunction, BreakpointKey } from '../../../utils';
+import { mediaQueryMin } from '@porsche-design-system/utilities-v2';
 import { BREAKPOINTS, buildResponsiveStyles, getCss, mergeDeep, parseJSON, buildSlottedStyles } from '../../../utils';
 import {
   addImportantToEachRule,
@@ -8,15 +9,14 @@ import {
   getFocusJssStyle,
   getInsetJssStyle,
   getThemedColors,
-  mediaQuery,
   pxToRemWithUnit,
 } from '../../../styles';
 import { MODAL_Z_INDEX } from '../../../constants';
 import { getFocusVisibleFallback } from '../../../styles/focus-visible-fallback';
 
-const mediaQueryM = mediaQuery('m');
-const mediaQueryXl = mediaQuery('xl');
-const mediaQueryXxl = mediaQuery('xxl');
+const mediaQueryM = mediaQueryMin('m');
+const mediaQueryXl = mediaQueryMin('xl');
+const mediaQueryXxl = mediaQueryMin('xxl');
 const { backgroundColor: lightThemeBackgroundColor } = getThemedColors('light');
 const { backgroundColor: darkThemeBackgroundColor } = getThemedColors('dark');
 

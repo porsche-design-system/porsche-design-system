@@ -1,5 +1,6 @@
+import { mediaQueryMin } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../../../utils';
-import { addImportantToEachRule, contentWrapperVars, mediaQuery, pxToRemWithUnit } from '../../../../styles';
+import { addImportantToEachRule, contentWrapperVars, pxToRemWithUnit } from '../../../../styles';
 import { TOAST_Z_INDEX } from '../../../../constants';
 import { getAnimationIn, getAnimationOut, getKeyframesMobile } from '../../banner/banner-styles';
 import { TOAST_ANIMATION_DURATION_VAR } from './toast-manager';
@@ -23,7 +24,7 @@ export const getComponentCss = (): string => {
         bottom: `var(${toastPositionBottomVarInternal})`,
         maxWidth: '42rem',
         zIndex: TOAST_Z_INDEX,
-        [mediaQuery('s')]: {
+        [mediaQueryMin('s')]: {
           left: pxToRemWithUnit(64),
           right: 'auto',
           [toastPositionBottomVarInternal]: `var(${toastPositionBottomVarPublic}, ${pxToRemWithUnit(64)})`,
