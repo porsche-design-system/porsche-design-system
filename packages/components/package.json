@@ -5,7 +5,7 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
-    "postinstall": "ts-node --project './tsconfig.node.json' './scripts/patchStencil.ts'",
+    "postinstall": "ts-node --project tsconfig.node.json scripts/patchStencil.ts",
     "prestart": "yarn prestart:buildStaticLineHeightMap && yarn prestart:prepareAriaTypes",
     "prestart:buildStaticLineHeightMap": "ts-node --project tsconfig.node.json scripts/buildStaticLineHeightMap.ts",
     "prestart:prepareAriaTypes": "ts-node --project tsconfig.node.json scripts/prepareAriaTypes.ts",
