@@ -8,16 +8,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
-### [2.9.2-beta.0] - 2022-03-22
+### [2.9.3-beta.0] - 2022-03-22
 
 #### Added
 - **[EXPERIMENTAL]** `getInitialStyles` partial now accepts a `skeletonTagNames` array of component names that will initially have skeleton styles while the Porsche Design System is loading
 - **[EXPERIMENTAL]** `Button`, `Button Pure`, `Checkbox Wrapper`, `Fieldset Wrapper`, `Link`, `Link Pure`, `Link Social`, `Radio Button Wrapper`, `Select Wrapper`, `Text Field Wrapper`, `Textarea Wrapper` can now have skeleton styles based on their default attributes
 
+### [2.9.2-rc.0] - 2022-03-22
+
+#### Added
+- Normalized font behavior (`hyphen`, `overflow-wrap` and `text-size-adjust`) across components 
+
+#### Fixed
+- `Modal` scrolling and pinch to zoom on iOS
+- Initial positioning if scrollable of `Modal`
+- `asc` + `desc` sort icon of `Table`
+
 ### [2.9.1] - 2022-03-10
 
 ### [2.9.1-rc.0] - 2022-03-09
 
+#### Added
 - Styles for slotted `<button>` in `Text`
 
 #### Changed

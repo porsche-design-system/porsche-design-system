@@ -37,9 +37,6 @@ export const getComponentCss = (
         overflow: 'hidden', // fixes rotating icon to increase bounding box of focus outline in firefox
         textAlign: 'left',
         color: baseColor,
-        overflowWrap: 'break-word',
-        wordWrap: 'break-word',
-        hyphens: 'auto',
         ...textSmall,
         fontWeight: fontWeight.semibold,
         ...(compact

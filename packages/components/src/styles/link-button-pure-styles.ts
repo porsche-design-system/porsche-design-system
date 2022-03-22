@@ -1,7 +1,6 @@
 import type { Styles, JssStyle } from 'jss';
 import type { BreakpointCustomizable, GetJssStyleFunction } from '../utils';
 import type { AlignLabel, AlignLabelType, LinkButtonPureIconName, TextSize, ThemeExtendedElectricDark } from '../types';
-import type { FontSizeLineHeight } from '@porsche-design-system/utilities-v2';
 import { buildResponsiveStyles, generateTypeScale, hasVisibleIcon, mergeDeep, paramCaseToCamelCase } from '../utils';
 import {
   addImportantToRule,
@@ -26,6 +25,7 @@ const getSizeJssStyle: GetJssStyleFunction = (textSize: TextSize): JssStyle => {
     };
   } else {
     // TODO: We should split this function into 3 separate and use it in root / icon / subline as soon as calculateLineHeight() is performant
+    type FontSizeLineHeight = typeof fontSize.small;
     const { fontSize: size, lineHeight }: FontSizeLineHeight = fontSize[paramCaseToCamelCase(textSize)];
     const lineHeightWithUnit = `${lineHeight}em`;
     const sublineSize: { [key in Exclude<TextSize, 'inherit'>]: FontSizeLineHeight } = {

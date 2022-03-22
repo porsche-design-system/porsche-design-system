@@ -1,4 +1,4 @@
-import { getTagName, isIos } from '../../../utils';
+import { getTagName } from '../../../utils';
 import type { SelectedAriaAttributes } from '../../../types';
 
 export const unpackChildren = (el: HTMLElement | ShadowRoot): HTMLElement[] => {
@@ -33,10 +33,6 @@ export const getFirstAndLastFocusableElement = (
 };
 
 export let documentKeydownListener: (e: KeyboardEvent) => void;
-export const documentTouchListener = (e: TouchEvent): void => e.preventDefault();
-export const hostTouchListener = (e: TouchEvent & { target: HTMLElement }): void => {
-  e.target.scrollTop = getScrollTopOnTouch(e.target, e);
-};
 
 export const setScrollLock = (
   host: HTMLElement,
@@ -63,13 +59,6 @@ export const setScrollLock = (
   }
 
   setFirstAndLastFocusableElementKeydownListener(focusableElements);
-
-  // prevent scrolling of background on iOS
-  if (isIos()) {
-    const addOrRemoveEventListener = `${isOpen ? 'add' : 'remove'}EventListener`;
-    document[addOrRemoveEventListener]('touchmove', documentTouchListener, false);
-    host[addOrRemoveEventListener]('touchmove', hostTouchListener);
-  }
 };
 
 type KeyboardHandlerTuple = [(e: KeyboardEvent) => void, (e: KeyboardEvent) => void] | [];
@@ -101,24 +90,6 @@ export const setFirstAndLastFocusableElementKeydownListener = (
       return handler;
     }) as KeyboardHandlerTuple;
   }
-};
-
-export const getScrollTopOnTouch = (host: HTMLElement, e: TouchEvent): number => {
-  // Source: https://stackoverflow.com/a/43860705
-  const { scrollTop, scrollHeight, offsetHeight } = host;
-  let result = scrollTop;
-  const currentScroll = scrollTop + offsetHeight;
-
-  if (scrollTop === 0) {
-    if (currentScroll === scrollHeight) {
-      e.preventDefault();
-    } else {
-      result = 1;
-    }
-  } else if (currentScroll === scrollHeight) {
-    result = scrollTop - 1;
-  }
-  return result;
 };
 
 export const warnIfAriaAndHeadingPropsAreUndefined = (

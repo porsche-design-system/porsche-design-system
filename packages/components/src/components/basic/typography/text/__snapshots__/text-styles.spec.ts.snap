@@ -26,14 +26,14 @@ exports[`getComponentCss() should return correct css for size: "inherit", weight
   margin: 0;
   text-align: center;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #000;
   overflow-wrap: break-word;
-  word-wrap: break-word;
   hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  color: #000;
   list-style-type: none;
   white-space: inherit;
   transition: font-size 1ms linear;
-  -webkit-text-size-adjust: none;
   line-height: inherit;
   font-size: inherit;
   font-weight: 700;
@@ -66,14 +66,14 @@ exports[`getComponentCss() should return correct css for size: "large", weight: 
   margin: 0;
   text-align: left;
   font: normal normal 600 2.25rem/1.3333333333 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #e00000;
   overflow-wrap: break-word;
-  word-wrap: break-word;
   hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  color: #e00000;
   list-style-type: none;
   white-space: nowrap;
   transition: font-size 1ms linear;
-  -webkit-text-size-adjust: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -106,14 +106,14 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   margin: 0;
   text-align: right;
   font: normal normal 700 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #e3e4e5;
   overflow-wrap: break-word;
-  word-wrap: break-word;
   hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  color: #e3e4e5;
   list-style-type: none;
   white-space: nowrap;
   transition: font-size 1ms linear;
-  -webkit-text-size-adjust: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -146,14 +146,14 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   margin: 0;
   text-align: left;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #000;
   overflow-wrap: break-word;
-  word-wrap: break-word;
   hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  color: #000;
   list-style-type: none;
   white-space: inherit;
   transition: font-size 1ms linear;
-  -webkit-text-size-adjust: none;
 }"
 `;
 
@@ -183,14 +183,14 @@ exports[`getComponentCss() should return correct css for size: "x-large", weight
   margin: 0;
   text-align: center;
   font: normal normal 400 3.25rem/1.2307692308 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #d5001c;
   overflow-wrap: break-word;
-  word-wrap: break-word;
   hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  color: #d5001c;
   list-style-type: none;
   white-space: inherit;
   transition: font-size 1ms linear;
-  -webkit-text-size-adjust: none;
 }"
 `;
 
@@ -220,14 +220,14 @@ exports[`getComponentCss() should return correct css for size: "x-large", weight
   margin: 0;
   text-align: right;
   font: normal normal 100 3.25rem/1.2307692308 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #d5001c;
   overflow-wrap: break-word;
-  word-wrap: break-word;
   hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  color: #d5001c;
   list-style-type: none;
   white-space: nowrap;
   transition: font-size 1ms linear;
-  -webkit-text-size-adjust: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -260,14 +260,14 @@ exports[`getComponentCss() should return correct css for size: "x-small", weight
   margin: 0;
   text-align: left;
   font: normal normal 600 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: currentColor;
   overflow-wrap: break-word;
-  word-wrap: break-word;
   hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  color: currentColor;
   list-style-type: none;
   white-space: inherit;
   transition: font-size 1ms linear;
-  -webkit-text-size-adjust: none;
 }"
 `;
 
@@ -297,14 +297,14 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   margin: 0;
   text-align: center;
   font: normal normal 700 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #fc1717;
   overflow-wrap: break-word;
-  word-wrap: break-word;
   hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  color: #fc1717;
   list-style-type: none;
   white-space: nowrap;
   transition: font-size 1ms linear;
-  -webkit-text-size-adjust: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
