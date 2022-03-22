@@ -11,7 +11,5 @@ export const getFieldsetWrapperSkeletonStyles = (): Styles<'@global'> => {
 };
 
 export const getWrapperSkeletonJssStyle = (): JssStyle => ({
-  display: 'block',
-  position: 'relative',
   visibility: 'visible',
 });
