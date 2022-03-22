@@ -9,35 +9,35 @@ exports[`getComponentCss() should return correct css for gutter: {"base":16,"xs"
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 0.5rem !important;
     padding-right: 0.5rem !important;
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -88,13 +88,13 @@ exports[`getComponentCss() should return correct css for offset: {"base":6,"xs":
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   :host {
     margin-left: 0% !important;
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     margin-left: 50% !important;
     padding-left: 0.75rem !important;
@@ -102,7 +102,7 @@ exports[`getComponentCss() should return correct css for offset: {"base":6,"xs":
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     margin-left: 0% !important;
     padding-left: 1.125rem !important;
@@ -110,13 +110,13 @@ exports[`getComponentCss() should return correct css for offset: {"base":6,"xs":
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   :host {
     margin-left: 50% !important;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   :host {
     margin-left: 0% !important;
   }
@@ -133,14 +133,14 @@ exports[`getComponentCss() should return correct css for offset: 0 1`] = `
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -158,14 +158,14 @@ exports[`getComponentCss() should return correct css for offset: 1 1`] = `
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -183,14 +183,14 @@ exports[`getComponentCss() should return correct css for offset: 2 1`] = `
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -208,14 +208,14 @@ exports[`getComponentCss() should return correct css for offset: 3 1`] = `
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -233,14 +233,14 @@ exports[`getComponentCss() should return correct css for offset: 4 1`] = `
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -258,14 +258,14 @@ exports[`getComponentCss() should return correct css for offset: 5 1`] = `
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -283,14 +283,14 @@ exports[`getComponentCss() should return correct css for offset: 6 1`] = `
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -308,14 +308,14 @@ exports[`getComponentCss() should return correct css for offset: 7 1`] = `
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -333,14 +333,14 @@ exports[`getComponentCss() should return correct css for offset: 8 1`] = `
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -358,14 +358,14 @@ exports[`getComponentCss() should return correct css for offset: 9 1`] = `
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -383,14 +383,14 @@ exports[`getComponentCss() should return correct css for offset: 10 1`] = `
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -408,14 +408,14 @@ exports[`getComponentCss() should return correct css for offset: 11 1`] = `
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -433,14 +433,14 @@ exports[`getComponentCss() should return correct css for size: {"base":6,"xs":12
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   :host {
     width: 100% !important;
     min-width: 100% !important;
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     width: 50% !important;
     min-width: 50% !important;
@@ -449,7 +449,7 @@ exports[`getComponentCss() should return correct css for size: {"base":6,"xs":12
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     width: 100% !important;
     min-width: 100% !important;
@@ -458,14 +458,14 @@ exports[`getComponentCss() should return correct css for size: {"base":6,"xs":12
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   :host {
     width: 50% !important;
     min-width: 50% !important;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   :host {
     width: 100% !important;
     min-width: 100% !important;
@@ -483,7 +483,7 @@ exports[`getComponentCss() should return correct css for size: {"base":6,"xs":12
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   :host {
     width: 100% !important;
     min-width: 100% !important;
@@ -491,7 +491,7 @@ exports[`getComponentCss() should return correct css for size: {"base":6,"xs":12
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     width: 50% !important;
     min-width: 50% !important;
@@ -501,7 +501,7 @@ exports[`getComponentCss() should return correct css for size: {"base":6,"xs":12
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     width: 100% !important;
     min-width: 100% !important;
@@ -511,7 +511,7 @@ exports[`getComponentCss() should return correct css for size: {"base":6,"xs":12
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   :host {
     width: 50% !important;
     min-width: 50% !important;
@@ -519,7 +519,7 @@ exports[`getComponentCss() should return correct css for size: {"base":6,"xs":12
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   :host {
     width: 100% !important;
     min-width: 100% !important;
@@ -538,14 +538,14 @@ exports[`getComponentCss() should return correct css for size: 1 1`] = `
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -563,14 +563,14 @@ exports[`getComponentCss() should return correct css for size: 1 and offset: 11 
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -588,14 +588,14 @@ exports[`getComponentCss() should return correct css for size: 2 1`] = `
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -613,14 +613,14 @@ exports[`getComponentCss() should return correct css for size: 2 and offset: 10 
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -638,14 +638,14 @@ exports[`getComponentCss() should return correct css for size: 3 1`] = `
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -663,14 +663,14 @@ exports[`getComponentCss() should return correct css for size: 3 and offset: 9 1
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -688,14 +688,14 @@ exports[`getComponentCss() should return correct css for size: 4 1`] = `
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -713,14 +713,14 @@ exports[`getComponentCss() should return correct css for size: 4 and offset: 8 1
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -738,14 +738,14 @@ exports[`getComponentCss() should return correct css for size: 5 1`] = `
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -763,14 +763,14 @@ exports[`getComponentCss() should return correct css for size: 5 and offset: 7 1
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -788,14 +788,14 @@ exports[`getComponentCss() should return correct css for size: 6 1`] = `
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -813,14 +813,14 @@ exports[`getComponentCss() should return correct css for size: 6 and offset: 6 1
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -838,14 +838,14 @@ exports[`getComponentCss() should return correct css for size: 7 1`] = `
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -863,14 +863,14 @@ exports[`getComponentCss() should return correct css for size: 7 and offset: 5 1
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -888,14 +888,14 @@ exports[`getComponentCss() should return correct css for size: 8 1`] = `
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -913,14 +913,14 @@ exports[`getComponentCss() should return correct css for size: 8 and offset: 4 1
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -938,14 +938,14 @@ exports[`getComponentCss() should return correct css for size: 9 1`] = `
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -963,14 +963,14 @@ exports[`getComponentCss() should return correct css for size: 9 and offset: 3 1
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -988,14 +988,14 @@ exports[`getComponentCss() should return correct css for size: 10 1`] = `
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -1013,14 +1013,14 @@ exports[`getComponentCss() should return correct css for size: 10 and offset: 2 
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -1038,14 +1038,14 @@ exports[`getComponentCss() should return correct css for size: 11 1`] = `
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -1063,14 +1063,14 @@ exports[`getComponentCss() should return correct css for size: 11 and offset: 1 
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -1088,14 +1088,14 @@ exports[`getComponentCss() should return correct css for size: 12 1`] = `
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;
@@ -1113,14 +1113,14 @@ exports[`getComponentCss() should return correct css for size: 12 and offset: 0 
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     padding-left: 1.125rem !important;
     padding-right: 1.125rem !important;

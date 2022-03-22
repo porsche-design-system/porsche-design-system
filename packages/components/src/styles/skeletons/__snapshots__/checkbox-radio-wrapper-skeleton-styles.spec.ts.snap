@@ -1,38 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should return correct css 1`] = `
-Object {
-  "@global": Object {
-    "p-checkbox-wrapper, p-radio-button-wrapper": Object {
-      "&:not(.hydrated)": Object {
-        "&::after": Object {
-          "animation": "opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite",
-          "background": "currentColor",
-          "color": "#626669",
-          "content": "\\"\\"",
-          "display": "block",
-          "left": "0",
-          "minHeight": "100%",
-          "position": "absolute",
-          "top": "0rem",
-          "visibility": "visible",
-          "width": "100%",
-        },
-        "&[hide-label=true], &.pds-skeleton--hide-label": Object {
-          "minWidth": "1.5rem",
-        },
-        "&[theme=dark], &.pds-skeleton--theme-dark": Object {
-          "&::after": Object {
-            "color": "#b0b1b2",
-          },
-        },
-        "color": "transparent",
-        "display": "block",
-        "minHeight": "1.5rem",
-        "minWidth": "12rem",
-        "position": "relative",
-      },
-    },
-  },
+"p-checkbox-wrapper:not(.hydrated), p-radio-button-wrapper:not(.hydrated) {
+  position: relative;
+  color: transparent;
+  min-height: 1.5rem;
+  display: block;
+  min-width: 12rem;
 }
+p-checkbox-wrapper:not(.hydrated)::after, p-radio-button-wrapper:not(.hydrated)::after {
+  display: block;
+  position: absolute;
+  left: 0;
+  content: \\"\\";
+  visibility: visible;
+  background: currentColor;
+  animation: opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite;
+  top: 0rem;
+  width: 100%;
+  min-height: 100%;
+  color: #626669;
+}
+p-checkbox-wrapper:not(.hydrated)[hide-label=true], p-checkbox-wrapper:not(.hydrated).pds-skeleton--hide-label, p-radio-button-wrapper:not(.hydrated)[hide-label=true], p-radio-button-wrapper:not(.hydrated).pds-skeleton--hide-label {
+  min-width: 1.5rem;
+}
+p-checkbox-wrapper:not(.hydrated)[theme=dark]::after, p-checkbox-wrapper:not(.hydrated).pds-skeleton--theme-dark::after, p-radio-button-wrapper:not(.hydrated)[theme=dark]::after, p-radio-button-wrapper:not(.hydrated).pds-skeleton--theme-dark::after {
+  color: #b0b1b2;
+}"
 `;

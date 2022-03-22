@@ -309,19 +309,19 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   overflow: hidden;
   text-overflow: ellipsis;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   .root {
     font: normal normal 700 2.25rem/1.3333333333 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .root {
     font: normal normal 700 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   .root {
     line-height: inherit;
     font-size: inherit;
@@ -329,13 +329,13 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   .root {
     font: normal normal 700 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   .root {
     font: normal normal 700 3.25rem/1.2307692308 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   }

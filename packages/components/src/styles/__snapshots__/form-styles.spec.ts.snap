@@ -492,7 +492,7 @@ Object {
           "borderColor": "#d30303 !important",
         },
       },
-      "@media (min-width: 1000px)": Object {
+      "@media(min-width:1000px)": Object {
         "clip": "auto",
         "clipPath": "none",
         "height": "auto",
@@ -503,7 +503,7 @@ Object {
         "whiteSpace": "normal",
         "width": "fit-content",
       },
-      "@media (min-width: 1300px)": Object {
+      "@media(min-width:1300px)": Object {
         "border": "0",
         "clip": "rect(1px,1px,1px,1px)",
         "clipPath": "inset(50%)",
@@ -515,7 +515,7 @@ Object {
         "whiteSpace": "nowrap",
         "width": "fit-content",
       },
-      "@media (min-width: 1760px)": Object {
+      "@media(min-width:1760px)": Object {
         "clip": "auto",
         "clipPath": "none",
         "height": "auto",
@@ -526,7 +526,7 @@ Object {
         "whiteSpace": "normal",
         "width": "fit-content",
       },
-      "@media (min-width: 480px)": Object {
+      "@media(min-width:480px)": Object {
         "clip": "auto",
         "clipPath": "none",
         "height": "auto",
@@ -537,7 +537,7 @@ Object {
         "whiteSpace": "normal",
         "width": "fit-content",
       },
-      "@media (min-width: 760px)": Object {
+      "@media(min-width:760px)": Object {
         "border": "0",
         "clip": "rect(1px,1px,1px,1px)",
         "clipPath": "inset(50%)",
