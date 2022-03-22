@@ -119,7 +119,7 @@ export const extendPseudoWithThemeJssStyle = (opts?: ExtendPseudoWithThemeOption
       return {
         ...prevValue,
         [pseudo]: {
-          ...(jssStyle[pseudo] ? jssStyle[pseudo] : {}),
+          ...jssStyle[pseudo],
           color: getThemedColors(theme).contrastMediumColor,
         },
       };
