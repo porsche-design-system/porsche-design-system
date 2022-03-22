@@ -32,7 +32,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       ...(hasEventProps ? ['useEventCallback'] : []),
       'useMergedClass',
       'usePrefix',
-      ...(hasSkeleton ? ['useSkeletons'] : []),
+      ...(hasSkeleton ? ['useSkeleton'] : []),
     ];
     const importsFromHooks = `import { ${hooksImports.join(', ')} } from '../../hooks';`;
 
@@ -80,7 +80,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
         ({ key }) => `useEventCallback(elementRef, '${camelCase(key.substr(2))}', ${key} as any);`
       ),
       `const Tag = usePrefix('${component}');`,
-      ...(hasSkeleton ? ['const usesSkeleton = useSkeletons();'] : []),
+      ...(hasSkeleton ? ['const usesSkeleton = useSkeleton();'] : []),
     ];
     const componentHooks = componentHooksArr.join('\n    ');
 
