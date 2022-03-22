@@ -1,6 +1,6 @@
-import { fontBehavior, fontFamily, fontStyle, fontVariant, fontWeight } from '../font/font';
+import { fontBehavior, fontFamily, fontSize, fontStyle, fontVariant, fontWeight } from '../font/font';
 
 export const textXLarge = {
-  font: `${fontStyle} ${fontVariant} ${fontWeight.regular} 3.25rem/1.2307692308 ${fontFamily}`,
+  font: `${fontStyle} ${fontVariant} ${fontWeight.regular} ${fontSize.xLarge.fontSize}/${fontSize.xLarge.lineHeight} ${fontFamily}`,
   ...fontBehavior,
 };
