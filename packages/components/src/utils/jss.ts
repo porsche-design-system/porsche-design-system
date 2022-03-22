@@ -128,7 +128,7 @@ export const buildResponsiveStyles = <T>(
         .reduce(
           (result, breakpointValue: Breakpoint) => ({
             ...result,
-            [mediaQueryMin(breakpointValue)]: getJssStyle(value[breakpointValue]) as Styles,
+            [mediaQueryMin(breakpointValue as any)]: getJssStyle(value[breakpointValue]) as Styles,
           }),
           getJssStyle(value.base) as Styles
         )
