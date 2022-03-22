@@ -1,8 +1,10 @@
-import { fontBehavior, fontFamily, fontStyle, fontVariant, fontWeight } from '../font/font';
+import { fontBehavior, fontFamily, fontSize, fontStyle, fontVariant, fontWeight } from '../font/font';
 import { mediaQueryMin, mediaQueryMinMax } from '../media-query';
 
+const { small, medium } = fontSize;
+
 export const headline4 = {
-  font: `${fontStyle} ${fontVariant} ${fontWeight.semibold} 1rem/1.5 ${fontFamily}`,
+  font: `${fontStyle} ${fontVariant} ${fontWeight.semibold} ${small.fontSize}/${small.lineHeight} ${fontFamily}`,
   ...fontBehavior,
   [mediaQueryMinMax('s', 'm')]: {
     fontSize: '1.125rem',
@@ -16,8 +18,5 @@ export const headline4 = {
     fontSize: '1.375rem',
     lineHeight: 1.4545454545,
   },
-  [mediaQueryMin('xl')]: {
-    fontSize: '1.5rem',
-    lineHeight: 1.5,
-  },
+  [mediaQueryMin('xl')]: medium,
 };
