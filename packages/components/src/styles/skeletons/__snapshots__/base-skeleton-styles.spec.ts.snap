@@ -55,15 +55,9 @@ Object {
 exports[`getBaseSkeletonJssStyle() should match style snapshot for hasLabel: false and elementHeight: 24 1`] = `
 Object {
   "&::after": Object {
-    "animation": "opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite",
-    "background": "currentColor",
-    "content": "\\"\\"",
     "display": "block",
-    "left": "0",
     "minHeight": "100%",
-    "position": "absolute",
     "top": "0rem",
-    "visibility": "visible",
     "width": "100%",
   },
   "color": "transparent",
@@ -75,25 +69,14 @@ Object {
 exports[`getBaseSkeletonJssStyle() should match style snapshot for hasLabel: true and elementHeight: 48 1`] = `
 Object {
   "&::after": Object {
-    "animation": "opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite",
-    "background": "currentColor",
-    "content": "\\"\\"",
-    "left": "0",
     "minHeight": "calc(100% - 1.75rem)",
-    "position": "absolute",
     "top": "1.75rem",
-    "visibility": "visible",
     "width": "100%",
   },
   "&::before": Object {
-    "animation": "opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite",
     "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px)",
-    "content": "\\"\\"",
     "height": "1.5rem",
-    "left": "0",
-    "position": "absolute",
     "top": "0",
-    "visibility": "visible",
     "width": "8rem",
   },
   "color": "transparent",

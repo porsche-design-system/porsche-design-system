@@ -5,6 +5,7 @@ import {
   getButtonLinkSocialSkeletonStyles,
   getCheckboxRadioWrapperSkeletonStyles,
   getFieldsetWrapperSkeletonStyles,
+  getPseudoElementStyles,
   getSelectTextFieldWrapperSkeletonStyles,
   getTextareaWrapperSkeletonStyles,
 } from '../../../../components/src/styles/skeletons';
@@ -52,6 +53,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
     'p-fieldset-wrapper': getFieldsetWrapperSkeletonStyles(),
     'p-select-wrapper|p-text-field-wrapper': getSelectTextFieldWrapperSkeletonStyles(),
     'p-textarea-wrapper': getTextareaWrapperSkeletonStyles(),
+    pseudo: getPseudoElementStyles(),
   };
   const minifiedSkeletonStyles = Object.entries(skeletonStyles).reduce(
     (prevValue, [key, value]) => ({ ...prevValue, [key]: getMinifiedCss(value) }),
@@ -155,7 +157,7 @@ Please use only valid component tag names:
   //   skeletonStyles = skeletonStyles.replace(unusedSkeletonTagName, '');
   // });
 
-  const result = skeletonStyles + \`\${prefixedTagNamesWithSkeleton.length ? '${skeletonKeyframes}' : ''}\`;
+  const result = skeletonStyles + \`\${prefixedTagNamesWithSkeleton.length ? \`\${skeletonStylesWithKey.pseudo}${skeletonKeyframes}\` : ''}\`;
   return result;
 };`;
 

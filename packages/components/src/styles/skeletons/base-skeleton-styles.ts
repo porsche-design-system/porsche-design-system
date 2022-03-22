@@ -1,10 +1,11 @@
-import { JssStyle } from 'jss';
+import { JssStyle, Styles } from 'jss';
 import { pxToRemWithUnit } from '../common-styles';
 import { getThemedColors } from '../colors';
 import { INPUT_HEIGHT } from '../form-styles';
 import { getComponentMeta, PDS_SKELETON_CLASS_PREFIX, TagName } from '@porsche-design-system/shared';
 import { paramCase } from 'change-case';
 import type { Theme } from '../../types';
+import { SKELETON_TAG_NAMES } from 'shared/src';
 
 export type SkeletonPropertyNames = { [property: string]: string };
 
@@ -55,14 +56,20 @@ export const getElementBackgroundGradient = (
   } transparent ${elementHeight}px)`;
 };
 
-export const getPseudoElementJssStyle = (): JssStyle => {
+export const getPseudoElementStyles = (): Styles<'@global'> => {
   return {
-    position: 'absolute',
-    left: '0',
-    content: '""',
-    visibility: 'visible',
-    background: 'currentColor',
-    animation: 'opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite',
+    '@global': {
+      [SKELETON_TAG_NAMES.join(',')]: {
+        '&::before, &::after': {
+          position: 'absolute',
+          left: '0',
+          content: '""',
+          visibility: 'visible',
+          background: 'currentColor',
+          animation: 'opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite',
+        },
+      },
+    },
   };
 };
 
@@ -74,7 +81,6 @@ export const getBaseSkeletonJssStyle = (hasLabel = true, elementHeight = ELEMENT
       ? {
           display: 'block',
           '&::before': {
-            ...getPseudoElementJssStyle(),
             height: pxToRemWithUnit(LABEL_HEIGHT),
             width: pxToRemWithUnit(128),
             top: '0',
@@ -88,7 +94,6 @@ export const getBaseSkeletonJssStyle = (hasLabel = true, elementHeight = ELEMENT
       ...(!hasLabel && {
         display: 'block',
       }),
-      ...getPseudoElementJssStyle(),
       top: pxToRemWithUnit(hasLabel ? LABEL_HEIGHT_WITH_SPACING : 0),
       width: '100%',
       minHeight: hasLabel ? getAfterMinHeight(LABEL_HEIGHT_WITH_SPACING) : '100%',
