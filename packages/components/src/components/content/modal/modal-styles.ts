@@ -90,14 +90,17 @@ export const getComponentCss = (
           alignItems: 'center',
           justifyContent: 'center',
           flexWrap: 'wrap',
-          transition: `opacity .2s ${transitionTimingFunction},visibility 0s linear .2s`,
-          opacity: 0,
-          visibility: 'hidden',
-          ...(open && {
-            transition: `opacity .6s ${transitionTimingFunction}`,
-            opacity: 1,
-            visibility: 'inherit',
-          }),
+          ...(open
+            ? {
+                transition: `opacity .6s ${transitionTimingFunction}`,
+                opacity: 1,
+                visibility: 'inherit',
+              }
+            : {
+                transition: `opacity .2s ${transitionTimingFunction},visibility 0s linear .2s`,
+                opacity: 0,
+                visibility: 'hidden',
+              }),
           // workaround via pseudo element to fix stacking (black) background in safari
           '&::before': {
             content: '""',

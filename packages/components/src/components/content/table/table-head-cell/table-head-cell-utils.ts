@@ -11,5 +11,9 @@ export const toggleDirection = (dir: Direction): Direction => (isDirectionAsc(di
 
 export const createSortedEventInitDictDetail = (sort: TableHeadCellSort): CustomEventInit<SortingChangeEvent> => ({
   bubbles: true,
-  detail: { ...sort, active: true, direction: toggleDirection(sort.direction) },
+  detail: { ...sort, active: true, direction: sort.active ? toggleDirection(sort.direction) : sort.direction },
 });
+
+export const isSortable = (active: boolean, direction: Direction): boolean => {
+  return active !== undefined && direction !== undefined;
+};

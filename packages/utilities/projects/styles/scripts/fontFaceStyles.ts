@@ -1,9 +1,7 @@
-import type { FontWeight } from '@porsche-design-system/utilities-v2';
 import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
 import { fontWeight } from '@porsche-design-system/utilities-v2';
 import { CDN_BASE_PATH_FONTS, CDN_BASE_URL, CDN_BASE_URL_CN } from '../../../../../cdn.config';
 
-import type { Styles } from 'jss';
 import { getMinifiedCss } from '@porsche-design-system/shared';
 
 export type GetMinifiedPorscheNextFontFaceCssOptions = {
@@ -32,7 +30,7 @@ export const getMinifiedPorscheNextFontFaceCss = (opts: GetMinifiedPorscheNextFo
       return {
         fontFamily: 'Porsche Next',
         fontStyle: 'normal',
-        fontWeight: fontWeight[weight.toLowerCase() as FontWeight],
+        fontWeight: fontWeight[weight.toLowerCase() as keyof typeof fontWeight],
         src: `url('${cdnUrlMap[cdn]}/${resource.woff2}') format('woff2'), url('${cdnUrlMap[cdn]}/${resource.woff}') format('woff')`,
         unicodeRange: unicodeRangeMap[charset.toLowerCase() as keyof typeof unicodeRangeMap],
         fontDisplay: 'swap',
