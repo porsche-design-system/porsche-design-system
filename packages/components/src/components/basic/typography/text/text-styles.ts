@@ -41,13 +41,9 @@ export const getComponentCss = (
       textAlign: align,
       ...textSmall,
       color: getThemedTextColor(theme, color),
-      overflowWrap: 'break-word',
-      wordWrap: 'break-word',
-      hyphens: 'auto',
       listStyleType: 'none',
       whiteSpace: 'inherit',
       transition: 'font-size 1ms linear',
-      WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
       ...(ellipsis && getEllipsisStyles()),
       ...buildResponsiveStyles(size, getSizeJssStyle),
     },

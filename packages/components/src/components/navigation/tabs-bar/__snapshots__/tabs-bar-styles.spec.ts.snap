@@ -16,6 +16,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
+  white-space: inherit !important;
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -47,6 +48,8 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 .root {
   position: relative;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   font-weight: 400;
   margin: 0 -4px;
   font-size: 1.5rem;
@@ -145,6 +148,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
+  white-space: inherit !important;
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -176,6 +180,8 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 .root {
   position: relative;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   font-weight: 400;
   margin: 0 -4px;
   font-size: 1.5rem;
@@ -274,6 +280,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
+  white-space: inherit !important;
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -305,6 +312,8 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 .root {
   position: relative;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   font-weight: 400;
   margin: 0 -4px;
   font-size: 1.5rem;
@@ -403,6 +412,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
+  white-space: inherit !important;
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -434,6 +444,8 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 .root {
   position: relative;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   font-weight: 400;
   margin: 0 -4px;
   font-size: 1rem;
@@ -532,6 +544,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
+  white-space: inherit !important;
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -563,6 +576,8 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 .root {
   position: relative;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   font-weight: 400;
   margin: 0 -4px;
   font-size: 1rem;
@@ -661,6 +676,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
+  white-space: inherit !important;
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -692,6 +708,8 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 .root {
   position: relative;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   font-weight: 400;
   margin: 0 -4px;
   font-size: 1rem;
@@ -790,6 +808,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
+  white-space: inherit !important;
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -821,6 +840,8 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 .root {
   position: relative;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   font-weight: 400;
   margin: 0 -4px;
   font-size: 1rem;
@@ -919,6 +940,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
+  white-space: inherit !important;
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -950,6 +972,8 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 .root {
   position: relative;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   font-weight: 600;
   margin: 0 -4px;
   font-size: 1rem;
@@ -1048,6 +1072,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
+  white-space: inherit !important;
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -1079,6 +1104,8 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 .root {
   position: relative;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   font-weight: 400;
   margin: 0 -4px;
   font-size: 1rem;

@@ -23,14 +23,14 @@ exports[`getComponentCss() should return correct css for variant: "headline-1", 
 .root {
   padding: 0;
   margin: 0;
-  -webkit-text-size-adjust: none;
   text-align: left;
   color: #000;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
   white-space: inherit;
   font: normal normal 600 1.75rem/1.4285714286 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
 }
 @media (min-width: 760px) and (max-width: 999px) {
   .root {
@@ -85,14 +85,14 @@ exports[`getComponentCss() should return correct css for variant: "headline-2", 
 .root {
   padding: 0;
   margin: 0;
-  -webkit-text-size-adjust: none;
   text-align: center;
   color: inherit;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
   white-space: nowrap;
   font: normal normal 600 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -150,14 +150,14 @@ exports[`getComponentCss() should return correct css for variant: "headline-3", 
 .root {
   padding: 0;
   margin: 0;
-  -webkit-text-size-adjust: none;
   text-align: center;
   color: inherit;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
   white-space: nowrap;
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -215,14 +215,14 @@ exports[`getComponentCss() should return correct css for variant: "headline-4", 
 .root {
   padding: 0;
   margin: 0;
-  -webkit-text-size-adjust: none;
   text-align: center;
   color: inherit;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
   white-space: nowrap;
   font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -280,14 +280,14 @@ exports[`getComponentCss() should return correct css for variant: "headline-5", 
 .root {
   padding: 0;
   margin: 0;
-  -webkit-text-size-adjust: none;
   text-align: center;
   color: inherit;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
   white-space: nowrap;
   font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -317,12 +317,8 @@ exports[`getComponentCss() should return correct css for variant: "inherit", ali
 .root {
   padding: 0;
   margin: 0;
-  -webkit-text-size-adjust: none;
   text-align: left;
   color: #000;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
   white-space: inherit;
   font-size: inherit;
 }"
@@ -351,14 +347,14 @@ exports[`getComponentCss() should return correct css for variant: "large-title",
 .root {
   padding: 0;
   margin: 0;
-  -webkit-text-size-adjust: none;
   text-align: center;
   color: inherit;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
   white-space: nowrap;
   font: normal normal 600 2rem/1.375 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -416,12 +412,8 @@ exports[`getComponentCss() should return correct css for variant: {"base":"small
 .root {
   padding: 0;
   margin: 0;
-  -webkit-text-size-adjust: none;
   text-align: right;
   color: inherit;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
   white-space: inherit;
 }"
 `;

@@ -5,7 +5,7 @@ import {
   throwIfElementHasAttribute,
   throwIfParentIsNotOfKind,
 } from '../../../../utils';
-import { createSortedEventInitDictDetail, getAriaSort, isDirectionAsc } from './table-head-cell-utils';
+import { createSortedEventInitDictDetail, getAriaSort, isSortable } from './table-head-cell-utils';
 import type { TableHeadCellSort, SortingChangeEvent } from '../table/table-utils';
 import { getComponentCss } from './table-head-cell-styles';
 import { SORT_EVENT_NAME } from '../table/table-utils';
@@ -26,7 +26,11 @@ export class TableHeadCell {
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'pTableHeadRow');
     throwIfElementHasAttribute(this.host, 'sort');
-    attachComponentCss(this.host, getComponentCss);
+  }
+
+  public componentWillRender(): void {
+    const { active, direction } = this.sort || {};
+    attachComponentCss(this.host, getComponentCss, active, direction, this.hideLabel);
   }
 
   public render(): JSX.Element {
@@ -35,22 +39,13 @@ export class TableHeadCell {
 
     return (
       <Host scope="col" role="columnheader" aria-sort={getAriaSort(this.sort)}>
-        {active !== undefined && direction !== undefined ? (
+        {isSortable(active, direction) ? (
           <button type="button" onClick={this.onButtonClick}>
             <slot />
-            <PrefixedTagNames.pIcon
-              class={{
-                ['icon']: true,
-                ['icon--active']: active,
-                ['icon--asc']: isDirectionAsc(direction), // rotate instead of loading 2nd icon
-              }}
-              color="inherit"
-              name="arrow-up"
-              aria-hidden="true"
-            />
+            <PrefixedTagNames.pIcon class="icon" color="inherit" name="arrow-up" aria-hidden="true" />
           </button>
         ) : (
-          <span class={{ hidden: this.hideLabel }}>
+          <span>
             <slot />
           </span>
         )}
