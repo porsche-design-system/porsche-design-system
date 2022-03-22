@@ -246,11 +246,11 @@ describe('buildResponsiveStyles()', () => {
     it('should return nested jss for responsive type', () => {
       expect(buildResponsiveStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getJssStyle)).toStrictEqual({
         width: 600,
-        '@media (min-width: 480px)': { width: 300 },
-        '@media (min-width: 760px)': { width: 400 },
-        '@media (min-width: 1000px)': { width: 500 },
-        '@media (min-width: 1300px)': { width: 600 },
-        '@media (min-width: 1760px)': { width: 700 },
+        '@media(min-width:480px)': { width: 300 },
+        '@media(min-width:760px)': { width: 400 },
+        '@media(min-width:1000px)': { width: 500 },
+        '@media(min-width:1300px)': { width: 600 },
+        '@media(min-width:1760px)': { width: 700 },
       });
     });
   });
@@ -266,11 +266,11 @@ describe('buildResponsiveStyles()', () => {
       expect(buildResponsiveStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getJssStyle)).toStrictEqual({
         width: 600,
         display: 'block',
-        '@media (min-width: 480px)': { width: 300, display: 'block' },
-        '@media (min-width: 760px)': { width: 400, display: 'block' },
-        '@media (min-width: 1000px)': { width: 500, display: 'block' },
-        '@media (min-width: 1300px)': { width: 600, display: 'block' },
-        '@media (min-width: 1760px)': { width: 700, display: 'block' },
+        '@media(min-width:480px)': { width: 300, display: 'block' },
+        '@media(min-width:760px)': { width: 400, display: 'block' },
+        '@media(min-width:1000px)': { width: 500, display: 'block' },
+        '@media(min-width:1300px)': { width: 600, display: 'block' },
+        '@media(min-width:1760px)': { width: 700, display: 'block' },
       });
     });
   });
