@@ -1,7 +1,7 @@
 import { AngularWrapperGenerator } from './AngularWrapperGenerator';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import { UXPinReactWrapperGenerator } from './UXPinReactWrapperGenerator';
-import { AbstractWrapperGeneratorConfig } from './AbstractWrapperGenerator';
+import type { AbstractWrapperGeneratorConfig } from './AbstractWrapperGenerator';
 
 type Framework = 'angular' | 'react' | 'uxpin';
 
