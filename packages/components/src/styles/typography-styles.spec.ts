@@ -6,7 +6,7 @@ describe('getSlottedTypographyStyle()', () => {
   });
 });
 
-describe('getEllipsisStyle()', () => {
+describe('getEllipsisJssStyle()', () => {
   it('should return correct JssStyle', () => {
     expect(getEllipsisJssStyle()).toMatchSnapshot();
   });
