@@ -14,7 +14,7 @@ const IGNORED_SKELETON_STYLES_FILE_NAMES = IGNORED_SKELETON_STYLES.map(
 const generateTagNames = (): void => {
   // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
   const componentsSourceDirectory = path.resolve('../components/src/components');
-  const componentsSkeletonDirectory = path.resolve('../components/src/styles/skeletons');
+  const componentsSkeletonDirectory = path.resolve(componentsSourceDirectory, '../styles/skeletons');
 
   const componentFiles = globby.sync(`${componentsSourceDirectory}/**/*.tsx`);
   const skeletonFiles = globby.sync(`${componentsSkeletonDirectory}/**/*skeleton-styles.ts`, {
