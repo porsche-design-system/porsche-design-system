@@ -133,16 +133,13 @@ const generateComponentMeta = (): void => {
       requiredProps = [{ [requiredProp]: propType }];
     }
 
-    const skeletonProps: ComponentMeta['skeletonProps'] = [];
-    if (hasSkeleton) {
-      // extract all matching skeleton relevant props into an array
-      SKELETON_RELEVANT_PROPS.forEach(({ propName, shouldAddValueToClassName }) => {
-        const [match] = new RegExp(`@Prop\\(\\) public ${propName}\\?: .+;`).exec(source) ?? [];
-        if (match) {
-          skeletonProps.push({ propName, shouldAddValueToClassName });
-        }
-      });
-    }
+    const skeletonProps: ComponentMeta['skeletonProps'] = hasSkeleton
+      ? SKELETON_RELEVANT_PROPS.filter(({ propName, shouldAddValueToClassName }) => {
+          // extract all matching skeleton relevant props
+          const [match] = new RegExp(`@Prop\\(\\) public ${propName}\\?: .+;`).exec(source) ?? [];
+          return match;
+        })
+      : [];
 
     result[tagName] = {
       isDelegatingFocus,
