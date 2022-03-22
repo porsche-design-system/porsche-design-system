@@ -10,12 +10,6 @@ exports[`should return correct css 1`] = `
 }
 p-checkbox-wrapper:not(.hydrated)::after, p-radio-button-wrapper:not(.hydrated)::after {
   display: block;
-  position: absolute;
-  left: 0;
-  content: \\"\\";
-  visibility: visible;
-  background: currentColor;
-  animation: opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite;
   top: 0rem;
   width: 100%;
   min-height: 100%;
