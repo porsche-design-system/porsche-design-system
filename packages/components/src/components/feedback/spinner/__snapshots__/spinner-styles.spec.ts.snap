@@ -565,35 +565,35 @@ circle:last-child {
     clip-path: inset(50%);
     white-space: nowrap;
   }
-@media (min-width: 480px) {
+@media(min-width:480px) {
     .root {
       height: 3rem;
       width: 3rem;
     }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
     .root {
       height: 4.5rem;
       width: 4.5rem;
     }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
     .root {
       height: 3rem;
       width: 3rem;
     }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
     .root {
       height: 4.5rem;
       width: 4.5rem;
     }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
     .root {
       height: 3rem;
       width: 3rem;
@@ -663,35 +663,35 @@ circle:last-child {
     clip-path: inset(50%);
     white-space: nowrap;
   }
-@media (min-width: 480px) {
+@media(min-width:480px) {
     .root {
       height: 3rem;
       width: 3rem;
     }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
     .root {
       height: 4.5rem;
       width: 4.5rem;
     }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
     .root {
       height: 3rem;
       width: 3rem;
     }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
     .root {
       height: 4.5rem;
       width: 4.5rem;
     }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
     .root {
       height: 3rem;
       width: 3rem;

@@ -1,15 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should return correct css 1`] = `
-Object {
-  "@global": Object {
-    "p-fieldset-wrapper": Object {
-      "&:not(.hydrated)": Object {
-        "display": "block",
-        "position": "relative",
-        "visibility": "visible",
-      },
-    },
-  },
-}
+"p-fieldset-wrapper:not(.hydrated) {
+  display: block;
+  position: relative;
+  visibility: visible;
+}"
 `;

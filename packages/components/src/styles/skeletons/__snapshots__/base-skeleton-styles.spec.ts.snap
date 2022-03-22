@@ -146,13 +146,6 @@ Object {
 }
 `;
 
-exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-headline' 1`] = `
-Object {
-  "theme": "theme",
-  "variant": "variant",
-}
-`;
-
 exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-link' 1`] = `
 Object {
   "hideLabel": "hide-label",
@@ -193,13 +186,6 @@ Object {
 }
 `;
 
-exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-text' 1`] = `
-Object {
-  "size": "size",
-  "theme": "theme",
-}
-`;
-
 exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-text-field-wrapper' 1`] = `
 Object {
   "description": "description",
@@ -207,16 +193,6 @@ Object {
   "label": "label",
 }
 `;
-
-exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-text-list' 1`] = `
-Object {
-  "theme": "theme",
-}
-`;
-
-exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-text-list-item' 1`] = `Object {}`;
-
-exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-text-list-item' 2`] = `Object {}`;
 
 exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-textarea-wrapper' 1`] = `
 Object {

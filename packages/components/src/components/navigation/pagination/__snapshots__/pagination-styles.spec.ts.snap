@@ -75,31 +75,31 @@ span[aria-current]::after {
   height: 0.25rem;
   background: #d5001c;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   nav {
     counter-reset: size 7;
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   nav {
     counter-reset: size 5;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   nav {
     counter-reset: size 7;
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   nav {
     counter-reset: size 5;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   nav {
     counter-reset: size 7;
   }

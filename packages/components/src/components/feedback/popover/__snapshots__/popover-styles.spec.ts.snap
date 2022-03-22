@@ -55,7 +55,7 @@ exports[`getComponentCss() should return correct css for direction: bottom 1`] =
     opacity: 1;
   }
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
     .popover {
       max-width: 27rem;
     }
@@ -127,7 +127,7 @@ exports[`getComponentCss() should return correct css for direction: left 1`] = `
     opacity: 1;
   }
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
     .popover {
       max-width: 27rem;
     }
@@ -199,7 +199,7 @@ exports[`getComponentCss() should return correct css for direction: right 1`] = 
     opacity: 1;
   }
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
     .popover {
       max-width: 27rem;
     }
@@ -271,7 +271,7 @@ exports[`getComponentCss() should return correct css for direction: top 1`] = `
     opacity: 1;
   }
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
     .popover {
       max-width: 27rem;
     }

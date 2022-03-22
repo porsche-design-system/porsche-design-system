@@ -75,31 +75,31 @@ exports[`getComponentCss() should return correct css for alignSelf: {"base":"str
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   :host {
     align-self: center !important;
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     align-self: stretch !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     align-self: center !important;
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   :host {
     align-self: stretch !important;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   :host {
     align-self: center !important;
   }
@@ -115,7 +115,7 @@ exports[`getComponentCss() should return correct css for all props being breakpo
   align-self: stretch !important;
   flex: auto !important;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   :host {
     width: 50% !important;
     margin-left: 50% !important;
@@ -124,7 +124,7 @@ exports[`getComponentCss() should return correct css for all props being breakpo
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     width: auto% !important;
     margin-left: 33.333333% !important;
@@ -133,7 +133,7 @@ exports[`getComponentCss() should return correct css for all props being breakpo
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     width: 50% !important;
     margin-left: 50% !important;
@@ -142,7 +142,7 @@ exports[`getComponentCss() should return correct css for all props being breakpo
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   :host {
     width: auto% !important;
     margin-left: 33.333333% !important;
@@ -151,7 +151,7 @@ exports[`getComponentCss() should return correct css for all props being breakpo
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   :host {
     width: 50% !important;
     margin-left: 50% !important;
@@ -211,31 +211,31 @@ exports[`getComponentCss() should return correct css for flex: {"base":"auto","x
   align-self: auto !important;
   flex: auto !important;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   :host {
     flex: 1 1 0 !important;
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     flex: auto !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     flex: 1 1 0 !important;
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   :host {
     flex: auto !important;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   :host {
     flex: 1 1 0 !important;
   }
@@ -252,31 +252,31 @@ exports[`getComponentCss() should return correct css for grow: {"base":1,"xs":0,
   flex-grow: 1 !important;
   flex-shrink: 1 !important;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   :host {
     flex-grow: 0 !important;
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     flex-grow: 1 !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     flex-grow: 0 !important;
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   :host {
     flex-grow: 1 !important;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   :host {
     flex-grow: 0 !important;
   }
@@ -381,31 +381,31 @@ exports[`getComponentCss() should return correct css for offset: {"base":"one-th
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   :host {
     margin-left: 50% !important;
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     margin-left: 33.333333% !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     margin-left: 50% !important;
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   :host {
     margin-left: 33.333333% !important;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   :host {
     margin-left: 50% !important;
   }
@@ -422,31 +422,31 @@ exports[`getComponentCss() should return correct css for shrink: {"base":0,"xs":
   flex-grow: 0 !important;
   flex-shrink: 0 !important;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   :host {
     flex-shrink: 1 !important;
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     flex-shrink: 0 !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     flex-shrink: 1 !important;
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   :host {
     flex-shrink: 0 !important;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   :host {
     flex-shrink: 1 !important;
   }
@@ -562,31 +562,31 @@ exports[`getComponentCss() should return correct css for width: {"base":"auto","
   flex-grow: 0 !important;
   flex-shrink: 1 !important;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   :host {
     width: 50% !important;
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     width: auto% !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     width: 50% !important;
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   :host {
     width: auto% !important;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   :host {
     width: 50% !important;
   }

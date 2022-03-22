@@ -1,80 +1,72 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should return correct css 1`] = `
-Object {
-  "@global": Object {
-    "p-textarea-wrapper": Object {
-      "&:not(.hydrated)": Object {
-        "&::after": Object {
-          "animation": "opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite",
-          "background": "currentColor",
-          "color": "#626669",
-          "content": "\\"\\"",
-          "left": "0",
-          "minHeight": "calc(100% - 1.75rem)",
-          "position": "absolute",
-          "top": "1.75rem",
-          "visibility": "visible",
-          "width": "100%",
-        },
-        "&::before": Object {
-          "animation": "opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite",
-          "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px)",
-          "color": "#626669",
-          "content": "\\"\\"",
-          "height": "1.5rem",
-          "left": "0",
-          "position": "absolute",
-          "top": "0",
-          "visibility": "visible",
-          "width": "8rem",
-        },
-        "&[description]:not([label]):not(.pds-skeleton--label), &.pds-skeleton--description:not(.pds-skeleton--label)": Object {
-          "&::after": Object {
-            "minHeight": "calc(100% - 1.5rem)",
-            "top": "1.5rem",
-          },
-          "&::before": Object {
-            "background": "linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 18px, transparent 18px, transparent 28px, currentColor 28px, currentColor 60px, transparent 60px, transparent 72px)",
-            "height": "1.5rem",
-          },
-          "minHeight": "13.5rem",
-        },
-        "&[description][label]:not([hide-label=true]), &.pds-skeleton--description.pds-skeleton--label:not(.pds-skeleton--hide-label)": Object {
-          "&::after": Object {
-            "minHeight": "calc(100% - 3.25rem)",
-            "top": "3.25rem",
-          },
-          "&::before": Object {
-            "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 28px, currentColor 28px, currentColor 40px, transparent 40px, transparent 52px)",
-            "height": "3.25rem",
-          },
-          "minHeight": "15.25rem",
-        },
-        "&[hide-label=true], &.pds-skeleton--hide-label, &:not([description]):not([label]):not(.pds-skeleton--description):not(.pds-skeleton--label)": Object {
-          "&::after": Object {
-            "minHeight": "100%",
-            "top": 0,
-          },
-          "&::before": Object {
-            "content": "none",
-          },
-          "height": "3rem",
-        },
-        "&[theme=dark], &.pds-skeleton--theme-dark": Object {
-          "&::after": Object {
-            "color": "#b0b1b2",
-          },
-          "&::before": Object {
-            "color": "#b0b1b2",
-          },
-        },
-        "color": "transparent",
-        "display": "block",
-        "minHeight": "13.75rem",
-        "position": "relative",
-      },
-    },
-  },
+"p-textarea-wrapper:not(.hydrated) {
+  position: relative;
+  color: transparent;
+  display: block;
+  min-height: 13.75rem;
 }
+p-textarea-wrapper:not(.hydrated)::before {
+  position: absolute;
+  left: 0;
+  content: \\"\\";
+  visibility: visible;
+  background: linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px);
+  animation: opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite;
+  height: 1.5rem;
+  width: 8rem;
+  top: 0;
+  color: #626669;
+}
+p-textarea-wrapper:not(.hydrated)::after {
+  position: absolute;
+  left: 0;
+  content: \\"\\";
+  visibility: visible;
+  background: currentColor;
+  animation: opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite;
+  top: 1.75rem;
+  width: 100%;
+  min-height: calc(100% - 1.75rem);
+  color: #626669;
+}
+p-textarea-wrapper:not(.hydrated)[hide-label=true], p-textarea-wrapper:not(.hydrated).pds-skeleton--hide-label, p-textarea-wrapper:not(.hydrated):not([description]):not([label]):not(.pds-skeleton--description):not(.pds-skeleton--label) {
+  height: 3rem;
+}
+p-textarea-wrapper:not(.hydrated)[description]:not([label]):not(.pds-skeleton--label), p-textarea-wrapper:not(.hydrated).pds-skeleton--description:not(.pds-skeleton--label) {
+  min-height: 13.5rem;
+}
+p-textarea-wrapper:not(.hydrated)[description][label]:not([hide-label=true]), p-textarea-wrapper:not(.hydrated).pds-skeleton--description.pds-skeleton--label:not(.pds-skeleton--hide-label) {
+  min-height: 15.25rem;
+}
+p-textarea-wrapper:not(.hydrated)[theme=dark]::before, p-textarea-wrapper:not(.hydrated).pds-skeleton--theme-dark::before {
+  color: #b0b1b2;
+}
+p-textarea-wrapper:not(.hydrated)[theme=dark]::after, p-textarea-wrapper:not(.hydrated).pds-skeleton--theme-dark::after {
+  color: #b0b1b2;
+}
+p-textarea-wrapper:not(.hydrated)[description][label]:not([hide-label=true])::before, p-textarea-wrapper:not(.hydrated).pds-skeleton--description.pds-skeleton--label:not(.pds-skeleton--hide-label)::before {
+  height: 3.25rem;
+  background: linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 28px, currentColor 28px, currentColor 40px, transparent 40px, transparent 52px);
+}
+p-textarea-wrapper:not(.hydrated)[description][label]:not([hide-label=true])::after, p-textarea-wrapper:not(.hydrated).pds-skeleton--description.pds-skeleton--label:not(.pds-skeleton--hide-label)::after {
+  top: 3.25rem;
+  min-height: calc(100% - 3.25rem);
+}
+p-textarea-wrapper:not(.hydrated)[description]:not([label]):not(.pds-skeleton--label)::before, p-textarea-wrapper:not(.hydrated).pds-skeleton--description:not(.pds-skeleton--label)::before {
+  height: 1.5rem;
+  background: linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 18px, transparent 18px, transparent 28px, currentColor 28px, currentColor 60px, transparent 60px, transparent 72px);
+}
+p-textarea-wrapper:not(.hydrated)[description]:not([label]):not(.pds-skeleton--label)::after, p-textarea-wrapper:not(.hydrated).pds-skeleton--description:not(.pds-skeleton--label)::after {
+  top: 1.5rem;
+  min-height: calc(100% - 1.5rem);
+}
+p-textarea-wrapper:not(.hydrated)[hide-label=true]::before, p-textarea-wrapper:not(.hydrated).pds-skeleton--hide-label::before, p-textarea-wrapper:not(.hydrated):not([description]):not([label]):not(.pds-skeleton--description):not(.pds-skeleton--label)::before {
+  content: none;
+}
+p-textarea-wrapper:not(.hydrated)[hide-label=true]::after, p-textarea-wrapper:not(.hydrated).pds-skeleton--hide-label::after, p-textarea-wrapper:not(.hydrated):not([description]):not([label]):not(.pds-skeleton--description):not(.pds-skeleton--label)::after {
+  top: 0;
+  min-height: 100%;
+}"
 `;
