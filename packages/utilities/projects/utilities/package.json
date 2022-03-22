@@ -8,8 +8,7 @@
   "types": "dist/jss/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "build": "yarn clean:build && yarn build:typography && yarn build:bundle",
-    "build:typography": "ts-node scripts/buildTypography.ts",
+    "build": "yarn clean:build && yarn build:bundle",
     "build:bundle": "rollup -c rollup.config.js",
     "test": "yarn test:unit",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
