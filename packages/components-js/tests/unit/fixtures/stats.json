@@ -77,7 +77,7 @@
   {
     "chunkShortName": "main",
     "size": 61896,
-    "gzipSize": 20979
+    "gzipSize": 20978
   },
   {
     "chunkShortName": "marque",
@@ -126,8 +126,8 @@
   },
   {
     "chunkShortName": "tabs",
-    "size": 3384,
-    "gzipSize": 1407
+    "size": 3271,
+    "gzipSize": 1358
   },
   {
     "chunkShortName": "tabs-bar",
