@@ -47,7 +47,6 @@ button:hover .icon, button:focus .icon {
   opacity: 0;
   transform: rotate3d(0,0,1,0deg);
   transform-origin: 50% 50%;
-  transition: opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
@@ -98,7 +97,6 @@ button:hover .icon, button:focus .icon {
   opacity: 0;
   transform: rotate3d(0,0,1,180deg);
   transform-origin: 50% 50%;
-  transition: opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
@@ -149,7 +147,6 @@ button:hover .icon, button:focus .icon {
   opacity: 1;
   transform: rotate3d(0,0,1,0deg);
   transform-origin: 50% 50%;
-  transition: opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 
@@ -200,7 +197,6 @@ button:hover .icon, button:focus .icon {
   opacity: 1;
   transform: rotate3d(0,0,1,180deg);
   transform-origin: 50% 50%;
-  transition: opacity var(--p-transition-duration, .24s) ease;
 }"
 `;
 

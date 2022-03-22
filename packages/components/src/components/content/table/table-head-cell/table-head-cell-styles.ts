@@ -5,7 +5,6 @@ import {
   getFocusStyles,
   getHoverStyles,
   getTextHiddenJssStyle,
-  getTransition,
   pxToRemWithUnit,
   getThemedColors,
 } from '../../../../styles';
@@ -27,38 +26,38 @@ export const getComponentCss = (active: boolean, direction: Direction, hideLabel
         fontWeight: fontWeight.semibold,
         whiteSpace: 'nowrap',
       }),
-      ...(sortable && {
-        button: {
-          display: 'flex',
-          alignItems: 'flex-end',
-          padding: 0,
-          boxSizing: 'border-box',
-          appearance: 'none',
-          border: 'none',
-          ...textSmall,
-          fontWeight: fontWeight.semibold,
-          color: baseColor,
-          textDecoration: 'none',
-          textAlign: 'left',
-          background: 'transparent',
-          cursor: 'pointer',
-          ...getHoverStyles(),
-          ...getFocusStyles({ offset: 1 }),
-          '&:hover, &:focus': {
-            '& .icon': {
-              opacity: 1,
+      ...(sortable
+        ? {
+            button: {
+              display: 'flex',
+              alignItems: 'flex-end',
+              padding: 0,
+              boxSizing: 'border-box',
+              appearance: 'none',
+              border: 'none',
+              ...textSmall,
+              fontWeight: fontWeight.semibold,
+              color: baseColor,
+              textDecoration: 'none',
+              textAlign: 'left',
+              background: 'transparent',
+              cursor: 'pointer',
+              ...getHoverStyles(),
+              ...getFocusStyles({ offset: 1 }),
+              '&:hover, &:focus': {
+                '& .icon': {
+                  opacity: 1,
+                },
+              },
             },
-          },
-        },
-      }),
-      ...(!sortable &&
-        hideLabel && {
-          span: {
-            ...getTextHiddenJssStyle(true),
-            display: 'block',
-            border: 0,
-          },
-        }),
+          }
+        : hideLabel && {
+            span: {
+              ...getTextHiddenJssStyle(true),
+              display: 'block',
+              border: 0,
+            },
+          }),
     },
     ...(sortable && {
       icon: {
@@ -66,7 +65,6 @@ export const getComponentCss = (active: boolean, direction: Direction, hideLabel
         opacity: active ? 1 : 0,
         transform: `rotate3d(0,0,1,${isDirectionAsc(direction) ? 0 : 180}deg)`,
         transformOrigin: '50% 50%', // for iOS
-        transition: getTransition('opacity'),
       },
     }),
   });
