@@ -41,6 +41,7 @@ export const getComponentCss = (
           fontWeight: 'inherit',
           fontSize: 'inherit',
           lineHeight: 'inherit',
+          whiteSpace: 'inherit',
           boxSizing: 'border-box',
           WebkitAppearance: 'none',
           appearance: 'none',
@@ -74,6 +75,8 @@ export const getComponentCss = (
     root: {
       position: 'relative',
       ...textSmall,
+      hyphens: null,
+      overflowWrap: null,
       fontWeight: fontWeight[weight],
       margin: '0 -4px',
       ...buildResponsiveStyles(size, (s: TabSize) => fontSize[s]),
