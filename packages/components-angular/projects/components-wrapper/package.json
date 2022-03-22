@@ -27,7 +27,7 @@
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "v2.9.2-rc.0",
+    "@porsche-design-system/components-js": "2.9.2-rc.0",
     "tslib": "^2.0.1"
   },
   "peerDependencies": {
