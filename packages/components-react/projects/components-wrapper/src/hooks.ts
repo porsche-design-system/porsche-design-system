@@ -28,7 +28,7 @@ export const usePrefix = /*#__PURE__*/ (tagName: string): string => {
   }
 };
 
-export const useSkeletons = /*#__PURE__*/ (): boolean => {
+export const useSkeleton = /*#__PURE__*/ (): boolean => {
   if (process.env.NODE_ENV === 'test' && skipCheck) {
     return false;
   } else {

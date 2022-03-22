@@ -64,7 +64,7 @@ describe('syncRefs', () => {
     jest.spyOn(hooks, 'usePrefix').mockImplementation((tagName) => tagName);
   });
   it('should sync refs if ref is set directly', () => {
-    jest.spyOn(hooks, 'useSkeletons').mockImplementation(() => false);
+    jest.spyOn(hooks, 'useSkeleton').mockImplementation(() => false);
     const { getByTestId } = render(<Sample />);
     const button = getByTestId('button');
 
@@ -76,7 +76,7 @@ describe('syncRefs', () => {
   });
 
   it('should sync refs if ref is set as callback', () => {
-    jest.spyOn(hooks, 'useSkeletons').mockImplementation(() => false);
+    jest.spyOn(hooks, 'useSkeleton').mockImplementation(() => false);
     const { getByTestId } = render(<Sample isRefCallback />);
     const button = getByTestId('button');
 
@@ -87,8 +87,8 @@ describe('syncRefs', () => {
     expect(button.className).toBe(CLASS_NAME);
   });
 
-  it('should use useSkeletons hook and set skeleton classes', () => {
-    jest.spyOn(hooks, 'useSkeletons').mockImplementation(() => true);
+  it('should use useSkeleton hook and set skeleton classes', () => {
+    jest.spyOn(hooks, 'useSkeleton').mockImplementation(() => true);
     const { getByTestId } = render(<Sample />);
     const button = getByTestId('button');
 
