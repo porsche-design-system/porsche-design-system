@@ -47,10 +47,16 @@ describe('createSortedEventInitDictDetail()', () => {
   const activeSort: TableHeadCellSort = { id: '1', active: true, direction: 'asc' };
   const inactiveSort: TableHeadCellSort = { id: '1', active: false, direction: 'asc' };
 
-  it('should call toggleDirection()', () => {
+  it('should call toggleDirection() when active', () => {
     const spy = jest.spyOn(tableUtils, 'toggleDirection');
     createSortedEventInitDictDetail(activeSort);
     expect(spy).toBeCalledWith('asc');
+  });
+
+  it('should not call toggleDirection() when not active', () => {
+    const spy = jest.spyOn(tableUtils, 'toggleDirection');
+    createSortedEventInitDictDetail(inactiveSort);
+    expect(spy).not.toBeCalled();
   });
 
   it('should return correct eventInitDict when active', () => {
@@ -63,7 +69,7 @@ describe('createSortedEventInitDictDetail()', () => {
   it('should return correct eventInitDict when not active', () => {
     expect(createSortedEventInitDictDetail(inactiveSort)).toEqual({
       bubbles: true,
-      detail: { id: '1', active: true, direction: 'desc' },
+      detail: { id: '1', active: true, direction: 'asc' },
     });
   });
 });
