@@ -8,24 +8,13 @@ exports[`should return correct css 1`] = `
   min-height: 13.75rem;
 }
 p-textarea-wrapper:not(.hydrated)::before {
-  position: absolute;
-  left: 0;
-  content: \\"\\";
-  visibility: visible;
-  background: linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px);
-  animation: opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite;
   height: 1.5rem;
   width: 8rem;
   top: 0;
+  background: linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px);
   color: #626669;
 }
 p-textarea-wrapper:not(.hydrated)::after {
-  position: absolute;
-  left: 0;
-  content: \\"\\";
-  visibility: visible;
-  background: currentColor;
-  animation: opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite;
   top: 1.75rem;
   width: 100%;
   min-height: calc(100% - 1.75rem);
