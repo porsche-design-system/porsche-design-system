@@ -274,11 +274,8 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
         const styleJsx = style ? '\n      <style children={style} />\n' : '';
 
         let useStateOrEffect = '';
-        if (isSkeleton || (!isIconPage && usesQuerySelector)) {
-          useStateOrEffect = `useEffect(() => {
-  ${script}
-}, []);`;
-        } else if (usesSetAllReady) {
+
+        if (usesSetAllReady) {
           useStateOrEffect = `const [allReady, setAllReady] = useState(false);
 useEffect(() => {
   componentsReady().then(() => {
@@ -290,6 +287,10 @@ useEffect(() => {
 useEffect(() => {
   addMessage({ text: ${toastText} });
 }, [addMessage]);`;
+        } else if (isSkeleton || (!isIconPage && usesQuerySelector)) {
+          useStateOrEffect = `useEffect(() => {
+  ${script}
+}, []);`;
         }
 
         const componentLogic = [useStateOrEffect, styleConst]
