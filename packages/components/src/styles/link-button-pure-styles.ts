@@ -18,9 +18,10 @@ const getSizeStyles: GetStylesFunction = (textSize: TextSize): JssStyle => {
     };
   } else {
     // TODO: We should split this function into 3 separate and use it in root / icon / subline as soon as calculateLineHeight() is performant
-    const { fontSize: size, lineHeight } = fontSize[paramCaseToCamelCase(textSize)];
+    type FontSizeLineHeight = { fontSize: string; lineHeight: number };
+    const { fontSize: size, lineHeight }: FontSizeLineHeight = fontSize[paramCaseToCamelCase(textSize)];
     const lineHeightWithUnit = `${lineHeight}em`;
-    const sublineSize: { [key in Exclude<TextSize, 'inherit'>]: { fontSize: string; lineHeight: number } } = {
+    const sublineSize: { [key in Exclude<TextSize, 'inherit'>]: FontSizeLineHeight } = {
       'x-small': fontSize.xSmall,
       small: fontSize.small,
       medium: { fontSize: '1.25rem', lineHeight: 1.4 },
