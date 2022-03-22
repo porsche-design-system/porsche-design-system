@@ -147,15 +147,12 @@ export abstract class AbstractWrapperGenerator {
     }
   }
 
-  public getSkeletonClassNames(skeletonProps: SkeletonProps, isAngular: boolean): string {
-    const context = isAngular ? 'this.' : '';
-    return `[${skeletonProps
-      .map(({ propName, shouldAddValueToClassName }) => {
-        return `${context}${propName} && \`${PDS_SKELETON_CLASS_PREFIX}${paramCase(propName)}${
-          shouldAddValueToClassName ? `-\${JSON.stringify(${context}${propName}).replace(/"/g, '')}` : ''
-        }\``;
-      })
-      .join(',')}].filter((x) => x)`;
+  public getSkeletonClassNames(skeletonProps: SkeletonProps): string[] {
+    return skeletonProps.map(({ propName, shouldAddValueToClassName }) => {
+      return `${propName} && \`${PDS_SKELETON_CLASS_PREFIX}${paramCase(propName)}${
+        shouldAddValueToClassName ? `-\${JSON.stringify(${propName}).replace(/"/g, '')}` : ''
+      }\``;
+    });
   }
   // helper to possible inject additional contents into barrel file
   public getAdditionalBarrelFileContent(): string {

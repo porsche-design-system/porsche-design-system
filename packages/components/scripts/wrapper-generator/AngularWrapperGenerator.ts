@@ -90,7 +90,13 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
       ? `
   ngOnInit() {
     if (this.usesSkeletons) {
-      this.el.classList.add(...${this.getSkeletonClassNames(skeletonProps, true)});
+      this.el.classList.add(...[${this.getSkeletonClassNames(skeletonProps)
+        .map((skeletonClass) => {
+          return skeletonClass
+            .replace(/(\w*? && `)/, 'this.$1') // add this. to property
+            .replace(/(\w*?\)\.replace)/, 'this.$1'); // add this. to property inside stringify
+        })
+        .join(',')}].filter((x) => x));
     }
   }`
       : '';

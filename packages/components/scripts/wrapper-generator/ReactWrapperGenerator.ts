@@ -104,10 +104,9 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     const componentEffects = propsToSync.length ? componentEffectsArr.join('\n    ') : '';
 
     const mergedSkeletonClasses: string = hasSkeleton
-      ? `\`\${usesSkeleton ? \`\${className ? className + ' ' : ''}\${${this.getSkeletonClassNames(
-          skeletonProps,
-          false
-        )}.join(' ')}\` : \`\${className ? className : ''}\`}\``
+      ? `\`\${usesSkeleton ? \`\${className ? className + ' ' : ''}\${[${this.getSkeletonClassNames(skeletonProps).join(
+          ','
+        )}].filter((x) => x).join(' ')}\` : \`\${className ? className : ''}\`}\``
       : 'className';
 
     const componentPropsArr: string[] = [
