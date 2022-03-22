@@ -61,6 +61,10 @@ legend {
   padding: 0;
   color: #000;
   font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
 }
 @media (min-width: 760px) and (max-width: 999px) {
   legend {
@@ -141,6 +145,10 @@ legend {
   padding: 0;
   color: #000;
   font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
 }
 .required {
   user-select: none;

@@ -125,10 +125,6 @@ export const getComponentCss = (direction: PopoverDirection): string => {
       pointerEvents: 'auto',
       ...directionPositionMap[direction],
       ...textSmall,
-      WebkitTextSizeAdjust: 'none',
-      overflowWrap: 'break-word',
-      wordWrap: 'break-word',
-      hyphens: 'auto',
       listStyleType: 'none',
       // TODO: The styles above are our text styles should be extracted as soon as p-text is refactored with JSS
       color: baseColor,
