@@ -5,7 +5,7 @@ import { INPUT_HEIGHT } from '../form-styles';
 import { getComponentMeta, PDS_SKELETON_CLASS_PREFIX, TagName } from '@porsche-design-system/shared';
 import { paramCase } from 'change-case';
 import type { Theme } from '../../types';
-import { SKELETON_TAG_NAMES } from 'shared/src';
+import { SKELETON_TAG_NAMES } from '@porsche-design-system/shared';
 
 export type SkeletonPropertyNames = { [property: string]: string };
 
