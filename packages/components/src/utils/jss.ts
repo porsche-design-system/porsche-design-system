@@ -128,6 +128,7 @@ export const buildResponsiveStyles = <T>(
         .reduce(
           (result, breakpointValue: Breakpoint) => ({
             ...result,
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
             [mediaQueryMin(breakpointValue as any)]: getJssStyle(value[breakpointValue]) as Styles,
           }),
           getJssStyle(value.base) as Styles
