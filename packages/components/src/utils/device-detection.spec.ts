@@ -1,4 +1,4 @@
-import { isIos, isTouchDevice } from './device-detection';
+import { isTouchDevice } from './device-detection';
 
 describe('isTouchDevice()', () => {
   it('should return true for touch device', () => {
@@ -24,19 +24,5 @@ describe('isTouchDevice()', () => {
     );
 
     expect(isTouchDevice()).toBe(false);
-  });
-});
-
-describe('isIos()', () => {
-  it.each([
-    [{ platform: 'iPhone' }, true],
-    [{ platform: 'iPad' }, true],
-    [{ platform: 'iPod' }, true],
-    [{ platform: 'MacIntel', maxTouchPoints: 2 }, true],
-    [{ platform: 'Win32' }, false],
-    [{ platform: 'Win32', maxTouchPoints: 2 }, false],
-  ])('should for navigator %o return %s', (navigator: Navigator, result) => {
-    jest.spyOn(window, 'navigator', 'get').mockImplementation(() => navigator);
-    expect(isIos()).toBe(result);
   });
 });

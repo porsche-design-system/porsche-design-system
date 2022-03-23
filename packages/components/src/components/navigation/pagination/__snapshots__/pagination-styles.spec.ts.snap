@@ -33,6 +33,8 @@ span {
   box-sizing: border-box;
   text-decoration: none;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   cursor: pointer;
   color: #fff;
   outline: 1px solid transparent;
@@ -147,6 +149,8 @@ span {
   box-sizing: border-box;
   text-decoration: none;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   cursor: pointer;
   color: #fff;
   outline: 1px solid transparent;
@@ -231,6 +235,8 @@ span {
   box-sizing: border-box;
   text-decoration: none;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   cursor: pointer;
   color: #000;
   outline: 1px solid transparent;
@@ -315,6 +321,8 @@ span {
   box-sizing: border-box;
   text-decoration: none;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   cursor: pointer;
   color: #fff;
   outline: 1px solid transparent;
@@ -399,6 +407,8 @@ span {
   box-sizing: border-box;
   text-decoration: none;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   cursor: pointer;
   color: #000;
   outline: 1px solid transparent;

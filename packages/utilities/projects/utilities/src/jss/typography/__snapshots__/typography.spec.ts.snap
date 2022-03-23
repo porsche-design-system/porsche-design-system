@@ -19,7 +19,11 @@ Object {
       "fontSize": "2.25rem",
       "lineHeight": 1.3333333333,
     },
+    "WebkitTextSizeAdjust": "none",
     "font": "normal normal 600 1.75rem/1.4285714286 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "hyphens": "auto",
+    "overflowWrap": "break-word",
+    "textSizeAdjust": "none",
   },
   "2": Object {
     "@media (min-width: 1000px) and (max-width: 1299px)": Object {
@@ -38,7 +42,11 @@ Object {
       "fontSize": "1.875rem",
       "lineHeight": 1.3333333333,
     },
+    "WebkitTextSizeAdjust": "none",
     "font": "normal normal 600 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "hyphens": "auto",
+    "overflowWrap": "break-word",
+    "textSizeAdjust": "none",
   },
   "3": Object {
     "@media (min-width: 1000px) and (max-width: 1299px)": Object {
@@ -57,7 +65,11 @@ Object {
       "fontSize": "1.5rem",
       "lineHeight": 1.5,
     },
+    "WebkitTextSizeAdjust": "none",
     "font": "normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "hyphens": "auto",
+    "overflowWrap": "break-word",
+    "textSizeAdjust": "none",
   },
   "4": Object {
     "@media (min-width: 1000px) and (max-width: 1299px)": Object {
@@ -76,10 +88,18 @@ Object {
       "fontSize": "1.125rem",
       "lineHeight": 1.5555555556,
     },
+    "WebkitTextSizeAdjust": "none",
     "font": "normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "hyphens": "auto",
+    "overflowWrap": "break-word",
+    "textSizeAdjust": "none",
   },
   "5": Object {
+    "WebkitTextSizeAdjust": "none",
     "font": "normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "hyphens": "auto",
+    "overflowWrap": "break-word",
+    "textSizeAdjust": "none",
   },
 }
 `;
@@ -102,7 +122,11 @@ Object {
     "fontSize": "2.25rem",
     "lineHeight": 1.3333333333,
   },
+  "WebkitTextSizeAdjust": "none",
   "font": "normal normal 600 1.75rem/1.4285714286 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "hyphens": "auto",
+  "overflowWrap": "break-word",
+  "textSizeAdjust": "none",
 }
 `;
 
@@ -124,7 +148,11 @@ Object {
     "fontSize": "1.875rem",
     "lineHeight": 1.3333333333,
   },
+  "WebkitTextSizeAdjust": "none",
   "font": "normal normal 600 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "hyphens": "auto",
+  "overflowWrap": "break-word",
+  "textSizeAdjust": "none",
 }
 `;
 
@@ -146,7 +174,11 @@ Object {
     "fontSize": "1.5rem",
     "lineHeight": 1.5,
   },
+  "WebkitTextSizeAdjust": "none",
   "font": "normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "hyphens": "auto",
+  "overflowWrap": "break-word",
+  "textSizeAdjust": "none",
 }
 `;
 
@@ -168,63 +200,111 @@ Object {
     "fontSize": "1.125rem",
     "lineHeight": 1.5555555556,
   },
+  "WebkitTextSizeAdjust": "none",
   "font": "normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "hyphens": "auto",
+  "overflowWrap": "break-word",
+  "textSizeAdjust": "none",
 }
 `;
 
 exports[`should contain correct values for headline5 1`] = `
 Object {
+  "WebkitTextSizeAdjust": "none",
   "font": "normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "hyphens": "auto",
+  "overflowWrap": "break-word",
+  "textSizeAdjust": "none",
 }
 `;
 
 exports[`should contain correct values for text 1`] = `
 Object {
   "large": Object {
+    "WebkitTextSizeAdjust": "none",
     "font": "normal normal 400 2.25rem/1.3333333333 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "hyphens": "auto",
+    "overflowWrap": "break-word",
+    "textSizeAdjust": "none",
   },
   "medium": Object {
+    "WebkitTextSizeAdjust": "none",
     "font": "normal normal 400 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "hyphens": "auto",
+    "overflowWrap": "break-word",
+    "textSizeAdjust": "none",
   },
   "small": Object {
+    "WebkitTextSizeAdjust": "none",
     "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "hyphens": "auto",
+    "overflowWrap": "break-word",
+    "textSizeAdjust": "none",
   },
   "xLarge": Object {
+    "WebkitTextSizeAdjust": "none",
     "font": "normal normal 400 3.25rem/1.2307692308 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "hyphens": "auto",
+    "overflowWrap": "break-word",
+    "textSizeAdjust": "none",
   },
   "xSmall": Object {
+    "WebkitTextSizeAdjust": "none",
     "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "hyphens": "auto",
+    "overflowWrap": "break-word",
+    "textSizeAdjust": "none",
   },
 }
 `;
 
 exports[`should contain correct values for textLarge 1`] = `
 Object {
+  "WebkitTextSizeAdjust": "none",
   "font": "normal normal 400 2.25rem/1.3333333333 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "hyphens": "auto",
+  "overflowWrap": "break-word",
+  "textSizeAdjust": "none",
 }
 `;
 
 exports[`should contain correct values for textMedium 1`] = `
 Object {
+  "WebkitTextSizeAdjust": "none",
   "font": "normal normal 400 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "hyphens": "auto",
+  "overflowWrap": "break-word",
+  "textSizeAdjust": "none",
 }
 `;
 
 exports[`should contain correct values for textSmall 1`] = `
 Object {
+  "WebkitTextSizeAdjust": "none",
   "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "hyphens": "auto",
+  "overflowWrap": "break-word",
+  "textSizeAdjust": "none",
 }
 `;
 
 exports[`should contain correct values for textXLarge 1`] = `
 Object {
+  "WebkitTextSizeAdjust": "none",
   "font": "normal normal 400 3.25rem/1.2307692308 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "hyphens": "auto",
+  "overflowWrap": "break-word",
+  "textSizeAdjust": "none",
 }
 `;
 
 exports[`should contain correct values for textXSmall 1`] = `
 Object {
+  "WebkitTextSizeAdjust": "none",
   "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "hyphens": "auto",
+  "overflowWrap": "break-word",
+  "textSizeAdjust": "none",
 }
 `;
 
@@ -247,7 +327,11 @@ Object {
       "fontSize": "2.625rem",
       "lineHeight": 1.2380952381,
     },
+    "WebkitTextSizeAdjust": "none",
     "font": "normal normal 600 2rem/1.375 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "hyphens": "auto",
+    "overflowWrap": "break-word",
+    "textSizeAdjust": "none",
   },
 }
 `;
@@ -270,6 +354,10 @@ Object {
     "fontSize": "2.625rem",
     "lineHeight": 1.2380952381,
   },
+  "WebkitTextSizeAdjust": "none",
   "font": "normal normal 600 2rem/1.375 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "hyphens": "auto",
+  "overflowWrap": "break-word",
+  "textSizeAdjust": "none",
 }
 `;

@@ -1,5 +1,3 @@
-import type { FontSizeLineHeight } from '@porsche-design-system/utilities-v2';
-
 /* Auto Generated Start */
 // prettier-ignore
 const STATIC_VALUES: [number, number][] = [[12,1.6666666667],[16,1.5],[24,1.5],[36,1.3333333333],[52,1.2307692308]];
@@ -32,7 +30,7 @@ export const calcLineHeightForElement = (tag: HTMLElement): number => {
   return fontSize && calculateLineHeight(parseFloat(fontSize));
 };
 
-export const generateTypeScale = (fontSizeWithRem: string): FontSizeLineHeight => {
+export const generateTypeScale = (fontSizeWithRem: string): { fontSize: string; lineHeight: number } => {
   return {
     fontSize: fontSizeWithRem,
     lineHeight: calculateLineHeight(parseFloat(fontSizeWithRem) * 16),

@@ -1,4 +1,5 @@
-import type { FontSize, FontSizeLineHeight, FontWeight } from './font-shared';
+import type { FontSize, FontSizeLineHeight, FontWeight, FontBehavior } from './font-shared';
+import { fontBehavior } from './font-behavior';
 import { fontFamily } from './font-family';
 import { fontSize } from './font-size';
 import { fontWeight } from './font-weight';
@@ -11,6 +12,7 @@ type Font = {
   size: { [key in FontSize]: FontSizeLineHeight };
   style: string;
   variant: string;
+  behavior: FontBehavior;
 };
 
 const font: Font = {
@@ -19,6 +21,7 @@ const font: Font = {
   size: fontSize,
   style: fontStyle,
   variant: fontVariant,
+  behavior: fontBehavior,
 };
 
-export { font, fontFamily, fontSize, fontWeight, fontStyle, fontVariant, FontSize, FontSizeLineHeight, FontWeight };
+export { font, fontFamily, fontSize, fontWeight, fontStyle, fontVariant, fontBehavior };
