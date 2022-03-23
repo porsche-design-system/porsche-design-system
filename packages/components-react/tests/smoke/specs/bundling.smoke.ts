@@ -17,7 +17,7 @@ it('should only contain initial-styles partial', () => {
   const regex = new RegExp(
     SKELETONS_ACTIVE
       ? `\\[${tagNames}\\].{0,10}\\[${tagNamesWithSkeleton}\\].{140,160}\\.join\\(", "\\)\\,.{50,70}\\.join\\(", "\\)\\)\\).{180,200}\\.join\\(","\\)\\+"{visibility:hidden}".{120,140}"<style".{20,40}"</style>"`
-      : `\\[${tagNames}\\].{50,70}\\.join\\(","\\)\\+"{visibility:hidden}".{10,20}"<style>"`
+      : `\\[${tagNames}\\].{5,10}\\.join\\(","\\)\\+"{visibility:hidden}".{20,30}"<style"`
   );
 
   expect(mainChunkFileContent).toMatch(regex);
@@ -28,5 +28,5 @@ it('should only contain initial-styles partial', () => {
 
   expect(withoutTagsMatches.length).toBe(2);
   expect(formatHtmlMatches.length).toBe(1);
-  expect(skeletonTagNamesMatches.length).toBe(SKELETONS_ACTIVE ? 3 : 2);
+  SKELETONS_ACTIVE && expect(skeletonTagNamesMatches.length).toBe(3);
 });
