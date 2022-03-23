@@ -26,8 +26,8 @@ export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOp
       position: 'static',
       textDecoration: 'none',
       font: 'inherit',
-      // color: 'inherit', //TODO: chrome hover bug. Use when fixed.
-      transition: getTransition('color'), //TODO: chrome hover bug. Remove when fixed.
+      // color: 'inherit', // TODO: chrome hover bug. Use when fixed.
+      transition: getTransition('color'), // TODO: chrome hover bug. Remove when fixed.
       outline: 'transparent none',
       '&::before': {
         content: '""',
@@ -82,10 +82,10 @@ export const getComponentCss = (
               margin: 0,
             },
             '&(a)': {
-              color: active ? activeColor : baseColor, //TODO: chrome hover bug. Remove when fixed.
+              color: active ? activeColor : baseColor, // TODO: chrome hover bug. Remove when fixed.
             },
             '&(a:hover)': {
-              color: hoverColor, //TODO: chrome hover bug. Remove when fixed.
+              color: hoverColor, // TODO: chrome hover bug. Remove when fixed.
             },
           },
         },
