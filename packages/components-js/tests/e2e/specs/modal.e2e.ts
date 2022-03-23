@@ -540,8 +540,6 @@ describe('modal', () => {
     const host = await getHost();
     const hostScrollTop = await host.evaluate((el) => el.scrollTop);
 
-    await page.waitForTimeout(CSS_TRANSITION_DURATION); // wait for visibility transition to finish
-
     expect(hostScrollTop).toBe(0);
   });
 
