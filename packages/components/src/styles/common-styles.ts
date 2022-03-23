@@ -133,7 +133,9 @@ export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOp
       position: 'static',
       textDecoration: 'none',
       font: 'inherit',
-      color: 'inherit',
+      // TODO: Workaround for Chrome hover bug. Set color: 'inherit' & remove transition when fixed.
+      // color: 'inherit',
+      transition: getTransition('color'),
       outline: 'transparent none',
       '&::before': {
         content: '""',
