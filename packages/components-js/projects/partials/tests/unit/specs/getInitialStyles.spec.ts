@@ -1,10 +1,9 @@
 import { getInitialStyles } from '../../../src';
 import { render } from '@testing-library/react';
 import {
-  describeif,
   INTERNAL_TAG_NAMES,
-  itif,
   SKELETON_TAG_NAMES,
+  SKELETONS_ACTIVE,
   SkeletonTagName,
   TAG_NAMES,
 } from '@porsche-design-system/shared';
@@ -12,6 +11,8 @@ import {
 const filteredTagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x));
 const tagNames = filteredTagNames.join(',');
 const prefixedTagNames = filteredTagNames.map((x) => `custom-prefix-${x}`).join(',');
+const describeif = SKELETONS_ACTIVE ? describe : xdescribe;
+const itif = SKELETONS_ACTIVE ? it : xit;
 
 describe('format: html', () => {
   it('should return core styles', () => {
