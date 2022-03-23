@@ -79,13 +79,13 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await forceHoverState(page, '.hover p-link-pure[href] >>> a');
       await forceHoverState(page, '.hover p-link-pure:not([href]) >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
-      await forceHoverState(page, '.hover p-link-pure:not([href]) a'); //TODO: workaround for chrome hover bug. Should be removed when fixed.
+      await forceHoverState(page, '.hover p-link-pure:not([href]) a'); //TODO: chrome hover bug. Remove when fixed.
       await forceFocusState(page, '.focus p-link-pure'); // native outline should not be visible
       await forceFocusState(page, '.focus p-link-pure[href] >>> a');
       await forceFocusState(page, '.focus:not([href]) p-link-pure a');
       await forceFocusHoverState(page, '.focus-hover p-link-pure[href] >>> a');
-      // await forceFocusState(page, '.focus-hover p-link-pure:not([href]) a');
-      await forceFocusHoverState(page, '.focus-hover p-link-pure:not([href]) a'); //TODO: workaround for chrome hover bug. Should only be forceFocusState when fixed.
+      await forceFocusState(page, '.focus-hover p-link-pure:not([href]) a');
+      await forceHoverState(page, '.focus-hover p-link-pure:not([href]) a'); //TODO: chrome hover bug. Remove when fixed.
       await forceHoverState(page, '.focus-hover p-link-pure:not([href]) >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
     })
   ).toBeFalsy();
