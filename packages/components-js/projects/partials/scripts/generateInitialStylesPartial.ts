@@ -26,7 +26,7 @@ const tagNamesWithSkeleton = joinArrayElementsToString(SKELETON_TAG_NAMES);
 
 // includes skeleton styles when SKELETONS_ACTIVE is set to true
 export const generateInitialStylesPartial = (): string => {
-  // 'any' is fallback when SKELETON_TAG_NAMES is an empty array because shared wasn't built, yet
+  // 'any' is fallback when SKELETON_TAG_NAMES is an empty array because shared wasn't built yet
   const types = `${SKELETONS_ACTIVE ? `export type SkeletonTagName = ${skeletonTagNamesTypeLiteral || 'any'};` : ''}
 
   type GetInitialStylesOptions = {
