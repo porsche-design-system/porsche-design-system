@@ -96,12 +96,12 @@ Object {
     "&:focus:not(:focus-visible)::before": Object {
       "outlineColor": "transparent",
     },
-    "color": "inherit",
     "display": "block",
     "font": "inherit",
     "outline": "transparent none",
     "position": "static",
     "textDecoration": "none",
+    "transition": "color var(--p-transition-duration, .24s) ease",
   },
 }
 `;
@@ -126,12 +126,12 @@ Object {
     "&:focus:not(:focus-visible)::before": Object {
       "outlineColor": "transparent",
     },
-    "color": "inherit",
     "display": "block",
     "font": "inherit",
     "outline": "transparent none",
     "position": "static",
     "textDecoration": "none",
+    "transition": "color var(--p-transition-duration, .24s) ease",
   },
 }
 `;
@@ -156,12 +156,12 @@ Object {
     "&:focus:not(:focus-visible)::before": Object {
       "outlineColor": "transparent",
     },
-    "color": "inherit",
     "display": "block",
     "font": "inherit",
     "outline": "transparent none",
     "position": "static",
     "textDecoration": "none",
+    "transition": "color var(--p-transition-duration, .24s) ease",
   },
 }
 `;
