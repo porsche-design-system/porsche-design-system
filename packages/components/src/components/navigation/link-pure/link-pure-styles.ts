@@ -77,15 +77,16 @@ export const getComponentCss = (
       // TODO:V3 should be removed, we shouldn't support this although some CMS are rendering an <a> with a wrapped <p>. Instead CMS output shall be post processed because it's necessary to use the PDS component anyway.
       {
         '@global': {
-          '::slotted(p)': {
-            margin: 0,
-          },
-          // TODO: Workaround for Chrome hover bug. Remove when fixed.
-          '::slotted(a)': {
-            color: active ? activeColor : baseColor,
-          },
-          '::slotted(a:hover)': {
-            color: hoverColor,
+          '::slotted': {
+            '&(p)': {
+              margin: 0,
+            },
+            '&(a)': {
+              color: active ? activeColor : baseColor, //TODO: chrome hover bug. Remove when fixed.
+            },
+            '&(a:hover)': {
+              color: hoverColor, //TODO: chrome hover bug. Remove when fixed.
+            },
           },
         },
       }
