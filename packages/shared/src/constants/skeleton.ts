@@ -5,5 +5,3 @@
  */
 export const SKELETONS_ACTIVE = false;
 export const PDS_SKELETON_CLASS_PREFIX = 'pds-skeleton--';
-export const describeif = SKELETONS_ACTIVE ? describe : xdescribe;
-export const itif = SKELETONS_ACTIVE ? it : xit;
