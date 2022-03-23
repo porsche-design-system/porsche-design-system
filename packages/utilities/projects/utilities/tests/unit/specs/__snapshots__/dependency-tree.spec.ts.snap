@@ -80,7 +80,6 @@ Object {
   "typography/headline1.js": Array [
     "font/font-behavior.js",
     "font/font-family.js",
-    "font/font-size.js",
     "font/font-style.js",
     "font/font-variant.js",
     "font/font-weight.js",
@@ -89,7 +88,6 @@ Object {
   "typography/headline2.js": Array [
     "font/font-behavior.js",
     "font/font-family.js",
-    "font/font-size.js",
     "font/font-style.js",
     "font/font-variant.js",
     "font/font-weight.js",
@@ -98,7 +96,6 @@ Object {
   "typography/headline3.js": Array [
     "font/font-behavior.js",
     "font/font-family.js",
-    "font/font-size.js",
     "font/font-style.js",
     "font/font-variant.js",
     "font/font-weight.js",
@@ -107,7 +104,6 @@ Object {
   "typography/headline4.js": Array [
     "font/font-behavior.js",
     "font/font-family.js",
-    "font/font-size.js",
     "font/font-style.js",
     "font/font-variant.js",
     "font/font-weight.js",
@@ -116,7 +112,6 @@ Object {
   "typography/headline5.js": Array [
     "font/font-behavior.js",
     "font/font-family.js",
-    "font/font-size.js",
     "font/font-style.js",
     "font/font-variant.js",
     "font/font-weight.js",
@@ -131,7 +126,6 @@ Object {
   "typography/textLarge.js": Array [
     "font/font-behavior.js",
     "font/font-family.js",
-    "font/font-size.js",
     "font/font-style.js",
     "font/font-variant.js",
     "font/font-weight.js",
@@ -139,7 +133,6 @@ Object {
   "typography/textMedium.js": Array [
     "font/font-behavior.js",
     "font/font-family.js",
-    "font/font-size.js",
     "font/font-style.js",
     "font/font-variant.js",
     "font/font-weight.js",
@@ -147,7 +140,6 @@ Object {
   "typography/textSmall.js": Array [
     "font/font-behavior.js",
     "font/font-family.js",
-    "font/font-size.js",
     "font/font-style.js",
     "font/font-variant.js",
     "font/font-weight.js",
@@ -155,7 +147,6 @@ Object {
   "typography/textXLarge.js": Array [
     "font/font-behavior.js",
     "font/font-family.js",
-    "font/font-size.js",
     "font/font-style.js",
     "font/font-variant.js",
     "font/font-weight.js",
@@ -163,7 +154,6 @@ Object {
   "typography/textXSmall.js": Array [
     "font/font-behavior.js",
     "font/font-family.js",
-    "font/font-size.js",
     "font/font-style.js",
     "font/font-variant.js",
     "font/font-weight.js",
@@ -174,7 +164,6 @@ Object {
   "typography/titleLarge.js": Array [
     "font/font-behavior.js",
     "font/font-family.js",
-    "font/font-size.js",
     "font/font-style.js",
     "font/font-variant.js",
     "font/font-weight.js",
