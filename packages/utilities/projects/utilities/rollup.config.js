@@ -18,6 +18,9 @@ export default [
             module: 'esm/index.js',
             types: 'index.d.ts',
             sideEffects: false,
+            peerDependencies: {
+              jss: '>=10.0.0 <11.0.0',
+            },
           },
         }),
       ],
