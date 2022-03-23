@@ -13,7 +13,7 @@ export const headSorting: HeadSorting[] = [
 ].map((item, i) => ({
   ...item,
   active: i === 1,
-  direction: 'desc',
+  direction: 'asc',
 }));
 
 export type DataSorting = {

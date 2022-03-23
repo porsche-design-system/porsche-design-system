@@ -19,6 +19,10 @@ exports[`getComponentCss() should return correct css for listType: ordered, orde
   text-align: right !important;
   background-color: transparent !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  -webkit-text-size-adjust: none !important;
+  text-size-adjust: none !important;
 }"
 `;
 
@@ -41,6 +45,10 @@ exports[`getComponentCss() should return correct css for listType: ordered, orde
   text-align: right !important;
   background-color: transparent !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  -webkit-text-size-adjust: none !important;
+  text-size-adjust: none !important;
 }"
 `;
 
@@ -63,6 +71,10 @@ exports[`getComponentCss() should return correct css for listType: ordered, orde
   text-align: right !important;
   background-color: transparent !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  -webkit-text-size-adjust: none !important;
+  text-size-adjust: none !important;
 }"
 `;
 
@@ -85,6 +97,10 @@ exports[`getComponentCss() should return correct css for listType: ordered, orde
   text-align: right !important;
   background-color: transparent !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  -webkit-text-size-adjust: none !important;
+  text-size-adjust: none !important;
 }"
 `;
 

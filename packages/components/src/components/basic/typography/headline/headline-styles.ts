@@ -29,12 +29,8 @@ export const getComponentCss = (
     root: {
       padding: 0,
       margin: 0,
-      WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
       textAlign: align,
       color: color !== 'default' ? 'inherit' : getThemedColors(theme).baseColor,
-      overflowWrap: 'break-word',
-      wordWrap: 'break-word',
-      hyphens: 'auto',
       whiteSpace: 'inherit',
       ...(isVariantType(variant) ? getVariantStyle(variant) : variant === 'inherit' && { fontSize: 'inherit' }),
       ...(ellipsis && getEllipsisStyles()),
