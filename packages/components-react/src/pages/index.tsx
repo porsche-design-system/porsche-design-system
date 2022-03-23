@@ -27,7 +27,6 @@ import { FieldsetWrapperSkeletonPage } from './FieldsetWrapperSkeleton';
 import { FlexPage } from './Flex';
 import { GridPage } from './Grid';
 import { HeadlinePage } from './Headline';
-import { HeadlineSkeletonPage } from './HeadlineSkeleton';
 import { IconPage } from './Icon';
 import { InlineNotificationPage } from './InlineNotification';
 import { LinkPage } from './Link';
@@ -61,7 +60,6 @@ import { TextareaWrapperSkeletonPage } from './TextareaWrapperSkeleton';
 import { TextFieldWrapperPage } from './TextFieldWrapper';
 import { TextFieldWrapperSkeletonPage } from './TextFieldWrapperSkeleton';
 import { TextListPage } from './TextList';
-import { TextSkeletonPage } from './TextSkeleton';
 import { ToastBasicPage } from './ToastBasic';
 import { ToastBasicDarkPage } from './ToastBasicDark';
 import { ToastBasicLongTextPage } from './ToastBasicLongText';
@@ -152,11 +150,6 @@ export const generatedRoutes: RouteType[] = [
     name: 'Headline',
     path: '/headline',
     element: <HeadlinePage />,
-  },
-  {
-    name: 'Headline Skeleton',
-    path: '/headline-skeleton',
-    element: <HeadlineSkeletonPage />,
   },
   {
     name: 'Icon',
@@ -322,11 +315,6 @@ export const generatedRoutes: RouteType[] = [
     name: 'Text List',
     path: '/text-list',
     element: <TextListPage />,
-  },
-  {
-    name: 'Text Skeleton',
-    path: '/text-skeleton',
-    element: <TextSkeletonPage />,
   },
   {
     name: 'Toast Basic',

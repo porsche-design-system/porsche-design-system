@@ -39,7 +39,6 @@ import { FieldsetWrapperSkeletonComponent } from './fieldset-wrapper-skeleton.co
 import { FlexComponent } from './flex.component';
 import { GridComponent } from './grid.component';
 import { HeadlineComponent } from './headline.component';
-import { HeadlineSkeletonComponent } from './headline-skeleton.component';
 import { IconComponent } from './icon.component';
 import { InlineNotificationComponent } from './inline-notification.component';
 import { LinkComponent } from './link.component';
@@ -74,7 +73,6 @@ import { TextareaWrapperSkeletonComponent } from './textarea-wrapper-skeleton.co
 import { TextFieldWrapperComponent } from './text-field-wrapper.component';
 import { TextFieldWrapperSkeletonComponent } from './text-field-wrapper-skeleton.component';
 import { TextListComponent } from './text-list.component';
-import { TextSkeletonComponent } from './text-skeleton.component';
 import { ToastBasicComponent } from './toast-basic.component';
 import { ToastBasicDarkComponent } from './toast-basic-dark.component';
 import { ToastBasicLongTextComponent } from './toast-basic-long-text.component';
@@ -102,7 +100,6 @@ export const generatedPages = [
   FieldsetWrapperComponent,
   FlexComponent,
   GridComponent,
-  HeadlineSkeletonComponent,
   HeadlineComponent,
   IconComponent,
   InlineNotificationComponent,
@@ -135,7 +132,6 @@ export const generatedPages = [
   TextFieldWrapperSkeletonComponent,
   TextFieldWrapperComponent,
   TextListComponent,
-  TextSkeletonComponent,
   TextComponent,
   TextareaWrapperSkeletonComponent,
   TextareaWrapperComponent,
@@ -225,11 +221,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Grid',
     path: 'grid',
     component: GridComponent,
-  },
-  {
-    name: 'Headline Skeleton',
-    path: 'headline-skeleton',
-    component: HeadlineSkeletonComponent,
   },
   {
     name: 'Headline',
@@ -385,11 +376,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Text List',
     path: 'text-list',
     component: TextListComponent,
-  },
-  {
-    name: 'Text Skeleton',
-    path: 'text-skeleton',
-    component: TextSkeletonComponent,
   },
   {
     name: 'Text',
