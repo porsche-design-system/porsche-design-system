@@ -112,47 +112,6 @@ export const getFocusJssStyle = (opts?: GetFocusStylesOptions): JssStyle => {
       };
 };
 
-export type GetFocusSlottedPseudoStylesOptions = {
-  color?: string;
-  offset?: number;
-};
-
-/**
- * this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-(
- */
-export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOptions): Styles<'& a'> => {
-  const { offset: outlineOffset, color: outlineColor }: GetFocusSlottedPseudoStylesOptions = {
-    color: 'currentColor',
-    offset: 2,
-    ...opts,
-  };
-
-  return {
-    '& a': {
-      display: 'block',
-      position: 'static',
-      textDecoration: 'none',
-      font: 'inherit',
-      color: 'inherit',
-      outline: 'transparent none',
-      '&::before': {
-        content: '""',
-        display: 'block',
-        position: 'absolute',
-        ...getInsetJssStyle(),
-        outline: '1px solid transparent',
-        outlineOffset: `${outlineOffset}px`,
-      },
-      '&:focus::before': {
-        outlineColor,
-      },
-      '&:focus:not(:focus-visible)::before': {
-        outlineColor: 'transparent',
-      },
-    },
-  };
-};
-
 export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withDarkTheme: true }): Styles => {
   return {
     '& a': {
