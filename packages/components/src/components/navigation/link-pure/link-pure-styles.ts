@@ -15,7 +15,7 @@ export const getComponentCss = (
   hasSlottedAnchor: boolean,
   theme: ThemeExtendedElectricDark
 ): string => {
-  const { baseColor, hoverColor } = getThemedColors(theme);
+  const { baseColor, hoverColor, activeColor } = getThemedColors(theme);
 
   return getCss(
     mergeDeep(
@@ -39,7 +39,7 @@ export const getComponentCss = (
           },
           // TODO: Workaround for Chrome hover bug. Remove when fixed.
           '::slotted(a)': {
-            color: baseColor,
+            color: active ? activeColor : baseColor,
           },
           '::slotted(a:hover)': {
             color: hoverColor,
