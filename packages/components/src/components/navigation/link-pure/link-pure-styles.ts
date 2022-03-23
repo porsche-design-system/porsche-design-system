@@ -1,7 +1,7 @@
 import type { BreakpointCustomizable } from '../../../utils';
 import type { AlignLabel, LinkButtonPureIconName, TextSize, ThemeExtendedElectricDark } from '../../../types';
 import { buildSlottedStyles, getCss, mergeDeep } from '../../../utils';
-import { getFocusSlottedPseudoStyles } from '../../../styles';
+import { getFocusSlottedPseudoStyles, getThemedColors } from '../../../styles';
 import { getLinkButtonPureStyles } from '../../../styles/link-button-pure-styles';
 
 export const getComponentCss = (
@@ -15,6 +15,8 @@ export const getComponentCss = (
   hasSlottedAnchor: boolean,
   theme: ThemeExtendedElectricDark
 ): string => {
+  const { baseColor, hoverColor } = getThemedColors(theme);
+
   return getCss(
     mergeDeep(
       getLinkButtonPureStyles(
@@ -34,6 +36,13 @@ export const getComponentCss = (
         '@global': {
           '::slotted(p)': {
             margin: 0,
+          },
+          // TODO: Workaround for Chrome hover bug. Remove when fixed.
+          '::slotted(a)': {
+            color: baseColor,
+          },
+          '::slotted(a:hover)': {
+            color: hoverColor,
           },
         },
       }
