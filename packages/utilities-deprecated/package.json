@@ -23,8 +23,8 @@
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@types/node": "^17.0.22",
-    "@types/react": "^17.0.40",
-    "@types/react-dom": "^17.0.13",
+    "@types/react": "^17.0.42",
+    "@types/react-dom": "^17.0.14",
     "postcss-normalize": "^10.0.1",
     "react-scripts": "^5.0.0",
     "sass": "^1.49.9",
