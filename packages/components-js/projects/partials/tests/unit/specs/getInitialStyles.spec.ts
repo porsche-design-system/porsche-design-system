@@ -48,6 +48,7 @@ describe('format: jsx', () => {
     // @ts-ignore
     const result = getInitialStyles({
       format: 'jsx',
+      // @ts-ignore
       skeletonTagNames: SKELETON_TAG_NAMES as SkeletonTagName[],
     });
     expect(result).toMatchSnapshot();
