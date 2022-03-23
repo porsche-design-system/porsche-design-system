@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Fixed
+- Bug caused by Chrome where hover styles of `Link Pure` are not displayed correctly
+
 ### [2.9.2-rc.0] - 2022-03-22
 
 #### Added
