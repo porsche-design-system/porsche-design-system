@@ -1,12 +1,11 @@
 import type { PropertiesHyphen } from 'csstype';
 import type { Theme } from '../types';
-import type { GetFocusSlottedPseudoStylesOptions, GetFocusStylesOptions } from './common-styles';
+import type { GetFocusStylesOptions } from './common-styles';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   addImportantToRule,
   getBaseSlottedStyles,
-  getFocusSlottedPseudoStyles,
   getInset,
   getFocusStyles,
   getFormTextHiddenJssStyle,
@@ -106,15 +105,6 @@ describe('getFocusStyles()', () => {
   ])('should return correct JssStyle for params: %o', (params) => {
     expect(getFocusStyles(params)).toMatchSnapshot();
   });
-});
-
-describe('getFocusSlottedPseudoStyles()', () => {
-  it.each<GetFocusSlottedPseudoStylesOptions>([{}, { color: 'red' }, { offset: 1 }])(
-    'should return correct JssStyle for params: %o',
-    (params) => {
-      expect(getFocusSlottedPseudoStyles()).toMatchSnapshot();
-    }
-  );
 });
 
 describe('getBaseSlottedStyles()', () => {
