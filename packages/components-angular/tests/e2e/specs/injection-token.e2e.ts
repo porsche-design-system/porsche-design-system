@@ -1,9 +1,9 @@
 import { Page } from 'puppeteer';
 import { goto, selectNode } from '../helpers';
-import { PDS_SKELETON_CLASS_PREFIX } from '@porsche-design-system/shared';
+import { describeif, PDS_SKELETON_CLASS_PREFIX } from '@porsche-design-system/shared';
 import { getProperty } from '@porsche-design-system/js/tests/e2e/helpers';
 
-describe('injection-token', () => {
+describeif('injection-token', () => {
   let page: Page;
 
   beforeEach(async () => {
