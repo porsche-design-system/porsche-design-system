@@ -1,9 +1,9 @@
-import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
-import { fontWeight } from '@porsche-design-system/utilities-v2';
-import { CDN_BASE_PATH_FONTS, CDN_BASE_URL, CDN_BASE_URL_CN } from '../../../../../cdn.config';
+import {FONTS_MANIFEST} from '@porsche-design-system/fonts';
+import {fontWeight} from '@porsche-design-system/utilities-v2';
+import {CDN_BASE_PATH_FONTS, CDN_BASE_URL, CDN_BASE_URL_CN} from '../../../../../cdn.config';
 
-import { getMinifiedCss } from '@porsche-design-system/shared';
-import type { Styles } from 'jss';
+import {getMinifiedCss} from '@porsche-design-system/shared';
+import type {Styles} from 'jss';
 
 export type GetMinifiedPorscheNextFontFaceCssOptions = {
   cdn: 'com' | 'cn' | 'localhost';
