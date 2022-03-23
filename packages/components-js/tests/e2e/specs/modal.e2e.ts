@@ -534,6 +534,17 @@ describe('modal', () => {
     expect(await getBodyOverflow()).toBe('hidden');
   });
 
+  it('should open modal at scroll top position zero when its content is scrollable', async () => {
+    await initBasicModal({ isOpen: true, content: '<div style="height: 150vh;"></div>' });
+
+    const host = await getHost();
+    const hostScrollTop = await host.evaluate((el) => el.scrollTop);
+
+    await page.waitForTimeout(CSS_TRANSITION_DURATION); // wait for visibility transition to finish
+
+    expect(hostScrollTop).toBe(0);
+  });
+
   it('should remove overflow hidden from body if unmounted', async () => {
     await initBasicModal({ isOpen: true });
     expect(await getBodyOverflow()).toBe('hidden');
