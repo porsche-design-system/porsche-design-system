@@ -1,6 +1,6 @@
-import { fontBehavior, fontFamily, fontSize, fontStyle, fontVariant, fontWeight } from '../font/font';
+import { fontBehavior, fontFamily, fontStyle, fontVariant, fontWeight } from '../font/font';
 
 export const headline5 = {
-  font: `${fontStyle} ${fontVariant} ${fontWeight.semibold} ${Object.values(fontSize.small).join('/')} ${fontFamily}`,
+  font: `${fontStyle} ${fontVariant} ${fontWeight.semibold} 1rem/1.5 ${fontFamily}`,
   ...fontBehavior,
 };
