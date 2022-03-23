@@ -1,7 +1,13 @@
-import { getComponentChunkLinks, getInitialStyles } from '../../../src';
-import type { SkeletonTagName } from '../../../src';
+import { getInitialStyles } from '../../../src';
 import { render } from '@testing-library/react';
-import { INTERNAL_TAG_NAMES, TAG_NAMES, SKELETON_TAG_NAMES } from '@porsche-design-system/shared';
+import {
+  describeif,
+  INTERNAL_TAG_NAMES,
+  itif,
+  SKELETON_TAG_NAMES,
+  SkeletonTagName,
+  TAG_NAMES,
+} from '@porsche-design-system/shared';
 
 const filteredTagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x));
 const tagNames = filteredTagNames.join(',');
@@ -14,7 +20,8 @@ describe('format: html', () => {
     expect(result).toMatch(regex);
   });
 
-  it('should return core and skeleton styles', () => {
+  itif('should return core and skeleton styles', () => {
+    // @ts-ignore
     const result = getInitialStyles({ skeletonTagNames: SKELETON_TAG_NAMES as SkeletonTagName[] });
     expect(result).toMatchSnapshot();
   });
@@ -25,9 +32,10 @@ describe('format: html', () => {
     expect(result).toMatch(regex);
   });
 
-  it('should add custom prefixes to skeleton component names', () => {
+  itif('should add custom prefixes to skeleton component names', () => {
     const result = getInitialStyles({
       prefix: 'custom-prefix',
+      // @ts-ignore
       skeletonTagNames: SKELETON_TAG_NAMES as SkeletonTagName[],
     });
     expect(result).toMatchSnapshot();
@@ -41,7 +49,8 @@ describe('format: jsx', () => {
     expect(container.innerHTML).toMatch(regex);
   });
 
-  it('should return core and skeleton styles', () => {
+  itif('should return core and skeleton styles', () => {
+    // @ts-ignore
     const result = getInitialStyles({
       format: 'jsx',
       skeletonTagNames: SKELETON_TAG_NAMES as SkeletonTagName[],
@@ -69,6 +78,7 @@ xdescribe('skeletonTagNames subset', () => {
   const skeletonTagNamesWithoutButton = SKELETON_TAG_NAMES.filter((x) => x !== 'p-button');
 
   it('should return core and p-button skeleton styles', () => {
+    // @ts-ignore
     const result = getInitialStyles({ skeletonTagNames: ['p-button'] });
 
     expect(result.includes('p-button:not(.hydrated)')).toBe(true);
@@ -82,7 +92,7 @@ xdescribe('skeletonTagNames subset', () => {
 
   it('should return prefixed core and p-button skeleton styles', () => {
     const prefixedTagNamesWithSkeleton = skeletonTagNamesWithoutButton.map((x) => `custom-prefix-${x}`);
-
+    // @ts-ignore
     const result = getInitialStyles({ prefix: 'custom-prefix', skeletonTagNames: ['p-button'] });
 
     expect(result.includes('custom-prefix-p-button:not(.hydrated)')).toBe(true);
@@ -93,10 +103,11 @@ xdescribe('skeletonTagNames subset', () => {
   });
 });
 
-describe('validation', () => {
+describeif('validation', () => {
   it('should throw error on invalid skeleton tag names parameter', () => {
     let error;
     try {
+      // @ts-ignore
       getInitialStyles({ skeletonTagNames: ['some-invalid-component'] as any[] });
     } catch (e) {
       error = e.message;

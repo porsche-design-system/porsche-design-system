@@ -7,7 +7,7 @@ import {
   skipPorscheDesignSystemCDNRequestsDuringTests,
 } from '../../../projects/components-wrapper/src/utils';
 import * as hooks from '../../../projects/components-wrapper/src/hooks';
-import { PDS_SKELETON_CLASS_PREFIX } from '@porsche-design-system/shared';
+import { PDS_SKELETON_CLASS_PREFIX, SKELETONS_ACTIVE } from '@porsche-design-system/shared';
 
 describe('getMergedClassName', () => {
   test.each`
@@ -93,7 +93,9 @@ describe('syncRefs', () => {
     const button = getByTestId('button');
 
     expect(button.className).toBe(
-      `${INITIAL_CLASS_NAME} ${PDS_SKELETON_CLASS_PREFIX}theme-light ${PDS_SKELETON_CLASS_PREFIX}variant-secondary`
+      `${INITIAL_CLASS_NAME}${
+        SKELETONS_ACTIVE ? ` ${PDS_SKELETON_CLASS_PREFIX}theme-light ${PDS_SKELETON_CLASS_PREFIX}variant-secondary` : ''
+      }`
     );
 
     userEvent.click(button);

@@ -1,5 +1,11 @@
 import { joinArrayElementsToString, withoutTagsOption } from './utils';
-import { getMinifiedCss, INTERNAL_TAG_NAMES, TAG_NAMES, SKELETON_TAG_NAMES } from '@porsche-design-system/shared';
+import {
+  getMinifiedCss,
+  INTERNAL_TAG_NAMES,
+  SKELETON_TAG_NAMES,
+  SKELETONS_ACTIVE,
+  TAG_NAMES,
+} from '@porsche-design-system/shared';
 import {
   getButtonLinkPureSkeletonStyles,
   getButtonLinkSocialSkeletonStyles,
@@ -18,13 +24,13 @@ const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG
 
 const tagNamesWithSkeleton = joinArrayElementsToString(SKELETON_TAG_NAMES);
 
-// includes skeleton styles
+// includes skeleton styles when SKELETONS_ACTIVE is set to true
 export const generateInitialStylesPartial = (): string => {
   // 'any' is fallback when SKELETON_TAG_NAMES is an empty array because shared wasn't built, yet
-  const types = `export type SkeletonTagName = ${skeletonTagNamesTypeLiteral || 'any'};
+  const types = `${SKELETONS_ACTIVE ? `export type SkeletonTagName = ${skeletonTagNamesTypeLiteral || 'any'};` : ''}
 
   type GetInitialStylesOptions = {
-  skeletonTagNames?: SkeletonTagName[];
+  ${SKELETONS_ACTIVE ? 'skeletonTagNames?: SkeletonTagName[];' : ''}
   prefix?: string;
   ${withoutTagsOption}
   format?: Format;
@@ -37,11 +43,13 @@ type GetInitialStylesOptionsFormatJsx = Omit<GetInitialStylesOptions, 'withoutTa
 };
 type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'>;`;
 
-  const skeletonTypes = `type SkeletonStylesOptions = {
+  const skeletonTypes = SKELETONS_ACTIVE
+    ? `type SkeletonStylesOptions = {
   prefixedTagNamesWithSkeleton: string[];
   prefixedUnusedTagNamesWithSkeleton: string[];
   prefix?: string;
-}`;
+}`
+    : '';
 
   const skeletonKeyframes = '@keyframes opacity{0%{opacity:0.35}50%{opacity:0.15}100%{opacity:0.35}';
 
@@ -64,8 +72,8 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
 export function getInitialStyles(opts?: GetInitialStylesOptionsFormatJsx): JSX.Element;
 export function getInitialStyles(opts?: GetInitialStylesOptionsWithoutTags): string;
 export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.Element {
-  const { skeletonTagNames, prefix, withoutTags, format }: GetInitialStylesOptions = {
-    skeletonTagNames: [],
+  const { ${SKELETONS_ACTIVE ? 'skeletonTagNames, ' : ''}prefix, withoutTags, format }: GetInitialStylesOptions = {
+    ${SKELETONS_ACTIVE ? 'skeletonTagNames: [],' : ''}
     prefix: '',
     withoutTags: false,
     format: 'html',
@@ -74,8 +82,9 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
 
   const tagNames = [${tagNames}];
   const prefixedTagNames = getPrefixedTagNames(tagNames, prefix);
-
-  const tagNamesWithSkeleton: SkeletonTagName[] = [${tagNamesWithSkeleton}];
+  ${
+    SKELETONS_ACTIVE
+      ? `const tagNamesWithSkeleton: SkeletonTagName[] = [${tagNamesWithSkeleton}];
 
   const invalidSkeletonComponentTagNames = skeletonTagNames.filter((x) => !tagNamesWithSkeleton.includes(x));
 
@@ -88,15 +97,21 @@ Please use only valid component tag names:
   }
 
   const usedTagNamesWithSkeleton = tagNamesWithSkeleton.filter((skeletonTagName) => skeletonTagNames.includes(skeletonTagName));
-  const usesSkeleton = usedTagNamesWithSkeleton.length ? ' uses-skeleton="true"': '';
-  const usesSkeletonJsx = usedTagNamesWithSkeleton.length ? {"uses-skeleton": 'true'} : {};
-
   const prefixedTagNamesWithSkeleton = getPrefixedTagNames(usedTagNamesWithSkeleton, prefix);
-  const prefixedUnusedTagNamesWithSkeleton = getPrefixedTagNames(tagNamesWithSkeleton.filter((skeletonTagName) => !skeletonTagNames.includes(skeletonTagName)), prefix);
-
+  const prefixedUnusedTagNamesWithSkeleton = getPrefixedTagNames(tagNamesWithSkeleton.filter((skeletonTagName) => !skeletonTagNames.includes(skeletonTagName)), prefix);`
+      : ''
+  }
+  const usesSkeleton = ${SKELETONS_ACTIVE ? `usedTagNamesWithSkeleton.length ? ' uses-skeleton="true"': ''` : `''`};
+  const usesSkeletonJsx = ${
+    SKELETONS_ACTIVE ? `usedTagNamesWithSkeleton.length ? {"uses-skeleton": 'true'} : {}` : undefined
+  };
   const initialVisibilityHiddenStyles = prefixedTagNames.join(',') + '{visibility:hidden}';
 
-  const mergedStyles = \`\${initialVisibilityHiddenStyles}\${getSkeletonStyles({prefixedTagNamesWithSkeleton,prefixedUnusedTagNamesWithSkeleton, prefix})}\`;
+  const mergedStyles = \`\${initialVisibilityHiddenStyles}${
+    SKELETONS_ACTIVE
+      ? '${getSkeletonStyles({prefixedTagNamesWithSkeleton,prefixedUnusedTagNamesWithSkeleton, prefix})}'
+      : ''
+  }\`;
   const markup = format === 'html' ?  \`<style\$\{usesSkeleton\}>\${mergedStyles}</style>\` : <style dangerouslySetInnerHTML={{__html: mergedStyles}} {...usesSkeletonJsx}/>;
 
   return withoutTags
@@ -104,7 +119,8 @@ Please use only valid component tag names:
     : markup;
 };`;
 
-  const skeletonStylesFunction = `const getSkeletonStyles = (opts?: SkeletonStylesOptions): string => {
+  const skeletonStylesFunction = SKELETONS_ACTIVE
+    ? `const getSkeletonStyles = (opts?: SkeletonStylesOptions): string => {
   const options: SkeletonStylesOptions = {
      prefixedTagNamesWithSkeleton: [],
      prefixedUnusedTagNamesWithSkeleton: [],
@@ -159,7 +175,8 @@ Please use only valid component tag names:
 
   const result = skeletonStyles + \`\${prefixedTagNamesWithSkeleton.length ? \`\${skeletonStylesWithKey.pseudo}${skeletonKeyframes}\` : ''}\`;
   return result;
-};`;
+};`
+    : '';
 
   const helperFunction = `const getPrefixedTagNames = (tagNames: string[], prefix?: string): string[] => {
   return prefix ? tagNames.map((x) => \`\${prefix}-\${x}\`) : tagNames;
