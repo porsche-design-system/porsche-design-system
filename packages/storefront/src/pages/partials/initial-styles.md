@@ -22,6 +22,7 @@ which needs to be injected into the `<head>` of your `index.html`.
 
 <p-inline-notification heading="Important note" state="warning" persistent="true">
   Be aware that Skeletons are currently an <span style='color:red'>[EXPERIMENTAL]</span> feature.<br>
+  They are only available in releases that explicitly have the <code>-skeletons</code> suffix in their version.<br>
   Their API and behaviour might change in future releases.
 </p-inline-notification>
 
