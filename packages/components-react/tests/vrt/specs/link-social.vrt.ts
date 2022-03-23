@@ -1,7 +1,8 @@
 import {
   defaultViewports,
-  getVisualRegressionTester,
   getVisualRegressionSkeletonTester,
+  getVisualRegressionTester,
+  itif,
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 
@@ -9,7 +10,7 @@ it.each(defaultViewports)('should have no visual regression for viewport %s', as
   expect(await vrtTest(getVisualRegressionTester(viewport), 'link-social', '/link-social')).toBeFalsy();
 });
 
-it('should have no visual regression for skeleton', async () => {
+itif('should have no visual regression for skeleton', async () => {
   expect(
     await vrtTest(getVisualRegressionSkeletonTester(), 'link-social-skeleton', '/link-social-skeleton')
   ).toBeFalsy();

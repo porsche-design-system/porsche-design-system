@@ -1,3 +1,4 @@
+import type { GetThemedMarkup } from '../helpers';
 import {
   forceFocusHoverState,
   forceFocusState,
@@ -5,7 +6,6 @@ import {
   getThemedBodyMarkup,
   setContentWithDesignSystem,
 } from '../helpers';
-import type { GetThemedMarkup } from '../helpers';
 import {
   defaultViewports,
   getVisualRegressionStatesTester,
