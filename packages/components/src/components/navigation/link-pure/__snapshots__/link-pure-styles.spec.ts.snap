@@ -9,6 +9,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(p) {
   margin: 0;
 }
+::slotted(a) {
+  color: #000;
+}
+::slotted(a:hover) {
+  color: #d5001c;
+}
 @media(min-width:480px) {
   :host {
     display: inline-block !important;
@@ -286,6 +292,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(p) {
   margin: 0;
 }
+::slotted(a) {
+  color: #000;
+}
+::slotted(a:hover) {
+  color: #d5001c;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -443,6 +455,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(p) {
   margin: 0;
 }
+::slotted(a) {
+  color: #fff;
+}
+::slotted(a:hover) {
+  color: #ff0223;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -529,6 +547,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 ::slotted(p) {
   margin: 0;
+}
+::slotted(a) {
+  color: #000;
+}
+::slotted(a:hover) {
+  color: #d5001c;
 }
 .root {
   display: flex;
@@ -617,6 +641,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(p) {
   margin: 0;
 }
+::slotted(a) {
+  color: #000;
+}
+::slotted(a:hover) {
+  color: #d5001c;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -682,6 +712,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 ::slotted(p) {
   margin: 0;
+}
+::slotted(a) {
+  color: #000;
+}
+::slotted(a:hover) {
+  color: #d5001c;
 }
 .root {
   display: flex;
@@ -770,6 +806,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(p) {
   margin: 0;
 }
+::slotted(a) {
+  color: #000;
+}
+::slotted(a:hover) {
+  color: #d5001c;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -835,6 +877,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 ::slotted(p) {
   margin: 0;
+}
+::slotted(a) {
+  color: #000;
+}
+::slotted(a:hover) {
+  color: #d5001c;
 }
 .root {
   display: flex;
@@ -945,6 +993,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(p) {
   margin: 0;
 }
+::slotted(a) {
+  color: #ff0223;
+}
+::slotted(a:hover) {
+  color: #ff0223;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -1030,6 +1084,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 ::slotted(p) {
   margin: 0;
+}
+::slotted(a) {
+  color: #d5001c;
+}
+::slotted(a:hover) {
+  color: #d5001c;
 }
 .root {
   display: flex;
@@ -1118,6 +1178,12 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
 ::slotted(p) {
   margin: 0;
 }
+::slotted(a) {
+  color: #000;
+}
+::slotted(a:hover) {
+  color: #d5001c;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -1177,13 +1243,103 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
 }"
 `;
 
+exports[`getFocusSlottedPseudoStyles() should return correct JssStyle for params: { color: 'red' } 1`] = `
+Object {
+  "& a": Object {
+    "&::before": Object {
+      "bottom": 0,
+      "content": "\\"\\"",
+      "display": "block",
+      "left": 0,
+      "outline": "1px solid transparent",
+      "outlineOffset": "2px",
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    },
+    "&:focus::before": Object {
+      "outlineColor": "currentColor",
+    },
+    "&:focus:not(:focus-visible)::before": Object {
+      "outlineColor": "transparent",
+    },
+    "display": "block",
+    "font": "inherit",
+    "outline": "transparent none",
+    "position": "static",
+    "textDecoration": "none",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+}
+`;
+
+exports[`getFocusSlottedPseudoStyles() should return correct JssStyle for params: { offset: 1 } 1`] = `
+Object {
+  "& a": Object {
+    "&::before": Object {
+      "bottom": 0,
+      "content": "\\"\\"",
+      "display": "block",
+      "left": 0,
+      "outline": "1px solid transparent",
+      "outlineOffset": "2px",
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    },
+    "&:focus::before": Object {
+      "outlineColor": "currentColor",
+    },
+    "&:focus:not(:focus-visible)::before": Object {
+      "outlineColor": "transparent",
+    },
+    "display": "block",
+    "font": "inherit",
+    "outline": "transparent none",
+    "position": "static",
+    "textDecoration": "none",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+}
+`;
+
+exports[`getFocusSlottedPseudoStyles() should return correct JssStyle for params: {} 1`] = `
+Object {
+  "& a": Object {
+    "&::before": Object {
+      "bottom": 0,
+      "content": "\\"\\"",
+      "display": "block",
+      "left": 0,
+      "outline": "1px solid transparent",
+      "outlineOffset": "2px",
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    },
+    "&:focus::before": Object {
+      "outlineColor": "currentColor",
+    },
+    "&:focus:not(:focus-visible)::before": Object {
+      "outlineColor": "transparent",
+    },
+    "display": "block",
+    "font": "inherit",
+    "outline": "transparent none",
+    "position": "static",
+    "textDecoration": "none",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+}
+`;
+
 exports[`getSlottedCss() should return correct css 1`] = `
 "p-link-pure a {
   display: block !important;
   position: static !important;
   text-decoration: none !important;
   font: inherit !important;
-  color: inherit !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
   outline: transparent none !important;
 }
 p-link-pure a::before {
@@ -1211,7 +1367,7 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
   position: static !important;
   text-decoration: none !important;
   font: inherit !important;
-  color: inherit !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
   outline: transparent none !important;
 }
 prefixed-p-link-pure a::before {
