@@ -11,8 +11,11 @@ import {
   useBrowserLayoutEffect,
 } from '../../../projects/components-wrapper/src/hooks';
 import { useLayoutEffect } from 'react';
+import { SKELETONS_ACTIVE } from '@porsche-design-system/shared';
 
-describe('useSkeleton()', () => {
+const describeif = SKELETONS_ACTIVE ? describe : xdescribe;
+
+describeif('useSkeleton()', () => {
   it('should throw error if usesSkeletons was set to true on provider but partial was not used or used without skeletonsTagNames', () => {
     const spy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
     let error1, error2;
