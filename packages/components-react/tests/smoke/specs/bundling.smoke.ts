@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import * as globby from 'globby';
-import { INTERNAL_TAG_NAMES, TAG_NAMES, SKELETON_TAG_NAMES } from '@porsche-design-system/shared';
+import { INTERNAL_TAG_NAMES, TAG_NAMES, SKELETON_TAG_NAMES, SKELETONS_ACTIVE } from '@porsche-design-system/shared';
 
 const buildDirectory = path.resolve('./build/static/js');
 const [mainChunkFilePath] = globby.sync(`${buildDirectory}/main.*.js`);
@@ -15,7 +15,9 @@ it('should only contain initial-styles partial', () => {
   const tagNamesWithSkeleton = SKELETON_TAG_NAMES.map((x) => `"${x}"`).join(',');
   // quantifiers ({start, end}) to increase accuracy of regex instead using .*
   const regex = new RegExp(
-    `\\[${tagNames}\\].{0,10}\\[${tagNamesWithSkeleton}\\].{140,160}\\.join\\(", "\\)\\,.{50,70}\\.join\\(", "\\)\\)\\).{180,200}\\.join\\(","\\)\\+"{visibility:hidden}".{120,140}"<style".{20,40}"</style>"`
+    SKELETONS_ACTIVE
+      ? `\\[${tagNames}\\].{0,10}\\[${tagNamesWithSkeleton}\\].{140,160}\\.join\\(", "\\)\\,.{50,70}\\.join\\(", "\\)\\)\\).{180,200}\\.join\\(","\\)\\+"{visibility:hidden}".{120,140}"<style".{20,40}"</style>"`
+      : `\\[${tagNames}\\].{50,70}\\.join\\(","\\)\\+"{visibility:hidden}".{10,20}"<style>"`
   );
 
   expect(mainChunkFileContent).toMatch(regex);
@@ -26,5 +28,5 @@ it('should only contain initial-styles partial', () => {
 
   expect(withoutTagsMatches.length).toBe(2);
   expect(formatHtmlMatches.length).toBe(1);
-  expect(skeletonTagNamesMatches.length).toBe(3);
+  expect(skeletonTagNamesMatches.length).toBe(SKELETONS_ACTIVE ? 3 : 2);
 });
