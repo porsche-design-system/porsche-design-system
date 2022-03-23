@@ -1,5 +1,5 @@
-import { getTagName } from '../../../utils';
 import type { SelectedAriaAttributes } from '../../../types';
+import { getTagName } from '../../../utils';
 
 export const unpackChildren = (el: HTMLElement | ShadowRoot): HTMLElement[] => {
   return (Array.from(el.children) as HTMLElement[])
@@ -34,14 +34,31 @@ export const getFirstAndLastFocusableElement = (
 
 export let documentKeydownListener: (e: KeyboardEvent) => void;
 
+let scrollTop = 0;
+const htmlBodyTuple: [HTMLElement, HTMLElement] = [document.documentElement, document.body];
+const setHtmlBodyStyles = (isOpen: boolean): void => {
+  if (isOpen) {
+    scrollTop = htmlBodyTuple[0].scrollTop;
+  }
+
+  htmlBodyTuple.forEach((el) => {
+    el.style.overflow = isOpen ? 'hidden' : '';
+    el.style.height = isOpen ? `calc(100% - ${getComputedStyle(el).marginTop})` : '';
+    el.style.boxSizing = isOpen ? 'border-box' : '';
+  });
+
+  htmlBodyTuple[isOpen ? 1 : 0].scrollTop = scrollTop;
+};
+
 export const setScrollLock = (
   host: HTMLElement,
   isOpen: boolean,
   closeBtn?: HTMLElement, // irrelevant for disconnectedCallback
   closeModal?: () => void // irrelevant for disconnectedCallback
 ): void => {
+  setHtmlBodyStyles(isOpen);
+
   let focusableElements: FirstAndLastFocusableElement = [];
-  document.body.style.overflow = isOpen ? 'hidden' : '';
 
   document.removeEventListener('keydown', documentKeydownListener);
   if (isOpen) {
