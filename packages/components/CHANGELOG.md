@@ -10,9 +10,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [2.9.2-rc.1] - 2022-03-23
 
-#### Fixed
-- `Modal` background scrolling on iOS is prevented
-
 ### [2.9.2-rc.0] - 2022-03-22
 
 #### Added
