@@ -1,6 +1,6 @@
-import { fontBehavior, fontFamily, fontSize, fontStyle, fontVariant, fontWeight } from '../font/font';
+import { fontBehavior, fontFamily, fontStyle, fontVariant, fontWeight } from '../font/font';
 
 export const textMedium = {
-  font: `${fontStyle} ${fontVariant} ${fontWeight.regular} ${fontSize.medium.fontSize}/${fontSize.medium.lineHeight} ${fontFamily}`,
+  font: `${fontStyle} ${fontVariant} ${fontWeight.regular} 1.5rem/1.5 ${fontFamily}`,
   ...fontBehavior,
 };
