@@ -1,5 +1,4 @@
 import type { Page, JSHandle } from 'puppeteer';
-import { SKELETONS_ACTIVE } from '../constants';
 
 type Options = { withBackground: boolean };
 
@@ -40,5 +39,3 @@ export const openPopoversAndHighlightSpacer = async (page: Page, opts?: Options)
     );
   }
 };
-
-export const itif = SKELETONS_ACTIVE ? it : xit;

@@ -1,9 +1,10 @@
 import { Page } from 'puppeteer';
 import { goto, selectNode } from '../helpers';
-import { PDS_SKELETON_CLASS_PREFIX, SKELETONS_ACTIVE } from '@porsche-design-system/shared';
+import { PDS_SKELETON_CLASS_PREFIX } from '@porsche-design-system/shared';
+import { describeif } from '@porsche-design-system/shared/testing';
+
 import { getProperty } from '@porsche-design-system/js/tests/e2e/helpers';
 
-const describeif = SKELETONS_ACTIVE ? describe : xdescribe;
 describeif('injection-token', () => {
   let page: Page;
 
