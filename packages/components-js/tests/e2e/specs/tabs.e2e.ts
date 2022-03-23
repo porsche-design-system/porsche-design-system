@@ -72,9 +72,10 @@ describe('tabs', () => {
     const [firstTab] = await getAllTabs();
     const getLabelOfFirstButton = () => getProperty(firstTab, 'innerHTML');
     const getLabelOfFirstTabItem = () => getProperty(firstTabsItem, 'label');
-    const getAriaLabelOfFirstTabItem = () => getProperty(firstTabsItem, 'aria-label');
+    const getAriaLabelOfFirstTabItem = () => getAttribute(firstTabsItem, 'aria-label');
 
     expect(await getLabelOfFirstButton()).toBe(await getLabelOfFirstTabItem());
+    expect(await getAriaLabelOfFirstTabItem()).toBe(await getLabelOfFirstTabItem());
 
     await setProperty(firstTabsItem, 'label', 'newButtonName');
     await waitForStencilLifecycle(page);
