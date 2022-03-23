@@ -6,7 +6,7 @@ const SOME_CLASS_1 = 'someClass1';
 const SOME_CLASS_2 = 'someClass2';
 const SKELETON_CLASSES = SKELETONS_ACTIVE
   ? ` ${PDS_SKELETON_CLASS_PREFIX}theme-light ${PDS_SKELETON_CLASS_PREFIX}variant-secondary `
-  : '';
+  : ' ';
 const HYDRATED_CLASS = 'hydrated';
 
 let page: Page;
