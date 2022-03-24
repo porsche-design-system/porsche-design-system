@@ -1,9 +1,4 @@
-import {
-  getComponentCss,
-  getFocusSlottedPseudoStyles,
-  GetFocusSlottedPseudoStylesOptions,
-  getSlottedCss,
-} from './link-pure-styles';
+import { getComponentCss, getSlottedCss } from './link-pure-styles';
 import type { BreakpointCustomizable } from '../../../utils';
 import { AlignLabel, LinkButtonPureIconName, TextSize, ThemeExtendedElectricDark } from '../../../types';
 
@@ -17,15 +12,6 @@ describe('getSlottedCss()', () => {
     const host = document.createElement('prefixed-p-link-pure');
     expect(getSlottedCss(host)).toMatchSnapshot();
   });
-});
-
-describe('getFocusSlottedPseudoStyles()', () => {
-  it.each<GetFocusSlottedPseudoStylesOptions>([{}, { color: 'red' }, { offset: 1 }])(
-    'should return correct JssStyle for params: %o',
-    (params) => {
-      expect(getFocusSlottedPseudoStyles()).toMatchSnapshot();
-    }
-  );
 });
 
 describe('getComponentCss()', () => {
