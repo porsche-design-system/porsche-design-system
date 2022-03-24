@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Fixed
-- Removed auto generated id attributes in the lightDOM and changed `aria-labelledby` to `aria-label` of `P-Tabs-Item`
+- `P Tabs Item` improved accessibility
 
 ### [2.9.2-rc.1] - 2022-03-23
 
