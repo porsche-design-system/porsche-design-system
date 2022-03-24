@@ -20,7 +20,7 @@ import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import {
   addInputEventListener,
   hasCounterAndIsTypeText,
-  hasUnitAndIsTypeNumber,
+  hasUnitAndIsTypeTextOrNumber,
   setInputStyles,
   throwIfUnitLengthExceeded,
 } from './text-field-wrapper-utils';
@@ -78,7 +78,7 @@ export class TextFieldWrapper {
     this.observeAttributes(); // once initially
     this.isPassword = this.input.type === 'password';
     this.hasCounter = hasCounterAndIsTypeText(this.input);
-    this.hasUnit = hasUnitAndIsTypeNumber(this.input, this.unit);
+    this.hasUnit = !this.hasCounter && hasUnitAndIsTypeTextOrNumber(this.input, this.unit);
   }
 
   public componentDidLoad(): void {
