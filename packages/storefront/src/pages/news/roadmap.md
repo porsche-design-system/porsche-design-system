@@ -38,7 +38,7 @@ Legend: ✅ Completed
 
 ### Generic Components
 * Switch ✅
-* Data Table ✅
+* Table ✅
 * Accordion ✅
 * Toast ✅
 * Popover ✅
