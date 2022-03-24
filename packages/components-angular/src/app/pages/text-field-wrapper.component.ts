@@ -213,25 +213,25 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render input type='text' with unit">
-      <p-text-field-wrapper [label]="'Label with unit input type='text''" [unit]="'km/h'">
+      <p-text-field-wrapper [label]="'Label with unit input type text'" [unit]="'km/h'">
         <input [type]="'text'" [value]="'three hundred'" />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render input type='number' with unit">
-      <p-text-field-wrapper [label]="'Label with unit input type='number''" [unit]="'km/h'">
+      <p-text-field-wrapper [label]="'Label with unit input type number'" [unit]="'km/h'">
         <input [type]="'number'" [value]="300" />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render input type='text' with unit position suffix">
-      <p-text-field-wrapper [label]="'Label with unit input type='text' position suffix'" [unit]="'kWh'" [unitPosition]="'suffix'">
+      <p-text-field-wrapper [label]="'Label with unit input type text position suffix'" [unit]="'kWh'" [unitPosition]="'suffix'">
         <input [type]="'text'" [value]="'four hundred'" />
       </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render input type='number' with unit position suffix">
-      <p-text-field-wrapper [label]="'Label with unit input type='number' position suffix'" [unit]="'kWh'" [unitPosition]="'suffix'">
+      <p-text-field-wrapper [label]="'Label with unit input type number position suffix'" [unit]="'kWh'" [unitPosition]="'suffix'">
         <input [type]="'number'" [value]="400" />
       </p-text-field-wrapper>
     </div>
