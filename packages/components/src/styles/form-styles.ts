@@ -51,6 +51,8 @@ export const getBaseChildStyles = (
       backgroundColor,
       opacity: 1,
       ...textSmall,
+      overflowWrap: null,
+      hyphens: null,
       textIndent: 0,
       color: baseColor,
       transition: ['color', 'border-color', 'background-color'].map(getTransition).join(','),

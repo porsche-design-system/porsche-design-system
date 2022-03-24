@@ -24,8 +24,6 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -184,8 +182,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -345,8 +341,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -509,8 +503,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -681,8 +673,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -853,8 +843,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -1013,8 +1001,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -1176,8 +1162,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -1347,8 +1331,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -1518,8 +1500,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -1679,8 +1659,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -1843,8 +1821,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -2015,8 +1991,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -2187,8 +2161,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -2348,8 +2320,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -2512,8 +2482,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -2685,8 +2653,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -2858,8 +2824,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -3018,8 +2982,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -3181,8 +3143,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -3353,8 +3313,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -3525,8 +3483,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -3686,8 +3642,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -3850,8 +3804,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -4023,8 +3975,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
@@ -4196,8 +4146,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
   -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
   text-indent: 0 !important;
