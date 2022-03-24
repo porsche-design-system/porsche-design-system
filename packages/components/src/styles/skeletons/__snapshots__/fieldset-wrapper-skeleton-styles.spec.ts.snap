@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return correct css 1`] = `
+"p-fieldset-wrapper:not(.hydrated) {
+  visibility: visible;
+}"
+`;

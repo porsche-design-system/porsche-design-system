@@ -1,4 +1,4 @@
-import { ModuleWithProviders, NgModule, Optional } from '@angular/core';
+import { InjectionToken, ModuleWithProviders, NgModule, Optional } from '@angular/core';
 import { DECLARATIONS } from './lib/components/barrel';
 import { load } from '@porsche-design-system/components-js';
 
@@ -9,6 +9,11 @@ export type PorscheDesignSystemModuleConfig = {
 export class DefaultConfig implements Required<PorscheDesignSystemModuleConfig> {
   prefix = '';
 }
+
+export const usesSkeletons = (): boolean =>
+  typeof window !== 'undefined' && !!document.querySelector('style[uses-skeleton]');
+
+export const USES_SKELETONS = new InjectionToken<boolean>('usesSkeletons');
 
 @NgModule({
   declarations: DECLARATIONS,
@@ -29,6 +34,7 @@ export class PorscheDesignSystemModule {
           multi: true, // to support multiple prefixes in same module
           useValue: config,
         },
+        { provide: USES_SKELETONS, useValue: usesSkeletons() },
       ],
     };
   }

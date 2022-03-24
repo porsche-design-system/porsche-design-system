@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getCloseIconStyles() should return correct JssStyle 1`] = `
+exports[`getCloseIconJssStyle() should return correct JssStyle 1`] = `
 Object {
   "marginLeft": "1rem",
 }
@@ -18,7 +18,7 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
   background: #fec5c5 !important;
   border-left: 0.25rem solid #fc1717 !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
   }
@@ -32,7 +32,7 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
   grid-gap: 0.25rem;
   max-width: 50rem;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .icon {
     display: inline-flex;
     margin-right: 0.5rem;
@@ -54,7 +54,7 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
   background: #fae6e6 !important;
   border-left: 0.25rem solid #e00000 !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
   }
@@ -68,7 +68,7 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
   grid-gap: 0.25rem;
   max-width: 50rem;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .icon {
     display: inline-flex;
     margin-right: 0.5rem;
@@ -90,7 +90,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #c7e4ff !important;
   border-left: 0.25rem solid #2193ff !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
   }
@@ -104,7 +104,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   grid-gap: 0.25rem;
   max-width: 50rem;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .icon {
     display: inline-flex;
     margin-right: 0.5rem;
@@ -126,7 +126,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #e5eff8 !important;
   border-left: 0.25rem solid #0061bd !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
   }
@@ -140,7 +140,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   grid-gap: 0.25rem;
   max-width: 50rem;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .icon {
     display: inline-flex;
     margin-right: 0.5rem;
@@ -162,7 +162,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #c7e4ff !important;
   border-left: 0.25rem solid #2193ff !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
   }
@@ -179,7 +179,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 .close {
   margin-left: 1rem;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .icon {
     display: inline-flex;
     margin-right: 0.5rem;
@@ -201,7 +201,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #e5eff8 !important;
   border-left: 0.25rem solid #0061bd !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
   }
@@ -218,7 +218,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 .close {
   margin-left: 1rem;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .icon {
     display: inline-flex;
     margin-right: 0.5rem;
@@ -240,7 +240,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #c7e4ff !important;
   border-left: 0.25rem solid #2193ff !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
   }
@@ -258,7 +258,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   grid-column-start: 1;
   grid-row-start: 2;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .icon {
     display: inline-flex;
     margin-right: 0.5rem;
@@ -285,7 +285,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #e5eff8 !important;
   border-left: 0.25rem solid #0061bd !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
   }
@@ -303,7 +303,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   grid-column-start: 1;
   grid-row-start: 2;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .icon {
     display: inline-flex;
     margin-right: 0.5rem;
@@ -330,7 +330,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #c7e4ff !important;
   border-left: 0.25rem solid #2193ff !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
   }
@@ -351,7 +351,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 .close {
   margin-left: 1rem;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .icon {
     display: inline-flex;
     margin-right: 0.5rem;
@@ -378,7 +378,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   background: #e5eff8 !important;
   border-left: 0.25rem solid #0061bd !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
   }
@@ -399,7 +399,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 .close {
   margin-left: 1rem;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .icon {
     display: inline-flex;
     margin-right: 0.5rem;
@@ -426,7 +426,7 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
   background: #bfeec6 !important;
   border-left: 0.25rem solid #01ba1d !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
   }
@@ -440,7 +440,7 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
   grid-gap: 0.25rem;
   max-width: 50rem;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .icon {
     display: inline-flex;
     margin-right: 0.5rem;
@@ -462,7 +462,7 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
   background: #e5f3e7 !important;
   border-left: 0.25rem solid #018a16 !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
   }
@@ -476,7 +476,7 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
   grid-gap: 0.25rem;
   max-width: 50rem;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .icon {
     display: inline-flex;
     margin-right: 0.5rem;
@@ -498,7 +498,7 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
   background: #ffe6bf !important;
   border-left: 0.25rem solid #ff9b00 !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
   }
@@ -512,7 +512,7 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
   grid-gap: 0.25rem;
   max-width: 50rem;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .icon {
     display: inline-flex;
     margin-right: 0.5rem;
@@ -534,7 +534,7 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
   background: #fff5e5 !important;
   border-left: 0.25rem solid #ff9b00 !important;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto !important;
   }
@@ -548,7 +548,7 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
   grid-gap: 0.25rem;
   max-width: 50rem;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .icon {
     display: inline-flex;
     margin-right: 0.5rem;
@@ -558,7 +558,7 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
 "
 `;
 
-exports[`getNotificationContentStyles() should return correct JssStyle 1`] = `
+exports[`getNotificationContentJssStyle() should return correct JssStyle 1`] = `
 Object {
   "display": "grid",
   "gridGap": "0.25rem",
@@ -566,9 +566,9 @@ Object {
 }
 `;
 
-exports[`getNotificationIconStyles() should return correct JssStyle for state: error  1`] = `
+exports[`getNotificationIconJssStyle() should return correct JssStyle for state: error  1`] = `
 Object {
-  "@media (min-width: 760px)": Object {
+  "@media(min-width:760px)": Object {
     "color": "#e00000",
     "display": "inline-flex",
     "marginRight": "0.5rem",
@@ -577,9 +577,9 @@ Object {
 }
 `;
 
-exports[`getNotificationIconStyles() should return correct JssStyle for state: neutral  1`] = `
+exports[`getNotificationIconJssStyle() should return correct JssStyle for state: neutral  1`] = `
 Object {
-  "@media (min-width: 760px)": Object {
+  "@media(min-width:760px)": Object {
     "color": "#0061bd",
     "display": "inline-flex",
     "marginRight": "0.5rem",
@@ -588,9 +588,9 @@ Object {
 }
 `;
 
-exports[`getNotificationIconStyles() should return correct JssStyle for state: success  1`] = `
+exports[`getNotificationIconJssStyle() should return correct JssStyle for state: success  1`] = `
 Object {
-  "@media (min-width: 760px)": Object {
+  "@media(min-width:760px)": Object {
     "color": "#018a16",
     "display": "inline-flex",
     "marginRight": "0.5rem",
@@ -599,9 +599,9 @@ Object {
 }
 `;
 
-exports[`getNotificationIconStyles() should return correct JssStyle for state: warning  1`] = `
+exports[`getNotificationIconJssStyle() should return correct JssStyle for state: warning  1`] = `
 Object {
-  "@media (min-width: 760px)": Object {
+  "@media(min-width:760px)": Object {
     "color": "#ff9b00",
     "display": "inline-flex",
     "marginRight": "0.5rem",
@@ -610,9 +610,9 @@ Object {
 }
 `;
 
-exports[`getNotificationRootStyles() should return correct JssStyle for state: error and theme: dark 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: error and theme: dark 1`] = `
 Object {
-  "@media (min-width: 760px)": Object {
+  "@media(min-width:760px)": Object {
     "gridTemplateColumns": "auto 1fr auto auto",
   },
   "alignItems": "start",
@@ -627,9 +627,9 @@ Object {
 }
 `;
 
-exports[`getNotificationRootStyles() should return correct JssStyle for state: error and theme: light 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: error and theme: light 1`] = `
 Object {
-  "@media (min-width: 760px)": Object {
+  "@media(min-width:760px)": Object {
     "gridTemplateColumns": "auto 1fr auto auto",
   },
   "alignItems": "start",
@@ -644,9 +644,9 @@ Object {
 }
 `;
 
-exports[`getNotificationRootStyles() should return correct JssStyle for state: neutral and theme: dark 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: neutral and theme: dark 1`] = `
 Object {
-  "@media (min-width: 760px)": Object {
+  "@media(min-width:760px)": Object {
     "gridTemplateColumns": "auto 1fr auto auto",
   },
   "alignItems": "start",
@@ -661,9 +661,9 @@ Object {
 }
 `;
 
-exports[`getNotificationRootStyles() should return correct JssStyle for state: neutral and theme: light 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: neutral and theme: light 1`] = `
 Object {
-  "@media (min-width: 760px)": Object {
+  "@media(min-width:760px)": Object {
     "gridTemplateColumns": "auto 1fr auto auto",
   },
   "alignItems": "start",
@@ -678,9 +678,9 @@ Object {
 }
 `;
 
-exports[`getNotificationRootStyles() should return correct JssStyle for state: success and theme: dark 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: success and theme: dark 1`] = `
 Object {
-  "@media (min-width: 760px)": Object {
+  "@media(min-width:760px)": Object {
     "gridTemplateColumns": "auto 1fr auto auto",
   },
   "alignItems": "start",
@@ -695,9 +695,9 @@ Object {
 }
 `;
 
-exports[`getNotificationRootStyles() should return correct JssStyle for state: success and theme: light 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: success and theme: light 1`] = `
 Object {
-  "@media (min-width: 760px)": Object {
+  "@media(min-width:760px)": Object {
     "gridTemplateColumns": "auto 1fr auto auto",
   },
   "alignItems": "start",
@@ -712,9 +712,9 @@ Object {
 }
 `;
 
-exports[`getNotificationRootStyles() should return correct JssStyle for state: warning and theme: dark 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: warning and theme: dark 1`] = `
 Object {
-  "@media (min-width: 760px)": Object {
+  "@media(min-width:760px)": Object {
     "gridTemplateColumns": "auto 1fr auto auto",
   },
   "alignItems": "start",
@@ -729,9 +729,9 @@ Object {
 }
 `;
 
-exports[`getNotificationRootStyles() should return correct JssStyle for state: warning and theme: light 1`] = `
+exports[`getNotificationRootJssStyles() should return correct JssStyle for state: warning and theme: light 1`] = `
 Object {
-  "@media (min-width: 760px)": Object {
+  "@media(min-width:760px)": Object {
     "gridTemplateColumns": "auto 1fr auto auto",
   },
   "alignItems": "start",

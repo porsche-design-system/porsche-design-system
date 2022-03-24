@@ -1,5 +1,5 @@
 import type { JssStyle } from 'jss';
-import type { BreakpointCustomizable, GetStylesFunction } from '../../../utils';
+import type { BreakpointCustomizable, GetJssStyleFunction } from '../../../utils';
 import type { AlignLabel, AlignLabelType, ThemeExtendedElectric } from '../../../types';
 import { buildResponsiveStyles, getCss, isThemeLightElectric, mergeDeep } from '../../../utils';
 import {
@@ -57,7 +57,7 @@ const getColors = (
   };
 };
 
-const getAlignLabelStyles: GetStylesFunction = (alignLabel: AlignLabelType): JssStyle => {
+const getAlignLabelJssStyle: GetJssStyleFunction = (alignLabel: AlignLabelType): JssStyle => {
   const styles: { [key in AlignLabelType]: JssStyle } = {
     left: {
       order: 0,
@@ -73,7 +73,7 @@ const getAlignLabelStyles: GetStylesFunction = (alignLabel: AlignLabelType): Jss
   return styles[alignLabel];
 };
 
-const getStretchStyles: GetStylesFunction = (stretch: boolean): JssStyle => {
+const getStretchJssStyle: GetJssStyleFunction = (stretch: boolean): JssStyle => {
   return stretch
     ? {
         width: '100%',
@@ -150,14 +150,14 @@ export const getComponentCss = (
       minWidth: 0, // prevents flex child to overflow max available parent size
       minHeight: 0, // prevents flex child to overflow max available parent size
       cursor: isDisabledOrLoading ? 'auto' : 'pointer',
-      ...buildResponsiveStyles(stretch, getStretchStyles),
+      ...buildResponsiveStyles(stretch, getStretchJssStyle),
     },
     text: {
       minWidth: 0, // prevents flex child to overflow max available parent size
       minHeight: 0, // prevents flex child to overflow max available parent size
       color: textColor,
       ...mergeDeep(
-        buildResponsiveStyles(alignLabel, getAlignLabelStyles),
+        buildResponsiveStyles(alignLabel, getAlignLabelJssStyle),
         buildResponsiveStyles(hideLabel, getTextHiddenJssStyle)
       ),
     },

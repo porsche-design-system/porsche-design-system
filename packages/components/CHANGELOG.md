@@ -8,7 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.9.2-skeletons] - 2022-03-24
+
+#### Added
+- **[EXPERIMENTAL]** `getInitialStyles` partial now accepts a `skeletonTagNames` array of component names that will initially have skeleton styles while the Porsche Design System is loading
+- **[EXPERIMENTAL]** `Button`, `Button Pure`, `Checkbox Wrapper`, `Fieldset Wrapper`, `Link`, `Link Pure`, `Link Social`, `Radio Button Wrapper`, `Select Wrapper`, `Text Field Wrapper`, `Textarea Wrapper` can now have initial skeleton styles when passed as `skeletonTagNames` to the `getInitialStyles` partial
+
 ### [2.9.2] - 2022-03-24
+
+#### Fixed
+- `P Tabs Item` improved accessibility
 
 ### [2.9.2-rc.1] - 2022-03-23
 

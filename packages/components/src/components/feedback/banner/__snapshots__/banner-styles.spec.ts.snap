@@ -76,7 +76,7 @@ exports[`getComponentCss() should return correct css 1`] = `
     transform: translate3d(0,calc(-100% - var(--p-banner-position-top)),0);
   }
 }
-@media (min-width: 0px) and (max-width: 759px) {
+@media(min-width:0px) and (max-width:759px) {
     :host {
       bottom: var(--p-banner-position-bottom);
     }
@@ -88,7 +88,7 @@ exports[`getComponentCss() should return correct css 1`] = `
     }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
     :host {
       top: var(--p-banner-position-top);
     }

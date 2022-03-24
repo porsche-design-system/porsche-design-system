@@ -1204,35 +1204,35 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   width: 2em;
   pointer-events: none;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   .root {
     font-size: 1.5rem;
     line-height: 1.5;
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .root {
     font-size: 1rem;
     line-height: 1.5;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   .root {
     font-size: 1.5rem;
     line-height: 1.5;
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   .root {
     font-size: 1rem;
     line-height: 1.5;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   .root {
     font-size: 1.5rem;
     line-height: 1.5;
