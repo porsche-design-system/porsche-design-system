@@ -1,16 +1,11 @@
 import type { JssStyle } from 'jss';
+import { mediaQueryMin } from '@porsche-design-system/utilities-v2';
 import type { Theme } from '../../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
 import { buildSlottedStyles, getCss } from '../../../utils';
-import {
-  addImportantToEachRule,
-  getBaseSlottedStyles,
-  mediaQuery,
-  pxToRemWithUnit,
-  getThemedColors,
-} from '../../../styles';
+import { addImportantToEachRule, getBaseSlottedStyles, pxToRemWithUnit, getThemedColors } from '../../../styles';
 
-const mediaQueryS = mediaQuery('s');
+const mediaQueryS = mediaQueryMin('s');
 
 export const getComponentCss = (
   state: InlineNotificationState,
@@ -20,10 +15,10 @@ export const getComponentCss = (
 ): string => {
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule(getNotificationRootStyles(state, theme)),
+      ':host': addImportantToEachRule(getNotificationRootJssStyle(state, theme)),
     },
-    icon: getNotificationIconStyles(state),
-    content: getNotificationContentStyles(),
+    icon: getNotificationIconJssStyle(state),
+    content: getNotificationContentJssStyle(),
     ...(hasAction && {
       action: {
         gridColumnStart: 1,
@@ -35,7 +30,7 @@ export const getComponentCss = (
         },
       },
     }),
-    ...(hasClose && { close: getCloseIconStyles() }),
+    ...(hasClose && { close: getCloseIconJssStyle() }),
   });
 };
 
@@ -43,7 +38,7 @@ export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(buildSlottedStyles(host, getBaseSlottedStyles({ withDarkTheme: false })));
 };
 
-export const getNotificationRootStyles = (state: InlineNotificationState, theme: Theme): JssStyle => {
+export const getNotificationRootJssStyle = (state: InlineNotificationState, theme: Theme): JssStyle => {
   const themedColors = getThemedColors(theme);
   return {
     display: 'grid',
@@ -61,7 +56,7 @@ export const getNotificationRootStyles = (state: InlineNotificationState, theme:
   };
 };
 
-export const getNotificationIconStyles = (state: InlineNotificationState): JssStyle => ({
+export const getNotificationIconJssStyle = (state: InlineNotificationState): JssStyle => ({
   display: 'none',
   [mediaQueryS]: {
     display: 'inline-flex',
@@ -70,12 +65,12 @@ export const getNotificationIconStyles = (state: InlineNotificationState): JssSt
   },
 });
 
-export const getNotificationContentStyles = (): JssStyle => ({
+export const getNotificationContentJssStyle = (): JssStyle => ({
   display: 'grid',
   gridGap: pxToRemWithUnit(4),
   maxWidth: pxToRemWithUnit(800),
 });
 
-export const getCloseIconStyles = (): JssStyle => ({
+export const getCloseIconJssStyle = (): JssStyle => ({
   marginLeft: pxToRemWithUnit(16),
 });

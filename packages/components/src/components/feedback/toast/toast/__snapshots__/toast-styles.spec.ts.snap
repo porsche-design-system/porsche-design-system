@@ -30,7 +30,7 @@ exports[`getComponentCss() should return correct css 1`] = `
     transform: translate3d(0,calc(var(--p-toast-position-bottom-internal) + 100%),0);
   }
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
     :host {
       left: 4rem !important;
       right: auto !important;

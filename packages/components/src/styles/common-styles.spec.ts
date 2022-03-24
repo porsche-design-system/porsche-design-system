@@ -1,19 +1,18 @@
 import type { PropertiesHyphen } from 'csstype';
-import type { FormState, Theme } from '../types';
-import type { GetFocusSlottedPseudoStylesOptions, GetFocusStylesOptions } from './common-styles';
+import type { Theme } from '../types';
+import type { GetFocusStylesOptions } from './common-styles';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   addImportantToRule,
   getBaseSlottedStyles,
   getFocusSlottedPseudoStyles,
-  getInset,
-  getFocusStyles,
+  getInsetJssStyle,
+  getFocusJssStyle,
   getFormTextHiddenJssStyle,
-  getHoverStyles,
+  getHoverJssStyle,
   getTextHiddenJssStyle,
   getTransition,
-  mediaQuery,
   pxToRem,
   pxToRemWithUnit,
 } from './common-styles';
@@ -81,22 +80,22 @@ describe('addImportantToEachRule()', () => {
   });
 });
 
-describe('getHoverStyles()', () => {
+describe('getHoverJssStyles()', () => {
   it.each<Theme>(['light', 'dark'])('should return correct JssStyle for theme: %o', (theme) => {
-    expect(getHoverStyles({ theme })).toMatchSnapshot();
+    expect(getHoverJssStyle({ theme })).toMatchSnapshot();
   });
 });
 
-describe('getInset()', () => {
-  it.each<Parameters<typeof getInset>>([[undefined], ['auto'], [2]])(
+describe('getInsetJssStyle()', () => {
+  it.each<Parameters<typeof getInsetJssStyle>>([[undefined], ['auto'], [2]])(
     'should return correct JssStyle for parameter: %o',
     (value) => {
-      expect(getInset(value)).toMatchSnapshot();
+      expect(getInsetJssStyle(value)).toMatchSnapshot();
     }
   );
 });
 
-describe('getFocusStyles()', () => {
+describe('getFocusJssStyles()', () => {
   it.each<GetFocusStylesOptions>([
     {},
     { color: 'red' },
@@ -105,22 +104,7 @@ describe('getFocusStyles()', () => {
     { color: 'deeppink', offset: 2, pseudo: '::after' },
     { color: 'deeppink', offset: 3 },
   ])('should return correct JssStyle for params: %o', (params) => {
-    expect(getFocusStyles(params)).toMatchSnapshot();
-  });
-});
-
-describe('getFocusSlottedPseudoStyles()', () => {
-  it.each<GetFocusSlottedPseudoStylesOptions>([{}, { color: 'red' }, { offset: 1 }])(
-    'should return correct JssStyle for params: %o',
-    (params) => {
-      expect(getFocusSlottedPseudoStyles()).toMatchSnapshot();
-    }
-  );
-});
-
-describe('mediaQuery()', () => {
-  it('should return correct media query', () => {
-    expect(mediaQuery('m')).toBe('@media (min-width: 1000px)');
+    expect(getFocusJssStyle(params)).toMatchSnapshot();
   });
 });
 

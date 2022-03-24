@@ -56,7 +56,7 @@
     "preinstall:components-js": "TARGET=./packages/components-js/dist/components-wrapper && mkdir -p $TARGET && cp ./packages/components-js/projects/components-wrapper/package.json $TARGET",
     "preinstall:components-angular": "TARGET=./packages/components-angular/dist/components-wrapper && mkdir -p $TARGET && cp ./packages/components-angular/projects/components-wrapper/package.json $TARGET",
     "preinstall:components-react": "TARGET=./packages/components-react/dist/components-wrapper && mkdir -p $TARGET && cp ./packages/components-react/projects/components-wrapper/package.json $TARGET",
-    "preinstall:shared": "TARGET=./packages/shared/dist && mkdir -p $TARGET && sed -E -e \"s@shared-src@shared@\" ./packages/shared/package.json > $TARGET/package.json",
+    "preinstall:shared": "TARGET=./packages/shared/dist && mkdir -p $TARGET && sed -E -e \"s^shared^@porsche-design-system/shared^\" ./packages/shared/package.json > $TARGET/package.json",
     "start": "yarn start:storefront",
     "start:components": "yarn --cwd ./packages/components start",
     "start:components-js": "yarn --cwd ./packages/components-js start",
@@ -151,7 +151,7 @@
   },
   "devDependencies": {
     "@porsche-design-system/prettier-config": "^1.0.0",
-    "prettier": "^2.5.1"
+    "prettier": "^2.6.0"
   },
   "resolutions": {
     "**/react-scripts/jest": ">=27 <=28",

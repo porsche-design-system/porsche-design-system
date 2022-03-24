@@ -3,6 +3,7 @@
   --p-animation-duration__spinner: 0s;
   --p-animation-duration__banner: 0s;
   --p-override-popover-animation-duration: 0s;
+  --p-override-skeleton-animation-duration: 0s;
   --p-override-toast-skip-timeout: true;
   --p-override-toast-animation-duration: 0s;
 }
@@ -11,6 +12,16 @@ html,
 body {
   margin: 0;
   padding: 0;
+}
+
+body {
+  color: deeppink;
+  font-family: serif;
+  font-style: italic;
+  font-weight: bold;
+  font-size: small;
+  line-height: normal;
+  font-variant: small-caps;
 }
 
 body > select {
@@ -37,6 +48,8 @@ body > select {
 .playground.focus-hover::before {
   display: block;
   background: deeppink;
+  font-size: 16px;
+  line-height: normal;
   color: white;
   font-weight: bold;
   padding: 0.5rem;

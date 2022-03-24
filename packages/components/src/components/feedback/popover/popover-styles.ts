@@ -1,19 +1,13 @@
 import type { PopoverDirection } from './popover-utils';
 import type { JssStyle } from 'jss';
+import { mediaQueryMin, textSmall } from '@porsche-design-system/utilities-v2';
 import { buildSlottedStyles, getCss } from '../../../utils';
-import {
-  addImportantToEachRule,
-  getBaseSlottedStyles,
-  getThemedColors,
-  mediaQuery,
-  pxToRemWithUnit,
-} from '../../../styles';
-import { textSmall } from '@porsche-design-system/utilities-v2';
+import { addImportantToEachRule, getBaseSlottedStyles, getThemedColors, pxToRemWithUnit } from '../../../styles';
 import { POPOVER_Z_INDEX } from '../../../constants';
 
 const { backgroundColor, baseColor } = getThemedColors('light');
 
-const mediaQueryXS = mediaQuery('xs');
+const mediaQueryXS = mediaQueryMin('xs');
 const mediaQueryForcedColors = '@media (forced-colors: active)';
 
 const directionPositionMap: { [key in PopoverDirection]: JssStyle } = {
@@ -131,10 +125,6 @@ export const getComponentCss = (direction: PopoverDirection): string => {
       pointerEvents: 'auto',
       ...directionPositionMap[direction],
       ...textSmall,
-      WebkitTextSizeAdjust: 'none',
-      overflowWrap: 'break-word',
-      wordWrap: 'break-word',
-      hyphens: 'auto',
       listStyleType: 'none',
       // TODO: The styles above are our text styles should be extracted as soon as p-text is refactored with JSS
       color: baseColor,

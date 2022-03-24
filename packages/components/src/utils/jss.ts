@@ -7,9 +7,10 @@ import jssPluginCamelCase from 'jss-plugin-camel-case';
 import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
+import { mediaQueryMin } from '@porsche-design-system/utilities-v2';
 import { parseJSON } from './breakpoint-customizable';
 import { getShadowRootHTMLElement } from './dom';
-import { addImportantToEachRule, mediaQuery } from '../styles';
+import { addImportantToEachRule } from '../styles';
 import { getTagName, getTagNameWithoutPrefix } from './tag-name';
 
 /* eslint-disable @typescript-eslint/consistent-type-definitions */
@@ -110,9 +111,12 @@ export const buildSlottedStyles = (host: HTMLElement, jssStyle: JssStyle): Style
   },
 });
 
-export type GetStylesFunction = (value?: any) => JssStyle;
+export type GetJssStyleFunction = (value?: any) => JssStyle;
 
-export const buildResponsiveStyles = <T>(rawValue: BreakpointCustomizable<T>, getStyles: GetStylesFunction): Styles => {
+export const buildResponsiveStyles = <T>(
+  rawValue: BreakpointCustomizable<T>,
+  getJssStyle: GetJssStyleFunction
+): Styles => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const value = parseJSON(rawValue as any);
 
@@ -124,11 +128,12 @@ export const buildResponsiveStyles = <T>(rawValue: BreakpointCustomizable<T>, ge
         .reduce(
           (result, breakpointValue: Breakpoint) => ({
             ...result,
-            [mediaQuery(breakpointValue)]: getStyles(value[breakpointValue]) as Styles,
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+            [mediaQueryMin(breakpointValue as any)]: getJssStyle(value[breakpointValue]) as Styles,
           }),
-          getStyles(value.base) as Styles
+          getJssStyle(value.base) as Styles
         )
-    : (getStyles(value) as Styles);
+    : (getJssStyle(value) as Styles);
 };
 
 export const isObject = <T extends Record<string, any>>(obj: T): boolean =>

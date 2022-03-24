@@ -1,10 +1,40 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
-import { camelCase, paramCase } from 'change-case';
-import { TAG_NAMES, TagName, TagNameCamelCase } from '../src/lib/tagNames';
+import { paramCase } from 'change-case';
+import { TAG_NAMES, SKELETON_TAG_NAMES, TagName } from '../src/lib/tagNames';
 
 const glue = '\n\n';
+// TODO: typing as component property string
+type SkeletonRelevantProps = { propName: string; shouldAddValueToClassName: boolean }[];
+
+/*
+ * This array includes all properties that are relevant for the skeleton sizes,
+ * it is used to add classes based on set properties in angular and react,
+ * so that our skeleton style selectors can work and adjust
+ * e.g. color based on the pds-skeleton--theme-dark class.
+ */
+const SKELETON_RELEVANT_PROPS: SkeletonRelevantProps = [
+  { propName: 'compact', shouldAddValueToClassName: false },
+  { propName: 'description', shouldAddValueToClassName: false },
+  { propName: 'hideLabel', shouldAddValueToClassName: false },
+  { propName: 'itemsPerPage ', shouldAddValueToClassName: true },
+  { propName: 'label', shouldAddValueToClassName: false },
+  { propName: 'labelSize', shouldAddValueToClassName: false },
+  { propName: 'open', shouldAddValueToClassName: false },
+  { propName: 'size', shouldAddValueToClassName: true },
+  { propName: 'stretch', shouldAddValueToClassName: false },
+  { propName: 'theme', shouldAddValueToClassName: true },
+  { propName: 'totalItemsCount', shouldAddValueToClassName: false },
+  { propName: 'variant', shouldAddValueToClassName: true },
+];
+
+/*
+ * An array of all tagNames that should be used when running patchStencil.
+ * These components will get a slot appended to, when Stencil attaches the shadowDOM
+ * and get this slot removed when hydration is finished, to ensure skeleton visibility of child components inside them.
+ */
+const TAG_NAMES_TO_ADD_SLOT_TO: TagName[] = ['p-fieldset-wrapper', 'p-text-list', 'p-text-list-item'];
 
 const generateComponentMeta = (): void => {
   // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
@@ -23,6 +53,9 @@ const generateComponentMeta = (): void => {
     [propName: string]: string;
   }[];
   hasSlottedCss: boolean;
+  hasSkeleton: boolean;
+  shouldPatchSlot: boolean;
+  skeletonProps: { propName: string; shouldAddValueToClassName: boolean }[];
   styling: 'jss' | 'scss' | 'hybrid';
 };`,
     `type ComponentsMeta = { [key in TagName]: ComponentMeta };`,
@@ -37,6 +70,9 @@ const generateComponentMeta = (): void => {
       [propName: string]: string;
     }[];
     hasSlottedCss: boolean;
+    hasSkeleton: boolean;
+    shouldPatchSlot: boolean;
+    skeletonProps: { propName: string; shouldAddValueToClassName: boolean }[];
     styling: 'jss' | 'scss' | 'hybrid';
   };
 
@@ -60,6 +96,8 @@ const generateComponentMeta = (): void => {
     const isDelegatingFocus = source.includes('delegatesFocus: true');
     const isThemeable = source.includes('public theme?: Theme');
     const hasSlottedCss = source.includes('attachSlottedCss');
+    const hasSkeleton = SKELETON_TAG_NAMES.includes(tagName);
+    const shouldPatchSlot = TAG_NAMES_TO_ADD_SLOT_TO.includes(tagName);
     const usesScss = source.includes('styleUrl:');
     const usesJss = source.includes('attachComponentCss');
     const styling = usesScss && usesJss ? 'hybrid' : usesJss ? 'jss' : 'scss';
@@ -95,6 +133,14 @@ const generateComponentMeta = (): void => {
       requiredProps = [{ [requiredProp]: propType }];
     }
 
+    const skeletonProps: ComponentMeta['skeletonProps'] = hasSkeleton
+      ? SKELETON_RELEVANT_PROPS.filter(({ propName, shouldAddValueToClassName }) => {
+          // extract all matching skeleton relevant props
+          const [match] = new RegExp(`@Prop\\(\\) public ${propName}\\?: .+;`).exec(source) ?? [];
+          return match;
+        })
+      : [];
+
     result[tagName] = {
       isDelegatingFocus,
       isThemeable,
@@ -102,6 +148,9 @@ const generateComponentMeta = (): void => {
       requiredChild,
       requiredProps,
       hasSlottedCss,
+      hasSkeleton,
+      shouldPatchSlot,
+      skeletonProps,
       styling,
     };
     return result;

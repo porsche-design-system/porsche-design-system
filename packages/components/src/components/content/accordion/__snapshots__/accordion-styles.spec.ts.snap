@@ -20,10 +20,11 @@ button {
   overflow: hidden;
   text-align: left;
   color: #000;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  word-wrap: break-word;
   hyphens: auto;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   font-weight: 600;
   font-size: 1.5rem;
   line-height: 1.5;
@@ -97,10 +98,11 @@ button {
   overflow: hidden;
   text-align: left;
   color: #000;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  word-wrap: break-word;
   hyphens: auto;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   font-weight: 600;
   font-size: 1rem;
   line-height: 1.5;
@@ -172,10 +174,11 @@ button {
   overflow: hidden;
   text-align: left;
   color: #fff;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  word-wrap: break-word;
   hyphens: auto;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   font-weight: 600;
   font-size: 1rem;
   line-height: 1.5;
@@ -249,10 +252,11 @@ button {
   overflow: hidden;
   text-align: left;
   color: #000;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  word-wrap: break-word;
   hyphens: auto;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   font-weight: 600;
   font-size: 1rem;
   line-height: 1.5;
@@ -323,13 +327,12 @@ button {
   overflow: hidden;
   text-align: left;
   color: #000;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  word-wrap: break-word;
   hyphens: auto;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   font-weight: 600;
-  font-size: 1rem;
-  line-height: 1.5;
   padding: 0.25rem 0;
   outline: 1px solid transparent;
   outline-offset: 2px;
@@ -392,13 +395,12 @@ button {
   overflow: hidden;
   text-align: left;
   color: #000;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  word-wrap: break-word;
   hyphens: auto;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   font-weight: 600;
-  font-size: 1rem;
-  line-height: 1.5;
   padding: 0.25rem 0;
   outline: 1px solid transparent;
   outline-offset: 2px;
@@ -466,10 +468,11 @@ button {
   overflow: hidden;
   text-align: left;
   color: #fff;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  word-wrap: break-word;
   hyphens: auto;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   font-weight: 600;
   font-size: 1rem;
   line-height: 1.5;
@@ -489,7 +492,7 @@ button:focus:not(:focus-visible) {
 button:hover {
   color: #ff0223;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   button {
     font-size: 1.5rem;
     line-height: 1.5;
@@ -497,7 +500,7 @@ button:hover {
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   button {
     font-size: 1rem;
     line-height: 1.5;
@@ -505,7 +508,7 @@ button:hover {
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   button {
     font-size: 1.5rem;
     line-height: 1.5;
@@ -513,7 +516,7 @@ button:hover {
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   button {
     font-size: 1rem;
     line-height: 1.5;
@@ -521,7 +524,7 @@ button:hover {
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   button {
     font-size: 1.5rem;
     line-height: 1.5;

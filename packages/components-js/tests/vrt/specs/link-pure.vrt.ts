@@ -8,13 +8,19 @@ import {
 } from '../helpers';
 import {
   defaultViewports,
+  getVisualRegressionSkeletonTester,
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
+  itSkipSkeletons,
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 
 it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'link-pure', '/#link-pure')).toBeFalsy();
+});
+
+itSkipSkeletons('should have no visual regression for skeleton', async () => {
+  expect(await vrtTest(getVisualRegressionSkeletonTester(), 'link-pure-skeleton', '/#link-pure-skeleton')).toBeFalsy();
 });
 
 it('should have no visual regression for :hover + :focus-visible', async () => {
@@ -79,11 +85,13 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await forceHoverState(page, '.hover p-link-pure[href] >>> a');
       await forceHoverState(page, '.hover p-link-pure:not([href]) >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
+      await forceHoverState(page, '.hover p-link-pure:not([href]) a'); // TODO: chrome hover bug. Remove when fixed.
       await forceFocusState(page, '.focus p-link-pure'); // native outline should not be visible
       await forceFocusState(page, '.focus p-link-pure[href] >>> a');
       await forceFocusState(page, '.focus:not([href]) p-link-pure a');
       await forceFocusHoverState(page, '.focus-hover p-link-pure[href] >>> a');
       await forceFocusState(page, '.focus-hover p-link-pure:not([href]) a');
+      await forceHoverState(page, '.focus-hover p-link-pure:not([href]) a'); // TODO: chrome hover bug. Remove when fixed.
       await forceHoverState(page, '.focus-hover p-link-pure:not([href]) >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
     })
   ).toBeFalsy();

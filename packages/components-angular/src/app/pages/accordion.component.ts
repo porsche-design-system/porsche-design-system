@@ -118,10 +118,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
       </p-accordion>
       <p-accordion [heading]="'Some heading'" [theme]="'dark'" [open]="true">
-        <div style="color: white">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-        </div>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
       </p-accordion>
       <p-accordion [heading]="'Some heading'" [theme]="'dark'">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
@@ -150,10 +148,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
       </p-accordion>
       <p-accordion [heading]="'Some compact Accordion heading'" [compact]="true" [open]="true" [theme]="'dark'">
-        <div style="color: white">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-        </div>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
       </p-accordion>
       <p-accordion [heading]="'Some compact Accordion heading'" [compact]="true" [theme]="'dark'">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore

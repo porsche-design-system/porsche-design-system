@@ -9,33 +9,39 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(p) {
   margin: 0;
 }
-@media (min-width: 480px) {
+::slotted(a) {
+  color: #000;
+}
+::slotted(a:hover) {
+  color: #d5001c;
+}
+@media(min-width:480px) {
   :host {
     display: inline-block !important;
     vertical-align: top;
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     display: block !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     display: inline-block !important;
     vertical-align: top;
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   :host {
     display: block !important;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   :host {
     display: inline-block !important;
     vertical-align: top;
@@ -117,7 +123,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding: 0 0.25rem 0 0;
   order: -1;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   .root {
     justify-content: flex-start;
     font-size: 1rem;
@@ -150,7 +156,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .root {
     justify-content: space-between;
     font-size: 1.5rem;
@@ -183,7 +189,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   .root {
     justify-content: flex-start;
     font-size: 2.25rem;
@@ -216,7 +222,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   .root {
     justify-content: space-between;
     font-size: 3.25rem;
@@ -249,7 +255,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   .root {
     justify-content: flex-start;
     font-size: inherit;
@@ -285,6 +291,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 ::slotted(p) {
   margin: 0;
+}
+::slotted(a) {
+  color: #000;
+}
+::slotted(a:hover) {
+  color: #d5001c;
 }
 .root {
   display: flex;
@@ -361,7 +373,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding: 0 0 0 0.25rem;
   order: 0;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   .label {
     position: static;
     width: auto;
@@ -375,7 +387,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .label {
     position: absolute;
     height: 1px;
@@ -389,7 +401,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   .label {
     position: static;
     width: auto;
@@ -403,7 +415,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   .label {
     position: absolute;
     height: 1px;
@@ -417,7 +429,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   .label {
     position: static;
     width: auto;
@@ -442,6 +454,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 ::slotted(p) {
   margin: 0;
+}
+::slotted(a) {
+  color: #fff;
+}
+::slotted(a:hover) {
+  color: #ff0223;
 }
 .root {
   display: flex;
@@ -530,6 +548,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(p) {
   margin: 0;
 }
+::slotted(a) {
+  color: #000;
+}
+::slotted(a:hover) {
+  color: #d5001c;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -617,6 +641,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(p) {
   margin: 0;
 }
+::slotted(a) {
+  color: #000;
+}
+::slotted(a:hover) {
+  color: #d5001c;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -682,6 +712,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 ::slotted(p) {
   margin: 0;
+}
+::slotted(a) {
+  color: #000;
+}
+::slotted(a:hover) {
+  color: #d5001c;
 }
 .root {
   display: flex;
@@ -770,6 +806,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(p) {
   margin: 0;
 }
+::slotted(a) {
+  color: #000;
+}
+::slotted(a:hover) {
+  color: #d5001c;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -835,6 +877,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 ::slotted(p) {
   margin: 0;
+}
+::slotted(a) {
+  color: #000;
+}
+::slotted(a:hover) {
+  color: #d5001c;
 }
 .root {
   display: flex;
@@ -945,6 +993,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(p) {
   margin: 0;
 }
+::slotted(a) {
+  color: #ff0223;
+}
+::slotted(a:hover) {
+  color: #ff0223;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -1030,6 +1084,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 ::slotted(p) {
   margin: 0;
+}
+::slotted(a) {
+  color: #d5001c;
+}
+::slotted(a:hover) {
+  color: #d5001c;
 }
 .root {
   display: flex;
@@ -1118,6 +1178,12 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
 ::slotted(p) {
   margin: 0;
 }
+::slotted(a) {
+  color: #000;
+}
+::slotted(a:hover) {
+  color: #d5001c;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -1183,7 +1249,7 @@ exports[`getSlottedCss() should return correct css 1`] = `
   position: static !important;
   text-decoration: none !important;
   font: inherit !important;
-  color: inherit !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
   outline: transparent none !important;
 }
 p-link-pure a::before {
@@ -1211,7 +1277,7 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
   position: static !important;
   text-decoration: none !important;
   font: inherit !important;
-  color: inherit !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
   outline: transparent none !important;
 }
 prefixed-p-link-pure a::before {

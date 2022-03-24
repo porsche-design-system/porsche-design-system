@@ -52,6 +52,11 @@ export const routes: RouteType[] = [
     element: <fromPages.StencilLifecyclesPage />,
   },
   {
+    name: 'Utilities',
+    path: '/utilities',
+    element: <fromPages.UtilitiesPage />,
+  },
+  {
     name: '---',
     isDisabled: true,
   },

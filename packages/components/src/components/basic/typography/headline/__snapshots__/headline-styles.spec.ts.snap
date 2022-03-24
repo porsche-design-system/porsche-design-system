@@ -11,7 +11,8 @@ exports[`getComponentCss() should return correct css for variant: "headline-1", 
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  font-style: normal !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
   overflow-wrap: inherit !important;
@@ -22,40 +23,37 @@ exports[`getComponentCss() should return correct css for variant: "headline-1", 
 .root {
   padding: 0;
   margin: 0;
-  -webkit-text-size-adjust: none;
   text-align: left;
   color: #000;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
   white-space: inherit;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight: 600;
-  font-size: 1.75rem;
-  line-height: 1.4285714286;
+  font: normal normal 600 1.75rem/1.4285714286 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
 }
-@media (min-width: 760px) and (max-width: 999px) {
+@media(min-width:760px) and (max-width:999px) {
   .root {
     font-size: 2.25rem;
     line-height: 1.3333333333;
   }
 }
 
-@media (min-width: 1000px) and (max-width: 1299px) {
+@media(min-width:1000px) and (max-width:1299px) {
   .root {
     font-size: 2.75rem;
     line-height: 1.1818181818;
   }
 }
 
-@media (min-width: 1300px) and (max-width: 1759px) {
+@media(min-width:1300px) and (max-width:1759px) {
   .root {
     font-size: 3.25rem;
     line-height: 1.2307692308;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   .root {
     font-size: 3.75rem;
     line-height: 1.2;
@@ -75,7 +73,8 @@ exports[`getComponentCss() should return correct css for variant: "headline-2", 
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  font-style: normal !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
   overflow-wrap: inherit !important;
@@ -86,43 +85,40 @@ exports[`getComponentCss() should return correct css for variant: "headline-2", 
 .root {
   padding: 0;
   margin: 0;
-  -webkit-text-size-adjust: none;
   text-align: center;
   color: inherit;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
   white-space: nowrap;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight: 600;
-  font-size: 1.5rem;
-  line-height: 1.5;
+  font: normal normal 600 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-@media (min-width: 760px) and (max-width: 999px) {
+@media(min-width:760px) and (max-width:999px) {
   .root {
     font-size: 1.875rem;
     line-height: 1.3333333333;
   }
 }
 
-@media (min-width: 1000px) and (max-width: 1299px) {
+@media(min-width:1000px) and (max-width:1299px) {
   .root {
     font-size: 2.25rem;
     line-height: 1.3333333333;
   }
 }
 
-@media (min-width: 1300px) and (max-width: 1759px) {
+@media(min-width:1300px) and (max-width:1759px) {
   .root {
     font-size: 2.625rem;
     line-height: 1.2380952381;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   .root {
     font-size: 3rem;
     line-height: 1.25;
@@ -142,7 +138,8 @@ exports[`getComponentCss() should return correct css for variant: "headline-3", 
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  font-style: normal !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
   overflow-wrap: inherit !important;
@@ -153,43 +150,40 @@ exports[`getComponentCss() should return correct css for variant: "headline-3", 
 .root {
   padding: 0;
   margin: 0;
-  -webkit-text-size-adjust: none;
   text-align: center;
   color: inherit;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
   white-space: nowrap;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight: 600;
-  font-size: 1.25rem;
-  line-height: 1.4;
+  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-@media (min-width: 760px) and (max-width: 999px) {
+@media(min-width:760px) and (max-width:999px) {
   .root {
     font-size: 1.5rem;
     line-height: 1.5;
   }
 }
 
-@media (min-width: 1000px) and (max-width: 1299px) {
+@media(min-width:1000px) and (max-width:1299px) {
   .root {
     font-size: 1.75rem;
     line-height: 1.4285714286;
   }
 }
 
-@media (min-width: 1300px) and (max-width: 1759px) {
+@media(min-width:1300px) and (max-width:1759px) {
   .root {
     font-size: 2rem;
     line-height: 1.375;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   .root {
     font-size: 2.25rem;
     line-height: 1.3333333333;
@@ -209,7 +203,8 @@ exports[`getComponentCss() should return correct css for variant: "headline-4", 
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  font-style: normal !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
   overflow-wrap: inherit !important;
@@ -220,43 +215,40 @@ exports[`getComponentCss() should return correct css for variant: "headline-4", 
 .root {
   padding: 0;
   margin: 0;
-  -webkit-text-size-adjust: none;
   text-align: center;
   color: inherit;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
   white-space: nowrap;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight: 600;
-  font-size: 1rem;
-  line-height: 1.5;
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-@media (min-width: 760px) and (max-width: 999px) {
+@media(min-width:760px) and (max-width:999px) {
   .root {
     font-size: 1.125rem;
     line-height: 1.5555555556;
   }
 }
 
-@media (min-width: 1000px) and (max-width: 1299px) {
+@media(min-width:1000px) and (max-width:1299px) {
   .root {
     font-size: 1.25rem;
     line-height: 1.4;
   }
 }
 
-@media (min-width: 1300px) and (max-width: 1759px) {
+@media(min-width:1300px) and (max-width:1759px) {
   .root {
     font-size: 1.375rem;
     line-height: 1.4545454545;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   .root {
     font-size: 1.5rem;
     line-height: 1.5;
@@ -276,7 +268,8 @@ exports[`getComponentCss() should return correct css for variant: "headline-5", 
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  font-style: normal !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
   overflow-wrap: inherit !important;
@@ -287,17 +280,14 @@ exports[`getComponentCss() should return correct css for variant: "headline-5", 
 .root {
   padding: 0;
   margin: 0;
-  -webkit-text-size-adjust: none;
   text-align: center;
   color: inherit;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
   white-space: nowrap;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight: 600;
-  font-size: 1rem;
-  line-height: 1.5;
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -315,7 +305,8 @@ exports[`getComponentCss() should return correct css for variant: "inherit", ali
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  font-style: normal !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
   overflow-wrap: inherit !important;
@@ -326,12 +317,8 @@ exports[`getComponentCss() should return correct css for variant: "inherit", ali
 .root {
   padding: 0;
   margin: 0;
-  -webkit-text-size-adjust: none;
   text-align: left;
   color: #000;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
   white-space: inherit;
   font-size: inherit;
 }"
@@ -348,7 +335,8 @@ exports[`getComponentCss() should return correct css for variant: "large-title",
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  font-style: normal !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
   overflow-wrap: inherit !important;
@@ -359,43 +347,40 @@ exports[`getComponentCss() should return correct css for variant: "large-title",
 .root {
   padding: 0;
   margin: 0;
-  -webkit-text-size-adjust: none;
   text-align: center;
   color: inherit;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
   white-space: nowrap;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight: 600;
-  font-size: 2rem;
-  line-height: 1.375;
+  font: normal normal 600 2rem/1.375 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-@media (min-width: 760px) and (max-width: 999px) {
+@media(min-width:760px) and (max-width:999px) {
   .root {
     font-size: 2.625rem;
     line-height: 1.2380952381;
   }
 }
 
-@media (min-width: 1000px) and (max-width: 1299px) {
+@media(min-width:1000px) and (max-width:1299px) {
   .root {
     font-size: 3.25rem;
     line-height: 1.2307692308;
   }
 }
 
-@media (min-width: 1300px) and (max-width: 1759px) {
+@media(min-width:1300px) and (max-width:1759px) {
   .root {
     font-size: 3.875rem;
     line-height: 1.2258064516;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   .root {
     font-size: 4.5rem;
     line-height: 1.2222222222;
@@ -415,7 +400,8 @@ exports[`getComponentCss() should return correct css for variant: {"base":"small
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  font-style: normal !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
   color: inherit !important;
   text-align: inherit !important;
   overflow-wrap: inherit !important;
@@ -426,12 +412,8 @@ exports[`getComponentCss() should return correct css for variant: {"base":"small
 .root {
   padding: 0;
   margin: 0;
-  -webkit-text-size-adjust: none;
   text-align: right;
   color: inherit;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
   white-space: inherit;
 }"
 `;

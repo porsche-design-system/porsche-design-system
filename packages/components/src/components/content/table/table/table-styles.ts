@@ -1,13 +1,12 @@
+import { textSmall, spacing, mediaQueryMin } from '@porsche-design-system/utilities-v2';
 import { buildSlottedStyles, getCss } from '../../../../utils';
 import {
   addImportantToRule,
   getBaseSlottedStyles,
-  getFocusStyles,
-  mediaQuery,
+  getFocusJssStyle,
   pxToRemWithUnit,
   getThemedColors,
 } from '../../../../styles';
-import { textSmall, spacing } from '@porsche-design-system/utilities-v2';
 
 const { baseColor } = getThemedColors('light');
 
@@ -20,7 +19,7 @@ export const getComponentCss = (): string => {
     },
     caption: {
       marginBottom: spacing[8],
-      [mediaQuery('m')]: {
+      [mediaQueryMin('m')]: {
         marginBottom: spacing[16],
       },
     },
@@ -29,7 +28,7 @@ export const getComponentCss = (): string => {
     },
     'scroll-area': {
       overflow: 'auto visible',
-      ...getFocusStyles({ offset: -1 }),
+      ...getFocusJssStyle({ offset: -1 }),
     },
     table: {
       position: 'relative',

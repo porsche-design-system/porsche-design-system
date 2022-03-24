@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should contain correct values for font 1`] = `
+Object {
+  "behavior": Object {
+    "WebkitTextSizeAdjust": "none",
+    "hyphens": "auto",
+    "overflowWrap": "break-word",
+    "textSizeAdjust": "none",
+  },
+  "family": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "size": Object {
+    "large": Object {
+      "fontSize": "2.25rem",
+      "lineHeight": 1.3333333333,
+    },
+    "medium": Object {
+      "fontSize": "1.5rem",
+      "lineHeight": 1.5,
+    },
+    "small": Object {
+      "fontSize": "1rem",
+      "lineHeight": 1.5,
+    },
+    "xLarge": Object {
+      "fontSize": "3.25rem",
+      "lineHeight": 1.2307692308,
+    },
+    "xSmall": Object {
+      "fontSize": "0.75rem",
+      "lineHeight": 1.6666666667,
+    },
+  },
+  "style": "normal",
+  "variant": "normal",
+  "weight": Object {
+    "bold": 700,
+    "regular": 400,
+    "semibold": 600,
+    "thin": 100,
+  },
+}
+`;
+
+exports[`should contain correct values for fontBehavior 1`] = `
+Object {
+  "WebkitTextSizeAdjust": "none",
+  "hyphens": "auto",
+  "overflowWrap": "break-word",
+  "textSizeAdjust": "none",
+}
+`;
+
+exports[`should contain correct values for fontFamily 1`] = `"'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif"`;
+
+exports[`should contain correct values for fontSize 1`] = `
+Object {
+  "large": Object {
+    "fontSize": "2.25rem",
+    "lineHeight": 1.3333333333,
+  },
+  "medium": Object {
+    "fontSize": "1.5rem",
+    "lineHeight": 1.5,
+  },
+  "small": Object {
+    "fontSize": "1rem",
+    "lineHeight": 1.5,
+  },
+  "xLarge": Object {
+    "fontSize": "3.25rem",
+    "lineHeight": 1.2307692308,
+  },
+  "xSmall": Object {
+    "fontSize": "0.75rem",
+    "lineHeight": 1.6666666667,
+  },
+}
+`;
+
+exports[`should contain correct values for fontStyle 1`] = `"normal"`;
+
+exports[`should contain correct values for fontVariant 1`] = `"normal"`;
+
+exports[`should contain correct values for fontWeight 1`] = `
+Object {
+  "bold": 700,
+  "regular": 400,
+  "semibold": 600,
+  "thin": 100,
+}
+`;

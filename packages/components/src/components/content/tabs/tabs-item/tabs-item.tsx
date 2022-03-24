@@ -24,10 +24,6 @@ export class TabsItem {
   }
 
   public render(): JSX.Element {
-    return (
-      <section>
-        <slot />
-      </section>
-    );
+    return <slot />;
   }
 }
