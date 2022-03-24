@@ -1,6 +1,6 @@
 import { getInitialStyles } from '../../../src';
 import { render } from '@testing-library/react';
-import { INTERNAL_TAG_NAMES, SKELETON_TAG_NAMES, SkeletonTagName, TAG_NAMES } from '@porsche-design-system/shared';
+import { INTERNAL_TAG_NAMES, SKELETON_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 
 import { describeSkipSkeletons, itSkipSkeletons } from '@porsche-design-system/shared/testing';
 
@@ -17,7 +17,7 @@ describe('format: html', () => {
 
   itSkipSkeletons('should return core and skeleton styles', () => {
     // @ts-ignore
-    const result = getInitialStyles({ skeletonTagNames: SKELETON_TAG_NAMES as SkeletonTagName[] });
+    const result = getInitialStyles({ skeletonTagNames: SKELETON_TAG_NAMES });
     expect(result).toMatchSnapshot();
   });
 
@@ -31,7 +31,7 @@ describe('format: html', () => {
     const result = getInitialStyles({
       prefix: 'custom-prefix',
       // @ts-ignore
-      skeletonTagNames: SKELETON_TAG_NAMES as SkeletonTagName[],
+      skeletonTagNames: SKELETON_TAG_NAMES,
     });
     expect(result).toMatchSnapshot();
   });
@@ -49,7 +49,7 @@ describe('format: jsx', () => {
     const result = getInitialStyles({
       format: 'jsx',
       // @ts-ignore
-      skeletonTagNames: SKELETON_TAG_NAMES as SkeletonTagName[],
+      skeletonTagNames: SKELETON_TAG_NAMES,
     });
     expect(result).toMatchSnapshot();
   });

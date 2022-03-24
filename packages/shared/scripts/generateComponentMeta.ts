@@ -96,7 +96,7 @@ const generateComponentMeta = (): void => {
     const isDelegatingFocus = source.includes('delegatesFocus: true');
     const isThemeable = source.includes('public theme?: Theme');
     const hasSlottedCss = source.includes('attachSlottedCss');
-    const hasSkeleton = SKELETON_TAG_NAMES.includes(tagName);
+    const hasSkeleton = SKELETON_TAG_NAMES.includes(tagName as any);
     const shouldPatchSlot = TAG_NAMES_TO_ADD_SLOT_TO.includes(tagName);
     const usesScss = source.includes('styleUrl:');
     const usesJss = source.includes('attachComponentCss');
