@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **[EXPERIMENTAL]** `getInitialStyles` partial now accepts a `skeletonTagNames` array of component names that will initially have skeleton styles while the Porsche Design System is loading
 - **[EXPERIMENTAL]** `Button`, `Button Pure`, `Checkbox Wrapper`, `Fieldset Wrapper`, `Link`, `Link Pure`, `Link Social`, `Radio Button Wrapper`, `Select Wrapper`, `Text Field Wrapper`, `Textarea Wrapper` can now have skeleton styles based on their default attributes
 
+### [2.9.2-rc.1] - 2022-03-23
+
 #### Fixed
 - Bug caused by Chrome where hover styles of `Link Pure` are not displayed correctly
 
@@ -22,8 +24,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Fixed
 - `Modal` scrolling and pinch to zoom on iOS
-- Initial positioning if scrollable of `Modal`
-- `asc` + `desc` sort icon of `Table`
+- `Modal` initial position if scrollable
+- `Table Head Cell` sort icon `asc` + `desc`
 
 ### [2.9.1] - 2022-03-10
 
