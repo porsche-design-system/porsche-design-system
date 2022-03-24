@@ -6,20 +6,14 @@ Object {
     Object {
       "children": Array [
         Object {
-          "children": Array [
-            Object {
-              "name": "Content 1",
-              "role": "StaticText",
-            },
-          ],
-          "role": "none",
+          "name": "Content 1",
+          "role": "StaticText",
         },
       ],
-      "name": "",
-      "role": "Section",
+      "role": "none",
     },
   ],
-  "name": "",
+  "name": "Tab 1",
   "role": "tabpanel",
 }
 `;
