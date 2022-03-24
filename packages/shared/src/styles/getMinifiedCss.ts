@@ -3,7 +3,6 @@ import jss from 'jss';
 import preset from 'jss-preset-default';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
 
-// @ts-ignore
 jss.setup({
   ...preset(),
   createGenerateId: () => (rule: Rule) => rule.key,

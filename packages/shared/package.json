@@ -44,6 +44,9 @@
     "@types/jest-expect-message": "^1.0.3",
     "jest": "^27.5.1",
     "jest-puppeteer": "^6.1.0",
+    "jss": "^10.9.0",
+    "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
+    "jss-preset-default": "^10.9.0",
     "puppeteer": "~13.5.1",
     "ts-jest": "^27.1.3"
   },
