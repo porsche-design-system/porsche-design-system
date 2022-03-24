@@ -82,10 +82,8 @@ export class Tabs {
           activeTabIndex={this.activeTabIndex}
           onTabChange={this.onTabChange}
         >
-          {this.tabsItemElements.map((tab, index) => (
-            <button type="button" id={`tab-item-${index}`} aria-controls={`tab-panel-${index}`}>
-              {tab.label}
-            </button>
+          {this.tabsItemElements.map((tab) => (
+            <button type="button">{tab.label}</button>
           ))}
         </PrefixedTagNames.pTabsBar>
         <slot />
@@ -101,8 +99,7 @@ export class Tabs {
     for (const [index, tab] of Object.entries(this.tabsItemElements)) {
       const attrs = {
         role: 'tabpanel',
-        id: `tab-panel-${index}`,
-        'aria-labelledby': `tab-item-${index}`,
+        'aria-label': tab.label,
       };
 
       for (const [key, value] of Object.entries(attrs)) {
