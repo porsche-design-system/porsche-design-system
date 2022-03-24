@@ -12,13 +12,13 @@ exports[`getComponentCss() should return correct css for width: basic, backgroun
   padding: 0 7vw;
   background-color: #0e1418;
 }
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   .root {
     padding: 0 10vw;
   }
 }
 
-@media (min-width: 1920px) {
+@media(min-width:1920px) {
   .root {
     padding: 0 12rem;
   }
@@ -38,13 +38,13 @@ exports[`getComponentCss() should return correct css for width: basic, backgroun
   padding: 0 7vw;
   background-color: #fff;
 }
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   .root {
     padding: 0 10vw;
   }
 }
 
-@media (min-width: 1920px) {
+@media(min-width:1920px) {
   .root {
     padding: 0 12rem;
   }
@@ -64,13 +64,13 @@ exports[`getComponentCss() should return correct css for width: basic, backgroun
   padding: 0 7vw;
   background-color: transparent;
 }
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   .root {
     padding: 0 10vw;
   }
 }
 
-@media (min-width: 1920px) {
+@media(min-width:1920px) {
   .root {
     padding: 0 12rem;
   }

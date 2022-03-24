@@ -58,7 +58,7 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   overflow: hidden;
   text-indent: -1px;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   .root {
     padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem;
   }
@@ -76,7 +76,7 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .root {
     padding: 0;
   }
@@ -94,7 +94,7 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   .root {
     padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem;
   }
@@ -112,7 +112,7 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   .root {
     padding: 0;
   }
@@ -130,7 +130,7 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   .root {
     padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem;
   }

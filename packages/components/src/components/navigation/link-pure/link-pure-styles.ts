@@ -1,7 +1,7 @@
 import type { BreakpointCustomizable } from '../../../utils';
 import type { AlignLabel, LinkButtonPureIconName, TextSize, ThemeExtendedElectricDark } from '../../../types';
 import { buildSlottedStyles, getCss, mergeDeep } from '../../../utils';
-import { getInset, getThemedColors, getTransition } from '../../../styles';
+import { getInsetJssStyle, getThemedColors, getTransition } from '../../../styles';
 import { getLinkButtonPureStyles } from '../../../styles/link-button-pure-styles';
 
 export const getComponentCss = (
@@ -70,7 +70,7 @@ export const getSlottedCss = (host: HTMLElement): string => {
           content: '""',
           display: 'block',
           position: 'absolute',
-          ...getInset(),
+          ...getInsetJssStyle(),
           outline: '1px solid transparent',
           outlineOffset: '1px',
         },
