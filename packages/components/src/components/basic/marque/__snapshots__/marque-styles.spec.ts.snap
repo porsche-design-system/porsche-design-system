@@ -64,7 +64,7 @@ img {
   width: 100%;
   height: auto;
 }
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   picture {
     width: 120px;
     height: 72px;

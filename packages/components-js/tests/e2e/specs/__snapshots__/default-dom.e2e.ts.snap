@@ -748,10 +748,8 @@ exports[`should have no basic DOM regression for p-tabs-bar 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-tabs-item 1`] = `
-"<section>
-  <slot>
-  </slot>
-</section>"
+"<slot>
+</slot>"
 `;
 
 exports[`should have no basic DOM regression for p-text 1`] = `

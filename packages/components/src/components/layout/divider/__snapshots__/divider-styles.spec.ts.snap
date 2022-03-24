@@ -133,35 +133,35 @@ hr {
   height: 1px;
   width: 100%;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   hr {
     height: 100%;
     width: 1px;
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   hr {
     height: 1px;
     width: 100%;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   hr {
     height: 100%;
     width: 1px;
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   hr {
     height: 1px;
     width: 100%;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   hr {
     height: 100%;
     width: 1px;

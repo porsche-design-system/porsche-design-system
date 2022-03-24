@@ -585,7 +585,7 @@ button:hover .toggle {
   transform: translate3d(0, 0, 0);
   transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   .root {
     width: 100%;
     justify-content: space-between;
@@ -605,7 +605,7 @@ button:hover .toggle {
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .root {
     width: auto;
     justify-content: flex-start;
@@ -626,7 +626,7 @@ button:hover .toggle {
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   .root {
     width: 100%;
     justify-content: space-between;
@@ -646,7 +646,7 @@ button:hover .toggle {
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   .root {
     width: auto;
     justify-content: flex-start;
@@ -667,7 +667,7 @@ button:hover .toggle {
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   .root {
     width: 100%;
     justify-content: space-between;

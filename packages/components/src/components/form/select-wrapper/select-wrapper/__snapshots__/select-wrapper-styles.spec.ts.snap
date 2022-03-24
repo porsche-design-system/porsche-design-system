@@ -108,7 +108,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message__icon {
   margin-right: 0.25rem;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   .label__text {
     position: static;
     width: fit-content;
@@ -122,7 +122,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .label__text {
     position: absolute;
     height: 1px;
@@ -137,7 +137,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   .label__text {
     position: static;
     width: fit-content;
@@ -151,7 +151,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   .label__text {
     position: absolute;
     height: 1px;
@@ -166,7 +166,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   .label__text {
     position: static;
     width: fit-content;

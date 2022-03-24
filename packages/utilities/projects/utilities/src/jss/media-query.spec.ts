@@ -1,36 +1,36 @@
-import { breakpoint, mediaQueryMin, mediaQueryMax, mediaQueryMinMax } from './media-query';
+import { breakpoint, mediaQueryMin, mediaQueryMax, mediaQueryMinMax, Breakpoint } from './media-query';
 
 it('should contain correct values for breakpoint', () => {
   expect(breakpoint).toMatchSnapshot();
 });
 
 describe('mediaQueryMin()', () => {
-  it.each<Parameters<typeof mediaQueryMin>>([['xxs'], ['xs'], ['s'], ['m'], ['l'], ['xl'], ['xxl']])(
+  it.each<Breakpoint>(['xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl'])(
     'should return correct css for minBreakpoint: %s',
-    (...args) => {
-      expect(mediaQueryMin(...args)).toMatchSnapshot();
+    (min) => {
+      expect(mediaQueryMin(min as any)).toMatchSnapshot();
     }
   );
 });
 
 describe('mediaQueryMax()', () => {
-  it.each<Parameters<typeof mediaQueryMax>>([['xs'], ['s'], ['m'], ['l'], ['xl'], ['xxl']])(
+  it.each<Exclude<Breakpoint, 'xxs'>>(['xs', 's', 'm', 'l', 'xl', 'xxl'])(
     'should return correct css for maxBreakpoint: %s',
-    (...args) => {
-      expect(mediaQueryMax(...args)).toMatchSnapshot();
+    (max) => {
+      expect(mediaQueryMax(max as any)).toMatchSnapshot();
     }
   );
 });
 
 describe('mediaQueryMinMax()', () => {
-  it.each<Parameters<typeof mediaQueryMinMax>>([
+  it.each<[Exclude<Breakpoint, 'xxl'>, Exclude<Breakpoint, 'xxs'>]>([
     ['xxs', 'xs'],
     ['xs', 's'],
     ['s', 'm'],
     ['m', 'l'],
     ['l', 'xl'],
     ['xl', 'xxl'],
-  ])('should return correct css for maxBreakpoint: %s', (...args) => {
-    expect(mediaQueryMinMax(...args)).toMatchSnapshot();
+  ])('should return correct css for maxBreakpoint: %s', (min, max) => {
+    expect(mediaQueryMinMax(min as any, max as any)).toMatchSnapshot();
   });
 });

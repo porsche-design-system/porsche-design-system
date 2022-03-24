@@ -41,7 +41,7 @@ type GetHoverStylesOptions = {
   theme?: Theme;
 };
 
-export const getHoverStyles = ({ theme }: GetHoverStylesOptions = { theme: 'light' }): JssStyle => {
+export const getHoverJssStyle = ({ theme }: GetHoverStylesOptions = { theme: 'light' }): JssStyle => {
   return {
     transition: getTransition('color'),
     '&:hover': {
@@ -56,7 +56,7 @@ export type GetFocusStylesOptions = {
   pseudo?: '::after' | '::before';
 };
 
-export const getInset = (value: 'auto' | number = 0): JssStyle => {
+export const getInsetJssStyle = (value: 'auto' | number = 0): JssStyle => {
   value = value > 0 ? (`${value}px` as any) : value;
   return {
     top: value,
@@ -66,7 +66,7 @@ export const getInset = (value: 'auto' | number = 0): JssStyle => {
   };
 };
 
-export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
+export const getFocusJssStyle = (opts?: GetFocusStylesOptions): JssStyle => {
   const {
     pseudo,
     offset: outlineOffset,
@@ -86,7 +86,7 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
         [`&${pseudo}`]: {
           content: '""',
           position: 'absolute',
-          ...getInset(),
+          ...getInsetJssStyle(),
           outline: '1px solid transparent',
           outlineOffset: `${outlineOffset}px`,
         },
@@ -117,11 +117,11 @@ export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withD
     '& a': {
       color: 'inherit',
       textDecoration: 'underline',
-      ...getHoverStyles(),
-      ...getFocusStyles({ offset: 1 }),
+      ...getHoverJssStyle(),
+      ...getFocusJssStyle({ offset: 1 }),
     },
     ...(opts.withDarkTheme && {
-      '&[theme="dark"] a:hover': getHoverStyles({ theme: 'dark' })['&:hover'],
+      '&[theme="dark"] a:hover': getHoverJssStyle({ theme: 'dark' })['&:hover'],
     }),
     '& b, & strong': {
       fontWeight: fontWeight.bold,

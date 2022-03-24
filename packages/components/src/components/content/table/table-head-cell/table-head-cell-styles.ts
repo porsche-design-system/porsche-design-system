@@ -2,8 +2,8 @@ import type { Direction } from '../table/table-utils';
 import { getCss } from '../../../../utils';
 import {
   addImportantToEachRule,
-  getFocusStyles,
-  getHoverStyles,
+  getFocusJssStyle,
+  getHoverJssStyle,
   getTextHiddenJssStyle,
   pxToRemWithUnit,
   getThemedColors,
@@ -42,8 +42,8 @@ export const getComponentCss = (active: boolean, direction: Direction, hideLabel
               textAlign: 'left',
               background: 'transparent',
               cursor: 'pointer',
-              ...getHoverStyles(),
-              ...getFocusStyles({ offset: 1 }),
+              ...getHoverJssStyle(),
+              ...getFocusJssStyle({ offset: 1 }),
               '&:hover, &:focus': {
                 '& .icon': {
                   opacity: 1,

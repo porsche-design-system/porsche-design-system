@@ -86,31 +86,31 @@ exports[`getComponentCss() should return correct css for alignContent: {"base":"
   align-items: stretch !important;
   align-content: stretch !important;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   :host {
     align-content: center !important;
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     align-content: stretch !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     align-content: center !important;
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   :host {
     align-content: stretch !important;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   :host {
     align-content: center !important;
   }
@@ -182,31 +182,31 @@ exports[`getComponentCss() should return correct css for alignItems: {"base":"st
   align-items: stretch !important;
   align-content: stretch !important;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   :host {
     align-items: center !important;
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     align-items: stretch !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     align-items: center !important;
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   :host {
     align-items: stretch !important;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   :host {
     align-items: center !important;
   }
@@ -223,7 +223,7 @@ exports[`getComponentCss() should return correct css for all props being breakpo
   align-items: stretch !important;
   align-content: stretch !important;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   :host {
     display: flex !important;
     flex-wrap: wrap !important;
@@ -234,7 +234,7 @@ exports[`getComponentCss() should return correct css for all props being breakpo
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     display: flex !important;
     flex-wrap: nowrap !important;
@@ -245,7 +245,7 @@ exports[`getComponentCss() should return correct css for all props being breakpo
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     display: inline-flex !important;
     flex-wrap: wrap !important;
@@ -256,7 +256,7 @@ exports[`getComponentCss() should return correct css for all props being breakpo
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   :host {
     display: flex !important;
     flex-wrap: nowrap !important;
@@ -267,7 +267,7 @@ exports[`getComponentCss() should return correct css for all props being breakpo
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   :host {
     display: inline-flex !important;
     flex-wrap: wrap !important;
@@ -333,31 +333,31 @@ exports[`getComponentCss() should return correct css for direction: {"base":"row
   align-items: stretch !important;
   align-content: stretch !important;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   :host {
     flex-direction: column !important;
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     flex-direction: row !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     flex-direction: column !important;
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   :host {
     flex-direction: row !important;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   :host {
     flex-direction: column !important;
   }
@@ -374,31 +374,31 @@ exports[`getComponentCss() should return correct css for inline: {"base":true,"x
   align-items: stretch !important;
   align-content: stretch !important;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   :host {
     display: flex !important;
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     display: flex !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     display: inline-flex !important;
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   :host {
     display: flex !important;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   :host {
     display: inline-flex !important;
   }
@@ -503,31 +503,31 @@ exports[`getComponentCss() should return correct css for justifyContent: {"base"
   align-items: stretch !important;
   align-content: stretch !important;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   :host {
     justify-content: center !important;
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     justify-content: flex-start !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     justify-content: center !important;
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   :host {
     justify-content: flex-start !important;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   :host {
     justify-content: center !important;
   }
@@ -577,31 +577,31 @@ exports[`getComponentCss() should return correct css for wrap: {"base":"nowrap",
   align-items: stretch !important;
   align-content: stretch !important;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   :host {
     flex-wrap: wrap !important;
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     flex-wrap: nowrap !important;
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   :host {
     flex-wrap: wrap !important;
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   :host {
     flex-wrap: nowrap !important;
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   :host {
     flex-wrap: wrap !important;
   }

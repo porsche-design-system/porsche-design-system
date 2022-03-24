@@ -492,7 +492,7 @@ button:focus:not(:focus-visible) {
 button:hover {
   color: #ff0223;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   button {
     font-size: 1.5rem;
     line-height: 1.5;
@@ -500,7 +500,7 @@ button:hover {
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   button {
     font-size: 1rem;
     line-height: 1.5;
@@ -508,7 +508,7 @@ button:hover {
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   button {
     font-size: 1.5rem;
     line-height: 1.5;
@@ -516,7 +516,7 @@ button:hover {
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   button {
     font-size: 1rem;
     line-height: 1.5;
@@ -524,7 +524,7 @@ button:hover {
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   button {
     font-size: 1.5rem;
     line-height: 1.5;

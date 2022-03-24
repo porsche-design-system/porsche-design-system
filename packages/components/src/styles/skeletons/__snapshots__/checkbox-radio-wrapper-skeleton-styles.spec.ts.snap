@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return correct css 1`] = `
+"p-checkbox-wrapper:not(.hydrated), p-radio-button-wrapper:not(.hydrated) {
+  position: relative;
+  color: transparent;
+  min-height: 1.5rem;
+  display: block;
+  min-width: 12rem;
+}
+p-checkbox-wrapper:not(.hydrated)::after, p-radio-button-wrapper:not(.hydrated)::after {
+  display: block;
+  top: 0rem;
+  width: 100%;
+  min-height: 100%;
+  color: #626669;
+}
+p-checkbox-wrapper:not(.hydrated)[hide-label=true], p-checkbox-wrapper:not(.hydrated).pds-skeleton--hide-label, p-radio-button-wrapper:not(.hydrated)[hide-label=true], p-radio-button-wrapper:not(.hydrated).pds-skeleton--hide-label {
+  min-width: 1.5rem;
+}
+p-checkbox-wrapper:not(.hydrated)[theme=dark]::after, p-checkbox-wrapper:not(.hydrated).pds-skeleton--theme-dark::after, p-radio-button-wrapper:not(.hydrated)[theme=dark]::after, p-radio-button-wrapper:not(.hydrated).pds-skeleton--theme-dark::after {
+  color: #b0b1b2;
+}"
+`;
