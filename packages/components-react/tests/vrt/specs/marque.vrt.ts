@@ -1,10 +1,10 @@
 import {
-  getVisualRegressionTester,
+  defaultViewports,
   getVisualRegressionMarque2xTester,
   getVisualRegressionMarque3xTester,
-  vrtTest,
-  defaultViewports,
+  getVisualRegressionTester,
   marqueViewports,
+  vrtTest,
 } from '@porsche-design-system/shared/testing';
 
 it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {

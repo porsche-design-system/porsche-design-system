@@ -2,14 +2,25 @@ import type { PropsWithChildren } from 'react';
 import { createContext, useEffect } from 'react';
 import { load } from '@porsche-design-system/components-js';
 
-export const PorscheDesignSystemContext = createContext({ prefix: undefined });
+// to warn users about missing PorscheDesignSystemProvider, we set the default values as undefined
+export const PorscheDesignSystemContext = createContext({
+  prefix: undefined,
+  usesSkeletons: undefined,
+});
 
-type Props = { prefix?: string };
+export const hasSkeleton = (): boolean =>
+  typeof window !== 'undefined' && !!document.querySelector('style[uses-skeleton]');
 
-export const PorscheDesignSystemProvider = ({ prefix = '', ...props }: PropsWithChildren<Props>): JSX.Element => {
+type Props = { prefix?: string; usesSkeletons?: boolean };
+
+export const PorscheDesignSystemProvider = ({
+  prefix = '',
+  usesSkeletons = hasSkeleton(),
+  ...props
+}: PropsWithChildren<Props>): JSX.Element => {
   useEffect(() => {
     load({ prefix });
   }, [prefix]);
 
-  return <PorscheDesignSystemContext.Provider value={{ prefix }} {...props} />;
+  return <PorscheDesignSystemContext.Provider value={{ prefix, usesSkeletons }} {...props} />;
 };

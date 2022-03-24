@@ -2,11 +2,13 @@
 
 exports[`should have no regression for dependency tree 1`] = `
 Object {
+  "constants/skeleton.js": Array [],
   "data/table-data-advanced.js": Array [],
   "data/table-data-basic.js": Array [],
   "data/table-data-sorting.js": Array [],
   "data/table-data-vrt.js": Array [],
   "index.js": Array [
+    "constants/skeleton.js",
     "data/table-data-advanced.js",
     "data/table-data-basic.js",
     "data/table-data-sorting.js",
@@ -14,9 +16,11 @@ Object {
     "lib/codeSamples.js",
     "lib/componentMeta.js",
     "lib/tagNames.js",
+    "styles/getMinifiedCss.js",
   ],
   "lib/codeSamples.js": Array [],
   "lib/componentMeta.js": Array [],
   "lib/tagNames.js": Array [],
+  "styles/getMinifiedCss.js": Array [],
 }
 `;

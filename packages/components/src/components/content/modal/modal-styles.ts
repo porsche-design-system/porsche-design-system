@@ -1,13 +1,13 @@
 import type { JssStyle } from 'jss';
-import type { BreakpointCustomizable, GetStylesFunction, BreakpointKey } from '../../../utils';
+import type { BreakpointCustomizable, GetJssStyleFunction, BreakpointKey } from '../../../utils';
 import { mediaQueryMin } from '@porsche-design-system/utilities-v2';
 import { BREAKPOINTS, buildResponsiveStyles, getCss, mergeDeep, parseJSON, buildSlottedStyles } from '../../../utils';
 import {
   addImportantToEachRule,
   contentWrapperVars,
   getBaseSlottedStyles,
-  getFocusStyles,
-  getInset,
+  getFocusJssStyle,
+  getInsetJssStyle,
   getThemedColors,
   pxToRemWithUnit,
 } from '../../../styles';
@@ -23,7 +23,7 @@ const { backgroundColor: darkThemeBackgroundColor } = getThemedColors('dark');
 const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
 export const stretchToFullModalWidthClassName = 'stretch-to-full-modal-width';
 
-export const getFullscreenStyles: GetStylesFunction = (fullscreen: boolean): JssStyle => {
+export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean): JssStyle => {
   return fullscreen
     ? {
         minWidth: '100%',
@@ -84,7 +84,7 @@ export const getComponentCss = (
       ':host': {
         ...addImportantToEachRule({
           position: 'fixed',
-          ...getInset(),
+          ...getInsetJssStyle(),
           zIndex: MODAL_Z_INDEX,
           display: 'flex',
           alignItems: 'center',
@@ -105,7 +105,7 @@ export const getComponentCss = (
           '&::before': {
             content: '""',
             position: 'fixed',
-            ...getInset(),
+            ...getInsetJssStyle(),
             background: `${darkThemeBackgroundColor}e6`, // e6 = 0.9 alpha
           },
         }),
@@ -125,7 +125,7 @@ export const getComponentCss = (
         transform: open ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
         padding: pxToRemWithUnit(32),
         backgroundColor: lightThemeBackgroundColor,
-        ...getFocusVisibleFallback(getFocusStyles({ color: lightThemeBackgroundColor })),
+        ...getFocusVisibleFallback(getFocusJssStyle({ color: lightThemeBackgroundColor })),
         [mediaQueryM]: {
           padding: pxToRemWithUnit(40),
         },
@@ -137,7 +137,7 @@ export const getComponentCss = (
           margin: isFullscreenForXlAndXxl ? 0 : `10vh ${contentWrapperVars.marginXxl}`,
         },
       },
-      buildResponsiveStyles(fullscreen, getFullscreenStyles) as any
+      buildResponsiveStyles(fullscreen, getFullscreenJssStyles) as any
     ),
     ...(hasHeader && {
       header: {

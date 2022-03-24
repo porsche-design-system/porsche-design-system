@@ -8,13 +8,21 @@ import {
 } from '../helpers';
 import {
   defaultViewports,
+  getVisualRegressionSkeletonTester,
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
+  itSkipSkeletons,
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 
 it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'checkbox-wrapper', '/#checkbox-wrapper')).toBeFalsy();
+});
+
+itSkipSkeletons('should have no visual regression for skeleton', async () => {
+  expect(
+    await vrtTest(getVisualRegressionSkeletonTester(), 'checkbox-wrapper-skeleton', '/#checkbox-wrapper-skeleton')
+  ).toBeFalsy();
 });
 
 it('should have no visual regression for :hover + :focus-visible', async () => {
