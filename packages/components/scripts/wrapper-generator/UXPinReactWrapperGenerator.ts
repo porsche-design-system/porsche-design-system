@@ -2,8 +2,8 @@ import type { TagName } from '@porsche-design-system/shared';
 import { spacing } from '@porsche-design-system/utilities-v2';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import { ExtendedProp } from './DataStructureBuilder';
-import type { AdditionalFile } from './AbstractWrapperGenerator';
-import { pascalCase, paramCase } from 'change-case';
+import type { AdditionalFile, SkeletonProps } from './AbstractWrapperGenerator';
+import { paramCase, pascalCase } from 'change-case';
 
 const addNestedIndentation = (x: string): string => `  ${x}`;
 
@@ -29,9 +29,14 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     return `${pascalCase(component.replace('p-', ''))}${withOutExtension ? '' : '.tsx'}`;
   }
 
-  public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
+  public generateImports(
+    component: TagName,
+    extendedProps: ExtendedProp[],
+    nonPrimitiveTypes: string[],
+    hasSkeleton: boolean
+  ): string {
     let imports = super
-      .generateImports(component, extendedProps, nonPrimitiveTypes)
+      .generateImports(component, extendedProps, nonPrimitiveTypes, hasSkeleton)
       .replace(/(?:useMergedClass|BreakpointCustomizable)(?:, )?/g, ''); // remove unused imports
 
     if (component === 'p-toast') {
@@ -125,9 +130,9 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     return props;
   }
 
-  public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
+  public generateComponent(component: TagName, extendedProps: ExtendedProp[], skeletonProps: SkeletonProps): string {
     let cleanedComponent = super
-      .generateComponent(component, extendedProps)
+      .generateComponent(component, extendedProps, skeletonProps)
       .replace(/export const P(\w+) =/, 'export const $1 =') // adjust component name to match file name
       .replace('className, ', '') // remove className from props destructuring since it is useless
       .replace(/\s+class.*/, ''); // remove class mapping via useMergedClass since it is useless

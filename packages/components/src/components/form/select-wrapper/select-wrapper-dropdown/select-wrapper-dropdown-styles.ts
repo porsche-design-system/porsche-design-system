@@ -2,7 +2,13 @@ import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper
 import type { FormState, Theme } from '../../../../types';
 import type { JssStyle, Styles } from 'jss';
 import { getCss, isThemeDark, mergeDeep } from '../../../../utils';
-import { getInset, getTextHiddenJssStyle, getTransition, pxToRemWithUnit, getThemedColors } from '../../../../styles';
+import {
+  getInsetJssStyle,
+  getTextHiddenJssStyle,
+  getTransition,
+  pxToRemWithUnit,
+  getThemedColors,
+} from '../../../../styles';
 import { fontWeight, textSmall } from '@porsche-design-system/utilities-v2';
 import { OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 import { getThemedFormStateColors } from '../../../../styles/form-state-color-styles';
@@ -49,11 +55,16 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
   };
 };
 
-export const getFilterStyles = (isOpen: boolean, disabled: boolean, state: FormState, theme: Theme): Styles => {
+export const getFilterStyles = (
+  isOpen: boolean,
+  disabled: boolean,
+  state: FormState,
+  theme: Theme
+): Styles<'@global'> => {
   const { baseColor, backgroundColor, contrastHighColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
   const { formStateColor } = getThemedFormStateColors(theme, state);
 
-  const placeHolderStyles: JssStyle = {
+  const placeHolderJssStyle: JssStyle = {
     opacity: 1,
     color: disabled ? disabledColor : baseColor,
   };
@@ -79,9 +90,9 @@ export const getFilterStyles = (isOpen: boolean, disabled: boolean, state: FormS
         cursor: disabled ? 'not-allowed' : 'text',
         color: baseColor,
         background: backgroundColor,
-        '&::placeholder': placeHolderStyles,
-        '&::-webkit-input-placeholder': placeHolderStyles,
-        '&::-moz-placeholder': placeHolderStyles,
+        '&::placeholder': placeHolderJssStyle,
+        '&::-webkit-input-placeholder': placeHolderJssStyle,
+        '&::-moz-placeholder': placeHolderJssStyle,
         '&:focus': {
           opacity: disabled ? 0 : 1, // to display value while typing
           '&+span': {
@@ -94,7 +105,7 @@ export const getFilterStyles = (isOpen: boolean, disabled: boolean, state: FormS
         '&+span': {
           // for focus outline and click event on arrow
           position: 'absolute',
-          ...getInset(),
+          ...getInsetJssStyle(),
           outline: '1px solid transparent',
           outlineOffset: '2px',
           transition: getTransition('color'),
@@ -126,7 +137,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
 
   const highlightedSelectedColor = isDarkTheme ? themeLightBaseColor : themeLightBackgroundSurfaceColor; // TODO: strange that surfaceColor isn't used for dark theme
 
-  const baseDirectionPseudoStyle: JssStyle = {
+  const baseDirectionPseudoJssStyle: JssStyle = {
     content: '""',
     display: 'block',
     position: 'sticky',
@@ -168,7 +179,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
               borderTop: 'none',
               boxShadow: '0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1)',
               '&::before': {
-                ...baseDirectionPseudoStyle,
+                ...baseDirectionPseudoJssStyle,
                 top: 0,
               },
             }
@@ -177,7 +188,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
               borderBottom: 'none',
               boxShadow: '0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075)',
               '&::after': {
-                ...baseDirectionPseudoStyle,
+                ...baseDirectionPseudoJssStyle,
                 bottom: 0,
               },
             }),

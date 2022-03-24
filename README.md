@@ -259,8 +259,20 @@ When publishing a stable release then it's necessary an RC release is made immed
 
 ### Release
 
+#### Stable
+
+1. In `./packages/shared/src/constants/skeleton.ts` make sure to set `SKELETONS_ACTIVE` to `false`
+1. Move skeletons from the release version section to `### [Unreleased]` in `./packages/components/CHANGELOG.md`
 1. Create a commit with following message structure `Release Porsche Design System - Components (JS/Angular/React) v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Push the local commit to release branch, e.g. `git push origin release/components-v1.2.3`
+1. Create pull request and start review
+1. Merge into **master- or v-branch** branch (then CI/CD will trigger a release automatically)
+
+#### Stable with skeletons
+
+1. In `./packages/shared/src/constants/skeleton.ts` make sure to set `SKELETONS_ACTIVE` to `true`
+1. Create a commit with following message structure `Release Porsche Design System - Components (JS/Angular/React) v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER}-skeletons | {DEVELOPER_ABBREVEATION}`
+1. Push the local commit to release branch, e.g. `git push origin release/components-v1.2.3-skeletons`
 1. Create pull request and start review
 1. Merge into **master- or v-branch** branch (then CI/CD will trigger a release automatically)
 

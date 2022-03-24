@@ -1,0 +1,209 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`extendPseudoWithThemeJssStyle() should match style snapshot for parameters: {
+  theme: 'dark',
+  jssStyle: { display: 'block' },
+  pseudosToExtend: [ '&::after', '&::before', [length]: 2 ]
+}  1`] = `
+Object {
+  "&::after": Object {
+    "color": "#b0b1b2",
+  },
+  "&::before": Object {
+    "color": "#b0b1b2",
+  },
+  "display": "block",
+}
+`;
+
+exports[`extendPseudoWithThemeJssStyle() should match style snapshot for parameters: { jssStyle: { display: 'block' } }  1`] = `
+Object {
+  "&::after": Object {
+    "color": "#626669",
+  },
+  "display": "block",
+}
+`;
+
+exports[`extendPseudoWithThemeJssStyle() should match style snapshot for parameters: { pseudosToExtend: [ '&::after', '&::before', [length]: 2 ] }  1`] = `
+Object {
+  "&::after": Object {
+    "color": "#626669",
+  },
+  "&::before": Object {
+    "color": "#626669",
+  },
+}
+`;
+
+exports[`extendPseudoWithThemeJssStyle() should match style snapshot for parameters: { theme: 'dark' }  1`] = `
+Object {
+  "&::after": Object {
+    "color": "#b0b1b2",
+  },
+}
+`;
+
+exports[`extendPseudoWithThemeJssStyle() should match style snapshot for parameters: {}  1`] = `
+Object {
+  "&::after": Object {
+    "color": "#626669",
+  },
+}
+`;
+
+exports[`getBaseSkeletonJssStyle() should match style snapshot for hasLabel: false and elementHeight: 24 1`] = `
+Object {
+  "&::after": Object {
+    "display": "block",
+    "minHeight": "100%",
+    "top": "0rem",
+    "width": "100%",
+  },
+  "color": "transparent",
+  "minHeight": "1.5rem",
+  "position": "relative",
+}
+`;
+
+exports[`getBaseSkeletonJssStyle() should match style snapshot for hasLabel: true and elementHeight: 48 1`] = `
+Object {
+  "&::after": Object {
+    "minHeight": "calc(100% - 1.75rem)",
+    "top": "1.75rem",
+    "width": "100%",
+  },
+  "&::before": Object {
+    "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px)",
+    "height": "1.5rem",
+    "top": "0",
+    "width": "8rem",
+  },
+  "color": "transparent",
+  "display": "block",
+  "position": "relative",
+}
+`;
+
+exports[`getHiddenLabelJssStyle() should match style snapshot 1`] = `
+Object {
+  "&::after": Object {
+    "minHeight": "100%",
+    "top": 0,
+  },
+  "&::before": Object {
+    "content": "none",
+  },
+  "height": "3rem",
+}
+`;
+
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-button' 1`] = `
+Object {
+  "hideLabel": "hide-label",
+  "theme": "theme",
+  "variant": "variant",
+}
+`;
+
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-button-pure' 1`] = `
+Object {
+  "hideLabel": "hide-label",
+  "size": "size",
+  "stretch": "stretch",
+  "theme": "theme",
+}
+`;
+
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-checkbox-wrapper' 1`] = `
+Object {
+  "hideLabel": "hide-label",
+  "label": "label",
+}
+`;
+
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-fieldset-wrapper' 1`] = `
+Object {
+  "label": "label",
+  "labelSize": "label-size",
+}
+`;
+
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-link' 1`] = `
+Object {
+  "hideLabel": "hide-label",
+  "theme": "theme",
+  "variant": "variant",
+}
+`;
+
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-link-pure' 1`] = `
+Object {
+  "hideLabel": "hide-label",
+  "size": "size",
+  "stretch": "stretch",
+  "theme": "theme",
+}
+`;
+
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-link-social' 1`] = `
+Object {
+  "hideLabel": "hide-label",
+  "theme": "theme",
+}
+`;
+
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-radio-button-wrapper' 1`] = `
+Object {
+  "hideLabel": "hide-label",
+  "label": "label",
+}
+`;
+
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-select-wrapper' 1`] = `
+Object {
+  "description": "description",
+  "hideLabel": "hide-label",
+  "label": "label",
+  "theme": "theme",
+}
+`;
+
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-text-field-wrapper' 1`] = `
+Object {
+  "description": "description",
+  "hideLabel": "hide-label",
+  "label": "label",
+}
+`;
+
+exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-textarea-wrapper' 1`] = `
+Object {
+  "description": "description",
+  "hideLabel": "hide-label",
+  "label": "label",
+}
+`;
+
+exports[`getThemedPseudoJssStyle() should match style snapshot for hasLabel: false 1`] = `
+Object {
+  "&[theme=dark], &.pds-skeleton--theme-dark": Object {
+    "&::after": Object {
+      "color": "#b0b1b2",
+    },
+  },
+}
+`;
+
+exports[`getThemedPseudoJssStyle() should match style snapshot for hasLabel: true 1`] = `
+Object {
+  "&[theme=dark], &.pds-skeleton--theme-dark": Object {
+    "&::after": Object {
+      "color": "#b0b1b2",
+    },
+    "&::before": Object {
+      "color": "#b0b1b2",
+    },
+  },
+}
+`;

@@ -1,9 +1,9 @@
 import {
-  getCloseIconStyles,
+  getCloseIconJssStyle,
   getComponentCss,
-  getNotificationContentStyles,
-  getNotificationIconStyles,
-  getNotificationRootStyles,
+  getNotificationContentJssStyle,
+  getNotificationIconJssStyle,
+  getNotificationRootJssStyle,
   getSlottedCss,
 } from './inline-notification-styles';
 import type { InlineNotificationState } from './inline-notification-utils';
@@ -41,8 +41,8 @@ describe('getSlottedCss()', () => {
   });
 });
 
-describe('getNotificationRootStyles()', () => {
-  it.each<Parameters<typeof getNotificationRootStyles>>([
+describe('getNotificationRootJssStyles()', () => {
+  it.each<Parameters<typeof getNotificationRootJssStyle>>([
     ['neutral', 'light'],
     ['success', 'light'],
     ['error', 'light'],
@@ -52,27 +52,27 @@ describe('getNotificationRootStyles()', () => {
     ['error', 'dark'],
     ['warning', 'dark'],
   ])('should return correct JssStyle for state: %s and theme: %s', (...args) => {
-    expect(getNotificationRootStyles(...args)).toMatchSnapshot();
+    expect(getNotificationRootJssStyle(...args)).toMatchSnapshot();
   });
 });
 
-describe('getNotificationIconStyles()', () => {
+describe('getNotificationIconJssStyle()', () => {
   it.each<InlineNotificationState>(['neutral', 'success', 'error', 'warning'])(
     'should return correct JssStyle for state: %s ',
     (state) => {
-      expect(getNotificationIconStyles(state)).toMatchSnapshot();
+      expect(getNotificationIconJssStyle(state)).toMatchSnapshot();
     }
   );
 });
 
-describe('getNotificationContentStyles()', () => {
+describe('getNotificationContentJssStyle()', () => {
   it('should return correct JssStyle', () => {
-    expect(getNotificationContentStyles()).toMatchSnapshot();
+    expect(getNotificationContentJssStyle()).toMatchSnapshot();
   });
 });
 
-describe('getCloseIconStyles()', () => {
+describe('getCloseIconJssStyle()', () => {
   it('should return correct JssStyle', () => {
-    expect(getCloseIconStyles()).toMatchSnapshot();
+    expect(getCloseIconJssStyle()).toMatchSnapshot();
   });
 });
