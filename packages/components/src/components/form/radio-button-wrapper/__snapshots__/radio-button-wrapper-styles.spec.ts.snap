@@ -82,7 +82,7 @@ label {
 .message__icon {
   margin-right: 0.25rem;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   .label {
     position: static;
     width: auto;
@@ -96,7 +96,7 @@ label {
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .label {
     position: absolute;
     height: 1px;
@@ -111,7 +111,7 @@ label {
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   .label {
     position: static;
     width: auto;
@@ -125,7 +125,7 @@ label {
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   .label {
     position: absolute;
     height: 1px;
@@ -140,7 +140,7 @@ label {
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   .label {
     position: static;
     width: auto;

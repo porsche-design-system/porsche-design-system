@@ -92,6 +92,8 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
   const importPaths = Object.entries(htmlFileContentMap)
     // .filter(([component]) => component === 'icon') // for easy debugging
     .map(([fileName, fileContent]) => {
+      const isSkeleton = fileName.includes('skeleton');
+
       fileContent = fileContent.trim();
 
       // extract and replace style if there is any
@@ -104,8 +106,8 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       let [, script] = fileContent.match(scriptRegEx) || [];
       fileContent = fileContent.replace(scriptRegEx, '\n');
       script = script?.trim().replace(/([\w.#'()\[\]]+)(\.\w+\s=)/g, '($1 as any)$2'); // handle untyped prop assignments
+      script = isSkeleton ? script.replace('porscheDesignSystem.', '') : script;
 
-      const usesComponentsReady = script?.includes('componentsReady()');
       const usesQuerySelector = script?.includes('querySelector');
       const usesPrefixing = !!fileContent.match(/<[a-z-]+-p-[\w-]+/);
       const usesToast = script?.includes('p-toast');
@@ -114,6 +116,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       const isOverviewPage = fileName === 'overview';
       const isIconPage = fileName === 'icon';
       const usesOnInit = script && !isIconPage;
+      const usesSetAllReady = !isSkeleton && script?.includes('componentsReady()');
 
       const iconsRegEx = /(<div class="playground[\sa-z]+overview".*?>)\n(<\/div>)/;
 
@@ -129,14 +132,14 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
           'ChangeDetectionStrategy',
           'Component',
           usesOnInit && 'OnInit',
-          usesComponentsReady && 'ChangeDetectorRef',
+          usesSetAllReady && 'ChangeDetectorRef',
         ]
           .filter((x) => x)
           .sort(byAlphabet)
           .join(', ');
 
         const pdsImports = [
-          usesComponentsReady && 'componentsReady',
+          (usesSetAllReady || isSkeleton) && 'componentsReady',
           usesToast && 'ToastManager',
           isIconPage && 'IconName',
         ]
@@ -159,7 +162,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
         // implementation
         const classImplements = usesOnInit ? 'implements OnInit ' : '';
         let classImplementation = '';
-        if (usesComponentsReady) {
+        if (usesSetAllReady) {
           classImplementation = `public allReady: boolean = false;
 
 constructor(private cdr: ChangeDetectorRef) {}
@@ -179,7 +182,9 @@ ngOnInit() {
   this.toastManager.addMessage({ text: ${toastText} });
 }`;
         } else if (usesQuerySelector) {
-          classImplementation = `ngOnInit() {\n  ${script}\n}`;
+          classImplementation = `ngOnInit() {
+  ${script}
+}`;
         }
 
         classImplementation = classImplementation
@@ -234,8 +239,8 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
       } else if (framework === 'react') {
         // imports
         const reactImports = [
-          (usesComponentsReady || usesQuerySelector) && !isIconPage && 'useEffect',
-          usesComponentsReady && 'useState',
+          (usesSetAllReady || usesQuerySelector) && !isIconPage && 'useEffect',
+          usesSetAllReady && 'useState',
         ]
           .filter((x) => x)
           .sort(byAlphabet)
@@ -247,7 +252,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
           .map((tagName) => pascalCase(tagName));
         const pdsImports = [
           ...componentImports,
-          usesComponentsReady && 'componentsReady',
+          (usesSetAllReady || isSkeleton) && 'componentsReady',
           usesPrefixing && 'PorscheDesignSystemProvider',
           usesToast && 'useToastManager',
         ]
@@ -269,7 +274,8 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
         const styleJsx = style ? '\n      <style children={style} />\n' : '';
 
         let useStateOrEffect = '';
-        if (usesComponentsReady) {
+
+        if (usesSetAllReady) {
           useStateOrEffect = `const [allReady, setAllReady] = useState(false);
 useEffect(() => {
   componentsReady().then(() => {
@@ -281,7 +287,7 @@ useEffect(() => {
 useEffect(() => {
   addMessage({ text: ${toastText} });
 }, [addMessage]);`;
-        } else if (!isIconPage && usesQuerySelector) {
+        } else if (isSkeleton || (!isIconPage && usesQuerySelector)) {
           useStateOrEffect = `useEffect(() => {
   ${script}
 }, []);`;

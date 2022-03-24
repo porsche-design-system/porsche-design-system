@@ -13,7 +13,7 @@ exports[`getComponentCss() should return correct css for state: neutral and them
   border-left: 0.25rem solid #2193ff;
   box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2);
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto;
   }
@@ -30,7 +30,7 @@ exports[`getComponentCss() should return correct css for state: neutral and them
 .close {
   margin-left: 1rem;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .icon {
     display: inline-flex;
     margin-right: 0.5rem;
@@ -53,7 +53,7 @@ exports[`getComponentCss() should return correct css for state: neutral and them
   border-left: 0.25rem solid #0061bd;
   box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2);
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto;
   }
@@ -70,7 +70,7 @@ exports[`getComponentCss() should return correct css for state: neutral and them
 .close {
   margin-left: 1rem;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .icon {
     display: inline-flex;
     margin-right: 0.5rem;
@@ -93,7 +93,7 @@ exports[`getComponentCss() should return correct css for state: success and them
   border-left: 0.25rem solid #01ba1d;
   box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2);
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto;
   }
@@ -110,7 +110,7 @@ exports[`getComponentCss() should return correct css for state: success and them
 .close {
   margin-left: 1rem;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .icon {
     display: inline-flex;
     margin-right: 0.5rem;
@@ -133,7 +133,7 @@ exports[`getComponentCss() should return correct css for state: success and them
   border-left: 0.25rem solid #018a16;
   box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,0.05),0 0.9375rem 1.25rem 0 rgba(0,0,0,0.2);
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   :host {
     grid-template-columns: auto 1fr auto auto;
   }
@@ -150,7 +150,7 @@ exports[`getComponentCss() should return correct css for state: success and them
 .close {
   margin-left: 1rem;
 }
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .icon {
     display: inline-flex;
     margin-right: 0.5rem;

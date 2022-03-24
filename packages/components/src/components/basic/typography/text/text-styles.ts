@@ -3,8 +3,8 @@ import type { BreakpointCustomizable } from '../../../../utils';
 import type { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
 import { buildSlottedStyles, getCss, buildResponsiveStyles, paramCaseToCamelCase } from '../../../../utils';
 import { addImportantToEachRule, getBaseSlottedStyles } from '../../../../styles';
-import { textSmall, fontWeight, text } from '@porsche-design-system/utilities-v2';
-import { getEllipsisStyles, getSlottedTypographyStyles } from '../../../../styles/typography-styles';
+import { fontWeight, text, textSmall } from '@porsche-design-system/utilities-v2';
+import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../../../styles/typography-styles';
 import { getThemedTextColor } from '../../../../styles/text-icon-styles';
 
 export const getComponentCss = (
@@ -30,7 +30,7 @@ export const getComponentCss = (
       },
       '::slotted': {
         '&(p),&(address),&(blockquote),&(figcaption),&(cite),&(time),&(legend)': addImportantToEachRule(
-          getSlottedTypographyStyles()
+          getSlottedTypographyJssStyle()
         ),
       },
     },
@@ -44,7 +44,7 @@ export const getComponentCss = (
       listStyleType: 'none',
       whiteSpace: 'inherit',
       transition: 'font-size 1ms linear',
-      ...(ellipsis && getEllipsisStyles()),
+      ...(ellipsis && getEllipsisJssStyle()),
       ...buildResponsiveStyles(size, getSizeJssStyle),
     },
   });

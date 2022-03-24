@@ -6,10 +6,11 @@ import {
   addImportantToEachRule,
   addImportantToRule,
   getBaseSlottedStyles,
-  getInset,
-  getFocusStyles,
+  getFocusSlottedPseudoStyles,
+  getInsetJssStyle,
+  getFocusJssStyle,
   getFormTextHiddenJssStyle,
-  getHoverStyles,
+  getHoverJssStyle,
   getTextHiddenJssStyle,
   getTransition,
   pxToRem,
@@ -79,22 +80,22 @@ describe('addImportantToEachRule()', () => {
   });
 });
 
-describe('getHoverStyles()', () => {
+describe('getHoverJssStyles()', () => {
   it.each<Theme>(['light', 'dark'])('should return correct JssStyle for theme: %o', (theme) => {
-    expect(getHoverStyles({ theme })).toMatchSnapshot();
+    expect(getHoverJssStyle({ theme })).toMatchSnapshot();
   });
 });
 
-describe('getInset()', () => {
-  it.each<Parameters<typeof getInset>>([[undefined], ['auto'], [2]])(
+describe('getInsetJssStyle()', () => {
+  it.each<Parameters<typeof getInsetJssStyle>>([[undefined], ['auto'], [2]])(
     'should return correct JssStyle for parameter: %o',
     (value) => {
-      expect(getInset(value)).toMatchSnapshot();
+      expect(getInsetJssStyle(value)).toMatchSnapshot();
     }
   );
 });
 
-describe('getFocusStyles()', () => {
+describe('getFocusJssStyles()', () => {
   it.each<GetFocusStylesOptions>([
     {},
     { color: 'red' },
@@ -103,7 +104,7 @@ describe('getFocusStyles()', () => {
     { color: 'deeppink', offset: 2, pseudo: '::after' },
     { color: 'deeppink', offset: 3 },
   ])('should return correct JssStyle for params: %o', (params) => {
-    expect(getFocusStyles(params)).toMatchSnapshot();
+    expect(getFocusJssStyle(params)).toMatchSnapshot();
   });
 });
 

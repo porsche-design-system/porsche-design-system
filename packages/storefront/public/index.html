@@ -24,7 +24,8 @@
     <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css" />
     <% } %>
     <!-- prettier-ignore -->
-    <%= require('@porsche-design-system/components-js/partials').getInitialStyles() %>
+    <%= require('@porsche-design-system/components-js/partials').getInitialStyles({skeletonTagNames: ['p-button', 'p-button-pure', 'p-checkbox-wrapper', 'p-fieldset-wrapper', 'p-link', 'p-link-pure', 'p-link-social', 'p-radio-button-wrapper', 'p-select-wrapper', 'p-textarea-wrapper']}) %>
+
     <style>
       .loader {
         position: fixed;

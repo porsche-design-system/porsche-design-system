@@ -111,9 +111,12 @@ export const buildSlottedStyles = (host: HTMLElement, jssStyle: JssStyle): Style
   },
 });
 
-export type GetStylesFunction = (value?: any) => JssStyle;
+export type GetJssStyleFunction = (value?: any) => JssStyle;
 
-export const buildResponsiveStyles = <T>(rawValue: BreakpointCustomizable<T>, getStyles: GetStylesFunction): Styles => {
+export const buildResponsiveStyles = <T>(
+  rawValue: BreakpointCustomizable<T>,
+  getJssStyle: GetJssStyleFunction
+): Styles => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const value = parseJSON(rawValue as any);
 
@@ -125,11 +128,12 @@ export const buildResponsiveStyles = <T>(rawValue: BreakpointCustomizable<T>, ge
         .reduce(
           (result, breakpointValue: Breakpoint) => ({
             ...result,
-            [mediaQueryMin(breakpointValue)]: getStyles(value[breakpointValue]) as Styles,
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+            [mediaQueryMin(breakpointValue as any)]: getJssStyle(value[breakpointValue]) as Styles,
           }),
-          getStyles(value.base) as Styles
+          getJssStyle(value.base) as Styles
         )
-    : (getStyles(value) as Styles);
+    : (getJssStyle(value) as Styles);
 };
 
 export const isObject = <T extends Record<string, any>>(obj: T): boolean =>
