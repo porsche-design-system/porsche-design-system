@@ -1,12 +1,9 @@
-import type { Styles } from 'jss';
 import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
 import { fontWeight } from '@porsche-design-system/utilities-v2';
 import { CDN_BASE_PATH_FONTS, CDN_BASE_URL, CDN_BASE_URL_CN } from '../../../../../cdn.config';
-import jss from 'jss';
-import preset from 'jss-preset-default';
 
-// @ts-ignore
-jss.setup(preset());
+import { getMinifiedCss } from '@porsche-design-system/shared';
+import type { Styles } from 'jss';
 
 export type GetMinifiedPorscheNextFontFaceCssOptions = {
   cdn: 'com' | 'cn' | 'localhost';
@@ -41,14 +38,5 @@ export const getMinifiedPorscheNextFontFaceCss = (opts: GetMinifiedPorscheNextFo
       };
     }),
   };
-
-  return jss
-    .createStyleSheet(style)
-    .toString()
-    .replace(/;(?=\s+})/g, '') // remove semicolon before closing curly brace
-    .replace(/\s(?={)/g, '') // remove space before opening curly brace
-    .replace(/,\s/g, ',') // remove unneeded white space after comma separation
-    .replace(/\s\s+/g, '') // remove white space
-    .replace(/:\s(?=.*)/g, ':') // remove white space after colon
-    .replace(/\n+/g, ''); // remove new line
+  return getMinifiedCss(style);
 };

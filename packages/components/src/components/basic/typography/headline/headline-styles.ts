@@ -3,7 +3,7 @@ import type { HeadlineVariant, TextAlign, TextColor, Theme, VariantType } from '
 import { buildSlottedStyles, getCss, mergeDeep } from '../../../../utils';
 import { addImportantToEachRule, getBaseSlottedStyles, getThemedColors } from '../../../../styles';
 import { titleLarge, headline } from '@porsche-design-system/utilities-v2';
-import { getEllipsisStyles, getSlottedTypographyStyles } from '../../../../styles/typography-styles';
+import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../../../styles/typography-styles';
 import { isVariantType } from './headline-utils';
 
 const getVariantStyle = (variant: HeadlineVariant): JssStyle => {
@@ -23,7 +23,7 @@ export const getComponentCss = (
         display: 'block',
       },
       '::slotted': {
-        '&(h1),&(h2),&(h3),&(h4),&(h5),&(h6)': addImportantToEachRule(getSlottedTypographyStyles()),
+        '&(h1),&(h2),&(h3),&(h4),&(h5),&(h6)': addImportantToEachRule(getSlottedTypographyJssStyle()),
       },
     },
     root: {
@@ -33,7 +33,7 @@ export const getComponentCss = (
       color: color !== 'default' ? 'inherit' : getThemedColors(theme).baseColor,
       whiteSpace: 'inherit',
       ...(isVariantType(variant) ? getVariantStyle(variant) : variant === 'inherit' && { fontSize: 'inherit' }),
-      ...(ellipsis && getEllipsisStyles()),
+      ...(ellipsis && getEllipsisJssStyle()),
     },
   });
 };

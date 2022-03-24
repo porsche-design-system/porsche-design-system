@@ -35,7 +35,7 @@ describe('grid', () => {
       wrap = 'wrap',
       gutter = { base: 16, s: 24, m: 36 },
     } = opts ?? {};
-    const styles = `<style type="text/css">
+    const styles = `<style>
       p-grid-item > p {
       margin: 0;
       padding: 4px 0;

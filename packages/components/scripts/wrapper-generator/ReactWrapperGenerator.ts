@@ -1,6 +1,6 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { camelCase, paramCase, pascalCase } from 'change-case';
-import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
+import { camelCase, pascalCase } from 'change-case';
+import { AbstractWrapperGenerator, SkeletonProps } from './AbstractWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
 
 export class ReactWrapperGenerator extends AbstractWrapperGenerator {
@@ -10,9 +10,13 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     return `${component.replace('p-', '')}.wrapper${withOutExtension ? '' : '.tsx'}`;
   }
 
-  public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
+  public generateImports(
+    component: TagName,
+    extendedProps: ExtendedProp[],
+    nonPrimitiveTypes: string[],
+    hasSkeleton?: boolean
+  ): string {
     const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
-    const canBeObject = extendedProps.some(({ canBeObject }) => canBeObject);
 
     const reactImports = [
       'ForwardedRef',
@@ -28,6 +32,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       ...(hasEventProps ? ['useEventCallback'] : []),
       'useMergedClass',
       'usePrefix',
+      ...(hasSkeleton ? ['useSkeleton'] : []),
     ];
     const importsFromHooks = `import { ${hooksImports.join(', ')} } from '../../hooks';`;
 
@@ -41,10 +46,6 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     return [importsFromReact, importsFromHooks, importsFromUtils, importsFromTypes].filter((x) => x).join('\n');
   }
 
-  private generatePropsName(component: TagName): string {
-    return `${pascalCase(component)}Props`;
-  }
-
   public generateProps(component: TagName, rawComponentInterface: string): string {
     const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
     return `export type ${this.generatePropsName(
@@ -52,11 +53,12 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     )}${genericType} = HTMLAttributes<{}> & ${rawComponentInterface};`;
   }
 
-  public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
+  public generateComponent(component: TagName, extendedProps: ExtendedProp[], skeletonProps: SkeletonProps): string {
     const hasGeneric = this.inputParser.hasGeneric(component);
     const propsToDestructure = extendedProps;
     const propsToEventListener = extendedProps.filter(({ isEvent }) => isEvent);
     const propsToSync = extendedProps.filter(({ isEvent }) => !isEvent);
+    const hasSkeleton = !!skeletonProps.length;
 
     const wrapperPropsArr: string[] = [
       ...propsToDestructure.map(({ key, defaultValue, isEvent }) =>
@@ -78,6 +80,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
         ({ key }) => `useEventCallback(elementRef, '${camelCase(key.substr(2))}', ${key} as any);`
       ),
       `const Tag = usePrefix('${component}');`,
+      ...(hasSkeleton ? ['const usesSkeleton = useSkeleton();'] : []),
     ];
     const componentHooks = componentHooksArr.join('\n    ');
 
@@ -100,9 +103,15 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
           ];
     const componentEffects = propsToSync.length ? componentEffectsArr.join('\n    ') : '';
 
+    const mergedSkeletonClasses: string = hasSkeleton
+      ? `\`\${usesSkeleton ? \`\${className ? className + ' ' : ''}\${[${this.getSkeletonClassNames(skeletonProps).join(
+          ','
+        )}].filter((x) => x).join(' ')}\` : \`\${className ? className : ''}\`}\``
+      : 'className';
+
     const componentPropsArr: string[] = [
       '...rest',
-      'class: useMergedClass(elementRef, className)',
+      `class: useMergedClass(elementRef, ${mergedSkeletonClasses})`,
       'ref: syncRef(elementRef, ref)',
     ];
 
@@ -122,5 +131,9 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     return <Tag {...props} />;
   }
 );`;
+  }
+
+  private generatePropsName(component: TagName): string {
+    return `${pascalCase(component)}Props`;
   }
 }

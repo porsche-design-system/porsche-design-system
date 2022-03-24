@@ -5,13 +5,18 @@ import { buildResponsiveStyles, getCss, isThemeDark } from '../../../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  getFocusStyles,
+  getFocusJssStyle,
   getTransition,
   pxToRemWithUnit,
   getThemedColors,
 } from '../../../styles';
 import { colorExternal } from '@porsche-design-system/utilities-v2';
-import { getIconStyles, getLabelStyles, getRootStyles, getSlottedLinkStyles } from '../../../styles/link-button-styles';
+import {
+  getIconJssStyle,
+  getLabelJssStyle,
+  getRootJssStyle,
+  getSlottedLinkJssStyle,
+} from '../../../styles/link-button-styles';
 
 const { contrastHighColor: themeLightContrastHighColor, baseColor: themeLightBaseColor } = getThemedColors('light');
 const { baseColor: themeDarkBaseColor } = getThemedColors('dark');
@@ -57,7 +62,7 @@ export const getComponentCss = (
             lineHeight: 'inherit',
             outline: 'transparent solid 1px',
             outlineOffset: '3px',
-            ...buildResponsiveStyles(hideLabel, getSlottedLinkStyles),
+            ...buildResponsiveStyles(hideLabel, getSlottedLinkJssStyle),
           },
           '&(a::-moz-focus-inner)': {
             border: 0,
@@ -100,8 +105,8 @@ export const getComponentCss = (
         },
       },
       ...(hasHref && {
-        ...buildResponsiveStyles(hideLabel, getRootStyles),
-        ...getFocusStyles(),
+        ...buildResponsiveStyles(hideLabel, getRootJssStyle),
+        ...getFocusJssStyle(),
       }),
     },
     icon: {
@@ -110,13 +115,13 @@ export const getComponentCss = (
       height: pxToRemWithUnit(24),
       color: textColor,
       pointerEvents: 'none',
-      ...buildResponsiveStyles(hideLabel, getIconStyles),
+      ...buildResponsiveStyles(hideLabel, getIconJssStyle),
     },
     label: {
       display: 'block',
       boxSizing: 'border-box',
       color: textColor,
-      ...buildResponsiveStyles(hideLabel, getLabelStyles),
+      ...buildResponsiveStyles(hideLabel, getLabelJssStyle),
     },
   });
 };
