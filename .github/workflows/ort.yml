@@ -63,7 +63,7 @@ jobs:
           trap cleanup_npm_credentials EXIT
           setup_npm_credentials
 
-          docker run -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort-porsche:latest analyze -i /project/ -o /project/ort/ --package-curations-file /curations/curations.yml --package-managers yarn
+          docker run -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort-porsche:latest analyze -i /project/ -o /project/ort/ --package-managers yarn
           docker run -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort-porsche:latest report -i /project/ort/analyzer-result.yml -o /project/ort/ -f StaticHtml
         shell: bash
         env:
