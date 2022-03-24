@@ -123,15 +123,12 @@ export const TextFieldWrapperPage = (): JSX.Element => {
         <PTextFieldWrapper label="Type password">
           <input type="password" defaultValue="some password" />
         </PTextFieldWrapper>
-        <br />
         <PTextFieldWrapper label="Type password disabled">
           <input type="password" defaultValue="some password" disabled />
         </PTextFieldWrapper>
-        <br />
         <PTextFieldWrapper label="Type password readonly">
           <input type="password" defaultValue="some password" readOnly />
         </PTextFieldWrapper>
-        <br />
         <PTextFieldWrapper label="Type password long text" style={{ width: '240px' }}>
           <input
             type="password"
@@ -144,11 +141,9 @@ export const TextFieldWrapperPage = (): JSX.Element => {
         <PTextFieldWrapper label="Type search">
           <input type="search" />
         </PTextFieldWrapper>
-        <br />
         <PTextFieldWrapper label="Type search disabled">
           <input type="search" disabled />
         </PTextFieldWrapper>
-        <br />
         <PTextFieldWrapper label="Type search readonly">
           <input type="search" readOnly />
         </PTextFieldWrapper>

@@ -21,21 +21,21 @@ export const OverviewPage = (): JSX.Element => {
       padding: 4px 2vw;
       text-align: center;
       color: white;
-      background-color: lightskyblue;
+      background: lightskyblue;
     }
 
     p-flex-item:nth-child(1n) > p,
     my-prefix-p-flex-item:nth-child(1n) > p,
     p-grid-item:nth-child(1n) > p,
     my-prefix-p-grid-item:nth-child(1n) > p {
-      background-color: skyblue;
+      background: skyblue;
     }
 
     p-flex-item:nth-child(2n) > p,
     my-prefix-p-flex-item:nth-child(2n) > p,
     p-grid-item:nth-child(2n) > p,
     my-prefix-p-grid-item:nth-child(2n) > p {
-      background-color: deepskyblue;
+      background: deepskyblue;
     }
 
     p-banner,
@@ -48,7 +48,7 @@ export const OverviewPage = (): JSX.Element => {
     <>
       <style children={style} />
 
-      <div style={{ display: 'flex' }}>
+      <div className="root" style={{ display: 'flex' }}>
         <div style={{ flex: 1 }}>
           <div className="playground light" title="should render default headline">
             <PHeadline>Default Components</PHeadline>

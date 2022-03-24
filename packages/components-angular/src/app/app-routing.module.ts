@@ -54,6 +54,11 @@ export const routes: ExtendedRoute[] = [
     component: fromPages.FormWrapperBindingComponent,
   },
   {
+    name: 'Utilities',
+    path: 'utilities',
+    component: fromPages.UtilitiesComponent,
+  },
+  {
     name: '---',
     path: '---',
     isDisabled: true,

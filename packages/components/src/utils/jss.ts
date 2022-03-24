@@ -7,9 +7,10 @@ import jssPluginCamelCase from 'jss-plugin-camel-case';
 import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
+import { mediaQueryMin } from '@porsche-design-system/utilities-v2';
 import { parseJSON } from './breakpoint-customizable';
 import { getShadowRootHTMLElement } from './dom';
-import { addImportantToEachRule, mediaQuery } from '../styles';
+import { addImportantToEachRule } from '../styles';
 import { getTagName, getTagNameWithoutPrefix } from './tag-name';
 
 /* eslint-disable @typescript-eslint/consistent-type-definitions */
@@ -124,7 +125,7 @@ export const buildResponsiveStyles = <T>(rawValue: BreakpointCustomizable<T>, ge
         .reduce(
           (result, breakpointValue: Breakpoint) => ({
             ...result,
-            [mediaQuery(breakpointValue)]: getStyles(value[breakpointValue]) as Styles,
+            [mediaQueryMin(breakpointValue)]: getStyles(value[breakpointValue]) as Styles,
           }),
           getStyles(value.base) as Styles
         )

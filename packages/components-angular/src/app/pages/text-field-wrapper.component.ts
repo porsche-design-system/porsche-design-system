@@ -123,15 +123,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text-field-wrapper [label]="'Type password'">
         <input [type]="'password'" [value]="'some password'" />
       </p-text-field-wrapper>
-      <br />
       <p-text-field-wrapper [label]="'Type password disabled'">
         <input [type]="'password'" [value]="'some password'" disabled />
       </p-text-field-wrapper>
-      <br />
       <p-text-field-wrapper [label]="'Type password readonly'">
         <input [type]="'password'" [value]="'some password'" readonly />
       </p-text-field-wrapper>
-      <br />
       <p-text-field-wrapper [label]="'Type password long text'" style="width: 240px">
         <input
           [type]="'password'"
@@ -144,11 +141,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text-field-wrapper [label]="'Type search'">
         <input [type]="'search'" />
       </p-text-field-wrapper>
-      <br />
       <p-text-field-wrapper [label]="'Type search disabled'">
         <input [type]="'search'" disabled />
       </p-text-field-wrapper>
-      <br />
       <p-text-field-wrapper [label]="'Type search readonly'">
         <input [type]="'search'" readonly />
       </p-text-field-wrapper>

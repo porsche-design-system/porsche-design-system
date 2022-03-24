@@ -46,6 +46,7 @@ export const getComponentCss = (
         boxSizing: 'border-box',
         textDecoration: 'none',
         ...textSmall,
+        whiteSpace: 'nowrap',
         cursor: 'pointer',
         color: baseColor,
         ...getFocusStyles({ color: focusColor, offset: 1 }),

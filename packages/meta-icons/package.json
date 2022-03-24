@@ -35,10 +35,10 @@
   },
   "scripts": {
     "build": "yarn clean:build && yarn build:meta-icons && yarn build:lib",
-    "build:meta-icons": "ts-node --project './tsconfig.json' './scripts/build.ts'",
+    "build:meta-icons": "ts-node --project tsconfig.json scripts/build.ts",
     "build:lib": "yarn build:lib:module && yarn build:lib:umd",
-    "build:lib:module": "tsc --build ./tsconfig.lib.module.json",
-    "build:lib:umd": "tsc --build ./tsconfig.lib.umd.json",
+    "build:lib:module": "tsc --build tsconfig.lib.module.json",
+    "build:lib:umd": "tsc --build tsconfig.lib.umd.json",
     "clean": "yarn clean:node_modules && clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist && rm -rf ./index.ts"

@@ -10,7 +10,6 @@ export const FlexPage = (): JSX.Element => {
       padding: 4px 2vw;
       box-sizing: border-box;
       text-align: center;
-      color: white;
       background-color: lightskyblue;
     }
 
@@ -31,7 +30,7 @@ export const FlexPage = (): JSX.Element => {
     }
 
     p-flex-item.align-self p {
-      background-color: deeppink;
+      background-color: darkviolet;
     }
 
     p-flex.wrap p {

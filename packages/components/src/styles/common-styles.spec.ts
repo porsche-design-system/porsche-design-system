@@ -1,19 +1,17 @@
 import type { PropertiesHyphen } from 'csstype';
-import type { FormState, Theme } from '../types';
-import type { GetFocusSlottedPseudoStylesOptions, GetFocusStylesOptions } from './common-styles';
+import type { Theme } from '../types';
+import type { GetFocusStylesOptions } from './common-styles';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   addImportantToRule,
   getBaseSlottedStyles,
-  getFocusSlottedPseudoStyles,
   getInset,
   getFocusStyles,
   getFormTextHiddenJssStyle,
   getHoverStyles,
   getTextHiddenJssStyle,
   getTransition,
-  mediaQuery,
   pxToRem,
   pxToRemWithUnit,
 } from './common-styles';
@@ -106,21 +104,6 @@ describe('getFocusStyles()', () => {
     { color: 'deeppink', offset: 3 },
   ])('should return correct JssStyle for params: %o', (params) => {
     expect(getFocusStyles(params)).toMatchSnapshot();
-  });
-});
-
-describe('getFocusSlottedPseudoStyles()', () => {
-  it.each<GetFocusSlottedPseudoStylesOptions>([{}, { color: 'red' }, { offset: 1 }])(
-    'should return correct JssStyle for params: %o',
-    (params) => {
-      expect(getFocusSlottedPseudoStyles()).toMatchSnapshot();
-    }
-  );
-});
-
-describe('mediaQuery()', () => {
-  it('should return correct media query', () => {
-    expect(mediaQuery('m')).toBe('@media (min-width: 1000px)');
   });
 });
 
