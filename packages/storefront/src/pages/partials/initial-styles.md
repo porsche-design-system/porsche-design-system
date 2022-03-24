@@ -46,9 +46,10 @@ The following showcases the most common ways.
 
 <PartialDocs name="getInitialStyles" :params="params" location="head"></PartialDocs>
 
-<script lang="ts">import Vue from 'vue';
+<script lang="ts">
+import Vue from 'vue';
 import Component from 'vue-class-component';
-import {SKELETON_TAG_NAMES} from "@porsche-design-system/shared"; 
+import { SKELETON_TAG_NAMES } from "@porsche-design-system/shared"; 
 
 @Component
 export default class Code extends Vue {

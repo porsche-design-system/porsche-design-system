@@ -2,7 +2,7 @@ import { getInitialStyles } from '../../../src';
 import { render } from '@testing-library/react';
 import { INTERNAL_TAG_NAMES, SKELETON_TAG_NAMES, SkeletonTagName, TAG_NAMES } from '@porsche-design-system/shared';
 
-import { describeif, itif } from '@porsche-design-system/shared/testing';
+import { describeSkipSkeletons, itSkipSkeletons } from '@porsche-design-system/shared/testing';
 
 const filteredTagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x));
 const tagNames = filteredTagNames.join(',');
@@ -15,7 +15,7 @@ describe('format: html', () => {
     expect(result).toMatch(regex);
   });
 
-  itif('should return core and skeleton styles', () => {
+  itSkipSkeletons('should return core and skeleton styles', () => {
     // @ts-ignore
     const result = getInitialStyles({ skeletonTagNames: SKELETON_TAG_NAMES as SkeletonTagName[] });
     expect(result).toMatchSnapshot();
@@ -27,7 +27,7 @@ describe('format: html', () => {
     expect(result).toMatch(regex);
   });
 
-  itif('should add custom prefixes to skeleton component names', () => {
+  itSkipSkeletons('should add custom prefixes to skeleton component names', () => {
     const result = getInitialStyles({
       prefix: 'custom-prefix',
       // @ts-ignore
@@ -44,7 +44,7 @@ describe('format: jsx', () => {
     expect(container.innerHTML).toMatch(regex);
   });
 
-  itif('should return core and skeleton styles', () => {
+  itSkipSkeletons('should return core and skeleton styles', () => {
     // @ts-ignore
     const result = getInitialStyles({
       format: 'jsx',
@@ -99,7 +99,7 @@ xdescribe('skeletonTagNames subset', () => {
   });
 });
 
-describeif('validation', () => {
+describeSkipSkeletons('validation', () => {
   it('should throw error on invalid skeleton tag names parameter', () => {
     let error;
     try {

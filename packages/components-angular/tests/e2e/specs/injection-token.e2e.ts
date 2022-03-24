@@ -1,11 +1,11 @@
 import { Page } from 'puppeteer';
 import { goto, selectNode } from '../helpers';
 import { PDS_SKELETON_CLASS_PREFIX } from '@porsche-design-system/shared';
-import { describeif } from '@porsche-design-system/shared/testing';
+import { describeSkipSkeletons } from '@porsche-design-system/shared/testing';
 
 import { getProperty } from '@porsche-design-system/js/tests/e2e/helpers';
 
-describeif('injection-token', () => {
+describeSkipSkeletons('injection-token', () => {
   let page: Page;
 
   beforeEach(async () => {
