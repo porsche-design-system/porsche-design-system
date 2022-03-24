@@ -8,7 +8,7 @@ it('should contain correct values for cdnUrlMap', () => {
   expect(cdnUrlMap).toMatchSnapshot();
 });
 
-describe('getContentWrapperJssStyle()', () => {
+describe('getMinifiedPorscheNextFontFaceCss()', () => {
   it.each<Parameters<typeof getMinifiedPorscheNextFontFaceCss>>([
     [{ cdn: 'com' }],
     [{ cdn: 'cn' }],

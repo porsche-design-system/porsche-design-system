@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return correct css 1`] = `
+"p-select-wrapper:not(.hydrated), p-text-field-wrapper:not(.hydrated) {
+  position: relative;
+  color: transparent;
+  display: block;
+  min-width: 12rem;
+  height: 4.75rem;
+}
+p-select-wrapper:not(.hydrated)::before, p-text-field-wrapper:not(.hydrated)::before {
+  height: 1.5rem;
+  width: 8rem;
+  top: 0;
+  background: linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px);
+  color: #626669;
+}
+p-select-wrapper:not(.hydrated)::after, p-text-field-wrapper:not(.hydrated)::after {
+  top: 1.75rem;
+  width: 100%;
+  min-height: calc(100% - 1.75rem);
+  color: #626669;
+}
+p-select-wrapper:not(.hydrated)[hide-label=true], p-select-wrapper:not(.hydrated).pds-skeleton--hide-label, p-select-wrapper:not(.hydrated):not([description]):not([label]):not(.pds-skeleton--description):not(.pds-skeleton--label), p-text-field-wrapper:not(.hydrated)[hide-label=true], p-text-field-wrapper:not(.hydrated).pds-skeleton--hide-label, p-text-field-wrapper:not(.hydrated):not([description]):not([label]):not(.pds-skeleton--description):not(.pds-skeleton--label) {
+  height: 3rem;
+}
+p-select-wrapper:not(.hydrated)[description]:not([label]):not(.pds-skeleton--label), p-select-wrapper:not(.hydrated).pds-skeleton--description:not(.pds-skeleton--label), p-text-field-wrapper:not(.hydrated)[description]:not([label]):not(.pds-skeleton--label), p-text-field-wrapper:not(.hydrated).pds-skeleton--description:not(.pds-skeleton--label) {
+  height: 4.5rem;
+}
+p-select-wrapper:not(.hydrated)[description][label]:not([hide-label=true]), p-select-wrapper:not(.hydrated).pds-skeleton--description.pds-skeleton--label:not(.pds-skeleton--hide-label), p-text-field-wrapper:not(.hydrated)[description][label]:not([hide-label=true]), p-text-field-wrapper:not(.hydrated).pds-skeleton--description.pds-skeleton--label:not(.pds-skeleton--hide-label) {
+  height: 6.25rem;
+}
+p-select-wrapper:not(.hydrated)[theme=dark]::before, p-select-wrapper:not(.hydrated).pds-skeleton--theme-dark::before, p-text-field-wrapper:not(.hydrated)[theme=dark]::before, p-text-field-wrapper:not(.hydrated).pds-skeleton--theme-dark::before {
+  color: #b0b1b2;
+}
+p-select-wrapper:not(.hydrated)[theme=dark]::after, p-select-wrapper:not(.hydrated).pds-skeleton--theme-dark::after, p-text-field-wrapper:not(.hydrated)[theme=dark]::after, p-text-field-wrapper:not(.hydrated).pds-skeleton--theme-dark::after {
+  color: #b0b1b2;
+}
+p-select-wrapper:not(.hydrated)[description][label]:not([hide-label=true])::before, p-select-wrapper:not(.hydrated).pds-skeleton--description.pds-skeleton--label:not(.pds-skeleton--hide-label)::before, p-text-field-wrapper:not(.hydrated)[description][label]:not([hide-label=true])::before, p-text-field-wrapper:not(.hydrated).pds-skeleton--description.pds-skeleton--label:not(.pds-skeleton--hide-label)::before {
+  height: 3.25rem;
+  background: linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 28px, currentColor 28px, currentColor 40px, transparent 40px, transparent 52px);
+}
+p-select-wrapper:not(.hydrated)[description][label]:not([hide-label=true])::after, p-select-wrapper:not(.hydrated).pds-skeleton--description.pds-skeleton--label:not(.pds-skeleton--hide-label)::after, p-text-field-wrapper:not(.hydrated)[description][label]:not([hide-label=true])::after, p-text-field-wrapper:not(.hydrated).pds-skeleton--description.pds-skeleton--label:not(.pds-skeleton--hide-label)::after {
+  top: 3.25rem;
+  min-height: calc(100% - 3.25rem);
+}
+p-select-wrapper:not(.hydrated)[description]:not([label]):not(.pds-skeleton--label)::before, p-select-wrapper:not(.hydrated).pds-skeleton--description:not(.pds-skeleton--label)::before, p-text-field-wrapper:not(.hydrated)[description]:not([label]):not(.pds-skeleton--label)::before, p-text-field-wrapper:not(.hydrated).pds-skeleton--description:not(.pds-skeleton--label)::before {
+  height: 1.5rem;
+  background: linear-gradient(transparent, transparent 6px, currentColor 6px, currentColor 18px, transparent 18px, transparent 28px, currentColor 28px, currentColor 60px, transparent 60px, transparent 72px);
+}
+p-select-wrapper:not(.hydrated)[description]:not([label]):not(.pds-skeleton--label)::after, p-select-wrapper:not(.hydrated).pds-skeleton--description:not(.pds-skeleton--label)::after, p-text-field-wrapper:not(.hydrated)[description]:not([label]):not(.pds-skeleton--label)::after, p-text-field-wrapper:not(.hydrated).pds-skeleton--description:not(.pds-skeleton--label)::after {
+  top: 1.5rem;
+  min-height: calc(100% - 1.5rem);
+}
+p-select-wrapper:not(.hydrated)[hide-label=true]::before, p-select-wrapper:not(.hydrated).pds-skeleton--hide-label::before, p-select-wrapper:not(.hydrated):not([description]):not([label]):not(.pds-skeleton--description):not(.pds-skeleton--label)::before, p-text-field-wrapper:not(.hydrated)[hide-label=true]::before, p-text-field-wrapper:not(.hydrated).pds-skeleton--hide-label::before, p-text-field-wrapper:not(.hydrated):not([description]):not([label]):not(.pds-skeleton--description):not(.pds-skeleton--label)::before {
+  content: none;
+}
+p-select-wrapper:not(.hydrated)[hide-label=true]::after, p-select-wrapper:not(.hydrated).pds-skeleton--hide-label::after, p-select-wrapper:not(.hydrated):not([description]):not([label]):not(.pds-skeleton--description):not(.pds-skeleton--label)::after, p-text-field-wrapper:not(.hydrated)[hide-label=true]::after, p-text-field-wrapper:not(.hydrated).pds-skeleton--hide-label::after, p-text-field-wrapper:not(.hydrated):not([description]):not([label]):not(.pds-skeleton--description):not(.pds-skeleton--label)::after {
+  top: 0;
+  min-height: 100%;
+}"
+`;

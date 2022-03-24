@@ -1,13 +1,13 @@
-import { getEllipsisStyles, getSlottedTypographyStyles } from './typography-styles';
+import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from './typography-styles';
 
-describe('getSlottedTypographyStyles()', () => {
+describe('getSlottedTypographyStyle()', () => {
   it('should return correct JssStyle', () => {
-    expect(getSlottedTypographyStyles()).toMatchSnapshot();
+    expect(getSlottedTypographyJssStyle()).toMatchSnapshot();
   });
 });
 
-describe('getEllipsisStyles()', () => {
+describe('getEllipsisJssStyle()', () => {
   it('should return correct JssStyle', () => {
-    expect(getEllipsisStyles()).toMatchSnapshot();
+    expect(getEllipsisJssStyle()).toMatchSnapshot();
   });
 });

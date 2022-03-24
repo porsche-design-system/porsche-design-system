@@ -2167,7 +2167,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   ::slotted(a) {
     position: static !important;
     top: auto !important;
@@ -2181,7 +2181,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   ::slotted(a) {
     position: absolute !important;
     top: 0 !important;
@@ -2195,7 +2195,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   ::slotted(a) {
     position: static !important;
     top: auto !important;
@@ -2209,7 +2209,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   ::slotted(a) {
     position: absolute !important;
     top: 0 !important;
@@ -2223,7 +2223,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   ::slotted(a) {
     position: static !important;
     top: auto !important;
@@ -2282,7 +2282,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   overflow: hidden;
   text-indent: -1px;
 }
-@media (min-width: 480px) {
+@media(min-width:480px) {
   .icon {
     left: 0.6875rem;
     top: 0.6875rem;
@@ -2297,7 +2297,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   }
 }
 
-@media (min-width: 760px) {
+@media(min-width:760px) {
   .icon {
     left: 50%;
     top: 50%;
@@ -2312,7 +2312,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   }
 }
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
   .icon {
     left: 0.6875rem;
     top: 0.6875rem;
@@ -2327,7 +2327,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   }
 }
 
-@media (min-width: 1300px) {
+@media(min-width:1300px) {
   .icon {
     left: 50%;
     top: 50%;
@@ -2342,7 +2342,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   }
 }
 
-@media (min-width: 1760px) {
+@media(min-width:1760px) {
   .icon {
     left: 0.6875rem;
     top: 0.6875rem;

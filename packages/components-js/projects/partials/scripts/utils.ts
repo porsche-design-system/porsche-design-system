@@ -13,5 +13,8 @@ export const minifyHTML = (str: string): string => {
   });
 };
 
+export const joinArrayElementsToString = (array: string[], glue = ', '): string =>
+  array.map((x) => `'${x}'`).join(glue);
+
 export const withoutTagsOption = `/** @deprecated will be removed in v3, use \`format: 'jsx'\` instead */
   withoutTags?: boolean;`;
