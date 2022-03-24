@@ -3,7 +3,7 @@ import type { ThemeExtendedElectric } from '../../../types';
 import type { AccordionSize } from './accordion-utils';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import { getFocusStyles, getTransition, pxToRemWithUnit, transitionDuration, getThemedColors } from '../../../styles';
-import { fontFamily, fontWeight, fontSize, spacing } from '@porsche-design-system/utilities-v2';
+import { fontWeight, fontSize, spacing, textSmall } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
   size: BreakpointCustomizable<AccordionSize>,
@@ -37,12 +37,8 @@ export const getComponentCss = (
         overflow: 'hidden', // fixes rotating icon to increase bounding box of focus outline in firefox
         textAlign: 'left',
         color: baseColor,
-        overflowWrap: 'break-word',
-        wordWrap: 'break-word',
-        hyphens: 'auto',
-        fontFamily,
+        ...textSmall,
         fontWeight: fontWeight.semibold,
-        ...fontSize.small,
         ...(compact
           ? { padding: `${pxToRemWithUnit(4)} 0` }
           : buildResponsiveStyles(size, (s: AccordionSize) => ({

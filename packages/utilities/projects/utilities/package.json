@@ -5,27 +5,28 @@
   "scope": "@porsche-design-system",
   "main": "dist/jss/index.js",
   "module": "dist/jss/esm/index.js",
-  "types": "dist/jss/types/index.d.ts",
+  "types": "dist/jss/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "build": "yarn clean:build && yarn build:typography && yarn build:bundle",
-    "build:typography": "ts-node 'scripts/buildTypography.ts'",
+    "build": "yarn clean:build && yarn build:bundle",
     "build:bundle": "rollup -c rollup.config.js",
     "test": "yarn test:unit",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:build": "rm -rf ./dist && rm -rf ./src/jss/typography.ts"
-  },
-  "devDependencies": {
-    "@rollup/plugin-typescript": "^8.3.1",
-    "jest": "^27.5.1",
-    "rollup": "^2.70.0",
-    "ts-jest": "^27.1.3",
-    "ts-node": "^10.7.0",
-    "typescript": "~4.6.2"
+    "clean:build": "rm -rf ./dist && rm -rf ./src/jss/typography/lib"
   },
   "dependencies": {
     "jss": "^10.9.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^8.3.1",
+    "@types/madge": "^5.0.0",
+    "jest": "^27.5.1",
+    "madge": "^5.0.1",
+    "rollup": "^2.70.1",
+    "rollup-plugin-generate-package-json": "^3.2.0",
+    "ts-jest": "^27.1.3",
+    "typescript": "~4.6.2"
   }
 }

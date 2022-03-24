@@ -1,9 +1,9 @@
-import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 import type { JssStyle, Styles } from 'jss';
 import type { Theme } from '../types';
 import type { PropertiesHyphen } from 'csstype';
-import { breakpoint, fontWeight, getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
+import { fontWeight, getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
 import { getThemedColors } from './';
+export { Breakpoint, breakpoint } from '@porsche-design-system/utilities-v2';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
 const transitionTimingFunction = 'ease';
@@ -111,50 +111,6 @@ export const getFocusStyles = (opts?: GetFocusStylesOptions): JssStyle => {
         },
       };
 };
-
-export type GetFocusSlottedPseudoStylesOptions = {
-  color?: string;
-  offset?: number;
-};
-
-/**
- * this hack is only needed for Safari which does not support pseudo elements in slotted context (https://bugs.webkit.org/show_bug.cgi?id=178237) :-(
- */
-export const getFocusSlottedPseudoStyles = (opts?: GetFocusSlottedPseudoStylesOptions): Styles<'& a'> => {
-  const { offset: outlineOffset, color: outlineColor }: GetFocusSlottedPseudoStylesOptions = {
-    color: 'currentColor',
-    offset: 2,
-    ...opts,
-  };
-
-  return {
-    '& a': {
-      display: 'block',
-      position: 'static',
-      textDecoration: 'none',
-      font: 'inherit',
-      color: 'inherit',
-      outline: 'transparent none',
-      '&::before': {
-        content: '""',
-        display: 'block',
-        position: 'absolute',
-        ...getInset(),
-        outline: '1px solid transparent',
-        outlineOffset: `${outlineOffset}px`,
-      },
-      '&:focus::before': {
-        outlineColor,
-      },
-      '&:focus:not(:focus-visible)::before': {
-        outlineColor: 'transparent',
-      },
-    },
-  };
-};
-
-export { Breakpoint, breakpoint } from '@porsche-design-system/utilities-v2';
-export const mediaQuery = (minBreakpoint: Breakpoint): string => `@media (min-width: ${breakpoint[minBreakpoint]}px)`;
 
 export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withDarkTheme: true }): Styles => {
   return {

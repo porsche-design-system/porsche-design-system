@@ -92,6 +92,7 @@ export class TextFieldWrapper {
     attachComponentCss(
       this.host,
       getComponentCss,
+      this.input.disabled,
       this.hideLabel,
       this.state,
       this.hasUnit || this.hasCounter,
@@ -122,10 +123,6 @@ export class TextFieldWrapper {
 
   public render(): JSX.Element {
     const { readOnly, disabled, type } = this.input;
-    const labelClasses = {
-      ['label']: true,
-      ['label--disabled']: disabled,
-    };
 
     const labelProps = {
       tag: 'span',
@@ -138,7 +135,7 @@ export class TextFieldWrapper {
     return (
       <Host>
         <div class="root">
-          <label class={labelClasses}>
+          <label class="label">
             {hasLabel(this.host, this.label) && (
               <PrefixedTagNames.pText class="label__text" {...labelProps}>
                 {this.label || <slot name="label" />}

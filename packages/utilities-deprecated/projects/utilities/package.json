@@ -46,10 +46,10 @@
   },
   "scripts": {
     "build": "yarn clean:build && yarn build:buildTypography && yarn build:bundleLib && yarn build:copyScss && yarn build:createGlobalCSS",
-    "build:buildTypography": "ts-node 'scripts/buildTypography.ts'",
+    "build:buildTypography": "ts-node scripts/buildTypography.ts",
     "build:bundleLib": "rollup -c rollup.config.js",
     "build:copyScss": "echo '@import \"dist/scss/index\";' > scss.scss && cp -r './src/scss/.' './dist/scss'",
-    "build:createGlobalCSS": "ts-node 'scripts/createGlobalCSS.ts'",
+    "build:createGlobalCSS": "ts-node scripts/createGlobalCSS.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist && rm -rf ./scss.scss"
@@ -58,7 +58,7 @@
     "@porsche-design-system/fonts": "0.0.0",
     "@rollup/plugin-node-resolve": "^13.1.3",
     "@rollup/plugin-typescript": "^8.3.1",
-    "rollup": "^2.70.0",
+    "rollup": "^2.70.1",
     "tslib": "^2.3.0",
     "typescript": "~4.6.2"
   },

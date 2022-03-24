@@ -2,6 +2,12 @@
 
 exports[`should contain correct values for font 1`] = `
 Object {
+  "behavior": Object {
+    "WebkitTextSizeAdjust": "none",
+    "hyphens": "auto",
+    "overflowWrap": "break-word",
+    "textSizeAdjust": "none",
+  },
   "family": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   "size": Object {
     "large": Object {
@@ -25,12 +31,23 @@ Object {
       "lineHeight": 1.6666666667,
     },
   },
+  "style": "normal",
+  "variant": "normal",
   "weight": Object {
     "bold": 700,
     "regular": 400,
     "semibold": 600,
     "thin": 100,
   },
+}
+`;
+
+exports[`should contain correct values for fontBehavior 1`] = `
+Object {
+  "WebkitTextSizeAdjust": "none",
+  "hyphens": "auto",
+  "overflowWrap": "break-word",
+  "textSizeAdjust": "none",
 }
 `;
 
@@ -60,6 +77,10 @@ Object {
   },
 }
 `;
+
+exports[`should contain correct values for fontStyle 1`] = `"normal"`;
+
+exports[`should contain correct values for fontVariant 1`] = `"normal"`;
 
 exports[`should contain correct values for fontWeight 1`] = `
 Object {
