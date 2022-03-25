@@ -212,25 +212,25 @@ export const TextFieldWrapperPage = (): JSX.Element => {
         </PTextFieldWrapper>
       </div>
 
-      <div className="playground light" title="should render input type='text' with unit">
+      <div className="playground light" title="should render input type text with unit">
         <PTextFieldWrapper label="Label with unit input type text" unit="km/h">
           <input type="text" defaultValue="three hundred" />
         </PTextFieldWrapper>
       </div>
 
-      <div className="playground light" title="should render input type='number' with unit">
+      <div className="playground light" title="should render input type number with unit">
         <PTextFieldWrapper label="Label with unit input type number" unit="km/h">
           <input type="number" defaultValue={300} />
         </PTextFieldWrapper>
       </div>
 
-      <div className="playground light" title="should render input type='text' with unit position suffix">
+      <div className="playground light" title="should render input type text with unit position suffix">
         <PTextFieldWrapper label="Label with unit input type text position suffix" unit="kWh" unitPosition="suffix">
           <input type="text" defaultValue="four hundred" />
         </PTextFieldWrapper>
       </div>
 
-      <div className="playground light" title="should render input type='number' with unit position suffix">
+      <div className="playground light" title="should render input type number with unit position suffix">
         <PTextFieldWrapper label="Label with unit input type number position suffix" unit="kWh" unitPosition="suffix">
           <input type="number" defaultValue={400} />
         </PTextFieldWrapper>
