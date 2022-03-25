@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Fixed
+- `P Tabs Item` improved accessibility
+
 ### [2.9.2-skeletons] - 2022-03-24
 
 #### Added
@@ -16,9 +19,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Text Field Wrapper` supports `unit` property on `input type="text"`
 
 ### [2.9.2] - 2022-03-24
-
-#### Fixed
-- `P Tabs Item` improved accessibility
 
 ### [2.9.2-rc.1] - 2022-03-23
 
