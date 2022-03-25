@@ -7,7 +7,7 @@ export type TextFieldWrapperUnitPosition = typeof UNIT_POSITIONS[number];
 export const hasCounter = (el: HTMLTextAreaElement | HTMLInputElement): boolean => el.maxLength >= 0;
 export const hasCounterAndIsTypeText = (el: HTMLInputElement): boolean => el.type === 'text' && hasCounter(el);
 export const hasUnitAndIsTypeTextOrNumber = (el: HTMLInputElement, unit: string): boolean => {
-  const type = el.type;
+  const { type } = el;
   return !!unit && (type === 'text' || type === 'number');
 };
 export const setCounterInnerHtml = (el: HTMLTextAreaElement | HTMLInputElement, counterElement: HTMLElement): void => {
