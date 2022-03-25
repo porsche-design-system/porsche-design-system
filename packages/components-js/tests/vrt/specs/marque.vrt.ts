@@ -33,8 +33,8 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
     await vrt.test('marque-states', async () => {
       const page = vrt.getPage();
       const head = `<style>
-        p-marque:not(:last-child) { margin-right: 0.5rem; }
-      </style>`;
+  p-marque:not(:last-child) { margin-right: 0.5rem; }
+</style>`;
 
       const getElementsMarkup: GetMarkup = () => `<p-marque href="https://www.porsche.com"></p-marque>
 <p-marque href="https://www.porsche.com" style="padding: 1rem"></p-marque>`;
