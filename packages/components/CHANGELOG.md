@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+#### Added
+- `Text Field Wrapper` supports `unit` property on `input type="text"`
+
 #### Fixed
 - `P Tabs Item` improved accessibility
 

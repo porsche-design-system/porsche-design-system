@@ -4,11 +4,11 @@ import {
   hasCounter,
   throwIfUnitLengthExceeded,
   TextFieldWrapperUnitPosition,
-  hasUnitAndIsTypeNumber,
   hasCounterAndIsTypeText,
   setCounterInnerHtml,
   addInputEventListener,
   setAriaElementInnerHtml,
+  hasUnitAndIsTypeTextOrNumber,
 } from './text-field-wrapper-utils';
 import * as textFieldWrapperUtils from './text-field-wrapper-utils';
 import { FormState } from '../../../types';
@@ -70,25 +70,25 @@ describe('hasCounterAndIsTypeText()', () => {
   );
 });
 
-describe('hasUnitAndIsTypeNumber()', () => {
-  it('should for input type="number" and unit="EUR" return true', () => {
+describe('hasUnitAndIsTypeTextOrNumber()', () => {
+  it.each<string>(['text', 'number'])('should for input type="%s" and unit="EUR" return true', (type) => {
     const inputElement = getInputElement();
-    inputElement.type = 'number';
-    expect(hasUnitAndIsTypeNumber(inputElement, 'EUR')).toBe(true);
+    inputElement.type = type;
+    expect(hasUnitAndIsTypeTextOrNumber(inputElement, 'EUR')).toBe(true);
   });
 
-  it('should for input type="number" and unit="" return false', () => {
+  it.each<string>(['text', 'number'])('should for input type="%s" and unit="" return false', (type) => {
     const inputElement = getInputElement();
-    inputElement.type = 'number';
-    expect(hasUnitAndIsTypeNumber(inputElement, '')).toBe(false);
+    inputElement.type = type;
+    expect(hasUnitAndIsTypeTextOrNumber(inputElement, '')).toBe(false);
   });
 
-  it.each<string>(['text', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password'])(
+  it.each<string>(['email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password'])(
     'should for input type="%s" and unit="EUR" return false',
     (type) => {
       const inputElement = getInputElement();
       inputElement.type = type;
-      expect(hasUnitAndIsTypeNumber(inputElement, 'EUR')).toBe(false);
+      expect(hasUnitAndIsTypeTextOrNumber(inputElement, 'EUR')).toBe(false);
     }
   );
 });
