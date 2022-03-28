@@ -48,7 +48,7 @@ const patchStencil = (): void => {
     const hasPatchedSkeletonSlot = ${tagNamesToAddSlotToAsString}.some(tagName => {
         // using $ for string end would be great but somehow does not work with string interpolation
         // at least string start is working with prefixing
-        return elm.tagName.match(new RegExp(\`^(?:[\\w-]+-)?\${tagName}(?!-)\`, 'i'));
+        return elm.tagName.match(new RegExp(\`^(?:[\\\\w-]+-)?\${tagName}(?!-)\`, 'i'));
     });
     if (hasPatchedSkeletonSlot) {
         elm.shadowRoot.removeChild(elm.shadowRoot.firstChild);
