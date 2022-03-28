@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components-react",
-  "version": "2.9.2-skeletons",
+  "version": "2.9.3",
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
@@ -27,7 +27,7 @@
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "2.9.2-skeletons"
+    "@porsche-design-system/components-js": "2.9.3"
   },
   "peerDependencies": {
     "react": ">=17.0.0 <18.0.0",
