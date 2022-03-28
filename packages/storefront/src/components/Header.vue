@@ -7,7 +7,7 @@
     <p-headline class="spacing-mt-8" variant="headline-4" tag="h1" align="center"> Design System </p-headline>
 
     <p-text size="x-small" align="center">
-      <strong>Web v{{ this.version.replace('-skeletons', '') }}</strong>
+      <strong>Web v{{ this.version }}</strong>
     </p-text>
 
     <label>
@@ -33,7 +33,7 @@
 
   @Component
   export default class Header extends Vue {
-    public version: string = version;
+    public version: string = version.replace('-skeletons', '');
 
     public versionOptions: string[] = ['v1', 'v2', 'latest'];
     public onVersionChange = (event: Event): void => {
