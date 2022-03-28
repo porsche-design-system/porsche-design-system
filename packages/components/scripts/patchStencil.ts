@@ -13,7 +13,7 @@ const PDS_PATCH_EMD = '// PDS PATCH END';
  */
 const patchStencil = (): void => {
   const stencilIndexFilePath = path.resolve(require.resolve('@stencil/core'), '../../client/index.js');
-  const stencilIndexFileBackupPath = path.resolve(stencilIndexFilePath, '../index_original.js');
+  const stencilIndexFileBackupPath = path.resolve(stencilIndexFilePath, '../index-original.js');
 
   if (fs.existsSync(stencilIndexFileBackupPath)) {
     // restore backup
@@ -46,13 +46,16 @@ const patchStencil = (): void => {
       const removeSkeletonSlotScript = `    ${PDS_PATCH_START}
     // NOTE: this following is executed on every component update
     const hasPatchedSkeletonSlot = ${tagNamesToAddSlotToAsString}.some(tagName => {
-        return elm.tagName.match(new RegExp(\`^\${tagName}(?!-)\`, 'i'));
+        // using $ for string end would be great but somehow does not work with string interpolation
+        // at least string start is working with prefixing
+        return elm.tagName.match(new RegExp(\`^(?:[\\w-]+-)?\${tagName}(?!-)\`, 'i'));
     });
     if (hasPatchedSkeletonSlot) {
         elm.shadowRoot.removeChild(elm.shadowRoot.firstChild);
     }
     ${PDS_PATCH_EMD}
 `;
+
       // add skeleton slot script
       let patchedStencilIndexFile = stencilIndexFile.replace(
         /(self\.attachShadow\(\{ mode: 'open' \}\);\n.*?\}\n)/g,
