@@ -12,7 +12,7 @@ const PDS_PATCH_EMD = '// PDS PATCH END';
  * Finally, once the component is loaded, we remove that added slot again.
  */
 const patchStencil = (): void => {
-  if (SKELETONS_ACTIVE) {
+  if (!SKELETONS_ACTIVE) {
     process.stdout.write(`Skeletons not active. No patch needed.\n`);
   } else {
     const tagNamesToAddSlotTo = Object.entries(componentMeta).reduce((prev, [tagName, value]) => {
