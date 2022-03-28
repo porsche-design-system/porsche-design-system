@@ -17,8 +17,7 @@
     "clsx": "^1.1.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-router-dom": "^6.2.2",
-    "styled-components": "^5.3.3"
+    "react-router-dom": "^6.2.2"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
