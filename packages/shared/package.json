@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scope": "@porsche-design-system",
-  "main": "dist/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/index.d.ts",
+  "main": "index.js",
+  "module": "esm/index.js",
+  "types": "index.d.ts",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
     "Marcel Bertram <marcel.bertram@porsche.de>",
