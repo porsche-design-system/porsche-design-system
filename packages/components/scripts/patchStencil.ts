@@ -13,7 +13,7 @@ const PDS_PATCH_EMD = '// PDS PATCH END';
  */
 const patchStencil = (): void => {
   const stencilIndexFilePath = path.resolve(require.resolve('@stencil/core'), '../../client/index.js');
-  const stencilIndexFileBackupPath = path.resolve(stencilIndexFilePath, '../index-original.js');
+  const stencilIndexFileBackupPath = path.resolve(stencilIndexFilePath, '../index_original.js');
 
   if (fs.existsSync(stencilIndexFileBackupPath)) {
     // restore backup
