@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Added
 - `Text Field Wrapper` supports `unit` property on `input type="text"`
-- `Marque` optionally configurable clickable/focusable area by defining padding on host element
+- `Marque` optional configurable clickable/focusable area by defining padding on host element
 
 #### Fixed
 - `Tabs Item` improved accessibility
