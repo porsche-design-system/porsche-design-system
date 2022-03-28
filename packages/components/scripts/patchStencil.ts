@@ -46,7 +46,7 @@ const patchStencil = (): void => {
       const removeSkeletonSlotScript = `    ${PDS_PATCH_START}
     // NOTE: this following is executed on every component update
     const hasPatchedSkeletonSlot = ${tagNamesToAddSlotToAsString}.some(tagName => {
-        return elm.tagName.match(new RegExp(\`^(?:[\\w-]+-)?\${tagName}$\`, 'i'));
+        return elm.tagName.match(new RegExp(\`^\${tagName}(?!-)\`, 'i'));
     });
     if (hasPatchedSkeletonSlot) {
         elm.shadowRoot.removeChild(elm.shadowRoot.firstChild);
