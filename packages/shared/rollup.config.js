@@ -19,9 +19,6 @@ export default [
           baseContents: (packageJson) => ({
             ...packageJson,
             name: '@porsche-design-system/shared',
-            main: 'index.js',
-            module: 'esm/index.js',
-            types: 'types/index.d.ts',
             sideEffects: false,
             scripts: {},
             devDependencies: {},
