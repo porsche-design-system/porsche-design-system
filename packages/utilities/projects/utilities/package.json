@@ -10,6 +10,7 @@
   "scripts": {
     "build": "yarn clean:build && yarn build:bundle",
     "build:bundle": "rollup -c rollup.config.js",
+    "build:generateStyledComponents": "ts-node src/convertJssToStyledComponents.ts",
     "test": "yarn test:unit",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
     "clean": "yarn clean:node_modules && yarn clean:build",
@@ -17,7 +18,9 @@
     "clean:build": "rm -rf ./dist && rm -rf ./src/jss/typography/lib"
   },
   "dependencies": {
-    "jss": "^10.9.0"
+    "@types/styled-components": "^5.1.24",
+    "jss": "^10.9.0",
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3.1",
