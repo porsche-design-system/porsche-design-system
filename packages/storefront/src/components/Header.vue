@@ -7,7 +7,7 @@
     <p-headline class="spacing-mt-8" variant="headline-4" tag="h1" align="center"> Design System </p-headline>
 
     <p-text size="x-small" align="center">
-      <strong>Web v{{ this.version }}</strong>
+      <strong>Web v{{ this.version.replace('-skeletons', '') }}</strong>
     </p-text>
 
     <label>
