@@ -14,6 +14,7 @@ export class DefaultConfig implements Required<PorscheDesignSystemModuleConfig> 
 @NgModule({
   declarations: DECLARATIONS,
   exports: DECLARATIONS,
+  providers: [{ provide: USES_SKELETONS, useValue: usesSkeletons() }],
 })
 export class PorscheDesignSystemModule {
   constructor(@Optional() configParam: DefaultConfig) {
@@ -30,7 +31,6 @@ export class PorscheDesignSystemModule {
           multi: true, // to support multiple prefixes in same module
           useValue: config,
         },
-        { provide: USES_SKELETONS, useValue: usesSkeletons() },
       ],
     };
   }
