@@ -12,7 +12,18 @@ const PDS_PATCH_EMD = '// PDS PATCH END';
  * Finally, once the component is loaded, we remove that added slot again.
  */
 const patchStencil = (): void => {
-  if (SKELETONS_ACTIVE) {
+  const stencilIndexFilePath = path.resolve(require.resolve('@stencil/core'), '../../client/index.js');
+  const stencilIndexFileBackupPath = path.resolve(stencilIndexFilePath, '../index-original.js');
+
+  if (fs.existsSync(stencilIndexFileBackupPath)) {
+    // restore backup
+    fs.copyFileSync(stencilIndexFileBackupPath, stencilIndexFilePath);
+  } else {
+    // create backup
+    fs.copyFileSync(stencilIndexFilePath, stencilIndexFileBackupPath);
+  }
+
+  if (!SKELETONS_ACTIVE) {
     process.stdout.write(`Skeletons not active. No patch needed.\n`);
   } else {
     const tagNamesToAddSlotTo = Object.entries(componentMeta).reduce((prev, [tagName, value]) => {
@@ -20,7 +31,6 @@ const patchStencil = (): void => {
     }, [] as string[]);
     const tagNamesToAddSlotToAsString = `[${tagNamesToAddSlotTo.map((x) => `'${x}'`).join(', ')}]`;
 
-    const stencilIndexFilePath = path.resolve(require.resolve('@stencil/core'), '../../client', 'index.js');
     const stencilIndexFile = fs.readFileSync(stencilIndexFilePath, 'utf-8');
     const pdsPatchStartRegEx = new RegExp(`(${PDS_PATCH_START})`, 'g');
     const getScriptPatchMarkerCount = (script: string) => (script.match(pdsPatchStartRegEx) || []).length;
@@ -34,9 +44,9 @@ const patchStencil = (): void => {
                             ${PDS_PATCH_EMD}
 `;
       const removeSkeletonSlotScript = `    ${PDS_PATCH_START}
+    // NOTE: this following is executed on every component update
     const hasPatchedSkeletonSlot = ${tagNamesToAddSlotToAsString}.some(tagName => {
-        const tagNameRegExp = new RegExp(\`\${tagName.toUpperCase()}(?!-)\`);
-        return elm.tagName.match(tagNameRegExp);
+        return elm.tagName.match(new RegExp(\`^(?:[\\w-]+-)?\${tagName}$\`, 'i'));
     });
     if (hasPatchedSkeletonSlot) {
         elm.shadowRoot.removeChild(elm.shadowRoot.firstChild);
