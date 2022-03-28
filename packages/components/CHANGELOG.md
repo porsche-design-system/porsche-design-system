@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
-### [2.9.3] - 2022-03-28
+### [2.9.3-rc.0] - 2022-03-28
 
 #### Added
 - `Text Field Wrapper` supports `unit` property on `input type="text"`
