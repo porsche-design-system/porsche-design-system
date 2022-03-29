@@ -12,7 +12,7 @@ p-select-wrapper:not(.hydrated)::before, p-text-field-wrapper:not(.hydrated)::be
   height: 1.5rem;
   width: 8rem;
   top: 0;
-  background: linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px);
+  background: linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px) !important;
   color: #626669;
 }
 p-select-wrapper:not(.hydrated)::after, p-text-field-wrapper:not(.hydrated)::after {
