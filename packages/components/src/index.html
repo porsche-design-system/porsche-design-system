@@ -7,8 +7,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <script nomodule src="build/porsche-design-system.js"></script>
-    <script type="module" src="build/porsche-design-system.esm.js"></script>
+    <script nomodule src="build/Porsche-design-system.js"></script>
+    <script type="module" src="build/Porsche-design-system.esm.js"></script>
   </head>
   <body>
     <!-- START: keep this snippet to log component lifecycle events -->
@@ -21,25 +21,67 @@
       );
     </script>
     <!-- /END -->
-        <p-tag-status>new</p-tag-status>
-        <p-tag-status color="contrast-high">new</p-tag-status>
-        <p-tag-status color="background-default">new</p-tag-status>
-        <p-tag-status color="background-surface">porsche approved</p-tag-status>
-    <p-tag-status color="contrast-high">porsche approved</p-tag-status>
-        <p-tag-status color="notification-neutral-soft">NEW</p-tag-status>
-        <p-tag-status color="notification-success-soft">NEW</p-tag-status>
-        <p-tag-status color="notification-error-soft">porsche approved</p-tag-status>
-        <p-tag-status color="notification-warning-soft">porsche approved</p-tag-status>
 
-        <br></br>
-        <br></br>
-
-        <p-tag-status>Some super long Tag with alot of words</p-tag-status>
-
-        <br></br>
-        <br></br>
-
-        <p-tag-status><a href="#">Link Tag</a></p-tag-status>
-        <p-tag-status><button>button tag</button></p-tag-status>
+    <div style="width: 100px">
+      <p-tag-status color="contrast-high">Some multiline tag</p-tag-status>
+      <p-tag-status color="contrast-high" icon="car">Some multiline tag</p-tag-status>
+      <br />
+      <br />
+      <p-tag-status color="contrast-high">Some multiline tag with <a href="#">link</a></p-tag-status>
+      <p-tag-status color="contrast-high" icon="car"
+        >Some multiline tag with <a href="#">link</a> and icon</p-tag-status
+      >
+      <br />
+      <br />
+      <p-tag-status color="contrast-high">Some multiline tag with <button>button</button></p-tag-status>
+      <p-tag-status color="contrast-high" icon="car"
+        >Some multiline tag with <button>button</button> and icon</p-tag-status
+      >
+    </div>
+    <br />
+    <div style="padding: 2rem">
+      <p-tag-status color="default">Tag default</p-tag-status>
+      <p-tag-status color="surface">Tag surface</p-tag-status>
+      <p-tag-status color="contrast-high">Tag contrast-high</p-tag-status>
+      <p-tag-status color="neutral">Tag neutral</p-tag-status>
+      <p-tag-status color="success">Tag success</p-tag-status>
+      <p-tag-status color="error">Tag error</p-tag-status>
+      <p-tag-status color="warning">Tag warning</p-tag-status>
+      <br />
+      <br />
+      <p-tag-status color="contrast-high" icon="car">Porsche approved</p-tag-status>
+      <p-tag-status color="surface" icon="fuel-station">Porsche approved</p-tag-status>
+      <p-tag-status color="surface" icon="parking-brake">Porsche approved</p-tag-status>
+      <p-tag-status color="surface" icon="oil-can">Porsche approved</p-tag-status>
+      <br />
+      <br />
+      <p-tag-status>Tag with <a href="#">link</a> some text</p-tag-status>
+      <p-tag-status icon="car">Tag with <a href="#">link and icon</a> some text</p-tag-status>
+      <p-tag-status><a href="#">link</a></p-tag-status>
+      <p-tag-status><button>button</button></p-tag-status>
+      <p-tag-status icon="car"><a href="#">link and icon</a></p-tag-status>
+    </div>
+    <div style="background: #0e1418; padding: 2rem">
+      <p-tag-status theme="dark" color="default">Tag default</p-tag-status>
+      <p-tag-status theme="dark" color="surface">Tag surface</p-tag-status>
+      <p-tag-status theme="dark" color="contrast-high">Tag contrast-high</p-tag-status>
+      <p-tag-status theme="dark" color="neutral">Tag neutral</p-tag-status>
+      <p-tag-status theme="dark" color="success">Tag success</p-tag-status>
+      <p-tag-status theme="dark" color="error">Tag error</p-tag-status>
+      <p-tag-status theme="dark" color="warning">Tag warning</p-tag-status>
+      <br />
+      <br />
+      <p-tag-status theme="dark" color="contrast-high" icon="car">Porsche approved</p-tag-status>
+      <p-tag-status theme="dark" color="surface" icon="fuel-station">Porsche approved</p-tag-status>
+      <p-tag-status theme="dark" color="surface" icon="parking-brake">Porsche approved</p-tag-status>
+      <p-tag-status theme="dark" color="surface" icon="oil-can">Porsche approved</p-tag-status>
+      <br />
+      <br />
+      <p-tag-status theme="dark">Tag with <a href="#">link</a> some text</p-tag-status>
+      <p-tag-status theme="dark" icon="car">Tag with <a href="#">link and icon</a> some text</p-tag-status>
+      <p-tag-status theme="dark"><a href="#">link</a></p-tag-status>
+      <p-tag-status theme="dark"><button>button</button></p-tag-status>
+      <p-tag-status theme="dark" icon="car"><a href="#">link and icon</a></p-tag-status>
+    </div>
   </body>
 </html>
