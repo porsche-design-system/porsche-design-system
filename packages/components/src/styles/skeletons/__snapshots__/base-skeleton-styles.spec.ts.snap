@@ -74,7 +74,7 @@ Object {
     "width": "100%",
   },
   "&::before": Object {
-    "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px)",
+    "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px) !important",
     "height": "1.5rem",
     "top": "0",
     "width": "8rem",
