@@ -4,6 +4,7 @@ import {
   getBaseSkeletonJssStyle,
   getElementBackgroundGradient,
   getHiddenLabelJssStyle,
+  getLabelSkeletonJssStyle,
   getSkeletonElementHeight,
   getSkeletonPropertyNames,
   getThemedPseudoJssStyle,
@@ -18,6 +19,10 @@ import { Styles } from 'jss';
 
 type TextAreaSelectWrapperTagName = Extract<TagName, 'p-textarea-wrapper' | 'p-select-wrapper'>;
 
+export const getLabelSelector = (tagName: TextAreaSelectWrapperTagName): string => {
+  const skeletonPropertyNames = getSkeletonPropertyNames(tagName);
+  return `&[${skeletonPropertyNames.label}]:not([${skeletonPropertyNames.description}]):not([${skeletonPropertyNames.hideLabel}=true]), &.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.label}:not(.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.description}):not(.${PDS_SKELETON_CLASS_PREFIX}${skeletonPropertyNames.hideLabel})`;
+};
 export const getHideLabelSelector = (tagName: TextAreaSelectWrapperTagName): string => {
   // hideLabel or no description and no label
   const skeletonPropertyNames = getSkeletonPropertyNames(tagName);
@@ -37,9 +42,10 @@ export const getDescriptionAndLabelSelector = (tagName: TextAreaSelectWrapperTag
 };
 
 export const getTextareaWrapperSkeletonStyles = (): Styles<'@global'> => {
+  const textareaWrapper = 'p-textarea-wrapper';
   return {
     '@global': {
-      'p-textarea-wrapper': {
+      [textareaWrapper]: {
         '&:not(.hydrated)': {
           ...extendPseudoWithThemeJssStyle({
             jssStyle: getBaseSkeletonJssStyle(),
@@ -48,9 +54,9 @@ export const getTextareaWrapperSkeletonStyles = (): Styles<'@global'> => {
           minHeight: getSkeletonElementHeight(TEXTAREA_SKELETON_HEIGHT),
 
           // TODO: use constants for getComponentMeta for "property" class and values
-
-          [getHideLabelSelector('p-textarea-wrapper')]: getHiddenLabelJssStyle(),
-          [getDescriptionOnlySelector('p-textarea-wrapper')]: {
+          [getLabelSelector(textareaWrapper)]: getLabelSkeletonJssStyle(),
+          [getHideLabelSelector(textareaWrapper)]: getHiddenLabelJssStyle(),
+          [getDescriptionOnlySelector(textareaWrapper)]: {
             minHeight: getSkeletonElementHeight(TEXTAREA_SKELETON_HEIGHT, false, true),
             '&::before': {
               height: pxToRemWithUnit(LABEL_HEIGHT),
@@ -61,7 +67,7 @@ export const getTextareaWrapperSkeletonStyles = (): Styles<'@global'> => {
               minHeight: getAfterMinHeight(LABEL_HEIGHT),
             },
           },
-          [getDescriptionAndLabelSelector('p-textarea-wrapper')]: {
+          [getDescriptionAndLabelSelector(textareaWrapper)]: {
             minHeight: getSkeletonElementHeight(TEXTAREA_SKELETON_HEIGHT, true, true),
             '&::before': {
               height: pxToRemWithUnit(LABEL_HEIGHT_WITH_DESCRIPTION),

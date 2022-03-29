@@ -11,7 +11,7 @@ p-textarea-wrapper:not(.hydrated)::before {
   height: 1.5rem;
   width: 8rem;
   top: 0;
-  background: linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px) !important;
+  background: linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px);
   color: #626669;
 }
 p-textarea-wrapper:not(.hydrated)::after {
