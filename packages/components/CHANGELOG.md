@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
-### [2.9.3-rc.0-skeletons] - 2022-03-28
+### [2.9.3-rc.0-skeletons] - 2022-03-29
 
 ### [2.9.3-rc.0] - 2022-03-28
 
@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Fixed
 - `Tabs Item` improved accessibility
-- Angular circular dependency in development mode in `2.9.2-skeletons`
+- Angular: circular dependency in development mode in `2.9.2-skeletons`
 
 ### [2.9.2-skeletons] - 2022-03-24
 
