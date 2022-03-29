@@ -1,5 +1,5 @@
 import { JssStyle, Styles } from 'jss';
-import { pxToRemWithUnit } from '../common-styles';
+import { addImportantToRule, pxToRemWithUnit } from '../common-styles';
 import { getThemedColors } from '../colors';
 import { INPUT_HEIGHT } from '../form-styles';
 import { getComponentMeta, PDS_SKELETON_CLASS_PREFIX, TagName } from '@porsche-design-system/shared';
@@ -86,7 +86,7 @@ export const getBaseSkeletonJssStyle = (hasLabel = true, elementHeight = ELEMENT
             height: pxToRemWithUnit(LABEL_HEIGHT),
             width: pxToRemWithUnit(128),
             top: '0',
-            background: getElementBackgroundGradient(LABEL_HEIGHT),
+            background: addImportantToRule(getElementBackgroundGradient(LABEL_HEIGHT)),
           },
         }
       : {
