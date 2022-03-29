@@ -98,6 +98,14 @@ Object {
 }
 `;
 
+exports[`getLabelSkeletonJssStyle() should match style snapshot 1`] = `
+Object {
+  "&::before": Object {
+    "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px)",
+  },
+}
+`;
+
 exports[`getSkeletonPropertyNames() should get correct skeleton property names 'p-button' 1`] = `
 Object {
   "hideLabel": "hide-label",

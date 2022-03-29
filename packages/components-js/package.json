@@ -56,15 +56,15 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "4.0.0",
-    "@porsche-design-system/components": "2.9.3-rc.0",
-    "@porsche-design-system/components-js": "2.9.3-rc.0",
+    "@porsche-design-system/components": "2.9.3-rc.0-skeletons",
+    "@porsche-design-system/components-js": "2.9.3-rc.0-skeletons",
     "@porsche-design-system/components-manager-cli": "0.0.0",
     "@porsche-design-system/partials": "0.0.0"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@types/js-beautify": "^1.13.3",
-    "@types/node": "^17.0.22",
+    "@types/node": "^17.0.23",
     "@types/terser-webpack-plugin": "^5.2.0",
     "concurrently": "^7.0.0",
     "devtools-protocol": "^0.0.982423",
