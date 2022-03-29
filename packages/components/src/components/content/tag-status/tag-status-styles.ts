@@ -1,26 +1,34 @@
-import { getCss } from '../../../utils';
-import { TagColors } from './tag-status-utils';
-import { Theme } from '../../../types';
-import { themeDark, themeLight } from '../../../../../utilities/projects/utilities';
-import { getFocusJssStyle } from '../../../styles';
+import { getCss, isThemeDark } from '../../../utils';
+import { getFocusJssStyle, getThemedColors } from '../../../styles';
+import { textSmall } from '@porsche-design-system/utilities';
+import type { ThemedColors } from '../../../styles';
+import type { TagColor } from './tag-status-utils';
+import type { Theme } from '../../../types';
+import type { IconName } from '../../../types';
 
-const getThemedBackgroundColor = (theme: Theme, color: TagColors) => {
-  const colorTheme = theme === 'light' ? themeLight : themeDark;
-
-  const colorMap = {
-    'background-default': colorTheme.background.base,
-    'background-surface': colorTheme.background.surface,
-    'contrast-high': colorTheme.contrast.high,
-    'notification-neutral-soft': colorTheme.notification.neutralSoft,
-    'notification-success-soft': colorTheme.notification.successSoft,
-    'notification-error-soft': colorTheme.notification.errorSoft,
-    'notification-warning-soft': colorTheme.notification.warningSoft,
+const getThemedBackgroundColor = (color: TagColor, themedColors: ThemedColors) => {
+  const colorMap: { [key in TagColor]: string } = {
+    default: themedColors.backgroundColor,
+    surface: themedColors.backgroundSurfaceColor,
+    'contrast-high': themedColors.contrastHighColor,
+    neutral: themedColors.neutralSoftColor,
+    success: themedColors.successSoftColor,
+    error: themedColors.errorSoftColor,
+    warning: themedColors.warningSoftColor,
   };
 
   return colorMap[color];
 };
 
-export const getComponentCss = (theme: Theme, color: TagColors): string => {
+export const getComponentCss = (theme: Theme, color: TagColor, icon: IconName): string => {
+  const themedColors = getThemedColors(theme);
+  const isDark = isThemeDark(theme);
+
+  const { baseColor } =
+    (theme === 'light' && color !== 'contrast-high') || (isDark && (color === 'surface' || color === 'default'))
+      ? themedColors
+      : getThemedColors(isDark ? 'light' : 'dark');
+
   return getCss({
     '@global': {
       ':host': {
@@ -28,10 +36,20 @@ export const getComponentCss = (theme: Theme, color: TagColors): string => {
       },
     },
     root: {
-      padding: '2px 6px',
+      display: 'inline-block',
+      boxSizing: 'border-box',
+      padding: icon ? '0px 6px 0px 4px' : '0px 6px',
       borderRadius: '4px',
-      background: getThemedBackgroundColor(theme, color),
+      background: getThemedBackgroundColor(color, themedColors),
+      color: baseColor,
+      ...textSmall,
       ...getFocusJssStyle(),
+    },
+    icon: {
+      marginRight: '2px',
+      flexShrink: '0',
+      width: '1.5em',
+      height: '1.5em',
     },
   });
 };
