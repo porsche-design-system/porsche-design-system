@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scope": "@porsche-design-system",
-  "main": "dist/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/index.d.ts",
+  "main": "index.js",
+  "module": "esm/index.js",
+  "types": "index.d.ts",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
     "Marcel Bertram <marcel.bertram@porsche.de>",
@@ -48,7 +48,7 @@
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.9.0",
     "puppeteer": "~13.5.1",
-    "ts-jest": "^27.1.3"
+    "ts-jest": "^27.1.4"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3.1",
