@@ -12,7 +12,18 @@ const PDS_PATCH_EMD = '// PDS PATCH END';
  * Finally, once the component is loaded, we remove that added slot again.
  */
 const patchStencil = (): void => {
-  if (SKELETONS_ACTIVE) {
+  const stencilIndexFilePath = path.resolve(require.resolve('@stencil/core'), '../../client/index.js');
+  const stencilIndexFileBackupPath = path.resolve(stencilIndexFilePath, '../index-original.js');
+
+  if (fs.existsSync(stencilIndexFileBackupPath)) {
+    // restore backup
+    fs.copyFileSync(stencilIndexFileBackupPath, stencilIndexFilePath);
+  } else {
+    // create backup
+    fs.copyFileSync(stencilIndexFilePath, stencilIndexFileBackupPath);
+  }
+
+  if (!SKELETONS_ACTIVE) {
     process.stdout.write(`Skeletons not active. No patch needed.\n`);
   } else {
     const tagNamesToAddSlotTo = Object.entries(componentMeta).reduce((prev, [tagName, value]) => {
@@ -20,7 +31,6 @@ const patchStencil = (): void => {
     }, [] as string[]);
     const tagNamesToAddSlotToAsString = `[${tagNamesToAddSlotTo.map((x) => `'${x}'`).join(', ')}]`;
 
-    const stencilIndexFilePath = path.resolve(require.resolve('@stencil/core'), '../../client', 'index.js');
     const stencilIndexFile = fs.readFileSync(stencilIndexFilePath, 'utf-8');
     const pdsPatchStartRegEx = new RegExp(`(${PDS_PATCH_START})`, 'g');
     const getScriptPatchMarkerCount = (script: string) => (script.match(pdsPatchStartRegEx) || []).length;
@@ -29,20 +39,20 @@ const patchStencil = (): void => {
       // no markers found, patch the stencil script
       const addSkeletonSlotScript = `                            ${PDS_PATCH_START}
                             if (${tagNamesToAddSlotToAsString}.includes(cmpMeta.$tagName$)) {
-                              self.shadowRoot.appendChild(document.createElement('slot'))
+                              self.shadowRoot.appendChild(document.createElement('slot'));
+                              self.hasSkeleton = true;
                             }
                             ${PDS_PATCH_EMD}
 `;
       const removeSkeletonSlotScript = `    ${PDS_PATCH_START}
-    const hasPatchedSkeletonSlot = ${tagNamesToAddSlotToAsString}.some(tagName => {
-        const tagNameRegExp = new RegExp(\`\${tagName.toUpperCase()}(?!-)\`);
-        return elm.tagName.match(tagNameRegExp);
-    });
-    if (hasPatchedSkeletonSlot) {
-        elm.shadowRoot.removeChild(elm.shadowRoot.firstChild);
+    // NOTE: this following is executed on every component update
+    if (elm.hasSkeleton) {
+        elm.shadowRoot.firstChild.remove(); // remove temporary slot element
+        elm.hasSkeleton = false;
     }
     ${PDS_PATCH_EMD}
 `;
+
       // add skeleton slot script
       let patchedStencilIndexFile = stencilIndexFile.replace(
         /(self\.attachShadow\(\{ mode: 'open' \}\);\n.*?\}\n)/g,
