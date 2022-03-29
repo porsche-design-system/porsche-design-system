@@ -60,13 +60,15 @@ export const getPseudoElementStyles = (): Styles<'@global'> => {
   return {
     '@global': {
       [SKELETON_TAG_NAMES.join(',')]: {
-        '&::before, &::after': {
-          position: 'absolute',
-          left: '0',
-          content: '""',
-          visibility: 'visible',
-          background: 'currentColor',
-          animation: 'opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite',
+        '&:not(.hydrated)': {
+          '&::before, &::after': {
+            position: 'absolute',
+            left: '0',
+            content: '""',
+            visibility: 'visible',
+            background: 'currentColor',
+            animation: 'opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite',
+          },
         },
       },
     },
