@@ -45,7 +45,7 @@ export const getTextareaWrapperSkeletonStyles = (): Styles<'@global'> => {
   const textareaWrapper = 'p-textarea-wrapper';
   return {
     '@global': {
-      [textareaWrapper]: {
+      'p-textarea-wrapper': {
         '&:not(.hydrated)': {
           ...extendPseudoWithThemeJssStyle({
             jssStyle: getBaseSkeletonJssStyle(),
