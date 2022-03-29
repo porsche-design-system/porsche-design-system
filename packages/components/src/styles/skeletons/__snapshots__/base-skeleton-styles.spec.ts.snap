@@ -74,7 +74,7 @@ Object {
     "width": "100%",
   },
   "&::before": Object {
-    "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px) !important",
+    "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px)",
     "height": "1.5rem",
     "top": "0",
     "width": "8rem",
@@ -95,6 +95,14 @@ Object {
     "content": "none",
   },
   "height": "3rem",
+}
+`;
+
+exports[`getLabelSkeletonJssStyle() should match style snapshot 1`] = `
+Object {
+  "&::before": Object {
+    "background": "linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px)",
+  },
 }
 `;
 
