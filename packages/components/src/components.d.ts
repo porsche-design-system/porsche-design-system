@@ -31,6 +31,7 @@ import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinne
 import { SwitchChangeEvent } from "./components/action/switch/switch";
 import { SortingChangeEvent, TableHeadCellSort } from "./components/content/table/table/table-utils";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
+import { TagColors } from "./components/content/tag-status/tag-status-utils";
 import { TextFieldWrapperUnitPosition } from "./components/form/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 import { ToastMessage } from "./components/feedback/toast/toast/toast-manager";
@@ -851,6 +852,20 @@ export namespace Components {
          */
         "label": string;
     }
+    interface PTagStatus {
+        /**
+          * Background color variations depending on theme property.
+         */
+        "color"?: TagColors;
+        /**
+          * The icon shown.
+         */
+        "icon"?: IconName;
+        /**
+          * Adapts the tag color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
     interface PText {
         /**
           * Text alignment of the component.
@@ -1200,6 +1215,12 @@ declare global {
         prototype: HTMLPTabsItemElement;
         new (): HTMLPTabsItemElement;
     };
+    interface HTMLPTagStatusElement extends Components.PTagStatus, HTMLStencilElement {
+    }
+    var HTMLPTagStatusElement: {
+        prototype: HTMLPTagStatusElement;
+        new (): HTMLPTagStatusElement;
+    };
     interface HTMLPTextElement extends Components.PText, HTMLStencilElement {
     }
     var HTMLPTextElement: {
@@ -1281,6 +1302,7 @@ declare global {
         "p-tabs": HTMLPTabsElement;
         "p-tabs-bar": HTMLPTabsBarElement;
         "p-tabs-item": HTMLPTabsItemElement;
+        "p-tag-status": HTMLPTagStatusElement;
         "p-text": HTMLPTextElement;
         "p-text-field-wrapper": HTMLPTextFieldWrapperElement;
         "p-text-list": HTMLPTextListElement;
@@ -2146,6 +2168,20 @@ declare namespace LocalJSX {
          */
         "label"?: string;
     }
+    interface PTagStatus {
+        /**
+          * Background color variations depending on theme property.
+         */
+        "color"?: TagColors;
+        /**
+          * The icon shown.
+         */
+        "icon"?: IconName;
+        /**
+          * Adapts the tag color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
     interface PText {
         /**
           * Text alignment of the component.
@@ -2307,6 +2343,7 @@ declare namespace LocalJSX {
         "p-tabs": PTabs;
         "p-tabs-bar": PTabsBar;
         "p-tabs-item": PTabsItem;
+        "p-tag-status": PTagStatus;
         "p-text": PText;
         "p-text-field-wrapper": PTextFieldWrapper;
         "p-text-list": PTextList;
@@ -2358,6 +2395,7 @@ declare module "@stencil/core" {
             "p-tabs": LocalJSX.PTabs & JSXBase.HTMLAttributes<HTMLPTabsElement>;
             "p-tabs-bar": LocalJSX.PTabsBar & JSXBase.HTMLAttributes<HTMLPTabsBarElement>;
             "p-tabs-item": LocalJSX.PTabsItem & JSXBase.HTMLAttributes<HTMLPTabsItemElement>;
+            "p-tag-status": LocalJSX.PTagStatus & JSXBase.HTMLAttributes<HTMLPTagStatusElement>;
             "p-text": LocalJSX.PText & JSXBase.HTMLAttributes<HTMLPTextElement>;
             "p-text-field-wrapper": LocalJSX.PTextFieldWrapper & JSXBase.HTMLAttributes<HTMLPTextFieldWrapperElement>;
             "p-text-list": LocalJSX.PTextList & JSXBase.HTMLAttributes<HTMLPTextListElement>;
