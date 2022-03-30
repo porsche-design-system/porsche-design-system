@@ -9,12 +9,12 @@ import type { IconName } from '../../../types';
 const getThemedBackgroundColor = (color: TagColor, themedColors: ThemedColors) => {
   const colorMap: { [key in TagColor]: string } = {
     default: themedColors.backgroundColor,
-    surface: themedColors.backgroundSurfaceColor,
-    'contrast-high': themedColors.contrastHighColor,
-    neutral: themedColors.neutralSoftColor,
-    success: themedColors.successSoftColor,
-    error: themedColors.errorSoftColor,
-    warning: themedColors.warningSoftColor,
+    'background-surface': themedColors.backgroundSurfaceColor,
+    'neutral-contrast-high': themedColors.contrastHighColor,
+    'notification-neutral': themedColors.neutralSoftColor,
+    'notification-success': themedColors.successSoftColor,
+    'notification-error': themedColors.errorSoftColor,
+    'notification-warning': themedColors.warningSoftColor,
   };
 
   return colorMap[color];
@@ -25,7 +25,8 @@ export const getComponentCss = (theme: Theme, color: TagColor, icon: IconName): 
   const isDark = isThemeDark(theme);
 
   const { baseColor } =
-    (theme === 'light' && color !== 'contrast-high') || (isDark && (color === 'surface' || color === 'default'))
+    (theme === 'light' && color !== 'neutral-contrast-high') ||
+    (isDark && (color === 'background-surface' || color === 'default'))
       ? themedColors
       : getThemedColors(isDark ? 'light' : 'dark');
 

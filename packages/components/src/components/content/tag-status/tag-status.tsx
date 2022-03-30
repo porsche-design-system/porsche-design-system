@@ -16,7 +16,7 @@ export class TagStatus {
   @Prop() public theme?: Theme = 'light';
 
   /** Background color variations depending on theme property. */
-  @Prop() public color?: TagColor = 'surface';
+  @Prop() public color?: TagColor = 'background-surface';
 
   /** The icon shown. */
   @Prop() public icon?: IconName = undefined;
