@@ -1,6 +1,6 @@
 import { getCss, isThemeDark } from '../../../utils';
 import { getFocusJssStyle, getThemedColors } from '../../../styles';
-import { textSmall } from '@porsche-design-system/utilities';
+import { textXSmall } from '@porsche-design-system/utilities';
 import type { ThemedColors } from '../../../styles';
 import type { TagColor } from './tag-status-utils';
 import type { Theme } from '../../../types';
@@ -36,20 +36,21 @@ export const getComponentCss = (theme: Theme, color: TagColor, icon: IconName): 
       },
     },
     root: {
-      display: 'inline-block',
+      display: 'inline-flex',
+      alignItems: 'center',
+      verticalAlign: 'top',
       boxSizing: 'border-box',
-      padding: icon ? '0px 6px 0px 4px' : '0px 6px',
+      padding: icon ? '0px 6px 0px 4px' : '2px 6px',
       borderRadius: '4px',
       background: getThemedBackgroundColor(color, themedColors),
       color: baseColor,
-      ...textSmall,
+      ...textXSmall,
       ...getFocusJssStyle(),
     },
     icon: {
+      alignSelf: 'flex-start',
       marginRight: '2px',
       flexShrink: '0',
-      width: '1.5em',
-      height: '1.5em',
     },
   });
 };
