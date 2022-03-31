@@ -1,15 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for size: "dark", weight: notification-error, align: car, color: false, ellipsis: %o and theme: %s 1`] = `
+exports[`getComponentCss() should return correct css for theme: dark, color: notification-error, icon: car and isFocusable: false 1`] = `
 ":host {
   display: inline-block;
   position: relative;
 }
+::slotted(a), ::slotted(button) {
+  display: block;
+  position: static;
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+  outline: transparent none;
+}
+::slotted(a:focus)::before, ::slotted(button:focus)::before {
+  outline-color: #fff;
+  border-radius: 4px;
+}
+::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
 ::slotted(a) {
   color: #000;
+  transition: color var(--p-transition-duration, .24s) ease;
 }
 ::slotted(a:hover) {
   color: #ff0223;
+}
+::slotted(button) {
+  margin: 0;
+  padding: 0;
+  background: 0;
+  border: 0;
+  color: inherit;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  content: \\"\\";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
 }
 .root {
   display: inline-flex;
@@ -31,16 +65,50 @@ exports[`getComponentCss() should return correct css for size: "dark", weight: n
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "light", weight: background-surface, align: undefined, color: true, ellipsis: %o and theme: %s 1`] = `
+exports[`getComponentCss() should return correct css for theme: light, color: background-surface, icon: undefined and isFocusable: true 1`] = `
 ":host {
   display: inline-block;
   position: relative;
 }
+::slotted(a), ::slotted(button) {
+  display: block;
+  position: static;
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+  outline: transparent none;
+}
+::slotted(a:focus)::before, ::slotted(button:focus)::before {
+  outline-color: #000;
+  border-radius: 4px;
+}
+::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
 ::slotted(a) {
   color: #000;
+  transition: color var(--p-transition-duration, .24s) ease;
 }
 ::slotted(a:hover) {
   color: #d5001c;
+}
+::slotted(button) {
+  margin: 0;
+  padding: 0;
+  background: 0;
+  border: 0;
+  color: inherit;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  content: \\"\\";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
 }
 .root {
   display: inline-flex;
@@ -65,16 +133,50 @@ exports[`getComponentCss() should return correct css for size: "light", weight: 
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "light", weight: default, align: car, color: true, ellipsis: %o and theme: %s 1`] = `
+exports[`getComponentCss() should return correct css for theme: light, color: default, icon: car and isFocusable: true 1`] = `
 ":host {
   display: inline-block;
   position: relative;
 }
+::slotted(a), ::slotted(button) {
+  display: block;
+  position: static;
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+  outline: transparent none;
+}
+::slotted(a:focus)::before, ::slotted(button:focus)::before {
+  outline-color: #000;
+  border-radius: 4px;
+}
+::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
 ::slotted(a) {
   color: #000;
+  transition: color var(--p-transition-duration, .24s) ease;
 }
 ::slotted(a:hover) {
   color: #d5001c;
+}
+::slotted(button) {
+  margin: 0;
+  padding: 0;
+  background: 0;
+  border: 0;
+  color: inherit;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  content: \\"\\";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
 }
 .root {
   display: inline-flex;
@@ -99,16 +201,50 @@ exports[`getComponentCss() should return correct css for size: "light", weight: 
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "light", weight: neutral-contrast-high, align: highway, color: true, ellipsis: %o and theme: %s 1`] = `
+exports[`getComponentCss() should return correct css for theme: light, color: neutral-contrast-high, icon: highway and isFocusable: true 1`] = `
 ":host {
   display: inline-block;
   position: relative;
 }
+::slotted(a), ::slotted(button) {
+  display: block;
+  position: static;
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+  outline: transparent none;
+}
+::slotted(a:focus)::before, ::slotted(button:focus)::before {
+  outline-color: #000;
+  border-radius: 4px;
+}
+::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
+  outline-color: transparent;
+}
 ::slotted(a) {
   color: #fff;
+  transition: color var(--p-transition-duration, .24s) ease;
 }
 ::slotted(a:hover) {
   color: #d5001c;
+}
+::slotted(button) {
+  margin: 0;
+  padding: 0;
+  background: 0;
+  border: 0;
+  color: inherit;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  content: \\"\\";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 1px;
 }
 .root {
   display: inline-flex;
@@ -130,83 +266,5 @@ exports[`getComponentCss() should return correct css for size: "light", weight: 
 }
 .icon {
   margin-right: 2px;
-}"
-`;
-
-exports[`getSlottedCss() should return correct css 1`] = `
-"p-text a, p-text button {
-  display: block !important;
-  position: static !important;
-  text-decoration: underline !important;
-  cursor: pointer !important;
-  font: inherit !important;
-  outline: transparent none !important;
-}
-p-text a {
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
-p-text button {
-  margin: 0 !important;
-  padding: 0 !important;
-  background: 0 !important;
-  border: 0 !important;
-  color: inherit !important;
-}
-p-text a::before, p-text button::before {
-  content: \\"\\" !important;
-  display: block !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
-}
-p-text a:focus::before, p-text button:focus::before {
-  outline-color: currentColor !important;
-  border-radius: 4px !important;
-}
-p-text a:focus:not(:focus-visible)::before, p-text button:focus:not(:focus-visible)::before {
-  outline-color: transparent !important;
-}"
-`;
-
-exports[`getSlottedCss() should return correct css with prefix 1`] = `
-"prefixed-p-text a, prefixed-p-text button {
-  display: block !important;
-  position: static !important;
-  text-decoration: underline !important;
-  cursor: pointer !important;
-  font: inherit !important;
-  outline: transparent none !important;
-}
-prefixed-p-text a {
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
-prefixed-p-text button {
-  margin: 0 !important;
-  padding: 0 !important;
-  background: 0 !important;
-  border: 0 !important;
-  color: inherit !important;
-}
-prefixed-p-text a::before, prefixed-p-text button::before {
-  content: \\"\\" !important;
-  display: block !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
-}
-prefixed-p-text a:focus::before, prefixed-p-text button:focus::before {
-  outline-color: currentColor !important;
-  border-radius: 4px !important;
-}
-prefixed-p-text a:focus:not(:focus-visible)::before, prefixed-p-text button:focus:not(:focus-visible)::before {
-  outline-color: transparent !important;
 }"
 `;
