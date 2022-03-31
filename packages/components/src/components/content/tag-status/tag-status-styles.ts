@@ -1,4 +1,4 @@
-import { buildSlottedStyles, getCss, isThemeDark } from '../../../utils';
+import { getCss, isThemeDark } from '../../../utils';
 import { getInsetJssStyle, getThemedColors, getTransition } from '../../../styles';
 import { textXSmall } from '@porsche-design-system/utilities';
 import type { ThemedColors } from '../../../styles';
@@ -37,11 +37,43 @@ export const getComponentCss = (theme: Theme, color: TagColor, icon: IconName, i
         position: 'relative',
       },
       '::slotted': {
+        '&(a),&(button)': {
+          display: 'block',
+          position: 'static',
+          textDecoration: 'underline',
+          cursor: 'pointer',
+          font: 'inherit',
+          // color: 'inherit', // TODO: chrome hover bug. Use when fixed.
+          outline: 'transparent none',
+          '&::before': {
+            content: '""',
+            display: 'block',
+            position: 'absolute',
+            ...getInsetJssStyle(),
+            outline: '1px solid transparent',
+            outlineOffset: '1px',
+          },
+        },
+        '&(a:focus)::before, &(button:focus)::before': {
+          outlineColor: themedColors.baseColor,
+          borderRadius: '4px',
+        },
+        '&(a:focus:not(:focus-visible))::before, &(button:focus:not(:focus-visible))::before': {
+          outlineColor: 'transparent',
+        },
         '&(a)': {
           color: baseColor, // TODO: chrome hover bug. Remove when fixed.
+          transition: getTransition('color'), // TODO: chrome hover bug. Remove when fixed.
         },
         '&(a:hover)': {
           color: themedColors.hoverColor, // TODO: chrome hover bug. Remove when fixed.
+        },
+        '&(button)': {
+          margin: 0,
+          padding: 0,
+          background: 0,
+          border: 0,
+          color: 'inherit', // TODO: chrome hover bug. Remove when fixed.
         },
       },
     },
@@ -66,45 +98,4 @@ export const getComponentCss = (theme: Theme, color: TagColor, icon: IconName, i
       marginRight: '2px',
     },
   });
-};
-
-export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(
-    buildSlottedStyles(host, {
-      '& a,button': {
-        display: 'block',
-        position: 'static',
-        textDecoration: 'underline',
-        cursor: 'pointer',
-        font: 'inherit',
-        // color: 'inherit', // TODO: chrome hover bug. Use when fixed.
-        outline: 'transparent none',
-        '&::before': {
-          content: '""',
-          display: 'block',
-          position: 'absolute',
-          ...getInsetJssStyle(),
-          outline: '1px solid transparent',
-          outlineOffset: '1px',
-        },
-        '&:focus::before': {
-          outlineColor: 'currentColor',
-          borderRadius: '4px',
-        },
-        '&:focus:not(:focus-visible)::before': {
-          outlineColor: 'transparent',
-        },
-      },
-      '& a': {
-        transition: getTransition('color'), // TODO: chrome hover bug. Remove when fixed.
-      },
-      '& button': {
-        margin: 0,
-        padding: 0,
-        background: 0,
-        border: 0,
-        color: 'inherit', // TODO: chrome hover bug. Remove when fixed.
-      },
-    })
-  );
 };
