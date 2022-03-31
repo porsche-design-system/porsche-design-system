@@ -1,0 +1,212 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getComponentCss() should return correct css for size: "dark", weight: notification-error, align: car, color: false, ellipsis: %o and theme: %s 1`] = `
+":host {
+  display: inline-block;
+  position: relative;
+}
+::slotted(a) {
+  color: #000;
+}
+::slotted(a:hover) {
+  color: #ff0223;
+}
+.root {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: top;
+  padding: 0px 6px 0px 4px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background: #fec5c5;
+  color: #000;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.6666666667;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.icon {
+  margin-right: 2px;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for size: "light", weight: background-surface, align: undefined, color: true, ellipsis: %o and theme: %s 1`] = `
+":host {
+  display: inline-block;
+  position: relative;
+}
+::slotted(a) {
+  color: #000;
+}
+::slotted(a:hover) {
+  color: #d5001c;
+}
+.root {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: top;
+  padding: 2px 6px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background: #f2f2f2;
+  color: #000;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.6666666667;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.root:hover {
+  color: #d5001c;
+}
+.icon {
+  margin-right: 2px;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for size: "light", weight: default, align: car, color: true, ellipsis: %o and theme: %s 1`] = `
+":host {
+  display: inline-block;
+  position: relative;
+}
+::slotted(a) {
+  color: #000;
+}
+::slotted(a:hover) {
+  color: #d5001c;
+}
+.root {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: top;
+  padding: 0px 6px 0px 4px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background: #fff;
+  color: #000;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.6666666667;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.root:hover {
+  color: #d5001c;
+}
+.icon {
+  margin-right: 2px;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for size: "light", weight: neutral-contrast-high, align: highway, color: true, ellipsis: %o and theme: %s 1`] = `
+":host {
+  display: inline-block;
+  position: relative;
+}
+::slotted(a) {
+  color: #fff;
+}
+::slotted(a:hover) {
+  color: #d5001c;
+}
+.root {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: top;
+  padding: 0px 6px 0px 4px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background: #323639;
+  color: #fff;
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.6666666667;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.root:hover {
+  color: #d5001c;
+}
+.icon {
+  margin-right: 2px;
+}"
+`;
+
+exports[`getSlottedCss() should return correct css 1`] = `
+"p-text a, p-text button {
+  display: block !important;
+  position: static !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+  font: inherit !important;
+  outline: transparent none !important;
+}
+p-text a {
+  transition: color var(--p-transition-duration, .24s) ease !important;
+}
+p-text button {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: 0 !important;
+  border: 0 !important;
+  color: inherit !important;
+}
+p-text a::before, p-text button::before {
+  content: \\"\\" !important;
+  display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
+}
+p-text a:focus::before, p-text button:focus::before {
+  outline-color: currentColor !important;
+  border-radius: 4px !important;
+}
+p-text a:focus:not(:focus-visible)::before, p-text button:focus:not(:focus-visible)::before {
+  outline-color: transparent !important;
+}"
+`;
+
+exports[`getSlottedCss() should return correct css with prefix 1`] = `
+"prefixed-p-text a, prefixed-p-text button {
+  display: block !important;
+  position: static !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+  font: inherit !important;
+  outline: transparent none !important;
+}
+prefixed-p-text a {
+  transition: color var(--p-transition-duration, .24s) ease !important;
+}
+prefixed-p-text button {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: 0 !important;
+  border: 0 !important;
+  color: inherit !important;
+}
+prefixed-p-text a::before, prefixed-p-text button::before {
+  content: \\"\\" !important;
+  display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
+}
+prefixed-p-text a:focus::before, prefixed-p-text button:focus::before {
+  outline-color: currentColor !important;
+  border-radius: 4px !important;
+}
+prefixed-p-text a:focus:not(:focus-visible)::before, prefixed-p-text button:focus:not(:focus-visible)::before {
+  outline-color: transparent !important;
+}"
+`;
