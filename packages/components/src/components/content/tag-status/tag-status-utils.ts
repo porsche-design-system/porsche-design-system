@@ -1,4 +1,5 @@
 import type { TextColor } from '../../../types';
+import { getHTMLElement } from '../../../utils';
 
 export type TagColor =
   | Extract<
@@ -11,3 +12,7 @@ export type TagColor =
       | 'notification-neutral'
     >
   | 'background-surface';
+
+export const isFocusable = (host: HTMLElement) => {
+  return !!getHTMLElement(host, 'a,button');
+};

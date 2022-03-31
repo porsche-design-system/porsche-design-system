@@ -1,9 +1,8 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import { IconName, Theme } from '../../../types';
-import { TagColor } from './tag-status-utils';
+import { isFocusable, TagColor } from './tag-status-utils';
 import { attachComponentCss, attachSlottedCss } from '../../../utils';
-import { getComponentCss } from './tag-status-styles';
-import { getSlottedCss } from '../../basic/typography/text/text-styles';
+import { getComponentCss, getSlottedCss } from './tag-status-styles';
 
 @Component({
   tag: 'p-tag-status',
@@ -29,13 +28,15 @@ export class TagStatus {
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.theme, this.color, this.icon);
+    attachComponentCss(this.host, getComponentCss, this.theme, this.color, this.icon, isFocusable(this.host));
   }
 
   public render(): JSX.Element {
     return (
       <span class="root">
-        {this.icon && <p-icon class="icon" name={this.icon} source={this.iconSource} color="inherit" />}
+        {this.icon && (
+          <p-icon class="icon" name={this.icon} source={this.iconSource} color="inherit" aria-hidden="true" />
+        )}
         <slot />
       </span>
     );
