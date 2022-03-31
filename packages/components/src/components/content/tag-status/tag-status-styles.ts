@@ -1,5 +1,5 @@
-import { getCss, isThemeDark } from '../../../utils';
-import { getFocusJssStyle, getThemedColors } from '../../../styles';
+import { buildSlottedStyles, getCss, isThemeDark } from '../../../utils';
+import { getInsetJssStyle, getThemedColors, getTransition } from '../../../styles';
 import { textXSmall } from '@porsche-design-system/utilities';
 import type { ThemedColors } from '../../../styles';
 import type { TagColor } from './tag-status-utils';
@@ -20,7 +20,7 @@ const getThemedBackgroundColor = (color: TagColor, themedColors: ThemedColors) =
   return colorMap[color];
 };
 
-export const getComponentCss = (theme: Theme, color: TagColor, icon: IconName): string => {
+export const getComponentCss = (theme: Theme, color: TagColor, icon: IconName, isFocusable: boolean): string => {
   const themedColors = getThemedColors(theme);
   const isDark = isThemeDark(theme);
 
@@ -34,24 +34,77 @@ export const getComponentCss = (theme: Theme, color: TagColor, icon: IconName): 
     '@global': {
       ':host': {
         display: 'inline-block',
+        position: 'relative',
+      },
+      '::slotted': {
+        '&(a)': {
+          color: baseColor, // TODO: chrome hover bug. Remove when fixed.
+        },
+        '&(a:hover)': {
+          color: themedColors.hoverColor, // TODO: chrome hover bug. Remove when fixed.
+        },
       },
     },
     root: {
       display: 'inline-flex',
       alignItems: 'center',
       verticalAlign: 'top',
-      boxSizing: 'border-box',
       padding: icon ? '0px 6px 0px 4px' : '2px 6px',
+      boxSizing: 'border-box',
       borderRadius: '4px',
       background: getThemedBackgroundColor(color, themedColors),
       color: baseColor,
       ...textXSmall,
-      ...getFocusJssStyle(),
+      transition: getTransition('color'),
+      ...(isFocusable && {
+        '&:hover': {
+          color: themedColors.hoverColor,
+        },
+      }),
     },
     icon: {
-      alignSelf: 'flex-start',
       marginRight: '2px',
-      flexShrink: '0',
     },
   });
+};
+
+export const getSlottedCss = (host: HTMLElement): string => {
+  return getCss(
+    buildSlottedStyles(host, {
+      '& a,button': {
+        display: 'block',
+        position: 'static',
+        textDecoration: 'underline',
+        cursor: 'pointer',
+        font: 'inherit',
+        // color: 'inherit', // TODO: chrome hover bug. Use when fixed.
+        outline: 'transparent none',
+        '&::before': {
+          content: '""',
+          display: 'block',
+          position: 'absolute',
+          ...getInsetJssStyle(),
+          outline: '1px solid transparent',
+          outlineOffset: '1px',
+        },
+        '&:focus::before': {
+          outlineColor: 'currentColor',
+          borderRadius: '4px',
+        },
+        '&:focus:not(:focus-visible)::before': {
+          outlineColor: 'transparent',
+        },
+      },
+      '& a': {
+        transition: getTransition('color'), // TODO: chrome hover bug. Remove when fixed.
+      },
+      '& button': {
+        margin: 0,
+        padding: 0,
+        background: 0,
+        border: 0,
+        color: 'inherit', // TODO: chrome hover bug. Remove when fixed.
+      },
+    })
+  );
 };
