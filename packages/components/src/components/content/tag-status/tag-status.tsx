@@ -1,6 +1,6 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import { IconName, Theme } from '../../../types';
-import { isFocusable, TagColor } from './tag-status-utils';
+import { hasSlottedAnchorOrButton, TagColor } from './tag-status-utils';
 import { attachComponentCss, attachSlottedCss } from '../../../utils';
 import { getComponentCss, getSlottedCss } from './tag-status-styles';
 
@@ -28,7 +28,14 @@ export class TagStatus {
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.theme, this.color, this.icon, isFocusable(this.host));
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.theme,
+      this.color,
+      this.icon,
+      hasSlottedAnchorOrButton(this.host)
+    );
   }
 
   public render(): JSX.Element {

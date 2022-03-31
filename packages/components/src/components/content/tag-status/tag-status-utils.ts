@@ -13,6 +13,6 @@ export type TagColor =
     >
   | 'background-surface';
 
-export const isFocusable = (host: HTMLElement) => {
+export const hasSlottedAnchorOrButton = (host: HTMLElement) => {
   return !!getHTMLElement(host, 'a,button');
 };
