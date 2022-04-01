@@ -11,6 +11,7 @@ import { Switch } from './action/switch/switch';
 import { Marque } from './basic/marque/marque';
 import { Accordion } from './content/accordion/accordion';
 import { Modal } from './content/modal/modal';
+import { TagStatus } from './content/tag-status/tag-status';
 import { Banner } from './feedback/banner/banner';
 import { InlineNotification } from './feedback/inline-notification/inline-notification';
 import { Popover } from './feedback/popover/popover';
@@ -66,6 +67,7 @@ export const TAG_NAMES_CONSTRUCTOR_MAP: { [key in TagName]: new () => ClassType 
   'p-marque': Marque,
   'p-accordion': Accordion,
   'p-modal': Modal,
+  'p-tag-status': TagStatus,
   'p-banner': Banner,
   'p-inline-notification': InlineNotification,
   'p-popover': Popover,
