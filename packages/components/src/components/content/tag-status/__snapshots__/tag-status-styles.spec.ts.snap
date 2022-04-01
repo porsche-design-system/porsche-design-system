@@ -6,44 +6,44 @@ exports[`getComponentCss() should return correct css for theme: dark, color: not
   position: relative;
 }
 ::slotted(a), ::slotted(button) {
-  display: block;
-  position: static;
-  text-decoration: underline;
-  cursor: pointer;
-  font: inherit;
-  outline: transparent none;
+  display: block !important;
+  position: static !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+  font: inherit !important;
+  outline: transparent none !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: #fff;
-  border-radius: 4px;
+  outline-color: #fff !important;
+  border-radius: 4px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent;
+  outline-color: transparent !important;
 }
 ::slotted(a) {
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #000 !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:hover) {
-  color: #ff0223;
+  color: #ff0223 !important;
 }
 ::slotted(button) {
-  margin: 0;
-  padding: 0;
-  background: 0;
-  border: 0;
-  color: inherit;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: 0 !important;
+  border: 0 !important;
+  color: inherit !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
+  content: \\"\\" !important;
+  display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
 }
 .root {
   display: inline-flex;
@@ -54,10 +54,11 @@ exports[`getComponentCss() should return correct css for theme: dark, color: not
   border-radius: 4px;
   background: #fec5c5;
   color: #000;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight: 400;
-  font-size: 0.75rem;
-  line-height: 1.6666666667;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .icon {
@@ -71,44 +72,44 @@ exports[`getComponentCss() should return correct css for theme: light, color: ba
   position: relative;
 }
 ::slotted(a), ::slotted(button) {
-  display: block;
-  position: static;
-  text-decoration: underline;
-  cursor: pointer;
-  font: inherit;
-  outline: transparent none;
+  display: block !important;
+  position: static !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+  font: inherit !important;
+  outline: transparent none !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: #000;
-  border-radius: 4px;
+  outline-color: #000 !important;
+  border-radius: 4px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent;
+  outline-color: transparent !important;
 }
 ::slotted(a) {
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #000 !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:hover) {
-  color: #d5001c;
+  color: #d5001c !important;
 }
 ::slotted(button) {
-  margin: 0;
-  padding: 0;
-  background: 0;
-  border: 0;
-  color: inherit;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: 0 !important;
+  border: 0 !important;
+  color: inherit !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
+  content: \\"\\" !important;
+  display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
 }
 .root {
   display: inline-flex;
@@ -119,10 +120,11 @@ exports[`getComponentCss() should return correct css for theme: light, color: ba
   border-radius: 4px;
   background: #f2f2f2;
   color: #000;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight: 400;
-  font-size: 0.75rem;
-  line-height: 1.6666666667;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .root:hover {
@@ -139,44 +141,44 @@ exports[`getComponentCss() should return correct css for theme: light, color: de
   position: relative;
 }
 ::slotted(a), ::slotted(button) {
-  display: block;
-  position: static;
-  text-decoration: underline;
-  cursor: pointer;
-  font: inherit;
-  outline: transparent none;
+  display: block !important;
+  position: static !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+  font: inherit !important;
+  outline: transparent none !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: #000;
-  border-radius: 4px;
+  outline-color: #000 !important;
+  border-radius: 4px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent;
+  outline-color: transparent !important;
 }
 ::slotted(a) {
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #000 !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:hover) {
-  color: #d5001c;
+  color: #d5001c !important;
 }
 ::slotted(button) {
-  margin: 0;
-  padding: 0;
-  background: 0;
-  border: 0;
-  color: inherit;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: 0 !important;
+  border: 0 !important;
+  color: inherit !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
+  content: \\"\\" !important;
+  display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
 }
 .root {
   display: inline-flex;
@@ -187,10 +189,11 @@ exports[`getComponentCss() should return correct css for theme: light, color: de
   border-radius: 4px;
   background: #fff;
   color: #000;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight: 400;
-  font-size: 0.75rem;
-  line-height: 1.6666666667;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .root:hover {
@@ -207,44 +210,44 @@ exports[`getComponentCss() should return correct css for theme: light, color: ne
   position: relative;
 }
 ::slotted(a), ::slotted(button) {
-  display: block;
-  position: static;
-  text-decoration: underline;
-  cursor: pointer;
-  font: inherit;
-  outline: transparent none;
+  display: block !important;
+  position: static !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+  font: inherit !important;
+  outline: transparent none !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: #000;
-  border-radius: 4px;
+  outline-color: #000 !important;
+  border-radius: 4px !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent;
+  outline-color: transparent !important;
 }
 ::slotted(a) {
-  color: #fff;
-  transition: color var(--p-transition-duration, .24s) ease;
+  color: #fff !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:hover) {
-  color: #d5001c;
+  color: #d5001c !important;
 }
 ::slotted(button) {
-  margin: 0;
-  padding: 0;
-  background: 0;
-  border: 0;
-  color: inherit;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: 0 !important;
+  border: 0 !important;
+  color: inherit !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 1px solid transparent;
-  outline-offset: 1px;
+  content: \\"\\" !important;
+  display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 1px !important;
 }
 .root {
   display: inline-flex;
@@ -255,10 +258,11 @@ exports[`getComponentCss() should return correct css for theme: light, color: ne
   border-radius: 4px;
   background: #323639;
   color: #fff;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-weight: 400;
-  font-size: 0.75rem;
-  line-height: 1.6666666667;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .root:hover {
