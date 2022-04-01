@@ -23,12 +23,11 @@ const getThemedBackgroundColor = (color: TagColor, themedColors: ThemedColors) =
 export const getComponentCss = (theme: Theme, color: TagColor, icon: IconName, isFocusable: boolean): string => {
   const themedColors = getThemedColors(theme);
   const isDark = isThemeDark(theme);
-
-  const { baseColor } =
+  const colorCondition =
     (theme === 'light' && color !== 'neutral-contrast-high') ||
-    (isDark && (color === 'background-surface' || color === 'default'))
-      ? themedColors
-      : getThemedColors(isDark ? 'light' : 'dark');
+    (isDark && (color === 'background-surface' || color === 'default'));
+
+  const { baseColor } = colorCondition ? themedColors : getThemedColors(isDark ? 'light' : 'dark');
 
   return getCss({
     '@global': {
@@ -52,12 +51,24 @@ export const getComponentCss = (theme: Theme, color: TagColor, icon: IconName, i
             ...getInsetJssStyle(),
             outline: '1px solid transparent',
             outlineOffset: '1px',
+            borderRadius: '4px',
           },
         },
-        '&(a:focus)::before, &(button:focus)::before': {
-          outlineColor: themedColors.baseColor,
-          borderRadius: '4px',
-        },
+        ...(!colorCondition
+          ? {
+              '&(a:focus)::before, &(button:focus)::before': {
+                outlineColor: themedColors.baseColor,
+              },
+              '&(a:focus-visible:hover)::before, &(button:focus-visible:hover)::before': {
+                transition: getTransition('outline-color'),
+                outlineColor: themedColors.focusColor,
+              },
+            }
+          : {
+              '&(a:focus)::before, &(button:focus)::before': {
+                outlineColor: themedColors.focusColor,
+              },
+            }),
         '&(a:focus:not(:focus-visible))::before, &(button:focus:not(:focus-visible))::before': {
           outlineColor: 'transparent',
         },
