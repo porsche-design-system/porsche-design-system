@@ -1,8 +1,9 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
-import { IconName, Theme } from '../../../types';
-import { hasSlottedAnchorOrButton, TagColor } from './tag-status-utils';
+import { hasSlottedAnchorOrButton } from './tag-status-utils';
 import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
 import { getComponentCss } from './tag-status-styles';
+import type { Theme } from '../../../types';
+import type { TagColor, TagIconName } from './tag-status-utils';
 
 @Component({
   tag: 'p-tag-status',
@@ -18,7 +19,7 @@ export class TagStatus {
   @Prop() public color?: TagColor = 'background-surface';
 
   /** The icon shown. */
-  @Prop() public icon?: IconName | undefined;
+  @Prop() public icon?: TagIconName;
 
   /** A custom URL path to a custom icon. */
   @Prop() public iconSource?: string;
