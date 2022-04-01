@@ -219,6 +219,10 @@ import { componentsReady } from '@porsche-design-system/components-angular';
             <p-grid-item [size]="6"><p>2</p></p-grid-item>
           </p-grid>
         </div>
+
+        <div class="playground light" title="should render default tag-status">
+          <p-tag-status>Some Tag</p-tag-status>
+        </div>
       </div>
 
       <div style="flex: 1">
@@ -401,6 +405,10 @@ import { componentsReady } from '@porsche-design-system/components-angular';
             <my-prefix-p-grid-item p-grid-item [size]="6"><p>1</p></my-prefix-p-grid-item>
             <my-prefix-p-grid-item p-grid-item [size]="6"><p>2</p></my-prefix-p-grid-item>
           </my-prefix-p-grid>
+        </div>
+
+        <div class="playground light" title="should render default tag-status with custom prefix">
+          <my-prefix-p-tag-status p-tag-status>Some Tag</my-prefix-p-tag-status>
         </div>
       </div>
     </div>
