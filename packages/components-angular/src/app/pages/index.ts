@@ -67,6 +67,7 @@ import { SpinnerComponent } from './spinner.component';
 import { SwitchComponent } from './switch.component';
 import { TabsComponent } from './tabs.component';
 import { TabsBarComponent } from './tabs-bar.component';
+import { TagStatusComponent } from './tag-status.component';
 import { TextComponent } from './text.component';
 import { TextareaWrapperComponent } from './textarea-wrapper.component';
 import { TextareaWrapperSkeletonComponent } from './textarea-wrapper-skeleton.component';
@@ -129,6 +130,7 @@ export const generatedPages = [
   SwitchComponent,
   TabsBarComponent,
   TabsComponent,
+  TagStatusComponent,
   TextFieldWrapperSkeletonComponent,
   TextFieldWrapperComponent,
   TextListComponent,
@@ -361,6 +363,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Tabs',
     path: 'tabs',
     component: TabsComponent,
+  },
+  {
+    name: 'Tag Status',
+    path: 'tag-status',
+    component: TagStatusComponent,
   },
   {
     name: 'Text Field Wrapper Skeleton',
