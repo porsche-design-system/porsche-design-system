@@ -1,7 +1,7 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import { IconName, Theme } from '../../../types';
 import { hasSlottedAnchorOrButton, TagColor } from './tag-status-utils';
-import { attachComponentCss } from '../../../utils';
+import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
 import { getComponentCss } from './tag-status-styles';
 
 @Component({
@@ -18,7 +18,7 @@ export class TagStatus {
   @Prop() public color?: TagColor = 'background-surface';
 
   /** The icon shown. */
-  @Prop() public icon?: IconName = undefined;
+  @Prop() public icon?: IconName | undefined;
 
   /** A custom URL path to a custom icon. */
   @Prop() public iconSource?: string;
@@ -35,10 +35,17 @@ export class TagStatus {
   }
 
   public render(): JSX.Element {
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <span class="root">
         {this.icon && (
-          <p-icon class="icon" name={this.icon} source={this.iconSource} color="inherit" aria-hidden="true" />
+          <PrefixedTagNames.pIcon
+            class="icon"
+            name={this.icon}
+            source={this.iconSource}
+            color="inherit"
+            aria-hidden="true"
+          />
         )}
         <slot />
       </span>

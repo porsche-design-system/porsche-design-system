@@ -860,7 +860,7 @@ export namespace Components {
         /**
           * The icon shown.
          */
-        "icon"?: IconName;
+        "icon"?: IconName | undefined;
         /**
           * A custom URL path to a custom icon.
          */
@@ -2180,7 +2180,7 @@ declare namespace LocalJSX {
         /**
           * The icon shown.
          */
-        "icon"?: IconName;
+        "icon"?: IconName | undefined;
         /**
           * A custom URL path to a custom icon.
          */
