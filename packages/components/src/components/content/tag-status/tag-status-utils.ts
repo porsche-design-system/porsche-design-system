@@ -1,5 +1,7 @@
-import type { TextColor } from '../../../types';
+import type { IconName, TextColor } from '../../../types';
 import { getHTMLElement } from '../../../utils';
+
+export type TagIconName = IconName | undefined;
 
 export type TagColor =
   | Extract<
@@ -13,6 +15,6 @@ export type TagColor =
     >
   | 'background-surface';
 
-export const hasSlottedAnchorOrButton = (host: HTMLElement) => {
+export const hasSlottedAnchorOrButton = (host: HTMLElement): boolean => {
   return !!getHTMLElement(host, 'a,button');
 };
