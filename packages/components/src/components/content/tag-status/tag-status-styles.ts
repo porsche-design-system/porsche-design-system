@@ -1,6 +1,6 @@
 import { getCss, isThemeDark } from '../../../utils';
-import { getInsetJssStyle, getThemedColors, getTransition } from '../../../styles';
-import { textXSmall } from '@porsche-design-system/utilities';
+import { addImportantToEachRule, getInsetJssStyle, getThemedColors, getTransition } from '../../../styles';
+import { textXSmall } from '@porsche-design-system/utilities-v2';
 import type { ThemedColors } from '../../../styles';
 import type { TagColor } from './tag-status-utils';
 import type { Theme } from '../../../types';
@@ -36,7 +36,7 @@ export const getComponentCss = (theme: Theme, color: TagColor, icon: IconName, i
         display: 'inline-block',
         position: 'relative',
       },
-      '::slotted': {
+      '::slotted': addImportantToEachRule({
         '&(a),&(button)': {
           display: 'block',
           position: 'static',
@@ -75,7 +75,7 @@ export const getComponentCss = (theme: Theme, color: TagColor, icon: IconName, i
           border: 0,
           color: 'inherit', // TODO: chrome hover bug. Remove when fixed.
         },
-      },
+      }),
     },
     root: {
       display: 'inline-flex',
