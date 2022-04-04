@@ -60,7 +60,9 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           <p-tag-status theme="${theme}" color="notification-warning"><button>Button</button></p-tag-status>
         </div>`;
 
-      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup, { withSurface: true }), {
+        injectIntoHead: head,
+      });
 
       await forceHoverState(page, '.hover p-tag-status >>> span');
       await forceHoverState(page, '.hover p-tag-status a'); // TODO: chrome hover bug. Remove when fixed.
