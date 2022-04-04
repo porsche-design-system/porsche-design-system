@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should contain correct values for breakpoint 1`] = `
+Object {
+  "l": 1300,
+  "m": 1000,
+  "s": 760,
+  "xl": 1760,
+  "xs": 480,
+  "xxl": 1920,
+  "xxs": 0,
+}
+`;

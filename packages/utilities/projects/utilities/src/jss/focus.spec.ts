@@ -1,10 +1,10 @@
-import { getFocusJssStyle } from './focus';
+import { getFocus } from './focus';
 
-describe('getFocusJssStyle()', () => {
-  it.each<Parameters<typeof getFocusJssStyle>>([[], [{ color: 'deeppink' }], [{ offset: '5rem' }]])(
+describe('getFocus()', () => {
+  it.each<Parameters<typeof getFocus>>([[], [{ color: 'deeppink' }], [{ offset: '5rem' }]])(
     'should return correct css for opts: %s',
     (...args) => {
-      expect(getFocusJssStyle(...args)).toMatchSnapshot();
+      expect(getFocus(...args)).toMatchSnapshot();
     }
   );
 });
