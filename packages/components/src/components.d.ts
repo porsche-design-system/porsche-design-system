@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AlignLabel, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme, ThemeExtendedElectric, ThemeExtendedElectricDark } from "./types";
+import { AlignLabel, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, Hyphens, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme, ThemeExtendedElectric, ThemeExtendedElectricDark } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/content/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { BannerState } from "./components/feedback/banner/banner-utils";
@@ -345,6 +345,10 @@ export namespace Components {
           * Adds an ellipsis to a single line of text if it overflows.
          */
         "ellipsis"?: boolean;
+        /**
+          * Overrides the default hyphens behaviour when text wraps across multiple lines.
+         */
+        "hyphens"?: Hyphens;
         /**
           * Sets a custom HTML tag depending of the usage of the headline component.
          */
@@ -1608,6 +1612,10 @@ declare namespace LocalJSX {
           * Adds an ellipsis to a single line of text if it overflows.
          */
         "ellipsis"?: boolean;
+        /**
+          * Overrides the default hyphens behaviour when text wraps across multiple lines.
+         */
+        "hyphens"?: Hyphens;
         /**
           * Sets a custom HTML tag depending of the usage of the headline component.
          */

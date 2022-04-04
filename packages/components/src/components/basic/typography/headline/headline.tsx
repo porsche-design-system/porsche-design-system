@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { getPrefixedTagNames, getThemeDarkAttribute, attachSlottedCss, attachComponentCss } from '../../../../utils';
-import type { TextAlign, TextColor, Theme } from '../../../../types';
+import type { Hyphens, TextAlign, TextColor, Theme } from '../../../../types';
 import type { HeadlineTag, HeadlineVariant } from './headline-utils';
 import { getHeadlineTagName, isVariantType } from './headline-utils';
 import { getComponentCss, getSlottedCss } from './headline-styles';
@@ -30,12 +30,24 @@ export class Headline {
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
 
+  /** Overrides the default hyphens behaviour when text wraps across multiple lines. */
+  @Prop() public hyphens?: Hyphens;
+
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.variant, this.align, this.color, this.ellipsis, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.variant,
+      this.align,
+      this.color,
+      this.ellipsis,
+      this.theme,
+      this.hyphens
+    );
   }
 
   public render(): JSX.Element {
