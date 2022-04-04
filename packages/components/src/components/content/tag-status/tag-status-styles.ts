@@ -4,7 +4,6 @@ import { textXSmall } from '@porsche-design-system/utilities-v2';
 import type { ThemedColors } from '../../../styles';
 import type { TagColor } from './tag-status-utils';
 import type { Theme } from '../../../types';
-import type { IconName } from '../../../types';
 
 const getThemedBackgroundColor = (color: TagColor, themedColors: ThemedColors) => {
   const colorMap: { [key in TagColor]: string } = {
@@ -20,7 +19,7 @@ const getThemedBackgroundColor = (color: TagColor, themedColors: ThemedColors) =
   return colorMap[color];
 };
 
-export const getComponentCss = (theme: Theme, color: TagColor, icon: IconName, isFocusable: boolean): string => {
+export const getComponentCss = (theme: Theme, color: TagColor, isFocusable: boolean): string => {
   const themedColors = getThemedColors(theme);
   const isDark = isThemeDark(theme);
   const hasInvertedThemeColor =
@@ -86,13 +85,15 @@ export const getComponentCss = (theme: Theme, color: TagColor, icon: IconName, i
       position: 'relative',
       alignItems: 'center',
       verticalAlign: 'top',
-      padding: icon ? '0px 6px 0px 4px' : '2px 6px',
+      minHeight: '24px',
+      padding: '0 6px',
       boxSizing: 'border-box',
       borderRadius: '4px',
       background: getThemedBackgroundColor(color, themedColors),
       color: baseColor,
       ...textXSmall,
       transition: getTransition('color'),
+      whiteSpace: 'nowrap',
       ...(isFocusable && {
         '&:hover': {
           color: hoverColor,
@@ -100,7 +101,7 @@ export const getComponentCss = (theme: Theme, color: TagColor, icon: IconName, i
       }),
     },
     icon: {
-      marginRight: '2px',
+      margin: '0 2px 0 -2px',
     },
   });
 };

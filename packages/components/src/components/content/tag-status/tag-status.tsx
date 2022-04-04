@@ -25,21 +25,14 @@ export class TagStatus {
   @Prop() public iconSource?: string;
 
   public componentWillRender(): void {
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.theme,
-      this.color,
-      this.icon,
-      hasSlottedAnchorOrButton(this.host)
-    );
+    attachComponentCss(this.host, getComponentCss, this.theme, this.color, hasSlottedAnchorOrButton(this.host));
   }
 
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <span class="root">
-        {this.icon && (
+        {(this.icon || this.iconSource) && (
           <PrefixedTagNames.pIcon
             class="icon"
             name={this.icon}
