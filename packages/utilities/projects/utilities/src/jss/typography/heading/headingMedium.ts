@@ -2,7 +2,7 @@ import { fontBehavior, fontFamily, fontStyle, fontVariant, fontWeight } from '..
 import { mediaQueryMin, mediaQueryMinMax } from '../../mediaQuery';
 
 export const headingMedium = {
-  font: `${fontStyle} ${fontVariant} ${fontWeight.semibold} 1.25rem/1.4 ${fontFamily}`,
+  font: `${fontStyle} ${fontVariant} ${fontWeight.semiBold} 1.25rem/1.4 ${fontFamily}`,
   ...fontBehavior,
   [mediaQueryMinMax('s', 'm')]: {
     fontSize: '1.5rem',

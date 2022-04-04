@@ -44,7 +44,7 @@ exports[`should contain correct values for fontWeight 1`] = `
 Object {
   "bold": 700,
   "regular": 400,
-  "semibold": 600,
+  "semiBold": 600,
   "thin": 100,
 }
 `;
