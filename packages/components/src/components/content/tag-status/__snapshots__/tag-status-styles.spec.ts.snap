@@ -3,7 +3,6 @@
 exports[`getComponentCss() should return correct css for theme: dark, color: notification-error, icon: car and isFocusable: false 1`] = `
 ":host {
   display: inline-block;
-  position: relative;
 }
 ::slotted(a), ::slotted(button) {
   display: block !important;
@@ -11,24 +10,37 @@ exports[`getComponentCss() should return correct css for theme: dark, color: not
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
-  outline: transparent none !important;
+  outline: 0 !important;
+}
+::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
+  border: 0 !important;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  content: \\"\\" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
   outline-color: #fff !important;
 }
+::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
+  outline-color: transparent !important;
+}
 ::slotted(a:focus-visible:hover)::before, ::slotted(button:focus-visible:hover)::before {
   transition: outline-color var(--p-transition-duration, .24s) ease !important;
   outline-color: currentColor !important;
-}
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent !important;
 }
 ::slotted(a) {
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:hover) {
-  color: #ff0223 !important;
+  color: #d5001c !important;
 }
 ::slotted(button) {
   margin: 0 !important;
@@ -36,21 +48,14 @@ exports[`getComponentCss() should return correct css for theme: dark, color: not
   background: 0 !important;
   border: 0 !important;
   color: inherit !important;
+  text-align: left !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
-  display: block !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
   border-radius: 4px !important;
 }
 .root {
   display: inline-flex;
+  position: relative;
   align-items: center;
   vertical-align: top;
   padding: 0px 6px 0px 4px;
@@ -73,7 +78,6 @@ exports[`getComponentCss() should return correct css for theme: dark, color: not
 exports[`getComponentCss() should return correct css for theme: light, color: background-surface, icon: undefined and isFocusable: true 1`] = `
 ":host {
   display: inline-block;
-  position: relative;
 }
 ::slotted(a), ::slotted(button) {
   display: block !important;
@@ -81,7 +85,20 @@ exports[`getComponentCss() should return correct css for theme: light, color: ba
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
-  outline: transparent none !important;
+  outline: 0 !important;
+}
+::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
+  border: 0 !important;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  content: \\"\\" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
   outline-color: currentColor !important;
@@ -102,21 +119,14 @@ exports[`getComponentCss() should return correct css for theme: light, color: ba
   background: 0 !important;
   border: 0 !important;
   color: inherit !important;
+  text-align: left !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
-  display: block !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
   border-radius: 4px !important;
 }
 .root {
   display: inline-flex;
+  position: relative;
   align-items: center;
   vertical-align: top;
   padding: 2px 6px;
@@ -142,7 +152,6 @@ exports[`getComponentCss() should return correct css for theme: light, color: ba
 exports[`getComponentCss() should return correct css for theme: light, color: default, icon: car and isFocusable: true 1`] = `
 ":host {
   display: inline-block;
-  position: relative;
 }
 ::slotted(a), ::slotted(button) {
   display: block !important;
@@ -150,7 +159,20 @@ exports[`getComponentCss() should return correct css for theme: light, color: de
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
-  outline: transparent none !important;
+  outline: 0 !important;
+}
+::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
+  border: 0 !important;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  content: \\"\\" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
   outline-color: currentColor !important;
@@ -171,21 +193,14 @@ exports[`getComponentCss() should return correct css for theme: light, color: de
   background: 0 !important;
   border: 0 !important;
   color: inherit !important;
+  text-align: left !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
-  display: block !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
   border-radius: 4px !important;
 }
 .root {
   display: inline-flex;
+  position: relative;
   align-items: center;
   vertical-align: top;
   padding: 0px 6px 0px 4px;
@@ -211,7 +226,6 @@ exports[`getComponentCss() should return correct css for theme: light, color: de
 exports[`getComponentCss() should return correct css for theme: light, color: neutral-contrast-high, icon: highway and isFocusable: true 1`] = `
 ":host {
   display: inline-block;
-  position: relative;
 }
 ::slotted(a), ::slotted(button) {
   display: block !important;
@@ -219,24 +233,37 @@ exports[`getComponentCss() should return correct css for theme: light, color: ne
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
-  outline: transparent none !important;
+  outline: 0 !important;
+}
+::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
+  border: 0 !important;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  content: \\"\\" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
   outline-color: #000 !important;
 }
+::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
+  outline-color: transparent !important;
+}
 ::slotted(a:focus-visible:hover)::before, ::slotted(button:focus-visible:hover)::before {
   transition: outline-color var(--p-transition-duration, .24s) ease !important;
   outline-color: currentColor !important;
-}
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent !important;
 }
 ::slotted(a) {
   color: #fff !important;
   transition: color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:hover) {
-  color: #d5001c !important;
+  color: #ff0223 !important;
 }
 ::slotted(button) {
   margin: 0 !important;
@@ -244,21 +271,14 @@ exports[`getComponentCss() should return correct css for theme: light, color: ne
   background: 0 !important;
   border: 0 !important;
   color: inherit !important;
+  text-align: left !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
-  display: block !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 1px !important;
   border-radius: 4px !important;
 }
 .root {
   display: inline-flex;
+  position: relative;
   align-items: center;
   vertical-align: top;
   padding: 0px 6px 0px 4px;
@@ -274,7 +294,7 @@ exports[`getComponentCss() should return correct css for theme: light, color: ne
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .root:hover {
-  color: #d5001c;
+  color: #ff0223;
 }
 .icon {
   margin-right: 2px;
