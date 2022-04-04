@@ -83,7 +83,7 @@ export class TextFieldWrapper {
     this.isPassword = this.input.type === 'password';
     this.hasCounter = hasCounterAndIsTypeText(this.input);
     this.isCounterVisible = this.showCharacterCount && this.hasCounter;
-    this.hasUnit = !this.hasCounter && hasUnitAndIsTypeTextOrNumber(this.input, this.unit);
+    this.hasUnit = !this.isCounterVisible && hasUnitAndIsTypeTextOrNumber(this.input, this.unit);
   }
 
   public componentDidLoad(): void {

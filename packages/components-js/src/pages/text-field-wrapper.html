@@ -60,7 +60,13 @@
 </div>
 
 <div class="playground light" title="should render with counter">
-  <p-text-field-wrapper label="Counter">
+  <p-text-field-wrapper label="Counter" show-character-count="true">
+    <input type="text" maxlength="20" value="Some value" />
+  </p-text-field-wrapper>
+</div>
+
+<div class="playground light" title="should render without counter">
+  <p-text-field-wrapper label="Counter hidden">
     <input type="text" maxlength="20" value="Some value" />
   </p-text-field-wrapper>
 </div>
@@ -231,7 +237,16 @@
 </div>
 
 <div class="playground light" title="should render counter when counter and unit are set">
-  <p-text-field-wrapper label="Label with counter and unit" unit="km/h">
+  <p-text-field-wrapper label="Label with counter and unit" unit="km/h" show-character-count="true">
+    <input type="text" value="three hundred" maxlength="50" />
+  </p-text-field-wrapper>
+</div>
+
+<div
+  class="playground light"
+  title="should render unit when counter and unit are set amd show-character-count is not set"
+>
+  <p-text-field-wrapper label="Label with hidden counter and unit" unit="km/h">
     <input type="text" value="three hundred" maxlength="50" />
   </p-text-field-wrapper>
 </div>

@@ -66,7 +66,13 @@ export const TextFieldWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with counter">
-        <PTextFieldWrapper label="Counter">
+        <PTextFieldWrapper label="Counter" showCharacterCount={true}>
+          <input type="text" maxLength={20} defaultValue="Some value" />
+        </PTextFieldWrapper>
+      </div>
+
+      <div className="playground light" title="should render without counter">
+        <PTextFieldWrapper label="Counter hidden">
           <input type="text" maxLength={20} defaultValue="Some value" />
         </PTextFieldWrapper>
       </div>
@@ -237,7 +243,16 @@ export const TextFieldWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render counter when counter and unit are set">
-        <PTextFieldWrapper label="Label with counter and unit" unit="km/h">
+        <PTextFieldWrapper label="Label with counter and unit" unit="km/h" showCharacterCount={true}>
+          <input type="text" defaultValue="three hundred" maxLength={50} />
+        </PTextFieldWrapper>
+      </div>
+
+      <div
+        className="playground light"
+        title="should render unit when counter and unit are set amd show-character-count is not set"
+      >
+        <PTextFieldWrapper label="Label with hidden counter and unit" unit="km/h">
           <input type="text" defaultValue="three hundred" maxLength={50} />
         </PTextFieldWrapper>
       </div>

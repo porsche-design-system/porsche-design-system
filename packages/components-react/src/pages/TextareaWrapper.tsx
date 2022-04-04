@@ -71,6 +71,12 @@ export const TextareaWrapperPage = (): JSX.Element => {
         </PTextareaWrapper>
       </div>
 
+      <div className="playground light" title="should render without counter">
+        <PTextareaWrapper label="Counter hidden" showCharacterCount={false}>
+          <textarea maxLength={200} defaultValue="Some value" />
+        </PTextareaWrapper>
+      </div>
+
       <div className="playground light" title="should render with error state and error message">
         <PTextareaWrapper label="Error with message" state="error" message="Error message">
           <textarea defaultValue="Some value" />
