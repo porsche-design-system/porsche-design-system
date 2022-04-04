@@ -1,5 +1,5 @@
-import { getCss, isThemeDark } from '../../../utils';
-import { addImportantToEachRule, getInsetJssStyle, getThemedColors, getTransition } from '../../../styles';
+import { getCss, isThemeDark, mergeDeep } from '../../../utils';
+import { addImportantToEachRule, getFocusJssStyle, getThemedColors, getTransition } from '../../../styles';
 import { textXSmall } from '@porsche-design-system/utilities-v2';
 import type { ThemedColors } from '../../../styles';
 import type { TagColor } from './tag-status-utils';
@@ -23,61 +23,53 @@ const getThemedBackgroundColor = (color: TagColor, themedColors: ThemedColors) =
 export const getComponentCss = (theme: Theme, color: TagColor, icon: IconName, isFocusable: boolean): string => {
   const themedColors = getThemedColors(theme);
   const isDark = isThemeDark(theme);
-  const colorCondition =
-    (theme === 'light' && color !== 'neutral-contrast-high') ||
+  const hasInvertedThemeColor =
+    (!isDark && color !== 'neutral-contrast-high') ||
     (isDark && (color === 'background-surface' || color === 'default'));
 
-  const { baseColor } = colorCondition ? themedColors : getThemedColors(isDark ? 'light' : 'dark');
+  const { baseColor, hoverColor } = hasInvertedThemeColor ? themedColors : getThemedColors(isDark ? 'light' : 'dark');
+  const outlineColor = hasInvertedThemeColor ? themedColors.focusColor : themedColors.baseColor;
 
   return getCss({
     '@global': {
       ':host': {
         display: 'inline-block',
-        position: 'relative',
       },
       '::slotted': addImportantToEachRule({
-        '&(a),&(button)': {
-          display: 'block',
-          position: 'static',
-          textDecoration: 'underline',
-          cursor: 'pointer',
-          font: 'inherit',
-          // color: 'inherit', // TODO: chrome hover bug. Use when fixed.
-          outline: 'transparent none',
-          '&::before': {
-            content: '""',
-            display: 'block',
-            position: 'absolute',
-            ...getInsetJssStyle(),
-            outline: '1px solid transparent',
-            outlineOffset: '1px',
-            borderRadius: '4px',
+        ...mergeDeep(
+          {
+            '&(a),&(button)': {
+              display: 'block',
+              position: 'static',
+              textDecoration: 'underline',
+              cursor: 'pointer',
+              font: 'inherit',
+              outline: 0, // reset native blue outline
+              // color: 'inherit', // TODO: chrome hover bug. Use when fixed.
+              '&::before': { borderRadius: '4px' },
+            },
           },
-        },
-        ...(!colorCondition
-          ? {
-              '&(a:focus)::before, &(button:focus)::before': {
-                outlineColor: themedColors.baseColor,
-              },
-              '&(a:focus-visible:hover)::before, &(button:focus-visible:hover)::before': {
-                transition: getTransition('outline-color'),
-                outlineColor: themedColors.focusColor,
-              },
-            }
-          : {
-              '&(a:focus)::before, &(button:focus)::before': {
-                outlineColor: themedColors.focusColor,
-              },
-            }),
-        '&(a:focus:not(:focus-visible))::before, &(button:focus:not(:focus-visible))::before': {
-          outlineColor: 'transparent',
-        },
+          Object.fromEntries(
+            Object.entries({
+              ...getFocusJssStyle({ offset: 2, pseudo: '::before', color: outlineColor }),
+              ...(!hasInvertedThemeColor && {
+                '&:focus-visible:hover::before': {
+                  transition: getTransition('outline-color'),
+                  outlineColor: themedColors.focusColor,
+                },
+              }),
+            })
+              .filter(([key]) => key !== 'outline') // Needs to be set on correct ::slotted selector
+              // Use Values of getFocusJssStyle, but transform keys to fit ::slotted
+              .map(([key, value]) => [key.replace(/^&([a-z:\-()]*)(::[a-z\-]+)$/, '&(a$1)$2, &(button$1)$2'), value])
+          )
+        ),
         '&(a)': {
           color: baseColor, // TODO: chrome hover bug. Remove when fixed.
           transition: getTransition('color'), // TODO: chrome hover bug. Remove when fixed.
         },
         '&(a:hover)': {
-          color: themedColors.hoverColor, // TODO: chrome hover bug. Remove when fixed.
+          color: hoverColor, // TODO: chrome hover bug. Remove when fixed.
         },
         '&(button)': {
           margin: 0,
@@ -85,11 +77,13 @@ export const getComponentCss = (theme: Theme, color: TagColor, icon: IconName, i
           background: 0,
           border: 0,
           color: 'inherit', // TODO: chrome hover bug. Remove when fixed.
+          textAlign: 'left',
         },
       }),
     },
     root: {
       display: 'inline-flex',
+      position: 'relative',
       alignItems: 'center',
       verticalAlign: 'top',
       padding: icon ? '0px 6px 0px 4px' : '2px 6px',
@@ -101,7 +95,7 @@ export const getComponentCss = (theme: Theme, color: TagColor, icon: IconName, i
       transition: getTransition('color'),
       ...(isFocusable && {
         '&:hover': {
-          color: themedColors.hoverColor,
+          color: hoverColor,
         },
       }),
     },
