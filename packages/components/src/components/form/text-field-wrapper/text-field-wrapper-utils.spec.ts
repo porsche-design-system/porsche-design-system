@@ -178,7 +178,21 @@ describe('addInputEventListener()', () => {
     const ariaElement = getAriaElement();
     const spy = jest.spyOn(inputElement, 'addEventListener');
 
-    addInputEventListener(inputElement, counterElement, ariaElement);
+    addInputEventListener(inputElement, ariaElement, counterElement);
+    expect(spy).toHaveBeenCalledWith('input', expect.anything());
+  });
+
+  it('should register event listener on element without error when no counterElement is provided', () => {
+    const inputElement = getInputElement();
+    const ariaElement = getAriaElement();
+    const spy = jest.spyOn(inputElement, 'addEventListener');
+    let error = undefined;
+    try {
+      addInputEventListener(inputElement, ariaElement);
+    } catch (e) {
+      error = e;
+    }
+    expect(error).toBeUndefined();
     expect(spy).toHaveBeenCalledWith('input', expect.anything());
   });
 
@@ -189,7 +203,7 @@ describe('addInputEventListener()', () => {
 
     const setCounterInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCounterInnerHtml');
     const setAriaElementInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setAriaElementInnerHtml');
-    addInputEventListener(inputElement, counterElement, ariaElement);
+    addInputEventListener(inputElement, ariaElement, counterElement);
 
     expect(setCounterInnerHtmlSpy).toHaveBeenCalledWith(inputElement, counterElement);
     expect(setCounterInnerHtmlSpy).toHaveBeenCalledTimes(1);
@@ -205,7 +219,7 @@ describe('addInputEventListener()', () => {
 
     const setCounterInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCounterInnerHtml');
     const setAriaElementInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setAriaElementInnerHtml');
-    addInputEventListener(inputElement, counterElement, ariaElement);
+    addInputEventListener(inputElement, ariaElement, counterElement);
 
     inputElement.dispatchEvent(new Event('input'));
     expect(setCounterInnerHtmlSpy).toHaveBeenCalledWith(inputElement, counterElement);
@@ -220,7 +234,7 @@ describe('addInputEventListener()', () => {
     const counterElement = getCounterElement();
     const ariaElement = getAriaElement();
     const callback = jest.fn();
-    addInputEventListener(inputElement, counterElement, ariaElement, callback);
+    addInputEventListener(inputElement, ariaElement, counterElement, callback);
 
     inputElement.dispatchEvent(new Event('input'));
     expect(callback).toHaveBeenCalledTimes(1);
