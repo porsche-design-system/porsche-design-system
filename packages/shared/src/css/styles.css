@@ -38,9 +38,17 @@ body > select {
   background: #fff;
 }
 
+.playground.light.surface {
+  background: #f2f2f2;
+}
+
 .playground.dark,
 .playground.dark-electric {
   background: #1a2023;
+}
+
+.playground.dark.surface {
+  background: #262b2e;
 }
 
 .playground.hover::before,

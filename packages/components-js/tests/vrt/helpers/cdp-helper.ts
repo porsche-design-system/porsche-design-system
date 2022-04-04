@@ -28,15 +28,19 @@ export const getBodyMarkup = (getElements: GetMarkup) =>
 
 export const getThemedBodyMarkup = (
   getThemedElements: GetThemedMarkup,
-  opts?: { themes?: Theme[]; states?: StateType[] }
+  opts?: { themes?: Theme[]; states?: StateType[]; withSurface?: boolean }
 ): string => {
-  const { themes = ['light', 'dark'], states = ALL_STATES } = opts ?? {};
+  const { themes = ['light', 'dark'], states = ALL_STATES, withSurface = false } = opts ?? {};
 
   return states
     .map((state) =>
       allThemes
         .filter((theme) => themes.includes(theme))
-        .map((theme) => `<div class="playground ${theme} ${state}">${getThemedElements(theme)}</div>`)
+        .map(
+          (theme) =>
+            `<div class="playground ${theme} ${state}">${getThemedElements(theme)}</div>` +
+            (withSurface ? `<div class="playground ${theme} surface ${state}">${getThemedElements(theme)}</div>` : '')
+        )
     )
     .flat()
     .join('\n');
