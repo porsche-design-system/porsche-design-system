@@ -6,7 +6,8 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "jsx": "react-jsx"
   },
   "include": ["./src"],
   "exclude": ["**/*.spec.ts"],
@@ -15,6 +16,6 @@
     "compilerOptions": {
       "module": "commonjs"
     },
-    "include": ["./scripts"]
+    "include": ["./scripts"],
   }
 }
