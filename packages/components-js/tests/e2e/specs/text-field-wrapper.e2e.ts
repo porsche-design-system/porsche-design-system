@@ -66,7 +66,12 @@ describe('text-field-wrapper', () => {
       : '';
     const slottedMessage = useSlottedMessage ? `<span slot="message">Message with a ${link}</span>` : '';
 
-    const attrs = [`state="${state}"`, hasLabel && 'label="Some label"', hasUnit && 'unit="km/h"']
+    const attrs = [
+      `state="${state}"`,
+      hasLabel && 'label="Some label"',
+      hasUnit && 'unit="km/h"',
+      maxLength && 'show-character-count="true"',
+    ]
       .filter((x) => x)
       .join(' ');
 

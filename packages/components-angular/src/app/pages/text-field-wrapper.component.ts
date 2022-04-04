@@ -66,7 +66,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render with counter">
-      <p-text-field-wrapper [label]="'Counter'">
+      <p-text-field-wrapper [label]="'Counter'" [showCharacterCount]="true">
+        <input [type]="'text'" [maxLength]="20" [value]="'Some value'" />
+      </p-text-field-wrapper>
+    </div>
+
+    <div class="playground light" title="should render without counter">
+      <p-text-field-wrapper [label]="'Counter hidden'">
         <input [type]="'text'" [maxLength]="20" [value]="'Some value'" />
       </p-text-field-wrapper>
     </div>
@@ -237,7 +243,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render counter when counter and unit are set">
-      <p-text-field-wrapper [label]="'Label with counter and unit'" [unit]="'km/h'">
+      <p-text-field-wrapper [label]="'Label with counter and unit'" [unit]="'km/h'" [showCharacterCount]="true">
+        <input [type]="'text'" [value]="'three hundred'" [maxLength]="50" />
+      </p-text-field-wrapper>
+    </div>
+
+    <div
+      class="playground light"
+      title="should render unit when counter and unit are set amd show-character-count is not set"
+    >
+      <p-text-field-wrapper [label]="'Label with hidden counter and unit'" [unit]="'km/h'">
         <input [type]="'text'" [value]="'three hundred'" [maxLength]="50" />
       </p-text-field-wrapper>
     </div>

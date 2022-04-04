@@ -59,7 +59,26 @@ describe('componentWillLoad', () => {
     expect(component['hasCounter']).toBe(true);
   });
 
-  it('should not call hasUnitAndIsTypeTextOrNumber() when counter and unit is set', () => {
+  it('should not call hasUnitAndIsTypeTextOrNumber() when counter and unit is set and counter is visible', () => {
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.maxLength = 50;
+    jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined').mockImplementation(() => input);
+
+    const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber');
+    const component = new TextFieldWrapper();
+    component.unit = 'EUR';
+    component.showCharacterCount = true;
+    component['input'] = input;
+
+    expect(component['hasUnit']).toBe(undefined);
+    component.componentWillLoad();
+
+    expect(spy).not.toBeCalled();
+    expect(component['hasUnit']).toBe(false);
+  });
+
+  it('should call hasUnitAndIsTypeTextOrNumber() when counter and unit is set and counter is not visible', () => {
     const input = document.createElement('input');
     input.type = 'text';
     input.maxLength = 50;
@@ -73,8 +92,8 @@ describe('componentWillLoad', () => {
     expect(component['hasUnit']).toBe(undefined);
     component.componentWillLoad();
 
-    expect(spy).not.toBeCalled();
-    expect(component['hasUnit']).toBe(false);
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(component['hasUnit']).toBe(true);
   });
 
   it.each<string>(['text', 'number'])(
