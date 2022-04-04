@@ -135,7 +135,7 @@ describe('componentDidLoad', () => {
 
     component['hasCounter'] = true;
     component.componentDidLoad();
-    expect(addInputEventListenerSpy).toHaveBeenCalledWith(input, counter, ariaElement, component['setInputStyles']);
+    expect(addInputEventListenerSpy).toHaveBeenCalledWith(input, ariaElement, counter, component['setInputStyles']);
   });
 });
 

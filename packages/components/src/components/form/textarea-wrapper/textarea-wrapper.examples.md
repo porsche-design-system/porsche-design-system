@@ -45,7 +45,8 @@ A good practice when to use the disabled state is during **form submission** to 
 
 ## Counter
 
-If the `maxLength` attribute is present onn the `textarea` element, a counter will be displayed in the corner. 
+If the `maxLength` attribute is present on the `textarea` element, a counter will be displayed in the corner.  
+To hide it you can set `showCharacterCount` is set to `false`.
 
 <Playground :markup="counter" :config="config"></Playground>
 
@@ -119,6 +120,9 @@ export default class Code extends Vue {
 
   counter =
 `<p-textarea-wrapper label="Some label">
+  <textarea name="some-name" maxlength="200">Some value</textarea>
+</p-textarea-wrapper>
+<p-textarea-wrapper label="Some label" showCharacterCount="false">
   <textarea name="some-name" maxlength="200">Some value</textarea>
 </p-textarea-wrapper>`;
 
