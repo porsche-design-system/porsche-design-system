@@ -4,6 +4,7 @@ import {
   getBaseSkeletonJssStyle,
   getElementBackgroundGradient,
   getHiddenLabelJssStyle,
+  getLabelSkeletonJssStyle,
   getSkeletonElementHeight,
   getSkeletonPropertyNames,
   getThemedPseudoJssStyle,
@@ -92,6 +93,12 @@ describe('getThemedPseudoJssStyle()', () => {
 describe('getHiddenLabelJssStyle()', () => {
   it('should match style snapshot', () => {
     expect(getHiddenLabelJssStyle()).toMatchSnapshot();
+  });
+});
+
+describe('getLabelSkeletonJssStyle()', () => {
+  it('should match style snapshot', () => {
+    expect(getLabelSkeletonJssStyle()).toMatchSnapshot();
   });
 });
 
