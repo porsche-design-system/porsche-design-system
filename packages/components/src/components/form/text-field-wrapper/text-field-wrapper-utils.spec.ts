@@ -179,7 +179,7 @@ describe('addInputEventListener()', () => {
     const spy = jest.spyOn(inputElement, 'addEventListener');
 
     addInputEventListener(inputElement, counterElement, ariaElement);
-    expect(spy).toHaveBeenCalledWith('input', expect.anything());
+    expect(spy).toBeCalledWith('input', expect.anything());
   });
 
   it('should initially call setCounterInnerHtml() and setAriaElementInnerHtml()', () => {
@@ -191,11 +191,11 @@ describe('addInputEventListener()', () => {
     const setAriaElementInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setAriaElementInnerHtml');
     addInputEventListener(inputElement, counterElement, ariaElement);
 
-    expect(setCounterInnerHtmlSpy).toHaveBeenCalledWith(inputElement, counterElement);
-    expect(setCounterInnerHtmlSpy).toHaveBeenCalledTimes(1);
+    expect(setCounterInnerHtmlSpy).toBeCalledWith(inputElement, counterElement);
+    expect(setCounterInnerHtmlSpy).toBeCalledTimes(1);
 
-    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledWith(inputElement, ariaElement);
-    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledTimes(1);
+    expect(setAriaElementInnerHtmlSpy).toBeCalledWith(inputElement, ariaElement);
+    expect(setAriaElementInnerHtmlSpy).toBeCalledTimes(1);
   });
 
   it('should on input event call setCounterInnerHtml() and setAriaElementInnerHtml()', () => {
@@ -208,11 +208,11 @@ describe('addInputEventListener()', () => {
     addInputEventListener(inputElement, counterElement, ariaElement);
 
     inputElement.dispatchEvent(new Event('input'));
-    expect(setCounterInnerHtmlSpy).toHaveBeenCalledWith(inputElement, counterElement);
-    expect(setCounterInnerHtmlSpy).toHaveBeenCalledTimes(2);
+    expect(setCounterInnerHtmlSpy).toBeCalledWith(inputElement, counterElement);
+    expect(setCounterInnerHtmlSpy).toBeCalledTimes(2);
 
-    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledWith(inputElement, ariaElement);
-    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledTimes(2);
+    expect(setAriaElementInnerHtmlSpy).toBeCalledWith(inputElement, ariaElement);
+    expect(setAriaElementInnerHtmlSpy).toBeCalledTimes(2);
   });
 
   it('should on input event call inputChangeCallback() if supplied', () => {
@@ -223,6 +223,6 @@ describe('addInputEventListener()', () => {
     addInputEventListener(inputElement, counterElement, ariaElement, callback);
 
     inputElement.dispatchEvent(new Event('input'));
-    expect(callback).toHaveBeenCalledTimes(1);
+    expect(callback).toBeCalledTimes(1);
   });
 });

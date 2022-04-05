@@ -93,7 +93,7 @@ describe('select-wrapper-dropdown', () => {
       const spy = jest.spyOn(propertyObserverUtils, 'observeProperties');
       component['observeOptions']();
 
-      expect(spy).toHaveBeenCalledTimes(3);
+      expect(spy).toBeCalledTimes(3);
       expect(spy).toHaveBeenLastCalledWith(options[2], ['selected', 'disabled'], expect.anything());
     });
   });
