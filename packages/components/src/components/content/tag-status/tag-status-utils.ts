@@ -1,7 +1,5 @@
-import type { IconName, TextColor } from '../../../types';
+import type { TextColor } from '../../../types';
 import { getHTMLElement } from '../../../utils';
-
-export type TagIconName = IconName | undefined;
 
 export type TagColor =
   | Extract<
