@@ -19,7 +19,7 @@ const getThemedBackgroundColor = (color: TagColor, themedColors: ThemedColors) =
   return colorMap[color];
 };
 
-export const getComponentCss = (theme: Theme, color: TagColor, isFocusable: boolean): string => {
+export const getComponentCss = (color: TagColor, isFocusable: boolean, theme: Theme): string => {
   const themedColors = getThemedColors(theme);
   const isDark = isThemeDark(theme);
   const hasInvertedThemeColor =
@@ -45,7 +45,9 @@ export const getComponentCss = (theme: Theme, color: TagColor, isFocusable: bool
               font: 'inherit',
               outline: 0, // reset native blue outline
               // color: 'inherit', // TODO: chrome hover bug. Use when fixed.
-              '&::before': { borderRadius: '4px' },
+              '&::before': {
+                borderRadius: '4px',
+              },
             },
           },
           Object.fromEntries(
