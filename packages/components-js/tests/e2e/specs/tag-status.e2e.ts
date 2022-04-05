@@ -17,11 +17,11 @@ describe('tag-status', () => {
     withIcon?: boolean;
   };
 
-  const initTagStatus = (props?: InitOpts) => {
-    const { withIcon } = props;
-    const content = `<p-tag-status${withIcon ? 'icon="car"' : ''}>Some Tag</p-tag-status>`;
+  const initTagStatus = async (props?: InitOpts) => {
+    const { withIcon } = props ?? {};
+    const content = `<p-tag-status${withIcon ? ' icon="car"' : ''}>Some Tag</p-tag-status>`;
 
-    setContentWithDesignSystem(page, content);
+    await setContentWithDesignSystem(page, content);
   };
 
   const getHost = () => selectNode(page, 'p-tag-status');
@@ -51,7 +51,7 @@ describe('tag-status', () => {
       expect(status.componentDidUpdate['p-icon'], 'componentDidUpdate: p-icon').toBe(1);
 
       expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
-      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
     });
   });
 
