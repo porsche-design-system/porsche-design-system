@@ -752,6 +752,13 @@ exports[`should have no basic DOM regression for p-tabs-item 1`] = `
 </slot>"
 `;
 
+exports[`should have no basic DOM regression for p-tag-status 1`] = `
+"<span class=\\"root\\" aria-live=\\"polite\\">
+  <slot>
+  </slot>
+</span>"
+`;
+
 exports[`should have no basic DOM regression for p-text 1`] = `
 "<p class=\\"root\\">
   <slot>
