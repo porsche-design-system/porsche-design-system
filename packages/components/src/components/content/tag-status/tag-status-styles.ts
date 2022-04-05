@@ -34,6 +34,26 @@ export const getComponentCss = (color: TagStatusColor, isFocusable: boolean, the
       ':host': {
         display: 'inline-block',
       },
+      span: {
+        display: 'inline-block',
+        position: 'relative',
+        height: '24px',
+        padding: '0 6px',
+        borderRadius: '4px',
+        background: getThemedBackgroundColor(color, themedColors),
+        color: baseColor,
+        ...textXSmall,
+        overflowWrap: null,
+        hyphens: null,
+        lineHeight: '24px',
+        whiteSpace: 'nowrap',
+        transition: getTransition('color'),
+        ...(isFocusable && {
+          '&:hover': {
+            color: hoverColor,
+          },
+        }),
+      },
       '::slotted': addImportantToEachRule({
         ...(isFocusable && {
           ...mergeDeep(
@@ -84,26 +104,6 @@ export const getComponentCss = (color: TagStatusColor, isFocusable: boolean, the
         }),
         '&(br)': {
           display: 'none',
-        },
-      }),
-    },
-    root: {
-      display: 'inline-block',
-      position: 'relative',
-      height: '24px',
-      padding: '0 6px',
-      borderRadius: '4px',
-      background: getThemedBackgroundColor(color, themedColors),
-      color: baseColor,
-      ...textXSmall,
-      overflowWrap: null,
-      hyphens: null,
-      lineHeight: '24px',
-      whiteSpace: 'nowrap',
-      transition: getTransition('color'),
-      ...(isFocusable && {
-        '&:hover': {
-          color: hoverColor,
         },
       }),
     },

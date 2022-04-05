@@ -31,7 +31,7 @@ export class TagStatus {
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
-      <span class="root" aria-live="polite">
+      <span aria-live="polite">
         {(this.icon || this.iconSource) && (
           <PrefixedTagNames.pIcon
             class="icon"
