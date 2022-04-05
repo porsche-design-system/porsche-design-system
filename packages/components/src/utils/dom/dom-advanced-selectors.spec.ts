@@ -1,7 +1,7 @@
 import { getDirectChildHTMLElement, getSlotTextContent } from './dom-advanced-selectors';
 import * as domBaseSelectorUtils from './dom-base-selectors';
 
-fdescribe('getDirectChildHTMLElement()', () => {
+describe('getDirectChildHTMLElement()', () => {
   it('should call getHTMLElement() with element and selector parameter', () => {
     const element = document.createElement('div');
     const spy = jest.spyOn(domBaseSelectorUtils, 'getHTMLElement');
@@ -14,8 +14,11 @@ fdescribe('getDirectChildHTMLElement()', () => {
     const element = document.createElement('div');
     const spy = jest.spyOn(domBaseSelectorUtils, 'getHTMLElement');
 
-    getDirectChildHTMLElement(element, 'span,button');
-    expect(spy).toBeCalledWith(element, ':scope>span,:scoped>button');
+    try {
+      getDirectChildHTMLElement(element, 'span,button');
+    } catch {}
+
+    expect(spy).toBeCalledWith(element, ':scope>span,:scope>button');
   });
 });
 

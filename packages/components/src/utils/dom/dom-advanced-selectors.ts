@@ -15,8 +15,14 @@ export function getDirectChildHTMLElement<K extends HTMLTagName>(element: HTMLEl
 // prettier-ignore
 export function getDirectChildHTMLElement<E extends Element = Element>(element: HTMLElement, selector: string): E | null;
 // prettier-ignore
-export function getDirectChildHTMLElement<K extends HTMLTagName>(element: HTMLElement, selectors: string): HTMLElementTagNameMap[K] | null {
-  return getHTMLElement(element, `:scope>${selectors}`);
+export function getDirectChildHTMLElement<K extends HTMLTagName>(element: HTMLElement, selector: string): HTMLElementTagNameMap[K] | null {
+  return getHTMLElement(
+    element,
+    selector
+      .split(',')
+      .map((part) => ':scope>' + part)
+      .join(',')
+  );
 }
 
 export const getSlotTextContent = (el: HTMLElementOrShadowRoot, slotName: string): string =>
