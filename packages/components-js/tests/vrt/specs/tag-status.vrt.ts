@@ -1,5 +1,4 @@
 import {
-  forceFocusHoverState,
   forceFocusState,
   forceHoverState,
   getThemedBodyMarkup,
