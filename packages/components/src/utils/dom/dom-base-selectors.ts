@@ -1,3 +1,4 @@
+/* eslint-disable prefer-arrow/prefer-arrow-functions */
 export type HTMLElementOrShadowRoot = HTMLElement | ShadowRoot;
 export type HTMLTagName = keyof HTMLElementTagNameMap;
 
@@ -5,8 +6,7 @@ export type HTMLTagName = keyof HTMLElementTagNameMap;
 export function getHTMLElement<K extends HTMLTagName>(element: HTMLElementOrShadowRoot, selector: K): HTMLElementTagNameMap[K] | null;
 // prettier-ignore
 export function getHTMLElement<E extends Element = Element>(element: HTMLElementOrShadowRoot, selector: string): E | null;
-// prettier-ignore
-export function getHTMLElement<K extends HTMLTagName>(element: HTMLElementOrShadowRoot, selector: K): HTMLElementTagNameMap[K] | null {
+export function getHTMLElement(element: HTMLElementOrShadowRoot, selector: string): any {
   return element.querySelector(selector);
 }
 
@@ -14,8 +14,7 @@ export function getHTMLElement<K extends HTMLTagName>(element: HTMLElementOrShad
 export function getHTMLElements<K extends HTMLTagName>(element: HTMLElementOrShadowRoot, selector: K): HTMLElementTagNameMap[K][];
 // prettier-ignore
 export function getHTMLElements<E extends Element = Element>(element: HTMLElementOrShadowRoot, selector: string): E[];
-// prettier-ignore
-export function getHTMLElements<K extends HTMLTagName>(element: HTMLElementOrShadowRoot, selector: K): HTMLElementTagNameMap[K][] {
+export function getHTMLElements(element: HTMLElementOrShadowRoot, selector: string): any {
   return Array.from(element.querySelectorAll(selector));
 }
 
@@ -23,7 +22,6 @@ export function getHTMLElements<K extends HTMLTagName>(element: HTMLElementOrSha
 export function getClosestHTMLElement<K extends HTMLTagName>(element: HTMLElement, selector: K): HTMLElementTagNameMap[K] | null;
 // prettier-ignore
 export function getClosestHTMLElement<E extends Element = Element>(element: HTMLElement, selector: string): E | null;
-// prettier-ignore
-export function getClosestHTMLElement<K extends HTMLTagName>(element: HTMLElement, selector: string): HTMLElementTagNameMap[K] | null {
+export function getClosestHTMLElement(element: HTMLElement, selector: string): any {
   return element.closest(selector);
 }

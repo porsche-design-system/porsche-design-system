@@ -5,7 +5,7 @@ import type { ThemedColors } from '../../../styles';
 import type { TagStatusColor } from './tag-status-utils';
 import type { Theme } from '../../../types';
 
-const getThemedBackgroundColor = (color: TagStatusColor, themedColors: ThemedColors) => {
+const getThemedBackgroundColor = (color: TagStatusColor, themedColors: ThemedColors): string => {
   const colorMap: { [key in TagStatusColor]: string } = {
     default: themedColors.backgroundColor,
     'background-surface': themedColors.backgroundSurfaceColor,

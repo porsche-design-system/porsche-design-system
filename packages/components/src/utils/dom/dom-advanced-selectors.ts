@@ -1,3 +1,4 @@
+/* eslint-disable prefer-arrow/prefer-arrow-functions */
 import type { HTMLElementOrShadowRoot, HTMLTagName } from './dom-base-selectors';
 import { getHTMLElement } from './dom-base-selectors';
 
@@ -5,8 +6,7 @@ import { getHTMLElement } from './dom-base-selectors';
 export function getShadowRootHTMLElement<K extends HTMLTagName>(element: HTMLElement, selector: K): HTMLElementTagNameMap[K] | null;
 // prettier-ignore
 export function getShadowRootHTMLElement<E extends Element = Element>(element: HTMLElementOrShadowRoot, selector: string): E | null;
-// prettier-ignore
-export function getShadowRootHTMLElement<K extends HTMLTagName>(element: HTMLElement, selector: string): HTMLElementTagNameMap[K] | null {
+export function getShadowRootHTMLElement(element: HTMLElement, selector: string): any {
   return getHTMLElement(element.shadowRoot, selector);
 }
 
@@ -14,8 +14,7 @@ export function getShadowRootHTMLElement<K extends HTMLTagName>(element: HTMLEle
 export function getDirectChildHTMLElement<K extends HTMLTagName>(element: HTMLElement, selector: K): HTMLElementTagNameMap[K] | null;
 // prettier-ignore
 export function getDirectChildHTMLElement<E extends Element = Element>(element: HTMLElement, selector: string): E | null;
-// prettier-ignore
-export function getDirectChildHTMLElement<K extends HTMLTagName>(element: HTMLElement, selector: string): HTMLElementTagNameMap[K] | null {
+export function getDirectChildHTMLElement(element: HTMLElement, selector: string): any {
   return getHTMLElement(
     element,
     selector
