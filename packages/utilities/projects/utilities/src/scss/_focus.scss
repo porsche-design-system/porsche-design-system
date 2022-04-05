@@ -1,0 +1,16 @@
+@mixin pds-focus($color: 'currentColor', $offset: 2px) {
+  outline: transparent solid 1px;
+  outline-offset: $offset;
+
+  &::-moz-focus-inner {
+    border: 0; // fix for Firefox, avoid dotted outline in button on focus
+  }
+
+  &:focus {
+    outline-color: $color;
+    // why? have a look at this article https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/
+    &:not(:focus-visible) {
+      outline-color: transparent;
+    }
+  }
+}

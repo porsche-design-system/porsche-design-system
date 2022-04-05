@@ -39,20 +39,20 @@ const patchStencil = (): void => {
       // no markers found, patch the stencil script
       const addSkeletonSlotScript = `                            ${PDS_PATCH_START}
                             if (${tagNamesToAddSlotToAsString}.includes(cmpMeta.$tagName$)) {
-                              self.shadowRoot.appendChild(document.createElement('slot'))
+                              self.shadowRoot.appendChild(document.createElement('slot'));
+                              self.hasSkeleton = true;
                             }
                             ${PDS_PATCH_EMD}
 `;
       const removeSkeletonSlotScript = `    ${PDS_PATCH_START}
     // NOTE: this following is executed on every component update
-    const hasPatchedSkeletonSlot = ${tagNamesToAddSlotToAsString}.some(tagName => {
-        return elm.tagName.match(new RegExp(\`^(?:[\\w-]+-)?\${tagName}$\`, 'i'));
-    });
-    if (hasPatchedSkeletonSlot) {
-        elm.shadowRoot.removeChild(elm.shadowRoot.firstChild);
+    if (elm.hasSkeleton) {
+        elm.shadowRoot.firstChild.remove(); // remove temporary slot element
+        elm.hasSkeleton = false;
     }
     ${PDS_PATCH_EMD}
 `;
+
       // add skeleton slot script
       let patchedStencilIndexFile = stencilIndexFile.replace(
         /(self\.attachShadow\(\{ mode: 'open' \}\);\n.*?\}\n)/g,
