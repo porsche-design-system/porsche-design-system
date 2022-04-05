@@ -7,7 +7,7 @@ if
   [[ "--components-js" == "${1}" ]] ||
   [[ "--components-react" == "${1}" ]]
 then
-  yarn test:smoke:${1:2}
+  yarn test:smoke:${1:2} --ci
 else
-  yarn test:smoke
+  yarn test:smoke --ci
 fi
