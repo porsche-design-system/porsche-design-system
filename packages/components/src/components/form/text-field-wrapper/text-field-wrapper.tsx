@@ -88,7 +88,12 @@ export class TextFieldWrapper {
 
   public componentDidLoad(): void {
     if (this.hasCounter) {
-      addInputEventListener(this.input, this.ariaElement, this.unitOrCounterElement, this.setInputStyles);
+      addInputEventListener(
+        this.input,
+        this.ariaElement,
+        this.isCounterVisible && this.unitOrCounterElement,
+        this.setInputStyles
+      );
     }
   }
 
