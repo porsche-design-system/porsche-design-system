@@ -6,7 +6,7 @@ set -o pipefail
 if
   [[ "--components-react" == "${1}" ]]
 then
-  yarn test:jsdom-polyfill:${1:2}
+  yarn test:jsdom-polyfill:${1:2} --ci
 else
-  yarn test:jsdom-polyfill
+  yarn test:jsdom-polyfill --ci
 fi
