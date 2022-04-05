@@ -68,7 +68,6 @@ describe('tabs-bar', () => {
 
   const getHost = () => selectNode(page, 'p-tabs-bar');
   const getAllButtons = () => page.$$('button');
-  const getAllLinks = () => page.$$('a');
   const getScrollArea = () => selectNode(page, 'p-tabs-bar >>> .scroll-area');
   const getBar = () => selectNode(page, 'p-tabs-bar >>> .bar');
   const getGradientNext = () => selectNode(page, 'p-tabs-bar >>> .action--next .gradient');
