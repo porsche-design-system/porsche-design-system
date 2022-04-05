@@ -1,7 +1,9 @@
+
 import styled, { StyleSheetManager } from 'styled-components';
 import { createUseStyles } from 'react-jss';
-import { getScreenReaderOnlyJssStyle, getContentWrapperJssStyle, getFocusJssStyle } from './jss';
-
+import { getContentWrapperJssStyle, getFocusJssStyle, getScreenReaderOnlyJssStyle } from './jss';
+import './scss/screen-reader.scss';
+  
 export const StyledComponentsStyle = styled.div({
   div: {
     ...(getContentWrapperJssStyle('basic') as any),
@@ -9,17 +11,17 @@ export const StyledComponentsStyle = styled.div({
     ...getScreenReaderOnlyJssStyle(),
   },
 });
-
+  
 const useStyles = createUseStyles({
   '@global': {
     div: {
-      ...getContentWrapperJssStyle('basic'),
+      ...(getContentWrapperJssStyle('basic') as any),
       ...getFocusJssStyle(),
       ...getScreenReaderOnlyJssStyle(),
     },
   },
 });
-
+  
 export const App = (): JSX.Element => {
   useStyles();
   return (
@@ -28,3 +30,4 @@ export const App = (): JSX.Element => {
     </StyleSheetManager>
   );
 };
+  
