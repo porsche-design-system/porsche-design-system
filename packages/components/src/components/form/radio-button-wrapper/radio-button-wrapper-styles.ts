@@ -11,8 +11,7 @@ import {
 import { getCheckboxRadioLabelJssStyle } from '../../../styles/checkbox-radio-styles';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
-import { buildSlottedStyles, getCss } from '../../../utils';
-import { isVisibleFormState } from '../../../utils/form-state';
+import { buildSlottedStyles, getCss, isVisibleFormState } from '../../../utils';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 
 const theme: Theme = 'light';

@@ -1,4 +1,4 @@
-import * as domUtils from '../../../../utils/dom';
+import * as domValidationUtils from '../../../../utils/dom/dom-validation';
 import * as attributeObserverUtils from '../../../../utils/attribute-observer';
 import { SelectWrapper } from './select-wrapper';
 import * as selectWrapperUtils from './select-wrapper-utils';
@@ -25,7 +25,7 @@ describe('select-wrapper', () => {
   describe('componentWillLoad', () => {
     it('should call getHTMLElementAndThrowIfUndefined()', () => {
       const component = initComponent();
-      const spy = jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined');
+      const spy = jest.spyOn(domValidationUtils, 'getHTMLElementAndThrowIfUndefined');
 
       try {
         component.componentWillLoad();

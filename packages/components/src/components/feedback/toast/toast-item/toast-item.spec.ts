@@ -1,11 +1,11 @@
 import { ToastItem } from './toast-item';
 import * as validationUtils from '../../../../utils/validation';
-import * as domUtils from '../../../../utils/dom';
+import * as domValidationUtils from '../../../../utils/dom/dom-validation';
 import { TOAST_STATES } from '../toast/toast-utils';
 
 describe('connectedCallback', () => {
   it('should call throwIfRootNodeIsNotOfKind()', () => {
-    const spy = jest.spyOn(domUtils, 'throwIfRootNodeIsNotOfKind');
+    const spy = jest.spyOn(domValidationUtils, 'throwIfRootNodeIsNotOfKind');
     const component = new ToastItem();
 
     try {
