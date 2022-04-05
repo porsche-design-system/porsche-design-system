@@ -38,7 +38,7 @@ export const getComponentCss = (color: TagStatusColor, isFocusable: boolean, the
         ...mergeDeep(
           {
             '&(a),&(button)': {
-              display: 'block',
+              display: 'inline',
               position: 'static',
               textDecoration: 'underline',
               cursor: 'pointer',
@@ -86,11 +86,9 @@ export const getComponentCss = (color: TagStatusColor, isFocusable: boolean, the
       }),
     },
     root: {
-      display: 'inline-flex',
+      display: 'inline-block',
       position: 'relative',
-      alignItems: 'center',
-      verticalAlign: 'top',
-      minHeight: '24px',
+      height: '24px',
       padding: '0 6px',
       borderRadius: '4px',
       background: getThemedBackgroundColor(color, themedColors),
@@ -98,8 +96,9 @@ export const getComponentCss = (color: TagStatusColor, isFocusable: boolean, the
       ...textXSmall,
       overflowWrap: null,
       hyphens: null,
-      transition: getTransition('color'),
+      lineHeight: '24px',
       whiteSpace: 'nowrap',
+      transition: getTransition('color'),
       ...(isFocusable && {
         '&:hover': {
           color: hoverColor,
