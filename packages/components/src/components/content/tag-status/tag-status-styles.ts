@@ -94,6 +94,8 @@ export const getComponentCss = (color: TagColor, isFocusable: boolean, theme: Th
       background: getThemedBackgroundColor(color, themedColors),
       color: baseColor,
       ...textXSmall,
+      overflowWrap: null,
+      hyphens: null,
       transition: getTransition('color'),
       whiteSpace: 'nowrap',
       ...(isFocusable && {
