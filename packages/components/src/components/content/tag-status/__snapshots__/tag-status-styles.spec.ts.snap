@@ -46,6 +46,9 @@ exports[`getComponentCss() should return correct css for color: background-surfa
   color: inherit !important;
   text-align: left !important;
 }
+::slotted(br) {
+  display: none !important;
+}
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
@@ -56,7 +59,6 @@ exports[`getComponentCss() should return correct css for color: background-surfa
   vertical-align: top;
   min-height: 24px;
   padding: 0 6px;
-  box-sizing: border-box;
   border-radius: 4px;
   background: #262b2e;
   color: #fff;
@@ -120,6 +122,9 @@ exports[`getComponentCss() should return correct css for color: background-surfa
   color: inherit !important;
   text-align: left !important;
 }
+::slotted(br) {
+  display: none !important;
+}
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
@@ -130,7 +135,6 @@ exports[`getComponentCss() should return correct css for color: background-surfa
   vertical-align: top;
   min-height: 24px;
   padding: 0 6px;
-  box-sizing: border-box;
   border-radius: 4px;
   background: #f2f2f2;
   color: #000;
@@ -194,6 +198,9 @@ exports[`getComponentCss() should return correct css for color: default, isFocus
   color: inherit !important;
   text-align: left !important;
 }
+::slotted(br) {
+  display: none !important;
+}
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
@@ -204,7 +211,6 @@ exports[`getComponentCss() should return correct css for color: default, isFocus
   vertical-align: top;
   min-height: 24px;
   padding: 0 6px;
-  box-sizing: border-box;
   border-radius: 4px;
   background: #0e1418;
   color: #fff;
@@ -265,6 +271,9 @@ exports[`getComponentCss() should return correct css for color: default, isFocus
   color: inherit !important;
   text-align: left !important;
 }
+::slotted(br) {
+  display: none !important;
+}
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
@@ -275,7 +284,6 @@ exports[`getComponentCss() should return correct css for color: default, isFocus
   vertical-align: top;
   min-height: 24px;
   padding: 0 6px;
-  box-sizing: border-box;
   border-radius: 4px;
   background: #fff;
   color: #000;
@@ -336,6 +344,9 @@ exports[`getComponentCss() should return correct css for color: default, isFocus
   color: inherit !important;
   text-align: left !important;
 }
+::slotted(br) {
+  display: none !important;
+}
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
@@ -346,7 +357,6 @@ exports[`getComponentCss() should return correct css for color: default, isFocus
   vertical-align: top;
   min-height: 24px;
   padding: 0 6px;
-  box-sizing: border-box;
   border-radius: 4px;
   background: #0e1418;
   color: #fff;
@@ -410,6 +420,9 @@ exports[`getComponentCss() should return correct css for color: default, isFocus
   color: inherit !important;
   text-align: left !important;
 }
+::slotted(br) {
+  display: none !important;
+}
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
@@ -420,7 +433,6 @@ exports[`getComponentCss() should return correct css for color: default, isFocus
   vertical-align: top;
   min-height: 24px;
   padding: 0 6px;
-  box-sizing: border-box;
   border-radius: 4px;
   background: #fff;
   color: #000;
@@ -488,6 +500,9 @@ exports[`getComponentCss() should return correct css for color: neutral-contrast
   color: inherit !important;
   text-align: left !important;
 }
+::slotted(br) {
+  display: none !important;
+}
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
@@ -498,7 +513,6 @@ exports[`getComponentCss() should return correct css for color: neutral-contrast
   vertical-align: top;
   min-height: 24px;
   padding: 0 6px;
-  box-sizing: border-box;
   border-radius: 4px;
   background: #e3e4e5;
   color: #000;
@@ -566,6 +580,9 @@ exports[`getComponentCss() should return correct css for color: neutral-contrast
   color: inherit !important;
   text-align: left !important;
 }
+::slotted(br) {
+  display: none !important;
+}
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
@@ -576,7 +593,6 @@ exports[`getComponentCss() should return correct css for color: neutral-contrast
   vertical-align: top;
   min-height: 24px;
   padding: 0 6px;
-  box-sizing: border-box;
   border-radius: 4px;
   background: #323639;
   color: #fff;
@@ -644,6 +660,9 @@ exports[`getComponentCss() should return correct css for color: notification-err
   color: inherit !important;
   text-align: left !important;
 }
+::slotted(br) {
+  display: none !important;
+}
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
@@ -654,7 +673,6 @@ exports[`getComponentCss() should return correct css for color: notification-err
   vertical-align: top;
   min-height: 24px;
   padding: 0 6px;
-  box-sizing: border-box;
   border-radius: 4px;
   background: #fec5c5;
   color: #000;
@@ -718,6 +736,9 @@ exports[`getComponentCss() should return correct css for color: notification-err
   color: inherit !important;
   text-align: left !important;
 }
+::slotted(br) {
+  display: none !important;
+}
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
@@ -728,7 +749,6 @@ exports[`getComponentCss() should return correct css for color: notification-err
   vertical-align: top;
   min-height: 24px;
   padding: 0 6px;
-  box-sizing: border-box;
   border-radius: 4px;
   background: #fae6e6;
   color: #000;
@@ -796,6 +816,9 @@ exports[`getComponentCss() should return correct css for color: notification-neu
   color: inherit !important;
   text-align: left !important;
 }
+::slotted(br) {
+  display: none !important;
+}
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
@@ -806,7 +829,6 @@ exports[`getComponentCss() should return correct css for color: notification-neu
   vertical-align: top;
   min-height: 24px;
   padding: 0 6px;
-  box-sizing: border-box;
   border-radius: 4px;
   background: #c7e4ff;
   color: #000;
@@ -870,6 +892,9 @@ exports[`getComponentCss() should return correct css for color: notification-neu
   color: inherit !important;
   text-align: left !important;
 }
+::slotted(br) {
+  display: none !important;
+}
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
@@ -880,7 +905,6 @@ exports[`getComponentCss() should return correct css for color: notification-neu
   vertical-align: top;
   min-height: 24px;
   padding: 0 6px;
-  box-sizing: border-box;
   border-radius: 4px;
   background: #e5eff8;
   color: #000;
@@ -948,6 +972,9 @@ exports[`getComponentCss() should return correct css for color: notification-suc
   color: inherit !important;
   text-align: left !important;
 }
+::slotted(br) {
+  display: none !important;
+}
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
@@ -958,7 +985,6 @@ exports[`getComponentCss() should return correct css for color: notification-suc
   vertical-align: top;
   min-height: 24px;
   padding: 0 6px;
-  box-sizing: border-box;
   border-radius: 4px;
   background: #bfeec6;
   color: #000;
@@ -1022,6 +1048,9 @@ exports[`getComponentCss() should return correct css for color: notification-suc
   color: inherit !important;
   text-align: left !important;
 }
+::slotted(br) {
+  display: none !important;
+}
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
@@ -1032,7 +1061,6 @@ exports[`getComponentCss() should return correct css for color: notification-suc
   vertical-align: top;
   min-height: 24px;
   padding: 0 6px;
-  box-sizing: border-box;
   border-radius: 4px;
   background: #e5f3e7;
   color: #000;
@@ -1100,6 +1128,9 @@ exports[`getComponentCss() should return correct css for color: notification-war
   color: inherit !important;
   text-align: left !important;
 }
+::slotted(br) {
+  display: none !important;
+}
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
@@ -1110,7 +1141,6 @@ exports[`getComponentCss() should return correct css for color: notification-war
   vertical-align: top;
   min-height: 24px;
   padding: 0 6px;
-  box-sizing: border-box;
   border-radius: 4px;
   background: #ffe6bf;
   color: #000;
@@ -1174,6 +1204,9 @@ exports[`getComponentCss() should return correct css for color: notification-war
   color: inherit !important;
   text-align: left !important;
 }
+::slotted(br) {
+  display: none !important;
+}
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
@@ -1184,7 +1217,6 @@ exports[`getComponentCss() should return correct css for color: notification-war
   vertical-align: top;
   min-height: 24px;
   padding: 0 6px;
-  box-sizing: border-box;
   border-radius: 4px;
   background: #fff5e5;
   color: #000;
