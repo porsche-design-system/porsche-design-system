@@ -15,7 +15,7 @@ export class LinkSocial {
   /** The icon shown. */
   @Prop() public icon?: SocialIconName;
 
-  /** A custom URL path to a custom social icon. */
+  /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
 
   /** When providing an url then the component will be rendered as `<a>`. */

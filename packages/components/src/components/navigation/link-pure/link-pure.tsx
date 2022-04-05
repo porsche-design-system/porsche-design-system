@@ -48,7 +48,7 @@ export class LinkPure {
   /** The icon shown. By choosing 'none', no icon is displayed */
   @Prop() public icon?: LinkButtonPureIconName = 'arrow-head-right';
 
-  /** A custom URL path to a custom icon. */
+  /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
 
   /** When providing an url then the component will be rendered as `<a>`. */
