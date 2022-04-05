@@ -15,7 +15,7 @@ describe('updateChildren()', () => {
 
     updateChildren(host);
 
-    expect(spy).toHaveBeenCalledTimes(2);
+    expect(spy).toBeCalledTimes(2);
     expect(spy.mock.calls[0][0]).toEqual(child1); // toHaveBeenNthCalledWith doesn't work
     expect(spy.mock.calls[1][0]).toEqual(child2);
   });

@@ -36,7 +36,7 @@ describe('modal', () => {
       component.open = true;
       component.componentDidLoad();
 
-      expect(utilsSpy).toHaveBeenCalledWith(component.host, true, component['closeBtn'], component['closeModal']);
+      expect(utilsSpy).toBeCalledWith(component.host, true, component['closeBtn'], component['closeModal']);
     });
 
     it('should not call setScrollLock() if modal is not open', () => {
@@ -87,7 +87,7 @@ describe('modal', () => {
       component.host.appendChild(header);
       component.componentWillRender();
 
-      expect(hasNamedSlotSpy).toHaveBeenCalledWith(component.host, 'heading');
+      expect(hasNamedSlotSpy).toBeCalledWith(component.host, 'heading');
     });
   });
 
@@ -96,7 +96,7 @@ describe('modal', () => {
       const utilsSpy = jest.spyOn(modalUtils, 'setScrollLock');
       component.disconnectedCallback();
 
-      expect(utilsSpy).toHaveBeenCalledWith(component.host, false);
+      expect(utilsSpy).toBeCalledWith(component.host, false);
     });
   });
 });

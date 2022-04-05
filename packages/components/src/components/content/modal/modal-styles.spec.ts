@@ -8,7 +8,7 @@ describe('getComponentCss()', () => {
     const spy = jest.spyOn(focusVisibleFallbackUtils, 'getFocusVisibleFallback');
     getComponentCss(true, true, true, true);
 
-    expect(spy).toHaveBeenCalledWith(getFocusJssStyle({ color: '#fff' }));
+    expect(spy).toBeCalledWith(getFocusJssStyle({ color: '#fff' }));
   });
 
   it.each<Parameters<typeof getComponentCss>>([
