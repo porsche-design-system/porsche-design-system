@@ -80,6 +80,9 @@ export const getComponentCss = (color: TagStatusColor, isFocusable: boolean, the
           color: 'inherit', // TODO: chrome hover bug. Remove when fixed.
           textAlign: 'left',
         },
+        '&(br)': {
+          display: 'none',
+        },
       }),
     },
     root: {
@@ -89,7 +92,6 @@ export const getComponentCss = (color: TagStatusColor, isFocusable: boolean, the
       verticalAlign: 'top',
       minHeight: '24px',
       padding: '0 6px',
-      boxSizing: 'border-box',
       borderRadius: '4px',
       background: getThemedBackgroundColor(color, themedColors),
       color: baseColor,
