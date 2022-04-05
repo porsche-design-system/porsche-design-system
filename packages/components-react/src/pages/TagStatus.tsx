@@ -127,12 +127,12 @@ export const TagStatusPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should apply custom styles for dedicated slotted content on light background">
-        <PTagStatus>Default <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text</PTagStatus>
-        <PTagStatus color="default">
+        <PTagStatus>
           Color default <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text
         </PTagStatus>
-        <PTagStatus color="background-surface">
-          Color background-surface <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text
+        <PTagStatus>
+          Default <br />
+          with line break
         </PTagStatus>
       </div>
 
