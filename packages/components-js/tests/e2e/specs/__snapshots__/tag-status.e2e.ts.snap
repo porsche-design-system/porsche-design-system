@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`tag-status accessibility should expose correct accessibility tree with icon 1`] = `
+exports[`accessibility should expose correct accessibility tree with icon 1`] = `
 Object {
   "children": Array [
     Object {
@@ -39,7 +39,7 @@ Object {
 }
 `;
 
-exports[`tag-status accessibility should expose correct initial accessibility tree 1`] = `
+exports[`accessibility should expose correct initial accessibility tree 1`] = `
 Object {
   "children": Array [
     Object {
