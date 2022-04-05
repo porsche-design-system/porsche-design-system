@@ -21,7 +21,7 @@ export class TagStatus {
   /** The icon shown. */
   @Prop() public icon?: TagIconName;
 
-  /** A custom URL path to a custom icon. */
+  /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
 
   public componentWillRender(): void {

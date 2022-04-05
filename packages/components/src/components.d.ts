@@ -99,7 +99,7 @@ export namespace Components {
          */
         "icon"?: IconName;
         /**
-          * A custom URL path to a custom icon.
+          * A URL path to a custom icon.
          */
         "iconSource"?: string;
         /**
@@ -156,7 +156,7 @@ export namespace Components {
          */
         "icon"?: LinkButtonPureIconName;
         /**
-          * A custom URL path to a custom icon.
+          * A URL path to a custom icon.
          */
         "iconSource"?: string;
         /**
@@ -445,7 +445,7 @@ export namespace Components {
          */
         "icon"?: IconName;
         /**
-          * A custom URL path to a custom icon.
+          * A URL path to a custom icon.
          */
         "iconSource"?: string;
         /**
@@ -495,7 +495,7 @@ export namespace Components {
          */
         "icon"?: LinkButtonPureIconName;
         /**
-          * A custom URL path to a custom icon.
+          * A URL path to a custom icon.
          */
         "iconSource"?: string;
         /**
@@ -537,7 +537,7 @@ export namespace Components {
          */
         "icon"?: SocialIconName;
         /**
-          * A custom URL path to a custom social icon.
+          * A URL path to a custom icon.
          */
         "iconSource"?: string;
         /**
@@ -862,7 +862,7 @@ export namespace Components {
          */
         "icon"?: TagIconName;
         /**
-          * A custom URL path to a custom icon.
+          * A URL path to a custom icon.
          */
         "iconSource"?: string;
         /**
@@ -1387,7 +1387,7 @@ declare namespace LocalJSX {
          */
         "icon"?: IconName;
         /**
-          * A custom URL path to a custom icon.
+          * A URL path to a custom icon.
          */
         "iconSource"?: string;
         /**
@@ -1444,7 +1444,7 @@ declare namespace LocalJSX {
          */
         "icon"?: LinkButtonPureIconName;
         /**
-          * A custom URL path to a custom icon.
+          * A URL path to a custom icon.
          */
         "iconSource"?: string;
         /**
@@ -1741,7 +1741,7 @@ declare namespace LocalJSX {
          */
         "icon"?: IconName;
         /**
-          * A custom URL path to a custom icon.
+          * A URL path to a custom icon.
          */
         "iconSource"?: string;
         /**
@@ -1791,7 +1791,7 @@ declare namespace LocalJSX {
          */
         "icon"?: LinkButtonPureIconName;
         /**
-          * A custom URL path to a custom icon.
+          * A URL path to a custom icon.
          */
         "iconSource"?: string;
         /**
@@ -1833,7 +1833,7 @@ declare namespace LocalJSX {
          */
         "icon"?: SocialIconName;
         /**
-          * A custom URL path to a custom social icon.
+          * A URL path to a custom icon.
          */
         "iconSource"?: string;
         /**
@@ -2182,7 +2182,7 @@ declare namespace LocalJSX {
          */
         "icon"?: TagIconName;
         /**
-          * A custom URL path to a custom icon.
+          * A URL path to a custom icon.
          */
         "iconSource"?: string;
         /**
