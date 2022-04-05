@@ -1,7 +1,7 @@
 import type { TextColor } from '../../../types';
 import { getHTMLElement } from '../../../utils';
 
-export type TagColor =
+export type TagStatusColor =
   | Extract<
       TextColor,
       | 'default'

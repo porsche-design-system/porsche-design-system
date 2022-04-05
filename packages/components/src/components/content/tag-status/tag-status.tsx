@@ -1,5 +1,5 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import type { TagColor } from './tag-status-utils';
+import type { TagStatusColor } from './tag-status-utils';
 import { hasSlottedAnchorOrButton } from './tag-status-utils';
 import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
 import { getComponentCss } from './tag-status-styles';
@@ -16,7 +16,7 @@ export class TagStatus {
   @Prop() public theme?: Theme = 'light';
 
   /** Background color variations depending on theme property. */
-  @Prop() public color?: TagColor = 'background-surface';
+  @Prop() public color?: TagStatusColor = 'background-surface';
 
   /** The icon shown. */
   @Prop() public icon?: IconName;

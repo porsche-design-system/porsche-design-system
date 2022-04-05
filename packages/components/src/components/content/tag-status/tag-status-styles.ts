@@ -2,11 +2,11 @@ import { getCss, isThemeDark, mergeDeep } from '../../../utils';
 import { addImportantToEachRule, getFocusJssStyle, getThemedColors, getTransition } from '../../../styles';
 import { textXSmall } from '@porsche-design-system/utilities-v2';
 import type { ThemedColors } from '../../../styles';
-import type { TagColor } from './tag-status-utils';
+import type { TagStatusColor } from './tag-status-utils';
 import type { Theme } from '../../../types';
 
-const getThemedBackgroundColor = (color: TagColor, themedColors: ThemedColors) => {
-  const colorMap: { [key in TagColor]: string } = {
+const getThemedBackgroundColor = (color: TagStatusColor, themedColors: ThemedColors) => {
+  const colorMap: { [key in TagStatusColor]: string } = {
     default: themedColors.backgroundColor,
     'background-surface': themedColors.backgroundSurfaceColor,
     'neutral-contrast-high': themedColors.contrastHighColor,
@@ -19,7 +19,7 @@ const getThemedBackgroundColor = (color: TagColor, themedColors: ThemedColors) =
   return colorMap[color];
 };
 
-export const getComponentCss = (color: TagColor, isFocusable: boolean, theme: Theme): string => {
+export const getComponentCss = (color: TagStatusColor, isFocusable: boolean, theme: Theme): string => {
   const themedColors = getThemedColors(theme);
   const isDark = isThemeDark(theme);
   const hasInvertedThemeColor =
