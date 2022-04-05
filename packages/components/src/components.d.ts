@@ -31,7 +31,7 @@ import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinne
 import { SwitchChangeEvent } from "./components/action/switch/switch";
 import { SortingChangeEvent, TableHeadCellSort } from "./components/content/table/table/table-utils";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
-import { TagColor } from "./components/content/tag-status/tag-status-utils";
+import { TagStatusColor } from "./components/content/tag-status/tag-status-utils";
 import { TextFieldWrapperUnitPosition } from "./components/form/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 import { ToastMessage } from "./components/feedback/toast/toast/toast-manager";
@@ -856,7 +856,7 @@ export namespace Components {
         /**
           * Background color variations depending on theme property.
          */
-        "color"?: TagColor;
+        "color"?: TagStatusColor;
         /**
           * The icon shown.
          */
@@ -2176,7 +2176,7 @@ declare namespace LocalJSX {
         /**
           * Background color variations depending on theme property.
          */
-        "color"?: TagColor;
+        "color"?: TagStatusColor;
         /**
           * The icon shown.
          */
