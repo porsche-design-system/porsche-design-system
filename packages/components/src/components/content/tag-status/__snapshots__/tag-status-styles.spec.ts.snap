@@ -5,7 +5,7 @@ exports[`getComponentCss() should return correct css for color: background-surfa
   display: inline-block;
 }
 ::slotted(a), ::slotted(button) {
-  display: block !important;
+  display: inline !important;
   position: static !important;
   text-decoration: underline !important;
   cursor: pointer !important;
@@ -53,11 +53,9 @@ exports[`getComponentCss() should return correct css for color: background-surfa
   border-radius: 4px !important;
 }
 .root {
-  display: inline-flex;
+  display: inline-block;
   position: relative;
-  align-items: center;
-  vertical-align: top;
-  min-height: 24px;
+  height: 24px;
   padding: 0 6px;
   border-radius: 4px;
   background: #262b2e;
@@ -65,8 +63,9 @@ exports[`getComponentCss() should return correct css for color: background-surfa
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  transition: color var(--p-transition-duration, .24s) ease;
+  line-height: 24px;
   white-space: nowrap;
+  transition: color var(--p-transition-duration, .24s) ease;
 }
 .root:hover {
   color: #ff0223;
@@ -81,7 +80,7 @@ exports[`getComponentCss() should return correct css for color: background-surfa
   display: inline-block;
 }
 ::slotted(a), ::slotted(button) {
-  display: block !important;
+  display: inline !important;
   position: static !important;
   text-decoration: underline !important;
   cursor: pointer !important;
@@ -129,11 +128,9 @@ exports[`getComponentCss() should return correct css for color: background-surfa
   border-radius: 4px !important;
 }
 .root {
-  display: inline-flex;
+  display: inline-block;
   position: relative;
-  align-items: center;
-  vertical-align: top;
-  min-height: 24px;
+  height: 24px;
   padding: 0 6px;
   border-radius: 4px;
   background: #f2f2f2;
@@ -141,8 +138,9 @@ exports[`getComponentCss() should return correct css for color: background-surfa
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  transition: color var(--p-transition-duration, .24s) ease;
+  line-height: 24px;
   white-space: nowrap;
+  transition: color var(--p-transition-duration, .24s) ease;
 }
 .root:hover {
   color: #d5001c;
@@ -156,60 +154,13 @@ exports[`getComponentCss() should return correct css for color: default, isFocus
 ":host {
   display: inline-block;
 }
-::slotted(a), ::slotted(button) {
-  display: block !important;
-  position: static !important;
-  text-decoration: underline !important;
-  cursor: pointer !important;
-  font: inherit !important;
-  outline: 0 !important;
-}
-::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
-  border: 0 !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
-}
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: currentColor !important;
-}
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent !important;
-}
-::slotted(a) {
-  color: #fff !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
-::slotted(a:hover) {
-  color: #ff0223 !important;
-}
-::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  background: 0 !important;
-  border: 0 !important;
-  color: inherit !important;
-  text-align: left !important;
-}
 ::slotted(br) {
   display: none !important;
 }
-::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 4px !important;
-}
 .root {
-  display: inline-flex;
+  display: inline-block;
   position: relative;
-  align-items: center;
-  vertical-align: top;
-  min-height: 24px;
+  height: 24px;
   padding: 0 6px;
   border-radius: 4px;
   background: #0e1418;
@@ -217,8 +168,9 @@ exports[`getComponentCss() should return correct css for color: default, isFocus
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  transition: color var(--p-transition-duration, .24s) ease;
+  line-height: 24px;
   white-space: nowrap;
+  transition: color var(--p-transition-duration, .24s) ease;
 }
 .icon {
   margin: 0 2px 0 -2px;
@@ -229,60 +181,13 @@ exports[`getComponentCss() should return correct css for color: default, isFocus
 ":host {
   display: inline-block;
 }
-::slotted(a), ::slotted(button) {
-  display: block !important;
-  position: static !important;
-  text-decoration: underline !important;
-  cursor: pointer !important;
-  font: inherit !important;
-  outline: 0 !important;
-}
-::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
-  border: 0 !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
-}
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: currentColor !important;
-}
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent !important;
-}
-::slotted(a) {
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
-::slotted(a:hover) {
-  color: #d5001c !important;
-}
-::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  background: 0 !important;
-  border: 0 !important;
-  color: inherit !important;
-  text-align: left !important;
-}
 ::slotted(br) {
   display: none !important;
 }
-::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 4px !important;
-}
 .root {
-  display: inline-flex;
+  display: inline-block;
   position: relative;
-  align-items: center;
-  vertical-align: top;
-  min-height: 24px;
+  height: 24px;
   padding: 0 6px;
   border-radius: 4px;
   background: #fff;
@@ -290,8 +195,9 @@ exports[`getComponentCss() should return correct css for color: default, isFocus
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  transition: color var(--p-transition-duration, .24s) ease;
+  line-height: 24px;
   white-space: nowrap;
+  transition: color var(--p-transition-duration, .24s) ease;
 }
 .icon {
   margin: 0 2px 0 -2px;
@@ -303,7 +209,7 @@ exports[`getComponentCss() should return correct css for color: default, isFocus
   display: inline-block;
 }
 ::slotted(a), ::slotted(button) {
-  display: block !important;
+  display: inline !important;
   position: static !important;
   text-decoration: underline !important;
   cursor: pointer !important;
@@ -351,11 +257,9 @@ exports[`getComponentCss() should return correct css for color: default, isFocus
   border-radius: 4px !important;
 }
 .root {
-  display: inline-flex;
+  display: inline-block;
   position: relative;
-  align-items: center;
-  vertical-align: top;
-  min-height: 24px;
+  height: 24px;
   padding: 0 6px;
   border-radius: 4px;
   background: #0e1418;
@@ -363,8 +267,9 @@ exports[`getComponentCss() should return correct css for color: default, isFocus
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  transition: color var(--p-transition-duration, .24s) ease;
+  line-height: 24px;
   white-space: nowrap;
+  transition: color var(--p-transition-duration, .24s) ease;
 }
 .root:hover {
   color: #ff0223;
@@ -379,7 +284,7 @@ exports[`getComponentCss() should return correct css for color: default, isFocus
   display: inline-block;
 }
 ::slotted(a), ::slotted(button) {
-  display: block !important;
+  display: inline !important;
   position: static !important;
   text-decoration: underline !important;
   cursor: pointer !important;
@@ -427,11 +332,9 @@ exports[`getComponentCss() should return correct css for color: default, isFocus
   border-radius: 4px !important;
 }
 .root {
-  display: inline-flex;
+  display: inline-block;
   position: relative;
-  align-items: center;
-  vertical-align: top;
-  min-height: 24px;
+  height: 24px;
   padding: 0 6px;
   border-radius: 4px;
   background: #fff;
@@ -439,8 +342,9 @@ exports[`getComponentCss() should return correct css for color: default, isFocus
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  transition: color var(--p-transition-duration, .24s) ease;
+  line-height: 24px;
   white-space: nowrap;
+  transition: color var(--p-transition-duration, .24s) ease;
 }
 .root:hover {
   color: #d5001c;
@@ -455,7 +359,7 @@ exports[`getComponentCss() should return correct css for color: neutral-contrast
   display: inline-block;
 }
 ::slotted(a), ::slotted(button) {
-  display: block !important;
+  display: inline !important;
   position: static !important;
   text-decoration: underline !important;
   cursor: pointer !important;
@@ -507,11 +411,9 @@ exports[`getComponentCss() should return correct css for color: neutral-contrast
   border-radius: 4px !important;
 }
 .root {
-  display: inline-flex;
+  display: inline-block;
   position: relative;
-  align-items: center;
-  vertical-align: top;
-  min-height: 24px;
+  height: 24px;
   padding: 0 6px;
   border-radius: 4px;
   background: #e3e4e5;
@@ -519,8 +421,9 @@ exports[`getComponentCss() should return correct css for color: neutral-contrast
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  transition: color var(--p-transition-duration, .24s) ease;
+  line-height: 24px;
   white-space: nowrap;
+  transition: color var(--p-transition-duration, .24s) ease;
 }
 .root:hover {
   color: #d5001c;
@@ -535,7 +438,7 @@ exports[`getComponentCss() should return correct css for color: neutral-contrast
   display: inline-block;
 }
 ::slotted(a), ::slotted(button) {
-  display: block !important;
+  display: inline !important;
   position: static !important;
   text-decoration: underline !important;
   cursor: pointer !important;
@@ -587,11 +490,9 @@ exports[`getComponentCss() should return correct css for color: neutral-contrast
   border-radius: 4px !important;
 }
 .root {
-  display: inline-flex;
+  display: inline-block;
   position: relative;
-  align-items: center;
-  vertical-align: top;
-  min-height: 24px;
+  height: 24px;
   padding: 0 6px;
   border-radius: 4px;
   background: #323639;
@@ -599,8 +500,9 @@ exports[`getComponentCss() should return correct css for color: neutral-contrast
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  transition: color var(--p-transition-duration, .24s) ease;
+  line-height: 24px;
   white-space: nowrap;
+  transition: color var(--p-transition-duration, .24s) ease;
 }
 .root:hover {
   color: #ff0223;
@@ -615,7 +517,7 @@ exports[`getComponentCss() should return correct css for color: notification-err
   display: inline-block;
 }
 ::slotted(a), ::slotted(button) {
-  display: block !important;
+  display: inline !important;
   position: static !important;
   text-decoration: underline !important;
   cursor: pointer !important;
@@ -667,11 +569,9 @@ exports[`getComponentCss() should return correct css for color: notification-err
   border-radius: 4px !important;
 }
 .root {
-  display: inline-flex;
+  display: inline-block;
   position: relative;
-  align-items: center;
-  vertical-align: top;
-  min-height: 24px;
+  height: 24px;
   padding: 0 6px;
   border-radius: 4px;
   background: #fec5c5;
@@ -679,8 +579,9 @@ exports[`getComponentCss() should return correct css for color: notification-err
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  transition: color var(--p-transition-duration, .24s) ease;
+  line-height: 24px;
   white-space: nowrap;
+  transition: color var(--p-transition-duration, .24s) ease;
 }
 .root:hover {
   color: #d5001c;
@@ -695,7 +596,7 @@ exports[`getComponentCss() should return correct css for color: notification-err
   display: inline-block;
 }
 ::slotted(a), ::slotted(button) {
-  display: block !important;
+  display: inline !important;
   position: static !important;
   text-decoration: underline !important;
   cursor: pointer !important;
@@ -743,11 +644,9 @@ exports[`getComponentCss() should return correct css for color: notification-err
   border-radius: 4px !important;
 }
 .root {
-  display: inline-flex;
+  display: inline-block;
   position: relative;
-  align-items: center;
-  vertical-align: top;
-  min-height: 24px;
+  height: 24px;
   padding: 0 6px;
   border-radius: 4px;
   background: #fae6e6;
@@ -755,8 +654,9 @@ exports[`getComponentCss() should return correct css for color: notification-err
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  transition: color var(--p-transition-duration, .24s) ease;
+  line-height: 24px;
   white-space: nowrap;
+  transition: color var(--p-transition-duration, .24s) ease;
 }
 .root:hover {
   color: #d5001c;
@@ -771,7 +671,7 @@ exports[`getComponentCss() should return correct css for color: notification-neu
   display: inline-block;
 }
 ::slotted(a), ::slotted(button) {
-  display: block !important;
+  display: inline !important;
   position: static !important;
   text-decoration: underline !important;
   cursor: pointer !important;
@@ -823,11 +723,9 @@ exports[`getComponentCss() should return correct css for color: notification-neu
   border-radius: 4px !important;
 }
 .root {
-  display: inline-flex;
+  display: inline-block;
   position: relative;
-  align-items: center;
-  vertical-align: top;
-  min-height: 24px;
+  height: 24px;
   padding: 0 6px;
   border-radius: 4px;
   background: #c7e4ff;
@@ -835,8 +733,9 @@ exports[`getComponentCss() should return correct css for color: notification-neu
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  transition: color var(--p-transition-duration, .24s) ease;
+  line-height: 24px;
   white-space: nowrap;
+  transition: color var(--p-transition-duration, .24s) ease;
 }
 .root:hover {
   color: #d5001c;
@@ -851,7 +750,7 @@ exports[`getComponentCss() should return correct css for color: notification-neu
   display: inline-block;
 }
 ::slotted(a), ::slotted(button) {
-  display: block !important;
+  display: inline !important;
   position: static !important;
   text-decoration: underline !important;
   cursor: pointer !important;
@@ -899,11 +798,9 @@ exports[`getComponentCss() should return correct css for color: notification-neu
   border-radius: 4px !important;
 }
 .root {
-  display: inline-flex;
+  display: inline-block;
   position: relative;
-  align-items: center;
-  vertical-align: top;
-  min-height: 24px;
+  height: 24px;
   padding: 0 6px;
   border-radius: 4px;
   background: #e5eff8;
@@ -911,8 +808,9 @@ exports[`getComponentCss() should return correct css for color: notification-neu
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  transition: color var(--p-transition-duration, .24s) ease;
+  line-height: 24px;
   white-space: nowrap;
+  transition: color var(--p-transition-duration, .24s) ease;
 }
 .root:hover {
   color: #d5001c;
@@ -927,7 +825,7 @@ exports[`getComponentCss() should return correct css for color: notification-suc
   display: inline-block;
 }
 ::slotted(a), ::slotted(button) {
-  display: block !important;
+  display: inline !important;
   position: static !important;
   text-decoration: underline !important;
   cursor: pointer !important;
@@ -979,11 +877,9 @@ exports[`getComponentCss() should return correct css for color: notification-suc
   border-radius: 4px !important;
 }
 .root {
-  display: inline-flex;
+  display: inline-block;
   position: relative;
-  align-items: center;
-  vertical-align: top;
-  min-height: 24px;
+  height: 24px;
   padding: 0 6px;
   border-radius: 4px;
   background: #bfeec6;
@@ -991,8 +887,9 @@ exports[`getComponentCss() should return correct css for color: notification-suc
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  transition: color var(--p-transition-duration, .24s) ease;
+  line-height: 24px;
   white-space: nowrap;
+  transition: color var(--p-transition-duration, .24s) ease;
 }
 .root:hover {
   color: #d5001c;
@@ -1007,7 +904,7 @@ exports[`getComponentCss() should return correct css for color: notification-suc
   display: inline-block;
 }
 ::slotted(a), ::slotted(button) {
-  display: block !important;
+  display: inline !important;
   position: static !important;
   text-decoration: underline !important;
   cursor: pointer !important;
@@ -1055,11 +952,9 @@ exports[`getComponentCss() should return correct css for color: notification-suc
   border-radius: 4px !important;
 }
 .root {
-  display: inline-flex;
+  display: inline-block;
   position: relative;
-  align-items: center;
-  vertical-align: top;
-  min-height: 24px;
+  height: 24px;
   padding: 0 6px;
   border-radius: 4px;
   background: #e5f3e7;
@@ -1067,8 +962,9 @@ exports[`getComponentCss() should return correct css for color: notification-suc
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  transition: color var(--p-transition-duration, .24s) ease;
+  line-height: 24px;
   white-space: nowrap;
+  transition: color var(--p-transition-duration, .24s) ease;
 }
 .root:hover {
   color: #d5001c;
@@ -1083,7 +979,7 @@ exports[`getComponentCss() should return correct css for color: notification-war
   display: inline-block;
 }
 ::slotted(a), ::slotted(button) {
-  display: block !important;
+  display: inline !important;
   position: static !important;
   text-decoration: underline !important;
   cursor: pointer !important;
@@ -1135,11 +1031,9 @@ exports[`getComponentCss() should return correct css for color: notification-war
   border-radius: 4px !important;
 }
 .root {
-  display: inline-flex;
+  display: inline-block;
   position: relative;
-  align-items: center;
-  vertical-align: top;
-  min-height: 24px;
+  height: 24px;
   padding: 0 6px;
   border-radius: 4px;
   background: #ffe6bf;
@@ -1147,8 +1041,9 @@ exports[`getComponentCss() should return correct css for color: notification-war
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  transition: color var(--p-transition-duration, .24s) ease;
+  line-height: 24px;
   white-space: nowrap;
+  transition: color var(--p-transition-duration, .24s) ease;
 }
 .root:hover {
   color: #d5001c;
@@ -1163,7 +1058,7 @@ exports[`getComponentCss() should return correct css for color: notification-war
   display: inline-block;
 }
 ::slotted(a), ::slotted(button) {
-  display: block !important;
+  display: inline !important;
   position: static !important;
   text-decoration: underline !important;
   cursor: pointer !important;
@@ -1211,11 +1106,9 @@ exports[`getComponentCss() should return correct css for color: notification-war
   border-radius: 4px !important;
 }
 .root {
-  display: inline-flex;
+  display: inline-block;
   position: relative;
-  align-items: center;
-  vertical-align: top;
-  min-height: 24px;
+  height: 24px;
   padding: 0 6px;
   border-radius: 4px;
   background: #fff5e5;
@@ -1223,8 +1116,9 @@ exports[`getComponentCss() should return correct css for color: notification-war
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  transition: color var(--p-transition-duration, .24s) ease;
+  line-height: 24px;
   white-space: nowrap;
+  transition: color var(--p-transition-duration, .24s) ease;
 }
 .root:hover {
   color: #d5001c;
