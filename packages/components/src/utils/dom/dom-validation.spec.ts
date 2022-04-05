@@ -1,14 +1,5 @@
-import * as dom from './dom';
-import type { HTMLElementWithRequiredProp } from './dom';
 import {
-  addEventListener,
-  getAttribute,
-  getDirectChildHTMLElement,
-  getHTMLElement,
   getHTMLElementAndThrowIfUndefined,
-  getRole,
-  getSlotTextContent,
-  hasAttribute,
   hasDescription,
   hasHeading,
   hasLabel,
@@ -19,15 +10,13 @@ import {
   isParentOfKind,
   isRequired,
   isRequiredAndParentNotRequired,
-  removeAttribute,
-  removeEventListener,
-  setAttribute,
   throwIfElementHasAttribute,
   throwIfParentIsNotOfKind,
   throwIfParentIsNotOneOfKind,
   throwIfRootNodeIsNotOfKind,
-} from './dom';
-import type { FormState } from '../types';
+} from './dom-validation';
+import type { HTMLElementWithRequiredProp } from './dom-validation';
+import type { FormState } from '../../types';
 
 describe('isRequired', () => {
   it('should return true if required property is true on element', () => {
@@ -83,19 +72,88 @@ describe('hasNamedSlot()', () => {
   });
 });
 
-describe('getSlotTextContent()', () => {
-  it('should return correct text content if element has slotted child with correct label', () => {
+describe('hasLabel()', () => {
+  const label = 'Some description';
+  it.each<[{ label: string; slotted: boolean }, boolean]>([
+    [{ label, slotted: false }, true],
+    [{ label: '', slotted: true }, true],
+    [{ label: '', slotted: false }, false],
+    [{ label, slotted: true }, true],
+  ])('should be called with parameter %o and return %s', (parameter, result) => {
+    const { label, slotted } = parameter;
     const el = document.createElement('div');
-    const slottedChild = document.createElement('span');
-    slottedChild.setAttribute('slot', 'label');
-    slottedChild.innerHTML = 'Some label with a <a href="https://designsystem.porsche.com">link</a>.';
-    el.appendChild(slottedChild);
-    expect(getSlotTextContent(el, 'label')).toBe('Some label with a link.');
-  });
+    if (slotted) {
+      const slot = document.createElement('span');
+      slot.slot = 'label';
+      el.appendChild(slot);
+    }
 
-  it('should return false if element has no slotted child', () => {
+    expect(hasLabel(el, label)).toBe(result);
+  });
+});
+
+describe('hasMessage()', () => {
+  const message = 'Some message';
+  it.each<[{ message: string; slotted: boolean; formState: FormState }, boolean]>([
+    [{ message, slotted: false, formState: 'error' }, true],
+    [{ message: '', slotted: true, formState: 'error' }, true],
+    [{ message: '', slotted: false, formState: 'error' }, false],
+    [{ message, slotted: false, formState: 'none' }, false],
+    [{ message: '', slotted: true, formState: 'none' }, false],
+    [{ message: '', slotted: false, formState: 'none' }, false],
+    [{ message, slotted: false, formState: 'success' }, true],
+    [{ message: '', slotted: true, formState: 'success' }, true],
+    [{ message: '', slotted: false, formState: 'success' }, false],
+  ])('should be called with parameter %o and return %s', (parameter, result) => {
+    const { message, slotted, formState } = parameter;
     const el = document.createElement('div');
-    expect(getSlotTextContent(el, 'label')).toBeUndefined();
+    if (slotted) {
+      const slot = document.createElement('span');
+      slot.slot = 'message';
+      el.appendChild(slot);
+    }
+
+    expect(hasMessage(el, message, formState)).toBe(result);
+  });
+});
+
+describe('hasDescription()', () => {
+  const description = 'Some description';
+  it.each<[{ description: string; slotted: boolean }, boolean]>([
+    [{ description, slotted: false }, true],
+    [{ description: '', slotted: true }, true],
+    [{ description: '', slotted: false }, false],
+    [{ description, slotted: true }, true],
+  ])('should be called with parameter %o and return %s', (parameter, result) => {
+    const { description, slotted } = parameter;
+    const el = document.createElement('div');
+    if (slotted) {
+      const slot = document.createElement('span');
+      slot.slot = 'description';
+      el.appendChild(slot);
+    }
+
+    expect(hasDescription(el, description)).toBe(result);
+  });
+});
+
+describe('hasHeading()', () => {
+  const heading = 'Some heading';
+  it.each<[{ heading: string; slotted: boolean }, boolean]>([
+    [{ heading, slotted: false }, true],
+    [{ heading: '', slotted: true }, true],
+    [{ heading: '', slotted: false }, false],
+    [{ heading, slotted: true }, true],
+  ])('should be called with parameter %o and return %s', (parameter, result) => {
+    const { heading, slotted } = parameter;
+    const el = document.createElement('div');
+    if (slotted) {
+      const slot = document.createElement('span');
+      slot.slot = 'heading';
+      el.appendChild(slot);
+    }
+
+    expect(hasHeading(el, heading)).toBe(result);
   });
 });
 
@@ -114,45 +172,6 @@ describe('getHTMLElementAndThrowIfUndefined()', () => {
     document.body.append(el);
 
     expect(() => getHTMLElementAndThrowIfUndefined(document.body, `.${selector}`)).not.toThrow();
-  });
-});
-
-describe('getHTMLElement()', () => {
-  it('should call querySelector on element with selector', () => {
-    const element = document.createElement('div');
-
-    const spy = jest.spyOn(element, 'querySelector');
-    getHTMLElement(element, 'span');
-    expect(spy).toBeCalledWith('span');
-
-    getHTMLElement(element, 'div');
-    expect(spy).toBeCalledWith('div');
-  });
-
-  it('should return result of querySelector', () => {
-    const element = document.createElement('div');
-    const childElement = document.createElement('span');
-
-    jest.spyOn(element, 'querySelector').mockReturnValue(childElement);
-    expect(getHTMLElement(element, 'span')).toBe(childElement);
-  });
-});
-
-describe('getDirectChildHTMLElement()', () => {
-  it('should call getHTMLElement()', () => {
-    const spy = jest.spyOn(dom, 'getHTMLElement');
-    const element = document.createElement('div');
-
-    getDirectChildHTMLElement(element, 'span');
-    expect(spy).toHaveBeenCalledWith(element, ':scoped > span');
-  });
-
-  it('should return split comma separated selectors', () => {
-    const spy = jest.spyOn(dom, 'getHTMLElement');
-    const element = document.createElement('div');
-
-    getDirectChildHTMLElement(element, 'span,button');
-    expect(spy).toHaveBeenCalledWith(element, ':scoped > span,:scoped > button');
   });
 });
 
@@ -252,176 +271,6 @@ describe('throwIfParentIsNotOneOfKind()', () => {
   });
 });
 
-describe('throwIfElementHasAttribute()', () => {
-  it('should throw error if attribute exists', () => {
-    const element = document.createElement('div');
-    element.setAttribute('title', 'some title');
-
-    expect(() => throwIfElementHasAttribute(element, 'title')).toThrow();
-  });
-
-  it('should not throw error if attribute does not exist', () => {
-    const element = document.createElement('div');
-
-    expect(() => throwIfElementHasAttribute(element, 'title')).not.toThrow();
-  });
-});
-
-describe('Event Listener', () => {
-  const listener = () => {};
-
-  describe('addEventListener()', () => {
-    it('should call addEventListener', () => {
-      const element = document.createElement('div');
-      const spy1 = jest.spyOn(element, 'addEventListener');
-
-      addEventListener(element, 'change', listener, false);
-
-      expect(spy1).toBeCalledWith('change', listener, false);
-    });
-  });
-
-  describe('removeEventListener', () => {
-    it('should call removeEventListener', () => {
-      const element = document.createElement('div');
-      const spy1 = jest.spyOn(element, 'removeEventListener');
-
-      addEventListener(element, 'change', listener, false);
-      removeEventListener(element, 'change', listener, false);
-
-      expect(spy1).toBeCalledWith('change', listener, false);
-    });
-  });
-});
-
-describe('getAttribute()', () => {
-  it('should return attribute value', () => {
-    const element = document.createElement('div');
-    const title = 'Some title';
-    element.setAttribute('title', title);
-
-    expect(getAttribute(element, 'title')).toBe(title);
-  });
-});
-
-describe('setAttribute()', () => {
-  it('should set attribute value', () => {
-    const element = document.createElement('div');
-    const title = 'Some title';
-    setAttribute(element, 'title', title);
-
-    expect(element.getAttribute('title')).toBe(title);
-  });
-});
-
-describe('removeAttribute()', () => {
-  it('should remove attribute', () => {
-    const element = document.createElement('div');
-    element.setAttribute('title', 'Some title');
-
-    removeAttribute(element, 'title');
-    expect(element.getAttribute('title')).toBe(null);
-  });
-});
-
-describe('hasAttribute()', () => {
-  it('should return true if attribute exists', () => {
-    const element = document.createElement('div');
-    element.setAttribute('title', 'Some title');
-    expect(hasAttribute(element, 'title')).toBe(true);
-  });
-
-  it('should return false if attribute does not exist', () => {
-    const element = document.createElement('div');
-    expect(hasAttribute(element, 'title')).toBe(false);
-  });
-});
-
-describe('hasLabel()', () => {
-  const label = 'Some description';
-  it.each<[{ label: string; slotted: boolean }, boolean]>([
-    [{ label, slotted: false }, true],
-    [{ label: '', slotted: true }, true],
-    [{ label: '', slotted: false }, false],
-    [{ label, slotted: true }, true],
-  ])('should be called with parameter %o and return %s', (parameter, result) => {
-    const { label, slotted } = parameter;
-    const el = document.createElement('div');
-    if (slotted) {
-      const slot = document.createElement('span');
-      slot.slot = 'label';
-      el.appendChild(slot);
-    }
-
-    expect(hasLabel(el, label)).toBe(result);
-  });
-});
-
-describe('hasMessage()', () => {
-  const message = 'Some message';
-  it.each<[{ message: string; slotted: boolean; formState: FormState }, boolean]>([
-    [{ message, slotted: false, formState: 'error' }, true],
-    [{ message: '', slotted: true, formState: 'error' }, true],
-    [{ message: '', slotted: false, formState: 'error' }, false],
-    [{ message, slotted: false, formState: 'none' }, false],
-    [{ message: '', slotted: true, formState: 'none' }, false],
-    [{ message: '', slotted: false, formState: 'none' }, false],
-    [{ message, slotted: false, formState: 'success' }, true],
-    [{ message: '', slotted: true, formState: 'success' }, true],
-    [{ message: '', slotted: false, formState: 'success' }, false],
-  ])('should be called with parameter %o and return %s', (parameter, result) => {
-    const { message, slotted, formState } = parameter;
-    const el = document.createElement('div');
-    if (slotted) {
-      const slot = document.createElement('span');
-      slot.slot = 'message';
-      el.appendChild(slot);
-    }
-
-    expect(hasMessage(el, message, formState)).toBe(result);
-  });
-});
-
-describe('hasDescription()', () => {
-  const description = 'Some description';
-  it.each<[{ description: string; slotted: boolean }, boolean]>([
-    [{ description, slotted: false }, true],
-    [{ description: '', slotted: true }, true],
-    [{ description: '', slotted: false }, false],
-    [{ description, slotted: true }, true],
-  ])('should be called with parameter %o and return %s', (parameter, result) => {
-    const { description, slotted } = parameter;
-    const el = document.createElement('div');
-    if (slotted) {
-      const slot = document.createElement('span');
-      slot.slot = 'description';
-      el.appendChild(slot);
-    }
-
-    expect(hasDescription(el, description)).toBe(result);
-  });
-});
-
-describe('hasHeading()', () => {
-  const heading = 'Some heading';
-  it.each<[{ heading: string; slotted: boolean }, boolean]>([
-    [{ heading, slotted: false }, true],
-    [{ heading: '', slotted: true }, true],
-    [{ heading: '', slotted: false }, false],
-    [{ heading, slotted: true }, true],
-  ])('should be called with parameter %o and return %s', (parameter, result) => {
-    const { heading, slotted } = parameter;
-    const el = document.createElement('div');
-    if (slotted) {
-      const slot = document.createElement('span');
-      slot.slot = 'heading';
-      el.appendChild(slot);
-    }
-
-    expect(hasHeading(el, heading)).toBe(result);
-  });
-});
-
 describe('isDisabledOrLoading()', () => {
   it.each<[boolean, boolean, boolean]>([
     [true, true, true],
@@ -482,20 +331,6 @@ describe('isParentFieldsetWrapperRequired()', () => {
   });
 });
 
-describe('getRole()', () => {
-  it('should return "alert" if state is error', () => {
-    expect(getRole('error')).toBe('alert');
-  });
-
-  it('should return "status" if state is success', () => {
-    expect(getRole('success')).toBe('status');
-  });
-
-  it('should return null if state is none', () => {
-    expect(getRole('none')).toBeNull();
-  });
-});
-
 describe('isRequiredAndParentNotRequired()', () => {
   const fieldsetWrapper = 'p-fieldset-wrapper';
   it.each<[{ parentTagName: string; parentRequired: boolean; inputRequired: boolean }, boolean]>([
@@ -514,5 +349,20 @@ describe('isRequiredAndParentNotRequired()', () => {
     input.required = inputRequired;
 
     expect(isRequiredAndParentNotRequired(child, input)).toBe(result);
+  });
+});
+
+describe('throwIfElementHasAttribute()', () => {
+  it('should throw error if attribute exists', () => {
+    const element = document.createElement('div');
+    element.setAttribute('title', 'some title');
+
+    expect(() => throwIfElementHasAttribute(element, 'title')).toThrow();
+  });
+
+  it('should not throw error if attribute does not exist', () => {
+    const element = document.createElement('div');
+
+    expect(() => throwIfElementHasAttribute(element, 'title')).not.toThrow();
   });
 });
