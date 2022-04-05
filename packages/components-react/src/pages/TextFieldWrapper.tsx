@@ -250,9 +250,22 @@ export const TextFieldWrapperPage = (): JSX.Element => {
 
       <div
         className="playground light"
-        title="should render unit when counter and unit are set amd show-character-count is not set"
+        title="should render unit when counter and unit are set and show-character-count is not set"
       >
-        <PTextFieldWrapper label="Label with hidden counter and unit" unit="km/h">
+        <PTextFieldWrapper label="Label with unit and hidden counter" unit="km/h">
+          <input type="text" defaultValue="three hundred" maxLength={50} />
+        </PTextFieldWrapper>
+      </div>
+
+      <div
+        className="playground light"
+        title="should render unit when counter with unit position suffix and show-character-count is not set"
+      >
+        <PTextFieldWrapper
+          label="Label with unit with position suffix and hidden counter"
+          unit="km/h"
+          unitPosition="suffix"
+        >
           <input type="text" defaultValue="three hundred" maxLength={50} />
         </PTextFieldWrapper>
       </div>

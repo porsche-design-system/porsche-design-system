@@ -250,9 +250,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div
       class="playground light"
-      title="should render unit when counter and unit are set amd show-character-count is not set"
+      title="should render unit when counter and unit are set and show-character-count is not set"
     >
-      <p-text-field-wrapper [label]="'Label with hidden counter and unit'" [unit]="'km/h'">
+      <p-text-field-wrapper [label]="'Label with unit and hidden counter'" [unit]="'km/h'">
+        <input [type]="'text'" [value]="'three hundred'" [maxLength]="50" />
+      </p-text-field-wrapper>
+    </div>
+
+    <div
+      class="playground light"
+      title="should render unit when counter with unit position suffix and show-character-count is not set"
+    >
+      <p-text-field-wrapper
+        [label]="'Label with unit with position suffix and hidden counter'"
+        [unit]="'km/h'"
+        [unitPosition]="'suffix'"
+      >
         <input [type]="'text'" [value]="'three hundred'" [maxLength]="50" />
       </p-text-field-wrapper>
     </div>
