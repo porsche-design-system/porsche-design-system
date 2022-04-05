@@ -126,8 +126,18 @@ export const TagStatusPage = (): JSX.Element => {
         </PTagStatus>
       </div>
 
+      <div className="playground light" title="should apply custom styles for dedicated slotted content on light background">
+        <PTagStatus>Default <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text</PTagStatus>
+        <PTagStatus color="default">
+          Color default <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text
+        </PTagStatus>
+        <PTagStatus color="background-surface">
+          Color background-surface <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text
+        </PTagStatus>
+      </div>
+
       <div className="playground light" title="should show different multiline tags on light background">
-        <div style={{ width: '100px', overflow: 'hidden' }}>
+        <div style={{ width: '100px', overflow: 'auto' }}>
           <PTagStatus color="neutral-contrast-high">Text that is very long</PTagStatus>
           <PTagStatus color="neutral-contrast-high" icon="car">Text with icon that is very long</PTagStatus>
           <PTagStatus color="notification-success" icon="car">
