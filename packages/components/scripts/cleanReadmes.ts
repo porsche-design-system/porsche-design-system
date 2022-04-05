@@ -26,6 +26,7 @@ const adjustHeadline = (str: string): string => {
     'p-inline-notification': 'Notifications',
     'p-table': 'Table',
     'p-tabs': 'Tabs',
+    'p-tag-status': 'Tags',
   };
 
   // all component names on multi prop pages
