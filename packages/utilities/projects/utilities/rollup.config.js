@@ -19,7 +19,7 @@ export default [
             types: 'index.d.ts',
             sideEffects: false,
             peerDependencies: {
-              jss: '>=10.0.0 <11.0.0',
+              csstype: '>=3.0.0 <4.0.0',
             },
           },
         }),

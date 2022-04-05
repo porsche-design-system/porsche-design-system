@@ -214,33 +214,6 @@ export const getElementStyle = (
   );
 };
 
-type GetStyleOnFocusOptions = {
-  pseudo?: Pseudo;
-};
-
-export const getOutlineStyle = async (element: ElementHandle, opts?: GetStyleOnFocusOptions): Promise<string> => {
-  const options: GetStyleOnFocusOptions = {
-    pseudo: null,
-    ...opts,
-  };
-  const outline = await getElementStyle(element, 'outline', options);
-  const outlineOffset = await getElementStyle(element, 'outlineOffset', options);
-  return `${outline} ${outlineOffset}`;
-};
-
-export const getBoxShadowStyle = (element: ElementHandle, opts?: GetStyleOnFocusOptions): Promise<string> => {
-  const options: GetStyleOnFocusOptions = {
-    pseudo: null,
-    ...opts,
-  };
-  const { pseudo } = options;
-  return getElementStyle(element, 'boxShadow', { pseudo });
-};
-
-export const waitForInheritedCSSTransition = async (page: Page): Promise<void> => {
-  await page.waitForTimeout(500);
-};
-
 export const getElementIndex = (element: ElementHandle, selector: string): Promise<number> => {
   return element.evaluate(async (el, selector: string): Promise<number> => {
     let option: ChildNode = el.querySelector(selector);

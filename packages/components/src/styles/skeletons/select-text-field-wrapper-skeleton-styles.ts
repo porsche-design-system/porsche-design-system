@@ -9,6 +9,8 @@ import {
   getElementBackgroundGradient,
   getHiddenLabelJssStyle,
   getHideLabelSelector,
+  getLabelSkeletonJssStyle,
+  getLabelSelector,
   getSkeletonElementHeight,
   getThemedPseudoJssStyle,
   LABEL_HEIGHT,
@@ -19,6 +21,7 @@ import { pxToRemWithUnit } from '../common-styles';
 import type { Styles } from 'jss';
 
 export const getSelectTextFieldWrapperSkeletonStyles = (): Styles<'@global'> => {
+  const selectWrapper = 'p-select-wrapper';
   return {
     '@global': {
       'p-select-wrapper, p-text-field-wrapper': {
@@ -32,8 +35,9 @@ export const getSelectTextFieldWrapperSkeletonStyles = (): Styles<'@global'> => 
           height: getSkeletonElementHeight(ELEMENT_SKELETON_DIMENSION),
 
           // TODO: use constants for getComponentMeta for "property" class and values
-          [getHideLabelSelector('p-select-wrapper')]: getHiddenLabelJssStyle(),
-          [getDescriptionOnlySelector('p-select-wrapper')]: {
+          [getLabelSelector(selectWrapper)]: getLabelSkeletonJssStyle(),
+          [getHideLabelSelector(selectWrapper)]: getHiddenLabelJssStyle(),
+          [getDescriptionOnlySelector(selectWrapper)]: {
             height: getSkeletonElementHeight(ELEMENT_SKELETON_DIMENSION, false, true),
             '&::before': {
               height: pxToRemWithUnit(LABEL_HEIGHT),
@@ -44,7 +48,7 @@ export const getSelectTextFieldWrapperSkeletonStyles = (): Styles<'@global'> => 
               minHeight: getAfterMinHeight(LABEL_HEIGHT),
             },
           },
-          [getDescriptionAndLabelSelector('p-select-wrapper')]: {
+          [getDescriptionAndLabelSelector(selectWrapper)]: {
             height: getSkeletonElementHeight(ELEMENT_SKELETON_DIMENSION, true, true),
             '&::before': {
               height: pxToRemWithUnit(LABEL_HEIGHT_WITH_DESCRIPTION),

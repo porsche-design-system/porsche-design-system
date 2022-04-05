@@ -58,5 +58,8 @@ p-select-wrapper:not(.hydrated)[hide-label=true]::before, p-select-wrapper:not(.
 p-select-wrapper:not(.hydrated)[hide-label=true]::after, p-select-wrapper:not(.hydrated).pds-skeleton--hide-label::after, p-select-wrapper:not(.hydrated):not([description]):not([label]):not(.pds-skeleton--description):not(.pds-skeleton--label)::after, p-text-field-wrapper:not(.hydrated)[hide-label=true]::after, p-text-field-wrapper:not(.hydrated).pds-skeleton--hide-label::after, p-text-field-wrapper:not(.hydrated):not([description]):not([label]):not(.pds-skeleton--description):not(.pds-skeleton--label)::after {
   top: 0;
   min-height: 100%;
+}
+p-select-wrapper:not(.hydrated)[label]:not([description]):not([hide-label=true])::before, p-select-wrapper:not(.hydrated).pds-skeleton--label:not(.pds-skeleton--description):not(.pds-skeleton--hide-label)::before, p-text-field-wrapper:not(.hydrated)[label]:not([description]):not([hide-label=true])::before, p-text-field-wrapper:not(.hydrated).pds-skeleton--label:not(.pds-skeleton--description):not(.pds-skeleton--hide-label)::before {
+  background: linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px);
 }"
 `;
