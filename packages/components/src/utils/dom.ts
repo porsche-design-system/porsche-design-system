@@ -43,6 +43,14 @@ export function getClosestHTMLElement<K extends keyof HTMLElementTagNameMap>(hos
   return host.closest(selector);
 }
 
+// prettier-ignore
+export function getDirectChildHTMLElement<K extends keyof HTMLElementTagNameMap>(host: HTMLElement, selector: K): HTMLElementTagNameMap[K] | null;
+export function getDirectChildHTMLElement<E extends Element = Element>(host: HTMLElement, selector: string): E | null;
+// prettier-ignore
+export function getDirectChildHTMLElement<K extends keyof HTMLElementTagNameMap>(element: HTMLElement, selectors: string): HTMLElementTagNameMap[K] | null {
+  return getHTMLElement(element, `:scope > ${selectors}`);
+}
+
 export const getAttribute = (el: HTMLElement | Element, attributeName: string): string | null => {
   return el.getAttribute(attributeName);
 };
