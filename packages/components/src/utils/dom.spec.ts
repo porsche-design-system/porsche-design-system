@@ -1,7 +1,9 @@
+import * as dom from './dom';
 import type { HTMLElementWithRequiredProp } from './dom';
 import {
   addEventListener,
   getAttribute,
+  getDirectChildHTMLElement,
   getHTMLElement,
   getHTMLElementAndThrowIfUndefined,
   getRole,
@@ -135,6 +137,25 @@ describe('getHTMLElement()', () => {
     expect(getHTMLElement(element, 'span')).toBe(childElement);
   });
 });
+
+describe('getDirectChildHTMLElement()', () => {
+  it('should call getHTMLElement()', () => {
+    const spy = jest.spyOn(dom, 'getHTMLElement');
+    const element = document.createElement('div');
+
+    getDirectChildHTMLElement(element, 'span');
+    expect(spy).toHaveBeenCalledWith(element, ':scoped > span');
+  });
+
+  it('should return split comma separated selectors', () => {
+    const spy = jest.spyOn(dom, 'getHTMLElement');
+    const element = document.createElement('div');
+
+    getDirectChildHTMLElement(element, 'span,button');
+    expect(spy).toHaveBeenCalledWith(element, ':scoped > span,:scoped > button');
+  });
+});
+
 describe('throwIfRootNodeIsNotOfKind()', () => {
   it('should throw error if root node tag does not match', () => {
     const child = document.createElement('p-select-wrapper-dropdown');
