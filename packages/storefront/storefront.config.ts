@@ -509,6 +509,16 @@ export const config: StorefrontConfig = {
         () => import('@/../../components/src/components/navigation/tabs-bar/tabs-bar.props.md'),
       ],
     },
+    Tag: {
+      'Tag Status': [
+        // @ts-ignore
+        () => import('../components/src/components/content/tag-status/tag-status.examples.md'),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/content/tag-status/tag-status.props.md'),
+      ],
+    },
     'Text Field': {
       Examples: [
         // @ts-ignore
