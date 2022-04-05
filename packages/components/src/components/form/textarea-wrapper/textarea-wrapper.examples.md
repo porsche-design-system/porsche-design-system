@@ -46,7 +46,7 @@ A good practice when to use the disabled state is during **form submission** to 
 ## Counter
 
 If the `maxLength` attribute is present on the `textarea` element, a counter will be displayed in the corner.  
-To hide it you can set `showCharacterCount` is set to `false`.
+To hide it you can set `showCharacterCount` to `false`.
 
 <Playground :markup="counter" :config="config"></Playground>
 
