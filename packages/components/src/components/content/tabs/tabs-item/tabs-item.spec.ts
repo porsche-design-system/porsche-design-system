@@ -1,10 +1,10 @@
-import * as domUtils from '../../../../utils/dom';
+import * as domValidationUtils from '../../../../utils/dom/dom-validation';
 import { TabsItem } from './tabs-item';
 
 describe('tabs-item', () => {
   describe('connectedCallback', () => {
     it('should call throwIfParentIsNotOfKind()', () => {
-      const spy = jest.spyOn(domUtils, 'throwIfParentIsNotOfKind');
+      const spy = jest.spyOn(domValidationUtils, 'throwIfParentIsNotOfKind');
       const component = new TabsItem();
 
       try {

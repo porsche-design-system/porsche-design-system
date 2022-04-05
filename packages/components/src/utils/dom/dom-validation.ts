@@ -1,33 +1,9 @@
 /* eslint-disable prefer-arrow/prefer-arrow-functions */
 import type { HTMLElementOrShadowRoot, HTMLTagName } from './dom-base-selectors';
 import { getHTMLElement } from './dom-base-selectors';
-import type { FormState } from '../../types';
 import type { TagNameCamelCase } from '@porsche-design-system/shared';
 import { getPrefixedTagNames, getTagName } from '../tag-name';
 import { getAttribute, hasAttribute } from './dom-attributes';
-
-export type HTMLElementWithRequiredProp = HTMLElement & { required: boolean };
-
-export const isRequired = (el: HTMLElementWithRequiredProp): boolean => !!el.required;
-
-export const hasNamedSlot = (el: HTMLElementOrShadowRoot, slotName: string): boolean =>
-  !!getHTMLElement(el, `[slot="${slotName}"]`);
-
-export const hasLabel = (element: HTMLElementOrShadowRoot, label: string): boolean => {
-  return !!label || hasNamedSlot(element, 'label');
-};
-
-export const hasMessage = (element: HTMLElementOrShadowRoot, message: string, state: FormState): boolean => {
-  return !!(message || hasNamedSlot(element, 'message')) && ['success', 'error'].includes(state);
-};
-
-export const hasDescription = (element: HTMLElementOrShadowRoot, description: string): boolean => {
-  return !!description || hasNamedSlot(element, 'description');
-};
-
-export const hasHeading = (element: HTMLElementOrShadowRoot, heading: string): boolean => {
-  return !!heading || hasNamedSlot(element, 'heading');
-};
 
 // prettier-ignore
 export function getHTMLElementAndThrowIfUndefined<K extends HTMLTagName>(element: HTMLElementOrShadowRoot, selector: K): HTMLElementTagNameMap[K] | null;
@@ -79,18 +55,6 @@ export const throwIfParentIsNotOneOfKind = (element: HTMLElement, tagNames: TagN
 
 export const isDisabledOrLoading = (disabled: boolean, loading: boolean): boolean => {
   return disabled || loading;
-};
-
-export const isParentFieldsetWrapperRequired = (element: HTMLElement): boolean => {
-  return (
-    element.parentElement &&
-    isRequired(element.parentElement as HTMLElementWithRequiredProp) &&
-    isParentOfKind(element, 'pFieldsetWrapper')
-  );
-};
-
-export const isRequiredAndParentNotRequired = (element: HTMLElement, child: HTMLElementWithRequiredProp): boolean => {
-  return isRequired(child) && !isParentFieldsetWrapperRequired(element);
 };
 
 export const throwIfElementHasAttribute = (el: HTMLElement, name: string): void => {

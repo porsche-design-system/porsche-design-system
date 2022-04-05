@@ -1,4 +1,4 @@
-import * as domUtils from '../../../../utils/dom';
+import * as domValidationUtils from '../../../../utils/dom/dom-validation';
 import { SelectWrapperDropdown } from './select-wrapper-dropdown';
 import * as selectWrapperDropdownUtils from './select-wrapper-dropdown-utils';
 import * as propertyObserverUtils from '../../../../utils/property-observer';
@@ -16,7 +16,7 @@ describe('select-wrapper-dropdown', () => {
   describe('connectedCallback', () => {
     it('should call throwIfRootNodeIsNotOfKind()', () => {
       const component = initComponent();
-      const spy = jest.spyOn(domUtils, 'throwIfRootNodeIsNotOfKind');
+      const spy = jest.spyOn(domValidationUtils, 'throwIfRootNodeIsNotOfKind');
 
       try {
         component.connectedCallback();
