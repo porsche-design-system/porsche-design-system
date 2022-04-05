@@ -4,55 +4,7 @@ exports[`getComponentCss() should return correct css for color: background-surfa
 ":host {
   display: inline-block;
 }
-::slotted(a), ::slotted(button) {
-  display: inline !important;
-  position: static !important;
-  text-decoration: underline !important;
-  cursor: pointer !important;
-  font: inherit !important;
-  outline: 0 !important;
-}
-::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
-  border: 0 !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
-}
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: currentColor !important;
-}
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent !important;
-}
-::slotted(a) {
-  color: #fff !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
-::slotted(a:hover) {
-  color: #ff0223 !important;
-}
-::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  background: 0 !important;
-  border: 0 !important;
-  color: inherit !important;
-  text-align: left !important;
-}
-::slotted(br) {
-  display: none !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 4px !important;
-}
-.root {
+span {
   display: inline-block;
   position: relative;
   height: 24px;
@@ -67,146 +19,8 @@ exports[`getComponentCss() should return correct css for color: background-surfa
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
-.root:hover {
+span:hover {
   color: #ff0223;
-}
-.icon {
-  margin: 0 2px 0 -2px;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: background-surface, isFocusable: true and theme: light 1`] = `
-":host {
-  display: inline-block;
-}
-::slotted(a), ::slotted(button) {
-  display: inline !important;
-  position: static !important;
-  text-decoration: underline !important;
-  cursor: pointer !important;
-  font: inherit !important;
-  outline: 0 !important;
-}
-::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
-  border: 0 !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
-}
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: currentColor !important;
-}
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent !important;
-}
-::slotted(a) {
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
-::slotted(a:hover) {
-  color: #d5001c !important;
-}
-::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  background: 0 !important;
-  border: 0 !important;
-  color: inherit !important;
-  text-align: left !important;
-}
-::slotted(br) {
-  display: none !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 4px !important;
-}
-.root {
-  display: inline-block;
-  position: relative;
-  height: 24px;
-  padding: 0 6px;
-  border-radius: 4px;
-  background: #f2f2f2;
-  color: #000;
-  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-  line-height: 24px;
-  white-space: nowrap;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.root:hover {
-  color: #d5001c;
-}
-.icon {
-  margin: 0 2px 0 -2px;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: default, isFocusable: false and theme: dark 1`] = `
-":host {
-  display: inline-block;
-}
-::slotted(br) {
-  display: none !important;
-}
-.root {
-  display: inline-block;
-  position: relative;
-  height: 24px;
-  padding: 0 6px;
-  border-radius: 4px;
-  background: #0e1418;
-  color: #fff;
-  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-  line-height: 24px;
-  white-space: nowrap;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.icon {
-  margin: 0 2px 0 -2px;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: default, isFocusable: false and theme: light 1`] = `
-":host {
-  display: inline-block;
-}
-::slotted(br) {
-  display: none !important;
-}
-.root {
-  display: inline-block;
-  position: relative;
-  height: 24px;
-  padding: 0 6px;
-  border-radius: 4px;
-  background: #fff;
-  color: #000;
-  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-  line-height: 24px;
-  white-space: nowrap;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.icon {
-  margin: 0 2px 0 -2px;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: default, isFocusable: true and theme: dark 1`] = `
-":host {
-  display: inline-block;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -256,14 +70,23 @@ exports[`getComponentCss() should return correct css for color: default, isFocus
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
-.root {
+.icon {
+  margin: 0 2px 0 -2px;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: background-surface, isFocusable: true and theme: light 1`] = `
+":host {
+  display: inline-block;
+}
+span {
   display: inline-block;
   position: relative;
   height: 24px;
   padding: 0 6px;
   border-radius: 4px;
-  background: #0e1418;
-  color: #fff;
+  background: #f2f2f2;
+  color: #000;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
@@ -271,17 +94,8 @@ exports[`getComponentCss() should return correct css for color: default, isFocus
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
-.root:hover {
-  color: #ff0223;
-}
-.icon {
-  margin: 0 2px 0 -2px;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: default, isFocusable: true and theme: light 1`] = `
-":host {
-  display: inline-block;
+span:hover {
+  color: #d5001c;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -331,7 +145,43 @@ exports[`getComponentCss() should return correct css for color: default, isFocus
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
-.root {
+.icon {
+  margin: 0 2px 0 -2px;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: default, isFocusable: false and theme: dark 1`] = `
+":host {
+  display: inline-block;
+}
+span {
+  display: inline-block;
+  position: relative;
+  height: 24px;
+  padding: 0 6px;
+  border-radius: 4px;
+  background: #0e1418;
+  color: #fff;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  line-height: 24px;
+  white-space: nowrap;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+::slotted(br) {
+  display: none !important;
+}
+.icon {
+  margin: 0 2px 0 -2px;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: default, isFocusable: false and theme: light 1`] = `
+":host {
+  display: inline-block;
+}
+span {
   display: inline-block;
   position: relative;
   height: 24px;
@@ -346,8 +196,158 @@ exports[`getComponentCss() should return correct css for color: default, isFocus
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
-.root:hover {
+::slotted(br) {
+  display: none !important;
+}
+.icon {
+  margin: 0 2px 0 -2px;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: default, isFocusable: true and theme: dark 1`] = `
+":host {
+  display: inline-block;
+}
+span {
+  display: inline-block;
+  position: relative;
+  height: 24px;
+  padding: 0 6px;
+  border-radius: 4px;
+  background: #0e1418;
+  color: #fff;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  line-height: 24px;
+  white-space: nowrap;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+span:hover {
+  color: #ff0223;
+}
+::slotted(a), ::slotted(button) {
+  display: inline !important;
+  position: static !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+  font: inherit !important;
+  outline: 0 !important;
+}
+::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
+  border: 0 !important;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  content: \\"\\" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
+}
+::slotted(a:focus)::before, ::slotted(button:focus)::before {
+  outline-color: currentColor !important;
+}
+::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
+  outline-color: transparent !important;
+}
+::slotted(a) {
+  color: #fff !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
+}
+::slotted(a:hover) {
+  color: #ff0223 !important;
+}
+::slotted(button) {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: 0 !important;
+  border: 0 !important;
+  color: inherit !important;
+  text-align: left !important;
+}
+::slotted(br) {
+  display: none !important;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  border-radius: 4px !important;
+}
+.icon {
+  margin: 0 2px 0 -2px;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: default, isFocusable: true and theme: light 1`] = `
+":host {
+  display: inline-block;
+}
+span {
+  display: inline-block;
+  position: relative;
+  height: 24px;
+  padding: 0 6px;
+  border-radius: 4px;
+  background: #fff;
+  color: #000;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  line-height: 24px;
+  white-space: nowrap;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+span:hover {
   color: #d5001c;
+}
+::slotted(a), ::slotted(button) {
+  display: inline !important;
+  position: static !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+  font: inherit !important;
+  outline: 0 !important;
+}
+::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
+  border: 0 !important;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  content: \\"\\" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
+}
+::slotted(a:focus)::before, ::slotted(button:focus)::before {
+  outline-color: currentColor !important;
+}
+::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
+  outline-color: transparent !important;
+}
+::slotted(a) {
+  color: #000 !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
+}
+::slotted(a:hover) {
+  color: #d5001c !important;
+}
+::slotted(button) {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: 0 !important;
+  border: 0 !important;
+  color: inherit !important;
+  text-align: left !important;
+}
+::slotted(br) {
+  display: none !important;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  border-radius: 4px !important;
 }
 .icon {
   margin: 0 2px 0 -2px;
@@ -357,6 +357,24 @@ exports[`getComponentCss() should return correct css for color: default, isFocus
 exports[`getComponentCss() should return correct css for color: neutral-contrast-high, isFocusable: true and theme: dark 1`] = `
 ":host {
   display: inline-block;
+}
+span {
+  display: inline-block;
+  position: relative;
+  height: 24px;
+  padding: 0 6px;
+  border-radius: 4px;
+  background: #e3e4e5;
+  color: #000;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  line-height: 24px;
+  white-space: nowrap;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+span:hover {
+  color: #d5001c;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -410,24 +428,6 @@ exports[`getComponentCss() should return correct css for color: neutral-contrast
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
-.root {
-  display: inline-block;
-  position: relative;
-  height: 24px;
-  padding: 0 6px;
-  border-radius: 4px;
-  background: #e3e4e5;
-  color: #000;
-  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-  line-height: 24px;
-  white-space: nowrap;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.root:hover {
-  color: #d5001c;
-}
 .icon {
   margin: 0 2px 0 -2px;
 }"
@@ -436,6 +436,24 @@ exports[`getComponentCss() should return correct css for color: neutral-contrast
 exports[`getComponentCss() should return correct css for color: neutral-contrast-high, isFocusable: true and theme: light 1`] = `
 ":host {
   display: inline-block;
+}
+span {
+  display: inline-block;
+  position: relative;
+  height: 24px;
+  padding: 0 6px;
+  border-radius: 4px;
+  background: #323639;
+  color: #fff;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  line-height: 24px;
+  white-space: nowrap;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+span:hover {
+  color: #ff0223;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -489,24 +507,6 @@ exports[`getComponentCss() should return correct css for color: neutral-contrast
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
-.root {
-  display: inline-block;
-  position: relative;
-  height: 24px;
-  padding: 0 6px;
-  border-radius: 4px;
-  background: #323639;
-  color: #fff;
-  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-  line-height: 24px;
-  white-space: nowrap;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.root:hover {
-  color: #ff0223;
-}
 .icon {
   margin: 0 2px 0 -2px;
 }"
@@ -516,59 +516,7 @@ exports[`getComponentCss() should return correct css for color: notification-err
 ":host {
   display: inline-block;
 }
-::slotted(a), ::slotted(button) {
-  display: inline !important;
-  position: static !important;
-  text-decoration: underline !important;
-  cursor: pointer !important;
-  font: inherit !important;
-  outline: 0 !important;
-}
-::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
-  border: 0 !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
-}
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: #fff !important;
-}
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent !important;
-}
-::slotted(a:focus-visible:hover)::before, ::slotted(button:focus-visible:hover)::before {
-  transition: outline-color var(--p-transition-duration, .24s) ease !important;
-  outline-color: currentColor !important;
-}
-::slotted(a) {
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
-::slotted(a:hover) {
-  color: #d5001c !important;
-}
-::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  background: 0 !important;
-  border: 0 !important;
-  color: inherit !important;
-  text-align: left !important;
-}
-::slotted(br) {
-  display: none !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 4px !important;
-}
-.root {
+span {
   display: inline-block;
   position: relative;
   height: 24px;
@@ -583,17 +531,8 @@ exports[`getComponentCss() should return correct css for color: notification-err
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
-.root:hover {
+span:hover {
   color: #d5001c;
-}
-.icon {
-  margin: 0 2px 0 -2px;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: notification-error, isFocusable: true and theme: light 1`] = `
-":host {
-  display: inline-block;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -617,10 +556,14 @@ exports[`getComponentCss() should return correct css for color: notification-err
   outline-offset: 2px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: currentColor !important;
+  outline-color: #fff !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   outline-color: transparent !important;
+}
+::slotted(a:focus-visible:hover)::before, ::slotted(button:focus-visible:hover)::before {
+  transition: outline-color var(--p-transition-duration, .24s) ease !important;
+  outline-color: currentColor !important;
 }
 ::slotted(a) {
   color: #000 !important;
@@ -643,7 +586,16 @@ exports[`getComponentCss() should return correct css for color: notification-err
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
-.root {
+.icon {
+  margin: 0 2px 0 -2px;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: notification-error, isFocusable: true and theme: light 1`] = `
+":host {
+  display: inline-block;
+}
+span {
   display: inline-block;
   position: relative;
   height: 24px;
@@ -658,17 +610,8 @@ exports[`getComponentCss() should return correct css for color: notification-err
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
-.root:hover {
+span:hover {
   color: #d5001c;
-}
-.icon {
-  margin: 0 2px 0 -2px;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: notification-neutral, isFocusable: true and theme: dark 1`] = `
-":host {
-  display: inline-block;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -692,14 +635,10 @@ exports[`getComponentCss() should return correct css for color: notification-neu
   outline-offset: 2px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: #fff !important;
+  outline-color: currentColor !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   outline-color: transparent !important;
-}
-::slotted(a:focus-visible:hover)::before, ::slotted(button:focus-visible:hover)::before {
-  transition: outline-color var(--p-transition-duration, .24s) ease !important;
-  outline-color: currentColor !important;
 }
 ::slotted(a) {
   color: #000 !important;
@@ -722,7 +661,16 @@ exports[`getComponentCss() should return correct css for color: notification-neu
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
-.root {
+.icon {
+  margin: 0 2px 0 -2px;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: notification-neutral, isFocusable: true and theme: dark 1`] = `
+":host {
+  display: inline-block;
+}
+span {
   display: inline-block;
   position: relative;
   height: 24px;
@@ -737,17 +685,8 @@ exports[`getComponentCss() should return correct css for color: notification-neu
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
-.root:hover {
+span:hover {
   color: #d5001c;
-}
-.icon {
-  margin: 0 2px 0 -2px;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: notification-neutral, isFocusable: true and theme: light 1`] = `
-":host {
-  display: inline-block;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -771,10 +710,14 @@ exports[`getComponentCss() should return correct css for color: notification-neu
   outline-offset: 2px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: currentColor !important;
+  outline-color: #fff !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   outline-color: transparent !important;
+}
+::slotted(a:focus-visible:hover)::before, ::slotted(button:focus-visible:hover)::before {
+  transition: outline-color var(--p-transition-duration, .24s) ease !important;
+  outline-color: currentColor !important;
 }
 ::slotted(a) {
   color: #000 !important;
@@ -797,7 +740,16 @@ exports[`getComponentCss() should return correct css for color: notification-neu
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
-.root {
+.icon {
+  margin: 0 2px 0 -2px;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: notification-neutral, isFocusable: true and theme: light 1`] = `
+":host {
+  display: inline-block;
+}
+span {
   display: inline-block;
   position: relative;
   height: 24px;
@@ -812,17 +764,8 @@ exports[`getComponentCss() should return correct css for color: notification-neu
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
-.root:hover {
+span:hover {
   color: #d5001c;
-}
-.icon {
-  margin: 0 2px 0 -2px;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: notification-success, isFocusable: true and theme: dark 1`] = `
-":host {
-  display: inline-block;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -846,14 +789,10 @@ exports[`getComponentCss() should return correct css for color: notification-suc
   outline-offset: 2px !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: #fff !important;
+  outline-color: currentColor !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   outline-color: transparent !important;
-}
-::slotted(a:focus-visible:hover)::before, ::slotted(button:focus-visible:hover)::before {
-  transition: outline-color var(--p-transition-duration, .24s) ease !important;
-  outline-color: currentColor !important;
 }
 ::slotted(a) {
   color: #000 !important;
@@ -876,7 +815,16 @@ exports[`getComponentCss() should return correct css for color: notification-suc
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
-.root {
+.icon {
+  margin: 0 2px 0 -2px;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: notification-success, isFocusable: true and theme: dark 1`] = `
+":host {
+  display: inline-block;
+}
+span {
   display: inline-block;
   position: relative;
   height: 24px;
@@ -891,92 +839,8 @@ exports[`getComponentCss() should return correct css for color: notification-suc
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
-.root:hover {
+span:hover {
   color: #d5001c;
-}
-.icon {
-  margin: 0 2px 0 -2px;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: notification-success, isFocusable: true and theme: light 1`] = `
-":host {
-  display: inline-block;
-}
-::slotted(a), ::slotted(button) {
-  display: inline !important;
-  position: static !important;
-  text-decoration: underline !important;
-  cursor: pointer !important;
-  font: inherit !important;
-  outline: 0 !important;
-}
-::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
-  border: 0 !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
-}
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: currentColor !important;
-}
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent !important;
-}
-::slotted(a) {
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
-::slotted(a:hover) {
-  color: #d5001c !important;
-}
-::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  background: 0 !important;
-  border: 0 !important;
-  color: inherit !important;
-  text-align: left !important;
-}
-::slotted(br) {
-  display: none !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 4px !important;
-}
-.root {
-  display: inline-block;
-  position: relative;
-  height: 24px;
-  padding: 0 6px;
-  border-radius: 4px;
-  background: #e5f3e7;
-  color: #000;
-  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-  line-height: 24px;
-  white-space: nowrap;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.root:hover {
-  color: #d5001c;
-}
-.icon {
-  margin: 0 2px 0 -2px;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: notification-warning, isFocusable: true and theme: dark 1`] = `
-":host {
-  display: inline-block;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -1030,13 +894,22 @@ exports[`getComponentCss() should return correct css for color: notification-war
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
-.root {
+.icon {
+  margin: 0 2px 0 -2px;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: notification-success, isFocusable: true and theme: light 1`] = `
+":host {
+  display: inline-block;
+}
+span {
   display: inline-block;
   position: relative;
   height: 24px;
   padding: 0 6px;
   border-radius: 4px;
-  background: #ffe6bf;
+  background: #e5f3e7;
   color: #000;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
@@ -1045,17 +918,8 @@ exports[`getComponentCss() should return correct css for color: notification-war
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
-.root:hover {
+span:hover {
   color: #d5001c;
-}
-.icon {
-  margin: 0 2px 0 -2px;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: notification-warning, isFocusable: true and theme: light 1`] = `
-":host {
-  display: inline-block;
 }
 ::slotted(a), ::slotted(button) {
   display: inline !important;
@@ -1105,7 +969,95 @@ exports[`getComponentCss() should return correct css for color: notification-war
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
-.root {
+.icon {
+  margin: 0 2px 0 -2px;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: notification-warning, isFocusable: true and theme: dark 1`] = `
+":host {
+  display: inline-block;
+}
+span {
+  display: inline-block;
+  position: relative;
+  height: 24px;
+  padding: 0 6px;
+  border-radius: 4px;
+  background: #ffe6bf;
+  color: #000;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  line-height: 24px;
+  white-space: nowrap;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+span:hover {
+  color: #d5001c;
+}
+::slotted(a), ::slotted(button) {
+  display: inline !important;
+  position: static !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+  font: inherit !important;
+  outline: 0 !important;
+}
+::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
+  border: 0 !important;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  content: \\"\\" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
+}
+::slotted(a:focus)::before, ::slotted(button:focus)::before {
+  outline-color: #fff !important;
+}
+::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
+  outline-color: transparent !important;
+}
+::slotted(a:focus-visible:hover)::before, ::slotted(button:focus-visible:hover)::before {
+  transition: outline-color var(--p-transition-duration, .24s) ease !important;
+  outline-color: currentColor !important;
+}
+::slotted(a) {
+  color: #000 !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
+}
+::slotted(a:hover) {
+  color: #d5001c !important;
+}
+::slotted(button) {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: 0 !important;
+  border: 0 !important;
+  color: inherit !important;
+  text-align: left !important;
+}
+::slotted(br) {
+  display: none !important;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  border-radius: 4px !important;
+}
+.icon {
+  margin: 0 2px 0 -2px;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: notification-warning, isFocusable: true and theme: light 1`] = `
+":host {
+  display: inline-block;
+}
+span {
   display: inline-block;
   position: relative;
   height: 24px;
@@ -1120,8 +1072,56 @@ exports[`getComponentCss() should return correct css for color: notification-war
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
-.root:hover {
+span:hover {
   color: #d5001c;
+}
+::slotted(a), ::slotted(button) {
+  display: inline !important;
+  position: static !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+  font: inherit !important;
+  outline: 0 !important;
+}
+::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
+  border: 0 !important;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  content: \\"\\" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
+}
+::slotted(a:focus)::before, ::slotted(button:focus)::before {
+  outline-color: currentColor !important;
+}
+::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
+  outline-color: transparent !important;
+}
+::slotted(a) {
+  color: #000 !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
+}
+::slotted(a:hover) {
+  color: #d5001c !important;
+}
+::slotted(button) {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: 0 !important;
+  border: 0 !important;
+  color: inherit !important;
+  text-align: left !important;
+}
+::slotted(br) {
+  display: none !important;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  border-radius: 4px !important;
 }
 .icon {
   margin: 0 2px 0 -2px;
