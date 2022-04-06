@@ -66,17 +66,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="playground light" title="should show different background colors and icons on light background">
       <p-tag-status [icon]="'car'" [color]="'default'">Color default</p-tag-status>
       <p-tag-status [icon]="'highway'" [color]="'background-surface'">Color background-surface</p-tag-status>
-      <p-tag-status [iconSource]="'./assets/icon-custom-kaixin.svg'" [color]="'background-surface'"
-        >Color background-surface</p-tag-status
-      >
+      <p-tag-status [iconSource]="'./assets/icon-custom-kaixin.svg'" [color]="'background-surface'">
+        Color background-surface
+      </p-tag-status>
     </div>
 
     <div class="playground dark" title="should show different background colors and icons on dark background">
       <p-tag-status [theme]="'dark'" [icon]="'car'" [color]="'default'">Color default</p-tag-status>
       <p-tag-status [theme]="'dark'" [icon]="'highway'" [color]="'background-surface'">Color background-surface</p-tag-status>
-      <p-tag-status [theme]="'dark'" [iconSource]="'./assets/icon-custom-kaixin.svg'" [color]="'background-surface'"
-        >Color background-surface</p-tag-status
-      >
+      <p-tag-status [theme]="'dark'" [iconSource]="'./assets/icon-custom-kaixin.svg'" [color]="'background-surface'">
+        Color background-surface
+      </p-tag-status>
     </div>
 
     <div class="playground light" title="should show different background colors with link on light background">
