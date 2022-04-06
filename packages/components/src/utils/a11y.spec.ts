@@ -6,7 +6,8 @@ import {
   throwIfAriaAttributesAreInvalid,
 } from './a11y';
 import * as jsonUtils from './json';
-import * as domAttributesUtils from './dom/dom-attributes';
+import * as setAttributeUtils from './dom/setAttribute';
+import * as removeAttributeUtils from './dom/removeAttribute';
 import type { AriaAttributes } from '../types';
 
 describe('setAriaAttributes()', () => {
@@ -22,8 +23,8 @@ describe('setAriaAttributes()', () => {
     { state: 'success' },
     { state: 'none' },
   ])('should call setAttribute and removeAttribute with correct params for options: %o', (options) => {
-    const setAttributeSpy = jest.spyOn(domAttributesUtils, 'setAttribute');
-    const removeAttributeSpy = jest.spyOn(domAttributesUtils, 'removeAttribute');
+    const setAttributeSpy = jest.spyOn(setAttributeUtils, 'setAttribute');
+    const removeAttributeSpy = jest.spyOn(removeAttributeUtils, 'removeAttribute');
 
     setAriaAttributes(node, options);
 
