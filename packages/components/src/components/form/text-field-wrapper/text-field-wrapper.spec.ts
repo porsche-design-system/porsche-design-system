@@ -85,14 +85,15 @@ describe('componentWillLoad', () => {
 
     const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber');
     const component = new TextFieldWrapper();
-    component.unit = 'EUR';
+    const unit = 'EUR';
+    component.unit = unit;
     component.showCharacterCount = false;
     component['input'] = input;
 
     expect(component['hasUnit']).toBe(undefined);
     component.componentWillLoad();
 
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith(input, unit);
     expect(component['hasUnit']).toBe(true);
   });
 
