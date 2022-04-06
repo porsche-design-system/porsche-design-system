@@ -66,13 +66,13 @@ export const TextFieldWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with counter">
-        <PTextFieldWrapper label="Counter" showCharacterCount={true}>
+        <PTextFieldWrapper label="Counter">
           <input type="text" maxLength={20} defaultValue="Some value" />
         </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render without counter">
-        <PTextFieldWrapper label="Counter hidden">
+        <PTextFieldWrapper label="Counter hidden" showCharacterCount={false}>
           <input type="text" maxLength={20} defaultValue="Some value" />
         </PTextFieldWrapper>
       </div>
@@ -243,28 +243,29 @@ export const TextFieldWrapperPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render counter when counter and unit are set">
-        <PTextFieldWrapper label="Label with counter and unit" unit="km/h" showCharacterCount={true}>
+        <PTextFieldWrapper label="Label with counter and unit" unit="km/h">
           <input type="text" defaultValue="three hundred" maxLength={50} />
         </PTextFieldWrapper>
       </div>
 
       <div
         className="playground light"
-        title="should render unit when counter and unit are set and show-character-count is not set"
+        title="should render unit when counter and unit are set and show-character-count is false"
       >
-        <PTextFieldWrapper label="Label with unit and hidden counter" unit="km/h">
+        <PTextFieldWrapper label="Label with unit and hidden counter" unit="km/h" showCharacterCount={false}>
           <input type="text" defaultValue="three hundred" maxLength={50} />
         </PTextFieldWrapper>
       </div>
 
       <div
         className="playground light"
-        title="should render unit when counter with unit position suffix and show-character-count is not set"
+        title="should render unit when counter with unit position suffix and show-character-count is false"
       >
         <PTextFieldWrapper
           label="Label with unit with position suffix and hidden counter"
           unit="km/h"
           unitPosition="suffix"
+          showCharacterCount={false}
         >
           <input type="text" defaultValue="three hundred" maxLength={50} />
         </PTextFieldWrapper>

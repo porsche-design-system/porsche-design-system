@@ -55,7 +55,7 @@ export class TextFieldWrapper {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Show or hide max character count. */
-  @Prop() public showCharacterCount?: boolean = false;
+  @Prop() public showCharacterCount?: boolean = true;
 
   @State() private showPassword = false;
 
