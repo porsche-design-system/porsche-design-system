@@ -1,5 +1,5 @@
-import { getHTMLElement } from './dom-base-selectors';
-import type { HTMLElementOrShadowRoot } from './dom-base-selectors';
+import { getHTMLElement } from './getHTMLElement';
+import type { HTMLElementOrShadowRoot } from './dom-types';
 
 export const hasNamedSlot = (el: HTMLElementOrShadowRoot, slotName: string): boolean =>
   !!getHTMLElement(el, `[slot="${slotName}"]`);
