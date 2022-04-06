@@ -126,7 +126,7 @@ export default class Code extends Vue {
 
   iconMarkup =
 `<p-link-social href="https://example.com" icon="logo-tumblr" target="_blank" rel="nofollow noopener">Tumblr</p-link-social>
-<p-link-social href="https://example.com" icon-source="${require('./assets/icon-custom-kaixin.svg')}" hide-label="true" target="_blank" rel="nofollow noopener">Kaixin</p-link-social>`;
+<p-link-social href="https://example.com" icon-source="${require('../../assets/icon-custom-kaixin.svg')}" hide-label="true" target="_blank" rel="nofollow noopener">Kaixin</p-link-social>`;
 
   grouped =
 `<div class="example-grouped">

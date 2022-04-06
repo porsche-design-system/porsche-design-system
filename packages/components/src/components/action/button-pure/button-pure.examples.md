@@ -237,7 +237,7 @@ export default class Code extends Vue {
 
   icon =
 `<p-button-pure icon="delete">Some label</p-button-pure>
-<p-button-pure icon-source="${require('./assets/icon-custom-kaixin.svg')}" hide-label="true">Some label</p-button-pure>`;
+<p-button-pure icon-source="${require('../../assets/icon-custom-kaixin.svg')}" hide-label="true">Some label</p-button-pure>`;
 
   get markupAlignment() {
     return `<p-button-pure align-label="${this.alignLabel}">Some label</p-button-pure>`;
