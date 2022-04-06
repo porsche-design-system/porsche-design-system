@@ -1,6 +1,6 @@
 import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
 import type { TagName } from '@porsche-design-system/shared';
-import * as domValidationUtils from '../utils/dom/dom-validation';
+import * as getHTMLElementAndThrowIfUndefinedUtils from '../utils/dom/getHTMLElementAndThrowIfUndefined';
 import * as jssUtils from '../utils/jss';
 import * as slottedStylesUtils from '../utils/slotted-styles';
 
@@ -121,7 +121,7 @@ it('should have same amount of elements in TAG_NAMES_CONSTRUCTOR_MAP as in TAG_N
 it.each<TagName>(tagNamesWithRequiredChild)(
   'should call getHTMLElementAndThrowIfUndefined() via componentWillLoad for %s',
   (tagName) => {
-    const spy = jest.spyOn(domValidationUtils, 'getHTMLElementAndThrowIfUndefined');
+    const spy = jest.spyOn(getHTMLElementAndThrowIfUndefinedUtils, 'getHTMLElementAndThrowIfUndefined');
     const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
 
     try {
