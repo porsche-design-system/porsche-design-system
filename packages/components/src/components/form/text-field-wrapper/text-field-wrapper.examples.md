@@ -44,7 +44,9 @@ A good practice when to use the disabled state is during **form submission** to 
 
 ## Counter
 
-If the `maxLength` attribute is present onn the `input type="text"` element, a counter will be displayed.
+If the `maxLength` attribute is present on the `input` element, a counter will be displayed in the corner.
+
+To hide it you can set `showCharacterCount` to `false`.
 
 <Playground :markup="counter" :config="config"></Playground>
 
@@ -164,6 +166,9 @@ export default class Code extends Vue {
 
   counter =
 `<p-text-field-wrapper label="Some label">
+  <input type="text" name="some-name" value="Some value" maxlength="20" />
+</p-text-field-wrapper>
+<p-text-field-wrapper label="Some label" show-character-count="false">
   <input type="text" name="some-name" value="Some value" maxlength="20" />
 </p-text-field-wrapper>`;
 

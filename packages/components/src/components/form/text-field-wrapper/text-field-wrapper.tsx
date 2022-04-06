@@ -1,4 +1,4 @@
-import { Component, Element, forceUpdate, h, Host, JSX, Prop, State } from '@stencil/core';
+import { Component, Element, forceUpdate, Host, JSX, Prop, State, h } from '@stencil/core';
 import {
   attachComponentCss,
   attachSlottedCss,
@@ -54,6 +54,9 @@ export class TextFieldWrapper {
   /** Show or hide label and description text. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
+  /** Show or hide max character count. */
+  @Prop() public showCharacterCount?: boolean = true;
+
   @State() private showPassword = false;
 
   private input: HTMLInputElement;
@@ -61,6 +64,7 @@ export class TextFieldWrapper {
   private ariaElement: HTMLSpanElement;
   private isPassword: boolean;
   private hasCounter: boolean;
+  private isCounterVisible: boolean;
   private hasUnit: boolean;
 
   public connectedCallback(): void {
@@ -78,12 +82,18 @@ export class TextFieldWrapper {
     this.observeAttributes(); // once initially
     this.isPassword = this.input.type === 'password';
     this.hasCounter = hasCounterAndIsTypeText(this.input);
-    this.hasUnit = !this.hasCounter && hasUnitAndIsTypeTextOrNumber(this.input, this.unit);
+    this.isCounterVisible = this.showCharacterCount && this.hasCounter;
+    this.hasUnit = !this.isCounterVisible && hasUnitAndIsTypeTextOrNumber(this.input, this.unit);
   }
 
   public componentDidLoad(): void {
     if (this.hasCounter) {
-      addInputEventListener(this.input, this.unitOrCounterElement, this.ariaElement, this.setInputStyles);
+      addInputEventListener(
+        this.input,
+        this.ariaElement,
+        this.isCounterVisible && this.unitOrCounterElement,
+        this.setInputStyles
+      );
     }
   }
 
@@ -95,8 +105,8 @@ export class TextFieldWrapper {
       this.input.disabled,
       this.hideLabel,
       this.state,
-      this.hasUnit || this.hasCounter,
-      this.hasCounter ? 'suffix' : this.unitPosition,
+      this.hasUnit || this.isCounterVisible,
+      this.isCounterVisible ? 'suffix' : this.unitPosition,
       this.isPassword
     );
   }
@@ -147,7 +157,7 @@ export class TextFieldWrapper {
                 {this.description || <slot name="description" />}
               </PrefixedTagNames.pText>
             )}
-            {(this.hasUnit || this.hasCounter) && (
+            {(this.hasUnit || this.isCounterVisible) && (
               <PrefixedTagNames.pText
                 class="unit"
                 {...labelProps}
@@ -214,6 +224,11 @@ export class TextFieldWrapper {
   };
 
   private setInputStyles = (): void => {
-    setInputStyles(this.input, this.unitOrCounterElement, this.hasCounter ? 'suffix' : this.unitPosition, this.state);
+    setInputStyles(
+      this.input,
+      this.unitOrCounterElement,
+      this.isCounterVisible ? 'suffix' : this.unitPosition,
+      this.state
+    );
   };
 }
