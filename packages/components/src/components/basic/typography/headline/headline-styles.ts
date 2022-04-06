@@ -34,7 +34,7 @@ export const getComponentCss = (
       color: color !== 'default' ? 'inherit' : getThemedColors(theme).baseColor,
       whiteSpace: 'inherit',
       ...(isVariantType(variant) ? getVariantStyle(variant) : variant === 'inherit' && { fontSize: 'inherit' }),
-      ...(hyphens && { hyphens: hyphens }),
+      ...(hyphens === 'none' ? { hyphens: 'none' } : {}),
       ...(ellipsis && getEllipsisJssStyle()),
     },
   });
