@@ -71,6 +71,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-textarea-wrapper>
     </div>
 
+    <div class="playground light" title="should render without counter">
+      <p-textarea-wrapper [label]="'Counter hidden'" [showCharacterCount]="false">
+        <textarea [maxLength]="200">Some value</textarea>
+      </p-textarea-wrapper>
+    </div>
+
     <div class="playground light" title="should render with error state and error message">
       <p-textarea-wrapper [label]="'Error with message'" [state]="'error'" [message]="'Error message'">
         <textarea>Some value</textarea>
