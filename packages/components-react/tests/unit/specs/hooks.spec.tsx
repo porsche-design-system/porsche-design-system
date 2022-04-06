@@ -87,7 +87,7 @@ describe('useToastManager()', () => {
   it('should call usePrefix', () => {
     const spy = jest.spyOn(hooks, 'usePrefix');
     useToastManager();
-    expect(spy).toHaveBeenCalledWith('p-toast');
+    expect(spy).toBeCalledWith('p-toast');
   });
 
   it('should provide addMessage method', () => {
@@ -111,7 +111,7 @@ describe('useToastManager()', () => {
       // wait for customElements.whenDefined to be resolved
       await new Promise((resolve) => setTimeout(resolve));
 
-      expect(addMessageMock).toHaveBeenCalledWith(message);
+      expect(addMessageMock).toBeCalledWith(message);
     });
   });
 });
