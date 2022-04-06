@@ -27,11 +27,17 @@ Object {
     Object {
       "children": Array [
         Object {
-          "name": "Some Tag",
-          "role": "StaticText",
+          "children": Array [
+            Object {
+              "name": "Some Tag",
+              "role": "StaticText",
+            },
+          ],
+          "role": "none",
         },
       ],
-      "role": "none",
+      "name": "",
+      "role": "generic",
     },
   ],
   "name": "",
@@ -45,11 +51,17 @@ Object {
     Object {
       "children": Array [
         Object {
-          "name": "Some Tag",
-          "role": "StaticText",
+          "children": Array [
+            Object {
+              "name": "Some Tag",
+              "role": "StaticText",
+            },
+          ],
+          "role": "none",
         },
       ],
-      "role": "none",
+      "name": "",
+      "role": "generic",
     },
   ],
   "name": "",
