@@ -71,6 +71,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-text-field-wrapper>
     </div>
 
+    <div class="playground light" title="should render without counter">
+      <p-text-field-wrapper [label]="'Counter hidden'" [showCharacterCount]="false">
+        <input [type]="'text'" [maxLength]="20" [value]="'Some value'" />
+      </p-text-field-wrapper>
+    </div>
+
     <div class="playground light" title="should render with type number">
       <p-text-field-wrapper [label]="'Type number'">
         <input [type]="'number'" />
@@ -238,6 +244,29 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should render counter when counter and unit are set">
       <p-text-field-wrapper [label]="'Label with counter and unit'" [unit]="'km/h'">
+        <input [type]="'text'" [value]="'three hundred'" [maxLength]="50" />
+      </p-text-field-wrapper>
+    </div>
+
+    <div
+      class="playground light"
+      title="should render unit when counter and unit are set and show-character-count is false"
+    >
+      <p-text-field-wrapper [label]="'Label with unit and hidden counter'" [unit]="'km/h'" [showCharacterCount]="false">
+        <input [type]="'text'" [value]="'three hundred'" [maxLength]="50" />
+      </p-text-field-wrapper>
+    </div>
+
+    <div
+      class="playground light"
+      title="should render unit when counter with unit position suffix and show-character-count is false"
+    >
+      <p-text-field-wrapper
+        [label]="'Label with unit with position suffix and hidden counter'"
+        [unit]="'km/h'"
+        [unitPosition]="'suffix'"
+        [showCharacterCount]="false"
+      >
         <input [type]="'text'" [value]="'three hundred'" [maxLength]="50" />
       </p-text-field-wrapper>
     </div>
