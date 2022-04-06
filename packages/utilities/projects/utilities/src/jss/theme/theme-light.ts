@@ -1,6 +1,6 @@
-import type { ColorTheme } from './theme-shared';
+import type { ThemeColorSet } from './theme-shared';
 
-export const themeLight: ColorTheme = {
+export const themeLight: ThemeColorSet = {
   brand: '#d5001c',
   base: '#000',
   background: {

@@ -2,12 +2,28 @@ import type { JssStyle } from 'jss';
 import type { HeadlineVariant, TextAlign, TextColor, Theme, VariantType } from '../../../../types';
 import { buildSlottedStyles, getCss, mergeDeep } from '../../../../utils';
 import { addImportantToEachRule, getBaseSlottedStyles, getThemedColors } from '../../../../styles';
-import { titleLarge, headline } from '@porsche-design-system/utilities-v2';
+import {
+  headingLarge,
+  headingXLarge,
+  headingMedium,
+  headingSmall,
+  headingXSmall,
+  headingXXLarge,
+} from '@porsche-design-system/utilities-v2';
 import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../../../styles/typography-styles';
 import { isVariantType } from './headline-utils';
 
+const headingMap: { [key in VariantType]: any } = {
+  'large-title': headingXXLarge,
+  'headline-1': headingXLarge,
+  'headline-2': headingLarge,
+  'headline-3': headingMedium,
+  'headline-4': headingSmall,
+  'headline-5': headingXSmall,
+};
+
 const getVariantStyle = (variant: HeadlineVariant): JssStyle => {
-  return variant === 'large-title' ? titleLarge : headline[(variant as VariantType).slice(-1)];
+  return headingMap[variant as VariantType];
 };
 
 export const getComponentCss = (

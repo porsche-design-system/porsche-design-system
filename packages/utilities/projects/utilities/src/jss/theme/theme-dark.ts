@@ -1,6 +1,6 @@
-import type { ColorTheme } from './theme-shared';
+import type { ThemeColorSet } from './theme-shared';
 
-export const themeDark: ColorTheme = {
+export const themeDark: ThemeColorSet = {
   brand: '#d5001c',
   base: '#fff',
   background: {
