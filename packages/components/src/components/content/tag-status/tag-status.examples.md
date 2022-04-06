@@ -46,9 +46,9 @@ export default class Code extends Vue {
   icon = `<p-tag-status icon="car">Some label</p-tag-status> 
 <p-tag-status icon-source="${require('../../assets/icon-custom-kaixin.svg')}">Some label</p-tag-status>`;
 
-  buttonOrLink = `<p-tag-status><a href="#">Some link</a></p-tag-status>
-<p-tag-status icon="car"><a href="#">Some link</a></p-tag-status>
-<p-tag-status><button>Some button</button></p-tag-status>
-<p-tag-status icon="car"><button>Some button</button></p-tag-status>`;
+  buttonOrLink = `<p-tag-status><a href="https://www.porsche.com">Some link</a></p-tag-status>
+<p-tag-status icon="car"><a href="https://www.porsche.com">Some link</a></p-tag-status>
+<p-tag-status><button type="button">Some button</button></p-tag-status>
+<p-tag-status icon="car"><button type="button">Some button</button></p-tag-status>`;
 }
 </script>
