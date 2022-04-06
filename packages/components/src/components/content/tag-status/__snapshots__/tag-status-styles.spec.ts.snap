@@ -2,10 +2,12 @@
 
 exports[`getComponentCss() should return correct css for color: background-surface, isFocusable: true and theme: dark 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
+  vertical-align: top;
 }
 span {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   position: relative;
   height: 24px;
   padding: 0 6px;
@@ -15,7 +17,6 @@ span {
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  line-height: 24px;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -66,6 +67,12 @@ span:hover {
 }
 ::slotted(br) {
   display: none !important;
+}
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
@@ -77,10 +84,12 @@ span:hover {
 
 exports[`getComponentCss() should return correct css for color: background-surface, isFocusable: true and theme: light 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
+  vertical-align: top;
 }
 span {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   position: relative;
   height: 24px;
   padding: 0 6px;
@@ -90,7 +99,6 @@ span {
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  line-height: 24px;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -142,6 +150,12 @@ span:hover {
 ::slotted(br) {
   display: none !important;
 }
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
+}
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
@@ -152,10 +166,12 @@ span:hover {
 
 exports[`getComponentCss() should return correct css for color: default, isFocusable: false and theme: dark 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
+  vertical-align: top;
 }
 span {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   position: relative;
   height: 24px;
   padding: 0 6px;
@@ -165,12 +181,17 @@ span {
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  line-height: 24px;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 ::slotted(br) {
   display: none !important;
+}
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
 }
 .icon {
   margin: 0 2px 0 -2px;
@@ -179,10 +200,12 @@ span {
 
 exports[`getComponentCss() should return correct css for color: default, isFocusable: false and theme: light 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
+  vertical-align: top;
 }
 span {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   position: relative;
   height: 24px;
   padding: 0 6px;
@@ -192,12 +215,17 @@ span {
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  line-height: 24px;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 ::slotted(br) {
   display: none !important;
+}
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
 }
 .icon {
   margin: 0 2px 0 -2px;
@@ -206,10 +234,12 @@ span {
 
 exports[`getComponentCss() should return correct css for color: default, isFocusable: true and theme: dark 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
+  vertical-align: top;
 }
 span {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   position: relative;
   height: 24px;
   padding: 0 6px;
@@ -219,7 +249,6 @@ span {
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  line-height: 24px;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -271,6 +300,12 @@ span:hover {
 ::slotted(br) {
   display: none !important;
 }
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
+}
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
@@ -281,10 +316,12 @@ span:hover {
 
 exports[`getComponentCss() should return correct css for color: default, isFocusable: true and theme: light 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
+  vertical-align: top;
 }
 span {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   position: relative;
   height: 24px;
   padding: 0 6px;
@@ -294,7 +331,6 @@ span {
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  line-height: 24px;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -346,6 +382,12 @@ span:hover {
 ::slotted(br) {
   display: none !important;
 }
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
+}
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
@@ -356,10 +398,12 @@ span:hover {
 
 exports[`getComponentCss() should return correct css for color: neutral-contrast-high, isFocusable: true and theme: dark 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
+  vertical-align: top;
 }
 span {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   position: relative;
   height: 24px;
   padding: 0 6px;
@@ -369,7 +413,6 @@ span {
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  line-height: 24px;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -425,6 +468,12 @@ span:hover {
 ::slotted(br) {
   display: none !important;
 }
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
+}
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
@@ -435,10 +484,12 @@ span:hover {
 
 exports[`getComponentCss() should return correct css for color: neutral-contrast-high, isFocusable: true and theme: light 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
+  vertical-align: top;
 }
 span {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   position: relative;
   height: 24px;
   padding: 0 6px;
@@ -448,7 +499,6 @@ span {
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  line-height: 24px;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -504,6 +554,12 @@ span:hover {
 ::slotted(br) {
   display: none !important;
 }
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
+}
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
@@ -514,10 +570,12 @@ span:hover {
 
 exports[`getComponentCss() should return correct css for color: notification-error, isFocusable: true and theme: dark 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
+  vertical-align: top;
 }
 span {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   position: relative;
   height: 24px;
   padding: 0 6px;
@@ -527,7 +585,6 @@ span {
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  line-height: 24px;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -582,6 +639,12 @@ span:hover {
 }
 ::slotted(br) {
   display: none !important;
+}
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
@@ -593,10 +656,12 @@ span:hover {
 
 exports[`getComponentCss() should return correct css for color: notification-error, isFocusable: true and theme: light 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
+  vertical-align: top;
 }
 span {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   position: relative;
   height: 24px;
   padding: 0 6px;
@@ -606,7 +671,6 @@ span {
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  line-height: 24px;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -657,6 +721,12 @@ span:hover {
 }
 ::slotted(br) {
   display: none !important;
+}
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
@@ -668,10 +738,12 @@ span:hover {
 
 exports[`getComponentCss() should return correct css for color: notification-neutral, isFocusable: true and theme: dark 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
+  vertical-align: top;
 }
 span {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   position: relative;
   height: 24px;
   padding: 0 6px;
@@ -681,7 +753,6 @@ span {
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  line-height: 24px;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -736,6 +807,12 @@ span:hover {
 }
 ::slotted(br) {
   display: none !important;
+}
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
@@ -747,10 +824,12 @@ span:hover {
 
 exports[`getComponentCss() should return correct css for color: notification-neutral, isFocusable: true and theme: light 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
+  vertical-align: top;
 }
 span {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   position: relative;
   height: 24px;
   padding: 0 6px;
@@ -760,7 +839,6 @@ span {
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  line-height: 24px;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -811,6 +889,12 @@ span:hover {
 }
 ::slotted(br) {
   display: none !important;
+}
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
@@ -822,10 +906,12 @@ span:hover {
 
 exports[`getComponentCss() should return correct css for color: notification-success, isFocusable: true and theme: dark 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
+  vertical-align: top;
 }
 span {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   position: relative;
   height: 24px;
   padding: 0 6px;
@@ -835,7 +921,6 @@ span {
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  line-height: 24px;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -890,6 +975,12 @@ span:hover {
 }
 ::slotted(br) {
   display: none !important;
+}
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
@@ -901,10 +992,12 @@ span:hover {
 
 exports[`getComponentCss() should return correct css for color: notification-success, isFocusable: true and theme: light 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
+  vertical-align: top;
 }
 span {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   position: relative;
   height: 24px;
   padding: 0 6px;
@@ -914,7 +1007,6 @@ span {
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  line-height: 24px;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -966,6 +1058,12 @@ span:hover {
 ::slotted(br) {
   display: none !important;
 }
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
+}
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
@@ -976,10 +1074,12 @@ span:hover {
 
 exports[`getComponentCss() should return correct css for color: notification-warning, isFocusable: true and theme: dark 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
+  vertical-align: top;
 }
 span {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   position: relative;
   height: 24px;
   padding: 0 6px;
@@ -989,7 +1089,6 @@ span {
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  line-height: 24px;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -1045,6 +1144,12 @@ span:hover {
 ::slotted(br) {
   display: none !important;
 }
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
+}
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;
 }
@@ -1055,10 +1160,12 @@ span:hover {
 
 exports[`getComponentCss() should return correct css for color: notification-warning, isFocusable: true and theme: light 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
+  vertical-align: top;
 }
 span {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   position: relative;
   height: 24px;
   padding: 0 6px;
@@ -1068,7 +1175,6 @@ span {
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  line-height: 24px;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -1119,6 +1225,12 @@ span:hover {
 }
 ::slotted(br) {
   display: none !important;
+}
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   border-radius: 4px !important;

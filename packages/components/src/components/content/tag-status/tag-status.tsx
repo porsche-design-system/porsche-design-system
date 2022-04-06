@@ -41,7 +41,10 @@ export class TagStatus {
             aria-hidden="true"
           />
         )}
-        <slot />
+        {/* to trick leading inline-block / inline-flex space character */}
+        <div>
+          <slot />
+        </div>
       </span>
     );
   }
