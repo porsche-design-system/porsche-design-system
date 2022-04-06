@@ -13,6 +13,7 @@ it('should return split comma separated selectors', () => {
   const element = document.createElement('div');
   const spy = jest.spyOn(getHTMLElementUtils, 'getHTMLElement');
 
+  // pseudo-class selector ':scope>*' is missing in jsdom
   try {
     getDirectChildHTMLElement(element, 'span,button');
   } catch {}
