@@ -1,7 +1,6 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import type { TagStatusColor } from './tag-status-utils';
-import { hasSlottedAnchorOrButton } from './tag-status-utils';
-import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
+import { attachComponentCss, getDirectChildHTMLElement, getPrefixedTagNames } from '../../../utils';
 import { getComponentCss } from './tag-status-styles';
 import type { IconName, Theme } from '../../../types';
 
@@ -25,7 +24,13 @@ export class TagStatus {
   @Prop() public iconSource?: string;
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.color, hasSlottedAnchorOrButton(this.host), this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.color,
+      !!getDirectChildHTMLElement(this.host, 'a,button'),
+      this.theme
+    );
   }
 
   public render(): JSX.Element {

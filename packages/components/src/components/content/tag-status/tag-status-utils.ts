@@ -1,5 +1,4 @@
 import type { TextColor } from '../../../types';
-import { getHTMLElement } from '../../../utils';
 
 export type TagStatusColor =
   | Extract<
@@ -12,7 +11,3 @@ export type TagStatusColor =
       | 'notification-neutral'
     >
   | 'background-surface';
-
-export const hasSlottedAnchorOrButton = (host: HTMLElement): boolean => {
-  return !!getHTMLElement(host, 'a,button');
-};
