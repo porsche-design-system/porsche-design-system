@@ -107,7 +107,7 @@ export default class Code extends Vue {
 
   icon =
 `<p-button icon="delete">Some label</p-button>
-<p-button icon-source="${require('./assets/icon-custom-kaixin.svg')}" hide-label="true">Some label</p-button>`;
+<p-button icon-source="${require('../../assets/icon-custom-kaixin.svg')}" hide-label="true">Some label</p-button>`;
 
   events =
 `<p-button

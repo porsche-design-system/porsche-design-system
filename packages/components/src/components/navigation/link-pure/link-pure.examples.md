@@ -274,7 +274,7 @@ export default class Code extends Vue {
 
   icon =
 `<p-link-pure href="https://www.porsche.com" icon="phone">Some label</p-link-pure>
-<p-link-pure icon-source="${require('./assets/icon-custom-kaixin.svg')}" hide-label="true" href="https://www.porsche.com">Some label</p-link-pure>`;
+<p-link-pure icon-source="${require('../../assets/icon-custom-kaixin.svg')}" hide-label="true" href="https://www.porsche.com">Some label</p-link-pure>`;
 
   clickableArea =
 `<p-link-pure href="https://www.porsche.com" style="padding: 1rem;">Some label</p-link-pure>

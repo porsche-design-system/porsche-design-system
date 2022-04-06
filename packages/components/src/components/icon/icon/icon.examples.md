@@ -103,7 +103,7 @@ export default class Code extends Vue {
   }
   
   custom =
-`<p-icon source="${require('./assets/icon-custom-kaixin.svg')}" aria="{ 'aria-label': 'Icon for social media platform Kaixin' }"></p-icon>`;
+`<p-icon source="${require('../../assets/icon-custom-kaixin.svg')}" aria="{ 'aria-label': 'Icon for social media platform Kaixin' }"></p-icon>`;
 
   lazy =
 `<p-icon name="information" lazy="true" aria="{ 'aria-label': 'Information icon' }" />`;
