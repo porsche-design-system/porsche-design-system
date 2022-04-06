@@ -3,6 +3,7 @@ import type { TagName } from '@porsche-design-system/shared';
 import * as getHTMLElementAndThrowIfUndefinedUtils from '../utils/dom/getHTMLElementAndThrowIfUndefined';
 import * as jssUtils from '../utils/jss';
 import * as slottedStylesUtils from '../utils/slotted-styles';
+import * as getDirectChildHTMLElementUtils from '../utils/dom/getDirectChildHTMLElement';
 
 /* Auto Generated Start */
 import { Button } from './action/button/button';
@@ -51,6 +52,7 @@ import { Flex } from './layout/flex/flex/flex';
 import { FlexItem } from './layout/flex/flex-item/flex-item';
 import { Grid } from './layout/grid/grid/grid';
 import { GridItem } from './layout/grid/grid-item/grid-item';
+import { getDirectChildHTMLElement } from '../utils';
 
 type ClassType = {
   host: HTMLElement;
@@ -136,6 +138,11 @@ it.each<TagName>(tagNamesWithJss)('should call attachComponentCss() in correct l
   const spy = jest.spyOn(jssUtils, 'attachComponentCss');
   let spyCalls = 0;
 
+  // jsdom is missing pseudo-class selector ':scope>*' which leads to DOMException
+  jest
+    .spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement')
+    .mockReturnValue(document.createElement('div'));
+
   const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
   component.host = document.createElement(tagName);
   component.host.attachShadow({ mode: 'open' });
@@ -160,9 +167,9 @@ it.each<TagName>(tagNamesWithJss)('should call attachComponentCss() in correct l
 
     if (['p-checkbox-wrapper', 'p-radio-button-wrapper', 'p-text-field-wrapper'].includes(tagName)) {
       component['input'] = document.createElement('input');
-    } else if ('p-textarea-wrapper' === tagName) {
+    } else if (tagName === 'p-textarea-wrapper') {
       component['textarea'] = document.createElement('textarea');
-    } else if ('p-select-wrapper' === tagName) {
+    } else if (tagName === 'p-select-wrapper') {
       component['select'] = document.createElement('select');
     } else if (tagName === 'p-modal') {
       component['aria'] = { 'aria-label': 'Some Heading' };
