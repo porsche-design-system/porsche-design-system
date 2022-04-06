@@ -918,6 +918,10 @@ export namespace Components {
          */
         "message"?: string;
         /**
+          * Show or hide max character count.
+         */
+        "showCharacterCount"?: boolean;
+        /**
           * The validation state.
          */
         "state"?: FormState;
@@ -963,6 +967,10 @@ export namespace Components {
           * The message styled depending on validation state.
          */
         "message"?: string;
+        /**
+          * Show or hide max character count.
+         */
+        "showCharacterCount"?: boolean;
         /**
           * The validation state.
          */
@@ -2238,6 +2246,10 @@ declare namespace LocalJSX {
          */
         "message"?: string;
         /**
+          * Show or hide max character count.
+         */
+        "showCharacterCount"?: boolean;
+        /**
           * The validation state.
          */
         "state"?: FormState;
@@ -2283,6 +2295,10 @@ declare namespace LocalJSX {
           * The message styled depending on validation state.
          */
         "message"?: string;
+        /**
+          * Show or hide max character count.
+         */
+        "showCharacterCount"?: boolean;
         /**
           * The validation state.
          */

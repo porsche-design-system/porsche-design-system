@@ -74,7 +74,7 @@ describe('componentDidLoad', () => {
 
     component['hasCounter'] = true;
     component.componentDidLoad();
-    expect(addInputEventListenerSpy).toBeCalledWith(textarea, counter, ariaElement);
+    expect(addInputEventListenerSpy).toBeCalledWith(textarea, ariaElement, counter);
   });
 });
 
