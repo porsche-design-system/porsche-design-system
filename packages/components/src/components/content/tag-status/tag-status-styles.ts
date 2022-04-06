@@ -1,6 +1,6 @@
 import { getCss, isThemeDark, mergeDeep } from '../../../utils';
 import { addImportantToEachRule, getFocusJssStyle, getThemedColors, getTransition } from '../../../styles';
-import { textXSmall } from '@porsche-design-system/utilities-v2';
+import { fontWeight, textXSmall } from '@porsche-design-system/utilities-v2';
 import type { ThemedColors } from '../../../styles';
 import type { TagStatusColor } from './tag-status-utils';
 import type { Theme } from '../../../types';
@@ -32,10 +32,12 @@ export const getComponentCss = (color: TagStatusColor, isFocusable: boolean, the
   return getCss({
     '@global': {
       ':host': {
-        display: 'inline-block',
+        display: 'inline-flex',
+        verticalAlign: 'top',
       },
       span: {
-        display: 'inline-block',
+        display: 'flex',
+        alignItems: 'center',
         position: 'relative',
         height: '24px',
         padding: '0 6px',
@@ -45,7 +47,6 @@ export const getComponentCss = (color: TagStatusColor, isFocusable: boolean, the
         ...textXSmall,
         overflowWrap: null,
         hyphens: null,
-        lineHeight: '24px',
         whiteSpace: 'nowrap',
         transition: getTransition('color'),
         ...(isFocusable && {
@@ -104,6 +105,12 @@ export const getComponentCss = (color: TagStatusColor, isFocusable: boolean, the
         }),
         '&(br)': {
           display: 'none',
+        },
+        '&(strong),&(b)': {
+          fontWeight: fontWeight.bold,
+        },
+        '&(em),&(i)': {
+          fontStyle: 'normal',
         },
       }),
     },
