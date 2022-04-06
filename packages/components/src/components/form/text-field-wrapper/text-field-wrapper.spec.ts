@@ -155,7 +155,7 @@ describe('componentDidLoad', () => {
     component.componentDidLoad();
     expect(addInputEventListenerSpy).toHaveBeenCalledWith(input, ariaElement, undefined, component['setInputStyles']);
   });
-  it('should call addInputEventListener() if hasCounter and isCounterVisible is true', () => {
+  it('should call addInputEventListener() if hasCounter is true and isCounterVisible is true', () => {
     const addInputEventListenerSpy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListener');
 
     const input = document.createElement('input');
