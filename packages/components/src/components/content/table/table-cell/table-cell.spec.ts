@@ -3,7 +3,7 @@ import { TableCell } from './table-cell';
 
 describe('table-cell', () => {
   describe('connectedCallback', () => {
-    it('should call throwIfParentIsNotOfKind()', () => {
+    it('should call throwIfParentIsNotOfKind() with correct parameters', () => {
       const spy = jest.spyOn(throwIfParentIsNotOfKindUtils, 'throwIfParentIsNotOfKind');
       const component = new TableCell();
 

@@ -31,7 +31,7 @@ describe('modal', () => {
       jest.spyOn(domUtils, 'getShadowRootHTMLElement').mockImplementation(() => document.createElement('slot'));
     });
 
-    it('should call setScrollLock() if modal is open', () => {
+    it('should call setScrollLock() with correct parameters if modal is open', () => {
       const utilsSpy = jest.spyOn(modalUtils, 'setScrollLock');
       component.open = true;
       component.componentDidLoad();
@@ -52,7 +52,7 @@ describe('modal', () => {
       jest.spyOn(console, 'warn').mockImplementation(() => {});
     });
 
-    it('should call warnIfAriaAndHeadingPropsAreUndefined() when open="true"', () => {
+    it('should call warnIfAriaAndHeadingPropsAreUndefined() with correct parameters when open="true"', () => {
       const warnIfAriaAndHeadingPropsAreUndefinedSpy = jest.spyOn(modalUtils, 'warnIfAriaAndHeadingPropsAreUndefined');
       component.open = true;
       component.componentWillRender();
@@ -80,7 +80,7 @@ describe('modal', () => {
       expect(hasNamedSlotSpy).not.toBeCalled();
     });
 
-    it('should call hasNamedSlot() when no heading is provided', () => {
+    it('should call hasNamedSlot() with correct parameters when no heading is provided', () => {
       const hasNamedSlotSpy = jest.spyOn(domUtils, 'hasNamedSlot');
       const header = document.createElement('header');
       header.slot = 'heading';
@@ -92,7 +92,7 @@ describe('modal', () => {
   });
 
   describe('disconnectedCallback', () => {
-    it('should call setScrollLock()', () => {
+    it('should call setScrollLock() with correct parameters', () => {
       const utilsSpy = jest.spyOn(modalUtils, 'setScrollLock');
       component.disconnectedCallback();
 

@@ -4,7 +4,7 @@ import * as focusVisibleFallbackUtils from '../../../styles/focus-visible-fallba
 import { getFocusJssStyle } from '../../../styles';
 
 describe('getComponentCss()', () => {
-  it('should call getFocusVisibleFallback()', () => {
+  it('should call getFocusVisibleFallback() with correct parameters', () => {
     const spy = jest.spyOn(focusVisibleFallbackUtils, 'getFocusVisibleFallback');
     getComponentCss(true, true, true, true);
 

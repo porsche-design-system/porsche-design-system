@@ -14,7 +14,7 @@ describe('select-wrapper-dropdown', () => {
   };
 
   describe('connectedCallback', () => {
-    it('should call throwIfRootNodeIsNotOfKind()', () => {
+    it('should call throwIfRootNodeIsNotOfKind() with correct parameters', () => {
       const component = initComponent();
       const spy = jest.spyOn(throwIfRootNodeIsNotOfKindUtils, 'throwIfRootNodeIsNotOfKind');
 
@@ -27,7 +27,7 @@ describe('select-wrapper-dropdown', () => {
   });
 
   describe('componentDidRender', () => {
-    it('should call handleScroll()', () => {
+    it('should call handleScroll() with correct parameters', () => {
       const component = initComponent();
 
       const spy = jest.spyOn(selectWrapperDropdownUtils, 'handleScroll');
@@ -61,7 +61,7 @@ describe('select-wrapper-dropdown', () => {
       expect(spy).toBeCalledTimes(1);
     });
 
-    it('should call observeProperties()', () => {
+    it('should call observeProperties() with correct parameters', () => {
       const component = initComponent();
       const spy = jest.spyOn(propertyObserverUtils, 'observeProperties');
       component.componentWillLoad();
@@ -69,7 +69,7 @@ describe('select-wrapper-dropdown', () => {
       expect(spy).toBeCalledWith(component.selectRef, ['value', 'selectedIndex'], expect.anything());
     });
 
-    it('should call observeChildren()', () => {
+    it('should call observeChildren() with correct parameters', () => {
       const component = initComponent();
       const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
       component.componentWillLoad();
