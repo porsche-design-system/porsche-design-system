@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.9.3-rc.1] - 2022-04-06
+
 #### Added
 - `Text Field Wrapper` now has a `showCharacterCount` property which can be used to hide the character count when a `maxLength` attribute is set on the wrapped `input`.
 - `Textarea Wrapper` now has a `showCharacterCount` property which can be used to hide the character count when a `maxLength` attribute is set on the wrapped `textarea`.
