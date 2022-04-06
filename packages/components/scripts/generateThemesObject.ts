@@ -1,8 +1,8 @@
-import type { Theme } from '@porsche-design-system/utilities-v2';
+import type { Theme, ThemeColorSet } from '@porsche-design-system/utilities-v2';
 import type { ThemedColors } from '../src/styles';
 import * as path from 'path';
 import * as fs from 'fs';
-import { color } from '@porsche-design-system/utilities-v2';
+import { themeLight, themeDark, themeLightElectric, themeDarkElectric } from '@porsche-design-system/utilities-v2';
 import tinycolor2 from 'tinycolor2';
 import { pascalCase } from 'change-case';
 
@@ -25,7 +25,12 @@ const getStaticThemedColors = (theme: Theme): ThemedColors => {
       neutral: neutralColor,
       neutralSoft: neutralSoftColor,
     },
-  } = color[theme];
+  } = {
+    light: themeLight,
+    dark: themeDark,
+    'light-electric': themeLightElectric,
+    'dark-electric': themeDarkElectric,
+  }[theme];
 
   return {
     baseColor,

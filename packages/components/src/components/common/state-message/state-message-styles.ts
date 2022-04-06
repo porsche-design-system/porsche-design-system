@@ -4,15 +4,17 @@ import { getTransition } from '../../../styles';
 import { spacing } from '@porsche-design-system/utilities-v2';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 
+const { xSmall: spacingXSmall } = spacing;
+
 export const getFunctionalComponentStateMessageStyles = (theme: Theme, state: FormState): Styles<'message'> => {
   return {
     message: {
       display: 'flex',
-      marginTop: spacing[4],
+      marginTop: spacingXSmall,
       color: getThemedFormStateColors(theme, state).formStateColor,
       transition: getTransition('color'),
       '&__icon': {
-        marginRight: spacing[4],
+        marginRight: spacingXSmall,
       },
     },
   };

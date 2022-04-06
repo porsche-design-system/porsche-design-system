@@ -1,7 +1,7 @@
 import type { JssStyle, Styles } from 'jss';
 import type { Theme } from '../types';
 import type { PropertiesHyphen } from 'csstype';
-import { fontWeight, getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
+import { fontWeight } from '@porsche-design-system/utilities-v2';
 import { getThemedColors } from './';
 export { Breakpoint, breakpoint } from '@porsche-design-system/utilities-v2';
 
@@ -157,3 +157,20 @@ export const getFormCheckboxRadioHiddenJssStyle = (isHidden: boolean): JssStyle 
   width: 'auto',
   padding: `0 0 0 ${pxToRemWithUnit(8)}`,
 });
+
+/**
+ * Screen reader only styles to hide (text-)contents visually in the browser but grant access for screen readers
+ */
+export const getScreenReaderOnlyJssStyle = (): JssStyle => {
+  return {
+    position: 'absolute',
+    height: '1px',
+    width: '1px',
+    border: '0',
+    margin: '-1px',
+    overflow: 'hidden',
+    clip: 'rect(1px,1px,1px,1px)',
+    clipPath: 'inset(50%)',
+    whiteSpace: 'nowrap',
+  };
+};

@@ -1,4 +1,4 @@
-export type ColorTheme = {
+export type ThemeColorSet = {
   brand: string;
   base: string;
   background: {

@@ -1,7 +1,7 @@
-import type { ColorTheme } from './theme-shared';
+import type { ThemeColorSet } from './theme-shared';
 import { themeLight } from './theme-light';
 
-export const themeLightElectric: ColorTheme = {
+export const themeLightElectric: ThemeColorSet = {
   ...themeLight,
   brand: '#00b0f4',
   state: {

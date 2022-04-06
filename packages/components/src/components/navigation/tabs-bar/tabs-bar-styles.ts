@@ -75,7 +75,7 @@ export const getComponentCss = (
     root: {
       position: 'relative',
       ...textSmall,
-      fontWeight: fontWeight[weight],
+      fontWeight: fontWeight[weight === 'semibold' ? 'semiBold' : weight],
       margin: '0 -4px',
       ...buildResponsiveStyles(size, (s: TabSize) => fontSize[s]),
     },
