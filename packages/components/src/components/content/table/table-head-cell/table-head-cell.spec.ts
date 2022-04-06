@@ -4,7 +4,7 @@ import { TableHeadCell } from './table-head-cell';
 
 describe('table-head-cell', () => {
   describe('connectedCallback', () => {
-    it('should call throwIfParentIsNotOfKind()', () => {
+    it('should call throwIfParentIsNotOfKind() with correct parameters', () => {
       const spy = jest.spyOn(throwIfParentIsNotOfKindUtils, 'throwIfParentIsNotOfKind');
       const component = new TableHeadCell();
 
@@ -15,7 +15,7 @@ describe('table-head-cell', () => {
       expect(spy).toBeCalledWith(undefined, 'pTableHeadRow');
     });
 
-    it('should call throwIfElementHasAttribute()', () => {
+    it('should call throwIfElementHasAttribute() with correct parameters', () => {
       const spy = jest.spyOn(throwIfElementHasAttributeUtils, 'throwIfElementHasAttribute');
       const component = new TableHeadCell();
       component.host = document.createElement('p-table-head-cell');

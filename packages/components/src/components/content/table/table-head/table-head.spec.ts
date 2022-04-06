@@ -3,7 +3,7 @@ import { TableHead } from './table-head';
 
 describe('table-head', () => {
   describe('connectedCallback', () => {
-    it('should call throwIfParentIsNotOfKind()', () => {
+    it('should call throwIfParentIsNotOfKind() with correct parameters', () => {
       const spy = jest.spyOn(throwIfParentIsNotOfKindUtils, 'throwIfParentIsNotOfKind');
       const component = new TableHead();
 

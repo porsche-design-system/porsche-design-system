@@ -11,7 +11,7 @@ describe('accordion', () => {
   });
 
   describe('componentWillLoad', () => {
-    it('should call throwIfCompactAndSizeIsSet()', () => {
+    it('should call throwIfCompactAndSizeIsSet() with correct parameters', () => {
       const spy = jest.spyOn(accordionUtils, 'warnIfCompactAndSizeIsSet');
       const component = new Accordion();
       component.host = document.createElement('p-accordion');
@@ -46,7 +46,7 @@ describe('accordion', () => {
   });
 
   describe('componentDidLoad', () => {
-    it('should call observeResize() if ResizeObserver is available', () => {
+    it('should call observeResize() with correct parameters if ResizeObserver is available', () => {
       const spy = jest.spyOn(accordionUtils, 'observeResize');
       const component = new Accordion();
       component.componentDidLoad();
@@ -102,7 +102,7 @@ describe('accordion', () => {
       expect(utilsSpy).toBeCalledWith(component);
     });
 
-    it('should call unobserveResize() if ResizeObserver is available', () => {
+    it('should call unobserveResize() with correct parameter if ResizeObserver is available', () => {
       const spy = jest.spyOn(accordionUtils, 'unobserveResize');
       const component = new Accordion();
       component.disconnectedCallback();
