@@ -1,10 +1,11 @@
-import * as domValidationUtils from '../../../../utils/dom/dom-validation';
+import * as throwIfParentIsNotOfKindUtils from '../../../../utils/dom/throwIfParentIsNotOfKind';
+import * as throwIfElementHasAttributeUtils from '../../../../utils/dom/throwIfElementHasAttribute';
 import { TableHeadCell } from './table-head-cell';
 
 describe('table-head-cell', () => {
   describe('connectedCallback', () => {
     it('should call throwIfParentIsNotOfKind()', () => {
-      const spy = jest.spyOn(domValidationUtils, 'throwIfParentIsNotOfKind');
+      const spy = jest.spyOn(throwIfParentIsNotOfKindUtils, 'throwIfParentIsNotOfKind');
       const component = new TableHeadCell();
 
       try {
@@ -15,7 +16,7 @@ describe('table-head-cell', () => {
     });
 
     it('should call throwIfElementHasAttribute()', () => {
-      const spy = jest.spyOn(domValidationUtils, 'throwIfElementHasAttribute');
+      const spy = jest.spyOn(throwIfElementHasAttributeUtils, 'throwIfElementHasAttribute');
       const component = new TableHeadCell();
       component.host = document.createElement('p-table-head-cell');
       component.host.attachShadow({ mode: 'open' });

@@ -1,10 +1,10 @@
-import * as domValidationUtils from '../../../../utils/dom/dom-validation';
+import * as throwIfParentIsNotOfKindUtils from '../../../../utils/dom/throwIfParentIsNotOfKind';
 import { TableBody } from './table-body';
 
 describe('table-body', () => {
   describe('connectedCallback', () => {
     it('should call throwIfParentIsNotOfKind()', () => {
-      const spy = jest.spyOn(domValidationUtils, 'throwIfParentIsNotOfKind');
+      const spy = jest.spyOn(throwIfParentIsNotOfKindUtils, 'throwIfParentIsNotOfKind');
       const component = new TableBody();
 
       try {
