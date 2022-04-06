@@ -512,7 +512,7 @@ export const config: StorefrontConfig = {
     Tags: {
       'Tag Status': [
         // @ts-ignore
-        () => import('../components/src/components/content/tag-status/tag-status.examples.md'),
+        () => import('@/../../components/src/components/content/tag-status/tag-status.examples.md'),
       ],
       Props: [
         // @ts-ignore
