@@ -122,7 +122,7 @@ export default class Code extends Vue {
 `<p-textarea-wrapper label="Some label">
   <textarea name="some-name" maxlength="200">Some value</textarea>
 </p-textarea-wrapper>
-<p-textarea-wrapper label="Some label" showCharacterCount="false">
+<p-textarea-wrapper label="Some label" show-character-count="false">
   <textarea name="some-name" maxlength="200">Some value</textarea>
 </p-textarea-wrapper>`;
 

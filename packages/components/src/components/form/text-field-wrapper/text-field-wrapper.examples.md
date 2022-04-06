@@ -163,7 +163,7 @@ export default class Code extends Vue {
 </p-text-field-wrapper>`;
 
   counter =
-`<p-text-field-wrapper label="Some label" showCharacterCount="true">
+`<p-text-field-wrapper label="Some label" show-character-count="true">
   <input type="text" name="some-name" value="Some value" maxlength="20" />
 </p-text-field-wrapper>`;
 
