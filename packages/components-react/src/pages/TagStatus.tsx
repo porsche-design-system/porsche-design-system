@@ -67,17 +67,17 @@ export const TagStatusPage = (): JSX.Element => {
       <div className="playground light" title="should show different background colors and icons on light background">
         <PTagStatus icon="car" color="default">Color default</PTagStatus>
         <PTagStatus icon="highway" color="background-surface">Color background-surface</PTagStatus>
-        <PTagStatus iconSource="./assets/icon-custom-kaixin.svg" color="background-surface"
-          >Color background-surface</PTagStatus
-        >
+        <PTagStatus iconSource="./assets/icon-custom-kaixin.svg" color="background-surface">
+          Color background-surface
+        </PTagStatus>
       </div>
 
       <div className="playground dark" title="should show different background colors and icons on dark background">
         <PTagStatus theme="dark" icon="car" color="default">Color default</PTagStatus>
         <PTagStatus theme="dark" icon="highway" color="background-surface">Color background-surface</PTagStatus>
-        <PTagStatus theme="dark" iconSource="./assets/icon-custom-kaixin.svg" color="background-surface"
-          >Color background-surface</PTagStatus
-        >
+        <PTagStatus theme="dark" iconSource="./assets/icon-custom-kaixin.svg" color="background-surface">
+          Color background-surface
+        </PTagStatus>
       </div>
 
       <div className="playground light" title="should show different background colors with link on light background">
