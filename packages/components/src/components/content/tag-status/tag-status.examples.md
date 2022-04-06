@@ -8,47 +8,74 @@
 
 ## Color
 
-<Playground :markup="color" :config="config"></Playground>
-
+<Playground :markup="colorMarkup" :config="{ ...config, colorScheme: backgroundColorScheme }">
+  <select v-model="backgroundColorScheme" aria-label="Select background color">
+    <option disabled>Select background color</option>
+    <option value="default">Default</option>
+    <option value="surface">Surface</option>
+  </select>
+</Playground>
 
 ## Icon
 
-The `p-tag-status` can be displayed with an icon. Choose an icon name from the icon property.
-Per default, all icons are fetched from the Porsche Design System CDN.
-If you need to link to another icon hosted somewhere else, just set the whole icon path to the icon-source property.
+The `p-tag-status` can be displayed with an icon. Choose an icon name from the icon property. Per default, all icons are fetched from the Porsche Design System CDN. If you need to link to another icon hosted somewhere else, just set the whole icon path to the icon-source property.
 
 <Playground :markup="icon" :config="config"></Playground>
 
-## Button or link
+## With slotted button
 
-It is possible to add a `<button>` or `<a>` tag into the `p-tag-status`. If you do this, 
-the entire component becomes clickable and no other content outside the button or link is allowed.
+It is possible to add a `<button>` tag into the `p-tag-status` component. If you do this, the entire component becomes
+clickable and no other content outside the button or link is allowed.
 
-<Playground :markup="buttonOrLink" :config="config"></Playground>
+<Playground :markup="buttonMarkup" :config="{ ...config, colorScheme: backgroundColorScheme }">
+  <select v-model="backgroundColorScheme" aria-label="Select background color">
+    <option disabled>Select background color</option>
+    <option value="default">Default</option>
+    <option value="surface">Surface</option>
+  </select>
+</Playground>
+
+## With slotted link
+
+It is possible to add `<a>` tag into the `p-tag-status` component. If you do this, the entire component becomes
+clickable and no other content outside the button or link is allowed.
+
+<Playground :markup="linkMarkup" :config="{ ...config, colorScheme: backgroundColorScheme }">
+  <select v-model="backgroundColorScheme" aria-label="Select background color">
+    <option disabled>Select background color</option>
+    <option value="default">Default</option>
+    <option value="surface">Surface</option>
+  </select>
+</Playground>
 
 <script lang="ts">
 import Vue from 'vue';
-import Component from 'vue-class-component';
+import Component from 'vue-class-component'; 
+import { TAG_STATUS_COLORS } from './tag-status-utils'; 
 
 @Component
 export default class Code extends Vue {
   config = { themeable: true, spacing: 'inline' };
+  backgroundColorScheme = 'default';
 
-  basicExample = `<p-tag-status>Some label</p-tag-status>`;
 
-  color = `<p-tag-status color="background-surface">Color background-surface</p-tag-status>
-<p-tag-status color="default">Color default</p-tag-status>
-<p-tag-status color="neutral-contrast-high">Color neutral-contrast-high</p-tag-status>
-<p-tag-status color="notification-success">Color notification-success</p-tag-status>
-<p-tag-status color="notification-warning">Color notification-warning</p-tag-status>
-<p-tag-status color="notification-error">Color notification-error</p-tag-status>`;
+  get colorMarkup(){
+    return TAG_STATUS_COLORS.map((color) => `<p-tag-status color="${color}">Color ${color}</p-tag-status>`).join('\n');
+  };
 
   icon = `<p-tag-status icon="car">Some label</p-tag-status> 
 <p-tag-status icon-source="${require('../../assets/icon-custom-kaixin.svg')}">Some label</p-tag-status>`;
 
-  buttonOrLink = `<p-tag-status><a href="https://www.porsche.com">Some link</a></p-tag-status>
-<p-tag-status icon="car"><a href="https://www.porsche.com">Some link</a></p-tag-status>
-<p-tag-status><button type="button">Some button</button></p-tag-status>
-<p-tag-status icon="car"><button type="button">Some button</button></p-tag-status>`;
+  get buttonMarkup(){
+    return TAG_STATUS_COLORS.map((color, idx) => `<p-tag-status${idx === 0 ? ' icon="car"' : ''} color="${color}">
+  <button type="button">Color ${color}</button>
+</p-tag-status>`).join('\n');
+  };
+
+  get linkMarkup(){
+    return TAG_STATUS_COLORS.map((color, idx) => `<p-tag-status${idx === 0 ? ' icon="car"' : ''} color="${color}">
+  <a href="https://www.porsche.com">Color ${color}</a>
+</p-tag-status>`).join('\n');
+  };
 }
 </script>
