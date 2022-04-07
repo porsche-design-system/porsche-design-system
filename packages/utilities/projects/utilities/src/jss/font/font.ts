@@ -1,10 +1,11 @@
-import type { FontSize, FontSizeLineHeight, FontWeight, FontBehavior } from './font-shared';
+import type { FontBehavior, FontHyphenation, FontSize, FontSizeLineHeight, FontWeight } from './font-shared';
 import { fontBehavior } from './font-behavior';
 import { fontFamily } from './font-family';
 import { fontSize } from './font-size';
 import { fontWeight } from './font-weight';
 import { fontStyle } from './font-style';
 import { fontVariant } from './font-variant';
+import { fontHyphenation } from './font-hyphenation';
 
 type Font = {
   family: string;
@@ -13,6 +14,7 @@ type Font = {
   style: string;
   variant: string;
   behavior: FontBehavior;
+  hyphenation: FontHyphenation;
 };
 
 const font: Font = {
@@ -22,6 +24,7 @@ const font: Font = {
   style: fontStyle,
   variant: fontVariant,
   behavior: fontBehavior,
+  hyphenation: fontHyphenation,
 };
 
-export { font, fontFamily, fontSize, fontWeight, fontStyle, fontVariant, fontBehavior };
+export { font, fontFamily, fontSize, fontWeight, fontStyle, fontVariant, fontBehavior, fontHyphenation };
