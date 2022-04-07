@@ -28,7 +28,6 @@ exports[`getComponentCss() should return correct css for variant: "headline-1", 
   white-space: inherit;
   font: normal normal 600 1.75rem/1.4285714286 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
 }
@@ -90,7 +89,6 @@ exports[`getComponentCss() should return correct css for variant: "headline-2", 
   white-space: nowrap;
   font: normal normal 600 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   max-width: 100%;
@@ -155,7 +153,6 @@ exports[`getComponentCss() should return correct css for variant: "headline-3", 
   white-space: nowrap;
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   max-width: 100%;
@@ -220,7 +217,6 @@ exports[`getComponentCss() should return correct css for variant: "headline-4", 
   white-space: nowrap;
   font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   max-width: 100%;
@@ -285,7 +281,6 @@ exports[`getComponentCss() should return correct css for variant: "headline-5", 
   white-space: nowrap;
   font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   max-width: 100%;
@@ -352,7 +347,6 @@ exports[`getComponentCss() should return correct css for variant: "large-title",
   white-space: nowrap;
   font: normal normal 600 2rem/1.375 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   max-width: 100%;

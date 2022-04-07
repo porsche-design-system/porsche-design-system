@@ -27,9 +27,9 @@ exports[`getComponentCss() should return correct css for size: "inherit", weight
   text-align: center;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+  hyphens: auto;
   color: #000;
   list-style-type: none;
   white-space: inherit;
@@ -67,9 +67,9 @@ exports[`getComponentCss() should return correct css for size: "large", weight: 
   text-align: left;
   font: normal normal 600 2.25rem/1.3333333333 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+  hyphens: auto;
   color: #e00000;
   list-style-type: none;
   white-space: nowrap;
@@ -107,9 +107,9 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   text-align: right;
   font: normal normal 700 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+  hyphens: auto;
   color: #e3e4e5;
   list-style-type: none;
   white-space: nowrap;
@@ -147,9 +147,9 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   text-align: left;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+  hyphens: auto;
   color: #000;
   list-style-type: none;
   white-space: inherit;
@@ -184,9 +184,9 @@ exports[`getComponentCss() should return correct css for size: "x-large", weight
   text-align: center;
   font: normal normal 400 3.25rem/1.2307692308 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+  hyphens: auto;
   color: #d5001c;
   list-style-type: none;
   white-space: inherit;
@@ -221,9 +221,9 @@ exports[`getComponentCss() should return correct css for size: "x-large", weight
   text-align: right;
   font: normal normal 100 3.25rem/1.2307692308 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+  hyphens: auto;
   color: #d5001c;
   list-style-type: none;
   white-space: nowrap;
@@ -261,9 +261,9 @@ exports[`getComponentCss() should return correct css for size: "x-small", weight
   text-align: left;
   font: normal normal 600 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+  hyphens: auto;
   color: currentColor;
   list-style-type: none;
   white-space: inherit;
@@ -298,9 +298,9 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   text-align: center;
   font: normal normal 700 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+  hyphens: auto;
   color: #fc1717;
   list-style-type: none;
   white-space: nowrap;

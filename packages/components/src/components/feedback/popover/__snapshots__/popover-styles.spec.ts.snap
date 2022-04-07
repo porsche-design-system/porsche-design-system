@@ -40,9 +40,9 @@ exports[`getComponentCss() should return correct css for direction: bottom 1`] =
   transform: translateX(-50%);
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+  hyphens: auto;
   list-style-type: none;
   color: #000;
   white-space: inherit;
@@ -112,9 +112,9 @@ exports[`getComponentCss() should return correct css for direction: left 1`] = `
   transform: translateY(-50%);
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+  hyphens: auto;
   list-style-type: none;
   color: #000;
   white-space: inherit;
@@ -184,9 +184,9 @@ exports[`getComponentCss() should return correct css for direction: right 1`] = 
   transform: translateY(-50%);
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+  hyphens: auto;
   list-style-type: none;
   color: #000;
   white-space: inherit;
@@ -256,9 +256,9 @@ exports[`getComponentCss() should return correct css for direction: top 1`] = `
   transform: translateX(-50%);
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+  hyphens: auto;
   list-style-type: none;
   color: #000;
   white-space: inherit;

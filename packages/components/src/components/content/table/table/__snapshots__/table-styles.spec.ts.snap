@@ -30,9 +30,9 @@ exports[`getComponentCss() should return correct css 1`] = `
   display: table;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+  hyphens: auto;
   text-align: left;
   color: #000;
   white-space: nowrap;

@@ -12,9 +12,9 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+  hyphens: auto;
 }"
 `;
 
@@ -30,9 +30,9 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
   color: #000;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+  hyphens: auto;
 }"
 `;
 
