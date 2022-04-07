@@ -54,15 +54,19 @@ export const throwIfUnitLengthExceeded = (unit: string): void => {
 
 export const addInputEventListener = (
   input: HTMLTextAreaElement | HTMLInputElement,
-  counterElement: HTMLSpanElement,
   characterCountElement: HTMLSpanElement,
+  counterElement?: HTMLSpanElement,
   inputChangeCallback?: () => void
 ): void => {
-  setCounterInnerHtml(input, counterElement); // initial value
+  if (counterElement) {
+    setCounterInnerHtml(input, counterElement); // initial value
+  }
   setAriaElementInnerHtml(input, characterCountElement); // initial value
 
   input.addEventListener('input', (e) => {
-    setCounterInnerHtml(e.target as HTMLTextAreaElement | HTMLInputElement, counterElement);
+    if (counterElement) {
+      setCounterInnerHtml(e.target as HTMLTextAreaElement | HTMLInputElement, counterElement);
+    }
     setAriaElementInnerHtml(e.target as HTMLTextAreaElement | HTMLInputElement, characterCountElement);
     if (inputChangeCallback) {
       inputChangeCallback();
