@@ -24,7 +24,7 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
       button: {
         position: 'relative',
         minHeight: '48px',
-        padding: '0 50px 0 16px', // Padding top bottom
+        padding: '4px 50px 4px 16px',
         borderRadius: '4px',
         border: 0,
         cursor: 'pointer',
@@ -49,8 +49,8 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
     },
     ...(hasLabel && {
       label: {
-        // Negative margin?
         display: 'block',
+        marginBottom: '-4px',
         color: contrastMediumColor,
         fontSize: pxToRemWithUnit(14),
         lineHeight: pxToRemWithUnit(20),
