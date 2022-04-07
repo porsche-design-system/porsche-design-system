@@ -22,83 +22,35 @@
     </script>
     <!-- /END -->
 
-    <div style="width: 100px">
-      <p-tag-status color="neutral-contrast-high">Some multiline tag</p-tag-status>
-      <br />
-      <br />
-      <p-tag-status color="neutral-contrast-high" icon="car">Some multiline tag</p-tag-status>
-      <br />
-      <br />
-      <p-tag-status color="notification-success"><a href="#">Some multiline Link</a></p-tag-status>
-      <br />
-      <br />
-      <p-tag-status color="notification-success" icon="car"><button>Some multiline Button</button></p-tag-status>
-    </div>
-    <br />
-    <div style="padding: 2rem">
-      <p-tag-status color="default">Tag default</p-tag-status>
-      <p-tag-status color="background-surface">Tag background-surface</p-tag-status>
-      <p-tag-status color="neutral-contrast-high">Tag neutral-contrast-high</p-tag-status>
-      <p-tag-status color="notification-neutral">Tag neutral</p-tag-status>
-      <p-tag-status color="notification-success">Tag success</p-tag-status>
-      <p-tag-status color="notification-error">Tag error</p-tag-status>
-      <p-tag-status color="notification-warning">Tag warning</p-tag-status>
-      <br />
-      <br />
-      <p-tag-status color="default"><a href="#">Tag default with link</a></p-tag-status>
-      <p-tag-status color="background-surface"><a href="#">Tag background-surface with link</a></p-tag-status>
-      <p-tag-status color="neutral-contrast-high"><a href="#">Tag neutral-contrast-high with link</a></p-tag-status>
-      <p-tag-status color="notification-neutral"><a href="#">Tag neutral with link</a></p-tag-status>
-      <p-tag-status color="notification-success"><a href="#">Tag success with link</a></p-tag-status>
-      <p-tag-status color="notification-error"><a href="#">Tag error with link</a></p-tag-status>
-      <p-tag-status color="notification-warning"><a href="#">Tag warning with link</a></p-tag-status>
-      <br />
-      <br />
-      <p-tag-status color="neutral-contrast-high" icon="car">Porsche approved</p-tag-status>
-      <p-tag-status color="background-surface" icon="fuel-station">Porsche approved</p-tag-status>
-      <p-tag-status color="background-surface" icon="parking-brake">Porsche approved</p-tag-status>
-      <p-tag-status color="background-surface" icon="oil-can">Porsche approved</p-tag-status>
-      <br />
-      <br />
-      <p-tag-status><a href="#">link</a></p-tag-status>
-      <p-tag-status icon="car"><a href="#">link and icon</a></p-tag-status>
-      <p-tag-status><button type="button">button</button></p-tag-status>
-      <p-tag-status icon="highway"><button type="button">button and icon</button></p-tag-status>
-      <p-tag-status icon="highway">Some text<p-popover>Some tooltip</p-popover></p-tag-status>
-    </div>
-    <div style="background: #0e1418; padding: 2rem">
-      <p-tag-status theme="dark" color="default">Tag default</p-tag-status>
-      <p-tag-status theme="dark" color="background-surface">Tag background-surface</p-tag-status>
-      <p-tag-status theme="dark" color="neutral-contrast-high">Tag neutral-contrast-high</p-tag-status>
-      <p-tag-status theme="dark" color="notification-neutral">Tag neutral</p-tag-status>
-      <p-tag-status theme="dark" color="notification-success">Tag success</p-tag-status>
-      <p-tag-status theme="dark" color="notification-error">Tag error</p-tag-status>
-      <p-tag-status theme="dark" color="notification-warning">Tag warning</p-tag-status>
-      <br />
-      <br />
-      <p-tag-status theme="dark" color="default"><a href="#">Tag default with link</a></p-tag-status>
-      <p-tag-status theme="dark" color="background-surface"
-        ><a href="#">Tag background-surface with link</a></p-tag-status
+    <p-tag-dismissible color="default">Color default</p-tag-dismissible>
+    <p-tag-dismissible color="neutral-contrast-high">Color neutral-contrast-high</p-tag-dismissible>
+    <p-tag-dismissible label="Label" color="background-surface">Gebrauchtwagen</p-tag-dismissible>
+    <p-tag-dismissible label="Label" color="neutral-contrast-high">Gebrauchtwagen</p-tag-dismissible>
+
+    <p-tag-dismissible
+      label="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+      color="neutral-contrast-high"
+      >Gebrauchtwagen</p-tag-dismissible
+    >
+    <p-tag-dismissible label="Label" color="neutral-contrast-high"
+      >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+      dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
+      kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-tag-dismissible
+    >
+
+    <p-tag-dismissible label="Label">
+      Color default <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text
+    </p-tag-dismissible>
+    <p-tag-dismissible label="Label"><a href="#">Some Link</a></p-tag-dismissible>
+    <div style="width: 200px; overflow: auto">
+      <p-tag-dismissible color="neutral-contrast-high"
+        >Color neutral-contrast-high Color neutral-contrast-high Color neutral-contrast-high Color neutral-contrast-high
+        Color neutral-contrast-high</p-tag-dismissible
       >
-      <p-tag-status theme="dark" color="neutral-contrast-high"
-        ><a href="#">Tag neutral-contrast-high with link</a></p-tag-status
+      <p-tag-dismissible label="Label" color="background-surface"
+        >Color neutral-contrast-high Color neutral-contrast-high Color neutral-contrast-high Color
+        neutral-contrast-high</p-tag-dismissible
       >
-      <p-tag-status theme="dark" color="notification-neutral"><a href="#">Tag neutral with link</a></p-tag-status>
-      <p-tag-status theme="dark" color="notification-success"><a href="#">Tag success with link</a></p-tag-status>
-      <p-tag-status theme="dark" color="notification-error"><a href="#">Tag error with link</a></p-tag-status>
-      <p-tag-status theme="dark" color="notification-warning"><a href="#">Tag warning with link</a></p-tag-status>
-      <br />
-      <br />
-      <p-tag-status theme="dark" color="neutral-contrast-high" icon="car">Porsche approved</p-tag-status>
-      <p-tag-status theme="dark" color="background-surface" icon="fuel-station">Porsche approved</p-tag-status>
-      <p-tag-status theme="dark" color="background-surface" icon="parking-brake">Porsche approved</p-tag-status>
-      <p-tag-status theme="dark" color="background-surface" icon="oil-can">Porsche approved</p-tag-status>
-      <br />
-      <br />
-      <p-tag-status theme="dark"><a href="#">link</a></p-tag-status>
-      <p-tag-status theme="dark" icon="car"><a href="#">link and icon</a></p-tag-status>
-      <p-tag-status theme="dark"><button type="button">button</button></p-tag-status>
-      <p-tag-status theme="dark" icon="highway"><button type="button">button and icon</button></p-tag-status>
     </div>
   </body>
 </html>
