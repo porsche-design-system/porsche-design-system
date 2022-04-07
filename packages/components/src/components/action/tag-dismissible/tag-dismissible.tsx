@@ -10,7 +10,7 @@ import { getComponentCss } from './tag-dismissible-styles';
 export class TagStatus {
   @Element() public host!: HTMLElement;
 
-  /** Background color variations depending on theme property. */
+  /** Background color variations */
   @Prop() public color?: TagDismissibleColor = 'background-surface';
 
   /** The label text. */
