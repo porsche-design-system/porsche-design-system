@@ -125,28 +125,23 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       class="playground"
       title="should automatically break words/strings into new line being too long to fit inside their container"
     >
+      <p-headline [variant]="'headline-3'" style="width: 240px; background: deepskyblue">
+        This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
+      </p-headline>
       <p-headline [variant]="'headline-3'" style="width: 240px; background: deeppink">
         This is the first time I've seen the word
         Pneu&shy;mo&shy;noul&shy;tra&shy;mic&shy;ros&shy;cop&shy;ic&shy;si&shy;li&shy;co&shy;vol&shy;can&shy;o&shy;con&shy;i&shy;o&shy;sis.
         It's a long one.
       </p-headline>
       <p-headline [variant]="'headline-3'" style="width: 240px; background: deepskyblue">
-        <h3 style="overflow-wrap: normal; word-wrap: normal; hyphens: manual">
+        <h3 style="overflow-wrap: normal; word-wrap: normal; hyphens: none">
           This is the first time I've seen the word
           Pneu&shy;mo&shy;noul&shy;tra&shy;mic&shy;ros&shy;cop&shy;ic&shy;si&shy;li&shy;co&shy;vol&shy;can&shy;o&shy;con&shy;i&shy;o&shy;sis.
           It's a long one.
         </h3>
-      </p-headline>
-    </div>
-
-    <div
-      class="playground"
-      title="should automatically not break words/strings into new line being too long to fit inside their container"
-    >
-      <p-headline [variant]="'headline-3'" [hyphens]="'none'" style="width: 240px; background: deeppink">
-        This is the first time I've seen the word
-        Pneu&shy;mo&shy;noul&shy;tra&shy;mic&shy;ros&shy;cop&shy;ic&shy;si&shy;li&shy;co&shy;vol&shy;can&shy;o&shy;con&shy;i&shy;o&shy;sis.
-        It's a long one.
+        <p-headline [variant]="'inherit'" style="width: 240px; background: deeppink">
+          This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
+        </p-headline>
       </p-headline>
     </div>
   `,

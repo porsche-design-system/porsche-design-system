@@ -100,28 +100,23 @@ export const HeadlinePage = (): JSX.Element => {
         className="playground"
         title="should automatically break words/strings into new line being too long to fit inside their container"
       >
+        <PHeadline variant="headline-3" style={{ width: '240px', background: 'deepskyblue' }}>
+          This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
+        </PHeadline>
         <PHeadline variant="headline-3" style={{ width: '240px', background: 'deeppink' }}>
           This is the first time I've seen the word
           Pneu&shy;mo&shy;noul&shy;tra&shy;mic&shy;ros&shy;cop&shy;ic&shy;si&shy;li&shy;co&shy;vol&shy;can&shy;o&shy;con&shy;i&shy;o&shy;sis.
           It's a long one.
         </PHeadline>
         <PHeadline variant="headline-3" style={{ width: '240px', background: 'deepskyblue' }}>
-          <h3 style={{ overflowWrap: 'normal', wordWrap: 'normal', hyphens: 'manual' }}>
+          <h3 style={{ overflowWrap: 'normal', wordWrap: 'normal', hyphens: 'none' }}>
             This is the first time I've seen the word
             Pneu&shy;mo&shy;noul&shy;tra&shy;mic&shy;ros&shy;cop&shy;ic&shy;si&shy;li&shy;co&shy;vol&shy;can&shy;o&shy;con&shy;i&shy;o&shy;sis.
             It's a long one.
           </h3>
-        </PHeadline>
-      </div>
-
-      <div
-        className="playground"
-        title="should automatically not break words/strings into new line being too long to fit inside their container"
-      >
-        <PHeadline variant="headline-3" hyphens="none" style={{ width: '240px', background: 'deeppink' }}>
-          This is the first time I've seen the word
-          Pneu&shy;mo&shy;noul&shy;tra&shy;mic&shy;ros&shy;cop&shy;ic&shy;si&shy;li&shy;co&shy;vol&shy;can&shy;o&shy;con&shy;i&shy;o&shy;sis.
-          It's a long one.
+          <PHeadline variant="inherit" style={{ width: '240px', background: 'deeppink' }}>
+            This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
+          </PHeadline>
         </PHeadline>
       </div>
     </>

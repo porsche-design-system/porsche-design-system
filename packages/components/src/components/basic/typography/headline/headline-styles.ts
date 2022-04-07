@@ -1,5 +1,5 @@
 import type { JssStyle } from 'jss';
-import type { HeadlineVariant, Hyphens, TextAlign, TextColor, Theme, VariantType } from '../../../../types';
+import type { HeadlineVariant, TextAlign, TextColor, Theme, VariantType } from '../../../../types';
 import { buildSlottedStyles, getCss, mergeDeep } from '../../../../utils';
 import { addImportantToEachRule, getBaseSlottedStyles, getThemedColors } from '../../../../styles';
 import { headline, titleLarge } from '@porsche-design-system/utilities-v2';
@@ -15,8 +15,7 @@ export const getComponentCss = (
   align: TextAlign,
   color: Extract<TextColor, 'default' | 'inherit'>,
   ellipsis: boolean,
-  theme: Theme,
-  hyphens?: Hyphens
+  theme: Theme
 ): string => {
   return getCss({
     '@global': {
@@ -34,7 +33,6 @@ export const getComponentCss = (
       color: color !== 'default' ? 'inherit' : getThemedColors(theme).baseColor,
       whiteSpace: 'inherit',
       ...(isVariantType(variant) ? getVariantStyle(variant) : variant === 'inherit' && { fontSize: 'inherit' }),
-      ...(hyphens === 'none' ? { hyphens: 'none' } : {}),
       ...(ellipsis && getEllipsisJssStyle()),
     },
   });
