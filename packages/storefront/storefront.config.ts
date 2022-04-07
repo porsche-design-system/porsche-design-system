@@ -514,9 +514,15 @@ export const config: StorefrontConfig = {
         // @ts-ignore
         () => import('@/../../components/src/components/content/tag-status/tag-status.examples.md'),
       ],
+      'Tag Dismissible': [
+        // @ts-ignore
+        () => import('@/../../components/src/components/action/tag-dismissible/tag-dismissible.examples.md'),
+      ],
       Props: [
         // @ts-ignore
         () => import('@/../../components/src/components/content/tag-status/tag-status.props.md'),
+        // @ts-ignore
+        () => import('@/../../components/src/components/action/tag-dismissible/tag-dismissible.props.md'),
       ],
     },
     'Text Field': {
