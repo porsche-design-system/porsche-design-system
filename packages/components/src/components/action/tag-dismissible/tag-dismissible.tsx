@@ -24,10 +24,8 @@ export class TagStatus {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <button type="button" aria-live="polite">
-        <div>
-          {this.label && <p class="label">{this.label}</p>}
-          <slot />
-        </div>
+        {this.label && <span class="label">{this.label}</span>}
+        <slot />
         <PrefixedTagNames.pIcon class="icon" name="close" color="inherit" aria-hidden="true" />
       </button>
     );

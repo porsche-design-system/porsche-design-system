@@ -1,11 +1,11 @@
+import { TAG_DISMISSIBLE_COLOR } from '../../action/tag-dismissible/tag-dismissible-utils';
+
 export const TAG_STATUS_COLORS = [
-  'default',
-  'neutral-contrast-high',
+  ...TAG_DISMISSIBLE_COLOR,
   'notification-success',
   'notification-warning',
   'notification-error',
   'notification-neutral',
-  'background-surface',
 ] as const;
 
 export type TagStatusColor = typeof TAG_STATUS_COLORS[number];
