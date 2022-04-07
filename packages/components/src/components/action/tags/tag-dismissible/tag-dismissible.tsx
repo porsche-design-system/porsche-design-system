@@ -1,5 +1,5 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
+import { attachComponentCss, getPrefixedTagNames } from '../../../../utils';
 import type { TagDismissibleColor } from './tag-dismissible-utils';
 import { getComponentCss } from './tag-dismissible-styles';
 
