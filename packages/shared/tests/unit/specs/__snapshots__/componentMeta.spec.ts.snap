@@ -484,6 +484,15 @@ Object {
     "skeletonProps": Array [],
     "styling": "jss",
   },
+  "p-tag-dismissible": Object {
+    "hasSkeleton": false,
+    "hasSlottedCss": false,
+    "isDelegatingFocus": false,
+    "isThemeable": false,
+    "shouldPatchSlot": false,
+    "skeletonProps": Array [],
+    "styling": "jss",
+  },
   "p-tag-status": Object {
     "hasSkeleton": false,
     "hasSlottedCss": false,
