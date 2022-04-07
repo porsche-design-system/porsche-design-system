@@ -94,7 +94,7 @@ export default class Code extends Vue {
 
   icon =
 `<p-link href="https://www.porsche.com" icon="phone">Some label</p-link>
-<p-link href="https://www.porsche.com" icon-source="${require('../../assets/icon-custom-kaixin.svg')}" hide-label="true">Some label</p-link>`;
+<p-link href="https://www.porsche.com" icon-source="${require('../../../assets/icon-custom-kaixin.svg')}" hide-label="true">Some label</p-link>`;
 
   events =
 `<p-link
