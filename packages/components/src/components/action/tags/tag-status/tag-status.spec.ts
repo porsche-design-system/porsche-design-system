@@ -1,4 +1,4 @@
-import * as getDirectChildHTMLElementUtils from '../../../utils/dom/getDirectChildHTMLElement';
+import * as getDirectChildHTMLElementUtils from '../../../../utils/dom/getDirectChildHTMLElement';
 import { TagStatus } from './tag-status';
 
 describe('componentWillRender', () => {

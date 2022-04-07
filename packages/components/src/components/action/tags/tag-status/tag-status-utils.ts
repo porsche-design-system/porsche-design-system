@@ -1,4 +1,4 @@
-import { TAG_DISMISSIBLE_COLOR } from '../../action/tag-dismissible/tag-dismissible-utils';
+import { TAG_DISMISSIBLE_COLOR } from '../tag-dismissible/tag-dismissible-utils';
 
 export const TAG_STATUS_COLORS = [
   ...TAG_DISMISSIBLE_COLOR,

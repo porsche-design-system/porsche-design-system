@@ -1,9 +1,9 @@
-import { getCss, isThemeDark, mergeDeep } from '../../../utils';
-import { addImportantToEachRule, getFocusJssStyle, getThemedColors, getTransition } from '../../../styles';
+import { getCss, isThemeDark, mergeDeep } from '../../../../utils';
+import { addImportantToEachRule, getFocusJssStyle, getThemedColors, getTransition } from '../../../../styles';
 import { fontWeight, textXSmall } from '@porsche-design-system/utilities-v2';
-import type { ThemedColors } from '../../../styles';
+import type { ThemedColors } from '../../../../styles';
 import type { TagStatusColor } from './tag-status-utils';
-import type { Theme } from '../../../types';
+import type { Theme } from '../../../../types';
 
 export const getThemedBackgroundColor = (color: TagStatusColor, themedColors: ThemedColors): string => {
   const colorMap: { [key in TagStatusColor]: string } = {
