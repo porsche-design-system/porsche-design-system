@@ -12,7 +12,6 @@ import { Switch } from './action/switch/switch';
 import { Marque } from './basic/marque/marque';
 import { Accordion } from './content/accordion/accordion';
 import { Modal } from './content/modal/modal';
-import { TagStatus } from './content/tag-status/tag-status';
 import { Banner } from './feedback/banner/banner';
 import { InlineNotification } from './feedback/inline-notification/inline-notification';
 import { Popover } from './feedback/popover/popover';
@@ -31,6 +30,7 @@ import { LinkPure } from './navigation/link-pure/link-pure';
 import { LinkSocial } from './navigation/link-social/link-social';
 import { Pagination } from './navigation/pagination/pagination';
 import { TabsBar } from './navigation/tabs-bar/tabs-bar';
+import { TagStatus } from './action/tags/tag-status/tag-status';
 import { Headline } from './basic/typography/headline/headline';
 import { Text } from './basic/typography/text/text';
 import { Table } from './content/table/table/table';
@@ -52,7 +52,6 @@ import { Flex } from './layout/flex/flex/flex';
 import { FlexItem } from './layout/flex/flex-item/flex-item';
 import { Grid } from './layout/grid/grid/grid';
 import { GridItem } from './layout/grid/grid-item/grid-item';
-import { getDirectChildHTMLElement } from '../utils';
 
 type ClassType = {
   host: HTMLElement;
@@ -69,7 +68,6 @@ export const TAG_NAMES_CONSTRUCTOR_MAP: { [key in TagName]: new () => ClassType 
   'p-marque': Marque,
   'p-accordion': Accordion,
   'p-modal': Modal,
-  'p-tag-status': TagStatus,
   'p-banner': Banner,
   'p-inline-notification': InlineNotification,
   'p-popover': Popover,
@@ -88,6 +86,7 @@ export const TAG_NAMES_CONSTRUCTOR_MAP: { [key in TagName]: new () => ClassType 
   'p-link-social': LinkSocial,
   'p-pagination': Pagination,
   'p-tabs-bar': TabsBar,
+  'p-tag-status': TagStatus,
   'p-headline': Headline,
   'p-text': Text,
   'p-table': Table,
