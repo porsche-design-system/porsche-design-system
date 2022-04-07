@@ -855,7 +855,7 @@ export namespace Components {
     }
     interface PTagDismissible {
         /**
-          * Background color variations depending on theme property.
+          * Background color variations
          */
         "color"?: TagDismissibleColor;
         /**
@@ -2200,7 +2200,7 @@ declare namespace LocalJSX {
     }
     interface PTagDismissible {
         /**
-          * Background color variations depending on theme property.
+          * Background color variations
          */
         "color"?: TagDismissibleColor;
         /**
