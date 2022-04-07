@@ -31,6 +31,7 @@ import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinne
 import { SwitchChangeEvent } from "./components/action/switch/switch";
 import { SortingChangeEvent, TableHeadCellSort } from "./components/content/table/table/table-utils";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
+import { TagDismissibleColor } from "./components/action/tag-dismissible/tag-dismissible-utils";
 import { TagStatusColor } from "./components/content/tag-status/tag-status-utils";
 import { TextFieldWrapperUnitPosition } from "./components/form/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
@@ -852,6 +853,16 @@ export namespace Components {
          */
         "label": string;
     }
+    interface PTagDismissible {
+        /**
+          * Background color variations depending on theme property.
+         */
+        "color"?: TagDismissibleColor;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+    }
     interface PTagStatus {
         /**
           * Background color variations depending on theme property.
@@ -1227,6 +1238,12 @@ declare global {
         prototype: HTMLPTabsItemElement;
         new (): HTMLPTabsItemElement;
     };
+    interface HTMLPTagDismissibleElement extends Components.PTagDismissible, HTMLStencilElement {
+    }
+    var HTMLPTagDismissibleElement: {
+        prototype: HTMLPTagDismissibleElement;
+        new (): HTMLPTagDismissibleElement;
+    };
     interface HTMLPTagStatusElement extends Components.PTagStatus, HTMLStencilElement {
     }
     var HTMLPTagStatusElement: {
@@ -1314,6 +1331,7 @@ declare global {
         "p-tabs": HTMLPTabsElement;
         "p-tabs-bar": HTMLPTabsBarElement;
         "p-tabs-item": HTMLPTabsItemElement;
+        "p-tag-dismissible": HTMLPTagDismissibleElement;
         "p-tag-status": HTMLPTagStatusElement;
         "p-text": HTMLPTextElement;
         "p-text-field-wrapper": HTMLPTextFieldWrapperElement;
@@ -2180,6 +2198,16 @@ declare namespace LocalJSX {
          */
         "label"?: string;
     }
+    interface PTagDismissible {
+        /**
+          * Background color variations depending on theme property.
+         */
+        "color"?: TagDismissibleColor;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+    }
     interface PTagStatus {
         /**
           * Background color variations depending on theme property.
@@ -2367,6 +2395,7 @@ declare namespace LocalJSX {
         "p-tabs": PTabs;
         "p-tabs-bar": PTabsBar;
         "p-tabs-item": PTabsItem;
+        "p-tag-dismissible": PTagDismissible;
         "p-tag-status": PTagStatus;
         "p-text": PText;
         "p-text-field-wrapper": PTextFieldWrapper;
@@ -2419,6 +2448,7 @@ declare module "@stencil/core" {
             "p-tabs": LocalJSX.PTabs & JSXBase.HTMLAttributes<HTMLPTabsElement>;
             "p-tabs-bar": LocalJSX.PTabsBar & JSXBase.HTMLAttributes<HTMLPTabsBarElement>;
             "p-tabs-item": LocalJSX.PTabsItem & JSXBase.HTMLAttributes<HTMLPTabsItemElement>;
+            "p-tag-dismissible": LocalJSX.PTagDismissible & JSXBase.HTMLAttributes<HTMLPTagDismissibleElement>;
             "p-tag-status": LocalJSX.PTagStatus & JSXBase.HTMLAttributes<HTMLPTagStatusElement>;
             "p-text": LocalJSX.PText & JSXBase.HTMLAttributes<HTMLPTextElement>;
             "p-text-field-wrapper": LocalJSX.PTextFieldWrapper & JSXBase.HTMLAttributes<HTMLPTextFieldWrapperElement>;
