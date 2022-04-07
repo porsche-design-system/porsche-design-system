@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import * as prettier from 'prettier';
 import * as font from '../src/jss/font';
 import * as theme from '../src/jss/theme';
 import * as spacing from '../src/jss/spacing';
@@ -50,7 +51,8 @@ const cleanBuild = (): void => {
 
 const writeFile = (filename: string, content: string): void => {
   const targetPath = path.normalize(`${targetDirectory}/_${paramCase(filename)}.scss`);
-  fs.writeFileSync(targetPath, content);
+  const contentFormatted = prettier.format(content, { parser: 'scss' });
+  fs.writeFileSync(targetPath, contentFormatted);
   console.log(`Auto generated SCSS file: ${targetPath}`);
 };
 
@@ -81,7 +83,7 @@ const generateMixins = (mixins: Mixins): void => {
             '$1'
           )}}`
       )
-      .join('\n');
+      .join('\n\n');
 
     writeFile(filename, content);
   }
