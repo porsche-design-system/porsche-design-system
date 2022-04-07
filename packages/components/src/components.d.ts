@@ -31,8 +31,9 @@ import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinne
 import { SwitchChangeEvent } from "./components/action/switch/switch";
 import { SortingChangeEvent, TableHeadCellSort } from "./components/content/table/table/table-utils";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
-import { TagDismissibleColor } from "./components/action/tag-dismissible/tag-dismissible-utils";
-import { TagStatusColor } from "./components/content/tag-status/tag-status-utils";
+import { TagDismissibleColor } from "./components/action/tags/tag-dismissible/tag-dismissible-utils";
+import { IconName as IconName1, Theme as Theme1 } from "./components/types";
+import { TagStatusColor } from "./components/action/tags/tag-status/tag-status-utils";
 import { TextFieldWrapperUnitPosition } from "./components/form/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 import { ToastMessage } from "./components/feedback/toast/toast/toast-manager";
