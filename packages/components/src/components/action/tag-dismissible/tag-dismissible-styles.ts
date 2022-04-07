@@ -7,21 +7,12 @@ import {
 } from '../../../styles';
 import { getCss } from '../../../utils';
 import type { TagDismissibleColor } from './tag-dismissible-utils';
-import type { ThemedColors } from '../../../styles';
-import { textSmall, fontFamily, fontStyle, fontVariant, fontWeight } from '@porsche-design-system/utilities-v2';
-
-const getBackgroundColor = (color: TagDismissibleColor, themedColors: ThemedColors): string => {
-  const colorMap: { [key in TagDismissibleColor]: string } = {
-    default: themedColors.backgroundColor,
-    'background-surface': themedColors.backgroundSurfaceColor,
-    'neutral-contrast-high': themedColors.contrastHighColor,
-  };
-  return colorMap[color];
-};
+import { textSmall, fontWeight } from '@porsche-design-system/utilities-v2';
+import { getThemedBackgroundColor } from '../../content/tag-status/tag-status-styles';
 
 export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): string => {
-  const isNeutralContrastHigh = color === 'neutral-contrast-high';
   const themedColors = getThemedColors('light');
+  const isNeutralContrastHigh = color === 'neutral-contrast-high';
   const { baseColor, contrastMediumColor } = isNeutralContrastHigh ? getThemedColors('dark') : themedColors;
 
   return getCss({
@@ -31,31 +22,21 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
         verticalAlign: 'top',
       },
       button: {
-        display: 'flex',
-        alignItems: 'center',
+        position: 'relative',
         minHeight: '48px',
-        margin: 0,
-        padding: '0 16px',
+        padding: '0 50px 0 16px', // Padding top bottom
         borderRadius: '4px',
-        outline: 'transparent none',
-        border: 'none',
-        appearance: 'none',
+        border: 0,
         cursor: 'pointer',
-        background: getBackgroundColor(color, themedColors),
+        background: getThemedBackgroundColor(color, themedColors),
         color: baseColor,
+        textAlign: 'left',
+        ...textSmall,
         ...getFocusJssStyle({ color: themedColors.baseColor }),
         transition: getTransition('background-color'),
         '&:hover': {
           backgroundColor: isNeutralContrastHigh ? themedColors.baseColorDarken : themedColors.contrastLowColor,
         },
-      },
-      div: {
-        ...textSmall,
-        lineHeight: pxToRemWithUnit(16),
-        overflowWrap: null,
-        hyphens: null,
-        whiteSpace: 'nowrap',
-        textAlign: 'left',
       },
       '::slotted': addImportantToEachRule({
         '&(strong),&(b)': {
@@ -68,14 +49,18 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
     },
     ...(hasLabel && {
       label: {
+        // Negative margin?
+        display: 'block',
         color: contrastMediumColor,
-        font: `${fontStyle} ${fontVariant} ${fontWeight.regular} 0.875rem/0.75 ${fontFamily}`,
-        margin: 0,
-        paddingBottom: '2px',
+        fontSize: pxToRemWithUnit(14),
+        lineHeight: pxToRemWithUnit(20),
       },
     }),
     icon: {
-      marginLeft: '12px',
+      position: 'absolute',
+      top: '50%',
+      marginTop: '-12px',
+      right: '16px',
     },
   });
 };
