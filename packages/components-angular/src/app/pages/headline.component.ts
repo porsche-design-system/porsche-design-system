@@ -3,6 +3,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-headline',
+  styles: [
+    `
+      h4 {
+        color: deeppink;
+      }
+    `,
+  ],
   template: `
     <div class="playground light" title="should show headlines with different style variants">
       <p-headline [variant]="'large-title'">The quick brown fox jumps over the lazy dog</p-headline>
@@ -125,23 +132,23 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       class="playground"
       title="should automatically break words/strings into new line being too long to fit inside their container"
     >
+      <h4>Hyphens default: manual</h4>
       <p-headline [variant]="'headline-3'" style="width: 240px; background: deepskyblue">
         This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
       </p-headline>
+      <h4>Hyphens default: manual with shy</h4>
       <p-headline [variant]="'headline-3'" style="width: 240px; background: deeppink">
         This is the first time I've seen the word
         Pneu&shy;mo&shy;noul&shy;tra&shy;mic&shy;ros&shy;cop&shy;ic&shy;si&shy;li&shy;co&shy;vol&shy;can&shy;o&shy;con&shy;i&shy;o&shy;sis.
         It's a long one.
       </p-headline>
+      <h4>Hyphens default: manual with slotted hyphens auto and shy</h4>
       <p-headline [variant]="'headline-3'" style="width: 240px; background: deepskyblue">
-        <h3 style="overflow-wrap: normal; word-wrap: normal; hyphens: none">
+        <h3 style="overflow-wrap: normal; word-wrap: normal; hyphens: auto">
           This is the first time I've seen the word
           Pneu&shy;mo&shy;noul&shy;tra&shy;mic&shy;ros&shy;cop&shy;ic&shy;si&shy;li&shy;co&shy;vol&shy;can&shy;o&shy;con&shy;i&shy;o&shy;sis.
           It's a long one.
         </h3>
-        <p-headline [variant]="'inherit'" style="width: 240px; background: deeppink">
-          This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
-        </p-headline>
       </p-headline>
     </div>
   `,

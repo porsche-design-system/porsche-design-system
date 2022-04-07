@@ -1,10 +1,12 @@
 import type { JssStyle } from 'jss';
 import type { HeadlineVariant, TextAlign, TextColor, Theme, VariantType } from '../../../../types';
-import { buildSlottedStyles, getCss, mergeDeep } from '../../../../utils';
+import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep, paramCaseToCamelCase } from '../../../../utils';
 import { addImportantToEachRule, getBaseSlottedStyles, getThemedColors } from '../../../../styles';
-import { headline, titleLarge } from '@porsche-design-system/utilities-v2';
+import { fontWeight, headline, text, textSmall, titleLarge } from '@porsche-design-system/utilities-v2';
 import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../../../styles/typography-styles';
 import { isVariantType } from './headline-utils';
+import { getThemedTextColor } from '../../../../styles/text-icon-styles';
+import { TextSize } from '../../../../types';
 
 const getVariantStyle = (variant: HeadlineVariant): JssStyle => {
   return variant === 'large-title' ? titleLarge : headline[(variant as VariantType).slice(-1)];
@@ -17,6 +19,13 @@ export const getComponentCss = (
   ellipsis: boolean,
   theme: Theme
 ): string => {
+  const getSizeJssStyle = (textSize: TextSize): JssStyle => {
+    const fotWeightSemibold = fontWeight['semibold'];
+    return textSize === 'inherit'
+      ? { fontSize: textSize, fontWeight: fotWeightSemibold }
+      : { font: text[paramCaseToCamelCase(textSize)].font.replace('400', fotWeightSemibold) };
+  };
+
   return getCss({
     '@global': {
       ':host': {
@@ -32,7 +41,15 @@ export const getComponentCss = (
       textAlign: align,
       color: color !== 'default' ? 'inherit' : getThemedColors(theme).baseColor,
       whiteSpace: 'inherit',
-      ...(isVariantType(variant) ? getVariantStyle(variant) : variant === 'inherit' && { fontSize: 'inherit' }),
+      ...(isVariantType(variant)
+        ? getVariantStyle(variant)
+        : {
+            ...textSmall,
+            color: getThemedTextColor(theme, color),
+            transition: 'font-size 1ms linear',
+            ...buildResponsiveStyles(variant, getSizeJssStyle),
+            hyphens: 'manual',
+          }),
       ...(ellipsis && getEllipsisJssStyle()),
     },
   });
