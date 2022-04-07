@@ -1,8 +1,8 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import type { TagStatusColor } from './tag-status-utils';
-import { attachComponentCss, getDirectChildHTMLElement, getPrefixedTagNames } from '../../../utils';
+import { attachComponentCss, getDirectChildHTMLElement, getPrefixedTagNames } from '../../../../utils';
 import { getComponentCss } from './tag-status-styles';
-import type { IconName, Theme } from '../../../types';
+import type { IconName, Theme } from '../../../../types';
 
 @Component({
   tag: 'p-tag-status',
