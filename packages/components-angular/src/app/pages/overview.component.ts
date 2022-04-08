@@ -223,6 +223,10 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         <div class="playground light" title="should render default tag-status">
           <p-tag-status>Some Tag</p-tag-status>
         </div>
+
+        <div class="playground light" title="should render default tag-dismissible">
+          <p-tag-dismissible>Some Tag</p-tag-dismissible>
+        </div>
       </div>
 
       <div style="flex: 1">
@@ -409,6 +413,10 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 
         <div class="playground light" title="should render default tag-status with custom prefix">
           <my-prefix-p-tag-status p-tag-status>Some Tag</my-prefix-p-tag-status>
+        </div>
+
+        <div class="playground light" title="should render default tag-dismissible with custom prefix">
+          <my-prefix-p-tag-dismissible p-tag-dismissible>Some Tag</my-prefix-p-tag-dismissible>
         </div>
       </div>
     </div>
