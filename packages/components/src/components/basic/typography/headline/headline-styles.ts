@@ -20,7 +20,7 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const getSizeJssStyle = (textSize: TextSize): JssStyle => {
-    const fotWeightSemibold = fontWeight['semibold'];
+    const fotWeightSemibold = fontWeight.semibold;
     return textSize === 'inherit'
       ? { fontSize: textSize, fontWeight: fotWeightSemibold }
       : { font: text[paramCaseToCamelCase(textSize)].font.replace('400', fotWeightSemibold) };
