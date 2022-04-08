@@ -4,6 +4,7 @@ import type { TextAlign, TextColor, Theme } from '../../../../types';
 import type { HeadlineTag, HeadlineVariant } from './headline-utils';
 import { getHeadlineTagName } from './headline-utils';
 import { getComponentCss, getSlottedCss } from './headline-styles';
+import { setLineHeightOnSizeInherit } from '../text/text-utils';
 
 @Component({
   tag: 'p-headline',
@@ -30,6 +31,8 @@ export class Headline {
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
 
+  private headlineTag: HTMLElement;
+
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
   }
@@ -38,12 +41,16 @@ export class Headline {
     attachComponentCss(this.host, getComponentCss, this.variant, this.align, this.color, this.ellipsis, this.theme);
   }
 
+  public componentDidLoad(): void {
+    setLineHeightOnSizeInherit(this.variant, this.headlineTag);
+  }
+
   public render(): JSX.Element {
     const TagName = getHeadlineTagName(this.host, this.variant, this.tag);
 
     return (
       <Host {...getThemeDarkAttribute(this.theme)}>
-        <TagName class="root">
+        <TagName class="root" ref={(el) => (this.headlineTag = el)}>
           <slot />
         </TagName>
       </Host>
