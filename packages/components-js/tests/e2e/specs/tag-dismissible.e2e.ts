@@ -1,6 +1,5 @@
 import type { Page } from 'puppeteer';
 import {
-  addEventListener,
   expectA11yToMatchSnapshot,
   getLifecycleStatus,
   initAddEventListener,
@@ -33,29 +32,6 @@ const initTagDismissible = async (props?: InitOpts) => {
 
 const getHost = () => selectNode(page, 'p-tag-dismissible');
 const getButton = () => selectNode(page, 'p-tag-dismissible >>> button');
-
-it('should dispatch correct click events', async () => {
-  await setContentWithDesignSystem(
-    page,
-    `<div><p-tag-dismissible id="hostElement">Some label</p-tag-dismissible></div>`
-  );
-
-  const wrapper = await selectNode(page, 'div');
-  const host = await getHost();
-  const button = await getButton();
-
-  const events = [];
-  await addEventListener(wrapper, 'click', (ev) => events.push(ev));
-
-  await button.click();
-  await host.click();
-  await waitForStencilLifecycle(page);
-
-  expect(events.length).toBe(2);
-  for (const event of events) {
-    expect(event.target.id).toBe('hostElement');
-  }
-});
 
 describe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
