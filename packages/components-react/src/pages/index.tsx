@@ -54,6 +54,7 @@ import { SpinnerPage } from './Spinner';
 import { SwitchPage } from './Switch';
 import { TabsPage } from './Tabs';
 import { TabsBarPage } from './TabsBar';
+import { TagDismissiblePage } from './TagDismissible';
 import { TagStatusPage } from './TagStatus';
 import { TextPage } from './Text';
 import { TextareaWrapperPage } from './TextareaWrapper';
@@ -286,6 +287,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Tabs Bar',
     path: '/tabs-bar',
     element: <TabsBarPage />,
+  },
+  {
+    name: 'Tag Dismissible',
+    path: '/tag-dismissible',
+    element: <TagDismissiblePage />,
   },
   {
     name: 'Tag Status',
