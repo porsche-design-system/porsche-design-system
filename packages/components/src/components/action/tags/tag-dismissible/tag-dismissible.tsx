@@ -7,7 +7,7 @@ import { getComponentCss } from './tag-dismissible-styles';
   tag: 'p-tag-dismissible',
   shadow: true,
 })
-export class TagStatus {
+export class TagDismissible {
   @Element() public host!: HTMLElement;
 
   /** Background color variations */
