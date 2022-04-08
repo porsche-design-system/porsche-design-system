@@ -4,11 +4,13 @@ exports[`should contain correct values for font 1`] = `
 Object {
   "behavior": Object {
     "WebkitTextSizeAdjust": "none",
-    "hyphens": "auto",
     "overflowWrap": "break-word",
     "textSizeAdjust": "none",
   },
   "family": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "hyphenation": Object {
+    "hyphens": "auto",
+  },
   "size": Object {
     "large": Object {
       "fontSize": "2.25rem",
@@ -45,13 +47,18 @@ Object {
 exports[`should contain correct values for fontBehavior 1`] = `
 Object {
   "WebkitTextSizeAdjust": "none",
-  "hyphens": "auto",
   "overflowWrap": "break-word",
   "textSizeAdjust": "none",
 }
 `;
 
 exports[`should contain correct values for fontFamily 1`] = `"'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif"`;
+
+exports[`should contain correct values for fontHyphenation 1`] = `
+Object {
+  "hyphens": "auto",
+}
+`;
 
 exports[`should contain correct values for fontSize 1`] = `
 Object {
