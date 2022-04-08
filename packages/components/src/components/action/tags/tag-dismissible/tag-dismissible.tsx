@@ -1,7 +1,7 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { attachComponentCss, getPrefixedTagNames } from '../../../../utils';
-import type { TagDismissibleColor } from './tag-dismissible-utils';
+import { attachComponentCss, getPrefixedTagNames, throwIfValueIsInvalid } from '../../../../utils';
 import { getComponentCss } from './tag-dismissible-styles';
+import type { TagDismissibleColor, TAG_DISMISSIBLE_COLOR } from './tag-dismissible-utils';
 
 @Component({
   tag: 'p-tag-dismissible',
@@ -14,9 +14,10 @@ export class TagDismissible {
   @Prop() public color?: TagDismissibleColor = 'background-surface';
 
   /** The label text. */
-  @Prop() public label?: string = '';
+  @Prop() public label?: string;
 
   public componentWillRender(): void {
+    throwIfValueIsInvalid(this.color, TAG_DISMISSIBLE_COLOR, 'color');
     attachComponentCss(this.host, getComponentCss, this.color, !!this.label);
   }
 
