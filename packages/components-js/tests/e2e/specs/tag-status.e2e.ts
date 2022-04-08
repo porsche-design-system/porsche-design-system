@@ -20,7 +20,7 @@ const initTagStatus = async (props?: InitOpts) => {
   const { withIcon } = props || {};
   const attributes = withIcon ? ' icon="car"' : '';
 
-  const content = `<p-tag-status ${attributes}>Some Tag</p-tag-status>`;
+  const content = `<p-tag-status${attributes}>Some Tag</p-tag-status>`;
 
   await setContentWithDesignSystem(page, content);
 };
