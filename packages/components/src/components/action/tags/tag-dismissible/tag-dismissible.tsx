@@ -1,7 +1,8 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import { attachComponentCss, getPrefixedTagNames, throwIfValueIsInvalid } from '../../../../utils';
 import { getComponentCss } from './tag-dismissible-styles';
-import type { TagDismissibleColor, TAG_DISMISSIBLE_COLOR } from './tag-dismissible-utils';
+import { TAG_DISMISSIBLE_COLOR } from './tag-dismissible-utils';
+import type { TagDismissibleColor } from './tag-dismissible-utils';
 
 @Component({
   tag: 'p-tag-dismissible',
