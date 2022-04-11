@@ -7,15 +7,12 @@ import {
 } from '../../../../styles';
 import { getCss } from '../../../../utils';
 import type { TagDismissibleColor } from './tag-dismissible-utils';
-import { textSmall, fontWeight } from '@porsche-design-system/utilities-v2';
+import { textSmall, fontWeight, getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
 import { getThemedBackgroundColor } from '../utils/tags-style-utils';
 
 export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): string => {
   const themedColors = getThemedColors('light');
-  const { baseColorDarken, contrastLowColor } = themedColors;
-
-  const isNeutralContrastHigh = color === 'neutral-contrast-high';
-  const { baseColor, contrastMediumColor } = isNeutralContrastHigh ? getThemedColors('dark') : themedColors;
+  const { baseColor, contrastLowColor, contrastMediumColor } = themedColors;
 
   return getCss({
     '@global': {
@@ -26,7 +23,7 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
       button: {
         position: 'relative',
         minHeight: '48px',
-        padding: '4px 50px 4px 16px',
+        padding: '4px 46px 4px 16px',
         borderRadius: '4px',
         border: 0,
         cursor: 'pointer',
@@ -34,10 +31,10 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
         color: baseColor,
         textAlign: 'left',
         ...textSmall,
-        ...getFocusJssStyle({ color: themedColors.baseColor }),
+        ...getFocusJssStyle({ color: baseColor }),
         transition: getTransition('background-color'),
         '&:hover': {
-          background: isNeutralContrastHigh ? baseColorDarken : contrastLowColor,
+          background: contrastLowColor,
         },
       },
       '::slotted': addImportantToEachRule({
@@ -62,7 +59,8 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
       position: 'absolute',
       top: '50%',
       marginTop: '-12px',
-      right: '16px',
+      right: '12px',
     },
+    'sr-only': getScreenReaderOnlyJssStyle(),
   });
 };

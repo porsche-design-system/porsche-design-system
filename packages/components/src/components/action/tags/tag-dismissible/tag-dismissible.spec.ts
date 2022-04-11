@@ -1,6 +1,6 @@
 import * as validationUtils from '../../../../utils/validation';
 import { TagDismissible } from './tag-dismissible';
-import { TAG_DISMISSIBLE_COLOR } from './tag-dismissible-utils';
+import { TAG_DISMISSIBLE_COLORS } from './tag-dismissible-utils';
 
 describe('componentWillRender', () => {
   it('should call throwIfValueIsInvalid() with correct parameters', () => {
@@ -11,6 +11,6 @@ describe('componentWillRender', () => {
     component.color = 'default';
     component.componentWillRender();
 
-    expect(spy).toBeCalledWith('default', TAG_DISMISSIBLE_COLOR, 'color');
+    expect(spy).toBeCalledWith('default', TAG_DISMISSIBLE_COLORS, 'color');
   });
 });
