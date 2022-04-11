@@ -72,7 +72,7 @@
 </script>
 
 <style lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
+  @import '~@porsche-design-system/components-js/utilities/scss';
 
   * {
     margin: 0;
@@ -91,63 +91,63 @@
   }
 
   .spacing-mt-8 {
-    margin-top: $p-layout-small;
+    margin-top: $pds-spacing-small;
   }
 
   .spacing-mr-8 {
-    margin-right: $p-layout-small;
+    margin-right: $pds-spacing-small;
   }
 
   .spacing-mt-16 {
-    margin-top: $p-layout-medium;
+    margin-top: $pds-spacing-medium;
   }
 
   .spacing-mt-24 {
-    margin-top: $p-spacing-24;
+    margin-top: 1.5rem;
   }
 
   .spacing-mt-32 {
-    margin-top: $p-layout-large;
+    margin-top: $pds-spacing-large;
   }
 
   .spacing-mr-32 {
-    margin-right: $p-layout-large;
+    margin-right: $pds-spacing-large;
   }
 
   .spacing-mt-48 {
-    margin-top: $p-layout-x-large;
+    margin-top: $pds-spacing-x-large;
   }
 
   .spacing-mt-56 {
-    margin-top: $p-spacing-56;
+    margin-top: 3.5rem;
   }
 
   .spacing-mt-80 {
-    margin-top: $p-layout-xx-large;
+    margin-top: $pds-spacing-xx-large;
   }
 
   // padding
   .spacing-pt-8 {
-    padding-top: $p-layout-small;
+    padding-top: $pds-spacing-small;
   }
 
   .spacing-pr-8 {
-    padding-right: $p-layout-small;
+    padding-right: $pds-spacing-small;
   }
 
   .spacing-pb-8 {
-    padding-bottom: $p-layout-small;
+    padding-bottom: $pds-spacing-small;
   }
 
   .spacing-pl-8 {
-    padding-left: $p-layout-small;
+    padding-left: $pds-spacing-small;
   }
 
   .divider-spacing-small {
-    margin: $p-spacing-24 0;
+    margin: 1.5rem 0;
   }
 
-  @include p-media-query('m') {
+  @include pds-media-query-min('m') {
     .spacing-mt-0-min-m {
       margin-top: 0;
     }
@@ -155,73 +155,73 @@
 
   // form top spacing
   .form-top-spacing {
-    margin-top: $p-spacing-48;
+    margin-top: $pds-spacing-x-large;
 
-    @include p-media-query('m') {
-      margin-top: $p-spacing-64;
+    @include pds-media-query-min('m') {
+      margin-top: 4rem;
     }
   }
 
   // form bottom spacing
   .form-bottom-spacing {
-    padding-bottom: $p-spacing-64;
+    padding-bottom: 4rem;
 
-    @include p-media-query('m') {
-      padding-bottom: $p-spacing-80;
+    @include pds-media-query-min('m') {
+      padding-bottom: $pds-spacing-xx-large;
     }
   }
 
   // form section and fieldset spacing
   .form-section-spacing {
-    margin-top: $p-spacing-40;
+    margin-top: 2.5rem;
 
-    @include p-media-query('m') {
-      margin-top: $p-spacing-48;
+    @include pds-media-query-min('m') {
+      margin-top: $pds-spacing-x-large;
     }
   }
 
   // form row spacing
   .form-row-spacing {
-    margin-top: $p-spacing-16;
-    @include p-media-query('xs') {
+    margin-top: $pds-spacing-medium;
+    @include pds-media-query-min('xs') {
       &--xs {
-        margin-top: $p-spacing-16;
+        margin-top: $pds-spacing-medium;
       }
       &--zero-xs {
         margin-top: 0;
       }
     }
 
-    @include p-media-query('s') {
+    @include pds-media-query-min('s') {
       &--s {
-        margin-top: $p-spacing-16;
+        margin-top: $pds-spacing-medium;
       }
       &--zero-s {
         margin-top: 0;
       }
     }
 
-    @include p-media-query('m') {
+    @include pds-media-query-min('m') {
       &--m {
-        margin-top: $p-spacing-16;
+        margin-top: $pds-spacing-medium;
       }
       &--zero-m {
         margin-top: 0;
       }
     }
 
-    @include p-media-query('l') {
+    @include pds-media-query-min('l') {
       &--l {
-        margin-top: $p-spacing-16;
+        margin-top: $pds-spacing-medium;
       }
       &--zero-l {
         margin-top: 0;
       }
     }
 
-    @include p-media-query('xl') {
+    @include pds-media-query-min('xl') {
       &--xl {
-        margin-top: $p-spacing-16;
+        margin-top: $pds-spacing-medium;
       }
       &--zero-xl {
         margin-top: 0;
@@ -231,13 +231,13 @@
 
   // form grid
   .form-grid-item-container {
-    margin-left: -$p-spacing-8;
-    margin-right: -$p-spacing-8;
+    margin-left: -$pds-spacing-small;
+    margin-right: -$pds-spacing-small;
   }
 
   .form-grid-item {
-    padding-left: $p-spacing-8;
-    padding-right: $p-spacing-8;
+    padding-left: $pds-spacing-small;
+    padding-right: $pds-spacing-small;
   }
 
   .form-fieldset {
@@ -254,28 +254,28 @@
 
     legend {
       display: block;
-      font-weight: $p-font-weight-semibold;
+      font-weight: $pds-font-weight-semi-bold;
     }
   }
 </style>
 
 <style scoped lang="scss">
   @use 'sass:math';
-  @import '~@porsche-design-system/utilities/scss';
+  @import '~@porsche-design-system/components-js/utilities/scss';
 
   .content {
     position: relative;
     overflow: hidden;
 
     &--menu-active {
-      @include p-media-query('xxs', 's') {
+      @include pds-media-query-min-max('xxs', 's') {
         .sidebar {
           opacity: 1;
           transform: translate3d(0, 0, 0);
         }
 
         .main {
-          transform: translate3d(p-px-to-rem(280px), 0, 0);
+          transform: translate3d(17.5rem, 0, 0);
         }
 
         .router-view {
@@ -291,48 +291,48 @@
     top: 0;
     left: 0;
     bottom: 0;
-    width: p-px-to-rem(280px);
-    padding: $p-spacing-24 $p-spacing-32 $p-spacing-40;
-    border-right: 1px solid $p-color-neutral-contrast-low;
-    background: $p-color-background-default;
+    width: 17.5rem;
+    padding: 1.5rem $pds-spacing-large 2.5rem;
+    border-right: 1px solid $pds-theme-light-contrast-low;
+    background: $pds-theme-light-background-base;
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 
-    @include p-media-query('xxs', 's') {
+    @include pds-media-query-min-max('xxs', 's') {
       opacity: 0;
-      transform: translate3d(p-px-to-rem(-140px), 0, 0);
+      transform: translate3d(-8.75rem, 0, 0);
       transition: transform 0.3s, opacity 0.3s;
     }
   }
 
   .main {
-    background: $p-color-background-default;
+    background: $pds-theme-light-background-base;
 
-    @include p-media-query('xxs', 's') {
+    @include pds-media-query-min-max('xxs', 's') {
       &--animate {
         transform: translate3d(0, 0, 0);
         transition: transform 0.3s;
       }
     }
 
-    @include p-media-query('s') {
-      margin-left: p-px-to-rem(280px);
+    @include pds-media-query-min('s') {
+      margin-left: 17.5rem;
     }
   }
 
   .router-view {
     position: relative;
-    padding: $p-spacing-32;
-    background: $p-color-background-default;
+    padding: $pds-spacing-large;
+    background: $pds-theme-light-background-base;
 
-    @include p-media-query('xxs', 's') {
+    @include pds-media-query-min-max('xxs', 's') {
       opacity: 1;
       transition: opacity 0.3s;
     }
 
-    @include p-media-query('s') {
-      padding: $p-spacing-64;
+    @include pds-media-query-min('s') {
+      padding: 4rem;
     }
 
     &--loading {
@@ -348,15 +348,15 @@
     transform: translate3d(-50%, -50%, 0);
     z-index: 10;
 
-    @include p-media-query('s') {
-      left: calc(50% + #{math.div(p-px-to-rem(280px), 2)});
+    @include pds-media-query-min('s') {
+      left: calc(50% + #{math.div(17.5rem, 2)});
     }
   }
 
   .menu {
     display: none;
 
-    @include p-media-query('xxs', 's') {
+    @include pds-media-query-min-max('xxs', 's') {
       display: block;
       position: fixed;
       z-index: 2;

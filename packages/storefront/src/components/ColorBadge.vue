@@ -52,236 +52,236 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
+  @import '~@porsche-design-system/components-js/utilities/scss';
 
   .color-badge {
-    width: p-px-to-rem(160px);
-    height: p-px-to-rem(40px);
-    border: 1px solid $p-color-neutral-contrast-medium;
+    width: 10rem;
+    height: 2.5rem;
+    border: 1px solid $pds-theme-light-contrast-medium;
 
     // Theme light
     &.light {
       &.brand {
-        background: $p-color-brand;
+        background: $pds-theme-light-brand;
       }
 
       &.default {
-        background: $p-color-default;
+        background: $pds-theme-light-base;
       }
 
       &.background-default {
-        background: $p-color-background-default;
+        background: $pds-theme-light-background-base;
       }
 
       &.background-surface {
-        background: $p-color-background-surface;
+        background: $pds-theme-light-background-surface;
       }
 
       &.background-shading {
-        background: $p-color-background-shading;
+        background: $pds-theme-light-background-shading;
       }
 
       &.neutral-contrast-high {
-        background: $p-color-neutral-contrast-high;
+        background: $pds-theme-light-contrast-high;
       }
 
       &.neutral-contrast-medium {
-        background: $p-color-neutral-contrast-medium;
+        background: $pds-theme-light-contrast-medium;
       }
 
       &.neutral-contrast-low {
-        background: $p-color-neutral-contrast-low;
+        background: $pds-theme-light-contrast-low;
       }
 
       &.notification-success {
-        background: $p-color-notification-success;
+        background: $pds-theme-light-notification-success;
       }
 
       &.notification-success-soft {
-        background: $p-color-notification-success-soft;
+        background: $pds-theme-light-notification-success-soft;
       }
 
       &.notification-warning {
-        background: $p-color-notification-warning;
+        background: $pds-theme-light-notification-warning;
       }
 
       &.notification-warning-soft {
-        background: $p-color-notification-warning-soft;
+        background: $pds-theme-light-notification-warning-soft;
       }
 
       &.notification-error {
-        background: $p-color-notification-error;
+        background: $pds-theme-light-notification-error;
       }
 
       &.notification-error-soft {
-        background: $p-color-notification-error-soft;
+        background: $pds-theme-light-notification-error-soft;
       }
 
       &.notification-neutral {
-        background: $p-color-notification-neutral;
+        background: $pds-theme-light-notification-neutral;
       }
 
       &.notification-neutral-soft {
-        background: $p-color-notification-neutral-soft;
+        background: $pds-theme-light-notification-neutral-soft;
       }
 
       &.state-hover {
-        background: $p-color-state-hover;
+        background: $pds-theme-light-state-hover;
       }
 
       &.state-active {
-        background: $p-color-state-active;
+        background: $pds-theme-light-state-active;
       }
 
       &.state-focus {
-        color: $p-color-default;
-        background: $p-color-state-focus;
+        color: $pds-theme-light-base;
+        background: $pds-theme-light-state-focus;
       }
 
       &.state-disabled {
-        background: $p-color-state-disabled;
+        background: $pds-theme-light-state-disabled;
       }
     }
 
     // Theme dark
     &.dark {
       &.brand {
-        background: $p-color-theme-dark-brand;
+        background: $pds-theme-dark-brand;
       }
 
       &.default {
-        background: $p-color-theme-dark-default;
+        background: $pds-theme-dark-base;
       }
 
       &.background-default {
-        background: $p-color-theme-dark-background-default;
+        background: $pds-theme-dark-background-base;
       }
 
       &.background-surface {
-        background: $p-color-theme-dark-background-surface;
+        background: $pds-theme-dark-background-surface;
       }
 
       &.background-shading {
-        background: $p-color-theme-dark-background-shading;
+        background: $pds-theme-dark-background-shading;
       }
 
       &.neutral-contrast-high {
-        background: $p-color-theme-dark-neutral-contrast-high;
+        background: $pds-theme-dark-contrast-high;
       }
 
       &.neutral-contrast-medium {
-        background: $p-color-theme-dark-neutral-contrast-medium;
+        background: $pds-theme-dark-contrast-medium;
       }
 
       &.neutral-contrast-low {
-        background: $p-color-theme-dark-neutral-contrast-low;
+        background: $pds-theme-dark-contrast-low;
       }
 
       &.notification-success {
-        background: $p-color-theme-dark-notification-success;
+        background: $pds-theme-dark-notification-success;
       }
 
       &.notification-success-soft {
-        background: $p-color-theme-dark-notification-success-soft;
+        background: $pds-theme-dark-notification-success-soft;
       }
 
       &.notification-warning {
-        background: $p-color-theme-dark-notification-warning;
+        background: $pds-theme-dark-notification-warning;
       }
 
       &.notification-warning-soft {
-        background: $p-color-theme-dark-notification-warning-soft;
+        background: $pds-theme-dark-notification-warning-soft;
       }
 
       &.notification-error {
-        background: $p-color-theme-dark-notification-error;
+        background: $pds-theme-dark-notification-error;
       }
 
       &.notification-error-soft {
-        background: $p-color-theme-dark-notification-error-soft;
+        background: $pds-theme-dark-notification-error-soft;
       }
 
       &.notification-neutral {
-        background: $p-color-theme-dark-notification-neutral;
+        background: $pds-theme-dark-notification-neutral;
       }
 
       &.notification-neutral-soft {
-        background: $p-color-theme-dark-notification-neutral-soft;
+        background: $pds-theme-dark-notification-neutral-soft;
       }
 
       &.state-hover {
-        background: $p-color-theme-dark-state-hover;
+        background: $pds-theme-dark-state-hover;
       }
 
       &.state-active {
-        background: $p-color-theme-dark-state-active;
+        background: $pds-theme-dark-state-active;
       }
 
       &.state-focus {
-        color: $p-color-theme-dark-default;
-        background: $p-color-theme-dark-state-focus;
+        color: $pds-theme-dark-base;
+        background: $pds-theme-dark-state-focus;
       }
 
       &.state-disabled {
-        background: $p-color-theme-dark-state-disabled;
+        background: $pds-theme-dark-state-disabled;
       }
     }
 
     // External brand colors
     &.external-facebook {
-      background: $p-color-external-facebook;
+      background: $pds-color-external-facebook;
     }
 
     &.external-google {
-      background: $p-color-external-google;
+      background: $pds-color-external-google;
     }
 
     &.external-instagram {
-      background: $p-color-external-instagram;
+      background: $pds-color-external-instagram;
     }
 
     &.external-kakaotalk {
-      background: $p-color-external-kakaotalk;
+      background: $pds-color-external-kakaotalk;
     }
 
     &.external-linkedin {
-      background: $p-color-external-linkedin;
+      background: $pds-color-external-linkedin;
     }
 
     &.external-naver {
-      background: $p-color-external-naver;
+      background: $pds-color-external-naver;
     }
 
     &.external-pinterest {
-      background: $p-color-external-pinterest;
+      background: $pds-color-external-pinterest;
     }
 
     &.external-reddit {
-      background: $p-color-external-reddit;
+      background: $pds-color-external-reddit;
     }
 
     &.external-tiktok {
-      background: $p-color-external-tiktok;
+      background: $pds-color-external-tiktok;
     }
 
     &.external-twitter {
-      background: $p-color-external-twitter;
+      background: $pds-color-external-twitter;
     }
 
     &.external-wechat {
-      background: $p-color-external-wechat;
+      background: $pds-color-external-wechat;
     }
 
     &.external-whatsapp {
-      background: $p-color-external-whatsapp;
+      background: $pds-color-external-whatsapp;
     }
 
     &.external-xing {
-      background: $p-color-external-xing;
+      background: $pds-color-external-xing;
     }
 
     &.external-youtube {
-      background: $p-color-external-youtube;
+      background: $pds-color-external-youtube;
     }
   }
 </style>

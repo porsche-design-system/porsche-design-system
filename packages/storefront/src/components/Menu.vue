@@ -27,21 +27,21 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
+  @import '~@porsche-design-system/components-js/utilities/scss';
 
   .menu {
-    width: p-px-to-rem(40px);
-    height: p-px-to-rem(40px);
-    padding: $p-spacing-8;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: $pds-spacing-small;
     cursor: pointer;
 
     &:hover {
       .stripe {
-        background: darken($p-color-state-hover, 10%);
+        background: darken($pds-theme-light-state-hover, 10%);
 
         &::before,
         &::after {
-          background: darken($p-color-state-hover, 10%);
+          background: darken($pds-theme-light-state-hover, 10%);
         }
       }
     }
@@ -70,10 +70,10 @@
   .stripe {
     position: absolute;
     top: calc(50% - 1px);
-    width: p-px-to-rem(24px);
+    width: 1.5rem;
     height: 2px;
     display: block;
-    background: $p-color-brand;
+    background: $pds-theme-light-brand;
     transition: transform 75ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
 
     &::before,
@@ -83,19 +83,19 @@
       height: 2px;
       display: block;
       transition: transform 0.15s ease;
-      background: $p-color-brand;
+      background: $pds-theme-light-brand;
     }
 
     &::before {
-      top: p-px-to-rem(-11px);
-      width: p-px-to-rem(24px);
+      top: -0.6875rem;
+      width: 1.5rem;
       transition: top 75ms ease 0.12s, opacity 75ms ease;
     }
 
     &::after {
-      bottom: p-px-to-rem(-11px);
-      width: p-px-to-rem(24px);
-      background: $p-color-brand;
+      bottom: -0.6875rem;
+      width: 1.5rem;
+      background: $pds-theme-light-brand;
       transition: bottom 75ms ease 0.12s, transform 75ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
     }
   }

@@ -106,9 +106,7 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
-
   p-divider {
-    margin-bottom: $p-spacing-64;
+    margin-bottom: 4rem;
   }
 </style>
