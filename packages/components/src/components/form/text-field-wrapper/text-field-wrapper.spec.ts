@@ -59,7 +59,7 @@ describe('componentWillLoad', () => {
     expect(component['hasCounter']).toBe(true);
   });
 
-  it('should not call hasUnitAndIsTypeTextOrNumber() when counter and unit is set', () => {
+  it('should not call hasUnitAndIsTypeTextOrNumber() when counter and unit is set and counter is visible', () => {
     const input = document.createElement('input');
     input.type = 'text';
     input.maxLength = 50;
@@ -75,6 +75,26 @@ describe('componentWillLoad', () => {
 
     expect(spy).not.toBeCalled();
     expect(component['hasUnit']).toBe(false);
+  });
+
+  it('should call hasUnitAndIsTypeTextOrNumber() when counter and unit is set and counter is not visible', () => {
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.maxLength = 50;
+    jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined').mockImplementation(() => input);
+
+    const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber');
+    const component = new TextFieldWrapper();
+    const unit = 'EUR';
+    component.unit = unit;
+    component.showCharacterCount = false;
+    component['input'] = input;
+
+    expect(component['hasUnit']).toBe(undefined);
+    component.componentWillLoad();
+
+    expect(spy).toHaveBeenCalledWith(input, unit);
+    expect(component['hasUnit']).toBe(true);
   });
 
   it.each<string>(['text', 'number'])(
@@ -117,7 +137,26 @@ describe('componentWillRender', () => {
 });
 
 describe('componentDidLoad', () => {
-  it('should call addInputEventListener() if hasCounter is true', () => {
+  it('should call addInputEventListener() if hasCounter is true and isCounterVisible is false', () => {
+    const addInputEventListenerSpy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListener');
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    const ariaElement = document.createElement('span');
+
+    const component = new TextFieldWrapper();
+    component['input'] = input;
+    component['ariaElement'] = ariaElement;
+
+    component.componentDidLoad();
+    expect(addInputEventListenerSpy).not.toBeCalled();
+
+    component['hasCounter'] = true;
+
+    component.componentDidLoad();
+    expect(addInputEventListenerSpy).toHaveBeenCalledWith(input, ariaElement, undefined, component['setInputStyles']);
+  });
+  it('should call addInputEventListener() if hasCounter is true and isCounterVisible is true', () => {
     const addInputEventListenerSpy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListener');
 
     const input = document.createElement('input');
@@ -134,8 +173,9 @@ describe('componentDidLoad', () => {
     expect(addInputEventListenerSpy).not.toBeCalled();
 
     component['hasCounter'] = true;
+    component['isCounterVisible'] = true;
     component.componentDidLoad();
-    expect(addInputEventListenerSpy).toHaveBeenCalledWith(input, counter, ariaElement, component['setInputStyles']);
+    expect(addInputEventListenerSpy).toHaveBeenCalledWith(input, ariaElement, counter, component['setInputStyles']);
   });
 });
 
