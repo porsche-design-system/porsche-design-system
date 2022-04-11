@@ -4,9 +4,8 @@ describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     ['default', true],
     ['default', false],
-    ['neutral-contrast-high', true],
     ['background-surface', true],
-  ])('should return correct css for color: %s and label: %s', (...args) => {
+  ])('should return correct css for color: %s and hasLabel: %s', (...args) => {
     expect(getComponentCss(...args)).toMatchSnapshot();
   });
 });
