@@ -2,12 +2,12 @@
 
 exports[`should contain correct values for breakpoint 1`] = `
 Object {
-  "l": 1300,
-  "m": 1000,
-  "s": 760,
-  "xl": 1760,
-  "xs": 480,
-  "xxl": 1920,
-  "xxs": 0,
+  "l": "1300px",
+  "m": "1000px",
+  "s": "760px",
+  "xl": "1760px",
+  "xs": "480px",
+  "xxl": "1920px",
+  "xxs": "0px",
 }
 `;

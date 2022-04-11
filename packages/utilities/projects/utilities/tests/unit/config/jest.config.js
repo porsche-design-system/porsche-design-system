@@ -4,4 +4,11 @@ module.exports = {
   verbose: true,
   rootDir: '../../../',
   testMatch: ['**/src/jss/**/*.spec.ts', '**/src/scss/**/*.spec.ts', '**/tests/unit/specs/**/*.spec.ts'],
+  globals: {
+    'ts-jest': {
+      diagnostics: {
+        warnOnly: true,
+      },
+    },
+  },
 };

@@ -1,5 +1,16 @@
 import type { Breakpoint } from './breakpoint';
-import { breakpoint } from './breakpoint';
+
+/* Auto Generated Start */
+const breakpoint: {[key in Breakpoint]: number} = {
+  "xxs": 0,
+  "xs": 480,
+  "s": 760,
+  "m": 1000,
+  "l": 1300,
+  "xl": 1760,
+  "xxl": 1920
+}
+/* Auto Generated End */
 
 type BKey<K extends Breakpoint> = Extract<Breakpoint, K>;
 

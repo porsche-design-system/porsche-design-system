@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_breakpoint.scss 1`] = `
-"$pds-breakpoint-xxs: 0;
-$pds-breakpoint-xs: 480;
-$pds-breakpoint-s: 760;
-$pds-breakpoint-m: 1000;
-$pds-breakpoint-l: 1300;
-$pds-breakpoint-xl: 1760;
-$pds-breakpoint-xxl: 1920;
+"$pds-breakpoint-xxs: 0px;
+$pds-breakpoint-xs: 480px;
+$pds-breakpoint-s: 760px;
+$pds-breakpoint-m: 1000px;
+$pds-breakpoint-l: 1300px;
+$pds-breakpoint-xl: 1760px;
+$pds-breakpoint-xxl: 1920px;
 "
 `;
 
