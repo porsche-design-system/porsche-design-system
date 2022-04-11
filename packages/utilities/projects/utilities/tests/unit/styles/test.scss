@@ -1,0 +1,13 @@
+@import '../../../src/scss/index';
+
+.focus {
+  @include pds-focus($color: currentColor, $offset: 2px);
+}
+
+.heading {
+  @include pds-heading-medium;
+}
+
+.text {
+  @include pds-text-medium;
+}

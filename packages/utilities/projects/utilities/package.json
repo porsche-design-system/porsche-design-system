@@ -8,11 +8,10 @@
   "types": "dist/jss/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "build": "yarn clean:build && yarn build:generateScss && yarn build:bundle",
+    "build": "yarn clean:build && yarn build:bundle",
     "build:generateScss": "ts-node scripts/generateScss.ts",
     "start": "SKIP_PREFLIGHT_CHECK=true react-scripts start",
     "start-app": "yarn start",
-    "build": "yarn clean:build && yarn build:bundle",
     "build:bundle": "rollup -c rollup.config.js",
     "build:generateStylesToTest": "ts-node src/generateStylesToTest.ts",
     "test": "yarn test:unit",
@@ -20,18 +19,18 @@
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist && rm -rf ./src/jss/typography/lib",
-    "test:jsdom-polyfill": "jest --colors -c tests/jsdom-polyfill/config/jest.config.js"
+    "test:jsdom-polyfill": "jest --colors -c tests/jsdom-polyfill/config/jest.config.js",
+    "build:css": "sass tests/unit/styles/test.scss tests/unit/styles/test.css --no-source-map"
   },
   "dependencies": {},
   "devDependencies": {
+    "jest-styled-components": "^7.0.8",
     "@rollup/plugin-typescript": "^8.3.1",
-    "@types/styled-components": "^5.1.24",
-    "jss": "^10.9.0",
-    "styled-components": "^5.3.5",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
-    "babel-jest": "^27.5.1",
     "@types/madge": "^5.0.0",
+    "@types/styled-components": "^5.1.24",
+    "babel-jest": "^27.5.1",
     "change-case": "^4.1.2",
     "jest": "^27.5.1",
     "jss": "^10.9.0",
@@ -45,10 +44,10 @@
     "react-scripts": "^5.0.0",
     "rollup": "^2.70.1",
     "rollup-plugin-generate-package-json": "^3.2.0",
-    "ts-jest": "^27.1.4",
-    "ts-node": "^10.7.0",
     "sass": "^1.49.11",
+    "styled-components": "^5.3.5",
     "ts-jest": "^27.1.3",
+    "ts-node": "^10.7.0",
     "typescript": "~4.6.2"
   }
 }
