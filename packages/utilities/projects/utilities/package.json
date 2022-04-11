@@ -8,9 +8,10 @@
   "types": "dist/jss/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "build": "yarn clean:build && yarn build:generateJsBreakpoints && yarn build:generateScss && yarn build:bundle",
+    "build": "yarn clean:build && yarn build:generateJsBreakpoints && yarn build:generateScss && yarn build:copyScssFilesToDistTarget && yarn build:bundle",
     "build:generateJsBreakpoints": "ts-node scripts/generateJsBreakpoints.ts",
     "build:generateScss": "ts-node scripts/generateScss.ts",
+    "build:copyScssFilesToDistTarget": "ts-node scripts/copyScssFilesToDistTarget.ts",
     "build:bundle": "rollup -c rollup.config.js",
     "test": "yarn test:unit",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
