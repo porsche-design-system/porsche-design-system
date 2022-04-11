@@ -12,6 +12,7 @@ Object {
   "font/font-variant.js": Array [],
   "font/font-weight.js": Array [],
   "index.js": Array [
+    "breakpoint.js",
     "colorExternal.js",
     "focus.js",
     "font/font-behavior.js",
@@ -38,9 +39,7 @@ Object {
     "typography/text/textXLarge.js",
     "typography/text/textXSmall.js",
   ],
-  "mediaQuery.js": Array [
-    "breakpoint.js",
-  ],
+  "mediaQuery.js": Array [],
   "spacing.js": Array [],
   "theme/theme-dark-electric.js": Array [
     "theme/theme-dark.js",
