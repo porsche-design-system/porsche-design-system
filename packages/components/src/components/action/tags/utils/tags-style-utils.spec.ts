@@ -1,7 +1,7 @@
 import { getThemedBackgroundColor } from './tags-style-utils';
 import { getThemedColors } from '../../../../styles';
-import { TagStatusColor } from '../tag-status/tag-status-utils';
-import { Theme } from '../../../../types';
+import type { TagStatusColor } from '../tag-status/tag-status-utils';
+import type { Theme } from '../../../../types';
 
 describe('getThemedBackgroundColor()', () => {
   it.each<[TagStatusColor, Theme]>([
