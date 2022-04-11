@@ -76,8 +76,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 60109,
-    "gzipSize": 20409
+    "size": 60118,
+    "gzipSize": 20412
   },
   {
     "chunkShortName": "marque",
@@ -136,8 +136,8 @@
   },
   {
     "chunkShortName": "tag-dismissible",
-    "size": 5138,
-    "gzipSize": 1964
+    "size": 6057,
+    "gzipSize": 2327
   },
   {
     "chunkShortName": "text",
