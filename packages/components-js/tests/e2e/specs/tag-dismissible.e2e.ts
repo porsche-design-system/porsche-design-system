@@ -22,7 +22,7 @@ type InitOpts = {
 };
 
 const initTagDismissible = async (props?: InitOpts) => {
-  const { withLabel } = props || {};
+  const { withLabel = false } = props || {};
   const attributes = withLabel ? ' label="Some label"' : '';
 
   const content = `<p-tag-dismissible${attributes}>Some Tag</p-tag-dismissible>`;
