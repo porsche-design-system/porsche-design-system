@@ -12,6 +12,8 @@ import { getThemedBackgroundColor } from '../utils/tags-style-utils';
 
 export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): string => {
   const themedColors = getThemedColors('light');
+  const { baseColorDarken, contrastLowColor } = themedColors;
+
   const isNeutralContrastHigh = color === 'neutral-contrast-high';
   const { baseColor, contrastMediumColor } = isNeutralContrastHigh ? getThemedColors('dark') : themedColors;
 
@@ -35,7 +37,7 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
         ...getFocusJssStyle({ color: themedColors.baseColor }),
         transition: getTransition('background-color'),
         '&:hover': {
-          backgroundColor: isNeutralContrastHigh ? themedColors.baseColorDarken : themedColors.contrastLowColor,
+          background: isNeutralContrastHigh ? baseColorDarken : contrastLowColor,
         },
       },
       '::slotted': addImportantToEachRule({
