@@ -48,10 +48,10 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 .root {
   position: relative;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   font-weight: 400;
   margin: 0 -4px;
   font-size: 1.5rem;
@@ -182,10 +182,10 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 .root {
   position: relative;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   font-weight: 400;
   margin: 0 -4px;
   font-size: 1.5rem;
@@ -316,10 +316,10 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 .root {
   position: relative;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   font-weight: 400;
   margin: 0 -4px;
   font-size: 1.5rem;
@@ -450,10 +450,10 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 .root {
   position: relative;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   font-weight: 400;
   margin: 0 -4px;
   font-size: 1rem;
@@ -584,10 +584,10 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 .root {
   position: relative;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   font-weight: 400;
   margin: 0 -4px;
   font-size: 1rem;
@@ -718,10 +718,10 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 .root {
   position: relative;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   font-weight: 400;
   margin: 0 -4px;
   font-size: 1rem;
@@ -852,10 +852,10 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 .root {
   position: relative;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   font-weight: 400;
   margin: 0 -4px;
   font-size: 1rem;
@@ -986,10 +986,10 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 .root {
   position: relative;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   font-weight: 600;
   margin: 0 -4px;
   font-size: 1rem;
@@ -1120,10 +1120,10 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 .root {
   position: relative;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   font-weight: 400;
   margin: 0 -4px;
   font-size: 1rem;
