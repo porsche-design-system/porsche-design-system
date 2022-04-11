@@ -35,6 +35,12 @@ clickable and no other content outside the button or link is allowed.
   </select>
 </Playground>
 
+### <A11yIcon></A11yIcon> Accessibility hints
+
+Make sure to provide a **descriptive**, self explaining **aria-label** on the slotted button to describe the `onClick()` action.
+
+<Playground :markup="buttonAccessibility"></Playground>
+
 ## With slotted link
 
 It is possible to add `<a>` tag into the `p-tag-status` component. If you do this, the entire component becomes
@@ -48,6 +54,12 @@ clickable and no other content outside the button or link is allowed.
   </select>
 </Playground>
 
+### <A11yIcon></A11yIcon> Accessibility hints
+
+Make sure to provide a **descriptive**, self explaining **aria-label** on the slotted anchor to describe where it leads to.
+
+<Playground :markup="linkAccessibility"></Playground>
+
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component'; 
@@ -57,7 +69,6 @@ import { TAG_STATUS_COLORS } from './tag-status-utils';
 export default class Code extends Vue {
   config = { themeable: true, spacing: 'inline' };
   backgroundColor = 'default';
-
 
   get colorMarkup(){
     return TAG_STATUS_COLORS.map((color) => `<p-tag-status color="${color}">Color ${color}</p-tag-status>`).join('\n');
@@ -77,5 +88,13 @@ export default class Code extends Vue {
   <a href="https://www.porsche.com">Color ${color}</a>
 </p-tag-status>`).join('\n');
   };
+
+  buttonAccessibility = `<p-tag-status icon="car">
+  <button aria-label="More information about used cars">Used cars</button>
+</p-tag-status>`;
+
+  linkAccessibility = `<p-tag-status icon="car">
+  <a href="https://www.porsche.com" aria-label="More information about used cars" target="_blank">Used cars</a>
+</p-tag-status>`;
 }
 </script>
