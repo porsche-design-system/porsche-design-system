@@ -1,30 +1,33 @@
+import * as fs from 'fs';
+import * as path from 'path';
+import * as sass from 'sass';
+import * as prettier from 'prettier';
+import styled, { StyleSheetManager } from 'styled-components';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import '@testing-library/jest-dom';
-import * as fs from 'fs';
-import * as path from 'path';
-import * as beautify from 'js-beautify';
-import styled, { StyleSheetManager } from 'styled-components';
-import { getFocus, headingMedium, textMedium } from '../../../src/jss';
+import { getFocus, headingMedium } from '../../../src/jss';
 import { createUseStyles, JssProvider } from 'react-jss';
-// import 'jest-styled-components';
 
-const cssFilePath = path.resolve('./tests/unit/styles/test.css');
-const cssStyles = fs.readFileSync(cssFilePath, 'utf-8');
+const focusMixin: string = fs.readFileSync(path.resolve('./src/scss/_focus.scss'), 'utf8');
+const headingMixin: string = fs.readFileSync(path.resolve('./src/scss/lib/_heading.scss'), 'utf8');
 
-const SampleStyles = styled.div({ focus: getFocus() as any, heading: headingMedium, text: textMedium });
-const useStyles = createUseStyles({ focus: getFocus(), heading: headingMedium, text: textMedium });
+const cssStyles = sass.compileString(
+  `${focusMixin} ${headingMixin} .focus { @include pds-focus($color: currentColor, $offset: 2px);};.heading {@include pds-heading-medium;}`
+);
+
+const SampleStyles: string = styled.div({ focus: getFocus() as any, heading: headingMedium });
+const useStyles = createUseStyles({ focus: getFocus(), heading: headingMedium });
 let jssStyles: string;
+const STYLED_COMPONENTS_AUTO_GENERATED_CLASS_NAME: string = 'cgVBvh';
 
-const beautified = (style: string): string => {
-  style = beautify.css(style, {
-    indent_size: 2,
-  });
+const prettified = (style: string): string => {
+  const classRegExp = new RegExp(`(.${STYLED_COMPONENTS_AUTO_GENERATED_CLASS_NAME} )`, 'g');
+  style = prettier.format(style, { parser: 'scss' });
   return style
-    .replace(/\.(.*?){/g, 'div {') // neutralises random class names
-    .replace(/'/g, '"')
-    .replace(/(media)\s/g, '$1') // remove space after colon
-    .replace(/:\s(?=.*)/g, ':'); // remove space after media
+    .replace(classRegExp, '.')
+    .replace(/(-[0-9]){3}/g, '')
+    .replace(/\n+/g, '');
 };
 
 const StyledComponentsSample = (): JSX.Element => (
@@ -39,9 +42,6 @@ const JssSample = (): JSX.Element => {
     <JssProvider>
       <div className={jssStyles.focus} role="jss-focus">
         jss_focus
-      </div>
-      <div className={jssStyles.text} role="jss-text">
-        jss_text_medium
       </div>
       <div className={jssStyles.heading} role="jss-heading">
         jss_heading_medium
@@ -59,10 +59,10 @@ describe('JSS, styled-components and SCSS', () => {
   it('should compile styled-components correctly to jss styles', () => {
     render(<StyledComponentsSample />);
     const styledComponentsStyles = document.querySelector('style[data-styled]').innerHTML;
-    expect(beautified(jssStyles)).toBe(beautified(styledComponentsStyles));
+    expect(prettified(jssStyles)).toBe(prettified(styledComponentsStyles));
   });
 
   it('should compile scss styles correctly to jss styles', () => {
-    expect(beautified(jssStyles)).toBe(beautified(cssStyles));
+    expect(prettified(jssStyles)).toBe(prettified(cssStyles.css));
   });
 });

@@ -13,18 +13,16 @@
     "start": "SKIP_PREFLIGHT_CHECK=true react-scripts start",
     "start-app": "yarn start",
     "build:bundle": "rollup -c rollup.config.js",
-    "build:generateStylesToTest": "ts-node src/generateStylesToTest.ts",
     "test": "yarn test:unit",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
+    "test:styleComparison": "yarn build:generateScss && yarn test:unit style-comparison",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:build": "rm -rf ./dist && rm -rf ./src/jss/typography/lib",
-    "test:jsdom-polyfill": "jest --colors -c tests/jsdom-polyfill/config/jest.config.js",
-    "build:css": "sass tests/unit/styles/test.scss tests/unit/styles/test.css --no-source-map"
+    "clean:build": "rm -rf ./dist && rm -rf ./src/jss/typography/lib"
   },
   "dependencies": {},
   "devDependencies": {
-    "jest-styled-components": "^7.0.8",
+    "prettier": "^2.6.2",
     "@rollup/plugin-typescript": "^8.3.1",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
