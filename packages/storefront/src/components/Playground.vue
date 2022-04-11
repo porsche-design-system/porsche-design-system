@@ -158,32 +158,32 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
+  @import '~@porsche-design-system/components-js/utilities/scss';
   @import '../styles/internal.variables';
 
   .example {
-    padding: $p-spacing-32;
+    padding: $pds-spacing-large;
     overflow-x: auto;
     border: 1px solid transparent;
 
     // Theme
     &--light {
-      border-color: $p-color-neutral-contrast-low;
-      background-color: $p-color-background-default;
+      border-color: $pds-theme-light-contrast-low;
+      background-color: $pds-theme-light-background-base;
 
       &.example--surface {
-        border-color: $p-color-background-surface;
-        background-color: $p-color-background-surface;
+        border-color: $pds-theme-light-background-surface;
+        background-color: $pds-theme-light-background-surface;
       }
     }
 
     &--dark {
-      border-color: $p-color-theme-dark-background-default;
-      background-color: $p-color-theme-dark-background-default;
+      border-color: $pds-theme-dark-background-base;
+      background-color: $pds-theme-dark-background-base;
 
       &.example--surface {
-        border-color: $p-color-theme-dark-background-surface;
-        background-color: $p-color-theme-dark-background-surface;
+        border-color: $pds-theme-dark-background-surface;
+        background-color: $pds-theme-dark-background-surface;
       }
     }
 
@@ -194,7 +194,7 @@
     // Child Layout "height"
     &--height-fixed .demo {
       ::v-deep > * {
-        height: p-px-to-rem(180px);
+        height: 11.25rem;
       }
     }
 
@@ -204,18 +204,18 @@
       &::before {
         content: '';
         display: block;
-        margin-top: -$p-spacing-16;
+        margin-top: -$pds-spacing-medium;
       }
 
       ::v-deep > * {
-        margin-top: $p-spacing-16;
+        margin-top: $pds-spacing-medium;
       }
     }
 
     &--spacing-inline .demo {
       ::v-deep > * {
         &:not(:last-child) {
-          margin-right: $p-spacing-16;
+          margin-right: $pds-spacing-medium;
         }
       }
     }
@@ -224,24 +224,24 @@
       &::before {
         content: '';
         display: block;
-        margin-top: -$p-spacing-8;
+        margin-top: -$pds-spacing-small;
       }
 
       ::v-deep > * {
-        margin-top: $p-spacing-8;
+        margin-top: $pds-spacing-small;
       }
     }
 
     .configurator ~ .demo {
-      margin-top: $p-spacing-32;
+      margin-top: $pds-spacing-large;
     }
 
     .demo ~ .code-block {
-      margin-top: $p-spacing-32;
+      margin-top: $pds-spacing-large;
     }
 
     .code-block ~ form {
-      margin-top: $p-spacing-16;
+      margin-top: $pds-spacing-medium;
     }
 
     .code-block {
