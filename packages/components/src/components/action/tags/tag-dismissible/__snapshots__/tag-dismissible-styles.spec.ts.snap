@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for color: background-surface, isFocusable: true and theme: %s 1`] = `
+exports[`getComponentCss() should return correct css for color: background-surface and label: true 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -34,7 +34,7 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 button:hover {
-  background-color: #e3e4e5;
+  background: #e3e4e5;
 }
 ::slotted(strong), ::slotted(b) {
   font-weight: 700 !important;
@@ -57,7 +57,7 @@ button:hover {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: default, isFocusable: false and theme: %s 1`] = `
+exports[`getComponentCss() should return correct css for color: default and label: false 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -91,7 +91,7 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 button:hover {
-  background-color: #e3e4e5;
+  background: #e3e4e5;
 }
 ::slotted(strong), ::slotted(b) {
   font-weight: 700 !important;
@@ -107,7 +107,7 @@ button:hover {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: default, isFocusable: true and theme: %s 1`] = `
+exports[`getComponentCss() should return correct css for color: default and label: true 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -141,7 +141,7 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 button:hover {
-  background-color: #e3e4e5;
+  background: #e3e4e5;
 }
 ::slotted(strong), ::slotted(b) {
   font-weight: 700 !important;
@@ -164,7 +164,7 @@ button:hover {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: neutral-contrast-high, isFocusable: true and theme: %s 1`] = `
+exports[`getComponentCss() should return correct css for color: neutral-contrast-high and label: true 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -198,7 +198,7 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 button:hover {
-  background-color: #000000;
+  background: #000000;
 }
 ::slotted(strong), ::slotted(b) {
   font-weight: 700 !important;
