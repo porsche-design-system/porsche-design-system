@@ -17,7 +17,7 @@ type InitOpts = {
 };
 
 const initTagStatus = async (props?: InitOpts) => {
-  const { withIcon } = props || {};
+  const { withIcon = false } = props || {};
   const attributes = withIcon ? ' icon="car"' : '';
 
   const content = `<p-tag-status${attributes}>Some Tag</p-tag-status>`;
