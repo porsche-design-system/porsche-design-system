@@ -6,6 +6,15 @@ Object {
     Object {
       "children": Array [
         Object {
+          "name": "Remove:",
+          "role": "StaticText",
+        },
+      ],
+      "role": "none",
+    },
+    Object {
+      "children": Array [
+        Object {
           "name": "Some label",
           "role": "StaticText",
         },
@@ -40,7 +49,7 @@ Object {
       "role": "none",
     },
   ],
-  "name": "Some label Some Tag",
+  "name": "Remove: Some label Some Tag",
   "role": "button",
 }
 `;
@@ -48,6 +57,15 @@ Object {
 exports[`accessibility should expose correct initial accessibility tree 1`] = `
 Object {
   "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "name": "Remove:",
+          "role": "StaticText",
+        },
+      ],
+      "role": "none",
+    },
     Object {
       "children": Array [
         Object {
@@ -76,7 +94,7 @@ Object {
       "role": "none",
     },
   ],
-  "name": "Some Tag",
+  "name": "Remove: Some Tag",
   "role": "button",
 }
 `;
