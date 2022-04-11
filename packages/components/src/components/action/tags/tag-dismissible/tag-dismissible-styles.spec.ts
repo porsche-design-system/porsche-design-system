@@ -6,7 +6,7 @@ describe('getComponentCss()', () => {
     ['default', false],
     ['neutral-contrast-high', true],
     ['background-surface', true],
-  ])('should return correct css for color: %s, isFocusable: %s and theme: %s', (...args) => {
+  ])('should return correct css for color: %s and label: %s', (...args) => {
     expect(getComponentCss(...args)).toMatchSnapshot();
   });
 });
