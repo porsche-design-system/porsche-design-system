@@ -23,21 +23,18 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-tag-dismissible>Default</p-tag-dismissible>
       <p-tag-dismissible [color]="'default'">Color default</p-tag-dismissible>
       <p-tag-dismissible [color]="'background-surface'">Color background-surface</p-tag-dismissible>
-      <p-tag-dismissible [color]="'neutral-contrast-high'">Color neutral-contrast-high</p-tag-dismissible>
     </div>
 
     <div class="playground light surface" title="should show different background colors on light surface background">
       <p-tag-dismissible>Default</p-tag-dismissible>
       <p-tag-dismissible [color]="'default'">Color default</p-tag-dismissible>
       <p-tag-dismissible [color]="'background-surface'">Color background-surface</p-tag-dismissible>
-      <p-tag-dismissible [color]="'neutral-contrast-high'">Color neutral-contrast-high</p-tag-dismissible>
     </div>
 
     <div class="playground light" title="should show different background colors and label on light background">
       <p-tag-dismissible [label]="'Some label'">Default</p-tag-dismissible>
       <p-tag-dismissible [label]="'Some label'" [color]="'default'">Color default</p-tag-dismissible>
       <p-tag-dismissible [label]="'Some label'" [color]="'background-surface'">Color background-surface</p-tag-dismissible>
-      <p-tag-dismissible [label]="'Some label'" [color]="'neutral-contrast-high'">Color neutral-contrast-high</p-tag-dismissible>
     </div>
 
     <div
@@ -47,7 +44,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-tag-dismissible [label]="'Some label'">Default</p-tag-dismissible>
       <p-tag-dismissible [label]="'Some label'" [color]="'default'">Color default</p-tag-dismissible>
       <p-tag-dismissible [label]="'Some label'" [color]="'background-surface'">Color background-surface</p-tag-dismissible>
-      <p-tag-dismissible [label]="'Some label'" [color]="'neutral-contrast-high'">Color neutral-contrast-high</p-tag-dismissible>
     </div>
 
     <div class="playground light" title="should apply custom styles for dedicated slotted content on light background">
