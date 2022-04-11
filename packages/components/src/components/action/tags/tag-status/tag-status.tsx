@@ -1,8 +1,14 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import type { TagStatusColor } from './tag-status-utils';
-import { attachComponentCss, getDirectChildHTMLElement, getPrefixedTagNames } from '../../../../utils';
+import {
+  attachComponentCss,
+  getDirectChildHTMLElement,
+  getPrefixedTagNames,
+  throwIfValueIsInvalid,
+} from '../../../../utils';
 import { getComponentCss } from './tag-status-styles';
 import type { IconName, Theme } from '../../../../types';
+import { TAG_STATUS_COLORS } from './tag-status-utils';
 
 @Component({
   tag: 'p-tag-status',
@@ -24,6 +30,7 @@ export class TagStatus {
   @Prop() public iconSource?: string;
 
   public componentWillRender(): void {
+    throwIfValueIsInvalid(this.color, TAG_STATUS_COLORS, 'color');
     attachComponentCss(
       this.host,
       getComponentCss,
