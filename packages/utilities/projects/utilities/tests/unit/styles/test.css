@@ -1,0 +1,53 @@
+.focus {
+  outline: transparent solid 1px;
+  outline-offset: 2px;
+}
+.focus::-moz-focus-inner {
+  border: 0;
+}
+.focus:focus {
+  outline-color: currentColor;
+}
+.focus:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+
+.heading {
+  font: normal normal 600 1.25rem/1.4 "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+}
+@media (min-width: 760px) and (max-width: 999px) {
+  .heading {
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+}
+@media (min-width: 1000px) and (max-width: 1299px) {
+  .heading {
+    font-size: 1.75rem;
+    line-height: 1.4285714286;
+  }
+}
+@media (min-width: 1300px) and (max-width: 1759px) {
+  .heading {
+    font-size: 2rem;
+    line-height: 1.375;
+  }
+}
+@media (min-width: 1760px) {
+  .heading {
+    font-size: 2.25rem;
+    line-height: 1.3333333333;
+  }
+}
+
+.text {
+  font: normal normal 400 1.5rem/1.5 "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+}
