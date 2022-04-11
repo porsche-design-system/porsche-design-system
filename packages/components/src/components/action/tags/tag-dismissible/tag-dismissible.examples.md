@@ -4,7 +4,7 @@
 
 ## Tag Dismissible
 
-`p-tag-dismissible` is used in contexts where the user can actively remove tags. It is often seen in Filtering.  
+`p-tag-dismissible` is used in contexts where the user can actively remove tags. It is often seen in filtering.  
 
 It is a controlled component and behaves similar to a button. The functionality to dismiss the tag needs to be implemented by e.g. `onClick` listener.  
 
@@ -26,7 +26,7 @@ It is a controlled component and behaves similar to a button. The functionality 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component'; 
-import {TAG_DISMISSIBLE_COLOR} from "./tag-dismissible-utils"; 
+import { TAG_DISMISSIBLE_COLOR } from "./tag-dismissible-utils"; 
 
 @Component
 export default class Code extends Vue {
