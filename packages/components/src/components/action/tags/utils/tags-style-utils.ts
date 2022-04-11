@@ -1,5 +1,5 @@
-import { TagStatusColor } from '../tag-status/tag-status-utils';
-import { ThemedColors } from '../../../../styles';
+import type { TagStatusColor } from '../tag-status/tag-status-utils';
+import type { ThemedColors } from '../../../../styles';
 
 export const getThemedBackgroundColor = (color: TagStatusColor, themedColors: ThemedColors): string => {
   const colorMap: { [key in TagStatusColor]: string } = {
