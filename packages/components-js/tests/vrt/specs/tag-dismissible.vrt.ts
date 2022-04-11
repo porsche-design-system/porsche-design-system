@@ -24,11 +24,9 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       </style>`;
 
       const getElementsMarkup: GetMarkup = () => `
-      <p-tag-dismissible>Some Text</p-tag-dismissible>
-      <p-tag-dismissible label="Some Label" color="default">Some Text</p-tag-dismissible>
-      <p-tag-dismissible label="Some Label" color="background-surface">Some Text</p-tag-dismissible>
-      <p-tag-dismissible label="Some Label" color="neutral-contrast-high">Some Text</p-tag-dismissible>
-      `;
+        <p-tag-dismissible>Some Text</p-tag-dismissible>
+        <p-tag-dismissible label="Some Label" color="default">Some Text</p-tag-dismissible>
+        <p-tag-dismissible label="Some Label" color="background-surface">Some Text</p-tag-dismissible>`;
 
       await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
         injectIntoHead: head,
