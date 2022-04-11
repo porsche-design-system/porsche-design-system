@@ -6,7 +6,7 @@
 
 `p-tag-dismissible` is used in contexts where the user can actively remove tags. It is often seen in filtering.  
 
-It is a controlled component and behaves similar to a button. The functionality to dismiss the tag needs to be implemented by e.g. `onClick` listener.  
+It is a user controlled component and behaves similar to a button. The functionality to dismiss the tag needs to be implemented by e.g. `onClick` listener.  
 
 
 ## Color
