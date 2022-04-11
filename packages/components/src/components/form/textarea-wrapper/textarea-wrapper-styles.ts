@@ -18,6 +18,7 @@ export const getComponentCss = (
   isDisabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
+  isCounterVisible: boolean,
   hasCounter: boolean
 ): string => {
   const theme: Theme = 'light';
@@ -34,7 +35,9 @@ export const getComponentCss = (
         addImportantToEachRule(
           getBaseChildStyles('textarea', state, theme, {
             // 36 = 2 * 6 + 24 where 6 is the bottom distance and 24 the height of the text
-            padding: hasCounter ? [defaultPadding, defaultPadding, pxToRemWithUnit(36)].join(' ') : defaultPadding,
+            padding: isCounterVisible
+              ? [defaultPadding, defaultPadding, pxToRemWithUnit(36)].join(' ')
+              : defaultPadding,
             resize: 'vertical',
           })
         ),
@@ -51,7 +54,7 @@ export const getComponentCss = (
       hideLabel,
       state,
       theme,
-      hasCounter && {
+      isCounterVisible && {
         counter: {
           position: 'absolute',
           bottom: pxToRemWithUnit(6),

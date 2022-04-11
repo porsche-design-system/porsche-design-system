@@ -40,10 +40,14 @@ export class TextareaWrapper {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
+  /** Show or hide max character count. */
+  @Prop() public showCharacterCount?: boolean = true;
+
   private textarea: HTMLTextAreaElement;
   private counterElement: HTMLSpanElement;
   private ariaElement: HTMLSpanElement;
   private hasCounter: boolean;
+  private isCounterVisible: boolean;
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
@@ -54,16 +58,25 @@ export class TextareaWrapper {
     this.textarea = getHTMLElementAndThrowIfUndefined(this.host, 'textarea');
     this.observeAttributes(); // once initially
     this.hasCounter = hasCounter(this.textarea);
+    this.isCounterVisible = this.showCharacterCount && this.hasCounter;
   }
 
   public componentDidLoad(): void {
     if (this.hasCounter) {
-      addInputEventListener(this.textarea, this.counterElement, this.ariaElement);
+      addInputEventListener(this.textarea, this.ariaElement, this.counterElement);
     }
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.textarea.disabled, this.hideLabel, this.state, this.hasCounter);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.textarea.disabled,
+      this.hideLabel,
+      this.state,
+      this.isCounterVisible,
+      this.hasCounter
+    );
   }
 
   public componentDidRender(): void {
@@ -106,7 +119,7 @@ export class TextareaWrapper {
               {this.description || <slot name="description" />}
             </PrefixedTagNames.pText>
           )}
-          {this.hasCounter && (
+          {this.isCounterVisible && (
             <PrefixedTagNames.pText
               class="counter"
               {...labelProps}
