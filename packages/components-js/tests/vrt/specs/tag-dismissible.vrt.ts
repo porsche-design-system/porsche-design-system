@@ -5,7 +5,7 @@ import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getThemedBodyMarkup,
+  getBodyMarkup,
   setContentWithDesignSystem,
 } from '../helpers';
 
@@ -30,13 +30,9 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       <p-tag-dismissible label="Some Label" color="neutral-contrast-high">Some Text</p-tag-dismissible>
       `;
 
-      await setContentWithDesignSystem(
-        page,
-        getThemedBodyMarkup(getElementsMarkup, { themes: ['light'], withSurface: true }),
-        {
-          injectIntoHead: head,
-        }
-      );
+      await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+        injectIntoHead: head,
+      });
 
       await forceHoverState(page, '.hover p-tag-dismissible >>> button');
       await forceFocusState(page, '.focus p-tag-dismissible >>> button');
