@@ -2,6 +2,7 @@
 
 exports[`should have no regression for dependency tree 1`] = `
 Object {
+  "breakpoint.js": Array [],
   "colorExternal.js": Array [],
   "focus.js": Array [],
   "font/font-behavior.js": Array [],
@@ -11,6 +12,7 @@ Object {
   "font/font-variant.js": Array [],
   "font/font-weight.js": Array [],
   "index.js": Array [
+    "breakpoint.js",
     "colorExternal.js",
     "focus.js",
     "font/font-behavior.js",
