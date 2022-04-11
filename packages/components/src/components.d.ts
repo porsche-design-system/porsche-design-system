@@ -31,7 +31,7 @@ import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinne
 import { SwitchChangeEvent } from "./components/action/switch/switch";
 import { SortingChangeEvent, TableHeadCellSort } from "./components/content/table/table/table-utils";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
-import { TagDismissibleColor } from "./components/action/tags/tag-dismissible/tag-dismissible-utils";
+import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/action/tags/tag-dismissible/tag-dismissible-utils";
 import { TagStatusColor } from "./components/action/tags/tag-status/tag-status-utils";
 import { TextFieldWrapperUnitPosition } from "./components/form/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
@@ -854,6 +854,10 @@ export namespace Components {
         "label": string;
     }
     interface PTagDismissible {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<TagDismissibleAriaAttribute>;
         /**
           * Background color variations
          */
@@ -2199,6 +2203,10 @@ declare namespace LocalJSX {
         "label"?: string;
     }
     interface PTagDismissible {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<TagDismissibleAriaAttribute>;
         /**
           * Background color variations
          */
