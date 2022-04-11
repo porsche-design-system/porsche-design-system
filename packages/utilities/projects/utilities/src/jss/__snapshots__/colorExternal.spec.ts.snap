@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should contain correct values for color-external 1`] = `
+exports[`should contain correct values for colorExternal 1`] = `
 Object {
   "facebook": "#1877f2",
   "google": "#4285f4",
