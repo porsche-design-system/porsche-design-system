@@ -8,8 +8,8 @@
 
 ## Color
 
-<Playground :markup="colorMarkup" :config="{ ...config, colorScheme: backgroundColorScheme }">
-  <select v-model="backgroundColorScheme" aria-label="Select background color">
+<Playground :markup="colorMarkup" :config="{ ...config, colorScheme: backgroundColor }">
+  <select v-model="backgroundColor" aria-label="Select background color">
     <option disabled>Select background color</option>
     <option value="default">Default</option>
     <option value="surface">Surface</option>
@@ -27,8 +27,8 @@ The `p-tag-status` can be displayed with an icon. Choose an icon name from the i
 It is possible to add a `<button>` tag into the `p-tag-status` component. If you do this, the entire component becomes
 clickable and no other content outside the button or link is allowed.
 
-<Playground :markup="buttonMarkup" :config="{ ...config, colorScheme: backgroundColorScheme }">
-  <select v-model="backgroundColorScheme" aria-label="Select background color">
+<Playground :markup="buttonMarkup" :config="{ ...config, colorScheme: backgroundColor }">
+  <select v-model="backgroundColor" aria-label="Select background color">
     <option disabled>Select background color</option>
     <option value="default">Default</option>
     <option value="surface">Surface</option>
@@ -40,8 +40,8 @@ clickable and no other content outside the button or link is allowed.
 It is possible to add `<a>` tag into the `p-tag-status` component. If you do this, the entire component becomes
 clickable and no other content outside the button or link is allowed.
 
-<Playground :markup="linkMarkup" :config="{ ...config, colorScheme: backgroundColorScheme }">
-  <select v-model="backgroundColorScheme" aria-label="Select background color">
+<Playground :markup="linkMarkup" :config="{ ...config, colorScheme: backgroundColor }">
+  <select v-model="backgroundColor" aria-label="Select background color">
     <option disabled>Select background color</option>
     <option value="default">Default</option>
     <option value="surface">Surface</option>
@@ -56,7 +56,7 @@ import { TAG_STATUS_COLORS } from './tag-status-utils';
 @Component
 export default class Code extends Vue {
   config = { themeable: true, spacing: 'inline' };
-  backgroundColorScheme = 'default';
+  backgroundColor = 'default';
 
 
   get colorMarkup(){

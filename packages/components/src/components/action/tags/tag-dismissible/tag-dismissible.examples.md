@@ -11,8 +11,8 @@ It is a controlled component and behaves similar to a button. The functionality 
 
 ## Color
 
-<Playground :markup="colorMarkup" :config="{ ...config, colorScheme: backgroundColorScheme }">
-  <select v-model="backgroundColorScheme" aria-label="Select background color">
+<Playground :markup="colorMarkup" :config="{ ...config, colorScheme: backgroundColor }">
+  <select v-model="backgroundColor" aria-label="Select background color">
     <option disabled>Select background color</option>
     <option value="default">Default</option>
     <option value="surface">Surface</option>
@@ -31,7 +31,7 @@ import { TAG_DISMISSIBLE_COLOR } from "./tag-dismissible-utils";
 @Component
 export default class Code extends Vue {
   config = { spacing: 'inline' };
-  backgroundColorScheme = 'default';
+  backgroundColor = 'default';
 
 
   get colorMarkup(){
