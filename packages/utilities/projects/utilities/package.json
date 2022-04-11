@@ -10,8 +10,6 @@
   "scripts": {
     "build": "yarn clean:build && yarn build:bundle",
     "build:generateScss": "ts-node scripts/generateScss.ts",
-    "start": "SKIP_PREFLIGHT_CHECK=true react-scripts start",
-    "start-app": "yarn start",
     "build:bundle": "rollup -c rollup.config.js",
     "test": "yarn test:unit",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
