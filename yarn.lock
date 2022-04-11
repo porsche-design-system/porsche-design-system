@@ -2131,26 +2131,6 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/browser-notification/-/@porsche-design-system/browser-notification-4.1.1.tgz#f553e114b2fa4903dfe38ea4add682d13a47ec72"
   integrity sha1-9VPhFLL6SQPf446krdaC0TpH7HI=
 
-"@porsche-design-system/components-angular@2.9.3-rc.0-skeletons":
-  version "2.9.3-rc.0-skeletons"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/components-angular/-/@porsche-design-system/components-angular-2.9.3-rc.0-skeletons.tgz#6c68742190886a0958d11ff9f965f755b8a80788"
-  integrity sha512-NVO8LxYcivbou1JUlXLJQ0W4GJk9J/DQ3beU1eisE3SU7peqrA+kBnDzwowKlyBTe8utK+mnlqigbFXGLfOPew==
-  dependencies:
-    "@porsche-design-system/components-js" "2.9.3-rc.0-skeletons"
-    tslib "^2.0.1"
-
-"@porsche-design-system/components-js@2.9.2-skeletons":
-  version "2.9.2-skeletons"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/components-js/-/@porsche-design-system/components-js-2.9.2-skeletons.tgz#9f6bfcda7cab726a9791db15d2017d4b3008ad89"
-  integrity sha512-b1ODEnoNseCa0e7eqo8ULlyiHmxL45HM8cssRVr6u+7cKsTcEamu0TwaTu8hKm8G2hVpjRQBug4+Ut9DgEHfrA==
-
-"@porsche-design-system/components-react@2.9.3-rc.0-skeletons":
-  version "2.9.3-rc.0-skeletons"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/components-react/-/@porsche-design-system/components-react-2.9.3-rc.0-skeletons.tgz#87e3c6172e94f44f1c3956b18f98d523f93ee5b2"
-  integrity sha512-UpXsqPbQ/RsOznlw9SROfsSVleybuZZ+iwLmUMb9VbAQI+6eITHs8OfBni8jOtxHhj8gql4OxAjOx7idd/lGIw==
-  dependencies:
-    "@porsche-design-system/components-js" "2.9.3-rc.0-skeletons"
-
 "@porsche-design-system/prettier-config@^1.0.0":
   version "1.0.0"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/prettier-config/-/@porsche-design-system/prettier-config-1.0.0.tgz#3ab128c42d98cb049ffc0b141362f6963e0a93d7"
@@ -15537,7 +15517,7 @@ prepend-http@^1.0.0:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.6.0.tgz#12f8f504c4d8ddb76475f441337542fa799207d4"
   integrity sha512-m2FgJibYrBGGgQXNzfd0PuDGShJgRavjUoRCw1mZERIWVSXF0iLzLm+aOqTAbLnC3n6JzUhAA8uZnFVghHJ86A==
 
-prettier@^2.6.1:
+prettier@^2.6.1, prettier@^2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.6.2.tgz#e26d71a18a74c3d0f0597f55f01fb6c06c206032"
   integrity sha512-PkUpF+qoXTqhOeWL9fu7As8LXsIUZ1WYaJiY/a7McAQzxjk82OF0tibkFXVCDImZtWxbvojFjerkiLb0/q8mew==
@@ -16809,6 +16789,15 @@ sass@^1.32.8, sass@^1.49.9:
   version "1.49.9"
   resolved "https://registry.yarnpkg.com/sass/-/sass-1.49.9.tgz#b15a189ecb0ca9e24634bae5d1ebc191809712f9"
   integrity sha512-YlYWkkHP9fbwaFRZQRXgDi3mXZShslVmmo+FVK3kHLUELHHEYrCmL1x6IUjC7wLS6VuJSAFXRQS/DxdsC4xL1A==
+  dependencies:
+    chokidar ">=3.0.0 <4.0.0"
+    immutable "^4.0.0"
+    source-map-js ">=0.6.2 <2.0.0"
+
+sass@^1.50.0:
+  version "1.50.0"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.50.0.tgz#3e407e2ebc53b12f1e35ce45efb226ea6063c7c8"
+  integrity sha512-cLsD6MEZ5URXHStxApajEh7gW189kkjn4Rc8DQweMyF+o5HF5nfEz8QYLMlPsTOD88DknatTmBWkOcw5/LnJLQ==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
