@@ -72,4 +72,12 @@ describe('accessibility', () => {
 
     await expectA11yToMatchSnapshot(page, await getButton(), { interestingOnly: false });
   });
+
+  it('should expose correct accessibility tree if accessibility properties are set', async () => {
+    await initTagDismissible({ withLabel: true });
+    const host = await getHost();
+    await setProperty(host, 'aria', { 'aria-label': 'Some aria-label' });
+
+    await expectA11yToMatchSnapshot(page, await getButton(), { interestingOnly: false });
+  });
 });
