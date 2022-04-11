@@ -1,14 +1,14 @@
 module.exports = {
   preset: 'ts-jest',
-  testEnvironment: 'node',
-  verbose: true,
   rootDir: '../../../',
-  testMatch: ['**/src/jss/**/*.spec.ts', '**/src/scss/**/*.spec.ts', '**/tests/unit/specs/**/*.spec.ts'],
+  verbose: true,
+  testEnvironment: 'jsdom',
+  testMatch: ['**/src/jss/**/*.spec.ts', '**/tests/unit/specs/**/*.spec.(ts|tsx)'],
   globals: {
     'ts-jest': {
-      diagnostics: {
-        warnOnly: true,
-      },
+      isolatedModules: true, // this fixes typing issues with jasmine
     },
   },
+  clearMocks: true,
+  restoreMocks: true,
 };
