@@ -38,6 +38,7 @@ describe('lifecycle', () => {
     await initTagDismissible();
     const status = await getLifecycleStatus(page);
 
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
     expect(status.componentDidLoad['p-tag-dismissible'], 'componentDidLoad: p-tag-dismissible').toBe(1);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
