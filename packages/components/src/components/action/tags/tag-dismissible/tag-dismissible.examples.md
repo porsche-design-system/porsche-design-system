@@ -20,6 +20,16 @@
 
 <Playground :markup="label" :config="config"></Playground>
 
+## ARIA attributes and states
+
+Through the `aria` property you have the possibility to provide additional **ARIA** attributes to the component.
+
+<Playground :markup="accessibility" :config="config"></Playground>
+
+### <A11yIcon></A11yIcon> Accessibility hints
+
+Ensure that when a `p-tag-dismissible` is removed, the focus is set to the previous or following element and not lost.
+
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component'; 
@@ -36,5 +46,6 @@ export default class Code extends Vue {
 
   label = `<p-tag-dismissible label="Some label">Some content</p-tag-dismissible>`;
 
+  accessibility = `<p-tag-dismissible label="Cars" aria="{ 'aria-label': 'Remove filter used cars' }">Used cars</p-tag-dismissible>`
 }
 </script>

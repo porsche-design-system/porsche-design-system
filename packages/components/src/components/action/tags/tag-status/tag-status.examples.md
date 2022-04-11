@@ -90,7 +90,7 @@ export default class Code extends Vue {
   };
 
   buttonAccessibility = `<p-tag-status icon="car">
-  <button aria-label="More information about used cars">Used cars</button>
+  <button type="button" aria-label="More information about used cars">Used cars</button>
 </p-tag-status>`;
 
   linkAccessibility = `<p-tag-status icon="car">
