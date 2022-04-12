@@ -21,19 +21,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   template: `
     <div class="playground light" title="should show different background colors on light background">
       <p-tag-dismissible>Default</p-tag-dismissible>
-      <p-tag-dismissible [color]="'default'">Color default</p-tag-dismissible>
+      <p-tag-dismissible [color]="'background-default'">Color background-default</p-tag-dismissible>
       <p-tag-dismissible [color]="'background-surface'">Color background-surface</p-tag-dismissible>
     </div>
 
     <div class="playground light surface" title="should show different background colors on light surface background">
       <p-tag-dismissible>Default</p-tag-dismissible>
-      <p-tag-dismissible [color]="'default'">Color default</p-tag-dismissible>
+      <p-tag-dismissible [color]="'background-default'">Color background-default</p-tag-dismissible>
       <p-tag-dismissible [color]="'background-surface'">Color background-surface</p-tag-dismissible>
     </div>
 
     <div class="playground light" title="should show different background colors and label on light background">
       <p-tag-dismissible [label]="'Some label'">Default</p-tag-dismissible>
-      <p-tag-dismissible [label]="'Some label'" [color]="'default'">Color default</p-tag-dismissible>
+      <p-tag-dismissible [label]="'Some label'" [color]="'background-default'">Color background-default</p-tag-dismissible>
       <p-tag-dismissible [label]="'Some label'" [color]="'background-surface'">Color background-surface</p-tag-dismissible>
     </div>
 
@@ -42,13 +42,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should show different background colors and label on light surface background"
     >
       <p-tag-dismissible [label]="'Some label'">Default</p-tag-dismissible>
-      <p-tag-dismissible [label]="'Some label'" [color]="'default'">Color default</p-tag-dismissible>
+      <p-tag-dismissible [label]="'Some label'" [color]="'background-default'">Color background-default</p-tag-dismissible>
       <p-tag-dismissible [label]="'Some label'" [color]="'background-surface'">Color background-surface</p-tag-dismissible>
     </div>
 
     <div class="playground light" title="should apply custom styles for dedicated slotted content on light background">
       <p-tag-dismissible>
-        Color default <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text
+        Some <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text
       </p-tag-dismissible>
     </div>
 

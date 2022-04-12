@@ -22,7 +22,7 @@ export const TagStatusPage = (): JSX.Element => {
 
       <div className="playground light" title="should show different background colors on light background">
         <PTagStatus>Default</PTagStatus>
-        <PTagStatus color="default">Color default</PTagStatus>
+        <PTagStatus color="background-default">Color background-default</PTagStatus>
         <PTagStatus color="background-surface">Color background-surface</PTagStatus>
         <PTagStatus color="neutral-contrast-high">Color neutral-contrast-high</PTagStatus>
         <PTagStatus color="notification-neutral">Color notification-neutral</PTagStatus>
@@ -33,7 +33,7 @@ export const TagStatusPage = (): JSX.Element => {
 
       <div className="playground light surface" title="should show different background colors on light surface background">
         <PTagStatus>Default</PTagStatus>
-        <PTagStatus color="default">Color default</PTagStatus>
+        <PTagStatus color="background-default">Color background-default</PTagStatus>
         <PTagStatus color="background-surface">Color background-surface</PTagStatus>
         <PTagStatus color="neutral-contrast-high">Color neutral-contrast-high</PTagStatus>
         <PTagStatus color="notification-neutral">Color notification-neutral</PTagStatus>
@@ -44,7 +44,7 @@ export const TagStatusPage = (): JSX.Element => {
 
       <div className="playground dark" title="should show different background colors on dark background">
         <PTagStatus theme="dark">Default</PTagStatus>
-        <PTagStatus theme="dark" color="default">Color default</PTagStatus>
+        <PTagStatus theme="dark" color="background-default">Color background-default</PTagStatus>
         <PTagStatus theme="dark" color="background-surface">Color background-surface</PTagStatus>
         <PTagStatus theme="dark" color="neutral-contrast-high">Color neutral-contrast-high</PTagStatus>
         <PTagStatus theme="dark" color="notification-neutral">Color notification-neutral</PTagStatus>
@@ -55,7 +55,7 @@ export const TagStatusPage = (): JSX.Element => {
 
       <div className="playground dark surface" title="should show different background colors on dark surface background">
         <PTagStatus theme="dark">Default</PTagStatus>
-        <PTagStatus theme="dark" color="default">Color default</PTagStatus>
+        <PTagStatus theme="dark" color="background-default">Color background-default</PTagStatus>
         <PTagStatus theme="dark" color="background-surface">Color background-surface</PTagStatus>
         <PTagStatus theme="dark" color="neutral-contrast-high">Color neutral-contrast-high</PTagStatus>
         <PTagStatus theme="dark" color="notification-neutral">Color notification-neutral</PTagStatus>
@@ -65,7 +65,7 @@ export const TagStatusPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should show different background colors and icons on light background">
-        <PTagStatus icon="car" color="default">Color default</PTagStatus>
+        <PTagStatus icon="car" color="background-default">Color background-default</PTagStatus>
         <PTagStatus icon="highway" color="background-surface">Color background-surface</PTagStatus>
         <PTagStatus iconSource="./assets/icon-custom-kaixin.svg" color="background-surface">
           Color background-surface
@@ -73,7 +73,7 @@ export const TagStatusPage = (): JSX.Element => {
       </div>
 
       <div className="playground dark" title="should show different background colors and icons on dark background">
-        <PTagStatus theme="dark" icon="car" color="default">Color default</PTagStatus>
+        <PTagStatus theme="dark" icon="car" color="background-default">Color background-default</PTagStatus>
         <PTagStatus theme="dark" icon="highway" color="background-surface">Color background-surface</PTagStatus>
         <PTagStatus theme="dark" iconSource="./assets/icon-custom-kaixin.svg" color="background-surface">
           Color background-surface
@@ -81,55 +81,57 @@ export const TagStatusPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should show different background colors with link on light background">
-        <PTagStatus color="default"><a href="#">Color default link</a></PTagStatus>
+        <PTagStatus color="background-default"><a href="#">Color background-default link</a></PTagStatus>
         <PTagStatus color="background-surface"><a href="#">Color background-surface link</a></PTagStatus>
-        <PTagStatus icon="car" color="default"><a href="#">Color default link</a></PTagStatus>
+        <PTagStatus icon="car" color="background-default"><a href="#">Color background-default link</a></PTagStatus>
         <PTagStatus icon="highway" color="background-surface"><a href="#">Color background-surface link</a></PTagStatus>
-        <PTagStatus iconSource="./assets/icon-custom-kaixin.svg" color="default">
-          <a href="#">Color default link</a>
+        <PTagStatus iconSource="./assets/icon-custom-kaixin.svg" color="background-default">
+          <a href="#">Color background-default link</a>
         </PTagStatus>
       </div>
 
       <div className="playground dark" title="should show different background colors with link on dark background">
-        <PTagStatus theme="dark" color="default"><a href="#">Color default link</a></PTagStatus>
+        <PTagStatus theme="dark" color="background-default"><a href="#">Color background-default link</a></PTagStatus>
         <PTagStatus theme="dark" color="background-surface"><a href="#">Color background-surface link</a></PTagStatus>
-        <PTagStatus theme="dark" icon="car" color="default"><a href="#">Color default link</a></PTagStatus>
+        <PTagStatus theme="dark" icon="car" color="background-default"
+          ><a href="#">Color background-default link</a></PTagStatus
+        >
         <PTagStatus theme="dark" icon="highway" color="background-surface">
           <a href="#">Color background-surface link</a>
         </PTagStatus>
-        <PTagStatus theme="dark" iconSource="./assets/icon-custom-kaixin.svg" color="default">
-          <a href="#">Color default link</a>
+        <PTagStatus theme="dark" iconSource="./assets/icon-custom-kaixin.svg" color="background-default">
+          <a href="#">Color background-default link</a>
         </PTagStatus>
       </div>
 
       <div className="playground light" title="should show different background colors with button on light background">
-        <PTagStatus color="default"><button>Color default button</button></PTagStatus>
+        <PTagStatus color="background-default"><button>Color background-default button</button></PTagStatus>
         <PTagStatus color="background-surface"><button>Color background-surface button</button></PTagStatus>
-        <PTagStatus icon="car" color="default"><button>Color default button</button></PTagStatus>
+        <PTagStatus icon="car" color="background-default"><button>Color background-default button</button></PTagStatus>
         <PTagStatus icon="highway" color="background-surface">
           <button>Color background-surface button</button>
         </PTagStatus>
-        <PTagStatus iconSource="./assets/icon-custom-kaixin.svg" color="default">
-          <button>Color default button</button>
+        <PTagStatus iconSource="./assets/icon-custom-kaixin.svg" color="background-default">
+          <button>Color background-default button</button>
         </PTagStatus>
       </div>
 
       <div className="playground dark" title="should show different background colors with button on dark background">
-        <PTagStatus theme="dark" color="default"><button>Color default button</button></PTagStatus>
+        <PTagStatus theme="dark" color="background-default"><button>Color background-default button</button></PTagStatus>
         <PTagStatus theme="dark" color="background-surface"><button>Color background-surface button</button></PTagStatus>
-        <PTagStatus theme="dark" icon="car" color="default"><button>Color default button</button></PTagStatus>
+        <PTagStatus theme="dark" icon="car" color="background-default"
+          ><button>Color background-default button</button></PTagStatus
+        >
         <PTagStatus theme="dark" icon="highway" color="background-surface">
           <button>Color background-surface button</button>
         </PTagStatus>
-        <PTagStatus theme="dark" iconSource="./assets/icon-custom-kaixin.svg" color="default">
-          <button>Color default button</button>
+        <PTagStatus theme="dark" iconSource="./assets/icon-custom-kaixin.svg" color="background-default">
+          <button>Color background-default button</button>
         </PTagStatus>
       </div>
 
       <div className="playground light" title="should apply custom styles for dedicated slotted content on light background">
-        <PTagStatus>
-          Color default <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text
-        </PTagStatus>
+        <PTagStatus> Some <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text </PTagStatus>
         <PTagStatus>
           Default <br />
           with line break
