@@ -10,8 +10,8 @@ import {
 import { fontStyle, fontWeight, textXSmall } from '@porsche-design-system/utilities-v2';
 import type { TagStatusColor } from './tag-status-utils';
 import type { Theme } from '../../../../types';
+import { hasInvertedThemeColor } from './tag-status-utils';
 
-export const getComponentCss = (color: TagStatusColor, isFocusable: boolean, theme: Theme): string => {
 export const getThemedBackgroundColor = (tagStatusColor: TagStatusColor, themedColors: ThemedColors): string => {
   const colorMap: { [key in TagStatusColor]: string } = {
     'background-default': themedColors.backgroundColor,
@@ -25,15 +25,36 @@ export const getThemedBackgroundColor = (tagStatusColor: TagStatusColor, themedC
 
   return colorMap[tagStatusColor];
 };
-  const themedColors = getThemedColors(theme);
-  const isDark = isThemeDark(theme);
-  const hasInvertedThemeColor =
-    (!isDark && color !== 'neutral-contrast-high') ||
-    (isDark && (color === 'background-surface' || color === 'background-default'));
 
-  const { baseColor, hoverColor } = hasInvertedThemeColor ? themedColors : getThemedColors(isDark ? 'light' : 'dark');
-  const outlineColor = hasInvertedThemeColor ? themedColors.focusColor : themedColors.baseColor;
-  const { focusColor } = themedColors;
+export const getColors = (
+  tagStatusColor: TagStatusColor,
+  theme: Theme
+): {
+  baseColor: string;
+  hoverColor: string;
+  outlineColor: string;
+  focusColor: string;
+  backgroundColor: string;
+} => {
+  const themedColors = getThemedColors(theme);
+  const hasInvertedTheme = hasInvertedThemeColor(tagStatusColor, theme);
+
+  const { baseColor, hoverColor } = hasInvertedTheme
+    ? getThemedColors(isThemeDark(theme) ? 'light' : 'dark')
+    : themedColors;
+  const { focusColor, baseColor: themedBaseColor } = themedColors;
+
+  return {
+    baseColor,
+    hoverColor,
+    outlineColor: hasInvertedTheme ? themedBaseColor : focusColor,
+    focusColor: hasInvertedTheme ? focusColor : null,
+    backgroundColor: getThemedBackgroundColor(tagStatusColor, themedColors),
+  };
+};
+
+export const getComponentCss = (tagStatusColor: TagStatusColor, isFocusable: boolean, theme: Theme): string => {
+  const { baseColor, hoverColor, outlineColor, focusColor, backgroundColor } = getColors(tagStatusColor, theme);
 
   return getCss({
     '@global': {
@@ -48,7 +69,7 @@ export const getThemedBackgroundColor = (tagStatusColor: TagStatusColor, themedC
         height: pxToRemWithUnit(24),
         padding: `0 ${pxToRemWithUnit(6)}`,
         borderRadius: pxToRemWithUnit(4),
-        background: getThemedBackgroundColor(color, themedColors),
+        background: backgroundColor,
         color: baseColor,
         ...textXSmall,
         whiteSpace: 'nowrap',
@@ -80,7 +101,7 @@ export const getThemedBackgroundColor = (tagStatusColor: TagStatusColor, themedC
             Object.fromEntries(
               Object.entries({
                 ...getFocusJssStyle({ offset: 2, pseudo: '::before', color: outlineColor }),
-                ...(!hasInvertedThemeColor && {
+                ...(focusColor && {
                   '&:focus-visible:hover::before': {
                     transition: getTransition('outline-color'),
                     outlineColor: focusColor,
