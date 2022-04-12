@@ -29,8 +29,8 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
         <div class="row">
-          <p-tag-status theme="${theme}" color="default" icon="car">Text</p-tag-status>
-          <p-tag-status theme="${theme}" color="default">Text</p-tag-status>
+          <p-tag-status theme="${theme}" color="background-default" icon="car">Text</p-tag-status>
+          <p-tag-status theme="${theme}" color="background-default">Text</p-tag-status>
           <p-tag-status theme="${theme}" color="background-surface">Text</p-tag-status>
           <p-tag-status theme="${theme}" color="neutral-contrast-high">Text</p-tag-status>
           <p-tag-status theme="${theme}" color="notification-neutral">Text</p-tag-status>
@@ -39,8 +39,8 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           <p-tag-status theme="${theme}" color="notification-warning">Text</p-tag-status>
         </div>
         <div class="row">
-          <p-tag-status theme="${theme}" color="default" icon="car"><a href="#">Link</a></p-tag-status>
-          <p-tag-status theme="${theme}" color="default"><a href="#">Link</a></p-tag-status>
+          <p-tag-status theme="${theme}" color="background-default" icon="car"><a href="#">Link</a></p-tag-status>
+          <p-tag-status theme="${theme}" color="background-default"><a href="#">Link</a></p-tag-status>
           <p-tag-status theme="${theme}" color="background-surface"><a href="#">Link</a></p-tag-status>
           <p-tag-status theme="${theme}" color="neutral-contrast-high"><a href="#">Link</a></p-tag-status>
           <p-tag-status theme="${theme}" color="notification-neutral"><a href="#">Link</a></p-tag-status>
@@ -49,8 +49,8 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           <p-tag-status theme="${theme}" color="notification-warning"><a href="#">Link</a></p-tag-status>
         </div>
         <div class="row">
-          <p-tag-status theme="${theme}" color="default" icon="car"><button>Button</button></p-tag-status>
-          <p-tag-status theme="${theme}" color="default"><button>Button</button></p-tag-status>
+          <p-tag-status theme="${theme}" color="background-default" icon="car"><button>Button</button></p-tag-status>
+          <p-tag-status theme="${theme}" color="background-default"><button>Button</button></p-tag-status>
           <p-tag-status theme="${theme}" color="background-surface"><button>Button</button></p-tag-status>
           <p-tag-status theme="${theme}" color="neutral-contrast-high"><button>Button</button></p-tag-status>
           <p-tag-status theme="${theme}" color="notification-neutral"><button>Button</button></p-tag-status>

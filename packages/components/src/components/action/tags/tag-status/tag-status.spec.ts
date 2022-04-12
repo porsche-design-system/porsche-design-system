@@ -21,7 +21,7 @@ describe('componentWillRender', () => {
     const component = new TagStatus();
     component.host = document.createElement('p-tag-status');
     component.host.attachShadow({ mode: 'open' });
-    component.color = 'default';
+    component.color = 'background-default';
     // pseudo-class selector ':scope>*' is missing in jsdom
     try {
       component.componentWillRender();

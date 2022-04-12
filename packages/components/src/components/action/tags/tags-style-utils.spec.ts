@@ -5,14 +5,14 @@ import type { Theme } from '../../../../types';
 
 describe('getThemedBackgroundColor()', () => {
   it.each<[TagStatusColor, Theme]>([
-    ['default', 'light'],
+    ['background-default', 'light'],
     ['neutral-contrast-high', 'light'],
     ['notification-success', 'light'],
     ['notification-warning', 'light'],
     ['notification-error', 'light'],
     ['notification-neutral', 'light'],
     ['background-surface', 'light'],
-    ['default', 'dark'],
+    ['background-default', 'dark'],
     ['neutral-contrast-high', 'dark'],
     ['notification-success', 'dark'],
     ['notification-warning', 'dark'],
