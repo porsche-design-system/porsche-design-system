@@ -22,19 +22,19 @@ export const TagDismissiblePage = (): JSX.Element => {
 
       <div className="playground light" title="should show different background colors on light background">
         <PTagDismissible>Default</PTagDismissible>
-        <PTagDismissible color="default">Color default</PTagDismissible>
+        <PTagDismissible color="background-default">Color background-default</PTagDismissible>
         <PTagDismissible color="background-surface">Color background-surface</PTagDismissible>
       </div>
 
       <div className="playground light surface" title="should show different background colors on light surface background">
         <PTagDismissible>Default</PTagDismissible>
-        <PTagDismissible color="default">Color default</PTagDismissible>
+        <PTagDismissible color="background-default">Color background-default</PTagDismissible>
         <PTagDismissible color="background-surface">Color background-surface</PTagDismissible>
       </div>
 
       <div className="playground light" title="should show different background colors and label on light background">
         <PTagDismissible label="Some label">Default</PTagDismissible>
-        <PTagDismissible label="Some label" color="default">Color default</PTagDismissible>
+        <PTagDismissible label="Some label" color="background-default">Color background-default</PTagDismissible>
         <PTagDismissible label="Some label" color="background-surface">Color background-surface</PTagDismissible>
       </div>
 
@@ -43,13 +43,13 @@ export const TagDismissiblePage = (): JSX.Element => {
         title="should show different background colors and label on light surface background"
       >
         <PTagDismissible label="Some label">Default</PTagDismissible>
-        <PTagDismissible label="Some label" color="default">Color default</PTagDismissible>
+        <PTagDismissible label="Some label" color="background-default">Color background-default</PTagDismissible>
         <PTagDismissible label="Some label" color="background-surface">Color background-surface</PTagDismissible>
       </div>
 
       <div className="playground light" title="should apply custom styles for dedicated slotted content on light background">
         <PTagDismissible>
-          Color default <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text
+          Some <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text
         </PTagDismissible>
       </div>
 
