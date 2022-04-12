@@ -3,12 +3,5 @@ module.exports = {
   testEnvironment: 'node',
   verbose: true,
   rootDir: '../../../',
-  testMatch: ['**/src/jss/**/*.spec.ts', '**/src/scss/**/*.spec.ts', '**/tests/unit/specs/**/*.spec.ts'],
-  globals: {
-    'ts-jest': {
-      diagnostics: {
-        warnOnly: true,
-      },
-    },
-  },
+  testMatch: ['**/src/**/*.spec.ts', '**/tests/unit/specs/**/*.spec.ts'],
 };

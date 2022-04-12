@@ -20,6 +20,4 @@ const generateBreakpointMapWithoutUnit = (): void => {
   console.log(`Injected static breakpoints into '${targetPath}'`);
 };
 
-((): void => {
-  generateBreakpointMapWithoutUnit();
-})();
+generateBreakpointMapWithoutUnit();

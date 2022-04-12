@@ -1,3 +1,4 @@
+import type { Styles } from 'jss';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as prettier from 'prettier';
@@ -9,7 +10,7 @@ import * as heading from '../src/jss/typography/heading';
 import * as text from '../src/jss/typography/text';
 import * as breakpoint from '../src/jss/breakpoint';
 import { paramCase, camelCase } from 'change-case';
-import { create, Styles } from 'jss';
+import { create } from 'jss';
 import jssPluginCamelCase from 'jss-plugin-camel-case';
 import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
@@ -89,8 +90,6 @@ const generateMixins = (mixins: Mixins): void => {
   }
 };
 
-((): void => {
-  cleanBuild();
-  generateVariables({ font, theme, spacing, colorExternal, breakpoint });
-  generateMixins({ heading, text });
-})();
+cleanBuild();
+generateVariables({ font, theme, spacing, colorExternal, breakpoint });
+generateMixins({ heading, text });

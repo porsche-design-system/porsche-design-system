@@ -6,7 +6,6 @@ import {
   addImportantToEachRule,
   addImportantToRule,
   getBaseSlottedStyles,
-  getFocusSlottedPseudoStyles,
   getInsetJssStyle,
   getFocusJssStyle,
   getFormTextHiddenJssStyle,
