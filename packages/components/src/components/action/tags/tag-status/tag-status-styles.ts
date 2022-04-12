@@ -1,6 +1,12 @@
 import { getCss, isThemeDark, mergeDeep } from '../../../../utils';
-import { addImportantToEachRule, getFocusJssStyle, getThemedColors, getTransition } from '../../../../styles';
-import { fontWeight, textXSmall } from '@porsche-design-system/utilities-v2';
+import {
+  addImportantToEachRule,
+  getFocusJssStyle,
+  getThemedColors,
+  getTransition,
+  pxToRemWithUnit,
+} from '../../../../styles';
+import { fontStyle, fontWeight, textXSmall } from '@porsche-design-system/utilities-v2';
 import type { TagStatusColor } from './tag-status-utils';
 import type { Theme } from '../../../../types';
 import { getThemedBackgroundColor } from '../utils/tags-style-utils';
@@ -14,6 +20,7 @@ export const getComponentCss = (color: TagStatusColor, isFocusable: boolean, the
 
   const { baseColor, hoverColor } = hasInvertedThemeColor ? themedColors : getThemedColors(isDark ? 'light' : 'dark');
   const outlineColor = hasInvertedThemeColor ? themedColors.focusColor : themedColors.baseColor;
+  const { focusColor } = themedColors;
 
   return getCss({
     '@global': {
@@ -25,17 +32,15 @@ export const getComponentCss = (color: TagStatusColor, isFocusable: boolean, the
         display: 'flex',
         alignItems: 'center',
         position: 'relative',
-        height: '24px',
-        padding: '0 6px',
-        borderRadius: '4px',
+        height: pxToRemWithUnit(24),
+        padding: `0 ${pxToRemWithUnit(6)}`,
+        borderRadius: pxToRemWithUnit(4),
         background: getThemedBackgroundColor(color, themedColors),
         color: baseColor,
         ...textXSmall,
-        overflowWrap: null,
-        hyphens: null,
         whiteSpace: 'nowrap',
-        transition: getTransition('color'),
         ...(isFocusable && {
+          transition: getTransition('color'),
           '&:hover': {
             color: hoverColor,
           },
@@ -54,17 +59,18 @@ export const getComponentCss = (color: TagStatusColor, isFocusable: boolean, the
                 outline: 0, // reset native blue outline
                 // color: 'inherit', // TODO: chrome hover bug. Use when fixed.
                 '&::before': {
-                  borderRadius: '4px',
+                  borderRadius: pxToRemWithUnit(4),
                 },
               },
             },
+            // Transform selectors of getFocusJssStyle() to fit the ::slotted syntax
             Object.fromEntries(
               Object.entries({
                 ...getFocusJssStyle({ offset: 2, pseudo: '::before', color: outlineColor }),
                 ...(!hasInvertedThemeColor && {
                   '&:focus-visible:hover::before': {
                     transition: getTransition('outline-color'),
-                    outlineColor: themedColors.focusColor,
+                    outlineColor: focusColor,
                   },
                 }),
               })
@@ -96,12 +102,12 @@ export const getComponentCss = (color: TagStatusColor, isFocusable: boolean, the
           fontWeight: fontWeight.bold,
         },
         '&(em),&(i)': {
-          fontStyle: 'normal',
+          fontStyle: fontStyle,
         },
       }),
     },
     icon: {
-      margin: '0 2px 0 -2px',
+      margin: `0 ${pxToRemWithUnit(2)} 0 ${pxToRemWithUnit(-2)}`,
     },
   });
 };
