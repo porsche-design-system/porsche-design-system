@@ -4,6 +4,7 @@ import {
   pxToRemWithUnit,
   getTransition,
   addImportantToEachRule,
+  addImportantToRule,
 } from '../../../../styles';
 import { getCss } from '../../../../utils';
 import type { TagDismissibleColor } from './tag-dismissible-utils';
@@ -20,6 +21,7 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
       ':host': {
         display: 'inline-flex',
         verticalAlign: 'top',
+        outline: addImportantToRule(0),
       },
       button: {
         position: 'relative',
