@@ -13,6 +13,7 @@ import { getThemedBackgroundColor } from '../tag-status/tag-status-styles';
 export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): string => {
   const themedColors = getThemedColors('light');
   const { baseColor, contrastLowColor, contrastMediumColor } = themedColors;
+  const backgroundColor = getThemedBackgroundColor(color, themedColors);
 
   return getCss({
     '@global': {
@@ -27,7 +28,7 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
         borderRadius: pxToRemWithUnit(4),
         border: 0,
         cursor: 'pointer',
-        background: getThemedBackgroundColor(color, themedColors),
+        background: backgroundColor,
         color: baseColor,
         textAlign: 'left',
         ...textSmall,
