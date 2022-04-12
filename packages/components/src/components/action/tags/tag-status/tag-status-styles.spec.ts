@@ -2,16 +2,16 @@ import { getComponentCss } from './tag-status-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['default', true, 'light'],
-    ['default', false, 'light'],
+    ['background-default', true, 'light'],
+    ['background-default', false, 'light'],
     ['neutral-contrast-high', true, 'light'],
     ['notification-success', true, 'light'],
     ['notification-warning', true, 'light'],
     ['notification-error', true, 'light'],
     ['notification-neutral', true, 'light'],
     ['background-surface', true, 'light'],
-    ['default', true, 'dark'],
-    ['default', false, 'dark'],
+    ['background-default', true, 'dark'],
+    ['background-default', false, 'dark'],
     ['neutral-contrast-high', true, 'dark'],
     ['notification-success', true, 'dark'],
     ['notification-warning', true, 'dark'],

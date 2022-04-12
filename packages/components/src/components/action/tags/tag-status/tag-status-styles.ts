@@ -9,14 +9,14 @@ import {
 import { fontStyle, fontWeight, textXSmall } from '@porsche-design-system/utilities-v2';
 import type { TagStatusColor } from './tag-status-utils';
 import type { Theme } from '../../../../types';
-import { getThemedBackgroundColor } from '../utils/tags-style-utils';
+import { getThemedBackgroundColor } from '../tags-style-utils';
 
 export const getComponentCss = (color: TagStatusColor, isFocusable: boolean, theme: Theme): string => {
   const themedColors = getThemedColors(theme);
   const isDark = isThemeDark(theme);
   const hasInvertedThemeColor =
     (!isDark && color !== 'neutral-contrast-high') ||
-    (isDark && (color === 'background-surface' || color === 'default'));
+    (isDark && (color === 'background-surface' || color === 'background-default'));
 
   const { baseColor, hoverColor } = hasInvertedThemeColor ? themedColors : getThemedColors(isDark ? 'light' : 'dark');
   const outlineColor = hasInvertedThemeColor ? themedColors.focusColor : themedColors.baseColor;

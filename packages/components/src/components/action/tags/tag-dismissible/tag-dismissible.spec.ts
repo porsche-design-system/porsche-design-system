@@ -8,7 +8,7 @@ describe('componentWillRender', () => {
     const component = new TagDismissible();
     component.host = document.createElement('p-tag-dismissible');
     component.host.attachShadow({ mode: 'open' });
-    component.color = 'default';
+    component.color = 'background-default';
     component.componentWillRender();
 
     expect(spy).toBeCalledWith('default', TAG_DISMISSIBLE_COLORS, 'color');

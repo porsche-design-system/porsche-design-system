@@ -8,7 +8,7 @@ import {
 import { getCss } from '../../../../utils';
 import type { TagDismissibleColor } from './tag-dismissible-utils';
 import { textSmall, fontWeight, getScreenReaderOnlyJssStyle, fontStyle } from '@porsche-design-system/utilities-v2';
-import { getThemedBackgroundColor } from '../utils/tags-style-utils';
+import { getThemedBackgroundColor } from '../tags-style-utils';
 
 export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): string => {
   const themedColors = getThemedColors('light');
