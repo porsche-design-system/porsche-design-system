@@ -7,7 +7,7 @@ import {
 } from '../../../../styles';
 import { getCss } from '../../../../utils';
 import type { TagDismissibleColor } from './tag-dismissible-utils';
-import { textSmall, fontWeight, getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
+import { textSmall, fontWeight, getScreenReaderOnlyJssStyle, fontStyle } from '@porsche-design-system/utilities-v2';
 import { getThemedBackgroundColor } from '../utils/tags-style-utils';
 
 export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): string => {
@@ -22,9 +22,9 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
       },
       button: {
         position: 'relative',
-        minHeight: '48px',
-        padding: '4px 46px 4px 16px',
-        borderRadius: '4px',
+        minHeight: pxToRemWithUnit(48),
+        padding: `${pxToRemWithUnit(4)} ${pxToRemWithUnit(46)} ${pxToRemWithUnit(4)} ${pxToRemWithUnit(16)}`,
+        borderRadius: pxToRemWithUnit(4),
         border: 0,
         cursor: 'pointer',
         background: getThemedBackgroundColor(color, themedColors),
@@ -42,14 +42,14 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
           fontWeight: fontWeight.bold,
         },
         '&(em),&(i)': {
-          fontStyle: 'normal',
+          fontStyle: fontStyle,
         },
       }),
     },
     ...(hasLabel && {
       label: {
         display: 'block',
-        marginBottom: '-4px',
+        marginBottom: pxToRemWithUnit(-4),
         color: contrastMediumColor,
         fontSize: pxToRemWithUnit(14),
         lineHeight: pxToRemWithUnit(20),
@@ -58,8 +58,8 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
     icon: {
       position: 'absolute',
       top: '50%',
-      marginTop: '-12px',
-      right: '12px',
+      marginTop: pxToRemWithUnit(-12),
+      right: pxToRemWithUnit(12),
     },
     'sr-only': getScreenReaderOnlyJssStyle(),
   });
