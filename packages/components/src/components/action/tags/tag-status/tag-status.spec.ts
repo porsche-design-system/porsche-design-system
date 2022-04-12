@@ -27,6 +27,6 @@ describe('componentWillRender', () => {
       component.componentWillRender();
     } catch {}
 
-    expect(spy).toBeCalledWith('default', TAG_STATUS_COLORS, 'color');
+    expect(spy).toBeCalledWith('background-default', TAG_STATUS_COLORS, 'color');
   });
 });

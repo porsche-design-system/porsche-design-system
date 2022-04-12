@@ -1,5 +1,134 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`getComponentCss() should return correct css for color: background-default and hasLabel: false 1`] = `
+":host {
+  display: inline-flex;
+  vertical-align: top;
+}
+button {
+  position: relative;
+  min-height: 3rem;
+  padding: 0.25rem 2.875rem 0.25rem 1rem;
+  border-radius: 0.25rem;
+  border: 0;
+  cursor: pointer;
+  background: #fff;
+  color: #000;
+  text-align: left;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: #000;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+button:hover {
+  background: #e3e4e5;
+}
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
+}
+.icon {
+  position: absolute;
+  top: 50%;
+  margin-top: -0.75rem;
+  right: 0.75rem;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: background-default and hasLabel: true 1`] = `
+":host {
+  display: inline-flex;
+  vertical-align: top;
+}
+button {
+  position: relative;
+  min-height: 3rem;
+  padding: 0.25rem 2.875rem 0.25rem 1rem;
+  border-radius: 0.25rem;
+  border: 0;
+  cursor: pointer;
+  background: #fff;
+  color: #000;
+  text-align: left;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: #000;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+button:hover {
+  background: #e3e4e5;
+}
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
+}
+.label {
+  display: block;
+  margin-bottom: -0.25rem;
+  color: #626669;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.icon {
+  position: absolute;
+  top: 50%;
+  margin-top: -0.75rem;
+  right: 0.75rem;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}"
+`;
+
 exports[`getComponentCss() should return correct css for color: background-surface and hasLabel: true 1`] = `
 ":host {
   display: inline-flex;
@@ -7,9 +136,9 @@ exports[`getComponentCss() should return correct css for color: background-surfa
 }
 button {
   position: relative;
-  min-height: 48px;
-  padding: 4px 46px 4px 16px;
-  border-radius: 4px;
+  min-height: 3rem;
+  padding: 0.25rem 2.875rem 0.25rem 1rem;
+  border-radius: 0.25rem;
   border: 0;
   cursor: pointer;
   background: #f2f2f2;
@@ -44,7 +173,7 @@ button:hover {
 }
 .label {
   display: block;
-  margin-bottom: -4px;
+  margin-bottom: -0.25rem;
   color: #626669;
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -52,137 +181,8 @@ button:hover {
 .icon {
   position: absolute;
   top: 50%;
-  margin-top: -12px;
-  right: 12px;
-}
-.sr-only {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: default and hasLabel: false 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top;
-}
-button {
-  position: relative;
-  min-height: 48px;
-  padding: 4px 46px 4px 16px;
-  border-radius: 4px;
-  border: 0;
-  cursor: pointer;
-  background: #fff;
-  color: #000;
-  text-align: left;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: #000;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-button:hover {
-  background: #e3e4e5;
-}
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: normal !important;
-}
-.icon {
-  position: absolute;
-  top: 50%;
-  margin-top: -12px;
-  right: 12px;
-}
-.sr-only {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: default and hasLabel: true 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top;
-}
-button {
-  position: relative;
-  min-height: 48px;
-  padding: 4px 46px 4px 16px;
-  border-radius: 4px;
-  border: 0;
-  cursor: pointer;
-  background: #fff;
-  color: #000;
-  text-align: left;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: #000;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-button:hover {
-  background: #e3e4e5;
-}
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: normal !important;
-}
-.label {
-  display: block;
-  margin-bottom: -4px;
-  color: #626669;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-}
-.icon {
-  position: absolute;
-  top: 50%;
-  margin-top: -12px;
-  right: 12px;
+  margin-top: -0.75rem;
+  right: 0.75rem;
 }
 .sr-only {
   position: absolute;
