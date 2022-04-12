@@ -8,9 +8,10 @@ import {
   ThemedColors,
 } from '../../../../styles';
 import { fontStyle, fontWeight, textXSmall } from '@porsche-design-system/utilities-v2';
+import { hasInvertedThemeColor } from './tag-status-utils';
 import type { TagStatusColor } from './tag-status-utils';
 import type { Theme } from '../../../../types';
-import { hasInvertedThemeColor } from './tag-status-utils';
+import type { JssStyle } from 'jss';
 
 export const getThemedBackgroundColor = (tagStatusColor: TagStatusColor, themedColors: ThemedColors): string => {
   const colorMap: { [key in TagStatusColor]: string } = {
@@ -51,6 +52,15 @@ export const getColors = (
     focusColor: hasInvertedTheme ? focusColor : null,
     backgroundColor: getThemedBackgroundColor(tagStatusColor, themedColors),
   };
+};
+
+export const slottedTextStyles: JssStyle = {
+  '&(strong),&(b)': {
+    fontWeight: fontWeight.bold,
+  },
+  '&(em),&(i)': {
+    fontStyle,
+  },
 };
 
 export const getComponentCss = (tagStatusColor: TagStatusColor, isFocusable: boolean, theme: Theme): string => {
@@ -132,12 +142,7 @@ export const getComponentCss = (tagStatusColor: TagStatusColor, isFocusable: boo
         '&(br)': {
           display: 'none',
         },
-        '&(strong),&(b)': {
-          fontWeight: fontWeight.bold,
-        },
-        '&(em),&(i)': {
-          fontStyle,
-        },
+        ...slottedTextStyles,
       }),
     },
     icon: {

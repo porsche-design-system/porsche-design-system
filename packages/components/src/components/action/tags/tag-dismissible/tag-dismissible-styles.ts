@@ -7,8 +7,8 @@ import {
 } from '../../../../styles';
 import { getCss } from '../../../../utils';
 import type { TagDismissibleColor } from './tag-dismissible-utils';
-import { textSmall, fontWeight, getScreenReaderOnlyJssStyle, fontStyle } from '@porsche-design-system/utilities-v2';
-import { getThemedBackgroundColor } from '../tag-status/tag-status-styles';
+import { textSmall, getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
+import { getThemedBackgroundColor, slottedTextStyles } from '../tag-status/tag-status-styles';
 
 export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): string => {
   const themedColors = getThemedColors('light');
@@ -38,14 +38,7 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
           background: contrastLowColor,
         },
       },
-      '::slotted': addImportantToEachRule({
-        '&(strong),&(b)': {
-          fontWeight: fontWeight.bold,
-        },
-        '&(em),&(i)': {
-          fontStyle,
-        },
-      }),
+      '::slotted': addImportantToEachRule(slottedTextStyles),
     },
     ...(hasLabel && {
       label: {
