@@ -12,7 +12,7 @@ import type { SelectedAriaAttributes } from '../../../../types';
 
 @Component({
   tag: 'p-tag-dismissible',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class TagDismissible {
   @Element() public host!: HTMLElement;
