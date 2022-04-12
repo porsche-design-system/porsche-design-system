@@ -1,4 +1,29 @@
 import { getComponentCss } from './tag-status-styles';
+import { getColors, getComponentCss, getThemedBackgroundColor } from './tag-status-styles';
+import type { Theme } from '../../../../types';
+import type { TagStatusColor } from './tag-status-utils';
+
+describe('getThemedBackgroundColor()', () => {
+  it.each<[TagStatusColor, Theme]>([
+    ['background-default', 'light'],
+    ['neutral-contrast-high', 'light'],
+    ['notification-success', 'light'],
+    ['notification-warning', 'light'],
+    ['notification-error', 'light'],
+    ['notification-neutral', 'light'],
+    ['background-surface', 'light'],
+    ['background-default', 'dark'],
+    ['neutral-contrast-high', 'dark'],
+    ['notification-success', 'dark'],
+    ['notification-warning', 'dark'],
+    ['notification-error', 'dark'],
+    ['notification-neutral', 'dark'],
+    ['background-surface', 'dark'],
+  ])('should return correct backgroundColor for color: %s, theme: %s', (color, theme) => {
+    const themedColors = getThemedColors(theme);
+    expect(getThemedBackgroundColor(color, themedColors)).toMatchSnapshot();
+  });
+});
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
