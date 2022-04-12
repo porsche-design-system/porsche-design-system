@@ -1,6 +1,7 @@
 import type { Page } from 'puppeteer';
 import {
   expectA11yToMatchSnapshot,
+  getActiveElementTagName,
   getLifecycleStatus,
   initAddEventListener,
   selectNode,
@@ -32,6 +33,28 @@ const initTagDismissible = async (props?: InitOpts) => {
 
 const getHost = () => selectNode(page, 'p-tag-dismissible');
 const getButton = () => selectNode(page, 'p-tag-dismissible >>> button');
+
+describe('focus', () => {
+  it('should provide functionality to focus & blur the custom element', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+    <a href="#" id="before">before</a>
+    <p-tag-dismissible>Some Tag</p-tag-dismissible>`
+    );
+
+    const host = await getHost();
+    const hostHasFocus = () => host.evaluate((el) => document.activeElement === el);
+
+    const before = await selectNode(page, '#before');
+    await before.focus();
+    expect(await hostHasFocus()).toBe(false);
+    await host.focus();
+    expect(await hostHasFocus()).toBe(true);
+    await host.evaluate((el: HTMLElement) => el.blur());
+    expect(await hostHasFocus()).toBe(false);
+  });
+});
 
 describe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
