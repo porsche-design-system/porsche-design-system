@@ -11,6 +11,6 @@ describe('componentWillRender', () => {
     component.color = 'background-default';
     component.componentWillRender();
 
-    expect(spy).toBeCalledWith('default', TAG_DISMISSIBLE_COLORS, 'color');
+    expect(spy).toBeCalledWith('background-default', TAG_DISMISSIBLE_COLORS, 'color');
   });
 });

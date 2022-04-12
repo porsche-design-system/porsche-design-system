@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for color: background-surface, isFocusable: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for color: background-default, isFocusable: false and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -9,12 +9,84 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 24px;
-  padding: 0 6px;
-  border-radius: 4px;
-  background: #262b2e;
+  height: 1.5rem;
+  padding: 0 0.375rem;
+  border-radius: 0.25rem;
+  background: #0e1418;
   color: #fff;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  white-space: nowrap;
+}
+::slotted(br) {
+  display: none !important;
+}
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
+}
+.icon {
+  margin: 0 0.125rem 0 -0.125rem;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: background-default, isFocusable: false and theme: light 1`] = `
+":host {
+  display: inline-flex;
+  vertical-align: top;
+}
+span {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 1.5rem;
+  padding: 0 0.375rem;
+  border-radius: 0.25rem;
+  background: #fff;
+  color: #000;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  white-space: nowrap;
+}
+::slotted(br) {
+  display: none !important;
+}
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
+}
+.icon {
+  margin: 0 0.125rem 0 -0.125rem;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: background-default, isFocusable: true and theme: dark 1`] = `
+":host {
+  display: inline-flex;
+  vertical-align: top;
+}
+span {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 1.5rem;
+  padding: 0 0.375rem;
+  border-radius: 0.25rem;
+  background: #0e1418;
+  color: #fff;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   white-space: nowrap;
@@ -75,10 +147,178 @@ span:hover {
   font-style: normal !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 4px !important;
+  border-radius: 0.25rem !important;
 }
 .icon {
-  margin: 0 2px 0 -2px;
+  margin: 0 0.125rem 0 -0.125rem;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: background-default, isFocusable: true and theme: light 1`] = `
+":host {
+  display: inline-flex;
+  vertical-align: top;
+}
+span {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 1.5rem;
+  padding: 0 0.375rem;
+  border-radius: 0.25rem;
+  background: #fff;
+  color: #000;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  white-space: nowrap;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+span:hover {
+  color: #d5001c;
+}
+::slotted(a), ::slotted(button) {
+  display: inline !important;
+  position: static !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+  font: inherit !important;
+  outline: 0 !important;
+}
+::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
+  border: 0 !important;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  content: \\"\\" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
+}
+::slotted(a:focus)::before, ::slotted(button:focus)::before {
+  outline-color: currentColor !important;
+}
+::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
+  outline-color: transparent !important;
+}
+::slotted(a) {
+  color: #000 !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
+}
+::slotted(a:hover) {
+  color: #d5001c !important;
+}
+::slotted(button) {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: 0 !important;
+  border: 0 !important;
+  color: inherit !important;
+  text-align: left !important;
+}
+::slotted(br) {
+  display: none !important;
+}
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  border-radius: 0.25rem !important;
+}
+.icon {
+  margin: 0 0.125rem 0 -0.125rem;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: background-surface, isFocusable: true and theme: dark 1`] = `
+":host {
+  display: inline-flex;
+  vertical-align: top;
+}
+span {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 1.5rem;
+  padding: 0 0.375rem;
+  border-radius: 0.25rem;
+  background: #262b2e;
+  color: #fff;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  white-space: nowrap;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+span:hover {
+  color: #ff0223;
+}
+::slotted(a), ::slotted(button) {
+  display: inline !important;
+  position: static !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+  font: inherit !important;
+  outline: 0 !important;
+}
+::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
+  border: 0 !important;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  content: \\"\\" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
+}
+::slotted(a:focus)::before, ::slotted(button:focus)::before {
+  outline-color: currentColor !important;
+}
+::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
+  outline-color: transparent !important;
+}
+::slotted(a) {
+  color: #fff !important;
+  transition: color var(--p-transition-duration, .24s) ease !important;
+}
+::slotted(a:hover) {
+  color: #ff0223 !important;
+}
+::slotted(button) {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: 0 !important;
+  border: 0 !important;
+  color: inherit !important;
+  text-align: left !important;
+}
+::slotted(br) {
+  display: none !important;
+}
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  border-radius: 0.25rem !important;
+}
+.icon {
+  margin: 0 0.125rem 0 -0.125rem;
 }"
 `;
 
@@ -91,12 +331,14 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 24px;
-  padding: 0 6px;
-  border-radius: 4px;
+  height: 1.5rem;
+  padding: 0 0.375rem;
+  border-radius: 0.25rem;
   background: #f2f2f2;
   color: #000;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   white-space: nowrap;
@@ -157,242 +399,10 @@ span:hover {
   font-style: normal !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 4px !important;
+  border-radius: 0.25rem !important;
 }
 .icon {
-  margin: 0 2px 0 -2px;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: default, isFocusable: false and theme: dark 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top;
-}
-span {
-  display: flex;
-  align-items: center;
-  position: relative;
-  height: 24px;
-  padding: 0 6px;
-  border-radius: 4px;
-  background: #0e1418;
-  color: #fff;
-  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-  white-space: nowrap;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-::slotted(br) {
-  display: none !important;
-}
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: normal !important;
-}
-.icon {
-  margin: 0 2px 0 -2px;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: default, isFocusable: false and theme: light 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top;
-}
-span {
-  display: flex;
-  align-items: center;
-  position: relative;
-  height: 24px;
-  padding: 0 6px;
-  border-radius: 4px;
-  background: #fff;
-  color: #000;
-  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-  white-space: nowrap;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-::slotted(br) {
-  display: none !important;
-}
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: normal !important;
-}
-.icon {
-  margin: 0 2px 0 -2px;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: default, isFocusable: true and theme: dark 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top;
-}
-span {
-  display: flex;
-  align-items: center;
-  position: relative;
-  height: 24px;
-  padding: 0 6px;
-  border-radius: 4px;
-  background: #0e1418;
-  color: #fff;
-  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-  white-space: nowrap;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-span:hover {
-  color: #ff0223;
-}
-::slotted(a), ::slotted(button) {
-  display: inline !important;
-  position: static !important;
-  text-decoration: underline !important;
-  cursor: pointer !important;
-  font: inherit !important;
-  outline: 0 !important;
-}
-::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
-  border: 0 !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
-}
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: currentColor !important;
-}
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent !important;
-}
-::slotted(a) {
-  color: #fff !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
-::slotted(a:hover) {
-  color: #ff0223 !important;
-}
-::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  background: 0 !important;
-  border: 0 !important;
-  color: inherit !important;
-  text-align: left !important;
-}
-::slotted(br) {
-  display: none !important;
-}
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: normal !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 4px !important;
-}
-.icon {
-  margin: 0 2px 0 -2px;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for color: default, isFocusable: true and theme: light 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top;
-}
-span {
-  display: flex;
-  align-items: center;
-  position: relative;
-  height: 24px;
-  padding: 0 6px;
-  border-radius: 4px;
-  background: #fff;
-  color: #000;
-  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-  white-space: nowrap;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-span:hover {
-  color: #d5001c;
-}
-::slotted(a), ::slotted(button) {
-  display: inline !important;
-  position: static !important;
-  text-decoration: underline !important;
-  cursor: pointer !important;
-  font: inherit !important;
-  outline: 0 !important;
-}
-::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
-  border: 0 !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  content: \\"\\" !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
-}
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: currentColor !important;
-}
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent !important;
-}
-::slotted(a) {
-  color: #000 !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
-}
-::slotted(a:hover) {
-  color: #d5001c !important;
-}
-::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  background: 0 !important;
-  border: 0 !important;
-  color: inherit !important;
-  text-align: left !important;
-}
-::slotted(br) {
-  display: none !important;
-}
-::slotted(strong), ::slotted(b) {
-  font-weight: 700 !important;
-}
-::slotted(em), ::slotted(i) {
-  font-style: normal !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 4px !important;
-}
-.icon {
-  margin: 0 2px 0 -2px;
+  margin: 0 0.125rem 0 -0.125rem;
 }"
 `;
 
@@ -405,12 +415,14 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 24px;
-  padding: 0 6px;
-  border-radius: 4px;
+  height: 1.5rem;
+  padding: 0 0.375rem;
+  border-radius: 0.25rem;
   background: #e3e4e5;
   color: #000;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   white-space: nowrap;
@@ -475,10 +487,10 @@ span:hover {
   font-style: normal !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 4px !important;
+  border-radius: 0.25rem !important;
 }
 .icon {
-  margin: 0 2px 0 -2px;
+  margin: 0 0.125rem 0 -0.125rem;
 }"
 `;
 
@@ -491,12 +503,14 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 24px;
-  padding: 0 6px;
-  border-radius: 4px;
+  height: 1.5rem;
+  padding: 0 0.375rem;
+  border-radius: 0.25rem;
   background: #323639;
   color: #fff;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   white-space: nowrap;
@@ -561,10 +575,10 @@ span:hover {
   font-style: normal !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 4px !important;
+  border-radius: 0.25rem !important;
 }
 .icon {
-  margin: 0 2px 0 -2px;
+  margin: 0 0.125rem 0 -0.125rem;
 }"
 `;
 
@@ -577,12 +591,14 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 24px;
-  padding: 0 6px;
-  border-radius: 4px;
+  height: 1.5rem;
+  padding: 0 0.375rem;
+  border-radius: 0.25rem;
   background: #fec5c5;
   color: #000;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   white-space: nowrap;
@@ -647,10 +663,10 @@ span:hover {
   font-style: normal !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 4px !important;
+  border-radius: 0.25rem !important;
 }
 .icon {
-  margin: 0 2px 0 -2px;
+  margin: 0 0.125rem 0 -0.125rem;
 }"
 `;
 
@@ -663,12 +679,14 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 24px;
-  padding: 0 6px;
-  border-radius: 4px;
+  height: 1.5rem;
+  padding: 0 0.375rem;
+  border-radius: 0.25rem;
   background: #fae6e6;
   color: #000;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   white-space: nowrap;
@@ -729,10 +747,10 @@ span:hover {
   font-style: normal !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 4px !important;
+  border-radius: 0.25rem !important;
 }
 .icon {
-  margin: 0 2px 0 -2px;
+  margin: 0 0.125rem 0 -0.125rem;
 }"
 `;
 
@@ -745,12 +763,14 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 24px;
-  padding: 0 6px;
-  border-radius: 4px;
+  height: 1.5rem;
+  padding: 0 0.375rem;
+  border-radius: 0.25rem;
   background: #c7e4ff;
   color: #000;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   white-space: nowrap;
@@ -815,10 +835,10 @@ span:hover {
   font-style: normal !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 4px !important;
+  border-radius: 0.25rem !important;
 }
 .icon {
-  margin: 0 2px 0 -2px;
+  margin: 0 0.125rem 0 -0.125rem;
 }"
 `;
 
@@ -831,12 +851,14 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 24px;
-  padding: 0 6px;
-  border-radius: 4px;
+  height: 1.5rem;
+  padding: 0 0.375rem;
+  border-radius: 0.25rem;
   background: #e5eff8;
   color: #000;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   white-space: nowrap;
@@ -897,10 +919,10 @@ span:hover {
   font-style: normal !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 4px !important;
+  border-radius: 0.25rem !important;
 }
 .icon {
-  margin: 0 2px 0 -2px;
+  margin: 0 0.125rem 0 -0.125rem;
 }"
 `;
 
@@ -913,12 +935,14 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 24px;
-  padding: 0 6px;
-  border-radius: 4px;
+  height: 1.5rem;
+  padding: 0 0.375rem;
+  border-radius: 0.25rem;
   background: #bfeec6;
   color: #000;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   white-space: nowrap;
@@ -983,10 +1007,10 @@ span:hover {
   font-style: normal !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 4px !important;
+  border-radius: 0.25rem !important;
 }
 .icon {
-  margin: 0 2px 0 -2px;
+  margin: 0 0.125rem 0 -0.125rem;
 }"
 `;
 
@@ -999,12 +1023,14 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 24px;
-  padding: 0 6px;
-  border-radius: 4px;
+  height: 1.5rem;
+  padding: 0 0.375rem;
+  border-radius: 0.25rem;
   background: #e5f3e7;
   color: #000;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   white-space: nowrap;
@@ -1065,10 +1091,10 @@ span:hover {
   font-style: normal !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 4px !important;
+  border-radius: 0.25rem !important;
 }
 .icon {
-  margin: 0 2px 0 -2px;
+  margin: 0 0.125rem 0 -0.125rem;
 }"
 `;
 
@@ -1081,12 +1107,14 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 24px;
-  padding: 0 6px;
-  border-radius: 4px;
+  height: 1.5rem;
+  padding: 0 0.375rem;
+  border-radius: 0.25rem;
   background: #ffe6bf;
   color: #000;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   white-space: nowrap;
@@ -1151,10 +1179,10 @@ span:hover {
   font-style: normal !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 4px !important;
+  border-radius: 0.25rem !important;
 }
 .icon {
-  margin: 0 2px 0 -2px;
+  margin: 0 0.125rem 0 -0.125rem;
 }"
 `;
 
@@ -1167,12 +1195,14 @@ span {
   display: flex;
   align-items: center;
   position: relative;
-  height: 24px;
-  padding: 0 6px;
-  border-radius: 4px;
+  height: 1.5rem;
+  padding: 0 0.375rem;
+  border-radius: 0.25rem;
   background: #fff5e5;
   color: #000;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   white-space: nowrap;
@@ -1233,9 +1263,9 @@ span:hover {
   font-style: normal !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 4px !important;
+  border-radius: 0.25rem !important;
 }
 .icon {
-  margin: 0 2px 0 -2px;
+  margin: 0 0.125rem 0 -0.125rem;
 }"
 `;
