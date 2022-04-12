@@ -33,6 +33,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       });
 
       await forceHoverState(page, '.hover p-tag-dismissible >>> button');
+      await forceFocusState(page, '.focus p-tag-dismissible'); // native outline should not be visible
       await forceFocusState(page, '.focus p-tag-dismissible >>> button');
       await forceFocusHoverState(page, '.focus-hover p-tag-dismissible >>> button');
     })
