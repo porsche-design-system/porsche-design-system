@@ -136,7 +136,7 @@ export const getComponentCss = (tagStatusColor: TagStatusColor, isFocusable: boo
           fontWeight: fontWeight.bold,
         },
         '&(em),&(i)': {
-          fontStyle: fontStyle,
+          fontStyle,
         },
       }),
     },

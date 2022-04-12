@@ -42,7 +42,7 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
           fontWeight: fontWeight.bold,
         },
         '&(em),&(i)': {
-          fontStyle: fontStyle,
+          fontStyle,
         },
       }),
     },
