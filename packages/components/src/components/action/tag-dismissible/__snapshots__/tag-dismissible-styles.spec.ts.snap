@@ -31,7 +31,7 @@ button::before {
   right: -3px;
   bottom: -3px;
   border: 1px solid transparent;
-  border-radius: 0.40625rem;
+  border-radius: 0.375rem;
   transition: border-color var(--p-transition-duration, .24s) ease;
 }
 button:hover .icon {
@@ -103,7 +103,7 @@ button::before {
   right: -3px;
   bottom: -3px;
   border: 1px solid transparent;
-  border-radius: 0.40625rem;
+  border-radius: 0.375rem;
   transition: border-color var(--p-transition-duration, .24s) ease;
 }
 button:hover .icon {
@@ -182,7 +182,7 @@ button::before {
   right: -3px;
   bottom: -3px;
   border: 1px solid transparent;
-  border-radius: 0.40625rem;
+  border-radius: 0.375rem;
   transition: border-color var(--p-transition-duration, .24s) ease;
 }
 button:hover .icon {
