@@ -1,5 +1,34 @@
 import type { Styles } from 'jss';
-import { getMinifiedCss } from '../../../src/styles/getMinifiedCss';
+import { getMinifiedCss, getCss } from '../../../src/styles/getMinifiedCss';
+
+describe('getCss()', () => {
+  it.each<Parameters<typeof getCss>>([
+    [{ ':host': { display: 'block', marginLeft: 5 } }],
+    [
+      {
+        ':host': { display: 'block', marginLeft: '5px !important' },
+        '@media (min-width: 760px)': { ':host': { marginRight: '5px !important' } },
+      },
+    ],
+    [
+      {
+        '@global': {
+          div: {
+            fontFamily: 'Porsche Next',
+            fontStyle: 'normal',
+            fontWeight: 100,
+            src: `url('http://localhost:3001/fonts/porsche-next-w-la-thin.min.3e75ff5246ab2497c06392d22ff862d0.woff2') format('woff2'), url('http://localhost:3001/fonts/porsche-next-w-la-thin.min.81f87510ec34b02b07eb9945ff2da422.woff') format('woff')`,
+            unicodeRange:
+              'U+0020-007F, U+0080-00FF, U+0100-017F, U+0180-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F, U+0E00-0E7F, U+1E00-1EFF, U+2000-206F, U+2070-209F, U+20A0-20CF, U+2100-214F, U+2150-218F, U+2190-21FF, U+2200-22FF, U+25A0-25FF, U+2600-26FF, U+FB00-FB4F, U+FE70-FEFF',
+            fontDisplay: 'swap',
+          },
+        },
+      },
+    ],
+  ])('should return correct css for opts: %s', (...args) => {
+    expect(getCss(...args)).toMatchSnapshot();
+  });
+});
 
 describe('getMinifiedCss()', () => {
   const data: { input: Styles; result: string }[] = [

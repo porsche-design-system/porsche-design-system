@@ -6,25 +6,29 @@ const breakpointVariables = fs.readFileSync(path.resolve('./src/scss/lib/_breakp
 const mediaQueryMixin = fs.readFileSync(path.resolve('./src/scss/_media-query.scss'), 'utf8');
 const mixin = mediaQueryMixin.replace("@import 'lib/_breakpoint.scss';", breakpointVariables);
 
+const getCss = (scenario: string): string => {
+  return sass.compileString(`${mixin} ${scenario}`).css;
+};
+
 describe('pds-media-query-min()', () => {
   it.each(['xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl'])('should return correct css for breakpoint: %s', (breakpoint) => {
-    const result = sass.compileString(`${mixin} div {
+    const result = getCss(`div {
       @include pds-media-query-min(${breakpoint}) {
         color: deeppink;
       }
     }`);
-    expect(result.css).toMatchSnapshot();
+    expect(result).toMatchSnapshot();
   });
 });
 
 describe('pds-media-query-max()', () => {
   it.each(['xs', 's', 'm', 'l', 'xl', 'xxl'])('should return correct css for breakpoint: %s', (breakpoint) => {
-    const result = sass.compileString(`${mixin} div {
+    const result = getCss(`div {
       @include pds-media-query-max(${breakpoint}) {
         color: deeppink;
       }
     }`);
-    expect(result.css).toMatchSnapshot();
+    expect(result).toMatchSnapshot();
   });
 });
 
@@ -37,11 +41,11 @@ describe('pds-media-query-min-max()', () => {
     ['l', 'xl'],
     ['xl', 'xxl'],
   ])('should return correct css for breakpoint range: %s - %s', (min, max) => {
-    const result = sass.compileString(`${mixin} div {
+    const result = getCss(`div {
       @include pds-media-query-min-max(${min}, ${max}) {
         color: deeppink;
       }
     }`);
-    expect(result.css).toMatchSnapshot();
+    expect(result).toMatchSnapshot();
   });
 });

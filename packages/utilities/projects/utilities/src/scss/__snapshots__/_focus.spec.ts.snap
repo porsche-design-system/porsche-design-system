@@ -41,7 +41,7 @@ div::-moz-focus-inner {
   border: 0;
 }
 div:focus {
-  outline-color: \\"currentColor\\";
+  outline-color: currentColor;
 }
 div:focus:not(:focus-visible) {
   outline-color: transparent;

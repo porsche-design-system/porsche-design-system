@@ -1,4 +1,4 @@
-@mixin pds-focus($color: 'currentColor', $offset: 2px) {
+@mixin pds-focus($color: currentColor, $offset: 2px) {
   outline: transparent solid 1px;
   outline-offset: $offset;
 

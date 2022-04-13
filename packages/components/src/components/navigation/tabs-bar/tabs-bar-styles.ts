@@ -3,7 +3,8 @@ import type { TabGradientColorTheme, TabSize, TabWeight } from './tabs-bar-utils
 import type { ThemeExtendedElectric } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import { addImportantToEachRule, addImportantToRule, getTransition, getThemedColors } from '../../../styles';
-import { fontSize, fontWeight, textSmall } from '@porsche-design-system/utilities-v2';
+import { getFontWeight } from '../../../styles/font-weight-styles';
+import { fontSize, textSmall } from '@porsche-design-system/utilities-v2';
 
 const tabsTransitionDuration = '.4s';
 
@@ -75,7 +76,7 @@ export const getComponentCss = (
     root: {
       position: 'relative',
       ...textSmall,
-      fontWeight: fontWeight[weight === 'semibold' ? 'semiBold' : weight],
+      fontWeight: getFontWeight(weight),
       margin: '0 -4px',
       ...buildResponsiveStyles(size, (s: TabSize) => fontSize[s]),
     },
