@@ -25,9 +25,9 @@ const prettified = (style: string): string => {
   const classRegExp = new RegExp(`(.${STYLED_COMPONENTS_AUTO_GENERATED_CLASS_NAME} )`, 'g');
   style = prettier.format(style, { parser: 'scss' });
   return style
-    .replace(classRegExp, '.')
-    .replace(/(-[0-9]){3}/g, '')
-    .replace(/\n+/g, '');
+    .replace(classRegExp, '.') // removes random class name from styled-components
+    .replace(/(-[0-9]){3}/g, '') // removes random class name suffix from react-jss
+    .replace(/\n+/g, ''); // removes empty lines
 };
 
 const StyledComponentsSample = (): JSX.Element => (
