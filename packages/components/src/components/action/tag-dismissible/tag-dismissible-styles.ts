@@ -1,11 +1,11 @@
 import {
-  getFocusJssStyle,
-  getThemedColors,
-  pxToRemWithUnit,
-  getTransition,
   addImportantToEachRule,
   addImportantToRule,
+  getInsetJssStyle,
   getScreenReaderOnlyJssStyle,
+  getThemedColors,
+  getTransition,
+  pxToRemWithUnit,
 } from '../../../styles';
 import { getCss } from '../../../utils';
 import type { TagDismissibleColor } from './tag-dismissible-utils';
@@ -35,14 +35,29 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
         color: baseColor,
         textAlign: 'left',
         ...textSmall,
-        ...getFocusJssStyle({ color: baseColor }),
-        transition: getTransition('outline'),
+        outline: 0,
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          ...getInsetJssStyle(-3),
+          border: '1px solid transparent',
+          borderRadius: pxToRemWithUnit(6.5),
+          transition: getTransition('border-color'),
+        },
+        '&:focus': {
+          '&::before': {
+            borderColor: baseColor,
+            '&:not(:focus-visible)::before': {
+              borderColor: 'transparent',
+            },
+          },
+        },
         '&:hover': {
           '& .icon': {
             color: hoverColor,
           },
-          '&:focus': {
-            outlineColor: hoverColor,
+          '&:focus::before': {
+            borderColor: hoverColor,
           },
         },
       },

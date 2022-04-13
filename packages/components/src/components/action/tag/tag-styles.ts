@@ -8,8 +8,8 @@ import {
   ThemedColors,
 } from '../../../styles';
 import { fontStyle, fontWeight, textXSmall } from '@porsche-design-system/utilities-v2';
-import { hasInvertedThemeColor } from './tag-utils';
 import type { TagColor } from './tag-utils';
+import { hasInvertedThemeColor } from './tag-utils';
 import type { Theme } from '../../../types';
 import type { JssStyle } from 'jss';
 
