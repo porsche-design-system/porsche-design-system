@@ -72,6 +72,9 @@ describe('addImportantToEachRule()', () => {
         color: 'orange',
       },
     },
+    fontSize: null,
+    margin: 0,
+    content: '""',
   };
 
   it('should add !important to each rule', () => {
