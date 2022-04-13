@@ -23,7 +23,7 @@ button {
   text-size-adjust: none;
   outline: 1px solid transparent;
   outline-offset: 2px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: outline var(--p-transition-duration, .24s) ease;
 }
 button::-moz-focus-inner {
   border: 0;
@@ -34,8 +34,11 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  background: #e3e4e5;
+button:focus-visible:hover {
+  outline-color: #d5001c;
+}
+button:hover .icon {
+  color: #d5001c;
 }
 ::slotted(strong), ::slotted(b) {
   font-weight: 700 !important;
@@ -48,6 +51,7 @@ button:hover {
   top: 50%;
   margin-top: -0.75rem;
   right: 0.75rem;
+  transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
   position: absolute;
@@ -85,7 +89,7 @@ button {
   text-size-adjust: none;
   outline: 1px solid transparent;
   outline-offset: 2px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: outline var(--p-transition-duration, .24s) ease;
 }
 button::-moz-focus-inner {
   border: 0;
@@ -96,8 +100,11 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  background: #e3e4e5;
+button:focus-visible:hover {
+  outline-color: #d5001c;
+}
+button:hover .icon {
+  color: #d5001c;
 }
 ::slotted(strong), ::slotted(b) {
   font-weight: 700 !important;
@@ -117,6 +124,7 @@ button:hover {
   top: 50%;
   margin-top: -0.75rem;
   right: 0.75rem;
+  transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
   position: absolute;
@@ -154,7 +162,7 @@ button {
   text-size-adjust: none;
   outline: 1px solid transparent;
   outline-offset: 2px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: outline var(--p-transition-duration, .24s) ease;
 }
 button::-moz-focus-inner {
   border: 0;
@@ -165,8 +173,11 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  background: #e3e4e5;
+button:focus-visible:hover {
+  outline-color: #d5001c;
+}
+button:hover .icon {
+  color: #d5001c;
 }
 ::slotted(strong), ::slotted(b) {
   font-weight: 700 !important;
@@ -186,6 +197,7 @@ button:hover {
   top: 50%;
   margin-top: -0.75rem;
   right: 0.75rem;
+  transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
   position: absolute;
