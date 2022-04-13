@@ -1,4 +1,4 @@
-import * as validationUtils from '../../../../utils/validation';
+import * as validationUtils from '../../../utils/validation';
 import { TagDismissible } from './tag-dismissible';
 import { TAG_DISMISSIBLE_COLORS } from './tag-dismissible-utils';
 

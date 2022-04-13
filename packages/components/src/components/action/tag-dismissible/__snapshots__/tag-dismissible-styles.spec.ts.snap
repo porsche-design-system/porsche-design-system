@@ -4,6 +4,7 @@ exports[`getComponentCss() should return correct css for color: background-defau
 ":host {
   display: inline-flex;
   vertical-align: top;
+  outline: 0 !important;
 }
 button {
   position: relative;
@@ -65,6 +66,7 @@ exports[`getComponentCss() should return correct css for color: background-defau
 ":host {
   display: inline-flex;
   vertical-align: top;
+  outline: 0 !important;
 }
 button {
   position: relative;
@@ -133,6 +135,7 @@ exports[`getComponentCss() should return correct css for color: background-surfa
 ":host {
   display: inline-flex;
   vertical-align: top;
+  outline: 0 !important;
 }
 button {
   position: relative;

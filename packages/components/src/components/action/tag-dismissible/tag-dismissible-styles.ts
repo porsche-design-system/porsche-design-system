@@ -5,15 +5,15 @@ import {
   getTransition,
   addImportantToEachRule,
   addImportantToRule,
-} from '../../../../styles';
-import { getCss } from '../../../../utils';
+} from '../../../styles';
+import { getCss } from '../../../utils';
 import type { TagDismissibleColor } from './tag-dismissible-utils';
 import { textSmall, getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
-import { getThemedBackgroundColor, slottedTextStyles } from '../tag-status/tag-status-styles';
+import { getThemedBackgroundColor, slottedTextStyles } from '../tag/tag-styles';
 
 export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): string => {
   const themedColors = getThemedColors('light');
-  const { baseColor, contrastLowColor, contrastMediumColor } = themedColors;
+  const { baseColor, hoverColor, contrastMediumColor } = themedColors;
   const backgroundColor = getThemedBackgroundColor(color, themedColors);
 
   return getCss({
@@ -35,9 +35,9 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
         textAlign: 'left',
         ...textSmall,
         ...getFocusJssStyle({ color: baseColor }),
-        transition: getTransition('background-color'),
+        transition: getTransition('color'),
         '&:hover': {
-          background: contrastLowColor,
+          outlineColor: hoverColor,
         },
       },
       '::slotted': addImportantToEachRule(slottedTextStyles),

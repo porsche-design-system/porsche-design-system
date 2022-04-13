@@ -1,13 +1,13 @@
-import * as getDirectChildHTMLElementUtils from '../../../../utils/dom/getDirectChildHTMLElement';
-import * as validationUtils from '../../../../utils/validation';
-import { TagStatus } from './tag-status';
-import { TAG_STATUS_COLORS } from './tag-status-utils';
+import * as getDirectChildHTMLElementUtils from '../../../utils/dom/getDirectChildHTMLElement';
+import * as validationUtils from '../../../utils/validation';
+import { Tag } from './tag';
+import { TAG_COLORS } from './tag-utils';
 
 describe('componentWillRender', () => {
   it('should call getDirectChildHTMLElement() with correct parameters', () => {
     const spy = jest.spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement');
-    const component = new TagStatus();
-    component.host = document.createElement('p-tag-status');
+    const component = new Tag();
+    component.host = document.createElement('p-tag');
     // pseudo-class selector ':scope>*' is missing in jsdom
     try {
       component.componentWillRender();
@@ -18,8 +18,8 @@ describe('componentWillRender', () => {
 
   it('should call throwIfValueIsInvalid() with correct parameters', () => {
     const spy = jest.spyOn(validationUtils, 'throwIfValueIsInvalid');
-    const component = new TagStatus();
-    component.host = document.createElement('p-tag-status');
+    const component = new Tag();
+    component.host = document.createElement('p-tag');
     component.host.attachShadow({ mode: 'open' });
     component.color = 'background-default';
     // pseudo-class selector ':scope>*' is missing in jsdom
@@ -27,6 +27,6 @@ describe('componentWillRender', () => {
       component.componentWillRender();
     } catch {}
 
-    expect(spy).toBeCalledWith('background-default', TAG_STATUS_COLORS, 'color');
+    expect(spy).toBeCalledWith('background-default', TAG_COLORS, 'color');
   });
 });

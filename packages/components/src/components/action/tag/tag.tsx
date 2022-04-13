@@ -1,27 +1,27 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import type { TagStatusColor } from './tag-status-utils';
+import type { TagColor } from './tag-utils';
 import {
   attachComponentCss,
   getDirectChildHTMLElement,
   getPrefixedTagNames,
   throwIfValueIsInvalid,
-} from '../../../../utils';
-import { getComponentCss } from './tag-status-styles';
-import type { IconName, Theme } from '../../../../types';
-import { TAG_STATUS_COLORS } from './tag-status-utils';
+} from '../../../utils';
+import { getComponentCss } from './tag-styles';
+import type { IconName, Theme } from '../../../types';
+import { TAG_COLORS } from './tag-utils';
 
 @Component({
-  tag: 'p-tag-status',
+  tag: 'p-tag',
   shadow: true,
 })
-export class TagStatus {
+export class Tag {
   @Element() public host!: HTMLElement;
 
   /** Adapts the tag color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
   /** Background color variations depending on theme property. */
-  @Prop() public color?: TagStatusColor = 'background-surface';
+  @Prop() public color?: TagColor = 'background-surface';
 
   /** The icon shown. */
   @Prop() public icon?: IconName;
@@ -30,7 +30,7 @@ export class TagStatus {
   @Prop() public iconSource?: string;
 
   public componentWillRender(): void {
-    throwIfValueIsInvalid(this.color, TAG_STATUS_COLORS, 'color');
+    throwIfValueIsInvalid(this.color, TAG_COLORS, 'color');
     attachComponentCss(
       this.host,
       getComponentCss,

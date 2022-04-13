@@ -1,8 +1,8 @@
-import { hasInvertedThemeColor, TagStatusColor } from './tag-status-utils';
-import { Theme } from '../../../../types';
+import { hasInvertedThemeColor, TagColor } from './tag-utils';
+import type { Theme } from '../../../types';
 
 describe('hasInvertedThemeColor()', () => {
-  it.each<[TagStatusColor, Theme, boolean]>([
+  it.each<[TagColor, Theme, boolean]>([
     ['background-surface', 'light', false],
     ['background-default', 'light', false],
     ['neutral-contrast-high', 'light', true],
