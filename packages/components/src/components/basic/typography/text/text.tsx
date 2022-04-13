@@ -44,9 +44,6 @@ export class Text {
 
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
-  }
-
-  public componentWillRender(): void {
     attachComponentCss(
       this.host,
       getComponentCss,
@@ -55,7 +52,7 @@ export class Text {
       this.align,
       this.color,
       this.ellipsis,
-      this.theme,
+      this.theme
     );
   }
 
