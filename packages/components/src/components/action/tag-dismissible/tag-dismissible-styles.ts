@@ -41,9 +41,9 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
           '& .icon': {
             color: hoverColor,
           },
-        },
-        '&:focus-visible:hover': {
-          outlineColor: hoverColor,
+          '&:focus': {
+            outlineColor: hoverColor,
+          },
         },
       },
       '::slotted': addImportantToEachRule(slottedTextStyles),
