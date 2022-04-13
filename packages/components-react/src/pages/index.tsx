@@ -204,6 +204,11 @@ export const generatedRoutes: RouteType[] = [
     element: <ModalBasicPage />,
   },
   {
+    name: 'Modal Full Width Slot',
+    path: '/modal-full-width-slot',
+    element: <ModalFullWidthSlotPage />,
+  },
+  {
     name: 'Modal Fullscreen',
     path: '/modal-fullscreen',
     element: <ModalFullscreenPage />,
@@ -212,11 +217,6 @@ export const generatedRoutes: RouteType[] = [
     name: 'Modal Fullscreen Breakpoint',
     path: '/modal-fullscreen-breakpoint',
     element: <ModalFullscreenBreakpointPage />,
-  },
-  {
-    name: 'Modal Full Width Slot',
-    path: '/modal-full-width-slot',
-    element: <ModalFullWidthSlotPage />,
   },
   {
     name: 'Modal No Heading',
@@ -304,16 +304,6 @@ export const generatedRoutes: RouteType[] = [
     element: <TextPage />,
   },
   {
-    name: 'Textarea Wrapper',
-    path: '/textarea-wrapper',
-    element: <TextareaWrapperPage />,
-  },
-  {
-    name: 'Textarea Wrapper Skeleton',
-    path: '/textarea-wrapper-skeleton',
-    element: <TextareaWrapperSkeletonPage />,
-  },
-  {
     name: 'Text Field Wrapper',
     path: '/text-field-wrapper',
     element: <TextFieldWrapperPage />,
@@ -327,6 +317,16 @@ export const generatedRoutes: RouteType[] = [
     name: 'Text List',
     path: '/text-list',
     element: <TextListPage />,
+  },
+  {
+    name: 'Textarea Wrapper',
+    path: '/textarea-wrapper',
+    element: <TextareaWrapperPage />,
+  },
+  {
+    name: 'Textarea Wrapper Skeleton',
+    path: '/textarea-wrapper-skeleton',
+    element: <TextareaWrapperSkeletonPage />,
   },
   {
     name: 'Toast Basic',

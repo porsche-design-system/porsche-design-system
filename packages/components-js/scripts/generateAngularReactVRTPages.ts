@@ -51,13 +51,15 @@ const getRoutes = (importPaths: string[], framework: Framework): string => {
   return (
     importPaths
       .filter((importPath) => !isPageWithoutRoute(importPath))
+      .map(normalizeImportPath)
+      .sort(byAlphabet)
       .map((importPath) =>
         [
           '{',
           ...[
-            `name: '${capitalCase(normalizeImportPath(importPath))}'`,
-            `path: '${pathPrefix}${normalizeImportPath(importPath)}'`,
-            isAngular ? `component: ${pascalCase(importPath)}` : `element: <${pascalCase(importPath)}Page />`,
+            `name: '${capitalCase(importPath)}'`,
+            `path: '${pathPrefix}${importPath}'`,
+            isAngular ? `component: ${pascalCase(importPath)}Component` : `element: <${pascalCase(importPath)}Page />`,
           ].map((x) => `  ${x},`),
           '}',
         ]
@@ -386,7 +388,10 @@ export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
   if (framework === 'angular') {
     frameworkImports = [separator, importsAndExports].join('\n');
     frameworkRoutes = `export const generatedPages = [
-  ${importPaths.map((importPath) => pascalCase(importPath)).join(',\n  ')},
+  ${importPaths
+    .map((importPath) => pascalCase(importPath))
+    .sort(byAlphabet)
+    .join(',\n  ')},
 ];
 
 export const generatedRoutes: ExtendedRoute[] = [\n${routes}\n];`;
