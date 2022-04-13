@@ -11830,7 +11830,7 @@ jsprim@^1.2.2:
     json-schema "0.4.0"
     verror "1.10.0"
 
-jss-plugin-camel-case@10.9.0, jss-plugin-camel-case@^10.9.0:
+jss-plugin-camel-case@10.9.0:
   version "10.9.0"
   resolved "https://registry.yarnpkg.com/jss-plugin-camel-case/-/jss-plugin-camel-case-10.9.0.tgz#4921b568b38d893f39736ee8c4c5f1c64670aaf7"
   integrity sha512-UH6uPpnDk413/r/2Olmw4+y54yEF2lRIV8XIZyuYpgPYTITLlPOsq6XB9qeqv+75SQSg3KLocq5jUBXW8qWWww==
@@ -11881,7 +11881,7 @@ jss-plugin-global@10.9.0:
     "@babel/runtime" "^7.3.1"
     jss "10.9.0"
 
-jss-plugin-nested@10.9.0, jss-plugin-nested@^10.9.0:
+jss-plugin-nested@10.9.0:
   version "10.9.0"
   resolved "https://registry.yarnpkg.com/jss-plugin-nested/-/jss-plugin-nested-10.9.0.tgz#cc1c7d63ad542c3ccc6e2c66c8328c6b6b00f4b3"
   integrity sha512-2UJnDrfCZpMYcpPYR16oZB7VAC6b/1QLsRiAutOt7wJaaqwCBvNsosLEu/fUyKNQNGdvg2PPJFDO5AX7dwxtoA==
