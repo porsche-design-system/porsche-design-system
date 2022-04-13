@@ -22,7 +22,6 @@ export const contentWrapperVars = {
   marginXxl: pxToRemWithUnit(192),
 };
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const addImportantToRule = (value: any): string => `${value} !important`;
 
 export const addImportantToEachRule = (input: JssStyle): JssStyle => {
