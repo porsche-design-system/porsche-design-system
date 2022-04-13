@@ -59,8 +59,8 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
     icon: {
       position: 'absolute',
       top: '50%',
-      marginTop: pxToRemWithUnit(-12),
       right: pxToRemWithUnit(12),
+      transform: 'translate3d(0, -50%, 0)',
       transition: getTransition('color'),
     },
     'sr-only': getScreenReaderOnlyJssStyle(),
