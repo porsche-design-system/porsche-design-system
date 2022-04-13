@@ -96,8 +96,8 @@ describe('chunk size', () => {
       statsResults.push(stat);
 
       it(`chunk size should roughly stay the same for ${stat.chunkName}`, () => {
-        // change should be less than 100 Bytes
-        const allowedSizeChange = 100;
+        // change should be less than 300 Bytes
+        const allowedSizeChange = 300;
         expect(stat.diffSize).toBeLessThanOrEqual(allowedSizeChange);
         expect(stat.diffSize).toBeGreaterThanOrEqual(-allowedSizeChange);
       });
@@ -118,7 +118,7 @@ describe('chunk size', () => {
       return `${displaySign ? getSign(input) : ''}${(input / 1024).toFixed(2)} KB`;
     };
     const formatPercent = (oldSize: number, diffSize: number): string => {
-      const value = ((diffSize / oldSize) * 100).toFixed(2);
+      const value = ((diffSize / oldSize) * 300).toFixed(2);
       return `${getSign(parseFloat(value))}${value} %`;
     };
 
