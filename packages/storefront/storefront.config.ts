@@ -512,7 +512,7 @@ export const config: StorefrontConfig = {
     Tags: {
       Tag: [
         // @ts-ignore
-        () => import('@/../components/src/components/action/tag/tag.examples.md'),
+        () => import('@/../../components/src/components/action/tag/tag.examples.md'),
       ],
       'Tag Dismissible': [
         // @ts-ignore
@@ -520,7 +520,7 @@ export const config: StorefrontConfig = {
       ],
       Props: [
         // @ts-ignore
-        () => import('@/../components/src/components/action/tag/tag.props.md'),
+        () => import('@/../../components/src/components/action/tag/tag.props.md'),
         // @ts-ignore
         () => import('@/../../components/src/components/action/tag-dismissible/tag-dismissible.props.md'),
       ],
