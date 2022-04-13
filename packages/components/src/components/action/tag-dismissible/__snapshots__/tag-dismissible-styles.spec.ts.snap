@@ -21,24 +21,30 @@ button {
   hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
-  transition: outline var(--p-transition-duration, .24s) ease;
+  outline: 0;
 }
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: #000;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
+button::before {
+  content: \\"\\";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 1px solid transparent;
+  border-radius: 0.40625rem;
+  transition: border-color var(--p-transition-duration, .24s) ease;
 }
 button:hover .icon {
   color: #d5001c;
 }
-button:hover:focus {
-  outline-color: #d5001c;
+button:hover:focus::before {
+  border-color: #d5001c;
+}
+button:focus::before {
+  border-color: #000;
+}
+button:focus::before:not(:focus-visible)::before {
+  border-color: transparent;
 }
 ::slotted(strong), ::slotted(b) {
   font-weight: 700 !important;
@@ -87,24 +93,30 @@ button {
   hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
-  transition: outline var(--p-transition-duration, .24s) ease;
+  outline: 0;
 }
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: #000;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
+button::before {
+  content: \\"\\";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 1px solid transparent;
+  border-radius: 0.40625rem;
+  transition: border-color var(--p-transition-duration, .24s) ease;
 }
 button:hover .icon {
   color: #d5001c;
 }
-button:hover:focus {
-  outline-color: #d5001c;
+button:hover:focus::before {
+  border-color: #d5001c;
+}
+button:focus::before {
+  border-color: #000;
+}
+button:focus::before:not(:focus-visible)::before {
+  border-color: transparent;
 }
 ::slotted(strong), ::slotted(b) {
   font-weight: 700 !important;
@@ -160,24 +172,30 @@ button {
   hyphens: auto;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  outline: 1px solid transparent;
-  outline-offset: 2px;
-  transition: outline var(--p-transition-duration, .24s) ease;
+  outline: 0;
 }
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: #000;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
+button::before {
+  content: \\"\\";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 1px solid transparent;
+  border-radius: 0.40625rem;
+  transition: border-color var(--p-transition-duration, .24s) ease;
 }
 button:hover .icon {
   color: #d5001c;
 }
-button:hover:focus {
-  outline-color: #d5001c;
+button:hover:focus::before {
+  border-color: #d5001c;
+}
+button:focus::before {
+  border-color: #000;
+}
+button:focus::before:not(:focus-visible)::before {
+  border-color: transparent;
 }
 ::slotted(strong), ::slotted(b) {
   font-weight: 700 !important;
