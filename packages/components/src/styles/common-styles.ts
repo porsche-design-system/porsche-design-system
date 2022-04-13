@@ -26,15 +26,16 @@ export const contentWrapperVars = {
 export const addImportantToRule = (value: any): string => `${value} !important`;
 
 export const addImportantToEachRule = <T extends Record<string, unknown>>(style: T): T => {
+  const obj = { ...style };
   // eslint-disable-next-line guard-for-in
-  for (const key in style) {
-    const value = style[key];
+  for (const key in obj) {
+    const value = obj[key];
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    style[key] = typeof value === 'object' ? addImportantToEachRule(value) : addImportantToRule(value);
+    obj[key] = typeof value === 'object' ? addImportantToEachRule(value) : addImportantToRule(value);
   }
 
-  return style;
+  return obj;
 };
 
 type GetHoverStylesOptions = {
