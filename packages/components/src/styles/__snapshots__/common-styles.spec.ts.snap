@@ -9,7 +9,9 @@ Object {
     "color": "blue !important",
   },
   "color": "red !important",
+  "content": "\\"\\" !important",
   "display": "block !important",
+  "margin": "0 !important",
 }
 `;
 
