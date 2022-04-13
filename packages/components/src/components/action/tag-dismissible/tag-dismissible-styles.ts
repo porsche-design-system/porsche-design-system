@@ -35,8 +35,13 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
         textAlign: 'left',
         ...textSmall,
         ...getFocusJssStyle({ color: baseColor }),
-        transition: getTransition('color'),
+        transition: getTransition('outline'),
         '&:hover': {
+          '& .icon': {
+            color: hoverColor,
+          },
+        },
+        '&:focus-visible:hover': {
           outlineColor: hoverColor,
         },
       },
@@ -56,6 +61,7 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
       top: '50%',
       marginTop: pxToRemWithUnit(-12),
       right: pxToRemWithUnit(12),
+      transition: getTransition('color'),
     },
     'sr-only': getScreenReaderOnlyJssStyle(),
   });
