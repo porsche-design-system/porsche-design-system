@@ -44,7 +44,8 @@ export default [
     },
     plugins: [
       copy({
-        targets: [{ src: `src/scss/**/*.scss`, dest: `${outputDir}/scss` }],
+        targets: [{ src: `src/scss/**/*.scss`, dest: outputDir }],
+        flatten: false,
       }),
       typescript(),
     ],
