@@ -6,7 +6,6 @@ import {
   addImportantToEachRule,
   addImportantToRule,
   getBaseSlottedStyles,
-  getFocusSlottedPseudoStyles,
   getInsetJssStyle,
   getFocusJssStyle,
   getFormTextHiddenJssStyle,
@@ -77,6 +76,10 @@ describe('addImportantToEachRule()', () => {
 
   it('should add !important to each rule', () => {
     expect(addImportantToEachRule(input)).toMatchSnapshot();
+  });
+
+  it('should have no mutation on input', () => {
+    expect(addImportantToEachRule(input)).not.toEqual(input);
   });
 });
 
