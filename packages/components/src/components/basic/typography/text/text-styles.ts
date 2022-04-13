@@ -3,16 +3,10 @@ import type { BreakpointCustomizable } from '../../../../utils';
 import type { TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
 import { buildSlottedStyles, getCss, buildResponsiveStyles } from '../../../../utils';
 import { addImportantToEachRule, getBaseSlottedStyles } from '../../../../styles';
-import {
-  fontWeight,
-  textLarge,
-  textMedium,
-  textSmall,
-  textXLarge,
-  textXSmall,
-} from '@porsche-design-system/utilities-v2';
+import { textLarge, textMedium, textSmall, textXLarge, textXSmall } from '@porsche-design-system/utilities-v2';
 import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../../../styles/typography-styles';
 import { getThemedTextColor } from '../../../../styles/text-icon-styles';
+import { getFontWeight } from '../../../../styles/font-weight-styles';
 
 const textMap: { [key in Exclude<TextSize, 'inherit'>]: any } = {
   'x-small': textXSmall,
@@ -33,7 +27,7 @@ export const getComponentCss = (
   // function is local to reuse `weight` parameter
   // TODO: font short hand isn't really the best choice but we don't have any better alternative atm
   const getSizeJssStyle = (textSize: TextSize): JssStyle => {
-    const fontWeightValue = fontWeight[weight === 'semibold' ? 'semiBold' : weight];
+    const fontWeightValue = getFontWeight(weight);
     return textSize === 'inherit'
       ? {
           lineHeight: textSize,

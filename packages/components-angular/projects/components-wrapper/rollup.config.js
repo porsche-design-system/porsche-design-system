@@ -1,4 +1,5 @@
 import typescript from '@rollup/plugin-typescript';
+import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 
 const projectDir = 'projects/components-wrapper';
@@ -42,7 +43,12 @@ const buildConfig = (packagePath) => {
         format: 'esm',
       },
     ],
-    plugins: [typescript(typescriptOpts)],
+    plugins: [
+      copy({
+        targets: [{ src: `${projectDir}/src/utilities/scss.scss`, dest: `${outputDir}/utilities` }],
+      }),
+      typescript(typescriptOpts),
+    ],
   };
 };
 

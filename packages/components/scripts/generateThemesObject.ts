@@ -1,4 +1,4 @@
-import type { Theme, ThemeColorSet } from '@porsche-design-system/utilities-v2';
+import type { Theme } from '@porsche-design-system/utilities-v2';
 import type { ThemedColors } from '../src/styles';
 import * as path from 'path';
 import * as fs from 'fs';

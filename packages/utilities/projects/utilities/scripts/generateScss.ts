@@ -9,24 +9,9 @@ import * as heading from '../src/jss/typography/heading';
 import * as text from '../src/jss/typography/text';
 import * as breakpoint from '../src/jss/breakpoint';
 import { paramCase, camelCase } from 'change-case';
-import { create, Styles } from 'jss';
-import jssPluginCamelCase from 'jss-plugin-camel-case';
-import jssPluginNested from 'jss-plugin-nested';
-import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
+import { getCss } from '@porsche-design-system/shared';
 
 const targetDirectory = './src/scss/lib';
-
-const jss = create({
-  plugins: [jssPluginNested(), jssPluginCamelCase(), jssPluginSortMediaQueries({ combineMediaQueries: true })],
-});
-
-export const getCss = (jssStyles: Styles): string => {
-  return jss
-    .createStyleSheet(jssStyles, {
-      generateId: (rule) => rule.key,
-    })
-    .toString();
-};
 
 interface Object {
   [k: string]: {} | Object;
@@ -44,14 +29,14 @@ const flattenObject = (obj: Object, prefix = ''): { [key: string]: string } => {
   }, {});
 };
 
-const cleanBuild = (): void => {
+const cleanLib = (): void => {
   fs.rmSync(path.normalize(targetDirectory), { force: true, recursive: true });
   fs.mkdirSync(path.resolve(targetDirectory), { recursive: true });
 };
 
 const writeFile = (filename: string, content: string): void => {
   const targetPath = path.normalize(`${targetDirectory}/_${paramCase(filename)}.scss`);
-  const contentFormatted = prettier.format(content, { parser: 'scss' });
+  const contentFormatted = prettier.format(content, { parser: 'scss', printWidth: 120 });
   fs.writeFileSync(targetPath, contentFormatted);
   console.log(`Auto generated SCSS file: ${targetPath}`);
 };
@@ -89,8 +74,6 @@ const generateMixins = (mixins: Mixins): void => {
   }
 };
 
-((): void => {
-  cleanBuild();
-  generateVariables({ font, theme, spacing, colorExternal, breakpoint });
-  generateMixins({ heading, text });
-})();
+cleanLib();
+generateVariables({ font, theme, spacing, colorExternal, breakpoint });
+generateMixins({ heading, text });

@@ -1,14 +1,15 @@
 import typescript from '@rollup/plugin-typescript';
+import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 
 const input = 'src/jss/index.ts';
-const outputDir = 'dist/jss';
+const outputDir = 'dist';
 
 export default [
   {
     input,
     output: {
-      dir: outputDir,
+      dir: `${outputDir}/jss`,
       format: 'cjs',
       preserveModules: true,
       plugins: [
@@ -28,7 +29,7 @@ export default [
     plugins: [
       typescript({
         declaration: true,
-        declarationDir: outputDir,
+        declarationDir: `${outputDir}/jss`,
         exclude: '**.spec.ts',
         rootDir: 'src/jss',
       }),
@@ -37,10 +38,16 @@ export default [
   {
     input,
     output: {
-      dir: `${outputDir}/esm`,
+      dir: `${outputDir}/jss/esm`,
       format: 'esm',
       preserveModules: true,
     },
-    plugins: [typescript()],
+    plugins: [
+      copy({
+        targets: [{ src: `src/scss/**/*.scss`, dest: outputDir }],
+        flatten: false,
+      }),
+      typescript(),
+    ],
   },
 ];
