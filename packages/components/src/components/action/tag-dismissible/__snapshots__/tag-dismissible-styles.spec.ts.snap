@@ -49,8 +49,8 @@ button:hover .icon {
 .icon {
   position: absolute;
   top: 50%;
-  margin-top: -0.75rem;
   right: 0.75rem;
+  transform: translate3d(0, -50%, 0);
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
@@ -122,8 +122,8 @@ button:hover .icon {
 .icon {
   position: absolute;
   top: 50%;
-  margin-top: -0.75rem;
   right: 0.75rem;
+  transform: translate3d(0, -50%, 0);
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
@@ -195,8 +195,8 @@ button:hover .icon {
 .icon {
   position: absolute;
   top: 50%;
-  margin-top: -0.75rem;
   right: 0.75rem;
+  transform: translate3d(0, -50%, 0);
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-only {
