@@ -15,10 +15,10 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
+  @import '~@porsche-design-system/components-js/utilities/scss';
 
   .disclaimer {
-    padding: $p-spacing-8 $p-spacing-32;
-    background: $p-color-neutral-contrast-high;
+    padding: $pds-spacing-small $pds-spacing-large;
+    background: $pds-theme-light-contrast-high;
   }
 </style>

@@ -60,13 +60,15 @@ export const getPseudoElementStyles = (): Styles<'@global'> => {
   return {
     '@global': {
       [SKELETON_TAG_NAMES.join(',')]: {
-        '&::before, &::after': {
-          position: 'absolute',
-          left: '0',
-          content: '""',
-          visibility: 'visible',
-          background: 'currentColor',
-          animation: 'opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite',
+        '&:not(.hydrated)': {
+          '&::before, &::after': {
+            position: 'absolute',
+            left: '0',
+            content: '""',
+            visibility: 'visible',
+            background: 'currentColor',
+            animation: 'opacity var(--p-override-skeleton-animation-duration, 1.5s) ease-in-out infinite',
+          },
         },
       },
     },
@@ -148,6 +150,12 @@ export const getHiddenLabelJssStyle = (): JssStyle => ({
   '&::after': {
     top: 0,
     minHeight: '100%',
+  },
+});
+
+export const getLabelSkeletonJssStyle = (): JssStyle => ({
+  '&::before': {
+    background: getElementBackgroundGradient(LABEL_HEIGHT),
   },
 });
 

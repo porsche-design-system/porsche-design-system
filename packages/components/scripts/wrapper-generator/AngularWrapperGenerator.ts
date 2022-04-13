@@ -34,7 +34,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     const importsFromAngular = `import { ${angularImports.join(', ')} } from '@angular/core';`;
 
     const importsFromComponentsWrapperModule = hasSkeleton
-      ? `import { USES_SKELETONS } from '../../components-wrapper.module' `
+      ? `import { USES_SKELETONS } from '../../skeleton-helper' `
       : '';
 
     const providerImports = ['ProxyCmp', ...(hasEventProps ? ['proxyOutputs'] : [])];

@@ -9,6 +9,7 @@ import {
 } from '../../../../styles';
 
 const { baseColor } = getThemedColors('light');
+const { small: spacingSmall, medium: spacingMedium, large: spacingLarge } = spacing;
 
 export const getComponentCss = (): string => {
   return getCss({
@@ -18,9 +19,9 @@ export const getComponentCss = (): string => {
       },
     },
     caption: {
-      marginBottom: spacing[8],
+      marginBottom: spacingSmall,
       [mediaQueryMin('m')]: {
-        marginBottom: spacing[16],
+        marginBottom: spacingMedium,
       },
     },
     root: {
@@ -52,7 +53,7 @@ export const getComponentCss = (): string => {
       top: 0,
       right: 0,
       bottom: 0,
-      paddingLeft: spacing[32],
+      paddingLeft: spacingLarge,
       pointerEvents: 'none',
       display: 'flex',
       alignItems: 'center',

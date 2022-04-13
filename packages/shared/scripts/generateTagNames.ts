@@ -2,9 +2,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
 import { camelCase } from 'change-case';
-import { TagName } from '../src';
 
-const INTERNAL_TAG_NAMES: TagName[] = ['p-select-wrapper-dropdown', 'p-toast-item'];
+const INTERNAL_TAG_NAMES = ['p-select-wrapper-dropdown', 'p-toast-item'];
 
 const IGNORED_SKELETON_STYLES = ['headline', 'text-list', 'text-list-item', 'text'];
 const IGNORED_SKELETON_STYLES_FILE_NAMES = IGNORED_SKELETON_STYLES.map(
@@ -48,9 +47,9 @@ export type TagNameCamelCase = ${tags.map((x) => `'${camelCase(x)}'`).join(' | '
 
 export const INTERNAL_TAG_NAMES: TagName[] = [${INTERNAL_TAG_NAMES.map((x) => `'${x}'`).join(', ')}];
 
-export const SKELETON_TAG_NAMES: TagName[] = [${tagNamesWithSkeleton.map((x) => `'${x}'`).join(', ')}];
+export const SKELETON_TAG_NAMES = [${tagNamesWithSkeleton.map((x) => `'${x}'`).join(', ')}] as const;
 
-export type SkeletonTagName = typeof SKELETON_TAG_NAMES[number];
+export type SkeletonTagName = Extract<TagName, typeof SKELETON_TAG_NAMES[number]>;
 `;
 
   const targetDirectory = path.normalize('./src/lib');

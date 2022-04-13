@@ -9,10 +9,10 @@ import {
   getTransition,
   pxToRemWithUnit,
   getThemedColors,
+  getScreenReaderOnlyJssStyle,
 } from '../../../styles';
 import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles';
 import { isVisibleFormState } from '../../../utils/form-state';
-import { getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 
@@ -20,7 +20,7 @@ export const getComponentCss = (
   isDisabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
-  hasUnitOrCounter: boolean,
+  hasUnitOrVisibleCounter: boolean,
   unitPosition: TextFieldWrapperUnitPosition,
   isPassword: boolean
 ): string => {
@@ -38,7 +38,7 @@ export const getComponentCss = (
           'input',
           state,
           theme,
-          !hasUnitOrCounter && {
+          !hasUnitOrVisibleCounter && {
             // padding is set via inline style if unit is present
             padding: pxToRemWithUnit(hasVisibleState ? 10 : 11),
           }
@@ -100,7 +100,7 @@ export const getComponentCss = (
       hideLabel,
       state,
       theme,
-      hasUnitOrCounter && {
+      hasUnitOrVisibleCounter && {
         unit: {
           position: 'absolute',
           bottom: 0,

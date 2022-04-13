@@ -59,12 +59,13 @@ describe('componentWillLoad', () => {
     expect(component['hasCounter']).toBe(true);
   });
 
-  it('should call hasUnitAndIsTypeNumber() and set hasUnit', () => {
+  it('should not call hasUnitAndIsTypeTextOrNumber() when counter and unit is set and counter is visible', () => {
     const input = document.createElement('input');
-    input.type = 'number';
+    input.type = 'text';
+    input.maxLength = 50;
     jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined').mockImplementation(() => input);
 
-    const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeNumber');
+    const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber');
     const component = new TextFieldWrapper();
     component.unit = 'EUR';
     component['input'] = input;
@@ -72,9 +73,53 @@ describe('componentWillLoad', () => {
     expect(component['hasUnit']).toBe(undefined);
     component.componentWillLoad();
 
-    expect(spy).toBeCalledWith(input, 'EUR');
+    expect(spy).not.toBeCalled();
+    expect(component['hasUnit']).toBe(false);
+  });
+
+  it('should call hasUnitAndIsTypeTextOrNumber() when counter and unit is set and counter is not visible', () => {
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.maxLength = 50;
+    jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined').mockImplementation(() => input);
+
+    const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber');
+    const component = new TextFieldWrapper();
+    const unit = 'EUR';
+    component.unit = unit;
+    component.showCharacterCount = false;
+    component['input'] = input;
+
+    expect(component['hasUnit']).toBe(undefined);
+    component.componentWillLoad();
+
+    expect(spy).toHaveBeenCalledWith(input, unit);
     expect(component['hasUnit']).toBe(true);
   });
+
+  it.each<string>(['text', 'number'])(
+    'should call hasUnitAndIsTypeTextOrNumber() and set hasUnit when input type="%s"',
+    (type) => {
+      const input = document.createElement('input');
+      input.type = type;
+      if (type === 'text') {
+        Object.defineProperty(input, 'maxLength', { value: -1 }); // jsdom defaults to 524288 which is 512 KB
+      }
+
+      jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined').mockImplementation(() => input);
+
+      const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber');
+      const component = new TextFieldWrapper();
+      component.unit = 'EUR';
+      component['input'] = input;
+
+      expect(component['hasUnit']).toBe(undefined);
+      component.componentWillLoad();
+
+      expect(spy).toBeCalledWith(input, 'EUR');
+      expect(component['hasUnit']).toBe(true);
+    }
+  );
 });
 
 describe('componentWillRender', () => {
@@ -92,7 +137,26 @@ describe('componentWillRender', () => {
 });
 
 describe('componentDidLoad', () => {
-  it('should call addInputEventListener() if hasCounter is true', () => {
+  it('should call addInputEventListener() if hasCounter is true and isCounterVisible is false', () => {
+    const addInputEventListenerSpy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListener');
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    const ariaElement = document.createElement('span');
+
+    const component = new TextFieldWrapper();
+    component['input'] = input;
+    component['ariaElement'] = ariaElement;
+
+    component.componentDidLoad();
+    expect(addInputEventListenerSpy).not.toBeCalled();
+
+    component['hasCounter'] = true;
+
+    component.componentDidLoad();
+    expect(addInputEventListenerSpy).toHaveBeenCalledWith(input, ariaElement, undefined, component['setInputStyles']);
+  });
+  it('should call addInputEventListener() if hasCounter is true and isCounterVisible is true', () => {
     const addInputEventListenerSpy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListener');
 
     const input = document.createElement('input');
@@ -109,8 +173,9 @@ describe('componentDidLoad', () => {
     expect(addInputEventListenerSpy).not.toBeCalled();
 
     component['hasCounter'] = true;
+    component['isCounterVisible'] = true;
     component.componentDidLoad();
-    expect(addInputEventListenerSpy).toHaveBeenCalledWith(input, counter, ariaElement, component['setInputStyles']);
+    expect(addInputEventListenerSpy).toHaveBeenCalledWith(input, ariaElement, counter, component['setInputStyles']);
   });
 });
 

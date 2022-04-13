@@ -2,17 +2,23 @@ import type { Styles } from 'jss';
 import type { BreakpointCustomizable } from '../../../utils';
 import type { FormState, Theme } from '../../../types';
 import { buildSlottedStyles, getCss, mergeDeep } from '../../../utils';
-import { addImportantToEachRule, getBaseSlottedStyles, pxToRemWithUnit, getThemedColors } from '../../../styles';
+import {
+  addImportantToEachRule,
+  getBaseSlottedStyles,
+  pxToRemWithUnit,
+  getThemedColors,
+  getScreenReaderOnlyJssStyle,
+} from '../../../styles';
 import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles';
 import { isVisibleFormState } from '../../../utils/form-state';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
-import { getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
   isDisabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
+  isCounterVisible: boolean,
   hasCounter: boolean
 ): string => {
   const theme: Theme = 'light';
@@ -29,7 +35,9 @@ export const getComponentCss = (
         addImportantToEachRule(
           getBaseChildStyles('textarea', state, theme, {
             // 36 = 2 * 6 + 24 where 6 is the bottom distance and 24 the height of the text
-            padding: hasCounter ? [defaultPadding, defaultPadding, pxToRemWithUnit(36)].join(' ') : defaultPadding,
+            padding: isCounterVisible
+              ? [defaultPadding, defaultPadding, pxToRemWithUnit(36)].join(' ')
+              : defaultPadding,
             resize: 'vertical',
           })
         ),
@@ -46,7 +54,7 @@ export const getComponentCss = (
       hideLabel,
       state,
       theme,
-      hasCounter && {
+      isCounterVisible && {
         counter: {
           position: 'absolute',
           bottom: pxToRemWithUnit(6),

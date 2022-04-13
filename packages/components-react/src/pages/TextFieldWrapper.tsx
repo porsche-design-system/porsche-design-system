@@ -71,6 +71,12 @@ export const TextFieldWrapperPage = (): JSX.Element => {
         </PTextFieldWrapper>
       </div>
 
+      <div className="playground light" title="should render without counter">
+        <PTextFieldWrapper label="Counter hidden" showCharacterCount={false}>
+          <input type="text" maxLength={20} defaultValue="Some value" />
+        </PTextFieldWrapper>
+      </div>
+
       <div className="playground light" title="should render with type number">
         <PTextFieldWrapper label="Type number">
           <input type="number" />
@@ -212,15 +218,56 @@ export const TextFieldWrapperPage = (): JSX.Element => {
         </PTextFieldWrapper>
       </div>
 
-      <div className="playground light" title="should render with unit">
-        <PTextFieldWrapper label="Label with unit" unit="km/h">
+      <div className="playground light" title="should render input type text with unit">
+        <PTextFieldWrapper label="Label with unit input type text" unit="km/h">
+          <input type="text" defaultValue="three hundred" />
+        </PTextFieldWrapper>
+      </div>
+
+      <div className="playground light" title="should render input type number with unit">
+        <PTextFieldWrapper label="Label with unit input type number" unit="km/h">
           <input type="number" defaultValue={300} />
         </PTextFieldWrapper>
       </div>
 
-      <div className="playground light" title="should render with unit position suffix">
-        <PTextFieldWrapper label="Label with unit position suffix" unit="kWh" unitPosition="suffix">
+      <div className="playground light" title="should render input type text with unit position suffix">
+        <PTextFieldWrapper label="Label with unit input type text position suffix" unit="kWh" unitPosition="suffix">
+          <input type="text" defaultValue="four hundred" />
+        </PTextFieldWrapper>
+      </div>
+
+      <div className="playground light" title="should render input type number with unit position suffix">
+        <PTextFieldWrapper label="Label with unit input type number position suffix" unit="kWh" unitPosition="suffix">
           <input type="number" defaultValue={400} />
+        </PTextFieldWrapper>
+      </div>
+
+      <div className="playground light" title="should render counter when counter and unit are set">
+        <PTextFieldWrapper label="Label with counter and unit" unit="km/h">
+          <input type="text" defaultValue="three hundred" maxLength={50} />
+        </PTextFieldWrapper>
+      </div>
+
+      <div
+        className="playground light"
+        title="should render unit when counter and unit are set and show-character-count is false"
+      >
+        <PTextFieldWrapper label="Label with unit and hidden counter" unit="km/h" showCharacterCount={false}>
+          <input type="text" defaultValue="three hundred" maxLength={50} />
+        </PTextFieldWrapper>
+      </div>
+
+      <div
+        className="playground light"
+        title="should render unit when counter with unit position suffix and show-character-count is false"
+      >
+        <PTextFieldWrapper
+          label="Label with unit with position suffix and hidden counter"
+          unit="km/h"
+          unitPosition="suffix"
+          showCharacterCount={false}
+        >
+          <input type="text" defaultValue="three hundred" maxLength={50} />
         </PTextFieldWrapper>
       </div>
     </>

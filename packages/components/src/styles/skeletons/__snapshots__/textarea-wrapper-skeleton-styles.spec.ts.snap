@@ -57,5 +57,8 @@ p-textarea-wrapper:not(.hydrated)[hide-label=true]::before, p-textarea-wrapper:n
 p-textarea-wrapper:not(.hydrated)[hide-label=true]::after, p-textarea-wrapper:not(.hydrated).pds-skeleton--hide-label::after, p-textarea-wrapper:not(.hydrated):not([description]):not([label]):not(.pds-skeleton--description):not(.pds-skeleton--label)::after {
   top: 0;
   min-height: 100%;
+}
+p-textarea-wrapper:not(.hydrated)[label]:not([description]):not([hide-label=true])::before, p-textarea-wrapper:not(.hydrated).pds-skeleton--label:not(.pds-skeleton--description):not(.pds-skeleton--hide-label)::before {
+  background: linear-gradient(transparent, transparent 4px, currentColor 4px, currentColor 20px, transparent 20px, transparent 24px);
 }"
 `;

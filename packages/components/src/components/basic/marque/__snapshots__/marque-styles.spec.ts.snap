@@ -2,6 +2,7 @@
 
 exports[`getComponentCss() should return correct css for size: medium 1`] = `
 ":host {
+  position: relative;
   display: inline-flex;
   vertical-align: top;
   outline: 0 !important;
@@ -9,16 +10,25 @@ exports[`getComponentCss() should return correct css for size: medium 1`] = `
 a {
   display: block;
   text-decoration: none;
-  outline: 1px solid transparent;
-  outline-offset: 0px;
+  outline: 0;
 }
 a::-moz-focus-inner {
   border: 0;
 }
-a:focus {
+a::before {
+  content: \\"\\";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 0px;
+}
+a:focus::before {
   outline-color: #000;
 }
-a:focus:not(:focus-visible) {
+a:focus:not(:focus-visible)::before {
   outline-color: transparent;
 }
 picture {
@@ -35,6 +45,7 @@ img {
 
 exports[`getComponentCss() should return correct css for size: responsive 1`] = `
 ":host {
+  position: relative;
   display: inline-flex;
   vertical-align: top;
   outline: 0 !important;
@@ -42,16 +53,25 @@ exports[`getComponentCss() should return correct css for size: responsive 1`] = 
 a {
   display: block;
   text-decoration: none;
-  outline: 1px solid transparent;
-  outline-offset: 0px;
+  outline: 0;
 }
 a::-moz-focus-inner {
   border: 0;
 }
-a:focus {
+a::before {
+  content: \\"\\";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 0px;
+}
+a:focus::before {
   outline-color: #000;
 }
-a:focus:not(:focus-visible) {
+a:focus:not(:focus-visible)::before {
   outline-color: transparent;
 }
 picture {
@@ -75,6 +95,7 @@ img {
 
 exports[`getComponentCss() should return correct css for size: small 1`] = `
 ":host {
+  position: relative;
   display: inline-flex;
   vertical-align: top;
   outline: 0 !important;
@@ -82,16 +103,25 @@ exports[`getComponentCss() should return correct css for size: small 1`] = `
 a {
   display: block;
   text-decoration: none;
-  outline: 1px solid transparent;
-  outline-offset: 0px;
+  outline: 0;
 }
 a::-moz-focus-inner {
   border: 0;
 }
-a:focus {
+a::before {
+  content: \\"\\";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 1px solid transparent;
+  outline-offset: 0px;
+}
+a:focus::before {
   outline-color: #000;
 }
-a:focus:not(:focus-visible) {
+a:focus:not(:focus-visible)::before {
   outline-color: transparent;
 }
 picture {

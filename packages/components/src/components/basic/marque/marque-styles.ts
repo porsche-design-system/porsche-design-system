@@ -19,6 +19,7 @@ export const getComponentCss = (size: MarqueSize): string => {
   return getCss({
     '@global': {
       ':host': {
+        position: 'relative',
         display: 'inline-flex',
         verticalAlign: 'top',
         outline: addImportantToRule(0),
@@ -26,7 +27,7 @@ export const getComponentCss = (size: MarqueSize): string => {
       a: {
         display: 'block',
         textDecoration: 'none',
-        ...getFocusJssStyle({ color: getThemedColors('light').baseColor, offset: 0 }),
+        ...getFocusJssStyle({ color: getThemedColors('light').baseColor, offset: 0, pseudo: '::before' }),
       },
       picture: {
         display: 'block',

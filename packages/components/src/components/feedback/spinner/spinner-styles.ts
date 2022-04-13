@@ -2,8 +2,7 @@ import type { JssStyle } from 'jss';
 import type { SpinnerSize, SpinnerSizeType } from './spinner-utils';
 import type { ThemeExtendedElectricDark } from '../../../types';
 import { buildResponsiveStyles, buildSlottedStyles, getCss, isThemeDark, isThemeDarkElectric } from '../../../utils';
-import { getBaseSlottedStyles, pxToRemWithUnit, getThemedColors } from '../../../styles';
-import { getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
+import { getBaseSlottedStyles, pxToRemWithUnit, getThemedColors, getScreenReaderOnlyJssStyle } from '../../../styles';
 
 const sizeSmall = pxToRemWithUnit(48);
 const sizeMedium = pxToRemWithUnit(72);

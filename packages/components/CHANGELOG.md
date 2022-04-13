@@ -8,6 +8,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.10.0-skeletons] - 2022-04-13
+
+### [2.10.0] - 2022-04-13
+
+### [2.9.3-rc.1] - 2022-04-06
+
+#### Added
+- `Text Field Wrapper` now has a `showCharacterCount` property which can be used to hide the character count when a `maxLength` attribute is set on the wrapped `input`.
+- `Textarea Wrapper` now has a `showCharacterCount` property which can be used to hide the character count when a `maxLength` attribute is set on the wrapped `textarea`.
+
+### [2.9.3-rc.0-skeletons] - 2022-03-29
+
+### [2.9.3-rc.0] - 2022-03-28
+
+#### Added
+- `Text Field Wrapper` supports `unit` property on `input type="text"`
+- `Marque` optional configurable clickable/focusable area by defining padding on host element
+
+#### Fixed
+- `Tabs Item` improved accessibility
+- Angular: circular dependency in development mode in `2.9.2-skeletons`
+
 ### [2.9.2-skeletons] - 2022-03-24
 
 #### Added
@@ -15,9 +37,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **[EXPERIMENTAL]** `Button`, `Button Pure`, `Checkbox Wrapper`, `Fieldset Wrapper`, `Link`, `Link Pure`, `Link Social`, `Radio Button Wrapper`, `Select Wrapper`, `Text Field Wrapper`, `Textarea Wrapper` can now have initial skeleton styles when passed as `skeletonTagNames` to the `getInitialStyles` partial
 
 ### [2.9.2] - 2022-03-24
-
-#### Fixed
-- `P Tabs Item` improved accessibility
 
 ### [2.9.2-rc.1] - 2022-03-23
 
@@ -53,7 +72,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Fixed
 - `Modal` focus trap respecting elements in shadow DOM and dynamically added/removed elements on first level
-- `TabsItem` focus outline on click in Safari
+- `Tabs Item` focus outline on click in Safari
 - Error while using partials in Vanilla JS and Angular
 
 ### [2.9.0-rc.0] - 2022-02-16

@@ -3,17 +3,18 @@ import jss from 'jss';
 import preset from 'jss-preset-default';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
 
-// @ts-ignore
 jss.setup({
   ...preset(),
   createGenerateId: () => (rule: Rule) => rule.key,
   plugins: [...preset().plugins, jssPluginSortMediaQueries({ combineMediaQueries: true })],
 });
 
+export const getCss = (style: Styles): string => {
+  return jss.createStyleSheet(style).toString();
+};
+
 export const getMinifiedCss = (style: Styles): string => {
-  return jss
-    .createStyleSheet(style)
-    .toString()
+  return getCss(style)
     .replace(/\.\\(?=:)/g, '') // remove default '.'
     .replace(/[\n\\]+/g, '') // remove backslashes
     .replace(/\s(?={)/g, '') // remove space before opening curly brace

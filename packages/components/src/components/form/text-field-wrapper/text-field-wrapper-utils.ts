@@ -6,7 +6,10 @@ export type TextFieldWrapperUnitPosition = typeof UNIT_POSITIONS[number];
 
 export const hasCounter = (el: HTMLTextAreaElement | HTMLInputElement): boolean => el.maxLength >= 0;
 export const hasCounterAndIsTypeText = (el: HTMLInputElement): boolean => el.type === 'text' && hasCounter(el);
-export const hasUnitAndIsTypeNumber = (el: HTMLInputElement, unit: string): boolean => !!unit && el.type === 'number';
+export const hasUnitAndIsTypeTextOrNumber = (el: HTMLInputElement, unit: string): boolean => {
+  const { type } = el;
+  return !!unit && (type === 'text' || type === 'number');
+};
 export const setCounterInnerHtml = (el: HTMLTextAreaElement | HTMLInputElement, counterElement: HTMLElement): void => {
   counterElement.innerText = `${el.value.length}/${el.maxLength}`;
 };
@@ -51,15 +54,19 @@ export const throwIfUnitLengthExceeded = (unit: string): void => {
 
 export const addInputEventListener = (
   input: HTMLTextAreaElement | HTMLInputElement,
-  counterElement: HTMLSpanElement,
   characterCountElement: HTMLSpanElement,
+  counterElement?: HTMLSpanElement,
   inputChangeCallback?: () => void
 ): void => {
-  setCounterInnerHtml(input, counterElement); // initial value
+  if (counterElement) {
+    setCounterInnerHtml(input, counterElement); // initial value
+  }
   setAriaElementInnerHtml(input, characterCountElement); // initial value
 
   input.addEventListener('input', (e) => {
-    setCounterInnerHtml(e.target as HTMLTextAreaElement | HTMLInputElement, counterElement);
+    if (counterElement) {
+      setCounterInnerHtml(e.target as HTMLTextAreaElement | HTMLInputElement, counterElement);
+    }
     setAriaElementInnerHtml(e.target as HTMLTextAreaElement | HTMLInputElement, characterCountElement);
     if (inputChangeCallback) {
       inputChangeCallback();
