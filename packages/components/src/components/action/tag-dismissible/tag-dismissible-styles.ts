@@ -5,10 +5,11 @@ import {
   getTransition,
   addImportantToEachRule,
   addImportantToRule,
+  getScreenReaderOnlyJssStyle,
 } from '../../../styles';
 import { getCss } from '../../../utils';
 import type { TagDismissibleColor } from './tag-dismissible-utils';
-import { textSmall, getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
+import { textSmall } from '@porsche-design-system/utilities-v2';
 import { getThemedBackgroundColor, slottedTextStyles } from '../tag/tag-styles';
 
 export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): string => {
