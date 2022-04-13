@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Tag`
 - `Tag Dismissible`
 
+### [2.10.0-skeletons] - 2022-04-13
+
+### [2.10.0] - 2022-04-13
+
 ### [2.9.3-rc.1] - 2022-04-06
 
 #### Added
