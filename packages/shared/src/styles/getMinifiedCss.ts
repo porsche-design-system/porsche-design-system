@@ -9,10 +9,12 @@ jss.setup({
   plugins: [...preset().plugins, jssPluginSortMediaQueries({ combineMediaQueries: true })],
 });
 
+export const getCss = (style: Styles): string => {
+  return jss.createStyleSheet(style).toString();
+};
+
 export const getMinifiedCss = (style: Styles): string => {
-  return jss
-    .createStyleSheet(style)
-    .toString()
+  return getCss(style)
     .replace(/\.\\(?=:)/g, '') // remove default '.'
     .replace(/[\n\\]+/g, '') // remove backslashes
     .replace(/\s(?={)/g, '') // remove space before opening curly brace
