@@ -75,7 +75,7 @@ export default class Code extends Vue {
   };
 
   icon = `<p-tag icon="car">Some label</p-tag> 
-<p-tag icon-source="${require('../../../../assets/icon-custom-kaixin.svg')}">Some label</p-tag>`;
+<p-tag icon-source="${require('../../../assets/icon-custom-kaixin.svg')}">Some label</p-tag>`;
 
   get buttonMarkup(){
     return TAG_COLORS.map((color, idx) => `<p-tag${idx === 0 ? ' icon="car"' : ''} color="${color}">
