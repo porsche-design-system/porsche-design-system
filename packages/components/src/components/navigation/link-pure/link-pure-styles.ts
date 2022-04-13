@@ -1,7 +1,7 @@
 import type { BreakpointCustomizable } from '../../../utils';
 import type { AlignLabel, LinkButtonPureIconName, TextSize, ThemeExtendedElectricDark } from '../../../types';
 import { buildSlottedStyles, getCss, mergeDeep } from '../../../utils';
-import { getInsetJssStyle, getThemedColors, getTransition } from '../../../styles';
+import { getFocusJssStyle, getThemedColors, getTransition } from '../../../styles';
 import { getLinkButtonPureStyles } from '../../../styles/link-button-pure-styles';
 
 export const getComponentCss = (
@@ -65,21 +65,7 @@ export const getSlottedCss = (host: HTMLElement): string => {
         font: 'inherit',
         // color: 'inherit', // TODO: chrome hover bug. Use when fixed.
         transition: getTransition('color'), // TODO: chrome hover bug. Remove when fixed.
-        outline: 'transparent none',
-        '&::before': {
-          content: '""',
-          display: 'block',
-          position: 'absolute',
-          ...getInsetJssStyle(),
-          outline: '1px solid transparent',
-          outlineOffset: '1px',
-        },
-        '&:focus::before': {
-          outlineColor: 'currentColor',
-        },
-        '&:focus:not(:focus-visible)::before': {
-          outlineColor: 'transparent',
-        },
+        ...getFocusJssStyle({ pseudo: '::before', offset: 1 }),
       },
     })
   );
