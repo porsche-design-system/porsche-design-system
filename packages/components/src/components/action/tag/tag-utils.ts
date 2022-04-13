@@ -1,14 +1,14 @@
 import { TAG_DISMISSIBLE_COLORS } from '../tag-dismissible/tag-dismissible-utils';
 import type { Theme } from '../../../types';
-import { isThemeDark } from '../../../utils';
+import { isThemeDark } from '../../../utils/theme';
 
 export const TAG_COLORS = [
   ...TAG_DISMISSIBLE_COLORS,
   'neutral-contrast-high',
-  'notification-success',
-  'notification-warning',
-  'notification-error',
   'notification-neutral',
+  'notification-warning',
+  'notification-success',
+  'notification-error',
 ] as const;
 
 export type TagColor = typeof TAG_COLORS[number];
