@@ -2,9 +2,9 @@
 
 <TableOfContents></TableOfContents>
 
-## Tag Status
+## Tag
 
-`p-tag-status` is used to label, categorize, or organize items by using keywords that describe them.
+`p-tag` is used to label, categorize, or organize items by using keywords that describe them.
 
 ## Color
 
@@ -18,13 +18,13 @@
 
 ## Icon
 
-The `p-tag-status` can be displayed with an icon. Choose an icon name from the icon property. Per default, all icons are fetched from the Porsche Design System CDN. If you need to link to another icon hosted somewhere else, just set the whole icon path to the icon-source property.
+The `p-tag` can be displayed with an icon. Choose an icon name from the icon property. Per default, all icons are fetched from the Porsche Design System CDN. If you need to link to another icon hosted somewhere else, just set the whole icon path to the icon-source property.
 
 <Playground :markup="icon" :config="config"></Playground>
 
 ## With slotted button
 
-It is possible to add a `<button>` tag into the `p-tag-status` component. If you do this, the entire component becomes
+It is possible to add a `<button>` tag into the `p-tag` component. If you do this, the entire component becomes
 clickable and no other content outside the button or link is allowed.
 
 <Playground :markup="buttonMarkup" :config="{ ...config, colorScheme: backgroundColor }">
@@ -43,7 +43,7 @@ Make sure to provide a **descriptive**, self explaining **aria-label** on the sl
 
 ## With slotted link
 
-It is possible to add `<a>` tag into the `p-tag-status` component. If you do this, the entire component becomes
+It is possible to add `<a>` tag into the `p-tag` component. If you do this, the entire component becomes
 clickable and no other content outside the button or link is allowed.
 
 <Playground :markup="linkMarkup" :config="{ ...config, colorScheme: backgroundColor }">
@@ -63,7 +63,7 @@ Make sure to provide a **descriptive**, self explaining **aria-label** on the sl
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component'; 
-import { TAG_STATUS_COLORS } from './tag-status-utils'; 
+import { TAG_COLORS } from './tag-utils'; 
 
 @Component
 export default class Code extends Vue {
@@ -71,30 +71,30 @@ export default class Code extends Vue {
   backgroundColor = 'default';
 
   get colorMarkup(){
-    return TAG_STATUS_COLORS.map((color) => `<p-tag-status color="${color}">Color ${color}</p-tag-status>`).join('\n');
+    return TAG_COLORS.map((color) => `<p-tag color="${color}">Color ${color}</p-tag>`).join('\n');
   };
 
-  icon = `<p-tag-status icon="car">Some label</p-tag-status> 
-<p-tag-status icon-source="${require('../../../../assets/icon-custom-kaixin.svg')}">Some label</p-tag-status>`;
+  icon = `<p-tag icon="car">Some label</p-tag> 
+<p-tag icon-source="${require('../../../../assets/icon-custom-kaixin.svg')}">Some label</p-tag>`;
 
   get buttonMarkup(){
-    return TAG_STATUS_COLORS.map((color, idx) => `<p-tag-status${idx === 0 ? ' icon="car"' : ''} color="${color}">
+    return TAG_COLORS.map((color, idx) => `<p-tag${idx === 0 ? ' icon="car"' : ''} color="${color}">
   <button type="button">Color ${color}</button>
-</p-tag-status>`).join('\n');
+</p-tag>`).join('\n');
   };
 
   get linkMarkup(){
-    return TAG_STATUS_COLORS.map((color, idx) => `<p-tag-status${idx === 0 ? ' icon="car"' : ''} color="${color}">
+    return TAG_COLORS.map((color, idx) => `<p-tag${idx === 0 ? ' icon="car"' : ''} color="${color}">
   <a href="https://www.porsche.com">Color ${color}</a>
-</p-tag-status>`).join('\n');
+</p-tag>`).join('\n');
   };
 
-  buttonAccessibility = `<p-tag-status icon="car">
+  buttonAccessibility = `<p-tag icon="car">
   <button type="button" aria-label="More information about used cars">Used cars</button>
-</p-tag-status>`;
+</p-tag>`;
 
-  linkAccessibility = `<p-tag-status icon="car">
+  linkAccessibility = `<p-tag icon="car">
   <a href="https://www.porsche.com" aria-label="More information about used cars" target="_blank">Used cars</a>
-</p-tag-status>`;
+</p-tag>`;
 }
 </script>

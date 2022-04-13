@@ -4,11 +4,11 @@ import {
   getPrefixedTagNames,
   parseAndGetAriaAttributes,
   throwIfValueIsInvalid,
-} from '../../../../utils';
+} from '../../../utils';
 import { getComponentCss } from './tag-dismissible-styles';
 import { TAG_DISMISSIBLE_ARIA_ATTRIBUTES, TAG_DISMISSIBLE_COLORS } from './tag-dismissible-utils';
 import type { TagDismissibleColor, TagDismissibleAriaAttribute } from './tag-dismissible-utils';
-import type { SelectedAriaAttributes } from '../../../../types';
+import type { SelectedAriaAttributes } from '../../../types';
 
 @Component({
   tag: 'p-tag-dismissible',

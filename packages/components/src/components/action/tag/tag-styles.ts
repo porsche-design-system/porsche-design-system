@@ -1,4 +1,4 @@
-import { getCss, isThemeDark, mergeDeep } from '../../../../utils';
+import { getCss, isThemeDark, mergeDeep } from '../../../utils';
 import {
   addImportantToEachRule,
   getFocusJssStyle,
@@ -6,15 +6,15 @@ import {
   getTransition,
   pxToRemWithUnit,
   ThemedColors,
-} from '../../../../styles';
+} from '../../../styles';
 import { fontStyle, fontWeight, textXSmall } from '@porsche-design-system/utilities-v2';
-import { hasInvertedThemeColor } from './tag-status-utils';
-import type { TagStatusColor } from './tag-status-utils';
-import type { Theme } from '../../../../types';
+import { hasInvertedThemeColor } from './tag-utils';
+import type { TagColor } from './tag-utils';
+import type { Theme } from '../../../types';
 import type { JssStyle } from 'jss';
 
-export const getThemedBackgroundColor = (tagStatusColor: TagStatusColor, themedColors: ThemedColors): string => {
-  const colorMap: { [key in TagStatusColor]: string } = {
+export const getThemedBackgroundColor = (tagColor: TagColor, themedColors: ThemedColors): string => {
+  const colorMap: { [key in TagColor]: string } = {
     'background-default': themedColors.backgroundColor,
     'background-surface': themedColors.backgroundSurfaceColor,
     'neutral-contrast-high': themedColors.contrastHighColor,
@@ -24,11 +24,11 @@ export const getThemedBackgroundColor = (tagStatusColor: TagStatusColor, themedC
     'notification-warning': themedColors.warningSoftColor,
   };
 
-  return colorMap[tagStatusColor];
+  return colorMap[tagColor];
 };
 
 export const getColors = (
-  tagStatusColor: TagStatusColor,
+  tagColor: TagColor,
   theme: Theme
 ): {
   baseColor: string;
@@ -38,7 +38,7 @@ export const getColors = (
   backgroundColor: string;
 } => {
   const themedColors = getThemedColors(theme);
-  const hasInvertedTheme = hasInvertedThemeColor(tagStatusColor, theme);
+  const hasInvertedTheme = hasInvertedThemeColor(tagColor, theme);
 
   const { baseColor, hoverColor } = hasInvertedTheme
     ? getThemedColors(isThemeDark(theme) ? 'light' : 'dark')
@@ -50,7 +50,7 @@ export const getColors = (
     hoverColor,
     outlineColor: hasInvertedTheme ? themedBaseColor : focusColor,
     focusColor: hasInvertedTheme ? focusColor : null,
-    backgroundColor: getThemedBackgroundColor(tagStatusColor, themedColors),
+    backgroundColor: getThemedBackgroundColor(tagColor, themedColors),
   };
 };
 
@@ -63,8 +63,8 @@ export const slottedTextStyles: JssStyle = {
   },
 };
 
-export const getComponentCss = (tagStatusColor: TagStatusColor, isFocusable: boolean, theme: Theme): string => {
-  const { baseColor, hoverColor, outlineColor, focusColor, backgroundColor } = getColors(tagStatusColor, theme);
+export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme: Theme): string => {
+  const { baseColor, hoverColor, outlineColor, focusColor, backgroundColor } = getColors(tagColor, theme);
 
   return getCss({
     '@global': {
