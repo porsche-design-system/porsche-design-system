@@ -9,8 +9,9 @@ import {
   getTransition,
   pxToRemWithUnit,
   getThemedColors,
+  getScreenReaderOnlyJssStyle,
 } from './';
-import { fontSize, getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
+import { fontSize } from '@porsche-design-system/utilities-v2';
 import { isSizeInherit } from '../components/basic/typography/text/text-utils';
 
 const getSizeJssStyle: GetJssStyleFunction = (textSize: TextSize): JssStyle => {

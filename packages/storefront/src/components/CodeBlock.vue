@@ -90,14 +90,14 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
+  @import '~@porsche-design-system/components-js/utilities/scss';
   @import '../styles/internal.variables';
 
   .code-block {
     &--light {
       code,
       pre {
-        color: $p-color-default;
+        color: $pds-theme-light-base;
       }
 
       pre {
@@ -167,7 +167,7 @@
     &--dark {
       code,
       pre {
-        color: $p-color-theme-dark-default;
+        color: $pds-theme-dark-base;
       }
 
       pre {
@@ -253,10 +253,8 @@
   pre {
     max-height: 20rem;
     overflow: auto;
-    margin-top: $p-spacing-16;
-    &:focus-visible {
-      @include p-focus;
-    }
+    margin-top: $pds-spacing-medium;
+    @include pds-focus;
 
     code ::v-deep {
       .token.important,
