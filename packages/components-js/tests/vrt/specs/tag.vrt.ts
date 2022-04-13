@@ -11,6 +11,8 @@ import {
   getVisualRegressionTester,
   vrtTest,
 } from '@porsche-design-system/shared/testing';
+import { TAG_COLORS } from '../../../../components/src/components/action/tag/tag-utils';
+import type { Theme } from '@porsche-design-system/utilities-v2';
 
 it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(await vrtTest(getVisualRegressionTester(viewport), 'tag', '/#tag')).toBeFalsy();
@@ -27,36 +29,20 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         .row:not(:last-child) { margin-bottom: 0.5rem; }
       </style>`;
 
+      const getColorVariations = (theme: Theme, child: string): string =>
+        [TAG_COLORS[0], ...TAG_COLORS]
+          .map((color, i) => `<p-tag theme="${theme}" color="${color}"${i === 0 ? 'icon="car"' : ''}>${child}</p-tag>`)
+          .join('\n');
+
       const getElementsMarkup: GetThemedMarkup = (theme) => `
         <div class="row">
-          <p-tag theme="${theme}" color="background-default" icon="car">Text</p-tag>
-          <p-tag theme="${theme}" color="background-default">Text</p-tag>
-          <p-tag theme="${theme}" color="background-surface">Text</p-tag>
-          <p-tag theme="${theme}" color="neutral-contrast-high">Text</p-tag>
-          <p-tag theme="${theme}" color="notification-neutral">Text</p-tag>
-          <p-tag theme="${theme}" color="notification-success">Text</p-tag>
-          <p-tag theme="${theme}" color="notification-error">Text</p-tag>
-          <p-tag theme="${theme}" color="notification-warning">Text</p-tag>
+          ${getColorVariations(theme, 'Text')}
         </div>
         <div class="row">
-          <p-tag theme="${theme}" color="background-default" icon="car"><a href="#">Link</a></p-tag>
-          <p-tag theme="${theme}" color="background-default"><a href="#">Link</a></p-tag>
-          <p-tag theme="${theme}" color="background-surface"><a href="#">Link</a></p-tag>
-          <p-tag theme="${theme}" color="neutral-contrast-high"><a href="#">Link</a></p-tag>
-          <p-tag theme="${theme}" color="notification-neutral"><a href="#">Link</a></p-tag>
-          <p-tag theme="${theme}" color="notification-success"><a href="#">Link</a></p-tag>
-          <p-tag theme="${theme}" color="notification-error"><a href="#">Link</a></p-tag>
-          <p-tag theme="${theme}" color="notification-warning"><a href="#">Link</a></p-tag>
+          ${getColorVariations(theme, '<a href="#">Link</a>')}
         </div>
         <div class="row">
-          <p-tag theme="${theme}" color="background-default" icon="car"><button>Button</button></p-tag>
-          <p-tag theme="${theme}" color="background-default"><button>Button</button></p-tag>
-          <p-tag theme="${theme}" color="background-surface"><button>Button</button></p-tag>
-          <p-tag theme="${theme}" color="neutral-contrast-high"><button>Button</button></p-tag>
-          <p-tag theme="${theme}" color="notification-neutral"><button>Button</button></p-tag>
-          <p-tag theme="${theme}" color="notification-success"><button>Button</button></p-tag>
-          <p-tag theme="${theme}" color="notification-error"><button>Button</button></p-tag>
-          <p-tag theme="${theme}" color="notification-warning"><button>Button</button></p-tag>
+          ${getColorVariations(theme, '<button>Button</button>')}
         </div>`;
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup, { withSurface: true }), {
