@@ -15,6 +15,6 @@
     "compilerOptions": {
       "module": "commonjs"
     },
-    "include": ["./scripts"],
+    "include": ["./scripts"]
   }
 }
