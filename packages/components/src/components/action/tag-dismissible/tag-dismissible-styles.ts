@@ -41,7 +41,7 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
           position: 'absolute',
           ...getInsetJssStyle(-3),
           border: '1px solid transparent',
-          borderRadius: pxToRemWithUnit(6.5),
+          borderRadius: pxToRemWithUnit(6),
           transition: getTransition('border-color'),
         },
         '&:focus': {
