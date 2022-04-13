@@ -248,6 +248,15 @@ Object {
 }
 `;
 
+exports[`getInsetJssStyle() should return correct JssStyle for parameter: -1 1`] = `
+Object {
+  "bottom": "-1px",
+  "left": "-1px",
+  "right": "-1px",
+  "top": "-1px",
+}
+`;
+
 exports[`getInsetJssStyle() should return correct JssStyle for parameter: 2 1`] = `
 Object {
   "bottom": "2px",
