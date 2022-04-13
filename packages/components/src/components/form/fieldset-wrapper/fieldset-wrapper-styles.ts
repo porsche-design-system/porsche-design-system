@@ -2,9 +2,11 @@ import type { FormState, Theme } from '../../../types';
 import type { FieldsetWrapperLabelSize } from './fieldset-wrapper-utils';
 import { getCss, mergeDeep } from '../../../utils';
 import { addImportantToRule, getThemedColors } from '../../../styles';
-import { headline4, headline5, spacing } from '@porsche-design-system/utilities-v2';
+import { headingXSmall, headingSmall, spacing } from '@porsche-design-system/utilities-v2';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
+
+const { medium: spacingMedium } = spacing;
 
 export const getComponentCss = (state: FormState, labelSize: FieldsetWrapperLabelSize, hasLabel: boolean): string => {
   const theme: Theme = 'light';
@@ -21,17 +23,17 @@ export const getComponentCss = (state: FormState, labelSize: FieldsetWrapperLabe
       },
       ...(hasLabel && {
         legend: {
-          margin: `0 0 ${spacing[16]}`,
+          margin: `0 0 ${spacingMedium}`,
           padding: 0,
           color: getThemedColors(theme).baseColor,
-          ...(labelSize === 'small' ? headline5 : headline4),
+          ...(labelSize === 'small' ? headingXSmall : headingSmall),
         },
       }),
     },
     ...getFunctionalComponentRequiredStyles(theme),
     ...mergeDeep(getFunctionalComponentStateMessageStyles(theme, state), {
       message: {
-        marginTop: spacing[16],
+        marginTop: spacingMedium,
       },
     }),
   });

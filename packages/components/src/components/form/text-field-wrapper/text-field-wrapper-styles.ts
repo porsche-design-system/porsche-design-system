@@ -9,10 +9,10 @@ import {
   getTransition,
   pxToRemWithUnit,
   getThemedColors,
+  getScreenReaderOnlyJssStyle,
 } from '../../../styles';
 import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles';
 import { isVisibleFormState } from '../../../utils/form-state';
-import { getScreenReaderOnlyJssStyle } from '@porsche-design-system/utilities-v2';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 

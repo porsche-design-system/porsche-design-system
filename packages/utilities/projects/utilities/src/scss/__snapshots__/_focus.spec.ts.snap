@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pds-focus() should return correct css for opts: { color: 'deeppink' } 1`] = `
+"div {
+  outline: transparent solid 1px;
+  outline-offset: 2px;
+}
+div::-moz-focus-inner {
+  border: 0;
+}
+div:focus {
+  outline-color: deeppink;
+}
+div:focus:not(:focus-visible) {
+  outline-color: transparent;
+}"
+`;
+
+exports[`pds-focus() should return correct css for opts: { color: 'royalblue', offset: '20px' } 1`] = `
+"div {
+  outline: transparent solid 1px;
+  outline-offset: 20px;
+}
+div::-moz-focus-inner {
+  border: 0;
+}
+div:focus {
+  outline-color: royalblue;
+}
+div:focus:not(:focus-visible) {
+  outline-color: transparent;
+}"
+`;
+
+exports[`pds-focus() should return correct css for opts: {} 1`] = `
+"div {
+  outline: transparent solid 1px;
+  outline-offset: 2px;
+}
+div::-moz-focus-inner {
+  border: 0;
+}
+div:focus {
+  outline-color: currentColor;
+}
+div:focus:not(:focus-visible) {
+  outline-color: transparent;
+}"
+`;

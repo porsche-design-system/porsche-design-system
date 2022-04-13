@@ -12,6 +12,7 @@ import { fontWeight, spacing, textSmall } from '@porsche-design-system/utilities
 import { isDirectionAsc, isSortable } from './table-head-cell-utils';
 
 const { contrastMediumColor, baseColor } = getThemedColors('light');
+const { semiBold: fontWeightSemiBold } = fontWeight;
 
 export const getComponentCss = (active: boolean, direction: Direction, hideLabel: boolean): string => {
   const sortable = isSortable(active, direction);
@@ -23,7 +24,7 @@ export const getComponentCss = (active: boolean, direction: Direction, hideLabel
         padding: `${pxToRemWithUnit(2)} ${pxToRemWithUnit(12)} ${pxToRemWithUnit(8)}`,
         borderBottom: `1px solid ${contrastMediumColor}`,
         verticalAlign: 'bottom',
-        fontWeight: fontWeight.semibold,
+        fontWeight: fontWeightSemiBold,
         whiteSpace: 'nowrap',
       }),
       ...(sortable
@@ -36,7 +37,7 @@ export const getComponentCss = (active: boolean, direction: Direction, hideLabel
               appearance: 'none',
               border: 'none',
               ...textSmall,
-              fontWeight: fontWeight.semibold,
+              fontWeight: fontWeightSemiBold,
               color: baseColor,
               textDecoration: 'none',
               textAlign: 'left',
@@ -61,7 +62,7 @@ export const getComponentCss = (active: boolean, direction: Direction, hideLabel
     },
     ...(sortable && {
       icon: {
-        marginLeft: spacing[4],
+        marginLeft: spacing.xSmall,
         opacity: active ? 1 : 0,
         transform: `rotate3d(0,0,1,${isDirectionAsc(direction) ? 0 : 180}deg)`,
         transformOrigin: '50% 50%', // for iOS
