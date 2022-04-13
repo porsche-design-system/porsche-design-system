@@ -80,27 +80,27 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
+  @import '~@porsche-design-system/components-js/utilities/scss';
   @import '../styles/internal.variables';
 
   .teaser {
     &:first-child {
-      margin-top: -$p-spacing-32;
+      margin-top: -$pds-spacing-large;
 
-      @include p-media-query('s') {
-        margin-top: -$p-spacing-64;
+      @include pds-media-query-min('s') {
+        margin-top: -4rem;
       }
     }
 
     margin: {
-      left: -$p-spacing-32;
-      right: -$p-spacing-32;
+      left: -$pds-spacing-large;
+      right: -$pds-spacing-large;
     }
 
-    @include p-media-query('s') {
+    @include pds-media-query-min('s') {
       margin: {
-        left: -$p-spacing-64;
-        right: -$p-spacing-64;
+        left: -4rem;
+        right: -4rem;
       }
     }
   }
@@ -109,8 +109,8 @@
     position: relative;
     padding-top: 34%;
     overflow: hidden;
-    background: $p-color-neutral-contrast-low;
-    border-bottom: 1px solid $p-color-neutral-contrast-low;
+    background: $pds-theme-light-contrast-low;
+    border-bottom: 1px solid $pds-theme-light-contrast-low;
   }
 
   .video {
@@ -124,64 +124,64 @@
 
   .intro {
     margin: {
-      left: -$p-spacing-32;
-      right: -$p-spacing-32;
+      left: -$pds-spacing-large;
+      right: -$pds-spacing-large;
     }
-    padding: $p-spacing-32;
+    padding: $pds-spacing-large;
 
-    @include p-media-query('s') {
+    @include pds-media-query-min('s') {
       margin: {
-        left: -$p-spacing-64;
-        right: -$p-spacing-64;
+        left: -4rem;
+        right: -4rem;
       }
-      padding: $p-spacing-64;
+      padding: 4rem;
     }
 
     p a {
       text-decoration: none;
-      color: $p-color-brand;
+      color: $pds-theme-light-brand;
       transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
       &:hover {
-        color: darken($p-color-state-hover, 10%);
+        color: darken($pds-theme-light-state-hover, 10%);
       }
     }
 
     h2 + p a {
-      border-bottom: 1px solid $p-color-brand;
+      border-bottom: 1px solid $pds-theme-light-brand;
     }
   }
 
   .newsletter {
     &:last-child {
-      margin-bottom: -$p-spacing-32;
+      margin-bottom: -$pds-spacing-large;
 
-      @include p-media-query('s') {
-        margin-bottom: -$p-spacing-64;
+      @include pds-media-query-min('s') {
+        margin-bottom: -4rem;
       }
     }
 
     margin: {
-      left: -$p-spacing-32;
-      right: -$p-spacing-32;
+      left: -$pds-spacing-large;
+      right: -$pds-spacing-large;
     }
-    padding: $p-spacing-32;
-    background: $p-color-background-surface;
+    padding: $pds-spacing-large;
+    background: $pds-theme-light-background-surface;
 
-    @include p-media-query('s') {
+    @include pds-media-query-min('s') {
       margin: {
-        left: -$p-spacing-64;
-        right: -$p-spacing-64;
+        left: -4rem;
+        right: -4rem;
       }
-      padding: $p-spacing-64;
+      padding: 4rem;
     }
 
     a {
-      color: $p-color-brand;
+      color: $pds-theme-light-brand;
       transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
       &:hover {
-        color: darken($p-color-state-hover, 10%);
+        color: darken($pds-theme-light-state-hover, 10%);
       }
     }
   }

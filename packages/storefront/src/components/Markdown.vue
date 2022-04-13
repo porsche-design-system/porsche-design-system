@@ -28,7 +28,7 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
+  @import '~@porsche-design-system/components-js/utilities/scss';
   @import '../styles/internal.variables';
 
   /* More information about ::v-deep selector can be found here: https://vue-loader.vuejs.org/guide/scoped-css.html#deep-selectors
@@ -82,19 +82,19 @@
 
         // Typography
         h1 {
-          @include p-headline-2;
-          margin-top: $p-spacing-72;
+          @include pds-heading-large;
+          margin-top: 4.5rem;
         }
 
         h2 {
-          @include p-headline-3;
-          margin-top: $p-spacing-64;
+          @include pds-heading-medium;
+          margin-top: 4rem;
 
           // for anchor links with table of contents
           &[id] {
             p-link-pure {
               visibility: hidden;
-              margin-left: $p-spacing-8;
+              margin-left: $pds-spacing-small;
             }
 
             &:hover {
@@ -109,45 +109,45 @@
         }
 
         h3 {
-          @include p-headline-4;
-          margin-top: $p-spacing-48;
+          @include pds-heading-small;
+          margin-top: $pds-spacing-x-large;
         }
 
         h4 {
-          @include p-headline-4;
-          margin-top: $p-spacing-32;
+          @include pds-heading-small;
+          margin-top: $pds-spacing-large;
         }
 
         h5,
         h6 {
-          @include p-headline-5;
-          margin-top: $p-spacing-24;
+          @include pds-heading-x-small;
+          margin-top: 1.5rem;
         }
 
         p {
-          @include p-text-small;
-          margin-top: $p-spacing-24;
+          @include pds-text-small;
+          margin-top: 1.5rem;
         }
 
         p-inline-notification {
-          margin-top: $p-spacing-24;
+          margin-top: 1.5rem;
         }
 
         // Horizontal Rules
         hr {
           margin: {
-            top: $p-spacing-56;
-            bottom: $p-spacing-16;
+            top: 3.5rem;
+            bottom: $pds-spacing-medium;
           }
           border: 0;
           height: 1px;
-          background-color: $p-color-neutral-contrast-low;
+          background-color: $pds-theme-light-contrast-low;
         }
 
         // Emphasis
         b,
         strong {
-          font-weight: $p-font-weight-bold;
+          font-weight: $pds-font-weight-bold;
         }
 
         i,
@@ -163,16 +163,16 @@
 
         // Blockquote
         blockquote {
-          padding-left: $p-spacing-24;
-          border-left: p-px-to-rem(5px) solid $p-color-neutral-contrast-low;
+          padding-left: 1.5rem;
+          border-left: 0.3125rem solid $pds-theme-light-contrast-low;
         }
 
         // Lists
         ul,
         ol {
-          @include p-text-small;
-          margin-top: $p-spacing-24;
-          padding-left: $p-spacing-32;
+          @include pds-text-small;
+          margin-top: 1.5rem;
+          padding-left: $pds-spacing-large;
 
           ul,
           ol {
@@ -191,7 +191,7 @@
         // Code
         code,
         pre {
-          @include p-text-x-small;
+          @include pds-text-x-small;
           font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
         }
 
@@ -200,27 +200,27 @@
         }
 
         :not(pre) > code {
-          padding: 0.125rem $p-spacing-8;
-          background-color: mix($p-color-brand, $p-color-background-default, 10%);
+          padding: 0.125rem $pds-spacing-small;
+          background-color: mix($pds-theme-light-brand, $pds-theme-light-background-base, 10%);
           border-radius: 3px;
-          color: $p-color-brand;
+          color: $pds-theme-light-brand;
         }
 
         pre {
-          margin-top: $p-spacing-8;
+          margin-top: $pds-spacing-small;
           display: block;
-          padding: $p-spacing-8 $p-spacing-24;
+          padding: $pds-spacing-small 1.5rem;
           word-break: break-all;
           word-wrap: break-word;
-          background-color: $p-color-background-surface;
-          color: $p-color-neutral-contrast-high;
+          background-color: $pds-theme-light-background-surface;
+          color: $pds-theme-light-contrast-high;
           overflow-x: auto;
           -webkit-overflow-scrolling: touch;
         }
 
         // Tables
         table {
-          margin-top: $p-spacing-24;
+          margin-top: 1.5rem;
           border-collapse: collapse;
 
           code ~ code::before {
@@ -228,50 +228,50 @@
           }
 
           thead {
-            @include p-text-small;
+            @include pds-text-small;
           }
 
           tbody {
-            @include p-text-small;
+            @include pds-text-small;
           }
 
           th {
             text-align: left;
-            padding-bottom: $p-spacing-8;
-            border-bottom: 1px solid $p-color-neutral-contrast-low;
+            padding-bottom: $pds-spacing-small;
+            border-bottom: 1px solid $pds-theme-light-contrast-low;
           }
 
           td {
             text-align: left;
             padding: {
-              top: $p-spacing-8;
-              bottom: $p-spacing-8;
+              top: $pds-spacing-small;
+              bottom: $pds-spacing-small;
             }
-            border-bottom: 1px solid $p-color-neutral-contrast-low;
+            border-bottom: 1px solid $pds-theme-light-contrast-low;
             vertical-align: top;
             width: 10%;
           }
 
           th ~ th,
           td ~ td {
-            padding-left: $p-spacing-24;
+            padding-left: 1.5rem;
           }
         }
 
         // Links
         a:not(.p-button):not(.p-link) {
           text-decoration: underline;
-          color: $p-color-default;
+          color: $pds-theme-light-base;
           outline: transparent solid 1px;
           outline-offset: 1px;
           transition: color $p-animation-hover-duration $p-animation-hover-bezier;
 
           &:hover {
-            color: $p-color-state-hover;
+            color: $pds-theme-light-state-hover;
           }
 
           &:focus {
-            outline-color: $p-color-state-focus;
+            outline-color: $pds-theme-light-state-focus;
           }
         }
 
@@ -283,7 +283,7 @@
 
         // Special
         .playground {
-          margin-top: $p-spacing-16;
+          margin-top: $pds-spacing-medium;
         }
       }
     }

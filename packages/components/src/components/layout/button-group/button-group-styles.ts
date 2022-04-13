@@ -5,6 +5,8 @@ import { buildResponsiveStyles, getCss } from '../../../utils';
 import { addImportantToEachRule } from '../../../styles';
 import { spacing } from '@porsche-design-system/utilities-v2';
 
+const { medium: spacingMedium, small: spacingSmall } = spacing;
+
 const getDirectionJssStyle: GetJssStyleFunction = (direction: ButtonGroupDirectionType): JssStyle => {
   const style: { [key in ButtonGroupDirectionType]: JssStyle } = {
     column: {
@@ -16,8 +18,8 @@ const getDirectionJssStyle: GetJssStyleFunction = (direction: ButtonGroupDirecti
     row: {
       flexFlow: 'row wrap',
       alignItems: 'center',
-      marginRight: `-${spacing[8]}`,
-      marginLeft: `-${spacing[8]}`,
+      marginRight: `-${spacingSmall}`,
+      marginLeft: `-${spacingSmall}`,
     },
   };
   return style[direction];
@@ -30,8 +32,8 @@ const getDirectionSlottedJssStyle: GetJssStyleFunction = (direction: ButtonGroup
       marginLeft: 0,
     },
     row: {
-      marginRight: spacing[8],
-      marginLeft: spacing[8],
+      marginRight: spacingSmall,
+      marginLeft: spacingSmall,
     },
   };
   return style[direction];
@@ -45,11 +47,11 @@ export const getComponentCss = (direction: ButtonGroupDirection): string => {
       },
       div: {
         display: 'flex',
-        marginTop: `-${spacing[16]}`,
+        marginTop: `-${spacingMedium}`,
         ...buildResponsiveStyles(direction, getDirectionJssStyle),
       },
       '::slotted(*)': addImportantToEachRule({
-        marginTop: spacing[16],
+        marginTop: spacingMedium,
         ...buildResponsiveStyles(direction, getDirectionSlottedJssStyle),
       }),
     },

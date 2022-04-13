@@ -2,4 +2,4 @@
 /dist
 
 # auto generated files
-/src/jss/typography/lib
+/src/scss/lib

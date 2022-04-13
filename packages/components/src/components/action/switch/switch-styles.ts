@@ -11,6 +11,8 @@ import {
 } from '../../../styles';
 import { spacing } from '@porsche-design-system/utilities-v2';
 
+const { small: spacingSmall } = spacing;
+
 const getColors = (
   checked: boolean,
   isDisabledOrLoading: boolean,
@@ -62,11 +64,11 @@ const getAlignLabelJssStyle: GetJssStyleFunction = (alignLabel: AlignLabelType):
     left: {
       order: 0,
       paddingLeft: 0,
-      paddingRight: spacing[8],
+      paddingRight: spacingSmall,
     },
     right: {
       order: 1,
-      paddingLeft: spacing[8],
+      paddingLeft: spacingSmall,
       paddingRight: 0,
     },
   };

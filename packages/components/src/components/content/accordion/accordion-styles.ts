@@ -38,7 +38,7 @@ export const getComponentCss = (
         textAlign: 'left',
         color: baseColor,
         ...textSmall,
-        fontWeight: fontWeight.semibold,
+        fontWeight: fontWeight.semiBold,
         ...(compact
           ? { padding: `${pxToRemWithUnit(4)} 0` }
           : buildResponsiveStyles(size, (s: AccordionSize) => ({
@@ -63,7 +63,7 @@ export const getComponentCss = (
     icon: {
       width: '1.5em',
       height: '1.5em',
-      marginLeft: spacing[24],
+      marginLeft: '1.5rem',
       transformOrigin: '50% 50%',
       transform: open ? 'rotate3d(0,0,1,180deg)' : 'rotate3d(0,0,1,0.0001deg)', // needs to be a little bit more than 0 for correct direction in safari
       transition: getTransition('transform'),
@@ -74,7 +74,7 @@ export const getComponentCss = (
       ...(open
         ? {
             height: 'auto',
-            paddingBottom: spacing[compact ? 8 : 40],
+            paddingBottom: compact ? spacing.small : '2.5rem',
             visibility: 'visible',
             transition: getTransition('height') + `,visibility ${transitionDuration}`,
             animation: `$open ${transitionDuration} ease forwards`,

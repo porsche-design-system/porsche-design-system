@@ -36,7 +36,7 @@ export class Marque {
 
   public render(): JSX.Element {
     const innerManifest = getInnerManifest(this.trademark);
-    const mediumMedia = `(min-width: ${breakpoint.l}px)`;
+    const mediumMedia = `(min-width: ${breakpoint.l})`;
 
     const picture = (
       <picture>

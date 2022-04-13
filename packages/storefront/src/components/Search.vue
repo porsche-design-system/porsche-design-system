@@ -106,7 +106,7 @@
 </script>
 
 <style scoped lang="scss">
-  @import '~@porsche-design-system/utilities/scss';
+  @import '~@porsche-design-system/components-js/utilities/scss';
 
   ul,
   li {
@@ -115,28 +115,28 @@
 
   .link {
     width: 100%;
-    margin: $p-spacing-4 0;
+    margin: $pds-spacing-x-small 0;
     display: inline-block;
     text-decoration: none;
   }
 
   .hits {
     position: absolute;
-    width: p-px-to-rem(280px);
-    background: $p-color-background-default;
+    width: 17.5rem;
+    background: $pds-theme-light-background-base;
     z-index: 1;
     left: 0;
   }
 
   .search {
-    margin-bottom: p-px-to-rem(24px);
+    margin-bottom: 1.5rem;
   }
 
   .category {
-    padding-bottom: $p-spacing-8;
+    padding-bottom: $pds-spacing-small;
   }
 
   ::v-deep .hits__item {
-    padding: $p-spacing-8 $p-spacing-32 $p-spacing-8;
+    padding: $pds-spacing-small $pds-spacing-large $pds-spacing-small;
   }
 </style>
