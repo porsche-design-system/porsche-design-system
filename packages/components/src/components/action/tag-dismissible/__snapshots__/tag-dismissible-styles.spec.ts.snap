@@ -34,11 +34,11 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:focus-visible:hover {
-  outline-color: #d5001c;
-}
 button:hover .icon {
   color: #d5001c;
+}
+button:hover:focus {
+  outline-color: #d5001c;
 }
 ::slotted(strong), ::slotted(b) {
   font-weight: 700 !important;
@@ -100,11 +100,11 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:focus-visible:hover {
-  outline-color: #d5001c;
-}
 button:hover .icon {
   color: #d5001c;
+}
+button:hover:focus {
+  outline-color: #d5001c;
 }
 ::slotted(strong), ::slotted(b) {
   font-weight: 700 !important;
@@ -173,11 +173,11 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:focus-visible:hover {
-  outline-color: #d5001c;
-}
 button:hover .icon {
   color: #d5001c;
+}
+button:hover:focus {
+  outline-color: #d5001c;
 }
 ::slotted(strong), ::slotted(b) {
   font-weight: 700 !important;
