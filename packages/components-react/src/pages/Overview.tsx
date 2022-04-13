@@ -1,5 +1,5 @@
 /* Auto Generated File */
-import { componentsReady, PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCheckboxWrapper, PContentWrapper, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PSelectWrapper, PSpinner, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTagDismissible, PTagStatus, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react';
+import { componentsReady, PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCheckboxWrapper, PContentWrapper, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PSelectWrapper, PSpinner, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react';
 import { useEffect, useState } from 'react';
 
 export const OverviewPage = (): JSX.Element => {
@@ -228,8 +228,8 @@ export const OverviewPage = (): JSX.Element => {
             </PGrid>
           </div>
 
-          <div className="playground light" title="should render default tag-status">
-            <PTagStatus>Some Tag</PTagStatus>
+          <div className="playground light" title="should render default tag">
+            <PTag>Some Tag</PTag>
           </div>
 
           <div className="playground light" title="should render default tag-dismissible">
@@ -422,8 +422,8 @@ export const OverviewPage = (): JSX.Element => {
               </PGrid>
             </div>
 
-            <div className="playground light" title="should render default tag-status with custom prefix">
-              <PTagStatus>Some Tag</PTagStatus>
+            <div className="playground light" title="should render default tag with custom prefix">
+              <PTag>Some Tag</PTag>
             </div>
 
             <div className="playground light" title="should render default tag-dismissible with custom prefix">

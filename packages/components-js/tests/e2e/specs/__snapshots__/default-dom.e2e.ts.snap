@@ -752,6 +752,15 @@ exports[`should have no basic DOM regression for p-tabs-item 1`] = `
 </slot>"
 `;
 
+exports[`should have no basic DOM regression for p-tag 1`] = `
+"<span aria-live=\\"polite\\">
+  <div>
+    <slot>
+    </slot>
+  </div>
+</span>"
+`;
+
 exports[`should have no basic DOM regression for p-tag-dismissible 1`] = `
 "<button type=\\"button\\" aria-live=\\"polite\\">
   <span class=\\"sr-only\\">
@@ -761,15 +770,6 @@ exports[`should have no basic DOM regression for p-tag-dismissible 1`] = `
   <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
   </p-icon>
 </button>"
-`;
-
-exports[`should have no basic DOM regression for p-tag-status 1`] = `
-"<span aria-live=\\"polite\\">
-  <div>
-    <slot>
-    </slot>
-  </div>
-</span>"
 `;
 
 exports[`should have no basic DOM regression for p-text 1`] = `

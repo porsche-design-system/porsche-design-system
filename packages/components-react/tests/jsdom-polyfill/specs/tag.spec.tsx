@@ -1,8 +1,8 @@
-import { componentsReady, PTagStatus } from '@porsche-design-system/components-react';
+import { componentsReady, PTag } from '@porsche-design-system/components-react';
 import { render } from '@testing-library/react';
 
 const Sample = (): JSX.Element => {
-  return <PTagStatus data-testid="host">Some label</PTagStatus>;
+  return <PTag data-testid="host">Some label</PTag>;
 };
 
 it('should have initialized shadow dom', async () => {

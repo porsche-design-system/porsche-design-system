@@ -31,8 +31,8 @@ import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinne
 import { SwitchChangeEvent } from "./components/action/switch/switch";
 import { SortingChangeEvent, TableHeadCellSort } from "./components/content/table/table/table-utils";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
-import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/action/tags/tag-dismissible/tag-dismissible-utils";
-import { TagStatusColor } from "./components/action/tags/tag-status/tag-status-utils";
+import { TagColor } from "./components/action/tag/tag-utils";
+import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/action/tag-dismissible/tag-dismissible-utils";
 import { TextFieldWrapperUnitPosition } from "./components/form/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 import { ToastMessage } from "./components/feedback/toast/toast/toast-manager";
@@ -853,6 +853,24 @@ export namespace Components {
          */
         "label": string;
     }
+    interface PTag {
+        /**
+          * Background color variations depending on theme property.
+         */
+        "color"?: TagColor;
+        /**
+          * The icon shown.
+         */
+        "icon"?: IconName;
+        /**
+          * A URL path to a custom icon.
+         */
+        "iconSource"?: string;
+        /**
+          * Adapts the tag color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
     interface PTagDismissible {
         /**
           * Add ARIA attributes.
@@ -866,24 +884,6 @@ export namespace Components {
           * The label text.
          */
         "label"?: string;
-    }
-    interface PTagStatus {
-        /**
-          * Background color variations depending on theme property.
-         */
-        "color"?: TagStatusColor;
-        /**
-          * The icon shown.
-         */
-        "icon"?: IconName;
-        /**
-          * A URL path to a custom icon.
-         */
-        "iconSource"?: string;
-        /**
-          * Adapts the tag color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PText {
         /**
@@ -1242,17 +1242,17 @@ declare global {
         prototype: HTMLPTabsItemElement;
         new (): HTMLPTabsItemElement;
     };
+    interface HTMLPTagElement extends Components.PTag, HTMLStencilElement {
+    }
+    var HTMLPTagElement: {
+        prototype: HTMLPTagElement;
+        new (): HTMLPTagElement;
+    };
     interface HTMLPTagDismissibleElement extends Components.PTagDismissible, HTMLStencilElement {
     }
     var HTMLPTagDismissibleElement: {
         prototype: HTMLPTagDismissibleElement;
         new (): HTMLPTagDismissibleElement;
-    };
-    interface HTMLPTagStatusElement extends Components.PTagStatus, HTMLStencilElement {
-    }
-    var HTMLPTagStatusElement: {
-        prototype: HTMLPTagStatusElement;
-        new (): HTMLPTagStatusElement;
     };
     interface HTMLPTextElement extends Components.PText, HTMLStencilElement {
     }
@@ -1335,8 +1335,8 @@ declare global {
         "p-tabs": HTMLPTabsElement;
         "p-tabs-bar": HTMLPTabsBarElement;
         "p-tabs-item": HTMLPTabsItemElement;
+        "p-tag": HTMLPTagElement;
         "p-tag-dismissible": HTMLPTagDismissibleElement;
-        "p-tag-status": HTMLPTagStatusElement;
         "p-text": HTMLPTextElement;
         "p-text-field-wrapper": HTMLPTextFieldWrapperElement;
         "p-text-list": HTMLPTextListElement;
@@ -2202,6 +2202,24 @@ declare namespace LocalJSX {
          */
         "label"?: string;
     }
+    interface PTag {
+        /**
+          * Background color variations depending on theme property.
+         */
+        "color"?: TagColor;
+        /**
+          * The icon shown.
+         */
+        "icon"?: IconName;
+        /**
+          * A URL path to a custom icon.
+         */
+        "iconSource"?: string;
+        /**
+          * Adapts the tag color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
     interface PTagDismissible {
         /**
           * Add ARIA attributes.
@@ -2215,24 +2233,6 @@ declare namespace LocalJSX {
           * The label text.
          */
         "label"?: string;
-    }
-    interface PTagStatus {
-        /**
-          * Background color variations depending on theme property.
-         */
-        "color"?: TagStatusColor;
-        /**
-          * The icon shown.
-         */
-        "icon"?: IconName;
-        /**
-          * A URL path to a custom icon.
-         */
-        "iconSource"?: string;
-        /**
-          * Adapts the tag color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PText {
         /**
@@ -2403,8 +2403,8 @@ declare namespace LocalJSX {
         "p-tabs": PTabs;
         "p-tabs-bar": PTabsBar;
         "p-tabs-item": PTabsItem;
+        "p-tag": PTag;
         "p-tag-dismissible": PTagDismissible;
-        "p-tag-status": PTagStatus;
         "p-text": PText;
         "p-text-field-wrapper": PTextFieldWrapper;
         "p-text-list": PTextList;
@@ -2456,8 +2456,8 @@ declare module "@stencil/core" {
             "p-tabs": LocalJSX.PTabs & JSXBase.HTMLAttributes<HTMLPTabsElement>;
             "p-tabs-bar": LocalJSX.PTabsBar & JSXBase.HTMLAttributes<HTMLPTabsBarElement>;
             "p-tabs-item": LocalJSX.PTabsItem & JSXBase.HTMLAttributes<HTMLPTabsItemElement>;
+            "p-tag": LocalJSX.PTag & JSXBase.HTMLAttributes<HTMLPTagElement>;
             "p-tag-dismissible": LocalJSX.PTagDismissible & JSXBase.HTMLAttributes<HTMLPTagDismissibleElement>;
-            "p-tag-status": LocalJSX.PTagStatus & JSXBase.HTMLAttributes<HTMLPTagStatusElement>;
             "p-text": LocalJSX.PText & JSXBase.HTMLAttributes<HTMLPTextElement>;
             "p-text-field-wrapper": LocalJSX.PTextFieldWrapper & JSXBase.HTMLAttributes<HTMLPTextFieldWrapperElement>;
             "p-text-list": LocalJSX.PTextList & JSXBase.HTMLAttributes<HTMLPTextListElement>;
