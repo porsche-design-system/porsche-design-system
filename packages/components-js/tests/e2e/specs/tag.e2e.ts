@@ -16,31 +16,31 @@ type InitOpts = {
   withIcon?: boolean;
 };
 
-const initTagStatus = async (props?: InitOpts) => {
+const initTag = async (props?: InitOpts) => {
   const { withIcon = false } = props || {};
   const attributes = withIcon ? ' icon="car"' : '';
 
-  const content = `<p-tag-status${attributes}>Some Tag</p-tag-status>`;
+  const content = `<p-tag${attributes}>Some Tag</p-tag>`;
 
   await setContentWithDesignSystem(page, content);
 };
 
-const getHost = () => selectNode(page, 'p-tag-status');
-const getSpan = () => selectNode(page, 'p-tag-status >>> span');
+const getHost = () => selectNode(page, 'p-tag');
+const getSpan = () => selectNode(page, 'p-tag >>> span');
 
 describe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
-    await initTagStatus();
+    await initTag();
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidLoad['p-tag-status'], 'componentDidLoad: p-tag-status').toBe(1);
+    expect(status.componentDidLoad['p-tag'], 'componentDidLoad: p-tag').toBe(1);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
   it('should work without unnecessary round trips on prop change', async () => {
-    await initTagStatus({ withIcon: true });
+    await initTag({ withIcon: true });
     const host = await getHost();
 
     await setProperty(host, 'icon', 'highway');
@@ -48,7 +48,7 @@ describe('lifecycle', () => {
 
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidUpdate['p-tag-status'], 'componentDidUpdate: p-tag-status').toBe(1);
+    expect(status.componentDidUpdate['p-tag'], 'componentDidUpdate: p-tag').toBe(1);
     expect(status.componentDidUpdate['p-icon'], 'componentDidUpdate: p-icon').toBe(1);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
@@ -58,12 +58,12 @@ describe('lifecycle', () => {
 
 describe('accessibility', () => {
   it('should expose correct initial accessibility tree', async () => {
-    await initTagStatus();
+    await initTag();
     await expectA11yToMatchSnapshot(page, await getSpan(), { interestingOnly: false });
   });
 
   it('should expose correct accessibility tree with icon', async () => {
-    await initTagStatus({ withIcon: true });
+    await initTag({ withIcon: true });
 
     await expectA11yToMatchSnapshot(page, await getSpan(), { interestingOnly: false });
   });

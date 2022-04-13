@@ -9,6 +9,8 @@ import * as getDirectChildHTMLElementUtils from '../utils/dom/getDirectChildHTML
 import { Button } from './action/button/button';
 import { ButtonPure } from './action/button-pure/button-pure';
 import { Switch } from './action/switch/switch';
+import { Tag } from './action/tag/tag';
+import { TagDismissible } from './action/tag-dismissible/tag-dismissible';
 import { Marque } from './basic/marque/marque';
 import { Accordion } from './content/accordion/accordion';
 import { Modal } from './content/modal/modal';
@@ -30,8 +32,6 @@ import { LinkPure } from './navigation/link-pure/link-pure';
 import { LinkSocial } from './navigation/link-social/link-social';
 import { Pagination } from './navigation/pagination/pagination';
 import { TabsBar } from './navigation/tabs-bar/tabs-bar';
-import { TagDismissible } from './action/tags/tag-dismissible/tag-dismissible';
-import { TagStatus } from './action/tags/tag-status/tag-status';
 import { Headline } from './basic/typography/headline/headline';
 import { Text } from './basic/typography/text/text';
 import { Table } from './content/table/table/table';
@@ -66,6 +66,8 @@ export const TAG_NAMES_CONSTRUCTOR_MAP: { [key in TagName]: new () => ClassType 
   'p-button': Button,
   'p-button-pure': ButtonPure,
   'p-switch': Switch,
+  'p-tag': Tag,
+  'p-tag-dismissible': TagDismissible,
   'p-marque': Marque,
   'p-accordion': Accordion,
   'p-modal': Modal,
@@ -87,8 +89,6 @@ export const TAG_NAMES_CONSTRUCTOR_MAP: { [key in TagName]: new () => ClassType 
   'p-link-social': LinkSocial,
   'p-pagination': Pagination,
   'p-tabs-bar': TabsBar,
-  'p-tag-dismissible': TagDismissible,
-  'p-tag-status': TagStatus,
   'p-headline': Headline,
   'p-text': Text,
   'p-table': Table,
