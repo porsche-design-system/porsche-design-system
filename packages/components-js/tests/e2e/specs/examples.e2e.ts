@@ -11,20 +11,20 @@ beforeEach(async () => {
 });
 afterEach(async () => await page.close());
 
-const filePath = path.resolve(
-  require.resolve('@porsche-design-system/components-angular'),
-  '../../../../src/app/app-routing.module.ts'
-);
+const filePath = path.resolve(require.resolve('@porsche-design-system/components-js'), '../../../public/index.html');
 const fileContent = fs.readFileSync(filePath, 'utf-8');
 
-const [, rawRoutes] = /const routes.*(\[(?:.|\s)*\]);/.exec(fileContent) || [];
-const routes: { name: string; path: string; component: string }[] = eval(
-  rawRoutes
-    .replace(/\.\.\.\[(?:.|\s)*?\].*/, '') // get rid of generatedRoutes
-    .replace(/(from(?:Pages|Examples)\.\w+)/g, "'$1'")
-).filter(({ component }) => component);
+const [, rawOptions] = /<select onchange.*((?:.|\s)*?)<\/select>/.exec(fileContent) || [];
+const routes: { name: string; path: string }[] = rawOptions
+  .split('\n')
+  .filter((x) => x.trim())
+  .map((option) => {
+    const [, path, name] = /<option value="([a-z-]+)">([A-z ]+)<\/option>/.exec(option) || [];
+    return { name, path };
+  })
+  .filter(({ path }) => path);
 
-const exampleRoutes = routes.filter((item) => item.component.startsWith('fromExamples.'));
+const exampleRoutes = routes.filter((item) => item.path.includes('example'));
 const exampleUrls = exampleRoutes.map((item) => item.path);
 
 it.each(exampleUrls)('should work without error for %s', async (exampleUrl) => {
