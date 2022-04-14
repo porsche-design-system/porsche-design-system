@@ -13,7 +13,7 @@ const typescriptOpts = {
 const external = [
   '@porsche-design-system/components-js',
   '@porsche-design-system/components-js/partials',
-  '@porsche-design-system/components-js/utilities/jss',
+  '@porsche-design-system/components-js/utilities/js',
   'react',
   'react/jsx-runtime',
 ];
