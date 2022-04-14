@@ -9,7 +9,7 @@ export default [
   {
     input,
     output: {
-      dir: `${outputDir}/jss`,
+      dir: `${outputDir}/js`,
       format: 'cjs',
       preserveModules: true,
       plugins: [
@@ -29,7 +29,7 @@ export default [
     plugins: [
       typescript({
         declaration: true,
-        declarationDir: `${outputDir}/jss`,
+        declarationDir: `${outputDir}/js`,
         exclude: '**.spec.ts',
         rootDir: 'src/js',
       }),
@@ -38,7 +38,7 @@ export default [
   {
     input,
     output: {
-      dir: `${outputDir}/jss/esm`,
+      dir: `${outputDir}/js/esm`,
       format: 'esm',
       preserveModules: true,
     },
