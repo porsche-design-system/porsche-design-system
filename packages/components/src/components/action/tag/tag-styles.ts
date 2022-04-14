@@ -34,7 +34,6 @@ export const getColors = (
   baseColor: string;
   hoverColor: string;
   outlineColor: string;
-  focusColor: string;
   backgroundColor: string;
 } => {
   const themedColors = getThemedColors(theme);
@@ -49,7 +48,6 @@ export const getColors = (
     baseColor,
     hoverColor,
     outlineColor: hasInvertedTheme ? themedBaseColor : focusColor,
-    focusColor: hasInvertedTheme ? focusColor : null,
     backgroundColor: getThemedBackgroundColor(tagColor, themedColors),
   };
 };
@@ -87,7 +85,7 @@ export const getBeforeStyles = (baseColor: string, hoverColor: string): JssStyle
 };
 
 export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme: Theme): string => {
-  const { baseColor, hoverColor, backgroundColor } = getColors(tagColor, theme);
+  const { baseColor, hoverColor, backgroundColor, outlineColor } = getColors(tagColor, theme);
 
   return getCss({
     '@global': {
@@ -126,7 +124,7 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
           },
           //Transform selectors of getFocusJssStyle() to fit the ::slotted syntax
           ...Object.fromEntries(
-            Object.entries(getBeforeStyles(baseColor, hoverColor))
+            Object.entries(getBeforeStyles(outlineColor, hoverColor))
               .filter(([key]) => key !== 'outline') // Needs to be set on correct ::slotted selector
               // Use Values of getFocusJssStyle, but transform keys to fit ::slotted
               .map(([key, value]) => [key.replace(/^&([a-z:\-()]*)(::[a-z\-]+)$/, '&(a$1)$2, &(button$1)$2'), value])
