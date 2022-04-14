@@ -143,24 +143,25 @@ span:hover {
   font: inherit !important;
   outline: 0 !important;
 }
-::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
-  border: 0 !important;
-}
 ::slotted(a)::before, ::slotted(button)::before {
   content: \\"\\" !important;
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  top: -3px !important;
+  left: -3px !important;
+  right: -3px !important;
+  bottom: -3px !important;
+  border: 1px solid transparent !important;
+  border-radius: 0.375rem !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: currentColor !important;
+  border-color: #fff !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent !important;
+  border-color: transparent !important;
+}
+::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+  border-color: #ff0223 !important;
 }
 ::slotted(a) {
   color: #fff !important;
@@ -185,9 +186,6 @@ span:hover {
 }
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 0.25rem !important;
 }
 .icon {
   margin: 0 0.125rem 0 -0.125rem;
@@ -227,24 +225,25 @@ span:hover {
   font: inherit !important;
   outline: 0 !important;
 }
-::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
-  border: 0 !important;
-}
 ::slotted(a)::before, ::slotted(button)::before {
   content: \\"\\" !important;
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  top: -3px !important;
+  left: -3px !important;
+  right: -3px !important;
+  bottom: -3px !important;
+  border: 1px solid transparent !important;
+  border-radius: 0.375rem !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: currentColor !important;
+  border-color: #000 !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent !important;
+  border-color: transparent !important;
+}
+::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+  border-color: #d5001c !important;
 }
 ::slotted(a) {
   color: #000 !important;
@@ -269,9 +268,6 @@ span:hover {
 }
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 0.25rem !important;
 }
 .icon {
   margin: 0 0.125rem 0 -0.125rem;
@@ -311,24 +307,25 @@ span:hover {
   font: inherit !important;
   outline: 0 !important;
 }
-::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
-  border: 0 !important;
-}
 ::slotted(a)::before, ::slotted(button)::before {
   content: \\"\\" !important;
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  top: -3px !important;
+  left: -3px !important;
+  right: -3px !important;
+  bottom: -3px !important;
+  border: 1px solid transparent !important;
+  border-radius: 0.375rem !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: currentColor !important;
+  border-color: #fff !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent !important;
+  border-color: transparent !important;
+}
+::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+  border-color: #ff0223 !important;
 }
 ::slotted(a) {
   color: #fff !important;
@@ -353,9 +350,6 @@ span:hover {
 }
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 0.25rem !important;
 }
 .icon {
   margin: 0 0.125rem 0 -0.125rem;
@@ -395,24 +389,25 @@ span:hover {
   font: inherit !important;
   outline: 0 !important;
 }
-::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
-  border: 0 !important;
-}
 ::slotted(a)::before, ::slotted(button)::before {
   content: \\"\\" !important;
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  top: -3px !important;
+  left: -3px !important;
+  right: -3px !important;
+  bottom: -3px !important;
+  border: 1px solid transparent !important;
+  border-radius: 0.375rem !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: currentColor !important;
+  border-color: #000 !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent !important;
+  border-color: transparent !important;
+}
+::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+  border-color: #d5001c !important;
 }
 ::slotted(a) {
   color: #000 !important;
@@ -437,9 +432,6 @@ span:hover {
 }
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 0.25rem !important;
 }
 .icon {
   margin: 0 0.125rem 0 -0.125rem;
@@ -479,28 +471,25 @@ span:hover {
   font: inherit !important;
   outline: 0 !important;
 }
-::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
-  border: 0 !important;
-}
 ::slotted(a)::before, ::slotted(button)::before {
   content: \\"\\" !important;
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  top: -3px !important;
+  left: -3px !important;
+  right: -3px !important;
+  bottom: -3px !important;
+  border: 1px solid transparent !important;
+  border-radius: 0.375rem !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: #fff !important;
+  border-color: #000 !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent !important;
+  border-color: transparent !important;
 }
-::slotted(a:focus-visible:hover)::before, ::slotted(button:focus-visible:hover)::before {
-  transition: outline-color var(--p-transition-duration, .24s) ease !important;
-  outline-color: currentColor !important;
+::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+  border-color: #d5001c !important;
 }
 ::slotted(a) {
   color: #000 !important;
@@ -525,9 +514,6 @@ span:hover {
 }
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 0.25rem !important;
 }
 .icon {
   margin: 0 0.125rem 0 -0.125rem;
@@ -567,28 +553,25 @@ span:hover {
   font: inherit !important;
   outline: 0 !important;
 }
-::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
-  border: 0 !important;
-}
 ::slotted(a)::before, ::slotted(button)::before {
   content: \\"\\" !important;
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  top: -3px !important;
+  left: -3px !important;
+  right: -3px !important;
+  bottom: -3px !important;
+  border: 1px solid transparent !important;
+  border-radius: 0.375rem !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: #000 !important;
+  border-color: #fff !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent !important;
+  border-color: transparent !important;
 }
-::slotted(a:focus-visible:hover)::before, ::slotted(button:focus-visible:hover)::before {
-  transition: outline-color var(--p-transition-duration, .24s) ease !important;
-  outline-color: currentColor !important;
+::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+  border-color: #ff0223 !important;
 }
 ::slotted(a) {
   color: #fff !important;
@@ -613,9 +596,6 @@ span:hover {
 }
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 0.25rem !important;
 }
 .icon {
   margin: 0 0.125rem 0 -0.125rem;
@@ -655,28 +635,25 @@ span:hover {
   font: inherit !important;
   outline: 0 !important;
 }
-::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
-  border: 0 !important;
-}
 ::slotted(a)::before, ::slotted(button)::before {
   content: \\"\\" !important;
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  top: -3px !important;
+  left: -3px !important;
+  right: -3px !important;
+  bottom: -3px !important;
+  border: 1px solid transparent !important;
+  border-radius: 0.375rem !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: #fff !important;
+  border-color: #000 !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent !important;
+  border-color: transparent !important;
 }
-::slotted(a:focus-visible:hover)::before, ::slotted(button:focus-visible:hover)::before {
-  transition: outline-color var(--p-transition-duration, .24s) ease !important;
-  outline-color: currentColor !important;
+::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+  border-color: #d5001c !important;
 }
 ::slotted(a) {
   color: #000 !important;
@@ -701,9 +678,6 @@ span:hover {
 }
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 0.25rem !important;
 }
 .icon {
   margin: 0 0.125rem 0 -0.125rem;
@@ -743,24 +717,25 @@ span:hover {
   font: inherit !important;
   outline: 0 !important;
 }
-::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
-  border: 0 !important;
-}
 ::slotted(a)::before, ::slotted(button)::before {
   content: \\"\\" !important;
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  top: -3px !important;
+  left: -3px !important;
+  right: -3px !important;
+  bottom: -3px !important;
+  border: 1px solid transparent !important;
+  border-radius: 0.375rem !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: currentColor !important;
+  border-color: #000 !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent !important;
+  border-color: transparent !important;
+}
+::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+  border-color: #d5001c !important;
 }
 ::slotted(a) {
   color: #000 !important;
@@ -785,9 +760,6 @@ span:hover {
 }
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 0.25rem !important;
 }
 .icon {
   margin: 0 0.125rem 0 -0.125rem;
@@ -827,28 +799,25 @@ span:hover {
   font: inherit !important;
   outline: 0 !important;
 }
-::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
-  border: 0 !important;
-}
 ::slotted(a)::before, ::slotted(button)::before {
   content: \\"\\" !important;
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  top: -3px !important;
+  left: -3px !important;
+  right: -3px !important;
+  bottom: -3px !important;
+  border: 1px solid transparent !important;
+  border-radius: 0.375rem !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: #fff !important;
+  border-color: #000 !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent !important;
+  border-color: transparent !important;
 }
-::slotted(a:focus-visible:hover)::before, ::slotted(button:focus-visible:hover)::before {
-  transition: outline-color var(--p-transition-duration, .24s) ease !important;
-  outline-color: currentColor !important;
+::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+  border-color: #d5001c !important;
 }
 ::slotted(a) {
   color: #000 !important;
@@ -873,9 +842,6 @@ span:hover {
 }
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 0.25rem !important;
 }
 .icon {
   margin: 0 0.125rem 0 -0.125rem;
@@ -915,24 +881,25 @@ span:hover {
   font: inherit !important;
   outline: 0 !important;
 }
-::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
-  border: 0 !important;
-}
 ::slotted(a)::before, ::slotted(button)::before {
   content: \\"\\" !important;
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  top: -3px !important;
+  left: -3px !important;
+  right: -3px !important;
+  bottom: -3px !important;
+  border: 1px solid transparent !important;
+  border-radius: 0.375rem !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: currentColor !important;
+  border-color: #000 !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent !important;
+  border-color: transparent !important;
+}
+::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+  border-color: #d5001c !important;
 }
 ::slotted(a) {
   color: #000 !important;
@@ -957,9 +924,6 @@ span:hover {
 }
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 0.25rem !important;
 }
 .icon {
   margin: 0 0.125rem 0 -0.125rem;
@@ -999,28 +963,25 @@ span:hover {
   font: inherit !important;
   outline: 0 !important;
 }
-::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
-  border: 0 !important;
-}
 ::slotted(a)::before, ::slotted(button)::before {
   content: \\"\\" !important;
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  top: -3px !important;
+  left: -3px !important;
+  right: -3px !important;
+  bottom: -3px !important;
+  border: 1px solid transparent !important;
+  border-radius: 0.375rem !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: #fff !important;
+  border-color: #000 !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent !important;
+  border-color: transparent !important;
 }
-::slotted(a:focus-visible:hover)::before, ::slotted(button:focus-visible:hover)::before {
-  transition: outline-color var(--p-transition-duration, .24s) ease !important;
-  outline-color: currentColor !important;
+::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+  border-color: #d5001c !important;
 }
 ::slotted(a) {
   color: #000 !important;
@@ -1045,9 +1006,6 @@ span:hover {
 }
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 0.25rem !important;
 }
 .icon {
   margin: 0 0.125rem 0 -0.125rem;
@@ -1087,24 +1045,25 @@ span:hover {
   font: inherit !important;
   outline: 0 !important;
 }
-::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
-  border: 0 !important;
-}
 ::slotted(a)::before, ::slotted(button)::before {
   content: \\"\\" !important;
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  top: -3px !important;
+  left: -3px !important;
+  right: -3px !important;
+  bottom: -3px !important;
+  border: 1px solid transparent !important;
+  border-radius: 0.375rem !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: currentColor !important;
+  border-color: #000 !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent !important;
+  border-color: transparent !important;
+}
+::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+  border-color: #d5001c !important;
 }
 ::slotted(a) {
   color: #000 !important;
@@ -1129,9 +1088,6 @@ span:hover {
 }
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 0.25rem !important;
 }
 .icon {
   margin: 0 0.125rem 0 -0.125rem;
@@ -1171,28 +1127,25 @@ span:hover {
   font: inherit !important;
   outline: 0 !important;
 }
-::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
-  border: 0 !important;
-}
 ::slotted(a)::before, ::slotted(button)::before {
   content: \\"\\" !important;
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  top: -3px !important;
+  left: -3px !important;
+  right: -3px !important;
+  bottom: -3px !important;
+  border: 1px solid transparent !important;
+  border-radius: 0.375rem !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: #fff !important;
+  border-color: #000 !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent !important;
+  border-color: transparent !important;
 }
-::slotted(a:focus-visible:hover)::before, ::slotted(button:focus-visible:hover)::before {
-  transition: outline-color var(--p-transition-duration, .24s) ease !important;
-  outline-color: currentColor !important;
+::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+  border-color: #d5001c !important;
 }
 ::slotted(a) {
   color: #000 !important;
@@ -1217,9 +1170,6 @@ span:hover {
 }
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 0.25rem !important;
 }
 .icon {
   margin: 0 0.125rem 0 -0.125rem;
@@ -1259,24 +1209,25 @@ span:hover {
   font: inherit !important;
   outline: 0 !important;
 }
-::slotted(a)::-moz-focus-inner, ::slotted(button)::-moz-focus-inner {
-  border: 0 !important;
-}
 ::slotted(a)::before, ::slotted(button)::before {
   content: \\"\\" !important;
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  outline: 1px solid transparent !important;
-  outline-offset: 2px !important;
+  top: -3px !important;
+  left: -3px !important;
+  right: -3px !important;
+  bottom: -3px !important;
+  border: 1px solid transparent !important;
+  border-radius: 0.375rem !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  outline-color: currentColor !important;
+  border-color: #000 !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  outline-color: transparent !important;
+  border-color: transparent !important;
+}
+::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+  border-color: #d5001c !important;
 }
 ::slotted(a) {
   color: #000 !important;
@@ -1301,9 +1252,6 @@ span:hover {
 }
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
-}
-::slotted(a)::before, ::slotted(button)::before {
-  border-radius: 0.25rem !important;
 }
 .icon {
   margin: 0 0.125rem 0 -0.125rem;
