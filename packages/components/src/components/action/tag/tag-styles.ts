@@ -1,7 +1,7 @@
-import { getCss, isThemeDark, mergeDeep } from '../../../utils';
+import { getCss, isThemeDark } from '../../../utils';
 import {
   addImportantToEachRule,
-  getFocusJssStyle,
+  getInsetJssStyle,
   getThemedColors,
   getTransition,
   pxToRemWithUnit,
@@ -63,8 +63,31 @@ export const slottedTextStyles: JssStyle = {
   },
 };
 
+export const getBeforeStyles = (baseColor: string, hoverColor: string): JssStyle => {
+  return {
+    outline: 0,
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      ...getInsetJssStyle(-3),
+      border: '1px solid transparent',
+      borderRadius: pxToRemWithUnit(6),
+      transition: getTransition('border-color'),
+    },
+    '&:focus::before': {
+      borderColor: baseColor,
+    },
+    '&:focus:not(:focus-visible)::before': {
+      borderColor: 'transparent',
+    },
+    '&:hover:focus::before': {
+      borderColor: hoverColor,
+    },
+  };
+};
+
 export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme: Theme): string => {
-  const { baseColor, hoverColor, outlineColor, focusColor, backgroundColor } = getColors(tagColor, theme);
+  const { baseColor, hoverColor, backgroundColor } = getColors(tagColor, theme);
 
   return getCss({
     '@global': {
@@ -92,36 +115,21 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
       },
       '::slotted': addImportantToEachRule({
         ...(isFocusable && {
-          ...mergeDeep(
-            {
-              '&(a),&(button)': {
-                display: 'inline',
-                position: 'static',
-                textDecoration: 'underline',
-                cursor: 'pointer',
-                font: 'inherit',
-                outline: 0, // reset native blue outline
-                // color: 'inherit', // TODO: chrome hover bug. Use when fixed.
-                '&::before': {
-                  borderRadius: pxToRemWithUnit(4),
-                },
-              },
-            },
-            // Transform selectors of getFocusJssStyle() to fit the ::slotted syntax
-            Object.fromEntries(
-              Object.entries({
-                ...getFocusJssStyle({ offset: 2, pseudo: '::before', color: outlineColor }),
-                ...(focusColor && {
-                  '&:focus-visible:hover::before': {
-                    transition: getTransition('outline-color'),
-                    outlineColor: focusColor,
-                  },
-                }),
-              })
-                .filter(([key]) => key !== 'outline') // Needs to be set on correct ::slotted selector
-                // Use Values of getFocusJssStyle, but transform keys to fit ::slotted
-                .map(([key, value]) => [key.replace(/^&([a-z:\-()]*)(::[a-z\-]+)$/, '&(a$1)$2, &(button$1)$2'), value])
-            )
+          '&(a),&(button)': {
+            display: 'inline',
+            position: 'static',
+            textDecoration: 'underline',
+            cursor: 'pointer',
+            font: 'inherit',
+            outline: 0, // reset native blue outline
+            // color: 'inherit', // TODO: chrome hover bug. Use when fixed.
+          },
+          //Transform selectors of getFocusJssStyle() to fit the ::slotted syntax
+          ...Object.fromEntries(
+            Object.entries(getBeforeStyles(baseColor, hoverColor))
+              .filter(([key]) => key !== 'outline') // Needs to be set on correct ::slotted selector
+              // Use Values of getFocusJssStyle, but transform keys to fit ::slotted
+              .map(([key, value]) => [key.replace(/^&([a-z:\-()]*)(::[a-z\-]+)$/, '&(a$1)$2, &(button$1)$2'), value])
           ),
           '&(a)': {
             color: baseColor, // TODO: chrome hover bug. Remove when fixed.
