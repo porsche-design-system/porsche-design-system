@@ -4,7 +4,6 @@ exports[`getColors() should return correct css for theme: dark and hasInvertedTh
 Object {
   "backgroundColor": "#262b2e",
   "baseColor": "#fff",
-  "focusColor": null,
   "hoverColor": "#ff0223",
   "outlineColor": "currentColor",
 }
@@ -14,7 +13,6 @@ exports[`getColors() should return correct css for theme: dark and hasInvertedTh
 Object {
   "backgroundColor": "#262b2e",
   "baseColor": "#000",
-  "focusColor": "currentColor",
   "hoverColor": "#d5001c",
   "outlineColor": "#fff",
 }
@@ -24,7 +22,6 @@ exports[`getColors() should return correct css for theme: light and hasInvertedT
 Object {
   "backgroundColor": "#f2f2f2",
   "baseColor": "#000",
-  "focusColor": null,
   "hoverColor": "#d5001c",
   "outlineColor": "currentColor",
 }
@@ -34,7 +31,6 @@ exports[`getColors() should return correct css for theme: light and hasInvertedT
 Object {
   "backgroundColor": "#f2f2f2",
   "baseColor": "#fff",
-  "focusColor": "currentColor",
   "hoverColor": "#ff0223",
   "outlineColor": "#000",
 }
@@ -155,7 +151,7 @@ span:hover {
   transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: #fff !important;
+  border-color: currentColor !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -237,7 +233,7 @@ span:hover {
   transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: #000 !important;
+  border-color: currentColor !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -319,7 +315,7 @@ span:hover {
   transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: #fff !important;
+  border-color: currentColor !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -401,7 +397,7 @@ span:hover {
   transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: #000 !important;
+  border-color: currentColor !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -483,7 +479,7 @@ span:hover {
   transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: #000 !important;
+  border-color: #fff !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -565,7 +561,7 @@ span:hover {
   transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: #fff !important;
+  border-color: #000 !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -647,7 +643,7 @@ span:hover {
   transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: #000 !important;
+  border-color: #fff !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -729,7 +725,7 @@ span:hover {
   transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: #000 !important;
+  border-color: currentColor !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -811,7 +807,7 @@ span:hover {
   transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: #000 !important;
+  border-color: #fff !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -893,7 +889,7 @@ span:hover {
   transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: #000 !important;
+  border-color: currentColor !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -975,7 +971,7 @@ span:hover {
   transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: #000 !important;
+  border-color: #fff !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -1057,7 +1053,7 @@ span:hover {
   transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: #000 !important;
+  border-color: currentColor !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -1139,7 +1135,7 @@ span:hover {
   transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: #000 !important;
+  border-color: #fff !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
@@ -1221,7 +1217,7 @@ span:hover {
   transition: border-color var(--p-transition-duration, .24s) ease !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
-  border-color: #000 !important;
+  border-color: currentColor !important;
 }
 ::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
   border-color: transparent !important;
