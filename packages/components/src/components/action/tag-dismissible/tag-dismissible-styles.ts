@@ -1,7 +1,6 @@
 import {
   addImportantToEachRule,
   addImportantToRule,
-  getInsetJssStyle,
   getScreenReaderOnlyJssStyle,
   getThemedColors,
   getTransition,
@@ -10,7 +9,7 @@ import {
 import { getCss } from '../../../utils';
 import type { TagDismissibleColor } from './tag-dismissible-utils';
 import { textSmall } from '@porsche-design-system/utilities-v2';
-import { getThemedBackgroundColor, slottedTextStyles } from '../tag/tag-styles';
+import { getBeforeStyles, getThemedBackgroundColor, slottedTextStyles } from '../tag/tag-styles';
 
 export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): string => {
   const themedColors = getThemedColors('light');
@@ -35,30 +34,9 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
         color: baseColor,
         textAlign: 'left',
         ...textSmall,
-        outline: 0,
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          ...getInsetJssStyle(-3),
-          border: '1px solid transparent',
-          borderRadius: pxToRemWithUnit(6),
-          transition: getTransition('border-color'),
-        },
-        '&:focus': {
-          '&::before': {
-            borderColor: baseColor,
-            '&:not(:focus-visible)::before': {
-              borderColor: 'transparent',
-            },
-          },
-        },
-        '&:hover': {
-          '& .icon': {
-            color: hoverColor,
-          },
-          '&:focus::before': {
-            borderColor: hoverColor,
-          },
+        ...getBeforeStyles(baseColor, hoverColor),
+        '&:hover .icon': {
+          color: hoverColor,
         },
       },
       '::slotted': addImportantToEachRule(slottedTextStyles),
