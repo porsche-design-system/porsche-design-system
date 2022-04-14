@@ -63,7 +63,6 @@ export const slottedTextStyles: JssStyle = {
 
 export const getTagFocusJssStyle = (focusColor: string, focusHoverColor: string): JssStyle => {
   return {
-    outline: 0,
     '&::before': {
       content: '""',
       position: 'absolute',
@@ -122,13 +121,13 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
             outline: 0, // reset native blue outline
             // color: 'inherit', // TODO: chrome hover bug. Use when fixed.
           },
-          //Transform selectors of getFocusJssStyle() to fit the ::slotted syntax
-          ...Object.fromEntries(
-            Object.entries(getBeforeStyles(outlineColor, hoverColor))
-              .filter(([key]) => key !== 'outline') // Needs to be set on correct ::slotted selector
-              // Use Values of getFocusJssStyle, but transform keys to fit ::slotted
-              .map(([key, value]) => [key.replace(/^&([a-z:\-()]*)(::[a-z\-]+)$/, '&(a$1)$2, &(button$1)$2'), value])
-          ),
+
+          // Transform selectors of getTagFocusJssStyle() to fit the ::slotted syntax
+          ...Object.entries(getTagFocusJssStyle(outlineColor, hoverColor)).reduce((result, [key, value]) => {
+            result[key.replace(/^&([a-z:\-()]*)(::[a-z\-]+)$/, '&(a$1)$2, &(button$1)$2')] = value;
+            return result;
+          }, {} as JssStyle),
+
           '&(a)': {
             color: baseColor, // TODO: chrome hover bug. Remove when fixed.
             transition: getTransition('color'), // TODO: chrome hover bug. Remove when fixed.
