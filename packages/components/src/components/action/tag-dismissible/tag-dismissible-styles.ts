@@ -9,7 +9,7 @@ import {
 import { getCss } from '../../../utils';
 import type { TagDismissibleColor } from './tag-dismissible-utils';
 import { textSmall } from '@porsche-design-system/utilities-v2';
-import { getBeforeStyles, getThemedBackgroundColor, slottedTextStyles } from '../tag/tag-styles';
+import { getTagFocusJssStyle, getThemedBackgroundColor, slottedTextJssStyle } from '../tag/tag-styles';
 
 export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): string => {
   const themedColors = getThemedColors('light');
@@ -40,7 +40,7 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
           color: hoverColor,
         },
       },
-      '::slotted': addImportantToEachRule(slottedTextStyles),
+      '::slotted': addImportantToEachRule(slottedTextJssStyle),
     },
     ...(hasLabel && {
       label: {

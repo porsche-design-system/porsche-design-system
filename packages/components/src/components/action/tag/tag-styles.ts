@@ -52,7 +52,7 @@ export const getColors = (
   };
 };
 
-export const slottedTextStyles: JssStyle = {
+export const slottedTextJssStyle: JssStyle = {
   '&(strong),&(b)': {
     fontWeight: fontWeight.bold,
   },
@@ -147,7 +147,7 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
         '&(br)': {
           display: 'none',
         },
-        ...slottedTextStyles,
+        ...slottedTextJssStyle,
       }),
     },
     icon: {
