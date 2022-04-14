@@ -17,7 +17,7 @@
     "test:styleComparison": "yarn build:generateScss && yarn test:unit style-comparison",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:build": "rm -rf ./dist && rm -rf ./src/jss/typography/lib"
+    "clean:build": "rm -rf ./dist && rm -rf ./src/js/typography/lib"
   },
   "dependencies": {
     "csstype": "^3.0.11"

@@ -2,7 +2,7 @@ import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 
-const input = 'src/jss/index.ts';
+const input = 'src/js/index.ts';
 const outputDir = 'dist';
 
 export default [
@@ -31,7 +31,7 @@ export default [
         declaration: true,
         declarationDir: `${outputDir}/jss`,
         exclude: '**.spec.ts',
-        rootDir: 'src/jss',
+        rootDir: 'src/js',
       }),
     ],
   },
