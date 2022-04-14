@@ -34,17 +34,17 @@ button::before {
   border-radius: 0.375rem;
   transition: border-color var(--p-transition-duration, .24s) ease;
 }
-button:hover .icon {
-  color: #d5001c;
+button:focus::before {
+  border-color: #000;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 button:hover:focus::before {
   border-color: #d5001c;
 }
-button:focus::before {
-  border-color: #000;
-}
-button:focus::before:not(:focus-visible)::before {
-  border-color: transparent;
+button:hover .icon {
+  color: #d5001c;
 }
 ::slotted(strong), ::slotted(b) {
   font-weight: 700 !important;
@@ -106,17 +106,17 @@ button::before {
   border-radius: 0.375rem;
   transition: border-color var(--p-transition-duration, .24s) ease;
 }
-button:hover .icon {
-  color: #d5001c;
+button:focus::before {
+  border-color: #000;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 button:hover:focus::before {
   border-color: #d5001c;
 }
-button:focus::before {
-  border-color: #000;
-}
-button:focus::before:not(:focus-visible)::before {
-  border-color: transparent;
+button:hover .icon {
+  color: #d5001c;
 }
 ::slotted(strong), ::slotted(b) {
   font-weight: 700 !important;
@@ -185,17 +185,17 @@ button::before {
   border-radius: 0.375rem;
   transition: border-color var(--p-transition-duration, .24s) ease;
 }
-button:hover .icon {
-  color: #d5001c;
+button:focus::before {
+  border-color: #000;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
 }
 button:hover:focus::before {
   border-color: #d5001c;
 }
-button:focus::before {
-  border-color: #000;
-}
-button:focus::before:not(:focus-visible)::before {
-  border-color: transparent;
+button:hover .icon {
+  color: #d5001c;
 }
 ::slotted(strong), ::slotted(b) {
   font-weight: 700 !important;
