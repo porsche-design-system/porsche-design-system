@@ -61,7 +61,7 @@ export const slottedTextStyles: JssStyle = {
   },
 };
 
-export const getBeforeStyles = (baseColor: string, hoverColor: string): JssStyle => {
+export const getTagFocusJssStyle = (focusColor: string, focusHoverColor: string): JssStyle => {
   return {
     outline: 0,
     '&::before': {
@@ -73,13 +73,13 @@ export const getBeforeStyles = (baseColor: string, hoverColor: string): JssStyle
       transition: getTransition('border-color'),
     },
     '&:focus::before': {
-      borderColor: baseColor,
+      borderColor: focusColor,
     },
     '&:focus:not(:focus-visible)::before': {
       borderColor: 'transparent',
     },
     '&:hover:focus::before': {
-      borderColor: hoverColor,
+      borderColor: focusHoverColor,
     },
   };
 };

@@ -34,7 +34,7 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
         color: baseColor,
         textAlign: 'left',
         ...textSmall,
-        ...getBeforeStyles(baseColor, hoverColor),
+        ...getTagFocusJssStyle(baseColor, hoverColor),
         '&:hover .icon': {
           color: hoverColor,
         },
