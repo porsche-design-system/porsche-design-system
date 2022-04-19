@@ -4,8 +4,8 @@
 
 ## When to use
 
-• Indicate or highlight a certain attribute of an item.
-• Show that content is mapped to one or multiple categories.
+• Indicate or highlight a certain attribute of an item.  
+• Show that content is mapped to one or multiple categories.  
 • Indicate that a certain filter is active.
 
 ---
@@ -36,8 +36,8 @@ Use short naming for easy scanning. Use two words only if necessary to describe 
 
 ### Links (Additional Information)
 
-A link within a tag allows adding certain information such as: 
-• To give further explanation about the tag for better understandability. 
+A link within a tag allows adding certain information such as:  
+• To give further explanation about the tag for better understandability.  
 • Additional information that is not necessary for the task completion (User Flow).
 
 Suitable methods to show information could be the [Popover](components/popover) or the [Modal](components/modal) component.
@@ -46,8 +46,8 @@ A Link within a tag is not recommended to be used as navigation.
 
 ### Scalable
 
-Technically a UI could have as many tags as needed, there are two options when a set of tags cannot fit on screen:
-• The group becomes horizontal scrollable, swipeable, or navigable with arrows.
+Technically a UI could have as many tags as needed, there are two options when a set of tags cannot fit on screen:  
+• The group becomes horizontal scrollable, swipeable, or navigable with arrows.  
 • Tags are set in a predefined space and move to the next line once they meet the boundary.
 
 ---
