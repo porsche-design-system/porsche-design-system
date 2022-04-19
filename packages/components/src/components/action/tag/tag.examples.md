@@ -94,7 +94,7 @@ export default class Code extends Vue {
 </p-tag>`;
 
   linkAccessibility = `<p-tag icon="car">
-  <a href="https://www.porsche.com" aria-label="More information about used cars" target="_blank">Used cars</a>
+  <a href="https://www.porsche.com" aria-label="More information about used cars">Used cars</a>
 </p-tag>`;
 }
 </script>

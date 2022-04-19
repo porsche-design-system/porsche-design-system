@@ -28,7 +28,7 @@ Through the `aria` property you have the possibility to provide additional **ARI
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
-Ensure that when a `p-tag-dismissible` is removed, the focus is set to the previous or following element and not lost.
+Ensure that when a `p-tag-dismissible` is removed, the focus is set to the previous or next `p-tag-dismissible` or to another focusable element. This prevents loosing the focus order.
 
 <script lang="ts">
 import Vue from 'vue';
