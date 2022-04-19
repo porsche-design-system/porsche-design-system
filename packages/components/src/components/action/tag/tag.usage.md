@@ -1,4 +1,4 @@
-# Tag
+# Tags
 
 <TableOfContents></TableOfContents>
 
