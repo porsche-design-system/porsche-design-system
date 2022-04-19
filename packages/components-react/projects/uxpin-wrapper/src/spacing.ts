@@ -1,7 +1,7 @@
 export const SPACING = [4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80] as const;
 export type Spacing = typeof SPACING[number];
 
-export type MapSpacingToPaddingOpts = {
+type MapSpacingToPaddingOpts = {
   spacingTop?: Spacing;
   spacingLeft?: Spacing;
   spacingRight?: Spacing;
