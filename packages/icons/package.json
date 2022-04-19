@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.5",
-    "@types/svgo": "^2.6.2",
+    "@types/svgo": "^2.6.3",
     "change-case": "^4.1.2",
     "globby": "^11.0.4",
     "js-yaml": "^4.0.0",
