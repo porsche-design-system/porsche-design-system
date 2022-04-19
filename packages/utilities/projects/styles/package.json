@@ -19,11 +19,11 @@
   },
   "devDependencies": {
     "@porsche-design-system/fonts": "0.0.0",
-    "@rollup/plugin-typescript": "^8.3.1",
+    "@rollup/plugin-typescript": "^8.3.2",
     "jest": "^27.5.1",
     "jss": "^10.9.0",
     "jss-preset-default": "^10.9.0",
-    "rollup": "^2.70.1",
+    "rollup": "^2.70.2",
     "ts-jest": "^27.1.4",
     "ts-node": "^10.7.0",
     "typescript": "~4.6.2"
