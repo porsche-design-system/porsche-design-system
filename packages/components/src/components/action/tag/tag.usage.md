@@ -1,100 +1,59 @@
-# Tags
+# Tag
 
 <TableOfContents></TableOfContents>
 
-## Tag
+## When to use
 
-`p-tag` is used to label, categorize, or organize items by using keywords that describe them.
+• Indicate or highlight a certain attribute of an item.
+• Show that content is mapped to one or multiple categories.
+• Indicate that a certain filter is active.
 
-## Color
+---
 
-<Playground :markup="colorMarkup" :config="{ ...config, colorScheme: backgroundColor }">
-  <select v-model="backgroundColor" aria-label="Select background color">
-    <option disabled>Select background color</option>
-    <option value="default">Default</option>
-    <option value="surface">Surface</option>
-  </select>
-</Playground>
+## Types
 
-## Icon
+To ensure a seamless UX in all Porsche web applications it is recommended to use Tags as followed:
 
-The `p-tag` can be displayed with an icon. Choose an icon name from the icon property. Per default, all icons are fetched from the Porsche Design System CDN. If you need to link to another icon hosted somewhere else, just set the whole icon path to the icon-source property.
+| Type | Usage |
+|----|----|
+| Tag | To highlight a certain attribute of an item in the content. |
+| Dismissable Tag | To give a visual indication that a certain filter is set. The selection can be deactivated by dismissing the tag. |
 
-<Playground :markup="icon" :config="config"></Playground>
+| Variants | |
+|----|----|
+| Icon | Include icons to improve visual perception. |
+| Link | Involve links to show (Modal or Pop Over) or link to additional information. |
+| Label | To give better orientation to which category an attribute/filter refers. |
 
-## With slotted button
 
-It is possible to add a `<button>` tag into the `p-tag` component. If you do this, the entire component becomes
-clickable and no other content outside the button or link is allowed.
 
-<Playground :markup="buttonMarkup" :config="{ ...config, colorScheme: backgroundColor }">
-  <select v-model="backgroundColor" aria-label="Select background color">
-    <option disabled>Select background color</option>
-    <option value="default">Default</option>
-    <option value="surface">Surface</option>
-  </select>
-</Playground>
+## Behavior
 
-### <A11yIcon></A11yIcon> Accessibility hints
+### Naming
 
-Make sure to provide a **descriptive**, self explaining **aria-label** on the slotted button to describe the `onClick()` action.
+Use short naming for easy scanning. Use two words only if necessary to describe the status and differentiate it from other tags.
 
-<Playground :markup="buttonAccessibility"></Playground>
 
-## With slotted link
+### Links (Additional Information)
 
-It is possible to add `<a>` tag into the `p-tag` component. If you do this, the entire component becomes
-clickable and no other content outside the button or link is allowed.
+A link within a tag allows adding certain information such as: 
+• To give further explanation about the tag for better understandability. 
+• Additional information that is not necessary for the task completion (User Flow).
 
-<Playground :markup="linkMarkup" :config="{ ...config, colorScheme: backgroundColor }">
-  <select v-model="backgroundColor" aria-label="Select background color">
-    <option disabled>Select background color</option>
-    <option value="default">Default</option>
-    <option value="surface">Surface</option>
-  </select>
-</Playground>
+Suitable methods to show information could be the [Popover](components/popover) or the [Modal](components/modal) component.
+A Link within a tag is not recommended to be used as navigation.
 
-### <A11yIcon></A11yIcon> Accessibility hints
 
-Make sure to provide a **descriptive**, self explaining **aria-label** on the slotted anchor to describe where it leads to.
+### Scalable
 
-<Playground :markup="linkAccessibility"></Playground>
+Technically a UI could have as many tags as needed, there are two options when a set of tags cannot fit on screen:
+• The group becomes horizontal scrollable, swipeable, or navigable with arrows.
+• Tags are set in a predefined space and move to the next line once they meet the boundary.
 
-<script lang="ts">
-import Vue from 'vue';
-import Component from 'vue-class-component'; 
-import { TAG_COLORS } from './tag-utils'; 
+---
 
-@Component
-export default class Code extends Vue {
-  config = { themeable: true, spacing: 'inline' };
-  backgroundColor = 'default';
 
-  get colorMarkup(){
-    return TAG_COLORS.map((color) => `<p-tag color="${color}">Color ${color}</p-tag>`).join('\n');
-  };
+## Related Components
 
-  icon = `<p-tag icon="car">Some label</p-tag> 
-<p-tag icon-source="${require('../../../assets/icon-custom-kaixin.svg')}">Some label</p-tag>`;
-
-  get buttonMarkup(){
-    return TAG_COLORS.map((color, idx) => `<p-tag${idx === 0 ? ' icon="car"' : ''} color="${color}">
-  <button type="button">Color ${color}</button>
-</p-tag>`).join('\n');
-  };
-
-  get linkMarkup(){
-    return TAG_COLORS.map((color, idx) => `<p-tag${idx === 0 ? ' icon="car"' : ''} color="${color}">
-  <a href="https://www.porsche.com">Color ${color}</a>
-</p-tag>`).join('\n');
-  };
-
-  buttonAccessibility = `<p-tag icon="car">
-  <button type="button" aria-label="More information about used cars">Used cars</button>
-</p-tag>`;
-
-  linkAccessibility = `<p-tag icon="car">
-  <a href="https://www.porsche.com" aria-label="More information about used cars" target="_blank">Used cars</a>
-</p-tag>`;
-}
-</script>
+- [Popover](components/popover)
+- [Modal](components/modal)
