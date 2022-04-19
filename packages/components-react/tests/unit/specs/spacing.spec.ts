@@ -1,12 +1,12 @@
-import { mapSpacingToPadding } from '../../../projects/uxpin-wrapper/src/spacing';
+import { getPaddingStyles } from '../../../projects/uxpin-wrapper/src/spacing';
 
 describe('mapSpacingToPadding', () => {
   it('should correctly map spacings to padding', () => {
-    expect(mapSpacingToPadding({ spacingLeft: 8, spacingRight: 8, spacingBottom: 4 })).toEqual({
+    expect(getPaddingStyles({ spacingTop: undefined, spacingLeft: 4, spacingRight: 8, spacingBottom: 24 })).toEqual({
       paddingTop: undefined,
-      paddingLeft: 8,
-      paddingRight: 8,
-      paddingBottom: 4,
+      paddingLeft: '4px',
+      paddingRight: '8px',
+      paddingBottom: '24px',
     });
   });
 });
