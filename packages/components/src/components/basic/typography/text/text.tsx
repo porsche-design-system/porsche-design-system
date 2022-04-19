@@ -2,9 +2,9 @@ import { JSX, Component, Prop, h, Element, Host } from '@stencil/core';
 import {
   calcLineHeightForElement,
   getHTMLElement,
-  getThemeDarkAttribute,
   transitionListener,
   attachSlottedCss,
+  getThemeDarkAttribute,
   attachComponentCss,
 } from '../../../../utils';
 import type { BreakpointCustomizable, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
@@ -55,7 +55,7 @@ export class Text {
       this.align,
       this.color,
       this.ellipsis,
-      this.theme,
+      this.theme
     );
   }
 
