@@ -1,5 +1,4 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { spacing } from '@porsche-design-system/utilities-v2';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import { ExtendedProp } from './DataStructureBuilder';
 import type { AdditionalFile, SkeletonProps } from './AbstractWrapperGenerator';
@@ -44,6 +43,13 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         .replace(/( } from '\.\.\/\.\.\/hooks';)/, ', useToastManager$1')
         .replace(/( } from '\.\.\/types';)/, ', ToastState$1');
     }
+
+    // add Spacing type and function import
+    const spacingImportPath = "from '../../spacing'";
+    imports = imports.replace(
+      /('\.\.\/types';)/,
+      `$1\nimport type { Spacing } ${spacingImportPath}\nimport { mapSpacingToPadding } ${spacingImportPath}`
+    );
 
     // when component is nested we need to fix relative imports
     if (this.shouldGenerateFolderPerComponent(component)) {
@@ -124,7 +130,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     }
 
     // add spacing props to every component
-    const spacings = this.spacingProps.map((x) => `${x}?: ${Object.keys(spacing).join(' | ')};`).join('\n  ');
+    const spacings = this.spacingProps.map((x) => `${x}?: Spacing`).join('\n  ');
     props = props.replace(/(HTMLAttributes<{}> & {\n)/, `$1  ${spacings}\n`);
 
     return props;
@@ -142,8 +148,10 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     cleanedComponent = cleanedComponent.replace(/(\.\.\.rest)/, `${spacings}, $1`);
 
     // build inline style prop
-    const styleSpacings = this.spacingProps.map((x) => `padding${x.replace('spacing', '')}: ${x}`).join(', ');
-    cleanedComponent = cleanedComponent.replace(/(\.\.\.rest,\n)/, `$1      style: { ${styleSpacings} },\n`);
+    cleanedComponent = cleanedComponent.replace(
+      /(\.\.\.rest,\n)/,
+      `$1      style: { ...mapSpacingToPadding({${spacings}}) },\n`
+    );
 
     // add default children for components that need it
     if (cleanedComponent.includes('PropsWithChildren')) {
