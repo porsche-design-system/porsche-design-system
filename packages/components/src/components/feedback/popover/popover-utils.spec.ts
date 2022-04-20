@@ -203,7 +203,7 @@ describe('getAutoDirection()', () => {
 
   it.each<PopoverDirection>(POPOVER_DIRECTIONS)(
     'should return bottom for direction %s when space is even on all directions',
-    (direction) => {
+    () => {
       jest.spyOn(popoverUtils, 'calcSpaceForDirections').mockImplementationOnce(() => ({
         top: 1,
         right: 1,
