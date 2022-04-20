@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import * as fs from 'fs';
+import * as path from 'path';
 import * as globby from 'globby';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, SKELETON_TAG_NAMES, SKELETONS_ACTIVE } from '@porsche-design-system/shared';
 

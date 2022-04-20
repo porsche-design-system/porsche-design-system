@@ -20,9 +20,9 @@ it('should be opened on click and closed on second click', async () => {
 
   const button = getByRoleShadowed('button');
 
-  userEvent.click(button);
+  await userEvent.click(button);
   await waitFor(() => expect(getByTestId('host').shadowRoot.querySelector('.popover')).not.toBeNull());
 
-  userEvent.click(button);
+  await userEvent.click(button);
   await waitFor(() => expect(getByTestId('host').shadowRoot.querySelector('.popover')).toBeNull());
 });
