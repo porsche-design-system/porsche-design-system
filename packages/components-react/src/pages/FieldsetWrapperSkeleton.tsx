@@ -1,10 +1,11 @@
 /* Auto Generated File */
-import { componentsReady, PFieldsetWrapper, PTextFieldWrapper } from '@porsche-design-system/components-react';
+import { PFieldsetWrapper, PTextFieldWrapper } from '@porsche-design-system/components-react';
 import { useEffect } from 'react';
+import { pollComponentsReady } from '../pollComponentsReady'
 
 export const FieldsetWrapperSkeletonPage = (): JSX.Element => {
   useEffect(() => {
-    componentsReady().then(() => {
+    pollComponentsReady().then(() => {
       document.querySelectorAll('p-fieldset-wrapper p-text-field-wrapper').forEach((fieldset) => {
         fieldset.classList.remove('hydrated');
       });

@@ -1,5 +1,5 @@
 import { Page } from 'puppeteer';
-import path from 'path';
+import * as path from 'path';
 import * as fs from 'fs';
 import { selectNode } from '../helpers';
 
