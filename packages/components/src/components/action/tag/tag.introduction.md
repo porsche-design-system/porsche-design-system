@@ -8,14 +8,14 @@
 • Show that content is mapped to one or multiple categories.  
 • Indicate that a certain filter is active.  
 
-### Naming
+### Content
 
-Use short naming for easy scanning. Use two words only if necessary to describe the status and differentiate it from other tags. 
+Use short text content for easy scanning. Use two words only if necessary to describe the status and differentiate it from other tags. 
 
 ### Scalable
 
 Technically a UI could have as many tags as needed, there are different options when a set of tags cannot fit on screen:  
-• A group of dismissable tags becomes horizontal scrollable, swipeable, or navigable with arrows.  
+• A group of tags becomes horizontal scrollable, swipeable, or navigable with arrows.  
 • Tags are set in a predefined space and move to the next line once they meet the boundary.  
 
 ---
@@ -24,17 +24,17 @@ Technically a UI could have as many tags as needed, there are different options 
 
 ### Tag  
 
-| Type | Usage |
+| Name | Usage |
 |----|----|
-| Tag | To indicate that an item has a certain attribute or is mapped to a category. |
+| `p-tag` | To indicate that an item has a certain attribute or is mapped to a category. |
 
 | Variants | |
 |----|----|
-| Colors | Color themes such as success, neutral, warrning and error can be selected for better visual perception. |
+| Color | Color themes such as success, neutral, warrning and error can be selected for better visual perception. |
 | Icon | Include icons to improve faster perception. |
-| Link or button | To show additional information. |
+| With link or button | To show additional information a link or button can be passed into the tag. By doing this, the entire component becomes clickable and no other content than the button or link is allowed. |
 
-### Link or button
+#### With link or button
 
 A link within a tag allows adding certain information such as:   
 • Further explanation about the tag for better understandability.  
@@ -45,28 +45,23 @@ A button or link within a tag is not allowed to be used for navigation.
 
 ---
 
-### Dismissable Tag
+### Tag Dismissible
 
-| Type | Usage |
+| Name | Usage |
 |----|----|
-| Dismissable Tag | To show that a certain filter is active. The selection can be deactivated by dismissing the tag. |
+| `p-tag-dismissible` | To show that a certain filter is active. By clicking the tag it is dismissed and the selection is deactivated. |
 
 | Variants | |
 |----|----|
-| Default | To give better orientation to which category an attribute/filter refers. Labels are only available for dismissable tags. |
-| Label | To give better orientation to which category an attribute/filter refers. Labels are only available for dismissable tags. |
+| Label | If additional information for better orientation is needed. E.G. to which category an attribute/filter refers. |
 
-### Dismiss
+#### Interaction
 
-The entire component can be click or tap for the purpose of deactivating a certain filter and hidding the component. No other interaction with this component is allowed.
+On click or tap the entire component should be dismissed for the purpose of deactivating a certain filter. No other interaction with this component is allowed.
 
-### Scalable
+#### Scalable
 
-In case of long label or value dismissable tags can handle multiline text. This is not recommended and should be avoided.
-
-### Icon
-
-The x-icon can not be changed or hidden nor other icons can be added to the label or value.
+In case of long label or value dismissible tags can handle multiline text. This is not recommended and should be avoided.
 
 ---
 
