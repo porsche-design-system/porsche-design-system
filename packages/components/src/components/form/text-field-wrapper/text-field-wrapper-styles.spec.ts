@@ -27,7 +27,7 @@ describe('getComponentCss()', () => {
     [true, false, 'success', false, 'prefix', true],
     [true, false, 'error', false, 'prefix', true],
     [true, true, 'error', false, 'prefix', true],
-    [{ base: true, xs: false, s: true, m: false, l: true, xl: false }, false, 'none', false, 'prefix', false],
+    [false, { base: true, xs: false, s: true, m: false, l: true, xl: false }, 'none', false, 'prefix', false],
   ])(
     'should return correct css for isDisabled: %s, hideLabel: %o, state: %s, hasUnitOrVisibleCounter: %s, unitPosition: %s, isPassword: %s',
     (...args) => {
