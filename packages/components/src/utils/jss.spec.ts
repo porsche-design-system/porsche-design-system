@@ -335,11 +335,11 @@ describe('attachComponentCss()', () => {
     host.attachShadow({ mode: 'open' });
     const spy = jest.spyOn(jssUtils, 'getCachedComponentCss').mockImplementation(() => '');
 
-    attachComponentCss(host, (x: boolean) => 'some css', true);
+    attachComponentCss(host, (_x: boolean) => 'some css', true);
 
     expect(spy).toHaveBeenCalledWith(host, expect.anything(), true);
 
-    attachComponentCss(host, (x: boolean, y: string, z: number) => 'some css', false, '', 1);
+    attachComponentCss(host, (_x: boolean, _y: string, _z: number) => 'some css', false, '', 1);
 
     expect(spy).toHaveBeenCalledWith(host, expect.anything(), false, '', 1);
   });
@@ -402,7 +402,7 @@ describe('getCachedComponentCss()', () => {
     const host1 = document.createElement('p-some-element');
     const host2 = document.createElement('my-prefix-p-some-element');
     const host3 = document.createElement('p-another-element');
-    const getComponentCss1 = (a?: number, b?: boolean, c?: string, d?: { someProp: string }) => 'some css';
+    const getComponentCss1 = (_a?: number, _b?: boolean, _c?: string, _d?: { someProp: string }) => 'some css';
 
     getCachedComponentCss(host1, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
     getCachedComponentCss(host1, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
