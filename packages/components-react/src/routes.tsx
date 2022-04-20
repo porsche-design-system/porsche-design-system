@@ -1,8 +1,8 @@
-import { RouteObject } from 'react-router-dom';
+import { RouteProps } from 'react-router-dom';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
 
-export type RouteType = RouteObject & {
+export type RouteType = RouteProps & {
   name: string;
   path?: string; // override string | string[]
   isDisabled?: boolean;

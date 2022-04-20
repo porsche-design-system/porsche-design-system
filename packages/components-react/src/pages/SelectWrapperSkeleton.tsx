@@ -1,10 +1,11 @@
 /* Auto Generated File */
-import { componentsReady, PSelectWrapper } from '@porsche-design-system/components-react';
+import { PSelectWrapper } from '@porsche-design-system/components-react';
 import { useEffect } from 'react';
+import { pollComponentsReady } from '../pollComponentsReady'
 
 export const SelectWrapperSkeletonPage = (): JSX.Element => {
   useEffect(() => {
-    componentsReady().then(() => {
+    pollComponentsReady().then(() => {
       document.querySelectorAll('p-select-wrapper').forEach((select) => {
         select.classList.remove('hydrated');
       });
