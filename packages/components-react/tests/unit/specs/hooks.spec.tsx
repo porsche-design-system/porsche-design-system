@@ -14,44 +14,44 @@ import { useLayoutEffect } from 'react';
 import { describeSkipSkeletons } from '@porsche-design-system/shared/testing';
 
 describeSkipSkeletons('useSkeleton()', () => {
-  it('should throw error if usesSkeletons was set to true on provider but partial was not used or used without skeletonsTagNames', () => {
-    const spy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
-    let error1, error2;
+  it('should throw error if usesSkeletons was set to true on provider but partial was not used', () => {
+    jest.spyOn(global.console, 'error').mockImplementation(() => {});
 
-    try {
+    expect(() =>
       render(
         <PorscheDesignSystemProvider usesSkeletons={true}>
           <PButton />
         </PorscheDesignSystemProvider>
-      );
-    } catch (e) {
-      error1 = e;
-    }
-    expect(error1.message).toBe(
-      'It appears you are passing usesSkeletons=true on the <PorscheDesignSystemProvider /> either without using the getInitialStyles() function or without a proper skeletonTagNames array on the getInitialStyles() function.'
+      )
+    ).toThrowErrorMatchingInlineSnapshot(
+      '"It appears you are passing usesSkeletons=true on the <PorscheDesignSystemProvider /> either without using the getInitialStyles() function or without a proper skeletonTagNames array on the getInitialStyles() function."'
     );
+  });
 
-    const mockInitialStylePartial = document.createElement('style');
-    mockInitialStylePartial.setAttribute('uses-skeleton', 'true');
-    document.head.appendChild(mockInitialStylePartial);
+  it('should not throw error on usage with partial', () => {
+    const styleElement = document.createElement('style');
+    styleElement.setAttribute('uses-skeleton', 'true'); // needs to be in sync between partial, useSkeleton() & PorscheDesignSystemProvider
+    document.head.appendChild(styleElement);
 
-    try {
+    expect(() =>
       render(
         <PorscheDesignSystemProvider usesSkeletons={true}>
           <PButton />
         </PorscheDesignSystemProvider>
-      );
-    } catch (e) {
-      error2 = e;
-    }
-    expect(error2).not.toBeDefined();
-
-    spy.mockRestore();
+      )
+    ).not.toThrow();
   });
+
+  // TODO: Add missing tests
+  xit('should return true', () => {});
+  xit('should return false', () => {});
 });
 
+// TODO: Add missing tests
+xdescribe('usePrefix()', () => {});
+
 describe('skipCheckForPorscheDesignSystemProviderDuringTests()', () => {
-  it('should prevent usePrefix or useSkeleton to throw exception', () => {
+  it('should prevent usePrefix() or useSkeleton() to throw exception', () => {
     const spy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
     let error1, error2;
 
@@ -84,18 +84,18 @@ describe('useBrowserLayoutEffect()', () => {
 });
 
 describe('useToastManager()', () => {
-  it('should call usePrefix', () => {
+  it('should call usePrefix()', () => {
     const spy = jest.spyOn(hooks, 'usePrefix');
     useToastManager();
     expect(spy).toHaveBeenCalledWith('p-toast');
   });
 
-  it('should provide addMessage method', () => {
+  it('should provide addMessage()', () => {
     expect(useToastManager()).toEqual({ addMessage: expect.anything() });
   });
 
-  describe('addMessage', () => {
-    it('should call addMessage on toast element', async () => {
+  describe('addMessage()', () => {
+    it('should call addMessage() on toast element', async () => {
       const toastElement = document.createElement('p-toast') as HTMLElement & {
         addMessage(message: ToastMessage): void;
       };

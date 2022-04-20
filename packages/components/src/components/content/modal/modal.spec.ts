@@ -17,17 +17,13 @@ describe('modal', () => {
   });
 
   describe('componentDidLoad', () => {
-    let getFirstAndLastFocusableElementSpy: jest.SpyInstance;
     const focusableElements: FirstAndLastFocusableElement = [
       document.createElement('button'),
       document.createElement('button'),
     ];
 
     beforeEach(() => {
-      getFirstAndLastFocusableElementSpy = jest
-        .spyOn(modalUtils, 'getFirstAndLastFocusableElement')
-        .mockImplementation(() => focusableElements);
-
+      jest.spyOn(modalUtils, 'getFirstAndLastFocusableElement').mockImplementation(() => focusableElements);
       jest.spyOn(domUtils, 'getShadowRootHTMLElement').mockImplementation(() => document.createElement('slot'));
     });
 
