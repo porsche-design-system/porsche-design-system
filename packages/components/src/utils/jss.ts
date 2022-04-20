@@ -12,16 +12,7 @@ import { parseJSON } from './breakpoint-customizable';
 import { getShadowRootHTMLElement } from './dom';
 import { addImportantToEachRule } from '../styles';
 import { getTagName, getTagNameWithoutPrefix } from './tag-name';
-
-/* eslint-disable @typescript-eslint/consistent-type-definitions */
-declare global {
-  interface CSSStyleSheet {
-    replaceSync(style: string): void;
-  }
-  interface ShadowRoot {
-    adoptedStyleSheets: readonly CSSStyleSheet[];
-  }
-}
+import 'construct-style-sheets-polyfill'; // DocumentOrShadowRoot.adoptedStyleSheets & CSSStyleSheet.replaceSync is missing in lib.dom.d.ts  https://github.com/microsoft/TypeScript/issues/30022
 
 // NOTE: handpicked selection of plugins from jss-preset-default
 const jss = create({
