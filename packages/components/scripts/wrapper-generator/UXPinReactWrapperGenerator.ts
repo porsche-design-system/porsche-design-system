@@ -48,7 +48,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     const spacingImportPath = "from '../../spacing'";
     imports = imports.replace(
       /('\.\.\/types';)/,
-      `$1\nimport type { Spacing } ${spacingImportPath}\nimport { mapSpacingToPadding } ${spacingImportPath}`
+      `$1\nimport type { Spacing } ${spacingImportPath}\nimport { getPaddingStyles } ${spacingImportPath}`
     );
 
     // when component is nested we need to fix relative imports
@@ -150,7 +150,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     // build inline style prop
     cleanedComponent = cleanedComponent.replace(
       /(\.\.\.rest,\n)/,
-      `$1      style: { ...mapSpacingToPadding({${spacings}}) },\n`
+      `$1      style: { ...getPaddingStyles({${spacings}}) },\n`
     );
 
     // add default children for components that need it
