@@ -1,18 +1,21 @@
-import { Properties } from 'csstype';
+import type { Properties } from 'csstype';
 
 const SPACING = [4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80] as const;
 export type Spacing = typeof SPACING[number];
 
-type GetPaddingStylesOpts = {
+type Spacings = {
   spacingTop: Spacing;
   spacingLeft: Spacing;
   spacingRight: Spacing;
   spacingBottom: Spacing;
 };
 
-export const getPaddingStyles = (spacings: GetPaddingStylesOpts): Properties => {
+export const getPaddingStyles = (spacings: Spacings): Properties => {
   return Object.entries(spacings).reduce((result, [key, value]) => {
-    result[key.replace('spacing', 'padding')] = value && `${value}px`;
+    if (value) {
+      // @ts-ignore
+      result[key.replace('spacing', 'padding') as keyof Properties] = `${value}px`;
+    }
     return result;
-  }, {} as any);
+  }, {} as Properties);
 };
