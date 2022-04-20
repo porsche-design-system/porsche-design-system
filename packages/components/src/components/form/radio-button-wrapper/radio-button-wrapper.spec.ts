@@ -7,7 +7,7 @@ jest.mock('../../../utils/slotted-styles');
 
 describe('radio-button-wrapper', () => {
   describe('connectedCallback', () => {
-    it('should call observeAttributes()', () => {
+    it('should call observeAttributes() with correct parameters', () => {
       const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
       const component = new RadioButtonWrapper();
       component.connectedCallback();
@@ -17,7 +17,7 @@ describe('radio-button-wrapper', () => {
   });
 
   describe('componentWillLoad', () => {
-    it('should call getHTMLElementAndThrowIfUndefined()', () => {
+    it('should call getHTMLElementAndThrowIfUndefined() with correct parameters', () => {
       const spy = jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined');
       const component = new RadioButtonWrapper();
       try {
@@ -27,7 +27,7 @@ describe('radio-button-wrapper', () => {
       expect(spy).toBeCalledWith(undefined, 'input[type="radio"]');
     });
 
-    it('should call observeAttributes()', () => {
+    it('should call observeAttributes() with correct parameters', () => {
       const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
       const component = new RadioButtonWrapper();
       component.componentWillLoad();
@@ -37,7 +37,7 @@ describe('radio-button-wrapper', () => {
   });
 
   describe('disconnectedCallback', () => {
-    it('should call unobserveAttributes()', () => {
+    it('should call unobserveAttributes() with correct parameter', () => {
       const spy = jest.spyOn(attributeObserverUtils, 'unobserveAttributes');
       const component = new RadioButtonWrapper();
       component.disconnectedCallback();

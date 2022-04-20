@@ -57,7 +57,7 @@ export class ButtonPure {
   /** The icon shown. */
   @Prop() public icon?: LinkButtonPureIconName = 'arrow-head-right';
 
-  /** A custom URL path to a custom icon. */
+  /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
 
   /** Display button in active state. */

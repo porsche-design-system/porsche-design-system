@@ -2,7 +2,7 @@
 
 <script>
   const getHeadAndData = async () => {
-    const content = await fetch('assets/shared.js').then((res) => res.text());
+    const content = await fetch('assets/table-data-basic.js').then((res) => res.text());
     const [, headStr] = /const headBasic = ((.|\s)*?);/.exec(content) || [];
     const head = eval(headStr);
 

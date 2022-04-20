@@ -62,6 +62,7 @@ export const getComponentCss = (
         [transformSelector('::slotted([role]:active),::slotted([role][aria-selected="true"])')]: {
           color: activeColor,
         },
+        // TODO: combine link-social-styles with link-button-styles and tabs-bar-styles
         [transformSelector('::slotted([role]:focus)')]: {
           outlineColor: focusColor,
         },

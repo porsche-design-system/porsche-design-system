@@ -22,7 +22,7 @@ In case you want the user to execute an action, you should select the [Button](c
 
 <Playground :markup="responsive" :config="config"></Playground>
 
-### ARIA attributes and states
+## ARIA attributes and states
 
 Through the `aria` property you have the possibility to provide additional **ARIA** attributes and states to the component.
 <Playground :markup="accessibility" :config="config"></Playground>
@@ -274,7 +274,7 @@ export default class Code extends Vue {
 
   icon =
 `<p-link-pure href="https://www.porsche.com" icon="phone">Some label</p-link-pure>
-<p-link-pure icon-source="${require('./assets/icon-custom-kaixin.svg')}" hide-label="true" href="https://www.porsche.com">Some label</p-link-pure>`;
+<p-link-pure icon-source="${require('../../../assets/icon-custom-kaixin.svg')}" hide-label="true" href="https://www.porsche.com">Some label</p-link-pure>`;
 
   clickableArea =
 `<p-link-pure href="https://www.porsche.com" style="padding: 1rem;">Some label</p-link-pure>

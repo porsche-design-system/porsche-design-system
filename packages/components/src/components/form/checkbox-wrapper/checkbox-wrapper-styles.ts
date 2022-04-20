@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable } from '../../../utils';
 import type { FormState, Theme } from '../../../types';
-import { buildSlottedStyles, getCss } from '../../../utils';
+import { buildSlottedStyles, getCss, isVisibleFormState } from '../../../utils';
 import {
   addImportantToEachRule,
   getBaseSlottedStyles,
@@ -8,7 +8,6 @@ import {
   pxToRemWithUnit,
   getThemedColors,
 } from '../../../styles';
-import { isVisibleFormState } from '../../../utils/form-state';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { getCheckboxRadioLabelJssStyle } from '../../../styles/checkbox-radio-styles';

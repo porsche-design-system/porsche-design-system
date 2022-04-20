@@ -6,7 +6,8 @@ import {
   throwIfAriaAttributesAreInvalid,
 } from './a11y';
 import * as jsonUtils from './json';
-import * as domUtils from './dom';
+import * as setAttributeUtils from './dom/setAttribute';
+import * as removeAttributeUtils from './dom/removeAttribute';
 import type { AriaAttributes } from '../types';
 
 describe('setAriaAttributes()', () => {
@@ -22,23 +23,23 @@ describe('setAriaAttributes()', () => {
     { state: 'success' },
     { state: 'none' },
   ])('should call setAttribute and removeAttribute with correct params for options: %o', (options) => {
-    const setAttributeSpy = jest.spyOn(domUtils, 'setAttribute');
-    const removeAttributeSpy = jest.spyOn(domUtils, 'removeAttribute');
+    const setAttributeSpy = jest.spyOn(setAttributeUtils, 'setAttribute');
+    const removeAttributeSpy = jest.spyOn(removeAttributeUtils, 'removeAttribute');
 
     setAriaAttributes(node, options);
 
     if (options.label && !options.message) {
-      expect(setAttributeSpy).toHaveBeenCalledWith(node, 'aria-label', options.label);
+      expect(setAttributeSpy).toBeCalledWith(node, 'aria-label', options.label);
     } else if (!options.label && options.message) {
       expect(setAttributeSpy).not.toBeCalled();
     } else if (options.label && options.message) {
-      expect(setAttributeSpy).toHaveBeenCalledWith(node, 'aria-label', options.label + '. ' + options.message);
+      expect(setAttributeSpy).toBeCalledWith(node, 'aria-label', options.label + '. ' + options.message);
     }
 
     if (options.state === 'error') {
-      expect(setAttributeSpy).toHaveBeenCalledWith(node, 'aria-invalid', 'true');
+      expect(setAttributeSpy).toBeCalledWith(node, 'aria-invalid', 'true');
     } else if (options.state) {
-      expect(removeAttributeSpy).toHaveBeenCalledWith(node, 'aria-invalid');
+      expect(removeAttributeSpy).toBeCalledWith(node, 'aria-invalid');
     }
   });
 });
@@ -68,14 +69,14 @@ describe('parseAndGetAriaAttributes()', () => {
     const spy = jest.spyOn(jsonUtils, 'parseJSONAttribute');
 
     parseAndGetAriaAttributes(rawAttributes, undefined);
-    expect(spy).toHaveBeenCalledWith(rawAttributes);
+    expect(spy).toBeCalledWith(rawAttributes);
   });
 
   it('should call throwIfAriaAttributesAreInvalid()', () => {
     const spy = jest.spyOn(a11yUtils, 'throwIfAriaAttributesAreInvalid');
 
     parseAndGetAriaAttributes(rawAttributes, ['aria-label']);
-    expect(spy).toHaveBeenCalledWith(['aria-label'], ['aria-label']);
+    expect(spy).toBeCalledWith(['aria-label'], ['aria-label']);
   });
 
   it.each<AriaAttributes | string>([

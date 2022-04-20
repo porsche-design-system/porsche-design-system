@@ -1,4 +1,4 @@
-import * as domUtils from '../../../../utils/dom';
+import * as getHTMLElementAndThrowIfUndefinedUtils from '../../../../utils/dom/getHTMLElementAndThrowIfUndefined';
 import * as attributeObserverUtils from '../../../../utils/attribute-observer';
 import { SelectWrapper } from './select-wrapper';
 import * as selectWrapperUtils from './select-wrapper-utils';
@@ -13,7 +13,7 @@ describe('select-wrapper', () => {
   };
 
   describe('connectedCallback', () => {
-    it('should call observeAttributes()', () => {
+    it('should call observeAttributes() with correct parameters', () => {
       const component = initComponent();
       const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
       component.connectedCallback();
@@ -23,9 +23,9 @@ describe('select-wrapper', () => {
   });
 
   describe('componentWillLoad', () => {
-    it('should call getHTMLElementAndThrowIfUndefined()', () => {
+    it('should call getHTMLElementAndThrowIfUndefined() with correct parameters', () => {
       const component = initComponent();
-      const spy = jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined');
+      const spy = jest.spyOn(getHTMLElementAndThrowIfUndefinedUtils, 'getHTMLElementAndThrowIfUndefined');
 
       try {
         component.componentWillLoad();
@@ -34,7 +34,7 @@ describe('select-wrapper', () => {
       expect(spy).toBeCalledWith(component.host, 'select');
     });
 
-    it('should call isCustomDropdown()', () => {
+    it('should call isCustomDropdown() with correct parameters', () => {
       const component = initComponent();
       component.native = true;
 
