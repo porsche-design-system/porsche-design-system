@@ -40,8 +40,7 @@ Object {
       "role": "generic",
     },
   ],
-  "name": "",
-  "role": "generic",
+  "role": "none",
 }
 `;
 
@@ -64,7 +63,6 @@ Object {
       "role": "generic",
     },
   ],
-  "name": "",
-  "role": "generic",
+  "role": "none",
 }
 `;
