@@ -15,39 +15,29 @@ import { describeSkipSkeletons } from '@porsche-design-system/shared/testing';
 
 describeSkipSkeletons('useSkeleton()', () => {
   it('should throw error if usesSkeletons was set to true on provider but partial was not used or used without skeletonsTagNames', () => {
-    const spy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
-    let error1: Error, error2;
-
-    try {
+    expect(
       render(
         <PorscheDesignSystemProvider usesSkeletons={true}>
           <PButton />
         </PorscheDesignSystemProvider>
-      );
-    } catch (e) {
-      error1 = e;
-    }
-
-    expect(error1.message).toBe(
+      )
+    ).toThrow(
       'It appears you are passing usesSkeletons=true on the <PorscheDesignSystemProvider /> either without using the getInitialStyles() function or without a proper skeletonTagNames array on the getInitialStyles() function.'
     );
+  });
 
+  it('should not throw error on correct usage', () => {
     const mockInitialStylePartial = document.createElement('style');
     mockInitialStylePartial.setAttribute('uses-skeleton', 'true');
     document.head.appendChild(mockInitialStylePartial);
 
-    try {
+    expect(
       render(
         <PorscheDesignSystemProvider usesSkeletons={true}>
           <PButton />
         </PorscheDesignSystemProvider>
-      );
-    } catch (e) {
-      error2 = e;
-    }
-    expect(error2).not.toBeDefined();
-
-    spy.mockRestore();
+      )
+    ).not.toThrow();
   });
 });
 
