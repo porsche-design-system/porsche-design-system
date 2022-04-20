@@ -1,10 +1,11 @@
 /* Auto Generated File */
-import { componentsReady, PCheckboxWrapper } from '@porsche-design-system/components-react';
+import { PCheckboxWrapper } from '@porsche-design-system/components-react';
 import { useEffect } from 'react';
+import { pollComponentsReady } from '../pollComponentsReady'
 
 export const CheckboxWrapperSkeletonPage = (): JSX.Element => {
   useEffect(() => {
-    componentsReady().then(() => {
+    pollComponentsReady().then(() => {
       document.querySelectorAll('p-checkbox-wrapper').forEach((checkbox) => {
         checkbox.classList.remove('hydrated');
       });
