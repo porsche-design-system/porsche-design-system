@@ -57,9 +57,9 @@ it('should have working events', async () => {
 
   expect(debug.innerHTML).toBe('Current Tab: 0; Event Counter: 0;');
 
-  userEvent.click(button1);
+  await userEvent.click(button1);
   expect(debug.innerHTML).toBe('Current Tab: 2; Event Counter: 1;');
 
-  userEvent.click(button2);
+  await userEvent.click(button2);
   expect(debug.innerHTML).toBe('Current Tab: 1; Event Counter: 2;');
 });

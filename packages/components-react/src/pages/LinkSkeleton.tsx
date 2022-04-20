@@ -1,10 +1,11 @@
 /* Auto Generated File */
-import { componentsReady, PLink } from '@porsche-design-system/components-react';
+import { PLink } from '@porsche-design-system/components-react';
 import { useEffect } from 'react';
+import { pollComponentsReady } from '../pollComponentsReady'
 
 export const LinkSkeletonPage = (): JSX.Element => {
   useEffect(() => {
-    componentsReady().then(() => {
+    pollComponentsReady().then(() => {
       document.querySelectorAll('p-link').forEach((link) => {
         link.classList.remove('hydrated');
       });

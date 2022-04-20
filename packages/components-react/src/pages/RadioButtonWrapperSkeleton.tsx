@@ -1,10 +1,11 @@
 /* Auto Generated File */
-import { componentsReady, PRadioButtonWrapper } from '@porsche-design-system/components-react';
+import { PRadioButtonWrapper } from '@porsche-design-system/components-react';
 import { useEffect } from 'react';
+import { pollComponentsReady } from '../pollComponentsReady'
 
 export const RadioButtonWrapperSkeletonPage = (): JSX.Element => {
   useEffect(() => {
-    componentsReady().then(() => {
+    pollComponentsReady().then(() => {
       document.querySelectorAll('p-radio-button-wrapper').forEach((radioButton) => {
         radioButton.classList.remove('hydrated');
       });
