@@ -43,7 +43,7 @@ export class Tag {
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
-      <span aria-live="polite">
+      <span>
         {(this.icon || this.iconSource) && (
           <PrefixedTagNames.pIcon
             class="icon"
