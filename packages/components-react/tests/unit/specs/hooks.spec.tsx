@@ -16,7 +16,7 @@ import { describeSkipSkeletons } from '@porsche-design-system/shared/testing';
 describeSkipSkeletons('useSkeleton()', () => {
   it('should throw error if usesSkeletons was set to true on provider but partial was not used or used without skeletonsTagNames', () => {
     const spy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
-    let error1, error2;
+    let error1: Error, error2;
 
     try {
       render(
@@ -28,7 +28,7 @@ describeSkipSkeletons('useSkeleton()', () => {
       error1 = e;
     }
 
-    expect((error1 as Error).message).toBe(
+    expect(error1.message).toBe(
       'It appears you are passing usesSkeletons=true on the <PorscheDesignSystemProvider /> either without using the getInitialStyles() function or without a proper skeletonTagNames array on the getInitialStyles() function.'
     );
 
@@ -52,7 +52,7 @@ describeSkipSkeletons('useSkeleton()', () => {
 });
 
 describe('skipCheckForPorscheDesignSystemProviderDuringTests()', () => {
-  it('should prevent usePrefix or useSkeleton to throw exception', () => {
+  it('should prevent usePrefix() or useSkeleton() to throw exception', () => {
     const spy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
     let error1, error2;
 
@@ -85,18 +85,18 @@ describe('useBrowserLayoutEffect()', () => {
 });
 
 describe('useToastManager()', () => {
-  it('should call usePrefix', () => {
+  it('should call usePrefix()', () => {
     const spy = jest.spyOn(hooks, 'usePrefix');
     useToastManager();
     expect(spy).toHaveBeenCalledWith('p-toast');
   });
 
-  it('should provide addMessage method', () => {
+  it('should provide addMessage()', () => {
     expect(useToastManager()).toEqual({ addMessage: expect.anything() });
   });
 
-  describe('addMessage', () => {
-    it('should call addMessage on toast element', async () => {
+  describe('addMessage()', () => {
+    it('should call addMessage() on toast element', async () => {
       const toastElement = document.createElement('p-toast') as HTMLElement & {
         addMessage(message: ToastMessage): void;
       };
