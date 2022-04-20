@@ -38,7 +38,7 @@ it('should have working useToastManager hook', async () => {
   expect(debug.innerHTML).toBe('Event Counter: 0;');
 
   const button = getByRole('button');
-  userEvent.click(button);
+  await userEvent.click(button);
   await waitFor(() => expect(debug.innerHTML).toBe('Event Counter: 1;'));
   await waitFor(() => expect(getByTestId('host').shadowRoot.querySelector('p-toast-item').shadowRoot).not.toBeNull());
 });
