@@ -3,7 +3,6 @@ import { buildIconUrl, getSvgContent, ICON_ARIA_ATTRIBUTES, isUrl, patchAriaInto
 import { IconName } from '../../../types';
 import { camelCase } from 'change-case';
 import * as a11yUtils from '../../../utils/a11y';
-import { parseAndGetAriaAttributes } from '../../../utils/a11y';
 
 const DEFAULT_ICON_URL =
   'https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg';

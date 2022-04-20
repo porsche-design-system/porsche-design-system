@@ -11,7 +11,6 @@ import {
   unpackChildren,
   warnIfAriaAndHeadingPropsAreUndefined,
 } from './modal-utils';
-import * as deviceDetectionUtils from '../../../utils/device-detection';
 
 describe('unpackChildren()', () => {
   let container: HTMLElement;

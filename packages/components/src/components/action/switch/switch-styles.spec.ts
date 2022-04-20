@@ -1,6 +1,6 @@
 import { getComponentCss } from './switch-styles';
 import type { BreakpointCustomizable } from '../../../utils';
-import type { AlignLabel, LinkButtonPureIconName, TextSize, Theme } from '../../../types';
+import type { AlignLabel } from '../../../types';
 import { ThemeExtendedElectric } from '../../../types';
 
 describe('getComponentCss()', () => {

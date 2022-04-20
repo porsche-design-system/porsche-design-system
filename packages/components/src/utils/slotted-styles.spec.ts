@@ -20,7 +20,7 @@ describe('attachSlottedCss()', () => {
     host.attachShadow({ mode: 'open' });
     const spy = jest.spyOn(slottedStyles, 'getCachedSlottedCss').mockImplementation(() => '');
 
-    attachSlottedCss(host, (h: HTMLElement) => 'some css');
+    attachSlottedCss(host, () => 'some css');
 
     expect(spy).toHaveBeenCalledWith(host, expect.anything());
   });
@@ -42,7 +42,7 @@ describe('attachSlottedCss()', () => {
 
       const element = document.createElement('p-element');
       document.body.append(element);
-      attachSlottedCss(element, (h) => 'p-element { color: #ff00ff; }');
+      attachSlottedCss(element, () => 'p-element { color: #ff00ff; }');
       const styleElements = document.querySelectorAll('style');
 
       expect(styleElements.length).toBe(1);
@@ -57,11 +57,11 @@ describe('attachSlottedCss()', () => {
       const spanElement = document.createElement('p-span');
       document.body.append(pElement);
       document.body.append(spanElement);
-      attachSlottedCss(pElement, (h) => 'p-element { position: relative; color: #ff00ff; }');
-      attachSlottedCss(spanElement, (h) => 'p-span { color: #ff00ff; }');
-      attachSlottedCss(spanElement, (h) => 'p-span { position: relative; color: #ff00ff; }');
-      attachSlottedCss(pElement, (h) => 'p-element { color: #ff00ff; }');
-      attachSlottedCss(spanElement, (h) => 'p-span { color: #ff00ff; }');
+      attachSlottedCss(pElement, () => 'p-element { position: relative; color: #ff00ff; }');
+      attachSlottedCss(spanElement, () => 'p-span { color: #ff00ff; }');
+      attachSlottedCss(spanElement, () => 'p-span { position: relative; color: #ff00ff; }');
+      attachSlottedCss(pElement, () => 'p-element { color: #ff00ff; }');
+      attachSlottedCss(spanElement, () => 'p-span { color: #ff00ff; }');
       const styleElements = document.querySelectorAll('style');
 
       expect(styleElements.length).toBe(1);
@@ -87,7 +87,7 @@ describe('attachSlottedCss()', () => {
       container.shadowRoot.appendChild(element);
 
       expect(container.shadowRoot.querySelectorAll('style').length).toBe(1);
-      attachSlottedCss(element, (h) => 'p-element { position: relative; color: #ff00ff; }');
+      attachSlottedCss(element, () => 'p-element { position: relative; color: #ff00ff; }');
       const styleElements = container.shadowRoot.querySelectorAll('style');
 
       expect(styleElements.length).toBe(2);
@@ -102,11 +102,11 @@ describe('attachSlottedCss()', () => {
       container.shadowRoot.appendChild(spanElement);
 
       expect(container.shadowRoot.querySelectorAll('style').length).toBe(1);
-      attachSlottedCss(divElement, (h) => 'p-div { color: #ff00ff; }');
-      attachSlottedCss(spanElement, (h) => 'p-span { position: relative; color: #ff00ff; }');
-      attachSlottedCss(divElement, (h) => 'p-div { position: relative; color: #ff00ff; }');
-      attachSlottedCss(spanElement, (h) => 'p-span { color: #ff00ff; }');
-      attachSlottedCss(spanElement, (h) => 'p-span { color: #ff00ff; }');
+      attachSlottedCss(divElement, () => 'p-div { color: #ff00ff; }');
+      attachSlottedCss(spanElement, () => 'p-span { position: relative; color: #ff00ff; }');
+      attachSlottedCss(divElement, () => 'p-div { position: relative; color: #ff00ff; }');
+      attachSlottedCss(spanElement, () => 'p-span { color: #ff00ff; }');
+      attachSlottedCss(spanElement, () => 'p-span { color: #ff00ff; }');
       const styleElements = container.shadowRoot.querySelectorAll('style');
 
       expect(styleElements.length).toBe(3);
@@ -127,8 +127,8 @@ describe('attachSlottedCss()', () => {
       expect(container2.shadowRoot.querySelectorAll('style').length).toBe(0);
       container.shadowRoot.appendChild(divElement);
       container2.shadowRoot.appendChild(divElement2);
-      attachSlottedCss(divElement, (h) => 'p-div { color: #ff00ff; }');
-      attachSlottedCss(divElement2, (h) => '.div2 { position: relative; color: #ff00ff; }');
+      attachSlottedCss(divElement, () => 'p-div { color: #ff00ff; }');
+      attachSlottedCss(divElement2, () => '.div2 { position: relative; color: #ff00ff; }');
       const styleElements = container.shadowRoot.querySelectorAll('style');
       const styleElements2 = container2.shadowRoot.querySelectorAll('style');
 
