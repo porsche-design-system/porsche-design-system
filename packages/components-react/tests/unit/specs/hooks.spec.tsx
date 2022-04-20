@@ -14,24 +14,26 @@ import { useLayoutEffect } from 'react';
 import { describeSkipSkeletons } from '@porsche-design-system/shared/testing';
 
 describeSkipSkeletons('useSkeleton()', () => {
-  it('should throw error if usesSkeletons was set to true on provider but partial was not used or used without skeletonsTagNames', () => {
-    expect(
+  it('should throw error if usesSkeletons was set to true on provider but partial was not used', () => {
+    jest.spyOn(global.console, 'error').mockImplementation(() => {});
+
+    expect(() =>
       render(
         <PorscheDesignSystemProvider usesSkeletons={true}>
           <PButton />
         </PorscheDesignSystemProvider>
       )
-    ).toThrow(
-      'It appears you are passing usesSkeletons=true on the <PorscheDesignSystemProvider /> either without using the getInitialStyles() function or without a proper skeletonTagNames array on the getInitialStyles() function.'
+    ).toThrowErrorMatchingInlineSnapshot(
+      '"It appears you are passing usesSkeletons=true on the <PorscheDesignSystemProvider /> either without using the getInitialStyles() function or without a proper skeletonTagNames array on the getInitialStyles() function."'
     );
   });
 
-  it('should not throw error on correct usage', () => {
-    const mockInitialStylePartial = document.createElement('style');
-    mockInitialStylePartial.setAttribute('uses-skeleton', 'true');
-    document.head.appendChild(mockInitialStylePartial);
+  it('should not throw error on usage with partial', () => {
+    const styleElement = document.createElement('style');
+    styleElement.setAttribute('uses-skeleton', 'true'); // needs to be in sync between partial, useSkeleton() & PorscheDesignSystemProvider
+    document.head.appendChild(styleElement);
 
-    expect(
+    expect(() =>
       render(
         <PorscheDesignSystemProvider usesSkeletons={true}>
           <PButton />
@@ -39,7 +41,14 @@ describeSkipSkeletons('useSkeleton()', () => {
       )
     ).not.toThrow();
   });
+
+  // TODO: Add missing tests
+  xit('should return true', () => {});
+  xit('should return false', () => {});
 });
+
+// TODO: Add missing tests
+xdescribe('usePrefix()', () => {});
 
 describe('skipCheckForPorscheDesignSystemProviderDuringTests()', () => {
   it('should prevent usePrefix() or useSkeleton() to throw exception', () => {
