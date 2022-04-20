@@ -45,7 +45,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     }
 
     // add Spacing type and function import
-    const spacingImportPath = "from '../../spacing'";
+    const spacingImportPath = "from '../../spacing';";
     imports = imports.replace(
       /('\.\.\/types';)/,
       `$1\nimport type { Spacing } ${spacingImportPath}\nimport { getPaddingStyles } ${spacingImportPath}`
