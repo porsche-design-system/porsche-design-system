@@ -1,6 +1,7 @@
 import {
   getElementStyle,
   getLifecycleStatus,
+  getProperty,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -25,7 +26,6 @@ describe('text', () => {
   };
 
   const getHost = () => selectNode(page, 'p-text');
-  const getLink = () => selectNode(page, 'p-text a');
   const getParagraph = () => selectNode(page, 'p-text >>> p');
 
   describe('lifecycle', () => {
@@ -66,5 +66,20 @@ describe('text', () => {
 
     // when webkitTextSizeAdjust is set to "none", it defaults to 100%
     expect(webkitTextSizeAdjustStyle).toBe('100%');
+  });
+
+  fit('should have a theme prop defined at any time', async () => {
+    await initText();
+    const host = await getHost();
+
+    expect(await getProperty(host, 'theme')).toBe('light');
+
+    await setProperty(host, 'theme', 'dark');
+    await waitForStencilLifecycle(page);
+    expect(await getProperty(host, 'theme')).toBe('dark');
+
+    await setProperty(host, 'theme', 'light');
+    await waitForStencilLifecycle(page);
+    expect(await getProperty(host, 'theme')).toBe('light');
   });
 });

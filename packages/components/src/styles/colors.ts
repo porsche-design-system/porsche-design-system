@@ -108,5 +108,5 @@ const themes = {
 /* Auto Generated End */
 
 export const getThemedColors = (theme: Theme): ThemedColors => {
-  return themes[theme || 'light'];
+  return themes[theme];
 };
