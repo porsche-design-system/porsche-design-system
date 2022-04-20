@@ -13,16 +13,6 @@ import { getShadowRootHTMLElement } from './dom';
 import { addImportantToEachRule } from '../styles';
 import { getTagName, getTagNameWithoutPrefix } from './tag-name';
 
-/* eslint-disable @typescript-eslint/consistent-type-definitions */
-declare global {
-  interface CSSStyleSheet {
-    replaceSync(style: string): void;
-  }
-  interface ShadowRoot {
-    adoptedStyleSheets: CSSStyleSheet[];
-  }
-}
-
 // NOTE: handpicked selection of plugins from jss-preset-default
 const jss = create({
   plugins: [

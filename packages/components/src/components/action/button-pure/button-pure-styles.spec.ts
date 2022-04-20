@@ -1,6 +1,6 @@
 import { getComponentCss } from './button-pure-styles';
 import type { BreakpointCustomizable } from '../../../utils';
-import type { AlignLabel, LinkButtonPureIconName, TextSize, Theme } from '../../../types';
+import type { AlignLabel, LinkButtonPureIconName, TextSize } from '../../../types';
 import { ThemeExtendedElectricDark } from '../../../types';
 
 describe('getComponentCss()', () => {
