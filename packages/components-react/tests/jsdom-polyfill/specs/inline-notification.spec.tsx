@@ -43,9 +43,9 @@ it('should have working events', async () => {
 
   expect(debug.innerHTML).toBe('Action Event Counter: 0; Close Event Counter: 0;');
 
-  userEvent.click(actionButton);
+  await userEvent.click(actionButton);
   expect(debug.innerHTML).toBe('Action Event Counter: 1; Close Event Counter: 0;');
 
-  userEvent.click(closeButton);
+  await userEvent.click(closeButton);
   expect(debug.innerHTML).toBe('Action Event Counter: 1; Close Event Counter: 1;');
 });

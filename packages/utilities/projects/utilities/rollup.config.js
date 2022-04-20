@@ -19,9 +19,6 @@ export default [
             module: 'esm/index.js',
             types: 'index.d.ts',
             sideEffects: false,
-            peerDependencies: {
-              csstype: '>=3.0.0 <4.0.0',
-            },
           },
         }),
       ],
