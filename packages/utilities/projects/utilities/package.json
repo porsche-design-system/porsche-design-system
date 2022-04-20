@@ -14,7 +14,6 @@
     "build:bundle": "rollup -c rollup.config.js",
     "test": "yarn test:unit",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
-    "test:styleComparison": "yarn build:generateScss && yarn test:unit style-comparison",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist && rm -rf ./src/js/typography/lib"
