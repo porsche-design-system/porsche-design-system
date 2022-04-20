@@ -15,7 +15,7 @@ describe('text', () => {
       expect(spy).not.toBeCalled();
     });
 
-    it('should call transitionListener when size="inherit"', () => {
+    it('should call transitionListener() with correct parameters when size="inherit"', () => {
       const component = new Text();
       component.size = 'inherit';
       component.componentDidLoad();

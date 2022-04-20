@@ -1,6 +1,6 @@
 import type { JssStyle, Styles } from 'jss';
 import type { BreakpointCustomizable } from '../utils';
-import { buildResponsiveStyles, isThemeDark } from '../utils';
+import { buildResponsiveStyles, isThemeDark, isVisibleFormState } from '../utils';
 import type { FormState, Theme } from '../types';
 import {
   addImportantToRule,
@@ -11,7 +11,6 @@ import {
   pxToRemWithUnit,
 } from './';
 import { textSmall } from '@porsche-design-system/utilities-v2';
-import { isVisibleFormState } from '../utils/form-state';
 import { getThemedFormStateColors } from './form-state-color-styles';
 
 const { disabledColor: lightThemeDisabledColor } = getThemedColors('light');

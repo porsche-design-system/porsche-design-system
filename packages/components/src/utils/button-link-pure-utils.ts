@@ -1,4 +1,4 @@
-import { hasNamedSlot, isParentOfKind } from './dom';
+import { hasNamedSlot, isParentOfKind } from '.';
 import type { LinkButtonPureIconName } from '../types';
 import { getTagName } from './tag-name';
 

@@ -160,7 +160,7 @@ describe('observeResize()', () => {
       node.style.height = '20px';
 
       await tick();
-      expect(cb).toHaveBeenCalledWith(tempResizeEntry);
+      expect(cb).toBeCalledWith(tempResizeEntry);
     });
   });
 });
@@ -210,8 +210,8 @@ describe('onWindowResize()', () => {
 
     onWindowResize();
 
-    expect(spy1).toHaveBeenCalledTimes(1);
-    expect(spy2).toHaveBeenCalledTimes(1);
+    expect(spy1).toBeCalledTimes(1);
+    expect(spy2).toBeCalledTimes(1);
   });
 });
 

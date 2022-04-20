@@ -71,11 +71,11 @@ describe('addMessage()', () => {
   it('should force update if first element was added to messages array', () => {
     const spy = jest.spyOn(stencilCore, 'forceUpdate');
     toastManager.addMessage({ text: 'Some Message One' });
-    expect(spy).toHaveBeenCalledWith(toastElement);
+    expect(spy).toBeCalledWith(toastElement);
 
     toastManager.addMessage({ text: 'Some Message One' });
-    expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).not.toHaveBeenCalledTimes(2);
+    expect(spy).toBeCalledTimes(1);
+    expect(spy).not.toBeCalledTimes(2);
   });
 });
 
@@ -103,7 +103,7 @@ describe('dismissToastItem()', () => {
 
   it('should call dismissCallbackFunction', () => {
     toastManager.dismissToastItem();
-    expect(dismissCallbackFunction).toHaveBeenCalledTimes(1);
+    expect(dismissCallbackFunction).toBeCalledTimes(1);
   });
 
   it('should trigger force update', () => {
@@ -111,7 +111,7 @@ describe('dismissToastItem()', () => {
     const spy = jest.spyOn(stencilCore, 'forceUpdate');
     toastManager.dismissToastItem();
 
-    expect(spy).toHaveBeenCalledWith(toastElement);
+    expect(spy).toBeCalledWith(toastElement);
   });
 
   it('should not have error when called without message', () => {

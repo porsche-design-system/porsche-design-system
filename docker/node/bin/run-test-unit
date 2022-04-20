@@ -16,7 +16,7 @@ if
   [[ "--utilities" == "${1}" ]] ||
   [[ "--utilities-deprecated" == "${1}" ]]
 then
-  yarn test:unit:${1:2}
+  yarn test:unit:${1:2} --ci
 else
-  yarn test:unit
+  yarn test:unit --ci
 fi

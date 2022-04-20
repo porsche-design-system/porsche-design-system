@@ -4,7 +4,7 @@ import * as transitionListenerUtils from '../../../utils/transition-listener';
 import * as linkValidationUtils from '../link-validation';
 
 describe('componentWillLoad', () => {
-  it('should call throwIfInvalidLinkUsage()', () => {
+  it('should call throwIfInvalidLinkUsage() with correct parameters', () => {
     const spy = jest.spyOn(linkValidationUtils, 'throwIfInvalidLinkUsage');
 
     const component = new LinkPure();
@@ -17,7 +17,7 @@ describe('componentWillLoad', () => {
 });
 
 describe('componentWillRender', () => {
-  it('should call warnIfParentIsPTextAndIconIsNone()', () => {
+  it('should call warnIfParentIsPTextAndIconIsNone() with correct parameters', () => {
     const spy = jest.spyOn(buttonLinkPureUtils, 'warnIfParentIsPTextAndIconIsNone');
 
     const component = new LinkPure();
@@ -43,7 +43,7 @@ describe('componentDidLoad', () => {
     expect(spy).not.toBeCalled();
   });
 
-  it('should call transitionListener when size="inherit"', () => {
+  it('should call transitionListener() with correct parameter when size="inherit"', () => {
     const component = new LinkPure();
     component.size = 'inherit';
     component.componentDidLoad();
