@@ -1,6 +1,6 @@
 import { JSDOM, DOMWindow } from 'jsdom';
 
-interface Global extends NodeJS.Global {
+interface Global {
   document: Document;
   window: DOMWindow;
 }
