@@ -14,5 +14,5 @@ export const getPaddingStyles = (spacings: GetPaddingStylesOpts): Properties => 
   return Object.entries(spacings).reduce((result, [key, value]) => {
     result[key.replace('spacing', 'padding')] = value && `${value}px`;
     return result;
-  }, {} as Properties);
+  }, {} as any);
 };
