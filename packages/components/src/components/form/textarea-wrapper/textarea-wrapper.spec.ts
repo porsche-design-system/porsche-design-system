@@ -8,7 +8,7 @@ jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
 
 describe('connectedCallback', () => {
-  it('should call observeAttributes()', () => {
+  it('should call observeAttributes() with correct parameters', () => {
     const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
     const component = new TextareaWrapper();
     component.connectedCallback();
@@ -18,7 +18,7 @@ describe('connectedCallback', () => {
 });
 
 describe('componentWillLoad', () => {
-  it('should call getHTMLElementAndThrowIfUndefined()', () => {
+  it('should call getHTMLElementAndThrowIfUndefined() with correct parameters', () => {
     const spy = jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined');
     const component = new TextareaWrapper();
 
@@ -29,7 +29,7 @@ describe('componentWillLoad', () => {
     expect(spy).toBeCalledWith(undefined, 'textarea');
   });
 
-  it('should call observeAttributes()', () => {
+  it('should call observeAttributes() with correct parameters', () => {
     const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
     const component = new TextareaWrapper();
 
@@ -40,7 +40,7 @@ describe('componentWillLoad', () => {
     expect(spy).toBeCalledWith(undefined, ['disabled', 'readonly', 'required'], expect.anything());
   });
 
-  it('should call hasCounter() and set hasCounter', () => {
+  it('should call hasCounter() with correct parameter and set hasCounter', () => {
     const textarea = document.createElement('textarea');
     jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined').mockImplementation(() => textarea);
 
@@ -57,7 +57,7 @@ describe('componentWillLoad', () => {
 });
 
 describe('componentDidLoad', () => {
-  it('should call addInputEventListener() if hasCounter is true', () => {
+  it('should call addInputEventListener() with correct parameters if hasCounter is true', () => {
     const addInputEventListenerSpy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListener');
 
     const textarea = document.createElement('textarea');
@@ -74,12 +74,12 @@ describe('componentDidLoad', () => {
 
     component['hasCounter'] = true;
     component.componentDidLoad();
-    expect(addInputEventListenerSpy).toHaveBeenCalledWith(textarea, ariaElement, counter);
+    expect(addInputEventListenerSpy).toBeCalledWith(textarea, ariaElement, counter);
   });
 });
 
 describe('componentDidRender', () => {
-  it('should call setAriaAttributes()', () => {
+  it('should call setAriaAttributes() with correct parameters', () => {
     const spy = jest.spyOn(a11yUtils, 'setAriaAttributes');
     const component = new TextareaWrapper();
     const textarea = document.createElement('textarea');
@@ -94,7 +94,7 @@ describe('componentDidRender', () => {
 });
 
 describe('disconnectedCallback', () => {
-  it('should call unobserveAttributes()', () => {
+  it('should call unobserveAttributes() with correct parameter', () => {
     const spy = jest.spyOn(attributeObserverUtils, 'unobserveAttributes');
     const component = new TextareaWrapper();
     component.disconnectedCallback();

@@ -22,19 +22,18 @@ export const contentWrapperVars = {
   marginXxl: pxToRemWithUnit(192),
 };
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const addImportantToRule = (value: any): string => `${value} !important`;
 
-export const addImportantToEachRule = <T extends Record<string, unknown>>(style: T): T => {
-  // eslint-disable-next-line guard-for-in
-  for (const key in style) {
-    const value = style[key];
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    style[key] = typeof value === 'object' ? addImportantToEachRule(value) : addImportantToRule(value);
-  }
-
-  return style;
+export const addImportantToEachRule = (input: JssStyle): JssStyle => {
+  return Object.entries(input).reduce(
+    (result, [key, value]) =>
+      value === null
+        ? result
+        : ((result[key] =
+            typeof value === 'object' ? addImportantToEachRule(value as JssStyle) : addImportantToRule(value)),
+          result),
+    {} as JssStyle
+  );
 };
 
 type GetHoverStylesOptions = {
@@ -57,7 +56,7 @@ export type GetFocusStylesOptions = {
 };
 
 export const getInsetJssStyle = (value: 'auto' | number = 0): JssStyle => {
-  value = value > 0 ? (`${value}px` as any) : value;
+  value = value === 0 || value === 'auto' ? value : (`${value}px` as any);
   return {
     top: value,
     left: value,

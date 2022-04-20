@@ -3,7 +3,7 @@ import { Table } from './table';
 
 describe('table', () => {
   describe('componentWillLoad', () => {
-    it('should call warnIfCaptionIsUndefined()', () => {
+    it('should call warnIfCaptionIsUndefined() with correct parameters', () => {
       const spy = jest.spyOn(tableUtils, 'warnIfCaptionIsUndefined');
       const component = new Table();
       component.host = document.createElement('p-table');
