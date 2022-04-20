@@ -150,7 +150,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     // build inline style prop
     cleanedComponent = cleanedComponent.replace(
       /(\.\.\.rest,\n)/,
-      `$1      style: { ...getPaddingStyles({${spacings}}) },\n`
+      `$1      style: { ...getPaddingStyles({ ${spacings} }) },\n`
     );
 
     // add default children for components that need it
