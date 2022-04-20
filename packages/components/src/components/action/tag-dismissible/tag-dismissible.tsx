@@ -34,11 +34,7 @@ export class TagDismissible {
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
-      <button
-        type="button"
-        aria-live="polite"
-        {...parseAndGetAriaAttributes(this.aria, TAG_DISMISSIBLE_ARIA_ATTRIBUTES)}
-      >
+      <button type="button" {...parseAndGetAriaAttributes(this.aria, TAG_DISMISSIBLE_ARIA_ATTRIBUTES)}>
         <span class="sr-only">Remove:</span>
         {this.label && <span class="label">{this.label}</span>}
         <slot />
