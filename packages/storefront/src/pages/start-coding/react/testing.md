@@ -81,13 +81,13 @@ test('renders Tabs Bar from Porsche Design System and uses its events', async ()
 
   expect(debug.innerHTML).toBe('Active Tab: 1');
 
-  userEvent.click(button2);
+  await userEvent.click(button2);
   expect(debug.innerHTML).toBe('Active Tab: 2');
 
-  userEvent.click(button3);
+  await userEvent.click(button3);
   expect(debug.innerHTML).toBe('Active Tab: 3');
 
-  userEvent.click(button1);
+  await userEvent.click(button1);
   expect(debug.innerHTML).toBe('Active Tab: 1');
 });
 ```

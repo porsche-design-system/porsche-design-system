@@ -252,7 +252,6 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
           .map((tagName) => pascalCase(tagName));
         const pdsImports = [
           ...componentImports,
-          (usesSetAllReady || isSkeleton) && 'componentsReady',
           usesPrefixing && 'PorscheDesignSystemProvider',
           usesToast && 'useToastManager',
         ]
@@ -264,6 +263,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
           `import { ${pdsImports} } from '@porsche-design-system/components-react';`,
           reactImports && `import { ${reactImports} } from 'react';`,
           isIconPage && `import { ICON_NAMES } from '@porsche-design-system/assets';`,
+          (usesSetAllReady || isSkeleton) && `import { pollComponentsReady } from '../pollComponentsReady'`,
         ]
           .filter((x) => x)
           .join('\n');
@@ -273,12 +273,16 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
         const styleConst = style ? `const style = \`\n  ${style}\n\`;` : '';
         const styleJsx = style ? '\n      <style children={style} />\n' : '';
 
+        if (isSkeleton) {
+          script = script.replace('componentsReady()', 'pollComponentsReady()');
+        }
+
         let useStateOrEffect = '';
 
         if (usesSetAllReady) {
           useStateOrEffect = `const [allReady, setAllReady] = useState(false);
 useEffect(() => {
-  componentsReady().then(() => {
+  pollComponentsReady().then(() => {
     setAllReady(true);
   });
 }, []);`;
