@@ -5,7 +5,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as sass from 'sass';
 import * as prettier from 'prettier';
-import styled, { CSSObject, CSSProperties, StyleSheetManager } from 'styled-components';
+import styled, { StyleSheetManager } from 'styled-components';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import '@testing-library/jest-dom';
@@ -25,7 +25,7 @@ const cssStyles = sass.compileString(`
   }
 `);
 
-const SampleStyles = styled.div({ focus: getFocus() as any, heading: headingMedium });
+const SampleStyles = styled.div({ focus: getFocus(), heading: headingMedium });
 const useStyles = createUseStyles({ focus: getFocus(), heading: headingMedium });
 let jssStyles: string;
 const STYLED_COMPONENTS_AUTO_GENERATED_CLASS_NAME: string = 'cgVBvh';
