@@ -1,6 +1,6 @@
 import { getPaddingStyles } from '../../../projects/uxpin-wrapper/src/spacing';
 
-describe('getPaddingStyles', () => {
+describe('getPaddingStyles()', () => {
   it('should correctly map spacings to padding', () => {
     expect(getPaddingStyles({ spacingTop: undefined, spacingLeft: 4, spacingRight: 8, spacingBottom: 24 })).toEqual({
       paddingLeft: '4px',
