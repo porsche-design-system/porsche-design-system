@@ -11,9 +11,6 @@ module.exports = {
   },
   globals: {
     ROLLUP_REPLACE_IS_STAGING: 'production',
-    'ts-jest': {
-      isolatedModules: true, // disables type checking 😢
-    },
   },
   clearMocks: true,
   restoreMocks: true,
