@@ -19,7 +19,7 @@ declare global {
     replaceSync(style: string): void;
   }
   interface ShadowRoot {
-    adoptedStyleSheets: CSSStyleSheet[];
+    adoptedStyleSheets: readonly CSSStyleSheet[];
   }
 }
 
