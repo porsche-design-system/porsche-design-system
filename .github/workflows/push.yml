@@ -844,7 +844,7 @@ jobs:
   release-components-uxpin:
     name: 'Release Components UXPin'
     needs:
-      - smoke-test
+      - assets-deployment
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -895,7 +895,6 @@ jobs:
     needs:
       - smoke-test
       - storefront-deployment
-      - release-components-uxpin
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
