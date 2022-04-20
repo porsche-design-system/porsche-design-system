@@ -27,7 +27,8 @@ describeSkipSkeletons('useSkeleton()', () => {
     } catch (e) {
       error1 = e;
     }
-    expect(error1.message).toBe(
+
+    expect((error1 as Error).message).toBe(
       'It appears you are passing usesSkeletons=true on the <PorscheDesignSystemProvider /> either without using the getInitialStyles() function or without a proper skeletonTagNames array on the getInitialStyles() function.'
     );
 
