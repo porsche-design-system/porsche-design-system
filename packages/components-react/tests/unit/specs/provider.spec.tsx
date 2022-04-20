@@ -26,7 +26,7 @@ describe('PorscheDesignSystemProvider', () => {
     );
   });
 
-  it('should support changing prefix at runtime', () => {
+  it('should support changing prefix at runtime', async () => {
     const Sample = (): JSX.Element => {
       const [prefix, setPrefix] = useState('my-prefix');
 
@@ -46,7 +46,7 @@ describe('PorscheDesignSystemProvider', () => {
     expect(pds.load).toBeCalledTimes(1);
     expect(pds.load).toBeCalledWith({ prefix: 'my-prefix' });
 
-    userEvent.click(button);
+    await userEvent.click(button);
 
     expect(container).toMatchSnapshot();
     expect(pds.load).toBeCalledTimes(2);

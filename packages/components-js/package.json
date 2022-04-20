@@ -65,17 +65,17 @@
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@types/js-beautify": "^1.13.3",
-    "@types/node": "^17.0.23",
+    "@types/node": "^17.0.25",
     "@types/terser-webpack-plugin": "^5.2.0",
-    "concurrently": "^7.0.0",
+    "concurrently": "^7.1.0",
     "devtools-protocol": "^0.0.982423",
     "globby": "^11.0.4",
-    "js-beautify": "^1.14.0",
+    "js-beautify": "^1.14.3",
     "jsdom": "^19.0.0",
     "local-web-server": "^5.2.0",
     "ts-node": "^10.7.0",
-    "typescript": "~4.6.2",
-    "webpack": "^5.70.0",
+    "typescript": "~4.6.3",
+    "webpack": "^5.72.0",
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.7.2"
   }
