@@ -1,0 +1,231 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getComponentCss() should return correct css for color: background-default and hasLabel: false 1`] = `
+":host {
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
+}
+button {
+  position: relative;
+  min-height: 3rem;
+  padding: 0.25rem 2.875rem 0.25rem 1rem;
+  border-radius: 0.25rem;
+  border: 0;
+  cursor: pointer;
+  background: #fff;
+  color: #000;
+  text-align: left;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  outline: 0;
+}
+button::before {
+  content: \\"\\";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 1px solid transparent;
+  border-radius: 0.375rem;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+}
+button:focus::before {
+  border-color: #000;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
+}
+button:hover:focus::before {
+  border-color: #d5001c;
+}
+button:hover .icon {
+  color: #d5001c;
+}
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
+}
+.icon {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translate3d(0, -50%, 0);
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: background-default and hasLabel: true 1`] = `
+":host {
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
+}
+button {
+  position: relative;
+  min-height: 3rem;
+  padding: 0.25rem 2.875rem 0.25rem 1rem;
+  border-radius: 0.25rem;
+  border: 0;
+  cursor: pointer;
+  background: #fff;
+  color: #000;
+  text-align: left;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  outline: 0;
+}
+button::before {
+  content: \\"\\";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 1px solid transparent;
+  border-radius: 0.375rem;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+}
+button:focus::before {
+  border-color: #000;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
+}
+button:hover:focus::before {
+  border-color: #d5001c;
+}
+button:hover .icon {
+  color: #d5001c;
+}
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
+}
+.label {
+  display: block;
+  margin-bottom: -0.25rem;
+  color: #626669;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.icon {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translate3d(0, -50%, 0);
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: background-surface and hasLabel: true 1`] = `
+":host {
+  display: inline-flex;
+  vertical-align: top;
+  outline: 0 !important;
+}
+button {
+  position: relative;
+  min-height: 3rem;
+  padding: 0.25rem 2.875rem 0.25rem 1rem;
+  border-radius: 0.25rem;
+  border: 0;
+  cursor: pointer;
+  background: #f2f2f2;
+  color: #000;
+  text-align: left;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  outline: 0;
+}
+button::before {
+  content: \\"\\";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 1px solid transparent;
+  border-radius: 0.375rem;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+}
+button:focus::before {
+  border-color: #000;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
+}
+button:hover:focus::before {
+  border-color: #d5001c;
+}
+button:hover .icon {
+  color: #d5001c;
+}
+::slotted(strong), ::slotted(b) {
+  font-weight: 700 !important;
+}
+::slotted(em), ::slotted(i) {
+  font-style: normal !important;
+}
+.label {
+  display: block;
+  margin-bottom: -0.25rem;
+  color: #626669;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.icon {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translate3d(0, -50%, 0);
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}"
+`;

@@ -1,4 +1,4 @@
-import { Page } from 'puppeteer';
+import type { Page } from 'puppeteer';
 import { goto, initConsoleObserver, getConsoleErrorsAmount } from '../helpers';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -19,10 +19,10 @@ const routes: { name: string; path: string; element: string }[] = eval(
   rawRoutes
     .replace(/\.\.\.\[(?:.|\s)*?\].*/, '') // get rid of generatedRoutes
     .replace(/<(from(?:Pages|Examples)\.\w+)\s\/>/g, "'$1'")
-);
+).filter(({ element }) => element);
 
-const exampleRoutes = routes.filter((item) => item.element?.startsWith('fromExamples.'));
-const exampleUrls = exampleRoutes.map((item) => item.path.substr(1));
+const exampleRoutes = routes.filter((item) => item.element.startsWith('fromExamples.'));
+const exampleUrls = exampleRoutes.map((item) => item.path.slice(1));
 
 it.each(exampleUrls)('should work without error for %s', async (exampleUrl) => {
   await goto(page, exampleUrl);

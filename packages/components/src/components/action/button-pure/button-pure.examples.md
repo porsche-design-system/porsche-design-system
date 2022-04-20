@@ -22,7 +22,7 @@ Whenever you want to provide navigational elements, stick to the [Link](componen
 
 <Playground :markup="responsive" :config="config"></Playground>
 
-### ARIA attributes and states
+## ARIA attributes and states
 
 Through the `aria` property you have the possibility to provide additional **ARIA** attributes and states to the component.
 <Playground :markup="accessibility" :config="config"></Playground>
@@ -237,7 +237,7 @@ export default class Code extends Vue {
 
   icon =
 `<p-button-pure icon="delete">Some label</p-button-pure>
-<p-button-pure icon-source="${require('./assets/icon-custom-kaixin.svg')}" hide-label="true">Some label</p-button-pure>`;
+<p-button-pure icon-source="${require('../../../assets/icon-custom-kaixin.svg')}" hide-label="true">Some label</p-button-pure>`;
 
   get markupAlignment() {
     return `<p-button-pure align-label="${this.alignLabel}">Some label</p-button-pure>`;
