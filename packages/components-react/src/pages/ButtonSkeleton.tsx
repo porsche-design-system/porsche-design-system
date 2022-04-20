@@ -1,10 +1,11 @@
 /* Auto Generated File */
-import { componentsReady, PButton } from '@porsche-design-system/components-react';
+import { PButton } from '@porsche-design-system/components-react';
 import { useEffect } from 'react';
+import { pollComponentsReady } from '../pollComponentsReady'
 
 export const ButtonSkeletonPage = (): JSX.Element => {
   useEffect(() => {
-    componentsReady().then(() => {
+    pollComponentsReady().then(() => {
       document.querySelectorAll('p-button').forEach((button) => {
         button.classList.remove('hydrated');
       });

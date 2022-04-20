@@ -1,11 +1,12 @@
 /* Auto Generated File */
-import { componentsReady, PBanner } from '@porsche-design-system/components-react';
+import { PBanner } from '@porsche-design-system/components-react';
 import { useEffect, useState } from 'react';
+import { pollComponentsReady } from '../pollComponentsReady'
 
 export const BannerPage = (): JSX.Element => {
   const [allReady, setAllReady] = useState(false);
   useEffect(() => {
-    componentsReady().then(() => {
+    pollComponentsReady().then(() => {
       setAllReady(true);
     });
   }, []);
