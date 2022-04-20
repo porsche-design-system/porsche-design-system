@@ -1,7 +1,7 @@
 import type { Properties } from 'csstype';
 
-const SPACING = [4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80] as const;
-export type Spacing = typeof SPACING[number];
+const SPACINGS = [4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80] as const;
+export type Spacing = typeof SPACINGS[number];
 
 type Spacings = {
   spacingTop: Spacing;
