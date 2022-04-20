@@ -1,19 +1,19 @@
 import { StrictMode } from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { componentsReady, PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
 import '@porsche-design-system/shared/css/styles.css';
 import { App } from './App';
 
-ReactDOM.render(
+const root = createRoot(document.getElementById('root')!);
+root.render(
   <StrictMode>
     <Router>
       <PorscheDesignSystemProvider>
         <App />
       </PorscheDesignSystemProvider>
     </Router>
-  </StrictMode>,
-  document.getElementById('root')
+  </StrictMode>
 );
 
 (window as any).componentsReady = componentsReady; // for vrt
