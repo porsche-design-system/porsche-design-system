@@ -1,10 +1,14 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import { getThemeDarkAttribute, attachSlottedCss, attachComponentCss } from '../../../../utils';
+import {
+  getThemeDarkAttribute,
+  attachSlottedCss,
+  attachComponentCss,
+  setLineHeightOnSizeInherit,
+} from '../../../../utils';
 import type { TextAlign, TextColor, Theme } from '../../../../types';
 import type { HeadlineTag, HeadlineVariant } from './headline-utils';
 import { getHeadlineTagName } from './headline-utils';
 import { getComponentCss, getSlottedCss } from './headline-styles';
-import { setLineHeightOnSizeInherit } from '../text/text-utils';
 
 @Component({
   tag: 'p-headline',

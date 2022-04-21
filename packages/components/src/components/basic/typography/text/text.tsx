@@ -1,7 +1,12 @@
 import { JSX, Component, Prop, h, Element, Host } from '@stencil/core';
-import { getHTMLElement, getThemeDarkAttribute, attachSlottedCss, attachComponentCss } from '../../../../utils';
+import {
+  getHTMLElement,
+  getThemeDarkAttribute,
+  attachSlottedCss,
+  attachComponentCss,
+  setLineHeightOnSizeInherit,
+} from '../../../../utils';
 import type { BreakpointCustomizable, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
-import { setLineHeightOnSizeInherit } from './text-utils';
 import { getComponentCss, getSlottedCss } from './text-styles';
 
 @Component({
