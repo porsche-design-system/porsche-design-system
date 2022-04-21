@@ -51,10 +51,10 @@ span {
   background: #0e1418;
   color: #fff;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   white-space: nowrap;
 }
 ::slotted(br) {
@@ -86,10 +86,10 @@ span {
   background: #fff;
   color: #000;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   white-space: nowrap;
 }
 ::slotted(br) {
@@ -121,10 +121,10 @@ span {
   background: #0e1418;
   color: #fff;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -203,10 +203,10 @@ span {
   background: #fff;
   color: #000;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -285,10 +285,10 @@ span {
   background: #262b2e;
   color: #fff;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -367,10 +367,10 @@ span {
   background: #f2f2f2;
   color: #000;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -449,10 +449,10 @@ span {
   background: #e3e4e5;
   color: #000;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -531,10 +531,10 @@ span {
   background: #323639;
   color: #fff;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -613,10 +613,10 @@ span {
   background: #fec5c5;
   color: #000;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -695,10 +695,10 @@ span {
   background: #fae6e6;
   color: #000;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -777,10 +777,10 @@ span {
   background: #c7e4ff;
   color: #000;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -859,10 +859,10 @@ span {
   background: #e5eff8;
   color: #000;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -941,10 +941,10 @@ span {
   background: #bfeec6;
   color: #000;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -1023,10 +1023,10 @@ span {
   background: #e5f3e7;
   color: #000;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -1105,10 +1105,10 @@ span {
   background: #ffe6bf;
   color: #000;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
@@ -1187,10 +1187,10 @@ span {
   background: #fff5e5;
   color: #000;
   font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   white-space: nowrap;
   transition: color var(--p-transition-duration, .24s) ease;
 }
