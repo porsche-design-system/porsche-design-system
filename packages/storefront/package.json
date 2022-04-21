@@ -39,6 +39,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@axe-core/puppeteer": "^4.4.2",
     "@axe-devtools/logger": "^4.4.0",
     "@axe-devtools/puppeteer": "^4.4.1",
     "@axe-devtools/reporter": "^4.4.0",
