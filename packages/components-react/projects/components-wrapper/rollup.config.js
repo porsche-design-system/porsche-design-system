@@ -13,7 +13,7 @@ const typescriptOpts = {
 const external = [
   '@porsche-design-system/components-js',
   '@porsche-design-system/components-js/partials',
-  '@porsche-design-system/components-js/utilities/jss',
+  '@porsche-design-system/components-js/utilities/js',
   'react',
   'react/jsx-runtime',
 ];
@@ -69,16 +69,16 @@ export default [
     plugins: [typescript(typescriptOpts)],
   },
   {
-    input: `${projectDir}/src/utilities/jss.ts`,
+    input: `${projectDir}/src/utilities/js.ts`,
     external,
     output: [
       {
-        file: `${outputDir}/utilities/jss/index.js`,
+        file: `${outputDir}/utilities/js/index.js`,
         format: 'cjs',
         plugins: [generatePackageJson(packageJsonConfig)],
       },
       {
-        file: `${outputDir}/utilities/jss/esm/index.js`,
+        file: `${outputDir}/utilities/js/esm/index.js`,
         format: 'esm',
       },
     ],

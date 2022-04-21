@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { themeLight, textSmall } from '@porsche-design-system/components-angular/utilities/jss';
+import { themeLight, textSmall } from '@porsche-design-system/components-angular/utilities/js';
 import { paramCase } from 'change-case';
 
 @Component({

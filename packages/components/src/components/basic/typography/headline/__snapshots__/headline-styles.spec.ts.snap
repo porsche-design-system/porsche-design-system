@@ -27,10 +27,10 @@ exports[`getComponentCss() should return correct css for variant: "headline-1", 
   color: #000;
   white-space: inherit;
   font: normal normal 600 1.75rem/1.4285714286 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
 }
 @media(min-width:760px) and (max-width:999px) {
   .root {
@@ -89,10 +89,10 @@ exports[`getComponentCss() should return correct css for variant: "headline-2", 
   color: inherit;
   white-space: nowrap;
   font: normal normal 600 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -154,10 +154,10 @@ exports[`getComponentCss() should return correct css for variant: "headline-3", 
   color: inherit;
   white-space: nowrap;
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -219,10 +219,10 @@ exports[`getComponentCss() should return correct css for variant: "headline-4", 
   color: inherit;
   white-space: nowrap;
   font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -284,10 +284,10 @@ exports[`getComponentCss() should return correct css for variant: "headline-5", 
   color: inherit;
   white-space: nowrap;
   font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -351,10 +351,10 @@ exports[`getComponentCss() should return correct css for variant: "large-title",
   color: inherit;
   white-space: nowrap;
   font: normal normal 600 2rem/1.375 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
   text-size-adjust: none;
+  -webkit-text-size-adjust: none;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
