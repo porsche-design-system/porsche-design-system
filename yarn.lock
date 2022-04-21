@@ -2149,6 +2149,26 @@
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/browser-notification/-/@porsche-design-system/browser-notification-4.1.1.tgz#f553e114b2fa4903dfe38ea4add682d13a47ec72"
   integrity sha1-9VPhFLL6SQPf446krdaC0TpH7HI=
 
+"@porsche-design-system/components-angular@2.11.0":
+  version "2.11.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/components-angular/-/@porsche-design-system/components-angular-2.11.0.tgz#8bd3a1b4ba3be0225eeba5f4fd079a680ccc8c3f"
+  integrity sha512-dYRKlMjiW1BWIiwCouqTt/g9zImTc2R7+MBQzU96g2ZfZZGMPHbX2vkKjbdZlmdaz0hy0OB8nnpQptntk/24lA==
+  dependencies:
+    "@porsche-design-system/components-js" "2.11.0"
+    tslib "^2.0.1"
+
+"@porsche-design-system/components-js@2.11.0":
+  version "2.11.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/components-js/-/@porsche-design-system/components-js-2.11.0.tgz#89da638fc087f5931a2c0eed639b1a754f849514"
+  integrity sha512-WBTO1n1nbiKJUoqWStov1UzKmgqizU0DLcMpJK8xJghynoCH5fDAfKK2kUem2Fe/A9jkevJ0dc/Eu34GaqW2OA==
+
+"@porsche-design-system/components-react@2.11.0":
+  version "2.11.0"
+  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/components-react/-/@porsche-design-system/components-react-2.11.0.tgz#8a83aab4f3b779464983cc5da19c23fd69952d3a"
+  integrity sha512-Hfdi473wFhDxKfyTyLlFpMvdGkKTIlTqtKNwqciSXD+5zIaMz1gtvs8wSYVdmYTZk5rWnckzbuneN1f0/4X16Q==
+  dependencies:
+    "@porsche-design-system/components-js" "2.11.0"
+
 "@porsche-design-system/prettier-config@^1.0.0":
   version "1.0.0"
   resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/prettier-config/-/@porsche-design-system/prettier-config-1.0.0.tgz#3ab128c42d98cb049ffc0b141362f6963e0a93d7"
