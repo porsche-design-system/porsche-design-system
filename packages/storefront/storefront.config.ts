@@ -66,8 +66,8 @@ export const config: StorefrontConfig = {
       Utilities: [() => import('@/../../utilities-deprecated/projects/utilities/CHANGELOG.md')],
       // @ts-ignore
       Assets: [() => import('@/../../assets/CHANGELOG.md')],
-      // @ts-ignore
       'Browser Notification': [
+        // @ts-ignore
         () => import('@/../../../node_modules/@porsche-design-system/browser-notification/CHANGELOG.md'),
       ],
     },
@@ -224,8 +224,8 @@ export const config: StorefrontConfig = {
     Notifications: {
       // @ts-ignore
       Introduction: [() => import('@/../../components/src/components/feedback/notifications.usage.md')],
-      // @ts-ignore
       'Inline Notification': [
+        // @ts-ignore
         () => import('@/../../components/src/components/feedback/inline-notification/inline-notification.examples.md'),
       ],
       // @ts-ignore
