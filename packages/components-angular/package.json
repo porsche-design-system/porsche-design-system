@@ -14,7 +14,7 @@
     "build:bundle:partialsAndUtilities": "yarn rollup -c ./projects/components-wrapper/rollup.config.js",
     "build:bundle:typings": "yarn build:bundle:typings:partials && yarn build:bundle:typings:utilities",
     "build:bundle:typings:partials": "tsc projects/components-wrapper/src/partials.ts --declaration --emitDeclarationOnly --declarationDir dist/components-wrapper/partials",
-    "build:bundle:typings:utilities": "tsc projects/components-wrapper/src/utilities/jss.ts --declaration --emitDeclarationOnly --declarationDir dist/components-wrapper/utilities/jss",
+    "build:bundle:typings:utilities": "tsc projects/components-wrapper/src/utilities/js.ts --declaration --emitDeclarationOnly --declarationDir dist/components-wrapper/utilities/js",
     "build-app": "ng build --configuration production",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
@@ -33,7 +33,7 @@
     "@angular/platform-browser": "^13.3.3",
     "@angular/platform-browser-dynamic": "^13.3.3",
     "@angular/router": "^13.3.3",
-    "@porsche-design-system/components-angular": "2.11.0-skeletons",
+    "@porsche-design-system/components-angular": "2.11.0",
     "rxjs": "^7.5.5",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.5"
