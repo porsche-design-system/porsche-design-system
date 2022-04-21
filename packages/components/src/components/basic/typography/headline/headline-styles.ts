@@ -1,6 +1,6 @@
 import type { JssStyle } from 'jss';
-import type { HeadlineVariant, TextAlign, TextColor, Theme, VariantType } from '../../../../types';
-import { buildSlottedStyles, getCss, mergeDeep } from '../../../../utils';
+import type { HeadlineVariant, TextAlign, TextColor, TextSize, Theme, VariantType } from '../../../../types';
+import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep } from '../../../../utils';
 import { addImportantToEachRule, getBaseSlottedStyles, getThemedColors } from '../../../../styles';
 import {
   headingLarge,
@@ -9,9 +9,12 @@ import {
   headingSmall,
   headingXSmall,
   headingXXLarge,
+  fontWeight,
+  textSmall,
 } from '@porsche-design-system/utilities-v2';
 import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../../../styles/typography-styles';
 import { isVariantType } from './headline-utils';
+import { textMap } from '../text/text-utils';
 
 const headingMap: { [key in VariantType]: any } = {
   'large-title': headingXXLarge,
@@ -22,8 +25,21 @@ const headingMap: { [key in VariantType]: any } = {
   'headline-5': headingXSmall,
 };
 
-const getVariantStyle = (variant: HeadlineVariant): JssStyle => {
+const getVariantJssStyle = (variant: HeadlineVariant): JssStyle => {
   return headingMap[variant as VariantType];
+};
+
+const getSizeJssStyle = (textSize: TextSize): JssStyle => {
+  const { semiBold: fontWeightSemiBold } = fontWeight;
+  return textSize === 'inherit'
+    ? {
+        lineHeight: textSize,
+        fontSize: textSize,
+        fontWeight: fontWeightSemiBold,
+      }
+    : {
+        font: textMap[textSize].font.replace('400', fontWeightSemiBold),
+      };
 };
 
 export const getComponentCss = (
@@ -48,7 +64,15 @@ export const getComponentCss = (
       textAlign: align,
       color: color !== 'default' ? 'inherit' : getThemedColors(theme).baseColor,
       whiteSpace: 'inherit',
-      ...(isVariantType(variant) ? getVariantStyle(variant) : variant === 'inherit' && { fontSize: 'inherit' }),
+      ...(isVariantType(variant)
+        ? getVariantJssStyle(variant)
+        : {
+            ...textSmall,
+            transition: 'font-size 1ms linear',
+            ...buildResponsiveStyles(variant, getSizeJssStyle),
+            overflowWrap: 'normal',
+            hyphens: 'manual',
+          }),
       ...(ellipsis && getEllipsisJssStyle()),
     },
   });
