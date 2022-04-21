@@ -22,7 +22,7 @@ describe('attachSlottedCss()', () => {
 
     attachSlottedCss(host, () => 'some css');
 
-    expect(spy).toHaveBeenCalledWith(host, expect.anything());
+    expect(spy).toBeCalledWith(host, expect.anything());
   });
 
   describe('for elements outside of shadow root', () => {
@@ -177,15 +177,15 @@ describe('getCachedSlottedCss()', () => {
 
     getCachedSlottedCss(host1, getSlottedCss);
 
-    expect(getSlottedCss).toHaveBeenCalledTimes(1);
+    expect(getSlottedCss).toBeCalledTimes(1);
 
     getCachedSlottedCss(host2, getSlottedCss);
 
-    expect(getSlottedCss).toHaveBeenCalledTimes(1);
+    expect(getSlottedCss).toBeCalledTimes(1);
 
     getCachedSlottedCss(host3, getSlottedCss);
 
-    expect(getSlottedCss).toHaveBeenCalledTimes(2);
+    expect(getSlottedCss).toBeCalledTimes(2);
   });
 
   it('should call provided css function again for prefixed version of host type', () => {
@@ -195,10 +195,10 @@ describe('getCachedSlottedCss()', () => {
 
     getCachedSlottedCss(host, getSlottedCss);
 
-    expect(getSlottedCss).toHaveBeenCalledTimes(1);
+    expect(getSlottedCss).toBeCalledTimes(1);
 
     getCachedSlottedCss(hostPrefixed, getSlottedCss);
 
-    expect(getSlottedCss).toHaveBeenCalledTimes(2);
+    expect(getSlottedCss).toBeCalledTimes(2);
   });
 });

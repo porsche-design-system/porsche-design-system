@@ -43,14 +43,14 @@ describe('PorscheDesignSystemProvider', () => {
     const button = getByTestId('button');
 
     expect(container).toMatchSnapshot();
-    expect(pds.load).toHaveBeenCalledTimes(1);
-    expect(pds.load).toHaveBeenCalledWith({ prefix: 'my-prefix' });
+    expect(pds.load).toBeCalledTimes(1);
+    expect(pds.load).toBeCalledWith({ prefix: 'my-prefix' });
 
     await userEvent.click(button);
 
     expect(container).toMatchSnapshot();
-    expect(pds.load).toHaveBeenCalledTimes(2);
-    expect(pds.load).toHaveBeenCalledWith({ prefix: 'new-prefix' });
+    expect(pds.load).toBeCalledTimes(2);
+    expect(pds.load).toBeCalledWith({ prefix: 'new-prefix' });
   });
 
   it('should render components wrapped with nested provider and prefix', () => {

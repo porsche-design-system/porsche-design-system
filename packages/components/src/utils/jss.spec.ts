@@ -337,11 +337,11 @@ describe('attachComponentCss()', () => {
 
     attachComponentCss(host, (_x: boolean) => 'some css', true);
 
-    expect(spy).toHaveBeenCalledWith(host, expect.anything(), true);
+    expect(spy).toBeCalledWith(host, expect.anything(), true);
 
     attachComponentCss(host, (_x: boolean, _y: string, _z: number) => 'some css', false, '', 1);
 
-    expect(spy).toHaveBeenCalledWith(host, expect.anything(), false, '', 1);
+    expect(spy).toBeCalledWith(host, expect.anything(), false, '', 1);
   });
 
   describe('with CSSStyleSheet support', () => {
@@ -430,15 +430,15 @@ describe('getCachedComponentCss()', () => {
 
     getCachedComponentCss(host1, getComponentCss, 'some-param');
 
-    expect(getComponentCss).toHaveBeenCalledTimes(1);
+    expect(getComponentCss).toBeCalledTimes(1);
 
     getCachedComponentCss(host2, getComponentCss, 'some-param');
 
-    expect(getComponentCss).toHaveBeenCalledTimes(1);
+    expect(getComponentCss).toBeCalledTimes(1);
 
     getCachedComponentCss(host3, getComponentCss, 'another-param');
 
-    expect(getComponentCss).toHaveBeenCalledTimes(2);
+    expect(getComponentCss).toBeCalledTimes(2);
   });
 
   it('should not call provided css function again for prefixed version of host type', () => {
@@ -448,10 +448,10 @@ describe('getCachedComponentCss()', () => {
 
     getCachedComponentCss(host, getComponentCss);
 
-    expect(getComponentCss).toHaveBeenCalledTimes(1);
+    expect(getComponentCss).toBeCalledTimes(1);
 
     getCachedComponentCss(hostPrefixed, getComponentCss);
 
-    expect(getComponentCss).toHaveBeenCalledTimes(1);
+    expect(getComponentCss).toBeCalledTimes(1);
   });
 });

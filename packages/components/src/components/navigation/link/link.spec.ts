@@ -2,7 +2,7 @@ import { Link } from './link';
 import * as linkValidationUtils from '../link-validation';
 
 describe('componentWillLoad', () => {
-  it('should call throwIfInvalidLinkUsage() ', () => {
+  it('should call throwIfInvalidLinkUsage() with correct parameters', () => {
     const spy = jest.spyOn(linkValidationUtils, 'throwIfInvalidLinkUsage');
 
     const component = new Link();

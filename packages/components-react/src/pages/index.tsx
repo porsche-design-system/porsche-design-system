@@ -54,6 +54,8 @@ import { SpinnerPage } from './Spinner';
 import { SwitchPage } from './Switch';
 import { TabsPage } from './Tabs';
 import { TabsBarPage } from './TabsBar';
+import { TagPage } from './Tag';
+import { TagDismissiblePage } from './TagDismissible';
 import { TextPage } from './Text';
 import { TextareaWrapperPage } from './TextareaWrapper';
 import { TextareaWrapperSkeletonPage } from './TextareaWrapperSkeleton';
@@ -202,6 +204,11 @@ export const generatedRoutes: RouteType[] = [
     element: <ModalBasicPage />,
   },
   {
+    name: 'Modal Full Width Slot',
+    path: '/modal-full-width-slot',
+    element: <ModalFullWidthSlotPage />,
+  },
+  {
     name: 'Modal Fullscreen',
     path: '/modal-fullscreen',
     element: <ModalFullscreenPage />,
@@ -210,11 +217,6 @@ export const generatedRoutes: RouteType[] = [
     name: 'Modal Fullscreen Breakpoint',
     path: '/modal-fullscreen-breakpoint',
     element: <ModalFullscreenBreakpointPage />,
-  },
-  {
-    name: 'Modal Full Width Slot',
-    path: '/modal-full-width-slot',
-    element: <ModalFullWidthSlotPage />,
   },
   {
     name: 'Modal No Heading',
@@ -287,19 +289,19 @@ export const generatedRoutes: RouteType[] = [
     element: <TabsBarPage />,
   },
   {
+    name: 'Tag',
+    path: '/tag',
+    element: <TagPage />,
+  },
+  {
+    name: 'Tag Dismissible',
+    path: '/tag-dismissible',
+    element: <TagDismissiblePage />,
+  },
+  {
     name: 'Text',
     path: '/text',
     element: <TextPage />,
-  },
-  {
-    name: 'Textarea Wrapper',
-    path: '/textarea-wrapper',
-    element: <TextareaWrapperPage />,
-  },
-  {
-    name: 'Textarea Wrapper Skeleton',
-    path: '/textarea-wrapper-skeleton',
-    element: <TextareaWrapperSkeletonPage />,
   },
   {
     name: 'Text Field Wrapper',
@@ -315,6 +317,16 @@ export const generatedRoutes: RouteType[] = [
     name: 'Text List',
     path: '/text-list',
     element: <TextListPage />,
+  },
+  {
+    name: 'Textarea Wrapper',
+    path: '/textarea-wrapper',
+    element: <TextareaWrapperPage />,
+  },
+  {
+    name: 'Textarea Wrapper Skeleton',
+    path: '/textarea-wrapper-skeleton',
+    element: <TextareaWrapperSkeletonPage />,
   },
   {
     name: 'Toast Basic',

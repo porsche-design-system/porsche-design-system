@@ -3,7 +3,7 @@ import { InlineNotification } from './inline-notification';
 import { INLINE_NOTIFICATION_STATES } from './inline-notification-utils';
 
 describe('componentWillRender', () => {
-  it('should call throwIfValueIsInvalid()', () => {
+  it('should call throwIfValueIsInvalid() with correct parameters', () => {
     const spy = jest.spyOn(validationUtils, 'throwIfValueIsInvalid');
     const component = new InlineNotification();
     component.host = document.createElement('p-inline-notification');

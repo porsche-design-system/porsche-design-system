@@ -32,7 +32,7 @@ The default icon is an arrow right that can be replaced by any icon available in
 ### Internal and external links
 For internal links the arrow should be sufficient in most cases. External links can be displayed with the following icon:
 
-<p-link href="https://www.porsche.com" icon="external" aria-label="Extern link">Some label</p-link>
+<p-link icon="external" href="https://www.porsche.com" target="_blank">External link</p-link>
 
 
 ### Link position

@@ -2,7 +2,7 @@
 
 <script>
   const getHeadAndData = async () => {
-    const content = await fetch('assets/shared.js').then((res) => res.text());
+    const content = await fetch('assets/table-data-sorting.js').then((res) => res.text());
     const [, headStr] = /const headSorting = ((.|\s)*?);/.exec(content) || [];
     const head = eval(headStr);
 

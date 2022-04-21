@@ -7,7 +7,7 @@ describe('browser', () => {
     spy.mockReturnValue({ prototype: { noModule: true } } as any);
 
     expect(supportsEs2015Modules()).toBe(true);
-    expect(spy).toHaveBeenCalled();
+    expect(spy).toBeCalled();
     spy.mockRestore();
   });
 
@@ -16,7 +16,7 @@ describe('browser', () => {
     spy.mockReturnValue({ prototype: {} as HTMLScriptElement } as any);
 
     expect(supportsEs2015Modules()).toBe(false);
-    expect(spy).toHaveBeenCalled();
+    expect(spy).toBeCalled();
     spy.mockRestore();
   });
 

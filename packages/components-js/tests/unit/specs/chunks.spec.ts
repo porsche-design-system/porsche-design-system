@@ -2,7 +2,7 @@ import * as gzipSize from 'gzip-size';
 import * as path from 'path';
 import * as fs from 'fs';
 import { COMPONENT_CHUNKS_MANIFEST, ComponentChunkName } from '../../../projects/components-wrapper';
-import { colorExternal } from '@porsche-design-system/components-js/utilities/jss';
+import { colorExternal } from '@porsche-design-system/components-js/utilities/js';
 
 const indexJsFile = require.resolve('@porsche-design-system/components-js');
 const { version } = JSON.parse(fs.readFileSync(path.resolve(indexJsFile, '../package.json'), 'utf8')) as {
@@ -118,7 +118,7 @@ describe('chunk size', () => {
       return `${displaySign ? getSign(input) : ''}${(input / 1024).toFixed(2)} KB`;
     };
     const formatPercent = (oldSize: number, diffSize: number): string => {
-      const value = ((diffSize / oldSize) * 300).toFixed(2);
+      const value = ((diffSize / oldSize) * 100).toFixed(2);
       return `${getSign(parseFloat(value))}${value} %`;
     };
 

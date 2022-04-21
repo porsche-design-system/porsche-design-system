@@ -45,7 +45,7 @@ export class Button {
   /** The icon shown. */
   @Prop() public icon?: IconName = 'arrow-head-right';
 
-  /** A custom URL path to a custom icon. */
+  /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
 
   /** Show or hide label. For better accessibility it is recommended to show the label. */

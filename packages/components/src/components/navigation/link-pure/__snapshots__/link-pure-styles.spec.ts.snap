@@ -1250,11 +1250,13 @@ exports[`getSlottedCss() should return correct css 1`] = `
   text-decoration: none !important;
   font: inherit !important;
   transition: color var(--p-transition-duration, .24s) ease !important;
-  outline: transparent none !important;
+  outline: 0 !important;
+}
+p-link-pure a::-moz-focus-inner {
+  border: 0 !important;
 }
 p-link-pure a::before {
   content: \\"\\" !important;
-  display: block !important;
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
@@ -1278,11 +1280,13 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
   text-decoration: none !important;
   font: inherit !important;
   transition: color var(--p-transition-duration, .24s) ease !important;
-  outline: transparent none !important;
+  outline: 0 !important;
+}
+prefixed-p-link-pure a::-moz-focus-inner {
+  border: 0 !important;
 }
 prefixed-p-link-pure a::before {
   content: \\"\\" !important;
-  display: block !important;
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
