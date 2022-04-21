@@ -97,6 +97,21 @@ describe('headline', () => {
       await initHeadline({ slot: '<div>Some Headline</div>' });
       expect(await getHeadlineTagName()).toBe('H1');
     });
+
+    it('should have a theme prop defined at any time', async () => {
+      await initHeadline({ variant: 'large-title' });
+      const host = await getHost();
+
+      expect(await getProperty(host, 'theme')).toBe('light');
+
+      await setProperty(host, 'theme', 'dark');
+      await waitForStencilLifecycle(page);
+      expect(await getProperty(host, 'theme')).toBe('dark');
+
+      await setProperty(host, 'theme', 'light');
+      await waitForStencilLifecycle(page);
+      expect(await getProperty(host, 'theme')).toBe('light');
+    });
   });
 
   describe('lifecycle', () => {

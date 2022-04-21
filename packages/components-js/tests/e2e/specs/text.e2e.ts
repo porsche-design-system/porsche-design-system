@@ -68,7 +68,7 @@ describe('text', () => {
     expect(webkitTextSizeAdjustStyle).toBe('100%');
   });
 
-  fit('should have a theme prop defined at any time', async () => {
+  it('should have a theme prop defined at any time', async () => {
     await initText();
     const host = await getHost();
 
