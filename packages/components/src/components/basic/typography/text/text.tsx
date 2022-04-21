@@ -59,6 +59,12 @@ export class Text {
     );
   }
 
+  public componentDidUpdate(): void {
+    if (!this.theme) {
+      this.theme = 'light';
+    }
+  }
+
   public componentDidLoad(): void {
     if (isSizeInherit(this.size)) {
       transitionListener(this.textTag, 'font-size', () => {
