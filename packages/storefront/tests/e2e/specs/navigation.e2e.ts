@@ -5,45 +5,47 @@ import { paramCase } from 'change-case';
 import * as path from 'path';
 import * as fs from 'fs';
 import { getConsoleErrorsAmount, initConsoleObserver } from '../helpers/puppeteer-helper';
+import { a11yAnalyze, a11yFinalize } from '../helpers/axe-helper';
 
 let browserPage: Page;
-// const logPages: string[] = [];
-// const logTabs: string[] = [];
 
 beforeEach(async () => {
   browserPage = await browser.newPage();
   initConsoleObserver(browserPage);
+
+  await browserPage.goto(baseURL, { waitUntil: 'networkidle0' });
+  await injectCSSOverrides();
+  await browserPage.evaluate(() => (window as any).componentsReady());
 });
 afterEach(async () => await browserPage.close());
 
-const isLinkActive = async (element: ElementHandle | null): Promise<boolean> =>
-  element ? (await getClassNames(element)).includes('router-link-active') : false;
-const getClassNames = async (element: ElementHandle | null): Promise<string> =>
-  element ? ((await (await element.getProperty('className')).jsonValue()) as string) : '';
-const getMainTitle = async (page: Page): Promise<string> => page.$eval('.vmark > h1', (x) => x.innerHTML);
-const hasPageObjectObject = async (page: Page): Promise<boolean> =>
+afterAll(async () => await a11yFinalize());
+
+const isLinkActive = (element: ElementHandle | null): Promise<boolean> =>
+  element.evaluate((el) => el.className.includes('router-link-active'));
+const getMainTitle = (page: Page): Promise<string> => page.$eval('.vmark > h1', (x) => x.innerHTML);
+const hasPageObjectObject = (page: Page): Promise<boolean> =>
   page.evaluate(() => document.body.innerText.includes('[object Object]'));
 
+/**
+ * to override transition duration of accordion
+ */
 const injectCSSOverrides = async () => {
-  const pathToShared = require.resolve('@porsche-design-system/shared');
-  const pathToOverrides = path.resolve(pathToShared, '../css/styles.css');
-  const overrides = fs.readFileSync(pathToOverrides, 'utf8');
+  const stylesPath = path.resolve(require.resolve('@porsche-design-system/shared'), '../css/styles.css');
+  const styles = fs.readFileSync(stylesPath, 'utf8');
 
-  await browserPage.evaluate((overrides) => {
+  await browserPage.evaluate((cssStyles: string) => {
     const styleTag = document.createElement('style');
-    styleTag.innerText = overrides;
-    document.getElementsByTagName('head')[0].appendChild(styleTag);
-  }, overrides);
+    styleTag.innerText = cssStyles;
+    document.head.appendChild(styleTag);
+  }, styles);
 };
 
 for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
   for (const [page, tabs] of Object.entries(pages).sort(([a], [b]) => a.localeCompare(b))) {
     ((category: string, page: string) => {
       it(`should navigate to "${category} > ${page}"`, async () => {
-        await browserPage.goto(baseURL, { waitUntil: 'networkidle0' });
-        await injectCSSOverrides();
-        await browserPage.evaluate(() => (window as any).componentsReady());
-
+        // console.log(`${category} > ${page}`);
         const [accordionButton] = await browserPage.$x(
           `//div[@class='sidebar']/nav/p-accordion[@heading='${category}']`
         );
@@ -54,18 +56,22 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
 
         await accordionButton.click();
 
-        expect(await isLinkActive(linkElement), 'link should be inactive initially').toBe(false);
+        expect(await isLinkActive(linkElement), 'sidebar link should not be active initially').toBe(false);
 
         await linkElement.click();
         await browserPage.waitForNetworkIdle();
         await browserPage.evaluate(() => (window as any).componentsReady());
 
-        expect(await isLinkActive(linkElement), 'link should be active after click').toBe(true);
-        expect(await getMainTitle(browserPage), 'should show correct main title for page view').toBe(page);
+        expect(await isLinkActive(linkElement), 'sidebar link should be active after click').toBe(true);
+        expect(await getMainTitle(browserPage), 'should show correct main title for page').toBe(page);
+        expect(await hasPageObjectObject(browserPage), 'should not contain [object Object] on page').toBe(false);
         expect(getConsoleErrorsAmount(), `Errors on ${category}/${page}`).toBe(0);
+
+        await a11yAnalyze(browserPage);
 
         if (!Array.isArray(tabs)) {
           for (const [index, tab] of Object.entries(Object.keys(tabs))) {
+            // console.log(`${category} > ${page} > ${tab}`);
             const tabHref = `\/${paramCase(category)}\/${paramCase(page)}\/${paramCase(tab)}`;
             const [tabElement] = await browserPage.$x(`//p-tabs-bar//a[contains(., '${tab}')][@href='${tabHref}']`);
 
@@ -81,15 +87,15 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
             await browserPage.evaluate(() => (window as any).componentsReady());
 
             expect(await isLinkActive(tabElement), 'should have tab active after click').toBe(true);
-            expect(await getMainTitle(browserPage), 'should show correct main title for tab view').toBe(page);
-            expect(await hasPageObjectObject(browserPage), 'should not contain [object Object]').toBe(false);
-            expect(getConsoleErrorsAmount(), `Errors on ${category}/${page} in tag ${tab}`).toBe(0);
+            expect(await getMainTitle(browserPage), 'should show correct main title for tab page').toBe(page);
+            expect(await hasPageObjectObject(browserPage), 'should not contain [object Object] on tab page').toBe(
+              false
+            );
+            expect(getConsoleErrorsAmount(), `Errors on ${category}/${page} in tab ${tab}`).toBe(0);
 
-            // logTabs.push(`${category} > ${page} > ${tab}`);
+            await a11yAnalyze(browserPage);
           }
         }
-
-        // logPages.push(`${category} > ${page}`);
       });
     })(category, page);
   }
