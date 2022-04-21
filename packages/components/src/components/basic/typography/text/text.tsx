@@ -1,14 +1,7 @@
 import { JSX, Component, Prop, h, Element, Host } from '@stencil/core';
-import {
-  calcLineHeightForElement,
-  getHTMLElement,
-  getThemeDarkAttribute,
-  transitionListener,
-  attachSlottedCss,
-  attachComponentCss,
-} from '../../../../utils';
+import { getHTMLElement, getThemeDarkAttribute, attachSlottedCss, attachComponentCss } from '../../../../utils';
 import type { BreakpointCustomizable, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
-import { isSizeInherit } from './text-utils';
+import { setLineHeightOnSizeInherit } from './text-utils';
 import { getComponentCss, getSlottedCss } from './text-styles';
 
 @Component({
@@ -55,16 +48,12 @@ export class Text {
       this.align,
       this.color,
       this.ellipsis,
-      this.theme,
+      this.theme
     );
   }
 
   public componentDidLoad(): void {
-    if (isSizeInherit(this.size)) {
-      transitionListener(this.textTag, 'font-size', () => {
-        this.textTag.style.lineHeight = `${calcLineHeightForElement(this.textTag)}`;
-      });
-    }
+    setLineHeightOnSizeInherit(this.size, this.textTag);
   }
 
   public render(): JSX.Element {
