@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components-angular",
-  "version": "2.11.0-rc.0",
+  "version": "2.11.0-skeletons",
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
@@ -27,7 +27,7 @@
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "2.11.0-rc.0",
+    "@porsche-design-system/components-js": "2.11.0-skeletons",
     "tslib": "^2.0.1"
   },
   "peerDependencies": {
@@ -40,10 +40,10 @@
       "import": "./partials/esm/partials.js",
       "require": "./partials/partials.js"
     },
-    "./utilities/jss": {
-      "types": "./utilities/jss/jss.d.ts",
-      "import": "./utilities/jss/esm/jss.js",
-      "require": "./utilities/jss/jss.js"
+    "./utilities/js": {
+      "types": "./utilities/js/js.d.ts",
+      "import": "./utilities/js/esm/js.js",
+      "require": "./utilities/js/js.js"
     }
   }
 }

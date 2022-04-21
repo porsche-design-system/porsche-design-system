@@ -1,12 +1,20 @@
-import { Properties as CSSProperties } from 'csstype';
-
 type GetFocusOptions = {
   color?: string;
   offset?: string;
 };
 
-type GetFocus = CSSProperties & { '&::-moz-focus-inner': CSSProperties } & {
-  '&:focus': CSSProperties & { '&:not(:focus-visible)': CSSProperties };
+type GetFocus = {
+  outline: string;
+  outlineOffset: string;
+  '&::-moz-focus-inner': {
+    border: string;
+  };
+  '&:focus': {
+    outlineColor: string;
+    '&:not(:focus-visible)': {
+      outlineColor: string;
+    };
+  };
 };
 
 export const getFocus = (opts?: GetFocusOptions): GetFocus => {
