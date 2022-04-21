@@ -25,7 +25,7 @@ export const a11yAnalyze = async (page: Page) => {
   }
 };
 
-export const a11yFinalize = () => {
-  reporter.buildHTML(AXE_RESULTS_DIR);
+export const a11yFinalize = async () => {
+  await reporter.buildHTML(AXE_RESULTS_DIR);
   analyzedUrls.length = 0; // reset
 };

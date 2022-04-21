@@ -10,5 +10,9 @@ it('works', async () => {
   await page.goto(baseURL, { waitUntil: 'networkidle0' });
 
   await a11yAnalyze(page);
+
+  await page.goto(baseURL + '/about/introduction', { waitUntil: 'networkidle0' });
+  await a11yAnalyze(page);
+
   await a11yFinalize();
 });
