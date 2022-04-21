@@ -1,4 +1,4 @@
-import { themeLight, textSmall } from '@porsche-design-system/components-react/utilities/jss';
+import { themeLight, textSmall } from '@porsche-design-system/components-react/utilities/js';
 
 export const UtilitiesPage = (): JSX.Element => {
   return (

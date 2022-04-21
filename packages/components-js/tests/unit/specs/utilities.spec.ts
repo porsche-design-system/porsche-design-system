@@ -1,4 +1,4 @@
-import * as jssUtilities from '@porsche-design-system/components-js/utilities/jss';
+import * as jssUtilities from '@porsche-design-system/components-js/utilities/js';
 
 it.each<keyof typeof jssUtilities>(['fontFamily', 'fontVariant'])('should be of type string: %s', (util) => {
   expect(typeof jssUtilities[util]).toBe('string');

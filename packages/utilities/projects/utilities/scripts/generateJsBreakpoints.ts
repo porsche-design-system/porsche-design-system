@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { breakpoint } from '../src/jss/breakpoint';
+import { breakpoint } from '../src/js/breakpoint';
 
 const generateBreakpointMapWithoutUnit = (): void => {
   const content =
@@ -10,7 +10,7 @@ const generateBreakpointMapWithoutUnit = (): void => {
       null,
       2
     );
-  const targetPath = path.normalize('./src/jss/mediaQuery.ts');
+  const targetPath = path.normalize('./src/js/mediaQuery.ts');
   const fileContent = fs.readFileSync(targetPath, 'utf8');
   const newFileContent = fileContent.replace(
     /(\/\* Auto Generated Start \*\/\s)(?:.|\s)*?(\s\/\* Auto Generated End \*\/)/,

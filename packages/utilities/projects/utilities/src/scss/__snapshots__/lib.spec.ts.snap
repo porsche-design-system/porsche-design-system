@@ -30,10 +30,10 @@ $pds-color-external-youtube: #ff0000;
 `;
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_font.scss 1`] = `
-"$pds-font-behavior-overflow-wrap: break-word;
-$pds-font-behavior-hyphens: auto;
-$pds-font-behavior-webkit-text-size-adjust: none;
+"$pds-font-behavior-hyphens: auto;
+$pds-font-behavior-overflow-wrap: break-word;
 $pds-font-behavior-text-size-adjust: none;
+$pds-font-behavior-webkit-text-size-adjust: none;
 $pds-font-family: \\"Porsche Next\\", \\"Arial Narrow\\", Arial, \\"Heiti SC\\", SimHei, sans-serif;
 $pds-font-size-x-small-font-size: 0.75rem;
 $pds-font-size-x-small-line-height: 1.6666666667;
