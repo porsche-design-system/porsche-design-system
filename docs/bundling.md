@@ -2,20 +2,20 @@
 
 ## Status Quo
 
-| Package                          | UMD | CJS | ESM |
-| -------------------------------- | --- | --- | --- |
-| components-js                    | ✓   |     |     |
-| components-js/partials           |     | ✓   | ✓   |
-| components-js/utilities/jss      |     | ✓   | ✓   |
-| components-react                 |     | ✓   | ✓   |
-| components-react/partials        |     | ✓   | ✓   |
-| components-react/utilities/jss   |     | ✓   | ✓   |
-| components-react/testing         |     | ✓   |     |
-| components-angular               |     |     | ✓   |
-| components-angular/partials      |     | ✓   | ✓   |
-| components-angular/utilities/jss |     | ✓   | ✓   |
-| assets                           | ✗   | (✓) | ✓   |
-| utilities-deprecated             | ✗   | (✓) | ✓   |
+| Package                         | UMD | CJS | ESM |
+|---------------------------------| --- | --- | --- |
+| components-js                   | ✓   |     |     |
+| components-js/partials          |     | ✓   | ✓   |
+| components-js/utilities/js      |     | ✓   | ✓   |
+| components-react                |     | ✓   | ✓   |
+| components-react/partials       |     | ✓   | ✓   |
+| components-react/utilities/js   |     | ✓   | ✓   |
+| components-react/testing        |     | ✓   |     |
+| components-angular              |     |     | ✓   |
+| components-angular/partials     |     | ✓   | ✓   |
+| components-angular/utilities/js |     | ✓   | ✓   |
+| assets                          | ✗   | (✓) | ✓   |
+| utilities-deprecated            | ✗   | (✓) | ✓   |
 
 ✗ = currently released  
 (✓) = not released
@@ -78,7 +78,7 @@ https://nodejs.org/dist./v14.10.0/docs/api/esm.html#esm_dual_commonjs_es_module_
 We experience that by using only `brand` in react, other objects and functions are in the final bundle.
 
 ```tsx
-import { themeLight } from '@porsche-design-system/components-js/utilities/jss';
+import { themeLight } from '@porsche-design-system/components-js/utilities/js';
 
 export const App = (): JSX.Element => {
   const { brand } = themeLight;
