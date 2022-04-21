@@ -395,11 +395,6 @@
   dependencies:
     axe-core "^4.4.1"
 
-"@axe-devtools/logger@^4.4.0":
-  version "4.4.0"
-  resolved "https://agora.dequecloud.com:443/artifactory/api/npm/dequelabs/@axe-devtools/logger/-/@axe-devtools/logger-4.4.0.tgz#58e913e6aac0002463b2077d96e3d124d587250a"
-  integrity sha512-jLz3utC254oqBKwHBcOpGXbq4QQPblM39gOU362Gz+B/sSqHqX7XHlXuW/X5d980Zutb2zgL0iiDzUyRb1bwpw==
-
 "@axe-devtools/puppeteer@^4.4.1":
   version "4.4.1"
   resolved "https://agora.dequecloud.com:443/artifactory/api/npm/dequelabs/@axe-devtools/puppeteer/-/@axe-devtools/puppeteer-4.4.1.tgz#f7934fedd7a741f551e1b751e6341ef34ec4ff13"
