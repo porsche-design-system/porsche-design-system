@@ -2,14 +2,14 @@ import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 
-const input = 'src/jss/index.ts';
+const input = 'src/js/index.ts';
 const outputDir = 'dist';
 
 export default [
   {
     input,
     output: {
-      dir: `${outputDir}/jss`,
+      dir: `${outputDir}/js`,
       format: 'cjs',
       preserveModules: true,
       plugins: [
@@ -19,9 +19,6 @@ export default [
             module: 'esm/index.js',
             types: 'index.d.ts',
             sideEffects: false,
-            peerDependencies: {
-              csstype: '>=3.0.0 <4.0.0',
-            },
           },
         }),
       ],
@@ -29,16 +26,16 @@ export default [
     plugins: [
       typescript({
         declaration: true,
-        declarationDir: `${outputDir}/jss`,
+        declarationDir: `${outputDir}/js`,
         exclude: '**.spec.ts',
-        rootDir: 'src/jss',
+        rootDir: 'src/js',
       }),
     ],
   },
   {
     input,
     output: {
-      dir: `${outputDir}/jss/esm`,
+      dir: `${outputDir}/js/esm`,
       format: 'esm',
       preserveModules: true,
     },

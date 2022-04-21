@@ -12,7 +12,7 @@ const typescriptOpts = {
 const external = [
   '@porsche-design-system/components-js',
   '@porsche-design-system/components-js/partials',
-  '@porsche-design-system/components-js/utilities/jss',
+  '@porsche-design-system/components-js/utilities/js',
 ];
 
 // 1 input, 2 output formats
@@ -52,4 +52,4 @@ const buildConfig = (packagePath) => {
   };
 };
 
-export default ['partials', 'utilities/jss'].map(buildConfig);
+export default ['partials', 'utilities/js'].map(buildConfig);

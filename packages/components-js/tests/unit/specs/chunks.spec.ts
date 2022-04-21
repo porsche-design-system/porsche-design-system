@@ -2,7 +2,7 @@ import * as gzipSize from 'gzip-size';
 import * as path from 'path';
 import * as fs from 'fs';
 import { COMPONENT_CHUNKS_MANIFEST, ComponentChunkName } from '../../../projects/components-wrapper';
-import { colorExternal } from '@porsche-design-system/components-js/utilities/jss';
+import { colorExternal } from '@porsche-design-system/components-js/utilities/js';
 
 const indexJsFile = require.resolve('@porsche-design-system/components-js');
 const { version } = JSON.parse(fs.readFileSync(path.resolve(indexJsFile, '../package.json'), 'utf8')) as {
