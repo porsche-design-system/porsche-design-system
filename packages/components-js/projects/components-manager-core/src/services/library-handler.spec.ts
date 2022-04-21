@@ -32,33 +32,33 @@ describe('libraryHandler', function () {
 
   it('should load the script for the library loaded via loadComponentLibrary', async () => {
     loadComponentLibrary(defaultOptions);
-    expect(document.body.appendChild).toHaveBeenCalledTimes(1);
+    expect(document.body.appendChild).toBeCalledTimes(1);
     expect((scriptTags[0] as HTMLScriptElement).src).toBe(script);
   });
 
   xit('should ignore version if prefix is not set', async () => {
     loadComponentLibrary({ ...defaultOptions, version: '1.0.0' });
-    expect(document.body.appendChild).toHaveBeenCalledTimes(1);
+    expect(document.body.appendChild).toBeCalledTimes(1);
 
     loadComponentLibrary({ ...defaultOptions, version: '2.0.0' });
-    expect(document.body.appendChild).toHaveBeenCalledTimes(1);
+    expect(document.body.appendChild).toBeCalledTimes(1);
 
     loadComponentLibrary(defaultOptions);
-    expect(document.body.appendChild).toHaveBeenCalledTimes(1);
+    expect(document.body.appendChild).toBeCalledTimes(1);
   });
 
   it('should load the library for each version once if version and prefix is used', async () => {
     loadComponentLibrary({ ...defaultOptions, version: '1.0.0' });
-    expect(document.body.appendChild).toHaveBeenCalledTimes(1);
+    expect(document.body.appendChild).toBeCalledTimes(1);
 
     loadComponentLibrary({ ...defaultOptions, version: '2.0.0' });
-    expect(document.body.appendChild).toHaveBeenCalledTimes(2);
+    expect(document.body.appendChild).toBeCalledTimes(2);
 
     loadComponentLibrary({ ...defaultOptions, version: '1.0.0', prefix: 'my-prefix' });
-    expect(document.body.appendChild).toHaveBeenCalledTimes(2);
+    expect(document.body.appendChild).toBeCalledTimes(2);
 
     loadComponentLibrary({ ...defaultOptions, version: '2.0.0', prefix: 'another-prefix' });
-    expect(document.body.appendChild).toHaveBeenCalledTimes(2);
+    expect(document.body.appendChild).toBeCalledTimes(2);
   });
 
   it('should call the "RegisterCustomElementsCallback" once for the library and version when ever a prefix is loaded', async () => {
@@ -68,25 +68,25 @@ describe('libraryHandler', function () {
     setRegisterComponentsCallback(registerComponentsSpy2, '2.0.0');
 
     loadComponentLibrary({ ...defaultOptions, version: '1.0.0' });
-    expect(registerComponentsSpy1).toHaveBeenCalledTimes(1);
-    expect(registerComponentsSpy1).toHaveBeenCalledWith('');
+    expect(registerComponentsSpy1).toBeCalledTimes(1);
+    expect(registerComponentsSpy1).toBeCalledWith('');
     expect(registerComponentsSpy2).not.toBeCalled();
 
     loadComponentLibrary({ ...defaultOptions, version: '1.0.0' });
-    expect(registerComponentsSpy1).toHaveBeenCalledTimes(1);
-    expect(registerComponentsSpy1).toHaveBeenCalledWith('');
+    expect(registerComponentsSpy1).toBeCalledTimes(1);
+    expect(registerComponentsSpy1).toBeCalledWith('');
     expect(registerComponentsSpy2).not.toBeCalled();
 
     loadComponentLibrary({ ...defaultOptions, version: '1.0.0', prefix: 'some-prefix' });
-    expect(registerComponentsSpy1).toHaveBeenCalledTimes(2);
-    expect(registerComponentsSpy1).toHaveBeenCalledWith('some-prefix');
+    expect(registerComponentsSpy1).toBeCalledTimes(2);
+    expect(registerComponentsSpy1).toBeCalledWith('some-prefix');
     expect(registerComponentsSpy2).not.toBeCalled();
 
     loadComponentLibrary({ ...defaultOptions, version: '2.0.0' });
-    expect(registerComponentsSpy1).toHaveBeenCalledTimes(2);
-    expect(registerComponentsSpy1).toHaveBeenCalledWith('some-prefix');
-    expect(registerComponentsSpy2).toHaveBeenCalledTimes(1);
-    expect(registerComponentsSpy2).toHaveBeenCalledWith('');
+    expect(registerComponentsSpy1).toBeCalledTimes(2);
+    expect(registerComponentsSpy1).toBeCalledWith('some-prefix');
+    expect(registerComponentsSpy2).toBeCalledTimes(1);
+    expect(registerComponentsSpy2).toBeCalledWith('');
   });
 
   it('should call the "RegisterCustomElementsCallback" also if it was not yet registered as soon as it\'s registered for library prefixes that have been loaded before', async () => {
@@ -98,12 +98,12 @@ describe('libraryHandler', function () {
     expect(registerComponentsSpy1).not.toBeCalled();
 
     setRegisterComponentsCallback(registerComponentsSpy1, '1.0.0');
-    expect(registerComponentsSpy1).toHaveBeenCalledTimes(2);
-    expect(registerComponentsSpy1).toHaveBeenCalledWith('');
-    expect(registerComponentsSpy1).toHaveBeenCalledWith('some-prefix');
+    expect(registerComponentsSpy1).toBeCalledTimes(2);
+    expect(registerComponentsSpy1).toBeCalledWith('');
+    expect(registerComponentsSpy1).toBeCalledWith('some-prefix');
 
     loadComponentLibrary({ ...defaultOptions, version: '1.0.0', prefix: 'other-prefix' });
-    expect(registerComponentsSpy1).toHaveBeenCalledTimes(3);
-    expect(registerComponentsSpy1).toHaveBeenCalledWith('other-prefix');
+    expect(registerComponentsSpy1).toBeCalledTimes(3);
+    expect(registerComponentsSpy1).toBeCalledWith('other-prefix');
   });
 });

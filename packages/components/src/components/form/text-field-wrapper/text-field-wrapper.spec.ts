@@ -8,7 +8,7 @@ jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
 
 describe('connectedCallback', () => {
-  it('should call observeAttributes()', () => {
+  it('should call observeAttributes() with correct parameters', () => {
     const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
     const component = new TextFieldWrapper();
     component.connectedCallback();
@@ -18,7 +18,7 @@ describe('connectedCallback', () => {
 });
 
 describe('componentWillLoad', () => {
-  it('should call getHTMLElementAndThrowIfUndefined()', () => {
+  it('should call getHTMLElementAndThrowIfUndefined() with correct parameters', () => {
     const spy = jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined');
     const component = new TextFieldWrapper();
     try {
@@ -32,7 +32,7 @@ describe('componentWillLoad', () => {
     expect(spy).toBeCalledWith(undefined, selector);
   });
 
-  it('should call observeAttributes()', () => {
+  it('should call observeAttributes() with correct parameters', () => {
     const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
     const component = new TextFieldWrapper();
     try {
@@ -42,7 +42,7 @@ describe('componentWillLoad', () => {
     expect(spy).toBeCalledWith(undefined, ['disabled', 'readonly', 'required'], expect.anything());
   });
 
-  it('should call hasCounterAndIsTypeText() and set hasCounter', () => {
+  it('should call hasCounterAndIsTypeText() with correct parameter and set hasCounter', () => {
     const input = document.createElement('input');
     input.type = 'text';
     input.maxLength = 20;
@@ -77,7 +77,7 @@ describe('componentWillLoad', () => {
     expect(component['hasUnit']).toBe(false);
   });
 
-  it('should call hasUnitAndIsTypeTextOrNumber() when counter and unit is set and counter is not visible', () => {
+  it('should call hasUnitAndIsTypeTextOrNumber() with correct parameters when counter and unit is set and counter is not visible', () => {
     const input = document.createElement('input');
     input.type = 'text';
     input.maxLength = 50;
@@ -93,7 +93,7 @@ describe('componentWillLoad', () => {
     expect(component['hasUnit']).toBe(undefined);
     component.componentWillLoad();
 
-    expect(spy).toHaveBeenCalledWith(input, unit);
+    expect(spy).toBeCalledWith(input, unit);
     expect(component['hasUnit']).toBe(true);
   });
 
@@ -123,7 +123,7 @@ describe('componentWillLoad', () => {
 });
 
 describe('componentWillRender', () => {
-  it('should call throwIfUnitLengthExceeded()', () => {
+  it('should call throwIfUnitLengthExceeded() with correct parameter', () => {
     const component = new TextFieldWrapper();
     const spy = jest.spyOn(textFieldWrapperUtils, 'throwIfUnitLengthExceeded');
     component.unit = '123456';
@@ -137,7 +137,7 @@ describe('componentWillRender', () => {
 });
 
 describe('componentDidLoad', () => {
-  it('should call addInputEventListener() if hasCounter is true and isCounterVisible is false', () => {
+  it('should call addInputEventListener() with correct parameters if hasCounter is true and isCounterVisible is false', () => {
     const addInputEventListenerSpy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListener');
 
     const input = document.createElement('input');
@@ -154,7 +154,7 @@ describe('componentDidLoad', () => {
     component['hasCounter'] = true;
 
     component.componentDidLoad();
-    expect(addInputEventListenerSpy).toHaveBeenCalledWith(input, ariaElement, undefined, component['setInputStyles']);
+    expect(addInputEventListenerSpy).toBeCalledWith(input, ariaElement, undefined, component['setInputStyles']);
   });
   it('should call addInputEventListener() if hasCounter is true and isCounterVisible is true', () => {
     const addInputEventListenerSpy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListener');
@@ -175,7 +175,7 @@ describe('componentDidLoad', () => {
     component['hasCounter'] = true;
     component['isCounterVisible'] = true;
     component.componentDidLoad();
-    expect(addInputEventListenerSpy).toHaveBeenCalledWith(input, ariaElement, counter, component['setInputStyles']);
+    expect(addInputEventListenerSpy).toBeCalledWith(input, ariaElement, counter, component['setInputStyles']);
   });
 });
 
@@ -188,7 +188,7 @@ describe('componentDidRender', () => {
     expect(spy).toBeCalledTimes(1);
   });
 
-  it('should call setAriaAttributes()', () => {
+  it('should call setAriaAttributes() with correct parameters', () => {
     const spy = jest.spyOn(a11yUtils, 'setAriaAttributes');
     const component = new TextFieldWrapper();
     const input = document.createElement('input');
@@ -204,7 +204,7 @@ describe('componentDidRender', () => {
 });
 
 describe('disconnectedCallback', () => {
-  it('should call unobserveAttributes()', () => {
+  it('should call unobserveAttributes() with correct parameter', () => {
     const spy = jest.spyOn(attributeObserverUtils, 'unobserveAttributes');
     const component = new TextFieldWrapper();
     component.disconnectedCallback();

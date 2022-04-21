@@ -1,13 +1,16 @@
 import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
 import type { TagName } from '@porsche-design-system/shared';
-import * as domUtils from '../utils/dom';
+import * as getHTMLElementAndThrowIfUndefinedUtils from '../utils/dom/getHTMLElementAndThrowIfUndefined';
 import * as jssUtils from '../utils/jss';
 import * as slottedStylesUtils from '../utils/slotted-styles';
+import * as getDirectChildHTMLElementUtils from '../utils/dom/getDirectChildHTMLElement';
 
 /* Auto Generated Start */
 import { Button } from './action/button/button';
 import { ButtonPure } from './action/button-pure/button-pure';
 import { Switch } from './action/switch/switch';
+import { Tag } from './action/tag/tag';
+import { TagDismissible } from './action/tag-dismissible/tag-dismissible';
 import { Marque } from './basic/marque/marque';
 import { Accordion } from './content/accordion/accordion';
 import { Modal } from './content/modal/modal';
@@ -63,6 +66,8 @@ export const TAG_NAMES_CONSTRUCTOR_MAP: { [key in TagName]: new () => ClassType 
   'p-button': Button,
   'p-button-pure': ButtonPure,
   'p-switch': Switch,
+  'p-tag': Tag,
+  'p-tag-dismissible': TagDismissible,
   'p-marque': Marque,
   'p-accordion': Accordion,
   'p-modal': Modal,
@@ -119,7 +124,7 @@ it('should have same amount of elements in TAG_NAMES_CONSTRUCTOR_MAP as in TAG_N
 it.each<TagName>(tagNamesWithRequiredChild)(
   'should call getHTMLElementAndThrowIfUndefined() via componentWillLoad for %s',
   (tagName) => {
-    const spy = jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined');
+    const spy = jest.spyOn(getHTMLElementAndThrowIfUndefinedUtils, 'getHTMLElementAndThrowIfUndefined');
     const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
 
     try {
@@ -133,6 +138,11 @@ it.each<TagName>(tagNamesWithRequiredChild)(
 it.each<TagName>(tagNamesWithJss)('should call attachComponentCss() in correct lifecycle for %s', (tagName) => {
   const spy = jest.spyOn(jssUtils, 'attachComponentCss');
   let spyCalls = 0;
+
+  // jsdom is missing pseudo-class selector ':scope>*' which leads to DOMException
+  jest
+    .spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement')
+    .mockReturnValue(document.createElement('div'));
 
   const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
   component.host = document.createElement(tagName);
@@ -158,9 +168,9 @@ it.each<TagName>(tagNamesWithJss)('should call attachComponentCss() in correct l
 
     if (['p-checkbox-wrapper', 'p-radio-button-wrapper', 'p-text-field-wrapper'].includes(tagName)) {
       component['input'] = document.createElement('input');
-    } else if ('p-textarea-wrapper' === tagName) {
+    } else if (tagName === 'p-textarea-wrapper') {
       component['textarea'] = document.createElement('textarea');
-    } else if ('p-select-wrapper' === tagName) {
+    } else if (tagName === 'p-select-wrapper') {
       component['select'] = document.createElement('select');
     } else if (tagName === 'p-modal') {
       component['aria'] = { 'aria-label': 'Some Heading' };

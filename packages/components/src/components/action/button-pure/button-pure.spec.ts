@@ -5,7 +5,7 @@ import * as transitionListenerUtils from '../../../utils/transition-listener';
 jest.mock('../../../utils/button-handling');
 
 describe('componentWillRender', () => {
-  it('should call warnIfParentIsPTextAndIconIsNone()', () => {
+  it('should call warnIfParentIsPTextAndIconIsNone() with correct parameters', () => {
     const spy = jest.spyOn(buttonLinkPureUtils, 'warnIfParentIsPTextAndIconIsNone');
 
     const component = new ButtonPure();
@@ -30,7 +30,7 @@ describe('componentDidLoad', () => {
     expect(spy).not.toBeCalled();
   });
 
-  it('should call transitionListener when size="inherit"', () => {
+  it('should call transitionListener() with correct parameters when size="inherit"', () => {
     const component = new ButtonPure();
     component.size = 'inherit';
     component.componentDidLoad();

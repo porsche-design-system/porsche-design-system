@@ -27,12 +27,12 @@ describe('modal', () => {
       jest.spyOn(domUtils, 'getShadowRootHTMLElement').mockImplementation(() => document.createElement('slot'));
     });
 
-    it('should call setScrollLock() if modal is open', () => {
+    it('should call setScrollLock() with correct parameters if modal is open', () => {
       const utilsSpy = jest.spyOn(modalUtils, 'setScrollLock');
       component.open = true;
       component.componentDidLoad();
 
-      expect(utilsSpy).toHaveBeenCalledWith(component.host, true, component['closeBtn'], component['closeModal']);
+      expect(utilsSpy).toBeCalledWith(component.host, true, component['closeBtn'], component['closeModal']);
     });
 
     it('should not call setScrollLock() if modal is not open', () => {
@@ -48,7 +48,7 @@ describe('modal', () => {
       jest.spyOn(console, 'warn').mockImplementation(() => {});
     });
 
-    it('should call warnIfAriaAndHeadingPropsAreUndefined() when open="true"', () => {
+    it('should call warnIfAriaAndHeadingPropsAreUndefined() with correct parameters when open="true"', () => {
       const warnIfAriaAndHeadingPropsAreUndefinedSpy = jest.spyOn(modalUtils, 'warnIfAriaAndHeadingPropsAreUndefined');
       component.open = true;
       component.componentWillRender();
@@ -76,23 +76,23 @@ describe('modal', () => {
       expect(hasNamedSlotSpy).not.toBeCalled();
     });
 
-    it('should call hasNamedSlot() when no heading is provided', () => {
+    it('should call hasNamedSlot() with correct parameters when no heading is provided', () => {
       const hasNamedSlotSpy = jest.spyOn(domUtils, 'hasNamedSlot');
       const header = document.createElement('header');
       header.slot = 'heading';
       component.host.appendChild(header);
       component.componentWillRender();
 
-      expect(hasNamedSlotSpy).toHaveBeenCalledWith(component.host, 'heading');
+      expect(hasNamedSlotSpy).toBeCalledWith(component.host, 'heading');
     });
   });
 
   describe('disconnectedCallback', () => {
-    it('should call setScrollLock()', () => {
+    it('should call setScrollLock() with correct parameters', () => {
       const utilsSpy = jest.spyOn(modalUtils, 'setScrollLock');
       component.disconnectedCallback();
 
-      expect(utilsSpy).toHaveBeenCalledWith(component.host, false);
+      expect(utilsSpy).toBeCalledWith(component.host, false);
     });
   });
 });

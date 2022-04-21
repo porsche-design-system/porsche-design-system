@@ -6,7 +6,7 @@ describe('getComponentCss()', () => {
     const spy = jest.spyOn(focusVisibleFallbackUtils, 'getFocusVisibleFallback');
     getComponentCss('light');
 
-    expect(spy).toHaveBeenCalledWith(expect.anything());
+    expect(spy).toBeCalledWith(expect.anything());
   });
 
   it.each<Parameters<typeof getComponentCss>>([['light'], ['dark'], ['light-electric']])(

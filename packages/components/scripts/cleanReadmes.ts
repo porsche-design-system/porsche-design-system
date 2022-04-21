@@ -26,6 +26,7 @@ const adjustHeadline = (str: string): string => {
     'p-inline-notification': 'Notifications',
     'p-table': 'Table',
     'p-tabs': 'Tabs',
+    'p-tag': 'Tags',
   };
 
   // all component names on multi prop pages
@@ -38,6 +39,7 @@ const adjustHeadline = (str: string): string => {
     'p-toast',
     'p-table-head-cell',
     'p-tabs-item',
+    'p-tag-dismissible',
   ];
 
   // append # to component names on multi prop pages to restore hierarchy
