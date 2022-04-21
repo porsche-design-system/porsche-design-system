@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scope": "@porsche-design-system",
-  "main": "dist/jss/index.js",
-  "module": "dist/jss/esm/index.js",
-  "types": "dist/jss/index.d.ts",
+  "main": "dist/js/index.js",
+  "module": "dist/js/esm/index.js",
+  "types": "dist/js/index.d.ts",
   "sideEffects": false,
   "scripts": {
     "build": "yarn clean:build && yarn build:generateJsBreakpoints && yarn build:generateScss && yarn build:bundle",
@@ -16,23 +16,24 @@
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:build": "rm -rf ./dist && rm -rf ./src/jss/typography/lib"
+    "clean:build": "rm -rf ./dist && rm -rf ./src/js/typography/lib"
   },
-  "dependencies": {
-    "csstype": "^3.0.11"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@rollup/plugin-typescript": "^8.3.2",
     "@types/madge": "^5.0.0",
+    "@types/styled-components": "^5.1.25",
     "change-case": "^4.1.2",
     "jest": "^27.5.1",
     "madge": "^5.0.1",
     "prettier": "^2.6.2",
+    "react-jss": "^10.9.0",
     "rollup": "^2.70.2",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
     "sass": "^1.50.1",
+    "styled-components": "^5.3.5",
     "ts-jest": "^27.1.4",
     "ts-node": "^10.7.0",
     "typescript": "~4.6.3"
