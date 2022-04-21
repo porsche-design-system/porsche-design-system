@@ -1,13 +1,13 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as prettier from 'prettier';
-import * as font from '../src/jss/font';
-import * as theme from '../src/jss/theme';
-import * as spacing from '../src/jss/spacing';
-import * as colorExternal from '../src/jss/colorExternal';
-import * as heading from '../src/jss/typography/heading';
-import * as text from '../src/jss/typography/text';
-import * as breakpoint from '../src/jss/breakpoint';
+import * as font from '../src/js/font';
+import * as theme from '../src/js/theme';
+import * as spacing from '../src/js/spacing';
+import * as colorExternal from '../src/js/colorExternal';
+import * as heading from '../src/js/typography/heading';
+import * as text from '../src/js/typography/text';
+import * as breakpoint from '../src/js/breakpoint';
 import { paramCase, camelCase } from 'change-case';
 import { getCss } from '@porsche-design-system/shared';
 

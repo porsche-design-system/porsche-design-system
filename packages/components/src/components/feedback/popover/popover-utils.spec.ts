@@ -95,7 +95,7 @@ describe('updatePopoverStyles()', () => {
     mockBoundingClientRect(popover, rectCentered);
   });
 
-  it('should call isElementWithinViewport()', () => {
+  it('should call isElementWithinViewport() with correct parameters', () => {
     const spy = jest.spyOn(popoverUtils, 'isElementWithinViewport');
     updatePopoverStyles(host, spacer, popover, 'top');
     expect(spy).toBeCalledWith(spacer, popover, 'top');

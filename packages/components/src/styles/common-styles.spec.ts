@@ -72,10 +72,17 @@ describe('addImportantToEachRule()', () => {
         color: 'orange',
       },
     },
+    fontSize: null,
+    margin: 0,
+    content: '""',
   };
 
   it('should add !important to each rule', () => {
     expect(addImportantToEachRule(input)).toMatchSnapshot();
+  });
+
+  it('should have no mutation on input', () => {
+    expect(addImportantToEachRule(input)).not.toEqual(input);
   });
 });
 
@@ -86,7 +93,7 @@ describe('getHoverJssStyles()', () => {
 });
 
 describe('getInsetJssStyle()', () => {
-  it.each<Parameters<typeof getInsetJssStyle>>([[undefined], ['auto'], [2]])(
+  it.each<Parameters<typeof getInsetJssStyle>>([[undefined], ['auto'], [2], [-1]])(
     'should return correct JssStyle for parameter: %o',
     (value) => {
       expect(getInsetJssStyle(value)).toMatchSnapshot();

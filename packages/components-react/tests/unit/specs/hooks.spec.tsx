@@ -11,9 +11,9 @@ import {
   useBrowserLayoutEffect,
 } from '../../../projects/components-wrapper/src/hooks';
 import { useLayoutEffect } from 'react';
-import { describeSkipSkeletons } from '@porsche-design-system/shared/testing';
+import { describeIfSkeletonsActive } from '@porsche-design-system/shared/testing';
 
-describeSkipSkeletons('useSkeleton()', () => {
+describeIfSkeletonsActive('useSkeleton()', () => {
   it('should throw error if usesSkeletons was set to true on provider but partial was not used', () => {
     jest.spyOn(global.console, 'error').mockImplementation(() => {});
 
@@ -87,7 +87,7 @@ describe('useToastManager()', () => {
   it('should call usePrefix()', () => {
     const spy = jest.spyOn(hooks, 'usePrefix');
     useToastManager();
-    expect(spy).toHaveBeenCalledWith('p-toast');
+    expect(spy).toBeCalledWith('p-toast');
   });
 
   it('should provide addMessage()', () => {
@@ -111,7 +111,7 @@ describe('useToastManager()', () => {
       // wait for customElements.whenDefined to be resolved
       await new Promise((resolve) => setTimeout(resolve));
 
-      expect(addMessageMock).toHaveBeenCalledWith(message);
+      expect(addMessageMock).toBeCalledWith(message);
     });
   });
 });

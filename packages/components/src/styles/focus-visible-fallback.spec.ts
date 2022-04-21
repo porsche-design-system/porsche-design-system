@@ -8,8 +8,8 @@ describe('supportsFocusVisible()', () => {
     const appendChildSpy = jest.spyOn(document.head, 'appendChild');
     supportsFocusVisible();
 
-    expect(createElementSpy).toHaveBeenCalledWith('style');
-    expect(appendChildSpy).toHaveBeenCalledTimes(1);
+    expect(createElementSpy).toBeCalledWith('style');
+    expect(appendChildSpy).toBeCalledTimes(1);
     expect(document.querySelector('head style')).toBeNull();
   });
 
@@ -41,7 +41,7 @@ describe('getFocusVisibleFallback()', () => {
     const supportsFocusVisibleSpy = jest.spyOn(focusVisibleFallbackUtils, 'supportsFocusVisible');
     getFocusVisibleFallback(input);
 
-    expect(getHasFocusVisibleSupportSpy).toHaveBeenCalledTimes(1);
+    expect(getHasFocusVisibleSupportSpy).toBeCalledTimes(1);
     expect(supportsFocusVisibleSpy).not.toBeCalled();
   });
 

@@ -14,13 +14,13 @@ describe('observeProperties()', () => {
     expect(spySet).not.toBeCalled();
 
     expect(node.checked).toBe(false);
-    expect(spyGet).toHaveBeenCalledTimes(1);
+    expect(spyGet).toBeCalledTimes(1);
 
     node.checked = true;
-    expect(spySet).toHaveBeenCalledTimes(1);
+    expect(spySet).toBeCalledTimes(1);
 
     expect(node.checked).toBe(true);
-    expect(spyGet).toHaveBeenCalledTimes(2);
+    expect(spyGet).toBeCalledTimes(2);
   });
 
   it('should define getter and setter for multiple props', () => {
@@ -42,17 +42,17 @@ describe('observeProperties()', () => {
     node.disabled = true;
     node.indeterminate = true;
 
-    expect(spyCheckedSet).toHaveBeenCalledTimes(1);
-    expect(spyDisabledSet).toHaveBeenCalledTimes(1);
-    expect(spyIndeterminateSet).toHaveBeenCalledTimes(1);
+    expect(spyCheckedSet).toBeCalledTimes(1);
+    expect(spyDisabledSet).toBeCalledTimes(1);
+    expect(spyIndeterminateSet).toBeCalledTimes(1);
 
     expect(node.checked).toBe(true);
     expect(node.disabled).toBe(true);
     expect(node.indeterminate).toBe(true);
 
-    expect(spyCheckedGet).toHaveBeenCalledTimes(1);
-    expect(spyDisabledGet).toHaveBeenCalledTimes(1);
-    expect(spyIndeterminateGet).toHaveBeenCalledTimes(1);
+    expect(spyCheckedGet).toBeCalledTimes(1);
+    expect(spyDisabledGet).toBeCalledTimes(1);
+    expect(spyIndeterminateGet).toBeCalledTimes(1);
   });
 
   it('should execute callback via setter', () => {
@@ -61,6 +61,6 @@ describe('observeProperties()', () => {
 
     expect(callback).not.toBeCalled();
     node.checked = true;
-    expect(callback).toHaveBeenCalledTimes(1);
+    expect(callback).toBeCalledTimes(1);
   });
 });

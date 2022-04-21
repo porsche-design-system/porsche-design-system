@@ -1,4 +1,4 @@
-import * as domUtils from '../../../../utils/dom';
+import * as throwIfRootNodeIsNotOfKindUtils from '../../../../utils/dom/throwIfRootNodeIsNotOfKind';
 import { SelectWrapperDropdown } from './select-wrapper-dropdown';
 import * as selectWrapperDropdownUtils from './select-wrapper-dropdown-utils';
 import * as propertyObserverUtils from '../../../../utils/property-observer';
@@ -14,9 +14,9 @@ describe('select-wrapper-dropdown', () => {
   };
 
   describe('connectedCallback', () => {
-    it('should call throwIfRootNodeIsNotOfKind()', () => {
+    it('should call throwIfRootNodeIsNotOfKind() with correct parameters', () => {
       const component = initComponent();
-      const spy = jest.spyOn(domUtils, 'throwIfRootNodeIsNotOfKind');
+      const spy = jest.spyOn(throwIfRootNodeIsNotOfKindUtils, 'throwIfRootNodeIsNotOfKind');
 
       try {
         component.connectedCallback();
@@ -27,7 +27,7 @@ describe('select-wrapper-dropdown', () => {
   });
 
   describe('componentDidRender', () => {
-    it('should call handleScroll()', () => {
+    it('should call handleScroll() with correct parameters', () => {
       const component = initComponent();
 
       const spy = jest.spyOn(selectWrapperDropdownUtils, 'handleScroll');
@@ -61,7 +61,7 @@ describe('select-wrapper-dropdown', () => {
       expect(spy).toBeCalledTimes(1);
     });
 
-    it('should call observeProperties()', () => {
+    it('should call observeProperties() with correct parameters', () => {
       const component = initComponent();
       const spy = jest.spyOn(propertyObserverUtils, 'observeProperties');
       component.componentWillLoad();
@@ -69,7 +69,7 @@ describe('select-wrapper-dropdown', () => {
       expect(spy).toBeCalledWith(component.selectRef, ['value', 'selectedIndex'], expect.anything());
     });
 
-    it('should call observeChildren()', () => {
+    it('should call observeChildren() with correct parameters', () => {
       const component = initComponent();
       const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
       component.componentWillLoad();
@@ -93,7 +93,7 @@ describe('select-wrapper-dropdown', () => {
       const spy = jest.spyOn(propertyObserverUtils, 'observeProperties');
       component['observeOptions']();
 
-      expect(spy).toHaveBeenCalledTimes(3);
+      expect(spy).toBeCalledTimes(3);
       expect(spy).toHaveBeenLastCalledWith(options[2], ['selected', 'disabled'], expect.anything());
     });
   });
