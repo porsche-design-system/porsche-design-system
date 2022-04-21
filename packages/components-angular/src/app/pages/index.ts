@@ -67,6 +67,8 @@ import { SpinnerComponent } from './spinner.component';
 import { SwitchComponent } from './switch.component';
 import { TabsComponent } from './tabs.component';
 import { TabsBarComponent } from './tabs-bar.component';
+import { TagComponent } from './tag.component';
+import { TagDismissibleComponent } from './tag-dismissible.component';
 import { TextComponent } from './text.component';
 import { TextareaWrapperComponent } from './textarea-wrapper.component';
 import { TextareaWrapperSkeletonComponent } from './textarea-wrapper-skeleton.component';
@@ -86,34 +88,34 @@ import { TypographyLatinComponent } from './typography-latin.component';
 export const generatedPages = [
   AccordionComponent,
   BannerComponent,
-  ButtonGroupComponent,
-  ButtonPureSkeletonComponent,
-  ButtonPureComponent,
-  ButtonSkeletonComponent,
   ButtonComponent,
-  CheckboxWrapperSkeletonComponent,
+  ButtonGroupComponent,
+  ButtonPureComponent,
+  ButtonPureSkeletonComponent,
+  ButtonSkeletonComponent,
   CheckboxWrapperComponent,
+  CheckboxWrapperSkeletonComponent,
   ContentWrapperComponent,
   CoreInitializerComponent,
   DividerComponent,
-  FieldsetWrapperSkeletonComponent,
   FieldsetWrapperComponent,
+  FieldsetWrapperSkeletonComponent,
   FlexComponent,
   GridComponent,
   HeadlineComponent,
   IconComponent,
   InlineNotificationComponent,
-  LinkPureSkeletonComponent,
-  LinkPureComponent,
-  LinkSkeletonComponent,
-  LinkSocialSkeletonComponent,
-  LinkSocialComponent,
   LinkComponent,
+  LinkPureComponent,
+  LinkPureSkeletonComponent,
+  LinkSkeletonComponent,
+  LinkSocialComponent,
+  LinkSocialSkeletonComponent,
   MarqueComponent,
   ModalBasicComponent,
-  ModalFullWidthSlotComponent,
-  ModalFullscreenBreakpointComponent,
   ModalFullscreenComponent,
+  ModalFullscreenBreakpointComponent,
+  ModalFullWidthSlotComponent,
   ModalNoHeadingComponent,
   ModalPrefixedComponent,
   ModalScrollableComponent,
@@ -121,23 +123,25 @@ export const generatedPages = [
   OverviewComponent,
   PaginationComponent,
   PopoverComponent,
-  RadioButtonWrapperSkeletonComponent,
   RadioButtonWrapperComponent,
-  SelectWrapperSkeletonComponent,
+  RadioButtonWrapperSkeletonComponent,
   SelectWrapperComponent,
+  SelectWrapperSkeletonComponent,
   SpinnerComponent,
   SwitchComponent,
-  TabsBarComponent,
   TabsComponent,
-  TextFieldWrapperSkeletonComponent,
-  TextFieldWrapperComponent,
-  TextListComponent,
+  TabsBarComponent,
+  TagComponent,
+  TagDismissibleComponent,
   TextComponent,
-  TextareaWrapperSkeletonComponent,
   TextareaWrapperComponent,
+  TextareaWrapperSkeletonComponent,
+  TextFieldWrapperComponent,
+  TextFieldWrapperSkeletonComponent,
+  TextListComponent,
+  ToastBasicComponent,
   ToastBasicDarkComponent,
   ToastBasicLongTextComponent,
-  ToastBasicComponent,
   ToastOffsetComponent,
   ToastPrefixedComponent,
   TypographyCyrilComponent,
@@ -158,14 +162,14 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: BannerComponent,
   },
   {
+    name: 'Button',
+    path: 'button',
+    component: ButtonComponent,
+  },
+  {
     name: 'Button Group',
     path: 'button-group',
     component: ButtonGroupComponent,
-  },
-  {
-    name: 'Button Pure Skeleton',
-    path: 'button-pure-skeleton',
-    component: ButtonPureSkeletonComponent,
   },
   {
     name: 'Button Pure',
@@ -173,24 +177,24 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: ButtonPureComponent,
   },
   {
+    name: 'Button Pure Skeleton',
+    path: 'button-pure-skeleton',
+    component: ButtonPureSkeletonComponent,
+  },
+  {
     name: 'Button Skeleton',
     path: 'button-skeleton',
     component: ButtonSkeletonComponent,
   },
   {
-    name: 'Button',
-    path: 'button',
-    component: ButtonComponent,
+    name: 'Checkbox Wrapper',
+    path: 'checkbox-wrapper',
+    component: CheckboxWrapperComponent,
   },
   {
     name: 'Checkbox Wrapper Skeleton',
     path: 'checkbox-wrapper-skeleton',
     component: CheckboxWrapperSkeletonComponent,
-  },
-  {
-    name: 'Checkbox Wrapper',
-    path: 'checkbox-wrapper',
-    component: CheckboxWrapperComponent,
   },
   {
     name: 'Content Wrapper',
@@ -203,14 +207,14 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: DividerComponent,
   },
   {
-    name: 'Fieldset Wrapper Skeleton',
-    path: 'fieldset-wrapper-skeleton',
-    component: FieldsetWrapperSkeletonComponent,
-  },
-  {
     name: 'Fieldset Wrapper',
     path: 'fieldset-wrapper',
     component: FieldsetWrapperComponent,
+  },
+  {
+    name: 'Fieldset Wrapper Skeleton',
+    path: 'fieldset-wrapper-skeleton',
+    component: FieldsetWrapperSkeletonComponent,
   },
   {
     name: 'Flex',
@@ -238,9 +242,9 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: InlineNotificationComponent,
   },
   {
-    name: 'Link Pure Skeleton',
-    path: 'link-pure-skeleton',
-    component: LinkPureSkeletonComponent,
+    name: 'Link',
+    path: 'link',
+    component: LinkComponent,
   },
   {
     name: 'Link Pure',
@@ -248,14 +252,14 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: LinkPureComponent,
   },
   {
+    name: 'Link Pure Skeleton',
+    path: 'link-pure-skeleton',
+    component: LinkPureSkeletonComponent,
+  },
+  {
     name: 'Link Skeleton',
     path: 'link-skeleton',
     component: LinkSkeletonComponent,
-  },
-  {
-    name: 'Link Social Skeleton',
-    path: 'link-social-skeleton',
-    component: LinkSocialSkeletonComponent,
   },
   {
     name: 'Link Social',
@@ -263,9 +267,9 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: LinkSocialComponent,
   },
   {
-    name: 'Link',
-    path: 'link',
-    component: LinkComponent,
+    name: 'Link Social Skeleton',
+    path: 'link-social-skeleton',
+    component: LinkSocialSkeletonComponent,
   },
   {
     name: 'Marque',
@@ -283,14 +287,14 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: ModalFullWidthSlotComponent,
   },
   {
-    name: 'Modal Fullscreen Breakpoint',
-    path: 'modal-fullscreen-breakpoint',
-    component: ModalFullscreenBreakpointComponent,
-  },
-  {
     name: 'Modal Fullscreen',
     path: 'modal-fullscreen',
     component: ModalFullscreenComponent,
+  },
+  {
+    name: 'Modal Fullscreen Breakpoint',
+    path: 'modal-fullscreen-breakpoint',
+    component: ModalFullscreenBreakpointComponent,
   },
   {
     name: 'Modal No Heading',
@@ -323,24 +327,24 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: PopoverComponent,
   },
   {
-    name: 'Radio Button Wrapper Skeleton',
-    path: 'radio-button-wrapper-skeleton',
-    component: RadioButtonWrapperSkeletonComponent,
-  },
-  {
     name: 'Radio Button Wrapper',
     path: 'radio-button-wrapper',
     component: RadioButtonWrapperComponent,
   },
   {
-    name: 'Select Wrapper Skeleton',
-    path: 'select-wrapper-skeleton',
-    component: SelectWrapperSkeletonComponent,
+    name: 'Radio Button Wrapper Skeleton',
+    path: 'radio-button-wrapper-skeleton',
+    component: RadioButtonWrapperSkeletonComponent,
   },
   {
     name: 'Select Wrapper',
     path: 'select-wrapper',
     component: SelectWrapperComponent,
+  },
+  {
+    name: 'Select Wrapper Skeleton',
+    path: 'select-wrapper-skeleton',
+    component: SelectWrapperSkeletonComponent,
   },
   {
     name: 'Spinner',
@@ -353,29 +357,24 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: SwitchComponent,
   },
   {
-    name: 'Tabs Bar',
-    path: 'tabs-bar',
-    component: TabsBarComponent,
-  },
-  {
     name: 'Tabs',
     path: 'tabs',
     component: TabsComponent,
   },
   {
-    name: 'Text Field Wrapper Skeleton',
-    path: 'text-field-wrapper-skeleton',
-    component: TextFieldWrapperSkeletonComponent,
+    name: 'Tabs Bar',
+    path: 'tabs-bar',
+    component: TabsBarComponent,
   },
   {
-    name: 'Text Field Wrapper',
-    path: 'text-field-wrapper',
-    component: TextFieldWrapperComponent,
+    name: 'Tag',
+    path: 'tag',
+    component: TagComponent,
   },
   {
-    name: 'Text List',
-    path: 'text-list',
-    component: TextListComponent,
+    name: 'Tag Dismissible',
+    path: 'tag-dismissible',
+    component: TagDismissibleComponent,
   },
   {
     name: 'Text',
@@ -383,14 +382,34 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: TextComponent,
   },
   {
-    name: 'Textarea Wrapper Skeleton',
-    path: 'textarea-wrapper-skeleton',
-    component: TextareaWrapperSkeletonComponent,
+    name: 'Text Field Wrapper',
+    path: 'text-field-wrapper',
+    component: TextFieldWrapperComponent,
+  },
+  {
+    name: 'Text Field Wrapper Skeleton',
+    path: 'text-field-wrapper-skeleton',
+    component: TextFieldWrapperSkeletonComponent,
+  },
+  {
+    name: 'Text List',
+    path: 'text-list',
+    component: TextListComponent,
   },
   {
     name: 'Textarea Wrapper',
     path: 'textarea-wrapper',
     component: TextareaWrapperComponent,
+  },
+  {
+    name: 'Textarea Wrapper Skeleton',
+    path: 'textarea-wrapper-skeleton',
+    component: TextareaWrapperSkeletonComponent,
+  },
+  {
+    name: 'Toast Basic',
+    path: 'toast-basic',
+    component: ToastBasicComponent,
   },
   {
     name: 'Toast Basic Dark',
@@ -401,11 +420,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Toast Basic Long Text',
     path: 'toast-basic-long-text',
     component: ToastBasicLongTextComponent,
-  },
-  {
-    name: 'Toast Basic',
-    path: 'toast-basic',
-    component: ToastBasicComponent,
   },
   {
     name: 'Toast Offset',

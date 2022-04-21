@@ -509,6 +509,26 @@ export const config: StorefrontConfig = {
         () => import('@/../../components/src/components/navigation/tabs-bar/tabs-bar.props.md'),
       ],
     },
+    Tags: {
+      Introduction: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/action/tag/tag.introduction.md'),
+      ],
+      Tag: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/action/tag/tag.examples.md'),
+      ],
+      'Tag Dismissible': [
+        // @ts-ignore
+        () => import('@/../../components/src/components/action/tag-dismissible/tag-dismissible.examples.md'),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/action/tag/tag.props.md'),
+        // @ts-ignore
+        () => import('@/../../components/src/components/action/tag-dismissible/tag-dismissible.props.md'),
+      ],
+    },
     'Text Field': {
       Examples: [
         // @ts-ignore

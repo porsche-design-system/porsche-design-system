@@ -219,6 +219,14 @@ import { componentsReady } from '@porsche-design-system/components-angular';
             <p-grid-item [size]="6"><p>2</p></p-grid-item>
           </p-grid>
         </div>
+
+        <div class="playground light" title="should render default tag">
+          <p-tag>Some Tag</p-tag>
+        </div>
+
+        <div class="playground light" title="should render default tag-dismissible">
+          <p-tag-dismissible>Some Tag</p-tag-dismissible>
+        </div>
       </div>
 
       <div style="flex: 1">
@@ -401,6 +409,14 @@ import { componentsReady } from '@porsche-design-system/components-angular';
             <my-prefix-p-grid-item p-grid-item [size]="6"><p>1</p></my-prefix-p-grid-item>
             <my-prefix-p-grid-item p-grid-item [size]="6"><p>2</p></my-prefix-p-grid-item>
           </my-prefix-p-grid>
+        </div>
+
+        <div class="playground light" title="should render default tag with custom prefix">
+          <my-prefix-p-tag p-tag>Some Tag</my-prefix-p-tag>
+        </div>
+
+        <div class="playground light" title="should render default tag-dismissible with custom prefix">
+          <my-prefix-p-tag-dismissible p-tag-dismissible>Some Tag</my-prefix-p-tag-dismissible>
         </div>
       </div>
     </div>

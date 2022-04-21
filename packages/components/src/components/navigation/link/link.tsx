@@ -26,7 +26,7 @@ export class Link {
   /** The icon shown. */
   @Prop() public icon?: IconName = 'arrow-head-right';
 
-  /** A custom URL path to a custom icon. */
+  /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
 
   /** When providing an url then the component will be rendered as `<a>`. */

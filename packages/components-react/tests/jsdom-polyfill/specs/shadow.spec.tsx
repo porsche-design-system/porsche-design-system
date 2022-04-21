@@ -145,6 +145,6 @@ describe('getByRole()', () => {
 
     fireEvent.change(getByTestId('Select'), { target: { value: '2' } });
 
-    expect(callback).toHaveBeenCalledWith('2');
+    expect(callback).toBeCalledWith('2');
   });
 });

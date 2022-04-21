@@ -7,7 +7,7 @@ jest.mock('../../../utils/slotted-styles');
 
 describe('checkbox-wrapper', () => {
   describe('connectedCallback', () => {
-    it('should call observeAttributes()', () => {
+    it('should call observeAttributes() with correct parameters', () => {
       const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
       const component = new CheckboxWrapper();
       component.connectedCallback();
@@ -17,7 +17,7 @@ describe('checkbox-wrapper', () => {
   });
 
   describe('componentWillLoad', () => {
-    it('should call getHTMLElementAndThrowIfUndefined()', () => {
+    it('should call getHTMLElementAndThrowIfUndefined() with correct parameters', () => {
       const spy = jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined');
       const component = new CheckboxWrapper();
       try {
@@ -27,7 +27,7 @@ describe('checkbox-wrapper', () => {
       expect(spy).toBeCalledWith(undefined, 'input[type="checkbox"]');
     });
 
-    it('should call observeAttributes()', () => {
+    it('should call observeAttributes() with correct parameters', () => {
       const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
       const component = new CheckboxWrapper();
       component.componentWillLoad();
@@ -37,7 +37,7 @@ describe('checkbox-wrapper', () => {
   });
 
   describe('disconnectedCallback', () => {
-    it('should call unobserveAttributes()', () => {
+    it('should call unobserveAttributes() with correct parameter', () => {
       const spy = jest.spyOn(attributeObserverUtils, 'unobserveAttributes');
       const component = new CheckboxWrapper();
       component.disconnectedCallback();

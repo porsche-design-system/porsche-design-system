@@ -2,7 +2,7 @@ import { Toast } from './toast';
 import { toastManager } from './toast-manager';
 
 describe('connectedCallback', () => {
-  it('should call toastManager.register()', () => {
+  it('should call toastManager.register() with correct parameters', () => {
     const spy = jest.spyOn(toastManager, 'register');
     const component = new Toast();
     component.host = document.createElement('p-toast');
@@ -14,7 +14,7 @@ describe('connectedCallback', () => {
 });
 
 describe('componentDidLoad', () => {
-  it('should call addEventListener on host', () => {
+  it('should call addEventListener() on host with correct parameters', () => {
     const component = new Toast();
     component.host = document.createElement('p-toast');
     const spy = jest.spyOn(component.host, 'addEventListener');

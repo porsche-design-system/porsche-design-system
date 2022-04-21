@@ -1,7 +1,7 @@
 import type { FormState, Theme } from '../../../types';
 import type { BreakpointCustomizable } from '../../../utils';
+import { buildSlottedStyles, getCss, isVisibleFormState } from '../../../utils';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
-import { buildSlottedStyles, getCss } from '../../../utils';
 import {
   addImportantToEachRule,
   getBaseSlottedStyles,
@@ -12,7 +12,6 @@ import {
   getScreenReaderOnlyJssStyle,
 } from '../../../styles';
 import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles';
-import { isVisibleFormState } from '../../../utils/form-state';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 

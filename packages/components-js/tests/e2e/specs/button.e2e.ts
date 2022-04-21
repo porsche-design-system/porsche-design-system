@@ -13,7 +13,6 @@ import {
   setProperty,
   waitForEventSerialization,
   waitForStencilLifecycle,
-  expectToSkipFocusOnComponent,
 } from '../helpers';
 import { ElementHandle, Page } from 'puppeteer';
 
