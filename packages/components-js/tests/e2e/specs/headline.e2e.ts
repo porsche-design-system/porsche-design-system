@@ -99,9 +99,8 @@ describe('headline', () => {
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidLoad['p-headline'], 'componentDidLoad: p-headline').toBe(1);
-      expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(1);
 
-      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
