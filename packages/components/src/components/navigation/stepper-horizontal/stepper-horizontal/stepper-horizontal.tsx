@@ -1,5 +1,7 @@
 import { Component, Element, h, JSX, Prop, Host, State } from '@stencil/core';
-import { Theme } from '../../../types';
+import { Theme } from '../../../../types';
+import { attachComponentCss } from '../../../../utils';
+import { getComponentCss } from './stepper-horizontal-styles';
 
 @Component({
   tag: 'p-stepper-horizontal',
@@ -15,6 +17,10 @@ export class StepperHorizontal {
 
   public connectedCallback(): void {
     this.defineStepperHorizontalItemElements();
+  }
+
+  public componentWillRender(): void {
+    attachComponentCss(this.host, getComponentCss);
   }
 
   public render(): JSX.Element {
