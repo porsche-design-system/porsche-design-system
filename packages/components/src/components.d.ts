@@ -28,6 +28,7 @@ import { NumberOfPageLinks, PageChangeEvent } from "./components/navigation/pagi
 import { PopoverDirection } from "./components/feedback/popover/popover-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinner/spinner-utils";
+import { StepperState } from "./components/navigation/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
 import { SortingChangeEvent, TableHeadCellSort } from "./components/content/table/table/table-utils";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
@@ -738,6 +739,26 @@ export namespace Components {
          */
         "theme"?: ThemeExtendedElectricDark;
     }
+    interface PStepperHorizontal {
+        /**
+          * Adapts the tag color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
+    interface PStepperHorizontalItem {
+        /**
+          * Disables the stepper. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: StepperState;
+        /**
+          * Adapts the tag color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
     interface PSwitch {
         /**
           * Aligns the label.
@@ -1176,6 +1197,18 @@ declare global {
         prototype: HTMLPSpinnerElement;
         new (): HTMLPSpinnerElement;
     };
+    interface HTMLPStepperHorizontalElement extends Components.PStepperHorizontal, HTMLStencilElement {
+    }
+    var HTMLPStepperHorizontalElement: {
+        prototype: HTMLPStepperHorizontalElement;
+        new (): HTMLPStepperHorizontalElement;
+    };
+    interface HTMLPStepperHorizontalItemElement extends Components.PStepperHorizontalItem, HTMLStencilElement {
+    }
+    var HTMLPStepperHorizontalItemElement: {
+        prototype: HTMLPStepperHorizontalItemElement;
+        new (): HTMLPStepperHorizontalItemElement;
+    };
     interface HTMLPSwitchElement extends Components.PSwitch, HTMLStencilElement {
     }
     var HTMLPSwitchElement: {
@@ -1324,6 +1357,8 @@ declare global {
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-select-wrapper-dropdown": HTMLPSelectWrapperDropdownElement;
         "p-spinner": HTMLPSpinnerElement;
+        "p-stepper-horizontal": HTMLPStepperHorizontalElement;
+        "p-stepper-horizontal-item": HTMLPStepperHorizontalItemElement;
         "p-switch": HTMLPSwitchElement;
         "p-table": HTMLPTableElement;
         "p-table-body": HTMLPTableBodyElement;
@@ -2071,6 +2106,26 @@ declare namespace LocalJSX {
          */
         "theme"?: ThemeExtendedElectricDark;
     }
+    interface PStepperHorizontal {
+        /**
+          * Adapts the tag color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
+    interface PStepperHorizontalItem {
+        /**
+          * Disables the stepper. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: StepperState;
+        /**
+          * Adapts the tag color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
     interface PSwitch {
         /**
           * Aligns the label.
@@ -2392,6 +2447,8 @@ declare namespace LocalJSX {
         "p-select-wrapper": PSelectWrapper;
         "p-select-wrapper-dropdown": PSelectWrapperDropdown;
         "p-spinner": PSpinner;
+        "p-stepper-horizontal": PStepperHorizontal;
+        "p-stepper-horizontal-item": PStepperHorizontalItem;
         "p-switch": PSwitch;
         "p-table": PTable;
         "p-table-body": PTableBody;
@@ -2445,6 +2502,8 @@ declare module "@stencil/core" {
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-select-wrapper-dropdown": LocalJSX.PSelectWrapperDropdown & JSXBase.HTMLAttributes<HTMLPSelectWrapperDropdownElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
+            "p-stepper-horizontal": LocalJSX.PStepperHorizontal & JSXBase.HTMLAttributes<HTMLPStepperHorizontalElement>;
+            "p-stepper-horizontal-item": LocalJSX.PStepperHorizontalItem & JSXBase.HTMLAttributes<HTMLPStepperHorizontalItemElement>;
             "p-switch": LocalJSX.PSwitch & JSXBase.HTMLAttributes<HTMLPSwitchElement>;
             "p-table": LocalJSX.PTable & JSXBase.HTMLAttributes<HTMLPTableElement>;
             "p-table-body": LocalJSX.PTableBody & JSXBase.HTMLAttributes<HTMLPTableBodyElement>;
