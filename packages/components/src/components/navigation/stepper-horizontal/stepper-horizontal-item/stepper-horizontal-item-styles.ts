@@ -13,19 +13,20 @@ import type { Theme } from '../../../../types';
 import type { StepperState } from './stepper-horizontal-item-utils';
 
 const getColor = (state: StepperState, theme: Theme) => {
-  const { baseColor, hoverColor, warningColor, successColor } = getThemedColors(theme);
+  const { baseColor, hoverColor, warningColor, successColor, disabledColor } = getThemedColors(theme);
   const { baseColor: invertedBaseColor } = getThemedColors(isThemeDark(theme) ? 'light' : 'dark');
+
   const colorMap: { [key in StepperState]: string } = {
     current: 'inherit',
     complete: successColor,
     warning: warningColor,
   };
 
-  return { baseColor, hoverColor, iconColor: colorMap[state], invertedBaseColor };
+  return { baseColor, hoverColor, iconColor: colorMap[state], invertedBaseColor, disabledColor };
 };
 
-export const getComponentCss = (state: StepperState, theme: Theme): string => {
-  const { baseColor, hoverColor, iconColor, invertedBaseColor } = getColor(state, theme);
+export const getComponentCss = (state: StepperState, isDisabled: boolean, theme: Theme): string => {
+  const { baseColor, hoverColor, iconColor, invertedBaseColor, disabledColor } = getColor(state, theme);
   const isCurrent = state === 'current';
   const hoverJssStyles = getHoverJssStyle();
 
@@ -39,8 +40,8 @@ export const getComponentCss = (state: StepperState, theme: Theme): string => {
           ...(isCurrent
             ? {
                 position: 'absolute',
-                color: invertedBaseColor,
-                backgroundColor: baseColor,
+                color: isDisabled ? disabledColor : invertedBaseColor,
+                backgroundColor: isDisabled ? 'none' : baseColor,
                 width: '20px',
                 height: '20px',
                 textAlign: 'center',
@@ -51,6 +52,10 @@ export const getComponentCss = (state: StepperState, theme: Theme): string => {
                 left: 0,
                 transform: 'translate3d(4px, 4px, 0)',
                 font: textXSmall.font,
+                ...(isDisabled && {
+                  boxSizing: 'border-box',
+                  border: `1px solid ${disabledColor}`,
+                }),
               }
             : {
                 content: 'counter(count)',
@@ -62,7 +67,7 @@ export const getComponentCss = (state: StepperState, theme: Theme): string => {
       button: {
         position: 'relative',
         height: pxToRemWithUnit(28),
-        color: baseColor,
+        color: isDisabled ? disabledColor : baseColor,
         transition: getTransition('color'),
         padding: `0 0 0 ${pxToRemWithUnit(28)}`,
         background: 0,
@@ -70,14 +75,17 @@ export const getComponentCss = (state: StepperState, theme: Theme): string => {
         textAlign: 'left',
         ...textSmall,
         whiteSpace: 'nowrap',
+        cursor: isDisabled ? 'not-allowed' : 'auto',
         ...getFocusJssStyle(),
         ...(!isCurrent && {
-          cursor: 'pointer',
+          cursor: isDisabled ? 'not-allowed' : 'pointer',
           textDecoration: 'underline',
-          ...hoverJssStyles,
-          '&:hover .icon': {
-            color: hoverColor,
-          },
+          ...(!isDisabled && {
+            ...hoverJssStyles,
+            '&:hover .icon': {
+              color: hoverColor,
+            },
+          }),
         }),
       },
     },
