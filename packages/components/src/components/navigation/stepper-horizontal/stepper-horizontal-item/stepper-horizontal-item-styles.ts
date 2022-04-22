@@ -72,19 +72,20 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
         whiteSpace: 'nowrap',
         cursor: isDisabled ? 'not-allowed' : 'auto',
         ...getFocusJssStyle(),
-        ...(isCurrent && {
-          transform: 'translate3d(0, -3px, 0)',
-        }),
-        ...(!isCurrent && {
-          cursor: isDisabled ? 'not-allowed' : 'pointer',
-          textDecoration: 'underline',
-          ...(!isDisabled && {
-            ...hoverJssStyles,
-            '&:hover .icon': {
-              color: hoverColor,
-            },
-          }),
-        }),
+        ...(isCurrent
+          ? {
+              transform: 'translate3d(0, -3px, 0)',
+            }
+          : {
+              cursor: isDisabled ? 'not-allowed' : 'pointer',
+              textDecoration: 'underline',
+              ...(!isDisabled && {
+                ...hoverJssStyles,
+                '&:hover .icon': {
+                  color: hoverColor,
+                },
+              }),
+            }),
       },
     },
     icon: {

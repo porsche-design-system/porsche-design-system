@@ -7,6 +7,9 @@ export const getComponentCss = (): string => {
       ':host': addImportantToEachRule({
         counterReset: 'count',
       }),
+      '::slotted(*:not(:last-child))': {
+        marginRight: '1em',
+      },
     },
   });
 };
