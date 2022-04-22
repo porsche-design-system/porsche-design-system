@@ -34,27 +34,23 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
     '@global': {
       ':host': addImportantToEachRule({
         display: 'inline-flex',
-        verticalAlign: 'top',
-        position: 'relative',
         '&::before': {
           ...(isCurrent
             ? {
-                position: 'absolute',
                 color: isDisabled ? disabledColor : invertedBaseColor,
                 backgroundColor: isDisabled ? 'none' : baseColor,
-                width: '20px',
-                height: '20px',
+                width: pxToRemWithUnit(18),
+                height: pxToRemWithUnit(18),
+                margin: `${pxToRemWithUnit(3)} ${pxToRemWithUnit(7)} ${pxToRemWithUnit(3)} ${pxToRemWithUnit(3)}`,
+                font: textXSmall.font,
                 textAlign: 'center',
+                verticalAlign: 'middle',
                 borderRadius: '50%',
                 content: 'counter(count)',
                 counterIncrement: 'count',
-                top: 0,
-                left: 0,
-                transform: 'translate3d(4px, 4px, 0)',
-                font: textXSmall.font,
                 ...(isDisabled && {
-                  boxSizing: 'border-box',
-                  border: `1px solid ${disabledColor}`,
+                  outline: `1px solid ${disabledColor}`,
+                  outlineOffset: '-1px',
                 }),
               }
             : {
@@ -65,18 +61,20 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
         },
       }),
       button: {
-        position: 'relative',
         height: pxToRemWithUnit(28),
         color: isDisabled ? disabledColor : baseColor,
         transition: getTransition('color'),
-        padding: `0 0 0 ${pxToRemWithUnit(28)}`,
+        padding: 0,
         background: 0,
         border: 0,
-        textAlign: 'left',
+        alignItems: 'center',
         ...textSmall,
         whiteSpace: 'nowrap',
         cursor: isDisabled ? 'not-allowed' : 'auto',
         ...getFocusJssStyle(),
+        ...(isCurrent && {
+          transform: 'translate3d(0, -3px, 0)',
+        }),
         ...(!isCurrent && {
           cursor: isDisabled ? 'not-allowed' : 'pointer',
           textDecoration: 'underline',
@@ -90,11 +88,9 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
       },
     },
     icon: {
-      position: 'absolute',
       color: iconColor,
-      top: '50%',
-      left: 0,
-      transform: 'translate3d(0, -50%, 0)',
+      verticalAlign: 'middle',
+      marginRight: pxToRemWithUnit(4),
       transition: getTransition('color'),
     },
   });
