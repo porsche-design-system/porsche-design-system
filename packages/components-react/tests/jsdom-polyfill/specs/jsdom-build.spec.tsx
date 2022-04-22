@@ -1,5 +1,5 @@
-import path from 'path';
-import fs from 'fs';
+import * as path from 'path';
+import * as fs from 'fs';
 
 it('should have no stylesheet injection warning', async () => {
   const componentsReactEntry = require.resolve('@porsche-design-system/components-react');

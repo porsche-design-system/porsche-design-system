@@ -1,11 +1,11 @@
 import { ToastItem } from './toast-item';
 import * as validationUtils from '../../../../utils/validation';
-import * as domUtils from '../../../../utils/dom';
+import * as throwIfRootNodeIsNotOfKindUtils from '../../../../utils/dom/throwIfRootNodeIsNotOfKind';
 import { TOAST_STATES } from '../toast/toast-utils';
 
 describe('connectedCallback', () => {
-  it('should call throwIfRootNodeIsNotOfKind()', () => {
-    const spy = jest.spyOn(domUtils, 'throwIfRootNodeIsNotOfKind');
+  it('should call throwIfRootNodeIsNotOfKind() with correct parameters', () => {
+    const spy = jest.spyOn(throwIfRootNodeIsNotOfKindUtils, 'throwIfRootNodeIsNotOfKind');
     const component = new ToastItem();
 
     try {
@@ -17,7 +17,7 @@ describe('connectedCallback', () => {
 });
 
 describe('componentWillRender', () => {
-  it('should call throwIfValueIsInvalid()', () => {
+  it('should call throwIfValueIsInvalid() with correct parameters', () => {
     const spy = jest.spyOn(validationUtils, 'throwIfValueIsInvalid');
     const component = new ToastItem();
     component.host = document.createElement('p-toast');

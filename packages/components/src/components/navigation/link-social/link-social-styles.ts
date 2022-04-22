@@ -64,6 +64,7 @@ export const getComponentCss = (
             outlineOffset: '3px',
             ...buildResponsiveStyles(hideLabel, getSlottedLinkJssStyle),
           },
+          // TODO: combine link-social-styles with link-button-styles and tabs-bar-styles
           '&(a::-moz-focus-inner)': {
             border: 0,
           },

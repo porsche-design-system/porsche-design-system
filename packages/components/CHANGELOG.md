@@ -8,6 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.11.0-skeletons] - 2022-04-21
+
+### [2.11.0] - 2022-04-21
+
+### [2.11.0-rc.0] - 2022-04-20
+
+#### Added
+- `Tag`
+- `Tag Dismissible`
+
 ### [2.10.0-skeletons] - 2022-04-13
 
 ### [2.10.0] - 2022-04-13

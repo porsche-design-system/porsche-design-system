@@ -28,6 +28,6 @@ describe('addMessage()', () => {
     // wait for customElements.whenDefined to be resolved
     await new Promise((resolve) => setTimeout(resolve));
 
-    expect(addMessageMock).toHaveBeenCalledWith(message);
+    expect(addMessageMock).toBeCalledWith(message);
   });
 });

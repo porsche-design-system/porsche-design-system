@@ -1,11 +1,12 @@
 /* Auto Generated File */
-import { componentsReady, PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCheckboxWrapper, PContentWrapper, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PSelectWrapper, PSpinner, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react';
+import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCheckboxWrapper, PContentWrapper, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PSelectWrapper, PSpinner, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react';
 import { useEffect, useState } from 'react';
+import { pollComponentsReady } from '../pollComponentsReady'
 
 export const OverviewPage = (): JSX.Element => {
   const [allReady, setAllReady] = useState(false);
   useEffect(() => {
-    componentsReady().then(() => {
+    pollComponentsReady().then(() => {
       setAllReady(true);
     });
   }, []);
@@ -227,6 +228,14 @@ export const OverviewPage = (): JSX.Element => {
               <PGridItem size={6}><p>2</p></PGridItem>
             </PGrid>
           </div>
+
+          <div className="playground light" title="should render default tag">
+            <PTag>Some Tag</PTag>
+          </div>
+
+          <div className="playground light" title="should render default tag-dismissible">
+            <PTagDismissible>Some Tag</PTagDismissible>
+          </div>
         </div>
 
         <PorscheDesignSystemProvider prefix="my-prefix">
@@ -412,6 +421,14 @@ export const OverviewPage = (): JSX.Element => {
                 <PGridItem size={6}><p>1</p></PGridItem>
                 <PGridItem size={6}><p>2</p></PGridItem>
               </PGrid>
+            </div>
+
+            <div className="playground light" title="should render default tag with custom prefix">
+              <PTag>Some Tag</PTag>
+            </div>
+
+            <div className="playground light" title="should render default tag-dismissible with custom prefix">
+              <PTagDismissible>Some Tag</PTagDismissible>
             </div>
           </div>
         </PorscheDesignSystemProvider>

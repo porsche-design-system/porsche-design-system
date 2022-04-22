@@ -7,7 +7,6 @@ module.exports = {
   collectCoverageFrom: ['!<rootDir>/node_modules/', 'projects/components-wrapper/src/!(lib)**'],
   globals: {
     'ts-jest': {
-      isolatedModules: true, // this fixes typing issues with jasmine
       tsconfig: {
         moduleResolution: 'node',
         target: 'es2019',

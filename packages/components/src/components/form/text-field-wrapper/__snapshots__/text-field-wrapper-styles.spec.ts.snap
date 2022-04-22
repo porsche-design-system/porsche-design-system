@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for isDisabled: { base: true, xs: false, s: true, m: false, l: true, xl: false }, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, isPassword: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, isPassword: false 1`] = `
 ":host {
   display: block;
 }
@@ -24,8 +24,8 @@ exports[`getComponentCss() should return correct css for isDisabled: { base: tru
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -109,17 +109,18 @@ button:disabled {
   position: relative;
 }
 .label__text {
-  position: static;
+  position: absolute;
+  height: 1px;
   width: fit-content;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  white-space: normal;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
   padding: 0 0 0.25rem;
   display: block;
-  color: #96989a;
+  color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text--description {
@@ -127,7 +128,7 @@ button:disabled {
   padding-bottom: 0.5rem;
 }
 .label__text--description {
-  color: #96989a;
+  color: #626669;
 }
 .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
   border-color: #000 !important;
@@ -155,7 +156,79 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}"
+}
+@media(min-width:480px) {
+  .label__text {
+    position: static;
+    width: fit-content;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
+    padding: 0 0 0.25rem;
+  }
+}
+
+@media(min-width:760px) {
+  .label__text {
+    position: absolute;
+    height: 1px;
+    width: fit-content;
+    border: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(1px,1px,1px,1px);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    padding: 0 0 0.25rem;
+  }
+}
+
+@media(min-width:1000px) {
+  .label__text {
+    position: static;
+    width: fit-content;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
+    padding: 0 0 0.25rem;
+  }
+}
+
+@media(min-width:1300px) {
+  .label__text {
+    position: absolute;
+    height: 1px;
+    width: fit-content;
+    border: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(1px,1px,1px,1px);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    padding: 0 0 0.25rem;
+  }
+}
+
+@media(min-width:1760px) {
+  .label__text {
+    position: static;
+    width: fit-content;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
+    padding: 0 0 0.25rem;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, isPassword: false 1`] = `
@@ -182,8 +255,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -341,8 +414,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -503,8 +576,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -673,8 +746,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -843,8 +916,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -1001,8 +1074,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -1162,8 +1235,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -1331,8 +1404,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -1500,8 +1573,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -1659,8 +1732,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -1821,8 +1894,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -1991,8 +2064,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -2161,8 +2234,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -2320,8 +2393,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -2482,8 +2555,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -2653,8 +2726,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -2824,8 +2897,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -2982,8 +3055,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -3143,8 +3216,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -3313,8 +3386,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -3483,8 +3556,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -3642,8 +3715,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -3804,8 +3877,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -3975,8 +4048,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
@@ -4146,8 +4219,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   background-color: #fff !important;
   opacity: 1 !important;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  -webkit-text-size-adjust: none !important;
   text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
   text-indent: 0 !important;
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;

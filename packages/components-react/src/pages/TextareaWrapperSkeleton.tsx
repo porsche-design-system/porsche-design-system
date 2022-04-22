@@ -1,10 +1,11 @@
 /* Auto Generated File */
-import { componentsReady, PTextareaWrapper } from '@porsche-design-system/components-react';
+import { PTextareaWrapper } from '@porsche-design-system/components-react';
 import { useEffect } from 'react';
+import { pollComponentsReady } from '../pollComponentsReady'
 
 export const TextareaWrapperSkeletonPage = (): JSX.Element => {
   useEffect(() => {
-    componentsReady().then(() => {
+    pollComponentsReady().then(() => {
       document.querySelectorAll('p-textarea-wrapper').forEach((textarea) => {
         textarea.classList.remove('hydrated');
       });

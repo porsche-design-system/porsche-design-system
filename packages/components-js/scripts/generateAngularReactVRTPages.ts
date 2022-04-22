@@ -51,13 +51,15 @@ const getRoutes = (importPaths: string[], framework: Framework): string => {
   return (
     importPaths
       .filter((importPath) => !isPageWithoutRoute(importPath))
+      .map(normalizeImportPath)
+      .sort(byAlphabet)
       .map((importPath) =>
         [
           '{',
           ...[
-            `name: '${capitalCase(normalizeImportPath(importPath))}'`,
-            `path: '${pathPrefix}${normalizeImportPath(importPath)}'`,
-            isAngular ? `component: ${pascalCase(importPath)}` : `element: <${pascalCase(importPath)}Page />`,
+            `name: '${capitalCase(importPath)}'`,
+            `path: '${pathPrefix}${importPath}'`,
+            isAngular ? `component: ${pascalCase(importPath)}Component` : `element: <${pascalCase(importPath)}Page />`,
           ].map((x) => `  ${x},`),
           '}',
         ]
@@ -252,7 +254,6 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
           .map((tagName) => pascalCase(tagName));
         const pdsImports = [
           ...componentImports,
-          (usesSetAllReady || isSkeleton) && 'componentsReady',
           usesPrefixing && 'PorscheDesignSystemProvider',
           usesToast && 'useToastManager',
         ]
@@ -264,6 +265,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
           `import { ${pdsImports} } from '@porsche-design-system/components-react';`,
           reactImports && `import { ${reactImports} } from 'react';`,
           isIconPage && `import { ICON_NAMES } from '@porsche-design-system/assets';`,
+          (usesSetAllReady || isSkeleton) && `import { pollComponentsReady } from '../pollComponentsReady'`,
         ]
           .filter((x) => x)
           .join('\n');
@@ -273,12 +275,16 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
         const styleConst = style ? `const style = \`\n  ${style}\n\`;` : '';
         const styleJsx = style ? '\n      <style children={style} />\n' : '';
 
+        if (isSkeleton) {
+          script = script.replace('componentsReady()', 'pollComponentsReady()');
+        }
+
         let useStateOrEffect = '';
 
         if (usesSetAllReady) {
           useStateOrEffect = `const [allReady, setAllReady] = useState(false);
 useEffect(() => {
-  componentsReady().then(() => {
+  pollComponentsReady().then(() => {
     setAllReady(true);
   });
 }, []);`;
@@ -386,7 +392,10 @@ export const ${pascalCase(fileName)}Page = (): JSX.Element => {${componentLogic}
   if (framework === 'angular') {
     frameworkImports = [separator, importsAndExports].join('\n');
     frameworkRoutes = `export const generatedPages = [
-  ${importPaths.map((importPath) => pascalCase(importPath)).join(',\n  ')},
+  ${importPaths
+    .map((importPath) => pascalCase(importPath))
+    .sort(byAlphabet)
+    .join(',\n  ')},
 ];
 
 export const generatedRoutes: ExtendedRoute[] = [\n${routes}\n];`;

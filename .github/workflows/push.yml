@@ -8,7 +8,7 @@ on:
       - release/*
 name: 'Porsche Design System'
 env:
-  PDS_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/node:16.14.0-stretch-slim
+  PDS_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/node:16.14.2-stretch-slim
 jobs:
   components-unit:
     name: 'Components Unit'
@@ -844,7 +844,7 @@ jobs:
   release-components-uxpin:
     name: 'Release Components UXPin'
     needs:
-      - smoke-test
+      - assets-deployment
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -895,7 +895,6 @@ jobs:
     needs:
       - smoke-test
       - storefront-deployment
-      - release-components-uxpin
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:

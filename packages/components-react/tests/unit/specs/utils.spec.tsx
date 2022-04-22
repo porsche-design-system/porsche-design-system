@@ -9,7 +9,7 @@ import {
 import * as hooks from '../../../projects/components-wrapper/src/hooks';
 import { PDS_SKELETON_CLASS_PREFIX, SKELETONS_ACTIVE } from '@porsche-design-system/shared';
 
-describe('getMergedClassName', () => {
+describe('getMergedClassName()', () => {
   test.each`
     domClasses | oldClassName   | newClassName        | expected
     ${''}      | ${undefined}   | ${''}               | ${''}
@@ -58,37 +58,38 @@ const Sample = ({ isRefCallback }: Props): JSX.Element => {
   );
 };
 
-describe('syncRefs', () => {
+describe('syncRefs()', () => {
   beforeEach(() => {
     // mocked usePrefix so we don't have to use PorscheDesignSystemProvider
     jest.spyOn(hooks, 'usePrefix').mockImplementation((tagName) => tagName);
   });
-  it('should sync refs if ref is set directly', () => {
-    jest.spyOn(hooks, 'useSkeleton').mockImplementation(() => false);
+
+  it('should sync refs if ref is set directly', async () => {
+    jest.spyOn(hooks, 'useSkeleton').mockReturnValue(false);
     const { getByTestId } = render(<Sample />);
     const button = getByTestId('button');
 
     expect(button.className).toBe(INITIAL_CLASS_NAME);
 
-    userEvent.click(button);
+    await userEvent.click(button);
 
     expect(button.className).toBe(CLASS_NAME);
   });
 
-  it('should sync refs if ref is set as callback', () => {
-    jest.spyOn(hooks, 'useSkeleton').mockImplementation(() => false);
+  it('should sync refs if ref is set as callback', async () => {
+    jest.spyOn(hooks, 'useSkeleton').mockReturnValue(false);
     const { getByTestId } = render(<Sample isRefCallback />);
     const button = getByTestId('button');
 
     expect(button.className).toBe(INITIAL_CLASS_NAME);
 
-    userEvent.click(button);
+    await userEvent.click(button);
 
     expect(button.className).toBe(CLASS_NAME);
   });
 
-  it('should use useSkeleton hook and set skeleton classes', () => {
-    jest.spyOn(hooks, 'useSkeleton').mockImplementation(() => true);
+  it('should use useSkeleton() hook and set skeleton classes', async () => {
+    jest.spyOn(hooks, 'useSkeleton').mockReturnValue(true);
     const { getByTestId } = render(<Sample />);
     const button = getByTestId('button');
 
@@ -98,7 +99,7 @@ describe('syncRefs', () => {
       }`
     );
 
-    userEvent.click(button);
+    await userEvent.click(button);
 
     expect(button.className).toBe(CLASS_NAME);
   });

@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components-react",
-  "version": "2.10.0-skeletons",
+  "version": "2.11.0-skeletons",
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
@@ -27,11 +27,11 @@
     "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "2.10.0-skeletons"
+    "@porsche-design-system/components-js": "2.11.0-skeletons"
   },
   "peerDependencies": {
-    "react": ">=17.0.0 <18.0.0",
-    "react-dom": ">=17.0.0 <18.0.0"
+    "react": ">=17.0.0 <19.0.0",
+    "react-dom": ">=17.0.0 <19.0.0"
   },
   "main": "public-api.js",
   "module": "esm/public-api.js",

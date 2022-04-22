@@ -28,7 +28,7 @@ Choose between predefined styling variants.
 
 <Playground :markup="responsive" :config="config"></Playground>
 
-### ARIA attributes and states
+## ARIA attributes and states
 
 Through the `aria` property you have the possibility to provide additional **ARIA** attributes and states to the component.
 <Playground :markup="accessibility" :config="config"></Playground>
@@ -94,7 +94,7 @@ export default class Code extends Vue {
 
   icon =
 `<p-link href="https://www.porsche.com" icon="phone">Some label</p-link>
-<p-link href="https://www.porsche.com" icon-source="${require('./assets/icon-custom-kaixin.svg')}" hide-label="true">Some label</p-link>`;
+<p-link href="https://www.porsche.com" icon-source="${require('../../../assets/icon-custom-kaixin.svg')}" hide-label="true">Some label</p-link>`;
 
   events =
 `<p-link

@@ -21,7 +21,7 @@ have a lower z-index.
 
 <Playground :markup="basicMarkup" :config="config"></Playground>
 
-### ARIA attributes and states
+## ARIA attributes and states
 
 Through the `aria` property you have the possibility to provide an additional **aria-label** attribute to the component.
 
