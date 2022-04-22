@@ -33,14 +33,15 @@ export class StepperHorizontalItem {
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.state, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.state, this.disabled, this.theme);
   }
 
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+    const isCompleteOrWarning = isStateCompleteOrWarning(this.state);
     return (
-      <button>
-        {isStateCompleteOrWarning(this.state) && (
+      <button tabIndex={isCompleteOrWarning ? 0 : -1} disabled={this.disabled}>
+        {isCompleteOrWarning && (
           <PrefixedTagNames.pIcon
             class="icon"
             name={getIcon(this.state)}
