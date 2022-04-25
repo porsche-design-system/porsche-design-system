@@ -1,5 +1,10 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import { getPrefixedTagNames, getThemeDarkAttribute, attachSlottedCss, attachComponentCss } from '../../../../utils';
+import {
+  getPrefixedTagNames,
+  getDataThemeDarkAttribute,
+  attachSlottedCss,
+  attachComponentCss,
+} from '../../../../utils';
 import type { TextAlign, TextColor, Theme } from '../../../../types';
 import type { HeadlineTag, HeadlineVariant } from './headline-utils';
 import { getHeadlineTagName, isVariantType } from './headline-utils';
@@ -51,7 +56,7 @@ export class Headline {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host {...getThemeDarkAttribute(this.theme)}>
+      <Host {...getDataThemeDarkAttribute(this.theme)}>
         <TagName class="root">
           {!isHeadlineVariantType ? (
             <PrefixedTagNames.pText
