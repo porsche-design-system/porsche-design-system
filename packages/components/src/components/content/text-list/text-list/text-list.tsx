@@ -45,12 +45,6 @@ export class TextList {
     attachComponentCss(this.host, getComponentCss, this.theme);
   }
 
-  public componentDidUpdate(): void {
-    if (!this.theme) {
-      this.theme = 'light';
-    }
-  }
-
   public render(): JSX.Element {
     const TagType = this.listType === 'unordered' ? 'ul' : 'ol';
     const PrefixedTagNames = getPrefixedTagNames(this.host);

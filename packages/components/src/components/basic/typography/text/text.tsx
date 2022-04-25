@@ -58,17 +58,6 @@ export class Text {
       this.theme
     );
   }
-  //
-  // public componentShouldUpdate(newV, oldV, prop): boolean {
-  //   console.log('%c before', 'color: red', newV, oldV, this.theme);
-  //   if (prop === 'theme' && (!newV || !oldV)) {
-  //     this.theme = 'light';
-  //     console.log('%c after', 'color: green', newV, oldV, this.theme);
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
-  // }
 
   public componentDidLoad(): void {
     if (isSizeInherit(this.size)) {
