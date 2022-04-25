@@ -4366,7 +4366,7 @@ exports[`getSlottedCss() should return correct css 1`] = `
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
-p-text-field-wrapper[theme=\\"dark\\"] a:hover {
+p-text-field-wrapper[data-theme=\\"dark\\"] a:hover {
   color: #ff0223 !important;
 }
 p-text-field-wrapper b, p-text-field-wrapper strong {
@@ -4404,7 +4404,7 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
-prefixed-p-text-field-wrapper[theme=\\"dark\\"] a:hover {
+prefixed-p-text-field-wrapper[data-theme=\\"dark\\"] a:hover {
   color: #ff0223 !important;
 }
 prefixed-p-text-field-wrapper b, prefixed-p-text-field-wrapper strong {

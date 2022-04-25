@@ -296,7 +296,7 @@ exports[`getSlottedCss() should return correct css 1`] = `
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
-p-popover[theme=\\"dark\\"] a:hover {
+p-popover[data-theme=\\"dark\\"] a:hover {
   color: #ff0223 !important;
 }
 p-popover b, p-popover strong {
@@ -327,7 +327,7 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
-prefixed-p-popover[theme=\\"dark\\"] a:hover {
+prefixed-p-popover[data-theme=\\"dark\\"] a:hover {
   color: #ff0223 !important;
 }
 prefixed-p-popover b, prefixed-p-popover strong {

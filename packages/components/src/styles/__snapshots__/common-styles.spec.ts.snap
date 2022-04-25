@@ -42,7 +42,7 @@ Object {
   "& em, & i": Object {
     "fontStyle": "normal",
   },
-  "&[theme=\\"dark\\"] a:hover": Object {
+  "&[data-theme=\\"dark\\"] a:hover": Object {
     "color": "#ff0223",
   },
 }
