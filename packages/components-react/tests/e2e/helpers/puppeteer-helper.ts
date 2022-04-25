@@ -25,10 +25,10 @@ export const goto = async (page: Page, url: string) => {
   await waitForComponentsReady(page);
 };
 
-let consoleMessages: ConsoleMessage[] = [];
+const consoleMessages: ConsoleMessage[] = [];
 
 export const initConsoleObserver = (page: Page): void => {
-  consoleMessages = []; // reset
+  consoleMessages.length = 0; // reset
 
   page.on('console', (msg) => {
     consoleMessages.push(msg);
