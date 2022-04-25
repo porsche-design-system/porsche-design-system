@@ -1,5 +1,6 @@
-import { isSizeInherit, TextSize } from './text-utils';
-import { BreakpointCustomizable } from '../../../../utils';
+import type { TextSize } from '../../types';
+import type { BreakpointCustomizable } from '../breakpoint-customizable';
+import { isSizeInherit } from './isSizeInherit';
 
 describe('isSizeInherit()', () => {
   it.each<[BreakpointCustomizable<TextSize>, boolean]>([
