@@ -15,7 +15,7 @@ import {
 import { attachComponentCss, getHTMLElement, getHTMLElements, scrollElementTo, setAttribute } from '../../../utils';
 import { getComponentCss } from './tabs-bar-styles';
 import type { Direction } from '../../common/horizontal-scrolling/horizontal-scrolling-utils';
-import { PrevNextButton } from '../../common/horizontal-scrolling/prevNextButton';
+import { PrevNextButton } from '../../common/horizontal-scrolling/prev-next-button';
 
 @Component({
   tag: 'p-tabs-bar',

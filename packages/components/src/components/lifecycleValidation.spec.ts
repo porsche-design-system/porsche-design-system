@@ -53,6 +53,8 @@ import { Flex } from './layout/flex/flex/flex';
 import { FlexItem } from './layout/flex/flex-item/flex-item';
 import { Grid } from './layout/grid/grid/grid';
 import { GridItem } from './layout/grid/grid-item/grid-item';
+import { StepperHorizontal } from './navigation/stepper-horizontal/stepper-horizontal/stepper-horizontal';
+import { StepperHorizontalItem } from './navigation/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item';
 
 type ClassType = {
   host: HTMLElement;
@@ -110,6 +112,8 @@ export const TAG_NAMES_CONSTRUCTOR_MAP: { [key in TagName]: new () => ClassType 
   'p-flex-item': FlexItem,
   'p-grid': Grid,
   'p-grid-item': GridItem,
+  'p-stepper-horizontal': StepperHorizontal,
+  'p-stepper-horizontal-item': StepperHorizontalItem,
 };
 /* Auto Generated End */
 

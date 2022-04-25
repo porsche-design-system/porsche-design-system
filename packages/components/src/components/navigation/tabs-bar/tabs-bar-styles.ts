@@ -5,6 +5,7 @@ import { buildResponsiveStyles, getCss } from '../../../utils';
 import { addImportantToEachRule, addImportantToRule, getTransition, getThemedColors } from '../../../styles';
 import { getFontWeight } from '../../../styles/font-weight-styles';
 import { fontSize, textSmall } from '@porsche-design-system/utilities-v2';
+import { getFunctionalComponentPrevNextButtonStyles } from '../../common/horizontal-scrolling/prev-next-button-styles';
 
 const tabsTransitionDuration = '.4s';
 
@@ -128,35 +129,6 @@ export const getComponentCss = (
         right: 0,
       },
     },
-    action: {
-      display: 'flex',
-      position: 'absolute',
-      top: '4px',
-      transform: 'translate3d(0,0,0)',
-      '&--prev': {
-        left: 0,
-        justifyContent: 'flex-start',
-        '& $gradient': {
-          background: `linear-gradient(90deg, ${gradientColor} 50%, ${gradientColorTransparent} 100%)`,
-        },
-      },
-      '&--next': {
-        right: 0,
-        justifyContent: 'flex-end',
-        '& $gradient': {
-          background: `linear-gradient(90deg, ${gradientColorTransparent} 0%, ${gradientColor} 50%)`,
-        },
-      },
-      '&--hidden': {
-        visibility: 'hidden', // to make offsetWidth work
-      },
-    },
-    gradient: {
-      position: 'absolute',
-      top: '-4px',
-      bottom: '-.5em',
-      width: '2em',
-      pointerEvents: 'none',
-    },
+    ...getFunctionalComponentPrevNextButtonStyles(gradientColor, gradientColorTransparent),
   });
 };

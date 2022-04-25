@@ -32,6 +32,6 @@ export class StepperHorizontal {
   }
 
   private defineStepperHorizontalItemElements = (): void => {
-    this.stepperHorizontalItems = Array.from(this.host.children) as HTMLPTabsItemElement[];
+    this.stepperHorizontalItems = Array.from(this.host.children) as HTMLPStepperHorizontalItemElement[];
   };
 }
