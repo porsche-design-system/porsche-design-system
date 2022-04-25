@@ -43,12 +43,6 @@ export class Headline {
     attachComponentCss(this.host, getComponentCss, this.variant, this.align, this.color, this.ellipsis, this.theme);
   }
 
-  public componentDidUpdate(): void {
-    if (!this.theme) {
-      this.theme = 'light';
-    }
-  }
-
   public render(): JSX.Element {
     const TagName = getHeadlineTagName(this.host, this.variant, this.tag);
     const isHeadlineVariantType = isVariantType(this.variant);
