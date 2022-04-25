@@ -62,7 +62,8 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
       }),
       // Display for button?
       button: {
-        height: pxToRemWithUnit(28),
+        display: 'inline-block',
+        height: pxToRemWithUnit(24),
         color: isDisabled ? disabledColor : baseColor,
         transition: getTransition('color'),
         padding: 0,

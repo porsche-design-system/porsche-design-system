@@ -1,7 +1,8 @@
-import { Component, Element, h, JSX, Prop, Host, State } from '@stencil/core';
+import { Component, Element, h, JSX, Prop, State } from '@stencil/core';
 import { Theme } from '../../../../types';
 import { attachComponentCss } from '../../../../utils';
 import { getComponentCss } from './stepper-horizontal-styles';
+import { HorizontalScrollWrapper } from '../../../common/horizontal-scrolling/horizontal-scroll-wrapper';
 
 @Component({
   tag: 'p-stepper-horizontal',
@@ -20,14 +21,21 @@ export class StepperHorizontal {
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss);
+    attachComponentCss(this.host, getComponentCss, this.theme);
   }
 
   public render(): JSX.Element {
     return (
-      <Host>
+      <HorizontalScrollWrapper
+        host={this.host}
+        isNextHidden={false}
+        isPrevHidden={false}
+        scrollOnPrevNextClick={() => {}}
+        withBar={false}
+        theme={this.theme}
+      >
         <slot />
-      </Host>
+      </HorizontalScrollWrapper>
     );
   }
 
