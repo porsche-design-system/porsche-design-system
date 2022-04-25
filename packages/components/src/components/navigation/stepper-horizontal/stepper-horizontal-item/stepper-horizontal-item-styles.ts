@@ -44,7 +44,7 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
                 margin: `${pxToRemWithUnit(3)} ${pxToRemWithUnit(7)} ${pxToRemWithUnit(3)} ${pxToRemWithUnit(3)}`,
                 font: textXSmall.font,
                 textAlign: 'center',
-                verticalAlign: 'middle',
+                alignSelf: 'center',
                 borderRadius: '50%',
                 content: 'counter(count)',
                 counterIncrement: 'count',
@@ -60,6 +60,7 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
               }),
         },
       }),
+      // Display for button?
       button: {
         height: pxToRemWithUnit(28),
         color: isDisabled ? disabledColor : baseColor,
@@ -72,25 +73,20 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
         whiteSpace: 'nowrap',
         cursor: isDisabled ? 'not-allowed' : 'auto',
         ...getFocusJssStyle(),
-        ...(isCurrent
-          ? {
-              transform: 'translate3d(0, -3px, 0)',
-            }
-          : {
-              cursor: isDisabled ? 'not-allowed' : 'pointer',
-              textDecoration: 'underline',
-              ...(!isDisabled && {
-                ...hoverJssStyles,
-                '&:hover .icon': {
-                  color: hoverColor,
-                },
-              }),
-            }),
+        ...(!isCurrent && {
+          cursor: isDisabled ? 'not-allowed' : 'pointer',
+          textDecoration: 'underline',
+          ...(!isDisabled && {
+            ...hoverJssStyles,
+            '&:hover .icon': {
+              color: hoverColor,
+            },
+          }),
+        }),
       },
     },
     icon: {
       color: iconColor,
-      verticalAlign: 'middle',
       marginRight: pxToRemWithUnit(4),
       transition: getTransition('color'),
     },
