@@ -1,7 +1,7 @@
-import { Text } from './text';
+import { Headline } from './headline';
 import * as setLineHeightOnSizeInheritModule from '../../../../utils/typography/setLineHeightOnSizeInherit';
 
-describe('text', () => {
+describe('headline', () => {
   describe('componentDidLoad', () => {
     let spy: jest.SpyInstance;
     beforeEach(() => {
@@ -9,10 +9,10 @@ describe('text', () => {
     });
 
     it('should call setLineHeightOnSizeInherit', () => {
-      const component = new Text();
+      const component = new Headline();
       component.componentDidLoad();
 
-      expect(spy).toBeCalledWith('small', undefined);
+      expect(spy).toBeCalledWith('headline-1', undefined);
     });
   });
 });
