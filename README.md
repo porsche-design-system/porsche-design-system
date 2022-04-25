@@ -232,21 +232,6 @@ Please refer to the link below for accessing license list: [Porsche License List
 
 ---
 
-### Deque Axe DevTools
-
-In order to get the npm token to access Deque's registry, follow these steps. 
-
-1. Goto <https://agora.dequecloud.com>, login with your credentials and generate an api key 
-1. Run `curl -u"<your-email>":<your-api-key> "https://agora.dequecloud.com/artifactory/api/npm/auth"`
-1. Open your `~\.npmrc` file and add the following lines while replacing thee placeholders with the values of the previous step.
-```
-//agora.dequecloud.com/artifactory/api/npm/dequelabs/:_auth=<generated-auth-string> 
-//agora.dequecloud.com/artifactory/api/npm/dequelabs/:email=<your-email@email.com>
-//agora.dequecloud.com/artifactory/api/npm/dequelabs/:always-auth=true
-```
-
----
-
 # Release management
 
 ## Porsche Design System - Components (JS/Angular/React)
