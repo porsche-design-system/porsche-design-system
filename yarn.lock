@@ -395,16 +395,6 @@
   dependencies:
     axe-core "^4.4.1"
 
-"@axe-devtools/puppeteer@^4.4.1":
-  version "4.4.1"
-  resolved "https://agora.dequecloud.com:443/artifactory/api/npm/dequelabs/@axe-devtools/puppeteer/-/@axe-devtools/puppeteer-4.4.1.tgz#f7934fedd7a741f551e1b751e6341ef34ec4ff13"
-  integrity sha512-6jhOl9X0j8TvxsWs1P1EOhcwaPO+ou/eDCC9tj1XAQpzvYz3LtK8BGGW50R81xuRv4kJKFKZAQ9vPsyUzqRRcQ==
-
-"@axe-devtools/reporter@^4.4.0":
-  version "4.4.0"
-  resolved "https://agora.dequecloud.com:443/artifactory/api/npm/dequelabs/@axe-devtools/reporter/-/@axe-devtools/reporter-4.4.0.tgz#4c5027dc5d11e4d049985bafccf4afbea1555a6c"
-  integrity sha512-Jd3NKm7C976QRwMwMNlparOwNlPyCiCRQ8Ld6L31JQ5Acsb43J/EzK9p+Rj5OjnqIrVRJB658AS//Ui9ihCboQ==
-
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.4", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.16.0", "@babel/code-frame@^7.16.7", "@babel/code-frame@^7.8.3":
   version "7.16.7"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.16.7.tgz#44416b6bd7624b998f5b1af5d470856c40138789"

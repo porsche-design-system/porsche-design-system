@@ -40,8 +40,6 @@
   },
   "devDependencies": {
     "@axe-core/puppeteer": "^4.4.2",
-    "@axe-devtools/puppeteer": "^4.4.1",
-    "@axe-devtools/reporter": "^4.4.0",
     "@types/node": "^17.0.25",
     "@types/prismjs": "^1.26.0",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
