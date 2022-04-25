@@ -53,6 +53,7 @@ const generateComponentMeta = (): void => {
     [propName: string]: string;
   }[];
   hasSlottedCss: boolean;
+  hasAriaProp: boolean;
   hasSkeleton: boolean;
   shouldPatchSlot: boolean;
   skeletonProps: { propName: string; shouldAddValueToClassName: boolean }[];
@@ -70,6 +71,7 @@ const generateComponentMeta = (): void => {
       [propName: string]: string;
     }[];
     hasSlottedCss: boolean;
+    hasAriaProp: boolean;
     hasSkeleton: boolean;
     shouldPatchSlot: boolean;
     skeletonProps: { propName: string; shouldAddValueToClassName: boolean }[];
@@ -96,6 +98,7 @@ const generateComponentMeta = (): void => {
     const isDelegatingFocus = source.includes('delegatesFocus: true');
     const isThemeable = source.includes('public theme?: Theme');
     const hasSlottedCss = source.includes('attachSlottedCss');
+    const hasAriaProp = source.includes('public aria?: SelectedAriaAttributes');
     const hasSkeleton = SKELETON_TAG_NAMES.includes(tagName as any);
     const shouldPatchSlot = TAG_NAMES_TO_ADD_SLOT_TO.includes(tagName);
     const usesScss = source.includes('styleUrl:');
@@ -148,6 +151,7 @@ const generateComponentMeta = (): void => {
       requiredChild,
       requiredProps,
       hasSlottedCss,
+      hasAriaProp,
       hasSkeleton,
       shouldPatchSlot,
       skeletonProps,
