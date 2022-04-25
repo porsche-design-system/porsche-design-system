@@ -3,9 +3,8 @@
  * */
 
 import { CDN_BASE_URL as ICONS_CDN_BASE_URL, ICONS_MANIFEST } from '@porsche-design-system/icons';
-import type { IconName } from '../../../types';
+import type { IconName, SelectedAriaAttributes } from '../../../types';
 import { paramCaseToCamelCase, parseAndGetAriaAttributes, pdsFetch } from '../../../utils';
-import type { SelectedAriaAttributes } from '../../../types';
 
 export const ICON_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type IconAriaAttributes = typeof ICON_ARIA_ATTRIBUTES[number];
@@ -51,12 +50,12 @@ export const buildIconUrl = (iconNameOrSource: IconName | string = DEFAULT_ICON_
 
 export const patchAriaIntoSVG = (
   content: string,
-  rawAccessibility: SelectedAriaAttributes<IconAriaAttributes>
+  rawAriaAttributes: SelectedAriaAttributes<IconAriaAttributes>
 ): string => {
-  if (rawAccessibility) {
-    const accessibility = parseAndGetAriaAttributes(rawAccessibility, ICON_ARIA_ATTRIBUTES);
+  if (rawAriaAttributes) {
+    const ariaAttributes = parseAndGetAriaAttributes(rawAriaAttributes, ICON_ARIA_ATTRIBUTES);
     const attributes = ['role="img"']
-      .concat(Object.entries(accessibility).map(([key, val]) => `${key}="${val}"`))
+      .concat(Object.entries(ariaAttributes).map(([key, val]) => `${key}="${val}"`))
       .join(' ');
 
     return content.replace(/^(<svg)/, `$1 ${attributes}`);
