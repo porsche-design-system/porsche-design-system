@@ -5,7 +5,10 @@ import { buildResponsiveStyles, getCss } from '../../../utils';
 import { addImportantToEachRule, addImportantToRule, getTransition, getThemedColors } from '../../../styles';
 import { getFontWeight } from '../../../styles/font-weight-styles';
 import { fontSize, textSmall } from '@porsche-design-system/utilities-v2';
-import { getFunctionalComponentPrevNextButtonStyles } from '../../common/horizontal-scrolling/prev-next-button-styles';
+import {
+  getBarStyles,
+  getFunctionalComponentHorizontalScrollWrapperStyles,
+} from '../../common/horizontal-scrolling/horizontal-scroll-wrapper-styles';
 
 const tabsTransitionDuration = '.4s';
 
@@ -75,60 +78,11 @@ export const getComponentCss = (
         },
       }),
     },
-    root: {
-      position: 'relative',
+    ...getFunctionalComponentHorizontalScrollWrapperStyles(gradientColor, gradientColorTransparent, {
       ...textSmall,
       fontWeight: getFontWeight(weight),
-      margin: '0 -4px',
       ...buildResponsiveStyles(size, (s: TabSize) => fontSize[s]),
-    },
-    'scroll-area': {
-      position: 'relative',
-      padding: '4px 4px 0',
-      overflowY: 'hidden',
-      overflowX: 'scroll',
-      whiteSpace: 'nowrap',
-      msOverflowStyle: 'none' /* IE and Edge */,
-      scrollbarWidth: 'none' /* Firefox */,
-      '&::-webkit-scrollbar': {
-        display: 'none',
-      },
-    },
-    // Extra wrapper needed to compensate different offset parent calculation depending of browser.
-    // Needed for position of status bar.
-    'scroll-wrapper': {
-      position: 'relative',
-      display: 'inline-block',
-      padding: '0 0 .5em',
-      minWidth: '100%',
-    },
-    bar: {
-      display: 'block',
-      position: 'absolute',
-      width: 0,
-      height: weight === 'semibold' ? '.125em' : '.09375em',
-      left: 0,
-      bottom: 0,
-      background: activeColor,
-      '&--enable-transition': {
-        willChange: 'width',
-        transition: `transform ${tabsTransitionDuration},width ${tabsTransitionDuration}`,
-      },
-    },
-    trigger: {
-      display: 'block',
-      position: 'absolute',
-      top: 0,
-      height: '100%',
-      width: '1px',
-      visibility: 'hidden',
-      '&:first-of-type': {
-        left: 0,
-      },
-      '&:last-of-type': {
-        right: 0,
-      },
-    },
-    ...getFunctionalComponentPrevNextButtonStyles(gradientColor, gradientColorTransparent),
+    }),
+    ...getBarStyles(weight, activeColor, tabsTransitionDuration),
   });
 };

@@ -1,6 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/core';
 import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
 import type { TabChangeEvent, TabGradientColorTheme, TabWeight, TabSize } from './tabs-bar-utils';
+import type { Direction } from '../../common/horizontal-scrolling/horizontal-scrolling-utils';
 import {
   addEnableTransitionClass,
   determineEnableTransitionClass,
@@ -14,8 +15,7 @@ import {
 } from './tabs-bar-utils';
 import { attachComponentCss, getHTMLElement, getHTMLElements, scrollElementTo, setAttribute } from '../../../utils';
 import { getComponentCss } from './tabs-bar-styles';
-import type { Direction } from '../../common/horizontal-scrolling/horizontal-scrolling-utils';
-import { PrevNextButton } from '../../common/horizontal-scrolling/prev-next-button';
+import { HorizontalScrollWrapper } from '../../common/horizontal-scrolling/horizontal-scroll-wrapper';
 
 @Component({
   tag: 'p-tabs-bar',
@@ -111,32 +111,16 @@ export class TabsBar {
 
   public render(): JSX.Element {
     return (
-      <div class="root">
-        <div class="scroll-area" role="tablist">
-          <div class="scroll-wrapper">
-            <slot />
-            <span class="bar" />
-            <div class="trigger" />
-            <div class="trigger" />
-          </div>
-        </div>
-        <PrevNextButton
-          host={this.host}
-          direction="prev"
-          isNextHidden={this.isNextHidden}
-          isPrevHidden={this.isPrevHidden}
-          scrollOnPrevNextClick={this.scrollOnPrevNextClick}
-          theme={this.theme}
-        />
-        <PrevNextButton
-          host={this.host}
-          direction="next"
-          isNextHidden={this.isNextHidden}
-          isPrevHidden={this.isPrevHidden}
-          scrollOnPrevNextClick={this.scrollOnPrevNextClick}
-          theme={this.theme}
-        />
-      </div>
+      <HorizontalScrollWrapper
+        host={this.host}
+        isNextHidden={this.isNextHidden}
+        isPrevHidden={this.isPrevHidden}
+        scrollOnPrevNextClick={this.scrollOnPrevNextClick}
+        withBar={true}
+        theme={this.theme}
+      >
+        <slot />
+      </HorizontalScrollWrapper>
     );
   }
 

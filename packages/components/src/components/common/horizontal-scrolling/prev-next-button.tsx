@@ -1,8 +1,8 @@
 import { h } from '@stencil/core';
 import type { FunctionalComponent } from '@stencil/core';
-import { getPrefixedTagNames } from '../../../utils';
 import type { ThemeExtendedElectric } from '../../../types';
-import { Direction } from './horizontal-scrolling-utils';
+import type { Direction } from './horizontal-scrolling-utils';
+import { getPrefixedTagNames } from '../../../utils';
 
 type PrevNextButtonProps = {
   host: HTMLElement;
@@ -11,7 +11,6 @@ type PrevNextButtonProps = {
   isPrevHidden: boolean;
   scrollOnPrevNextClick: (direction: Direction) => void;
   theme: ThemeExtendedElectric;
-  ref?: (el: HTMLDivElement) => void;
 };
 
 export const PrevNextButton: FunctionalComponent<PrevNextButtonProps> = ({
@@ -28,7 +27,6 @@ export const PrevNextButton: FunctionalComponent<PrevNextButtonProps> = ({
     [`action--${direction}`]: true,
     ['action--hidden']: isDirectionNext ? isNextHidden : isPrevHidden,
   };
-
   const PrefixedTagNames = getPrefixedTagNames(host);
 
   return (
