@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### [Unreleased]
 
 #### Changed
-- `Headline` has no hyphenation style by default
+- `Headline` has no `hypens` / `overflow-wrap` style by default
 
 ### [2.11.0-skeletons] - 2022-04-21
 
