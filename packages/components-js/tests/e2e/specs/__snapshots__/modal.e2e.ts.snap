@@ -67,23 +67,8 @@ Object {
                 Object {
                   "children": Array [
                     Object {
-                      "children": Array [
-                        Object {
-                          "children": Array [
-                            Object {
-                              "children": Array [
-                                Object {
-                                  "name": "Some Heading",
-                                  "role": "StaticText",
-                                },
-                              ],
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                      ],
-                      "role": "none",
+                      "name": "Some Heading",
+                      "role": "StaticText",
                     },
                   ],
                   "role": "none",
