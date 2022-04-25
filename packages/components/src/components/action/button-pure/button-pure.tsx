@@ -21,11 +21,11 @@ import type {
   TextWeight,
   ThemeExtendedElectricDark,
 } from '../../../types';
-import { isSizeInherit } from '../../basic/typography/text/text-utils';
 import { warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 import { getComponentCss } from './button-pure-styles';
 import type { ButtonAriaAttributes } from '../button/button-utils';
 import { BUTTON_ARIA_ATTRIBUTES } from '../button/button-utils';
+import { isSizeInherit } from '../../../utils';
 
 @Component({
   tag: 'p-button-pure',

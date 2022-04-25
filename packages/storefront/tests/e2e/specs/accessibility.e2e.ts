@@ -1,5 +1,5 @@
 import { baseURL } from '../helpers';
-import { ElementHandle, Page } from 'puppeteer';
+import type { ElementHandle, Page } from 'puppeteer';
 
 const getStyleOnFocus = async (element: ElementHandle): Promise<string> => {
   await element.focus();

@@ -28,7 +28,7 @@ const cssStyles = sass.compileString(`
 const SampleStyles = styled.div({ focus: getFocus(), heading: headingMedium });
 const useStyles = createUseStyles({ focus: getFocus(), heading: headingMedium });
 let jssStyles: string;
-const STYLED_COMPONENTS_AUTO_GENERATED_CLASS_NAME: string = 'cgVBvh';
+const STYLED_COMPONENTS_AUTO_GENERATED_CLASS_NAME: string = 'gnvFMv';
 
 const formatAndNeutralizeStyle = (style: string): string => {
   const classRegExp = new RegExp(`(.${STYLED_COMPONENTS_AUTO_GENERATED_CLASS_NAME} )`, 'g');
