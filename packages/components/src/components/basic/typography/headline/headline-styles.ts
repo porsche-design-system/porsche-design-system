@@ -15,7 +15,7 @@ import {
 import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../../../styles/typography-styles';
 import { isVariantType } from './headline-utils';
 
-const headingMap: { [key in VariantType]: any } = {
+const headingMap: { [key in VariantType]: JssStyle } = {
   'large-title': headingXXLarge,
   'headline-1': headingXLarge,
   'headline-2': headingLarge,

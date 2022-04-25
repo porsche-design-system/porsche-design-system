@@ -1,5 +1,5 @@
 import type { TextSize } from '../../types';
-import { BreakpointCustomizable } from '../breakpoint-customizable';
+import type { BreakpointCustomizable } from '../breakpoint-customizable';
 import { isSizeInherit } from './isSizeInherit';
 
 describe('isSizeInherit()', () => {
