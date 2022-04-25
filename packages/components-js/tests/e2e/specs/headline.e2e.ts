@@ -35,23 +35,6 @@ describe('headline', () => {
   const getHeadlineTagName = async () =>
     await page.$eval('p-headline', (el) => el.shadowRoot.querySelector('.root').tagName);
 
-  it('should forward props correctly to p-text', async () => {
-    await initHeadline({ variant: 'inherit' });
-    const host = await getHost();
-    const text = await getText();
-
-    expect(await getProperty(text, 'size')).toBe('inherit');
-    expect(await getProperty(text, 'align')).toBe('left');
-    expect(await getProperty(text, 'ellipsis')).toBe(false);
-
-    await setProperty(host, 'align', 'center');
-    await setProperty(host, 'ellipsis', true);
-    await waitForStencilLifecycle(page);
-
-    expect(await getProperty(text, 'align')).toBe('center');
-    expect(await getProperty(text, 'ellipsis')).toBe(true);
-  });
-
   describe('tag', () => {
     it('should render according to variant', async () => {
       await initHeadline({ variant: 'large-title' });
@@ -116,9 +99,8 @@ describe('headline', () => {
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidLoad['p-headline'], 'componentDidLoad: p-headline').toBe(1);
-      expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(1);
 
-      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
