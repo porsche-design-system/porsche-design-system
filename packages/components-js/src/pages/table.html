@@ -18,7 +18,9 @@
         [
           '<p-table-head-row>',
           ...items.map((item) => {
-            const attrs = item.style?.minWidth ? 'style="min-width: 250px;"' : '';
+            const attrs = [item.multiline && 'multiline="true"', item.style?.minWidth && 'style="min-width: 250px;"']
+              .filter((x) => x)
+              .join(' ');
             return `<p-table-head-cell ${attrs}>${item.name}</p-table-head-cell>`;
           }),
           '</p-table-head-row>',
@@ -39,6 +41,7 @@
     />${item.html}
   </p-table-cell>
   <p-table-cell multiline="true">${item.longText}</p-table-cell>
+  <p-table-cell>${item.shortText}</p-table-cell>
   <p-table-cell>${item.shortText}</p-table-cell>
   <p-table-cell>${item.shortText}</p-table-cell>
   <p-table-cell>
