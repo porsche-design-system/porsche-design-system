@@ -64,7 +64,7 @@
         .reduce((result, category) => {
           result[category] = this.config.Components[category];
           return result;
-        }, {} as typeof this.config.Components);
+        }, {} as StorefrontConfig.Components);
     }
 
     @Watch('$route')
