@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/core';
 import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
-import type { Direction, TabChangeEvent, TabGradientColorTheme, TabWeight, TabSize } from './tabs-bar-utils';
+import type { TabChangeEvent, TabGradientColorTheme, TabWeight, TabSize } from './tabs-bar-utils';
 import {
   addEnableTransitionClass,
   determineEnableTransitionClass,
@@ -12,15 +12,10 @@ import {
   removeEnableTransitionClass,
   sanitizeActiveTabIndex,
 } from './tabs-bar-utils';
-import {
-  attachComponentCss,
-  getHTMLElement,
-  getHTMLElements,
-  getPrefixedTagNames,
-  scrollElementTo,
-  setAttribute,
-} from '../../../utils';
+import { attachComponentCss, getHTMLElement, getHTMLElements, scrollElementTo, setAttribute } from '../../../utils';
 import { getComponentCss } from './tabs-bar-styles';
+import type { Direction } from '../../common/horizontal-scrolling/horizontal-scrolling-utils';
+import { PrevNextButton } from '../../common/horizontal-scrolling/prevNextButton';
 
 @Component({
   tag: 'p-tabs-bar',
@@ -115,35 +110,6 @@ export class TabsBar {
   }
 
   public render(): JSX.Element {
-    const renderPrevNextButton = (direction: Direction): JSX.Element => {
-      const isDirectionNext = direction === 'next';
-      const actionClasses = {
-        ['action']: true,
-        [`action--${direction}`]: true,
-        ['action--hidden']: isDirectionNext ? this.isNextHidden : this.isPrevHidden,
-      };
-
-      const PrefixedTagNames = getPrefixedTagNames(this.host);
-
-      return (
-        <div class={actionClasses}>
-          <span class="gradient" />
-          <PrefixedTagNames.pButtonPure
-            type="button"
-            tabbable={false}
-            hide-label="true"
-            size="inherit"
-            icon={isDirectionNext ? 'arrow-head-right' : 'arrow-head-left'}
-            onClick={() => this.scrollOnPrevNextClick(direction)}
-            theme={this.theme}
-            aria-hidden="true"
-          >
-            {direction}
-          </PrefixedTagNames.pButtonPure>
-        </div>
-      );
-    };
-
     return (
       <div class="root">
         <div class="scroll-area" role="tablist">
@@ -154,8 +120,22 @@ export class TabsBar {
             <div class="trigger" />
           </div>
         </div>
-        {renderPrevNextButton('prev')}
-        {renderPrevNextButton('next')}
+        <PrevNextButton
+          host={this.host}
+          direction="prev"
+          isNextHidden={this.isNextHidden}
+          isPrevHidden={this.isPrevHidden}
+          scrollOnPrevNextClick={this.scrollOnPrevNextClick}
+          theme={this.theme}
+        />
+        <PrevNextButton
+          host={this.host}
+          direction="next"
+          isNextHidden={this.isNextHidden}
+          isPrevHidden={this.isPrevHidden}
+          scrollOnPrevNextClick={this.scrollOnPrevNextClick}
+          theme={this.theme}
+        />
       </div>
     );
   }

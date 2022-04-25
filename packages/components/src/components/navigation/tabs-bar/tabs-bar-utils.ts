@@ -1,6 +1,7 @@
 import type { TextWeight } from '../../../types';
 import { getPrefixedTagNames, getScrollByX, getTagName } from '../../../utils';
 import { pxToRemWithUnit } from '../../../styles';
+import { Direction } from '../../common/horizontal-scrolling/horizontal-scrolling-utils';
 
 const TAB_SIZE = ['small', 'medium'] as const;
 export type TabSize = typeof TAB_SIZE[number];
@@ -10,7 +11,6 @@ export type TabWeight = Extract<TextWeight, 'regular' | 'semibold'>;
 export type TabChangeEvent = { activeTabIndex: number };
 export type TabGradientColorTheme = 'default' | 'surface';
 
-export type Direction = 'prev' | 'next';
 export const FOCUS_PADDING_WIDTH = 4;
 const ENABLE_TRANSITION_CLASS = 'bar--enable-transition';
 
