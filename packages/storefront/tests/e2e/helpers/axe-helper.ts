@@ -1,4 +1,3 @@
-import { AxeDevToolsPuppeteer } from '@axe-devtools/puppeteer';
 import { AxePuppeteer } from '@axe-core/puppeteer';
 import * as fs from 'fs';
 import * as path from 'path';
