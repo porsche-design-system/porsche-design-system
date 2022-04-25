@@ -1,5 +1,5 @@
 import { baseURL } from '../helpers';
-import { ElementHandle, Page } from 'puppeteer';
+import type { ElementHandle, Page } from 'puppeteer';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));

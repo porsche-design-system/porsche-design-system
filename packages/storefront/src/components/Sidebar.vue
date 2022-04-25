@@ -40,7 +40,6 @@
   })
   export default class Sidebar extends Vue {
     public config: StorefrontConfig = storefrontConfig;
-    public paramCase = paramCase;
     public accordion: { [id: string]: boolean } = {};
     public hideNavigation = false;
 
@@ -54,19 +53,18 @@
     }
 
     private created(): void {
-      Object.keys(this.config).map((category) => {
-        this.accordion[category] = false;
-      });
+      this.accordion = Object.keys(this.config).reduce((result, category) => {
+        result[category] = false;
+        return result;
+      }, {} as { [id: string]: boolean });
 
       // sort components alphabetically
-      const { Components: unorderedComponents } = this.config;
-      const orderedComponents: typeof unorderedComponents = {};
-      Object.keys(this.config.Components)
+      this.config.Components = Object.keys(this.config.Components)
         .sort()
-        .forEach((category) => {
-          orderedComponents[category] = unorderedComponents[category];
-        });
-      this.config.Components = orderedComponents;
+        .reduce((result, category) => {
+          result[category] = this.config.Components[category];
+          return result;
+        }, {} as StorefrontConfig['Components']);
     }
 
     @Watch('$route')
