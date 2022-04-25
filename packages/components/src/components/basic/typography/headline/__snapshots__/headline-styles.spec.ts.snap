@@ -313,12 +313,10 @@ exports[`getComponentCss() should return correct css for variant: "inherit", ali
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
-  overflow-wrap: normal;
-  hyphens: manual;
-  transition: font-size 1ms linear;
   line-height: inherit;
   font-size: inherit;
   font-weight: 600;
+  transition: font-size 1ms linear;
 }"
 `;
 
@@ -414,8 +412,6 @@ exports[`getComponentCss() should return correct css for variant: {"base":"small
   font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
-  overflow-wrap: normal;
-  hyphens: manual;
   transition: font-size 1ms linear;
 }
 @media(min-width:480px) {

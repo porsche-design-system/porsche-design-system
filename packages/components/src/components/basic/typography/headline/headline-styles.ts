@@ -67,10 +67,10 @@ export const getComponentCss = (
         ? getVariantJssStyle(variant)
         : {
             ...textSmall,
-            transition: 'font-size 1ms linear',
             ...buildResponsiveStyles(variant, getSizeJssStyle),
-            overflowWrap: 'normal',
-            hyphens: 'manual',
+            transition: 'font-size 1ms linear',
+            overflowWrap: null,
+            hyphens: null,
           }),
       ...(ellipsis && getEllipsisJssStyle()),
     },
