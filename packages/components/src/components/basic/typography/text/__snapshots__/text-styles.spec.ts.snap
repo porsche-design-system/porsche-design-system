@@ -359,7 +359,7 @@ p-text a, p-text button {
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
-p-text[theme=\\"dark\\"] a:hover, p-text[theme=\\"dark\\"] button:hover {
+p-text[data-theme=\\"dark\\"] a:hover, p-text[data-theme=\\"dark\\"] button:hover {
   color: #ff0223 !important;
 }
 p-text b, p-text strong {
@@ -398,7 +398,7 @@ prefixed-p-text a, prefixed-p-text button {
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
-prefixed-p-text[theme=\\"dark\\"] a:hover, prefixed-p-text[theme=\\"dark\\"] button:hover {
+prefixed-p-text[data-theme=\\"dark\\"] a:hover, prefixed-p-text[data-theme=\\"dark\\"] button:hover {
   color: #ff0223 !important;
 }
 prefixed-p-text b, prefixed-p-text strong {

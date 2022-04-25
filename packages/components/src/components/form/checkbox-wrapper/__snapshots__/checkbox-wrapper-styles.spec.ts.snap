@@ -1226,7 +1226,7 @@ exports[`getSlottedCss() should return correct css 1`] = `
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
-p-checkbox-wrapper[theme=\\"dark\\"] a:hover {
+p-checkbox-wrapper[data-theme=\\"dark\\"] a:hover {
   color: #ff0223 !important;
 }
 p-checkbox-wrapper b, p-checkbox-wrapper strong {
@@ -1257,7 +1257,7 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
-prefixed-p-checkbox-wrapper[theme=\\"dark\\"] a:hover {
+prefixed-p-checkbox-wrapper[data-theme=\\"dark\\"] a:hover {
   color: #ff0223 !important;
 }
 prefixed-p-checkbox-wrapper b, prefixed-p-checkbox-wrapper strong {

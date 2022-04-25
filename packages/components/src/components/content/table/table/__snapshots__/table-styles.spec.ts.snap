@@ -85,7 +85,7 @@ exports[`getSlottedCss() should return correct css 1`] = `
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
-p-table[theme=\\"dark\\"] a:hover {
+p-table[data-theme=\\"dark\\"] a:hover {
   color: #ff0223 !important;
 }
 p-table b, p-table strong {
@@ -119,7 +119,7 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
-prefixed-p-table[theme=\\"dark\\"] a:hover {
+prefixed-p-table[data-theme=\\"dark\\"] a:hover {
   color: #ff0223 !important;
 }
 prefixed-p-table b, prefixed-p-table strong {

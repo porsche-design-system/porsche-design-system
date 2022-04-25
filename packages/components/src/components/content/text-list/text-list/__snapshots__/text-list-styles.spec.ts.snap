@@ -44,7 +44,7 @@ exports[`getSlottedCss() should return correct css 1`] = `
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
-p-text-list[theme=\\"dark\\"] a:hover {
+p-text-list[data-theme=\\"dark\\"] a:hover {
   color: #ff0223 !important;
 }
 p-text-list b, p-text-list strong {
@@ -75,7 +75,7 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
-prefixed-p-text-list[theme=\\"dark\\"] a:hover {
+prefixed-p-text-list[data-theme=\\"dark\\"] a:hover {
   color: #ff0223 !important;
 }
 prefixed-p-text-list b, prefixed-p-text-list strong {
