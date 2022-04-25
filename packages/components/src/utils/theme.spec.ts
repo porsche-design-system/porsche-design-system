@@ -1,4 +1,4 @@
-import { isThemeDark, getThemeDarkAttribute, isThemeLightElectric, isThemeDarkElectric } from './theme';
+import { isThemeDark, getDataThemeDarkAttribute, isThemeLightElectric, isThemeDarkElectric } from './theme';
 
 describe('isThemeDark()', () => {
   it('should return true for "dark"', () => {
@@ -44,10 +44,10 @@ describe('isThemeDarkElectric()', () => {
 
 describe('getThemeDarkAttribute()', () => {
   it("should return { theme: 'dark' } for dark theme", () => {
-    expect(getThemeDarkAttribute('dark')).toEqual({ theme: 'dark' });
+    expect(getDataThemeDarkAttribute('dark')).toEqual({ 'data-theme': 'dark' });
   });
 
   it('should return null for light theme', () => {
-    expect(getThemeDarkAttribute('light')).toBe(null);
+    expect(getDataThemeDarkAttribute('light')).toBe(null);
   });
 });

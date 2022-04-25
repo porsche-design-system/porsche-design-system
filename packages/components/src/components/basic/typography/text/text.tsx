@@ -4,7 +4,7 @@ import {
   getHTMLElement,
   transitionListener,
   attachSlottedCss,
-  getThemeDarkAttribute,
+  getDataThemeDarkAttribute,
   attachComponentCss,
 } from '../../../../utils';
 import type { BreakpointCustomizable, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
@@ -58,12 +58,17 @@ export class Text {
       this.theme
     );
   }
-
-  public componentDidUpdate(): void {
-    if (!this.theme) {
-      this.theme = 'light';
-    }
-  }
+  //
+  // public componentShouldUpdate(newV, oldV, prop): boolean {
+  //   console.log('%c before', 'color: red', newV, oldV, this.theme);
+  //   if (prop === 'theme' && (!newV || !oldV)) {
+  //     this.theme = 'light';
+  //     console.log('%c after', 'color: green', newV, oldV, this.theme);
+  //     return false;
+  //   } else {
+  //     return true;
+  //   }
+  // }
 
   public componentDidLoad(): void {
     if (isSizeInherit(this.size)) {
@@ -79,7 +84,7 @@ export class Text {
     const TagType = hasSlottedTextTag ? 'div' : this.tag;
 
     return (
-      <Host {...getThemeDarkAttribute(this.theme)}>
+      <Host {...getDataThemeDarkAttribute(this.theme)}>
         <TagType class="root" ref={(el) => (this.textTag = el)}>
           <slot />
         </TagType>
