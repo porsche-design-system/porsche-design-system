@@ -257,10 +257,10 @@ export const waitForInputTransition = (page: Page): Promise<void> => page.waitFo
 export const hasFocus = (page: Page, element: ElementHandle): Promise<boolean> =>
   page.evaluate((el) => document.activeElement === el, element);
 
-let consoleMessages: ConsoleMessage[] = [];
+const consoleMessages: ConsoleMessage[] = [];
 
 export const initConsoleObserver = (page: Page): void => {
-  consoleMessages = []; // reset
+  consoleMessages.length = 0; // reset
 
   page.on('console', (msg) => {
     consoleMessages.push(msg);

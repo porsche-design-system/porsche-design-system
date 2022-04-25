@@ -3,7 +3,6 @@ import type { Theme } from '../types';
 import type { PropertiesHyphen } from 'csstype';
 import { fontWeight } from '@porsche-design-system/utilities-v2';
 import { getThemedColors } from './';
-export { Breakpoint, breakpoint } from '@porsche-design-system/utilities-v2';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
 const transitionTimingFunction = 'ease';
