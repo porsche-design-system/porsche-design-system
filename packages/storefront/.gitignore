@@ -3,8 +3,7 @@ node_modules
 /dist
 /scripts/algoliaRecords.json
 
-/tests/e2e/videos/
-/tests/e2e/screenshots/
+/tests/e2e/results
 /tests/vrt/results
 
 # local env files
