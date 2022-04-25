@@ -6,20 +6,26 @@ import { baseURL } from './';
 
 const AXE_RESULTS_DIR = './tests/e2e/results';
 fs.rmSync(AXE_RESULTS_DIR, { force: true, recursive: true });
+fs.mkdirSync(AXE_RESULTS_DIR);
 
-// to avoid duplicate scans and errors in writing reports
+// to avoid duplicate scans and errors in writing results
 const analyzedUrls: string[] = [];
 
-// we're using @axe-core/puppeteer over @axe-devtools/puppeteer since result wise they are identical
-// the only potential benefit of @axe-devtools/reporter is the possibility to create html reports
+// We're using `@axe-core/puppeteer` over `@axe-devtools/puppeteer` since result wise they are identical.
+// The only potential benefit of `@axe-devtools/reporter` is the possibility to create html reports.
 export const a11yAnalyze = async (page: Page) => {
   const pageUrl = page.url();
 
   if (!analyzedUrls.includes(pageUrl)) {
-    const resultCore = await new AxePuppeteer(page).include('.main').withTags(['wcag2a', 'wcag2aa']).analyze();
+    const result = await new AxePuppeteer(page)
+      .include('.main') // ignore sidebar
+      .withTags(['wcag2a', 'wcag2aa']) // defaults aren't good enough
+      .analyze();
+
+    expect(result.violations.length, 'amount of violations').toBeLessThanOrEqual(1);
 
     const testId = pageUrl.replace(baseURL + '/', '').replace(/\//g, '-') || 'root';
-    fs.writeFileSync(path.resolve(AXE_RESULTS_DIR, 'fs-' + testId + '.json'), JSON.stringify(resultCore, null, 2));
+    fs.writeFileSync(path.resolve(AXE_RESULTS_DIR, 'a11y-' + testId + '.json'), JSON.stringify(result, null, 2));
 
     analyzedUrls.push(pageUrl);
   }
