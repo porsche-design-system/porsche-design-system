@@ -20,4 +20,5 @@ export * from './sync';
 export * from './tag-name';
 export * from './theme';
 export * from './transition-listener';
+export * from './typography';
 export * from './validation';

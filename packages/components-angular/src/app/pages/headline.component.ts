@@ -121,17 +121,37 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </div>
     </div>
 
+    <div class="playground" title="should not automatically break words/strings by default">
+      <p-headline [variant]="'headline-3'" style="width: 240px; background: deeppink">
+        This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
+      </p-headline>
+      <p-headline [variant]="'headline-3'" style="width: 240px; background: deepskyblue">
+        <h3>This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.</h3>
+      </p-headline>
+      <p-headline [variant]="{ base: 'large' }" style="width: 240px; background: deeppink">
+        This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
+      </p-headline>
+      <p-headline [variant]="{ base: 'large' }" style="width: 240px; background: deepskyblue">
+        <h3>This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.</h3>
+      </p-headline>
+    </div>
+
     <div
       class="playground"
-      title="should automatically break words/strings into new line being too long to fit inside their container"
+      title="should be possible to overwrite hyphenation/break words behavior"
+      style="hyphens: auto; overflow-wrap: break-word"
     >
       <p-headline [variant]="'headline-3'" style="width: 240px; background: deeppink">
         This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
       </p-headline>
       <p-headline [variant]="'headline-3'" style="width: 240px; background: deepskyblue">
-        <h3 style="overflow-wrap: normal; word-wrap: normal; hyphens: manual">
-          This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
-        </h3>
+        <h3>This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.</h3>
+      </p-headline>
+      <p-headline [variant]="{ base: 'large' }" style="width: 240px; background: deeppink">
+        This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
+      </p-headline>
+      <p-headline [variant]="{ base: 'large' }" style="width: 240px; background: deepskyblue">
+        <h3>This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.</h3>
       </p-headline>
     </div>
   `,
