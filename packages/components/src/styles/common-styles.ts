@@ -110,7 +110,7 @@ export const getFocusJssStyle = (opts?: GetFocusStylesOptions): JssStyle => {
       };
 };
 
-export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withDarkTheme: true }): Styles => {
+export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withDarkTheme: false }): Styles => {
   return {
     '& a': {
       color: 'inherit',

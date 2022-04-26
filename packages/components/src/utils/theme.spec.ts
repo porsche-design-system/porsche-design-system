@@ -42,7 +42,7 @@ describe('isThemeDarkElectric()', () => {
   });
 });
 
-describe('getThemeDarkAttribute()', () => {
+describe('getDataThemeDarkAttribute()', () => {
   it("should return { theme: 'dark' } for dark theme", () => {
     expect(getDataThemeDarkAttribute('dark')).toEqual({ 'data-theme': 'dark' });
   });
