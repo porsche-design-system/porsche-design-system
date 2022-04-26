@@ -30,7 +30,8 @@ export class StepperHorizontal {
         host={this.host}
         isNextHidden={false}
         isPrevHidden={false}
-        scrollOnPrevNextClick={() => {}}
+        slottedElements={[<div></div>]}
+        scrollAreaElement={<div></div>}
         withBar={false}
         theme={this.theme}
       >

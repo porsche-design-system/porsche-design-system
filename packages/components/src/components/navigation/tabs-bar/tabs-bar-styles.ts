@@ -5,10 +5,7 @@ import { buildResponsiveStyles, getCss } from '../../../utils';
 import { addImportantToEachRule, addImportantToRule, getTransition, getThemedColors } from '../../../styles';
 import { getFontWeight } from '../../../styles/font-weight-styles';
 import { fontSize, textSmall } from '@porsche-design-system/utilities-v2';
-import {
-  getBarStyles,
-  getFunctionalComponentHorizontalScrollWrapperStyles,
-} from '../../common/horizontal-scrolling/horizontal-scroll-wrapper-styles';
+import { getFunctionalComponentHorizontalScrollWrapperStyles } from '../../common/horizontal-scrolling/horizontal-scroll-wrapper-styles';
 
 const tabsTransitionDuration = '.4s';
 
@@ -24,7 +21,6 @@ export const getComponentCss = (
   const { baseColor, backgroundColor, backgroundSurfaceColor, hoverColor, activeColor, focusColor } =
     getThemedColors(theme);
   const gradientColor = gradientColorScheme === 'surface' ? backgroundSurfaceColor : backgroundColor;
-  const gradientColorTransparent = gradientColor + (gradientColor.length === 4 ? '0' : '00');
 
   return getCss({
     '@global': {
@@ -78,11 +74,14 @@ export const getComponentCss = (
         },
       }),
     },
-    ...getFunctionalComponentHorizontalScrollWrapperStyles(gradientColor, gradientColorTransparent, {
-      ...textSmall,
-      fontWeight: getFontWeight(weight),
-      ...buildResponsiveStyles(size, (s: TabSize) => fontSize[s]),
-    }),
-    ...getBarStyles(weight, activeColor, tabsTransitionDuration),
+    ...getFunctionalComponentHorizontalScrollWrapperStyles(
+      gradientColor,
+      {
+        ...textSmall,
+        fontWeight: getFontWeight(weight),
+        ...buildResponsiveStyles(size, (s: TabSize) => fontSize[s]),
+      },
+      { weight, activeColor, transitionDuration: tabsTransitionDuration }
+    ),
   });
 };
