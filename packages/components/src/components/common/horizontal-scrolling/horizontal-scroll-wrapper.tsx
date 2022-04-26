@@ -38,16 +38,14 @@ export const HorizontalScrollWrapper: FunctionalComponent<HorizontalScrollWrappe
       <PrevNextButton
         host={host}
         direction="prev"
-        isNextHidden={isNextHidden}
-        isPrevHidden={isPrevHidden}
+        isHidden={isPrevHidden}
         scrollOnPrevNextClick={() => scrollOnPrevNextClick(slottedElements, scrollAreaElement, 'prev')}
         theme={theme}
       />
       <PrevNextButton
         host={host}
         direction="next"
-        isNextHidden={isNextHidden}
-        isPrevHidden={isPrevHidden}
+        isHidden={isNextHidden}
         scrollOnPrevNextClick={() => scrollOnPrevNextClick(slottedElements, scrollAreaElement, 'next')}
         theme={theme}
       />

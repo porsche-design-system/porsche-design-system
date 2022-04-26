@@ -7,25 +7,22 @@ import { getPrefixedTagNames } from '../../../utils';
 type PrevNextButtonProps = {
   host: HTMLElement;
   direction: Direction;
-  isNextHidden: boolean;
-  isPrevHidden: boolean;
-  scrollOnPrevNextClick: (direction: Direction) => void;
+  isHidden: boolean;
+  scrollOnPrevNextClick: () => void;
   theme: ThemeExtendedElectric;
 };
 
 export const PrevNextButton: FunctionalComponent<PrevNextButtonProps> = ({
   host,
   direction,
-  isNextHidden,
-  isPrevHidden,
+  isHidden,
   scrollOnPrevNextClick,
   theme,
 }) => {
-  const isDirectionNext = direction === 'next';
   const actionClasses = {
     ['action']: true,
     [`action--${direction}`]: true,
-    ['action--hidden']: isDirectionNext ? isNextHidden : isPrevHidden,
+    ['action--hidden']: isHidden,
   };
   const PrefixedTagNames = getPrefixedTagNames(host);
 
@@ -37,8 +34,8 @@ export const PrevNextButton: FunctionalComponent<PrevNextButtonProps> = ({
         tabbable={false}
         hide-label="true"
         size="inherit"
-        icon={isDirectionNext ? 'arrow-head-right' : 'arrow-head-left'}
-        onClick={() => scrollOnPrevNextClick(direction)}
+        icon={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
+        onClick={scrollOnPrevNextClick}
         theme={theme}
         aria-hidden="true"
       >
