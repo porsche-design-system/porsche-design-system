@@ -5,7 +5,6 @@ import type { Theme } from '../../../../types';
 
 export const getComponentCss = (theme: Theme): string => {
   const { backgroundColor } = getThemedColors(theme);
-  const gradientColorTransparent = backgroundColor + (backgroundColor.length === 4 ? '0' : '00');
 
   return getCss({
     '@global': {
@@ -16,6 +15,6 @@ export const getComponentCss = (theme: Theme): string => {
         marginRight: '1em',
       },
     },
-    ...getFunctionalComponentHorizontalScrollWrapperStyles(backgroundColor, gradientColorTransparent),
+    ...getFunctionalComponentHorizontalScrollWrapperStyles(backgroundColor),
   });
 };

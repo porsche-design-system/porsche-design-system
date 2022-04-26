@@ -1,9 +1,8 @@
 import type { Styles } from 'jss';
 
-export const getFunctionalComponentPrevNextButtonStyles = (
-  gradientColor: string,
-  gradientColorTransparent: string
-): Styles => {
+export const getFunctionalComponentPrevNextButtonStyles = (gradientColor: string, withBar: boolean): Styles => {
+  const gradientColorTransparent = gradientColor + (gradientColor.length === 4 ? '0' : '00');
+
   return {
     action: {
       display: 'flex',
@@ -30,8 +29,8 @@ export const getFunctionalComponentPrevNextButtonStyles = (
     },
     gradient: {
       position: 'absolute',
-      top: '-4px',
-      bottom: '-.5em',
+      top: withBar ? '-4px' : 0,
+      bottom: withBar ? '-.5em' : 0,
       width: '2em',
       pointerEvents: 'none',
     },

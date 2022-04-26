@@ -5,9 +5,10 @@ import type { TextWeight } from '../../../types';
 
 export const getFunctionalComponentHorizontalScrollWrapperStyles = (
   gradientColor: string,
-  gradientColorTransparent: string,
-  additionalRootStyles?: Properties
+  additionalRootStyles?: Properties,
+  barOptions?: { weight: TextWeight; activeColor: string; transitionDuration: string }
 ): Styles => {
+  const { weight, activeColor, transitionDuration } = barOptions || {};
   return {
     root: {
       position: 'relative',
@@ -31,7 +32,7 @@ export const getFunctionalComponentHorizontalScrollWrapperStyles = (
     'scroll-wrapper': {
       position: 'relative',
       display: 'inline-block',
-      padding: '0 0 .5em',
+      padding: barOptions ? '0 0 .5em' : 0,
       minWidth: '100%',
     },
     trigger: {
@@ -48,25 +49,21 @@ export const getFunctionalComponentHorizontalScrollWrapperStyles = (
         right: 0,
       },
     },
-    ...getFunctionalComponentPrevNextButtonStyles(gradientColor, gradientColorTransparent),
-  };
-};
-
-// TODO: better naming for bar?
-export const getBarStyles = (weight: TextWeight, activeColor: string, transitionDuration: string) => {
-  return {
-    bar: {
-      display: 'block',
-      position: 'absolute',
-      width: 0,
-      height: weight === 'semibold' ? '.125em' : '.09375em',
-      left: 0,
-      bottom: 0,
-      background: activeColor,
-      '&--enable-transition': {
-        willChange: 'width',
-        transition: `transform ${transitionDuration},width ${transitionDuration}`,
+    ...(barOptions && {
+      bar: {
+        display: 'block',
+        position: 'absolute',
+        width: 0,
+        height: weight === 'semibold' ? '.125em' : '.09375em',
+        left: 0,
+        bottom: 0,
+        background: activeColor,
+        '&--enable-transition': {
+          willChange: 'width',
+          transition: `transform ${transitionDuration},width ${transitionDuration}`,
+        },
       },
-    },
+    }),
+    ...getFunctionalComponentPrevNextButtonStyles(gradientColor, !!barOptions),
   };
 };
