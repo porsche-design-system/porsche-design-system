@@ -1,12 +1,10 @@
 import type { BreakpointCustomizable } from '../../../types';
-import type { TabGradientColorTheme, TabSize, TabWeight } from './tabs-bar-utils';
+import type { TabSize, TabWeight } from './tabs-bar-utils';
 import type { ThemeExtendedElectric } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import { addImportantToEachRule, addImportantToRule, getTransition, getThemedColors } from '../../../styles';
 import { getFontWeight } from '../../../styles/font-weight-styles';
 import { fontSize, textSmall } from '@porsche-design-system/utilities-v2';
-import { getFunctionalComponentHorizontalScrollWrapperStyles } from '../../common/horizontal-scrolling/horizontal-scroll-wrapper-styles';
-
 const tabsTransitionDuration = '.4s';
 
 const transformSelector = (selector: string): string =>
@@ -15,12 +13,9 @@ const transformSelector = (selector: string): string =>
 export const getComponentCss = (
   size: BreakpointCustomizable<TabSize>,
   weight: TabWeight,
-  gradientColorScheme: TabGradientColorTheme,
   theme: ThemeExtendedElectric
 ): string => {
-  const { baseColor, backgroundColor, backgroundSurfaceColor, hoverColor, activeColor, focusColor } =
-    getThemedColors(theme);
-  const gradientColor = gradientColorScheme === 'surface' ? backgroundSurfaceColor : backgroundColor;
+  const { baseColor, hoverColor, activeColor, focusColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -74,14 +69,23 @@ export const getComponentCss = (
         },
       }),
     },
-    ...getFunctionalComponentHorizontalScrollWrapperStyles(
-      gradientColor,
-      {
-        ...textSmall,
-        fontWeight: getFontWeight(weight),
-        ...buildResponsiveStyles(size, (s: TabSize) => fontSize[s]),
+    content: {
+      ...textSmall,
+      fontWeight: getFontWeight(weight),
+      ...buildResponsiveStyles(size, (s: TabSize) => fontSize[s]),
+    },
+    bar: {
+      display: 'block',
+      position: 'absolute',
+      width: 0,
+      height: weight === 'semibold' ? '.125em' : '.09375em',
+      left: 0,
+      bottom: 0,
+      background: activeColor,
+      '&--enable-transition': {
+        willChange: 'width',
+        transition: `transform ${tabsTransitionDuration},width ${tabsTransitionDuration}`,
       },
-      { weight, activeColor, transitionDuration: tabsTransitionDuration }
-    ),
+    },
   });
 };

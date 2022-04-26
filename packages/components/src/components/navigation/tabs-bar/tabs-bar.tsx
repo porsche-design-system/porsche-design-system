@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/core';
 import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
 import type { TabChangeEvent, TabGradientColorTheme, TabWeight, TabSize } from './tabs-bar-utils';
-import type { Direction } from '../../common/horizontal-scrolling/horizontal-scrolling-utils';
+import type { Direction } from '../../common/scroll-wrapper/horizontal-scrolling-utils';
 import {
   addEnableTransitionClass,
   determineEnableTransitionClass,
@@ -14,8 +14,6 @@ import {
 } from './tabs-bar-utils';
 import { attachComponentCss, getHTMLElement, getHTMLElements, scrollElementTo, setAttribute } from '../../../utils';
 import { getComponentCss } from './tabs-bar-styles';
-import { HorizontalScrollWrapper } from '../../common/horizontal-scrolling/horizontal-scroll-wrapper';
-import { initHorizontalScrollingIntersectionObserver } from '../../common/horizontal-scrolling/horizontal-scrolling-utils';
 
 @Component({
   tag: 'p-tabs-bar',
@@ -91,20 +89,20 @@ export class TabsBar {
     // and first call in componentDidRender() is skipped because elements are not defined, yet
     this.setBarStyle();
     this.addEventListeners();
-    initHorizontalScrollingIntersectionObserver(
-      this.host,
-      this.intersectionObserver,
-      (isIntersecting) => {
-        this.isPrevHidden = isIntersecting;
-      },
-      (isIntersecting) => {
-        this.isNextHidden = isIntersecting;
-      }
-    );
+    // initHorizontalScrollingIntersectionObserver(
+    //   this.host,
+    //   this.intersectionObserver,
+    //   (isIntersecting) => {
+    //     this.isPrevHidden = isIntersecting;
+    //   },
+    //   (isIntersecting) => {
+    //     this.isNextHidden = isIntersecting;
+    //   }
+    // );
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.size, this.weight, this.gradientColorScheme, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.size, this.weight, this.theme);
   }
 
   public componentDidRender(): void {
@@ -120,17 +118,12 @@ export class TabsBar {
 
   public render(): JSX.Element {
     return (
-      <HorizontalScrollWrapper
-        host={this.host}
-        isNextHidden={this.isNextHidden}
-        isPrevHidden={this.isPrevHidden}
-        slottedElements={this.tabElements}
-        scrollAreaElement={this.scrollAreaElement}
-        withBar={true}
-        theme={this.theme}
-      >
-        <slot />
-      </HorizontalScrollWrapper>
+      <p-scroll-wrapper theme={this.theme} gradientColorScheme={this.gradientColorScheme}>
+        <span class="content">
+          <slot />
+          <span class="bar" />
+        </span>
+      </p-scroll-wrapper>
     );
   }
 
@@ -179,8 +172,8 @@ export class TabsBar {
   private defineHTMLElements = (): void => {
     const { shadowRoot } = this.host;
     this.barElement = getHTMLElement(shadowRoot, '.bar');
-    this.scrollAreaElement = getHTMLElement(shadowRoot, '.scroll-area');
-    this.prevGradientElement = getHTMLElement(shadowRoot, '.gradient');
+    this.scrollAreaElement = getHTMLElement(shadowRoot.querySelector('p-scroll-wrapper').shadowRoot, '.scroll-area');
+    this.prevGradientElement = getHTMLElement(shadowRoot.querySelector('p-scroll-wrapper').shadowRoot, '.gradient');
   };
 
   private setTabElements = (): void => {
@@ -188,13 +181,13 @@ export class TabsBar {
   };
 
   private addEventListeners = (): void => {
-    this.scrollAreaElement.addEventListener('click', (e) => {
+    this.scrollAreaElement?.addEventListener('click', (e) => {
       const newTabIndex = this.tabElements.indexOf(e.target as HTMLElement);
       if (newTabIndex >= 0) {
         this.onTabClick(newTabIndex);
       }
     });
-    this.scrollAreaElement.addEventListener('keydown', this.onKeydown);
+    this.scrollAreaElement?.addEventListener('keydown', this.onKeydown);
   };
 
   private initMutationObserver = (): void => {

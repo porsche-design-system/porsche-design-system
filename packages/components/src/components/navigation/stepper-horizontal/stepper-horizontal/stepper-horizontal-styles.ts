@@ -1,11 +1,7 @@
 import { getCss } from '../../../../utils';
-import { addImportantToEachRule, getThemedColors } from '../../../../styles';
-import { getFunctionalComponentHorizontalScrollWrapperStyles } from '../../../common/horizontal-scrolling/horizontal-scroll-wrapper-styles';
-import type { Theme } from '../../../../types';
+import { addImportantToEachRule } from '../../../../styles';
 
-export const getComponentCss = (theme: Theme): string => {
-  const { backgroundColor } = getThemedColors(theme);
-
+export const getComponentCss = (): string => {
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
@@ -15,6 +11,5 @@ export const getComponentCss = (theme: Theme): string => {
         marginRight: '1em',
       },
     },
-    ...getFunctionalComponentHorizontalScrollWrapperStyles(backgroundColor),
   });
 };

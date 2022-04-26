@@ -26,12 +26,12 @@ import { MarqueAriaAttributes, MarqueSize } from "./components/basic/marque/marq
 import { ModalAriaAttributes } from "./components/content/modal/modal-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/navigation/pagination/pagination-utils";
 import { PopoverDirection } from "./components/feedback/popover/popover-utils";
+import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { StepperState } from "./components/navigation/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
 import { SortingChangeEvent, TableHeadCellSort } from "./components/content/table/table/table-utils";
-import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { TagColor } from "./components/action/tag/tag-utils";
 import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/action/tag-dismissible/tag-dismissible-utils";
 import { TextFieldWrapperUnitPosition } from "./components/form/text-field-wrapper/text-field-wrapper-utils";
@@ -673,6 +673,16 @@ export namespace Components {
          */
         "state"?: FormState;
     }
+    interface PScrollWrapper {
+        /**
+          * Adapts the background gradient color of prev and next button.
+         */
+        "gradientColorScheme"?: TabGradientColorTheme;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: ThemeExtendedElectric;
+    }
     interface PSelectWrapper {
         /**
           * The description text.
@@ -1179,6 +1189,12 @@ declare global {
         prototype: HTMLPRadioButtonWrapperElement;
         new (): HTMLPRadioButtonWrapperElement;
     };
+    interface HTMLPScrollWrapperElement extends Components.PScrollWrapper, HTMLStencilElement {
+    }
+    var HTMLPScrollWrapperElement: {
+        prototype: HTMLPScrollWrapperElement;
+        new (): HTMLPScrollWrapperElement;
+    };
     interface HTMLPSelectWrapperElement extends Components.PSelectWrapper, HTMLStencilElement {
     }
     var HTMLPSelectWrapperElement: {
@@ -1354,6 +1370,7 @@ declare global {
         "p-pagination": HTMLPPaginationElement;
         "p-popover": HTMLPPopoverElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
+        "p-scroll-wrapper": HTMLPScrollWrapperElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-select-wrapper-dropdown": HTMLPSelectWrapperDropdownElement;
         "p-spinner": HTMLPSpinnerElement;
@@ -2040,6 +2057,16 @@ declare namespace LocalJSX {
          */
         "state"?: FormState;
     }
+    interface PScrollWrapper {
+        /**
+          * Adapts the background gradient color of prev and next button.
+         */
+        "gradientColorScheme"?: TabGradientColorTheme;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: ThemeExtendedElectric;
+    }
     interface PSelectWrapper {
         /**
           * The description text.
@@ -2444,6 +2471,7 @@ declare namespace LocalJSX {
         "p-pagination": PPagination;
         "p-popover": PPopover;
         "p-radio-button-wrapper": PRadioButtonWrapper;
+        "p-scroll-wrapper": PScrollWrapper;
         "p-select-wrapper": PSelectWrapper;
         "p-select-wrapper-dropdown": PSelectWrapperDropdown;
         "p-spinner": PSpinner;
@@ -2499,6 +2527,7 @@ declare module "@stencil/core" {
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
             "p-popover": LocalJSX.PPopover & JSXBase.HTMLAttributes<HTMLPPopoverElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
+            "p-scroll-wrapper": LocalJSX.PScrollWrapper & JSXBase.HTMLAttributes<HTMLPScrollWrapperElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-select-wrapper-dropdown": LocalJSX.PSelectWrapperDropdown & JSXBase.HTMLAttributes<HTMLPSelectWrapperDropdownElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;

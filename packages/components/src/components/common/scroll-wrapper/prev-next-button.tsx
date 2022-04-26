@@ -8,7 +8,7 @@ type PrevNextButtonProps = {
   host: HTMLElement;
   direction: Direction;
   isHidden: boolean;
-  scrollOnPrevNextClick: () => void;
+  scrollOnPrevNextClick: (direction: Direction) => void;
   theme: ThemeExtendedElectric;
 };
 
