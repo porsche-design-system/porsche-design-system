@@ -49,11 +49,12 @@ it('should focus correct element', async () => {
   await expectCloseButtonToBeFocused('after open 3rd tab');
 
   await page.waitForSelector('p-table');
+  await page.waitForTimeout(50); // give it some time to focus via stencil lifecycle
   await expectDialogToBeFocused('after loading');
   await page.keyboard.press('Tab');
   await expectCloseButtonToBeFocused('after loading 1st tab');
   await page.keyboard.press('Tab');
-  expect(await getActiveElementTagName(), 'after loading 2nd tab').toBe('P-TABLE-HEAD-CELL');
+  expect(await getActiveElementTagName(), 'after loading 2nd tab').toBe('P-TABLE'); // when table is scrollable, otherwise it would be P-TABLE-HEAD-CELL
 
   const btnReload = await selectNode(page, '#btn-reload');
   await btnReload.focus();

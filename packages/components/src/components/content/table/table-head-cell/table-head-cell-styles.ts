@@ -14,7 +14,12 @@ import { isDirectionAsc, isSortable } from './table-head-cell-utils';
 const { contrastMediumColor, baseColor } = getThemedColors('light');
 const { semiBold: fontWeightSemiBold } = fontWeight;
 
-export const getComponentCss = (active: boolean, direction: Direction, hideLabel: boolean): string => {
+export const getComponentCss = (
+  active: boolean,
+  direction: Direction,
+  hideLabel: boolean,
+  multiline: boolean
+): string => {
   const sortable = isSortable(active, direction);
 
   return getCss({
@@ -25,7 +30,7 @@ export const getComponentCss = (active: boolean, direction: Direction, hideLabel
         borderBottom: `1px solid ${contrastMediumColor}`,
         verticalAlign: 'bottom',
         fontWeight: fontWeightSemiBold,
-        whiteSpace: 'nowrap',
+        whiteSpace: multiline ? 'normal' : 'nowrap',
       }),
       ...(sortable
         ? {
