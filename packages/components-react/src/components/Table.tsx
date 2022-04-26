@@ -20,6 +20,7 @@ export const TableWithCaption = (): JSX.Element => {
               key={i}
               sort={item}
               hideLabel={item.hideLabel}
+              multiline={item.multiline}
               style={item.style}
               dangerouslySetInnerHTML={{ __html: item.name }}
             />
@@ -40,6 +41,7 @@ export const TableWithCaption = (): JSX.Element => {
               <span dangerouslySetInnerHTML={{ __html: item.html }} />
             </PTableCell>
             <PTableCell multiline={true}>{item.longText}</PTableCell>
+            <PTableCell>{item.shortText}</PTableCell>
             <PTableCell>{item.shortText}</PTableCell>
             <PTableCell>{item.shortText}</PTableCell>
             <PTableCell>
