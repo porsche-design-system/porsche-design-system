@@ -7,7 +7,6 @@ import {
   determineEnableTransitionClass,
   hasPTabsParent,
   getScrollActivePosition,
-  getScrollPositionAfterPrevNextClick,
   getTransformationToActive,
   getTransformationToInactive,
   removeEnableTransitionClass,
@@ -16,6 +15,7 @@ import {
 import { attachComponentCss, getHTMLElement, getHTMLElements, scrollElementTo, setAttribute } from '../../../utils';
 import { getComponentCss } from './tabs-bar-styles';
 import { HorizontalScrollWrapper } from '../../common/horizontal-scrolling/horizontal-scroll-wrapper';
+import { initHorizontalScrollingIntersectionObserver } from '../../common/horizontal-scrolling/horizontal-scrolling-utils';
 
 @Component({
   tag: 'p-tabs-bar',
@@ -91,7 +91,16 @@ export class TabsBar {
     // and first call in componentDidRender() is skipped because elements are not defined, yet
     this.setBarStyle();
     this.addEventListeners();
-    this.initIntersectionObserver();
+    initHorizontalScrollingIntersectionObserver(
+      this.host,
+      this.intersectionObserver,
+      (isIntersecting) => {
+        this.isPrevHidden = isIntersecting;
+      },
+      (isIntersecting) => {
+        this.isNextHidden = isIntersecting;
+      }
+    );
   }
 
   public componentWillRender(): void {
@@ -115,7 +124,8 @@ export class TabsBar {
         host={this.host}
         isNextHidden={this.isNextHidden}
         isPrevHidden={this.isPrevHidden}
-        scrollOnPrevNextClick={this.scrollOnPrevNextClick}
+        slottedElements={this.tabElements}
+        scrollAreaElement={this.scrollAreaElement}
         withBar={true}
         theme={this.theme}
       >
@@ -202,31 +212,31 @@ export class TabsBar {
     });
   };
 
-  private initIntersectionObserver = (): void => {
-    const [firstTrigger, lastTrigger] = getHTMLElements(this.host.shadowRoot, '.trigger');
-
-    this.intersectionObserver = new IntersectionObserver(
-      (entries) => {
-        for (const { target, isIntersecting } of entries) {
-          if (target === firstTrigger) {
-            this.isPrevHidden = isIntersecting;
-          } else if (target === lastTrigger) {
-            this.isNextHidden = isIntersecting;
-          }
-        }
-      },
-      {
-        // TODO: shouldn't root be the the scrollable div rather than the host?
-        root: this.host,
-        // Defines the percentage of how much of the target (trigger) is visible within the element specified (this.host).
-        // In his case 0.9px of the trigger have to be hidden to show the gradient
-        threshold: 0.1,
-      }
-    );
-
-    this.intersectionObserver.observe(firstTrigger);
-    this.intersectionObserver.observe(lastTrigger);
-  };
+  // private initIntersectionObserver = (): void => {
+  //   const [firstTrigger, lastTrigger] = getHTMLElements(this.host.shadowRoot, '.trigger');
+  //
+  //   this.intersectionObserver = new IntersectionObserver(
+  //     (entries) => {
+  //       for (const { target, isIntersecting } of entries) {
+  //         if (target === firstTrigger) {
+  //           this.isPrevHidden = isIntersecting;
+  //         } else if (target === lastTrigger) {
+  //           this.isNextHidden = isIntersecting;
+  //         }
+  //       }
+  //     },
+  //     {
+  //       // TODO: shouldn't root be the the scrollable div rather than the host?
+  //       root: this.host,
+  //       // Defines the percentage of how much of the target (trigger) is visible within the element specified (this.host).
+  //       // In his case 0.9px of the trigger have to be hidden to show the gradient
+  //       threshold: 0.1,
+  //     }
+  //   );
+  //
+  //   this.intersectionObserver.observe(firstTrigger);
+  //   this.intersectionObserver.observe(lastTrigger);
+  // };
 
   private onTabClick = (newTabIndex: number): void => {
     this.tabChange.emit({ activeTabIndex: newTabIndex });
@@ -291,10 +301,10 @@ export class TabsBar {
     }
   };
 
-  private scrollOnPrevNextClick = (direction: Direction): void => {
-    const scrollPosition = getScrollPositionAfterPrevNextClick(this.tabElements, this.scrollAreaElement, direction);
-    scrollElementTo(this.scrollAreaElement, scrollPosition);
-  };
+  // private scrollOnPrevNextClick = (direction: Direction): void => {
+  //   const scrollPosition = getScrollPositionAfterPrevNextClick(this.tabElements, this.scrollAreaElement, direction);
+  //   scrollElementTo(this.scrollAreaElement, scrollPosition);
+  // };
 
   private getPrevNextTabIndex = (direction: Direction): number => {
     const tabsLength = this.tabElements.length;

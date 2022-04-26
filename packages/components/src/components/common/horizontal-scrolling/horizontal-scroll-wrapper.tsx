@@ -1,15 +1,16 @@
 import { h } from '@stencil/core';
 import type { FunctionalComponent } from '@stencil/core';
 import { PrevNextButton } from './prev-next-button';
-import type { Direction } from './horizontal-scrolling-utils';
+import { scrollOnPrevNextClick } from './horizontal-scrolling-utils';
 import type { ThemeExtendedElectric } from '../../../types';
 
 type HorizontalScrollWrapperProps = {
   host: HTMLElement;
   isNextHidden: boolean;
   isPrevHidden: boolean;
-  scrollOnPrevNextClick: (direction: Direction) => void;
   withBar: boolean;
+  slottedElements: HTMLElement[];
+  scrollAreaElement: HTMLElement;
   theme: ThemeExtendedElectric;
 };
 
@@ -19,8 +20,9 @@ export const HorizontalScrollWrapper: FunctionalComponent<HorizontalScrollWrappe
   host,
   isNextHidden,
   isPrevHidden,
-  scrollOnPrevNextClick,
   withBar,
+  slottedElements,
+  scrollAreaElement,
   theme,
 }) => {
   return (
@@ -38,7 +40,7 @@ export const HorizontalScrollWrapper: FunctionalComponent<HorizontalScrollWrappe
         direction="prev"
         isNextHidden={isNextHidden}
         isPrevHidden={isPrevHidden}
-        scrollOnPrevNextClick={scrollOnPrevNextClick}
+        scrollOnPrevNextClick={() => scrollOnPrevNextClick(slottedElements, scrollAreaElement, 'prev')}
         theme={theme}
       />
       <PrevNextButton
@@ -46,7 +48,7 @@ export const HorizontalScrollWrapper: FunctionalComponent<HorizontalScrollWrappe
         direction="next"
         isNextHidden={isNextHidden}
         isPrevHidden={isPrevHidden}
-        scrollOnPrevNextClick={scrollOnPrevNextClick}
+        scrollOnPrevNextClick={() => scrollOnPrevNextClick(slottedElements, scrollAreaElement, 'next')}
         theme={theme}
       />
     </div>
