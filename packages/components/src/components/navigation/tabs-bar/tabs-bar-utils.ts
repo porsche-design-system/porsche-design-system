@@ -1,7 +1,7 @@
 import type { TextWeight } from '../../../types';
 import { getPrefixedTagNames, getScrollByX, getTagName } from '../../../utils';
 import { pxToRemWithUnit } from '../../../styles';
-import { Direction } from '../../common/horizontal-scrolling/horizontal-scrolling-utils';
+import { Direction } from '../../common/scroll-wrapper/horizontal-scrolling-utils';
 
 const TAB_SIZE = ['small', 'medium'] as const;
 export type TabSize = typeof TAB_SIZE[number];
