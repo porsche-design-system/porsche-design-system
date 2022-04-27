@@ -1624,7 +1624,7 @@ exports[`getSlottedCss() should return correct css 1`] = `
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
-p-select-wrapper[theme=\\"dark\\"] a:hover {
+p-select-wrapper[data-theme=\\"dark\\"] a:hover {
   color: #ff0223 !important;
 }
 p-select-wrapper b, p-select-wrapper strong {
@@ -1655,7 +1655,7 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
-prefixed-p-select-wrapper[theme=\\"dark\\"] a:hover {
+prefixed-p-select-wrapper[data-theme=\\"dark\\"] a:hover {
   color: #ff0223 !important;
 }
 prefixed-p-select-wrapper b, prefixed-p-select-wrapper strong {

@@ -1174,9 +1174,6 @@ exports[`getSlottedCss() should return correct css 1`] = `
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
-p-radio-button-wrapper[theme=\\"dark\\"] a:hover {
-  color: #ff0223 !important;
-}
 p-radio-button-wrapper b, p-radio-button-wrapper strong {
   font-weight: 700 !important;
 }
@@ -1204,9 +1201,6 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
   transition: color var(--p-transition-duration, .24s) ease !important;
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
-}
-prefixed-p-radio-button-wrapper[theme=\\"dark\\"] a:hover {
-  color: #ff0223 !important;
 }
 prefixed-p-radio-button-wrapper b, prefixed-p-radio-button-wrapper strong {
   font-weight: 700 !important;

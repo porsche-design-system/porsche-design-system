@@ -1,7 +1,7 @@
 import { JSX, Component, Prop, h, Element, Host } from '@stencil/core';
 import {
   getHTMLElement,
-  getThemeDarkAttribute,
+  getDataThemeDarkAttribute,
   attachSlottedCss,
   attachComponentCss,
   setLineHeightOnSizeInherit,
@@ -67,7 +67,7 @@ export class Text {
     const TagType = hasSlottedTextTag ? 'div' : this.tag;
 
     return (
-      <Host {...getThemeDarkAttribute(this.theme)}>
+      <Host {...getDataThemeDarkAttribute(this.theme)}>
         <TagType class="root" ref={(el) => (this.textTag = el)}>
           <slot />
         </TagType>
