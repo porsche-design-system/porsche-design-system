@@ -1,6 +1,10 @@
 on:
+  push:
+    branches:
+      - master
+      - issue/1539
   schedule:
-    - cron: "44 * * * *"
+    - cron: "50 * * * *"
 name: 'OSS Review Toolkit'
 jobs:
   ort:
