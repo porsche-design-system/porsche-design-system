@@ -1,11 +1,11 @@
 import { Component, Element, State, Prop, h } from '@stencil/core';
 import { PrevNextButton } from './prev-next-button';
-import type { Direction } from './horizontal-scrolling-utils';
+import type { Direction } from './scroller-utils';
 import type { ThemeExtendedElectric } from '../../../types';
 import { attachComponentCss, getHTMLElement, getHTMLElements, scrollElementTo } from '../../../utils';
 // TODO: move to scroll wrapper utils
 import { getScrollPositionAfterPrevNextClick, TabGradientColorTheme } from '../../navigation/tabs-bar/tabs-bar-utils';
-import { getComponentCss } from './scroll-wrapper-styles';
+import { getComponentCss } from './scroller-styles';
 
 // TODO: scroll bar should be in tabs-bar only
 // TODO: state handling should be inside of horizontal scroll wrapper
@@ -13,10 +13,10 @@ import { getComponentCss } from './scroll-wrapper-styles';
 // TODO: better name for root class?
 
 @Component({
-  tag: 'p-scroll-wrapper',
+  tag: 'p-scroller',
   shadow: true,
 })
-export class ScrollWrapper {
+export class Scroller {
   @Element() public host!: HTMLElement;
 
   /** Adapts the color when used on dark background. */
