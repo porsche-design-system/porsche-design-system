@@ -1,4 +1,4 @@
-import { Component, Element, State, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, State, Prop, Watch, Event, EventEmitter, h } from '@stencil/core';
 import { PrevNextButton } from './prev-next-button';
 import type { Direction } from './scroller-utils';
 import type { ThemeExtendedElectric } from '../../../types';
@@ -10,6 +10,7 @@ import {
   TabGradientColorTheme,
 } from '../../navigation/tabs-bar/tabs-bar-utils';
 import { getComponentCss } from './scroller-styles';
+import { ActiveElementChangeEvent } from './scroller-utils';
 
 // TODO: role="tablist" ? maybe generic?
 // TODO: better name for root class?
@@ -30,6 +31,9 @@ export class Scroller {
   /** Defines which element to be visualized as selected (zero-based numbering). */
   @Prop() public activeElementIndex?: number;
 
+  /** Emitted when active element is changed. */
+  @Event({ bubbles: false }) public activeElementChange: EventEmitter<ActiveElementChangeEvent>;
+
   @State() public isPrevHidden = true;
   @State() public isNextHidden = true;
 
@@ -40,6 +44,16 @@ export class Scroller {
   private direction: Direction = 'next';
   private prevActiveElement: number;
   private parentHost: HTMLElement;
+
+  // TODO: extract and unit test!
+  private get focusedElementIndex(): number {
+    // TODO: this sucks
+    if (document?.activeElement.tagName === 'P-TABS') {
+      return this.activeElementIndex;
+    }
+    const indexOfActiveElement = this.slottedElements.indexOf(document?.activeElement as HTMLElement);
+    return indexOfActiveElement < 0 ? 0 : indexOfActiveElement;
+  }
 
   @Watch('activeElementIndex')
   public activeTabHandler(_newValue: number, oldValue: number): void {
@@ -63,6 +77,14 @@ export class Scroller {
       // skip scrolling on first render when no activeTabIndex is set
       this.scrollActiveElementIntoView(true);
     }
+
+    this.scrollAreaElement.addEventListener('click', (e) => {
+      const newTabIndex = this.slottedElements.indexOf(e.target as HTMLElement);
+      if (newTabIndex >= 0) {
+        this.onElementClick(newTabIndex, true);
+      }
+    });
+    this.scrollAreaElement.addEventListener('keydown', this.onKeydown);
   }
 
   public componentWillRender(): void {
@@ -155,5 +177,52 @@ export class Scroller {
     } else {
       scrollElementTo(this.scrollAreaElement, scrollActivePosition);
     }
+  };
+
+  private onElementClick = (activeElementIndex: number, isEnter: boolean): void => {
+    this.activeElementChange.emit({ activeElementIndex, isEnter });
+  };
+
+  private onKeydown = (e: KeyboardEvent): void => {
+    let upcomingFocusedElementIndex: number;
+    switch (e.key) {
+      case 'ArrowLeft':
+      case 'Left':
+        upcomingFocusedElementIndex = this.getPrevNextTabIndex('prev');
+        break;
+
+      case 'ArrowRight':
+      case 'Right':
+        upcomingFocusedElementIndex = this.getPrevNextTabIndex('next');
+        break;
+
+      case 'Home':
+        upcomingFocusedElementIndex = 0;
+        break;
+
+      case 'End':
+        upcomingFocusedElementIndex = this.slottedElements.length - 1;
+        break;
+
+      case 'Enter':
+        this.onElementClick(this.focusedElementIndex, true);
+        return;
+
+      default:
+        return;
+    }
+
+    this.onElementClick(upcomingFocusedElementIndex, false);
+    this.slottedElements[upcomingFocusedElementIndex].focus();
+
+    e.preventDefault();
+  };
+
+  // TODO: should be pure function and unit tested
+  private getPrevNextTabIndex = (direction: Direction): number => {
+    const slottedElementsLength = this.slottedElements.length;
+    const newTabIndex = this.focusedElementIndex + (direction === 'next' ? 1 : -1);
+
+    return (newTabIndex + slottedElementsLength) % slottedElementsLength;
   };
 }
