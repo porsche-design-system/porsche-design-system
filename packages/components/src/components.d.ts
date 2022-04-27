@@ -672,17 +672,11 @@ export namespace Components {
          */
         "state"?: FormState;
     }
-    interface PScrollWrapper {
-        /**
-          * Adapts the background gradient color of prev and next button.
-         */
-        "gradientColorScheme"?: TabGradientColorTheme;
-        /**
-          * Adapts the color when used on dark background.
-         */
-        "theme"?: ThemeExtendedElectric;
-    }
     interface PScroller {
+        /**
+          * Defines which element to be visualized as selected (zero-based numbering).
+         */
+        "activeElementIndex"?: number;
         /**
           * Adapts the background gradient color of prev and next button.
          */
@@ -1178,12 +1172,6 @@ declare global {
         prototype: HTMLPRadioButtonWrapperElement;
         new (): HTMLPRadioButtonWrapperElement;
     };
-    interface HTMLPScrollWrapperElement extends Components.PScrollWrapper, HTMLStencilElement {
-    }
-    var HTMLPScrollWrapperElement: {
-        prototype: HTMLPScrollWrapperElement;
-        new (): HTMLPScrollWrapperElement;
-    };
     interface HTMLPScrollerElement extends Components.PScroller, HTMLStencilElement {
     }
     var HTMLPScrollerElement: {
@@ -1353,7 +1341,6 @@ declare global {
         "p-pagination": HTMLPPaginationElement;
         "p-popover": HTMLPPopoverElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
-        "p-scroll-wrapper": HTMLPScrollWrapperElement;
         "p-scroller": HTMLPScrollerElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-select-wrapper-dropdown": HTMLPSelectWrapperDropdownElement;
@@ -2039,17 +2026,11 @@ declare namespace LocalJSX {
          */
         "state"?: FormState;
     }
-    interface PScrollWrapper {
-        /**
-          * Adapts the background gradient color of prev and next button.
-         */
-        "gradientColorScheme"?: TabGradientColorTheme;
-        /**
-          * Adapts the color when used on dark background.
-         */
-        "theme"?: ThemeExtendedElectric;
-    }
     interface PScroller {
+        /**
+          * Defines which element to be visualized as selected (zero-based numbering).
+         */
+        "activeElementIndex"?: number;
         /**
           * Adapts the background gradient color of prev and next button.
          */
@@ -2443,7 +2424,6 @@ declare namespace LocalJSX {
         "p-pagination": PPagination;
         "p-popover": PPopover;
         "p-radio-button-wrapper": PRadioButtonWrapper;
-        "p-scroll-wrapper": PScrollWrapper;
         "p-scroller": PScroller;
         "p-select-wrapper": PSelectWrapper;
         "p-select-wrapper-dropdown": PSelectWrapperDropdown;
@@ -2498,7 +2478,6 @@ declare module "@stencil/core" {
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
             "p-popover": LocalJSX.PPopover & JSXBase.HTMLAttributes<HTMLPPopoverElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
-            "p-scroll-wrapper": LocalJSX.PScrollWrapper & JSXBase.HTMLAttributes<HTMLPScrollWrapperElement>;
             "p-scroller": LocalJSX.PScroller & JSXBase.HTMLAttributes<HTMLPScrollerElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-select-wrapper-dropdown": LocalJSX.PSelectWrapperDropdown & JSXBase.HTMLAttributes<HTMLPSelectWrapperDropdownElement>;
