@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Changed
 - `Headline` has no `hypens` / `overflow-wrap` style by default
 
+#### Fixed
+- exception bug when changing `theme` dynamically fixed (occurred in `Headline`, `Select Wrapper`, `Text` and `Text List`)
+
 ### [2.11.0-skeletons] - 2022-04-21
 
 ### [2.11.0] - 2022-04-21
