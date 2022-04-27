@@ -4,7 +4,7 @@ import {
   attachSlottedCss,
   getClosestHTMLElement,
   getPrefixedTagNames,
-  getThemeDarkAttribute,
+  getDataThemeDarkAttribute,
   updateChildren,
 } from '../../../../utils';
 import type { Theme } from '../../../../types';
@@ -51,7 +51,7 @@ export class TextList {
     const isNestedList = !!getClosestHTMLElement(this.host, PrefixedTagNames.pTextListItem);
 
     return (
-      <Host nested={isNestedList} {...getThemeDarkAttribute(this.theme)}>
+      <Host nested={isNestedList} {...getDataThemeDarkAttribute(this.theme)}>
         <TagType role="list">
           <slot />
         </TagType>

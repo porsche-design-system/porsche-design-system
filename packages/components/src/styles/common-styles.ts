@@ -110,7 +110,7 @@ export const getFocusJssStyle = (opts?: GetFocusStylesOptions): JssStyle => {
       };
 };
 
-export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withDarkTheme: true }): Styles => {
+export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withDarkTheme: false }): Styles => {
   return {
     '& a': {
       color: 'inherit',
@@ -119,7 +119,7 @@ export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withD
       ...getFocusJssStyle({ offset: 1 }),
     },
     ...(opts.withDarkTheme && {
-      '&[theme="dark"] a:hover': getHoverJssStyle({ theme: 'dark' })['&:hover'],
+      '&[data-theme="dark"] a:hover': getHoverJssStyle({ theme: 'dark' })['&:hover'],
     }),
     '& b, & strong': {
       fontWeight: fontWeight.bold,
