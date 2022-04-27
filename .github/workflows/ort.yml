@@ -84,4 +84,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ort-analysis-zip
-          path: ./ort/analyzer-result.yml
+          path: analyzer-result.zip
