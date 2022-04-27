@@ -1,7 +1,7 @@
 import { h } from '@stencil/core';
 import type { FunctionalComponent } from '@stencil/core';
 import type { ThemeExtendedElectric } from '../../../types';
-import type { Direction } from './horizontal-scrolling-utils';
+import type { Direction } from './scroller-utils';
 import { getPrefixedTagNames } from '../../../utils';
 
 type PrevNextButtonProps = {

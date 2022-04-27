@@ -69,7 +69,7 @@ export const getComponentCss = (
         },
       }),
     },
-    content: {
+    scroller: {
       ...textSmall,
       fontWeight: getFontWeight(weight),
       ...buildResponsiveStyles(size, (s: TabSize) => fontSize[s]),

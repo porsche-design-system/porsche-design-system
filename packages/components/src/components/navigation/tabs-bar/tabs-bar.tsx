@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/core';
 import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
 import type { TabChangeEvent, TabGradientColorTheme, TabWeight, TabSize } from './tabs-bar-utils';
-import type { Direction } from '../../common/scroll-wrapper/horizontal-scrolling-utils';
+import type { Direction } from '../../common/scroller/scroller-utils';
 import {
   addEnableTransitionClass,
   determineEnableTransitionClass,
@@ -118,12 +118,10 @@ export class TabsBar {
 
   public render(): JSX.Element {
     return (
-      <p-scroll-wrapper theme={this.theme} gradientColorScheme={this.gradientColorScheme}>
-        <span class="content">
-          <slot />
-          <span class="bar" />
-        </span>
-      </p-scroll-wrapper>
+      <p-scroller class="scroller" theme={this.theme} gradientColorScheme={this.gradientColorScheme}>
+        <slot />
+        <span class="bar" />
+      </p-scroller>
     );
   }
 
@@ -172,8 +170,8 @@ export class TabsBar {
   private defineHTMLElements = (): void => {
     const { shadowRoot } = this.host;
     this.barElement = getHTMLElement(shadowRoot, '.bar');
-    this.scrollAreaElement = getHTMLElement(shadowRoot.querySelector('p-scroll-wrapper').shadowRoot, '.scroll-area');
-    this.prevGradientElement = getHTMLElement(shadowRoot.querySelector('p-scroll-wrapper').shadowRoot, '.gradient');
+    this.scrollAreaElement = getHTMLElement(shadowRoot.querySelector('p-scroller').shadowRoot, '.scroll-area');
+    this.prevGradientElement = getHTMLElement(shadowRoot.querySelector('p-scroller').shadowRoot, '.gradient');
   };
 
   private setTabElements = (): void => {
