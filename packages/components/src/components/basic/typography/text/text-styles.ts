@@ -68,7 +68,7 @@ export const getSlottedCss = (host: HTMLElement): string => {
         font: 'inherit',
       },
       // adjust keys of baseSlottedStyles to be applied on both, `a` and `button` tag
-      ...Object.entries(getBaseSlottedStyles()).reduce((result, [key, value]) => {
+      ...Object.entries(getBaseSlottedStyles({ withDarkTheme: true })).reduce((result, [key, value]) => {
         result[key.includes(' a') ? `${key},${key.replace(' a', ' button')}` : key] = value;
         return result;
       }, {} as JssStyle),

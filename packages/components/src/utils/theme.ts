@@ -12,6 +12,6 @@ export const isThemeDarkElectric = (theme: Theme): boolean => {
   return theme === 'dark-electric';
 };
 
-export const getThemeDarkAttribute = (theme: Theme): { theme: Extract<Theme, 'dark'> } | null => {
-  return isThemeDark(theme) ? { theme: 'dark' } : null;
+export const getDataThemeDarkAttribute = (theme: Theme): { 'data-theme': Extract<Theme, 'dark'> } | null => {
+  return isThemeDark(theme) ? { 'data-theme': 'dark' } : null;
 };
