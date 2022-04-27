@@ -6,13 +6,12 @@ import {
   addEnableTransitionClass,
   determineEnableTransitionClass,
   hasPTabsParent,
-  getScrollActivePosition,
   getTransformationToActive,
   getTransformationToInactive,
   removeEnableTransitionClass,
   sanitizeActiveTabIndex,
 } from './tabs-bar-utils';
-import { attachComponentCss, getHTMLElement, getHTMLElements, scrollElementTo, setAttribute } from '../../../utils';
+import { attachComponentCss, getHTMLElement, getHTMLElements, getPrefixedTagNames, setAttribute } from '../../../utils';
 import { getComponentCss } from './tabs-bar-styles';
 
 @Component({
@@ -48,8 +47,6 @@ export class TabsBar {
   private tabElements: HTMLElement[] = [];
   private scrollAreaElement: HTMLElement;
   private barElement: HTMLElement;
-  private prevGradientElement: HTMLElement;
-  private direction: Direction = 'next';
   private prevActiveTabIndex: number;
   private hasPTabsParent: boolean;
 
@@ -66,8 +63,6 @@ export class TabsBar {
   public activeTabHandler(newValue: number, oldValue: number): void {
     this.activeTabIndex = sanitizeActiveTabIndex(newValue, this.tabElements.length);
     this.prevActiveTabIndex = oldValue;
-    this.direction = this.activeTabIndex > this.prevActiveTabIndex ? 'next' : 'prev';
-    this.scrollActiveTabIntoView();
   }
 
   public connectedCallback(): void {
@@ -80,25 +75,10 @@ export class TabsBar {
     this.defineHTMLElements();
     this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length); // since watcher doesn't trigger on first render
 
-    if (!(this.direction === 'next' && this.activeTabIndex === undefined)) {
-      // skip scrolling on first render when no activeTabIndex is set
-      this.scrollActiveTabIntoView(true);
-    }
-
-    // setStatusBarStyle() is needed when intersection observer does not trigger because all tabs are visible
+    // setBarStyle() is needed when intersection observer does not trigger because all tabs are visible
     // and first call in componentDidRender() is skipped because elements are not defined, yet
     this.setBarStyle();
     this.addEventListeners();
-    // initHorizontalScrollingIntersectionObserver(
-    //   this.host,
-    //   this.intersectionObserver,
-    //   (isIntersecting) => {
-    //     this.isPrevHidden = isIntersecting;
-    //   },
-    //   (isIntersecting) => {
-    //     this.isNextHidden = isIntersecting;
-    //   }
-    // );
   }
 
   public componentWillRender(): void {
@@ -117,11 +97,18 @@ export class TabsBar {
   }
 
   public render(): JSX.Element {
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
-      <p-scroller class="scroller" theme={this.theme} gradientColorScheme={this.gradientColorScheme}>
+      <PrefixedTagNames.pScroller
+        class="scroller"
+        theme={this.theme}
+        gradientColorScheme={this.gradientColorScheme}
+        active-element-index={this.activeTabIndex}
+      >
         <slot />
         <span class="bar" />
-      </p-scroller>
+      </PrefixedTagNames.pScroller>
     );
   }
 
@@ -171,7 +158,7 @@ export class TabsBar {
     const { shadowRoot } = this.host;
     this.barElement = getHTMLElement(shadowRoot, '.bar');
     this.scrollAreaElement = getHTMLElement(shadowRoot.querySelector('p-scroller').shadowRoot, '.scroll-area');
-    this.prevGradientElement = getHTMLElement(shadowRoot.querySelector('p-scroller').shadowRoot, '.gradient');
+    // this.prevGradientElement = getHTMLElement(shadowRoot.querySelector('p-scroll-wrapper').shadowRoot, '.gradient');
   };
 
   private setTabElements = (): void => {
@@ -202,32 +189,6 @@ export class TabsBar {
       characterData: true,
     });
   };
-
-  // private initIntersectionObserver = (): void => {
-  //   const [firstTrigger, lastTrigger] = getHTMLElements(this.host.shadowRoot, '.trigger');
-  //
-  //   this.intersectionObserver = new IntersectionObserver(
-  //     (entries) => {
-  //       for (const { target, isIntersecting } of entries) {
-  //         if (target === firstTrigger) {
-  //           this.isPrevHidden = isIntersecting;
-  //         } else if (target === lastTrigger) {
-  //           this.isNextHidden = isIntersecting;
-  //         }
-  //       }
-  //     },
-  //     {
-  //       // TODO: shouldn't root be the the scrollable div rather than the host?
-  //       root: this.host,
-  //       // Defines the percentage of how much of the target (trigger) is visible within the element specified (this.host).
-  //       // In his case 0.9px of the trigger have to be hidden to show the gradient
-  //       threshold: 0.1,
-  //     }
-  //   );
-  //
-  //   this.intersectionObserver.observe(firstTrigger);
-  //   this.intersectionObserver.observe(lastTrigger);
-  // };
 
   private onTabClick = (newTabIndex: number): void => {
     this.tabChange.emit({ activeTabIndex: newTabIndex });
@@ -270,33 +231,7 @@ export class TabsBar {
     e.preventDefault();
   };
 
-  private scrollActiveTabIntoView = (skipAnimation?: boolean): void => {
-    // scrollAreaElement might be undefined in certain scenarios with framework routing involved
-    // where the watcher triggers this function way before componentDidLoad calls defineHTMLElements
-    if (!this.scrollAreaElement) {
-      return;
-    }
-
-    const scrollActivePosition = getScrollActivePosition(
-      this.tabElements,
-      this.direction,
-      this.activeTabIndex,
-      this.scrollAreaElement.offsetWidth,
-      this.prevGradientElement.offsetWidth
-    );
-
-    if (skipAnimation) {
-      this.scrollAreaElement.scrollLeft = scrollActivePosition;
-    } else {
-      scrollElementTo(this.scrollAreaElement, scrollActivePosition);
-    }
-  };
-
-  // private scrollOnPrevNextClick = (direction: Direction): void => {
-  //   const scrollPosition = getScrollPositionAfterPrevNextClick(this.tabElements, this.scrollAreaElement, direction);
-  //   scrollElementTo(this.scrollAreaElement, scrollPosition);
-  // };
-
+  // TODO: should be pure function and unit tested
   private getPrevNextTabIndex = (direction: Direction): number => {
     const tabsLength = this.tabElements.length;
     const newTabIndex = this.focusedTabIndex + (direction === 'next' ? 1 : -1);
