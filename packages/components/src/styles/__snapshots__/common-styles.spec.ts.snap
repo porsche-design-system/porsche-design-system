@@ -45,7 +45,7 @@ Object {
 }
 `;
 
-exports[`getBaseSlottedStyles() should return correct styles without dark theme 1`] = `
+exports[`getBaseSlottedStyles() should return correct styles with dark theme 1`] = `
 Object {
   "& a": Object {
     "&::-moz-focus-inner": Object {
@@ -74,6 +74,36 @@ Object {
   },
   "&[data-theme=\\"dark\\"] a:hover": Object {
     "color": "#ff0223",
+  },
+}
+`;
+
+exports[`getBaseSlottedStyles() should return correct styles without dark theme 1`] = `
+Object {
+  "& a": Object {
+    "&::-moz-focus-inner": Object {
+      "border": 0,
+    },
+    "&:focus": Object {
+      "outlineColor": "currentColor",
+    },
+    "&:focus:not(:focus-visible)": Object {
+      "outlineColor": "transparent",
+    },
+    "&:hover": Object {
+      "color": "#d5001c",
+    },
+    "color": "inherit",
+    "outline": "1px solid transparent",
+    "outlineOffset": "1px",
+    "textDecoration": "underline",
+    "transition": "color var(--p-transition-duration, .24s) ease",
+  },
+  "& b, & strong": Object {
+    "fontWeight": 700,
+  },
+  "& em, & i": Object {
+    "fontStyle": "normal",
   },
 }
 `;
