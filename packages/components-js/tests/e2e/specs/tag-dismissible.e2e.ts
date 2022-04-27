@@ -1,7 +1,6 @@
 import type { Page } from 'puppeteer';
 import {
   expectA11yToMatchSnapshot,
-  getActiveElementTagName,
   getLifecycleStatus,
   initAddEventListener,
   selectNode,

@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {
-  getThemeDarkAttribute,
+  getDataThemeDarkAttribute,
   attachSlottedCss,
   attachComponentCss,
   setLineHeightOnSizeInherit,
@@ -53,7 +53,7 @@ export class Headline {
     const TagName = getHeadlineTagName(this.host, this.variant, this.tag);
 
     return (
-      <Host {...getThemeDarkAttribute(this.theme)}>
+      <Host {...getDataThemeDarkAttribute(this.theme)}>
         <TagName class="root" ref={(el) => (this.headlineTag = el)}>
           <slot />
         </TagName>

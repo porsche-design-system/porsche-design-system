@@ -35,7 +35,7 @@ export const getComponentCss = (
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, getBaseSlottedStyles({ withDarkTheme: false })));
+  return getCss(buildSlottedStyles(host, getBaseSlottedStyles()));
 };
 
 export const getNotificationRootJssStyle = (state: InlineNotificationState, theme: Theme): JssStyle => {

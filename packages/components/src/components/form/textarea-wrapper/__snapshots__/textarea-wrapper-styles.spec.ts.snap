@@ -1809,9 +1809,6 @@ exports[`getSlottedCss() should return correct css 1`] = `
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
-p-textarea-wrapper[theme=\\"dark\\"] a:hover {
-  color: #ff0223 !important;
-}
 p-textarea-wrapper b, p-textarea-wrapper strong {
   font-weight: 700 !important;
 }
@@ -1839,9 +1836,6 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
   transition: color var(--p-transition-duration, .24s) ease !important;
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
-}
-prefixed-p-textarea-wrapper[theme=\\"dark\\"] a:hover {
-  color: #ff0223 !important;
 }
 prefixed-p-textarea-wrapper b, prefixed-p-textarea-wrapper strong {
   font-weight: 700 !important;
