@@ -11,9 +11,6 @@ import {
 } from '../../navigation/tabs-bar/tabs-bar-utils';
 import { getComponentCss } from './scroller-styles';
 
-// TODO: role="tablist" ? maybe generic?
-// TODO: better name for root class?
-
 @Component({
   tag: 'p-scroller',
   shadow: true,
@@ -30,16 +27,17 @@ export class Scroller {
   /** Defines which element to be visualized as selected (zero-based numbering). */
   @Prop() public activeElementIndex?: number;
 
+  /** Elements that are not set in the slot can be passed here **/
+  @Prop() public slottedElements?: HTMLElement[];
+
   @State() public isPrevHidden = true;
   @State() public isNextHidden = true;
 
   private intersectionObserver: IntersectionObserver;
-  private slottedElements: HTMLElement[] = [];
   private scrollAreaElement: HTMLElement;
   private prevGradientElement: HTMLElement;
   private direction: Direction = 'next';
   private prevActiveElement: number;
-  private parentHost: HTMLElement;
 
   @Watch('activeElementIndex')
   public activeTabHandler(_newValue: number, oldValue: number): void {
@@ -50,7 +48,9 @@ export class Scroller {
   }
 
   public connectedCallback(): void {
-    this.setSlottedElements();
+    if (!this.slottedElements) {
+      this.slottedElements = this.host.children as any;
+    }
   }
 
   public componentDidLoad(): void {
@@ -70,6 +70,8 @@ export class Scroller {
   }
 
   public render(): JSX.Element {
+    // TODO: role="tablist" ? maybe generic?
+    // TODO: better name for root class?
     return (
       <div class="root">
         <div class="scroll-area" role="tablist">
@@ -116,12 +118,6 @@ export class Scroller {
 
     this.intersectionObserver.observe(firstTrigger);
     this.intersectionObserver.observe(lastTrigger);
-  };
-
-  private setSlottedElements = (): void => {
-    this.parentHost = (this.host.parentNode as any).host;
-    // TODO: find a generic selector? This works only if used internally and not solo
-    this.slottedElements = getHTMLElements(this.parentHost, 'a,button');
   };
 
   private defineHTMLElements = (): void => {

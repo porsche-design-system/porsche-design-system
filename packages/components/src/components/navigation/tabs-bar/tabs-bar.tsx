@@ -107,6 +107,7 @@ export class TabsBar {
         theme={this.theme}
         gradientColorScheme={this.gradientColorScheme}
         activeElementIndex={this.activeTabIndex}
+        slottedElements={this.tabElements}
         ref={(el) => (this.scroller = el)}
       >
         <slot />
