@@ -13,13 +13,9 @@ type GetComponentChunkLinksOptions = {
   ${withoutTagsOption}
   format?: Format;
 };
-type GetComponentChunkLinksOptionsFormatHtml = Omit<GetComponentChunkLinksOptions, 'withoutTags'> & {
-  format: 'html';
-};
-type GetComponentChunkLinksOptionsFormatJsx = Omit<GetComponentChunkLinksOptions, 'withoutTags'> & {
-  format: 'jsx';
-};
-type GetComponentChunkLinksOptionsWithoutTags =  Omit<GetComponentChunkLinksOptions, 'format'>;`;
+type GetComponentChunkLinksOptionsFormatHtml = Omit<GetComponentChunkLinksOptions, 'withoutTags'> & { format: 'html' };
+type GetComponentChunkLinksOptionsFormatJsx = Omit<GetComponentChunkLinksOptions, 'withoutTags'> & { format: 'jsx' };
+type GetComponentChunkLinksOptionsWithoutTags = Omit<GetComponentChunkLinksOptions, 'format'>;`;
 
   const func = `export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptionsFormatJsx): JSX.Element;
 export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptionsFormatHtml): string;
@@ -30,7 +26,7 @@ export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptions): st
     cdn: 'auto',
     withoutTags: false,
     format: 'html',
-    ...opts
+    ...opts,
   };
 
   const supportedComponentChunkNames: ComponentChunkName[] = ${JSON.stringify(COMPONENT_CHUNK_NAMES)};
@@ -51,15 +47,16 @@ Please use only valid component chunk names:
 
 
   const linksHtml = urls
-     // core needs crossorigin attribute / we need ternary otherwise false is written into link
-    .map((url, idx) => \`<link rel=preload href=\${url} as=script\${idx === 0 ? " crossorigin" : ''}>\`).join('');
+    // core needs crossorigin attribute / we need ternary otherwise false is written into link
+    .map((url, idx) => \`<link rel=preload href=\${url} as=script\${idx === 0 ? ' crossorigin' : ''}>\`)
+    .join('');
 
-  const linksJsx = urls.map((url, index) => <link key={index} rel="preload" href={url} as="script" {...(index === 0 && { crossOrigin: 'true' })} />)
+  const linksJsx = urls.map((url, index) => <link key={index} rel="preload" href={url} as="script" {...(index === 0 && { crossOrigin: 'true' })} />);
 
   const markup = format === 'html' ? linksHtml : <>{linksJsx}</>;
 
   return withoutTags ? urls : markup;
-};`;
+}`;
 
   return [types, func].join('\n\n');
 };

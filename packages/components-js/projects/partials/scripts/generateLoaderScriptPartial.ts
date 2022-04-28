@@ -9,12 +9,8 @@ export const generateLoaderScriptPartial = (): string => {
   ${withoutTagsOption}
   format?: Format;
 };
-type GetLoaderScriptOptionsFormatHtml = Omit<GetLoaderScriptOptions, 'withoutTags'> & {
-  format: 'html';
-};
-type GetLoaderScriptOptionsFormatJsx = Omit<GetLoaderScriptOptions, 'withoutTags'> & {
-   format: 'jsx';
-};
+type GetLoaderScriptOptionsFormatHtml = Omit<GetLoaderScriptOptions, 'withoutTags'> & { format: 'html' };
+type GetLoaderScriptOptionsFormatJsx = Omit<GetLoaderScriptOptions, 'withoutTags'> & { format: 'jsx' };
 type GetLoaderScriptOptionsWithoutTags = Omit<GetLoaderScriptOptions, 'format'>;`;
 
   const componentsJsFilePath = require.resolve('@porsche-design-system/components-js');
@@ -30,7 +26,7 @@ export function getLoaderScript(opts?: GetLoaderScriptOptions): string | JSX.Ele
     prefix: undefined,
     withoutTags: false,
     format: 'html',
-    ...opts
+    ...opts,
   };
 
   const loadCalls = prefix

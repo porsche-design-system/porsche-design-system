@@ -37,15 +37,14 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
   format?: Format;
 };`;
 
-  const func = `export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions & { format: 'html'}): string;
-export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions & { format: 'jsx'}): JSX.Element;
+  const func = `export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions & { format: 'html' }): string;
+export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions & { format: 'jsx' }): JSX.Element;
 export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): string;
 export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): string | JSX.Element {
-  const { appTitle, cdn, format }: GetMetaTagsAndIconLinksOptions
-  = {
+  const { appTitle, cdn, format }: GetMetaTagsAndIconLinksOptions = {
     cdn: 'auto',
     format: 'html',
-    ...opts
+    ...opts,
   };
 
   if (!appTitle) {
