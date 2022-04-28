@@ -6,6 +6,8 @@ const baseUrlCdnCn = 'https://cdn.ui.porsche.cn';
 const hrefCom = `${baseUrlCdnCom}/porsche-design-system/styles/font-face.min.[a-z0-9]{32}.css`;
 const hrefCn = `${baseUrlCdnCn}/porsche-design-system/styles/font-face.min.cn.[a-z0-9]{32}.css`;
 
+jest.mock('../../../src/shared');
+
 describe('format: html', () => {
   it('should return links', () => {
     const result = getFontFaceStylesheet();
