@@ -30,7 +30,7 @@ The result of this partial looks like this:
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { metaTagsAndIconLinksDemo } from '@/utils';
+import { metaTagsAndIconLinksDemo } from '@/lib/partialResults';
 
 @Component
 export default class Code extends Vue {
