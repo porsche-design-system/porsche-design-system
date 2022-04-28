@@ -326,15 +326,15 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
-      - name: 'Unit Test'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-test-unit
-          args: --components-react
       - name: 'Build Components React'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
+          args: --components-react
+      - name: 'Unit Test'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-unit
           args: --components-react
       - name: 'JSDOM Polyfill Test'
         uses: ./.github/actions/docker-run
