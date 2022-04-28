@@ -2,9 +2,8 @@ on:
   push:
     branches:
       - master
-      - issue/1539
   schedule:
-    - cron: "28 * * * *"
+    - cron: "0 0 1 * *" # at 00:00 on day-of-month 1
 name: 'OSS Review Toolkit'
 jobs:
   ort:
@@ -78,13 +77,8 @@ jobs:
       - name: "Send ORT Analyzer Result to OSO"
         run: |
           zip -j analyzer-result.zip ort/analyzer-result.yml
-          curl curl -X POST https://${{ env.OSO_JENKINS_USER }}:${{ env.OSO_JENKINS_TOKEN }}@oso-ort-scan.aws.platform.porsche-preview.cloud/job/ort-porsche-scancode/buildWithParameters --form ort/analyzer-result.zip=@analyzer-result.zip --form ProjectName=porsche_design_system --fail
+          curl -X POST https://${{ env.OSO_JENKINS_USER }}:${{ env.OSO_JENKINS_TOKEN }}@oso-ort-scan.aws.platform.porsche-preview.cloud/job/ort-porsche-scancode/buildWithParameters --form ort/analyzer-result.zip=@analyzer-result.zip --form ProjectName=porsche_design_system --fail
         shell: bash
         env:
           OSO_JENKINS_USER: ${{ secrets.OSO_JENKINS_USER }}
           OSO_JENKINS_TOKEN: ${{ secrets.OSO_JENKINS_TOKEN }}
-      - name: 'Store ORT Analysis Zip'
-        uses: actions/upload-artifact@v3
-        with:
-          name: ort-analysis-zip
-          path: analyzer-result.zip
