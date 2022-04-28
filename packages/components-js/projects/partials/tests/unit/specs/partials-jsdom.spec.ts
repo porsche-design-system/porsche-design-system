@@ -5,7 +5,7 @@ it.each(Object.keys(fromPartials))('should throw exception in jsdom for %s', (pa
   const spy = jest.spyOn(shared, 'throwIfRunInBrowser');
 
   expect(fromPartials[partialName]).toThrowErrorMatchingInlineSnapshot(
-    `"Partials should only be used during build time. It looks like you are using '${partialName}' at run time in a browser."`
+    `"Partials can only be used during build time. You are using '${partialName}' at run time in a browser which defeats the effect of the partial."`
   );
   expect(spy).toHaveBeenCalledWith(partialName);
 });
