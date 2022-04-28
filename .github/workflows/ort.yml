@@ -4,7 +4,7 @@ on:
       - master
       - issue/1539
   schedule:
-    - cron: "50 * * * *"
+    - cron: "20 * * * *"
 name: 'OSS Review Toolkit'
 jobs:
   ort:
@@ -78,8 +78,11 @@ jobs:
       - name: "Send ORT Analyzer Result to OSO"
         run: |
           zip analyzer-result.zip ort/analyzer-result.yml
-          curl -X POST https://tech-user:115b353f3286d31a2d6f97e6eef310a8e4@oso-ort-scan.aws.platform.porsche-preview.cloud/job/ort-porsche/buildWithParameters --form ort/analyzer-result.zip=@analyzer-result.zip --form ProjectName=porsche_design_system
+          curl curl -X POST https://tech-user:115b353f3286d31a2d6f97e6eef310a8e4@oso-ort-scan.aws.platform.porsche-preview.cloud/job/ort-porsche-scancode/buildWithParameters --form ort/analyzer-result.zip=@analyzer-result.zip --form ProjectName=porsche_design_system --fail
         shell: bash
+        env:
+          OSO_JENKINS_USER: ${{ secrets.OSO_JENKINS_USER }}
+          OSO_JENKINS_TOKEN: ${{ secrets.OSO_JENKINS_TOKEN }}
       - name: 'Store ORT Analysis Zip'
         uses: actions/upload-artifact@v3
         with:
