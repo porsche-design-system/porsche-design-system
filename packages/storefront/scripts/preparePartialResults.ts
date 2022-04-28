@@ -23,7 +23,7 @@ export const codePenConfig = ${JSON.stringify(codePenConfig, null, 2)};
 export const metaTagsAndIconLinksDemo = ${JSON.stringify(metaTagsAndIconLinksDemo)};
 `;
 
-  const targetFile = path.resolve(__dirname, '../src/utils/partialResults.ts');
+  const targetFile = path.resolve(__dirname, '../src/lib/partialResults.ts');
   fs.writeFileSync(targetFile, content);
 };
 

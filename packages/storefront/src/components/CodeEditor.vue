@@ -23,7 +23,7 @@
   import { Prop } from 'vue-property-decorator';
   import { Framework, Theme } from '@/models';
   import { themeDark } from '@porsche-design-system/utilities-v2';
-  import { codePenConfig } from '@/utils';
+  import { codePenConfig } from '@/lib/partialResults';
 
   @Component
   export default class CodeEditor extends Vue {

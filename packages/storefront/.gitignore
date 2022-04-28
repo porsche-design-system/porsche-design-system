@@ -2,7 +2,7 @@
 node_modules
 /dist
 /scripts/algoliaRecords.json
-/src/utils/partialResults.ts
+/src/lib
 
 /tests/e2e/results
 /tests/vrt/results
