@@ -206,6 +206,18 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         .replace(/(style: {)/, '$1 minWidth: 100, minHeight: 50,'); // patch inline style
     }
 
+    const removeDestructuredProp = (component: string, prop: string): string => {
+      return component.replace(new RegExp(`('?${prop}'?(?: = [A-z'-]+)?(?:, )?)`, 'g'), '');
+    };
+
+    // remove destructured props
+    if (component === 'p-button' || component === 'p-button-pure') {
+      cleanedComponent = removeDestructuredProp(cleanedComponent, 'type');
+    } else if (component === 'p-marque') {
+      cleanedComponent = removeDestructuredProp(cleanedComponent, 'href');
+      cleanedComponent = removeDestructuredProp(cleanedComponent, 'target');
+    }
+
     return cleanedComponent;
   }
 
