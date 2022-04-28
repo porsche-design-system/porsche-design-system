@@ -12,9 +12,8 @@ import { generateMetaTagsAndIconLinksPartial } from './generateMetaTagsAndIconLi
 import { generateLoaderScriptPartial } from './generateLoaderScriptPartial';
 
 const generateSharedCode = (): string => {
-  return `type Cdn = 'auto' | 'cn';
-
-type Format = 'html' | 'jsx';
+  return `import type { Cdn, Format } from '../shared';
+import { throwIfRunInBrowser } from '../shared';
 
 const getCdnBaseUrl = (cdn: Cdn): string => (cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}');`;
 };
