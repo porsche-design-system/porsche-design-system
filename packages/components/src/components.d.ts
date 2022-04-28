@@ -679,6 +679,10 @@ export namespace Components {
          */
         "activeElementIndex"?: number;
         /**
+          * If true, active element changes on every keydown instead of only enter press.
+         */
+        "changeActiveElementOnKeyDown"?: boolean;
+        /**
           * Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: TabGradientColorTheme;
@@ -2032,6 +2036,10 @@ declare namespace LocalJSX {
           * Defines which element to be visualized as selected (zero-based numbering).
          */
         "activeElementIndex"?: number;
+        /**
+          * If true, active element changes on every keydown instead of only enter press.
+         */
+        "changeActiveElementOnKeyDown"?: boolean;
         /**
           * Adapts the background gradient color of prev and next button.
          */

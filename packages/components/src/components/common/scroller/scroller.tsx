@@ -31,6 +31,9 @@ export class Scroller {
   /** Defines which element to be visualized as selected (zero-based numbering). */
   @Prop() public activeElementIndex?: number;
 
+  /** If true, active element changes on every keydown instead of only enter press. */
+  @Prop() public changeActiveElementOnKeyDown?: boolean = false;
+
   /** Emitted when active element is changed. */
   @Event({ bubbles: false }) public activeElementChange: EventEmitter<ActiveElementChangeEvent>;
 
@@ -47,8 +50,8 @@ export class Scroller {
 
   // TODO: extract and unit test!
   private get focusedElementIndex(): number {
-    // TODO: this sucks
-    if (document?.activeElement.tagName === 'P-TABS') {
+    // TODO: can we improve this to be handled in tabs/tabs-bar?
+    if (this.changeActiveElementOnKeyDown) {
       return this.activeElementIndex;
     }
     const indexOfActiveElement = this.slottedElements.indexOf(document?.activeElement as HTMLElement);
@@ -81,7 +84,7 @@ export class Scroller {
     this.scrollAreaElement.addEventListener('click', (e) => {
       const newTabIndex = this.slottedElements.indexOf(e.target as HTMLElement);
       if (newTabIndex >= 0) {
-        this.onElementClick(newTabIndex, true);
+        this.onElementClick(newTabIndex);
       }
     });
     this.scrollAreaElement.addEventListener('keydown', this.onKeydown);
@@ -179,8 +182,8 @@ export class Scroller {
     }
   };
 
-  private onElementClick = (activeElementIndex: number, isEnter: boolean): void => {
-    this.activeElementChange.emit({ activeElementIndex, isEnter });
+  private onElementClick = (activeElementIndex: number): void => {
+    this.activeElementChange.emit({ activeElementIndex });
   };
 
   private onKeydown = (e: KeyboardEvent): void => {
@@ -205,14 +208,16 @@ export class Scroller {
         break;
 
       case 'Enter':
-        this.onElementClick(this.focusedElementIndex, true);
+        this.onElementClick(this.focusedElementIndex);
         return;
 
       default:
         return;
     }
 
-    this.onElementClick(upcomingFocusedElementIndex, false);
+    if (this.changeActiveElementOnKeyDown) {
+      this.onElementClick(upcomingFocusedElementIndex);
+    }
     this.slottedElements[upcomingFocusedElementIndex].focus();
 
     e.preventDefault();
