@@ -78,5 +78,10 @@ export const getComponentCss = (
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, mergeDeep(getBaseSlottedStyles(), { '& a': { textDecoration: 'none' } })));
+  return getCss(
+    buildSlottedStyles(
+      host,
+      mergeDeep(getBaseSlottedStyles({ withDarkTheme: true }), { '& a': { textDecoration: 'none' } })
+    )
+  );
 };
