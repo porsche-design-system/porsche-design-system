@@ -1,3 +1,3 @@
 export type Direction = 'prev' | 'next';
 
-export type ActiveElementChangeEvent = { activeElementIndex: number; isEnter: boolean };
+export type ActiveElementChangeEvent = { activeElementIndex: number };

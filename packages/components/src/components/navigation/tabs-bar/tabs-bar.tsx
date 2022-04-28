@@ -10,7 +10,7 @@ import {
   removeEnableTransitionClass,
   sanitizeActiveTabIndex,
 } from './tabs-bar-utils';
-import { attachComponentCss, getHTMLElement, getHTMLElements, setAttribute } from '../../../utils';
+import { attachComponentCss, getHTMLElement, getHTMLElements, getPrefixedTagNames, setAttribute } from '../../../utils';
 import { getComponentCss } from './tabs-bar-styles';
 import type { ActiveElementChangeEvent } from '../../common/scroller/scroller-utils';
 
@@ -86,18 +86,20 @@ export class TabsBar {
   }
 
   public render(): JSX.Element {
-    // TODO: scroller prefixable?
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
-      <p-scroller
+      <PrefixedTagNames.pScroller
         class="scroller"
         theme={this.theme}
         gradientColorScheme={this.gradientColorScheme}
         activeElementIndex={this.activeTabIndex}
+        changeActiveElementOnKeyDown={this.hasPTabsParent}
         onActiveElementChange={this.onActiveElementChange}
       >
         <slot />
         <span class="bar" />
-      </p-scroller>
+      </PrefixedTagNames.pScroller>
     );
   }
 
@@ -172,14 +174,9 @@ export class TabsBar {
   };
 
   private onActiveElementChange = (e: CustomEvent<ActiveElementChangeEvent>): void => {
-    const { activeElementIndex, isEnter } = e.detail;
+    const { activeElementIndex } = e.detail;
     if (activeElementIndex !== this.activeTabIndex) {
-      if (this.hasPTabsParent && !isEnter) {
-        this.onTabClick(activeElementIndex);
-      }
-      if (isEnter) {
-        this.onTabClick(activeElementIndex);
-      }
+      this.onTabClick(activeElementIndex);
     }
   };
 }
