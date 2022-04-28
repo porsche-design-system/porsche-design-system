@@ -30,6 +30,7 @@ export const PrevNextButton: FunctionalComponent<PrevNextButtonProps> = ({
     <div class={actionClasses}>
       <span class="gradient" />
       <PrefixedTagNames.pButtonPure
+        class="button"
         type="button"
         tabbable={false}
         hide-label="true"
