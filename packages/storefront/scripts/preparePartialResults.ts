@@ -23,8 +23,14 @@ export const codePenConfig = ${JSON.stringify(codePenConfig, null, 2)};
 export const metaTagsAndIconLinksDemo = ${JSON.stringify(metaTagsAndIconLinksDemo)};
 `;
 
-  const targetFile = path.resolve(__dirname, '../src/lib/partialResults.ts');
-  fs.writeFileSync(targetFile, content);
+  const targetFolder = '../src/lib';
+  fs.mkdirSync(path.resolve(__dirname, targetFolder), { recursive: true });
+
+  const targetFileName = 'partialResults.ts';
+  const targetFilePath = path.resolve(__dirname, targetFolder, targetFileName);
+  fs.writeFileSync(targetFilePath, content);
+
+  console.log(`Generated: ${targetFolder}/${targetFileName}`);
 };
 
 preparePartialResults();
