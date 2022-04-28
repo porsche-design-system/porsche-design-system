@@ -682,6 +682,10 @@ export namespace Components {
          */
         "gradientColorScheme"?: TabGradientColorTheme;
         /**
+          * Elements that are not set in the slot can be passed here *
+         */
+        "slottedElements"?: HTMLElement[];
+        /**
           * Adapts the color when used on dark background.
          */
         "theme"?: ThemeExtendedElectric;
@@ -2035,6 +2039,10 @@ declare namespace LocalJSX {
           * Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: TabGradientColorTheme;
+        /**
+          * Elements that are not set in the slot can be passed here *
+         */
+        "slottedElements"?: HTMLElement[];
         /**
           * Adapts the color when used on dark background.
          */

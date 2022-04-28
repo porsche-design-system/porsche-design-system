@@ -101,20 +101,68 @@
     <br />
     <br />
 
-    <!--    <p-scroller-->
-    <!--      ><button type="button">Tab One</button><button type="button">Tab Two</button-->
-    <!--      ><button type="button">Tab Three</button><button type="button">Tab Four</button-->
-    <!--      ><button type="button">Tab Five</button><button type="button">Tab Six</button-->
-    <!--      ><button type="button">Tab Seven</button><button type="button">Tab Eight</button-->
-    <!--      ><button type="button">Tab Nine</button><button type="button">Tab Ten</button-->
-    <!--      ><button type="button">Tab Eleven</button><button type="button">Tab Twelve</button-->
-    <!--      ><button type="button">Tab Thirteen</button><button type="button">Tab Fourteen</button-->
-    <!--      ><button type="button">Tab Fifteen</button><button type="button">Tab Sixteen</button-->
-    <!--      ><button type="button">Tab Seventeen</button><button type="button">Tab Eighteen</button-->
-    <!--      ><button type="button">Tab Nineteen</button><button type="button">Tab Twenty</button>-->
-    <!--    </p-scroller>-->
+    <p-scroller>
+      <button type="button">Tab One</button>
+      <button type="button">Tab Two</button>
+      <button type="button">Tab Three</button>
+      <button type="button">Tab Four</button>
+      <button type="button">Tab Five</button>
+      <button type="button">Tab Six</button>
+      <button type="button">Tab Seven</button>
+      <button type="button">Tab Eight</button>
+      <button type="button">Tab Nine</button>
+      <button type="button">Tab Ten</button>
+      <button type="button">Tab Eleven</button>
+      <button type="button">Tab Twelve</button>
+      <button type="button">Tab Thirteen</button>
+      <button type="button">Tab Fourteen</button>
+      <button type="button">Tab Fifteen</button>
+      <button type="button">Tab Sixteen</button>
+      <button type="button">Tab Seventeen</button>
+      <button type="button">Tab Eighteen</button>
+      <button type="button">Tab Nineteen</button>
+      <button type="button">Tab Twenty</button>
+    </p-scroller>
+
+    <p-table>
+      <p-headline slot="caption">Some caption</p-headline>
+      <p-table-head>
+        <p-table-head-row>
+          <p-table-head-cell>Column 1</p-table-head-cell>
+          <p-table-head-cell>Column 2</p-table-head-cell>
+          <p-table-head-cell>Column 3</p-table-head-cell>
+          <p-table-head-cell>Column 4</p-table-head-cell>
+          <p-table-head-cell>Column 5</p-table-head-cell>
+        </p-table-head-row>
+      </p-table-head>
+      <p-table-body>
+        <p-table-row>
+          <p-table-cell>Cell 1</p-table-cell>
+          <p-table-cell>Cell 2</p-table-cell>
+          <p-table-cell>Cell 3</p-table-cell>
+          <p-table-cell>Cell 4</p-table-cell>
+          <p-table-cell>Cell 5</p-table-cell>
+        </p-table-row>
+      </p-table-body>
+    </p-table>
   </body>
   <script>
+    const scroller = document.querySelector('p-scroller');
+    scroller.addEventListener(
+      'click',
+      (e) => (scroller.activeElementIndex = Array.from(scroller.children).indexOf(e.target))
+    );
+
+    scroller.addEventListener('keydown', (e) => {
+      if (e.key === 'Tab') {
+        if (e.shiftKey) {
+          scroller.activeElementIndex = Array.from(scroller.children).indexOf(document.activeElement) - 1;
+        } else {
+          scroller.activeElementIndex = Array.from(scroller.children).indexOf(document.activeElement) + 1;
+        }
+      }
+    });
+
     document.querySelector('p-tabs-bar').addEventListener('tabChange', (e) => {
       e.target.activeTabIndex = e.detail.activeTabIndex;
     });
