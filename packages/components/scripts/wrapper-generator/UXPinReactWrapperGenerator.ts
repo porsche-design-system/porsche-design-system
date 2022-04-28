@@ -44,12 +44,10 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         .replace(/( } from '\.\.\/types';)/, ', ToastState$1');
     }
 
-    // add Spacing type and function import
-    const spacingImportPath = "from '../../spacing';";
-    imports = imports.replace(
-      /('\.\.\/types';)/,
-      `$1\nimport type { Spacing } ${spacingImportPath}\nimport { getPaddingStyles } ${spacingImportPath}`
-    );
+    // add spacing imports
+    imports += ['import type { Spacing }', 'import { getPaddingStyles }']
+      .map((imp, i) => `${i === 0 ? '\n' : ''}${imp} from '../../spacing';`)
+      .join('\n');
 
     // when component is nested we need to fix relative imports
     if (this.shouldGenerateFolderPerComponent(component)) {
