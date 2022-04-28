@@ -29,6 +29,8 @@ export function getLoaderScript(opts?: GetLoaderScriptOptions): string | JSX.Ele
     ...opts,
   };
 
+  throwIfRunInBrowser('getLoaderScript');
+
   const loadCalls = prefix
     ? Array.isArray(prefix)
       ? prefix.map((x) => \`porscheDesignSystem.load({prefix:'\${x}'})\`).join(';')

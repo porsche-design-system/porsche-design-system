@@ -38,6 +38,8 @@ export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetOptions): stri
     ...opts,
   };
 
+  throwIfRunInBrowser('getFontFaceStylesheet');
+
   const cdnBaseUrl = getCdnBaseUrl(cdn);
   const url = \`\${cdnBaseUrl}/${CDN_BASE_PATH_STYLES}/\${cdn === 'cn'
     ? '${cssFileCn}'
