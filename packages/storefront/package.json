@@ -5,9 +5,12 @@
   "description": "Porsche Design System",
   "scripts": {
     "postinstall": "rm -rf ./node_modules/webpack-dev-server/node_modules/webpack",
+    "prestart": "yarn build:preparePartialResults",
     "start": "concurrently -k -s 'first' -n 'cdn,vue' 'serve-cdn' 'vue-cli-service serve'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws --spa index.html -p 8080 -d ./dist'",
-    "build": "vue-cli-service build --silent",
+    "build": "yarn build:preparePartialResults && yarn build:vue",
+    "build:preparePartialResults": "ts-node --project tsconfig.node.json scripts/preparePartialResults.ts",
+    "build:vue": "vue-cli-service build --silent",
     "updateAlgolia": "ts-node --project tsconfig.node.json scripts/updateAlgoliaIndex.ts",
     "lint": "eslint -c .eslintrc.js --ext .js,.ts,.vue ./src",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
