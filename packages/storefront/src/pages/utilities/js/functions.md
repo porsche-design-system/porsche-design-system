@@ -118,7 +118,7 @@ Given variables are:
 
 ```tsx
 import { headline } from '@porsche-design-system/utilities';
-import styled from 'styled-components';__
+import styled from 'styled-components';
 
 const PHeadline = styled.h1`
   ${headline['1']}

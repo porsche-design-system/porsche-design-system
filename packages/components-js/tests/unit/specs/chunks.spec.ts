@@ -3,6 +3,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { COMPONENT_CHUNKS_MANIFEST, ComponentChunkName } from '../../../projects/components-wrapper';
 import { colorExternal } from '@porsche-design-system/components-js/utilities/js';
+import { SKELETONS_ACTIVE } from '@porsche-design-system/shared';
 
 const indexJsFile = require.resolve('@porsche-design-system/components-js');
 const { version } = JSON.parse(fs.readFileSync(path.resolve(indexJsFile, '../package.json'), 'utf8')) as {
@@ -96,8 +97,8 @@ describe('chunk size', () => {
       statsResults.push(stat);
 
       it(`chunk size should roughly stay the same for ${stat.chunkName}`, () => {
-        // change should be less than 300 Bytes
-        const allowedSizeChange = 300;
+        // change should be less than 300 Bytes with skeletons, otherwise 100 Bytes
+        const allowedSizeChange = SKELETONS_ACTIVE ? 300 : 100;
         expect(stat.diffSize).toBeLessThanOrEqual(allowedSizeChange);
         expect(stat.diffSize).toBeGreaterThanOrEqual(-allowedSizeChange);
       });

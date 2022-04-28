@@ -1,11 +1,14 @@
 import { getIconLinks } from '../../../src';
-import { ICON_NAMES, IconNameCamelCase } from '@porsche-design-system/icons';
+import type { IconNameCamelCase } from '@porsche-design-system/icons';
+import { ICON_NAMES } from '@porsche-design-system/icons';
 import { paramCase } from 'change-case';
 import { render } from '@testing-library/react';
 
 const hash = '[a-z0-9]{32}';
 const baseHrefCom = 'https://cdn.ui.porsche.com/porsche-design-system/icons';
 const baseHrefCn = 'https://cdn.ui.porsche.cn/porsche-design-system/icons';
+
+jest.mock('../../../src/shared');
 
 describe('validation', () => {
   it('should throw error on invalid icons parameter', () => {

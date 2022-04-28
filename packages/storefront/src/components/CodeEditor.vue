@@ -23,11 +23,7 @@
   import { Prop } from 'vue-property-decorator';
   import { Framework, Theme } from '@/models';
   import { themeDark } from '@porsche-design-system/utilities-v2';
-  import {
-    getFontFaceStylesheet,
-    getInitialStyles,
-    getLoaderScript,
-  } from '@porsche-design-system/components-js/partials';
+  import { codePenConfig } from '@/lib/partialResults';
 
   @Component
   export default class CodeEditor extends Vue {
@@ -58,12 +54,10 @@
       return JSON.stringify({
         title: 'Porsche Design System',
         editors: '100', // html open, css closed, js closed
-        css: getInitialStyles({ withoutTags: true }),
-        css_external: getFontFaceStylesheet({ withoutTags: true }),
         html: this.markup,
-        ...(this.theme === 'dark' && { css: `body { background: ${themeDark.background.base}; }` }),
+        ...codePenConfig,
+        ...(this.theme === 'dark' && { css: codePenConfig.css + `body { background: ${themeDark.background.base}; }` }),
         // js_external: `${path}${PDS_LOADER_FILENAME}`,
-        js: getLoaderScript({ withoutTags: true }),
       });
     }
   }
