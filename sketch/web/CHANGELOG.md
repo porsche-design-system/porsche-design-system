@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Type | Web Library |
 |---|---|
 Component | Tag |
-Component | Tag Dismissable |
+Component | Tag Dismissible |
 
 ### [2.3.0] - 2021-11-23
 
