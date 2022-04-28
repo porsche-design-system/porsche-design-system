@@ -14,7 +14,7 @@
     "build:jsdom-polyfill": "rollup -c ./projects/jsdom-polyfill/rollup.config.js",
     "build:uxpin-wrapper": "yarn --cwd ./projects/uxpin-wrapper build",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
-    "test": "yarn test:jsdom-polyfill && yarn test:unit && yarn test:e2e && yarn test:vrt && yarn test:smoke",
+    "test": "yarn test:jsdom-polyfill && yarn test:unit && yarn test:e2e && yarn test:vrt",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
     "test:jsdom-polyfill": "concurrently -k -s 'first' -n 'cdn,test' 'serve-cdn' 'jest --colors -c tests/jsdom-polyfill/config/jest.config.js'",
     "test:e2e": "yarn build-app && TYPE=E2E PORT=3000 jest --colors -c tests/e2e/config/jest.config.ts",
