@@ -35,6 +35,8 @@ export function getFontLinks(opts?: GetFontLinksOptions): string | string[] | JS
     ...opts,
   };
 
+  throwIfRunInBrowser('getFontLinks');
+
   if (opts?.['weight']) {
     throw new Error('Option "weight" is not supported, please use "weights" instead');
   }

@@ -29,6 +29,8 @@ export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptions): st
     ...opts,
   };
 
+  throwIfRunInBrowser('getComponentChunkLinks');
+
   const supportedComponentChunkNames: ComponentChunkName[] = ${JSON.stringify(COMPONENT_CHUNK_NAMES)};
   const invalidComponentChunkNames = components.filter((x) => !supportedComponentChunkNames.includes(x));
 
@@ -43,8 +45,6 @@ Please use only valid component chunk names:
   const cdnBaseUrl = getCdnBaseUrl(cdn);
   const manifest = ${JSON.stringify(COMPONENT_CHUNKS_MANIFEST)};
   const urls = ['core'].concat(components).map((cmp) => \`\${cdnBaseUrl}/${CDN_BASE_PATH_COMPONENTS}/\${manifest[cmp]}\`);
-
-
 
   const linksHtml = urls
     // core needs crossorigin attribute / we need ternary otherwise false is written into link

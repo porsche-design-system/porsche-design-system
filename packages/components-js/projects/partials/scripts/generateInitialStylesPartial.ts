@@ -97,6 +97,9 @@ Please use only valid component tag names:
   const prefixedUnusedTagNamesWithSkeleton = getPrefixedTagNames(tagNamesWithSkeleton.filter((skeletonTagName) => !skeletonTagNames.includes(skeletonTagName)), prefix);`
       : ''
   }
+
+  throwIfRunInBrowser('getInitialStyles');
+
   const usesSkeleton = ${SKELETONS_ACTIVE ? `usedTagNamesWithSkeleton.length ? ' uses-skeleton="true"': ''` : `''`};
   const usesSkeletonJsx = ${
     SKELETONS_ACTIVE ? `usedTagNamesWithSkeleton.length ? {"uses-skeleton": 'true'} : {}` : undefined

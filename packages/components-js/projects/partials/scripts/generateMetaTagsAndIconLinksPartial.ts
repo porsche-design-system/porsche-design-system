@@ -47,6 +47,8 @@ export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): 
     ...opts,
   };
 
+  throwIfRunInBrowser('getMetaTagsAndIconLinks');
+
   if (!appTitle) {
     throw new Error('Option "appTitle" is required to output "<meta name="apple-mobile-web-app-title" content="appTitle" />');
   }

@@ -30,6 +30,8 @@ export function getIconLinks(opts?: GetIconLinksOptions): string | string[] | JS
     ...opts,
   };
 
+  throwIfRunInBrowser('getIconLinks');
+
   const supportedIconNames: IconNameCamelCase[] = ${JSON.stringify(ICON_NAMES)};
   const invalidIconNames = icons.filter((x) => !supportedIconNames.includes(x));
 
