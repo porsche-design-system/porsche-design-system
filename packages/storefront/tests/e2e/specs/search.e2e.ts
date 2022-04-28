@@ -1,5 +1,5 @@
-import { Page } from 'puppeteer';
-import { getElementStyle, selectNode, waitForEventSerialization } from '@porsche-design-system/js/tests/e2e/helpers';
+import type { Page } from 'puppeteer';
+import { getElementStyle, selectNode } from '@porsche-design-system/js/tests/e2e/helpers';
 import { baseURL } from '../helpers';
 import { ALGOLIA_APP_ID } from '../../../storefront.config';
 import { ALGOLIA_RESPONSE_MOCK } from '../helpers/algolia-response-mock';

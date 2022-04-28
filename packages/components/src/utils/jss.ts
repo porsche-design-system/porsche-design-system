@@ -1,6 +1,5 @@
 import type { TagName } from '@porsche-design-system/shared';
 import type { BreakpointCustomizable } from './breakpoint-customizable';
-import type { Breakpoint } from '../styles';
 import type { JssStyle, Styles } from 'jss';
 import { create } from 'jss';
 import jssPluginCamelCase from 'jss-plugin-camel-case';
@@ -8,6 +7,7 @@ import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
 import { mediaQueryMin } from '@porsche-design-system/utilities-v2';
+import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 import { parseJSON } from './breakpoint-customizable';
 import { getShadowRootHTMLElement } from './dom';
 import { addImportantToEachRule } from '../styles';

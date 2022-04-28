@@ -8,6 +8,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.4.0] - 2022-04-26
+
+#### Added
+
+Type | Web Library |
+|---|---|
+Component | Tag |
+Component | Tag Dismissible |
+
 ### [2.3.0] - 2021-11-23
 
 #### Added
