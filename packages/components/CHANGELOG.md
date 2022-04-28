@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Changed
 - `Headline` has no `hypens` / `overflow-wrap` style by default
+- Partials now throw an exception if they are executed in browser
+
+#### Fixed
+- exception bug when changing `theme` dynamically fixed (occurred in `Headline`, `Select Wrapper`, `Text` and `Text List`)
 
 ### [2.11.0-skeletons] - 2022-04-21
 

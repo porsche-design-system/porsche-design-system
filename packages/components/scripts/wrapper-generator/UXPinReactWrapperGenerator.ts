@@ -44,12 +44,10 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         .replace(/( } from '\.\.\/types';)/, ', ToastState$1');
     }
 
-    // add Spacing type and function import
-    const spacingImportPath = "from '../../spacing';";
-    imports = imports.replace(
-      /('\.\.\/types';)/,
-      `$1\nimport type { Spacing } ${spacingImportPath}\nimport { getPaddingStyles } ${spacingImportPath}`
-    );
+    // add spacing imports
+    imports += ['import type { Spacing }', 'import { getPaddingStyles }']
+      .map((imp, i) => `${i === 0 ? '\n' : ''}${imp} from '../../spacing';`)
+      .join('\n');
 
     // when component is nested we need to fix relative imports
     if (this.shouldGenerateFolderPerComponent(component)) {
@@ -92,7 +90,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     }
 
     // add onClick prop for marque, buttons and links, but not button-group
-    else if (!!component.match(/(button|link|marque)(?!-group)/)) {
+    else if (!!component.match(/(button|link|marque|tag-dismissible)(?!-group)/)) {
       props = addProp(props, 'onClick?: (e: MouseEvent) => void;');
     }
 
@@ -206,6 +204,18 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     $1`
         )
         .replace(/(style: {)/, '$1 minWidth: 100, minHeight: 50,'); // patch inline style
+    }
+
+    const removeDestructuredProp = (component: string, prop: string): string => {
+      return component.replace(new RegExp(`('?${prop}'?(?: = [A-z'-]+)?(?:, )?)`, 'g'), '');
+    };
+
+    // remove destructured props
+    if (component === 'p-button' || component === 'p-button-pure') {
+      cleanedComponent = removeDestructuredProp(cleanedComponent, 'type');
+    } else if (component === 'p-marque') {
+      cleanedComponent = removeDestructuredProp(cleanedComponent, 'href');
+      cleanedComponent = removeDestructuredProp(cleanedComponent, 'target');
     }
 
     return cleanedComponent;

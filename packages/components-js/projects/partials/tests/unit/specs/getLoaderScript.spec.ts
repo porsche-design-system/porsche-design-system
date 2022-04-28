@@ -9,6 +9,8 @@ const packageDir = path.resolve(path.dirname(componentsJsFilePath), '../..');
 const tmpFilePath = path.resolve(packageDir, npmDistTmpSubPath, 'index.js');
 const fileContent = fs.readFileSync(tmpFilePath, 'utf8') + 'porscheDesignSystem.load()';
 
+jest.mock('../../../src/shared');
+
 it('should not contain componentsReady', () => {
   const result = getLoaderScript();
   expect(result).not.toContain('componentsReady');

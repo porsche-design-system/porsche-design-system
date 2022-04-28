@@ -1,0 +1,36 @@
+import {
+  getFontFaceStylesheet,
+  getInitialStyles,
+  getLoaderScript,
+  getMetaTagsAndIconLinks,
+} from '@porsche-design-system/components-js/partials';
+import * as fs from 'fs';
+import * as path from 'path';
+
+const preparePartialResults = (): void => {
+  const codePenConfig = {
+    css: getInitialStyles({ withoutTags: true }),
+    css_external: getFontFaceStylesheet({ withoutTags: true }),
+    js: getLoaderScript({ withoutTags: true }),
+  };
+
+  const metaTagsAndIconLinksDemo = getMetaTagsAndIconLinks({ appTitle: 'TITLE_OF_YOUR_APP' });
+
+  const content = `/* Auto Generated File */
+
+export const codePenConfig = ${JSON.stringify(codePenConfig, null, 2)};
+
+export const metaTagsAndIconLinksDemo = ${JSON.stringify(metaTagsAndIconLinksDemo)};
+`;
+
+  const targetFolder = '../src/lib';
+  fs.mkdirSync(path.resolve(__dirname, targetFolder), { recursive: true });
+
+  const targetFileName = 'partialResults.ts';
+  const targetFilePath = path.resolve(__dirname, targetFolder, targetFileName);
+  fs.writeFileSync(targetFilePath, content);
+
+  console.log(`Generated: ${targetFolder}/${targetFileName}`);
+};
+
+preparePartialResults();

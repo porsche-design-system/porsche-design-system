@@ -2,6 +2,7 @@ import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/co
 import {
   attachComponentCss,
   attachSlottedCss,
+  getDataThemeDarkAttribute,
   getHTMLElementAndThrowIfUndefined,
   getPrefixedTagNames,
   getSlotTextContent,
@@ -109,7 +110,7 @@ export class SelectWrapper {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host>
+      <Host {...getDataThemeDarkAttribute(this.theme)}>
         <div class="root">
           <label class="label">
             {hasLabel(this.host, this.label) && (
