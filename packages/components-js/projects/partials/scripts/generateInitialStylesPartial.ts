@@ -29,18 +29,14 @@ export const generateInitialStylesPartial = (): string => {
   // 'any' is fallback when SKELETON_TAG_NAMES is an empty array because shared wasn't built yet
   const types = `${SKELETONS_ACTIVE ? `export type SkeletonTagName = ${skeletonTagNamesTypeLiteral || 'any'};` : ''}
 
-  type GetInitialStylesOptions = {
+type GetInitialStylesOptions = {
   ${SKELETONS_ACTIVE ? 'skeletonTagNames?: SkeletonTagName[];' : ''}
   prefix?: string;
   ${withoutTagsOption}
   format?: Format;
 };
-type GetInitialStylesOptionsFormatHtml = Omit<GetInitialStylesOptions, 'withoutTags'> & {
-  format: 'html';
-};
-type GetInitialStylesOptionsFormatJsx = Omit<GetInitialStylesOptions, 'withoutTags'> & {
-   format: 'jsx';
-};
+type GetInitialStylesOptionsFormatHtml = Omit<GetInitialStylesOptions, 'withoutTags'> & { format: 'html' };
+type GetInitialStylesOptionsFormatJsx = Omit<GetInitialStylesOptions, 'withoutTags'> & { format: 'jsx' };
 type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'>;`;
 
   const skeletonTypes = SKELETONS_ACTIVE
@@ -48,7 +44,7 @@ type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'
   prefixedTagNamesWithSkeleton: string[];
   prefixedUnusedTagNamesWithSkeleton: string[];
   prefix?: string;
-}`
+};`
     : '';
 
   const skeletonKeyframes = '@keyframes opacity{0%{opacity:0.35}50%{opacity:0.15}100%{opacity:0.35}}';
@@ -77,7 +73,7 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
     prefix: '',
     withoutTags: false,
     format: 'html',
-    ...opts
+    ...opts,
   };
 
   const tagNames = [${tagNames}];
@@ -112,7 +108,9 @@ Please use only valid component tag names:
       ? '${getSkeletonStyles({prefixedTagNamesWithSkeleton,prefixedUnusedTagNamesWithSkeleton, prefix})}'
       : ''
   }\`;
-  const markup = format === 'html' ?  \`<style\$\{usesSkeleton\}>\${mergedStyles}</style>\` : <style dangerouslySetInnerHTML={{__html: mergedStyles}} {...usesSkeletonJsx}/>;
+  const markup = format === 'html'
+    ? \`<style\$\{usesSkeleton\}>\${mergedStyles}</style>\`
+    : <style dangerouslySetInnerHTML={{ __html: mergedStyles }} {...usesSkeletonJsx}/>;
 
   return withoutTags
     ? mergedStyles
@@ -122,20 +120,20 @@ Please use only valid component tag names:
   const skeletonStylesFunction = SKELETONS_ACTIVE
     ? `const getSkeletonStyles = (opts?: SkeletonStylesOptions): string => {
   const options: SkeletonStylesOptions = {
-     prefixedTagNamesWithSkeleton: [],
-     prefixedUnusedTagNamesWithSkeleton: [],
-     prefix: '',
-     ...opts
+    prefixedTagNamesWithSkeleton: [],
+    prefixedUnusedTagNamesWithSkeleton: [],
+    prefix: '',
+    ...opts,
   };
   const { prefixedTagNamesWithSkeleton, prefixedUnusedTagNamesWithSkeleton, prefix } = options;
 
   const skeletonStylesWithKey = ${JSON.stringify(minifiedSkeletonStyles)};
-  let skeletonStyles = prefixedTagNamesWithSkeleton.map((prefixedTagName)=>{
+  let skeletonStyles = prefixedTagNamesWithSkeleton.map((prefixedTagName) => {
     let tagNameToFind = prefixedTagName;
 
     // if prefix is used it has to be removed and the tagName has to be reassigned
     // in order to find tagName in keys of skeletonStyles
-    if(prefix){
+    if (prefix) {
       const prefixRegExp = new RegExp(\`\${prefix}-\`, 'g');
       tagNameToFind = prefixedTagName.replace(prefixRegExp, '');
     }
@@ -154,7 +152,7 @@ Please use only valid component tag names:
         skeletonStyleKey.split('|').forEach(key => {
           skeletonStyle = skeletonStyle.replace(new RegExp(\`(\${key}(?!-))\`, 'g'), prefix + '-' + key);
         });
-      };
+      }
 
       // if tagName is found, the key-value-pair can be removed since the style is already applied
       // e.g. 'p-button' is found => check for 'p-link' or 'p-link-social' is redundant
@@ -180,8 +178,7 @@ Please use only valid component tag names:
 
   const helperFunction = `const getPrefixedTagNames = (tagNames: string[], prefix?: string): string[] => {
   return prefix ? tagNames.map((x) => \`\${prefix}-\${x}\`) : tagNames;
-}
-`;
+};`;
 
   return [types, skeletonTypes, helperFunction, initialStylesFunction, skeletonStylesFunction].join('\n\n');
 };
