@@ -2,7 +2,14 @@ import { Component, Element, State, Prop, Watch, h } from '@stencil/core';
 import { PrevNextButton } from './prev-next-button';
 import type { Direction } from './scroller-utils';
 import type { ThemeExtendedElectric } from '../../../types';
-import { attachComponentCss, getHTMLElement, getHTMLElements, scrollElementTo } from '../../../utils';
+import {
+  attachComponentCss,
+  getHTMLElement,
+  getHTMLElements,
+  getPrefixedTagNames,
+  getTagName,
+  scrollElementTo,
+} from '../../../utils';
 // TODO: move to scroll wrapper utils
 import {
   getScrollActivePosition,
@@ -38,6 +45,7 @@ export class Scroller {
   private prevGradientElement: HTMLElement;
   private direction: Direction = 'next';
   private prevActiveElement: number;
+  private hasTabsBarParent: boolean = false;
 
   @Watch('activeElementIndex')
   public activeTabHandler(_newValue: number, oldValue: number): void {
@@ -48,6 +56,11 @@ export class Scroller {
   }
 
   public connectedCallback(): void {
+    // TODO: move this into utility!
+    const { host } = this.host.getRootNode() as ShadowRoot;
+    const parentTagName = host && getTagName(host as HTMLElement);
+    this.hasTabsBarParent = parentTagName === getPrefixedTagNames(this.host).pTabsBar;
+
     if (!this.slottedElements) {
       this.slottedElements = this.host.children as any;
     }
@@ -66,7 +79,7 @@ export class Scroller {
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.gradientColorScheme, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.gradientColorScheme, this.hasTabsBarParent, this.theme);
   }
 
   public render(): JSX.Element {
