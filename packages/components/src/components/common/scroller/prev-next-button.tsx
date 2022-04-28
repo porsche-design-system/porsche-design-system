@@ -25,7 +25,7 @@ export const PrevNextButton: FunctionalComponent<PrevNextButtonProps> = ({
     ['action--hidden']: isHidden,
   };
   const PrefixedTagNames = getPrefixedTagNames(host);
-
+  // TODO: tabbable has to be customizable
   return (
     <div class={actionClasses}>
       <span class="gradient" />

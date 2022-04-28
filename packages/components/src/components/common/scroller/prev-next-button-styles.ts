@@ -27,6 +27,7 @@ export const getFunctionalComponentPrevNextButtonStyles = (gradientColor: string
         visibility: 'hidden', // to make offsetWidth work
       },
     },
+    // TODO: should get his position naturally to get correct position with bar and without
     gradient: {
       position: 'absolute',
       top: withBar ? '-4px' : 0,

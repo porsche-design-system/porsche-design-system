@@ -47,21 +47,6 @@ export const getComponentCss = (gradientColorScheme: TabGradientColorTheme, them
         right: 0,
       },
     },
-    // ...(barOptions && {
-    //   bar: {
-    //     display: 'block',
-    //     position: 'absolute',
-    //     width: 0,
-    //     height: weight === 'semibold' ? '.125em' : '.09375em',
-    //     left: 0,
-    //     bottom: 0,
-    //     background: activeColor,
-    //     '&--enable-transition': {
-    //       willChange: 'width',
-    //       transition: `transform ${transitionDuration},width ${transitionDuration}`,
-    //     },
-    //   },
-    // }),
     ...getFunctionalComponentPrevNextButtonStyles(gradientColor, true),
   });
 };
