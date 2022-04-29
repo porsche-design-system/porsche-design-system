@@ -7,13 +7,9 @@ import {
   setAttribute,
 } from '../../../../utils';
 import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../../types';
-import type {
-  TabChangeEvent,
-  TabGradientColorTheme,
-  TabWeight,
-  TabSize,
-} from '../../../navigation/tabs-bar/tabs-bar-utils';
+import type { TabChangeEvent, TabWeight, TabSize } from '../../../navigation/tabs-bar/tabs-bar-utils';
 import { getComponentCss } from './tabs-styles';
+import type { GradientColorTheme } from '../../../common/scroller/scroller-utils';
 
 @Component({
   tag: 'p-tabs',
@@ -32,7 +28,7 @@ export class Tabs {
   @Prop() public theme?: ThemeExtendedElectric = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
-  @Prop() public gradientColorScheme?: TabGradientColorTheme = 'default';
+  @Prop() public gradientColorScheme?: GradientColorTheme = 'default';
 
   /** Defines which tab to be visualized as selected (zero-based numbering). */
   @Prop({ mutable: true }) public activeTabIndex?: number = 0;

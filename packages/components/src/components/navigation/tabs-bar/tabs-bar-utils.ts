@@ -1,7 +1,6 @@
 import type { TextWeight } from '../../../types';
-import { getPrefixedTagNames, getScrollByX, getTagName } from '../../../utils';
+import { getPrefixedTagNames, getTagName } from '../../../utils';
 import { pxToRemWithUnit } from '../../../styles';
-import { Direction } from '../../common/scroller/scroller-utils';
 
 const TAB_SIZE = ['small', 'medium'] as const;
 export type TabSize = typeof TAB_SIZE[number];
@@ -9,9 +8,6 @@ export type TabSize = typeof TAB_SIZE[number];
 export type TabWeight = Extract<TextWeight, 'regular' | 'semibold'>;
 
 export type TabChangeEvent = { activeTabIndex: number };
-export type TabGradientColorTheme = 'default' | 'surface';
-
-export const FOCUS_PADDING_WIDTH = 4;
 const ENABLE_TRANSITION_CLASS = 'bar--enable-transition';
 
 export const sanitizeActiveTabIndex = (index: number, tabElementsCount: number): number => {
@@ -66,70 +62,4 @@ export const determineEnableTransitionClass = (
     // active to active
     addEnableTransitionClass(barElement);
   }
-};
-
-export const getScrollActivePosition = (
-  tabElements: HTMLElement[],
-  direction: Direction,
-  activeTabIndex: number,
-  scrollAreaOffsetWidth: number,
-  gradientWidth: number
-): number => {
-  const { offsetLeft: activeTabOffsetLeft, offsetWidth: activeTabOffsetWidth } = tabElements[activeTabIndex] ?? {};
-  const tabElementsCount = tabElements.length;
-  let scrollPosition;
-  if (direction === 'next') {
-    if (activeTabIndex === tabElementsCount - 1) {
-      // go to last tab
-      scrollPosition = activeTabOffsetLeft - FOCUS_PADDING_WIDTH;
-    } else {
-      // go to next tab
-      scrollPosition = activeTabOffsetLeft - gradientWidth + FOCUS_PADDING_WIDTH * 2;
-    }
-  } else {
-    if (activeTabIndex === 0) {
-      // go to first tab
-      scrollPosition = 0;
-    } else {
-      // go to prev tab
-      scrollPosition = activeTabOffsetLeft + activeTabOffsetWidth + gradientWidth - scrollAreaOffsetWidth;
-    }
-  }
-  return scrollPosition;
-};
-
-export const getScrollPositionAfterPrevNextClick = (
-  tabElements: HTMLElement[],
-  scrollAreaElement: HTMLElement,
-  direction: string
-): number => {
-  const { offsetLeft: lastTabOffsetLeft, offsetWidth: lastTabOffsetWidth } = tabElements[tabElements.length - 1] ?? {};
-  const { offsetWidth: scrollAreaWidth, scrollLeft: currentScrollPosition } = scrollAreaElement ?? {};
-  const scrollToStep = getScrollByX(scrollAreaElement);
-  const scrollToMax = lastTabOffsetLeft + lastTabOffsetWidth - scrollAreaWidth + FOCUS_PADDING_WIDTH * 2;
-
-  let scrollPosition: number;
-  if (direction === 'next') {
-    // Go to end of scroll-area when close to edge
-    if (currentScrollPosition + scrollToStep * 2 > scrollToMax) {
-      scrollPosition = scrollToMax;
-    } else {
-      scrollPosition = currentScrollPosition + scrollToStep;
-    }
-  } else {
-    const scrollToMin = 0;
-    // Go to start of scroll-area when close to edge
-    if (currentScrollPosition - scrollToStep * 2 < scrollToMin) {
-      scrollPosition = scrollToMin;
-    } else {
-      scrollPosition = currentScrollPosition - scrollToStep;
-    }
-  }
-  return scrollPosition;
-};
-
-export const hasPTabsParent = (hostEl: HTMLElement): boolean => {
-  const { host } = hostEl.getRootNode() as ShadowRoot;
-  const parentTagName = host && getTagName(host as HTMLElement);
-  return parentTagName === getPrefixedTagNames(hostEl).pTabs;
 };

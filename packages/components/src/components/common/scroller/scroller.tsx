@@ -1,22 +1,10 @@
 import { Component, Element, State, Prop, Watch, h } from '@stencil/core';
 import { PrevNextButton } from './prev-next-button';
-import type { Direction } from './scroller-utils';
-import type { ThemeExtendedElectric } from '../../../types';
-import {
-  attachComponentCss,
-  getHTMLElement,
-  getHTMLElements,
-  getPrefixedTagNames,
-  getTagName,
-  scrollElementTo,
-} from '../../../utils';
-// TODO: move to scroll wrapper utils
-import {
-  getScrollActivePosition,
-  getScrollPositionAfterPrevNextClick,
-  TabGradientColorTheme,
-} from '../../navigation/tabs-bar/tabs-bar-utils';
+import { attachComponentCss, getHTMLElement, getHTMLElements, isParentOfKind, scrollElementTo } from '../../../utils';
 import { getComponentCss } from './scroller-styles';
+import { getScrollActivePosition, getScrollPositionAfterPrevNextClick } from './scroller-utils';
+import type { Direction, GradientColorTheme } from './scroller-utils';
+import type { ThemeExtendedElectric } from '../../../types';
 
 @Component({
   tag: 'p-scroller',
@@ -29,7 +17,7 @@ export class Scroller {
   @Prop() public theme?: ThemeExtendedElectric = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
-  @Prop() public gradientColorScheme?: TabGradientColorTheme = 'default';
+  @Prop() public gradientColorScheme?: GradientColorTheme = 'default';
 
   /** Defines which element to be visualized as selected (zero-based numbering). */
   @Prop() public activeElementIndex?: number;
@@ -46,6 +34,7 @@ export class Scroller {
   private direction: Direction = 'next';
   private prevActiveElement: number;
   private hasTabsBarParent: boolean = false;
+  private scrollItems: HTMLElement[] = this.slottedElements;
 
   @Watch('activeElementIndex')
   public activeTabHandler(_newValue: number, oldValue: number): void {
@@ -56,13 +45,10 @@ export class Scroller {
   }
 
   public connectedCallback(): void {
-    // TODO: move this into utility!
-    const { host } = this.host.getRootNode() as ShadowRoot;
-    const parentTagName = host && getTagName(host as HTMLElement);
-    this.hasTabsBarParent = parentTagName === getPrefixedTagNames(this.host).pTabsBar;
+    this.hasTabsBarParent = isParentOfKind(this.host, 'pTabsBar', true);
 
     if (!this.slottedElements) {
-      this.slottedElements = this.host.children as any;
+      this.scrollItems = this.host.children as unknown as HTMLElement[];
     }
   }
 
@@ -121,7 +107,6 @@ export class Scroller {
         }
       },
       {
-        // TODO: shouldn't root be the the scrollable div rather than the host?
         root: this.scrollAreaElement,
         // Defines the percentage of how much of the target (trigger) is visible within the element specified (this.host).
         // In his case 0.9px of the trigger have to be hidden to show the gradient
@@ -140,7 +125,7 @@ export class Scroller {
   };
 
   private scrollOnPrevNextClick = (direction: Direction): void => {
-    const scrollPosition = getScrollPositionAfterPrevNextClick(this.slottedElements, this.scrollAreaElement, direction);
+    const scrollPosition = getScrollPositionAfterPrevNextClick(this.scrollItems, this.scrollAreaElement, direction);
     scrollElementTo(this.scrollAreaElement, scrollPosition);
   };
 
@@ -152,7 +137,7 @@ export class Scroller {
     }
 
     const scrollActivePosition = getScrollActivePosition(
-      this.slottedElements,
+      this.scrollItems,
       this.direction,
       this.activeElementIndex,
       this.scrollAreaElement.offsetWidth,
