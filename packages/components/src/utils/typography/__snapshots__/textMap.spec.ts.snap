@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`textMap should stay the same 1`] = `
+Object {
+  "large": Object {
+    "WebkitTextSizeAdjust": "none",
+    "font": "normal normal 400 2.25rem/1.3333333333 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "hyphens": "auto",
+    "overflowWrap": "break-word",
+    "textSizeAdjust": "none",
+  },
+  "medium": Object {
+    "WebkitTextSizeAdjust": "none",
+    "font": "normal normal 400 1.5rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "hyphens": "auto",
+    "overflowWrap": "break-word",
+    "textSizeAdjust": "none",
+  },
+  "small": Object {
+    "WebkitTextSizeAdjust": "none",
+    "font": "normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "hyphens": "auto",
+    "overflowWrap": "break-word",
+    "textSizeAdjust": "none",
+  },
+  "x-large": Object {
+    "WebkitTextSizeAdjust": "none",
+    "font": "normal normal 400 3.25rem/1.2307692308 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "hyphens": "auto",
+    "overflowWrap": "break-word",
+    "textSizeAdjust": "none",
+  },
+  "x-small": Object {
+    "WebkitTextSizeAdjust": "none",
+    "font": "normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+    "hyphens": "auto",
+    "overflowWrap": "break-word",
+    "textSizeAdjust": "none",
+  },
+}
+`;

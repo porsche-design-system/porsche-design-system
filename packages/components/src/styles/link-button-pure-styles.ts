@@ -1,7 +1,14 @@
 import type { Styles, JssStyle } from 'jss';
 import type { BreakpointCustomizable, GetJssStyleFunction } from '../utils';
 import type { AlignLabel, AlignLabelType, LinkButtonPureIconName, TextSize, ThemeExtendedElectricDark } from '../types';
-import { buildResponsiveStyles, generateTypeScale, hasVisibleIcon, mergeDeep, paramCaseToCamelCase } from '../utils';
+import {
+  buildResponsiveStyles,
+  generateTypeScale,
+  hasVisibleIcon,
+  isSizeInherit,
+  mergeDeep,
+  paramCaseToCamelCase,
+} from '../utils';
 import {
   addImportantToRule,
   getFocusJssStyle,
@@ -12,7 +19,6 @@ import {
   getScreenReaderOnlyJssStyle,
 } from './';
 import { fontSize } from '@porsche-design-system/utilities-v2';
-import { isSizeInherit } from '../components/basic/typography/text/text-utils';
 
 const getSizeJssStyle: GetJssStyleFunction = (textSize: TextSize): JssStyle => {
   if (isSizeInherit(textSize)) {

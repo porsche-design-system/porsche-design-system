@@ -15,12 +15,8 @@ type GetFontLinksOptions = {
   ${withoutTagsOption}
   format?: Format;
 };
-type GetFontLinksOptionsFormatHtml = Omit<GetFontLinksOptions, 'withoutTags'> & {
-  format: 'html';
-};
-type GetFontLinksOptionsFormatJsx = Omit<GetFontLinksOptions, 'withoutTags'> & {
-  format: 'jsx';
-};
+type GetFontLinksOptionsFormatHtml = Omit<GetFontLinksOptions, 'withoutTags'> & { format: 'html' };
+type GetFontLinksOptionsFormatJsx = Omit<GetFontLinksOptions, 'withoutTags'> & { format: 'jsx' };
 type GetFontLinksOptionsWithoutTags = Omit<GetFontLinksOptions, 'format'>;`;
 
   const linkTemplate = minifyHTML('<link rel="preload" href="${url}" as="font" type="font/woff2" crossorigin>');
@@ -36,8 +32,10 @@ export function getFontLinks(opts?: GetFontLinksOptions): string | string[] | JS
     cdn: 'auto',
     withoutTags: false,
     format: 'html',
-    ...opts
+    ...opts,
   };
+
+  throwIfRunInBrowser('getFontLinks');
 
   if (opts?.['weight']) {
     throw new Error('Option "weight" is not supported, please use "weights" instead');
@@ -49,20 +47,20 @@ export function getFontLinks(opts?: GetFontLinksOptions): string | string[] | JS
       thin: '${FONTS_MANIFEST.porscheNextWLaThin.woff2}',
       regular: '${FONTS_MANIFEST.porscheNextWLaRegular.woff2}',
       'semi-bold': '${FONTS_MANIFEST.porscheNextWLaSemiBold.woff2}',
-      bold: '${FONTS_MANIFEST.porscheNextWLaBold.woff2}'
+      bold: '${FONTS_MANIFEST.porscheNextWLaBold.woff2}',
     },
     greek: {
       thin: '${FONTS_MANIFEST.porscheNextWGrThin.woff2}',
       regular: '${FONTS_MANIFEST.porscheNextWGrRegular.woff2}',
       'semi-bold': '${FONTS_MANIFEST.porscheNextWGrSemiBold.woff2}',
-      bold: '${FONTS_MANIFEST.porscheNextWGrBold.woff2}'
+      bold: '${FONTS_MANIFEST.porscheNextWGrBold.woff2}',
     },
     cyril: {
       thin: '${FONTS_MANIFEST.porscheNextWCyThin.woff2}',
       regular: '${FONTS_MANIFEST.porscheNextWCyRegular.woff2}',
       'semi-bold': '${FONTS_MANIFEST.porscheNextWCySemiBold.woff2}',
-      bold: '${FONTS_MANIFEST.porscheNextWCyBold.woff2}'
-    }
+      bold: '${FONTS_MANIFEST.porscheNextWCyBold.woff2}',
+    },
   };
 
   const supportedSubsets: FontSubset[] = ${JSON.stringify(fontSubsets)};
@@ -93,7 +91,7 @@ Please use only valid font weights:
 
   const markup = format === 'html' ? linksHtml : <>{linksJsx}</>;
   return withoutTags ? urls : markup;
-};`;
+}`;
 
   return [types, func].join('\n\n');
 };

@@ -1,3 +1,14 @@
+import type {
+  SelectedAriaAttributes,
+  AlignLabel,
+  BreakpointCustomizable,
+  LinkButtonPureIconName,
+  LinkTarget,
+  TextWeight,
+  ThemeExtendedElectricDark,
+  TextSize,
+} from '../../../types';
+import type { LinkAriaAttributes } from '../link/link-utils';
 import { Host, Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
   calcLineHeightForElement,
@@ -10,21 +21,10 @@ import {
   parseAndGetAriaAttributes,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../../utils';
-import type {
-  SelectedAriaAttributes,
-  AlignLabel,
-  BreakpointCustomizable,
-  LinkButtonPureIconName,
-  LinkTarget,
-  TextSize,
-  TextWeight,
-  ThemeExtendedElectricDark,
-} from '../../../types';
-import { isSizeInherit } from '../../basic/typography/text/text-utils';
 import { getComponentCss, getSlottedCss } from './link-pure-styles';
-import type { LinkAriaAttributes } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 import { throwIfInvalidLinkUsage } from '../link-validation';
+import { isSizeInherit } from '../../../utils';
 
 @Component({
   tag: 'p-link-pure',
