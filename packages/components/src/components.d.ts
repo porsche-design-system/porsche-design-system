@@ -26,11 +26,12 @@ import { MarqueAriaAttributes, MarqueSize } from "./components/basic/marque/marq
 import { ModalAriaAttributes } from "./components/content/modal/modal-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/navigation/pagination/pagination-utils";
 import { PopoverDirection } from "./components/feedback/popover/popover-utils";
-import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
+import { GradientColorTheme } from "./components/common/scroller/scroller-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
 import { SortingChangeEvent, TableHeadCellSort } from "./components/content/table/table/table-utils";
+import { TabChangeEvent, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { TagColor } from "./components/action/tag/tag-utils";
 import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/action/tag-dismissible/tag-dismissible-utils";
 import { TextFieldWrapperUnitPosition } from "./components/form/text-field-wrapper/text-field-wrapper-utils";
@@ -680,7 +681,7 @@ export namespace Components {
         /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: TabGradientColorTheme;
+        "gradientColorScheme"?: GradientColorTheme;
         /**
           * Elements that are not set in the slot can be passed here *
          */
@@ -829,7 +830,7 @@ export namespace Components {
         /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: TabGradientColorTheme;
+        "gradientColorScheme"?: GradientColorTheme;
         /**
           * The text size.
          */
@@ -851,7 +852,7 @@ export namespace Components {
         /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: TabGradientColorTheme;
+        "gradientColorScheme"?: GradientColorTheme;
         /**
           * The text size.
          */
@@ -2038,7 +2039,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: TabGradientColorTheme;
+        "gradientColorScheme"?: GradientColorTheme;
         /**
           * Elements that are not set in the slot can be passed here *
          */
@@ -2195,7 +2196,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: TabGradientColorTheme;
+        "gradientColorScheme"?: GradientColorTheme;
         /**
           * Emitted when active tab is changed.
          */
@@ -2221,7 +2222,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: TabGradientColorTheme;
+        "gradientColorScheme"?: GradientColorTheme;
         /**
           * Emitted when active tab is changed.
          */
