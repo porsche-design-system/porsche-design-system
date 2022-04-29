@@ -12,6 +12,7 @@ export const getComponentCss = (
   const { backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
   const gradientColor = gradientColorScheme === 'surface' ? backgroundSurfaceColor : backgroundColor;
 
+  // TODO: When VRT tests align, change px values to rem
   return getCss({
     root: {
       position: 'relative',
@@ -19,7 +20,7 @@ export const getComponentCss = (
     },
     'scroll-area': {
       position: 'relative',
-      padding: hasTabsBarParent ? '4px 4px 8px' : '4px',
+      padding: hasTabsBarParent ? '4px 4px .5em' : '4px',
       overflowY: 'hidden',
       overflowX: 'scroll',
       whiteSpace: 'nowrap',

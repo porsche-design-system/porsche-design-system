@@ -31,10 +31,11 @@ export const getFunctionalComponentPrevNextButtonStyles = (
         visibility: 'hidden', // to make offsetWidth work
       },
     },
+    // TODO: when size is medium we cant fully center it, size can be responsive so transform has to take that into account
     button: {
       position: 'absolute',
-      top: hasTabsBarParent ? 'calc(50% - 8px)' : '50%',
-      transform: hasTabsBarParent ? 'translate3d(0,calc(-50% + 6px),0)' : 'translate3d(0,-50%,0)',
+      top: hasTabsBarParent ? 'calc(50% - .5em)' : '50%',
+      transform: hasTabsBarParent ? 'translate3d(0,calc(-50% + .375em),0)' : 'translate3d(0,-50%,0)',
     },
     gradient: {
       position: 'absolute',
