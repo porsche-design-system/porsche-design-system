@@ -17,10 +17,10 @@ button {
   color: #000;
   text-align: left;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  hyphens: auto;
-  overflow-wrap: break-word;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   outline: 0;
 }
 button::before {
@@ -89,10 +89,10 @@ button {
   color: #000;
   text-align: left;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  hyphens: auto;
-  overflow-wrap: break-word;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   outline: 0;
 }
 button::before {
@@ -168,10 +168,10 @@ button {
   color: #000;
   text-align: left;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  hyphens: auto;
-  overflow-wrap: break-word;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   outline: 0;
 }
 button::before {

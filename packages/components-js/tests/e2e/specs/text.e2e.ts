@@ -1,6 +1,7 @@
 import {
   getElementStyle,
   getLifecycleStatus,
+  getProperty,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -25,7 +26,6 @@ describe('text', () => {
   };
 
   const getHost = () => selectNode(page, 'p-text');
-  const getLink = () => selectNode(page, 'p-text a');
   const getParagraph = () => selectNode(page, 'p-text >>> p');
 
   describe('lifecycle', () => {
@@ -50,6 +50,27 @@ describe('text', () => {
 
       expect(status.componentDidUpdate['p-text'], 'componentDidUpdate: p-text').toBe(1);
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    });
+
+    it('should have a theme prop defined at any time without any unnecessary round trips', async () => {
+      await initText();
+      const host = await getHost();
+
+      expect(await getProperty(host, 'theme')).toBe('light');
+
+      await setProperty(host, 'theme', 'dark');
+      await waitForStencilLifecycle(page);
+      const status = await getLifecycleStatus(page);
+      expect(status.componentDidUpdate['p-text'], 'componentDidUpdate: p-text').toBe(1);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+      expect(await getProperty(host, 'theme')).toBe('dark');
+
+      await setProperty(host, 'theme', 'light');
+      await waitForStencilLifecycle(page);
+      const status2 = await getLifecycleStatus(page);
+      expect(status2.componentDidUpdate['p-text'], 'componentDidUpdate: p-text').toBe(2);
+      expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
+      expect(await getProperty(host, 'theme')).toBe('light');
     });
   });
 

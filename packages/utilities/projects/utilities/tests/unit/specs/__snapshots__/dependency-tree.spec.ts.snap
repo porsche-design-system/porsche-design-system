@@ -7,6 +7,7 @@ Object {
   "focus.js": Array [],
   "font/font-behavior.js": Array [],
   "font/font-family.js": Array [],
+  "font/font-hyphenation.js": Array [],
   "font/font-size.js": Array [],
   "font/font-style.js": Array [],
   "font/font-variant.js": Array [],
@@ -17,6 +18,7 @@ Object {
     "focus.js",
     "font/font-behavior.js",
     "font/font-family.js",
+    "font/font-hyphenation.js",
     "font/font-size.js",
     "font/font-style.js",
     "font/font-variant.js",
@@ -99,6 +101,7 @@ Object {
   "typography/text/textLarge.js": Array [
     "font/font-behavior.js",
     "font/font-family.js",
+    "font/font-hyphenation.js",
     "font/font-style.js",
     "font/font-variant.js",
     "font/font-weight.js",
@@ -106,6 +109,7 @@ Object {
   "typography/text/textMedium.js": Array [
     "font/font-behavior.js",
     "font/font-family.js",
+    "font/font-hyphenation.js",
     "font/font-style.js",
     "font/font-variant.js",
     "font/font-weight.js",
@@ -113,6 +117,7 @@ Object {
   "typography/text/textSmall.js": Array [
     "font/font-behavior.js",
     "font/font-family.js",
+    "font/font-hyphenation.js",
     "font/font-style.js",
     "font/font-variant.js",
     "font/font-weight.js",
@@ -120,6 +125,7 @@ Object {
   "typography/text/textXLarge.js": Array [
     "font/font-behavior.js",
     "font/font-family.js",
+    "font/font-hyphenation.js",
     "font/font-style.js",
     "font/font-variant.js",
     "font/font-weight.js",
@@ -127,6 +133,7 @@ Object {
   "typography/text/textXSmall.js": Array [
     "font/font-behavior.js",
     "font/font-family.js",
+    "font/font-hyphenation.js",
     "font/font-style.js",
     "font/font-variant.js",
     "font/font-weight.js",

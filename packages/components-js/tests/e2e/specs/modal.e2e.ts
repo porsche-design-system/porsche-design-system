@@ -566,8 +566,8 @@ describe('modal', () => {
 
       expect(
         status.componentDidLoad.all,
-        'componentDidLoad: all | (p-button-pure -> p-text, p-icon), (p-headline -> p-text), p-modal'
-      ).toBe(6);
+        'componentDidLoad: all | (p-button-pure -> p-text, p-icon), p-headline, p-modal'
+      ).toBe(5);
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
@@ -584,9 +584,9 @@ describe('modal', () => {
 
       expect(
         status.componentDidLoad.all,
-        'componentDidLoad: all | (p-button-pure -> p-text, p-icon), (p-headline -> p-text), p-modal'
-      ).toBe(6);
-      expect(status.componentDidUpdate.all, 'componentDidUpdate: all | p-modal, (p-headline -> p-text)').toBe(3);
+        'componentDidLoad: all | (p-button-pure -> p-text, p-icon), p-headline, p-modal'
+      ).toBe(5);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all | p-modal, p-headline').toBe(2);
     });
   });
 

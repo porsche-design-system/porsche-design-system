@@ -1,6 +1,6 @@
 import type { JssStyle } from 'jss';
-import type { HeadlineVariant, TextAlign, TextColor, Theme, VariantType } from '../../../../types';
-import { buildSlottedStyles, getCss, mergeDeep } from '../../../../utils';
+import type { HeadlineVariant, TextAlign, TextColor, TextSize, Theme, VariantType } from '../../../../types';
+import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep, textMap } from '../../../../utils';
 import { addImportantToEachRule, getBaseSlottedStyles, getThemedColors } from '../../../../styles';
 import {
   headingLarge,
@@ -9,11 +9,13 @@ import {
   headingSmall,
   headingXSmall,
   headingXXLarge,
+  fontWeight,
+  textSmall,
 } from '@porsche-design-system/utilities-v2';
 import { getEllipsisJssStyle, getSlottedTypographyJssStyle } from '../../../../styles/typography-styles';
 import { isVariantType } from './headline-utils';
 
-const headingMap: { [key in VariantType]: any } = {
+const headingMap: { [key in VariantType]: JssStyle } = {
   'large-title': headingXXLarge,
   'headline-1': headingXLarge,
   'headline-2': headingLarge,
@@ -22,8 +24,21 @@ const headingMap: { [key in VariantType]: any } = {
   'headline-5': headingXSmall,
 };
 
-const getVariantStyle = (variant: HeadlineVariant): JssStyle => {
+const getVariantJssStyle = (variant: HeadlineVariant): JssStyle => {
   return headingMap[variant as VariantType];
+};
+
+const getSizeJssStyle = (textSize: TextSize): JssStyle => {
+  const { semiBold: fontWeightSemiBold } = fontWeight;
+  return textSize === 'inherit'
+    ? {
+        lineHeight: textSize,
+        fontSize: textSize,
+        fontWeight: fontWeightSemiBold,
+      }
+    : {
+        font: textMap[textSize].font.replace('400', fontWeightSemiBold),
+      };
 };
 
 export const getComponentCss = (
@@ -48,12 +63,25 @@ export const getComponentCss = (
       textAlign: align,
       color: color !== 'default' ? 'inherit' : getThemedColors(theme).baseColor,
       whiteSpace: 'inherit',
-      ...(isVariantType(variant) ? getVariantStyle(variant) : variant === 'inherit' && { fontSize: 'inherit' }),
+      ...(isVariantType(variant)
+        ? getVariantJssStyle(variant)
+        : {
+            ...textSmall,
+            ...buildResponsiveStyles(variant, getSizeJssStyle),
+            transition: 'font-size 1ms linear',
+            overflowWrap: null,
+            hyphens: null,
+          }),
       ...(ellipsis && getEllipsisJssStyle()),
     },
   });
 };
 
 export const getSlottedCss = (host: HTMLElement): string => {
-  return getCss(buildSlottedStyles(host, mergeDeep(getBaseSlottedStyles(), { '& a': { textDecoration: 'none' } })));
+  return getCss(
+    buildSlottedStyles(
+      host,
+      mergeDeep(getBaseSlottedStyles({ withDarkTheme: true }), { '& a': { textDecoration: 'none' } })
+    )
+  );
 };

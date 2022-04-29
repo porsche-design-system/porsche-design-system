@@ -11,10 +11,10 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
   margin: 0;
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  hyphens: auto;
-  overflow-wrap: break-word;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }"
 `;
 
@@ -29,10 +29,10 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
   margin: 0;
   color: #000;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  hyphens: auto;
-  overflow-wrap: break-word;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }"
 `;
 
@@ -44,7 +44,7 @@ exports[`getSlottedCss() should return correct css 1`] = `
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
-p-text-list[theme=\\"dark\\"] a:hover {
+p-text-list[data-theme=\\"dark\\"] a:hover {
   color: #ff0223 !important;
 }
 p-text-list b, p-text-list strong {
@@ -75,7 +75,7 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
-prefixed-p-text-list[theme=\\"dark\\"] a:hover {
+prefixed-p-text-list[data-theme=\\"dark\\"] a:hover {
   color: #ff0223 !important;
 }
 prefixed-p-text-list b, prefixed-p-text-list strong {

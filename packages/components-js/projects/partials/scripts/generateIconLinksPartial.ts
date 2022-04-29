@@ -12,13 +12,9 @@ type GetIconLinksOptions = {
   ${withoutTagsOption}
   format?: Format;
 };
-type GetIconLinksOptionsFormatHtml = Omit<GetIconLinksOptions, 'withoutTags'> & {
-  format: 'html';
-};
-type GetIconLinksOptionsFormatJsx = Omit<GetIconLinksOptions, 'withoutTags'> & {
-  format: 'jsx';
-};
-type GetIconLinksOptionsWithoutTags = Omit<GetIconLinksOptions, 'format'>`;
+type GetIconLinksOptionsFormatHtml = Omit<GetIconLinksOptions, 'withoutTags'> & { format: 'html' };
+type GetIconLinksOptionsFormatJsx = Omit<GetIconLinksOptions, 'withoutTags'> & { format: 'jsx' };
+type GetIconLinksOptionsWithoutTags = Omit<GetIconLinksOptions, 'format'>;`;
 
   const link = minifyHTML('<link rel="prefetch" href="${url}" as="image" type="image/svg+xml" crossorigin>');
 
@@ -31,8 +27,10 @@ export function getIconLinks(opts?: GetIconLinksOptions): string | string[] | JS
     cdn: 'auto',
     withoutTags: false,
     format: 'html',
-    ...opts
+    ...opts,
   };
+
+  throwIfRunInBrowser('getIconLinks');
 
   const supportedIconNames: IconNameCamelCase[] = ${JSON.stringify(ICON_NAMES)};
   const invalidIconNames = icons.filter((x) => !supportedIconNames.includes(x));
