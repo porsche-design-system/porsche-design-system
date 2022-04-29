@@ -2,11 +2,11 @@ import { getFunctionalComponentPrevNextButtonStyles } from './prev-next-button-s
 import { getCss } from '../../../utils';
 import { getThemedColors } from '../../../styles';
 import type { ThemeExtendedElectric } from '../../../types';
-import type { TabGradientColorTheme } from '../../navigation/tabs-bar/tabs-bar-utils';
+import type { GradientColorTheme } from './scroller-utils';
 
 export const getComponentCss = (
-  gradientColorScheme: TabGradientColorTheme,
-  hasTabsBarAsParent: boolean,
+  gradientColorScheme: GradientColorTheme,
+  hasTabsBarParent: boolean,
   theme: ThemeExtendedElectric
 ): string => {
   const { backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
@@ -19,7 +19,7 @@ export const getComponentCss = (
     },
     'scroll-area': {
       position: 'relative',
-      padding: hasTabsBarAsParent ? '4px 4px 8px' : '4px',
+      padding: hasTabsBarParent ? '4px 4px 8px' : '4px',
       overflowY: 'hidden',
       overflowX: 'scroll',
       whiteSpace: 'nowrap',
@@ -51,6 +51,6 @@ export const getComponentCss = (
         right: 0,
       },
     },
-    ...getFunctionalComponentPrevNextButtonStyles(gradientColor, hasTabsBarAsParent),
+    ...getFunctionalComponentPrevNextButtonStyles(gradientColor, hasTabsBarParent),
   });
 };

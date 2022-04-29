@@ -2,7 +2,7 @@ import type { Styles } from 'jss';
 
 export const getFunctionalComponentPrevNextButtonStyles = (
   gradientColor: string,
-  hasTabsBarAsParent: boolean
+  hasTabsBarParent: boolean
 ): Styles => {
   const gradientColorTransparent = gradientColor + (gradientColor.length === 4 ? '0' : '00');
 
@@ -33,10 +33,9 @@ export const getFunctionalComponentPrevNextButtonStyles = (
     },
     button: {
       position: 'absolute',
-      top: hasTabsBarAsParent ? 'calc(50% - 8px)' : '50%',
-      transform: hasTabsBarAsParent ? 'translate3d(0,calc(-50% + 6px),0)' : 'translate3d(0,-50%,0)',
+      top: hasTabsBarParent ? 'calc(50% - 8px)' : '50%',
+      transform: hasTabsBarParent ? 'translate3d(0,calc(-50% + 6px),0)' : 'translate3d(0,-50%,0)',
     },
-    // TODO: should get his position naturally to get correct position with bar and without
     gradient: {
       position: 'absolute',
       top: 0,
