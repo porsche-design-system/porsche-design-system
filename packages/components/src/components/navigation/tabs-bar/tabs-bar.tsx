@@ -1,18 +1,24 @@
 import { Component, Element, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/core';
 import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
-import type { TabChangeEvent, TabGradientColorTheme, TabWeight, TabSize } from './tabs-bar-utils';
+import type { TabChangeEvent, TabWeight, TabSize } from './tabs-bar-utils';
 import {
   addEnableTransitionClass,
   determineEnableTransitionClass,
-  hasPTabsParent,
   getTransformationToActive,
   getTransformationToInactive,
   removeEnableTransitionClass,
   sanitizeActiveTabIndex,
 } from './tabs-bar-utils';
-import { attachComponentCss, getHTMLElement, getHTMLElements, getPrefixedTagNames, setAttribute } from '../../../utils';
+import {
+  attachComponentCss,
+  getHTMLElement,
+  getHTMLElements,
+  getPrefixedTagNames,
+  isParentOfKind,
+  setAttribute,
+} from '../../../utils';
 import { getComponentCss } from './tabs-bar-styles';
-import { Direction } from '../../common/scroller/scroller-utils';
+import { Direction, GradientColorTheme } from '../../common/scroller/scroller-utils';
 
 @Component({
   tag: 'p-tabs-bar',
@@ -31,7 +37,7 @@ export class TabsBar {
   @Prop() public theme?: ThemeExtendedElectric = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
-  @Prop() public gradientColorScheme?: TabGradientColorTheme = 'default';
+  @Prop() public gradientColorScheme?: GradientColorTheme = 'default';
 
   /** Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected. */
   @Prop() public activeTabIndex?: number | undefined;
@@ -53,7 +59,6 @@ export class TabsBar {
 
   // TODO: extract and unit test!
   private get focusedTabIndex(): number {
-    // TODO: can we improve this to be handled in tabs/tabs-bar?
     if (this.hasPTabsParent) {
       return this.activeTabIndex;
     }
@@ -68,7 +73,7 @@ export class TabsBar {
   }
 
   public connectedCallback(): void {
-    this.hasPTabsParent = hasPTabsParent(this.host);
+    this.hasPTabsParent = isParentOfKind(this.host, 'pTabs', true);
     this.setTabElements();
     this.initMutationObserver();
   }
