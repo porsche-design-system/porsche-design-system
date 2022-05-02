@@ -2,18 +2,18 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 const generateOverviewPage = (): void => {
-  const sourceFilePath = path.resolve(
-    require.resolve('@porsche-design-system/components-react'),
-    '../../../src/pages/Overview.tsx'
-  );
-  const sourceFileContent = fs.readFileSync(sourceFilePath, 'utf8');
+  const sourceBasePath = path.resolve(require.resolve('@porsche-design-system/components-react'), '../../../src');
+  const overviewFilePath = path.resolve(sourceBasePath, 'pages/Overview.tsx');
+  const overviewFileContent = fs.readFileSync(overviewFilePath, 'utf8');
+
+  const pollComponentsReadyFilePath = path.resolve(sourceBasePath, 'pollComponentsReady.ts');
+  const pollComponentsReadyFileContent = fs.readFileSync(pollComponentsReadyFilePath, 'utf8');
 
   const newFileContent =
-    sourceFileContent
+    overviewFileContent
       .replace("import { pollComponentsReady } from '../pollComponentsReady';", "import type { NextPage } from 'next';")
-      .replace(/export (const OverviewPage)/, '$1: NextPage')
-      .replace(/( } from '@porsche-design-system\/components-react';)/, ', componentsReady$1')
-      .replace(/pollC(omponentsReady)/, 'c$1') + '\nexport default OverviewPage;\n';
+      .replace(/\nexport (const OverviewPage)/, pollComponentsReadyFileContent + '\n$1: NextPage') +
+    '\nexport default OverviewPage;\n';
 
   const targetFileName = '../pages/overview.tsx';
   const targetFilePath = path.resolve(__dirname, targetFileName);
