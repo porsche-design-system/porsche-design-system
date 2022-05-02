@@ -6,6 +6,7 @@ import {
   determineEnableTransitionClass,
   getTransformationToActive,
   getTransformationToInactive,
+  observeTabsBars,
   removeEnableTransitionClass,
   sanitizeActiveTabIndex,
 } from './tabs-bar-utils';
@@ -47,10 +48,10 @@ export class TabsBar {
 
   @State() public isPrevHidden = true;
   @State() public isNextHidden = true;
+  @State() private tabElements: HTMLElement[] = [];
 
   private hostObserver: MutationObserver;
   private intersectionObserver: IntersectionObserver;
-  private tabElements: HTMLElement[] = [];
   private scroller: HTMLElement;
   private scrollAreaElement: HTMLElement;
   private barElement: HTMLElement;
@@ -170,21 +171,19 @@ export class TabsBar {
   };
 
   private setTabElements = (): void => {
-    this.tabElements = getHTMLElements(this.host, 'a,button');
+    const elements: HTMLElement[] = getHTMLElements(this.host, 'a,button');
+    if (this.tabElements.length !== elements.length) {
+      this.tabElements = elements;
+    }
   };
 
   private initMutationObserver = (): void => {
-    this.hostObserver = new MutationObserver((): void => {
+    observeTabsBars(this.host, () => {
       this.setTabElements();
       this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length);
       this.prevActiveTabIndex = this.activeTabIndex;
       this.setBarStyle();
       this.setAccessibilityAttributes();
-    });
-    this.hostObserver.observe(this.host, {
-      childList: true,
-      subtree: true,
-      characterData: true,
     });
   };
 
@@ -203,24 +202,24 @@ export class TabsBar {
   };
 
   private onKeydown = (e: KeyboardEvent): void => {
-    let upcomingFocusedElementIndex: number;
+    let upcomingFocusedTabIndex: number;
     switch (e.key) {
       case 'ArrowLeft':
       case 'Left':
-        upcomingFocusedElementIndex = this.getPrevNextTabIndex('prev');
+        upcomingFocusedTabIndex = this.getPrevNextTabIndex('prev');
         break;
 
       case 'ArrowRight':
       case 'Right':
-        upcomingFocusedElementIndex = this.getPrevNextTabIndex('next');
+        upcomingFocusedTabIndex = this.getPrevNextTabIndex('next');
         break;
 
       case 'Home':
-        upcomingFocusedElementIndex = 0;
+        upcomingFocusedTabIndex = 0;
         break;
 
       case 'End':
-        upcomingFocusedElementIndex = this.tabElements.length - 1;
+        upcomingFocusedTabIndex = this.tabElements.length - 1;
         break;
 
       case 'Enter':
@@ -232,9 +231,9 @@ export class TabsBar {
     }
 
     if (this.hasPTabsParent) {
-      this.onTabClick(upcomingFocusedElementIndex);
+      this.onTabClick(upcomingFocusedTabIndex);
     }
-    this.tabElements[upcomingFocusedElementIndex].focus();
+    this.tabElements[upcomingFocusedTabIndex].focus();
 
     e.preventDefault();
   };
