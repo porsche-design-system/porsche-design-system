@@ -6,32 +6,32 @@ export type GradientColorTheme = 'default' | 'surface';
 
 export const FOCUS_PADDING_WIDTH = 4;
 
-//TODO: rename Tab consts to element/button?
 export const getScrollActivePosition = (
   elements: HTMLElement[],
   direction: Direction,
-  activeTabIndex: number,
+  activeElementIndex: number,
   scrollAreaOffsetWidth: number,
   gradientWidth: number
 ): number => {
-  const { offsetLeft: activeTabOffsetLeft, offsetWidth: activeTabOffsetWidth } = elements[activeTabIndex] ?? {};
+  const { offsetLeft: activeElementOffsetLeft, offsetWidth: activeElementOffsetWidth } =
+    elements[activeElementIndex] ?? {};
   const elementsCount = elements.length;
   let scrollPosition;
   if (direction === 'next') {
-    if (activeTabIndex === elementsCount - 1) {
-      // go to last tab
-      scrollPosition = activeTabOffsetLeft - FOCUS_PADDING_WIDTH;
+    if (activeElementIndex === elementsCount - 1) {
+      // go to last element
+      scrollPosition = activeElementOffsetLeft - FOCUS_PADDING_WIDTH;
     } else {
-      // go to next tab
-      scrollPosition = activeTabOffsetLeft - gradientWidth + FOCUS_PADDING_WIDTH * 2;
+      // go to next element
+      scrollPosition = activeElementOffsetLeft - gradientWidth + FOCUS_PADDING_WIDTH * 2;
     }
   } else {
-    if (activeTabIndex === 0) {
-      // go to first tab
+    if (activeElementIndex === 0) {
+      // go to first element
       scrollPosition = 0;
     } else {
-      // go to prev tab
-      scrollPosition = activeTabOffsetLeft + activeTabOffsetWidth + gradientWidth - scrollAreaOffsetWidth;
+      // go to prev element
+      scrollPosition = activeElementOffsetLeft + activeElementOffsetWidth + gradientWidth - scrollAreaOffsetWidth;
     }
   }
   return scrollPosition;
@@ -42,10 +42,11 @@ export const getScrollPositionAfterPrevNextClick = (
   scrollAreaElement: HTMLElement,
   direction: string
 ): number => {
-  const { offsetLeft: lastTabOffsetLeft, offsetWidth: lastTabOffsetWidth } = elements[elements.length - 1] ?? {};
+  const { offsetLeft: lastElementOffsetLeft, offsetWidth: lastElementOffsetWidth } =
+    elements[elements.length - 1] ?? {};
   const { offsetWidth: scrollAreaWidth, scrollLeft: currentScrollPosition } = scrollAreaElement ?? {};
   const scrollToStep = getScrollByX(scrollAreaElement);
-  const scrollToMax = lastTabOffsetLeft + lastTabOffsetWidth - scrollAreaWidth + FOCUS_PADDING_WIDTH * 2;
+  const scrollToMax = lastElementOffsetLeft + lastElementOffsetWidth - scrollAreaWidth + FOCUS_PADDING_WIDTH * 2;
 
   let scrollPosition: number;
   if (direction === 'next') {
