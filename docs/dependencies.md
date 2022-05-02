@@ -1,4 +1,4 @@
-# Dependencies 04.03.22
+# Dependencies 02.05.22
 
 ## Vue
 All Vue related dependencies can't be updated at the moment because `vue-property-decorator` and `vue-class-component` aren't Vue **3** compatible.
@@ -39,9 +39,6 @@ Unfortunately there's no stable way of using it with Node or TS-Node.
 
 ---
 
-## Components-react
+## Jest
 
-The following dependencies had to be installed manually since they are not downloaded although referenced via `yarn.lock`
-
-* `postcss-normalize`
-* `@babel/plugin-proposal-private-property-in-object`
+Since v28 just came out, typings like `@types/jest-environment-puppeteer` but also `ts-jest` aren't quite there, yet.
