@@ -8,6 +8,7 @@
     "start": "yarn clean:build && concurrently -k -s 'first' -n 'cdn,nextjs' 'serve-cdn' 'next dev'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'next start'",
     "build": "yarn clean:build && next build",
+    "build:generateOverviewPage": "ts-node scripts/generateOverviewPage.ts",
     "lint": "next lint",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
@@ -26,6 +27,7 @@
     "concurrently": "^7.1.0",
     "eslint": "^8.14.0",
     "eslint-config-next": "^12.1.5",
+    "ts-node": "^10.7.0",
     "typescript": "~4.6.4"
   }
 }
