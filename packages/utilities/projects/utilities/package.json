@@ -25,7 +25,7 @@
     "@types/madge": "^5.0.0",
     "@types/styled-components": "^5.1.25",
     "change-case": "^4.1.2",
-    "jest": "^28.0.3",
+    "jest": "^27.5.1",
     "madge": "^5.0.1",
     "prettier": "^2.6.2",
     "react-jss": "^10.9.0",
