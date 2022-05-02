@@ -26,7 +26,7 @@ import { MarqueAriaAttributes, MarqueSize } from "./components/basic/marque/marq
 import { ModalAriaAttributes } from "./components/content/modal/modal-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/navigation/pagination/pagination-utils";
 import { PopoverDirection } from "./components/feedback/popover/popover-utils";
-import { GradientColorTheme } from "./components/common/scroller/scroller-utils";
+import { ActiveElementChange, GradientColorTheme } from "./components/common/scroller/scroller-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
@@ -2044,6 +2044,10 @@ declare namespace LocalJSX {
           * Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: GradientColorTheme;
+        /**
+          * Emitted when active tab is changed.
+         */
+        "onActiveElementChange"?: (event: CustomEvent<ActiveElementChange>) => void;
         /**
           * Elements that are not set in the slot can be passed here *
          */
