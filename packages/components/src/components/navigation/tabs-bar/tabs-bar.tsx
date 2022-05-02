@@ -6,7 +6,6 @@ import {
   determineEnableTransitionClass,
   getTransformationToActive,
   getTransformationToInactive,
-  observeTabsBars,
   removeEnableTransitionClass,
   sanitizeActiveTabIndex,
 } from './tabs-bar-utils';
@@ -16,7 +15,9 @@ import {
   getHTMLElements,
   getPrefixedTagNames,
   isParentOfKind,
+  observeChildren,
   setAttribute,
+  unobserveChildren,
 } from '../../../utils';
 import { getComponentCss } from './tabs-bar-styles';
 import { Direction, GradientColorTheme } from '../../common/scroller/scroller-utils';
@@ -46,11 +47,8 @@ export class TabsBar {
   /** Emitted when active tab is changed. */
   @Event({ bubbles: false }) public tabChange: EventEmitter<TabChangeEvent>;
 
-  @State() public isPrevHidden = true;
-  @State() public isNextHidden = true;
   @State() private tabElements: HTMLElement[] = [];
 
-  private hostObserver: MutationObserver;
   private intersectionObserver: IntersectionObserver;
   private scroller: HTMLElement;
   private scrollAreaElement: HTMLElement;
@@ -82,8 +80,8 @@ export class TabsBar {
   public componentDidLoad(): void {
     this.defineHTMLElements();
     this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length); // since watcher doesn't trigger on first render
+    this.scrollAreaElement.addEventListener('keydown', this.onKeydown);
 
-    this.addEventListeners();
     // setBarStyle() is needed when intersection observer does not trigger because all tabs are visible
     // and first call in componentDidRender() is skipped because elements are not defined, yet
     this.setBarStyle();
@@ -100,7 +98,7 @@ export class TabsBar {
   }
 
   public disconnectedCallback(): void {
-    this.hostObserver.disconnect();
+    unobserveChildren(this.host);
     this.intersectionObserver?.disconnect();
   }
 
@@ -114,6 +112,7 @@ export class TabsBar {
         gradientColorScheme={this.gradientColorScheme}
         activeElementIndex={this.activeTabIndex}
         slottedElements={this.tabElements}
+        onActiveElementChange={({ detail: { activeElementIndex } }) => this.onTabClick(activeElementIndex)}
         ref={(el) => (this.scroller = el)}
       >
         <slot />
@@ -178,7 +177,7 @@ export class TabsBar {
   };
 
   private initMutationObserver = (): void => {
-    observeTabsBars(this.host, () => {
+    observeChildren(this.host, () => {
       this.setTabElements();
       this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length);
       this.prevActiveTabIndex = this.activeTabIndex;
@@ -189,16 +188,6 @@ export class TabsBar {
 
   private onTabClick = (newTabIndex: number): void => {
     this.tabChange.emit({ activeTabIndex: newTabIndex });
-  };
-
-  private addEventListeners = (): void => {
-    this.scrollAreaElement.addEventListener('click', (e) => {
-      const newTabIndex = this.tabElements.indexOf(e.target as HTMLElement);
-      if (newTabIndex >= 0) {
-        this.onTabClick(newTabIndex);
-      }
-    });
-    this.scrollAreaElement.addEventListener('keydown', this.onKeydown);
   };
 
   private onKeydown = (e: KeyboardEvent): void => {

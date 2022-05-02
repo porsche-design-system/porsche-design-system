@@ -1,10 +1,12 @@
 import { getScrollByX } from '../../../utils';
 
+export type ActiveElementChange = { activeElementIndex: number };
 export type Direction = 'prev' | 'next';
 export type GradientColorTheme = 'default' | 'surface';
 
 export const FOCUS_PADDING_WIDTH = 4;
 
+//TODO: rename Tab consts to element/button?
 export const getScrollActivePosition = (
   elements: HTMLElement[],
   direction: Direction,
