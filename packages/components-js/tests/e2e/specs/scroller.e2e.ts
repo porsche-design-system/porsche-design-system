@@ -501,7 +501,7 @@ describe('scroller', () => {
         expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
 
         expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
-        expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
+        expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
       });
     });
 

@@ -23,7 +23,6 @@ import type { TabSize } from '@porsche-design-system/components/src/components/n
 
 export const CSS_ANIMATION_DURATION = 1000;
 export const FOCUS_PADDING = 8;
-const TABS_SCROLL_PERCENTAGE = 0.2;
 
 describe('tabs-bar', () => {
   let page: Page;
@@ -70,23 +69,9 @@ describe('tabs-bar', () => {
   const getAllButtons = () => page.$$('button');
   const getScrollArea = () => selectNode(page, 'p-tabs-bar >>> p-scroller >>> .scroll-area');
   const getBar = () => selectNode(page, 'p-tabs-bar >>> .bar');
-  const getActionContainers = async () => {
-    const actionPrev = await selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action--prev');
-    const actionNext = await selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action--next');
-    return { actionPrev, actionNext };
-  };
-  const getPrevNextButton = async () => {
-    const prevButton = await selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action--prev p-button-pure');
-    const nextButton = await selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action--next p-button-pure');
-    return { prevButton, nextButton };
-  };
   const getScrollLeft = (element: ElementHandle) => getProperty(element, 'scrollLeft');
   const getOffsetLeft = (element: ElementHandle) => getProperty(element, 'offsetLeft');
   const getOffsetWidth = (element: ElementHandle) => getProperty(element, 'offsetWidth');
-  const getClassList = async (element: ElementHandle): Promise<string[]> =>
-    Object.values(await getProperty(element, 'classList'));
-
-  const getScrollDistance = (scrollAreaWidth: number): number => Math.round(scrollAreaWidth * TABS_SCROLL_PERCENTAGE);
   const getBarWidth = async (bar: ElementHandle) => await getElementStyle(bar, 'width');
 
   const clickElement = async (el: ElementHandle) => {
@@ -231,55 +216,55 @@ describe('tabs-bar', () => {
     });
   });
 
-    describe('when not wrapped', () => {
-      it('should set correct bar style when no activeTabIndex is set initially', async () => {
-        await initTabsBar({ amount: 3 });
-        const bar = await getBar();
+  describe('when not wrapped', () => {
+    it('should set correct bar style when no activeTabIndex is set initially', async () => {
+      await initTabsBar({ amount: 3 });
+      const bar = await getBar();
 
-        expect(await getOffsetWidth(bar)).toBe(0);
-      });
-
-      it('should set correct bar style for activeTabIndex 0', async () => {
-        await initTabsBar({ amount: 3, activeTabIndex: 0 });
-        const [firstButton] = await getAllButtons();
-        const bar = await getBar();
-
-        expect(await getOffsetWidth(bar)).toBe(await getOffsetWidth(firstButton));
-      });
-
-      it('should set correct bar style initially with last index', async () => {
-        await initTabsBar({ amount: 3, activeTabIndex: 2 });
-        const [lastButton] = (await getAllButtons()).slice(-1);
-        const bar = await getBar();
-
-        expect(await getOffsetWidth(bar)).toBe(await getOffsetWidth(lastButton));
-      });
+      expect(await getOffsetWidth(bar)).toBe(0);
     });
 
-    describe('when wrapped', () => {
-      it('should set correct bar style when no activeTabIndex is set initially', async () => {
-        await initTabsBar({ isWrapped: true });
-        const bar = await getBar();
+    it('should set correct bar style for activeTabIndex 0', async () => {
+      await initTabsBar({ amount: 3, activeTabIndex: 0 });
+      const [firstButton] = await getAllButtons();
+      const bar = await getBar();
 
-        expect(await getOffsetWidth(bar)).toBe(0);
-      });
-
-      it('should set correct bar style for activeTabIndex 0', async () => {
-        await initTabsBar({ isWrapped: true, activeTabIndex: 0 });
-        const [firstButton] = await getAllButtons();
-        const bar = await getBar();
-
-        expect(await getOffsetWidth(bar)).toBe(await getOffsetWidth(firstButton));
-      });
-
-      it('should set correct bar style initially with last index', async () => {
-        await initTabsBar({ isWrapped: true, activeTabIndex: 7 });
-        const [lastButton] = (await getAllButtons()).slice(-1);
-        const bar = await getBar();
-
-        expect(await getOffsetWidth(bar)).toBe(await getOffsetWidth(lastButton));
-      });
+      expect(await getOffsetWidth(bar)).toBe(await getOffsetWidth(firstButton));
     });
+
+    it('should set correct bar style initially with last index', async () => {
+      await initTabsBar({ amount: 3, activeTabIndex: 2 });
+      const [lastButton] = (await getAllButtons()).slice(-1);
+      const bar = await getBar();
+
+      expect(await getOffsetWidth(bar)).toBe(await getOffsetWidth(lastButton));
+    });
+  });
+
+  describe('when wrapped', () => {
+    it('should set correct bar style when no activeTabIndex is set initially', async () => {
+      await initTabsBar({ isWrapped: true });
+      const bar = await getBar();
+
+      expect(await getOffsetWidth(bar)).toBe(0);
+    });
+
+    it('should set correct bar style for activeTabIndex 0', async () => {
+      await initTabsBar({ isWrapped: true, activeTabIndex: 0 });
+      const [firstButton] = await getAllButtons();
+      const bar = await getBar();
+
+      expect(await getOffsetWidth(bar)).toBe(await getOffsetWidth(firstButton));
+    });
+
+    it('should set correct bar style initially with last index', async () => {
+      await initTabsBar({ isWrapped: true, activeTabIndex: 7 });
+      const [lastButton] = (await getAllButtons()).slice(-1);
+      const bar = await getBar();
+
+      expect(await getOffsetWidth(bar)).toBe(await getOffsetWidth(lastButton));
+    });
+  });
   describe('keyboard', () => {
     it('should render focus on first tab when no tab is selected on keyboard "tab" press', async () => {
       await initTabsBar({ amount: 3 });
