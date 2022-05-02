@@ -35,7 +35,6 @@
     "whatwg-fetch": "^3.6.2"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.16.7",
     "@porsche-design-system/assets": "4.0.0",
     "@porsche-design-system/shared": "0.0.0",
     "@rollup/plugin-commonjs": "^22.0.0",
@@ -50,7 +49,6 @@
     "concurrently": "^7.1.0",
     "globby": "^11.0.4",
     "local-web-server": "^5.2.0",
-    "postcss-preset-env": "^7.4.4",
     "react-scripts": "^5.0.1",
     "rollup": "^2.71.1",
     "rollup-plugin-copy": "^3.4.0",
