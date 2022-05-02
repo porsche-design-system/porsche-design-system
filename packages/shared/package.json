@@ -40,7 +40,7 @@
     "@porsche-design-system/visual-regression-tester": "^4.3.0",
     "@signed/jest-alphabetical-sequencer": "^0.1.1",
     "@types/jest": "^27.4.1",
-    "@types/jest-environment-puppeteer": "^5.0.2",
+    "@denyo/jest-environment-puppeteer": "^6.0.0",
     "@types/jest-expect-message": "^1.0.3",
     "jest": "^28.0.3",
     "jest-puppeteer": "^6.1.0",
