@@ -1,0 +1,287 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`scroller scroll-area accessibility should expose correct initial accessibility tree of tablist 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "name": "Tab Button 1",
+                  "role": "StaticText",
+                },
+              ],
+              "name": "Tab Button 1",
+              "role": "button",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "name": "Tab Button 2",
+                  "role": "StaticText",
+                },
+              ],
+              "name": "Tab Button 2",
+              "role": "button",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "name": "Tab Button 3",
+                  "role": "StaticText",
+                },
+              ],
+              "name": "Tab Button 3",
+              "role": "button",
+            },
+          ],
+          "role": "none",
+        },
+        Object {
+          "role": "none",
+        },
+        Object {
+          "role": "none",
+        },
+      ],
+      "name": "",
+      "role": "generic",
+    },
+  ],
+  "name": "",
+  "orientation": "horizontal",
+  "role": "tablist",
+}
+`;
+
+exports[`scroller scroll-area accessibility should render correct accessibility tree if activeTabIndex is removed  1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "name": "Tab Button 1",
+                  "role": "StaticText",
+                },
+              ],
+              "name": "Tab Button 1",
+              "role": "button",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "name": "Tab Button 2",
+                  "role": "StaticText",
+                },
+              ],
+              "name": "Tab Button 2",
+              "role": "button",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "name": "Tab Button 3",
+                  "role": "StaticText",
+                },
+              ],
+              "name": "Tab Button 3",
+              "role": "button",
+            },
+          ],
+          "role": "none",
+        },
+        Object {
+          "role": "none",
+        },
+        Object {
+          "role": "none",
+        },
+      ],
+      "name": "",
+      "role": "generic",
+    },
+  ],
+  "name": "",
+  "orientation": "horizontal",
+  "role": "tablist",
+}
+`;
+
+exports[`scroller scroll-area accessibility should render correct accessibility tree if activeTabIndex is set  1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "name": "Tab Button 1",
+                  "role": "StaticText",
+                },
+              ],
+              "name": "Tab Button 1",
+              "role": "button",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "name": "Tab Button 2",
+                  "role": "StaticText",
+                },
+              ],
+              "name": "Tab Button 2",
+              "role": "button",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "name": "Tab Button 3",
+                  "role": "StaticText",
+                },
+              ],
+              "name": "Tab Button 3",
+              "role": "button",
+            },
+          ],
+          "role": "none",
+        },
+        Object {
+          "role": "none",
+        },
+        Object {
+          "role": "none",
+        },
+      ],
+      "name": "",
+      "role": "generic",
+    },
+  ],
+  "name": "",
+  "orientation": "horizontal",
+  "role": "tablist",
+}
+`;
+
+exports[`scroller scroll-area accessibility should render correct accessibility tree on focus change and enter press: After change 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "name": "Tab Button 1",
+                  "role": "StaticText",
+                },
+              ],
+              "focused": true,
+              "name": "Tab Button 1",
+              "role": "button",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "name": "Tab Button 2",
+                  "role": "StaticText",
+                },
+              ],
+              "name": "Tab Button 2",
+              "role": "button",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "name": "Tab Button 3",
+                  "role": "StaticText",
+                },
+              ],
+              "name": "Tab Button 3",
+              "role": "button",
+            },
+          ],
+          "role": "none",
+        },
+        Object {
+          "role": "none",
+        },
+        Object {
+          "role": "none",
+        },
+      ],
+      "name": "",
+      "role": "generic",
+    },
+  ],
+  "name": "",
+  "orientation": "horizontal",
+  "role": "tablist",
+}
+`;
+
+exports[`scroller scroll-area accessibility should render correct accessibility tree on focus change and enter press: Before change 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "name": "Tab Button 1",
+                  "role": "StaticText",
+                },
+              ],
+              "name": "Tab Button 1",
+              "role": "button",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "name": "Tab Button 2",
+                  "role": "StaticText",
+                },
+              ],
+              "name": "Tab Button 2",
+              "role": "button",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "name": "Tab Button 3",
+                  "role": "StaticText",
+                },
+              ],
+              "name": "Tab Button 3",
+              "role": "button",
+            },
+          ],
+          "role": "none",
+        },
+        Object {
+          "role": "none",
+        },
+        Object {
+          "role": "none",
+        },
+      ],
+      "name": "",
+      "role": "generic",
+    },
+  ],
+  "name": "",
+  "orientation": "horizontal",
+  "role": "tablist",
+}
+`;
