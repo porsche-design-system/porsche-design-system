@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { PButton } from '@porsche-design-system/components-react';
 import { useEffect } from 'react';
-import { pollComponentsReady } from '../pollComponentsReady'
+import { pollComponentsReady } from '../pollComponentsReady';
 
 export const ButtonSkeletonPage = (): JSX.Element => {
   useEffect(() => {
