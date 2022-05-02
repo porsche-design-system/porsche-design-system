@@ -12,4 +12,6 @@ const NextJsApp = ({ Component, pageProps }: AppProps): JSX.Element => {
 
 export default NextJsApp;
 
-(window as any).componentsReady = componentsReady; // for vrt
+if (typeof window !== 'undefined') {
+  (window as any).componentsReady = componentsReady; // for vrt
+}
