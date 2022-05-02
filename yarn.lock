@@ -15561,7 +15561,7 @@ postcss-preset-env@7.2.3:
     postcss-replace-overflow-wrap "^4.0.0"
     postcss-selector-not "^5.0.0"
 
-postcss-preset-env@^7.0.0, postcss-preset-env@^7.0.1, postcss-preset-env@^7.4.4:
+postcss-preset-env@^7.0.0, postcss-preset-env@^7.0.1:
   version "7.4.4"
   resolved "https://registry.yarnpkg.com/postcss-preset-env/-/postcss-preset-env-7.4.4.tgz#069e34e31e2a7345154da7936b9fc1fcbdbd6d43"
   integrity sha512-MqzSEx/QsvOk562iV9mLTgIvLFEOq1os9QBQfkgnq8TW6yKhVFPGh0gdXSK5ZlmjuNQEga6/x833e86XZF/lug==
