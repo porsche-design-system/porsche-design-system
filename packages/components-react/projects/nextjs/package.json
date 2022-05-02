@@ -8,9 +8,11 @@
     "prestartAndBuild": "yarn clean:build && yarn generateOverviewPage",
     "start": "yarn prestartAndBuild && concurrently -k -s 'first' -n 'cdn,nextjs' 'serve-cdn' 'next dev'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'next start'",
-    "build": "yarn prestartAndBuild && next build",
+    "build-app": "yarn prestartAndBuild && next build",
     "generateOverviewPage": "ts-node scripts/generateOverviewPage.ts",
     "lint": "next lint",
+    "test": "yarn test:vrt",
+    "test:vrt": "yarn build-app && TYPE=VRT PORT=3000 jest --colors -c tests/vrt/config/jest.config.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./.next"
@@ -22,6 +24,7 @@
     "react-dom": "^18.1.0"
   },
   "devDependencies": {
+    "@porsche-design-system/shared": "0.0.0",
     "@types/node": "^17.0.31",
     "@types/react": "^18.0.8",
     "@types/react-dom": "^18.0.3",
