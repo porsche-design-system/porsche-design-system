@@ -5,8 +5,8 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
-    "start": "yarn clean:build && next dev",
-    "start-app": "next start",
+    "start": "yarn clean:build && concurrently -k -s 'first' -n 'cdn,nextjs' 'serve-cdn' 'next dev'",
+    "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'next start'",
     "build": "yarn clean:build && next build",
     "lint": "next lint",
     "clean": "yarn clean:node_modules && yarn clean:build",
@@ -14,6 +14,7 @@
     "clean:build": "rm -rf ./.next"
   },
   "dependencies": {
+    "@porsche-design-system/components-react": "2.11.0-skeletons",
     "next": "^12.1.5",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
@@ -22,6 +23,7 @@
     "@types/node": "^17.0.31",
     "@types/react": "^18.0.8",
     "@types/react-dom": "^18.0.3",
+    "concurrently": "^7.1.0",
     "eslint": "^8.14.0",
     "eslint-config-next": "^12.1.5",
     "typescript": "~4.6.4"
