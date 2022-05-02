@@ -44,7 +44,7 @@
     "jss": "^10.9.0",
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.9.0",
-    "throttle-debounce": "^4.0.1"
+    "throttle-debounce": "^5.0.0"
   },
   "devDependencies": {
     "@juggle/resize-observer": "^3.3.1",
@@ -57,7 +57,7 @@
     "change-case": "^4.1.2",
     "concurrently": "^7.1.0",
     "construct-style-sheets-polyfill": "^3.1.0",
-    "dts-bundle-generator": "^6.7.0",
+    "dts-bundle-generator": "^6.9.0",
     "eslint": "^8.14.0",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-react": "^7.29.4",
