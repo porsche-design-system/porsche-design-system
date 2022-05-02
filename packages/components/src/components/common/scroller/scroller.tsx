@@ -34,10 +34,10 @@ export class Scroller {
   private direction: Direction = 'next';
   private prevActiveElement: number;
   private hasTabsBarParent: boolean = false;
-  private scrollItems: HTMLElement[] = this.slottedElements;
+  private scrollItems: HTMLElement[];
 
   @Watch('activeElementIndex')
-  public activeTabHandler(_newValue: number, oldValue: number): void {
+  public activeElementHandler(_newValue: number, oldValue: number): void {
     this.prevActiveElement = oldValue;
     this.direction = this.activeElementIndex > this.prevActiveElement ? 'next' : 'prev';
 
@@ -46,10 +46,7 @@ export class Scroller {
 
   public connectedCallback(): void {
     this.hasTabsBarParent = isParentOfKind(this.host, 'pTabsBar', true);
-
-    if (!this.slottedElements) {
-      this.scrollItems = this.host.children as unknown as HTMLElement[];
-    }
+    this.setScrollItems();
   }
 
   public componentDidLoad(): void {
@@ -68,9 +65,12 @@ export class Scroller {
     attachComponentCss(this.host, getComponentCss, this.gradientColorScheme, this.hasTabsBarParent, this.theme);
   }
 
+  public componentWillUpdate(): void {
+    this.setScrollItems();
+  }
+
   public render(): JSX.Element {
     // TODO: role="tablist" ? maybe generic?
-    // TODO: better name for root class?
     return (
       <div class="root">
         <div class="scroll-area" role="tablist">
@@ -149,5 +149,9 @@ export class Scroller {
     } else {
       scrollElementTo(this.scrollAreaElement, scrollActivePosition);
     }
+  };
+
+  private setScrollItems = (): void => {
+    this.scrollItems = this.slottedElements ? this.slottedElements : (this.host.children as unknown as HTMLElement[]);
   };
 }

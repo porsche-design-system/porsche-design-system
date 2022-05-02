@@ -62,3 +62,28 @@ export const determineEnableTransitionClass = (
     addEnableTransitionClass(barElement);
   }
 };
+
+export const tabsBarsMutationMap: Map<Node, () => void> = new Map();
+
+const tabsBarsObserver = new MutationObserver((mutations) => {
+  mutations
+    // remove duplicates so we execute callback only once per node
+    .filter((mutation, idx, arr) => arr.findIndex((m) => m.target === mutation.target) === idx)
+    .forEach((mutation) => tabsBarsMutationMap.get(mutation.target)?.());
+});
+
+export const observeTabsBars = <T extends HTMLElement>(node: T, callback: () => void): void => {
+  // node might not be defined in connectedCallback
+  if (node) {
+    tabsBarsMutationMap.set(node, callback);
+    tabsBarsObserver.observe(node, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+    });
+  }
+};
+
+export const unobserveAttributes = <T extends HTMLElement>(node: T): void => {
+  tabsBarsMutationMap.delete(node);
+};
