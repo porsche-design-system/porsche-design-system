@@ -50,7 +50,7 @@
     "concurrently": "^7.1.0",
     "globby": "^11.0.4",
     "local-web-server": "^5.2.0",
-    "postcss-preset-env": "^7.4.3",
+    "postcss-preset-env": "^7.4.4",
     "react-scripts": "^5.0.1",
     "rollup": "^2.71.1",
     "rollup-plugin-copy": "^3.4.0",
