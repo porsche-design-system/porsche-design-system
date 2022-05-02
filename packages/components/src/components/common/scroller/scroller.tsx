@@ -1,9 +1,17 @@
-import { Component, Element, State, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, State, Prop, Watch, Event, h, EventEmitter } from '@stencil/core';
 import { PrevNextButton } from './prev-next-button';
-import { attachComponentCss, getHTMLElement, getHTMLElements, isParentOfKind, scrollElementTo } from '../../../utils';
+import {
+  attachComponentCss,
+  getHTMLElement,
+  getHTMLElements,
+  isParentOfKind,
+  observeChildren,
+  scrollElementTo,
+  unobserveChildren,
+} from '../../../utils';
 import { getComponentCss } from './scroller-styles';
 import { getScrollActivePosition, getScrollPositionAfterPrevNextClick } from './scroller-utils';
-import type { Direction, GradientColorTheme } from './scroller-utils';
+import type { ActiveElementChange, Direction, GradientColorTheme } from './scroller-utils';
 import type { ThemeExtendedElectric } from '../../../types';
 
 @Component({
@@ -25,8 +33,12 @@ export class Scroller {
   /** Elements that are not set in the slot can be passed here **/
   @Prop() public slottedElements?: HTMLElement[];
 
+  /** Emitted when active tab is changed. */
+  @Event({ bubbles: false }) public activeElementChange: EventEmitter<ActiveElementChange>;
+
   @State() public isPrevHidden = true;
   @State() public isNextHidden = true;
+  @State() private scrollItems: HTMLElement[];
 
   private intersectionObserver: IntersectionObserver;
   private scrollAreaElement: HTMLElement;
@@ -34,7 +46,6 @@ export class Scroller {
   private direction: Direction = 'next';
   private prevActiveElement: number;
   private hasTabsBarParent: boolean = false;
-  private scrollItems: HTMLElement[];
 
   @Watch('activeElementIndex')
   public activeElementHandler(_newValue: number, oldValue: number): void {
@@ -47,11 +58,20 @@ export class Scroller {
   public connectedCallback(): void {
     this.hasTabsBarParent = isParentOfKind(this.host, 'pTabsBar', true);
     this.setScrollItems();
+    if (!this.slottedElements) {
+      this.initMutationObserver();
+    }
   }
 
   public componentDidLoad(): void {
     this.defineHTMLElements();
     this.initIntersectionObserver();
+    this.scrollAreaElement.addEventListener('click', (e) => {
+      const newTabIndex = this.scrollItems.indexOf(e.target as HTMLElement);
+      if (newTabIndex >= 0) {
+        this.onElementClick(newTabIndex);
+      }
+    });
 
     // TODO: validation of active element index inside of tabs bar!
 
@@ -67,6 +87,12 @@ export class Scroller {
 
   public componentWillUpdate(): void {
     this.setScrollItems();
+  }
+
+  public disconnectedCallback(): void {
+    if (!this.slottedElements) {
+      unobserveChildren(this.host);
+    }
   }
 
   public render(): JSX.Element {
@@ -151,7 +177,17 @@ export class Scroller {
     }
   };
 
+  private onElementClick = (newElementIndex: number): void => {
+    this.activeElementChange.emit({ activeElementIndex: newElementIndex });
+  };
+
+  private initMutationObserver = (): void => {
+    observeChildren(this.host, () => {
+      this.setScrollItems();
+    });
+  };
+
   private setScrollItems = (): void => {
-    this.scrollItems = this.slottedElements ? this.slottedElements : (this.host.children as unknown as HTMLElement[]);
+    this.scrollItems = this.slottedElements ? this.slottedElements : (Array.from(this.host.children) as HTMLElement[]);
   };
 }
