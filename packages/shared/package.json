@@ -42,7 +42,7 @@
     "@types/jest": "^27.4.1",
     "@types/jest-environment-puppeteer": "^5.0.0",
     "@types/jest-expect-message": "^1.0.3",
-    "jest": "^27.5.1",
+    "jest": "^28.0.3",
     "jest-puppeteer": "^6.1.0",
     "jss": "^10.9.0",
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
