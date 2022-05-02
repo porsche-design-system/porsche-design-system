@@ -1,12 +1,27 @@
 /* Auto Generated File */
-import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCheckboxWrapper, PContentWrapper, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PSelectWrapper, PSpinner, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem, componentsReady } from '@porsche-design-system/components-react';
+import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCheckboxWrapper, PContentWrapper, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PSelectWrapper, PSpinner, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react';
 import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
+import { componentsReady } from '@porsche-design-system/components-react';
+
+/**
+ * Since React 18, using componentsReady() within useEffect() constantly resolves with `0` in headless Chrome.
+ * Therefore, we make it poll and check that more than `0` components are ready.
+ */
+export const pollComponentsReady = async (): Promise<number> => {
+  const amount = await componentsReady();
+  if (amount === 0) {
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    return pollComponentsReady();
+  } else {
+    return amount;
+  }
+};
 
 const OverviewPage: NextPage = (): JSX.Element => {
   const [allReady, setAllReady] = useState(false);
   useEffect(() => {
-    componentsReady().then(() => {
+    pollComponentsReady().then(() => {
       setAllReady(true);
     });
   }, []);
