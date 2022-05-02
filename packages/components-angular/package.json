@@ -22,7 +22,7 @@
     "test:vrt": "if [ \"$CI\" != true ]; then yarn build-app; fi && TYPE=VRT PORT=4200 jest --colors -c tests/vrt/config/jest.config.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:build": "rm -rf ./dist && rm -rf ./tmp && rm -rf ./out-tsc && rm -rf ./bazel-out"
+    "clean:build": "rm -rf ./dist && rm -rf ./tmp && rm -rf ./out-tsc && rm -rf ./bazel-out && rm -rf ./.angular"
   },
   "dependencies": {
     "@angular/animations": "^13.3.5",
