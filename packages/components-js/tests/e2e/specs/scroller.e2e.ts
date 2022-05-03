@@ -113,7 +113,7 @@ describe('scroller', () => {
       expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
     });
 
-    it('should show next button adding a button', async () => {
+    it('should show next button after adding a button', async () => {
       await initScroller({ amount: 5, activeElementIndex: 4, otherMarkup: clickHandlerScript, isWrapped: true });
       const { actionNext } = await getActionContainers();
 
@@ -125,6 +125,10 @@ describe('scroller', () => {
 
       expect(await getClassList(actionNext)).not.toContain(hiddenClass);
     });
+
+    it('should stay selected when element after current active element is removed', () => {});
+    it('should reset activeElementIndex when last element is active and an element is removed in the middle', () => {});
+    it('should not reset activeElementIndex on 5 elements when 4 is active and 3 removed', () => {});
   });
 
   describe('scroll-area', () => {
