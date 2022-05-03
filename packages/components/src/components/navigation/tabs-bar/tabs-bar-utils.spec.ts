@@ -5,6 +5,8 @@ import {
   removeEnableTransitionClass,
   sanitizeActiveTabIndex,
   determineEnableTransitionClass,
+  getPrevNextTabIndex,
+  getFocusedTabIndex,
 } from './tabs-bar-utils';
 
 const enableTransitionClass = 'bar--enable-transition';
@@ -96,4 +98,48 @@ describe('determineEnableTransitionClass()', () => {
     determineEnableTransitionClass(undefined, 0, div);
     expect(div.classList.contains(enableTransitionClass)).toBe(true);
   });
+});
+
+describe('getPrevNextTabIndex()', () => {
+  it('should return correct index for prev direction', () => {
+    expect(getPrevNextTabIndex('prev', 5, 1)).toBe(0);
+    expect(getPrevNextTabIndex('prev', 6, 2)).toBe(1);
+  });
+
+  it('should return correct index for next direction', () => {
+    expect(getPrevNextTabIndex('next', 5, 1)).toBe(2);
+    expect(getPrevNextTabIndex('next', 6, 2)).toBe(3);
+  });
+});
+
+describe('getFocusedTabIndex()', () => {
+  const getButtons = () => Array.from(document.querySelectorAll('button')) as HTMLElement[];
+
+  beforeEach(() => {
+    Array.from(Array(5)).forEach((_, i) => {
+      const button = document.createElement('button');
+      button.innerHTML = `Button ${i}`;
+      document.body.appendChild(button);
+    });
+  });
+
+  afterEach(() => {
+    document.body.innerHTML = '';
+  });
+
+  it('should return correct tabIndex of element in array', () => {
+    const buttons = getButtons();
+    buttons[2].focus();
+    expect(getFocusedTabIndex(buttons)).toBe(2);
+  });
+
+  it('should return 0 when element does not match', () => {
+    const buttons = getButtons();
+    document.body.focus();
+    expect(getFocusedTabIndex(buttons)).toBe(0);
+  });
+});
+// TODO: add setBarStyle test
+describe('setBarStyle()', () => {
+  it('', () => {});
 });
