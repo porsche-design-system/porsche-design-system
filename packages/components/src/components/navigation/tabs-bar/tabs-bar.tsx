@@ -1,15 +1,8 @@
-import { Component, Element, Event, Prop, State, Watch, h } from '@stencil/core';
 import type { EventEmitter } from '@stencil/core';
+import { Component, Element, Event, Prop, State, Watch, h } from '@stencil/core';
 import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
 import type { TabChangeEvent, TabSize, TabWeight } from './tabs-bar-utils';
-import {
-  addEnableTransitionClass,
-  determineEnableTransitionClass,
-  getTransformationToActive,
-  getTransformationToInactive,
-  removeEnableTransitionClass,
-  sanitizeActiveTabIndex,
-} from './tabs-bar-utils';
+import { getFocusedTabIndex, getPrevNextTabIndex, sanitizeActiveTabIndex, setBarStyle } from './tabs-bar-utils';
 import {
   attachComponentCss,
   getHTMLElement,
@@ -21,7 +14,7 @@ import {
   unobserveChildren,
 } from '../../../utils';
 import { getComponentCss } from './tabs-bar-styles';
-import type { ActiveElementChange, Direction, GradientColorTheme } from '../../common/scroller/scroller-utils';
+import type { ActiveElementChange, GradientColorTheme } from '../../common/scroller/scroller-utils';
 
 @Component({
   tag: 'p-tabs-bar',
@@ -57,15 +50,6 @@ export class TabsBar {
   private prevActiveTabIndex: number;
   private hasPTabsParent: boolean;
 
-  // TODO: extract and unit test!
-  private get focusedTabIndex(): number {
-    if (this.hasPTabsParent) {
-      return this.activeTabIndex;
-    }
-    const indexOfActiveElement = this.tabElements.indexOf(document?.activeElement as HTMLElement);
-    return indexOfActiveElement < 0 ? 0 : indexOfActiveElement;
-  }
-
   @Watch('activeTabIndex')
   public activeTabHandler(newValue: number, oldValue: number): void {
     this.activeTabIndex = sanitizeActiveTabIndex(newValue, this.tabElements.length);
@@ -86,7 +70,7 @@ export class TabsBar {
 
     // setBarStyle() is needed when intersection observer does not trigger because all tabs are visible
     // and first call in componentDidRender() is skipped because elements are not defined, yet
-    this.setBarStyle();
+    setBarStyle(this.tabElements, this.activeTabIndex, this.barElement, this.prevActiveTabIndex);
   }
 
   public componentWillRender(): void {
@@ -95,7 +79,7 @@ export class TabsBar {
 
   public componentDidRender(): void {
     // needs to happen after render in order to have status bar defined and proper calculation
-    this.setBarStyle();
+    setBarStyle(this.tabElements, this.activeTabIndex, this.barElement, this.prevActiveTabIndex);
     this.setAccessibilityAttributes();
   }
 
@@ -141,32 +125,6 @@ export class TabsBar {
     }
   };
 
-  private setBarStyle = (): void => {
-    // TODO: move entire function into utilities and refactor to single setAttribute call
-    // statusBarElement is undefined on first render
-    const { activeTabIndex, barElement, prevActiveTabIndex } = this;
-    if (!barElement) {
-      return;
-    }
-
-    if (activeTabIndex === undefined && prevActiveTabIndex !== undefined) {
-      // handle initial inactive + active to inactive cases
-      addEnableTransitionClass(barElement);
-      const transformationToInactive = getTransformationToInactive(this.tabElements[prevActiveTabIndex]);
-      setAttribute(barElement, 'style', transformationToInactive);
-    } else if (activeTabIndex === undefined && prevActiveTabIndex === undefined) {
-      // handle active to removed
-      removeEnableTransitionClass(barElement);
-      const transformationToInactive = getTransformationToInactive();
-      setAttribute(barElement, 'style', transformationToInactive);
-    } else {
-      // handle initial active + active to active + inactive to active cases
-      determineEnableTransitionClass(activeTabIndex, prevActiveTabIndex, barElement);
-      const transformationToActive = getTransformationToActive(this.tabElements[activeTabIndex]);
-      setAttribute(barElement, 'style', transformationToActive);
-    }
-  };
-
   private defineHTMLElements = (): void => {
     const { shadowRoot } = this.host;
     // this.scrollAreaElement = getHTMLElement(this.scroller.shadowRoot, '.scroll-area');
@@ -185,7 +143,7 @@ export class TabsBar {
       this.setTabElements();
       this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length);
       this.prevActiveTabIndex = this.activeTabIndex;
-      this.setBarStyle();
+      setBarStyle(this.tabElements, this.activeTabIndex, this.barElement, this.prevActiveTabIndex);
       this.setAccessibilityAttributes();
     });
   };
@@ -196,15 +154,17 @@ export class TabsBar {
 
   private onKeydown = (e: KeyboardEvent): void => {
     let upcomingFocusedTabIndex: number;
+    const focusedTabIndex = this.hasPTabsParent ? this.activeTabIndex : getFocusedTabIndex(this.tabElements);
+
     switch (e.key) {
       case 'ArrowLeft':
       case 'Left':
-        upcomingFocusedTabIndex = this.getPrevNextTabIndex('prev');
+        upcomingFocusedTabIndex = getPrevNextTabIndex('prev', this.tabElements.length, focusedTabIndex);
         break;
 
       case 'ArrowRight':
       case 'Right':
-        upcomingFocusedTabIndex = this.getPrevNextTabIndex('next');
+        upcomingFocusedTabIndex = getPrevNextTabIndex('next', this.tabElements.length, focusedTabIndex);
         break;
 
       case 'Home':
@@ -216,7 +176,7 @@ export class TabsBar {
         break;
 
       case 'Enter':
-        this.onTabClick(this.focusedTabIndex);
+        this.onTabClick(focusedTabIndex);
         return;
 
       default:
@@ -229,13 +189,5 @@ export class TabsBar {
     this.tabElements[upcomingFocusedTabIndex].focus();
 
     e.preventDefault();
-  };
-
-  // TODO: should be pure function and unit tested
-  private getPrevNextTabIndex = (direction: Direction): number => {
-    const slottedElementsLength = this.tabElements.length;
-    const newTabIndex = this.focusedTabIndex + (direction === 'next' ? 1 : -1);
-
-    return (newTabIndex + slottedElementsLength) % slottedElementsLength;
   };
 }

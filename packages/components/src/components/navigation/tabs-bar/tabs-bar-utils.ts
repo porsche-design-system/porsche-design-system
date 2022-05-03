@@ -1,5 +1,7 @@
 import type { TextWeight } from '../../../types';
 import { pxToRemWithUnit } from '../../../styles';
+import { Direction } from '../../common/scroller/scroller-utils';
+import { setAttribute } from '../../../utils';
 
 const TAB_SIZE = ['small', 'medium'] as const;
 export type TabSize = typeof TAB_SIZE[number];
@@ -61,4 +63,47 @@ export const determineEnableTransitionClass = (
     // active to active
     addEnableTransitionClass(barElement);
   }
+};
+
+export const getPrevNextTabIndex = (
+  direction: Direction,
+  tabElementsLength: number,
+  focusedTabIndex: number
+): number => {
+  const newTabIndex = focusedTabIndex + (direction === 'next' ? 1 : -1);
+
+  return (newTabIndex + tabElementsLength) % tabElementsLength;
+};
+
+export const getFocusedTabIndex = (tabElements: HTMLElement[]): number => {
+  const indexOfActiveElement = tabElements.indexOf(document?.activeElement as HTMLElement);
+  return indexOfActiveElement < 0 ? 0 : indexOfActiveElement;
+};
+
+export const setBarStyle = (
+  tabElements: HTMLElement[],
+  activeTabIndex: number,
+  barElement: HTMLElement,
+  prevActiveTabIndex: number
+): void => {
+  // statusBarElement is undefined on first render
+  if (!barElement) {
+    return;
+  }
+  let transformation: string;
+
+  if (activeTabIndex === undefined && prevActiveTabIndex !== undefined) {
+    // handle initial inactive + active to inactive cases
+    addEnableTransitionClass(barElement);
+    transformation = getTransformationToInactive(tabElements[prevActiveTabIndex]);
+  } else if (activeTabIndex === undefined && prevActiveTabIndex === undefined) {
+    // handle active to removed
+    removeEnableTransitionClass(barElement);
+    transformation = getTransformationToInactive();
+  } else {
+    // handle initial active + active to active + inactive to active cases
+    determineEnableTransitionClass(activeTabIndex, prevActiveTabIndex, barElement);
+    transformation = getTransformationToActive(tabElements[activeTabIndex]);
+  }
+  setAttribute(barElement, 'style', transformation);
 };
