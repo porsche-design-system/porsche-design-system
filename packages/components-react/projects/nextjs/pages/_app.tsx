@@ -2,7 +2,7 @@ import '@porsche-design-system/shared/css/styles.css';
 import type { AppProps } from 'next/app';
 import { componentsReady, PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
 
-const NextJsApp = ({ Component, pageProps }: AppProps): JSX.Element => {
+const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
     <PorscheDesignSystemProvider>
       <Component {...pageProps} />
@@ -10,7 +10,7 @@ const NextJsApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   );
 };
 
-export default NextJsApp;
+export default App;
 
 if (typeof window !== 'undefined') {
   (window as any).componentsReady = componentsReady; // for vrt
