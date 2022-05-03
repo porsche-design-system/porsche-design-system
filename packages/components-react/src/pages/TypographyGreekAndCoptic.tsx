@@ -22,7 +22,7 @@ export const TypographyGreekAndCopticPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground" title="should show typography in greek and coptic charset">
         <h2>Porsche Next Greek & Coptic</h2>

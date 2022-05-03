@@ -10,7 +10,7 @@ export const LinkSocialPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should render with label">
         <PLinkSocial href="https://www.facebook.com" icon="logo-facebook">Some label</PLinkSocial>
