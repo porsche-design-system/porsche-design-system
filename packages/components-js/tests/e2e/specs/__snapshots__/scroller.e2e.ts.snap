@@ -10,50 +10,194 @@ Object {
             Object {
               "children": Array [
                 Object {
-                  "name": "Button 1",
-                  "role": "StaticText",
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Button 1",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 1",
+                                  "role": "button",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Button 2",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 2",
+                                  "role": "button",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Button 3",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 3",
+                                  "role": "button",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                            Object {
+                              "role": "none",
+                            },
+                            Object {
+                              "role": "none",
+                            },
+                          ],
+                          "name": "",
+                          "role": "generic",
+                        },
+                      ],
+                      "name": "Button 1 Button 2 Button 3",
+                      "role": "generic",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "children": Array [
+                                                Object {
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "children": Array [
+                                                Object {
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "name": "",
+                  "role": "generic",
                 },
               ],
-              "name": "Button 1",
-              "role": "button",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Button 2",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Button 2",
-              "role": "button",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Button 3",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Button 3",
-              "role": "button",
+              "role": "none",
             },
           ],
           "role": "none",
         },
-        Object {
-          "role": "none",
-        },
-        Object {
-          "role": "none",
-        },
       ],
-      "name": "",
-      "role": "generic",
+      "role": "none",
     },
   ],
   "name": "",
-  "orientation": "horizontal",
-  "role": "tablist",
+  "role": "RootWebArea",
 }
 `;
 
@@ -67,50 +211,194 @@ Object {
             Object {
               "children": Array [
                 Object {
-                  "name": "Button 1",
-                  "role": "StaticText",
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Button 1",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 1",
+                                  "role": "button",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Button 2",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 2",
+                                  "role": "button",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Button 3",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 3",
+                                  "role": "button",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                            Object {
+                              "role": "none",
+                            },
+                            Object {
+                              "role": "none",
+                            },
+                          ],
+                          "name": "",
+                          "role": "generic",
+                        },
+                      ],
+                      "name": "Button 1 Button 2 Button 3",
+                      "role": "generic",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "children": Array [
+                                                Object {
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "children": Array [
+                                                Object {
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "name": "",
+                  "role": "generic",
                 },
               ],
-              "name": "Button 1",
-              "role": "button",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Button 2",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Button 2",
-              "role": "button",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Button 3",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Button 3",
-              "role": "button",
+              "role": "none",
             },
           ],
           "role": "none",
         },
-        Object {
-          "role": "none",
-        },
-        Object {
-          "role": "none",
-        },
       ],
-      "name": "",
-      "role": "generic",
+      "role": "none",
     },
   ],
   "name": "",
-  "orientation": "horizontal",
-  "role": "tablist",
+  "role": "RootWebArea",
 }
 `;
 
@@ -124,50 +412,194 @@ Object {
             Object {
               "children": Array [
                 Object {
-                  "name": "Button 1",
-                  "role": "StaticText",
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Button 1",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 1",
+                                  "role": "button",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Button 2",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 2",
+                                  "role": "button",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Button 3",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 3",
+                                  "role": "button",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                            Object {
+                              "role": "none",
+                            },
+                            Object {
+                              "role": "none",
+                            },
+                          ],
+                          "name": "",
+                          "role": "generic",
+                        },
+                      ],
+                      "name": "Button 1 Button 2 Button 3",
+                      "role": "generic",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "children": Array [
+                                                Object {
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "children": Array [
+                                                Object {
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "name": "",
+                  "role": "generic",
                 },
               ],
-              "name": "Button 1",
-              "role": "button",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Button 2",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Button 2",
-              "role": "button",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Button 3",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Button 3",
-              "role": "button",
+              "role": "none",
             },
           ],
           "role": "none",
         },
-        Object {
-          "role": "none",
-        },
-        Object {
-          "role": "none",
-        },
       ],
-      "name": "",
-      "role": "generic",
+      "role": "none",
     },
   ],
   "name": "",
-  "orientation": "horizontal",
-  "role": "tablist",
+  "role": "RootWebArea",
 }
 `;
 
@@ -181,51 +613,195 @@ Object {
             Object {
               "children": Array [
                 Object {
-                  "name": "Button 1",
-                  "role": "StaticText",
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Button 1",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 1",
+                                  "role": "button",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Button 2",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 2",
+                                  "role": "button",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Button 3",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 3",
+                                  "role": "button",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                            Object {
+                              "role": "none",
+                            },
+                            Object {
+                              "role": "none",
+                            },
+                          ],
+                          "name": "",
+                          "role": "generic",
+                        },
+                      ],
+                      "focused": true,
+                      "name": "Button 1 Button 2 Button 3",
+                      "role": "generic",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "children": Array [
+                                                Object {
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "children": Array [
+                                                Object {
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "name": "",
+                  "role": "generic",
                 },
               ],
-              "focused": true,
-              "name": "Button 1",
-              "role": "button",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Button 2",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Button 2",
-              "role": "button",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Button 3",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Button 3",
-              "role": "button",
+              "role": "none",
             },
           ],
           "role": "none",
         },
-        Object {
-          "role": "none",
-        },
-        Object {
-          "role": "none",
-        },
       ],
-      "name": "",
-      "role": "generic",
+      "role": "none",
     },
   ],
   "name": "",
-  "orientation": "horizontal",
-  "role": "tablist",
+  "role": "RootWebArea",
 }
 `;
 
@@ -239,50 +815,194 @@ Object {
             Object {
               "children": Array [
                 Object {
-                  "name": "Button 1",
-                  "role": "StaticText",
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Button 1",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 1",
+                                  "role": "button",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Button 2",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 2",
+                                  "role": "button",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Button 3",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 3",
+                                  "role": "button",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                            Object {
+                              "role": "none",
+                            },
+                            Object {
+                              "role": "none",
+                            },
+                          ],
+                          "name": "",
+                          "role": "generic",
+                        },
+                      ],
+                      "name": "Button 1 Button 2 Button 3",
+                      "role": "generic",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "children": Array [
+                                                Object {
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "children": Array [
+                                                Object {
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "name": "",
+                  "role": "generic",
                 },
               ],
-              "name": "Button 1",
-              "role": "button",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Button 2",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Button 2",
-              "role": "button",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Button 3",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Button 3",
-              "role": "button",
+              "role": "none",
             },
           ],
           "role": "none",
         },
-        Object {
-          "role": "none",
-        },
-        Object {
-          "role": "none",
-        },
       ],
-      "name": "",
-      "role": "generic",
+      "role": "none",
     },
   ],
   "name": "",
-  "orientation": "horizontal",
-  "role": "tablist",
+  "role": "RootWebArea",
 }
 `;
 
@@ -296,60 +1016,205 @@ Object {
             Object {
               "children": Array [
                 Object {
-                  "name": "Button 1",
-                  "role": "StaticText",
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Button 1",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 1",
+                                  "role": "button",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Button 2",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 2",
+                                  "role": "button",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Button 3",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 3",
+                                  "role": "button",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Button 4",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 4",
+                                  "role": "button",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                            Object {
+                              "role": "none",
+                            },
+                            Object {
+                              "role": "none",
+                            },
+                          ],
+                          "name": "",
+                          "role": "generic",
+                        },
+                      ],
+                      "focused": true,
+                      "name": "Button 1 Button 2 Button 3 Button 4",
+                      "role": "generic",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "children": Array [
+                                                Object {
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "children": Array [
+                                                Object {
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "name": "",
+                  "role": "generic",
                 },
               ],
-              "name": "Button 1",
-              "role": "button",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Button 2",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Button 2",
-              "role": "button",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Button 3",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Button 3",
-              "role": "button",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Button 4",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Button 4",
-              "role": "button",
+              "role": "none",
             },
           ],
           "role": "none",
         },
-        Object {
-          "role": "none",
-        },
-        Object {
-          "role": "none",
-        },
       ],
-      "name": "",
-      "role": "generic",
+      "role": "none",
     },
   ],
   "name": "",
-  "orientation": "horizontal",
-  "role": "tablist",
+  "role": "RootWebArea",
 }
 `;
 
@@ -363,59 +1228,203 @@ Object {
             Object {
               "children": Array [
                 Object {
-                  "name": "Button 1",
-                  "role": "StaticText",
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Button 1",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 1",
+                                  "role": "button",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Button 2",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 2",
+                                  "role": "button",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Button 3",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 3",
+                                  "role": "button",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "name": "Button 4",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "name": "Button 4",
+                                  "role": "button",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                            Object {
+                              "role": "none",
+                            },
+                            Object {
+                              "role": "none",
+                            },
+                          ],
+                          "name": "",
+                          "role": "generic",
+                        },
+                      ],
+                      "name": "Button 1 Button 2 Button 3 Button 4",
+                      "role": "generic",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "children": Array [
+                                                Object {
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "role": "none",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "children": Array [
+                                        Object {
+                                          "children": Array [
+                                            Object {
+                                              "children": Array [
+                                                Object {
+                                                  "role": "none",
+                                                },
+                                              ],
+                                              "role": "none",
+                                            },
+                                          ],
+                                          "role": "none",
+                                        },
+                                      ],
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "name": "",
+                  "role": "generic",
                 },
               ],
-              "name": "Button 1",
-              "role": "button",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Button 2",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Button 2",
-              "role": "button",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Button 3",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Button 3",
-              "role": "button",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Button 4",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Button 4",
-              "role": "button",
+              "role": "none",
             },
           ],
           "role": "none",
         },
-        Object {
-          "role": "none",
-        },
-        Object {
-          "role": "none",
-        },
       ],
-      "name": "",
-      "role": "generic",
+      "role": "none",
     },
   ],
   "name": "",
-  "orientation": "horizontal",
-  "role": "tablist",
+  "role": "RootWebArea",
 }
 `;

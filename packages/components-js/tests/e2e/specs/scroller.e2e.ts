@@ -1,7 +1,6 @@
 import { ElementHandle, Page } from 'puppeteer';
 import {
   expectA11yToMatchSnapshot,
-  getAttribute,
   getConsoleErrorsAmount,
   getLifecycleStatus,
   getProperty,
@@ -54,7 +53,7 @@ describe('scroller', () => {
   ${elements}
 </p-scroller>${otherMarkup}`;
 
-    await setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content);
+    await setContentWithDesignSystem(page, isWrapped ? `<div style="width: 200px">${content}</div>` : content);
   };
 
   const getHost = () => selectNode(page, 'p-scroller');
@@ -86,113 +85,45 @@ describe('scroller', () => {
     await page.waitForTimeout(CSS_ANIMATION_DURATION);
   };
 
+  const addNewButton = async () => {
+    await page.evaluate(() => {
+      const scroller = document.querySelector('p-scroller');
+      const element = document.createElement('button');
+      element.innerText = 'Added Element Text';
+      scroller.append(element);
+    });
+  };
+
+  const hiddenClass = 'action--hidden';
+
   describe('slotted content changes', () => {
-    // it('should adjust bar style when name of tab is changed', async () => {
-    //   await initScroller({ amount: 3, activeElementIndex: 0 });
-    //   const [firstButton] = await getAllButtons();
-    //   const bar = await getBar();
-    //   await page.waitForTimeout(CSS_ANIMATION_DURATION);
-    //
-    //   expect(Math.floor((await getElementPositions(page, bar)).right), 'initial position').toEqual(87);
-    //
-    //   await firstButton.evaluate((el) => (el.innerHTML = 'New long button mame on this button'));
-    //   await waitForStencilLifecycle(page);
-    //   await page.waitForTimeout(CSS_ANIMATION_DURATION);
-    //
-    //   expect(Math.floor((await getElementPositions(page, bar)).right), 'final position').toEqual(257);
-    // });
+    it('should adjust scroll position when name of element is changed', async () => {
+      await initScroller({ amount: 5, activeElementIndex: 0, isWrapped: true });
+      const [, secondButton, thirdButton] = await getAllButtons();
+      const scrollArea = await getScrollArea();
+      const gradientWidth = await getOffsetWidth(await getGradientNext());
 
-    // it('should adjust bar style when new tab element is added and clicked', async () => {
-    //   await initScroller({ amount: 1, activeElementIndex: 0, otherMarkup: clickHandlerScript });
-    //   const bar = await getBar();
-    //
-    //   //add a new button
-    //   await page.evaluate(() => {
-    //     const tabsBar = document.querySelector('p-scroller');
-    //     const tab = document.createElement('button');
-    //     tab.innerText = 'Added Tab Text';
-    //     tabsBar.append(tab);
-    //   });
-    //   await waitForStencilLifecycle(page);
-    //   await page.waitForTimeout(CSS_ANIMATION_DURATION);
-    //
-    //   expect(Math.floor((await getElementPositions(page, bar)).left), 'initial position').toEqual(0);
-    //
-    //   const [, secondButton] = await getAllButtons();
-    //   await clickElement(secondButton);
-    //
-    //   expect(Math.floor((await getElementPositions(page, bar)).left), 'final position').toEqual(107);
-    // });
-
-    // it('should stay selected and have same bar style when tab after current active tab is removed', async () => {
-    //   await initScroller({ amount: 3, activeElementIndex: 1 });
-    //   const bar = await getBar();
-    //
-    //   expect(Math.floor((await getElementPositions(page, bar)).left), 'initial position').toEqual(103);
-    //
-    //   await page.evaluate(() => {
-    //     const tabsBar = document.querySelector('p-scroller');
-    //     tabsBar.removeChild(tabsBar.children[2]);
-    //   });
-    //
-    //   await waitForStencilLifecycle(page);
-    //   await page.waitForTimeout(CSS_ANIMATION_DURATION);
-    //   const [, secondButton] = await getAllButtons();
-    //
-    //   expect(await getAttribute(secondButton, 'tabindex')).toBe('0');
-    //   expect(await getAttribute(secondButton, 'aria-selected')).toBe('true');
-    //   expect(Math.floor((await getElementPositions(page, bar)).left), 'final position').toEqual(103);
-    // });
-
-    it('should reset tabindex and bar styles when active element on last position is removed', async () => {
-      await initScroller({ amount: 3, activeElementIndex: 2 });
-      const [firstButton] = await getAllButtons();
-
-      await page.evaluate(() => {
-        const scroller = document.querySelector('p-scroller');
-        scroller.removeChild(scroller.children[2]);
-      });
-
+      await secondButton.evaluate((el) => (el.innerHTML = 'New long button name on this button'));
       await waitForStencilLifecycle(page);
-      await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
-      expect(await getAttribute(firstButton, 'tabindex')).toBe('0');
-      // expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
+      await clickElement(thirdButton);
+      const offsetThirdButton = await getOffsetLeft(thirdButton);
+      const scrollDistance = +offsetThirdButton - +gradientWidth + FOCUS_PADDING;
+
+      expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
     });
 
-    it('should reset tabindex when last element is active and a element is removed in the middle', async () => {
-      await initScroller({ amount: 3, activeElementIndex: 2 });
+    it('should show next button adding a button', async () => {
+      await initScroller({ amount: 5, activeElementIndex: 4, otherMarkup: clickHandlerScript, isWrapped: true });
+      const { actionNext } = await getActionContainers();
 
-      await page.evaluate(() => {
-        const scroller = document.querySelector('p-scroller');
-        scroller.removeChild(scroller.children[1]);
-      });
+      expect(await getClassList(actionNext)).toContain(hiddenClass);
 
+      //add a new button
+      await addNewButton();
       await waitForStencilLifecycle(page);
-      await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
-      const [firstButton, secondButton] = await getAllButtons();
-
-      expect(await getAttribute(firstButton, 'tabindex')).toBe('0');
-      // expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
-      expect(await getAttribute(secondButton, 'tabindex')).toBe('-1');
-      // expect(await getAttribute(secondButton, 'aria-selected')).toBe('false');
-    });
-
-    it('should set tabindex and aria-selected on next element when active element in the middle is removed', async () => {
-      await initScroller({ amount: 3, activeElementIndex: 1 });
-
-      await page.evaluate(() => {
-        const scroller = document.querySelector('p-scroller');
-        scroller.removeChild(scroller.children[1]);
-      });
-
-      await waitForStencilLifecycle(page);
-      await page.waitForTimeout(CSS_ANIMATION_DURATION);
-
-      const [, secondButton] = await getAllButtons();
-
-      expect(await getAttribute(secondButton, 'tabindex')).toBe('0');
+      expect(await getClassList(actionNext)).not.toContain(hiddenClass);
     });
   });
 
@@ -279,20 +210,6 @@ describe('scroller', () => {
       expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
     });
 
-    // it('should have same offsetLeft on bar and active element', async () => {
-    //   await initScroller({ amount: 6, activeElementIndex: 2, isWrapped: true, otherMarkup: clickHandlerScript });
-    //   const [firstButton, , thirdButton] = await getAllButtons();
-    //   const thirdButtonPosition = (await getElementPositions(page, thirdButton)).left;
-    //
-    //   expect(Math.round(thirdButtonPosition)).toEqual(Math.floor((await getElementPositions(page, bar)).left));
-    //
-    //   await clickElement(firstButton);
-    //
-    //   expect((await getElementPositions(page, firstButton)).left, 'correct offsetLeft after click').toEqual(
-    //     Math.floor((await getElementPositions(page, bar)).left)
-    //   );
-    // });
-
     it('should have correct scroll position after element click and prev button', async () => {
       await initScroller({ amount: 8, isWrapped: true, activeElementIndex: 0, otherMarkup: clickHandlerScript });
       const { prevButton } = await getPrevNextButton();
@@ -354,8 +271,6 @@ describe('scroller', () => {
         expect(await getProperty(prevButton, 'type')).toBe('button');
         expect(await getProperty(nextButton, 'type')).toBe('button');
       });
-
-      const hiddenClass = 'action--hidden';
 
       it('should not show prev/next buttons on vertical scroll', async () => {
         await initScroller({

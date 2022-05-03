@@ -106,11 +106,11 @@ describe('tabs-bar', () => {
 
       expect(Math.floor((await getElementPositions(page, bar)).right), 'initial position').toEqual(87);
 
-      await firstButton.evaluate((el) => (el.innerHTML = 'New long button mame on this button'));
+      await firstButton.evaluate((el) => (el.innerHTML = 'New long button name on this button'));
       await waitForStencilLifecycle(page);
       await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
-      expect(Math.floor((await getElementPositions(page, bar)).right), 'final position').toEqual(257);
+      expect(Math.floor((await getElementPositions(page, bar)).right), 'final position').toEqual(252);
     });
 
     it('should adjust bar style when new tab element is added and clicked', async () => {
@@ -213,6 +213,62 @@ describe('tabs-bar', () => {
       expect(await getAttribute(secondButton, 'tabindex')).toBe('0');
       expect(Math.floor((await getElementPositions(page, bar)).left), 'final position').toEqual(103);
       expect(await getBarWidth(bar), 'final width').toBe('87px');
+    });
+  });
+
+  describe('bar', () => {
+    it('should have transition and will-change css property applied on bar', async () => {
+      await initTabsBar({ activeTabIndex: 0 });
+      const host = await getHost();
+      await setProperty(host, 'activeTabIndex', 1); // class with transition property will applied on first change
+      await waitForStencilLifecycle(page);
+
+      const bar = await getBar();
+      const barStyleTransition = await getElementStyle(bar, 'transition');
+      const barStyleWillChange = await getElementStyle(bar, 'willChange');
+
+      expect(barStyleTransition).toContain('transform');
+      expect(barStyleTransition).toContain('width');
+      expect(barStyleWillChange).toBe('width');
+    });
+
+    it('should have same offsetLeft on bar and active tab', async () => {
+      await initTabsBar({ amount: 6, activeTabIndex: 2, isWrapped: true, otherMarkup: clickHandlerScript });
+      const [firstButton, , thirdButton] = await getAllButtons();
+      const bar = await getBar();
+      const thirdButtonPosition = (await getElementPositions(page, thirdButton)).left;
+
+      expect(Math.round(thirdButtonPosition)).toEqual(Math.floor((await getElementPositions(page, bar)).left));
+
+      await clickElement(firstButton);
+
+      expect((await getElementPositions(page, firstButton)).left, 'correct offsetLeft after click').toEqual(
+        Math.floor((await getElementPositions(page, bar)).left)
+      );
+    });
+    it('should have offsetLeft on bar as the center of unset tab', async () => {
+      await initTabsBar({ amount: 6, activeTabIndex: 0, isWrapped: true, otherMarkup: clickHandlerScript });
+      const [firstButton, , thirdButton] = await getAllButtons();
+      const bar = await getBar();
+      const firstButtonPosition = (await getElementPositions(page, firstButton)).left;
+      const buttonWidth = await getOffsetWidth(thirdButton);
+      const buttonCenter = +buttonWidth / 2;
+      const host = await getHost();
+      await removeAttribute(host, 'active-tab-index');
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
+
+      expect(Math.floor(firstButtonPosition + buttonCenter)).toEqual(
+        Math.floor((await getElementPositions(page, bar)).left)
+      );
+
+      await clickElement(thirdButton);
+      await page.waitForTimeout(CSS_ANIMATION_DURATION);
+
+      expect(
+        Math.floor((await getElementPositions(page, thirdButton)).left),
+        'correct offset width after click on third button'
+      ).toEqual(Math.floor((await getElementPositions(page, bar)).left));
     });
   });
 
