@@ -346,17 +346,28 @@ jobs:
         with:
           entrypoint: run-test-e2e
           args: --components-react
-      - name: 'VRT Test'
+      - name: 'VRT Test components-react'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-vrt
           args: --components-react
-      - name: 'VRT Regression'
+      - name: 'VRT Test components-react/nextjs'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-vrt
+          args: --components-react/nextjs
+      - name: 'VRT Regression components-react'
         if: failure()
         uses: actions/upload-artifact@v2
         with:
           name: components-react-vrt-regression
           path: ./packages/components-react/tests/vrt/results
+      - name: 'VRT Regression components-react/nextjs'
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: components-react-nextjs-vrt-regression
+          path: ./packages/components-react/projects/nextjs/tests/vrt/results
   shared:
     name: 'Shared'
     runs-on: ubuntu-latest

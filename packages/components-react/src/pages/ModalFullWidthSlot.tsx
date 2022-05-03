@@ -12,7 +12,7 @@ export const ModalFullWidthSlotPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should display a full width div when using .stretch-to-full-modal-width">
         <PContentWrapper>

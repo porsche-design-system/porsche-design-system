@@ -10,7 +10,7 @@ export const ButtonPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should render button primary with label">
         <PButton variant="primary">Some label</PButton>
