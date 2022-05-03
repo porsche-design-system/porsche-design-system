@@ -7,7 +7,7 @@ const isDev = process.env.PORSCHE_DESIGN_SYSTEM_DEV === '1';
 console.log('Environment:', isDev ? 'dev' : 'prod');
 console.log('Version:', version);
 console.log('Deploy URL:', deployUrl);
-console.log('targetDirectory:', deployUrl);
+console.log('targetDirectory:', targetDirectory);
 
 // type PorscheWebComponentManagerConfig = {
 //   version: string;
