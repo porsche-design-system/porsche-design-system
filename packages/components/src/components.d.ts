@@ -2045,7 +2045,7 @@ declare namespace LocalJSX {
          */
         "gradientColorScheme"?: GradientColorTheme;
         /**
-          * Emitted when active tab is changed.
+          * Emitted when active element is changed.
          */
         "onActiveElementChange"?: (event: CustomEvent<ActiveElementChange>) => void;
         /**
