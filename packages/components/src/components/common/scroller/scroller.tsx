@@ -33,7 +33,7 @@ export class Scroller {
   /** Elements that are not set in the slot can be passed here **/
   @Prop() public slottedElements?: HTMLElement[];
 
-  /** Emitted when active tab is changed. */
+  /** Emitted when active element is changed. */
   @Event({ bubbles: false }) public activeElementChange: EventEmitter<ActiveElementChange>;
 
   @State() public isPrevHidden = true;
@@ -67,16 +67,16 @@ export class Scroller {
     this.defineHTMLElements();
     this.initIntersectionObserver();
     this.scrollAreaElement.addEventListener('click', (e) => {
-      const newTabIndex = this.scrollItems.indexOf(e.target as HTMLElement);
-      if (newTabIndex >= 0) {
-        this.onElementClick(newTabIndex);
+      const newElementIndex = this.scrollItems.indexOf(e.target as HTMLElement);
+      if (newElementIndex >= 0) {
+        this.onElementClick(newElementIndex);
       }
     });
 
     // TODO: validation of active element index inside of tabs bar!
 
     if (!(this.direction === 'next' && this.activeElementIndex === undefined)) {
-      // skip scrolling on first render when no activeTabIndex is set
+      // skip scrolling on first render when no activeElementIndex is set
       this.scrollActiveElementIntoView(true);
     }
   }
