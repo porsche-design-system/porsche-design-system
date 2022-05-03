@@ -15,7 +15,7 @@ export const IconPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should render with default settings">
         <PIcon aria-label="Icon" />

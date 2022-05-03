@@ -12,7 +12,7 @@ export const ModalSlottedHeadingPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should display slotted heading">
         <PContentWrapper>

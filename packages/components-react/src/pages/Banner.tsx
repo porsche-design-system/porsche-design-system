@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { PBanner } from '@porsche-design-system/components-react';
 import { useEffect, useState } from 'react';
-import { pollComponentsReady } from '../pollComponentsReady'
+import { pollComponentsReady } from '../pollComponentsReady';
 
 export const BannerPage = (): JSX.Element => {
   const [allReady, setAllReady] = useState(false);
@@ -22,7 +22,7 @@ export const BannerPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div title="should show banner neutral position fixed">
         <PBanner>
