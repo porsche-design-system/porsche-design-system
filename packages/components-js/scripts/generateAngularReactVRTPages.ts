@@ -265,7 +265,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
           `import { ${pdsImports} } from '@porsche-design-system/components-react';`,
           reactImports && `import { ${reactImports} } from 'react';`,
           isIconPage && `import { ICON_NAMES } from '@porsche-design-system/assets';`,
-          (usesSetAllReady || isSkeleton) && `import { pollComponentsReady } from '../pollComponentsReady'`,
+          (usesSetAllReady || isSkeleton) && `import { pollComponentsReady } from '../pollComponentsReady';`,
         ]
           .filter((x) => x)
           .join('\n');
@@ -273,7 +273,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
         // implementation
         style = style?.trim();
         const styleConst = style ? `const style = \`\n  ${style}\n\`;` : '';
-        const styleJsx = style ? '\n      <style children={style} />\n' : '';
+        const styleJsx = style ? '\n      <style dangerouslySetInnerHTML={{ __html: style }} />\n' : '';
 
         if (isSkeleton) {
           script = script.replace('componentsReady()', 'pollComponentsReady()');

@@ -12,7 +12,7 @@ export const ModalPrefixedPage = (): JSX.Element => {
 
   return (
     <PorscheDesignSystemProvider>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should show prefixed modal on light background">
         <PContentWrapper>
