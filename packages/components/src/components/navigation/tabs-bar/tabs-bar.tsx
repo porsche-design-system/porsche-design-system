@@ -50,8 +50,8 @@ export class TabsBar {
   @State() private tabElements: HTMLElement[] = [];
 
   private intersectionObserver: IntersectionObserver;
-  private scroller: HTMLElement;
-  private scrollAreaElement: HTMLElement;
+  // private scroller: HTMLElement;
+  // private scrollAreaElement: HTMLElement;
   private barElement: HTMLElement;
   private prevActiveTabIndex: number;
   private hasPTabsParent: boolean;
@@ -80,7 +80,8 @@ export class TabsBar {
   public componentDidLoad(): void {
     this.defineHTMLElements();
     this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length); // since watcher doesn't trigger on first render
-    this.scrollAreaElement.addEventListener('keydown', this.onKeydown);
+    // TODO: should be on a different element
+    this.host.addEventListener('keydown', this.onKeydown);
 
     // setBarStyle() is needed when intersection observer does not trigger because all tabs are visible
     // and first call in componentDidRender() is skipped because elements are not defined, yet
@@ -113,7 +114,7 @@ export class TabsBar {
         activeElementIndex={this.activeTabIndex}
         slottedElements={this.tabElements}
         onActiveElementChange={({ detail: { activeElementIndex } }) => this.onTabClick(activeElementIndex)}
-        ref={(el) => (this.scroller = el)}
+        //  ref={(el) => (this.scroller = el)}
       >
         <slot />
         <span class="bar" />
@@ -165,7 +166,7 @@ export class TabsBar {
 
   private defineHTMLElements = (): void => {
     const { shadowRoot } = this.host;
-    this.scrollAreaElement = getHTMLElement(this.scroller.shadowRoot, '.scroll-area');
+    //this.scrollAreaElement = getHTMLElement(this.scroller.shadowRoot, '.scroll-area');
     this.barElement = getHTMLElement(shadowRoot, '.bar');
   };
 

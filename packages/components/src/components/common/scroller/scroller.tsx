@@ -96,10 +96,9 @@ export class Scroller {
   }
 
   public render(): JSX.Element {
-    // TODO: role="tablist" ? maybe generic?
     return (
       <div class="root">
-        <div class="scroll-area" role="tablist">
+        <div class="scroll-area" tabindex="0">
           <div class="scroll-wrapper">
             <slot />
             <div class="trigger" />
