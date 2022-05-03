@@ -1,8 +1,6 @@
 on:
-  push:
-    branches:
-      - master
-      - v*
+  schedule:
+    - cron: "0 0 1 * *" # at 00:00 on day-of-month 1
 name: 'OSS Review Toolkit'
 jobs:
   ort:
@@ -13,9 +11,9 @@ jobs:
       PDS_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/node:16.14.2-stretch-slim
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: 'Cache node_modules'
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: cache
         with:
           path: '**/node_modules'
@@ -69,7 +67,15 @@ jobs:
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
       - name: 'Store ORT Analysis'
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ort-analysis
           path: ./ort
+      - name: "Send ORT Analyzer Result to OSO"
+        run: |
+          zip -j analyzer-result.zip ort/analyzer-result.yml
+          curl -X POST https://${{ env.OSO_JENKINS_USER }}:${{ env.OSO_JENKINS_TOKEN }}@oso-ort-scan.aws.platform.porsche-preview.cloud/job/ort-porsche-scancode/buildWithParameters --form ort/analyzer-result.zip=@analyzer-result.zip --form ProjectName=porsche_design_system --fail
+        shell: bash
+        env:
+          OSO_JENKINS_USER: ${{ secrets.OSO_JENKINS_USER }}
+          OSO_JENKINS_TOKEN: ${{ secrets.OSO_JENKINS_TOKEN }}
