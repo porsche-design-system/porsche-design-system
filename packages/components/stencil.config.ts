@@ -46,6 +46,7 @@ const bundles: { components: TagName[] }[] = [
 export const config: Config = {
   namespace: 'porsche-design-system',
   taskQueue: 'async',
+  invisiblePrehydration: false,
   outputTargets: [
     { type: 'dist' },
     {
