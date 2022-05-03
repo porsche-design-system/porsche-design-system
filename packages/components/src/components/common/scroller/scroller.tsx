@@ -45,7 +45,7 @@ export class Scroller {
   private prevGradientElement: HTMLElement;
   private direction: Direction = 'next';
   private prevActiveElement: number;
-  private hasTabsBarParent: boolean = false;
+  private hasTabsBarParent = false;
 
   @Watch('activeElementIndex')
   public activeElementHandler(_newValue: number, oldValue: number): void {

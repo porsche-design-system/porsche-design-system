@@ -1,6 +1,7 @@
-import { Component, Element, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, Prop, State, Watch, h } from '@stencil/core';
+import type { EventEmitter } from '@stencil/core';
 import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
-import type { TabChangeEvent, TabWeight, TabSize } from './tabs-bar-utils';
+import type { TabChangeEvent, TabSize, TabWeight } from './tabs-bar-utils';
 import {
   addEnableTransitionClass,
   determineEnableTransitionClass,
@@ -20,7 +21,7 @@ import {
   unobserveChildren,
 } from '../../../utils';
 import { getComponentCss } from './tabs-bar-styles';
-import { Direction, GradientColorTheme } from '../../common/scroller/scroller-utils';
+import type { ActiveElementChange, Direction, GradientColorTheme } from '../../common/scroller/scroller-utils';
 
 @Component({
   tag: 'p-tabs-bar',
@@ -112,7 +113,9 @@ export class TabsBar {
         gradientColorScheme={this.gradientColorScheme}
         activeElementIndex={this.activeTabIndex}
         slottedElements={this.tabElements}
-        onActiveElementChange={({ detail: { activeElementIndex } }) => this.onTabClick(activeElementIndex)}
+        onActiveElementChange={({ detail: { activeElementIndex } }: CustomEvent<ActiveElementChange>) =>
+          this.onTabClick(activeElementIndex)
+        }
         ref={(el) => (this.scroller = el)}
       >
         <slot />
