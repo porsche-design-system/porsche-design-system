@@ -273,7 +273,7 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
         // implementation
         style = style?.trim();
         const styleConst = style ? `const style = \`\n  ${style}\n\`;` : '';
-        const styleJsx = style ? '\n      <style children={style} />\n' : '';
+        const styleJsx = style ? '\n      <style dangerouslySetInnerHTML={{ __html: style }} />\n' : '';
 
         if (isSkeleton) {
           script = script.replace('componentsReady()', 'pollComponentsReady()');

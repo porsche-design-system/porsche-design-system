@@ -13,7 +13,7 @@ export const LinkPurePage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should render with label">
         <PLinkPure href="https://www.porsche.com">Label default</PLinkPure>

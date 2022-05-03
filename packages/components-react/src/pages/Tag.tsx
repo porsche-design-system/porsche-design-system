@@ -18,7 +18,7 @@ export const TagPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should show different background colors on light background">
         <PTag>Default</PTag>

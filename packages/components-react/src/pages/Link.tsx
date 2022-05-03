@@ -10,7 +10,7 @@ export const LinkPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should render primary with label">
         <PLink variant="primary" href="https://www.porsche.com">Some label</PLink>

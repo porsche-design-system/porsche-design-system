@@ -12,7 +12,7 @@ export const ModalFullscreenBreakpointPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should show fullscreen breakpoint modal on light background">
         <PContentWrapper>

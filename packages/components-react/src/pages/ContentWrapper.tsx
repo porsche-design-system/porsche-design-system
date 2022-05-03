@@ -14,7 +14,7 @@ export const ContentWrapperPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground" title="should render with width 'basic'">
         <PContentWrapper>
