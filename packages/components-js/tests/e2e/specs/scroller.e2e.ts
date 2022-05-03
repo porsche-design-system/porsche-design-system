@@ -98,7 +98,7 @@ describe('scroller', () => {
 
   describe('slotted content changes', () => {
     it('should adjust scroll position when name of element is changed', async () => {
-      await initScroller({ amount: 5, activeElementIndex: 0, isWrapped: true });
+      await initScroller({ activeElementIndex: 0, isWrapped: true, otherMarkup: clickHandlerScript });
       const [, secondButton, thirdButton] = await getAllButtons();
       const scrollArea = await getScrollArea();
       const gradientWidth = await getOffsetWidth(await getGradientNext());
