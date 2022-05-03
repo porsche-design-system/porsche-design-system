@@ -12,7 +12,7 @@ jest.mock('../../../src/shared');
 describe('format: html', () => {
   it('should return core styles', () => {
     const result = getInitialStyles();
-    const regex = new RegExp(`<style>${tagNames}{visibility:hidden}</style>`);
+    const regex = new RegExp(`<style>${tagNames}{visibility:hidden}.hydrated{visibility:inherit}</style>`);
     expect(result).toMatch(regex);
   });
 
@@ -24,7 +24,7 @@ describe('format: html', () => {
 
   it('should add custom prefixes to component names', () => {
     const result = getInitialStyles({ prefix: 'custom-prefix' });
-    const regex = new RegExp(`<style>${prefixedTagNames}{visibility:hidden}</style>`);
+    const regex = new RegExp(`<style>${prefixedTagNames}{visibility:hidden}.hydrated{visibility:inherit}</style>`);
     expect(result).toMatch(regex);
   });
 
@@ -41,7 +41,7 @@ describe('format: html', () => {
 describe('format: jsx', () => {
   it('should return core styles', () => {
     const { container } = render(getInitialStyles({ format: 'jsx' }));
-    const regex = new RegExp(`<style>${tagNames}{visibility:hidden}</style>`);
+    const regex = new RegExp(`<style>${tagNames}{visibility:hidden}.hydrated{visibility:inherit}</style>`);
     expect(container.innerHTML).toMatch(regex);
   });
 
@@ -57,7 +57,7 @@ describe('format: jsx', () => {
 
   it('should add custom prefix to component names', () => {
     const { container } = render(getInitialStyles({ format: 'jsx', prefix: 'custom-prefix' }));
-    const regex = new RegExp(`<style>${prefixedTagNames}{visibility:hidden}</style>`);
+    const regex = new RegExp(`<style>${prefixedTagNames}{visibility:hidden}.hydrated{visibility:inherit}</style>`);
     expect(container.innerHTML).toMatch(regex);
   });
 });
