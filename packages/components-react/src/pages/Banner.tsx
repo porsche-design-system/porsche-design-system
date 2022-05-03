@@ -22,7 +22,7 @@ export const BannerPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div title="should show banner neutral position fixed">
         <PBanner>

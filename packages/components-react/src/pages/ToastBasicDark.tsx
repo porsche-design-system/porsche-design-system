@@ -19,7 +19,7 @@ export const ToastBasicDarkPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground dark" title="should render toast neutral on dark background">
         <PToast theme="dark" />

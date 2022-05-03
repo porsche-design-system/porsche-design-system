@@ -47,7 +47,7 @@ export const OverviewPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="root" style={{ display: 'flex' }}>
         <div style={{ flex: 1 }}>

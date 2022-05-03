@@ -11,7 +11,7 @@ export const ModalScrollablePage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should show scrollable modal on light background">
         <PContentWrapper>

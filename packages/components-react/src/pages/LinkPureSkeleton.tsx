@@ -20,7 +20,7 @@ export const LinkPureSkeletonPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should render link pure skeleton with label">
         <h4>With label</h4>

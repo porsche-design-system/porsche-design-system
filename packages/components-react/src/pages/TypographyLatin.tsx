@@ -22,7 +22,7 @@ export const TypographyLatinPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground" title="should show typography in basic latin charset">
         <h2>Porsche Next Latin</h2>
