@@ -140,14 +140,19 @@
     <!--      <button type="button">Tab Twenty</button>-->
     <!--    </p-scroller>-->
 
-    <!--    <p-scroller>-->
-    <!--      <button type="button">Tab One</button>-->
-    <!--      <button type="button">Tab Two</button>-->
-    <!--      <button type="button">Tab Three</button>-->
-    <!--      <button type="button">Tab Four</button>-->
-    <!--      <button type="button">Tab Five</button>-->
-    <!--      <button type="button">Tab Six</button>-->
-    <!--    </p-scroller>-->
+    <p-scroller>
+      <button type="button">Tab One</button>
+      <button type="button">Tab Two</button>
+      <button type="button">Tab Three</button>
+      <button type="button">Tab Four</button>
+      <button type="button">Tab Five</button>
+      <button type="button">Tab Six</button>
+      <button type="button">Tab 7</button>
+      <button type="button">Tab 8</button>
+      <button type="button">Tab 9</button>
+      <button type="button">Tab 10</button>
+      <button type="button">Tab 11</button>
+    </p-scroller>
 
     <!--    <p-scroller>-->
     <!--      <button type="button">Tab One</button>-->
@@ -188,11 +193,10 @@
     <!--    </p-table>-->
   </body>
   <script>
-    // const scroller = document.querySelector('p-scroller');
-    // scroller.addEventListener(
-    //   'click',
-    //   (e) => (scroller.activeElementIndex = Array.from(scroller.children).indexOf(e.target))
-    // );
+    const scroller = document.querySelector('p-scroller');
+    scroller.addEventListener('activeElementChange', (e) => {
+      scroller.activeElementIndex = e.detail.activeElementIndex;
+    });
     //
     // scroller.addEventListener('keydown', (e) => {
     //   if (e.key === 'Tab') {
