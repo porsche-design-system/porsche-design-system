@@ -71,9 +71,8 @@ Object {
                               "role": "generic",
                             },
                           ],
-                          "name": "",
-                          "orientation": "horizontal",
-                          "role": "tablist",
+                          "name": "Tab Button 1 Tab Button 2 Tab Button 3",
+                          "role": "generic",
                         },
                         Object {
                           "children": Array [
@@ -287,9 +286,8 @@ Object {
                               "role": "generic",
                             },
                           ],
-                          "name": "",
-                          "orientation": "horizontal",
-                          "role": "tablist",
+                          "name": "Tab Button 1 Tab Button 2 Tab Button 3",
+                          "role": "generic",
                         },
                         Object {
                           "children": Array [
@@ -504,9 +502,8 @@ Object {
                               "role": "generic",
                             },
                           ],
-                          "name": "",
-                          "orientation": "horizontal",
-                          "role": "tablist",
+                          "name": "Tab Button 1 Tab Button 2 Tab Button 3",
+                          "role": "generic",
                         },
                         Object {
                           "children": Array [
@@ -722,9 +719,8 @@ Object {
                               "role": "generic",
                             },
                           ],
-                          "name": "",
-                          "orientation": "horizontal",
-                          "role": "tablist",
+                          "name": "Tab Button 1 Tab Button 2 Tab Button 3",
+                          "role": "generic",
                         },
                         Object {
                           "children": Array [
@@ -939,9 +935,8 @@ Object {
                               "role": "generic",
                             },
                           ],
-                          "name": "",
-                          "orientation": "horizontal",
-                          "role": "tablist",
+                          "name": "Tab Button 1 Tab Button 2 Tab Button 3",
+                          "role": "generic",
                         },
                         Object {
                           "children": Array [
@@ -1166,9 +1161,9 @@ Object {
                               "role": "generic",
                             },
                           ],
-                          "name": "",
-                          "orientation": "horizontal",
-                          "role": "tablist",
+                          "focused": true,
+                          "name": "Tab Button 1 Tab Button 2 Tab Button 3 Tab Button 4",
+                          "role": "generic",
                         },
                         Object {
                           "children": Array [
@@ -1393,9 +1388,8 @@ Object {
                               "role": "generic",
                             },
                           ],
-                          "name": "",
-                          "orientation": "horizontal",
-                          "role": "tablist",
+                          "name": "Tab Button 1 Tab Button 2 Tab Button 3 Tab Button 4",
+                          "role": "generic",
                         },
                         Object {
                           "children": Array [
