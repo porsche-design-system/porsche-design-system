@@ -94,6 +94,13 @@ describe('scroller', () => {
     });
   };
 
+  const removeButtonAtIndex = async (index: number) => {
+    await page.evaluate((index) => {
+      const scroller = document.querySelector('p-scroller');
+      scroller.children[index].remove();
+    }, index);
+  };
+
   const hiddenClass = 'action--hidden';
 
   describe('slotted content changes', () => {
@@ -119,16 +126,33 @@ describe('scroller', () => {
 
       expect(await getClassList(actionNext)).toContain(hiddenClass);
 
-      //add a new button
       await addNewButton();
       await waitForStencilLifecycle(page);
 
       expect(await getClassList(actionNext)).not.toContain(hiddenClass);
     });
 
-    it('should stay selected when element after current active element is removed', () => {});
-    it('should reset activeElementIndex when last element is active and an element is removed in the middle', () => {});
-    it('should not reset activeElementIndex on 5 elements when 4 is active and 3 removed', () => {});
+    it('should stay selected when element after current active element is removed', async () => {
+      await initScroller({ amount: 5, activeElementIndex: 3 });
+      const host = await getHost();
+
+      expect(await getProperty(host, 'activeElementIndex')).toBe(3);
+
+      await removeButtonAtIndex(4);
+
+      expect(await getProperty(host, 'activeElementIndex')).toBe(3);
+    });
+
+    it('should not reset activeElementIndex when element before current active element is removed', async () => {
+      await initScroller({ amount: 5, activeElementIndex: 3 });
+      const host = await getHost();
+
+      expect(await getProperty(host, 'activeElementIndex')).toBe(3);
+
+      await removeButtonAtIndex(2);
+
+      expect(await getProperty(host, 'activeElementIndex')).toBe(3);
+    });
   });
 
   describe('scroll-area', () => {

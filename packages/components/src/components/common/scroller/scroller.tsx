@@ -1,4 +1,4 @@
-import { Component, Element, State, Prop, Watch, Event, h, EventEmitter } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, State, Watch, h } from '@stencil/core';
 import { PrevNextButton } from './prev-next-button';
 import {
   attachComponentCss,
@@ -10,8 +10,8 @@ import {
   unobserveChildren,
 } from '../../../utils';
 import { getComponentCss } from './scroller-styles';
-import { getScrollActivePosition, getScrollPositionAfterPrevNextClick } from './scroller-utils';
 import type { ActiveElementChange, Direction, GradientColorTheme } from './scroller-utils';
+import { getScrollActivePosition, getScrollPositionAfterPrevNextClick } from './scroller-utils';
 import type { ThemeExtendedElectric } from '../../../types';
 
 @Component({
