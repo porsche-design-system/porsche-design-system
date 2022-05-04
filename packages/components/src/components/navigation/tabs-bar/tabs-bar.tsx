@@ -58,7 +58,7 @@ export class TabsBar {
   public activeTabHandler(newValue: number, oldValue: number): void {
     this.activeTabIndex = sanitizeActiveTabIndex(newValue, this.tabElements.length);
     this.prevActiveTabIndex = oldValue;
-    this.direction = this.activeTabIndex > this.prevActiveTabIndex ? 'next' : 'prev';
+    this.direction = this.activeTabIndex > this.prevActiveTabIndex || oldValue === undefined ? 'next' : 'prev';
     this.scrollActiveTabIntoView();
   }
 
@@ -156,8 +156,7 @@ export class TabsBar {
   private addEventListeners = (): void => {
     this.scrollerElement.addEventListener('click', (e) => {
       const newTabIndex = this.tabElements.indexOf(e.target as HTMLElement);
-      console.log('-> e.target', e.target);
-      console.log('-> newTabIndex', newTabIndex);
+
       if (newTabIndex >= 0) {
         this.onTabClick(newTabIndex);
       }

@@ -7,6 +7,7 @@ export type ScrollToPosition = { scrollPosition: number; skipAnimation?: boolean
 
 export const FOCUS_PADDING_WIDTH = 4;
 
+// TODO: move back to tabs bar utils
 export const getScrollActivePosition = (
   elements: HTMLElement[],
   direction: Direction,
@@ -17,6 +18,7 @@ export const getScrollActivePosition = (
   const { offsetLeft: activeElementOffsetLeft, offsetWidth: activeElementOffsetWidth } =
     elements[activeElementIndex] ?? {};
   const elementsCount = elements.length;
+
   let scrollPosition;
   if (direction === 'next') {
     if (activeElementIndex === elementsCount - 1) {
