@@ -2,7 +2,13 @@ import type { BreakpointCustomizable } from '../../../types';
 import type { TabSize, TabWeight } from './tabs-bar-utils';
 import type { ThemeExtendedElectric } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
-import { addImportantToEachRule, addImportantToRule, getTransition, getThemedColors } from '../../../styles';
+import {
+  addImportantToEachRule,
+  addImportantToRule,
+  getTransition,
+  getThemedColors,
+  pxToRemWithUnit,
+} from '../../../styles';
 import { getFontWeight } from '../../../styles/font-weight-styles';
 import { fontSize, textSmall } from '@porsche-design-system/utilities-v2';
 const tabsTransitionDuration = '.4s';
@@ -22,6 +28,7 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         position: addImportantToRule('relative'),
+        height: size === 'medium' ? pxToRemWithUnit(52) : pxToRemWithUnit(36),
       },
       ...addImportantToEachRule({
         // would be nice to use shared selector like '::slotted([role])'
@@ -73,6 +80,7 @@ export const getComponentCss = (
       ...textSmall,
       fontWeight: getFontWeight(weight),
       ...buildResponsiveStyles(size, (s: TabSize) => fontSize[s]),
+      height: 'inherit',
     },
     bar: {
       display: 'block',

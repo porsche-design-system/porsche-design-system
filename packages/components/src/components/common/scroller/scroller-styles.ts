@@ -10,14 +10,19 @@ export const getComponentCss = (gradientColorScheme: GradientColorTheme, theme: 
 
   // TODO: When VRT tests align, change px values to rem
   return getCss({
+    '@global': {
+      ':host': { display: 'block', height: 'inherit' },
+    },
     root: {
       position: 'relative',
       margin: '0 -4px',
+      height: 'inherit',
     },
     'scroll-area': {
       position: 'relative',
+      height: 'inherit',
+      boxSizing: 'border-box',
       // TODO: move these styles someplace else
-      // padding: hasTabsBarParent ? '4px 4px .5em' : '4px',
       padding: '4px',
       overflowY: 'hidden',
       overflowX: 'scroll',
