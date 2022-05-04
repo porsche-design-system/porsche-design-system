@@ -93,8 +93,12 @@ Please use only valid component tag names:
   }
   throwIfRunInBrowser('getInitialStyles');
 
-  const styleAttributes = ${SKELETONS_ACTIVE ? `usedTagNamesWithSkeleton.length ? ' uses-skeleton="true"': ''` : `''`};
-  const styleProps = ${SKELETONS_ACTIVE ? `usedTagNamesWithSkeleton.length ? { "uses-skeleton": 'true' } : {}` : '{}'};
+  const styleAttributes = ['pds-initial-styles'${
+    SKELETONS_ACTIVE ? `, usedTagNamesWithSkeleton.length && 'uses-skeleton'` : ''
+  }].filter(x => x).join(' ');
+  const styleProps = { 'pds-initial-styles': 'true'${
+    SKELETONS_ACTIVE ? `, ...(usedTagNamesWithSkeleton.length && { 'uses-skeleton': 'true' })` : ''
+  } };
 
   const styles = prefixedTagNames.join(',') + '{visibility:hidden}.hydrated{visibility:inherit}'${
     SKELETONS_ACTIVE
@@ -103,8 +107,8 @@ Please use only valid component tag names:
   };
 
   const markup = format === 'html'
-    ? \`<style\$\{styleAttributes\}>\${styles}</style>\`
-    : <style dangerouslySetInnerHTML={{ __html: styles }} {...styleProps} />;
+    ? \`<style \$\{styleAttributes\}>\${styles}</style>\`
+    : <style  {...styleProps} dangerouslySetInnerHTML={{ __html: styles }} />;
 
   return withoutTags
     ? styles
