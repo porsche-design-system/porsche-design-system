@@ -100,7 +100,8 @@ Please use only valid component tag names:
     SKELETONS_ACTIVE ? `, ...(usedTagNamesWithSkeleton.length && { 'uses-skeleton': 'true' })` : ''
   } };
 
-  const styles = prefixedTagNames.join(',') + '{visibility:hidden}.hydrated{visibility:inherit}'${
+  const initialStyles = prefixedTagNames.join(',') + '{visibility:hidden}.hydrated{visibility:inherit}';
+  const styles = initialStyles${
     SKELETONS_ACTIVE
       ? '\n    + getSkeletonStyles({prefixedTagNamesWithSkeleton,prefixedUnusedTagNamesWithSkeleton, prefix})'
       : ''
