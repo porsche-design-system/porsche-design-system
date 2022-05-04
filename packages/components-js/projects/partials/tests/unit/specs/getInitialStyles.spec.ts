@@ -110,15 +110,9 @@ xdescribe('skeletonTagNames subset', () => {
 
 describeIfSkeletonsActive('validation', () => {
   it('should throw error on invalid skeleton tag names parameter', () => {
-    let error;
-    try {
+    expect(() =>
       // @ts-ignore
-      getInitialStyles({ skeletonTagNames: ['some-invalid-component'] as any[] });
-    } catch (e) {
-      error = e.message;
-    }
-
-    expect(error).toContain('The following supplied skeleton tag names are invalid:');
-    expect(error).toContain('some-invalid-component');
+      getInitialStyles({ skeletonTagNames: ['some-invalid-component'] as any[] })
+    ).toThrowErrorMatchingSnapshot();
   });
 });
