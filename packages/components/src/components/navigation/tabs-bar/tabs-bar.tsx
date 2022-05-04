@@ -14,7 +14,8 @@ import {
   unobserveChildren,
 } from '../../../utils';
 import { getComponentCss } from './tabs-bar-styles';
-import type { ActiveElementChange, GradientColorTheme } from '../../common/scroller/scroller-utils';
+import type { GradientColorTheme } from '../../common/scroller/scroller-utils';
+import { Direction, getScrollActivePosition, ScrollToPosition } from '../../common/scroller/scroller-utils';
 
 @Component({
   tag: 'p-tabs-bar',
@@ -42,16 +43,23 @@ export class TabsBar {
   @Event({ bubbles: false }) public tabChange: EventEmitter<TabChangeEvent>;
 
   @State() private tabElements: HTMLElement[] = [];
+  @State() private scroll: ScrollToPosition;
 
   private intersectionObserver: IntersectionObserver;
   private barElement: HTMLElement;
   private prevActiveTabIndex: number;
+  private direction: Direction = 'next';
   private hasPTabsParent: boolean;
+  private scrollAreaElement: HTMLElement;
+  private prevGradientElement: HTMLElement;
+  private scrollerElement: HTMLElement;
 
   @Watch('activeTabIndex')
   public activeTabHandler(newValue: number, oldValue: number): void {
     this.activeTabIndex = sanitizeActiveTabIndex(newValue, this.tabElements.length);
     this.prevActiveTabIndex = oldValue;
+    this.direction = this.activeTabIndex > this.prevActiveTabIndex ? 'next' : 'prev';
+    this.scrollActiveTabIntoView();
   }
 
   public connectedCallback(): void {
@@ -68,9 +76,15 @@ export class TabsBar {
 
   public componentDidLoad(): void {
     this.defineHTMLElements();
+    // TODO: validation of active element index inside of tabs bar!
     this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length); // since watcher doesn't trigger on first render
+
+    if (!(this.direction === 'next' && this.activeTabIndex === undefined)) {
+      // skip scrolling on first render when no activeElementIndex is set
+      this.scrollActiveTabIntoView(true);
+    }
     // TODO: should be on a different element
-    this.host.addEventListener('keydown', this.onKeydown);
+    this.addEventListeners();
 
     // setBarStyle() is needed when intersection observer does not trigger because all tabs are visible
     // and first call in componentDidRender() is skipped because elements are not defined, yet
@@ -100,11 +114,8 @@ export class TabsBar {
         class="scroller"
         theme={this.theme}
         gradientColorScheme={this.gradientColorScheme}
-        activeElementIndex={this.activeTabIndex}
-        slottedElements={this.tabElements}
-        onActiveElementChange={({ detail: { activeElementIndex } }: CustomEvent<ActiveElementChange>) =>
-          this.onTabClick(activeElementIndex)
-        }
+        ref={(el) => (this.scrollerElement = el)}
+        scrollToPosition={this.scroll}
       >
         <slot />
         <span class="bar" />
@@ -131,6 +142,8 @@ export class TabsBar {
   private defineHTMLElements = (): void => {
     const { shadowRoot } = this.host;
     this.barElement = getHTMLElement(shadowRoot, '.bar');
+    this.scrollAreaElement = getHTMLElement(this.scrollerElement.shadowRoot, '.scroll-area');
+    this.prevGradientElement = getHTMLElement(this.scrollerElement.shadowRoot, '.gradient');
   };
 
   private setTabElements = (): void => {
@@ -138,6 +151,18 @@ export class TabsBar {
     if (this.tabElements.length !== elements.length) {
       this.tabElements = elements;
     }
+  };
+
+  private addEventListeners = (): void => {
+    this.scrollerElement.addEventListener('click', (e) => {
+      const newTabIndex = this.tabElements.indexOf(e.target as HTMLElement);
+      console.log('-> e.target', e.target);
+      console.log('-> newTabIndex', newTabIndex);
+      if (newTabIndex >= 0) {
+        this.onTabClick(newTabIndex);
+      }
+    });
+    this.scrollerElement.addEventListener('keydown', this.onKeydown);
   };
 
   private onTabClick = (newTabIndex: number): void => {
@@ -181,5 +206,23 @@ export class TabsBar {
     this.tabElements[upcomingFocusedTabIndex].focus();
 
     e.preventDefault();
+  };
+
+  private scrollActiveTabIntoView = (skipAnimation?: boolean): void => {
+    // scrollAreaElement might be undefined in certain scenarios with framework routing involved
+    // where the watcher triggers this function way before componentDidLoad calls defineHTMLElements
+    if (!this.scrollAreaElement) {
+      return;
+    }
+
+    const scrollActivePosition = getScrollActivePosition(
+      this.tabElements,
+      this.direction,
+      this.activeTabIndex,
+      this.scrollAreaElement.offsetWidth,
+      this.prevGradientElement.offsetWidth
+    );
+
+    this.scroll = { scrollPosition: scrollActivePosition, skipAnimation };
   };
 }

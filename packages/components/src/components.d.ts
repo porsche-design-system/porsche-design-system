@@ -26,7 +26,7 @@ import { MarqueAriaAttributes, MarqueSize } from "./components/basic/marque/marq
 import { ModalAriaAttributes } from "./components/content/modal/modal-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/navigation/pagination/pagination-utils";
 import { PopoverDirection } from "./components/feedback/popover/popover-utils";
-import { ActiveElementChange, GradientColorTheme } from "./components/common/scroller/scroller-utils";
+import { GradientColorTheme, ScrollToPosition } from "./components/common/scroller/scroller-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
@@ -675,17 +675,13 @@ export namespace Components {
     }
     interface PScroller {
         /**
-          * Defines which element to be visualized as selected (zero-based numbering).
-         */
-        "activeElementIndex"?: number;
-        /**
           * Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: GradientColorTheme;
         /**
-          * Elements that are not set in the slot can be passed here *
+          * If set, it will scroll
          */
-        "slottedElements"?: HTMLElement[];
+        "scrollToPosition"?: ScrollToPosition;
         /**
           * Adapts the color when used on dark background.
          */
@@ -2037,21 +2033,13 @@ declare namespace LocalJSX {
     }
     interface PScroller {
         /**
-          * Defines which element to be visualized as selected (zero-based numbering).
-         */
-        "activeElementIndex"?: number;
-        /**
           * Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: GradientColorTheme;
         /**
-          * Emitted when active element is changed.
+          * If set, it will scroll
          */
-        "onActiveElementChange"?: (event: CustomEvent<ActiveElementChange>) => void;
-        /**
-          * Elements that are not set in the slot can be passed here *
-         */
-        "slottedElements"?: HTMLElement[];
+        "scrollToPosition"?: ScrollToPosition;
         /**
           * Adapts the color when used on dark background.
          */

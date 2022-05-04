@@ -1,17 +1,9 @@
-import { Component, Element, Event, EventEmitter, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Prop, State, h, Watch } from '@stencil/core';
 import { PrevNextButton } from './prev-next-button';
-import {
-  attachComponentCss,
-  getHTMLElement,
-  getHTMLElements,
-  isParentOfKind,
-  observeChildren,
-  scrollElementTo,
-  unobserveChildren,
-} from '../../../utils';
+import { attachComponentCss, getHTMLElement, getHTMLElements, scrollElementTo } from '../../../utils';
 import { getComponentCss } from './scroller-styles';
-import { getScrollActivePosition, getScrollPositionAfterPrevNextClick } from './scroller-utils';
-import type { ActiveElementChange, Direction, GradientColorTheme } from './scroller-utils';
+import { getScrollPositionAfterPrevNextClick } from './scroller-utils';
+import type { Direction, GradientColorTheme, ScrollToPosition } from './scroller-utils';
 import type { ThemeExtendedElectric } from '../../../types';
 
 @Component({
@@ -27,74 +19,34 @@ export class Scroller {
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: GradientColorTheme = 'default';
 
-  /** Defines which element to be visualized as selected (zero-based numbering). */
-  @Prop() public activeElementIndex?: number;
-
-  /** Elements that are not set in the slot can be passed here **/
-  @Prop() public slottedElements?: HTMLElement[];
-
-  /** Emitted when active element is changed. */
-  @Event({ bubbles: false }) public activeElementChange: EventEmitter<ActiveElementChange>;
+  // TODO: description
+  /** If set, it will scroll */
+  @Prop() public scrollToPosition?: ScrollToPosition;
 
   @State() public isPrevHidden = true;
   @State() public isNextHidden = true;
-  @State() private scrollItems: HTMLElement[];
 
   private intersectionObserver: IntersectionObserver;
   private scrollAreaElement: HTMLElement;
-  private prevGradientElement: HTMLElement;
-  private direction: Direction = 'next';
-  private prevActiveElement: number;
-  private hasTabsBarParent = false;
 
-  @Watch('activeElementIndex')
-  public activeElementHandler(_newValue: number, oldValue: number): void {
-    this.prevActiveElement = oldValue;
-    this.direction = this.activeElementIndex > this.prevActiveElement ? 'next' : 'prev';
+  @Watch('scrollToPosition')
+  public scrollToPositionHandler({ scrollPosition, skipAnimation }: ScrollToPosition): void {
+    console.log('-> scrollPosition, skipAnimation', scrollPosition, skipAnimation);
 
-    this.scrollActiveElementIntoView();
-  }
-
-  public connectedCallback(): void {
-    this.hasTabsBarParent = isParentOfKind(this.host, 'pTabsBar', true);
-    this.setScrollItems();
-    if (!this.slottedElements) {
-      observeChildren(this.host, () => {
-        this.setScrollItems();
-      });
+    if (skipAnimation) {
+      this.scrollAreaElement.scrollLeft = scrollPosition;
+    } else {
+      scrollElementTo(this.scrollAreaElement, scrollPosition);
     }
   }
 
   public componentDidLoad(): void {
     this.defineHTMLElements();
     this.initIntersectionObserver();
-    this.scrollAreaElement.addEventListener('click', (e) => {
-      const newElementIndex = this.scrollItems.indexOf(e.target as HTMLElement);
-      if (newElementIndex >= 0) {
-        this.onElementClick(newElementIndex);
-      }
-    });
-
-    // TODO: validation of active element index inside of tabs bar!
-
-    if (!(this.direction === 'next' && this.activeElementIndex === undefined)) {
-      // skip scrolling on first render when no activeElementIndex is set
-      this.scrollActiveElementIntoView(true);
-    }
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.gradientColorScheme, this.hasTabsBarParent, this.theme);
-  }
-
-  public componentWillUpdate(): void {
-    this.setScrollItems();
-  }
-
-  public disconnectedCallback(): void {
-    if (!this.slottedElements) {
-      unobserveChildren(this.host);
-    }
+    attachComponentCss(this.host, getComponentCss, this.gradientColorScheme, this.theme);
   }
 
   public render(): JSX.Element {
@@ -148,41 +100,10 @@ export class Scroller {
   private defineHTMLElements = (): void => {
     const { shadowRoot } = this.host;
     this.scrollAreaElement = getHTMLElement(shadowRoot, '.scroll-area');
-    this.prevGradientElement = getHTMLElement(shadowRoot, '.gradient');
   };
 
   private scrollOnPrevNextClick = (direction: Direction): void => {
-    const scrollPosition = getScrollPositionAfterPrevNextClick(this.scrollItems, this.scrollAreaElement, direction);
+    const scrollPosition = getScrollPositionAfterPrevNextClick(this.scrollAreaElement, direction);
     scrollElementTo(this.scrollAreaElement, scrollPosition);
-  };
-
-  private scrollActiveElementIntoView = (skipAnimation?: boolean): void => {
-    // scrollAreaElement might be undefined in certain scenarios with framework routing involved
-    // where the watcher triggers this function way before componentDidLoad calls defineHTMLElements
-    if (!this.scrollAreaElement) {
-      return;
-    }
-
-    const scrollActivePosition = getScrollActivePosition(
-      this.scrollItems,
-      this.direction,
-      this.activeElementIndex,
-      this.scrollAreaElement.offsetWidth,
-      this.prevGradientElement.offsetWidth
-    );
-
-    if (skipAnimation) {
-      this.scrollAreaElement.scrollLeft = scrollActivePosition;
-    } else {
-      scrollElementTo(this.scrollAreaElement, scrollActivePosition);
-    }
-  };
-
-  private onElementClick = (newElementIndex: number): void => {
-    this.activeElementChange.emit({ activeElementIndex: newElementIndex });
-  };
-
-  private setScrollItems = (): void => {
-    this.scrollItems = this.slottedElements ? this.slottedElements : (Array.from(this.host.children) as HTMLElement[]);
   };
 }

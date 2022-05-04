@@ -12,14 +12,14 @@
   </head>
   <body>
     <!-- START: keep this snippet to log component lifecycle events -->
-    <script>
-      ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
-        window.addEventListener(`stencil_${x}`, (e) => {
-          const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
-          console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
-        })
-      );
-    </script>
+    <!--    <script>-->
+    <!--      ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>-->
+    <!--        window.addEventListener(`stencil_${x}`, (e) => {-->
+    <!--          const eventName = e.type + (e.type.includes('Did') ? ' ' : '');-->
+    <!--          console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());-->
+    <!--        })-->
+    <!--      );-->
+    <!--    </script>-->
     <!-- /END -->
 
     <p-tabs-bar gradient-color-scheme="surface"
@@ -140,19 +140,19 @@
     <!--      <button type="button">Tab Twenty</button>-->
     <!--    </p-scroller>-->
 
-    <p-scroller>
-      <button type="button">Tab One</button>
-      <button type="button">Tab Two</button>
-      <button type="button">Tab Three</button>
-      <button type="button">Tab Four</button>
-      <button type="button">Tab Five</button>
-      <button type="button">Tab Six</button>
-      <button type="button">Tab 7</button>
-      <button type="button">Tab 8</button>
-      <button type="button">Tab 9</button>
-      <button type="button">Tab 10</button>
-      <button type="button">Tab 11</button>
-    </p-scroller>
+    <!--    <p-scroller>-->
+    <!--      <button type="button">Tab One</button>-->
+    <!--      <button type="button">Tab Two</button>-->
+    <!--      <button type="button">Tab Three</button>-->
+    <!--      <button type="button">Tab Four</button>-->
+    <!--      <button type="button">Tab Five</button>-->
+    <!--      <button type="button">Tab Six</button>-->
+    <!--      <button type="button">Tab 7</button>-->
+    <!--      <button type="button">Tab 8</button>-->
+    <!--      <button type="button">Tab 9</button>-->
+    <!--      <button type="button">Tab 10</button>-->
+    <!--      <button type="button">Tab 11</button>-->
+    <!--    </p-scroller>-->
 
     <!--    <p-scroller>-->
     <!--      <button type="button">Tab One</button>-->
@@ -193,10 +193,6 @@
     <!--    </p-table>-->
   </body>
   <script>
-    const scroller = document.querySelector('p-scroller');
-    scroller.addEventListener('activeElementChange', (e) => {
-      scroller.activeElementIndex = e.detail.activeElementIndex;
-    });
     //
     // scroller.addEventListener('keydown', (e) => {
     //   if (e.key === 'Tab') {
