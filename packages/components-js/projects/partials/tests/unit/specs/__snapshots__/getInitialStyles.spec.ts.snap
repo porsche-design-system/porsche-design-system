@@ -15,3 +15,11 @@ exports[`format: jsx should return core and skeleton styles 1`] = `
   uses-skeleton="true"
 />
 `;
+
+exports[`validation should throw error on invalid skeleton tag names parameter 1`] = `
+"The following supplied skeleton tag names are invalid:
+  some-invalid-component
+
+Please use only valid component tag names:
+  p-button, p-button-pure, p-checkbox-wrapper, p-fieldset-wrapper, p-link, p-link-pure, p-link-social, p-radio-button-wrapper, p-select-wrapper, p-text-field-wrapper, p-textarea-wrapper"
+`;
