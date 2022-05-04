@@ -50,7 +50,7 @@ export class Scroller {
   public render(): JSX.Element {
     return (
       <div class="root">
-        <div class="scroll-area" tabindex="0">
+        <div class="scroll-area">
           <div class="scroll-wrapper">
             <slot />
             <div class="trigger" />
