@@ -50,7 +50,10 @@ export class Tabs {
   public connectedCallback(): void {
     attachComponentCss(this.host, getComponentCss);
     this.defineTabsItemElements();
-    this.initMutationObserver();
+    observeChildren(this.host, () => {
+      this.defineTabsItemElements();
+      this.observeProperties(); // since attribute won't be there when used with angular or react wrapper
+    });
     this.observeProperties();
   }
 
@@ -111,13 +114,6 @@ export class Tabs {
         removeAttribute(tab, 'tabindex');
       }
     }
-  };
-
-  private initMutationObserver = (): void => {
-    observeChildren(this.host, () => {
-      this.defineTabsItemElements();
-      this.observeProperties(); // since attribute won't be there when used with angular or react wrapper
-    });
   };
 
   private observeProperties = (): void => {
