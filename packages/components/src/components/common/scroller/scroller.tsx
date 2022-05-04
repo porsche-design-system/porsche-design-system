@@ -10,8 +10,8 @@ import {
   unobserveChildren,
 } from '../../../utils';
 import { getComponentCss } from './scroller-styles';
-import type { ActiveElementChange, Direction, GradientColorTheme } from './scroller-utils';
 import { getScrollActivePosition, getScrollPositionAfterPrevNextClick } from './scroller-utils';
+import type { ActiveElementChange, Direction, GradientColorTheme } from './scroller-utils';
 import type { ThemeExtendedElectric } from '../../../types';
 
 @Component({
@@ -59,7 +59,9 @@ export class Scroller {
     this.hasTabsBarParent = isParentOfKind(this.host, 'pTabsBar', true);
     this.setScrollItems();
     if (!this.slottedElements) {
-      this.initMutationObserver();
+      observeChildren(this.host, () => {
+        this.setScrollItems();
+      });
     }
   }
 
@@ -178,12 +180,6 @@ export class Scroller {
 
   private onElementClick = (newElementIndex: number): void => {
     this.activeElementChange.emit({ activeElementIndex: newElementIndex });
-  };
-
-  private initMutationObserver = (): void => {
-    observeChildren(this.host, () => {
-      this.setScrollItems();
-    });
   };
 
   private setScrollItems = (): void => {

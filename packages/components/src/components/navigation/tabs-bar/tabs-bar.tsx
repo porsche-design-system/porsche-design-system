@@ -59,7 +59,13 @@ export class TabsBar {
   public connectedCallback(): void {
     this.hasPTabsParent = isParentOfKind(this.host, 'pTabs', true);
     this.setTabElements();
-    this.initMutationObserver();
+    observeChildren(this.host, () => {
+      this.setTabElements();
+      this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length);
+      this.prevActiveTabIndex = this.activeTabIndex;
+      setBarStyle(this.tabElements, this.activeTabIndex, this.barElement, this.prevActiveTabIndex);
+      this.setAccessibilityAttributes();
+    });
   }
 
   public componentDidLoad(): void {
@@ -136,16 +142,6 @@ export class TabsBar {
     if (this.tabElements.length !== elements.length) {
       this.tabElements = elements;
     }
-  };
-
-  private initMutationObserver = (): void => {
-    observeChildren(this.host, () => {
-      this.setTabElements();
-      this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length);
-      this.prevActiveTabIndex = this.activeTabIndex;
-      setBarStyle(this.tabElements, this.activeTabIndex, this.barElement, this.prevActiveTabIndex);
-      this.setAccessibilityAttributes();
-    });
   };
 
   private onTabClick = (newTabIndex: number): void => {
