@@ -120,6 +120,26 @@ describe('scroller', () => {
       expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
     });
 
+    it('should have correct scroll position when element is removed', async () => {
+      await initScroller({ activeElementIndex: 0, isWrapped: true, otherMarkup: clickHandlerScript });
+      const [, , , fourthButton] = await getAllButtons();
+      const scrollArea = await getScrollArea();
+      const gradientWidth = await getOffsetWidth(await getGradientNext());
+
+      await page.evaluate(() => {
+        const tabsBar = document.querySelector('p-scroller');
+        tabsBar.removeChild(tabsBar.children[2]);
+      });
+
+      await waitForStencilLifecycle(page);
+
+      await clickElement(fourthButton);
+      const offsetFourthButton = await getOffsetLeft(fourthButton);
+      const scrollDistance = +offsetFourthButton - +gradientWidth + FOCUS_PADDING;
+
+      expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
+    });
+
     it('should show next button after adding a button', async () => {
       await initScroller({ amount: 5, activeElementIndex: 4, otherMarkup: clickHandlerScript, isWrapped: true });
       const { actionNext } = await getActionContainers();
