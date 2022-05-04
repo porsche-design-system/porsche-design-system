@@ -22,7 +22,7 @@ You find detailed documentation and examples on how to implement preloading at h
 
   if (!document.querySelector('style[pds-initial-styles]')) {
     console.warn(
-      `The Porsche Design System couldn't find its initial styles. Please make sure to apply the 'getInitialStyles()' partial as described at https://designsystem.porsche.com/v2/partials/initial-styles`
+      'The Porsche Design System couldn\'t find its initial styles. Please make sure to apply the "getInitialStyles()" partial as described at https://designsystem.porsche.com/v2/partials/initial-styles'
     );
   }
 };
