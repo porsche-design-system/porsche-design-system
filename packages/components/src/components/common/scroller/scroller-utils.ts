@@ -3,6 +3,7 @@ import { getScrollByX } from '../../../utils';
 export type ActiveElementChange = { activeElementIndex: number };
 export type Direction = 'prev' | 'next';
 export type GradientColorTheme = 'default' | 'surface';
+export type ScrollToPosition = { scrollPosition: number; skipAnimation?: boolean };
 
 export const FOCUS_PADDING_WIDTH = 4;
 
@@ -37,33 +38,14 @@ export const getScrollActivePosition = (
   return scrollPosition;
 };
 
-export const getScrollPositionAfterPrevNextClick = (
-  elements: HTMLElement[],
-  scrollAreaElement: HTMLElement,
-  direction: string
-): number => {
-  const { offsetLeft: lastElementOffsetLeft, offsetWidth: lastElementOffsetWidth } =
-    elements[elements.length - 1] ?? {};
-  const { offsetWidth: scrollAreaWidth, scrollLeft: currentScrollPosition } = scrollAreaElement ?? {};
-  const scrollToStep = getScrollByX(scrollAreaElement);
-  const scrollToMax = lastElementOffsetLeft + lastElementOffsetWidth - scrollAreaWidth + FOCUS_PADDING_WIDTH * 2;
-
+export const getScrollPositionAfterPrevNextClick = (scrollAreaElement: HTMLElement, direction: string): number => {
+  const { scrollLeft } = scrollAreaElement;
+  const scrollByX = getScrollByX(scrollAreaElement);
   let scrollPosition: number;
   if (direction === 'next') {
-    // Go to end of scroll-area when close to edge
-    if (currentScrollPosition + scrollToStep * 2 > scrollToMax) {
-      scrollPosition = scrollToMax;
-    } else {
-      scrollPosition = currentScrollPosition + scrollToStep;
-    }
+    scrollPosition = scrollLeft + scrollByX;
   } else {
-    const scrollToMin = 0;
-    // Go to start of scroll-area when close to edge
-    if (currentScrollPosition - scrollToStep * 2 < scrollToMin) {
-      scrollPosition = scrollToMin;
-    } else {
-      scrollPosition = currentScrollPosition - scrollToStep;
-    }
+    scrollPosition = scrollLeft - scrollByX;
   }
   return scrollPosition;
 };

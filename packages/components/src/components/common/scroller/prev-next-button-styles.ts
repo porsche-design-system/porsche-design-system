@@ -1,9 +1,6 @@
 import type { Styles } from 'jss';
 
-export const getFunctionalComponentPrevNextButtonStyles = (
-  gradientColor: string,
-  hasTabsBarParent: boolean
-): Styles => {
+export const getFunctionalComponentPrevNextButtonStyles = (gradientColor: string): Styles => {
   const gradientColorTransparent = gradientColor + (gradientColor.length === 4 ? '0' : '00');
 
   return {
@@ -34,8 +31,11 @@ export const getFunctionalComponentPrevNextButtonStyles = (
     // TODO: when size is medium we cant fully center it, size can be responsive so transform has to take that into account
     button: {
       position: 'absolute',
-      top: hasTabsBarParent ? 'calc(50% - .5em)' : '50%',
-      transform: hasTabsBarParent ? 'translate3d(0,calc(-50% + .375em),0)' : 'translate3d(0,-50%,0)',
+      // TODO: move these styles someplace else
+      // top: hasTabsBarParent ? 'calc(50% - .5em)' : '50%',
+      // transform: hasTabsBarParent ? 'translate3d(0,calc(-50% + .375em),0)' : 'translate3d(0,-50%,0)',
+      top: '50%',
+      transform: 'translate3d(0,-50%,0)',
     },
     gradient: {
       position: 'absolute',
