@@ -22,7 +22,6 @@ export const getComponentCss = (gradientColorScheme: GradientColorTheme, theme: 
       position: 'relative',
       height: 'inherit',
       boxSizing: 'border-box',
-      // TODO: move these styles someplace else
       padding: '4px',
       overflowY: 'hidden',
       overflowX: 'scroll',
