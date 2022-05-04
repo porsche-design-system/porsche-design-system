@@ -1,3 +1,4 @@
+import type { Direction } from './scroller-utils';
 import { getScrollActivePosition, getScrollPositionAfterPrevNextClick } from './scroller-utils';
 
 describe('getScrollActivePosition()', () => {
@@ -45,43 +46,16 @@ describe('getScrollActivePosition()', () => {
 });
 
 describe('getScrollPositionAfterPrevNextClick()', () => {
-  it('should return scrollToMax = 58 if scroll step would exceed maximum', () => {
-    expect(
-      getScrollPositionAfterPrevNextClick(
-        [{ offsetLeft: 50, offsetWidth: 50 }] as HTMLElement[],
-        { offsetWidth: 50, scrollLeft: 50 } as HTMLElement,
-        'next'
-      )
-    ).toBe(58);
-  });
-
-  it('should return scrollPositionAfterClick = 60 if direction is "next" and scroll does not exceed maximum', () => {
-    expect(
-      getScrollPositionAfterPrevNextClick(
-        [{ offsetLeft: 80, offsetWidth: 50 }] as HTMLElement[],
-        { offsetWidth: 50, scrollLeft: 50 } as HTMLElement,
-        'next'
-      )
-    ).toBe(60);
-  });
-
-  it('should return scrollToMin = 0 if scroll step would fall below minimum', () => {
-    expect(
-      getScrollPositionAfterPrevNextClick(
-        [{ offsetLeft: 0, offsetWidth: 0 }] as HTMLElement[],
-        { offsetWidth: 50, scrollLeft: 10 } as HTMLElement,
-        'prev'
-      )
-    ).toBe(0);
-  });
-
-  it('should return scrollPositionAfterClick = 18 if direction is "prev" and scroll does not fall below minimum', () => {
-    expect(
-      getScrollPositionAfterPrevNextClick(
-        [{ offsetLeft: 0, offsetWidth: 0 }] as HTMLElement[],
-        { offsetWidth: 10, scrollLeft: 20 } as HTMLElement,
-        'prev'
-      )
-    ).toBe(18);
-  });
+  it.each<[number, number, Direction, number]>([
+    [100, 0, 'prev', -20],
+    [100, 50, 'prev', 30],
+    [100, 0, 'next', 20],
+    [100, 50, 'next', 70],
+    [100, 90, 'next', 110],
+  ])(
+    'should for offsetWidth: %s, scrollLeft: %s and direction: %s return %s',
+    (offsetWidth, scrollLeft, direction, expected) => {
+      expect(getScrollPositionAfterPrevNextClick({ offsetWidth, scrollLeft } as HTMLElement, direction)).toBe(expected);
+    }
+  );
 });
