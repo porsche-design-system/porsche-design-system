@@ -31,8 +31,6 @@ export class Scroller {
 
   @Watch('scrollToPosition')
   public scrollToPositionHandler({ scrollPosition, skipAnimation }: ScrollToPosition): void {
-    console.log('-> scrollPosition, skipAnimation', scrollPosition, skipAnimation);
-
     if (skipAnimation) {
       this.scrollAreaElement.scrollLeft = scrollPosition;
     } else {
