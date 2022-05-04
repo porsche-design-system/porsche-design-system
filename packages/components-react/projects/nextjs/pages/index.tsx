@@ -1,18 +1,17 @@
 import type { NextPage } from 'next';
-import Link from 'next/link';
+import { PHeadline } from '@porsche-design-system/components-react';
+import { Nav } from '../components';
 
-const Home: NextPage = (): JSX.Element => {
+const HomePage: NextPage = (): JSX.Element => {
   return (
-    <div>
-      <h1>
+    <>
+      <PHeadline>
         Welcome to <a href="https://nextjs.org">Next.js!</a>
-      </h1>
+      </PHeadline>
 
-      <Link href="/overview">
-        <a>Overview</a>
-      </Link>
-    </div>
+      <Nav />
+    </>
   );
 };
 
-export default Home;
+export default HomePage;

@@ -48,7 +48,6 @@ export type TagNameCamelCase = ${tags.map((x) => `'${camelCase(x)}'`).join(' | '
 export const INTERNAL_TAG_NAMES: TagName[] = [${INTERNAL_TAG_NAMES.map((x) => `'${x}'`).join(', ')}];
 
 export const SKELETON_TAG_NAMES = [${tagNamesWithSkeleton.map((x) => `'${x}'`).join(', ')}] as const;
-
 export type SkeletonTagName = Extract<TagName, typeof SKELETON_TAG_NAMES[number]>;
 `;
 
