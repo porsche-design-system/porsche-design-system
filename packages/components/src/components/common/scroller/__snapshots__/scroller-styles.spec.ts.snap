@@ -1,0 +1,451 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, hasTabsBarParent: false and theme: dark 1`] = `
+".root {
+  position: relative;
+  margin: 0 -4px;
+}
+.scroll-area {
+  position: relative;
+  padding: 4px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroll-area::-webkit-scrollbar {
+  display: none;
+}
+.scroll-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  min-width: 100%;
+}
+.trigger {
+  display: block;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  visibility: hidden;
+}
+.trigger:first-of-type {
+  left: 0;
+}
+.trigger:last-of-type {
+  right: 0;
+}
+.action {
+  display: flex;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  align-items: center;
+}
+.action--prev {
+  left: 0;
+  justify-content: flex-start;
+}
+.action--next {
+  right: 0;
+  justify-content: flex-end;
+}
+.action--hidden {
+  visibility: hidden;
+}
+.action--next .gradient {
+  background: linear-gradient(90deg, #0e141800 0%, #0e1418 50%);
+}
+.action--prev .gradient {
+  background: linear-gradient(90deg, #0e1418 50%, #0e141800 100%);
+}
+.button {
+  position: absolute;
+  top: 50%;
+  transform: translate3d(0,-50%,0);
+}
+.gradient {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2em;
+  pointer-events: none;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, hasTabsBarParent: true and theme: light 1`] = `
+".root {
+  position: relative;
+  margin: 0 -4px;
+}
+.scroll-area {
+  position: relative;
+  padding: 4px 4px .5em;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroll-area::-webkit-scrollbar {
+  display: none;
+}
+.scroll-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  min-width: 100%;
+}
+.trigger {
+  display: block;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  visibility: hidden;
+}
+.trigger:first-of-type {
+  left: 0;
+}
+.trigger:last-of-type {
+  right: 0;
+}
+.action {
+  display: flex;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  align-items: center;
+}
+.action--prev {
+  left: 0;
+  justify-content: flex-start;
+}
+.action--next {
+  right: 0;
+  justify-content: flex-end;
+}
+.action--hidden {
+  visibility: hidden;
+}
+.action--next .gradient {
+  background: linear-gradient(90deg, #fff0 0%, #fff 50%);
+}
+.action--prev .gradient {
+  background: linear-gradient(90deg, #fff 50%, #fff0 100%);
+}
+.button {
+  position: absolute;
+  top: calc(50% - .5em);
+  transform: translate3d(0,calc(-50% + .375em),0);
+}
+.gradient {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2em;
+  pointer-events: none;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, hasTabsBarParent: true and theme: light-electric 1`] = `
+".root {
+  position: relative;
+  margin: 0 -4px;
+}
+.scroll-area {
+  position: relative;
+  padding: 4px 4px .5em;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroll-area::-webkit-scrollbar {
+  display: none;
+}
+.scroll-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  min-width: 100%;
+}
+.trigger {
+  display: block;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  visibility: hidden;
+}
+.trigger:first-of-type {
+  left: 0;
+}
+.trigger:last-of-type {
+  right: 0;
+}
+.action {
+  display: flex;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  align-items: center;
+}
+.action--prev {
+  left: 0;
+  justify-content: flex-start;
+}
+.action--next {
+  right: 0;
+  justify-content: flex-end;
+}
+.action--hidden {
+  visibility: hidden;
+}
+.action--next .gradient {
+  background: linear-gradient(90deg, #fff0 0%, #fff 50%);
+}
+.action--prev .gradient {
+  background: linear-gradient(90deg, #fff 50%, #fff0 100%);
+}
+.button {
+  position: absolute;
+  top: calc(50% - .5em);
+  transform: translate3d(0,calc(-50% + .375em),0);
+}
+.gradient {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2em;
+  pointer-events: none;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for gradientColorScheme: surface, hasTabsBarParent: false and theme: light 1`] = `
+".root {
+  position: relative;
+  margin: 0 -4px;
+}
+.scroll-area {
+  position: relative;
+  padding: 4px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroll-area::-webkit-scrollbar {
+  display: none;
+}
+.scroll-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  min-width: 100%;
+}
+.trigger {
+  display: block;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  visibility: hidden;
+}
+.trigger:first-of-type {
+  left: 0;
+}
+.trigger:last-of-type {
+  right: 0;
+}
+.action {
+  display: flex;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  align-items: center;
+}
+.action--prev {
+  left: 0;
+  justify-content: flex-start;
+}
+.action--next {
+  right: 0;
+  justify-content: flex-end;
+}
+.action--hidden {
+  visibility: hidden;
+}
+.action--next .gradient {
+  background: linear-gradient(90deg, #f2f2f200 0%, #f2f2f2 50%);
+}
+.action--prev .gradient {
+  background: linear-gradient(90deg, #f2f2f2 50%, #f2f2f200 100%);
+}
+.button {
+  position: absolute;
+  top: 50%;
+  transform: translate3d(0,-50%,0);
+}
+.gradient {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2em;
+  pointer-events: none;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for gradientColorScheme: surface, hasTabsBarParent: false and theme: light-electric 1`] = `
+".root {
+  position: relative;
+  margin: 0 -4px;
+}
+.scroll-area {
+  position: relative;
+  padding: 4px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroll-area::-webkit-scrollbar {
+  display: none;
+}
+.scroll-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  min-width: 100%;
+}
+.trigger {
+  display: block;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  visibility: hidden;
+}
+.trigger:first-of-type {
+  left: 0;
+}
+.trigger:last-of-type {
+  right: 0;
+}
+.action {
+  display: flex;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  align-items: center;
+}
+.action--prev {
+  left: 0;
+  justify-content: flex-start;
+}
+.action--next {
+  right: 0;
+  justify-content: flex-end;
+}
+.action--hidden {
+  visibility: hidden;
+}
+.action--next .gradient {
+  background: linear-gradient(90deg, #f2f2f200 0%, #f2f2f2 50%);
+}
+.action--prev .gradient {
+  background: linear-gradient(90deg, #f2f2f2 50%, #f2f2f200 100%);
+}
+.button {
+  position: absolute;
+  top: 50%;
+  transform: translate3d(0,-50%,0);
+}
+.gradient {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2em;
+  pointer-events: none;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for gradientColorScheme: surface, hasTabsBarParent: true and theme: dark 1`] = `
+".root {
+  position: relative;
+  margin: 0 -4px;
+}
+.scroll-area {
+  position: relative;
+  padding: 4px 4px .5em;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroll-area::-webkit-scrollbar {
+  display: none;
+}
+.scroll-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  min-width: 100%;
+}
+.trigger {
+  display: block;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  visibility: hidden;
+}
+.trigger:first-of-type {
+  left: 0;
+}
+.trigger:last-of-type {
+  right: 0;
+}
+.action {
+  display: flex;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  align-items: center;
+}
+.action--prev {
+  left: 0;
+  justify-content: flex-start;
+}
+.action--next {
+  right: 0;
+  justify-content: flex-end;
+}
+.action--hidden {
+  visibility: hidden;
+}
+.action--next .gradient {
+  background: linear-gradient(90deg, #262b2e00 0%, #262b2e 50%);
+}
+.action--prev .gradient {
+  background: linear-gradient(90deg, #262b2e 50%, #262b2e00 100%);
+}
+.button {
+  position: absolute;
+  top: calc(50% - .5em);
+  transform: translate3d(0,calc(-50% + .375em),0);
+}
+.gradient {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2em;
+  pointer-events: none;
+}"
+`;
