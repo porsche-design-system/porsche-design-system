@@ -11,7 +11,7 @@ describe('getComponentCss()', () => {
     ['small', 'regular', 'light'],
     ['small', 'semibold', 'light'],
     [{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }, 'regular', 'light'],
-  ])('should return correct css for size: %j, weight: %s, gradientColorScheme: %s and theme: %s', (...args) => {
+  ])('should return correct css for size: %j, weight: %s and theme: %s', (...args) => {
     expect(getComponentCss(...args)).toMatchSnapshot();
   });
 });
