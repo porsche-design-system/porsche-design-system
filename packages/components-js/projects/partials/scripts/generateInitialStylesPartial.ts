@@ -19,7 +19,6 @@ import {
 // TODO: remove skeleton styles after all are hydrated
 
 const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
-const skeletonTagNameTypeLiteral = joinArrayElementsToString(SKELETON_TAG_NAMES, ' | ');
 const tagNamesWithSkeleton = joinArrayElementsToString(SKELETON_TAG_NAMES);
 
 // includes skeleton styles when SKELETONS_ACTIVE is set to true
@@ -33,7 +32,7 @@ type GetInitialStylesOptionsFormatHtml = Omit<GetInitialStylesOptions, 'withoutT
 type GetInitialStylesOptionsFormatJsx = Omit<GetInitialStylesOptions, 'withoutTags'> & { format: 'jsx' };
 type GetInitialStylesOptionsWithoutTags = Omit<GetInitialStylesOptions, 'format'>;`;
 
-  const skeletonTypes = `type SkeletonTagName = ${skeletonTagNameTypeLiteral};
+  const skeletonTypes = `type SkeletonTagName = ${joinArrayElementsToString(SKELETON_TAG_NAMES, ' | ')};
 
 type GetSkeletonStylesOptions = {
   prefixedTagNamesWithSkeleton: string[];
