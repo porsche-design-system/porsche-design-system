@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Fixed
 - exception bug when changing `theme` dynamically fixed (occurred in `Headline`, `Select Wrapper`, `Text` and `Text List`)
+- `getInitialStyles()` partial now returns `.hydrated` styles, too
 
 ### [2.11.0-skeletons] - 2022-04-21
 
