@@ -19,4 +19,10 @@ export const injectGlobalStyle = (): void => {
     console.warn(`The Porsche Design System had to inject our font-face.css file into your head. Please preload it in the head of your 'index.html'.
 You find detailed documentation and examples on how to implement preloading at https://designsystem.porsche.com/v2/performance/loading-behaviour`);
   }
+
+  if (!document.querySelector('style[pds-initial-styles]')) {
+    console.warn(
+      `The Porsche Design System couldn't find its initial styles. Please make sure to apply the 'getInitialStyles()' partial as described at https://designsystem.porsche.com/v2/partials/initial-styles`
+    );
+  }
 };
