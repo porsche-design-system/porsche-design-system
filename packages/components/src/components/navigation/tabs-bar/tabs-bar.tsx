@@ -44,8 +44,6 @@ export class TabsBar {
   @State() private tabElements: HTMLElement[] = [];
 
   private intersectionObserver: IntersectionObserver;
-  // private scroller: HTMLElement;
-  // private scrollAreaElement: HTMLElement;
   private barElement: HTMLElement;
   private prevActiveTabIndex: number;
   private hasPTabsParent: boolean;
@@ -107,7 +105,6 @@ export class TabsBar {
         onActiveElementChange={({ detail: { activeElementIndex } }: CustomEvent<ActiveElementChange>) =>
           this.onTabClick(activeElementIndex)
         }
-        // ref={(el) => (this.scroller = el)}
       >
         <slot />
         <span class="bar" />
@@ -133,7 +130,6 @@ export class TabsBar {
 
   private defineHTMLElements = (): void => {
     const { shadowRoot } = this.host;
-    // this.scrollAreaElement = getHTMLElement(this.scroller.shadowRoot, '.scroll-area');
     this.barElement = getHTMLElement(shadowRoot, '.bar');
   };
 
