@@ -14,7 +14,7 @@
     "Bernd Hacker <bernd.hacker@mhp.com>",
     "Anton Schmidt <anton.schmidt@mhp.com>"
   ],
-  "license": "SEE LICENSE IN https://designsystem.porsche.com",
+  "license": "SEE LICENSE IN https://designsystem.porsche.com/latest/license",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "build": "yarn clean:build && yarn build:generateTagNames && yarn build:generateComponentMeta && yarn build:generateCodeSamples && yarn build:bundle",

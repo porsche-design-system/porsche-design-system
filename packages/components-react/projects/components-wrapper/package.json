@@ -16,7 +16,7 @@
     "Johannes Müller-Naumann <johannes.mueller-naumann@mhp.com>",
     "Anton Schmidt <anton.schmidt@mhp.com>"
   ],
-  "license": "SEE LICENSE IN https://designsystem.porsche.com",
+  "license": "SEE LICENSE IN https://designsystem.porsche.com/latest/license",
   "description": "The Porsche Design System provides the design fundamentals and elements for efficiently creating aesthetic and high-quality web applications. Everything is built and tested following the Porsche quality standards and corporate design principles.",
   "homepage": "https://designsystem.porsche.com",
   "dependencies": {
