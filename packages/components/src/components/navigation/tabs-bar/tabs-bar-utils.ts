@@ -92,14 +92,16 @@ export const setBarStyle = (
   }
   let transformation: string;
 
-  if (activeTabIndex === undefined && prevActiveTabIndex !== undefined) {
-    // handle initial inactive + active to inactive cases
-    addEnableTransitionClass(barElement);
-    transformation = getTransformationToInactive(tabElements[prevActiveTabIndex]);
-  } else if (activeTabIndex === undefined && prevActiveTabIndex === undefined) {
-    // handle active to removed
-    removeEnableTransitionClass(barElement);
-    transformation = getTransformationToInactive();
+  if (activeTabIndex === undefined) {
+    if (prevActiveTabIndex === undefined) {
+      // handle active to removed case
+      removeEnableTransitionClass(barElement);
+      transformation = getTransformationToInactive();
+    } else {
+      // handle initial inactive + active to inactive cases
+      addEnableTransitionClass(barElement);
+      transformation = getTransformationToInactive(tabElements[prevActiveTabIndex]);
+    }
   } else {
     // handle initial active + active to active + inactive to active cases
     determineEnableTransitionClass(activeTabIndex, prevActiveTabIndex, barElement);
