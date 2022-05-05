@@ -25,13 +25,6 @@
     "fonts"
   ],
   "homepage": "https://designsystem.porsche.com",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/porscheui/porsche-design-system.git"
-  },
-  "bugs": {
-    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
-  },
   "scripts": {
     "build": "yarn build:fonts && yarn build:lib",
     "build:fonts": "ts-node --project tsconfig.json scripts/build.ts",
