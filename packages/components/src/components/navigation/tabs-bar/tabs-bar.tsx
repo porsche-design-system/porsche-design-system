@@ -1,8 +1,5 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Element, Event, Prop, State, Watch, h } from '@stencil/core';
-import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
-import type { TabChangeEvent, TabSize, TabWeight } from './tabs-bar-utils';
-import { getFocusedTabIndex, getPrevNextTabIndex, sanitizeActiveTabIndex, setBarStyle } from './tabs-bar-utils';
 import {
   attachComponentCss,
   getHTMLElement,
@@ -13,9 +10,18 @@ import {
   setAttribute,
   unobserveChildren,
 } from '../../../utils';
+import {
+  getFocusedTabIndex,
+  getPrevNextTabIndex,
+  getScrollActivePosition,
+  sanitizeActiveTabIndex,
+  setBarStyle,
+} from './tabs-bar-utils';
 import { getComponentCss } from './tabs-bar-styles';
+import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
+import type { TabChangeEvent, TabSize, TabWeight } from './tabs-bar-utils';
 import type { GradientColorTheme } from '../../common/scroller/scroller-utils';
-import { Direction, getScrollActivePosition, ScrollToPosition } from '../../common/scroller/scroller-utils';
+import type { Direction, ScrollToPosition } from '../../common/scroller/scroller-utils';
 
 @Component({
   tag: 'p-tabs-bar',
@@ -83,7 +89,7 @@ export class TabsBar {
       // skip scrolling on first render when no activeElementIndex is set
       this.scrollActiveTabIntoView(true);
     }
-    // TODO: should be on a different element
+    // TODO: On Scroller or Host?
     this.addEventListeners();
 
     // setBarStyle() is needed when intersection observer does not trigger because all tabs are visible
