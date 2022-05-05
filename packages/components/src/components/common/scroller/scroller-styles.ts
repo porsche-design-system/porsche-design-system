@@ -11,7 +11,10 @@ export const getComponentCss = (gradientColorScheme: GradientColorTheme, theme: 
   // TODO: When VRT tests align, change px values to rem
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({ display: 'block', height: 'inherit' }),
+      ':host': addImportantToEachRule({
+        display: 'block',
+        height: 'inherit',
+      }),
     },
     root: {
       position: 'relative',
