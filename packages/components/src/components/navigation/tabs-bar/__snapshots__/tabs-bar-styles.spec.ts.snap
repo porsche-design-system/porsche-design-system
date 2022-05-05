@@ -4,7 +4,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ":host {
   display: block;
   position: relative !important;
-  height: 3.25rem;
+  height: 3.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
@@ -76,7 +76,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ":host {
   display: block;
   position: relative !important;
-  height: 3.25rem;
+  height: 3.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
@@ -148,7 +148,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ":host {
   display: block;
   position: relative !important;
-  height: 3.25rem;
+  height: 3.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
@@ -220,7 +220,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ":host {
   display: block;
   position: relative !important;
-  height: 2.25rem;
+  height: 2.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
@@ -292,7 +292,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ":host {
   display: block;
   position: relative !important;
-  height: 2.25rem;
+  height: 2.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
@@ -364,7 +364,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ":host {
   display: block;
   position: relative !important;
-  height: 2.25rem;
+  height: 2.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
@@ -436,7 +436,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ":host {
   display: block;
   position: relative !important;
-  height: 2.25rem;
+  height: 2.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
@@ -508,7 +508,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ":host {
   display: block;
   position: relative !important;
-  height: 2.25rem;
+  height: 2.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;
@@ -580,7 +580,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 ":host {
   display: block;
   position: relative !important;
-  height: 2.25rem;
+  height: 2.25rem !important;
 }
 ::slotted(a),::slotted(button) {
   display: inline-block !important;

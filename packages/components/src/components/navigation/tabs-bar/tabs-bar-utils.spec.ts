@@ -1,14 +1,16 @@
 import {
   addEnableTransitionClass,
+  determineEnableTransitionClass,
+  getFocusedTabIndex,
+  getPrevNextTabIndex,
+  getScrollActivePosition,
   getTransformationToActive,
   getTransformationToInactive,
   removeEnableTransitionClass,
   sanitizeActiveTabIndex,
-  determineEnableTransitionClass,
-  getPrevNextTabIndex,
-  getFocusedTabIndex,
-  getScrollActivePosition,
+  setBarStyle,
 } from './tabs-bar-utils';
+import * as tabBarUtils from './tabs-bar-utils';
 
 const enableTransitionClass = 'bar--enable-transition';
 
@@ -141,9 +143,67 @@ describe('getFocusedTabIndex()', () => {
   });
 });
 
-// TODO: add setBarStyle test
 describe('setBarStyle()', () => {
-  it('', () => {});
+  let barElement;
+
+  beforeEach(() => {
+    barElement = document.createElement('span');
+  });
+
+  it(`should remove ${enableTransitionClass} class and set transformation on barElement handling active to removed case`, () => {
+    const spy = jest.spyOn(tabBarUtils, 'removeEnableTransitionClass');
+
+    barElement.classList.add(enableTransitionClass);
+    setBarStyle(
+      [
+        { offsetWidth: 15, offsetLeft: 0 },
+        { offsetWidth: 15, offsetLeft: 30 },
+      ] as HTMLElement[],
+      undefined,
+      barElement,
+      undefined
+    );
+
+    expect(spy).toHaveBeenCalledWith(barElement);
+    expect(barElement.classList.contains(enableTransitionClass)).toBe(false);
+    expect(barElement.style.cssText).toBe('transform: translate3d(0rem,0,0); width: 0px;');
+  });
+
+  it(`should add ${enableTransitionClass} class and set transformation on barElement handling initial inactive + active to inactive cases`, () => {
+    const spy = jest.spyOn(tabBarUtils, 'addEnableTransitionClass');
+
+    setBarStyle(
+      [
+        { offsetWidth: 15, offsetLeft: 0 },
+        { offsetWidth: 15, offsetLeft: 30 },
+      ] as HTMLElement[],
+      undefined,
+      barElement,
+      1
+    );
+
+    expect(spy).toHaveBeenCalledWith(barElement);
+    expect(barElement.classList.contains(enableTransitionClass)).toBe(true);
+    expect(barElement.style.cssText).toBe('transform: translate3d(2.34375rem,0,0); width: 0px;');
+  });
+
+  it(`should call determineEnableTransitionClass and set transformation on barElement handling initial active + active to active + inactive to active cases`, () => {
+    const spy = jest.spyOn(tabBarUtils, 'determineEnableTransitionClass');
+
+    setBarStyle(
+      [
+        { offsetWidth: 15, offsetLeft: 0 },
+        { offsetWidth: 15, offsetLeft: 30 },
+      ] as HTMLElement[],
+      0,
+      barElement,
+      1
+    );
+
+    expect(spy).toHaveBeenCalledWith(0, 1, barElement);
+    expect(barElement.classList.contains(enableTransitionClass)).toBe(true);
+    expect(barElement.style.cssText).toBe('transform: translate3d(0rem,0,0); width: 0.9375rem;');
+  });
 });
 
 describe('getScrollActivePosition()', () => {
