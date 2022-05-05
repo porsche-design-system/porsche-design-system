@@ -2,7 +2,7 @@ import type { JssStyle, Styles } from 'jss';
 
 export const getFunctionalComponentPrevNextButtonStyles = (
   gradientColor: string,
-  prevNextButtonStyle: JssStyle
+  prevNextButtonStyle?: JssStyle
 ): Styles => {
   const gradientColorTransparent = gradientColor + (gradientColor.length === 4 ? '0' : '00');
 
