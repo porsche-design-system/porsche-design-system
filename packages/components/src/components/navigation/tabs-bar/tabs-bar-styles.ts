@@ -28,7 +28,7 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         position: addImportantToRule('relative'),
-        height: size === 'medium' ? pxToRemWithUnit(52) : pxToRemWithUnit(36),
+        height: addImportantToRule(size === 'medium' ? pxToRemWithUnit(52) : pxToRemWithUnit(36)),
       },
       ...addImportantToEachRule({
         // would be nice to use shared selector like '::slotted([role])'
