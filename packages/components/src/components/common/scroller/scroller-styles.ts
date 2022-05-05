@@ -8,7 +8,7 @@ import type { JssStyle } from 'jss';
 export const getComponentCss = (
   gradientColorScheme: GradientColorTheme,
   theme: ThemeExtendedElectric,
-  prevNextButtonStyle: JssStyle
+  prevNextButtonStyle?: JssStyle
 ): string => {
   const { backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
   const gradientColor = gradientColorScheme === 'surface' ? backgroundSurfaceColor : backgroundColor;
