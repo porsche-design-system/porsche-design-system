@@ -13,9 +13,20 @@ if [[ -z "${GITHUB_TOKEN}" ]]; then
   exit 1
 fi
 
-publish() {
-  echo "task: [$(date)] \"publish\" (${PACKAGE_LOCATION})"
+publish_jfrog() {
+  echo "task: [$(date)] \"publish_jfrog\" (${PACKAGE_LOCATION})"
   result=$(yarn publish --non-interactive --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/ "${PACKAGE_LOCATION}")
+
+  if [[ ${result} == *"Done"* ]]; then
+    return 0 # true
+  else
+    return 1 # false
+  fi
+}
+
+publish_npmjs() {
+  echo "task: [$(date)] \"publish_npmjs\" (${PACKAGE_LOCATION})"
+  result=$(yarn publish --non-interactive "${PACKAGE_LOCATION}")
 
   if [[ ${result} == *"Done"* ]]; then
     return 0 # true
@@ -49,6 +60,7 @@ EOF
 
 SCRIPT_DIR="$(cd $(dirname ${0}) && pwd)"
 source "${SCRIPT_DIR}/../shared/ensure-artifactory-credentials.sh"
+source "${SCRIPT_DIR}/../shared/ensure-npmjs-credentials.sh"
 
 PACKAGE_LOCATION="${1}"
 PACKAGE_JSON="${PACKAGE_LOCATION}/package.json"
@@ -57,7 +69,7 @@ PACKAGE_VERSION=$(grep version "${PACKAGE_JSON}" | head -1 | awk -F= "{ print ${
 GIT_TAG_NAME="${PACKAGE_NAME:23}-v${PACKAGE_VERSION}"
 
 if ! is_version_published; then
-  if publish; then
+  if publish_jfrog && publish_npmjs; then
     add_git_tag
     echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" published 🎉"
   else
