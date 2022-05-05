@@ -1,6 +1,6 @@
 import { getFunctionalComponentPrevNextButtonStyles } from './prev-next-button-styles';
 import { getCss } from '../../../utils';
-import { getThemedColors } from '../../../styles';
+import { addImportantToEachRule, getThemedColors } from '../../../styles';
 import type { ThemeExtendedElectric } from '../../../types';
 import type { GradientColorTheme } from './scroller-utils';
 
@@ -11,7 +11,7 @@ export const getComponentCss = (gradientColorScheme: GradientColorTheme, theme: 
   // TODO: When VRT tests align, change px values to rem
   return getCss({
     '@global': {
-      ':host': { display: 'block', height: 'inherit' },
+      ':host': addImportantToEachRule({ display: 'block', height: 'inherit' }),
     },
     root: {
       position: 'relative',
