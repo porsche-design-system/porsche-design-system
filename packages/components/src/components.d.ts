@@ -679,9 +679,9 @@ export namespace Components {
           * Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: GradientColorTheme;
-        "prevNextButtonJssStyle": JssStyle;
+        "prevNextButtonJssStyle"?: JssStyle;
         /**
-          * If set, it will scroll
+          * Scrolls the scroll area to the left either smooth or immediately
          */
         "scrollToPosition"?: ScrollToPosition;
         /**
@@ -2040,7 +2040,7 @@ declare namespace LocalJSX {
         "gradientColorScheme"?: GradientColorTheme;
         "prevNextButtonJssStyle"?: JssStyle;
         /**
-          * If set, it will scroll
+          * Scrolls the scroll area to the left either smooth or immediately
          */
         "scrollToPosition"?: ScrollToPosition;
         /**
