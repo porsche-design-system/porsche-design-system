@@ -1,6 +1,9 @@
-import type { Styles } from 'jss';
+import type { JssStyle, Styles } from 'jss';
 
-export const getFunctionalComponentPrevNextButtonStyles = (gradientColor: string): Styles => {
+export const getFunctionalComponentPrevNextButtonStyles = (
+  gradientColor: string,
+  prevNextButtonStyle: JssStyle
+): Styles => {
   const gradientColorTransparent = gradientColor + (gradientColor.length === 4 ? '0' : '00');
 
   return {
@@ -28,14 +31,11 @@ export const getFunctionalComponentPrevNextButtonStyles = (gradientColor: string
         visibility: 'hidden', // to make offsetWidth work
       },
     },
-    // TODO: when size is medium we cant fully center it, size can be responsive so transform has to take that into account
     button: {
       position: 'absolute',
-      // TODO: move these styles someplace else
-      // top: hasTabsBarParent ? 'calc(50% - .5em)' : '50%',
-      // transform: hasTabsBarParent ? 'translate3d(0,calc(-50% + .375em),0)' : 'translate3d(0,-50%,0)',
       top: '50%',
       transform: 'translate3d(0,-50%,0)',
+      ...prevNextButtonStyle,
     },
     gradient: {
       position: 'absolute',

@@ -10,6 +10,7 @@ import {
   setAttribute,
   unobserveChildren,
 } from '../../../utils';
+import type { TabChangeEvent, TabSize, TabWeight } from './tabs-bar-utils';
 import {
   getFocusedTabIndex,
   getPrevNextTabIndex,
@@ -19,9 +20,7 @@ import {
 } from './tabs-bar-utils';
 import { getComponentCss } from './tabs-bar-styles';
 import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
-import type { TabChangeEvent, TabSize, TabWeight } from './tabs-bar-utils';
-import type { GradientColorTheme } from '../../common/scroller/scroller-utils';
-import type { Direction, ScrollToPosition } from '../../common/scroller/scroller-utils';
+import type { Direction, GradientColorTheme, ScrollToPosition } from '../../common/scroller/scroller-utils';
 
 @Component({
   tag: 'p-tabs-bar',
@@ -87,7 +86,7 @@ export class TabsBar {
 
     if (!(this.direction === 'next' && this.activeTabIndex === undefined)) {
       // skip scrolling on first render when no activeElementIndex is set
-      this.scrollActiveTabIntoView(true);
+      this.scrollActiveTabIntoView(false);
     }
     // TODO: On Scroller or Host?
     this.addEventListeners();
@@ -122,6 +121,10 @@ export class TabsBar {
         gradientColorScheme={this.gradientColorScheme}
         ref={(el) => (this.scrollerElement = el)}
         scrollToPosition={this.scroll}
+        prevNextButtonJssStyle={{
+          top: 'calc(50% - .5em)',
+          transform: 'translate3d(0,calc(-50% + .375em),0)',
+        }}
       >
         <slot />
         <span class="bar" />
@@ -213,7 +216,7 @@ export class TabsBar {
     e.preventDefault();
   };
 
-  private scrollActiveTabIntoView = (skipAnimation?: boolean): void => {
+  private scrollActiveTabIntoView = (isSmooth = true): void => {
     // scrollAreaElement might be undefined in certain scenarios with framework routing involved
     // where the watcher triggers this function way before componentDidLoad calls defineHTMLElements
     if (!this.scrollAreaElement) {
@@ -228,6 +231,6 @@ export class TabsBar {
       this.prevGradientElement.offsetWidth
     );
 
-    this.scroll = { scrollPosition: scrollActivePosition, skipAnimation };
+    this.scroll = { scrollPosition: scrollActivePosition, isSmooth };
   };
 }

@@ -1,10 +1,11 @@
-import { Component, Element, Prop, State, h, Watch } from '@stencil/core';
+import { Component, Element, Prop, State, Watch, h } from '@stencil/core';
 import { PrevNextButton } from './prev-next-button';
 import { attachComponentCss, getHTMLElement, getHTMLElements, scrollElementTo } from '../../../utils';
 import { getComponentCss } from './scroller-styles';
-import { getScrollPositionAfterPrevNextClick } from './scroller-utils';
 import type { Direction, GradientColorTheme, ScrollToPosition } from './scroller-utils';
+import { getScrollPositionAfterPrevNextClick } from './scroller-utils';
 import type { ThemeExtendedElectric } from '../../../types';
+import type { JssStyle } from 'jss';
 
 @Component({
   tag: 'p-scroller',
@@ -19,9 +20,11 @@ export class Scroller {
   /** Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: GradientColorTheme = 'default';
 
-  // TODO: description
-  /** If set, it will scroll */
+  /** Scrolls the scroll area to the left either smooth or immediately */
   @Prop() public scrollToPosition?: ScrollToPosition;
+
+  // TODO: remove this property from generated readme and types
+  @Prop() public prevNextButtonJssStyle?: JssStyle;
 
   @State() public isPrevHidden = true;
   @State() public isNextHidden = true;
@@ -30,11 +33,11 @@ export class Scroller {
   private scrollAreaElement: HTMLElement;
 
   @Watch('scrollToPosition')
-  public scrollToPositionHandler({ scrollPosition, skipAnimation }: ScrollToPosition): void {
-    if (skipAnimation) {
-      this.scrollAreaElement.scrollLeft = scrollPosition;
-    } else {
+  public scrollToPositionHandler({ scrollPosition, isSmooth }: ScrollToPosition): void {
+    if (isSmooth) {
       scrollElementTo(this.scrollAreaElement, scrollPosition);
+    } else {
+      this.scrollAreaElement.scrollLeft = scrollPosition;
     }
   }
 
@@ -44,7 +47,7 @@ export class Scroller {
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.gradientColorScheme, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.gradientColorScheme, this.theme, this.prevNextButtonJssStyle);
   }
 
   public render(): JSX.Element {

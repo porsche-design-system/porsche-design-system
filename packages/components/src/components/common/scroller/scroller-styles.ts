@@ -1,14 +1,18 @@
 import { getFunctionalComponentPrevNextButtonStyles } from './prev-next-button-styles';
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, getThemedColors } from '../../../styles';
+import { addImportantToEachRule, getThemedColors, pxToRemWithUnit } from '../../../styles';
 import type { ThemeExtendedElectric } from '../../../types';
 import type { GradientColorTheme } from './scroller-utils';
+import type { JssStyle } from 'jss';
 
-export const getComponentCss = (gradientColorScheme: GradientColorTheme, theme: ThemeExtendedElectric): string => {
+export const getComponentCss = (
+  gradientColorScheme: GradientColorTheme,
+  theme: ThemeExtendedElectric,
+  prevNextButtonStyle: JssStyle
+): string => {
   const { backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
   const gradientColor = gradientColorScheme === 'surface' ? backgroundSurfaceColor : backgroundColor;
 
-  // TODO: When VRT tests align, change px values to rem
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
@@ -18,14 +22,14 @@ export const getComponentCss = (gradientColorScheme: GradientColorTheme, theme: 
     },
     root: {
       position: 'relative',
-      margin: '0 -4px',
+      margin: `0 ${pxToRemWithUnit(-4)}`,
       height: 'inherit',
     },
     'scroll-area': {
       position: 'relative',
       height: 'inherit',
       boxSizing: 'border-box',
-      padding: '4px',
+      padding: pxToRemWithUnit(4),
       overflowY: 'hidden',
       overflowX: 'scroll',
       whiteSpace: 'nowrap',
@@ -48,7 +52,7 @@ export const getComponentCss = (gradientColorScheme: GradientColorTheme, theme: 
       position: 'absolute',
       top: 0,
       height: '100%',
-      width: '1px',
+      width: pxToRemWithUnit(1),
       visibility: 'hidden',
       '&:first-of-type': {
         left: 0,
@@ -57,6 +61,6 @@ export const getComponentCss = (gradientColorScheme: GradientColorTheme, theme: 
         right: 0,
       },
     },
-    ...getFunctionalComponentPrevNextButtonStyles(gradientColor),
+    ...getFunctionalComponentPrevNextButtonStyles(gradientColor, prevNextButtonStyle),
   });
 };
