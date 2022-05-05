@@ -34,16 +34,6 @@
     "mixins"
   ],
   "homepage": "https://designsystem.porsche.com",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/porscheui/porsche-design-system.git"
-  },
-  "bugs": {
-    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
-  },
-  "publishConfig": {
-    "@porsche-design-system:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
-  },
   "scripts": {
     "build": "yarn clean:build && yarn build:buildTypography && yarn build:bundleLib && yarn build:copyScss && yarn build:createGlobalCSS",
     "build:buildTypography": "ts-node scripts/buildTypography.ts",

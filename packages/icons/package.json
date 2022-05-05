@@ -25,13 +25,6 @@
     "icons"
   ],
   "homepage": "https://icons.porsche.com",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/porscheui/porsche-design-system.git"
-  },
-  "bugs": {
-    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
-  },
   "scripts": {
     "build": "yarn build:icons && yarn build:lib && yarn build:database",
     "build:icons": "ts-node --project tsconfig.json scripts/build.ts",

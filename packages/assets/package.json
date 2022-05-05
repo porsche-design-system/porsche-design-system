@@ -25,13 +25,6 @@
     "assets"
   ],
   "homepage": "https://designsystem.porsche.com",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/porscheui/porsche-design-system.git"
-  },
-  "bugs": {
-    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
-  },
   "scripts": {
     "start": "yarn build && node ./bin/serve-cdn.js",
     "build": "yarn clean:build && yarn build:bin && yarn build:manifest && yarn build:copyAssets && yarn build:preparePackage",
