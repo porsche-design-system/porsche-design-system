@@ -14,17 +14,7 @@ const GRAPHQL_ENDPOINT = 'https://porsche-brand.frontify.com/graphql';
 /**
  * Bearer Token, MUST have scopes basic:read and basic:write
  */
-const BEARER_TOKEN = '4DKD9HfwtnGb7VWjv9aCKA9TCCxHDsYE3GNwagTp'; // TODO: replace
-
-type GraphQLConfiguration = {
-  endpoint: string;
-  bearerToken: string;
-};
-
-const config: GraphQLConfiguration = {
-  endpoint: GRAPHQL_ENDPOINT,
-  bearerToken: BEARER_TOKEN,
-};
+const BEARER_TOKEN = process.env.FRONTIFY_TOKEN || 'REPLACE_LOCAL_TOKEN';
 
 /**
  * Library (or Workspace Project) to upload Assets into.
@@ -35,6 +25,16 @@ const config: GraphQLConfiguration = {
  * Format: ey
  */
 const LIBRARY_OR_WORKSPACE_ID = 'eyJpZGVudGlmaWVyIjo0NTYsInR5cGUiOiJwcm9qZWN0In0=';
+
+type GraphQLConfiguration = {
+  endpoint: string;
+  bearerToken: string;
+};
+
+const config: GraphQLConfiguration = {
+  endpoint: GRAPHQL_ENDPOINT,
+  bearerToken: BEARER_TOKEN,
+};
 
 /**
  * Chunk size for uploading given in bytes
@@ -239,7 +239,7 @@ async function uploadFile(filePath: string): Promise<{ skipped: boolean }> {
 }
 
 (async function () {
-  const iconsDistFolder = path.resolve(__dirname, '../dist/icons');
+  const iconsDistFolder = path.resolve(__dirname, '../cdn/icons');
   const icons = globby.sync(iconsDistFolder + '/*.svg');
   console.log('Icons total:   ', icons.length);
 
