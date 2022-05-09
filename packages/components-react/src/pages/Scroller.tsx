@@ -51,8 +51,6 @@ export const ScrollerPage = (): JSX.Element => {
           <a href="#">Anchor 7</a>
         </PScroller>
       </div>
-
-      </div>
     </>
   );
 };
