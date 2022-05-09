@@ -13,7 +13,7 @@ const GRAPHQL_ENDPOINT = 'https://porsche-brand.frontify.com/graphql';
 /**
  * Bearer Token, MUST have scopes basic:read and basic:write
  */
-const BEARER_TOKEN = '4DKD9HfwtnGb7VWjv9aCKA9TCCxHDsYE3GNwagTp';
+const BEARER_TOKEN = '4DKD9HfwtnGb7VWjv9aCKA9TCCxHDsYE3GNwagTp'; // TODO: replace
 
 type GraphQLConfiguration = {
   endpoint: string;
@@ -106,7 +106,16 @@ async function uploadBinaryFile(filePath: string, urls: string[]): Promise<void>
 
 async function createAsset<R = { createAsset: { job: { assetId: string } } }>(
   config: GraphQLConfiguration,
-  input: { projectId: string; fileId: string; title: string; externalId?: string }
+  // https://developer.frontify.com/d/XFPCrGNrXQQM/graphql-api#/deep-dive/upload-file-create-asset/3-use-the-file
+  input: {
+    projectId: string;
+    fileId: string;
+    title: string;
+    externalId?: string;
+    description?: string;
+    tags?: { [key: string]: string }[];
+    directory?: string;
+  }
 ): Promise<R> {
   console.log('--- createAsset');
   return await graphQl<R>(
@@ -122,21 +131,97 @@ async function createAsset<R = { createAsset: { job: { assetId: string } } }>(
   );
 }
 
+type Asset = {
+  id: string;
+  externalId: string;
+  createdAt: Date;
+  modifiedAt: Date;
+};
+
+type QueryResult = {
+  total: number;
+  items: Asset[];
+};
+
+async function getAssetsByExternalId<R = QueryResult>(libraryId: string, externalId: string): Promise<R> {
+  const {
+    library: { assets },
+  } = await graphQl<{ library: { assets: R } }>(
+    config,
+    `query ($libraryId: ID!, $externalId: ID!) {
+        library(id: $libraryId) {
+            assets(query: { externalId: $externalId }) {
+                total
+                items {
+                    id
+                    externalId
+                    createdAt
+                    modifiedAt
+                    tags {value}
+                }
+            }
+        }
+    }`,
+    { libraryId, externalId }
+  );
+
+  return assets;
+}
+
+async function getAssetsByTitle<R = QueryResult>(libraryId: string, title: string): Promise<R> {
+  const {
+    library: { assets },
+  } = await graphQl<{ library: { assets: R } }>(
+    config,
+    `query ($libraryId: ID!, $  title: String!) {
+        library(id: $libraryId) {
+            assets(query: { search: $title }) {
+                total
+                items {
+                    id
+                    externalId
+                    createdAt
+                    modifiedAt
+                    tags {value}
+                }
+            }
+        }
+    }`,
+    { libraryId, title }
+  );
+
+  return assets;
+}
+
 (async function () {
   const filePath = path.resolve(__dirname, '../dist/icons/360.min.5f2fcac02969bc425484fe8d80e5a1c9.svg');
   const fileName = path.basename(filePath);
   const [title] = fileName.split('.');
   const { size: fileSizeInBytes } = fs.statSync(filePath);
 
-  const { id: fileId, urls } = await initUpload(config, fileName, fileSizeInBytes);
-  await uploadBinaryFile(filePath, urls);
+  const assetsByExternalId = await getAssetsByExternalId(LIBRARY_OR_WORKSPACE_ID, fileName);
+  const assetAlreadyExists = assetsByExternalId.total === 1;
 
-  const asset = await createAsset(config, {
-    projectId: LIBRARY_OR_WORKSPACE_ID,
-    fileId,
-    title,
-    // externalId: '(optional) External ID',
-  });
+  if (assetAlreadyExists) {
+    console.log('asset already exists:', title);
+  } else {
+    // search by title in case content based hash changed
+    const assetsByTitle = await getAssetsByTitle(LIBRARY_OR_WORKSPACE_ID, title);
+    if (assetsByTitle.total) {
+      console.log('need to delete', assetsByTitle.total, assetsByTitle.items);
+    }
 
-  console.log(asset);
+    console.log('uploading:', title);
+    const { id: fileId, urls } = await initUpload(config, fileName, fileSizeInBytes);
+    await uploadBinaryFile(filePath, urls);
+
+    const asset = await createAsset(config, {
+      projectId: LIBRARY_OR_WORKSPACE_ID,
+      fileId,
+      title,
+      externalId: fileName,
+    });
+
+    console.log('uploaded:', title);
+  }
 })();
