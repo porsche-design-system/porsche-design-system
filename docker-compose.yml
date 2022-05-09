@@ -29,6 +29,7 @@ services:
       - CDN_SSH_KEY
       - UXPIN_TOKEN_DEV
       - UXPIN_TOKEN_LATEST
+      - FRONTIFY_TOKEN
       - CI
     volumes:
       - ./:/opt/porsche-design-system-app:cached

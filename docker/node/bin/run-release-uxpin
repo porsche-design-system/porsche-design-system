@@ -45,7 +45,7 @@ publish() {
     echo "Adding param: ${pushParam}"
 
     result=$(./node_modules/.bin/uxpin-merge push --token ${uxpin_token} ${pushParam})
-    echo $result
+    echo "$result"
   popd
 
   if [[ ${result} == *"Library bundle uploaded successfully!"* ]]; then
