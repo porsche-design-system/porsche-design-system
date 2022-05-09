@@ -4,8 +4,7 @@ import { attachComponentCss, getHTMLElement, getHTMLElements, scrollElementTo } 
 import { getComponentCss } from './scroller-styles';
 import type { Direction, GradientColorTheme, ScrollToPosition } from './scroller-utils';
 import { getScrollPositionAfterPrevNextClick } from './scroller-utils';
-import type { ThemeExtendedElectric } from '../../../types';
-import type { JssStyle } from 'jss';
+import type { ThemeExtendedElectric, JssStyle } from '../../../types';
 
 @Component({
   tag: 'p-scroller',
