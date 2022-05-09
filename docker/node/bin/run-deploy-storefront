@@ -66,7 +66,8 @@ upload_s3() {
 update_algolia_index(){
   echo "task: [$(date)] \"update_algolia_index\" (${1})"
   result=$(P_CURRENT_BRANCH=${1} yarn updateAlgolia)
-  echo $result | sed "s/.*updateAlgoliaIndex\\.ts' //g"
+  # clean console output
+  echo "$result" | sed -E "s/.*(ts-node|yarn).*//g"
 }
 
 purge_cloudfront() {

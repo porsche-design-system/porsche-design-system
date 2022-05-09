@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+if [[ -z "${FRONTIFY_TOKEN}" ]]; then
+  echo "Please provide the \$FRONTIFY_TOKEN environment variable."
+  exit 1
+fi
+
+deploy() {
+  echo "task: [$(date)] \"deploy\""
+  pushd "./packages/assets"
+    result=$(FRONTIFY_TOKEN=${FRONTIFY_TOKEN} yarn deployFrontify)
+    # clean console output
+    echo "$result" | sed -E "s/.*(ts-node|yarn).*//g"
+  popd
+
+  if [[ ${result} == *"Icons uploaded:"* ]]; then
+    return 0 # true
+  else
+    return 1 # false
+  fi
+}
+
+SCRIPT_DIR="$(cd $(dirname ${0}) && pwd)"
+
+if deploy; then
+  echo "Deployed assets to frontify 🎉"
+else
+  echo "Deploying assets to frontify failed 😢"
+  exit 1
+fi
