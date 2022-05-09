@@ -51,8 +51,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <a [href]="'#'">Anchor 7</a>
       </p-scroller>
     </div>
-
-    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
