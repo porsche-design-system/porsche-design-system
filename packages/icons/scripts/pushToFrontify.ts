@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { createReadStream, statSync } from 'fs';
+import * as fs from 'fs';
 import * as path from 'path';
 
 /**
@@ -14,6 +14,16 @@ const GRAPHQL_ENDPOINT = 'https://porsche-brand.frontify.com/graphql';
  * Bearer Token, MUST have scopes basic:read and basic:write
  */
 const BEARER_TOKEN = '4DKD9HfwtnGb7VWjv9aCKA9TCCxHDsYE3GNwagTp';
+
+type GraphQLConfiguration = {
+  endpoint: string;
+  bearerToken: string;
+};
+
+const config: GraphQLConfiguration = {
+  endpoint: GRAPHQL_ENDPOINT,
+  bearerToken: BEARER_TOKEN,
+};
 
 /**
  * Library (or Workspace Project) to upload Assets into.
@@ -31,11 +41,6 @@ const LIBRARY_OR_WORKSPACE_ID = 'eyJpZGVudGlmaWVyIjo0NTYsInR5cGUiOiJwcm9qZWN0In0
  */
 const CHUNK_SIZE_IN_BYTES = 250 * 1024 * 1024;
 
-type GraphQLConfiguration = {
-  endpoint: string;
-  bearerToken: string;
-};
-
 async function graphQl<R = any>(config: GraphQLConfiguration, query: string, variables?: object): Promise<R> {
   const response = await fetch(config.endpoint, {
     method: 'POST',
@@ -49,27 +54,24 @@ async function graphQl<R = any>(config: GraphQLConfiguration, query: string, var
     body: JSON.stringify({ query, variables }),
   });
 
-  const json = await response.json();
+  const json = (await response.json()) as { data: R; errors?: Error[] };
 
-  if (json['errors']) {
-    const messageParts = [
-      'Query failed with following errors:',
-      ...json['errors'].map((error: any) => ` - ${error.message}`),
-    ];
+  if (json.errors) {
+    const messageParts = ['Query failed with following errors:', ...json.errors.map((error) => ` - ${error.message}`)];
     throw Error(messageParts.join('\n'));
   }
 
-  return json['data'];
+  return json.data;
 }
 
-async function initUpload(
+async function initUpload<R = { id: string; urls: string[] }>(
   config: GraphQLConfiguration,
   filenameWithExtension: string,
   fileSize: number,
   chunkSize: number = CHUNK_SIZE_IN_BYTES
-): Promise<{ id: string; urls: Array<string> }> {
+): Promise<R> {
   console.log('--- initUpload');
-  const data = await graphQl<{ uploadFile: { id: string; urls: Array<string> } }>(
+  const data = await graphQl<{ uploadFile: R }>(
     config,
     `mutation ($input: UploadFileInput!) {
         uploadFile(input: $input) {
@@ -83,10 +85,10 @@ async function initUpload(
   return data.uploadFile;
 }
 
-async function uploadBinaryFile(realPath: string, urls: Array<string>) {
+async function uploadBinaryFile(filePath: string, urls: string[]): Promise<void> {
   console.log('--- uploadBinaryFile');
-  const readFileStream = createReadStream(realPath, { highWaterMark: CHUNK_SIZE_IN_BYTES });
-  const { size } = statSync(realPath);
+  const readFileStream = fs.createReadStream(filePath, { highWaterMark: CHUNK_SIZE_IN_BYTES });
+  const { size } = fs.statSync(filePath);
 
   const totalChunks = Math.ceil(size / CHUNK_SIZE_IN_BYTES);
 
@@ -102,12 +104,12 @@ async function uploadBinaryFile(realPath: string, urls: Array<string>) {
   }
 }
 
-async function createAsset(
+async function createAsset<R = { createAsset: { job: { assetId: string } } }>(
   config: GraphQLConfiguration,
   input: { projectId: string; fileId: string; title: string; externalId?: string }
-): Promise<any> {
+): Promise<R> {
   console.log('--- createAsset');
-  return await graphQl<{ createAsset: { job: { assetId: string } } }>(
+  return await graphQl<R>(
     config,
     `mutation ($input: CreateAssetInput!) {
         createAsset(input: $input) {
@@ -121,14 +123,10 @@ async function createAsset(
 }
 
 (async function () {
-  const config: GraphQLConfiguration = {
-    endpoint: GRAPHQL_ENDPOINT,
-    bearerToken: BEARER_TOKEN,
-  };
   const filePath = path.resolve(__dirname, '../dist/icons/360.min.5f2fcac02969bc425484fe8d80e5a1c9.svg');
   const fileName = path.basename(filePath);
   const [title] = fileName.split('.');
-  const { size: fileSizeInBytes } = statSync(filePath);
+  const { size: fileSizeInBytes } = fs.statSync(filePath);
 
   const { id: fileId, urls } = await initUpload(config, fileName, fileSizeInBytes);
   await uploadBinaryFile(filePath, urls);
