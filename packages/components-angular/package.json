@@ -47,6 +47,7 @@
     "@porsche-design-system/assets": "4.0.0",
     "@porsche-design-system/shared": "0.0.0",
     "@types/node": "^17.0.31",
+    "angular-imask": "6.4.2",
     "concurrently": "^7.1.0",
     "jest-preset-angular": "^11.1.2",
     "local-web-server": "^5.2.0",
