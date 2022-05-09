@@ -121,9 +121,20 @@ If using **slotted contents** to serve form elements, make sure to provide the r
 1. Add corresponding `aria-labelledby="some-label-id"` to the `input` element which points to the `label` ID
 1. Add corresponding `aria-describedby="some-description-id some-message-id"` to the `input` element which points to both, the `description` ID (if set) and the `message` ID when the (error/success) message appears 
 
+
+## Masked Input
+If you want use localized input masks to improve the user experience we recommend using <a href="https://imask.js.org/" target="_blank">iMask</a>. Make sure to handle potential drawbacks such as auto-formatting / -correction which can led to user frustration, default styling which appears like a default value rather than a mask etc.
+
+<p-inline-notification heading="Important note" state="warning" persistent="true">
+  Be aware that you won't be able to take advantage of the native behaviour of type "date" when using an input mask. E.g. a date-picker will not be provided by your browser once the input is of type "text" rather than of type "date". 
+</p-inline-notification>
+
+<Playground :markup="maskedInput" :frameworkMarkup="codeExample" :config="config"></Playground>
+
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { getTextFieldWrapperCodeSamples } from "@porsche-design-system/shared"; 
 
 @Component
 export default class Code extends Vue {
@@ -133,6 +144,8 @@ export default class Code extends Vue {
   type = 'text';
   state = 'error';
   unitPosition = 'prefix';
+
+  codeExample = getTextFieldWrapperCodeSamples();
 
   get basic() {
     const labelAttr = ` hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
@@ -210,5 +223,45 @@ export default class Code extends Vue {
   <input type="text" name="some-name" aria-labelledby="some-label-id" aria-describedby="some-description-id some-message-id" />
   <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
 </p-text-field-wrapper>`;
+
+maskedInput = `<p-text-field-wrapper>
+  <input type="text" id="date-mask" />
+</p-text-field-wrapper>`;
 }
+
+  const callback = () => {
+    customElements.whenDefined('p-text-field-wrapper').then(() => {
+      IMask(document.getElementById('date-mask'), {
+        lazy: false,
+        mask: 'MM/DD/YYYY',
+        blocks: {
+          YYYY: {
+            mask: IMask.MaskedRange,
+            from: 1900,
+            to: 2100,
+            placeholderChar: 'Y',
+          },
+          MM: {
+            mask: IMask.MaskedRange,
+            from: 1,
+            to: 12,
+            placeholderChar: 'M',
+          },
+          DD: {
+            mask: IMask.MaskedRange,
+            from: 1,
+            to: 31,
+            placeholderChar: 'D',
+          },
+        },
+      });
+    });
+  };
+  const head = document.querySelector('head');
+  const js = document.createElement('script');
+  js.src = 'https://unpkg.com/imask';
+  js.onreadystatechange = callback;
+  js.onload = callback;
+
+  head.appendChild(js);
 </script>
