@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
 import * as fs from 'fs';
 import * as path from 'path';
+import * as globby from 'globby';
 
 /**
  * Enter the full URL for your Frontify GraphQL Instance
@@ -70,7 +71,6 @@ async function initUpload<R = { id: string; urls: string[] }>(
   fileSize: number,
   chunkSize: number = CHUNK_SIZE_IN_BYTES
 ): Promise<R> {
-  console.log('--- initUpload');
   const data = await graphQl<{ uploadFile: R }>(
     config,
     `mutation ($input: UploadFileInput!) {
@@ -86,7 +86,6 @@ async function initUpload<R = { id: string; urls: string[] }>(
 }
 
 async function uploadBinaryFile(filePath: string, urls: string[]): Promise<void> {
-  console.log('--- uploadBinaryFile');
   const readFileStream = fs.createReadStream(filePath, { highWaterMark: CHUNK_SIZE_IN_BYTES });
   const { size } = fs.statSync(filePath);
 
@@ -117,7 +116,6 @@ async function createAsset<R = { createAsset: { job: { assetId: string } } }>(
     directory?: string;
   }
 ): Promise<R> {
-  console.log('--- createAsset');
   return await graphQl<R>(
     config,
     `mutation ($input: CreateAssetInput!) {
@@ -193,8 +191,7 @@ async function getAssetsByTitle<R = QueryResult>(libraryId: string, title: strin
   return assets;
 }
 
-(async function () {
-  const filePath = path.resolve(__dirname, '../dist/icons/360.min.5f2fcac02969bc425484fe8d80e5a1c9.svg');
+async function uploadFile(filePath: string): Promise<{ skipped: boolean }> {
   const fileName = path.basename(filePath);
   const [title] = fileName.split('.');
   const { size: fileSizeInBytes } = fs.statSync(filePath);
@@ -204,6 +201,7 @@ async function getAssetsByTitle<R = QueryResult>(libraryId: string, title: strin
 
   if (assetAlreadyExists) {
     console.log('asset already exists:', title);
+    return { skipped: true };
   } else {
     // search by title in case content based hash changed
     const assetsByTitle = await getAssetsByTitle(LIBRARY_OR_WORKSPACE_ID, title);
@@ -211,7 +209,6 @@ async function getAssetsByTitle<R = QueryResult>(libraryId: string, title: strin
       console.log('need to delete', assetsByTitle.total, assetsByTitle.items);
     }
 
-    console.log('uploading:', title);
     const { id: fileId, urls } = await initUpload(config, fileName, fileSizeInBytes);
     await uploadBinaryFile(filePath, urls);
 
@@ -223,5 +220,19 @@ async function getAssetsByTitle<R = QueryResult>(libraryId: string, title: strin
     });
 
     console.log('uploaded:', title);
+    return { skipped: false };
   }
+}
+
+(async function () {
+  const iconsDistFolder = path.resolve(__dirname, '../dist/icons');
+  const icons = globby.sync(iconsDistFolder + '/*.svg');
+  console.log('Amount icons:', icons.length);
+
+  const result = await Promise.all(icons.map(uploadFile));
+  const amountSkippedIcons = result.filter((x) => x.skipped).length;
+  const amountUploadedIcons = result.length - amountSkippedIcons;
+
+  console.log('Uploaded icons:', amountUploadedIcons);
+  console.log('Skipped icons:', amountSkippedIcons);
 })();
