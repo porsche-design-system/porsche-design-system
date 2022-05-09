@@ -42,7 +42,7 @@ const config: GraphQLConfiguration = {
  */
 const CHUNK_SIZE_IN_BYTES = 250 * 1024 * 1024;
 
-async function graphQl<R = any>(config: GraphQLConfiguration, query: string, variables?: object): Promise<R> {
+async function graphQl<R extends object>(config: GraphQLConfiguration, query: string, variables?: object): Promise<R> {
   const response = await fetch(config.endpoint, {
     method: 'POST',
     headers: {
@@ -65,13 +65,13 @@ async function graphQl<R = any>(config: GraphQLConfiguration, query: string, var
   return json.data;
 }
 
-async function initUpload<R = { id: string; urls: string[] }>(
+async function initUpload(
   config: GraphQLConfiguration,
   filenameWithExtension: string,
   fileSize: number,
   chunkSize: number = CHUNK_SIZE_IN_BYTES
-): Promise<R> {
-  const data = await graphQl<{ uploadFile: R }>(
+): Promise<{ id: string; urls: string[] }> {
+  const { uploadFile } = await graphQl<{ uploadFile: { id: string; urls: string[] } }>(
     config,
     `mutation ($input: UploadFileInput!) {
         uploadFile(input: $input) {
@@ -82,14 +82,13 @@ async function initUpload<R = { id: string; urls: string[] }>(
     { input: { filename: filenameWithExtension, size: fileSize, chunkSize } }
   );
 
-  return data.uploadFile;
+  return uploadFile;
 }
 
 async function uploadBinaryFile(filePath: string, urls: string[]): Promise<void> {
   const readFileStream = fs.createReadStream(filePath, { highWaterMark: CHUNK_SIZE_IN_BYTES });
-  const { size } = fs.statSync(filePath);
-
-  const totalChunks = Math.ceil(size / CHUNK_SIZE_IN_BYTES);
+  // const { size } = fs.statSync(filePath);
+  // const totalChunks = Math.ceil(size / CHUNK_SIZE_IN_BYTES);
 
   for await (const data of readFileStream) {
     const url = urls.shift();
@@ -103,7 +102,7 @@ async function uploadBinaryFile(filePath: string, urls: string[]): Promise<void>
   }
 }
 
-async function createAsset<R = { createAsset: { job: { assetId: string } } }>(
+async function createAsset(
   config: GraphQLConfiguration,
   // https://developer.frontify.com/d/XFPCrGNrXQQM/graphql-api#/deep-dive/upload-file-create-asset/3-use-the-file
   input: {
@@ -115,8 +114,12 @@ async function createAsset<R = { createAsset: { job: { assetId: string } } }>(
     tags?: { [key: string]: string }[];
     directory?: string;
   }
-): Promise<R> {
-  return await graphQl<R>(
+): Promise<string> {
+  const {
+    createAsset: {
+      job: { assetId },
+    },
+  } = await graphQl<{ createAsset: { job: { assetId: string } } }>(
     config,
     `mutation ($input: CreateAssetInput!) {
         createAsset(input: $input) {
@@ -127,6 +130,8 @@ async function createAsset<R = { createAsset: { job: { assetId: string } } }>(
     }`,
     { input }
   );
+
+  return assetId;
 }
 
 type Asset = {
@@ -141,10 +146,10 @@ type QueryResult = {
   items: Asset[];
 };
 
-async function getAssetsByExternalId<R = QueryResult>(libraryId: string, externalId: string): Promise<R> {
+async function getAssetsByExternalId(libraryId: string, externalId: string): Promise<QueryResult> {
   const {
     library: { assets },
-  } = await graphQl<{ library: { assets: R } }>(
+  } = await graphQl<{ library: { assets: QueryResult } }>(
     config,
     `query ($libraryId: ID!, $externalId: ID!) {
         library(id: $libraryId) {
@@ -166,12 +171,12 @@ async function getAssetsByExternalId<R = QueryResult>(libraryId: string, externa
   return assets;
 }
 
-async function getAssetsByTitle<R = QueryResult>(libraryId: string, title: string): Promise<R> {
+async function getAssetsByTitle(libraryId: string, title: string): Promise<QueryResult> {
   const {
     library: { assets },
-  } = await graphQl<{ library: { assets: R } }>(
+  } = await graphQl<{ library: { assets: QueryResult } }>(
     config,
-    `query ($libraryId: ID!, $  title: String!) {
+    `query ($libraryId: ID!, $title: String!) {
         library(id: $libraryId) {
             assets(query: { search: $title }) {
                 total
@@ -191,8 +196,8 @@ async function getAssetsByTitle<R = QueryResult>(libraryId: string, title: strin
   return assets;
 }
 
-async function deleteAsset<R = any>(assetId: string): Promise<R> {
-  return await graphQl<R>(
+async function deleteAsset(assetId: string): Promise<any> {
+  return await graphQl(
     config,
     `mutation ($input: DeleteAssetInput!) {
         deleteAsset(input: $input) {
@@ -226,7 +231,7 @@ async function uploadFile(filePath: string): Promise<{ skipped: boolean }> {
     const { id: fileId, urls } = await initUpload(config, fileName, fileSizeInBytes);
     await uploadBinaryFile(filePath, urls);
 
-    const asset = await createAsset(config, {
+    const assetId = await createAsset(config, {
       projectId: LIBRARY_OR_WORKSPACE_ID,
       fileId,
       title,
