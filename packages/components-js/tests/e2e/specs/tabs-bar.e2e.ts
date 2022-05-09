@@ -650,7 +650,7 @@ describe('tabs-bar', () => {
 
   describe('lifecycle', () => {
     it('should work without unnecessary round trips on init', async () => {
-      await initTabsBar({ amount: 3, tag: 'a', activeTabIndex: 0 });
+      await initTabsBar({ amount: 3, tag: 'a' });
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidLoad['p-tabs-bar'], 'componentDidLoad: p-tabs-bar').toBe(1);
@@ -664,7 +664,7 @@ describe('tabs-bar', () => {
     });
 
     it('should work without unnecessary round trips on prop change', async () => {
-      await initTabsBar({ amount: 3, tag: 'button', activeTabIndex: 0 });
+      await initTabsBar({ amount: 3, tag: 'button' });
       const host = await getHost();
 
       await setProperty(host, 'activeTabIndex', 2);
@@ -672,11 +672,11 @@ describe('tabs-bar', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(1);
+      expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(2);
       expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
 
       expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
-      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
     });
   });
 

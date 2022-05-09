@@ -12,7 +12,6 @@ import {
 } from '../helpers';
 
 export const CSS_ANIMATION_DURATION = 1000;
-export const FOCUS_PADDING = 8;
 const SCROLL_PERCENTAGE = 0.2;
 
 describe('scroller', () => {
