@@ -78,7 +78,7 @@ export const FONTS_MANIFEST = ${JSON.stringify(manifest)};`
 
 (async (): Promise<void> => {
   const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_FONTS}'`;
-  const files = (await globby('./src/**/*.@(woff|woff2)')).sort();
+  const files = globby.sync('./src/**/*.@(woff|woff2)').sort();
 
   await createManifestAndCopyFonts(cdn, files).catch((e) => {
     console.error(e);
