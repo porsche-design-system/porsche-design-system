@@ -39,6 +39,15 @@ Unfortunately there's no stable way of using it with Node or TS-Node.
 
 ---
 
+## node-fetch
+`node-fetch` also uses *ESM* builds since version 3.
+* [Upgrade Guide](https://github.com/node-fetch/node-fetch/blob/main/docs/v3-UPGRADE-GUIDE.md)
+
+### Affected dependencies:
+* `node-fetch`
+
+---
+
 ## Jest
 
 Since v28 just came out, typings like `@types/jest-environment-puppeteer` but also `ts-jest` aren't quite there, yet.
