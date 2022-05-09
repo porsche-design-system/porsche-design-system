@@ -179,7 +179,7 @@ export class TabsBar {
 
   private onKeydown = (e: KeyboardEvent): void => {
     let upcomingFocusedTabIndex: number;
-    const focusedTabIndex = this.hasPTabsParent ? this.activeTabIndex : getFocusedTabIndex(this.tabElements);
+    const focusedTabIndex = this.hasPTabsParent ? this.activeTabIndex || 0 : getFocusedTabIndex(this.tabElements);
 
     switch (e.key) {
       case 'ArrowLeft':
