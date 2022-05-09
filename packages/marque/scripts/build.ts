@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
-import globby from 'globby';
+import * as globby from 'globby';
 import { paramCase, camelCase } from 'change-case';
 import { CDN_BASE_URL_DYNAMIC, CDN_BASE_PATH_MARQUE, CDN_KEY_TYPE_DEFINITION } from '../../../cdn.config';
 
