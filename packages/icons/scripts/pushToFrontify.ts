@@ -191,6 +191,20 @@ async function getAssetsByTitle<R = QueryResult>(libraryId: string, title: strin
   return assets;
 }
 
+async function deleteAsset<R = any>(assetId: string): Promise<R> {
+  return await graphQl<R>(
+    config,
+    `mutation ($input: DeleteAssetInput!) {
+        deleteAsset(input: $input) {
+            asset {
+                id
+            }
+        }
+    }`,
+    { input: { id: assetId } }
+  );
+}
+
 async function uploadFile(filePath: string): Promise<{ skipped: boolean }> {
   const fileName = path.basename(filePath);
   const [title] = fileName.split('.');
@@ -200,13 +214,13 @@ async function uploadFile(filePath: string): Promise<{ skipped: boolean }> {
   const assetAlreadyExists = assetsByExternalId.total === 1;
 
   if (assetAlreadyExists) {
-    console.log('asset already exists:', title);
     return { skipped: true };
   } else {
     // search by title in case content based hash changed
     const assetsByTitle = await getAssetsByTitle(LIBRARY_OR_WORKSPACE_ID, title);
     if (assetsByTitle.total) {
-      console.log('need to delete', assetsByTitle.total, assetsByTitle.items);
+      const deleteAssetResults = await Promise.all(assetsByTitle.items.map((item) => deleteAsset(item.id)));
+      console.log('Deleted icons:', deleteAssetResults.length);
     }
 
     const { id: fileId, urls } = await initUpload(config, fileName, fileSizeInBytes);
@@ -219,7 +233,7 @@ async function uploadFile(filePath: string): Promise<{ skipped: boolean }> {
       externalId: fileName,
     });
 
-    console.log('uploaded:', title);
+    console.log('Uploaded:', title);
     return { skipped: false };
   }
 }
@@ -227,12 +241,12 @@ async function uploadFile(filePath: string): Promise<{ skipped: boolean }> {
 (async function () {
   const iconsDistFolder = path.resolve(__dirname, '../dist/icons');
   const icons = globby.sync(iconsDistFolder + '/*.svg');
-  console.log('Amount icons:', icons.length);
+  console.log('Icons total:   ', icons.length);
 
   const result = await Promise.all(icons.map(uploadFile));
   const amountSkippedIcons = result.filter((x) => x.skipped).length;
   const amountUploadedIcons = result.length - amountSkippedIcons;
 
-  console.log('Uploaded icons:', amountUploadedIcons);
-  console.log('Skipped icons:', amountSkippedIcons);
+  console.log('Icons skipped: ', amountSkippedIcons);
+  console.log('Icons uploaded:', amountUploadedIcons);
 })();
