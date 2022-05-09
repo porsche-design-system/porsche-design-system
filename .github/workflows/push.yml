@@ -896,8 +896,8 @@ jobs:
           UXPIN_TOKEN_LATEST: ${{ secrets.UXPIN_TOKEN_LATEST }}
         with:
           entrypoint: run-release-uxpin
-  deploy-frontify:
-    name: 'Deploy Frontify'
+  frontify-deployment:
+    name: 'Frontify Deployment'
     needs:
       - assets-deployment
     runs-on: ubuntu-latest
@@ -930,7 +930,7 @@ jobs:
         with:
           name: assets-build
           path: ./packages/assets/dist
-      - name: 'Publish Frontify'
+      - name: 'Deploy Frontify'
         uses: ./.github/actions/docker-run
         env:
           FRONTIFY_TOKEN: ${{ secrets.FRONTIFY_TOKEN }}
