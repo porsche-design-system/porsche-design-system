@@ -39,12 +39,14 @@
     "build:lib:module": "tsc --build tsconfig.lib.module.json",
     "build:lib:umd": "tsc --build tsconfig.lib.umd.json",
     "build:database": "ts-node --project tsconfig.json scripts/database.ts",
+    "pushToFrontify": "ts-node --project tsconfig.json scripts/pushToFrontify.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.5",
+    "@types/node-fetch": "^2.6.1",
     "@types/svgo": "^2.6.3",
     "change-case": "^4.1.2",
     "globby": "^11.0.4",
