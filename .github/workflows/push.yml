@@ -928,8 +928,8 @@ jobs:
       - name: 'Restore Assets Build Artifact'
         uses: actions/download-artifact@v2
         with:
-          name: assets-build
-          path: ./packages/assets/dist
+          name: assets-cdn
+          path: ./packages/assets/cdn
       - name: 'Deploy Frontify'
         uses: ./.github/actions/docker-run
         env:
