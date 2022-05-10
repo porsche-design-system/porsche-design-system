@@ -2,9 +2,9 @@ import { Component, Element, Prop, State, Watch, h } from '@stencil/core';
 import { PrevNextButton } from './prev-next-button';
 import { attachComponentCss, getHTMLElement, getHTMLElements, scrollElementTo } from '../../../utils';
 import { getComponentCss } from './scroller-styles';
-import type { Direction, GradientColorTheme, ScrollToPosition } from './scroller-utils';
+import type { Direction, GradientColorTheme, ScrollToPosition, PrevNextButtonJssStyle } from './scroller-utils';
 import { getScrollPositionAfterPrevNextClick } from './scroller-utils';
-import type { ThemeExtendedElectric, JssStyle } from '../../../types';
+import type { ThemeExtendedElectric } from '../../../types';
 
 @Component({
   tag: 'p-scroller',
@@ -23,7 +23,7 @@ export class Scroller {
   @Prop() public scrollToPosition?: ScrollToPosition;
 
   // TODO: remove this property from generated readme and types
-  @Prop() public prevNextButtonJssStyle?: JssStyle;
+  @Prop() public prevNextButtonJssStyle?: PrevNextButtonJssStyle;
 
   @State() public isPrevHidden = true;
   @State() public isNextHidden = true;
