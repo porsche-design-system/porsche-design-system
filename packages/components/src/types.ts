@@ -54,5 +54,3 @@ import type { AriaAttributes } from './aria-types';
 export type { AriaAttributes } from './aria-types';
 
 export type SelectedAriaAttributes<T extends keyof AriaAttributes> = Pick<AriaAttributes, T> | string;
-
-export type { JssStyle } from 'jss';
