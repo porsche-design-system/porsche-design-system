@@ -238,7 +238,7 @@ async function uploadFile(filePath: string): Promise<{ skipped: boolean }> {
       externalId: fileName,
     });
 
-    console.log('Uploaded:', title);
+    console.log('Uploaded:', fileName);
     return { skipped: false };
   }
 }
