@@ -123,10 +123,10 @@ If using **slotted contents** to serve form elements, make sure to provide the r
 
 
 ## Masked Input
-If you want use localized input masks to improve the user experience we recommend using <a href="https://imask.js.org/" target="_blank">iMask</a>. Make sure to handle potential drawbacks such as auto-formatting / -correction which can led to user frustration, default styling which appears like a default value rather than a mask etc.
+If you want to use localized input masks to improve the user experience we recommend using <a href="https://imask.js.org/" target="_blank">iMask</a>. Make sure to handle potential drawbacks (e.g. auto-formatting /-correction, styling to distinguish between masked input, placeholder and input value, error handling etc.) to avoid user frustration.
 
 <p-inline-notification heading="Important note" state="warning" persistent="true">
-  Be aware that you won't be able to take advantage of the native behaviour of type "date" when using an input mask. E.g. a date-picker will not be provided by your browser once the input is of type "text" rather than of type "date". 
+  Be aware that if you provide masked input you will lose all benefits which you might have using type "date" (e.g. native date-picker) since masked inputs always require input type "text". Same applies to other types with native handling.  
 </p-inline-notification>
 
 <Playground :markup="maskedInput" :frameworkMarkup="codeExample" :config="config"></Playground>
@@ -224,7 +224,7 @@ export default class Code extends Vue {
   <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
 </p-text-field-wrapper>`;
 
-maskedInput = `<p-text-field-wrapper>
+maskedInput = `<p-text-field-wrapper label="Some label">
   <input type="text" id="date-mask" />
 </p-text-field-wrapper>`;
 }
