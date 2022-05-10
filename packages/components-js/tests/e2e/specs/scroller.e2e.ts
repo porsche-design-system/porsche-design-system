@@ -218,10 +218,12 @@ describe('scroller', () => {
       // There seems to be an rounding issue that causes the element inside scroller to exceed the scroll container,
       // therefore the trigger gets pushed outside and the gradient is always shown.
       // To ensure the element exceeds the width of the wrapping div we need to assign static width values.
-      const DECIMAL_FACTOR = 0.1;
-      for (let i = 150; i <= 151; i = i + DECIMAL_FACTOR) {
-        it(`should not show actionNext for element with a width of ${i}px`, async () => {
-          const style = `style="background: deeppink; width:${i}px"`;
+
+      const steps = Array.from(Array(10)).map((_, index) => parseFloat(`150.${index}`));
+
+      steps.forEach(step=>
+        it(`should not show actionNext for element with a width of ${step}px`, async () => {
+          const style = `style="background: deeppink; width:${step}px"`;
 
           await setContentWithDesignSystem(
             page,
@@ -236,7 +238,6 @@ describe('scroller', () => {
 
           expect(await getClassList(actionNext), `On size ${i}`).toContain(hiddenClass);
         });
-      }
     });
   });
 
