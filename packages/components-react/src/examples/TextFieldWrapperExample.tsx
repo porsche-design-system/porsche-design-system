@@ -1,5 +1,6 @@
 import { PTextFieldWrapper } from '@porsche-design-system/components-react';
 import { useState } from 'react';
+import type { LegacyRef } from 'react';
 import { useIMask, IMask } from 'react-imask';
 
 export const TextFieldWrapperExamplePage = (): JSX.Element => {
@@ -31,7 +32,7 @@ export const TextFieldWrapperExamplePage = (): JSX.Element => {
 
   return (
     <PTextFieldWrapper>
-      <input ref={ref as any} type="text" />
+      <input ref={ref as LegacyRef<HTMLInputElement>} type="text" />
     </PTextFieldWrapper>
   );
 };
