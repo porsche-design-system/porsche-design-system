@@ -221,12 +221,13 @@ async function uploadFile(filePath: string): Promise<{ skipped: boolean }> {
   if (assetAlreadyExists) {
     return { skipped: true };
   } else {
+    // TODO: delete or replace (via replaceAsset operation)?
     // search by title in case content based hash changed
-    const assetsByTitle = await getAssetsByTitle(LIBRARY_OR_WORKSPACE_ID, title);
-    if (assetsByTitle.total) {
-      const deleteAssetResults = await Promise.all(assetsByTitle.items.map((item) => deleteAsset(item.id)));
-      console.log('Deleted icons:', deleteAssetResults.length);
-    }
+    // const assetsByTitle = await getAssetsByTitle(LIBRARY_OR_WORKSPACE_ID, title);
+    // if (assetsByTitle.total) {
+    //   const deleteAssetResults = await Promise.all(assetsByTitle.items.map((item) => deleteAsset(item.id)));
+    //   console.log('Deleted icons:', deleteAssetResults.length);
+    // }
 
     const { id: fileId, urls } = await initUpload(config, fileName, fileSizeInBytes);
     await uploadBinaryFile(filePath, urls);
