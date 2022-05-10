@@ -900,6 +900,7 @@ jobs:
     name: 'Frontify Deployment'
     needs:
       - assets-deployment
+#    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
