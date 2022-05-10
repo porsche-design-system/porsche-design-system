@@ -1,11 +1,37 @@
 import { Component } from '@angular/core';
+import { MaskedRange } from 'imask';
 
 @Component({
   selector: 'text-field-wrapper-example',
   template: `
-    <p-text-field-wrapper [label]="'Label responsive'" [description]="'Some description'">
-      <input [type]="'text'" [value]="'Responsive label and description'" [imask]="{ mask: 'DD.MM.YYY' }" />
+    <p-text-field-wrapper>
+      <input [type]="'text'" [imask]="mask" />
     </p-text-field-wrapper>
   `,
 })
-export class TextFieldWrapperExampleComponent {}
+export class TextFieldWrapperExampleComponent {
+  public mask = {
+    lazy: false,
+    mask: 'MM/DD/YYYY',
+    blocks: {
+      YYYY: {
+        mask: MaskedRange,
+        from: 1900,
+        to: 2100,
+        placeholderChar: 'Y',
+      },
+      MM: {
+        mask: MaskedRange,
+        from: 1,
+        to: 12,
+        placeholderChar: 'M',
+      },
+      DD: {
+        mask: MaskedRange,
+        from: 1,
+        to: 31,
+        placeholderChar: 'D',
+      },
+    },
+  };
+}
