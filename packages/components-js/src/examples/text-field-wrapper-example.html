@@ -1,4 +1,5 @@
-<p-text-field-wrapper>
+<!-- add <script src="https://unpkg.com/imask"><\/script> in head -->
+<p-text-field-wrapper label="Some label">
   <input type="text" id="date-mask" />
 </p-text-field-wrapper>
 
@@ -31,11 +32,4 @@
       });
     });
   };
-
-  const head = document.querySelector('head');
-  const js = document.createElement('script');
-  js.src = 'https://unpkg.com/imask'; // equals <script src="https://unpkg.com/imask"><\/script> in head
-  js.onreadystatechange = callback;
-  js.onload = callback;
-  head.appendChild(js);
 </script>

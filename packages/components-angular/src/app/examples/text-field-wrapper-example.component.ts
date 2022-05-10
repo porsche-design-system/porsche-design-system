@@ -4,7 +4,7 @@ import { MaskedRange } from 'imask';
 @Component({
   selector: 'text-field-wrapper-example',
   template: `
-    <p-text-field-wrapper>
+    <p-text-field-wrapper [label]="'Some label'">
       <input [type]="'text'" [imask]="mask" />
     </p-text-field-wrapper>
   `,

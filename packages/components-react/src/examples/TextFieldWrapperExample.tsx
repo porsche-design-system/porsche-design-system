@@ -31,7 +31,7 @@ export const TextFieldWrapperExamplePage = (): JSX.Element => {
   const { ref } = useIMask(opts);
 
   return (
-    <PTextFieldWrapper>
+    <PTextFieldWrapper label="Some label">
       <input ref={ref as LegacyRef<HTMLInputElement>} type="text" />
     </PTextFieldWrapper>
   );
