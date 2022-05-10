@@ -4,7 +4,7 @@ import type { LegacyRef } from 'react';
 import { useIMask, IMask } from 'react-imask';
 
 export const TextFieldWrapperExamplePage = (): JSX.Element => {
-  const [opts, setOpts] = useState({
+  const [opts] = useState({
     lazy: false,
     mask: 'MM/DD/YYYY',
     blocks: {
