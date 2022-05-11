@@ -4,32 +4,28 @@
 </p-text-field-wrapper>
 
 <script>
-  const callback = () => {
-    customElements.whenDefined('p-text-field-wrapper').then(() => {
-      IMask(document.getElementById('date-mask'), {
-        lazy: false,
-        mask: 'MM/DD/YYYY',
-        blocks: {
-          YYYY: {
-            mask: IMask.MaskedRange,
-            from: 1900,
-            to: 2100,
-            placeholderChar: 'Y',
-          },
-          MM: {
-            mask: IMask.MaskedRange,
-            from: 1,
-            to: 12,
-            placeholderChar: 'M',
-          },
-          DD: {
-            mask: IMask.MaskedRange,
-            from: 1,
-            to: 31,
-            placeholderChar: 'D',
-          },
-        },
-      });
-    });
-  };
+  IMask(document.getElementById('date-mask'), {
+    lazy: false,
+    mask: 'MM/DD/YYYY',
+    blocks: {
+      YYYY: {
+        mask: IMask.MaskedRange,
+        from: 1900,
+        to: 2100,
+        placeholderChar: 'Y',
+      },
+      MM: {
+        mask: IMask.MaskedRange,
+        from: 1,
+        to: 12,
+        placeholderChar: 'M',
+      },
+      DD: {
+        mask: IMask.MaskedRange,
+        from: 1,
+        to: 31,
+        placeholderChar: 'D',
+      },
+    },
+  });
 </script>
