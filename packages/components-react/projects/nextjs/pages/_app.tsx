@@ -1,21 +1,43 @@
 import '@porsche-design-system/shared/css/styles.css';
 import type { AppProps } from 'next/app';
 import { componentsReady, PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
+import { routes } from '../routes';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
-  return (
-    <PorscheDesignSystemProvider>
-      {/* select doesn't have any functionality, yet but is crucial to rendering an identical page in vrt */}
-      <select>
-        <option disabled value="">
-          Select a page
-        </option>
-      </select>
+  const router = useRouter();
+  const [selected, setSelected] = useState(router.route);
 
-      <div id="app">
-        <Component {...pageProps} />
-      </div>
-    </PorscheDesignSystemProvider>
+  return (
+    <>
+      <Head>
+        <title>Porsche Design System - NextJS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <PorscheDesignSystemProvider>
+        <select
+          value={selected}
+          onChange={(e) => {
+            const { value } = e.target;
+            setSelected(value);
+            router.push(value);
+          }}
+        >
+          <option disabled value="">
+            Select a page
+          </option>
+          {routes.map((route) => (
+            <option key={route.path} value={route.path} children={route.name} />
+          ))}
+        </select>
+
+        <div id="app">
+          <Component {...pageProps} />
+        </div>
+      </PorscheDesignSystemProvider>
+    </>
   );
 };
 
