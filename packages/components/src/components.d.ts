@@ -672,6 +672,24 @@ export namespace Components {
          */
         "state"?: FormState;
     }
+    interface PSegmentedControl {
+        "stretch"?: boolean;
+        "wrap"?: boolean;
+    }
+    interface PSegmentedControlItem {
+        /**
+          * Disables the button. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
+          * The icon shown.
+         */
+        "icon"?: IconName;
+        /**
+          * A URL path to a custom icon.
+         */
+        "iconSource"?: string;
+    }
     interface PSelectWrapper {
         /**
           * The description text.
@@ -1162,6 +1180,18 @@ declare global {
         prototype: HTMLPRadioButtonWrapperElement;
         new (): HTMLPRadioButtonWrapperElement;
     };
+    interface HTMLPSegmentedControlElement extends Components.PSegmentedControl, HTMLStencilElement {
+    }
+    var HTMLPSegmentedControlElement: {
+        prototype: HTMLPSegmentedControlElement;
+        new (): HTMLPSegmentedControlElement;
+    };
+    interface HTMLPSegmentedControlItemElement extends Components.PSegmentedControlItem, HTMLStencilElement {
+    }
+    var HTMLPSegmentedControlItemElement: {
+        prototype: HTMLPSegmentedControlItemElement;
+        new (): HTMLPSegmentedControlItemElement;
+    };
     interface HTMLPSelectWrapperElement extends Components.PSelectWrapper, HTMLStencilElement {
     }
     var HTMLPSelectWrapperElement: {
@@ -1325,6 +1355,8 @@ declare global {
         "p-pagination": HTMLPPaginationElement;
         "p-popover": HTMLPPopoverElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
+        "p-segmented-control": HTMLPSegmentedControlElement;
+        "p-segmented-control-item": HTMLPSegmentedControlItemElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-select-wrapper-dropdown": HTMLPSelectWrapperDropdownElement;
         "p-spinner": HTMLPSpinnerElement;
@@ -2009,6 +2041,24 @@ declare namespace LocalJSX {
          */
         "state"?: FormState;
     }
+    interface PSegmentedControl {
+        "stretch"?: boolean;
+        "wrap"?: boolean;
+    }
+    interface PSegmentedControlItem {
+        /**
+          * Disables the button. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
+          * The icon shown.
+         */
+        "icon"?: IconName;
+        /**
+          * A URL path to a custom icon.
+         */
+        "iconSource"?: string;
+    }
     interface PSelectWrapper {
         /**
           * The description text.
@@ -2397,6 +2447,8 @@ declare namespace LocalJSX {
         "p-pagination": PPagination;
         "p-popover": PPopover;
         "p-radio-button-wrapper": PRadioButtonWrapper;
+        "p-segmented-control": PSegmentedControl;
+        "p-segmented-control-item": PSegmentedControlItem;
         "p-select-wrapper": PSelectWrapper;
         "p-select-wrapper-dropdown": PSelectWrapperDropdown;
         "p-spinner": PSpinner;
@@ -2450,6 +2502,8 @@ declare module "@stencil/core" {
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
             "p-popover": LocalJSX.PPopover & JSXBase.HTMLAttributes<HTMLPPopoverElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
+            "p-segmented-control": LocalJSX.PSegmentedControl & JSXBase.HTMLAttributes<HTMLPSegmentedControlElement>;
+            "p-segmented-control-item": LocalJSX.PSegmentedControlItem & JSXBase.HTMLAttributes<HTMLPSegmentedControlItemElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-select-wrapper-dropdown": LocalJSX.PSelectWrapperDropdown & JSXBase.HTMLAttributes<HTMLPSelectWrapperDropdownElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
