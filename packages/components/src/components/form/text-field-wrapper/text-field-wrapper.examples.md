@@ -134,7 +134,7 @@ If you want to use localized input masks to improve the user experience we recom
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { getTextFieldWrapperCodeSamples } from "@porsche-design-system/shared"; 
+import { getTextFieldWrapperCodeSamples } from '@porsche-design-system/shared'; 
 
 @Component
 export default class Code extends Vue {
