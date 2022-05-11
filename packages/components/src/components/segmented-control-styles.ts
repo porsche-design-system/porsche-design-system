@@ -7,6 +7,7 @@ export const getComponentCss = (stretch: boolean, wrap: boolean): string => {
       ':host': addImportantToEachRule({
         display: stretch ? 'grid' : 'inline-grid',
         gridAutoColumns: '1fr',
+        gridAutoRows: '1fr',
         ...(stretch
           ? wrap
             ? { gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))' }
@@ -15,7 +16,14 @@ export const getComponentCss = (stretch: boolean, wrap: boolean): string => {
                 gridAutoFlow: 'column',
               }
           : {
-              gridAutoFlow: 'column',
+              ...(wrap
+                ? {
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(100px, min-content))',
+                  }
+                : {
+                    gridAutoFlow: 'column',
+                  }),
             }),
       }),
     },
