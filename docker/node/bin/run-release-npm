@@ -26,7 +26,7 @@ publish_jfrog() {
 
 publish_npmjs() {
   echo "task: [$(date)] \"publish_npmjs\" (${PACKAGE_LOCATION})"
-  result=$(yarn publish --non-interactive "${PACKAGE_LOCATION}")
+  result=$(yarn publish --non-interactive --registry=https://registry.npmjs.org/ --access public "${PACKAGE_LOCATION}")
 
   if [[ ${result} == *"Done"* ]]; then
     return 0 # true
