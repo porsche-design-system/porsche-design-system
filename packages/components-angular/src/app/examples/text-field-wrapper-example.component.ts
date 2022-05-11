@@ -1,6 +1,18 @@
 import { Component } from '@angular/core';
 import { MaskedRange } from 'imask';
 
+/*
+tsconfig.json:
+...
+"compilerOptions": {
+  ...
+  "paths": {
+-   "@porsche-design-system/components-angular": ["dist/components-wrapper"]
++   "@porsche-design-system/components-angular": ["dist/components-wrapper"],
++   "@angular/!*": ["node_modules/@angular/!*"]
+...
+*/
+
 @Component({
   selector: 'text-field-wrapper-example',
   template: `
