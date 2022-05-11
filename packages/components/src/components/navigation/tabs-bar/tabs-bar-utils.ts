@@ -1,6 +1,6 @@
 import type { TextWeight } from '../../../types';
 import { pxToRemWithUnit } from '../../../styles';
-import { Direction } from '../../common/scroller/scroller-utils';
+import type { Direction } from '../../common/scroller/scroller-utils';
 import { setAttribute } from '../../../utils';
 
 const TAB_SIZE = ['small', 'medium'] as const;
