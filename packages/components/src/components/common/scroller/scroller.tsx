@@ -88,7 +88,7 @@ export class Scroller {
       {
         root: this.scrollAreaElement,
         // Defines the percentage of how much of the target (trigger) is visible within the element specified (this.host).
-        // In his case 0.9px of the trigger have to be hidden to show the gradient
+        // In this case 0.9px of the trigger have to be hidden to show the gradient
         threshold: 0.1,
       }
     );
