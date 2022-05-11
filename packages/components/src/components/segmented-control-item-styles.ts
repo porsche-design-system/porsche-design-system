@@ -9,7 +9,7 @@ export const getComponentCss = (isDisabled: boolean): string => {
       },
       button: {
         display: 'block',
-        minHeight: '40px',
+        // minHeight: '40px',
         height: '100%',
         width: '100%',
         padding: 0,
