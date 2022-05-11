@@ -10,17 +10,17 @@ if [[ -z "${NPMJS_REGISTRY_TOKEN}" ]]; then
   exit 1
 fi
 
-cleanup_credentials() {
+cleanup_npmjs_credentials() {
   local exit_code=$?
-  echo "task: [$(date)] \"cleanup_credentials\""
+  echo "task: [$(date)] \"cleanup_npmjs_credentials\""
   rm "${HOME}/.npmrc"
   exit $exit_code
 }
 
-setup_credentials() {
-  echo "task: [$(date)] \"setup_credentials\""
-  echo "//registry.npmjs.org/:_authToken=${NPMJS_REGISTRY_TOKEN}" > "${HOME}/.npmrc"
+setup_npmjs_credentials() {
+  echo "task: [$(date)] \"setup_npmjs_credentials\""
+  echo "//registry.npmjs.org/:_authToken=${NPMJS_REGISTRY_TOKEN}" >> "${HOME}/.npmrc"
 }
 
-trap cleanup_credentials EXIT
-setup_credentials
+trap cleanup_npmjs_credentials EXIT
+setup_npmjs_credentials
