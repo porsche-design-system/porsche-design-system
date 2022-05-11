@@ -215,115 +215,124 @@ describe('scroller', () => {
     });
 
     describe('gradient next rounding edge case', () => {
-      // There seems to be an rounding issue that causes the element inside scroller to exceed the scroll container,
-      // therefore the trigger gets pushed outside and the gradient is always shown.
-      // To ensure the element exceeds the width of the wrapping div we need to assign static width values.
+      const setContentWithWidth = async (width: number) => {
+        const style = `style="background: deeppink; width:${width}px"`;
 
-      const steps = Array.from(Array(10)).map((_, index) => parseFloat(`150.${index}`));
-
-      steps.forEach(step=>
-        it(`should not show actionNext for element with a width of ${step}px`, async () => {
-          const style = `style="background: deeppink; width:${step}px"`;
-
-          await setContentWithDesignSystem(
-            page,
-            `
+        await setContentWithDesignSystem(
+          page,
+          `
             <div style="width: 150px">
               <p-scroller>
                 <div ${style}>A</div>
               </p-scroller>
             </div>`
-          );
-          const { actionNext } = await getActionContainers();
+        );
+      };
 
-          expect(await getClassList(actionNext), `On size ${i}`).toContain(hiddenClass);
+      // There seems to be an rounding issue that causes the element inside scroller to exceed the scroll container,
+      // therefore the trigger gets pushed outside and the gradient is always shown.
+      // To ensure the element exceeds the width of the wrapping div we need to assign static width values.
+      const steps = Array.from(Array(10)).map((_, index) => parseFloat(`150.${index}`));
+
+      it.each(steps)(`should not show actionNext for element with a width of %spx`, async (width) => {
+        await setContentWithWidth(width);
+        const { actionNext } = await getActionContainers();
+
+        expect(await getClassList(actionNext), `On size ${width}`).toContain(hiddenClass);
+      });
+
+      it('should show actionNext when more than 0.9px of the trigger are hidden', async () => {
+        await setContentWithWidth(150.91);
+        const { actionNext } = await getActionContainers();
+
+        expect(await getClassList(actionNext)).not.toContain(hiddenClass);
+      });
+    });
+
+    describe('errors', () => {
+      it('should not crash without children', async () => {
+        initConsoleObserver(page);
+
+        await setContentWithDesignSystem(page, `<p-scroller active-element-index="0"></p-scroller>`);
+        expect(getConsoleErrorsAmount()).toBe(0);
+
+        await page.evaluate(() => console.error('test error'));
+        expect(getConsoleErrorsAmount()).toBe(1);
+      });
+    });
+
+    describe('lifecycle', () => {
+      it('should work without unnecessary round trips on init', async () => {
+        await initScroller({ amount: 3, tag: 'a' });
+        const status = await getLifecycleStatus(page);
+
+        expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
+        expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
+        expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
+        expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2);
+
+        expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
+        expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+      });
+
+      it('should work without unnecessary round trips on prop change', async () => {
+        await initScroller({ amount: 3, tag: 'button' });
+        const host = await getHost();
+
+        await setProperty(host, 'theme', 'dark');
+        await waitForStencilLifecycle(page);
+
+        const status = await getLifecycleStatus(page);
+
+        expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
+
+        expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
+        expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(5);
+      });
+    });
+
+    describe('accessibility', () => {
+      const getElementList = () => selectNode(page, 'p-scroller >>> [role="tablist"]');
+      it('should expose correct initial accessibility tree of tablist', async () => {
+        await initScroller({ amount: 3 });
+
+        await expectA11yToMatchSnapshot(page, await getElementList(), { interestingOnly: false });
+      });
+
+      it('should render correct accessibility tree on scrollArea click', async () => {
+        await initScroller({ amount: 4 });
+        const scrollArea = await getScrollArea();
+
+        await expectA11yToMatchSnapshot(page, await getElementList(), {
+          message: 'Before click',
+          interestingOnly: false,
         });
-    });
-  });
 
-  describe('errors', () => {
-    it('should not crash without children', async () => {
-      initConsoleObserver(page);
+        await clickElement(scrollArea);
 
-      await setContentWithDesignSystem(page, `<p-scroller active-element-index="0"></p-scroller>`);
-      expect(getConsoleErrorsAmount()).toBe(0);
-
-      await page.evaluate(() => console.error('test error'));
-      expect(getConsoleErrorsAmount()).toBe(1);
-    });
-  });
-
-  describe('lifecycle', () => {
-    it('should work without unnecessary round trips on init', async () => {
-      await initScroller({ amount: 3, tag: 'a' });
-      const status = await getLifecycleStatus(page);
-
-      expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
-      expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
-      expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
-      expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2);
-
-      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
-      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
-    });
-
-    it('should work without unnecessary round trips on prop change', async () => {
-      await initScroller({ amount: 3, tag: 'button' });
-      const host = await getHost();
-
-      await setProperty(host, 'theme', 'dark');
-      await waitForStencilLifecycle(page);
-
-      const status = await getLifecycleStatus(page);
-
-      expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
-
-      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
-      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(5);
-    });
-  });
-
-  describe('accessibility', () => {
-    const getElementList = () => selectNode(page, 'p-scroller >>> [role="tablist"]');
-    it('should expose correct initial accessibility tree of tablist', async () => {
-      await initScroller({ amount: 3 });
-
-      await expectA11yToMatchSnapshot(page, await getElementList(), { interestingOnly: false });
-    });
-
-    it('should render correct accessibility tree on scrollArea click', async () => {
-      await initScroller({ amount: 4 });
-      const scrollArea = await getScrollArea();
-
-      await expectA11yToMatchSnapshot(page, await getElementList(), {
-        message: 'Before click',
-        interestingOnly: false,
+        await expectA11yToMatchSnapshot(page, await getElementList(), {
+          message: 'After click',
+          interestingOnly: false,
+        });
       });
 
-      await clickElement(scrollArea);
+      it('should render correct accessibility tree on focus change and enter press', async () => {
+        await initScroller({ amount: 3 });
 
-      await expectA11yToMatchSnapshot(page, await getElementList(), {
-        message: 'After click',
-        interestingOnly: false,
-      });
-    });
+        await expectA11yToMatchSnapshot(page, await getElementList(), {
+          message: 'Before change',
+          interestingOnly: false,
+        });
 
-    it('should render correct accessibility tree on focus change and enter press', async () => {
-      await initScroller({ amount: 3 });
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('ArrowRight');
+        await page.keyboard.press('Enter');
+        await waitForStencilLifecycle(page);
 
-      await expectA11yToMatchSnapshot(page, await getElementList(), {
-        message: 'Before change',
-        interestingOnly: false,
-      });
-
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('ArrowRight');
-      await page.keyboard.press('Enter');
-      await waitForStencilLifecycle(page);
-
-      await expectA11yToMatchSnapshot(page, await getElementList(), {
-        message: 'After change',
-        interestingOnly: false,
+        await expectA11yToMatchSnapshot(page, await getElementList(), {
+          message: 'After change',
+          interestingOnly: false,
+        });
       });
     });
   });
