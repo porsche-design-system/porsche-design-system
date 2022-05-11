@@ -30,6 +30,7 @@
     "intersection-observer": "^0.12.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-imask": "^6.4.2",
     "react-router-dom": "^6.3.0",
     "scroll-behavior-polyfill": "^2.0.13",
     "whatwg-fetch": "^3.6.2"
@@ -49,7 +50,6 @@
     "concurrently": "^7.1.0",
     "globby": "^11.0.4",
     "local-web-server": "^5.2.0",
-    "react-imask": "^6.4.2",
     "react-scripts": "^5.0.1",
     "rollup": "^2.71.1",
     "rollup-plugin-copy": "^3.4.0",
