@@ -88,7 +88,7 @@ export class TabsBar {
       // skip scrolling on first render when no activeElementIndex is set
       this.scrollActiveTabIntoView(false);
     }
-    // TODO: On Scroller or Host?
+
     this.addEventListeners();
 
     // setBarStyle() is needed when intersection observer does not trigger because all tabs are visible
