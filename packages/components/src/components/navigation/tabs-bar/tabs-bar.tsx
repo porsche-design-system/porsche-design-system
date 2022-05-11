@@ -117,6 +117,7 @@ export class TabsBar {
     return (
       <PrefixedTagNames.pScroller
         class="scroller"
+        role="tablist"
         theme={this.theme}
         gradientColorScheme={this.gradientColorScheme}
         ref={(el) => (this.scrollerElement = el)}
