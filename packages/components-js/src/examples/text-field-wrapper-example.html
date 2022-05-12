@@ -1,4 +1,3 @@
-<!-- add <script src="https://unpkg.com/imask"></script> in head -->
 <p-text-field-wrapper label="Some label">
   <input type="text" id="date-mask" />
 </p-text-field-wrapper>
@@ -6,7 +5,7 @@
 <script>
   IMask(document.getElementById('date-mask'), {
     lazy: false,
-    mask: 'MM/DD/YYYY',
+    mask: 'DD.MM.YYYY',
     blocks: {
       YYYY: {
         mask: IMask.MaskedRange,
