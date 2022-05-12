@@ -2,7 +2,6 @@ import type { EventEmitter } from '@stencil/core';
 import { Component, Element, Event, Prop, State, Watch, h } from '@stencil/core';
 import {
   attachComponentCss,
-  getHTMLElement,
   getHTMLElements,
   getPrefixedTagNames,
   isParentOfKind,
@@ -128,7 +127,7 @@ export class TabsBar {
         }}
       >
         <slot />
-        <span class="bar" />
+        <span class="bar" ref={(el) => (this.barElement = el)} />
       </PrefixedTagNames.pScroller>
     );
   }
@@ -150,10 +149,8 @@ export class TabsBar {
   };
 
   private defineHTMLElements = (): void => {
-    const { shadowRoot } = this.host;
-    this.barElement = getHTMLElement(shadowRoot, '.bar');
-    this.scrollAreaElement = getHTMLElement(this.scrollerElement.shadowRoot, '.scroll-area');
-    this.prevGradientElement = getHTMLElement(this.scrollerElement.shadowRoot, '.gradient');
+    this.scrollAreaElement = getShadowRootHTMLElement(this.scrollerElement, '.scroll-area');
+    this.prevGradientElement = getShadowRootHTMLElement(this.scrollerElement, '.gradient');
   };
 
   private setTabElements = (): void => {
