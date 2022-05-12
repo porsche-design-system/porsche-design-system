@@ -4,7 +4,8 @@ import {
   attachComponentCss,
   getHTMLElements,
   getPrefixedTagNames,
-  isParentOfKind,
+  getShadowRootHTMLElement,
+  isShadowRootParentOfKind,
   observeChildren,
   setAttribute,
   unobserveChildren,
@@ -67,13 +68,13 @@ export class TabsBar {
   }
 
   public connectedCallback(): void {
-    this.hasPTabsParent = isParentOfKind(this.host, 'pTabs', true);
+    this.hasPTabsParent = isShadowRootParentOfKind(this.host, 'pTabs');
     this.setTabElements();
     observeChildren(this.host, () => {
       this.setTabElements();
       this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length);
       this.prevActiveTabIndex = this.activeTabIndex;
-      setBarStyle(this.tabElements, this.activeTabIndex, this.barElement, this.prevActiveTabIndex);
+      this.setBarStyle();
       this.setAccessibilityAttributes();
     });
   }
@@ -92,7 +93,7 @@ export class TabsBar {
 
     // setBarStyle() is needed when intersection observer does not trigger because all tabs are visible
     // and first call in componentDidRender() is skipped because elements are not defined, yet
-    setBarStyle(this.tabElements, this.activeTabIndex, this.barElement, this.prevActiveTabIndex);
+    this.setBarStyle();
   }
 
   public componentWillRender(): void {
@@ -101,7 +102,7 @@ export class TabsBar {
 
   public componentDidRender(): void {
     // needs to happen after render in order to have status bar defined and proper calculation
-    setBarStyle(this.tabElements, this.activeTabIndex, this.barElement, this.prevActiveTabIndex);
+    this.setBarStyle();
     this.setAccessibilityAttributes();
   }
 
@@ -154,10 +155,7 @@ export class TabsBar {
   };
 
   private setTabElements = (): void => {
-    const elements: HTMLElement[] = getHTMLElements(this.host, 'a,button');
-    if (this.tabElements.length !== elements.length) {
-      this.tabElements = elements;
-    }
+    this.tabElements = getHTMLElements(this.host, 'a,button');
   };
 
   private addEventListeners = (): void => {
@@ -230,5 +228,8 @@ export class TabsBar {
     );
 
     this.scroll = { scrollPosition: scrollActivePosition, isSmooth };
+  };
+  private setBarStyle = (): void => {
+    setBarStyle(this.tabElements, this.activeTabIndex, this.barElement, this.prevActiveTabIndex);
   };
 }
