@@ -31,7 +31,7 @@ import { DropdownDirection } from "./components/form/select-wrapper/select-wrapp
 import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
 import { SortingChangeEvent, TableHeadCellSort } from "./components/content/table/table/table-utils";
-import { TabChangeEvent, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
+import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { TagColor } from "./components/action/tag/tag-utils";
 import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/action/tag-dismissible/tag-dismissible-utils";
 import { TextFieldWrapperUnitPosition } from "./components/form/text-field-wrapper/text-field-wrapper-utils";
@@ -831,7 +831,7 @@ export namespace Components {
         /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: GradientColorTheme;
+        "gradientColorScheme"?: TabGradientColorTheme;
         /**
           * The text size.
          */
@@ -853,7 +853,7 @@ export namespace Components {
         /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: GradientColorTheme;
+        "gradientColorScheme"?: TabGradientColorTheme;
         /**
           * The text size.
          */
@@ -2198,7 +2198,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: GradientColorTheme;
+        "gradientColorScheme"?: TabGradientColorTheme;
         /**
           * Emitted when active tab is changed.
          */
@@ -2224,7 +2224,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the background gradient color of prev and next button.
          */
-        "gradientColorScheme"?: GradientColorTheme;
+        "gradientColorScheme"?: TabGradientColorTheme;
         /**
           * Emitted when active tab is changed.
          */

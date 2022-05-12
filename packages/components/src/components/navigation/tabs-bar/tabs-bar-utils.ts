@@ -1,6 +1,6 @@
 import type { TextWeight } from '../../../types';
 import { pxToRemWithUnit } from '../../../styles';
-import type { Direction } from '../../common/scroller/scroller-utils';
+import type { Direction, GradientColorTheme } from '../../common/scroller/scroller-utils';
 import { setAttribute } from '../../../utils';
 
 const TAB_SIZE = ['small', 'medium'] as const;
@@ -9,6 +9,9 @@ export type TabSize = typeof TAB_SIZE[number];
 export type TabWeight = Extract<TextWeight, 'regular' | 'semibold'>;
 
 export type TabChangeEvent = { activeTabIndex: number };
+
+export type TabGradientColorTheme = GradientColorTheme;
+
 const ENABLE_TRANSITION_CLASS = 'bar--enable-transition';
 
 export const sanitizeActiveTabIndex = (index: number, tabElementsCount: number): number => {
