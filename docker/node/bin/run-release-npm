@@ -15,6 +15,8 @@ fi
 
 publish_jfrog() {
   echo "task: [$(date)] \"publish_jfrog\" (${PACKAGE_LOCATION})"
+  source "${SCRIPT_DIR}/../shared/ensure-artifactory-credentials.sh"
+
   result=$(yarn publish --non-interactive --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm-local/ "${PACKAGE_LOCATION}")
 
   if [[ ${result} == *"Done"* ]]; then
@@ -26,6 +28,8 @@ publish_jfrog() {
 
 publish_npmjs() {
   echo "task: [$(date)] \"publish_npmjs\" (${PACKAGE_LOCATION})"
+  source "${SCRIPT_DIR}/../shared/ensure-npmjs-credentials.sh"
+
   result=$(yarn publish --non-interactive --registry=https://registry.npmjs.org/ --access public "${PACKAGE_LOCATION}")
 
   if [[ ${result} == *"Done"* ]]; then
@@ -59,14 +63,15 @@ EOF
 }
 
 SCRIPT_DIR="$(cd $(dirname ${0}) && pwd)"
-source "${SCRIPT_DIR}/../shared/ensure-artifactory-credentials.sh"
-source "${SCRIPT_DIR}/../shared/ensure-npmjs-credentials.sh"
 
 PACKAGE_LOCATION="${1}"
 PACKAGE_JSON="${PACKAGE_LOCATION}/package.json"
 PACKAGE_NAME=$(grep name "${PACKAGE_JSON}" | head -1 | awk -F= "{ print ${2} }" | sed 's/[:,\",]//g;s/name//' | tr -d '[[:space:]]')
 PACKAGE_VERSION=$(grep version "${PACKAGE_JSON}" | head -1 | awk -F= "{ print ${2} }" | sed 's/[:,\",]//g;s/version//' | tr -d '[[:space:]]')
 GIT_TAG_NAME="${PACKAGE_NAME:23}-v${PACKAGE_VERSION}"
+
+# deleting this file is necessary for a successful publish to npmjs
+rm .npmrc
 
 if ! is_version_published; then
   if publish_jfrog && publish_npmjs; then
