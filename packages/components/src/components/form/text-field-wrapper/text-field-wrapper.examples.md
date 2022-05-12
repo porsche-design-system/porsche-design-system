@@ -236,28 +236,28 @@ maskedInput =
 
   initIMask() {
     IMask(document.getElementById('date-mask'), {
-    lazy: false,
-    mask: 'MM/DD/YYYY',
-    blocks: {
-      YYYY: {
-        mask: IMask.MaskedRange,
-        from: 1900,
-        to: 2100,
-        placeholderChar: 'Y',
+      lazy: false,
+      mask: 'DD.MM.YYYY',
+      blocks: {
+        YYYY: {
+          mask: IMask.MaskedRange,
+          from: 1900,
+          to: 2100,
+          placeholderChar: 'Y',
+        },
+        MM: {
+          mask: IMask.MaskedRange,
+          from: 1,
+          to: 12,
+          placeholderChar: 'M',
+        },
+        DD: {
+          mask: IMask.MaskedRange,
+          from: 1,
+          to: 31,
+          placeholderChar: 'D',
+        },
       },
-      MM: {
-        mask: IMask.MaskedRange,
-        from: 1,
-        to: 12,
-        placeholderChar: 'M',
-      },
-      DD: {
-        mask: IMask.MaskedRange,
-        from: 1,
-        to: 31,
-        placeholderChar: 'D',
-      },
-    },
     });
   }
 }

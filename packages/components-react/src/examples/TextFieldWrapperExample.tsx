@@ -1,12 +1,11 @@
 import { PTextFieldWrapper } from '@porsche-design-system/components-react';
-import { useState } from 'react';
 import type { LegacyRef } from 'react';
 import { useIMask, IMask } from 'react-imask';
 
 export const TextFieldWrapperExamplePage = (): JSX.Element => {
-  const [opts] = useState({
+  const opts = {
     lazy: false,
-    mask: 'MM/DD/YYYY',
+    mask: 'DD.MM.YYYY',
     blocks: {
       YYYY: {
         mask: IMask.MaskedRange,
@@ -27,7 +26,7 @@ export const TextFieldWrapperExamplePage = (): JSX.Element => {
         placeholderChar: 'D',
       },
     },
-  });
+  };
   const { ref } = useIMask(opts);
 
   return (
