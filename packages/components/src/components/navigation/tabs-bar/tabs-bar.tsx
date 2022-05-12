@@ -9,7 +9,7 @@ import {
   setAttribute,
   unobserveChildren,
 } from '../../../utils';
-import type { TabChangeEvent, TabSize, TabWeight } from './tabs-bar-utils';
+import type { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from './tabs-bar-utils';
 import {
   getFocusedTabIndex,
   getPrevNextTabIndex,
@@ -19,7 +19,7 @@ import {
 } from './tabs-bar-utils';
 import { getComponentCss } from './tabs-bar-styles';
 import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
-import type { Direction, GradientColorTheme, ScrollToPosition } from '../../common/scroller/scroller-utils';
+import type { Direction, ScrollToPosition } from '../../common/scroller/scroller-utils';
 
 @Component({
   tag: 'p-tabs-bar',
@@ -38,7 +38,7 @@ export class TabsBar {
   @Prop() public theme?: ThemeExtendedElectric = 'light';
 
   /** Adapts the background gradient color of prev and next button. */
-  @Prop() public gradientColorScheme?: GradientColorTheme = 'default';
+  @Prop() public gradientColorScheme?: TabGradientColorTheme = 'default';
 
   /** Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected. */
   @Prop() public activeTabIndex?: number | undefined;
