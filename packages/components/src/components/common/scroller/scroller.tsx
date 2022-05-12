@@ -1,6 +1,6 @@
 import { Component, Element, Prop, State, Watch, h } from '@stencil/core';
 import { PrevNextButton } from './prev-next-button';
-import { attachComponentCss, getHTMLElements, scrollElementTo } from '../../../utils';
+import { attachComponentCss, getHTMLElements, scrollElementTo, throwIfParentIsNotOfKind } from '../../../utils';
 import { getComponentCss } from './scroller-styles';
 import type { Direction, GradientColorTheme, ScrollToPosition, PrevNextButtonJssStyle } from './scroller-utils';
 import { getScrollPositionAfterPrevNextClick } from './scroller-utils';
@@ -38,6 +38,10 @@ export class Scroller {
     } else {
       this.scrollAreaElement.scrollLeft = scrollPosition;
     }
+  }
+
+  public connectedCallback(): void {
+    throwIfParentIsNotOfKind(this.host, 'pTabsBar');
   }
 
   public componentDidLoad(): void {
