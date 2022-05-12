@@ -77,9 +77,9 @@ describe('tabs-bar', () => {
     const nextButton = await selectNode(page, 'p-tabs-bar >>> p-scroller >>>.action--next p-button-pure');
     return { prevButton, nextButton };
   };
-  const getScrollLeft = (element: ElementHandle) => getProperty(element, 'scrollLeft');
-  const getOffsetLeft = (element: ElementHandle) => getProperty(element, 'offsetLeft');
-  const getOffsetWidth = (element: ElementHandle) => getProperty(element, 'offsetWidth');
+  const getScrollLeft = (element: ElementHandle) => getProperty<number>(element, 'scrollLeft');
+  const getOffsetLeft = (element: ElementHandle) => getProperty<number>(element, 'offsetLeft');
+  const getOffsetWidth = (element: ElementHandle) => getProperty<number>(element, 'offsetWidth');
 
   const getScrollDistance = (scrollAreaWidth: number): number => Math.round(scrollAreaWidth * TABS_SCROLL_PERCENTAGE);
   const getBarWidth = async (bar: ElementHandle) => await getElementStyle(bar, 'width');
@@ -295,7 +295,7 @@ describe('tabs-bar', () => {
       const button7 = allButtons[6];
 
       const scrollArea = await getScrollArea();
-      const scrollAreaWidth = (await getOffsetWidth(scrollArea)) as number;
+      const scrollAreaWidth: number = await getOffsetWidth(scrollArea);
       const scrollByX = Math.round(scrollAreaWidth * 0.2);
 
       const gradient = await getGradientNext();
@@ -308,7 +308,7 @@ describe('tabs-bar', () => {
 
       expect(await getScrollLeft(scrollArea), 'scroll left active button after click').toBe(scrollDistanceRight);
 
-      const scrollAreaLeftAfterClick = (await getScrollLeft(scrollArea)) as number;
+      const scrollAreaLeftAfterClick = await getScrollLeft(scrollArea);
       await clickElement(nextButton);
       expect(await getScrollLeft(scrollArea), 'scroll left active button after prev click').toBe(
         scrollAreaLeftAfterClick + scrollByX
