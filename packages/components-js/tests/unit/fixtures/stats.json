@@ -105,11 +105,6 @@
     "gzipSize": 3015
   },
   {
-    "chunkShortName": "scroller",
-    "size": 4366,
-    "gzipSize": 1782
-  },
-  {
     "chunkShortName": "select-wrapper",
     "size": 22896,
     "gzipSize": 7387
