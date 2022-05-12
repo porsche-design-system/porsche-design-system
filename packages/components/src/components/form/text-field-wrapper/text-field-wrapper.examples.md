@@ -134,6 +134,7 @@ If you want to use localized input masks to improve the user experience we recom
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import IMask from 'imask';
 import { getTextFieldWrapperCodeSamples } from '@porsche-design-system/shared'; 
 
 @Component
@@ -224,44 +225,40 @@ export default class Code extends Vue {
   <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
 </p-text-field-wrapper>`;
 
-maskedInput = `<p-text-field-wrapper label="Some label">
+maskedInput =
+`<p-text-field-wrapper label="Some label">
   <input type="text" id="date-mask" />
 </p-text-field-wrapper>`;
-}
 
-  const callback = () => {
-    customElements.whenDefined('p-text-field-wrapper').then(() => {
-      IMask(document.getElementById('date-mask'), {
-        lazy: false,
-        mask: 'MM/DD/YYYY',
-        blocks: {
-          YYYY: {
-            mask: IMask.MaskedRange,
-            from: 1900,
-            to: 2100,
-            placeholderChar: 'Y',
-          },
-          MM: {
-            mask: IMask.MaskedRange,
-            from: 1,
-            to: 12,
-            placeholderChar: 'M',
-          },
-          DD: {
-            mask: IMask.MaskedRange,
-            from: 1,
-            to: 31,
-            placeholderChar: 'D',
-          },
-        },
-      });
+  mounted() {
+    this.initIMask();
+  }
+
+  initIMask() {
+    IMask(document.getElementById('date-mask'), {
+    lazy: false,
+    mask: 'MM/DD/YYYY',
+    blocks: {
+      YYYY: {
+        mask: IMask.MaskedRange,
+        from: 1900,
+        to: 2100,
+        placeholderChar: 'Y',
+      },
+      MM: {
+        mask: IMask.MaskedRange,
+        from: 1,
+        to: 12,
+        placeholderChar: 'M',
+      },
+      DD: {
+        mask: IMask.MaskedRange,
+        from: 1,
+        to: 31,
+        placeholderChar: 'D',
+      },
+    },
     });
-  };
-  const head = document.querySelector('head');
-  const js = document.createElement('script');
-  js.src = 'https://unpkg.com/imask';
-  js.onreadystatechange = callback;
-  js.onload = callback;
-
-  head.appendChild(js);
+  }
+}
 </script>
