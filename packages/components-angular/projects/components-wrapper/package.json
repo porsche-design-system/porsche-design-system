@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components-angular",
-  "version": "2.12.0-rc.0",
+  "version": "2.12.0-rc.2",
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "contributors": [
@@ -16,18 +16,11 @@
     "Johannes Müller-Naumann <johannes.mueller-naumann@mhp.com>",
     "Anton Schmidt <anton.schmidt@mhp.com>"
   ],
-  "license": "SEE LICENSE IN https://designsystem.porsche.com",
+  "license": "SEE LICENSE IN https://designsystem.porsche.com/latest/license",
   "description": "The Porsche Design System provides the design fundamentals and elements for efficiently creating aesthetic and high-quality web applications. Everything is built and tested following the Porsche quality standards and corporate design principles.",
   "homepage": "https://designsystem.porsche.com",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/porscheui/porsche-design-system.git"
-  },
-  "bugs": {
-    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
-  },
   "dependencies": {
-    "@porsche-design-system/components-js": "2.12.0-rc.0",
+    "@porsche-design-system/components-js": "2.12.0-rc.2",
     "tslib": "^2.0.1"
   },
   "peerDependencies": {
