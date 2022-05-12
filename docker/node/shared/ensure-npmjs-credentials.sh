@@ -19,7 +19,7 @@ cleanup_npmjs_credentials() {
 
 setup_npmjs_credentials() {
   echo "task: [$(date)] \"setup_npmjs_credentials\""
-  echo "//registry.npmjs.org/:_authToken=${NPMJS_REGISTRY_TOKEN}" >> "${HOME}/.npmrc"
+  echo "//registry.npmjs.org/:_authToken=${NPMJS_REGISTRY_TOKEN}" > "${HOME}/.npmrc"
 }
 
 trap cleanup_npmjs_credentials EXIT
