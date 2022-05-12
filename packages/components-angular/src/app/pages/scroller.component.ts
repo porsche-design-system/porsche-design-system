@@ -28,7 +28,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-scroller>
     </div>
 
-    <div class="playground light" title="should render scroller gradientColorScheme surface on light background">
+    <div class="playground light surface" title="should render scroller gradientColorScheme surface on light background">
       <p-scroller [gradientColorScheme]="'surface'">
         <a [href]="'#'">Anchor 1</a>
         <a [href]="'#'">Anchor 2</a>
@@ -40,7 +40,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-scroller>
     </div>
 
-    <div class="playground dark" title="should render scroller gradientColorScheme surface on dark background">
+    <div class="playground dark surface" title="should render scroller gradientColorScheme surface on dark background">
       <p-scroller [theme]="'dark'" [gradientColorScheme]="'surface'">
         <a [href]="'#'">Anchor 1</a>
         <a [href]="'#'">Anchor 2</a>

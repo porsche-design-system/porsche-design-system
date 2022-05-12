@@ -28,7 +28,7 @@ export const ScrollerPage = (): JSX.Element => {
         </PScroller>
       </div>
 
-      <div className="playground light" title="should render scroller gradientColorScheme surface on light background">
+      <div className="playground light surface" title="should render scroller gradientColorScheme surface on light background">
         <PScroller gradientColorScheme="surface">
           <a href="#">Anchor 1</a>
           <a href="#">Anchor 2</a>
@@ -40,7 +40,7 @@ export const ScrollerPage = (): JSX.Element => {
         </PScroller>
       </div>
 
-      <div className="playground dark" title="should render scroller gradientColorScheme surface on dark background">
+      <div className="playground dark surface" title="should render scroller gradientColorScheme surface on dark background">
         <PScroller theme="dark" gradientColorScheme="surface">
           <a href="#">Anchor 1</a>
           <a href="#">Anchor 2</a>
