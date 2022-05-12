@@ -126,7 +126,7 @@ export const getScrollActivePosition = (
     elements[activeElementIndex] ?? {};
   const elementsCount = elements.length;
 
-  let scrollPosition;
+  let scrollPosition: number;
   if (direction === 'next') {
     if (activeElementIndex === elementsCount - 1) {
       // go to last element

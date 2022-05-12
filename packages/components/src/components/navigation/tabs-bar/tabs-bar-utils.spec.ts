@@ -119,15 +119,12 @@ describe('getFocusedTabIndex()', () => {
   const getButtons = () => Array.from(document.querySelectorAll('button')) as HTMLElement[];
 
   beforeEach(() => {
+    document.body.innerHTML = '';
     Array.from(Array(5)).forEach((_, i) => {
       const button = document.createElement('button');
       button.innerHTML = `Button ${i}`;
       document.body.appendChild(button);
     });
-  });
-
-  afterEach(() => {
-    document.body.innerHTML = '';
   });
 
   it('should return correct tabIndex of element in array', () => {
