@@ -8,7 +8,7 @@ type PrevNextButtonProps = {
   host: HTMLElement;
   direction: Direction;
   isHidden: boolean;
-  scrollOnPrevNextClick: (direction: Direction) => void;
+  onPrevNextClick: (direction: Direction) => void;
   theme: ThemeExtendedElectric;
 };
 
@@ -16,7 +16,7 @@ export const PrevNextButton: FunctionalComponent<PrevNextButtonProps> = ({
   host,
   direction,
   isHidden,
-  scrollOnPrevNextClick,
+  onPrevNextClick,
   theme,
 }) => {
   const actionClasses = {
@@ -36,7 +36,7 @@ export const PrevNextButton: FunctionalComponent<PrevNextButtonProps> = ({
         hide-label="true"
         size="inherit"
         icon={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
-        onClick={scrollOnPrevNextClick}
+        onClick={onPrevNextClick}
         theme={theme}
         aria-hidden="true"
       >

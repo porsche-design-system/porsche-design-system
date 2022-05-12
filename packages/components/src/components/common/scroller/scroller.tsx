@@ -1,6 +1,6 @@
 import { Component, Element, Prop, State, Watch, h } from '@stencil/core';
 import { PrevNextButton } from './prev-next-button';
-import { attachComponentCss, getHTMLElement, getHTMLElements, scrollElementTo } from '../../../utils';
+import { attachComponentCss, getHTMLElements, scrollElementTo } from '../../../utils';
 import { getComponentCss } from './scroller-styles';
 import type { Direction, GradientColorTheme, ScrollToPosition, PrevNextButtonJssStyle } from './scroller-utils';
 import { getScrollPositionAfterPrevNextClick } from './scroller-utils';
@@ -41,7 +41,6 @@ export class Scroller {
   }
 
   public componentDidLoad(): void {
-    this.defineHTMLElements();
     this.initIntersectionObserver();
   }
 
@@ -52,7 +51,7 @@ export class Scroller {
   public render(): JSX.Element {
     return (
       <div class="root">
-        <div class="scroll-area">
+        <div class="scroll-area" ref={(el) => (this.scrollAreaElement = el)}>
           <div class="scroll-wrapper">
             <slot />
             <div class="trigger" />
@@ -64,7 +63,7 @@ export class Scroller {
             host={this.host}
             direction={direction}
             isHidden={direction === 'next' ? this.isNextHidden : this.isPrevHidden}
-            scrollOnPrevNextClick={() => this.scrollOnPrevNextClick(direction)}
+            onPrevNextClick={() => this.scrollOnPrevNextClick(direction)}
             theme={this.theme}
           />
         ))}
@@ -95,11 +94,6 @@ export class Scroller {
 
     this.intersectionObserver.observe(firstTrigger);
     this.intersectionObserver.observe(lastTrigger);
-  };
-
-  private defineHTMLElements = (): void => {
-    const { shadowRoot } = this.host;
-    this.scrollAreaElement = getHTMLElement(shadowRoot, '.scroll-area');
   };
 
   private scrollOnPrevNextClick = (direction: Direction): void => {
