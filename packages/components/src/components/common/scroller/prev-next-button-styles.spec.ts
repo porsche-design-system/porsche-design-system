@@ -1,6 +1,6 @@
 import { getFunctionalComponentPrevNextButtonStyles } from './prev-next-button-styles';
 
-describe('getFunctionalComponentStateMessageStyles()', () => {
+describe('getFunctionalComponentPrevNextButtonStyles()', () => {
   it('should return correct Styles', () => {
     expect(getFunctionalComponentPrevNextButtonStyles('#f2f2f2')).toMatchSnapshot();
     expect(

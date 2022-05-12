@@ -8,7 +8,7 @@ describe('getComponentCss()', () => {
     ['surface', 'light'],
     ['default', 'dark'],
     ['surface', 'light-electric'],
-  ])('should return correct css for gradientColorScheme: %s, hasTabsBarParent: %s and theme: %s', (...args) => {
+  ])('should return correct css for gradientColorScheme: %s and theme: %s', (...args) => {
     expect(getComponentCss(...args)).toMatchSnapshot();
   });
 });
