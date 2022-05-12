@@ -76,7 +76,6 @@ export const getComponentCss = (
       ...textSmall,
       fontWeight: getFontWeight(weight),
       ...buildResponsiveStyles(size, (s: TabSize) => fontSize[s]),
-      height: 'inherit',
     },
     bar: {
       display: 'block',
