@@ -1,9 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, hasTabsBarParent: dark and theme: %s 1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default and theme: dark 1`] = `
 ":host {
   display: block !important;
-  height: inherit !important;
 }
 .root {
   position: relative;
@@ -82,10 +81,9 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, hasTabsBarParent: light and theme: %s 1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default and theme: light 1`] = `
 ":host {
   display: block !important;
-  height: inherit !important;
 }
 .root {
   position: relative;
@@ -164,10 +162,9 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, hasTabsBarParent: light-electric and theme: %s 1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default and theme: light-electric 1`] = `
 ":host {
   display: block !important;
-  height: inherit !important;
 }
 .root {
   position: relative;
@@ -246,10 +243,9 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: surface, hasTabsBarParent: dark and theme: %s 1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: surface and theme: dark 1`] = `
 ":host {
   display: block !important;
-  height: inherit !important;
 }
 .root {
   position: relative;
@@ -328,10 +324,9 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: surface, hasTabsBarParent: light and theme: %s 1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: surface and theme: light 1`] = `
 ":host {
   display: block !important;
-  height: inherit !important;
 }
 .root {
   position: relative;
@@ -410,10 +405,9 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: surface, hasTabsBarParent: light-electric and theme: %s 1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: surface and theme: light-electric 1`] = `
 ":host {
   display: block !important;
-  height: inherit !important;
 }
 .root {
   position: relative;

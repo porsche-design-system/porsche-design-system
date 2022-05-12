@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getFunctionalComponentStateMessageStyles() should return correct Styles 1`] = `
+exports[`getFunctionalComponentPrevNextButtonStyles() should return correct Styles 1`] = `
 Object {
   "action": Object {
     "&--hidden": Object {
@@ -41,7 +41,7 @@ Object {
 }
 `;
 
-exports[`getFunctionalComponentStateMessageStyles() should return correct Styles 2`] = `
+exports[`getFunctionalComponentPrevNextButtonStyles() should return correct Styles 2`] = `
 Object {
   "action": Object {
     "&--hidden": Object {

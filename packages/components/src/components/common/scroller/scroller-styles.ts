@@ -17,7 +17,6 @@ export const getComponentCss = (
     '@global': {
       ':host': addImportantToEachRule({
         display: 'block',
-        height: 'inherit',
       }),
     },
     root: {
