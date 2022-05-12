@@ -74,7 +74,7 @@ describe('tabs-bar', () => {
 
   const getPrevNextButton = async () => {
     const prevButton = await selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action--prev p-button-pure');
-    const nextButton = await selectNode(page, 'p-tabs-bar >>> p-scroller >>>.action--next p-button-pure');
+    const nextButton = await selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action--next p-button-pure');
     return { prevButton, nextButton };
   };
   const getScrollLeft = (element: ElementHandle) => getProperty<number>(element, 'scrollLeft');
