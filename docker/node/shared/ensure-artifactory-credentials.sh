@@ -19,7 +19,7 @@ cleanup_artifactory_credentials() {
 
 setup_artifactory_credentials() {
   echo "task: [$(date)] \"setup_artifactory_credentials\""
-  echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=${PORSCHE_NPM_REGISTRY_TOKEN}" >> "${HOME}/.npmrc"
+  echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=${PORSCHE_NPM_REGISTRY_TOKEN}" > "${HOME}/.npmrc"
 }
 
 trap cleanup_artifactory_credentials EXIT
