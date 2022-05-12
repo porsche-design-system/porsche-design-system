@@ -573,33 +573,6 @@ exports[`should have no basic DOM regression for p-radio-button-wrapper 1`] = `
 </label>"
 `;
 
-exports[`should have no basic DOM regression for p-scroller 1`] = `
-"<div class=\\"root\\">
-  <div class=\\"scroll-area\\">
-    <div class=\\"scroll-wrapper\\">
-      <slot>
-      </slot>
-      <div class=\\"trigger\\">
-      </div>
-      <div class=\\"trigger\\">
-      </div>
-    </div>
-  </div>
-  <div class=\\"action action--prev action--hidden\\">
-    <span class=\\"gradient\\">
-    </span>
-    <p-button-pure class=\\"button hydrated\\" hide-label=\\"true\\" aria-hidden=\\"true\\">
-      prev</p-button-pure>
-  </div>
-  <div class=\\"action action--next action--hidden\\">
-    <span class=\\"gradient\\">
-    </span>
-    <p-button-pure class=\\"button hydrated\\" hide-label=\\"true\\" aria-hidden=\\"true\\">
-      next</p-button-pure>
-  </div>
-</div>"
-`;
-
 exports[`should have no basic DOM regression for p-select-wrapper 1`] = `
 "<div class=\\"root\\">
   <label class=\\"label\\">
