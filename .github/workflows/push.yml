@@ -923,6 +923,7 @@ jobs:
         uses: ./.github/actions/docker-run
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          NPMJS_REGISTRY_TOKEN: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-npm
@@ -953,6 +954,7 @@ jobs:
         uses: ./.github/actions/docker-run
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          NPMJS_REGISTRY_TOKEN: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-npm
@@ -983,6 +985,7 @@ jobs:
         uses: ./.github/actions/docker-run
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          NPMJS_REGISTRY_TOKEN: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-npm
@@ -1014,6 +1017,7 @@ jobs:
         uses: ./.github/actions/docker-run
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          NPMJS_REGISTRY_TOKEN: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-npm
@@ -1045,6 +1049,7 @@ jobs:
         uses: ./.github/actions/docker-run
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          NPMJS_REGISTRY_TOKEN: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-npm

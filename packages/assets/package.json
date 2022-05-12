@@ -18,20 +18,13 @@
     "Bernd Hacker <bernd.hacker@mhp.com>",
     "Anton Schmidt <anton.schmidt@mhp.com>"
   ],
-  "license": "SEE LICENSE IN https://designsystem.porsche.com",
+  "license": "SEE LICENSE IN https://designsystem.porsche.com/latest/license",
   "description": "Porsche Design System Assets",
   "keywords": [
     "porsche",
     "assets"
   ],
   "homepage": "https://designsystem.porsche.com",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/porscheui/porsche-design-system.git"
-  },
-  "bugs": {
-    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
-  },
   "scripts": {
     "start": "yarn build && node ./bin/serve-cdn.js",
     "build": "yarn clean:build && yarn build:bin && yarn build:manifest && yarn build:copyAssets && yarn build:preparePackage",
