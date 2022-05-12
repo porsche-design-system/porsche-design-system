@@ -148,7 +148,7 @@ export const TabsPage = (): JSX.Element => {
         </PTabs>
       </div>
 
-      <div className="playground light" title="should render tabs gradientColorScheme surface on light background">
+      <div className="playground light surface" title="should render tabs gradientColorScheme surface on light background">
         <PTabs gradientColorScheme="surface">
           <PTabsItem label="Tab 1">Tab Content 1</PTabsItem>
           <PTabsItem label="Tab 2">Tab Content 2</PTabsItem>
@@ -160,7 +160,7 @@ export const TabsPage = (): JSX.Element => {
         </PTabs>
       </div>
 
-      <div className="playground dark" title="should render tabs gradientColorScheme surface on dark background">
+      <div className="playground dark surface" title="should render tabs gradientColorScheme surface on dark background">
         <PTabs theme="dark" gradientColorScheme="surface">
           <PTabsItem label="Tab 1">Tab Content 1</PTabsItem>
           <PTabsItem label="Tab 2">Tab Content 2</PTabsItem>
