@@ -55,7 +55,6 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   font-weight: 400;
   font-size: 1.5rem;
   line-height: 1.5;
-  height: inherit;
 }
 .bar {
   display: block;
@@ -127,7 +126,6 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   font-weight: 400;
   font-size: 1.5rem;
   line-height: 1.5;
-  height: inherit;
 }
 .bar {
   display: block;
@@ -199,7 +197,6 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   font-weight: 400;
   font-size: 1.5rem;
   line-height: 1.5;
-  height: inherit;
 }
 .bar {
   display: block;
@@ -271,7 +268,6 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.5;
-  height: inherit;
 }
 .bar {
   display: block;
@@ -343,7 +339,6 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.5;
-  height: inherit;
 }
 .bar {
   display: block;
@@ -415,7 +410,6 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.5;
-  height: inherit;
 }
 .bar {
   display: block;
@@ -487,7 +481,6 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-weight: 600;
   font-size: 1rem;
   line-height: 1.5;
-  height: inherit;
 }
 .bar {
   display: block;
@@ -559,7 +552,6 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.5;
-  height: inherit;
 }
 .bar {
   display: block;
