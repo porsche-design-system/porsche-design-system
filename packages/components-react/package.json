@@ -36,7 +36,7 @@
     "whatwg-fetch": "^3.6.2"
   },
   "devDependencies": {
-    "@porsche-design-system/assets": "4.0.0",
+    "@porsche-design-system/assets": "5.0.0",
     "@porsche-design-system/shared": "0.0.0",
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-node-resolve": "^13.2.1",
