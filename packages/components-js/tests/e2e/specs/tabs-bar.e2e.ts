@@ -70,11 +70,11 @@ describe('tabs-bar', () => {
   const getAllButtons = () => page.$$('button');
   const getScrollArea = () => selectNode(page, 'p-tabs-bar >>> p-scroller >>> .scroll-area');
   const getBar = () => selectNode(page, 'p-tabs-bar >>> .bar');
-  const getGradientNext = () => selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action--next .gradient');
+  const getGradientNext = () => selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action-next .gradient');
 
   const getPrevNextButton = async () => {
-    const prevButton = await selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action--prev p-button-pure');
-    const nextButton = await selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action--next p-button-pure');
+    const prevButton = await selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action-prev p-button-pure');
+    const nextButton = await selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action-next p-button-pure');
     return { prevButton, nextButton };
   };
   const getScrollLeft = (element: ElementHandle) => getProperty<number>(element, 'scrollLeft');
@@ -518,7 +518,7 @@ describe('tabs-bar', () => {
         </div>`
       );
       const allButtons = await (await selectNode(page, 'p-tabs >>> p-tabs-bar')).$$('button');
-      const gradientNext = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> p-scroller >>> .action--next .gradient');
+      const gradientNext = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> p-scroller >>> .action-next .gradient');
       const gradientWidth = await getOffsetWidth(gradientNext);
       const scrollArea = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> p-scroller >>> .scroll-area');
       const scrollAreaWidth = await getOffsetWidth(scrollArea);

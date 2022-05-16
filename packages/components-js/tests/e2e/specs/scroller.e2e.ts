@@ -45,13 +45,13 @@ describe('scroller', () => {
   const getAllButtons = () => page.$$('button');
   const getScrollArea = () => selectNode(page, 'p-scroller >>> .scroll-area');
   const getActionContainers = async () => {
-    const actionPrev = await selectNode(page, 'p-scroller >>> .action--prev');
-    const actionNext = await selectNode(page, 'p-scroller >>> .action--next');
+    const actionPrev = await selectNode(page, 'p-scroller >>> .action-prev');
+    const actionNext = await selectNode(page, 'p-scroller >>> .action-next');
     return { actionPrev, actionNext };
   };
   const getPrevNextButton = async () => {
-    const prevButton = await selectNode(page, 'p-scroller >>> .action--prev p-button-pure');
-    const nextButton = await selectNode(page, 'p-scroller >>> .action--next p-button-pure');
+    const prevButton = await selectNode(page, 'p-scroller >>> .action-prev p-button-pure');
+    const nextButton = await selectNode(page, 'p-scroller >>> .action-next p-button-pure');
     return { prevButton, nextButton };
   };
   const getScrollLeft = (element: ElementHandle) => getProperty(element, 'scrollLeft');
