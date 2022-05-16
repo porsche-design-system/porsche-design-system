@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: dark and prevNextButtonJssStyle: undefined  1`] = `
 ":host {
   display: block !important;
   height: 100% !important;
@@ -82,7 +82,92 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light and prevNextButtonJssStyle: {
+  top: 'calc(50% - .5em)',
+  transform: 'translate3d(0,calc(-50% + .375em),0)'
+}  1`] = `
+":host {
+  display: block !important;
+  height: 100% !important;
+}
+.root {
+  position: relative;
+  margin: 0 -0.25rem;
+  height: inherit;
+}
+.scroll-area {
+  position: relative;
+  height: inherit;
+  box-sizing: border-box;
+  padding: 0.25rem;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroll-area::-webkit-scrollbar {
+  display: none;
+}
+.scroll-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  min-width: 100%;
+}
+.trigger {
+  display: block;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 0.0625rem;
+  visibility: hidden;
+}
+.trigger:first-of-type {
+  left: 0;
+}
+.trigger:last-of-type {
+  right: 0;
+}
+.action {
+  display: flex;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  align-items: center;
+}
+.action--prev {
+  left: 0;
+  justify-content: flex-start;
+}
+.action--next {
+  right: 0;
+  justify-content: flex-end;
+}
+.action--hidden {
+  visibility: hidden;
+}
+.action--next .gradient {
+  background: linear-gradient(90deg, #fff0 0%, #fff 50%);
+}
+.action--prev .gradient {
+  background: linear-gradient(90deg, #fff 50%, #fff0 100%);
+}
+.button {
+  position: absolute;
+  top: calc(50% - .5em);
+  transform: translate3d(0,calc(-50% + .375em),0);
+}
+.gradient {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2em;
+  pointer-events: none;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light and prevNextButtonJssStyle: undefined  1`] = `
 ":host {
   display: block !important;
   height: 100% !important;
@@ -164,7 +249,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default and theme: light-electric 1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light-electric and prevNextButtonJssStyle: undefined  1`] = `
 ":host {
   display: block !important;
   height: 100% !important;
@@ -246,7 +331,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: surface and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: surface, theme: dark and prevNextButtonJssStyle: undefined  1`] = `
 ":host {
   display: block !important;
   height: 100% !important;
@@ -328,7 +413,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: surface and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: surface, theme: light and prevNextButtonJssStyle: undefined  1`] = `
 ":host {
   display: block !important;
   height: 100% !important;
@@ -410,7 +495,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: surface and theme: light-electric 1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: surface, theme: light-electric and prevNextButtonJssStyle: undefined  1`] = `
 ":host {
   display: block !important;
   height: 100% !important;
