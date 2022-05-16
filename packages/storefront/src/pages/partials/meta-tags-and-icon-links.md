@@ -30,11 +30,11 @@ The result of this partial looks like this:
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { getMetaTagsAndIconLinks } from '@porsche-design-system/components-js/partials';
+import { metaTagsAndIconLinksDemo } from '@/lib/partialResults';
 
 @Component
 export default class Code extends Vue {
-  public metaTagsAndIconLinks = getMetaTagsAndIconLinks({ appTitle: 'TITLE_OF_YOUR_APP' }).replaceAll('><', '>\n<');
+  public metaTagsAndIconLinks = metaTagsAndIconLinksDemo.replaceAll('><', '>\n<');
   public params = [
     {
       value: "{ appTitle: 'TITLE_OF_YOUR_APP' }",

@@ -5,6 +5,8 @@ const hash = '[a-z0-9]{32}';
 const baseHrefCom = 'https://cdn.ui.porsche.com/porsche-design-system/meta-icons';
 const baseHrefCn = 'https://cdn.ui.porsche.cn/porsche-design-system/meta-icons';
 
+jest.mock('../../../src/shared');
+
 describe('validation', () => {
   it('should throw error on unprovided appTitle', () => {
     expect(() => getMetaTagsAndIconLinks()).toThrowErrorMatchingInlineSnapshot(

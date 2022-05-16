@@ -214,21 +214,18 @@ In order to deploy something to AWS from your local machine, you need to follow 
 
 ---
 
-## Open Source Check via OSS Review Toolkit (ORT)
+## Open Source Check via OSS Review Toolkit (ORT) by Porsche's Open Source Office (OSO)
 
 The OSS Review Toolkit (ORT) aims to assist with the tasks that commonly needs to be performed in the context of license compliance checks, especially for Free and Open Source Software dependencies.
 
 ### When should the ORT - Analyzer be running?
-An ORT analysis file, `analyzer-result.yml`, is generated on every merge into `master` or `v*` branch by our CI/CD and stored as artifact in GitHub Actions.
+A zipped ORT analysis file, `analyzer-result.yml`, is generated on every first day of month and is sent by GitHub Actions to OSO automatically.
 
-### How often should the ORT - Analyzer be running?
-The ORT analysis on the source code files for generating `analyzer-result.yml` file should be submitted to OSO (F.4) prior to any production release of feature(s) which includes either a new or update existing FOSS component(s).
-
-### How should I provide "analyzer-result.yml" file?
-Once the `analyzer-result.yml` file is generated, it needs to be attached to a [OSO service desk](https://skyway.porsche.com/jira/plugins/servlet/desk/portal/261) Jira Ticket to be analyzed by the OSO team of Porsche to check against license violations of FOSS component(s).
+### Where can I check FOSS status report?
+[OSO service desk](https://skyway.porsche.com/jira/plugins/servlet/desk/portal/261)
 
 ### Where can I access the list of licenses which can be used in product development lifecycle?
-Please refer to the link below for accessing license list: [Porsche License List](https://skyway.porsche.com/confluence/download/attachments/89643039/23112020_Porsche%20Lizenzliste.xlsx?version=2&modificationDate=1611828503000&api=v2)
+[Porsche License List](https://skyway.porsche.com/confluence/download/attachments/89643039/23112020_Porsche%20Lizenzliste.xlsx?version=2&modificationDate=1611828503000&api=v2)
 
 ---
 

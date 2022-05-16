@@ -12,6 +12,7 @@ import { dataVrt, headVrt } from '@porsche-design-system/shared';
               *ngFor="let item of head"
               [sort]="item"
               [hideLabel]="item.hideLabel"
+              [multiline]="item.multiline"
               [style]="item.style?.minWidth ? 'min-width: 250px;' : null"
               [innerHTML]="item.name"
             ></p-table-head-cell>
@@ -30,6 +31,7 @@ import { dataVrt, headVrt } from '@porsche-design-system/shared';
               <span [innerHTML]="item.html"></span>
             </p-table-cell>
             <p-table-cell [multiline]="true">{{ item.longText }}</p-table-cell>
+            <p-table-cell>{{ item.shortText }}</p-table-cell>
             <p-table-cell>{{ item.shortText }}</p-table-cell>
             <p-table-cell>{{ item.shortText }}</p-table-cell>
             <p-table-cell>

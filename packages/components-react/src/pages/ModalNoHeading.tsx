@@ -12,7 +12,7 @@ export const ModalNoHeadingPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should display close button on the correct position without a heading">
         <PContentWrapper>

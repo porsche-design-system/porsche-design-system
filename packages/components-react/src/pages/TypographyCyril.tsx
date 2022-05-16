@@ -22,7 +22,7 @@ export const TypographyCyrilPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground" title="should show typography in cyril charset">
         <h2>Porsche Next Cyril</h2>

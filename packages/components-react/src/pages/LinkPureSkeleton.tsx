@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { PLinkPure } from '@porsche-design-system/components-react';
 import { useEffect } from 'react';
-import { pollComponentsReady } from '../pollComponentsReady'
+import { pollComponentsReady } from '../pollComponentsReady';
 
 export const LinkPureSkeletonPage = (): JSX.Element => {
   useEffect(() => {
@@ -20,7 +20,7 @@ export const LinkPureSkeletonPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should render link pure skeleton with label">
         <h4>With label</h4>

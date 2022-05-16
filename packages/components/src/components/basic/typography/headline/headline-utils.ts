@@ -1,5 +1,4 @@
-import type { TextSize } from '../text/text-utils';
-import type { BreakpointCustomizable } from '../../../../types';
+import type { BreakpointCustomizable, TextSize } from '../../../../types';
 import { getHTMLElement } from '../../../../utils';
 
 export const HEADLINE_VARIANTS = [
