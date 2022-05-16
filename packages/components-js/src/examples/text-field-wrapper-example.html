@@ -3,27 +3,34 @@
 </p-text-field-wrapper>
 
 <script>
+  const isUsLocale = (yourDetectedLocale) => yourDetectedLocale === 'en-US' || false;
+  const description = `'${isUsLocale() ? 'mm/dd/yyyy' : 'dd.mm.yyyy'}' in range [${
+    isUsLocale() ? '01/01/1900, 01/01/2100' : '01.01.1900, 01.01.2100'
+  }]`;
+
+  document.querySelector('p-text-field-wrapper').setAttribute('description', description);
+
   IMask(document.getElementById('date-mask'), {
     lazy: false,
-    mask: 'DD.MM.YYYY',
+    mask: isUsLocale() ? 'mm/dd/yyyy' : 'dd.mm.yyyy',
     blocks: {
-      YYYY: {
+      yyyy: {
         mask: IMask.MaskedRange,
         from: 1900,
         to: 2100,
-        placeholderChar: 'Y',
+        placeholderChar: 'y',
       },
-      MM: {
+      mm: {
         mask: IMask.MaskedRange,
         from: 1,
         to: 12,
-        placeholderChar: 'M',
+        placeholderChar: 'm',
       },
-      DD: {
+      dd: {
         mask: IMask.MaskedRange,
         from: 1,
         to: 31,
-        placeholderChar: 'D',
+        placeholderChar: 'd',
       },
     },
   });

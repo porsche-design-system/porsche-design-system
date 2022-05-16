@@ -126,7 +126,9 @@ If using **slotted contents** to serve form elements, make sure to provide the r
 If you want to use localized input masks to improve the user experience we recommend using <a href="https://imask.js.org/" target="_blank">iMask</a>. Make sure to handle potential drawbacks (e.g. auto-formatting /-correction, styling to distinguish between masked input, placeholder and input value, error handling etc.) to avoid user frustration.
 
 <p-inline-notification heading="Important note" state="warning" persistent="true">
-  Be aware that if you provide masked input you will lose all benefits which you might have using type "date" (e.g. native date-picker) since masked inputs always require input type "text". Same applies to other types with native handling.  
+  Be aware that if you provide masked input you will lose all benefits which you might have using type "date" (e.g. native date-picker) since masked inputs always require input type "text". Same applies to other types with native handling.<br>
+  Once the last character is inserted the input will be converted to a Date object and gets verified (read more <a href="https://imask.js.org/guide.html#masked-date" target="_blank">here</a>).<br>
+  Keep in mind that the definition of the "locale" in the examples below is a very simple use case. You will probably have to distinguish between more than two scenarios.
 </p-inline-notification>
 
 <Playground :markup="maskedInput" :frameworkMarkup="codeExample" :config="config"></Playground>
@@ -225,37 +227,40 @@ export default class Code extends Vue {
   <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
 </p-text-field-wrapper>`;
 
-maskedInput =
-`<p-text-field-wrapper label="Some label">
-  <input type="text" id="date-mask" />
-</p-text-field-wrapper>`;
+  get maskedInput() {
+    const isUsLocale = Intl.DateTimeFormat().resolvedOptions().locale === 'en-US';
+    return `<p-text-field-wrapper label="Some label" description="'${isUsLocale ? 'mm/dd/yyyy' : 'dd.mm.yyyy'}' in range [${isUsLocale ? '01/01/1900, 01/01/2100' : '01.01.1900, 01.01.2100'}]">
+      <input type="text" id="date-mask" />
+    </p-text-field-wrapper>`;
+  }
 
   mounted() {
     this.initIMask();
   }
 
   initIMask() {
+    const isUsLocale = Intl.DateTimeFormat().resolvedOptions().locale === 'en-US';
     IMask(document.getElementById('date-mask'), {
       lazy: false,
-      mask: 'DD.MM.YYYY',
+      mask: isUsLocale ? 'mm/dd/yyyy' : 'dd.mm.yyyy',
       blocks: {
-        YYYY: {
+        yyyy: {
           mask: IMask.MaskedRange,
           from: 1900,
           to: 2100,
-          placeholderChar: 'Y',
+          placeholderChar: 'y',
         },
-        MM: {
+        mm: {
           mask: IMask.MaskedRange,
           from: 1,
           to: 12,
-          placeholderChar: 'M',
+          placeholderChar: 'm',
         },
-        DD: {
+        dd: {
           mask: IMask.MaskedRange,
           from: 1,
           to: 31,
-          placeholderChar: 'D',
+          placeholderChar: 'd',
         },
       },
     });
