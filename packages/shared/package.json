@@ -50,7 +50,7 @@
     "change-case": "^4.1.2",
     "globby": "^11.0.4",
     "madge": "^5.0.1",
-    "rollup": "^2.71.1",
+    "rollup": "^2.73.0",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
     "ts-node": "^10.7.0",
