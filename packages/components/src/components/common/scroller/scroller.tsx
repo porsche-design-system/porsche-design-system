@@ -54,7 +54,7 @@ export class Scroller {
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.gradientColorScheme, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.gradientColorScheme, this.theme, this.prevNextButtonJssStyle);
   }
 
   public render(): JSX.Element {
