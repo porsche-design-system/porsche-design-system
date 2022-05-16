@@ -1,10 +1,8 @@
 import { ElementHandle, Page } from 'puppeteer';
 import {
   expectA11yToMatchSnapshot,
-  getConsoleErrorsAmount,
   getLifecycleStatus,
   getProperty,
-  initConsoleObserver,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -76,19 +74,26 @@ describe('scroller', () => {
     });
   };
 
-  const hiddenClass = 'action--hidden';
+  const getComputedElementHandleStyles = async (elHandle: ElementHandle<Element>): Promise<CSSStyleDeclaration> => {
+    return elHandle.evaluate((el: Element): CSSStyleDeclaration => {
+      return getComputedStyle(el);
+    });
+  };
+
+  const getVisibility = async (elHandle: ElementHandle<Element>): Promise<string> =>
+    (await getComputedElementHandleStyles(elHandle)).visibility;
 
   describe('slotted content changes', () => {
     it('should show next button after adding a button', async () => {
       await initScroller({ amount: 3, isWrapped: true });
       const { actionNext } = await getActionContainers();
 
-      expect(await getClassList(actionNext)).toContain(hiddenClass);
+      expect(await getVisibility(actionNext)).toBe('hidden');
 
       await addNewButton();
       await waitForStencilLifecycle(page);
 
-      expect(await getClassList(actionNext)).not.toContain(hiddenClass);
+      expect(await getVisibility(actionNext)).toBe('');
     });
   });
 
@@ -158,17 +163,16 @@ describe('scroller', () => {
 
       await page.evaluate(() => window.scroll(0, 20));
       await waitForStencilLifecycle(page);
-
-      expect(await getClassList(actionPrev)).toContain(hiddenClass);
-      expect(await getClassList(actionNext)).toContain(hiddenClass);
+      expect(await getVisibility(actionPrev)).toBe('hidden');
+      expect(await getVisibility(actionNext)).toBe('hidden');
     });
 
     it('should only show next button', async () => {
       await initScroller({ amount: 4, isWrapped: true });
       const { actionPrev, actionNext } = await getActionContainers();
 
-      expect(await getClassList(actionNext)).not.toContain(hiddenClass);
-      expect(await getClassList(actionPrev)).toContain(hiddenClass);
+      expect(await getVisibility(actionNext)).toBe('');
+      expect(await getVisibility(actionPrev)).toBe('hidden');
     });
 
     it('should only show prev button', async () => {
@@ -182,8 +186,8 @@ describe('scroller', () => {
       await clickElement(nextButton);
       await clickElement(nextButton);
 
-      expect(await getClassList(actionNext)).toContain(hiddenClass);
-      expect(await getClassList(actionPrev)).not.toContain(hiddenClass);
+      expect(await getVisibility(actionNext)).toBe('hidden');
+      expect(await getVisibility(actionPrev)).toBe('');
     });
 
     it('should show prev and next button', async () => {
@@ -193,16 +197,16 @@ describe('scroller', () => {
 
       await clickElement(nextButton);
 
-      expect(await getClassList(actionNext)).not.toContain(hiddenClass);
-      expect(await getClassList(actionPrev)).not.toContain(hiddenClass);
+      expect(await getVisibility(actionNext)).toBe('');
+      expect(await getVisibility(actionPrev)).toBe('');
     });
 
     it('should not show prev/next buttons without children', async () => {
       await setContentWithDesignSystem(page, `<p-scroller active-element-index="0"></p-scroller>`);
       const { actionPrev, actionNext } = await getActionContainers();
 
-      expect(await getClassList(actionNext)).toContain(hiddenClass);
-      expect(await getClassList(actionPrev)).toContain(hiddenClass);
+      expect(await getVisibility(actionNext)).toBe('hidden');
+      expect(await getVisibility(actionPrev)).toBe('hidden');
     });
 
     it('should have label of prev/next buttons in dom', async () => {
@@ -237,15 +241,14 @@ describe('scroller', () => {
       it.each(steps)(`should not show actionNext for element with a width of %spx`, async (width) => {
         await setContentWithWidth(width);
         const { actionNext } = await getActionContainers();
-
-        expect(await getClassList(actionNext), `On size ${width}`).toContain(hiddenClass);
+        expect(await getVisibility(actionNext), `On size ${width}`).toBe('hidden');
       });
 
       it('should show actionNext when more than 0.9px of the trigger are hidden', async () => {
         await setContentWithWidth(150.91);
         const { actionNext } = await getActionContainers();
 
-        expect(await getClassList(actionNext)).not.toContain(hiddenClass);
+        expect(await getVisibility(actionNext)).toBe('');
       });
     });
   });
