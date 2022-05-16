@@ -248,91 +248,79 @@ describe('scroller', () => {
         expect(await getClassList(actionNext)).not.toContain(hiddenClass);
       });
     });
+  });
 
-    describe('errors', () => {
-      it('should not crash without children', async () => {
-        initConsoleObserver(page);
+  describe('lifecycle', () => {
+    it('should work without unnecessary round trips on init', async () => {
+      await initScroller({ amount: 3, tag: 'a' });
+      const status = await getLifecycleStatus(page);
 
-        await setContentWithDesignSystem(page, `<p-scroller active-element-index="0"></p-scroller>`);
-        expect(getConsoleErrorsAmount()).toBe(0);
+      expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
+      expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
+      expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
+      expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2);
 
-        await page.evaluate(() => console.error('test error'));
-        expect(getConsoleErrorsAmount()).toBe(1);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+    });
+
+    it('should work without unnecessary round trips on prop change', async () => {
+      await initScroller({ amount: 3, tag: 'button' });
+      const host = await getHost();
+
+      await setProperty(host, 'theme', 'dark');
+      await waitForStencilLifecycle(page);
+
+      const status = await getLifecycleStatus(page);
+
+      expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
+
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(5);
+    });
+  });
+
+  describe('accessibility', () => {
+    const getElementList = () => selectNode(page, 'p-scroller >>> [role="tablist"]');
+    it('should expose correct initial accessibility tree of tablist', async () => {
+      await initScroller({ amount: 3 });
+
+      await expectA11yToMatchSnapshot(page, await getElementList(), { interestingOnly: false });
+    });
+
+    it('should render correct accessibility tree on scrollArea click', async () => {
+      await initScroller({ amount: 4 });
+      const scrollArea = await getScrollArea();
+
+      await expectA11yToMatchSnapshot(page, await getElementList(), {
+        message: 'Before click',
+        interestingOnly: false,
+      });
+
+      await clickElement(scrollArea);
+
+      await expectA11yToMatchSnapshot(page, await getElementList(), {
+        message: 'After click',
+        interestingOnly: false,
       });
     });
 
-    describe('lifecycle', () => {
-      it('should work without unnecessary round trips on init', async () => {
-        await initScroller({ amount: 3, tag: 'a' });
-        const status = await getLifecycleStatus(page);
+    it('should render correct accessibility tree on focus change and enter press', async () => {
+      await initScroller({ amount: 3 });
 
-        expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
-        expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
-        expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
-        expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2);
-
-        expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
-        expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+      await expectA11yToMatchSnapshot(page, await getElementList(), {
+        message: 'Before change',
+        interestingOnly: false,
       });
 
-      it('should work without unnecessary round trips on prop change', async () => {
-        await initScroller({ amount: 3, tag: 'button' });
-        const host = await getHost();
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
 
-        await setProperty(host, 'theme', 'dark');
-        await waitForStencilLifecycle(page);
-
-        const status = await getLifecycleStatus(page);
-
-        expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
-
-        expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
-        expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(5);
-      });
-    });
-
-    describe('accessibility', () => {
-      const getElementList = () => selectNode(page, 'p-scroller >>> [role="tablist"]');
-      it('should expose correct initial accessibility tree of tablist', async () => {
-        await initScroller({ amount: 3 });
-
-        await expectA11yToMatchSnapshot(page, await getElementList(), { interestingOnly: false });
-      });
-
-      it('should render correct accessibility tree on scrollArea click', async () => {
-        await initScroller({ amount: 4 });
-        const scrollArea = await getScrollArea();
-
-        await expectA11yToMatchSnapshot(page, await getElementList(), {
-          message: 'Before click',
-          interestingOnly: false,
-        });
-
-        await clickElement(scrollArea);
-
-        await expectA11yToMatchSnapshot(page, await getElementList(), {
-          message: 'After click',
-          interestingOnly: false,
-        });
-      });
-
-      it('should render correct accessibility tree on focus change and enter press', async () => {
-        await initScroller({ amount: 3 });
-
-        await expectA11yToMatchSnapshot(page, await getElementList(), {
-          message: 'Before change',
-          interestingOnly: false,
-        });
-
-        await page.keyboard.press('Tab');
-        await page.keyboard.press('ArrowRight');
-        await page.keyboard.press('Enter');
-        await waitForStencilLifecycle(page);
-
-        await expectA11yToMatchSnapshot(page, await getElementList(), {
-          message: 'After change',
-          interestingOnly: false,
-        });
+      await expectA11yToMatchSnapshot(page, await getElementList(), {
+        message: 'After change',
+        interestingOnly: false,
       });
     });
   });
