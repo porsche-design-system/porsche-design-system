@@ -37,14 +37,15 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
         '&::before': {
           ...(isCurrent
             ? {
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
                 color: isDisabled ? disabledColor : invertedBaseColor,
                 backgroundColor: isDisabled ? 'none' : baseColor,
                 width: pxToRemWithUnit(18),
                 height: pxToRemWithUnit(18),
                 margin: `${pxToRemWithUnit(3)} ${pxToRemWithUnit(7)} ${pxToRemWithUnit(3)} ${pxToRemWithUnit(3)}`,
                 font: textXSmall.font,
-                textAlign: 'center',
-                alignSelf: 'center',
                 borderRadius: '50%',
                 content: 'counter(count)',
                 counterIncrement: 'count',

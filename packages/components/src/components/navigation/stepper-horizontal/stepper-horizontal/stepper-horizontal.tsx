@@ -36,7 +36,7 @@ export class StepperHorizontal {
       // >
       //   <slot />
       // </ScrollWrapper>
-      <div>
+      <div style={{ display: 'flex' }}>
         <slot />
       </div>
     );
