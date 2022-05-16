@@ -4,9 +4,19 @@ import type { ThemeExtendedElectric } from '../../../types';
 import type { GradientColorTheme } from './scroller-utils';
 import type { JssStyle } from 'jss';
 
+const actionButtonStyles: JssStyle = {
+  display: 'flex',
+  position: 'absolute',
+  top: 0,
+  height: '100%',
+  alignItems: 'center',
+};
+
 export const getComponentCss = (
   gradientColorScheme: GradientColorTheme,
   theme: ThemeExtendedElectric,
+  isNextHidden: boolean,
+  isPrevHidden: boolean,
   prevNextButtonStyle?: JssStyle
 ): string => {
   const { backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
@@ -61,29 +71,23 @@ export const getComponentCss = (
         right: 0,
       },
     },
-    action: {
-      display: 'flex',
-      position: 'absolute',
-      top: 0,
-      height: '100%',
-      alignItems: 'center',
-      '&--prev': {
-        left: 0,
-        justifyContent: 'flex-start',
-        '& $gradient': {
-          background: `linear-gradient(90deg, ${gradientColor} 50%, ${gradientColorTransparent} 100%)`,
-        },
+    'action-prev': {
+      ...actionButtonStyles,
+      left: 0,
+      justifyContent: 'flex-start',
+      '& $gradient': {
+        background: `linear-gradient(90deg, ${gradientColor} 50%, ${gradientColorTransparent} 100%)`,
       },
-      '&--next': {
-        right: 0,
-        justifyContent: 'flex-end',
-        '& $gradient': {
-          background: `linear-gradient(90deg, ${gradientColorTransparent} 0%, ${gradientColor} 50%)`,
-        },
+      visibility: isPrevHidden ? 'hidden' : 'visible',
+    },
+    'action-next': {
+      ...actionButtonStyles,
+      right: 0,
+      justifyContent: 'flex-end',
+      '& $gradient': {
+        background: `linear-gradient(90deg, ${gradientColorTransparent} 0%, ${gradientColor} 50%)`,
       },
-      '&--hidden': {
-        visibility: 'hidden', // to make offsetWidth work
-      },
+      visibility: isNextHidden ? 'hidden' : 'visible',
     },
     button: {
       position: 'absolute',
