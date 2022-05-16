@@ -48,7 +48,6 @@ import { PaginationPage } from './Pagination';
 import { PopoverPage } from './Popover';
 import { RadioButtonWrapperPage } from './RadioButtonWrapper';
 import { RadioButtonWrapperSkeletonPage } from './RadioButtonWrapperSkeleton';
-import { ScrollerPage } from './Scroller';
 import { SelectWrapperPage } from './SelectWrapper';
 import { SelectWrapperSkeletonPage } from './SelectWrapperSkeleton';
 import { SpinnerPage } from './Spinner';
@@ -258,11 +257,6 @@ export const generatedRoutes: RouteType[] = [
     name: 'Radio Button Wrapper Skeleton',
     path: '/radio-button-wrapper-skeleton',
     element: <RadioButtonWrapperSkeletonPage />,
-  },
-  {
-    name: 'Scroller',
-    path: '/scroller',
-    element: <ScrollerPage />,
   },
   {
     name: 'Select Wrapper',

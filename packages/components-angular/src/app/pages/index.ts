@@ -61,7 +61,6 @@ import { PaginationComponent } from './pagination.component';
 import { PopoverComponent } from './popover.component';
 import { RadioButtonWrapperComponent } from './radio-button-wrapper.component';
 import { RadioButtonWrapperSkeletonComponent } from './radio-button-wrapper-skeleton.component';
-import { ScrollerComponent } from './scroller.component';
 import { SelectWrapperComponent } from './select-wrapper.component';
 import { SelectWrapperSkeletonComponent } from './select-wrapper-skeleton.component';
 import { SpinnerComponent } from './spinner.component';
@@ -126,7 +125,6 @@ export const generatedPages = [
   PopoverComponent,
   RadioButtonWrapperComponent,
   RadioButtonWrapperSkeletonComponent,
-  ScrollerComponent,
   SelectWrapperComponent,
   SelectWrapperSkeletonComponent,
   SpinnerComponent,
@@ -337,11 +335,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Radio Button Wrapper Skeleton',
     path: 'radio-button-wrapper-skeleton',
     component: RadioButtonWrapperSkeletonComponent,
-  },
-  {
-    name: 'Scroller',
-    path: 'scroller',
-    component: ScrollerComponent,
   },
   {
     name: 'Select Wrapper',
