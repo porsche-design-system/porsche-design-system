@@ -3,34 +3,40 @@ import type { LegacyRef } from 'react';
 import { useIMask, IMask } from 'react-imask';
 
 export const TextFieldWrapperExamplePage = (): JSX.Element => {
+  const isUsLocale = (yourDetectedLocale?: string) => yourDetectedLocale === 'en-US' || false;
   const opts = {
     lazy: false,
-    mask: 'DD.MM.YYYY',
+    mask: isUsLocale() ? 'mm/dd/yyyy' : 'dd.mm.yyyy',
     blocks: {
-      YYYY: {
+      yyyy: {
         mask: IMask.MaskedRange,
         from: 1900,
         to: 2100,
-        placeholderChar: 'Y',
+        placeholderChar: 'y',
       },
-      MM: {
+      mm: {
         mask: IMask.MaskedRange,
         from: 1,
         to: 12,
-        placeholderChar: 'M',
+        placeholderChar: 'm',
       },
-      DD: {
+      dd: {
         mask: IMask.MaskedRange,
         from: 1,
         to: 31,
-        placeholderChar: 'D',
+        placeholderChar: 'd',
       },
     },
   };
   const { ref } = useIMask(opts);
 
   return (
-    <PTextFieldWrapper label="Some label">
+    <PTextFieldWrapper
+      label="Some label"
+      description={`'${isUsLocale() ? 'mm/dd/yyyy' : 'dd.mm.yyyy'}' in range [${
+        isUsLocale() ? '01/01/1900, 01/01/2100' : '01.01.1900, 01.01.2100'
+      }]`}
+    >
       <input ref={ref as LegacyRef<HTMLInputElement>} type="text" />
     </PTextFieldWrapper>
   );
