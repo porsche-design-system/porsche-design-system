@@ -11,7 +11,7 @@ describe('scroller', () => {
         component.connectedCallback();
       } catch (e) {}
 
-      expect(spy).toBeCalledWith(undefined, 'pScroller');
+      expect(spy).toBeCalledWith(undefined, 'pTabsBar');
     });
   });
 });

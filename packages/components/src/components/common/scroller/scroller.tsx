@@ -1,6 +1,11 @@
 import { Component, Element, Prop, State, Watch, h } from '@stencil/core';
-import { PrevNextButton } from './prev-next-button';
-import { attachComponentCss, getHTMLElements, scrollElementTo, throwIfParentIsNotOfKind } from '../../../utils';
+import {
+  attachComponentCss,
+  getHTMLElements,
+  getPrefixedTagNames,
+  scrollElementTo,
+  throwIfParentIsNotOfKind,
+} from '../../../utils';
 import { getComponentCss } from './scroller-styles';
 import type { Direction, GradientColorTheme, ScrollToPosition, PrevNextButtonJssStyle } from './scroller-utils';
 import { getScrollPositionAfterPrevNextClick } from './scroller-utils';
@@ -49,10 +54,39 @@ export class Scroller {
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.gradientColorScheme, this.theme, this.prevNextButtonJssStyle);
+    attachComponentCss(this.host, getComponentCss, this.gradientColorScheme, this.theme);
   }
 
   public render(): JSX.Element {
+    const renderPrevNextButton = (direction: Direction): JSX.Element => {
+      const actionClasses = {
+        ['action']: true,
+        [`action--${direction}`]: true,
+        ['action--hidden']: direction === 'next' ? this.isNextHidden : this.isPrevHidden,
+      };
+
+      const PrefixedTagNames = getPrefixedTagNames(this.host);
+      // TODO: tabbable has to be customizable
+      return (
+        <div class={actionClasses}>
+          <span class="gradient" />
+          <PrefixedTagNames.pButtonPure
+            class="button"
+            type="button"
+            tabbable={false}
+            hide-label="true"
+            size="inherit"
+            icon={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
+            onClick={() => this.scrollOnPrevNextClick(direction)}
+            theme={this.theme}
+            aria-hidden="true"
+          >
+            {direction}
+          </PrefixedTagNames.pButtonPure>
+        </div>
+      );
+    };
+
     return (
       <div class="root">
         <div class="scroll-area" ref={(el) => (this.scrollAreaElement = el)}>
@@ -62,15 +96,7 @@ export class Scroller {
             <div class="trigger" />
           </div>
         </div>
-        {['prev', 'next'].map((direction: Direction) => (
-          <PrevNextButton
-            host={this.host}
-            direction={direction}
-            isHidden={direction === 'next' ? this.isNextHidden : this.isPrevHidden}
-            onPrevNextClick={() => this.scrollOnPrevNextClick(direction)}
-            theme={this.theme}
-          />
-        ))}
+        {['prev', 'next'].map((direction: Direction) => renderPrevNextButton(direction))}
       </div>
     );
   }
