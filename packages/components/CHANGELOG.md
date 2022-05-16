@@ -8,6 +8,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Unreleased]
 
+### [2.12.0-rc.2] - 2022-05-12
+
+### [2.12.0-rc.1] - 2022-05-11
+
+### [2.12.0-rc.0] - 2022-05-04
+
+#### Added
+- `Table Head Cell` now has a `multiline` property
+
+#### Changed
+- `Headline` has no `hypens` / `overflow-wrap` style by default
+- Partials now throw an exception if they are executed in browser
+
+#### Fixed
+- Exception in `Headline`, `Select Wrapper`, `Text` and `Text List` when changing `theme` prop from `dark` to `light`
+- `getInitialStyles()` partial now returns `.hydrated` styles, too
+
 ### [2.11.0-skeletons] - 2022-04-21
 
 ### [2.11.0] - 2022-04-21

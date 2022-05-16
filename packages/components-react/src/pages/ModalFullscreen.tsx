@@ -12,7 +12,7 @@ export const ModalFullscreenPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should show fullscreen modal on light background">
         <PModal heading="Some Heading with a very long title across multiple lines" open={true} fullscreen={true}>

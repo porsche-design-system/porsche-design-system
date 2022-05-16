@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/utilities",
-  "version": "5.3.0-beta.0",
+  "version": "5.3.0-beta.1",
   "scope": "@porsche-design-system",
   "main": "dist/js/index.js",
   "module": "dist/js/esm/index.js",
@@ -14,7 +14,7 @@
     "Bernd Hacker <bernd.hacker@mhp.com>",
     "Anton Schmidt <anton.schmidt@mhp.com>"
   ],
-  "license": "SEE LICENSE IN https://designsystem.porsche.com",
+  "license": "SEE LICENSE IN https://designsystem.porsche.com/latest/license",
   "description": "Porsche Design System Utilities",
   "files": [
     "dist/scss",
@@ -34,16 +34,6 @@
     "mixins"
   ],
   "homepage": "https://designsystem.porsche.com",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/porscheui/porsche-design-system.git"
-  },
-  "bugs": {
-    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
-  },
-  "publishConfig": {
-    "@porsche-design-system:registry": "https://porscheui.jfrog.io/porscheui/api/npm/npm-local/"
-  },
   "scripts": {
     "build": "yarn clean:build && yarn build:buildTypography && yarn build:bundleLib && yarn build:copyScss && yarn build:createGlobalCSS",
     "build:buildTypography": "ts-node scripts/buildTypography.ts",
@@ -58,9 +48,9 @@
     "@porsche-design-system/fonts": "0.0.0",
     "@rollup/plugin-node-resolve": "^13.2.1",
     "@rollup/plugin-typescript": "^8.3.2",
-    "rollup": "^2.70.2",
-    "tslib": "^2.3.0",
-    "typescript": "~4.6.3"
+    "rollup": "^2.71.1",
+    "tslib": "^2.4.0",
+    "typescript": "~4.6.4"
   },
   "dependencies": {
     "csstype": "^3.0.11"

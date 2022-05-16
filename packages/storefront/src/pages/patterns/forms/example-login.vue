@@ -78,7 +78,7 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import { boolean, object, ObjectSchema, SchemaOf, string } from 'yup';
+  import { boolean, object, string } from 'yup';
   import {
     validateName,
     getState,

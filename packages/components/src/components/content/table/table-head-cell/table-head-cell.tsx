@@ -23,6 +23,9 @@ export class TableHeadCell {
   /** Hides the label but stays accessible for screen readers. This property only takes effect when sort property is not defined. */
   @Prop() public hideLabel?: boolean = false;
 
+  /** Displays slotted text multiline or forced into a single line. */
+  @Prop() public multiline?: boolean = false;
+
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'pTableHeadRow');
     throwIfElementHasAttribute(this.host, 'sort');
@@ -30,7 +33,7 @@ export class TableHeadCell {
 
   public componentWillRender(): void {
     const { active, direction } = this.sort || {};
-    attachComponentCss(this.host, getComponentCss, active, direction, this.hideLabel);
+    attachComponentCss(this.host, getComponentCss, active, direction, this.hideLabel, this.multiline);
   }
 
   public render(): JSX.Element {

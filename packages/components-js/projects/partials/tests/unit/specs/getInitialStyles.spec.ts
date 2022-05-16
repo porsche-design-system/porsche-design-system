@@ -1,17 +1,20 @@
 import { getInitialStyles } from '../../../src';
 import { render } from '@testing-library/react';
 import { INTERNAL_TAG_NAMES, SKELETON_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
-
 import { describeIfSkeletonsActive, itIfSkeletonsActive } from '@porsche-design-system/shared/testing';
 
 const filteredTagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x));
 const tagNames = filteredTagNames.join(',');
 const prefixedTagNames = filteredTagNames.map((x) => `custom-prefix-${x}`).join(',');
 
+jest.mock('../../../src/shared');
+
 describe('format: html', () => {
   it('should return core styles', () => {
     const result = getInitialStyles();
-    const regex = new RegExp(`<style>${tagNames}{visibility:hidden}</style>`);
+    const regex = new RegExp(
+      `<style pds-initial-styles>${tagNames}{visibility:hidden}.hydrated{visibility:inherit}</style>`
+    );
     expect(result).toMatch(regex);
   });
 
@@ -23,7 +26,9 @@ describe('format: html', () => {
 
   it('should add custom prefixes to component names', () => {
     const result = getInitialStyles({ prefix: 'custom-prefix' });
-    const regex = new RegExp(`<style>${prefixedTagNames}{visibility:hidden}</style>`);
+    const regex = new RegExp(
+      `<style pds-initial-styles>${prefixedTagNames}{visibility:hidden}.hydrated{visibility:inherit}</style>`
+    );
     expect(result).toMatch(regex);
   });
 
@@ -40,7 +45,9 @@ describe('format: html', () => {
 describe('format: jsx', () => {
   it('should return core styles', () => {
     const { container } = render(getInitialStyles({ format: 'jsx' }));
-    const regex = new RegExp(`<style>${tagNames}{visibility:hidden}</style>`);
+    const regex = new RegExp(
+      `<style pds-initial-styles="true">${tagNames}{visibility:hidden}.hydrated{visibility:inherit}</style>`
+    );
     expect(container.innerHTML).toMatch(regex);
   });
 
@@ -56,7 +63,9 @@ describe('format: jsx', () => {
 
   it('should add custom prefix to component names', () => {
     const { container } = render(getInitialStyles({ format: 'jsx', prefix: 'custom-prefix' }));
-    const regex = new RegExp(`<style>${prefixedTagNames}{visibility:hidden}</style>`);
+    const regex = new RegExp(
+      `<style pds-initial-styles="true">${prefixedTagNames}{visibility:hidden}.hydrated{visibility:inherit}</style>`
+    );
     expect(container.innerHTML).toMatch(regex);
   });
 });
@@ -101,15 +110,9 @@ xdescribe('skeletonTagNames subset', () => {
 
 describeIfSkeletonsActive('validation', () => {
   it('should throw error on invalid skeleton tag names parameter', () => {
-    let error;
-    try {
+    expect(() =>
       // @ts-ignore
-      getInitialStyles({ skeletonTagNames: ['some-invalid-component'] as any[] });
-    } catch (e) {
-      error = e.message;
-    }
-
-    expect(error).toContain('The following supplied skeleton tag names are invalid:');
-    expect(error).toContain('some-invalid-component');
+      getInitialStyles({ skeletonTagNames: ['some-invalid-component'] as any[] })
+    ).toThrowErrorMatchingSnapshot();
   });
 });

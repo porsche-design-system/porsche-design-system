@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { PSelectWrapper } from '@porsche-design-system/components-react';
 import { useEffect } from 'react';
-import { pollComponentsReady } from '../pollComponentsReady'
+import { pollComponentsReady } from '../pollComponentsReady';
 
 export const SelectWrapperSkeletonPage = (): JSX.Element => {
   useEffect(() => {

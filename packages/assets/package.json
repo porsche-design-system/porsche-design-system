@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/assets",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "scope": "@porsche-design-system",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
@@ -18,20 +18,13 @@
     "Bernd Hacker <bernd.hacker@mhp.com>",
     "Anton Schmidt <anton.schmidt@mhp.com>"
   ],
-  "license": "SEE LICENSE IN https://designsystem.porsche.com",
+  "license": "SEE LICENSE IN https://designsystem.porsche.com/latest/license",
   "description": "Porsche Design System Assets",
   "keywords": [
     "porsche",
     "assets"
   ],
   "homepage": "https://designsystem.porsche.com",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/porscheui/porsche-design-system.git"
-  },
-  "bugs": {
-    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
-  },
   "scripts": {
     "start": "yarn build && node ./bin/serve-cdn.js",
     "build": "yarn clean:build && yarn build:bin && yarn build:manifest && yarn build:copyAssets && yarn build:preparePackage",
@@ -57,9 +50,9 @@
     "@rollup/plugin-typescript": "^8.3.2",
     "@types/http-server": "^0.12.1",
     "http-server": "^14.1.0",
-    "rollup": "^2.70.2",
+    "rollup": "^2.71.1",
     "ts-node": "^10.7.0",
-    "typescript": "~4.6.3"
+    "typescript": "~4.6.4"
   },
   "files": [
     "dist/"
