@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: dark and prevNextButtonJssStyle: undefined  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: dark, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: undefined  1`] = `
 ":host {
   display: block !important;
   height: 100% !important;
@@ -44,29 +44,31 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 .trigger:last-of-type {
   right: 0;
 }
-.action {
+.action-prev {
   display: flex;
   position: absolute;
   top: 0;
   height: 100%;
   align-items: center;
-}
-.action--prev {
   left: 0;
   justify-content: flex-start;
+  visibility: visible;
 }
-.action--next {
+.action-prev .gradient {
+  background: linear-gradient(90deg, #0e1418 50%, #0e141800 100%);
+}
+.action-next {
+  display: flex;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  align-items: center;
   right: 0;
   justify-content: flex-end;
+  visibility: visible;
 }
-.action--hidden {
-  visibility: hidden;
-}
-.action--next .gradient {
+.action-next .gradient {
   background: linear-gradient(90deg, #0e141800 0%, #0e1418 50%);
-}
-.action--prev .gradient {
-  background: linear-gradient(90deg, #0e1418 50%, #0e141800 100%);
 }
 .button {
   position: absolute;
@@ -82,7 +84,91 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light and prevNextButtonJssStyle: {
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: dark, isPrevHidden: false, isNextHidden: true and prevNextButtonJssStyle: undefined  1`] = `
+":host {
+  display: block !important;
+  height: 100% !important;
+}
+.root {
+  position: relative;
+  margin: 0 -0.25rem;
+  height: inherit;
+}
+.scroll-area {
+  position: relative;
+  height: inherit;
+  box-sizing: border-box;
+  padding: 0.25rem;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroll-area::-webkit-scrollbar {
+  display: none;
+}
+.scroll-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  min-width: 100%;
+}
+.trigger {
+  display: block;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 0.0625rem;
+  visibility: hidden;
+}
+.trigger:first-of-type {
+  left: 0;
+}
+.trigger:last-of-type {
+  right: 0;
+}
+.action-prev {
+  display: flex;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  align-items: center;
+  left: 0;
+  justify-content: flex-start;
+  visibility: hidden;
+}
+.action-prev .gradient {
+  background: linear-gradient(90deg, #0e1418 50%, #0e141800 100%);
+}
+.action-next {
+  display: flex;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  align-items: center;
+  right: 0;
+  justify-content: flex-end;
+  visibility: visible;
+}
+.action-next .gradient {
+  background: linear-gradient(90deg, #0e141800 0%, #0e1418 50%);
+}
+.button {
+  position: absolute;
+  top: 50%;
+  transform: translate3d(0,-50%,0);
+}
+.gradient {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2em;
+  pointer-events: none;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: {
   top: 'calc(50% - .5em)',
   transform: 'translate3d(0,calc(-50% + .375em),0)'
 }  1`] = `
@@ -129,29 +215,31 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 .trigger:last-of-type {
   right: 0;
 }
-.action {
+.action-prev {
   display: flex;
   position: absolute;
   top: 0;
   height: 100%;
   align-items: center;
-}
-.action--prev {
   left: 0;
   justify-content: flex-start;
+  visibility: visible;
 }
-.action--next {
+.action-prev .gradient {
+  background: linear-gradient(90deg, #fff 50%, #fff0 100%);
+}
+.action-next {
+  display: flex;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  align-items: center;
   right: 0;
   justify-content: flex-end;
+  visibility: visible;
 }
-.action--hidden {
-  visibility: hidden;
-}
-.action--next .gradient {
+.action-next .gradient {
   background: linear-gradient(90deg, #fff0 0%, #fff 50%);
-}
-.action--prev .gradient {
-  background: linear-gradient(90deg, #fff 50%, #fff0 100%);
 }
 .button {
   position: absolute;
@@ -167,7 +255,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light and prevNextButtonJssStyle: undefined  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: undefined  1`] = `
 ":host {
   display: block !important;
   height: 100% !important;
@@ -211,29 +299,31 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 .trigger:last-of-type {
   right: 0;
 }
-.action {
+.action-prev {
   display: flex;
   position: absolute;
   top: 0;
   height: 100%;
   align-items: center;
-}
-.action--prev {
   left: 0;
   justify-content: flex-start;
+  visibility: visible;
 }
-.action--next {
+.action-prev .gradient {
+  background: linear-gradient(90deg, #fff 50%, #fff0 100%);
+}
+.action-next {
+  display: flex;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  align-items: center;
   right: 0;
   justify-content: flex-end;
+  visibility: visible;
 }
-.action--hidden {
-  visibility: hidden;
-}
-.action--next .gradient {
+.action-next .gradient {
   background: linear-gradient(90deg, #fff0 0%, #fff 50%);
-}
-.action--prev .gradient {
-  background: linear-gradient(90deg, #fff 50%, #fff0 100%);
 }
 .button {
   position: absolute;
@@ -249,7 +339,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light-electric and prevNextButtonJssStyle: undefined  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light, isPrevHidden: true, isNextHidden: false and prevNextButtonJssStyle: undefined  1`] = `
 ":host {
   display: block !important;
   height: 100% !important;
@@ -293,29 +383,31 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 .trigger:last-of-type {
   right: 0;
 }
-.action {
+.action-prev {
   display: flex;
   position: absolute;
   top: 0;
   height: 100%;
   align-items: center;
-}
-.action--prev {
   left: 0;
   justify-content: flex-start;
+  visibility: visible;
 }
-.action--next {
+.action-prev .gradient {
+  background: linear-gradient(90deg, #fff 50%, #fff0 100%);
+}
+.action-next {
+  display: flex;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  align-items: center;
   right: 0;
   justify-content: flex-end;
-}
-.action--hidden {
   visibility: hidden;
 }
-.action--next .gradient {
+.action-next .gradient {
   background: linear-gradient(90deg, #fff0 0%, #fff 50%);
-}
-.action--prev .gradient {
-  background: linear-gradient(90deg, #fff 50%, #fff0 100%);
 }
 .button {
   position: absolute;
@@ -331,7 +423,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: surface, theme: dark and prevNextButtonJssStyle: undefined  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light, isPrevHidden: true, isNextHidden: true and prevNextButtonJssStyle: undefined  1`] = `
 ":host {
   display: block !important;
   height: 100% !important;
@@ -375,30 +467,200 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 .trigger:last-of-type {
   right: 0;
 }
-.action {
+.action-prev {
   display: flex;
   position: absolute;
   top: 0;
   height: 100%;
   align-items: center;
-}
-.action--prev {
   left: 0;
   justify-content: flex-start;
-}
-.action--next {
-  right: 0;
-  justify-content: flex-end;
-}
-.action--hidden {
   visibility: hidden;
 }
-.action--next .gradient {
-  background: linear-gradient(90deg, #262b2e00 0%, #262b2e 50%);
+.action-prev .gradient {
+  background: linear-gradient(90deg, #fff 50%, #fff0 100%);
 }
-.action--prev .gradient {
+.action-next {
+  display: flex;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  align-items: center;
+  right: 0;
+  justify-content: flex-end;
+  visibility: hidden;
+}
+.action-next .gradient {
+  background: linear-gradient(90deg, #fff0 0%, #fff 50%);
+}
+.button {
+  position: absolute;
+  top: 50%;
+  transform: translate3d(0,-50%,0);
+}
+.gradient {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2em;
+  pointer-events: none;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light-electric, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: undefined  1`] = `
+":host {
+  display: block !important;
+  height: 100% !important;
+}
+.root {
+  position: relative;
+  margin: 0 -0.25rem;
+  height: inherit;
+}
+.scroll-area {
+  position: relative;
+  height: inherit;
+  box-sizing: border-box;
+  padding: 0.25rem;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroll-area::-webkit-scrollbar {
+  display: none;
+}
+.scroll-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  min-width: 100%;
+}
+.trigger {
+  display: block;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 0.0625rem;
+  visibility: hidden;
+}
+.trigger:first-of-type {
+  left: 0;
+}
+.trigger:last-of-type {
+  right: 0;
+}
+.action-prev {
+  display: flex;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  align-items: center;
+  left: 0;
+  justify-content: flex-start;
+  visibility: visible;
+}
+.action-prev .gradient {
+  background: linear-gradient(90deg, #fff 50%, #fff0 100%);
+}
+.action-next {
+  display: flex;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  align-items: center;
+  right: 0;
+  justify-content: flex-end;
+  visibility: visible;
+}
+.action-next .gradient {
+  background: linear-gradient(90deg, #fff0 0%, #fff 50%);
+}
+.button {
+  position: absolute;
+  top: 50%;
+  transform: translate3d(0,-50%,0);
+}
+.gradient {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2em;
+  pointer-events: none;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for gradientColorScheme: surface, theme: dark, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: undefined  1`] = `
+":host {
+  display: block !important;
+  height: 100% !important;
+}
+.root {
+  position: relative;
+  margin: 0 -0.25rem;
+  height: inherit;
+}
+.scroll-area {
+  position: relative;
+  height: inherit;
+  box-sizing: border-box;
+  padding: 0.25rem;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroll-area::-webkit-scrollbar {
+  display: none;
+}
+.scroll-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  min-width: 100%;
+}
+.trigger {
+  display: block;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 0.0625rem;
+  visibility: hidden;
+}
+.trigger:first-of-type {
+  left: 0;
+}
+.trigger:last-of-type {
+  right: 0;
+}
+.action-prev {
+  display: flex;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  align-items: center;
+  left: 0;
+  justify-content: flex-start;
+  visibility: visible;
+}
+.action-prev .gradient {
   background: linear-gradient(90deg, #262b2e 50%, #262b2e00 100%);
 }
+.action-next {
+  display: flex;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  align-items: center;
+  right: 0;
+  justify-content: flex-end;
+  visibility: visible;
+}
+.action-next .gradient {
+  background: linear-gradient(90deg, #262b2e00 0%, #262b2e 50%);
+}
 .button {
   position: absolute;
   top: 50%;
@@ -413,7 +675,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: surface, theme: light and prevNextButtonJssStyle: undefined  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: surface, theme: light, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: undefined  1`] = `
 ":host {
   display: block !important;
   height: 100% !important;
@@ -457,29 +719,31 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 .trigger:last-of-type {
   right: 0;
 }
-.action {
+.action-prev {
   display: flex;
   position: absolute;
   top: 0;
   height: 100%;
   align-items: center;
-}
-.action--prev {
   left: 0;
   justify-content: flex-start;
+  visibility: visible;
 }
-.action--next {
+.action-prev .gradient {
+  background: linear-gradient(90deg, #f2f2f2 50%, #f2f2f200 100%);
+}
+.action-next {
+  display: flex;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  align-items: center;
   right: 0;
   justify-content: flex-end;
+  visibility: visible;
 }
-.action--hidden {
-  visibility: hidden;
-}
-.action--next .gradient {
+.action-next .gradient {
   background: linear-gradient(90deg, #f2f2f200 0%, #f2f2f2 50%);
-}
-.action--prev .gradient {
-  background: linear-gradient(90deg, #f2f2f2 50%, #f2f2f200 100%);
 }
 .button {
   position: absolute;
@@ -495,7 +759,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: surface, theme: light-electric and prevNextButtonJssStyle: undefined  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: surface, theme: light-electric, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: undefined  1`] = `
 ":host {
   display: block !important;
   height: 100% !important;
@@ -539,29 +803,31 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 .trigger:last-of-type {
   right: 0;
 }
-.action {
+.action-prev {
   display: flex;
   position: absolute;
   top: 0;
   height: 100%;
   align-items: center;
-}
-.action--prev {
   left: 0;
   justify-content: flex-start;
+  visibility: visible;
 }
-.action--next {
+.action-prev .gradient {
+  background: linear-gradient(90deg, #f2f2f2 50%, #f2f2f200 100%);
+}
+.action-next {
+  display: flex;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  align-items: center;
   right: 0;
   justify-content: flex-end;
+  visibility: visible;
 }
-.action--hidden {
-  visibility: hidden;
-}
-.action--next .gradient {
+.action-next .gradient {
   background: linear-gradient(90deg, #f2f2f200 0%, #f2f2f2 50%);
-}
-.action--prev .gradient {
-  background: linear-gradient(90deg, #f2f2f2 50%, #f2f2f200 100%);
 }
 .button {
   position: absolute;

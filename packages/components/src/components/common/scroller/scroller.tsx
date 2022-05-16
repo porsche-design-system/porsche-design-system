@@ -54,21 +54,23 @@ export class Scroller {
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.gradientColorScheme, this.theme, this.prevNextButtonJssStyle);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.gradientColorScheme,
+      this.theme,
+      this.isNextHidden,
+      this.isPrevHidden,
+      this.prevNextButtonJssStyle
+    );
   }
 
   public render(): JSX.Element {
     const renderPrevNextButton = (direction: Direction): JSX.Element => {
-      const actionClasses = {
-        ['action']: true,
-        [`action--${direction}`]: true,
-        ['action--hidden']: direction === 'next' ? this.isNextHidden : this.isPrevHidden,
-      };
-
       const PrefixedTagNames = getPrefixedTagNames(this.host);
-      // TODO: tabbable has to be customizable
+      // TODO: Maybe buttons have to be tabbable when scroller is used in stepper
       return (
-        <div class={actionClasses}>
+        <div class={direction === 'next' ? 'action-next' : 'action-prev'}>
           <span class="gradient" />
           <PrefixedTagNames.pButtonPure
             class="button"
