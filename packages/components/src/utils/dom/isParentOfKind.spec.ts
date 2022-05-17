@@ -15,3 +15,4 @@ it('should return false if parent tag does not match', () => {
 
   expect(isParentOfKind(child, 'pGrid')).toBe(false);
 });
+

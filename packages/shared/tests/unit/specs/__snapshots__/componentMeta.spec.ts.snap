@@ -357,6 +357,17 @@ Object {
     ],
     "styling": "jss",
   },
+  "p-scroller": Object {
+    "hasAriaProp": false,
+    "hasSkeleton": false,
+    "hasSlottedCss": false,
+    "isDelegatingFocus": false,
+    "isThemeable": true,
+    "requiredParent": "p-tabs-bar",
+    "shouldPatchSlot": false,
+    "skeletonProps": Array [],
+    "styling": "jss",
+  },
   "p-select-wrapper": Object {
     "hasAriaProp": false,
     "hasSkeleton": true,
