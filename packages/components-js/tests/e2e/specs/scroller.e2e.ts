@@ -1,11 +1,9 @@
 import { ElementHandle, Page } from 'puppeteer';
 import {
   expectA11yToMatchSnapshot,
-  getConsoleErrorsAmount,
   getElementStyle,
   getLifecycleStatus,
   getProperty,
-  initConsoleObserver,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -57,8 +55,6 @@ describe('scroller', () => {
   };
   const getScrollLeft = (element: ElementHandle) => getProperty(element, 'scrollLeft');
   const getOffsetWidth = (element: ElementHandle) => getProperty(element, 'offsetWidth');
-  const getClassList = async (element: ElementHandle): Promise<string[]> =>
-    Object.values(await getProperty(element, 'classList'));
 
   const getScrollDistance = (scrollAreaWidth: number): number => Math.round(scrollAreaWidth * SCROLL_PERCENTAGE);
 
