@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as globby from 'globby';
 import { camelCase } from 'change-case';
 
-const INTERNAL_TAG_NAMES = ['p-select-wrapper-dropdown', 'p-toast-item'];
+const INTERNAL_TAG_NAMES = ['p-scroller', 'p-select-wrapper-dropdown', 'p-toast-item'];
 
 const IGNORED_SKELETON_STYLES = ['headline', 'text-list', 'text-list-item', 'text'];
 const IGNORED_SKELETON_STYLES_FILE_NAMES = IGNORED_SKELETON_STYLES.map(

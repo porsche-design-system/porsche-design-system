@@ -38,6 +38,7 @@ const bundles: { components: TagName[] }[] = [
     ],
   },
   { components: ['p-tabs', 'p-tabs-item'] },
+  { components: ['p-tabs-bar', 'p-scroller'] },
   { components: ['p-tag', 'p-tag-dismissible'] },
   { components: ['p-text-list', 'p-text-list-item'] },
   { components: ['p-toast', 'p-toast-item'] },
