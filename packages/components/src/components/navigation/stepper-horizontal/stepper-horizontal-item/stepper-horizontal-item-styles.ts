@@ -34,25 +34,34 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
     '@global': {
       ':host': addImportantToEachRule({
         display: 'inline-flex',
+        position: 'relative',
+        font: textXSmall.font,
         '&::before': {
+          // justifyContent: 'center',
+          // alignItems: 'center',
+          ...(isCurrent && {
+            content: '""',
+            display: 'inline-block',
+            backgroundColor: isDisabled ? 'none' : baseColor,
+            width: pxToRemWithUnit(18),
+            height: pxToRemWithUnit(18),
+            margin: `${pxToRemWithUnit(3)} ${pxToRemWithUnit(7)} ${pxToRemWithUnit(3)} ${pxToRemWithUnit(3)}`,
+            borderRadius: '50%',
+            ...(isDisabled && {
+              outline: `1px solid ${disabledColor}`,
+              outlineOffset: '-1px',
+            }),
+          }),
+        },
+        '&::after': {
           ...(isCurrent
             ? {
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                color: isDisabled ? disabledColor : invertedBaseColor,
-                backgroundColor: isDisabled ? 'none' : baseColor,
-                width: pxToRemWithUnit(18),
-                height: pxToRemWithUnit(18),
-                margin: `${pxToRemWithUnit(3)} ${pxToRemWithUnit(7)} ${pxToRemWithUnit(3)} ${pxToRemWithUnit(3)}`,
-                font: textXSmall.font,
-                borderRadius: '50%',
                 content: 'counter(count)',
                 counterIncrement: 'count',
-                ...(isDisabled && {
-                  outline: `1px solid ${disabledColor}`,
-                  outlineOffset: '-1px',
-                }),
+                color: isDisabled ? disabledColor : invertedBaseColor,
+                position: 'absolute',
+                left: pxToRemWithUnit(8),
+                top: pxToRemWithUnit(2),
               }
             : {
                 content: 'counter(count)',

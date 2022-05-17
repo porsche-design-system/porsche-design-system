@@ -1,6 +1,6 @@
 import { Component, Element, h, JSX, Prop, State } from '@stencil/core';
 import type { Theme } from '../../../../types';
-import { attachComponentCss } from '../../../../utils';
+import { attachComponentCss, getPrefixedTagNames } from '../../../../utils';
 import { getComponentCss } from './stepper-horizontal-styles';
 
 @Component({
@@ -24,21 +24,13 @@ export class StepperHorizontal {
   }
 
   public render(): JSX.Element {
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
-      // <ScrollWrapper
-      //   host={this.host}
-      //   isNextHidden={false}
-      //   isPrevHidden={false}
-      //   slottedElements={[<div></div>]}
-      //   scrollAreaElement={<div></div>}
-      //   withBar={false}
-      //   theme={this.theme}
-      // >
-      //   <slot />
-      // </ScrollWrapper>
-      <div style={{ display: 'flex' }}>
-        <slot />
-      </div>
+      <PrefixedTagNames.pScroller theme={this.theme}>
+        <div class="scroller">
+          <slot />
+        </div>
+      </PrefixedTagNames.pScroller>
     );
   }
 
