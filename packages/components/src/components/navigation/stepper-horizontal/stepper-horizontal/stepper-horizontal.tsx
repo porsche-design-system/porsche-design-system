@@ -27,7 +27,7 @@ export class StepperHorizontal {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <PrefixedTagNames.pScroller theme={this.theme}>
-        <div class="scroller">
+        <div class="item-wrapper">
           <slot />
         </div>
       </PrefixedTagNames.pScroller>
