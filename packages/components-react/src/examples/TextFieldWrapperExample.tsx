@@ -3,7 +3,7 @@ import type { LegacyRef } from 'react';
 import { useIMask, IMask } from 'react-imask';
 
 export const TextFieldWrapperExamplePage = (): JSX.Element => {
-  const isUsLocale = (yourDetectedLocale?: string) => yourDetectedLocale === 'en-US' || false;
+  const isUsLocale = (yourDetectedLocale?: string): boolean => yourDetectedLocale === 'en-US' || false;
   const opts = {
     lazy: false,
     mask: isUsLocale() ? 'mm/dd/yyyy' : 'dd.mm.yyyy',

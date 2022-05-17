@@ -10,7 +10,7 @@ import { MaskedRange } from 'imask';
   `,
 })
 export class TextFieldWrapperExampleComponent {
-  public isUsLocale = (yourDetectedLocale?: string) => yourDetectedLocale === 'en-US' || false;
+  public isUsLocale = (yourDetectedLocale?: string): boolean => yourDetectedLocale === 'en-US' || false;
   public description = `'${this.isUsLocale() ? 'mm/dd/yyyy' : 'dd.mm.yyyy'}' in range [${
     this.isUsLocale() ? '01/01/1900, 01/01/2100' : '01.01.1900, 01.01.2100'
   }]`;
