@@ -5,6 +5,7 @@ export * from './getDirectChildHTMLElement';
 export * from './getHTMLElement';
 export * from './getHTMLElementAndThrowIfUndefined';
 export * from './getHTMLElements';
+export * from './getScrollerElements';
 export * from './getShadowRootHTMLElement';
 export * from './getSlotTextContent';
 export * from './hasAttribute';

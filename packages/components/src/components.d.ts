@@ -29,6 +29,7 @@ import { PopoverDirection } from "./components/feedback/popover/popover-utils";
 import { GradientColorTheme, PrevNextButtonJssStyle, ScrollToPosition } from "./components/common/scroller/scroller-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinner/spinner-utils";
+import { StepChangeEvent } from "./components/navigation/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
 import { StepperState } from "./components/navigation/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
 import { SortingChangeEvent, TableHeadCellSort } from "./components/content/table/table/table-utils";
@@ -2149,6 +2150,10 @@ declare namespace LocalJSX {
         "theme"?: ThemeExtendedElectricDark;
     }
     interface PStepperHorizontal {
+        /**
+          * Emitted when active step is changed.
+         */
+        "onStepChange"?: (event: CustomEvent<StepChangeEvent>) => void;
         /**
           * Adapts the tag color depending on the theme.
          */

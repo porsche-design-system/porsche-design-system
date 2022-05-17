@@ -4,7 +4,7 @@ import {
   attachComponentCss,
   getHTMLElements,
   getPrefixedTagNames,
-  getShadowRootHTMLElement,
+  getScrollerElements,
   isShadowRootParentOfKind,
   observeChildren,
   setAttribute,
@@ -150,8 +150,9 @@ export class TabsBar {
   };
 
   private defineHTMLElements = (): void => {
-    this.scrollAreaElement = getShadowRootHTMLElement(this.scrollerElement, '.scroll-area');
-    this.prevGradientElement = getShadowRootHTMLElement(this.scrollerElement, '.gradient');
+    const { scrollAreaElement, prevGradientElement } = getScrollerElements(this.scrollerElement);
+    this.scrollAreaElement = scrollAreaElement;
+    this.prevGradientElement = prevGradientElement;
   };
 
   private setTabElements = (): void => {
@@ -229,6 +230,7 @@ export class TabsBar {
 
     this.scroll = { scrollPosition: scrollActivePosition, isSmooth };
   };
+
   private setBarStyle = (): void => {
     setBarStyle(this.tabElements, this.activeTabIndex, this.barElement, this.prevActiveTabIndex);
   };
