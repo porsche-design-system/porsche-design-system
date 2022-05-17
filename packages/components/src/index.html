@@ -22,9 +22,7 @@
     <!--    </script>-->
     <!-- /END -->
     <p-stepper-horizontal>
-      <p-stepper-horizontal-item
-        >Rechnung & Versand Rechnung & Versand Rechnung & Versand Rechnung & Versand
-      </p-stepper-horizontal-item>
+      <p-stepper-horizontal-item>Rechnung & Versand </p-stepper-horizontal-item>
       <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
       <p-stepper-horizontal-item state="complete">Step 2</p-stepper-horizontal-item>
       <p-stepper-horizontal-item state="warning">Step 3</p-stepper-horizontal-item>
@@ -94,8 +92,16 @@
     </div>
   </body>
   <script>
-    document.querySelector('p-tabs-bar').addEventListener('tabChange', (e) => {
-      e.target.activeTabIndex = e.detail.activeTabIndex;
-    });
+    document.querySelectorAll('p-stepper-horizontal').forEach((stepper) =>
+      stepper.addEventListener('stepChange', (e) => {
+        const { activeStepIndex, prevStepIndex, state } = e.detail;
+        const steps = e.target.children;
+        console.log('-> steps', steps);
+        steps[prevStepIndex].state = 'warning';
+        steps[activeStepIndex].state = 'current';
+
+        // e.target.state = 'current';
+      })
+    );
   </script>
 </html>
