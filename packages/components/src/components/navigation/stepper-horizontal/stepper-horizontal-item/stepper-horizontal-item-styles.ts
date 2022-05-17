@@ -53,6 +53,7 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
             }),
           }),
         },
+        // TODO replace with SVG (mui) or div with classes (duet)
         '&::after': {
           ...(isCurrent
             ? {
@@ -60,7 +61,7 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
                 counterIncrement: 'count',
                 color: isDisabled ? disabledColor : invertedBaseColor,
                 position: 'absolute',
-                left: pxToRemWithUnit(8),
+                left: pxToRemWithUnit(15),
                 top: pxToRemWithUnit(2),
               }
             : {
