@@ -2,7 +2,7 @@ import type { BreakpointCustomizable } from '../../../types';
 import type { TabSize, TabWeight } from './tabs-bar-utils';
 import type { ThemeExtendedElectric } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
-import { addImportantToEachRule, addImportantToRule, getTransition, getThemedColors } from '../../../styles';
+import { addImportantToEachRule, getTransition, getThemedColors, pxToRemWithUnit } from '../../../styles';
 import { getFontWeight } from '../../../styles/font-weight-styles';
 import { fontSize, textSmall } from '@porsche-design-system/utilities-v2';
 const tabsTransitionDuration = '.4s';
@@ -21,7 +21,10 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
-        position: addImportantToRule('relative'),
+        ...addImportantToEachRule({
+          position: 'relative',
+          height: size === 'medium' ? pxToRemWithUnit(52) : pxToRemWithUnit(36),
+        }),
       },
       ...addImportantToEachRule({
         // would be nice to use shared selector like '::slotted([role])'
@@ -69,7 +72,7 @@ export const getComponentCss = (
         },
       }),
     },
-    content: {
+    scroller: {
       ...textSmall,
       fontWeight: getFontWeight(weight),
       ...buildResponsiveStyles(size, (s: TabSize) => fontSize[s]),
@@ -80,7 +83,7 @@ export const getComponentCss = (
       width: 0,
       height: weight === 'semibold' ? '.125em' : '.09375em',
       left: 0,
-      bottom: 0,
+      bottom: '-.5em',
       background: activeColor,
       '&--enable-transition': {
         willChange: 'width',

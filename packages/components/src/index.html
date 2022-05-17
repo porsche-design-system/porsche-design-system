@@ -12,68 +12,14 @@
   </head>
   <body>
     <!-- START: keep this snippet to log component lifecycle events -->
-    <!--    <script>-->
-    <!--      ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>-->
-    <!--        window.addEventListener(`stencil_${x}`, (e) => {-->
-    <!--          const eventName = e.type + (e.type.includes('Did') ? ' ' : '');-->
-    <!--          console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());-->
-    <!--        })-->
-    <!--      );-->
-    <!--    </script>-->
+    <script>
+      ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
+        window.addEventListener(`stencil_${x}`, (e) => {
+          const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
+          console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
+        })
+      );
+    </script>
     <!-- /END -->
-    <div style="width: 400px">
-      <div style="padding: 5px">
-        <p-stepper-horizontal>
-          <p-stepper-horizontal-item>Rechnung & Versand</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item state="complete">Step 2</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item state="warning">Step 3</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item state="complete" disabled>Step 4</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item>Step 5 (current)</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item disabled>Step 6</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item disabled>Step 7</p-stepper-horizontal-item>
-        </p-stepper-horizontal>
-      </div>
-      <div style="background: #1a2023; padding: 5px">
-        <p-stepper-horizontal theme="dark">
-          <p-stepper-horizontal-item theme="dark" state="complete">Rechnung & Versand</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item theme="dark" state="complete">Step 2</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item theme="dark" state="warning">Step 3</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item theme="dark" state="complete" disabled>Step 4</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item theme="dark">Step 5 (current)</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item theme="dark" disabled>Step 6</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item theme="dark" disabled>Step 7</p-stepper-horizontal-item>
-        </p-stepper-horizontal>
-      </div>
-    </div>
-    <br />
-    <br />
-    <p-tabs-bar gradientColorScheme="surface" active-tab-index="0">
-      <button type="button">Tab One</button>
-      <button type="button">Tab Two</button>
-      <button type="button">Tab Three</button>
-      <button type="button">Tab Four</button>
-      <button type="button">Tab Five</button>
-      <button type="button">Tab Six</button>
-      <button type="button">Tab Seven</button>
-      <button type="button">Tab Eight</button>
-      <button type="button">Tab Nine</button>
-      <button type="button">Tab Ten</button>
-      <button type="button">Tab Eleven</button>
-      <button type="button">Tab Twelve</button>
-      <button type="button">Tab Thirteen</button>
-      <button type="button">Tab Fourteen</button>
-      <button type="button">Tab Fifteen</button>
-      <button type="button">Tab Sixteen</button>
-      <button type="button">Tab Seventeen</button>
-      <button type="button">Tab Eighteen</button>
-      <button type="button">Tab Nineteen</button>
-      <button type="button">Tab Twenty</button>
-    </p-tabs-bar>
   </body>
-  <script>
-    document.querySelector('p-tabs-bar').addEventListener('tabChange', (e) => {
-      e.target.activeTabIndex = e.detail.activeTabIndex;
-    });
-  </script>
 </html>

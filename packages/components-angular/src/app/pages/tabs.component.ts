@@ -148,7 +148,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-tabs>
     </div>
 
-    <div class="playground light" title="should render tabs gradientColorScheme surface on light background">
+    <div class="playground light surface" title="should render tabs gradientColorScheme surface on light background">
       <p-tabs [gradientColorScheme]="'surface'">
         <p-tabs-item [label]="'Tab 1'">Tab Content 1</p-tabs-item>
         <p-tabs-item [label]="'Tab 2'">Tab Content 2</p-tabs-item>
@@ -160,7 +160,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-tabs>
     </div>
 
-    <div class="playground dark" title="should render tabs gradientColorScheme surface on dark background">
+    <div class="playground dark surface" title="should render tabs gradientColorScheme surface on dark background">
       <p-tabs [theme]="'dark'" [gradientColorScheme]="'surface'">
         <p-tabs-item [label]="'Tab 1'">Tab Content 1</p-tabs-item>
         <p-tabs-item [label]="'Tab 2'">Tab Content 2</p-tabs-item>

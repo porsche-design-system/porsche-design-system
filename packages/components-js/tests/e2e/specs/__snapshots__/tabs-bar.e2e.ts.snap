@@ -10,43 +10,178 @@ Object {
             Object {
               "children": Array [
                 Object {
-                  "name": "Tab Button 1",
-                  "role": "StaticText",
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "name": "Tab Button 1",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "name": "Tab Button 1",
+                          "role": "tab",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "name": "Tab Button 2",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "name": "Tab Button 2",
+                          "role": "tab",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "name": "Tab Button 3",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "name": "Tab Button 3",
+                          "role": "tab",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+                Object {
+                  "role": "none",
+                },
+                Object {
+                  "role": "none",
                 },
               ],
-              "name": "Tab Button 1",
-              "role": "tab",
+              "name": "",
+              "role": "generic",
+            },
+          ],
+          "name": "",
+          "role": "generic",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "role": "none",
             },
             Object {
               "children": Array [
                 Object {
-                  "name": "Tab Button 2",
-                  "role": "StaticText",
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
                 },
               ],
-              "name": "Tab Button 2",
-              "role": "tab",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Tab Button 3",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Tab Button 3",
-              "role": "tab",
+              "role": "none",
             },
           ],
           "role": "none",
         },
         Object {
-          "role": "none",
-        },
-        Object {
-          "role": "none",
-        },
-        Object {
+          "children": Array [
+            Object {
+              "role": "none",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+          ],
           "role": "none",
         },
       ],
@@ -70,43 +205,178 @@ Object {
             Object {
               "children": Array [
                 Object {
-                  "name": "Tab Button 1",
-                  "role": "StaticText",
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "name": "Tab Button 1",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "name": "Tab Button 1",
+                          "role": "tab",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "name": "Tab Button 2",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "name": "Tab Button 2",
+                          "role": "tab",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "name": "Tab Button 3",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "name": "Tab Button 3",
+                          "role": "tab",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+                Object {
+                  "role": "none",
+                },
+                Object {
+                  "role": "none",
                 },
               ],
-              "name": "Tab Button 1",
-              "role": "tab",
+              "name": "",
+              "role": "generic",
+            },
+          ],
+          "name": "",
+          "role": "generic",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "role": "none",
             },
             Object {
               "children": Array [
                 Object {
-                  "name": "Tab Button 2",
-                  "role": "StaticText",
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
                 },
               ],
-              "name": "Tab Button 2",
-              "role": "tab",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Tab Button 3",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Tab Button 3",
-              "role": "tab",
+              "role": "none",
             },
           ],
           "role": "none",
         },
         Object {
-          "role": "none",
-        },
-        Object {
-          "role": "none",
-        },
-        Object {
+          "children": Array [
+            Object {
+              "role": "none",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+          ],
           "role": "none",
         },
       ],
@@ -130,44 +400,179 @@ Object {
             Object {
               "children": Array [
                 Object {
-                  "name": "Tab Button 1",
-                  "role": "StaticText",
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "name": "Tab Button 1",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "name": "Tab Button 1",
+                          "role": "tab",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "name": "Tab Button 2",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "name": "Tab Button 2",
+                          "role": "tab",
+                          "selected": true,
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "name": "Tab Button 3",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "name": "Tab Button 3",
+                          "role": "tab",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+                Object {
+                  "role": "none",
+                },
+                Object {
+                  "role": "none",
                 },
               ],
-              "name": "Tab Button 1",
-              "role": "tab",
+              "name": "",
+              "role": "generic",
+            },
+          ],
+          "name": "",
+          "role": "generic",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "role": "none",
             },
             Object {
               "children": Array [
                 Object {
-                  "name": "Tab Button 2",
-                  "role": "StaticText",
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
                 },
               ],
-              "name": "Tab Button 2",
-              "role": "tab",
-              "selected": true,
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Tab Button 3",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Tab Button 3",
-              "role": "tab",
+              "role": "none",
             },
           ],
           "role": "none",
         },
         Object {
-          "role": "none",
-        },
-        Object {
-          "role": "none",
-        },
-        Object {
+          "children": Array [
+            Object {
+              "role": "none",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+          ],
           "role": "none",
         },
       ],
@@ -191,45 +596,180 @@ Object {
             Object {
               "children": Array [
                 Object {
-                  "name": "Tab Button 1",
-                  "role": "StaticText",
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "name": "Tab Button 1",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "name": "Tab Button 1",
+                          "role": "tab",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "name": "Tab Button 2",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "focused": true,
+                          "name": "Tab Button 2",
+                          "role": "tab",
+                          "selected": true,
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "name": "Tab Button 3",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "name": "Tab Button 3",
+                          "role": "tab",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+                Object {
+                  "role": "none",
+                },
+                Object {
+                  "role": "none",
                 },
               ],
-              "name": "Tab Button 1",
-              "role": "tab",
+              "name": "",
+              "role": "generic",
+            },
+          ],
+          "name": "",
+          "role": "generic",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "role": "none",
             },
             Object {
               "children": Array [
                 Object {
-                  "name": "Tab Button 2",
-                  "role": "StaticText",
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
                 },
               ],
-              "focused": true,
-              "name": "Tab Button 2",
-              "role": "tab",
-              "selected": true,
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Tab Button 3",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Tab Button 3",
-              "role": "tab",
+              "role": "none",
             },
           ],
           "role": "none",
         },
         Object {
-          "role": "none",
-        },
-        Object {
-          "role": "none",
-        },
-        Object {
+          "children": Array [
+            Object {
+              "role": "none",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+          ],
           "role": "none",
         },
       ],
@@ -253,44 +793,179 @@ Object {
             Object {
               "children": Array [
                 Object {
-                  "name": "Tab Button 1",
-                  "role": "StaticText",
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "name": "Tab Button 1",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "name": "Tab Button 1",
+                          "role": "tab",
+                          "selected": true,
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "name": "Tab Button 2",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "name": "Tab Button 2",
+                          "role": "tab",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "name": "Tab Button 3",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "name": "Tab Button 3",
+                          "role": "tab",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+                Object {
+                  "role": "none",
+                },
+                Object {
+                  "role": "none",
                 },
               ],
-              "name": "Tab Button 1",
-              "role": "tab",
-              "selected": true,
+              "name": "",
+              "role": "generic",
+            },
+          ],
+          "name": "",
+          "role": "generic",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "role": "none",
             },
             Object {
               "children": Array [
                 Object {
-                  "name": "Tab Button 2",
-                  "role": "StaticText",
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
                 },
               ],
-              "name": "Tab Button 2",
-              "role": "tab",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Tab Button 3",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Tab Button 3",
-              "role": "tab",
+              "role": "none",
             },
           ],
           "role": "none",
         },
         Object {
-          "role": "none",
-        },
-        Object {
-          "role": "none",
-        },
-        Object {
+          "children": Array [
+            Object {
+              "role": "none",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+          ],
           "role": "none",
         },
       ],
@@ -314,54 +989,189 @@ Object {
             Object {
               "children": Array [
                 Object {
-                  "name": "Tab Button 1",
-                  "role": "StaticText",
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "name": "Tab Button 1",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "name": "Tab Button 1",
+                          "role": "tab",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "name": "Tab Button 2",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "name": "Tab Button 2",
+                          "role": "tab",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "name": "Tab Button 3",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "name": "Tab Button 3",
+                          "role": "tab",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "name": "Tab Button 4",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "name": "Tab Button 4",
+                          "role": "tab",
+                          "selected": true,
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+                Object {
+                  "role": "none",
+                },
+                Object {
+                  "role": "none",
                 },
               ],
-              "name": "Tab Button 1",
-              "role": "tab",
+              "name": "",
+              "role": "generic",
+            },
+          ],
+          "name": "",
+          "role": "generic",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "role": "none",
             },
             Object {
               "children": Array [
                 Object {
-                  "name": "Tab Button 2",
-                  "role": "StaticText",
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
                 },
               ],
-              "name": "Tab Button 2",
-              "role": "tab",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Tab Button 3",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Tab Button 3",
-              "role": "tab",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Tab Button 4",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Tab Button 4",
-              "role": "tab",
-              "selected": true,
+              "role": "none",
             },
           ],
           "role": "none",
         },
         Object {
-          "role": "none",
-        },
-        Object {
-          "role": "none",
-        },
-        Object {
+          "children": Array [
+            Object {
+              "role": "none",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+          ],
           "role": "none",
         },
       ],
@@ -385,54 +1195,189 @@ Object {
             Object {
               "children": Array [
                 Object {
-                  "name": "Tab Button 1",
-                  "role": "StaticText",
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "name": "Tab Button 1",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "name": "Tab Button 1",
+                          "role": "tab",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "name": "Tab Button 2",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "name": "Tab Button 2",
+                          "role": "tab",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "name": "Tab Button 3",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "name": "Tab Button 3",
+                          "role": "tab",
+                        },
+                        Object {
+                          "children": Array [
+                            Object {
+                              "name": "Tab Button 4",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "name": "Tab Button 4",
+                          "role": "tab",
+                          "selected": true,
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+                Object {
+                  "role": "none",
+                },
+                Object {
+                  "role": "none",
                 },
               ],
-              "name": "Tab Button 1",
-              "role": "tab",
+              "name": "",
+              "role": "generic",
+            },
+          ],
+          "name": "",
+          "role": "generic",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "role": "none",
             },
             Object {
               "children": Array [
                 Object {
-                  "name": "Tab Button 2",
-                  "role": "StaticText",
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
                 },
               ],
-              "name": "Tab Button 2",
-              "role": "tab",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Tab Button 3",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Tab Button 3",
-              "role": "tab",
-            },
-            Object {
-              "children": Array [
-                Object {
-                  "name": "Tab Button 4",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "Tab Button 4",
-              "role": "tab",
-              "selected": true,
+              "role": "none",
             },
           ],
           "role": "none",
         },
         Object {
-          "role": "none",
-        },
-        Object {
-          "role": "none",
-        },
-        Object {
+          "children": Array [
+            Object {
+              "role": "none",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                    Object {
+                      "children": Array [
+                        Object {
+                          "children": Array [
+                            Object {
+                              "children": Array [
+                                Object {
+                                  "children": Array [
+                                    Object {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+          ],
           "role": "none",
         },
       ],
