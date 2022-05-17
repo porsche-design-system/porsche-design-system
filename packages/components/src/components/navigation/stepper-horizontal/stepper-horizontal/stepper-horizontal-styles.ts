@@ -7,8 +7,14 @@ export const getComponentCss = (): string => {
       ':host': addImportantToEachRule({
         counterReset: 'count',
       }),
-      '::slotted(*:not(:last-child))': {
-        marginRight: '1em',
+      '::slotted(*)': {
+        padding: '0 .5em 0 .5em',
+      },
+      '::slotted(:last-child)': {
+        padding: '0 0 0 .5em',
+      },
+      '::slotted(:first-child)': {
+        padding: '0 .5em 0 0',
       },
     },
     'item-wrapper': {
