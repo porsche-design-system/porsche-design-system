@@ -108,7 +108,9 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       let [, script] = fileContent.match(scriptRegEx) || [];
       fileContent = fileContent.replace(scriptRegEx, '\n');
       script = script?.trim().replace(/([\w.#'()\[\]]+)(\.\w+\s=)/g, '($1 as any)$2'); // handle untyped prop assignments
-      script = isSkeleton ? script.replace('porscheDesignSystem.', '') : script;
+
+      const usesComponentsReady = script?.includes('porscheDesignSystem.');
+      script = usesComponentsReady ? script.replace('porscheDesignSystem.', '') : script;
 
       const usesQuerySelector = script?.includes('querySelector');
       const usesPrefixing = !!fileContent.match(/<[a-z-]+-p-[\w-]+/);
@@ -141,7 +143,7 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
           .join(', ');
 
         const pdsImports = [
-          (usesSetAllReady || isSkeleton) && 'componentsReady',
+          (usesSetAllReady || isSkeleton || usesComponentsReady) && 'componentsReady',
           usesToast && 'ToastManager',
           isIconPage && 'IconName',
         ]
@@ -265,7 +267,8 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
           `import { ${pdsImports} } from '@porsche-design-system/components-react';`,
           reactImports && `import { ${reactImports} } from 'react';`,
           isIconPage && `import { ICON_NAMES } from '@porsche-design-system/assets';`,
-          (usesSetAllReady || isSkeleton) && `import { pollComponentsReady } from '../pollComponentsReady';`,
+          (usesSetAllReady || isSkeleton || usesComponentsReady) &&
+            `import { pollComponentsReady } from '../pollComponentsReady';`,
         ]
           .filter((x) => x)
           .join('\n');
@@ -275,8 +278,8 @@ export class ${pascalCase(fileName)}Component ${classImplements}{${classImplemen
         const styleConst = style ? `const style = \`\n  ${style}\n\`;` : '';
         const styleJsx = style ? '\n      <style dangerouslySetInnerHTML={{ __html: style }} />\n' : '';
 
-        if (isSkeleton) {
-          script = script.replace('componentsReady()', 'pollComponentsReady()');
+        if (isSkeleton || usesComponentsReady) {
+          script = script.replace('componentsReady', 'pollComponentsReady');
         }
 
         let useStateOrEffect = '';

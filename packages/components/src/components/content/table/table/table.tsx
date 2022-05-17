@@ -2,7 +2,6 @@ import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop, State } fr
 import {
   attachComponentCss,
   attachSlottedCss,
-  getHTMLElement,
   getPrefixedTagNames,
   getScrollByX,
   hasNamedSlot,
@@ -48,7 +47,6 @@ export class Table {
   }
 
   public componentDidLoad(): void {
-    this.defineHTMLElements();
     this.initIntersectionObserver();
   }
 
@@ -73,10 +71,10 @@ export class Table {
           </div>
         )}
         <div class="root">
-          <div class="scroll-area" {...scrollAreaAttr}>
-            <div class="table" role="table" {...tableAttr}>
+          <div class="scroll-area" {...scrollAreaAttr} ref={(el) => (this.scrollAreaElement = el)}>
+            <div class="table" role="table" {...tableAttr} ref={(el) => (this.tableElement = el)}>
               <slot />
-              <span class="scroll-trigger" />
+              <span class="scroll-trigger" ref={(el) => (this.scrollTriggerElement = el)} />
             </div>
           </div>
           {this.isScrollIndicatorVisible && (
@@ -99,13 +97,6 @@ export class Table {
       </Host>
     );
   }
-
-  private defineHTMLElements = (): void => {
-    const { shadowRoot } = this.host;
-    this.scrollAreaElement = getHTMLElement(shadowRoot, '.scroll-area');
-    this.scrollTriggerElement = getHTMLElement(shadowRoot, '.scroll-trigger');
-    this.tableElement = getHTMLElement(shadowRoot, '.table');
-  };
 
   private initIntersectionObserver = (): void => {
     this.intersectionObserver = new IntersectionObserver(

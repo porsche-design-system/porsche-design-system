@@ -12,6 +12,7 @@ import { Switch } from './action/switch/switch';
 import { Tag } from './action/tag/tag';
 import { TagDismissible } from './action/tag-dismissible/tag-dismissible';
 import { Marque } from './basic/marque/marque';
+import { Scroller } from './common/scroller/scroller';
 import { Accordion } from './content/accordion/accordion';
 import { Modal } from './content/modal/modal';
 import { Banner } from './feedback/banner/banner';
@@ -69,6 +70,7 @@ export const TAG_NAMES_CONSTRUCTOR_MAP: { [key in TagName]: new () => ClassType 
   'p-tag': Tag,
   'p-tag-dismissible': TagDismissible,
   'p-marque': Marque,
+  'p-scroller': Scroller,
   'p-accordion': Accordion,
   'p-modal': Modal,
   'p-banner': Banner,
