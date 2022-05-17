@@ -1,0 +1,135 @@
+import { Component, Element, Prop, State, Watch, h } from '@stencil/core';
+import {
+  attachComponentCss,
+  getHTMLElements,
+  getPrefixedTagNames,
+  scrollElementTo,
+  throwIfParentIsNotOfKind,
+} from '../../../utils';
+import { getComponentCss } from './scroller-styles';
+import type { Direction, GradientColorTheme, ScrollToPosition, PrevNextButtonJssStyle } from './scroller-utils';
+import { getScrollPositionAfterPrevNextClick } from './scroller-utils';
+import type { ThemeExtendedElectric } from '../../../types';
+
+@Component({
+  tag: 'p-scroller',
+  shadow: true,
+})
+export class Scroller {
+  @Element() public host!: HTMLElement;
+
+  /** Adapts the color when used on dark background. */
+  @Prop() public theme?: ThemeExtendedElectric = 'light';
+
+  /** Adapts the background gradient color of prev and next button. */
+  @Prop() public gradientColorScheme?: GradientColorTheme = 'default';
+
+  /** Scrolls the scroll area to the left either smooth or immediately */
+  @Prop() public scrollToPosition?: ScrollToPosition;
+
+  // TODO: remove this property from generated readme and types
+  @Prop() public prevNextButtonJssStyle?: PrevNextButtonJssStyle;
+
+  @State() public isPrevHidden = true;
+  @State() public isNextHidden = true;
+
+  private intersectionObserver: IntersectionObserver;
+  private scrollAreaElement: HTMLElement;
+
+  @Watch('scrollToPosition')
+  public scrollToPositionHandler({ scrollPosition, isSmooth }: ScrollToPosition): void {
+    if (isSmooth) {
+      scrollElementTo(this.scrollAreaElement, scrollPosition);
+    } else {
+      this.scrollAreaElement.scrollLeft = scrollPosition;
+    }
+  }
+
+  public connectedCallback(): void {
+    throwIfParentIsNotOfKind(this.host, 'pTabsBar');
+  }
+
+  public componentDidLoad(): void {
+    this.initIntersectionObserver();
+  }
+
+  public componentWillRender(): void {
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.gradientColorScheme,
+      this.theme,
+      this.isNextHidden,
+      this.isPrevHidden,
+      this.prevNextButtonJssStyle
+    );
+  }
+
+  public render(): JSX.Element {
+    const renderPrevNextButton = (direction: Direction): JSX.Element => {
+      const PrefixedTagNames = getPrefixedTagNames(this.host);
+      // TODO: Maybe buttons have to be tabbable when scroller is used in stepper
+      return (
+        <div class={direction === 'next' ? 'action-next' : 'action-prev'}>
+          <span class="gradient" />
+          <PrefixedTagNames.pButtonPure
+            class="button"
+            type="button"
+            tabbable={false}
+            hide-label="true"
+            size="inherit"
+            icon={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
+            onClick={() => this.scrollOnPrevNextClick(direction)}
+            theme={this.theme}
+            aria-hidden="true"
+          >
+            {direction}
+          </PrefixedTagNames.pButtonPure>
+        </div>
+      );
+    };
+
+    return (
+      <div class="root">
+        <div class="scroll-area" ref={(el) => (this.scrollAreaElement = el)}>
+          <div class="scroll-wrapper">
+            <slot />
+            <div class="trigger" />
+            <div class="trigger" />
+          </div>
+        </div>
+        {['prev', 'next'].map((direction: Direction) => renderPrevNextButton(direction))}
+      </div>
+    );
+  }
+
+  private initIntersectionObserver = (): void => {
+    const [firstTrigger, lastTrigger] = getHTMLElements(this.host.shadowRoot, '.trigger');
+
+    this.intersectionObserver = new IntersectionObserver(
+      (entries) => {
+        for (const { target, isIntersecting } of entries) {
+          if (target === firstTrigger) {
+            this.isPrevHidden = isIntersecting;
+          } else if (target === lastTrigger) {
+            this.isNextHidden = isIntersecting;
+          }
+        }
+      },
+      {
+        root: this.scrollAreaElement,
+        // Defines the percentage of how much of the target (trigger) is visible within the element specified (this.host).
+        // In this case 0.9px of the trigger have to be hidden to show the gradient
+        threshold: 0.1,
+      }
+    );
+
+    this.intersectionObserver.observe(firstTrigger);
+    this.intersectionObserver.observe(lastTrigger);
+  };
+
+  private scrollOnPrevNextClick = (direction: Direction): void => {
+    const scrollPosition = getScrollPositionAfterPrevNextClick(this.scrollAreaElement, direction);
+    scrollElementTo(this.scrollAreaElement, scrollPosition);
+  };
+}
