@@ -11,5 +11,8 @@ export const getComponentCss = (): string => {
         marginRight: '1em',
       },
     },
+    scroller: {
+      display: 'flex',
+    },
   });
 };
