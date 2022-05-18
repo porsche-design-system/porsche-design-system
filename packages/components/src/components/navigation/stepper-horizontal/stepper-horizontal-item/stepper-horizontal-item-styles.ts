@@ -1,8 +1,7 @@
 import {
-  addImportantToEachRule,
   getFocusJssStyle,
   getHoverJssStyle,
-  getScreenReaderOnlyJssStyle,
+  // getScreenReaderOnlyJssStyle,
   getThemedColors,
   getTransition,
   pxToRemWithUnit,
@@ -32,55 +31,15 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
 
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
-        display: 'inline-flex',
-        position: 'relative',
-        font: textXSmall.font,
-        '&::before': {
-          // justifyContent: 'center',
-          // alignItems: 'center',
-          ...(isCurrentOrUndefined && {
-            content: '""',
-            display: 'inline-block',
-            backgroundColor: isDisabled ? 'none' : baseColor,
-            width: pxToRemWithUnit(18),
-            height: pxToRemWithUnit(18),
-            margin: `${pxToRemWithUnit(3)} ${pxToRemWithUnit(7)} ${pxToRemWithUnit(3)} ${pxToRemWithUnit(3)}`,
-            borderRadius: '50%',
-            ...(isDisabled && {
-              outline: `1px solid ${disabledColor}`,
-              outlineOffset: '-1px',
-            }),
-          }),
-        },
-        // TODO replace with SVG (mui) or div with classes (duet)
-        '&::after': {
-          ...(isCurrentOrUndefined
-            ? {
-                content: 'counter(count)',
-                counterIncrement: 'count',
-                color: isDisabled ? disabledColor : invertedBaseColor,
-                position: 'absolute',
-                left: pxToRemWithUnit(15),
-                top: pxToRemWithUnit(2),
-              }
-            : {
-                content: 'counter(count)',
-                counterIncrement: 'count',
-                ...getScreenReaderOnlyJssStyle(),
-              }),
-        },
-      }),
-      // Display for button?
       button: {
-        display: 'inline-block',
+        display: 'flex',
+        alignItems: 'center',
         height: pxToRemWithUnit(24),
         color: isDisabled ? disabledColor : baseColor,
         transition: getTransition('color'),
         padding: 0,
         background: 0,
         border: 0,
-        alignItems: 'center',
         ...textSmall,
         whiteSpace: 'nowrap',
         cursor: isDisabled ? 'not-allowed' : 'auto',
@@ -96,11 +55,30 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
           }),
         }),
       },
+      svg: {
+        fill: isDisabled ? 'none' : baseColor,
+      },
+      ...(isDisabled && {
+        circle: {
+          borderRadius: '50%',
+          outline: `1px solid ${disabledColor}`,
+          outlineOffset: '-1px',
+        },
+      }),
+      text: {
+        font: textXSmall.font,
+        fill: isDisabled ? disabledColor : invertedBaseColor,
+      },
     },
     icon: {
       color: iconColor,
       marginRight: pxToRemWithUnit(4),
       transition: getTransition('color'),
+    },
+    'step-count-svg-wrapper': {
+      marginRight: pxToRemWithUnit(4),
+      width: pxToRemWithUnit(24),
+      height: pxToRemWithUnit(24),
     },
   });
 };

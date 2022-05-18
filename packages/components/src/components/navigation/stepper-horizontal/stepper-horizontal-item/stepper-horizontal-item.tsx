@@ -2,7 +2,7 @@ import { Component, Element, h, JSX, Prop, Listen, Watch } from '@stencil/core';
 import type { Theme } from '../../../../types';
 import type { StepperState } from './stepper-horizontal-item-utils';
 import { getIcon, isStateCompleteOrWarning } from './stepper-horizontal-item-utils';
-import { attachComponentCss, getPrefixedTagNames, throwIfParentIsNotOfKind } from '../../../../utils';
+import { attachComponentCss, getHTMLElements, getPrefixedTagNames, throwIfParentIsNotOfKind } from '../../../../utils';
 import { getComponentCss } from './stepper-horizontal-item-styles';
 
 @Component({
@@ -35,11 +35,14 @@ export class StepperHorizontalItem {
     }
   }
 
+  private stepCounter: number;
+
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'pStepperHorizontal');
     if (this.state === undefined) {
       this.disabled = true;
     }
+    this.setStepCounter();
   }
 
   public componentWillRender(): void {
@@ -49,9 +52,10 @@ export class StepperHorizontalItem {
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const isCompleteOrWarning = isStateCompleteOrWarning(this.state);
+    // TODO: Screen reader step counter inside button?
     return (
       <button tabIndex={isCompleteOrWarning ? 0 : -1} disabled={this.disabled}>
-        {isCompleteOrWarning && (
+        {isCompleteOrWarning ? (
           <PrefixedTagNames.pIcon
             class="icon"
             name={getIcon(this.state)}
@@ -59,9 +63,23 @@ export class StepperHorizontalItem {
             color="inherit"
             aria-hidden="true"
           />
+        ) : (
+          <span class="step-count-svg-wrapper">
+            <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24" width="100%" height="100%">
+              <circle cx="12" cy="12" r="9" />
+              <text x="12" y="16.5" text-anchor="middle">
+                {this.stepCounter}
+              </text>
+            </svg>
+          </span>
         )}
         <slot />
       </button>
     );
   }
+
+  private setStepCounter = (): void => {
+    const stepItems = getHTMLElements(this.host.parentElement, 'p-stepper-horizontal-item');
+    this.stepCounter = stepItems.indexOf(this.host as HTMLPStepperHorizontalItemElement) + 1;
+  };
 }
