@@ -1,11 +1,5 @@
 import { Component, Element, Prop, State, Watch, h } from '@stencil/core';
-import {
-  attachComponentCss,
-  getHTMLElements,
-  getPrefixedTagNames,
-  scrollElementTo,
-  // throwIfParentIsNotOfKind,
-} from '../../../utils';
+import { attachComponentCss, getHTMLElements, getPrefixedTagNames, scrollElementTo } from '../../../utils';
 import { getComponentCss } from './scroller-styles';
 import type { Direction, GradientColorTheme, ScrollToPosition, PrevNextButtonJssStyle } from './scroller-utils';
 import { getScrollPositionAfterPrevNextClick } from './scroller-utils';
