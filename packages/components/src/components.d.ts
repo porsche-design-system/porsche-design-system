@@ -767,6 +767,7 @@ export namespace Components {
           * Disables the stepper. No events will be triggered while disabled state is active.
          */
         "disabled"?: boolean;
+        "refreshStepCounter": () => Promise<void>;
         /**
           * The validation state.
          */
