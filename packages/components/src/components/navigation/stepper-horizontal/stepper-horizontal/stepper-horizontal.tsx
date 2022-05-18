@@ -1,10 +1,11 @@
 import { Component, Element, Event, EventEmitter, h, JSX, Prop, State } from '@stencil/core';
-import type { Theme } from '../../../../types';
 import { attachComponentCss, getPrefixedTagNames, getScrollerElements } from '../../../../utils';
 import { getComponentCss } from './stepper-horizontal-styles';
-import { StepChangeEvent } from './stepper-horizontal-utils';
+import { getIndexOfStepWithStateCurrent } from './stepper-horizontal-utils';
 import { getScrollActivePosition } from '../../tabs-bar/tabs-bar-utils';
-import { ScrollToPosition } from '../../../common/scroller/scroller-utils';
+import type { Theme } from '../../../../types';
+import type { ScrollToPosition } from '../../../common/scroller/scroller-utils';
+import type { StepChangeEvent } from './stepper-horizontal-utils';
 
 @Component({
   tag: 'p-stepper-horizontal',
@@ -34,6 +35,18 @@ export class StepperHorizontal {
     this.defineHTMLElements();
 
     this.addEventListeners();
+
+    // Initial scroll current into view
+    this.scroll = {
+      scrollPosition: getScrollActivePosition(
+        this.stepperHorizontalItems,
+        'next',
+        getIndexOfStepWithStateCurrent(this.stepperHorizontalItems),
+        this.scrollAreaElement.offsetWidth,
+        this.prevGradientElement.offsetWidth
+      ),
+      isSmooth: false,
+    };
   }
 
   public componentWillRender(): void {
@@ -57,25 +70,28 @@ export class StepperHorizontal {
 
   private addEventListeners = (): void => {
     this.scrollAreaElement.addEventListener('click', (e) => {
-      // TODO: handle issue by clicking in between buttons
       const target = e.target as HTMLPStepperHorizontalItemElement;
-      const prevStepIndex = this.stepperHorizontalItems.findIndex((e) => e.state === 'current' && !e.disabled);
-      const activeStepIndex = this.stepperHorizontalItems.indexOf(target);
-      const prevState = (this.stepperHorizontalItems[prevStepIndex] as unknown as HTMLPStepperHorizontalItemElement)
-        .state;
 
-      const direction = activeStepIndex > prevStepIndex ? 'next' : 'prev';
-      const scrollActivePosition = getScrollActivePosition(
-        this.stepperHorizontalItems,
-        direction,
-        activeStepIndex,
-        this.scrollAreaElement.offsetWidth,
-        this.prevGradientElement.offsetWidth
-      );
+      if (target.tagName !== 'DIV') {
+        const currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
+        const newStepIndex = this.stepperHorizontalItems.indexOf(target);
+        const prevState = (
+          this.stepperHorizontalItems[currentStepIndex] as unknown as HTMLPStepperHorizontalItemElement
+        ).state;
 
-      this.scroll = { scrollPosition: scrollActivePosition, isSmooth: true };
+        const direction = newStepIndex > currentStepIndex ? 'next' : 'prev';
+        const scrollActivePosition = getScrollActivePosition(
+          this.stepperHorizontalItems,
+          direction,
+          newStepIndex,
+          this.scrollAreaElement.offsetWidth,
+          this.prevGradientElement.offsetWidth
+        );
 
-      this.stepChange.emit({ activeStepIndex, prevState, prevStepIndex });
+        this.scroll = { scrollPosition: scrollActivePosition, isSmooth: true };
+
+        this.stepChange.emit({ activeStepIndex: newStepIndex, prevState, prevStepIndex: currentStepIndex });
+      }
     });
   };
 
