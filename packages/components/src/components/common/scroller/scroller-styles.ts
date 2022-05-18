@@ -36,7 +36,6 @@ export const getComponentCss = (
       height: 'inherit',
     },
     'scroll-area': {
-      position: 'relative',
       height: 'inherit',
       boxSizing: 'border-box',
       padding: pxToRemWithUnit(4),
@@ -53,9 +52,7 @@ export const getComponentCss = (
     // Needed for position of status bar.
     'scroll-wrapper': {
       position: 'relative',
-      display: 'inline-block',
-      padding: '0',
-      minWidth: '100%',
+      width: 'fit-content',
     },
     trigger: {
       display: 'block',
