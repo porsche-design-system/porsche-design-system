@@ -39,7 +39,11 @@ module.exports = {
             targetDirectory,
           },
           {
-            pattern: './projects/components-wrapper/LICENSE',
+            pattern: '../../LICENSE',
+            targetDirectory,
+          },
+          {
+            pattern: '../../OSS_COMPULSORY_STATEMENT',
             targetDirectory,
           },
           {
