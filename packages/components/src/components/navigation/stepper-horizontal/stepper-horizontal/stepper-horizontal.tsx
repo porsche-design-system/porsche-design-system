@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, JSX, Prop, State } from '@stencil/core';
-import { attachComponentCss, getPrefixedTagNames, getScrollerElements } from '../../../../utils';
+import { attachComponentCss, getPrefixedTagNames, getScrollerElements, observeChildren } from '../../../../utils';
 import { getComponentCss } from './stepper-horizontal-styles';
 import { getIndexOfStepWithStateCurrent } from './stepper-horizontal-utils';
 import { getScrollActivePosition } from '../../tabs-bar/tabs-bar-utils';
@@ -29,6 +29,10 @@ export class StepperHorizontal {
 
   public connectedCallback(): void {
     this.defineStepperHorizontalItemElements();
+    observeChildren(this.host, () => {
+      this.defineStepperHorizontalItemElements();
+      this.stepperHorizontalItems.forEach((element) => element.refreshStepCounter());
+    });
   }
 
   public componentDidLoad(): void {

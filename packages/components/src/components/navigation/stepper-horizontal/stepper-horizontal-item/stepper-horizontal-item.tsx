@@ -1,4 +1,4 @@
-import { Component, Element, h, JSX, Prop, Listen, Watch } from '@stencil/core';
+import { Component, Element, h, JSX, Prop, Listen, Watch, Method, State } from '@stencil/core';
 import type { Theme } from '../../../../types';
 import type { StepperState } from './stepper-horizontal-item-utils';
 import { getIcon, isStateCompleteOrWarning } from './stepper-horizontal-item-utils';
@@ -21,6 +21,8 @@ export class StepperHorizontalItem {
   /** Disables the stepper. No events will be triggered while disabled state is active. */
   @Prop() public disabled?: boolean = false;
 
+  @State() private stepCounter: number;
+
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
     if (!!this.disabled || this.state === 'current') {
@@ -29,23 +31,26 @@ export class StepperHorizontalItem {
   }
 
   @Watch('state')
-  stateHandler(newValue: StepperState, _oldValue: StepperState) {
+  stateHandler(newValue: StepperState) {
     if (newValue === undefined) {
       this.disabled = true;
     }
   }
 
-  private stepCounter: number;
+  @Method()
+  refreshStepCounter(): void {
+    this.setStepCounter();
+  }
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'pStepperHorizontal');
     if (this.state === undefined) {
       this.disabled = true;
     }
-    this.setStepCounter();
   }
 
   public componentWillRender(): void {
+    this.setStepCounter();
     attachComponentCss(this.host, getComponentCss, this.state, this.disabled, this.theme);
   }
 
@@ -78,9 +83,9 @@ export class StepperHorizontalItem {
       </button>
     );
   }
-  // TODO: Needs to be called when items are removed / added
+
   private setStepCounter = (): void => {
-    const stepItems = getHTMLElements(this.host.parentElement, 'p-stepper-horizontal-item');
+    const stepItems = getHTMLElements(this.host.parentElement, '*');
     this.stepCounter = stepItems.indexOf(this.host as HTMLPStepperHorizontalItemElement) + 1;
   };
 }
