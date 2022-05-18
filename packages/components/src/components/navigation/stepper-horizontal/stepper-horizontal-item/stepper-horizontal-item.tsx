@@ -1,4 +1,4 @@
-import { Component, Element, h, JSX, Prop, Listen } from '@stencil/core';
+import { Component, Element, h, JSX, Prop, Listen, Watch } from '@stencil/core';
 import type { Theme } from '../../../../types';
 import type { StepperState } from './stepper-horizontal-item-utils';
 import { getIcon, isStateCompleteOrWarning } from './stepper-horizontal-item-utils';
@@ -16,7 +16,7 @@ export class StepperHorizontalItem {
   @Prop() public theme?: Theme = 'light';
 
   /** The validation state. */
-  @Prop() public state?: StepperState = 'current';
+  @Prop() public state?: StepperState;
 
   /** Disables the stepper. No events will be triggered while disabled state is active. */
   @Prop() public disabled?: boolean = false;
@@ -28,8 +28,18 @@ export class StepperHorizontalItem {
     }
   }
 
+  @Watch('state')
+  stateHandler(newValue: StepperState, _oldValue: StepperState) {
+    if (newValue === undefined) {
+      this.disabled = true;
+    }
+  }
+
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'pStepperHorizontal');
+    if (this.state === undefined) {
+      this.disabled = true;
+    }
   }
 
   public componentWillRender(): void {

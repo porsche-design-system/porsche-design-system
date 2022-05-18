@@ -61,7 +61,8 @@ export class StepperHorizontal {
       const target = e.target as HTMLPStepperHorizontalItemElement;
       const prevStepIndex = this.stepperHorizontalItems.findIndex((e) => e.state === 'current' && !e.disabled);
       const activeStepIndex = this.stepperHorizontalItems.indexOf(target);
-      const state = target.state;
+      const prevState = (this.stepperHorizontalItems[prevStepIndex] as unknown as HTMLPStepperHorizontalItemElement)
+        .state;
 
       const direction = activeStepIndex > prevStepIndex ? 'next' : 'prev';
       const scrollActivePosition = getScrollActivePosition(
@@ -74,7 +75,7 @@ export class StepperHorizontal {
 
       this.scroll = { scrollPosition: scrollActivePosition, isSmooth: true };
 
-      this.stepChange.emit({ activeStepIndex, state, prevStepIndex });
+      this.stepChange.emit({ activeStepIndex, prevState, prevStepIndex });
     });
   };
 

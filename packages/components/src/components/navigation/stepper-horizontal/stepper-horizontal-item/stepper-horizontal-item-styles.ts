@@ -27,7 +27,7 @@ const getColor = (state: StepperState, theme: Theme) => {
 
 export const getComponentCss = (state: StepperState, isDisabled: boolean, theme: Theme): string => {
   const { baseColor, hoverColor, iconColor, invertedBaseColor, disabledColor } = getColor(state, theme);
-  const isCurrent = state === 'current';
+  const isCurrentOrUndefined = state === 'current' || state === undefined;
   const hoverJssStyles = getHoverJssStyle();
 
   return getCss({
@@ -39,7 +39,7 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
         '&::before': {
           // justifyContent: 'center',
           // alignItems: 'center',
-          ...(isCurrent && {
+          ...(isCurrentOrUndefined && {
             content: '""',
             display: 'inline-block',
             backgroundColor: isDisabled ? 'none' : baseColor,
@@ -55,7 +55,7 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
         },
         // TODO replace with SVG (mui) or div with classes (duet)
         '&::after': {
-          ...(isCurrent
+          ...(isCurrentOrUndefined
             ? {
                 content: 'counter(count)',
                 counterIncrement: 'count',
@@ -85,7 +85,7 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
         whiteSpace: 'nowrap',
         cursor: isDisabled ? 'not-allowed' : 'auto',
         ...getFocusJssStyle(),
-        ...(!isCurrent && {
+        ...(!isCurrentOrUndefined && {
           cursor: isDisabled ? 'not-allowed' : 'pointer',
           textDecoration: 'underline',
           ...(!isDisabled && {

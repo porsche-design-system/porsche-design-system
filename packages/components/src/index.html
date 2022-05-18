@@ -27,9 +27,9 @@
       <p-stepper-horizontal-item state="complete">Step 2</p-stepper-horizontal-item>
       <p-stepper-horizontal-item state="warning">Step 3</p-stepper-horizontal-item>
       <p-stepper-horizontal-item state="complete" disabled>Step 4</p-stepper-horizontal-item>
-      <p-stepper-horizontal-item>Step 5 (current)</p-stepper-horizontal-item>
-      <p-stepper-horizontal-item disabled>Step 6</p-stepper-horizontal-item>
-      <p-stepper-horizontal-item disabled>Step 7</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item state="current">Step 5 (current)</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item>Step 6</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item>Step 7</p-stepper-horizontal-item>
     </p-stepper-horizontal>
     <div style="background: #1a2023; padding: 5px">
       <p-stepper-horizontal theme="dark">
@@ -37,9 +37,9 @@
         <p-stepper-horizontal-item theme="dark" state="complete">Step 2</p-stepper-horizontal-item>
         <p-stepper-horizontal-item theme="dark" state="warning">Step 3</p-stepper-horizontal-item>
         <p-stepper-horizontal-item theme="dark" state="complete" disabled>Step 4</p-stepper-horizontal-item>
-        <p-stepper-horizontal-item theme="dark">Step 5 (current)</p-stepper-horizontal-item>
-        <p-stepper-horizontal-item theme="dark" disabled>Step 6</p-stepper-horizontal-item>
-        <p-stepper-horizontal-item theme="dark" disabled>Step 7</p-stepper-horizontal-item>
+        <p-stepper-horizontal-item theme="dark" state="current">Step 5 (current)</p-stepper-horizontal-item>
+        <p-stepper-horizontal-item theme="dark">Step 6</p-stepper-horizontal-item>
+        <p-stepper-horizontal-item theme="dark">Step 7</p-stepper-horizontal-item>
       </p-stepper-horizontal>
     </div>
     <div style="width: 400px">
@@ -52,9 +52,9 @@
           <p-stepper-horizontal-item state="complete">Step 2</p-stepper-horizontal-item>
           <p-stepper-horizontal-item state="warning">Step 3</p-stepper-horizontal-item>
           <p-stepper-horizontal-item state="complete" disabled>Step 4</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item>Step 5 (current)</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item disabled>Step 6</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item disabled>Step 7</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item state="current">Step 5 (current)</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item>Step 6</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item>Step 7</p-stepper-horizontal-item>
         </p-stepper-horizontal>
 
         <p-scroller>
@@ -73,9 +73,9 @@
           <p-stepper-horizontal-item theme="dark" state="complete">Step 2</p-stepper-horizontal-item>
           <p-stepper-horizontal-item theme="dark" state="warning">Step 3</p-stepper-horizontal-item>
           <p-stepper-horizontal-item theme="dark" state="complete" disabled>Step 4</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item theme="dark">Step 5 (current)</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item theme="dark" disabled>Step 6</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item theme="dark" disabled>Step 7</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item theme="dark" state="current">Step 5 (current)</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item theme="dark">Step 6</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item theme="dark">Step 7</p-stepper-horizontal-item>
         </p-stepper-horizontal>
         <p-stepper-horizontal theme="dark">
           <p-stepper-horizontal-item theme="dark" state="complete" disabled
@@ -84,9 +84,9 @@
           <p-stepper-horizontal-item theme="dark" state="complete" disabled>Step 2</p-stepper-horizontal-item>
           <p-stepper-horizontal-item theme="dark" state="warning" disabled>Step 3</p-stepper-horizontal-item>
           <p-stepper-horizontal-item theme="dark" state="complete" disabled>Step 4</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item theme="dark">Step 5 (current)</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item theme="dark" disabled>Step 6</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item theme="dark" disabled>Step 7</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item theme="dark" state="current">Step 5 (current)</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item theme="dark">Step 6</p-stepper-horizontal-item>
+          <p-stepper-horizontal-item theme="dark">Step 7</p-stepper-horizontal-item>
         </p-stepper-horizontal>
       </div>
     </div>
@@ -94,11 +94,21 @@
   <script>
     document.querySelectorAll('p-stepper-horizontal').forEach((stepper) =>
       stepper.addEventListener('stepChange', (e) => {
-        const { activeStepIndex, prevStepIndex, state } = e.detail;
+        const { activeStepIndex, prevStepIndex, prevState } = e.detail;
         const steps = e.target.children;
-        console.log('-> steps', steps);
-        steps[prevStepIndex].state = 'warning';
-        steps[activeStepIndex].state = 'current';
+        // console.log('-> steps', steps);
+        console.log(activeStepIndex, prevStepIndex, prevState);
+        if (e.target.disabled) {
+        } else if (prevState === 'current') {
+          console.log('temp');
+          steps[prevStepIndex].state = undefined;
+          steps[activeStepIndex].state = 'current';
+        } else {
+          console.log('warning');
+          // complete + warning
+          steps[prevStepIndex].state = prevState;
+          steps[activeStepIndex].state = 'current';
+        }
 
         // e.target.state = 'current';
       })
