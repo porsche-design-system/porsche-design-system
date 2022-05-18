@@ -2,6 +2,7 @@ import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 
+const rootDir = '../..';
 const projectDir = 'projects/components-wrapper';
 const outputDir = 'dist/components-wrapper';
 
@@ -45,7 +46,15 @@ const buildConfig = (packagePath) => {
     ],
     plugins: [
       copy({
-        targets: [{ src: `${projectDir}/src/utilities/scss.scss`, dest: `${outputDir}/utilities` }],
+        targets: [
+          {
+            src: `${projectDir}/src/utilities/scss.scss`,
+            dest: `${outputDir}/utilities`,
+          },
+          { src: `${rootDir}/LICENSE`, dest: outputDir },
+          { src: `${rootDir}/OSS_COMPULSORY_STATEMENT`, dest: outputDir },
+          { src: `${rootDir}/packages/components/CHANGELOG.md`, dest: outputDir },
+        ],
       }),
       typescript(typescriptOpts),
     ],
