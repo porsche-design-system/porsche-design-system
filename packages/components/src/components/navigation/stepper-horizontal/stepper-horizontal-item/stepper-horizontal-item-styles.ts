@@ -55,20 +55,16 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
           }),
         }),
       },
-      svg: {
-        fill: isDisabled ? 'none' : baseColor,
-      },
-      ...(isDisabled && {
-        circle: {
-          borderRadius: '50%',
-          outline: `1px solid ${disabledColor}`,
-          outlineOffset: '-1px',
-        },
-      }),
       text: {
         font: textXSmall.font,
         fill: isDisabled ? disabledColor : invertedBaseColor,
       },
+    },
+    'inner-circle': {
+      fill: isDisabled ? invertedBaseColor : baseColor,
+    },
+    'outer-circle': {
+      fill: disabledColor,
     },
     icon: {
       color: iconColor,

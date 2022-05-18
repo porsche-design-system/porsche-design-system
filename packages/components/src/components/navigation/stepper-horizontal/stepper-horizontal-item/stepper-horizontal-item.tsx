@@ -23,7 +23,7 @@ export class StepperHorizontalItem {
 
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
-    if (!!this.disabled) {
+    if (!!this.disabled || this.state === 'current') {
       e.stopPropagation();
     }
   }
@@ -66,7 +66,8 @@ export class StepperHorizontalItem {
         ) : (
           <span class="step-count-svg-wrapper">
             <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24" width="100%" height="100%">
-              <circle cx="12" cy="12" r="9" />
+              {this.disabled && <circle class="outer-circle" cx="12" cy="12" r="9" />}
+              <circle class="inner-circle" cx="12" cy="12" r={this.disabled ? '8' : '9'} />
               <text x="12" y="16.5" text-anchor="middle">
                 {this.stepCounter}
               </text>
@@ -77,7 +78,7 @@ export class StepperHorizontalItem {
       </button>
     );
   }
-
+  // TODO: Needs to be called when items are removed / added
   private setStepCounter = (): void => {
     const stepItems = getHTMLElements(this.host.parentElement, 'p-stepper-horizontal-item');
     this.stepCounter = stepItems.indexOf(this.host as HTMLPStepperHorizontalItemElement) + 1;
