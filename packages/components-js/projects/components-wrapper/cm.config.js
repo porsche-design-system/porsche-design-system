@@ -43,8 +43,8 @@ module.exports = {
             targetDirectory,
           },
           {
-            pattern: '../../NOTICE',
-            targetDirectory,
+            pattern: '../../OSS_NOTICE',
+            targetDirectory: `${targetDirectory}/NOTICE`,
           },
           {
             pattern: './projects/components-wrapper/README.md',
