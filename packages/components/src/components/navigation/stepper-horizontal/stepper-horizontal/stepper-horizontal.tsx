@@ -1,8 +1,14 @@
 import { Component, Element, Event, EventEmitter, h, JSX, Prop, State } from '@stencil/core';
-import { attachComponentCss, getPrefixedTagNames, getScrollerElements, observeChildren } from '../../../../utils';
+import {
+  attachComponentCss,
+  getPrefixedTagNames,
+  getScrollActivePosition,
+  getScrollerElements,
+  observeChildren,
+} from '../../../../utils';
 import { getComponentCss } from './stepper-horizontal-styles';
 import { getIndexOfStepWithStateCurrent } from './stepper-horizontal-utils';
-import { getScrollActivePosition } from '../../tabs-bar/tabs-bar-utils';
+
 import { throwIfChildrenAreNotOfKind } from '../../../../utils/dom/throwIfChildrenAreNotOfKind';
 import type { Theme } from '../../../../types';
 import type { ScrollToPosition } from '../../../common/scroller/scroller-utils';

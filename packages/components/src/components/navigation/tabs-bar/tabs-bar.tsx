@@ -4,6 +4,7 @@ import {
   attachComponentCss,
   getHTMLElements,
   getPrefixedTagNames,
+  getScrollActivePosition,
   getScrollerElements,
   isShadowRootParentOfKind,
   observeChildren,
@@ -11,13 +12,7 @@ import {
   unobserveChildren,
 } from '../../../utils';
 import type { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from './tabs-bar-utils';
-import {
-  getFocusedTabIndex,
-  getPrevNextTabIndex,
-  getScrollActivePosition,
-  sanitizeActiveTabIndex,
-  setBarStyle,
-} from './tabs-bar-utils';
+import { getFocusedTabIndex, getPrevNextTabIndex, sanitizeActiveTabIndex, setBarStyle } from './tabs-bar-utils';
 import { getComponentCss } from './tabs-bar-styles';
 import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
 import type { Direction, ScrollToPosition } from '../../common/scroller/scroller-utils';
