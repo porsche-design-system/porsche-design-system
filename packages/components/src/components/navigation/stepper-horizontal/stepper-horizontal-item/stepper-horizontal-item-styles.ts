@@ -1,7 +1,6 @@
 import {
   getFocusJssStyle,
   getHoverJssStyle,
-  // getScreenReaderOnlyJssStyle,
   getThemedColors,
   getTransition,
   pxToRemWithUnit,
