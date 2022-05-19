@@ -87,6 +87,7 @@ export class StepperHorizontal {
     this.scrollAreaElement.addEventListener('click', (e) => {
       const target = e.target as HTMLPStepperHorizontalItemElement;
 
+      // Click in between steps should not do anything
       if (target.tagName !== 'DIV') {
         const currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
         const newStepIndex = this.stepperHorizontalItems.indexOf(target);
