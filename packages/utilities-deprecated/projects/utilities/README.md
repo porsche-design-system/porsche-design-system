@@ -54,15 +54,17 @@ const StyledP = styled.p`
 `
 
 render(
-  <StyledHeadline>
-    I am styled
-  </StyledHeadline>
-<StyledP>
-  I am styled
-</StyledP>
+  <>
+    <StyledHeadline>
+      I am styled
+    </StyledHeadline>
+    <StyledP>
+      I am styled
+    </StyledP>
+  </>
 )
 ```
 
 ## License
 
-- See [Custom License](./LICENSE)
+- See [Custom License](./LICENSE) within npm package

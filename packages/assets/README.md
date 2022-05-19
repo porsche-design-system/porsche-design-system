@@ -3,7 +3,7 @@
 This package provides manifests and CDN URLs of Porsche assets like fonts, icons, marques, etc. Visit
 the [Porsche Design System](https://designsystem.porsche.com) to learn more.
 
-## Using the Porsche Assets
+## Using the Porsche Design System Assets
 
 ### Installation
 
@@ -36,4 +36,4 @@ const iconCarUrl = `${ICONS_CDN_BASE_URL}/${ICONS_MANIFEST.car}`;
 
 ## License
 
-- See [Custom License](./LICENSE)
+- See [Custom License](./LICENSE) within npm package
