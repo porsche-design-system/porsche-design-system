@@ -100,7 +100,7 @@ export default [
             dest: `${outputDir}/utilities`,
           },
           { src: `${rootDir}/LICENSE`, dest: outputDir },
-          { src: `${rootDir}/OSS_NOTICE`, dest: `${outputDir}/NOTICE` },
+          { src: `${rootDir}/OSS_NOTICE`, dest: outputDir },
           { src: `${projectDir}/README.md`, dest: outputDir },
           { src: `${projectDir}/package.json`, dest: outputDir },
           { src: '../components/CHANGELOG.md', dest: outputDir },

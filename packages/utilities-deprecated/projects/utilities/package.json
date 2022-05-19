@@ -33,7 +33,7 @@
     "build:bundleLib": "rollup -c rollup.config.js",
     "build:copyScss": "echo '@import \"dist/scss/index\";' > scss.scss && cp -r './src/scss/.' './dist/scss'",
     "build:createGlobalCSS": "ts-node scripts/createGlobalCSS.ts",
-    "build:meta": "cp ../../../../LICENSE ./LICENSE && cp ../../../../OSS_NOTICE ./NOTICE",
+    "build:meta": "cp ../../../../LICENSE ./LICENSE && cp ../../../../OSS_NOTICE ./OSS_NOTICE",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist && rm -rf ./scss.scss"
