@@ -1,8 +1,8 @@
 # Porsche Design System - Components JS
 
 Porsche Design System is a component library designed to help developers create the best experience for software or
-services distributed by Dr. Ing. h.c. F. Porsche AG.  
-Visit the [Porsche Design System](https://designsystem.porsche.com) to learn more.
+services distributed by Dr. Ing. h.c. F. Porsche AG. Visit the [Porsche Design System](https://designsystem.porsche.com)
+to learn more.
 
 ## Using the Porsche Design System
 
@@ -38,7 +38,7 @@ recommended (assuming a web server is running).
 <script type="text/javascript">
   porscheDesignSystem.load();
 </script>
-<p-headline variant="headline-1">Some text</p-headline>
+<p-button>Some label</p-button>
 </body>
 </html>
 ```

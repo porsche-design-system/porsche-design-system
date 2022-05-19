@@ -1,8 +1,8 @@
 # Porsche Design System - Components Angular
 
 Porsche Design System is a component library designed to help developers create the best experience for software or
-services distributed by Dr. Ing. h.c. F. Porsche AG.  
-Visit the [Porsche Design System](https://designsystem.porsche.com) to learn more.
+services distributed by Dr. Ing. h.c. F. Porsche AG. Visit the [Porsche Design System](https://designsystem.porsche.com)
+to learn more.
 
 ## Using the Porsche Design System
 
@@ -23,7 +23,7 @@ yarn add @porsche-design-system/components-angular
 ### Usage
 
 After adding the `@porsche-design-system/components-angular` package to your project, you've to import
-the `PorscheDesignSystemModule` in every module you want to use the components.
+the `PorscheDesignSystemModule` in every module you want to use the component library.
 
 ```ts
 // app.module.ts
@@ -48,6 +48,8 @@ export class AppModule {
 }
 ``` 
 
+Change your App file to use at least one Porsche Design System component, for example:
+
 ```ts
 // app.component.ts
 
@@ -57,7 +59,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <div id="app">
-      <p-headline variant="headline-1">Headline</p-headline>
+      <p-button>Some label</p-button>
     </div>
   `,
   styles: []

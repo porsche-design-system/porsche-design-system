@@ -2,6 +2,7 @@ import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 
+const rootDir = '../..';
 const projectDir = 'projects/components-wrapper';
 const outputDir = 'dist/components-wrapper';
 const input = `${projectDir}/src/public-api.ts`;
@@ -93,7 +94,17 @@ export default [
     },
     plugins: [
       copy({
-        targets: [{ src: `${projectDir}/src/utilities/scss.scss`, dest: `${outputDir}/utilities` }],
+        targets: [
+          {
+            src: `${projectDir}/src/utilities/scss.scss`,
+            dest: `${outputDir}/utilities`,
+          },
+          { src: `${rootDir}/LICENSE`, dest: outputDir },
+          { src: `${rootDir}/NOTICE`, dest: outputDir },
+          { src: `${projectDir}/README.md`, dest: outputDir },
+          { src: `${projectDir}/package.json`, dest: outputDir },
+          { src: '../components/CHANGELOG.md', dest: outputDir },
+        ],
       }),
       typescript(typescriptOpts),
     ],
