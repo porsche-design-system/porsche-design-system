@@ -1,6 +1,7 @@
 import {
   PButton,
   PCheckboxWrapper,
+  PHeadline,
   PStepperHorizontal,
   PStepperHorizontalItem,
   PText,
@@ -57,9 +58,11 @@ export const StepperHorizontalExample = (): JSX.Element => {
       </PTextFieldWrapper>
     </form>,
     <div>
-      Order Summary:
-      <PText>{name}</PText>
-      <PText>{email}</PText>
+      <PHeadline tag="h2" variant="headline-2">
+        Order Summary:
+      </PHeadline>
+      <PText>Name: {name}</PText>
+      <PText>-EMail: {email}</PText>
     </div>,
   ];
 
