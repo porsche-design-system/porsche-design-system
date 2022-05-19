@@ -1,78 +1,70 @@
-# Porsche Design System React
+# Porsche Design System - Components React
 
-React wrappers for Porsche Design System web components package.
+Porsche Design System is a component library designed to help developers create the best experience for software or
+services distributed by Dr. Ing. h.c. F. Porsche AG. Visit the [Porsche Design System](https://designsystem.porsche.com)
+to learn more.
 
-## Installation
+## Using the Porsche Design System
 
-```shell script
-// install with npm:
+### Installation
+
+Run the following command using [npm](https://www.npmjs.com):
+
+```bash
 npm install @porsche-design-system/components-react
+```
 
-// install with yarn:
+If you prefer [Yarn](https://yarnpkg.com), use the following command instead:
+
+```bash
 yarn add @porsche-design-system/components-react
-``` 
+```
 
-## Usage
+### Usage
 
-The React wrappers of web components can be used like every other React component.
-
-After adding the `@porsche-design-system/components-react` package to your project, import component(s).  
-The following setup is a standard React (Create React App) setup:
-
-### index.tsx
+After adding the `@porsche-design-system/components-react` package to your project, you've to extend the standard React
+setup by the `PorscheDesignSystemProvider`.
 
 ```tsx
+// index.tsx
+
 import ReactDOM from 'react-dom';
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
+import './index.css';
 import { App } from './App';
 
 ReactDOM.render(
-  <PorscheDesignSystemProvider>
-    <App />
-  </PorscheDesignSystemProvider>,
+  <React.StrictMode>
+    <PorscheDesignSystemProvider>
+      <App/>
+    </PorscheDesignSystemProvider>
+  </React.StrictMode>,
   document.getElementById('root')
 );
-``` 
-
-### App.tsx
-
-```tsx
-import { PHeadline } from '@porsche-design-system/components-react';
-
-export const App = (): JSX.Element => {
-  return (
-    <div className="App">
-      <PHeadline variant="headline-1">Headline</PHeadline>
-    </div>
-  )
-}
 ```
 
-## Testing
-
-### setupTest.{js|ts}
-
-To make testing with jest work, we provide some polyfills.  
-This is required to make custom web components with jsdom.
+Change your App file to use at least one Porsche Design System component, for example:
 
 ```tsx
-import '@porsche-design-system/components-react/jsdom-polyfill';
+// App.tsx
+
+import { PButton } from '@porsche-design-system/components-react';
+
+export const App = (): JSX.Element => (
+  <div className="App">
+    <PButton>Some label</PButton>
+  </div>
+);
 ```
 
-### App.test.tsx
+## Methodology
 
-```tsx
-import { PorscheDesignSystemProvider, componentsReady } from '@porsche-design-system/components-react';
-import { render } from '@testing-library/react';
+Our goal is to provide easy-to-use and well-documented components so that developers don’t need to worry about the
+implementation but can focus on easily creating qualitative and consistent digital Porsche experiences. We ensure that
+our components are made for everyone and meet latest quality standards of usability, accessibility, performance and
+compatibility. In some points the components are built restrictive to define consistent standards for diverse Porsche
+applications but ensure enough flexibility to meet different context requirements.
 
-test('some test', async () => {
-  const { container } = render(
-    <PorscheDesignSystemProvider> {/* required for the component to work */}
-      <SomeComponentWithPorscheDesignSystemComponents />
-    </PorscheDesignSystemProvider>);
+## License
 
-  await componentsReady(); // we need to make sure Porsche Design System components are initialized
-
-  expect(container.firstChild.shadowRoot).not.toBeNull();
-});
-```
+- See [Custom License](./LICENSE)
