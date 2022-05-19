@@ -33,7 +33,7 @@ export default [
       copy({
         targets: [
           { src: `${rootDir}/LICENSE`, dest: outputDir },
-          { src: `${rootDir}/NOTICE`, dest: outputDir },
+          { src: `${rootDir}/OSS_NOTICE`, dest: `${outputDir}/NOTICE` },
           { src: 'README.md', dest: outputDir },
           { src: 'CHANGELOG.md', dest: outputDir },
         ],
