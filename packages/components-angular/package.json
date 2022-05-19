@@ -7,8 +7,7 @@
   "scripts": {
     "start": "concurrently -k -s 'first' -n 'cdn,angular' 'serve-cdn' 'ng serve'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws --spa index.html -p 4200 -d ./dist/components-angular'",
-    "build": "yarn clean:build && yarn build:wrappers && yarn build:meta",
-    "build:meta": "cp ../components/CHANGELOG.md ./dist/components-wrapper/CHANGELOG.md",
+    "build": "yarn clean:build && yarn build:wrappers",
     "build:wrappers": "ng build components-wrapper --configuration production && yarn build:bundle",
     "build:bundle": "yarn build:bundle:partialsAndUtilities && yarn build:bundle:typings",
     "build:bundle:partialsAndUtilities": "yarn rollup -c ./projects/components-wrapper/rollup.config.js",

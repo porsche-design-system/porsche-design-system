@@ -7,9 +7,8 @@
   "scripts": {
     "start": "SKIP_PREFLIGHT_CHECK=true concurrently -k -s 'first' -n 'cdn,react' 'serve-cdn' 'react-scripts start'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws --spa index.html -p 3000 -d ./build'",
-    "build": "yarn clean:build && yarn build:wrappers && yarn build:jsdom-polyfill && yarn build:uxpin-wrapper && yarn build:meta",
+    "build": "yarn clean:build && yarn build:wrappers && yarn build:jsdom-polyfill && yarn build:uxpin-wrapper",
     "build-app": "SKIP_PREFLIGHT_CHECK=true react-scripts build",
-    "build:meta": "SOURCE=./projects/components-wrapper TARGET=./dist/components-wrapper && mkdir -p $TARGET && cp $SOURCE/package.json $TARGET && cp $SOURCE/README.md $TARGET && cp $SOURCE/LICENSE $TARGET && cp ../components/CHANGELOG.md $TARGET",
     "build:wrappers": "yarn rollup -c ./projects/components-wrapper/rollup.config.js",
     "build:jsdom-polyfill": "rollup -c ./projects/jsdom-polyfill/rollup.config.js",
     "build:uxpin-wrapper": "yarn --cwd ./projects/uxpin-wrapper build",
