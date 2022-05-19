@@ -1,4 +1,4 @@
-import { TagNameCamelCase } from 'shared/src';
+import type { TagNameCamelCase } from '@porsche-design-system/shared';
 import { areChildrenOfKind } from './areChildrenOfKind';
 import { getPrefixedTagNames, getTagName } from '../tag-name';
 
