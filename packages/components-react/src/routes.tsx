@@ -76,6 +76,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.InlineNotificationExampleActionButtonPage />,
   },
   {
+    name: 'Stepper Horizontal Example',
+    path: '/stepper-horizontal-example',
+    element: <fromExamples.StepperHorizontalExample />,
+  },
+  {
     name: 'Table Example Basic',
     path: '/table-example-basic',
     element: <fromExamples.TableExampleBasicPage />,
