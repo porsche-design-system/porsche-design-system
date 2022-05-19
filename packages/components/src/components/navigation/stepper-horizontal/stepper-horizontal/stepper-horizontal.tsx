@@ -1,18 +1,18 @@
-import { Component, Element, Event, EventEmitter, h, JSX, Prop, State } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, JSX, Prop, State, h } from '@stencil/core';
 import {
   attachComponentCss,
   getPrefixedTagNames,
   getScrollActivePosition,
   getScrollerElements,
   observeChildren,
+  throwIfChildCountIsExceeded,
+  throwIfChildrenAreNotOfKind,
 } from '../../../../utils';
 import { getComponentCss } from './stepper-horizontal-styles';
+import type { StepChangeEvent } from './stepper-horizontal-utils';
 import { getIndexOfStepWithStateCurrent } from './stepper-horizontal-utils';
-import { throwIfChildCountIsExceeded } from '../../../../utils/dom/throwIfChildCountIsExceeded';
-import { throwIfChildrenAreNotOfKind } from '../../../../utils/dom/throwIfChildrenAreNotOfKind';
 import type { Theme } from '../../../../types';
 import type { ScrollToPosition } from '../../../common/scroller/scroller-utils';
-import type { StepChangeEvent } from './stepper-horizontal-utils';
 
 @Component({
   tag: 'p-stepper-horizontal',
