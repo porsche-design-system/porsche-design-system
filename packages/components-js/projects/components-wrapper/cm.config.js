@@ -43,7 +43,7 @@ module.exports = {
             targetDirectory,
           },
           {
-            pattern: '../../OSS_COMPULSORY_STATEMENT',
+            pattern: '../../NOTICE',
             targetDirectory,
           },
           {

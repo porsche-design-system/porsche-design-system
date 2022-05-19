@@ -52,7 +52,7 @@ const buildConfig = (packagePath) => {
             dest: `${outputDir}/utilities`,
           },
           { src: `${rootDir}/LICENSE`, dest: outputDir },
-          { src: `${rootDir}/OSS_COMPULSORY_STATEMENT`, dest: outputDir },
+          { src: `${rootDir}/NOTICE`, dest: outputDir },
           { src: `${rootDir}/packages/components/CHANGELOG.md`, dest: outputDir },
         ],
       }),
