@@ -8,7 +8,7 @@ import {
 } from '../../../../utils';
 import { getComponentCss } from './stepper-horizontal-styles';
 import { getIndexOfStepWithStateCurrent } from './stepper-horizontal-utils';
-
+import { throwIfChildCountIsExceeded } from '../../../../utils/dom/throwIfChildCountIsExceeded';
 import { throwIfChildrenAreNotOfKind } from '../../../../utils/dom/throwIfChildrenAreNotOfKind';
 import type { Theme } from '../../../../types';
 import type { ScrollToPosition } from '../../../common/scroller/scroller-utils';
@@ -35,15 +35,15 @@ export class StepperHorizontal {
   private scrollerElement: HTMLElement;
 
   public connectedCallback(): void {
+    // Initial validation
+    this.validateComponent();
     this.defineStepperHorizontalItemElements();
     observeChildren(this.host, () => {
       // Throw when new steps are added
-      throwIfChildrenAreNotOfKind(this.host, 'pStepperHorizontalItem');
+      this.validateComponent();
       this.defineStepperHorizontalItemElements();
       this.stepperHorizontalItems.forEach((element) => element.refreshStepCounter());
     });
-    // Initial validation
-    throwIfChildrenAreNotOfKind(this.host, 'pStepperHorizontalItem');
   }
 
   public componentDidLoad(): void {
@@ -118,5 +118,10 @@ export class StepperHorizontal {
 
   private defineStepperHorizontalItemElements = (): void => {
     this.stepperHorizontalItems = Array.from(this.host.children) as HTMLPStepperHorizontalItemElement[];
+  };
+
+  private validateComponent = (): void => {
+    throwIfChildrenAreNotOfKind(this.host, 'pStepperHorizontalItem');
+    throwIfChildCountIsExceeded(this.host, 9);
   };
 }
