@@ -9,6 +9,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### [Unreleased]
 
+### [5.0.1] - 2022-05-19
+
 #### Changed
 
 - npm package is prepared for public release on [npmjs.org](https://npmjs.com)
