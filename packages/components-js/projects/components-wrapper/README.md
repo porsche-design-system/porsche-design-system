@@ -22,24 +22,24 @@ yarn add @porsche-design-system/components-js
 
 ### Usage
 
-After adding the `@porsche-design-system/components-js` package to your project, the following page setup is
-recommended (assuming a web server is running).
+After adding the `@porsche-design-system/components-js` package to your project, the following page setup is recommended
+(assuming a web server is running).
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Porsche Design System</title>
-  <script src="PATH/TO/PACKAGE/@porsche-design-system/components-js/index.js"></script>
-</head>
-<body>
-<script type="text/javascript">
-  porscheDesignSystem.load();
-</script>
-<p-button>Some label</p-button>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Porsche Design System</title>
+    <script src="PATH/TO/PACKAGE/@porsche-design-system/components-js/index.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      porscheDesignSystem.load();
+    </script>
+    <p-button>Some label</p-button>
+  </body>
 </html>
 ```
 

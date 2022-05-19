@@ -19,20 +19,14 @@
 1. Clone [`porsche-design-system` repository](https://github.com/porscheui/porsche-design-system)
 1. Switch to **project root directory**
 1. Checkout branch **master** by executing `git checkout master`
-1. Execute command `npm login --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/`
-1. Enter username, password (Artifactory API Key, **not** Artifactory password!) and e-mail address when asked in
-   terminal
-1. Execute `cat ~/.npmrc`, find following line `//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=` and copy the
-   generated _npm registry token_ from the file to your clipboard
 1. Create an `.env` file within **project root directory** (never push this file to Git because it will contain secrets
    – by default it's ignored by `.gitignore`)
-1. Add _npm registry token_ in following format `PORSCHE_NPM_REGISTRY_TOKEN=YOUR_TOKEN_GOES_HERE`
 1. Make sure that Docker app is running
-1. Create a personal access token with the scopes `delete:packages`, `read:packages`, `write:packages`, `repo`
-   at <https://github.com/settings/tokens>
+1. Create a personal access token with the scopes `delete:packages`, `read:packages`, `write:packages`, `repo` at
+   <https://github.com/settings/tokens>
 1. Add the personal access token to the `.env` file in following format `GITHUB_PERSONAL_ACCESS_TOKEN=YOUR_TOKEN`
-1. Login to the GitHub docker registry
-   via `grep GITHUB_PERSONAL_ACCESS_TOKEN .env | cut -d '=' -f2 | docker login https://ghcr.io -u YOUR_USERNAME --password-stdin`
+1. Login to the GitHub docker registry via
+   `grep GITHUB_PERSONAL_ACCESS_TOKEN .env | cut -d '=' -f2 | docker login https://ghcr.io -u YOUR_USERNAME --password-stdin`
 1. Run `./docker.sh run-install` (to have npm dependencies installed within Docker container) - this may take up to
    several minutes at first start depending on your internet connection
 1. Run `yarn` (to have npm dependencies installed on your machine for better IDE support) - this may take up to several
@@ -47,11 +41,11 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 1. Install prettier
 1. In `Preferences` go to `Languages and Frameworks` -> `Javascript` -> `Prettier`
 1. Set `Prettier Package` to `{PATH_TO_YOUR_DIRECTORY}/node_modules/prettier`
-1. Change `Run for files` to `{**/*,*}.{js,ts,jsx,tsx,vue,scss,json,css,html}`
+1. Change `Run for files` to `{**/*,*}.{js,ts,jsx,tsx,vue,scss,json,css,html,md}`
 1. Click checkbox `on save` and apply
 1. You should be good to go.
-1. If you have to exclude code fom being prettified,
-   see [Prettier configuration](https://prettier.io/docs/en/ignore.html#javascript)
+1. If you have to exclude code fom being prettified, see
+   [Prettier configuration](https://prettier.io/docs/en/ignore.html#javascript)
 
 ### Docker installation steps
 
@@ -180,8 +174,8 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
    builds: [#1124](https://github.com/porscheui/porsche-design-system/issues/1124))
 1. Switch to `docker/node` directory
 1. Run `bash build-and-push-base-image.sh`
-1. View new package
-   on [GitHub-Packages Page](https://github.com/orgs/porscheui/packages?repo_name=porsche-design-system)
+1. View new package on
+   [GitHub-Packages Page](https://github.com/orgs/porscheui/packages?repo_name=porsche-design-system)
 
 ## Dependency updates
 
@@ -196,9 +190,8 @@ Every week, we update our NPM packages:
 1. `cd packages/components-angular`
 1. `./node_modules/.bin/ng update`
 1. `./node_modules/.bin/ng update @angular/cli @angular/core`
-1. Check `MAX_TS_VERSION`
-   in `packages/components-angular/node_modules/@angular/compiler-cli/src/typescript_support.js` which indicates
-   whether `typescript` can be updated for Angular packages or not.
+1. Check `MAX_TS_VERSION` in `packages/components-angular/node_modules/@angular/compiler-cli/src/typescript_support.js`
+   which indicates whether `typescript` can be updated for Angular packages or not.
 1. `exit` to leave the docker container
 1. Run `./docker.sh run-install`
 1. Run `./docker.sh run-build`
@@ -235,13 +228,13 @@ rules:
 
 In order to deploy something to AWS from your local machine, you need to follow these steps.
 
-1. Install `awscli` as described
-   here <https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html#cliv2-linux-install>
-1. Retrieve the credentials from our keepass, they are stored in the entry `AWS + QuickSight` under the
-   fields `Zugriffsschlüssel-ID` and `Geheimer Zugriffsschlüssel`
+1. Install `awscli` as described here
+   <https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html#cliv2-linux-install>
+1. Retrieve the credentials from our keepass, they are stored in the entry `AWS + QuickSight` under the fields
+   `Zugriffsschlüssel-ID` and `Geheimer Zugriffsschlüssel`
 1. Run `aws configure` and enter the credentials, default region `eu-central-1` and default output format `json`
-1. If you prefer to run commands via `docker.sh` you need to extend your `.env` file by `AWS_ACCESS_KEY_ID`
-   and `AWS_SECRET_ACCESS_KEY` with the credentials from the previous step
+1. If you prefer to run commands via `docker.sh` you need to extend your `.env` file by `AWS_ACCESS_KEY_ID` and
+   `AWS_SECRET_ACCESS_KEY` with the credentials from the previous step
 
 ---
 
@@ -286,8 +279,8 @@ everything works under real conditions.
 1. Switch to **project root directory**
 1. Run `git pull origin {master- or v-branch}`
 1. Create a new branch e.g. **release/components-v1.2.3**
-1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under
-   section **[Unreleased]** (this file will also be used to show on Storefront)
+1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section
+   **[Unreleased]** (this file will also be used to show on Storefront)
 
 - `./packages/components/CHANGELOG.md`
 
@@ -300,8 +293,8 @@ everything works under real conditions.
 
 1. In `./packages/shared/src/constants/skeleton.ts` make sure to set `SKELETONS_ACTIVE` to `false`
 1. Move skeletons from the release version section to `### [Unreleased]` in `./packages/components/CHANGELOG.md`
-1. Create a commit with following message
-   structure `Release Porsche Design System - Components (JS/Angular/React) v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
+1. Create a commit with following message structure
+   `Release Porsche Design System - Components (JS/Angular/React) v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Push the local commit to release branch, e.g. `git push origin release/components-v1.2.3`
 1. Create pull request and start review
 1. Merge into **master- or v-branch** branch (then CI/CD will trigger a release automatically)
@@ -311,8 +304,8 @@ everything works under real conditions.
 **NOTE:** For now, don't release a skeleton variant at all!
 
 1. In `./packages/shared/src/constants/skeleton.ts` make sure to set `SKELETONS_ACTIVE` to `true`
-1. Create a commit with following message
-   structure `Release Porsche Design System - Components (JS/Angular/React) v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER}-skeletons | {DEVELOPER_ABBREVEATION}`
+1. Create a commit with following message structure
+   `Release Porsche Design System - Components (JS/Angular/React) v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER}-skeletons | {DEVELOPER_ABBREVEATION}`
 1. Push the local commit to release branch, e.g. `git push origin release/components-v1.2.3-skeletons`
 1. Create pull request and start review
 1. Merge into **master- or v-branch** branch (then CI/CD will trigger a release automatically)
@@ -358,8 +351,8 @@ everything works under real conditions.
 1. Switch to **project root directory**
 1. Run `git pull origin {master- or v-branch}`
 1. Create a new branch e.g. **release/utilities-deprecated-v1.2.3**
-1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under
-   section **[Unreleased]** (this file will also be used to show on Storefront)
+1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section
+   **[Unreleased]** (this file will also be used to show on Storefront)
 
 - `./packages/utilities-deprecated/projects/utilities/CHANGELOG.md`
 
@@ -368,8 +361,8 @@ everything works under real conditions.
 
 ### Release
 
-1. Create a commit with following message
-   structure `Release Porsche Design System - Utilities Deprecated v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
+1. Create a commit with following message structure
+   `Release Porsche Design System - Utilities Deprecated v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Push the local commit to release branch, e.g. `git push origin release/utilities-deprecated-v1.2.3`
 1. Create pull request and start review
 1. Merge into **master- or v-branch** branch (then CI/CD will trigger a release automatically)
@@ -399,8 +392,8 @@ everything works under real conditions.
 1. Switch to **project root directory**
 1. Run `git pull origin {master- or v-branch}`
 1. Create a new branch e.g. **release/assets-v1.2.3**
-1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under
-   section **[Unreleased]**
+1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section
+   **[Unreleased]**
 
 - `./packages/assets/CHANGELOG.md`
 
@@ -409,8 +402,8 @@ everything works under real conditions.
 
 ### Release
 
-1. Create a commit with following message
-   structure `Release Porsche Design System - Assets v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
+1. Create a commit with following message structure
+   `Release Porsche Design System - Assets v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Push the local commit to release branch, e.g. `git push origin release/assets-v1.2.3`
 1. Create pull request and start review
 1. Merge into **master- or v-branch** branch (then CI/CD will trigger a release automatically)
@@ -428,8 +421,8 @@ everything works under real conditions.
 1. Switch to **project root directory**
 1. Run `git pull origin {master- or v-branch}`
 1. Create a new branch e.g. **release/sketch-library-basic-v1.2.3**
-1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file under
-   section **[Unreleased]** (this file will also be used to show on Storefront)
+1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file under section
+   **[Unreleased]** (this file will also be used to show on Storefront)
 
 - `./sketch/basic/CHANGELOG.md`
 
@@ -451,8 +444,8 @@ everything works under real conditions.
 
 ### Release
 
-1. Create a commit with following message
-   structure `Release Porsche Design System - Sketch Library Basic v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
+1. Create a commit with following message structure
+   `Release Porsche Design System - Sketch Library Basic v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
 1. Push the local commit to release branch, e.g. `git push origin release/sketch-library-basic-v1.2.3`
 1. Create pull request and start review
 1. Merge into **master- or v-branch** branch (then CI/CD will trigger a release automatically)
@@ -471,8 +464,8 @@ everything works under real conditions.
 1. Switch to **project root directory**
 1. Run `git pull origin {master- or v-branch}`
 1. Create a new branch e.g. **release/sketch-library-web-v1.2.3**
-1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file under
-   section **[Unreleased]** (this file will also be used to show on Storefront)
+1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file under section
+   **[Unreleased]** (this file will also be used to show on Storefront)
 
 - `./sketch/web/CHANGELOG.md`
 
@@ -495,8 +488,8 @@ everything works under real conditions.
 
 ### Release
 
-1. Create a commit with following message
-   structure `Release Porsche Design System - Sketch Library Web v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
+1. Create a commit with following message structure
+   `Release Porsche Design System - Sketch Library Web v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
    e.g. **.Release Porsche Design System - Sketch Library Web v1.1.1 | aa**
 1. Push the local commit to release branch, e.g. `git push origin release/sketch-library-web-v1.2.3`
 1. Create pull request and start review
