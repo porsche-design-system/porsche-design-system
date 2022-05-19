@@ -91,15 +91,19 @@ export const StepperHorizontalExample = (): JSX.Element => {
     const newState = [...steps];
     const activeStepIndex = getActiveStepIndex(newState);
 
-    newState[activeStepIndex].state = 'complete';
-    newState[findNextIncompleteStep()].state = 'current';
+    const nextIndex = findNextIncompleteStep();
+
+    for (let i = activeStepIndex; i < nextIndex; i++) {
+      newState[i].state = 'complete';
+    }
+
+    newState[nextIndex].state = 'current';
 
     setSteps(newState);
   };
 
   const handleStepChange = (e: CustomEvent<StepChangeEvent>) => {
-    const { activeStepIndex, prevStepIndex, prevState } = e.detail;
-    console.log('-> activeStepIndex', activeStepIndex);
+    const { activeStepIndex } = e.detail;
 
     const newState = [...steps];
     newState[activeStepIndex].state = 'current';
