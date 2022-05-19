@@ -2398,18 +2398,18 @@
 
 "@porsche-design-system/browser-notification@4.1.1":
   version "4.1.1"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/browser-notification/-/@porsche-design-system/browser-notification-4.1.1.tgz#f553e114b2fa4903dfe38ea4add682d13a47ec72"
-  integrity sha1-9VPhFLL6SQPf446krdaC0TpH7HI=
+  resolved "https://registry.yarnpkg.com/@porsche-design-system/browser-notification/-/browser-notification-4.1.1.tgz#fb0ba2fccdb000679602a407e30174ccce0455c1"
+  integrity sha512-q+viknSiudV1eMNQ7HJ7z5Q8oqKVLWjFkOs+9Vxp/aNXYAGGQxYhDCM1srAiGOjSUM4w8Ylpy7teBXP53BadRQ==
 
 "@porsche-design-system/prettier-config@^1.0.0":
-  version "1.0.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/prettier-config/-/@porsche-design-system/prettier-config-1.0.0.tgz#3ab128c42d98cb049ffc0b141362f6963e0a93d7"
-  integrity sha1-OrEoxC2YywSf/AsUE2L2lj4Kk9c=
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@porsche-design-system/prettier-config/-/prettier-config-1.0.1.tgz#6b0fc60d3d42c7b4d9c998bf7b685513a5488400"
+  integrity sha512-IhoHGmsPoO4VBoCebNGejBNHJFdAldV3m8kAoO458MJeaQJODM2b1UFzvGeTXGOMIFH4pkshcjZcF36vQvsn9w==
 
 "@porsche-design-system/visual-regression-tester@^4.3.0":
   version "4.3.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/visual-regression-tester/-/@porsche-design-system/visual-regression-tester-4.3.0.tgz#067e23f68bb72ccd9f9509227f6d333007813d92"
-  integrity sha1-Bn4j9ou3LM2flQkif20zMAeBPZI=
+  resolved "https://registry.yarnpkg.com/@porsche-design-system/visual-regression-tester/-/visual-regression-tester-4.3.0.tgz#534284ee51f8c7a252b8d93f3caa0d0f3fddc055"
+  integrity sha512-nVjLEiRuWZuJiiHQHMJRb1T41vj+eT+kgbzEQ3WrTZgL/SGtabEs4HAN4Uq0Y79/doBaLYn3VQ80FicFcasgww==
   dependencies:
     pixelmatch "^5.2.1"
     sharp "^0.29.1"
