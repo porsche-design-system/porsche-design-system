@@ -67,7 +67,7 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
       fill: disabledColor,
     },
     icon: {
-      color: iconColor,
+      color: isDisabled ? disabledColor : iconColor,
       marginRight: pxToRemWithUnit(4),
       transition: getTransition('color'),
     },
