@@ -18,20 +18,13 @@
     "Bernd Hacker <bernd.hacker@mhp.com>",
     "Anton Schmidt <anton.schmidt@mhp.com>"
   ],
-  "license": "SEE LICENSE IN https://designsystem.porsche.com",
+  "license": "SEE LICENSE IN https://designsystem.porsche.com/latest/license",
   "description": "Porsche Fonts",
   "keywords": [
     "porsche",
     "fonts"
   ],
   "homepage": "https://designsystem.porsche.com",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/porscheui/porsche-design-system.git"
-  },
-  "bugs": {
-    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
-  },
   "scripts": {
     "build": "yarn build:fonts && yarn build:lib",
     "build:fonts": "ts-node --project tsconfig.json scripts/build.ts",
@@ -46,7 +39,7 @@
     "change-case": "^4.1.2",
     "globby": "^11.0.4",
     "ts-node": "^10.7.0",
-    "typescript": "~4.6.3"
+    "typescript": "~4.6.4"
   },
   "files": [
     "dist/"

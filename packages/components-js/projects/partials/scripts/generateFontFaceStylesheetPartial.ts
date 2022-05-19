@@ -11,13 +11,9 @@ export const generateFontFaceStylesheetPartial = (): string => {
   ${withoutTagsOption}
   format?: Format;
 };
-type GetFontFaceStylesheetOptionsFormatHtml = Omit<GetFontFaceStylesheetOptions, 'withoutTags'> & {
-  format: 'html';
-};
-type GetFontFaceStylesheetOptionsFormatJsx =  Omit<GetFontFaceStylesheetOptions, 'withoutTags'> & {
-  format: 'jsx';
-};
-type GetFontFaceStylesheetOptionsWithoutTags =  Omit<GetFontFaceStylesheetOptions, 'format'>;`;
+type GetFontFaceStylesheetOptionsFormatHtml = Omit<GetFontFaceStylesheetOptions, 'withoutTags'> & { format: 'html' };
+type GetFontFaceStylesheetOptionsFormatJsx = Omit<GetFontFaceStylesheetOptions, 'withoutTags'> & { format: 'jsx' };
+type GetFontFaceStylesheetOptionsWithoutTags = Omit<GetFontFaceStylesheetOptions, 'format'>;`;
 
   const cssFileCn = hashedFontFaceCssFiles?.find((x) => x.includes('.cn.'));
   const cssFileCom = hashedFontFaceCssFiles?.find((x) => !x.includes('.cn.'));
@@ -39,8 +35,10 @@ export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetOptions): stri
     cdn: 'auto',
     withoutTags: false,
     format: 'html',
-    ...opts
+    ...opts,
   };
+
+  throwIfRunInBrowser('getFontFaceStylesheet');
 
   const cdnBaseUrl = getCdnBaseUrl(cdn);
   const url = \`\${cdnBaseUrl}/${CDN_BASE_PATH_STYLES}/\${cdn === 'cn'
@@ -48,7 +46,9 @@ export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetOptions): stri
     : '${cssFileCom}'
   }\`;
 
-  const markup = format === 'html' ? \`${linksHtml}\` : <>${linksJsx}</>;
+  const markup = format === 'html'
+    ? \`${linksHtml}\`
+    : <>${linksJsx}</>;
 
   return withoutTags
     ? url

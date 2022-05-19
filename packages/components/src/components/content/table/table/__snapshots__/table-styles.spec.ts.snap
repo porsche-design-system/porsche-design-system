@@ -29,10 +29,10 @@ exports[`getComponentCss() should return correct css 1`] = `
   width: 100%;
   display: table;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  hyphens: auto;
-  overflow-wrap: break-word;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   text-align: left;
   color: #000;
   white-space: nowrap;
@@ -85,9 +85,6 @@ exports[`getSlottedCss() should return correct css 1`] = `
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
-p-table[theme=\\"dark\\"] a:hover {
-  color: #ff0223 !important;
-}
 p-table b, p-table strong {
   font-weight: 700 !important;
 }
@@ -118,9 +115,6 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
   transition: color var(--p-transition-duration, .24s) ease !important;
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
-}
-prefixed-p-table[theme=\\"dark\\"] a:hover {
-  color: #ff0223 !important;
 }
 prefixed-p-table b, prefixed-p-table strong {
   font-weight: 700 !important;

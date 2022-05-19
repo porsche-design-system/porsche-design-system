@@ -11,6 +11,7 @@
       "packages/components-js/dist/components-wrapper",
       "packages/components-angular/dist/components-wrapper",
       "packages/components-react/dist/components-wrapper",
+      "packages/components-react/projects/nextjs",
       "packages/components-react/projects/uxpin-wrapper",
       "packages/utilities-deprecated/projects/utilities",
       "packages/utilities/projects/utilities",
@@ -107,15 +108,15 @@
     "test:e2e:components-angular": "yarn --cwd ./packages/components-angular test:e2e",
     "test:e2e:components-react": "yarn --cwd ./packages/components-react test:e2e",
     "test:e2e:storefront": "yarn --cwd ./packages/storefront test:e2e",
-    "test:vrt": "concurrently -n 'components-js' 'yarn test:vrt:components-js' && concurrently -n 'components-angular' 'yarn test:vrt:components-angular' && concurrently -n 'components-react' 'yarn test:vrt:components-react' && concurrently -n 'storefront' 'yarn test:vrt:storefront' && concurrently -n 'utilities-deprecated' 'yarn test:vrt:utilities-deprecated'",
+    "test:vrt": "concurrently -n 'components-js' 'yarn test:vrt:components-js' && concurrently -n 'components-angular' 'yarn test:vrt:components-angular' && concurrently -n 'components-react' 'yarn test:vrt:components-react' && concurrently -n 'components-react/nextjs' 'yarn test:vrt:components-react/nextjs' && concurrently -n 'storefront' 'yarn test:vrt:storefront' && concurrently -n 'utilities-deprecated' 'yarn test:vrt:utilities-deprecated'",
     "test:vrt:components-js": "yarn --cwd ./packages/components-js test:vrt",
     "test:vrt:components-angular": "yarn --cwd ./packages/components-angular test:vrt",
     "test:vrt:components-react": "yarn --cwd ./packages/components-react test:vrt",
+    "test:vrt:components-react/nextjs": "yarn --cwd ./packages/components-react/projects/nextjs test:vrt",
     "test:vrt:storefront": "yarn --cwd ./packages/storefront test:vrt",
     "test:vrt:utilities-deprecated": "yarn --cwd ./packages/utilities-deprecated test:vrt",
-    "test:smoke": "concurrently --kill-others-on-fail -n 'components-js,components-react' 'yarn test:smoke:components-js' 'yarn test:smoke:components-react'",
+    "test:smoke": "concurrently --kill-others-on-fail -n 'components-js' 'yarn test:smoke:components-js'",
     "test:smoke:components-js": "yarn --cwd ./packages/components-js test:smoke",
-    "test:smoke:components-react": "yarn --cwd ./packages/components-react test:smoke",
     "updateAlgolia": "yarn --cwd ./packages/storefront updateAlgolia",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log && yarn clean:assets:node_modules && yarn clean:components:node_modules && yarn clean:components-angular:node_modules && yarn clean:components-js:node_modules && yarn clean:components-react:node_modules && yarn clean:email:node_modules && yarn clean:fonts:node_modules && yarn clean:icons:node_modules && yarn clean:marque:node_modules && yarn clean:meta-icons:node_modules && yarn clean:shared:node_modules && yarn clean:storefront:node_modules && yarn clean:utilities:node_modules && yarn clean:utilities-deprecated:node_modules",
@@ -154,11 +155,12 @@
     "prettier": "^2.6.2"
   },
   "resolutions": {
-    "**/react-scripts/jest": ">=27 <=28",
-    "**/react-scripts/jest-circus": ">=27 <=28",
-    "**/@vue/cli-plugin-unit-jest/jest": ">=27 <=28",
-    "**/@vue/cli-plugin-unit-jest/ts-jest": ">=27 <=28",
-    "**/@types/jest-environment-puppeteer/@jest/types": ">=27 <=28",
-    "**/@types/jest-environment-puppeteer/jest-environment-node": ">=27 <=28"
+    "**/react-scripts/jest": ">=27 <28",
+    "**/react-scripts/jest-circus": ">=27 <28",
+    "**/@vue/cli-plugin-unit-jest/jest": ">=27 <28",
+    "**/@vue/cli-plugin-unit-jest/ts-jest": ">=27 <28",
+    "**/@types/jest-environment-puppeteer/@jest/types": ">=27 <28",
+    "**/@types/jest-environment-puppeteer/jest-environment-node": ">=27 <28",
+    "**/eslint-config-next/eslint-plugin-react-hooks": "^4.3.0"
   }
 }

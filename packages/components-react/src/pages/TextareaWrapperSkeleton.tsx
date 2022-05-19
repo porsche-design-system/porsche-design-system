@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { PTextareaWrapper } from '@porsche-design-system/components-react';
 import { useEffect } from 'react';
-import { pollComponentsReady } from '../pollComponentsReady'
+import { pollComponentsReady } from '../pollComponentsReady';
 
 export const TextareaWrapperSkeletonPage = (): JSX.Element => {
   useEffect(() => {

@@ -68,24 +68,18 @@ describe('tabs-bar', () => {
 
   const getHost = () => selectNode(page, 'p-tabs-bar');
   const getAllButtons = () => page.$$('button');
-  const getScrollArea = () => selectNode(page, 'p-tabs-bar >>> .scroll-area');
+  const getScrollArea = () => selectNode(page, 'p-tabs-bar >>> p-scroller >>> .scroll-area');
   const getBar = () => selectNode(page, 'p-tabs-bar >>> .bar');
-  const getGradientNext = () => selectNode(page, 'p-tabs-bar >>> .action--next .gradient');
-  const getActionContainers = async () => {
-    const actionPrev = await selectNode(page, 'p-tabs-bar >>> .action--prev');
-    const actionNext = await selectNode(page, 'p-tabs-bar >>> .action--next');
-    return { actionPrev, actionNext };
-  };
+  const getGradientNext = () => selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action-next .gradient');
+
   const getPrevNextButton = async () => {
-    const prevButton = await selectNode(page, 'p-tabs-bar >>> .action--prev p-button-pure');
-    const nextButton = await selectNode(page, 'p-tabs-bar >>> .action--next p-button-pure');
+    const prevButton = await selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action-prev p-button-pure');
+    const nextButton = await selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action-next p-button-pure');
     return { prevButton, nextButton };
   };
-  const getScrollLeft = (element: ElementHandle) => getProperty(element, 'scrollLeft');
-  const getOffsetLeft = (element: ElementHandle) => getProperty(element, 'offsetLeft');
-  const getOffsetWidth = (element: ElementHandle) => getProperty(element, 'offsetWidth');
-  const getClassList = async (element: ElementHandle): Promise<string[]> =>
-    Object.values(await getProperty(element, 'classList'));
+  const getScrollLeft = (element: ElementHandle) => getProperty<number>(element, 'scrollLeft');
+  const getOffsetLeft = (element: ElementHandle) => getProperty<number>(element, 'offsetLeft');
+  const getOffsetWidth = (element: ElementHandle) => getProperty<number>(element, 'offsetWidth');
 
   const getScrollDistance = (scrollAreaWidth: number): number => Math.round(scrollAreaWidth * TABS_SCROLL_PERCENTAGE);
   const getBarWidth = async (bar: ElementHandle) => await getElementStyle(bar, 'width');
@@ -122,11 +116,11 @@ describe('tabs-bar', () => {
 
       expect(Math.floor((await getElementPositions(page, bar)).right), 'initial position').toEqual(87);
 
-      await firstButton.evaluate((el) => (el.innerHTML = 'New long button mame on this button'));
+      await firstButton.evaluate((el) => (el.innerHTML = 'New long button name on this button'));
       await waitForStencilLifecycle(page);
       await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
-      expect(Math.floor((await getElementPositions(page, bar)).right), 'final position').toEqual(257);
+      expect(Math.floor((await getElementPositions(page, bar)).right), 'final position').toEqual(252);
     });
 
     it('should adjust bar style when new tab element is added and clicked', async () => {
@@ -231,70 +225,7 @@ describe('tabs-bar', () => {
       expect(await getBarWidth(bar), 'final width').toBe('87px');
     });
   });
-
-  describe('scroll-area', () => {
-    it('should have transition and will-change css property applied on bar', async () => {
-      await initTabsBar({ activeTabIndex: 0 });
-      const host = await getHost();
-      await setProperty(host, 'activeTabIndex', 1); // class with transition property will applied on first change
-      await waitForStencilLifecycle(page);
-
-      const bar = await getBar();
-      const barStyleTransition = await getElementStyle(bar, 'transition');
-      const barStyleWillChange = await getElementStyle(bar, 'willChange');
-
-      expect(barStyleTransition).toContain('transform');
-      expect(barStyleTransition).toContain('width');
-      expect(barStyleWillChange).toBe('width');
-    });
-
-    it('should scroll by 20% on button prev/next click', async () => {
-      await initTabsBar({ isWrapped: true, activeTabIndex: 0 });
-      const { prevButton, nextButton } = await getPrevNextButton();
-      const scrollArea = await getScrollArea();
-      const scrollAreaWidth = await getOffsetWidth(scrollArea);
-      const scrollDistance = await getScrollDistance(+scrollAreaWidth);
-
-      expect(await getScrollLeft(scrollArea)).toEqual(0);
-
-      await clickElement(nextButton);
-      expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
-
-      await clickElement(nextButton);
-      expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance * 2);
-
-      await clickElement(prevButton);
-      expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
-
-      await clickElement(prevButton);
-      expect(await getScrollLeft(scrollArea)).toEqual(0);
-    });
-
-    it('should scroll to max scroll-position on multiple next clicks', async () => {
-      await initTabsBar({ amount: 6, isWrapped: true, activeTabIndex: 0 });
-      const [firstButton] = await getAllButtons();
-      const { nextButton } = await getPrevNextButton();
-      const scrollArea = await getScrollArea();
-
-      expect(await getScrollLeft(scrollArea)).toEqual(0);
-
-      await clickElement(nextButton);
-      await clickElement(nextButton);
-      await clickElement(nextButton);
-      await clickElement(nextButton);
-      await clickElement(nextButton);
-
-      const scrollPosition = await getScrollLeft(scrollArea);
-
-      await clickElement(firstButton);
-      const scrollMax = await scrollArea.evaluate((el): number => {
-        el.scrollTo({ left: el.scrollWidth });
-        return el.scrollLeft;
-      });
-
-      expect(scrollPosition).toEqual(scrollMax);
-    });
-
+  describe('active index position', () => {
     it('should scroll to correct position initially', async () => {
       await initTabsBar({ activeTabIndex: 3, isWrapped: true });
       const allButtons = await getAllButtons();
@@ -330,6 +261,77 @@ describe('tabs-bar', () => {
       expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
     });
 
+    it('should have correct scroll position after tab click and prev button click', async () => {
+      await initTabsBar({ amount: 8, isWrapped: true, activeTabIndex: 0, otherMarkup: clickHandlerScript });
+      const { prevButton } = await getPrevNextButton();
+      const allButtons = await getAllButtons();
+      const button3 = allButtons[2];
+      const scrollArea = await getScrollArea();
+      const scrollAreaWidth = await getOffsetWidth(scrollArea);
+      const scrollDistance = await getScrollDistance(+scrollAreaWidth);
+
+      const gradient = await getGradientNext();
+      const gradientWidth = await getOffsetWidth(gradient);
+
+      await clickElement(button3);
+      const button3offset = await getOffsetLeft(button3);
+      const scrollDistanceLeft = +button3offset - +gradientWidth + FOCUS_PADDING;
+
+      expect(await getScrollLeft(scrollArea), 'scroll left active button after click').toBe(scrollDistanceLeft);
+
+      await clickElement(prevButton);
+      expect(await getScrollLeft(scrollArea), 'scroll left active button after first prev click').toBe(
+        scrollDistanceLeft - scrollDistance
+      );
+
+      await clickElement(prevButton);
+      expect(await getScrollLeft(scrollArea), 'scroll left active button after second prev click').toBe(58);
+    });
+
+    it('should have correct scroll position after tab click and next button click', async () => {
+      await initTabsBar({ amount: 8, isWrapped: true, activeTabIndex: 7, otherMarkup: clickHandlerScript });
+      const { nextButton } = await getPrevNextButton();
+      const allButtons = await getAllButtons();
+      const button7 = allButtons[6];
+
+      const scrollArea = await getScrollArea();
+      const scrollAreaWidth: number = await getOffsetWidth(scrollArea);
+      const scrollByX = Math.round(scrollAreaWidth * 0.2);
+
+      const gradient = await getGradientNext();
+      const gradientWidth = await getOffsetWidth(gradient);
+
+      await clickElement(button7);
+      const button7offset = await getOffsetLeft(button7);
+      const buttonWidth = await getOffsetWidth(button7);
+      const scrollDistanceRight = +button7offset + +buttonWidth + +gradientWidth - +scrollAreaWidth;
+
+      expect(await getScrollLeft(scrollArea), 'scroll left active button after click').toBe(scrollDistanceRight);
+
+      const scrollAreaLeftAfterClick = await getScrollLeft(scrollArea);
+      await clickElement(nextButton);
+      expect(await getScrollLeft(scrollArea), 'scroll left active button after prev click').toBe(
+        scrollAreaLeftAfterClick + scrollByX
+      );
+    });
+  });
+
+  describe('bar', () => {
+    it('should have transition and will-change css property applied on bar', async () => {
+      await initTabsBar({ activeTabIndex: 0 });
+      const host = await getHost();
+      await setProperty(host, 'activeTabIndex', 1); // class with transition property will applied on first change
+      await waitForStencilLifecycle(page);
+
+      const bar = await getBar();
+      const barStyleTransition = await getElementStyle(bar, 'transition');
+      const barStyleWillChange = await getElementStyle(bar, 'willChange');
+
+      expect(barStyleTransition).toContain('transform');
+      expect(barStyleTransition).toContain('width');
+      expect(barStyleWillChange).toBe('width');
+    });
+
     it('should have same offsetLeft on bar and active tab', async () => {
       await initTabsBar({ amount: 6, activeTabIndex: 2, isWrapped: true, otherMarkup: clickHandlerScript });
       const [firstButton, , thirdButton] = await getAllButtons();
@@ -344,7 +346,6 @@ describe('tabs-bar', () => {
         Math.floor((await getElementPositions(page, bar)).left)
       );
     });
-
     it('should have offsetLeft on bar as the center of unset tab', async () => {
       await initTabsBar({ amount: 6, activeTabIndex: 0, isWrapped: true, otherMarkup: clickHandlerScript });
       const [firstButton, , thirdButton] = await getAllButtons();
@@ -369,110 +370,57 @@ describe('tabs-bar', () => {
         'correct offset width after click on third button'
       ).toEqual(Math.floor((await getElementPositions(page, bar)).left));
     });
+  });
 
-    it('should have correct scroll position after tab click and arrow left', async () => {
-      await initTabsBar({ amount: 8, isWrapped: true, activeTabIndex: 0, otherMarkup: clickHandlerScript });
-      const { prevButton } = await getPrevNextButton();
-      const allButtons = await getAllButtons();
-      const button3 = allButtons[2];
-      const scrollArea = await getScrollArea();
-      const scrollAreaWidth = await getOffsetWidth(scrollArea);
-      const scrollDistance = await getScrollDistance(+scrollAreaWidth);
+  describe('when not wrapped', () => {
+    it('should set correct bar style when no activeTabIndex is set initially', async () => {
+      await initTabsBar({ amount: 3 });
+      const bar = await getBar();
 
-      const gradient = await getGradientNext();
-      const gradientWidth = await getOffsetWidth(gradient);
-
-      await clickElement(button3);
-      const button3offset = await getOffsetLeft(button3);
-      const scrollDistanceLeft = +button3offset - +gradientWidth + FOCUS_PADDING;
-
-      expect(await getScrollLeft(scrollArea), 'scroll left active button after click').toBe(scrollDistanceLeft);
-
-      await clickElement(prevButton);
-      expect(await getScrollLeft(scrollArea), 'scroll left active button after first prev click').toBe(
-        scrollDistanceLeft - scrollDistance
-      );
-
-      await clickElement(prevButton);
-      expect(await getScrollLeft(scrollArea), 'scroll left active button after second prev click').toBe(0);
+      expect(await getOffsetWidth(bar)).toBe(0);
     });
 
-    it('should have correct scroll position after tab click and arrow right', async () => {
-      await initTabsBar({ amount: 8, isWrapped: true, activeTabIndex: 7, otherMarkup: clickHandlerScript });
-      const { nextButton } = await getPrevNextButton();
-      const allButtons = await getAllButtons();
-      const button7 = allButtons[6];
+    it('should set correct bar style for activeTabIndex 0', async () => {
+      await initTabsBar({ amount: 3, activeTabIndex: 0 });
+      const [firstButton] = await getAllButtons();
+      const bar = await getBar();
 
-      const scrollArea = await getScrollArea();
-      const scrollAreaWidth = await getOffsetWidth(scrollArea);
-
-      const gradient = await getGradientNext();
-      const gradientWidth = await getOffsetWidth(gradient);
-
-      const maxScrollDistance = await getScrollLeft(scrollArea);
-
-      await clickElement(button7);
-      const button7offset = await getOffsetLeft(button7);
-      const buttonWidth = await getOffsetWidth(button7);
-      const scrollDistanceRight = +button7offset + +buttonWidth + +gradientWidth - +scrollAreaWidth;
-
-      expect(await getScrollLeft(scrollArea), 'scroll left active button after click').toBe(scrollDistanceRight);
-
-      await clickElement(nextButton);
-      expect(await getScrollLeft(scrollArea), 'scroll left active button after prev click').toBe(maxScrollDistance);
+      expect(await getOffsetWidth(bar)).toBe(await getOffsetWidth(firstButton));
     });
 
-    describe('when not wrapped', () => {
-      it('should set correct bar style when no activeTabIndex is set initially', async () => {
-        await initTabsBar({ amount: 3 });
-        const bar = await getBar();
+    it('should set correct bar style initially with last index', async () => {
+      await initTabsBar({ amount: 3, activeTabIndex: 2 });
+      const [lastButton] = (await getAllButtons()).slice(-1);
+      const bar = await getBar();
 
-        expect(await getOffsetWidth(bar)).toBe(0);
-      });
-
-      it('should set correct bar style for activeTabIndex 0', async () => {
-        await initTabsBar({ amount: 3, activeTabIndex: 0 });
-        const [firstButton] = await getAllButtons();
-        const bar = await getBar();
-
-        expect(await getOffsetWidth(bar)).toBe(await getOffsetWidth(firstButton));
-      });
-
-      it('should set correct bar style initially with last index', async () => {
-        await initTabsBar({ amount: 3, activeTabIndex: 2 });
-        const [lastButton] = (await getAllButtons()).slice(-1);
-        const bar = await getBar();
-
-        expect(await getOffsetWidth(bar)).toBe(await getOffsetWidth(lastButton));
-      });
-    });
-
-    describe('when wrapped', () => {
-      it('should set correct bar style when no activeTabIndex is set initially', async () => {
-        await initTabsBar({ isWrapped: true });
-        const bar = await getBar();
-
-        expect(await getOffsetWidth(bar)).toBe(0);
-      });
-
-      it('should set correct bar style for activeTabIndex 0', async () => {
-        await initTabsBar({ isWrapped: true, activeTabIndex: 0 });
-        const [firstButton] = await getAllButtons();
-        const bar = await getBar();
-
-        expect(await getOffsetWidth(bar)).toBe(await getOffsetWidth(firstButton));
-      });
-
-      it('should set correct bar style initially with last index', async () => {
-        await initTabsBar({ isWrapped: true, activeTabIndex: 7 });
-        const [lastButton] = (await getAllButtons()).slice(-1);
-        const bar = await getBar();
-
-        expect(await getOffsetWidth(bar)).toBe(await getOffsetWidth(lastButton));
-      });
+      expect(await getOffsetWidth(bar)).toBe(await getOffsetWidth(lastButton));
     });
   });
 
+  describe('when wrapped', () => {
+    it('should set correct bar style when no activeTabIndex is set initially', async () => {
+      await initTabsBar({ isWrapped: true });
+      const bar = await getBar();
+
+      expect(await getOffsetWidth(bar)).toBe(0);
+    });
+
+    it('should set correct bar style for activeTabIndex 0', async () => {
+      await initTabsBar({ isWrapped: true, activeTabIndex: 0 });
+      const [firstButton] = await getAllButtons();
+      const bar = await getBar();
+
+      expect(await getOffsetWidth(bar)).toBe(await getOffsetWidth(firstButton));
+    });
+
+    it('should set correct bar style initially with last index', async () => {
+      await initTabsBar({ isWrapped: true, activeTabIndex: 7 });
+      const [lastButton] = (await getAllButtons()).slice(-1);
+      const bar = await getBar();
+
+      expect(await getOffsetWidth(bar)).toBe(await getOffsetWidth(lastButton));
+    });
+  });
   describe('keyboard', () => {
     it('should render focus on first tab when no tab is selected on keyboard "tab" press', async () => {
       await initTabsBar({ amount: 3 });
@@ -570,9 +518,9 @@ describe('tabs-bar', () => {
         </div>`
       );
       const allButtons = await (await selectNode(page, 'p-tabs >>> p-tabs-bar')).$$('button');
-      const gradientNext = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> .action--next .gradient');
+      const gradientNext = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> p-scroller >>> .action-next .gradient');
       const gradientWidth = await getOffsetWidth(gradientNext);
-      const scrollArea = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> .scroll-area');
+      const scrollArea = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> p-scroller >>> .scroll-area');
       const scrollAreaWidth = await getOffsetWidth(scrollArea);
 
       expect(await getScrollLeft(scrollArea)).toEqual(0);
@@ -667,113 +615,6 @@ describe('tabs-bar', () => {
     });
   });
 
-  describe('next/prev buttons', () => {
-    it('should have type="button" attribute', async () => {
-      await initTabsBar();
-
-      const { prevButton, nextButton } = await getPrevNextButton();
-
-      expect(await getProperty(prevButton, 'type')).toBe('button');
-      expect(await getProperty(nextButton, 'type')).toBe('button');
-    });
-
-    const hiddenClass = 'action--hidden';
-    const tabSizes: TabSize[] = ['small', 'medium'];
-
-    tabSizes.forEach((size) => {
-      describe(`size = ${size} `, () => {
-        it('should not show prev/next buttons only on vertical scroll', async () => {
-          await initTabsBar({ amount: 5, activeTabIndex: 1, size, otherMarkup: '<div style="height: 120vh"></div>' });
-          const { actionPrev, actionNext } = await getActionContainers();
-
-          await page.evaluate(() => window.scroll(0, 20));
-          await waitForStencilLifecycle(page);
-
-          expect(await getClassList(actionPrev)).toContain(hiddenClass);
-          expect(await getClassList(actionNext)).toContain(hiddenClass);
-        });
-
-        it('should only show next button', async () => {
-          await initTabsBar({ amount: 4, size, isWrapped: true, activeTabIndex: 0 });
-          const { actionPrev, actionNext } = await getActionContainers();
-
-          expect(await getClassList(actionNext)).not.toContain(hiddenClass);
-          expect(await getClassList(actionPrev)).toContain(hiddenClass);
-        });
-
-        it('should only show prev button', async () => {
-          await initTabsBar({ amount: 20, activeTabIndex: 19, size, isWrapped: true });
-          const { actionPrev, actionNext } = await getActionContainers();
-
-          expect(await getClassList(actionNext)).toContain(hiddenClass);
-          expect(await getClassList(actionPrev)).not.toContain(hiddenClass);
-        });
-
-        it('should show prev and next button', async () => {
-          await initTabsBar({ amount: 7, activeTabIndex: 1, size, isWrapped: true });
-          const { actionPrev, actionNext } = await getActionContainers();
-
-          expect(await getClassList(actionNext)).not.toContain(hiddenClass);
-          expect(await getClassList(actionPrev)).not.toContain(hiddenClass);
-        });
-
-        it('should not show prev/next buttons without children', async () => {
-          await setContentWithDesignSystem(page, `<p-tabs-bar active-tab-index="0" size="${size}"></p-tabs-bar>`);
-          const { actionPrev, actionNext } = await getActionContainers();
-
-          expect(await getClassList(actionNext)).toContain(hiddenClass);
-          expect(await getClassList(actionPrev)).toContain(hiddenClass);
-        });
-
-        it('should have label of prev/next buttons in dom', async () => {
-          await initTabsBar({ size, activeTabIndex: 0 });
-
-          const { nextButton, prevButton } = await getPrevNextButton();
-
-          expect(await getProperty(prevButton, 'innerHTML')).toBe('prev');
-          expect(await getProperty(nextButton, 'innerHTML')).toBe('next');
-        });
-
-        it('should not show prev/next buttons only on vertical scroll', async () => {
-          await initTabsBar({ amount: 5, activeTabIndex: 1, size, otherMarkup: '<div style="height: 120vh"></div>' });
-          const { actionPrev, actionNext } = await getActionContainers();
-
-          await page.evaluate(() => window.scroll(0, 20));
-          await waitForStencilLifecycle(page);
-
-          expect(await getClassList(actionPrev)).toContain(hiddenClass);
-          expect(await getClassList(actionNext)).toContain(hiddenClass);
-        });
-      });
-    });
-
-    describe('gradient next rounding edge case', () => {
-      // There seems to be an rounding issue that causes the <button> elements to exceed the scroll container,
-      // therefore the trigger gets pushed outside and the gradient is always shown.
-      // To ensure the buttons exceed the width of the wrapping div we need to assign static width values.
-      const DECIMAL_FACTOR = 0.1;
-      for (let i = 150; i <= 151; i = i + DECIMAL_FACTOR) {
-        it(`should not show actionNext for second button with a width of ${i}px`, async () => {
-          const style = `style="width:${i}px"`;
-
-          await setContentWithDesignSystem(
-            page,
-            `
-            <div style="width: 300px">
-              <p-tabs-bar size="medium" active-tab-index="1">
-                <button style="width: 150px" type="button">A</button>
-                <button ${style} type="button">B</button>
-              </p-tabs-bar>
-            </div>`
-          );
-          const { actionNext } = await getActionContainers();
-
-          expect(await getClassList(actionNext), `On size ${i}`).toContain(hiddenClass);
-        });
-      }
-    });
-  });
-
   describe('errors', () => {
     it('should not cause TypeError within scrollActiveTabIntoView', async () => {
       initConsoleObserver(page);
@@ -811,20 +652,21 @@ describe('tabs-bar', () => {
 
   describe('lifecycle', () => {
     it('should work without unnecessary round trips on init', async () => {
-      await initTabsBar({ amount: 3, tag: 'a', activeTabIndex: 0 });
+      await initTabsBar({ amount: 3, tag: 'a' });
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidLoad['p-tabs-bar'], 'componentDidLoad: p-tabs-bar').toBe(1);
+      expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
       expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
       expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
       expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2);
 
-      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips on prop change', async () => {
-      await initTabsBar({ amount: 3, tag: 'button', activeTabIndex: 0 });
+      await initTabsBar({ amount: 3, tag: 'button' });
       const host = await getHost();
 
       await setProperty(host, 'activeTabIndex', 2);
@@ -832,10 +674,11 @@ describe('tabs-bar', () => {
 
       const status = await getLifecycleStatus(page);
 
-      expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(1);
+      expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(2);
+      expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
 
-      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
-      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
     });
   });
 

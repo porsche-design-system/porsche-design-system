@@ -26,6 +26,7 @@ import { MarqueAriaAttributes, MarqueSize } from "./components/basic/marque/marq
 import { ModalAriaAttributes } from "./components/content/modal/modal-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/navigation/pagination/pagination-utils";
 import { PopoverDirection } from "./components/feedback/popover/popover-utils";
+import { GradientColorTheme, PrevNextButtonJssStyle, ScrollToPosition } from "./components/common/scroller/scroller-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
@@ -672,6 +673,21 @@ export namespace Components {
          */
         "state"?: FormState;
     }
+    interface PScroller {
+        /**
+          * Adapts the background gradient color of prev and next button.
+         */
+        "gradientColorScheme"?: GradientColorTheme;
+        "prevNextButtonJssStyle"?: PrevNextButtonJssStyle;
+        /**
+          * Scrolls the scroll area to the left either smooth or immediately
+         */
+        "scrollToPosition"?: ScrollToPosition;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: ThemeExtendedElectric;
+    }
     interface PSelectWrapper {
         /**
           * The description text.
@@ -794,6 +810,10 @@ export namespace Components {
           * Hides the label but stays accessible for screen readers. This property only takes effect when sort property is not defined.
          */
         "hideLabel"?: boolean;
+        /**
+          * Displays slotted text multiline or forced into a single line.
+         */
+        "multiline"?: boolean;
         /**
           * Defines sortability properties.
          */
@@ -1158,6 +1178,12 @@ declare global {
         prototype: HTMLPRadioButtonWrapperElement;
         new (): HTMLPRadioButtonWrapperElement;
     };
+    interface HTMLPScrollerElement extends Components.PScroller, HTMLStencilElement {
+    }
+    var HTMLPScrollerElement: {
+        prototype: HTMLPScrollerElement;
+        new (): HTMLPScrollerElement;
+    };
     interface HTMLPSelectWrapperElement extends Components.PSelectWrapper, HTMLStencilElement {
     }
     var HTMLPSelectWrapperElement: {
@@ -1321,6 +1347,7 @@ declare global {
         "p-pagination": HTMLPPaginationElement;
         "p-popover": HTMLPPopoverElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
+        "p-scroller": HTMLPScrollerElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-select-wrapper-dropdown": HTMLPSelectWrapperDropdownElement;
         "p-spinner": HTMLPSpinnerElement;
@@ -2005,6 +2032,21 @@ declare namespace LocalJSX {
          */
         "state"?: FormState;
     }
+    interface PScroller {
+        /**
+          * Adapts the background gradient color of prev and next button.
+         */
+        "gradientColorScheme"?: GradientColorTheme;
+        "prevNextButtonJssStyle"?: PrevNextButtonJssStyle;
+        /**
+          * Scrolls the scroll area to the left either smooth or immediately
+         */
+        "scrollToPosition"?: ScrollToPosition;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: ThemeExtendedElectric;
+    }
     interface PSelectWrapper {
         /**
           * The description text.
@@ -2135,6 +2177,10 @@ declare namespace LocalJSX {
           * Hides the label but stays accessible for screen readers. This property only takes effect when sort property is not defined.
          */
         "hideLabel"?: boolean;
+        /**
+          * Displays slotted text multiline or forced into a single line.
+         */
+        "multiline"?: boolean;
         /**
           * Defines sortability properties.
          */
@@ -2389,6 +2435,7 @@ declare namespace LocalJSX {
         "p-pagination": PPagination;
         "p-popover": PPopover;
         "p-radio-button-wrapper": PRadioButtonWrapper;
+        "p-scroller": PScroller;
         "p-select-wrapper": PSelectWrapper;
         "p-select-wrapper-dropdown": PSelectWrapperDropdown;
         "p-spinner": PSpinner;
@@ -2442,6 +2489,7 @@ declare module "@stencil/core" {
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
             "p-popover": LocalJSX.PPopover & JSXBase.HTMLAttributes<HTMLPPopoverElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
+            "p-scroller": LocalJSX.PScroller & JSXBase.HTMLAttributes<HTMLPScrollerElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-select-wrapper-dropdown": LocalJSX.PSelectWrapperDropdown & JSXBase.HTMLAttributes<HTMLPSelectWrapperDropdownElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;

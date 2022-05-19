@@ -81,8 +81,8 @@ exports[`should have no basic DOM regression for p-button 1`] = `
     outline-offset: 1px !important;
   }
 
-  p-text[theme=\\"dark\\"] a:hover,
-  p-text[theme=\\"dark\\"] button:hover {
+  p-text[data-theme=\\"dark\\"] a:hover,
+  p-text[data-theme=\\"dark\\"] button:hover {
     color: #ff0223 !important;
   }
 
@@ -153,8 +153,8 @@ exports[`should have no basic DOM regression for p-button-pure 1`] = `
     outline-offset: 1px !important;
   }
 
-  p-text[theme=\\"dark\\"] a:hover,
-  p-text[theme=\\"dark\\"] button:hover {
+  p-text[data-theme=\\"dark\\"] a:hover,
+  p-text[data-theme=\\"dark\\"] button:hover {
     color: #ff0223 !important;
   }
 
@@ -277,8 +277,8 @@ exports[`should have no basic DOM regression for p-inline-notification 1`] = `
     outline-offset: 1px !important;
   }
 
-  p-text[theme=\\"dark\\"] a:hover,
-  p-text[theme=\\"dark\\"] button:hover {
+  p-text[data-theme=\\"dark\\"] a:hover,
+  p-text[data-theme=\\"dark\\"] button:hover {
     color: #ff0223 !important;
   }
 
@@ -344,8 +344,8 @@ exports[`should have no basic DOM regression for p-link 1`] = `
     outline-offset: 1px !important;
   }
 
-  p-text[theme=\\"dark\\"] a:hover,
-  p-text[theme=\\"dark\\"] button:hover {
+  p-text[data-theme=\\"dark\\"] a:hover,
+  p-text[data-theme=\\"dark\\"] button:hover {
     color: #ff0223 !important;
   }
 
@@ -409,8 +409,8 @@ exports[`should have no basic DOM regression for p-link-pure 1`] = `
     outline-offset: 1px !important;
   }
 
-  p-text[theme=\\"dark\\"] a:hover,
-  p-text[theme=\\"dark\\"] button:hover {
+  p-text[data-theme=\\"dark\\"] a:hover,
+  p-text[data-theme=\\"dark\\"] button:hover {
     color: #ff0223 !important;
   }
 
@@ -474,8 +474,8 @@ exports[`should have no basic DOM regression for p-link-social 1`] = `
     outline-offset: 1px !important;
   }
 
-  p-text[theme=\\"dark\\"] a:hover,
-  p-text[theme=\\"dark\\"] button:hover {
+  p-text[data-theme=\\"dark\\"] a:hover,
+  p-text[data-theme=\\"dark\\"] button:hover {
     color: #ff0223 !important;
   }
 
@@ -619,8 +619,8 @@ exports[`should have no basic DOM regression for p-switch 1`] = `
     outline-offset: 1px !important;
   }
 
-  p-text[theme=\\"dark\\"] a:hover,
-  p-text[theme=\\"dark\\"] button:hover {
+  p-text[data-theme=\\"dark\\"] a:hover,
+  p-text[data-theme=\\"dark\\"] button:hover {
     color: #ff0223 !important;
   }
 
@@ -719,32 +719,12 @@ exports[`should have no basic DOM regression for p-tabs 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-tabs-bar 1`] = `
-"<div class=\\"root\\">
-  <div class=\\"scroll-area\\" role=\\"tablist\\">
-    <div class=\\"scroll-wrapper\\">
-      <slot>
-      </slot>
-      <span class=\\"bar\\" style=\\"transform: translate3d(0rem,0,0); width: 0;\\">
-      </span>
-      <div class=\\"trigger\\">
-      </div>
-      <div class=\\"trigger\\">
-      </div>
-    </div>
-  </div>
-  <div class=\\"action action--prev action--hidden\\">
-    <span class=\\"gradient\\">
-    </span>
-    <p-button-pure hide-label=\\"true\\" aria-hidden=\\"true\\" class=\\"hydrated\\">
-      prev</p-button-pure>
-  </div>
-  <div class=\\"action action--next action--hidden\\">
-    <span class=\\"gradient\\">
-    </span>
-    <p-button-pure hide-label=\\"true\\" aria-hidden=\\"true\\" class=\\"hydrated\\">
-      next</p-button-pure>
-  </div>
-</div>"
+"<p-scroller class=\\"scroller hydrated\\" role=\\"tablist\\">
+  <slot>
+  </slot>
+  <span class=\\"bar\\" style=\\"transform: translate3d(0rem,0,0); width: 0;\\">
+  </span>
+</p-scroller>"
 `;
 
 exports[`should have no basic DOM regression for p-tabs-item 1`] = `

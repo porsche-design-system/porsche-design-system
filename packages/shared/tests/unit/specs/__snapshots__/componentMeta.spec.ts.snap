@@ -3,6 +3,7 @@
 exports[`should match snapshot 1`] = `
 Object {
   "p-accordion": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
@@ -12,6 +13,7 @@ Object {
     "styling": "jss",
   },
   "p-banner": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": true,
     "isDelegatingFocus": false,
@@ -21,6 +23,7 @@ Object {
     "styling": "jss",
   },
   "p-button": Object {
+    "hasAriaProp": true,
     "hasSkeleton": true,
     "hasSlottedCss": false,
     "isDelegatingFocus": true,
@@ -43,6 +46,7 @@ Object {
     "styling": "jss",
   },
   "p-button-group": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
@@ -52,6 +56,7 @@ Object {
     "styling": "jss",
   },
   "p-button-pure": Object {
+    "hasAriaProp": true,
     "hasSkeleton": true,
     "hasSlottedCss": false,
     "isDelegatingFocus": true,
@@ -78,6 +83,7 @@ Object {
     "styling": "jss",
   },
   "p-checkbox-wrapper": Object {
+    "hasAriaProp": false,
     "hasSkeleton": true,
     "hasSlottedCss": true,
     "isDelegatingFocus": false,
@@ -97,6 +103,7 @@ Object {
     "styling": "jss",
   },
   "p-content-wrapper": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
@@ -106,6 +113,7 @@ Object {
     "styling": "jss",
   },
   "p-divider": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
@@ -115,6 +123,7 @@ Object {
     "styling": "jss",
   },
   "p-fieldset-wrapper": Object {
+    "hasAriaProp": false,
     "hasSkeleton": true,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
@@ -133,6 +142,7 @@ Object {
     "styling": "jss",
   },
   "p-flex": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
@@ -142,6 +152,7 @@ Object {
     "styling": "jss",
   },
   "p-flex-item": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
@@ -152,6 +163,7 @@ Object {
     "styling": "jss",
   },
   "p-grid": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
@@ -161,6 +173,7 @@ Object {
     "styling": "jss",
   },
   "p-grid-item": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
@@ -171,6 +184,7 @@ Object {
     "styling": "jss",
   },
   "p-headline": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": true,
     "isDelegatingFocus": false,
@@ -180,6 +194,7 @@ Object {
     "styling": "jss",
   },
   "p-icon": Object {
+    "hasAriaProp": true,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
@@ -189,6 +204,7 @@ Object {
     "styling": "jss",
   },
   "p-inline-notification": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": true,
     "isDelegatingFocus": false,
@@ -198,6 +214,7 @@ Object {
     "styling": "jss",
   },
   "p-link": Object {
+    "hasAriaProp": true,
     "hasSkeleton": true,
     "hasSlottedCss": false,
     "isDelegatingFocus": true,
@@ -225,6 +242,7 @@ Object {
     "styling": "jss",
   },
   "p-link-pure": Object {
+    "hasAriaProp": true,
     "hasSkeleton": true,
     "hasSlottedCss": true,
     "isDelegatingFocus": true,
@@ -256,6 +274,7 @@ Object {
     "styling": "jss",
   },
   "p-link-social": Object {
+    "hasAriaProp": false,
     "hasSkeleton": true,
     "hasSlottedCss": false,
     "isDelegatingFocus": true,
@@ -279,6 +298,7 @@ Object {
     "styling": "jss",
   },
   "p-marque": Object {
+    "hasAriaProp": true,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": true,
@@ -288,6 +308,7 @@ Object {
     "styling": "jss",
   },
   "p-modal": Object {
+    "hasAriaProp": true,
     "hasSkeleton": false,
     "hasSlottedCss": true,
     "isDelegatingFocus": false,
@@ -297,6 +318,7 @@ Object {
     "styling": "jss",
   },
   "p-pagination": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": true,
@@ -306,6 +328,7 @@ Object {
     "styling": "jss",
   },
   "p-popover": Object {
+    "hasAriaProp": true,
     "hasSkeleton": false,
     "hasSlottedCss": true,
     "isDelegatingFocus": false,
@@ -315,6 +338,7 @@ Object {
     "styling": "jss",
   },
   "p-radio-button-wrapper": Object {
+    "hasAriaProp": false,
     "hasSkeleton": true,
     "hasSlottedCss": true,
     "isDelegatingFocus": false,
@@ -333,7 +357,19 @@ Object {
     ],
     "styling": "jss",
   },
+  "p-scroller": Object {
+    "hasAriaProp": false,
+    "hasSkeleton": false,
+    "hasSlottedCss": false,
+    "isDelegatingFocus": false,
+    "isThemeable": true,
+    "requiredParent": "p-tabs-bar",
+    "shouldPatchSlot": false,
+    "skeletonProps": Array [],
+    "styling": "jss",
+  },
   "p-select-wrapper": Object {
+    "hasAriaProp": false,
     "hasSkeleton": true,
     "hasSlottedCss": true,
     "isDelegatingFocus": false,
@@ -361,6 +397,7 @@ Object {
     "styling": "jss",
   },
   "p-select-wrapper-dropdown": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
@@ -370,6 +407,7 @@ Object {
     "styling": "jss",
   },
   "p-spinner": Object {
+    "hasAriaProp": true,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
@@ -379,6 +417,7 @@ Object {
     "styling": "jss",
   },
   "p-switch": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": true,
@@ -388,6 +427,7 @@ Object {
     "styling": "jss",
   },
   "p-table": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": true,
     "isDelegatingFocus": false,
@@ -397,6 +437,7 @@ Object {
     "styling": "jss",
   },
   "p-table-body": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
@@ -407,6 +448,7 @@ Object {
     "styling": "jss",
   },
   "p-table-cell": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
@@ -417,6 +459,7 @@ Object {
     "styling": "jss",
   },
   "p-table-head": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
@@ -427,6 +470,7 @@ Object {
     "styling": "jss",
   },
   "p-table-head-cell": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
@@ -437,6 +481,7 @@ Object {
     "styling": "jss",
   },
   "p-table-head-row": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
@@ -447,6 +492,7 @@ Object {
     "styling": "jss",
   },
   "p-table-row": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
@@ -457,6 +503,7 @@ Object {
     "styling": "jss",
   },
   "p-tabs": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
@@ -466,6 +513,7 @@ Object {
     "styling": "jss",
   },
   "p-tabs-bar": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
@@ -475,6 +523,7 @@ Object {
     "styling": "jss",
   },
   "p-tabs-item": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
@@ -485,6 +534,7 @@ Object {
     "styling": "jss",
   },
   "p-tag": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
@@ -494,6 +544,7 @@ Object {
     "styling": "jss",
   },
   "p-tag-dismissible": Object {
+    "hasAriaProp": true,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": true,
@@ -503,6 +554,7 @@ Object {
     "styling": "jss",
   },
   "p-text": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": true,
     "isDelegatingFocus": false,
@@ -512,6 +564,7 @@ Object {
     "styling": "jss",
   },
   "p-text-field-wrapper": Object {
+    "hasAriaProp": false,
     "hasSkeleton": true,
     "hasSlottedCss": true,
     "isDelegatingFocus": false,
@@ -535,6 +588,7 @@ Object {
     "styling": "jss",
   },
   "p-text-list": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": true,
     "isDelegatingFocus": false,
@@ -544,6 +598,7 @@ Object {
     "styling": "jss",
   },
   "p-text-list-item": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
@@ -554,6 +609,7 @@ Object {
     "styling": "jss",
   },
   "p-textarea-wrapper": Object {
+    "hasAriaProp": false,
     "hasSkeleton": true,
     "hasSlottedCss": true,
     "isDelegatingFocus": false,
@@ -577,6 +633,7 @@ Object {
     "styling": "jss",
   },
   "p-toast": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
@@ -586,6 +643,7 @@ Object {
     "styling": "jss",
   },
   "p-toast-item": Object {
+    "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,

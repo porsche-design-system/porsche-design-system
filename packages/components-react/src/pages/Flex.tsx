@@ -40,7 +40,7 @@ export const FlexPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground" title="should show basic usage">
         <PFlex>

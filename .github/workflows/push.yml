@@ -326,15 +326,15 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js
-      - name: 'Unit Test'
-        uses: ./.github/actions/docker-run
-        with:
-          entrypoint: run-test-unit
-          args: --components-react
       - name: 'Build Components React'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-build
+          args: --components-react
+      - name: 'Unit Test'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-unit
           args: --components-react
       - name: 'JSDOM Polyfill Test'
         uses: ./.github/actions/docker-run
@@ -346,22 +346,28 @@ jobs:
         with:
           entrypoint: run-test-e2e
           args: --components-react
-      - name: 'VRT Test'
+      - name: 'VRT Test components-react'
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-vrt
           args: --components-react
-      - name: 'VRT Regression'
+      - name: 'VRT Test components-react/nextjs'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-vrt
+          args: --components-react/nextjs
+      - name: 'VRT Regression components-react'
         if: failure()
         uses: actions/upload-artifact@v2
         with:
           name: components-react-vrt-regression
           path: ./packages/components-react/tests/vrt/results
-      - name: 'Smoke Test'
-        uses: ./.github/actions/docker-run
+      - name: 'VRT Regression components-react/nextjs'
+        if: failure()
+        uses: actions/upload-artifact@v2
         with:
-          entrypoint: run-test-smoke
-          args: --components-react
+          name: components-react-nextjs-vrt-regression
+          path: ./packages/components-react/projects/nextjs/tests/vrt/results
   shared:
     name: 'Shared'
     runs-on: ubuntu-latest
@@ -917,6 +923,7 @@ jobs:
         uses: ./.github/actions/docker-run
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          NPMJS_REGISTRY_TOKEN: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-npm
@@ -947,6 +954,7 @@ jobs:
         uses: ./.github/actions/docker-run
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          NPMJS_REGISTRY_TOKEN: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-npm
@@ -977,6 +985,7 @@ jobs:
         uses: ./.github/actions/docker-run
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          NPMJS_REGISTRY_TOKEN: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-npm
@@ -1008,6 +1017,7 @@ jobs:
         uses: ./.github/actions/docker-run
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          NPMJS_REGISTRY_TOKEN: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-npm
@@ -1039,6 +1049,7 @@ jobs:
         uses: ./.github/actions/docker-run
         env:
           PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
+          NPMJS_REGISTRY_TOKEN: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: run-release-npm

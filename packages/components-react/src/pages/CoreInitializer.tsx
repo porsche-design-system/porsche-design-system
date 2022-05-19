@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import { PTextFieldWrapper } from '@porsche-design-system/components-react';
 import { useEffect, useState } from 'react';
-import { pollComponentsReady } from '../pollComponentsReady'
+import { pollComponentsReady } from '../pollComponentsReady';
 
 export const CoreInitializerPage = (): JSX.Element => {
   const [allReady, setAllReady] = useState(false);

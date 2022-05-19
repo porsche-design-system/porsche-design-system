@@ -153,7 +153,7 @@ export const removeAttribute = async (element: ElementHandle, key: string): Prom
   await element.evaluate((el, key) => el.removeAttribute(key), key);
 };
 
-export const getProperty = async (element: ElementHandle, prop: string): Promise<unknown> => {
+export const getProperty = async <T>(element: ElementHandle, prop: string): Promise<T> => {
   return element.evaluate((el, prop: string) => el[prop], prop);
 };
 
@@ -257,10 +257,10 @@ export const waitForInputTransition = (page: Page): Promise<void> => page.waitFo
 export const hasFocus = (page: Page, element: ElementHandle): Promise<boolean> =>
   page.evaluate((el) => document.activeElement === el, element);
 
-let consoleMessages: ConsoleMessage[] = [];
+const consoleMessages: ConsoleMessage[] = [];
 
 export const initConsoleObserver = (page: Page): void => {
-  consoleMessages = []; // reset
+  consoleMessages.length = 0; // reset
 
   page.on('console', (msg) => {
     consoleMessages.push(msg);

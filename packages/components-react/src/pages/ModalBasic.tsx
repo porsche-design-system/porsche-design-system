@@ -12,7 +12,7 @@ export const ModalBasicPage = (): JSX.Element => {
 
   return (
     <>
-      <style children={style} />
+      <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should show basic modal on light background">
         <PContentWrapper>

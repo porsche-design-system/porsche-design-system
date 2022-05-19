@@ -39,10 +39,10 @@ exports[`getComponentCss() should return correct css for direction: bottom 1`] =
   left: 50%;
   transform: translateX(-50%);
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  hyphens: auto;
-  overflow-wrap: break-word;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   list-style-type: none;
   color: #000;
   white-space: inherit;
@@ -111,10 +111,10 @@ exports[`getComponentCss() should return correct css for direction: left 1`] = `
   right: 100%;
   transform: translateY(-50%);
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  hyphens: auto;
-  overflow-wrap: break-word;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   list-style-type: none;
   color: #000;
   white-space: inherit;
@@ -183,10 +183,10 @@ exports[`getComponentCss() should return correct css for direction: right 1`] = 
   left: 100%;
   transform: translateY(-50%);
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  hyphens: auto;
-  overflow-wrap: break-word;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   list-style-type: none;
   color: #000;
   white-space: inherit;
@@ -255,10 +255,10 @@ exports[`getComponentCss() should return correct css for direction: top 1`] = `
   left: 50%;
   transform: translateX(-50%);
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  hyphens: auto;
-  overflow-wrap: break-word;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   list-style-type: none;
   color: #000;
   white-space: inherit;
@@ -296,9 +296,6 @@ exports[`getSlottedCss() should return correct css 1`] = `
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
-p-popover[theme=\\"dark\\"] a:hover {
-  color: #ff0223 !important;
-}
 p-popover b, p-popover strong {
   font-weight: 700 !important;
 }
@@ -326,9 +323,6 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
   transition: color var(--p-transition-duration, .24s) ease !important;
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
-}
-prefixed-p-popover[theme=\\"dark\\"] a:hover {
-  color: #ff0223 !important;
 }
 prefixed-p-popover b, prefixed-p-popover strong {
   font-weight: 700 !important;
