@@ -3,6 +3,7 @@ import { attachComponentCss, getPrefixedTagNames, getScrollerElements, observeCh
 import { getComponentCss } from './stepper-horizontal-styles';
 import { getIndexOfStepWithStateCurrent } from './stepper-horizontal-utils';
 import { getScrollActivePosition } from '../../tabs-bar/tabs-bar-utils';
+import { throwIfChildrenAreNotOfKind } from '../../../../utils/dom/throwIfChildrenAreNotOfKind';
 import type { Theme } from '../../../../types';
 import type { ScrollToPosition } from '../../../common/scroller/scroller-utils';
 import type { StepChangeEvent } from './stepper-horizontal-utils';
@@ -30,9 +31,13 @@ export class StepperHorizontal {
   public connectedCallback(): void {
     this.defineStepperHorizontalItemElements();
     observeChildren(this.host, () => {
+      // Throw when new steps are added
+      throwIfChildrenAreNotOfKind(this.host, 'pStepperHorizontalItem');
       this.defineStepperHorizontalItemElements();
       this.stepperHorizontalItems.forEach((element) => element.refreshStepCounter());
     });
+    // Initial validation
+    throwIfChildrenAreNotOfKind(this.host, 'pStepperHorizontalItem');
   }
 
   public componentDidLoad(): void {
