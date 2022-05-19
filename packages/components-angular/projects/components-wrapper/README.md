@@ -22,8 +22,8 @@ yarn add @porsche-design-system/components-angular
 
 ### Usage
 
-After adding the `@porsche-design-system/components-angular` package to your project, you've to import
-the `PorscheDesignSystemModule` in every module you want to use the component library.
+After adding the `@porsche-design-system/components-angular` package to your project, you've to import the
+`PorscheDesignSystemModule` in every module you want to use the component library.
 
 ```ts
 // app.module.ts
@@ -34,19 +34,13 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    PorscheDesignSystemModule
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule, PorscheDesignSystemModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
-``` 
+export class AppModule {}
+```
 
 Change your App file to use at least one Porsche Design System component, for example:
 
@@ -62,10 +56,9 @@ import { Component } from '@angular/core';
       <p-button>Some label</p-button>
     </div>
   `,
-  styles: []
+  styles: [],
 })
-export class AppComponent {
-}
+export class AppComponent {}
 ```
 
 ## Methodology

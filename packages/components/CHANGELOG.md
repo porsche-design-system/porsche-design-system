@@ -4,8 +4,8 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres
-to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
+[Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### [Unreleased]
 
@@ -54,10 +54,10 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 #### Added
 
-- `Text Field Wrapper` now has a `showCharacterCount` property which can be used to hide the character count when
-  a `maxLength` attribute is set on the wrapped `input`.
-- `Textarea Wrapper` now has a `showCharacterCount` property which can be used to hide the character count when
-  a `maxLength` attribute is set on the wrapped `textarea`.
+- `Text Field Wrapper` now has a `showCharacterCount` property which can be used to hide the character count when a
+  `maxLength` attribute is set on the wrapped `input`.
+- `Textarea Wrapper` now has a `showCharacterCount` property which can be used to hide the character count when a
+  `maxLength` attribute is set on the wrapped `textarea`.
 
 ### [2.9.3-rc.0-skeletons] - 2022-03-29
 
@@ -134,14 +134,14 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 #### Added
 
 - `getFontFaceStylesheet` returns additional `<link>` tags with `rel="preconnect"` and `rel="dns-prefetch"`
-- Option `format` to partials `getFontFaceStylesheet`, `getComponentChunkLinks()`, `getFontLinks()`, `getIconLinks()`
-  , `getInitialStyles()`, `getLoaderScript()` and `getMetaTagsAndIconLinks()`
+- Option `format` to partials `getFontFaceStylesheet`, `getComponentChunkLinks()`, `getFontLinks()`, `getIconLinks()` ,
+  `getInitialStyles()`, `getLoaderScript()` and `getMetaTagsAndIconLinks()`
 
 #### Deprecated
 
-- The option `withoutTags` of partials `getFontFaceStylesheet`, `getComponentChunkLinks()`, `getFontLinks()`
-  , `getIconLinks()`, `getInitialStyles()`, `getLoaderScript()` and `getMetaTagsAndIconLinks()`
-  is deprecated and will be removed in `v3.0.0`. Please use `format: 'jsx'` instead.
+- The option `withoutTags` of partials `getFontFaceStylesheet`, `getComponentChunkLinks()`, `getFontLinks()` ,
+  `getIconLinks()`, `getInitialStyles()`, `getLoaderScript()` and `getMetaTagsAndIconLinks()` is deprecated and will be
+  removed in `v3.0.0`. Please use `format: 'jsx'` instead.
 
 ```diff
 - <link rel="stylesheet" href={getFontFaceStylesheet({ withoutTags: true })} crossOrigin="true" />
@@ -159,8 +159,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 #### Changed
 
-- `Button Pure` and `Link Pure` removed `position: relative` imposition, make sure to **not** override it
-  with `position: static`
+- `Button Pure` and `Link Pure` removed `position: relative` imposition, make sure to **not** override it with
+  `position: static`
 
 #### Fixed
 
@@ -170,8 +170,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 #### Added
 
-- React: `getByRoleShadowed`, `getByLabelTextShadowed` and `getByTextShadowed` utilities which
-  uses `@testing-library/dom` queries internally to support Shadow DOM
+- React: `getByRoleShadowed`, `getByLabelTextShadowed` and `getByTextShadowed` utilities which uses
+  `@testing-library/dom` queries internally to support Shadow DOM
 
 #### Fixed
 
@@ -212,8 +212,8 @@ accessible regarding its color contrast and might even be removed in an upcoming
 
 - `light-electric` theme for `Switch`
 - `dark-electric` theme for `Button Pure` and `Link Pure`
-- Character counter to `Text Field Wrapper` and `Textarea Wrapper` if `maxlength` is present on `input type="text"`
-  and `textarea`
+- Character counter to `Text Field Wrapper` and `Textarea Wrapper` if `maxlength` is present on `input type="text"` and
+  `textarea`
 
 #### Changed
 
@@ -402,8 +402,8 @@ color contrast and might even be removed in an upcoming major release again.
 
 - Improved `:focus-visible` and `:hover:focus-visible` colors for `Link Social` and `Link`
 - Improved slotted `<a>` coloring in dark theme for `Link Social` and `Link`
-- Validation messages of `Checkbox Wrapper`, `Radio Button Wrapper`, `Select Wrapper`, `Textarea Wrapper`
-  and `Text Field Wrapper` have now an additional icon representing the validation state
+- Validation messages of `Checkbox Wrapper`, `Radio Button Wrapper`, `Select Wrapper`, `Textarea Wrapper` and
+  `Text Field Wrapper` have now an additional icon representing the validation state
 - `Modal` backdrop behavior to close modal on mouse-down
 
 #### Fixed
@@ -582,19 +582,18 @@ intranet applications).
 
 In case of a micro-frontend architecture, multiple instances and versions of the Porsche Design System can be combined
 in a final application by configurable prefixing technique of the Porsche Design System components during runtime.
-Please refer to our framework specific
-guidelines [Vanilla JS](https://designsystem.porsche.com/latest/start-coding/vanilla-js)
-, [Angular](https://designsystem.porsche.com/latest/start-coding/angular)
-and [React](https://designsystem.porsche.com/latest/start-coding/react).
+Please refer to our framework specific guidelines
+[Vanilla JS](https://designsystem.porsche.com/latest/start-coding/vanilla-js) ,
+[Angular](https://designsystem.porsche.com/latest/start-coding/angular) and
+[React](https://designsystem.porsche.com/latest/start-coding/react).
 
 #### Prevent Flash of Unstyled Content (FOUC) and Flash of Unstyled Text (FOUT)
 
-To prevent FOUC/FOUT, the Porsche Design System offers various partials as part of
-the `@porsche-design-system/components-{js|angular|react}` package to ensure all necessary Porsche Design System fonts
-and components are fully loaded. If you've used the `@porsche-design-system/partials` package previously, stop using it
-and replace the integration with the partials provided by `@porsche-design-system/components-{js|angular|react}`
-package. Have a look at
-our [FOUC/FOUT guidelines](https://designsystem.porsche.com/latest/performance/loading-behaviour).
+To prevent FOUC/FOUT, the Porsche Design System offers various partials as part of the
+`@porsche-design-system/components-{js|angular|react}` package to ensure all necessary Porsche Design System fonts and
+components are fully loaded. If you've used the `@porsche-design-system/partials` package previously, stop using it and
+replace the integration with the partials provided by `@porsche-design-system/components-{js|angular|react}` package.
+Have a look at our [FOUC/FOUT guidelines](https://designsystem.porsche.com/latest/performance/loading-behaviour).
 
 ```diff
 - <%= require('@porsche-design-system/partials').getPorscheDesignSystemCoreStyles() %>
@@ -611,8 +610,8 @@ our [FOUC/FOUT guidelines](https://designsystem.porsche.com/latest/performance/l
 
 Our CDN is configured to forward requests to Chinese CDN automatically when necessary. So you're good to go without any
 configuration or multiple region specific builds of your application. However, if you are aiming for the maximum
-possible performance in China, you can configure which CDN the Porsche Design System must use. Please follow
-our [CDN guidelines](https://designsystem.porsche.com/latest/performance/cdn) for more information.
+possible performance in China, you can configure which CDN the Porsche Design System must use. Please follow our
+[CDN guidelines](https://designsystem.porsche.com/latest/performance/cdn) for more information.
 
 #### New/optimized components
 
@@ -639,8 +638,8 @@ web components of the Porsche Design System.
 #### componentsReady() works reliable
 
 Because the Porsche Design System components get loaded async at the time they are needed, it might be relevant within
-your application or test automation to know when those have been initialized. Therefore, we provide in all
-three `@porsche-design-system/components-{js|angular|react}')` packages a reliable helper function `componentsReady()`.
+your application or test automation to know when those have been initialized. Therefore, we provide in all three
+`@porsche-design-system/components-{js|angular|react}')` packages a reliable helper function `componentsReady()`.
 [Read more about it](https://designsystem.porsche.com/latest/helpers/components-ready).
 
 #### Removed "blur on focus"
@@ -652,9 +651,9 @@ supporting `:focus-visible` otherwise it will fallback to `:focus` CSS implement
 
 Color and outline of general focus styling has changed to `currentColor` for light/dark theme with an outline of 1px
 width/offset. If you have custom components build with the usage of our `@porsche-design-system/utilities` package then
-update it to the latest version (we also provide a
-focus [SCSS mixin](https://designsystem.porsche.com/latest/utilities/scss/functions)
-and [JS function](https://designsystem.porsche.com/latest/utilities/js/functions)).
+update it to the latest version (we also provide a focus
+[SCSS mixin](https://designsystem.porsche.com/latest/utilities/scss/functions) and
+[JS function](https://designsystem.porsche.com/latest/utilities/js/functions)).
 
 #### Improved geometry of Porsche Next font
 
@@ -663,17 +662,17 @@ change of font size and spacing.
 
 #### Dropped support for IE11 and EdgeHTML according to Porsche's official browser strategy 2021
 
-If you still need to support these browsers, you have to stick to `v1.5.x`. We offer a Browser Notification
-package `@porsche-design-system/browser-notification` to alert users that these browsers are no longer supported. It
-supports a blocking layer (to be used with Porsche Design System `v2.x`), or a dismissible banner (to be used with
-Porsche Design System `v1.x`). Please refer to
-our [Browser compatibility guidelines](https://designsystem.porsche.com/latest/help/browser-compatibility).
+If you still need to support these browsers, you have to stick to `v1.5.x`. We offer a Browser Notification package
+`@porsche-design-system/browser-notification` to alert users that these browsers are no longer supported. It supports a
+blocking layer (to be used with Porsche Design System `v2.x`), or a dismissible banner (to be used with Porsche Design
+System `v1.x`). Please refer to our
+[Browser compatibility guidelines](https://designsystem.porsche.com/latest/help/browser-compatibility).
 
 #### Changed default type of Button and Button Pure
 
 To be in sync with native `<button>` behavior we've changed the default `type` of **Button** and **Button Pure**
-component. Those components will render a button within their Shadow DOM as `<button type="submit">` (
-previously `<button type="button">`).
+component. Those components will render a button within their Shadow DOM as `<button type="submit">` ( previously
+`<button type="button">`).
 
 - `submit`: The button submits the form data to the server. This is the default if the attribute is not specified for
   buttons associated with a `<form>`, or if the attribute is an empty or invalid value.
@@ -697,10 +696,10 @@ changing the position of the `<a>` tag from wrapping the component to a direct s
 + <p-link-social><a href="#">Some label</a></p-link-social>
 ```
 
-#### Automatic * asterisk symbol to form field labels
+#### Automatic \* asterisk symbol to form field labels
 
-We added an automatic generated * asterisk symbol to form field labels which have the required attribute. This might
-lead to a doubled * symbol if you set one by yourself.
+We added an automatic generated _ asterisk symbol to form field labels which have the required attribute. This might
+lead to a doubled _ symbol if you set one by yourself.
 
 ```diff
 - <p-text-field-wrapper label="Some label *"><input type="text" name="some-name" required /></p-text-field-wrapper>
@@ -735,8 +734,8 @@ these components any longer.
 
 In the past it was possible to provide a token called `PREVENT_WEB_COMPONENTS_REGISTRATION` which prevented the
 registration of the Porsche Design System components and loading of polyfills. Due to the fact that we no longer provide
-/ need poly filling, we have completely removed the token. For advanced usage
-please [read further](https://designsystem.porsche.com/latest/start-coding/angular).
+/ need poly filling, we have completely removed the token. For advanced usage please
+[read further](https://designsystem.porsche.com/latest/start-coding/angular).
 
 ---
 
@@ -750,11 +749,11 @@ in your `index.tsx` which then initializes the **Porsche Design System Loader**,
 
 ```diff
   // index.tsx
-    
+
   import ReactDOM from 'react-dom';
   import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
   import { App } from './App';
-    
+
   ReactDOM.render(
     <React.StrictMode>
 +     <PorscheDesignSystemProvider>
@@ -771,10 +770,9 @@ For advanced usage please [read further](https://designsystem.porsche.com/latest
 
 We removed test mocks for React / Jest / jsdom as Shadow DOM is supported since jsdom v12.2.0. Instead, we provide a
 Jsdom Polyfill (exclusivly for `@porsche-design-system/components-react` package) fixing missing implementation of jsdom
-which the Porsche Design System relies on.
-**Note:** If your test includes Porsche Design System components, make sure to wrap the component you want to test with
-a PorscheDesignSystemProvider in order to avoid exceptions. For more information
-please [read further](https://designsystem.porsche.com/latest/start-coding/react).
+which the Porsche Design System relies on. **Note:** If your test includes Porsche Design System components, make sure
+to wrap the component you want to test with a PorscheDesignSystemProvider in order to avoid exceptions. For more
+information please [read further](https://designsystem.porsche.com/latest/start-coding/react).
 
 ---
 
@@ -782,8 +780,8 @@ please [read further](https://designsystem.porsche.com/latest/start-coding/react
 
 #### Integration of Vanilla JS components
 
-With `v1.x` of the Porsche Design System you've had to copy all needed JS files
-of `@porsche-design-system/components-js` into your target directory and include the ES5 and ESM loader snippet. Now you
+With `v1.x` of the Porsche Design System you've had to copy all needed JS files of
+`@porsche-design-system/components-js` into your target directory and include the ES5 and ESM loader snippet. Now you
 only need to copy one `index.js` file and initialize the Porsche Design System like in the example below:
 
 ```diff
@@ -853,8 +851,8 @@ For advanced usage please [read further](https://designsystem.porsche.com/latest
 #### Changed
 
 - `Tabs Bar` has a new default `activeTabIndex`, which is `undefined`
-- `Tabs Bar` does not work by itself anymore. The `activeTabIndex` needs to be controlled from the
-  outside ([read more](https://designsystem.porsche.com/latest/components/tabs-bar/examples))
+- `Tabs Bar` does not work by itself anymore. The `activeTabIndex` needs to be controlled from the outside
+  ([read more](https://designsystem.porsche.com/latest/components/tabs-bar/examples))
 - Background Color of `Select Wrapper` in `dark` theme to meet accessibility criteria
 
 ### [2.0.0-rc.7] - 2021-03-15
@@ -907,8 +905,8 @@ For advanced usage please [read further](https://designsystem.porsche.com/latest
 
 #### Added
 
-- Validate usage of `Checkbox Wrapper`, `Radio Button Wrapper`, `Select Wrapper`, `Text Field Wrapper`
-  and `Textarea Wrapper`
+- Validate usage of `Checkbox Wrapper`, `Radio Button Wrapper`, `Select Wrapper`, `Text Field Wrapper` and
+  `Textarea Wrapper`
 
 ### [2.0.0-rc.1] - 2021-02-04
 
@@ -1212,8 +1210,8 @@ For advanced usage please [read further](https://designsystem.porsche.com/latest
 #### Added
 
 - `Fieldset Wrapper` component
-- Improved SEO of `p-headline` and `p-text`: Added possibility to write semantic HTML tags (e.g. `<h1>-<h6>` or `<p>`
-  , `<blockquote>`, etc.) directly as slotted content.
+- Improved SEO of `p-headline` and `p-text`: Added possibility to write semantic HTML tags (e.g. `<h1>-<h6>` or `<p>` ,
+  `<blockquote>`, etc.) directly as slotted content.
 - Possibility to include anchor tags directly as slots of `Link`, `Link Pure` and `Link Social`
 - `Text` new `weight` property `semibold`
 - `Button Pure` label with subline pattern as slot
@@ -1386,8 +1384,8 @@ For advanced usage please [read further](https://designsystem.porsche.com/latest
 #### Added
 
 - Cursor pointer on hover for `Button` and `Button Pure`
-- Line-height gets calculated based on Porsche type-scaling formula automatically for `Text`, `Link Pure`
-  and `Button Pure`
+- Line-height gets calculated based on Porsche type-scaling formula automatically for `Text`, `Link Pure` and
+  `Button Pure`
 - Test helper function `componentsReady()` which indicates when lazy loaded components fully have loaded
 
 #### Changed

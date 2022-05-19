@@ -36,7 +36,7 @@ import { App } from './App';
 ReactDOM.render(
   <React.StrictMode>
     <PorscheDesignSystemProvider>
-      <App/>
+      <App />
     </PorscheDesignSystemProvider>
   </React.StrictMode>,
   document.getElementById('root')
