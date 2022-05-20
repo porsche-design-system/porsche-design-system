@@ -10,7 +10,10 @@ import { getCss, isThemeDark } from '../../../../utils';
 import type { Theme } from '../../../../types';
 import type { StepperState } from './stepper-horizontal-item-utils';
 
-const getColor = (state: StepperState, theme: Theme) => {
+const getColor = (
+  state: StepperState,
+  theme: Theme
+): { baseColor: string; hoverColor: string; iconColor: string; invertedBaseColor: string; disabledColor: string } => {
   const { baseColor, hoverColor, warningColor, successColor, disabledColor } = getThemedColors(theme);
   const { baseColor: invertedBaseColor } = getThemedColors(isThemeDark(theme) ? 'light' : 'dark');
 
