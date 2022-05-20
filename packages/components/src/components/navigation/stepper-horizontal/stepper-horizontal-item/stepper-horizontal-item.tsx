@@ -1,7 +1,7 @@
 import { Component, Element, JSX, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import type { Theme } from '../../../../types';
 import type { StepperState } from './stepper-horizontal-item-utils';
-import { getIcon, isStateCompleteOrWarning } from './stepper-horizontal-item-utils';
+import { getIconName, isStateCompleteOrWarning, throwIfCurrentAndDisabled } from './stepper-horizontal-item-utils';
 import { attachComponentCss, getHTMLElements, getPrefixedTagNames, throwIfParentIsNotOfKind } from '../../../../utils';
 import { getComponentCss } from './stepper-horizontal-item-styles';
 
@@ -52,6 +52,7 @@ export class StepperHorizontalItem {
   public componentWillRender(): void {
     this.setStepCounter();
     attachComponentCss(this.host, getComponentCss, this.state, this.disabled, this.theme);
+    throwIfCurrentAndDisabled(this.host);
   }
 
   public render(): JSX.Element {
@@ -63,7 +64,7 @@ export class StepperHorizontalItem {
         {isCompleteOrWarning ? (
           <PrefixedTagNames.pIcon
             class="icon"
-            name={getIcon(this.state)}
+            name={getIconName(this.state)}
             theme={this.theme}
             color="inherit"
             aria-hidden="true"

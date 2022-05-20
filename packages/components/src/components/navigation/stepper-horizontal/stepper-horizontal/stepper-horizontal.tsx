@@ -7,10 +7,11 @@ import {
   observeChildren,
   throwIfChildCountIsExceeded,
   throwIfChildrenAreNotOfKind,
+  unobserveChildren,
 } from '../../../../utils';
 import { getComponentCss } from './stepper-horizontal-styles';
 import type { StepChangeEvent } from './stepper-horizontal-utils';
-import { getIndexOfStepWithStateCurrent } from './stepper-horizontal-utils';
+import { getIndexOfStepWithStateCurrent, throwIfMultipleCurrentStates } from './stepper-horizontal-utils';
 import type { Theme } from '../../../../types';
 import type { ScrollToPosition } from '../../../common/scroller/scroller-utils';
 
@@ -38,16 +39,22 @@ export class StepperHorizontal {
     // Initial validation
     this.validateComponent();
     this.defineStepperHorizontalItemElements();
-    observeChildren(this.host, () => {
-      // Throw when new steps are added
-      this.validateComponent();
-      this.defineStepperHorizontalItemElements();
-      this.stepperHorizontalItems.forEach((element) => async () => element.refreshStepCounter());
-    });
+    observeChildren(
+      this.host as HTMLPStepperHorizontalItemElement,
+      () => {
+        // Throw when new steps are added
+        this.validateComponent();
+        throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
+        this.defineStepperHorizontalItemElements();
+        this.stepperHorizontalItems.forEach((element) => async () => element.refreshStepCounter());
+      },
+      ['state']
+    );
   }
 
   public componentDidLoad(): void {
     this.defineHTMLElements();
+    throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
 
     this.addEventListeners();
 
@@ -66,6 +73,10 @@ export class StepperHorizontal {
 
   public componentWillRender(): void {
     attachComponentCss(this.host, getComponentCss);
+  }
+
+  public disconnectedCallback(): void {
+    unobserveChildren(this.host);
   }
 
   public render(): JSX.Element {
