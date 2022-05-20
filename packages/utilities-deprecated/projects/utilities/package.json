@@ -1,26 +1,7 @@
 {
   "name": "@porsche-design-system/utilities",
-  "version": "5.3.0-beta.1",
-  "scope": "@porsche-design-system",
-  "main": "dist/js/index.js",
-  "module": "dist/js/esm/index.js",
-  "types": "dist/js/types/index.d.ts",
-  "sideEffects": false,
-  "author": "Dr. Ing. h.c. F. Porsche AG",
-  "contributors": [
-    "Matthias Hägele <matthias.haegele@mhp.com>",
-    "Oliver Hook <oliver.hook@mhp.com>",
-    "Stephan Schröter <stephan.schroeter@mhp.com>",
-    "Bernd Hacker <bernd.hacker@mhp.com>",
-    "Anton Schmidt <anton.schmidt@mhp.com>"
-  ],
-  "license": "SEE LICENSE IN https://designsystem.porsche.com/latest/license",
-  "description": "Porsche Design System Utilities",
-  "files": [
-    "dist/scss",
-    "dist/js",
-    "scss.scss"
-  ],
+  "version": "5.3.0",
+  "description": "This package contains helpful SCSS functions, mixins and variables. Additionally, JavaScript variables, functions and helpers are provided.",
   "keywords": [
     "porsche",
     "design",
@@ -33,13 +14,26 @@
     "functions",
     "mixins"
   ],
+  "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "license": "SEE LICENSE IN ./LICENSE",
   "homepage": "https://designsystem.porsche.com",
+  "main": "dist/js/index.js",
+  "module": "dist/js/esm/index.js",
+  "types": "dist/js/types/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist/scss",
+    "dist/js",
+    "scss.scss"
+  ],
   "scripts": {
-    "build": "yarn clean:build && yarn build:buildTypography && yarn build:bundleLib && yarn build:copyScss && yarn build:createGlobalCSS",
+    "build": "yarn clean:build && yarn build:buildTypography && yarn build:bundleLib && yarn build:copyScss && yarn build:createGlobalCSS && yarn build:meta",
     "build:buildTypography": "ts-node scripts/buildTypography.ts",
     "build:bundleLib": "rollup -c rollup.config.js",
     "build:copyScss": "echo '@import \"dist/scss/index\";' > scss.scss && cp -r './src/scss/.' './dist/scss'",
     "build:createGlobalCSS": "ts-node scripts/createGlobalCSS.ts",
+    "build:meta": "cp ../../../../LICENSE ./LICENSE && cp ../../../../OSS_NOTICE ./OSS_NOTICE",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist && rm -rf ./scss.scss"
