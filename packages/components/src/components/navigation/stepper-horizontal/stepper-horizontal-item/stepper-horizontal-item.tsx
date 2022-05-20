@@ -31,14 +31,14 @@ export class StepperHorizontalItem {
   }
 
   @Watch('state')
-  stateHandler(newValue: StepperState) {
+  public stateHandler(newValue: StepperState): void {
     if (newValue === undefined) {
       this.disabled = true;
     }
   }
 
   @Method()
-  refreshStepCounter(): void {
+  public refreshStepCounter(): void {
     this.setStepCounter();
   }
 

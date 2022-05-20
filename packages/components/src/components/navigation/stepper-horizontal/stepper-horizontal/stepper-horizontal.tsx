@@ -42,7 +42,7 @@ export class StepperHorizontal {
       // Throw when new steps are added
       this.validateComponent();
       this.defineStepperHorizontalItemElements();
-      this.stepperHorizontalItems.forEach((element) => element.refreshStepCounter());
+      this.stepperHorizontalItems.forEach((element) => async () => element.refreshStepCounter());
     });
   }
 
