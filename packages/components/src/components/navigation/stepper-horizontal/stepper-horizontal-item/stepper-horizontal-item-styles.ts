@@ -1,6 +1,7 @@
 import {
   getFocusJssStyle,
   getHoverJssStyle,
+  getScreenReaderOnlyJssStyle,
   getThemedColors,
   getTransition,
   pxToRemWithUnit,
@@ -77,6 +78,9 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
       marginRight: pxToRemWithUnit(4),
       width: pxToRemWithUnit(24),
       height: pxToRemWithUnit(24),
+    },
+    'sr-only': {
+      ...getScreenReaderOnlyJssStyle(),
     },
   });
 };

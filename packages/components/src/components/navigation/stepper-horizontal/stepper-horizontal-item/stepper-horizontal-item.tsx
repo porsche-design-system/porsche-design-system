@@ -58,9 +58,11 @@ export class StepperHorizontalItem {
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const isCompleteOrWarning = isStateCompleteOrWarning(this.state);
-    // TODO: Screen reader step counter inside button?
+
     return (
       <button tabIndex={isCompleteOrWarning ? 0 : -1} disabled={this.disabled}>
+        <span class="sr-only">is {this.state ? `state ${this.state}` : 'disabled'}</span>
+        <span class="sr-only">Step {this.stepCounter}</span>
         {isCompleteOrWarning ? (
           <PrefixedTagNames.pIcon
             class="icon"
