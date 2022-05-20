@@ -1,6 +1,6 @@
 import {
   PButton,
-  PCheckboxWrapper,
+  PButtonGroup,
   PHeadline,
   PStepperHorizontal,
   PStepperHorizontalItem,
@@ -16,34 +16,28 @@ type StepperHorizontalItemProps = {
   isComplete?: boolean;
 };
 export const StepperHorizontalExample = (): JSX.Element => {
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
   const [steps, setSteps] = useState<StepperHorizontalItemProps[]>([
     {
       state: 'current',
-      name: 'Enter personal details',
+      name: 'Personal details',
+      isComplete: true,
     },
     {
-      name: 'Confirm e-mail',
+      name: 'Enter e-mail',
     },
     {
-      name: 'Step 3',
+      name: 'Overview',
     },
   ]);
 
   const stepContent: JSX.Element[] = [
     <form>
-      <PTextFieldWrapper label={'Name'}>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => {
-            setIsComplete(e.target.value, 0);
-            setName(e.target.value);
-          }}
-        />
-      </PTextFieldWrapper>
+      <PHeadline tag="h2" variant="headline-2">
+        Personal Information:
+      </PHeadline>
+      <PText>Some personal information</PText>
     </form>,
     <form>
       <PTextFieldWrapper label={'E-Mail'}>
@@ -59,10 +53,10 @@ export const StepperHorizontalExample = (): JSX.Element => {
     </form>,
     <div>
       <PHeadline tag="h2" variant="headline-2">
-        Order Summary:
+        Overview:
       </PHeadline>
-      <PText>Name: {name}</PText>
-      <PText>-EMail: {email}</PText>
+      <PText>Personal Information: Some personal Information</PText>
+      <PText>E-mail: {email}</PText>
     </div>,
   ];
 
@@ -133,14 +127,18 @@ export const StepperHorizontalExample = (): JSX.Element => {
         </div>
       ))}
 
-      <div>
-        <PButton variant="tertiary" disabled={getActiveStepIndex(steps) === 0} onClick={onPreviousStep}>
-          Previous Step
-        </PButton>
-        <PButton variant="primary" disabled={getActiveStepIndex(steps) === steps.length - 1} onClick={onNextStep}>
-          Next Step
-        </PButton>
-      </div>
+      <PButtonGroup>
+        {getActiveStepIndex(steps) !== 0 && (
+          <PButton variant="tertiary" onClick={onPreviousStep}>
+            Previous Step
+          </PButton>
+        )}
+        {getActiveStepIndex(steps) !== steps.length - 1 && (
+          <PButton variant="primary" hidden={getActiveStepIndex(steps) === steps.length - 1} onClick={onNextStep}>
+            Next Step
+          </PButton>
+        )}
+      </PButtonGroup>
     </>
   );
 };
