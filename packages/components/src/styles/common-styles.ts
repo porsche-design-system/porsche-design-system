@@ -1,8 +1,8 @@
 import type { JssStyle, Styles } from 'jss';
-import type { Theme } from '../types';
 import type { PropertiesHyphen } from 'csstype';
 import { fontWeight } from '@porsche-design-system/utilities-v2';
 import { getThemedColors } from './';
+import { ThemeExtendedElectricDark } from '../types';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
 const transitionTimingFunction = 'ease';
@@ -36,14 +36,29 @@ export const addImportantToEachRule = (input: JssStyle): JssStyle => {
 };
 
 type GetHoverStylesOptions = {
-  theme?: Theme;
+  theme?: ThemeExtendedElectricDark;
+  hasActivePseudoClass?: boolean;
+  hasTransition?: boolean;
+  hoverColor?: string;
+  opts?: JssStyle;
 };
 
-export const getHoverJssStyle = ({ theme }: GetHoverStylesOptions = { theme: 'light' }): JssStyle => {
+export const getHoverJssStyle = (
+  { theme, hasActivePseudoClass, hasTransition, hoverColor, opts }: GetHoverStylesOptions = {
+    theme: 'light',
+    hasTransition: true,
+    hasActivePseudoClass: false,
+    hoverColor: '',
+    opts: {},
+  }
+): JssStyle => {
   return {
-    transition: getTransition('color'),
-    '&:hover': {
-      color: getThemedColors(theme).hoverColor,
+    ...(hasTransition && { transition: getTransition('color') }),
+    '@media (hover: hover)': {
+      [`&:hover${hasActivePseudoClass ? ', &:active' : ''}`]: {
+        color: hoverColor ? hoverColor : getThemedColors(theme).hoverColor,
+        ...opts,
+      },
     },
   };
 };

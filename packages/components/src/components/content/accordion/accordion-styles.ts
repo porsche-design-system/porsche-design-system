@@ -2,7 +2,14 @@ import type { BreakpointCustomizable } from '../../../utils';
 import type { ThemeExtendedElectric } from '../../../types';
 import type { AccordionSize } from './accordion-utils';
 import { buildResponsiveStyles, getCss } from '../../../utils';
-import { getFocusJssStyle, getTransition, pxToRemWithUnit, transitionDuration, getThemedColors } from '../../../styles';
+import {
+  getFocusJssStyle,
+  getHoverJssStyle,
+  getTransition,
+  pxToRemWithUnit,
+  transitionDuration,
+  getThemedColors,
+} from '../../../styles';
 import { fontWeight, fontSize, spacing, textSmall } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
@@ -11,7 +18,7 @@ export const getComponentCss = (
   open: boolean,
   theme: ThemeExtendedElectric
 ): string => {
-  const { baseColor, hoverColor, focusColor, contrastLowColor } = getThemedColors(theme);
+  const { baseColor, focusColor, contrastLowColor } = getThemedColors(theme);
   const border = `1px solid ${contrastLowColor}`;
 
   return getCss({
@@ -46,9 +53,7 @@ export const getComponentCss = (
               padding: `${pxToRemWithUnit(s === 'medium' ? 20 : 12)} 0`,
             }))),
         ...getFocusJssStyle({ color: focusColor }),
-        '&:hover': {
-          color: hoverColor,
-        },
+        ...getHoverJssStyle({ theme, hasTransition: false }),
       },
     },
     ...(!compact && {

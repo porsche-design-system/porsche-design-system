@@ -11,6 +11,7 @@ import {
   getTransition,
   pxToRemWithUnit,
   getThemedColors,
+  getHoverJssStyle,
 } from './';
 
 const { baseColor: darkThemeBaseColor } = getThemedColors('dark');
@@ -216,17 +217,20 @@ export const getLinkButtonStyles = (
         ...buildResponsiveStyles(hideLabel, getRootJssStyle),
         ...getFocusJssStyle(),
       }),
-      ...(!isDisabledOrLoading && {
-        '&:hover, &:active': {
-          color: primaryColorHover,
-          ...(isTertiary && {
-            backgroundColor: 'currentColor',
-            '& $label, & $icon': {
-              color: isDarkTheme ? lightThemeBaseColor : darkThemeBaseColor,
-            },
-          }),
-        },
-      }),
+      ...(!isDisabledOrLoading &&
+        getHoverJssStyle({
+          hasActivePseudoClass: true,
+          hasTransition: false,
+          hoverColor: primaryColorHover,
+          opts: {
+            ...(isTertiary && {
+              backgroundColor: 'currentColor',
+              '& $label, & $icon': {
+                color: isDarkTheme ? lightThemeBaseColor : darkThemeBaseColor,
+              },
+            }),
+          },
+        })),
     },
     icon: {
       position: 'absolute',
