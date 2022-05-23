@@ -33,13 +33,16 @@ export const StepperHorizontalExample = (): JSX.Element => {
   ]);
 
   const stepContent: JSX.Element[] = [
-    <form>
+    <>
       <PHeadline tag="h2" variant="headline-2">
         Personal Information:
       </PHeadline>
       <PText>Some personal information</PText>
-    </form>,
+    </>,
     <form>
+      <PHeadline tag="h2" variant="headline-2">
+        Confirm E-Mail:
+      </PHeadline>
       <PTextFieldWrapper label={'E-Mail'}>
         <input
           type="email"
