@@ -45,11 +45,6 @@ text {
   margin-right: 0.25rem;
   transition: color var(--p-transition-duration, .24s) ease;
 }
-.step-count-svg-wrapper {
-  margin-right: 0.25rem;
-  width: 1.5rem;
-  height: 1.5rem;
-}
 .sr-only {
   position: absolute;
   height: 1px;
@@ -108,11 +103,6 @@ text {
   margin-right: 0.25rem;
   transition: color var(--p-transition-duration, .24s) ease;
 }
-.step-count-svg-wrapper {
-  margin-right: 0.25rem;
-  width: 1.5rem;
-  height: 1.5rem;
-}
 .sr-only {
   position: absolute;
   height: 1px;
@@ -164,11 +154,6 @@ text {
   color: #7c7f81;
   margin-right: 0.25rem;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.step-count-svg-wrapper {
-  margin-right: 0.25rem;
-  width: 1.5rem;
-  height: 1.5rem;
 }
 .sr-only {
   position: absolute;
@@ -222,11 +207,6 @@ text {
   margin-right: 0.25rem;
   transition: color var(--p-transition-duration, .24s) ease;
 }
-.step-count-svg-wrapper {
-  margin-right: 0.25rem;
-  width: 1.5rem;
-  height: 1.5rem;
-}
 .sr-only {
   position: absolute;
   height: 1px;
@@ -275,6 +255,11 @@ text {
 }
 .circle {
   fill: #fff;
+}
+.step-count-svg-wrapper {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 .sr-only {
   position: absolute;
@@ -325,6 +310,11 @@ text {
 .circle {
   fill: #000;
 }
+.step-count-svg-wrapper {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
 .sr-only {
   position: absolute;
   height: 1px;
@@ -374,6 +364,11 @@ text {
 .circle {
   fill: #fff;
 }
+.step-count-svg-wrapper {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
 .sr-only {
   position: absolute;
   height: 1px;
@@ -422,6 +417,11 @@ text {
 }
 .circle {
   fill: #000;
+}
+.step-count-svg-wrapper {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 .sr-only {
   position: absolute;
@@ -473,6 +473,11 @@ text {
   fill: none;
   stroke: #7c7f81;
 }
+.step-count-svg-wrapper {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
 .sr-only {
   position: absolute;
   height: 1px;
@@ -522,6 +527,11 @@ text {
 .circle {
   fill: none;
   stroke: #96989a;
+}
+.step-count-svg-wrapper {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 .sr-only {
   position: absolute;
@@ -573,6 +583,11 @@ text {
   fill: none;
   stroke: #7c7f81;
 }
+.step-count-svg-wrapper {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
 .sr-only {
   position: absolute;
   height: 1px;
@@ -622,6 +637,11 @@ text {
 .circle {
   fill: none;
   stroke: #96989a;
+}
+.step-count-svg-wrapper {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 .sr-only {
   position: absolute;
@@ -681,11 +701,6 @@ text {
   margin-right: 0.25rem;
   transition: color var(--p-transition-duration, .24s) ease;
 }
-.step-count-svg-wrapper {
-  margin-right: 0.25rem;
-  width: 1.5rem;
-  height: 1.5rem;
-}
 .sr-only {
   position: absolute;
   height: 1px;
@@ -744,11 +759,6 @@ text {
   margin-right: 0.25rem;
   transition: color var(--p-transition-duration, .24s) ease;
 }
-.step-count-svg-wrapper {
-  margin-right: 0.25rem;
-  width: 1.5rem;
-  height: 1.5rem;
-}
 .sr-only {
   position: absolute;
   height: 1px;
@@ -801,11 +811,6 @@ text {
   margin-right: 0.25rem;
   transition: color var(--p-transition-duration, .24s) ease;
 }
-.step-count-svg-wrapper {
-  margin-right: 0.25rem;
-  width: 1.5rem;
-  height: 1.5rem;
-}
 .sr-only {
   position: absolute;
   height: 1px;
@@ -857,11 +862,6 @@ text {
   color: #96989a;
   margin-right: 0.25rem;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.step-count-svg-wrapper {
-  margin-right: 0.25rem;
-  width: 1.5rem;
-  height: 1.5rem;
 }
 .sr-only {
   position: absolute;
