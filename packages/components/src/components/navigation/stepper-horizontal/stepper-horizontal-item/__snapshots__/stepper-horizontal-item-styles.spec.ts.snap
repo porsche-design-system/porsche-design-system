@@ -1,0 +1,1023 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getComponentCss() should return correct css for state: complete, isDisabled: false and theme: dark 1`] = `
+"button {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  color: #fff;
+  transition: color var(--p-transition-duration, .24s) ease;
+  padding: 0;
+  background: 0;
+  border: 0;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+  text-decoration: underline;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+button:hover {
+  color: #d5001c;
+}
+button:hover .icon {
+  color: #ff0223;
+}
+text {
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  fill: #000;
+}
+.inner-circle {
+  fill: #fff;
+}
+.outer-circle {
+  fill: #7c7f81;
+}
+.icon {
+  color: #01ba1d;
+  margin-right: 0.25rem;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.step-count-svg-wrapper {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for state: complete, isDisabled: false and theme: light 1`] = `
+"button {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  color: #000;
+  transition: color var(--p-transition-duration, .24s) ease;
+  padding: 0;
+  background: 0;
+  border: 0;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+  text-decoration: underline;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+button:hover {
+  color: #d5001c;
+}
+button:hover .icon {
+  color: #d5001c;
+}
+text {
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  fill: #fff;
+}
+.inner-circle {
+  fill: #000;
+}
+.outer-circle {
+  fill: #96989a;
+}
+.icon {
+  color: #018a16;
+  margin-right: 0.25rem;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.step-count-svg-wrapper {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for state: complete, isDisabled: true and theme: dark 1`] = `
+"button {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  color: #7c7f81;
+  transition: color var(--p-transition-duration, .24s) ease;
+  padding: 0;
+  background: 0;
+  border: 0;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: nowrap;
+  cursor: not-allowed;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+  text-decoration: underline;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+text {
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  fill: #7c7f81;
+}
+.inner-circle {
+  fill: #000;
+}
+.outer-circle {
+  fill: #7c7f81;
+}
+.icon {
+  color: #7c7f81;
+  margin-right: 0.25rem;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.step-count-svg-wrapper {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for state: complete, isDisabled: true and theme: light 1`] = `
+"button {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  color: #96989a;
+  transition: color var(--p-transition-duration, .24s) ease;
+  padding: 0;
+  background: 0;
+  border: 0;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: nowrap;
+  cursor: not-allowed;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+  text-decoration: underline;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+text {
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  fill: #96989a;
+}
+.inner-circle {
+  fill: #fff;
+}
+.outer-circle {
+  fill: #96989a;
+}
+.icon {
+  color: #96989a;
+  margin-right: 0.25rem;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.step-count-svg-wrapper {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for state: current, isDisabled: false and theme: dark 1`] = `
+"button {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  color: #fff;
+  transition: color var(--p-transition-duration, .24s) ease;
+  padding: 0;
+  background: 0;
+  border: 0;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: nowrap;
+  cursor: auto;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+text {
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  fill: #000;
+}
+.inner-circle {
+  fill: #fff;
+}
+.outer-circle {
+  fill: #7c7f81;
+}
+.icon {
+  color: inherit;
+  margin-right: 0.25rem;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.step-count-svg-wrapper {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for state: current, isDisabled: false and theme: light 1`] = `
+"button {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  color: #000;
+  transition: color var(--p-transition-duration, .24s) ease;
+  padding: 0;
+  background: 0;
+  border: 0;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: nowrap;
+  cursor: auto;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+text {
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  fill: #fff;
+}
+.inner-circle {
+  fill: #000;
+}
+.outer-circle {
+  fill: #96989a;
+}
+.icon {
+  color: inherit;
+  margin-right: 0.25rem;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.step-count-svg-wrapper {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for state: current, isDisabled: true and theme: dark 1`] = `
+"button {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  color: #7c7f81;
+  transition: color var(--p-transition-duration, .24s) ease;
+  padding: 0;
+  background: 0;
+  border: 0;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: nowrap;
+  cursor: not-allowed;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+text {
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  fill: #7c7f81;
+}
+.inner-circle {
+  fill: #000;
+}
+.outer-circle {
+  fill: #7c7f81;
+}
+.icon {
+  color: #7c7f81;
+  margin-right: 0.25rem;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.step-count-svg-wrapper {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for state: current, isDisabled: true and theme: light 1`] = `
+"button {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  color: #96989a;
+  transition: color var(--p-transition-duration, .24s) ease;
+  padding: 0;
+  background: 0;
+  border: 0;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: nowrap;
+  cursor: not-allowed;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+text {
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  fill: #96989a;
+}
+.inner-circle {
+  fill: #fff;
+}
+.outer-circle {
+  fill: #96989a;
+}
+.icon {
+  color: #96989a;
+  margin-right: 0.25rem;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.step-count-svg-wrapper {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for state: undefined, isDisabled: false and theme: dark 1`] = `
+"button {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  color: #fff;
+  transition: color var(--p-transition-duration, .24s) ease;
+  padding: 0;
+  background: 0;
+  border: 0;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: nowrap;
+  cursor: auto;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+text {
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  fill: #000;
+}
+.inner-circle {
+  fill: #fff;
+}
+.outer-circle {
+  fill: #7c7f81;
+}
+.icon {
+  margin-right: 0.25rem;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.step-count-svg-wrapper {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for state: undefined, isDisabled: false and theme: light 1`] = `
+"button {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  color: #000;
+  transition: color var(--p-transition-duration, .24s) ease;
+  padding: 0;
+  background: 0;
+  border: 0;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: nowrap;
+  cursor: auto;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+text {
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  fill: #fff;
+}
+.inner-circle {
+  fill: #000;
+}
+.outer-circle {
+  fill: #96989a;
+}
+.icon {
+  margin-right: 0.25rem;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.step-count-svg-wrapper {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for state: undefined, isDisabled: true and theme: dark 1`] = `
+"button {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  color: #7c7f81;
+  transition: color var(--p-transition-duration, .24s) ease;
+  padding: 0;
+  background: 0;
+  border: 0;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: nowrap;
+  cursor: not-allowed;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+text {
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  fill: #7c7f81;
+}
+.inner-circle {
+  fill: #000;
+}
+.outer-circle {
+  fill: #7c7f81;
+}
+.icon {
+  color: #7c7f81;
+  margin-right: 0.25rem;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.step-count-svg-wrapper {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for state: undefined, isDisabled: true and theme: light 1`] = `
+"button {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  color: #96989a;
+  transition: color var(--p-transition-duration, .24s) ease;
+  padding: 0;
+  background: 0;
+  border: 0;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: nowrap;
+  cursor: not-allowed;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+text {
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  fill: #96989a;
+}
+.inner-circle {
+  fill: #fff;
+}
+.outer-circle {
+  fill: #96989a;
+}
+.icon {
+  color: #96989a;
+  margin-right: 0.25rem;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.step-count-svg-wrapper {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for state: warning, isDisabled: false and theme: dark 1`] = `
+"button {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  color: #fff;
+  transition: color var(--p-transition-duration, .24s) ease;
+  padding: 0;
+  background: 0;
+  border: 0;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+  text-decoration: underline;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+button:hover {
+  color: #d5001c;
+}
+button:hover .icon {
+  color: #ff0223;
+}
+text {
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  fill: #000;
+}
+.inner-circle {
+  fill: #fff;
+}
+.outer-circle {
+  fill: #7c7f81;
+}
+.icon {
+  color: #ff9b00;
+  margin-right: 0.25rem;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.step-count-svg-wrapper {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for state: warning, isDisabled: false and theme: light 1`] = `
+"button {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  color: #000;
+  transition: color var(--p-transition-duration, .24s) ease;
+  padding: 0;
+  background: 0;
+  border: 0;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+  text-decoration: underline;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+button:hover {
+  color: #d5001c;
+}
+button:hover .icon {
+  color: #d5001c;
+}
+text {
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  fill: #fff;
+}
+.inner-circle {
+  fill: #000;
+}
+.outer-circle {
+  fill: #96989a;
+}
+.icon {
+  color: #ff9b00;
+  margin-right: 0.25rem;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.step-count-svg-wrapper {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for state: warning, isDisabled: true and theme: dark 1`] = `
+"button {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  color: #7c7f81;
+  transition: color var(--p-transition-duration, .24s) ease;
+  padding: 0;
+  background: 0;
+  border: 0;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: nowrap;
+  cursor: not-allowed;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+  text-decoration: underline;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+text {
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  fill: #7c7f81;
+}
+.inner-circle {
+  fill: #000;
+}
+.outer-circle {
+  fill: #7c7f81;
+}
+.icon {
+  color: #7c7f81;
+  margin-right: 0.25rem;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.step-count-svg-wrapper {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for state: warning, isDisabled: true and theme: light 1`] = `
+"button {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  color: #96989a;
+  transition: color var(--p-transition-duration, .24s) ease;
+  padding: 0;
+  background: 0;
+  border: 0;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: nowrap;
+  cursor: not-allowed;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+  text-decoration: underline;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+text {
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  fill: #96989a;
+}
+.inner-circle {
+  fill: #fff;
+}
+.outer-circle {
+  fill: #96989a;
+}
+.icon {
+  color: #96989a;
+  margin-right: 0.25rem;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.step-count-svg-wrapper {
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}"
+`;
