@@ -74,17 +74,17 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
                   fill: 'none',
                   stroke: disabledColor,
                 },
+          'step-count-svg-wrapper': {
+            marginRight: pxToRemWithUnit(4),
+            width: pxToRemWithUnit(24),
+            height: pxToRemWithUnit(24),
+          },
         }
       : {
           icon: {
             color: isDisabled ? disabledColor : iconColor,
             marginRight: pxToRemWithUnit(4),
             transition: getTransition('color'),
-          },
-          'step-count-svg-wrapper': {
-            marginRight: pxToRemWithUnit(4),
-            width: pxToRemWithUnit(24),
-            height: pxToRemWithUnit(24),
           },
         }),
     'sr-only': {

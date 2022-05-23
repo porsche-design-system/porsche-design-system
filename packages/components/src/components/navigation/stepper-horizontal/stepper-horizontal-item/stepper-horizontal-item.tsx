@@ -60,11 +60,7 @@ export class StepperHorizontalItem {
     const isCompleteOrWarning = isStateCompleteOrWarning(this.state);
 
     return (
-      <button
-        tabIndex={isCompleteOrWarning ? 0 : -1}
-        disabled={this.disabled}
-        aria-current={this.state === 'current' ? 'step' : null}
-      >
+      <button disabled={this.disabled} aria-current={this.state === 'current' ? 'step' : null}>
         <span class="sr-only">Step {this.stepCounter}:</span>
         {isCompleteOrWarning ? (
           <PrefixedTagNames.pIcon
