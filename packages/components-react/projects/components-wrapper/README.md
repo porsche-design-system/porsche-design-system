@@ -67,4 +67,4 @@ applications but ensure enough flexibility to meet different context requirement
 
 ## License
 
-- See [Custom License](./LICENSE) within npm package
+- See **Custom License** within npm package
