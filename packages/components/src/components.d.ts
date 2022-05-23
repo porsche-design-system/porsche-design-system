@@ -764,7 +764,7 @@ export namespace Components {
     }
     interface PStepperHorizontalItem {
         /**
-          * Disables the stepper. No events will be triggered while disabled state is active.
+          * Disables the stepper-horizontal-item. No events will be triggered while disabled state is active.
          */
         "disabled"?: boolean;
         "refreshStepCounter": () => Promise<void>;
@@ -2162,7 +2162,7 @@ declare namespace LocalJSX {
     }
     interface PStepperHorizontalItem {
         /**
-          * Disables the stepper. No events will be triggered while disabled state is active.
+          * Disables the stepper-horizontal-item. No events will be triggered while disabled state is active.
          */
         "disabled"?: boolean;
         /**
