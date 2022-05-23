@@ -49,7 +49,7 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
         ...getFocusJssStyle(),
         ...(!isCurrentOrUndefined && {
           cursor: isDisabled ? 'not-allowed' : 'pointer',
-          textDecoration: 'underline',
+          textDecoration: isDisabled ? 'none' : 'underline',
           ...(!isDisabled && {
             ...hoverJssStyles,
             '&:hover .icon': {
@@ -63,22 +63,30 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
         fill: isDisabled ? disabledColor : invertedBaseColor,
       },
     },
-    'inner-circle': {
-      fill: isDisabled ? invertedBaseColor : baseColor,
-    },
-    'outer-circle': {
-      fill: disabledColor,
-    },
-    icon: {
-      color: isDisabled ? disabledColor : iconColor,
-      marginRight: pxToRemWithUnit(4),
-      transition: getTransition('color'),
-    },
-    'step-count-svg-wrapper': {
-      marginRight: pxToRemWithUnit(4),
-      width: pxToRemWithUnit(24),
-      height: pxToRemWithUnit(24),
-    },
+    ...(isCurrentOrUndefined
+      ? {
+          circle:
+            state === 'current'
+              ? {
+                  fill: baseColor,
+                }
+              : {
+                  fill: 'none',
+                  stroke: disabledColor,
+                },
+        }
+      : {
+          icon: {
+            color: isDisabled ? disabledColor : iconColor,
+            marginRight: pxToRemWithUnit(4),
+            transition: getTransition('color'),
+          },
+          'step-count-svg-wrapper': {
+            marginRight: pxToRemWithUnit(4),
+            width: pxToRemWithUnit(24),
+            height: pxToRemWithUnit(24),
+          },
+        }),
     'sr-only': {
       ...getScreenReaderOnlyJssStyle(),
     },

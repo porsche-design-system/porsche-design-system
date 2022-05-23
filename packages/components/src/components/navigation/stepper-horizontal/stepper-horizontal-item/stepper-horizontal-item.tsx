@@ -18,7 +18,7 @@ export class StepperHorizontalItem {
   /** The validation state. */
   @Prop() public state?: StepperState;
 
-  /** Disables the stepper. No events will be triggered while disabled state is active. */
+  /** Disables the stepper-horizontal-item. No events will be triggered while disabled state is active. */
   @Prop() public disabled?: boolean = false;
 
   @State() private stepCounter: number;
@@ -60,9 +60,12 @@ export class StepperHorizontalItem {
     const isCompleteOrWarning = isStateCompleteOrWarning(this.state);
 
     return (
-      <button tabIndex={isCompleteOrWarning ? 0 : -1} disabled={this.disabled}>
-        <span class="sr-only">is {this.state ? `state ${this.state}` : 'disabled'}</span>
-        <span class="sr-only">Step {this.stepCounter}</span>
+      <button
+        tabIndex={isCompleteOrWarning ? 0 : -1}
+        disabled={this.disabled}
+        aria-current={this.state === 'current' ? 'step' : null}
+      >
+        <span class="sr-only">Step {this.stepCounter}:</span>
         {isCompleteOrWarning ? (
           <PrefixedTagNames.pIcon
             class="icon"
@@ -74,8 +77,7 @@ export class StepperHorizontalItem {
         ) : (
           <span class="step-count-svg-wrapper">
             <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24" width="100%" height="100%">
-              {this.disabled && <circle class="outer-circle" cx="12" cy="12" r="9" />}
-              <circle class="inner-circle" cx="12" cy="12" r={this.disabled ? '8' : '9'} />
+              <circle class="circle" cx="12" cy="12" r="9" />
               <text x="12" y="16.5" text-anchor="middle">
                 {this.stepCounter}
               </text>
@@ -83,6 +85,7 @@ export class StepperHorizontalItem {
           </span>
         )}
         <slot />
+        {this.state && <span class="sr-only">{this.state}</span>}
       </button>
     );
   }
