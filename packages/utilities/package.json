@@ -2,6 +2,7 @@
   "name": "utilities-v2",
   "version": "0.0.0",
   "private": true,
+  "license": "UNLICENSED",
   "scripts": {
     "build": "yarn --cwd ./projects/utilities build && yarn --cwd ./projects/styles build",
     "test": "yarn test:unit",
