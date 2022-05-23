@@ -2,6 +2,7 @@
   "name": "@porsche-design-system/components-manager-cli",
   "version": "0.0.0",
   "private": true,
+  "license": "UNLICENSED",
   "bin": {
     "cm": "./dist/bin/cm.js"
   },

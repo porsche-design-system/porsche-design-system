@@ -2,6 +2,7 @@
   "name": "@porsche-design-system/styles",
   "version": "0.0.0",
   "private": true,
+  "license": "UNLICENSED",
   "scope": "@porsche-design-system",
   "main": "dist/js/index.js",
   "module": "dist/js/esm/index.js",

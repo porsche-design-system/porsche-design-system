@@ -2,6 +2,7 @@
   "name": "@porsche-design-system/storefront",
   "version": "1.0.0",
   "private": true,
+  "license": "UNLICENSED",
   "description": "Porsche Design System",
   "scripts": {
     "postinstall": "rm -rf ./node_modules/webpack-dev-server/node_modules/webpack",
