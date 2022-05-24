@@ -10,19 +10,19 @@ import { MaskedRange } from 'imask';
   `,
 })
 export class TextFieldWrapperExampleComponent {
-  public isUsLocale = (yourDetectedLocale?: string): boolean => yourDetectedLocale === 'en-US' || false;
-  public description = `'${this.isUsLocale() ? 'mm/dd/yyyy' : 'dd.mm.yyyy'}' in range [${
-    this.isUsLocale() ? '01/01/1900, 01/01/2100' : '01.01.1900, 01.01.2100'
-  }]`;
+  public isDeLocale = Intl.NumberFormat().resolvedOptions().locale.startsWith('de');
+  public dateFormat = this.isDeLocale ? 'dd.mm.yyyy' : 'mm/dd/yyyy';
+  public dateRange = this.isDeLocale ? '01.01.1900, 01.01.2100' : '01/01/1900, 01/01/2100';
+  public description = `'${this.dateFormat}' in range [${this.dateRange}]`;
   public mask = {
     lazy: false,
-    mask: this.isUsLocale() ? 'mm/dd/yyyy' : 'dd.mm.yyyy',
+    mask: this.dateFormat,
     blocks: {
-      yyyy: {
+      dd: {
         mask: MaskedRange,
-        from: 1900,
-        to: 2100,
-        placeholderChar: 'y',
+        from: 1,
+        to: 31,
+        placeholderChar: 'd',
       },
       mm: {
         mask: MaskedRange,
@@ -30,11 +30,11 @@ export class TextFieldWrapperExampleComponent {
         to: 12,
         placeholderChar: 'm',
       },
-      dd: {
+      yyyy: {
         mask: MaskedRange,
-        from: 1,
-        to: 31,
-        placeholderChar: 'd',
+        from: 1900,
+        to: 2100,
+        placeholderChar: 'y',
       },
     },
   };

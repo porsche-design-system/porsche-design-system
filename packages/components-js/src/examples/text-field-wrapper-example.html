@@ -1,24 +1,23 @@
 <p-text-field-wrapper label="Some label">
-  <input type="text" id="date-mask" />
+  <input type="text" />
 </p-text-field-wrapper>
 
 <script>
-  const isUsLocale = (yourDetectedLocale) => yourDetectedLocale === 'en-US' || false;
-  const description = `'${isUsLocale() ? 'mm/dd/yyyy' : 'dd.mm.yyyy'}' in range [${
-    isUsLocale() ? '01/01/1900, 01/01/2100' : '01.01.1900, 01.01.2100'
-  }]`;
+  const isDeLocale = Intl.NumberFormat().resolvedOptions().locale.startsWith('de');
+  const dateFormat = isDeLocale ? 'dd.mm.yyyy' : 'mm/dd/yyyy';
+  const dateRange = isDeLocale ? '01.01.1900, 01.01.2100' : '01/01/1900, 01/01/2100';
+  const textFieldWrapper = document.querySelector('p-text-field-wrapper');
+  textFieldWrapper.description = `'${dateFormat}' in range [${dateRange}]`;
 
-  document.querySelector('p-text-field-wrapper').setAttribute('description', description);
-
-  IMask(document.getElementById('date-mask'), {
+  IMask(textFieldWrapper.querySelector('input'), {
     lazy: false,
-    mask: isUsLocale() ? 'mm/dd/yyyy' : 'dd.mm.yyyy',
+    mask: dateFormat,
     blocks: {
-      yyyy: {
+      dd: {
         mask: IMask.MaskedRange,
-        from: 1900,
-        to: 2100,
-        placeholderChar: 'y',
+        from: 1,
+        to: 31,
+        placeholderChar: 'd',
       },
       mm: {
         mask: IMask.MaskedRange,
@@ -26,11 +25,11 @@
         to: 12,
         placeholderChar: 'm',
       },
-      dd: {
+      yyyy: {
         mask: IMask.MaskedRange,
-        from: 1,
-        to: 31,
-        placeholderChar: 'd',
+        from: 1900,
+        to: 2100,
+        placeholderChar: 'y',
       },
     },
   });
