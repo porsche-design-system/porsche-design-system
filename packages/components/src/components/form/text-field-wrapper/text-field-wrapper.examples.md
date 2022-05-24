@@ -228,9 +228,8 @@ export default class Code extends Vue {
 </p-text-field-wrapper>`;
 
   get maskedInput() {
-    const isUsLocale = Intl.DateTimeFormat().resolvedOptions().locale === 'en-US';
-    return `<p-text-field-wrapper label="Some label" description="'${isUsLocale ? 'mm/dd/yyyy' : 'dd.mm.yyyy'}' in range [${isUsLocale ? '01/01/1900, 01/01/2100' : '01.01.1900, 01.01.2100'}]">
-      <input type="text" id="date-mask" />
+    return `<p-text-field-wrapper label="Some label" id="date-mask">
+      <input type="text" />
     </p-text-field-wrapper>`;
   }
 
@@ -239,31 +238,36 @@ export default class Code extends Vue {
   }
 
   initIMask() {
-    const isUsLocale = Intl.DateTimeFormat().resolvedOptions().locale === 'en-US';
-    IMask(document.getElementById('date-mask'), {
-      lazy: false,
-      mask: isUsLocale ? 'mm/dd/yyyy' : 'dd.mm.yyyy',
-      blocks: {
-        yyyy: {
-          mask: IMask.MaskedRange,
-          from: 1900,
-          to: 2100,
-          placeholderChar: 'y',
-        },
-        mm: {
-          mask: IMask.MaskedRange,
-          from: 1,
-          to: 12,
-          placeholderChar: 'm',
-        },
-        dd: {
-          mask: IMask.MaskedRange,
-          from: 1,
-          to: 31,
-          placeholderChar: 'd',
-        },
+  const isDeLocale = Intl.NumberFormat().resolvedOptions().locale.startsWith('de');
+  const dateFormat = isDeLocale ? 'dd.mm.yyyy' : 'mm/dd/yyyy';
+  const dateRange = isDeLocale ? '01.01.1900, 01.01.2100' : '01/01/1900, 01/01/2100';
+  const textFieldWrapper = document.querySelector('#date-mask');
+  textFieldWrapper.description = `'${dateFormat}' in range [${dateRange}]`;
+
+  IMask(textFieldWrapper.querySelector('input'), {
+    lazy: false,
+    mask: dateFormat,
+    blocks: {
+      dd: {
+        mask: IMask.MaskedRange,
+        from: 1,
+        to: 31,
+        placeholderChar: 'd',
       },
-    });
+      mm: {
+        mask: IMask.MaskedRange,
+        from: 1,
+        to: 12,
+        placeholderChar: 'm',
+      },
+      yyyy: {
+        mask: IMask.MaskedRange,
+        from: 1900,
+        to: 2100,
+        placeholderChar: 'y',
+      },
+    },
+  });
   }
 }
 </script>

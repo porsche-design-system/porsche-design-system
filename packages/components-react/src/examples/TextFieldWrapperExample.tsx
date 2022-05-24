@@ -3,16 +3,19 @@ import type { LegacyRef } from 'react';
 import { useIMask, IMask } from 'react-imask';
 
 export const TextFieldWrapperExamplePage = (): JSX.Element => {
-  const isUsLocale = (yourDetectedLocale?: string): boolean => yourDetectedLocale === 'en-US' || false;
+  const isDeLocale = Intl.NumberFormat().resolvedOptions().locale.startsWith('de');
+  const dateFormat = isDeLocale ? 'dd.mm.yyyy' : 'mm/dd/yyyy';
+  const dateRange = isDeLocale ? '01.01.1900, 01.01.2100' : '01/01/1900, 01/01/2100';
+  const description = `'${dateFormat}' in range [${dateRange}]`;
   const opts = {
     lazy: false,
-    mask: isUsLocale() ? 'mm/dd/yyyy' : 'dd.mm.yyyy',
+    mask: dateFormat,
     blocks: {
-      yyyy: {
+      dd: {
         mask: IMask.MaskedRange,
-        from: 1900,
-        to: 2100,
-        placeholderChar: 'y',
+        from: 1,
+        to: 31,
+        placeholderChar: 'd',
       },
       mm: {
         mask: IMask.MaskedRange,
@@ -20,23 +23,18 @@ export const TextFieldWrapperExamplePage = (): JSX.Element => {
         to: 12,
         placeholderChar: 'm',
       },
-      dd: {
+      yyyy: {
         mask: IMask.MaskedRange,
-        from: 1,
-        to: 31,
-        placeholderChar: 'd',
+        from: 1900,
+        to: 2100,
+        placeholderChar: 'y',
       },
     },
   };
   const { ref } = useIMask(opts);
 
   return (
-    <PTextFieldWrapper
-      label="Some label"
-      description={`'${isUsLocale() ? 'mm/dd/yyyy' : 'dd.mm.yyyy'}' in range [${
-        isUsLocale() ? '01/01/1900, 01/01/2100' : '01.01.1900, 01.01.2100'
-      }]`}
-    >
+    <PTextFieldWrapper label="Some label" description={description}>
       <input ref={ref as LegacyRef<HTMLInputElement>} type="text" />
     </PTextFieldWrapper>
   );
