@@ -8,6 +8,7 @@ import {
   getTransition,
   pxToRemWithUnit,
   getThemedColors,
+  getHoverJssStyle,
 } from '../../../styles';
 import { spacing } from '@porsche-design-system/utilities-v2';
 
@@ -130,15 +131,19 @@ export const getComponentCss = (
         outline: 'none',
         cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
         transition: `${getTransition('background-color')},${getTransition('border-color')},${getTransition('color')}`,
-        ...(!isDisabledOrLoading && {
-          '&:hover': {
-            color: buttonBorderColorHover,
-            backgroundColor: buttonBackgroundColorHover,
-            '& .toggle': {
-              backgroundColor: toggleBackgroundColorHover,
+        ...(!isDisabledOrLoading &&
+          getHoverJssStyle({
+            theme,
+            hasTransition: false,
+            hoverColor: buttonBorderColorHover,
+            opts: {
+              backgroundColor: buttonBackgroundColorHover,
+              '& .toggle': {
+                backgroundColor: toggleBackgroundColorHover,
+              },
             },
-          },
-        }),
+          })),
+
         '&:focus': {
           boxShadow: `0 0 0 2px ${backgroundColor}, 0 0 0 3px currentColor`,
         },

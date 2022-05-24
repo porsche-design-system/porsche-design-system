@@ -48,7 +48,7 @@ export const getHoverJssStyle = (
     theme: 'light',
     hasTransition: true,
     hasActivePseudoClass: false,
-    hoverColor: '',
+    hoverColor: null,
     opts: {},
   }
 ): JssStyle => {
