@@ -1,6 +1,7 @@
 import { getCss, isThemeDark } from '../../../utils';
 import {
   addImportantToEachRule,
+  getHoverJssStyle,
   getInsetJssStyle,
   getThemedColors,
   getTransition,
@@ -103,12 +104,7 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
         color: baseColor,
         ...textXSmall,
         whiteSpace: 'nowrap',
-        ...(isFocusable && {
-          transition: getTransition('color'),
-          '&:hover': {
-            color: hoverColor,
-          },
-        }),
+        ...(isFocusable && getHoverJssStyle()),
       },
       '::slotted': addImportantToEachRule({
         ...(isFocusable && {
