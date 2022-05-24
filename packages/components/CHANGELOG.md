@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Fixed
+
+- Issue with `JssStyle` typing import
+
 ### [2.12.0] - 2022-05-19
 
 #### Changed
