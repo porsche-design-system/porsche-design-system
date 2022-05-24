@@ -62,7 +62,7 @@ export class StepperHorizontalItem {
     return (
       <button disabled={this.disabled} aria-current={this.state === 'current' ? 'step' : null}>
         <span class="sr-only">Step {this.stepCounter}:</span>
-        {isCompleteOrWarning ? (
+        {isCompleteOrWarning && (
           <PrefixedTagNames.pIcon
             class="icon"
             name={getIconName(this.state)}
@@ -70,15 +70,13 @@ export class StepperHorizontalItem {
             color="inherit"
             aria-hidden="true"
           />
-        ) : (
-          <span class="step-count-svg-wrapper">
-            <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24" width="100%" height="100%">
-              <circle class="circle" cx="12" cy="12" r="9" />
-              <text x="12" y="16.5" text-anchor="middle">
-                {this.stepCounter}
-              </text>
-            </svg>
-          </span>
+          // ) : (
+          //   <span class="step-count-svg-wrapper">
+          //     <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24" width="100%" height="100%">
+          //       <circle class="circle" cx="12" cy="12" r="9" />
+          //       <text x="12" y="16.5" text-anchor="middle"></text>
+          //     </svg>
+          //   </span>
         )}
         <slot />
         {this.state && <span class="sr-only">{this.state}</span>}
