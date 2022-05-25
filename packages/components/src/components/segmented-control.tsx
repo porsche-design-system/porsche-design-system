@@ -1,5 +1,5 @@
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { attachComponentCss } from '../utils';
+import { Component, Element, h, JSX, Prop, forceUpdate } from '@stencil/core';
+import { attachComponentCss, observeChildren } from '../utils';
 import { getComponentCss } from './segmented-control-styles';
 
 @Component({
@@ -9,11 +9,35 @@ import { getComponentCss } from './segmented-control-styles';
 export class SegmentedControl {
   @Element() public host!: HTMLElement;
 
-  @Prop() public stretch?: boolean = false;
   @Prop() public wrap?: boolean = false;
 
-  public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.stretch, this.wrap);
+  public async componentWillRender(): Promise<void> {
+    const widths = await Promise.all(
+      Array.from(this.host.children).map(async (item) => {
+        const clone = item.cloneNode(true) as HTMLElement;
+        clone.style.position = 'absolute';
+
+        this.host.parentElement.append(clone);
+        await (clone as any).componentOnReady();
+        const { width } = getComputedStyle(clone);
+        clone.remove();
+
+        return width;
+      })
+    );
+
+    const maxWidth = Math.max(...widths.map(parseFloat));
+
+    const style = this.host.getAttribute('style');
+    if (style && style.includes('minmax')) {
+      this.host.setAttribute('style', style.replace(/(minmax\()[\d.px]+/, `$1${maxWidth}px`));
+    }
+
+    attachComponentCss(this.host, getComponentCss, this.wrap, maxWidth);
+  }
+
+  public componentDidLoad(): void {
+    observeChildren(this.host, () => forceUpdate(this.host));
   }
 
   public render(): JSX.Element {
