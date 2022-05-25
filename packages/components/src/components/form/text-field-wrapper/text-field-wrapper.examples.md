@@ -117,10 +117,9 @@ For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs
 ### <A11yIcon></A11yIcon> Accessibility hints
 If using **slotted contents** to serve form elements, make sure to provide the right **ARIA attributes** to give screen reader users the corresponding information:
 1. Add a unique ID to the `slot="label"` element
-1. Add a unique ID to the `slot="message"` element (if they are created)
-1. Add corresponding `aria-labelledby="some-label-id"` to the `input` element which points to the `label` ID
-1. Add corresponding `aria-describedby="some-description-id some-message-id"` to the `input` element which points to both, the `description` ID (if set) and the `message` ID when the (error/success) message appears 
-
+2. Add a unique ID to the `slot="message"` element (if they are created)
+3. Add corresponding `aria-labelledby="some-label-id"` to the `input` element which points to the `label` ID
+4. Add corresponding `aria-describedby="some-description-id some-message-id"` to the `input` element which points to both, the `description` ID (if set) and the `message` ID when the (error/success) message appears
 
 ## Masked Input
 If you want to use localized input masks to improve the user experience we recommend using <a href="https://imask.js.org/" target="_blank">iMask</a>. Make sure to handle potential drawbacks (e.g. auto-formatting /-correction, styling to distinguish between masked input, placeholder and input value, error handling etc.) to avoid user frustration.
@@ -137,7 +136,7 @@ If you want to use localized input masks to improve the user experience we recom
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import IMask from 'imask';
-import { getTextFieldWrapperCodeSamples } from '@porsche-design-system/shared'; 
+import { getTextFieldWrapperCodeSamples } from '@porsche-design-system/shared';
 
 @Component
 export default class Code extends Vue {
@@ -148,7 +147,7 @@ export default class Code extends Vue {
   state = 'error';
   unitPosition = 'prefix';
 
-  codeExample = getTextFieldWrapperCodeSamples();
+codeExample = getTextFieldWrapperCodeSamples();
 
   get basic() {
     const labelAttr = ` hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
@@ -238,36 +237,36 @@ export default class Code extends Vue {
   }
 
   initIMask() {
-  const isDeLocale = Intl.NumberFormat().resolvedOptions().locale.startsWith('de');
-  const dateFormat = isDeLocale ? 'dd.mm.yyyy' : 'mm/dd/yyyy';
-  const dateRange = isDeLocale ? '01.01.1900, 01.01.2100' : '01/01/1900, 01/01/2100';
-  const textFieldWrapper = document.querySelector('#date-mask');
-  textFieldWrapper.description = `'${dateFormat}' in range [${dateRange}]`;
-
-  IMask(textFieldWrapper.querySelector('input'), {
-    lazy: false,
-    mask: dateFormat,
-    blocks: {
-      dd: {
-        mask: IMask.MaskedRange,
-        from: 1,
-        to: 31,
-        placeholderChar: 'd',
+    const isDeLocale = Intl.NumberFormat().resolvedOptions().locale.startsWith('de');
+    const dateFormat = isDeLocale ? 'dd.mm.yyyy' : 'mm/dd/yyyy';
+    const dateRange = isDeLocale ? '01.01.1900, 01.01.2100' : '01/01/1900, 01/01/2100';
+    const textFieldWrapper = document.querySelector('#date-mask');
+    textFieldWrapper.description = `'${dateFormat}' in range [${dateRange}]`;
+  
+    IMask(textFieldWrapper.querySelector('input'), {
+      lazy: false,
+      mask: dateFormat,
+      blocks: {
+        dd: {
+          mask: IMask.MaskedRange,
+          from: 1,
+          to: 31,
+          placeholderChar: 'd',
+        },
+        mm: {
+          mask: IMask.MaskedRange,
+          from: 1,
+          to: 12,
+          placeholderChar: 'm',
+        },
+        yyyy: {
+          mask: IMask.MaskedRange,
+          from: 1900,
+          to: 2100,
+          placeholderChar: 'y',
+        },
       },
-      mm: {
-        mask: IMask.MaskedRange,
-        from: 1,
-        to: 12,
-        placeholderChar: 'm',
-      },
-      yyyy: {
-        mask: IMask.MaskedRange,
-        from: 1900,
-        to: 2100,
-        placeholderChar: 'y',
-      },
-    },
-  });
+    });
   }
 }
 </script>
