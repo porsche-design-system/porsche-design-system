@@ -4,6 +4,7 @@ import { getComponentCss } from './scroller-styles';
 import type { Direction, GradientColorTheme, ScrollToPosition, PrevNextButtonJssStyle } from './scroller-utils';
 import { getScrollPositionAfterPrevNextClick } from './scroller-utils';
 import type { ThemeExtendedElectric } from '../../../types';
+import type { JssStyle } from 'jss';
 
 @Component({
   tag: 'p-scroller',
@@ -56,7 +57,7 @@ export class Scroller {
       this.theme,
       this.isNextHidden,
       this.isPrevHidden,
-      this.prevNextButtonJssStyle
+      this.prevNextButtonJssStyle as JssStyle
     );
   }
 
