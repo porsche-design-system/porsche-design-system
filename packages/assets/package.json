@@ -1,37 +1,21 @@
 {
   "name": "@porsche-design-system/assets",
-  "version": "4.0.0",
+  "version": "5.0.1",
+  "description": "This package provides manifests and CDN URLs of Porsche assets like fonts, icons, marques, etc.",
+  "keywords": [
+    "porsche",
+    "design",
+    "system",
+    "assets"
+  ],
   "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "license": "SEE LICENSE IN ./LICENSE",
+  "homepage": "https://designsystem.porsche.com",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
   "sideEffects": false,
-  "author": "Dr. Ing. h.c. F. Porsche AG",
-  "contributors": [
-    "Stephan Schröter <stephan.schroeter@mhp.com>",
-    "Oliver Hook <oliver.hook@mhp.com>",
-    "Marcel Bertram <marcel.bertram@porsche.de>",
-    "Matthias Hägele <matthias.haegele@mhp.com>",
-    "Olivia Pala <olivia.pala@udg.de>",
-    "Anna Krohmer <anna.krohmer@udg.de>",
-    "Melanie Kolar <melanie.kolar@udg.de>",
-    "Bernd Hacker <bernd.hacker@mhp.com>",
-    "Anton Schmidt <anton.schmidt@mhp.com>"
-  ],
-  "license": "SEE LICENSE IN https://designsystem.porsche.com",
-  "description": "Porsche Design System Assets",
-  "keywords": [
-    "porsche",
-    "assets"
-  ],
-  "homepage": "https://designsystem.porsche.com",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/porscheui/porsche-design-system.git"
-  },
-  "bugs": {
-    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
-  },
   "scripts": {
     "start": "yarn build && node ./bin/serve-cdn.js",
     "build": "yarn clean:build && yarn build:bin && yarn build:manifest && yarn build:copyAssets && yarn build:preparePackage",
@@ -53,17 +37,14 @@
     "@porsche-design-system/utilities-v2": "0.0.0"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^13.2.1",
+    "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-typescript": "^8.3.2",
     "@types/http-server": "^0.12.1",
     "http-server": "^14.1.0",
-    "rollup": "^2.71.1",
+    "rollup": "^2.73.0",
     "ts-node": "^10.7.0",
     "typescript": "~4.6.4"
   },
-  "files": [
-    "dist/"
-  ],
   "bin": {
     "serve-cdn": "./bin/serve-cdn.js"
   }

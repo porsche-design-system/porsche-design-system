@@ -4,16 +4,6 @@ import * as path from 'path';
 const rootDirectory = path.resolve(__dirname, '..');
 const targetDirectory = path.resolve(rootDirectory, 'dist');
 
-// copy all necessary files
-const files = ['README.md', 'CHANGELOG.md', 'LICENSE'];
-files.forEach((file) =>
-  fs.copyFile(path.resolve(rootDirectory, file), path.resolve(targetDirectory, path.basename(file)), (err) => {
-    if (err) {
-      throw err;
-    }
-  })
-);
-
 // read and remove props from package.json
 const propsToRemove = ['scripts', 'dependencies', 'devDependencies', 'files', 'bin'];
 const pkgJson = require('../package.json');
