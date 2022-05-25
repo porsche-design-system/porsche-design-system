@@ -767,7 +767,6 @@ export namespace Components {
           * Disables the stepper-horizontal-item. No events will be triggered while disabled state is active.
          */
         "disabled"?: boolean;
-        "refreshStepCounter": () => Promise<void>;
         /**
           * The validation state.
          */
