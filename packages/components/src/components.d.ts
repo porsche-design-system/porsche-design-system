@@ -695,7 +695,7 @@ export namespace Components {
          */
         "backgroundColor"?: SegmentedControlBackgroundColor;
         /**
-          * Adapts the segmented-conotrol color depending on the theme.
+          * Adapts the segmented-control color depending on the theme.
          */
         "theme"?: Theme;
         "wrap"?: boolean;
@@ -713,6 +713,7 @@ export namespace Components {
           * A URL path to a custom icon.
          */
         "iconSource"?: string;
+        "selected"?: boolean;
     }
     interface PSelectWrapper {
         /**
@@ -2093,7 +2094,7 @@ declare namespace LocalJSX {
          */
         "backgroundColor"?: SegmentedControlBackgroundColor;
         /**
-          * Adapts the segmented-conotrol color depending on the theme.
+          * Adapts the segmented-control color depending on the theme.
          */
         "theme"?: Theme;
         "wrap"?: boolean;
@@ -2111,6 +2112,7 @@ declare namespace LocalJSX {
           * A URL path to a custom icon.
          */
         "iconSource"?: string;
+        "selected"?: boolean;
     }
     interface PSelectWrapper {
         /**

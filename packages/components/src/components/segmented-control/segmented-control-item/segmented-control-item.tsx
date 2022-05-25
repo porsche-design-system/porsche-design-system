@@ -1,5 +1,5 @@
 import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
-import { attachComponentCss, getPrefixedTagNames, throwIfParentIsNotOfKind } from '../../../utils';
+import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
 import type { IconName } from '../../../types';
 import { getComponentCss } from './segmented-control-item-styles';
 
@@ -9,6 +9,9 @@ import { getComponentCss } from './segmented-control-item-styles';
 })
 export class SegmentedControl {
   @Element() public host!: HTMLElement;
+
+  // TODO: active? checked? selected?
+  @Prop() public selected?: boolean = false;
 
   /** Disables the button. No events will be triggered while disabled state is active. */
   @Prop() public disabled?: boolean = false;
@@ -26,12 +29,20 @@ export class SegmentedControl {
     }
   }
 
-  public connectedCallback(): void {
-    throwIfParentIsNotOfKind(this.host, 'pSegmentedControl');
-  }
+  // public connectedCallback(): void {
+  // NOTE: conflicts with cloneNode
+  //   throwIfParentIsNotOfKind(this.host, 'pSegmentedControl');
+  // }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.disabled);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.selected,
+      this.disabled,
+      (this.host as any).backgroundColor,
+      (this.host as any).theme || 'light'
+    );
   }
 
   public render(): JSX.Element {

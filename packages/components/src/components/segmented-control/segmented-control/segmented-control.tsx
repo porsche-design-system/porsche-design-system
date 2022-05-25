@@ -16,7 +16,7 @@ export class SegmentedControl {
   /** Background color variations */
   @Prop() public backgroundColor?: SegmentedControlBackgroundColor = 'background-default';
 
-  /** Adapts the segmented-conotrol color depending on the theme. */
+  /** Adapts the segmented-control color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
   public connectedCallback(): void {
@@ -26,6 +26,9 @@ export class SegmentedControl {
   public async componentWillRender(): Promise<void> {
     const widths = await Promise.all(
       Array.from(this.host.children).map(async (item) => {
+        (item as any).theme = this.theme; // forward props
+        (item as any).backgroundColor = this.backgroundColor; // forward props
+
         const clone = item.cloneNode(true) as HTMLElement;
         clone.style.position = 'absolute';
 
@@ -45,7 +48,7 @@ export class SegmentedControl {
       this.host.setAttribute('style', style.replace(/(minmax\()[\d.px]+/, `$1${maxWidth}px`));
     }
 
-    attachComponentCss(this.host, getComponentCss, this.backgroundColor, this.wrap, maxWidth, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.wrap, maxWidth);
   }
 
   public disconnectedCallback(): void {
