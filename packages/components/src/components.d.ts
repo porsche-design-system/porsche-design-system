@@ -27,6 +27,7 @@ import { ModalAriaAttributes } from "./components/content/modal/modal-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/navigation/pagination/pagination-utils";
 import { PopoverDirection } from "./components/feedback/popover/popover-utils";
 import { GradientColorTheme, PrevNextButtonJssStyle, ScrollToPosition } from "./components/common/scroller/scroller-utils";
+import { SegmentedControlBackgroundColor } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
@@ -689,6 +690,14 @@ export namespace Components {
         "theme"?: ThemeExtendedElectric;
     }
     interface PSegmentedControl {
+        /**
+          * Background color variations
+         */
+        "backgroundColor"?: SegmentedControlBackgroundColor;
+        /**
+          * Adapts the segmented-conotrol color depending on the theme.
+         */
+        "theme"?: Theme;
         "wrap"?: boolean;
     }
     interface PSegmentedControlItem {
@@ -2079,6 +2088,14 @@ declare namespace LocalJSX {
         "theme"?: ThemeExtendedElectric;
     }
     interface PSegmentedControl {
+        /**
+          * Background color variations
+         */
+        "backgroundColor"?: SegmentedControlBackgroundColor;
+        /**
+          * Adapts the segmented-conotrol color depending on the theme.
+         */
+        "theme"?: Theme;
         "wrap"?: boolean;
     }
     interface PSegmentedControlItem {

@@ -19,28 +19,96 @@
     />
 
     <style>
+      body {
+        margin: 0;
+      }
+
       p-segmented-control {
-        margin-bottom: 2rem;
+        padding: 8px;
+      }
+
+      .surface {
+        background: #f2f2f2;
+      }
+
+      [theme='dark'] {
+        background: #0e1418;
+      }
+
+      [theme='dark'].surface {
+        background: #262b2e;
       }
     </style>
   </head>
   <body>
-    <p-segmented-control>
-      <p-segmented-control-item>Size XS</p-segmented-control-item>
-      <p-segmented-control-item>Size S</p-segmented-control-item>
-      <p-segmented-control-item>Size M is long</p-segmented-control-item>
-      <p-segmented-control-item>Size L</p-segmented-control-item>
-      <p-segmented-control-item disabled>Size XL</p-segmented-control-item>
-    </p-segmented-control>
+    <div>
+      <p-segmented-control>
+        <p-segmented-control-item>Size XS</p-segmented-control-item>
+        <p-segmented-control-item>Size S</p-segmented-control-item>
+        <p-segmented-control-item>Size M is long</p-segmented-control-item>
+        <p-segmented-control-item>Size L</p-segmented-control-item>
+        <p-segmented-control-item disabled>Size XL</p-segmented-control-item>
+      </p-segmented-control>
+
+      <p-segmented-control class="surface" background-color="background-surface">
+        <p-segmented-control-item>Size XS</p-segmented-control-item>
+        <p-segmented-control-item>Size S</p-segmented-control-item>
+        <p-segmented-control-item>Size M is long</p-segmented-control-item>
+        <p-segmented-control-item>Size L</p-segmented-control-item>
+        <p-segmented-control-item disabled>Size XL</p-segmented-control-item>
+      </p-segmented-control>
+
+      <p-segmented-control class="dark" theme="dark">
+        <p-segmented-control-item>Size XS</p-segmented-control-item>
+        <p-segmented-control-item>Size S</p-segmented-control-item>
+        <p-segmented-control-item>Size M is long</p-segmented-control-item>
+        <p-segmented-control-item>Size L</p-segmented-control-item>
+        <p-segmented-control-item disabled>Size XL</p-segmented-control-item>
+      </p-segmented-control>
+
+      <p-segmented-control class="surface" background-color="background-surface" theme="dark">
+        <p-segmented-control-item>Size XS</p-segmented-control-item>
+        <p-segmented-control-item>Size S</p-segmented-control-item>
+        <p-segmented-control-item>Size M is long</p-segmented-control-item>
+        <p-segmented-control-item>Size L</p-segmented-control-item>
+        <p-segmented-control-item disabled>Size XL</p-segmented-control-item>
+      </p-segmented-control>
+    </div>
 
     <div>min-width is calculated</div>
-    <p-segmented-control wrap>
-      <p-segmented-control-item>Size XS</p-segmented-control-item>
-      <p-segmented-control-item>Size S</p-segmented-control-item>
-      <p-segmented-control-item>Size M is long</p-segmented-control-item>
-      <p-segmented-control-item>Size L</p-segmented-control-item>
-      <p-segmented-control-item disabled>Size XL</p-segmented-control-item>
-    </p-segmented-control>
+    <div>
+      <p-segmented-control wrap>
+        <p-segmented-control-item>Size XS</p-segmented-control-item>
+        <p-segmented-control-item>Size S</p-segmented-control-item>
+        <p-segmented-control-item>Size M is long</p-segmented-control-item>
+        <p-segmented-control-item>Size L</p-segmented-control-item>
+        <p-segmented-control-item disabled>Size XL</p-segmented-control-item>
+      </p-segmented-control>
+
+      <p-segmented-control class="surface" wrap background-color="background-surface">
+        <p-segmented-control-item>Size XS</p-segmented-control-item>
+        <p-segmented-control-item>Size S</p-segmented-control-item>
+        <p-segmented-control-item>Size M is long</p-segmented-control-item>
+        <p-segmented-control-item>Size L</p-segmented-control-item>
+        <p-segmented-control-item disabled>Size XL</p-segmented-control-item>
+      </p-segmented-control>
+
+      <p-segmented-control wrap theme="dark">
+        <p-segmented-control-item>Size XS</p-segmented-control-item>
+        <p-segmented-control-item>Size S</p-segmented-control-item>
+        <p-segmented-control-item>Size M is long</p-segmented-control-item>
+        <p-segmented-control-item>Size L</p-segmented-control-item>
+        <p-segmented-control-item disabled>Size XL</p-segmented-control-item>
+      </p-segmented-control>
+
+      <p-segmented-control class="surface" wrap background-color="background-surface" theme="dark">
+        <p-segmented-control-item>Size XS</p-segmented-control-item>
+        <p-segmented-control-item>Size S</p-segmented-control-item>
+        <p-segmented-control-item>Size M is long</p-segmented-control-item>
+        <p-segmented-control-item>Size L</p-segmented-control-item>
+        <p-segmented-control-item disabled>Size XL</p-segmented-control-item>
+      </p-segmented-control>
+    </div>
 
     <div>min-width is calculated</div>
     <p-segmented-control wrap style="grid-template-columns: repeat(auto-fit, minmax(100px, 1fr))">
