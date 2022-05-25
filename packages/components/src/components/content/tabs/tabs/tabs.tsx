@@ -1,17 +1,20 @@
-import { Component, Element, Event, EventEmitter, forceUpdate, h, Host, Prop, State, Watch } from '@stencil/core';
+import type { EventEmitter } from '@stencil/core';
+import { Component, Element, Event, forceUpdate, Host, Prop, State, Watch, h } from '@stencil/core';
 import {
   attachComponentCss,
   getPrefixedTagNames,
+  observeChildren,
   observeProperties,
   removeAttribute,
   setAttribute,
+  unobserveChildren,
 } from '../../../../utils';
 import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../../types';
 import type {
   TabChangeEvent,
-  TabGradientColorTheme,
-  TabWeight,
   TabSize,
+  TabWeight,
+  TabGradientColorTheme,
 } from '../../../navigation/tabs-bar/tabs-bar-utils';
 import { getComponentCss } from './tabs-styles';
 
@@ -42,8 +45,6 @@ export class Tabs {
 
   @State() public tabsItemElements: HTMLPTabsItemElement[] = [];
 
-  private hostObserver: MutationObserver;
-
   @Watch('activeTabIndex')
   public activeTabHandler(newValue: number): void {
     this.setAccessibilityAttributes();
@@ -53,7 +54,10 @@ export class Tabs {
   public connectedCallback(): void {
     attachComponentCss(this.host, getComponentCss);
     this.defineTabsItemElements();
-    this.initMutationObserver();
+    observeChildren(this.host, () => {
+      this.defineTabsItemElements();
+      this.observeProperties(); // since attribute won't be there when used with angular or react wrapper
+    });
     this.observeProperties();
   }
 
@@ -66,7 +70,7 @@ export class Tabs {
   }
 
   public disconnectedCallback(): void {
-    this.hostObserver.disconnect();
+    unobserveChildren(this.host);
   }
 
   public render(): JSX.Element {
@@ -114,17 +118,6 @@ export class Tabs {
         removeAttribute(tab, 'tabindex');
       }
     }
-  };
-
-  private initMutationObserver = (): void => {
-    // host observer tracks children being added or removed
-    this.hostObserver = new MutationObserver(() => {
-      this.defineTabsItemElements();
-      this.observeProperties(); // since attribute won't be there when used with angular or react wrapper
-    });
-    this.hostObserver.observe(this.host, {
-      childList: true,
-    });
   };
 
   private observeProperties = (): void => {

@@ -350,11 +350,14 @@ describe('tabs', () => {
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidLoad['p-tabs'], 'componentDidLoad: p-tabs').toBe(1);
-      expect(status.componentDidLoad['p-tabs-bar'], 'componentDidLoad: p-tabs-bar').toBe(1); // Includes 7 didLoad calls
+      expect(status.componentDidLoad['p-tabs-bar'], 'componentDidLoad: p-tabs-bar').toBe(1); // Includes 8 didLoad calls
       expect(status.componentDidLoad['p-tabs-item'], 'componentDidLoad: p-tabs-item').toBe(3);
 
-      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(11);
-      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+      expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
+      expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(1);
+
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(12);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
     });
 
     it('should work without unnecessary round trips on prop change', async () => {
@@ -367,10 +370,11 @@ describe('tabs', () => {
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidUpdate['p-tabs'], 'componentDidUpdate: p-tabs').toBe(1);
-      expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(1);
+      expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(3);
+      expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(2);
 
-      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(11);
-      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(12);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(6);
     });
   });
 

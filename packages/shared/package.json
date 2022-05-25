@@ -14,15 +14,8 @@
     "Bernd Hacker <bernd.hacker@mhp.com>",
     "Anton Schmidt <anton.schmidt@mhp.com>"
   ],
-  "license": "SEE LICENSE IN https://designsystem.porsche.com",
+  "license": "SEE LICENSE IN https://designsystem.porsche.com/latest/license",
   "homepage": "https://designsystem.porsche.com",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/porscheui/porsche-design-system.git"
-  },
-  "bugs": {
-    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
-  },
   "scripts": {
     "build": "yarn clean:build && yarn build:generateTagNames && yarn build:generateComponentMeta && yarn build:generateCodeSamples && yarn build:bundle",
     "build:generateTagNames": "ts-node scripts/generateTagNames.ts",
@@ -39,7 +32,7 @@
     "@alex_neo/jest-expect-message": "^1.0.5",
     "@porsche-design-system/visual-regression-tester": "^4.3.0",
     "@signed/jest-alphabetical-sequencer": "^0.1.1",
-    "@types/jest": "^27.4.1",
+    "@types/jest": "^27.5.1",
     "@types/jest-environment-puppeteer": "^5.0.2",
     "@types/jest-expect-message": "^1.0.3",
     "jest": "^27.5.1",
@@ -53,11 +46,11 @@
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3.2",
     "@types/madge": "^5.0.0",
-    "@types/node": "^17.0.31",
+    "@types/node": "^17.0.34",
     "change-case": "^4.1.2",
     "globby": "^11.0.4",
     "madge": "^5.0.1",
-    "rollup": "^2.71.1",
+    "rollup": "^2.73.0",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
     "ts-node": "^10.7.0",

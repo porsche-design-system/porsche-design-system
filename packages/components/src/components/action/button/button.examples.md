@@ -1,10 +1,11 @@
 # Button
 
-The `p-button` component is essential for performing form or **interaction** events. 
-For an optimal user guidance and dedicated pursuit of business or sales goals, different types of Buttons (**Primary**, **Secondary**, **Tertiary**) are available for usage. 
-A Button can be used with or without a label but it's recommended to keep the **label visible** for better **usability** whenever possible. 
-When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers. 
-Whenever you want to provide navigational elements, stick to the [Link](components/link) component instead.
+The `p-button` component is essential for performing form or **interaction** events. For an optimal user guidance and
+dedicated pursuit of business or sales goals, different types of Buttons (**Primary**, **Secondary**, **Tertiary**) are
+available for usage. A Button can be used with or without a label but it's recommended to keep the **label visible** for
+better **usability** whenever possible. When used without a label, it is mandatory for **accessibility** to provide a
+descriptive label text for screen readers. Whenever you want to provide navigational elements, stick to the
+[Link](components/link) component instead.
 
 <TableOfContents></TableOfContents>
 
@@ -28,26 +29,36 @@ Choose between predefined styling variants.
 
 <Playground :markup="responsive" :config="config"></Playground>
 
-## ARIA attributes and states 
+## ARIA attributes and states
 
-Through the `aria` property you have the possibility to provide additional **ARIA** attributes and states to the component. 
-<Playground :markup="accessibility" :config="config"></Playground>
+Through the `aria` property you have the possibility to provide additional **ARIA** attributes and states to the
+component. <Playground :markup="accessibility" :config="config"></Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
-* Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If short labels are used like **"OK"** make sure to provide additional textual contents through **ARIA** with the `aria` property to expose a more descriptive experience to screen reader users.
-* If implementing the Button with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a **descriptive text** to support **screen reader** users is **mandatory**.
-* In general, you should **prevent** using the `disabled="true"` state. Disabled elements are not reachable (focusable) anymore and can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out why these elements are disabled.
+
+- Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If short
+  labels are used like **"OK"** make sure to provide additional textual contents through **ARIA** with the `aria`
+  property to expose a more descriptive experience to screen reader users.
+- If implementing the Button with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a
+  **descriptive text** to support **screen reader** users is **mandatory**.
+- In general, you should **prevent** using the `disabled="true"` state. Disabled elements are not reachable (focusable)
+  anymore and can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out
+  why these elements are disabled.
 
 ---
 
 ## Button with specific icon
-If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
+
+If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all
+icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to
+link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
 
 <Playground :markup="icon" :config="config"></Playground>
 
 ---
 
 ## Bind events to the Button
+
 You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the button.
 
 <Playground :markup="events" :config="config"></Playground>

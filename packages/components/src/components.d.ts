@@ -26,6 +26,7 @@ import { MarqueAriaAttributes, MarqueSize } from "./components/basic/marque/marq
 import { ModalAriaAttributes } from "./components/content/modal/modal-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/navigation/pagination/pagination-utils";
 import { PopoverDirection } from "./components/feedback/popover/popover-utils";
+import { GradientColorTheme, PrevNextButtonJssStyle, ScrollToPosition } from "./components/common/scroller/scroller-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
@@ -672,6 +673,21 @@ export namespace Components {
          */
         "state"?: FormState;
     }
+    interface PScroller {
+        /**
+          * Adapts the background gradient color of prev and next button.
+         */
+        "gradientColorScheme"?: GradientColorTheme;
+        "prevNextButtonJssStyle"?: PrevNextButtonJssStyle;
+        /**
+          * Scrolls the scroll area to the left either smooth or immediately
+         */
+        "scrollToPosition"?: ScrollToPosition;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: ThemeExtendedElectric;
+    }
     interface PSegmentedControl {
         "stretch"?: boolean;
         "wrap"?: boolean;
@@ -1180,6 +1196,12 @@ declare global {
         prototype: HTMLPRadioButtonWrapperElement;
         new (): HTMLPRadioButtonWrapperElement;
     };
+    interface HTMLPScrollerElement extends Components.PScroller, HTMLStencilElement {
+    }
+    var HTMLPScrollerElement: {
+        prototype: HTMLPScrollerElement;
+        new (): HTMLPScrollerElement;
+    };
     interface HTMLPSegmentedControlElement extends Components.PSegmentedControl, HTMLStencilElement {
     }
     var HTMLPSegmentedControlElement: {
@@ -1355,6 +1377,7 @@ declare global {
         "p-pagination": HTMLPPaginationElement;
         "p-popover": HTMLPPopoverElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
+        "p-scroller": HTMLPScrollerElement;
         "p-segmented-control": HTMLPSegmentedControlElement;
         "p-segmented-control-item": HTMLPSegmentedControlItemElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
@@ -2041,6 +2064,21 @@ declare namespace LocalJSX {
          */
         "state"?: FormState;
     }
+    interface PScroller {
+        /**
+          * Adapts the background gradient color of prev and next button.
+         */
+        "gradientColorScheme"?: GradientColorTheme;
+        "prevNextButtonJssStyle"?: PrevNextButtonJssStyle;
+        /**
+          * Scrolls the scroll area to the left either smooth or immediately
+         */
+        "scrollToPosition"?: ScrollToPosition;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: ThemeExtendedElectric;
+    }
     interface PSegmentedControl {
         "stretch"?: boolean;
         "wrap"?: boolean;
@@ -2447,6 +2485,7 @@ declare namespace LocalJSX {
         "p-pagination": PPagination;
         "p-popover": PPopover;
         "p-radio-button-wrapper": PRadioButtonWrapper;
+        "p-scroller": PScroller;
         "p-segmented-control": PSegmentedControl;
         "p-segmented-control-item": PSegmentedControlItem;
         "p-select-wrapper": PSelectWrapper;
@@ -2502,6 +2541,7 @@ declare module "@stencil/core" {
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
             "p-popover": LocalJSX.PPopover & JSXBase.HTMLAttributes<HTMLPPopoverElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
+            "p-scroller": LocalJSX.PScroller & JSXBase.HTMLAttributes<HTMLPScrollerElement>;
             "p-segmented-control": LocalJSX.PSegmentedControl & JSXBase.HTMLAttributes<HTMLPSegmentedControlElement>;
             "p-segmented-control-item": LocalJSX.PSegmentedControlItem & JSXBase.HTMLAttributes<HTMLPSegmentedControlItemElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;

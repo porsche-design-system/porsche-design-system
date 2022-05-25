@@ -23,12 +23,12 @@ export const a11yAnalyze = async (page: Page) => {
       .withTags(['wcag2a', 'wcag2aa']) // defaults aren't good enough and inconsistent with `@axe-devtools/puppeteer`
       .analyze();
 
-    expect(result.violations.length, 'amount of violations').toBeLessThanOrEqual(1);
-
     const testId = pageUrl.replace(baseURL + '/', '').replace(/\//g, '-') || 'root';
     fs.writeFileSync(path.resolve(AXE_RESULTS_DIR, 'a11y-' + testId + '.json'), JSON.stringify(result, null, 2));
 
     analyzedUrls.push(pageUrl);
+
+    expect(result.violations.length, 'amount of violations').toBeLessThanOrEqual(1);
   }
 };
 

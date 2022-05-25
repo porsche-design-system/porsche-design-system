@@ -1,13 +1,16 @@
 import {
   addEnableTransitionClass,
+  determineEnableTransitionClass,
+  getFocusedTabIndex,
+  getPrevNextTabIndex,
   getScrollActivePosition,
-  getScrollPositionAfterPrevNextClick,
   getTransformationToActive,
   getTransformationToInactive,
   removeEnableTransitionClass,
   sanitizeActiveTabIndex,
-  determineEnableTransitionClass,
+  setBarStyle,
 } from './tabs-bar-utils';
+import * as tabBarUtils from './tabs-bar-utils';
 
 const enableTransitionClass = 'bar--enable-transition';
 
@@ -100,6 +103,106 @@ describe('determineEnableTransitionClass()', () => {
   });
 });
 
+describe('getPrevNextTabIndex()', () => {
+  it('should return correct index for prev direction', () => {
+    expect(getPrevNextTabIndex('prev', 5, 1)).toBe(0);
+    expect(getPrevNextTabIndex('prev', 6, 2)).toBe(1);
+  });
+
+  it('should return correct index for next direction', () => {
+    expect(getPrevNextTabIndex('next', 5, 1)).toBe(2);
+    expect(getPrevNextTabIndex('next', 6, 2)).toBe(3);
+  });
+});
+
+describe('getFocusedTabIndex()', () => {
+  const getButtons = () => Array.from(document.querySelectorAll('button')) as HTMLElement[];
+
+  beforeEach(() => {
+    document.body.innerHTML = '';
+    Array.from(Array(5)).forEach((_, i) => {
+      const button = document.createElement('button');
+      button.innerHTML = `Button ${i}`;
+      document.body.appendChild(button);
+    });
+  });
+
+  it('should return correct tabIndex of element in array', () => {
+    const buttons = getButtons();
+    buttons[2].focus();
+    expect(getFocusedTabIndex(buttons)).toBe(2);
+  });
+
+  it('should return 0 when element does not match', () => {
+    const buttons = getButtons();
+    document.body.focus();
+    expect(getFocusedTabIndex(buttons)).toBe(0);
+  });
+});
+
+describe('setBarStyle()', () => {
+  let barElement;
+
+  beforeEach(() => {
+    barElement = document.createElement('span');
+  });
+
+  it(`should remove ${enableTransitionClass} class and set transformation on barElement handling active to removed case`, () => {
+    const spy = jest.spyOn(tabBarUtils, 'removeEnableTransitionClass');
+
+    barElement.classList.add(enableTransitionClass);
+    setBarStyle(
+      [
+        { offsetWidth: 15, offsetLeft: 0 },
+        { offsetWidth: 15, offsetLeft: 30 },
+      ] as HTMLElement[],
+      undefined,
+      barElement,
+      undefined
+    );
+
+    expect(spy).toHaveBeenCalledWith(barElement);
+    expect(barElement.classList.contains(enableTransitionClass)).toBe(false);
+    expect(barElement.style.cssText).toBe('transform: translate3d(0rem,0,0); width: 0px;');
+  });
+
+  it(`should add ${enableTransitionClass} class and set transformation on barElement handling initial inactive + active to inactive cases`, () => {
+    const spy = jest.spyOn(tabBarUtils, 'addEnableTransitionClass');
+
+    setBarStyle(
+      [
+        { offsetWidth: 15, offsetLeft: 0 },
+        { offsetWidth: 15, offsetLeft: 30 },
+      ] as HTMLElement[],
+      undefined,
+      barElement,
+      1
+    );
+
+    expect(spy).toHaveBeenCalledWith(barElement);
+    expect(barElement.classList.contains(enableTransitionClass)).toBe(true);
+    expect(barElement.style.cssText).toBe('transform: translate3d(2.34375rem,0,0); width: 0px;');
+  });
+
+  it(`should call determineEnableTransitionClass and set transformation on barElement handling initial active + active to active + inactive to active cases`, () => {
+    const spy = jest.spyOn(tabBarUtils, 'determineEnableTransitionClass');
+
+    setBarStyle(
+      [
+        { offsetWidth: 15, offsetLeft: 0 },
+        { offsetWidth: 15, offsetLeft: 30 },
+      ] as HTMLElement[],
+      0,
+      barElement,
+      1
+    );
+
+    expect(spy).toHaveBeenCalledWith(0, 1, barElement);
+    expect(barElement.classList.contains(enableTransitionClass)).toBe(true);
+    expect(barElement.style.cssText).toBe('transform: translate3d(0rem,0,0); width: 0.9375rem;');
+  });
+});
+
 describe('getScrollActivePosition()', () => {
   it('should return scrollActivePosition = 16 if scrolling to last tab', () => {
     expect(
@@ -141,47 +244,5 @@ describe('getScrollActivePosition()', () => {
         20
       )
     ).toBe(41);
-  });
-});
-
-describe('getScrollPositionAfterPrevNextClick()', () => {
-  it('should return scrollToMax = 58 if scroll step would exceed maximum', () => {
-    expect(
-      getScrollPositionAfterPrevNextClick(
-        [{ offsetLeft: 50, offsetWidth: 50 }] as HTMLElement[],
-        { offsetWidth: 50, scrollLeft: 50 } as HTMLElement,
-        'next'
-      )
-    ).toBe(58);
-  });
-
-  it('should return scrollPositionAfterClick = 60 if direction is "next" and scroll does not exceed maximum', () => {
-    expect(
-      getScrollPositionAfterPrevNextClick(
-        [{ offsetLeft: 80, offsetWidth: 50 }] as HTMLElement[],
-        { offsetWidth: 50, scrollLeft: 50 } as HTMLElement,
-        'next'
-      )
-    ).toBe(60);
-  });
-
-  it('should return scrollToMin = 0 if scroll step would fall below minimum', () => {
-    expect(
-      getScrollPositionAfterPrevNextClick(
-        [{ offsetLeft: 0, offsetWidth: 0 }] as HTMLElement[],
-        { offsetWidth: 50, scrollLeft: 10 } as HTMLElement,
-        'prev'
-      )
-    ).toBe(0);
-  });
-
-  it('should return scrollPositionAfterClick = 18 if direction is "prev" and scroll does not fall below minimum', () => {
-    expect(
-      getScrollPositionAfterPrevNextClick(
-        [{ offsetLeft: 0, offsetWidth: 0 }] as HTMLElement[],
-        { offsetWidth: 10, scrollLeft: 20 } as HTMLElement,
-        'prev'
-      )
-    ).toBe(18);
   });
 });

@@ -19,20 +19,13 @@
     "Bernd Hacker <bernd.hacker@mhp.com>",
     "Anton Schmidt <anton.schmidt@mhp.com>"
   ],
-  "license": "SEE LICENSE IN https://designsystem.porsche.com",
+  "license": "SEE LICENSE IN https://designsystem.porsche.com/latest/license",
   "description": "Porsche Design System Partials",
   "keywords": [
     "porsche",
     "partials"
   ],
   "homepage": "https://designsystem.porsche.com",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/porscheui/porsche-design-system.git"
-  },
-  "bugs": {
-    "url": "https://github.com/porscheui/porsche-ui-contribution/issues"
-  },
   "scripts": {
     "build": "yarn clean:build && yarn build:partials && yarn build:package && yarn build:copyToComponentsJs",
     "build:package": "rollup -c rollup.config.js",
@@ -46,17 +39,17 @@
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/assets": "4.0.0",
+    "@porsche-design-system/assets": "5.0.1",
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/styles": "0.0.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^22.0.0",
-    "@rollup/plugin-node-resolve": "^13.2.1",
+    "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-typescript": "^8.3.2",
     "@types/html-minifier": "^4.0.2",
     "html-minifier": "^4.0.0",
-    "rollup": "^2.71.1",
+    "rollup": "^2.73.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
     "tslib": "^2.4.0",
     "typescript": "~4.6.4"
