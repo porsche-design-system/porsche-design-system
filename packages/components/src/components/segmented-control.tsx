@@ -1,5 +1,5 @@
 import { Component, Element, h, JSX, Prop, forceUpdate } from '@stencil/core';
-import { attachComponentCss, observeChildren } from '../utils';
+import { attachComponentCss, observeChildren, unobserveChildren } from '../utils';
 import { getComponentCss } from './segmented-control-styles';
 
 @Component({
@@ -10,6 +10,10 @@ export class SegmentedControl {
   @Element() public host!: HTMLElement;
 
   @Prop() public wrap?: boolean = false;
+
+  public connectedCallback(): void {
+    observeChildren(this.host, () => forceUpdate(this.host));
+  }
 
   public async componentWillRender(): Promise<void> {
     const widths = await Promise.all(
@@ -36,8 +40,8 @@ export class SegmentedControl {
     attachComponentCss(this.host, getComponentCss, this.wrap, maxWidth);
   }
 
-  public componentDidLoad(): void {
-    observeChildren(this.host, () => forceUpdate(this.host));
+  public disconnectedCallback(): void {
+    unobserveChildren(this.host);
   }
 
   public render(): JSX.Element {
