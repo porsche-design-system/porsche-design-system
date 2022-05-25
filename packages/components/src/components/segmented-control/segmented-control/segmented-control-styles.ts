@@ -1,17 +1,8 @@
 import { getCss } from '../../../utils';
-import type { SegmentedControlBackgroundColor } from './segmented-control-utils';
-import type { Theme } from '../../../types';
-import { addImportantToEachRule, getThemedColors } from '../../../styles';
+// import { addImportantToEachRule } from '../../../styles';
 
-export const getComponentCss = (
-  bgColor: SegmentedControlBackgroundColor,
-  wrap: boolean,
-  maxWidth: number,
-  theme: Theme
-): string => {
-  console.log(bgColor, theme);
+export const getComponentCss = (wrap: boolean, maxWidth: number): string => {
   const minWidth = maxWidth > 200 ? 200 : maxWidth;
-  const { backgroundColor, backgroundSurfaceColor, baseColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -28,10 +19,6 @@ export const getComponentCss = (
               gridAutoFlow: 'column',
             }),
       },
-      '::slotted(*)': addImportantToEachRule({
-        color: baseColor,
-        background: bgColor === 'background-surface' ? backgroundColor : backgroundSurfaceColor,
-      }),
     },
   });
 };

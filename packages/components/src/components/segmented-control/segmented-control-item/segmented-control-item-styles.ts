@@ -6,10 +6,17 @@ import {
   getThemedColors,
   pxToRemWithUnit,
 } from '../../../styles';
-import { textSmall } from '@porsche-design-system/utilities-v2';
+import { fontWeight, textSmall } from '@porsche-design-system/utilities-v2';
+import type { Theme } from '../../../types';
+import type { SegmentedControlBackgroundColor } from '../segmented-control/segmented-control-utils';
 
-export const getComponentCss = (isDisabled: boolean): string => {
-  const { disabledColor } = getThemedColors('light');
+export const getComponentCss = (
+  isSelected: boolean,
+  isDisabled: boolean,
+  bgColor: SegmentedControlBackgroundColor,
+  theme: Theme
+): string => {
+  const { disabledColor, baseColor, backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -23,15 +30,27 @@ export const getComponentCss = (isDisabled: boolean): string => {
         width: '100%',
         padding: `0 ${pxToRemWithUnit(40)}`,
         margin: 0,
-        border: 0,
-        background: 'inherit',
+        background: bgColor === 'background-surface' ? backgroundColor : backgroundSurfaceColor,
         ...textSmall,
-        color: isDisabled ? disabledColor : 'inherit',
-        cursor: isDisabled ? 'not-allowed' : 'pointer',
-        ...(!isDisabled && {
-          ...getHoverJssStyle(),
-          ...getFocusJssStyle(),
-        }),
+        ...(isSelected
+          ? {
+              fontWeight: fontWeight.semiBold,
+              border: `1px solid ${baseColor}`,
+            }
+          : {
+              border: 0,
+            }),
+        ...(isDisabled
+          ? {
+              color: disabledColor,
+              cursor: 'not-allowed',
+            }
+          : {
+              color: baseColor,
+              cursor: 'pointer',
+              ...getHoverJssStyle(),
+              ...getFocusJssStyle(),
+            }),
       },
     },
     icon: {},
