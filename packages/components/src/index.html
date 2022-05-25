@@ -10,6 +10,14 @@
     <script nomodule src="build/porsche-design-system.js"></script>
     <script type="module" src="build/porsche-design-system.esm.js"></script>
 
+    <link
+      rel="preload"
+      href="http://localhost:3001/fonts/porsche-next-w-la-regular.min.bdaf41e62559316d30f99df258039d4e.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
     <style>
       p-segmented-control {
         margin-bottom: 2rem;
@@ -20,36 +28,36 @@
     <p-segmented-control>
       <p-segmented-control-item>Size XS</p-segmented-control-item>
       <p-segmented-control-item>Size S</p-segmented-control-item>
-      <p-segmented-control-item>Size M is really long</p-segmented-control-item>
+      <p-segmented-control-item>Size M is long</p-segmented-control-item>
       <p-segmented-control-item>Size L</p-segmented-control-item>
-      <p-segmented-control-item>Size XL</p-segmented-control-item>
+      <p-segmented-control-item disabled>Size XL</p-segmented-control-item>
     </p-segmented-control>
 
     <div>min-width is calculated</div>
     <p-segmented-control wrap>
       <p-segmented-control-item>Size XS</p-segmented-control-item>
       <p-segmented-control-item>Size S</p-segmented-control-item>
-      <p-segmented-control-item>Size M is really long</p-segmented-control-item>
+      <p-segmented-control-item>Size M is long</p-segmented-control-item>
       <p-segmented-control-item>Size L</p-segmented-control-item>
-      <p-segmented-control-item>Size XL</p-segmented-control-item>
+      <p-segmented-control-item disabled>Size XL</p-segmented-control-item>
     </p-segmented-control>
 
     <div>min-width is calculated</div>
     <p-segmented-control wrap style="grid-template-columns: repeat(auto-fit, minmax(100px, 1fr))">
       <p-segmented-control-item>Size XS</p-segmented-control-item>
       <p-segmented-control-item>Size S</p-segmented-control-item>
-      <p-segmented-control-item>Size M is really long</p-segmented-control-item>
+      <p-segmented-control-item>Size M is long</p-segmented-control-item>
       <p-segmented-control-item>Size L</p-segmented-control-item>
-      <p-segmented-control-item>Size XL</p-segmented-control-item>
+      <p-segmented-control-item disabled>Size XL</p-segmented-control-item>
     </p-segmented-control>
 
     <div>Amount of columns required</div>
     <p-segmented-control wrap style="grid-template-columns: repeat(3, 1fr)">
       <p-segmented-control-item>Size XS</p-segmented-control-item>
       <p-segmented-control-item>Size S</p-segmented-control-item>
-      <p-segmented-control-item>Size M is really long</p-segmented-control-item>
+      <p-segmented-control-item>Size M is long</p-segmented-control-item>
       <p-segmented-control-item>Size L</p-segmented-control-item>
-      <p-segmented-control-item>Size XL</p-segmented-control-item>
+      <p-segmented-control-item disabled>Size XL</p-segmented-control-item>
     </p-segmented-control>
 
     <!-- START: keep this snippet to log component lifecycle events -->
