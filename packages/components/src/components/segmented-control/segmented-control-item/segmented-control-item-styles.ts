@@ -1,9 +1,15 @@
-import { getCss } from '../utils';
-import { addImportantToRule, getFocusJssStyle, getHoverJssStyle, getThemedColors, pxToRemWithUnit } from '../styles';
+import { getCss } from '../../../utils';
+import {
+  addImportantToRule,
+  getFocusJssStyle,
+  getHoverJssStyle,
+  getThemedColors,
+  pxToRemWithUnit,
+} from '../../../styles';
 import { textSmall } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (isDisabled: boolean): string => {
-  const { backgroundSurfaceColor, disabledColor, baseColor } = getThemedColors('light');
+  const { disabledColor } = getThemedColors('light');
 
   return getCss({
     '@global': {
@@ -18,9 +24,9 @@ export const getComponentCss = (isDisabled: boolean): string => {
         padding: `0 ${pxToRemWithUnit(40)}`,
         margin: 0,
         border: 0,
-        background: backgroundSurfaceColor,
+        background: 'inherit',
         ...textSmall,
-        color: isDisabled ? disabledColor : baseColor,
+        color: isDisabled ? disabledColor : 'inherit',
         cursor: isDisabled ? 'not-allowed' : 'pointer',
         ...(!isDisabled && {
           ...getHoverJssStyle(),

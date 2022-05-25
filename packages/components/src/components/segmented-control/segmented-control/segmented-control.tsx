@@ -1,6 +1,8 @@
 import { Component, Element, h, JSX, Prop, forceUpdate } from '@stencil/core';
-import { attachComponentCss, observeChildren, unobserveChildren } from '../utils';
+import { attachComponentCss, observeChildren, unobserveChildren } from '../../../utils';
 import { getComponentCss } from './segmented-control-styles';
+import type { Theme } from '../../../types';
+import type { SegmentedControlBackgroundColor } from './segmented-control-utils';
 
 @Component({
   tag: 'p-segmented-control',
@@ -10,6 +12,12 @@ export class SegmentedControl {
   @Element() public host!: HTMLElement;
 
   @Prop() public wrap?: boolean = false;
+
+  /** Background color variations */
+  @Prop() public backgroundColor?: SegmentedControlBackgroundColor = 'background-default';
+
+  /** Adapts the segmented-conotrol color depending on the theme. */
+  @Prop() public theme?: Theme = 'light';
 
   public connectedCallback(): void {
     observeChildren(this.host, () => forceUpdate(this.host));
@@ -37,7 +45,7 @@ export class SegmentedControl {
       this.host.setAttribute('style', style.replace(/(minmax\()[\d.px]+/, `$1${maxWidth}px`));
     }
 
-    attachComponentCss(this.host, getComponentCss, this.wrap, maxWidth);
+    attachComponentCss(this.host, getComponentCss, this.backgroundColor, this.wrap, maxWidth, this.theme);
   }
 
   public disconnectedCallback(): void {

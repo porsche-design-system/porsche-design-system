@@ -1,6 +1,6 @@
 import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
-import { attachComponentCss, getPrefixedTagNames } from '../utils';
-import type { IconName } from '../types';
+import { attachComponentCss, getPrefixedTagNames, throwIfParentIsNotOfKind } from '../../../utils';
+import type { IconName } from '../../../types';
 import { getComponentCss } from './segmented-control-item-styles';
 
 @Component({
@@ -24,6 +24,10 @@ export class SegmentedControl {
     if (this.disabled) {
       e.stopPropagation();
     }
+  }
+
+  public connectedCallback(): void {
+    throwIfParentIsNotOfKind(this.host, 'pSegmentedControl');
   }
 
   public componentWillRender(): void {
