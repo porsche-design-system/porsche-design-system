@@ -39,17 +39,12 @@ export class StepperHorizontal {
     // Initial validation
     this.validateComponent();
     this.defineStepperHorizontalItemElements();
-    observeChildren(
-      this.host as HTMLPStepperHorizontalItemElement,
-      () => {
-        // Throw when new steps are added
-        this.validateComponent();
-        throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
-        this.defineStepperHorizontalItemElements();
-        this.stepperHorizontalItems.forEach((element) => async () => element.refreshStepCounter());
-      },
-      ['state']
-    );
+    observeChildren(this.host as HTMLPStepperHorizontalItemElement, () => {
+      // Throw when new steps are added
+      this.validateComponent();
+      throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
+      this.defineStepperHorizontalItemElements();
+    });
   }
 
   public componentDidLoad(): void {
