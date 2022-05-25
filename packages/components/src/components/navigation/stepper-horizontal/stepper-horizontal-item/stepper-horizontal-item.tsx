@@ -1,8 +1,8 @@
-import { Component, Element, JSX, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, JSX, Listen, Prop, State, Watch, h } from '@stencil/core';
 import type { Theme } from '../../../../types';
 import type { StepperState } from './stepper-horizontal-item-utils';
 import { getIconName, isStateCompleteOrWarning, throwIfCurrentAndDisabled } from './stepper-horizontal-item-utils';
-import { attachComponentCss, getHTMLElements, getPrefixedTagNames, throwIfParentIsNotOfKind } from '../../../../utils';
+import { attachComponentCss, getPrefixedTagNames, throwIfParentIsNotOfKind } from '../../../../utils';
 import { getComponentCss } from './stepper-horizontal-item-styles';
 
 @Component({
@@ -32,25 +32,19 @@ export class StepperHorizontalItem {
 
   @Watch('state')
   public stateHandler(newValue: StepperState): void {
-    if (newValue === undefined) {
+    if (!newValue) {
       this.disabled = true;
     }
   }
 
-  @Method()
-  public refreshStepCounter(): void {
-    this.setStepCounter();
-  }
-
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'pStepperHorizontal');
-    if (this.state === undefined) {
+    if (!this.state) {
       this.disabled = true;
     }
   }
 
   public componentWillRender(): void {
-    this.setStepCounter();
     attachComponentCss(this.host, getComponentCss, this.state, this.disabled, this.theme);
     throwIfCurrentAndDisabled(this.host);
   }
@@ -70,22 +64,10 @@ export class StepperHorizontalItem {
             color="inherit"
             aria-hidden="true"
           />
-          // ) : (
-          //   <span class="step-count-svg-wrapper">
-          //     <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24" width="100%" height="100%">
-          //       <circle class="circle" cx="12" cy="12" r="9" />
-          //       <text x="12" y="16.5" text-anchor="middle"></text>
-          //     </svg>
-          //   </span>
         )}
         <slot />
         {this.state && <span class="sr-only">{this.state}</span>}
       </button>
     );
   }
-
-  private setStepCounter = (): void => {
-    const stepItems = getHTMLElements(this.host.parentElement, '*');
-    this.stepCounter = stepItems.indexOf(this.host as HTMLPStepperHorizontalItemElement) + 1;
-  };
 }
