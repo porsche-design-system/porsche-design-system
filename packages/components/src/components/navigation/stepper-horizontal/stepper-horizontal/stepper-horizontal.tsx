@@ -28,7 +28,7 @@ export class StepperHorizontal {
   /** Emitted when active step is changed. */
   @Event({ bubbles: false }) public stepChange: EventEmitter<StepChangeEvent>;
 
-  @State() public stepperHorizontalItems: HTMLPStepperHorizontalItemElement[] = [];
+  @State() private stepperHorizontalItems: HTMLPStepperHorizontalItemElement[] = [];
   @State() private scroll: ScrollToPosition;
 
   private scrollAreaElement: HTMLElement;
