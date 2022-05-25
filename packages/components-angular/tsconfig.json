@@ -12,7 +12,8 @@
     "target": "es5",
     "lib": ["es2018", "dom"],
     "paths": {
-      "@porsche-design-system/components-angular": ["dist/components-wrapper"]
+      "@porsche-design-system/components-angular": ["dist/components-wrapper"],
+      "@angular/*": ["node_modules/@angular/*"]
     }
   },
   "angularCompilerOptions": {
