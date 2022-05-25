@@ -689,7 +689,6 @@ export namespace Components {
         "theme"?: ThemeExtendedElectric;
     }
     interface PSegmentedControl {
-        "stretch"?: boolean;
         "wrap"?: boolean;
     }
     interface PSegmentedControlItem {
@@ -2080,7 +2079,6 @@ declare namespace LocalJSX {
         "theme"?: ThemeExtendedElectric;
     }
     interface PSegmentedControl {
-        "stretch"?: boolean;
         "wrap"?: boolean;
     }
     interface PSegmentedControlItem {
