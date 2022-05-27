@@ -1,3 +1,5 @@
+# Segmented Control
+
 <p-segmented-control>
   <p-segmented-control-item label="Some label">Size XS</p-segmented-control-item>
   <p-segmented-control-item icon="truck">Size S</p-segmented-control-item>
