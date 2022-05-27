@@ -65,7 +65,6 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
             margin: `${pxToRemWithUnit(3)} ${pxToRemWithUnit(7)} ${pxToRemWithUnit(3)} ${pxToRemWithUnit(3)}`,
             borderRadius: '50%',
             boxSizing: 'border-box',
-            left: pxToRemWithUnit(1),
             ...(isDisabled && {
               border: `1px solid ${disabledColor}`,
             }),
@@ -84,7 +83,7 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
             (result, _, i) => ({
               ...result,
               [`&(:nth-of-type(${i + 1})):after`]: {
-                background: `${getSvg(svgColor)} ${10 - i * 20}px 7px no-repeat`,
+                background: `${getSvg(svgColor)} ${9 - i * 20}px 7px no-repeat`,
               },
             }),
             {}
@@ -97,7 +96,7 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
         height: pxToRemWithUnit(24),
         color: isDisabled ? disabledColor : baseColor,
         transition: getTransition('color'),
-        paddingLeft: pxToRemWithUnit(28),
+        padding: `0 0 0 ${pxToRemWithUnit(28)}`,
         background: 0,
         border: 0,
         ...textSmall,
