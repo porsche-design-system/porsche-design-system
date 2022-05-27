@@ -33,6 +33,8 @@ import { LinkPure } from './navigation/link-pure/link-pure';
 import { LinkSocial } from './navigation/link-social/link-social';
 import { Pagination } from './navigation/pagination/pagination';
 import { TabsBar } from './navigation/tabs-bar/tabs-bar';
+import { SegmentedControl } from './segmented-control/segmented-control/segmented-control';
+import { SegmentedControlItem } from './segmented-control/segmented-control-item/segmented-control-item';
 import { Headline } from './basic/typography/headline/headline';
 import { Text } from './basic/typography/text/text';
 import { Table } from './content/table/table/table';
@@ -91,6 +93,8 @@ export const TAG_NAMES_CONSTRUCTOR_MAP: { [key in TagName]: new () => ClassType 
   'p-link-social': LinkSocial,
   'p-pagination': Pagination,
   'p-tabs-bar': TabsBar,
+  'p-segmented-control': SegmentedControl,
+  'p-segmented-control-item': SegmentedControlItem,
   'p-headline': Headline,
   'p-text': Text,
   'p-table': Table,
@@ -137,7 +141,7 @@ it.each<TagName>(tagNamesWithRequiredChild)(
   }
 );
 
-it.each<TagName>(tagNamesWithJss)('should call attachComponentCss() in correct lifecycle for %s', (tagName) => {
+it.each<TagName>(tagNamesWithJss)('should call attachComponentCss() in correct lifecycle for %s', async (tagName) => {
   const spy = jest.spyOn(jssUtils, 'attachComponentCss');
   let spyCalls = 0;
 
@@ -179,7 +183,7 @@ it.each<TagName>(tagNamesWithJss)('should call attachComponentCss() in correct l
     }
 
     try {
-      component.componentWillRender();
+      await component.componentWillRender();
     } catch (e) {}
 
     if (spy.mock.calls.length) {
