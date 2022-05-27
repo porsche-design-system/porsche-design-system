@@ -16,6 +16,9 @@ export class SegmentedControl {
   /** Disables the button. No events will be triggered while disabled state is active. */
   @Prop() public disabled?: boolean = false;
 
+  /** The label text. */
+  @Prop() public label?: string;
+
   /** The icon shown. */
   @Prop() public icon?: IconName;
 
@@ -50,6 +53,7 @@ export class SegmentedControl {
 
     return (
       <button type="button" disabled={this.disabled}>
+        {this.label && <span>{this.label}</span>}
         {(this.icon || this.iconSource) && (
           <PrefixedTagNames.pIcon
             class="icon"

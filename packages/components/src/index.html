@@ -41,6 +41,15 @@
     </style>
   </head>
   <body>
+    <p-segmented-control>
+      <p-segmented-control-item label="Some label">Size XS</p-segmented-control-item>
+      <p-segmented-control-item icon="truck">Size S</p-segmented-control-item>
+      <p-segmented-control-item label="Some label" icon="truck">Size S</p-segmented-control-item>
+      <p-segmented-control-item>Size M is long</p-segmented-control-item>
+      <p-segmented-control-item selected>Size L</p-segmented-control-item>
+      <p-segmented-control-item disabled>Size XL</p-segmented-control-item>
+    </p-segmented-control>
+
     <div>
       <p-segmented-control>
         <p-segmented-control-item>Size XS</p-segmented-control-item>
@@ -130,6 +139,15 @@
 
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
+      document.querySelectorAll('p-segmented-control-item').forEach((el) =>
+        el.addEventListener('click', (e) => {
+          if (!e.target.disabled && !e.target.selected) {
+            Array.from(e.target.parentElement.children).forEach((item) => (item.selected = false));
+            e.target.selected = true;
+          }
+        })
+      );
+
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
           const eventName = e.type + (e.type.includes('Did') ? ' ' : '');

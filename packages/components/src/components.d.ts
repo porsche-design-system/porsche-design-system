@@ -713,6 +713,10 @@ export namespace Components {
           * A URL path to a custom icon.
          */
         "iconSource"?: string;
+        /**
+          * The label text.
+         */
+        "label"?: string;
         "selected"?: boolean;
     }
     interface PSelectWrapper {
@@ -2112,6 +2116,10 @@ declare namespace LocalJSX {
           * A URL path to a custom icon.
          */
         "iconSource"?: string;
+        /**
+          * The label text.
+         */
+        "label"?: string;
         "selected"?: boolean;
     }
     interface PSelectWrapper {
