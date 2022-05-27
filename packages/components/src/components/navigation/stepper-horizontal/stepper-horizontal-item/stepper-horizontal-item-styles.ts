@@ -69,21 +69,13 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
               border: `1px solid ${disabledColor}`,
             }),
           },
-          '&::after': {
-            display: 'block',
-            position: 'absolute',
-            content: '""',
-            top: pxToRemWithUnit(12),
-            left: pxToRemWithUnit(12),
-            transform: 'translate3d(-50%, -50%, 0)',
-            width: pxToRemWithUnit(24),
-            height: pxToRemWithUnit(24),
-          },
           ...Array.from(Array(9)).reduce(
             (result, _, i) => ({
               ...result,
-              [`&(:nth-of-type(${i + 1})):after`]: {
-                background: `${getSvg(svgColor)} ${9 - i * 20}px 7px no-repeat`,
+              [`&(:nth-of-type(${i + 1}))`]: {
+                '& $button::before': {
+                  background: `${getSvg(svgColor)} ${9 - i * 20}px 7px no-repeat`,
+                },
               },
             }),
             {}
@@ -92,6 +84,7 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
       },
       button: {
         display: 'flex',
+        position: 'relative',
         alignItems: 'center',
         height: pxToRemWithUnit(24),
         color: isDisabled ? disabledColor : baseColor,
@@ -103,17 +96,30 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
         whiteSpace: 'nowrap',
         cursor: isDisabled ? 'not-allowed' : 'auto',
         ...getFocusJssStyle(),
-        ...(!isCurrentOrUndefined && {
-          padding: 0,
-          cursor: isDisabled ? 'not-allowed' : 'pointer',
-          textDecoration: isDisabled ? 'none' : 'underline',
-          ...(!isDisabled && {
-            ...hoverJssStyles,
-            '&:hover .icon': {
-              color: hoverColor,
-            },
-          }),
-        }),
+        ...(isCurrentOrUndefined
+          ? {
+              '&::before': {
+                display: 'block',
+                position: 'absolute',
+                content: '""',
+                top: pxToRemWithUnit(12),
+                left: pxToRemWithUnit(12),
+                transform: 'translate3d(-50%, -50%, 0)',
+                width: pxToRemWithUnit(24),
+                height: pxToRemWithUnit(24),
+              },
+            }
+          : {
+              padding: 0,
+              cursor: isDisabled ? 'not-allowed' : 'pointer',
+              textDecoration: isDisabled ? 'none' : 'underline',
+              ...(!isDisabled && {
+                ...hoverJssStyles,
+                '&:hover .icon': {
+                  color: hoverColor,
+                },
+              }),
+            }),
       },
     },
     ...(!isCurrentOrUndefined && {
