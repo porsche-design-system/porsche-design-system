@@ -599,6 +599,24 @@ exports[`should have no basic DOM regression for p-spinner 1`] = `
 </span>"
 `;
 
+exports[`should have no basic DOM regression for p-stepper-horizontal 1`] = `
+"<p-scroller class=\\"hydrated\\">
+  <div class=\\"item-wrapper\\">
+    <slot>
+    </slot>
+  </div>
+</p-scroller>"
+`;
+
+exports[`should have no basic DOM regression for p-stepper-horizontal-item 1`] = `
+"<button disabled=\\"\\">
+  <span class=\\"sr-only\\">
+    Step :</span>
+  <slot>
+  </slot>
+</button>"
+`;
+
 exports[`should have no basic DOM regression for p-switch 1`] = `
 "<style>
   p-text button {
