@@ -1,6 +1,7 @@
 import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
 import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
-import type { IconName } from '../../../types';
+import type { IconName, Theme } from '../../../types';
+import type { SegmentedControlBackgroundColor } from '../segmented-control/segmented-control-utils';
 import { getComponentCss } from './segmented-control-item-styles';
 
 @Component({
@@ -8,7 +9,7 @@ import { getComponentCss } from './segmented-control-item-styles';
   shadow: { delegatesFocus: true },
 })
 export class SegmentedControl {
-  @Element() public host!: HTMLElement;
+  @Element() public host!: HTMLElement & { backgroundColor: SegmentedControlBackgroundColor; theme: Theme };
 
   // TODO: active? checked? selected?
   @Prop() public selected?: boolean = false;
@@ -43,8 +44,8 @@ export class SegmentedControl {
       getComponentCss,
       this.selected,
       this.disabled,
-      (this.host as any).backgroundColor,
-      (this.host as any).theme || 'light'
+      this.host.backgroundColor,
+      this.host.theme || 'light'
     );
   }
 
