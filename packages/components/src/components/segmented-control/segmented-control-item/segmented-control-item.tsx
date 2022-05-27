@@ -8,7 +8,7 @@ import { getComponentCss } from './segmented-control-item-styles';
   tag: 'p-segmented-control-item',
   shadow: { delegatesFocus: true },
 })
-export class SegmentedControl {
+export class SegmentedControlItem {
   @Element() public host!: HTMLElement & { backgroundColor: SegmentedControlBackgroundColor; theme: Theme };
 
   // TODO: active? checked? selected?
