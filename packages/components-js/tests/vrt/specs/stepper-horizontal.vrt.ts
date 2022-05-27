@@ -35,15 +35,10 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         </p-stepper-horizontal>
         `;
 
-      await setContentWithDesignSystem(
-        page,
-        getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark', 'light-electric'] })
-      );
+      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark'] }));
 
       await forceHoverState(page, '.hover > p-stepper-horizontal p-stepper-horizontal-item >>> button');
-
       await forceFocusState(page, '.focus > p-stepper-horizontal p-stepper-horizontal-item >>> button');
-
       await forceFocusHoverState(page, '.focus-hover > p-stepper-horizontal p-stepper-horizontal-item  >>> button');
     })
   ).toBeFalsy();
