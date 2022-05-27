@@ -6,7 +6,7 @@ import {
   getThemedColors,
   pxToRemWithUnit,
 } from '../../../styles';
-import { fontWeight, textSmall } from '@porsche-design-system/utilities-v2';
+import { fontWeight, textSmall, textXSmall } from '@porsche-design-system/utilities-v2';
 import type { Theme } from '../../../types';
 import type { SegmentedControlBackgroundColor } from '../segmented-control/segmented-control-utils';
 
@@ -16,7 +16,8 @@ export const getComponentCss = (
   bgColor: SegmentedControlBackgroundColor,
   theme: Theme
 ): string => {
-  const { disabledColor, baseColor, backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
+  const { disabledColor, baseColor, backgroundColor, backgroundSurfaceColor, contrastMediumColor } =
+    getThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -25,21 +26,18 @@ export const getComponentCss = (
       },
       button: {
         display: 'block',
-        minHeight: pxToRemWithUnit(48),
+        // minHeight: pxToRemWithUnit(48),
         height: '100%',
         width: '100%',
-        padding: `0 ${pxToRemWithUnit(40)}`,
+        padding: `${pxToRemWithUnit(11)} ${pxToRemWithUnit(40)}`,
         margin: 0,
         background: bgColor === 'background-surface' ? backgroundColor : backgroundSurfaceColor,
+        border: '1px solid transparent',
         ...textSmall,
-        ...(isSelected
-          ? {
-              fontWeight: fontWeight.semiBold,
-              border: `1px solid ${baseColor}`,
-            }
-          : {
-              border: 0,
-            }),
+        ...(isSelected && {
+          fontWeight: fontWeight.semiBold,
+          borderColor: baseColor,
+        }),
         ...(isDisabled
           ? {
               color: disabledColor,
@@ -52,7 +50,17 @@ export const getComponentCss = (
               ...getFocusJssStyle(),
             }),
       },
+      // label
+      span: {
+        display: 'block',
+        ...textXSmall,
+        color: isDisabled ? disabledColor : contrastMediumColor,
+      },
     },
-    icon: {},
+    icon: {
+      height: pxToRemWithUnit(24),
+      width: pxToRemWithUnit(24),
+      marginRight: pxToRemWithUnit(4),
+    },
   });
 };
