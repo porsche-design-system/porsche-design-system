@@ -65,6 +65,16 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-text-field-wrapper',
+      samples: [
+        [
+          componentsJsPath + '/text-field-wrapper-example.html',
+          componentsAngularPath + '/text-field-wrapper-example.component.ts',
+          componentsReactPath + '/TextFieldWrapperExample.tsx',
+        ],
+      ],
+    },
+    {
       component: 'p-toast',
       samples: [
         [
