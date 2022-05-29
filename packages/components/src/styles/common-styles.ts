@@ -2,7 +2,7 @@ import type { JssStyle, Styles } from 'jss';
 import type { PropertiesHyphen } from 'csstype';
 import { fontWeight } from '@porsche-design-system/utilities-v2';
 import { getThemedColors } from './';
-import { ThemeExtendedElectricDark } from '../types';
+import { Theme } from '../types';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
 const transitionTimingFunction = 'ease';
@@ -36,28 +36,15 @@ export const addImportantToEachRule = (input: JssStyle): JssStyle => {
 };
 
 type GetHoverStylesOptions = {
-  theme?: ThemeExtendedElectricDark;
-  hasActivePseudoClass?: boolean;
-  hasTransition?: boolean;
-  hoverColor?: string;
-  opts?: JssStyle;
+  theme?: Theme;
 };
 
-export const getHoverJssStyle = (
-  { theme, hasActivePseudoClass, hasTransition, hoverColor, opts }: GetHoverStylesOptions = {
-    theme: 'light',
-    hasTransition: true,
-    hasActivePseudoClass: false,
-    hoverColor: null,
-    opts: {},
-  }
-): JssStyle => {
+export const getHoverJssStyle = ({ theme }: GetHoverStylesOptions = { theme: 'light' }): JssStyle => {
   return {
-    ...(hasTransition && { transition: getTransition('color') }),
+    transition: getTransition('color'),
     '@media (hover: hover)': {
-      [`&:hover${hasActivePseudoClass ? ', &:active' : ''}`]: {
-        color: hoverColor ? hoverColor : getThemedColors(theme).hoverColor,
-        ...opts,
+      '&:hover': {
+        color: getThemedColors(theme).hoverColor,
       },
     },
   };
@@ -134,7 +121,7 @@ export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withD
       ...getFocusJssStyle({ offset: 1 }),
     },
     ...(opts.withDarkTheme && {
-      '&[data-theme="dark"] a:hover': getHoverJssStyle({ theme: 'dark' })['&:hover'],
+      '&[data-theme="dark"] a:hover': getHoverJssStyle({ theme: 'dark' })['@media (hover: hover)']['&:hover'],
     }),
     '& b, & strong': {
       fontWeight: fontWeight.bold,

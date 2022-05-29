@@ -71,8 +71,10 @@ export const getComponentCss = (
           '&(a:focus)': {
             outlineColor: baseColor,
           },
-          '&(a:hover:focus)': {
-            outlineColor: baseColorHover,
+          '@media (hover: hover)': {
+            '&(a:hover:focus)': {
+              outlineColor: baseColorHover,
+            },
           },
           '&(a:focus:not(:focus-visible))': {
             outlineColor: 'transparent',
@@ -99,10 +101,12 @@ export const getComponentCss = (
       color: baseColor,
       transition:
         getTransition('background-color') + ',' + getTransition('border-color') + ',' + getTransition('color'),
-      '&:hover, &:active': {
-        color: baseColorHover,
-        '& $label, & $icon': {
-          color: textColorHover,
+      '@media (hover: hover)': {
+        '&:hover, &:active': {
+          color: baseColorHover,
+          '& $label, & $icon': {
+            color: textColorHover,
+          },
         },
       },
       ...(hasHref && {

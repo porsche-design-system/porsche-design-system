@@ -44,8 +44,10 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
         '&:focus': {
           outlineColor: formStateColor || contrastMediumColor,
         },
-        '&:hover:not(:disabled) ~ ul': {
-          borderColor: contrastHighColor,
+        '@media (hover: hover)': {
+          '&:hover:not(:disabled) ~ ul': {
+            borderColor: contrastHighColor,
+          },
         },
         '&:disabled': {
           cursor: 'not-allowed',
@@ -99,8 +101,10 @@ export const getFilterStyles = (
             outlineColor: formStateColor || contrastMediumColor,
           },
         },
-        '&:hover:not(:disabled) ~ ul': {
-          borderColor: contrastHighColor,
+        '@media (hover: hover)': {
+          '&:hover:not(:disabled) ~ ul': {
+            borderColor: contrastHighColor,
+          },
         },
         '&+span': {
           // for focus outline and click event on arrow
@@ -170,8 +174,10 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         transition: getTransition('border-color'),
         transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
         outline: 'none',
-        '&:hover': {
-          borderColor: contrastHighColor,
+        '@media (hover: hover)': {
+          '&:hover': {
+            borderColor: contrastHighColor,
+          },
         },
         ...(isDirectionDown
           ? {
@@ -214,9 +220,11 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         cursor: 'not-allowed',
       },
       '&__sr': getTextHiddenJssStyle(true),
-      '&:not([aria-disabled]):not([role="status"]):hover': {
-        color: hoverColor,
-        background: highlightedSelectedColor,
+      '@media (hover: hover)': {
+        '&:not([aria-disabled]):not([role="status"]):hover': {
+          color: hoverColor,
+          background: highlightedSelectedColor,
+        },
       },
       '&--highlighted, &--selected': {
         color: activeColor,
@@ -278,8 +286,10 @@ export const getComponentCss = (
             right: 0,
             color: disabled ? disabledColor : formStateColor || contrastMediumColor,
             ...(!disabled && {
-              '&(:hover)': {
-                color: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
+              '@media (hover: hover)': {
+                '&(:hover)': {
+                  color: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
+                },
               },
             }),
           },

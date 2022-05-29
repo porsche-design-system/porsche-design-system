@@ -76,14 +76,16 @@ export const getComponentCss = (
           formStateColor || contrastHighColor,
           formStateColor || contrastHighColor
         ),
-        '&(input:not(:disabled):not(:checked):hover), .label:hover ~ &(input:not(:disabled):not(:checked))':
-          getBackgroundImageStyles(hasVisibleState, backgroundColor, formStateHoverColor || baseColor),
-        '&(input:not(:disabled):checked:hover), .label:hover ~ &(input:not(:disabled):checked)':
-          getBackgroundImageStyles(
-            hasVisibleState,
-            formStateColor || contrastHighColor,
-            formStateHoverColor || baseColor
-          ),
+        '@media (hover: hover)': {
+          '&(input:not(:disabled):not(:checked):hover), .label:hover ~ &(input:not(:disabled):not(:checked))':
+            getBackgroundImageStyles(hasVisibleState, backgroundColor, formStateHoverColor || baseColor),
+          '&(input:not(:disabled):checked:hover), .label:hover ~ &(input:not(:disabled):checked)':
+            getBackgroundImageStyles(
+              hasVisibleState,
+              formStateColor || contrastHighColor,
+              formStateHoverColor || baseColor
+            ),
+        },
         '&(input:disabled)': {
           cursor: 'not-allowed',
           ...getBackgroundImageStyles(hasVisibleState, backgroundColor, disabledColor),

@@ -17,7 +17,6 @@ import {
   pxToRemWithUnit,
   getThemedColors,
   getScreenReaderOnlyJssStyle,
-  getHoverJssStyle,
 } from './';
 import { fontSize } from '@porsche-design-system/utilities-v2';
 
@@ -120,7 +119,7 @@ export const getLinkButtonPureStyles = (
   hasSlottedAnchor: boolean,
   theme: ThemeExtendedElectricDark
 ): Styles => {
-  const { baseColor, activeColor, disabledColor, hoverColor } = getThemedColors(theme);
+  const { baseColor, hoverColor, activeColor, disabledColor } = getThemedColors(theme);
   const hasIcon = hasVisibleIcon(icon);
 
   return {
@@ -155,17 +154,16 @@ export const getLinkButtonPureStyles = (
       transition: `${getTransition('color')}, font-size 1ms linear`, // used for transitionend event listener
       ...(!hasSlottedAnchor && getFocusJssStyle({ offset: 1, pseudo: '::before' })),
       ...(!isDisabledOrLoading && {
-        ...getHoverJssStyle({
-          theme,
-          hasTransition: false,
-          opts: {
+        '@media (hover: hover)': {
+          '&:hover': {
+            color: hoverColor,
             ...(hasSubline && {
               '& + $subline': {
                 color: hoverColor,
               },
             }),
           },
-        }),
+        },
         '&:active': {
           color: activeColor,
           ...(hasSubline && {
