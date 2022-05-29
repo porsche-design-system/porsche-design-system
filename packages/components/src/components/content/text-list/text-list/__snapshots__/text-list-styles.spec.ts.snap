@@ -53,9 +53,6 @@ p-text-list b, p-text-list strong {
 p-text-list em, p-text-list i {
   font-style: normal !important;
 }
-p-text-list a:hover {
-  color: #d5001c !important;
-}
 p-text-list a::-moz-focus-inner {
   border: 0 !important;
 }
@@ -64,7 +61,13 @@ p-text-list a:focus {
 }
 p-text-list a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}"
+}
+@media (hover: hover) {
+  p-text-list a:hover {
+    color: #d5001c !important;
+  }
+}
+"
 `;
 
 exports[`getSlottedCss() should return correct css with prefix 1`] = `
@@ -84,9 +87,6 @@ prefixed-p-text-list b, prefixed-p-text-list strong {
 prefixed-p-text-list em, prefixed-p-text-list i {
   font-style: normal !important;
 }
-prefixed-p-text-list a:hover {
-  color: #d5001c !important;
-}
 prefixed-p-text-list a::-moz-focus-inner {
   border: 0 !important;
 }
@@ -95,5 +95,11 @@ prefixed-p-text-list a:focus {
 }
 prefixed-p-text-list a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}"
+}
+@media (hover: hover) {
+  prefixed-p-text-list a:hover {
+    color: #d5001c !important;
+  }
+}
+"
 `;

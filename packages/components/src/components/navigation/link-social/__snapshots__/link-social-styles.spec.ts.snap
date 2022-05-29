@@ -29,12 +29,15 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #1877f2 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #1877f2 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -53,12 +56,6 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
   background-color: currentColor;
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #1877f2;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -79,7 +76,16 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #1877f2;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-facebook, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -111,12 +117,15 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #1877f2 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #1877f2 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -135,12 +144,6 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
   background-color: currentColor;
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #1877f2;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -161,7 +164,16 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #1877f2;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-google, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -193,12 +205,15 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #4285f4 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #4285f4 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -217,12 +232,6 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
   background-color: currentColor;
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #4285f4;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -243,7 +252,16 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #4285f4;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-google, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -275,12 +293,15 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #4285f4 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #4285f4 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -299,12 +320,6 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
   background-color: currentColor;
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #4285f4;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -325,7 +340,16 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #4285f4;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-instagram, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -357,12 +381,15 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #e1306c !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #e1306c !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -381,12 +408,6 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
   background-color: currentColor;
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #e1306c;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -407,7 +428,16 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #e1306c;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-instagram, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -439,12 +469,15 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #e1306c !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #e1306c !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -463,12 +496,6 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
   background-color: currentColor;
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #e1306c;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -489,7 +516,16 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #e1306c;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-kakaotalk, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -521,12 +557,15 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #fae300 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #fae300 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -545,12 +584,6 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
   background-color: currentColor;
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #fae300;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #000;
 }
 .icon {
   position: absolute;
@@ -571,7 +604,16 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #fae300;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #000;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-kakaotalk, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -603,12 +645,15 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #fae300 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #fae300 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -627,12 +672,6 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
   background-color: currentColor;
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #fae300;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #000;
 }
 .icon {
   position: absolute;
@@ -653,7 +692,16 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #fae300;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #000;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-linkedin, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -685,12 +733,15 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #0077b5 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #0077b5 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -709,12 +760,6 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
   background-color: currentColor;
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #0077b5;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -735,7 +780,16 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #0077b5;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-linkedin, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -767,12 +821,15 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #0077b5 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #0077b5 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -791,12 +848,6 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
   background-color: currentColor;
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #0077b5;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -817,7 +868,16 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #0077b5;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-naver, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -849,12 +909,15 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #03cf5d !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #03cf5d !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -873,12 +936,6 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
   background-color: currentColor;
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #03cf5d;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -899,7 +956,16 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #03cf5d;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-naver, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -931,12 +997,15 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #03cf5d !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #03cf5d !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -955,12 +1024,6 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
   background-color: currentColor;
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #03cf5d;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -981,7 +1044,16 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #03cf5d;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-pinterest, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -1013,12 +1085,15 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #e60023 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #e60023 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -1037,12 +1112,6 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
   background-color: currentColor;
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #e60023;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -1063,7 +1132,16 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #e60023;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-pinterest, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -1095,12 +1173,15 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #e60023 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #e60023 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -1119,12 +1200,6 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
   background-color: currentColor;
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #e60023;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -1145,7 +1220,16 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #e60023;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-reddit, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -1177,12 +1261,15 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #ff4500 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #ff4500 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -1201,12 +1288,6 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
   background-color: currentColor;
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #ff4500;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -1227,7 +1308,16 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #ff4500;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-reddit, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -1259,12 +1349,15 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #ff4500 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #ff4500 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -1283,12 +1376,6 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
   background-color: currentColor;
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #ff4500;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -1309,7 +1396,16 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #ff4500;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-tiktok, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -1341,12 +1437,15 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #fe2c55 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #fe2c55 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -1365,12 +1464,6 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
   background-color: currentColor;
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #fe2c55;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -1391,7 +1484,16 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #fe2c55;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-tiktok, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -1423,12 +1525,15 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #fe2c55 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #fe2c55 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -1447,12 +1552,6 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
   background-color: currentColor;
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #fe2c55;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -1473,7 +1572,16 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #fe2c55;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-twitter, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -1505,12 +1613,15 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #1da1f2 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #1da1f2 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -1529,12 +1640,6 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
   background-color: currentColor;
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #1da1f2;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -1555,7 +1660,16 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #1da1f2;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-twitter, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -1587,12 +1701,15 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #1da1f2 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #1da1f2 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -1611,12 +1728,6 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
   background-color: currentColor;
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #1da1f2;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -1637,7 +1748,16 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #1da1f2;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-wechat, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -1669,12 +1789,15 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #1aad19 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #1aad19 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -1693,12 +1816,6 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
   background-color: currentColor;
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #1aad19;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -1719,7 +1836,16 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #1aad19;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-wechat, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -1751,12 +1877,15 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #1aad19 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #1aad19 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -1775,12 +1904,6 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
   background-color: currentColor;
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #1aad19;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -1801,7 +1924,16 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #1aad19;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-whatsapp, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -1833,12 +1965,15 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #25d366 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #25d366 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -1857,12 +1992,6 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
   background-color: currentColor;
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #25d366;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -1883,7 +2012,16 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #25d366;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-whatsapp, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -1915,12 +2053,15 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #25d366 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #25d366 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -1939,12 +2080,6 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
   background-color: currentColor;
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #25d366;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -1965,7 +2100,16 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #25d366;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-xing, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -1997,12 +2141,15 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #006567 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #006567 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -2021,12 +2168,6 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
   background-color: currentColor;
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #006567;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -2047,7 +2188,16 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #006567;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-xing, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -2079,12 +2229,15 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #006567 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #006567 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -2103,12 +2256,6 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
   background-color: currentColor;
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #006567;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -2129,7 +2276,16 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #006567;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-youtube, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, hasHref: false and theme: light 1`] = `
@@ -2160,9 +2316,6 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
 }
 ::slotted(a:focus) {
   outline-color: #323639 !important;
-}
-::slotted(a:hover:focus) {
-  outline-color: #ff0000 !important;
 }
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
@@ -2237,6 +2390,12 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   }
 }
 
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #ff0000 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -2255,12 +2414,6 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   background-color: currentColor;
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #ff0000;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -2356,6 +2509,15 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
     text-indent: 0;
   }
 }
+
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #ff0000;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
 "
 `;
 
@@ -2388,12 +2550,15 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #ff0000 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #ff0000 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -2412,12 +2577,6 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   background-color: currentColor;
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #ff0000;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -2438,7 +2597,16 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #ff0000;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-youtube, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -2470,12 +2638,15 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #ff0000 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #ff0000 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -2494,12 +2665,6 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   background-color: currentColor;
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #ff0000;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -2520,7 +2685,16 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #ff0000;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-youtube, hideLabel: false, hasHref: true and theme: light 1`] = `
@@ -2549,9 +2723,6 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
   outline-offset: 2px;
 }
-.root:hover, .root:active {
-  color: #ff0000;
-}
 .root::-moz-focus-inner {
   border: 0;
 }
@@ -2560,9 +2731,6 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
 }
 .root:focus:not(:focus-visible) {
   outline-color: transparent;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -2583,7 +2751,16 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #ff0000;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: undefined, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -2615,12 +2792,15 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #e0e0e0 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #e0e0e0 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -2639,9 +2819,6 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
   background-color: currentColor;
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #e0e0e0;
 }
 .icon {
   position: absolute;
@@ -2662,7 +2839,13 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #e0e0e0;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: undefined, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -2694,12 +2877,15 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #151718 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #151718 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -2718,9 +2904,6 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
   background-color: currentColor;
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #151718;
 }
 .icon {
   position: absolute;
@@ -2741,5 +2924,11 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #151718;
+  }
+}
+"
 `;

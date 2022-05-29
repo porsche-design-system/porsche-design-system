@@ -31,9 +31,6 @@ button {
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
-button:hover {
-  color: #d5001c;
-}
 button::-moz-focus-inner {
   border: 0;
 }
@@ -46,6 +43,12 @@ button:focus:not(:focus-visible) {
 button:hover .icon, button:focus .icon {
   opacity: 1;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .icon {
   margin-left: 0.25rem;
   opacity: 0;
@@ -85,9 +88,6 @@ button {
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
-button:hover {
-  color: #d5001c;
-}
 button::-moz-focus-inner {
   border: 0;
 }
@@ -100,6 +100,12 @@ button:focus:not(:focus-visible) {
 button:hover .icon, button:focus .icon {
   opacity: 1;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .icon {
   margin-left: 0.25rem;
   opacity: 0;
@@ -139,9 +145,6 @@ button {
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
-button:hover {
-  color: #d5001c;
-}
 button::-moz-focus-inner {
   border: 0;
 }
@@ -154,6 +157,12 @@ button:focus:not(:focus-visible) {
 button:hover .icon, button:focus .icon {
   opacity: 1;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .icon {
   margin-left: 0.25rem;
   opacity: 1;
@@ -193,9 +202,6 @@ button {
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
-button:hover {
-  color: #d5001c;
-}
 button::-moz-focus-inner {
   border: 0;
 }
@@ -208,6 +214,12 @@ button:focus:not(:focus-visible) {
 button:hover .icon, button:focus .icon {
   opacity: 1;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .icon {
   margin-left: 0.25rem;
   opacity: 1;
@@ -247,9 +259,6 @@ button {
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
-button:hover {
-  color: #d5001c;
-}
 button::-moz-focus-inner {
   border: 0;
 }
@@ -262,6 +271,12 @@ button:focus:not(:focus-visible) {
 button:hover .icon, button:focus .icon {
   opacity: 1;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .icon {
   margin-left: 0.25rem;
   opacity: 1;

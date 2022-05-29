@@ -302,9 +302,6 @@ p-popover b, p-popover strong {
 p-popover em, p-popover i {
   font-style: normal !important;
 }
-p-popover a:hover {
-  color: #d5001c !important;
-}
 p-popover a::-moz-focus-inner {
   border: 0 !important;
 }
@@ -313,7 +310,13 @@ p-popover a:focus {
 }
 p-popover a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}"
+}
+@media (hover: hover) {
+  p-popover a:hover {
+    color: #d5001c !important;
+  }
+}
+"
 `;
 
 exports[`getSlottedCss() should return correct css with prefix 1`] = `
@@ -330,9 +333,6 @@ prefixed-p-popover b, prefixed-p-popover strong {
 prefixed-p-popover em, prefixed-p-popover i {
   font-style: normal !important;
 }
-prefixed-p-popover a:hover {
-  color: #d5001c !important;
-}
 prefixed-p-popover a::-moz-focus-inner {
   border: 0 !important;
 }
@@ -341,5 +341,11 @@ prefixed-p-popover a:focus {
 }
 prefixed-p-popover a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}"
+}
+@media (hover: hover) {
+  prefixed-p-popover a:hover {
+    color: #d5001c !important;
+  }
+}
+"
 `;
