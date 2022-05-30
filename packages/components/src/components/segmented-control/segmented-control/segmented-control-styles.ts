@@ -1,25 +1,19 @@
 import { getCss } from '../../../utils';
-// import { addImportantToEachRule } from '../../../styles';
+import { addImportantToEachRule } from '../../../styles';
 
-export const getComponentCss = (wrap: boolean, maxWidth: number): string => {
+export const getComponentCss = (maxWidth: number): string => {
   const minWidth = maxWidth > 200 ? 200 : maxWidth;
 
   return getCss({
     '@global': {
-      ':host': {
-        display: wrap ? 'grid' : 'inline-grid',
+      ':host': addImportantToEachRule({
+        display: 'grid',
         width: '100%',
         gridAutoColumns: '1fr',
         gridAutoRows: '1fr',
         gridGap: '4px',
-        ...(wrap
-          ? {
-              gridTemplateColumns: `repeat(auto-fit, minmax(${minWidth}px, min-content))`,
-            }
-          : {
-              gridAutoFlow: 'column',
-            }),
-      },
+        gridTemplateColumns: `repeat(auto-fit, minmax(${minWidth}px, min-content))`,
+      }),
     },
   });
 };

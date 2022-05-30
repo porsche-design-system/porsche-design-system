@@ -698,7 +698,6 @@ export namespace Components {
           * Adapts the segmented-control color depending on the theme.
          */
         "theme"?: Theme;
-        "wrap"?: boolean;
     }
     interface PSegmentedControlItem {
         /**
@@ -2101,7 +2100,6 @@ declare namespace LocalJSX {
           * Adapts the segmented-control color depending on the theme.
          */
         "theme"?: Theme;
-        "wrap"?: boolean;
     }
     interface PSegmentedControlItem {
         /**

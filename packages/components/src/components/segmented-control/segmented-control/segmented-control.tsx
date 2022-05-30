@@ -11,8 +11,6 @@ import type { SegmentedControlBackgroundColor } from './segmented-control-utils'
 export class SegmentedControl {
   @Element() public host!: HTMLElement;
 
-  @Prop() public wrap?: boolean = false;
-
   /** Background color variations */
   @Prop() public backgroundColor?: SegmentedControlBackgroundColor = 'background-default';
 
@@ -41,14 +39,9 @@ export class SegmentedControl {
       })
     );
 
-    const maxWidth = Math.max(...widths.map(parseFloat));
+    const maxWidth = Math.max(...widths.map(parseFloat)) * 1.03;
 
-    const style = this.host.getAttribute('style');
-    if (style && style.includes('minmax')) {
-      this.host.setAttribute('style', style.replace(/(minmax\()[\d.px]+/, `$1${maxWidth}px`));
-    }
-
-    attachComponentCss(this.host, getComponentCss, this.wrap, maxWidth);
+    attachComponentCss(this.host, getComponentCss, maxWidth);
   }
 
   public disconnectedCallback(): void {
