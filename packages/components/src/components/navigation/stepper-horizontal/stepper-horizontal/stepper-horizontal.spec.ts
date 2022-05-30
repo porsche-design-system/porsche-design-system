@@ -59,4 +59,49 @@ describe('connectedCallback', () => {
 });
 
 describe('componentDidLoad', () => {
+  it('should call defineHTMLElements()', () => {
+    const component = new StepperHorizontal();
+    const spy = jest.spyOn(component, 'defineHTMLElements' as any).mockImplementationOnce(() => {});
+
+    try {
+      component.componentDidLoad();
+    } catch (e) {}
+
+    expect(spy).toBeCalledTimes(1);
+  });
+
+  it('should call throwIfMultipleCurrentStates() with correct parameters', () => {
+    const spy = jest.spyOn(stepperHorizontalUtils, 'throwIfMultipleCurrentStates');
+
+    const component = new StepperHorizontal();
+    jest.spyOn(component, 'defineHTMLElements' as any).mockImplementationOnce(() => {});
+
+    try {
+      component.componentDidLoad();
+    } catch (e) {}
+
+    expect(spy).toBeCalledWith(component.host, expect.anything());
+  });
+
+  it('should call addEventListeners()', () => {
+    const component = new StepperHorizontal();
+    const spy = jest.spyOn(component, 'addEventListeners' as any).mockImplementationOnce(() => {});
+    jest.spyOn(component, 'defineHTMLElements' as any).mockImplementationOnce(() => {});
+
+    try {
+      component.componentDidLoad();
+    } catch (e) {}
+
+    expect(spy).toBeCalledTimes(1);
+  });
+});
+
+describe('disconnectedCallback', () => {
+  it('should call unobserveChildren() with correct parameter', () => {
+    const spy = jest.spyOn(childrenObserverUtils, 'unobserveChildren');
+    const component = new StepperHorizontal();
+    component.disconnectedCallback();
+
+    expect(spy).toBeCalledWith(component.host);
+  });
 });
