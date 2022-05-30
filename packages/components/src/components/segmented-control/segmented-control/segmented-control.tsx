@@ -1,9 +1,15 @@
-import { Component, Element, h, JSX, Prop, forceUpdate } from '@stencil/core';
+import { Component, Element, h, JSX, Prop, forceUpdate, Event, EventEmitter } from '@stencil/core';
 import { attachComponentCss, observeChildren, unobserveChildren } from '../../../utils';
 import { getComponentCss } from './segmented-control-styles';
 import type { Theme } from '../../../types';
 import type { SegmentedControlBackgroundColor } from './segmented-control-utils';
-import { getItemMaxWidth, syncItemsProps } from './segmented-control-utils';
+import {
+  getItemMaxWidth,
+  isEventTargetSegmentedControlItem,
+  renderInputOutsideShadowRoot,
+  syncItemsProps,
+} from './segmented-control-utils';
+import { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 
 @Component({
   tag: 'p-segmented-control',
@@ -18,6 +24,13 @@ export class SegmentedControl {
   /** Adapts the segmented-control color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
+  @Prop() public name?: string;
+
+  @Prop() public value?: string | number;
+
+  /** Emitted when selected element changes. */
+  @Event({ bubbles: false }) public segmentedControlChange: EventEmitter<{ value: string }>;
+
   public connectedCallback(): void {
     observeChildren(this.host, () => forceUpdate(this.host));
   }
@@ -25,7 +38,20 @@ export class SegmentedControl {
   public componentWillRender(): void {
     attachComponentCss(this.host, getComponentCss, getItemMaxWidth(this.host));
 
+    // TODO: sync value to determine selected
     syncItemsProps(this.host, this.theme, this.backgroundColor);
+  }
+
+  public componentDidLoad(): void {
+    this.host.addEventListener('click', (e) => {
+      if (isEventTargetSegmentedControlItem(this.host, e.target as HTMLElement)) {
+        const { option } = e.target as unknown as SegmentedControlItem;
+        this.value = option;
+
+        renderInputOutsideShadowRoot(this.host, this.name, this.value);
+        this.segmentedControlChange.emit({ value: this.value });
+      }
+    });
   }
 
   public disconnectedCallback(): void {
@@ -33,6 +59,10 @@ export class SegmentedControl {
   }
 
   public render(): JSX.Element {
+    if (this.name) {
+      renderInputOutsideShadowRoot(this.host, this.name, this.value);
+    }
+
     return <slot />;
   }
 }

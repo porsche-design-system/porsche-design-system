@@ -33,55 +33,37 @@
     </style>
   </head>
   <body>
-    <p-segmented-control>
-      <p-segmented-control-item label="Some label">Size XS</p-segmented-control-item>
-      <p-segmented-control-item icon="truck">Size S</p-segmented-control-item>
-      <p-segmented-control-item icon="truck" label="Some label" icon="truck">Size S</p-segmented-control-item>
-      <p-segmented-control-item icon="truck">Size M is too long</p-segmented-control-item>
-      <p-segmented-control-item icon="truck" selected>Size L</p-segmented-control-item>
-      <p-segmented-control-item icon="truck" disabled>Size XL</p-segmented-control-item>
-    </p-segmented-control>
+    <form>
+      <p-segmented-control name="control">
+        <p-segmented-control-item option="xs" label="Some label">Size XS</p-segmented-control-item>
+        <p-segmented-control-item option="s" icon="truck" label="Some label" icon="truck"
+          >Size S</p-segmented-control-item
+        >
+        <p-segmented-control-item option="m" icon="truck">Size M is too long</p-segmented-control-item>
+        <p-segmented-control-item option="l" icon="truck" selected>Size L</p-segmented-control-item>
+        <p-segmented-control-item option="xl" icon="truck" disabled>Size XL</p-segmented-control-item>
+      </p-segmented-control>
 
-    <p-segmented-control>
-      <p-segmented-control-item icon="truck">Size XS</p-segmented-control-item>
-      <p-segmented-control-item icon="truck">Size S</p-segmented-control-item>
-      <p-segmented-control-item icon="truck">Size M is too long</p-segmented-control-item>
-      <p-segmented-control-item icon="truck" selected>Size L</p-segmented-control-item>
-      <p-segmented-control-item icon="truck" disabled>Size XL</p-segmented-control-item>
-    </p-segmented-control>
+      <input type="text" name="some-input" value="some val" />
 
-    <p-segmented-control class="surface" background-color="background-surface">
-      <p-segmented-control-item>Size XS</p-segmented-control-item>
-      <p-segmented-control-item>Size S</p-segmented-control-item>
-      <p-segmented-control-item>Size M is too long</p-segmented-control-item>
-      <p-segmented-control-item selected>Size L</p-segmented-control-item>
-      <p-segmented-control-item disabled>Size XL</p-segmented-control-item>
-    </p-segmented-control>
-
-    <p-segmented-control theme="dark">
-      <p-segmented-control-item>Size XS</p-segmented-control-item>
-      <p-segmented-control-item>Size S</p-segmented-control-item>
-      <p-segmented-control-item>Size M is too long</p-segmented-control-item>
-      <p-segmented-control-item selected>Size L</p-segmented-control-item>
-      <p-segmented-control-item disabled>Size XL</p-segmented-control-item>
-    </p-segmented-control>
-
-    <p-segmented-control class="surface" background-color="background-surface" theme="dark">
-      <p-segmented-control-item>Size XS</p-segmented-control-item>
-      <p-segmented-control-item>Size S</p-segmented-control-item>
-      <p-segmented-control-item>Size M is too long</p-segmented-control-item>
-      <p-segmented-control-item selected>Size L</p-segmented-control-item>
-      <p-segmented-control-item disabled>Size XL</p-segmented-control-item>
-    </p-segmented-control>
+      <button>submit</button>
+    </form>
 
     <!-- START: keep this snippet to log component lifecycle events -->
     <script>
-      document.querySelectorAll('p-segmented-control-item').forEach((el) =>
-        el.addEventListener('click', (e) => {
-          if (!e.target.disabled && !e.target.selected) {
-            Array.from(e.target.parentElement.children).forEach((item) => (item.selected = false));
-            e.target.selected = true;
-          }
+      document.querySelector('form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = new FormData(e.target);
+        console.log(Array.from(data.entries()));
+      });
+
+      document.querySelectorAll('p-segmented-control').forEach((el) =>
+        el.addEventListener('segmentedControlChange', (e) => {
+          const {
+            target,
+            detail: { value },
+          } = e;
+          Array.from(target.children).forEach((item) => (item.selected = item.option === value));
         })
       );
 

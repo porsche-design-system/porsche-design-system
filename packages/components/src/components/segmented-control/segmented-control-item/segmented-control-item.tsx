@@ -1,5 +1,5 @@
 import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
-import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
+import { attachComponentCss, getPrefixedTagNames, throwIfParentIsNotOfKind } from '../../../utils';
 import type { IconName } from '../../../types';
 import { getComponentCss } from './segmented-control-item-styles';
 import type { SegmentedControlItemInternalHTMLProps } from './segmented-control-item-utils';
@@ -26,17 +26,18 @@ export class SegmentedControlItem {
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
 
+  @Prop() public option?: string;
+
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
-    if (this.disabled) {
+    if (this.disabled || this.selected) {
       e.stopPropagation();
     }
   }
 
-  // public connectedCallback(): void {
-  // NOTE: conflicts with cloneNode
-  //   throwIfParentIsNotOfKind(this.host, 'pSegmentedControl');
-  // }
+  public connectedCallback(): void {
+    throwIfParentIsNotOfKind(this.host, 'pSegmentedControl');
+  }
 
   public componentWillRender(): void {
     attachComponentCss(
