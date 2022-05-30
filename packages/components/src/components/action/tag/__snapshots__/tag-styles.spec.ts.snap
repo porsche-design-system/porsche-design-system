@@ -176,7 +176,7 @@ span {
 }
 @media (hover: hover) {
   span:hover {
-    color: #d5001c;
+    color: #ff0223;
   }
   ::slotted(a:hover) {
     color: #ff0223 !important;
@@ -340,7 +340,7 @@ span {
 }
 @media (hover: hover) {
   span:hover {
-    color: #d5001c;
+    color: #ff0223;
   }
   ::slotted(a:hover) {
     color: #ff0223 !important;
@@ -586,7 +586,7 @@ span {
 }
 @media (hover: hover) {
   span:hover {
-    color: #d5001c;
+    color: #ff0223;
   }
   ::slotted(a:hover) {
     color: #ff0223 !important;

@@ -221,7 +221,6 @@ it.each<TagName>(tagNamesWithJss)('should wrap "@media (hover: hover)" around al
   const getAllHoverStates = [...getInnerHtml.matchAll(regExp)];
   getAllHoverStates.forEach((style) => {
     if (style[0].includes(':hover')) {
-      console.log({ SATYLE: style[0], getInnerHtml });
       expect(getInnerHtml.substring(style.index - MEDIA_HOVER_EXPRESSION.length - 1, style.index - 1)).toMatch(
         MEDIA_HOVER_EXPRESSION
       );
