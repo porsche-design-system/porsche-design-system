@@ -43,6 +43,7 @@ export const getComponentCss = (
           ? {
               color: disabledColor,
               cursor: 'not-allowed',
+              outline: 0,
             }
           : {
               color: baseColor,
