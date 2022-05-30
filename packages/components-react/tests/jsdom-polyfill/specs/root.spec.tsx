@@ -7,6 +7,7 @@ it('should have one unit test per component', () => {
     ...INTERNAL_TAG_NAMES,
     'p-flex-item',
     'p-grid-item',
+    'p-stepper-horizontal-item',
     'p-tabs-item',
     'p-text-list-item',
     'p-table-head',
