@@ -3,6 +3,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { IMaskModule } from 'angular-imask';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
 
@@ -11,6 +12,7 @@ import * as fromExamples from './examples';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    IMaskModule,
     PorscheDesignSystemModule.load({ prefix: '' }),
     PorscheDesignSystemModule.load({ prefix: 'my-prefix' }),
   ],
