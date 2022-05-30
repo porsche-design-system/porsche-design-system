@@ -9,8 +9,8 @@ export const StepperHorizontalPage = (): JSX.Element => {
           <PStepperHorizontalItem state="current">Step Current</PStepperHorizontalItem>
           <PStepperHorizontalItem state="warning">Step Warning</PStepperHorizontalItem>
           <PStepperHorizontalItem state="complete">Step Complete</PStepperHorizontalItem>
-          <PStepperHorizontalItem state="warning" disabled>Step Warning Disabled</PStepperHorizontalItem>
-          <PStepperHorizontalItem state="complete" disabled>Step Complete Disabled</PStepperHorizontalItem>
+          <PStepperHorizontalItem state="warning" disabled={true}>Step Warning Disabled</PStepperHorizontalItem>
+          <PStepperHorizontalItem state="complete" disabled={true}>Step Complete Disabled</PStepperHorizontalItem>
           <PStepperHorizontalItem>Step</PStepperHorizontalItem>
         </PStepperHorizontal>
       </div>
@@ -20,8 +20,12 @@ export const StepperHorizontalPage = (): JSX.Element => {
           <PStepperHorizontalItem theme="dark" state="current">Step Current</PStepperHorizontalItem>
           <PStepperHorizontalItem theme="dark" state="warning">Step Warning</PStepperHorizontalItem>
           <PStepperHorizontalItem theme="dark" state="complete">Step Complete</PStepperHorizontalItem>
-          <PStepperHorizontalItem theme="dark" state="warning" disabled>Step Warning Disabled</PStepperHorizontalItem>
-          <PStepperHorizontalItem theme="dark" state="complete" disabled>Step Complete Disabled</PStepperHorizontalItem>
+          <PStepperHorizontalItem theme="dark" state="warning" disabled={true}
+            >Step Warning Disabled
+          </PStepperHorizontalItem>
+          <PStepperHorizontalItem theme="dark" state="complete" disabled={true}
+            >Step Complete Disabled
+          </PStepperHorizontalItem>
           <PStepperHorizontalItem theme="dark">Step</PStepperHorizontalItem>
         </PStepperHorizontal>
       </div>
