@@ -8,6 +8,7 @@ export const getComponentCss = (wrap: boolean, maxWidth: number): string => {
     '@global': {
       ':host': {
         display: wrap ? 'grid' : 'inline-grid',
+        width: '100%',
         gridAutoColumns: '1fr',
         gridAutoRows: '1fr',
         gridGap: '4px',
