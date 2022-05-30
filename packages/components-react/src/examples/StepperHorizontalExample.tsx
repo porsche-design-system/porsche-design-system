@@ -26,11 +26,7 @@ export const StepperHorizontalExample = (): JSX.Element => {
     },
   ]);
 
-  const stepContent: JSX.Element[] = [
-    <PText>Your content of Step 1</PText>,
-    <PText>Your content of Step 2</PText>,
-    <PText>Your content of Step 3</PText>,
-  ];
+  const stepContent: string[] = ['One', 'Two', 'Three'];
 
   const getActiveStepIndex = (steps: StepperHorizontalItemProps[]): number =>
     steps.findIndex((step) => step.state === 'current');
@@ -72,15 +68,13 @@ export const StepperHorizontalExample = (): JSX.Element => {
         ))}
       </PStepperHorizontal>
 
-      {stepContent.map((component, i) => (
-        <div key={i} hidden={getActiveStepIndex(steps) !== i}>
-          {component}
-        </div>
-      ))}
+      {stepContent.map(
+        (content, i) => getActiveStepIndex(steps) === i && <PText key={i}>Your content of Step {content}</PText>
+      )}
 
       <PButtonGroup>
         <PButton
-          icon={'arrow-head-left'}
+          icon="arrow-head-left"
           variant="tertiary"
           onClick={() => onNextPrevStep('prev')}
           disabled={getActiveStepIndex(steps) === 0}

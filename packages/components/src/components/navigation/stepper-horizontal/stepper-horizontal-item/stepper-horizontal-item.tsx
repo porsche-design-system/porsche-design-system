@@ -23,29 +23,29 @@ export class StepperHorizontalItem {
 
   @State() private stepCounter: number;
 
+  private isStateUndefined: boolean;
+
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
-    if (!!this.disabled || this.state === 'current') {
+    if (!!this.isStateUndefined || !!this.disabled || this.state === 'current') {
       e.stopPropagation();
     }
   }
 
   @Watch('state')
   public stateHandler(newValue: StepperState): void {
-    if (!newValue) {
-      this.disabled = true;
-    }
+    this.isStateUndefined = !newValue;
   }
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'pStepperHorizontal');
     if (!this.state) {
-      this.disabled = true;
+      this.isStateUndefined = true;
     }
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.state, this.disabled, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.state, this.isStateUndefined || this.disabled, this.theme);
     throwIfCurrentAndDisabled(this.host);
   }
 
@@ -54,7 +54,7 @@ export class StepperHorizontalItem {
     const isCompleteOrWarning = isStateCompleteOrWarning(this.state);
 
     return (
-      <button disabled={this.disabled} aria-current={this.state === 'current' ? 'step' : null}>
+      <button disabled={this.isStateUndefined || this.disabled} aria-current={this.state === 'current' ? 'step' : null}>
         <span class="sr-only">Step {this.stepCounter}:</span>
         {isCompleteOrWarning && (
           <PrefixedTagNames.pIcon
