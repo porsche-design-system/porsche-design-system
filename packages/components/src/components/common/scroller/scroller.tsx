@@ -40,11 +40,6 @@ export class Scroller {
     }
   }
 
-  public connectedCallback(): void {
-    // TODO: adjust to work with stepper-horizontal
-    // throwIfParentIsNotOfKind(this.host, 'pTabsBar');
-  }
-
   public componentDidLoad(): void {
     this.initIntersectionObserver();
   }

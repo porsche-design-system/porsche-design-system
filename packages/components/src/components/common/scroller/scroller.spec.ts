@@ -1,17 +1,14 @@
-import * as throwIfParentIsNotOfKindUtils from '../../../utils/dom/throwIfParentIsNotOfKind';
 import { Scroller } from './scroller';
 
-describe('scroller', () => {
-  describe('connectedCallback', () => {
-    it('should call throwIfParentIsNotOfKind() with correct parameters', () => {
-      const spy = jest.spyOn(throwIfParentIsNotOfKindUtils, 'throwIfParentIsNotOfKind');
-      const component = new Scroller();
+describe('componentDidLoad', () => {
+  it('should call initIntersectionObserver()', () => {
+    const component = new Scroller();
+    const spy = jest.spyOn(component, 'initIntersectionObserver' as any);
 
-      try {
-        component.connectedCallback();
-      } catch (e) {}
+    try {
+      component.componentDidLoad();
+    } catch (e) {}
 
-      expect(spy).toBeCalledWith(undefined, 'pTabsBar');
-    });
+    expect(spy).toBeCalledTimes(1);
   });
 });
