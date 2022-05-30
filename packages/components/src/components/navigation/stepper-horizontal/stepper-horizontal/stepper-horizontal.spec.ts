@@ -5,9 +5,10 @@ import * as childrenObserverUtils from '../../../../utils/children-observer';
 import * as stepperHorizontalUtils from './stepper-horizontal-utils';
 
 describe('connectedCallback', () => {
-  it('should call defineStepperHorizontalItemElements() with correct parameters', () => {
+  it('should call defineStepperHorizontalItemElements()', () => {
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
+    component.host.attachShadow({ mode: 'open' });
 
     const spy = jest.spyOn(component, 'defineStepperHorizontalItemElements' as any);
 
@@ -21,6 +22,8 @@ describe('connectedCallback', () => {
 
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
+    component.host.attachShadow({ mode: 'open' });
+
     component.connectedCallback();
 
     expect(spy).toBeCalledWith(component.host, 'pStepperHorizontalItem');
@@ -31,6 +34,8 @@ describe('connectedCallback', () => {
 
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
+    component.host.attachShadow({ mode: 'open' });
+
     component.connectedCallback();
 
     expect(spy).toBeCalledWith(component.host, 9);
@@ -39,6 +44,7 @@ describe('connectedCallback', () => {
   it('should call defineStepperHorizontalItemElements()', () => {
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
+    component.host.attachShadow({ mode: 'open' });
 
     const spy = jest.spyOn(component, 'defineStepperHorizontalItemElements' as any);
 
@@ -52,6 +58,8 @@ describe('connectedCallback', () => {
 
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
+    component.host.attachShadow({ mode: 'open' });
+
     component.connectedCallback();
 
     expect(spy).toBeCalledWith(component.host, expect.anything());

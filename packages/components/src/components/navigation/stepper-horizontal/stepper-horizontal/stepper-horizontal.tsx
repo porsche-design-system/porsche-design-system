@@ -36,6 +36,7 @@ export class StepperHorizontal {
   private scrollerElement: HTMLElement;
 
   public connectedCallback(): void {
+    attachComponentCss(this.host, getComponentCss);
     // Initial validation
     this.validateComponent();
     this.defineStepperHorizontalItemElements();
@@ -64,10 +65,6 @@ export class StepperHorizontal {
       ),
       isSmooth: false,
     };
-  }
-
-  public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss);
   }
 
   public disconnectedCallback(): void {
