@@ -4,22 +4,24 @@ import type { SegmentedControlItemInternalHTMLProps } from '../segmented-control
 export const SEGMENTED_CONTROL_BACKGROUND_COLORS = ['background-surface', 'background-default'] as const;
 export type SegmentedControlBackgroundColor = typeof SEGMENTED_CONTROL_BACKGROUND_COLORS[number];
 
-export const getItemMaxWidth = async (host: HTMLElement): Promise<number> => {
-  const widths = await Promise.all(
-    Array.from(host.children).map(async (item) => {
-      const clone = item.cloneNode(true) as HTMLElement;
-      clone.style.position = 'absolute';
+// temporary dom node to measure max-width of children content
+const tempDiv = document.createElement('div'); // TODO: font-family?
+tempDiv.style.position = 'absolute';
+tempDiv.style.visibility = 'hidden';
+tempDiv.style.padding = '0 2.5rem';
+tempDiv.style.boxSizing = 'border-box';
 
-      host.parentElement.append(clone);
-      await (clone as any).componentOnReady();
-      const { width } = getComputedStyle(clone);
-      clone.remove();
+export const getItemMaxWidth = (host: HTMLElement): number => {
+  host.shadowRoot.append(tempDiv);
 
-      return width;
-    })
-  );
+  const widths = Array.from(host.children).map((item) => {
+    tempDiv.innerHTML = item.innerHTML;
+    return parseFloat(getComputedStyle(tempDiv).width);
+  });
 
-  return Math.max(...widths.map(parseFloat)) * 1.03;
+  tempDiv.remove();
+
+  return Math.max(...widths); // * 1.03; // TODO: buffer to be on safe side?
 };
 
 export const syncItemsProps = (

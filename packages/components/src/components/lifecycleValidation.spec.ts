@@ -141,7 +141,7 @@ it.each<TagName>(tagNamesWithRequiredChild)(
   }
 );
 
-it.each<TagName>(tagNamesWithJss)('should call attachComponentCss() in correct lifecycle for %s', async (tagName) => {
+it.each<TagName>(tagNamesWithJss)('should call attachComponentCss() in correct lifecycle for %s', (tagName) => {
   const spy = jest.spyOn(jssUtils, 'attachComponentCss');
   let spyCalls = 0;
 
@@ -183,7 +183,7 @@ it.each<TagName>(tagNamesWithJss)('should call attachComponentCss() in correct l
     }
 
     try {
-      await component.componentWillRender();
+      component.componentWillRender();
     } catch (e) {}
 
     if (spy.mock.calls.length) {
