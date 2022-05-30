@@ -3,6 +3,7 @@ import { attachComponentCss, observeChildren, unobserveChildren } from '../../..
 import { getComponentCss } from './segmented-control-styles';
 import type { Theme } from '../../../types';
 import type { SegmentedControlBackgroundColor } from './segmented-control-utils';
+import { getItemMaxWidth, syncItemsProps } from './segmented-control-utils';
 
 @Component({
   tag: 'p-segmented-control',
@@ -22,26 +23,10 @@ export class SegmentedControl {
   }
 
   public async componentWillRender(): Promise<void> {
-    const widths = await Promise.all(
-      Array.from(this.host.children).map(async (item) => {
-        (item as any).theme = this.theme; // forward props
-        (item as any).backgroundColor = this.backgroundColor; // forward props
-
-        const clone = item.cloneNode(true) as HTMLElement;
-        clone.style.position = 'absolute';
-
-        this.host.parentElement.append(clone);
-        await (clone as any).componentOnReady();
-        const { width } = getComputedStyle(clone);
-        clone.remove();
-
-        return width;
-      })
-    );
-
-    const maxWidth = Math.max(...widths.map(parseFloat)) * 1.03;
-
+    const maxWidth = await getItemMaxWidth(this.host);
     attachComponentCss(this.host, getComponentCss, maxWidth);
+
+    syncItemsProps(this.host, this.theme, this.backgroundColor);
   }
 
   public disconnectedCallback(): void {

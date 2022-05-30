@@ -1,15 +1,15 @@
 import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
 import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
-import type { IconName, Theme } from '../../../types';
-import type { SegmentedControlBackgroundColor } from '../segmented-control/segmented-control-utils';
+import type { IconName } from '../../../types';
 import { getComponentCss } from './segmented-control-item-styles';
+import type { SegmentedControlItemInternalHTMLProps } from './segmented-control-item-utils';
 
 @Component({
   tag: 'p-segmented-control-item',
   shadow: { delegatesFocus: true },
 })
 export class SegmentedControlItem {
-  @Element() public host!: HTMLElement & { backgroundColor: SegmentedControlBackgroundColor; theme: Theme };
+  @Element() public host!: HTMLElement & SegmentedControlItemInternalHTMLProps;
 
   // TODO: active? checked? selected?
   @Prop() public selected?: boolean = false;
