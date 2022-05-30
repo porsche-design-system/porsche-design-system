@@ -39,10 +39,6 @@ exports[`should have no basic DOM regression for p-banner 1`] = `
     font-style: normal !important;
   }
 
-  p-inline-notification a:hover {
-    color: #d5001c !important;
-  }
-
   p-inline-notification a::-moz-focus-inner {
     border: 0 !important;
   }
@@ -53,6 +49,12 @@ exports[`should have no basic DOM regression for p-banner 1`] = `
 
   p-inline-notification a:focus:not(:focus-visible) {
     outline-color: transparent !important;
+  }
+
+  @media (hover: hover) {
+    p-inline-notification a:hover {
+      color: #d5001c !important;
+    }
   }
 </style>
 <p-content-wrapper class=\\"hydrated\\">
@@ -96,11 +98,6 @@ exports[`should have no basic DOM regression for p-button 1`] = `
     font-style: normal !important;
   }
 
-  p-text a:hover,
-  p-text button:hover {
-    color: #d5001c !important;
-  }
-
   p-text a::-moz-focus-inner,
   p-text button::-moz-focus-inner {
     border: 0 !important;
@@ -114,6 +111,14 @@ exports[`should have no basic DOM regression for p-button 1`] = `
   p-text a:focus:not(:focus-visible),
   p-text button:focus:not(:focus-visible) {
     outline-color: transparent !important;
+  }
+
+  @media (hover: hover) {
+
+    p-text a:hover,
+    p-text button:hover {
+      color: #d5001c !important;
+    }
   }
 </style>
 <button class=\\"root\\" type=\\"submit\\" tabindex=\\"0\\">
@@ -168,11 +173,6 @@ exports[`should have no basic DOM regression for p-button-pure 1`] = `
     font-style: normal !important;
   }
 
-  p-text a:hover,
-  p-text button:hover {
-    color: #d5001c !important;
-  }
-
   p-text a::-moz-focus-inner,
   p-text button::-moz-focus-inner {
     border: 0 !important;
@@ -186,6 +186,14 @@ exports[`should have no basic DOM regression for p-button-pure 1`] = `
   p-text a:focus:not(:focus-visible),
   p-text button:focus:not(:focus-visible) {
     outline-color: transparent !important;
+  }
+
+  @media (hover: hover) {
+
+    p-text a:hover,
+    p-text button:hover {
+      color: #d5001c !important;
+    }
   }
 </style>
 <button class=\\"root\\" type=\\"submit\\" tabindex=\\"0\\">
@@ -292,11 +300,6 @@ exports[`should have no basic DOM regression for p-inline-notification 1`] = `
     font-style: normal !important;
   }
 
-  p-text a:hover,
-  p-text button:hover {
-    color: #d5001c !important;
-  }
-
   p-text a::-moz-focus-inner,
   p-text button::-moz-focus-inner {
     border: 0 !important;
@@ -310,6 +313,14 @@ exports[`should have no basic DOM regression for p-inline-notification 1`] = `
   p-text a:focus:not(:focus-visible),
   p-text button:focus:not(:focus-visible) {
     outline-color: transparent !important;
+  }
+
+  @media (hover: hover) {
+
+    p-text a:hover,
+    p-text button:hover {
+      color: #d5001c !important;
+    }
   }
 </style>
 <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
@@ -359,11 +370,6 @@ exports[`should have no basic DOM regression for p-link 1`] = `
     font-style: normal !important;
   }
 
-  p-text a:hover,
-  p-text button:hover {
-    color: #d5001c !important;
-  }
-
   p-text a::-moz-focus-inner,
   p-text button::-moz-focus-inner {
     border: 0 !important;
@@ -377,6 +383,14 @@ exports[`should have no basic DOM regression for p-link 1`] = `
   p-text a:focus:not(:focus-visible),
   p-text button:focus:not(:focus-visible) {
     outline-color: transparent !important;
+  }
+
+  @media (hover: hover) {
+
+    p-text a:hover,
+    p-text button:hover {
+      color: #d5001c !important;
+    }
   }
 </style>
 <a class=\\"root\\" href=\\"string\\" target=\\"_self\\">
@@ -424,11 +438,6 @@ exports[`should have no basic DOM regression for p-link-pure 1`] = `
     font-style: normal !important;
   }
 
-  p-text a:hover,
-  p-text button:hover {
-    color: #d5001c !important;
-  }
-
   p-text a::-moz-focus-inner,
   p-text button::-moz-focus-inner {
     border: 0 !important;
@@ -442,6 +451,14 @@ exports[`should have no basic DOM regression for p-link-pure 1`] = `
   p-text a:focus:not(:focus-visible),
   p-text button:focus:not(:focus-visible) {
     outline-color: transparent !important;
+  }
+
+  @media (hover: hover) {
+
+    p-text a:hover,
+    p-text button:hover {
+      color: #d5001c !important;
+    }
   }
 </style>
 <a class=\\"root\\" href=\\"string\\" target=\\"_self\\">
@@ -489,11 +506,6 @@ exports[`should have no basic DOM regression for p-link-social 1`] = `
     font-style: normal !important;
   }
 
-  p-text a:hover,
-  p-text button:hover {
-    color: #d5001c !important;
-  }
-
   p-text a::-moz-focus-inner,
   p-text button::-moz-focus-inner {
     border: 0 !important;
@@ -507,6 +519,14 @@ exports[`should have no basic DOM regression for p-link-social 1`] = `
   p-text a:focus:not(:focus-visible),
   p-text button:focus:not(:focus-visible) {
     outline-color: transparent !important;
+  }
+
+  @media (hover: hover) {
+
+    p-text a:hover,
+    p-text button:hover {
+      color: #d5001c !important;
+    }
   }
 </style>
 <a class=\\"root\\" href=\\"string\\" target=\\"_self\\">
@@ -634,11 +654,6 @@ exports[`should have no basic DOM regression for p-switch 1`] = `
     font-style: normal !important;
   }
 
-  p-text a:hover,
-  p-text button:hover {
-    color: #d5001c !important;
-  }
-
   p-text a::-moz-focus-inner,
   p-text button::-moz-focus-inner {
     border: 0 !important;
@@ -652,6 +667,14 @@ exports[`should have no basic DOM regression for p-switch 1`] = `
   p-text a:focus:not(:focus-visible),
   p-text button:focus:not(:focus-visible) {
     outline-color: transparent !important;
+  }
+
+  @media (hover: hover) {
+
+    p-text a:hover,
+    p-text button:hover {
+      color: #d5001c !important;
+    }
   }
 </style>
 <label class=\\"root\\">

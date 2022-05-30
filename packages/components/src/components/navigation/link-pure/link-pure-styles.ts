@@ -41,8 +41,10 @@ export const getComponentCss = (
             '&(a)': {
               color: active ? activeColor : baseColor, // TODO: chrome hover bug. Remove when fixed.
             },
-            '&(a:hover)': {
-              color: hoverColor, // TODO: chrome hover bug. Remove when fixed.
+            '@media (hover: hover)': {
+              '&(a:hover)': {
+                color: hoverColor, // TODO: chrome hover bug. Remove when fixed.
+              },
             },
           },
         },
