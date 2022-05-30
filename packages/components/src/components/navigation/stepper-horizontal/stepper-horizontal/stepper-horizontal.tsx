@@ -52,19 +52,22 @@ export class StepperHorizontal {
     this.defineHTMLElements();
     throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
 
-    this.addEventListeners();
+    // Sometimes lifecycle gets called after disconnectedCallback()
+    if (this.scrollAreaElement && this.prevGradientElement) {
+      this.addEventListeners();
 
-    // Initial scroll current into view
-    this.scroll = {
-      scrollPosition: getScrollActivePosition(
-        this.stepperHorizontalItems,
-        'next',
-        getIndexOfStepWithStateCurrent(this.stepperHorizontalItems),
-        this.scrollAreaElement.offsetWidth,
-        this.prevGradientElement.offsetWidth
-      ),
-      isSmooth: false,
-    };
+      // Initial scroll current into view
+      this.scroll = {
+        scrollPosition: getScrollActivePosition(
+          this.stepperHorizontalItems,
+          'next',
+          getIndexOfStepWithStateCurrent(this.stepperHorizontalItems),
+          this.scrollAreaElement.offsetWidth,
+          this.prevGradientElement.offsetWidth
+        ),
+        isSmooth: false,
+      };
+    }
   }
 
   public disconnectedCallback(): void {
