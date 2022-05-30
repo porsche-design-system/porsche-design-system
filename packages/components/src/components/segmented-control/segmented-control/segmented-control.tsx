@@ -22,9 +22,8 @@ export class SegmentedControl {
     observeChildren(this.host, () => forceUpdate(this.host));
   }
 
-  public async componentWillRender(): Promise<void> {
-    const maxWidth = await getItemMaxWidth(this.host);
-    attachComponentCss(this.host, getComponentCss, maxWidth);
+  public componentWillRender(): void {
+    attachComponentCss(this.host, getComponentCss, getItemMaxWidth(this.host));
 
     syncItemsProps(this.host, this.theme, this.backgroundColor);
   }
