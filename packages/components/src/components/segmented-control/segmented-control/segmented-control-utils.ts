@@ -8,6 +8,7 @@ import {
   ITEM_FONT,
 } from '../segmented-control-item/segmented-control-item-styles';
 import { fontFamily } from '@porsche-design-system/utilities-v2';
+import { getPrefixedTagNames, getTagName } from '../../../utils';
 
 export const SEGMENTED_CONTROL_BACKGROUND_COLORS = ['background-surface', 'background-default'] as const;
 export type SegmentedControlBackgroundColor = typeof SEGMENTED_CONTROL_BACKGROUND_COLORS[number];
@@ -50,4 +51,19 @@ export const syncItemsProps = (
     item.theme = theme;
     item.backgroundColor = backgroundColor;
   });
+};
+
+export const renderInputOutsideShadowRoot = (host: HTMLElement, name: string, value: string | number) => {
+  let input = host.querySelector('input');
+  if (!input) {
+    input = document.createElement('input');
+    input.type = 'hidden';
+    host.append(input);
+  }
+  input.name = name;
+  input.value = `${value}`;
+};
+
+export const isEventTargetSegmentedControlItem = (host: HTMLElement, target: HTMLElement): boolean => {
+  return getTagName(target) === getPrefixedTagNames(host).pSegmentedControlItem;
 };
