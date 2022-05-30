@@ -1,6 +1,6 @@
 import { getCss } from '../../../utils';
 import {
-  addImportantToRule,
+  addImportantToEachRule,
   getFocusJssStyle,
   getHoverJssStyle,
   getThemedColors,
@@ -21,9 +21,10 @@ export const getComponentCss = (
 
   return getCss({
     '@global': {
-      ':host': {
-        display: addImportantToRule('block'),
-      },
+      ':host': addImportantToEachRule({
+        display: 'block',
+        outline: 0,
+      }),
       button: {
         display: 'block',
         // minHeight: pxToRemWithUnit(48),
