@@ -12,9 +12,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(a) {
   color: #000;
 }
-::slotted(a:hover) {
-  color: #d5001c;
-}
 @media(min-width:480px) {
   :host {
     display: inline-block !important;
@@ -45,6 +42,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   :host {
     display: inline-block !important;
     vertical-align: top;
+  }
+}
+
+@media (hover: hover) {
+  ::slotted(a:hover) {
+    color: #d5001c;
   }
 }
 
@@ -298,9 +301,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(a) {
   color: #000;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+@media (hover: hover) {
+  ::slotted(a:hover) {
+    color: #d5001c;
+  }
 }
+
 .root {
   display: flex;
   align-items: flex-start;
@@ -464,9 +470,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(a) {
   color: #fff;
 }
-::slotted(a:hover) {
-  color: #ff0223;
+@media (hover: hover) {
+  ::slotted(a:hover) {
+    color: #ff0223;
+  }
 }
+
 .root {
   display: flex;
   align-items: flex-start;
@@ -560,9 +569,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(a) {
   color: #000;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+@media (hover: hover) {
+  ::slotted(a:hover) {
+    color: #d5001c;
+  }
 }
+
 .root {
   display: flex;
   align-items: flex-start;
@@ -656,9 +668,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(a) {
   color: #000;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+@media (hover: hover) {
+  ::slotted(a:hover) {
+    color: #d5001c;
+  }
 }
+
 .root {
   display: flex;
   align-items: flex-start;
@@ -731,9 +746,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(a) {
   color: #000;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+@media (hover: hover) {
+  ::slotted(a:hover) {
+    color: #d5001c;
+  }
 }
+
 .root {
   display: flex;
   align-items: flex-start;
@@ -827,9 +845,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(a) {
   color: #000;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+@media (hover: hover) {
+  ::slotted(a:hover) {
+    color: #d5001c;
+  }
 }
+
 .root {
   display: flex;
   align-items: flex-start;
@@ -902,9 +923,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(a) {
   color: #000;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+@media (hover: hover) {
+  ::slotted(a:hover) {
+    color: #d5001c;
+  }
 }
+
 .root {
   display: flex;
   align-items: flex-start;
@@ -1020,9 +1044,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(a) {
   color: #ff0223;
 }
-::slotted(a:hover) {
-  color: #ff0223;
+@media (hover: hover) {
+  ::slotted(a:hover) {
+    color: #ff0223;
+  }
 }
+
 .root {
   display: flex;
   align-items: flex-start;
@@ -1115,9 +1142,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ::slotted(a) {
   color: #d5001c;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+@media (hover: hover) {
+  ::slotted(a:hover) {
+    color: #d5001c;
+  }
 }
+
 .root {
   display: flex;
   align-items: flex-start;
@@ -1211,9 +1241,12 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
 ::slotted(a) {
   color: #000;
 }
-::slotted(a:hover) {
-  color: #d5001c;
+@media (hover: hover) {
+  ::slotted(a:hover) {
+    color: #d5001c;
+  }
 }
+
 .root {
   display: flex;
   align-items: flex-start;
