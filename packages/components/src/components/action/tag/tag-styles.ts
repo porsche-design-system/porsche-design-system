@@ -1,7 +1,8 @@
-import { getCss, isThemeDark } from '../../../utils';
+import { getCss } from '../../../utils';
 import {
   addImportantToEachRule,
   getInsetJssStyle,
+  getInvertedThemedColors,
   getThemedColors,
   getTransition,
   pxToRemWithUnit,
@@ -39,9 +40,7 @@ export const getColors = (
   const themedColors = getThemedColors(theme);
   const hasInvertedTheme = hasInvertedThemeColor(tagColor, theme);
 
-  const { baseColor, hoverColor } = hasInvertedTheme
-    ? getThemedColors(isThemeDark(theme) ? 'light' : 'dark')
-    : themedColors;
+  const { baseColor, hoverColor } = hasInvertedTheme ? getInvertedThemedColors(theme) : themedColors;
   const { focusColor, baseColor: themedBaseColor } = themedColors;
 
   return {

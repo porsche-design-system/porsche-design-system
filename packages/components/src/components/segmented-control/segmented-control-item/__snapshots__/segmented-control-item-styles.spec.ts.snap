@@ -13,13 +13,13 @@ button {
   margin: 0;
   border: 0;
   background: #262b2e;
+  color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   cursor: pointer;
-  color: #fff;
   outline: 1px solid transparent;
   outline-offset: 2px;
   transition: background-color var(--p-transition-duration, .24s) ease;
@@ -65,13 +65,13 @@ button {
   margin: 0;
   border: 0;
   background: #f2f2f2;
+  color: #000;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   cursor: pointer;
-  color: #000;
   outline: 1px solid transparent;
   outline-offset: 2px;
   transition: background-color var(--p-transition-duration, .24s) ease;
@@ -117,13 +117,13 @@ button {
   margin: 0;
   border: 0;
   background: #0e1418;
+  color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   cursor: pointer;
-  color: #fff;
   outline: 1px solid transparent;
   outline-offset: 2px;
   transition: background-color var(--p-transition-duration, .24s) ease;
@@ -169,13 +169,13 @@ button {
   margin: 0;
   border: 0;
   background: #fff;
+  color: #000;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   cursor: pointer;
-  color: #000;
   outline: 1px solid transparent;
   outline-offset: 2px;
   transition: background-color var(--p-transition-duration, .24s) ease;
@@ -221,13 +221,13 @@ button {
   margin: 0;
   border: 0;
   background: #f2f2f2;
+  color: #96989a;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   cursor: not-allowed;
-  color: #96989a;
   outline: 0;
 }
 span {
@@ -259,13 +259,13 @@ button {
   margin: 0;
   border: 0;
   background: #323639;
+  color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   cursor: pointer;
-  color: #fff;
   outline: 1px solid transparent;
   outline-offset: 2px;
 }
@@ -273,7 +273,7 @@ button::-moz-focus-inner {
   border: 0;
 }
 button:focus {
-  outline-color: #000;
+  outline-color: #fff;
 }
 button:focus:not(:focus-visible) {
   outline-color: transparent;
@@ -307,13 +307,13 @@ button {
   margin: 0;
   border: 0;
   background: #323639;
+  color: #96989a;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
   cursor: not-allowed;
-  color: #96989a;
   outline: 0;
 }
 span {
