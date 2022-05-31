@@ -77,8 +77,10 @@ export const getTagFocusJssStyle = (focusColor: string, focusHoverColor: string)
     '&:focus:not(:focus-visible)::before': {
       borderColor: 'transparent',
     },
-    '&:hover:focus::before': {
-      borderColor: focusHoverColor,
+    '@media (hover: hover)': {
+      '&:hover:focus::before': {
+        borderColor: focusHoverColor,
+      },
     },
   };
 };
@@ -105,8 +107,10 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
         whiteSpace: 'nowrap',
         ...(isFocusable && {
           transition: getTransition('color'),
-          '&:hover': {
-            color: hoverColor,
+          '@media (hover: hover)': {
+            '&:hover': {
+              color: hoverColor,
+            },
           },
         }),
       },

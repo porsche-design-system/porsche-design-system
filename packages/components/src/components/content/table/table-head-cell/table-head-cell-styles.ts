@@ -50,10 +50,12 @@ export const getComponentCss = (
               cursor: 'pointer',
               ...getHoverJssStyle(),
               ...getFocusJssStyle({ offset: 1 }),
+              // '@media (hover: hover)': {
               '&:hover, &:focus': {
                 '& .icon': {
                   opacity: 1,
                 },
+                // },
               },
             },
           }

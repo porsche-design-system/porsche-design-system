@@ -217,14 +217,16 @@ export const getLinkButtonStyles = (
         ...getFocusJssStyle(),
       }),
       ...(!isDisabledOrLoading && {
-        '&:hover, &:active': {
-          color: primaryColorHover,
-          ...(isTertiary && {
-            backgroundColor: 'currentColor',
-            '& $label, & $icon': {
-              color: isDarkTheme ? lightThemeBaseColor : darkThemeBaseColor,
-            },
-          }),
+        '@media (hover: hover)': {
+          '&:hover, &:active': {
+            color: primaryColorHover,
+            ...(isTertiary && {
+              backgroundColor: 'currentColor',
+              '& $label, & $icon': {
+                color: isDarkTheme ? lightThemeBaseColor : darkThemeBaseColor,
+              },
+            }),
+          },
         },
       }),
     },

@@ -360,16 +360,32 @@ p-text a, p-text button {
   outline-offset: 1px !important;
 }
 p-text[data-theme=\\"dark\\"] a:hover, p-text[data-theme=\\"dark\\"] button:hover {
-  color: #ff0223 !important;
+  0: u;
+  1: n;
+  2: d;
+  3: e;
+  4: f;
+  5: i;
+  6: n;
+  7: e;
+  8: d;
+  9:  ;
+  10: !;
+  11: i;
+  12: m;
+  13: p;
+  14: o;
+  15: r;
+  16: t;
+  17: a;
+  18: n;
+  19: t;
 }
 p-text b, p-text strong {
   font-weight: 700 !important;
 }
 p-text em, p-text i {
   font-style: normal !important;
-}
-p-text a:hover, p-text button:hover {
-  color: #d5001c !important;
 }
 p-text a::-moz-focus-inner, p-text button::-moz-focus-inner {
   border: 0 !important;
@@ -379,7 +395,13 @@ p-text a:focus, p-text button:focus {
 }
 p-text a:focus:not(:focus-visible), p-text button:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}"
+}
+@media (hover: hover) {
+  p-text a:hover, p-text button:hover {
+    color: #d5001c !important;
+  }
+}
+"
 `;
 
 exports[`getSlottedCss() should return correct css with prefix 1`] = `
@@ -399,16 +421,32 @@ prefixed-p-text a, prefixed-p-text button {
   outline-offset: 1px !important;
 }
 prefixed-p-text[data-theme=\\"dark\\"] a:hover, prefixed-p-text[data-theme=\\"dark\\"] button:hover {
-  color: #ff0223 !important;
+  0: u;
+  1: n;
+  2: d;
+  3: e;
+  4: f;
+  5: i;
+  6: n;
+  7: e;
+  8: d;
+  9:  ;
+  10: !;
+  11: i;
+  12: m;
+  13: p;
+  14: o;
+  15: r;
+  16: t;
+  17: a;
+  18: n;
+  19: t;
 }
 prefixed-p-text b, prefixed-p-text strong {
   font-weight: 700 !important;
 }
 prefixed-p-text em, prefixed-p-text i {
   font-style: normal !important;
-}
-prefixed-p-text a:hover, prefixed-p-text button:hover {
-  color: #d5001c !important;
 }
 prefixed-p-text a::-moz-focus-inner, prefixed-p-text button::-moz-focus-inner {
   border: 0 !important;
@@ -418,5 +456,11 @@ prefixed-p-text a:focus, prefixed-p-text button:focus {
 }
 prefixed-p-text a:focus:not(:focus-visible), prefixed-p-text button:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}"
+}
+@media (hover: hover) {
+  prefixed-p-text a:hover, prefixed-p-text button:hover {
+    color: #d5001c !important;
+  }
+}
+"
 `;

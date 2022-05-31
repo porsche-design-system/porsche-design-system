@@ -54,12 +54,6 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #1877f2;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -79,7 +73,16 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #1877f2;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-facebook, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -136,12 +139,6 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #1877f2;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -161,7 +158,16 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #1877f2;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-google, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -218,12 +224,6 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #4285f4;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -243,7 +243,16 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #4285f4;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-google, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -300,12 +309,6 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #4285f4;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -325,7 +328,16 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #4285f4;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-instagram, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -382,12 +394,6 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #e1306c;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -407,7 +413,16 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #e1306c;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-instagram, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -464,12 +479,6 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #e1306c;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -489,7 +498,16 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #e1306c;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-kakaotalk, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -546,12 +564,6 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #fae300;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #000;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -571,7 +583,16 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #fae300;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #000;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-kakaotalk, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -628,12 +649,6 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #fae300;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #000;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -653,7 +668,16 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #fae300;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #000;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-linkedin, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -710,12 +734,6 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #0077b5;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -735,7 +753,16 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #0077b5;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-linkedin, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -792,12 +819,6 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #0077b5;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -817,7 +838,16 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #0077b5;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-naver, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -874,12 +904,6 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #03cf5d;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -899,7 +923,16 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #03cf5d;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-naver, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -956,12 +989,6 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #03cf5d;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -981,7 +1008,16 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #03cf5d;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-pinterest, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -1038,12 +1074,6 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #e60023;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -1063,7 +1093,16 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #e60023;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-pinterest, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -1120,12 +1159,6 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #e60023;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -1145,7 +1178,16 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #e60023;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-reddit, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -1202,12 +1244,6 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #ff4500;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -1227,7 +1263,16 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #ff4500;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-reddit, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -1284,12 +1329,6 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #ff4500;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -1309,7 +1348,16 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #ff4500;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-tiktok, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -1366,12 +1414,6 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #fe2c55;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -1391,7 +1433,16 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #fe2c55;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-tiktok, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -1448,12 +1499,6 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #fe2c55;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -1473,7 +1518,16 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #fe2c55;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-twitter, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -1530,12 +1584,6 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #1da1f2;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -1555,7 +1603,16 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #1da1f2;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-twitter, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -1612,12 +1669,6 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #1da1f2;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -1637,7 +1688,16 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #1da1f2;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-wechat, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -1694,12 +1754,6 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #1aad19;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -1719,7 +1773,16 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #1aad19;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-wechat, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -1776,12 +1839,6 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #1aad19;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -1801,7 +1858,16 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #1aad19;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-whatsapp, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -1858,12 +1924,6 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #25d366;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -1883,7 +1943,16 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #25d366;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-whatsapp, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -1940,12 +2009,6 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #25d366;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -1965,7 +2028,16 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #25d366;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-xing, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -2022,12 +2094,6 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #006567;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -2047,7 +2113,16 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #006567;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-xing, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -2104,12 +2179,6 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #006567;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -2129,7 +2198,16 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #006567;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-youtube, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, hasHref: false and theme: light 1`] = `
@@ -2256,12 +2334,6 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #ff0000;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -2356,6 +2428,15 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
     text-indent: 0;
   }
 }
+
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #ff0000;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
 "
 `;
 
@@ -2413,12 +2494,6 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #ff0000;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -2438,7 +2513,16 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #ff0000;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-youtube, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -2495,12 +2579,6 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #ff0000;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -2520,7 +2598,16 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #ff0000;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: logo-youtube, hideLabel: false, hasHref: true and theme: light 1`] = `
@@ -2549,9 +2636,6 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
   outline-offset: 2px;
 }
-.root:hover, .root:active {
-  color: #ff0000;
-}
 .root::-moz-focus-inner {
   border: 0;
 }
@@ -2560,9 +2644,6 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
 }
 .root:focus:not(:focus-visible) {
   outline-color: transparent;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -2583,7 +2664,16 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #ff0000;
+  }
+  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+    color: #fff;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: undefined, hideLabel: false, hasHref: false and theme: dark 1`] = `
@@ -2640,9 +2730,6 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #e0e0e0;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -2662,7 +2749,13 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #e0e0e0;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: undefined, hideLabel: false, hasHref: false and theme: light 1`] = `
@@ -2719,9 +2812,6 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-.root:hover, .root:active {
-  color: #151718;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -2741,5 +2831,11 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media (hover: hover) {
+  .root:hover, .root:active {
+    color: #151718;
+  }
+}
+"
 `;

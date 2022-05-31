@@ -1232,9 +1232,6 @@ p-checkbox-wrapper b, p-checkbox-wrapper strong {
 p-checkbox-wrapper em, p-checkbox-wrapper i {
   font-style: normal !important;
 }
-p-checkbox-wrapper a:hover {
-  color: #d5001c !important;
-}
 p-checkbox-wrapper a::-moz-focus-inner {
   border: 0 !important;
 }
@@ -1243,7 +1240,13 @@ p-checkbox-wrapper a:focus {
 }
 p-checkbox-wrapper a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}"
+}
+@media (hover: hover) {
+  p-checkbox-wrapper a:hover {
+    color: #d5001c !important;
+  }
+}
+"
 `;
 
 exports[`getSlottedCss() should return correct css with prefix 1`] = `
@@ -1260,9 +1263,6 @@ prefixed-p-checkbox-wrapper b, prefixed-p-checkbox-wrapper strong {
 prefixed-p-checkbox-wrapper em, prefixed-p-checkbox-wrapper i {
   font-style: normal !important;
 }
-prefixed-p-checkbox-wrapper a:hover {
-  color: #d5001c !important;
-}
 prefixed-p-checkbox-wrapper a::-moz-focus-inner {
   border: 0 !important;
 }
@@ -1271,5 +1271,11 @@ prefixed-p-checkbox-wrapper a:focus {
 }
 prefixed-p-checkbox-wrapper a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}"
+}
+@media (hover: hover) {
+  prefixed-p-checkbox-wrapper a:hover {
+    color: #d5001c !important;
+  }
+}
+"
 `;

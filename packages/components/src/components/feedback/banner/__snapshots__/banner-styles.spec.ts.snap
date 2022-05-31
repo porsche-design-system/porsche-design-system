@@ -145,9 +145,6 @@ p-banner b, p-banner strong {
 p-banner em, p-banner i {
   font-style: normal !important;
 }
-p-banner a:hover {
-  color: #d5001c !important;
-}
 p-banner a::-moz-focus-inner {
   border: 0 !important;
 }
@@ -156,7 +153,13 @@ p-banner a:focus {
 }
 p-banner a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}"
+}
+@media (hover: hover) {
+  p-banner a:hover {
+    color: #d5001c !important;
+  }
+}
+"
 `;
 
 exports[`getSlottedCss() should return correct css with prefix 1`] = `
@@ -173,9 +176,6 @@ prefixed-p-banner b, prefixed-p-banner strong {
 prefixed-p-banner em, prefixed-p-banner i {
   font-style: normal !important;
 }
-prefixed-p-banner a:hover {
-  color: #d5001c !important;
-}
 prefixed-p-banner a::-moz-focus-inner {
   border: 0 !important;
 }
@@ -184,5 +184,11 @@ prefixed-p-banner a:focus {
 }
 prefixed-p-banner a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}"
+}
+@media (hover: hover) {
+  prefixed-p-banner a:hover {
+    color: #d5001c !important;
+  }
+}
+"
 `;

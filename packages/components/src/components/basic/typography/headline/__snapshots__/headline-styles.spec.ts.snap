@@ -455,16 +455,32 @@ exports[`getSlottedCss() should return correct css 1`] = `
   outline-offset: 1px !important;
 }
 p-headline[data-theme=\\"dark\\"] a:hover {
-  color: #ff0223 !important;
+  0: u;
+  1: n;
+  2: d;
+  3: e;
+  4: f;
+  5: i;
+  6: n;
+  7: e;
+  8: d;
+  9:  ;
+  10: !;
+  11: i;
+  12: m;
+  13: p;
+  14: o;
+  15: r;
+  16: t;
+  17: a;
+  18: n;
+  19: t;
 }
 p-headline b, p-headline strong {
   font-weight: 700 !important;
 }
 p-headline em, p-headline i {
   font-style: normal !important;
-}
-p-headline a:hover {
-  color: #d5001c !important;
 }
 p-headline a::-moz-focus-inner {
   border: 0 !important;
@@ -474,7 +490,13 @@ p-headline a:focus {
 }
 p-headline a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}"
+}
+@media (hover: hover) {
+  p-headline a:hover {
+    color: #d5001c !important;
+  }
+}
+"
 `;
 
 exports[`getSlottedCss() should return correct css with prefix 1`] = `
@@ -486,16 +508,32 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
   outline-offset: 1px !important;
 }
 prefixed-p-headline[data-theme=\\"dark\\"] a:hover {
-  color: #ff0223 !important;
+  0: u;
+  1: n;
+  2: d;
+  3: e;
+  4: f;
+  5: i;
+  6: n;
+  7: e;
+  8: d;
+  9:  ;
+  10: !;
+  11: i;
+  12: m;
+  13: p;
+  14: o;
+  15: r;
+  16: t;
+  17: a;
+  18: n;
+  19: t;
 }
 prefixed-p-headline b, prefixed-p-headline strong {
   font-weight: 700 !important;
 }
 prefixed-p-headline em, prefixed-p-headline i {
   font-style: normal !important;
-}
-prefixed-p-headline a:hover {
-  color: #d5001c !important;
 }
 prefixed-p-headline a::-moz-focus-inner {
   border: 0 !important;
@@ -505,5 +543,11 @@ prefixed-p-headline a:focus {
 }
 prefixed-p-headline a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}"
+}
+@media (hover: hover) {
+  prefixed-p-headline a:hover {
+    color: #d5001c !important;
+  }
+}
+"
 `;

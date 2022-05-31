@@ -46,8 +46,10 @@ export const getComponentCss = (
               padding: `${pxToRemWithUnit(s === 'medium' ? 20 : 12)} 0`,
             }))),
         ...getFocusJssStyle({ color: focusColor }),
-        '&:hover': {
-          color: hoverColor,
+        '@media (hover: hover)': {
+          '&:hover': {
+            color: hoverColor,
+          },
         },
       },
     },

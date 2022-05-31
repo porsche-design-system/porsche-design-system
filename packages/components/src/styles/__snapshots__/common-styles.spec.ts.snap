@@ -27,8 +27,10 @@ Object {
     "&:focus:not(:focus-visible)": Object {
       "outlineColor": "transparent",
     },
-    "&:hover": Object {
-      "color": "#d5001c",
+    "@media (hover: hover)": Object {
+      "&:hover": Object {
+        "color": "#d5001c",
+      },
     },
     "color": "inherit",
     "outline": "1px solid transparent",
@@ -57,8 +59,10 @@ Object {
     "&:focus:not(:focus-visible)": Object {
       "outlineColor": "transparent",
     },
-    "&:hover": Object {
-      "color": "#d5001c",
+    "@media (hover: hover)": Object {
+      "&:hover": Object {
+        "color": "#d5001c",
+      },
     },
     "color": "inherit",
     "outline": "1px solid transparent",
@@ -72,9 +76,7 @@ Object {
   "& em, & i": Object {
     "fontStyle": "normal",
   },
-  "&[data-theme=\\"dark\\"] a:hover": Object {
-    "color": "#ff0223",
-  },
+  "&[data-theme=\\"dark\\"] a:hover": undefined,
 }
 `;
 
@@ -90,8 +92,10 @@ Object {
     "&:focus:not(:focus-visible)": Object {
       "outlineColor": "transparent",
     },
-    "&:hover": Object {
-      "color": "#d5001c",
+    "@media (hover: hover)": Object {
+      "&:hover": Object {
+        "color": "#d5001c",
+      },
     },
     "color": "inherit",
     "outline": "1px solid transparent",
@@ -253,8 +257,10 @@ Object {
 
 exports[`getHoverJssStyles() should return correct JssStyle for theme: 'dark' 1`] = `
 Object {
-  "&:hover": Object {
-    "color": "#ff0223",
+  "@media (hover: hover)": Object {
+    "&:hover": Object {
+      "color": "#ff0223",
+    },
   },
   "transition": "color var(--p-transition-duration, .24s) ease",
 }
@@ -262,8 +268,10 @@ Object {
 
 exports[`getHoverJssStyles() should return correct JssStyle for theme: 'light' 1`] = `
 Object {
-  "&:hover": Object {
-    "color": "#d5001c",
+  "@media (hover: hover)": Object {
+    "&:hover": Object {
+      "color": "#d5001c",
+    },
   },
   "transition": "color var(--p-transition-duration, .24s) ease",
 }

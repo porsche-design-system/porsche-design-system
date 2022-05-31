@@ -77,8 +77,10 @@ export const getComponentCss = (
         color: baseColor,
         transition: getTransition('color'),
         ...getFocusJssStyle({ offset: hasVisibleState ? -5 : -4 }),
-        '&:hover': {
-          color: hoverColor,
+        '@media (hover: hover)': {
+          '&:hover': {
+            color: hoverColor,
+          },
         },
         '&:active': {
           color: activeColor,

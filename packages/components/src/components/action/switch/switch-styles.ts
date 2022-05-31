@@ -131,11 +131,13 @@ export const getComponentCss = (
         cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
         transition: `${getTransition('background-color')},${getTransition('border-color')},${getTransition('color')}`,
         ...(!isDisabledOrLoading && {
-          '&:hover': {
-            color: buttonBorderColorHover,
-            backgroundColor: buttonBackgroundColorHover,
-            '& .toggle': {
-              backgroundColor: toggleBackgroundColorHover,
+          '@media (hover: hover)': {
+            '&:hover': {
+              color: buttonBorderColorHover,
+              backgroundColor: buttonBackgroundColorHover,
+              '& .toggle': {
+                backgroundColor: toggleBackgroundColorHover,
+              },
             },
           },
         }),

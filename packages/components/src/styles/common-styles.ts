@@ -42,8 +42,10 @@ type GetHoverStylesOptions = {
 export const getHoverJssStyle = ({ theme }: GetHoverStylesOptions = { theme: 'light' }): JssStyle => {
   return {
     transition: getTransition('color'),
-    '&:hover': {
-      color: getThemedColors(theme).hoverColor,
+    '@media (hover: hover)': {
+      '&:hover': {
+        color: getThemedColors(theme).hoverColor,
+      },
     },
   };
 };

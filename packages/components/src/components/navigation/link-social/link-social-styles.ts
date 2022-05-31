@@ -99,10 +99,12 @@ export const getComponentCss = (
       color: baseColor,
       transition:
         getTransition('background-color') + ',' + getTransition('border-color') + ',' + getTransition('color'),
-      '&:hover, &:active': {
-        color: baseColorHover,
-        '& $label, & $icon': {
-          color: textColorHover,
+      '@media (hover: hover)': {
+        '&:hover, &:active': {
+          color: baseColorHover,
+          '& $label, & $icon': {
+            color: textColorHover,
+          },
         },
       },
       ...(hasHref && {

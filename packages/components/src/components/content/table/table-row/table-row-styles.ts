@@ -7,8 +7,10 @@ export const getComponentCss = (): string => {
       ':host': addImportantToEachRule({
         display: 'table-row',
         transition: getTransition('background-color'),
-        '&(:hover)': {
-          backgroundColor: getThemedColors('light').backgroundSurfaceColor,
+        '@media (hover: hover)': {
+          '&(:hover)': {
+            backgroundColor: getThemedColors('light').backgroundSurfaceColor,
+          },
         },
       }),
     },

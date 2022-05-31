@@ -50,8 +50,10 @@ export const getComponentCss = (
         cursor: 'pointer',
         color: baseColor,
         ...getFocusJssStyle({ color: focusColor, offset: 1 }),
-        '&:hover': {
-          color: hoverColor,
+        '@media (hover: hover)': {
+          '&:hover': {
+            color: hoverColor,
+          },
         },
         '&:active': {
           outline: 'none',
@@ -64,8 +66,10 @@ export const getComponentCss = (
         },
         '&[aria-current]': {
           cursor: 'default',
-          '&:hover': {
-            color: baseColor,
+          '@media (hover: hover)': {
+            '&:hover': {
+              color: baseColor,
+            },
           },
           '&::after': {
             content: '""',

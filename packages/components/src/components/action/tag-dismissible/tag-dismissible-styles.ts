@@ -36,8 +36,10 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
         ...textSmall,
         outline: 0,
         ...getTagFocusJssStyle(baseColor, hoverColor),
-        '&:hover .icon': {
-          color: hoverColor,
+        '@media (hover: hover)': {
+          '&:hover .icon': {
+            color: hoverColor,
+          },
         },
       },
       '::slotted': addImportantToEachRule(slottedTextJssStyle),
