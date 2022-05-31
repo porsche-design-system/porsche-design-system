@@ -40,21 +40,35 @@ export const SegmentedControlPage = (): JSX.Element => {
         </PSegmentedControl>
       </div>
 
-      <div className="playground light" title="should render default segmented-control with many items">
+      <div className="playground light" title="should render segmented-control with labels">
         <PSegmentedControl>
-          <PSegmentedControlItem>Size XXS</PSegmentedControlItem>
-          <PSegmentedControlItem>Size XS</PSegmentedControlItem>
-          <PSegmentedControlItem>Size S</PSegmentedControlItem>
-          <PSegmentedControlItem>Size M</PSegmentedControlItem>
-          <PSegmentedControlItem>Size L</PSegmentedControlItem>
-          <PSegmentedControlItem>Size XL</PSegmentedControlItem>
-          <PSegmentedControlItem>Size XXL</PSegmentedControlItem>
-          <PSegmentedControlItem>Size XXXL</PSegmentedControlItem>
+          <PSegmentedControlItem label="Size">S</PSegmentedControlItem>
+          <PSegmentedControlItem label="Size">M</PSegmentedControlItem>
+          <PSegmentedControlItem label="Size">L</PSegmentedControlItem>
+          <PSegmentedControlItem label="Size">XL</PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 
-      <div className="playground light" title="should render segmented-control with labels">
-        <PSegmentedControl>
+      <div className="playground light surface" title="should render segmented-control with labels on surface">
+        <PSegmentedControl backgroundColor="background-surface">
+          <PSegmentedControlItem label="Size">S</PSegmentedControlItem>
+          <PSegmentedControlItem label="Size">M</PSegmentedControlItem>
+          <PSegmentedControlItem label="Size">L</PSegmentedControlItem>
+          <PSegmentedControlItem label="Size">XL</PSegmentedControlItem>
+        </PSegmentedControl>
+      </div>
+
+      <div className="playground dark" title="should render segmented-control with labels on dark theme">
+        <PSegmentedControl theme="dark">
+          <PSegmentedControlItem label="Size">S</PSegmentedControlItem>
+          <PSegmentedControlItem label="Size">M</PSegmentedControlItem>
+          <PSegmentedControlItem label="Size">L</PSegmentedControlItem>
+          <PSegmentedControlItem label="Size">XL</PSegmentedControlItem>
+        </PSegmentedControl>
+      </div>
+
+      <div className="playground dark surface" title="should render segmented-control with labels on dark theme surface">
+        <PSegmentedControl theme="dark" backgroundColor="background-surface">
           <PSegmentedControlItem label="Size">S</PSegmentedControlItem>
           <PSegmentedControlItem label="Size">M</PSegmentedControlItem>
           <PSegmentedControlItem label="Size">L</PSegmentedControlItem>
@@ -72,12 +86,55 @@ export const SegmentedControlPage = (): JSX.Element => {
         </PSegmentedControl>
       </div>
 
+      <div className="playground light surface" title="should render segmented-control with icons on surface">
+        <PSegmentedControl backgroundColor="background-surface">
+          <PSegmentedControlItem icon="increase">Start</PSegmentedControlItem>
+          <PSegmentedControlItem icon="lock">Stop</PSegmentedControlItem>
+          <PSegmentedControlItem icon="question">FAQ</PSegmentedControlItem>
+          <PSegmentedControlItem icon="shopping-cart">Checkout</PSegmentedControlItem>
+          <PSegmentedControlItem iconSource="./assets/icon-custom-kaixin.svg">Confirmation</PSegmentedControlItem>
+        </PSegmentedControl>
+      </div>
+
+      <div className="playground dark" title="should render segmented-control with icons on dark theme">
+        <PSegmentedControl theme="dark">
+          <PSegmentedControlItem icon="increase">Start</PSegmentedControlItem>
+          <PSegmentedControlItem icon="lock">Stop</PSegmentedControlItem>
+          <PSegmentedControlItem icon="question">FAQ</PSegmentedControlItem>
+          <PSegmentedControlItem icon="shopping-cart">Checkout</PSegmentedControlItem>
+          <PSegmentedControlItem iconSource="./assets/icon-custom-kaixin.svg">Confirmation</PSegmentedControlItem>
+        </PSegmentedControl>
+      </div>
+
+      <div className="playground dark surface" title="should render segmented-control with icons on dark theme surface">
+        <PSegmentedControl theme="dark" backgroundColor="background-surface">
+          <PSegmentedControlItem icon="increase">Start</PSegmentedControlItem>
+          <PSegmentedControlItem icon="lock">Stop</PSegmentedControlItem>
+          <PSegmentedControlItem icon="question">FAQ</PSegmentedControlItem>
+          <PSegmentedControlItem icon="shopping-cart">Checkout</PSegmentedControlItem>
+          <PSegmentedControlItem iconSource="./assets/icon-custom-kaixin.svg">Confirmation</PSegmentedControlItem>
+        </PSegmentedControl>
+      </div>
+
       <div className="playground light" title="should render segmented-control with labels and icons">
         <PSegmentedControl>
           <PSegmentedControlItem label="Variant" icon="wrench">Default</PSegmentedControlItem>
           <PSegmentedControlItem label="Variant" icon="wrenches">Advanced</PSegmentedControlItem>
           <PSegmentedControlItem label="Variant" icon="truck">Large</PSegmentedControlItem>
           <PSegmentedControlItem label="Variant" icon="tachometer">Custom</PSegmentedControlItem>
+        </PSegmentedControl>
+      </div>
+
+      <div className="playground light" title="should render default segmented-control with many items">
+        <PSegmentedControl>
+          <PSegmentedControlItem>Size XXS</PSegmentedControlItem>
+          <PSegmentedControlItem>Size XS</PSegmentedControlItem>
+          <PSegmentedControlItem>Size S</PSegmentedControlItem>
+          <PSegmentedControlItem>Size M</PSegmentedControlItem>
+          <PSegmentedControlItem>Size L</PSegmentedControlItem>
+          <PSegmentedControlItem>Size XL</PSegmentedControlItem>
+          <PSegmentedControlItem>Size XXL</PSegmentedControlItem>
+          <PSegmentedControlItem>Size XXXL</PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 

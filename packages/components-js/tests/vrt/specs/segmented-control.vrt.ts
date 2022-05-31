@@ -30,23 +30,23 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       const getElementsMarkup: GetThemedMarkup = (theme) => `
         <p-segmented-control theme="${theme}">
           <p-segmented-control-item>Default</p-segmented-control-item>
-          <p-segmented-control-item selected>Default</p-segmented-control-item>
-          <p-segmented-control-item disabled>Default</p-segmented-control-item>
+          <p-segmented-control-item selected>Selected</p-segmented-control-item>
+          <p-segmented-control-item disabled>Disabled</p-segmented-control-item>
         </p-segmented-control>
         <p-segmented-control theme="${theme}">
-          <p-segmented-control-item label="Some label">With label</p-segmented-control-item>
-          <p-segmented-control-item label="Some label" selected>With label</p-segmented-control-item>
-          <p-segmented-control-item label="Some label" disabled>With label</p-segmented-control-item>
+          <p-segmented-control-item label="Some label">Default</p-segmented-control-item>
+          <p-segmented-control-item label="Some label" selected>Selected</p-segmented-control-item>
+          <p-segmented-control-item label="Some label" disabled>Disabled</p-segmented-control-item>
         </p-segmented-control>
         <p-segmented-control theme="${theme}">
-          <p-segmented-control-item icon="arrow-head-right">With icon</p-segmented-control-item>
-          <p-segmented-control-item icon="arrow-head-right" selected>With icon</p-segmented-control-item>
-          <p-segmented-control-item icon="arrow-head-right" disabled>With icon</p-segmented-control-item>
+          <p-segmented-control-item icon="arrow-head-right">Default</p-segmented-control-item>
+          <p-segmented-control-item icon="arrow-head-right" selected>Selected</p-segmented-control-item>
+          <p-segmented-control-item icon="arrow-head-right" disabled>Disabled</p-segmented-control-item>
         </p-segmented-control>
         <p-segmented-control theme="${theme}">
-          <p-segmented-control-item label="Some label" icon="arrow-head-right">With label and icon</p-segmented-control-item>
-          <p-segmented-control-item label="Some label" icon="arrow-head-right" selected>With label and icon</p-segmented-control-item>
-          <p-segmented-control-item label="Some label" icon="arrow-head-right" disabled>With label and icon</p-segmented-control-item>
+          <p-segmented-control-item label="Some label" icon="arrow-head-right">Default</p-segmented-control-item>
+          <p-segmented-control-item label="Some label" icon="arrow-head-right" selected>Selected</p-segmented-control-item>
+          <p-segmented-control-item label="Some label" icon="arrow-head-right" disabled>Disabled</p-segmented-control-item>
         </p-segmented-control>`;
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup, { themes: ['light', 'dark'] }), {
