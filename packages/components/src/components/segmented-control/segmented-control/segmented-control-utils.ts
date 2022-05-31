@@ -21,6 +21,7 @@ tempDiv.style.position = 'absolute';
 tempDiv.style.visibility = 'hidden';
 tempDiv.style.padding = `0 ${ITEM_PADDING}`;
 tempDiv.style.boxSizing = 'border-box';
+// TODO: fallback can cause jump when sans-serif is used initially but Porsche Next is available afterwards
 tempDiv.style.font = ITEM_FONT.replace(fontFamily, '"Porsche Next",sans-serif');
 
 const tempIcon = document.createElement('div');

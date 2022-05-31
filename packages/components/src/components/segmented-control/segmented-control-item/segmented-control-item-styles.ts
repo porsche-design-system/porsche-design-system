@@ -2,11 +2,11 @@ import { getCss } from '../../../utils';
 import {
   addImportantToEachRule,
   getFocusJssStyle,
-  getHoverJssStyle,
   getThemedColors,
+  getTransition,
   pxToRemWithUnit,
 } from '../../../styles';
-import { fontWeight, textSmall, textXSmall } from '@porsche-design-system/utilities-v2';
+import { textSmall, textXSmall } from '@porsche-design-system/utilities-v2';
 import type { Theme } from '../../../types';
 import type { SegmentedControlBackgroundColor } from '../segmented-control/segmented-control-utils';
 
@@ -21,8 +21,18 @@ export const getComponentCss = (
   bgColor: SegmentedControlBackgroundColor,
   theme: Theme
 ): string => {
-  const { disabledColor, baseColor, backgroundColor, backgroundSurfaceColor, contrastMediumColor } =
-    getThemedColors(theme);
+  const {
+    disabledColor,
+    baseColor,
+    backgroundColor,
+    backgroundSurfaceColor,
+    contrastHighColor,
+    contrastLowColor,
+    contrastMediumColor,
+  } = getThemedColors(theme);
+  const invertedThemedColors = getThemedColors(theme === 'light' ? 'dark' : 'light');
+  const buttonColor = isSelected ? invertedThemedColors.baseColor : baseColor;
+  const labelColor = isSelected ? invertedThemedColors.contrastMediumColor : contrastMediumColor;
 
   return getCss({
     '@global': {
@@ -32,36 +42,40 @@ export const getComponentCss = (
       }),
       button: {
         display: 'block',
-        // minHeight: pxToRemWithUnit(48),
         height: '100%',
         width: '100%',
         padding: `${pxToRemWithUnit(11)} ${ITEM_PADDING}`,
         margin: 0,
-        background: bgColor === 'background-surface' ? backgroundColor : backgroundSurfaceColor,
-        border: '1px solid transparent',
+        border: 0,
+        background: isSelected
+          ? contrastHighColor
+          : bgColor === 'background-surface'
+          ? backgroundColor
+          : backgroundSurfaceColor,
         ...textSmall,
-        ...(isSelected && {
-          fontWeight: fontWeight.semiBold,
-          borderColor: baseColor,
-        }),
         ...(isDisabled
           ? {
-              color: disabledColor,
               cursor: 'not-allowed',
+              color: disabledColor,
               outline: 0,
             }
           : {
-              color: baseColor,
               cursor: 'pointer',
-              ...getHoverJssStyle(),
-              ...getFocusJssStyle(),
+              color: buttonColor,
+              ...getFocusJssStyle({ color: baseColor }),
+              ...(!isSelected && {
+                transition: getTransition('background-color'),
+                '&:hover': {
+                  background: contrastLowColor,
+                },
+              }),
             }),
       },
       // label
       span: {
         display: 'block',
         ...textXSmall,
-        color: isDisabled ? disabledColor : contrastMediumColor,
+        color: isDisabled ? disabledColor : labelColor,
       },
     },
     icon: {
