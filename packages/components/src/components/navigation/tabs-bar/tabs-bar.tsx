@@ -15,7 +15,7 @@ import type { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from '
 import { getFocusedTabIndex, getPrevNextTabIndex, sanitizeActiveTabIndex, setBarStyle } from './tabs-bar-utils';
 import { getComponentCss } from './tabs-bar-styles';
 import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
-import type { Direction, ScrollToPosition } from '../../common/scroller/scroller-utils';
+import type { Direction } from '../../common/scroller/scroller-utils';
 
 @Component({
   tag: 'p-tabs-bar',
@@ -43,7 +43,6 @@ export class TabsBar {
   @Event({ bubbles: false }) public tabChange: EventEmitter<TabChangeEvent>;
 
   @State() private tabElements: HTMLElement[] = [];
-  @State() private scroll: ScrollToPosition;
 
   private intersectionObserver: IntersectionObserver;
   private barElement: HTMLElement;
@@ -116,7 +115,6 @@ export class TabsBar {
         theme={this.theme}
         gradientColorScheme={this.gradientColorScheme}
         ref={(el) => (this.scrollerElement = el)}
-        scrollToPosition={this.scroll}
         prevNextButtonJssStyle={{
           top: 'calc(50% - .5em)',
           transform: 'translate3d(0,calc(-50% + .375em),0)',
@@ -223,7 +221,10 @@ export class TabsBar {
       this.prevGradientElement.offsetWidth
     );
 
-    this.scroll = { scrollPosition: scrollActivePosition, isSmooth };
+    (this.scrollerElement as HTMLPScrollerElement).scrollToPosition = {
+      scrollPosition: scrollActivePosition,
+      isSmooth,
+    };
   };
 
   private setBarStyle = (): void => {
