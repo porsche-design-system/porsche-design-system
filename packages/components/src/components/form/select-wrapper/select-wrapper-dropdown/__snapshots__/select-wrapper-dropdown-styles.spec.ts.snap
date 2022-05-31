@@ -22,7 +22,7 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  button:hover:not(:disabled) ~ ul {
+  button {
     border-color: #e3e4e5;
   }
 }
@@ -51,7 +51,7 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  button:hover:not(:disabled) ~ ul {
+  button {
     border-color: #e3e4e5;
   }
 }
@@ -80,7 +80,7 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  button:hover:not(:disabled) ~ ul {
+  button {
     border-color: #e3e4e5;
   }
 }
@@ -110,7 +110,7 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  button:hover:not(:disabled) ~ ul {
+  button {
     border-color: #323639;
   }
 }
@@ -140,7 +140,7 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  button:hover:not(:disabled) ~ ul {
+  button {
     border-color: #323639;
   }
 }
@@ -170,7 +170,7 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  button:hover:not(:disabled) ~ ul {
+  button {
     border-color: #323639;
   }
 }
@@ -242,6 +242,9 @@ ul {
   height: 1px;
   pointer-events: none;
 }
+ul:hover {
+  border-color: #323639;
+}
 ul::before {
   content: \\"\\";
   display: block;
@@ -255,10 +258,7 @@ ul::before {
   :host(:hover) {
     color: #000;
   }
-  button:hover:not(:disabled) ~ ul {
-    border-color: #323639;
-  }
-  ul:hover {
+  button {
     border-color: #323639;
   }
 }
@@ -376,6 +376,9 @@ input::-moz-placeholder {
 input:focus {
   opacity: 1;
 }
+input:hover:not(:disabled) ~ ul {
+  border-color: #323639;
+}
 input+span {
   position: absolute;
   top: 0;
@@ -426,6 +429,9 @@ ul {
   height: 1px;
   pointer-events: none;
 }
+ul:hover {
+  border-color: #323639;
+}
 ul::before {
   content: \\"\\";
   display: block;
@@ -438,12 +444,6 @@ ul::before {
 @media (hover: hover) {
   :host(:hover) {
     color: #000;
-  }
-  input:hover:not(:disabled) ~ ul {
-    border-color: #323639;
-  }
-  ul:hover {
-    border-color: #323639;
   }
 }
 
@@ -575,6 +575,9 @@ ul {
   height: 1px;
   pointer-events: none;
 }
+ul:hover {
+  border-color: #323639;
+}
 ul::before {
   content: \\"\\";
   display: block;
@@ -585,10 +588,7 @@ ul::before {
   top: 0;
 }
 @media (hover: hover) {
-  button:hover:not(:disabled) ~ ul {
-    border-color: #323639;
-  }
-  ul:hover {
+  button {
     border-color: #323639;
   }
 }
@@ -706,6 +706,9 @@ input::-moz-placeholder {
 input:focus {
   opacity: 0;
 }
+input:hover:not(:disabled) ~ ul {
+  border-color: #323639;
+}
 input+span {
   position: absolute;
   top: 0;
@@ -756,6 +759,9 @@ ul {
   height: 1px;
   pointer-events: none;
 }
+ul:hover {
+  border-color: #323639;
+}
 ul::before {
   content: \\"\\";
   display: block;
@@ -765,15 +771,6 @@ ul::before {
   background: #e3e4e5;
   top: 0;
 }
-@media (hover: hover) {
-  input:hover:not(:disabled) ~ ul {
-    border-color: #323639;
-  }
-  ul:hover {
-    border-color: #323639;
-  }
-}
-
 .option {
   display: flex;
   padding: 0.25rem 0.6875rem;
@@ -899,6 +896,9 @@ ul {
   border-top: none;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
 }
+ul:hover {
+  border-color: #323639;
+}
 ul::before {
   content: \\"\\";
   display: block;
@@ -912,10 +912,7 @@ ul::before {
   :host(:hover) {
     color: #000;
   }
-  button:hover:not(:disabled) ~ ul {
-    border-color: #323639;
-  }
-  ul:hover {
+  button {
     border-color: #323639;
   }
 }
@@ -1033,6 +1030,9 @@ input::-moz-placeholder {
 input:focus {
   opacity: 1;
 }
+input:hover:not(:disabled) ~ ul {
+  border-color: #323639;
+}
 input+span {
   position: absolute;
   top: 0;
@@ -1080,6 +1080,9 @@ ul {
   border-top: none;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
 }
+ul:hover {
+  border-color: #323639;
+}
 ul::before {
   content: \\"\\";
   display: block;
@@ -1092,12 +1095,6 @@ ul::before {
 @media (hover: hover) {
   :host(:hover) {
     color: #000;
-  }
-  input:hover:not(:disabled) ~ ul {
-    border-color: #323639;
-  }
-  ul:hover {
-    border-color: #323639;
   }
 }
 
@@ -1226,6 +1223,9 @@ ul {
   border-top: none;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
 }
+ul:hover {
+  border-color: #323639;
+}
 ul::before {
   content: \\"\\";
   display: block;
@@ -1236,10 +1236,7 @@ ul::before {
   top: 0;
 }
 @media (hover: hover) {
-  button:hover:not(:disabled) ~ ul {
-    border-color: #323639;
-  }
-  ul:hover {
+  button {
     border-color: #323639;
   }
 }
@@ -1357,6 +1354,9 @@ input::-moz-placeholder {
 input:focus {
   opacity: 0;
 }
+input:hover:not(:disabled) ~ ul {
+  border-color: #323639;
+}
 input+span {
   position: absolute;
   top: 0;
@@ -1404,6 +1404,9 @@ ul {
   border-top: none;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
 }
+ul:hover {
+  border-color: #323639;
+}
 ul::before {
   content: \\"\\";
   display: block;
@@ -1413,15 +1416,6 @@ ul::before {
   background: #e3e4e5;
   top: 0;
 }
-@media (hover: hover) {
-  input:hover:not(:disabled) ~ ul {
-    border-color: #323639;
-  }
-  ul:hover {
-    border-color: #323639;
-  }
-}
-
 .option {
   display: flex;
   padding: 0.25rem 0.6875rem;
@@ -1551,6 +1545,9 @@ ul {
   height: 1px;
   pointer-events: none;
 }
+ul:hover {
+  border-color: #323639;
+}
 ul::after {
   content: \\"\\";
   display: block;
@@ -1564,10 +1561,7 @@ ul::after {
   :host(:hover) {
     color: #000;
   }
-  button:hover:not(:disabled) ~ ul {
-    border-color: #323639;
-  }
-  ul:hover {
+  button {
     border-color: #323639;
   }
 }
@@ -1685,6 +1679,9 @@ input::-moz-placeholder {
 input:focus {
   opacity: 1;
 }
+input:hover:not(:disabled) ~ ul {
+  border-color: #323639;
+}
 input+span {
   position: absolute;
   top: 0;
@@ -1736,6 +1733,9 @@ ul {
   height: 1px;
   pointer-events: none;
 }
+ul:hover {
+  border-color: #323639;
+}
 ul::after {
   content: \\"\\";
   display: block;
@@ -1748,12 +1748,6 @@ ul::after {
 @media (hover: hover) {
   :host(:hover) {
     color: #000;
-  }
-  input:hover:not(:disabled) ~ ul {
-    border-color: #323639;
-  }
-  ul:hover {
-    border-color: #323639;
   }
 }
 
@@ -1886,6 +1880,9 @@ ul {
   height: 1px;
   pointer-events: none;
 }
+ul:hover {
+  border-color: #323639;
+}
 ul::after {
   content: \\"\\";
   display: block;
@@ -1896,10 +1893,7 @@ ul::after {
   bottom: 0;
 }
 @media (hover: hover) {
-  button:hover:not(:disabled) ~ ul {
-    border-color: #323639;
-  }
-  ul:hover {
+  button {
     border-color: #323639;
   }
 }
@@ -2017,6 +2011,9 @@ input::-moz-placeholder {
 input:focus {
   opacity: 0;
 }
+input:hover:not(:disabled) ~ ul {
+  border-color: #323639;
+}
 input+span {
   position: absolute;
   top: 0;
@@ -2068,6 +2065,9 @@ ul {
   height: 1px;
   pointer-events: none;
 }
+ul:hover {
+  border-color: #323639;
+}
 ul::after {
   content: \\"\\";
   display: block;
@@ -2077,15 +2077,6 @@ ul::after {
   background: #e3e4e5;
   bottom: 0;
 }
-@media (hover: hover) {
-  input:hover:not(:disabled) ~ ul {
-    border-color: #323639;
-  }
-  ul:hover {
-    border-color: #323639;
-  }
-}
-
 .option {
   display: flex;
   padding: 0.25rem 0.6875rem;
@@ -2211,6 +2202,9 @@ ul {
   border-bottom: none;
   box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
 }
+ul:hover {
+  border-color: #323639;
+}
 ul::after {
   content: \\"\\";
   display: block;
@@ -2224,10 +2218,7 @@ ul::after {
   :host(:hover) {
     color: #000;
   }
-  button:hover:not(:disabled) ~ ul {
-    border-color: #323639;
-  }
-  ul:hover {
+  button {
     border-color: #323639;
   }
 }
@@ -2345,6 +2336,9 @@ input::-moz-placeholder {
 input:focus {
   opacity: 1;
 }
+input:hover:not(:disabled) ~ ul {
+  border-color: #323639;
+}
 input+span {
   position: absolute;
   top: 0;
@@ -2392,6 +2386,9 @@ ul {
   border-bottom: none;
   box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
 }
+ul:hover {
+  border-color: #323639;
+}
 ul::after {
   content: \\"\\";
   display: block;
@@ -2404,12 +2401,6 @@ ul::after {
 @media (hover: hover) {
   :host(:hover) {
     color: #000;
-  }
-  input:hover:not(:disabled) ~ ul {
-    border-color: #323639;
-  }
-  ul:hover {
-    border-color: #323639;
   }
 }
 
@@ -2538,6 +2529,9 @@ ul {
   border-bottom: none;
   box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
 }
+ul:hover {
+  border-color: #323639;
+}
 ul::after {
   content: \\"\\";
   display: block;
@@ -2548,10 +2542,7 @@ ul::after {
   bottom: 0;
 }
 @media (hover: hover) {
-  button:hover:not(:disabled) ~ ul {
-    border-color: #323639;
-  }
-  ul:hover {
+  button {
     border-color: #323639;
   }
 }
@@ -2669,6 +2660,9 @@ input::-moz-placeholder {
 input:focus {
   opacity: 0;
 }
+input:hover:not(:disabled) ~ ul {
+  border-color: #323639;
+}
 input+span {
   position: absolute;
   top: 0;
@@ -2716,6 +2710,9 @@ ul {
   border-bottom: none;
   box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
 }
+ul:hover {
+  border-color: #323639;
+}
 ul::after {
   content: \\"\\";
   display: block;
@@ -2725,15 +2722,6 @@ ul::after {
   background: #e3e4e5;
   bottom: 0;
 }
-@media (hover: hover) {
-  input:hover:not(:disabled) ~ ul {
-    border-color: #323639;
-  }
-  ul:hover {
-    border-color: #323639;
-  }
-}
-
 .option {
   display: flex;
   padding: 0.25rem 0.6875rem;
@@ -2837,6 +2825,9 @@ input::-moz-placeholder {
 input:focus {
   opacity: 1;
 }
+input:hover:not(:disabled) ~ ul {
+  border-color: #e3e4e5;
+}
 input+span {
   position: absolute;
   top: 0;
@@ -2852,13 +2843,7 @@ input+span {
 }
 input:focus+span {
   outline-color: #fc1717;
-}
-@media (hover: hover) {
-  input:hover:not(:disabled) ~ ul {
-    border-color: #e3e4e5;
-  }
-}
-"
+}"
 `;
 
 exports[`getFilterStyles() should return correct css for isOpen: false, disabled: false, state: 'none' and theme: 'dark' 1`] = `
@@ -2901,6 +2886,9 @@ input::-moz-placeholder {
 input:focus {
   opacity: 1;
 }
+input:hover:not(:disabled) ~ ul {
+  border-color: #e3e4e5;
+}
 input+span {
   position: absolute;
   top: 0;
@@ -2916,13 +2904,7 @@ input+span {
 }
 input:focus+span {
   outline-color: #b0b1b2;
-}
-@media (hover: hover) {
-  input:hover:not(:disabled) ~ ul {
-    border-color: #e3e4e5;
-  }
-}
-"
+}"
 `;
 
 exports[`getFilterStyles() should return correct css for isOpen: false, disabled: false, state: 'success' and theme: 'dark' 1`] = `
@@ -2965,6 +2947,9 @@ input::-moz-placeholder {
 input:focus {
   opacity: 1;
 }
+input:hover:not(:disabled) ~ ul {
+  border-color: #e3e4e5;
+}
 input+span {
   position: absolute;
   top: 0;
@@ -2980,13 +2965,7 @@ input+span {
 }
 input:focus+span {
   outline-color: #01ba1d;
-}
-@media (hover: hover) {
-  input:hover:not(:disabled) ~ ul {
-    border-color: #e3e4e5;
-  }
-}
-"
+}"
 `;
 
 exports[`getFilterStyles() should return correct css for isOpen: false, disabled: true, state: 'error' and theme: 'dark' 1`] = `
@@ -3029,6 +3008,9 @@ input::-moz-placeholder {
 input:focus {
   opacity: 0;
 }
+input:hover:not(:disabled) ~ ul {
+  border-color: #e3e4e5;
+}
 input+span {
   position: absolute;
   top: 0;
@@ -3044,13 +3026,7 @@ input+span {
 }
 input:focus+span {
   outline-color: #fc1717;
-}
-@media (hover: hover) {
-  input:hover:not(:disabled) ~ ul {
-    border-color: #e3e4e5;
-  }
-}
-"
+}"
 `;
 
 exports[`getFilterStyles() should return correct css for isOpen: false, disabled: true, state: 'none' and theme: 'dark' 1`] = `
@@ -3093,6 +3069,9 @@ input::-moz-placeholder {
 input:focus {
   opacity: 0;
 }
+input:hover:not(:disabled) ~ ul {
+  border-color: #e3e4e5;
+}
 input+span {
   position: absolute;
   top: 0;
@@ -3108,13 +3087,7 @@ input+span {
 }
 input:focus+span {
   outline-color: #b0b1b2;
-}
-@media (hover: hover) {
-  input:hover:not(:disabled) ~ ul {
-    border-color: #e3e4e5;
-  }
-}
-"
+}"
 `;
 
 exports[`getFilterStyles() should return correct css for isOpen: false, disabled: true, state: 'success' and theme: 'dark' 1`] = `
@@ -3157,6 +3130,9 @@ input::-moz-placeholder {
 input:focus {
   opacity: 0;
 }
+input:hover:not(:disabled) ~ ul {
+  border-color: #e3e4e5;
+}
 input+span {
   position: absolute;
   top: 0;
@@ -3172,13 +3148,7 @@ input+span {
 }
 input:focus+span {
   outline-color: #01ba1d;
-}
-@media (hover: hover) {
-  input:hover:not(:disabled) ~ ul {
-    border-color: #e3e4e5;
-  }
-}
-"
+}"
 `;
 
 exports[`getFilterStyles() should return correct css for isOpen: true, disabled: false, state: 'error' and theme: 'light' 1`] = `
@@ -3221,6 +3191,9 @@ input::-moz-placeholder {
 input:focus {
   opacity: 1;
 }
+input:hover:not(:disabled) ~ ul {
+  border-color: #323639;
+}
 input+span {
   position: absolute;
   top: 0;
@@ -3237,13 +3210,7 @@ input+span {
 }
 input:focus+span {
   outline-color: #e00000;
-}
-@media (hover: hover) {
-  input:hover:not(:disabled) ~ ul {
-    border-color: #323639;
-  }
-}
-"
+}"
 `;
 
 exports[`getFilterStyles() should return correct css for isOpen: true, disabled: false, state: 'none' and theme: 'light' 1`] = `
@@ -3286,6 +3253,9 @@ input::-moz-placeholder {
 input:focus {
   opacity: 1;
 }
+input:hover:not(:disabled) ~ ul {
+  border-color: #323639;
+}
 input+span {
   position: absolute;
   top: 0;
@@ -3302,13 +3272,7 @@ input+span {
 }
 input:focus+span {
   outline-color: #626669;
-}
-@media (hover: hover) {
-  input:hover:not(:disabled) ~ ul {
-    border-color: #323639;
-  }
-}
-"
+}"
 `;
 
 exports[`getFilterStyles() should return correct css for isOpen: true, disabled: false, state: 'success' and theme: 'light' 1`] = `
@@ -3351,6 +3315,9 @@ input::-moz-placeholder {
 input:focus {
   opacity: 1;
 }
+input:hover:not(:disabled) ~ ul {
+  border-color: #323639;
+}
 input+span {
   position: absolute;
   top: 0;
@@ -3367,13 +3334,7 @@ input+span {
 }
 input:focus+span {
   outline-color: #018a16;
-}
-@media (hover: hover) {
-  input:hover:not(:disabled) ~ ul {
-    border-color: #323639;
-  }
-}
-"
+}"
 `;
 
 exports[`getFilterStyles() should return correct css for isOpen: true, disabled: true, state: 'error' and theme: 'light' 1`] = `
@@ -3416,6 +3377,9 @@ input::-moz-placeholder {
 input:focus {
   opacity: 0;
 }
+input:hover:not(:disabled) ~ ul {
+  border-color: #323639;
+}
 input+span {
   position: absolute;
   top: 0;
@@ -3432,13 +3396,7 @@ input+span {
 }
 input:focus+span {
   outline-color: #e00000;
-}
-@media (hover: hover) {
-  input:hover:not(:disabled) ~ ul {
-    border-color: #323639;
-  }
-}
-"
+}"
 `;
 
 exports[`getFilterStyles() should return correct css for isOpen: true, disabled: true, state: 'none' and theme: 'light' 1`] = `
@@ -3481,6 +3439,9 @@ input::-moz-placeholder {
 input:focus {
   opacity: 0;
 }
+input:hover:not(:disabled) ~ ul {
+  border-color: #323639;
+}
 input+span {
   position: absolute;
   top: 0;
@@ -3497,13 +3458,7 @@ input+span {
 }
 input:focus+span {
   outline-color: #626669;
-}
-@media (hover: hover) {
-  input:hover:not(:disabled) ~ ul {
-    border-color: #323639;
-  }
-}
-"
+}"
 `;
 
 exports[`getFilterStyles() should return correct css for isOpen: true, disabled: true, state: 'success' and theme: 'light' 1`] = `
@@ -3546,6 +3501,9 @@ input::-moz-placeholder {
 input:focus {
   opacity: 0;
 }
+input:hover:not(:disabled) ~ ul {
+  border-color: #323639;
+}
 input+span {
   position: absolute;
   top: 0;
@@ -3562,13 +3520,7 @@ input+span {
 }
 input:focus+span {
   outline-color: #018a16;
-}
-@media (hover: hover) {
-  input:hover:not(:disabled) ~ ul {
-    border-color: #323639;
-  }
-}
-"
+}"
 `;
 
 exports[`getListStyles() should return correct css for direction: down, isOpen: false and theme: dark 1`] = `
@@ -3606,6 +3558,9 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   height: 1px;
   pointer-events: none;
 }
+ul:hover {
+  border-color: #e3e4e5;
+}
 ul::before {
   content: \\"\\";
   display: block;
@@ -3615,12 +3570,6 @@ ul::before {
   background: #4a4e51;
   top: 0;
 }
-@media (hover: hover) {
-  ul:hover {
-    border-color: #e3e4e5;
-  }
-}
-
 .option {
   display: flex;
   padding: 0.25rem 0.6875rem;
@@ -3719,6 +3668,9 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   height: 1px;
   pointer-events: none;
 }
+ul:hover {
+  border-color: #323639;
+}
 ul::before {
   content: \\"\\";
   display: block;
@@ -3728,12 +3680,6 @@ ul::before {
   background: #e3e4e5;
   top: 0;
 }
-@media (hover: hover) {
-  ul:hover {
-    border-color: #323639;
-  }
-}
-
 .option {
   display: flex;
   padding: 0.25rem 0.6875rem;
@@ -3828,6 +3774,9 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   border-top: none;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
 }
+ul:hover {
+  border-color: #e3e4e5;
+}
 ul::before {
   content: \\"\\";
   display: block;
@@ -3837,12 +3786,6 @@ ul::before {
   background: #4a4e51;
   top: 0;
 }
-@media (hover: hover) {
-  ul:hover {
-    border-color: #e3e4e5;
-  }
-}
-
 .option {
   display: flex;
   padding: 0.25rem 0.6875rem;
@@ -3937,6 +3880,9 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   border-top: none;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.05), 0 12px 25px 0 rgba(0,0,0,.1);
 }
+ul:hover {
+  border-color: #323639;
+}
 ul::before {
   content: \\"\\";
   display: block;
@@ -3946,12 +3892,6 @@ ul::before {
   background: #e3e4e5;
   top: 0;
 }
-@media (hover: hover) {
-  ul:hover {
-    border-color: #323639;
-  }
-}
-
 .option {
   display: flex;
   padding: 0.25rem 0.6875rem;
@@ -4051,6 +3991,9 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
   height: 1px;
   pointer-events: none;
 }
+ul:hover {
+  border-color: #e3e4e5;
+}
 ul::after {
   content: \\"\\";
   display: block;
@@ -4060,12 +4003,6 @@ ul::after {
   background: #4a4e51;
   bottom: 0;
 }
-@media (hover: hover) {
-  ul:hover {
-    border-color: #e3e4e5;
-  }
-}
-
 .option {
   display: flex;
   padding: 0.25rem 0.6875rem;
@@ -4165,6 +4102,9 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: fa
   height: 1px;
   pointer-events: none;
 }
+ul:hover {
+  border-color: #323639;
+}
 ul::after {
   content: \\"\\";
   display: block;
@@ -4174,12 +4114,6 @@ ul::after {
   background: #e3e4e5;
   bottom: 0;
 }
-@media (hover: hover) {
-  ul:hover {
-    border-color: #323639;
-  }
-}
-
 .option {
   display: flex;
   padding: 0.25rem 0.6875rem;
@@ -4274,6 +4208,9 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
   border-bottom: none;
   box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
 }
+ul:hover {
+  border-color: #e3e4e5;
+}
 ul::after {
   content: \\"\\";
   display: block;
@@ -4283,12 +4220,6 @@ ul::after {
   background: #4a4e51;
   bottom: 0;
 }
-@media (hover: hover) {
-  ul:hover {
-    border-color: #e3e4e5;
-  }
-}
-
 .option {
   display: flex;
   padding: 0.25rem 0.6875rem;
@@ -4383,6 +4314,9 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: tr
   border-bottom: none;
   box-shadow: 0 -2px 4px 0 rgba(0,0,0,.05), 0 -12px 25px 0 rgba(0,0,0,.075);
 }
+ul:hover {
+  border-color: #323639;
+}
 ul::after {
   content: \\"\\";
   display: block;
@@ -4392,12 +4326,6 @@ ul::after {
   background: #e3e4e5;
   bottom: 0;
 }
-@media (hover: hover) {
-  ul:hover {
-    border-color: #323639;
-  }
-}
-
 .option {
   display: flex;
   padding: 0.25rem 0.6875rem;
