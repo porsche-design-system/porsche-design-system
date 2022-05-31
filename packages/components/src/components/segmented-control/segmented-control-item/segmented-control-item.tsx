@@ -29,17 +29,9 @@ export class SegmentedControlItem {
   @Prop() public option?: string;
 
   @Watch('label')
-  public handleLabelChange(): void {
-    updateParent(this.host);
-  }
-
   @Watch('icon')
-  public handleIconChange(): void {
-    updateParent(this.host);
-  }
-
   @Watch('iconSource')
-  public handleIconSourceChange(): void {
+  public handleLabelChange(): void {
     updateParent(this.host);
   }
 
