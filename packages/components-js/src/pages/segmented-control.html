@@ -34,21 +34,35 @@
   </p-segmented-control>
 </div>
 
-<div class="playground light" title="should render default segmented-control with many items">
+<div class="playground light" title="should render segmented-control with labels">
   <p-segmented-control>
-    <p-segmented-control-item>Size XXS</p-segmented-control-item>
-    <p-segmented-control-item>Size XS</p-segmented-control-item>
-    <p-segmented-control-item>Size S</p-segmented-control-item>
-    <p-segmented-control-item>Size M</p-segmented-control-item>
-    <p-segmented-control-item>Size L</p-segmented-control-item>
-    <p-segmented-control-item>Size XL</p-segmented-control-item>
-    <p-segmented-control-item>Size XXL</p-segmented-control-item>
-    <p-segmented-control-item>Size XXXL</p-segmented-control-item>
+    <p-segmented-control-item label="Size">S</p-segmented-control-item>
+    <p-segmented-control-item label="Size">M</p-segmented-control-item>
+    <p-segmented-control-item label="Size">L</p-segmented-control-item>
+    <p-segmented-control-item label="Size">XL</p-segmented-control-item>
   </p-segmented-control>
 </div>
 
-<div class="playground light" title="should render segmented-control with labels">
-  <p-segmented-control>
+<div class="playground light surface" title="should render segmented-control with labels on surface">
+  <p-segmented-control background-color="background-surface">
+    <p-segmented-control-item label="Size">S</p-segmented-control-item>
+    <p-segmented-control-item label="Size">M</p-segmented-control-item>
+    <p-segmented-control-item label="Size">L</p-segmented-control-item>
+    <p-segmented-control-item label="Size">XL</p-segmented-control-item>
+  </p-segmented-control>
+</div>
+
+<div class="playground dark" title="should render segmented-control with labels on dark theme">
+  <p-segmented-control theme="dark">
+    <p-segmented-control-item label="Size">S</p-segmented-control-item>
+    <p-segmented-control-item label="Size">M</p-segmented-control-item>
+    <p-segmented-control-item label="Size">L</p-segmented-control-item>
+    <p-segmented-control-item label="Size">XL</p-segmented-control-item>
+  </p-segmented-control>
+</div>
+
+<div class="playground dark surface" title="should render segmented-control with labels on dark theme surface">
+  <p-segmented-control theme="dark" background-color="background-surface">
     <p-segmented-control-item label="Size">S</p-segmented-control-item>
     <p-segmented-control-item label="Size">M</p-segmented-control-item>
     <p-segmented-control-item label="Size">L</p-segmented-control-item>
@@ -66,12 +80,55 @@
   </p-segmented-control>
 </div>
 
+<div class="playground light surface" title="should render segmented-control with icons on surface">
+  <p-segmented-control background-color="background-surface">
+    <p-segmented-control-item icon="increase">Start</p-segmented-control-item>
+    <p-segmented-control-item icon="lock">Stop</p-segmented-control-item>
+    <p-segmented-control-item icon="question">FAQ</p-segmented-control-item>
+    <p-segmented-control-item icon="shopping-cart">Checkout</p-segmented-control-item>
+    <p-segmented-control-item icon-source="./assets/icon-custom-kaixin.svg">Confirmation</p-segmented-control-item>
+  </p-segmented-control>
+</div>
+
+<div class="playground dark" title="should render segmented-control with icons on dark theme">
+  <p-segmented-control theme="dark">
+    <p-segmented-control-item icon="increase">Start</p-segmented-control-item>
+    <p-segmented-control-item icon="lock">Stop</p-segmented-control-item>
+    <p-segmented-control-item icon="question">FAQ</p-segmented-control-item>
+    <p-segmented-control-item icon="shopping-cart">Checkout</p-segmented-control-item>
+    <p-segmented-control-item icon-source="./assets/icon-custom-kaixin.svg">Confirmation</p-segmented-control-item>
+  </p-segmented-control>
+</div>
+
+<div class="playground dark surface" title="should render segmented-control with icons on dark theme surface">
+  <p-segmented-control theme="dark" background-color="background-surface">
+    <p-segmented-control-item icon="increase">Start</p-segmented-control-item>
+    <p-segmented-control-item icon="lock">Stop</p-segmented-control-item>
+    <p-segmented-control-item icon="question">FAQ</p-segmented-control-item>
+    <p-segmented-control-item icon="shopping-cart">Checkout</p-segmented-control-item>
+    <p-segmented-control-item icon-source="./assets/icon-custom-kaixin.svg">Confirmation</p-segmented-control-item>
+  </p-segmented-control>
+</div>
+
 <div class="playground light" title="should render segmented-control with labels and icons">
   <p-segmented-control>
     <p-segmented-control-item label="Variant" icon="wrench">Default</p-segmented-control-item>
     <p-segmented-control-item label="Variant" icon="wrenches">Advanced</p-segmented-control-item>
     <p-segmented-control-item label="Variant" icon="truck">Large</p-segmented-control-item>
     <p-segmented-control-item label="Variant" icon="tachometer">Custom</p-segmented-control-item>
+  </p-segmented-control>
+</div>
+
+<div class="playground light" title="should render default segmented-control with many items">
+  <p-segmented-control>
+    <p-segmented-control-item>Size XXS</p-segmented-control-item>
+    <p-segmented-control-item>Size XS</p-segmented-control-item>
+    <p-segmented-control-item>Size S</p-segmented-control-item>
+    <p-segmented-control-item>Size M</p-segmented-control-item>
+    <p-segmented-control-item>Size L</p-segmented-control-item>
+    <p-segmented-control-item>Size XL</p-segmented-control-item>
+    <p-segmented-control-item>Size XXL</p-segmented-control-item>
+    <p-segmented-control-item>Size XXXL</p-segmented-control-item>
   </p-segmented-control>
 </div>
 
