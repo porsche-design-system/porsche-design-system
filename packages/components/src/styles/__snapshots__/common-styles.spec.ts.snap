@@ -76,7 +76,9 @@ Object {
   "& em, & i": Object {
     "fontStyle": "normal",
   },
-  "&[data-theme=\\"dark\\"] a:hover": undefined,
+  "&[data-theme=\\"dark\\"] a:hover": Object {
+    "color": "#ff0223",
+  },
 }
 `;
 

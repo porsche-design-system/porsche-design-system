@@ -1625,26 +1625,7 @@ exports[`getSlottedCss() should return correct css 1`] = `
   outline-offset: 1px !important;
 }
 p-select-wrapper[data-theme=\\"dark\\"] a:hover {
-  0: u;
-  1: n;
-  2: d;
-  3: e;
-  4: f;
-  5: i;
-  6: n;
-  7: e;
-  8: d;
-  9:  ;
-  10: !;
-  11: i;
-  12: m;
-  13: p;
-  14: o;
-  15: r;
-  16: t;
-  17: a;
-  18: n;
-  19: t;
+  color: #ff0223 !important;
 }
 p-select-wrapper b, p-select-wrapper strong {
   font-weight: 700 !important;
@@ -1678,26 +1659,7 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
   outline-offset: 1px !important;
 }
 prefixed-p-select-wrapper[data-theme=\\"dark\\"] a:hover {
-  0: u;
-  1: n;
-  2: d;
-  3: e;
-  4: f;
-  5: i;
-  6: n;
-  7: e;
-  8: d;
-  9:  ;
-  10: !;
-  11: i;
-  12: m;
-  13: p;
-  14: o;
-  15: r;
-  16: t;
-  17: a;
-  18: n;
-  19: t;
+  color: #ff0223 !important;
 }
 prefixed-p-select-wrapper b, prefixed-p-select-wrapper strong {
   font-weight: 700 !important;
