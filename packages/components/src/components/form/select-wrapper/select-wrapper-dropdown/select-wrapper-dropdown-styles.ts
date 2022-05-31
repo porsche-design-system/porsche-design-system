@@ -286,11 +286,11 @@ export const getComponentCss = (
             right: 0,
             color: disabled ? disabledColor : formStateColor || contrastMediumColor,
             ...(!disabled && {
-              '@media (hover: hover)': {
-                '&(:hover)': {
-                  color: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
-                },
+              // '@media (hover: hover)': {
+              '&(:hover)': {
+                color: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
               },
+              // },
             }),
           },
         },

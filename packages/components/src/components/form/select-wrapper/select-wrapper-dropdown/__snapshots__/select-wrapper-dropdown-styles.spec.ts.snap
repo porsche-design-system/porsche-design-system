@@ -170,6 +170,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   right: 0;
   color: #626669;
 }
+:host(:hover) {
+  color: #000;
+}
 button {
   position: absolute;
   top: 0;
@@ -239,12 +242,6 @@ ul::before {
   background: #e3e4e5;
   top: 0;
 }
-@media (hover: hover) {
-  :host(:hover) {
-    color: #000;
-  }
-}
-
 .option {
   display: flex;
   padding: 0.25rem 0.6875rem;
@@ -318,6 +315,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   left: 0;
   right: 0;
   color: #626669;
+}
+:host(:hover) {
+  color: #000;
 }
 input {
   display: block;
@@ -423,12 +423,6 @@ ul::before {
   background: #e3e4e5;
   top: 0;
 }
-@media (hover: hover) {
-  :host(:hover) {
-    color: #000;
-  }
-}
-
 .option {
   display: flex;
   padding: 0.25rem 0.6875rem;
@@ -824,6 +818,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   right: 0;
   color: #626669;
 }
+:host(:hover) {
+  color: #000;
+}
 button {
   position: absolute;
   top: 0;
@@ -890,12 +887,6 @@ ul::before {
   background: #e3e4e5;
   top: 0;
 }
-@media (hover: hover) {
-  :host(:hover) {
-    color: #000;
-  }
-}
-
 .option {
   display: flex;
   padding: 0.25rem 0.6875rem;
@@ -969,6 +960,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   left: 0;
   right: 0;
   color: #626669;
+}
+:host(:hover) {
+  color: #000;
 }
 input {
   display: block;
@@ -1071,12 +1065,6 @@ ul::before {
   background: #e3e4e5;
   top: 0;
 }
-@media (hover: hover) {
-  :host(:hover) {
-    color: #000;
-  }
-}
-
 .option {
   display: flex;
   padding: 0.25rem 0.6875rem;
@@ -1466,6 +1454,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   right: 0;
   color: #626669;
 }
+:host(:hover) {
+  color: #000;
+}
 button {
   position: absolute;
   top: 0;
@@ -1536,12 +1527,6 @@ ul::after {
   background: #e3e4e5;
   bottom: 0;
 }
-@media (hover: hover) {
-  :host(:hover) {
-    color: #000;
-  }
-}
-
 .option {
   display: flex;
   padding: 0.25rem 0.6875rem;
@@ -1615,6 +1600,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   left: 0;
   right: 0;
   color: #626669;
+}
+:host(:hover) {
+  color: #000;
 }
 input {
   display: block;
@@ -1721,12 +1709,6 @@ ul::after {
   background: #e3e4e5;
   bottom: 0;
 }
-@media (hover: hover) {
-  :host(:hover) {
-    color: #000;
-  }
-}
-
 .option {
   display: flex;
   padding: 0.25rem 0.6875rem;
@@ -2124,6 +2106,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   right: 0;
   color: #626669;
 }
+:host(:hover) {
+  color: #000;
+}
 button {
   position: absolute;
   top: 0;
@@ -2190,12 +2175,6 @@ ul::after {
   background: #e3e4e5;
   bottom: 0;
 }
-@media (hover: hover) {
-  :host(:hover) {
-    color: #000;
-  }
-}
-
 .option {
   display: flex;
   padding: 0.25rem 0.6875rem;
@@ -2269,6 +2248,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   left: 0;
   right: 0;
   color: #626669;
+}
+:host(:hover) {
+  color: #000;
 }
 input {
   display: block;
@@ -2371,12 +2353,6 @@ ul::after {
   background: #e3e4e5;
   bottom: 0;
 }
-@media (hover: hover) {
-  :host(:hover) {
-    color: #000;
-  }
-}
-
 .option {
   display: flex;
   padding: 0.25rem 0.6875rem;
