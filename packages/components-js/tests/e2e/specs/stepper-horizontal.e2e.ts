@@ -1,6 +1,7 @@
 import { Page } from 'puppeteer';
 import {
   addEventListener,
+  expectA11yToMatchSnapshot,
   getAttribute,
   getProperty,
   initAddEventListener,
@@ -140,5 +141,12 @@ describe('lifecycle', () => {
 });
 
 describe('accessibility', () => {
-  it('should expose correct initial accessibility tree of stepper-horizontal', async () => {});
+  it('should expose correct initial accessibility tree of stepper-horizontal', async () => {
+    await initStepperHorizontal({ amount: 3 });
+    const [buttonOne, buttonTwo] = await getAllButtons();
+
+    await expectA11yToMatchSnapshot(page, buttonOne, { message: 'Of Button' });
+    expect(await getAttribute(buttonOne, 'aria-current')).toBe('step');
+    expect(await getAttribute(buttonTwo, 'aria-current')).toBe(null);
+  });
 });
