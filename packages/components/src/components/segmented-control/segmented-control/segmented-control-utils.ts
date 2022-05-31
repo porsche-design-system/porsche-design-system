@@ -53,7 +53,7 @@ export const syncItemsProps = (
   });
 };
 
-export const renderInputOutsideShadowRoot = (host: HTMLElement, name: string, value: string | number) => {
+export const renderInputOutsideShadowRoot = (host: HTMLElement, name: string, value: string | number): void => {
   let input = host.querySelector('input');
   if (!input) {
     input = document.createElement('input');
