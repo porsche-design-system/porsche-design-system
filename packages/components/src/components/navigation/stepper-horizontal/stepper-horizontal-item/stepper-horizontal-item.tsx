@@ -7,7 +7,7 @@ import { getComponentCss } from './stepper-horizontal-item-styles';
 
 @Component({
   tag: 'p-stepper-horizontal-item',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class StepperHorizontalItem {
   @Element() public host!: HTMLElement;
