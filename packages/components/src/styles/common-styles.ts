@@ -1,5 +1,5 @@
 import type { JssStyle, Styles } from 'jss';
-import { Theme } from '../types';
+import type { Theme } from '../types';
 import type { PropertiesHyphen } from 'csstype';
 import { fontWeight } from '@porsche-design-system/utilities-v2';
 import { getThemedColors } from './';
