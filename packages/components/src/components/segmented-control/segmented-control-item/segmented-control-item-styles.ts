@@ -2,6 +2,7 @@ import { getCss } from '../../../utils';
 import {
   addImportantToEachRule,
   getFocusJssStyle,
+  getInvertedThemedColors,
   getThemedColors,
   getTransition,
   pxToRemWithUnit,
@@ -16,24 +17,41 @@ export const { font: LABEL_FONT } = textXSmall;
 export const ICON_SIZE = pxToRemWithUnit(24);
 export const ICON_MARGIN = pxToRemWithUnit(4);
 
+export const getColors = (
+  theme: Theme,
+  isSelected: boolean,
+  isDisabled: boolean,
+  bgColor: SegmentedControlBackgroundColor
+): { backgroundColor: string; baseColor: string; labelColor: string } => {
+  const themedColors = getThemedColors(theme);
+  const { baseColor, contrastMediumColor } = isSelected ? getInvertedThemedColors(theme) : themedColors;
+
+  const backgroundColor =
+    themedColors[
+      isSelected ? 'contrastHighColor' : bgColor === 'background-surface' ? 'backgroundColor' : 'backgroundSurfaceColor'
+    ];
+
+  return isDisabled
+    ? {
+        backgroundColor,
+        baseColor: themedColors.disabledColor,
+        labelColor: themedColors.disabledColor,
+      }
+    : {
+        backgroundColor,
+        baseColor,
+        labelColor: contrastMediumColor,
+      };
+};
+
 export const getComponentCss = (
   isSelected: boolean,
   isDisabled: boolean,
   bgColor: SegmentedControlBackgroundColor,
   theme: Theme
 ): string => {
-  const {
-    disabledColor,
-    baseColor,
-    backgroundColor,
-    backgroundSurfaceColor,
-    contrastHighColor,
-    contrastLowColor,
-    contrastMediumColor,
-  } = getThemedColors(theme);
-  const invertedThemedColors = getThemedColors(theme === 'light' ? 'dark' : 'light');
-  const buttonColor = isSelected ? invertedThemedColors.baseColor : baseColor;
-  const labelColor = isSelected ? invertedThemedColors.contrastMediumColor : contrastMediumColor;
+  const { contrastLowColor } = getThemedColors(theme);
+  const { backgroundColor, baseColor, labelColor } = getColors(theme, isSelected, isDisabled, bgColor);
 
   return getCss({
     '@global': {
@@ -48,21 +66,16 @@ export const getComponentCss = (
         padding: `${pxToRemWithUnit(11)} ${ITEM_PADDING}`,
         margin: 0,
         border: 0,
-        background: isSelected
-          ? contrastHighColor
-          : bgColor === 'background-surface'
-          ? backgroundColor
-          : backgroundSurfaceColor,
+        background: backgroundColor,
+        color: baseColor,
         ...textSmall,
         ...(isDisabled
           ? {
               cursor: 'not-allowed',
-              color: disabledColor,
               outline: 0,
             }
           : {
               cursor: 'pointer',
-              color: buttonColor,
               ...getFocusJssStyle({ color: baseColor }),
               ...(!isSelected && {
                 transition: getTransition('background-color'),
@@ -76,7 +89,7 @@ export const getComponentCss = (
       span: {
         display: 'block',
         ...textXSmall,
-        color: isDisabled ? disabledColor : labelColor,
+        color: labelColor,
       },
     },
     icon: {
