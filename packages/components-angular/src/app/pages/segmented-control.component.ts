@@ -67,7 +67,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-segmented-control-item [icon]="'increase'">Start</p-segmented-control-item>
         <p-segmented-control-item [icon]="'lock'">Stop</p-segmented-control-item>
         <p-segmented-control-item [icon]="'question'">FAQ</p-segmented-control-item>
-        <p-segmented-control-item [icon]="'shopping-car'">Checkout</p-segmented-control-item>
+        <p-segmented-control-item [icon]="'shopping-cart'">Checkout</p-segmented-control-item>
         <p-segmented-control-item [iconSource]="'./assets/icon-custom-kaixin.svg'">Confirmation</p-segmented-control-item>
       </p-segmented-control>
     </div>
