@@ -22,7 +22,7 @@ export const getColors = (
   isSelected: boolean,
   isDisabled: boolean,
   bgColor: SegmentedControlBackgroundColor
-): { backgroundColor: string; baseColor: string; labelColor: string } => {
+): { backgroundColor: string; buttonColor: string; labelColor: string } => {
   const themedColors = getThemedColors(theme);
   const { baseColor, contrastMediumColor } = isSelected ? getInvertedThemedColors(theme) : themedColors;
 
@@ -34,12 +34,12 @@ export const getColors = (
   return isDisabled
     ? {
         backgroundColor,
-        baseColor: themedColors.disabledColor,
+        buttonColor: themedColors.disabledColor,
         labelColor: themedColors.disabledColor,
       }
     : {
         backgroundColor,
-        baseColor,
+        buttonColor: baseColor,
         labelColor: contrastMediumColor,
       };
 };
@@ -50,8 +50,8 @@ export const getComponentCss = (
   bgColor: SegmentedControlBackgroundColor,
   theme: Theme
 ): string => {
-  const { contrastLowColor } = getThemedColors(theme);
-  const { backgroundColor, baseColor, labelColor } = getColors(theme, isSelected, isDisabled, bgColor);
+  const { baseColor, contrastLowColor } = getThemedColors(theme);
+  const { backgroundColor, buttonColor, labelColor } = getColors(theme, isSelected, isDisabled, bgColor);
 
   return getCss({
     '@global': {
@@ -67,7 +67,7 @@ export const getComponentCss = (
         margin: 0,
         border: 0,
         background: backgroundColor,
-        color: baseColor,
+        color: buttonColor,
         ...textSmall,
         ...(isDisabled
           ? {
