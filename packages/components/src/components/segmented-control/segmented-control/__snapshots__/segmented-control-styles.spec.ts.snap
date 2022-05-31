@@ -4,7 +4,7 @@ exports[`getComponentCss() should return correct css for maxWidth: 80 1`] = `
 ":host {
   display: grid !important;
   grid-auto-rows: 1fr !important;
-  grid-template-columns: repeat(auto-fit, minmax(80px, min-content)) !important;
+  grid-template-columns: repeat(auto-fit, 80px) !important;
   grid-gap: 4px !important;
 }"
 `;
@@ -13,7 +13,7 @@ exports[`getComponentCss() should return correct css for maxWidth: 82 1`] = `
 ":host {
   display: grid !important;
   grid-auto-rows: 1fr !important;
-  grid-template-columns: repeat(auto-fit, minmax(82px, min-content)) !important;
+  grid-template-columns: repeat(auto-fit, 82px) !important;
   grid-gap: 4px !important;
 }"
 `;
