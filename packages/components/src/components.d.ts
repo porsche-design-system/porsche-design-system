@@ -694,11 +694,13 @@ export namespace Components {
           * Background color variations
          */
         "backgroundColor"?: SegmentedControlBackgroundColor;
-        "name"?: string;
         /**
           * Adapts the segmented-control color depending on the theme.
          */
         "theme"?: Theme;
+        /**
+          * Sets the initial value of the segmented-control.
+         */
         "value"?: string | number;
     }
     interface PSegmentedControlItem {
@@ -718,8 +720,10 @@ export namespace Components {
           * The label text.
          */
         "label"?: string;
-        "option"?: string;
-        "selected"?: boolean;
+        /**
+          * The value of this item which is emitted by the parent element if it becomes selected.
+         */
+        "value": string;
     }
     interface PSelectWrapper {
         /**
@@ -2099,7 +2103,6 @@ declare namespace LocalJSX {
           * Background color variations
          */
         "backgroundColor"?: SegmentedControlBackgroundColor;
-        "name"?: string;
         /**
           * Emitted when selected element changes.
          */
@@ -2108,6 +2111,9 @@ declare namespace LocalJSX {
           * Adapts the segmented-control color depending on the theme.
          */
         "theme"?: Theme;
+        /**
+          * Sets the initial value of the segmented-control.
+         */
         "value"?: string | number;
     }
     interface PSegmentedControlItem {
@@ -2127,8 +2133,10 @@ declare namespace LocalJSX {
           * The label text.
          */
         "label"?: string;
-        "option"?: string;
-        "selected"?: boolean;
+        /**
+          * The value of this item which is emitted by the parent element if it becomes selected.
+         */
+        "value"?: string;
     }
     interface PSelectWrapper {
         /**

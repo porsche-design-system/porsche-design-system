@@ -3,12 +3,7 @@ import { attachComponentCss, observeChildren, unobserveChildren } from '../../..
 import { getComponentCss } from './segmented-control-styles';
 import type { Theme } from '../../../types';
 import type { SegmentedControlBackgroundColor, SegmentedControlChangeEvent } from './segmented-control-utils';
-import {
-  getItemMaxWidth,
-  isEventTargetSegmentedControlItem,
-  renderInputOutsideShadowRoot,
-  syncItemsProps,
-} from './segmented-control-utils';
+import { getItemMaxWidth, isEventTargetSegmentedControlItem, syncItemsProps } from './segmented-control-utils';
 import { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 
 @Component({
@@ -24,8 +19,7 @@ export class SegmentedControl {
   /** Adapts the segmented-control color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  @Prop() public name?: string;
-
+  /** Sets the initial value of the segmented-control. */
   @Prop() public value?: string | number;
 
   /** Emitted when selected element changes. */
@@ -39,17 +33,13 @@ export class SegmentedControl {
 
   public componentWillRender(): void {
     attachComponentCss(this.host, getComponentCss, getItemMaxWidth(this.host));
-
-    // TODO: sync value to determine selected
-    syncItemsProps(this.host, this.theme, this.backgroundColor);
+    syncItemsProps(this.host, this.value, this.backgroundColor, this.theme);
   }
 
   public componentDidLoad(): void {
     this.host.addEventListener('click', ({ target }: MouseEvent & { target: HTMLElement & SegmentedControlItem }) => {
       if (isEventTargetSegmentedControlItem(this.host, target)) {
-        this.value = target.option;
-
-        renderInputOutsideShadowRoot(this.host, this.name, this.value);
+        this.value = target.value;
         this.segmentedControlChange.emit({ value: this.value });
       }
     });
@@ -60,10 +50,6 @@ export class SegmentedControl {
   }
 
   public render(): JSX.Element {
-    if (this.name) {
-      renderInputOutsideShadowRoot(this.host, this.name, this.value);
-    }
-
     return <slot />;
   }
 }

@@ -11,8 +11,8 @@ import type { SegmentedControlItemInternalHTMLProps } from './segmented-control-
 export class SegmentedControlItem {
   @Element() public host!: HTMLElement & SegmentedControlItemInternalHTMLProps;
 
-  // TODO: active? checked? selected?
-  @Prop() public selected?: boolean = false;
+  /** The value of this item which is emitted by the parent element if it becomes selected. */
+  @Prop() public value: string;
 
   /** Disables the button. No events will be triggered while disabled state is active. */
   @Prop() public disabled?: boolean = false;
@@ -26,8 +26,6 @@ export class SegmentedControlItem {
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
 
-  @Prop() public option?: string;
-
   @Watch('label')
   @Watch('icon')
   @Watch('iconSource')
@@ -37,7 +35,7 @@ export class SegmentedControlItem {
 
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
-    if (this.disabled || this.selected) {
+    if (this.disabled || this.host.selected) {
       e.stopPropagation();
     }
   }
@@ -47,13 +45,15 @@ export class SegmentedControlItem {
   }
 
   public componentWillRender(): void {
+    // TODO. validation that value is set
+
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.selected,
       this.disabled,
+      this.host.selected,
       this.host.backgroundColor,
-      this.host.theme || 'light'
+      this.host.theme
     );
   }
 

@@ -2,6 +2,7 @@ import type { SegmentedControlBackgroundColor } from '../segmented-control/segme
 import type { Theme } from '../../../types';
 
 export type SegmentedControlItemInternalHTMLProps = {
+  selected: boolean;
   backgroundColor: SegmentedControlBackgroundColor;
   theme: Theme;
 };

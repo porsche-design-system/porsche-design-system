@@ -18,10 +18,10 @@ export const ICON_SIZE = pxToRemWithUnit(24);
 export const ICON_MARGIN = pxToRemWithUnit(4);
 
 export const getColors = (
-  theme: Theme,
-  isSelected: boolean,
   isDisabled: boolean,
-  bgColor: SegmentedControlBackgroundColor
+  isSelected: boolean,
+  bgColor: SegmentedControlBackgroundColor,
+  theme: Theme
 ): { backgroundColor: string; buttonColor: string; labelColor: string } => {
   const themedColors = getThemedColors(theme);
   const { baseColor, contrastMediumColor } = isSelected ? getInvertedThemedColors(theme) : themedColors;
@@ -45,13 +45,13 @@ export const getColors = (
 };
 
 export const getComponentCss = (
-  isSelected: boolean,
   isDisabled: boolean,
+  isSelected: boolean,
   bgColor: SegmentedControlBackgroundColor,
   theme: Theme
 ): string => {
   const { baseColor, contrastLowColor } = getThemedColors(theme);
-  const { backgroundColor, buttonColor, labelColor } = getColors(theme, isSelected, isDisabled, bgColor);
+  const { backgroundColor, buttonColor, labelColor } = getColors(isDisabled, isSelected, bgColor, theme);
 
   return getCss({
     '@global': {
