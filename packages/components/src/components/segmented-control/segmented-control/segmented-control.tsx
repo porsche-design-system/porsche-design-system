@@ -32,6 +32,8 @@ export class SegmentedControl {
   @Event({ bubbles: false }) public segmentedControlChange: EventEmitter<SegmentedControlChangeEvent>;
 
   public connectedCallback(): void {
+    // child property changes to label or icon are detected via prop watchers within child
+    // here we take care of dom changes like adding/removing a child or changing its content
     observeChildren(this.host, () => forceUpdate(this.host));
   }
 
