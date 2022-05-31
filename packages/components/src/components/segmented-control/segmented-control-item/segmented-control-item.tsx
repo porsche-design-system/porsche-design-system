@@ -1,5 +1,5 @@
-import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
-import { attachComponentCss, getPrefixedTagNames, throwIfParentIsNotOfKind } from '../../../utils';
+import { Component, Element, h, JSX, Listen, Prop, Watch } from '@stencil/core';
+import { attachComponentCss, getPrefixedTagNames, throwIfParentIsNotOfKind, updateParent } from '../../../utils';
 import type { IconName } from '../../../types';
 import { getComponentCss } from './segmented-control-item-styles';
 import type { SegmentedControlItemInternalHTMLProps } from './segmented-control-item-utils';
@@ -27,6 +27,21 @@ export class SegmentedControlItem {
   @Prop() public iconSource?: string;
 
   @Prop() public option?: string;
+
+  @Watch('label')
+  public handleLabelChange(): void {
+    updateParent(this.host);
+  }
+
+  @Watch('icon')
+  public handleIconChange(): void {
+    updateParent(this.host);
+  }
+
+  @Watch('iconSource')
+  public handleIconSourceChange(): void {
+    updateParent(this.host);
+  }
 
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
