@@ -44,11 +44,11 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
         '&:focus': {
           outlineColor: formStateColor || contrastMediumColor,
         },
-        '@media (hover: hover)': {
-          '&:hover:not(:disabled) ~ ul': {
-            borderColor: contrastHighColor,
-          },
+        // '@media (hover: hover)': {
+        '&:hover:not(:disabled) ~ ul': {
+          borderColor: contrastHighColor,
         },
+        // },
         '&:disabled': {
           cursor: 'not-allowed',
         },
@@ -101,11 +101,11 @@ export const getFilterStyles = (
             outlineColor: formStateColor || contrastMediumColor,
           },
         },
-        '@media (hover: hover)': {
-          '&:hover:not(:disabled) ~ ul': {
-            borderColor: contrastHighColor,
-          },
+        // '@media (hover: hover)': {
+        '&:hover:not(:disabled) ~ ul': {
+          borderColor: contrastHighColor,
         },
+        // },
         '&+span': {
           // for focus outline and click event on arrow
           position: 'absolute',
@@ -174,11 +174,11 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         transition: getTransition('border-color'),
         transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
         outline: 'none',
-        '@media (hover: hover)': {
-          '&:hover': {
-            borderColor: contrastHighColor,
-          },
+        // '@media (hover: hover)': {
+        '&:hover': {
+          borderColor: contrastHighColor,
         },
+        // },
         ...(isDirectionDown
           ? {
               top: 'calc(100%-1px)',
@@ -220,12 +220,12 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         cursor: 'not-allowed',
       },
       '&__sr': getTextHiddenJssStyle(true),
-      '@media (hover: hover)': {
-        '&:not([aria-disabled]):not([role="status"]):hover': {
-          color: hoverColor,
-          background: highlightedSelectedColor,
-        },
+      // '@media (hover: hover)': {
+      '&:not([aria-disabled]):not([role="status"]):hover': {
+        color: hoverColor,
+        background: highlightedSelectedColor,
       },
+      // },
       '&--highlighted, &--selected': {
         color: activeColor,
         background: highlightedSelectedColor,
@@ -286,11 +286,11 @@ export const getComponentCss = (
             right: 0,
             color: disabled ? disabledColor : formStateColor || contrastMediumColor,
             ...(!disabled && {
-              '@media (hover: hover)': {
-                '&(:hover)': {
-                  color: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
-                },
+              // '@media (hover: hover)': {
+              '&(:hover)': {
+                color: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
               },
+              // },
             }),
           },
         },
