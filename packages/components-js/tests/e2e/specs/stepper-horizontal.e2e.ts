@@ -1,10 +1,15 @@
 import { Page } from 'puppeteer';
 import {
   addEventListener,
+  CSS_ANIMATION_DURATION,
   expectA11yToMatchSnapshot,
   getAttribute,
   getLifecycleStatus,
+  getOffsetLeft,
+  getOffsetWidth,
+  getScrollLeft,
   initAddEventListener,
+  initConsoleObserver,
   reattachElement,
   selectNode,
   setContentWithDesignSystem,
@@ -16,6 +21,22 @@ let page: Page;
 
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
+
+const clickHandlerScript = `
+    <script>
+    const stepper = document.querySelector('p-stepper-horizontal');
+    const steps = Array.from(document.querySelectorAll('p-stepper-horizontal-item'));
+
+    stepper.addEventListener('stepChange', (e) => {
+      const { activeStepIndex } = e.detail;
+
+      const newState = [...steps];
+      const prevStepIndex = steps.findIndex((step) => step.state === 'current');
+
+      newState[prevStepIndex].state = 'complete';
+      newState[activeStepIndex].state = 'current';
+    });
+    </script>`;
 
 type InitOptions = {
   amount?: number;
@@ -49,15 +70,68 @@ const getAllButtons = async () =>
     )
   );
 const getScrollArea = () => selectNode(page, 'p-stepper-horizontal >>> p-scroller >>> .scroll-area');
+const getGradientNext = () => selectNode(page, 'p-stepper-horizontal >>> p-scroller >>> .action-next .gradient');
 
 describe('scrolling', () => {
-  it('should scroll current step into view', async () => {});
+  const FOCUS_PADDING = 8;
 
-  it('should not throw error when clicked between steps', async () => {});
+  it('should scroll current step into view', async () => {
+    await initStepperHorizontal({ currentStep: 3, isWrapped: true });
+    const allSteps = await getAllStepItems();
+    const selectedButtonOffset = await getOffsetLeft(allSteps[3]);
+    const gradientWidth = await getOffsetWidth(await getGradientNext());
+    const scrollArea = await getScrollArea();
+    const scrollDistance = +selectedButtonOffset - +gradientWidth + FOCUS_PADDING;
 
-  it('should scroll current step to correct position direction next', async () => {});
+    await waitForStencilLifecycle(page);
 
-  it('should scroll current step to correct position direction prev', async () => {});
+    expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
+  });
+
+  it('should scroll to correct position on step click', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `<div style="width: 300px">
+  <p-stepper-horizontal>
+    <p-stepper-horizontal-item state="current">Step 1</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item state="complete">Step 2</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item state="complete">Step 3</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item state="complete">Step 4</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item state="complete">Step 5</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item state="complete">Step 6</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item state="complete">Step 7</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item state="complete">Step 8</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item state="complete">Step 9</p-stepper-horizontal-item>
+  </p-stepper-horizontal>
+</div>${clickHandlerScript}`
+    );
+
+    const [, , , button4, button5] = await getAllButtons();
+    const [, , , item4, item5] = await getAllStepItems();
+    const gradient = await getGradientNext();
+    const gradientWidth = await getOffsetWidth(gradient);
+    const scrollArea = await getScrollArea();
+    const scrollAreaWidth = await getOffsetWidth(scrollArea);
+
+    expect(await getScrollLeft(scrollArea)).toEqual(0);
+
+    await button5.click();
+    await waitForStencilLifecycle(page);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+
+    const button5offset = await getOffsetLeft(item5);
+    const scrollDistanceRight = +button5offset - +gradientWidth + FOCUS_PADDING;
+    expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceRight);
+
+    await button4.click();
+    await waitForStencilLifecycle(page);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+
+    const button4offset = await getOffsetLeft(item4);
+    const buttonWidth = await getOffsetWidth(item4);
+    const scrollDistanceLeft = +button4offset + +buttonWidth + +gradientWidth - +scrollAreaWidth;
+    expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
+  });
 });
 
 describe('events', () => {
@@ -83,6 +157,19 @@ describe('events', () => {
     await waitForStencilLifecycle(page);
 
     expect(eventCounter).toBe(2);
+  });
+
+  it('should not trigger event when clicked in between steps', async () => {
+    await initStepperHorizontal({ amount: 3, currentStep: 0 });
+    initConsoleObserver(page);
+    const [firstStep] = await getAllStepItems();
+
+    let eventCounter = 0;
+
+    await page.mouse.click((await getOffsetWidth(firstStep)) + 8, 18);
+    await waitForStencilLifecycle(page);
+
+    expect(eventCounter).toBe(0);
   });
 
   it('should not trigger event if click on current', async () => {
