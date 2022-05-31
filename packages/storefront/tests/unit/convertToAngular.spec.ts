@@ -23,6 +23,12 @@ describe('transformEventsToAngularSyntax()', () => {
 </p-some-tag>`
     );
   });
+
+  it('should not transform attribute values containing " on"', () => {
+    expect(transformEventsToAngularSyntax('<p-somme-tag label="Icon only" icon="user"></p-somme-tag>')).toBe(
+      `<p-somme-tag label="Icon only" icon="user"></p-somme-tag>`
+    );
+  });
 });
 
 describe('transformAttributesWithObjectValues()', () => {
