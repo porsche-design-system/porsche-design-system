@@ -3,7 +3,7 @@ import {
   addEventListener,
   expectA11yToMatchSnapshot,
   getAttribute,
-  getProperty,
+  getLifecycleStatus,
   initAddEventListener,
   reattachElement,
   selectNode,
@@ -60,15 +60,13 @@ describe('scrolling', () => {
   it('should scroll current step to correct position direction prev', async () => {});
 });
 
-describe('onClick', () => {});
-
 describe('events', () => {
   beforeEach(async () => await initAddEventListener(page));
 
-  it('should trigger event on button click', async () => {
+  it('should trigger event on step click', async () => {
     await initStepperHorizontal({ amount: 3, currentStep: 2 });
     const host = await getHost();
-    const [buttonOne, buttonTwo, buttonThree] = await getAllButtons();
+    const [buttonOne, buttonTwo] = await getAllButtons();
 
     let eventCounter = 0;
     await addEventListener(host, 'stepChange', () => eventCounter++);
@@ -133,11 +131,57 @@ describe('events', () => {
 });
 
 describe('lifecycle', () => {
-  it('should work without unnecessary round trips on init', async () => {});
+  it('should work without unnecessary round trips on init when first step is current', async () => {
+    await initStepperHorizontal({ amount: 3, currentStep: 0 });
 
-  it('should work without unnecessary round trips on prop change', async () => {});
+    const status = await getLifecycleStatus(page);
 
-  it('should work without unnecessary round trips when step is added / removed', async () => {});
+    expect(status.componentDidLoad['p-stepper-horizontal'], 'componentDidLoad: p-stepper-horizontal').toBe(1);
+    expect(status.componentDidLoad['p-stepper-horizontal-item'], 'componentDidLoad: p-stepper-horizontal-item').toBe(3);
+    expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
+    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
+    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2);
+
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(11);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+  });
+
+  it('should work without unnecessary round trips on init when third step is current', async () => {
+    await initStepperHorizontal({ amount: 3, currentStep: 2 });
+
+    const status = await getLifecycleStatus(page);
+
+    expect(status.componentDidLoad['p-stepper-horizontal'], 'componentDidLoad: p-stepper-horizontal').toBe(1);
+    expect(status.componentDidLoad['p-stepper-horizontal-item'], 'componentDidLoad: p-stepper-horizontal-item').toBe(3);
+    expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
+    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(4);
+    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2);
+
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(13);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+  });
+
+  it('should work without unnecessary round trips on prop change', async () => {
+    await initStepperHorizontal({ amount: 3, currentStep: 0 });
+    const [stepOne, stepTwo] = await getAllStepItems();
+
+    await setProperty(stepOne, 'state', 'complete');
+    await setProperty(stepTwo, 'state', 'current');
+    await waitForStencilLifecycle(page);
+
+    const status = await getLifecycleStatus(page);
+
+    expect(status.componentDidUpdate['p-stepper-horizontal'], 'componentDidUpdate: p-stepper-horizontal').toBe(0);
+    expect(
+      status.componentDidUpdate['p-stepper-horizontal-item'],
+      'componentDidUpdate: p-stepper-horizontal-item'
+    ).toBe(2);
+
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(12);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
+  });
 });
 
 describe('accessibility', () => {
