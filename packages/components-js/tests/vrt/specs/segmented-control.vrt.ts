@@ -6,7 +6,16 @@ import {
   GetThemedMarkup,
   setContentWithDesignSystem,
 } from '../helpers';
-import { getVisualRegressionStatesTester } from '@porsche-design-system/shared/testing';
+import {
+  defaultViewports,
+  getVisualRegressionStatesTester,
+  getVisualRegressionTester,
+  vrtTest,
+} from '@porsche-design-system/shared/testing';
+
+it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
+  expect(await vrtTest(getVisualRegressionTester(viewport), 'segmented-control', '/#segmented-control')).toBeFalsy();
+});
 
 it('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
