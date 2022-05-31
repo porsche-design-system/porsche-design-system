@@ -103,7 +103,7 @@ export const SegmentedControlPage = (): JSX.Element => {
         <PSegmentedControl>
           <PSegmentedControlItem label="Size is wider than value">S</PSegmentedControlItem>
           <PSegmentedControlItem label="Size with icon" icon="truck">M is very wide with icon</PSegmentedControlItem>
-          <PSegmentedControlItem label="Icon onLyIcon={() => { user }}></PSegmentedControlItem>
+          <PSegmentedControlItem label="Icon only" icon="user" />
           <PSegmentedControlItem>XL without label</PSegmentedControlItem>
           <PSegmentedControlItem label="Label only" />
           <PSegmentedControlItem icon="truck" />
