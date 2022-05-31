@@ -57,11 +57,11 @@ export const getBaseChildStyles = (
       transition: ['color', 'border-color', 'background-color'].map(getTransition).join(','),
       ...additionalDefaultJssStyle,
     },
-    '@media (hover: hover)': {
-      [`::slotted(${child}:hover)`]: {
-        borderColor: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
-      },
+    // '@media (hover: hover)': {
+    [`::slotted(${child}:hover)`]: {
+      borderColor: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
     },
+    // },
     [`::slotted(${child}:focus)`]: {
       outlineColor: formStateColor || contrastMediumColor,
     },
@@ -100,13 +100,13 @@ export const getLabelStyles = (
 
   // jss prefers flat and simple selectors, therefore we reuse properties
   const labelTextHoverJssStyle: JssStyle = {
-    '@media (hover: hover)': {
-      '&:hover': {
-        [`&~::slotted(${child}:not(:disabled):not([readonly]))` +
-        (hasVisibleState ? `,::slotted(${child}:hover:not(:disabled):not([readonly]))` : '')]: {
-          borderColor: addImportantToRule(hasVisibleState ? formStateHoverColor : baseColor),
-        },
+    // '@media (hover: hover)': {
+    '&:hover': {
+      [`&~::slotted(${child}:not(:disabled):not([readonly]))` +
+      (hasVisibleState ? `,::slotted(${child}:hover:not(:disabled):not([readonly]))` : '')]: {
+        borderColor: addImportantToRule(hasVisibleState ? formStateHoverColor : baseColor),
       },
+      // },
     },
   };
 

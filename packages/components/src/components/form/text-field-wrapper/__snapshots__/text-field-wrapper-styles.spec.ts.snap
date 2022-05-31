@@ -31,6 +31,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   padding: 0.6875rem !important;
 }
+::slotted(input:hover) {
+  border-color: #000 !important;
+}
 ::slotted(input:focus) {
   outline-color: #626669 !important;
 }
@@ -95,9 +98,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #000 !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -132,6 +132,9 @@ button:disabled {
 }
 .label__text--description {
   color: #626669;
+}
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
 }
 .required {
   user-select: none;
@@ -228,12 +231,6 @@ button:disabled {
     padding: 0 0 0.25rem;
   }
 }
-
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
-  }
-}
 "
 `;
 
@@ -268,6 +265,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   padding: 0.625rem !important;
 }
+::slotted(input:hover) {
+  border-color: #a30000 !important;
+}
 ::slotted(input:focus) {
   outline-color: #e00000 !important;
 }
@@ -332,9 +332,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #a30000 !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -369,6 +366,9 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
+}
 .required {
   user-select: none;
   color: #e00000;
@@ -393,13 +393,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #a30000 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, isPassword: true 1`] = `
@@ -433,6 +427,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   padding: 0.625rem !important;
 }
+::slotted(input:hover) {
+  border-color: #a30000 !important;
+}
 ::slotted(input:focus) {
   outline-color: #e00000 !important;
 }
@@ -500,9 +497,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #a30000 !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -537,6 +531,9 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
+}
 .required {
   user-select: none;
   color: #e00000;
@@ -561,13 +558,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #a30000 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, isPassword: false 1`] = `
@@ -600,6 +591,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
 }
+::slotted(input:hover) {
+  border-color: #a30000 !important;
+}
 ::slotted(input:focus) {
   outline-color: #e00000 !important;
 }
@@ -664,9 +658,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #a30000 !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -701,6 +692,9 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
+}
 .unit {
   position: absolute;
   bottom: 0;
@@ -709,6 +703,9 @@ button:disabled {
   z-index: 1;
   box-sizing: border-box;
   color: #626669;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
 }
 .required {
   user-select: none;
@@ -734,16 +731,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #a30000 !important;
-  }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #a30000 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: suffix, isPassword: false 1`] = `
@@ -776,6 +764,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
 }
+::slotted(input:hover) {
+  border-color: #a30000 !important;
+}
 ::slotted(input:focus) {
   outline-color: #e00000 !important;
 }
@@ -840,9 +831,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #a30000 !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -877,6 +865,9 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
+}
 .unit {
   position: absolute;
   bottom: 0;
@@ -885,6 +876,9 @@ button:disabled {
   z-index: 1;
   box-sizing: border-box;
   color: #626669;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
 }
 .required {
   user-select: none;
@@ -910,16 +904,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #a30000 !important;
-  }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #a30000 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, isPassword: false 1`] = `
@@ -953,6 +938,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   padding: 0.6875rem !important;
 }
+::slotted(input:hover) {
+  border-color: #000 !important;
+}
 ::slotted(input:focus) {
   outline-color: #626669 !important;
 }
@@ -1017,9 +1005,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #000 !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -1054,6 +1039,9 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
+}
 .required {
   user-select: none;
   color: #e00000;
@@ -1077,13 +1065,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, isPassword: true 1`] = `
@@ -1117,6 +1099,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   padding: 0.6875rem !important;
 }
+::slotted(input:hover) {
+  border-color: #000 !important;
+}
 ::slotted(input:focus) {
   outline-color: #626669 !important;
 }
@@ -1184,9 +1169,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #000 !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -1221,6 +1203,9 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
+}
 .required {
   user-select: none;
   color: #e00000;
@@ -1244,13 +1229,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, isPassword: false 1`] = `
@@ -1283,6 +1262,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
 }
+::slotted(input:hover) {
+  border-color: #000 !important;
+}
 ::slotted(input:focus) {
   outline-color: #626669 !important;
 }
@@ -1347,9 +1329,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #000 !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -1384,6 +1363,9 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
+}
 .unit {
   position: absolute;
   bottom: 0;
@@ -1392,6 +1374,9 @@ button:disabled {
   z-index: 1;
   box-sizing: border-box;
   color: #626669;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
 }
 .required {
   user-select: none;
@@ -1416,16 +1401,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
-  }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: suffix, isPassword: false 1`] = `
@@ -1458,6 +1434,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
 }
+::slotted(input:hover) {
+  border-color: #000 !important;
+}
 ::slotted(input:focus) {
   outline-color: #626669 !important;
 }
@@ -1522,9 +1501,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #000 !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -1559,6 +1535,9 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
+}
 .unit {
   position: absolute;
   bottom: 0;
@@ -1567,6 +1546,9 @@ button:disabled {
   z-index: 1;
   box-sizing: border-box;
   color: #626669;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
 }
 .required {
   user-select: none;
@@ -1591,16 +1573,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
-  }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, isPassword: false 1`] = `
@@ -1634,6 +1607,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   padding: 0.625rem !important;
 }
+::slotted(input:hover) {
+  border-color: #014d0c !important;
+}
 ::slotted(input:focus) {
   outline-color: #018a16 !important;
 }
@@ -1698,9 +1674,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #014d0c !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -1735,6 +1708,9 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
+}
 .required {
   user-select: none;
   color: #e00000;
@@ -1759,13 +1735,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #014d0c !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, isPassword: true 1`] = `
@@ -1799,6 +1769,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   padding: 0.625rem !important;
 }
+::slotted(input:hover) {
+  border-color: #014d0c !important;
+}
 ::slotted(input:focus) {
   outline-color: #018a16 !important;
 }
@@ -1866,9 +1839,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #014d0c !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -1903,6 +1873,9 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
+}
 .required {
   user-select: none;
   color: #e00000;
@@ -1927,13 +1900,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #014d0c !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, isPassword: false 1`] = `
@@ -1966,6 +1933,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
 }
+::slotted(input:hover) {
+  border-color: #014d0c !important;
+}
 ::slotted(input:focus) {
   outline-color: #018a16 !important;
 }
@@ -2030,9 +2000,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #014d0c !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -2067,6 +2034,9 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
+}
 .unit {
   position: absolute;
   bottom: 0;
@@ -2075,6 +2045,9 @@ button:disabled {
   z-index: 1;
   box-sizing: border-box;
   color: #626669;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
 }
 .required {
   user-select: none;
@@ -2100,16 +2073,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #014d0c !important;
-  }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #014d0c !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: suffix, isPassword: false 1`] = `
@@ -2142,6 +2106,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
 }
+::slotted(input:hover) {
+  border-color: #014d0c !important;
+}
 ::slotted(input:focus) {
   outline-color: #018a16 !important;
 }
@@ -2206,9 +2173,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #014d0c !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -2243,6 +2207,9 @@ button:disabled {
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
+}
 .unit {
   position: absolute;
   bottom: 0;
@@ -2251,6 +2218,9 @@ button:disabled {
   z-index: 1;
   box-sizing: border-box;
   color: #626669;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
 }
 .required {
   user-select: none;
@@ -2276,16 +2246,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #014d0c !important;
-  }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #014d0c !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, isPassword: false 1`] = `
@@ -2319,6 +2280,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   padding: 0.625rem !important;
 }
+::slotted(input:hover) {
+  border-color: #a30000 !important;
+}
 ::slotted(input:focus) {
   outline-color: #e00000 !important;
 }
@@ -2383,9 +2347,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #a30000 !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -2420,6 +2381,9 @@ button:disabled {
 .label__text--description {
   color: #96989a;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
+}
 .required {
   user-select: none;
   color: #e00000;
@@ -2444,13 +2408,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #a30000 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, isPassword: true 1`] = `
@@ -2484,6 +2442,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   padding: 0.625rem !important;
 }
+::slotted(input:hover) {
+  border-color: #a30000 !important;
+}
 ::slotted(input:focus) {
   outline-color: #e00000 !important;
 }
@@ -2551,9 +2512,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #a30000 !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -2588,6 +2546,9 @@ button:disabled {
 .label__text--description {
   color: #96989a;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
+}
 .required {
   user-select: none;
   color: #e00000;
@@ -2612,13 +2573,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #a30000 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, isPassword: false 1`] = `
@@ -2651,6 +2606,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
 }
+::slotted(input:hover) {
+  border-color: #a30000 !important;
+}
 ::slotted(input:focus) {
   outline-color: #e00000 !important;
 }
@@ -2715,9 +2673,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #a30000 !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -2752,6 +2707,9 @@ button:disabled {
 .label__text--description {
   color: #96989a;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
+}
 .unit {
   position: absolute;
   bottom: 0;
@@ -2761,6 +2719,9 @@ button:disabled {
   box-sizing: border-box;
   color: #96989a;
   cursor: not-allowed;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
 }
 .required {
   user-select: none;
@@ -2786,16 +2747,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #a30000 !important;
-  }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #a30000 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, isPassword: false 2`] = `
@@ -2828,6 +2780,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
 }
+::slotted(input:hover) {
+  border-color: #a30000 !important;
+}
 ::slotted(input:focus) {
   outline-color: #e00000 !important;
 }
@@ -2892,9 +2847,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #a30000 !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -2929,6 +2881,9 @@ button:disabled {
 .label__text--description {
   color: #96989a;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
+}
 .unit {
   position: absolute;
   bottom: 0;
@@ -2938,6 +2893,9 @@ button:disabled {
   box-sizing: border-box;
   color: #96989a;
   cursor: not-allowed;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
 }
 .required {
   user-select: none;
@@ -2963,16 +2921,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #a30000 !important;
-  }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #a30000 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, isPassword: false 1`] = `
@@ -3006,6 +2955,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   padding: 0.6875rem !important;
 }
+::slotted(input:hover) {
+  border-color: #000 !important;
+}
 ::slotted(input:focus) {
   outline-color: #626669 !important;
 }
@@ -3070,9 +3022,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #000 !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -3107,6 +3056,9 @@ button:disabled {
 .label__text--description {
   color: #96989a;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
+}
 .required {
   user-select: none;
   color: #e00000;
@@ -3130,13 +3082,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, isPassword: true 1`] = `
@@ -3170,6 +3116,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   padding: 0.6875rem !important;
 }
+::slotted(input:hover) {
+  border-color: #000 !important;
+}
 ::slotted(input:focus) {
   outline-color: #626669 !important;
 }
@@ -3237,9 +3186,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #000 !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -3274,6 +3220,9 @@ button:disabled {
 .label__text--description {
   color: #96989a;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
+}
 .required {
   user-select: none;
   color: #e00000;
@@ -3297,13 +3246,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, isPassword: false 1`] = `
@@ -3336,6 +3279,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
 }
+::slotted(input:hover) {
+  border-color: #000 !important;
+}
 ::slotted(input:focus) {
   outline-color: #626669 !important;
 }
@@ -3400,9 +3346,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #000 !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -3437,6 +3380,9 @@ button:disabled {
 .label__text--description {
   color: #96989a;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
+}
 .unit {
   position: absolute;
   bottom: 0;
@@ -3446,6 +3392,9 @@ button:disabled {
   box-sizing: border-box;
   color: #96989a;
   cursor: not-allowed;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
 }
 .required {
   user-select: none;
@@ -3470,16 +3419,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
-  }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, isPassword: false 2`] = `
@@ -3512,6 +3452,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
 }
+::slotted(input:hover) {
+  border-color: #000 !important;
+}
 ::slotted(input:focus) {
   outline-color: #626669 !important;
 }
@@ -3576,9 +3519,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #000 !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -3613,6 +3553,9 @@ button:disabled {
 .label__text--description {
   color: #96989a;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
+}
 .unit {
   position: absolute;
   bottom: 0;
@@ -3622,6 +3565,9 @@ button:disabled {
   box-sizing: border-box;
   color: #96989a;
   cursor: not-allowed;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
 }
 .required {
   user-select: none;
@@ -3646,16 +3592,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
-  }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, isPassword: false 1`] = `
@@ -3689,6 +3626,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   padding: 0.625rem !important;
 }
+::slotted(input:hover) {
+  border-color: #014d0c !important;
+}
 ::slotted(input:focus) {
   outline-color: #018a16 !important;
 }
@@ -3753,9 +3693,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #014d0c !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -3790,6 +3727,9 @@ button:disabled {
 .label__text--description {
   color: #96989a;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
+}
 .required {
   user-select: none;
   color: #e00000;
@@ -3814,13 +3754,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #014d0c !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, isPassword: true 1`] = `
@@ -3853,6 +3787,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   padding: 0.625rem !important;
+}
+::slotted(input:hover) {
+  border-color: #014d0c !important;
 }
 ::slotted(input:focus) {
   outline-color: #018a16 !important;
@@ -3921,9 +3858,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #014d0c !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -3958,6 +3892,9 @@ button:disabled {
 .label__text--description {
   color: #96989a;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
+}
 .required {
   user-select: none;
   color: #e00000;
@@ -3982,13 +3919,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #014d0c !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, isPassword: false 1`] = `
@@ -4021,6 +3952,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
 }
+::slotted(input:hover) {
+  border-color: #014d0c !important;
+}
 ::slotted(input:focus) {
   outline-color: #018a16 !important;
 }
@@ -4085,9 +4019,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #014d0c !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -4122,6 +4053,9 @@ button:disabled {
 .label__text--description {
   color: #96989a;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
+}
 .unit {
   position: absolute;
   bottom: 0;
@@ -4131,6 +4065,9 @@ button:disabled {
   box-sizing: border-box;
   color: #96989a;
   cursor: not-allowed;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
 }
 .required {
   user-select: none;
@@ -4156,16 +4093,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #014d0c !important;
-  }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #014d0c !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, isPassword: false 2`] = `
@@ -4198,6 +4126,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
 }
+::slotted(input:hover) {
+  border-color: #014d0c !important;
+}
 ::slotted(input:focus) {
   outline-color: #018a16 !important;
 }
@@ -4262,9 +4193,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #014d0c !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -4299,6 +4227,9 @@ button:disabled {
 .label__text--description {
   color: #96989a;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
+}
 .unit {
   position: absolute;
   bottom: 0;
@@ -4308,6 +4239,9 @@ button:disabled {
   box-sizing: border-box;
   color: #96989a;
   cursor: not-allowed;
+}
+.unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
 }
 .required {
   user-select: none;
@@ -4333,16 +4267,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #014d0c !important;
-  }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #014d0c !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: true, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, isPassword: true 1`] = `
@@ -4375,6 +4300,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   padding: 0.625rem !important;
+}
+::slotted(input:hover) {
+  border-color: #a30000 !important;
 }
 ::slotted(input:focus) {
   outline-color: #e00000 !important;
@@ -4443,9 +4371,6 @@ button:disabled {
   cursor: not-allowed;
 }
 @media (hover: hover) {
-  ::slotted(input:hover) {
-    border-color: #a30000 !important;
-  }
   button:hover {
     color: #d5001c;
   }
@@ -4481,6 +4406,9 @@ button:disabled {
 .label__text--description {
   color: #96989a;
 }
+.label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
+}
 .required {
   user-select: none;
   color: #e00000;
@@ -4505,13 +4433,7 @@ button:disabled {
   clip-path: inset(50%);
   white-space: nowrap;
   padding: 0;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
-    border-color: #a30000 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getSlottedCss() should return correct css 1`] = `

@@ -35,6 +35,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
 }
+::slotted(select:hover) {
+  border-color: #000 !important;
+}
 ::slotted(select:focus) {
   outline-color: #626669 !important;
 }
@@ -45,12 +48,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #fff !important;
 }
-@media (hover: hover) {
-  ::slotted(select:hover) {
-    border-color: #000 !important;
-  }
-}
-
 .root {
   display: block;
   position: relative;
@@ -81,6 +78,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
+}
 .icon {
   position: absolute;
   bottom: 0.75rem;
@@ -92,6 +92,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon--open {
   transform: rotate3d(0,0,1,180deg);
+}
+.icon:hover~::slotted(select:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
 }
 .required {
   user-select: none;
@@ -176,15 +179,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
     padding: 0 0 0.25rem;
   }
 }
-
-@media (hover: hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
-  }
-  .icon:hover~::slotted(select:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
-  }
-}
 "
 `;
 
@@ -223,6 +217,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
 }
+::slotted(select:hover) {
+  border-color: #a30000 !important;
+}
 ::slotted(select:focus) {
   outline-color: #e00000 !important;
 }
@@ -233,12 +230,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #fff !important;
 }
-@media (hover: hover) {
-  ::slotted(select:hover) {
-    border-color: #a30000 !important;
-  }
-}
-
 .root {
   display: block;
   position: relative;
@@ -268,6 +259,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
+}
 .icon {
   position: absolute;
   bottom: 0.75rem;
@@ -279,6 +273,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon--open {
   transform: rotate3d(0,0,1,180deg);
+}
+.icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
 }
 .required {
   user-select: none;
@@ -292,16 +289,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
-    border-color: #a30000 !important;
-  }
-  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
-    border-color: #a30000 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: false and theme: error 2`] = `
@@ -339,6 +327,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
 }
+::slotted(select:hover) {
+  border-color: #d30303 !important;
+}
 ::slotted(select:focus) {
   outline-color: #fc1717 !important;
 }
@@ -349,12 +340,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #000 !important;
 }
-@media (hover: hover) {
-  ::slotted(select:hover) {
-    border-color: #d30303 !important;
-  }
-}
-
 .root {
   display: block;
   position: relative;
@@ -384,6 +369,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #b0b1b2;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #d30303 !important;
+}
 .icon {
   position: absolute;
   bottom: 0.75rem;
@@ -395,6 +383,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon--open {
   transform: rotate3d(0,0,1,180deg);
+}
+.icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #d30303 !important;
 }
 .required {
   user-select: none;
@@ -408,16 +399,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
-    border-color: #d30303 !important;
-  }
-  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
-    border-color: #d30303 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: false and theme: none 1`] = `
@@ -455,6 +437,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
 }
+::slotted(select:hover) {
+  border-color: #000 !important;
+}
 ::slotted(select:focus) {
   outline-color: #626669 !important;
 }
@@ -465,12 +450,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #fff !important;
 }
-@media (hover: hover) {
-  ::slotted(select:hover) {
-    border-color: #000 !important;
-  }
-}
-
 .root {
   display: block;
   position: relative;
@@ -500,6 +479,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
+}
 .icon {
   position: absolute;
   bottom: 0.75rem;
@@ -512,6 +494,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .icon--open {
   transform: rotate3d(0,0,1,180deg);
 }
+.icon:hover~::slotted(select:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
+}
 .required {
   user-select: none;
   color: #e00000;
@@ -523,16 +508,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
-  }
-  .icon:hover~::slotted(select:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: false and theme: none 2`] = `
@@ -570,6 +546,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
 }
+::slotted(select:hover) {
+  border-color: #e3e4e5 !important;
+}
 ::slotted(select:focus) {
   outline-color: #b0b1b2 !important;
 }
@@ -580,12 +559,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #000 !important;
 }
-@media (hover: hover) {
-  ::slotted(select:hover) {
-    border-color: #e3e4e5 !important;
-  }
-}
-
 .root {
   display: block;
   position: relative;
@@ -615,6 +588,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #b0b1b2;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])) {
+  border-color: #fff !important;
+}
 .icon {
   position: absolute;
   bottom: 0.75rem;
@@ -627,6 +603,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .icon--open {
   transform: rotate3d(0,0,1,180deg);
 }
+.icon:hover~::slotted(select:not(:disabled):not([readonly])) {
+  border-color: #fff !important;
+}
 .required {
   user-select: none;
   color: #fc1717;
@@ -638,16 +617,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not([readonly])) {
-    border-color: #fff !important;
-  }
-  .icon:hover~::slotted(select:not(:disabled):not([readonly])) {
-    border-color: #fff !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: false and theme: success 1`] = `
@@ -685,6 +655,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
 }
+::slotted(select:hover) {
+  border-color: #014d0c !important;
+}
 ::slotted(select:focus) {
   outline-color: #018a16 !important;
 }
@@ -695,12 +668,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #fff !important;
 }
-@media (hover: hover) {
-  ::slotted(select:hover) {
-    border-color: #014d0c !important;
-  }
-}
-
 .root {
   display: block;
   position: relative;
@@ -730,6 +697,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
+}
 .icon {
   position: absolute;
   bottom: 0.75rem;
@@ -741,6 +711,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon--open {
   transform: rotate3d(0,0,1,180deg);
+}
+.icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
 }
 .required {
   user-select: none;
@@ -754,16 +727,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
-    border-color: #014d0c !important;
-  }
-  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
-    border-color: #014d0c !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: false and theme: success 2`] = `
@@ -801,6 +765,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
 }
+::slotted(select:hover) {
+  border-color: #017d14 !important;
+}
 ::slotted(select:focus) {
   outline-color: #01ba1d !important;
 }
@@ -811,12 +778,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #000 !important;
 }
-@media (hover: hover) {
-  ::slotted(select:hover) {
-    border-color: #017d14 !important;
-  }
-}
-
 .root {
   display: block;
   position: relative;
@@ -846,6 +807,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #b0b1b2;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #017d14 !important;
+}
 .icon {
   position: absolute;
   bottom: 0.75rem;
@@ -857,6 +821,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon--open {
   transform: rotate3d(0,0,1,180deg);
+}
+.icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #017d14 !important;
 }
 .required {
   user-select: none;
@@ -870,16 +837,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
-    border-color: #017d14 !important;
-  }
-  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
-    border-color: #017d14 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: true and theme: error 1`] = `
@@ -917,6 +875,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
 }
+::slotted(select:hover) {
+  border-color: #a30000 !important;
+}
 ::slotted(select:focus) {
   outline-color: #e00000 !important;
 }
@@ -927,12 +888,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #fff !important;
 }
-@media (hover: hover) {
-  ::slotted(select:hover) {
-    border-color: #a30000 !important;
-  }
-}
-
 .root {
   display: block;
   position: relative;
@@ -963,6 +918,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
+}
 .icon {
   position: absolute;
   bottom: 0.75rem;
@@ -974,6 +932,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon--open {
   transform: rotate3d(0,0,1,180deg);
+}
+.icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #a30000 !important;
 }
 .required {
   user-select: none;
@@ -987,16 +948,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
-    border-color: #a30000 !important;
-  }
-  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
-    border-color: #a30000 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: true and theme: error 2`] = `
@@ -1034,6 +986,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
 }
+::slotted(select:hover) {
+  border-color: #d30303 !important;
+}
 ::slotted(select:focus) {
   outline-color: #fc1717 !important;
 }
@@ -1044,12 +999,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #000 !important;
 }
-@media (hover: hover) {
-  ::slotted(select:hover) {
-    border-color: #d30303 !important;
-  }
-}
-
 .root {
   display: block;
   position: relative;
@@ -1080,6 +1029,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #b0b1b2;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #d30303 !important;
+}
 .icon {
   position: absolute;
   bottom: 0.75rem;
@@ -1091,6 +1043,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon--open {
   transform: rotate3d(0,0,1,180deg);
+}
+.icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #d30303 !important;
 }
 .required {
   user-select: none;
@@ -1104,16 +1059,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
-    border-color: #d30303 !important;
-  }
-  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
-    border-color: #d30303 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: true and theme: none 1`] = `
@@ -1151,6 +1097,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
 }
+::slotted(select:hover) {
+  border-color: #000 !important;
+}
 ::slotted(select:focus) {
   outline-color: #626669 !important;
 }
@@ -1161,12 +1110,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #fff !important;
 }
-@media (hover: hover) {
-  ::slotted(select:hover) {
-    border-color: #000 !important;
-  }
-}
-
 .root {
   display: block;
   position: relative;
@@ -1197,6 +1140,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
+}
 .icon {
   position: absolute;
   bottom: 0.75rem;
@@ -1209,6 +1155,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .icon--open {
   transform: rotate3d(0,0,1,180deg);
 }
+.icon:hover~::slotted(select:not(:disabled):not([readonly])) {
+  border-color: #000 !important;
+}
 .required {
   user-select: none;
   color: #e00000;
@@ -1220,16 +1169,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
-  }
-  .icon:hover~::slotted(select:not(:disabled):not([readonly])) {
-    border-color: #000 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: true and theme: none 2`] = `
@@ -1267,6 +1207,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
 }
+::slotted(select:hover) {
+  border-color: #e3e4e5 !important;
+}
 ::slotted(select:focus) {
   outline-color: #b0b1b2 !important;
 }
@@ -1277,12 +1220,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #000 !important;
 }
-@media (hover: hover) {
-  ::slotted(select:hover) {
-    border-color: #e3e4e5 !important;
-  }
-}
-
 .root {
   display: block;
   position: relative;
@@ -1313,6 +1250,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #b0b1b2;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])) {
+  border-color: #fff !important;
+}
 .icon {
   position: absolute;
   bottom: 0.75rem;
@@ -1325,6 +1265,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .icon--open {
   transform: rotate3d(0,0,1,180deg);
 }
+.icon:hover~::slotted(select:not(:disabled):not([readonly])) {
+  border-color: #fff !important;
+}
 .required {
   user-select: none;
   color: #fc1717;
@@ -1336,16 +1279,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not([readonly])) {
-    border-color: #fff !important;
-  }
-  .icon:hover~::slotted(select:not(:disabled):not([readonly])) {
-    border-color: #fff !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: true and theme: success 1`] = `
@@ -1383,6 +1317,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
 }
+::slotted(select:hover) {
+  border-color: #014d0c !important;
+}
 ::slotted(select:focus) {
   outline-color: #018a16 !important;
 }
@@ -1393,12 +1330,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #fff !important;
 }
-@media (hover: hover) {
-  ::slotted(select:hover) {
-    border-color: #014d0c !important;
-  }
-}
-
 .root {
   display: block;
   position: relative;
@@ -1429,6 +1360,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #626669;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
+}
 .icon {
   position: absolute;
   bottom: 0.75rem;
@@ -1440,6 +1374,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon--open {
   transform: rotate3d(0,0,1,180deg);
+}
+.icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #014d0c !important;
 }
 .required {
   user-select: none;
@@ -1453,16 +1390,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
-    border-color: #014d0c !important;
-  }
-  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
-    border-color: #014d0c !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: true and theme: success 2`] = `
@@ -1500,6 +1428,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
 }
+::slotted(select:hover) {
+  border-color: #017d14 !important;
+}
 ::slotted(select:focus) {
   outline-color: #01ba1d !important;
 }
@@ -1510,12 +1441,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #000 !important;
 }
-@media (hover: hover) {
-  ::slotted(select:hover) {
-    border-color: #017d14 !important;
-  }
-}
-
 .root {
   display: block;
   position: relative;
@@ -1546,6 +1471,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label__text--description {
   color: #b0b1b2;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #017d14 !important;
+}
 .icon {
   position: absolute;
   bottom: 0.75rem;
@@ -1557,6 +1485,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .icon--open {
   transform: rotate3d(0,0,1,180deg);
+}
+.icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #017d14 !important;
 }
 .required {
   user-select: none;
@@ -1570,16 +1501,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
-    border-color: #017d14 !important;
-  }
-  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
-    border-color: #017d14 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: true and theme: error 1`] = `
@@ -1617,6 +1539,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(select)@-moz-document url-prefix() {
   padding-left: 0.5rem !important;
 }
+::slotted(select:hover) {
+  border-color: #d30303 !important;
+}
 ::slotted(select:focus) {
   outline-color: #fc1717 !important;
 }
@@ -1627,12 +1552,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-text-fill-color: #96989a !important;
   background: #000 !important;
 }
-@media (hover: hover) {
-  ::slotted(select:hover) {
-    border-color: #d30303 !important;
-  }
-}
-
 .root {
   display: block;
   position: relative;
@@ -1663,6 +1582,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label__text--description {
   color: #7c7f81;
 }
+.label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #d30303 !important;
+}
 .icon {
   position: absolute;
   bottom: 0.75rem;
@@ -1676,6 +1598,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .icon--open {
   transform: rotate3d(0,0,1,180deg);
 }
+.icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  border-color: #d30303 !important;
+}
 .required {
   user-select: none;
   color: #fc1717;
@@ -1688,16 +1613,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 .message__icon {
   margin-right: 0.25rem;
-}
-@media (hover: hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
-    border-color: #d30303 !important;
-  }
-  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
-    border-color: #d30303 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getSlottedCss() should return correct css 1`] = `
