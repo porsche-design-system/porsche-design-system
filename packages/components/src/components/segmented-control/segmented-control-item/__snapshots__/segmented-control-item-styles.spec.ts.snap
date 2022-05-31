@@ -273,7 +273,7 @@ button::-moz-focus-inner {
   border: 0;
 }
 button:focus {
-  outline-color: #fff;
+  outline-color: #000;
 }
 button:focus:not(:focus-visible) {
   outline-color: transparent;
