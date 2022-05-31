@@ -182,11 +182,11 @@ export const getLinkButtonStyles = (
           '&(a:focus)': {
             outlineColor: primaryColor,
           },
-          '@media (hover: hover)': {
-            '&(a:hover:focus)': {
-              outlineColor: primaryColorHover,
-            },
+          // '@media (hover: hover)': {
+          '&(a:hover:focus)': {
+            outlineColor: primaryColorHover,
           },
+          // },
           '&(a:focus:not(:focus-visible))': {
             outlineColor: 'transparent',
           },

@@ -36,6 +36,9 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   border-color: #323639 !important;
   background-color: #323639 !important;
 }
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #000 !important;
+}
 ::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
   background-color: #96989a !important;
 }
@@ -53,12 +56,6 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #000 !important;
-  }
-}
-
 .label {
   order: 1;
   display: inline-block;
@@ -199,6 +196,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-color: #e00000 !important;
   background-color: #e00000 !important;
 }
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #a30000 !important;
+}
 ::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
   background-color: #96989a !important;
 }
@@ -216,12 +216,6 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #a30000 !important;
-  }
-}
-
 .label {
   order: 1;
   display: inline-block;
@@ -290,6 +284,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-color: #e00000 !important;
   background-color: #e00000 !important;
 }
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #a30000 !important;
+}
 ::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
   background-color: #96989a !important;
 }
@@ -307,12 +304,6 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #a30000 !important;
-  }
-}
-
 .label {
   order: 1;
   display: inline-block;
@@ -381,6 +372,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-color: #323639 !important;
   background-color: #323639 !important;
 }
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #000 !important;
+}
 ::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
   background-color: #96989a !important;
 }
@@ -398,12 +392,6 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #000 !important;
-  }
-}
-
 .label {
   order: 1;
   display: inline-block;
@@ -471,6 +459,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-color: #323639 !important;
   background-color: #323639 !important;
 }
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #000 !important;
+}
 ::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
   background-color: #96989a !important;
 }
@@ -488,12 +479,6 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #000 !important;
-  }
-}
-
 .label {
   order: 1;
   display: inline-block;
@@ -561,6 +546,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-color: #018a16 !important;
   background-color: #018a16 !important;
 }
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #014d0c !important;
+}
 ::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
   background-color: #96989a !important;
 }
@@ -578,12 +566,6 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #014d0c !important;
-  }
-}
-
 .label {
   order: 1;
   display: inline-block;
@@ -652,6 +634,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-color: #018a16 !important;
   background-color: #018a16 !important;
 }
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #014d0c !important;
+}
 ::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
   background-color: #96989a !important;
 }
@@ -669,12 +654,6 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #014d0c !important;
-  }
-}
-
 .label {
   order: 1;
   display: inline-block;
@@ -743,6 +722,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-color: #e00000 !important;
   background-color: #e00000 !important;
 }
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #a30000 !important;
+}
 ::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
   background-color: #96989a !important;
 }
@@ -760,12 +742,6 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #a30000 !important;
-  }
-}
-
 .label {
   order: 1;
   display: inline-block;
@@ -835,6 +811,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-color: #e00000 !important;
   background-color: #e00000 !important;
 }
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #a30000 !important;
+}
 ::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
   background-color: #96989a !important;
 }
@@ -852,12 +831,6 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #a30000 !important;
-  }
-}
-
 .label {
   order: 1;
   display: inline-block;
@@ -927,6 +900,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-color: #323639 !important;
   background-color: #323639 !important;
 }
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #000 !important;
+}
 ::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
   background-color: #96989a !important;
 }
@@ -944,12 +920,6 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #000 !important;
-  }
-}
-
 .label {
   order: 1;
   display: inline-block;
@@ -1018,6 +988,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-color: #323639 !important;
   background-color: #323639 !important;
 }
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #000 !important;
+}
 ::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
   background-color: #96989a !important;
 }
@@ -1035,12 +1008,6 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #000 !important;
-  }
-}
-
 .label {
   order: 1;
   display: inline-block;
@@ -1109,6 +1076,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-color: #018a16 !important;
   background-color: #018a16 !important;
 }
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #014d0c !important;
+}
 ::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
   background-color: #96989a !important;
 }
@@ -1126,12 +1096,6 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #014d0c !important;
-  }
-}
-
 .label {
   order: 1;
   display: inline-block;
@@ -1201,6 +1165,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-color: #018a16 !important;
   background-color: #018a16 !important;
 }
+::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
+  border-color: #014d0c !important;
+}
 ::slotted(input:indeterminate:disabled), ::slotted(input:checked:disabled) {
   background-color: #96989a !important;
 }
@@ -1218,12 +1185,6 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
-  ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
-    border-color: #014d0c !important;
-  }
-}
-
 .label {
   order: 1;
   display: inline-block;

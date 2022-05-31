@@ -71,10 +71,10 @@ export const getComponentCss = (
           '&(a:focus)': {
             outlineColor: baseColor,
           },
-          '@media (hover: hover)': {
-            '&(a:hover:focus)': {
-              outlineColor: baseColorHover,
-            },
+          // '@media (hover: hover)': {
+          '&(a:hover:focus)': {
+            outlineColor: baseColorHover,
+            // },
           },
           '&(a:focus:not(:focus-visible))': {
             outlineColor: 'transparent',

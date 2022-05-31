@@ -44,6 +44,9 @@ exports[`getSlottedCss() should return correct css 1`] = `
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
+p-text-list[data-theme=\\"dark\\"] a:hover {
+  color: #ff0223 !important;
+}
 p-text-list b, p-text-list strong {
   font-weight: 700 !important;
 }
@@ -60,9 +63,6 @@ p-text-list a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
 @media (hover: hover) {
-  p-text-list[data-theme=\\"dark\\"] a:hover {
-    color: #ff0223 !important;
-  }
   p-text-list a:hover {
     color: #d5001c !important;
   }
@@ -77,6 +77,9 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
   transition: color var(--p-transition-duration, .24s) ease !important;
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
+}
+prefixed-p-text-list[data-theme=\\"dark\\"] a:hover {
+  color: #ff0223 !important;
 }
 prefixed-p-text-list b, prefixed-p-text-list strong {
   font-weight: 700 !important;
@@ -94,9 +97,6 @@ prefixed-p-text-list a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
 @media (hover: hover) {
-  prefixed-p-text-list[data-theme=\\"dark\\"] a:hover {
-    color: #ff0223 !important;
-  }
   prefixed-p-text-list a:hover {
     color: #d5001c !important;
   }

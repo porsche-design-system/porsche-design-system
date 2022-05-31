@@ -63,10 +63,10 @@ export const getComponentCss = (
           borderColor: formStateColor || contrastHighColor,
           backgroundColor: formStateColor || contrastHighColor,
         },
-        '@media (hover: hover)': {
-          '&(input:not(:disabled):hover), .label:hover ~ &(input:not(:disabled))': {
-            borderColor: formStateHoverColor || baseColor,
-          },
+        // '@media (hover: hover)': {
+        '&(input:not(:disabled):hover), .label:hover ~ &(input:not(:disabled))': {
+          borderColor: formStateHoverColor || baseColor,
+          // },
         },
         '&(input:indeterminate:disabled), &(input:checked:disabled)': {
           backgroundColor: disabledColor,

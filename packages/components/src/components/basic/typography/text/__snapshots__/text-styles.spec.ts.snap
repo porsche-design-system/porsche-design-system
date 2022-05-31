@@ -359,6 +359,9 @@ p-text a, p-text button {
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
+p-text[data-theme=\\"dark\\"] a:hover, p-text[data-theme=\\"dark\\"] button:hover {
+  color: #ff0223 !important;
+}
 p-text b, p-text strong {
   font-weight: 700 !important;
 }
@@ -375,9 +378,6 @@ p-text a:focus:not(:focus-visible), p-text button:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
 @media (hover: hover) {
-  p-text[data-theme=\\"dark\\"] a:hover {
-    color: #ff0223 !important;
-  }
   p-text a:hover, p-text button:hover {
     color: #d5001c !important;
   }
@@ -401,6 +401,9 @@ prefixed-p-text a, prefixed-p-text button {
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
+prefixed-p-text[data-theme=\\"dark\\"] a:hover, prefixed-p-text[data-theme=\\"dark\\"] button:hover {
+  color: #ff0223 !important;
+}
 prefixed-p-text b, prefixed-p-text strong {
   font-weight: 700 !important;
 }
@@ -417,9 +420,6 @@ prefixed-p-text a:focus:not(:focus-visible), prefixed-p-text button:focus:not(:f
   outline-color: transparent !important;
 }
 @media (hover: hover) {
-  prefixed-p-text[data-theme=\\"dark\\"] a:hover {
-    color: #ff0223 !important;
-  }
   prefixed-p-text a:hover, prefixed-p-text button:hover {
     color: #d5001c !important;
   }

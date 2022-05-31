@@ -54,11 +54,11 @@ export const getComponentCss = (
           cursor: 'pointer',
           transition: getTransition('color'),
         },
-        '@media (hover: hover)': {
-          [transformSelector('::slotted([role]:hover)')]: {
-            color: hoverColor,
-          },
+        // '@media (hover: hover)': {
+        [transformSelector('::slotted([role]:hover)')]: {
+          color: hoverColor,
         },
+        // },
         [transformSelector('::slotted([role]:active),::slotted([role][aria-selected="true"])')]: {
           color: activeColor,
         },
