@@ -67,7 +67,7 @@ export const SegmentedControlPage = (): JSX.Element => {
           <PSegmentedControlItem icon="increase">Start</PSegmentedControlItem>
           <PSegmentedControlItem icon="lock">Stop</PSegmentedControlItem>
           <PSegmentedControlItem icon="question">FAQ</PSegmentedControlItem>
-          <PSegmentedControlItem icon="shopping-car">Checkout</PSegmentedControlItem>
+          <PSegmentedControlItem icon="shopping-cart">Checkout</PSegmentedControlItem>
           <PSegmentedControlItem iconSource="./assets/icon-custom-kaixin.svg">Confirmation</PSegmentedControlItem>
         </PSegmentedControl>
       </div>
