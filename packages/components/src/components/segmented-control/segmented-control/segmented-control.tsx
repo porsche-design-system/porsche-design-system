@@ -45,10 +45,9 @@ export class SegmentedControl {
   }
 
   public componentDidLoad(): void {
-    this.host.addEventListener('click', (e) => {
-      if (isEventTargetSegmentedControlItem(this.host, e.target as HTMLElement)) {
-        const { option } = e.target as unknown as SegmentedControlItem;
-        this.value = option;
+    this.host.addEventListener('click', ({ target }: MouseEvent & { target: HTMLElement & SegmentedControlItem }) => {
+      if (isEventTargetSegmentedControlItem(this.host, target)) {
+        this.value = target.option;
 
         renderInputOutsideShadowRoot(this.host, this.name, this.value);
         this.segmentedControlChange.emit({ value: this.value });
