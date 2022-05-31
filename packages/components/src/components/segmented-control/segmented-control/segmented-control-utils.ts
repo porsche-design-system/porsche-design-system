@@ -2,14 +2,15 @@ import type { Theme } from '../../../types';
 import type { SegmentedControlItemInternalHTMLProps } from '../segmented-control-item/segmented-control-item-utils';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import {
-  ITEM_PADDING,
-  ICON_SIZE,
-  ICON_MARGIN,
   BUTTON_FONT,
+  ICON_MARGIN,
+  ICON_SIZE,
+  ITEM_PADDING,
   LABEL_FONT,
 } from '../segmented-control-item/segmented-control-item-styles';
 import { fontFamily } from '@porsche-design-system/utilities-v2';
 import { getPrefixedTagNames, getTagName } from '../../../utils';
+import { forceUpdate } from '@stencil/core';
 
 export const SEGMENTED_CONTROL_BACKGROUND_COLORS = ['background-surface', 'background-default'] as const;
 export type SegmentedControlBackgroundColor = typeof SEGMENTED_CONTROL_BACKGROUND_COLORS[number];
@@ -59,24 +60,18 @@ export const getItemMaxWidth = (host: HTMLElement): number => {
 
 export const syncItemsProps = (
   host: HTMLElement,
-  theme: Theme,
-  backgroundColor: SegmentedControlBackgroundColor
+  value: string | number,
+  backgroundColor: SegmentedControlBackgroundColor,
+  theme: Theme
 ): void => {
-  Array.from(host.children).forEach((item: HTMLElement & SegmentedControlItemInternalHTMLProps) => {
-    item.theme = theme;
-    item.backgroundColor = backgroundColor;
-  });
-};
-
-export const renderInputOutsideShadowRoot = (host: HTMLElement, name: string, value: string | number): void => {
-  let input = host.querySelector('input');
-  if (!input) {
-    input = document.createElement('input');
-    input.type = 'hidden';
-    host.append(input);
-  }
-  input.name = name;
-  input.value = `${value}`;
+  Array.from(host.children).forEach(
+    (item: HTMLElement & SegmentedControlItem & SegmentedControlItemInternalHTMLProps) => {
+      item.selected = item.value === value;
+      item.backgroundColor = backgroundColor;
+      item.theme = theme;
+      forceUpdate(item);
+    }
+  );
 };
 
 export const isEventTargetSegmentedControlItem = (host: HTMLElement, target: HTMLElement): boolean => {
