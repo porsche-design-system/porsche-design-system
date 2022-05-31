@@ -83,6 +83,11 @@ exports[`should have no basic DOM regression for p-button 1`] = `
     outline-offset: 1px !important;
   }
 
+  p-text[data-theme=\\"dark\\"] a:hover,
+  p-text[data-theme=\\"dark\\"] button:hover {
+    color: #ff0223 !important;
+  }
+
   p-text b,
   p-text strong {
     font-weight: 700 !important;
@@ -109,9 +114,6 @@ exports[`should have no basic DOM regression for p-button 1`] = `
   }
 
   @media (hover: hover) {
-    p-text[data-theme=\\"dark\\"] a:hover {
-      color: #ff0223 !important;
-    }
 
     p-text a:hover,
     p-text button:hover {
@@ -156,6 +158,11 @@ exports[`should have no basic DOM regression for p-button-pure 1`] = `
     outline-offset: 1px !important;
   }
 
+  p-text[data-theme=\\"dark\\"] a:hover,
+  p-text[data-theme=\\"dark\\"] button:hover {
+    color: #ff0223 !important;
+  }
+
   p-text b,
   p-text strong {
     font-weight: 700 !important;
@@ -182,9 +189,6 @@ exports[`should have no basic DOM regression for p-button-pure 1`] = `
   }
 
   @media (hover: hover) {
-    p-text[data-theme=\\"dark\\"] a:hover {
-      color: #ff0223 !important;
-    }
 
     p-text a:hover,
     p-text button:hover {
@@ -281,6 +285,11 @@ exports[`should have no basic DOM regression for p-inline-notification 1`] = `
     outline-offset: 1px !important;
   }
 
+  p-text[data-theme=\\"dark\\"] a:hover,
+  p-text[data-theme=\\"dark\\"] button:hover {
+    color: #ff0223 !important;
+  }
+
   p-text b,
   p-text strong {
     font-weight: 700 !important;
@@ -307,9 +316,6 @@ exports[`should have no basic DOM regression for p-inline-notification 1`] = `
   }
 
   @media (hover: hover) {
-    p-text[data-theme=\\"dark\\"] a:hover {
-      color: #ff0223 !important;
-    }
 
     p-text a:hover,
     p-text button:hover {
@@ -349,6 +355,11 @@ exports[`should have no basic DOM regression for p-link 1`] = `
     outline-offset: 1px !important;
   }
 
+  p-text[data-theme=\\"dark\\"] a:hover,
+  p-text[data-theme=\\"dark\\"] button:hover {
+    color: #ff0223 !important;
+  }
+
   p-text b,
   p-text strong {
     font-weight: 700 !important;
@@ -375,9 +386,6 @@ exports[`should have no basic DOM regression for p-link 1`] = `
   }
 
   @media (hover: hover) {
-    p-text[data-theme=\\"dark\\"] a:hover {
-      color: #ff0223 !important;
-    }
 
     p-text a:hover,
     p-text button:hover {
@@ -415,6 +423,11 @@ exports[`should have no basic DOM regression for p-link-pure 1`] = `
     outline-offset: 1px !important;
   }
 
+  p-text[data-theme=\\"dark\\"] a:hover,
+  p-text[data-theme=\\"dark\\"] button:hover {
+    color: #ff0223 !important;
+  }
+
   p-text b,
   p-text strong {
     font-weight: 700 !important;
@@ -441,9 +454,6 @@ exports[`should have no basic DOM regression for p-link-pure 1`] = `
   }
 
   @media (hover: hover) {
-    p-text[data-theme=\\"dark\\"] a:hover {
-      color: #ff0223 !important;
-    }
 
     p-text a:hover,
     p-text button:hover {
@@ -481,6 +491,11 @@ exports[`should have no basic DOM regression for p-link-social 1`] = `
     outline-offset: 1px !important;
   }
 
+  p-text[data-theme=\\"dark\\"] a:hover,
+  p-text[data-theme=\\"dark\\"] button:hover {
+    color: #ff0223 !important;
+  }
+
   p-text b,
   p-text strong {
     font-weight: 700 !important;
@@ -507,9 +522,6 @@ exports[`should have no basic DOM regression for p-link-social 1`] = `
   }
 
   @media (hover: hover) {
-    p-text[data-theme=\\"dark\\"] a:hover {
-      color: #ff0223 !important;
-    }
 
     p-text a:hover,
     p-text button:hover {
@@ -627,6 +639,11 @@ exports[`should have no basic DOM regression for p-switch 1`] = `
     outline-offset: 1px !important;
   }
 
+  p-text[data-theme=\\"dark\\"] a:hover,
+  p-text[data-theme=\\"dark\\"] button:hover {
+    color: #ff0223 !important;
+  }
+
   p-text b,
   p-text strong {
     font-weight: 700 !important;
@@ -653,9 +670,6 @@ exports[`should have no basic DOM regression for p-switch 1`] = `
   }
 
   @media (hover: hover) {
-    p-text[data-theme=\\"dark\\"] a:hover {
-      color: #ff0223 !important;
-    }
 
     p-text a:hover,
     p-text button:hover {
