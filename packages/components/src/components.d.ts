@@ -27,7 +27,7 @@ import { ModalAriaAttributes } from "./components/content/modal/modal-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/navigation/pagination/pagination-utils";
 import { PopoverDirection } from "./components/feedback/popover/popover-utils";
 import { GradientColorTheme, PrevNextButtonJssStyle, ScrollToPosition } from "./components/common/scroller/scroller-utils";
-import { SegmentedControlBackgroundColor } from "./components/segmented-control/segmented-control/segmented-control-utils";
+import { SegmentedControlBackgroundColor, SegmentedControlChangeEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinner/spinner-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
@@ -2103,7 +2103,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when selected element changes.
          */
-        "onSegmentedControlChange"?: (event: CustomEvent<{ value: string }>) => void;
+        "onSegmentedControlChange"?: (event: CustomEvent<SegmentedControlChangeEvent>) => void;
         /**
           * Adapts the segmented-control color depending on the theme.
          */

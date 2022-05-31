@@ -2,7 +2,7 @@ import { Component, Element, h, JSX, Prop, forceUpdate, Event, EventEmitter } fr
 import { attachComponentCss, observeChildren, unobserveChildren } from '../../../utils';
 import { getComponentCss } from './segmented-control-styles';
 import type { Theme } from '../../../types';
-import type { SegmentedControlBackgroundColor } from './segmented-control-utils';
+import type { SegmentedControlBackgroundColor, SegmentedControlChangeEvent } from './segmented-control-utils';
 import {
   getItemMaxWidth,
   isEventTargetSegmentedControlItem,
@@ -29,7 +29,7 @@ export class SegmentedControl {
   @Prop() public value?: string | number;
 
   /** Emitted when selected element changes. */
-  @Event({ bubbles: false }) public segmentedControlChange: EventEmitter<{ value: string }>;
+  @Event({ bubbles: false }) public segmentedControlChange: EventEmitter<SegmentedControlChangeEvent>;
 
   public connectedCallback(): void {
     observeChildren(this.host, () => forceUpdate(this.host));
