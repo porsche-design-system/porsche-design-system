@@ -44,8 +44,8 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
         '&:focus': {
           outlineColor: formStateColor || contrastMediumColor,
         },
-        '@media (hover: hover)': {
-          // '&:hover:not(:disabled) ~ ul': {
+        // '@media (hover: hover)': {
+        '&:hover:not(:disabled) ~ ul': {
           borderColor: contrastHighColor,
         },
         // },

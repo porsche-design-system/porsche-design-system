@@ -18,15 +18,12 @@ exports[`getButtonStyles() should return correct css for isOpen: false, state: '
 button:focus {
   outline-color: #fc1717;
 }
+button:hover:not(:disabled) ~ ul {
+  border-color: #e3e4e5;
+}
 button:disabled {
   cursor: not-allowed;
-}
-@media (hover: hover) {
-  button {
-    border-color: #e3e4e5;
-  }
-}
-"
+}"
 `;
 
 exports[`getButtonStyles() should return correct css for isOpen: false, state: 'none' and theme: 'dark' 1`] = `
@@ -47,15 +44,12 @@ exports[`getButtonStyles() should return correct css for isOpen: false, state: '
 button:focus {
   outline-color: #b0b1b2;
 }
+button:hover:not(:disabled) ~ ul {
+  border-color: #e3e4e5;
+}
 button:disabled {
   cursor: not-allowed;
-}
-@media (hover: hover) {
-  button {
-    border-color: #e3e4e5;
-  }
-}
-"
+}"
 `;
 
 exports[`getButtonStyles() should return correct css for isOpen: false, state: 'success' and theme: 'dark' 1`] = `
@@ -76,15 +70,12 @@ exports[`getButtonStyles() should return correct css for isOpen: false, state: '
 button:focus {
   outline-color: #01ba1d;
 }
+button:hover:not(:disabled) ~ ul {
+  border-color: #e3e4e5;
+}
 button:disabled {
   cursor: not-allowed;
-}
-@media (hover: hover) {
-  button {
-    border-color: #e3e4e5;
-  }
-}
-"
+}"
 `;
 
 exports[`getButtonStyles() should return correct css for isOpen: true, state: 'error' and theme: 'light' 1`] = `
@@ -106,15 +97,12 @@ exports[`getButtonStyles() should return correct css for isOpen: true, state: 'e
 button:focus {
   outline-color: #e00000;
 }
+button:hover:not(:disabled) ~ ul {
+  border-color: #323639;
+}
 button:disabled {
   cursor: not-allowed;
-}
-@media (hover: hover) {
-  button {
-    border-color: #323639;
-  }
-}
-"
+}"
 `;
 
 exports[`getButtonStyles() should return correct css for isOpen: true, state: 'none' and theme: 'light' 1`] = `
@@ -136,15 +124,12 @@ exports[`getButtonStyles() should return correct css for isOpen: true, state: 'n
 button:focus {
   outline-color: #626669;
 }
+button:hover:not(:disabled) ~ ul {
+  border-color: #323639;
+}
 button:disabled {
   cursor: not-allowed;
-}
-@media (hover: hover) {
-  button {
-    border-color: #323639;
-  }
-}
-"
+}"
 `;
 
 exports[`getButtonStyles() should return correct css for isOpen: true, state: 'success' and theme: 'light' 1`] = `
@@ -166,15 +151,12 @@ exports[`getButtonStyles() should return correct css for isOpen: true, state: 's
 button:focus {
   outline-color: #018a16;
 }
+button:hover:not(:disabled) ~ ul {
+  border-color: #323639;
+}
 button:disabled {
   cursor: not-allowed;
-}
-@media (hover: hover) {
-  button {
-    border-color: #323639;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: false, disabled: false, state: none, filter: false and theme: light 1`] = `
@@ -204,6 +186,9 @@ button {
 }
 button:focus {
   outline-color: #626669;
+}
+button:hover:not(:disabled) ~ ul {
+  border-color: #323639;
 }
 button:disabled {
   cursor: not-allowed;
@@ -257,9 +242,6 @@ ul::before {
 @media (hover: hover) {
   :host(:hover) {
     color: #000;
-  }
-  button {
-    border-color: #323639;
   }
 }
 
@@ -538,6 +520,9 @@ button {
 button:focus {
   outline-color: #626669;
 }
+button:hover:not(:disabled) ~ ul {
+  border-color: #323639;
+}
 button:disabled {
   cursor: not-allowed;
 }
@@ -587,12 +572,6 @@ ul::before {
   background: #e3e4e5;
   top: 0;
 }
-@media (hover: hover) {
-  button {
-    border-color: #323639;
-  }
-}
-
 .option {
   display: flex;
   padding: 0.25rem 0.6875rem;
@@ -863,6 +842,9 @@ button {
 button:focus {
   outline-color: #626669;
 }
+button:hover:not(:disabled) ~ ul {
+  border-color: #323639;
+}
 button:disabled {
   cursor: not-allowed;
 }
@@ -911,9 +893,6 @@ ul::before {
 @media (hover: hover) {
   :host(:hover) {
     color: #000;
-  }
-  button {
-    border-color: #323639;
   }
 }
 
@@ -1190,6 +1169,9 @@ button {
 button:focus {
   outline-color: #626669;
 }
+button:hover:not(:disabled) ~ ul {
+  border-color: #323639;
+}
 button:disabled {
   cursor: not-allowed;
 }
@@ -1235,12 +1217,6 @@ ul::before {
   background: #e3e4e5;
   top: 0;
 }
-@media (hover: hover) {
-  button {
-    border-color: #323639;
-  }
-}
-
 .option {
   display: flex;
   padding: 0.25rem 0.6875rem;
@@ -1507,6 +1483,9 @@ button {
 button:focus {
   outline-color: #626669;
 }
+button:hover:not(:disabled) ~ ul {
+  border-color: #323639;
+}
 button:disabled {
   cursor: not-allowed;
 }
@@ -1560,9 +1539,6 @@ ul::after {
 @media (hover: hover) {
   :host(:hover) {
     color: #000;
-  }
-  button {
-    border-color: #323639;
   }
 }
 
@@ -1842,6 +1818,9 @@ button {
 button:focus {
   outline-color: #626669;
 }
+button:hover:not(:disabled) ~ ul {
+  border-color: #323639;
+}
 button:disabled {
   cursor: not-allowed;
 }
@@ -1892,12 +1871,6 @@ ul::after {
   background: #e3e4e5;
   bottom: 0;
 }
-@media (hover: hover) {
-  button {
-    border-color: #323639;
-  }
-}
-
 .option {
   display: flex;
   padding: 0.25rem 0.6875rem;
@@ -2169,6 +2142,9 @@ button {
 button:focus {
   outline-color: #626669;
 }
+button:hover:not(:disabled) ~ ul {
+  border-color: #323639;
+}
 button:disabled {
   cursor: not-allowed;
 }
@@ -2217,9 +2193,6 @@ ul::after {
 @media (hover: hover) {
   :host(:hover) {
     color: #000;
-  }
-  button {
-    border-color: #323639;
   }
 }
 
@@ -2496,6 +2469,9 @@ button {
 button:focus {
   outline-color: #626669;
 }
+button:hover:not(:disabled) ~ ul {
+  border-color: #323639;
+}
 button:disabled {
   cursor: not-allowed;
 }
@@ -2541,12 +2517,6 @@ ul::after {
   background: #e3e4e5;
   bottom: 0;
 }
-@media (hover: hover) {
-  button {
-    border-color: #323639;
-  }
-}
-
 .option {
   display: flex;
   padding: 0.25rem 0.6875rem;
