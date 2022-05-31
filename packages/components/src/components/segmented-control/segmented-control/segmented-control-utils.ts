@@ -13,6 +13,8 @@ import { getPrefixedTagNames, getTagName } from '../../../utils';
 export const SEGMENTED_CONTROL_BACKGROUND_COLORS = ['background-surface', 'background-default'] as const;
 export type SegmentedControlBackgroundColor = typeof SEGMENTED_CONTROL_BACKGROUND_COLORS[number];
 
+export type SegmentedControlChangeEvent = { value: string };
+
 // temporary dom node to measure max-width of children content
 const tempDiv = document.createElement('div');
 tempDiv.style.position = 'absolute';
