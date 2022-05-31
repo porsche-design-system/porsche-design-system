@@ -11,7 +11,7 @@ export const getComponentCss = (maxWidth: number): string => {
       ':host': addImportantToEachRule({
         display: 'grid',
         gridAutoRows: '1fr', // for equal height
-        gridTemplateColumns: `repeat(auto-fit, minmax(${minWidth}px, min-content))`,
+        gridTemplateColumns: `repeat(auto-fit, ${minWidth}px)`,
         gridGap: '4px',
       }),
     },

@@ -41,7 +41,7 @@ export const getItemMaxWidth = (host: HTMLElement): number => {
 
   tempDiv.remove();
 
-  return Math.max(...widths); // * 1.03; // TODO: buffer to be on safe side?
+  return Math.max(...widths) * 1.03; // TODO: buffer to be on safe side?
 };
 
 export const syncItemsProps = (
