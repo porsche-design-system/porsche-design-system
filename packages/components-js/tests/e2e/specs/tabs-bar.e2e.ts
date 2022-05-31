@@ -11,7 +11,6 @@ import {
   getLifecycleStatus,
   getOffsetLeft,
   getOffsetWidth,
-  getProperty,
   getScrollLeft,
   initAddEventListener,
   initConsoleObserver,

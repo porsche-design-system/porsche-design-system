@@ -140,7 +140,7 @@ describe('events', () => {
   it('should trigger event on step click', async () => {
     await initStepperHorizontal({ amount: 3, currentStep: 2 });
     const host = await getHost();
-    const [buttonOne, buttonTwo] = await getAllButtons();
+    const [button1, button2] = await getAllButtons();
 
     let eventCounter = 0;
     await addEventListener(host, 'stepChange', () => eventCounter++);
@@ -148,12 +148,12 @@ describe('events', () => {
     // Remove and re-attach component to check if events are duplicated / fire at all
     await reattachElement(page, 'p-stepper-horizontal');
 
-    buttonOne.click();
+    button1.click();
     await waitForStencilLifecycle(page);
 
     expect(eventCounter).toBe(1);
 
-    await buttonTwo.click();
+    await button2.click();
     await waitForStencilLifecycle(page);
 
     expect(eventCounter).toBe(2);
@@ -174,13 +174,13 @@ describe('events', () => {
 
   it('should not trigger event if click on current', async () => {
     await initStepperHorizontal({ amount: 3 });
-    const [buttonOne] = await getAllButtons();
+    const [button1] = await getAllButtons();
 
     await waitForStencilLifecycle(page);
 
     let eventCounter = 0;
 
-    buttonOne.click();
+    button1.click();
     await waitForStencilLifecycle(page);
 
     expect(eventCounter).toBe(0);
@@ -188,15 +188,15 @@ describe('events', () => {
 
   it('should not trigger event if item is disabled', async () => {
     await initStepperHorizontal({ amount: 3, currentStep: 2 });
-    const [, stepTwo] = await getAllStepItems();
-    const [, buttonTwo] = await getAllButtons();
+    const [, step2] = await getAllStepItems();
+    const [, button2] = await getAllButtons();
 
-    await setProperty(stepTwo, 'disabled', true);
+    await setProperty(step2, 'disabled', true);
     await waitForStencilLifecycle(page);
 
     let eventCounter = 0;
 
-    buttonTwo.click();
+    button2.click();
     await waitForStencilLifecycle(page);
 
     expect(eventCounter).toBe(0);
@@ -204,13 +204,13 @@ describe('events', () => {
 
   it('should not trigger event if item without state', async () => {
     await initStepperHorizontal({ amount: 3, currentStep: 1 });
-    const [, , buttonThree] = await getAllButtons();
+    const [, , button3] = await getAllButtons();
 
     await waitForStencilLifecycle(page);
 
     let eventCounter = 0;
 
-    buttonThree.click();
+    button3.click();
     await waitForStencilLifecycle(page);
 
     expect(eventCounter).toBe(0);
@@ -252,10 +252,10 @@ describe('lifecycle', () => {
 
   it('should work without unnecessary round trips on prop change', async () => {
     await initStepperHorizontal({ amount: 3, currentStep: 0 });
-    const [stepOne, stepTwo] = await getAllStepItems();
+    const [step1, step2] = await getAllStepItems();
 
-    await setProperty(stepOne, 'state', 'complete');
-    await setProperty(stepTwo, 'state', 'current');
+    await setProperty(step1, 'state', 'complete');
+    await setProperty(step2, 'state', 'current');
     await waitForStencilLifecycle(page);
 
     const status = await getLifecycleStatus(page);
@@ -274,10 +274,10 @@ describe('lifecycle', () => {
 describe('accessibility', () => {
   it('should expose correct initial accessibility tree of stepper-horizontal', async () => {
     await initStepperHorizontal({ amount: 3 });
-    const [buttonOne, buttonTwo] = await getAllButtons();
+    const [button1, button2] = await getAllButtons();
 
-    await expectA11yToMatchSnapshot(page, buttonOne, { message: 'Of Button' });
-    expect(await getAttribute(buttonOne, 'aria-current')).toBe('step');
-    expect(await getAttribute(buttonTwo, 'aria-current')).toBe(null);
+    await expectA11yToMatchSnapshot(page, button1, { message: 'Of Button' });
+    expect(await getAttribute(button1, 'aria-current')).toBe('step');
+    expect(await getAttribute(button2, 'aria-current')).toBe(null);
   });
 });
