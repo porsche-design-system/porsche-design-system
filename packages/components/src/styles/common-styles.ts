@@ -42,10 +42,10 @@ type GetHoverStylesOptions = {
 export const getHoverJssStyle = ({ theme }: GetHoverStylesOptions = { theme: 'light' }): JssStyle => {
   return {
     transition: getTransition('color'),
-    '@media (hover: hover)': {
-      '&:hover': {
-        color: getThemedColors(theme).hoverColor,
-      },
+    // '@media (hover: hover)': {
+    '&:hover': {
+      color: getThemedColors(theme).hoverColor,
+      // },
     },
   };
 };
@@ -121,7 +121,7 @@ export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withD
       ...getFocusJssStyle({ offset: 1 }),
     },
     ...(opts.withDarkTheme && {
-      '&[data-theme="dark"] a:hover': getHoverJssStyle({ theme: 'dark' })['@media (hover: hover)']['&:hover'],
+      '&[data-theme="dark"] a:hover': getHoverJssStyle({ theme: 'dark' })['&:hover'],
     }),
     '& b, & strong': {
       fontWeight: fontWeight.bold,

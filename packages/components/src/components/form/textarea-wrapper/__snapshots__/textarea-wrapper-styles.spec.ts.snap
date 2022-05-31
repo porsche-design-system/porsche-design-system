@@ -1815,6 +1815,9 @@ p-textarea-wrapper b, p-textarea-wrapper strong {
 p-textarea-wrapper em, p-textarea-wrapper i {
   font-style: normal !important;
 }
+p-textarea-wrapper a:hover {
+  color: #d5001c !important;
+}
 p-textarea-wrapper a::-moz-focus-inner {
   border: 0 !important;
 }
@@ -1823,13 +1826,7 @@ p-textarea-wrapper a:focus {
 }
 p-textarea-wrapper a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}
-@media (hover: hover) {
-  p-textarea-wrapper a:hover {
-    color: #d5001c !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getSlottedCss() should return correct css with prefix 1`] = `
@@ -1846,6 +1843,9 @@ prefixed-p-textarea-wrapper b, prefixed-p-textarea-wrapper strong {
 prefixed-p-textarea-wrapper em, prefixed-p-textarea-wrapper i {
   font-style: normal !important;
 }
+prefixed-p-textarea-wrapper a:hover {
+  color: #d5001c !important;
+}
 prefixed-p-textarea-wrapper a::-moz-focus-inner {
   border: 0 !important;
 }
@@ -1854,11 +1854,5 @@ prefixed-p-textarea-wrapper a:focus {
 }
 prefixed-p-textarea-wrapper a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}
-@media (hover: hover) {
-  prefixed-p-textarea-wrapper a:hover {
-    color: #d5001c !important;
-  }
-}
-"
+}"
 `;

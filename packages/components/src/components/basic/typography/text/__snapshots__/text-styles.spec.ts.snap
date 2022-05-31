@@ -368,6 +368,9 @@ p-text b, p-text strong {
 p-text em, p-text i {
   font-style: normal !important;
 }
+p-text a:hover, p-text button:hover {
+  color: #d5001c !important;
+}
 p-text a::-moz-focus-inner, p-text button::-moz-focus-inner {
   border: 0 !important;
 }
@@ -376,13 +379,7 @@ p-text a:focus, p-text button:focus {
 }
 p-text a:focus:not(:focus-visible), p-text button:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}
-@media (hover: hover) {
-  p-text a:hover, p-text button:hover {
-    color: #d5001c !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getSlottedCss() should return correct css with prefix 1`] = `
@@ -410,6 +407,9 @@ prefixed-p-text b, prefixed-p-text strong {
 prefixed-p-text em, prefixed-p-text i {
   font-style: normal !important;
 }
+prefixed-p-text a:hover, prefixed-p-text button:hover {
+  color: #d5001c !important;
+}
 prefixed-p-text a::-moz-focus-inner, prefixed-p-text button::-moz-focus-inner {
   border: 0 !important;
 }
@@ -418,11 +418,5 @@ prefixed-p-text a:focus, prefixed-p-text button:focus {
 }
 prefixed-p-text a:focus:not(:focus-visible), prefixed-p-text button:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}
-@media (hover: hover) {
-  prefixed-p-text a:hover, prefixed-p-text button:hover {
-    color: #d5001c !important;
-  }
-}
-"
+}"
 `;

@@ -1633,6 +1633,9 @@ p-select-wrapper b, p-select-wrapper strong {
 p-select-wrapper em, p-select-wrapper i {
   font-style: normal !important;
 }
+p-select-wrapper a:hover {
+  color: #d5001c !important;
+}
 p-select-wrapper a::-moz-focus-inner {
   border: 0 !important;
 }
@@ -1641,13 +1644,7 @@ p-select-wrapper a:focus {
 }
 p-select-wrapper a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}
-@media (hover: hover) {
-  p-select-wrapper a:hover {
-    color: #d5001c !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getSlottedCss() should return correct css with prefix 1`] = `
@@ -1667,6 +1664,9 @@ prefixed-p-select-wrapper b, prefixed-p-select-wrapper strong {
 prefixed-p-select-wrapper em, prefixed-p-select-wrapper i {
   font-style: normal !important;
 }
+prefixed-p-select-wrapper a:hover {
+  color: #d5001c !important;
+}
 prefixed-p-select-wrapper a::-moz-focus-inner {
   border: 0 !important;
 }
@@ -1675,11 +1675,5 @@ prefixed-p-select-wrapper a:focus {
 }
 prefixed-p-select-wrapper a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}
-@media (hover: hover) {
-  prefixed-p-select-wrapper a:hover {
-    color: #d5001c !important;
-  }
-}
-"
+}"
 `;

@@ -4457,6 +4457,9 @@ p-text-field-wrapper input::-webkit-outer-spin-button, p-text-field-wrapper inpu
 p-text-field-wrapper input[type=\\"text\\"]::-webkit-contacts-auto-fill-button, p-text-field-wrapper input[type=\\"text\\"]::-webkit-credentials-auto-fill-button {
   margin-right: 2.4375rem !important;
 }
+p-text-field-wrapper a:hover {
+  color: #d5001c !important;
+}
 p-text-field-wrapper a::-moz-focus-inner {
   border: 0 !important;
 }
@@ -4465,13 +4468,7 @@ p-text-field-wrapper a:focus {
 }
 p-text-field-wrapper a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}
-@media (hover: hover) {
-  p-text-field-wrapper a:hover {
-    color: #d5001c !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getSlottedCss() should return correct css with prefix 1`] = `
@@ -4495,6 +4492,9 @@ prefixed-p-text-field-wrapper input::-webkit-outer-spin-button, prefixed-p-text-
 prefixed-p-text-field-wrapper input[type=\\"text\\"]::-webkit-contacts-auto-fill-button, prefixed-p-text-field-wrapper input[type=\\"text\\"]::-webkit-credentials-auto-fill-button {
   margin-right: 2.4375rem !important;
 }
+prefixed-p-text-field-wrapper a:hover {
+  color: #d5001c !important;
+}
 prefixed-p-text-field-wrapper a::-moz-focus-inner {
   border: 0 !important;
 }
@@ -4503,11 +4503,5 @@ prefixed-p-text-field-wrapper a:focus {
 }
 prefixed-p-text-field-wrapper a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}
-@media (hover: hover) {
-  prefixed-p-text-field-wrapper a:hover {
-    color: #d5001c !important;
-  }
-}
-"
+}"
 `;

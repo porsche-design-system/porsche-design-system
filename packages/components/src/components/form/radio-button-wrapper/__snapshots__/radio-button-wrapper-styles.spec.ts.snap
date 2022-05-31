@@ -1180,6 +1180,9 @@ p-radio-button-wrapper b, p-radio-button-wrapper strong {
 p-radio-button-wrapper em, p-radio-button-wrapper i {
   font-style: normal !important;
 }
+p-radio-button-wrapper a:hover {
+  color: #d5001c !important;
+}
 p-radio-button-wrapper a::-moz-focus-inner {
   border: 0 !important;
 }
@@ -1188,13 +1191,7 @@ p-radio-button-wrapper a:focus {
 }
 p-radio-button-wrapper a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}
-@media (hover: hover) {
-  p-radio-button-wrapper a:hover {
-    color: #d5001c !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getSlottedCss() should return correct css with prefix 1`] = `
@@ -1211,6 +1208,9 @@ prefixed-p-radio-button-wrapper b, prefixed-p-radio-button-wrapper strong {
 prefixed-p-radio-button-wrapper em, prefixed-p-radio-button-wrapper i {
   font-style: normal !important;
 }
+prefixed-p-radio-button-wrapper a:hover {
+  color: #d5001c !important;
+}
 prefixed-p-radio-button-wrapper a::-moz-focus-inner {
   border: 0 !important;
 }
@@ -1219,11 +1219,5 @@ prefixed-p-radio-button-wrapper a:focus {
 }
 prefixed-p-radio-button-wrapper a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}
-@media (hover: hover) {
-  prefixed-p-radio-button-wrapper a:hover {
-    color: #d5001c !important;
-  }
-}
-"
+}"
 `;
