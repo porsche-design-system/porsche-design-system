@@ -353,3 +353,11 @@ export const expectToSkipFocusOnComponent = async (page: Page, component: Elemen
 
   expect(await getActiveElementId(page)).toBe('before');
 };
+
+export const FOCUS_PADDING = 8;
+export const SCROLL_PERCENTAGE = 0.2;
+export const CSS_ANIMATION_DURATION = 1000;
+
+export const getScrollLeft = (element: ElementHandle) => getProperty<number>(element, 'scrollLeft');
+export const getOffsetLeft = (element: ElementHandle) => getProperty<number>(element, 'offsetLeft');
+export const getOffsetWidth = (element: ElementHandle) => getProperty<number>(element, 'offsetWidth');

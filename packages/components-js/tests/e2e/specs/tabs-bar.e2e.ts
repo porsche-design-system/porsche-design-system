@@ -1,18 +1,24 @@
 import { ElementHandle, KeyInput, Page } from 'puppeteer';
 import {
   addEventListener,
+  CSS_ANIMATION_DURATION,
   expectA11yToMatchSnapshot,
+  FOCUS_PADDING,
   getAttribute,
   getConsoleErrorsAmount,
   getElementPositions,
   getElementStyle,
   getLifecycleStatus,
+  getOffsetLeft,
+  getOffsetWidth,
   getProperty,
+  getScrollLeft,
   initAddEventListener,
   initConsoleObserver,
   isElementAtIndexFocused,
   reattachElement,
   removeAttribute,
+  SCROLL_PERCENTAGE,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -20,10 +26,6 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import type { TabSize } from '@porsche-design-system/components/src/components/navigation/tabs-bar/tabs-bar-utils';
-
-export const CSS_ANIMATION_DURATION = 1000;
-export const FOCUS_PADDING = 8;
-const TABS_SCROLL_PERCENTAGE = 0.2;
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -76,11 +78,8 @@ const getPrevNextButton = async () => {
   const nextButton = await selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action-next p-button-pure');
   return { prevButton, nextButton };
 };
-const getScrollLeft = (element: ElementHandle) => getProperty<number>(element, 'scrollLeft');
-const getOffsetLeft = (element: ElementHandle) => getProperty<number>(element, 'offsetLeft');
-const getOffsetWidth = (element: ElementHandle) => getProperty<number>(element, 'offsetWidth');
 
-const getScrollDistance = (scrollAreaWidth: number): number => Math.round(scrollAreaWidth * TABS_SCROLL_PERCENTAGE);
+const getScrollDistance = (scrollAreaWidth: number): number => Math.round(scrollAreaWidth * SCROLL_PERCENTAGE);
 const getBarWidth = async (bar: ElementHandle) => await getElementStyle(bar, 'width');
 
 const clickElement = async (el: ElementHandle) => {
