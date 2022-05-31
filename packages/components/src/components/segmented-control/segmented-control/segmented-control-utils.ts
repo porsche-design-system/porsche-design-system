@@ -33,7 +33,7 @@ export const getItemMaxWidth = (host: HTMLElement): number => {
 
   const widths = Array.from(host.children).map((item: HTMLElement & SegmentedControlItem) => {
     tempDiv.innerHTML = item.innerHTML;
-    if (item.icon) {
+    if (item.icon || item.iconSource) {
       tempDiv.prepend(tempIcon);
     }
     return parseFloat(getComputedStyle(tempDiv).width);
