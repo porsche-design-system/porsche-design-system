@@ -11,7 +11,8 @@ import type { Theme } from '../../../types';
 import type { SegmentedControlBackgroundColor } from '../segmented-control/segmented-control-utils';
 
 export const ITEM_PADDING = pxToRemWithUnit(40);
-export const { font: ITEM_FONT } = textSmall;
+export const { font: BUTTON_FONT } = textSmall;
+export const { font: LABEL_FONT } = textXSmall;
 export const ICON_SIZE = pxToRemWithUnit(24);
 export const ICON_MARGIN = pxToRemWithUnit(4);
 

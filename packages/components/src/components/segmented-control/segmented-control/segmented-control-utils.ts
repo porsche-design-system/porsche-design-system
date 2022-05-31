@@ -5,7 +5,8 @@ import {
   ITEM_PADDING,
   ICON_SIZE,
   ICON_MARGIN,
-  ITEM_FONT,
+  BUTTON_FONT,
+  LABEL_FONT,
 } from '../segmented-control-item/segmented-control-item-styles';
 import { fontFamily } from '@porsche-design-system/utilities-v2';
 import { getPrefixedTagNames, getTagName } from '../../../utils';
@@ -15,14 +16,19 @@ export type SegmentedControlBackgroundColor = typeof SEGMENTED_CONTROL_BACKGROUN
 
 export type SegmentedControlChangeEvent = { value: string };
 
+// wide font for safety buffer, Porsche Next might not be available or not used and cause wrong calculation
+const tempFont = 'sans-serif';
+
 // temporary dom node to measure max-width of children content
 const tempDiv = document.createElement('div');
 tempDiv.style.position = 'absolute';
 tempDiv.style.visibility = 'hidden';
 tempDiv.style.padding = `0 ${ITEM_PADDING}`;
 tempDiv.style.boxSizing = 'border-box';
-// TODO: fallback can cause jump when sans-serif is used initially but Porsche Next is available afterwards
-tempDiv.style.font = ITEM_FONT.replace(fontFamily, '"Porsche Next",sans-serif');
+tempDiv.style.font = BUTTON_FONT.replace(fontFamily, tempFont);
+
+const tempLabel = document.createElement('div');
+tempLabel.style.font = LABEL_FONT.replace(fontFamily, tempFont);
 
 const tempIcon = document.createElement('div');
 tempIcon.style.display = 'inline-block';
@@ -34,15 +40,21 @@ export const getItemMaxWidth = (host: HTMLElement): number => {
 
   const widths = Array.from(host.children).map((item: HTMLElement & SegmentedControlItem) => {
     tempDiv.innerHTML = item.innerHTML;
+
     if (item.icon || item.iconSource) {
       tempDiv.prepend(tempIcon);
     }
+    if (item.label) {
+      tempLabel.innerHTML = item.label;
+      tempDiv.prepend(tempLabel);
+    }
+
     return parseFloat(getComputedStyle(tempDiv).width);
   });
 
   tempDiv.remove();
 
-  return Math.max(...widths) * 1.03; // TODO: buffer to be on safe side?
+  return Math.max(...widths);
 };
 
 export const syncItemsProps = (
