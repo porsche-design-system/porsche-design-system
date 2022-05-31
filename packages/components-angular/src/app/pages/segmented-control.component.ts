@@ -103,7 +103,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-segmented-control>
         <p-segmented-control-item [label]="'Size is wider than value'">S</p-segmented-control-item>
         <p-segmented-control-item [label]="'Size with icon'" [icon]="'truck'">M is very wide with icon</p-segmented-control-item>
-        <p-segmented-control-item [label]="'Icon (ly'" icon)="user"></p-segmented-control-item>
+        <p-segmented-control-item [label]="'Icon only'" [icon]="'user'"></p-segmented-control-item>
         <p-segmented-control-item>XL without label</p-segmented-control-item>
         <p-segmented-control-item [label]="'Label only'"></p-segmented-control-item>
         <p-segmented-control-item [icon]="'truck'"></p-segmented-control-item>
