@@ -46,8 +46,8 @@
   },
   {
     "chunkShortName": "grid",
-    "size": 2312,
-    "gzipSize": 1002
+    "size": 2367,
+    "gzipSize": 1012
   },
   {
     "chunkShortName": "headline",
@@ -77,7 +77,7 @@
   {
     "chunkShortName": "main",
     "size": 61804,
-    "gzipSize": 21182
+    "gzipSize": 21184
   },
   {
     "chunkShortName": "marque",
@@ -111,8 +111,8 @@
   },
   {
     "chunkShortName": "segmented-control",
-    "size": 4628,
-    "gzipSize": 1937
+    "size": 5169,
+    "gzipSize": 2057
   },
   {
     "chunkShortName": "select-wrapper",
@@ -156,8 +156,8 @@
   },
   {
     "chunkShortName": "text-list",
-    "size": 4343,
-    "gzipSize": 1830
+    "size": 4398,
+    "gzipSize": 1843
   },
   {
     "chunkShortName": "textarea-wrapper",
