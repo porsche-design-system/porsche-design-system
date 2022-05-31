@@ -13,7 +13,6 @@ import { getComponentCss } from './stepper-horizontal-styles';
 import type { StepChangeEvent } from './stepper-horizontal-utils';
 import { getIndexOfStepWithStateCurrent, throwIfMultipleCurrentStates } from './stepper-horizontal-utils';
 import type { Theme } from '../../../../types';
-import type { ScrollToPosition } from '../../../common/scroller/scroller-utils';
 
 @Component({
   tag: 'p-stepper-horizontal',
@@ -29,7 +28,6 @@ export class StepperHorizontal {
   @Event({ bubbles: false }) public stepChange: EventEmitter<StepChangeEvent>;
 
   @State() private stepperHorizontalItems: HTMLPStepperHorizontalItemElement[] = [];
-  @State() private scroll: ScrollToPosition;
 
   private scrollAreaElement: HTMLElement;
   private prevGradientElement: HTMLElement;
@@ -57,7 +55,7 @@ export class StepperHorizontal {
       this.addEventListeners();
 
       // Initial scroll current into view
-      this.scroll = {
+      (this.scrollerElement as HTMLPScrollerElement).scrollToPosition = {
         scrollPosition: getScrollActivePosition(
           this.stepperHorizontalItems,
           'next',
@@ -77,11 +75,7 @@ export class StepperHorizontal {
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
-      <PrefixedTagNames.pScroller
-        theme={this.theme}
-        ref={(el) => (this.scrollerElement = el)}
-        scrollToPosition={this.scroll}
-      >
+      <PrefixedTagNames.pScroller theme={this.theme} ref={(el) => (this.scrollerElement = el)}>
         <div class="item-wrapper">
           <slot />
         </div>
@@ -110,7 +104,10 @@ export class StepperHorizontal {
           this.prevGradientElement.offsetWidth
         );
 
-        this.scroll = { scrollPosition: scrollActivePosition, isSmooth: true };
+        (this.scrollerElement as HTMLPScrollerElement).scrollToPosition = {
+          scrollPosition: scrollActivePosition,
+          isSmooth: true,
+        };
 
         this.stepChange.emit({ activeStepIndex: newStepIndex, prevState, prevStepIndex: currentStepIndex });
       }
