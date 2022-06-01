@@ -9,7 +9,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-segmented-control-item [value]="'s'">Size S</p-segmented-control-item>
         <p-segmented-control-item [value]="'m'">Size M</p-segmented-control-item>
         <p-segmented-control-item [value]="'l'">Size L</p-segmented-control-item>
-        <p-segmented-control-item [value]="'xl'" disabled>Size XL</p-segmented-control-item>
+        <p-segmented-control-item [value]="'xl'" [disabled]="true">Size XL</p-segmented-control-item>
       </p-segmented-control>
     </div>
 
@@ -18,7 +18,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-segmented-control-item [value]="'s'">Size S</p-segmented-control-item>
         <p-segmented-control-item [value]="'m'">Size M</p-segmented-control-item>
         <p-segmented-control-item [value]="'l'">Size L</p-segmented-control-item>
-        <p-segmented-control-item [value]="'xl'" disabled>Size XL</p-segmented-control-item>
+        <p-segmented-control-item [value]="'xl'" [disabled]="true">Size XL</p-segmented-control-item>
       </p-segmented-control>
     </div>
 
@@ -27,7 +27,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-segmented-control-item [value]="'s'">Size S</p-segmented-control-item>
         <p-segmented-control-item [value]="'m'">Size M</p-segmented-control-item>
         <p-segmented-control-item [value]="'l'">Size L</p-segmented-control-item>
-        <p-segmented-control-item [value]="'xl'" disabled>Size XL</p-segmented-control-item>
+        <p-segmented-control-item [value]="'xl'" [disabled]="true">Size XL</p-segmented-control-item>
       </p-segmented-control>
     </div>
 
@@ -36,7 +36,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-segmented-control-item [value]="'s'">Size S</p-segmented-control-item>
         <p-segmented-control-item [value]="'m'">Size M</p-segmented-control-item>
         <p-segmented-control-item [value]="'l'">Size L</p-segmented-control-item>
-        <p-segmented-control-item [value]="'xl'" disabled>Size XL</p-segmented-control-item>
+        <p-segmented-control-item [value]="'xl'" [disabled]="true">Size XL</p-segmented-control-item>
       </p-segmented-control>
     </div>
 
@@ -45,7 +45,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-segmented-control-item [value]="'s'" [label]="'Size'">S</p-segmented-control-item>
         <p-segmented-control-item [value]="'m'" [label]="'Size'">M</p-segmented-control-item>
         <p-segmented-control-item [value]="'l'" [label]="'Size'">L</p-segmented-control-item>
-        <p-segmented-control-item [value]="'xl'" [label]="'Size'" disabled>XL</p-segmented-control-item>
+        <p-segmented-control-item [value]="'xl'" [label]="'Size'" [disabled]="true">XL</p-segmented-control-item>
       </p-segmented-control>
     </div>
 
@@ -54,7 +54,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-segmented-control-item [value]="'s'" [label]="'Size'">S</p-segmented-control-item>
         <p-segmented-control-item [value]="'m'" [label]="'Size'">M</p-segmented-control-item>
         <p-segmented-control-item [value]="'l'" [label]="'Size'">L</p-segmented-control-item>
-        <p-segmented-control-item [value]="'xl'" [label]="'Size'" disabled>XL</p-segmented-control-item>
+        <p-segmented-control-item [value]="'xl'" [label]="'Size'" [disabled]="true">XL</p-segmented-control-item>
       </p-segmented-control>
     </div>
 
@@ -63,7 +63,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-segmented-control-item [value]="'s'" [label]="'Size'">S</p-segmented-control-item>
         <p-segmented-control-item [value]="'m'" [label]="'Size'">M</p-segmented-control-item>
         <p-segmented-control-item [value]="'l'" [label]="'Size'">L</p-segmented-control-item>
-        <p-segmented-control-item [value]="'xl'" [label]="'Size'" disabled>XL</p-segmented-control-item>
+        <p-segmented-control-item [value]="'xl'" [label]="'Size'" [disabled]="true">XL</p-segmented-control-item>
       </p-segmented-control>
     </div>
 
@@ -72,7 +72,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-segmented-control-item [value]="'s'" [label]="'Size'">S</p-segmented-control-item>
         <p-segmented-control-item [value]="'m'" [label]="'Size'">M</p-segmented-control-item>
         <p-segmented-control-item [value]="'l'" [label]="'Size'">L</p-segmented-control-item>
-        <p-segmented-control-item [value]="'xl'" [label]="'Size'" disabled>XL</p-segmented-control-item>
+        <p-segmented-control-item [value]="'xl'" [label]="'Size'" [disabled]="true">XL</p-segmented-control-item>
       </p-segmented-control>
     </div>
 
@@ -82,7 +82,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-segmented-control-item [value]="2" [icon]="'lock'">Stop</p-segmented-control-item>
         <p-segmented-control-item [value]="3" [icon]="'question'">FAQ</p-segmented-control-item>
         <p-segmented-control-item [value]="4" [icon]="'shopping-cart'">Checkout</p-segmented-control-item>
-        <p-segmented-control-item [value]="5" [iconSource]="'./assets/icon-custom-kaixin.svg'" disabled>
+        <p-segmented-control-item [value]="5" [iconSource]="'./assets/icon-custom-kaixin.svg'" [disabled]="true">
           Confirmation
         </p-segmented-control-item>
       </p-segmented-control>
@@ -94,7 +94,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-segmented-control-item [value]="2" [icon]="'lock'">Stop</p-segmented-control-item>
         <p-segmented-control-item [value]="3" [icon]="'question'">FAQ</p-segmented-control-item>
         <p-segmented-control-item [value]="4" [icon]="'shopping-cart'">Checkout</p-segmented-control-item>
-        <p-segmented-control-item [value]="5" [iconSource]="'./assets/icon-custom-kaixin.svg'" disabled>
+        <p-segmented-control-item [value]="5" [iconSource]="'./assets/icon-custom-kaixin.svg'" [disabled]="true">
           Confirmation
         </p-segmented-control-item>
       </p-segmented-control>
@@ -106,7 +106,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-segmented-control-item [value]="2" [icon]="'lock'">Stop</p-segmented-control-item>
         <p-segmented-control-item [value]="3" [icon]="'question'">FAQ</p-segmented-control-item>
         <p-segmented-control-item [value]="4" [icon]="'shopping-cart'">Checkout</p-segmented-control-item>
-        <p-segmented-control-item [value]="5" [iconSource]="'./assets/icon-custom-kaixin.svg'" disabled>
+        <p-segmented-control-item [value]="5" [iconSource]="'./assets/icon-custom-kaixin.svg'" [disabled]="true">
           Confirmation
         </p-segmented-control-item>
       </p-segmented-control>
@@ -118,7 +118,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-segmented-control-item [value]="2" [icon]="'lock'">Stop</p-segmented-control-item>
         <p-segmented-control-item [value]="3" [icon]="'question'">FAQ</p-segmented-control-item>
         <p-segmented-control-item [value]="4" [icon]="'shopping-cart'">Checkout</p-segmented-control-item>
-        <p-segmented-control-item [value]="5" [iconSource]="'./assets/icon-custom-kaixin.svg'" disabled>
+        <p-segmented-control-item [value]="5" [iconSource]="'./assets/icon-custom-kaixin.svg'" [disabled]="true">
           Confirmation
         </p-segmented-control-item>
       </p-segmented-control>
@@ -129,7 +129,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-segmented-control-item [value]="1" [label]="'Variant'" [icon]="'wrench'">Default</p-segmented-control-item>
         <p-segmented-control-item [value]="2" [label]="'Variant'" [icon]="'wrenches'">Advanced</p-segmented-control-item>
         <p-segmented-control-item [value]="3" [label]="'Variant'" [icon]="'truck'">Large</p-segmented-control-item>
-        <p-segmented-control-item [value]="4" [label]="'Variant'" [icon]="'tachometer'" disabled>Custom</p-segmented-control-item>
+        <p-segmented-control-item [value]="4" [label]="'Variant'" [icon]="'tachometer'" [disabled]="true"
+          >Custom</p-segmented-control-item
+        >
       </p-segmented-control>
     </div>
 
@@ -142,7 +144,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-segmented-control-item [value]="'l'">Size L</p-segmented-control-item>
         <p-segmented-control-item [value]="'xl'">Size XL</p-segmented-control-item>
         <p-segmented-control-item [value]="'xxl'">Size XXL</p-segmented-control-item>
-        <p-segmented-control-item [value]="'xxxl'" disabled>Size XXXL</p-segmented-control-item>
+        <p-segmented-control-item [value]="'xxxl'" [disabled]="true">Size XXXL</p-segmented-control-item>
       </p-segmented-control>
     </div>
 
@@ -151,7 +153,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-segmented-control-item [value]="'s'">S</p-segmented-control-item>
         <p-segmented-control-item [value]="'m'">M is very long with a line break</p-segmented-control-item>
         <p-segmented-control-item [value]="'l'">L</p-segmented-control-item>
-        <p-segmented-control-item [value]="'xl'" disabled>XL</p-segmented-control-item>
+        <p-segmented-control-item [value]="'xl'" [disabled]="true">XL</p-segmented-control-item>
       </p-segmented-control>
     </div>
 
@@ -160,20 +162,20 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-segmented-control-item [value]="'s'" [label]="'Size is longer'">S</p-segmented-control-item>
         <p-segmented-control-item [value]="'m'" [label]="'Size'">M</p-segmented-control-item>
         <p-segmented-control-item [value]="'l'" [label]="'Size'">L</p-segmented-control-item>
-        <p-segmented-control-item [value]="'xl'" [label]="'Size'" disabled>XL</p-segmented-control-item>
+        <p-segmented-control-item [value]="'xl'" [label]="'Size'" [disabled]="true">XL</p-segmented-control-item>
       </p-segmented-control>
     </div>
 
     <div class="playground light" title="should render segmented-control with multiple edge cases">
       <p-segmented-control [value]="1">
         <p-segmented-control-item [value]="1" [label]="'Size is wider than value'">S</p-segmented-control-item>
-        <p-segmented-control-item [value]="2" [label]="'Size with icon'" [icon]="'truck'" disabled>
+        <p-segmented-control-item [value]="2" [label]="'Size with icon'" [icon]="'truck'" [disabled]="true">
           M is very wide with icon
         </p-segmented-control-item>
         <p-segmented-control-item [value]="3" [label]="'Icon only'" [icon]="'user'"></p-segmented-control-item>
         <p-segmented-control-item [value]="4">XL without label</p-segmented-control-item>
         <p-segmented-control-item [value]="5" [label]="'Label only'"></p-segmented-control-item>
-        <p-segmented-control-item [value]="6" [icon]="'truck'" disabled></p-segmented-control-item>
+        <p-segmented-control-item [value]="6" [icon]="'truck'" [disabled]="true"></p-segmented-control-item>
       </p-segmented-control>
     </div>
   `,
