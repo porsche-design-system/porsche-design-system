@@ -1,5 +1,11 @@
 import { Component, Element, h, JSX, Listen, Prop, Watch } from '@stencil/core';
-import { attachComponentCss, getPrefixedTagNames, throwIfParentIsNotOfKind, updateParent } from '../../../utils';
+import {
+  attachComponentCss,
+  getPrefixedTagNames,
+  throwIfParentIsNotOfKind,
+  throwIfPropIsUndefined,
+  updateParent,
+} from '../../../utils';
 import type { IconName } from '../../../types';
 import { getComponentCss } from './segmented-control-item-styles';
 import type { SegmentedControlItemInternalHTMLProps } from './segmented-control-item-utils';
@@ -45,7 +51,7 @@ export class SegmentedControlItem {
   }
 
   public componentWillRender(): void {
-    // TODO. validation that value is set
+    throwIfPropIsUndefined(this.host, 'value', this.value);
 
     attachComponentCss(
       this.host,

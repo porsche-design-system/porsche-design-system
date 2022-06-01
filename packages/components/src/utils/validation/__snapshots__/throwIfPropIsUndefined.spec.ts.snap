@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should throw exception if value is undefined 1`] = `"The required property 'someProp' is undefined on div"`;
