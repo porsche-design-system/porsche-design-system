@@ -154,13 +154,15 @@ export const getLinkButtonPureStyles = (
       transition: `${getTransition('color')}, font-size 1ms linear`, // used for transitionend event listener
       ...(!hasSlottedAnchor && getFocusJssStyle({ offset: 1, pseudo: '::before' })),
       ...(!isDisabledOrLoading && {
-        '&:hover': {
-          color: hoverColor,
-          ...(hasSubline && {
-            '& + $subline': {
-              color: hoverColor,
-            },
-          }),
+        '@media (hover: hover)': {
+          '&:hover': {
+            color: hoverColor,
+            ...(hasSubline && {
+              '& + $subline': {
+                color: hoverColor,
+              },
+            }),
+          },
         },
         '&:active': {
           color: activeColor,
