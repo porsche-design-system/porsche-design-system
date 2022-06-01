@@ -180,6 +180,8 @@ it.each<TagName>(tagNamesWithJss)('should call attachComponentCss() in correct l
       component['select'] = document.createElement('select');
     } else if (tagName === 'p-modal') {
       component['aria'] = { 'aria-label': 'Some Heading' };
+    } else if (tagName === 'p-segmented-control-item') {
+      component['value'] = 'some value';
     }
 
     try {
