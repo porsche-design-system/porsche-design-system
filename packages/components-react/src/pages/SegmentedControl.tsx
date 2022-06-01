@@ -5,165 +5,175 @@ export const SegmentedControlPage = (): JSX.Element => {
   return (
     <>
       <div className="playground light" title="should render default segmented-control">
-        <PSegmentedControl>
-          <PSegmentedControlItem>Size S</PSegmentedControlItem>
-          <PSegmentedControlItem>Size M</PSegmentedControlItem>
-          <PSegmentedControlItem>Size L</PSegmentedControlItem>
-          <PSegmentedControlItem>Size XL</PSegmentedControlItem>
+        <PSegmentedControl value="s">
+          <PSegmentedControlItem value="s">Size S</PSegmentedControlItem>
+          <PSegmentedControlItem value="m">Size M</PSegmentedControlItem>
+          <PSegmentedControlItem value="l">Size L</PSegmentedControlItem>
+          <PSegmentedControlItem value="xl" disabled>Size XL</PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 
       <div className="playground light surface" title="should render default segmented-control on surface">
-        <PSegmentedControl backgroundColor="background-surface">
-          <PSegmentedControlItem>Size S</PSegmentedControlItem>
-          <PSegmentedControlItem>Size M</PSegmentedControlItem>
-          <PSegmentedControlItem>Size L</PSegmentedControlItem>
-          <PSegmentedControlItem>Size XL</PSegmentedControlItem>
+        <PSegmentedControl value="s" backgroundColor="background-surface">
+          <PSegmentedControlItem value="s">Size S</PSegmentedControlItem>
+          <PSegmentedControlItem value="m">Size M</PSegmentedControlItem>
+          <PSegmentedControlItem value="l">Size L</PSegmentedControlItem>
+          <PSegmentedControlItem value="xl" disabled>Size XL</PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 
       <div className="playground dark" title="should render default segmented-control on dark theme">
-        <PSegmentedControl theme="dark">
-          <PSegmentedControlItem>Size S</PSegmentedControlItem>
-          <PSegmentedControlItem>Size M</PSegmentedControlItem>
-          <PSegmentedControlItem>Size L</PSegmentedControlItem>
-          <PSegmentedControlItem>Size XL</PSegmentedControlItem>
+        <PSegmentedControl value="s" theme="dark">
+          <PSegmentedControlItem value="s">Size S</PSegmentedControlItem>
+          <PSegmentedControlItem value="m">Size M</PSegmentedControlItem>
+          <PSegmentedControlItem value="l">Size L</PSegmentedControlItem>
+          <PSegmentedControlItem value="xl" disabled>Size XL</PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 
       <div className="playground dark surface" title="should render default segmented-control on dark theme surface">
-        <PSegmentedControl theme="dark" backgroundColor="background-surface">
-          <PSegmentedControlItem>Size S</PSegmentedControlItem>
-          <PSegmentedControlItem>Size M</PSegmentedControlItem>
-          <PSegmentedControlItem>Size L</PSegmentedControlItem>
-          <PSegmentedControlItem>Size XL</PSegmentedControlItem>
+        <PSegmentedControl value="s" theme="dark" backgroundColor="background-surface">
+          <PSegmentedControlItem value="s">Size S</PSegmentedControlItem>
+          <PSegmentedControlItem value="m">Size M</PSegmentedControlItem>
+          <PSegmentedControlItem value="l">Size L</PSegmentedControlItem>
+          <PSegmentedControlItem value="xl" disabled>Size XL</PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 
       <div className="playground light" title="should render segmented-control with labels">
-        <PSegmentedControl>
-          <PSegmentedControlItem label="Size">S</PSegmentedControlItem>
-          <PSegmentedControlItem label="Size">M</PSegmentedControlItem>
-          <PSegmentedControlItem label="Size">L</PSegmentedControlItem>
-          <PSegmentedControlItem label="Size">XL</PSegmentedControlItem>
+        <PSegmentedControl value="s">
+          <PSegmentedControlItem value="s" label="Size">S</PSegmentedControlItem>
+          <PSegmentedControlItem value="m" label="Size">M</PSegmentedControlItem>
+          <PSegmentedControlItem value="l" label="Size">L</PSegmentedControlItem>
+          <PSegmentedControlItem value="xl" label="Size" disabled>XL</PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 
       <div className="playground light surface" title="should render segmented-control with labels on surface">
-        <PSegmentedControl backgroundColor="background-surface">
-          <PSegmentedControlItem label="Size">S</PSegmentedControlItem>
-          <PSegmentedControlItem label="Size">M</PSegmentedControlItem>
-          <PSegmentedControlItem label="Size">L</PSegmentedControlItem>
-          <PSegmentedControlItem label="Size">XL</PSegmentedControlItem>
+        <PSegmentedControl value="s" backgroundColor="background-surface">
+          <PSegmentedControlItem value="s" label="Size">S</PSegmentedControlItem>
+          <PSegmentedControlItem value="m" label="Size">M</PSegmentedControlItem>
+          <PSegmentedControlItem value="l" label="Size">L</PSegmentedControlItem>
+          <PSegmentedControlItem value="xl" label="Size" disabled>XL</PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 
       <div className="playground dark" title="should render segmented-control with labels on dark theme">
-        <PSegmentedControl theme="dark">
-          <PSegmentedControlItem label="Size">S</PSegmentedControlItem>
-          <PSegmentedControlItem label="Size">M</PSegmentedControlItem>
-          <PSegmentedControlItem label="Size">L</PSegmentedControlItem>
-          <PSegmentedControlItem label="Size">XL</PSegmentedControlItem>
+        <PSegmentedControl value="s" theme="dark">
+          <PSegmentedControlItem value="s" label="Size">S</PSegmentedControlItem>
+          <PSegmentedControlItem value="m" label="Size">M</PSegmentedControlItem>
+          <PSegmentedControlItem value="l" label="Size">L</PSegmentedControlItem>
+          <PSegmentedControlItem value="xl" label="Size" disabled>XL</PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 
       <div className="playground dark surface" title="should render segmented-control with labels on dark theme surface">
-        <PSegmentedControl theme="dark" backgroundColor="background-surface">
-          <PSegmentedControlItem label="Size">S</PSegmentedControlItem>
-          <PSegmentedControlItem label="Size">M</PSegmentedControlItem>
-          <PSegmentedControlItem label="Size">L</PSegmentedControlItem>
-          <PSegmentedControlItem label="Size">XL</PSegmentedControlItem>
+        <PSegmentedControl value="s" theme="dark" backgroundColor="background-surface">
+          <PSegmentedControlItem value="s" label="Size">S</PSegmentedControlItem>
+          <PSegmentedControlItem value="m" label="Size">M</PSegmentedControlItem>
+          <PSegmentedControlItem value="l" label="Size">L</PSegmentedControlItem>
+          <PSegmentedControlItem value="xl" label="Size" disabled>XL</PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 
       <div className="playground light" title="should render segmented-control with icons">
-        <PSegmentedControl>
-          <PSegmentedControlItem icon="increase">Start</PSegmentedControlItem>
-          <PSegmentedControlItem icon="lock">Stop</PSegmentedControlItem>
-          <PSegmentedControlItem icon="question">FAQ</PSegmentedControlItem>
-          <PSegmentedControlItem icon="shopping-cart">Checkout</PSegmentedControlItem>
-          <PSegmentedControlItem iconSource="./assets/icon-custom-kaixin.svg">Confirmation</PSegmentedControlItem>
+        <PSegmentedControl value={1}>
+          <PSegmentedControlItem value={1} icon="increase">Start</PSegmentedControlItem>
+          <PSegmentedControlItem value={2} icon="lock">Stop</PSegmentedControlItem>
+          <PSegmentedControlItem value={3} icon="question">FAQ</PSegmentedControlItem>
+          <PSegmentedControlItem value={4} icon="shopping-cart">Checkout</PSegmentedControlItem>
+          <PSegmentedControlItem value={5} iconSource="./assets/icon-custom-kaixin.svg" disabled>
+            Confirmation
+          </PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 
       <div className="playground light surface" title="should render segmented-control with icons on surface">
-        <PSegmentedControl backgroundColor="background-surface">
-          <PSegmentedControlItem icon="increase">Start</PSegmentedControlItem>
-          <PSegmentedControlItem icon="lock">Stop</PSegmentedControlItem>
-          <PSegmentedControlItem icon="question">FAQ</PSegmentedControlItem>
-          <PSegmentedControlItem icon="shopping-cart">Checkout</PSegmentedControlItem>
-          <PSegmentedControlItem iconSource="./assets/icon-custom-kaixin.svg">Confirmation</PSegmentedControlItem>
+        <PSegmentedControl value={1} backgroundColor="background-surface">
+          <PSegmentedControlItem value={1} icon="increase">Start</PSegmentedControlItem>
+          <PSegmentedControlItem value={2} icon="lock">Stop</PSegmentedControlItem>
+          <PSegmentedControlItem value={3} icon="question">FAQ</PSegmentedControlItem>
+          <PSegmentedControlItem value={4} icon="shopping-cart">Checkout</PSegmentedControlItem>
+          <PSegmentedControlItem value={5} iconSource="./assets/icon-custom-kaixin.svg" disabled>
+            Confirmation
+          </PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 
       <div className="playground dark" title="should render segmented-control with icons on dark theme">
-        <PSegmentedControl theme="dark">
-          <PSegmentedControlItem icon="increase">Start</PSegmentedControlItem>
-          <PSegmentedControlItem icon="lock">Stop</PSegmentedControlItem>
-          <PSegmentedControlItem icon="question">FAQ</PSegmentedControlItem>
-          <PSegmentedControlItem icon="shopping-cart">Checkout</PSegmentedControlItem>
-          <PSegmentedControlItem iconSource="./assets/icon-custom-kaixin.svg">Confirmation</PSegmentedControlItem>
+        <PSegmentedControl value={1} theme="dark">
+          <PSegmentedControlItem value={1} icon="increase">Start</PSegmentedControlItem>
+          <PSegmentedControlItem value={2} icon="lock">Stop</PSegmentedControlItem>
+          <PSegmentedControlItem value={3} icon="question">FAQ</PSegmentedControlItem>
+          <PSegmentedControlItem value={4} icon="shopping-cart">Checkout</PSegmentedControlItem>
+          <PSegmentedControlItem value={5} iconSource="./assets/icon-custom-kaixin.svg" disabled>
+            Confirmation
+          </PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 
       <div className="playground dark surface" title="should render segmented-control with icons on dark theme surface">
-        <PSegmentedControl theme="dark" backgroundColor="background-surface">
-          <PSegmentedControlItem icon="increase">Start</PSegmentedControlItem>
-          <PSegmentedControlItem icon="lock">Stop</PSegmentedControlItem>
-          <PSegmentedControlItem icon="question">FAQ</PSegmentedControlItem>
-          <PSegmentedControlItem icon="shopping-cart">Checkout</PSegmentedControlItem>
-          <PSegmentedControlItem iconSource="./assets/icon-custom-kaixin.svg">Confirmation</PSegmentedControlItem>
+        <PSegmentedControl value={1} theme="dark" backgroundColor="background-surface">
+          <PSegmentedControlItem value={1} icon="increase">Start</PSegmentedControlItem>
+          <PSegmentedControlItem value={2} icon="lock">Stop</PSegmentedControlItem>
+          <PSegmentedControlItem value={3} icon="question">FAQ</PSegmentedControlItem>
+          <PSegmentedControlItem value={4} icon="shopping-cart">Checkout</PSegmentedControlItem>
+          <PSegmentedControlItem value={5} iconSource="./assets/icon-custom-kaixin.svg" disabled>
+            Confirmation
+          </PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 
       <div className="playground light" title="should render segmented-control with labels and icons">
-        <PSegmentedControl>
-          <PSegmentedControlItem label="Variant" icon="wrench">Default</PSegmentedControlItem>
-          <PSegmentedControlItem label="Variant" icon="wrenches">Advanced</PSegmentedControlItem>
-          <PSegmentedControlItem label="Variant" icon="truck">Large</PSegmentedControlItem>
-          <PSegmentedControlItem label="Variant" icon="tachometer">Custom</PSegmentedControlItem>
+        <PSegmentedControl value={1}>
+          <PSegmentedControlItem value={1} label="Variant" icon="wrench">Default</PSegmentedControlItem>
+          <PSegmentedControlItem value={2} label="Variant" icon="wrenches">Advanced</PSegmentedControlItem>
+          <PSegmentedControlItem value={3} label="Variant" icon="truck">Large</PSegmentedControlItem>
+          <PSegmentedControlItem value={4} label="Variant" icon="tachometer" disabled>Custom</PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 
       <div className="playground light" title="should render default segmented-control with many items">
-        <PSegmentedControl>
-          <PSegmentedControlItem>Size XXS</PSegmentedControlItem>
-          <PSegmentedControlItem>Size XS</PSegmentedControlItem>
-          <PSegmentedControlItem>Size S</PSegmentedControlItem>
-          <PSegmentedControlItem>Size M</PSegmentedControlItem>
-          <PSegmentedControlItem>Size L</PSegmentedControlItem>
-          <PSegmentedControlItem>Size XL</PSegmentedControlItem>
-          <PSegmentedControlItem>Size XXL</PSegmentedControlItem>
-          <PSegmentedControlItem>Size XXXL</PSegmentedControlItem>
+        <PSegmentedControl value="xxs">
+          <PSegmentedControlItem value="xxs">Size XXS</PSegmentedControlItem>
+          <PSegmentedControlItem value="xs">Size XS</PSegmentedControlItem>
+          <PSegmentedControlItem value="s">Size S</PSegmentedControlItem>
+          <PSegmentedControlItem value="m">Size M</PSegmentedControlItem>
+          <PSegmentedControlItem value="l">Size L</PSegmentedControlItem>
+          <PSegmentedControlItem value="xl">Size XL</PSegmentedControlItem>
+          <PSegmentedControlItem value="xxl">Size XXL</PSegmentedControlItem>
+          <PSegmentedControlItem value="xxxl" disabled>Size XXXL</PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 
       <div className="playground light" title="should render segmented-control with value edge case">
-        <PSegmentedControl>
-          <PSegmentedControlItem>S</PSegmentedControlItem>
-          <PSegmentedControlItem>M is very long with a line break</PSegmentedControlItem>
-          <PSegmentedControlItem>L</PSegmentedControlItem>
-          <PSegmentedControlItem>XL</PSegmentedControlItem>
+        <PSegmentedControl value="s">
+          <PSegmentedControlItem value="s">S</PSegmentedControlItem>
+          <PSegmentedControlItem value="m">M is very long with a line break</PSegmentedControlItem>
+          <PSegmentedControlItem value="l">L</PSegmentedControlItem>
+          <PSegmentedControlItem value="xl" disabled>XL</PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 
       <div className="playground light" title="should render segmented-control with label edge case">
-        <PSegmentedControl>
-          <PSegmentedControlItem label="Size is longer">S</PSegmentedControlItem>
-          <PSegmentedControlItem label="Size">M</PSegmentedControlItem>
-          <PSegmentedControlItem label="Size">L</PSegmentedControlItem>
-          <PSegmentedControlItem label="Size">XL</PSegmentedControlItem>
+        <PSegmentedControl value="s">
+          <PSegmentedControlItem value="s" label="Size is longer">S</PSegmentedControlItem>
+          <PSegmentedControlItem value="m" label="Size">M</PSegmentedControlItem>
+          <PSegmentedControlItem value="l" label="Size">L</PSegmentedControlItem>
+          <PSegmentedControlItem value="xl" label="Size" disabled>XL</PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 
       <div className="playground light" title="should render segmented-control with multiple edge cases">
-        <PSegmentedControl>
-          <PSegmentedControlItem label="Size is wider than value">S</PSegmentedControlItem>
-          <PSegmentedControlItem label="Size with icon" icon="truck">M is very wide with icon</PSegmentedControlItem>
-          <PSegmentedControlItem label="Icon only" icon="user" />
-          <PSegmentedControlItem>XL without label</PSegmentedControlItem>
-          <PSegmentedControlItem label="Label only" />
-          <PSegmentedControlItem icon="truck" />
+        <PSegmentedControl value={1}>
+          <PSegmentedControlItem value={1} label="Size is wider than value">S</PSegmentedControlItem>
+          <PSegmentedControlItem value={2} label="Size with icon" icon="truck" disabled>
+            M is very wide with icon
+          </PSegmentedControlItem>
+          <PSegmentedControlItem value={3} label="Icon only" icon="user" />
+          <PSegmentedControlItem value={4}>XL without label</PSegmentedControlItem>
+          <PSegmentedControlItem value={5} label="Label only" />
+          <PSegmentedControlItem value={6} icon="truck" disabled />
         </PSegmentedControl>
       </div>
     </>
