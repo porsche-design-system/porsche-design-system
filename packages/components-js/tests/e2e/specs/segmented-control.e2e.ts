@@ -37,6 +37,8 @@ xit('should correctly recalculate width on item add/remove', async () => {});
 xit('should correctly recalculate width on item content change', async () => {});
 xit('should correctly recalculate width on item prop change', async () => {});
 
+xdescribe('events', () => {});
+
 describe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
     await initSegmentedControl();
@@ -58,8 +60,11 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidUpdate['p-segmented-control'], 'componentDidUpdate: p-segmented-control').toBe(1);
+    expect(status.componentDidUpdate['p-segmented-control-item'], 'componentDidUpdate: p-segmented-control-item').toBe(
+      1
+    );
 
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
   });
 });
 
