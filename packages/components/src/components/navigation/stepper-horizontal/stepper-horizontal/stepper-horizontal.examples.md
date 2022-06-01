@@ -41,24 +41,30 @@ If the amount of steps exceeds the viewport, the component renders arrow-buttons
 ## Interactive example
 
 <Playground :frameworkMarkup="codeExample" :config="config">
-  <p-stepper-horizontal id="stepper-interactive">
-    <p-stepper-horizontal-item state="current">Personal details</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item>Enter e-mail</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item>Overview</p-stepper-horizontal-item>  
+  <p-stepper-horizontal ref="stepperInteractive" :theme="theme">
+    <template v-for="step in steps">
+      <p-stepper-horizontal-item :state="step.state" :theme="theme">{{step.name}}</p-stepper-horizontal-item>
+    </template>  
   </p-stepper-horizontal>
-  <p-text>Some Content</p-text>
+
+  <template v-for="(content, i) in stepContent">
+    <p-text v-if="getActiveStepIndex(steps) === i" :theme="theme">{{ content }}</p-text>
+  </template>
+
   <p-button-group>
     <p-button
       icon="arrow-head-left"
       variant="tertiary"
-      disabled="${this.getActiveStepIndex(this.steps) === 0}"
-      @click="this.onNextPrevStep('prev')"
+      :disabled="getActiveStepIndex(steps) === 0"
+      :theme="theme"
+      @click="onNextPrevStep('prev')"
     >
       Previous Step
     </p-button>
     <p-button
       variant="primary"
-      disabled="${this.getActiveStepIndex(this.steps) === this.steps.length - 1}"
+      :disabled="getActiveStepIndex(steps) === steps.length - 1"
+      :theme="theme"
       @click="onNextPrevStep('next')"
     >
       Next Step
@@ -72,32 +78,33 @@ If the amount of steps exceeds the viewport, the component renders arrow-buttons
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getStepperHorizontalCodeSamples } from '@porsche-design-system/shared';
+import type { Theme } from '@/models';
 
 @Component
 export default class Code extends Vue {
- config = { themeable: true };
- codeExample = getStepperHorizontalCodeSamples();
-
- basic = `<p-stepper-horizontal>
-  <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
-  <p-stepper-horizontal-item state="warning">Step 2</p-stepper-horizontal-item>
-  <p-stepper-horizontal-item state="current">Step 3</p-stepper-horizontal-item>
-  <p-stepper-horizontal-item>Step 4</p-stepper-horizontal-item>
-</p-stepper-horizontal>`;
-
- scrollable = `<div style="width: 600px">
-  <p-stepper-horizontal>
+  config = { themeable: true };
+  codeExample = getStepperHorizontalCodeSamples();
+  
+  basic = `<p-stepper-horizontal>
     <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item state="complete">Step 2</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item state="complete">Step 3</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item state="complete">Step 4</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item state="complete">Step 5</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item state="current">Step 6</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item>Step 7</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item>Step 8</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item>Step 9</p-stepper-horizontal-item>
-  </p-stepper-horizontal>
-</div>`;
+    <p-stepper-horizontal-item state="warning">Step 2</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item state="current">Step 3</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item>Step 4</p-stepper-horizontal-item>
+  </p-stepper-horizontal>`;
+  
+  scrollable = `<div style="width: 600px">
+    <p-stepper-horizontal>
+      <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item state="complete">Step 2</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item state="complete">Step 3</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item state="complete">Step 4</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item state="complete">Step 5</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item state="current">Step 6</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item>Step 7</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item>Step 8</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item>Step 9</p-stepper-horizontal-item>
+    </p-stepper-horizontal>
+  </div>`;
 
   steps = [
     {
@@ -132,11 +139,6 @@ export default class Code extends Vue {
 
     this.steps = newState;
   }
-
-  getActiveStepIndex(){
-    return 0;
-  }
-  
   mounted() {   
     /* initially update accordion with open attribute in playground */
     this.registerEvents();
@@ -152,9 +154,8 @@ export default class Code extends Vue {
     this.registerEvents(); 
   }
 
-  registerEvents() {
-    const stepperHorizontal = this.$el.querySelector('.playground .demo #stepper-interactive');
-    stepperHorizontal.addEventListener('stepChange', (e) => {
+  registerEvents() {    
+    this.$refs.stepperInteractive.addEventListener('stepChange', (e) => {
       const { activeStepIndex } = e.detail;
 
       const newState = [...this.steps];
@@ -165,6 +166,10 @@ export default class Code extends Vue {
       }
       this.steps = newState;
     });
+  }
+
+  get theme(): Theme {
+    return this.$store.getters.theme;
   }
 }
 </script>
