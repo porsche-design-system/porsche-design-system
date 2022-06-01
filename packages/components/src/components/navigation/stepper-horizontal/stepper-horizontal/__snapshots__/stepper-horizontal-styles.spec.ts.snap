@@ -2,7 +2,7 @@
 
 exports[`getComponentCss() should return correct css 1`] = `
 "::slotted(*:not(:last-child)) {
-  margin-right: 1em;
+  margin-right: 1em !important;
 }
 .item-wrapper {
   display: flex;
