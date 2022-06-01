@@ -1,37 +1,50 @@
-<p-stepper-horizontal stepChange="onStepChange($event)">
-  <p-stepper-horizontal-item> Your content of Step 1</p-stepper-horizontal-item>
+<p-stepper-horizontal>
+  <p-stepper-horizontal-item state="current"> Your content of Step 1</p-stepper-horizontal-item>
   <p-stepper-horizontal-item> Your content of Step 2</p-stepper-horizontal-item>
   <p-stepper-horizontal-item> Your content of Step 3</p-stepper-horizontal-item>
 </p-stepper-horizontal>
 
-<!--*ngIf="getActiveStepIndex(steps) === i">Your content of Step {{ content }}-->
-<p-text id="step-content-0">Your content of Step 1</p-text>
-<p-text id="step-content-1"> Your content of Step 2</p-text>
-<p-text id="step-content-2">Your content of Step 3</p-text>
+<div id="step-content-0" tabindex="0">
+  <p-text>Your content of Tab 1</p-text>
+</div>
+<div id="step-content-1" hidden tabindex="-1">
+  <p-text>Your content of Tab 2</p-text>
+</div>
+<div id="step-content-2" hidden tabindex="-1">
+  <p-text>Your content of Tab 3</p-text>
+</div>
 
 <p-button-group>
-  <p-button
-    icon="arrow-head-left"
-    variant="tertiary"
-    (click)="onNextPrevStep('prev')"
-    disabled="getActiveStepIndex(steps) === 0"
-  >
-    Previous Step
-  </p-button>
+  <p-button icon="arrow-head-left" variant="tertiary">Previous Step</p-button>
 
-  <p-button
-    variant="primary"
-    disabled="getActiveStepIndex(steps) === steps.length - 1"
-    (click)="onNextPrevStep('next')"
-  >
-    Next Step
-  </p-button>
+  <p-button variant="primary">Next Step</p-button>
 </p-button-group>
+
 <script>
   const stepper = document.querySelector('p-stepper-horizontal');
   const steps = Array.from(document.querySelectorAll('p-stepper-horizontal-item'));
+  const buttons = document.querySelectorAll('p-button');
 
   // const stepState = ['current', undefined, undefined];
+
+  function getActiveStepIndex(steps) {
+    return steps.findIndex((step) => step.state === 'current');
+  }
+
+  function onNextPrevStep(direction) {
+    const newState = [...steps];
+    const activeStepIndex = getActiveStepIndex(newState);
+
+    if (direction === 'next') {
+      newState[activeStepIndex].state = 'complete';
+      newState[activeStepIndex + 1].state = 'current';
+    } else {
+      newState[activeStepIndex].state = undefined;
+      newState[activeStepIndex - 1].state = 'current';
+    }
+  }
+
+  buttons.forEach((button, i) => button.addEventListener('click', () => onNextPrevStep(i === 0 ? 'prev' : 'next')));
 
   stepper.addEventListener('stepChange', (e) => {
     const { activeStepIndex } = e.detail;
