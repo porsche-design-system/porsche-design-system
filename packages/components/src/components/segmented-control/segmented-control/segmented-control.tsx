@@ -3,7 +3,7 @@ import { attachComponentCss, observeChildren, unobserveChildren } from '../../..
 import { getComponentCss } from './segmented-control-styles';
 import type { Theme } from '../../../types';
 import type { SegmentedControlBackgroundColor, SegmentedControlChangeEvent } from './segmented-control-utils';
-import { getItemMaxWidth, isEventTargetSegmentedControlItem, syncItemsProps } from './segmented-control-utils';
+import { getItemMaxWidth, getSegmentedControlItem, syncItemsProps } from './segmented-control-utils';
 import { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 
 @Component({
@@ -37,9 +37,10 @@ export class SegmentedControl {
   }
 
   public componentDidLoad(): void {
-    this.host.addEventListener('click', ({ target }: MouseEvent & { target: HTMLElement & SegmentedControlItem }) => {
-      if (isEventTargetSegmentedControlItem(this.host, target)) {
-        this.value = target.value; // causes rerender
+    this.host.addEventListener('click', (e: MouseEvent & { target: HTMLElement & SegmentedControlItem }) => {
+      const item = getSegmentedControlItem(this.host, e.composedPath());
+      if (item) {
+        this.value = item.value; // causes rerender
         this.segmentedControlChange.emit({ value: this.value });
       }
     });
