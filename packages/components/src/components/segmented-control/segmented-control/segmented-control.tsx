@@ -39,7 +39,7 @@ export class SegmentedControl {
   public componentDidLoad(): void {
     this.host.addEventListener('click', ({ target }: MouseEvent & { target: HTMLElement & SegmentedControlItem }) => {
       if (isEventTargetSegmentedControlItem(this.host, target)) {
-        this.value = target.value;
+        this.value = target.value; // causes rerender
         this.segmentedControlChange.emit({ value: this.value });
       }
     });

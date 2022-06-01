@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for isSelected: false, isDisabled: false, bgColor: background-default and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, bgColor: background-default and theme: dark 1`] = `
 ":host {
   display: block !important;
   outline: 0 !important;
@@ -52,7 +52,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isSelected: false, isDisabled: false, bgColor: background-default and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, bgColor: background-default and theme: light 1`] = `
 ":host {
   display: block !important;
   outline: 0 !important;
@@ -104,7 +104,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isSelected: false, isDisabled: false, bgColor: background-surface and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, bgColor: background-surface and theme: dark 1`] = `
 ":host {
   display: block !important;
   outline: 0 !important;
@@ -156,7 +156,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isSelected: false, isDisabled: false, bgColor: background-surface and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, bgColor: background-surface and theme: light 1`] = `
 ":host {
   display: block !important;
   outline: 0 !important;
@@ -208,45 +208,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isSelected: false, isDisabled: true, bgColor: background-default and theme: light 1`] = `
-":host {
-  display: block !important;
-  outline: 0 !important;
-}
-button {
-  display: block;
-  height: 100%;
-  width: 100%;
-  padding: 0.6875rem 2.5rem;
-  margin: 0;
-  border: 0;
-  background: #f2f2f2;
-  color: #96989a;
-  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  cursor: not-allowed;
-  outline: 0;
-}
-span {
-  display: block;
-  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #96989a;
-}
-.icon {
-  height: 1.5rem;
-  width: 1.5rem;
-  margin-right: 0.25rem;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for isSelected: true, isDisabled: false, bgColor: background-default and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: true, bgColor: background-default and theme: light 1`] = `
 ":host {
   display: block !important;
   outline: 0 !important;
@@ -294,7 +256,45 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isSelected: true, isDisabled: true, bgColor: background-default and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, isSelected: false, bgColor: background-default and theme: light 1`] = `
+":host {
+  display: block !important;
+  outline: 0 !important;
+}
+button {
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding: 0.6875rem 2.5rem;
+  margin: 0;
+  border: 0;
+  background: #f2f2f2;
+  color: #96989a;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  cursor: not-allowed;
+  outline: 0;
+}
+span {
+  display: block;
+  font: normal normal 400 0.75rem/1.6666666667 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #96989a;
+}
+.icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-right: 0.25rem;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for isDisabled: true, isSelected: true, bgColor: background-default and theme: light 1`] = `
 ":host {
   display: block !important;
   outline: 0 !important;
