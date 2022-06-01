@@ -7,7 +7,7 @@
   {
     "chunkShortName": "banner",
     "size": 6904,
-    "gzipSize": 2614
+    "gzipSize": 2612
   },
   {
     "chunkShortName": "button",
@@ -47,7 +47,7 @@
   {
     "chunkShortName": "grid",
     "size": 2369,
-    "gzipSize": 1014
+    "gzipSize": 1013
   },
   {
     "chunkShortName": "headline",
@@ -111,8 +111,8 @@
   },
   {
     "chunkShortName": "segmented-control",
-    "size": 5163,
-    "gzipSize": 2056
+    "size": 5298,
+    "gzipSize": 2116
   },
   {
     "chunkShortName": "select-wrapper",
@@ -142,7 +142,7 @@
   {
     "chunkShortName": "tag",
     "size": 6161,
-    "gzipSize": 2382
+    "gzipSize": 2384
   },
   {
     "chunkShortName": "text",
@@ -167,6 +167,6 @@
   {
     "chunkShortName": "toast",
     "size": 6946,
-    "gzipSize": 2581
+    "gzipSize": 2580
   }
 ]
