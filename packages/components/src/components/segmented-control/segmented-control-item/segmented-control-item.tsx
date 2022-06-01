@@ -12,7 +12,7 @@ export class SegmentedControlItem {
   @Element() public host!: HTMLElement & SegmentedControlItemInternalHTMLProps;
 
   /** The value of this item which is emitted by the parent element if it becomes selected. */
-  @Prop() public value: string;
+  @Prop() public value: string | number;
 
   /** Disables the button. No events will be triggered while disabled state is active. */
   @Prop() public disabled?: boolean = false;
