@@ -52,8 +52,8 @@ export class SegmentedControlItem {
       getComponentCss,
       this.disabled,
       this.host.selected,
-      this.host.backgroundColor,
-      this.host.theme
+      this.host.backgroundColor || 'background-default', // default as fallback
+      this.host.theme || 'light' // default as fallback
     );
   }
 
