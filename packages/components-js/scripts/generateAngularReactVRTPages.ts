@@ -103,6 +103,9 @@ const generateVRTPages = (htmlFileContentMap: { [key: string]: string }, framewo
       let [, style] = fileContent.match(styleRegEx) || [];
       fileContent = fileContent.replace(styleRegEx, '\n');
 
+      // get rid of prettier commented
+      fileContent = fileContent.replace(/<!-- prettier-ignore -->/g, '');
+
       // extract and replace script if there is any
       const scriptRegEx = /\s*<script.*>((?:.|\s)*?)<\/script>\s*/;
       let [, script] = fileContent.match(scriptRegEx) || [];
