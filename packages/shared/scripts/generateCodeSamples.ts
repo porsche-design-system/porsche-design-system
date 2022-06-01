@@ -42,6 +42,16 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-stepper-horizontal',
+      samples: [
+        [
+          componentsJsPath + '/stepper-horizontal-example.html',
+          componentsAngularPath + '/stepper-horizontal-example.component.ts',
+          componentsReactPath + '/StepperHorizontalExample.tsx',
+        ],
+      ],
+    },
+    {
       component: 'p-table',
       samples: [
         [

@@ -301,6 +301,34 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/feedback/spinner/spinner.props.md')],
     },
+    'Stepper Horizontal': {
+      Examples: [
+        () =>
+          import(
+            // @ts-ignore
+            '@/../../components/src/components/navigation/stepper-horizontal/stepper-horizontal/stepper-horizontal.examples.md'
+          ),
+      ],
+      Usage: [
+        () =>
+          import(
+            // @ts-ignore
+            '@/../../components/src/components/navigation/stepper-horizontal/stepper-horizontal/stepper-horizontal.examples.md'
+          ),
+      ],
+      Props: [
+        () =>
+          import(
+            // @ts-ignore
+            '@/../../components/src/components/navigation/stepper-horizontal/stepper-horizontal/stepper-horizontal.props.md'
+          ),
+        () =>
+          import(
+            // @ts-ignore
+            '@/../../components/src/components/navigation/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item.props.md'
+          ),
+      ],
+    },
     Switch: {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/action/switch/switch.examples.md')],
