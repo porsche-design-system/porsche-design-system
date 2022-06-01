@@ -15,7 +15,7 @@
 </div>
 
 <p-button-group>
-  <p-button icon="arrow-head-left" variant="tertiary">Previous Step</p-button>
+  <p-button icon="arrow-head-left" variant="tertiary" disabled="true">Previous Step</p-button>
 
   <p-button variant="primary">Next Step</p-button>
 </p-button-group>
@@ -24,7 +24,6 @@
   const stepper = document.querySelector('p-stepper-horizontal');
   const steps = Array.from(document.querySelectorAll('p-stepper-horizontal-item'));
   const buttons = document.querySelectorAll('p-button');
-
   const panels = document.querySelectorAll('[id^="step-content"]');
 
   function getActiveStepIndex(steps) {
@@ -32,6 +31,18 @@
   }
 
   function displayContent(activeStepIndex) {
+    if (activeStepIndex === 0) {
+      buttons[0].setAttribute('disabled', 'true');
+    } else {
+      buttons[0].removeAttribute('disabled');
+    }
+
+    if (activeStepIndex === steps.length - 1) {
+      buttons[1].setAttribute('disabled', 'true');
+    } else {
+      buttons[1].removeAttribute('disabled');
+    }
+
     panels.forEach((panel, i) => {
       if (i === activeStepIndex) {
         panel.removeAttribute('hidden');
