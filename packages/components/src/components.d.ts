@@ -723,7 +723,7 @@ export namespace Components {
         /**
           * The value of this item which is emitted by the parent element if it becomes selected.
          */
-        "value": string;
+        "value": string | number;
     }
     interface PSelectWrapper {
         /**
@@ -2136,7 +2136,7 @@ declare namespace LocalJSX {
         /**
           * The value of this item which is emitted by the parent element if it becomes selected.
          */
-        "value"?: string;
+        "value"?: string | number;
     }
     interface PSelectWrapper {
         /**
