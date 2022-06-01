@@ -15,15 +15,15 @@
 </div>
 
 <p-button-group>
-  <p-button icon="arrow-head-left" variant="tertiary" disabled="true">Previous Step</p-button>
-
-  <p-button variant="primary">Next Step</p-button>
+  <p-button id="prev-button" icon="arrow-head-left" variant="tertiary" disabled="true">Previous Step</p-button>
+  <p-button id="next-button" variant="primary">Next Step</p-button>
 </p-button-group>
 
 <script>
   const stepper = document.querySelector('p-stepper-horizontal');
   const steps = Array.from(document.querySelectorAll('p-stepper-horizontal-item'));
-  const buttons = document.querySelectorAll('p-button');
+  const prevButton = document.querySelectorAll('#prev-button');
+  const nextButton = document.querySelectorAll('#next-button');
   const panels = document.querySelectorAll('[id^="step-content"]');
 
   function getActiveStepIndex(steps) {
@@ -32,15 +32,15 @@
 
   function displayContent(activeStepIndex) {
     if (activeStepIndex === 0) {
-      buttons[0].setAttribute('disabled', 'true');
+      prevButton.setAttribute('disabled', 'true');
     } else {
-      buttons[0].removeAttribute('disabled');
+      prevButton.removeAttribute('disabled');
     }
 
     if (activeStepIndex === steps.length - 1) {
-      buttons[1].setAttribute('disabled', 'true');
+      nextButton.setAttribute('disabled', 'true');
     } else {
-      buttons[1].removeAttribute('disabled');
+      nextButton.removeAttribute('disabled');
     }
 
     panels.forEach((panel, i) => {
@@ -69,7 +69,8 @@
     }
   }
 
-  buttons.forEach((button, i) => button.addEventListener('click', () => onNextPrevStep(i === 0 ? 'prev' : 'next')));
+  prevButton.addEventListener('click', () => onNextPrevStep('prev'));
+  nextButton.addEventListener('click', () => onNextPrevStep('next'));
 
   stepper.addEventListener('stepChange', (e) => {
     const { activeStepIndex } = e.detail;
