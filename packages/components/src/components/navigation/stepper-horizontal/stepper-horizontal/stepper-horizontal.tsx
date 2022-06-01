@@ -91,9 +91,6 @@ export class StepperHorizontal {
       if (target.tagName !== 'DIV') {
         const currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
         const newStepIndex = this.stepperHorizontalItems.indexOf(target);
-        const prevState = (
-          this.stepperHorizontalItems[currentStepIndex] as unknown as HTMLPStepperHorizontalItemElement
-        ).state;
 
         const direction = newStepIndex > currentStepIndex ? 'next' : 'prev';
         const scrollActivePosition = getScrollActivePosition(
@@ -109,7 +106,7 @@ export class StepperHorizontal {
           isSmooth: true,
         };
 
-        this.stepChange.emit({ activeStepIndex: newStepIndex, prevState, prevStepIndex: currentStepIndex });
+        this.stepChange.emit({ activeStepIndex: newStepIndex });
       }
     });
   };
