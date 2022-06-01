@@ -4,7 +4,9 @@ import { render } from '@testing-library/react';
 const Sample = (): JSX.Element => {
   return (
     <PSegmentedControl data-testid="host">
-      <PSegmentedControlItem data-testid="child">Some text</PSegmentedControlItem>
+      <PSegmentedControlItem data-testid="child" value={1}>
+        Some text
+      </PSegmentedControlItem>
     </PSegmentedControl>
   );
 };
