@@ -77,7 +77,7 @@
   {
     "chunkShortName": "main",
     "size": 62041,
-    "gzipSize": 21258
+    "gzipSize": 21255
   },
   {
     "chunkShortName": "marque",
@@ -111,8 +111,8 @@
   },
   {
     "chunkShortName": "segmented-control",
-    "size": 5026,
-    "gzipSize": 1987
+    "size": 5163,
+    "gzipSize": 2056
   },
   {
     "chunkShortName": "select-wrapper",
