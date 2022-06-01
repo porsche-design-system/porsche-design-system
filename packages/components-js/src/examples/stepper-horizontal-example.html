@@ -25,10 +25,22 @@
   const steps = Array.from(document.querySelectorAll('p-stepper-horizontal-item'));
   const buttons = document.querySelectorAll('p-button');
 
-  // const stepState = ['current', undefined, undefined];
+  const panels = document.querySelectorAll('[id^="step-content"]');
 
   function getActiveStepIndex(steps) {
     return steps.findIndex((step) => step.state === 'current');
+  }
+
+  function displayContent(activeStepIndex) {
+    panels.forEach((panel, i) => {
+      if (i === activeStepIndex) {
+        panel.removeAttribute('hidden');
+        panel.setAttribute('tabindex', '0');
+      } else {
+        panel.setAttribute('hidden', '');
+        panel.setAttribute('tabindex', '-1');
+      }
+    });
   }
 
   function onNextPrevStep(direction) {
@@ -38,9 +50,11 @@
     if (direction === 'next') {
       newState[activeStepIndex].state = 'complete';
       newState[activeStepIndex + 1].state = 'current';
+      displayContent(activeStepIndex + 1);
     } else {
       newState[activeStepIndex].state = undefined;
       newState[activeStepIndex - 1].state = 'current';
+      displayContent(activeStepIndex - 1);
     }
   }
 
@@ -55,5 +69,7 @@
       // reset step state when going back via stepper horizontal item click
       newState[i].state = undefined;
     }
+
+    displayContent(activeStepIndex);
   });
 </script>
