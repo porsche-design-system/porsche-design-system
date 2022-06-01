@@ -82,9 +82,8 @@ export const SegmentedControlPage = (): JSX.Element => {
           <PSegmentedControlItem value={2} icon="lock">Stop</PSegmentedControlItem>
           <PSegmentedControlItem value={3} icon="question">FAQ</PSegmentedControlItem>
           <PSegmentedControlItem value={4} icon="shopping-cart">Checkout</PSegmentedControlItem>
-          <PSegmentedControlItem value={5} iconSource="./assets/icon-custom-kaixin.svg" disabled={true}>
-            Confirmation
-          </PSegmentedControlItem>
+          
+          <PSegmentedControlItem value={5} iconSource="./assets/icon-custom-kaixin.svg" disabled={true}>Confirmation</PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 
@@ -94,9 +93,8 @@ export const SegmentedControlPage = (): JSX.Element => {
           <PSegmentedControlItem value={2} icon="lock">Stop</PSegmentedControlItem>
           <PSegmentedControlItem value={3} icon="question">FAQ</PSegmentedControlItem>
           <PSegmentedControlItem value={4} icon="shopping-cart">Checkout</PSegmentedControlItem>
-          <PSegmentedControlItem value={5} iconSource="./assets/icon-custom-kaixin.svg" disabled={true}>
-            Confirmation
-          </PSegmentedControlItem>
+          
+          <PSegmentedControlItem value={5} iconSource="./assets/icon-custom-kaixin.svg" disabled={true}>Confirmation</PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 
@@ -106,9 +104,8 @@ export const SegmentedControlPage = (): JSX.Element => {
           <PSegmentedControlItem value={2} icon="lock">Stop</PSegmentedControlItem>
           <PSegmentedControlItem value={3} icon="question">FAQ</PSegmentedControlItem>
           <PSegmentedControlItem value={4} icon="shopping-cart">Checkout</PSegmentedControlItem>
-          <PSegmentedControlItem value={5} iconSource="./assets/icon-custom-kaixin.svg" disabled={true}>
-            Confirmation
-          </PSegmentedControlItem>
+          
+          <PSegmentedControlItem value={5} iconSource="./assets/icon-custom-kaixin.svg" disabled={true}>Confirmation</PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 
@@ -118,9 +115,8 @@ export const SegmentedControlPage = (): JSX.Element => {
           <PSegmentedControlItem value={2} icon="lock">Stop</PSegmentedControlItem>
           <PSegmentedControlItem value={3} icon="question">FAQ</PSegmentedControlItem>
           <PSegmentedControlItem value={4} icon="shopping-cart">Checkout</PSegmentedControlItem>
-          <PSegmentedControlItem value={5} iconSource="./assets/icon-custom-kaixin.svg" disabled={true}>
-            Confirmation
-          </PSegmentedControlItem>
+          
+          <PSegmentedControlItem value={5} iconSource="./assets/icon-custom-kaixin.svg" disabled={true}>Confirmation</PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 
@@ -129,9 +125,8 @@ export const SegmentedControlPage = (): JSX.Element => {
           <PSegmentedControlItem value={1} label="Variant" icon="wrench">Default</PSegmentedControlItem>
           <PSegmentedControlItem value={2} label="Variant" icon="wrenches">Advanced</PSegmentedControlItem>
           <PSegmentedControlItem value={3} label="Variant" icon="truck">Large</PSegmentedControlItem>
-          <PSegmentedControlItem value={4} label="Variant" icon="tachometer" disabled={true}
-            >Custom</PSegmentedControlItem
-          >
+          
+          <PSegmentedControlItem value={4} label="Variant" icon="tachometer" disabled={true}>Custom</PSegmentedControlItem>
         </PSegmentedControl>
       </div>
 
@@ -169,9 +164,8 @@ export const SegmentedControlPage = (): JSX.Element => {
       <div className="playground light" title="should render segmented-control with multiple edge cases">
         <PSegmentedControl value={1}>
           <PSegmentedControlItem value={1} label="Size is wider than value">S</PSegmentedControlItem>
-          <PSegmentedControlItem value={2} label="Size with icon" icon="truck" disabled={true}>
-            M is very wide with icon
-          </PSegmentedControlItem>
+          
+          <PSegmentedControlItem value={2} label="Size with icon" icon="truck" disabled={true}>M is very wide with icon</PSegmentedControlItem>
           <PSegmentedControlItem value={3} label="Icon only" icon="user" />
           <PSegmentedControlItem value={4}>XL without label</PSegmentedControlItem>
           <PSegmentedControlItem value={5} label="Label only" />
