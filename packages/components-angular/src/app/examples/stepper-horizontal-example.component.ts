@@ -20,8 +20,8 @@ import type { StepChangeEvent, StepperState } from '@porsche-design-system/compo
       <p-button
         [icon]="'arrow-head-left'"
         [variant]="'tertiary'"
-        (click)="onNextPrevStep('prev')"
         [disabled]="getActiveStepIndex(steps) === 0"
+        (click)="onNextPrevStep('prev')"
       >
         Previous Step
       </p-button>
