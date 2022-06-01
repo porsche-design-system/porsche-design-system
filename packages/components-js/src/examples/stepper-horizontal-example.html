@@ -4,13 +4,13 @@
   <p-stepper-horizontal-item> Your content of Step 3</p-stepper-horizontal-item>
 </p-stepper-horizontal>
 
-<div id="step-content-0" tabindex="0">
+<div id="step-content-0">
   <p-text>Your content of Step 1</p-text>
 </div>
-<div id="step-content-1" hidden tabindex="-1">
+<div id="step-content-1" hidden>
   <p-text>Your content of Step 2</p-text>
 </div>
-<div id="step-content-2" hidden tabindex="-1">
+<div id="step-content-2" hidden>
   <p-text>Your content of Step 3</p-text>
 </div>
 
@@ -30,7 +30,7 @@
     return steps.findIndex((step) => step.state === 'current');
   }
 
-  function displayContent(activeStepIndex) {
+  function manageContent(activeStepIndex) {
     if (activeStepIndex === 0) {
       prevButton.setAttribute('disabled', 'true');
     } else {
@@ -46,10 +46,8 @@
     panels.forEach((panel, i) => {
       if (i === activeStepIndex) {
         panel.removeAttribute('hidden');
-        panel.setAttribute('tabindex', '0');
       } else {
         panel.setAttribute('hidden', '');
-        panel.setAttribute('tabindex', '-1');
       }
     });
   }
@@ -61,11 +59,11 @@
     if (direction === 'next') {
       newState[activeStepIndex].state = 'complete';
       newState[activeStepIndex + 1].state = 'current';
-      displayContent(activeStepIndex + 1);
+      manageContent(activeStepIndex + 1);
     } else {
       newState[activeStepIndex].state = undefined;
       newState[activeStepIndex - 1].state = 'current';
-      displayContent(activeStepIndex - 1);
+      manageContent(activeStepIndex - 1);
     }
   }
 
@@ -82,6 +80,6 @@
       newState[i].state = undefined;
     }
 
-    displayContent(activeStepIndex);
+    manageContent(activeStepIndex);
   });
 </script>
