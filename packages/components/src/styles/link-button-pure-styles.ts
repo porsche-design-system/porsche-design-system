@@ -154,16 +154,29 @@ export const getLinkButtonPureStyles = (
       transition: `${getTransition('color')}, font-size 1ms linear`, // used for transitionend event listener
       ...(!hasSlottedAnchor && getFocusJssStyle({ offset: 1, pseudo: '::before' })),
       ...(!isDisabledOrLoading && {
-        '@media (hover: hover)': {
-          '&:hover': {
-            color: hoverColor,
-            ...(hasSubline && {
-              '& + $subline': {
+        ...(ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
+          ? {
+              '@media (hover: hover)': {
+                '&:hover': {
+                  color: hoverColor,
+                  ...(hasSubline && {
+                    '& + $subline': {
+                      color: hoverColor,
+                    },
+                  }),
+                },
+              },
+            }
+          : {
+              '&:hover': {
                 color: hoverColor,
+                ...(hasSubline && {
+                  '& + $subline': {
+                    color: hoverColor,
+                  },
+                }),
               },
             }),
-          },
-        },
         '&:active': {
           color: activeColor,
           ...(hasSubline && {
