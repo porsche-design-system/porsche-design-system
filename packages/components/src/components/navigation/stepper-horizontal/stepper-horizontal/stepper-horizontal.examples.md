@@ -109,17 +109,21 @@ export default class Code extends Vue {
   steps = [
     {
       state: 'current',
-      name: 'Personal details',
+      name: 'Enter personal details',
     },
     {
-      name: 'Enter e-mail',
+      name: 'Confirm e-mail',
     },
     {
-      name: 'Overview',
+      name: 'Set password',
     },
   ];
 
-  stepContent = ['One', 'Two', 'Three'];
+  stepContent = [
+    'A form with personal details could be displayed here.',
+    'A form with a verification code input field could be displayed here.',
+    'A form with a password input field could be displayed here.',
+  ];
 
   getActiveStepIndex(steps) {
     return steps.findIndex((step) => step.state === 'current');
