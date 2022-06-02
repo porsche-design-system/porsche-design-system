@@ -19,6 +19,7 @@ import {
   getScreenReaderOnlyJssStyle,
 } from './';
 import { fontSize } from '@porsche-design-system/utilities-v2';
+import { hoverValidator } from './hover-validator';
 
 const getSizeJssStyle: GetJssStyleFunction = (textSize: TextSize): JssStyle => {
   if (isSizeInherit(textSize)) {
@@ -154,14 +155,16 @@ export const getLinkButtonPureStyles = (
       transition: `${getTransition('color')}, font-size 1ms linear`, // used for transitionend event listener
       ...(!hasSlottedAnchor && getFocusJssStyle({ offset: 1, pseudo: '::before' })),
       ...(!isDisabledOrLoading && {
-        '&:hover': {
-          color: hoverColor,
-          ...(hasSubline && {
-            '& + $subline': {
-              color: hoverColor,
-            },
-          }),
-        },
+        ...hoverValidator({
+          '&:hover': {
+            color: hoverColor,
+            ...(hasSubline && {
+              '& + $subline': {
+                color: hoverColor,
+              },
+            }),
+          },
+        }),
         '&:active': {
           color: activeColor,
           ...(hasSubline && {
