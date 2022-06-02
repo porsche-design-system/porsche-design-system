@@ -90,9 +90,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -100,6 +97,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -321,9 +324,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -331,6 +331,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -483,9 +489,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -493,6 +496,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -641,9 +650,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -651,6 +657,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -811,9 +823,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -821,6 +830,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -982,9 +997,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -992,6 +1004,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -1143,9 +1161,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -1153,6 +1168,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -1300,9 +1321,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -1310,6 +1328,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -1469,9 +1493,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -1479,6 +1500,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -1639,9 +1666,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -1649,6 +1673,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -1801,9 +1831,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -1811,6 +1838,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -1959,9 +1992,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -1969,6 +1999,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -2129,9 +2165,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -2139,6 +2172,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -2300,9 +2339,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -2310,6 +2346,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -2462,9 +2504,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -2472,6 +2511,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -2620,9 +2665,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -2630,6 +2672,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -2791,9 +2839,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -2801,6 +2846,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -2963,9 +3014,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -2973,6 +3021,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -3124,9 +3178,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -3134,6 +3185,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -3281,9 +3338,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -3291,6 +3345,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -3451,9 +3511,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -3461,6 +3518,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -3622,9 +3685,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -3632,6 +3692,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -3784,9 +3850,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -3794,6 +3857,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -3942,9 +4011,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -3952,6 +4018,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -4113,9 +4185,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -4123,6 +4192,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
@@ -4288,9 +4363,6 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover {
-  color: #d5001c;
-}
 button:active {
   color: #d5001c;
 }
@@ -4298,6 +4370,12 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
+@media (hover: hover) {
+  button:hover {
+    color: #d5001c;
+  }
+}
+
 .root {
   display: block;
   position: relative;
