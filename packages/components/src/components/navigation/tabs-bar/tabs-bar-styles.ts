@@ -5,6 +5,7 @@ import { buildResponsiveStyles, getCss } from '../../../utils';
 import { addImportantToEachRule, getTransition, getThemedColors, pxToRemWithUnit } from '../../../styles';
 import { getFontWeight } from '../../../styles/font-weight-styles';
 import { fontSize, textSmall } from '@porsche-design-system/utilities-v2';
+import { hoverValidator } from '../../../styles/hover-validator';
 const tabsTransitionDuration = '.4s';
 
 const transformSelector = (selector: string): string =>
@@ -54,9 +55,11 @@ export const getComponentCss = (
           cursor: 'pointer',
           transition: getTransition('color'),
         },
-        [transformSelector('::slotted([role]:hover)')]: {
-          color: hoverColor,
-        },
+        ...hoverValidator({
+          [transformSelector('::slotted([role]:hover)')]: {
+            color: hoverColor,
+          },
+        }),
         [transformSelector('::slotted([role]:active),::slotted([role][aria-selected="true"])')]: {
           color: activeColor,
         },

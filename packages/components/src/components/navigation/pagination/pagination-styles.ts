@@ -3,6 +3,7 @@ import type { NumberOfPageLinks } from './pagination-utils';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import { addImportantToRule, getFocusJssStyle, getThemedColors, getTransition, pxToRemWithUnit } from '../../../styles';
 import { textSmall } from '@porsche-design-system/utilities-v2';
+import { hoverValidator } from '../../../styles/hover-validator';
 
 export const getComponentCss = (
   maxNumberOfPageLinks: BreakpointCustomizable<NumberOfPageLinks>,
@@ -50,9 +51,11 @@ export const getComponentCss = (
         cursor: 'pointer',
         color: baseColor,
         ...getFocusJssStyle({ color: focusColor, offset: 1 }),
-        '&:hover': {
-          color: hoverColor,
-        },
+        ...hoverValidator({
+          '&:hover': {
+            color: hoverColor,
+          },
+        }),
         '&:active': {
           outline: 'none',
           color: activeColor,
@@ -64,9 +67,11 @@ export const getComponentCss = (
         },
         '&[aria-current]': {
           cursor: 'default',
-          '&:hover': {
-            color: baseColor,
-          },
+          ...hoverValidator({
+            '&:hover': {
+              color: baseColor,
+            },
+          }),
           '&::after': {
             content: '""',
             display: 'block',
