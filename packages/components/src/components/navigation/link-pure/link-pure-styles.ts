@@ -3,6 +3,7 @@ import type { AlignLabel, LinkButtonPureIconName, TextSize, ThemeExtendedElectri
 import { buildSlottedStyles, getCss, mergeDeep } from '../../../utils';
 import { getFocusJssStyle, getThemedColors, getTransition } from '../../../styles';
 import { getLinkButtonPureStyles } from '../../../styles/link-button-pure-styles';
+import { hoverValidator } from '../../../styles/hover-validator';
 
 export const getComponentCss = (
   icon: LinkButtonPureIconName,
@@ -41,11 +42,11 @@ export const getComponentCss = (
             '&(a)': {
               color: active ? activeColor : baseColor, // TODO: chrome hover bug. Remove when fixed.
             },
-            // '@media (hover: hover)': {
-            '&(a:hover)': {
-              color: hoverColor, // TODO: chrome hover bug. Remove when fixed.
-              // },
-            },
+            ...hoverValidator({
+              '&(a:hover)': {
+                color: hoverColor, // TODO: chrome hover bug. Remove when fixed.
+              },
+            }),
           },
         },
       }

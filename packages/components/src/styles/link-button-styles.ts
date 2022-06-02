@@ -12,6 +12,7 @@ import {
   pxToRemWithUnit,
   getThemedColors,
 } from './';
+import { hoverValidator } from './hover-validator';
 
 const { baseColor: darkThemeBaseColor } = getThemedColors('dark');
 const { baseColor: lightThemeBaseColor } = getThemedColors('light');
@@ -182,11 +183,11 @@ export const getLinkButtonStyles = (
           '&(a:focus)': {
             outlineColor: primaryColor,
           },
-          // '@media (hover: hover)': {
-          '&(a:hover:focus)': {
-            outlineColor: primaryColorHover,
-          },
-          // },
+          ...hoverValidator({
+            '&(a:hover:focus)': {
+              outlineColor: primaryColorHover,
+            },
+          }),
           '&(a:focus:not(:focus-visible))': {
             outlineColor: 'transparent',
           },
@@ -218,8 +219,8 @@ export const getLinkButtonStyles = (
         ...buildResponsiveStyles(hideLabel, getRootJssStyle),
         ...getFocusJssStyle(),
       }),
-      ...(!isDisabledOrLoading && {
-        '@media (hover: hover)': {
+      ...(!isDisabledOrLoading &&
+        hoverValidator({
           '&:hover, &:active': {
             color: primaryColorHover,
             ...(isTertiary && {
@@ -229,8 +230,7 @@ export const getLinkButtonStyles = (
               },
             }),
           },
-        },
-      }),
+        })),
     },
     icon: {
       position: 'absolute',

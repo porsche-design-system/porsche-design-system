@@ -10,6 +10,7 @@ import { getCss } from '../../../utils';
 import type { TagDismissibleColor } from './tag-dismissible-utils';
 import { textSmall } from '@porsche-design-system/utilities-v2';
 import { getTagFocusJssStyle, getThemedBackgroundColor, slottedTextJssStyle } from '../tag/tag-styles';
+import { hoverValidator } from '../../../styles/hover-validator';
 
 export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): string => {
   const themedColors = getThemedColors('light');
@@ -36,11 +37,11 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
         ...textSmall,
         outline: 0,
         ...getTagFocusJssStyle(baseColor, hoverColor),
-        '@media (hover: hover)': {
+        ...hoverValidator({
           '&:hover .icon': {
             color: hoverColor,
           },
-        },
+        }),
       },
       '::slotted': addImportantToEachRule(slottedTextJssStyle),
     },

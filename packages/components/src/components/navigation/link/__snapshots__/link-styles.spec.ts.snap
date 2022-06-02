@@ -245,12 +245,15 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
 ::slotted(a:focus) {
   outline-color: #d5001c !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #c4001a !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #c4001a !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -327,12 +330,15 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
 ::slotted(a:focus) {
   outline-color: #d5001c !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #980014 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #980014 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -409,12 +415,15 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #e0e0e0 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #e0e0e0 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -491,12 +500,15 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #151718 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #151718 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -573,12 +585,15 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #fff !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #fff !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -659,12 +674,15 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #151718 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #151718 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;

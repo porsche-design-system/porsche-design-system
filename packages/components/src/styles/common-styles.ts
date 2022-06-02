@@ -3,6 +3,7 @@ import type { Theme } from '../types';
 import type { PropertiesHyphen } from 'csstype';
 import { fontWeight } from '@porsche-design-system/utilities-v2';
 import { getThemedColors } from './';
+import { hoverValidator } from './hover-validator';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
 const transitionTimingFunction = 'ease';
@@ -42,11 +43,11 @@ type GetHoverStylesOptions = {
 export const getHoverJssStyle = ({ theme }: GetHoverStylesOptions = { theme: 'light' }): JssStyle => {
   return {
     transition: getTransition('color'),
-    '@media (hover: hover)': {
+    ...hoverValidator({
       '&:hover': {
         color: getThemedColors(theme).hoverColor,
       },
-    },
+    }),
   };
 };
 

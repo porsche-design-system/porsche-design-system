@@ -13,6 +13,7 @@ import { getFunctionalComponentRequiredStyles } from '../../common/required/requ
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { buildSlottedStyles, getCss, isVisibleFormState } from '../../../utils';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
+import { hoverValidator } from '../../../styles/hover-validator';
 
 const theme: Theme = 'light';
 
@@ -76,7 +77,7 @@ export const getComponentCss = (
           formStateColor || contrastHighColor,
           formStateColor || contrastHighColor
         ),
-        '@media (hover: hover)': {
+        ...hoverValidator({
           '&(input:not(:disabled):not(:checked):hover), .label:hover ~ &(input:not(:disabled):not(:checked))':
             getBackgroundImageStyles(hasVisibleState, backgroundColor, formStateHoverColor || baseColor),
           '&(input:not(:disabled):checked:hover), .label:hover ~ &(input:not(:disabled):checked)':
@@ -85,7 +86,7 @@ export const getComponentCss = (
               formStateColor || contrastHighColor,
               formStateHoverColor || baseColor
             ),
-        },
+        }),
         '&(input:disabled)': {
           cursor: 'not-allowed',
           ...getBackgroundImageStyles(hasVisibleState, backgroundColor, disabledColor),

@@ -29,12 +29,15 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #1877f2 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #1877f2 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -114,12 +117,15 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #1877f2 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #1877f2 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -199,12 +205,15 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #4285f4 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #4285f4 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -284,12 +293,15 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #4285f4 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #4285f4 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -369,12 +381,15 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #e1306c !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #e1306c !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -454,12 +469,15 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #e1306c !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #e1306c !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -539,12 +557,15 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #fae300 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #fae300 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -624,12 +645,15 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #fae300 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #fae300 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -709,12 +733,15 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #0077b5 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #0077b5 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -794,12 +821,15 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #0077b5 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #0077b5 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -879,12 +909,15 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #03cf5d !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #03cf5d !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -964,12 +997,15 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #03cf5d !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #03cf5d !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -1049,12 +1085,15 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #e60023 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #e60023 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -1134,12 +1173,15 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #e60023 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #e60023 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -1219,12 +1261,15 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #ff4500 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #ff4500 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -1304,12 +1349,15 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #ff4500 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #ff4500 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -1389,12 +1437,15 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #fe2c55 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #fe2c55 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -1474,12 +1525,15 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #fe2c55 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #fe2c55 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -1559,12 +1613,15 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #1da1f2 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #1da1f2 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -1644,12 +1701,15 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #1da1f2 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #1da1f2 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -1729,12 +1789,15 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #1aad19 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #1aad19 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -1814,12 +1877,15 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #1aad19 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #1aad19 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -1899,12 +1965,15 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #25d366 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #25d366 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -1984,12 +2053,15 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #25d366 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #25d366 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -2069,12 +2141,15 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #006567 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #006567 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -2154,12 +2229,15 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #006567 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #006567 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -2239,9 +2317,6 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #ff0000 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
@@ -2312,6 +2387,12 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
     overflow: visible !important;
     white-space: normal !important;
     text-indent: 0 !important;
+  }
+}
+
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #ff0000 !important;
   }
 }
 
@@ -2469,12 +2550,15 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #ff0000 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #ff0000 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -2554,12 +2638,15 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #ff0000 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #ff0000 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -2705,12 +2792,15 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #e0e0e0 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #e0e0e0 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -2787,12 +2877,15 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #151718 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media (hover: hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #151718 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
