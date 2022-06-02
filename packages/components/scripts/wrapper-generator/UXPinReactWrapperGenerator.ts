@@ -187,7 +187,11 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           .replace(', size,', ", 'inherit',") // always set inherit in propsToSync
           .replace(/(style: {)/, '$1 fontSize: size,'); // patch inline style
       } else if (component === 'p-link' || component === 'p-link-social') {
-        cleanedComponent = cleanedComponent.replace(/(href),(.*?PropsWithChildren)/, "$1 = '#',$2"); // set default href
+        // set default href
+        cleanedComponent = cleanedComponent.replace(/(href),(.*?PropsWithChildren)/, "$1 = '#',$2");
+      } else if (component === 'p-segmented-control-item') {
+        // set default value, otherwise validation will throw an error
+        cleanedComponent = cleanedComponent.replace(/(, value),/, "$1 = 'value',");
       }
     } else if (component === 'p-toast') {
       cleanedComponent = cleanedComponent
@@ -226,10 +230,9 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       case 'p-accordion':
       case 'p-button-group':
       case 'p-checkbox-wrapper':
-      case 'p-flex':
-      case 'p-grid':
       case 'p-modal':
       case 'p-radio-button-wrapper':
+      case 'p-segmented-control':
       case 'p-select-wrapper':
       case 'p-text-field-wrapper':
       case 'p-textarea-wrapper':
@@ -261,12 +264,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         props: 'label="CheckboxWrapper"',
         children: '<DummyCheckbox uxpId="dummy-checkbox" />',
       },
-      'p-flex': {
-        children: ['<FlexItem uxpId="flex-item-1" />', '<FlexItem uxpId="flex-item-2" />'].join(glue),
-      },
-      'p-grid': {
-        children: ['<GridItem size={6} uxpId="grid-item-1" />', '<GridItem size={6} uxpId="grid-item-2" />'].join(glue),
-      },
       'p-modal': {
         props: 'heading="Heading" open',
         children: [
@@ -282,6 +279,14 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       'p-radio-button-wrapper': {
         props: 'label="RadioButtonWrapper"',
         children: '<DummyRadioButton uxpId="dummy-radio-button" />',
+      },
+      'p-segmented-control': {
+        props: 'value={1}',
+        children: [
+          '<SegmentedControlItem uxpId="segmented-control-item-1" value={1}>Value 1</SegmentedControlItem>',
+          '<SegmentedControlItem uxpId="segmented-control-item-2" value={2}>Value 2</SegmentedControlItem>',
+          '<SegmentedControlItem uxpId="segmented-control-item-3" value={3}>Value 3</SegmentedControlItem>',
+        ].join(glue),
       },
       'p-select-wrapper': {
         props: 'label="SelectWrapper"',
