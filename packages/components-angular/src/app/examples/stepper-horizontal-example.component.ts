@@ -13,7 +13,7 @@ import type { StepChangeEvent, StepperState } from '@porsche-design-system/compo
     </p-stepper-horizontal>
 
     <ng-container *ngFor="let content of stepContent; let i = index">
-      <p-text *ngIf="getActiveStepIndex(steps) === i">Your content of Step {{ content }}</p-text>
+      <p-text *ngIf="getActiveStepIndex(steps) === i">{{ content }}</p-text>
     </ng-container>
 
     <p-button-group>
@@ -40,17 +40,21 @@ export class StepperHorizontalExampleComponent {
   steps: StepperHorizontalItemProps[] = [
     {
       state: 'current',
-      name: 'Personal details',
+      name: 'Enter personal details',
     },
     {
-      name: 'Enter e-mail',
+      name: 'Confirm e-mail',
     },
     {
-      name: 'Overview',
+      name: 'Set password',
     },
   ];
 
-  stepContent: string[] = ['One', 'Two', 'Three'];
+  stepContent: string[] = [
+    'A form with personal details could be displayed here.',
+    'A form with a verification code input field could be displayed here.',
+    'A form with a password input field could be displayed here.',
+  ];
 
   getActiveStepIndex(steps: StepperHorizontalItemProps[]) {
     return steps.findIndex((step) => step.state === 'current');

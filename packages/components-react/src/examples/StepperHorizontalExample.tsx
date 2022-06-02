@@ -16,17 +16,21 @@ export const StepperHorizontalExample = (): JSX.Element => {
   const [steps, setSteps] = useState<StepperHorizontalItemProps[]>([
     {
       state: 'current',
-      name: 'Personal details',
+      name: 'Enter personal details',
     },
     {
-      name: 'Enter e-mail',
+      name: 'Confirm e-mail',
     },
     {
-      name: 'Overview',
+      name: 'Set password',
     },
   ]);
 
-  const stepContent: string[] = ['One', 'Two', 'Three'];
+  const stepContent: string[] = [
+    'A form with personal details could be displayed here.',
+    'A form with a verification code input field could be displayed here.',
+    'A form with a password input field could be displayed here.',
+  ];
 
   const getActiveStepIndex = (steps: StepperHorizontalItemProps[]): number =>
     steps.findIndex((step) => step.state === 'current');
@@ -68,9 +72,7 @@ export const StepperHorizontalExample = (): JSX.Element => {
         ))}
       </PStepperHorizontal>
 
-      {stepContent.map(
-        (content, i) => getActiveStepIndex(steps) === i && <PText key={i}>Your content of Step {content}</PText>
-      )}
+      {stepContent.map((content, i) => getActiveStepIndex(steps) === i && <PText key={i}>{content}</PText>)}
 
       <PButtonGroup>
         <PButton
