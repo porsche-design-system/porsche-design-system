@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`hoverValidator() 1`] = `
+Object {
+  "@media (hover: hover)": Object {
+    "&:hover, &:focus": Object {
+      "background": "currentColor",
+      "color": "d5001c",
+    },
+  },
+}
+`;
