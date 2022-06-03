@@ -94,9 +94,6 @@ p-table em, p-table i {
 p-table img {
   vertical-align: middle !important;
 }
-p-table a:hover {
-  color: #d5001c !important;
-}
 p-table a::-moz-focus-inner {
   border: 0 !important;
 }
@@ -105,7 +102,13 @@ p-table a:focus {
 }
 p-table a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}"
+}
+@media (hover: hover) {
+  p-table a:hover {
+    color: #d5001c !important;
+  }
+}
+"
 `;
 
 exports[`getSlottedCss() should return correct css with prefix 1`] = `
@@ -125,9 +128,6 @@ prefixed-p-table em, prefixed-p-table i {
 prefixed-p-table img {
   vertical-align: middle !important;
 }
-prefixed-p-table a:hover {
-  color: #d5001c !important;
-}
 prefixed-p-table a::-moz-focus-inner {
   border: 0 !important;
 }
@@ -136,5 +136,11 @@ prefixed-p-table a:focus {
 }
 prefixed-p-table a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}"
+}
+@media (hover: hover) {
+  prefixed-p-table a:hover {
+    color: #d5001c !important;
+  }
+}
+"
 `;

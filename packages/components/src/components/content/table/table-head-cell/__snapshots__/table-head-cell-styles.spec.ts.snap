@@ -31,9 +31,6 @@ button {
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
-button:hover {
-  color: #d5001c;
-}
 button::-moz-focus-inner {
   border: 0;
 }
@@ -87,9 +84,6 @@ button {
   transition: color var(--p-transition-duration, .24s) ease;
   outline: 1px solid transparent;
   outline-offset: 1px;
-}
-button:hover {
-  color: #d5001c;
 }
 button::-moz-focus-inner {
   border: 0;
@@ -145,9 +139,6 @@ button {
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
-button:hover {
-  color: #d5001c;
-}
 button::-moz-focus-inner {
   border: 0;
 }
@@ -202,9 +193,6 @@ button {
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
-button:hover {
-  color: #d5001c;
-}
 button::-moz-focus-inner {
   border: 0;
 }
@@ -258,9 +246,6 @@ button {
   transition: color var(--p-transition-duration, .24s) ease;
   outline: 1px solid transparent;
   outline-offset: 1px;
-}
-button:hover {
-  color: #d5001c;
 }
 button::-moz-focus-inner {
   border: 0;
