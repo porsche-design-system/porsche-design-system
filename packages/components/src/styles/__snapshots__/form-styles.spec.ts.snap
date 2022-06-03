@@ -39,9 +39,6 @@ Object {
   "::slotted(input:focus)": Object {
     "outlineColor": "#e00000",
   },
-  "::slotted(input:hover)": Object {
-    "borderColor": "#a30000",
-  },
   "::slotted(input[readonly])": Object {
     "backgroundColor": "#ebebeb",
     "borderColor": "#ebebeb",
@@ -51,6 +48,11 @@ Object {
   },
   "::slotted(input[readonly]:not(:disabled))": Object {
     "color": "#626669",
+  },
+  "@media (hover: hover)": Object {
+    "::slotted(input:hover)": Object {
+      "borderColor": "#a30000",
+    },
   },
 }
 `;
@@ -94,9 +96,6 @@ Object {
   "::slotted(input:focus)": Object {
     "outlineColor": "#626669",
   },
-  "::slotted(input:hover)": Object {
-    "borderColor": "#000",
-  },
   "::slotted(input[readonly])": Object {
     "backgroundColor": "#ebebeb",
     "borderColor": "#ebebeb",
@@ -106,6 +105,11 @@ Object {
   },
   "::slotted(input[readonly]:not(:disabled))": Object {
     "color": "#626669",
+  },
+  "@media (hover: hover)": Object {
+    "::slotted(input:hover)": Object {
+      "borderColor": "#000",
+    },
   },
 }
 `;
@@ -149,9 +153,6 @@ Object {
   "::slotted(input:focus)": Object {
     "outlineColor": "#018a16",
   },
-  "::slotted(input:hover)": Object {
-    "borderColor": "#014d0c",
-  },
   "::slotted(input[readonly])": Object {
     "backgroundColor": "#ebebeb",
     "borderColor": "#ebebeb",
@@ -161,6 +162,11 @@ Object {
   },
   "::slotted(input[readonly]:not(:disabled))": Object {
     "color": "#626669",
+  },
+  "@media (hover: hover)": Object {
+    "::slotted(input:hover)": Object {
+      "borderColor": "#014d0c",
+    },
   },
 }
 `;
@@ -204,8 +210,10 @@ Object {
   "::slotted(select:focus)": Object {
     "outlineColor": "#fc1717",
   },
-  "::slotted(select:hover)": Object {
-    "borderColor": "#d30303",
+  "@media (hover: hover)": Object {
+    "::slotted(select:hover)": Object {
+      "borderColor": "#d30303",
+    },
   },
 }
 `;
@@ -249,8 +257,10 @@ Object {
   "::slotted(select:focus)": Object {
     "outlineColor": "#b0b1b2",
   },
-  "::slotted(select:hover)": Object {
-    "borderColor": "#e3e4e5",
+  "@media (hover: hover)": Object {
+    "::slotted(select:hover)": Object {
+      "borderColor": "#e3e4e5",
+    },
   },
 }
 `;
@@ -294,8 +304,10 @@ Object {
   "::slotted(select:focus)": Object {
     "outlineColor": "#01ba1d",
   },
-  "::slotted(select:hover)": Object {
-    "borderColor": "#017d14",
+  "@media (hover: hover)": Object {
+    "::slotted(select:hover)": Object {
+      "borderColor": "#017d14",
+    },
   },
 }
 `;
@@ -338,9 +350,6 @@ Object {
   "::slotted(textarea:focus)": Object {
     "outlineColor": "#fc1717",
   },
-  "::slotted(textarea:hover)": Object {
-    "borderColor": "#d30303",
-  },
   "::slotted(textarea[readonly])": Object {
     "backgroundColor": "#ebebeb",
     "borderColor": "#ebebeb",
@@ -350,6 +359,11 @@ Object {
   },
   "::slotted(textarea[readonly]:not(:disabled))": Object {
     "color": "#b0b1b2",
+  },
+  "@media (hover: hover)": Object {
+    "::slotted(textarea:hover)": Object {
+      "borderColor": "#d30303",
+    },
   },
 }
 `;
@@ -392,9 +406,6 @@ Object {
   "::slotted(textarea:focus)": Object {
     "outlineColor": "#fc1717",
   },
-  "::slotted(textarea:hover)": Object {
-    "borderColor": "#d30303",
-  },
   "::slotted(textarea[readonly])": Object {
     "backgroundColor": "#ebebeb",
     "borderColor": "#ebebeb",
@@ -404,6 +415,11 @@ Object {
   },
   "::slotted(textarea[readonly]:not(:disabled))": Object {
     "color": "#b0b1b2",
+  },
+  "@media (hover: hover)": Object {
+    "::slotted(textarea:hover)": Object {
+      "borderColor": "#d30303",
+    },
   },
 }
 `;
@@ -446,9 +462,6 @@ Object {
   "::slotted(textarea:focus)": Object {
     "outlineColor": "#b0b1b2",
   },
-  "::slotted(textarea:hover)": Object {
-    "borderColor": "#e3e4e5",
-  },
   "::slotted(textarea[readonly])": Object {
     "backgroundColor": "#ebebeb",
     "borderColor": "#ebebeb",
@@ -458,6 +471,11 @@ Object {
   },
   "::slotted(textarea[readonly]:not(:disabled))": Object {
     "color": "#b0b1b2",
+  },
+  "@media (hover: hover)": Object {
+    "::slotted(textarea:hover)": Object {
+      "borderColor": "#e3e4e5",
+    },
   },
 }
 `;
@@ -500,9 +518,6 @@ Object {
   "::slotted(textarea:focus)": Object {
     "outlineColor": "#01ba1d",
   },
-  "::slotted(textarea:hover)": Object {
-    "borderColor": "#017d14",
-  },
   "::slotted(textarea[readonly])": Object {
     "backgroundColor": "#ebebeb",
     "borderColor": "#ebebeb",
@@ -512,6 +527,11 @@ Object {
   },
   "::slotted(textarea[readonly]:not(:disabled))": Object {
     "color": "#b0b1b2",
+  },
+  "@media (hover: hover)": Object {
+    "::slotted(textarea:hover)": Object {
+      "borderColor": "#017d14",
+    },
   },
 }
 `;
@@ -527,9 +547,11 @@ Object {
       "&--description": Object {
         "color": "#b0b1b2",
       },
-      "&:hover": Object {
-        "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:hover:not(:disabled):not([readonly]))": Object {
-          "borderColor": "#d30303 !important",
+      "@media (hover: hover)": Object {
+        "&:hover": Object {
+          "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:hover:not(:disabled):not([readonly]))": Object {
+            "borderColor": "#d30303 !important",
+          },
         },
       },
       "@media(min-width:1000px)": Object {
@@ -607,9 +629,11 @@ Object {
     "position": "relative",
   },
   "unit": Object {
-    "&:hover": Object {
-      "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:hover:not(:disabled):not([readonly]))": Object {
-        "borderColor": "#d30303 !important",
+    "@media (hover: hover)": Object {
+      "&:hover": Object {
+        "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:hover:not(:disabled):not([readonly]))": Object {
+          "borderColor": "#d30303 !important",
+        },
       },
     },
     "display": "block ",
@@ -628,9 +652,11 @@ Object {
       "&--description": Object {
         "color": "#626669",
       },
-      "&:hover": Object {
-        "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:hover:not(:disabled):not([readonly]))": Object {
-          "borderColor": "#a30000 !important",
+      "@media (hover: hover)": Object {
+        "&:hover": Object {
+          "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:hover:not(:disabled):not([readonly]))": Object {
+            "borderColor": "#a30000 !important",
+          },
         },
       },
       "clip": "auto",
@@ -663,9 +689,11 @@ Object {
       "&--description": Object {
         "color": "#626669",
       },
-      "&:hover": Object {
-        "&~::slotted(input:not(:disabled):not([readonly]))": Object {
-          "borderColor": "#000 !important",
+      "@media (hover: hover)": Object {
+        "&:hover": Object {
+          "&~::slotted(input:not(:disabled):not([readonly]))": Object {
+            "borderColor": "#000 !important",
+          },
         },
       },
       "clip": "auto",
@@ -698,9 +726,11 @@ Object {
       "&--description": Object {
         "color": "#626669",
       },
-      "&:hover": Object {
-        "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:hover:not(:disabled):not([readonly]))": Object {
-          "borderColor": "#014d0c !important",
+      "@media (hover: hover)": Object {
+        "&:hover": Object {
+          "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:hover:not(:disabled):not([readonly]))": Object {
+            "borderColor": "#014d0c !important",
+          },
         },
       },
       "clip": "auto",
@@ -733,9 +763,11 @@ Object {
       "&--description": Object {
         "color": "#626669",
       },
-      "&:hover": Object {
-        "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:hover:not(:disabled):not([readonly]))": Object {
-          "borderColor": "#a30000 !important",
+      "@media (hover: hover)": Object {
+        "&:hover": Object {
+          "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:hover:not(:disabled):not([readonly]))": Object {
+            "borderColor": "#a30000 !important",
+          },
         },
       },
       "border": "0",
@@ -769,9 +801,11 @@ Object {
       "&--description": Object {
         "color": "#626669",
       },
-      "&:hover": Object {
-        "&~::slotted(input:not(:disabled):not([readonly]))": Object {
-          "borderColor": "#000 !important",
+      "@media (hover: hover)": Object {
+        "&:hover": Object {
+          "&~::slotted(input:not(:disabled):not([readonly]))": Object {
+            "borderColor": "#000 !important",
+          },
         },
       },
       "border": "0",
@@ -805,9 +839,11 @@ Object {
       "&--description": Object {
         "color": "#626669",
       },
-      "&:hover": Object {
-        "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:hover:not(:disabled):not([readonly]))": Object {
-          "borderColor": "#014d0c !important",
+      "@media (hover: hover)": Object {
+        "&:hover": Object {
+          "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:hover:not(:disabled):not([readonly]))": Object {
+            "borderColor": "#014d0c !important",
+          },
         },
       },
       "border": "0",
@@ -841,9 +877,11 @@ Object {
       "&--description": Object {
         "color": "#96989a",
       },
-      "&:hover": Object {
-        "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:hover:not(:disabled):not([readonly]))": Object {
-          "borderColor": "#a30000 !important",
+      "@media (hover: hover)": Object {
+        "&:hover": Object {
+          "&~::slotted(input:not(:disabled):not([readonly])),::slotted(input:hover:not(:disabled):not([readonly]))": Object {
+            "borderColor": "#a30000 !important",
+          },
         },
       },
       "border": "0",
@@ -877,9 +915,11 @@ Object {
       "&--description": Object {
         "color": "#b0b1b2",
       },
-      "&:hover": Object {
-        "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
-          "borderColor": "#d30303 !important",
+      "@media (hover: hover)": Object {
+        "&:hover": Object {
+          "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
+            "borderColor": "#d30303 !important",
+          },
         },
       },
       "clip": "auto",
@@ -912,9 +952,11 @@ Object {
       "&--description": Object {
         "color": "#b0b1b2",
       },
-      "&:hover": Object {
-        "&~::slotted(textarea:not(:disabled):not([readonly]))": Object {
-          "borderColor": "#fff !important",
+      "@media (hover: hover)": Object {
+        "&:hover": Object {
+          "&~::slotted(textarea:not(:disabled):not([readonly]))": Object {
+            "borderColor": "#fff !important",
+          },
         },
       },
       "clip": "auto",
@@ -947,9 +989,11 @@ Object {
       "&--description": Object {
         "color": "#b0b1b2",
       },
-      "&:hover": Object {
-        "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
-          "borderColor": "#017d14 !important",
+      "@media (hover: hover)": Object {
+        "&:hover": Object {
+          "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
+            "borderColor": "#017d14 !important",
+          },
         },
       },
       "clip": "auto",
@@ -982,9 +1026,11 @@ Object {
       "&--description": Object {
         "color": "#b0b1b2",
       },
-      "&:hover": Object {
-        "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
-          "borderColor": "#d30303 !important",
+      "@media (hover: hover)": Object {
+        "&:hover": Object {
+          "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
+            "borderColor": "#d30303 !important",
+          },
         },
       },
       "border": "0",
@@ -1018,9 +1064,11 @@ Object {
       "&--description": Object {
         "color": "#b0b1b2",
       },
-      "&:hover": Object {
-        "&~::slotted(textarea:not(:disabled):not([readonly]))": Object {
-          "borderColor": "#fff !important",
+      "@media (hover: hover)": Object {
+        "&:hover": Object {
+          "&~::slotted(textarea:not(:disabled):not([readonly]))": Object {
+            "borderColor": "#fff !important",
+          },
         },
       },
       "border": "0",
@@ -1054,9 +1102,11 @@ Object {
       "&--description": Object {
         "color": "#b0b1b2",
       },
-      "&:hover": Object {
-        "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
-          "borderColor": "#017d14 !important",
+      "@media (hover: hover)": Object {
+        "&:hover": Object {
+          "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
+            "borderColor": "#017d14 !important",
+          },
         },
       },
       "border": "0",
@@ -1090,9 +1140,11 @@ Object {
       "&--description": Object {
         "color": "#7c7f81",
       },
-      "&:hover": Object {
-        "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
-          "borderColor": "#d30303 !important",
+      "@media (hover: hover)": Object {
+        "&:hover": Object {
+          "&~::slotted(textarea:not(:disabled):not([readonly])),::slotted(textarea:hover:not(:disabled):not([readonly]))": Object {
+            "borderColor": "#d30303 !important",
+          },
         },
       },
       "border": "0",

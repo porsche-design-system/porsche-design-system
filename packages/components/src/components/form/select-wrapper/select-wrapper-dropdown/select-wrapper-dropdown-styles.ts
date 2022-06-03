@@ -13,6 +13,7 @@ import { fontWeight, textSmall } from '@porsche-design-system/utilities-v2';
 import { OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 import { getThemedFormStateColors } from '../../../../styles/form-state-color-styles';
 import { INPUT_HEIGHT } from '../../../../styles/form-styles';
+import { hoverValidator } from '../../../../styles/hover-validator';
 
 const { baseColor: themeLightBaseColor, backgroundSurfaceColor: themeLightBackgroundSurfaceColor } =
   getThemedColors('light');
@@ -44,9 +45,11 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
         '&:focus': {
           outlineColor: formStateColor || contrastMediumColor,
         },
-        '&:hover:not(:disabled) ~ ul': {
-          borderColor: contrastHighColor,
-        },
+        ...hoverValidator({
+          '&:hover:not(:disabled) ~ ul': {
+            borderColor: contrastHighColor,
+          },
+        }),
         '&:disabled': {
           cursor: 'not-allowed',
         },
@@ -99,9 +102,11 @@ export const getFilterStyles = (
             outlineColor: formStateColor || contrastMediumColor,
           },
         },
-        '&:hover:not(:disabled) ~ ul': {
-          borderColor: contrastHighColor,
-        },
+        ...hoverValidator({
+          '&:hover:not(:disabled) ~ ul': {
+            borderColor: contrastHighColor,
+          },
+        }),
         '&+span': {
           // for focus outline and click event on arrow
           position: 'absolute',
@@ -170,9 +175,11 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         transition: getTransition('border-color'),
         transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
         outline: 'none',
-        '&:hover': {
-          borderColor: contrastHighColor,
-        },
+        ...hoverValidator({
+          '&:hover': {
+            borderColor: contrastHighColor,
+          },
+        }),
         ...(isDirectionDown
           ? {
               top: 'calc(100%-1px)',
@@ -214,10 +221,12 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         cursor: 'not-allowed',
       },
       '&__sr': getTextHiddenJssStyle(true),
-      '&:not([aria-disabled]):not([role="status"]):hover': {
-        color: hoverColor,
-        background: highlightedSelectedColor,
-      },
+      ...hoverValidator({
+        '&:not([aria-disabled]):not([role="status"]):hover': {
+          color: hoverColor,
+          background: highlightedSelectedColor,
+        },
+      }),
       '&--highlighted, &--selected': {
         color: activeColor,
         background: highlightedSelectedColor,
@@ -277,11 +286,12 @@ export const getComponentCss = (
             left: 0,
             right: 0,
             color: disabled ? disabledColor : formStateColor || contrastMediumColor,
-            ...(!disabled && {
-              '&(:hover)': {
-                color: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
-              },
-            }),
+            ...(!disabled &&
+              hoverValidator({
+                '&(:hover)': {
+                  color: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
+                },
+              })),
           },
         },
       },

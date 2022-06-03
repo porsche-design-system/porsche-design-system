@@ -12,6 +12,7 @@ import {
 } from './';
 import { textSmall } from '@porsche-design-system/utilities-v2';
 import { getThemedFormStateColors } from './form-state-color-styles';
+import { hoverValidator } from './hover-validator';
 
 const { disabledColor: lightThemeDisabledColor } = getThemedColors('light');
 
@@ -57,9 +58,11 @@ export const getBaseChildStyles = (
       transition: ['color', 'border-color', 'background-color'].map(getTransition).join(','),
       ...additionalDefaultJssStyle,
     },
-    [`::slotted(${child}:hover)`]: {
-      borderColor: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
-    },
+    ...hoverValidator({
+      [`::slotted(${child}:hover)`]: {
+        borderColor: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
+      },
+    }),
     [`::slotted(${child}:focus)`]: {
       outlineColor: formStateColor || contrastMediumColor,
     },
@@ -97,14 +100,14 @@ export const getLabelStyles = (
   const hasVisibleState = isVisibleFormState(state);
 
   // jss prefers flat and simple selectors, therefore we reuse properties
-  const labelTextHoverJssStyle: JssStyle = {
+  const labelTextHoverJssStyle: JssStyle = hoverValidator({
     '&:hover': {
       [`&~::slotted(${child}:not(:disabled):not([readonly]))` +
       (hasVisibleState ? `,::slotted(${child}:hover:not(:disabled):not([readonly]))` : '')]: {
         borderColor: addImportantToRule(hasVisibleState ? formStateHoverColor : baseColor),
       },
     },
-  };
+  });
 
   const counterOrUnitOrIconStylesKey = counterOrUnitOrIconStyles && Object.keys(counterOrUnitOrIconStyles)[0];
 

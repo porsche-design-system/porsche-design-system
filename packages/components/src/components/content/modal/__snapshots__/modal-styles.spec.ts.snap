@@ -1766,9 +1766,6 @@ p-modal b, p-modal strong {
 p-modal em, p-modal i {
   font-style: normal !important;
 }
-p-modal a:hover {
-  color: #d5001c !important;
-}
 p-modal a::-moz-focus-inner {
   border: 0 !important;
 }
@@ -1777,7 +1774,13 @@ p-modal a:focus {
 }
 p-modal a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}"
+}
+@media (hover: hover) {
+  p-modal a:hover {
+    color: #d5001c !important;
+  }
+}
+"
 `;
 
 exports[`getSlottedCss() should return correct css with prefix 1`] = `
@@ -1794,9 +1797,6 @@ prefixed-p-modal b, prefixed-p-modal strong {
 prefixed-p-modal em, prefixed-p-modal i {
   font-style: normal !important;
 }
-prefixed-p-modal a:hover {
-  color: #d5001c !important;
-}
 prefixed-p-modal a::-moz-focus-inner {
   border: 0 !important;
 }
@@ -1805,5 +1805,11 @@ prefixed-p-modal a:focus {
 }
 prefixed-p-modal a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}"
+}
+@media (hover: hover) {
+  prefixed-p-modal a:hover {
+    color: #d5001c !important;
+  }
+}
+"
 `;
