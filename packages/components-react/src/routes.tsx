@@ -1,6 +1,7 @@
 import { RouteProps } from 'react-router-dom';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
+import { SegmentedControlExamplePage } from './examples/SegmentedControlExample';
 
 export type RouteType = RouteProps & {
   name: string;
@@ -74,6 +75,11 @@ export const routes: RouteType[] = [
     name: 'Inline Notification Example Action Button',
     path: '/inline-notification-example-action-button',
     element: <fromExamples.InlineNotificationExampleActionButtonPage />,
+  },
+  {
+    name: 'Segmented Control Example',
+    path: '/segmented-control-example',
+    element: <fromExamples.SegmentedControlExamplePage />,
   },
   {
     name: 'Table Example Basic',
