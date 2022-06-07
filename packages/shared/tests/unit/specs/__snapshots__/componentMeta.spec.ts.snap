@@ -429,7 +429,7 @@ Object {
     "hasAriaProp": false,
     "hasSkeleton": false,
     "hasSlottedCss": false,
-    "isDelegatingFocus": false,
+    "isDelegatingFocus": true,
     "isThemeable": true,
     "requiredParent": "p-stepper-horizontal",
     "shouldPatchSlot": false,
