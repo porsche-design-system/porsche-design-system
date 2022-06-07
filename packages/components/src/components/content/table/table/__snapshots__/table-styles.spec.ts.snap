@@ -103,7 +103,7 @@ p-table a:focus {
 p-table a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   p-table a:hover {
     color: #d5001c !important;
   }
@@ -137,7 +137,7 @@ prefixed-p-table a:focus {
 prefixed-p-table a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   prefixed-p-table a:hover {
     color: #d5001c !important;
   }

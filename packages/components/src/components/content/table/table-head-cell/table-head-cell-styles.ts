@@ -10,7 +10,7 @@ import {
 } from '../../../../styles';
 import { fontWeight, spacing, textSmall } from '@porsche-design-system/utilities-v2';
 import { isDirectionAsc, isSortable } from './table-head-cell-utils';
-import { hoverValidator } from '../../../../styles/hover-validator';
+import { hoverMediaQuery } from '../../../../styles/hover-media-query';
 
 const { contrastMediumColor, baseColor } = getThemedColors('light');
 const { semiBold: fontWeightSemiBold } = fontWeight;
@@ -51,7 +51,7 @@ export const getComponentCss = (
               cursor: 'pointer',
               ...getHoverJssStyle(),
               ...getFocusJssStyle({ offset: 1 }),
-              ...hoverValidator({
+              ...hoverMediaQuery({
                 '&:hover, &:focus': {
                   '& .icon': {
                     opacity: 1,

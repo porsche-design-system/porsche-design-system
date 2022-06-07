@@ -5,7 +5,7 @@ exports[`getComponentCss() should return correct css 1`] = `
   display: table-row !important;
   transition: background-color var(--p-transition-duration, .24s) ease !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   :host(:hover) {
     background-color: #f2f2f2 !important;
   }

@@ -17,7 +17,7 @@ import {
   getRootJssStyle,
   getSlottedLinkJssStyle,
 } from '../../../styles/link-button-styles';
-import { hoverValidator } from '../../../styles/hover-validator';
+import { hoverMediaQuery } from '../../../styles/hover-media-query';
 
 const { contrastHighColor: themeLightContrastHighColor, baseColor: themeLightBaseColor } = getThemedColors('light');
 const { baseColor: themeDarkBaseColor } = getThemedColors('dark');
@@ -72,7 +72,7 @@ export const getComponentCss = (
           '&(a:focus)': {
             outlineColor: baseColor,
           },
-          ...hoverValidator({
+          ...hoverMediaQuery({
             '&(a:hover:focus)': {
               outlineColor: baseColorHover,
             },
@@ -102,7 +102,7 @@ export const getComponentCss = (
       color: baseColor,
       transition:
         getTransition('background-color') + ',' + getTransition('border-color') + ',' + getTransition('color'),
-      ...hoverValidator({
+      ...hoverMediaQuery({
         '&:hover, &:active': {
           color: baseColorHover,
           '& $label, & $icon': {

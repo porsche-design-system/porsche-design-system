@@ -154,7 +154,7 @@ p-banner a:focus {
 p-banner a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   p-banner a:hover {
     color: #d5001c !important;
   }
@@ -185,7 +185,7 @@ prefixed-p-banner a:focus {
 prefixed-p-banner a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   prefixed-p-banner a:hover {
     color: #d5001c !important;
   }

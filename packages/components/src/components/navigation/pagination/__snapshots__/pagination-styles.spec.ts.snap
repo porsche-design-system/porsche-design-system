@@ -104,7 +104,7 @@ span[aria-current]::after {
   }
 }
 
-@media (hover: hover) {
+@media(hover:hover) {
   span:hover {
     color: #ff0223;
   }
@@ -196,7 +196,7 @@ span[aria-current]::after {
   height: 0.25rem;
   background: #d5001c;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   span:hover {
     color: #ff0223;
   }
@@ -288,7 +288,7 @@ span[aria-current]::after {
   height: 0.25rem;
   background: #d5001c;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   span:hover {
     color: #d5001c;
   }
@@ -380,7 +380,7 @@ span[aria-current]::after {
   height: 0.25rem;
   background: #d5001c;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   span:hover {
     color: #ff0223;
   }
@@ -472,7 +472,7 @@ span[aria-current]::after {
   height: 0.25rem;
   background: #d5001c;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   span:hover {
     color: #d5001c;
   }

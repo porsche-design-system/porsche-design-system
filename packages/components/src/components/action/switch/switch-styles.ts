@@ -10,7 +10,7 @@ import {
   getThemedColors,
 } from '../../../styles';
 import { spacing } from '@porsche-design-system/utilities-v2';
-import { hoverValidator } from '../../../styles/hover-validator';
+import { hoverMediaQuery } from '../../../styles/hover-media-query';
 
 const { small: spacingSmall } = spacing;
 
@@ -132,7 +132,7 @@ export const getComponentCss = (
         cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
         transition: `${getTransition('background-color')},${getTransition('border-color')},${getTransition('color')}`,
         ...(!isDisabledOrLoading &&
-          hoverValidator({
+          hoverMediaQuery({
             '&:hover': {
               color: buttonBorderColorHover,
               backgroundColor: buttonBackgroundColorHover,

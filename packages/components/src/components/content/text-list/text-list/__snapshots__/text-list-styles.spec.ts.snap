@@ -59,7 +59,7 @@ p-text-list a:focus {
 p-text-list a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   p-text-list[data-theme=\\"dark\\"] a:hover {
     color: #ff0223 !important;
   }
@@ -93,7 +93,7 @@ prefixed-p-text-list a:focus {
 prefixed-p-text-list a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   prefixed-p-text-list[data-theme=\\"dark\\"] a:hover {
     color: #ff0223 !important;
   }

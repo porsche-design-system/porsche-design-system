@@ -43,7 +43,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover),::slotted(button:hover) {
     color: #ff0223 !important;
   }
@@ -117,7 +117,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover),::slotted(button:hover) {
     color: #d5001c !important;
   }
@@ -191,7 +191,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover),::slotted(button:hover) {
     color: #00b0f4 !important;
   }
@@ -265,7 +265,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover),::slotted(button:hover) {
     color: #ff0223 !important;
   }
@@ -339,7 +339,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover),::slotted(button:hover) {
     color: #d5001c !important;
   }
@@ -413,7 +413,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover),::slotted(button:hover) {
     color: #00b0f4 !important;
   }
@@ -487,7 +487,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover),::slotted(button:hover) {
     color: #d5001c !important;
   }
@@ -561,7 +561,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover),::slotted(button:hover) {
     color: #d5001c !important;
   }

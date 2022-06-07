@@ -40,7 +40,7 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover .icon, button:focus .icon {
     opacity: 1;
   }
@@ -94,7 +94,7 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover .icon, button:focus .icon {
     opacity: 1;
   }
@@ -148,7 +148,7 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover .icon, button:focus .icon {
     opacity: 1;
   }
@@ -202,7 +202,7 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover .icon, button:focus .icon {
     opacity: 1;
   }
@@ -256,7 +256,7 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover .icon, button:focus .icon {
     opacity: 1;
   }

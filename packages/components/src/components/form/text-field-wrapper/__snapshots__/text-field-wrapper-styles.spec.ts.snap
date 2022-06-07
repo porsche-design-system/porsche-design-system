@@ -94,7 +94,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #000 !important;
   }
@@ -229,7 +229,7 @@ button:disabled {
   }
 }
 
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
     border-color: #000 !important;
   }
@@ -331,7 +331,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #a30000 !important;
   }
@@ -394,7 +394,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
     border-color: #a30000 !important;
   }
@@ -499,7 +499,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #a30000 !important;
   }
@@ -562,7 +562,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
     border-color: #a30000 !important;
   }
@@ -663,7 +663,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #a30000 !important;
   }
@@ -735,7 +735,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
     border-color: #a30000 !important;
   }
@@ -839,7 +839,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #a30000 !important;
   }
@@ -911,7 +911,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
     border-color: #a30000 !important;
   }
@@ -1016,7 +1016,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #000 !important;
   }
@@ -1078,7 +1078,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
     border-color: #000 !important;
   }
@@ -1183,7 +1183,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #000 !important;
   }
@@ -1245,7 +1245,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
     border-color: #000 !important;
   }
@@ -1346,7 +1346,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #000 !important;
   }
@@ -1417,7 +1417,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
     border-color: #000 !important;
   }
@@ -1521,7 +1521,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #000 !important;
   }
@@ -1592,7 +1592,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
     border-color: #000 !important;
   }
@@ -1697,7 +1697,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #014d0c !important;
   }
@@ -1760,7 +1760,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
     border-color: #014d0c !important;
   }
@@ -1865,7 +1865,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #014d0c !important;
   }
@@ -1928,7 +1928,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
     border-color: #014d0c !important;
   }
@@ -2029,7 +2029,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #014d0c !important;
   }
@@ -2101,7 +2101,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
     border-color: #014d0c !important;
   }
@@ -2205,7 +2205,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #014d0c !important;
   }
@@ -2277,7 +2277,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
     border-color: #014d0c !important;
   }
@@ -2382,7 +2382,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #a30000 !important;
   }
@@ -2445,7 +2445,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
     border-color: #a30000 !important;
   }
@@ -2550,7 +2550,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #a30000 !important;
   }
@@ -2613,7 +2613,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
     border-color: #a30000 !important;
   }
@@ -2714,7 +2714,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #a30000 !important;
   }
@@ -2787,7 +2787,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
     border-color: #a30000 !important;
   }
@@ -2891,7 +2891,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #a30000 !important;
   }
@@ -2964,7 +2964,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
     border-color: #a30000 !important;
   }
@@ -3069,7 +3069,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #000 !important;
   }
@@ -3131,7 +3131,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
     border-color: #000 !important;
   }
@@ -3236,7 +3236,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #000 !important;
   }
@@ -3298,7 +3298,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
     border-color: #000 !important;
   }
@@ -3399,7 +3399,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #000 !important;
   }
@@ -3471,7 +3471,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
     border-color: #000 !important;
   }
@@ -3575,7 +3575,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #000 !important;
   }
@@ -3647,7 +3647,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
     border-color: #000 !important;
   }
@@ -3752,7 +3752,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #014d0c !important;
   }
@@ -3815,7 +3815,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
     border-color: #014d0c !important;
   }
@@ -3920,7 +3920,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #014d0c !important;
   }
@@ -3983,7 +3983,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
     border-color: #014d0c !important;
   }
@@ -4084,7 +4084,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #014d0c !important;
   }
@@ -4157,7 +4157,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
     border-color: #014d0c !important;
   }
@@ -4261,7 +4261,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #014d0c !important;
   }
@@ -4334,7 +4334,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
     border-color: #014d0c !important;
   }
@@ -4442,7 +4442,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #a30000 !important;
   }
@@ -4506,7 +4506,7 @@ button:disabled {
   white-space: nowrap;
   padding: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
     border-color: #a30000 !important;
   }
@@ -4544,7 +4544,7 @@ p-text-field-wrapper a:focus {
 p-text-field-wrapper a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   p-text-field-wrapper a:hover {
     color: #d5001c !important;
   }
@@ -4582,7 +4582,7 @@ prefixed-p-text-field-wrapper a:focus {
 prefixed-p-text-field-wrapper a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   prefixed-p-text-field-wrapper a:hover {
     color: #d5001c !important;
   }

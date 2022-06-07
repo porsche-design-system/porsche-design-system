@@ -769,7 +769,7 @@ p-inline-notification a:focus {
 p-inline-notification a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   p-inline-notification a:hover {
     color: #d5001c !important;
   }
@@ -800,7 +800,7 @@ prefixed-p-inline-notification a:focus {
 prefixed-p-inline-notification a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   prefixed-p-inline-notification a:hover {
     color: #d5001c !important;
   }

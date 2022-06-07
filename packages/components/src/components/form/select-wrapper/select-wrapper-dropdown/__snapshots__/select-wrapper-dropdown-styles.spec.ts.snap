@@ -21,7 +21,7 @@ button:focus {
 button:disabled {
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover:not(:disabled) ~ ul {
     border-color: #e3e4e5;
   }
@@ -50,7 +50,7 @@ button:focus {
 button:disabled {
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover:not(:disabled) ~ ul {
     border-color: #e3e4e5;
   }
@@ -79,7 +79,7 @@ button:focus {
 button:disabled {
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover:not(:disabled) ~ ul {
     border-color: #e3e4e5;
   }
@@ -109,7 +109,7 @@ button:focus {
 button:disabled {
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover:not(:disabled) ~ ul {
     border-color: #323639;
   }
@@ -139,7 +139,7 @@ button:focus {
 button:disabled {
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover:not(:disabled) ~ ul {
     border-color: #323639;
   }
@@ -169,7 +169,7 @@ button:focus {
 button:disabled {
   cursor: not-allowed;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover:not(:disabled) ~ ul {
     border-color: #323639;
   }
@@ -251,7 +251,7 @@ ul::before {
   background: #e3e4e5;
   top: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   :host(:hover) {
     color: #000;
   }
@@ -317,7 +317,7 @@ ul::before {
 .sr-text {
   display: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
     color: #d5001c;
     background: #f2f2f2;
@@ -435,7 +435,7 @@ ul::before {
   background: #e3e4e5;
   top: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   :host(:hover) {
     color: #000;
   }
@@ -501,7 +501,7 @@ ul::before {
 .sr-text {
   display: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
     color: #d5001c;
     background: #f2f2f2;
@@ -584,7 +584,7 @@ ul::before {
   background: #e3e4e5;
   top: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover:not(:disabled) ~ ul {
     border-color: #323639;
   }
@@ -647,7 +647,7 @@ ul::before {
 .sr-text {
   display: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
     color: #d5001c;
     background: #f2f2f2;
@@ -765,7 +765,7 @@ ul::before {
   background: #e3e4e5;
   top: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   input:hover:not(:disabled) ~ ul {
     border-color: #323639;
   }
@@ -828,7 +828,7 @@ ul::before {
 .sr-text {
   display: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
     color: #d5001c;
     background: #f2f2f2;
@@ -908,7 +908,7 @@ ul::before {
   background: #e3e4e5;
   top: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   :host(:hover) {
     color: #000;
   }
@@ -974,7 +974,7 @@ ul::before {
 .sr-text {
   display: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
     color: #d5001c;
     background: #f2f2f2;
@@ -1089,7 +1089,7 @@ ul::before {
   background: #e3e4e5;
   top: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   :host(:hover) {
     color: #000;
   }
@@ -1155,7 +1155,7 @@ ul::before {
 .sr-text {
   display: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
     color: #d5001c;
     background: #f2f2f2;
@@ -1235,7 +1235,7 @@ ul::before {
   background: #e3e4e5;
   top: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover:not(:disabled) ~ ul {
     border-color: #323639;
   }
@@ -1298,7 +1298,7 @@ ul::before {
 .sr-text {
   display: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
     color: #d5001c;
     background: #f2f2f2;
@@ -1413,7 +1413,7 @@ ul::before {
   background: #e3e4e5;
   top: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   input:hover:not(:disabled) ~ ul {
     border-color: #323639;
   }
@@ -1476,7 +1476,7 @@ ul::before {
 .sr-text {
   display: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
     color: #d5001c;
     background: #f2f2f2;
@@ -1560,7 +1560,7 @@ ul::after {
   background: #e3e4e5;
   bottom: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   :host(:hover) {
     color: #000;
   }
@@ -1626,7 +1626,7 @@ ul::after {
 .sr-text {
   display: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
     color: #d5001c;
     background: #f2f2f2;
@@ -1745,7 +1745,7 @@ ul::after {
   background: #e3e4e5;
   bottom: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   :host(:hover) {
     color: #000;
   }
@@ -1811,7 +1811,7 @@ ul::after {
 .sr-text {
   display: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
     color: #d5001c;
     background: #f2f2f2;
@@ -1895,7 +1895,7 @@ ul::after {
   background: #e3e4e5;
   bottom: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover:not(:disabled) ~ ul {
     border-color: #323639;
   }
@@ -1958,7 +1958,7 @@ ul::after {
 .sr-text {
   display: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
     color: #d5001c;
     background: #f2f2f2;
@@ -2077,7 +2077,7 @@ ul::after {
   background: #e3e4e5;
   bottom: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   input:hover:not(:disabled) ~ ul {
     border-color: #323639;
   }
@@ -2140,7 +2140,7 @@ ul::after {
 .sr-text {
   display: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
     color: #d5001c;
     background: #f2f2f2;
@@ -2220,7 +2220,7 @@ ul::after {
   background: #e3e4e5;
   bottom: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   :host(:hover) {
     color: #000;
   }
@@ -2286,7 +2286,7 @@ ul::after {
 .sr-text {
   display: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
     color: #d5001c;
     background: #f2f2f2;
@@ -2401,7 +2401,7 @@ ul::after {
   background: #e3e4e5;
   bottom: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   :host(:hover) {
     color: #000;
   }
@@ -2467,7 +2467,7 @@ ul::after {
 .sr-text {
   display: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
     color: #d5001c;
     background: #f2f2f2;
@@ -2547,7 +2547,7 @@ ul::after {
   background: #e3e4e5;
   bottom: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover:not(:disabled) ~ ul {
     border-color: #323639;
   }
@@ -2610,7 +2610,7 @@ ul::after {
 .sr-text {
   display: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
     color: #d5001c;
     background: #f2f2f2;
@@ -2725,7 +2725,7 @@ ul::after {
   background: #e3e4e5;
   bottom: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   input:hover:not(:disabled) ~ ul {
     border-color: #323639;
   }
@@ -2788,7 +2788,7 @@ ul::after {
 .sr-text {
   display: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
     color: #d5001c;
     background: #f2f2f2;
@@ -2853,7 +2853,7 @@ input+span {
 input:focus+span {
   outline-color: #fc1717;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   input:hover:not(:disabled) ~ ul {
     border-color: #e3e4e5;
   }
@@ -2917,7 +2917,7 @@ input+span {
 input:focus+span {
   outline-color: #b0b1b2;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   input:hover:not(:disabled) ~ ul {
     border-color: #e3e4e5;
   }
@@ -2981,7 +2981,7 @@ input+span {
 input:focus+span {
   outline-color: #01ba1d;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   input:hover:not(:disabled) ~ ul {
     border-color: #e3e4e5;
   }
@@ -3045,7 +3045,7 @@ input+span {
 input:focus+span {
   outline-color: #fc1717;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   input:hover:not(:disabled) ~ ul {
     border-color: #e3e4e5;
   }
@@ -3109,7 +3109,7 @@ input+span {
 input:focus+span {
   outline-color: #b0b1b2;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   input:hover:not(:disabled) ~ ul {
     border-color: #e3e4e5;
   }
@@ -3173,7 +3173,7 @@ input+span {
 input:focus+span {
   outline-color: #01ba1d;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   input:hover:not(:disabled) ~ ul {
     border-color: #e3e4e5;
   }
@@ -3238,7 +3238,7 @@ input+span {
 input:focus+span {
   outline-color: #e00000;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   input:hover:not(:disabled) ~ ul {
     border-color: #323639;
   }
@@ -3303,7 +3303,7 @@ input+span {
 input:focus+span {
   outline-color: #626669;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   input:hover:not(:disabled) ~ ul {
     border-color: #323639;
   }
@@ -3368,7 +3368,7 @@ input+span {
 input:focus+span {
   outline-color: #018a16;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   input:hover:not(:disabled) ~ ul {
     border-color: #323639;
   }
@@ -3433,7 +3433,7 @@ input+span {
 input:focus+span {
   outline-color: #e00000;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   input:hover:not(:disabled) ~ ul {
     border-color: #323639;
   }
@@ -3498,7 +3498,7 @@ input+span {
 input:focus+span {
   outline-color: #626669;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   input:hover:not(:disabled) ~ ul {
     border-color: #323639;
   }
@@ -3563,7 +3563,7 @@ input+span {
 input:focus+span {
   outline-color: #018a16;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   input:hover:not(:disabled) ~ ul {
     border-color: #323639;
   }
@@ -3615,7 +3615,7 @@ ul::before {
   background: #4a4e51;
   top: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ul:hover {
     border-color: #e3e4e5;
   }
@@ -3675,7 +3675,7 @@ ul::before {
 .sr-text {
   display: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
     color: #ff0223;
     background: #000;
@@ -3728,7 +3728,7 @@ ul::before {
   background: #e3e4e5;
   top: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ul:hover {
     border-color: #323639;
   }
@@ -3788,7 +3788,7 @@ ul::before {
 .sr-text {
   display: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
     color: #d5001c;
     background: #f2f2f2;
@@ -3837,7 +3837,7 @@ ul::before {
   background: #4a4e51;
   top: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ul:hover {
     border-color: #e3e4e5;
   }
@@ -3897,7 +3897,7 @@ ul::before {
 .sr-text {
   display: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
     color: #ff0223;
     background: #000;
@@ -3946,7 +3946,7 @@ ul::before {
   background: #e3e4e5;
   top: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ul:hover {
     border-color: #323639;
   }
@@ -4006,7 +4006,7 @@ ul::before {
 .sr-text {
   display: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
     color: #d5001c;
     background: #f2f2f2;
@@ -4060,7 +4060,7 @@ ul::after {
   background: #4a4e51;
   bottom: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ul:hover {
     border-color: #e3e4e5;
   }
@@ -4120,7 +4120,7 @@ ul::after {
 .sr-text {
   display: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
     color: #ff0223;
     background: #000;
@@ -4174,7 +4174,7 @@ ul::after {
   background: #e3e4e5;
   bottom: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ul:hover {
     border-color: #323639;
   }
@@ -4234,7 +4234,7 @@ ul::after {
 .sr-text {
   display: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
     color: #d5001c;
     background: #f2f2f2;
@@ -4283,7 +4283,7 @@ ul::after {
   background: #4a4e51;
   bottom: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ul:hover {
     border-color: #e3e4e5;
   }
@@ -4343,7 +4343,7 @@ ul::after {
 .sr-text {
   display: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
     color: #ff0223;
     background: #000;
@@ -4392,7 +4392,7 @@ ul::after {
   background: #e3e4e5;
   bottom: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ul:hover {
     border-color: #323639;
   }
@@ -4452,7 +4452,7 @@ ul::after {
 .sr-text {
   display: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .option:not([aria-disabled]):not([role=\\"status\\"]):hover {
     color: #d5001c;
     background: #f2f2f2;

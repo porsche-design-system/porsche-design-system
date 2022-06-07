@@ -46,7 +46,7 @@ button:focus:not(:focus-visible)::before {
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover .icon {
     color: #d5001c;
   }
@@ -118,7 +118,7 @@ button:focus:not(:focus-visible)::before {
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover .icon {
     color: #d5001c;
   }
@@ -197,7 +197,7 @@ button:focus:not(:focus-visible)::before {
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover .icon {
     color: #d5001c;
   }

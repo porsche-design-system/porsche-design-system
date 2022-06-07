@@ -1,6 +1,6 @@
 import { getCss } from '../../../../utils';
 import { addImportantToEachRule, getTransition, getThemedColors } from '../../../../styles';
-import { hoverValidator } from '../../../../styles/hover-validator';
+import { hoverMediaQuery } from '../../../../styles/hover-media-query';
 
 export const getComponentCss = (): string => {
   return getCss({
@@ -8,7 +8,7 @@ export const getComponentCss = (): string => {
       ':host': addImportantToEachRule({
         display: 'table-row',
         transition: getTransition('background-color'),
-        ...hoverValidator({
+        ...hoverMediaQuery({
           '&(:hover)': {
             backgroundColor: getThemedColors('light').backgroundSurfaceColor,
           },
