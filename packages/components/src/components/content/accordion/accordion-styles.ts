@@ -4,7 +4,7 @@ import type { AccordionSize } from './accordion-utils';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import { getFocusJssStyle, getTransition, pxToRemWithUnit, transitionDuration, getThemedColors } from '../../../styles';
 import { fontWeight, fontSize, spacing, textSmall } from '@porsche-design-system/utilities-v2';
-import { hoverValidator } from '../../../styles/hover-validator';
+import { hoverMediaQuery } from '../../../styles/hover-media-query';
 
 export const getComponentCss = (
   size: BreakpointCustomizable<AccordionSize>,
@@ -47,7 +47,7 @@ export const getComponentCss = (
               padding: `${pxToRemWithUnit(s === 'medium' ? 20 : 12)} 0`,
             }))),
         ...getFocusJssStyle({ color: focusColor }),
-        ...hoverValidator({
+        ...hoverMediaQuery({
           '&:hover': {
             color: hoverColor,
           },

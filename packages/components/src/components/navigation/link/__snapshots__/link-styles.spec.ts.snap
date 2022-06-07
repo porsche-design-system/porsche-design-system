@@ -145,7 +145,7 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   }
 }
 
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #c4001a;
   }
@@ -208,7 +208,7 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #980014;
   }
@@ -248,7 +248,7 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #c4001a !important;
   }
@@ -293,7 +293,7 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #c4001a;
   }
@@ -333,7 +333,7 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #980014 !important;
   }
@@ -378,7 +378,7 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #980014;
   }
@@ -418,7 +418,7 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #e0e0e0 !important;
   }
@@ -463,7 +463,7 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #e0e0e0;
   }
@@ -503,7 +503,7 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #151718 !important;
   }
@@ -548,7 +548,7 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #151718;
   }
@@ -588,7 +588,7 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #fff !important;
   }
@@ -633,7 +633,7 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #fff;
     background-color: currentColor;
@@ -677,7 +677,7 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #151718 !important;
   }
@@ -722,7 +722,7 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #151718;
     background-color: currentColor;

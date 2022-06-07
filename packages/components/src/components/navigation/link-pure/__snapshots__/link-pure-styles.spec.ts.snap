@@ -277,7 +277,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
 }
 
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover {
     color: #d5001c;
   }
@@ -443,7 +443,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
 }
 
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover {
     color: #d5001c;
   }
@@ -539,7 +539,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding: 0 0 0 0.25rem;
   order: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover {
     color: #ff0223;
   }
@@ -635,7 +635,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding: 0 0 0 0.25rem;
   order: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover {
     color: #d5001c;
   }
@@ -710,7 +710,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding: 0 0 0 0.25rem;
   order: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover {
     color: #d5001c;
   }
@@ -806,7 +806,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding: 0 0 0 0.25rem;
   order: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover {
     color: #d5001c;
   }
@@ -881,7 +881,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding: 0 0 0 0.25rem;
   order: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover {
     color: #d5001c;
   }
@@ -997,7 +997,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .subline::before {
   content: \\"\\";
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover {
     color: #d5001c;
   }
@@ -1095,7 +1095,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding: 0 0.25rem 0 0;
   order: -1;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover {
     color: #ff0223;
   }
@@ -1190,7 +1190,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding: 0 0.25rem 0 0;
   order: -1;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover {
     color: #d5001c;
   }
@@ -1268,7 +1268,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
   font-size: 1rem;
   margin-left: 1.5em;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover {
     color: #d5001c;
   }

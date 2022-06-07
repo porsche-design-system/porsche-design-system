@@ -41,7 +41,7 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover {
     color: #d5001c;
   }
@@ -122,7 +122,7 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover {
     color: #d5001c;
   }
@@ -201,7 +201,7 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover {
     color: #ff0223;
   }
@@ -282,7 +282,7 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover {
     color: #d5001c;
   }
@@ -358,7 +358,7 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover {
     color: #d5001c;
   }
@@ -429,7 +429,7 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover {
     color: #d5001c;
   }
@@ -547,7 +547,7 @@ button:focus:not(:focus-visible) {
   }
 }
 
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover {
     color: #ff0223;
   }

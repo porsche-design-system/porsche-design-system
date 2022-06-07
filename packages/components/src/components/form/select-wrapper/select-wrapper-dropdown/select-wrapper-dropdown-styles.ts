@@ -13,7 +13,7 @@ import { fontWeight, textSmall } from '@porsche-design-system/utilities-v2';
 import { OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 import { getThemedFormStateColors } from '../../../../styles/form-state-color-styles';
 import { INPUT_HEIGHT } from '../../../../styles/form-styles';
-import { hoverValidator } from '../../../../styles/hover-validator';
+import { hoverMediaQuery } from '../../../../styles/hover-media-query';
 
 const { baseColor: themeLightBaseColor, backgroundSurfaceColor: themeLightBackgroundSurfaceColor } =
   getThemedColors('light');
@@ -45,7 +45,7 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
         '&:focus': {
           outlineColor: formStateColor || contrastMediumColor,
         },
-        ...hoverValidator({
+        ...hoverMediaQuery({
           '&:hover:not(:disabled) ~ ul': {
             borderColor: contrastHighColor,
           },
@@ -102,7 +102,7 @@ export const getFilterStyles = (
             outlineColor: formStateColor || contrastMediumColor,
           },
         },
-        ...hoverValidator({
+        ...hoverMediaQuery({
           '&:hover:not(:disabled) ~ ul': {
             borderColor: contrastHighColor,
           },
@@ -175,7 +175,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         transition: getTransition('border-color'),
         transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
         outline: 'none',
-        ...hoverValidator({
+        ...hoverMediaQuery({
           '&:hover': {
             borderColor: contrastHighColor,
           },
@@ -221,7 +221,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, isOpen: bool
         cursor: 'not-allowed',
       },
       '&__sr': getTextHiddenJssStyle(true),
-      ...hoverValidator({
+      ...hoverMediaQuery({
         '&:not([aria-disabled]):not([role="status"]):hover': {
           color: hoverColor,
           background: highlightedSelectedColor,
@@ -287,7 +287,7 @@ export const getComponentCss = (
             right: 0,
             color: disabled ? disabledColor : formStateColor || contrastMediumColor,
             ...(!disabled &&
-              hoverValidator({
+              hoverMediaQuery({
                 '&(:hover)': {
                   color: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
                 },

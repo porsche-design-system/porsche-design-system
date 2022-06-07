@@ -32,7 +32,7 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #1877f2 !important;
   }
@@ -77,7 +77,7 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #1877f2;
   }
@@ -120,7 +120,7 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #1877f2 !important;
   }
@@ -165,7 +165,7 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #1877f2;
   }
@@ -208,7 +208,7 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #4285f4 !important;
   }
@@ -253,7 +253,7 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #4285f4;
   }
@@ -296,7 +296,7 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #4285f4 !important;
   }
@@ -341,7 +341,7 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #4285f4;
   }
@@ -384,7 +384,7 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #e1306c !important;
   }
@@ -429,7 +429,7 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #e1306c;
   }
@@ -472,7 +472,7 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #e1306c !important;
   }
@@ -517,7 +517,7 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #e1306c;
   }
@@ -560,7 +560,7 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #fae300 !important;
   }
@@ -605,7 +605,7 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #fae300;
   }
@@ -648,7 +648,7 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #fae300 !important;
   }
@@ -693,7 +693,7 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #fae300;
   }
@@ -736,7 +736,7 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #0077b5 !important;
   }
@@ -781,7 +781,7 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #0077b5;
   }
@@ -824,7 +824,7 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #0077b5 !important;
   }
@@ -869,7 +869,7 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #0077b5;
   }
@@ -912,7 +912,7 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #03cf5d !important;
   }
@@ -957,7 +957,7 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #03cf5d;
   }
@@ -1000,7 +1000,7 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #03cf5d !important;
   }
@@ -1045,7 +1045,7 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #03cf5d;
   }
@@ -1088,7 +1088,7 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #e60023 !important;
   }
@@ -1133,7 +1133,7 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #e60023;
   }
@@ -1176,7 +1176,7 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #e60023 !important;
   }
@@ -1221,7 +1221,7 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #e60023;
   }
@@ -1264,7 +1264,7 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #ff4500 !important;
   }
@@ -1309,7 +1309,7 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #ff4500;
   }
@@ -1352,7 +1352,7 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #ff4500 !important;
   }
@@ -1397,7 +1397,7 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #ff4500;
   }
@@ -1440,7 +1440,7 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #fe2c55 !important;
   }
@@ -1485,7 +1485,7 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #fe2c55;
   }
@@ -1528,7 +1528,7 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #fe2c55 !important;
   }
@@ -1573,7 +1573,7 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #fe2c55;
   }
@@ -1616,7 +1616,7 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #1da1f2 !important;
   }
@@ -1661,7 +1661,7 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #1da1f2;
   }
@@ -1704,7 +1704,7 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #1da1f2 !important;
   }
@@ -1749,7 +1749,7 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #1da1f2;
   }
@@ -1792,7 +1792,7 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #1aad19 !important;
   }
@@ -1837,7 +1837,7 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #1aad19;
   }
@@ -1880,7 +1880,7 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #1aad19 !important;
   }
@@ -1925,7 +1925,7 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #1aad19;
   }
@@ -1968,7 +1968,7 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #25d366 !important;
   }
@@ -2013,7 +2013,7 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #25d366;
   }
@@ -2056,7 +2056,7 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #25d366 !important;
   }
@@ -2101,7 +2101,7 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #25d366;
   }
@@ -2144,7 +2144,7 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #006567 !important;
   }
@@ -2189,7 +2189,7 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #006567;
   }
@@ -2232,7 +2232,7 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #006567 !important;
   }
@@ -2277,7 +2277,7 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #006567;
   }
@@ -2390,7 +2390,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   }
 }
 
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #ff0000 !important;
   }
@@ -2510,7 +2510,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   }
 }
 
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #ff0000;
   }
@@ -2553,7 +2553,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #ff0000 !important;
   }
@@ -2598,7 +2598,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #ff0000;
   }
@@ -2641,7 +2641,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #ff0000 !important;
   }
@@ -2686,7 +2686,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #ff0000;
   }
@@ -2752,7 +2752,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #ff0000;
   }
@@ -2795,7 +2795,7 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #e0e0e0 !important;
   }
@@ -2840,7 +2840,7 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #e0e0e0;
   }
@@ -2880,7 +2880,7 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #151718 !important;
   }
@@ -2925,7 +2925,7 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #151718;
   }

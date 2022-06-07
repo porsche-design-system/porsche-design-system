@@ -53,7 +53,7 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
     border-color: #000 !important;
   }
@@ -216,7 +216,7 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
     border-color: #a30000 !important;
   }
@@ -307,7 +307,7 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
     border-color: #a30000 !important;
   }
@@ -398,7 +398,7 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
     border-color: #000 !important;
   }
@@ -488,7 +488,7 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
     border-color: #000 !important;
   }
@@ -578,7 +578,7 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
     border-color: #014d0c !important;
   }
@@ -669,7 +669,7 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
     border-color: #014d0c !important;
   }
@@ -760,7 +760,7 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
     border-color: #a30000 !important;
   }
@@ -852,7 +852,7 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
     border-color: #a30000 !important;
   }
@@ -944,7 +944,7 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
     border-color: #000 !important;
   }
@@ -1035,7 +1035,7 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
     border-color: #000 !important;
   }
@@ -1126,7 +1126,7 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
     border-color: #014d0c !important;
   }
@@ -1218,7 +1218,7 @@ label {
   position: relative;
   display: flex;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)) {
     border-color: #014d0c !important;
   }
@@ -1280,7 +1280,7 @@ p-checkbox-wrapper a:focus {
 p-checkbox-wrapper a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   p-checkbox-wrapper a:hover {
     color: #d5001c !important;
   }
@@ -1311,7 +1311,7 @@ prefixed-p-checkbox-wrapper a:focus {
 prefixed-p-checkbox-wrapper a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   prefixed-p-checkbox-wrapper a:hover {
     color: #d5001c !important;
   }

@@ -45,7 +45,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #fff !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(select:hover) {
     border-color: #000 !important;
   }
@@ -177,7 +177,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   }
 }
 
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not([readonly])) {
     border-color: #000 !important;
   }
@@ -233,7 +233,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #fff !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(select:hover) {
     border-color: #a30000 !important;
   }
@@ -293,7 +293,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message__icon {
   margin-right: 0.25rem;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
     border-color: #a30000 !important;
   }
@@ -349,7 +349,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #000 !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(select:hover) {
     border-color: #d30303 !important;
   }
@@ -409,7 +409,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message__icon {
   margin-right: 0.25rem;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
     border-color: #d30303 !important;
   }
@@ -465,7 +465,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #fff !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(select:hover) {
     border-color: #000 !important;
   }
@@ -524,7 +524,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message__icon {
   margin-right: 0.25rem;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not([readonly])) {
     border-color: #000 !important;
   }
@@ -580,7 +580,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #000 !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(select:hover) {
     border-color: #e3e4e5 !important;
   }
@@ -639,7 +639,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message__icon {
   margin-right: 0.25rem;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not([readonly])) {
     border-color: #fff !important;
   }
@@ -695,7 +695,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #fff !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(select:hover) {
     border-color: #014d0c !important;
   }
@@ -755,7 +755,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message__icon {
   margin-right: 0.25rem;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
     border-color: #014d0c !important;
   }
@@ -811,7 +811,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #000 !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(select:hover) {
     border-color: #017d14 !important;
   }
@@ -871,7 +871,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message__icon {
   margin-right: 0.25rem;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
     border-color: #017d14 !important;
   }
@@ -927,7 +927,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #fff !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(select:hover) {
     border-color: #a30000 !important;
   }
@@ -988,7 +988,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message__icon {
   margin-right: 0.25rem;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
     border-color: #a30000 !important;
   }
@@ -1044,7 +1044,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #000 !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(select:hover) {
     border-color: #d30303 !important;
   }
@@ -1105,7 +1105,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message__icon {
   margin-right: 0.25rem;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
     border-color: #d30303 !important;
   }
@@ -1161,7 +1161,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #fff !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(select:hover) {
     border-color: #000 !important;
   }
@@ -1221,7 +1221,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message__icon {
   margin-right: 0.25rem;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not([readonly])) {
     border-color: #000 !important;
   }
@@ -1277,7 +1277,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #000 !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(select:hover) {
     border-color: #e3e4e5 !important;
   }
@@ -1337,7 +1337,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message__icon {
   margin-right: 0.25rem;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not([readonly])) {
     border-color: #fff !important;
   }
@@ -1393,7 +1393,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #fff !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(select:hover) {
     border-color: #014d0c !important;
   }
@@ -1454,7 +1454,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message__icon {
   margin-right: 0.25rem;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
     border-color: #014d0c !important;
   }
@@ -1510,7 +1510,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   -webkit-text-fill-color: #96989a !important;
   background: #000 !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(select:hover) {
     border-color: #017d14 !important;
   }
@@ -1571,7 +1571,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .message__icon {
   margin-right: 0.25rem;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
     border-color: #017d14 !important;
   }
@@ -1627,7 +1627,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   -webkit-text-fill-color: #96989a !important;
   background: #000 !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   ::slotted(select:hover) {
     border-color: #d30303 !important;
   }
@@ -1689,7 +1689,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .message__icon {
   margin-right: 0.25rem;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
     border-color: #d30303 !important;
   }
@@ -1723,7 +1723,7 @@ p-select-wrapper a:focus {
 p-select-wrapper a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   p-select-wrapper[data-theme=\\"dark\\"] a:hover {
     color: #ff0223 !important;
   }
@@ -1757,7 +1757,7 @@ prefixed-p-select-wrapper a:focus {
 prefixed-p-select-wrapper a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   prefixed-p-select-wrapper[data-theme=\\"dark\\"] a:hover {
     color: #ff0223 !important;
   }

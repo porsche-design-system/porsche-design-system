@@ -12,7 +12,7 @@ import {
   pxToRemWithUnit,
   getThemedColors,
 } from './';
-import { hoverValidator } from './hover-validator';
+import { hoverMediaQuery } from './hover-media-query';
 
 const { baseColor: darkThemeBaseColor } = getThemedColors('dark');
 const { baseColor: lightThemeBaseColor } = getThemedColors('light');
@@ -183,7 +183,7 @@ export const getLinkButtonStyles = (
           '&(a:focus)': {
             outlineColor: primaryColor,
           },
-          ...hoverValidator({
+          ...hoverMediaQuery({
             '&(a:hover:focus)': {
               outlineColor: primaryColorHover,
             },
@@ -220,7 +220,7 @@ export const getLinkButtonStyles = (
         ...getFocusJssStyle(),
       }),
       ...(!isDisabledOrLoading &&
-        hoverValidator({
+        hoverMediaQuery({
           '&:hover, &:active': {
             color: primaryColorHover,
             ...(isTertiary && {

@@ -116,7 +116,7 @@ export const TAG_NAMES_CONSTRUCTOR_MAP: { [key in TagName]: new () => ClassType 
 /* Auto Generated End */
 
 const tagNamesWithRequiredChild = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredChild);
-const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).styling === 'jss');
+export const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).styling === 'jss');
 const tagNamesWithSlottedCss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasSlottedCss);
 
 it('should have same amount of elements in TAG_NAMES_CONSTRUCTOR_MAP as in TAG_NAMES', () => {
@@ -203,32 +203,4 @@ it.each<TagName>(tagNamesWithSlottedCss)('should call attachSlottedCss() in corr
   } catch (e) {}
 
   expect(spy).toBeCalledWith(component.host, expect.any(Function)); // 2 parameters within connectedCallback
-});
-
-// maybe we should either rename the file or place this test somewhere else in a seperate file?
-it.each<TagName>(tagNamesWithJss)('should wrap "@media (hover: hover)" around all hover-styles for %s', (tagName) => {
-  const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
-  component.host = document.createElement(tagName);
-  component.host.attachShadow({ mode: 'open' });
-
-  try {
-    component.connectedCallback();
-  } catch (e) {}
-
-  try {
-    component.componentWillRender();
-  } catch (e) {}
-
-  const getInnerHtml = component.host.innerHTML;
-  const regExp = new RegExp('{([^}]*)}', 'g');
-  const MEDIA_HOVER_EXPRESSION: string = '@media (hover: hover)';
-
-  const getAllHoverStates = [...getInnerHtml.matchAll(regExp)];
-  getAllHoverStates.forEach((style) => {
-    if (style[0].includes(':hover')) {
-      expect(getInnerHtml.substring(style.index - MEDIA_HOVER_EXPRESSION.length - 1, style.index - 1)).toMatch(
-        MEDIA_HOVER_EXPRESSION
-      );
-    }
-  });
 });

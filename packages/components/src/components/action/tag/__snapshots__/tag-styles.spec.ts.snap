@@ -174,7 +174,7 @@ span {
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   span:hover {
     color: #ff0223;
   }
@@ -256,7 +256,7 @@ span {
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   span:hover {
     color: #d5001c;
   }
@@ -338,7 +338,7 @@ span {
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   span:hover {
     color: #ff0223;
   }
@@ -420,7 +420,7 @@ span {
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   span:hover {
     color: #d5001c;
   }
@@ -502,7 +502,7 @@ span {
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   span:hover {
     color: #d5001c;
   }
@@ -584,7 +584,7 @@ span {
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   span:hover {
     color: #ff0223;
   }
@@ -666,7 +666,7 @@ span {
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   span:hover {
     color: #d5001c;
   }
@@ -748,7 +748,7 @@ span {
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   span:hover {
     color: #d5001c;
   }
@@ -830,7 +830,7 @@ span {
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   span:hover {
     color: #d5001c;
   }
@@ -912,7 +912,7 @@ span {
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   span:hover {
     color: #d5001c;
   }
@@ -994,7 +994,7 @@ span {
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   span:hover {
     color: #d5001c;
   }
@@ -1076,7 +1076,7 @@ span {
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   span:hover {
     color: #d5001c;
   }
@@ -1158,7 +1158,7 @@ span {
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   span:hover {
     color: #d5001c;
   }
@@ -1240,7 +1240,7 @@ span {
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   span:hover {
     color: #d5001c;
   }

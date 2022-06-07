@@ -469,7 +469,7 @@ p-headline a:focus {
 p-headline a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   p-headline[data-theme=\\"dark\\"] a:hover {
     color: #ff0223 !important;
   }
@@ -503,7 +503,7 @@ prefixed-p-headline a:focus {
 prefixed-p-headline a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   prefixed-p-headline[data-theme=\\"dark\\"] a:hover {
     color: #ff0223 !important;
   }

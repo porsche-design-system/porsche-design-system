@@ -311,7 +311,7 @@ p-popover a:focus {
 p-popover a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   p-popover a:hover {
     color: #d5001c !important;
   }
@@ -342,7 +342,7 @@ prefixed-p-popover a:focus {
 prefixed-p-popover a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   prefixed-p-popover a:hover {
     color: #d5001c !important;
   }

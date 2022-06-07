@@ -3,7 +3,7 @@ import type { NumberOfPageLinks } from './pagination-utils';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import { addImportantToRule, getFocusJssStyle, getThemedColors, getTransition, pxToRemWithUnit } from '../../../styles';
 import { textSmall } from '@porsche-design-system/utilities-v2';
-import { hoverValidator } from '../../../styles/hover-validator';
+import { hoverMediaQuery } from '../../../styles/hover-media-query';
 
 export const getComponentCss = (
   maxNumberOfPageLinks: BreakpointCustomizable<NumberOfPageLinks>,
@@ -51,7 +51,7 @@ export const getComponentCss = (
         cursor: 'pointer',
         color: baseColor,
         ...getFocusJssStyle({ color: focusColor, offset: 1 }),
-        ...hoverValidator({
+        ...hoverMediaQuery({
           '&:hover': {
             color: hoverColor,
           },
@@ -67,7 +67,7 @@ export const getComponentCss = (
         },
         '&[aria-current]': {
           cursor: 'default',
-          ...hoverValidator({
+          ...hoverMediaQuery({
             '&:hover': {
               color: baseColor,
             },

@@ -29,7 +29,7 @@ button:focus {
 button:not(:focus-visible) {
   box-shadow: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover {
     color: #000;
     background-color: transparent;
@@ -107,7 +107,7 @@ button:focus {
 button:not(:focus-visible) {
   box-shadow: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover {
     color: #000;
     background-color: transparent;
@@ -184,7 +184,7 @@ button:focus {
 button:not(:focus-visible) {
   box-shadow: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover {
     color: #000;
     background-color: transparent;
@@ -395,7 +395,7 @@ button:focus {
 button:not(:focus-visible) {
   box-shadow: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover {
     color: #000;
     background-color: transparent;
@@ -479,7 +479,7 @@ button:focus {
 button:not(:focus-visible) {
   box-shadow: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover {
     color: #014d0c;
     background-color: #014d0c;
@@ -556,7 +556,7 @@ button:focus {
 button:not(:focus-visible) {
   box-shadow: none;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   button:hover {
     color: #000;
     background-color: transparent;

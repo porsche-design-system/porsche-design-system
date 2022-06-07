@@ -1775,7 +1775,7 @@ p-modal a:focus {
 p-modal a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   p-modal a:hover {
     color: #d5001c !important;
   }
@@ -1806,7 +1806,7 @@ prefixed-p-modal a:focus {
 prefixed-p-modal a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   prefixed-p-modal a:hover {
     color: #d5001c !important;
   }

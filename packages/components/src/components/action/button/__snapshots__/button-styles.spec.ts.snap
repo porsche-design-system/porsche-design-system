@@ -202,7 +202,7 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #c4001a;
   }
@@ -265,7 +265,7 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #980014;
   }
@@ -385,7 +385,7 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #e0e0e0;
   }
@@ -448,7 +448,7 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #151718;
   }
@@ -511,7 +511,7 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #fff;
     background-color: currentColor;
@@ -578,7 +578,7 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
   overflow: visible;
   text-indent: 0;
 }
-@media (hover: hover) {
+@media(hover:hover) {
   .root:hover, .root:active {
     color: #151718;
     background-color: currentColor;
