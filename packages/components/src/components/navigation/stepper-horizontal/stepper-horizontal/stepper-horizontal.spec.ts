@@ -93,8 +93,13 @@ describe('componentDidLoad', () => {
 
   it('should call addEventListeners()', () => {
     const component = new StepperHorizontal();
-    const spy = jest.spyOn(component, 'addEventListeners' as any).mockImplementationOnce(() => {});
+    // needs to be mocked for component lifecycle flow to work
     jest.spyOn(component, 'defineHTMLElements' as any).mockImplementationOnce(() => {});
+
+    component['scrollAreaElement'] = document.createElement('div');
+    component['prevGradientElement'] = document.createElement('div');
+
+    const spy = jest.spyOn(component, 'addEventListeners' as any).mockImplementationOnce(() => {});
 
     try {
       component.componentDidLoad();
