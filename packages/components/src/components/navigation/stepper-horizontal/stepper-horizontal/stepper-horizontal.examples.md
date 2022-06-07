@@ -4,8 +4,8 @@ The `p-stepper-horizontal` displays progress through a sequence of logical and n
 Horizontal steppers are ideal when the contents of one step depend on an earlier step.  
 Avoid using long step names.
 
-The component does not handle the display of your content. If you use the component you have to manually take care of
-the content to be rendered beneath. To help with this task, if a step is clicked the component triggers an event called
+The component does not handle the display of your content. When using the component you have to manually take care of
+the content to be rendered beneath. To help with this task, if a step is clicked, the component triggers an event called
 `stepChange` with the index of the clicked step.
 
 **Note**: Maximum of 9 steps are supported.
@@ -38,7 +38,9 @@ If the amount of steps exceeds the viewport, the component renders arrow-buttons
 
 <Playground :config="config" :markup="scrollable"></Playground>
 
-## Interactive example
+## Framework Implementation
+
+Below you can find an interactive example of an outlined registration process.
 
 <Playground :frameworkMarkup="codeExample" :config="config">
   <p-stepper-horizontal ref="stepperInteractive" :theme="theme">
@@ -48,7 +50,7 @@ If the amount of steps exceeds the viewport, the component renders arrow-buttons
   </p-stepper-horizontal>
 
   <template v-for="(content, i) in stepContent">
-    <p-text v-if="getActiveStepIndex(steps) === i" :theme="theme">{{ content }}</p-text>
+    <p-text v-if="getActiveStepIndex(steps) === i" :theme="theme" class="mock-content">{{ content }}</p-text>
   </template>
 
   <p-button-group>
@@ -69,7 +71,7 @@ If the amount of steps exceeds the viewport, the component renders arrow-buttons
     >
       Next Step
     </p-button>
-</p-button-group>
+  </p-button-group>
 </Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
@@ -86,25 +88,25 @@ export default class Code extends Vue {
   codeExample = getStepperHorizontalCodeSamples();
   
   basic = `<p-stepper-horizontal>
-    <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item state="warning">Step 2</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item state="current">Step 3</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item>Step 4</p-stepper-horizontal-item>
-  </p-stepper-horizontal>`;
+  <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item state="warning">Step 2</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item state="current">Step 3</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item>Step 4</p-stepper-horizontal-item>
+</p-stepper-horizontal>`;
   
   scrollable = `<div style="width: 600px">
-    <p-stepper-horizontal>
-      <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
-      <p-stepper-horizontal-item state="complete">Step 2</p-stepper-horizontal-item>
-      <p-stepper-horizontal-item state="complete">Step 3</p-stepper-horizontal-item>
-      <p-stepper-horizontal-item state="complete">Step 4</p-stepper-horizontal-item>
-      <p-stepper-horizontal-item state="complete">Step 5</p-stepper-horizontal-item>
-      <p-stepper-horizontal-item state="current">Step 6</p-stepper-horizontal-item>
-      <p-stepper-horizontal-item>Step 7</p-stepper-horizontal-item>
-      <p-stepper-horizontal-item>Step 8</p-stepper-horizontal-item>
-      <p-stepper-horizontal-item>Step 9</p-stepper-horizontal-item>
-    </p-stepper-horizontal>
-  </div>`;
+  <p-stepper-horizontal>
+    <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item state="complete">Step 2</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item state="complete">Step 3</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item state="complete">Step 4</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item state="complete">Step 5</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item state="current">Step 6</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item>Step 7</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item>Step 8</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item>Step 9</p-stepper-horizontal-item>
+  </p-stepper-horizontal>
+</div>`;
 
   steps = [
     {
@@ -177,3 +179,9 @@ export default class Code extends Vue {
   }
 }
 </script>
+
+<style>
+  .mock-content {
+    padding: 2rem;
+  }
+</style>
