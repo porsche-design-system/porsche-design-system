@@ -1,3 +1,4 @@
+
 # Changelog
 
 ## Porsche Design System - Components
@@ -8,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### [Unreleased]
+
+#### Added
+
+- `Segmented Control` and `Segmented Control Item` 
 
 ### [2.12.1] - 2022-05-25
 
