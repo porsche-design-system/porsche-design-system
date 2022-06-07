@@ -313,7 +313,7 @@ export const config: StorefrontConfig = {
         () =>
           import(
             // @ts-ignore
-            '@/../../components/src/components/navigation/stepper-horizontal/stepper-horizontal/stepper-horizontal.examples.md'
+            '@/../../components/src/components/navigation/stepper-horizontal/stepper-horizontal/stepper-horizontal.usage.md'
           ),
       ],
       Props: [
