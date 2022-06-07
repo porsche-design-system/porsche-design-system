@@ -21,17 +21,26 @@ describe('getItemMaxWidth()', () => {
     tempDiv.innerHTML = '';
   });
 
-  xit('should return width of widest element', () => {
-    const child1 = document.createElement('div');
+  it('should return width of widest element', () => {
+    const child1 = document.createElement('span');
     child1.innerHTML = 'Child 1';
-    const child2 = document.createElement('div');
+    const child2 = document.createElement('span');
     child2.innerHTML = 'Child 2 is longer';
-    const child3 = document.createElement('div');
-    child3.innerHTML = 'Child 3';
+    const child3 = document.createElement('span');
+    child3.innerHTML = 'Child 3 yes';
 
     host.append(child1, child2, child3);
 
-    expect(getItemMaxWidth(host)).toBe(50);
+    let calls = 0;
+    // mocked getComputedStyle() since it isn't working in jsdom
+    jest.spyOn(window, 'getComputedStyle').mockImplementation(() => {
+      const cssStyleDeclaration = new CSSStyleDeclaration();
+      // let's take the amount of characters to have some variation
+      cssStyleDeclaration.width = `${[child1, child2, child3][calls++].innerHTML.length}px`;
+      return cssStyleDeclaration;
+    });
+
+    expect(getItemMaxWidth(host)).toBe(17);
   });
 
   it('should append temporary div', () => {
