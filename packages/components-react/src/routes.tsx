@@ -1,7 +1,6 @@
 import { RouteProps } from 'react-router-dom';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
-import { SegmentedControlExamplePage } from './examples/SegmentedControlExample';
 
 export type RouteType = RouteProps & {
   name: string;
