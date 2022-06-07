@@ -103,6 +103,20 @@ describe('getItemMaxWidth()', () => {
     expect(spy).toBeCalledWith(tempLabel);
     expect(Array.from(tempDiv.children)).toContain(tempLabel);
   });
+
+  describe('styles of temporary elements', () => {
+    it('should have correct style for tempDiv', () => {
+      expect(tempDiv.style).toMatchSnapshot();
+    });
+
+    it('should have correct style for tempLabel', () => {
+      expect(tempLabel.style).toMatchSnapshot();
+    });
+
+    it('should have correct style for tempIcon', () => {
+      expect(tempIcon.style).toMatchSnapshot();
+    });
+  });
 });
 
 describe('syncItemsProps()', () => {
