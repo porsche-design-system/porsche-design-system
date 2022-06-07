@@ -6,13 +6,13 @@ describe('hoverMediaQuery()', () => {
   const originalEnv = process.env;
   const style = { '&:hover, &:focus': { color: 'd5001c', background: 'currentColor' } };
 
-  it('should return the correct style for production env ', () => {
+  it('should return the correct style for dev env', () => {
     jest.spyOn(media, 'hoverMediaQuery').mockImplementation(() => style);
     expect(media.hoverMediaQuery(style)).toEqual(style);
   });
 
-  it('should return the correct style for test env ', () => {
-    jest.resetModules();
+  it('should return the correct style for test & production env ', () => {
+    jest.clearAllMocks();
     process.env = {
       ...originalEnv,
       NODE_ENV: 'test',
