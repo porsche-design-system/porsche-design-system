@@ -110,7 +110,7 @@ describe('scrolling', () => {
   const FOCUS_PADDING = 8;
 
   it('should scroll current step into view', async () => {
-    await initStepperHorizontal({ currentStep: 3, isWrapped: true });
+    await initStepperHorizontal({ amount: 9, currentStep: 3, isWrapped: true });
     const allSteps = await getAllStepItems();
     const selectedButtonOffset = await getOffsetLeft(allSteps[3]);
     const gradientWidth = await getOffsetWidth(await getGradientNext());
