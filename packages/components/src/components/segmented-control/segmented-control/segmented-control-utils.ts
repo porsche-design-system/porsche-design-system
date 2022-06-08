@@ -93,6 +93,8 @@ export const getKeydownedSegmentedControlItem = (
   const prevOrNext =
     ((key === 'ArrowLeft' || key === 'Left') && -1) || ((key === 'ArrowRight' || key === 'Right') && 1);
   if (prevOrNext) {
+    // TODO: what if nothing is selected initially and what is focused?
+    // TODO: could be skipped if there is already 1 item selected and no other selectable
     const children = Array.from(childrenCollection) as (HTMLElement & SegmentedControlItem)[];
     const selectedIndex = children.findIndex((item) => item.value === value);
 
