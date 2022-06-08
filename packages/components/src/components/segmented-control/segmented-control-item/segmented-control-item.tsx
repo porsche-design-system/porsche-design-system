@@ -9,6 +9,7 @@ import {
 import type { IconName } from '../../../types';
 import { getComponentCss } from './segmented-control-item-styles';
 import type { SegmentedControlItemInternalHTMLProps } from './segmented-control-item-utils';
+import { getButtonAttributes } from './segmented-control-item-utils';
 
 @Component({
   tag: 'p-segmented-control-item',
@@ -67,7 +68,7 @@ export class SegmentedControlItem {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <button type="button" disabled={this.disabled}>
+      <button type="button" {...getButtonAttributes(this.host.selected, this.disabled)}>
         {this.label && <span>{this.label}</span>}
         {(this.icon || this.iconSource) && (
           <PrefixedTagNames.pIcon
