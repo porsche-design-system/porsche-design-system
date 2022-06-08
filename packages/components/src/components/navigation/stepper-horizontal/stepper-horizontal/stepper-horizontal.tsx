@@ -38,12 +38,19 @@ export class StepperHorizontal {
     // Initial validation
     this.validateComponent();
     this.defineStepperHorizontalItemElements();
-    observeChildren(this.host as HTMLPStepperHorizontalItemElement, () => {
-      // Throw when new steps are added
-      this.validateComponent();
-      throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
-      this.defineStepperHorizontalItemElements();
-    });
+    observeChildren(
+      this.host as HTMLPStepperHorizontalItemElement,
+      () => {
+        // Throw when new steps are added
+        this.validateComponent();
+        throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
+        this.defineStepperHorizontalItemElements();
+
+        const newStepIndex = this.stepperHorizontalItems.findIndex((item) => item.state === 'current');
+        this.scrollIntoView(newStepIndex);
+      },
+      ['state']
+    );
   }
 
   public componentDidLoad(): void {
@@ -89,22 +96,8 @@ export class StepperHorizontal {
 
       // Click in between steps should not do anything
       if (target.tagName !== 'DIV') {
-        const currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
         const newStepIndex = this.stepperHorizontalItems.indexOf(target);
-
-        const direction = newStepIndex > currentStepIndex ? 'next' : 'prev';
-        const scrollActivePosition = getScrollActivePosition(
-          this.stepperHorizontalItems,
-          direction,
-          newStepIndex,
-          this.scrollAreaElement.offsetWidth,
-          this.prevGradientElement.offsetWidth
-        );
-
-        (this.scrollerElement as HTMLPScrollerElement).scrollToPosition = {
-          scrollPosition: scrollActivePosition,
-          isSmooth: true,
-        };
+        this.scrollIntoView(newStepIndex);
 
         this.stepChange.emit({ activeStepIndex: newStepIndex });
       }
@@ -124,5 +117,23 @@ export class StepperHorizontal {
   private validateComponent = (): void => {
     throwIfChildrenAreNotOfKind(this.host, 'pStepperHorizontalItem');
     throwIfChildCountIsExceeded(this.host, 9);
+  };
+
+  private scrollIntoView = (newStepIndex: number): void => {
+    const currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
+
+    const direction = newStepIndex > currentStepIndex ? 'next' : 'prev';
+    const scrollActivePosition = getScrollActivePosition(
+      this.stepperHorizontalItems,
+      direction,
+      newStepIndex,
+      this.scrollAreaElement.offsetWidth,
+      this.prevGradientElement.offsetWidth
+    );
+
+    (this.scrollerElement as HTMLPScrollerElement).scrollToPosition = {
+      scrollPosition: scrollActivePosition,
+      isSmooth: true,
+    };
   };
 }
