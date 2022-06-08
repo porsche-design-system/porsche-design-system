@@ -132,6 +132,50 @@ describe('scrolling', () => {
     const scrollDistanceLeft = +button4offset + +buttonWidth + +gradientWidth - +scrollAreaWidth;
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
   });
+
+  it('should scroll to correct position when current step item changes', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `<div style="width: 300px">
+  <p-stepper-horizontal>
+    <p-stepper-horizontal-item state="current">Step 1</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item>Step 2</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item>Step 3</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item>Step 4</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item>Step 5</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item>Step 6</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item>Step 7</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item>Step 8</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item>Step 9</p-stepper-horizontal-item>
+  </p-stepper-horizontal>
+</div>${clickHandlerScript}`
+    );
+
+    const [item1, , , item4, item5] = await getAllStepItems();
+    const gradient = await getGradientNext();
+    const gradientWidth = await getOffsetWidth(gradient);
+    const scrollArea = await getScrollArea();
+    const scrollAreaWidth = await getOffsetWidth(scrollArea);
+
+    await setProperty(item1, 'state', 'complete');
+    await setProperty(item5, 'state', 'current');
+    await waitForStencilLifecycle(page);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+
+    const button5offset = await getOffsetLeft(item5);
+    const scrollDistanceRight = +button5offset - +gradientWidth + FOCUS_PADDING;
+    expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceRight);
+
+    await setProperty(item5, 'state', 'complete');
+    await setProperty(item4, 'state', 'current');
+    await waitForStencilLifecycle(page);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+
+    const button4offset = await getOffsetLeft(item4);
+    const buttonWidth = await getOffsetWidth(item4);
+    const scrollDistanceLeft = +button4offset + +buttonWidth + +gradientWidth - +scrollAreaWidth;
+    expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
+  });
 });
 
 describe('events', () => {
