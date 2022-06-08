@@ -5,6 +5,7 @@ import {
   getScrollActivePosition,
   getScrollerElements,
   observeChildren,
+  observeProperties,
   throwIfChildCountIsExceeded,
   throwIfChildrenAreNotOfKind,
   unobserveChildren,
@@ -38,19 +39,14 @@ export class StepperHorizontal {
     // Initial validation
     this.validateComponent();
     this.defineStepperHorizontalItemElements();
-    observeChildren(
-      this.host as HTMLPStepperHorizontalItemElement,
-      () => {
-        // Throw when new steps are added
-        this.validateComponent();
-        throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
-        this.defineStepperHorizontalItemElements();
-
-        const newStepIndex = this.stepperHorizontalItems.findIndex((item) => item.state === 'current');
-        this.scrollIntoView(newStepIndex);
-      },
-      ['state']
-    );
+    this.observeProperties();
+    observeChildren(this.host as HTMLPStepperHorizontalItemElement, () => {
+      // Throw when new steps are added
+      this.validateComponent();
+      throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
+      this.defineStepperHorizontalItemElements();
+      this.observeProperties();
+    });
   }
 
   public componentDidLoad(): void {
@@ -135,5 +131,14 @@ export class StepperHorizontal {
       scrollPosition: scrollActivePosition,
       isSmooth: true,
     };
+  };
+
+  private observeProperties = (): void => {
+    this.stepperHorizontalItems.forEach((el) =>
+      observeProperties(el, ['state'], () => {
+        const newStepIndex = this.stepperHorizontalItems.findIndex((item) => item.state === 'current');
+        this.scrollIntoView(newStepIndex);
+      })
+    );
   };
 }
