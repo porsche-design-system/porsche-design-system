@@ -52,7 +52,12 @@ const initStepperHorizontal = async (opts?: InitOptions) => {
     index === currentStep ? 'current' : index < currentStep ? 'complete' : undefined;
 
   const steps = Array.from(Array(amount))
-    .map((_, i) => `<p-stepper-horizontal-item${` state="${getState(i)}"`}>Step ${i + 1}</p-stepper-horizontal-item>`)
+    .map(
+      (_, i) =>
+        `<p-stepper-horizontal-item${`${getState(i) ? ` state="${getState(i)}"` : ''}`}>Step ${
+          i + 1
+        }</p-stepper-horizontal-item>`
+    )
     .join('');
 
   const content = `<p-stepper-horizontal>
