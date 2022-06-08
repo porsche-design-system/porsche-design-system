@@ -54,28 +54,34 @@ export default class Code extends Vue {
   config = { themeable: true };
   backgroundColor = 'background-default';
 
-  items = `<p-segmented-control-item value="1">Option 1</p-segmented-control-item>
+  abcItems = `<p-segmented-control-item value="a">A</p-segmented-control-item>
+  <p-segmented-control-item value="b">B</p-segmented-control-item>
+  <p-segmented-control-item value="c">C</p-segmented-control-item>
+  <p-segmented-control-item value="d">D</p-segmented-control-item>
+  <p-segmented-control-item value="e">E</p-segmented-control-item>`;
+
+  optionItems = `<p-segmented-control-item value="1">Option 1</p-segmented-control-item>
   <p-segmented-control-item value="2">Option 2</p-segmented-control-item>
   <p-segmented-control-item value="3">Option 3</p-segmented-control-item>
   <p-segmented-control-item value="4" disabled>Option 4</p-segmented-control-item>
   <p-segmented-control-item value="5">Option 5</p-segmented-control-item>`;
 
   basicMarkup = `<p-segmented-control>
-  ${this.items}
+  ${this.abcItems}
 </p-segmented-control>`;
 
   initialValueMarkup = `<p-segmented-control value="2">
-  ${this.items}
+  ${this.optionItems}
 </p-segmented-control>`;
 
   withLabelsMarkup = `<p-segmented-control>
-  ${this.items.replace(/value="\d"/g, '$& label="Label"')}
+  ${this.optionItems.replace(/value="\d"/g, '$& label="Label"')}
 </p-segmented-control>`;
 
   get withIconsMarkup() {
     let i = 0;
     const icons = ['truck', 'car', 'bell', 'garage', require('../../assets/icon-custom-kaixin.svg')]; 
-    const items = this.items.replace(/value="\d"/g, (match) => {
+    const items = this.optionItems.replace(/value="\d"/g, (match) => {
       const attr = icons[i].includes('.svg') ? 'icon-source' : 'icon';
       return `${match} ${attr}="${icons[i++]}"`;
     });
@@ -87,7 +93,7 @@ export default class Code extends Vue {
 
   get backgroundColorMarkup() {
     return `<p-segmented-control background-color="${this.backgroundColor}">
-  ${this.items}
+  ${this.optionItems}
 </p-segmented-control>`;
   };
 

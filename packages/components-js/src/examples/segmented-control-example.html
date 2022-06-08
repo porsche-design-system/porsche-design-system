@@ -1,4 +1,4 @@
-<p-segmented-control>
+<p-segmented-control value="1">
   <p-segmented-control-item value="1">Option 1</p-segmented-control-item>
   <p-segmented-control-item value="2">Option 2</p-segmented-control-item>
   <p-segmented-control-item value="3">Option 3</p-segmented-control-item>
@@ -6,13 +6,15 @@
   <p-segmented-control-item value="5">Option 5</p-segmented-control-item>
 </p-segmented-control>
 
-<p>Current value:</p>
+<p>Current value: 1</p>
 
 <script>
   const segmentedControl = document.querySelector('p-segmented-control');
   const debugElement = document.querySelector('p');
 
   segmentedControl.addEventListener('segmentedControlChange', (e) => {
-    debugElement.innerText = `Current value: ${e.detail.value}`;
+    const { value } = e.detail;
+    segmentedControl.value = value;
+    debugElement.innerText = `Current value: ${value}`;
   });
 </script>
