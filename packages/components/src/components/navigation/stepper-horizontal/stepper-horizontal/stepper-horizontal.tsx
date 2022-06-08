@@ -120,21 +120,23 @@ export class StepperHorizontal {
 
   private scrollIntoView = (): void => {
     const newStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
-    const direction = newStepIndex > this.currentStepIndex ? 'next' : 'prev';
-    const scrollActivePosition = getScrollActivePosition(
-      this.stepperHorizontalItems,
-      direction,
-      newStepIndex,
-      this.scrollAreaElement.offsetWidth,
-      this.prevGradientElement.offsetWidth
-    );
+    if (newStepIndex !== -1) {
+      const direction = newStepIndex > this.currentStepIndex ? 'next' : 'prev';
+      const scrollActivePosition = getScrollActivePosition(
+        this.stepperHorizontalItems,
+        direction,
+        newStepIndex,
+        this.scrollAreaElement.offsetWidth,
+        this.prevGradientElement.offsetWidth
+      );
 
-    this.currentStepIndex = newStepIndex;
+      this.currentStepIndex = newStepIndex;
 
-    (this.scrollerElement as HTMLPScrollerElement).scrollToPosition = {
-      scrollPosition: scrollActivePosition,
-      isSmooth: true,
-    };
+      (this.scrollerElement as HTMLPScrollerElement).scrollToPosition = {
+        scrollPosition: scrollActivePosition,
+        isSmooth: true,
+      };
+    }
   };
 
   private observeProperties = (): void => {
