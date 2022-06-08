@@ -4,6 +4,7 @@ import {
   CSS_ANIMATION_DURATION,
   expectA11yToMatchSnapshot,
   getAttribute,
+  getConsoleErrorsAmount,
   getLifecycleStatus,
   getOffsetLeft,
   getOffsetWidth,
@@ -45,7 +46,7 @@ type InitOptions = {
 };
 
 const initStepperHorizontal = async (opts?: InitOptions) => {
-  const { amount = 8, currentStep = 0, isWrapped } = opts ?? {};
+  const { amount = 3, currentStep = 0, isWrapped } = opts ?? {};
 
   const getState = (index: number) =>
     index === currentStep ? 'current' : index < currentStep ? 'complete' : undefined;
@@ -71,6 +72,39 @@ const getAllButtons = async () =>
   );
 const getScrollArea = () => selectNode(page, 'p-stepper-horizontal >>> p-scroller >>> .scroll-area');
 const getGradientNext = () => selectNode(page, 'p-stepper-horizontal >>> p-scroller >>> .action-next .gradient');
+
+describe('validation', () => {
+  beforeEach(() => {
+    initConsoleObserver(page);
+  });
+
+  it('should throw error if an item with current state is added while another exists', async () => {
+    initConsoleObserver(page);
+    await initStepperHorizontal();
+    expect(getConsoleErrorsAmount()).toBe(0);
+
+    const host = await getHost();
+    await host.evaluate((host: HTMLElement) => {
+      const newStepperHorizontalItem = document.createElement('p-stepper-horizontal-item') as any;
+      newStepperHorizontalItem.state = 'current';
+      host.appendChild(newStepperHorizontalItem);
+    });
+
+    expect(getConsoleErrorsAmount()).toBe(1);
+  });
+
+  it('should throw error if a second current state is defined', async () => {
+    await initStepperHorizontal();
+    expect(getConsoleErrorsAmount()).toBe(0);
+
+    const [, item2] = await getAllStepItems();
+
+    await setProperty(item2, 'state', 'current');
+    await waitForStencilLifecycle(page);
+
+    expect(getConsoleErrorsAmount()).toBe(1);
+  });
+});
 
 describe('scrolling', () => {
   const FOCUS_PADDING = 8;
@@ -134,22 +168,7 @@ describe('scrolling', () => {
   });
 
   it('should scroll to correct position when current step item changes', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `<div style="width: 300px">
-  <p-stepper-horizontal>
-    <p-stepper-horizontal-item state="current">Step 1</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item>Step 2</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item>Step 3</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item>Step 4</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item>Step 5</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item>Step 6</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item>Step 7</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item>Step 8</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item>Step 9</p-stepper-horizontal-item>
-  </p-stepper-horizontal>
-</div>${clickHandlerScript}`
-    );
+    await initStepperHorizontal({ amount: 9, isWrapped: true });
 
     const [item1, , , item4, item5] = await getAllStepItems();
     const gradient = await getGradientNext();
@@ -176,13 +195,16 @@ describe('scrolling', () => {
     const scrollDistanceLeft = +button4offset + +buttonWidth + +gradientWidth - +scrollAreaWidth;
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
   });
+
+  it('should scroll to correct position if another item is removed', async () => {});
+  it('should scroll to correct position if another item is removed', async () => {});
 });
 
 describe('events', () => {
   beforeEach(async () => await initAddEventListener(page));
 
   it('should trigger event on step click', async () => {
-    await initStepperHorizontal({ amount: 3, currentStep: 2 });
+    await initStepperHorizontal({ currentStep: 2 });
     const host = await getHost();
     const [button1, button2] = await getAllButtons();
 
@@ -204,7 +226,7 @@ describe('events', () => {
   });
 
   it('should not trigger event when clicked in between steps', async () => {
-    await initStepperHorizontal({ amount: 3, currentStep: 0 });
+    await initStepperHorizontal({ currentStep: 0 });
     initConsoleObserver(page);
     const [firstStep] = await getAllStepItems();
 
@@ -231,7 +253,7 @@ describe('events', () => {
   });
 
   it('should not trigger event if item is disabled', async () => {
-    await initStepperHorizontal({ amount: 3, currentStep: 2 });
+    await initStepperHorizontal({ currentStep: 2 });
     const [, step2] = await getAllStepItems();
     const [, button2] = await getAllButtons();
 
@@ -247,7 +269,7 @@ describe('events', () => {
   });
 
   it('should not trigger event if item without state', async () => {
-    await initStepperHorizontal({ amount: 3, currentStep: 1 });
+    await initStepperHorizontal({ currentStep: 1 });
     const [, , button3] = await getAllButtons();
 
     await waitForStencilLifecycle(page);
@@ -263,7 +285,7 @@ describe('events', () => {
 
 describe('lifecycle', () => {
   it('should work without unnecessary round trips on init when first step is current', async () => {
-    await initStepperHorizontal({ amount: 3, currentStep: 0 });
+    await initStepperHorizontal({ currentStep: 0 });
 
     const status = await getLifecycleStatus(page);
 
@@ -279,7 +301,7 @@ describe('lifecycle', () => {
   });
 
   it('should work without unnecessary round trips on init when third step is current', async () => {
-    await initStepperHorizontal({ amount: 3, currentStep: 2 });
+    await initStepperHorizontal({ currentStep: 2 });
 
     const status = await getLifecycleStatus(page);
 
@@ -295,7 +317,7 @@ describe('lifecycle', () => {
   });
 
   it('should work without unnecessary round trips on prop change', async () => {
-    await initStepperHorizontal({ amount: 3, currentStep: 0 });
+    await initStepperHorizontal({ currentStep: 0 });
     const [step1, step2] = await getAllStepItems();
 
     await setProperty(step1, 'state', 'complete');
