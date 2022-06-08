@@ -75,7 +75,7 @@ export const syncItemsProps = (
   );
 };
 
-export const getSegmentedControlItem = (host: HTMLElement, targets: EventTarget[]): SegmentedControlItem => {
+export const getClickedSegmentedControlItem = (host: HTMLElement, targets: EventTarget[]): SegmentedControlItem => {
   const { pSegmentedControlItem } = getPrefixedTagNames(host);
   return targets.find(
     (x: HTMLElement) => x.tagName?.toLowerCase() === pSegmentedControlItem
