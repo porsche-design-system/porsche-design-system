@@ -74,7 +74,7 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
               ...result,
               [`&(:nth-of-type(${i + 1}))`]: {
                 '& $button::before': {
-                  background: `${getSvg(svgColor)} ${9 - i * 20}px 7px no-repeat`,
+                  background: `${getSvg(svgColor)} no-repeat ${pxToRemWithUnit(9 - i * 20)} ${pxToRemWithUnit(7)}`,
                 },
               },
             }),
