@@ -96,10 +96,9 @@ export class StepperHorizontal {
 
       // Click in between steps should not do anything
       if (target.tagName !== 'DIV') {
-        this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
-        const newStepIndex = this.stepperHorizontalItems.indexOf(target);
+        const clickedStepIndex = this.stepperHorizontalItems.indexOf(target);
 
-        this.stepChange.emit({ activeStepIndex: newStepIndex });
+        this.stepChange.emit({ activeStepIndex: clickedStepIndex });
       }
     });
   };
@@ -125,10 +124,12 @@ export class StepperHorizontal {
     const scrollActivePosition = getScrollActivePosition(
       this.stepperHorizontalItems,
       direction,
-      newStepIndex,
+      this.currentStepIndex,
       this.scrollAreaElement.offsetWidth,
       this.prevGradientElement.offsetWidth
     );
+
+    this.currentStepIndex = newStepIndex;
 
     (this.scrollerElement as HTMLPScrollerElement).scrollToPosition = {
       scrollPosition: scrollActivePosition,
@@ -139,7 +140,9 @@ export class StepperHorizontal {
   private observeProperties = (): void => {
     this.stepperHorizontalItems.forEach((el) =>
       observeProperties(el, ['state'], () => {
-        this.scrollIntoView();
+        if (el.state === 'current') {
+          this.scrollIntoView();
+        }
       })
     );
   };
