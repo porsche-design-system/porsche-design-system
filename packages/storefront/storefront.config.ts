@@ -302,31 +302,15 @@ export const config: StorefrontConfig = {
       Props: [() => import('@/../../components/src/components/feedback/spinner/spinner.props.md')],
     },
     'Stepper Horizontal': {
-      Examples: [
-        () =>
-          import(
-            // @ts-ignore
-            '@/../../components/src/components/navigation/stepper-horizontal/stepper-horizontal/stepper-horizontal.examples.md'
-          ),
-      ],
-      Usage: [
-        () =>
-          import(
-            // @ts-ignore
-            '@/../../components/src/components/navigation/stepper-horizontal/stepper-horizontal/stepper-horizontal.usage.md'
-          ),
-      ],
-      Props: [
-        () =>
-          import(
-            // @ts-ignore
-            '@/../../components/src/components/navigation/stepper-horizontal/stepper-horizontal/stepper-horizontal.props.md'
-          ),
-        () =>
-          import(
-            // @ts-ignore
-            '@/../../components/src/components/navigation/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item.props.md'
-          ),
+      // @ts-ignore
+      // prettier-ignore
+      Examples: [() => import('@/../../components/src/components/navigation/stepper-horizontal/stepper-horizontal/stepper-horizontal.examples.md'),],
+      // @ts-ignore
+      // prettier-ignore
+      Usage: [() => import('@/../../components/src/components/navigation/stepper-horizontal/stepper-horizontal/stepper-horizontal.usage.md'),],
+      // @ts-ignore
+      // prettier-ignore
+      Props: [() => import('@/../../components/src/components/navigation/stepper-horizontal/stepper-horizontal/stepper-horizontal.props.md'), () => import('@/../../components/src/components/navigation/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item.props.md'),
       ],
     },
     Switch: {
