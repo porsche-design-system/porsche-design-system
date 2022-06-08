@@ -51,7 +51,7 @@ Whenever the selected item changes, a `segmentedControlChange` event gets emitte
 Each event instance contains the newly selected value at `event.detail.value`.
 
 <Playground :frameworkMarkup="eventHandlingMarkup" :config="config">
-  <p-segmented-control v-on:segmentedControlChange="eventHandlingValue = $event.detail.value">
+  <p-segmented-control :value="eventHandlingValue" v-on:segmentedControlChange="eventHandlingValue = $event.detail.value">
     <p-segmented-control-item value="1">Option 1</p-segmented-control-item>
     <p-segmented-control-item value="2">Option 2</p-segmented-control-item>
     <p-segmented-control-item value="3">Option 3</p-segmented-control-item>
@@ -118,7 +118,7 @@ export default class Code extends Vue {
   };
 
   eventHandlingMarkup = getSegmentedControlCodeSamples();
-  eventHandlingValue = '';
+  eventHandlingValue = 1;
 }
 </script>
 
