@@ -3,15 +3,15 @@ import type { SegmentedControlChangeEvent } from '@porsche-design-system/compone
 import { PSegmentedControl, PSegmentedControlItem } from '@porsche-design-system/components-react';
 
 export const SegmentedControlExamplePage = (): JSX.Element => {
-  const [currentValue, setCurrentValue] = useState<string | number>('');
+  const [currentValue, setCurrentValue] = useState(1);
 
   const onSegmentedControlChange = useCallback((e: CustomEvent<SegmentedControlChangeEvent>) => {
-    setCurrentValue(e.detail.value);
+    setCurrentValue(e.detail.value as number);
   }, []);
 
   return (
     <>
-      <PSegmentedControl onSegmentedControlChange={onSegmentedControlChange}>
+      <PSegmentedControl value={currentValue} onSegmentedControlChange={onSegmentedControlChange}>
         <PSegmentedControlItem value={1}>Option 1</PSegmentedControlItem>
         <PSegmentedControlItem value={2}>Option 2</PSegmentedControlItem>
         <PSegmentedControlItem value={3}>Option 3</PSegmentedControlItem>
