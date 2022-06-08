@@ -89,6 +89,7 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
         height: pxToRemWithUnit(24),
         color: isDisabled ? disabledColor : baseColor,
         transition: getTransition('color'),
+        margin: 0,
         padding: `0 0 0 ${pxToRemWithUnit(28)}`,
         background: 0,
         border: 0,
