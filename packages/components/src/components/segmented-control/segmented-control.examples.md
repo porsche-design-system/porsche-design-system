@@ -1,26 +1,41 @@
 # Segmented Control
 
-The `p-segmented-control` component is...
+The `p-segmented-control` component is similar to the native `select` element while showing all available options right away.  
+
+It even behaves like a `select` where it can be controlled by setting the current value.
+However, it is not required and you could purely rely on the change event.
+
+Visually the `p-segmented-control` displays all options in equal size based on its largest option.
 
 <TableOfContents></TableOfContents>
 
 ## Basic
 
+Each option needs to be rendered by using a `p-segmented-control-item` child component where the `value` property is mandatory in order to emit a useful change event.
+
 <Playground :markup="basicMarkup" :config="config"></Playground>
 
 ## Initial Value
+
+An initial `value` can optionally be set on the parent element, and if desired, also be set upon change event emission as described in the <a :href="eventHandlingUrl">Event Handling</a> section.
 
 <Playground :markup="initialValueMarkup" :config="config"></Playground>
 
 ## With Labels
 
+Additional meta information can be displayed by setting a `label` on each child.
+
 <Playground :markup="withLabelsMarkup" :config="config"></Playground>
 
 ## With Icons
 
+An icon can be added via the `icon` or `iconSource` property.
+
 <Playground :markup="withIconsMarkup" :config="config"></Playground>
 
 ## Background Color
+
+If used on top of a surface background color, contrast of the buttons can be tweaked by changing the `backgroundColor` property.
 
 <Playground :markup="backgroundColorMarkup" :config="{ ...config, colorScheme: backgroundColor.replace('background-', '') }">
   <select v-model="backgroundColor" aria-label="Select background color">
@@ -31,6 +46,9 @@ The `p-segmented-control` component is...
 </Playground>
 
 ## Event Handling
+
+Whenever the selected item changes, a `segmentedControlChange` event gets emitted by the `p-segmented-control`.  
+Each event instance contains the newly selected value at `event.detail.value`.
 
 <Playground :frameworkMarkup="eventHandlingMarkup" :config="config">
   <p-segmented-control v-on:segmentedControlChange="eventHandlingValue = $event.detail.value">
@@ -48,11 +66,13 @@ The `p-segmented-control` component is...
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getSegmentedControlCodeSamples } from '@porsche-design-system/shared';
+import { getAnchorLink } from '@/utils';
   
 @Component
 export default class Code extends Vue {
   config = { themeable: true };
-  backgroundColor = 'background-default';
+  backgroundColor = 'background-surface';
+  eventHandlingUrl = getAnchorLink('event-handling');
 
   abcItems = `<p-segmented-control-item value="a">A</p-segmented-control-item>
   <p-segmented-control-item value="b">B</p-segmented-control-item>
