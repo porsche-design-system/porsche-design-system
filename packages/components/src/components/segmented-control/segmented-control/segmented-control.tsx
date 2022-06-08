@@ -3,7 +3,12 @@ import { attachComponentCss, observeChildren, unobserveChildren } from '../../..
 import { getComponentCss } from './segmented-control-styles';
 import type { Theme } from '../../../types';
 import type { SegmentedControlBackgroundColor, SegmentedControlChangeEvent } from './segmented-control-utils';
-import { getItemMaxWidth, getClickedSegmentedControlItem, syncItemsProps } from './segmented-control-utils';
+import {
+  getItemMaxWidth,
+  getClickedSegmentedControlItem,
+  syncItemsProps,
+  getKeydownedSegmentedControlItem,
+} from './segmented-control-utils';
 import { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 
 @Component({
@@ -37,13 +42,13 @@ export class SegmentedControl {
   }
 
   public componentDidLoad(): void {
-    this.host.addEventListener('click', (e: MouseEvent & { target: HTMLElement & SegmentedControlItem }) => {
-      const item = getClickedSegmentedControlItem(this.host, e.composedPath());
-      if (item) {
-        this.value = item.value; // causes rerender
-        this.segmentedControlChange.emit({ value: this.value });
-      }
-    });
+    this.host.addEventListener('click', (e) =>
+      this.updateValue(getClickedSegmentedControlItem(this.host, e.composedPath()))
+    );
+
+    this.host.addEventListener('keydown', (e) =>
+      this.updateValue(getKeydownedSegmentedControlItem(e, this.value, this.host.children))
+    );
   }
 
   public disconnectedCallback(): void {
@@ -53,4 +58,12 @@ export class SegmentedControl {
   public render(): JSX.Element {
     return <slot />;
   }
+
+  private updateValue = (item: HTMLElement & SegmentedControlItem): void => {
+    if (item) {
+      this.value = item.value; // causes rerender
+      this.segmentedControlChange.emit({ value: this.value });
+      item.focus();
+    }
+  };
 }
