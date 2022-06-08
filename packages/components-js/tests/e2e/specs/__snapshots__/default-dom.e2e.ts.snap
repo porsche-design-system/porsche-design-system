@@ -579,7 +579,7 @@ exports[`should have no basic DOM regression for p-segmented-control 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-segmented-control-item 1`] = `
-"<button type=\\"button\\" tabindex=\\"0\\" aria-selected=\\"\\">
+"<button type=\\"button\\" tabindex=\\"0\\" aria-selected=\\"true\\">
   <slot>
   </slot>
 </button>"
