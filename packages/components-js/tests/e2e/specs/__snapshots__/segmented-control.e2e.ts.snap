@@ -2,7 +2,7 @@
 
 exports[`accessibility should expose correct initial accessibility tree properties 1`] = `
 Object {
-  "name": "Some label",
+  "name": "Option 1",
   "role": "button",
 }
 `;

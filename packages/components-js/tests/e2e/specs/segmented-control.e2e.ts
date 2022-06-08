@@ -1,5 +1,6 @@
 import {
   expectA11yToMatchSnapshot,
+  getAttribute,
   getLifecycleStatus,
   initAddEventListener,
   selectNode,
@@ -21,14 +22,17 @@ const getHost = () => selectNode(page, 'p-segmented-control');
 const getItemHost = () => selectNode(page, 'p-segmented-control-item');
 const getItemButton = () => selectNode(page, 'p-segmented-control-item >>> button');
 
-const initSegmentedControl = (opts?: {}): Promise<void> => {
+const initSegmentedControl = (opts?: { amount: number }): Promise<void> => {
+  const { amount = 1 } = opts || {};
+  const items = Array.from(Array(amount))
+    .map((_, i) => `<p-segmented-control-item value="${i + 1}">Option ${i + 1}</p-segmented-control-item>`)
+    .join('\n');
+
   return setContentWithDesignSystem(
     page,
     `
-    <p-segmented-control>
-      <p-segmented-control-item>
-        Some label
-      </p-segmented-control-item>
+    <p-segmented-control value="1">
+      ${items}
     </p-segmented-control>`
   );
 };
@@ -38,6 +42,8 @@ xit('should correctly recalculate width on item content change', async () => {})
 xit('should correctly recalculate width on item prop change', async () => {});
 
 xdescribe('events', () => {});
+
+xdescribe('keyboard', () => {});
 
 describe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
@@ -74,5 +80,6 @@ describe('accessibility', () => {
     const itemButton = await getItemButton();
 
     await expectA11yToMatchSnapshot(page, itemButton);
+    expect(await getAttribute(itemButton, 'aria-selected')).toBe('true');
   });
 });
