@@ -124,7 +124,7 @@ export class StepperHorizontal {
     const scrollActivePosition = getScrollActivePosition(
       this.stepperHorizontalItems,
       direction,
-      this.currentStepIndex,
+      newStepIndex,
       this.scrollAreaElement.offsetWidth,
       this.prevGradientElement.offsetWidth
     );
@@ -140,9 +140,8 @@ export class StepperHorizontal {
   private observeProperties = (): void => {
     this.stepperHorizontalItems.forEach((el) =>
       observeProperties(el, ['state'], () => {
-        if (el.state === 'current') {
-          this.scrollIntoView();
-        }
+        throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
+        this.scrollIntoView();
       })
     );
   };
