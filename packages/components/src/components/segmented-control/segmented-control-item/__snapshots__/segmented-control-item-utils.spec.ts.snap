@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getButtonAttributes() should return correct css for isSelected: false and isDisabled: false 1`] = `
+Object {
+  "aria-selected": false,
+  "disabled": false,
+  "tabIndex": -1,
+}
+`;
+
+exports[`getButtonAttributes() should return correct css for isSelected: false and isDisabled: true 1`] = `
+Object {
+  "aria-selected": false,
+  "disabled": true,
+  "tabIndex": -1,
+}
+`;
+
+exports[`getButtonAttributes() should return correct css for isSelected: true and isDisabled: false 1`] = `
+Object {
+  "aria-selected": true,
+  "disabled": false,
+  "tabIndex": 0,
+}
+`;
+
+exports[`getButtonAttributes() should return correct css for isSelected: true and isDisabled: true 1`] = `
+Object {
+  "aria-selected": true,
+  "disabled": true,
+  "tabIndex": 0,
+}
+`;
