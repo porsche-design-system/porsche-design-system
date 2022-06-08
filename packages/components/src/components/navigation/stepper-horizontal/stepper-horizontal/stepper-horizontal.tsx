@@ -49,6 +49,7 @@ export class StepperHorizontal {
       throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
       this.defineStepperHorizontalItemElements();
       this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
+      this.scrollIntoView();
       this.observeProperties();
     });
   }

@@ -201,8 +201,29 @@ describe('scrolling', () => {
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
   });
 
-  it('should scroll to correct position if another item is removed', async () => {});
-  it('should scroll to correct position if another item is removed', async () => {});
+  it('should scroll to correct position if one item is removed', async () => {
+    await initStepperHorizontal({ amount: 9, currentStep: 4, isWrapped: true });
+    const host = await getHost();
+    const [, , , , item5] = await getAllStepItems();
+
+    await host.evaluate((host) => {
+      host.removeChild(host.firstChild);
+    });
+    await waitForStencilLifecycle(page);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+
+    const gradient = await getGradientNext();
+    const gradientWidth = await getOffsetWidth(gradient);
+    const scrollArea = await getScrollArea();
+    const scrollAreaWidth = await getOffsetWidth(scrollArea);
+
+    const button4offset = await getOffsetLeft(item5);
+    const buttonWidth = await getOffsetWidth(item5);
+    const scrollDistanceLeft = +button4offset + +buttonWidth + +gradientWidth - +scrollAreaWidth;
+    expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
+  });
+
+  it('should scroll to correct position if newly added item is set to current', async () => {});
 });
 
 describe('events', () => {
