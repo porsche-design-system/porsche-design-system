@@ -33,6 +33,7 @@ export class StepperHorizontal {
   private scrollAreaElement: HTMLElement;
   private prevGradientElement: HTMLElement;
   private scrollerElement: HTMLElement;
+  private currentStepIndex: number;
 
   public connectedCallback(): void {
     attachComponentCss(this.host, getComponentCss);
@@ -40,11 +41,14 @@ export class StepperHorizontal {
     this.validateComponent();
     this.defineStepperHorizontalItemElements();
     this.observeProperties();
+    this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
+
     observeChildren(this.host as HTMLPStepperHorizontalItemElement, () => {
       // Throw when new steps are added
       this.validateComponent();
       throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
       this.defineStepperHorizontalItemElements();
+      this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
       this.observeProperties();
     });
   }
@@ -92,8 +96,8 @@ export class StepperHorizontal {
 
       // Click in between steps should not do anything
       if (target.tagName !== 'DIV') {
+        this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
         const newStepIndex = this.stepperHorizontalItems.indexOf(target);
-        this.scrollIntoView(newStepIndex);
 
         this.stepChange.emit({ activeStepIndex: newStepIndex });
       }
@@ -115,10 +119,9 @@ export class StepperHorizontal {
     throwIfChildCountIsExceeded(this.host, 9);
   };
 
-  private scrollIntoView = (newStepIndex: number): void => {
-    const currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
-
-    const direction = newStepIndex > currentStepIndex ? 'next' : 'prev';
+  private scrollIntoView = (): void => {
+    const newStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
+    const direction = newStepIndex > this.currentStepIndex ? 'next' : 'prev';
     const scrollActivePosition = getScrollActivePosition(
       this.stepperHorizontalItems,
       direction,
@@ -136,8 +139,7 @@ export class StepperHorizontal {
   private observeProperties = (): void => {
     this.stepperHorizontalItems.forEach((el) =>
       observeProperties(el, ['state'], () => {
-        const newStepIndex = this.stepperHorizontalItems.findIndex((item) => item.state === 'current');
-        this.scrollIntoView(newStepIndex);
+        this.scrollIntoView();
       })
     );
   };
