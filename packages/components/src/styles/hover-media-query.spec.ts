@@ -3,7 +3,7 @@ import * as jssUtils from '../utils/jss';
 import type { TagName } from '@porsche-design-system/shared';
 import * as getDirectChildHTMLElementUtils from '../utils/dom/getDirectChildHTMLElement';
 import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
-import { TAG_NAMES_CONSTRUCTOR_MAP } from '../components/tag-names-constructor-map';
+import { addParentAndSetRequiredProps, TAG_NAMES_CONSTRUCTOR_MAP } from '../test-utils';
 
 const originalEnv = process.env;
 const style = {
@@ -49,68 +49,72 @@ it('should return wrapped style in test environment', () => {
 
 const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).styling === 'jss');
 
-it.each<TagName>(tagNamesWithJss)('should wrap "@media(hover:hover)" around all hover-styles for %s', (tagName) => {
-  const spy = jest
-    .spyOn(jssUtils, 'attachComponentCss')
-    .mockImplementation((_, getComponentCss, ...args) => getComponentCss(...args));
+it.each<TagName>(tagNamesWithJss)(
+  'should wrap ":hover" pseudo selector in "@media (hover: hover)" query for %s',
+  (tagName) => {
+    // mock to get the result from getComponentCss() directly
+    const spy = jest
+      .spyOn(jssUtils, 'attachComponentCss')
+      .mockImplementation((_, getComponentCss, ...args) => getComponentCss(...args));
 
-  // jsdom is missing pseudo-class selector ':scope>*' which leads to DOMException
-  jest
-    .spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement')
-    .mockReturnValue(document.createElement('div'));
+    // jsdom is missing pseudo-class selector ':scope>*' which leads to DOMException
+    jest
+      .spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement')
+      .mockReturnValue(document.createElement('div'));
 
-  const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
-  component.host = document.createElement(tagName);
-  component.host.attachShadow({ mode: 'open' });
+    const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
+    component.host = document.createElement(tagName);
+    component.host.attachShadow({ mode: 'open' });
 
-  if (component.connectedCallback) {
-    try {
-      component.connectedCallback();
-    } catch (e) {}
-
-    if (spy.mock.calls.length) {
-      expect(spy).toBeCalledWith(component.host, expect.any(Function)); // 2 parameters within connectedCallback
-    }
-  }
-
-  if (component.componentWillRender) {
-    spy.mockClear(); // might contain something from previous call already
-
-    // some components like grid-item and text-list-item require a parent to apply styles
-    const parent = document.createElement('div');
-    parent.append(component.host);
-
-    if (['p-checkbox-wrapper', 'p-radio-button-wrapper', 'p-text-field-wrapper'].includes(tagName)) {
-      component['input'] = document.createElement('input');
-    } else if (tagName === 'p-textarea-wrapper') {
-      component['textarea'] = document.createElement('textarea');
-    } else if (tagName === 'p-select-wrapper') {
-      component['select'] = document.createElement('select');
-    } else if (tagName === 'p-modal') {
-      component['aria'] = { 'aria-label': 'Some Heading' };
+    // css will be produced by one of the 2 lifecycles
+    if (component.connectedCallback) {
+      try {
+        component.connectedCallback();
+      } catch {}
     }
 
-    try {
+    if (component.componentWillRender) {
+      // some components like grid-item and text-list-item require a parent to apply styles
+      // some components like require a parent and certain props in order to work
+      addParentAndSetRequiredProps(tagName, component);
+
       component.componentWillRender();
-    } catch (e) {}
+    }
 
-    if (spy.mock.calls.length) {
-      expect(spy.mock.calls[0].length).toBeGreaterThan(2); // more than 2 parameters within componentWillRender
+    const [result] = spy.mock.results;
+    const { type, value: cssString } = (result || {}) as jest.MockResultReturn<string>;
+
+    expect(spy).toBeCalledTimes(1);
+
+    if (type === 'return') {
+      // useful for debugging
+      // const mediaQueriesAndSelectors = Array.from(cssString.matchAll(/(.+) {/g)).map(([, selector]) => selector);
+      // console.log(mediaQueriesAndSelectors);
+
+      const jsonCssString = cssString
+        .replace(/"/g, "'") // replace double quotes with single quotes
+        .replace(/(.+) {/g, '"$1": {') // wrap selectors in double quotes
+        .replace(/ ([\w-:]+): /g, '"$1": ') // wrap css properties in double quotes, initial space is to skip media query values
+        .replace(/: (.+);/g, ': "$1",') // wrap css values in double quotes and convert semi colon to colon
+        .replace(/,(\s+})/g, '$1') // remove comma of last value
+        .replace(/}\n([^}])/g, '},\n$1'); // add comma after closing bracket if not nested
+
+      const cssObject = JSON.parse(`{${jsonCssString}}`);
+
+      Object.entries(cssObject).forEach(([key, value]) => {
+        // potential media query
+        if (typeof value === 'object') {
+          Object.entries(value).forEach(([childKey]) => {
+            // nested selectors inside media query
+            if (childKey.match(/:hover[^)]/)) {
+              expect(key).toBe('@media(hover:hover)');
+            }
+          });
+        }
+
+        // top level selectors
+        expect(key).not.toMatch(/:hover[^)]/);
+      });
     }
   }
-
-  const result = spy.mock.results[0];
-  if (result && result.type === 'return') {
-    const regExpStyles = new RegExp('{([^}]*)}', 'g'); // matches everything between curly brackets
-    const regExpKeys = new RegExp(`(^.*|}([^{]*)){`, 'g'); // matches everything outside curly brackets
-    // @ts-ignore
-    const allCssStyles = [...result.value.matchAll(regExpStyles)];
-    // @ts-ignore
-    const allCssStyleKeys = [...result.value.matchAll(regExpKeys)];
-    allCssStyles.forEach((match, i) => {
-      if (match[0].includes(':hover')) {
-        expect(allCssStyleKeys[i][0]).toMatch('@media(hover:hover)');
-      }
-    });
-  }
-});
+);

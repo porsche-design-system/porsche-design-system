@@ -4,7 +4,7 @@ import * as getHTMLElementAndThrowIfUndefinedUtils from '../utils/dom/getHTMLEle
 import * as jssUtils from '../utils/jss';
 import * as slottedStylesUtils from '../utils/slotted-styles';
 import * as getDirectChildHTMLElementUtils from '../utils/dom/getDirectChildHTMLElement';
-import { TAG_NAMES_CONSTRUCTOR_MAP } from './tag-names-constructor-map';
+import { addParentAndSetRequiredProps, TAG_NAMES_CONSTRUCTOR_MAP } from '../test-utils
 
 const tagNamesWithRequiredChild = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredChild);
 const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).styling === 'jss');
@@ -55,19 +55,8 @@ it.each<TagName>(tagNamesWithJss)('should call attachComponentCss() in correct l
   if (component.componentWillRender) {
     spy.mockClear(); // might contain something from previous call already
 
-    // some components like grid-item and text-list-item require a parent to apply styles
-    const parent = document.createElement('div');
-    parent.append(component.host);
-
-    if (['p-checkbox-wrapper', 'p-radio-button-wrapper', 'p-text-field-wrapper'].includes(tagName)) {
-      component['input'] = document.createElement('input');
-    } else if (tagName === 'p-textarea-wrapper') {
-      component['textarea'] = document.createElement('textarea');
-    } else if (tagName === 'p-select-wrapper') {
-      component['select'] = document.createElement('select');
-    } else if (tagName === 'p-modal') {
-      component['aria'] = { 'aria-label': 'Some Heading' };
-    }
+    // some components like require a parent and certain props in order to work
+    addParentAndSetRequiredProps(tagName, component);
 
     try {
       component.componentWillRender();
