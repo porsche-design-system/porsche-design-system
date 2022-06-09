@@ -76,8 +76,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 61735,
-    "gzipSize": 21207
+    "size": 61690,
+    "gzipSize": 21193
   },
   {
     "chunkShortName": "marque",
@@ -121,8 +121,8 @@
   },
   {
     "chunkShortName": "stepper-horizontal",
-    "size": 12466,
-    "gzipSize": 4670
+    "size": 12203,
+    "gzipSize": 4588
   },
   {
     "chunkShortName": "switch",
