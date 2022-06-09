@@ -41,16 +41,16 @@ describe('connectedCallback', () => {
     expect(spy).toBeCalledWith(component.host, 9);
   });
 
-  it('should call defineStepperHorizontalItemElements()', () => {
+  it('should call throwIfMultipleCurrentStates() with correct parameters', () => {
+    const spy = jest.spyOn(stepperHorizontalUtils, 'throwIfMultipleCurrentStates');
+
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
     component.host.attachShadow({ mode: 'open' });
 
-    const spy = jest.spyOn(component, 'defineStepperHorizontalItemElements' as any);
-
     component.connectedCallback();
 
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toBeCalledWith(component.host, expect.anything());
   });
 
   it('should call observeChildren() with correct parameters', () => {
@@ -67,9 +67,9 @@ describe('connectedCallback', () => {
 });
 
 describe('componentDidLoad', () => {
-  it('should call defineHTMLElements()', () => {
+  it('should call defineScrollerElements()', () => {
     const component = new StepperHorizontal();
-    const spy = jest.spyOn(component, 'defineHTMLElements' as any).mockImplementationOnce(() => {});
+    const spy = jest.spyOn(component, 'defineScrollerElements' as any).mockImplementationOnce(() => {});
 
     try {
       component.componentDidLoad();
@@ -78,23 +78,20 @@ describe('componentDidLoad', () => {
     expect(spy).toBeCalledTimes(1);
   });
 
-  it('should call throwIfMultipleCurrentStates() with correct parameters', () => {
-    const spy = jest.spyOn(stepperHorizontalUtils, 'throwIfMultipleCurrentStates');
-
+  it('should call getIndexOfStepWithStateCurrent()', () => {
     const component = new StepperHorizontal();
-    jest.spyOn(component, 'defineHTMLElements' as any).mockImplementationOnce(() => {});
+    jest.spyOn(component, 'defineScrollerElements' as any).mockImplementationOnce(() => {});
+    const spy = jest.spyOn(stepperHorizontalUtils, 'getIndexOfStepWithStateCurrent');
 
-    try {
-      component.componentDidLoad();
-    } catch (e) {}
+    component.componentDidLoad();
 
-    expect(spy).toBeCalledWith(component.host, expect.anything());
+    expect(spy).toBeCalledTimes(1);
   });
 
   it('should call addEventListeners()', () => {
     const component = new StepperHorizontal();
     // needs to be mocked for component lifecycle flow to work
-    jest.spyOn(component, 'defineHTMLElements' as any).mockImplementationOnce(() => {});
+    jest.spyOn(component, 'defineScrollerElements' as any).mockImplementationOnce(() => {});
 
     component['scrollAreaElement'] = document.createElement('div');
     component['prevGradientElement'] = document.createElement('div');
