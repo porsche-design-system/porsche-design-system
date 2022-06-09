@@ -1,10 +1,14 @@
 # Button Pure
 
 The `p-button-pure` component is essential to perform events for **interactions**.  
-A Button can be used with or without a label, but it's recommended to keep the **label visible** for better **usability** whenever possible.  
-When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers.  
-When overriding the `position` style of the `p-button-pure` component, make sure to not use `position: static`, which would make the click area expand to the entire viewport.     
-Whenever you want to provide navigational elements, stick to the [Link](components/link) or [Link Pure](components/link-pure) component instead.  
+A Button can be used with or without a label, but it's recommended to keep the **label visible** for better
+**usability** whenever possible.  
+When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen
+readers.  
+When overriding the `position` style of the `p-button-pure` component, make sure to not use `position: static`, which
+would make the click area expand to the entire viewport.  
+Whenever you want to provide navigational elements, stick to the [Link](components/link) or
+[Link Pure](components/link-pure) component instead.
 
 <TableOfContents></TableOfContents>
 
@@ -24,25 +28,30 @@ Whenever you want to provide navigational elements, stick to the [Link](componen
 
 ## ARIA attributes and states
 
-Through the `aria` property you have the possibility to provide additional **ARIA** attributes and states to the component.
-<Playground :markup="accessibility" :config="config"></Playground>
+Through the `aria` property you have the possibility to provide additional **ARIA** attributes and states to the
+component. <Playground :markup="accessibility" :config="config"></Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
-* Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If short labels are used like **"OK"** make sure to provide additional textual contents through **ARIA** with the `aria` property to expose a more descriptive experience to screen reader users.
-* If implementing the Button with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a **descriptive text** to support **screen reader** users is **mandatory**.
-* In general, you should **prevent** using the `disabled="true"` state. Disabled elements are not reachable (focusable) anymore and can be missed by screen reader users. They can be confusing for sighted users as well by not showing why these elements are disabled.
+
+- Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If short
+  labels are used like **"OK"** make sure to provide additional textual contents through **ARIA** with the `aria`
+  property to expose a more descriptive experience to screen reader users.
+- If implementing the Button with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a
+  **descriptive text** to support **screen reader** users is **mandatory**.
+- When property `disabled="true"` is set it will internally be used as `aria-disabled="true"` on the shadowed native
+  button. Then the element is still reachable (focusable) and won't be missed by screen reader users.
 
 ---
 
 ### Without Icon
 
-By choosing `icon="none"` the component is shown without icon. 
+By choosing `icon="none"` the component is shown without icon.
 
-The variant without icon is only recommended in the context of menus, where it is clearly evident that the component is clickable. If it is required in flowing text, 
-a native button within the `p-text` component can be used.  
+The variant without icon is only recommended in the context of menus, where it is clearly evident that the component is
+clickable. If it is required in flowing text, a native button within the `p-text` component can be used.  
 See [text documentation](components/typography/text#text-with-a-link-button-and-bold-text-as-children).
 
-**Caution:** You can't combine  this with the prop `loading="true"` nor the prop `hideLabel`
+**Caution:** You can't combine this with the prop `loading="true"` nor the prop `hideLabel`
 
 <Playground :markup="withoutIcon" :config="configInline"></Playground>
 
@@ -50,11 +59,13 @@ See [text documentation](components/typography/text#text-with-a-link-button-and-
 
 ## Size
 
-There are predefined text sizes for the component which should cover most use cases. 
-If a specific text size is needed, the size can be set to `inherit` to specify the text size from outside.
+There are predefined text sizes for the component which should cover most use cases. If a specific text size is needed,
+the size can be set to `inherit` to specify the text size from outside.
 
-**Hint:** If you are in `hideLabel`-mode, be aware that the box-size of the rendered element will not be the same as the given (font-size) pixel value, 
-e.g. setting a font-size of **"44px"** will not generate a box with a **"44px"** width/height but instead a box size generated out of Porsche type-scaling formula which will end in **"52px"** width/height.
+**Hint:** If you are in `hideLabel`-mode, be aware that the box-size of the rendered element will not be the same as the
+given (font-size) pixel value, e.g. setting a font-size of **"44px"** will not generate a box with a **"44px"**
+width/height but instead a box size generated out of Porsche type-scaling formula which will end in **"52px"**
+width/height.
 
 <Playground :markup="markupSize" :config="config">
   <select v-model="size" aria-label="Select size">
@@ -100,7 +111,10 @@ Providing visually differences if a button needs to be accentuated, e.g. in hier
 ---
 
 ## Button Pure with specific icon
-If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
+
+If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all
+icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to
+link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
 
 <Playground :markup="icon" :config="configInline"></Playground>
 
@@ -123,8 +137,8 @@ The `label` can be aligned to the `right` (default) or to the `left` of the icon
 
 ## Stretch
 
-The `stretch` property extends the area between icon and label to the maximum available space.
-It is recommended to use stretch only on `left` alignment and small viewports, e.g. mobile views.
+The `stretch` property extends the area between icon and label to the maximum available space. It is recommended to use
+stretch only on `left` alignment and small viewports, e.g. mobile views.
 
 <Playground :markup="markupStretch" :config="config">
   <select v-model="stretch" aria-label="Select stretching and alignment">
@@ -168,8 +182,9 @@ By setting the `tabindex` attribute to `-1` you can remove the **Button Pure** f
 
 ## Button with Subline
 
-If you need additional information on your button, we provide a `<p slot="subline" />`.
-The size of the *subline* changes according to the size of the *label*. We do not support `size="inherit"`, `stretch` and `alignLabel` in this pattern so far.
+If you need additional information on your button, we provide a `<p slot="subline" />`. The size of the _subline_
+changes according to the size of the _label_. We do not support `size="inherit"`, `stretch` and `alignLabel` in this
+pattern so far.
 
 <Playground :markup="subline" :config="configInline">
   <select v-model="sublineSize" aria-label="Select size">

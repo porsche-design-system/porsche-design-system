@@ -41,9 +41,8 @@ component. <Playground :markup="accessibility" :config="config"></Playground>
   property to expose a more descriptive experience to screen reader users.
 - If implementing the Button with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a
   **descriptive text** to support **screen reader** users is **mandatory**.
-- In general, you should **prevent** using the `disabled="true"` state. Disabled elements are not reachable (focusable)
-  anymore and can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out
-  why these elements are disabled.
+- When property `disabled="true"` is set it will internally be used as `aria-disabled="true"` on the shadowed native
+  button. Then the element is still reachable (focusable) and won't be missed by screen reader users.
 
 ---
 
