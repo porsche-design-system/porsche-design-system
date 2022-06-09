@@ -259,6 +259,7 @@ export const hasFocus = (page: Page, element: ElementHandle): Promise<boolean> =
 
 const consoleMessages: ConsoleMessage[] = [];
 
+// Use to track console errors, excluding custom thrown errors
 export const initConsoleObserver = (page: Page): void => {
   consoleMessages.length = 0; // reset
 
@@ -273,6 +274,17 @@ export const initConsoleObserver = (page: Page): void => {
   });
 };
 export const getConsoleErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;
+
+const thrownErrors: string[] = [];
+
+// Use to track custom thrown errors
+export const initPageErrorObserver = (page: Page): void => {
+  page.on('pageerror', function (error) {
+    thrownErrors.push(error.toString());
+  });
+};
+
+export const getPageThrownErrorsAmount = () => thrownErrors.length;
 
 const BASE_URL = 'http://localhost:8575';
 
