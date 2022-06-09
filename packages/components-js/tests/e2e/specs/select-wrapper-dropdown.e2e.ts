@@ -7,9 +7,11 @@ import {
   getElementPositions,
   getElementStyle,
   getLifecycleStatus,
+  getPageThrownErrorsAmount,
   getProperty,
   getShadowRoot,
   initAddEventListener,
+  initPageErrorObserver,
   reattachElement,
   selectNode,
   setContentWithDesignSystem,
@@ -391,11 +393,7 @@ describe('select-wrapper dropdown', () => {
   });
 
   it('should not throw error with long option list and the same item is selected and disabled', async () => {
-    const consoleErrors: string[] = [];
-
-    page.on('pageerror', function (error) {
-      consoleErrors.push(error.toString());
-    });
+    await initPageErrorObserver(page);
 
     await setContentWithDesignSystem(
       page,
@@ -426,7 +424,7 @@ describe('select-wrapper dropdown', () => {
     await select.click();
     await waitForStencilLifecycle(page);
 
-    expect(consoleErrors.length, 'get errorsAmount after click').toBe(0);
+    expect(getPageThrownErrorsAmount(), 'get errorsAmount after click').toBe(0);
 
     await page.evaluate(() => {
       const script = document.createElement('script');
@@ -434,7 +432,7 @@ describe('select-wrapper dropdown', () => {
       document.body.appendChild(script);
     });
 
-    expect(consoleErrors.length, 'get errorsAmount after custom error').toBe(1);
+    expect(getPageThrownErrorsAmount(), 'get errorsAmount after custom error').toBe(1);
   });
 
   it('should not set checkmark icon if option is both selected and disabled', async () => {

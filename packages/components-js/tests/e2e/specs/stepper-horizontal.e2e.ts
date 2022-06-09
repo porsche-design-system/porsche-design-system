@@ -4,13 +4,14 @@ import {
   CSS_ANIMATION_DURATION,
   expectA11yToMatchSnapshot,
   getAttribute,
-  getConsoleErrorsAmount,
   getLifecycleStatus,
   getOffsetLeft,
   getOffsetWidth,
+  getPageThrownErrorsAmount,
   getScrollLeft,
   initAddEventListener,
   initConsoleObserver,
+  initPageErrorObserver,
   reattachElement,
   selectNode,
   setContentWithDesignSystem,
@@ -79,14 +80,11 @@ const getScrollArea = () => selectNode(page, 'p-stepper-horizontal >>> p-scrolle
 const getGradientNext = () => selectNode(page, 'p-stepper-horizontal >>> p-scroller >>> .action-next .gradient');
 
 describe('validation', () => {
-  beforeEach(() => {
-    initConsoleObserver(page);
-  });
-
   it('should throw error if an item with current state is added while another exists', async () => {
-    initConsoleObserver(page);
+    await initPageErrorObserver(page);
+
     await initStepperHorizontal();
-    expect(getConsoleErrorsAmount()).toBe(0);
+    expect(getPageThrownErrorsAmount()).toBe(0);
 
     const host = await getHost();
     await host.evaluate((host: HTMLElement) => {
@@ -94,8 +92,9 @@ describe('validation', () => {
       newStepperHorizontalItem.state = 'current';
       host.appendChild(newStepperHorizontalItem);
     });
+    await waitForStencilLifecycle(page);
 
-    expect(getConsoleErrorsAmount()).toBe(1);
+    expect(getPageThrownErrorsAmount()).toBe(1);
   });
 
   it('should throw error if a second current state is defined', async () => {
@@ -236,8 +235,6 @@ describe('scrolling', () => {
 
     const [item1, , , , , item6] = await getAllStepItems();
 
-    const gradient = await getGradientNext();
-    const gradientWidth = await getOffsetWidth(gradient);
     const scrollArea = await getScrollArea();
     const scrollAreaWidth = await getOffsetWidth(scrollArea);
 
@@ -246,9 +243,9 @@ describe('scrolling', () => {
     await waitForStencilLifecycle(page);
     await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
-    const button4offset = await getOffsetLeft(item6);
+    const button6offset = await getOffsetLeft(item6);
     const buttonWidth = await getOffsetWidth(item6);
-    const scrollDistanceLeft = +button4offset + +buttonWidth + FOCUS_PADDING - +scrollAreaWidth;
+    const scrollDistanceLeft = +button6offset + +buttonWidth + FOCUS_PADDING - +scrollAreaWidth;
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
   });
 });
