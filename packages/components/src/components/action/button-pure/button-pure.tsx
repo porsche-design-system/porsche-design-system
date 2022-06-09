@@ -149,6 +149,7 @@ export class ButtonPure {
           ref={(el) => (this.buttonTag = el)}
           aria-disabled={this.isDisabledOrLoading ? 'true' : null}
           aria-busy={this.loading ? 'true' : null}
+          aria-live={this.loading ? 'polite' : null}
           aria-describedby={hasSubline ? 'subline' : null}
           {...parseAndGetAriaAttributes(this.aria, BUTTON_ARIA_ATTRIBUTES)}
         >
