@@ -74,8 +74,6 @@ Below you can find an interactive example of an outlined registration process.
   </p-button-group>
 </Playground>
 
-### <A11yIcon></A11yIcon> Accessibility hints
-
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
