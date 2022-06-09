@@ -58,11 +58,11 @@ export const getBaseChildStyles = (
       transition: ['color', 'border-color', 'background-color'].map(getTransition).join(','),
       ...additionalDefaultJssStyle,
     },
-    ...hoverMediaQuery({
+    ...(hoverMediaQuery({
       [`::slotted(${child}:hover)`]: {
         borderColor: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
       },
-    }),
+    }) as Styles),
     [`::slotted(${child}:focus)`]: {
       outlineColor: formStateColor || contrastMediumColor,
     },
