@@ -37,6 +37,7 @@ export class SegmentedControlItem {
   @Watch('icon')
   @Watch('iconSource')
   public handleLabelChange(): void {
+    // when these props change, we inform the parent to recalculate the max width for all items
     updateParent(this.host);
   }
 
