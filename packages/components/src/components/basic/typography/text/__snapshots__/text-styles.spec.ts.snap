@@ -355,7 +355,6 @@ exports[`getSlottedCss() should return correct css 1`] = `
 p-text a, p-text button {
   color: inherit !important;
   text-decoration: underline !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
@@ -378,6 +377,9 @@ p-text a:focus:not(:focus-visible), p-text button:focus:not(:focus-visible) {
   p-text[data-theme=\\"dark\\"] a:hover {
     color: #ff0223 !important;
   }
+  p-text a, p-text button {
+    transition: color var(--p-transition-duration, .24s) ease !important;
+  }
   p-text a:hover, p-text button:hover {
     color: #d5001c !important;
   }
@@ -397,7 +399,6 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
 prefixed-p-text a, prefixed-p-text button {
   color: inherit !important;
   text-decoration: underline !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
@@ -419,6 +420,9 @@ prefixed-p-text a:focus:not(:focus-visible), prefixed-p-text button:focus:not(:f
 @media(hover:hover) {
   prefixed-p-text[data-theme=\\"dark\\"] a:hover {
     color: #ff0223 !important;
+  }
+  prefixed-p-text a, prefixed-p-text button {
+    transition: color var(--p-transition-duration, .24s) ease !important;
   }
   prefixed-p-text a:hover, prefixed-p-text button:hover {
     color: #d5001c !important;

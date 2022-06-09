@@ -1901,7 +1901,6 @@ exports[`getSlottedCss() should return correct css 1`] = `
 "p-textarea-wrapper a {
   color: inherit !important;
   text-decoration: underline !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
@@ -1921,6 +1920,9 @@ p-textarea-wrapper a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
 @media(hover:hover) {
+  p-textarea-wrapper a {
+    transition: color var(--p-transition-duration, .24s) ease !important;
+  }
   p-textarea-wrapper a:hover {
     color: #d5001c !important;
   }
@@ -1932,7 +1934,6 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
 "prefixed-p-textarea-wrapper a {
   color: inherit !important;
   text-decoration: underline !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
@@ -1952,6 +1953,9 @@ prefixed-p-textarea-wrapper a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
 @media(hover:hover) {
+  prefixed-p-textarea-wrapper a {
+    transition: color var(--p-transition-duration, .24s) ease !important;
+  }
   prefixed-p-textarea-wrapper a:hover {
     color: #d5001c !important;
   }

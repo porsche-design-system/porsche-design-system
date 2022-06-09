@@ -750,7 +750,6 @@ exports[`getSlottedCss() should return correct css 1`] = `
 "p-inline-notification a {
   color: inherit !important;
   text-decoration: underline !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
@@ -770,6 +769,9 @@ p-inline-notification a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
 @media(hover:hover) {
+  p-inline-notification a {
+    transition: color var(--p-transition-duration, .24s) ease !important;
+  }
   p-inline-notification a:hover {
     color: #d5001c !important;
   }
@@ -781,7 +783,6 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
 "prefixed-p-inline-notification a {
   color: inherit !important;
   text-decoration: underline !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
@@ -801,6 +802,9 @@ prefixed-p-inline-notification a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
 @media(hover:hover) {
+  prefixed-p-inline-notification a {
+    transition: color var(--p-transition-duration, .24s) ease !important;
+  }
   prefixed-p-inline-notification a:hover {
     color: #d5001c !important;
   }

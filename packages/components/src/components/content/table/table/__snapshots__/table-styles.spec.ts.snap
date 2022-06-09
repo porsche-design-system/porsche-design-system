@@ -81,7 +81,6 @@ exports[`getSlottedCss() should return correct css 1`] = `
 "p-table a {
   color: inherit !important;
   text-decoration: underline !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
@@ -104,6 +103,9 @@ p-table a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
 @media(hover:hover) {
+  p-table a {
+    transition: color var(--p-transition-duration, .24s) ease !important;
+  }
   p-table a:hover {
     color: #d5001c !important;
   }
@@ -115,7 +117,6 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
 "prefixed-p-table a {
   color: inherit !important;
   text-decoration: underline !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
@@ -138,6 +139,9 @@ prefixed-p-table a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
 @media(hover:hover) {
+  prefixed-p-table a {
+    transition: color var(--p-transition-duration, .24s) ease !important;
+  }
   prefixed-p-table a:hover {
     color: #d5001c !important;
   }
