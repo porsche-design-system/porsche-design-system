@@ -4,6 +4,34 @@ import { PStepperHorizontal, PStepperHorizontalItem } from '@porsche-design-syst
 export const StepperHorizontalPage = (): JSX.Element => {
   return (
     <>
+      <div className="playground light" title="should render all numbers from 1 to 9 on light background">
+        <PStepperHorizontal>
+          <PStepperHorizontalItem>Step 1</PStepperHorizontalItem>
+          <PStepperHorizontalItem>Step 2</PStepperHorizontalItem>
+          <PStepperHorizontalItem>Step 3</PStepperHorizontalItem>
+          <PStepperHorizontalItem>Step 4</PStepperHorizontalItem>
+          <PStepperHorizontalItem>Step 5</PStepperHorizontalItem>
+          <PStepperHorizontalItem>Step 6</PStepperHorizontalItem>
+          <PStepperHorizontalItem>Step 7</PStepperHorizontalItem>
+          <PStepperHorizontalItem>Step 8</PStepperHorizontalItem>
+          <PStepperHorizontalItem>Step 9</PStepperHorizontalItem>
+        </PStepperHorizontal>
+      </div>
+
+      <div className="playground dark" title="should render all numbers from 1 to 9 on dark background">
+        <PStepperHorizontal theme="dark">
+          <PStepperHorizontalItem theme="dark">Step 1</PStepperHorizontalItem>
+          <PStepperHorizontalItem theme="dark">Step 2</PStepperHorizontalItem>
+          <PStepperHorizontalItem theme="dark">Step 3</PStepperHorizontalItem>
+          <PStepperHorizontalItem theme="dark">Step 4</PStepperHorizontalItem>
+          <PStepperHorizontalItem theme="dark">Step 5</PStepperHorizontalItem>
+          <PStepperHorizontalItem theme="dark">Step 6</PStepperHorizontalItem>
+          <PStepperHorizontalItem theme="dark">Step 7</PStepperHorizontalItem>
+          <PStepperHorizontalItem theme="dark">Step 8</PStepperHorizontalItem>
+          <PStepperHorizontalItem theme="dark">Step 9</PStepperHorizontalItem>
+        </PStepperHorizontal>
+      </div>
+
       <div className="playground light" title="should render stepper on light background">
         <PStepperHorizontal>
           <PStepperHorizontalItem state="current">Step Current</PStepperHorizontalItem>
