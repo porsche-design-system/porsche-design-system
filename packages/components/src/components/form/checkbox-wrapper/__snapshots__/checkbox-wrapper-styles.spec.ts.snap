@@ -1261,7 +1261,6 @@ exports[`getSlottedCss() should return correct css 1`] = `
 "p-checkbox-wrapper a {
   color: inherit !important;
   text-decoration: underline !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
@@ -1281,6 +1280,9 @@ p-checkbox-wrapper a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
 @media(hover:hover) {
+  p-checkbox-wrapper a {
+    transition: color var(--p-transition-duration, .24s) ease !important;
+  }
   p-checkbox-wrapper a:hover {
     color: #d5001c !important;
   }
@@ -1292,7 +1294,6 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
 "prefixed-p-checkbox-wrapper a {
   color: inherit !important;
   text-decoration: underline !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
@@ -1312,6 +1313,9 @@ prefixed-p-checkbox-wrapper a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
 @media(hover:hover) {
+  prefixed-p-checkbox-wrapper a {
+    transition: color var(--p-transition-duration, .24s) ease !important;
+  }
   prefixed-p-checkbox-wrapper a:hover {
     color: #d5001c !important;
   }

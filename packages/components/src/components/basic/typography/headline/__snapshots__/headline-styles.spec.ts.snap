@@ -450,7 +450,6 @@ exports[`getSlottedCss() should return correct css 1`] = `
 "p-headline a {
   color: inherit !important;
   text-decoration: none !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
@@ -473,6 +472,9 @@ p-headline a:focus:not(:focus-visible) {
   p-headline[data-theme=\\"dark\\"] a:hover {
     color: #ff0223 !important;
   }
+  p-headline a {
+    transition: color var(--p-transition-duration, .24s) ease !important;
+  }
   p-headline a:hover {
     color: #d5001c !important;
   }
@@ -484,7 +486,6 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
 "prefixed-p-headline a {
   color: inherit !important;
   text-decoration: none !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
@@ -506,6 +507,9 @@ prefixed-p-headline a:focus:not(:focus-visible) {
 @media(hover:hover) {
   prefixed-p-headline[data-theme=\\"dark\\"] a:hover {
     color: #ff0223 !important;
+  }
+  prefixed-p-headline a {
+    transition: color var(--p-transition-duration, .24s) ease !important;
   }
   prefixed-p-headline a:hover {
     color: #d5001c !important;
