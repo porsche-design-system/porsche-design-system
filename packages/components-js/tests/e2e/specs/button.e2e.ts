@@ -437,7 +437,7 @@ describe('button', () => {
       await expectA11yToMatchSnapshot(page, button);
     });
 
-    it('should expose correct accessibility name if label is hidden', async () => {
+    it('should expose correct accessibility name when hide-label prop is set', async () => {
       await initButton();
       const host = await getHost();
       const button = await getButton();
@@ -468,7 +468,7 @@ describe('button', () => {
       await expectA11yToMatchSnapshot(page, button, { message: 'aria-pressed attribute' });
     });
 
-    it('should add aria-busy + aria-disabled attribute when loading and remove it if finished', async () => {
+    it('should add aria-busy + aria-disabled attribute when loading prop is set', async () => {
       await initButton();
       const host = await getHost();
       const button = await getButton();
@@ -489,7 +489,7 @@ describe('button', () => {
       expect(await getAttribute(button, 'aria-disabled')).toBeNull();
     });
 
-    it('should add aria-disabled attribute (and not native disabled attribute) when disabled prop is set and remove it if finished', async () => {
+    it('should add aria-disabled attribute (and not native disabled attribute) when disabled prop is set', async () => {
       await initButton();
       const host = await getHost();
       const button = await getButton();

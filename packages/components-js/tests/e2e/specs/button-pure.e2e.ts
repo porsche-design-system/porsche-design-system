@@ -434,7 +434,7 @@ describe('button-pure', () => {
       await expectA11yToMatchSnapshot(page, button);
     });
 
-    it('should expose correct accessibility name if label is hidden', async () => {
+    it('should expose correct accessibility name when hide-label prop is set', async () => {
       await initButtonPure();
       const host = await getHost();
       const button = await getButton();
@@ -472,22 +472,46 @@ describe('button-pure', () => {
       await expectA11yToMatchSnapshot(page, button, { message: 'Pressed' }); // need to split the test in 2, because aria-expanded and aria-pressed are invalid if used simultaneously. Also aria-pressed removes the accessible name.
     });
 
-    it('should add aria-busy attribute when loading and remove it if finished', async () => {
+    it('should add aria-busy + aria-disabled attribute when loading prop is set', async () => {
       await initButtonPure();
       const host = await getHost();
       const button = await getButton();
 
       expect(await getAttribute(button, 'aria-busy')).toBeNull();
+      expect(await getAttribute(button, 'aria-disabled')).toBeNull();
 
       await setProperty(host, 'loading', true);
       await waitForStencilLifecycle(page);
 
       expect(await getAttribute(button, 'aria-busy')).toBe('true');
+      expect(await getAttribute(button, 'aria-disabled')).toBe('true');
 
       await setProperty(host, 'loading', false);
       await waitForStencilLifecycle(page);
 
       expect(await getAttribute(button, 'aria-busy')).toBeNull();
+      expect(await getAttribute(button, 'aria-disabled')).toBeNull();
+    });
+
+    it('should add aria-disabled attribute (and not native disabled attribute) when disabled prop is set', async () => {
+      await initButtonPure();
+      const host = await getHost();
+      const button = await getButton();
+
+      expect(await getAttribute(button, 'aria-disabled')).toBeNull();
+      expect(await getAttribute(button, 'disabled')).toBeNull();
+
+      await setProperty(host, 'disabled', true);
+      await waitForStencilLifecycle(page);
+
+      expect(await getAttribute(button, 'aria-disabled')).toBe('true');
+      expect(await getAttribute(button, 'disabled')).toBeNull();
+
+      await setProperty(host, 'disabled', false);
+      await waitForStencilLifecycle(page);
+
+      expect(await getAttribute(button, 'aria-disabled')).toBeNull();
+      expect(await getAttribute(button, 'disabled')).toBeNull();
     });
   });
 });
