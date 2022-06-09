@@ -94,6 +94,7 @@ export class Button {
         tabindex={this.tabbable ? 0 : -1}
         aria-disabled={this.isDisabledOrLoading ? 'true' : null}
         aria-busy={this.loading ? 'true' : null}
+        aria-live={this.loading ? 'polite' : null}
         {...parseAndGetAriaAttributes(this.aria, BUTTON_ARIA_ATTRIBUTES)}
       >
         {this.loading ? (
