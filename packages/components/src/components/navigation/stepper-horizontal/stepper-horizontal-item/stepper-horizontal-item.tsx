@@ -1,4 +1,4 @@
-import { Component, Element, JSX, Listen, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, JSX, Listen, Prop, h } from '@stencil/core';
 import type { Theme } from '../../../../types';
 import type { StepperState } from './stepper-horizontal-item-utils';
 import { getIconName, isStateCompleteOrWarning, throwIfCurrentAndDisabled } from './stepper-horizontal-item-utils';
@@ -21,42 +21,28 @@ export class StepperHorizontalItem {
   /** Disables the stepper-horizontal-item. No events will be triggered while disabled state is active. */
   @Prop() public disabled?: boolean = false;
 
-  @State() private stepCounter: number;
-
-  private isStateUndefined: boolean;
-
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
-    if (!!this.isStateUndefined || !!this.disabled || this.state === 'current') {
+    if (!this.state || !!this.disabled || this.state === 'current') {
       e.stopPropagation();
     }
   }
 
-  @Watch('state')
-  public stateHandler(newValue: StepperState): void {
-    this.isStateUndefined = !newValue;
-  }
-
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'pStepperHorizontal');
-    if (!this.state) {
-      this.isStateUndefined = true;
-    }
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.state, this.isStateUndefined || this.disabled, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.state, !this.state || this.disabled, this.theme);
     throwIfCurrentAndDisabled(this.host);
   }
 
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const isCompleteOrWarning = isStateCompleteOrWarning(this.state);
 
     return (
-      <button disabled={this.isStateUndefined || this.disabled} aria-current={this.state === 'current' ? 'step' : null}>
-        <span class="sr-only">Step {this.stepCounter}:</span>
-        {isCompleteOrWarning && (
+      <button disabled={!this.state || this.disabled} aria-current={this.state === 'current' ? 'step' : null}>
+        {isStateCompleteOrWarning(this.state) && (
           <PrefixedTagNames.pIcon
             class="icon"
             name={getIconName(this.state)}
