@@ -19,12 +19,13 @@ afterEach(async () => await page.close());
 
 TAG_NAMES.filter((tagName) => getComponentMeta(tagName).isDelegatingFocus).forEach((tagName) => {
   const href = tagName.includes('link') || tagName.includes('marque') ? ' href="#"' : '';
+  const state = tagName.includes('stepper') ? ' state="complete"' : '';
 
   it(`should be removed from tab order for ${tagName}`, async () => {
     await setContentWithDesignSystem(
       page,
       `<a href="#" id="before">before</a>
-<${tagName}${href} tabindex="-1">Some label</${tagName}>
+<${tagName}${href}${state} tabindex="-1">Some label</${tagName}>
 <a href="#" id="after">after</a>`
     );
 
@@ -35,7 +36,7 @@ TAG_NAMES.filter((tagName) => getComponentMeta(tagName).isDelegatingFocus).forEa
   });
 
   it(`should delegate focus into shadow dom for ${tagName}`, async () => {
-    await setContentWithDesignSystem(page, `<${tagName}${href}>Some label</${tagName}>`);
+    await setContentWithDesignSystem(page, `<${tagName}${href}${state}>Some label</${tagName}>`);
 
     const host = await selectNode(page, tagName);
     const elTagName = await host.evaluate((el) => el.tagName);
