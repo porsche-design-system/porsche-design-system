@@ -94,7 +94,6 @@ export class Switch {
           aria-checked={this.checked ? 'true' : 'false'}
           aria-disabled={this.isDisabledOrLoading ? 'true' : null}
           aria-busy={this.loading ? 'true' : null}
-          aria-live={this.loading ? 'polite' : null}
           tabindex={this.tabbable ? 0 : -1}
           onClick={this.onSwitchClick}
         >
