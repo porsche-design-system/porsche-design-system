@@ -1,4 +1,5 @@
 import type { Direction } from '../table/table-utils';
+import type { Styles } from 'jss';
 import { getCss } from '../../../../utils';
 import {
   addImportantToEachRule,
@@ -49,9 +50,9 @@ export const getComponentCss = (
               textAlign: 'left',
               background: 'transparent',
               cursor: 'pointer',
-              ...getHoverJssStyle(),
               ...getFocusJssStyle({ offset: 1 }),
               ...hoverMediaQuery({
+                ...(getHoverJssStyle() as Styles),
                 '&:hover, &:focus': {
                   '& .icon': {
                     opacity: 1,

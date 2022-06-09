@@ -1209,7 +1209,6 @@ exports[`getSlottedCss() should return correct css 1`] = `
 "p-radio-button-wrapper a {
   color: inherit !important;
   text-decoration: underline !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
@@ -1229,6 +1228,9 @@ p-radio-button-wrapper a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
 @media(hover:hover) {
+  p-radio-button-wrapper a {
+    transition: color var(--p-transition-duration, .24s) ease !important;
+  }
   p-radio-button-wrapper a:hover {
     color: #d5001c !important;
   }
@@ -1240,7 +1242,6 @@ exports[`getSlottedCss() should return correct css with prefix 1`] = `
 "prefixed-p-radio-button-wrapper a {
   color: inherit !important;
   text-decoration: underline !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
@@ -1260,6 +1261,9 @@ prefixed-p-radio-button-wrapper a:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
 @media(hover:hover) {
+  prefixed-p-radio-button-wrapper a {
+    transition: color var(--p-transition-duration, .24s) ease !important;
+  }
   prefixed-p-radio-button-wrapper a:hover {
     color: #d5001c !important;
   }

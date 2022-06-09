@@ -3,7 +3,7 @@ import type { Theme } from '../types';
 import type { PropertiesHyphen } from 'csstype';
 import { fontWeight } from '@porsche-design-system/utilities-v2';
 import { getThemedColors } from './';
-import { hoverMediaQueryExp, hoverMediaQuery } from './hover-media-query';
+import { hoverMediaQuery } from './hover-media-query';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
 const transitionTimingFunction = 'ease';
@@ -43,11 +43,9 @@ type GetHoverStylesOptions = {
 export const getHoverJssStyle = ({ theme }: GetHoverStylesOptions = { theme: 'light' }): JssStyle => {
   return {
     transition: getTransition('color'),
-    ...hoverMediaQuery({
-      '&:hover': {
-        color: getThemedColors(theme).hoverColor,
-      },
-    }),
+    '&:hover': {
+      color: getThemedColors(theme).hoverColor,
+    },
   };
 };
 
@@ -118,15 +116,12 @@ export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withD
     '& a': {
       color: 'inherit',
       textDecoration: 'underline',
-      ...getHoverJssStyle(),
       ...getFocusJssStyle({ offset: 1 }),
+      ...hoverMediaQuery(getHoverJssStyle() as Styles),
     },
     ...(opts.withDarkTheme &&
       hoverMediaQuery({
-        '&[data-theme="dark"] a:hover':
-          ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
-            ? getHoverJssStyle({ theme: 'dark' })[hoverMediaQueryExp]['&:hover']
-            : getHoverJssStyle({ theme: 'dark' })['&:hover'],
+        '&[data-theme="dark"] a:hover': getHoverJssStyle({ theme: 'dark' })['&:hover'],
       })),
     '& b, & strong': {
       fontWeight: fontWeight.bold,
