@@ -224,6 +224,34 @@ describe('scrolling', () => {
   });
 
   it('should scroll to correct position if newly added item is set to current', async () => {});
+    await initStepperHorizontal({ amount: 5, currentStep: 0, isWrapped: true });
+    const host = await getHost();
+
+    await host.evaluate((host) => {
+      const newStepperHorizontalItem = document.createElement('p-stepper-horizontal-item');
+      newStepperHorizontalItem.innerText = 'Step 6';
+      host.appendChild(newStepperHorizontalItem);
+    });
+    await waitForStencilLifecycle(page);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+
+    const [item1, , , , , item6] = await getAllStepItems();
+
+    const gradient = await getGradientNext();
+    const gradientWidth = await getOffsetWidth(gradient);
+    const scrollArea = await getScrollArea();
+    const scrollAreaWidth = await getOffsetWidth(scrollArea);
+
+    await setProperty(item1, 'state', 'complete');
+    await setProperty(item6, 'state', 'current');
+    await waitForStencilLifecycle(page);
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+
+    const button4offset = await getOffsetLeft(item6);
+    const buttonWidth = await getOffsetWidth(item6);
+    const scrollDistanceLeft = +button4offset + +buttonWidth + FOCUS_PADDING - +scrollAreaWidth;
+    expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
+  });
 });
 
 describe('events', () => {
