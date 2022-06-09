@@ -9,6 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Changed
+
+- `Button`, `Button Pure` and `Switch` apply `aria-disabled="true"` to native button internally in case `disabled`
+  and/or `loading` property is set
+
 #### Fixed
 
 - Issue with `JssStyle` typing import
