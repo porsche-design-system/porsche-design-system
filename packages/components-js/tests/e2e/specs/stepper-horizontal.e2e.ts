@@ -223,7 +223,7 @@ describe('scrolling', () => {
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
   });
 
-  it('should scroll to correct position if newly added item is set to current', async () => {});
+  it('should scroll to correct position if newly added item is set to current', async () => {
     await initStepperHorizontal({ amount: 5, currentStep: 0, isWrapped: true });
     const host = await getHost();
 
