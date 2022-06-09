@@ -9,7 +9,7 @@ const generateConstructorMap = (): void => {
   const sourceDirectory = path.resolve('./src/components');
   const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
 
-  const importsRaw: string[] = [];
+  const importsRaw: string[] = ["import type { TagName } from '@porsche-design-system/shared';"];
 
   const tagNamesConstructorMap: string = componentFiles
     .map((filePath) => {
@@ -41,20 +41,14 @@ const generateConstructorMap = (): void => {
   ${tagNamesConstructorMap},
 };`;
 
-  const content = [imports, types, functions].join('\n\n');
+  const content = ['/* Auto Generated File */', imports, types, functions].join('\n\n');
 
-  const fileName = 'src/components/lifecycleValidation.spec.ts';
+  const fileName = 'src/components/tag-names-constructor-map.ts';
   const rootDirectory = path.resolve(__dirname, '..');
   const filePath = path.resolve(rootDirectory, fileName);
-  const fileContent = fs.readFileSync(filePath, 'utf8');
 
-  const newFileContent = fileContent.replace(
-    /(\/\* Auto Generated Start \*\/\s)(?:.|\s)*?(\s\/\* Auto Generated End \*\/)/,
-    `$1${content}$2`
-  );
-
-  fs.writeFileSync(filePath, newFileContent);
-  console.log(`Injected TAG_NAMES_CONSTRUCTOR_MAP into '${fileName}'`);
+  fs.writeFileSync(filePath, content);
+  console.log(`Wrote TAG_NAMES_CONSTRUCTOR_MAP into '${fileName}'`);
 };
 
 generateConstructorMap();

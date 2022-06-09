@@ -1,8 +1,9 @@
 import { hoverMediaQuery } from './hover-media-query';
 import * as jssUtils from '../utils/jss';
 import type { TagName } from '@porsche-design-system/shared';
-import { TAG_NAMES_CONSTRUCTOR_MAP, tagNamesWithJss } from '../components/lifecycleValidation.spec';
 import * as getDirectChildHTMLElementUtils from '../utils/dom/getDirectChildHTMLElement';
+import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
+import { TAG_NAMES_CONSTRUCTOR_MAP } from '../components/tag-names-constructor-map';
 
 const originalEnv = process.env;
 const style = {
@@ -45,6 +46,8 @@ it('should return wrapped style in test environment', () => {
   process.env = { ...originalEnv, NODE_ENV: 'test' };
   expect(hoverMediaQuery(style)).toEqual(wrappedStyle);
 });
+
+const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).styling === 'jss');
 
 it.each<TagName>(tagNamesWithJss)('should wrap "@media(hover:hover)" around all hover-styles for %s', (tagName) => {
   const spy = jest
