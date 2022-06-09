@@ -479,18 +479,21 @@ describe('button-pure', () => {
 
       expect(await getAttribute(button, 'aria-busy')).toBeNull();
       expect(await getAttribute(button, 'aria-disabled')).toBeNull();
+      expect(await getAttribute(button, 'aria-live')).toBeNull();
 
       await setProperty(host, 'loading', true);
       await waitForStencilLifecycle(page);
 
       expect(await getAttribute(button, 'aria-busy')).toBe('true');
       expect(await getAttribute(button, 'aria-disabled')).toBe('true');
+      expect(await getAttribute(button, 'aria-live')).toBe('polite');
 
       await setProperty(host, 'loading', false);
       await waitForStencilLifecycle(page);
 
       expect(await getAttribute(button, 'aria-busy')).toBeNull();
       expect(await getAttribute(button, 'aria-disabled')).toBeNull();
+      expect(await getAttribute(button, 'aria-live')).toBeNull();
     });
 
     it('should add aria-disabled attribute (and not native disabled attribute) when disabled prop is set', async () => {
