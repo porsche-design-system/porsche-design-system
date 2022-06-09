@@ -12,7 +12,8 @@ export type SegmentedControlItemInternalHTMLProps = {
 export const getButtonAttributes = (
   isSelected: boolean,
   isDisabled: boolean
-): Pick<HTMLButtonElement, 'tabIndex' | 'disabled'> & AriaAttributes => ({
+): Pick<HTMLButtonElement, 'tabIndex' | 'disabled'> & { role: string } & AriaAttributes => ({
+  role: 'tab',
   tabIndex: isSelected ? 0 : -1,
   disabled: isDisabled,
   ...parseAndGetAriaAttributes({ 'aria-selected': isSelected }),
