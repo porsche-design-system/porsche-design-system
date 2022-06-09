@@ -18,7 +18,7 @@ const generateConstructorMap = (): void => {
       // get rid of functional components like StateMessage
       if (TAG_NAMES.includes(tagName)) {
         const className = pascalCase(tagName.replace('p-', ''));
-        const relativePath = filePath.replace(sourceDirectory, '.').replace('.tsx', '');
+        const relativePath = filePath.replace(sourceDirectory, '../components').replace('.tsx', '');
         importsRaw.push(`import { ${className} } from '${relativePath}';`);
 
         return `'${tagName}': ${className}`;
@@ -43,7 +43,7 @@ const generateConstructorMap = (): void => {
 
   const content = ['/* Auto Generated File */', imports, types, functions].join('\n\n');
 
-  const fileName = 'src/components/tag-names-constructor-map.ts';
+  const fileName = 'src/test-utils/tag-names-constructor-map.ts';
   const rootDirectory = path.resolve(__dirname, '..');
   const filePath = path.resolve(rootDirectory, fileName);
 
