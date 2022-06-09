@@ -80,6 +80,5 @@ describe('accessibility', () => {
     const itemButton = await getItemButton();
 
     await expectA11yToMatchSnapshot(page, itemButton);
-    expect(await getAttribute(itemButton, 'aria-selected')).toBe('true');
   });
 });
