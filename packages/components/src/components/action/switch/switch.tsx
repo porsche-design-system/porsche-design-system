@@ -92,8 +92,8 @@ export class Switch {
           role="switch"
           aria-labelledby="label"
           aria-checked={this.checked ? 'true' : 'false'}
+          aria-disabled={this.disabled ? 'true' : null}
           aria-busy={this.loading ? 'true' : null}
-          disabled={this.disabled}
           tabindex={this.tabbable ? 0 : -1}
           onClick={this.onSwitchClick}
         >
