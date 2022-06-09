@@ -41,22 +41,22 @@ export class StepperHorizontal {
     this.validateComponent();
     this.defineStepperHorizontalItemElements();
     this.observeProperties();
-    this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
 
     observeChildren(this.host as HTMLPStepperHorizontalItemElement, () => {
       // Throw when new steps are added
       this.validateComponent();
-      throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
       this.defineStepperHorizontalItemElements();
+      throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
       this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
-      this.scrollIntoView();
       this.observeProperties();
+      this.scrollIntoView();
     });
   }
 
   public componentDidLoad(): void {
     this.defineHTMLElements();
     throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
+    this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
 
     // Sometimes lifecycle gets called after disconnectedCallback()
     if (this.scrollAreaElement && this.prevGradientElement) {
