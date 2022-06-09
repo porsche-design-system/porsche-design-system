@@ -147,7 +147,7 @@ export class ButtonPure {
           type={this.type}
           tabindex={this.tabbable ? 0 : -1}
           ref={(el) => (this.buttonTag = el)}
-          aria-disabled={this.disabled ? 'true' : null}
+          aria-disabled={this.isDisabledOrLoading ? 'true' : null}
           aria-busy={this.loading ? 'true' : null}
           aria-describedby={hasSubline ? 'subline' : null}
           {...parseAndGetAriaAttributes(this.aria, BUTTON_ARIA_ATTRIBUTES)}

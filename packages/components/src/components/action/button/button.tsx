@@ -92,7 +92,7 @@ export class Button {
         class="root"
         type={this.type}
         tabindex={this.tabbable ? 0 : -1}
-        aria-disabled={this.disabled ? 'true' : null}
+        aria-disabled={this.isDisabledOrLoading ? 'true' : null}
         aria-busy={this.loading ? 'true' : null}
         {...parseAndGetAriaAttributes(this.aria, BUTTON_ARIA_ATTRIBUTES)}
       >
