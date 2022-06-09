@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, JSX, Prop, State, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, JSX, Prop, h } from '@stencil/core';
 import {
   attachComponentCss,
   getPrefixedTagNames,
@@ -11,8 +11,8 @@ import {
   unobserveChildren,
 } from '../../../../utils';
 import { getComponentCss } from './stepper-horizontal-styles';
-import type { StepChangeEvent } from './stepper-horizontal-utils';
 import { getIndexOfStepWithStateCurrent, throwIfMultipleCurrentStates } from './stepper-horizontal-utils';
+import type { StepChangeEvent } from './stepper-horizontal-utils';
 import type { Theme } from '../../../../types';
 
 @Component({
@@ -28,8 +28,7 @@ export class StepperHorizontal {
   /** Emitted when active step is changed. */
   @Event({ bubbles: false }) public stepChange: EventEmitter<StepChangeEvent>;
 
-  @State() private stepperHorizontalItems: HTMLPStepperHorizontalItemElement[] = [];
-
+  private stepperHorizontalItems: HTMLPStepperHorizontalItemElement[] = [];
   private scrollAreaElement: HTMLElement;
   private prevGradientElement: HTMLElement;
   private scrollerElement: HTMLElement;
@@ -37,25 +36,23 @@ export class StepperHorizontal {
 
   public connectedCallback(): void {
     attachComponentCss(this.host, getComponentCss);
+    this.defineStepperHorizontalItemElements();
     // Initial validation
     this.validateComponent();
-    this.defineStepperHorizontalItemElements();
     this.observeProperties();
 
     observeChildren(this.host as HTMLPStepperHorizontalItemElement, () => {
-      // Throw when new steps are added
-      this.validateComponent();
       this.defineStepperHorizontalItemElements();
-      throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
-      this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
+      // Validate when new steps are added
+      this.validateComponent();
       this.observeProperties();
+      this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
       this.scrollIntoView();
     });
   }
 
   public componentDidLoad(): void {
-    this.defineHTMLElements();
-    throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
+    this.defineScrollerElements();
     this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
 
     // Sometimes lifecycle gets called after disconnectedCallback()
@@ -104,7 +101,7 @@ export class StepperHorizontal {
     });
   };
 
-  private defineHTMLElements = (): void => {
+  private defineScrollerElements = (): void => {
     const { scrollAreaElement, prevGradientElement } = getScrollerElements(this.scrollerElement);
     this.scrollAreaElement = scrollAreaElement;
     this.prevGradientElement = prevGradientElement;
@@ -117,10 +114,12 @@ export class StepperHorizontal {
   private validateComponent = (): void => {
     throwIfChildrenAreNotOfKind(this.host, 'pStepperHorizontalItem');
     throwIfChildCountIsExceeded(this.host, 9);
+    throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
   };
 
   private scrollIntoView = (): void => {
     const newStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
+    // If state is set to undefined index is -1
     if (newStepIndex !== -1) {
       const direction = newStepIndex > this.currentStepIndex ? 'next' : 'prev';
       const scrollActivePosition = getScrollActivePosition(
