@@ -1,5 +1,5 @@
 import type { Styles } from 'jss';
-export const hoverMediaQueryExp = '@media(hover:hover)';
+const hoverMediaQueryExp = '@media(hover:hover)';
 
 // this helper should be wrapped around any hover style to disable hover behaviour on mobile´
 export const hoverMediaQuery = (style: Styles): Styles =>

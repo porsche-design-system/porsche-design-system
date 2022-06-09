@@ -31,12 +31,12 @@ Object {
       "&:hover": Object {
         "color": "#d5001c",
       },
+      "transition": "color var(--p-transition-duration, .24s) ease",
     },
     "color": "inherit",
     "outline": "1px solid transparent",
     "outlineOffset": "1px",
     "textDecoration": "underline",
-    "transition": "color var(--p-transition-duration, .24s) ease",
   },
   "& b, & strong": Object {
     "fontWeight": 700,
@@ -63,12 +63,12 @@ Object {
       "&:hover": Object {
         "color": "#d5001c",
       },
+      "transition": "color var(--p-transition-duration, .24s) ease",
     },
     "color": "inherit",
     "outline": "1px solid transparent",
     "outlineOffset": "1px",
     "textDecoration": "underline",
-    "transition": "color var(--p-transition-duration, .24s) ease",
   },
   "& b, & strong": Object {
     "fontWeight": 700,
@@ -100,12 +100,12 @@ Object {
       "&:hover": Object {
         "color": "#d5001c",
       },
+      "transition": "color var(--p-transition-duration, .24s) ease",
     },
     "color": "inherit",
     "outline": "1px solid transparent",
     "outlineOffset": "1px",
     "textDecoration": "underline",
-    "transition": "color var(--p-transition-duration, .24s) ease",
   },
   "& b, & strong": Object {
     "fontWeight": 700,
@@ -261,10 +261,8 @@ Object {
 
 exports[`getHoverJssStyles() should return correct JssStyle for theme: 'dark' 1`] = `
 Object {
-  "@media(hover:hover)": Object {
-    "&:hover": Object {
-      "color": "#ff0223",
-    },
+  "&:hover": Object {
+    "color": "#ff0223",
   },
   "transition": "color var(--p-transition-duration, .24s) ease",
 }
@@ -272,10 +270,8 @@ Object {
 
 exports[`getHoverJssStyles() should return correct JssStyle for theme: 'light' 1`] = `
 Object {
-  "@media(hover:hover)": Object {
-    "&:hover": Object {
-      "color": "#d5001c",
-    },
+  "&:hover": Object {
+    "color": "#d5001c",
   },
   "transition": "color var(--p-transition-duration, .24s) ease",
 }

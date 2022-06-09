@@ -27,7 +27,6 @@ button {
   text-align: left;
   background: transparent;
   cursor: pointer;
-  transition: color var(--p-transition-duration, .24s) ease;
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
@@ -41,6 +40,12 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 @media(hover:hover) {
+  button {
+    transition: color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover {
+    color: #d5001c;
+  }
   button:hover .icon, button:focus .icon {
     opacity: 1;
   }
@@ -81,7 +86,6 @@ button {
   text-align: left;
   background: transparent;
   cursor: pointer;
-  transition: color var(--p-transition-duration, .24s) ease;
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
@@ -95,6 +99,12 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 @media(hover:hover) {
+  button {
+    transition: color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover {
+    color: #d5001c;
+  }
   button:hover .icon, button:focus .icon {
     opacity: 1;
   }
@@ -135,7 +145,6 @@ button {
   text-align: left;
   background: transparent;
   cursor: pointer;
-  transition: color var(--p-transition-duration, .24s) ease;
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
@@ -149,6 +158,12 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 @media(hover:hover) {
+  button {
+    transition: color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover {
+    color: #d5001c;
+  }
   button:hover .icon, button:focus .icon {
     opacity: 1;
   }
@@ -189,7 +204,6 @@ button {
   text-align: left;
   background: transparent;
   cursor: pointer;
-  transition: color var(--p-transition-duration, .24s) ease;
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
@@ -203,6 +217,12 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 @media(hover:hover) {
+  button {
+    transition: color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover {
+    color: #d5001c;
+  }
   button:hover .icon, button:focus .icon {
     opacity: 1;
   }
@@ -243,7 +263,6 @@ button {
   text-align: left;
   background: transparent;
   cursor: pointer;
-  transition: color var(--p-transition-duration, .24s) ease;
   outline: 1px solid transparent;
   outline-offset: 1px;
 }
@@ -257,6 +276,12 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 @media(hover:hover) {
+  button {
+    transition: color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover {
+    color: #d5001c;
+  }
   button:hover .icon, button:focus .icon {
     opacity: 1;
   }
