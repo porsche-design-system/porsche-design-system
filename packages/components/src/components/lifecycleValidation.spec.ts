@@ -4,7 +4,8 @@ import * as getHTMLElementAndThrowIfUndefinedUtils from '../utils/dom/getHTMLEle
 import * as jssUtils from '../utils/jss';
 import * as slottedStylesUtils from '../utils/slotted-styles';
 import * as getDirectChildHTMLElementUtils from '../utils/dom/getDirectChildHTMLElement';
-import { addParentAndSetRequiredProps, TAG_NAMES_CONSTRUCTOR_MAP } from '../test-utils
+import { TAG_NAMES_CONSTRUCTOR_MAP } from '../test-utils/tag-names-constructor-map';
+import { addParentAndSetRequiredProps } from '../test-utils/addParentAndSetRequiredProps';
 
 const tagNamesWithRequiredChild = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredChild);
 const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).styling === 'jss');
