@@ -28,14 +28,19 @@ describe('button-pure', () => {
   const getHost = () => selectNode(page, 'p-button-pure');
   const getButton = () => selectNode(page, 'p-button-pure >>> button');
 
-  const initButtonPure = (opts?: { isLoading?: boolean; withSubline?: boolean }): Promise<void> => {
-    const { isLoading = false, withSubline = false } = opts ?? {};
+  const initButtonPure = (opts?: {
+    isLoading?: boolean;
+    isDisabled?: boolean;
+    withSubline?: boolean;
+  }): Promise<void> => {
+    const { isLoading = false, isDisabled = false, withSubline = false } = opts ?? {};
     const loading = isLoading ? `loading="${isLoading}"` : '';
+    const disabled = isDisabled ? `disabled="${isDisabled}"` : '';
 
     return setContentWithDesignSystem(
       page,
       `
-      <p-button-pure ${loading}>
+      <p-button-pure ${loading} ${disabled}>
         Some label
         ${withSubline ? '<span slot="subline">Some Subline </span>' : ''}
       </p-button-pure>`
@@ -44,8 +49,7 @@ describe('button-pure', () => {
   const clickableTests: ClickableTests = [
     {
       state: 'disabled',
-      setContent: async () =>
-        await setContentWithDesignSystem(page, '<p-button-pure disabled>Some label</p-button-pure>'),
+      setContent: async () => await initButtonPure({ isDisabled: true }),
     },
     {
       state: 'loading',
