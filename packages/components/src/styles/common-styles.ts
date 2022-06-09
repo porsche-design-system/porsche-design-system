@@ -117,12 +117,12 @@ export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withD
       color: 'inherit',
       textDecoration: 'underline',
       ...getFocusJssStyle({ offset: 1 }),
-      ...hoverMediaQuery(getHoverJssStyle() as Styles),
+      ...hoverMediaQuery(getHoverJssStyle()),
     },
     ...(opts.withDarkTheme &&
-      hoverMediaQuery({
+      (hoverMediaQuery({
         '&[data-theme="dark"] a:hover': getHoverJssStyle({ theme: 'dark' })['&:hover'],
-      })),
+      }) as Styles)),
     '& b, & strong': {
       fontWeight: fontWeight.bold,
     },
