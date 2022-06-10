@@ -106,10 +106,24 @@ describe('componentDidLoad', () => {
   });
 });
 
+describe('componentWillRender', () => {
+  it('should call syncItemsProps() with correct parameter', () => {
+    const spy = jest.spyOn(stepperHorizontalUtils, 'syncItemsProps');
+    const component = new StepperHorizontal();
+
+    try {
+      component.componentWillRender();
+    } catch (e) {}
+
+    expect(spy).toBeCalledWith(component.host, component.theme);
+  });
+});
+
 describe('disconnectedCallback', () => {
   it('should call unobserveChildren() with correct parameter', () => {
     const spy = jest.spyOn(childrenObserverUtils, 'unobserveChildren');
     const component = new StepperHorizontal();
+
     component.disconnectedCallback();
 
     expect(spy).toBeCalledWith(component.host);

@@ -19,6 +19,7 @@ describe('componentWillRender', () => {
     jest.spyOn(jssUtils, 'attachComponentCss').mockImplementationOnce(() => {});
     const spy = jest.spyOn(stepperHorizontalItemUtils, 'throwIfCurrentAndDisabled').mockImplementationOnce(() => {});
     const component = new StepperHorizontalItem();
+    component.host = document.createElement('p-stepper-horizontal-item') as any;
 
     component.componentWillRender();
 
