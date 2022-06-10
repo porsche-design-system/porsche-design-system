@@ -42,8 +42,8 @@
     "@types/http-server": "^0.12.1",
     "http-server": "^14.1.0",
     "rollup": "^2.73.0",
-    "ts-node": "^10.7.0",
-    "typescript": "~4.6.4"
+    "ts-node": "^10.8.1",
+    "typescript": "~4.7.3"
   },
   "bin": {
     "serve-cdn": "./bin/serve-cdn.js"
