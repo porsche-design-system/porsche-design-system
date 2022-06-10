@@ -1,10 +1,3 @@
-import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
-import {
-  attachComponentCss,
-  getPrefixedTagNames,
-  improveButtonHandlingForCustomElement,
-  isDisabledOrLoading,
-} from '../../../utils';
 import type {
   SelectedAriaAttributes,
   BreakpointCustomizable,
@@ -13,7 +6,14 @@ import type {
   IconName,
   ThemeExtendedElectric,
 } from '../../../types';
-import type { ButtonAriaAttributes } from './button-utils';
+import type { ButtonAriaAttributes } from '../../../utils';
+import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
+import {
+  attachComponentCss,
+  getPrefixedTagNames,
+  improveButtonHandlingForCustomElement,
+  isDisabledOrLoading,
+} from '../../../utils';
 import { getButtonAriaAttributes } from './button-utils';
 import { getComponentCss } from './button-styles';
 

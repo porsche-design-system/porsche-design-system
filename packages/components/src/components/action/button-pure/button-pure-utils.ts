@@ -1,7 +1,12 @@
-import { getTagName, hasVisibleIcon, isDisabledOrLoading, parseAndGetAriaAttributes } from '../../../utils';
+import type { ButtonAriaAttributes } from '../../../utils';
 import type { AriaAttributes, LinkButtonPureIconName, SelectedAriaAttributes } from '../../../types';
-import type { ButtonAriaAttributes } from '../button/button-utils';
-import { BUTTON_ARIA_ATTRIBUTES } from '../button/button-utils';
+import {
+  getButtonDisabledBusyAriaAttributes,
+  getTagName,
+  hasVisibleIcon,
+  parseAndGetAriaAttributes,
+} from '../../../utils';
+import { BUTTON_ARIA_ATTRIBUTES } from '../../../utils';
 
 export const warnIfIsLoadingAndIconIsNone = (
   host: HTMLElement,
@@ -25,8 +30,7 @@ export const getButtonAriaAttributes = (
 ): AriaAttributes => {
   return {
     ...parseAndGetAriaAttributes(aria, BUTTON_ARIA_ATTRIBUTES),
-    'aria-disabled': isDisabledOrLoading(isDisabled, isLoading) ? 'true' : null,
-    'aria-busy': isLoading ? 'true' : null,
+    ...getButtonDisabledBusyAriaAttributes(isDisabled, isLoading),
     'aria-describedby': hasSubline ? 'subline' : null,
   };
 };

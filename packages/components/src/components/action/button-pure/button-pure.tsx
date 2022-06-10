@@ -1,3 +1,14 @@
+import type { ButtonAriaAttributes } from '../../../utils';
+import type {
+  SelectedAriaAttributes,
+  AlignLabel,
+  BreakpointCustomizable,
+  ButtonType,
+  LinkButtonPureIconName,
+  TextSize,
+  TextWeight,
+  ThemeExtendedElectricDark,
+} from '../../../types';
 import { Host, Component, Element, h, JSX, Prop, Listen } from '@stencil/core';
 import {
   calcLineHeightForElement,
@@ -10,19 +21,8 @@ import {
   attachComponentCss,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../../utils';
-import type {
-  SelectedAriaAttributes,
-  AlignLabel,
-  BreakpointCustomizable,
-  ButtonType,
-  LinkButtonPureIconName,
-  TextSize,
-  TextWeight,
-  ThemeExtendedElectricDark,
-} from '../../../types';
 import { getButtonAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 import { getComponentCss } from './button-pure-styles';
-import type { ButtonAriaAttributes } from '../button/button-utils';
 import { isSizeInherit } from '../../../utils';
 
 @Component({

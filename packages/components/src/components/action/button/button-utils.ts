@@ -1,9 +1,7 @@
 import type { SelectedAriaAttributes } from '../../../types';
 import type { AriaAttributes } from '../../../aria-types';
-import { isDisabledOrLoading, parseAndGetAriaAttributes } from '../../../utils';
-
-export const BUTTON_ARIA_ATTRIBUTES = ['aria-label', 'aria-expanded', 'aria-pressed', 'aria-haspopup'] as const;
-export type ButtonAriaAttributes = typeof BUTTON_ARIA_ATTRIBUTES[number];
+import type { ButtonAriaAttributes } from '../../../utils';
+import { BUTTON_ARIA_ATTRIBUTES, getButtonDisabledBusyAriaAttributes, parseAndGetAriaAttributes } from '../../../utils';
 
 export const getButtonAriaAttributes = (
   isDisabled: boolean,
@@ -12,7 +10,6 @@ export const getButtonAriaAttributes = (
 ): AriaAttributes => {
   return {
     ...parseAndGetAriaAttributes(aria, BUTTON_ARIA_ATTRIBUTES),
-    'aria-disabled': isDisabledOrLoading(isDisabled, isLoading) ? 'true' : null,
-    'aria-busy': isLoading ? 'true' : null,
+    ...getButtonDisabledBusyAriaAttributes(isDisabled, isLoading),
   };
 };
