@@ -7,7 +7,7 @@ import {
   isDisabledOrLoading,
 } from '../../../utils';
 import { getComponentCss } from './switch-styles';
-import { getButtonAriaAttributes } from './switch-styles-utils';
+import { getButtonAriaAttributes } from './switch-utils';
 
 export type SwitchChangeEvent = { checked: boolean };
 
