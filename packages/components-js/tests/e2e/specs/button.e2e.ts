@@ -467,47 +467,5 @@ describe('button', () => {
       await waitForStencilLifecycle(page);
       await expectA11yToMatchSnapshot(page, button, { message: 'aria-pressed attribute' });
     });
-
-    it('should add aria-busy + aria-disabled attribute when loading prop is set', async () => {
-      await initButton();
-      const host = await getHost();
-      const button = await getButton();
-
-      expect(await getAttribute(button, 'aria-busy')).toBeNull();
-      expect(await getAttribute(button, 'aria-disabled')).toBeNull();
-
-      await setProperty(host, 'loading', true);
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(button, 'aria-busy')).toBe('true');
-      expect(await getAttribute(button, 'aria-disabled')).toBe('true');
-
-      await setProperty(host, 'loading', false);
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(button, 'aria-busy')).toBeNull();
-      expect(await getAttribute(button, 'aria-disabled')).toBeNull();
-    });
-
-    it('should add aria-disabled attribute (and not native disabled attribute) when disabled prop is set', async () => {
-      await initButton();
-      const host = await getHost();
-      const button = await getButton();
-
-      expect(await getAttribute(button, 'aria-disabled')).toBeNull();
-      expect(await getAttribute(button, 'disabled')).toBeNull();
-
-      await setProperty(host, 'disabled', true);
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(button, 'aria-disabled')).toBe('true');
-      expect(await getAttribute(button, 'disabled')).toBeNull();
-
-      await setProperty(host, 'disabled', false);
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(button, 'aria-disabled')).toBeNull();
-      expect(await getAttribute(button, 'disabled')).toBeNull();
-    });
   });
 });
