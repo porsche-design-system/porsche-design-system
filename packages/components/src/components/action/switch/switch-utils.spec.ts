@@ -1,4 +1,4 @@
-import { getButtonAriaAttributes } from './switch-styles-utils';
+import { getButtonAriaAttributes } from './switch-utils';
 
 describe('getButtonAttributes()', () => {
   it.each<Parameters<typeof getButtonAriaAttributes>>([
