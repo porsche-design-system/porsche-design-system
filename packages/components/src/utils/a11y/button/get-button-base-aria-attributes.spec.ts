@@ -1,12 +1,12 @@
-import { getButtonDisabledBusyAriaAttributes } from './aria-button';
+import { getButtonBaseAriaAttributes } from './get-button-base-aria-attributes';
 
 describe('getButtonAttributes()', () => {
-  it.each<Parameters<typeof getButtonDisabledBusyAriaAttributes>>([
+  it.each<Parameters<typeof getButtonBaseAriaAttributes>>([
     [false, false],
     [true, false],
     [false, true],
     [true, true],
   ])('should return correct aria attributes for isDisabled: %s and isLoading: %s', (...args) => {
-    expect(getButtonDisabledBusyAriaAttributes(...args)).toMatchSnapshot();
+    expect(getButtonBaseAriaAttributes(...args)).toMatchSnapshot();
   });
 });

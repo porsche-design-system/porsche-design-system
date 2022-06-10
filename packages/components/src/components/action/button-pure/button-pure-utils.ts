@@ -1,11 +1,6 @@
 import type { ButtonAriaAttributes } from '../../../utils';
 import type { AriaAttributes, LinkButtonPureIconName, SelectedAriaAttributes } from '../../../types';
-import {
-  getButtonDisabledBusyAriaAttributes,
-  getTagName,
-  hasVisibleIcon,
-  parseAndGetAriaAttributes,
-} from '../../../utils';
+import { getButtonBaseAriaAttributes, getTagName, hasVisibleIcon, parseAndGetAriaAttributes } from '../../../utils';
 import { BUTTON_ARIA_ATTRIBUTES } from '../../../utils';
 
 export const warnIfIsLoadingAndIconIsNone = (
@@ -30,7 +25,7 @@ export const getButtonAriaAttributes = (
 ): AriaAttributes => {
   return {
     ...parseAndGetAriaAttributes(aria, BUTTON_ARIA_ATTRIBUTES),
-    ...getButtonDisabledBusyAriaAttributes(isDisabled, isLoading),
+    ...getButtonBaseAriaAttributes(isDisabled, isLoading),
     'aria-describedby': hasSubline ? 'subline' : null,
   };
 };
