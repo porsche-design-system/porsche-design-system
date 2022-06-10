@@ -1,7 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`getComponentCss() should return correct css 1`] = `
-"::slotted(*:not(:last-child)) {
+":host {
+  display: block;
+  height: 2rem !important;
+}
+::slotted(*:not(:last-child)) {
   margin-right: 1em !important;
 }
 .item-wrapper {

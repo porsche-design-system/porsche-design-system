@@ -25,7 +25,8 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .scroll-wrapper {
   position: relative;
-  width: fit-content;
+  display: inline-block;
+  min-width: 100%;
 }
 .trigger {
   display: block;
@@ -106,7 +107,8 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .scroll-wrapper {
   position: relative;
-  width: fit-content;
+  display: inline-block;
+  min-width: 100%;
 }
 .trigger {
   display: block;
@@ -190,7 +192,8 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .scroll-wrapper {
   position: relative;
-  width: fit-content;
+  display: inline-block;
+  min-width: 100%;
 }
 .trigger {
   display: block;
@@ -271,7 +274,8 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .scroll-wrapper {
   position: relative;
-  width: fit-content;
+  display: inline-block;
+  min-width: 100%;
 }
 .trigger {
   display: block;
@@ -352,7 +356,8 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .scroll-wrapper {
   position: relative;
-  width: fit-content;
+  display: inline-block;
+  min-width: 100%;
 }
 .trigger {
   display: block;
@@ -433,7 +438,8 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .scroll-wrapper {
   position: relative;
-  width: fit-content;
+  display: inline-block;
+  min-width: 100%;
 }
 .trigger {
   display: block;
@@ -514,7 +520,8 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }
 .scroll-wrapper {
   position: relative;
-  width: fit-content;
+  display: inline-block;
+  min-width: 100%;
 }
 .trigger {
   display: block;
@@ -595,7 +602,8 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 }
 .scroll-wrapper {
   position: relative;
-  width: fit-content;
+  display: inline-block;
+  min-width: 100%;
 }
 .trigger {
   display: block;
@@ -676,7 +684,8 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 }
 .scroll-wrapper {
   position: relative;
-  width: fit-content;
+  display: inline-block;
+  min-width: 100%;
 }
 .trigger {
   display: block;
@@ -757,7 +766,8 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 }
 .scroll-wrapper {
   position: relative;
-  width: fit-content;
+  display: inline-block;
+  min-width: 100%;
 }
 .trigger {
   display: block;
