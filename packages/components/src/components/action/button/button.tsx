@@ -4,7 +4,6 @@ import {
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
-  parseAndGetAriaAttributes,
 } from '../../../utils';
 import type {
   SelectedAriaAttributes,
@@ -15,7 +14,7 @@ import type {
   ThemeExtendedElectric,
 } from '../../../types';
 import type { ButtonAriaAttributes } from './button-utils';
-import { BUTTON_ARIA_ATTRIBUTES } from './button-utils';
+import { getButtonAriaAttributes } from './button-utils';
 import { getComponentCss } from './button-styles';
 
 @Component({
@@ -92,9 +91,7 @@ export class Button {
         class="root"
         type={this.type}
         tabindex={this.tabbable ? 0 : -1}
-        aria-disabled={this.isDisabledOrLoading ? 'true' : null}
-        aria-busy={this.loading ? 'true' : null}
-        {...parseAndGetAriaAttributes(this.aria, BUTTON_ARIA_ATTRIBUTES)}
+        {...getButtonAriaAttributes(this.disabled, this.loading, this.aria)}
       >
         {this.loading ? (
           <PrefixedTagNames.pSpinner
