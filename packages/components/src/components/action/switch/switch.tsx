@@ -7,6 +7,7 @@ import {
   isDisabledOrLoading,
 } from '../../../utils';
 import { getComponentCss } from './switch-styles';
+import { getButtonAriaAttributes } from './switch-utils';
 
 export type SwitchChangeEvent = { checked: boolean };
 
@@ -88,12 +89,9 @@ export class Switch {
           <slot />
         </PrefixedTagNames.pText>
         <button
+          {...getButtonAriaAttributes(this.disabled, this.loading, this.checked)}
           type="button"
           role="switch"
-          aria-labelledby="label"
-          aria-checked={this.checked ? 'true' : 'false'}
-          aria-busy={this.loading ? 'true' : null}
-          disabled={this.disabled}
           tabindex={this.tabbable ? 0 : -1}
           onClick={this.onSwitchClick}
         >
