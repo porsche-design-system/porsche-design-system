@@ -8,7 +8,6 @@ import {
   isDisabledOrLoading,
   transitionListener,
   attachComponentCss,
-  parseAndGetAriaAttributes,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../../utils';
 import type {
@@ -21,10 +20,9 @@ import type {
   TextWeight,
   ThemeExtendedElectricDark,
 } from '../../../types';
-import { warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
+import { getButtonAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 import { getComponentCss } from './button-pure-styles';
 import type { ButtonAriaAttributes } from '../button/button-utils';
-import { BUTTON_ARIA_ATTRIBUTES } from '../button/button-utils';
 import { isSizeInherit } from '../../../utils';
 
 @Component({
@@ -147,10 +145,7 @@ export class ButtonPure {
           type={this.type}
           tabindex={this.tabbable ? 0 : -1}
           ref={(el) => (this.buttonTag = el)}
-          aria-disabled={this.isDisabledOrLoading ? 'true' : null}
-          aria-busy={this.loading ? 'true' : null}
-          aria-describedby={hasSubline ? 'subline' : null}
-          {...parseAndGetAriaAttributes(this.aria, BUTTON_ARIA_ATTRIBUTES)}
+          {...getButtonAriaAttributes(this.disabled, this.loading, hasSubline, this.aria)}
         >
           {hasIcon &&
             (this.loading ? (

@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getButtonAttributes() should return correct aria attributes for isDisabled: false, isLoading: false, hasSubline: false and aria: {} 1`] = `
+Object {
+  "aria-busy": null,
+  "aria-describedby": null,
+  "aria-disabled": null,
+}
+`;
+
+exports[`getButtonAttributes() should return correct aria attributes for isDisabled: false, isLoading: false, hasSubline: true and aria: {} 1`] = `
+Object {
+  "aria-busy": null,
+  "aria-describedby": "subline",
+  "aria-disabled": null,
+}
+`;
+
+exports[`getButtonAttributes() should return correct aria attributes for isDisabled: false, isLoading: true, hasSubline: false and aria: {} 1`] = `
+Object {
+  "aria-busy": "true",
+  "aria-describedby": null,
+  "aria-disabled": "true",
+}
+`;
+
+exports[`getButtonAttributes() should return correct aria attributes for isDisabled: true, isLoading: false, hasSubline: false and aria: {} 1`] = `
+Object {
+  "aria-busy": null,
+  "aria-describedby": null,
+  "aria-disabled": "true",
+}
+`;
+
+exports[`getButtonAttributes() should return correct aria attributes for isDisabled: true, isLoading: true, hasSubline: false and aria: {
+  'aria-label': 'Some more detailed label',
+  'aria-expanded': true,
+  'aria-haspopup': true,
+  'aria-pressed': true
+} 1`] = `
+Object {
+  "aria-busy": "true",
+  "aria-describedby": null,
+  "aria-disabled": "true",
+  "aria-expanded": "true",
+  "aria-haspopup": "true",
+  "aria-label": "Some more detailed label",
+  "aria-pressed": "true",
+}
+`;
+
+exports[`getButtonAttributes() should return correct aria attributes for isDisabled: true, isLoading: true, hasSubline: false and aria: {} 1`] = `
+Object {
+  "aria-busy": "true",
+  "aria-describedby": null,
+  "aria-disabled": "true",
+}
+`;

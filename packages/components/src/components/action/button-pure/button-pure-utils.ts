@@ -1,5 +1,7 @@
-import { getTagName, hasVisibleIcon } from '../../../utils';
-import { LinkButtonPureIconName } from '../../../types';
+import { getTagName, hasVisibleIcon, isDisabledOrLoading, parseAndGetAriaAttributes } from '../../../utils';
+import type { AriaAttributes, LinkButtonPureIconName, SelectedAriaAttributes } from '../../../types';
+import type { ButtonAriaAttributes } from '../button/button-utils';
+import { BUTTON_ARIA_ATTRIBUTES } from '../button/button-utils';
 
 export const warnIfIsLoadingAndIconIsNone = (
   host: HTMLElement,
@@ -13,4 +15,18 @@ export const warnIfIsLoadingAndIconIsNone = (
       )} is not supported.`
     );
   }
+};
+
+export const getButtonAriaAttributes = (
+  isDisabled: boolean,
+  isLoading: boolean,
+  hasSubline: boolean,
+  aria: SelectedAriaAttributes<ButtonAriaAttributes>
+): AriaAttributes => {
+  return {
+    ...parseAndGetAriaAttributes(aria, BUTTON_ARIA_ATTRIBUTES),
+    'aria-disabled': isDisabledOrLoading(isDisabled, isLoading) ? 'true' : null,
+    'aria-busy': isLoading ? 'true' : null,
+    'aria-describedby': hasSubline ? 'subline' : null,
+  };
 };

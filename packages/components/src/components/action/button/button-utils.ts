@@ -9,7 +9,7 @@ export const getButtonAriaAttributes = (
   isDisabled: boolean,
   isLoading: boolean,
   aria: SelectedAriaAttributes<ButtonAriaAttributes>
-): Pick<AriaAttributes, 'aria-disabled' | 'aria-busy'> => {
+): AriaAttributes => {
   return {
     ...parseAndGetAriaAttributes(aria, BUTTON_ARIA_ATTRIBUTES),
     'aria-disabled': isDisabledOrLoading(isDisabled, isLoading) ? 'true' : null,
