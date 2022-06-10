@@ -430,7 +430,7 @@ Object {
     "hasSkeleton": false,
     "hasSlottedCss": false,
     "isDelegatingFocus": true,
-    "isThemeable": true,
+    "isThemeable": false,
     "requiredParent": "p-stepper-horizontal",
     "shouldPatchSlot": false,
     "skeletonProps": Array [],
