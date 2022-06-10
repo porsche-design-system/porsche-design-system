@@ -771,10 +771,6 @@ export namespace Components {
           * The validation state.
          */
         "state"?: StepperState;
-        /**
-          * Adapts the tag color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PSwitch {
         /**
@@ -2168,10 +2164,6 @@ declare namespace LocalJSX {
           * The validation state.
          */
         "state"?: StepperState;
-        /**
-          * Adapts the tag color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PSwitch {
         /**

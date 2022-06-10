@@ -1,6 +1,5 @@
 import { Component, Element, JSX, Listen, Prop, h } from '@stencil/core';
-import type { Theme } from '../../../../types';
-import type { StepperState } from './stepper-horizontal-item-utils';
+import type { StepperHorizontalItemInternalHTMLProps, StepperState } from './stepper-horizontal-item-utils';
 import { getIconName, isStateCompleteOrWarning, throwIfCurrentAndDisabled } from './stepper-horizontal-item-utils';
 import { attachComponentCss, getPrefixedTagNames, throwIfParentIsNotOfKind } from '../../../../utils';
 import { getComponentCss } from './stepper-horizontal-item-styles';
@@ -10,10 +9,7 @@ import { getComponentCss } from './stepper-horizontal-item-styles';
   shadow: { delegatesFocus: true },
 })
 export class StepperHorizontalItem {
-  @Element() public host!: HTMLElement;
-
-  /** Adapts the tag color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
+  @Element() public host!: HTMLElement & StepperHorizontalItemInternalHTMLProps;
 
   /** The validation state. */
   @Prop() public state?: StepperState;
@@ -33,8 +29,14 @@ export class StepperHorizontalItem {
   }
 
   public componentWillRender(): void {
-    attachComponentCss(this.host, getComponentCss, this.state, !this.state || this.disabled, this.theme);
     throwIfCurrentAndDisabled(this.host);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.state,
+      !this.state || this.disabled,
+      this.host.theme || 'light'
+    );
   }
 
   public render(): JSX.Element {
@@ -46,7 +48,7 @@ export class StepperHorizontalItem {
           <PrefixedTagNames.pIcon
             class="icon"
             name={getIconName(this.state)}
-            theme={this.theme}
+            theme={this.host.theme || 'light'}
             color="inherit"
             aria-hidden="true"
           />
