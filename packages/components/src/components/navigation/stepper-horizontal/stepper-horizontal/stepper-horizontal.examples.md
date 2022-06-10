@@ -92,7 +92,7 @@ export default class Code extends Vue {
   <p-stepper-horizontal-item>Step 4</p-stepper-horizontal-item>
 </p-stepper-horizontal>`;
   
-  scrollable = `<div style="width: 600px">
+  scrollable = `<div style="max-width: 600px">
   <p-stepper-horizontal>
     <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
     <p-stepper-horizontal-item state="complete">Step 2</p-stepper-horizontal-item>
