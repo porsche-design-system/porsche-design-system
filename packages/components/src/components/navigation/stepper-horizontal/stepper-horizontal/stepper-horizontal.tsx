@@ -11,7 +11,11 @@ import {
   unobserveChildren,
 } from '../../../../utils';
 import { getComponentCss } from './stepper-horizontal-styles';
-import { getIndexOfStepWithStateCurrent, throwIfMultipleCurrentStates } from './stepper-horizontal-utils';
+import {
+  getIndexOfStepWithStateCurrent,
+  syncItemsProps,
+  throwIfMultipleCurrentStates,
+} from './stepper-horizontal-utils';
 import type { StepChangeEvent } from './stepper-horizontal-utils';
 import type { Theme } from '../../../../types';
 
@@ -49,6 +53,10 @@ export class StepperHorizontal {
       this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
       this.scrollIntoView();
     });
+  }
+
+  public componentWillRender(): void {
+    syncItemsProps(this.host, this.theme);
   }
 
   public componentDidLoad(): void {
