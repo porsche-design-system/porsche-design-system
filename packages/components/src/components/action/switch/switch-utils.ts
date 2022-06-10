@@ -1,5 +1,5 @@
 import type { AriaAttributes } from '../../../types';
-import { getButtonDisabledBusyAriaAttributes } from '../../../utils';
+import { getButtonBaseAriaAttributes } from '../../../utils';
 
 export const getButtonAriaAttributes = (
   isDisabled: boolean,
@@ -7,7 +7,7 @@ export const getButtonAriaAttributes = (
   isChecked: boolean
 ): AriaAttributes => {
   return {
-    ...getButtonDisabledBusyAriaAttributes(isDisabled, isLoading),
+    ...getButtonBaseAriaAttributes(isDisabled, isLoading),
     'aria-checked': isChecked ? 'true' : 'false',
     'aria-labelledby': 'label',
   };

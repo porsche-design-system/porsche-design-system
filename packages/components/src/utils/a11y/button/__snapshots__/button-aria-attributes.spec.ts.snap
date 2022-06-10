@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BUTTON_ARIA_ATTRIBUTES should match snapshot 1`] = `
+Array [
+  "aria-label",
+  "aria-expanded",
+  "aria-pressed",
+  "aria-haspopup",
+]
+`;
