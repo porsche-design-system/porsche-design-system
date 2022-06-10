@@ -181,6 +181,9 @@ span {
   ::slotted(a:hover) {
     color: #ff0223 !important;
   }
+  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+    border-color: #ff0223 !important;
+  }
 }
 
 .icon {
@@ -262,6 +265,9 @@ span {
   }
   ::slotted(a:hover) {
     color: #d5001c !important;
+  }
+  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+    border-color: #d5001c !important;
   }
 }
 
@@ -345,6 +351,9 @@ span {
   ::slotted(a:hover) {
     color: #ff0223 !important;
   }
+  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+    border-color: #ff0223 !important;
+  }
 }
 
 .icon {
@@ -426,6 +435,9 @@ span {
   }
   ::slotted(a:hover) {
     color: #d5001c !important;
+  }
+  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+    border-color: #d5001c !important;
   }
 }
 
@@ -509,6 +521,9 @@ span {
   ::slotted(a:hover) {
     color: #d5001c !important;
   }
+  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+    border-color: #d5001c !important;
+  }
 }
 
 .icon {
@@ -590,6 +605,9 @@ span {
   }
   ::slotted(a:hover) {
     color: #ff0223 !important;
+  }
+  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+    border-color: #ff0223 !important;
   }
 }
 
@@ -673,6 +691,9 @@ span {
   ::slotted(a:hover) {
     color: #d5001c !important;
   }
+  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+    border-color: #d5001c !important;
+  }
 }
 
 .icon {
@@ -754,6 +775,9 @@ span {
   }
   ::slotted(a:hover) {
     color: #d5001c !important;
+  }
+  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+    border-color: #d5001c !important;
   }
 }
 
@@ -837,6 +861,9 @@ span {
   ::slotted(a:hover) {
     color: #d5001c !important;
   }
+  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+    border-color: #d5001c !important;
+  }
 }
 
 .icon {
@@ -918,6 +945,9 @@ span {
   }
   ::slotted(a:hover) {
     color: #d5001c !important;
+  }
+  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+    border-color: #d5001c !important;
   }
 }
 
@@ -1001,6 +1031,9 @@ span {
   ::slotted(a:hover) {
     color: #d5001c !important;
   }
+  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+    border-color: #d5001c !important;
+  }
 }
 
 .icon {
@@ -1082,6 +1115,9 @@ span {
   }
   ::slotted(a:hover) {
     color: #d5001c !important;
+  }
+  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+    border-color: #d5001c !important;
   }
 }
 
@@ -1165,6 +1201,9 @@ span {
   ::slotted(a:hover) {
     color: #d5001c !important;
   }
+  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+    border-color: #d5001c !important;
+  }
 }
 
 .icon {
@@ -1246,6 +1285,9 @@ span {
   }
   ::slotted(a:hover) {
     color: #d5001c !important;
+  }
+  ::slotted(a:hover:focus)::before, ::slotted(button:hover:focus)::before {
+    border-color: #d5001c !important;
   }
 }
 

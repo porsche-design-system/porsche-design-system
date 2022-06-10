@@ -50,6 +50,9 @@ button:focus:not(:focus-visible)::before {
   button:hover .icon {
     color: #d5001c;
   }
+  button:hover:focus::before {
+    border-color: #d5001c;
+  }
 }
 
 .icon {
@@ -121,6 +124,9 @@ button:focus:not(:focus-visible)::before {
 @media(hover:hover) {
   button:hover .icon {
     color: #d5001c;
+  }
+  button:hover:focus::before {
+    border-color: #d5001c;
   }
 }
 
@@ -200,6 +206,9 @@ button:focus:not(:focus-visible)::before {
 @media(hover:hover) {
   button:hover .icon {
     color: #d5001c;
+  }
+  button:hover:focus::before {
+    border-color: #d5001c;
   }
 }
 
