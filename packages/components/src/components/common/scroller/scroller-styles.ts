@@ -52,7 +52,8 @@ export const getComponentCss = (
     // Needed for position of status bar.
     'scroll-wrapper': {
       position: 'relative',
-      width: 'fit-content',
+      display: 'inline-block',
+      minWidth: '100%',
     },
     trigger: {
       display: 'block',
