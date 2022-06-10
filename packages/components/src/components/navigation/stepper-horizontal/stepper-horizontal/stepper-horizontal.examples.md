@@ -45,7 +45,7 @@ Below you can find an interactive example of an outlined registration process.
 <Playground :frameworkMarkup="codeExample" :config="config">
   <p-stepper-horizontal ref="stepperInteractive" :theme="theme">
     <template v-for="step in steps">
-      <p-stepper-horizontal-item :state="step.state" :theme="theme">{{step.name}}</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item :state="step.state">{{step.name}}</p-stepper-horizontal-item>
     </template>  
   </p-stepper-horizontal>
 
