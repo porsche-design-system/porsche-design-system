@@ -374,7 +374,7 @@ p-text a:focus:not(:focus-visible), p-text button:focus:not(:focus-visible) {
   outline-color: transparent !important;
 }
 @media(hover:hover) {
-  p-text[data-theme=\\"dark\\"] a:hover {
+  p-text[data-theme=\\"dark\\"] a:hover, p-text[data-theme=\\"dark\\"] button:hover {
     color: #ff0223 !important;
   }
   p-text a, p-text button {
@@ -418,7 +418,7 @@ prefixed-p-text a:focus:not(:focus-visible), prefixed-p-text button:focus:not(:f
   outline-color: transparent !important;
 }
 @media(hover:hover) {
-  prefixed-p-text[data-theme=\\"dark\\"] a:hover {
+  prefixed-p-text[data-theme=\\"dark\\"] a:hover, prefixed-p-text[data-theme=\\"dark\\"] button:hover {
     color: #ff0223 !important;
   }
   prefixed-p-text a, prefixed-p-text button {

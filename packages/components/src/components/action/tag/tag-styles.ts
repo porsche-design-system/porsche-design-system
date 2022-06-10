@@ -78,10 +78,8 @@ export const getTagFocusJssStyle = (focusColor: string, focusHoverColor: string)
     '&:focus:not(:focus-visible)::before': {
       borderColor: 'transparent',
     },
-    ...hoverMediaQuery({
-      '&:hover:focus::before': {
-        borderColor: focusHoverColor,
-      },
+    '&:hover:focus::before': hoverMediaQuery({
+      borderColor: focusHoverColor,
     }),
   };
 };
