@@ -11,13 +11,13 @@
   },
   {
     "chunkShortName": "button",
-    "size": 7271,
-    "gzipSize": 2711
+    "size": 7265,
+    "gzipSize": 2716
   },
   {
     "chunkShortName": "button-pure",
-    "size": 8563,
-    "gzipSize": 3502
+    "size": 8446,
+    "gzipSize": 3483
   },
   {
     "chunkShortName": "checkbox-wrapper",
@@ -57,12 +57,12 @@
   {
     "chunkShortName": "icon",
     "size": 14826,
-    "gzipSize": 7494
+    "gzipSize": 7495
   },
   {
     "chunkShortName": "link",
     "size": 5550,
-    "gzipSize": 2173
+    "gzipSize": 2172
   },
   {
     "chunkShortName": "link-pure",
@@ -77,17 +77,17 @@
   {
     "chunkShortName": "main",
     "size": 61383,
-    "gzipSize": 21089
+    "gzipSize": 21094
   },
   {
     "chunkShortName": "marque",
     "size": 4859,
-    "gzipSize": 2094
+    "gzipSize": 2093
   },
   {
     "chunkShortName": "modal",
     "size": 7516,
-    "gzipSize": 3156
+    "gzipSize": 3155
   },
   {
     "chunkShortName": "pagination",
@@ -97,7 +97,7 @@
   {
     "chunkShortName": "popover",
     "size": 7190,
-    "gzipSize": 2837
+    "gzipSize": 2835
   },
   {
     "chunkShortName": "radio-button-wrapper",
@@ -112,17 +112,17 @@
   {
     "chunkShortName": "select-wrapper",
     "size": 22899,
-    "gzipSize": 7381
+    "gzipSize": 7380
   },
   {
     "chunkShortName": "spinner",
     "size": 3338,
-    "gzipSize": 1602
+    "gzipSize": 1603
   },
   {
     "chunkShortName": "switch",
-    "size": 4654,
-    "gzipSize": 1878
+    "size": 4738,
+    "gzipSize": 1905
   },
   {
     "chunkShortName": "table",
@@ -137,7 +137,7 @@
   {
     "chunkShortName": "tag",
     "size": 6428,
-    "gzipSize": 2457
+    "gzipSize": 2456
   },
   {
     "chunkShortName": "text",
@@ -147,7 +147,7 @@
   {
     "chunkShortName": "text-field-wrapper",
     "size": 13014,
-    "gzipSize": 4571
+    "gzipSize": 4566
   },
   {
     "chunkShortName": "text-list",
@@ -157,7 +157,7 @@
   {
     "chunkShortName": "textarea-wrapper",
     "size": 9924,
-    "gzipSize": 3722
+    "gzipSize": 3721
   },
   {
     "chunkShortName": "toast",
