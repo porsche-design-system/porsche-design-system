@@ -2,7 +2,7 @@ import * as domUtils from '../../../utils/dom';
 import * as textFieldWrapperUtils from './text-field-wrapper-utils';
 import { TextFieldWrapper } from './text-field-wrapper';
 import * as attributeObserverUtils from '../../../utils/attribute-observer';
-import * as a11yUtils from '../../../utils/a11y';
+import * as a11yUtils from '../../../utils/a11y/a11y';
 
 jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
