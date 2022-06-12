@@ -66,16 +66,16 @@
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@types/js-beautify": "^1.13.3",
-    "@types/node": "^17.0.41",
+    "@types/node": "^17.0.42",
     "concurrently": "^7.2.1",
-    "devtools-protocol": "^0.0.998277",
+    "devtools-protocol": "^0.0.1011705",
     "globby": "^11.0.4",
     "js-beautify": "^1.14.3",
     "jsdom": "^19.0.0",
     "local-web-server": "^5.2.1",
     "ts-node": "^10.8.1",
     "typescript": "~4.7.3",
-    "webpack": "^5.72.1",
+    "webpack": "^5.73.0",
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.7.2"
   }
