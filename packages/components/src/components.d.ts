@@ -1033,46 +1033,6 @@ export namespace Components {
         "theme"?: Theme;
     }
 }
-export interface PAccordionCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLPAccordionElement;
-}
-export interface PBannerCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLPBannerElement;
-}
-export interface PInlineNotificationCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLPInlineNotificationElement;
-}
-export interface PModalCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLPModalElement;
-}
-export interface PPaginationCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLPPaginationElement;
-}
-export interface PSwitchCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLPSwitchElement;
-}
-export interface PTableCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLPTableElement;
-}
-export interface PTabsCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLPTabsElement;
-}
-export interface PTabsBarCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLPTabsBarElement;
-}
-export interface PToastItemCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLPToastItemElement;
-}
 declare global {
     interface HTMLPAccordionElement extends Components.PAccordion, HTMLStencilElement {
     }
@@ -1426,7 +1386,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when accordion state is changed.
          */
-        "onAccordionChange"?: (event: PAccordionCustomEvent<AccordionChangeEvent>) => void;
+        "onAccordionChange"?: (event: CustomEvent<AccordionChangeEvent>) => void;
         /**
           * Defines if accordion is open.
          */
@@ -1448,7 +1408,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the close button is clicked.
          */
-        "onDismiss"?: (event: PBannerCustomEvent<void>) => void;
+        "onDismiss"?: (event: CustomEvent<void>) => void;
         /**
           * Defines if the banner can be closed/removed by the user.
          */
@@ -1798,11 +1758,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the action button is clicked.
          */
-        "onAction"?: (event: PInlineNotificationCustomEvent<void>) => void;
+        "onAction"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the close button is clicked.
          */
-        "onDismiss"?: (event: PInlineNotificationCustomEvent<void>) => void;
+        "onDismiss"?: (event: CustomEvent<void>) => void;
         /**
           * Defines if the inline-notification can be closed/removed by the user.
          */
@@ -1992,7 +1952,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the component requests to be closed.
          */
-        "onClose"?: (event: PModalCustomEvent<void>) => void;
+        "onClose"?: (event: CustomEvent<void>) => void;
         /**
           * If true, the modal is open.
          */
@@ -2030,7 +1990,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the page changes.
          */
-        "onPageChange"?: (event: PPaginationCustomEvent<PageChangeEvent>) => void;
+        "onPageChange"?: (event: CustomEvent<PageChangeEvent>) => void;
         /**
           * Adapts the color when used on dark background.
          */
@@ -2177,7 +2137,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when checked status is changed.
          */
-        "onSwitchChange"?: (event: PSwitchCustomEvent<SwitchChangeEvent>) => void;
+        "onSwitchChange"?: (event: CustomEvent<SwitchChangeEvent>) => void;
         /**
           * Stretches the contents to max available space.
          */
@@ -2200,7 +2160,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when sorting is changed.
          */
-        "onSortingChange"?: (event: PTableCustomEvent<SortingChangeEvent>) => void;
+        "onSortingChange"?: (event: CustomEvent<SortingChangeEvent>) => void;
     }
     interface PTableBody {
     }
@@ -2242,7 +2202,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when active tab is changed.
          */
-        "onTabChange"?: (event: PTabsCustomEvent<TabChangeEvent>) => void;
+        "onTabChange"?: (event: CustomEvent<TabChangeEvent>) => void;
         /**
           * The text size.
          */
@@ -2268,7 +2228,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when active tab is changed.
          */
-        "onTabChange"?: (event: PTabsBarCustomEvent<TabChangeEvent>) => void;
+        "onTabChange"?: (event: CustomEvent<TabChangeEvent>) => void;
         /**
           * The text size.
          */
@@ -2436,7 +2396,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the close button is clicked.
          */
-        "onDismiss"?: (event: PToastItemCustomEvent<void>) => void;
+        "onDismiss"?: (event: CustomEvent<void>) => void;
         /**
           * State of the toast-item.
          */

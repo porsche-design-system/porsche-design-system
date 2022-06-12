@@ -1,5 +1,9 @@
 # Dependencies 10.06.22
 
+## Stencil
+
+Stencil has a new type output (e.g. PAccordionCustomEvent) which messes with our wrapper generator.
+
 ## Angular v14
 
 "@angular-builders/custom-webpack" does not support Angular 14 yet. They have a v14 beta, we should wait for stable
