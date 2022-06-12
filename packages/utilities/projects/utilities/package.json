@@ -21,7 +21,7 @@
   "dependencies": {},
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@rollup/plugin-typescript": "^8.3.2",
+    "@rollup/plugin-typescript": "^8.3.3",
     "@types/madge": "^5.0.0",
     "@types/styled-components": "^5.1.25",
     "change-case": "^4.1.2",
