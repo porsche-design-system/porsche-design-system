@@ -11,7 +11,7 @@ import * as removeAttributeUtils from '../dom/removeAttribute';
 import type { AriaAttributes } from '../../types';
 import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
 import type { TagName } from '@porsche-design-system/shared';
-import { TAG_NAMES_CONSTRUCTOR_MAP } from '../test-utils/tag-names-constructor-map';
+import { TAG_NAMES_CONSTRUCTOR_MAP } from '../../test-utils/tag-names-constructor-map';
 
 describe('setAriaAttributes()', () => {
   const node = document.createElement('div');
