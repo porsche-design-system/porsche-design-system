@@ -23,19 +23,22 @@ button {
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-button:hover {
-  color: #000;
-  background-color: transparent;
-}
 button:focus {
   box-shadow: 0 0 0 2px #fff, 0 0 0 3px currentColor;
 }
 button:not(:focus-visible) {
   box-shadow: none;
 }
-button:hover .toggle {
-  background-color: #000;
+@media(hover:hover) {
+  button:hover {
+    color: #000;
+    background-color: transparent;
+  }
+  button:hover .toggle {
+    background-color: #000;
+  }
 }
+
 .root {
   display: flex;
   min-width: 0;
@@ -98,19 +101,22 @@ button {
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-button:hover {
-  color: #000;
-  background-color: transparent;
-}
 button:focus {
   box-shadow: 0 0 0 2px #fff, 0 0 0 3px currentColor;
 }
 button:not(:focus-visible) {
   box-shadow: none;
 }
-button:hover .toggle {
-  background-color: #000;
+@media(hover:hover) {
+  button:hover {
+    color: #000;
+    background-color: transparent;
+  }
+  button:hover .toggle {
+    background-color: #000;
+  }
 }
+
 .root {
   display: flex;
   min-width: 0;
@@ -172,19 +178,22 @@ button {
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-button:hover {
-  color: #000;
-  background-color: transparent;
-}
 button:focus {
   box-shadow: 0 0 0 2px #fff, 0 0 0 3px currentColor;
 }
 button:not(:focus-visible) {
   box-shadow: none;
 }
-button:hover .toggle {
-  background-color: #000;
+@media(hover:hover) {
+  button:hover {
+    color: #000;
+    background-color: transparent;
+  }
+  button:hover .toggle {
+    background-color: #000;
+  }
 }
+
 .root {
   display: flex;
   min-width: 0;
@@ -380,19 +389,22 @@ button {
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-button:hover {
-  color: #000;
-  background-color: transparent;
-}
 button:focus {
   box-shadow: 0 0 0 2px #fff, 0 0 0 3px currentColor;
 }
 button:not(:focus-visible) {
   box-shadow: none;
 }
-button:hover .toggle {
-  background-color: #000;
+@media(hover:hover) {
+  button:hover {
+    color: #000;
+    background-color: transparent;
+  }
+  button:hover .toggle {
+    background-color: #000;
+  }
 }
+
 .root {
   display: flex;
   min-width: 0;
@@ -461,19 +473,22 @@ button {
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-button:hover {
-  color: #014d0c;
-  background-color: #014d0c;
-}
 button:focus {
   box-shadow: 0 0 0 2px #fff, 0 0 0 3px currentColor;
 }
 button:not(:focus-visible) {
   box-shadow: none;
 }
-button:hover .toggle {
-  background-color: #fff;
+@media(hover:hover) {
+  button:hover {
+    color: #014d0c;
+    background-color: #014d0c;
+  }
+  button:hover .toggle {
+    background-color: #fff;
+  }
 }
+
 .root {
   display: flex;
   min-width: 0;
@@ -535,19 +550,22 @@ button {
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
 }
-button:hover {
-  color: #000;
-  background-color: transparent;
-}
 button:focus {
   box-shadow: 0 0 0 2px #fff, 0 0 0 3px currentColor;
 }
 button:not(:focus-visible) {
   box-shadow: none;
 }
-button:hover .toggle {
-  background-color: #000;
+@media(hover:hover) {
+  button:hover {
+    color: #000;
+    background-color: transparent;
+  }
+  button:hover .toggle {
+    background-color: #000;
+  }
 }
+
 .root {
   display: flex;
   min-width: 0;

@@ -52,9 +52,6 @@ span:focus {
 span:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-span:hover {
-  color: #ff0223;
-}
 span:active {
   outline: none;
   color: #ff0223;
@@ -66,9 +63,6 @@ span[aria-disabled] {
 }
 span[aria-current] {
   cursor: default;
-}
-span[aria-current]:hover {
-  color: #fff;
 }
 span[aria-current]::after {
   content: \\"\\";
@@ -107,6 +101,15 @@ span[aria-current]::after {
 @media(min-width:1760px) {
   nav {
     counter-reset: size 7;
+  }
+}
+
+@media(hover:hover) {
+  span:hover {
+    color: #ff0223;
+  }
+  span[aria-current]:hover {
+    color: #fff;
   }
 }
 
@@ -171,9 +174,6 @@ span:focus {
 span:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-span:hover {
-  color: #ff0223;
-}
 span:active {
   outline: none;
   color: #ff0223;
@@ -186,9 +186,6 @@ span[aria-disabled] {
 span[aria-current] {
   cursor: default;
 }
-span[aria-current]:hover {
-  color: #fff;
-}
 span[aria-current]::after {
   content: \\"\\";
   display: block;
@@ -199,6 +196,15 @@ span[aria-current]::after {
   height: 0.25rem;
   background: #d5001c;
 }
+@media(hover:hover) {
+  span:hover {
+    color: #ff0223;
+  }
+  span[aria-current]:hover {
+    color: #fff;
+  }
+}
+
 .ellipsis {
   cursor: default;
   pointer-events: none;
@@ -260,9 +266,6 @@ span:focus {
 span:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-span:hover {
-  color: #d5001c;
-}
 span:active {
   outline: none;
   color: #d5001c;
@@ -275,9 +278,6 @@ span[aria-disabled] {
 span[aria-current] {
   cursor: default;
 }
-span[aria-current]:hover {
-  color: #000;
-}
 span[aria-current]::after {
   content: \\"\\";
   display: block;
@@ -288,6 +288,15 @@ span[aria-current]::after {
   height: 0.25rem;
   background: #d5001c;
 }
+@media(hover:hover) {
+  span:hover {
+    color: #d5001c;
+  }
+  span[aria-current]:hover {
+    color: #000;
+  }
+}
+
 .ellipsis {
   cursor: default;
   pointer-events: none;
@@ -349,9 +358,6 @@ span:focus {
 span:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-span:hover {
-  color: #ff0223;
-}
 span:active {
   outline: none;
   color: #ff0223;
@@ -364,9 +370,6 @@ span[aria-disabled] {
 span[aria-current] {
   cursor: default;
 }
-span[aria-current]:hover {
-  color: #fff;
-}
 span[aria-current]::after {
   content: \\"\\";
   display: block;
@@ -377,6 +380,15 @@ span[aria-current]::after {
   height: 0.25rem;
   background: #d5001c;
 }
+@media(hover:hover) {
+  span:hover {
+    color: #ff0223;
+  }
+  span[aria-current]:hover {
+    color: #fff;
+  }
+}
+
 .ellipsis {
   cursor: default;
   pointer-events: none;
@@ -438,9 +450,6 @@ span:focus {
 span:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-span:hover {
-  color: #d5001c;
-}
 span:active {
   outline: none;
   color: #d5001c;
@@ -453,9 +462,6 @@ span[aria-disabled] {
 span[aria-current] {
   cursor: default;
 }
-span[aria-current]:hover {
-  color: #000;
-}
 span[aria-current]::after {
   content: \\"\\";
   display: block;
@@ -466,6 +472,15 @@ span[aria-current]::after {
   height: 0.25rem;
   background: #d5001c;
 }
+@media(hover:hover) {
+  span:hover {
+    color: #d5001c;
+  }
+  span[aria-current]:hover {
+    color: #000;
+  }
+}
+
 .ellipsis {
   cursor: default;
   pointer-events: none;

@@ -14,6 +14,7 @@ import {
 import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
+import { hoverMediaQuery } from '../../../styles/hover-media-query';
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -77,9 +78,11 @@ export const getComponentCss = (
         color: baseColor,
         transition: getTransition('color'),
         ...getFocusJssStyle({ offset: hasVisibleState ? -5 : -4 }),
-        '&:hover': {
-          color: hoverColor,
-        },
+        ...hoverMediaQuery({
+          '&:hover': {
+            color: hoverColor,
+          },
+        }),
         '&:active': {
           color: activeColor,
         },
