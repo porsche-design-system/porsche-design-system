@@ -9,7 +9,7 @@ import { AlignLabel, BreakpointCustomizable, ButtonType, ButtonVariant, FormStat
 import { AccordionChangeEvent, AccordionSize } from "./components/content/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { BannerState } from "./components/feedback/banner/banner-utils";
-import { ButtonAriaAttributes } from "./components/action/button/button-utils";
+import { ButtonAriaAttributes } from "./utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/layout/content-wrapper/content-wrapper-utils";
 import { DividerColor, DividerOrientation } from "./components/layout/divider/divider-utils";
