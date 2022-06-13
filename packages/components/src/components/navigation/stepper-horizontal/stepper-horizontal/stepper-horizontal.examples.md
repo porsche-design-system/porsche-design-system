@@ -43,10 +43,10 @@ If the amount of steps exceeds the viewport, the component renders arrow-buttons
 Below you can find an interactive example of an outlined registration process.
 
 <Playground :frameworkMarkup="codeExample" :config="config">
-  <p-stepper-horizontal ref="stepperInteractive" :theme="theme">
-    <template v-for="step in steps">
-      <p-stepper-horizontal-item :state="step.state">{{step.name}}</p-stepper-horizontal-item>
-    </template>  
+  <p-stepper-horizontal ref="stepperInteractive" :theme="theme">    
+    <p-stepper-horizontal-item ref="step1" :state="'current'">Enter personal details</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item ref="step2">Confirm e-mail</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item ref="step3">Set password</p-stepper-horizontal-item>      
   </p-stepper-horizontal>
 
   <template v-for="(content, i) in stepContent">
@@ -106,18 +106,9 @@ export default class Code extends Vue {
   </p-stepper-horizontal>
 </div>`;
 
-  steps = [
-    {
-      state: 'current',
-      name: 'Enter personal details',
-    },
-    {
-      name: 'Confirm e-mail',
-    },
-    {
-      name: 'Set password',
-    },
-  ];
+  stepsRefs = [];
+
+  steps = [{state: 'current'}, {state: undefined}, {state:undefined}];
 
   stepContent = [
     'A form with personal details could be displayed here.',
@@ -130,20 +121,24 @@ export default class Code extends Vue {
   }
   
   onNextPrevStep(direction) {
-    const newState = [...this.steps];
-    const activeStepIndex = this.getActiveStepIndex(newState);
+    const activeStepIndex = this.getActiveStepIndex(this.stepsRefs);
 
     if (direction === 'next') {
-      newState[activeStepIndex].state = 'complete';
-      newState[activeStepIndex + 1].state = 'current';
+      this.stepsRefs[activeStepIndex].state = 'complete';
+      this.steps[activeStepIndex].state = 'complete';
+      this.stepsRefs[activeStepIndex + 1].state = 'current';
+      this.steps[activeStepIndex + 1].state = 'current';
     } else {
-      delete newState[activeStepIndex].state;
-      newState[activeStepIndex - 1].state = 'current';
+      this.stepsRefs[activeStepIndex].state = undefined;
+      this.steps[activeStepIndex].state = undefined;
+      this.stepsRefs[activeStepIndex - 1].state = 'current';
+      this.steps[activeStepIndex - 1].state = 'current';
     }
-
-    this.steps = newState;
   }
-  mounted() {   
+
+  mounted() {
+    this.stepsRefs = [this.$refs.step1, this.$refs.step2, this.$refs.step3];
+
     /* initially update accordion with open attribute in playground */
     this.registerEvents();
 
@@ -160,15 +155,14 @@ export default class Code extends Vue {
 
   registerEvents() {    
     this.$refs.stepperInteractive.addEventListener('stepChange', (e) => {
-      const { activeStepIndex } = e.detail;
-
-      const newState = [...this.steps];
-      newState[activeStepIndex].state = 'current';
-      for (let i = activeStepIndex + 1; i < newState.length; i++) {
+      const { activeStepIndex } = e.detail;      
+      for (let i = activeStepIndex + 1; i < this.stepsRefs.length; i++) {
         /* reset step state when going back via stepper horizontal item click */
-        delete newState[i].state;
+        this.stepsRefs[i].state = undefined;
+        this.steps[i].state = undefined;
       }
-      this.steps = newState;
+      this.stepsRefs[activeStepIndex].state = 'current';
+      this.steps[activeStepIndex].state = 'current';
     });
   }
 
