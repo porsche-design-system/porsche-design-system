@@ -1,11 +1,3 @@
-import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
-import {
-  attachComponentCss,
-  getPrefixedTagNames,
-  improveButtonHandlingForCustomElement,
-  isDisabledOrLoading,
-  parseAndGetAriaAttributes,
-} from '../../../utils';
 import type {
   SelectedAriaAttributes,
   BreakpointCustomizable,
@@ -14,8 +6,15 @@ import type {
   IconName,
   ThemeExtendedElectric,
 } from '../../../types';
-import type { ButtonAriaAttributes } from './button-utils';
-import { BUTTON_ARIA_ATTRIBUTES } from './button-utils';
+import type { ButtonAriaAttributes } from '../../../utils';
+import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
+import {
+  attachComponentCss,
+  getPrefixedTagNames,
+  improveButtonHandlingForCustomElement,
+  isDisabledOrLoading,
+} from '../../../utils';
+import { getButtonAriaAttributes } from './button-utils';
 import { getComponentCss } from './button-styles';
 
 @Component({
@@ -89,12 +88,10 @@ export class Button {
 
     return (
       <button
+        {...getButtonAriaAttributes(this.disabled, this.loading, this.aria)}
         class="root"
         type={this.type}
-        disabled={this.disabled}
         tabindex={this.tabbable ? 0 : -1}
-        aria-busy={this.loading ? 'true' : null}
-        {...parseAndGetAriaAttributes(this.aria, BUTTON_ARIA_ATTRIBUTES)}
       >
         {this.loading ? (
           <PrefixedTagNames.pSpinner

@@ -13,6 +13,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Stepper Horizontal`
 
+#### Changed
+
+- `Button`, `Button Pure` and `Switch` apply `aria-disabled="true"` instead of `disabled` attribute to native button
+  internally in case `disabled` and/or `loading` property is set
+
 ### [2.12.1] - 2022-05-25
 
 ### [2.12.1-rc.0] - 2022-05-25
