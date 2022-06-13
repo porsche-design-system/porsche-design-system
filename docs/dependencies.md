@@ -53,7 +53,7 @@ aren't Vue **3** compatible. In addition `sass-loader` can't be updated because 
 ## Angular
 
 Angular Compiler decides by itself which TypeScript version it supports. As soon as an unsupported TypeScript version is
-installed then the Angular build will fail.
+installed, the Angular build will fail.
 
 ### Affected dependencies:
 
