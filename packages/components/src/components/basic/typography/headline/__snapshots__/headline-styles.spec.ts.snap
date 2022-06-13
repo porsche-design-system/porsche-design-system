@@ -450,21 +450,14 @@ exports[`getSlottedCss() should return correct css 1`] = `
 "p-headline a {
   color: inherit !important;
   text-decoration: none !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
-}
-p-headline[data-theme=\\"dark\\"] a:hover {
-  color: #ff0223 !important;
 }
 p-headline b, p-headline strong {
   font-weight: 700 !important;
 }
 p-headline em, p-headline i {
   font-style: normal !important;
-}
-p-headline a:hover {
-  color: #d5001c !important;
 }
 p-headline a::-moz-focus-inner {
   border: 0 !important;
@@ -474,28 +467,33 @@ p-headline a:focus {
 }
 p-headline a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}"
+}
+@media(hover:hover) {
+  p-headline[data-theme=\\"dark\\"] a:hover {
+    color: #ff0223 !important;
+  }
+  p-headline a {
+    transition: color var(--p-transition-duration, .24s) ease !important;
+  }
+  p-headline a:hover {
+    color: #d5001c !important;
+  }
+}
+"
 `;
 
 exports[`getSlottedCss() should return correct css with prefix 1`] = `
 "prefixed-p-headline a {
   color: inherit !important;
   text-decoration: none !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
-}
-prefixed-p-headline[data-theme=\\"dark\\"] a:hover {
-  color: #ff0223 !important;
 }
 prefixed-p-headline b, prefixed-p-headline strong {
   font-weight: 700 !important;
 }
 prefixed-p-headline em, prefixed-p-headline i {
   font-style: normal !important;
-}
-prefixed-p-headline a:hover {
-  color: #d5001c !important;
 }
 prefixed-p-headline a::-moz-focus-inner {
   border: 0 !important;
@@ -505,5 +503,17 @@ prefixed-p-headline a:focus {
 }
 prefixed-p-headline a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}"
+}
+@media(hover:hover) {
+  prefixed-p-headline[data-theme=\\"dark\\"] a:hover {
+    color: #ff0223 !important;
+  }
+  prefixed-p-headline a {
+    transition: color var(--p-transition-duration, .24s) ease !important;
+  }
+  prefixed-p-headline a:hover {
+    color: #d5001c !important;
+  }
+}
+"
 `;

@@ -31,9 +31,6 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   cursor: pointer !important;
   transition: color var(--p-transition-duration, .24s) ease !important;
 }
-::slotted(a:hover),::slotted(button:hover) {
-  color: #ff0223 !important;
-}
 ::slotted(a:active),::slotted(a[aria-selected=\\"true\\"]),::slotted(button:active),::slotted(button[aria-selected=\\"true\\"]) {
   color: #ff0223 !important;
 }
@@ -46,6 +43,12 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
+@media(hover:hover) {
+  ::slotted(a:hover),::slotted(button:hover) {
+    color: #ff0223 !important;
+  }
+}
+
 .scroller {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -102,9 +105,6 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   cursor: pointer !important;
   transition: color var(--p-transition-duration, .24s) ease !important;
 }
-::slotted(a:hover),::slotted(button:hover) {
-  color: #d5001c !important;
-}
 ::slotted(a:active),::slotted(a[aria-selected=\\"true\\"]),::slotted(button:active),::slotted(button[aria-selected=\\"true\\"]) {
   color: #d5001c !important;
 }
@@ -117,6 +117,12 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
+@media(hover:hover) {
+  ::slotted(a:hover),::slotted(button:hover) {
+    color: #d5001c !important;
+  }
+}
+
 .scroller {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -173,9 +179,6 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   cursor: pointer !important;
   transition: color var(--p-transition-duration, .24s) ease !important;
 }
-::slotted(a:hover),::slotted(button:hover) {
-  color: #00b0f4 !important;
-}
 ::slotted(a:active),::slotted(a[aria-selected=\\"true\\"]),::slotted(button:active),::slotted(button[aria-selected=\\"true\\"]) {
   color: #00b0f4 !important;
 }
@@ -188,6 +191,12 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
+@media(hover:hover) {
+  ::slotted(a:hover),::slotted(button:hover) {
+    color: #00b0f4 !important;
+  }
+}
+
 .scroller {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -244,9 +253,6 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   cursor: pointer !important;
   transition: color var(--p-transition-duration, .24s) ease !important;
 }
-::slotted(a:hover),::slotted(button:hover) {
-  color: #ff0223 !important;
-}
 ::slotted(a:active),::slotted(a[aria-selected=\\"true\\"]),::slotted(button:active),::slotted(button[aria-selected=\\"true\\"]) {
   color: #ff0223 !important;
 }
@@ -259,6 +265,12 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
+@media(hover:hover) {
+  ::slotted(a:hover),::slotted(button:hover) {
+    color: #ff0223 !important;
+  }
+}
+
 .scroller {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -315,9 +327,6 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   cursor: pointer !important;
   transition: color var(--p-transition-duration, .24s) ease !important;
 }
-::slotted(a:hover),::slotted(button:hover) {
-  color: #d5001c !important;
-}
 ::slotted(a:active),::slotted(a[aria-selected=\\"true\\"]),::slotted(button:active),::slotted(button[aria-selected=\\"true\\"]) {
   color: #d5001c !important;
 }
@@ -330,6 +339,12 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
+@media(hover:hover) {
+  ::slotted(a:hover),::slotted(button:hover) {
+    color: #d5001c !important;
+  }
+}
+
 .scroller {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -386,9 +401,6 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   cursor: pointer !important;
   transition: color var(--p-transition-duration, .24s) ease !important;
 }
-::slotted(a:hover),::slotted(button:hover) {
-  color: #00b0f4 !important;
-}
 ::slotted(a:active),::slotted(a[aria-selected=\\"true\\"]),::slotted(button:active),::slotted(button[aria-selected=\\"true\\"]) {
   color: #00b0f4 !important;
 }
@@ -401,6 +413,12 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
+@media(hover:hover) {
+  ::slotted(a:hover),::slotted(button:hover) {
+    color: #00b0f4 !important;
+  }
+}
+
 .scroller {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -457,9 +475,6 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   cursor: pointer !important;
   transition: color var(--p-transition-duration, .24s) ease !important;
 }
-::slotted(a:hover),::slotted(button:hover) {
-  color: #d5001c !important;
-}
 ::slotted(a:active),::slotted(a[aria-selected=\\"true\\"]),::slotted(button:active),::slotted(button[aria-selected=\\"true\\"]) {
   color: #d5001c !important;
 }
@@ -472,6 +487,12 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
+@media(hover:hover) {
+  ::slotted(a:hover),::slotted(button:hover) {
+    color: #d5001c !important;
+  }
+}
+
 .scroller {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -528,9 +549,6 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   cursor: pointer !important;
   transition: color var(--p-transition-duration, .24s) ease !important;
 }
-::slotted(a:hover),::slotted(button:hover) {
-  color: #d5001c !important;
-}
 ::slotted(a:active),::slotted(a[aria-selected=\\"true\\"]),::slotted(button:active),::slotted(button[aria-selected=\\"true\\"]) {
   color: #d5001c !important;
 }
@@ -543,6 +561,12 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
+@media(hover:hover) {
+  ::slotted(a:hover),::slotted(button:hover) {
+    color: #d5001c !important;
+  }
+}
+
 .scroller {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;

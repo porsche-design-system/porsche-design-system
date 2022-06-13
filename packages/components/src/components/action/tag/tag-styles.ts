@@ -12,6 +12,7 @@ import type { TagColor } from './tag-utils';
 import { hasInvertedThemeColor } from './tag-utils';
 import type { Theme } from '../../../types';
 import type { JssStyle } from 'jss';
+import { hoverMediaQuery } from '../../../styles/hover-media-query';
 
 export const getThemedBackgroundColor = (tagColor: TagColor, themedColors: ThemedColors): string => {
   const colorMap: { [key in TagColor]: string } = {
@@ -77,9 +78,9 @@ export const getTagFocusJssStyle = (focusColor: string, focusHoverColor: string)
     '&:focus:not(:focus-visible)::before': {
       borderColor: 'transparent',
     },
-    '&:hover:focus::before': {
+    '&:hover:focus::before': hoverMediaQuery({
       borderColor: focusHoverColor,
-    },
+    }),
   };
 };
 
@@ -105,9 +106,11 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
         whiteSpace: 'nowrap',
         ...(isFocusable && {
           transition: getTransition('color'),
-          '&:hover': {
-            color: hoverColor,
-          },
+          ...hoverMediaQuery({
+            '&:hover': {
+              color: hoverColor,
+            },
+          }),
         }),
       },
       '::slotted': addImportantToEachRule({
@@ -132,9 +135,11 @@ export const getComponentCss = (tagColor: TagColor, isFocusable: boolean, theme:
             color: baseColor, // TODO: chrome hover bug. Remove when fixed.
             transition: getTransition('color'), // TODO: chrome hover bug. Remove when fixed.
           },
-          '&(a:hover)': {
-            color: hoverColor, // TODO: chrome hover bug. Remove when fixed.
-          },
+          ...hoverMediaQuery({
+            '&(a:hover)': {
+              color: hoverColor, // TODO: chrome hover bug. Remove when fixed.
+            },
+          }),
           '&(button)': {
             margin: 0,
             padding: 0,
