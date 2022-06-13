@@ -12,6 +12,7 @@ import { getFunctionalComponentRequiredStyles } from '../../common/required/requ
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { getCheckboxRadioLabelJssStyle } from '../../../styles/checkbox-radio-styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
+import { hoverMediaQuery } from '../../../styles/hover-media-query';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
@@ -63,9 +64,11 @@ export const getComponentCss = (
           borderColor: formStateColor || contrastHighColor,
           backgroundColor: formStateColor || contrastHighColor,
         },
-        '&(input:not(:disabled):hover), .label:hover ~ &(input:not(:disabled))': {
-          borderColor: formStateHoverColor || baseColor,
-        },
+        ...hoverMediaQuery({
+          '&(input:not(:disabled):hover), .label:hover ~ &(input:not(:disabled))': {
+            borderColor: formStateHoverColor || baseColor,
+          },
+        }),
         '&(input:indeterminate:disabled), &(input:checked:disabled)': {
           backgroundColor: disabledColor,
         },

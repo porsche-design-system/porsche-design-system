@@ -19,7 +19,7 @@ export class TabsItem {
   public componentWillRender(): void {
     const tabs = this.host.parentElement as HTMLPTabsElement;
     if (tabs) {
-      attachComponentCss(this.host, getComponentCss, tabs.theme);
+      attachComponentCss(this.host, getComponentCss, tabs.theme || 'light');
     }
   }
 
