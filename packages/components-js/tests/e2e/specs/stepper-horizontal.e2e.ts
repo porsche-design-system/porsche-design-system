@@ -3,6 +3,7 @@ import {
   addEventListener,
   CSS_ANIMATION_DURATION,
   expectA11yToMatchSnapshot,
+  FOCUS_PADDING,
   getAttribute,
   getLifecycleStatus,
   getOffsetLeft,
@@ -110,8 +111,6 @@ describe('validation', () => {
 });
 
 describe('scrolling', () => {
-  const FOCUS_PADDING = 8;
-
   it('should scroll current step into view', async () => {
     await initStepperHorizontal({ amount: 9, currentStep: 3, isWrapped: true });
     const allSteps = await getAllStepItems();

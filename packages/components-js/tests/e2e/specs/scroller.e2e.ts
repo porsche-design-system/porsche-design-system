@@ -1,17 +1,16 @@
 import { ElementHandle, Page } from 'puppeteer';
 import {
+  CSS_ANIMATION_DURATION,
   expectA11yToMatchSnapshot,
   getElementStyle,
   getLifecycleStatus,
   getProperty,
+  SCROLL_PERCENTAGE,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-
-export const CSS_ANIMATION_DURATION = 1000;
-const SCROLL_PERCENTAGE = 0.2;
 
 describe('scroller', () => {
   let page: Page;

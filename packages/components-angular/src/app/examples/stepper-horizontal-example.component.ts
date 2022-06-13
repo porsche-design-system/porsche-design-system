@@ -56,11 +56,11 @@ export class StepperHorizontalExampleComponent {
     'A form with a password input field could be displayed here.',
   ];
 
-  getActiveStepIndex(steps: StepperHorizontalItemProps[]) {
+  getActiveStepIndex(steps: StepperHorizontalItemProps[]): number {
     return steps.findIndex((step) => step.state === 'current');
   }
 
-  onNextPrevStep(direction: 'next' | 'prev') {
+  onNextPrevStep(direction: 'next' | 'prev'): void {
     const newState = [...this.steps];
     const activeStepIndex = this.getActiveStepIndex(newState);
 
@@ -75,7 +75,7 @@ export class StepperHorizontalExampleComponent {
     this.steps = newState;
   }
 
-  onStepChange(e: CustomEvent<StepChangeEvent>) {
+  onStepChange(e: CustomEvent<StepChangeEvent>): void {
     const { activeStepIndex } = e.detail;
 
     const newState = [...this.steps];

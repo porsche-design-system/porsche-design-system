@@ -50,7 +50,7 @@ export const StepperHorizontalExample = (): JSX.Element => {
     setSteps(newState);
   };
 
-  const handleStepChange = (e: CustomEvent<StepChangeEvent>) => {
+  const handleStepChange = (e: CustomEvent<StepChangeEvent>): void => {
     const { activeStepIndex } = e.detail;
 
     const newState = [...steps];
