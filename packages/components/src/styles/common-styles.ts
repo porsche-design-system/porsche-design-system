@@ -121,7 +121,7 @@ export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withD
     },
     ...(opts.withDarkTheme &&
       ({
-        '&[data-theme="dark"] a:hover': hoverMediaQuery(getHoverJssStyle({ theme: 'dark' })['&:hover']),
+        '&[data-theme="dark"] a:hover': hoverMediaQuery(getHoverJssStyle({ theme: 'dark' })['&:hover'] as JssStyle),
       } as Styles)),
     '& b, & strong': {
       fontWeight: fontWeight.bold,
