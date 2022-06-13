@@ -4,11 +4,12 @@
 
 Stencil has a new type output (e.g. PAccordionCustomEvent) which messes with our wrapper generator.
 
----
 
 ### Affected dependencies:
 
 * `@stencil/core`
+
+---
 
 ## Angular v14
 
