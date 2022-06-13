@@ -1,13 +1,32 @@
-# Dependencies 10.06.22
+# Dependencies 13.06.22
 
 ## Stencil
 
 Stencil has a new type output (e.g. PAccordionCustomEvent) which messes with our wrapper generator.
 
+---
+
+### Affected dependencies:
+
+* `@stencil/core`
+
 ## Angular v14
 
 "@angular-builders/custom-webpack" does not support Angular 14 yet. They have a v14 beta, we should wait for stable
 until upgrade.
+
+### Affected dependencies:
+
+* `@angular-builders/custom-webpack`
+* `@angular/animations`
+* `@angular/common`
+* `@angular/compiler`
+* `@angular/core`
+* `@angular/forms`
+* `@angular/platform-browser`
+* `@angular/platform-browser-dynamic`
+
+---
 
 ## Vue
 
