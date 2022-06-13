@@ -27,14 +27,16 @@ Object {
     "&:focus:not(:focus-visible)": Object {
       "outlineColor": "transparent",
     },
-    "&:hover": Object {
-      "color": "#d5001c",
+    "@media(hover:hover)": Object {
+      "&:hover": Object {
+        "color": "#d5001c",
+      },
+      "transition": "color var(--p-transition-duration, .24s) ease",
     },
     "color": "inherit",
     "outline": "1px solid transparent",
     "outlineOffset": "1px",
     "textDecoration": "underline",
-    "transition": "color var(--p-transition-duration, .24s) ease",
   },
   "& b, & strong": Object {
     "fontWeight": 700,
@@ -57,14 +59,16 @@ Object {
     "&:focus:not(:focus-visible)": Object {
       "outlineColor": "transparent",
     },
-    "&:hover": Object {
-      "color": "#d5001c",
+    "@media(hover:hover)": Object {
+      "&:hover": Object {
+        "color": "#d5001c",
+      },
+      "transition": "color var(--p-transition-duration, .24s) ease",
     },
     "color": "inherit",
     "outline": "1px solid transparent",
     "outlineOffset": "1px",
     "textDecoration": "underline",
-    "transition": "color var(--p-transition-duration, .24s) ease",
   },
   "& b, & strong": Object {
     "fontWeight": 700,
@@ -73,7 +77,9 @@ Object {
     "fontStyle": "normal",
   },
   "&[data-theme=\\"dark\\"] a:hover": Object {
-    "color": "#ff0223",
+    "@media(hover:hover)": Object {
+      "color": "#ff0223",
+    },
   },
 }
 `;
@@ -90,14 +96,16 @@ Object {
     "&:focus:not(:focus-visible)": Object {
       "outlineColor": "transparent",
     },
-    "&:hover": Object {
-      "color": "#d5001c",
+    "@media(hover:hover)": Object {
+      "&:hover": Object {
+        "color": "#d5001c",
+      },
+      "transition": "color var(--p-transition-duration, .24s) ease",
     },
     "color": "inherit",
     "outline": "1px solid transparent",
     "outlineOffset": "1px",
     "textDecoration": "underline",
-    "transition": "color var(--p-transition-duration, .24s) ease",
   },
   "& b, & strong": Object {
     "fontWeight": 700,

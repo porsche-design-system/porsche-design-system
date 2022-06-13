@@ -3,6 +3,7 @@ import type { Theme } from '../types';
 import type { PropertiesHyphen } from 'csstype';
 import { fontWeight } from '@porsche-design-system/utilities-v2';
 import { getThemedColors } from './';
+import { hoverMediaQuery } from './hover-media-query';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
 const transitionTimingFunction = 'ease';
@@ -115,12 +116,13 @@ export const getBaseSlottedStyles = (opts: { withDarkTheme?: boolean } = { withD
     '& a': {
       color: 'inherit',
       textDecoration: 'underline',
-      ...getHoverJssStyle(),
       ...getFocusJssStyle({ offset: 1 }),
+      ...hoverMediaQuery(getHoverJssStyle()),
     },
-    ...(opts.withDarkTheme && {
-      '&[data-theme="dark"] a:hover': getHoverJssStyle({ theme: 'dark' })['&:hover'],
-    }),
+    ...(opts.withDarkTheme &&
+      ({
+        '&[data-theme="dark"] a:hover': hoverMediaQuery(getHoverJssStyle({ theme: 'dark' })['&:hover'] as JssStyle),
+      } as Styles)),
     '& b, & strong': {
       fontWeight: fontWeight.bold,
     },
