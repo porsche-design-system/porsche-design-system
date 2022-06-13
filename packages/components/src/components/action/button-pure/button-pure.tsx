@@ -1,16 +1,4 @@
-import { Host, Component, Element, h, JSX, Prop, Listen } from '@stencil/core';
-import {
-  calcLineHeightForElement,
-  getPrefixedTagNames,
-  hasVisibleIcon,
-  hasSlottedSubline,
-  improveButtonHandlingForCustomElement,
-  isDisabledOrLoading,
-  transitionListener,
-  attachComponentCss,
-  parseAndGetAriaAttributes,
-  warnIfParentIsPTextAndIconIsNone,
-} from '../../../utils';
+import type { ButtonAriaAttributes } from '../../../utils';
 import type {
   SelectedAriaAttributes,
   AlignLabel,
@@ -21,10 +9,20 @@ import type {
   TextWeight,
   ThemeExtendedElectricDark,
 } from '../../../types';
-import { warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
+import { Host, Component, Element, h, JSX, Prop, Listen } from '@stencil/core';
+import {
+  calcLineHeightForElement,
+  getPrefixedTagNames,
+  hasVisibleIcon,
+  hasSlottedSubline,
+  improveButtonHandlingForCustomElement,
+  isDisabledOrLoading,
+  transitionListener,
+  attachComponentCss,
+  warnIfParentIsPTextAndIconIsNone,
+} from '../../../utils';
+import { getButtonAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 import { getComponentCss } from './button-pure-styles';
-import type { ButtonAriaAttributes } from '../button/button-utils';
-import { BUTTON_ARIA_ATTRIBUTES } from '../button/button-utils';
 import { isSizeInherit } from '../../../utils';
 
 @Component({
@@ -143,14 +141,11 @@ export class ButtonPure {
     return (
       <Host>
         <button
+          {...getButtonAriaAttributes(this.disabled, this.loading, hasSubline, this.aria)}
           class="root"
           type={this.type}
-          disabled={this.disabled}
           tabindex={this.tabbable ? 0 : -1}
           ref={(el) => (this.buttonTag = el)}
-          aria-busy={this.loading ? 'true' : null}
-          aria-describedby={hasSubline ? 'subline' : null}
-          {...parseAndGetAriaAttributes(this.aria, BUTTON_ARIA_ATTRIBUTES)}
         >
           {hasIcon &&
             (this.loading ? (

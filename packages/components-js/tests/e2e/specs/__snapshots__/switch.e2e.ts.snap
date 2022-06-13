@@ -1,21 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`switch accessibility should expose correct accessibility tree if checked value is set programmatically: Checked 1`] = `
-Object {
-  "checked": true,
-  "name": "Some Label",
-  "role": "switch",
-}
-`;
-
-exports[`switch accessibility should expose correct accessibility tree if checked value is set programmatically: Unchecked 1`] = `
-Object {
-  "checked": false,
-  "name": "Some Label",
-  "role": "switch",
-}
-`;
-
 exports[`switch accessibility should expose correct initial accessibility tree 1`] = `
 Object {
   "children": Array [

@@ -659,7 +659,7 @@ exports[`should have no basic DOM regression for p-switch 1`] = `
     <slot>
     </slot>
   </p-text>
-  <button type=\\"button\\" role=\\"switch\\" aria-labelledby=\\"label\\" aria-checked=\\"false\\" tabindex=\\"0\\">
+  <button aria-checked=\\"false\\" aria-labelledby=\\"label\\" type=\\"button\\" role=\\"switch\\" tabindex=\\"0\\">
     <span class=\\"toggle\\">
     </span>
   </button>
