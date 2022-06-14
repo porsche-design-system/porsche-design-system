@@ -8,6 +8,8 @@ import {
   waitForStencilLifecycle,
   addEventListener,
   reattachElement,
+  isElementAtIndexFocused,
+  getProperty,
 } from '../helpers';
 import type { Page } from 'puppeteer';
 
@@ -30,8 +32,8 @@ const getAllButtons = async () =>
     )
   );
 
-const initSegmentedControl = (opts?: { amount: number }): Promise<void> => {
-  const { amount = 1 } = opts || {};
+const initSegmentedControl = (opts?: { amount?: number; value?: number }): Promise<void> => {
+  const { amount = 1, value = 1 } = opts || {};
   const items = Array.from(Array(amount))
     .map((_, i) => `<p-segmented-control-item value="${i + 1}">Option ${i + 1}</p-segmented-control-item>`)
     .join('\n');
@@ -39,7 +41,7 @@ const initSegmentedControl = (opts?: { amount: number }): Promise<void> => {
   return setContentWithDesignSystem(
     page,
     `
-    <p-segmented-control value="1">
+    <p-segmented-control value="${value}">
       ${items}
     </p-segmented-control>`
   );
@@ -108,7 +110,102 @@ describe('events', () => {
   });
 });
 
-xdescribe('keyboard', () => {});
+describe('keyboard', () => {
+  it('should render focus on first item when it is selected on keyboard "tab" press', async () => {
+    await initSegmentedControl({ amount: 2 });
+    expect(await isElementAtIndexFocused(page, 0)).toBeUndefined();
+    expect(await isElementAtIndexFocused(page, 1)).toBeUndefined();
+
+    await page.keyboard.press('Tab');
+
+    expect(await isElementAtIndexFocused(page, 0)).toBe(true);
+    expect(await isElementAtIndexFocused(page, 1)).toBeUndefined();
+
+    await page.keyboard.press('Tab');
+
+    expect(await isElementAtIndexFocused(page, 0)).toBeUndefined();
+    expect(await isElementAtIndexFocused(page, 1)).toBeUndefined();
+  });
+
+  it('should render correct focus and value of item on arrow-key press', async () => {
+    await initSegmentedControl({ amount: 2 });
+    const [item1, item2] = await getAllItems();
+    expect(await isElementAtIndexFocused(page, 0)).toBeUndefined();
+
+    await page.keyboard.press('Tab');
+    await waitForStencilLifecycle(page);
+
+    expect(await isElementAtIndexFocused(page, 0)).toBe(true);
+    expect(await getProperty(item1, 'selected')).toBe(true);
+    expect(await getProperty(item2, 'selected')).toBe(false);
+
+    await page.keyboard.press('ArrowRight');
+    await waitForStencilLifecycle(page);
+
+    expect(await isElementAtIndexFocused(page, 0), 'on ArrowRight').toBeUndefined();
+    expect(await isElementAtIndexFocused(page, 1), 'on ArrowRight').toBe(true);
+
+    expect(await getProperty(item1, 'selected'), 'on ArrowRight').toBe(false);
+    expect(await getProperty(item2, 'selected'), 'on ArrowRight').toBe(true);
+
+    await page.keyboard.press('ArrowLeft');
+    await waitForStencilLifecycle(page);
+
+    expect(await isElementAtIndexFocused(page, 0), 'on ArrowLeft').toBe(true);
+    expect(await isElementAtIndexFocused(page, 1), 'on ArrowLeft').toBeUndefined();
+
+    expect(await getProperty(item1, 'selected'), 'on ArrowLeft').toBe(true);
+    expect(await getProperty(item2, 'selected'), 'on ArrowLeft').toBe(false);
+  });
+
+  it('should render select/focus first item on ArrowRight when last item is selected', async () => {
+    await initSegmentedControl({ amount: 3, value: 3 });
+    const [item1, item2, item3] = await getAllItems();
+
+    await page.keyboard.press('Tab');
+    await waitForStencilLifecycle(page);
+
+    expect(await isElementAtIndexFocused(page, 2)).toBe(true);
+    expect(await getProperty(item1, 'selected')).toBe(false);
+    expect(await getProperty(item2, 'selected')).toBe(false);
+    expect(await getProperty(item3, 'selected')).toBe(true);
+
+    await page.keyboard.press('ArrowRight');
+    await waitForStencilLifecycle(page);
+
+    expect(await isElementAtIndexFocused(page, 0)).toBe(true);
+    expect(await isElementAtIndexFocused(page, 1)).toBeUndefined();
+    expect(await isElementAtIndexFocused(page, 2)).toBeUndefined();
+
+    expect(await getProperty(item1, 'selected')).toBe(true);
+    expect(await getProperty(item2, 'selected')).toBe(false);
+    expect(await getProperty(item2, 'selected')).toBe(false);
+  });
+
+  it('should render select/focus first item on ArrowRight when last item is selected', async () => {
+    await initSegmentedControl({ amount: 3 });
+    const [item1, item2, item3] = await getAllItems();
+
+    await page.keyboard.press('Tab');
+    await waitForStencilLifecycle(page);
+
+    expect(await isElementAtIndexFocused(page, 0)).toBe(true);
+    expect(await getProperty(item1, 'selected')).toBe(true);
+    expect(await getProperty(item2, 'selected')).toBe(false);
+    expect(await getProperty(item3, 'selected')).toBe(false);
+
+    await page.keyboard.press('ArrowLeft');
+    await waitForStencilLifecycle(page);
+
+    expect(await isElementAtIndexFocused(page, 0)).toBeUndefined();
+    expect(await isElementAtIndexFocused(page, 1)).toBeUndefined();
+    expect(await isElementAtIndexFocused(page, 2)).toBe(true);
+
+    expect(await getProperty(item1, 'selected')).toBe(false);
+    expect(await getProperty(item2, 'selected')).toBe(false);
+    expect(await getProperty(item3, 'selected')).toBe(true);
+  });
+});
 
 describe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
