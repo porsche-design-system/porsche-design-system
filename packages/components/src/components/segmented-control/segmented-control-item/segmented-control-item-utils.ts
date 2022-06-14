@@ -1,7 +1,7 @@
 import type { SegmentedControlBackgroundColor } from '../segmented-control/segmented-control-utils';
 import type { Theme } from '../../../types';
 import type { AriaAttributes } from '../../../types';
-import { parseAndGetAriaAttributes } from '../../../utils';
+import { getButtonBaseAriaAttributes, parseAndGetAriaAttributes } from '../../../utils';
 
 export type SegmentedControlItemInternalHTMLProps = {
   selected: boolean;
@@ -12,9 +12,9 @@ export type SegmentedControlItemInternalHTMLProps = {
 export const getButtonAttributes = (
   isSelected: boolean,
   isDisabled: boolean
-): Pick<HTMLButtonElement, 'tabIndex' | 'disabled'> & { role: string } & AriaAttributes => ({
+): Pick<HTMLButtonElement, 'tabIndex'> & { role: string } & AriaAttributes => ({
   role: 'tab',
   tabIndex: isSelected ? 0 : -1,
-  disabled: isDisabled,
+  ...getButtonBaseAriaAttributes(isDisabled, false),
   ...parseAndGetAriaAttributes({ 'aria-selected': isSelected }),
 });
