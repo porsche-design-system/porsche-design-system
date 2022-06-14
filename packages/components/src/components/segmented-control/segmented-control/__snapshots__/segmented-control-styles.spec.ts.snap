@@ -17,3 +17,12 @@ exports[`getComponentCss() should return correct css for maxWidth: 82 1`] = `
   grid-gap: 4px !important;
 }"
 `;
+
+exports[`getComponentCss() should return correct css for maxWidth: 230 1`] = `
+":host {
+  display: grid !important;
+  grid-auto-rows: 1fr !important;
+  grid-template-columns: repeat(auto-fit, 220px) !important;
+  grid-gap: 4px !important;
+}"
+`;
