@@ -7,6 +7,9 @@ it('should throw error if children count is exceeded', () => {
   });
 
   expect(() => throwIfChildCountIsExceeded(parent, 2)).toThrow();
+
+  parent.appendChild(document.createElement('div'));
+  expect(() => throwIfChildCountIsExceeded(parent, 3)).toThrow();
 });
 
 it('should not throw error if children count is inside allowedAmount', () => {
