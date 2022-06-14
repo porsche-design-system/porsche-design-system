@@ -10,6 +10,7 @@ import {
 import { textSmall, textXSmall } from '@porsche-design-system/utilities-v2';
 import type { Theme } from '../../../types';
 import type { SegmentedControlBackgroundColor } from '../segmented-control/segmented-control-utils';
+import { hoverMediaQuery } from '../../../styles/hover-media-query';
 
 export const ITEM_PADDING = pxToRemWithUnit(40);
 export const { font: BUTTON_FONT } = textSmall;
@@ -78,10 +79,12 @@ export const getComponentCss = (
               cursor: 'pointer',
               ...getFocusJssStyle({ color: baseColor }),
               ...(!isSelected && {
-                transition: getTransition('background-color'),
-                '&:hover': {
-                  background: contrastLowColor,
-                },
+                ...hoverMediaQuery({
+                  transition: getTransition('background-color'),
+                  '&:hover': {
+                    background: contrastLowColor,
+                  },
+                }),
               }),
             }),
       },
