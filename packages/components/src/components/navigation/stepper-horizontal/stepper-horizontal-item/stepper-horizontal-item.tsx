@@ -35,13 +35,7 @@ export class StepperHorizontalItem {
 
   public componentWillRender(): void {
     throwIfCurrentAndDisabled(this.host);
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.state,
-      !this.state || this.disabled,
-      this.host.theme || 'light'
-    );
+    attachComponentCss(this.host, getComponentCss, this.state, this.disabled, this.host.theme || 'light');
   }
 
   public render(): JSX.Element {
