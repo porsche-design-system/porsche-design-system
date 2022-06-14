@@ -10,6 +10,7 @@ import { textSmall } from '@porsche-design-system/utilities-v2';
 import { getCss, isThemeDark } from '../../../../utils';
 import type { Theme } from '../../../../types';
 import type { StepperState } from './stepper-horizontal-item-utils';
+import { hoverMediaQuery } from '../../../../styles/hover-media-query';
 
 const getSvg = (color: string) =>
   `url("data:image/svg+xml,${encodeURIComponent(`
@@ -42,9 +43,10 @@ const getColor = (
   return { baseColor, hoverColor, iconColor: colorMap[state], invertedBaseColor, disabledColor };
 };
 
-export const getComponentCss = (state: StepperState, isDisabled: boolean, theme: Theme): string => {
+export const getComponentCss = (state: StepperState, disabled: boolean, theme: Theme): string => {
   const { baseColor, hoverColor, iconColor, invertedBaseColor, disabledColor } = getColor(state, theme);
   const isCurrentOrUndefined = state === 'current' || !state;
+  const isDisabled = !state || disabled;
   const hoverJssStyles = getHoverJssStyle();
 
   const svgColor = isDisabled ? disabledColor : invertedBaseColor;
@@ -115,10 +117,12 @@ export const getComponentCss = (state: StepperState, isDisabled: boolean, theme:
               cursor: isDisabled ? 'not-allowed' : 'pointer',
               textDecoration: isDisabled ? 'none' : 'underline',
               ...(!isDisabled && {
-                ...hoverJssStyles,
-                '&:hover .icon': {
-                  color: hoverColor,
-                },
+                ...hoverMediaQuery({
+                  ...hoverJssStyles,
+                  '&:hover .icon': {
+                    color: hoverColor,
+                  },
+                }),
               }),
             }),
       },
