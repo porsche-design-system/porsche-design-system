@@ -1,10 +1,11 @@
-import { hoverMediaQuery } from './hover-media-query';
 import * as jssUtils from '../utils/jss';
-import type { TagName } from '@porsche-design-system/shared';
+import * as throwIfParentIsNotOfKindUtils from '../utils/dom/throwIfParentIsNotOfKind';
 import * as getDirectChildHTMLElementUtils from '../utils/dom/getDirectChildHTMLElement';
+import { hoverMediaQuery } from './hover-media-query';
 import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
 import { TAG_NAMES_CONSTRUCTOR_MAP } from '../test-utils/tag-names-constructor-map';
 import { addParentAndSetRequiredProps } from '../test-utils/addParentAndSetRequiredProps';
+import type { TagName } from '@porsche-design-system/shared';
 
 const originalEnv = process.env;
 const style = {
@@ -63,9 +64,16 @@ it.each<TagName>(tagNamesWithJss)(
       .spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement')
       .mockReturnValue(document.createElement('div'));
 
+    // disable validation to ensure execution of attachComponentCss()
+    jest.spyOn(throwIfParentIsNotOfKindUtils, 'throwIfParentIsNotOfKind').mockImplementationOnce(() => {});
+
     const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
     component.host = document.createElement(tagName);
     component.host.attachShadow({ mode: 'open' });
+
+    // some components like grid-item and text-list-item require a parent to apply styles
+    // some components like require a parent and certain props in order to work
+    addParentAndSetRequiredProps(tagName, component);
 
     // css will be produced by one of the 2 lifecycles
     if (component.connectedCallback) {
@@ -75,10 +83,6 @@ it.each<TagName>(tagNamesWithJss)(
     }
 
     if (component.componentWillRender) {
-      // some components like grid-item and text-list-item require a parent to apply styles
-      // some components like require a parent and certain props in order to work
-      addParentAndSetRequiredProps(tagName, component);
-
       component.componentWillRender();
     }
 
