@@ -174,6 +174,6 @@ export default class Code extends Vue {
 
 <style>
   .mock-content {
-    padding: 2rem;
+    margin: 2rem 0;
   }
 </style>

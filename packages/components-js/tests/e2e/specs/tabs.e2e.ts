@@ -1,5 +1,6 @@
 import {
   addEventListener,
+  CSS_ANIMATION_DURATION,
   expectA11yToMatchSnapshot,
   getAttribute,
   getConsoleErrorsAmount,
@@ -22,7 +23,6 @@ describe('tabs', () => {
   let page: Page;
   beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
-  const CSS_ANIMATION_DURATION = 1000;
 
   const initTabs = async (opts?: { amount?: number; activeTabIndex?: number }) => {
     const { amount = 3, activeTabIndex } = opts ?? {};
