@@ -72,7 +72,7 @@ export class StepperHorizontal {
         scrollPosition: getScrollActivePosition(
           this.stepperHorizontalItems,
           'next',
-          getIndexOfStepWithStateCurrent(this.stepperHorizontalItems),
+          this.currentStepIndex,
           this.scrollAreaElement.offsetWidth,
           this.prevGradientElement.offsetWidth
         ),
