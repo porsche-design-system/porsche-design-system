@@ -1,4 +1,11 @@
-import { getIconName, isStateCompleteOrWarning, throwIfCurrentAndDisabled } from './stepper-horizontal-item-utils';
+import {
+  getIconName,
+  isItemClickable,
+  isStateCompleteOrWarning,
+  throwIfCurrentAndDisabled,
+} from './stepper-horizontal-item-utils';
+import type { StepperState } from './stepper-horizontal-item-utils';
+import * as stepperHorizontalItemUtils from './stepper-horizontal-item-utils';
 
 describe('isStateCompleteOrWarning()', () => {
   it('should return true if state is complete or warning', () => {
@@ -6,8 +13,9 @@ describe('isStateCompleteOrWarning()', () => {
     expect(isStateCompleteOrWarning('warning')).toBe(true);
   });
 
-  it('should return false if state is current', () => {
+  it('should return false if state is current or undefined', () => {
     expect(isStateCompleteOrWarning('current')).toBe(false);
+    expect(isStateCompleteOrWarning(undefined)).toBe(false);
   });
 });
 
@@ -41,5 +49,26 @@ describe('throwIfCurrentAndDisabled()', () => {
 
     expect(() => throwIfCurrentAndDisabled(host1 as HTMLPStepperHorizontalItemElement)).not.toThrow();
     expect(() => throwIfCurrentAndDisabled(host2 as HTMLPStepperHorizontalItemElement)).not.toThrow();
+  });
+});
+
+describe('isItemClickable()', () => {
+  it.each<[state: StepperState, disabled: boolean, expected: boolean]>([
+    ['complete', true, false],
+    ['warning', true, false],
+    ['complete', true, false],
+    [undefined, false, false],
+    ['complete', false, true],
+    ['warning', false, true],
+    ['complete', false, true],
+  ])('should for state %s and disabled %s return %s', (state, disabled, expected) => {
+    expect(isItemClickable(state, disabled)).toBe(expected);
+  });
+
+  it('should call isStateCompleteOrWarning()', () => {
+    const spy = jest.spyOn(stepperHorizontalItemUtils, 'isStateCompleteOrWarning');
+    isItemClickable('current', false);
+
+    expect(spy).toBeCalledWith('current');
   });
 });
