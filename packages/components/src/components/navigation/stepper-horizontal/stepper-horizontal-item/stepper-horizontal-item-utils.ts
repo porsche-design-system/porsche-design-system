@@ -24,3 +24,7 @@ export const throwIfCurrentAndDisabled = (host: HTMLElement): void => {
     throw new Error(`Using state='current' and disabled='true' at ${getTagName(host)} is not allowed`);
   }
 };
+
+export const isItemClickable = (state: StepperState, disabled: boolean) => {
+  return !!state && isStateCompleteOrWarning(state) && !disabled;
+};

@@ -1,6 +1,11 @@
 import { Component, Element, JSX, Listen, Prop, h } from '@stencil/core';
 import type { StepperHorizontalItemInternalHTMLProps, StepperState } from './stepper-horizontal-item-utils';
-import { getIconName, isStateCompleteOrWarning, throwIfCurrentAndDisabled } from './stepper-horizontal-item-utils';
+import {
+  getIconName,
+  isItemClickable,
+  isStateCompleteOrWarning,
+  throwIfCurrentAndDisabled,
+} from './stepper-horizontal-item-utils';
 import { attachComponentCss, getPrefixedTagNames, throwIfParentIsNotOfKind } from '../../../../utils';
 import { getComponentCss } from './stepper-horizontal-item-styles';
 
@@ -19,7 +24,7 @@ export class StepperHorizontalItem {
 
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
-    if (!this.state || !!this.disabled || this.state === 'current') {
+    if (!isItemClickable(this.state, this.disabled)) {
       e.stopPropagation();
     }
   }
