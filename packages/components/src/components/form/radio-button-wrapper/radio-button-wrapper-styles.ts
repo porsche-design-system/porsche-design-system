@@ -13,6 +13,7 @@ import { getFunctionalComponentRequiredStyles } from '../../common/required/requ
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { buildSlottedStyles, getCss, isVisibleFormState } from '../../../utils';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
+import { hoverMediaQuery } from '../../../styles/hover-media-query';
 
 const theme: Theme = 'light';
 
@@ -76,14 +77,16 @@ export const getComponentCss = (
           formStateColor || contrastHighColor,
           formStateColor || contrastHighColor
         ),
-        '&(input:not(:disabled):not(:checked):hover), .label:hover ~ &(input:not(:disabled):not(:checked))':
-          getBackgroundImageStyles(hasVisibleState, backgroundColor, formStateHoverColor || baseColor),
-        '&(input:not(:disabled):checked:hover), .label:hover ~ &(input:not(:disabled):checked)':
-          getBackgroundImageStyles(
-            hasVisibleState,
-            formStateColor || contrastHighColor,
-            formStateHoverColor || baseColor
-          ),
+        ...hoverMediaQuery({
+          '&(input:not(:disabled):not(:checked):hover), .label:hover ~ &(input:not(:disabled):not(:checked))':
+            getBackgroundImageStyles(hasVisibleState, backgroundColor, formStateHoverColor || baseColor),
+          '&(input:not(:disabled):checked:hover), .label:hover ~ &(input:not(:disabled):checked)':
+            getBackgroundImageStyles(
+              hasVisibleState,
+              formStateColor || contrastHighColor,
+              formStateHoverColor || baseColor
+            ),
+        }),
         '&(input:disabled)': {
           cursor: 'not-allowed',
           ...getBackgroundImageStyles(hasVisibleState, backgroundColor, disabledColor),

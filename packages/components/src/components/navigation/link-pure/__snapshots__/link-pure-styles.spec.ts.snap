@@ -87,9 +87,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root:focus:not(:focus-visible)::before {
   outline-color: transparent;
 }
-.root:hover {
-  color: #d5001c;
-}
 .root:active {
   color: #d5001c;
 }
@@ -279,6 +276,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
     order: 0;
   }
 }
+
+@media(hover:hover) {
+  .root:hover {
+    color: #d5001c;
+  }
+}
 "
 `;
 
@@ -336,9 +339,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root:focus:not(:focus-visible)::before {
   outline-color: transparent;
-}
-.root:hover {
-  color: #d5001c;
 }
 .root:active {
   color: #d5001c;
@@ -442,6 +442,12 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
     clip-path: none;
   }
 }
+
+@media(hover:hover) {
+  .root:hover {
+    color: #d5001c;
+  }
+}
 "
 `;
 
@@ -500,9 +506,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root:focus:not(:focus-visible)::before {
   outline-color: transparent;
 }
-.root:hover {
-  color: #ff0223;
-}
 .root:active {
   color: #ff0223;
 }
@@ -535,7 +538,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   clip-path: none;
   padding: 0 0 0 0.25rem;
   order: 0;
-}"
+}
+@media(hover:hover) {
+  .root:hover {
+    color: #ff0223;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","hasSubline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
@@ -593,9 +602,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root:focus:not(:focus-visible)::before {
   outline-color: transparent;
 }
-.root:hover {
-  color: #d5001c;
-}
 .root:active {
   color: #d5001c;
 }
@@ -628,7 +634,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   clip-path: none;
   padding: 0 0 0 0.25rem;
   order: 0;
-}"
+}
+@media(hover:hover) {
+  .root:hover {
+    color: #d5001c;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","hasSubline":false,"hasSlottedAnchor":true,"theme":"light"} 1`] = `
@@ -667,9 +679,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font-size: 1rem;
   line-height: 1.5;
 }
-.root:hover {
-  color: #d5001c;
-}
 .root:active {
   color: #d5001c;
 }
@@ -700,7 +709,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   text-indent: 0;
   padding: 0 0 0 0.25rem;
   order: 0;
-}"
+}
+@media(hover:hover) {
+  .root:hover {
+    color: #d5001c;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"right","hasSubline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
@@ -758,9 +773,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root:focus:not(:focus-visible)::before {
   outline-color: transparent;
 }
-.root:hover {
-  color: #d5001c;
-}
 .root:active {
   color: #d5001c;
 }
@@ -793,7 +805,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   white-space: nowrap;
   padding: 0 0 0 0.25rem;
   order: 0;
-}"
+}
+@media(hover:hover) {
+  .root:hover {
+    color: #d5001c;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"right","hasSubline":false,"hasSlottedAnchor":true,"theme":"light"} 1`] = `
@@ -832,9 +850,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font-size: 1rem;
   line-height: 1.5;
 }
-.root:hover {
-  color: #d5001c;
-}
 .root:active {
   color: #d5001c;
 }
@@ -865,7 +880,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   text-indent: -999999px;
   padding: 0 0 0 0.25rem;
   order: 0;
-}"
+}
+@media(hover:hover) {
+  .root:hover {
+    color: #d5001c;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"right","hasSubline":true,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
@@ -922,9 +943,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root:focus:not(:focus-visible)::before {
   outline-color: transparent;
 }
-.root:hover {
-  color: #d5001c;
-}
 .root:active {
   color: #d5001c;
 }
@@ -941,9 +959,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   margin-left: 1.5em;
 }
 .root:active + .subline {
-  color: #d5001c;
-}
-.root:hover + .subline {
   color: #d5001c;
 }
 .icon {
@@ -981,7 +996,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .subline::before {
   content: \\"\\";
-}"
+}
+@media(hover:hover) {
+  .root:hover {
+    color: #d5001c;
+  }
+  .root:hover + .subline {
+    color: #d5001c;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":true,"stretch":true,"size":"x-large","hideLabel":false,"alignLabel":"left","hasSubline":false,"hasSlottedAnchor":false,"theme":"dark"} 1`] = `
@@ -1038,9 +1062,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root:focus:not(:focus-visible)::before {
   outline-color: transparent;
 }
-.root:hover {
-  color: #ff0223;
-}
 .root:active {
   color: #ff0223;
 }
@@ -1073,7 +1094,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   clip-path: none;
   padding: 0 0.25rem 0 0;
   order: -1;
-}"
+}
+@media(hover:hover) {
+  .root:hover {
+    color: #ff0223;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","active":true,"stretch":true,"size":"x-large","hideLabel":false,"alignLabel":"left","hasSubline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
@@ -1130,9 +1157,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root:focus:not(:focus-visible)::before {
   outline-color: transparent;
 }
-.root:hover {
-  color: #d5001c;
-}
 .root:active {
   color: #d5001c;
 }
@@ -1165,7 +1189,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   clip-path: none;
   padding: 0 0.25rem 0 0;
   order: -1;
-}"
+}
+@media(hover:hover) {
+  .root:hover {
+    color: #d5001c;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for {"icon":"none","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","hasSubline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
@@ -1223,9 +1253,6 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
 .root:focus:not(:focus-visible)::before {
   outline-color: transparent;
 }
-.root:hover {
-  color: #d5001c;
-}
 .root:active {
   color: #d5001c;
 }
@@ -1240,7 +1267,13 @@ exports[`getComponentCss() should return correct css for {"icon":"none","active"
 .root ~ .subline::before {
   font-size: 1rem;
   margin-left: 1.5em;
-}"
+}
+@media(hover:hover) {
+  .root:hover {
+    color: #d5001c;
+  }
+}
+"
 `;
 
 exports[`getSlottedCss() should return correct css 1`] = `

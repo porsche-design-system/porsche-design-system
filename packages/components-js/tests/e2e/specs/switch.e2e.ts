@@ -2,7 +2,6 @@ import { Page } from 'puppeteer';
 import {
   addEventListener,
   expectA11yToMatchSnapshot,
-  expectToSkipFocusOnComponent,
   getActiveElementId,
   getAttribute,
   getLifecycleStatus,
@@ -315,42 +314,6 @@ describe('switch', () => {
       const label = () => selectNode(page, 'p-switch >>> label');
 
       await expectA11yToMatchSnapshot(page, await label(), { interestingOnly: false });
-    });
-
-    it('should expose correct accessibility tree if checked value is set programmatically', async () => {
-      await initSwitch();
-
-      const host = await getHost();
-      const button = await getButton();
-
-      await setProperty(host, 'checked', true);
-      await waitForStencilLifecycle(page);
-
-      await expectA11yToMatchSnapshot(page, button, { message: 'Checked' });
-
-      await setProperty(host, 'checked', false);
-      await waitForStencilLifecycle(page);
-
-      await expectA11yToMatchSnapshot(page, button, { message: 'Unchecked' });
-    });
-
-    it('should add aria-busy when loading is set as Attribute and remove when finished', async () => {
-      await initSwitch();
-
-      const host = await getHost();
-      const button = await getButton();
-
-      expect(await getAttribute(button, 'aria-busy')).toBeNull();
-
-      await setProperty(host, 'loading', true);
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(button, 'aria-busy')).toBe('true');
-
-      await setProperty(host, 'loading', false);
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(button, 'aria-busy')).toBeNull();
     });
   });
 });

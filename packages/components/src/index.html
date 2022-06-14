@@ -33,20 +33,24 @@
     </style>
   </head>
   <body>
-    <a href="#">link</a>
-    <p-segmented-control>
-      <p-segmented-control-item value="xs" label="Some super long label you know what it is"
+    <header>
+      <h1>Porsche Design System - Playground</h1>
+    </header>
+    <main>
+      <a href="#">link</a>
+      <p-segmented-control>
+        <p-segmented-control-item value="xs" label="Some super long label you know what it is"
         >Size XS</p-segmented-control-item
-      >
-      <p-segmented-control-item value="s" icon="truck" label="Some label">Size S</p-segmented-control-item>
-      <p-segmented-control-item value="m" icon="truck">Size M is too long</p-segmented-control-item>
-      <p-segmented-control-item value="l">Size L</p-segmented-control-item>
-      <p-segmented-control-item value="xl" icon="truck" disabled></p-segmented-control-item>
-    </p-segmented-control>
-    <a href="#">link</a>
-
-    <!-- START: keep this snippet to log component lifecycle events -->
+        >
+        <p-segmented-control-item value="s" icon="truck" label="Some label">Size S</p-segmented-control-item>
+        <p-segmented-control-item value="m" icon="truck">Size M is too long</p-segmented-control-item>
+        <p-segmented-control-item value="l">Size L</p-segmented-control-item>
+        <p-segmented-control-item value="xl" icon="truck" disabled></p-segmented-control-item>
+      </p-segmented-control>
+      <a href="#">link</a>
+    </main>
     <script>
+      <!-- START: keep this snippet to log component lifecycle events -->
       document.querySelectorAll('p-segmented-control').forEach((el) =>
         el.addEventListener('segmentedControlChange', (e) => {
           e.stopPropagation();

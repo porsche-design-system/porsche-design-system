@@ -81,7 +81,6 @@ exports[`getSlottedCss() should return correct css 1`] = `
 "p-table a {
   color: inherit !important;
   text-decoration: underline !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
@@ -94,9 +93,6 @@ p-table em, p-table i {
 p-table img {
   vertical-align: middle !important;
 }
-p-table a:hover {
-  color: #d5001c !important;
-}
 p-table a::-moz-focus-inner {
   border: 0 !important;
 }
@@ -105,14 +101,22 @@ p-table a:focus {
 }
 p-table a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}"
+}
+@media(hover:hover) {
+  p-table a {
+    transition: color var(--p-transition-duration, .24s) ease !important;
+  }
+  p-table a:hover {
+    color: #d5001c !important;
+  }
+}
+"
 `;
 
 exports[`getSlottedCss() should return correct css with prefix 1`] = `
 "prefixed-p-table a {
   color: inherit !important;
   text-decoration: underline !important;
-  transition: color var(--p-transition-duration, .24s) ease !important;
   outline: 1px solid transparent !important;
   outline-offset: 1px !important;
 }
@@ -125,9 +129,6 @@ prefixed-p-table em, prefixed-p-table i {
 prefixed-p-table img {
   vertical-align: middle !important;
 }
-prefixed-p-table a:hover {
-  color: #d5001c !important;
-}
 prefixed-p-table a::-moz-focus-inner {
   border: 0 !important;
 }
@@ -136,5 +137,14 @@ prefixed-p-table a:focus {
 }
 prefixed-p-table a:focus:not(:focus-visible) {
   outline-color: transparent !important;
-}"
+}
+@media(hover:hover) {
+  prefixed-p-table a {
+    transition: color var(--p-transition-duration, .24s) ease !important;
+  }
+  prefixed-p-table a:hover {
+    color: #d5001c !important;
+  }
+}
+"
 `;
