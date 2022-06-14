@@ -10,6 +10,7 @@ import {
   reattachElement,
   isElementAtIndexFocused,
   getProperty,
+  getOffsetWidth,
 } from '../helpers';
 import type { Page } from 'puppeteer';
 
@@ -32,24 +33,149 @@ const getAllButtons = async () =>
     )
   );
 
-const initSegmentedControl = (opts?: { amount?: number; value?: number }): Promise<void> => {
-  const { amount = 1, value = 1 } = opts || {};
+const initSegmentedControl = (opts?: { amount?: number; value?: number; isWrapped?: boolean }): Promise<void> => {
+  const { amount = 1, value = 1, isWrapped = false } = opts || {};
   const items = Array.from(Array(amount))
     .map((_, i) => `<p-segmented-control-item value="${i + 1}">Option ${i + 1}</p-segmented-control-item>`)
     .join('\n');
 
-  return setContentWithDesignSystem(
-    page,
-    `
-    <p-segmented-control value="${value}">
-      ${items}
-    </p-segmented-control>`
-  );
+  const content = `<p-segmented-control value="${value}">
+  ${items}
+</p-segmented-control>`;
+
+  return setContentWithDesignSystem(page, isWrapped ? `<div style="width: 600px">${content}</div>` : content);
 };
 
-xit('should correctly recalculate width on item add/remove', async () => {});
-xit('should correctly recalculate width on item content change', async () => {});
-xit('should correctly recalculate width on item prop change', async () => {});
+describe('width calculation', () => {
+  const expectAllItemsHaveSameWidth = async (segmentedControlItems: ElementHandle<Element>[]) => {
+    const widthFirstItem = await getOffsetWidth(segmentedControlItems[0]);
+    for (const item of segmentedControlItems) {
+      expect(await getOffsetWidth(item)).toBe(widthFirstItem);
+    }
+  };
+
+  it('should recalculate width on items when longest content is removed', async () => {
+    await initSegmentedControl({ amount: 6, isWrapped: true });
+
+    // Extend content of second item
+    await page.evaluate(() => {
+      const segmentedControlItems = document.querySelectorAll('p-segmented-control-item');
+      segmentedControlItems[1].innerHTML = 'Option 2 longer';
+    });
+
+    const initialItemWidth = await getOffsetWidth(await getItemHost());
+    await expectAllItemsHaveSameWidth(await getAllItems());
+
+    await page.evaluate(() => {
+      const segmentedControl = document.querySelector('p-segmented-control');
+      segmentedControl.removeChild(segmentedControl.children[1]);
+    });
+    await waitForStencilLifecycle(page);
+
+    expect(initialItemWidth).not.toBe(await getOffsetWidth(await getItemHost()));
+    await expectAllItemsHaveSameWidth(await getAllItems());
+  });
+
+  it('should recalculate width on items when new item with longer content is added', async () => {
+    await initSegmentedControl({ amount: 6, isWrapped: true });
+
+    const initialItemWidth = await getOffsetWidth(await getItemHost());
+    await expectAllItemsHaveSameWidth(await getAllItems());
+
+    await page.evaluate(() => {
+      const segmentedControl = document.querySelector('p-segmented-control');
+      const segmentedControlItem = document.createElement('p-segmented-control-item');
+      segmentedControlItem.innerHTML = 'Some Option with longer text';
+      segmentedControl.appendChild(segmentedControlItem);
+    });
+    await waitForStencilLifecycle(page);
+
+    expect(initialItemWidth).not.toBe(await getOffsetWidth(await getItemHost()));
+    await expectAllItemsHaveSameWidth(await getAllItems());
+  });
+
+  it('should recalculate width on items when content changes', async () => {
+    await initSegmentedControl({ amount: 6, isWrapped: true });
+
+    const initialItemWidth = await getOffsetWidth(await getItemHost());
+    await expectAllItemsHaveSameWidth(await getAllItems());
+
+    await page.evaluate(() => {
+      const segmentedControlItem = document.querySelector('p-segmented-control-item');
+      segmentedControlItem.innerHTML = 'Some Option with longer text';
+    });
+    await waitForStencilLifecycle(page);
+
+    expect(initialItemWidth).not.toBe(await getOffsetWidth(await getItemHost()));
+    await expectAllItemsHaveSameWidth(await getAllItems());
+  });
+
+  it('should recalculate width on items on label change', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `<div style="width: 600px">
+  <p-segmented-control>
+    <p-segmented-control-item value="1" label="Some super long Label to extend the width">Option 1</p-segmented-control-item>
+    <p-segmented-control-item value="2">Option 2</p-segmented-control-item>
+    <p-segmented-control-item value="3">Option 3</p-segmented-control-item>
+    <p-segmented-control-item value="4">Option 4</p-segmented-control-item>
+    <p-segmented-control-item value="5">Option 5</p-segmented-control-item>
+    <p-segmented-control-item value="6">Option 6</p-segmented-control-item>
+  </p-segmented-control>
+</div>`
+    );
+    const [item1] = await getAllItems();
+
+    const initialItemWidth = await getOffsetWidth(await getItemHost());
+    await expectAllItemsHaveSameWidth(await getAllItems());
+
+    await setProperty(item1, 'label', 'Some Label');
+    await waitForStencilLifecycle(page);
+
+    expect(initialItemWidth).not.toBe(await getOffsetWidth(await getItemHost()));
+    await expectAllItemsHaveSameWidth(await getAllItems());
+  });
+
+  it('should recalculate width on when icon is added', async () => {
+    await initSegmentedControl({ amount: 6, isWrapped: true });
+    const [, item2] = await getAllItems();
+
+    const initialItemWidth = await getOffsetWidth(await getItemHost());
+    await expectAllItemsHaveSameWidth(await getAllItems());
+
+    await setProperty(item2, 'icon', 'truck');
+    await waitForStencilLifecycle(page);
+
+    expect(initialItemWidth).not.toBe(await getOffsetWidth(await getItemHost()));
+    await expectAllItemsHaveSameWidth(await getAllItems());
+  });
+
+  it('should recalculate width on item when icon is removed', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `<div style="width: 600px">
+  <p-segmented-control>
+    <p-segmented-control-item value="1">Option 1</p-segmented-control-item>
+    <p-segmented-control-item value="2" icon="truck">Option 2</p-segmented-control-item>
+    <p-segmented-control-item value="3">Option 3</p-segmented-control-item>
+    <p-segmented-control-item value="4">Option 4</p-segmented-control-item>
+    <p-segmented-control-item value="5">Option 5</p-segmented-control-item>
+    <p-segmented-control-item value="6">Option 6</p-segmented-control-item>
+  </p-segmented-control>
+</div>`
+    );
+    const [, item2] = await getAllItems();
+
+    const initialItemWidth = await getOffsetWidth(await getItemHost());
+    await expectAllItemsHaveSameWidth(await getAllItems());
+
+    await setProperty(item2, 'icon', undefined);
+    await waitForStencilLifecycle(page);
+
+    expect(initialItemWidth).not.toBe(await getOffsetWidth(await getItemHost()));
+    await expectAllItemsHaveSameWidth(await getAllItems());
+  });
+});
 
 describe('events', () => {
   it('should trigger event on item click which is not selected', async () => {
