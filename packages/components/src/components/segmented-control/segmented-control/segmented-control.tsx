@@ -1,4 +1,4 @@
-import { Component, Element, h, JSX, Prop, forceUpdate, Event, EventEmitter } from '@stencil/core';
+import { Component, Element, h, JSX, Prop, forceUpdate, Event, EventEmitter, Host } from '@stencil/core';
 import { attachComponentCss, observeChildren, unobserveChildren } from '../../../utils';
 import { getComponentCss } from './segmented-control-styles';
 import type { Theme } from '../../../types';
@@ -56,7 +56,11 @@ export class SegmentedControl {
   }
 
   public render(): JSX.Element {
-    return <slot />;
+    return (
+      <Host role="tablist">
+        <slot />
+      </Host>
+    );
   }
 
   private updateValue = (item: HTMLElement & SegmentedControlItem): void => {
