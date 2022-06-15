@@ -1,4 +1,4 @@
-# Segmented control
+# Segmented Control
 
 <TableOfContents></TableOfContents>
 
