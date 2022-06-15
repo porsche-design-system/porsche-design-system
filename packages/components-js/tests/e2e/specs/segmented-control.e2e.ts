@@ -237,6 +237,43 @@ describe('events', () => {
 });
 
 describe('keyboard', () => {
+  it('should render focus only on first item when no default value on keyboard "tab" press', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `<a href="#">Some Link</a>
+<p-segmented-control>
+   <p-segmented-control-item value="1">Option 1</p-segmented-control-item>
+   <p-segmented-control-item value="2">Option 1</p-segmented-control-item>
+</p-segmented-control>
+<a href="#">Some Link</a>`
+    );
+    expect(await isElementAtIndexFocused(page, 0)).toBeUndefined();
+    expect(await isElementAtIndexFocused(page, 1)).toBeUndefined();
+    expect(await isElementAtIndexFocused(page, 2)).toBeUndefined();
+    expect(await isElementAtIndexFocused(page, 3)).toBeUndefined();
+
+    await page.keyboard.press('Tab');
+
+    expect(await isElementAtIndexFocused(page, 0)).toBe(true);
+    expect(await isElementAtIndexFocused(page, 1)).toBeUndefined();
+    expect(await isElementAtIndexFocused(page, 2)).toBeUndefined();
+    expect(await isElementAtIndexFocused(page, 3)).toBeUndefined();
+
+    await page.keyboard.press('Tab');
+
+    expect(await isElementAtIndexFocused(page, 0)).toBeUndefined();
+    expect(await isElementAtIndexFocused(page, 1)).toBe(true);
+    expect(await isElementAtIndexFocused(page, 2)).toBeUndefined();
+    expect(await isElementAtIndexFocused(page, 3)).toBeUndefined();
+
+    await page.keyboard.press('Tab');
+
+    expect(await isElementAtIndexFocused(page, 0)).toBeUndefined();
+    expect(await isElementAtIndexFocused(page, 1)).toBeUndefined();
+    expect(await isElementAtIndexFocused(page, 2)).toBeUndefined();
+    expect(await isElementAtIndexFocused(page, 3)).toBe(true);
+  });
+
   it('should render focus on first item when it is selected on keyboard "tab" press', async () => {
     await initSegmentedControl({ amount: 2 });
     expect(await isElementAtIndexFocused(page, 0)).toBeUndefined();
