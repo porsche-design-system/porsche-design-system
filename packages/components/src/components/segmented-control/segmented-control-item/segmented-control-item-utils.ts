@@ -11,10 +11,19 @@ export type SegmentedControlItemInternalHTMLProps = {
 
 export const getButtonAttributes = (
   isSelected: boolean,
-  isDisabled: boolean
+  isDisabled: boolean,
+  isFocusable: boolean
 ): Pick<HTMLButtonElement, 'tabIndex'> & { role: string } & AriaAttributes => ({
   role: 'tab',
-  tabIndex: isSelected ? 0 : -1,
+  tabIndex: isFocusable ? 0 : -1,
   ...getButtonBaseAriaAttributes(isDisabled, false),
   ...parseAndGetAriaAttributes({ 'aria-selected': isSelected }),
 });
+
+export const isFirstElementChild = (host: HTMLElement): boolean => host.parentElement.firstElementChild === host;
+
+export const parentHasValue = (host: HTMLElement): boolean =>
+  !!(host.parentElement as HTMLPSegmentedControlElement).value;
+
+export const isSegmentedControlItemFocusable = (host: HTMLElement, isSelected: boolean): boolean =>
+  isSelected || (!parentHasValue(host) && isFirstElementChild(host));
