@@ -296,6 +296,8 @@ export const config: StorefrontConfig = {
     'Segmented Control': {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/segmented-control/segmented-control.examples.md')],
+      // @ts-ignore
+      Usage: [() => import('@/../../components/src/components/segmented-control/segmented-control.usage.md')],
       Props: [
         () =>
           // @ts-ignore
