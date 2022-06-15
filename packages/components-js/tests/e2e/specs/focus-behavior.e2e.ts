@@ -19,6 +19,7 @@ afterEach(async () => await page.close());
 
 TAG_NAMES.filter((tagName) => getComponentMeta(tagName).isDelegatingFocus).forEach((tagName) => {
   const href = tagName.includes('link') || tagName.includes('marque') ? ' href="#"' : '';
+  const value = tagName.includes('segmented-control-item') ? ' value="some value"' : '';
   const wrapInRequiredParentIfNeeded = (child: string): string => {
     const { requiredParent } = getComponentMeta(tagName);
     return requiredParent ? `<${requiredParent}>${child}</${requiredParent}>` : child;
@@ -40,7 +41,10 @@ ${component}
   });
 
   it(`should delegate focus into shadow dom for ${tagName}`, async () => {
-    await setContentWithDesignSystem(page, wrapInRequiredParentIfNeeded(`<${tagName}${href}>Some label</${tagName}>`));
+    await setContentWithDesignSystem(
+      page,
+      wrapInRequiredParentIfNeeded(`<${tagName}${href}${value}>Some label</${tagName}>`)
+    );
 
     const host = await selectNode(page, tagName);
     const elTagName = await host.evaluate((el) => el.tagName);
