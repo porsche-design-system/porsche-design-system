@@ -10,7 +10,27 @@ Object {
 }
 `;
 
+exports[`getButtonAttributes() should return correct css for isSelected: false and isDisabled: false 2`] = `
+Object {
+  "aria-busy": null,
+  "aria-disabled": null,
+  "aria-selected": "false",
+  "role": "tab",
+  "tabIndex": 0,
+}
+`;
+
 exports[`getButtonAttributes() should return correct css for isSelected: false and isDisabled: true 1`] = `
+Object {
+  "aria-busy": null,
+  "aria-disabled": "true",
+  "aria-selected": "false",
+  "role": "tab",
+  "tabIndex": 0,
+}
+`;
+
+exports[`getButtonAttributes() should return correct css for isSelected: false and isDisabled: true 2`] = `
 Object {
   "aria-busy": null,
   "aria-disabled": "true",
@@ -26,11 +46,31 @@ Object {
   "aria-disabled": null,
   "aria-selected": "true",
   "role": "tab",
+  "tabIndex": -1,
+}
+`;
+
+exports[`getButtonAttributes() should return correct css for isSelected: true and isDisabled: false 2`] = `
+Object {
+  "aria-busy": null,
+  "aria-disabled": null,
+  "aria-selected": "true",
+  "role": "tab",
   "tabIndex": 0,
 }
 `;
 
 exports[`getButtonAttributes() should return correct css for isSelected: true and isDisabled: true 1`] = `
+Object {
+  "aria-busy": null,
+  "aria-disabled": "true",
+  "aria-selected": "true",
+  "role": "tab",
+  "tabIndex": -1,
+}
+`;
+
+exports[`getButtonAttributes() should return correct css for isSelected: true and isDisabled: true 2`] = `
 Object {
   "aria-busy": null,
   "aria-disabled": "true",
