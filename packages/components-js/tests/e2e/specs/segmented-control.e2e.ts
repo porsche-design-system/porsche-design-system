@@ -12,7 +12,7 @@ import {
   getProperty,
   getOffsetWidth,
 } from '../helpers';
-import type { Page } from 'puppeteer';
+import type { ElementHandle, Page } from 'puppeteer';
 
 let page: Page;
 
