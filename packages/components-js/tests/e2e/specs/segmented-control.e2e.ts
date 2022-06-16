@@ -345,7 +345,7 @@ describe('keyboard', () => {
     expect(await getProperty(item2, 'selected')).toBe(false);
   });
 
-  it('should render select/focus first item on ArrowRight when last item is selected', async () => {
+  it('should render select/focus last item on ArrowLeft when first item is selected', async () => {
     await initSegmentedControl({ amount: 3 });
     const [item1, item2, item3] = await getAllItems();
 
