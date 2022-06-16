@@ -1,9 +1,10 @@
 # Segmented Control
 
-The `p-segmented-control` component is similar to the native `select` element while showing all available options right away.  
+The `p-segmented-control` component is similar to the native `select` element while showing all available options right
+away.
 
-It even behaves like a `select` where it can be controlled by setting the current value.
-However, it is not required and you could purely rely on the change event.
+It even behaves like a `select` where it can be controlled by setting the current value. However, it is not required and
+you could purely rely on the change event.
 
 Visually the `p-segmented-control` displays all options in equal size based on its largest option.
 
@@ -11,13 +12,15 @@ Visually the `p-segmented-control` displays all options in equal size based on i
 
 ## Basic
 
-Each option needs to be rendered by using a `p-segmented-control-item` child component where the `value` property is mandatory in order to emit a useful change event.
+Each option needs to be rendered by using a `p-segmented-control-item` child component where the `value` property is
+mandatory in order to emit a useful change event.
 
 <Playground :markup="basicMarkup" :config="config"></Playground>
 
 ## Initial Value
 
-An initial `value` can optionally be set on the parent element, and if desired, also be set upon change event emission as described in the <a :href="eventHandlingUrl">Event Handling</a> section.
+An initial `value` can optionally be set on the parent element, and if desired, also be set upon change event emission
+as described in the <a :href="eventHandlingUrl">Event Handling</a> section.
 
 <Playground :markup="initialValueMarkup" :config="config"></Playground>
 
@@ -35,7 +38,8 @@ An icon can be added via the `icon` or `iconSource` property.
 
 ## Background Color
 
-If used on top of a surface background color, contrast of the buttons can be tweaked by changing the `backgroundColor` property.
+If used on top of a surface background color, contrast of the buttons can be tweaked by changing the `backgroundColor`
+property.
 
 <Playground :markup="backgroundColorMarkup" :config="{ ...config, colorScheme: backgroundColor.replace('background-', '') }">
   <select v-model="backgroundColor" aria-label="Select background color">
@@ -58,8 +62,7 @@ Each event instance contains the newly selected value at `event.detail.value`.
     <p-segmented-control-item value="4">Option 4</p-segmented-control-item>
     <p-segmented-control-item value="5">Option 5</p-segmented-control-item>
   </p-segmented-control>
-
-  <p>Current value: {{eventHandlingValue}}</p>
+  <p-text :theme="theme">Current value: {{eventHandlingValue}}</p-text>
 </Playground>
 
 <script lang="ts">
@@ -67,6 +70,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getSegmentedControlCodeSamples } from '@porsche-design-system/shared';
 import { getAnchorLink } from '@/utils';
+import type { Theme } from '@/models';
   
 @Component
 export default class Code extends Vue {
@@ -117,8 +121,11 @@ export default class Code extends Vue {
 </p-segmented-control>`;
   };
 
+  get theme(): Theme {
+    return this.$store.getters.theme;
+  }
+
   eventHandlingMarkup = getSegmentedControlCodeSamples();
   eventHandlingValue = 1;
 }
 </script>
-

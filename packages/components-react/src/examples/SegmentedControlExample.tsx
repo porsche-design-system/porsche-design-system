@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import type { SegmentedControlChangeEvent } from '@porsche-design-system/components-react';
-import { PSegmentedControl, PSegmentedControlItem } from '@porsche-design-system/components-react';
+import { PSegmentedControl, PSegmentedControlItem, PText } from '@porsche-design-system/components-react';
 
 export const SegmentedControlExamplePage = (): JSX.Element => {
   const [currentValue, setCurrentValue] = useState(1);
@@ -18,7 +18,7 @@ export const SegmentedControlExamplePage = (): JSX.Element => {
         <PSegmentedControlItem value={4}>Option 4</PSegmentedControlItem>
         <PSegmentedControlItem value={5}>Option 5</PSegmentedControlItem>
       </PSegmentedControl>
-      <p>Current value: {currentValue}</p>
+      <PText>Current value: {currentValue}</PText>
     </>
   );
 };

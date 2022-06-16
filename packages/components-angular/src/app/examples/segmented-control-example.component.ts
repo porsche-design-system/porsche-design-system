@@ -12,7 +12,7 @@ import type { SegmentedControlChangeEvent } from '@porsche-design-system/compone
       <p-segmented-control-item [value]="5">Option 5</p-segmented-control-item>
     </p-segmented-control>
 
-    <p>Current value: {{ currentValue }}</p>
+    <p-text>Current value: {{ currentValue }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
