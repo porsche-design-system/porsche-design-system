@@ -123,6 +123,8 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       props = addUxPinBindAnnotation(props, 'open', 'onAccordionChange', 'open');
     } else if (component === 'p-switch') {
       props = addUxPinBindAnnotation(props, 'checked', 'onSwitchChange', 'checked');
+    } else if (component === 'p-segmented-control') {
+      props = addUxPinBindAnnotation(props, 'value', 'onSegmentedControlChange', 'value');
     } else if (component === 'p-tabs-bar') {
       props = addUxPinBindAnnotation(props, 'activeTabIndex', 'onTabChange', 'activeTabIndex');
     }
