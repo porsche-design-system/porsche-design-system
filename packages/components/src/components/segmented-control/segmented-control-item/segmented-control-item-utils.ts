@@ -11,7 +11,7 @@ export type SegmentedControlItemInternalHTMLProps = {
 
 export const getButtonAttributes = (isSelected: boolean, isDisabled: boolean): AriaAttributes => ({
   ...getButtonBaseAriaAttributes(isDisabled, false),
-  ...parseAndGetAriaAttributes({ 'aria-selected': isSelected }),
+  ...parseAndGetAriaAttributes({ 'aria-pressed': isSelected }),
 });
 
 export const isFirstElementChild = (host: HTMLElement): boolean => host.parentElement.firstElementChild === host;
