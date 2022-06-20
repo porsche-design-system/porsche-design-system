@@ -70,22 +70,20 @@ export const getComponentCss = (
         background: backgroundColor,
         color: buttonColor,
         ...textSmall,
+        ...getFocusJssStyle({ color: baseColor }),
         ...(isDisabled
           ? {
               cursor: 'not-allowed',
-              outline: 0,
             }
           : {
               cursor: 'pointer',
-              ...getFocusJssStyle({ color: baseColor }),
-              ...(!isSelected && {
-                ...hoverMediaQuery({
+              ...(!isSelected &&
+                hoverMediaQuery({
                   transition: getTransition('background-color'),
                   '&:hover': {
                     background: contrastLowColor,
                   },
-                }),
-              }),
+                })),
             }),
       },
       // label

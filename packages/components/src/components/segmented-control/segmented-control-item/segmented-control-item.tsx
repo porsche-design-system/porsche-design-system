@@ -7,7 +7,7 @@ import {
   updateParent,
 } from '../../../utils';
 import { getComponentCss } from './segmented-control-item-styles';
-import { getButtonAttributes, isSegmentedControlItemFocusable } from './segmented-control-item-utils';
+import { getButtonAttributes } from './segmented-control-item-utils';
 import type { IconName } from '../../../types';
 import type { SegmentedControlItemInternalHTMLProps } from './segmented-control-item-utils';
 
@@ -33,8 +33,6 @@ export class SegmentedControlItem {
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
 
-  private isFocusable: boolean;
-
   @Watch('label')
   @Watch('icon')
   @Watch('iconSource')
@@ -57,8 +55,6 @@ export class SegmentedControlItem {
   public componentWillRender(): void {
     throwIfPropIsUndefined(this.host, 'value', this.value);
 
-    this.isFocusable = isSegmentedControlItemFocusable(this.host, this.host.selected);
-
     attachComponentCss(
       this.host,
       getComponentCss,
@@ -73,7 +69,7 @@ export class SegmentedControlItem {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <button type="button" {...getButtonAttributes(this.host.selected, this.disabled, this.isFocusable)}>
+      <button type="button" {...getButtonAttributes(this.host.selected, this.disabled)}>
         {this.label && <span>{this.label}</span>}
         {(this.icon || this.iconSource) && (
           <PrefixedTagNames.pIcon

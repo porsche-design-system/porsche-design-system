@@ -19,9 +19,9 @@ button {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  cursor: pointer;
   outline: 1px solid transparent;
   outline-offset: 2px;
+  cursor: pointer;
 }
 button::-moz-focus-inner {
   border: 0;
@@ -76,9 +76,9 @@ button {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  cursor: pointer;
   outline: 1px solid transparent;
   outline-offset: 2px;
+  cursor: pointer;
 }
 button::-moz-focus-inner {
   border: 0;
@@ -133,9 +133,9 @@ button {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  cursor: pointer;
   outline: 1px solid transparent;
   outline-offset: 2px;
+  cursor: pointer;
 }
 button::-moz-focus-inner {
   border: 0;
@@ -190,9 +190,9 @@ button {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  cursor: pointer;
   outline: 1px solid transparent;
   outline-offset: 2px;
+  cursor: pointer;
 }
 button::-moz-focus-inner {
   border: 0;
@@ -247,9 +247,9 @@ button {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  cursor: pointer;
   outline: 1px solid transparent;
   outline-offset: 2px;
+  cursor: pointer;
 }
 button::-moz-focus-inner {
   border: 0;
@@ -295,8 +295,18 @@ button {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
   cursor: not-allowed;
-  outline: 0;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: #000;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
 }
 span {
   display: block;
@@ -333,8 +343,18 @@ button {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
   cursor: not-allowed;
-  outline: 0;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: #000;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
 }
 span {
   display: block;
