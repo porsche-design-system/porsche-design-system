@@ -11,13 +11,14 @@ import {
   unobserveChildren,
 } from '../../../../utils';
 import { getComponentCss } from './stepper-horizontal-styles';
+import type { StepChangeEvent } from './stepper-horizontal-utils';
 import {
   getIndexOfStepWithStateCurrent,
   syncItemsProps,
   throwIfMultipleCurrentStates,
 } from './stepper-horizontal-utils';
-import type { StepChangeEvent } from './stepper-horizontal-utils';
 import type { Theme } from '../../../../types';
+import { getClickedItem } from '../../../../utils/dom/getClickedItem';
 
 @Component({
   tag: 'p-stepper-horizontal',
@@ -98,10 +99,13 @@ export class StepperHorizontal {
 
   private addEventListeners = (): void => {
     this.scrollAreaElement.addEventListener('click', (e) => {
-      const target = e.target as HTMLPStepperHorizontalItemElement;
+      const target = getClickedItem<HTMLPStepperHorizontalItemElement>(
+        this.host,
+        'pStepperHorizontalItem',
+        e.composedPath()
+      );
 
-      // Click in between steps should not do anything
-      if (target.tagName !== 'DIV') {
+      if (target) {
         const clickedStepIndex = this.stepperHorizontalItems.indexOf(target);
 
         this.stepChange.emit({ activeStepIndex: clickedStepIndex });
