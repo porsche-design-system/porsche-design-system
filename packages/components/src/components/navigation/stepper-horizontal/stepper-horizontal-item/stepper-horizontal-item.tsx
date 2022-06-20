@@ -1,4 +1,4 @@
-import { Component, Element, JSX, Listen, Prop, h } from '@stencil/core';
+import { Component, Element, JSX, Listen, Prop, Watch, h } from '@stencil/core';
 import type { StepperHorizontalItemInternalHTMLProps, StepperState } from './stepper-horizontal-item-utils';
 import {
   getIconName,
@@ -8,6 +8,7 @@ import {
 } from './stepper-horizontal-item-utils';
 import { attachComponentCss, getPrefixedTagNames, throwIfParentIsNotOfKind } from '../../../../utils';
 import { getComponentCss } from './stepper-horizontal-item-styles';
+import type { StepperHorizontalHostHtmlElement } from '../stepper-horizontal/stepper-horizontal-utils';
 
 @Component({
   tag: 'p-stepper-horizontal-item',
@@ -27,6 +28,11 @@ export class StepperHorizontalItem {
     if (!isItemClickable(this.state, this.disabled)) {
       e.stopPropagation();
     }
+  }
+
+  @Watch('state')
+  public onStateChange(): void {
+    (this.host.parentElement as StepperHorizontalHostHtmlElement).stateChanged();
   }
 
   public connectedCallback(): void {
