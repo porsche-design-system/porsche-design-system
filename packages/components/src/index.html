@@ -11,8 +11,12 @@
     <script type="module" src="build/porsche-design-system.esm.js"></script>
   </head>
   <body>
-    <!-- START: keep this snippet to log component lifecycle events -->
+    <header>
+      <h1>Porsche Design System - Playground</h1>
+    </header>
+    <main></main>
     <script>
+      <!-- START: keep this snippet to log component lifecycle events -->
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
           const eventName = e.type + (e.type.includes('Did') ? ' ' : '');

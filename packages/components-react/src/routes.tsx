@@ -96,6 +96,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.TabsBarExamplePage />,
   },
   {
+    name: 'Text Field Wrapper Example',
+    path: '/text-field-wrapper-example',
+    element: <fromExamples.TextFieldWrapperExamplePage />,
+  },
+  {
     name: 'Toast Example',
     path: '/toast-example',
     element: <fromExamples.ToastExamplePage />,
