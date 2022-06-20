@@ -79,11 +79,11 @@ export class StepperHorizontalExampleComponent {
     const { activeStepIndex } = e.detail;
 
     const newState = [...this.steps];
-    newState[activeStepIndex].state = 'current';
     for (let i = activeStepIndex + 1; i < newState.length; i++) {
       // reset step state when going back via stepper horizontal item click
       delete newState[i].state;
     }
+    newState[activeStepIndex].state = 'current';
 
     this.steps = newState;
   }
