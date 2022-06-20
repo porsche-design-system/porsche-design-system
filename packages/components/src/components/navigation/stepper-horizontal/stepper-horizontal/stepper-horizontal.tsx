@@ -4,13 +4,12 @@ import {
   getPrefixedTagNames,
   getScrollActivePosition,
   observeChildren,
-  observeProperties,
   throwIfChildCountIsExceeded,
   throwIfChildrenAreNotOfKind,
   unobserveChildren,
 } from '../../../../utils';
 import { getComponentCss } from './stepper-horizontal-styles';
-import type { StepChangeEvent } from './stepper-horizontal-utils';
+import type { StepChangeEvent, StepperHorizontalHostHtmlElement } from './stepper-horizontal-utils';
 import {
   getIndexOfStepWithStateCurrent,
   syncItemsProps,
@@ -25,7 +24,7 @@ import { getScrollerElements } from '../../../common/scroller/scroller-utils';
   shadow: true,
 })
 export class StepperHorizontal {
-  @Element() public host!: HTMLElement;
+  @Element() public host!: StepperHorizontalHostHtmlElement;
 
   /** Adapts the tag color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -44,13 +43,11 @@ export class StepperHorizontal {
     this.defineStepperHorizontalItemElements();
     // Initial validation
     this.validateComponent();
-    this.observeProperties();
 
     observeChildren(this.host, () => {
       this.defineStepperHorizontalItemElements();
       // Validate when new steps are added
       this.validateComponent();
-      this.observeProperties();
       this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
       this.scrollIntoView();
     });
@@ -63,6 +60,11 @@ export class StepperHorizontal {
   public componentDidLoad(): void {
     this.defineScrollerElements();
     this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
+
+    this.host.stateChanged = () => {
+      throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
+      this.scrollIntoView();
+    };
 
     // Sometimes lifecycle gets called after disconnectedCallback()
     if (this.scrollAreaElement && this.prevGradientElement) {
@@ -149,14 +151,5 @@ export class StepperHorizontal {
         isSmooth: true,
       };
     }
-  };
-
-  private observeProperties = (): void => {
-    this.stepperHorizontalItems.forEach((el) =>
-      observeProperties(el, ['state'], () => {
-        throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
-        this.scrollIntoView();
-      })
-    );
   };
 }

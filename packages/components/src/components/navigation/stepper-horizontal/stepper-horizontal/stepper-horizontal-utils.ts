@@ -5,6 +5,7 @@ import { StepperHorizontalItem } from '../stepper-horizontal-item/stepper-horizo
 import { forceUpdate } from '@stencil/core';
 
 export type StepChangeEvent = { activeStepIndex: number };
+export type StepperHorizontalHostHtmlElement = HTMLElement & { stateChanged?: () => void };
 
 export const getIndexOfStepWithStateCurrent = (stepperHorizontalItems: HTMLPStepperHorizontalItemElement[]): number => {
   return stepperHorizontalItems.findIndex((item) => item.state === 'current');
