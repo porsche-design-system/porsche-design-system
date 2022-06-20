@@ -48,7 +48,7 @@ export class SegmentedControl {
 
   public render(): JSX.Element {
     return (
-      <Host role="tablist">
+      <Host role="group">
         <slot />
       </Host>
     );
