@@ -12,6 +12,7 @@ import {
   pxToRemWithUnit,
   getThemedColors,
 } from './';
+import { hoverMediaQuery } from './hover-media-query';
 
 const { baseColor: darkThemeBaseColor } = getThemedColors('dark');
 const { baseColor: lightThemeBaseColor } = getThemedColors('light');
@@ -182,9 +183,11 @@ export const getLinkButtonStyles = (
           '&(a:focus)': {
             outlineColor: primaryColor,
           },
-          '&(a:hover:focus)': {
-            outlineColor: primaryColorHover,
-          },
+          ...hoverMediaQuery({
+            '&(a:hover:focus)': {
+              outlineColor: primaryColorHover,
+            },
+          }),
           '&(a:focus:not(:focus-visible))': {
             outlineColor: 'transparent',
           },
@@ -216,17 +219,18 @@ export const getLinkButtonStyles = (
         ...buildResponsiveStyles(hideLabel, getRootJssStyle),
         ...getFocusJssStyle(),
       }),
-      ...(!isDisabledOrLoading && {
-        '&:hover, &:active': {
-          color: primaryColorHover,
-          ...(isTertiary && {
-            backgroundColor: 'currentColor',
-            '& $label, & $icon': {
-              color: isDarkTheme ? lightThemeBaseColor : darkThemeBaseColor,
-            },
-          }),
-        },
-      }),
+      ...(!isDisabledOrLoading &&
+        hoverMediaQuery({
+          '&:hover, &:active': {
+            color: primaryColorHover,
+            ...(isTertiary && {
+              backgroundColor: 'currentColor',
+              '& $label, & $icon': {
+                color: isDarkTheme ? lightThemeBaseColor : darkThemeBaseColor,
+              },
+            }),
+          },
+        })),
     },
     icon: {
       position: 'absolute',

@@ -27,12 +27,8 @@ button {
   text-align: left;
   background: transparent;
   cursor: pointer;
-  transition: color var(--p-transition-duration, .24s) ease;
   outline: 1px solid transparent;
   outline-offset: 1px;
-}
-button:hover {
-  color: #d5001c;
 }
 button::-moz-focus-inner {
   border: 0;
@@ -43,9 +39,18 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover .icon, button:focus .icon {
-  opacity: 1;
+@media(hover:hover) {
+  button {
+    transition: color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover {
+    color: #d5001c;
+  }
+  button:hover .icon, button:focus .icon {
+    opacity: 1;
+  }
 }
+
 .icon {
   margin-left: 0.25rem;
   opacity: 0;
@@ -81,12 +86,8 @@ button {
   text-align: left;
   background: transparent;
   cursor: pointer;
-  transition: color var(--p-transition-duration, .24s) ease;
   outline: 1px solid transparent;
   outline-offset: 1px;
-}
-button:hover {
-  color: #d5001c;
 }
 button::-moz-focus-inner {
   border: 0;
@@ -97,9 +98,18 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover .icon, button:focus .icon {
-  opacity: 1;
+@media(hover:hover) {
+  button {
+    transition: color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover {
+    color: #d5001c;
+  }
+  button:hover .icon, button:focus .icon {
+    opacity: 1;
+  }
 }
+
 .icon {
   margin-left: 0.25rem;
   opacity: 0;
@@ -135,12 +145,8 @@ button {
   text-align: left;
   background: transparent;
   cursor: pointer;
-  transition: color var(--p-transition-duration, .24s) ease;
   outline: 1px solid transparent;
   outline-offset: 1px;
-}
-button:hover {
-  color: #d5001c;
 }
 button::-moz-focus-inner {
   border: 0;
@@ -151,9 +157,18 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover .icon, button:focus .icon {
-  opacity: 1;
+@media(hover:hover) {
+  button {
+    transition: color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover {
+    color: #d5001c;
+  }
+  button:hover .icon, button:focus .icon {
+    opacity: 1;
+  }
 }
+
 .icon {
   margin-left: 0.25rem;
   opacity: 1;
@@ -189,12 +204,8 @@ button {
   text-align: left;
   background: transparent;
   cursor: pointer;
-  transition: color var(--p-transition-duration, .24s) ease;
   outline: 1px solid transparent;
   outline-offset: 1px;
-}
-button:hover {
-  color: #d5001c;
 }
 button::-moz-focus-inner {
   border: 0;
@@ -205,9 +216,18 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover .icon, button:focus .icon {
-  opacity: 1;
+@media(hover:hover) {
+  button {
+    transition: color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover {
+    color: #d5001c;
+  }
+  button:hover .icon, button:focus .icon {
+    opacity: 1;
+  }
 }
+
 .icon {
   margin-left: 0.25rem;
   opacity: 1;
@@ -243,12 +263,8 @@ button {
   text-align: left;
   background: transparent;
   cursor: pointer;
-  transition: color var(--p-transition-duration, .24s) ease;
   outline: 1px solid transparent;
   outline-offset: 1px;
-}
-button:hover {
-  color: #d5001c;
 }
 button::-moz-focus-inner {
   border: 0;
@@ -259,9 +275,18 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-button:hover .icon, button:focus .icon {
-  opacity: 1;
+@media(hover:hover) {
+  button {
+    transition: color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover {
+    color: #d5001c;
+  }
+  button:hover .icon, button:focus .icon {
+    opacity: 1;
+  }
 }
+
 .icon {
   margin-left: 0.25rem;
   opacity: 1;

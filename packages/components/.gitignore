@@ -27,3 +27,4 @@ UserInterfaceState.xcuserstate
 
 src/components/**/*.props.md
 src/components/**/readme.md
+src/test-utils/tag-names-constructor-map.ts

@@ -10,6 +10,7 @@ import {
 } from '../../../../styles';
 import { fontWeight, spacing, textSmall } from '@porsche-design-system/utilities-v2';
 import { isDirectionAsc, isSortable } from './table-head-cell-utils';
+import { hoverMediaQuery } from '../../../../styles/hover-media-query';
 
 const { contrastMediumColor, baseColor } = getThemedColors('light');
 const { semiBold: fontWeightSemiBold } = fontWeight;
@@ -48,13 +49,15 @@ export const getComponentCss = (
               textAlign: 'left',
               background: 'transparent',
               cursor: 'pointer',
-              ...getHoverJssStyle(),
               ...getFocusJssStyle({ offset: 1 }),
-              '&:hover, &:focus': {
-                '& .icon': {
-                  opacity: 1,
+              ...hoverMediaQuery({
+                ...getHoverJssStyle(),
+                '&:hover, &:focus': {
+                  '& .icon': {
+                    opacity: 1,
+                  },
                 },
-              },
+              }),
             },
           }
         : hideLabel && {
