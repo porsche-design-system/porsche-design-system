@@ -19,7 +19,7 @@ afterEach(async () => await page.close());
 
 TAG_NAMES.filter((tagName) => getComponentMeta(tagName).isDelegatingFocus).forEach((tagName) => {
   const href = tagName.includes('link') || tagName.includes('marque') ? ' href="#"' : '';
-  const state = tagName.includes('stepper') ? ' state="complete"' : '';
+  const state = tagName.includes('stepper-horizontal-item') ? ' state="complete"' : '';
 
   it(`should be removed from tab order for ${tagName}`, async () => {
     await setContentWithDesignSystem(
