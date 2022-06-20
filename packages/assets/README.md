@@ -36,4 +36,4 @@ const iconCarUrl = `${ICONS_CDN_BASE_URL}/${ICONS_MANIFEST.car}`;
 
 ## License
 
-- See [Custom License](./LICENSE) within npm package
+- See **Custom License** within npm package

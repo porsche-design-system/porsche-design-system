@@ -19,7 +19,7 @@ module.exports = {
       rules: [
         {
           test: /\.(md)(\?.*)?$/,
-          use: ['vue-loader', '@porsche-design-system/vmark-loader'],
+          use: ['vue-loader', 'vmark-loader'],
         },
       ],
     },

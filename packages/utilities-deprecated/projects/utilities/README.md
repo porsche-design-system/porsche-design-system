@@ -63,4 +63,4 @@ render(
 
 ## License
 
-- See [Custom License](./LICENSE) within npm package
+- See **Custom License** within npm package

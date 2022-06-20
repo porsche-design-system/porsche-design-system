@@ -7,6 +7,7 @@ jobs:
     name: 'ORT'
     runs-on: ubuntu-latest
     env:
+      OSO_PROJECT_NAME: porsche_design_system
       OSO_AWS_ECR_REGISTRY: 215495424956.dkr.ecr.eu-central-1.amazonaws.com
       PDS_DOCKER_IMAGE: ghcr.io/porscheui/porsche-design-system/node:16.14.2-stretch-slim
     steps:
@@ -25,8 +26,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Pull Docker Image'
-        run: |
-          docker pull ${{ env.PDS_DOCKER_IMAGE }}
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
@@ -46,21 +46,6 @@ jobs:
           password: ${{ secrets.OSO_AWS_SECRET_ACCESS_KEY }}
       - name: "Run ORT"
         run: |
-          cleanup_npm_credentials() {
-            local exit_code=$?
-            echo "task: [$(date)] \"cleanup_npm_credentials\""
-            rm "./.npmrc"
-            exit $exit_code
-          }
-
-          setup_npm_credentials() {
-            echo "task: [$(date)] \"setup_npm_credentials\""
-            echo "//porscheui.jfrog.io/porscheui/api/npm/npm/:_authToken=${PORSCHE_NPM_REGISTRY_TOKEN}" >> "./.npmrc"
-          }
-
-          trap cleanup_npm_credentials EXIT
-          setup_npm_credentials
-
           docker run -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort-porsche:latest analyze -i /project/ -o /project/ort/ --package-managers yarn
           docker run -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort-porsche:latest report -i /project/ort/analyzer-result.yml -o /project/ort/ -f StaticHtml
         shell: bash
@@ -74,7 +59,7 @@ jobs:
       - name: "Send ORT Analyzer Result to OSO"
         run: |
           zip -j analyzer-result.zip ort/analyzer-result.yml
-          curl -X POST https://${{ env.OSO_JENKINS_USER }}:${{ env.OSO_JENKINS_TOKEN }}@oso-ort-scan.aws.platform.porsche-preview.cloud/job/ort-porsche-scancode/buildWithParameters --form ort/analyzer-result.zip=@analyzer-result.zip --form ProjectName=porsche_design_system --fail
+          curl -X POST https://${{ env.OSO_JENKINS_USER }}:${{ env.OSO_JENKINS_TOKEN }}@oso-ort-scan.aws.platform.porsche-preview.cloud/job/ort-porsche-scancode/buildWithParameters --form ort/analyzer-result.zip=@analyzer-result.zip --form ProjectName=${{ env.OSO_PROJECT_NAME }} --fail
         shell: bash
         env:
           OSO_JENKINS_USER: ${{ secrets.OSO_JENKINS_USER }}
