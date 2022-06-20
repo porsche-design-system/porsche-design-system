@@ -1,9 +1,59 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`accessibility should expose correct initial accessibility tree properties 1`] = `
+exports[`accessibility should expose correct initial accessibility tree properties: segmented-control 1`] = `
 Object {
-  "name": "Option 1",
-  "role": "tab",
-  "selected": true,
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "name": "Option 1",
+                      "role": "StaticText",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "name": "Option 1",
+              "role": "tab",
+              "selected": true,
+            },
+          ],
+          "name": "",
+          "role": "generic",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "name": "Option 2",
+                      "role": "StaticText",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "name": "Option 2",
+              "role": "tab",
+            },
+          ],
+          "name": "",
+          "role": "generic",
+        },
+      ],
+      "role": "none",
+    },
+  ],
+  "name": "",
+  "orientation": "horizontal",
+  "role": "tablist",
 }
 `;

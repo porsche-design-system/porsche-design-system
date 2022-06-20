@@ -354,4 +354,4 @@ export const expectToSkipFocusOnComponent = async (page: Page, component: Elemen
   expect(await getActiveElementId(page)).toBe('before');
 };
 
-export const getOffsetWidth = (element: ElementHandle) => getProperty(element, 'offsetWidth');
+export const getOffsetWidth = (element: ElementHandle): Promise<number> => getProperty(element, 'offsetWidth');

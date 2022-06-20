@@ -11,6 +11,7 @@ import {
   isElementAtIndexFocused,
   getProperty,
   getOffsetWidth,
+  waitForEventSerialization,
 } from '../helpers';
 import type { ElementHandle, Page } from 'puppeteer';
 
@@ -23,157 +24,119 @@ beforeEach(async () => {
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-segmented-control');
-const getItemHost = () => selectNode(page, 'p-segmented-control-item');
+const getFirstItemHost = () => selectNode(page, 'p-segmented-control-item');
+const getSecondItemHost = () => selectNode(page, 'p-segmented-control-item:nth-child(2)');
 const getItemButton = () => selectNode(page, 'p-segmented-control-item >>> button');
-const getAllItems = () => page.$$('p-segmented-control-item');
-const getAllButtons = async () =>
+const getAllItemHosts = () => page.$$('p-segmented-control-item');
+const getAllItemButtons = async () =>
   Promise.all(
-    (await getAllItems()).map(async (x) =>
+    (await getAllItemHosts()).map(async (x) =>
       (await x.evaluateHandle((x) => x.shadowRoot.querySelector('button'))).asElement()
     )
   );
 
-const initSegmentedControl = (opts?: { amount?: number; value?: number; isWrapped?: boolean }): Promise<void> => {
-  const { amount = 1, value = 1, isWrapped = false } = opts || {};
+const getFirstItemOffsetWidth = async (): Promise<number> => getOffsetWidth(await getFirstItemHost());
+
+const initSegmentedControl = (opts?: { amount?: number; value?: number }): Promise<void> => {
+  const { amount = 1, value } = opts || {};
   const items = Array.from(Array(amount))
     .map((_, i) => `<p-segmented-control-item value="${i + 1}">Option ${i + 1}</p-segmented-control-item>`)
     .join('\n');
 
-  const content = `<p-segmented-control value="${value}">
+  const content = `<p-segmented-control${value ? ` value="${value}"` : ''}>
   ${items}
 </p-segmented-control>`;
 
-  return setContentWithDesignSystem(page, isWrapped ? `<div style="width: 600px">${content}</div>` : content);
+  return setContentWithDesignSystem(page, content);
 };
 
 describe('width calculation', () => {
-  const expectAllItemsHaveSameWidth = async (segmentedControlItems: ElementHandle<Element>[]) => {
-    const widthFirstItem = await getOffsetWidth(segmentedControlItems[0]);
-    for (const item of segmentedControlItems) {
-      expect(await getOffsetWidth(item)).toBe(widthFirstItem);
-    }
-  };
-
   it('should recalculate width on items when longest content is removed', async () => {
-    await initSegmentedControl({ amount: 6, isWrapped: true });
+    await initSegmentedControl({ amount: 6 });
+    const secondItemHost = await getSecondItemHost();
 
     // Extend content of second item
-    await page.evaluate(() => {
-      const segmentedControlItems = document.querySelectorAll('p-segmented-control-item');
-      segmentedControlItems[1].innerHTML = 'Option 2 longer';
-    });
-
-    const initialItemWidth = await getOffsetWidth(await getItemHost());
-    await expectAllItemsHaveSameWidth(await getAllItems());
-
-    await page.evaluate(() => {
-      const segmentedControl = document.querySelector('p-segmented-control');
-      segmentedControl.removeChild(segmentedControl.children[1]);
-    });
+    await secondItemHost.evaluate((el) => (el.innerHTML = 'Option 2 longer'));
     await waitForStencilLifecycle(page);
 
-    expect(initialItemWidth).not.toBe(await getOffsetWidth(await getItemHost()));
-    await expectAllItemsHaveSameWidth(await getAllItems());
+    const initialItemWidth = await getFirstItemOffsetWidth();
+
+    await secondItemHost.evaluate((el) => el.remove());
+    await waitForStencilLifecycle(page);
+
+    expect(await getFirstItemOffsetWidth()).toBeLessThan(initialItemWidth);
   });
 
   it('should recalculate width on items when new item with longer content is added', async () => {
-    await initSegmentedControl({ amount: 6, isWrapped: true });
+    await initSegmentedControl({ amount: 6 });
+    const host = await getHost();
 
-    const initialItemWidth = await getOffsetWidth(await getItemHost());
-    await expectAllItemsHaveSameWidth(await getAllItems());
+    const initialItemWidth = await getFirstItemOffsetWidth();
 
-    await page.evaluate(() => {
-      const segmentedControl = document.querySelector('p-segmented-control');
+    await host.evaluate((el) => {
       const segmentedControlItem = document.createElement('p-segmented-control-item');
       segmentedControlItem.innerHTML = 'Some Option with longer text';
-      segmentedControl.appendChild(segmentedControlItem);
+      el.appendChild(segmentedControlItem);
     });
     await waitForStencilLifecycle(page);
 
-    expect(initialItemWidth).not.toBe(await getOffsetWidth(await getItemHost()));
-    await expectAllItemsHaveSameWidth(await getAllItems());
+    expect(await getFirstItemOffsetWidth()).toBeGreaterThan(initialItemWidth);
   });
 
   it('should recalculate width on items when content changes', async () => {
-    await initSegmentedControl({ amount: 6, isWrapped: true });
+    await initSegmentedControl({ amount: 6 });
+    const firstItemHost = await getFirstItemHost();
 
-    const initialItemWidth = await getOffsetWidth(await getItemHost());
-    await expectAllItemsHaveSameWidth(await getAllItems());
+    const initialItemWidth = await getFirstItemOffsetWidth();
 
-    await page.evaluate(() => {
-      const segmentedControlItem = document.querySelector('p-segmented-control-item');
-      segmentedControlItem.innerHTML = 'Some Option with longer text';
+    await firstItemHost.evaluate((el) => {
+      el.innerHTML = 'Some Option with longer text';
     });
     await waitForStencilLifecycle(page);
 
-    expect(initialItemWidth).not.toBe(await getOffsetWidth(await getItemHost()));
-    await expectAllItemsHaveSameWidth(await getAllItems());
+    expect(await getFirstItemOffsetWidth()).toBeGreaterThan(initialItemWidth);
   });
 
   it('should recalculate width on items on label change', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `<div style="width: 600px">
-  <p-segmented-control>
-    <p-segmented-control-item value="1" label="Some super long Label to extend the width">Option 1</p-segmented-control-item>
-    <p-segmented-control-item value="2">Option 2</p-segmented-control-item>
-    <p-segmented-control-item value="3">Option 3</p-segmented-control-item>
-    <p-segmented-control-item value="4">Option 4</p-segmented-control-item>
-    <p-segmented-control-item value="5">Option 5</p-segmented-control-item>
-    <p-segmented-control-item value="6">Option 6</p-segmented-control-item>
-  </p-segmented-control>
-</div>`
-    );
-    const [item1] = await getAllItems();
+    await initSegmentedControl({ amount: 6 });
+    const firstItemHost = await getFirstItemHost();
 
-    const initialItemWidth = await getOffsetWidth(await getItemHost());
-    await expectAllItemsHaveSameWidth(await getAllItems());
-
-    await setProperty(item1, 'label', 'Some Label');
+    await setProperty(firstItemHost, 'label', 'Some super long Label to extend the width');
     await waitForStencilLifecycle(page);
 
-    expect(initialItemWidth).not.toBe(await getOffsetWidth(await getItemHost()));
-    await expectAllItemsHaveSameWidth(await getAllItems());
+    const initialItemWidth = await getFirstItemOffsetWidth();
+
+    await setProperty(firstItemHost, 'label', 'Some Label');
+    await waitForStencilLifecycle(page);
+
+    expect(await getFirstItemOffsetWidth()).toBeLessThan(initialItemWidth);
   });
 
-  it('should recalculate width on when icon is added', async () => {
-    await initSegmentedControl({ amount: 6, isWrapped: true });
-    const [, item2] = await getAllItems();
+  it('should recalculate width on items when icon is added', async () => {
+    await initSegmentedControl({ amount: 6 });
+    const secondItemHost = await getSecondItemHost();
 
-    const initialItemWidth = await getOffsetWidth(await getItemHost());
-    await expectAllItemsHaveSameWidth(await getAllItems());
+    const initialItemWidth = await getFirstItemOffsetWidth();
 
-    await setProperty(item2, 'icon', 'truck');
+    await setProperty(secondItemHost, 'icon', 'truck');
     await waitForStencilLifecycle(page);
 
-    expect(initialItemWidth).not.toBe(await getOffsetWidth(await getItemHost()));
-    await expectAllItemsHaveSameWidth(await getAllItems());
+    expect(await getFirstItemOffsetWidth()).toBeGreaterThan(initialItemWidth);
   });
 
-  it('should recalculate width on item when icon is removed', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `<div style="width: 600px">
-  <p-segmented-control>
-    <p-segmented-control-item value="1">Option 1</p-segmented-control-item>
-    <p-segmented-control-item value="2" icon="truck">Option 2</p-segmented-control-item>
-    <p-segmented-control-item value="3">Option 3</p-segmented-control-item>
-    <p-segmented-control-item value="4">Option 4</p-segmented-control-item>
-    <p-segmented-control-item value="5">Option 5</p-segmented-control-item>
-    <p-segmented-control-item value="6">Option 6</p-segmented-control-item>
-  </p-segmented-control>
-</div>`
-    );
-    const [, item2] = await getAllItems();
+  it('should recalculate width on items when icon is removed', async () => {
+    await initSegmentedControl({ amount: 6 });
+    const secondItemHost = await getSecondItemHost();
 
-    const initialItemWidth = await getOffsetWidth(await getItemHost());
-    await expectAllItemsHaveSameWidth(await getAllItems());
-
-    await setProperty(item2, 'icon', undefined);
+    await setProperty(secondItemHost, 'icon', 'truck');
     await waitForStencilLifecycle(page);
 
-    expect(initialItemWidth).not.toBe(await getOffsetWidth(await getItemHost()));
-    await expectAllItemsHaveSameWidth(await getAllItems());
+    const initialItemWidth = await getFirstItemOffsetWidth();
+
+    await setProperty(secondItemHost, 'icon', undefined);
+    await waitForStencilLifecycle(page);
+
+    expect(await getFirstItemOffsetWidth()).toBeLessThan(initialItemWidth);
   });
 });
 
@@ -181,7 +144,7 @@ describe('events', () => {
   it('should trigger event on item click which is not selected', async () => {
     await initSegmentedControl({ amount: 2 });
     const host = await getHost();
-    const [button1, button2] = await getAllButtons();
+    const [button1, button2] = await getAllItemButtons();
 
     let eventCounter = 0;
     await addEventListener(host, 'segmentedControlChange', () => eventCounter++);
@@ -190,12 +153,12 @@ describe('events', () => {
     await reattachElement(page, 'p-segmented-control');
 
     await button2.click();
-    await waitForStencilLifecycle(page);
+    await waitForEventSerialization(page);
 
     expect(eventCounter).toBe(1);
 
     await button1.click();
-    await waitForStencilLifecycle(page);
+    await waitForEventSerialization(page);
 
     expect(eventCounter).toBe(2);
   });
@@ -203,40 +166,43 @@ describe('events', () => {
   it('should not trigger event if item is disabled', async () => {
     await initSegmentedControl({ amount: 2 });
     const host = await getHost();
-    const [, item2] = await getAllItems();
-    const [, button2] = await getAllButtons();
+    const secondItemHost = await getSecondItemHost();
+    const [, button2] = await getAllItemButtons();
 
     let eventCounter = 0;
-    await addEventListener(host, 'segmentedControlChange', (e) => {
-      eventCounter++;
-      console.log(e);
-    });
+    await addEventListener(host, 'segmentedControlChange', () => eventCounter++);
 
-    await setProperty(item2, 'disabled', true);
+    await setProperty(secondItemHost, 'disabled', true);
     await waitForStencilLifecycle(page);
 
     await button2.click();
-    await waitForStencilLifecycle(page);
+    await waitForEventSerialization(page);
 
     expect(eventCounter).toBe(0);
   });
 
   it('should not trigger event if item is selected', async () => {
-    await initSegmentedControl();
+    await initSegmentedControl({ value: 1 });
     const host = await getHost();
+    const firstItemHost = await getFirstItemHost();
     const button = await getItemButton();
 
     let eventCounter = 0;
     await addEventListener(host, 'segmentedControlChange', () => eventCounter++);
 
+    expect(await getProperty(firstItemHost, 'selected')).toBe(true);
+
     await button.click();
-    await waitForStencilLifecycle(page);
+    await waitForEventSerialization(page);
 
     expect(eventCounter).toBe(0);
   });
 });
 
 describe('keyboard', () => {
+  const hasFocus = (element: ElementHandle): Promise<boolean> =>
+    element.evaluate((el) => document.activeElement === el);
+
   it('should render focus only on first item when no default value on keyboard "tab" press', async () => {
     await setContentWithDesignSystem(
       page,
@@ -247,126 +213,152 @@ describe('keyboard', () => {
 </p-segmented-control>
 <a href="#">Some Link</a>`
     );
-    expect(await isElementAtIndexFocused(page, 0)).toBeUndefined();
-    expect(await isElementAtIndexFocused(page, 1)).toBeUndefined();
-    expect(await isElementAtIndexFocused(page, 2)).toBeUndefined();
-    expect(await isElementAtIndexFocused(page, 3)).toBeUndefined();
+    const firstItemHost = await getFirstItemHost();
+    const [firstAnchor, secondAnchor] = await page.$$('a');
+
+    expect(await hasFocus(await selectNode(page, 'body'))).toBe(true);
 
     await page.keyboard.press('Tab');
-
-    expect(await isElementAtIndexFocused(page, 0)).toBe(true);
-    expect(await isElementAtIndexFocused(page, 1)).toBeUndefined();
-    expect(await isElementAtIndexFocused(page, 2)).toBeUndefined();
-    expect(await isElementAtIndexFocused(page, 3)).toBeUndefined();
+    expect(await hasFocus(firstAnchor)).toBe(true);
 
     await page.keyboard.press('Tab');
-
-    expect(await isElementAtIndexFocused(page, 0)).toBeUndefined();
-    expect(await isElementAtIndexFocused(page, 1)).toBe(true);
-    expect(await isElementAtIndexFocused(page, 2)).toBeUndefined();
-    expect(await isElementAtIndexFocused(page, 3)).toBeUndefined();
+    expect(await hasFocus(firstItemHost)).toBe(true);
 
     await page.keyboard.press('Tab');
-
-    expect(await isElementAtIndexFocused(page, 0)).toBeUndefined();
-    expect(await isElementAtIndexFocused(page, 1)).toBeUndefined();
-    expect(await isElementAtIndexFocused(page, 2)).toBeUndefined();
-    expect(await isElementAtIndexFocused(page, 3)).toBe(true);
+    expect(await hasFocus(secondAnchor)).toBe(true);
   });
 
   it('should render focus on first item when it is selected on keyboard "tab" press', async () => {
-    await initSegmentedControl({ amount: 2 });
-    expect(await isElementAtIndexFocused(page, 0)).toBeUndefined();
-    expect(await isElementAtIndexFocused(page, 1)).toBeUndefined();
+    await initSegmentedControl({ amount: 2, value: 1 });
+    const firstItemHost = await getFirstItemHost();
+    expect(await hasFocus(await selectNode(page, 'body'))).toBe(true);
 
     await page.keyboard.press('Tab');
-
-    expect(await isElementAtIndexFocused(page, 0)).toBe(true);
-    expect(await isElementAtIndexFocused(page, 1)).toBeUndefined();
+    expect(await hasFocus(firstItemHost)).toBe(true);
 
     await page.keyboard.press('Tab');
-
-    expect(await isElementAtIndexFocused(page, 0)).toBeUndefined();
-    expect(await isElementAtIndexFocused(page, 1)).toBeUndefined();
+    expect(await hasFocus(await selectNode(page, 'body'))).toBe(true);
   });
 
-  it('should render correct focus and value of item on arrow-key press', async () => {
+  it('should select first item on arrow-key press when there is no initial value', async () => {
     await initSegmentedControl({ amount: 2 });
-    const [item1, item2] = await getAllItems();
-    expect(await isElementAtIndexFocused(page, 0)).toBeUndefined();
+    const firstItemHost = await getFirstItemHost();
+    const secondItemHost = await getSecondItemHost();
+
+    expect(await hasFocus(await selectNode(page, 'body'))).toBe(true);
 
     await page.keyboard.press('Tab');
     await waitForStencilLifecycle(page);
 
-    expect(await isElementAtIndexFocused(page, 0)).toBe(true);
-    expect(await getProperty(item1, 'selected')).toBe(true);
-    expect(await getProperty(item2, 'selected')).toBe(false);
+    expect(await hasFocus(firstItemHost)).toBe(true);
+    expect(await getProperty(firstItemHost, 'selected')).toBe(false);
+    expect(await getProperty(secondItemHost, 'selected')).toBe(false);
 
     await page.keyboard.press('ArrowRight');
     await waitForStencilLifecycle(page);
 
-    expect(await isElementAtIndexFocused(page, 0), 'on ArrowRight').toBeUndefined();
-    expect(await isElementAtIndexFocused(page, 1), 'on ArrowRight').toBe(true);
-
-    expect(await getProperty(item1, 'selected'), 'on ArrowRight').toBe(false);
-    expect(await getProperty(item2, 'selected'), 'on ArrowRight').toBe(true);
-
-    await page.keyboard.press('ArrowLeft');
-    await waitForStencilLifecycle(page);
-
-    expect(await isElementAtIndexFocused(page, 0), 'on ArrowLeft').toBe(true);
-    expect(await isElementAtIndexFocused(page, 1), 'on ArrowLeft').toBeUndefined();
-
-    expect(await getProperty(item1, 'selected'), 'on ArrowLeft').toBe(true);
-    expect(await getProperty(item2, 'selected'), 'on ArrowLeft').toBe(false);
+    expect(await hasFocus(firstItemHost), 'on ArrowRight').toBe(true);
+    expect(await getProperty(firstItemHost, 'selected'), 'on ArrowRight').toBe(true);
+    expect(await getProperty(secondItemHost, 'selected'), 'on ArrowRight').toBe(false);
   });
 
-  it('should render select/focus first item on ArrowRight when last item is selected', async () => {
-    await initSegmentedControl({ amount: 3, value: 3 });
-    const [item1, item2, item3] = await getAllItems();
+  it('should render correct focus and value of item on arrow-key press', async () => {
+    await initSegmentedControl({ amount: 2, value: 1 });
+    const firstItemHost = await getFirstItemHost();
+    const secondItemHost = await getSecondItemHost();
+
+    expect(await hasFocus(await selectNode(page, 'body'))).toBe(true);
 
     await page.keyboard.press('Tab');
     await waitForStencilLifecycle(page);
 
-    expect(await isElementAtIndexFocused(page, 2)).toBe(true);
-    expect(await getProperty(item1, 'selected')).toBe(false);
-    expect(await getProperty(item2, 'selected')).toBe(false);
+    expect(await hasFocus(firstItemHost)).toBe(true);
+    expect(await getProperty(firstItemHost, 'selected')).toBe(true);
+    expect(await getProperty(secondItemHost, 'selected')).toBe(false);
+
+    await page.keyboard.press('ArrowRight');
+    await waitForStencilLifecycle(page);
+
+    expect(await hasFocus(secondItemHost), 'on ArrowRight').toBe(true);
+    expect(await getProperty(firstItemHost, 'selected'), 'on ArrowRight').toBe(false);
+    expect(await getProperty(secondItemHost, 'selected'), 'on ArrowRight').toBe(true);
+
+    await page.keyboard.press('ArrowLeft');
+    await waitForStencilLifecycle(page);
+
+    expect(await hasFocus(firstItemHost), 'on ArrowLeft').toBe(true);
+    expect(await getProperty(firstItemHost, 'selected'), 'on ArrowLeft').toBe(true);
+    expect(await getProperty(secondItemHost, 'selected'), 'on ArrowLeft').toBe(false);
+  });
+
+  it('should select first item on ArrowRight when last item is initially selected', async () => {
+    await initSegmentedControl({ amount: 3, value: 3 });
+    const [item1, item2, item3] = await getAllItemHosts();
+
+    await page.keyboard.press('Tab');
+    await waitForStencilLifecycle(page);
+
+    expect(await hasFocus(item3)).toBe(true);
     expect(await getProperty(item3, 'selected')).toBe(true);
 
     await page.keyboard.press('ArrowRight');
     await waitForStencilLifecycle(page);
 
-    expect(await isElementAtIndexFocused(page, 0)).toBe(true);
-    expect(await isElementAtIndexFocused(page, 1)).toBeUndefined();
-    expect(await isElementAtIndexFocused(page, 2)).toBeUndefined();
-
+    expect(await hasFocus(item1)).toBe(true);
     expect(await getProperty(item1, 'selected')).toBe(true);
     expect(await getProperty(item2, 'selected')).toBe(false);
     expect(await getProperty(item2, 'selected')).toBe(false);
   });
 
-  it('should render select/focus last item on ArrowLeft when first item is selected', async () => {
-    await initSegmentedControl({ amount: 3 });
-    const [item1, item2, item3] = await getAllItems();
+  it('should select last item on ArrowLeft when first item is initially selected', async () => {
+    await initSegmentedControl({ amount: 3, value: 1 });
+    const [item1, item2, item3] = await getAllItemHosts();
 
     await page.keyboard.press('Tab');
     await waitForStencilLifecycle(page);
 
     expect(await isElementAtIndexFocused(page, 0)).toBe(true);
+    expect(await hasFocus(item1)).toBe(true);
+
+    await page.keyboard.press('ArrowLeft');
+    await waitForStencilLifecycle(page);
+
+    expect(await hasFocus(item3)).toBe(true);
+    expect(await getProperty(item1, 'selected')).toBe(false);
+    expect(await getProperty(item2, 'selected')).toBe(false);
+    expect(await getProperty(item3, 'selected')).toBe(true);
+  });
+
+  it('should skip disabled item on arrow-key press', async () => {
+    await initSegmentedControl({ amount: 3, value: 1 });
+    const [item1, item2, item3] = await getAllItemHosts();
+
+    await setProperty(item2, 'disabled', true);
+    await waitForStencilLifecycle(page);
+
+    await page.keyboard.press('Tab');
+    await waitForStencilLifecycle(page);
+
+    expect(await hasFocus(item1)).toBe(true);
     expect(await getProperty(item1, 'selected')).toBe(true);
     expect(await getProperty(item2, 'selected')).toBe(false);
     expect(await getProperty(item3, 'selected')).toBe(false);
 
-    await page.keyboard.press('ArrowLeft');
+    await page.keyboard.press('ArrowRight');
     await waitForStencilLifecycle(page);
 
-    expect(await isElementAtIndexFocused(page, 0)).toBeUndefined();
-    expect(await isElementAtIndexFocused(page, 1)).toBeUndefined();
-    expect(await isElementAtIndexFocused(page, 2)).toBe(true);
-
+    expect(await hasFocus(item3)).toBe(true);
     expect(await getProperty(item1, 'selected')).toBe(false);
     expect(await getProperty(item2, 'selected')).toBe(false);
     expect(await getProperty(item3, 'selected')).toBe(true);
+
+    await page.keyboard.press('ArrowLeft');
+    await waitForStencilLifecycle(page);
+
+    expect(await hasFocus(item1)).toBe(true);
+    expect(await getProperty(item1, 'selected')).toBe(true);
+    expect(await getProperty(item2, 'selected')).toBe(false);
+    expect(await getProperty(item3, 'selected')).toBe(false);
   });
 });
 
@@ -401,9 +393,9 @@ describe('lifecycle', () => {
 
 describe('accessibility', () => {
   it('should expose correct initial accessibility tree properties', async () => {
-    await initSegmentedControl();
-    const itemButton = await getItemButton();
+    await initSegmentedControl({ amount: 2, value: 1 });
+    const host = await getHost();
 
-    await expectA11yToMatchSnapshot(page, itemButton);
+    await expectA11yToMatchSnapshot(page, host, { message: 'segmented-control', interestingOnly: false });
   });
 });
