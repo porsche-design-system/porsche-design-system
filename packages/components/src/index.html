@@ -9,56 +9,14 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <script nomodule src="build/porsche-design-system.js"></script>
     <script type="module" src="build/porsche-design-system.esm.js"></script>
-
-    <style>
-      body {
-        margin: 0;
-      }
-
-      p-segmented-control {
-        padding: 8px;
-      }
-
-      .surface {
-        background: #f2f2f2;
-      }
-
-      .dark {
-        background: #0e1418;
-      }
-
-      .dark.surface {
-        background: #262b2e;
-      }
-    </style>
   </head>
   <body>
     <header>
       <h1>Porsche Design System - Playground</h1>
     </header>
-    <main>
-      <a href="#">link</a>
-      <p-segmented-control>
-        <p-segmented-control-item value="xs" label="Some super long label you know what it is"
-        >Size XS</p-segmented-control-item
-        >
-        <p-segmented-control-item value="s" icon="truck" label="Some label">Size S</p-segmented-control-item>
-        <p-segmented-control-item value="m" icon="truck">Size M is too long</p-segmented-control-item>
-        <p-segmented-control-item value="l">Size L</p-segmented-control-item>
-        <p-segmented-control-item value="xl" icon="truck" disabled></p-segmented-control-item>
-      </p-segmented-control>
-      <a href="#">link</a>
-    </main>
+    <main></main>
     <script>
       <!-- START: keep this snippet to log component lifecycle events -->
-      document.querySelectorAll('p-segmented-control').forEach((el) =>
-        el.addEventListener('segmentedControlChange', (e) => {
-          e.stopPropagation();
-          e.preventDefault();
-          console.log(e.detail);
-        })
-      );
-
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
           const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
