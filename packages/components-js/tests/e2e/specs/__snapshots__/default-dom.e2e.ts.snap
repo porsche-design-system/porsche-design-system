@@ -609,7 +609,7 @@ exports[`should have no basic DOM regression for p-stepper-horizontal 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-stepper-horizontal-item 1`] = `
-"<button disabled=\\"\\">
+"<button aria-disabled=\\"\\">
   <slot>
   </slot>
 </button>"
