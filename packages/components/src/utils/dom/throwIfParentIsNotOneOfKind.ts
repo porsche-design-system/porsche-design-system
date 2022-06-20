@@ -3,7 +3,7 @@ import { getPrefixedTagNames, getTagName } from '../tag-name';
 import { isParentOfKind } from './isParentOfKind';
 
 export const throwIfParentIsNotOneOfKind = (element: HTMLElement, tagNames: TagNameCamelCase[]): void => {
-  if (!tagNames.some((tagName) => isParentOfKind(element, tagName))) {
+  if (element.parentElement && !tagNames.some((tagName) => isParentOfKind(element, tagName))) {
     const prefixedTagNames = getPrefixedTagNames(element);
     const allowedTagNames = tagNames.map((tagName) => prefixedTagNames[tagName]).join(', ');
     const actualTagName = getTagName(element.parentElement);
