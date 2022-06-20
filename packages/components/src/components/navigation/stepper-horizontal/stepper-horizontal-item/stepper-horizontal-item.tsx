@@ -42,7 +42,7 @@ export class StepperHorizontalItem {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <button disabled={!this.state || this.disabled} aria-current={this.state === 'current' ? 'step' : null}>
+      <button aria-disabled={!this.state || this.disabled} aria-current={this.state === 'current' ? 'step' : null}>
         {isStateCompleteOrWarning(this.state) && (
           <PrefixedTagNames.pIcon
             class="icon"
