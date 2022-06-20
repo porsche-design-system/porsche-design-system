@@ -1,0 +1,5 @@
+# Build directories
+/dist
+/cdn
+/tmp
+/www

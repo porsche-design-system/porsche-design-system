@@ -1,0 +1,53 @@
+{
+  "name": "@porsche-design-system/browser-notification",
+  "version": "0.0.0",
+  "description": "Stand-alone self invoking JS snippet to show a notification in case of unsupported browser features are detected or\nbrowser cookies are disabled.",
+  "keywords": [
+    "porsche",
+    "browser",
+    "notification",
+    "feature",
+    "detection",
+    "cookie",
+    "support",
+    "ie11"
+  ],
+  "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "license": "MIT",
+  "homepage": "https://designsystem.porsche.com",
+  "private": true,
+  "scripts": {
+    "start": "yarn build && http-server ./www -p 4201",
+    "build": "yarn clean:build && yarn build:generate && yarn build:cdn && yarn build:partial && yarn build:lib && yarn build:www",
+    "build:generate": "yarn build:generate:banners && yarn build:generate:overlays",
+    "build:generate:banners": "ts-node './scripts/generate-banners.ts'",
+    "build:generate:overlays": "ts-node './scripts/generate-overlays.ts'",
+    "build:partial": "ts-node './scripts/partial.ts'",
+    "build:lib": "rollup -c rollup.config.js",
+    "build:cdn": "rollup -c rollup.config.cdn.js",
+    "postbuild:lib": "yarn partial",
+    "build:www": "mkdir -p ./www/cdn && cp -r ./public/. ./www && cp -r ./cdn/. ./www/cdn",
+    "partial": "partial=$(node -e 'console.log(require(\"./dist\").includeBanner().replace(/(\\\\[bd\\/]|&)/g, \"\\\\$1\"))') && regex='<!--PLACEHOLDER-->|<script>.*(banner|overlay)\\.min.*<\\/script>' && sed -E -e \"s@$regex@$partial@\" public/index.html > public/index.tmp.html && rm public/index.html && mv public/index.tmp.html public/index.html",
+    "clean": "yarn clean:node_modules && yarn clean:build",
+    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
+    "clean:build": "rm -rf ./dist && rm -rf ./cdn && rm -rf ./www"
+  },
+  "devDependencies": {
+    "@porsche-design-system/prettier-config": "^1.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-typescript": "^8.3.2",
+    "@types/html-minifier": "^4.0.2",
+    "change-case": "^4.1.2",
+    "html-minifier": "^4.0.0",
+    "http-server": "^14.1.0",
+    "prettier": "^2.6.2",
+    "rollup": "^2.74.1",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-generate-package-json": "^3.2.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "ts-node": "^10.8.0",
+    "tslib": "^2.4.0",
+    "typescript": "^4.6.4"
+  }
+}
