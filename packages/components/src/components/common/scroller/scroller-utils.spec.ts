@@ -1,5 +1,7 @@
 import type { Direction } from './scroller-utils';
-import { getScrollPositionAfterPrevNextClick } from './scroller-utils';
+import { getScrollerElements, getScrollPositionAfterPrevNextClick } from './scroller-utils';
+import * as getShadowRootHTMLElementUtil from '../../../utils/dom/getShadowRootHTMLElement';
+import * as getHTMLElementUtil from '../../../utils/dom/getHTMLElement';
 
 describe('getScrollPositionAfterPrevNextClick()', () => {
   it.each<[number, number, Direction, number]>([
@@ -14,4 +16,21 @@ describe('getScrollPositionAfterPrevNextClick()', () => {
       expect(getScrollPositionAfterPrevNextClick({ offsetWidth, scrollLeft } as HTMLElement, direction)).toBe(expected);
     }
   );
+});
+
+describe('getScrollerElements()', () => {
+  it('should call getShadowRootHTMLElement with correct selectors', () => {
+    const spy = jest.spyOn(getShadowRootHTMLElementUtil, 'getShadowRootHTMLElement').mockImplementationOnce(() => {
+      return {} as Element;
+    });
+    jest.spyOn(getHTMLElementUtil, 'getHTMLElement').mockImplementationOnce(() => {
+      return {} as Element;
+    });
+
+    const scroller = document.createElement('p-scroller');
+    getScrollerElements(scroller);
+
+    expect(spy).toBeCalledWith(scroller, '.scroll-area');
+    expect(spy).toBeCalledWith(scroller, '.gradient');
+  });
 });

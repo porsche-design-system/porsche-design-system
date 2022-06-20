@@ -5,7 +5,6 @@ import {
   getHTMLElements,
   getPrefixedTagNames,
   getScrollActivePosition,
-  getScrollerElements,
   isShadowRootParentOfKind,
   observeChildren,
   setAttribute,
@@ -16,6 +15,7 @@ import { getFocusedTabIndex, getPrevNextTabIndex, sanitizeActiveTabIndex, setBar
 import { getComponentCss } from './tabs-bar-styles';
 import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
 import type { Direction } from '../../common/scroller/scroller-utils';
+import { getScrollerElements } from '../../common/scroller/scroller-utils';
 
 @Component({
   tag: 'p-tabs-bar',

@@ -3,7 +3,6 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   getScrollActivePosition,
-  getScrollerElements,
   observeChildren,
   observeProperties,
   throwIfChildCountIsExceeded,
@@ -19,6 +18,7 @@ import {
 } from './stepper-horizontal-utils';
 import type { Theme } from '../../../../types';
 import { getClickedItem } from '../../../../utils/dom/getClickedItem';
+import { getScrollerElements } from '../../../common/scroller/scroller-utils';
 
 @Component({
   tag: 'p-stepper-horizontal',
@@ -46,7 +46,7 @@ export class StepperHorizontal {
     this.validateComponent();
     this.observeProperties();
 
-    observeChildren(this.host as HTMLPStepperHorizontalItemElement, () => {
+    observeChildren(this.host, () => {
       this.defineStepperHorizontalItemElements();
       // Validate when new steps are added
       this.validateComponent();
