@@ -41,6 +41,7 @@ services:
       - components-angular-node-modules:/opt/porsche-design-system-app/packages/components-angular/node_modules
       - components-react-node-modules:/opt/porsche-design-system-app/packages/components-react/node_modules
       - components-react-uxpin-wrapper-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/uxpin-wrapper/node_modules
+      - components-react-nextjs-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/nextjs/node_modules
       - email-node-modules:/opt/porsche-design-system-app/packages/email/node_modules
       - fonts-node-modules:/opt/porsche-design-system-app/packages/fonts/node_modules
       - icons-node-modules:/opt/porsche-design-system-app/packages/icons/node_modules
@@ -67,6 +68,7 @@ services:
       - components-angular-node-modules:/opt/porsche-design-system-volumes/components-angular-node_modules
       - components-react-node-modules:/opt/porsche-design-system-volumes/components-react-node_modules
       - components-react-uxpin-wrapper-node-modules:/opt/porsche-design-system-volumes/components-react-uxpin-wrapper-node_modules
+      - components-react-nextjs-node-modules:/opt/porsche-design-system-volumes/components-react-nextjs-node_modules
       - email-node-modules:/opt/porsche-design-system-volumes/email-node_modules
       - fonts-node-modules:/opt/porsche-design-system-volumes/fonts-node_modules
       - icons-node-modules:/opt/porsche-design-system-volumes/icons-node_modules
@@ -93,6 +95,7 @@ volumes:
   components-angular-node-modules:
   components-react-node-modules:
   components-react-uxpin-wrapper-node-modules:
+  components-react-nextjs-node-modules:
   email-node-modules:
   fonts-node-modules:
   icons-node-modules:

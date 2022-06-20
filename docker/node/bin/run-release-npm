@@ -41,7 +41,7 @@ publish_npmjs() {
 
 is_version_published() {
   echo "task: [$(date)] \"is_version_published\" ${PACKAGE_NAME}@${PACKAGE_VERSION}"
-  http_status_code="$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: Bearer ${PORSCHE_NPM_REGISTRY_TOKEN}" "https://porscheui.jfrog.io/porscheui/api/npm/npm/${PACKAGE_NAME}/${PACKAGE_VERSION}")"
+  http_status_code="$(curl -s -o /dev/null -w "%{http_code}" "https://registry.npmjs.org/${PACKAGE_NAME}/${PACKAGE_VERSION}")"
 
   if [[ ${http_status_code} == 200 ]]; then
     return 0 # true
@@ -74,8 +74,7 @@ GIT_TAG_NAME="${PACKAGE_NAME:23}-v${PACKAGE_VERSION}"
 rm .npmrc
 
 if ! is_version_published; then
-  # if publish_jfrog && publish_npmjs; then
-  if publish_jfrog; then
+  if publish_jfrog && publish_npmjs; then
     add_git_tag
     echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" published 🎉"
   else
