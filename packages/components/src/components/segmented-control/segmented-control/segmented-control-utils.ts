@@ -84,27 +84,3 @@ export const getClickedSegmentedControlItem = (
     (x: HTMLElement) => x.tagName?.toLowerCase() === pSegmentedControlItem
   ) as unknown as HTMLElement & SegmentedControlItem;
 };
-
-export const getKeydownedSegmentedControlItem = (
-  { key }: KeyboardEvent,
-  value: string | number,
-  childrenCollection: HTMLCollection
-): HTMLElement & SegmentedControlItem => {
-  const prevOrNext =
-    ((key === 'ArrowLeft' || key === 'Left') && -1) || ((key === 'ArrowRight' || key === 'Right') && 1);
-  if (prevOrNext) {
-    // TODO: what if nothing is selected initially and what is focused?
-    // TODO: could be skipped if there is already 1 item selected and no other selectable
-    const children = Array.from(childrenCollection) as (HTMLElement & SegmentedControlItem)[];
-    const selectedIndex = children.findIndex((item) => item.value === value);
-
-    const validIndexes = children.map((item, i) => !item.disabled && i).filter((x: number | boolean) => x !== false);
-    const maxValidIndex = validIndexes.length - 1;
-
-    const selectedValidIndex = validIndexes.findIndex((i) => i === selectedIndex);
-    let newValidIndex = selectedValidIndex + prevOrNext;
-    newValidIndex = newValidIndex < 0 ? maxValidIndex : newValidIndex > maxValidIndex ? 0 : newValidIndex;
-
-    return children[validIndexes[newValidIndex]];
-  }
-};

@@ -203,17 +203,18 @@ describe('keyboard', () => {
   const hasFocus = (element: ElementHandle): Promise<boolean> =>
     element.evaluate((el) => document.activeElement === el);
 
-  it('should render focus only on first item when no default value on keyboard "tab" press', async () => {
+  it('should focus items when keyboard "tab" is pressed', async () => {
     await setContentWithDesignSystem(
       page,
       `<a href="#">Some Link</a>
 <p-segmented-control>
    <p-segmented-control-item value="1">Option 1</p-segmented-control-item>
-   <p-segmented-control-item value="2">Option 1</p-segmented-control-item>
+   <p-segmented-control-item value="2" disabled="true">Option 1</p-segmented-control-item>
 </p-segmented-control>
 <a href="#">Some Link</a>`
     );
     const firstItemHost = await getFirstItemHost();
+    const secondItemHost = await getSecondItemHost();
     const [firstAnchor, secondAnchor] = await page.$$('a');
 
     expect(await hasFocus(await selectNode(page, 'body'))).toBe(true);
@@ -225,140 +226,10 @@ describe('keyboard', () => {
     expect(await hasFocus(firstItemHost)).toBe(true);
 
     await page.keyboard.press('Tab');
+    expect(await hasFocus(secondItemHost)).toBe(true);
+
+    await page.keyboard.press('Tab');
     expect(await hasFocus(secondAnchor)).toBe(true);
-  });
-
-  it('should render focus on first item when it is selected on keyboard "tab" press', async () => {
-    await initSegmentedControl({ amount: 2, value: 1 });
-    const firstItemHost = await getFirstItemHost();
-    expect(await hasFocus(await selectNode(page, 'body'))).toBe(true);
-
-    await page.keyboard.press('Tab');
-    expect(await hasFocus(firstItemHost)).toBe(true);
-
-    await page.keyboard.press('Tab');
-    expect(await hasFocus(await selectNode(page, 'body'))).toBe(true);
-  });
-
-  it('should select first item on arrow-key press when there is no initial value', async () => {
-    await initSegmentedControl({ amount: 2 });
-    const firstItemHost = await getFirstItemHost();
-    const secondItemHost = await getSecondItemHost();
-
-    expect(await hasFocus(await selectNode(page, 'body'))).toBe(true);
-
-    await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-
-    expect(await hasFocus(firstItemHost)).toBe(true);
-    expect(await getProperty(firstItemHost, 'selected')).toBe(false);
-    expect(await getProperty(secondItemHost, 'selected')).toBe(false);
-
-    await page.keyboard.press('ArrowRight');
-    await waitForStencilLifecycle(page);
-
-    expect(await hasFocus(firstItemHost), 'on ArrowRight').toBe(true);
-    expect(await getProperty(firstItemHost, 'selected'), 'on ArrowRight').toBe(true);
-    expect(await getProperty(secondItemHost, 'selected'), 'on ArrowRight').toBe(false);
-  });
-
-  it('should render correct focus and value of item on arrow-key press', async () => {
-    await initSegmentedControl({ amount: 2, value: 1 });
-    const firstItemHost = await getFirstItemHost();
-    const secondItemHost = await getSecondItemHost();
-
-    expect(await hasFocus(await selectNode(page, 'body'))).toBe(true);
-
-    await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-
-    expect(await hasFocus(firstItemHost)).toBe(true);
-    expect(await getProperty(firstItemHost, 'selected')).toBe(true);
-    expect(await getProperty(secondItemHost, 'selected')).toBe(false);
-
-    await page.keyboard.press('ArrowRight');
-    await waitForStencilLifecycle(page);
-
-    expect(await hasFocus(secondItemHost), 'on ArrowRight').toBe(true);
-    expect(await getProperty(firstItemHost, 'selected'), 'on ArrowRight').toBe(false);
-    expect(await getProperty(secondItemHost, 'selected'), 'on ArrowRight').toBe(true);
-
-    await page.keyboard.press('ArrowLeft');
-    await waitForStencilLifecycle(page);
-
-    expect(await hasFocus(firstItemHost), 'on ArrowLeft').toBe(true);
-    expect(await getProperty(firstItemHost, 'selected'), 'on ArrowLeft').toBe(true);
-    expect(await getProperty(secondItemHost, 'selected'), 'on ArrowLeft').toBe(false);
-  });
-
-  it('should select first item on ArrowRight when last item is initially selected', async () => {
-    await initSegmentedControl({ amount: 3, value: 3 });
-    const [item1, item2, item3] = await getAllItemHosts();
-
-    await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-
-    expect(await hasFocus(item3)).toBe(true);
-    expect(await getProperty(item3, 'selected')).toBe(true);
-
-    await page.keyboard.press('ArrowRight');
-    await waitForStencilLifecycle(page);
-
-    expect(await hasFocus(item1)).toBe(true);
-    expect(await getProperty(item1, 'selected')).toBe(true);
-    expect(await getProperty(item2, 'selected')).toBe(false);
-    expect(await getProperty(item2, 'selected')).toBe(false);
-  });
-
-  it('should select last item on ArrowLeft when first item is initially selected', async () => {
-    await initSegmentedControl({ amount: 3, value: 1 });
-    const [item1, item2, item3] = await getAllItemHosts();
-
-    await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-
-    expect(await isElementAtIndexFocused(page, 0)).toBe(true);
-    expect(await hasFocus(item1)).toBe(true);
-
-    await page.keyboard.press('ArrowLeft');
-    await waitForStencilLifecycle(page);
-
-    expect(await hasFocus(item3)).toBe(true);
-    expect(await getProperty(item1, 'selected')).toBe(false);
-    expect(await getProperty(item2, 'selected')).toBe(false);
-    expect(await getProperty(item3, 'selected')).toBe(true);
-  });
-
-  it('should skip disabled item on arrow-key press', async () => {
-    await initSegmentedControl({ amount: 3, value: 1 });
-    const [item1, item2, item3] = await getAllItemHosts();
-
-    await setProperty(item2, 'disabled', true);
-    await waitForStencilLifecycle(page);
-
-    await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-
-    expect(await hasFocus(item1)).toBe(true);
-    expect(await getProperty(item1, 'selected')).toBe(true);
-    expect(await getProperty(item2, 'selected')).toBe(false);
-    expect(await getProperty(item3, 'selected')).toBe(false);
-
-    await page.keyboard.press('ArrowRight');
-    await waitForStencilLifecycle(page);
-
-    expect(await hasFocus(item3)).toBe(true);
-    expect(await getProperty(item1, 'selected')).toBe(false);
-    expect(await getProperty(item2, 'selected')).toBe(false);
-    expect(await getProperty(item3, 'selected')).toBe(true);
-
-    await page.keyboard.press('ArrowLeft');
-    await waitForStencilLifecycle(page);
-
-    expect(await hasFocus(item1)).toBe(true);
-    expect(await getProperty(item1, 'selected')).toBe(true);
-    expect(await getProperty(item2, 'selected')).toBe(false);
-    expect(await getProperty(item3, 'selected')).toBe(false);
   });
 });
 

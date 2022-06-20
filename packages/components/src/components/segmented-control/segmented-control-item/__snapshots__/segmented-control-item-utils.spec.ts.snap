@@ -4,19 +4,7 @@ exports[`getButtonAttributes() should return correct css for isSelected: false a
 Object {
   "aria-busy": null,
   "aria-disabled": null,
-  "aria-selected": "false",
-  "role": "tab",
-  "tabIndex": -1,
-}
-`;
-
-exports[`getButtonAttributes() should return correct css for isSelected: false and isDisabled: false 2`] = `
-Object {
-  "aria-busy": null,
-  "aria-disabled": null,
-  "aria-selected": "false",
-  "role": "tab",
-  "tabIndex": 0,
+  "aria-pressed": "false",
 }
 `;
 
@@ -24,19 +12,7 @@ exports[`getButtonAttributes() should return correct css for isSelected: false a
 Object {
   "aria-busy": null,
   "aria-disabled": "true",
-  "aria-selected": "false",
-  "role": "tab",
-  "tabIndex": 0,
-}
-`;
-
-exports[`getButtonAttributes() should return correct css for isSelected: false and isDisabled: true 2`] = `
-Object {
-  "aria-busy": null,
-  "aria-disabled": "true",
-  "aria-selected": "false",
-  "role": "tab",
-  "tabIndex": -1,
+  "aria-pressed": "false",
 }
 `;
 
@@ -44,19 +20,7 @@ exports[`getButtonAttributes() should return correct css for isSelected: true an
 Object {
   "aria-busy": null,
   "aria-disabled": null,
-  "aria-selected": "true",
-  "role": "tab",
-  "tabIndex": -1,
-}
-`;
-
-exports[`getButtonAttributes() should return correct css for isSelected: true and isDisabled: false 2`] = `
-Object {
-  "aria-busy": null,
-  "aria-disabled": null,
-  "aria-selected": "true",
-  "role": "tab",
-  "tabIndex": 0,
+  "aria-pressed": "true",
 }
 `;
 
@@ -64,18 +28,6 @@ exports[`getButtonAttributes() should return correct css for isSelected: true an
 Object {
   "aria-busy": null,
   "aria-disabled": "true",
-  "aria-selected": "true",
-  "role": "tab",
-  "tabIndex": -1,
-}
-`;
-
-exports[`getButtonAttributes() should return correct css for isSelected: true and isDisabled: true 2`] = `
-Object {
-  "aria-busy": null,
-  "aria-disabled": "true",
-  "aria-selected": "true",
-  "role": "tab",
-  "tabIndex": 0,
+  "aria-pressed": "true",
 }
 `;

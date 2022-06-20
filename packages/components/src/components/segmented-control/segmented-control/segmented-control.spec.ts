@@ -39,15 +39,6 @@ describe('componentDidLoad', () => {
     expect(spy).toBeCalledWith('click', expect.any(Function));
   });
 
-  it('should add keydown event listener', () => {
-    const component = new SegmentedControl();
-    component.host = document.createElement('p-segmented-control');
-    const spy = jest.spyOn(component.host, 'addEventListener');
-
-    component.componentDidLoad();
-    expect(spy).toBeCalledWith('keydown', expect.any(Function));
-  });
-
   it('should call updateValue via event handlers', () => {
     const component = new SegmentedControl();
     component.host = document.createElement('p-segmented-control');
@@ -65,15 +56,6 @@ describe('componentDidLoad', () => {
 
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(item1);
-
-    // keydown event handler
-    const item2 = document.createElement('p-segmented-control-item') as unknown as HTMLElement & SegmentedControlItem;
-    item2.id = 'item2';
-    jest.spyOn(segmentedControlUtils, 'getKeydownedSegmentedControlItem').mockReturnValueOnce(item2);
-
-    component.host.dispatchEvent(new KeyboardEvent('keydown', { key: 'a' }));
-    expect(spy).toBeCalledTimes(2);
-    expect(spy).toBeCalledWith(item2);
   });
 });
 

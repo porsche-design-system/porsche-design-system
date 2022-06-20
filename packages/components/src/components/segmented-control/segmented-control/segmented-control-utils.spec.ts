@@ -1,7 +1,6 @@
 import {
   getClickedSegmentedControlItem,
   getItemMaxWidth,
-  getKeydownedSegmentedControlItem,
   SegmentedControlBackgroundColor,
   syncItemsProps,
   tempDiv,
@@ -191,102 +190,5 @@ describe('getClickedSegmentedControlItem()', () => {
     expect(getClickedSegmentedControlItem(prefixedHost, [div, span, prefixedSegmentedControlItem, slot, p])).toBe(
       prefixedSegmentedControlItem
     );
-  });
-});
-
-describe('getKeydownedSegmentedControlItem()', () => {
-  const createKeydownEvent = (key: string): KeyboardEvent => new KeyboardEvent('keydown', { key });
-
-  const createSegmentedControlItem = (opts: {
-    value: string;
-    // isDisabled?: boolean;
-  }): HTMLElement & SegmentedControlItem => {
-    const item = document.createElement('p-segmented-control-item') as unknown as HTMLElement & SegmentedControlItem;
-    item.id = opts.value;
-    item.value = opts.value;
-    // item.disabled = opts.isDisabled;
-    return item;
-  };
-
-  const children = ['a', 'b', 'c'].map((value) => createSegmentedControlItem({ value }));
-  const [child1, child2, child3] = children;
-  const host = document.createElement('div');
-  host.append(...children);
-  const childrenCollection = host.children;
-
-  const singleChildHost = document.createElement('div');
-  singleChildHost.append(child1.cloneNode());
-  const singleChildCollection = singleChildHost.children;
-
-  beforeEach(() => {
-    child2.disabled = undefined;
-  });
-
-  it('should return undefined for random keys', () => {
-    ['a', 'A', 'Enter', 'Escape', 'ArrowUp', 'Up', 'ArrowDown', 'Down', 'Shift', ' '].forEach((key) => {
-      const result = getKeydownedSegmentedControlItem(createKeydownEvent(key), 'a', childrenCollection);
-      expect(result).toBeUndefined();
-    });
-  });
-
-  it('should return element on ArrowLeft, Left, ArrowRight and Right key', () => {
-    ['ArrowLeft', 'Left', 'ArrowRight', 'Right'].forEach((key) => {
-      const result = getKeydownedSegmentedControlItem(createKeydownEvent(key), 'a', childrenCollection);
-      expect(children).toContain(result);
-    });
-  });
-
-  describe('on ArrowLeft keydown', () => {
-    const event = createKeydownEvent('ArrowLeft');
-
-    it('should return item before selected item', () => {
-      const result = getKeydownedSegmentedControlItem(event, 'b', childrenCollection);
-      expect(result).toEqual(child1);
-    });
-
-    it('should return item before selected item and skip disabled item', () => {
-      child2.disabled = true;
-      const result = getKeydownedSegmentedControlItem(event, 'c', childrenCollection);
-      expect(result).toEqual(child1);
-    });
-
-    it('should return last item if selected item is first', () => {
-      const result = getKeydownedSegmentedControlItem(event, 'a', childrenCollection);
-      expect(result).toEqual(child3);
-    });
-
-    it('should return same item for single item', () => {
-      const result1 = getKeydownedSegmentedControlItem(event, 'a', singleChildCollection);
-      expect(result1).toEqual(child1);
-      const result2 = getKeydownedSegmentedControlItem(event, 'a', singleChildCollection);
-      expect(result2).toEqual(child1);
-    });
-  });
-
-  describe('on ArrowRight keydown', () => {
-    const event = createKeydownEvent('ArrowRight');
-
-    it('should return item after selected item', () => {
-      const result = getKeydownedSegmentedControlItem(event, 'b', childrenCollection);
-      expect(result).toEqual(child3);
-    });
-
-    it('should return item after selected item and skip disabled item', () => {
-      child2.disabled = true;
-      const result = getKeydownedSegmentedControlItem(event, 'a', childrenCollection);
-      expect(result).toEqual(child3);
-    });
-
-    it('should return first item if selected item is last', () => {
-      const result = getKeydownedSegmentedControlItem(event, 'c', childrenCollection);
-      expect(result).toEqual(child1);
-    });
-
-    it('should return same item for single item', () => {
-      const result1 = getKeydownedSegmentedControlItem(event, 'a', singleChildCollection);
-      expect(result1).toEqual(child1);
-      const result2 = getKeydownedSegmentedControlItem(event, 'a', singleChildCollection);
-      expect(result2).toEqual(child1);
-    });
   });
 });
