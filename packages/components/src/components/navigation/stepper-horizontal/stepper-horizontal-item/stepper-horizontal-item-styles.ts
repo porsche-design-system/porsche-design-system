@@ -12,7 +12,7 @@ import type { Theme } from '../../../../types';
 import type { StepperState } from './stepper-horizontal-item-utils';
 import { hoverMediaQuery } from '../../../../styles/hover-media-query';
 
-const getSvg = (color: string) =>
+const getSvg = (color: string): string =>
   `url("data:image/svg+xml,${encodeURIComponent(`
 <svg width="166" height="10" viewBox="0 0 166 10" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M20.5306 9H25.5466V8.208H21.4906V8.052C21.4906 7.248 21.8866 6.828 22.9666 6.096L23.8906 5.484C24.7306 4.932 25.6306 4.248 25.6306 2.76C25.6306 1.212 24.7906 0.312 22.9786 0.312C21.0706 0.312 20.3746 1.368 20.3146 3.144H21.2506C21.3466 1.692 21.8746 1.224 22.9786 1.224C24.0346 1.224 24.6346 1.668 24.6346 2.76C24.6346 3.924 23.8666 4.44 23.1106 4.944L22.1866 5.556C21.2386 6.192 20.5306 6.888 20.5306 8.208V9Z" fill="${color}"/>

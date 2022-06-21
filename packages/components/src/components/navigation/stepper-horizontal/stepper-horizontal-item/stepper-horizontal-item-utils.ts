@@ -25,6 +25,6 @@ export const throwIfCurrentAndDisabled = (host: HTMLElement): void => {
   }
 };
 
-export const isItemClickable = (state: StepperState, disabled: boolean) => {
+export const isItemClickable = (state: StepperState, disabled: boolean): boolean => {
   return !!state && isStateCompleteOrWarning(state) && !disabled;
 };

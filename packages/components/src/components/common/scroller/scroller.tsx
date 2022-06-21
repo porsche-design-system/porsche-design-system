@@ -54,7 +54,7 @@ export class Scroller {
   }
 
   // should only update if scrollable
-  public componentShouldUpdate(_newVal, _oldVal, propName) {
+  public componentShouldUpdate(_newVal, _oldVal, propName): boolean {
     if (propName === 'scrollToPosition' && (this.isPrevHidden || this.isNextHidden)) {
       return false;
     }
