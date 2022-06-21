@@ -99,14 +99,15 @@ describe('validation', () => {
   });
 
   it('should throw error if a second current state is defined', async () => {
+    await initPageErrorObserver(page);
+
     await initStepperHorizontal();
     const [, item2] = await getAllStepItems();
 
-    let error;
-    await setProperty(item2, 'state', 'current').catch((er) => (error = er));
+    await setProperty(item2, 'state', 'current');
     await waitForStencilLifecycle(page);
 
-    expect(error).toBeDefined();
+    expect(getPageThrownErrorsAmount()).toBe(1);
   });
 });
 
