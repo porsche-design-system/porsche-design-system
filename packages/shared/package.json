@@ -7,14 +7,7 @@
   "module": "esm/index.js",
   "types": "index.d.ts",
   "author": "Dr. Ing. h.c. F. Porsche AG",
-  "contributors": [
-    "Marcel Bertram <marcel.bertram@porsche.de>",
-    "Stephan Schröter <stephan.schroeter@mhp.com>",
-    "Matthias Hägele <matthias.haegele@mhp.com>",
-    "Bernd Hacker <bernd.hacker@mhp.com>",
-    "Anton Schmidt <anton.schmidt@mhp.com>"
-  ],
-  "license": "SEE LICENSE IN https://designsystem.porsche.com/latest/license",
+  "license": "UNLICENSED",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "build": "yarn clean:build && yarn build:generateTagNames && yarn build:generateComponentMeta && yarn build:generateCodeSamples && yarn build:bundle",

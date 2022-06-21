@@ -2429,37 +2429,23 @@
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.21.tgz#5de5a2385a35309427f6011992b544514d559aa1"
   integrity sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==
 
-"@porsche-design-system/browser-notification@4.1.2":
-  version "4.1.2"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/browser-notification/-/@porsche-design-system/browser-notification-4.1.2.tgz#360db457bc22fe7c2cf27de95fb382c9bf908122"
-  integrity sha512-YtNkdsS7mvshhvEr6qlStxOiohOzyRe6tUOB2+BfS0mmwFN/EVhTJhHRakhJeEwg2IUddO6C07WQGdbr7ZkpCw==
+"@porsche-design-system/browser-notification@4.1.4":
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/@porsche-design-system/browser-notification/-/browser-notification-4.1.4.tgz#2a33870f67da42ad67e891e3910493b6fbcdcfcd"
+  integrity sha512-M/vdngr9ANMbM8A0p2fMpDVwNT4qDh4R8WCPaXneBCCN6DA/wnarqvj1AnkJlmordWArs8AZLn7olwIOgLTwKg==
 
 "@porsche-design-system/prettier-config@^1.0.0":
-  version "1.0.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/prettier-config/-/@porsche-design-system/prettier-config-1.0.0.tgz#3ab128c42d98cb049ffc0b141362f6963e0a93d7"
-  integrity sha1-OrEoxC2YywSf/AsUE2L2lj4Kk9c=
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@porsche-design-system/prettier-config/-/prettier-config-1.0.1.tgz#6b0fc60d3d42c7b4d9c998bf7b685513a5488400"
+  integrity sha512-IhoHGmsPoO4VBoCebNGejBNHJFdAldV3m8kAoO458MJeaQJODM2b1UFzvGeTXGOMIFH4pkshcjZcF36vQvsn9w==
 
 "@porsche-design-system/visual-regression-tester@^4.3.0":
-  version "4.3.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/visual-regression-tester/-/@porsche-design-system/visual-regression-tester-4.3.0.tgz#067e23f68bb72ccd9f9509227f6d333007813d92"
-  integrity sha1-Bn4j9ou3LM2flQkif20zMAeBPZI=
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/@porsche-design-system/visual-regression-tester/-/visual-regression-tester-4.3.2.tgz#0b82d45f31f55b493eef2646340419f9eb43c23e"
+  integrity sha512-R5XKSiLshU4dcug4dmb4x1lNDHAOZVkbNqrYIqOg39JDNJuP//R83NzhDT9ceaWdKtJpdrWbMTsU5Br+PXLGwg==
   dependencies:
-    pixelmatch "^5.2.1"
-    sharp "^0.29.1"
-
-"@porsche-design-system/vmark-loader@^1.0.0":
-  version "1.0.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/vmark-loader/-/@porsche-design-system/vmark-loader-1.0.0.tgz#e0d880a1349d05f56cc55899f178cedd4bd0e4da"
-  integrity sha1-4NiAoTSdBfVsxViZ8XjO3UvQ5No=
-  dependencies:
-    loader-utils "^1.1.0"
-
-"@porsche-design-system/vmark@~1.2.0":
-  version "1.2.0"
-  resolved "https://porscheui.jfrog.io/porscheui/api/npm/npm/@porsche-design-system/vmark/-/@porsche-design-system/vmark-1.2.0.tgz#ff93b110cf8cf6b4810634b8a34b49d8a6f7307d"
-  integrity sha1-/5OxEM+M9rSBBjS4o0tJ2Kb3MH0=
-  dependencies:
-    saber-markdown "^0.0.3"
+    pixelmatch "^5.3.0"
+    sharp "^0.30.5"
 
 "@rollup/plugin-babel@^5.2.0":
   version "5.3.1"
@@ -6254,7 +6240,7 @@ color@^3.0.0:
     color-convert "^1.9.3"
     color-string "^1.6.0"
 
-color@^4.0.1:
+color@^4.2.3:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/color/-/color-4.2.3.tgz#d781ecb5e57224ee43ea9627560107c0e0c6463a"
   integrity sha512-1rXeuUUiGGrykh+CeBdu5Ie7OJwinCgQY0bc7GCRxy5xVHy+moaqkpL/jqQq0MtQOeYcrqEz4abc5f0KtU7W4A==
@@ -7463,12 +7449,7 @@ detect-indent@^5.0.0:
   resolved "https://registry.yarnpkg.com/detect-indent/-/detect-indent-5.0.0.tgz#3871cc0a6a002e8c3e5b3cf7f336264675f06b9d"
   integrity sha512-rlpvsxUtM0PQvy9iZe640/IWwWYyBsTApREbA1pHOpmOUIl9MkP/U4z7vTtg4Oaojvqhxt7sdufnT0EzGaR31g==
 
-detect-libc@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
-  integrity sha512-pGjwhsmsp4kL2RTz08wcOlGN83otlqHeD/Z5T8GXZB+/YcpQ/dgo+lbU8ZsGxV0HIvqqxo9l7mqYwyYMD9bKDg==
-
-detect-libc@^2.0.0:
+detect-libc@^2.0.0, detect-libc@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-2.0.1.tgz#e1897aa88fa6ad197862937fbc0441ef352ee0cd"
   integrity sha512-463v3ZeIrcWtdgIg6vI6XUncguvr2TnGl4SzDXinkt9mSLpBJKXT3mW6xT3VQdDN11+WVs29pgvivTc4Lp8v+w==
@@ -14010,10 +13991,10 @@ node-addon-api@^3.0.0:
   resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-3.2.1.tgz#81325e0a2117789c0128dab65e7e38f07ceba161"
   integrity sha512-mmcei9JghVNDYydghQmeDX8KoAm0FAiYyIcUt/N4nhyAipB17pllZQDOJD2fotxABnt4Mdz+dKTO7eftLg4d0A==
 
-node-addon-api@^4.2.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-4.3.0.tgz#52a1a0b475193e0928e98e0426a0d1254782b77f"
-  integrity sha512-73sE9+3UaLYYFmDsFZnqCInzPyh3MqIwZO9cw58yIqAZhONrrabrYyYe3TuIqtIiOuTXVhsGau8hcrhhwSsDIQ==
+node-addon-api@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-5.0.0.tgz#7d7e6f9ef89043befdb20c1989c905ebde18c501"
+  integrity sha512-CvkDw2OEnme7ybCykJpVcKH+uAOLV2qLqiyla128dN9TkEWfrYmxG6C2boDe5KcNQqZF3orkqzGgOMvZ/JNekA==
 
 node-cache@^4.1.1:
   version "4.2.1"
@@ -15025,7 +15006,7 @@ piscina@3.2.0:
   optionalDependencies:
     nice-napi "^1.0.2"
 
-pixelmatch@^5.2.1:
+pixelmatch@^5.3.0:
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/pixelmatch/-/pixelmatch-5.3.0.tgz#5e5321a7abedfb7962d60dbf345deda87cb9560a"
   integrity sha512-o8mkY4E/+LNUf6LzX96ht6k6CEDi65k9G2rjMtBe9Oo+VPKSvl+0GKHuH/AlG+GA5LPG/i5hrekkxUc3s2HU+Q==
@@ -16045,7 +16026,7 @@ preact@^10.6.0:
   resolved "https://registry.yarnpkg.com/preact/-/preact-10.7.3.tgz#f98c09a29cb8dbb22e5fc824a1edcc377fc42b5a"
   integrity sha512-giqJXP8VbtA1tyGa3f1n9wiN7PrHtONrDyE3T+ifjr/tTkg+2N4d/6sjC9WyJKv8wM7rOYDveqy5ZoFmYlwo4w==
 
-prebuild-install@^7.0.0:
+prebuild-install@^7.1.0:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/prebuild-install/-/prebuild-install-7.1.1.tgz#de97d5b34a70a0c81334fd24641f2a1702352e45"
   integrity sha512-jAXscXWMcCK8GgCoHOfIr0ODh5ai8mj63L2nWrjuAgXE6tDyYGnx4/8o/rCgU+B4JSyZBKbeZqzhtwtC3ovxjw==
@@ -17693,17 +17674,17 @@ shallowequal@^1.1.0:
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
   integrity sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==
 
-sharp@^0.29.1:
-  version "0.29.3"
-  resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.29.3.tgz#0da183d626094c974516a48fab9b3e4ba92eb5c2"
-  integrity sha512-fKWUuOw77E4nhpyzCCJR1ayrttHoFHBT2U/kR/qEMRhvPEcluG4BKj324+SCO1e84+knXHwhJ1HHJGnUt4ElGA==
+sharp@^0.30.5:
+  version "0.30.6"
+  resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.30.6.tgz#02264e9826b5f1577509f70bb627716099778873"
+  integrity sha512-lSdVxFxcndzcXggDrak6ozdGJgmIgES9YVZWtAFrwi+a/H5vModaf51TghBtMPw+71sLxUsTy2j+aB7qLIODQg==
   dependencies:
-    color "^4.0.1"
-    detect-libc "^1.0.3"
-    node-addon-api "^4.2.0"
-    prebuild-install "^7.0.0"
-    semver "^7.3.5"
-    simple-get "^4.0.0"
+    color "^4.2.3"
+    detect-libc "^2.0.1"
+    node-addon-api "^5.0.0"
+    prebuild-install "^7.1.0"
+    semver "^7.3.7"
+    simple-get "^4.0.1"
     tar-fs "^2.1.1"
     tunnel-agent "^0.6.0"
 
@@ -17760,7 +17741,7 @@ simple-concat@^1.0.0:
   resolved "https://registry.yarnpkg.com/simple-concat/-/simple-concat-1.0.1.tgz#f46976082ba35c2263f1c8ab5edfe26c41c9552f"
   integrity sha512-cSFtAPtRhljv69IK0hTVZQ+OfE9nePi/rtJmw5UjHeVyVroEqJXP1sFztKUy1qU+xvz3u/sfYJLa947b7nAN2Q==
 
-simple-get@^4.0.0:
+simple-get@^4.0.0, simple-get@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/simple-get/-/simple-get-4.0.1.tgz#4a39db549287c979d352112fa03fd99fd6bc3543"
   integrity sha512-brv7p5WgH0jmQJr1ZDDfKDOSeWWg+OVypG99A/5vYGPqJ6pxiaHLy8nxtFjBA7oMa01ebA9gfh1uMCFqOuXxvA==
@@ -19737,6 +19718,20 @@ vm-browserify@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
+
+vmark-loader@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/vmark-loader/-/vmark-loader-1.0.0.tgz#5233819dc6946b70b69a5b06c6d3ec9c09661de5"
+  integrity sha512-DsVJ4aaWCSLcRgUo/kV4ZluhPC+G2EMkYa2uc/wUS3hEy7RIg7/lkHOZEsuib5cf/Y48eeUeJCHQd1FZORbT6g==
+  dependencies:
+    loader-utils "^1.1.0"
+
+vmark@~1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/vmark/-/vmark-1.1.0.tgz#8166a4791a79e790fdb568b252a7caa59e441108"
+  integrity sha512-1ZAId/ALZ+XM1P4zFHuE56DHf6ZjLjQ7Nc17Q7C3onIycFNLbsyRBnGMpP1hF0zfDIekjI5MBiLXl0tHQ4ZyxQ==
+  dependencies:
+    saber-markdown "^0.0.3"
 
 vue-class-component@^7.2.6:
   version "7.2.6"
