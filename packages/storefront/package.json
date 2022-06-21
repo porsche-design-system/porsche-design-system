@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@porsche-design-system/browser-notification": "4.1.4",
-    "@porsche-design-system/components-js": "2.13.0-rc.0",
+    "@porsche-design-system/components-js": "2.13.0-rc.1",
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/utilities": "5.3.1-rc.0",
     "algoliasearch": "^4.13.1",
