@@ -2,6 +2,7 @@
   "name": "@porsche-design-system/storefront",
   "version": "1.0.0",
   "private": true,
+  "license": "UNLICENSED",
   "description": "Porsche Design System",
   "scripts": {
     "postinstall": "rm -rf ./node_modules/webpack-dev-server/node_modules/webpack",
@@ -23,17 +24,17 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/browser-notification": "4.1.2",
+    "@porsche-design-system/browser-notification": "4.1.4",
     "@porsche-design-system/components-js": "2.12.1",
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/utilities": "5.3.0",
-    "@porsche-design-system/vmark": "~1.2.0",
-    "@porsche-design-system/vmark-loader": "^1.0.0",
     "algoliasearch": "^4.13.1",
     "change-case": "^4.1.2",
     "core-js": "^3.22.8",
     "imask": "^6.4.2",
     "prismjs": "^1.28.0",
+    "vmark": "~1.1.0",
+    "vmark-loader": "~1.0.0",
     "vue": "^2.6.14",
     "vue-class-component": "^7.2.6",
     "vue-instantsearch": "^4.3.3",
