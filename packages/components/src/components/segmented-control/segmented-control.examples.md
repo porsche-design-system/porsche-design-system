@@ -94,11 +94,11 @@ export default class Code extends Vue {
   ${this.shirtSizeItems}
 </p-segmented-control>`;
 
-  initialValueMarkup = `<p-segmented-control value="2" aria-label="Choose a option">
+  initialValueMarkup = `<p-segmented-control value="2" aria-label="Choose an option">
   ${this.optionItems}
 </p-segmented-control>`;
 
-  withLabelsMarkup = `<p-segmented-control aria-label="Choose a option">
+  withLabelsMarkup = `<p-segmented-control aria-label="Choose an option">
   ${this.optionItems.replace(/value="\d"/g, '$& label="Label"')}
 </p-segmented-control>`;
 
@@ -110,7 +110,7 @@ export default class Code extends Vue {
       return `${match} ${attr}="${icons[i++]}"`;
     });
 
-    return `<p-segmented-control aria-label="Choose a option">
+    return `<p-segmented-control aria-label="Choose an option">
   ${items}
 </p-segmented-control>`;
   };
