@@ -5,6 +5,7 @@ import type { Theme } from '../../../types';
 import type { SegmentedControlBackgroundColor, SegmentedControlChangeEvent } from './segmented-control-utils';
 import { getItemMaxWidth, getClickedSegmentedControlItem, syncItemsProps } from './segmented-control-utils';
 import { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
+import { throwIfChildrenAreNotOfKind } from '../../../utils/dom/throwIfChildrenAreNotOfKind';
 
 @Component({
   tag: 'p-segmented-control',
@@ -26,9 +27,14 @@ export class SegmentedControl {
   @Event({ bubbles: false }) public segmentedControlChange: EventEmitter<SegmentedControlChangeEvent>;
 
   public connectedCallback(): void {
+    throwIfChildrenAreNotOfKind(this.host, 'pSegmentedControlItem');
+
     // child property changes to label or icon are detected via prop watchers within child
     // here we take care of dom changes like adding/removing a child or changing its content
-    observeChildren(this.host, () => forceUpdate(this.host));
+    observeChildren(this.host, () => {
+      throwIfChildrenAreNotOfKind(this.host, 'pSegmentedControlItem');
+      forceUpdate(this.host);
+    });
   }
 
   public componentWillRender(): void {
