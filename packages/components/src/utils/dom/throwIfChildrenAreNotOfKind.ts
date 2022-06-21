@@ -7,7 +7,7 @@ export const throwIfChildrenAreNotOfKind = (element: HTMLElement, tagName: TagNa
     const allowedTagName = getPrefixedTagNames(element)[tagName];
     const actualTagNames = Array.from(element.children)
       .map((child: HTMLElement) => getTagName(child))
-      .filter((tagName) => tagName !== allowedTagName)
+      .filter((actualTagName) => actualTagName !== allowedTagName)
       .join(', ');
 
     throw new Error(
