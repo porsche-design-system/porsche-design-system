@@ -34,7 +34,6 @@ publish() {
       uxpin_token=$UXPIN_TOKEN_LATEST
       echo "Using UXPIN_TOKEN_LATEST"
 
-      source "${SCRIPT_DIR}/../shared/ensure-artifactory-credentials.sh"
       if ! is_version_published; then
         pushParam="--tag ${PACKAGE_VERSION}"
       fi
