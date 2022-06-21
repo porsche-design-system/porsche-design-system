@@ -1,4 +1,4 @@
-import { Component, Element, JSX, Listen, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, JSX, Listen, Prop, Watch, Host, h } from '@stencil/core';
 import type { StepperHorizontalItemInternalHTMLProps, StepperState } from './stepper-horizontal-item-utils';
 import {
   getIconName,
@@ -48,19 +48,25 @@ export class StepperHorizontalItem {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <button aria-disabled={!this.state || this.disabled} aria-current={this.state === 'current' ? 'step' : null}>
-        {isStateCompleteOrWarning(this.state) && (
-          <PrefixedTagNames.pIcon
-            class="icon"
-            name={getIconName(this.state)}
-            theme={this.host.theme || 'light'}
-            color="inherit"
-            aria-hidden="true"
-          />
-        )}
-        <slot />
-        {this.state && <span class="sr-only">{this.state}</span>}
-      </button>
+      <Host role="listitem">
+        <button
+          type="button"
+          aria-disabled={!this.state || this.disabled}
+          aria-current={this.state === 'current' ? 'step' : null}
+        >
+          {isStateCompleteOrWarning(this.state) && (
+            <PrefixedTagNames.pIcon
+              class="icon"
+              name={getIconName(this.state)}
+              theme={this.host.theme || 'light'}
+              color="inherit"
+              aria-hidden="true"
+            />
+          )}
+          {this.state && <span class="sr-only">{`${this.state}: `}</span>}
+          <slot />
+        </button>
+      </Host>
     );
   }
 }
