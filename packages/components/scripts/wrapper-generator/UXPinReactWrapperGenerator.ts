@@ -123,6 +123,8 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       props = addUxPinBindAnnotation(props, 'open', 'onAccordionChange', 'open');
     } else if (component === 'p-switch') {
       props = addUxPinBindAnnotation(props, 'checked', 'onSwitchChange', 'checked');
+    } else if (component === 'p-segmented-control') {
+      props = addUxPinBindAnnotation(props, 'value', 'onSegmentedControlChange', 'value');
     } else if (component === 'p-tabs-bar') {
       props = addUxPinBindAnnotation(props, 'activeTabIndex', 'onTabChange', 'activeTabIndex');
     }
@@ -283,9 +285,9 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       'p-segmented-control': {
         props: 'value={1}',
         children: [
-          '<SegmentedControlItem uxpId="segmented-control-item-1" value={1}>Value 1</SegmentedControlItem>',
-          '<SegmentedControlItem uxpId="segmented-control-item-2" value={2}>Value 2</SegmentedControlItem>',
-          '<SegmentedControlItem uxpId="segmented-control-item-3" value={3}>Value 3</SegmentedControlItem>',
+          '<SegmentedControlItem uxpId="segmented-control-item-1" value="1">Value 1</SegmentedControlItem>',
+          '<SegmentedControlItem uxpId="segmented-control-item-2" value="2">Value 2</SegmentedControlItem>',
+          '<SegmentedControlItem uxpId="segmented-control-item-3" value="3">Value 3</SegmentedControlItem>',
         ].join(glue),
       },
       'p-select-wrapper': {
