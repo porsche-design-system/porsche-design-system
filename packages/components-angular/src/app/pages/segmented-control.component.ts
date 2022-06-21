@@ -6,37 +6,37 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   template: `
     <div class="playground light" title="should render default segmented-control">
       <p-segmented-control [value]="'s'">
-        <p-segmented-control-item [value]="'s'">Size S</p-segmented-control-item>
-        <p-segmented-control-item [value]="'m'">Size M</p-segmented-control-item>
-        <p-segmented-control-item [value]="'l'">Size L</p-segmented-control-item>
-        <p-segmented-control-item [value]="'xl'" [disabled]="true">Size XL</p-segmented-control-item>
+        <p-segmented-control-item [value]="'s'">S</p-segmented-control-item>
+        <p-segmented-control-item [value]="'m'">M</p-segmented-control-item>
+        <p-segmented-control-item [value]="'l'">L</p-segmented-control-item>
+        <p-segmented-control-item [value]="'xl'" [disabled]="true">XL</p-segmented-control-item>
       </p-segmented-control>
     </div>
 
     <div class="playground light surface" title="should render default segmented-control on surface">
       <p-segmented-control [value]="'s'" [backgroundColor]="'background-surface'">
-        <p-segmented-control-item [value]="'s'">Size S</p-segmented-control-item>
-        <p-segmented-control-item [value]="'m'">Size M</p-segmented-control-item>
-        <p-segmented-control-item [value]="'l'">Size L</p-segmented-control-item>
-        <p-segmented-control-item [value]="'xl'" [disabled]="true">Size XL</p-segmented-control-item>
+        <p-segmented-control-item [value]="'s'">S</p-segmented-control-item>
+        <p-segmented-control-item [value]="'m'">M</p-segmented-control-item>
+        <p-segmented-control-item [value]="'l'">L</p-segmented-control-item>
+        <p-segmented-control-item [value]="'xl'" [disabled]="true">XL</p-segmented-control-item>
       </p-segmented-control>
     </div>
 
     <div class="playground dark" title="should render default segmented-control on dark theme">
       <p-segmented-control [value]="'s'" [theme]="'dark'">
-        <p-segmented-control-item [value]="'s'">Size S</p-segmented-control-item>
-        <p-segmented-control-item [value]="'m'">Size M</p-segmented-control-item>
-        <p-segmented-control-item [value]="'l'">Size L</p-segmented-control-item>
-        <p-segmented-control-item [value]="'xl'" [disabled]="true">Size XL</p-segmented-control-item>
+        <p-segmented-control-item [value]="'s'">S</p-segmented-control-item>
+        <p-segmented-control-item [value]="'m'">M</p-segmented-control-item>
+        <p-segmented-control-item [value]="'l'">L</p-segmented-control-item>
+        <p-segmented-control-item [value]="'xl'" [disabled]="true">XL</p-segmented-control-item>
       </p-segmented-control>
     </div>
 
     <div class="playground dark surface" title="should render default segmented-control on dark theme surface">
       <p-segmented-control [value]="'s'" [theme]="'dark'" [backgroundColor]="'background-surface'">
-        <p-segmented-control-item [value]="'s'">Size S</p-segmented-control-item>
-        <p-segmented-control-item [value]="'m'">Size M</p-segmented-control-item>
-        <p-segmented-control-item [value]="'l'">Size L</p-segmented-control-item>
-        <p-segmented-control-item [value]="'xl'" [disabled]="true">Size XL</p-segmented-control-item>
+        <p-segmented-control-item [value]="'s'">S</p-segmented-control-item>
+        <p-segmented-control-item [value]="'m'">M</p-segmented-control-item>
+        <p-segmented-control-item [value]="'l'">L</p-segmented-control-item>
+        <p-segmented-control-item [value]="'xl'" [disabled]="true">XL</p-segmented-control-item>
       </p-segmented-control>
     </div>
 
@@ -83,7 +83,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-segmented-control-item [value]="3" [icon]="'question'">FAQ</p-segmented-control-item>
         <p-segmented-control-item [value]="4" [icon]="'shopping-cart'">Checkout</p-segmented-control-item>
         
-        <p-segmented-control-item [value]="5" [iconSource]="'./assets/icon-custom-kaixin.svg'" [disabled]="true">Confirmation</p-segmented-control-item>
+        <p-segmented-control-item [value]="5" [iconSource]="'./assets/icon-custom-kaixin.svg'" [disabled]="true">Confirmation
+        </p-segmented-control-item>
       </p-segmented-control>
     </div>
 
@@ -94,7 +95,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-segmented-control-item [value]="3" [icon]="'question'">FAQ</p-segmented-control-item>
         <p-segmented-control-item [value]="4" [icon]="'shopping-cart'">Checkout</p-segmented-control-item>
         
-        <p-segmented-control-item [value]="5" [iconSource]="'./assets/icon-custom-kaixin.svg'" [disabled]="true">Confirmation</p-segmented-control-item>
+        <p-segmented-control-item [value]="5" [iconSource]="'./assets/icon-custom-kaixin.svg'" [disabled]="true">Confirmation
+        </p-segmented-control-item>
       </p-segmented-control>
     </div>
 
@@ -105,7 +107,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-segmented-control-item [value]="3" [icon]="'question'">FAQ</p-segmented-control-item>
         <p-segmented-control-item [value]="4" [icon]="'shopping-cart'">Checkout</p-segmented-control-item>
         
-        <p-segmented-control-item [value]="5" [iconSource]="'./assets/icon-custom-kaixin.svg'" [disabled]="true">Confirmation</p-segmented-control-item>
+        <p-segmented-control-item [value]="5" [iconSource]="'./assets/icon-custom-kaixin.svg'" [disabled]="true">Confirmation
+        </p-segmented-control-item>
       </p-segmented-control>
     </div>
 
@@ -116,7 +119,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-segmented-control-item [value]="3" [icon]="'question'">FAQ</p-segmented-control-item>
         <p-segmented-control-item [value]="4" [icon]="'shopping-cart'">Checkout</p-segmented-control-item>
         
-        <p-segmented-control-item [value]="5" [iconSource]="'./assets/icon-custom-kaixin.svg'" [disabled]="true">Confirmation</p-segmented-control-item>
+        <p-segmented-control-item [value]="5" [iconSource]="'./assets/icon-custom-kaixin.svg'" [disabled]="true">Confirmation
+        </p-segmented-control-item>
       </p-segmented-control>
     </div>
 
@@ -126,7 +130,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-segmented-control-item [value]="2" [label]="'Variant'" [icon]="'wrenches'">Advanced</p-segmented-control-item>
         <p-segmented-control-item [value]="3" [label]="'Variant'" [icon]="'truck'">Large</p-segmented-control-item>
         
-        <p-segmented-control-item [value]="4" [label]="'Variant'" [icon]="'tachometer'" [disabled]="true">Custom</p-segmented-control-item>
+        <p-segmented-control-item [value]="4" [label]="'Variant'" [icon]="'tachometer'" [disabled]="true">Custom
+        </p-segmented-control-item>
       </p-segmented-control>
     </div>
 
@@ -165,7 +170,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-segmented-control [value]="1">
         <p-segmented-control-item [value]="1" [label]="'Size is wider than value'">S</p-segmented-control-item>
         
-        <p-segmented-control-item [value]="2" [label]="'Size with icon'" [icon]="'truck'" [disabled]="true">M is very wide with icon</p-segmented-control-item>
+        <p-segmented-control-item [value]="2" [label]="'Size with icon'" [icon]="'truck'" [disabled]="true">M is very wide with icon
+        </p-segmented-control-item>
         <p-segmented-control-item [value]="3" [label]="'Icon only'" [icon]="'user'"></p-segmented-control-item>
         <p-segmented-control-item [value]="4">XL without label</p-segmented-control-item>
         <p-segmented-control-item [value]="5" [label]="'Label only'"></p-segmented-control-item>
