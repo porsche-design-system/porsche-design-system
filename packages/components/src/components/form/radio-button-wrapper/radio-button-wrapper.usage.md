@@ -3,9 +3,9 @@
 <TableOfContents></TableOfContents>
 
 ## When to use
-  • Use a Radio Button to enable a user to select one value from a predefined list.  
-  • Use a Radio Button as soon as two options are mutually exclusive.  
-  • Use a Radio Button when the user should see all available options.
+- Use a Radio Button to enable a user to select one value from a predefined list.  
+- Use a Radio Button as soon as two options are mutually exclusive.  
+- Use a Radio Button when the user should see all available options.
 
 ---
 

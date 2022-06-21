@@ -7,11 +7,11 @@
 A segmented control presents a set of selectable options at once. The users can make a single selection from 2-5 short
 and consistent options. For other use cases, consider using Radio Button, Checkbox, or Select.
 
-• Use them over other selection controls to reduce cognitive load.  
-• Do not use them to filter or navigate content (use Tabs instead).   
-• For more than 5 option use the [Select](components/select) component.  
-• For less than 2 option use the [Switch](components/switch) component.   
-• For inconsistent option values use the [Radio Button](components/radio-button) component.
+- Use them over other selection controls to reduce cognitive load.  
+- Do not use them to filter or navigate content (use Tabs instead).   
+- For more than 5 option use the [Select](components/select) component.  
+- For less than 2 option use the [Switch](components/switch) component.   
+- For inconsistent option values use the [Radio Button](components/radio-button) component.
 
 ---
 

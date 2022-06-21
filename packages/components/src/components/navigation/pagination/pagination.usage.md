@@ -3,10 +3,10 @@
 <TableOfContents></TableOfContents>
 
 ## When to use
-  • Use a Pagination whenever a content (text, images, videos) is split into several pages. 
-  • Use a Pagination to provide information on the existing amount of pages. 
-  • Use a Pagination to show the current page position. 
-  • Use a Pagination to allow the user to navigate between the single content pages.   
+- Use a Pagination whenever a content (text, images, videos) is split into several pages. 
+- Use a Pagination to provide information on the existing amount of pages. 
+- Use a Pagination to show the current page position. 
+- Use a Pagination to allow the user to navigate between the single content pages.   
 
 --- 
 

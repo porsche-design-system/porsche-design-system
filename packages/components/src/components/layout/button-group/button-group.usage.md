@@ -3,7 +3,7 @@
 <TableOfContents></TableOfContents>
 
 ## When to use
-  • Use a Button Group to consistently align two or more buttons at once.
+- Use a Button Group to consistently align two or more buttons at once.
 
 ---
 
