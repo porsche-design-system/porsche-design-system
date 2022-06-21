@@ -1,5 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`getComponentCss() should return correct css for maxWidth: 20 1`] = `
+":host {
+  display: grid !important;
+  grid-auto-rows: 1fr !important;
+  grid-template-columns: repeat(auto-fit, 46px) !important;
+  grid-gap: 4px !important;
+}"
+`;
+
 exports[`getComponentCss() should return correct css for maxWidth: 80 1`] = `
 ":host {
   display: grid !important;
