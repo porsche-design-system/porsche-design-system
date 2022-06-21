@@ -14,6 +14,7 @@ export * from './isParentOfKind';
 export * from './isShadowRootParentOfKind';
 export * from './removeAttribute';
 export * from './setAttribute';
+export * from './throwIfChildrenAreNotOfKind';
 export * from './throwIfElementHasAttribute';
 export * from './throwIfParentIsNotOfKind';
 export * from './throwIfParentIsNotOneOfKind';

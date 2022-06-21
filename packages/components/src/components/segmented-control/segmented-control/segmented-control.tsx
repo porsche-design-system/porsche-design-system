@@ -1,11 +1,10 @@
 import { Component, Element, h, JSX, Prop, forceUpdate, Event, EventEmitter, Host } from '@stencil/core';
-import { attachComponentCss, observeChildren, unobserveChildren } from '../../../utils';
+import { attachComponentCss, observeChildren, throwIfChildrenAreNotOfKind, unobserveChildren } from '../../../utils';
 import { getComponentCss } from './segmented-control-styles';
 import type { Theme } from '../../../types';
 import type { SegmentedControlBackgroundColor, SegmentedControlChangeEvent } from './segmented-control-utils';
 import { getItemMaxWidth, getClickedSegmentedControlItem, syncItemsProps } from './segmented-control-utils';
 import { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
-import { throwIfChildrenAreNotOfKind } from '../../../utils/dom/throwIfChildrenAreNotOfKind';
 
 @Component({
   tag: 'p-segmented-control',
