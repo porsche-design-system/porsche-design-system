@@ -12,7 +12,7 @@ import type { Theme } from '../../../types';
 import type { SegmentedControlBackgroundColor } from '../segmented-control/segmented-control-utils';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
 
-export const ITEM_PADDING = pxToRemWithUnit(40);
+export const ITEM_PADDING = pxToRemWithUnit(16);
 export const { font: BUTTON_FONT } = textSmall;
 export const { font: LABEL_FONT } = textXSmall;
 export const ICON_SIZE = pxToRemWithUnit(24);
@@ -64,7 +64,7 @@ export const getComponentCss = (
         display: 'block',
         height: '100%',
         width: '100%',
-        padding: `${pxToRemWithUnit(11)} ${ITEM_PADDING}`,
+        padding: `${pxToRemWithUnit(12)} ${ITEM_PADDING}`,
         margin: 0,
         border: 0,
         background: backgroundColor,
