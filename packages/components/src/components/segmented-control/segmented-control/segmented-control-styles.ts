@@ -2,9 +2,10 @@ import { getCss } from '../../../utils';
 import { addImportantToEachRule } from '../../../styles';
 
 const MAX_ITEM_WIDTH = 220;
+const MIN_ITEM_WIDTH = 46;
 
 export const getComponentCss = (maxWidth: number): string => {
-  const width = maxWidth > MAX_ITEM_WIDTH ? MAX_ITEM_WIDTH : maxWidth;
+  const width = maxWidth > MAX_ITEM_WIDTH ? MAX_ITEM_WIDTH : maxWidth < MIN_ITEM_WIDTH ? MIN_ITEM_WIDTH : maxWidth;
 
   return getCss({
     '@global': {
