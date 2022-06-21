@@ -82,8 +82,9 @@ describe('componentDidLoad', () => {
     const component = new StepperHorizontal();
     jest.spyOn(component, 'defineScrollerElements' as any).mockImplementationOnce(() => {});
     const spy = jest.spyOn(stepperHorizontalUtils, 'getIndexOfStepWithStateCurrent');
-
-    component.componentDidLoad();
+    try {
+      component.componentDidLoad();
+    } catch (e) {}
 
     expect(spy).toBeCalledTimes(1);
   });
@@ -92,7 +93,7 @@ describe('componentDidLoad', () => {
     const component = new StepperHorizontal();
     // needs to be mocked for component lifecycle flow to work
     jest.spyOn(component, 'defineScrollerElements' as any).mockImplementationOnce(() => {});
-
+    component['host'] = document.createElement('p-stepper-horizontal');
     component['scrollAreaElement'] = document.createElement('div');
     component['prevGradientElement'] = document.createElement('div');
 
