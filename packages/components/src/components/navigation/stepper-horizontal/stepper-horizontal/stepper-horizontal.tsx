@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, JSX, Prop, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, JSX, Prop, h } from '@stencil/core';
 import {
   attachComponentCss,
   getPrefixedTagNames,
@@ -91,11 +91,13 @@ export class StepperHorizontal {
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
-      <PrefixedTagNames.pScroller theme={this.theme} ref={(el) => (this.scrollerElement = el)}>
-        <div class="item-wrapper">
-          <slot />
-        </div>
-      </PrefixedTagNames.pScroller>
+      <Host role="list">
+        <PrefixedTagNames.pScroller theme={this.theme} ref={(el) => (this.scrollerElement = el)}>
+          <div class="item-wrapper">
+            <slot />
+          </div>
+        </PrefixedTagNames.pScroller>
+      </Host>
     );
   }
 
