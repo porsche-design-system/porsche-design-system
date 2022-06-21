@@ -78,11 +78,11 @@ export default class Code extends Vue {
   backgroundColor = 'background-surface';
   eventHandlingUrl = getAnchorLink('event-handling');
 
-  abcItems = `<p-segmented-control-item value="a">A</p-segmented-control-item>
-  <p-segmented-control-item value="b">B</p-segmented-control-item>
-  <p-segmented-control-item value="c">C</p-segmented-control-item>
-  <p-segmented-control-item value="d">D</p-segmented-control-item>
-  <p-segmented-control-item value="e">E</p-segmented-control-item>`;
+  shirtSizeItems = `<p-segmented-control-item value="xs">XS</p-segmented-control-item>
+  <p-segmented-control-item value="s">S</p-segmented-control-item>
+  <p-segmented-control-item value="m">M</p-segmented-control-item>
+  <p-segmented-control-item value="l">L</p-segmented-control-item>
+  <p-segmented-control-item value="xl">XL</p-segmented-control-item>`;
 
   optionItems = `<p-segmented-control-item value="1">Option 1</p-segmented-control-item>
   <p-segmented-control-item value="2">Option 2</p-segmented-control-item>
@@ -90,15 +90,15 @@ export default class Code extends Vue {
   <p-segmented-control-item value="4" disabled>Option 4</p-segmented-control-item>
   <p-segmented-control-item value="5">Option 5</p-segmented-control-item>`;
 
-  basicMarkup = `<p-segmented-control>
-  ${this.abcItems}
+  basicMarkup = `<p-segmented-control aria-label="Choose a t-shirt size">
+  ${this.shirtSizeItems}
 </p-segmented-control>`;
 
-  initialValueMarkup = `<p-segmented-control value="2">
+  initialValueMarkup = `<p-segmented-control value="2" aria-label="Choose a option">
   ${this.optionItems}
 </p-segmented-control>`;
 
-  withLabelsMarkup = `<p-segmented-control>
+  withLabelsMarkup = `<p-segmented-control aria-label="Choose a option">
   ${this.optionItems.replace(/value="\d"/g, '$& label="Label"')}
 </p-segmented-control>`;
 
@@ -110,13 +110,13 @@ export default class Code extends Vue {
       return `${match} ${attr}="${icons[i++]}"`;
     });
 
-    return `<p-segmented-control>
+    return `<p-segmented-control aria-label="Choose a option">
   ${items}
 </p-segmented-control>`;
   };
 
   get backgroundColorMarkup() {
-    return `<p-segmented-control background-color="${this.backgroundColor}">
+    return `<p-segmented-control background-color="${this.backgroundColor}" aria-label="Choose a option">
   ${this.optionItems}
 </p-segmented-control>`;
   };
