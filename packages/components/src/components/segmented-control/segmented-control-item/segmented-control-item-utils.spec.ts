@@ -1,5 +1,4 @@
 import { getButtonAttributes } from './segmented-control-item-utils';
-import * as segmentedControlItemUtils from './segmented-control-item-utils';
 
 describe('getButtonAttributes()', () => {
   it.each<Parameters<typeof getButtonAttributes>>([
