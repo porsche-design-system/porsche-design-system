@@ -13,6 +13,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Segmented Control`
 
+### [2.13.0-rc.0] - 2022-06-21
+
 #### Changed
 
 - `Button`, `Button Pure` and `Switch` apply `aria-disabled="true"` instead of `disabled` attribute to native button

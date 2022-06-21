@@ -34,8 +34,6 @@ jobs:
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Build Core Dependencies'
@@ -76,8 +74,6 @@ jobs:
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Unit Test Components Manager Core'
@@ -139,8 +135,6 @@ jobs:
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Build Core Dependencies'
@@ -186,8 +180,6 @@ jobs:
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Build Core Dependencies'
@@ -239,8 +231,6 @@ jobs:
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Build Core Dependencies'
@@ -307,8 +297,6 @@ jobs:
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Build Core Dependencies'
@@ -391,8 +379,6 @@ jobs:
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Build Shared'
@@ -428,8 +414,6 @@ jobs:
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Build Core Dependencies'
@@ -485,8 +469,6 @@ jobs:
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Build Core Dependencies'
@@ -538,8 +520,6 @@ jobs:
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Build Core Dependencies'
@@ -645,8 +625,6 @@ jobs:
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Build Core Dependencies'
@@ -682,8 +660,6 @@ jobs:
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Build Core Dependencies'
@@ -782,8 +758,6 @@ jobs:
       - name: 'Install' # needed for algolia
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Restore Build Artifact'
@@ -874,8 +848,6 @@ jobs:
       - name: 'Install'
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/docker-run
-        env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
         with:
           entrypoint: run-install
       - name: 'Restore Components JS Build Artifact'
@@ -891,7 +863,6 @@ jobs:
       - name: 'Publish UXPin Library'
         uses: ./.github/actions/docker-run
         env:
-          PORSCHE_NPM_REGISTRY_TOKEN: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
           UXPIN_TOKEN_DEV: ${{ secrets.UXPIN_TOKEN_DEV }}
           UXPIN_TOKEN_LATEST: ${{ secrets.UXPIN_TOKEN_LATEST }}
         with:
