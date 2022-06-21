@@ -1,6 +1,7 @@
 import { SegmentedControl } from './segmented-control';
 import * as childrenObserverUtils from '../../../utils/children-observer';
 import * as segmentedControlUtils from './segmented-control-utils';
+import * as throwIfChildrenAreNotOfKindUtils from '../../../utils/dom/throwIfChildrenAreNotOfKind';
 import { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 
 describe('connectedCallback', () => {
@@ -12,6 +13,16 @@ describe('connectedCallback', () => {
 
     component.connectedCallback();
     expect(spy).toBeCalledWith(component.host, expect.any(Function));
+  });
+
+  it('should call throwIfChildrenAreNotOfKind() with correct parameters', () => {
+    const spy = jest.spyOn(throwIfChildrenAreNotOfKindUtils, 'throwIfChildrenAreNotOfKind');
+
+    const component = new SegmentedControl();
+    component.host = document.createElement('p-segmented-control');
+
+    component.connectedCallback();
+    expect(spy).toBeCalledWith(component.host, 'pSegmentedControlItem');
   });
 });
 
