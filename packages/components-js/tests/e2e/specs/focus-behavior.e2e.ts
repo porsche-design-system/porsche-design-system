@@ -22,8 +22,8 @@ TAG_NAMES.filter((tagName) => getComponentMeta(tagName).isDelegatingFocus).forEa
   const value = tagName.includes('segmented-control-item') ? ' value="some value"' : '';
   const state = tagName.includes('stepper-horizontal-item') ? ' state="complete"' : '';
   const wrapInRequiredParentIfNeeded = (child: string): string => {
-    const { requiredParent } = getComponentMeta(tagName);
-    return requiredParent ? `<${requiredParent}>${child}</${requiredParent}>` : child;
+    const [firstRequiredParent] = getComponentMeta(tagName).requiredParent;
+    return firstRequiredParent ? `<${firstRequiredParent}>${child}</${firstRequiredParent}>` : child;
   };
 
   it(`should be removed from tab order for ${tagName}`, async () => {
