@@ -58,7 +58,7 @@
     "clean:partials:node_modules": "yarn --cwd ./projects/partials clean:node_modules"
   },
   "dependencies": {
-    "@porsche-design-system/assets": "5.0.2-rc.0",
+    "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/components": "2.13.0-rc.3",
     "@porsche-design-system/components-js": "2.13.0-rc.3",
     "@porsche-design-system/components-manager-cli": "0.0.0",
