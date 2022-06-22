@@ -13,7 +13,7 @@ Visually the `p-segmented-control` displays all options in equal size based on i
 ## Basic
 
 Each option needs to be rendered by using a `p-segmented-control-item` child component where the `value` property is
-mandatory in order to emit a useful change event.
+**mandatory** in order to emit a useful change event.
 
 <Playground :markup="basicMarkup" :config="config"></Playground>
 
