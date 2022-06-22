@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- `Segmented Control`
+
 ### [2.13.0-rc.2] - 2022-06-21
 
 ### [2.13.0-rc.1] - 2022-06-21

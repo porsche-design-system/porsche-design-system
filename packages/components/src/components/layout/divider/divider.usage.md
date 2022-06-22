@@ -3,8 +3,8 @@
 <TableOfContents></TableOfContents>
 
 ## When to use
-  • Use a Divider to create visual separation between related sections of content.   
-  • Use a Divider as a single element or embedded in components like, for example, tables or accordions.
+- Use a Divider to create visual separation between related sections of content.   
+- Use a Divider as a single element or embedded in components like, for example, tables or accordions.
 
 ---
 

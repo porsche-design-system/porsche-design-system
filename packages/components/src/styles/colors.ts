@@ -1,4 +1,5 @@
 import type { Theme } from '@porsche-design-system/utilities-v2';
+import { isThemeDark } from '../utils';
 
 type ThemedColor =
   | 'baseColor'
@@ -109,4 +110,8 @@ const themes = {
 
 export const getThemedColors = (theme: Theme): ThemedColors => {
   return themes[theme];
+};
+
+export const getInvertedThemedColors = (theme: Theme): ThemedColors => {
+  return getThemedColors(isThemeDark(theme) ? 'light' : 'dark');
 };
