@@ -3,8 +3,8 @@
 <TableOfContents></TableOfContents>
 
 ## When to use
-  • Use a Spinner when the user has to wait for more than 1 second.   
-  • Use a Spinner either stand-alone or within components (e.g. in Buttons to indicate progress after clicking "save").
+- Use a Spinner when the user has to wait for more than 1 second.   
+- Use a Spinner either stand-alone or within components (e.g. in Buttons to indicate progress after clicking "save").
 
 ---
 

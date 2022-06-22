@@ -3,8 +3,8 @@
 <TableOfContents></TableOfContents>
 
 ## When to use
-  • Use Tabs when there is a large amount of content that can be separated.  
-  • Use Tabs to make the content accessible without reloading the page or compromising on space.  
+- Use Tabs when there is a large amount of content that can be separated.  
+- Use Tabs to make the content accessible without reloading the page or compromising on space.  
 
 ## Types
 

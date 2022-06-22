@@ -3,8 +3,8 @@
 <TableOfContents></TableOfContents>
 
 ## When to use
-  • Use a Link to navigate to another page.  
-  • Use a Button to change the state of an application, which almost always happens on the same page. 
+- Use a Link to navigate to another page.  
+- Use a Button to change the state of an application, which almost always happens on the same page. 
 
 ---
 

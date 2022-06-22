@@ -2,6 +2,7 @@
   "name": "@porsche-design-system/nextjs",
   "version": "0.0.0",
   "private": true,
+  "license": "UNLICENSED",
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
@@ -18,7 +19,7 @@
     "clean:build": "rm -rf ./.next"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "2.12.1",
+    "@porsche-design-system/components-react": "2.13.0-rc.3",
     "next": "^12.1.6",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"

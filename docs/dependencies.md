@@ -4,7 +4,8 @@
 
 All Vue related dependencies can't be updated at the moment because `vue-property-decorator` and `vue-class-component`
 aren't Vue **3** compatible. In addition `sass-loader` can't be updated because it needs at least Webpack 5 but Vue **
-2** uses Webpack 4 under the hood.
+2** uses Webpack 4 under the hood. `vmark` and `vmark-loader` can't be updated since those packages are incompatible
+with Vue **2** and **3**.
 
 ### Affected dependencies:
 
@@ -18,6 +19,8 @@ aren't Vue **3** compatible. In addition `sass-loader` can't be updated because 
 - `@vue/cli-service`
 - `@vue/test-utils`
 - `sass-loader`
+- `vmark`
+- `vmark-loader`
 
 ---
 
