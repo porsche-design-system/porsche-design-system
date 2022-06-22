@@ -12,6 +12,7 @@ import {
   getProperty,
   getOffsetWidth,
   waitForEventSerialization,
+  hasFocus,
 } from '../helpers';
 import type { ElementHandle, Page } from 'puppeteer';
 
@@ -26,7 +27,7 @@ afterEach(async () => await page.close());
 const getHost = () => selectNode(page, 'p-segmented-control');
 const getFirstItemHost = () => selectNode(page, 'p-segmented-control-item');
 const getSecondItemHost = () => selectNode(page, 'p-segmented-control-item:nth-child(2)');
-const getItemButton = () => selectNode(page, 'p-segmented-control-item >>> button');
+const getFirstItemButton = () => selectNode(page, 'p-segmented-control-item >>> button');
 const getAllItemHosts = () => page.$$('p-segmented-control-item');
 const getAllItemButtons = async () =>
   Promise.all(
@@ -185,7 +186,7 @@ describe('events', () => {
     await initSegmentedControl({ value: 1 });
     const host = await getHost();
     const firstItemHost = await getFirstItemHost();
-    const button = await getItemButton();
+    const button = await getFirstItemButton();
 
     let eventCounter = 0;
     await addEventListener(host, 'segmentedControlChange', () => eventCounter++);
@@ -200,9 +201,6 @@ describe('events', () => {
 });
 
 describe('keyboard', () => {
-  const hasFocus = (element: ElementHandle): Promise<boolean> =>
-    element.evaluate((el) => document.activeElement === el);
-
   it('should focus items when keyboard "tab" is pressed', async () => {
     await setContentWithDesignSystem(
       page,
