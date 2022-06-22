@@ -403,6 +403,7 @@ Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
     "isThemeable": true,
+    "requiredParent": Array [],
     "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
@@ -413,7 +414,9 @@ Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": true,
     "isThemeable": false,
-    "requiredParent": "p-segmented-control",
+    "requiredParent": Array [
+      "p-segmented-control",
+    ],
     "shouldPatchSlot": false,
     "skeletonProps": Array [],
     "styling": "jss",
