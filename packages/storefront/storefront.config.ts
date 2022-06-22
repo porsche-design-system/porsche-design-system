@@ -293,6 +293,22 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Usage: [() => import('@/../../components/src/components/layout/spacing/spacing.usage.md')],
     },
+    'Segmented Control': {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/segmented-control/segmented-control.examples.md')],
+      // @ts-ignore
+      Usage: [() => import('@/../../components/src/components/segmented-control/segmented-control.usage.md')],
+      Props: [
+        () =>
+          // @ts-ignore
+          import('@/../../components/src/components/segmented-control/segmented-control/segmented-control.props.md'),
+        () =>
+          import(
+            // @ts-ignore
+            '@/../../components/src/components/segmented-control/segmented-control-item/segmented-control-item.props.md'
+          ),
+      ],
+    },
     Spinner: {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/feedback/spinner/spinner.examples.md')],

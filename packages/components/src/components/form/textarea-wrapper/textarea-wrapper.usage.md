@@ -4,7 +4,7 @@
 
 ## When to use
 
-  • Use Textareas in forms when you need to let users enter and edit an amount of text that’s longer than a single line.
+- Use Textareas in forms when you need to let users enter and edit an amount of text that’s longer than a single line.
 
 ---
 

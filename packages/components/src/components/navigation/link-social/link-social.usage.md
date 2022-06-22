@@ -3,7 +3,7 @@
 <TableOfContents></TableOfContents>
 
 ## When to use
-  • Use a Link Social to enable the user to link to social media platforms or social sharing dialogs.   
+- Use a Link Social to enable the user to link to social media platforms or social sharing dialogs.   
 
 --- 
 

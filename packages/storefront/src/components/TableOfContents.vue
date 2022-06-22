@@ -16,6 +16,7 @@
   import Component from 'vue-class-component';
   import { paramCase } from 'change-case';
   import { componentsReady } from '@porsche-design-system/components-js';
+  import { getAnchorLink } from '@/utils';
 
   type Link = { href: string; title: string };
 
@@ -25,9 +26,8 @@
     returnIcon = require('../assets/icon-return.svg');
 
     mounted(): void {
-      // strip away base href url path
-      const baseHref = document.querySelector('base')!.getAttribute('href')!;
-      const currentUrl = document.location.pathname.replace(baseHref, '');
+      // cut off trailing `#` character
+      const currentUrl = getAnchorLink('').slice(0, -1);
 
       this.links = Array.from<HTMLElement>(this.$el.parentElement!.parentElement!.querySelectorAll('h2')).map((h2) => {
         const { innerText } = h2;

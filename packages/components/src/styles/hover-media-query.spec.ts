@@ -1,8 +1,8 @@
 import { hoverMediaQuery } from './hover-media-query';
 import * as jssUtils from '../utils/jss';
 import type { TagName } from '@porsche-design-system/shared';
-import * as getDirectChildHTMLElementUtils from '../utils/dom/getDirectChildHTMLElement';
 import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
+import * as getDirectChildHTMLElementUtils from '../utils/dom/getDirectChildHTMLElement';
 import { TAG_NAMES_CONSTRUCTOR_MAP } from '../test-utils/tag-names-constructor-map';
 import { addParentAndSetRequiredProps } from '../test-utils/addParentAndSetRequiredProps';
 
