@@ -34,30 +34,34 @@ export const getExternalUrls = (): string[] => {
 };
 
 export const buildSitemap = async (): Promise<void> => {
-  console.log('Building sitemap...');
-  await page.goto(baseURL, { waitUntil: 'networkidle0' });
+  if (fs.existsSync(sitemapFilePath)) {
+    console.log('Sitemap already exists, skipping...');
+  } else {
+    console.log('Building sitemap...');
+    await page.goto(baseURL, { waitUntil: 'networkidle0' });
 
-  let allUrls = await scanForUrls();
+    let allUrls = await scanForUrls();
 
-  for (let i = 0; i < allUrls.length; i++) {
-    const href = allUrls[i];
+    for (let i = 0; i < allUrls.length; i++) {
+      const href = allUrls[i];
 
-    // follow internal urls only
-    if (href.startsWith('/')) {
-      process.stdout.write(`Crawling url ${i + 1}/${allUrls.length}...`);
-      await page.goto(`${baseURL}${href}`, { waitUntil: 'networkidle0' });
+      // follow internal urls only
+      if (href.startsWith('/')) {
+        process.stdout.write(`Crawling url ${i + 1}/${allUrls.length}...`);
+        await page.goto(`${baseURL}${href}`, { waitUntil: 'networkidle0' });
 
-      const newLinks = await scanForUrls();
-      allUrls = allUrls.concat(newLinks).filter((x, i, array) => array.indexOf(x) === i);
+        const newLinks = await scanForUrls();
+        allUrls = allUrls.concat(newLinks).filter((x, i, array) => array.indexOf(x) === i);
+      }
     }
+
+    console.log(`Finished building sitemap.json with ${allUrls.length} urls`);
+    console.log(`– Internal urls: ${allUrls.filter((link) => link.startsWith('/')).length}`);
+    console.log(`– External urls: ${allUrls.filter((link) => !link.startsWith('/')).length}`);
+
+    fs.mkdirSync(path.dirname(sitemapFilePath), { recursive: true });
+    fs.writeFileSync(sitemapFilePath, JSON.stringify(allUrls, null, 2));
   }
-
-  console.log(`Finished building sitemap with ${allUrls.length} urls`);
-  console.log(`– Internal urls: ${allUrls.filter((link) => link.startsWith('/')).length}`);
-  console.log(`– External urls: ${allUrls.filter((link) => !link.startsWith('/')).length}`);
-
-  fs.mkdirSync(path.dirname(sitemapFilePath), { recursive: true });
-  fs.writeFileSync(sitemapFilePath, JSON.stringify(allUrls, null, 2));
 };
 
 const mapAsync = <T, U>(array: T[], callbackFn: (value: T, index: number, array: T[]) => Promise<U>): Promise<U[]> =>

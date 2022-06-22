@@ -19,7 +19,7 @@ export const a11yAnalyze = async (page: Page) => {
   if (!analyzedUrls.includes(pageUrl)) {
     // docs: https://github.com/dequelabs/axe-core-npm/tree/develop/packages/puppeteer
     const result = await new AxePuppeteer(page)
-      .include('.main') // ignore sidebar
+      // .include('.main') // ignore sidebar
       .withTags(['wcag2a', 'wcag2aa']) // defaults aren't good enough and inconsistent with `@axe-devtools/puppeteer`
       .analyze();
 

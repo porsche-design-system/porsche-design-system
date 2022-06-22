@@ -1,18 +1,20 @@
 import type { Page } from 'puppeteer';
-import { baseURL } from '../helpers';
-import { a11yAnalyze, a11yFinalize } from '../helpers/axe-helper';
+import { a11yAnalyze, baseURL, getInternalUrls } from '../helpers';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
-it('works', async () => {
-  await page.goto(baseURL, { waitUntil: 'networkidle0' });
+// filter out files from public/assets directory
+const internalUrls = getInternalUrls().filter((url) => !url.match(/^\/assets\/.*\.\w{3,4}$/));
 
-  await a11yAnalyze(page);
+it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
+  'should have no accessibility issues at %s',
+  async (url, index) => {
+    process.stdout.write('\u001b[2K' + '\u001b[1G');
+    process.stdout.write(`Checking url ${index + 1}/${internalUrls.length}: ${url}`);
 
-  await page.goto(baseURL + '/about/introduction', { waitUntil: 'networkidle0' });
-  await a11yAnalyze(page);
-
-  await a11yFinalize();
-});
+    await page.goto(baseURL + url, { waitUntil: 'networkidle0' });
+    await a11yAnalyze(page);
+  }
+);
