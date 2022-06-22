@@ -29,7 +29,7 @@
     "build-prod": "PDS_IS_STAGING=0 yarn build",
     "lint": "eslint -c .eslintrc.js './src/**/*.{ts,tsx}'",
     "test": "yarn test:unit",
-    "pretest:unit": "yarn prebuild:generateContstructorMap",
+    "pretest:unit": "yarn prebuild:generateConstructorMap",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
     "test:unit:watch": "yarn test:unit --watch --coverage=false",
     "clean": "yarn clean:node_modules && yarn clean:build",
