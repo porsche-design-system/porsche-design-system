@@ -2,6 +2,7 @@ export * from './AccordionExample';
 export * from './InlineNotificationExampleActionButton';
 export * from './InlineNotificationExampleEvents';
 export * from './SegmentedControlExample';
+export * from './StepperHorizontalExample';
 export * from './TableExampleAdvanced';
 export * from './TableExampleBasic';
 export * from './TableExampleSorting';

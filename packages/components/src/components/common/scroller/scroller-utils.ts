@@ -1,4 +1,4 @@
-import { getScrollByX } from '../../../utils';
+import { getScrollByX, getShadowRootHTMLElement } from '../../../utils';
 
 export type ActiveElementChange = { activeElementIndex: number };
 export type Direction = 'prev' | 'next';
@@ -16,4 +16,13 @@ export const getScrollPositionAfterPrevNextClick = (scrollAreaElement: HTMLEleme
     scrollPosition = scrollLeft - scrollByX;
   }
   return scrollPosition;
+};
+
+export const getScrollerElements = (
+  scrollerElement: HTMLElement
+): { scrollAreaElement: HTMLElement; prevGradientElement: HTMLElement } => {
+  return {
+    scrollAreaElement: getShadowRootHTMLElement(scrollerElement, '.scroll-area'),
+    prevGradientElement: getShadowRootHTMLElement(scrollerElement, '.gradient'),
+  };
 };
