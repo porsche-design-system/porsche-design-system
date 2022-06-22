@@ -298,9 +298,9 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       },
       'p-stepper-horizontal': {
         children: [
-          '<PStepperHorizontalItem uxpId="stepper-horizontal-step-1" state="current">Enter personal details</PStepperHorizontalItem>',
-          '<PStepperHorizontalItem uxpId="stepper-horizontal-step-2" state="current">Confirm e-mail</PStepperHorizontalItem>',
-          '<PStepperHorizontalItem uxpId="stepper-horizontal-step-3" state="current">Set password</PStepperHorizontalItem>',
+          '<StepperHorizontalItem uxpId="stepper-horizontal-step-1" state="current">Enter personal details</StepperHorizontalItem>',
+          '<StepperHorizontalItem uxpId="stepper-horizontal-step-2">Confirm e-mail</StepperHorizontalItem>',
+          '<StepperHorizontalItem uxpId="stepper-horizontal-step-3">Set password</StepperHorizontalItem>',
         ].join(glue),
       },
       'p-text-field-wrapper': {
