@@ -18,7 +18,7 @@ import type { SegmentedControlItemInternalHTMLProps } from './segmented-control-
 export class SegmentedControlItem {
   @Element() public host!: HTMLElement & SegmentedControlItemInternalHTMLProps;
 
-  /** The value of this item which is emitted by the parent element if it becomes selected. */
+  /** The value of this item which is emitted by the parent element if it becomes selected. This property is **required**. */
   @Prop() public value: string | number;
 
   /** Disables the button. No events will be triggered while disabled state is active. */
