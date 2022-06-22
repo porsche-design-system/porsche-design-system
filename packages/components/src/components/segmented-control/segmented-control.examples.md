@@ -116,7 +116,7 @@ export default class Code extends Vue {
   };
 
   get backgroundColorMarkup() {
-    return `<p-segmented-control background-color="${this.backgroundColor}" aria-label="Choose a option">
+    return `<p-segmented-control background-color="${this.backgroundColor}" aria-label="Choose an option">
   ${this.optionItems}
 </p-segmented-control>`;
   };
