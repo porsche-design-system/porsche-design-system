@@ -3,8 +3,8 @@
 <TableOfContents></TableOfContents>
 
 ## When to use
-  • Use a Link Pure as a more subtle call to action compared to the normal Porsche Design System Link.   
-  • Use a Link Pure to navigate the user to another page. 
+- Use a Link Pure as a more subtle call to action compared to the normal Porsche Design System Link.   
+- Use a Link Pure to navigate the user to another page. 
 
 --- 
 

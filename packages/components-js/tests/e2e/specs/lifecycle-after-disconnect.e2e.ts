@@ -6,12 +6,14 @@ let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
+const TAG_NAMES_TO_SKIP: TagName[] = ['p-segmented-control-item'];
+
 /**
  * When stencil web components are unmounted directly, their lifecycle hooks are invoked after disconnectedCallback.
  * This can lead to exceptions when components require references to their parent element which is already gone.
  * https://github.com/ionic-team/stencil/issues/2502
  */
-it.each(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))(
+it.each(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x) && !TAG_NAMES_TO_SKIP.includes(x)))(
   'should not throw error after disconnectedCallback for %s',
   async (tagName) => {
     initConsoleObserver(page);

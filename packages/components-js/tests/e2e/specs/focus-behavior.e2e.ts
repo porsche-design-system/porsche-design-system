@@ -19,13 +19,19 @@ afterEach(async () => await page.close());
 
 TAG_NAMES.filter((tagName) => getComponentMeta(tagName).isDelegatingFocus).forEach((tagName) => {
   const href = tagName.includes('link') || tagName.includes('marque') ? ' href="#"' : '';
+  const value = tagName.includes('segmented-control-item') ? ' value="some value"' : '';
   const state = tagName.includes('stepper-horizontal-item') ? ' state="complete"' : '';
+  const wrapInRequiredParentIfNeeded = (child: string): string => {
+    const { requiredParent } = getComponentMeta(tagName);
+    return requiredParent ? `<${requiredParent}>${child}</${requiredParent}>` : child;
+  };
 
   it(`should be removed from tab order for ${tagName}`, async () => {
+    const component = wrapInRequiredParentIfNeeded(`<${tagName}${href}${state} tabindex="-1">Some label</${tagName}>`);
     await setContentWithDesignSystem(
       page,
       `<a href="#" id="before">before</a>
-<${tagName}${href}${state} tabindex="-1">Some label</${tagName}>
+${component}
 <a href="#" id="after">after</a>`
     );
 
@@ -36,7 +42,10 @@ TAG_NAMES.filter((tagName) => getComponentMeta(tagName).isDelegatingFocus).forEa
   });
 
   it(`should delegate focus into shadow dom for ${tagName}`, async () => {
-    await setContentWithDesignSystem(page, `<${tagName}${href}${state}>Some label</${tagName}>`);
+    await setContentWithDesignSystem(
+      page,
+      wrapInRequiredParentIfNeeded(`<${tagName}${href}${state}${value}>Some label</${tagName}>`)
+    );
 
     const host = await selectNode(page, tagName);
     const elTagName = await host.evaluate((el) => el.tagName);

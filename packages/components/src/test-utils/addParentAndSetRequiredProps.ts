@@ -13,5 +13,7 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
     component.select = document.createElement('select');
   } else if (tagName === 'p-modal') {
     component.aria = { 'aria-label': 'Some Heading' };
+  } else if (tagName === 'p-segmented-control-item') {
+    component.value = 'Some value';
   }
 };

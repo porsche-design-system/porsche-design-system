@@ -2,6 +2,7 @@
   "name": "@porsche-design-system/react",
   "version": "0.0.0",
   "private": true,
+  "license": "UNLICENSED",
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
@@ -24,7 +25,7 @@
   },
   "dependencies": {
     "@juggle/resize-observer": "^3.3.1",
-    "@porsche-design-system/components-react": "2.12.1",
+    "@porsche-design-system/components-react": "2.13.0-rc.2",
     "construct-style-sheets-polyfill": "^3.1.0",
     "intersection-observer": "^0.12.0",
     "react": "^18.1.0",
@@ -35,7 +36,7 @@
     "whatwg-fetch": "^3.6.2"
   },
   "devDependencies": {
-    "@porsche-design-system/assets": "5.0.1",
+    "@porsche-design-system/assets": "5.0.2-rc.0",
     "@porsche-design-system/shared": "0.0.0",
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-node-resolve": "^13.3.0",

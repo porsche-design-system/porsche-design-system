@@ -3,7 +3,7 @@
 <TableOfContents></TableOfContents>
 
 ## When to use
-  • Use a Text List to display short pieces of information in form of an unordered or ordered list.
+- Use a Text List to display short pieces of information in form of an unordered or ordered list.
 
 ---
 

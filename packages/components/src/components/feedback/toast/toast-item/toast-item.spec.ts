@@ -1,5 +1,5 @@
 import { ToastItem } from './toast-item';
-import * as validationUtils from '../../../../utils/validation';
+import * as throwIfValueIsInvalidUtils from '../../../../utils/validation/throwIfValueIsInvalid';
 import * as throwIfRootNodeIsNotOfKindUtils from '../../../../utils/dom/throwIfRootNodeIsNotOfKind';
 import { TOAST_STATES } from '../toast/toast-utils';
 
@@ -18,7 +18,7 @@ describe('connectedCallback', () => {
 
 describe('componentWillRender', () => {
   it('should call throwIfValueIsInvalid() with correct parameters', () => {
-    const spy = jest.spyOn(validationUtils, 'throwIfValueIsInvalid');
+    const spy = jest.spyOn(throwIfValueIsInvalidUtils, 'throwIfValueIsInvalid');
     const component = new ToastItem();
     component.host = document.createElement('p-toast');
     component.host.attachShadow({ mode: 'open' });
