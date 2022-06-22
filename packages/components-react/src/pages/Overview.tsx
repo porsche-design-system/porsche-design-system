@@ -1,5 +1,5 @@
 /* Auto Generated File */
-import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCheckboxWrapper, PContentWrapper, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PSelectWrapper, PSpinner, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react';
+import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCheckboxWrapper, PContentWrapper, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react';
 import { useEffect, useState } from 'react';
 import { pollComponentsReady } from '../pollComponentsReady';
 
@@ -236,6 +236,29 @@ export const OverviewPage = (): JSX.Element => {
           <div className="playground light" title="should render default tag-dismissible">
             <PTagDismissible>Some Tag</PTagDismissible>
           </div>
+
+          <div className="playground light" title="should render default segmented-control">
+            <PSegmentedControl value="s">
+              <PSegmentedControlItem value="s">S</PSegmentedControlItem>
+              <PSegmentedControlItem value="m">M</PSegmentedControlItem>
+              <PSegmentedControlItem value="l">L</PSegmentedControlItem>
+              <PSegmentedControlItem value="xl">XL</PSegmentedControlItem>
+            </PSegmentedControl>
+          </div>
+
+          <div className="playground light" title="should render default stepper-horizontal">
+            <PStepperHorizontal>
+              <PStepperHorizontalItem state="current">Step 1</PStepperHorizontalItem>
+              <PStepperHorizontalItem>Step 2</PStepperHorizontalItem>
+              <PStepperHorizontalItem>Step 3</PStepperHorizontalItem>
+              <PStepperHorizontalItem>Step 4</PStepperHorizontalItem>
+              <PStepperHorizontalItem>Step 5</PStepperHorizontalItem>
+              <PStepperHorizontalItem>Step 6</PStepperHorizontalItem>
+              <PStepperHorizontalItem>Step 7</PStepperHorizontalItem>
+              <PStepperHorizontalItem>Step 8</PStepperHorizontalItem>
+              <PStepperHorizontalItem>Step 9</PStepperHorizontalItem>
+            </PStepperHorizontal>
+          </div>
         </div>
 
         <PorscheDesignSystemProvider prefix="my-prefix">
@@ -429,6 +452,29 @@ export const OverviewPage = (): JSX.Element => {
 
             <div className="playground light" title="should render default tag-dismissible with custom prefix">
               <PTagDismissible>Some Tag</PTagDismissible>
+            </div>
+
+            <div className="playground light" title="should render default segmented-control with custom prefix">
+              <PSegmentedControl value="s">
+                <PSegmentedControlItem value="s">S</PSegmentedControlItem>
+                <PSegmentedControlItem value="m">M</PSegmentedControlItem>
+                <PSegmentedControlItem value="l">L</PSegmentedControlItem>
+                <PSegmentedControlItem value="xl">XL</PSegmentedControlItem>
+              </PSegmentedControl>
+            </div>
+
+            <div className="playground light" title="should render default stepper-horizontal with custom prefix">
+              <PStepperHorizontal>
+                <PStepperHorizontalItem state="current">Step 1</PStepperHorizontalItem>
+                <PStepperHorizontalItem>Step 2</PStepperHorizontalItem>
+                <PStepperHorizontalItem>Step 3</PStepperHorizontalItem>
+                <PStepperHorizontalItem>Step 4</PStepperHorizontalItem>
+                <PStepperHorizontalItem>Step 5</PStepperHorizontalItem>
+                <PStepperHorizontalItem>Step 6</PStepperHorizontalItem>
+                <PStepperHorizontalItem>Step 7</PStepperHorizontalItem>
+                <PStepperHorizontalItem>Step 8</PStepperHorizontalItem>
+                <PStepperHorizontalItem>Step 9</PStepperHorizontalItem>
+              </PStepperHorizontal>
             </div>
           </div>
         </PorscheDesignSystemProvider>
