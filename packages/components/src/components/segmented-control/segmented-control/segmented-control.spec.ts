@@ -1,6 +1,7 @@
 import { SegmentedControl } from './segmented-control';
 import * as childrenObserverUtils from '../../../utils/children-observer';
 import * as segmentedControlUtils from './segmented-control-utils';
+import * as getClickedItemUtils from '../../../utils/dom/getClickedItem';
 import * as throwIfChildrenAreNotOfKindUtils from '../../../utils/dom/throwIfChildrenAreNotOfKind';
 import { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 
@@ -61,7 +62,7 @@ describe('componentDidLoad', () => {
     // click event handler
     const item1 = document.createElement('p-segmented-control-item') as unknown as HTMLElement & SegmentedControlItem;
     item1.id = 'item1';
-    jest.spyOn(segmentedControlUtils, 'getClickedSegmentedControlItem').mockReturnValueOnce(item1);
+    jest.spyOn(getClickedItemUtils, 'getClickedItem').mockReturnValueOnce(item1);
 
     component.host.click();
 
