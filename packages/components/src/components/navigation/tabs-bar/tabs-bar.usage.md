@@ -3,7 +3,7 @@
 <TableOfContents></TableOfContents>
 
 ## When to use
-  • Use Tabs Bar as a Skip-Navigation to jump to sections on a longer page.  
+- Use Tabs Bar as a Skip-Navigation to jump to sections on a longer page.  
 
 ---
 

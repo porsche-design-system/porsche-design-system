@@ -42,6 +42,16 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-segmented-control',
+      samples: [
+        [
+          componentsJsPath + '/segmented-control-example.html',
+          componentsAngularPath + '/segmented-control-example.component.ts',
+          componentsReactPath + '/SegmentedControlExample.tsx',
+        ],
+      ],
+    },
+    {
       component: 'p-stepper-horizontal',
       samples: [
         [

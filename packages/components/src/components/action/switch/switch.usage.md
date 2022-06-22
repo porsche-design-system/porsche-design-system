@@ -4,9 +4,9 @@
 
 ## When to use
 
-• If an instant response of applied settings is required without an explicit action.  
-• To enable or disable a mode, feature, or function. If a setting requires a button press before it can take effect, you should use a [Checkbox](components/checkbox) instead.  
-• When user is toggling independent features or behaviors.
+- If an instant response of applied settings is required without an explicit action.  
+- To enable or disable a mode, feature, or function. If a setting requires a button press before it can take effect, you should use a [Checkbox](components/checkbox) instead.  
+- When user is toggling independent features or behaviors.
 
 ---
 

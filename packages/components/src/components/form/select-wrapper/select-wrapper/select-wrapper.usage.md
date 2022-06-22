@@ -3,10 +3,10 @@
 <TableOfContents></TableOfContents>
 
 ## When to use
-  • Use a Select to trigger an action based on the selected option.  
-  • Use a Select to choose and search one option from a list of items.  
-  • Use a Select to navigate the user to a new position.  
-  • Use a Select to recommending a default option for most users.
+- Use a Select to trigger an action based on the selected option.  
+- Use a Select to choose and search one option from a list of items.  
+- Use a Select to navigate the user to a new position.  
+- Use a Select to recommending a default option for most users.
 
 ---
 

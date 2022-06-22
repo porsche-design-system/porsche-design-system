@@ -372,21 +372,21 @@ describe('button', () => {
       await initButton();
 
       const host = await getHost();
-      expect(await hasFocus(page, host)).toBe(false);
+      expect(await hasFocus(host)).toBe(false);
 
       await page.keyboard.press('Tab');
 
-      expect(await hasFocus(page, host), 'after Tab').toBe(true);
+      expect(await hasFocus(host), 'after Tab').toBe(true);
 
       await setProperty(host, 'loading', true);
       await waitForStencilLifecycle(page);
 
-      expect(await hasFocus(page, host), 'focus style on loading').toBe(true);
+      expect(await hasFocus(host), 'focus style on loading').toBe(true);
 
       await setProperty(host, 'loading', false);
       await waitForStencilLifecycle(page);
 
-      expect(await hasFocus(page, host), 'final focus style').toBe(true);
+      expect(await hasFocus(host), 'final focus style').toBe(true);
     });
   });
 

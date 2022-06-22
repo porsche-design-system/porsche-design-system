@@ -138,7 +138,7 @@ describe('select-wrapper native', () => {
     it('should focus select when label text is clicked', async () => {
       await initSelect();
       const select = await getSelect();
-      const hasSelectFocus = () => hasFocus(page, select);
+      const hasSelectFocus = () => hasFocus(select);
 
       const labelText = await getLabelText();
       expect(await hasSelectFocus()).toBe(false);

@@ -1,6 +1,7 @@
 {
   "name": "cloud-front-storefront-redirect-to-trailing-slash",
   "private": true,
+  "license": "UNLICENSED",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
