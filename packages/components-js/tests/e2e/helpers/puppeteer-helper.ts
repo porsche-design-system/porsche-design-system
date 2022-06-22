@@ -254,8 +254,8 @@ export const enableBrowserLogging = (page: Page): void => {
 
 export const waitForInputTransition = (page: Page): Promise<void> => page.waitForTimeout(250);
 
-export const hasFocus = (page: Page, element: ElementHandle): Promise<boolean> =>
-  page.evaluate((el) => document.activeElement === el, element);
+export const hasFocus = (element: ElementHandle): Promise<boolean> =>
+  element.evaluate((el) => document.activeElement === el);
 
 const consoleMessages: ConsoleMessage[] = [];
 
