@@ -77,7 +77,7 @@
   {
     "chunkShortName": "main",
     "size": 61794,
-    "gzipSize": 21217
+    "gzipSize": 21219
   },
   {
     "chunkShortName": "marque",
@@ -106,8 +106,8 @@
   },
   {
     "chunkShortName": "scroller",
-    "size": 11316,
-    "gzipSize": 3928
+    "size": 11797,
+    "gzipSize": 4104
   },
   {
     "chunkShortName": "select-wrapper",
@@ -121,8 +121,8 @@
   },
   {
     "chunkShortName": "stepper-horizontal",
-    "size": 12416,
-    "gzipSize": 4660
+    "size": 12410,
+    "gzipSize": 4679
   },
   {
     "chunkShortName": "switch",
@@ -132,7 +132,7 @@
   {
     "chunkShortName": "table",
     "size": 10281,
-    "gzipSize": 3581
+    "gzipSize": 3578
   },
   {
     "chunkShortName": "tabs",
