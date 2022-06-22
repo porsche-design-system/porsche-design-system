@@ -51,7 +51,7 @@ export class StepperHorizontalItem {
       <Host role="listitem">
         <button
           type="button"
-          aria-disabled={!this.state || this.disabled}
+          aria-disabled={!this.state || this.disabled ? 'true' : null}
           aria-current={this.state === 'current' ? 'step' : null}
         >
           {isStateCompleteOrWarning(this.state) && (
