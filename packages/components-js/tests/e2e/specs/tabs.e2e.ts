@@ -1,5 +1,6 @@
 import {
   addEventListener,
+  CSS_ANIMATION_DURATION,
   expectA11yToMatchSnapshot,
   getAttribute,
   getConsoleErrorsAmount,
@@ -22,7 +23,6 @@ describe('tabs', () => {
   let page: Page;
   beforeEach(async () => (page = await browser.newPage()));
   afterEach(async () => await page.close());
-  const CSS_ANIMATION_DURATION = 1000;
 
   const initTabs = async (opts?: { amount?: number; activeTabIndex?: number }) => {
     const { amount = 3, activeTabIndex } = opts ?? {};
@@ -353,11 +353,11 @@ describe('tabs', () => {
       expect(status.componentDidLoad['p-tabs-bar'], 'componentDidLoad: p-tabs-bar').toBe(1); // Includes 8 didLoad calls
       expect(status.componentDidLoad['p-tabs-item'], 'componentDidLoad: p-tabs-item').toBe(3);
 
-      expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
-      expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(1);
+      expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(0);
+      expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(0);
 
       expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(12);
-      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
     it('should work without unnecessary round trips on prop change', async () => {
@@ -370,11 +370,11 @@ describe('tabs', () => {
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidUpdate['p-tabs'], 'componentDidUpdate: p-tabs').toBe(1);
-      expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(3);
-      expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(2);
+      expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(1);
+      expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
 
       expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(12);
-      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(6);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
     });
   });
 

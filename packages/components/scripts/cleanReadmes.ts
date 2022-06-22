@@ -25,6 +25,7 @@ const adjustHeadline = (str: string): string => {
     'p-headline': 'Typography',
     'p-inline-notification': 'Notifications',
     'p-segmented-control': 'Segmented Control',
+    'p-stepper-horizontal': 'Stepper Horizontal',
     'p-table': 'Table',
     'p-tabs': 'Tabs',
     'p-tag': 'Tags',
@@ -33,10 +34,11 @@ const adjustHeadline = (str: string): string => {
   // all component names on multi prop pages
   const multiPropReplacements: TagName[] = [
     ...(Object.keys(h1Replacements) as TagName[]),
+    'p-banner',
     'p-flex-item',
     'p-grid-item',
+    'p-stepper-horizontal-item',
     'p-text',
-    'p-banner',
     'p-segmented-control-item',
     'p-toast',
     'p-table-head-cell',

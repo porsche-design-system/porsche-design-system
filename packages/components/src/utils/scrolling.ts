@@ -1,3 +1,5 @@
+import { Direction } from '../components/common/scroller/scroller-utils';
+
 export const supportsScrollBehavior = (): boolean => 'scrollBehavior' in document?.documentElement?.style;
 
 const steps = 20;
@@ -47,4 +49,38 @@ export const scrollElementBy = (el: HTMLElement, amount: number): void => {
 export const getScrollByX = (scrollAreaElement: HTMLElement): number => {
   const { offsetWidth } = scrollAreaElement;
   return Math.round(offsetWidth * 0.2);
+};
+
+export const FOCUS_PADDING_WIDTH = 4;
+
+export const getScrollActivePosition = (
+  elements: HTMLElement[],
+  direction: Direction,
+  activeElementIndex: number,
+  scrollAreaOffsetWidth: number,
+  gradientWidth: number
+): number => {
+  const { offsetLeft: activeElementOffsetLeft, offsetWidth: activeElementOffsetWidth } =
+    elements[activeElementIndex] ?? {};
+  const elementsCount = elements.length;
+
+  let scrollPosition: number;
+  if (direction === 'next') {
+    if (activeElementIndex === elementsCount - 1) {
+      // go to last element
+      scrollPosition = activeElementOffsetLeft - FOCUS_PADDING_WIDTH;
+    } else {
+      // go to next element
+      scrollPosition = activeElementOffsetLeft - gradientWidth + FOCUS_PADDING_WIDTH * 2;
+    }
+  } else {
+    if (activeElementIndex === 0) {
+      // go to first element
+      scrollPosition = 0;
+    } else {
+      // go to prev element
+      scrollPosition = activeElementOffsetLeft + activeElementOffsetWidth + gradientWidth - scrollAreaOffsetWidth;
+    }
+  }
+  return scrollPosition;
 };

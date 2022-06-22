@@ -25,9 +25,10 @@ const generateConstructorMap = (): void => {
       }
     })
     .filter((x) => x)
+    .sort()
     .join(',\n  ');
 
-  const imports = importsRaw.join('\n');
+  const imports = importsRaw.sort().join('\n');
 
   const types = `type ClassType = {
   host: HTMLElement;

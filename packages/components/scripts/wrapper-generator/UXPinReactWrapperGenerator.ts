@@ -236,6 +236,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       case 'p-radio-button-wrapper':
       case 'p-segmented-control':
       case 'p-select-wrapper':
+      case 'p-stepper-horizontal':
       case 'p-text-field-wrapper':
       case 'p-textarea-wrapper':
       case 'p-table':
@@ -294,6 +295,13 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         props: 'label="SelectWrapper"',
         children:
           '<DummySelect uxpId="dummy-select" options={Array.from(Array(3)).map((_, i) => `Option ${i + 1}`)} />',
+      },
+      'p-stepper-horizontal': {
+        children: [
+          '<StepperHorizontalItem uxpId="stepper-horizontal-step-1" state="current">Enter personal details</StepperHorizontalItem>',
+          '<StepperHorizontalItem uxpId="stepper-horizontal-step-2">Confirm e-mail</StepperHorizontalItem>',
+          '<StepperHorizontalItem uxpId="stepper-horizontal-step-3">Set password</StepperHorizontalItem>',
+        ].join(glue),
       },
       'p-text-field-wrapper': {
         props: 'label="TextFieldWrapper"',
