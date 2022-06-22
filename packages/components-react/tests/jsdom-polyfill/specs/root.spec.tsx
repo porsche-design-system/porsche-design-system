@@ -9,6 +9,7 @@ it('should have one unit test per component', () => {
     'p-grid-item',
     'p-stepper-horizontal-item',
     'p-tabs-item',
+    'p-segmented-control-item',
     'p-text-list-item',
     'p-table-head',
     'p-table-body',

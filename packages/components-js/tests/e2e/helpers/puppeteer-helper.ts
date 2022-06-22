@@ -254,8 +254,8 @@ export const enableBrowserLogging = (page: Page): void => {
 
 export const waitForInputTransition = (page: Page): Promise<void> => page.waitForTimeout(250);
 
-export const hasFocus = (page: Page, element: ElementHandle): Promise<boolean> =>
-  page.evaluate((el) => document.activeElement === el, element);
+export const hasFocus = (element: ElementHandle): Promise<boolean> =>
+  element.evaluate((el) => document.activeElement === el);
 
 const consoleMessages: ConsoleMessage[] = [];
 
@@ -367,6 +367,6 @@ export const expectToSkipFocusOnComponent = async (page: Page, component: Elemen
   expect(await getActiveElementId(page)).toBe('before');
 };
 
-export const getScrollLeft = (element: ElementHandle) => getProperty<number>(element, 'scrollLeft');
-export const getOffsetLeft = (element: ElementHandle) => getProperty<number>(element, 'offsetLeft');
-export const getOffsetWidth = (element: ElementHandle) => getProperty<number>(element, 'offsetWidth');
+export const getScrollLeft = (element: ElementHandle): Promise<number> => getProperty<number>(element, 'scrollLeft');
+export const getOffsetLeft = (element: ElementHandle): Promise<number> => getProperty<number>(element, 'offsetLeft');
+export const getOffsetWidth = (element: ElementHandle): Promise<number> => getProperty<number>(element, 'offsetWidth');

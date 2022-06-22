@@ -4,9 +4,9 @@
 
 ## When to use
 
-• Indicate or highlight a certain attribute of an item.  
-• Show that content is mapped to one or multiple categories.  
-• Indicate that a certain filter is active.  
+- Indicate or highlight a certain attribute of an item.  
+- Show that content is mapped to one or multiple categories.  
+- Indicate that a certain filter is active.  
 
 ### Content
 
@@ -15,8 +15,8 @@ Use short text content for easy scanning. Use two words only if necessary to des
 ### Scalable
 
 Technically a UI could have as many tags as needed, there are different options when a set of tags cannot fit on screen:  
-• A group of tags becomes horizontal scrollable, swipeable, or navigable with arrows.  
-• Tags are set in a predefined space and move to the next line once they meet the boundary.  
+- A group of tags becomes horizontal scrollable, swipeable, or navigable with arrows.  
+- Tags are set in a predefined space and move to the next line once they meet the boundary.  
 
 ---
 
@@ -37,8 +37,8 @@ Technically a UI could have as many tags as needed, there are different options 
 #### With link or button
 
 A link within a tag allows adding certain information such as:   
-• Further explanation about the tag for better understandability.  
-• Additional information that is not necessary for the task completion.  
+- Further explanation about the tag for better understandability.  
+- Additional information that is not necessary for the task completion.  
   
 Suitable methods to show additional information could be the [Modal](components/modal) component.  
 A button or link within a tag is not allowed to be used for navigation.  

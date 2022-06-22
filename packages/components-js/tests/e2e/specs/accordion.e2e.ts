@@ -236,13 +236,13 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
       const input = await getInput();
       const body = await getBody();
 
-      expect(await hasFocus(page, body)).toBe(true);
+      expect(await hasFocus(body)).toBe(true);
 
       await button.click();
       await waitForStencilLifecycle(page);
       await page.keyboard.press('Tab');
 
-      expect(await hasFocus(page, input)).toBe(true);
+      expect(await hasFocus(input)).toBe(true);
     });
 
     it('should not have focusable content when closed', async () => {
@@ -252,15 +252,15 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
       const body = await getBody();
       const link = await selectNode(page, 'a');
 
-      expect(await hasFocus(page, body)).toBe(true);
+      expect(await hasFocus(body)).toBe(true);
 
       await page.keyboard.press('Tab');
 
-      expect(await hasFocus(page, host)).toBe(true);
+      expect(await hasFocus(host)).toBe(true);
 
       await page.keyboard.press('Tab');
 
-      expect(await hasFocus(page, link)).toBe(true);
+      expect(await hasFocus(link)).toBe(true);
     });
 
     it('should lose focus on content when closed', async () => {
@@ -271,16 +271,16 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
 
       await page.keyboard.press('Tab');
 
-      expect(await hasFocus(page, host)).toBe(true);
+      expect(await hasFocus(host)).toBe(true);
 
       await page.keyboard.press('Tab');
 
-      expect(await hasFocus(page, input)).toBe(true);
+      expect(await hasFocus(input)).toBe(true);
 
       await setProperty(host, 'open', false);
       await waitForStencilLifecycle(page);
 
-      expect(await hasFocus(page, body)).toBe(true);
+      expect(await hasFocus(body)).toBe(true);
     });
   });
 

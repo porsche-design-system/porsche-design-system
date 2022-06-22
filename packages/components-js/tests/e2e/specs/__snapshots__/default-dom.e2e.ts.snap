@@ -573,6 +573,18 @@ exports[`should have no basic DOM regression for p-radio-button-wrapper 1`] = `
 </label>"
 `;
 
+exports[`should have no basic DOM regression for p-segmented-control 1`] = `
+"<slot>
+</slot>"
+`;
+
+exports[`should have no basic DOM regression for p-segmented-control-item 1`] = `
+"<button type=\\"button\\" aria-pressed=\\"true\\">
+  <slot>
+  </slot>
+</button>"
+`;
+
 exports[`should have no basic DOM regression for p-select-wrapper 1`] = `
 "<div class=\\"root\\">
   <label class=\\"label\\">
