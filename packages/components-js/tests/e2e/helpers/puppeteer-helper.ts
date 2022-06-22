@@ -259,6 +259,7 @@ export const hasFocus = (element: ElementHandle): Promise<boolean> =>
 
 const consoleMessages: ConsoleMessage[] = [];
 
+// Use to track console errors, excluding custom thrown errors
 export const initConsoleObserver = (page: Page): void => {
   consoleMessages.length = 0; // reset
 
@@ -273,6 +274,17 @@ export const initConsoleObserver = (page: Page): void => {
   });
 };
 export const getConsoleErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;
+
+const thrownErrors: string[] = [];
+
+// Use to track custom thrown errors
+export const initPageErrorObserver = (page: Page): void => {
+  page.on('pageerror', function (error) {
+    thrownErrors.push(error.toString());
+  });
+};
+
+export const getPageThrownErrorsAmount = () => thrownErrors.length;
 
 const BASE_URL = 'http://localhost:8575';
 
@@ -293,9 +305,10 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
   };
 
   const buildParentMarkup = (markup: string, { requiredParent }: ComponentMeta): string => {
-    if (requiredParent) {
-      const markupWithParent = `<${requiredParent}>${markup}</${requiredParent}>`;
-      return buildParentMarkup(markupWithParent, getComponentMeta(requiredParent));
+    const [firstRequiredParent] = requiredParent;
+    if (firstRequiredParent) {
+      const markupWithParent = `<${firstRequiredParent}>${markup}</${firstRequiredParent}>`;
+      return buildParentMarkup(markupWithParent, getComponentMeta(firstRequiredParent));
     } else {
       return markup;
     }
@@ -354,4 +367,6 @@ export const expectToSkipFocusOnComponent = async (page: Page, component: Elemen
   expect(await getActiveElementId(page)).toBe('before');
 };
 
-export const getOffsetWidth = (element: ElementHandle): Promise<number> => getProperty(element, 'offsetWidth');
+export const getScrollLeft = (element: ElementHandle): Promise<number> => getProperty<number>(element, 'scrollLeft');
+export const getOffsetLeft = (element: ElementHandle): Promise<number> => getProperty<number>(element, 'offsetLeft');
+export const getOffsetWidth = (element: ElementHandle): Promise<number> => getProperty<number>(element, 'offsetWidth');

@@ -36,7 +36,6 @@ export const getComponentCss = (
       height: 'inherit',
     },
     'scroll-area': {
-      position: 'relative',
       height: 'inherit',
       boxSizing: 'border-box',
       padding: pxToRemWithUnit(4),
@@ -54,7 +53,6 @@ export const getComponentCss = (
     'scroll-wrapper': {
       position: 'relative',
       display: 'inline-block',
-      padding: '0',
       minWidth: '100%',
     },
     trigger: {

@@ -1,5 +1,4 @@
 import {
-  getClickedSegmentedControlItem,
   getItemMaxWidth,
   SegmentedControlBackgroundColor,
   syncItemsProps,
@@ -164,31 +163,5 @@ describe('syncItemsProps()', () => {
     expect(spy).toBeCalledTimes(2);
     expect(spy.mock.calls[0][0]).toEqual(child1); // toHaveBeenNthCalledWith doesn't work
     expect(spy.mock.calls[1][0]).toEqual(child2);
-  });
-});
-
-describe('getClickedSegmentedControlItem()', () => {
-  const host = document.createElement('p-segmented-control');
-  const prefixedHost = document.createElement('some-prefix-p-segmented-control');
-  const div = document.createElement('div');
-  const span = document.createElement('span');
-  const slot = document.createElement('slot');
-  const p = document.createElement('p');
-
-  it('should return undefined if no p-segmented-control-item is found', () => {
-    expect(getClickedSegmentedControlItem(host, [host])).toBeUndefined();
-    expect(getClickedSegmentedControlItem(host, [div, span, slot, p])).toBeUndefined();
-  });
-
-  it('should return p-segmented-control-item if it is found', () => {
-    const segmentedControlItem = document.createElement('p-segmented-control-item');
-    expect(getClickedSegmentedControlItem(host, [div, span, segmentedControlItem, slot, p])).toBe(segmentedControlItem);
-  });
-
-  it('should return prefixed p-segmented-control-item if it is found', () => {
-    const prefixedSegmentedControlItem = document.createElement('some-prefix-p-segmented-control-item');
-    expect(getClickedSegmentedControlItem(prefixedHost, [div, span, prefixedSegmentedControlItem, slot, p])).toBe(
-      prefixedSegmentedControlItem
-    );
   });
 });
