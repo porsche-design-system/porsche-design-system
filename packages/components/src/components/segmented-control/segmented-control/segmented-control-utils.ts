@@ -9,7 +9,6 @@ import {
   LABEL_FONT,
 } from '../segmented-control-item/segmented-control-item-styles';
 import { fontFamily } from '@porsche-design-system/utilities-v2';
-import { getPrefixedTagNames } from '../../../utils';
 import { forceUpdate } from '@stencil/core';
 
 export const SEGMENTED_CONTROL_BACKGROUND_COLORS = ['background-surface', 'background-default'] as const;
@@ -73,14 +72,4 @@ export const syncItemsProps = (
       forceUpdate(item);
     }
   );
-};
-
-export const getClickedSegmentedControlItem = (
-  host: HTMLElement,
-  targets: EventTarget[]
-): HTMLElement & SegmentedControlItem => {
-  const { pSegmentedControlItem } = getPrefixedTagNames(host);
-  return targets.find(
-    (x: HTMLElement) => x.tagName?.toLowerCase() === pSegmentedControlItem
-  ) as unknown as HTMLElement & SegmentedControlItem;
 };

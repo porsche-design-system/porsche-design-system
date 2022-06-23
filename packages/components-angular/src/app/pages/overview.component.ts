@@ -227,6 +227,29 @@ import { componentsReady } from '@porsche-design-system/components-angular';
         <div class="playground light" title="should render default tag-dismissible">
           <p-tag-dismissible>Some Tag</p-tag-dismissible>
         </div>
+
+        <div class="playground light" title="should render default segmented-control">
+          <p-segmented-control [value]="'s'">
+            <p-segmented-control-item [value]="'s'">S</p-segmented-control-item>
+            <p-segmented-control-item [value]="'m'">M</p-segmented-control-item>
+            <p-segmented-control-item [value]="'l'">L</p-segmented-control-item>
+            <p-segmented-control-item [value]="'xl'">XL</p-segmented-control-item>
+          </p-segmented-control>
+        </div>
+
+        <div class="playground light" title="should render default stepper-horizontal">
+          <p-stepper-horizontal>
+            <p-stepper-horizontal-item [state]="'current'">Step 1</p-stepper-horizontal-item>
+            <p-stepper-horizontal-item>Step 2</p-stepper-horizontal-item>
+            <p-stepper-horizontal-item>Step 3</p-stepper-horizontal-item>
+            <p-stepper-horizontal-item>Step 4</p-stepper-horizontal-item>
+            <p-stepper-horizontal-item>Step 5</p-stepper-horizontal-item>
+            <p-stepper-horizontal-item>Step 6</p-stepper-horizontal-item>
+            <p-stepper-horizontal-item>Step 7</p-stepper-horizontal-item>
+            <p-stepper-horizontal-item>Step 8</p-stepper-horizontal-item>
+            <p-stepper-horizontal-item>Step 9</p-stepper-horizontal-item>
+          </p-stepper-horizontal>
+        </div>
       </div>
 
       <div style="flex: 1">
@@ -417,6 +440,29 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 
         <div class="playground light" title="should render default tag-dismissible with custom prefix">
           <my-prefix-p-tag-dismissible p-tag-dismissible>Some Tag</my-prefix-p-tag-dismissible>
+        </div>
+
+        <div class="playground light" title="should render default segmented-control with custom prefix">
+          <my-prefix-p-segmented-control p-segmented-control [value]="'s'">
+            <my-prefix-p-segmented-control-item p-segmented-control-item [value]="'s'">S</my-prefix-p-segmented-control-item>
+            <my-prefix-p-segmented-control-item p-segmented-control-item [value]="'m'">M</my-prefix-p-segmented-control-item>
+            <my-prefix-p-segmented-control-item p-segmented-control-item [value]="'l'">L</my-prefix-p-segmented-control-item>
+            <my-prefix-p-segmented-control-item p-segmented-control-item [value]="'xl'">XL</my-prefix-p-segmented-control-item>
+          </my-prefix-p-segmented-control>
+        </div>
+
+        <div class="playground light" title="should render default stepper-horizontal with custom prefix">
+          <my-prefix-p-stepper-horizontal p-stepper-horizontal>
+            <my-prefix-p-stepper-horizontal-item p-stepper-horizontal-item [state]="'current'">Step 1</my-prefix-p-stepper-horizontal-item>
+            <my-prefix-p-stepper-horizontal-item p-stepper-horizontal-item>Step 2</my-prefix-p-stepper-horizontal-item>
+            <my-prefix-p-stepper-horizontal-item p-stepper-horizontal-item>Step 3</my-prefix-p-stepper-horizontal-item>
+            <my-prefix-p-stepper-horizontal-item p-stepper-horizontal-item>Step 4</my-prefix-p-stepper-horizontal-item>
+            <my-prefix-p-stepper-horizontal-item p-stepper-horizontal-item>Step 5</my-prefix-p-stepper-horizontal-item>
+            <my-prefix-p-stepper-horizontal-item p-stepper-horizontal-item>Step 6</my-prefix-p-stepper-horizontal-item>
+            <my-prefix-p-stepper-horizontal-item p-stepper-horizontal-item>Step 7</my-prefix-p-stepper-horizontal-item>
+            <my-prefix-p-stepper-horizontal-item p-stepper-horizontal-item>Step 8</my-prefix-p-stepper-horizontal-item>
+            <my-prefix-p-stepper-horizontal-item p-stepper-horizontal-item>Step 9</my-prefix-p-stepper-horizontal-item>
+          </my-prefix-p-stepper-horizontal>
         </div>
       </div>
     </div>
