@@ -1,6 +1,8 @@
 import type { Page } from 'puppeteer';
 import { baseURL, getExternalUrls, getInternalUrls } from '../helpers';
 
+const console = require('console'); // workaround for nicer logs
+
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
@@ -38,8 +40,9 @@ it('should have no exponential increase in internal urls', () => {
 it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
   'should have valid headline at %s',
   async (url, index) => {
-    process.stdout.write('\u001b[2K' + '\u001b[1G');
-    process.stdout.write(`Checking url ${index + 1}/${internalUrls.length}: ${url}`);
+    // process.stdout.write('\u001b[2K' + '\u001b[1G');
+    // process.stdout.write(`Checking url ${index + 1}/${internalUrls.length}: ${url}`);
+    console.log(`Checking url ${index + 1}/${internalUrls.length}: ${url}`);
 
     const response = await page.goto(baseURL + url, { waitUntil: 'domcontentloaded' });
 
