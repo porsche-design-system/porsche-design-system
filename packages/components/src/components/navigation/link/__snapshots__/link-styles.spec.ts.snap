@@ -638,7 +638,7 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
     color: #fff;
     background-color: currentColor;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover > .label, .root:hover > .icon, .root:active > .label, .root:active > .icon {
     color: #000;
   }
 }
@@ -727,7 +727,7 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
     color: #151718;
     background-color: currentColor;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover > .label, .root:hover > .icon, .root:active > .label, .root:active > .icon {
     color: #fff;
   }
 }

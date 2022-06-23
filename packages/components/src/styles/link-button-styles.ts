@@ -225,7 +225,7 @@ export const getLinkButtonStyles = (
             color: primaryColorHover,
             ...(isTertiary && {
               backgroundColor: 'currentColor',
-              '& $label, & $icon': {
+              '& > $label, & > $icon': {
                 color: isDarkTheme ? lightThemeBaseColor : darkThemeBaseColor,
               },
             }),
