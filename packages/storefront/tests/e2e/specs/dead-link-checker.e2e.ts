@@ -36,7 +36,7 @@ it('should have no exponential increase in internal urls', () => {
 });
 
 it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
-  'should have have valid headline at %s',
+  'should have valid headline at %s',
   async (url, index) => {
     process.stdout.write('\u001b[2K' + '\u001b[1G');
     process.stdout.write(`Checking url ${index + 1}/${internalUrls.length}: ${url}`);
