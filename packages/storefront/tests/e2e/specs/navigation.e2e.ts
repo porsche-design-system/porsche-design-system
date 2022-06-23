@@ -5,7 +5,6 @@ import { paramCase } from 'change-case';
 import * as path from 'path';
 import * as fs from 'fs';
 import { getConsoleErrorsAmount, initConsoleObserver } from '../helpers/puppeteer-helper';
-import { a11yAnalyze, a11yFinalize } from '../helpers/axe-helper';
 
 let browserPage: Page;
 
@@ -18,8 +17,6 @@ beforeEach(async () => {
   await browserPage.evaluate(() => (window as any).componentsReady());
 });
 afterEach(async () => await browserPage.close());
-
-afterAll(async () => await a11yFinalize());
 
 const isLinkActive = (element: ElementHandle | null): Promise<boolean> =>
   element.evaluate((el) => el.className.includes('router-link-active'));
@@ -67,8 +64,6 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
         expect(await hasPageObjectObject(browserPage), 'should not contain [object Object] on page').toBe(false);
         expect(getConsoleErrorsAmount(), `Errors on ${category}/${page}`).toBe(0);
 
-        await a11yAnalyze(browserPage);
-
         if (!Array.isArray(tabs)) {
           for (const [index, tab] of Object.entries(Object.keys(tabs))) {
             // console.log(`${category} > ${page} > ${tab}`);
@@ -92,8 +87,6 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
               false
             );
             expect(getConsoleErrorsAmount(), `Errors on ${category}/${page} in tab ${tab}`).toBe(0);
-
-            await a11yAnalyze(browserPage);
           }
         }
       });
