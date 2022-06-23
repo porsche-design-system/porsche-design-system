@@ -12,7 +12,7 @@ fs.readdirSync(AXE_RESULTS_DIR)
 
 // We're using `@axe-core/puppeteer` over `@axe-devtools/puppeteer` since result wise they are identical.
 // The only potential benefit of `@axe-devtools/reporter` is the possibility to create html reports.
-export const a11yAnalyze = async (page: Page) => {
+export const a11yAnalyze = async (page: Page, suffix?: string) => {
   const pageUrl = page.url();
 
   // docs: https://github.com/dequelabs/axe-core-npm/tree/develop/packages/puppeteer
@@ -24,7 +24,7 @@ export const a11yAnalyze = async (page: Page) => {
   const { length: amountOfViolations } = result.violations;
 
   if (amountOfViolations > 0) {
-    const testId = pageUrl.replace(baseURL + '/', '').replace(/\//g, '-') || 'root';
+    const testId = (pageUrl.replace(baseURL + '/', '').replace(/\//g, '-') || 'root') + (suffix ? `-${suffix}` : '');
     fs.writeFileSync(path.resolve(AXE_RESULTS_DIR, 'a11y-' + testId + '.json'), JSON.stringify(result, null, 2));
   }
 
