@@ -9,7 +9,7 @@ import {
   unobserveChildren,
 } from '../../../../utils';
 import { getComponentCss } from './stepper-horizontal-styles';
-import type { StepChangeEvent, StepperHorizontalHostHtmlElement } from './stepper-horizontal-utils';
+import type { StepChangeEvent } from './stepper-horizontal-utils';
 import {
   getIndexOfStepWithStateCurrent,
   syncItemsProps,
@@ -24,7 +24,7 @@ import { getScrollerElements } from '../../../common/scroller/scroller-utils';
   shadow: true,
 })
 export class StepperHorizontal {
-  @Element() public host!: StepperHorizontalHostHtmlElement;
+  @Element() public host!: HTMLElement;
 
   /** Adapts the tag color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -41,8 +41,6 @@ export class StepperHorizontal {
   public connectedCallback(): void {
     attachComponentCss(this.host, getComponentCss);
     this.defineStepperHorizontalItemElements();
-    // Initial validation
-    this.validateComponent();
 
     observeChildren(this.host, () => {
       this.defineStepperHorizontalItemElements();
@@ -53,6 +51,11 @@ export class StepperHorizontal {
     });
   }
 
+  public componentWillLoad(): void {
+    // Initial validation
+    this.validateComponent();
+  }
+
   public componentWillRender(): void {
     syncItemsProps(this.host, this.theme);
   }
@@ -60,11 +63,6 @@ export class StepperHorizontal {
   public componentDidLoad(): void {
     this.defineScrollerElements();
     this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
-
-    this.host.stateChanged = () => {
-      throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
-      this.scrollIntoView();
-    };
 
     // Sometimes lifecycle gets called after disconnectedCallback()
     if (this.scrollAreaElement && this.prevGradientElement) {
@@ -82,6 +80,11 @@ export class StepperHorizontal {
         isSmooth: false,
       };
     }
+  }
+
+  public componentDidUpdate(): void {
+    throwIfMultipleCurrentStates(this.host, this.stepperHorizontalItems);
+    this.scrollIntoView();
   }
 
   public disconnectedCallback(): void {
