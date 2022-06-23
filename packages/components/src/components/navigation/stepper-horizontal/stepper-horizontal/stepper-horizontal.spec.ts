@@ -26,7 +26,7 @@ describe('connectedCallback', () => {
 
     component.connectedCallback();
 
-    expect(spy).toBeCalledWith(component.host, expect.anything());
+    expect(spy).toBeCalledWith(component.host, expect.any(Function));
   });
 });
 
@@ -132,7 +132,7 @@ describe('componentDidUpdate', () => {
 
     component.componentDidUpdate();
 
-    expect(spy).toBeCalledWith(component.host, expect.anything());
+    expect(spy).toBeCalledWith(component.host, expect.any(Array));
   });
 });
 
