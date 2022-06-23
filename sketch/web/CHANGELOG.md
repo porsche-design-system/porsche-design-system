@@ -9,6 +9,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [2.5.0] - 2022-06-22
+
+#### Added
+
+| Type      | Web Library     |
+| --------- | --------------- |
+| Component | Stepper Horizontal |
+| Component | Segmented Control |
+
 ### [2.4.0] - 2022-04-26
 
 #### Added

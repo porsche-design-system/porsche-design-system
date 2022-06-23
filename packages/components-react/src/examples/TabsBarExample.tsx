@@ -35,6 +35,7 @@ export const TabsBarExamplePage = (): JSX.Element => {
 
       {tabPanels.map((content, i) => (
         <div
+          key={i}
           role="tabpanel"
           id={`tab-panel-${i}`}
           hidden={tabIndex !== i}

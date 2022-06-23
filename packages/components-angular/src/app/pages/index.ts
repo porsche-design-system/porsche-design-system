@@ -65,6 +65,7 @@ import { SegmentedControlComponent } from './segmented-control.component';
 import { SelectWrapperComponent } from './select-wrapper.component';
 import { SelectWrapperSkeletonComponent } from './select-wrapper-skeleton.component';
 import { SpinnerComponent } from './spinner.component';
+import { StepperHorizontalComponent } from './stepper-horizontal.component';
 import { SwitchComponent } from './switch.component';
 import { TabsComponent } from './tabs.component';
 import { TabsBarComponent } from './tabs-bar.component';
@@ -130,6 +131,7 @@ export const generatedPages = [
   SelectWrapperComponent,
   SelectWrapperSkeletonComponent,
   SpinnerComponent,
+  StepperHorizontalComponent,
   SwitchComponent,
   TabsComponent,
   TabsBarComponent,
@@ -357,6 +359,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Spinner',
     path: 'spinner',
     component: SpinnerComponent,
+  },
+  {
+    name: 'Stepper Horizontal',
+    path: 'stepper-horizontal',
+    component: StepperHorizontalComponent,
   },
   {
     name: 'Switch',
