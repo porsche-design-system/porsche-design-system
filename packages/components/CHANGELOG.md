@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Fixed
 
 - `Stepper Horizontal Item` `state` validation
+- `Button`, `Link` and `Tag Dismissible` Safari bug where wrong colors on hover were shown
 
 ### [2.13.0-rc.4] - 2022-06-22
 

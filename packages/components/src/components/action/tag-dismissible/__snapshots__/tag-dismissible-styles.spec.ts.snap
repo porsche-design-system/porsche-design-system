@@ -47,7 +47,7 @@ button:focus:not(:focus-visible)::before {
   font-style: normal !important;
 }
 @media(hover:hover) {
-  button:hover .icon {
+  button:hover > .icon {
     color: #d5001c;
   }
   button:hover:focus::before {
@@ -122,7 +122,7 @@ button:focus:not(:focus-visible)::before {
   font-style: normal !important;
 }
 @media(hover:hover) {
-  button:hover .icon {
+  button:hover > .icon {
     color: #d5001c;
   }
   button:hover:focus::before {
@@ -204,7 +204,7 @@ button:focus:not(:focus-visible)::before {
   font-style: normal !important;
 }
 @media(hover:hover) {
-  button:hover .icon {
+  button:hover > .icon {
     color: #d5001c;
   }
   button:hover:focus::before {
