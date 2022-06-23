@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/utilities",
-  "version": "5.3.1-rc.0",
+  "version": "5.3.1",
   "description": "This package contains helpful SCSS functions, mixins and variables. Additionally, JavaScript variables, functions and helpers are provided.",
   "keywords": [
     "porsche",

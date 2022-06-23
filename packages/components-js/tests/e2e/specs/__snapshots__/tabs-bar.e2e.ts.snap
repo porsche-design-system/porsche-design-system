@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`tabs-bar accessibility should expose correct initial accessibility tree of tablist 1`] = `
+exports[`accessibility should expose correct initial accessibility tree of tablist 1`] = `
 Object {
   "children": Array [
     Object {
@@ -195,7 +195,7 @@ Object {
 }
 `;
 
-exports[`tabs-bar accessibility should render correct accessibility tree if activeTabIndex is removed  1`] = `
+exports[`accessibility should render correct accessibility tree if activeTabIndex is removed  1`] = `
 Object {
   "children": Array [
     Object {
@@ -390,7 +390,7 @@ Object {
 }
 `;
 
-exports[`tabs-bar accessibility should render correct accessibility tree if activeTabIndex is set  1`] = `
+exports[`accessibility should render correct accessibility tree if activeTabIndex is set  1`] = `
 Object {
   "children": Array [
     Object {
@@ -586,7 +586,7 @@ Object {
 }
 `;
 
-exports[`tabs-bar accessibility should render correct accessibility tree on focus change and enter press: After change 1`] = `
+exports[`accessibility should render correct accessibility tree on focus change and enter press: After change 1`] = `
 Object {
   "children": Array [
     Object {
@@ -783,7 +783,7 @@ Object {
 }
 `;
 
-exports[`tabs-bar accessibility should render correct accessibility tree on focus change and enter press: Before change 1`] = `
+exports[`accessibility should render correct accessibility tree on focus change and enter press: Before change 1`] = `
 Object {
   "children": Array [
     Object {
@@ -979,7 +979,7 @@ Object {
 }
 `;
 
-exports[`tabs-bar accessibility should render correct accessibility tree on scrollArea click: After click 1`] = `
+exports[`accessibility should render correct accessibility tree on scrollArea click: After click 1`] = `
 Object {
   "children": Array [
     Object {
@@ -1185,7 +1185,7 @@ Object {
 }
 `;
 
-exports[`tabs-bar accessibility should render correct accessibility tree on scrollArea click: Before click 1`] = `
+exports[`accessibility should render correct accessibility tree on scrollArea click: Before click 1`] = `
 Object {
   "children": Array [
     Object {

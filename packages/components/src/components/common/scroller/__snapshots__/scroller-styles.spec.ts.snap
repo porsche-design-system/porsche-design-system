@@ -11,7 +11,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   height: inherit;
 }
 .scroll-area {
-  position: relative;
   height: inherit;
   box-sizing: border-box;
   padding: 0.25rem;
@@ -27,7 +26,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 .scroll-wrapper {
   position: relative;
   display: inline-block;
-  padding: 0;
   min-width: 100%;
 }
 .trigger {
@@ -95,7 +93,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   height: inherit;
 }
 .scroll-area {
-  position: relative;
   height: inherit;
   box-sizing: border-box;
   padding: 0.25rem;
@@ -111,7 +108,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 .scroll-wrapper {
   position: relative;
   display: inline-block;
-  padding: 0;
   min-width: 100%;
 }
 .trigger {
@@ -182,7 +178,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   height: inherit;
 }
 .scroll-area {
-  position: relative;
   height: inherit;
   box-sizing: border-box;
   padding: 0.25rem;
@@ -198,7 +193,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 .scroll-wrapper {
   position: relative;
   display: inline-block;
-  padding: 0;
   min-width: 100%;
 }
 .trigger {
@@ -266,7 +260,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   height: inherit;
 }
 .scroll-area {
-  position: relative;
   height: inherit;
   box-sizing: border-box;
   padding: 0.25rem;
@@ -282,7 +275,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 .scroll-wrapper {
   position: relative;
   display: inline-block;
-  padding: 0;
   min-width: 100%;
 }
 .trigger {
@@ -350,7 +342,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   height: inherit;
 }
 .scroll-area {
-  position: relative;
   height: inherit;
   box-sizing: border-box;
   padding: 0.25rem;
@@ -366,7 +357,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 .scroll-wrapper {
   position: relative;
   display: inline-block;
-  padding: 0;
   min-width: 100%;
 }
 .trigger {
@@ -434,7 +424,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   height: inherit;
 }
 .scroll-area {
-  position: relative;
   height: inherit;
   box-sizing: border-box;
   padding: 0.25rem;
@@ -450,7 +439,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 .scroll-wrapper {
   position: relative;
   display: inline-block;
-  padding: 0;
   min-width: 100%;
 }
 .trigger {
@@ -518,7 +506,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   height: inherit;
 }
 .scroll-area {
-  position: relative;
   height: inherit;
   box-sizing: border-box;
   padding: 0.25rem;
@@ -534,7 +521,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 .scroll-wrapper {
   position: relative;
   display: inline-block;
-  padding: 0;
   min-width: 100%;
 }
 .trigger {
@@ -602,7 +588,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   height: inherit;
 }
 .scroll-area {
-  position: relative;
   height: inherit;
   box-sizing: border-box;
   padding: 0.25rem;
@@ -618,7 +603,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 .scroll-wrapper {
   position: relative;
   display: inline-block;
-  padding: 0;
   min-width: 100%;
 }
 .trigger {
@@ -686,7 +670,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   height: inherit;
 }
 .scroll-area {
-  position: relative;
   height: inherit;
   box-sizing: border-box;
   padding: 0.25rem;
@@ -702,7 +685,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 .scroll-wrapper {
   position: relative;
   display: inline-block;
-  padding: 0;
   min-width: 100%;
 }
 .trigger {
@@ -770,7 +752,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   height: inherit;
 }
 .scroll-area {
-  position: relative;
   height: inherit;
   box-sizing: border-box;
   padding: 0.25rem;
@@ -786,7 +767,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 .scroll-wrapper {
   position: relative;
   display: inline-block;
-  padding: 0;
   min-width: 100%;
 }
 .trigger {

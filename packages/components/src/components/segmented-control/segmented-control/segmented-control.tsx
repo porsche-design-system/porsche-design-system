@@ -3,8 +3,9 @@ import { attachComponentCss, observeChildren, throwIfChildrenAreNotOfKind, unobs
 import { getComponentCss } from './segmented-control-styles';
 import type { Theme } from '../../../types';
 import type { SegmentedControlBackgroundColor, SegmentedControlChangeEvent } from './segmented-control-utils';
-import { getItemMaxWidth, getClickedSegmentedControlItem, syncItemsProps } from './segmented-control-utils';
+import { getItemMaxWidth, syncItemsProps } from './segmented-control-utils';
 import { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
+import { getClickedItem } from '../../../utils/dom/getClickedItem';
 
 @Component({
   tag: 'p-segmented-control',
@@ -43,7 +44,7 @@ export class SegmentedControl {
 
   public componentDidLoad(): void {
     this.host.addEventListener('click', (e) =>
-      this.updateValue(getClickedSegmentedControlItem(this.host, e.composedPath()))
+      this.updateValue(getClickedItem(this.host, 'pSegmentedControlItem', e.composedPath()))
     );
   }
 

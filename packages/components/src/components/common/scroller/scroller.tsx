@@ -4,7 +4,7 @@ import {
   getHTMLElements,
   getPrefixedTagNames,
   scrollElementTo,
-  throwIfParentIsNotOfKind,
+  throwIfParentIsNotOneOfKind,
 } from '../../../utils';
 import { getComponentCss } from './scroller-styles';
 import type { Direction, GradientColorTheme, ScrollToPosition, PrevNextButtonJssStyle } from './scroller-utils';
@@ -45,13 +45,20 @@ export class Scroller {
       this.scrollAreaElement.scrollLeft = scrollPosition;
     }
   }
-
   public connectedCallback(): void {
-    throwIfParentIsNotOfKind(this.host, 'pTabsBar');
+    throwIfParentIsNotOneOfKind(this.host, ['pTabsBar', 'pStepperHorizontal']);
   }
 
   public componentDidLoad(): void {
     this.initIntersectionObserver();
+  }
+
+  // should only update if scrollable
+  public componentShouldUpdate(_newVal, _oldVal, propName): boolean {
+    if (propName === 'scrollToPosition' && (this.isPrevHidden || this.isNextHidden)) {
+      return false;
+    }
+    return true;
   }
 
   public componentWillRender(): void {
