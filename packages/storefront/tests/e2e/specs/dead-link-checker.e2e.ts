@@ -20,18 +20,19 @@ const validateMarkdownLinks = async (): Promise<void> => {
   expect(markdownHrefsStartingWithSlash.length, 'markdownHrefsStartingWithSlash.length').toBe(0);
 };
 
-const getHeadline = async () => {
+const getHeadline = async (): Promise<string> => {
   await page.waitForSelector('.vmark > h1'), { visible: true };
   return page.$eval('.vmark > h1', (x) => x.innerHTML);
 };
 
-const getPatternHeadline = async () => {
+const getPatternHeadline = async (): Promise<string> => {
   await page.waitForSelector('html.hydrated');
   await page.waitForSelector('p-headline[tag="h1"]', { visible: true });
   return page.$eval('p-headline[tag="h1"]', (x) => x.innerHTML);
 };
 
 const internalUrls = getInternalUrls();
+const externalUrls = getExternalUrls();
 
 it('should have no exponential increase in internal urls', () => {
   expect(internalUrls.length).toBeLessThanOrEqual(240);
@@ -40,8 +41,6 @@ it('should have no exponential increase in internal urls', () => {
 it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
   'should have valid headline at %s',
   async (url, index) => {
-    // process.stdout.write('\u001b[2K' + '\u001b[1G');
-    // process.stdout.write(`Checking url ${index + 1}/${internalUrls.length}: ${url}`);
     console.log(`Checking url ${index + 1}/${internalUrls.length}: ${url}`);
 
     const response = await page.goto(baseURL + url, { waitUntil: 'domcontentloaded' });
@@ -50,8 +49,6 @@ it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
     if (url.match(/^\/assets\/.*\.\w{3,4}$/)) {
       expect(response.status()).toBe(200);
     } else {
-      await validateMarkdownLinks();
-
       const headline =
         url === '/'
           ? 'first page'
@@ -60,18 +57,17 @@ it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
           : await getHeadline();
 
       expect(headline).not.toBe('404 - Page not found');
+
+      await validateMarkdownLinks();
     }
   }
 );
-
-const externalUrls = getExternalUrls();
 
 // TODO: disabled for now flaky execution
 xit.each(externalUrls.map<[string, number]>((url, i) => [url, i]))(
   'should have valid status code at %s',
   async (url, index) => {
-    process.stdout.write('\u001b[2K' + '\u001b[1G');
-    process.stdout.write(`Checking url ${index + 1}/${externalUrls.length}: ${url}`);
+    console.log(`Checking url ${index + 1}/${externalUrls.length}: ${url}`);
 
     // TODO: why not use fetch api to retrieve response and status code?
     const response = await page.goto(url);
