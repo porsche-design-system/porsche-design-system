@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [2.13.0-rc.5] - 2022-06-23
+
 #### Fixed
 
 - `Stepper Horizontal Item` `state` validation
