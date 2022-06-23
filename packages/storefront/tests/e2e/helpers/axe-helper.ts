@@ -6,7 +6,7 @@ import { baseURL } from './';
 
 const AXE_RESULTS_DIR = './tests/e2e/results';
 fs.rmSync(AXE_RESULTS_DIR, { force: true, recursive: true });
-fs.mkdirSync(AXE_RESULTS_DIR);
+fs.mkdirSync(AXE_RESULTS_DIR, { recursive: true });
 
 // to avoid duplicate scans and errors in writing results
 const analyzedUrls: string[] = [];

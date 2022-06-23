@@ -4,7 +4,6 @@ node_modules
 /scripts/algoliaRecords.json
 /src/lib
 
-/tests/e2e/fixtures/sitemap.json
 /tests/e2e/results
 /tests/vrt/results
 
