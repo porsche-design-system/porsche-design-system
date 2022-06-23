@@ -41,7 +41,7 @@ it('should have no exponential increase in internal urls', () => {
 it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
   'should have valid headline at %s',
   async (url, index) => {
-    console.log(`Checking url ${index + 1}/${internalUrls.length}: ${url}`);
+    console.log(`dead-link-checker url ${index + 1}/${internalUrls.length}: ${url}`);
 
     const response = await page.goto(baseURL + url, { waitUntil: 'domcontentloaded' });
 
