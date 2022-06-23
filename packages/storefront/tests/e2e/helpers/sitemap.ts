@@ -91,8 +91,9 @@ const scanForUrls = async (): Promise<string[]> => {
 
   return (
     bodyHrefs
-      // add leading slash for anchor links within markdown
-      .map((x) => (!x.startsWith('http') && !x.startsWith('/') && !x.startsWith('sketch://') ? `/${x}` : x))
-      .filter((x) => !whitelistedUrls.includes(x))
+      // add leading slash for links within markdown
+      .map((url) => (!url.startsWith('http') && !url.startsWith('/') && !url.startsWith('sketch://') ? `/${url}` : url))
+      .filter((url) => !whitelistedUrls.includes(url)) // get rid of whitelisted urls
+      .filter((url) => (url.startsWith('/') ? !url.includes('#') : true)) // get rid of internal anchor links
   );
 };
