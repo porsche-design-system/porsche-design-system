@@ -1,9 +1,8 @@
 <template>
   <div class="code-block" :class="`code-block--${theme}`">
     <p-tabs-bar :theme="theme" :active-tab-index="activeTabIndex">
-      <button type="button" v-for="(framework, index) in usedFrameworks" :key="index" @click="setFramework(index)">
-        {{ framework }}
-      </button>
+      <!-- prettier-ignore -->
+      <button type="button" v-for="(framework, index) in usedFrameworks" :key="index" @click="setFramework(index)">{{ framework }}</button>
     </p-tabs-bar>
     <pre
       :class="highlightedLanguage"
