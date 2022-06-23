@@ -47,7 +47,8 @@ export const buildSitemap = async (): Promise<string[]> => {
 
     // follow internal urls only
     if (href.startsWith('/')) {
-      process.stdout.write(`Crawling url ${i + 1}/${allUrls.length}...`);
+      // process.stdout.write(`Crawling url ${i + 1}/${allUrls.length}...`);
+      console.log(`Crawling url ${i + 1}/${allUrls.length}...`);
       await page.goto(`${baseURL}${href}`, { waitUntil: 'networkidle0' });
 
       const newLinks = await scanForUrls();
