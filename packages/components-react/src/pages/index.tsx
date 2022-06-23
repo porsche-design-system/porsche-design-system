@@ -48,9 +48,11 @@ import { PaginationPage } from './Pagination';
 import { PopoverPage } from './Popover';
 import { RadioButtonWrapperPage } from './RadioButtonWrapper';
 import { RadioButtonWrapperSkeletonPage } from './RadioButtonWrapperSkeleton';
+import { SegmentedControlPage } from './SegmentedControl';
 import { SelectWrapperPage } from './SelectWrapper';
 import { SelectWrapperSkeletonPage } from './SelectWrapperSkeleton';
 import { SpinnerPage } from './Spinner';
+import { StepperHorizontalPage } from './StepperHorizontal';
 import { SwitchPage } from './Switch';
 import { TabsPage } from './Tabs';
 import { TabsBarPage } from './TabsBar';
@@ -259,6 +261,11 @@ export const generatedRoutes: RouteType[] = [
     element: <RadioButtonWrapperSkeletonPage />,
   },
   {
+    name: 'Segmented Control',
+    path: '/segmented-control',
+    element: <SegmentedControlPage />,
+  },
+  {
     name: 'Select Wrapper',
     path: '/select-wrapper',
     element: <SelectWrapperPage />,
@@ -272,6 +279,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Spinner',
     path: '/spinner',
     element: <SpinnerPage />,
+  },
+  {
+    name: 'Stepper Horizontal',
+    path: '/stepper-horizontal',
+    element: <StepperHorizontalPage />,
   },
   {
     name: 'Switch',

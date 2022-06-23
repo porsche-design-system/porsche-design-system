@@ -40,18 +40,21 @@ button:focus::before {
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
 }
-button:hover:focus::before {
-  border-color: #d5001c;
-}
-button:hover .icon {
-  color: #d5001c;
-}
 ::slotted(strong), ::slotted(b) {
   font-weight: 700 !important;
 }
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
 }
+@media(hover:hover) {
+  button:hover > .icon {
+    color: #d5001c;
+  }
+  button:hover:focus::before {
+    border-color: #d5001c;
+  }
+}
+
 .icon {
   position: absolute;
   top: 50%;
@@ -112,18 +115,21 @@ button:focus::before {
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
 }
-button:hover:focus::before {
-  border-color: #d5001c;
-}
-button:hover .icon {
-  color: #d5001c;
-}
 ::slotted(strong), ::slotted(b) {
   font-weight: 700 !important;
 }
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
 }
+@media(hover:hover) {
+  button:hover > .icon {
+    color: #d5001c;
+  }
+  button:hover:focus::before {
+    border-color: #d5001c;
+  }
+}
+
 .label {
   display: block;
   margin-bottom: -0.25rem;
@@ -191,18 +197,21 @@ button:focus::before {
 button:focus:not(:focus-visible)::before {
   border-color: transparent;
 }
-button:hover:focus::before {
-  border-color: #d5001c;
-}
-button:hover .icon {
-  color: #d5001c;
-}
 ::slotted(strong), ::slotted(b) {
   font-weight: 700 !important;
 }
 ::slotted(em), ::slotted(i) {
   font-style: normal !important;
 }
+@media(hover:hover) {
+  button:hover > .icon {
+    color: #d5001c;
+  }
+  button:hover:focus::before {
+    border-color: #d5001c;
+  }
+}
+
 .label {
   display: block;
   margin-bottom: -0.25rem;

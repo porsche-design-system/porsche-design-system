@@ -42,6 +42,26 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-segmented-control',
+      samples: [
+        [
+          componentsJsPath + '/segmented-control-example.html',
+          componentsAngularPath + '/segmented-control-example.component.ts',
+          componentsReactPath + '/SegmentedControlExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'p-stepper-horizontal',
+      samples: [
+        [
+          componentsJsPath + '/stepper-horizontal-example.html',
+          componentsAngularPath + '/stepper-horizontal-example.component.ts',
+          componentsReactPath + '/StepperHorizontalExample.tsx',
+        ],
+      ],
+    },
+    {
       component: 'p-table',
       samples: [
         [
@@ -61,6 +81,16 @@ const generateCodeSamples = (): void => {
           componentsAngularPath + '/table-example-advanced.component.ts',
           componentsReactPath + '/TableExampleAdvanced.tsx',
           'src/data/table-data-advanced.ts', // order is important since part of filename is extracted for param types of function name
+        ],
+      ],
+    },
+    {
+      component: 'p-text-field-wrapper',
+      samples: [
+        [
+          componentsJsPath + '/text-field-wrapper-example.html',
+          componentsAngularPath + '/text-field-wrapper-example.component.ts',
+          componentsReactPath + '/TextFieldWrapperExample.tsx',
         ],
       ],
     },

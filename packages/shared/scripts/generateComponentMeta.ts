@@ -47,7 +47,7 @@ const generateComponentMeta = (): void => {
     `export type ComponentMeta = {
   isDelegatingFocus: boolean;
   isThemeable: boolean;
-  requiredParent?: TagName;
+  requiredParent?: TagName[];
   requiredChild?: string;
   requiredProps?: {
     [propName: string]: string;
@@ -65,7 +65,7 @@ const generateComponentMeta = (): void => {
   type ComponentMeta = {
     isDelegatingFocus: boolean;
     isThemeable: boolean;
-    requiredParent?: TagName;
+    requiredParent?: TagName[];
     requiredChild?: string;
     requiredProps?: {
       [propName: string]: string;
@@ -107,6 +107,15 @@ const generateComponentMeta = (): void => {
 
     const [, requiredParentCamelCase] = /throwIfParentIsNotOfKind\(.+'(\w+)'\)/.exec(source) ?? [];
     const requiredParent = requiredParentCamelCase ? (paramCase(requiredParentCamelCase) as TagName) : undefined;
+    const [, requiredParentsCamelCase] = /throwIfParentIsNotOneOfKind\(.+\[([\w,\s']+)\]\)/.exec(source) ?? [];
+    const requiredParents = requiredParentsCamelCase
+      ? (requiredParentsCamelCase
+          .replace(/['\s]/g, '')
+          .split(',')
+          .map((requiredParent) => paramCase(requiredParent)) as TagName[])
+      : [];
+
+    const allRequiredParents = [requiredParent, ...requiredParents].filter((x) => x);
 
     let [, requiredChild] = /getHTMLElementAndThrowIfUndefined\(\s*this\.host,((?:.|\s)+?)\);/.exec(source) ?? [];
     requiredChild = requiredChild?.trim();
@@ -147,7 +156,7 @@ const generateComponentMeta = (): void => {
     result[tagName] = {
       isDelegatingFocus,
       isThemeable,
-      requiredParent,
+      requiredParent: allRequiredParents,
       requiredChild,
       requiredProps,
       hasSlottedCss,

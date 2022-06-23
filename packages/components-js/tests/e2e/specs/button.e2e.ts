@@ -28,14 +28,15 @@ describe('button', () => {
   const getHost = () => selectNode(page, 'p-button');
   const getButton = () => selectNode(page, 'p-button >>> button');
 
-  const initButton = (opts?: { isLoading?: boolean }): Promise<void> => {
-    const { isLoading = false } = opts ?? {};
+  const initButton = (opts?: { isLoading?: boolean; isDisabled?: boolean }): Promise<void> => {
+    const { isLoading = false, isDisabled = false } = opts ?? {};
     const loading = isLoading ? `loading="${isLoading}"` : '';
+    const disabled = isDisabled ? `disabled="${isDisabled}"` : '';
 
     return setContentWithDesignSystem(
       page,
       `
-      <p-button ${loading}>
+      <p-button ${loading} ${disabled}>
         Some label
       </p-button>`
     );
@@ -44,7 +45,7 @@ describe('button', () => {
   const clickableTests: ClickableTests = [
     {
       state: 'disabled',
-      setContent: async () => await setContentWithDesignSystem(page, `<p-button disabled>Some label</p-button>`),
+      setContent: async () => await initButton({ isDisabled: true }),
     },
     {
       state: 'loading',
@@ -371,21 +372,21 @@ describe('button', () => {
       await initButton();
 
       const host = await getHost();
-      expect(await hasFocus(page, host)).toBe(false);
+      expect(await hasFocus(host)).toBe(false);
 
       await page.keyboard.press('Tab');
 
-      expect(await hasFocus(page, host), 'after Tab').toBe(true);
+      expect(await hasFocus(host), 'after Tab').toBe(true);
 
       await setProperty(host, 'loading', true);
       await waitForStencilLifecycle(page);
 
-      expect(await hasFocus(page, host), 'focus style on loading').toBe(true);
+      expect(await hasFocus(host), 'focus style on loading').toBe(true);
 
       await setProperty(host, 'loading', false);
       await waitForStencilLifecycle(page);
 
-      expect(await hasFocus(page, host), 'final focus style').toBe(true);
+      expect(await hasFocus(host), 'final focus style').toBe(true);
     });
   });
 
@@ -436,7 +437,7 @@ describe('button', () => {
       await expectA11yToMatchSnapshot(page, button);
     });
 
-    it('should expose correct accessibility name if label is hidden', async () => {
+    it('should expose correct accessibility name when hide-label prop is set', async () => {
       await initButton();
       const host = await getHost();
       const button = await getButton();
@@ -465,24 +466,6 @@ describe('button', () => {
       });
       await waitForStencilLifecycle(page);
       await expectA11yToMatchSnapshot(page, button, { message: 'aria-pressed attribute' });
-    });
-
-    it('should add aria-busy attribute when loading and remove it if finished', async () => {
-      await initButton();
-      const host = await getHost();
-      const button = await getButton();
-
-      expect(await getAttribute(button, 'aria-busy')).toBeNull();
-
-      await setProperty(host, 'loading', true);
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(button, 'aria-busy')).toBe('true');
-
-      await setProperty(host, 'loading', false);
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(button, 'aria-busy')).toBeNull();
     });
   });
 });

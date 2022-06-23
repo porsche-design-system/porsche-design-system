@@ -91,7 +91,6 @@ describe('accessibility', () => {
 
   it('should expose correct accessibility tree with label', async () => {
     await initTagDismissible({ withLabel: true });
-
     await expectA11yToMatchSnapshot(page, await getButton(), { interestingOnly: false });
   });
 
@@ -99,6 +98,7 @@ describe('accessibility', () => {
     await initTagDismissible({ withLabel: true });
     const host = await getHost();
     await setProperty(host, 'aria', { 'aria-label': 'Some aria-label' });
+    await waitForStencilLifecycle(page);
 
     await expectA11yToMatchSnapshot(page, await getButton(), { interestingOnly: false });
   });

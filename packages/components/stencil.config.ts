@@ -25,6 +25,7 @@ const bundles: { components: TagName[] }[] = [
   { components: ['p-button', 'p-button-group'] },
   { components: ['p-grid', 'p-grid-item'] },
   { components: ['p-flex', 'p-flex-item'] },
+  { components: ['p-segmented-control', 'p-segmented-control-item'] },
   { components: ['p-select-wrapper', 'p-select-wrapper-dropdown'] },
   {
     components: [
@@ -42,6 +43,7 @@ const bundles: { components: TagName[] }[] = [
   { components: ['p-tag', 'p-tag-dismissible'] },
   { components: ['p-text-list', 'p-text-list-item'] },
   { components: ['p-toast', 'p-toast-item'] },
+  { components: ['p-stepper-horizontal', 'p-stepper-horizontal-item'] },
 ];
 
 export const config: Config = {

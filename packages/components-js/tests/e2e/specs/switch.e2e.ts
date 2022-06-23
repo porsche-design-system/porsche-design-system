@@ -2,7 +2,6 @@ import { Page } from 'puppeteer';
 import {
   addEventListener,
   expectA11yToMatchSnapshot,
-  expectToSkipFocusOnComponent,
   getActiveElementId,
   getAttribute,
   getLifecycleStatus,
@@ -234,15 +233,15 @@ describe('switch', () => {
       const host = await getHost();
       const before = await selectNode(page, '#before');
       await before.focus();
-      expect(await hasFocus(page, host)).toBe(false);
+      expect(await hasFocus(host)).toBe(false);
       await host.focus();
-      expect(await hasFocus(page, host)).toBe(true);
+      expect(await hasFocus(host)).toBe(true);
       // Cant use ElementHandle 'host' because .blur() is not available
       await page.evaluate(() => {
         const switchElement = document.querySelector('p-switch') as HTMLElement;
         switchElement.blur();
       });
-      expect(await hasFocus(page, host)).toBe(false);
+      expect(await hasFocus(host)).toBe(false);
     });
   });
 
@@ -251,21 +250,21 @@ describe('switch', () => {
       await initSwitch();
 
       const host = await getHost();
-      expect(await hasFocus(page, host)).toBe(false);
+      expect(await hasFocus(host)).toBe(false);
 
       await page.keyboard.press('Tab');
 
-      expect(await hasFocus(page, host), 'after Tab').toBe(true);
+      expect(await hasFocus(host), 'after Tab').toBe(true);
 
       await setProperty(host, 'loading', true);
       await waitForStencilLifecycle(page);
 
-      expect(await hasFocus(page, host), 'focus style on loading').toBe(true);
+      expect(await hasFocus(host), 'focus style on loading').toBe(true);
 
       await setProperty(host, 'loading', false);
       await waitForStencilLifecycle(page);
 
-      expect(await hasFocus(page, host), 'final focus style').toBe(true);
+      expect(await hasFocus(host), 'final focus style').toBe(true);
     });
   });
 
@@ -315,42 +314,6 @@ describe('switch', () => {
       const label = () => selectNode(page, 'p-switch >>> label');
 
       await expectA11yToMatchSnapshot(page, await label(), { interestingOnly: false });
-    });
-
-    it('should expose correct accessibility tree if checked value is set programmatically', async () => {
-      await initSwitch();
-
-      const host = await getHost();
-      const button = await getButton();
-
-      await setProperty(host, 'checked', true);
-      await waitForStencilLifecycle(page);
-
-      await expectA11yToMatchSnapshot(page, button, { message: 'Checked' });
-
-      await setProperty(host, 'checked', false);
-      await waitForStencilLifecycle(page);
-
-      await expectA11yToMatchSnapshot(page, button, { message: 'Unchecked' });
-    });
-
-    it('should add aria-busy when loading is set as Attribute and remove when finished', async () => {
-      await initSwitch();
-
-      const host = await getHost();
-      const button = await getButton();
-
-      expect(await getAttribute(button, 'aria-busy')).toBeNull();
-
-      await setProperty(host, 'loading', true);
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(button, 'aria-busy')).toBe('true');
-
-      await setProperty(host, 'loading', false);
-      await waitForStencilLifecycle(page);
-
-      expect(await getAttribute(button, 'aria-busy')).toBeNull();
     });
   });
 });

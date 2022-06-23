@@ -76,6 +76,16 @@ export const routes: RouteType[] = [
     element: <fromExamples.InlineNotificationExampleActionButtonPage />,
   },
   {
+    name: 'Segmented Control Example',
+    path: '/segmented-control-example',
+    element: <fromExamples.SegmentedControlExamplePage />,
+  },
+  {
+    name: 'Stepper Horizontal Example',
+    path: '/stepper-horizontal-example',
+    element: <fromExamples.StepperHorizontalExample />,
+  },
+  {
     name: 'Table Example Basic',
     path: '/table-example-basic',
     element: <fromExamples.TableExampleBasicPage />,
@@ -94,6 +104,11 @@ export const routes: RouteType[] = [
     name: 'Tabs Bar Example',
     path: '/tabs-bar-example',
     element: <fromExamples.TabsBarExamplePage />,
+  },
+  {
+    name: 'Text Field Wrapper Example',
+    path: '/text-field-wrapper-example',
+    element: <fromExamples.TextFieldWrapperExamplePage />,
   },
   {
     name: 'Toast Example',

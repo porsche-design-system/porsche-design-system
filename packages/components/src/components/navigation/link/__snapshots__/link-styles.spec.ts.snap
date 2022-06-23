@@ -35,9 +35,6 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
 .root:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-.root:hover, .root:active {
-  color: #c4001a;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -147,6 +144,12 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
     text-indent: 0;
   }
 }
+
+@media(hover:hover) {
+  .root:hover, .root:active {
+    color: #c4001a;
+  }
+}
 "
 `;
 
@@ -185,9 +188,6 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
 .root:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-.root:hover, .root:active {
-  color: #980014;
-}
 .icon {
   position: absolute;
   width: 1.5rem;
@@ -207,7 +207,13 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media(hover:hover) {
+  .root:hover, .root:active {
+    color: #980014;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: primary, hideLabel: false, hasSlottedAnchor: true and theme: dark 1`] = `
@@ -239,12 +245,15 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
 ::slotted(a:focus) {
   outline-color: #d5001c !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #c4001a !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media(hover:hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #c4001a !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -263,9 +272,6 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   background-color: currentColor;
   color: #d5001c;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #c4001a;
 }
 .icon {
   position: absolute;
@@ -286,7 +292,13 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media(hover:hover) {
+  .root:hover, .root:active {
+    color: #c4001a;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: primary, hideLabel: false, hasSlottedAnchor: true and theme: light 1`] = `
@@ -318,12 +330,15 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
 ::slotted(a:focus) {
   outline-color: #d5001c !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #980014 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media(hover:hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #980014 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -342,9 +357,6 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   background-color: currentColor;
   color: #d5001c;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #980014;
 }
 .icon {
   position: absolute;
@@ -365,7 +377,13 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media(hover:hover) {
+  .root:hover, .root:active {
+    color: #980014;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: secondary, hideLabel: false, hasSlottedAnchor: true and theme: dark 1`] = `
@@ -397,12 +415,15 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #e0e0e0 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media(hover:hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #e0e0e0 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -421,9 +442,6 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
   background-color: currentColor;
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #e0e0e0;
 }
 .icon {
   position: absolute;
@@ -444,7 +462,13 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media(hover:hover) {
+  .root:hover, .root:active {
+    color: #e0e0e0;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: secondary, hideLabel: false, hasSlottedAnchor: true and theme: light 1`] = `
@@ -476,12 +500,15 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #151718 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media(hover:hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #151718 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -500,9 +527,6 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
   background-color: currentColor;
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #151718;
 }
 .icon {
   position: absolute;
@@ -523,7 +547,13 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media(hover:hover) {
+  .root:hover, .root:active {
+    color: #151718;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: tertiary, hideLabel: false, hasSlottedAnchor: true and theme: dark 1`] = `
@@ -555,12 +585,15 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
 ::slotted(a:focus) {
   outline-color: #fff !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #fff !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media(hover:hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #fff !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -579,13 +612,6 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
   background-color: transparent;
   color: #fff;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #fff;
-  background-color: currentColor;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #000;
 }
 .icon {
   position: absolute;
@@ -606,7 +632,17 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media(hover:hover) {
+  .root:hover, .root:active {
+    color: #fff;
+    background-color: currentColor;
+  }
+  .root:hover > .label, .root:hover > .icon, .root:active > .label, .root:active > .icon {
+    color: #000;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for variant: tertiary, hideLabel: false, hasSlottedAnchor: true and theme: light 1`] = `
@@ -638,12 +674,15 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
 ::slotted(a:focus) {
   outline-color: #323639 !important;
 }
-::slotted(a:hover:focus) {
-  outline-color: #151718 !important;
-}
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+@media(hover:hover) {
+  ::slotted(a:hover:focus) {
+    outline-color: #151718 !important;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -662,13 +701,6 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
   background-color: transparent;
   color: #323639;
   transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.root:hover, .root:active {
-  color: #151718;
-  background-color: currentColor;
-}
-.root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
-  color: #fff;
 }
 .icon {
   position: absolute;
@@ -689,5 +721,15 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
   margin: 0;
   overflow: visible;
   text-indent: 0;
-}"
+}
+@media(hover:hover) {
+  .root:hover, .root:active {
+    color: #151718;
+    background-color: currentColor;
+  }
+  .root:hover > .label, .root:hover > .icon, .root:active > .label, .root:active > .icon {
+    color: #fff;
+  }
+}
+"
 `;
