@@ -5,6 +5,7 @@ import {
   expectA11yToMatchSnapshot,
   FOCUS_PADDING,
   getAttribute,
+  getConsoleErrorsAmount,
   getLifecycleStatus,
   getOffsetLeft,
   getOffsetWidth,
@@ -28,16 +29,16 @@ afterEach(async () => await page.close());
 const clickHandlerScript = `
     <script>
     const stepper = document.querySelector('p-stepper-horizontal');
-    const steps = Array.from(document.querySelectorAll('p-stepper-horizontal-item'));
+    const stepElements = Array.from(document.querySelectorAll('p-stepper-horizontal-item'));
 
     stepper.addEventListener('stepChange', (e) => {
       const { activeStepIndex } = e.detail;
 
-      const newState = [...steps];
-      const prevStepIndex = steps.findIndex((step) => step.state === 'current');
 
-      newState[prevStepIndex].state = 'complete';
-      newState[activeStepIndex].state = 'current';
+      const prevStepIndex = stepElements.findIndex((step) => step.state === 'current');
+
+      stepElements[prevStepIndex].state = 'complete';
+      stepElements[activeStepIndex].state = 'current';
     });
     </script>`;
 
@@ -99,7 +100,7 @@ describe('validation', () => {
   });
 
   it('should throw error if a second current state is defined', async () => {
-    await initPageErrorObserver(page);
+    await initConsoleObserver(page);
 
     await initStepperHorizontal();
     const [, item2] = await getAllStepItems();
@@ -107,7 +108,25 @@ describe('validation', () => {
     await setProperty(item2, 'state', 'current');
     await waitForStencilLifecycle(page);
 
-    expect(getPageThrownErrorsAmount()).toBe(1);
+    expect(getConsoleErrorsAmount()).toBe(1);
+  });
+
+  it('should not throw error if an items state previous to the current one is set as current and the current one is set to undefined', async () => {
+    await initPageErrorObserver(page);
+    await initConsoleObserver(page);
+
+    await initStepperHorizontal({ currentStep: 3 });
+    const host = await getHost();
+
+    await host.evaluate((host: HTMLElement) => {
+      const stepperItemElements = Array.from(host.children) as any;
+      stepperItemElements[1].state = 'current';
+      stepperItemElements[2].state = undefined;
+    });
+    await waitForStencilLifecycle(page);
+
+    expect(getPageThrownErrorsAmount()).toBe(0);
+    expect(getConsoleErrorsAmount()).toBe(0);
   });
 });
 
@@ -368,22 +387,25 @@ describe('lifecycle', () => {
 
   it('should work without unnecessary round trips on prop change', async () => {
     await initStepperHorizontal({ currentStep: 0 });
-    const [step1, step2] = await getAllStepItems();
+    const host = await getHost();
 
-    await setProperty(step1, 'state', 'complete');
-    await setProperty(step2, 'state', 'current');
+    await host.evaluate((host: HTMLElement) => {
+      const stepperItemElements = Array.from(host.children) as any;
+      stepperItemElements[0].state = 'complete';
+      stepperItemElements[1].state = 'current';
+    });
+
     await waitForStencilLifecycle(page);
 
     const status = await getLifecycleStatus(page);
-
-    expect(status.componentDidUpdate['p-stepper-horizontal'], 'componentDidUpdate: p-stepper-horizontal').toBe(0);
+    expect(status.componentDidUpdate['p-stepper-horizontal'], 'componentDidUpdate: p-stepper-horizontal').toBe(1);
     expect(
       status.componentDidUpdate['p-stepper-horizontal-item'],
       'componentDidUpdate: p-stepper-horizontal-item'
-    ).toBe(2);
+    ).toBe(3);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(12);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
   });
 });
 

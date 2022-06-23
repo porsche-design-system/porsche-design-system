@@ -279,6 +279,8 @@ const thrownErrors: string[] = [];
 
 // Use to track custom thrown errors
 export const initPageErrorObserver = (page: Page): void => {
+  thrownErrors.length = 0; // reset
+
   page.on('pageerror', function (error) {
     thrownErrors.push(error.toString());
   });
