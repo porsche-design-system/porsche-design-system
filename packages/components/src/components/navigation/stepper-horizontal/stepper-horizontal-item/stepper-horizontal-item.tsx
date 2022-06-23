@@ -6,9 +6,8 @@ import {
   isStateCompleteOrWarning,
   throwIfCurrentAndDisabled,
 } from './stepper-horizontal-item-utils';
-import { attachComponentCss, getPrefixedTagNames, throwIfParentIsNotOfKind } from '../../../../utils';
+import { attachComponentCss, getPrefixedTagNames, throwIfParentIsNotOfKind, updateParent } from '../../../../utils';
 import { getComponentCss } from './stepper-horizontal-item-styles';
-import type { StepperHorizontalHostHtmlElement } from '../stepper-horizontal/stepper-horizontal-utils';
 
 @Component({
   tag: 'p-stepper-horizontal-item',
@@ -32,7 +31,7 @@ export class StepperHorizontalItem {
 
   @Watch('state')
   public onStateChange(): void {
-    (this.host.parentElement as StepperHorizontalHostHtmlElement).stateChanged();
+    updateParent(this.host);
   }
 
   public connectedCallback(): void {

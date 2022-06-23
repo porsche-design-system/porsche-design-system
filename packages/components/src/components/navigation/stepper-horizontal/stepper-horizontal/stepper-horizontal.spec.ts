@@ -17,6 +17,20 @@ describe('connectedCallback', () => {
     expect(spy).toBeCalledTimes(1);
   });
 
+  it('should call observeChildren() with correct parameters', () => {
+    const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
+
+    const component = new StepperHorizontal();
+    component.host = document.createElement('p-stepper-horizontal');
+    component.host.attachShadow({ mode: 'open' });
+
+    component.connectedCallback();
+
+    expect(spy).toBeCalledWith(component.host, expect.any(Function));
+  });
+});
+
+describe('componentWillLoad', () => {
   it('should call throwIfChildrenAreNotOfKind() with correct parameters', () => {
     const spy = jest.spyOn(throwIfChildrenAreNotOfKindUtils, 'throwIfChildrenAreNotOfKind');
 
@@ -24,7 +38,7 @@ describe('connectedCallback', () => {
     component.host = document.createElement('p-stepper-horizontal');
     component.host.attachShadow({ mode: 'open' });
 
-    component.connectedCallback();
+    component.componentWillLoad();
 
     expect(spy).toBeCalledWith(component.host, 'pStepperHorizontalItem');
   });
@@ -36,7 +50,7 @@ describe('connectedCallback', () => {
     component.host = document.createElement('p-stepper-horizontal');
     component.host.attachShadow({ mode: 'open' });
 
-    component.connectedCallback();
+    component.componentWillLoad();
 
     expect(spy).toBeCalledWith(component.host, 9);
   });
@@ -48,19 +62,7 @@ describe('connectedCallback', () => {
     component.host = document.createElement('p-stepper-horizontal');
     component.host.attachShadow({ mode: 'open' });
 
-    component.connectedCallback();
-
-    expect(spy).toBeCalledWith(component.host, expect.anything());
-  });
-
-  it('should call observeChildren() with correct parameters', () => {
-    const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
-
-    const component = new StepperHorizontal();
-    component.host = document.createElement('p-stepper-horizontal');
-    component.host.attachShadow({ mode: 'open' });
-
-    component.connectedCallback();
+    component.componentWillLoad();
 
     expect(spy).toBeCalledWith(component.host, expect.anything());
   });
@@ -117,6 +119,20 @@ describe('componentWillRender', () => {
     } catch (e) {}
 
     expect(spy).toBeCalledWith(component.host, component.theme);
+  });
+});
+
+describe('componentDidUpdate', () => {
+  it('should call throwIfMultipleCurrentStates() with correct parameters', () => {
+    const spy = jest.spyOn(stepperHorizontalUtils, 'throwIfMultipleCurrentStates');
+
+    const component = new StepperHorizontal();
+    component.host = document.createElement('p-stepper-horizontal');
+    component.host.attachShadow({ mode: 'open' });
+
+    component.componentDidUpdate();
+
+    expect(spy).toBeCalledWith(component.host, expect.any(Array));
   });
 });
 

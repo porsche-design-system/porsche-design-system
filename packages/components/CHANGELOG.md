@@ -9,7 +9,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
-### [2.13.0] - 2022-06-22
+### [2.13.0] - 2022-06-23
+
+### [2.13.0-rc.5] - 2022-06-23
+
+#### Fixed
+
+- `Stepper Horizontal Item` `state` validation
+- `Button` and `Link` with `theme="dark" variant="tertiary"` and `Tag Dismissible` bug on Safari <= v15.5 where wrong
+  colors on hover were shown
 
 ### [2.13.0-rc.4] - 2022-06-22
 
