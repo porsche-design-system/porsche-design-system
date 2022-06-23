@@ -38,7 +38,7 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
         outline: 0,
         ...getTagFocusJssStyle(baseColor, hoverColor),
         ...hoverMediaQuery({
-          '&:hover .icon': {
+          '&:hover > .icon': {
             color: hoverColor,
           },
         }),

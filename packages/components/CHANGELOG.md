@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Fixed
+
+- Safari bug where `Button`, `Link` and `Tag Dismissible` showed wrong colors on hover.
+
 ### [2.13.0-rc.4] - 2022-06-22
 
 #### Added
