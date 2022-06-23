@@ -13,11 +13,12 @@ const internalUrls = getInternalUrls().filter((url) => !url.match(/^\/assets\/.*
 it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
   'should have no accessibility issues at %s',
   async (url, index) => {
-    // process.stdout.write('\u001b[2K' + '\u001b[1G');
-    // process.stdout.write(`Checking url ${index + 1}/${internalUrls.length}: ${url}`);
     console.log(`Checking url ${index + 1}/${internalUrls.length}: ${url}`);
 
-    await page.goto(baseURL + url, { waitUntil: 'networkidle0' });
+    await page.goto(baseURL + url, { waitUntil: 'domcontentloaded' });
+    await page.waitForSelector('html.hydrated');
+    // console.log(await page.evaluate(() => (window as any).componentsReady?.()));
+
     await a11yAnalyze(page);
   }
 );
