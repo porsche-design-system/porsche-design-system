@@ -55,6 +55,8 @@ export const buildSitemap = async (): Promise<string[]> => {
     }
   }
 
+  allUrls = allUrls.sort();
+
   console.log(`Finished building sitemap.json with ${allUrls.length} urls`);
   console.log(`– Internal urls: ${allUrls.filter((link) => link.startsWith('/')).length}`);
   console.log(`– External urls: ${allUrls.filter((link) => !link.startsWith('/')).length}`);
