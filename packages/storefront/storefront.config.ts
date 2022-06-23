@@ -1,4 +1,4 @@
-import type { StorefrontConfig } from './src/models';
+import type { StorefrontConfig } from '@/models';
 
 export const ALGOLIA_APP_ID = '1NH68HJ92C';
 export const ALGOLIA_SEARCH_ONLY_KEY = '690605ee1f61d0e13c571484ecb74125';
