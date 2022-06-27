@@ -20,8 +20,7 @@
   "scripts": {
     "start": "yarn build && http-server ./www -p 4201",
     "build": "yarn clean:build && yarn build:generate && yarn build:cdn && yarn build:partial && yarn build:lib && yarn build:www",
-    "build:generate": "yarn build:generate:banners && yarn build:generate:overlays",
-    "build:generate:banners": "ts-node './scripts/generate-banners.ts'",
+    "build:generate": "yarn build:generate:overlays",
     "build:generate:overlays": "ts-node './scripts/generate-overlays.ts'",
     "build:partial": "ts-node './scripts/partial.ts'",
     "build:lib": "rollup -c rollup.config.js",
