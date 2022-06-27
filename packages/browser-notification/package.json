@@ -19,22 +19,17 @@
   "private": true,
   "scripts": {
     "start": "yarn build && http-server ./www -p 4201",
-    "build": "yarn clean:build && yarn build:generate && yarn build:cdn && yarn build:partial && yarn build:lib && yarn build:www",
-    "build:generate": "yarn build:generate:overlays",
-    "build:generate:overlays": "ts-node './scripts/generate-overlays.ts'",
-    "build:partial": "ts-node './scripts/partial.ts'",
-    "build:lib": "rollup -c rollup.config.js",
-    "build:cdn": "rollup -c rollup.config.cdn.js",
-    "postbuild:lib": "yarn partial",
-    "build:www": "mkdir -p ./www/cdn && cp -r ./public/. ./www && cp -r ./cdn/. ./www/cdn",
-    "partial": "partial=$(node -e 'console.log(require(\"./dist\").includeBanner().replace(/(\\\\[bd\\/]|&)/g, \"\\\\$1\"))') && regex='<!--PLACEHOLDER-->|<script>.*(banner|overlay)\\.min.*<\\/script>' && sed -E -e \"s@$regex@$partial@\" public/index.html > public/index.tmp.html && rm public/index.html && mv public/index.tmp.html public/index.html",
+    "build": "yarn build:generate-notification && yarn build:tmp && yarn build:cdn+dist && yarn build:www",
+    "build:generate-notification": "ts-node './scripts/generate-notification.ts'",
+    "build:tmp": "rollup -c rollup.config.cdn.js",
+    "build:cdn+dist": "ts-node './scripts/generate-cdn-dist.ts'",
+    "build:www": "rm -rf ./www && mkdir -p ./www && cp -r ./public/. ./www && cp -r ./tmp/. ./www/.",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:build": "rm -rf ./dist && rm -rf ./cdn && rm -rf ./www"
+    "clean:build": " rm -rf ./cdn && rm -rf ./dist && rm -rf ./tmp && rm -rf ./www"
   },
   "devDependencies": {
     "@porsche-design-system/prettier-config": "^1.0.0",
-    "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-typescript": "^8.3.2",
     "@types/html-minifier": "^4.0.2",
     "change-case": "^4.1.2",
