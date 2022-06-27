@@ -18,7 +18,7 @@ export const a11yAnalyze = async (page: Page, suffix?: string) => {
   // docs: https://github.com/dequelabs/axe-core-npm/tree/develop/packages/puppeteer
   const result = await new AxePuppeteer(page)
     // .include('.main') // ignore sidebar
-    .withTags(['wcag21aa']) // defaults aren't good enough: https://github.com/dequelabs/axe-core/blob/master/doc/API.md#axe-core-tags
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21aa']) // defaults aren't good enough: https://github.com/dequelabs/axe-core/blob/master/doc/API.md#axe-core-tags
     .analyze();
 
   const { length: amountOfViolations } = result.violations;
