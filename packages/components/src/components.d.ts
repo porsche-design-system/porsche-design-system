@@ -27,8 +27,11 @@ import { ModalAriaAttributes } from "./components/content/modal/modal-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/navigation/pagination/pagination-utils";
 import { PopoverDirection } from "./components/feedback/popover/popover-utils";
 import { GradientColorTheme, PrevNextButtonJssStyle, ScrollToPosition } from "./components/common/scroller/scroller-utils";
+import { SegmentedControlBackgroundColor, SegmentedControlChangeEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinner/spinner-utils";
+import { StepChangeEvent } from "./components/navigation/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
+import { StepperState } from "./components/navigation/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
 import { SwitchChangeEvent } from "./components/action/switch/switch";
 import { SortingChangeEvent, TableHeadCellSort } from "./components/content/table/table/table-utils";
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
@@ -653,7 +656,7 @@ export namespace Components {
         /**
           * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise it will be opened in the direction with most available space.
          */
-        "direction": PopoverDirection;
+        "direction"?: PopoverDirection;
     }
     interface PRadioButtonWrapper {
         /**
@@ -687,6 +690,42 @@ export namespace Components {
           * Adapts the color when used on dark background.
          */
         "theme"?: ThemeExtendedElectric;
+    }
+    interface PSegmentedControl {
+        /**
+          * Background color variations
+         */
+        "backgroundColor"?: SegmentedControlBackgroundColor;
+        /**
+          * Adapts the segmented-control color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * Sets the initial value of the segmented-control.
+         */
+        "value"?: string | number;
+    }
+    interface PSegmentedControlItem {
+        /**
+          * Disables the button. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
+          * The icon shown.
+         */
+        "icon"?: IconName;
+        /**
+          * A URL path to a custom icon.
+         */
+        "iconSource"?: string;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * The value of this item which is emitted by the parent element if it becomes selected. This property is **required**.
+         */
+        "value": string | number;
     }
     interface PSelectWrapper {
         /**
@@ -753,6 +792,22 @@ export namespace Components {
           * Adapts the spinner color depending on the theme.
          */
         "theme"?: ThemeExtendedElectricDark;
+    }
+    interface PStepperHorizontal {
+        /**
+          * Adapts the tag color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
+    interface PStepperHorizontalItem {
+        /**
+          * Disables the stepper-horizontal-item. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: StepperState;
     }
     interface PSwitch {
         /**
@@ -1184,6 +1239,18 @@ declare global {
         prototype: HTMLPScrollerElement;
         new (): HTMLPScrollerElement;
     };
+    interface HTMLPSegmentedControlElement extends Components.PSegmentedControl, HTMLStencilElement {
+    }
+    var HTMLPSegmentedControlElement: {
+        prototype: HTMLPSegmentedControlElement;
+        new (): HTMLPSegmentedControlElement;
+    };
+    interface HTMLPSegmentedControlItemElement extends Components.PSegmentedControlItem, HTMLStencilElement {
+    }
+    var HTMLPSegmentedControlItemElement: {
+        prototype: HTMLPSegmentedControlItemElement;
+        new (): HTMLPSegmentedControlItemElement;
+    };
     interface HTMLPSelectWrapperElement extends Components.PSelectWrapper, HTMLStencilElement {
     }
     var HTMLPSelectWrapperElement: {
@@ -1201,6 +1268,18 @@ declare global {
     var HTMLPSpinnerElement: {
         prototype: HTMLPSpinnerElement;
         new (): HTMLPSpinnerElement;
+    };
+    interface HTMLPStepperHorizontalElement extends Components.PStepperHorizontal, HTMLStencilElement {
+    }
+    var HTMLPStepperHorizontalElement: {
+        prototype: HTMLPStepperHorizontalElement;
+        new (): HTMLPStepperHorizontalElement;
+    };
+    interface HTMLPStepperHorizontalItemElement extends Components.PStepperHorizontalItem, HTMLStencilElement {
+    }
+    var HTMLPStepperHorizontalItemElement: {
+        prototype: HTMLPStepperHorizontalItemElement;
+        new (): HTMLPStepperHorizontalItemElement;
     };
     interface HTMLPSwitchElement extends Components.PSwitch, HTMLStencilElement {
     }
@@ -1348,9 +1427,13 @@ declare global {
         "p-popover": HTMLPPopoverElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
         "p-scroller": HTMLPScrollerElement;
+        "p-segmented-control": HTMLPSegmentedControlElement;
+        "p-segmented-control-item": HTMLPSegmentedControlItemElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-select-wrapper-dropdown": HTMLPSelectWrapperDropdownElement;
         "p-spinner": HTMLPSpinnerElement;
+        "p-stepper-horizontal": HTMLPStepperHorizontalElement;
+        "p-stepper-horizontal-item": HTMLPStepperHorizontalItemElement;
         "p-switch": HTMLPSwitchElement;
         "p-table": HTMLPTableElement;
         "p-table-body": HTMLPTableBodyElement;
@@ -2047,6 +2130,46 @@ declare namespace LocalJSX {
          */
         "theme"?: ThemeExtendedElectric;
     }
+    interface PSegmentedControl {
+        /**
+          * Background color variations
+         */
+        "backgroundColor"?: SegmentedControlBackgroundColor;
+        /**
+          * Emitted when selected element changes.
+         */
+        "onSegmentedControlChange"?: (event: CustomEvent<SegmentedControlChangeEvent>) => void;
+        /**
+          * Adapts the segmented-control color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * Sets the initial value of the segmented-control.
+         */
+        "value"?: string | number;
+    }
+    interface PSegmentedControlItem {
+        /**
+          * Disables the button. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
+          * The icon shown.
+         */
+        "icon"?: IconName;
+        /**
+          * A URL path to a custom icon.
+         */
+        "iconSource"?: string;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * The value of this item which is emitted by the parent element if it becomes selected. This property is **required**.
+         */
+        "value"?: string | number;
+    }
     interface PSelectWrapper {
         /**
           * The description text.
@@ -2112,6 +2235,26 @@ declare namespace LocalJSX {
           * Adapts the spinner color depending on the theme.
          */
         "theme"?: ThemeExtendedElectricDark;
+    }
+    interface PStepperHorizontal {
+        /**
+          * Emitted when active step is changed.
+         */
+        "onStepChange"?: (event: CustomEvent<StepChangeEvent>) => void;
+        /**
+          * Adapts the tag color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
+    interface PStepperHorizontalItem {
+        /**
+          * Disables the stepper-horizontal-item. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: StepperState;
     }
     interface PSwitch {
         /**
@@ -2436,9 +2579,13 @@ declare namespace LocalJSX {
         "p-popover": PPopover;
         "p-radio-button-wrapper": PRadioButtonWrapper;
         "p-scroller": PScroller;
+        "p-segmented-control": PSegmentedControl;
+        "p-segmented-control-item": PSegmentedControlItem;
         "p-select-wrapper": PSelectWrapper;
         "p-select-wrapper-dropdown": PSelectWrapperDropdown;
         "p-spinner": PSpinner;
+        "p-stepper-horizontal": PStepperHorizontal;
+        "p-stepper-horizontal-item": PStepperHorizontalItem;
         "p-switch": PSwitch;
         "p-table": PTable;
         "p-table-body": PTableBody;
@@ -2490,9 +2637,13 @@ declare module "@stencil/core" {
             "p-popover": LocalJSX.PPopover & JSXBase.HTMLAttributes<HTMLPPopoverElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-scroller": LocalJSX.PScroller & JSXBase.HTMLAttributes<HTMLPScrollerElement>;
+            "p-segmented-control": LocalJSX.PSegmentedControl & JSXBase.HTMLAttributes<HTMLPSegmentedControlElement>;
+            "p-segmented-control-item": LocalJSX.PSegmentedControlItem & JSXBase.HTMLAttributes<HTMLPSegmentedControlItemElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-select-wrapper-dropdown": LocalJSX.PSelectWrapperDropdown & JSXBase.HTMLAttributes<HTMLPSelectWrapperDropdownElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
+            "p-stepper-horizontal": LocalJSX.PStepperHorizontal & JSXBase.HTMLAttributes<HTMLPStepperHorizontalElement>;
+            "p-stepper-horizontal-item": LocalJSX.PStepperHorizontalItem & JSXBase.HTMLAttributes<HTMLPStepperHorizontalItemElement>;
             "p-switch": LocalJSX.PSwitch & JSXBase.HTMLAttributes<HTMLPSwitchElement>;
             "p-table": LocalJSX.PTable & JSXBase.HTMLAttributes<HTMLPTableElement>;
             "p-table-body": LocalJSX.PTableBody & JSXBase.HTMLAttributes<HTMLPTableBodyElement>;

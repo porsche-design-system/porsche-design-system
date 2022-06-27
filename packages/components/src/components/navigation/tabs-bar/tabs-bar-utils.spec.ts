@@ -3,7 +3,6 @@ import {
   determineEnableTransitionClass,
   getFocusedTabIndex,
   getPrevNextTabIndex,
-  getScrollActivePosition,
   getTransformationToActive,
   getTransformationToInactive,
   removeEnableTransitionClass,
@@ -203,46 +202,100 @@ describe('setBarStyle()', () => {
   });
 });
 
-describe('getScrollActivePosition()', () => {
-  it('should return scrollActivePosition = 16 if scrolling to last tab', () => {
-    expect(
-      getScrollActivePosition([{ offsetLeft: 20, offsetWidth: 0 }] as HTMLElement[], 'next', 0, undefined, undefined)
-    ).toBe(16);
-  });
-
-  it('should return scrollActivePosition = 8 if direction is "next", next tab is set as active', () => {
-    expect(
-      getScrollActivePosition(
-        [
-          { offsetLeft: 20, offsetWidth: 0 },
-          { offsetLeft: 0, offsetWidth: 0 },
-        ] as HTMLElement[],
-        'next',
-        0,
-        undefined,
-        20
-      )
-    ).toBe(8);
-  });
-
-  it('should return scrollActivePosition = 0 if direction is "prev" and first tab is set as active', () => {
-    expect(
-      getScrollActivePosition([{ offsetLeft: 0, offsetWidth: 0 }] as HTMLElement[], 'prev', 0, undefined, undefined)
-    ).toBe(0);
-  });
-
-  it('should return scrollActivePosition = 41 if scrolling to previous tab', () => {
-    expect(
-      getScrollActivePosition(
-        [
-          { offsetLeft: 0, offsetWidth: 0 },
-          { offsetLeft: 20, offsetWidth: 5 },
-        ] as HTMLElement[],
-        'prev',
-        1,
-        4,
-        20
-      )
-    ).toBe(41);
-  });
-});
+// TODO: Can be used when keyboard handling is improved
+// describe('getKeydownedSegmentedControlItem()', () => {
+//   const createKeydownEvent = (key: string): KeyboardEvent => new KeyboardEvent('keydown', { key });
+//
+//   const createSegmentedControlItem = (opts: {
+//     value: string;
+//     // isDisabled?: boolean;
+//   }): HTMLElement & SegmentedControlItem => {
+//     const item = document.createElement('p-segmented-control-item') as unknown as HTMLElement & SegmentedControlItem;
+//     item.id = opts.value;
+//     item.value = opts.value;
+//     // item.disabled = opts.isDisabled;
+//     return item;
+//   };
+//
+//   const children = ['a', 'b', 'c'].map((value) => createSegmentedControlItem({ value }));
+//   const [child1, child2, child3] = children;
+//   const host = document.createElement('div');
+//   host.append(...children);
+//   const childrenCollection = host.children;
+//
+//   const singleChildHost = document.createElement('div');
+//   singleChildHost.append(child1.cloneNode());
+//   const singleChildCollection = singleChildHost.children;
+//
+//   beforeEach(() => {
+//     child2.disabled = undefined;
+//   });
+//
+//   it('should return undefined for random keys', () => {
+//     ['a', 'A', 'Enter', 'Escape', 'ArrowUp', 'Up', 'ArrowDown', 'Down', 'Shift', ' '].forEach((key) => {
+//       const result = getKeydownedSegmentedControlItem(createKeydownEvent(key), 'a', childrenCollection);
+//       expect(result).toBeUndefined();
+//     });
+//   });
+//
+//   it('should return element on ArrowLeft, Left, ArrowRight and Right key', () => {
+//     ['ArrowLeft', 'Left', 'ArrowRight', 'Right'].forEach((key) => {
+//       const result = getKeydownedSegmentedControlItem(createKeydownEvent(key), 'a', childrenCollection);
+//       expect(children).toContain(result);
+//     });
+//   });
+//
+//   describe('on ArrowLeft keydown', () => {
+//     const event = createKeydownEvent('ArrowLeft');
+//
+//     it('should return item before selected item', () => {
+//       const result = getKeydownedSegmentedControlItem(event, 'b', childrenCollection);
+//       expect(result).toEqual(child1);
+//     });
+//
+//     it('should return item before selected item and skip disabled item', () => {
+//       child2.disabled = true;
+//       const result = getKeydownedSegmentedControlItem(event, 'c', childrenCollection);
+//       expect(result).toEqual(child1);
+//     });
+//
+//     it('should return last item if selected item is first', () => {
+//       const result = getKeydownedSegmentedControlItem(event, 'a', childrenCollection);
+//       expect(result).toEqual(child3);
+//     });
+//
+//     it('should return same item for single item', () => {
+//       const result1 = getKeydownedSegmentedControlItem(event, 'a', singleChildCollection);
+//       expect(result1).toEqual(child1);
+//       const result2 = getKeydownedSegmentedControlItem(event, 'a', singleChildCollection);
+//       expect(result2).toEqual(child1);
+//     });
+//   });
+//
+//   describe('on ArrowRight keydown', () => {
+//     const event = createKeydownEvent('ArrowRight');
+//
+//     it('should return item after selected item', () => {
+//       const result = getKeydownedSegmentedControlItem(event, 'b', childrenCollection);
+//       expect(result).toEqual(child3);
+//     });
+//
+//     it('should return item after selected item and skip disabled item', () => {
+//       child2.disabled = true;
+//       const result = getKeydownedSegmentedControlItem(event, 'a', childrenCollection);
+//       expect(result).toEqual(child3);
+//     });
+//
+//     it('should return first item if selected item is last', () => {
+//       const result = getKeydownedSegmentedControlItem(event, 'c', childrenCollection);
+//       expect(result).toEqual(child1);
+//     });
+//
+//     it('should return same item for single item', () => {
+//       const result1 = getKeydownedSegmentedControlItem(event, 'a', singleChildCollection);
+//       expect(result1).toEqual(child1);
+//       const result2 = getKeydownedSegmentedControlItem(event, 'a', singleChildCollection);
+//       expect(result2).toEqual(child1);
+//     });
+//   });
+// });

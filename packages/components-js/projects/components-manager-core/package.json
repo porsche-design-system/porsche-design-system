@@ -2,6 +2,7 @@
   "name": "@porsche-design-system/components-manager-core",
   "version": "0.0.0",
   "private": true,
+  "license": "UNLICENSED",
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "scripts": {

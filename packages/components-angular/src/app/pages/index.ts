@@ -61,9 +61,11 @@ import { PaginationComponent } from './pagination.component';
 import { PopoverComponent } from './popover.component';
 import { RadioButtonWrapperComponent } from './radio-button-wrapper.component';
 import { RadioButtonWrapperSkeletonComponent } from './radio-button-wrapper-skeleton.component';
+import { SegmentedControlComponent } from './segmented-control.component';
 import { SelectWrapperComponent } from './select-wrapper.component';
 import { SelectWrapperSkeletonComponent } from './select-wrapper-skeleton.component';
 import { SpinnerComponent } from './spinner.component';
+import { StepperHorizontalComponent } from './stepper-horizontal.component';
 import { SwitchComponent } from './switch.component';
 import { TabsComponent } from './tabs.component';
 import { TabsBarComponent } from './tabs-bar.component';
@@ -125,9 +127,11 @@ export const generatedPages = [
   PopoverComponent,
   RadioButtonWrapperComponent,
   RadioButtonWrapperSkeletonComponent,
+  SegmentedControlComponent,
   SelectWrapperComponent,
   SelectWrapperSkeletonComponent,
   SpinnerComponent,
+  StepperHorizontalComponent,
   SwitchComponent,
   TabsComponent,
   TabsBarComponent,
@@ -337,6 +341,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: RadioButtonWrapperSkeletonComponent,
   },
   {
+    name: 'Segmented Control',
+    path: 'segmented-control',
+    component: SegmentedControlComponent,
+  },
+  {
     name: 'Select Wrapper',
     path: 'select-wrapper',
     component: SelectWrapperComponent,
@@ -350,6 +359,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Spinner',
     path: 'spinner',
     component: SpinnerComponent,
+  },
+  {
+    name: 'Stepper Horizontal',
+    path: 'stepper-horizontal',
+    component: StepperHorizontalComponent,
   },
   {
     name: 'Switch',

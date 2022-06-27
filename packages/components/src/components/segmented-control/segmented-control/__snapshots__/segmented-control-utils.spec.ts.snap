@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getItemMaxWidth() styles of temporary elements should have correct style for tempDiv 1`] = `
+CSSStyleDeclaration {
+  "0": "position",
+  "1": "visibility",
+  "2": "padding",
+  "3": "box-sizing",
+  "4": "font",
+  "_importants": Object {
+    "box-sizing": undefined,
+    "font": undefined,
+    "padding": undefined,
+    "position": undefined,
+    "visibility": undefined,
+  },
+  "_length": 5,
+  "_onChange": [Function],
+  "_values": Object {
+    "box-sizing": "border-box",
+    "font": "sans-serif normal normal 400 normal",
+    "font-family": "sans-serif",
+    "font-style": "normal",
+    "font-variant": "normal",
+    "font-weight": "400",
+    "line-height": "normal",
+    "padding": "0px 1rem",
+    "padding-bottom": "0px",
+    "padding-left": "1rem",
+    "padding-right": "1rem",
+    "padding-top": "0px",
+    "position": "absolute",
+    "visibility": "hidden",
+  },
+}
+`;
+
+exports[`getItemMaxWidth() styles of temporary elements should have correct style for tempIcon 1`] = `
+CSSStyleDeclaration {
+  "0": "display",
+  "1": "width",
+  "2": "margin-right",
+  "_importants": Object {
+    "display": undefined,
+    "margin-right": undefined,
+    "width": undefined,
+  },
+  "_length": 3,
+  "_onChange": [Function],
+  "_values": Object {
+    "display": "inline-block",
+    "margin-right": "0.25rem",
+    "width": "1.5rem",
+  },
+}
+`;
+
+exports[`getItemMaxWidth() styles of temporary elements should have correct style for tempLabel 1`] = `
+CSSStyleDeclaration {
+  "0": "font",
+  "_importants": Object {
+    "font": undefined,
+  },
+  "_length": 1,
+  "_onChange": [Function],
+  "_values": Object {
+    "font": "sans-serif normal normal 400 normal",
+    "font-family": "sans-serif",
+    "font-style": "normal",
+    "font-variant": "normal",
+    "font-weight": "400",
+    "line-height": "normal",
+  },
+}
+`;
