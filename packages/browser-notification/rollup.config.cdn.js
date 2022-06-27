@@ -1,7 +1,5 @@
-import json from '@rollup/plugin-json';
 import { terser } from 'rollup-plugin-terser';
 import typescript from '@rollup/plugin-typescript';
-import pkg from './package.json';
 
 const outputConfig = {
   esModule: false,
@@ -10,52 +8,39 @@ const outputConfig = {
   strict: false,
 };
 
+const inputDir = './src';
+const outputDir = './tmp';
+
 export default [
   {
-    input: 'src/banners/init-banner.ts',
+    input: `${inputDir}/browser-support/browser-support-loader.ts`,
     output: {
       ...outputConfig,
-      file: `./tmp/init-banner.min.${pkg.version}.js`,
-    },
-    plugins: [typescript(), json(), terser()],
-  },
-  {
-    input: 'src/overlays/init-overlay.ts',
-    output: {
-      ...outputConfig,
-      file: `./tmp/init-overlay.min.${pkg.version}.js`,
-    },
-    plugins: [typescript(), json(), terser()],
-  },
-  {
-    input: 'src/overlays/init-cookie-overlay.ts',
-    output: {
-      ...outputConfig,
-      file: `./tmp/init-cookie-overlay.min.${pkg.version}.js`,
-    },
-    plugins: [typescript(), json(), terser()],
-  },
-  {
-    input: 'src/banners/banner.ts',
-    output: {
-      ...outputConfig,
-      file: `./cdn/banner.min.${pkg.version}.js`,
+      file: `${outputDir}/browser-support-loader.min.js`,
     },
     plugins: [typescript(), terser()],
   },
   {
-    input: 'src/overlays/overlay.ts',
+    input: `${inputDir}/browser-support/browser-support.ts`,
     output: {
       ...outputConfig,
-      file: `./cdn/overlay.min.${pkg.version}.js`,
+      file: `${outputDir}/browser-support.min.js`,
     },
     plugins: [typescript(), terser()],
   },
   {
-    input: 'src/overlays/cookie-overlay.ts',
+    input: `${inputDir}/cookie-support/cookie-support-loader.ts`,
     output: {
       ...outputConfig,
-      file: `./cdn/cookie-overlay.min.${pkg.version}.js`,
+      file: `${outputDir}/cookie-support-loader.min.js`,
+    },
+    plugins: [typescript(), terser()],
+  },
+  {
+    input: `${inputDir}/cookie-support/cookie-support.ts`,
+    output: {
+      ...outputConfig,
+      file: `${outputDir}/cookie-support.min.js`,
     },
     plugins: [typescript(), terser()],
   },
