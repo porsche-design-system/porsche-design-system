@@ -23,7 +23,6 @@
 ## ARIA attributes and states
 
 Through the `aria` property you have the possibility to provide additional **ARIA** attributes to the component.
-
 <Playground :markup="accessibility" :config="config"></Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
