@@ -113,36 +113,25 @@ export const setBarStyle = (
   setAttribute(barElement, 'style', transformation);
 };
 
-export const FOCUS_PADDING_WIDTH = 4;
-
-export const getScrollActivePosition = (
-  elements: HTMLElement[],
-  direction: Direction,
-  activeElementIndex: number,
-  scrollAreaOffsetWidth: number,
-  gradientWidth: number
-): number => {
-  const { offsetLeft: activeElementOffsetLeft, offsetWidth: activeElementOffsetWidth } =
-    elements[activeElementIndex] ?? {};
-  const elementsCount = elements.length;
-
-  let scrollPosition: number;
-  if (direction === 'next') {
-    if (activeElementIndex === elementsCount - 1) {
-      // go to last element
-      scrollPosition = activeElementOffsetLeft - FOCUS_PADDING_WIDTH;
-    } else {
-      // go to next element
-      scrollPosition = activeElementOffsetLeft - gradientWidth + FOCUS_PADDING_WIDTH * 2;
-    }
-  } else {
-    if (activeElementIndex === 0) {
-      // go to first element
-      scrollPosition = 0;
-    } else {
-      // go to prev element
-      scrollPosition = activeElementOffsetLeft + activeElementOffsetWidth + gradientWidth - scrollAreaOffsetWidth;
-    }
-  }
-  return scrollPosition;
-};
+// TODO: Better approach for keyboard handling?
+// export const getKeydownedSegmentedControlItem = (
+//   { key }: KeyboardEvent,
+//   value: string | number,
+//   childrenCollection: HTMLCollection
+// ): HTMLElement & SegmentedControlItem => {
+//   const prevOrNext =
+//     ((key === 'ArrowLeft' || key === 'Left') && -1) || ((key === 'ArrowRight' || key === 'Right') && 1);
+//   if (prevOrNext) {
+//     const children = Array.from(childrenCollection) as (HTMLElement & SegmentedControlItem)[];
+//     const selectedIndex = children.findIndex((item) => item.value === value);
+//
+//     const validIndexes = children.map((item, i) => !item.disabled && i).filter((x: number | boolean) => x !== false);
+//     const maxValidIndex = validIndexes.length - 1;
+//
+//     const selectedValidIndex = validIndexes.findIndex((i) => i === selectedIndex);
+//     let newValidIndex = selectedValidIndex + prevOrNext;
+//     newValidIndex = newValidIndex < 0 ? maxValidIndex : newValidIndex > maxValidIndex ? 0 : newValidIndex;
+//
+//     return children[validIndexes[newValidIndex]];
+//   }
+// };

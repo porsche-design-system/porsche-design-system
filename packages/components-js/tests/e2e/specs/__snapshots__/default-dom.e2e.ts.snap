@@ -573,6 +573,18 @@ exports[`should have no basic DOM regression for p-radio-button-wrapper 1`] = `
 </label>"
 `;
 
+exports[`should have no basic DOM regression for p-segmented-control 1`] = `
+"<slot>
+</slot>"
+`;
+
+exports[`should have no basic DOM regression for p-segmented-control-item 1`] = `
+"<button type=\\"button\\" aria-pressed=\\"true\\">
+  <slot>
+  </slot>
+</button>"
+`;
+
 exports[`should have no basic DOM regression for p-select-wrapper 1`] = `
 "<div class=\\"root\\">
   <label class=\\"label\\">
@@ -597,6 +609,22 @@ exports[`should have no basic DOM regression for p-spinner 1`] = `
     </circle>
   </svg>
 </span>"
+`;
+
+exports[`should have no basic DOM regression for p-stepper-horizontal 1`] = `
+"<p-scroller class=\\"hydrated\\">
+  <div class=\\"item-wrapper\\">
+    <slot>
+    </slot>
+  </div>
+</p-scroller>"
+`;
+
+exports[`should have no basic DOM regression for p-stepper-horizontal-item 1`] = `
+"<button type=\\"button\\" aria-disabled=\\"true\\">
+  <slot>
+  </slot>
+</button>"
 `;
 
 exports[`should have no basic DOM regression for p-switch 1`] = `

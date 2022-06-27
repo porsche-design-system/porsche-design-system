@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getComponentCss() should return correct css 1`] = `
+":host {
+  display: block;
+  position: relative !important;
+  height: 2rem !important;
+}
+::slotted(*:not(:last-child)) {
+  margin-right: 1em !important;
+}
+.item-wrapper {
+  display: flex;
+}"
+`;

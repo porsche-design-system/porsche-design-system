@@ -293,6 +293,22 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Usage: [() => import('@/../../components/src/components/layout/spacing/spacing.usage.md')],
     },
+    'Segmented Control': {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/segmented-control/segmented-control.examples.md')],
+      // @ts-ignore
+      Usage: [() => import('@/../../components/src/components/segmented-control/segmented-control.usage.md')],
+      Props: [
+        () =>
+          // @ts-ignore
+          import('@/../../components/src/components/segmented-control/segmented-control/segmented-control.props.md'),
+        () =>
+          import(
+            // @ts-ignore
+            '@/../../components/src/components/segmented-control/segmented-control-item/segmented-control-item.props.md'
+          ),
+      ],
+    },
     Spinner: {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/feedback/spinner/spinner.examples.md')],
@@ -300,6 +316,18 @@ export const config: StorefrontConfig = {
       Usage: [() => import('@/../../components/src/components/feedback/spinner/spinner.usage.md')],
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/feedback/spinner/spinner.props.md')],
+    },
+    'Stepper Horizontal': {
+      // @ts-ignore
+      // prettier-ignore
+      Examples: [() => import('@/../../components/src/components/navigation/stepper-horizontal/stepper-horizontal/stepper-horizontal.examples.md'),],
+      // @ts-ignore
+      // prettier-ignore
+      Usage: [() => import('@/../../components/src/components/navigation/stepper-horizontal/stepper-horizontal/stepper-horizontal.usage.md'),],
+      // @ts-ignore
+      // prettier-ignore
+      Props: [() => import('@/../../components/src/components/navigation/stepper-horizontal/stepper-horizontal/stepper-horizontal.props.md'), () => import('@/../../components/src/components/navigation/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item.props.md'),
+      ],
     },
     Switch: {
       // @ts-ignore

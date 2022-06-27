@@ -80,6 +80,16 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.InlineNotificationExampleActionButtonComponent,
   },
   {
+    name: 'Segmented Control Example',
+    path: 'segmented-control-example',
+    component: fromExamples.SegmentedControlExampleComponent,
+  },
+  {
+    name: 'Stepper Horizontal Example',
+    path: 'stepper-horizontal-example',
+    component: fromExamples.StepperHorizontalExampleComponent,
+  },
+  {
     name: 'Table Example Basic',
     path: 'table-example-basic',
     component: fromExamples.TableExampleBasicComponent,

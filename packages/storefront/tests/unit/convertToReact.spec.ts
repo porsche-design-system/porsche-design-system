@@ -102,6 +102,12 @@ describe('transformEvents()', () => {
 </p-some-tag>`
     );
   });
+
+  it('should not transform attribute values containing " on"', () => {
+    expect(transformEvents('<p-somme-tag label="Icon only" icon="user"></p-somme-tag>')).toBe(
+      `<p-somme-tag label="Icon only" icon="user"></p-somme-tag>`
+    );
+  });
 });
 
 describe('transformBooleanDigitAndUndefinedValues()', () => {

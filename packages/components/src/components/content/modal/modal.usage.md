@@ -4,9 +4,9 @@
 
 ## When to use
 
-  • Use a Modal when you want to show additional information to the user without losing context of the parent page.  
-  • Use a Modal when there are steps the user needs to do before the task can be completed.  
-  • Use a Modal where you need to ask for confirmation from the user before doing a lengthy or dangerous action.  
+- Use a Modal when you want to show additional information to the user without losing context of the parent page.  
+- Use a Modal when there are steps the user needs to do before the task can be completed.  
+- Use a Modal where you need to ask for confirmation from the user before doing a lengthy or dangerous action.  
 
 ---
 

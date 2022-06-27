@@ -16,6 +16,7 @@ export class InputParser {
 
   private sharedTypes: string = '';
   private rawLocalJSX: string = '';
+  private rawComponents: string = '';
   private intrinsicElements: IntrinsicElements = {};
 
   constructor() {
@@ -49,15 +50,20 @@ export class InputParser {
       // fix consumer typing for accessibility props with string type
       .replace(/(export declare type SelectedAriaAttributes<T extends keyof AriaAttributes> = .*?) \| string;/, '$1;');
 
-    const [, rawLocalJSX] = /declare namespace LocalJSX {((?:\s|.)*}\s})/.exec(bundleDtsContent) ?? [];
+    const [, rawLocalJSX] = /declare namespace LocalJSX {((?:\n|.)*}\s})/.exec(bundleDtsContent) || [];
     this.rawLocalJSX = rawLocalJSX;
-    let [, rawIntrinsicElements] = /interface IntrinsicElements ({(?:\s|.)*?})/.exec(rawLocalJSX) ?? [];
+
+    const [, rawComponents] = /export namespace Components {((?:\n|.)*)}\sdeclare global/.exec(bundleDtsContent) || [];
+    this.rawComponents = rawComponents;
+
+    let [, rawIntrinsicElements] = /interface IntrinsicElements ({(?:\n|.)*?})/.exec(rawLocalJSX) || [];
 
     rawIntrinsicElements = rawIntrinsicElements.replace(/ (\w+);/g, " '$1',");
     this.intrinsicElements = eval(`(${rawIntrinsicElements})`);
 
     console.log(`Found ${Object.keys(this.intrinsicElements).length} intrinsicElements in ${bundleDtsFileName}`);
   }
+
   private getComponentFilePath(component: TagName): string {
     const fileName = `${component.replace('p-', '')}.tsx`;
     return globby.sync(`${SRC_DIR}/**/${fileName}`)[0];
@@ -84,17 +90,34 @@ export class InputParser {
   public getRawComponentInterface(component: TagName): string {
     // We need semicolon and double newline to ensure comments are ignored
     const regex = new RegExp(`interface ${this.intrinsicElements[component]} ({(?:\\s|.)*?;?\\s\\s})`);
-    const [, rawComponentInterface] = regex.exec(this.rawLocalJSX) ?? [];
-    return rawComponentInterface
-      .replace(/"(\w+)"(\?:)/g, '$1$2') // clean double quotes around interface/type keys
-      .replace(/    |\t\t/g, '  ') // adjust indentation
-      .replace(/    \*/g, '   *') // adjust indentation before jsdocs
-      .replace(/(  |\t)}$/g, '}'); // adjust indentation at closing }
+    let [, rawLocalJSXInterface] = regex.exec(this.rawLocalJSX) || [];
+
+    const cleanInterface = (input: string): string =>
+      input
+        .replace(/"(\w+)"(\??:)/g, '$1$2') // clean double quotes around interface/type keys
+        .replace(/    |\t\t/g, '  ') // adjust indentation
+        .replace(/    \*/g, '   *') // adjust indentation before jsdocs
+        .replace(/(  |\t)}$/g, '}'); // adjust indentation at closing }
+
+    rawLocalJSXInterface = cleanInterface(rawLocalJSXInterface);
+
+    // Unfortunately rawLocalJSXInterface contains all props with optional `?` modifier.
+    // Here, we recover required props by comparing the interface from rawComponents to rawLocalJSXInterface
+    // and removing the `?` modifier where needed.
+    let [, rawComponentsInterface] = regex.exec(this.rawComponents) || [];
+    rawComponentsInterface = cleanInterface(rawComponentsInterface);
+
+    const matches = Array.from(rawComponentsInterface.matchAll(/([a-z]+): (?:\s|.)+?;/g));
+    matches.forEach((match) => {
+      rawLocalJSXInterface = rawLocalJSXInterface.replace(new RegExp(`${match[1]}\\?: (?:\\s|.)+?;`), match[0]);
+    });
+
+    return rawLocalJSXInterface;
   }
 
   public getComponentInterface(component: TagName): ParsedInterface {
     const rawInterface = this.getRawComponentInterface(component);
-    const cleanedInterface = rawInterface.replace(/\?: ((?:\s|.)*?);/g, ": '$1',"); // convert to valid js object
+    const cleanedInterface = rawInterface.replace(/\??: (.+?);/g, ": '$1',"); // convert to valid js object
 
     const parsedInterface: ParsedInterface = eval(`(${cleanedInterface})`);
     return parsedInterface;
