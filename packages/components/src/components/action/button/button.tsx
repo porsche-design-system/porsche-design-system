@@ -108,9 +108,9 @@ export class Button {
             aria-hidden="true"
           />
         )}
-        <PrefixedTagNames.pText class="label" tag="span" color="inherit">
+        <span>
           <slot />
-        </PrefixedTagNames.pText>
+        </span>
       </button>
     );
   }

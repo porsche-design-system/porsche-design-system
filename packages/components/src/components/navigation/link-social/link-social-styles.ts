@@ -82,6 +82,11 @@ export const getComponentCss = (
           },
         }),
       }),
+      span: {
+        display: 'block',
+        color: textColor,
+        ...buildResponsiveStyles(hideLabel, getLabelJssStyle),
+      },
     },
     root: {
       display: 'flex',
@@ -122,12 +127,6 @@ export const getComponentCss = (
       color: textColor,
       pointerEvents: 'none',
       ...buildResponsiveStyles(hideLabel, getIconJssStyle),
-    },
-    label: {
-      display: 'block',
-      boxSizing: 'border-box',
-      color: textColor,
-      ...buildResponsiveStyles(hideLabel, getLabelJssStyle),
     },
   });
 };

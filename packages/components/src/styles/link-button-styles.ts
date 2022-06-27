@@ -193,6 +193,11 @@ export const getLinkButtonStyles = (
           },
         }),
       }),
+      span: {
+        display: 'block',
+        color: iconLabelColor,
+        ...buildResponsiveStyles(hideLabel, getLabelJssStyle),
+      },
     },
     // TODO: reduce to only necessary styles (e.g. why boxSizing?)
     // TODO: overhead in link styles when slotted anchor is used
@@ -225,7 +230,7 @@ export const getLinkButtonStyles = (
             color: primaryColorHover,
             ...(isTertiary && {
               backgroundColor: 'currentColor',
-              '& > $label, & > $icon': {
+              '& > span, & > $icon': {
                 color: isDarkTheme ? lightThemeBaseColor : darkThemeBaseColor,
               },
             }),
@@ -239,12 +244,6 @@ export const getLinkButtonStyles = (
       color: iconLabelColor,
       pointerEvents: 'none',
       ...buildResponsiveStyles(hideLabel, getIconJssStyle),
-    },
-    label: {
-      display: 'block',
-      boxSizing: 'border-box',
-      color: iconLabelColor,
-      ...buildResponsiveStyles(hideLabel, getLabelJssStyle),
     },
   };
 };

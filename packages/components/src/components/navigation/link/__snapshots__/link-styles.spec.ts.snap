@@ -6,6 +6,65 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   vertical-align: top;
   outline: 0 !important;
 }
+span {
+  display: block;
+  color: #fff;
+  width: 1px;
+  height: 1px;
+  margin: 0 0 0 -1px;
+  overflow: hidden;
+  text-indent: -1px;
+}
+@media(min-width:480px) {
+  span {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    text-indent: 0;
+  }
+}
+
+@media(min-width:760px) {
+  span {
+    width: 1px;
+    height: 1px;
+    margin: 0 0 0 -1px;
+    overflow: hidden;
+    text-indent: -1px;
+  }
+}
+
+@media(min-width:1000px) {
+  span {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    text-indent: 0;
+  }
+}
+
+@media(min-width:1300px) {
+  span {
+    width: 1px;
+    height: 1px;
+    margin: 0 0 0 -1px;
+    overflow: hidden;
+    text-indent: -1px;
+  }
+}
+
+@media(min-width:1760px) {
+  span {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    text-indent: 0;
+  }
+}
+
 .root {
   display: flex;
   width: 100%;
@@ -45,16 +104,6 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   top: 50%;
   transform: translate3d(-50%, -50%, 0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #fff;
-  width: 1px;
-  height: 1px;
-  margin: 0 0 0 -1px;
-  overflow: hidden;
-  text-indent: -1px;
-}
 @media(min-width:480px) {
   .root {
     padding: 0.6875rem 0.9375rem 0.6875rem 2.4375rem;
@@ -63,13 +112,6 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
     left: 0.6875rem;
     top: 0.6875rem;
     transform: translate3d(0,0,0);
-  }
-  .label {
-    width: 100%;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    text-indent: 0;
   }
 }
 
@@ -82,13 +124,6 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
     top: 50%;
     transform: translate3d(-50%, -50%, 0);
   }
-  .label {
-    width: 1px;
-    height: 1px;
-    margin: 0 0 0 -1px;
-    overflow: hidden;
-    text-indent: -1px;
-  }
 }
 
 @media(min-width:1000px) {
@@ -99,13 +134,6 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
     left: 0.6875rem;
     top: 0.6875rem;
     transform: translate3d(0,0,0);
-  }
-  .label {
-    width: 100%;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    text-indent: 0;
   }
 }
 
@@ -118,13 +146,6 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
     top: 50%;
     transform: translate3d(-50%, -50%, 0);
   }
-  .label {
-    width: 1px;
-    height: 1px;
-    margin: 0 0 0 -1px;
-    overflow: hidden;
-    text-indent: -1px;
-  }
 }
 
 @media(min-width:1760px) {
@@ -135,13 +156,6 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
     left: 0.6875rem;
     top: 0.6875rem;
     transform: translate3d(0,0,0);
-  }
-  .label {
-    width: 100%;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    text-indent: 0;
   }
 }
 
@@ -158,6 +172,15 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   display: inline-flex;
   vertical-align: top;
   outline: 0 !important;
+}
+span {
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 .root {
   display: flex;
@@ -197,16 +220,6 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   left: 0.6875rem;
   top: 0.6875rem;
   transform: translate3d(0,0,0);
-}
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #fff;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
 }
 @media(hover:hover) {
   .root:hover, .root:active {
@@ -248,6 +261,15 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #c4001a !important;
@@ -282,16 +304,6 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   left: 0.6875rem;
   top: 0.6875rem;
   transform: translate3d(0,0,0);
-}
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #fff;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
 }
 @media(hover:hover) {
   .root:hover, .root:active {
@@ -333,6 +345,15 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #980014 !important;
@@ -367,16 +388,6 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
   left: 0.6875rem;
   top: 0.6875rem;
   transform: translate3d(0,0,0);
-}
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #fff;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
 }
 @media(hover:hover) {
   .root:hover, .root:active {
@@ -418,6 +429,15 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #e0e0e0 !important;
@@ -452,16 +472,6 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
   left: 0.6875rem;
   top: 0.6875rem;
   transform: translate3d(0,0,0);
-}
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #000;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
 }
 @media(hover:hover) {
   .root:hover, .root:active {
@@ -503,6 +513,15 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #151718 !important;
@@ -537,16 +556,6 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
   left: 0.6875rem;
   top: 0.6875rem;
   transform: translate3d(0,0,0);
-}
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #fff;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
 }
 @media(hover:hover) {
   .root:hover, .root:active {
@@ -588,6 +597,15 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #fff !important;
@@ -623,22 +641,12 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #fff;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #fff;
     background-color: currentColor;
   }
-  .root:hover > .label, .root:hover > .icon, .root:active > .label, .root:active > .icon {
+  .root:hover > span, .root:hover > .icon, .root:active > span, .root:active > .icon {
     color: #000;
   }
 }
@@ -677,6 +685,15 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #151718 !important;
@@ -712,22 +729,12 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #000;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #151718;
     background-color: currentColor;
   }
-  .root:hover > .label, .root:hover > .icon, .root:active > .label, .root:active > .icon {
+  .root:hover > span, .root:hover > .icon, .root:active > span, .root:active > .icon {
     color: #fff;
   }
 }
