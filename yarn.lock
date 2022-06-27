@@ -2434,6 +2434,26 @@
   resolved "https://registry.yarnpkg.com/@porsche-design-system/browser-notification/-/browser-notification-4.1.4.tgz#2a33870f67da42ad67e891e3910493b6fbcdcfcd"
   integrity sha512-M/vdngr9ANMbM8A0p2fMpDVwNT4qDh4R8WCPaXneBCCN6DA/wnarqvj1AnkJlmordWArs8AZLn7olwIOgLTwKg==
 
+"@porsche-design-system/components-angular@2.13.0":
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/@porsche-design-system/components-angular/-/components-angular-2.13.0.tgz#c9e8a16d3e1e2477579b1661faf2f01b5809a7f1"
+  integrity sha512-uA0q1fqVwfqH8yzM3JrnlFSSKgUwF3B3V6OMYIByDgA5i2tnaMccUZ+SSZplLG2CevjEd2WhiX8kepvTBIhgug==
+  dependencies:
+    "@porsche-design-system/components-js" "2.13.0"
+    tslib "^2.0.1"
+
+"@porsche-design-system/components-js@2.13.0":
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/@porsche-design-system/components-js/-/components-js-2.13.0.tgz#aa52108a5244ec735a2ac1f0e858c637b23b8df0"
+  integrity sha512-BW0WYMjZ+Xgfd+pJj8slMgxwzY7htRctufaqi07F7SCcrKfrJPGh57tSwUI+4pouuCZx8fhrpnZ9YX9E2e+Xfw==
+
+"@porsche-design-system/components-react@2.13.0":
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/@porsche-design-system/components-react/-/components-react-2.13.0.tgz#14a1e34b097f4f3fc8c40c2b61fa5b3f2cb0eaee"
+  integrity sha512-+KvSIUThVkuHSKTt+qp2x/0ZaI9kR0y3h2WSoFOgfJCVm7EiD9XfdvjtBDL4TfvJhee+eKpJa0+/Y3ohDXJALw==
+  dependencies:
+    "@porsche-design-system/components-js" "2.13.0"
+
 "@porsche-design-system/prettier-config@^1.0.0":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@porsche-design-system/prettier-config/-/prettier-config-1.0.1.tgz#6b0fc60d3d42c7b4d9c998bf7b685513a5488400"
