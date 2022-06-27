@@ -1,5 +1,5 @@
 <template>
-  <div class="code-block" :class="`code-block--${theme}`">
+  <div class="code-block" :class="`code-block--${theme} code-block--${colorScheme}`">
     <p-tabs-bar :theme="theme" :active-tab-index="activeTabIndex">
       <!-- prettier-ignore -->
       <button type="button" v-for="(framework, index) in usedFrameworks" :key="index" @click="setFramework(index)">{{ framework }}</button>
@@ -24,6 +24,7 @@
   export default class CodeBlock extends Vue {
     @Prop({ default: '' }) public markup!: string;
     @Prop({ default: 'light' }) public theme!: Theme;
+    @Prop({ default: 'default' }) public colorScheme!: 'default' | 'surface';
     @Prop({ default: false }) public convertMarkup!: boolean;
     @Prop({ default: () => ['vanilla-js', 'angular', 'react'] }) public frameworks!: Framework[];
 
@@ -158,6 +159,29 @@
           .token.regex,
           .token.important {
             color: #d91e18;
+          }
+        }
+      }
+
+      // the following are all custom based on above values
+      // extracted from chrome dev tools contrast utility
+      &.code-block--surface {
+        pre {
+          code ::v-deep {
+            .token.selector,
+            .token.attr-name,
+            .token.string,
+            .token.char,
+            .token.builtin,
+            .token.inserted {
+              color: #a55a00;
+            }
+
+            .token.atrule,
+            .token.attr-value,
+            .token.function {
+              color: #3d7b3c;
+            }
           }
         }
       }
