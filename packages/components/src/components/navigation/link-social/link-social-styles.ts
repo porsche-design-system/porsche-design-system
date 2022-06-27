@@ -10,7 +10,7 @@ import {
   pxToRemWithUnit,
   getThemedColors,
 } from '../../../styles';
-import { colorExternal } from '@porsche-design-system/utilities-v2';
+import { colorExternal, textSmall } from '@porsche-design-system/utilities-v2';
 import {
   getIconJssStyle,
   getLabelJssStyle,
@@ -85,6 +85,7 @@ export const getComponentCss = (
       span: {
         display: 'block',
         color: textColor,
+        ...textSmall,
         ...buildResponsiveStyles(hideLabel, getLabelJssStyle),
       },
     },
