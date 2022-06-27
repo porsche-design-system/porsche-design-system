@@ -110,7 +110,7 @@ export const getComponentCss = (
       ...hoverMediaQuery({
         '&:hover, &:active': {
           color: baseColorHover,
-          '& $label, & $icon': {
+          '& span, & $icon': {
             color: textColorHover,
           },
         },
