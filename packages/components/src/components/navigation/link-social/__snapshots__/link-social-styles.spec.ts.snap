@@ -80,7 +80,7 @@ span {
   .root:hover, .root:active {
     color: #1877f2;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -167,7 +167,7 @@ span {
   .root:hover, .root:active {
     color: #1877f2;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -254,7 +254,7 @@ span {
   .root:hover, .root:active {
     color: #4285f4;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -341,7 +341,7 @@ span {
   .root:hover, .root:active {
     color: #4285f4;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -428,7 +428,7 @@ span {
   .root:hover, .root:active {
     color: #e1306c;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -515,7 +515,7 @@ span {
   .root:hover, .root:active {
     color: #e1306c;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -602,7 +602,7 @@ span {
   .root:hover, .root:active {
     color: #fae300;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #000;
   }
 }
@@ -689,7 +689,7 @@ span {
   .root:hover, .root:active {
     color: #fae300;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #000;
   }
 }
@@ -776,7 +776,7 @@ span {
   .root:hover, .root:active {
     color: #0077b5;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -863,7 +863,7 @@ span {
   .root:hover, .root:active {
     color: #0077b5;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -950,7 +950,7 @@ span {
   .root:hover, .root:active {
     color: #03cf5d;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -1037,7 +1037,7 @@ span {
   .root:hover, .root:active {
     color: #03cf5d;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -1124,7 +1124,7 @@ span {
   .root:hover, .root:active {
     color: #e60023;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -1211,7 +1211,7 @@ span {
   .root:hover, .root:active {
     color: #e60023;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -1298,7 +1298,7 @@ span {
   .root:hover, .root:active {
     color: #ff4500;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -1385,7 +1385,7 @@ span {
   .root:hover, .root:active {
     color: #ff4500;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -1472,7 +1472,7 @@ span {
   .root:hover, .root:active {
     color: #fe2c55;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -1559,7 +1559,7 @@ span {
   .root:hover, .root:active {
     color: #fe2c55;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -1646,7 +1646,7 @@ span {
   .root:hover, .root:active {
     color: #1da1f2;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -1733,7 +1733,7 @@ span {
   .root:hover, .root:active {
     color: #1da1f2;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -1820,7 +1820,7 @@ span {
   .root:hover, .root:active {
     color: #1aad19;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -1907,7 +1907,7 @@ span {
   .root:hover, .root:active {
     color: #1aad19;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -1994,7 +1994,7 @@ span {
   .root:hover, .root:active {
     color: #25d366;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -2081,7 +2081,7 @@ span {
   .root:hover, .root:active {
     color: #25d366;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -2168,7 +2168,7 @@ span {
   .root:hover, .root:active {
     color: #006567;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -2255,7 +2255,7 @@ span {
   .root:hover, .root:active {
     color: #006567;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -2487,7 +2487,7 @@ span {
   .root:hover, .root:active {
     color: #ff0000;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -2574,7 +2574,7 @@ span {
   .root:hover, .root:active {
     color: #ff0000;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -2661,7 +2661,7 @@ span {
   .root:hover, .root:active {
     color: #ff0000;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
@@ -2726,7 +2726,7 @@ span {
   .root:hover, .root:active {
     color: #ff0000;
   }
-  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
+  .root:hover span, .root:hover .icon, .root:active span, .root:active .icon {
     color: #fff;
   }
 }
