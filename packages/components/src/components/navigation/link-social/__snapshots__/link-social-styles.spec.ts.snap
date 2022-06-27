@@ -32,6 +32,15 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #1877f2 !important;
@@ -67,21 +76,11 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #000;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #1877f2;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -120,6 +119,15 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #1877f2 !important;
@@ -155,21 +163,11 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #fff;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #1877f2;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -208,6 +206,15 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #4285f4 !important;
@@ -243,21 +250,11 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #000;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #4285f4;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -296,6 +293,15 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #4285f4 !important;
@@ -331,21 +337,11 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #fff;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #4285f4;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -384,6 +380,15 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #e1306c !important;
@@ -419,21 +424,11 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #000;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #e1306c;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -472,6 +467,15 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #e1306c !important;
@@ -507,21 +511,11 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #fff;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #e1306c;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -560,6 +554,15 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #fae300 !important;
@@ -595,21 +598,11 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #000;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #fae300;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #000;
   }
 }
@@ -648,6 +641,15 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #fae300 !important;
@@ -683,21 +685,11 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #fff;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #fae300;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #000;
   }
 }
@@ -736,6 +728,15 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #0077b5 !important;
@@ -771,21 +772,11 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #000;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #0077b5;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -824,6 +815,15 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #0077b5 !important;
@@ -859,21 +859,11 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #fff;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #0077b5;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -912,6 +902,15 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #03cf5d !important;
@@ -947,21 +946,11 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #000;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #03cf5d;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -1000,6 +989,15 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #03cf5d !important;
@@ -1035,21 +1033,11 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #fff;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #03cf5d;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -1088,6 +1076,15 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #e60023 !important;
@@ -1123,21 +1120,11 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #000;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #e60023;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -1176,6 +1163,15 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #e60023 !important;
@@ -1211,21 +1207,11 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #fff;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #e60023;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -1264,6 +1250,15 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #ff4500 !important;
@@ -1299,21 +1294,11 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #000;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #ff4500;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -1352,6 +1337,15 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #ff4500 !important;
@@ -1387,21 +1381,11 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #fff;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #ff4500;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -1440,6 +1424,15 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #fe2c55 !important;
@@ -1475,21 +1468,11 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #000;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #fe2c55;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -1528,6 +1511,15 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #fe2c55 !important;
@@ -1563,21 +1555,11 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #fff;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #fe2c55;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -1616,6 +1598,15 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #1da1f2 !important;
@@ -1651,21 +1642,11 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #000;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #1da1f2;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -1704,6 +1685,15 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #1da1f2 !important;
@@ -1739,21 +1729,11 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #fff;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #1da1f2;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -1792,6 +1772,15 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #1aad19 !important;
@@ -1827,21 +1816,11 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #000;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #1aad19;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -1880,6 +1859,15 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #1aad19 !important;
@@ -1915,21 +1903,11 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #fff;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #1aad19;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -1968,6 +1946,15 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #25d366 !important;
@@ -2003,21 +1990,11 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #000;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #25d366;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -2056,6 +2033,15 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #25d366 !important;
@@ -2091,21 +2077,11 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #fff;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #25d366;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -2144,6 +2120,15 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #006567 !important;
@@ -2179,21 +2164,11 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #000;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #006567;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -2232,6 +2207,15 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #006567 !important;
@@ -2267,21 +2251,11 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #fff;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #006567;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -2320,6 +2294,15 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #fff;
+  width: 1px;
+  height: 1px;
+  margin: 0 0 0 -1px;
+  overflow: hidden;
+  text-indent: -1px;
+}
 @media(min-width:480px) {
   ::slotted(a) {
     position: static !important;
@@ -2331,6 +2314,13 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
     overflow: visible !important;
     white-space: normal !important;
     text-indent: 0 !important;
+  }
+  span {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    text-indent: 0;
   }
 }
 
@@ -2346,6 +2336,13 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
     white-space: nowrap !important;
     text-indent: 99999px !important;
   }
+  span {
+    width: 1px;
+    height: 1px;
+    margin: 0 0 0 -1px;
+    overflow: hidden;
+    text-indent: -1px;
+  }
 }
 
 @media(min-width:1000px) {
@@ -2359,6 +2356,13 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
     overflow: visible !important;
     white-space: normal !important;
     text-indent: 0 !important;
+  }
+  span {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    text-indent: 0;
   }
 }
 
@@ -2374,6 +2378,13 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
     white-space: nowrap !important;
     text-indent: 99999px !important;
   }
+  span {
+    width: 1px;
+    height: 1px;
+    margin: 0 0 0 -1px;
+    overflow: hidden;
+    text-indent: -1px;
+  }
 }
 
 @media(min-width:1760px) {
@@ -2387,6 +2398,13 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
     overflow: visible !important;
     white-space: normal !important;
     text-indent: 0 !important;
+  }
+  span {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    text-indent: 0;
   }
 }
 
@@ -2425,28 +2443,11 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   top: 50%;
   transform: translate3d(-50%, -50%, 0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #fff;
-  width: 1px;
-  height: 1px;
-  margin: 0 0 0 -1px;
-  overflow: hidden;
-  text-indent: -1px;
-}
 @media(min-width:480px) {
   .icon {
     left: 0.6875rem;
     top: 0.6875rem;
     transform: translate3d(0,0,0);
-  }
-  .label {
-    width: 100%;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    text-indent: 0;
   }
 }
 
@@ -2456,13 +2457,6 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
     top: 50%;
     transform: translate3d(-50%, -50%, 0);
   }
-  .label {
-    width: 1px;
-    height: 1px;
-    margin: 0 0 0 -1px;
-    overflow: hidden;
-    text-indent: -1px;
-  }
 }
 
 @media(min-width:1000px) {
@@ -2470,13 +2464,6 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
     left: 0.6875rem;
     top: 0.6875rem;
     transform: translate3d(0,0,0);
-  }
-  .label {
-    width: 100%;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    text-indent: 0;
   }
 }
 
@@ -2486,13 +2473,6 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
     top: 50%;
     transform: translate3d(-50%, -50%, 0);
   }
-  .label {
-    width: 1px;
-    height: 1px;
-    margin: 0 0 0 -1px;
-    overflow: hidden;
-    text-indent: -1px;
-  }
 }
 
 @media(min-width:1760px) {
@@ -2501,20 +2481,13 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
     top: 0.6875rem;
     transform: translate3d(0,0,0);
   }
-  .label {
-    width: 100%;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    text-indent: 0;
-  }
 }
 
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #ff0000;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -2553,6 +2526,15 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #ff0000 !important;
@@ -2588,21 +2570,11 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #000;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #ff0000;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -2641,6 +2613,15 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #ff0000 !important;
@@ -2676,21 +2657,11 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #fff;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #ff0000;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -2702,6 +2673,15 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   display: inline-flex;
   vertical-align: top;
   outline: 0 !important;
+}
+span {
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
 }
 .root {
   display: flex;
@@ -2742,21 +2722,11 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
   top: 0.6875rem;
   transform: translate3d(0,0,0);
 }
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #fff;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
-}
 @media(hover:hover) {
   .root:hover, .root:active {
     color: #ff0000;
   }
-  .root:hover .label, .root:hover .icon, .root:active .label, .root:active .icon {
+  .root:hover label, .root:hover .icon, .root:active label, .root:active .icon {
     color: #fff;
   }
 }
@@ -2795,6 +2765,15 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #000;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #e0e0e0 !important;
@@ -2829,16 +2808,6 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
   left: 0.6875rem;
   top: 0.6875rem;
   transform: translate3d(0,0,0);
-}
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #000;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
 }
 @media(hover:hover) {
   .root:hover, .root:active {
@@ -2880,6 +2849,15 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
 ::slotted(a:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
+span {
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  text-indent: 0;
+}
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
     outline-color: #151718 !important;
@@ -2914,16 +2892,6 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
   left: 0.6875rem;
   top: 0.6875rem;
   transform: translate3d(0,0,0);
-}
-.label {
-  display: block;
-  box-sizing: border-box;
-  color: #fff;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
 }
 @media(hover:hover) {
   .root:hover, .root:active {
