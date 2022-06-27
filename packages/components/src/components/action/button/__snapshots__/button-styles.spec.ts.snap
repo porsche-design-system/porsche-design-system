@@ -9,6 +9,11 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
 span {
   display: block;
   color: rgba(255,255,255,0.55);
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   width: 1px;
   height: 1px;
   margin: 0 0 0 -1px;
@@ -170,6 +175,11 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
 span {
   display: block;
   color: #fff;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   width: 100%;
   height: auto;
   margin: 0;
@@ -232,6 +242,11 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
 span {
   display: block;
   color: #fff;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   width: 100%;
   height: auto;
   margin: 0;
@@ -294,6 +309,11 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
 span {
   display: block;
   color: rgba(255,255,255,0.55);
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   width: 100%;
   height: auto;
   margin: 0;
@@ -350,6 +370,11 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
 span {
   display: block;
   color: #000;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   width: 100%;
   height: auto;
   margin: 0;
@@ -412,6 +437,11 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
 span {
   display: block;
   color: #fff;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   width: 100%;
   height: auto;
   margin: 0;
@@ -474,6 +504,11 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
 span {
   display: block;
   color: #fff;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   width: 100%;
   height: auto;
   margin: 0;
@@ -540,6 +575,11 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
 span {
   display: block;
   color: #000;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
   width: 100%;
   height: auto;
   margin: 0;
