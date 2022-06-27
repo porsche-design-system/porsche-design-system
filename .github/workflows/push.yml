@@ -446,6 +446,12 @@ jobs:
         with:
           entrypoint: run-test-e2e
           args: --storefront
+      - name: 'E2E Regression'
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: storefront-e2e-regression
+          path: ./packages/storefront/tests/e2e/results
   storefront-vrt:
     name: 'Storefront VRT'
     runs-on: ubuntu-latest
