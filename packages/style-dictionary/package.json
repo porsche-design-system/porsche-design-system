@@ -1,0 +1,22 @@
+{
+  "name": "style-dictionary",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "yarn clean:build && ts-node scripts/build.ts",
+    "clean": "yarn clean:node_modules && yarn clean:build",
+    "clean:node_modules": "yarn clean:node_modules",
+    "clean:build": "rm -rf ./build/ios/dist/ && rm -rf ./build/android/styleddictionary/src/main/res/ && rm -rf ./build/web/dist/"
+  },
+  "dependencies": {
+    "style-dictionary": "^3.7.1"
+  },
+  "devDependencies": {
+    "fs-extra": "^10.1.0",
+    "sharp": "^0.30.7",
+    "svg2vectordrawable": "^2.9.1",
+    "tinycolor2": "^1.4.2",
+    "ts-node": "^10.8.1"
+  }
+}
