@@ -68,7 +68,6 @@ styleDictionary
             options: {
               outputReferences: true,
             },
-            filter: getNonCoreFiles,
           },
         ],
       },
