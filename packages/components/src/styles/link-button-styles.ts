@@ -198,7 +198,7 @@ export const getLinkButtonStyles = (
         display: 'block',
         color: iconLabelColor,
         ...textSmall,
-        ...buildResponsiveStyles(hideLabel, getLabelJssStyle),
+        ...(!hasSlottedAnchor && buildResponsiveStyles(hideLabel, getLabelJssStyle)),
       },
     },
     // TODO: reduce to only necessary styles (e.g. why boxSizing?)

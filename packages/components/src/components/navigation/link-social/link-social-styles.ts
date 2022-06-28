@@ -86,7 +86,7 @@ export const getComponentCss = (
         display: 'block',
         color: textColor,
         ...textSmall,
-        ...buildResponsiveStyles(hideLabel, getLabelJssStyle),
+        ...(hasHref && buildResponsiveStyles(hideLabel, getLabelJssStyle)),
       },
     },
     root: {
