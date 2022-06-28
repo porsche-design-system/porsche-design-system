@@ -187,12 +187,13 @@ describe('link', () => {
       await initLink({ useSlottedAnchor: true });
 
       const host = await getHost();
-      const rootBorderWidthInPx = await getElementStyle(await getRoot(), 'borderWidth');
+      const rootWidthInPx = await getElementStyle(host, 'width');
+      const rootBorderWidthInPx = await getElementStyle(host, 'borderWidth');
       const rootBorderWidth = parseInt(rootBorderWidthInPx, 10) * 2;
 
       const anchorWidth = await page.evaluate(() => document.querySelector('p-link a').getBoundingClientRect().width);
 
-      expect(`${anchorWidth + rootBorderWidth}px`).toBe(await getElementStyle(host, 'width'));
+      expect(`${anchorWidth + rootBorderWidth}px`).toBe(rootWidthInPx);
     });
   });
 
