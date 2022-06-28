@@ -34,6 +34,7 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
 }
 span {
   display: block;
+  width: 100%;
   color: #000;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -121,6 +122,7 @@ exports[`getComponentCss() should return correct css for variant: logo-facebook,
 }
 span {
   display: block;
+  width: 100%;
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -208,6 +210,7 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
 }
 span {
   display: block;
+  width: 100%;
   color: #000;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -295,6 +298,7 @@ exports[`getComponentCss() should return correct css for variant: logo-google, h
 }
 span {
   display: block;
+  width: 100%;
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -382,6 +386,7 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
 }
 span {
   display: block;
+  width: 100%;
   color: #000;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -469,6 +474,7 @@ exports[`getComponentCss() should return correct css for variant: logo-instagram
 }
 span {
   display: block;
+  width: 100%;
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -556,6 +562,7 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
 }
 span {
   display: block;
+  width: 100%;
   color: #000;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -643,6 +650,7 @@ exports[`getComponentCss() should return correct css for variant: logo-kakaotalk
 }
 span {
   display: block;
+  width: 100%;
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -730,6 +738,7 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
 }
 span {
   display: block;
+  width: 100%;
   color: #000;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -817,6 +826,7 @@ exports[`getComponentCss() should return correct css for variant: logo-linkedin,
 }
 span {
   display: block;
+  width: 100%;
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -904,6 +914,7 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
 }
 span {
   display: block;
+  width: 100%;
   color: #000;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -991,6 +1002,7 @@ exports[`getComponentCss() should return correct css for variant: logo-naver, hi
 }
 span {
   display: block;
+  width: 100%;
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -1078,6 +1090,7 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
 }
 span {
   display: block;
+  width: 100%;
   color: #000;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -1165,6 +1178,7 @@ exports[`getComponentCss() should return correct css for variant: logo-pinterest
 }
 span {
   display: block;
+  width: 100%;
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -1252,6 +1266,7 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
 }
 span {
   display: block;
+  width: 100%;
   color: #000;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -1339,6 +1354,7 @@ exports[`getComponentCss() should return correct css for variant: logo-reddit, h
 }
 span {
   display: block;
+  width: 100%;
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -1426,6 +1442,7 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
 }
 span {
   display: block;
+  width: 100%;
   color: #000;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -1513,6 +1530,7 @@ exports[`getComponentCss() should return correct css for variant: logo-tiktok, h
 }
 span {
   display: block;
+  width: 100%;
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -1600,6 +1618,7 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
 }
 span {
   display: block;
+  width: 100%;
   color: #000;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -1687,6 +1706,7 @@ exports[`getComponentCss() should return correct css for variant: logo-twitter, 
 }
 span {
   display: block;
+  width: 100%;
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -1774,6 +1794,7 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
 }
 span {
   display: block;
+  width: 100%;
   color: #000;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -1861,6 +1882,7 @@ exports[`getComponentCss() should return correct css for variant: logo-wechat, h
 }
 span {
   display: block;
+  width: 100%;
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -1948,6 +1970,7 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
 }
 span {
   display: block;
+  width: 100%;
   color: #000;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -2035,6 +2058,7 @@ exports[`getComponentCss() should return correct css for variant: logo-whatsapp,
 }
 span {
   display: block;
+  width: 100%;
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -2122,6 +2146,7 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
 }
 span {
   display: block;
+  width: 100%;
   color: #000;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -2209,6 +2234,7 @@ exports[`getComponentCss() should return correct css for variant: logo-xing, hid
 }
 span {
   display: block;
+  width: 100%;
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -2296,6 +2322,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
 }
 span {
   display: block;
+  width: 100%;
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -2493,6 +2520,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
 }
 span {
   display: block;
+  width: 100%;
   color: #000;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -2580,6 +2608,7 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
 }
 span {
   display: block;
+  width: 100%;
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -2641,13 +2670,13 @@ exports[`getComponentCss() should return correct css for variant: logo-youtube, 
 }
 span {
   display: block;
+  width: 100%;
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  width: 100%;
   height: auto;
   margin: 0;
   overflow: visible;
@@ -2737,6 +2766,7 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
 }
 span {
   display: block;
+  width: 100%;
   color: #000;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -2821,6 +2851,7 @@ exports[`getComponentCss() should return correct css for variant: undefined, hid
 }
 span {
   display: block;
+  width: 100%;
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
