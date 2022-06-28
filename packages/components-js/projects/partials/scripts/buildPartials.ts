@@ -11,6 +11,7 @@ import { generateIconLinksPartial } from './generateIconLinksPartial';
 import { generateMetaTagsAndIconLinksPartial } from './generateMetaTagsAndIconLinksPartial';
 import { generateLoaderScriptPartial } from './generateLoaderScriptPartial';
 import { generateBrowserSupportScriptPartial } from './generateBrowserSupportScriptPartial';
+import { generateCookieSupportScriptPartial } from './generateCookieSupportScriptPartial';
 
 const generateSharedCode = (): string => {
   return `import type { Cdn, Format } from '../shared';
@@ -33,6 +34,7 @@ const generatePartials = async (): Promise<void> => {
     generateIconLinksPartial(),
     generateLoaderScriptPartial(),
     generateBrowserSupportScriptPartial(),
+    generateCookieSupportScriptPartial(),
   ].join('\n\n');
 
   fs.mkdirSync(targetDirectory, { recursive: true });
