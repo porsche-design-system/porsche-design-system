@@ -279,11 +279,6 @@ span {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
 }
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
@@ -368,11 +363,6 @@ span {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
 }
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
@@ -457,11 +447,6 @@ span {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
 }
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
@@ -546,11 +531,6 @@ span {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
 }
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
@@ -635,11 +615,6 @@ span {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
 }
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
@@ -728,11 +703,6 @@ span {
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  text-indent: 0;
 }
 @media(hover:hover) {
   ::slotted(a:hover:focus) {
