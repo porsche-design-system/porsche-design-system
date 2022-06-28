@@ -84,6 +84,7 @@ export const getComponentCss = (
       }),
       span: {
         display: 'block',
+        width: '100%',
         color: textColor,
         ...textSmall,
         ...(hasHref && buildResponsiveStyles(hideLabel, getLabelJssStyle)),

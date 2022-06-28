@@ -8,13 +8,13 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
 }
 span {
   display: block;
+  width: 1px;
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  width: 1px;
   height: 1px;
   margin: 0 0 0 -1px;
   overflow: hidden;
@@ -180,13 +180,13 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
 }
 span {
   display: block;
+  width: 100%;
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   overflow-wrap: break-word;
   hyphens: auto;
-  width: 100%;
   height: auto;
   margin: 0;
   overflow: visible;
@@ -273,6 +273,7 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
 }
 span {
   display: block;
+  width: 100%;
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -357,6 +358,7 @@ exports[`getComponentCss() should return correct css for variant: primary, hideL
 }
 span {
   display: block;
+  width: 100%;
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -441,6 +443,7 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
 }
 span {
   display: block;
+  width: 100%;
   color: #000;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -525,6 +528,7 @@ exports[`getComponentCss() should return correct css for variant: secondary, hid
 }
 span {
   display: block;
+  width: 100%;
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -609,6 +613,7 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
 }
 span {
   display: block;
+  width: 100%;
   color: #fff;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
@@ -697,6 +702,7 @@ exports[`getComponentCss() should return correct css for variant: tertiary, hide
 }
 span {
   display: block;
+  width: 100%;
   color: #000;
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;

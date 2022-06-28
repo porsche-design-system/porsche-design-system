@@ -196,6 +196,7 @@ export const getLinkButtonStyles = (
       }),
       span: {
         display: 'block',
+        width: '100%',
         color: iconLabelColor,
         ...textSmall,
         ...(!hasSlottedAnchor && buildResponsiveStyles(hideLabel, getLabelJssStyle)),
