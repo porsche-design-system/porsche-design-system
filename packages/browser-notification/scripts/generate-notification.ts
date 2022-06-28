@@ -1,7 +1,8 @@
 import * as fs from 'fs';
 import { minifyHTML, minifyCSS, updateContent } from './utils';
-import { OVERLAY_TYPES } from '../src/types';
-import type { OverlayType } from '../src/types';
+
+const OVERLAY_TYPES = ['cookie', 'browser'] as const;
+type OverlayType = typeof OVERLAY_TYPES[number];
 
 const generateCssAndHtml = (overlayType: OverlayType): void => {
   const isBrowser = overlayType === 'browser';

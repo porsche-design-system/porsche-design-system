@@ -24,6 +24,3 @@ export type Lang =
   | 'uk';
 
 export type Locales = { [key in Lang]: { title: string; content: string } };
-
-export const OVERLAY_TYPES = ['cookie', 'browser'] as const;
-export type OverlayType = typeof OVERLAY_TYPES[number];
