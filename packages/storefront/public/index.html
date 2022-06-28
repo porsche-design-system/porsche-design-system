@@ -114,7 +114,9 @@
     </div>
     <!-- prettier-ignore -->
     <%= require('@porsche-design-system/components-js/partials').getLoaderScript() %>
-    <%= require('@porsche-design-system/browser-notification').includeOverlay() %>
+    <% if (process.env.NODE_ENV === 'production') { %>
+    <%= require('@porsche-design-system/components-js/partials').getBrowserSupportScript() %>
+    <% } %>
     <!-- built files will be auto injected -->
   </body>
 </html>
