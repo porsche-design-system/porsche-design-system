@@ -7,7 +7,7 @@
     "build": "yarn clean:build && ts-node scripts/build.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "yarn clean:node_modules",
-    "clean:build": "rm -rf ./build/ios/dist/ && rm -rf ./build/android/styleddictionary/src/main/res/ && rm -rf ./build/web/dist/"
+    "clean:build": "rm -rf ./build/ios/dist/ && rm -rf ./build/android/styledictionary/src/main/res/ && rm -rf ./build/web/dist/"
   },
   "dependencies": {
     "style-dictionary": "^3.7.1"

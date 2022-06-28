@@ -2,6 +2,7 @@ import StyleDictionary from 'style-dictionary';
 import { extendSwiftUIColor, extendSwiftUIImage } from '../formats';
 import { attributeCTI, colorRGB, remToFloat } from '../transforms';
 import { colorsets, generateGraphics } from '../actions';
+import type { TransformedToken } from 'style-dictionary/types/TransformedToken';
 
 const IOS_PATH = `build/ios/dist/`;
 const ANDROID_PATH = `build/android/styledictionary/src/main/res/`;
@@ -29,6 +30,10 @@ const styleDictionary = StyleDictionary.extend({
 
 const modes = [`light`, `dark`];
 
+const getNonCoreFiles = (token: TransformedToken) => !token.filePath.includes('core');
+const getDarkFiles = (token: TransformedToken) => token.filePath.includes(`.dark`);
+const getColor = (token: TransformedToken) => token.attributes.category === `color`;
+
 // const assets = {
 //   transforms: [`attribute/cti`, `color/hex`, `size/remToFloat`, `name/ti/camel`],
 //   buildPath: `${WEB_PATH}/images/`,
@@ -53,16 +58,17 @@ styleDictionary
     ],
 
     platforms: {
-      css: {
-        transformGroup: `css`,
+      scss: {
+        transformGroup: `scss`,
         buildPath: WEB_PATH,
         files: [
           {
-            destination: `variables.css`,
-            format: `css/variables`,
+            destination: 'variables.scss',
+            format: 'scss/map-deep',
             options: {
               outputReferences: true,
             },
+            filter: getNonCoreFiles,
           },
         ],
       },
@@ -74,6 +80,7 @@ styleDictionary
           {
             destination: `tokens.json`,
             format: `json/nested`,
+            filter: getNonCoreFiles,
           },
         ],
       },
@@ -94,7 +101,7 @@ styleDictionary
           {
             destination: `Color.swift`,
             format: `swiftColor`,
-            filter: (token) => token.attributes.category === `color`,
+            filter: getColor,
             options: {
               outputReferences: true,
             },
@@ -120,7 +127,7 @@ styleDictionary
           {
             destination: `values/colors.xml`,
             format: `android/resources`,
-            filter: (token) => token.attributes.category === `color`,
+            filter: getColor,
             options: {
               // this is important!
               // this will keep token references intact so that we don't need
@@ -155,15 +162,15 @@ styleDictionary
     include: [`tokens/**/!(*.${modes.join(`|*.`)}).json`],
     source: [`tokens/**/*.dark.json`],
     platforms: {
-      css: {
-        transformGroup: `css`,
+      scss: {
+        transformGroup: `scss`,
         buildPath: WEB_PATH,
         files: [
           {
-            destination: `variables-dark.css`,
-            format: `css/variables`,
+            destination: `variables-dark.scss`,
+            format: `scss/map-deep`,
             // only putting in the tokens from files with '.dark' in the filepath
-            filter: (token) => token.filePath.indexOf(`.dark`) > -1,
+            filter: getDarkFiles,
             options: {
               outputReferences: true,
             },
@@ -171,6 +178,18 @@ styleDictionary
         ],
       },
 
+      js: {
+        transformGroup: `web`,
+        buildPath: WEB_PATH,
+        files: [
+          {
+            destination: `tokens-dark.json`,
+            format: `json/nested`,
+            // only putting in the tokens from files with '.dark' in the filepath
+            filter: getDarkFiles,
+          },
+        ],
+      },
       // assets: Object.assign(assets, {
       //   mode: `dark`,
       // }),
@@ -187,7 +206,7 @@ styleDictionary
       //       destination: `values-night/colors.xml`,
       //       format: `android/resources`,
       //       // only outputting the tokens from files with '.dark' in the filepath
-      //       filter: (token) => token.filePath.indexOf(`.dark`) > -1,
+      //       filter: getDarkFiles,
       //     },
       //   ],
       // },
@@ -204,13 +223,13 @@ styleDictionary
 //     source: [`tokens/**/*.hcDark.json`],
 //
 //     platforms: {
-//       css: {
-//         transformGroup: `css`,
+//       scss: {
+//         transformGroup: `scss`,
 //         buildPath: WEB_PATH,
 //         files: [
 //           {
-//             destination: `variables-hc-dark.css`,
-//             format: `css/variables`,
+//             destination: `variables-hc-dark.scss`,
+//             format: `scss/map-deep`,
 //             filter: (token) => token.filePath.indexOf(`.hcDark`) > -1,
 //             options: {
 //               outputReferences: true,
@@ -241,13 +260,13 @@ styleDictionary
 //     source: [`tokens/**/*.hc.json`],
 //
 //     platforms: {
-//       css: {
-//         transformGroup: `css`,
+//       scss: {
+//         transformGroup: `scss`,
 //         buildPath: WEB_PATH,
 //         files: [
 //           {
-//             destination: `variables-hc.css`,
-//             format: `css/variables`,
+//             destination: `variables-hc.scss`,
+//             format: `scss/map-deep`,
 //             filter: (token) => token.filePath.indexOf(`.hc`) > -1,
 //             options: {
 //               outputReferences: true,

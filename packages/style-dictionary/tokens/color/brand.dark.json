@@ -1,0 +1,72 @@
+{
+  "color": {
+    "brand": {
+      "value": "{color.core.brand.value}"
+    },
+    "base": {
+      "value": "{color.core.baseDark.value}"
+    },
+    "background": {
+      "base": {
+        "value": "#0e1418"
+      },
+      "surface": {
+        "value": "#262b2e"
+      },
+      "shading": {
+        "value": "{color.core.background.shading.value}"
+      }
+    },
+    "contrast": {
+      "high": {
+        "value": "#e3e4e5"
+      },
+      "medium": {
+        "value": "#b0b1b2"
+      },
+      "low": {
+        "value": "#4a4e5"
+      }
+    },
+    "notification": {
+      "success": {
+        "value": "#01ba1d"
+      },
+      "successSoft": {
+        "value": "#bfeec6"
+      },
+      "warningSoft": {
+        "value": "#ffe6bf"
+      },
+      "waning": {
+        "value": "{color.core.notification.warning.value}"
+      },
+      "error": {
+        "value": "#fc1717"
+      },
+      "errorSoft": {
+        "value": "#fec5c5"
+      },
+      "neutral": {
+        "value": "#2193ff"
+      },
+      "neutralSoft": {
+        "value": "#c7e4f"
+      }
+    },
+    "state": {
+      "hover": {
+        "value": "#ff0223"
+      },
+      "active": {
+        "value": "#ff0223"
+      },
+      "focus": {
+        "value": "{color.core.state.focus.value}"
+      },
+      "disabled": {
+        "value": "#7c7f8"
+      }
+    }
+  }
+}
