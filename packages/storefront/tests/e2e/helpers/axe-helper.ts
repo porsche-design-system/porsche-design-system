@@ -4,6 +4,8 @@ import * as path from 'path';
 import type { Page } from 'puppeteer';
 import { baseURL } from './';
 
+const console = require('console'); // workaround for nicer logs
+
 const AXE_RESULTS_DIR = path.resolve(__dirname, '../results');
 fs.mkdirSync(AXE_RESULTS_DIR, { recursive: true });
 fs.readdirSync(AXE_RESULTS_DIR)
@@ -24,9 +26,19 @@ export const a11yAnalyze = async (page: Page, suffix?: string) => {
   const { length: amountOfViolations } = result.violations;
 
   if (amountOfViolations > 0) {
+    console.log(
+      result.violations
+        .map(
+          (item) =>
+            `${item.id} (${item.impact}):
+${item.nodes.map((node) => '– ' + (node.target[0] as unknown as string[]).join(' >>> ')).join('\n')}`
+        )
+        .join('\n')
+    );
+
     const testId = (pageUrl.replace(baseURL + '/', '').replace(/\//g, '-') || 'root') + (suffix ? `-${suffix}` : '');
     fs.writeFileSync(path.resolve(AXE_RESULTS_DIR, 'a11y-' + testId + '.json'), JSON.stringify(result, null, 2));
   }
 
-  expect(amountOfViolations, 'amount of violations').toBe(0);
+  expect(amountOfViolations).toBe(0);
 };
