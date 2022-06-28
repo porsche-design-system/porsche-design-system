@@ -26,18 +26,18 @@ export const a11yAnalyze = async (page: Page, suffix?: string) => {
   const { length: amountOfViolations } = result.violations;
 
   if (amountOfViolations > 0) {
-    console.log(
-      result.violations
-        .map(
-          (item) =>
-            `${item.id} (${item.impact}):
-${item.nodes.map((node) => '– ' + (node.target[0] as unknown as string[]).join(' >>> ')).join('\n')}`
-        )
-        .join('\n')
-    );
-
     const testId = (pageUrl.replace(baseURL + '/', '').replace(/\//g, '-') || 'root') + (suffix ? `-${suffix}` : '');
     fs.writeFileSync(path.resolve(AXE_RESULTS_DIR, 'a11y-' + testId + '.json'), JSON.stringify(result, null, 2));
+
+    const output = result.violations
+      .map((item) => {
+        const title = `${item.id} (${item.impact})`;
+        const selectors = item.nodes.map((node) => '– ' + node.target.join(' >>> ')).join('\n');
+        return `${title}:\n${selectors}`;
+      })
+      .join('\n');
+
+    console.log(output);
   }
 
   expect(amountOfViolations).toBe(0);
