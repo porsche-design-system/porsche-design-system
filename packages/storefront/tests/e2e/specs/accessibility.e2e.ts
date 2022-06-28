@@ -1,12 +1,26 @@
 import type { Page } from 'puppeteer';
 import { a11yAnalyze, baseURL, getInternalUrls } from '../helpers';
 import { paramCase } from 'change-case';
+import * as fs from 'fs';
+import * as path from 'path';
 
 const console = require('console'); // workaround for nicer logs
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
+
+// style overrides for css variables
+const styleOverrides = fs.readFileSync(
+  path.resolve(require.resolve('@porsche-design-system/shared'), '../css/styles.css'),
+  'utf8'
+);
+const [, rootStyles] = /(:root {(?:.|\s)+?})/.exec(styleOverrides) || [];
+
+it('should have successfully extracted :root styles', () => {
+  expect(rootStyles).toContain(':root');
+  expect(rootStyles).toContain('--p-transition-duration: 0s');
+});
 
 const cycleFrameworkTabs = async (theme: string): Promise<void> => {
   const buttons = (
@@ -51,6 +65,14 @@ it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
     console.log(`a11y url ${index + 1}/${internalUrls.length}: ${url}`);
 
     await page.goto(baseURL + url, { waitUntil: 'domcontentloaded' });
+
+    // inject style overrides for css variables
+    await page.evaluate((styles) => {
+      const styleEl = document.createElement('style');
+      styleEl.innerText = styles;
+      document.head.append(styleEl);
+    }, rootStyles);
+
     await page.waitForSelector('html.hydrated');
     await page.evaluate(() => (window as any).componentsReady());
 
