@@ -19,16 +19,20 @@
         },
         "hover": {
           "color": {
-            "value": "{color.core.state.hover.value}"
+            "value": "{color.core.state.hoverHigh.value}"
           }
         },
         "active": {
           "color": {
-            "value": "{color.core.state.hover.value}"
+            "value": "{color.core.state.hoverHigh.value}"
           }
         }
       },
       "secondary": {
+        "background-color": {
+          "value": "currentColor",
+          "comment": "// TODO: what do other platforms do with this?"
+        },
         "color": {
           "default": {
             "value": "{color.core.contrast.high.value}"
@@ -39,19 +43,36 @@
           "loading": {
             "value": "{color.core.state.disabled.value}"
           }
+        },
+        "hover": {
+          "color": {
+            "value": "{color.core.contrast.higher.value}"
+          }
+        },
+        "active": {
+          "color": {
+            "value": "{color.core.contrast.higher.value}"
+          }
         }
       },
       "tertiary": {
         "background-color": {
           "value": "{color.core.background.transparent.value}"
         },
-        "hover": {
-          "background-color": {
-            "value": "currentColor",
-            "comment": "// TODO: what do other platforms do with this?"
+        "color": {
+          "default": {
+            "value": "{color.core.contrast.high.value}"
           },
+          "disabled": {
+            "value": "{color.core.state.disabled.value}"
+          },
+          "loading": {
+            "value": "{color.core.state.disabled.value}"
+          }
+        },
+        "hover": {
           "color": {
-            "value": "{}"
+            "value": "{color.core.contrast.higher.value}"
           }
         },
         "active": {
@@ -60,7 +81,7 @@
             "comment": "// TODO: what do other platforms do with this?"
           },
           "color": {
-            "value": "{}"
+            "value": "{color.core.contrast.higher.value}"
           }
         }
       }
