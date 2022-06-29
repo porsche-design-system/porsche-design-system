@@ -30,7 +30,7 @@
         },
         "transparent": {
           "value": "rgba(0, 0, 0, 0)",
-          "comment": "// TODO: needs to be 'transparent'"
+          "comment": "TODO: needs to be 'transparent'"
         },
         "baseDark": {
           "value": "#0e1418"
@@ -43,7 +43,7 @@
         },
         "transparentDark": {
           "value": "{color.core.background.transparent.value}",
-          "comment": "// TODO: needs to be 'transparent'"
+          "comment": "TODO: needs to be 'transparent'"
         }
       },
 
@@ -62,7 +62,7 @@
         },
         "higherDark": {
           "value": "#c3c5c8",
-          "comment": "// TODO: this was darken before, not really HIGHER in dark theme context"
+          "comment": "TODO: this was darken before, not really HIGHER in dark theme context"
         },
         "highDark": {
           "value": "#e3e4e5"
@@ -122,7 +122,7 @@
         },
         "errorHardDark": {
           "value": "#d30303",
-          "comment": "// TODO: this was darken before, not really HIGHER in dark theme context"
+          "comment": "TODO: this was darken before, not really HIGHER in dark theme context"
         },
         "errorDark": {
           "value": "#fc1717"
@@ -155,7 +155,7 @@
         },
         "hoverHighDark": {
           "value": "#c4001a",
-          "comment": "// TODO: this was darken before, not really HIGHER in dark theme context"
+          "comment": "TODO: this was darken before, not really HIGHER in dark theme context"
         },
         "hoverDark": {
           "value": "#ff0223"
