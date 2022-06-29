@@ -5,10 +5,18 @@
         "value": "#d5001c"
       },
       "base": {
-        "value": "#000"
-      },
-      "baseDark": {
-        "value": "#fff"
+        "primary": {
+          "value": "#000"
+        },
+        "secondary": {
+          "value": "{color.core.base.primary}"
+        },
+        "primaryDark": {
+          "value": "#ffffff"
+        },
+        "secondaryDark": {
+          "value": "#e0e0e0"
+        }
       },
       "background": {
         "base": {
@@ -19,9 +27,30 @@
         },
         "shading": {
           "value": "rgba(14, 20, 24, 0.9)"
+        },
+        "transparent": {
+          "value": "rgba(0, 0, 0, 0)",
+          "comment": "// TODO: needs to be 'transparent'"
+        },
+        "baseDark": {
+          "value": "#0e1418"
+        },
+        "surfaceDark": {
+          "value": "#262b2e"
+        },
+        "shadingDark": {
+          "value": "{color.core.background.shading.value}"
+        },
+        "transparentDark": {
+          "value": "{color.core.background.transparent.value}",
+          "comment": "// TODO: needs to be 'transparent'"
         }
       },
+
       "contrast": {
+        "higher": {
+          "value": "#151718"
+        },
         "high": {
           "value": "#323639"
         },
@@ -30,9 +59,25 @@
         },
         "low": {
           "value": "#e3e4e5"
+        },
+        "higherDark": {
+          "value": "#c3c5c8",
+          "comment": "// TODO: this was darken before, not really HIGHER in dark theme context"
+        },
+        "highDark": {
+          "value": "#e3e4e5"
+        },
+        "mediumDark": {
+          "value": "#b0b1b2"
+        },
+        "lowDark": {
+          "value": "#4a4e51"
         }
       },
       "notification": {
+        "successHard": {
+          "value": "#014d0c"
+        },
         "success": {
           "value": "#018a16"
         },
@@ -45,6 +90,9 @@
         "warningSoft": {
           "value": "#fff5e5"
         },
+        "errorHard": {
+          "value": "#980014"
+        },
         "error": {
           "value": "#e00000"
         },
@@ -56,9 +104,43 @@
         },
         "neutralSoft": {
           "value": "#e5eff8"
+        },
+        "successHardDark": {
+          "value": "#017d14"
+        },
+        "successDark": {
+          "value": "#01ba1d"
+        },
+        "successSoftDark": {
+          "value": "#bfeec6"
+        },
+        "warningDark": {
+          "value": "{color.core.notification.warning.value}"
+        },
+        "warningSoftDark": {
+          "value": "#ffe6bf"
+        },
+        "errorHardDark": {
+          "value": "#d30303",
+          "comment": "// TODO: this was darken before, not really HIGHER in dark theme context"
+        },
+        "errorDark": {
+          "value": "#fc1717"
+        },
+        "errorSoftDark": {
+          "value": "#fec5c5"
+        },
+        "neutralDark": {
+          "value": "#2193ff"
+        },
+        "neutralSoftDark": {
+          "value": "#c7e4ff"
         }
       },
       "state": {
+        "hoverHigh": {
+          "value": "#980014"
+        },
         "hover": {
           "value": "#d5001c"
         },
@@ -70,6 +152,22 @@
         },
         "disabled": {
           "value": "#96989a"
+        },
+        "hoverHighDark": {
+          "value": "#c4001a",
+          "comment": "// TODO: this was darken before, not really HIGHER in dark theme context"
+        },
+        "hoverDark": {
+          "value": "#ff0223"
+        },
+        "activeDark": {
+          "value": "#ff0223"
+        },
+        "focusDark": {
+          "value": "{color.core.state.focus.value}"
+        },
+        "disabledDark": {
+          "value": "#7c7f81"
         }
       }
     }

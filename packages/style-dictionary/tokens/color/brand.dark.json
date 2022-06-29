@@ -4,68 +4,85 @@
       "value": "{color.core.brand.value}"
     },
     "base": {
-      "value": "{color.core.baseDark.value}"
+      "primary": {
+        "value": "{color.core.base.primaryDark.value}"
+      },
+      "secondary": {
+        "value": "{color.core.base.secondaryDark.value}"
+      }
     },
     "background": {
       "base": {
-        "value": "#0e1418"
+        "value": "{color.core.background.baseDark.value}"
       },
       "surface": {
-        "value": "#262b2e"
+        "value": "{color.core.background.surfaceDark.value}"
       },
       "shading": {
-        "value": "{color.core.background.shading.value}"
+        "value": "{color.core.background.shadingDark.value}"
       }
     },
     "contrast": {
+      "higher": {
+        "value": "{color.core.contrast.higherDark.value}"
+      },
       "high": {
-        "value": "#e3e4e5"
+        "value": "{color.core.contrast.highDark.value}"
       },
       "medium": {
-        "value": "#b0b1b2"
+        "value": "{color.core.contrast.mediumDark.value}"
       },
       "low": {
-        "value": "#4a4e5"
+        "value": "{color.core.contrast.lowDark.value}"
       }
     },
     "notification": {
+      "successHard": {
+        "value": "{color.core.notification.successHardDark.value}"
+      },
       "success": {
-        "value": "#01ba1d"
+        "value": "{color.core.notification.successDark.value}"
       },
       "successSoft": {
-        "value": "#bfeec6"
+        "value": "{color.core.notification.successSoftDark.value}"
+      },
+      "warning": {
+        "value": "{color.core.notification.warningDark.value}"
       },
       "warningSoft": {
-        "value": "#ffe6bf"
+        "value": "{color.core.notification.warningSoftDark.value}"
       },
-      "waning": {
-        "value": "{color.core.notification.warning.value}"
+      "errorHard": {
+        "value": "{color.core.notification.errorHardDark.value}"
       },
       "error": {
-        "value": "#fc1717"
+        "value": "{color.core.notification.errorDark.value}"
       },
       "errorSoft": {
-        "value": "#fec5c5"
+        "value": "{color.core.notification.errorSoftDark.value}"
       },
       "neutral": {
-        "value": "#2193ff"
+        "value": "{color.core.notification.neutralDark.value}"
       },
       "neutralSoft": {
-        "value": "#c7e4f"
+        "value": "{color.core.notification.neutralSoftDark.value}"
       }
     },
     "state": {
+      "hoverHigh": {
+        "value": "{color.core.state.hoverHighDark.value}"
+      },
       "hover": {
-        "value": "#ff0223"
+        "value": "{color.core.state.hoverDark.value}"
       },
       "active": {
-        "value": "#ff0223"
+        "value": "{color.core.state.activeDark.value}"
       },
       "focus": {
-        "value": "{color.core.state.focus.value}"
+        "value": "{color.core.state.focusDark.value}"
       },
       "disabled": {
-        "value": "#7c7f8"
+        "value": "{color.core.state.disabledDark.value}"
       }
     }
   }
