@@ -8,8 +8,8 @@ beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 it('should have complete sitemap.json', async () => {
-  const newUrls = await buildSitemap();
-  const oldUrls = getSitemap();
+  const oldUrls = getSitemap(); // reads fixture/sitemap.json
+  const newUrls = await buildSitemap(); // returns new result and writes results/sitemap.json
 
   expect(newUrls).toEqual(oldUrls);
 });

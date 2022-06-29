@@ -22,6 +22,7 @@ const sitemapFixturePath = path.resolve(__dirname, '../fixtures/sitemap.json');
 const sitemapResultPath = path.resolve(__dirname, '../results/sitemap.json');
 
 export const getSitemap = (): string[] => {
+  // read fixture/sitemap.json
   const fileContent = fs.readFileSync(sitemapFixturePath, 'utf8');
   return JSON.parse(fileContent);
 };
@@ -66,6 +67,7 @@ export const buildSitemap = async (): Promise<string[]> => {
   console.log(`– Internal urls: ${allUrls.filter((link) => link.startsWith('/')).length}`);
   console.log(`– External urls: ${allUrls.filter((link) => !link.startsWith('/')).length}`);
 
+  // write results/sitemap.json
   fs.writeFileSync(sitemapResultPath, JSON.stringify(allUrls, null, 2));
   return allUrls;
 };
