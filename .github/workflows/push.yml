@@ -452,6 +452,57 @@ jobs:
         with:
           name: storefront-e2e-regression
           path: ./packages/storefront/tests/e2e/results
+  storefront-a11y:
+    name: 'Storefront a11y'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Cache node_modules'
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Pull Docker Image'
+        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
+      - name: 'Install'
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-install
+      - name: 'Build Core Dependencies'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --core-dependencies
+      - name: 'Build Components'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components
+      - name: 'Build Components JS'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --components-js
+      - name: 'a11y Test'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-test-a11y
+          args: --storefront
+      - name: 'a11y Regression'
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: storefront-a11y-regression
+          path: ./packages/storefront/tests/e2e/results
   storefront-vrt:
     name: 'Storefront VRT'
     runs-on: ubuntu-latest
