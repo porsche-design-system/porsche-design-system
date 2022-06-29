@@ -31,7 +31,7 @@ export const a11yAnalyze = async (page: Page, suffix?: string) => {
 
     const output = result.violations
       .map((item) => {
-        const title = `${item.id} (${item.impact})`;
+        const title = `${item.id} (${item.impact})` + suffix ? `on ${suffix}` : '';
         const selectors = item.nodes.map((node) => '– ' + node.target.join(' >>> ')).join('\n');
         return `${title}:\n${selectors}`;
       })
