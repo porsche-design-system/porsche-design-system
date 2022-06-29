@@ -31,7 +31,7 @@ export const getInternalUrls = (): string[] => {
     getSitemap()
       .filter((link) => link.startsWith('/'))
       // drop "base" links that are redirected to first tab
-      .filter((link, i, array) => !array.some((x) => x.includes(link + '/')))
+      .filter((link, i, array) => !array.some((x) => x.startsWith(link + '/')))
   );
 };
 
