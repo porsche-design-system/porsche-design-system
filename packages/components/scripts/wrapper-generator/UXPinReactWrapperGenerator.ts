@@ -285,11 +285,14 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       },
       'p-segmented-control': {
         props: 'value={1}',
-        children: [
-          '<SegmentedControlItem uxpId="segmented-control-item-1" value="1">Value 1</SegmentedControlItem>',
-          '<SegmentedControlItem uxpId="segmented-control-item-2" value="2">Value 2</SegmentedControlItem>',
-          '<SegmentedControlItem uxpId="segmented-control-item-3" value="3">Value 3</SegmentedControlItem>',
-        ].join(glue),
+        children: Array.from(Array(3))
+          .map(
+            (_, i) =>
+              `<SegmentedControlItem uxpId="segmented-control-item-${i + 1}" value="${i + 1}" children="Value ${
+                i + 1
+              }" />`
+          )
+          .join(glue),
       },
       'p-select-wrapper': {
         props: 'label="SelectWrapper"',

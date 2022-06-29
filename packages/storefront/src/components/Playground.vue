@@ -33,6 +33,7 @@
           :markup="codeBlockMarkup"
           :convert-markup="!hasFrameworkMarkup"
           :theme="theme"
+          :colorScheme="config.colorScheme"
           :frameworks="frameworks"
         ></CodeBlock>
         <CodeEditor

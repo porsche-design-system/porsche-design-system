@@ -14,14 +14,14 @@ which needs to be injected into the `<head>` of your `index.html`.
 | Option               | Description                                                                                                                                              | Type            | Default |
 |----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|---------|
 | `prefix`             | Prefix will be added to the component names.                                                                                                             | `string`        | `''`    |
-| `withoutTags`        | <span style='color:red'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format: 'jsx'` instead.<br/>If true, it returns css styles. | `boolean`       | `false` |
+| `withoutTags`        | <span style='color:#d5001c'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format: 'jsx'` instead.<br/>If true, it returns css styles. | `boolean`       | `false` |
 | `format`             | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements.                                 | `'html'         | 'jsx'`  | `'html'` |
-| `skeletonTagNames` | <span style='color:red'>**[EXPERIMENTAL]**</span> Components will have a built-in skeleton solution. By default no skeletons are used.               | `({{this.skeletonTagNamesType}})[]` | `[]`    |
+| `skeletonTagNames` | <span style='color:#d5001c'>**[EXPERIMENTAL]**</span> Components will have a built-in skeleton solution. By default no skeletons are used.               | `({{this.skeletonTagNamesType}})[]` | `[]`    |
 
 ## Skeleton Behavior
 
 <p-inline-notification heading="Important note" state="warning" persistent="true">
-  Be aware that Skeletons are currently an <span style='color:red'>[EXPERIMENTAL]</span> feature.<br>
+  Be aware that Skeletons are currently an <span style='color:#d5001c'>[EXPERIMENTAL]</span> feature.<br>
   They are only available in releases that explicitly have the <code>-skeletons</code> suffix in their version.<br>
   Their API and behaviour might change in future releases.
 </p-inline-notification>

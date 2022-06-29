@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+if
+  [[ "--storefront" == "${1}" ]]
+then
+  yarn test:a11y:${1:2} --ci
+else
+  yarn test:a11y --ci
+fi
