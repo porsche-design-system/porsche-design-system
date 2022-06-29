@@ -3,17 +3,19 @@ import fs from 'fs-extra';
 // const template = require('lodash/template');
 import { generateIOSImageSet } from './ios';
 import { androidVector } from './android';
+import type { Action } from 'style-dictionary';
+import type { CustomPlatform } from '../scripts/build-utils';
 
 /**
  * This is a custom [Style Dictionary action](https://amzn.github.io/style-dictionary/#/actions)
  * that will generate all of the graphics for each platform (android, ios, web) based on
  * the SVG tokens defined in our Style Dictionary.
  */
-export const generateGraphics = {
+export const generateGraphics: Action = {
   // An action in Style Dictionary has `do` and `undo` functions, which take the transformed
   // and resolved dictionary object containing all the tokens and the platform configuration
   // of the platform that called this action.
-  do: (dictionary, config) => {
+  do: (dictionary, config: CustomPlatform) => {
     const { androidPath, iosPath, buildPath, mode } = config;
 
     dictionary.allProperties

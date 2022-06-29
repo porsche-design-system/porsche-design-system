@@ -1,14 +1,16 @@
 import fs from 'fs-extra';
 import { CONTENTS, DARK_APPEARANCE, IDIOM, HC_APPEARANCE } from './constants';
+import type { Action } from 'style-dictionary';
+import { CustomPlatform } from '../../scripts/build-utils';
 
 /**
  * This action will iterate over all the colors in the Style Dictionary
  * and for each one write a colorset with light and (optional) dark
  * mode versions.
  */
-export const colorsets = {
+export const colorsets: Action = {
   // This is going to run once per theme.
-  do: (dictionary, platform) => {
+  do: (dictionary, platform: CustomPlatform) => {
     const assetPath = `${platform.buildPath}/StyleDictionary.xcassets`;
     fs.ensureDirSync(assetPath);
     fs.writeFileSync(`${assetPath}/Contents.json`, JSON.stringify(CONTENTS, null, 2));
@@ -34,17 +36,18 @@ export const colorsets = {
           },
           appearances: undefined,
         };
-
-        if (platform.mode === `dark`) {
-          color.appearances = [DARK_APPEARANCE];
-        }
-
-        if (platform.mode === `hc`) {
-          color.appearances = [HC_APPEARANCE];
-        }
-
-        if (platform.mode === `hcDark`) {
-          color.appearances = [DARK_APPEARANCE, HC_APPEARANCE];
+        switch (platform.mode) {
+          case 'dark':
+            color.appearances = [DARK_APPEARANCE];
+            break;
+          // case 'hc':
+          //   color.appearances = [HC_APPEARANCE];
+          //   break;
+          // case 'hcDark':
+          //   color.appearances = [DARK_APPEARANCE, HC_APPEARANCE];
+          //   break;
+          default:
+            break;
         }
 
         colorset.colors.push(color);

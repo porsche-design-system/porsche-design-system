@@ -1,6 +1,7 @@
 import tinycolor2 from 'tinycolor2';
+import type { Transform } from 'style-dictionary';
 
-export const colorRGB = {
+export const colorRGB: Transform = {
   type: `value`,
   matcher: (token) => token.attributes.category === `color`,
   transformer: (token) => {

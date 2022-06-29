@@ -1,4 +1,5 @@
 import StyleDictionary from 'style-dictionary';
+import type { Transform } from 'style-dictionary';
 
 const propertiesToCTI = {
   width: { category: 'size', type: 'dimension' },
@@ -22,7 +23,8 @@ const propertiesToCTI = {
   size: { category: 'size', type: 'icon' },
 };
 
-export const attributeCTI = {
+export const attributeCTI: Transform = {
+  type: 'attribute',
   transformer: (prop) => {
     // Only do this custom functionality in the 'component' top-level namespace.
     if (prop.path[0] === 'component') {

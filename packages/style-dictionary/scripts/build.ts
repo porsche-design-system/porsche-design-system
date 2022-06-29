@@ -2,7 +2,7 @@ import StyleDictionary from 'style-dictionary';
 import { extendSwiftUIColor, extendSwiftUIImage } from '../formats';
 import { attributeCTI, colorRGB, remToFloat } from '../transforms';
 import { colorsets, generateGraphics } from '../actions';
-import type { TransformedToken } from 'style-dictionary/types/TransformedToken';
+import { getColor, getDarkFiles, getNonCoreFiles, MODES } from './build-utils';
 
 const IOS_PATH = `build/ios/dist/`;
 const ANDROID_PATH = `build/android/styledictionary/src/main/res/`;
@@ -10,6 +10,7 @@ const WEB_PATH = `build/web/dist/`;
 
 // Adding custom actions, transforms, and formats
 const styleDictionary = StyleDictionary.extend({
+  platforms: undefined,
   // custom actions
   action: {
     generateColorSets: colorsets,
@@ -26,13 +27,7 @@ const styleDictionary = StyleDictionary.extend({
     swiftColor: extendSwiftUIColor,
     swiftImage: extendSwiftUIImage,
   },
-} as any);
-
-const modes = [`light`, `dark`];
-
-const getNonCoreFiles = (token: TransformedToken) => !token.filePath.includes('core');
-const getDarkFiles = (token: TransformedToken) => token.filePath.includes(`.dark`);
-const getColor = (token: TransformedToken) => token.attributes.category === `color`;
+});
 
 // const assets = {
 //   transforms: [`attribute/cti`, `color/hex`, `size/remToFloat`, `name/ti/camel`],
@@ -54,7 +49,7 @@ styleDictionary
     source: [
       // this is saying find any files in the tokens folder
       // that does not have .dark or .light, but ends in .json
-      `tokens/**/!(*.${modes.join(`|*.`)}).json`,
+      `tokens/**/!(*.${MODES.join(`|*.`)}).json`,
     ],
 
     platforms: {
@@ -158,7 +153,7 @@ styleDictionary
   .extend({
     // Using the include array so that theme token overrides don't show
     // warnings in the console.
-    include: [`tokens/**/!(*.${modes.join(`|*.`)}).json`],
+    include: [`tokens/**/!(*.${MODES.join(`|*.`)}).json`],
     source: [`tokens/**/*.dark.json`],
     platforms: {
       scss: {
@@ -218,7 +213,7 @@ styleDictionary
 // console.log(`\n\n🌈🌙 Building high-contrast dark mode...`);
 // styleDictionary
 //   .extend({
-//     include: [`tokens/**/!(*.${modes.join(`|*.`)}).json`],
+//     include: [`tokens/**/!(*.${MODES.join(`|*.`)}).json`],
 //     source: [`tokens/**/*.hcDark.json`],
 //
 //     platforms: {
@@ -255,7 +250,7 @@ styleDictionary
 // console.log(`\n\n🌈☀️ Building high-contrast light mode...`);
 // styleDictionary
 //   .extend({
-//     include: [`tokens/**/!(*.${modes.join(`|*.`)}).json`],
+//     include: [`tokens/**/!(*.${MODES.join(`|*.`)}).json`],
 //     source: [`tokens/**/*.hc.json`],
 //
 //     platforms: {
