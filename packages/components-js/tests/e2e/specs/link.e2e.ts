@@ -28,7 +28,7 @@ describe('link', () => {
   const getIcon = () => selectNode(page, 'p-link >>> p-icon >>> svg');
 
   const initLink = (opts?: { useSlottedAnchor?: boolean }): Promise<void> => {
-    const { useSlottedAnchor = false } = opts ?? {};
+    const { useSlottedAnchor = false } = opts || {};
 
     return setContentWithDesignSystem(
       page,
@@ -187,12 +187,13 @@ describe('link', () => {
       await initLink({ useSlottedAnchor: true });
 
       const host = await getHost();
+      const hostWidthInPx = await getElementStyle(host, 'width');
       const rootBorderWidthInPx = await getElementStyle(await getRoot(), 'borderWidth');
       const rootBorderWidth = parseInt(rootBorderWidthInPx, 10) * 2;
 
       const anchorWidth = await page.evaluate(() => document.querySelector('p-link a').getBoundingClientRect().width);
 
-      expect(`${anchorWidth + rootBorderWidth}px`).toBe(await getElementStyle(host, 'width'));
+      expect(`${anchorWidth + rootBorderWidth}px`).toBe(hostWidthInPx);
     });
   });
 
@@ -202,10 +203,9 @@ describe('link', () => {
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidLoad['p-link'], 'componentDidLoad: p-link').toBe(1);
-      expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(1);
       expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
-      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
