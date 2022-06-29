@@ -27,7 +27,12 @@ export const getSitemap = (): string[] => {
 };
 
 export const getInternalUrls = (): string[] => {
-  return getSitemap().filter((link) => link.startsWith('/'));
+  return (
+    getSitemap()
+      .filter((link) => link.startsWith('/'))
+      // drop "base" links that are redirected to first tab
+      .filter((link, i, array) => !array.some((x) => x.includes(link + '/')))
+  );
 };
 
 export const getExternalUrls = (): string[] => {
