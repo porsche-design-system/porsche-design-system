@@ -46,7 +46,8 @@ export const buildSitemap = async (): Promise<string[]> => {
 
   await page.goto(baseURL, { waitUntil: 'networkidle0' });
 
-  let allUrls = await scanForUrls();
+  // initial scan on front page without duplicates
+  let allUrls = (await scanForUrls()).filter((x, i, array) => array.indexOf(x) === i);
 
   for (let i = 0; i < allUrls.length; i++) {
     const href = allUrls[i];
@@ -57,6 +58,7 @@ export const buildSitemap = async (): Promise<string[]> => {
       await page.goto(`${baseURL}${href}`, { waitUntil: 'networkidle0' });
 
       const newLinks = await scanForUrls();
+      // get rid of duplicates
       allUrls = allUrls.concat(newLinks).filter((x, i, array) => array.indexOf(x) === i);
     }
   }
