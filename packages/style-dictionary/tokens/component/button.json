@@ -1,0 +1,69 @@
+{
+  "component": {
+    "button": {
+      "primary": {
+        "background-color": {
+          "value": "currentColor",
+          "comment": "// TODO: what do other platforms do with this?"
+        },
+        "color": {
+          "default": {
+            "value": "{color.core.brand.value}"
+          },
+          "disabled": {
+            "value": "{color.core.state.disabled.value}"
+          },
+          "loading": {
+            "value": "{color.core.state.disabled.value}"
+          }
+        },
+        "hover": {
+          "color": {
+            "value": "{color.core.state.hover.value}"
+          }
+        },
+        "active": {
+          "color": {
+            "value": "{color.core.state.hover.value}"
+          }
+        }
+      },
+      "secondary": {
+        "color": {
+          "default": {
+            "value": "{color.core.contrast.high.value}"
+          },
+          "disabled": {
+            "value": "{color.core.state.disabled.value}"
+          },
+          "loading": {
+            "value": "{color.core.state.disabled.value}"
+          }
+        }
+      },
+      "tertiary": {
+        "background-color": {
+          "value": "{color.core.background.transparent.value}"
+        },
+        "hover": {
+          "background-color": {
+            "value": "currentColor",
+            "comment": "// TODO: what do other platforms do with this?"
+          },
+          "color": {
+            "value": "{}"
+          }
+        },
+        "active": {
+          "background-color": {
+            "value": "currentColor",
+            "comment": "// TODO: what do other platforms do with this?"
+          },
+          "color": {
+            "value": "{}"
+          }
+        }
+      }
+    }
+  }
+}
