@@ -752,6 +752,7 @@ jobs:
       - components-react
       - shared
       - storefront-unit-e2e
+      - storefront-a11y
       - storefront-vrt
       - utilities
       - utilities-deprecated
@@ -791,6 +792,7 @@ jobs:
       - components-react
       - shared
       - storefront-unit-e2e
+      - storefront-a11y
       - storefront-vrt
       - utilities
       - utilities-deprecated
