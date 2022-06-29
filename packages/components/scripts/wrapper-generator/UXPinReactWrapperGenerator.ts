@@ -90,7 +90,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     }
 
     // add onClick prop for marque, buttons and links, but not button-group
-    else if (!!component.match(/(button|link|marque|tag-dismissible)(?!-group)/)) {
+    else if (!!component.match(/(button|link|marque|stepper-horizontal-item|tag-dismissible)(?!-group)/)) {
       props = addProp(props, 'onClick?: (e: MouseEvent) => void;');
     }
 
