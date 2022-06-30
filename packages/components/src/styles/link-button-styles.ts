@@ -13,7 +13,8 @@ import {
   getThemedColors,
 } from './';
 import { hoverMediaQuery } from './hover-media-query';
-
+import * as tokens from '../../../style-dictionary/build/web/dist/tokens.json';
+import * as tokensDark from '../../../style-dictionary/build/web/dist/tokens-dark.json';
 const { baseColor: darkThemeBaseColor } = getThemedColors('dark');
 const { baseColor: lightThemeBaseColor } = getThemedColors('light');
 
@@ -154,9 +155,29 @@ export const getLinkButtonStyles = (
 ): Styles => {
   const isDarkTheme = isThemeDark(theme);
   const isTertiary = variant === 'tertiary';
-  const { primaryColor, primaryColorHover, baseColor } = getVariantColors(variant, theme);
-  const { disabledColor } = getThemedColors(theme);
-  const iconLabelColor = isDisabledOrLoading ? (isTertiary ? disabledColor : 'rgba(255,255,255,0.55)') : baseColor;
+  const {
+    // primaryColor,
+    // primaryColorHover,
+    baseColor,
+  } = getVariantColors(variant, theme);
+  // const { disabledColor } = getThemedColors(theme);
+
+  const {
+    component: { button },
+  } = theme === 'light' ? tokens : tokensDark;
+  console.log(button);
+  console.log('-> button[variant]', button[variant]);
+  // active: { color: activeColor },
+  const {
+    hover: { color: hoverColor },
+    color: buttonColor,
+  } = button[variant];
+  const disabledSelector = isDisabledOrLoading ? 'disabled' : 'standard';
+  const iconLabelColor = isDisabledOrLoading
+    ? isTertiary
+      ? buttonColor.disabled
+      : 'rgba(255,255,255,0.55)'
+    : baseColor;
 
   return {
     '@global': {
@@ -181,11 +202,11 @@ export const getLinkButtonStyles = (
             border: 0,
           },
           '&(a:focus)': {
-            outlineColor: primaryColor,
+            outlineColor: buttonColor.standard,
           },
           ...hoverMediaQuery({
             '&(a:hover:focus)': {
-              outlineColor: primaryColorHover,
+              outlineColor: hoverColor,
             },
           }),
           '&(a:focus:not(:focus-visible))': {
@@ -213,7 +234,7 @@ export const getLinkButtonStyles = (
       textAlign: 'left',
       border: '1px solid currentColor',
       backgroundColor: isTertiary ? 'transparent' : 'currentColor',
-      color: isDisabledOrLoading ? disabledColor : primaryColor,
+      color: buttonColor[disabledSelector],
       transition: ['background-color', 'border-color', 'color'].map(getTransition).join(','),
       ...(!hasSlottedAnchor && {
         ...buildResponsiveStyles(hideLabel, getRootJssStyle),
@@ -222,7 +243,7 @@ export const getLinkButtonStyles = (
       ...(!isDisabledOrLoading &&
         hoverMediaQuery({
           '&:hover, &:active': {
-            color: primaryColorHover,
+            color: hoverColor,
             ...(isTertiary && {
               backgroundColor: 'currentColor',
               '& > $label, & > $icon': {
