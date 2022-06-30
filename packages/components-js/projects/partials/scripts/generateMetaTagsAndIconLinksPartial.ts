@@ -16,12 +16,13 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
   const metaIconCDNPath = `$cdnBaseUrl/${CDN_BASE_PATH_META_ICONS}`;
 
   const metaIconLinks: string[] = [
-    '<meta name="theme-color" content="#FFFFFF" />',
+    '<meta name="theme-color" content="#FFF" media="(prefers-color-scheme:light)" />',
+    '<meta name="theme-color" content="#0E1418" media="(prefers-color-scheme:dark)" />',
     '<meta name="apple-mobile-web-app-capable" content="yes" />',
     '<meta name="apple-mobile-web-app-status-bar-style" content="white" />',
     '<meta name="apple-mobile-web-app-title" content="$appTitle" />',
     `<meta name="msapplication-TileImage" content='${metaIconCDNPath}/${META_ICONS_MANIFEST.mstile.mstile_270x270}' />`,
-    '<meta name="msapplication-TileColor" content="#FFFFFF" />',
+    '<meta name="msapplication-TileColor" content="#FFF" />',
     `<link rel="icon" type="image/png" sizes="32x32" href='${metaIconCDNPath}/${META_ICONS_MANIFEST.favicon.favicon_32x32}'/>`,
     `<link rel="apple-touch-icon" href='${metaIconCDNPath}/${META_ICONS_MANIFEST.touchIcon.appleTouchIcon_180x180}' />`,
     `<link rel="manifest" href="$manifestUrl" />`,
