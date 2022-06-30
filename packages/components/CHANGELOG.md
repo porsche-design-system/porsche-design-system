@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Changed
+
+- `getMetaTagsAndIconLinks()` partial to return `theme-color` meta tags with `prefers-color-scheme: {light|dark}` media query
+
 ### [2.13.0] - 2022-06-23
 
 ### [2.13.0-rc.5] - 2022-06-23
