@@ -11,20 +11,20 @@
             "value": "{color.core.brand.value}"
           },
           "disabled": {
-            "value": "{color.core.state.disabled.value}"
+            "value": "{color.core.state.disabledDark.value}"
           },
           "loading": {
-            "value": "{color.core.state.disabled.value}"
+            "value": "{color.core.state.disabledDark.value}"
           }
         },
         "hover": {
           "color": {
-            "value": "{color.core.state.hoverHigh.value}"
+            "value": "{color.core.state.hoverHighDark.value}"
           }
         },
         "active": {
           "color": {
-            "value": "{color.core.state.hoverHigh.value}"
+            "value": "{color.core.state.hoverHighDark.value}"
           }
         }
       },
@@ -35,44 +35,44 @@
         },
         "color": {
           "standard": {
-            "value": "{color.core.contrast.high.value}"
+            "value": "{color.core.base.primaryDark.value}"
           },
           "disabled": {
-            "value": "{color.core.state.disabled.value}"
+            "value": "{color.core.state.disabledDark.value}"
           },
           "loading": {
-            "value": "{color.core.state.disabled.value}"
+            "value": "{color.core.state.disabledDark.value}"
           }
         },
         "hover": {
           "color": {
-            "value": "{color.core.contrast.higher.value}"
+            "value": "{color.core.base.secondaryDark.value}"
           }
         },
         "active": {
           "color": {
-            "value": "{color.core.contrast.higher.value}"
+            "value": "{color.core.base.secondaryDark.value}"
           }
         }
       },
       "tertiary": {
         "background-color": {
-          "value": "{color.core.background.transparent.value}"
+          "value": "{color.core.background.transparentDark.value}"
         },
         "color": {
           "standard": {
-            "value": "{color.core.contrast.high.value}"
+            "value": "{color.core.base.primaryDark.value}"
           },
           "disabled": {
-            "value": "{color.core.state.disabled.value}"
+            "value": "{color.core.state.disabledDark.value}"
           },
           "loading": {
-            "value": "{color.core.state.disabled.value}"
+            "value": "{color.core.state.disabledDark.value}"
           }
         },
         "hover": {
           "color": {
-            "value": "{color.core.contrast.higher.value}"
+            "value": "{color.core.base.primaryDark.value}"
           }
         },
         "active": {
@@ -81,7 +81,7 @@
             "comment": "// TODO: what do other platforms do with this?"
           },
           "color": {
-            "value": "{color.core.contrast.higher.value}"
+            "value": "{color.core.base.primaryDark.value}"
           }
         }
       }
