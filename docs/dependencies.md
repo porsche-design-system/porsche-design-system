@@ -35,24 +35,6 @@ installed, the Angular build will fail.
 
 ---
 
-## Angular v14
-
-`@angular-builders/custom-webpack` does not support Angular 14 yet. A beta version supporting it is available, but we
-should wait for a stable to update.
-
-### Affected dependencies:
-
-- `@angular-builders/custom-webpack`
-- `@angular/animations`
-- `@angular/common`
-- `@angular/compiler`
-- `@angular/core`
-- `@angular/forms`
-- `@angular/platform-browser`
-- `@angular/platform-browser-dynamic`
-
----
-
 ## Globby
 
 `globby` decided to provide just a modern _ESM_ build with their latest npm package. Unfortunately there's no stable way
