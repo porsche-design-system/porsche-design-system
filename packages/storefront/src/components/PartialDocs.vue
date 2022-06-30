@@ -1,13 +1,12 @@
 <template>
-  <div>
+  <div class="partial-docs">
     <Playground :frameworkMarkup="frameworkMarkup"></Playground>
-    <br /><br />
     <p-text>
       You can find an implemented example in our
-      <a href="https://github.com/porscheui/sample-integration-vanillajs">Sample VanillaJS Integration</a>,
-      <a href="https://github.com/porscheui/sample-integration-angular">Sample Angular Integration</a>,
-      <a href="https://github.com/porscheui/sample-integration-react">Sample React Integration</a> or
-      <a href="https://github.com/porscheui/sample-integration-nextjs">Sample NextJS Integration</a>
+      <a href="https://github.com/porscheui/sample-integration-vanillajs">Sample Integration VanillaJS</a>,
+      <a href="https://github.com/porscheui/sample-integration-angular">Sample Integration Angular</a>,
+      <a href="https://github.com/porscheui/sample-integration-react">Sample Integration React</a> and
+      <a href="https://github.com/porscheui/sample-integration-nextjs">Sample Integration NextJS</a>
     </p-text>
   </div>
 </template>
@@ -130,3 +129,10 @@
     }
   }
 </script>
+
+<style scoped lang="scss">
+  .partial-docs,
+  p-text {
+    margin-top: 1rem;
+  }
+</style>
