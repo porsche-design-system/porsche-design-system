@@ -71,14 +71,14 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       return props.replace(
         new RegExp(`(\\s{4}\\*\\/\\s{3}${prop}\\?:.*)`),
         `\n   * @uxpinbind ${eventProp} 0.detail${detailChild}$1`
-        );
-      };
-      
-      const addUxPinIgnorePropAnnotation = (props: string, prop: string): string => {
-        return props.replace(new RegExp(`(\\s{4}\\*\\/\\s{3}${prop}\\?:.*)`), `\n   * @uxpinignoreprop$1`);
-      };
-      
-      let props = super.generateProps(component, rawComponentInterface);
+      );
+    };
+
+    const addUxPinIgnorePropAnnotation = (props: string, prop: string): string => {
+      return props.replace(new RegExp(`(\\s{4}\\*\\/\\s{3}${prop}\\?:.*)`), `\n   * @uxpinignoreprop$1`);
+    };
+
+    let props = super.generateProps(component, rawComponentInterface);
 
     // add custom props to wrappers
     if (component === 'p-banner') {
@@ -103,7 +103,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       props = removeProp(props, 'target');
     } else if (component === 'p-button' || component === 'p-button-pure') {
       props = removeProp(props, 'type');
-    } else if (component === "p-scroller") {
+    } else if (component === 'p-scroller') {
       props = removeProp(props, 'prevNextButtonJssStyle?');
       props = removeProp(props, 'scrollToPosition');
     }
@@ -293,7 +293,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           '<Button uxpId="button-2" disabled>Action number 2</Button>',
           '<Button uxpId="button-3" loading>Action number 3</Button>',
         ].join(glue),
-      },      
+      },
       'p-segmented-control': {
         props: 'value={1}',
         children: Array.from(Array(3))
