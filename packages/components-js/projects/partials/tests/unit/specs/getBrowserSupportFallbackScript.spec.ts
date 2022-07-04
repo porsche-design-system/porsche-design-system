@@ -1,8 +1,8 @@
 import { getBrowserSupportFallbackScript } from '../../../src';
 import { render } from '@testing-library/react';
 
-const scriptCom = 'https://cdn.ui.porsche.com/feature-detection/browser-support.[a-z0-9]{32}.js';
-const scriptCn = 'https://cdn.ui.porsche.cn/feature-detection/browser-support.[a-z0-9]{32}.js';
+const scriptCom = 'https://cdn.ui.porsche.com/porsche-design-system/fallbacks/browser-support.[a-z0-9]{32}.js';
+const scriptCn = 'https://cdn.ui.porsche.cn/porsche-design-system/fallbacks/browser-support.[a-z0-9]{32}.js';
 
 jest.mock('../../../src/shared');
 
