@@ -55,6 +55,7 @@ const generateComponentMeta = (): void => {
   }[];
   hasSlottedCss: boolean;
   hasAriaProp: boolean;
+  hasObserveAttributes: boolean;
   hasSkeleton: boolean;
   shouldPatchSlot: boolean;
   skeletonProps?: { propName: string; shouldAddValueToClassName: boolean }[];
@@ -74,6 +75,7 @@ const generateComponentMeta = (): void => {
     }[];
     hasSlottedCss: boolean;
     hasAriaProp: boolean;
+    hasObserveAttributes: boolean;
     hasSkeleton: boolean;
     shouldPatchSlot: boolean;
     skeletonProps?: { propName: string; shouldAddValueToClassName: boolean }[];
@@ -101,6 +103,7 @@ const generateComponentMeta = (): void => {
     const isThemeable = source.includes('public theme?: Theme');
     const hasSlottedCss = source.includes('attachSlottedCss');
     const hasAriaProp = source.includes('public aria?: SelectedAriaAttributes');
+    const hasObserveAttributes = source.includes('observeAttributes(this.'); // this should be safe enough, but would miss a local variable as first parameter
     const hasSkeleton = SKELETON_TAG_NAMES.includes(tagName as any);
     const shouldPatchSlot = TAG_NAMES_TO_ADD_SLOT_TO.includes(tagName);
     const usesScss = source.includes('styleUrl:');
@@ -178,6 +181,7 @@ const generateComponentMeta = (): void => {
       requiredProps,
       hasSlottedCss,
       hasAriaProp,
+      hasObserveAttributes,
       hasSkeleton,
       shouldPatchSlot,
       ...(skeletonProps.length && { skeletonProps: skeletonProps }),
