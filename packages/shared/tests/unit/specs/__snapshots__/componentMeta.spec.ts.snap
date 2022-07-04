@@ -403,6 +403,11 @@ Object {
     "requiredParent": Array [
       "p-segmented-control",
     ],
+    "requiredProps": Array [
+      Object {
+        "value": "string | number",
+      },
+    ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
@@ -442,6 +447,11 @@ Object {
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
     "isThemeable": true,
+    "requiredProps": Array [
+      Object {
+        "onOpenChange": "(isOpen: boolean) => void",
+      },
+    ],
     "requiredRootNode": Array [
       "p-select-wrapper",
     ],
@@ -608,6 +618,11 @@ Object {
     "isThemeable": false,
     "requiredParent": Array [
       "p-tabs",
+    ],
+    "requiredProps": Array [
+      Object {
+        "label": "string",
+      },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",

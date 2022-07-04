@@ -156,14 +156,20 @@ const generateComponentMeta = (): void => {
       }
     }
 
-    const [, requiredProp] = /throwIfInvalidLinkUsage\(this\.host, this\.(\w+)\);/.exec(source) || [];
+    // required props
+    const requiredProps: ComponentMeta['requiredProps'] = Array.from(
+      source.matchAll(/@Prop\(\) public ([A-z]+)(?:: (.+?))?(?:= (.+))?;/g)
+    ).map(([, propName, propType, propValue]) => ({
+      [propName]: propType,
+    }));
 
-    let requiredProps: ComponentMeta['requiredProps'];
-    if (requiredProp) {
-      const [, propType] = new RegExp(`@Prop\\(\\) public ${requiredProp}\\?: (.+);`).exec(source) || [];
-      requiredProps = [{ [requiredProp]: propType }];
+    const [, invalidLinkUsageProp] = /throwIfInvalidLinkUsage\(this\.host, this\.(\w+)\);/.exec(source) || [];
+    if (invalidLinkUsageProp) {
+      const [, propType] = new RegExp(`@Prop\\(\\) public ${invalidLinkUsageProp}\\?: (.+);`).exec(source) || [];
+      requiredProps.push({ [invalidLinkUsageProp]: propType });
     }
 
+    // skeleton props
     const skeletonProps: ComponentMeta['skeletonProps'] = hasSkeleton
       ? SKELETON_RELEVANT_PROPS.filter(({ propName, shouldAddValueToClassName }) => {
           // extract all matching skeleton relevant props
@@ -178,7 +184,7 @@ const generateComponentMeta = (): void => {
       ...(allRequiredParents.length && { requiredParent: allRequiredParents }),
       ...(allRequiredRootNodes.length && { requiredRootNode: allRequiredRootNodes }),
       requiredChild,
-      requiredProps,
+      ...(requiredProps.length && { requiredProps: requiredProps }),
       hasSlottedCss,
       hasAriaProp,
       hasObserveAttributes,
