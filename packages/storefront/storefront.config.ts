@@ -501,6 +501,10 @@ export const config: StorefrontConfig = {
     'Icon Links': [() => import('@/pages/partials/icon-links.md')],
     // @ts-ignore
     'Meta Tags And Icon Links': [() => import('@/pages/partials/meta-tags-and-icon-links.md')],
+    // @ts-ignore
+    'Browser Support': [() => import('@/pages/partials/browser-support-script.md')],
+    // @ts-ignore
+    'Cookie Support': [() => import('@/pages/partials/cookie-support-script.md')],
   },
   'Browser Notifications': {
     // @ts-ignore

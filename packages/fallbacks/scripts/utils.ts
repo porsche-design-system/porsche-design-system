@@ -1,6 +1,9 @@
 import { minify as htmlMinifier } from 'html-minifier';
 import CleanCSS from 'clean-css';
 
+export const FALLBACKS = ['browser-support', 'cookies'] as const;
+export type Fallbacks = typeof FALLBACKS[number];
+
 export const updateContent = (oldContent: string, newContent: string): string => {
   const separatorStart = '/* Auto Generated Start */';
   const separatorEnd = '/* Auto Generated End */';

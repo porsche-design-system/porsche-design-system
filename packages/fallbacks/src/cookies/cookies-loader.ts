@@ -1,4 +1,4 @@
-import { hasCookiesEnabled } from './cookie-support-utils';
+import { hasCookiesEnabled } from './cookies-utils';
 
 if (!hasCookiesEnabled()) {
   const script = document.createElement('script');
