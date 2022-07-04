@@ -35,6 +35,7 @@ const generateConstructorMap = (): void => {
   connectedCallback?: () => void;
   componentWillLoad?: () => void;
   componentWillRender?: () => void;
+  disconnectedCallback?: () => void;
   render: () => void;
 };`;
 

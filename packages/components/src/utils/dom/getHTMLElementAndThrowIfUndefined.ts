@@ -7,6 +7,7 @@ export function getHTMLElementAndThrowIfUndefined<K extends keyof HTMLElementTag
 // prettier-ignore
 export function getHTMLElementAndThrowIfUndefined<E extends Element = Element>(element: HTMLElementOrShadowRoot, selector: string): E | null;
 export function getHTMLElementAndThrowIfUndefined(element: HTMLElementOrShadowRoot, selector: string): any {
+  // TODO: should only go one level deep and throw if more than 1 child
   const el = getHTMLElement(element, selector);
   if (!el) {
     throw new Error(`Child HTMLElement ${selector} is missing.`);
