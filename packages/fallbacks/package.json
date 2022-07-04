@@ -30,7 +30,7 @@
     "build:lib": "yarn build:lib:module && yarn build:lib:umd",
     "build:lib:module": "tsc --build tsconfig.lib.module.json",
     "build:lib:umd": "tsc --build tsconfig.lib.umd.json",
-    "build:www": "rm -rf ./www && mkdir -p ./www && cp -r ./public/. ./www && mkdir -p ./www/fallbacks && cp -r ./dist/tmp/. ./www/fallbacks/.",
+    "build:www": "rm -rf ./www && mkdir -p ./www && cp -r ./public/. ./www && cp -r ./dist/tmp/. ./www/.",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": " rm -rf ./cdn && rm -rf ./dist && rm -rf ./tmp && rm -rf ./www"

@@ -18,10 +18,12 @@
         button.addEventListener('click', (event) => {
           const script = document.createElement('script');
           console.log(event.target.id);
-          script.src = `fallbacks/${event.target.id}.min.js`;
+          script.src = `${event.target.id}.min.js`;
           document.body.appendChild(script);
         });
       });
     </script>
+    <script src="browser-support-loader.min.js"></script>
+    <script src="cookies-loader.min.js"></script>
   </body>
 </html>
