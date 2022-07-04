@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
 import { paramCase } from 'change-case';
-import { TAG_NAMES, SKELETON_TAG_NAMES, TagName } from '../src/lib/tagNames';
+import { TAG_NAMES, INTERNAL_TAG_NAMES, SKELETON_TAG_NAMES, TagName } from '../src/lib/tagNames';
 
 const glue = '\n\n';
 // TODO: typing as component property string
@@ -46,13 +46,15 @@ const generateComponentMeta = (): void => {
   const types = [
     `export type ComponentMeta = {
   isDelegatingFocus: boolean;
+  isInternal: boolean;
   isThemeable: boolean;
   requiredParent?: TagName[];
-  requiredRootNode?: TagName[];
-  requiredChild?: string;
+  requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
+  requiredChild?: string; // direct and only child
   requiredProps?: {
     [propName: string]: string;
   }[];
+  hasSlot: boolean;
   hasSlottedCss: boolean;
   hasAriaProp: boolean;
   hasObserveAttributes: boolean;
@@ -66,13 +68,15 @@ const generateComponentMeta = (): void => {
 
   type ComponentMeta = {
     isDelegatingFocus: boolean;
+    isInternal: boolean;
     isThemeable: boolean;
-    requiredParent?: TagName[];
-    requiredRootNode?: TagName[];
-    requiredChild?: string;
+    requiredParent?: TagName[]; // TODO: why array? we don't have a component that can be used in multiple other components
+    requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
+    requiredChild?: string; // direct and only child
     requiredProps?: {
       [propName: string]: string;
     }[];
+    hasSlot: boolean;
     hasSlottedCss: boolean;
     hasAriaProp: boolean;
     hasObserveAttributes: boolean;
@@ -100,7 +104,9 @@ const generateComponentMeta = (): void => {
   const meta: ComponentsMeta = TAG_NAMES.reduce((result, tagName) => {
     const source = componentSourceCode[tagName];
     const isDelegatingFocus = source.includes('delegatesFocus: true');
+    const isInternal = INTERNAL_TAG_NAMES.includes(tagName);
     const isThemeable = source.includes('public theme?: Theme');
+    const hasSlot = source.includes('<slot');
     const hasSlottedCss = source.includes('attachSlottedCss');
     const hasAriaProp = source.includes('public aria?: SelectedAriaAttributes');
     const hasObserveAttributes = source.includes('observeAttributes(this.'); // this should be safe enough, but would miss a local variable as first parameter
@@ -180,11 +186,13 @@ const generateComponentMeta = (): void => {
 
     result[tagName] = {
       isDelegatingFocus,
+      isInternal,
       isThemeable,
       ...(allRequiredParents.length && { requiredParent: allRequiredParents }),
       ...(allRequiredRootNodes.length && { requiredRootNode: allRequiredRootNodes }),
       requiredChild,
       ...(requiredProps.length && { requiredProps: requiredProps }),
+      hasSlot,
       hasSlottedCss,
       hasAriaProp,
       hasObserveAttributes,
