@@ -1,5 +1,5 @@
-import * as throwIfParentIsNotOfKindUtils from '../../../../utils/dom/throwIfParentIsNotOfKind';
-import * as throwIfElementHasAttributeUtils from '../../../../utils/dom/throwIfElementHasAttribute';
+import * as throwIfParentIsNotOfKindUtils from '../../../../utils/validation/throwIfParentIsNotOfKind';
+import * as throwIfElementHasAttributeUtils from '../../../../utils/validation/throwIfElementHasAttribute';
 import { TableHeadCell } from './table-head-cell';
 
 describe('table-head-cell', () => {

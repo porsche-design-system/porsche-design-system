@@ -1,4 +1,4 @@
-import * as throwIfParentIsNotOfKindUtils from '../../../../utils/dom/throwIfParentIsNotOfKind';
+import * as throwIfParentIsNotOfKindUtils from '../../../../utils/validation/throwIfParentIsNotOfKind';
 import { TableCell } from './table-cell';
 
 describe('table-cell', () => {

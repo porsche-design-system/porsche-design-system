@@ -1,6 +1,6 @@
 import { ToastItem } from './toast-item';
 import * as throwIfValueIsInvalidUtils from '../../../../utils/validation/throwIfValueIsInvalid';
-import * as throwIfRootNodeIsNotOfKindUtils from '../../../../utils/dom/throwIfRootNodeIsNotOfKind';
+import * as throwIfRootNodeIsNotOfKindUtils from '../../../../utils/validation/throwIfRootNodeIsNotOfKind';
 import { TOAST_STATES } from '../toast/toast-utils';
 
 describe('connectedCallback', () => {

@@ -1,4 +1,4 @@
-import * as throwIfParentIsNotOfKindUtils from '../../../../utils/dom/throwIfParentIsNotOfKind';
+import * as throwIfParentIsNotOfKindUtils from '../../../../utils/validation/throwIfParentIsNotOfKind';
 import { TableRow } from './table-row';
 
 describe('table-row', () => {

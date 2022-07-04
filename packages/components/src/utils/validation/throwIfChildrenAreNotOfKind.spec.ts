@@ -1,5 +1,5 @@
 import { throwIfChildrenAreNotOfKind } from './throwIfChildrenAreNotOfKind';
-import * as areChildrenOfKindUtils from './areChildrenOfKind';
+import * as areChildrenOfKindUtils from '../dom/areChildrenOfKind';
 
 it('should call areChildrenOfKind() with correct parameters', () => {
   const spy = jest.spyOn(areChildrenOfKindUtils, 'areChildrenOfKind');

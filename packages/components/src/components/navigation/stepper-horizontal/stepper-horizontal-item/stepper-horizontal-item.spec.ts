@@ -1,4 +1,4 @@
-import * as throwIfParentIsNotOfKindUtils from '../../../../utils/dom/throwIfParentIsNotOfKind';
+import * as throwIfParentIsNotOfKindUtils from '../../../../utils/validation/throwIfParentIsNotOfKind';
 import * as jssUtils from '../../../../utils/jss';
 import * as stepperHorizontalItemUtils from './stepper-horizontal-item-utils';
 import { StepperHorizontalItem } from './stepper-horizontal-item';

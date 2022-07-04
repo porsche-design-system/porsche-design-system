@@ -1,5 +1,5 @@
 import { Scroller } from './scroller';
-import * as throwIfParentIsNotOneOfKindUtils from '../../../utils/dom/throwIfParentIsNotOneOfKind';
+import * as throwIfParentIsNotOneOfKindUtils from '../../../utils/validation/throwIfParentIsNotOneOfKind';
 
 describe('componentDidLoad', () => {
   describe('connectedCallback', () => {
