@@ -48,6 +48,7 @@ const generateComponentMeta = (): void => {
   isDelegatingFocus: boolean;
   isThemeable: boolean;
   requiredParent?: TagName[];
+  requiredRootNode?: TagName[];
   requiredChild?: string;
   requiredProps?: {
     [propName: string]: string;
@@ -56,7 +57,7 @@ const generateComponentMeta = (): void => {
   hasAriaProp: boolean;
   hasSkeleton: boolean;
   shouldPatchSlot: boolean;
-  skeletonProps: { propName: string; shouldAddValueToClassName: boolean }[];
+  skeletonProps?: { propName: string; shouldAddValueToClassName: boolean }[];
   styling: 'jss' | 'scss' | 'hybrid';
 };`,
     `type ComponentsMeta = { [key in TagName]: ComponentMeta };`,
@@ -66,6 +67,7 @@ const generateComponentMeta = (): void => {
     isDelegatingFocus: boolean;
     isThemeable: boolean;
     requiredParent?: TagName[];
+    requiredRootNode?: TagName[];
     requiredChild?: string;
     requiredProps?: {
       [propName: string]: string;
@@ -74,7 +76,7 @@ const generateComponentMeta = (): void => {
     hasAriaProp: boolean;
     hasSkeleton: boolean;
     shouldPatchSlot: boolean;
-    skeletonProps: { propName: string; shouldAddValueToClassName: boolean }[];
+    skeletonProps?: { propName: string; shouldAddValueToClassName: boolean }[];
     styling: 'jss' | 'scss' | 'hybrid';
   };
 
@@ -105,19 +107,33 @@ const generateComponentMeta = (): void => {
     const usesJss = source.includes('attachComponentCss');
     const styling = usesScss && usesJss ? 'hybrid' : usesJss ? 'jss' : 'scss';
 
-    const [, requiredParentCamelCase] = /throwIfParentIsNotOfKind\(.+'(\w+)'\)/.exec(source) ?? [];
+    // required parent
+    const [, requiredParentCamelCase] = /throwIfParentIsNotOfKind\(.+'(\w+)'\)/.exec(source) || [];
     const requiredParent = requiredParentCamelCase ? (paramCase(requiredParentCamelCase) as TagName) : undefined;
-    const [, requiredParentsCamelCase] = /throwIfParentIsNotOneOfKind\(.+\[([\w,\s']+)\]\)/.exec(source) ?? [];
+    const [, requiredParentsCamelCase] = /throwIfParentIsNotOneOfKind\(.+\[([\w,\s']+)\]\)/.exec(source) || [];
     const requiredParents = requiredParentsCamelCase
       ? (requiredParentsCamelCase
           .replace(/['\s]/g, '')
           .split(',')
-          .map((requiredParent) => paramCase(requiredParent)) as TagName[])
+          .map((parent) => paramCase(parent)) as TagName[])
       : [];
 
     const allRequiredParents = [requiredParent, ...requiredParents].filter((x) => x);
 
-    let [, requiredChild] = /getHTMLElementAndThrowIfUndefined\(\s*this\.host,((?:.|\s)+?)\);/.exec(source) ?? [];
+    // required root node
+    const [, requiredRootNodeCamelCase] = /throwIfRootNodeIsNotOfKind\(.+'(\w+)'\)/.exec(source) || [];
+    const requiredRootNode = requiredRootNodeCamelCase ? (paramCase(requiredRootNodeCamelCase) as TagName) : undefined;
+    const [, requiredRootNodesCamelCase] = /throwIfRootNodeIsNotOneOfKind\(.+\[([\w,\s']+)\]\)/.exec(source) || [];
+    const requiredRootNodes = requiredRootNodesCamelCase
+      ? (requiredRootNodesCamelCase
+          .replace(/['\s]/g, '')
+          .split(',')
+          .map((rootNode) => paramCase(rootNode)) as TagName[])
+      : [];
+    const allRequiredRootNodes = [requiredRootNode, ...requiredRootNodes].filter((x) => x);
+
+    // required child
+    let [, requiredChild] = /getHTMLElementAndThrowIfUndefined\(\s*this\.host,((?:.|\s)+?)\);/.exec(source) || [];
     requiredChild = requiredChild?.trim();
 
     if (requiredChild) {
@@ -130,25 +146,25 @@ const generateComponentMeta = (): void => {
         requiredChild = cleanSelector(requiredChild);
         requiredChild = requiredChild.slice(1, -1);
       } else {
-        const [, valueRaw] = new RegExp(`const ${requiredChild} = ((?:.|\\s)*?;)`).exec(source) ?? [];
+        const [, valueRaw] = new RegExp(`const ${requiredChild} = ((?:.|\\s)*?;)`).exec(source) || [];
         const value = eval(`${valueRaw || requiredChild}`);
         requiredChild = value.split(',')[0];
         requiredChild = cleanSelector(requiredChild);
       }
     }
 
-    const [, requiredProp] = /throwIfInvalidLinkUsage\(this\.host, this\.(\w+)\);/.exec(source) ?? [];
+    const [, requiredProp] = /throwIfInvalidLinkUsage\(this\.host, this\.(\w+)\);/.exec(source) || [];
 
     let requiredProps: ComponentMeta['requiredProps'];
     if (requiredProp) {
-      const [, propType] = new RegExp(`@Prop\\(\\) public ${requiredProp}\\?: (.+);`).exec(source) ?? [];
+      const [, propType] = new RegExp(`@Prop\\(\\) public ${requiredProp}\\?: (.+);`).exec(source) || [];
       requiredProps = [{ [requiredProp]: propType }];
     }
 
     const skeletonProps: ComponentMeta['skeletonProps'] = hasSkeleton
       ? SKELETON_RELEVANT_PROPS.filter(({ propName, shouldAddValueToClassName }) => {
           // extract all matching skeleton relevant props
-          const [match] = new RegExp(`@Prop\\(\\) public ${propName}\\?: .+;`).exec(source) ?? [];
+          const [match] = new RegExp(`@Prop\\(\\) public ${propName}\\?: .+;`).exec(source) || [];
           return match;
         })
       : [];
@@ -156,14 +172,15 @@ const generateComponentMeta = (): void => {
     result[tagName] = {
       isDelegatingFocus,
       isThemeable,
-      requiredParent: allRequiredParents,
+      ...(allRequiredParents.length && { requiredParent: allRequiredParents }),
+      ...(allRequiredRootNodes.length && { requiredRootNode: allRequiredRootNodes }),
       requiredChild,
       requiredProps,
       hasSlottedCss,
       hasAriaProp,
       hasSkeleton,
       shouldPatchSlot,
-      skeletonProps,
+      ...(skeletonProps.length && { skeletonProps: skeletonProps }),
       styling,
     };
     return result;
