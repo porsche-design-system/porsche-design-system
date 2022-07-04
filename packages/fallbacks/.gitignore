@@ -1,5 +1,3 @@
-# Build directories
 /dist
-/cdn
-/tmp
 /www
+index.ts
