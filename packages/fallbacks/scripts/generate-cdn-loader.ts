@@ -3,6 +3,7 @@ import * as crypto from 'crypto';
 import type { Fallbacks } from './utils';
 import { FALLBACKS } from './utils';
 import * as path from 'path';
+import { camelCase } from 'change-case';
 import { CDN_BASE_PATH_FALLBACKS, CDN_BASE_URL_DYNAMIC, CDN_KEY_TYPE_DEFINITION } from '../../../cdn.config';
 
 const inputDir = './dist/tmp';
@@ -37,7 +38,7 @@ const generateCdnLoader = (fallback: Fallbacks): void => {
 
   manifest = {
     ...manifest,
-    [fallback]: targetFileNameOverlay,
+    [camelCase(fallback)]: targetFileNameOverlay,
   };
 
   fs.writeFileSync(targetFilePathOverlay, fileContentOverlay);
