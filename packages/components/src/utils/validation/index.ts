@@ -5,4 +5,5 @@ export * from './throwIfParentIsNotOfKind';
 export * from './throwIfParentIsNotOneOfKind';
 export * from './throwIfPropIsUndefined';
 export * from './throwIfRootNodeIsNotOfKind';
+export * from './throwIfRootNodeIsNotOneOfKind';
 export * from './throwIfValueIsInvalid';
