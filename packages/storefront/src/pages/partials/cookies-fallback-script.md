@@ -1,4 +1,4 @@
-# Cookie Support Script
+# Cookies Fallback Script
 
 **Function name:** `getCookieSupportScript()`
 
