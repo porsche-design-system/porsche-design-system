@@ -4,7 +4,7 @@ import {
   getHTMLElements,
   getPrefixedTagNames,
   scrollElementTo,
-  throwIfParentIsNotOneOfKind,
+  throwIfRootNodeIsNotOneOfKind,
 } from '../../../utils';
 import { getComponentCss } from './scroller-styles';
 import type { Direction, GradientColorTheme, ScrollToPosition, PrevNextButtonJssStyle } from './scroller-utils';
@@ -47,7 +47,7 @@ export class Scroller {
   }
 
   public connectedCallback(): void {
-    throwIfParentIsNotOneOfKind(this.host, ['pTabsBar', 'pStepperHorizontal']);
+    throwIfRootNodeIsNotOneOfKind(this.host, ['pTabsBar', 'pStepperHorizontal']);
   }
 
   public componentDidLoad(): void {
