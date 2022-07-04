@@ -38,7 +38,7 @@
     "vmark-loader": "~1.0.0",
     "vue": "^2.6.14",
     "vue-class-component": "^7.2.6",
-    "vue-instantsearch": "^4.3.3",
+    "vue-instantsearch": "^4.4.0",
     "vue-property-decorator": "^9.0.0",
     "vue-router": "^3.5.2",
     "vuex": "^3.6.0",
