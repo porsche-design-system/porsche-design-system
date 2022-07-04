@@ -115,7 +115,7 @@
     <!-- prettier-ignore -->
     <%= require('@porsche-design-system/components-js/partials').getLoaderScript() %>
     <% if (process.env.NODE_ENV === 'production') { %>
-    <%= require('@porsche-design-system/components-js/partials').getBrowserSupportScript() %>
+    <%= require('@porsche-design-system/components-js/partials').getBrowserSupportFallbackScript() %>
     <% } %>
     <!-- built files will be auto injected -->
   </body>
