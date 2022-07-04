@@ -23,6 +23,7 @@ export const isVariantType = (variant: HeadlineVariant): boolean => {
 };
 
 export const hasSlottedHeadlineTag = (host: HTMLElement): boolean => {
+  // TODO: needs to be direct and only child
   const el = getHTMLElement(host, ':first-child');
   return el?.matches('h1, h2, h3, h4, h5, h6');
 };
