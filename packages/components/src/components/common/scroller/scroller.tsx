@@ -45,6 +45,7 @@ export class Scroller {
       this.scrollAreaElement.scrollLeft = scrollPosition;
     }
   }
+
   public connectedCallback(): void {
     throwIfParentIsNotOneOfKind(this.host, ['pTabsBar', 'pStepperHorizontal']);
   }

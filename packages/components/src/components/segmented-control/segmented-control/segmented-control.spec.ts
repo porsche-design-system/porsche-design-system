@@ -2,7 +2,7 @@ import { SegmentedControl } from './segmented-control';
 import * as childrenObserverUtils from '../../../utils/children-observer';
 import * as segmentedControlUtils from './segmented-control-utils';
 import * as getClickedItemUtils from '../../../utils/dom/getClickedItem';
-import * as throwIfChildrenAreNotOfKindUtils from '../../../utils/dom/throwIfChildrenAreNotOfKind';
+import * as throwIfChildrenAreNotOfKindUtils from '../../../utils/validation/throwIfChildrenAreNotOfKind';
 import { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 
 describe('connectedCallback', () => {

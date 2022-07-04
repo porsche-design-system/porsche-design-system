@@ -1,4 +1,4 @@
-import * as throwIfRootNodeIsNotOfKindUtils from '../../../../utils/dom/throwIfRootNodeIsNotOfKind';
+import * as throwIfRootNodeIsNotOfKindUtils from '../../../../utils/validation/throwIfRootNodeIsNotOfKind';
 import { SelectWrapperDropdown } from './select-wrapper-dropdown';
 import * as selectWrapperDropdownUtils from './select-wrapper-dropdown-utils';
 import * as propertyObserverUtils from '../../../../utils/property-observer';

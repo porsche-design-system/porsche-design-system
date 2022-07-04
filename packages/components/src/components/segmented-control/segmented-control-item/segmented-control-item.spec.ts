@@ -1,5 +1,5 @@
 import { SegmentedControlItem } from './segmented-control-item';
-import * as throwIfParentIsNotOfKindUtils from '../../../utils/dom/throwIfParentIsNotOfKind';
+import * as throwIfParentIsNotOfKindUtils from '../../../utils/validation/throwIfParentIsNotOfKind';
 import * as throwIfPropIsUndefinedUtils from '../../../utils/validation/throwIfPropIsUndefined';
 
 describe('connectedCallback', () => {
