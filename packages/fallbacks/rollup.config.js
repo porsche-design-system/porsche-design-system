@@ -9,7 +9,7 @@ const outputConfig = {
 };
 
 const inputDir = './src';
-const outputDir = './tmp';
+const outputDir = './dist/tmp';
 
 export default [
   {

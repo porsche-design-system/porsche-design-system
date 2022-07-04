@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import type { Fallbacks } from './utils';
 import { FALLBACKS, minifyHTML, minifyCSS, updateContent } from './utils';
 
-const generateCssAndHtml = (fallback: Fallbacks): void => {
+const generateOverlayCssAndHtml = (fallback: Fallbacks): void => {
   const isBrowser = fallback === 'browser-support';
   const targetFile = `./src/${fallback}/${fallback}.ts`;
 
@@ -174,4 +174,4 @@ ${
   fs.writeFileSync(targetFile, updateContent(oldContent, newContent));
 };
 
-FALLBACKS.forEach((fallback) => generateCssAndHtml(fallback));
+FALLBACKS.forEach((fallback) => generateOverlayCssAndHtml(fallback));
