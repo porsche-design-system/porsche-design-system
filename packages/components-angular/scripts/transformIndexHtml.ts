@@ -25,6 +25,12 @@ export default (targetOptions: TargetOptions, indexHtml: string): string => {
         : {}),
     }),
     partials.getFontLinks({ weights: ['thin', 'regular', 'semi-bold', 'bold'] }),
+    partials
+      .getBrowserSupportFallbackScript()
+      .replace(/https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g, 'http://localhost:3001'),
+    partials
+      .getCookiesFallbackScript()
+      .replace(/https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g, 'http://localhost:3001'),
   ].join('\n');
 
   indexHtml = indexHtml.replace(/(<\/head>)/, `\n${partialContent}$1`);
