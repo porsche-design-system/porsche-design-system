@@ -7,7 +7,7 @@ import { camelCase } from 'change-case';
 import { CDN_BASE_PATH_FALLBACKS, CDN_BASE_URL_DYNAMIC, CDN_KEY_TYPE_DEFINITION } from '../../../cdn.config';
 
 const inputDir = './dist/tmp';
-const cdnPath = 'https://cdn.ui.porsche.com/fallbacks';
+const cdnPathBasePath = `https://cdn.ui.porsche.com/${CDN_BASE_PATH_FALLBACKS}`;
 const outputDirFallbacks = './dist/fallbacks';
 const outputDirLoader = './dist/loader';
 
@@ -30,7 +30,7 @@ const generateCdnLoader = (fallback: Fallbacks): void => {
   const contentHashOverlay = toHash(fileContentOverlay);
   const targetFileNameOverlay = `${fallback}.${contentHashOverlay}.js`;
   const targetFilePathOverlay = `${outputDirFallbacks}/${targetFileNameOverlay}`;
-  const targetCdnFilePathOverlay = `${cdnPath}/${targetFileNameOverlay}`;
+  const targetCdnFilePathOverlay = `${cdnPathBasePath}/${targetFileNameOverlay}`;
 
   const fileContentLoader = fs.readFileSync(`${inputDir}/${fallback}-loader.min.js`, 'utf8');
   const newFileContentLoader = fileContentLoader.replace(`${fallback}.min.js`, targetCdnFilePathOverlay);
