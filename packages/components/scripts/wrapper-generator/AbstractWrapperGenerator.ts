@@ -116,7 +116,7 @@ export abstract class AbstractWrapperGenerator {
     const wrapperDefinition = this.generateComponent(
       component,
       extendedProps,
-      hasSkeleton ? componentMeta.skeletonProps : []
+      hasSkeleton && componentMeta.skeletonProps?.length ? componentMeta.skeletonProps : []
     );
 
     const content = [importsDefinition, propsDefinition, wrapperDefinition].filter((x) => x).join('\n\n');
@@ -154,6 +154,7 @@ export abstract class AbstractWrapperGenerator {
       }\``;
     });
   }
+
   // helper to possible inject additional contents into barrel file
   public getAdditionalBarrelFileContent(): string {
     return '';
