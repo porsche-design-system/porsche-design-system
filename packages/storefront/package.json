@@ -31,7 +31,7 @@
     "@porsche-design-system/utilities": "5.3.1",
     "algoliasearch": "^4.13.1",
     "change-case": "^4.1.2",
-    "core-js": "^3.22.8",
+    "core-js": "^3.23.3",
     "imask": "^6.4.2",
     "prismjs": "^1.28.0",
     "vmark": "~1.1.0",
@@ -66,7 +66,7 @@
     "sass-loader": "^10.1.1",
     "ts-node": "^10.8.2",
     "typescript": "~4.6.4",
-    "vue-template-compiler": "^2.6.14",
+    "vue-template-compiler": "~2.6.14",
     "wait-on": "^6.0.1"
   },
   "scope": "@porsche-design-system"
