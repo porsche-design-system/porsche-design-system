@@ -316,11 +316,10 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
     }
   };
 
-  const attributes = componentMeta.requiredProps
-    ? componentMeta.requiredProps
-        .map((requiredProp) => Object.entries(requiredProp).map(([prop, value]) => ` ${prop}="${value}"`))
-        .join()
-    : '';
+  const attributes =
+    componentMeta.requiredProps
+      ?.map((requiredProp) => Object.entries(requiredProp).map(([prop, propType]) => ` ${prop}="some value"`))
+      .join() || '';
 
   const componentMarkup = `<${tagName}${attributes}>${buildChildMarkup(componentMeta.requiredChild)}</${tagName}>`;
 
