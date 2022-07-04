@@ -1,4 +1,4 @@
-# Browser Support Script
+# Browser Support Fallback Script
 
 **Function name:** `getBrowserSupportScript()`
 

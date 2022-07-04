@@ -502,9 +502,9 @@ export const config: StorefrontConfig = {
     // @ts-ignore
     'Meta Tags And Icon Links': [() => import('@/pages/partials/meta-tags-and-icon-links.md')],
     // @ts-ignore
-    'Browser Support': [() => import('@/pages/partials/browser-support-script.md')],
+    'Browser Support Fallback Script': [() => import('@/pages/partials/browser-support-fallback-script.md')],
     // @ts-ignore
-    'Cookie Support': [() => import('@/pages/partials/cookie-support-script.md')],
+    'Cookies Fallback Script': [() => import('@/pages/partials/cookies-fallback-script.md')],
   },
   'Browser Notifications': {
     // @ts-ignore
