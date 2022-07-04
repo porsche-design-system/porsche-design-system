@@ -29,18 +29,18 @@ export default [
     plugins: [typescript(), terser()],
   },
   {
-    input: `${inputDir}/cookie-support/cookie-support-loader.ts`,
+    input: `${inputDir}/cookies/cookies-loader.ts`,
     output: {
       ...outputConfig,
-      file: `${outputDir}/cookie-support-loader.min.js`,
+      file: `${outputDir}/cookies-loader.min.js`,
     },
     plugins: [typescript(), terser()],
   },
   {
-    input: `${inputDir}/cookie-support/cookie-support.ts`,
+    input: `${inputDir}/cookies/cookies.ts`,
     output: {
       ...outputConfig,
-      file: `${outputDir}/cookie-support.min.js`,
+      file: `${outputDir}/cookies.min.js`,
     },
     plugins: [typescript(), terser()],
   },

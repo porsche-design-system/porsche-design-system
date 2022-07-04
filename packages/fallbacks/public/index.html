@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Porsche Design System Fallbacks</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  </head>
+  <body>
+    <h1>Some application</h1>
+    <button id="browser-support">Force browser support notifications to be displayed</button>
+    <button id="cookies">Force cookies notifications to be displayed</button>
+    <script>
+      document.querySelectorAll('button').forEach((button) => {
+        button.addEventListener('click', (event) => {
+          const script = document.createElement('script');
+          console.log(event.target.id);
+          script.src = `fallbacks/${event.target.id}.min.js`;
+          document.body.appendChild(script);
+        });
+      });
+    </script>
+  </body>
+</html>
