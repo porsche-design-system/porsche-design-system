@@ -1,4 +1,5 @@
 import { minify as htmlMinifier } from 'html-minifier';
+// @ts-ignore
 import CleanCSS from 'clean-css';
 
 export const FALLBACKS = ['browser-support', 'cookies'] as const;
