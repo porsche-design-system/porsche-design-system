@@ -20,17 +20,17 @@ it('should have same amount of elements in TAG_NAMES_CONSTRUCTOR_MAP as in TAG_N
 });
 
 it.each<TagName>(tagNamesWithRequiredChild)(
-  'should call getHTMLElementAndThrowIfUndefined() via componentWillLoad for %s',
+  'should call getHTMLElementAndThrowIfUndefined() with correct parameters via componentWillLoad for %s',
   (tagName) => {
     const spy = jest.spyOn(getHTMLElementAndThrowIfUndefinedUtils, 'getHTMLElementAndThrowIfUndefined');
     const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
+    component.host = document.createElement(tagName);
 
     try {
       component.componentWillLoad();
-    } catch (e) {}
+    } catch {}
 
-    // TODO: make more precise
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toBeCalledWith(component.host, getComponentMeta(tagName).requiredChildSelector);
   }
 );
 
@@ -52,7 +52,7 @@ it.each<TagName>(tagNamesWithJss)(
     if (component.connectedCallback) {
       try {
         component.connectedCallback();
-      } catch (e) {}
+      } catch {}
 
       if (spy.mock.calls.length) {
         expect(spy).toBeCalledWith(component.host, expect.any(Function)); // 2 parameters within connectedCallback
@@ -68,7 +68,7 @@ it.each<TagName>(tagNamesWithJss)(
 
       try {
         component.componentWillRender();
-      } catch (e) {}
+      } catch {}
 
       if (spy.mock.calls.length) {
         expect(spy.mock.calls[0].length).toBeGreaterThan(2); // more than 2 parameters within componentWillRender
@@ -91,7 +91,7 @@ it.each<TagName>(tagNamesWithSlottedCss)(
 
     try {
       component.connectedCallback();
-    } catch (e) {}
+    } catch {}
 
     expect(spy).toBeCalledWith(component.host, expect.any(Function)); // 2 parameters within connectedCallback
   }
