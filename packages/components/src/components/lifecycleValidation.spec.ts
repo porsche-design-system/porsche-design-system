@@ -29,66 +29,73 @@ it.each<TagName>(tagNamesWithRequiredChild)(
       component.componentWillLoad();
     } catch (e) {}
 
+    // TODO: make more precise
     expect(spy).toBeCalledTimes(1);
   }
 );
 
-it.each<TagName>(tagNamesWithJss)('should call attachComponentCss() in correct lifecycle for %s', (tagName) => {
-  const spy = jest.spyOn(jssUtils, 'attachComponentCss');
-  let spyCalls = 0;
+it.each<TagName>(tagNamesWithJss)(
+  'should call attachComponentCss() with correct parameters in correct lifecycle for %s',
+  (tagName) => {
+    const spy = jest.spyOn(jssUtils, 'attachComponentCss');
+    let spyCalls = 0;
 
-  // jsdom is missing pseudo-class selector ':scope>*' which leads to DOMException
-  jest
-    .spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement')
-    .mockReturnValue(document.createElement('div'));
+    // jsdom is missing pseudo-class selector ':scope>*' which leads to DOMException
+    jest
+      .spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement')
+      .mockReturnValue(document.createElement('div'));
 
-  const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
-  component.host = document.createElement(tagName);
-  component.host.attachShadow({ mode: 'open' });
+    const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
+    component.host = document.createElement(tagName);
+    component.host.attachShadow({ mode: 'open' });
 
-  if (component.connectedCallback) {
+    if (component.connectedCallback) {
+      try {
+        component.connectedCallback();
+      } catch (e) {}
+
+      if (spy.mock.calls.length) {
+        expect(spy).toBeCalledWith(component.host, expect.any(Function)); // 2 parameters within connectedCallback
+        spyCalls++;
+      }
+    }
+
+    if (component.componentWillRender) {
+      spy.mockClear(); // might contain something from previous call already
+
+      // some components like require a parent and certain props in order to work
+      addParentAndSetRequiredProps(tagName, component);
+
+      try {
+        component.componentWillRender();
+      } catch (e) {}
+
+      if (spy.mock.calls.length) {
+        expect(spy.mock.calls[0].length).toBeGreaterThan(2); // more than 2 parameters within componentWillRender
+        spyCalls++;
+      }
+    }
+
+    expect(spyCalls).toBe(1); // via connectedCallback or componentWillRender
+  }
+);
+
+it.each<TagName>(tagNamesWithSlottedCss)(
+  'should call attachSlottedCss() with correct parameters via connectedCallback for %s',
+  (tagName) => {
+    const spy = jest.spyOn(slottedStylesUtils, 'attachSlottedCss');
+
+    const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
+    component.host = document.createElement(tagName);
+    component.host.attachShadow({ mode: 'open' });
+
     try {
       component.connectedCallback();
     } catch (e) {}
 
-    if (spy.mock.calls.length) {
-      expect(spy).toBeCalledWith(component.host, expect.any(Function)); // 2 parameters within connectedCallback
-      spyCalls++;
-    }
+    expect(spy).toBeCalledWith(component.host, expect.any(Function)); // 2 parameters within connectedCallback
   }
-
-  if (component.componentWillRender) {
-    spy.mockClear(); // might contain something from previous call already
-
-    // some components like require a parent and certain props in order to work
-    addParentAndSetRequiredProps(tagName, component);
-
-    try {
-      component.componentWillRender();
-    } catch (e) {}
-
-    if (spy.mock.calls.length) {
-      expect(spy.mock.calls[0].length).toBeGreaterThan(2); // more than 2 parameters within componentWillRender
-      spyCalls++;
-    }
-  }
-
-  expect(spyCalls).toBe(1); // via connectedCallback or componentWillRender
-});
-
-it.each<TagName>(tagNamesWithSlottedCss)('should call attachSlottedCss() via connectedCallback for %s', (tagName) => {
-  const spy = jest.spyOn(slottedStylesUtils, 'attachSlottedCss');
-
-  const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
-  component.host = document.createElement(tagName);
-  component.host.attachShadow({ mode: 'open' });
-
-  try {
-    component.connectedCallback();
-  } catch (e) {}
-
-  expect(spy).toBeCalledWith(component.host, expect.any(Function)); // 2 parameters within connectedCallback
-});
+);
 
 describe.each<TagName>(tagNamesWithObserveAttributes)('%s', (tagName) => {
   const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
@@ -96,14 +103,14 @@ describe.each<TagName>(tagNamesWithObserveAttributes)('%s', (tagName) => {
   component.host.attachShadow({ mode: 'open' });
   const el = document.createElement('div');
 
-  it('should call observeAttributes() via connectedCallback', () => {
+  it('should call observeAttributes() with correct parameters via connectedCallback', () => {
     const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
     component.connectedCallback();
 
     expect(spy).toBeCalledWith(undefined, getComponentMeta(tagName).observedAttributes, expect.any(Function));
   });
 
-  it('should call observeAttributes() via componentWillLoad', () => {
+  it('should call observeAttributes() with correct parameters via componentWillLoad', () => {
     jest.spyOn(getHTMLElementAndThrowIfUndefinedUtils, 'getHTMLElementAndThrowIfUndefined').mockReturnValue(el);
     const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
 
@@ -116,7 +123,10 @@ describe.each<TagName>(tagNamesWithObserveAttributes)('%s', (tagName) => {
     expect(spy).toBeCalledWith(el, getComponentMeta(tagName).observedAttributes, expect.any(Function));
   });
 
-  it('should call unobserveAttributes() via disconnectedCallback', () => {
+  it('should call unobserveAttributes() with correct parameters via disconnectedCallback', () => {
+    jest.spyOn(getHTMLElementAndThrowIfUndefinedUtils, 'getHTMLElementAndThrowIfUndefined').mockReturnValue(el);
+    component.componentWillLoad(); // to ensure reference too "el" is in component instance
+
     const spy = jest.spyOn(attributeObserverUtils, 'unobserveAttributes');
     component.disconnectedCallback();
 
@@ -129,14 +139,14 @@ describe.each<TagName>(tagNamesWithObserveChildren)('%s', (tagName) => {
   component.host = document.createElement(tagName);
   component.host.attachShadow({ mode: 'open' });
 
-  it('should call observeChildren() via connectedCallback', () => {
+  it('should call observeChildren() with correct parameters via connectedCallback', () => {
     const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
     component.connectedCallback();
 
     expect(spy).toBeCalledWith(component.host, expect.any(Function));
   });
 
-  it('should call unobserveChildren() via disconnectedCallback', () => {
+  it('should call unobserveChildren() with correct parameters via disconnectedCallback', () => {
     const spy = jest.spyOn(childrenObserverUtils, 'unobserveChildren');
     component.disconnectedCallback();
 
