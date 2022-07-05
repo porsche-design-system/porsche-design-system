@@ -1,5 +1,6 @@
 import type { TagName } from '@porsche-design-system/shared';
 
+// TODO: use getComponentMeta for less manual maintenance
 export const addParentAndSetRequiredProps = (tagName: TagName, component: any): void => {
   // some components like grid-item and text-list-item require a parent to apply styles
   const parent = document.createElement('div');
