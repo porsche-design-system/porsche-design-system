@@ -51,9 +51,10 @@ const generateComponentMeta = (): void => {
   requiredParent?: TagName[];
   requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
   requiredChild?: string; // direct and only child
-  requiredProps?: {
-    [propName: string]: string;
+  props?: {
+    [propName: string]: boolean | number | string; // value is the prop's default value
   }[];
+  requiredProps?: string[];
   hasSlot: boolean;
   hasSlottedCss: boolean;
   hasAriaProp: boolean;
@@ -73,9 +74,10 @@ const generateComponentMeta = (): void => {
     requiredParent?: TagName[]; // TODO: why array? we don't have a component that can be used in multiple other components
     requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
     requiredChild?: string; // direct and only child
-    requiredProps?: {
-      [propName: string]: string;
+    props?: {
+      [propName: string]: boolean | number | string; // value is the prop's default value
     }[];
+    requiredProps?: string[]; // array of props that are mandatory
     hasSlot: boolean;
     hasSlottedCss: boolean;
     hasAriaProp: boolean;
@@ -162,17 +164,32 @@ const generateComponentMeta = (): void => {
       }
     }
 
+    // props
+    const props: ComponentMeta['props'] = Array.from(
+      source.matchAll(/@Prop\(\) public ([A-z]+)\??(?:: (.+?))?(?:= (.+))?;/g)
+    ).map(([, propName, propType, propValue]) => {
+      const cleanedValue =
+        (propValue === 'true'
+          ? true
+          : propValue === 'false'
+          ? false
+          : // undefined values get lost in JSON.stringify, but null is allowed
+            propValue?.replace(/'/g, '')) || null;
+      return {
+        [propName]: cleanedValue,
+      };
+    });
+
     // required props
     const requiredProps: ComponentMeta['requiredProps'] = Array.from(
+      // same regex as above without optional ? modifier
       source.matchAll(/@Prop\(\) public ([A-z]+)(?:: (.+?))?(?:= (.+))?;/g)
-    ).map(([, propName, propType, propValue]) => ({
-      [propName]: propType,
-    }));
+    ).map(([, propName]) => propName);
 
     const [, invalidLinkUsageProp] = /throwIfInvalidLinkUsage\(this\.host, this\.(\w+)\);/.exec(source) || [];
     if (invalidLinkUsageProp) {
       const [, propType] = new RegExp(`@Prop\\(\\) public ${invalidLinkUsageProp}\\?: (.+);`).exec(source) || [];
-      requiredProps.push({ [invalidLinkUsageProp]: propType });
+      requiredProps.push(invalidLinkUsageProp);
     }
 
     // skeleton props
@@ -191,6 +208,7 @@ const generateComponentMeta = (): void => {
       ...(allRequiredParents.length && { requiredParent: allRequiredParents }),
       ...(allRequiredRootNodes.length && { requiredRootNode: allRequiredRootNodes }),
       requiredChild,
+      ...(props.length && { props: props }),
       ...(requiredProps.length && { requiredProps: requiredProps }),
       hasSlot,
       hasSlottedCss,
