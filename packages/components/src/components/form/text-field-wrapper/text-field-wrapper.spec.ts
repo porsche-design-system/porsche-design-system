@@ -7,20 +7,6 @@ jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
 
 describe('componentWillLoad', () => {
-  it('should call getHTMLElementAndThrowIfUndefined() with correct parameters', () => {
-    const spy = jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined');
-    const component = new TextFieldWrapper();
-    try {
-      component.componentWillLoad();
-    } catch (e) {}
-
-    const selector = ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password']
-      .map((type) => `input[type=${type}]`)
-      .join(',');
-
-    expect(spy).toBeCalledWith(undefined, selector);
-  });
-
   it('should call hasCounterAndIsTypeText() with correct parameter and set hasCounter', () => {
     const input = document.createElement('input');
     input.type = 'text';

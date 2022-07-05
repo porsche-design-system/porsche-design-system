@@ -7,17 +7,6 @@ jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
 
 describe('componentWillLoad', () => {
-  it('should call getHTMLElementAndThrowIfUndefined() with correct parameters', () => {
-    const spy = jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined');
-    const component = new TextareaWrapper();
-
-    try {
-      component.componentWillLoad();
-    } catch (e) {}
-
-    expect(spy).toBeCalledWith(undefined, 'textarea');
-  });
-
   it('should call hasCounter() with correct parameter and set hasCounter', () => {
     const textarea = document.createElement('textarea');
     jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined').mockImplementation(() => textarea);

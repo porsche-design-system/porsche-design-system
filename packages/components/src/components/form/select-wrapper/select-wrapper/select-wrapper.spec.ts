@@ -1,4 +1,3 @@
-import * as getHTMLElementAndThrowIfUndefinedUtils from '../../../../utils/dom/getHTMLElementAndThrowIfUndefined';
 import { SelectWrapper } from './select-wrapper';
 import * as selectWrapperUtils from './select-wrapper-utils';
 
@@ -11,17 +10,6 @@ const initComponent = (): SelectWrapper => {
 };
 
 describe('componentWillLoad', () => {
-  it('should call getHTMLElementAndThrowIfUndefined() with correct parameters', () => {
-    const component = initComponent();
-    const spy = jest.spyOn(getHTMLElementAndThrowIfUndefinedUtils, 'getHTMLElementAndThrowIfUndefined');
-
-    try {
-      component.componentWillLoad();
-    } catch (e) {}
-
-    expect(spy).toBeCalledWith(component.host, 'select');
-  });
-
   it('should call isCustomDropdown() with correct parameters', () => {
     const component = initComponent();
     component.native = true;
