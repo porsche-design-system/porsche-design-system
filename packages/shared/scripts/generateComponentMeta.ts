@@ -51,6 +51,7 @@ const generateComponentMeta = (): void => {
   requiredParent?: TagName[];
   requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
   requiredChild?: string; // direct and only child
+  requiredChildSelector?: string; // might contain multiple selectors separated by comma
   props?: {
     [propName: string]: boolean | number | string; // value is the prop's default value
   }[];
@@ -76,6 +77,7 @@ const generateComponentMeta = (): void => {
     requiredParent?: TagName[]; // TODO: why array? we don't have a component that can be used in multiple other components
     requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
     requiredChild?: string; // direct and only child
+    requiredChildSelector?: string; // might contain multiple selectors separated by comma
     props?: {
       [propName: string]: boolean | number | string; // value is the prop's default value
     }[];
@@ -151,6 +153,7 @@ const generateComponentMeta = (): void => {
     // required child
     let [, requiredChild] = /getHTMLElementAndThrowIfUndefined\(\s*this\.host,((?:.|\s)+?)\);/.exec(source) || [];
     requiredChild = requiredChild?.trim();
+    let requiredChildSelector: string;
 
     if (requiredChild) {
       const cleanSelector = (markup: string): string =>
@@ -159,13 +162,17 @@ const generateComponentMeta = (): void => {
           .replace(/]/g, ''); // replace closing bracket of attribute selector
 
       if (requiredChild.startsWith("'") && requiredChild.endsWith("'")) {
-        requiredChild = cleanSelector(requiredChild);
+        // it's a simple string
         requiredChild = requiredChild.slice(1, -1);
+        requiredChildSelector = requiredChild;
+        requiredChild = cleanSelector(requiredChild);
       } else {
+        // it's a variable or some dynammic value
         const [, valueRaw] = new RegExp(`const ${requiredChild} = ((?:.|\\s)*?;)`).exec(source) || [];
-        const value = eval(`${valueRaw || requiredChild}`);
+        const value = eval(valueRaw || requiredChild);
         requiredChild = value.split(',')[0];
         requiredChild = cleanSelector(requiredChild);
+        requiredChildSelector = value;
       }
     }
 
@@ -220,6 +227,7 @@ const generateComponentMeta = (): void => {
       ...(allRequiredParents.length && { requiredParent: allRequiredParents }),
       ...(allRequiredRootNodes.length && { requiredRootNode: allRequiredRootNodes }),
       requiredChild,
+      requiredChildSelector,
       ...(props.length && { props: props }),
       ...(requiredProps.length && { requiredProps: requiredProps }),
       hasSlot,
