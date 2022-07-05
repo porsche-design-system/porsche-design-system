@@ -1,7 +1,6 @@
 import { StepperHorizontal } from './stepper-horizontal';
 import * as throwIfChildrenAreNotOfKindUtils from '../../../../utils/validation/throwIfChildrenAreNotOfKind';
 import * as throwIfChildCountIsExceededUtils from '../../../../utils/validation/throwIfChildCountIsExceeded';
-import * as childrenObserverUtils from '../../../../utils/children-observer';
 import * as stepperHorizontalUtils from './stepper-horizontal-utils';
 
 describe('connectedCallback', () => {
