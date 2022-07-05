@@ -30,7 +30,7 @@ const generateConstructorMap = (): void => {
 
   const imports = importsRaw.sort().join('\n');
 
-  const types = `type ClassType = {
+  const types = `export type ClassType = {
   host: HTMLElement;
   connectedCallback?: () => void;
   componentWillLoad?: () => void;

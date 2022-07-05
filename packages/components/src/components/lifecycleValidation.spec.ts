@@ -6,8 +6,7 @@ import * as slottedStylesUtils from '../utils/slotted-styles';
 import * as getDirectChildHTMLElementUtils from '../utils/dom/getDirectChildHTMLElement';
 import * as attributeObserverUtils from '../utils/attribute-observer';
 import * as childrenObserverUtils from '../utils/children-observer';
-import { TAG_NAMES_CONSTRUCTOR_MAP } from '../test-utils/tag-names-constructor-map';
-import { addParentAndSetRequiredProps } from '../test-utils/addParentAndSetRequiredProps';
+import { addParentAndSetRequiredProps, componentFactory, TAG_NAMES_CONSTRUCTOR_MAP } from '../test-utils';
 
 const tagNamesWithRequiredChild = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredChild);
 const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).styling === 'jss');
@@ -23,8 +22,7 @@ it.each<TagName>(tagNamesWithRequiredChild)(
   'should call getHTMLElementAndThrowIfUndefined() with correct parameters via componentWillLoad for %s',
   (tagName) => {
     const spy = jest.spyOn(getHTMLElementAndThrowIfUndefinedUtils, 'getHTMLElementAndThrowIfUndefined');
-    const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
-    component.host = document.createElement(tagName);
+    const component = componentFactory(tagName);
 
     try {
       component.componentWillLoad();
@@ -45,9 +43,7 @@ it.each<TagName>(tagNamesWithJss)(
       .spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement')
       .mockReturnValue(document.createElement('div'));
 
-    const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
-    component.host = document.createElement(tagName);
-    component.host.attachShadow({ mode: 'open' });
+    const component = componentFactory(tagName);
 
     if (component.connectedCallback) {
       try {
@@ -84,10 +80,7 @@ it.each<TagName>(tagNamesWithSlottedCss)(
   'should call attachSlottedCss() with correct parameters via connectedCallback for %s',
   (tagName) => {
     const spy = jest.spyOn(slottedStylesUtils, 'attachSlottedCss');
-
-    const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
-    component.host = document.createElement(tagName);
-    component.host.attachShadow({ mode: 'open' });
+    const component = componentFactory(tagName);
 
     try {
       component.connectedCallback();
@@ -98,9 +91,7 @@ it.each<TagName>(tagNamesWithSlottedCss)(
 );
 
 describe.each<TagName>(tagNamesWithObserveAttributes)('%s', (tagName) => {
-  const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
-  component.host = document.createElement(tagName);
-  component.host.attachShadow({ mode: 'open' });
+  const component = componentFactory(tagName);
   const el = document.createElement('div');
 
   it('should call observeAttributes() with correct parameters via connectedCallback', () => {
@@ -135,9 +126,7 @@ describe.each<TagName>(tagNamesWithObserveAttributes)('%s', (tagName) => {
 });
 
 describe.each<TagName>(tagNamesWithObserveChildren)('%s', (tagName) => {
-  const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
-  component.host = document.createElement(tagName);
-  component.host.attachShadow({ mode: 'open' });
+  const component = componentFactory(tagName);
 
   it('should call observeChildren() with correct parameters via connectedCallback', () => {
     const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
