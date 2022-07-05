@@ -238,6 +238,7 @@ Object {
       },
     ],
     "requiredChild": "input type=\\"checkbox\\"",
+    "requiredChildSelector": "input[type=\\"checkbox\\"]",
     "shouldPatchSlot": false,
     "skeletonProps": Array [
       Object {
@@ -896,6 +897,7 @@ Object {
       },
     ],
     "requiredChild": "input type=\\"radio\\"",
+    "requiredChildSelector": "input[type=\\"radio\\"]",
     "shouldPatchSlot": false,
     "skeletonProps": Array [
       Object {
@@ -1044,6 +1046,7 @@ Object {
       },
     ],
     "requiredChild": "select",
+    "requiredChildSelector": "select",
     "shouldPatchSlot": false,
     "skeletonProps": Array [
       Object {
@@ -1564,6 +1567,7 @@ Object {
       },
     ],
     "requiredChild": "input type=text",
+    "requiredChildSelector": "input[type=text],input[type=number],input[type=email],input[type=tel],input[type=search],input[type=url],input[type=date],input[type=time],input[type=month],input[type=week],input[type=password]",
     "shouldPatchSlot": false,
     "skeletonProps": Array [
       Object {
@@ -1657,6 +1661,7 @@ Object {
       },
     ],
     "requiredChild": "textarea",
+    "requiredChildSelector": "textarea",
     "shouldPatchSlot": false,
     "skeletonProps": Array [
       Object {
