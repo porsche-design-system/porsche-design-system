@@ -5,6 +5,7 @@ Object {
   "p-accordion": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -37,6 +38,7 @@ Object {
   "p-banner": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": true,
@@ -63,6 +65,7 @@ Object {
   "p-button": Object {
     "hasAriaProp": true,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": true,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -121,6 +124,7 @@ Object {
   "p-button-group": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -133,6 +137,7 @@ Object {
   "p-button-pure": Object {
     "hasAriaProp": true,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": true,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -207,6 +212,7 @@ Object {
   "p-checkbox-wrapper": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": true,
+    "hasObserveChildren": false,
     "hasSkeleton": true,
     "hasSlot": true,
     "hasSlottedCss": true,
@@ -244,6 +250,7 @@ Object {
   "p-content-wrapper": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -267,6 +274,7 @@ Object {
   "p-divider": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": false,
     "hasSlottedCss": false,
@@ -290,6 +298,7 @@ Object {
   "p-fieldset-wrapper": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": true,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -329,6 +338,7 @@ Object {
   "p-flex": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -361,6 +371,7 @@ Object {
   "p-flex-item": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -396,6 +407,7 @@ Object {
   "p-grid": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -419,6 +431,7 @@ Object {
   "p-grid-item": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -442,6 +455,7 @@ Object {
   "p-headline": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": true,
@@ -474,6 +488,7 @@ Object {
   "p-icon": Object {
     "hasAriaProp": true,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": false,
     "hasSlottedCss": false,
@@ -509,6 +524,7 @@ Object {
   "p-inline-notification": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": true,
@@ -547,6 +563,7 @@ Object {
   "p-link": Object {
     "hasAriaProp": true,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": true,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -608,6 +625,7 @@ Object {
   "p-link-pure": Object {
     "hasAriaProp": true,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": true,
     "hasSlot": true,
     "hasSlottedCss": true,
@@ -685,6 +703,7 @@ Object {
   "p-link-social": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": true,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -733,6 +752,7 @@ Object {
   "p-marque": Object {
     "hasAriaProp": true,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": false,
     "hasSlottedCss": false,
@@ -762,6 +782,7 @@ Object {
   "p-modal": Object {
     "hasAriaProp": true,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": true,
@@ -791,6 +812,7 @@ Object {
   "p-pagination": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": false,
     "hasSlottedCss": false,
@@ -820,6 +842,7 @@ Object {
   "p-popover": Object {
     "hasAriaProp": true,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": true,
@@ -843,6 +866,7 @@ Object {
   "p-radio-button-wrapper": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": true,
+    "hasObserveChildren": false,
     "hasSkeleton": true,
     "hasSlot": true,
     "hasSlottedCss": true,
@@ -880,6 +904,7 @@ Object {
   "p-scroller": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -910,6 +935,7 @@ Object {
   "p-segmented-control": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": true,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -933,6 +959,7 @@ Object {
   "p-segmented-control-item": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -968,6 +995,7 @@ Object {
   "p-select-wrapper": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": true,
+    "hasObserveChildren": false,
     "hasSkeleton": true,
     "hasSlot": true,
     "hasSlottedCss": true,
@@ -1028,6 +1056,7 @@ Object {
   "p-select-wrapper-dropdown": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": false,
     "hasSlottedCss": false,
@@ -1084,6 +1113,7 @@ Object {
   "p-spinner": Object {
     "hasAriaProp": true,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": false,
     "hasSlottedCss": false,
@@ -1107,6 +1137,7 @@ Object {
   "p-stepper-horizontal": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": true,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -1124,6 +1155,7 @@ Object {
   "p-stepper-horizontal-item": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -1147,6 +1179,7 @@ Object {
   "p-switch": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -1185,6 +1218,7 @@ Object {
   "p-table": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": true,
@@ -1202,6 +1236,7 @@ Object {
   "p-table-body": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -1217,6 +1252,7 @@ Object {
   "p-table-cell": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -1237,6 +1273,7 @@ Object {
   "p-table-head": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -1252,6 +1289,7 @@ Object {
   "p-table-head-cell": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -1278,6 +1316,7 @@ Object {
   "p-table-head-row": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -1293,6 +1332,7 @@ Object {
   "p-table-row": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -1308,6 +1348,7 @@ Object {
   "p-tabs": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": true,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -1334,6 +1375,7 @@ Object {
   "p-tabs-bar": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": true,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -1363,6 +1405,7 @@ Object {
   "p-tabs-item": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -1386,6 +1429,7 @@ Object {
   "p-tag": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -1412,6 +1456,7 @@ Object {
   "p-tag-dismissible": Object {
     "hasAriaProp": true,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -1435,6 +1480,7 @@ Object {
   "p-text": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": true,
@@ -1467,6 +1513,7 @@ Object {
   "p-text-field-wrapper": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": true,
+    "hasObserveChildren": false,
     "hasSkeleton": true,
     "hasSlot": true,
     "hasSlottedCss": true,
@@ -1520,6 +1567,7 @@ Object {
   "p-text-list": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": true,
@@ -1543,6 +1591,7 @@ Object {
   "p-text-list-item": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
@@ -1558,6 +1607,7 @@ Object {
   "p-textarea-wrapper": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": true,
+    "hasObserveChildren": false,
     "hasSkeleton": true,
     "hasSlot": true,
     "hasSlottedCss": true,
@@ -1605,6 +1655,7 @@ Object {
   "p-toast": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": false,
     "hasSlottedCss": false,
@@ -1622,6 +1673,7 @@ Object {
   "p-toast-item": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
+    "hasObserveChildren": false,
     "hasSkeleton": false,
     "hasSlot": false,
     "hasSlottedCss": false,
