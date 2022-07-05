@@ -59,6 +59,7 @@ const generateComponentMeta = (): void => {
   hasSlottedCss: boolean;
   hasAriaProp: boolean;
   hasObserveAttributes: boolean;
+  observedAttributes?: string[];
   hasObserveChildren: boolean;
   hasSkeleton: boolean;
   shouldPatchSlot: boolean;
@@ -83,6 +84,7 @@ const generateComponentMeta = (): void => {
     hasSlottedCss: boolean;
     hasAriaProp: boolean;
     hasObserveAttributes: boolean;
+    observedAttributes?: string[];
     hasObserveChildren: boolean;
     hasSkeleton: boolean;
     shouldPatchSlot: boolean;
@@ -191,8 +193,15 @@ const generateComponentMeta = (): void => {
 
     const [, invalidLinkUsageProp] = /throwIfInvalidLinkUsage\(this\.host, this\.(\w+)\);/.exec(source) || [];
     if (invalidLinkUsageProp) {
-      const [, propType] = new RegExp(`@Prop\\(\\) public ${invalidLinkUsageProp}\\?: (.+);`).exec(source) || [];
+      // const [, propType] = new RegExp(`@Prop\\(\\) public ${invalidLinkUsageProp}\\?: (.+);`).exec(source) || [];
       requiredProps.push(invalidLinkUsageProp);
+    }
+
+    // observed attributes
+    let observedAttributes: ComponentMeta['observedAttributes'] = [];
+    const [, rawObservedAttributes] = /observeAttributes\([A-z.]+, (\[.+\]),.+?\);/.exec(source) || [];
+    if (rawObservedAttributes) {
+      observedAttributes = eval(rawObservedAttributes);
     }
 
     // skeleton props
@@ -217,6 +226,7 @@ const generateComponentMeta = (): void => {
       hasSlottedCss,
       hasAriaProp,
       hasObserveAttributes,
+      ...(observedAttributes.length && { observedAttributes: observedAttributes }),
       hasObserveChildren,
       hasSkeleton,
       shouldPatchSlot,

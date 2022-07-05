@@ -219,6 +219,10 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
+    "observedAttributes": Array [
+      "disabled",
+      "required",
+    ],
     "props": Array [
       Object {
         "label": null,
@@ -873,6 +877,10 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
+    "observedAttributes": Array [
+      "disabled",
+      "required",
+    ],
     "props": Array [
       Object {
         "label": null,
@@ -1002,6 +1010,10 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
+    "observedAttributes": Array [
+      "disabled",
+      "required",
+    ],
     "props": Array [
       Object {
         "label": null,
@@ -1520,6 +1532,11 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
+    "observedAttributes": Array [
+      "disabled",
+      "readonly",
+      "required",
+    ],
     "props": Array [
       Object {
         "label": null,
@@ -1614,6 +1631,11 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
+    "observedAttributes": Array [
+      "disabled",
+      "readonly",
+      "required",
+    ],
     "props": Array [
       Object {
         "label": null,
