@@ -11,7 +11,7 @@ import * as removeAttributeUtils from '../dom/removeAttribute';
 import type { AriaAttributes } from '../../types';
 import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
 import type { TagName } from '@porsche-design-system/shared';
-import { TAG_NAMES_CONSTRUCTOR_MAP } from '../../test-utils/tag-names-constructor-map';
+import { componentFactory } from '../../test-utils';
 
 describe('setAriaAttributes()', () => {
   const node = document.createElement('div');
@@ -108,9 +108,7 @@ describe('parseAndGetAriaAttributes()', () => {
 
   it.each<TagName>(tagNamesWithAriaProp)('should call parseAndGetAriaAttributes() via render for %s', (tagName) => {
     const spy = jest.spyOn(a11yUtils, 'parseAndGetAriaAttributes');
-    const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
-    component.host = document.createElement(tagName);
-    component.host.attachShadow({ mode: 'open' });
+    const component = componentFactory(tagName);
     component['aria'] = { 'aria-label': 'Some label' };
 
     if (['p-link', 'p-link-pure', 'p-marque'].includes(tagName)) {

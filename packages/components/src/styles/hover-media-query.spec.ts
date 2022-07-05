@@ -3,8 +3,7 @@ import * as jssUtils from '../utils/jss';
 import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
 import * as getDirectChildHTMLElementUtils from '../utils/dom/getDirectChildHTMLElement';
-import { TAG_NAMES_CONSTRUCTOR_MAP } from '../test-utils/tag-names-constructor-map';
-import { addParentAndSetRequiredProps } from '../test-utils/addParentAndSetRequiredProps';
+import { addParentAndSetRequiredProps, componentFactory } from '../test-utils';
 
 const originalEnv = process.env;
 const style = {
@@ -63,9 +62,7 @@ it.each<TagName>(tagNamesWithJss)(
       .spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement')
       .mockReturnValue(document.createElement('div'));
 
-    const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
-    component.host = document.createElement(tagName);
-    component.host.attachShadow({ mode: 'open' });
+    const component = componentFactory(tagName);
 
     // css will be produced by one of the 2 lifecycles
     if (component.connectedCallback) {
