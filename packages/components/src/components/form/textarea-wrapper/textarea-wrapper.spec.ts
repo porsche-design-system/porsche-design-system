@@ -1,21 +1,10 @@
 import * as domUtils from '../../../utils/dom';
 import { TextareaWrapper } from './textarea-wrapper';
-import * as attributeObserverUtils from '../../../utils/attribute-observer';
 import * as textFieldWrapperUtils from '../text-field-wrapper/text-field-wrapper-utils';
 import * as a11yUtils from '../../../utils/a11y/a11y';
 
 jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
-
-describe('connectedCallback', () => {
-  it('should call observeAttributes() with correct parameters', () => {
-    const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
-    const component = new TextareaWrapper();
-    component.connectedCallback();
-
-    expect(spy).toBeCalledWith(undefined, ['disabled', 'readonly', 'required'], expect.anything());
-  });
-});
 
 describe('componentWillLoad', () => {
   it('should call getHTMLElementAndThrowIfUndefined() with correct parameters', () => {
@@ -27,17 +16,6 @@ describe('componentWillLoad', () => {
     } catch (e) {}
 
     expect(spy).toBeCalledWith(undefined, 'textarea');
-  });
-
-  it('should call observeAttributes() with correct parameters', () => {
-    const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
-    const component = new TextareaWrapper();
-
-    try {
-      component.componentWillLoad();
-    } catch (e) {}
-
-    expect(spy).toBeCalledWith(undefined, ['disabled', 'readonly', 'required'], expect.anything());
   });
 
   it('should call hasCounter() with correct parameter and set hasCounter', () => {
@@ -90,15 +68,5 @@ describe('componentDidRender', () => {
 
     component.componentDidRender();
     expect(spy).toBeCalledWith(textarea, { label: 'Some label', message: 'Some message', state: 'success' });
-  });
-});
-
-describe('disconnectedCallback', () => {
-  it('should call unobserveAttributes() with correct parameter', () => {
-    const spy = jest.spyOn(attributeObserverUtils, 'unobserveAttributes');
-    const component = new TextareaWrapper();
-    component.disconnectedCallback();
-
-    expect(spy).toBeCalledWith(undefined);
   });
 });

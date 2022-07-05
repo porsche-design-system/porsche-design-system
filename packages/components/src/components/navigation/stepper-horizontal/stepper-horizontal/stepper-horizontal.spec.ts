@@ -16,18 +16,6 @@ describe('connectedCallback', () => {
 
     expect(spy).toBeCalledTimes(1);
   });
-
-  it('should call observeChildren() with correct parameters', () => {
-    const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
-
-    const component = new StepperHorizontal();
-    component.host = document.createElement('p-stepper-horizontal');
-    component.host.attachShadow({ mode: 'open' });
-
-    component.connectedCallback();
-
-    expect(spy).toBeCalledWith(component.host, expect.any(Function));
-  });
 });
 
 describe('componentWillLoad', () => {
@@ -133,16 +121,5 @@ describe('componentDidUpdate', () => {
     component.componentDidUpdate();
 
     expect(spy).toBeCalledWith(component.host, expect.any(Array));
-  });
-});
-
-describe('disconnectedCallback', () => {
-  it('should call unobserveChildren() with correct parameter', () => {
-    const spy = jest.spyOn(childrenObserverUtils, 'unobserveChildren');
-    const component = new StepperHorizontal();
-
-    component.disconnectedCallback();
-
-    expect(spy).toBeCalledWith(component.host);
   });
 });
