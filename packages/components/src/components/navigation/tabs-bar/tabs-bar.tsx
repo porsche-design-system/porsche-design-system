@@ -5,11 +5,11 @@ import {
   getHTMLElements,
   getPrefixedTagNames,
   getScrollActivePosition,
-  isShadowRootParentOfKind,
   observeChildren,
   setAttribute,
   unobserveChildren,
 } from '../../../utils';
+import { isShadowRootParentOfKind } from '../../../utils/dom'; // separate import is needed for lifecycleValidation.spec to pass
 import type { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from './tabs-bar-utils';
 import { getFocusedTabIndex, getPrevNextTabIndex, sanitizeActiveTabIndex, setBarStyle } from './tabs-bar-utils';
 import { getComponentCss } from './tabs-bar-styles';

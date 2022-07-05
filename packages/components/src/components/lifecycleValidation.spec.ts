@@ -5,6 +5,7 @@ import * as jssUtils from '../utils/jss';
 import * as slottedStylesUtils from '../utils/slotted-styles';
 import * as getDirectChildHTMLElementUtils from '../utils/dom/getDirectChildHTMLElement';
 import * as attributeObserverUtils from '../utils/attribute-observer';
+import * as childrenObserverUtils from '../utils/children-observer';
 import { TAG_NAMES_CONSTRUCTOR_MAP } from '../test-utils/tag-names-constructor-map';
 import { addParentAndSetRequiredProps } from '../test-utils/addParentAndSetRequiredProps';
 
@@ -12,6 +13,7 @@ const tagNamesWithRequiredChild = TAG_NAMES.filter((tagName) => getComponentMeta
 const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).styling === 'jss');
 const tagNamesWithSlottedCss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasSlottedCss);
 const tagNamesWithObserveAttributes = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasObserveAttributes);
+const tagNamesWithObserveChildren = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasObserveChildren);
 
 it('should have same amount of elements in TAG_NAMES_CONSTRUCTOR_MAP as in TAG_NAMES', () => {
   expect(Object.keys(TAG_NAMES_CONSTRUCTOR_MAP).length).toBe(TAG_NAMES.length);
@@ -119,5 +121,25 @@ describe.each<TagName>(tagNamesWithObserveAttributes)('%s', (tagName) => {
     component.disconnectedCallback();
 
     expect(spy).toBeCalledWith(el);
+  });
+});
+
+describe.each<TagName>(tagNamesWithObserveChildren)('%s', (tagName) => {
+  const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
+  component.host = document.createElement(tagName);
+  component.host.attachShadow({ mode: 'open' });
+
+  it('should call observeChildren() via connectedCallback', () => {
+    const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
+    component.connectedCallback();
+
+    expect(spy).toBeCalledWith(component.host, expect.any(Function));
+  });
+
+  it('should call unobserveChildren() via disconnectedCallback', () => {
+    const spy = jest.spyOn(childrenObserverUtils, 'unobserveChildren');
+    component.disconnectedCallback();
+
+    expect(spy).toBeCalledWith(component.host);
   });
 });
