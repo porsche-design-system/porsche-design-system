@@ -100,7 +100,7 @@ describe.each<TagName>(tagNamesWithObserveAttributes)('%s', (tagName) => {
     const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
     component.connectedCallback();
 
-    expect(spy).toBeCalledWith(undefined, expect.any(Array), expect.any(Function));
+    expect(spy).toBeCalledWith(undefined, getComponentMeta(tagName).observedAttributes, expect.any(Function));
   });
 
   it('should call observeAttributes() via componentWillLoad', () => {
@@ -113,7 +113,7 @@ describe.each<TagName>(tagNamesWithObserveAttributes)('%s', (tagName) => {
 
     component.componentWillLoad();
 
-    expect(spy).toBeCalledWith(el, expect.any(Array), expect.any(Function));
+    expect(spy).toBeCalledWith(el, getComponentMeta(tagName).observedAttributes, expect.any(Function));
   });
 
   it('should call unobserveAttributes() via disconnectedCallback', () => {
