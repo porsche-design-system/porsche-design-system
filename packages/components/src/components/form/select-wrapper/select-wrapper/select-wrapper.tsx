@@ -13,6 +13,7 @@ import {
   observeAttributes,
   setAriaAttributes,
   setAttribute,
+  unobserveAttributes,
 } from '../../../../utils';
 import type { BreakpointCustomizable, FormState, Theme } from '../../../../types';
 import type { DropdownDirection } from './select-wrapper-utils';
@@ -93,6 +94,10 @@ export class SelectWrapper {
         state: this.state,
       });
     }
+  }
+
+  public disconnectedCallback(): void {
+    unobserveAttributes(this.select);
   }
 
   public render(): JSX.Element {
