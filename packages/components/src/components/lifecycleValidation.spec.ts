@@ -7,11 +7,13 @@ import * as getDirectChildHTMLElementUtils from '../utils/dom/getDirectChildHTML
 import * as attributeObserverUtils from '../utils/attribute-observer';
 import * as childrenObserverUtils from '../utils/children-observer';
 import * as throwIfParentIsNotOfKindUtils from '../utils/validation/throwIfParentIsNotOfKind';
+import * as throwIfRootNodeIsNotOneOfKindUtils from '../utils/validation/throwIfRootNodeIsNotOneOfKind';
 import { addParentAndSetRequiredProps, componentFactory, TAG_NAMES_CONSTRUCTOR_MAP } from '../test-utils';
 import { camelCase } from 'change-case';
 
 const tagNamesWithRequiredChild = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredChild);
 const tagNamesWithRequiredParent = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredParent);
+const tagNamesWithRequiredRootNode = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredRootNode);
 const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).styling === 'jss');
 const tagNamesWithSlottedCss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasSlottedCss);
 const tagNamesWithObserveAttributes = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasObserveAttributes);
@@ -54,6 +56,23 @@ it.each<TagName>(tagNamesWithRequiredParent)(
     component.connectedCallback();
 
     expect(spy).toBeCalledWith(component.host, camelCase(getComponentMeta(tagName).requiredParent + ''));
+  }
+);
+
+it.each<TagName>(tagNamesWithRequiredRootNode)(
+  'should call throwIfRootNodeIsNotOneOfKind() with correct parameters via connectedCallback for %s',
+  (tagName) => {
+    const spy = jest.spyOn(throwIfRootNodeIsNotOneOfKindUtils, 'throwIfRootNodeIsNotOneOfKind');
+    const component = componentFactory(tagName);
+
+    try {
+      component.connectedCallback();
+    } catch {}
+
+    expect(spy).toBeCalledWith(
+      component.host,
+      getComponentMeta(tagName).requiredRootNode.map((tagName) => camelCase(tagName))
+    );
   }
 );
 
