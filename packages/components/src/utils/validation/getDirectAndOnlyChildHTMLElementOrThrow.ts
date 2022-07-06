@@ -1,3 +1,4 @@
+/* eslint-disable prefer-arrow/prefer-arrow-functions */
 import { getTagName } from '../tag-name';
 import { getDirectChildHTMLElement } from '../dom/getDirectChildHTMLElement';
 
