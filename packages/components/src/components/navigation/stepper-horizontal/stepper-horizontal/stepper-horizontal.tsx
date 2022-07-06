@@ -127,6 +127,7 @@ export class StepperHorizontal {
   };
 
   private defineStepperHorizontalItemElements = (): void => {
+    // TODO: validation? this could be any kind of dom node
     this.stepperHorizontalItems = Array.from(this.host.children) as HTMLPStepperHorizontalItemElement[];
   };
 
