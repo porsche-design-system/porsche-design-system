@@ -1,3 +1,4 @@
+export * from './getDirectAndOnlyChildHTMLElementOrThrow';
 export * from './throwIfChildCountIsExceeded';
 export * from './throwIfChildrenAreNotOfKind';
 export * from './throwIfElementHasAttribute';
