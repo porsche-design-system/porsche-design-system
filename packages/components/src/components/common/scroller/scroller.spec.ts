@@ -1,18 +1,4 @@
 import { Scroller } from './scroller';
-import * as throwIfRootNodeIsNotOneOfKindUtils from '../../../utils/validation/throwIfRootNodeIsNotOneOfKind';
-
-describe('connectedCallback', () => {
-  it('should call throwIfRootNodeIsNotOneOfKind() with correct parameters', () => {
-    const spy = jest.spyOn(throwIfRootNodeIsNotOneOfKindUtils, 'throwIfRootNodeIsNotOneOfKind');
-    const component = new Scroller();
-
-    try {
-      component.connectedCallback();
-    } catch (e) {}
-
-    expect(spy).toBeCalledWith(undefined, ['pTabsBar', 'pStepperHorizontal']);
-  });
-});
 
 describe('componentDidLoad', () => {
   it('should call initIntersectionObserver()', () => {
