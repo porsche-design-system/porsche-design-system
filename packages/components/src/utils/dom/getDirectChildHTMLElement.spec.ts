@@ -1,21 +1,14 @@
 import * as getHTMLElementUtils from './getHTMLElement';
 import { getDirectChildHTMLElement } from './getDirectChildHTMLElement';
+import { transformSelectorToDirectChildSelector } from './transformSelectorToDirectChildSelector';
 
-it('should call getHTMLElement() with element and simple selector parameter', () => {
-  const parent = document.createElement('div');
+it('should call getHTMLElement() with element and and result of transformSelectorToDirectChildSelector()', () => {
   const spy = jest.spyOn(getHTMLElementUtils, 'getHTMLElement').mockImplementation();
-
-  getDirectChildHTMLElement(parent, 'span');
-  expect(spy).toBeCalledWith(parent, ':scope>span');
-});
-
-it('should call getHTMLElement() with element and comma separated selector', () => {
   const parent = document.createElement('div');
-  const spy = jest.spyOn(getHTMLElementUtils, 'getHTMLElement').mockImplementation();
+  const selector = 'span';
 
-  getDirectChildHTMLElement(parent, 'span,button');
-
-  expect(spy).toBeCalledWith(parent, ':scope>span,:scope>button');
+  getDirectChildHTMLElement(parent, selector);
+  expect(spy).toBeCalledWith(parent, transformSelectorToDirectChildSelector(selector));
 });
 
 it('should return direct child element', () => {

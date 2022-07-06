@@ -2,6 +2,7 @@ export * from './dom-types';
 export * from './getAttribute';
 export * from './getClosestHTMLElement';
 export * from './getDirectChildHTMLElement';
+export * from './getDirectChildHTMLElements';
 export * from './getHTMLElement';
 export * from './getHTMLElements';
 export * from './getShadowRootHTMLElement';
