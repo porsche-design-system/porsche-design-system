@@ -96,6 +96,7 @@ export class Tabs {
   }
 
   private defineTabsItemElements = (): void => {
+    // TODO: validation? this could be any kind of dom node
     this.tabsItemElements = Array.from(this.host.children) as HTMLPTabsItemElement[];
   };
 
