@@ -139,8 +139,6 @@ const generateComponentMeta = (): void => {
     const allRequiredParents = [requiredParent, ...requiredParents].filter((x) => x);
 
     // required root node
-    const [, requiredRootNodeCamelCase] = /throwIfRootNodeIsNotOfKind\(.+'(\w+)'\)/.exec(source) || [];
-    const requiredRootNode = requiredRootNodeCamelCase ? (paramCase(requiredRootNodeCamelCase) as TagName) : undefined;
     const [, requiredRootNodesCamelCase] = /throwIfRootNodeIsNotOneOfKind\(.+\[([\w,\s']+)\]\)/.exec(source) || [];
     const requiredRootNodes = requiredRootNodesCamelCase
       ? (requiredRootNodesCamelCase
@@ -148,7 +146,6 @@ const generateComponentMeta = (): void => {
           .split(',')
           .map((rootNode) => paramCase(rootNode)) as TagName[])
       : [];
-    const allRequiredRootNodes = [requiredRootNode, ...requiredRootNodes].filter((x) => x);
 
     // required child
     let [, requiredChild] = /getHTMLElementAndThrowIfUndefined\(\s*this\.host,((?:.|\s)+?)\);/.exec(source) || [];
@@ -225,7 +222,7 @@ const generateComponentMeta = (): void => {
       isInternal,
       isThemeable,
       ...(allRequiredParents.length && { requiredParent: allRequiredParents }),
-      ...(allRequiredRootNodes.length && { requiredRootNode: allRequiredRootNodes }),
+      ...(requiredRootNodes.length && { requiredRootNode: requiredRootNodes }),
       requiredChild,
       requiredChildSelector,
       ...(props.length && { props: props }),
