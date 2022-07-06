@@ -3,7 +3,6 @@ export * from './getAttribute';
 export * from './getClosestHTMLElement';
 export * from './getDirectChildHTMLElement';
 export * from './getHTMLElement';
-export * from './getHTMLElementAndThrowIfUndefined';
 export * from './getHTMLElements';
 export * from './getShadowRootHTMLElement';
 export * from './getSlotTextContent';

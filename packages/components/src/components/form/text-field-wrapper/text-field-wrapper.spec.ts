@@ -1,7 +1,7 @@
-import * as domUtils from '../../../utils/dom';
 import * as textFieldWrapperUtils from './text-field-wrapper-utils';
 import { TextFieldWrapper } from './text-field-wrapper';
 import * as a11yUtils from '../../../utils/a11y/a11y';
+import * as getDirectAndOnlyChildHTMLElementOrThrowUtils from '../../../utils/validation/getDirectAndOnlyChildHTMLElementOrThrow';
 
 jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
@@ -11,7 +11,9 @@ describe('componentWillLoad', () => {
     const input = document.createElement('input');
     input.type = 'text';
     input.maxLength = 20;
-    jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined').mockImplementation(() => input);
+    jest
+      .spyOn(getDirectAndOnlyChildHTMLElementOrThrowUtils, 'getDirectAndOnlyChildHTMLElementOrThrow')
+      .mockReturnValue(input);
 
     const spy = jest.spyOn(textFieldWrapperUtils, 'hasCounterAndIsTypeText');
     const component = new TextFieldWrapper();
@@ -28,7 +30,9 @@ describe('componentWillLoad', () => {
     const input = document.createElement('input');
     input.type = 'text';
     input.maxLength = 50;
-    jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined').mockImplementation(() => input);
+    jest
+      .spyOn(getDirectAndOnlyChildHTMLElementOrThrowUtils, 'getDirectAndOnlyChildHTMLElementOrThrow')
+      .mockReturnValue(input);
 
     const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber');
     const component = new TextFieldWrapper();
@@ -46,7 +50,9 @@ describe('componentWillLoad', () => {
     const input = document.createElement('input');
     input.type = 'text';
     input.maxLength = 50;
-    jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined').mockImplementation(() => input);
+    jest
+      .spyOn(getDirectAndOnlyChildHTMLElementOrThrowUtils, 'getDirectAndOnlyChildHTMLElementOrThrow')
+      .mockReturnValue(input);
 
     const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber');
     const component = new TextFieldWrapper();
@@ -71,7 +77,9 @@ describe('componentWillLoad', () => {
         Object.defineProperty(input, 'maxLength', { value: -1 }); // jsdom defaults to 524288 which is 512 KB
       }
 
-      jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined').mockImplementation(() => input);
+      jest
+        .spyOn(getDirectAndOnlyChildHTMLElementOrThrowUtils, 'getDirectAndOnlyChildHTMLElementOrThrow')
+        .mockReturnValue(input);
 
       const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber');
       const component = new TextFieldWrapper();
