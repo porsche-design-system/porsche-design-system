@@ -67,7 +67,7 @@
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@types/js-beautify": "^1.13.3",
-    "@types/node": "^18.0.1",
+    "@types/node": "^18.0.3",
     "concurrently": "^7.2.2",
     "devtools-protocol": "^0.0.1011705",
     "globby": "^11.0.4",

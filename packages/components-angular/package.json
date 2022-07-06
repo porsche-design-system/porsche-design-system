@@ -37,7 +37,7 @@
     "angular-imask": "^6.4.2",
     "rxjs": "^7.5.5",
     "tslib": "^2.4.0",
-    "zone.js": "~0.11.5"
+    "zone.js": "~0.11.6"
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "^14.0.0",
@@ -47,11 +47,11 @@
     "@angular/language-service": "^14.0.4",
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
-    "@types/node": "^18.0.1",
+    "@types/node": "^18.0.3",
     "concurrently": "^7.2.2",
     "jest-preset-angular": "^11.1.2",
     "local-web-server": "^5.2.1",
-    "ng-packagr": "^14.0.2",
+    "ng-packagr": "^14.0.3",
     "rollup": "^2.75.7",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
