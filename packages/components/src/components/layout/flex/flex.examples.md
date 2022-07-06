@@ -1,22 +1,26 @@
 # Flex
 
-The Porsche Design System flex layout system is based on standard CSS Flexbox browser behaviour and can be controlled by the properties of the `p-flex` container and `p-flex-item`.
-It can be used to quickly layout standard content blocks or components. 
-It does not replace the [Grid](components/grid) component which should be used to define basic page structures.
+The Porsche Design System flex layout system is based on standard CSS Flexbox browser behaviour and can be controlled by
+the properties of the `p-flex` container and `p-flex-item`. It can be used to quickly layout standard content blocks or
+components. It does not replace the [Grid](components/grid) component which should be used to define basic page
+structures.
 
 <TableOfContents></TableOfContents>
 
 ## Flex
+
 Initialize standard Flexbox container to define Flex context.
 
 <Playground :markup="flexInline()"></Playground>
 
 ## Inline
+
 Flex inline displays Flex containers in a row.
 
 <Playground :markup="flexInline('true')"></Playground>
 
 ## Responsive
+
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
 <Playground :markup="flexInline('{ base: false, l: true }')"></Playground>
@@ -53,7 +57,8 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ## Flex wrap
 
-The flex wrap property is used to force Flex items to stay in line independently of the Flex container width, or to flow in multiple lines forced by the Flex container width.
+The flex wrap property is used to force Flex items to stay in line independently of the Flex container width, or to flow
+in multiple lines forced by the Flex container width.
 
 ### Nowrap
 
@@ -145,8 +150,8 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ## Flex align-content
 
-This aligns Flex items on the cross axis of the Flex container when there is extra space available.
-This property has only effect when there is more than one line of Flex items.
+This aligns Flex items on the cross axis of the Flex container when there is extra space available. This property has
+only effect when there is more than one line of Flex items.
 
 ### Stretch
 
@@ -188,8 +193,8 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ### Flex-item width
 
-The widths of Flex items is normally defined through its contents by default.
-But it is also possible to define specific predefined widths.
+The widths of Flex items is normally defined through its contents by default. But it is also possible to define specific
+predefined widths.
 
 ### Specific
 
@@ -212,6 +217,7 @@ Items can have different offsets that work similar like column widths.
 <Playground :markup="offsetWidths" :config="{spacing: 'block-small'}"></Playground>
 
 ### Responsive
+
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
 <Playground :markup="offsetReponsive" :config="{spacing: 'block-small'}"></Playground>
@@ -256,7 +262,8 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ## Flex-item grow
 
-Flexbox default behaviours on how the item widths are rendered (stretched) can be overwritten with the following class names.
+Flexbox default behaviours on how the item widths are rendered (stretched) can be overwritten with the following class
+names.
 
 It handles how to grow an item based on the space that is left to fulfill the parent's width.
 
@@ -278,7 +285,8 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ## Flex-item shrink
 
-Flexbox default behaviour on how the item widths are rendered (shrinked) can be overwritten with the following class names.
+Flexbox default behaviour on how the item widths are rendered (shrinked) can be overwritten with the following class
+names.
 
 It handles how to shrink an item based on the space that exceeds the parents width to fulfill it.
 
@@ -319,6 +327,7 @@ Setting shorthand properties for Flex grow, shrink and base:
 <Playground :markup="flexShorthand('none')"></Playground>
 
 ### Responsiveness
+
 The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
 
 <Playground :markup="flexShorthand('{base: \'initial\', l: \'equal\'}')"></Playground>
@@ -487,7 +496,7 @@ export default class Code extends Vue {
   $color-blue-4: royalblue;
   $color-highlight: deeppink;
 
-  ::v-deep .example-flex {
+  :deep(.example-flex) {
     & > * {
       @include p-text-small;
       padding: 0 6vw;

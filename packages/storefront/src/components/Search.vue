@@ -136,7 +136,7 @@
     padding-bottom: $pds-spacing-small;
   }
 
-  ::v-deep .hits__item {
+  :deep(.hits__item) {
     padding: $pds-spacing-small $pds-spacing-large $pds-spacing-small;
   }
 </style>

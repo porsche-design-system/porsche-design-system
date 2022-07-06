@@ -1,6 +1,7 @@
 # Link Social
 
-The `p-link-social` component is a set of pre-defined social icons for various fields of application like linking to social media platforms or social sharing dialogs.
+The `p-link-social` component is a set of pre-defined social icons for various fields of application like linking to
+social media platforms or social sharing dialogs.
 
 <TableOfContents></TableOfContents>
 
@@ -36,7 +37,8 @@ Choose between a set of pre-defined social icons.
 
 ## Framework routing (anchor nesting)
 
-To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element** of the component. 
+To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element** of the
+component.
 
 <Playground :markup="routing" :config="config"></Playground>
 
@@ -44,13 +46,15 @@ To support custom anchor tags (e.g. framework specific routing) you can provide 
 
 ## Specific icon
 
-If another icon needs to be implemented, just replace the default icon with another pre-defined icon. Per default, all icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
+If another icon needs to be implemented, just replace the default icon with another pre-defined icon. Per default, all
+icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to
+link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
 
 <Playground :markup="iconMarkup" :config="config"></Playground>
 
 --- 
 
-## Pattern of grouped components 
+## Pattern of grouped components
 
 <Playground :markup="grouped" :config="config"></Playground>
 
@@ -169,13 +173,13 @@ export default class Code extends Vue {
 <style scoped lang="scss">
   @import "~@porsche-design-system/utilities/scss";
   
-  ::v-deep .example-link {
+  :deep(.example-link) {
     display: inline-block;
     outline: none;
     text-decoration: none;
   }
   
-  ::v-deep .example-grouped {
+  :deep(.example-grouped) {
     &::before {
       content: "";
       display: block;
