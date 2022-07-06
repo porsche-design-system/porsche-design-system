@@ -5,7 +5,7 @@ import { TOAST_STATES } from '../toast/toast-utils';
 import {
   attachComponentCss,
   getPrefixedTagNames,
-  throwIfRootNodeIsNotOfKind,
+  throwIfRootNodeIsNotOneOfKind,
   throwIfValueIsInvalid,
 } from '../../../../utils';
 import { getComponentCss } from './toast-item-styles';
@@ -31,7 +31,7 @@ export class ToastItem {
   @Event() public dismiss?: EventEmitter<void>;
 
   public connectedCallback(): void {
-    throwIfRootNodeIsNotOfKind(this.host, 'pToast');
+    throwIfRootNodeIsNotOneOfKind(this.host, ['pToast']);
   }
 
   public componentWillRender(): void {
