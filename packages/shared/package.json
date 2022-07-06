@@ -29,7 +29,7 @@
     "@types/jest-environment-puppeteer": "^5.0.2",
     "@types/jest-expect-message": "^1.0.4",
     "jest": "^27.5.1",
-    "jest-puppeteer": "^6.1.0",
+    "jest-puppeteer": "^6.1.1",
     "jss": "^10.9.0",
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.9.0",
@@ -39,7 +39,7 @@
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3.3",
     "@types/madge": "^5.0.0",
-    "@types/node": "^18.0.1",
+    "@types/node": "^18.0.3",
     "change-case": "^4.1.2",
     "globby": "^11.0.4",
     "madge": "^5.0.1",
