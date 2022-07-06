@@ -26,13 +26,13 @@ export const openPopoversAndHighlightSpacer = async (page: Page, opts?: Options)
     const popoverHandles = await page.$$('p-popover');
     await Promise.all(
       popoverHandles.map(async (popoverHandle) => {
-        const popover = await popoverHandle.evaluateHandle<JSHandle<HTMLElement>>((x: HTMLElement) => x);
+        const popover = (await popoverHandle.evaluateHandle((x: HTMLElement) => x)) as JSHandle<HTMLElement>;
         // Wait until popover is opened and selector is rendered
-        const spacer: JSHandle<HTMLElement> = await page.waitForFunction(
+        const spacer = (await page.waitForFunction(
           (popoverEl: HTMLElement) => popoverEl.shadowRoot.querySelector('.spacer'),
           {},
           popover
-        );
+        )) as JSHandle<Element>;
         // Set background color of .spacer
         await spacer.evaluateHandle((spacerEl: HTMLElement) => (spacerEl.style.background = 'rgba(255, 0, 0, 0.4)'));
       })
