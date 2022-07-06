@@ -148,7 +148,7 @@ const generateComponentMeta = (): void => {
       : [];
 
     // required child
-    let [, requiredChild] = /getHTMLElementAndThrowIfUndefined\(\s*this\.host,((?:.|\s)+?)\);/.exec(source) || [];
+    let [, requiredChild] = /getDirectAndOnlyChildHTMLElementOrThrow\(\s*this\.host,((?:.|\s)+?)\);/.exec(source) || [];
     requiredChild = requiredChild?.trim();
     let requiredChildSelector: string;
 
