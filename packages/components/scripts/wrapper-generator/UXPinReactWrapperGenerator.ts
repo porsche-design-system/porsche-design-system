@@ -200,7 +200,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         .replace(/(\.\.\.rest)/, "text, state = 'neutral', $1") // destructure custom props
         .replace(
           // integrate toast manager hook and call addMessage based on custom 'text' and 'state' props
-          /(const propsToSync =)/,
+          /((const propsToSync =)|(useBrowserLayoutEffect\(\(\) =>))/,
           `const { addMessage } = useToastManager();
     const messageObject = { text, state };
     useBrowserLayoutEffect(() => {
