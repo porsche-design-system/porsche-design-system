@@ -1,7 +1,7 @@
 import { Component, Element, Host, JSX, h, Prop, forceUpdate } from '@stencil/core';
 import {
   getClosestHTMLElement,
-  getHTMLElementAndThrowIfUndefined,
+  getDirectAndOnlyChildHTMLElementOrThrow,
   getPrefixedTagNames,
   hasLabel,
   hasMessage,
@@ -44,7 +44,7 @@ export class RadioButtonWrapper {
   }
 
   public componentWillLoad(): void {
-    this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="radio"]');
+    this.input = getDirectAndOnlyChildHTMLElementOrThrow(this.host, 'input[type="radio"]');
     this.observeAttributes(); // once initially
   }
 

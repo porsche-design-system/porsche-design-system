@@ -1,4 +1,4 @@
-import * as domUtils from '../../../utils/dom';
+import * as getDirectAndOnlyChildHTMLElementOrThrowUtils from '../../../utils/validation/getDirectAndOnlyChildHTMLElementOrThrow';
 import { TextareaWrapper } from './textarea-wrapper';
 import * as textFieldWrapperUtils from '../text-field-wrapper/text-field-wrapper-utils';
 import * as a11yUtils from '../../../utils/a11y/a11y';
@@ -9,7 +9,9 @@ jest.mock('../../../utils/slotted-styles');
 describe('componentWillLoad', () => {
   it('should call hasCounter() with correct parameter and set hasCounter', () => {
     const textarea = document.createElement('textarea');
-    jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined').mockImplementation(() => textarea);
+    jest
+      .spyOn(getDirectAndOnlyChildHTMLElementOrThrowUtils, 'getDirectAndOnlyChildHTMLElementOrThrow')
+      .mockReturnValue(textarea);
 
     const spy = jest.spyOn(textFieldWrapperUtils, 'hasCounter');
     const component = new TextareaWrapper();
