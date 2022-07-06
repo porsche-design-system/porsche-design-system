@@ -6,13 +6,18 @@ import * as slottedStylesUtils from '../utils/slotted-styles';
 import * as getDirectChildHTMLElementUtils from '../utils/dom/getDirectChildHTMLElement';
 import * as attributeObserverUtils from '../utils/attribute-observer';
 import * as childrenObserverUtils from '../utils/children-observer';
+import * as throwIfParentIsNotOfKindUtils from '../utils/validation/throwIfParentIsNotOfKind';
 import { addParentAndSetRequiredProps, componentFactory, TAG_NAMES_CONSTRUCTOR_MAP } from '../test-utils';
+import { camelCase } from 'change-case';
 
 const tagNamesWithRequiredChild = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredChild);
+const tagNamesWithRequiredParent = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).requiredParent);
 const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).styling === 'jss');
 const tagNamesWithSlottedCss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasSlottedCss);
 const tagNamesWithObserveAttributes = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasObserveAttributes);
 const tagNamesWithObserveChildren = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasObserveChildren);
+
+// TODO: group tests by component instead of by feature?
 
 it('should have same amount of elements in TAG_NAMES_CONSTRUCTOR_MAP as in TAG_NAMES', () => {
   expect(Object.keys(TAG_NAMES_CONSTRUCTOR_MAP).length).toBe(TAG_NAMES.length);
@@ -29,6 +34,26 @@ it.each<TagName>(tagNamesWithRequiredChild)(
     } catch {}
 
     expect(spy).toBeCalledWith(component.host, getComponentMeta(tagName).requiredChildSelector);
+  }
+);
+
+it('should contain every component with -item suffix in tagNamesWithRequiredChild', () => {
+  // p-toast-item is a special case that needs to be excluded
+  const containsAll = TAG_NAMES.filter((tagName) => tagName.endsWith('-item') && tagName !== 'p-toast-item').every(
+    (tagName) => tagNamesWithRequiredParent.includes(tagName)
+  );
+  expect(containsAll).toBe(true);
+});
+
+it.each<TagName>(tagNamesWithRequiredParent)(
+  'should call throwIfParentIsNotOfKind() with correct parameters via connectedCallback for %s',
+  (tagName) => {
+    const spy = jest.spyOn(throwIfParentIsNotOfKindUtils, 'throwIfParentIsNotOfKind');
+    const component = componentFactory(tagName);
+
+    component.connectedCallback();
+
+    expect(spy).toBeCalledWith(component.host, camelCase(getComponentMeta(tagName).requiredParent + ''));
   }
 );
 
