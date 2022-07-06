@@ -40,7 +40,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     const providerImports = ['ProxyCmp', ...(hasEventProps ? ['proxyOutputs'] : [])];
     const importsFromProvider = `import { ${providerImports.join(', ')} } from '../../utils';`;
 
-    const typesImports = nonPrimitiveTypes;
+    const typesImports = nonPrimitiveTypes.filter((type) => !type.match(/P[a-z|A-Z]*CustomEvent/));
     const importsFromTypes = typesImports.length ? `import type { ${typesImports.join(', ')} } from '../types';` : '';
 
     return [importsFromAngular, importsFromProvider, importsFromTypes, importsFromComponentsWrapperModule]
