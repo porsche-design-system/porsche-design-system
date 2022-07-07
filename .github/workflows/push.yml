@@ -358,6 +358,8 @@ jobs:
           path: ./packages/components-react/projects/nextjs/tests/vrt/results
   fallbacks:
     name: 'Fallbacks'
+    needs:
+      - shared
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
