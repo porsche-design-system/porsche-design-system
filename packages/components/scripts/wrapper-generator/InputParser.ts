@@ -33,11 +33,6 @@ export class InputParser {
     const bundleDtsFile = path.resolve(DIST_TYPES_DIR, bundleDtsFileName);
     const bundleDtsContent = fs.readFileSync(bundleDtsFile, 'utf8');
 
-    const componentCustomEventInterfaces =
-      bundleDtsContent.match(
-        /export interface [a-z|A-Z]*<T> extends CustomEvent<T> {\n(:?	[a-z]*: T;)\n(?:	[a-z]*: [a-z|A-Z]*;\n)+}/g
-      ) || [];
-
     this.sharedTypes = bundleDtsContent
       .substr(0, bundleDtsContent.indexOf('export namespace Components'))
       // remove unused HTMLStencilElement interface
@@ -54,8 +49,6 @@ export class InputParser {
       .replace(/(export declare type BreakpointCustomizable<T> = T \| BreakpointValues<T>) \| string;/, '$1;')
       // fix consumer typing for accessibility props with string type
       .replace(/(export declare type SelectedAriaAttributes<T extends keyof AriaAttributes> = .*?) \| string;/, '$1;');
-
-    this.sharedTypes = this.sharedTypes.concat(componentCustomEventInterfaces.join('\n'));
 
     const [, rawLocalJSX] = /declare namespace LocalJSX {((?:\n|.)*}\s})/.exec(bundleDtsContent) || [];
     this.rawLocalJSX = rawLocalJSX;
@@ -104,8 +97,8 @@ export class InputParser {
         .replace(/"(\w+)"(\??:)/g, '$1$2') // clean double quotes around interface/type keys
         .replace(/    |\t\t/g, '  ') // adjust indentation
         .replace(/    \*/g, '   *') // adjust indentation before jsdocs
-        .replace(/(  |\t)}$/g, '}'); // adjust indentation at closing }
-
+        .replace(/(  |\t)}$/g, '}') // adjust indentation at closing }
+        .replace(/(\?: \(event: )([A-Z|a-z]*)(<[A-Z|a-z]*>\))/g, '$1CustomEvent$3'); // remove stencil custom event
     rawLocalJSXInterface = cleanInterface(rawLocalJSXInterface);
 
     // Unfortunately rawLocalJSXInterface contains all props with optional `?` modifier.
