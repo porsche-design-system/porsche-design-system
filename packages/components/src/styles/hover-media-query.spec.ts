@@ -2,7 +2,6 @@ import { hoverMediaQuery } from './hover-media-query';
 import * as jssUtils from '../utils/jss';
 import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
-import * as getDirectChildHTMLElementUtils from '../utils/dom/getDirectChildHTMLElement';
 import { addParentAndSetRequiredProps, componentFactory } from '../test-utils';
 
 const originalEnv = process.env;
@@ -56,11 +55,6 @@ it.each<TagName>(tagNamesWithJss)(
     const spy = jest
       .spyOn(jssUtils, 'attachComponentCss')
       .mockImplementation((_, getComponentCss, ...args) => getComponentCss(...args));
-
-    // jsdom is missing pseudo-class selector ':scope>*' which leads to DOMException
-    jest
-      .spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement')
-      .mockReturnValue(document.createElement('div'));
 
     const component = componentFactory(tagName);
 
