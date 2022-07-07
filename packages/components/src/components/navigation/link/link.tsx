@@ -81,9 +81,9 @@ export class Link {
           color="inherit"
           aria-hidden="true"
         />
-        <PrefixedTagNames.pText tag="span" color="inherit" class="label">
+        <span>
           <slot />
-        </PrefixedTagNames.pText>
+        </span>
       </TagType>
     );
   }

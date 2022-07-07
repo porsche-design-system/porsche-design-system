@@ -508,6 +508,7 @@ export default class Code extends Vue {
 
       &:nth-child(4n) {
         background-color: $color-blue-4;
+        color: $p-color-theme-dark-default;
       }
 
       &[align-self] {

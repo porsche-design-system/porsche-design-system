@@ -13,6 +13,7 @@ import {
   getThemedColors,
 } from './';
 import { hoverMediaQuery } from './hover-media-query';
+import { textSmall } from '@porsche-design-system/utilities-v2';
 
 const { baseColor: darkThemeBaseColor } = getThemedColors('dark');
 const { baseColor: lightThemeBaseColor } = getThemedColors('light');
@@ -193,6 +194,13 @@ export const getLinkButtonStyles = (
           },
         }),
       }),
+      span: {
+        display: 'block',
+        width: '100%',
+        color: iconLabelColor,
+        ...textSmall,
+        ...(!hasSlottedAnchor && buildResponsiveStyles(hideLabel, getLabelJssStyle)),
+      },
     },
     // TODO: reduce to only necessary styles (e.g. why boxSizing?)
     // TODO: overhead in link styles when slotted anchor is used
@@ -225,7 +233,7 @@ export const getLinkButtonStyles = (
             color: primaryColorHover,
             ...(isTertiary && {
               backgroundColor: 'currentColor',
-              '& > $label, & > $icon': {
+              '& > span, & > $icon': {
                 color: isDarkTheme ? lightThemeBaseColor : darkThemeBaseColor,
               },
             }),
@@ -239,12 +247,6 @@ export const getLinkButtonStyles = (
       color: iconLabelColor,
       pointerEvents: 'none',
       ...buildResponsiveStyles(hideLabel, getIconJssStyle),
-    },
-    label: {
-      display: 'block',
-      boxSizing: 'border-box',
-      color: iconLabelColor,
-      ...buildResponsiveStyles(hideLabel, getLabelJssStyle),
     },
   };
 };

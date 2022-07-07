@@ -10,7 +10,7 @@ import {
   pxToRemWithUnit,
   getThemedColors,
 } from '../../../styles';
-import { colorExternal } from '@porsche-design-system/utilities-v2';
+import { colorExternal, textSmall } from '@porsche-design-system/utilities-v2';
 import {
   getIconJssStyle,
   getLabelJssStyle,
@@ -82,6 +82,13 @@ export const getComponentCss = (
           },
         }),
       }),
+      span: {
+        display: 'block',
+        width: '100%',
+        color: textColor,
+        ...textSmall,
+        ...(hasHref && buildResponsiveStyles(hideLabel, getLabelJssStyle)),
+      },
     },
     root: {
       display: 'flex',
@@ -105,7 +112,7 @@ export const getComponentCss = (
       ...hoverMediaQuery({
         '&:hover, &:active': {
           color: baseColorHover,
-          '& $label, & $icon': {
+          '& span, & $icon': {
             color: textColorHover,
           },
         },
@@ -122,12 +129,6 @@ export const getComponentCss = (
       color: textColor,
       pointerEvents: 'none',
       ...buildResponsiveStyles(hideLabel, getIconJssStyle),
-    },
-    label: {
-      display: 'block',
-      boxSizing: 'border-box',
-      color: textColor,
-      ...buildResponsiveStyles(hideLabel, getLabelJssStyle),
     },
   });
 };
