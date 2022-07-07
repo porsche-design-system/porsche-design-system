@@ -1,7 +1,7 @@
 import type { Lang, Locales } from '../types';
 
 ((): void => {
-  const ID = 'porsche-design-system-browser-support';
+  const ID = 'porsche-design-system-fallbacks-browser-support';
 
   const linkAttributes = 'target=_blank rel="nofollow noopener"';
   const chrome = `<a href=https://www.google.com/chrome/ ${linkAttributes}>Google Chrome</a>`;

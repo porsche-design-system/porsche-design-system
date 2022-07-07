@@ -1,7 +1,7 @@
 import type { Lang, Locales } from '../types';
 
 ((): void => {
-  const ID = 'porsche-design-system-cookie-support';
+  const ID = 'porsche-design-system-fallbacks-cookies';
 
   // prettier-ignore
   const locales: Locales = {
