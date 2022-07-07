@@ -34,6 +34,7 @@ const copyAssets = (): void => {
 
       for (const file of files) {
         fs.copyFileSync(path.resolve(pathToFiles, file), path.resolve(targetDirectory, file));
+        console.log(` - ${file}`);
       }
     } catch (e) {
       console.log(`Package '${packageName}' doesn't exist. Skipping...`);
