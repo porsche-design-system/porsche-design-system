@@ -9,11 +9,11 @@ describe('hasCookiesEnabled()', () => {
 
   it('should be truthy', () => {
     cookieEnabledGetter.mockReturnValue(true);
-    expect(hasCookiesEnabled()).toBeTruthy();
+    expect(hasCookiesEnabled()).toBe(true);
   });
 
   it('should be falsy', () => {
     cookieEnabledGetter.mockReturnValue(false);
-    expect(hasCookiesEnabled()).toBeFalsy();
+    expect(hasCookiesEnabled()).toBe(false);
   });
 });
