@@ -1,6 +1,6 @@
 import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
 import type { TagName } from '@porsche-design-system/shared';
-import * as getDirectAndOnlyChildHTMLElementOrThrowUtils from '../utils/validation/getDirectAndOnlyChildHTMLElementOrThrow';
+import * as getDirectAndOnlyChildOfKindHTMLElementOrThrowUtils from '../utils/validation/getDirectAndOnlyChildOfKindHTMLElementOrThrow';
 import * as jssUtils from '../utils/jss';
 import * as slottedStylesUtils from '../utils/slotted-styles';
 import * as getDirectChildHTMLElementUtils from '../utils/dom/getDirectChildHTMLElement';
@@ -26,9 +26,12 @@ it('should have same amount of elements in TAG_NAMES_CONSTRUCTOR_MAP as in TAG_N
 });
 
 it.each<TagName>(tagNamesWithRequiredChild)(
-  'should call getDirectAndOnlyChildHTMLElementOrThrow() with correct parameters via componentWillLoad for %s',
+  'should call getDirectAndOnlyChildOfKindHTMLElementOrThrow() with correct parameters via componentWillLoad for %s',
   (tagName) => {
-    const spy = jest.spyOn(getDirectAndOnlyChildHTMLElementOrThrowUtils, 'getDirectAndOnlyChildHTMLElementOrThrow');
+    const spy = jest.spyOn(
+      getDirectAndOnlyChildOfKindHTMLElementOrThrowUtils,
+      'getDirectAndOnlyChildOfKindHTMLElementOrThrow'
+    );
     const component = componentFactory(tagName);
 
     try {
