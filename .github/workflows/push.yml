@@ -358,8 +358,6 @@ jobs:
           path: ./packages/components-react/projects/nextjs/tests/vrt/results
   fallbacks:
     name: 'Fallbacks'
-    needs:
-      - shared
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -383,6 +381,11 @@ jobs:
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-install
+      - name: 'Build Shared'
+        uses: ./.github/actions/docker-run
+        with:
+          entrypoint: run-build
+          args: --shared
       - name: 'Unit Test'
         uses: ./.github/actions/docker-run
         with:
