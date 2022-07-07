@@ -53,6 +53,15 @@ export default [
     plugins: [typescript()],
   },
   {
+    input: 'src/test-helpers.ts',
+    external,
+    output: {
+      dir: 'dist',
+      format: 'cjs',
+    },
+    plugins: [typescript()],
+  },
+  {
     input: 'src/testing/jest.config.ts',
     output: {
       dir: 'dist/testing',
