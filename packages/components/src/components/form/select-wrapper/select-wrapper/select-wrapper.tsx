@@ -3,7 +3,7 @@ import {
   attachComponentCss,
   attachSlottedCss,
   getDataThemeDarkAttribute,
-  getDirectAndOnlyChildHTMLElementOrThrow,
+  getDirectAndOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   getSlotTextContent,
   hasDescription,
@@ -67,7 +67,7 @@ export class SelectWrapper {
   }
 
   public componentWillLoad(): void {
-    this.select = getDirectAndOnlyChildHTMLElementOrThrow(this.host, 'select');
+    this.select = getDirectAndOnlyChildOfKindHTMLElementOrThrow(this.host, 'select');
     this.observeAttributes(); // once initially
 
     this.hasCustomDropdown = isCustomDropdown(this.filter, this.native);
