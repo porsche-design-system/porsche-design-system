@@ -1,6 +1,6 @@
 import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
 import {
-  getDirectAndOnlyChildHTMLElementOrThrow,
+  getDirectAndOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   hasDescription,
   hasLabel,
@@ -55,7 +55,7 @@ export class TextareaWrapper {
   }
 
   public componentWillLoad(): void {
-    this.textarea = getDirectAndOnlyChildHTMLElementOrThrow(this.host, 'textarea');
+    this.textarea = getDirectAndOnlyChildOfKindHTMLElementOrThrow(this.host, 'textarea');
     this.observeAttributes(); // once initially
     this.hasCounter = hasCounter(this.textarea);
     this.isCounterVisible = this.showCharacterCount && this.hasCounter;

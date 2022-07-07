@@ -1,4 +1,5 @@
 export * from './getDirectAndOnlyChildHTMLElementOrThrow';
+export * from './getDirectAndOnlyChildOfKindHTMLElementOrThrow';
 export * from './throwIfChildCountIsExceeded';
 export * from './throwIfChildrenAreNotOfKind';
 export * from './throwIfElementHasAttribute';
