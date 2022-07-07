@@ -3,7 +3,7 @@ import { getDirectChildHTMLElement } from './getDirectChildHTMLElement';
 import { transformSelectorToDirectChildSelector } from './transformSelectorToDirectChildSelector';
 import * as transformSelectorToDirectChildSelectorUtils from './transformSelectorToDirectChildSelector';
 
-it('should call getHTMLElement() with element and and result of transformSelectorToDirectChildSelector()', () => {
+it('should call getHTMLElement() with element and result of transformSelectorToDirectChildSelector()', () => {
   const transformSelectorToDirectChildSelectorSpy = jest.spyOn(
     transformSelectorToDirectChildSelectorUtils,
     'transformSelectorToDirectChildSelector'
@@ -26,6 +26,14 @@ it('should return direct child element', () => {
   parent.append(child);
 
   expect(getDirectChildHTMLElement(parent, 'button')).toBe(child);
+});
+
+it('should return direct child element if first comma separated selector returns null', () => {
+  const parent = document.createElement('div');
+  const child = document.createElement('button');
+  parent.append(child);
+
+  expect(getDirectChildHTMLElement(parent, 'a,button')).toBe(child);
 });
 
 it('should return null if there is no child element', () => {

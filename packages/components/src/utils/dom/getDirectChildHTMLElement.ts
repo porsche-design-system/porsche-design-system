@@ -12,5 +12,6 @@ export function getDirectChildHTMLElement(element: HTMLElement, selector: string
   // therefore we got a workaround so it works nicely when consumed from jsdom-polyfill package
   return transformSelectorToDirectChildSelector(selector)
     .split(',')
-    .map((sel) => getHTMLElement(element, sel))[0];
+    .map((sel) => getHTMLElement(element, sel))
+    .filter((x) => x)[0]; // comma separated selector might return null
 }
