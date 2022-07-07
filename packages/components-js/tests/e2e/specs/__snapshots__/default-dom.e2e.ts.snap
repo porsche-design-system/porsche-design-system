@@ -62,67 +62,13 @@ exports[`should have no basic DOM regression for p-banner 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-button 1`] = `
-"<style>
-  p-text button {
-    margin: 0 !important;
-    padding: 0 !important;
-    background: 0 !important;
-    border: 0 !important;
-    cursor: pointer !important;
-    font: inherit !important;
-  }
-
-  p-text a,
-  p-text button {
-    color: inherit !important;
-    text-decoration: underline !important;
-    outline: 1px solid transparent !important;
-    outline-offset: 1px !important;
-    transition: color var(--p-transition-duration, .24s) ease !important;
-  }
-
-  p-text[data-theme=\\"dark\\"] a:hover,
-  p-text[data-theme=\\"dark\\"] button:hover {
-    color: #ff0223 !important;
-  }
-
-  p-text b,
-  p-text strong {
-    font-weight: 700 !important;
-  }
-
-  p-text em,
-  p-text i {
-    font-style: normal !important;
-  }
-
-  p-text a::-moz-focus-inner,
-  p-text button::-moz-focus-inner {
-    border: 0 !important;
-  }
-
-  p-text a:focus,
-  p-text button:focus {
-    outline-color: currentColor !important;
-  }
-
-  p-text a:focus:not(:focus-visible),
-  p-text button:focus:not(:focus-visible) {
-    outline-color: transparent !important;
-  }
-
-  p-text a:hover,
-  p-text button:hover {
-    color: #d5001c !important;
-  }
-</style>
-<button class=\\"root\\" type=\\"submit\\" tabindex=\\"0\\">
+"<button class=\\"root\\" type=\\"submit\\" tabindex=\\"0\\">
   <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
   </p-icon>
-  <p-text class=\\"label hydrated\\">
+  <span>
     <slot>
     </slot>
-  </p-text>
+  </span>
 </button>"
 `;
 
@@ -325,67 +271,13 @@ exports[`should have no basic DOM regression for p-inline-notification 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-link 1`] = `
-"<style>
-  p-text button {
-    margin: 0 !important;
-    padding: 0 !important;
-    background: 0 !important;
-    border: 0 !important;
-    cursor: pointer !important;
-    font: inherit !important;
-  }
-
-  p-text a,
-  p-text button {
-    color: inherit !important;
-    text-decoration: underline !important;
-    outline: 1px solid transparent !important;
-    outline-offset: 1px !important;
-    transition: color var(--p-transition-duration, .24s) ease !important;
-  }
-
-  p-text[data-theme=\\"dark\\"] a:hover,
-  p-text[data-theme=\\"dark\\"] button:hover {
-    color: #ff0223 !important;
-  }
-
-  p-text b,
-  p-text strong {
-    font-weight: 700 !important;
-  }
-
-  p-text em,
-  p-text i {
-    font-style: normal !important;
-  }
-
-  p-text a::-moz-focus-inner,
-  p-text button::-moz-focus-inner {
-    border: 0 !important;
-  }
-
-  p-text a:focus,
-  p-text button:focus {
-    outline-color: currentColor !important;
-  }
-
-  p-text a:focus:not(:focus-visible),
-  p-text button:focus:not(:focus-visible) {
-    outline-color: transparent !important;
-  }
-
-  p-text a:hover,
-  p-text button:hover {
-    color: #d5001c !important;
-  }
-</style>
-<a class=\\"root\\" href=\\"string\\" target=\\"_self\\">
+"<a class=\\"root\\" href=\\"string\\" target=\\"_self\\">
   <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
   </p-icon>
-  <p-text class=\\"label hydrated\\">
+  <span>
     <slot>
     </slot>
-  </p-text>
+  </span>
 </a>"
 `;
 
@@ -455,67 +347,13 @@ exports[`should have no basic DOM regression for p-link-pure 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-link-social 1`] = `
-"<style>
-  p-text button {
-    margin: 0 !important;
-    padding: 0 !important;
-    background: 0 !important;
-    border: 0 !important;
-    cursor: pointer !important;
-    font: inherit !important;
-  }
-
-  p-text a,
-  p-text button {
-    color: inherit !important;
-    text-decoration: underline !important;
-    outline: 1px solid transparent !important;
-    outline-offset: 1px !important;
-    transition: color var(--p-transition-duration, .24s) ease !important;
-  }
-
-  p-text[data-theme=\\"dark\\"] a:hover,
-  p-text[data-theme=\\"dark\\"] button:hover {
-    color: #ff0223 !important;
-  }
-
-  p-text b,
-  p-text strong {
-    font-weight: 700 !important;
-  }
-
-  p-text em,
-  p-text i {
-    font-style: normal !important;
-  }
-
-  p-text a::-moz-focus-inner,
-  p-text button::-moz-focus-inner {
-    border: 0 !important;
-  }
-
-  p-text a:focus,
-  p-text button:focus {
-    outline-color: currentColor !important;
-  }
-
-  p-text a:focus:not(:focus-visible),
-  p-text button:focus:not(:focus-visible) {
-    outline-color: transparent !important;
-  }
-
-  p-text a:hover,
-  p-text button:hover {
-    color: #d5001c !important;
-  }
-</style>
-<a class=\\"root\\" href=\\"string\\" target=\\"_self\\">
+"<a class=\\"root\\" href=\\"string\\" target=\\"_self\\">
   <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
   </p-icon>
-  <p-text class=\\"label hydrated\\">
+  <span>
     <slot>
     </slot>
-  </p-text>
+  </span>
 </a>"
 `;
 
