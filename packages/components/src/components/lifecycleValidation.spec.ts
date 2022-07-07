@@ -150,7 +150,7 @@ describe.each<TagName>(tagNamesWithObserveAttributes)('%s', (tagName) => {
 
   it('should call observeAttributes() with correct parameters via componentWillLoad', () => {
     jest
-      .spyOn(getDirectAndOnlyChildHTMLElementOrThrowUtils, 'getDirectAndOnlyChildHTMLElementOrThrow')
+      .spyOn(getDirectAndOnlyChildOfKindHTMLElementOrThrowUtils, 'getDirectAndOnlyChildOfKindHTMLElementOrThrow')
       .mockReturnValue(el);
     const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
 
@@ -165,7 +165,7 @@ describe.each<TagName>(tagNamesWithObserveAttributes)('%s', (tagName) => {
 
   it('should call unobserveAttributes() with correct parameters via disconnectedCallback', () => {
     jest
-      .spyOn(getDirectAndOnlyChildHTMLElementOrThrowUtils, 'getDirectAndOnlyChildHTMLElementOrThrow')
+      .spyOn(getDirectAndOnlyChildOfKindHTMLElementOrThrowUtils, 'getDirectAndOnlyChildOfKindHTMLElementOrThrow')
       .mockReturnValue(el);
     component.componentWillLoad(); // to ensure reference too "el" is in component instance
 
