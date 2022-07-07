@@ -3,7 +3,6 @@ import type { TagName } from '@porsche-design-system/shared';
 import * as getDirectAndOnlyChildOfKindHTMLElementOrThrowUtils from '../utils/validation/getDirectAndOnlyChildOfKindHTMLElementOrThrow';
 import * as jssUtils from '../utils/jss';
 import * as slottedStylesUtils from '../utils/slotted-styles';
-import * as getDirectChildHTMLElementUtils from '../utils/dom/getDirectChildHTMLElement';
 import * as attributeObserverUtils from '../utils/attribute-observer';
 import * as childrenObserverUtils from '../utils/children-observer';
 import * as throwIfParentIsNotOfKindUtils from '../utils/validation/throwIfParentIsNotOfKind';
@@ -84,11 +83,6 @@ it.each<TagName>(tagNamesWithJss)(
   (tagName) => {
     const spy = jest.spyOn(jssUtils, 'attachComponentCss');
     let spyCalls = 0;
-
-    // jsdom is missing pseudo-class selector ':scope>*' which leads to DOMException
-    jest
-      .spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement')
-      .mockReturnValue(document.createElement('div'));
 
     const component = componentFactory(tagName);
 

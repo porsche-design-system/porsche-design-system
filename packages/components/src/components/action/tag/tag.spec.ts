@@ -8,11 +8,9 @@ describe('componentWillRender', () => {
     const spy = jest.spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement');
     const component = new Tag();
     component.host = document.createElement('p-tag');
+    component.host.attachShadow({ mode: 'open' });
 
-    // pseudo-class selector ':scope>*' is missing in jsdom
-    try {
-      component.componentWillRender();
-    } catch {}
+    component.componentWillRender();
 
     expect(spy).toBeCalledWith(component.host, 'a,button');
   });
@@ -24,10 +22,7 @@ describe('componentWillRender', () => {
     component.host.attachShadow({ mode: 'open' });
     component.color = 'background-default';
 
-    // pseudo-class selector ':scope>*' is missing in jsdom
-    try {
-      component.componentWillRender();
-    } catch {}
+    component.componentWillRender();
 
     expect(spy).toBeCalledWith('background-default', TAG_COLORS, 'color');
   });
