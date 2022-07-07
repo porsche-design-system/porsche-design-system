@@ -11,7 +11,7 @@ export function getDirectAndOnlyChildHTMLElementOrThrow(element: HTMLElement, se
 
   // directChild can be null from querySelector()
   if (!directChild || directChild.previousElementSibling || directChild.nextElementSibling) {
-    throw new Error(`${getTagName(element)} may only contain a single direct child of: ${selector}`);
+    throw new Error(`${getTagName(element)} has to contain a single direct child of: ${selector}`);
   }
 
   return directChild;
