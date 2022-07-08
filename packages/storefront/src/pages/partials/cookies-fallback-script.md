@@ -8,6 +8,8 @@ activate browser cookies in case those are disabled completely.
 Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages
 which needs to be injected before the closing `</body>` of your `index.html`.
 
+<p-button v-on:click="showFallback">Force display of cookies fallback</p-button>
+
 ## Supported options
 
 | Option   | Description                                                                                                               | Type    | Default |
@@ -54,6 +56,7 @@ There always might be a case where something goes wrong. Here are some possible 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { FALLBACKS_CDN_BASE_URL, FALLBACKS_MANIFEST } from '@porsche-design-system/assets';
 
 @Component
 export default class Code extends Vue {
@@ -66,5 +69,11 @@ export default class Code extends Vue {
       comment: 'force using China CDN',
     },
   ];
+
+  public showFallback = (): void => {
+    const script = document.createElement('script');
+    script.src = `${FALLBACKS_CDN_BASE_URL}/${FALLBACKS_MANIFEST.cookies}`;
+    document.body.appendChild(script);
+  };
 }
 </script>
