@@ -2,7 +2,9 @@
   <div class="code-block" :class="`code-block--${theme} code-block--${colorScheme}`">
     <p-tabs-bar :theme="theme" :active-tab-index="activeTabIndex">
       <!-- prettier-ignore -->
-      <button type="button" v-for="(framework, index) in usedFrameworks" :key="index" @click="setFramework(index)">{{ framework }}</button>
+      <button type="button" v-for="(framework, index) in usedFrameworks" :key="index" @click="setFramework(index)">
+        {{ framework }}
+      </button>
     </p-tabs-bar>
     <pre
       :class="highlightedLanguage"
@@ -18,7 +20,7 @@
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
   import type { Framework, FrameworkMarkup, Theme } from '@/models';
-  import { cleanMarkup, convertToAngular, convertToReact, getHighlightedCode, getHighlightedLanguage } from '@/utils';
+  import { convertMarkup, getHighlightedCode, getHighlightedLanguage } from '@/utils';
 
   @Component
   export default class CodeBlock extends Vue {
@@ -71,20 +73,8 @@
     }
 
     get highlightedMarkup(): string {
-      const markup = this.convertMarkup ? this.convert(this.markup) : this.markup;
+      const markup = this.convertMarkup ? convertMarkup(this.markup, this.framework) : this.markup;
       return getHighlightedCode(markup, this.framework);
-    }
-
-    private convert(markup: string): string {
-      markup = cleanMarkup(markup);
-      switch (this.framework) {
-        case 'angular':
-          return convertToAngular(markup);
-        case 'react':
-          return convertToReact(markup);
-        default:
-          return markup;
-      }
     }
   }
 </script>
