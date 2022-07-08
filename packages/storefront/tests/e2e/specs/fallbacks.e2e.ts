@@ -14,8 +14,7 @@ const isElementVisible = async (page: Page, cssSelector: string): Promise<boolea
 };
 
 // it('should show browser support fallback', async () => {
-//   const fallbackID = 'porsche-design-system-browser-support';
-//   // const fallbackID = 'porsche-design-system-fallbacks-browser-support';
+//   const fallbackID = 'porsche-design-system-fallbacks-browser-support';
 //
 //   await page.goto(`${baseURL}/partials/browser-support-fallback-script`, { waitUntil: 'networkidle0' });
 //   await page.evaluate(() => (window as any).componentsReady());
@@ -29,8 +28,7 @@ const isElementVisible = async (page: Page, cssSelector: string): Promise<boolea
 // });
 //
 // it('should show cookies fallback', async () => {
-//   const fallbackID = 'porsche-design-system-cookie-support';
-//   // const fallbackID = 'porsche-design-system-fallbacks-cookies';
+//   const fallbackID = 'porsche-design-system-fallbacks-cookies';
 //
 //   await page.goto(`${baseURL}/partials/cookies-fallback-script`, { waitUntil: 'networkidle0' });
 //   await page.evaluate(() => (window as any).componentsReady());
