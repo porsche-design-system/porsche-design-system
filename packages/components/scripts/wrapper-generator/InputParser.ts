@@ -97,8 +97,8 @@ export class InputParser {
         .replace(/"(\w+)"(\??:)/g, '$1$2') // clean double quotes around interface/type keys
         .replace(/    |\t\t/g, '  ') // adjust indentation
         .replace(/    \*/g, '   *') // adjust indentation before jsdocs
-        .replace(/(  |\t)}$/g, '}'); // adjust indentation at closing }
-
+        .replace(/(  |\t)}$/g, '}') // adjust indentation at closing }
+        .replace(/(\?: \(event: )([A-Z|a-z]*)(<[A-Z|a-z]*>\))/g, '$1CustomEvent$3'); // remove stencil custom event
     rawLocalJSXInterface = cleanInterface(rawLocalJSXInterface);
 
     // Unfortunately rawLocalJSXInterface contains all props with optional `?` modifier.

@@ -3,12 +3,17 @@
 <TableOfContents></TableOfContents>
 
 ## Banner
-The `p-banner` component provides action-based feedback messages (e.g. after performing a task) or to convey informational and/or critical notification like some site related topics. 
 
-Review the [notification decision tree](components/notifications/decision-tree) to determine which notification component is best for a particular scenario.
+The `p-banner` component provides action-based feedback messages (e.g. after performing a task) or to convey
+informational and/or critical notification like some site related topics.
+
+Review the [notification decision tree](components/notifications/decision-tree) to determine which notification
+component is best for a particular scenario.
 
 ## Basic implementation
-The `p-banner` component is positioned absolute above the page content by default. For personal adjustments, go to "Custom styling" section.
+
+The `p-banner` component is positioned absolute above the page content by default. For personal adjustments, go to "
+Custom styling" section.
 
 <Playground :markup="basic" :config="config">
   <select v-model="state" aria-label="Select state">
@@ -20,12 +25,15 @@ The `p-banner` component is positioned absolute above the page content by defaul
 </Playground>
 
 ## Persistent
+
 If the **Banner** shouldn't be removable by the user, add `persistent` prop.
 
 <Playground :markup="persistent" :config="config"></Playground>
 
 ## Width
-The `p-banner` behaves the same as the **ContentWrapper** component and can be adapted to the same widths to match with your layout.
+
+The `p-banner` behaves the same as the **ContentWrapper** component and can be adapted to the same widths to match with
+your layout.
 
 <Playground :markup="markupWidth" :config="config">
   <select v-model="width" aria-label="Select width">
@@ -41,18 +49,40 @@ The `p-banner` behaves the same as the **ContentWrapper** component and can be a
 <p-button type="button" v-on:click="openBanner($event)">Open Banner</p-button>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
-To support **keyboard navigation**, please take care of correct **focus handling** after closing the Banner with `ESC` or `Enter` key:
-The trigger element (e.g. a button) which has opened the Banner must **receive focus state again** after the Banner is closed. This is important to keep focus order consistent.
-You can test it out by navigation this example with the keyboard only.
+
+To support **keyboard navigation**, please take care of correct **focus handling** after closing the Banner with `ESC`
+or `Enter` key:
+The trigger element (e.g. a button) which has opened the Banner must **receive focus state again** after the Banner is
+closed. This is important to keep focus order consistent. You can test it out by navigation this example with the
+keyboard only.
 
 ## Custom styling
+
 The `p-banner` component has some values which can be overwritten by CSS Custom Properties (aka CSS Variables):
 
 ```scss
 // default CSS variables
---p-banner-position-type: fixed;
---p-banner-position-top: p-px-to-rem(56px);
---p-banner-position-bottom: p-px-to-rem(56px);
+--p-banner-position-type: fixed
+
+;
+--p-banner-position-top:
+
+p-px-to-rem
+(
+56
+px
+
+)
+;
+--p-banner-position-bottom:
+
+p-px-to-rem
+(
+56
+px
+
+)
+;
 
 // overwrite with CSS variables
 p-banner {
@@ -118,7 +148,7 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
-  ::v-deep .demo p-banner {
+  :deep(.demo p-banner) {
     --p-banner-position-type: static;
   }
 </style>

@@ -12,7 +12,8 @@
     "declarationDir": "./dist/types",
     "outDir": "./dist",
     "lib": ["dom", "es2016"],
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "types": ["node", "jest"]
   },
   "include": ["src/index.ts"]
 }
