@@ -1,9 +1,9 @@
 # Cookies Fallback Script
 
-**Function name:** `getCookieSupportScript()`
+**Function name:** `getCookiesFallbackScript()`
 
-Although the Porsche Design System does not rely on browser cookies, an overlay notification is provided asking the user
-to activate browser cookies in case those are disabled.
+Although the Porsche Design System does not rely on browser cookies, a blocking overlay is shown asking the user to
+activate browser cookies in case those are disabled completely.
 
 Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react}` packages
 which needs to be injected before the closing `</body>` of your `index.html`.
@@ -20,14 +20,14 @@ which needs to be injected before the closing `</body>` of your `index.html`.
 Project integration differs based on the project setup.  
 The following showcases the most common ways.
 
-<PartialDocs name="getCookieSupportScript" :params="params" location="body"></PartialDocs>
+<PartialDocs name="getCookiesFallbackScript" :params="params" location="body"></PartialDocs>
 
 ## Translations
 
 Automatic translations for the following languages are provided:  
 `'de' | 'ru' | 'fr' | 'en' | 'it' | 'pt' | 'es' | 'ja' | 'ko' | 'zh' | 'nl' | 'pl' | 'cs' | 'da' | 'et' | 'fi' | 'lt' | 'lv' | 'no' | 'sl' | 'sv' | 'tr' | 'uk'`
 
-As soon as the **Cookie Notification** script initializes, it looks for the obligatory `lang` attribute defined in the
+As soon as the **Cookies Fallback** script initializes, it looks for the obligatory `lang` attribute defined in the
 `html` tag. Support is given for the following formats, e.g.:
 
 - `lang="en"`
@@ -42,8 +42,8 @@ There always might be a case where something goes wrong. Here are some possible 
 
 1. **Q:** Why does the translation not get recognized automatically?  
    **A:** Mostly this is a result of false order of script loading and setting translation key by the application. It's
-   required that the `lang` attribute in the `html` tag is defined with the correct value before the **Cookie
-   Notification** script gets initialized.  
+   required that the `lang` attribute in the `html` tag is defined with the correct value **before** the **Cookies
+   Fallback** script gets initialized.  
    **A:** The translation key is not part of the provided keys (see "Translations")  
    **A:** The translation key has not the correct format (see "Translations")
 2. **Q:** Why are there no implementation guidelines for my JS framework?  
