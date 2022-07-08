@@ -1,15 +1,13 @@
 <template>
-  <form action="https://codepen.io/pen/define" method="POST" target="_blank">
-    <input type="hidden" name="data" :value="codepen" />
-    <p-button
-      type="submit"
-      :theme="theme"
-      :icon-source="codepenIcon"
-      :disabled="framework !== 'vanilla-js'"
-      :title="framework !== 'vanilla-js' && 'CodePen is only available for Vanilla JS'"
-      >Edit in CodePen</p-button
-    >
-  </form>
+  <p-button
+    type="submit"
+    :theme="theme"
+    :icon-source="stackBlitzIcon"
+    :disabled="framework !== 'vanilla-js'"
+    :title="framework !== 'vanilla-js' && 'CodePen is only available for Vanilla JS'"
+    @click="openInStackBlitz()"
+    >Edit in StackBlitz
+  </p-button>
 
   <!--    <div class="codepen" :data-prefill="dataPrefill" data-height="400" data-theme-id="light" data-editable="true">-->
   <!--      <pre data-lang="html" v-html="escapedMarkup"></pre>-->
@@ -24,14 +22,31 @@
   import { Framework, Theme } from '@/models';
   import { themeDark } from '@porsche-design-system/utilities-v2';
   import { codePenConfig } from '@/lib/partialResults';
+  import { openVanillaJS } from '@/utils/stackblitz';
 
   @Component
   export default class CodeEditor extends Vue {
     @Prop({ default: '' }) public markup!: string;
     @Prop({ default: 'light' }) public theme!: Theme;
     @Prop({ default: 'vanilla-js' }) public framework!: Framework;
+    @Prop({ default: '' }) public additionalJavaScriptLogic?: string;
 
-    codepenIcon = require('../assets/icon-codepen.svg');
+    stackBlitzIcon = require('../assets/icon-stackblitz.svg');
+
+    openInStackBlitz() {
+      switch (this.framework) {
+        case 'angular':
+          return;
+        case 'react':
+          return;
+        default:
+          return openVanillaJS({
+            markup: this.markup,
+            framework: this.framework,
+            additionalJavaScriptLogic: this.additionalJavaScriptLogic,
+          });
+      }
+    }
 
     // private mounted(): void {
     //   // @ts-ignore
