@@ -488,11 +488,11 @@ export const config: StorefrontConfig = {
     // @ts-ignore
     Introduction: [() => import('@/pages/partials/introduction.md')],
     // @ts-ignore
-    'Loader Script': [() => import('@/pages/partials/loader-script.md')],
+    'Browser Support Fallback Script': [() => import('@/pages/partials/browser-support-fallback-script.md')],
     // @ts-ignore
     'Component Chunk Links': [() => import('@/pages/partials/component-chunk-links.md')],
     // @ts-ignore
-    'Initial Styles': [() => import('@/pages/partials/initial-styles.md')],
+    'Cookies Fallback Script': [() => import('@/pages/partials/cookies-fallback-script.md')],
     // @ts-ignore
     'Font Face Stylesheet': [() => import('@/pages/partials/font-face-stylesheet.md')],
     // @ts-ignore
@@ -500,19 +500,11 @@ export const config: StorefrontConfig = {
     // @ts-ignore
     'Icon Links': [() => import('@/pages/partials/icon-links.md')],
     // @ts-ignore
+    'Initial Styles': [() => import('@/pages/partials/initial-styles.md')],
+    // @ts-ignore
+    'Loader Script': [() => import('@/pages/partials/loader-script.md')],
+    // @ts-ignore
     'Meta Tags And Icon Links': [() => import('@/pages/partials/meta-tags-and-icon-links.md')],
-    // @ts-ignore
-    'Browser Support Fallback Script': [() => import('@/pages/partials/browser-support-fallback-script.md')],
-    // @ts-ignore
-    'Cookies Fallback Script': [() => import('@/pages/partials/cookies-fallback-script.md')],
-  },
-  'Browser Notifications': {
-    // @ts-ignore
-    Introduction: [() => import('@/pages/browser-notifications/introduction.md')],
-    // @ts-ignore
-    'Browser Support Notification': [() => import('@/pages/browser-notifications/browser-support-notification.md')],
-    // @ts-ignore
-    'Cookie Notification': [() => import('@/pages/browser-notifications/cookie-notification.md')],
   },
   Performance: {
     // @ts-ignore
