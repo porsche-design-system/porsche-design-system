@@ -14,33 +14,29 @@ const isElementVisible = async (page: Page, cssSelector: string): Promise<boolea
 };
 
 it('should show browser support fallback', async () => {
-  expect(true).toBe(true);
+  const fallbackID = 'porsche-design-system-fallbacks-browser-support';
+
+  await page.goto(`${baseURL}/partials/browser-support-fallback-script`, { waitUntil: 'networkidle0' });
+  await page.evaluate(() => (window as any).componentsReady());
+
+  expect(await isElementVisible(page, `#${fallbackID}`)).toBe(false);
+
+  const [buttonElement] = await page.$x(`//p-button[contains(., 'Force display of browser support fallback')]`);
+  await buttonElement.click();
+
+  expect(await isElementVisible(page, `#${fallbackID}`)).toBe(true);
 });
 
-// it('should show browser support fallback', async () => {
-//   const fallbackID = 'porsche-design-system-fallbacks-browser-support';
-//
-//   await page.goto(`${baseURL}/partials/browser-support-fallback-script`, { waitUntil: 'networkidle0' });
-//   await page.evaluate(() => (window as any).componentsReady());
-//
-//   expect(await isElementVisible(page, `#${fallbackID}`)).toBe(false);
-//
-//   const [buttonElement] = await page.$x(`//p-button[contains(., 'Force display of browser support fallback')]`);
-//   await buttonElement.click();
-//
-//   expect(await isElementVisible(page, `#${fallbackID}`)).toBe(true);
-// });
-//
-// it('should show cookies fallback', async () => {
-//   const fallbackID = 'porsche-design-system-fallbacks-cookies';
-//
-//   await page.goto(`${baseURL}/partials/cookies-fallback-script`, { waitUntil: 'networkidle0' });
-//   await page.evaluate(() => (window as any).componentsReady());
-//
-//   expect(await isElementVisible(page, `#${fallbackID}`)).toBe(false);
-//
-//   const [buttonElement] = await page.$x(`//p-button[contains(., 'Force display of cookies fallback')]`);
-//   await buttonElement.click();
-//
-//   expect(await isElementVisible(page, `#${fallbackID}`)).toBe(true);
-// });
+it('should show cookies fallback', async () => {
+  const fallbackID = 'porsche-design-system-fallbacks-cookies';
+
+  await page.goto(`${baseURL}/partials/cookies-fallback-script`, { waitUntil: 'networkidle0' });
+  await page.evaluate(() => (window as any).componentsReady());
+
+  expect(await isElementVisible(page, `#${fallbackID}`)).toBe(false);
+
+  const [buttonElement] = await page.$x(`//p-button[contains(., 'Force display of cookies fallback')]`);
+  await buttonElement.click();
+
+  expect(await isElementVisible(page, `#${fallbackID}`)).toBe(true);
+});
