@@ -2,7 +2,9 @@
   <div class="code-block" :class="`code-block--${theme} code-block--${colorScheme}`">
     <p-tabs-bar :theme="theme" :active-tab-index="activeTabIndex">
       <!-- prettier-ignore -->
-      <button type="button" v-for="(framework, index) in usedFrameworks" :key="index" @click="setFramework(index)">{{ framework }}</button>
+      <button type="button" v-for="(framework, index) in usedFrameworks" :key="index" @click="setFramework(index)">
+        {{ framework }}
+      </button>
     </p-tabs-bar>
     <pre
       :class="highlightedLanguage"
@@ -101,7 +103,7 @@
       }
 
       pre {
-        code ::v-deep {
+        :deep(code) {
           // source: https://github.com/ericwbailey/a11y-syntax-highlighting/blob/main/dist/prism/a11y-light.css#L52-L107
 
           .token.comment,
@@ -167,7 +169,7 @@
       // extracted from chrome dev tools contrast utility
       &.code-block--surface {
         pre {
-          code ::v-deep {
+          :deep(code) {
             .token.selector,
             .token.attr-name,
             .token.string,
@@ -194,7 +196,7 @@
       }
 
       pre {
-        code ::v-deep {
+        :deep(code) {
           // source: https://github.com/ericwbailey/a11y-syntax-highlighting/blob/main/dist/prism/a11y-dark.css#L52-L107
 
           .token.comment,
@@ -279,7 +281,7 @@
     margin-top: $pds-spacing-medium;
     @include pds-focus;
 
-    code ::v-deep {
+    :deep(code) {
       .token.important,
       .token.bold {
         font-weight: bold;
