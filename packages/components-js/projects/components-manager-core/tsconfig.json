@@ -13,7 +13,7 @@
     "outDir": "./dist",
     "lib": ["dom", "es2016"],
     "esModuleInterop": true,
-    "types": ["node"]
+    "types": ["node", "jest"]
   },
   "include": ["src/index.ts"]
 }
