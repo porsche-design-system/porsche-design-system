@@ -17,7 +17,9 @@ and/or Canada, the Porsche marque must always be used with the ®. The ® is opt
 ### Marque without registered trademark (®)
 
 This variant is to be used whenever the United States and/or Canada are not part of the web application's target
-markets. <Playground :markup="withoutTrademarkMarkup"></Playground>
+markets.
+
+<Playground :markup="withoutTrademarkMarkup"></Playground>
 
 ## Link
 
