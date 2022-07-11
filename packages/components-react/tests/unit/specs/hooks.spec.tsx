@@ -11,7 +11,7 @@ import {
   useBrowserLayoutEffect,
 } from '../../../projects/components-wrapper/src/hooks';
 import { useLayoutEffect } from 'react';
-import { describeIfSkeletonsActive } from '@porsche-design-system/shared/test-helpers';
+import { describeIfSkeletonsActive } from '@porsche-design-system/shared/testing';
 
 describeIfSkeletonsActive('useSkeleton()', () => {
   it('should throw error if usesSkeletons was set to true on provider but partial was not used', () => {
