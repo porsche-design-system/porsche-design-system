@@ -12,7 +12,10 @@ type GetBrowserSupportFallbackScriptOptionsFormatJsx = GetBrowserSupportFallback
   const fallbacksFilePath = require.resolve('@porsche-design-system/fallbacks');
   const packageDir = path.resolve(path.dirname(fallbacksFilePath), '../..');
   const tmpFilePath = path.resolve(packageDir, 'dist/loader', 'browser-support.js');
-  const fileContent = fs.readFileSync(tmpFilePath, 'utf8').replace('https://cdn.ui.porsche.com', '${cdnBaseUrl}');
+  const fileContent = fs
+    .readFileSync(tmpFilePath, 'utf8')
+    .replace('https://cdn.ui.porsche.com', '${cdnBaseUrl}')
+    .trim();
 
   const func = `export function getBrowserSupportFallbackScript(opts?: GetBrowserSupportFallbackScriptOptionsFormatHtml): string;
 export function getBrowserSupportFallbackScript(opts?: GetBrowserSupportFallbackScriptOptionsFormatJsx): JSX.Element;
