@@ -1,7 +1,7 @@
 import { hasCookiesEnabled } from './cookies-utils';
 
 describe('hasCookiesEnabled()', () => {
-  let cookieEnabledGetter: any;
+  let cookieEnabledGetter: jest.SpyInstance;
 
   beforeEach(() => {
     cookieEnabledGetter = jest.spyOn(window.navigator, 'cookieEnabled', 'get');
