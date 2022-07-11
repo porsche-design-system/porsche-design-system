@@ -9,9 +9,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [2.14.0-rc.0] - 2022-07-11
+
+#### Added
+
+- `getBrowserSupportFallbackScript()` partial supporting `cdn` and `format` options as replacement for
+  `includeOverlay()` of `@porsche-design-system/browser-notification` npm package
+- `getCookiesFallbackScript()` partial supporting `cdn` and `format` options as replacement for `includeCookieOverlay()`
+  of `@porsche-design-system/browser-notification` npm package
+
 #### Changed
 
-- `getMetaTagsAndIconLinks()` partial to return `theme-color` meta tags with `prefers-color-scheme: {light|dark}` media query
+- `getMetaTagsAndIconLinks()` partial to return `theme-color` meta tags with `prefers-color-scheme: {light|dark}` media
+  query
 
 ### [2.13.0] - 2022-06-23
 
