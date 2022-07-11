@@ -35,7 +35,7 @@
     "@angular/router": "^14.0.5",
     "@porsche-design-system/components-angular": "2.14.0-rc.0",
     "angular-imask": "^6.4.2",
-    "rxjs": "^7.5.5",
+    "rxjs": "^7.5.6",
     "tslib": "^2.4.0",
     "zone.js": "~0.11.6"
   },
