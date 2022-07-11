@@ -10,7 +10,7 @@ export const updateContent = (oldContent: string, newContent: string): string =>
   const separatorEnd = '/* Auto Generated End */';
   return `${oldContent.substr(0, oldContent.indexOf(separatorStart))}${separatorStart}
 ${newContent}
-  ${oldContent.substr(oldContent.indexOf(separatorEnd))}`;
+${oldContent.substr(oldContent.indexOf(separatorEnd))}`;
 };
 
 export const minifyHTML = (str: string): string =>
