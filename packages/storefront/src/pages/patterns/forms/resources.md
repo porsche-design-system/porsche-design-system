@@ -210,8 +210,8 @@ The horizontal form grid spacings of the grid-container and the grid-item.
 
 ```scss
 .form-grid-item-container {
-  margin-left: -$p-spacing-8;
-  margin-right: -$p-spacing-8;
+  margin-left: $p-spacing-8;
+  margin-right: $p-spacing-8;
 }
 
 .form-grid-item {
