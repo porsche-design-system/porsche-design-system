@@ -16,6 +16,90 @@ import {
 } from '../../../utils';
 import { getButtonAriaAttributes } from './button-utils';
 import { getComponentCss } from './button-styles';
+import * as PropTypes from 'prop-types';
+import type { BreakpointKey } from '../../../types';
+import { AllowedTypes, CustomComponentPropTypes, validateProps } from '../../../utils/validation/validateProps';
+
+type FunctionPropertyNames<T> = {
+  [K in keyof T]: T[K] extends Function ? K : never;
+}[keyof T];
+
+type Class<T> = Function & {
+  new (...args: any[]): T;
+};
+
+type ComponentPropTypes<T extends Class<any>> = Required<{
+  [Property in keyof Omit<
+    InstanceType<T>,
+    'host' | FunctionPropertyNames<InstanceType<T>>
+  >]: PropTypes.Requireable<any>;
+}>;
+
+const propTypes: ComponentPropTypes<typeof Button> = {
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
+  tabbable: PropTypes.bool,
+  disabled: PropTypes.bool,
+  loading: PropTypes.bool,
+  icon: PropTypes.string,
+  theme: PropTypes.string,
+  iconSource: PropTypes.string,
+  hideLabel: PropTypes.oneOfType([
+    PropTypes.shape<{ [key in BreakpointKey]: PropTypes.Validator<boolean> }>({
+      base: PropTypes.bool.isRequired,
+      xs: PropTypes.bool,
+      s: PropTypes.bool,
+      m: PropTypes.bool,
+      l: PropTypes.bool,
+      xl: PropTypes.bool,
+    }),
+    PropTypes.bool,
+    PropTypes.string,
+  ]),
+  aria: PropTypes.oneOfType([
+    PropTypes.shape<{ [key in ButtonAriaAttributes]: PropTypes.Validator<string | boolean> }>({
+      'aria-label': PropTypes.string,
+      'aria-expanded': PropTypes.bool,
+      'aria-haspopup': PropTypes.bool,
+      'aria-pressed': PropTypes.bool,
+    }),
+    PropTypes.string,
+  ]),
+};
+
+const customPropTypes: CustomComponentPropTypes<typeof Button> = {
+  type: AllowedTypes.oneOf<ButtonType>(['button', 'submit', 'reset']),
+  variant: AllowedTypes.oneOf<ButtonVariant>(['primary', 'secondary', 'tertiary']),
+  tabbable: AllowedTypes.boolean,
+  disabled: AllowedTypes.boolean,
+  loading: AllowedTypes.boolean,
+  icon: AllowedTypes.string,
+  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(['light', 'dark', 'light-electric']),
+  iconSource: AllowedTypes.string,
+  hideLabel: AllowedTypes.breakpointCustomizable('boolean'),
+  // hideLabel: PropTypes.oneOfType([
+  //   PropTypes.shape<{ [key in BreakpointKey]: PropTypes.Validator<boolean> }>({
+  //     base: PropTypes.bool.isRequired,
+  //     xs: PropTypes.bool,
+  //     s: PropTypes.bool,
+  //     m: PropTypes.bool,
+  //     l: PropTypes.bool,
+  //     xl: PropTypes.bool,
+  //   }),
+  //   PropTypes.bool,
+  //   PropTypes.string,
+  // ]),
+  aria: AllowedTypes.string,
+  // aria: PropTypes.oneOfType([
+  //   PropTypes.shape<{ [key in ButtonAriaAttributes]: PropTypes.Validator<string | boolean> }>({
+  //     'aria-label': PropTypes.string,
+  //     'aria-expanded': PropTypes.bool,
+  //     'aria-haspopup': PropTypes.bool,
+  //     'aria-pressed': PropTypes.bool,
+  //   }),
+  //   PropTypes.string,
+  // ]),
+};
 
 @Component({
   tag: 'p-button',
@@ -65,6 +149,12 @@ export class Button {
     if (this.isDisabledOrLoading) {
       e.stopPropagation();
     }
+  }
+
+  public componentWillLoad(): void {
+    console.log('this.loading', this.loading);
+    PropTypes.checkPropTypes(propTypes, this, 'property', 'p-button');
+    validateProps(this, customPropTypes, 'p-button');
   }
 
   public componentDidLoad(): void {
