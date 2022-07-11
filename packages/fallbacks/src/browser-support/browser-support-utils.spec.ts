@@ -26,9 +26,9 @@ describe('hasPorscheDesignSystemBrowserSupport()', () => {
 
       jest.spyOn(global, 'window', 'get').mockImplementation(() => {
         return {
-          ...(IntersectionObserver ? { IntersectionObserver: 'some IntersectionObserver constructor' } : null),
-          ...(MutationObserver ? { MutationObserver: 'some MutationObserver constructor' } : null),
-          ...(customElements ? { customElements: 'some customElements registry' } : null),
+          ...(IntersectionObserver && { IntersectionObserver: 'some IntersectionObserver constructor' }),
+          ...(MutationObserver && { MutationObserver: 'some MutationObserver constructor' }),
+          ...(customElements && { customElements: 'some customElements registry' }),
         } as unknown as Window & typeof globalThis;
       });
 
