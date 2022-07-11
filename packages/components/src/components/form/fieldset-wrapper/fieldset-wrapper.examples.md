@@ -1,8 +1,8 @@
 # Fieldset
 
-The `p-fieldset-wrapper` is a grouping component for wrapping contextual associated form elements. 
-Its visible part is an HTML *legend* element, which can be seen like a headline for describing the meaning of a form block.
-You can see some usage examples on our [form patterns section](patterns/forms/resources).
+The `p-fieldset-wrapper` is a grouping component for wrapping contextual associated form elements. Its visible part is
+an HTML _legend_ element, which can be seen like a headline for describing the meaning of a form block. You can see some
+usage examples on our [form patterns section](patterns/forms/resources).
 
 <TableOfContents></TableOfContents>
 
@@ -10,7 +10,7 @@ You can see some usage examples on our [form patterns section](patterns/forms/re
 
 <Playground :markup="withLabelMarkup"></Playground>
 
---- 
+---
 
 ## Slotted label
 
@@ -28,17 +28,17 @@ You can see some usage examples on our [form patterns section](patterns/forms/re
   </select>
 </Playground>
 
---- 
+---
 
 ## Required
 
-If the `p-fieldset-wrapper` is set to `required="true"`, only the label of the `p-fieldset-wraper` gets an asterisk. 
-It is removed from all wrapped child components, as long as they are Porsche Design System form elements.
-You should still set required on the input of the wrapped form elements to ensure accessibility, and the support of screen readers.
+If the `p-fieldset-wrapper` is set to `required="true"`, only the label of the `p-fieldset-wraper` gets an asterisk. It
+is removed from all wrapped child components, as long as they are Porsche Design System form elements. You should still
+set required on the input of the wrapped form elements to ensure accessibility, and the support of screen readers.
 
 <Playground :markup="requiredMarkup"></Playground>
 
---- 
+---
 
 ## State
 
@@ -50,7 +50,7 @@ You should still set required on the input of the wrapped form elements to ensur
   </select>
 </Playground>
 
---- 
+---
 
 ## Slotted message
 

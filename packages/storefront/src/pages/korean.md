@@ -22,7 +22,7 @@
   한편, 포르쉐 라이프치히 주식회사(<nobr>Porsche</nobr> Leipzig GmbH)는 259명의 직원과 함께 2002년부터 카이엔 생산을 담당해왔다. 마칸이 출시되면서 라이프치히 공장은 판금 도장 시설을 갖춘 공장으로 확장되었다. 2014년 2월 공장 가동 당시만 해도 마칸의 연간 생산량은 4만대로 계획했으나, 현재는 글로벌 시장 수요를 충족시키기 위해 연간 9만대 이상을 생산하고 있다. 2년 전 완공된 라이프치히 공장에서는 현재 파나메라가 생산되고 있으며, 4천 명 이상의 일자리가 창출되었다. 2000년 2월 착공식 이후, 포르쉐는 13억 유로 이상을 라이프치히 개발에 투자했다.
 </p-text>
 
---- 
+---
 
 <p-text size="x-small">
     Text taken from https://www.porsche.com/korea/ko/aboutporsche/pressreleases/pressreleases-korea/?pool=korea&id=2019-02-27-01&lang=ko

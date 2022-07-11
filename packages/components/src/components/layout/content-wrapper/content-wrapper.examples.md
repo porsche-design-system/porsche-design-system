@@ -12,9 +12,9 @@ Can be used along with [Grid](components/grid), [Flex](components/flex) or with 
 
 ## Width
 
-* **Basic**: max width 1920px including 7-10% safe zone
-* **Extended**: max width 1920px
-* **Fluid**: full width
+- **Basic**: max width 1920px including 7-10% safe zone
+- **Extended**: max width 1920px
+- **Fluid**: full width
 
 <Playground :markup="basic" :config="config">
   <select v-model="width" aria-label="Select width">
@@ -27,8 +27,8 @@ Can be used along with [Grid](components/grid), [Flex](components/flex) or with 
 
 ## Background color
 
-* **transparent**: does not set any background color
-* **default**: uses surface color depending on theming
+- **transparent**: does not set any background color
+- **default**: uses surface color depending on theming
 
 <Playground :markup="transparent" class="playground-content-wrapper-background-color" :config="config">
   <select v-model="backgroundColor" aria-label="Select background color">

@@ -4,14 +4,15 @@
 
 ## Inline Notification
 
-The `p-inline-notification` is a controlled component that provides action-based feedback messages (e.g. after performing a task) or to convey informational and/or critical notification like some site related topics.  
+The `p-inline-notification` is a controlled component that provides action-based feedback messages (e.g. after
+performing a task) or to convey informational and/or critical notification like some site related topics.
 
-Review the [notification decision tree](components/notifications/decision-tree) to determine which notification component is best for a particular scenario.
+Review the [notification decision tree](components/notifications/decision-tree) to determine which notification
+component is best for a particular scenario.
 
 ## Basic
 
 <Playground :markup="basic" :config="config"></Playground>
-
 
 ## State
 
@@ -51,7 +52,8 @@ It can be used to remove the component.
 
 ### Action Button
 
-A custom interaction, e.g., to retry the previous action like submitting a form, can be provided by setting the optional `actionLabel`, `actionIcon` and `actionLoading` properties.  
+A custom interaction, e.g., to retry the previous action like submitting a form, can be provided by setting the optional
+`actionLabel`, `actionIcon` and `actionLoading` properties.  
 The custom event that is emitted on action button click is called `action`.
 
 <Playground :frameworkMarkup="actionButton" :config="config">
@@ -69,7 +71,7 @@ The custom event that is emitted on action button click is called `action`.
 ## Slotted Content
 
 Rich markup for the `heading` can be applied by using `slot="heading"`.  
-Rich markup for the `description` can be used by the unnamed default slot.  
+Rich markup for the `description` can be used by the unnamed default slot.
 
 <Playground :markup="slottedContent" :config="config"></Playground>
 

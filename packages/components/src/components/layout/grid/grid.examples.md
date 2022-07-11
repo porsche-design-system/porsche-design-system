@@ -6,8 +6,8 @@ grid. Its main purpose is to provide a solid and flexible grid system for defini
 is not meant to function as a toolkit for layouting content blocks or components. For this, the [Flex](components/flex)
 component is the right choice.
 
-In order to prevent horizontal scrolling and correct alignment it's recommended to use the **Grid** wrapped within [**
-Content Wrapper**](components/content-wrapper).
+In order to prevent horizontal scrolling and correct alignment it's recommended to use the **Grid** wrapped within
+[** Content Wrapper**](components/content-wrapper).
 
 <TableOfContents></TableOfContents>
 
@@ -41,8 +41,8 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ## Grid direction
 
-In some cases it might be necessary to define or change direction of the columns/rows. The default setting is `row`.
-But `column` is also possible to set the columns vertically underneath each other. A change of the optical order can be
+In some cases it might be necessary to define or change direction of the columns/rows. The default setting is `row`. But
+`column` is also possible to set the columns vertically underneath each other. A change of the optical order can be
 achieved by setting `reverse`.
 
 ### Row (default)
@@ -108,21 +108,21 @@ calculated for each column width. Here are some examples of "do's" and "don'ts":
 
 Only columns with the following widths could be nested:
 
-* total width of 8
-* total width of 6
-* total width of 4
+- total width of 8
+- total width of 6
+- total width of 4
 
 ### Forbidden nesting
 
 Nesting inside columns with the following widths should be prevented, because all item widths won't be in "the grid"
 anymore:
 
-* total width of 11
-* total width of 10
-* total width of 9
-* total width of 7
-* total width of 5
-* total width of 3
+- total width of 11
+- total width of 10
+- total width of 9
+- total width of 7
+- total width of 5
+- total width of 3
 
 <script lang="ts">
 import Vue from 'vue';

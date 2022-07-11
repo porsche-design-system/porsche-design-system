@@ -6,9 +6,9 @@ usability** whenever possible.
 When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen
 readers.  
 When overriding the `position` style of the `p-link-pure` component, make sure to not use `position: static`, which
-would make the click area expand to the entire viewport.    
-In case you want the user to execute an action, you should select the [Button](components/button)
-or [Button Pure](components/button-pure) component instead.
+would make the click area expand to the entire viewport.  
+In case you want the user to execute an action, you should select the [Button](components/button) or
+[Button Pure](components/button-pure) component instead.
 
 <TableOfContents></TableOfContents>
 
@@ -29,18 +29,17 @@ or [Button Pure](components/button-pure) component instead.
 ## ARIA attributes and states
 
 Through the `aria` property you have the possibility to provide additional **ARIA** attributes and states to the
-component.
-<Playground :markup="accessibility" :config="config"></Playground>
+component. <Playground :markup="accessibility" :config="config"></Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
-* Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If short
+- Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If short
   labels are used like **"OK"** make sure to provide additional textual contents to expose a more descriptive experience
   to screen reader users. This can be done through **ARIA** with the `aria` property or by using the **slotted**
   approach where you can set the `aria-label` attribute directly on the anchor tag.
-* If implementing the Link Pure with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a **
+- If implementing the Link Pure with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a **
   descriptive text** to support **screen reader** users is **mandatory**.
-* In general, preventing opening new windows by default with (`target="_blank"`) is a good choice. Let users choose by
+- In general, preventing opening new windows by default with (`target="_blank"`) is a good choice. Let users choose by
   themselves how to open links. However, if you choose to implement `target="_blank"`, make sure to provide additional
   information with ARIA label, e.g.: `aria-label="Porsche Taycan model page (opens in new window)"`
 
@@ -125,7 +124,6 @@ Providing visually differences if a link changes its state can be achieved by se
 ### Angular
 
 ```html
-
 <p-link-pure [active]="rla.isActive">
   <a routerLink="/path/to/heaven" routerLinkActive #rla="routerLinkActive"></a>
 </p-link-pure>
@@ -142,7 +140,6 @@ Providing visually differences if a link changes its state can be achieved by se
 ### VueJs
 
 ```html
-
 <router-link :to="/path/to/heaven" v-slot="{ href, navigate, isActive }">
   <p-link-pure :href="href" @click="navigate" :active="isActive">Some label</p-link-pure>
 </router-link>
@@ -218,13 +215,13 @@ By setting the `tabindex` attribute to `-1` you can remove the **Link Pure** fro
 
 ## Link Pure with Subline
 
-If you need additional information on your link, we provide a `<p slot="subline" />`. The size of the *subline* changes
-according to the size of the *label*. We do not support `size="inherit"`, `stretch` and `alignLabel`in this pattern so
+If you need additional information on your link, we provide a `<p slot="subline" />`. The size of the _subline_ changes
+according to the size of the _label_. We do not support `size="inherit"`, `stretch` and `alignLabel`in this pattern so
 far.
 
-**Note:** If you intend to use a `<a>` tag inside of the `p-link-pure` component, keep in mind that the slot needs to
-be *outside* of the anchor tag to function properly! Make sure to add an `aria-describedby` attribute to expose the
-correct accessibility tree.
+**Note:** If you intend to use a `<a>` tag inside of the `p-link-pure` component, keep in mind that the slot needs to be
+_outside_ of the anchor tag to function properly! Make sure to add an `aria-describedby` attribute to expose the correct
+accessibility tree.
 
 <Playground :markup="subline" :config="configInline">
   <select v-model="sublineSize" aria-label="Select size">
@@ -235,7 +232,6 @@ correct accessibility tree.
     <option>x-large</option>
   </select>
 </Playground>
-
 
 <script lang="ts">
 import Vue from 'vue';

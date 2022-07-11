@@ -2,10 +2,12 @@
 
 ## Partials
 
-Partials are utility functions that return static code or markup that is very dynamic (e.g. contains hashed file names).  
-We primarily offer them to improve the loading and bootstrapping experience by preloading external assets like component chunks, fonts and icons but also initializing the Porsche Design System as early as possible.
+Partials are utility functions that return static code or markup that is very dynamic (e.g. contains hashed file
+names).  
+We primarily offer them to improve the loading and bootstrapping experience by preloading external assets like component
+chunks, fonts and icons but also initializing the Porsche Design System as early as possible.
 
-They should be called during build time, **not** run time. 
+They should be called during build time, **not** run time.
 
 ### Available partials
 
