@@ -46,7 +46,6 @@
     "change-case": "^4.1.2",
     "html-minifier": "^4.0.0",
     "http-server": "^14.1.0",
-    "prettier": "^2.6.2",
     "rollup": "^2.74.1",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
