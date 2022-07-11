@@ -758,6 +758,7 @@ describe('select-wrapper dropdown', () => {
       const dropdownOption2 = await getDropdownOption2();
 
       await select.click();
+      await waitForStencilLifecycle(page);
       await dropdownOption2.click();
       await waitForStencilLifecycle(page);
 
@@ -976,6 +977,7 @@ describe('select-wrapper dropdown', () => {
       await expectA11yToMatchSnapshot(page, dropdownOption2, { message: 'Initially option B' });
 
       await select.click();
+      await waitForStencilLifecycle(page);
       await dropdownOption2.click();
       await waitForStencilLifecycle(page);
 
