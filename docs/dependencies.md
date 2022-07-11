@@ -46,9 +46,3 @@ of using it with Node or TS-Node.
 ### Affected dependencies:
 
 - `globby`
-
----
-
-## Jest
-
-Since v28 just came out, typings like `@types/jest-environment-puppeteer` but also `ts-jest` aren't quite there, yet.
