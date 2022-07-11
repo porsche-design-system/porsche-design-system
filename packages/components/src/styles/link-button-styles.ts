@@ -18,6 +18,7 @@ import * as tokensDark from '../../../style-dictionary/build/web/dist/tokens-dar
 const { baseColor: darkThemeBaseColor } = getThemedColors('dark');
 const { baseColor: lightThemeBaseColor } = getThemedColors('light');
 
+// @ts-ignore
 const getVariantColors = (
   variant: LinkButtonVariant,
   theme: ThemeExtendedElectric
@@ -239,13 +240,15 @@ export const getLinkButtonStyles = (
       ...(!isDisabledOrLoading &&
         hoverMediaQuery({
           '&:hover, &:active': {
+            backgroundColor: hoverColor,
             color: hoverColor,
+            outlineColor: hoverColor,
             ...(isTertiary && {
               // @ts-ignore
-              backgroundColor: button.tertiary.active.background,
+              backgroundColor: button.tertiary.hover.background,
               '& > $label, & > $icon': {
                 // isDarkTheme ? lightThemeBaseColor :
-                color: buttonColors.icon,
+                color: button.tertiary.hover.icon,
               },
             }),
           },
