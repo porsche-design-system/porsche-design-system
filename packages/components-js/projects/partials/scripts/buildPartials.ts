@@ -10,6 +10,8 @@ import { generateComponentChunkLinksPartial } from './generateComponentChunkLink
 import { generateIconLinksPartial } from './generateIconLinksPartial';
 import { generateMetaTagsAndIconLinksPartial } from './generateMetaTagsAndIconLinksPartial';
 import { generateLoaderScriptPartial } from './generateLoaderScriptPartial';
+import { generateBrowserSupportFallbackScriptPartial } from './generateBrowserSupportFallbackScriptPartial';
+import { generateCookiesFallbackScriptPartial } from './generateCookiesFallbackScriptPartial';
 
 const generateSharedCode = (): string => {
   return `import type { Cdn, Format } from '../shared';
@@ -31,6 +33,8 @@ const generatePartials = async (): Promise<void> => {
     generateMetaTagsAndIconLinksPartial(),
     generateIconLinksPartial(),
     generateLoaderScriptPartial(),
+    generateBrowserSupportFallbackScriptPartial(),
+    generateCookiesFallbackScriptPartial(),
   ].join('\n\n');
 
   fs.mkdirSync(targetDirectory, { recursive: true });

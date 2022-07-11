@@ -10,6 +10,4 @@ if
   [[ "--storefront" == "${1}" ]]
 then
   yarn test:e2e:${1:2} --ci
-else
-  yarn test:e2e --ci
 fi
