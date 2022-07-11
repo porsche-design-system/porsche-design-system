@@ -44,11 +44,10 @@ guidelines for [Buttons](components/button/usage).
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
-To support **keyboard navigation**, please take care of correct **focus handling** after closing the Modal with `ESC`
-or `Enter` key:
-The trigger element (e.g. a button) which has opened the Modal must **receive focus state again** after the Modal is
-closed. This is important to keep focus order consistent. You can test it out by navigation this example with the
-keyboard only.    
+To support **keyboard navigation**, please take care of correct **focus handling** after closing the Modal with `ESC` or
+`Enter` key: The trigger element (e.g. a button) which has opened the Modal must **receive focus state again** after the
+Modal is closed. This is important to keep focus order consistent. You can test it out by navigation this example with
+the keyboard only.  
 To announce the correct heading for **screen reader** users, it is mandatory to set the `heading` property or provide a
 meaningful heading through **ARIA** with the `aria` property.
 
@@ -89,8 +88,8 @@ If you want to disable closing the Modal by clicking the backdrop, you can set t
 
 ## Full Width Content
 
-It is possible to make containers or elements (e.g. `div`, `img` etc.) stretch into the padding safe-zone by adding
-the <code v-text="stretchClassName"></code> class. Make sure to set the `aria` property with a descriptive `aria-label`
+It is possible to make containers or elements (e.g. `div`, `img` etc.) stretch into the padding safe-zone by adding the
+<code v-text="stretchClassName"></code> class. Make sure to set the `aria` property with a descriptive `aria-label`
 value when omitting the heading.
 
 <Playground :markup="fullWidthContent"></Playground>

@@ -51,10 +51,9 @@ your layout.
 ### <A11yIcon></A11yIcon> Accessibility hints
 
 To support **keyboard navigation**, please take care of correct **focus handling** after closing the Banner with `ESC`
-or `Enter` key:
-The trigger element (e.g. a button) which has opened the Banner must **receive focus state again** after the Banner is
-closed. This is important to keep focus order consistent. You can test it out by navigation this example with the
-keyboard only.
+or `Enter` key: The trigger element (e.g. a button) which has opened the Banner must **receive focus state again** after
+the Banner is closed. This is important to keep focus order consistent. You can test it out by navigation this example
+with the keyboard only.
 
 ## Custom styling
 
@@ -62,33 +61,15 @@ The `p-banner` component has some values which can be overwritten by CSS Custom 
 
 ```scss
 // default CSS variables
---p-banner-position-type: fixed
-
-;
---p-banner-position-top:
-
-p-px-to-rem
-(
-56
-px
-
-)
-;
---p-banner-position-bottom:
-
-p-px-to-rem
-(
-56
-px
-
-)
-;
+--p-banner-position-type: fixed;
+--p-banner-position-top: p-px-to-rem(56px);
+--p-banner-position-bottom: p-px-to-rem(56px);
 
 // overwrite with CSS variables
 p-banner {
   --p-banner-position-top: 200px;
 }
-``` 
+```
 
 <script lang="ts">
 import Vue from 'vue';

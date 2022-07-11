@@ -1,10 +1,11 @@
 # Link
 
-The `p-link` component is essential to perform changes in **page routes**.
-For an optimal user guidance and dedicated pursuit of business or sales goals, different types of Links (**Primary**, **Secondary**, **Tertiary**) are available for usage.
-A Link can be used with or without a label, but it's recommended to keep the **label visible** for better **usability** whenever possible.
-When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers.
-In case you want the user to execute an action, you should select the [Button](components/button) component instead.
+The `p-link` component is essential to perform changes in **page routes**. For an optimal user guidance and dedicated
+pursuit of business or sales goals, different types of Links (**Primary**, **Secondary**, **Tertiary**) are available
+for usage. A Link can be used with or without a label, but it's recommended to keep the **label visible** for better
+**usability** whenever possible. When used without a label, it is mandatory for **accessibility** to provide a
+descriptive label text for screen readers. In case you want the user to execute an action, you should select the
+[Button](components/button) component instead.
 
 <TableOfContents></TableOfContents>
 
@@ -30,30 +31,42 @@ Choose between predefined styling variants.
 
 ## ARIA attributes and states
 
-Through the `aria` property you have the possibility to provide additional **ARIA** attributes and states to the component.
-<Playground :markup="accessibility" :config="config"></Playground>
+Through the `aria` property you have the possibility to provide additional **ARIA** attributes and states to the
+component. <Playground :markup="accessibility" :config="config"></Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
-* Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If short labels are used like **"OK"** make sure to provide additional textual contents to expose a more descriptive experience to screen reader users. This can be done through **ARIA** with the `aria` property or by using the **slotted** approach where you can set the `aria-label` attribute directly on the anchor tag.
-* If implementing the Link with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a **descriptive text** to support **screen reader** users is **mandatory**.
-* In general, preventing opening new windows by default with (`target="_blank"`) is a good choice. Let users choose by themselves how to open links. However, if you choose to implement `target="_blank"`, make sure to provide additional information with ARIA label, e.g.: `aria-label="Porsche Taycan model page (opens in new window)"` 
+
+- Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If short
+  labels are used like **"OK"** make sure to provide additional textual contents to expose a more descriptive experience
+  to screen reader users. This can be done through **ARIA** with the `aria` property or by using the **slotted**
+  approach where you can set the `aria-label` attribute directly on the anchor tag.
+- If implementing the Link with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a
+  **descriptive text** to support **screen reader** users is **mandatory**.
+- In general, preventing opening new windows by default with (`target="_blank"`) is a good choice. Let users choose by
+  themselves how to open links. However, if you choose to implement `target="_blank"`, make sure to provide additional
+  information with ARIA label, e.g.: `aria-label="Porsche Taycan model page (opens in new window)"`
 
 ---
 
 ## Framework routing (anchor nesting)
 
-To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element** of the component.
+To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element** of the
+component.
 
 <Playground :markup="routing" :config="config"></Playground>
 
 ---
 
 ## Link with specific icon
-If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
+
+If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all
+icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to
+link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
 
 <Playground :markup="icon" :config="config"></Playground>
 
 ## Bind events to the Link
+
 You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the link.
 
 <Playground :markup="events" :config="config"></Playground>
@@ -61,7 +74,8 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 ---
 
 ## Remove Link from tab order
-By setting the `tabindex` attribute to `-1` you can remove the **Link** from the tab order. 
+
+By setting the `tabindex` attribute to `-1` you can remove the **Link** from the tab order.
 
 <Playground :markup="taborder" :config="config"></Playground>
 

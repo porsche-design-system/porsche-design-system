@@ -52,7 +52,7 @@ link to another icon hosted somewhere else, just set the whole icon path to the 
 
 <Playground :markup="iconMarkup" :config="config"></Playground>
 
---- 
+---
 
 ## Pattern of grouped components
 
@@ -60,7 +60,7 @@ link to another icon hosted somewhere else, just set the whole icon path to the 
 
 ### SCSS code example how to achieve a grouped pattern
 
-```scss  
+```scss
 // With CSS Grid (The more elegant way but not suppoerted by IE11)
 .example-grouped {
   display: grid;
@@ -83,7 +83,7 @@ link to another icon hosted somewhere else, just set the whole icon path to the 
     }
   }
 }
-``` 
+```
 
 ---
 
@@ -100,7 +100,6 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 By setting the `tabindex` attribute to `-1` you can remove the **Link Social** from the tab order.
 
 <Playground :markup="taborder" :config="config"></Playground>
-
 
 <script lang="ts">
 import Vue from 'vue';

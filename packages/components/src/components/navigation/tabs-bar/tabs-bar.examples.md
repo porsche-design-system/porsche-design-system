@@ -13,8 +13,8 @@ If you intend to only change content on tab-click without location changes and y
 pre-rendered then we prepared a component which also handles the correct display of content according to the active tab.
 Have a look at the [Tabs](components/tabs) component.
 
-**Note**: We use `<button>` tags in the examples below because you have to use anchor tags with `href`
-in your application! Therefore, we avoid messing with the window location.
+**Note**: We use `<button>` tags in the examples below because you have to use anchor tags with `href` in your
+application! Therefore, we avoid messing with the window location.
 
 It is a controlled component. This means it does not contain any internal state, and you got full control over its
 behavior.
@@ -24,9 +24,8 @@ behavior.
 ## Basic example
 
 Basic implementation is a tab bar with tabs to switch between the content. Just put `<button>` tags if you need to
-change e.g. the state on tab-click or `<a>`
-tags, if you also have to manipulate the window location, inside the `<p-tabs-bar>` component and it will handle all
-styling behaviors.
+change e.g. the state on tab-click or `<a>` tags, if you also have to manipulate the window location, inside the
+`<p-tabs-bar>` component and it will handle all styling behaviors.
 
 In order to get notified when the active tabs change, you need to register an event listener for the `tabChange` event
 which is emitted by `p-tabs-bar`.
@@ -45,8 +44,8 @@ which is emitted by `p-tabs-bar`.
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
-The `p-tabs-bar` component is detached from the content which belongs to the active tab. We provide the
-necessary `role="tab"`, `tabindex` and `aria-selected` on the tabs inside the component.
+The `p-tabs-bar` component is detached from the content which belongs to the active tab. We provide the necessary
+`role="tab"`, `tabindex` and `aria-selected` on the tabs inside the component.
 
 To be truly accessible you need to provide some more information because every tab needs an `aria-controls` attribute
 which points to the corresponding `id` of the `tabpanel`. The content placeholder needs the `role="tabpanel"` and the
@@ -61,8 +60,8 @@ to receive keyboard focus and the focus indicator must be styled accordingly.
 
 ## Active Tab
 
-**Note:** Keep in mind that the property `active-tab-index` uses zero-based numbering. Setting `active-tab-index`
-to `undefined` removes the selection. Make sure to update the `activeTabIndex` when adding or removing elements.
+**Note:** Keep in mind that the property `active-tab-index` uses zero-based numbering. Setting `active-tab-index` to
+`undefined` removes the selection. Make sure to update the `activeTabIndex` when adding or removing elements.
 
 <Playground class="playground-tabs-bar" :markup="activeTab" :config="config"></Playground>
 

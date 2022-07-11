@@ -1,10 +1,11 @@
 # Table
 
 The `p-table` component displays tabular data and offers column-wise sorting options.  
-It combines a consistent appearance together with great accessibility while not having restrictions regarding its content.
-Therefore, it can be used for plain text but also rich content like images, form elements and buttons.
+It combines a consistent appearance together with great accessibility while not having restrictions regarding its
+content. Therefore, it can be used for plain text but also rich content like images, form elements and buttons.
 
-It is a controlled component. This means it does not contain any internal state, and you got full control over its behavior.
+It is a controlled component. This means it does not contain any internal state, and you got full control over its
+behavior.
 
 <TableOfContents></TableOfContents>
 
@@ -33,18 +34,18 @@ It is a controlled component. This means it does not contain any internal state,
 
 ## Caption
 
-A caption that describes the content of the table can be set in two ways. 
-It's mandatory to define a descriptive caption to fulfill accessibility criteria.
+A caption that describes the content of the table can be set in two ways. It's mandatory to define a descriptive caption
+to fulfill accessibility criteria.
 
 ### Via property
 
-Using the `caption` property doesn't display the caption but instead can be used to improve accessibility of the table.  
+Using the `caption` property doesn't display the caption but instead can be used to improve accessibility of the table.
 
 <Playground :markup="captionProperty"></Playground>
 
 ### Via slot
 
-When using the `caption` slot its content will be rendered while offering full control of appearance.  
+When using the `caption` slot its content will be rendered while offering full control of appearance.
 
 <Playground :markup="captionSlot"></Playground>
 
@@ -67,7 +68,8 @@ type TableHeadCellSort = {
 };
 ```
 
-Upon clicking a sortable `p-table-head-cell` element, the `p-table` emits a `sortingChange` event that you should subscribe to.
+Upon clicking a sortable `p-table-head-cell` element, the `p-table` emits a `sortingChange` event that you should
+subscribe to.
 
 <Playground :frameworkMarkup="sorting">
   <p-table caption="Some caption" ref="tableSorting">
@@ -88,7 +90,8 @@ Upon clicking a sortable `p-table-head-cell` element, the `p-table` emits a `sor
 
 ### Hide Label
 
-Sometimes you want to hide the label of a table column for example when the column's content is self-explanatory. This can be achieved by setting the `hide-label` property.
+Sometimes you want to hide the label of a table column for example when the column's content is self-explanatory. This
+can be achieved by setting the `hide-label` property.
 
 <Playground :markup="hideLabel"></Playground>
 
@@ -96,7 +99,7 @@ Sometimes you want to hide the label of a table column for example when the colu
 
 ## Advanced Table
 
-The appearance of a table's contents can be customized as illustrated in the following example. 
+The appearance of a table's contents can be customized as illustrated in the following example.
 
 <Playground :frameworkMarkup="advanced">
   <p-table ref="tableAdvanced">
@@ -133,7 +136,6 @@ The appearance of a table's contents can be customized as illustrated in the fol
     </p-table-body>
   </p-table>
 </Playground>
-
 
 <script lang="ts">
 import Vue from 'vue';

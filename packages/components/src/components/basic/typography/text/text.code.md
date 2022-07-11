@@ -1,5 +1,8 @@
 # Typography
-Typography plays an important role for the general brand impression and is indispensable for the use in digital applications, not to say: Typography **is** the interface. Typography enables meaningful information with well structured hierarchy and is therefore one of the most important elements to provide user guidance.
+
+Typography plays an important role for the general brand impression and is indispensable for the use in digital
+applications, not to say: Typography **is** the interface. Typography enables meaningful information with well
+structured hierarchy and is therefore one of the most important elements to provide user guidance.
 
 <TableOfContents></TableOfContents>
 
@@ -15,14 +18,15 @@ The default semantic HTML element renders as a `p` tag, but you can change it to
 
 <Playground :markup="basic" :config="config"></Playground>
 
---- 
+---
 
 ## Size
 
-There are predefined default text sizes for the text component which should cover most use cases. 
-If a specific text size is needed, the size can be set to `inherit` to specify the text size from outside.
+There are predefined default text sizes for the text component which should cover most use cases. If a specific text
+size is needed, the size can be set to `inherit` to specify the text size from outside.
 
-**Hint:** Be aware of that the line-height will be calculated based on the Porsche type-scaling formula automatically. This is the case for predefined text sizes as well as for `inherit` mode.
+**Hint:** Be aware of that the line-height will be calculated based on the Porsche type-scaling formula automatically.
+This is the case for predefined text sizes as well as for `inherit` mode.
 
 <Playground :markup="sizeMarkup" :config="config">
   <select v-model="size" aria-label="Select size">
@@ -42,7 +46,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 <Playground :markup="responsive" :config="config"></Playground>
 
---- 
+---
 
 ## Semantics
 
@@ -50,9 +54,10 @@ To provide more contextual HTML semantics you can either pass them with the `tag
 
 <Playground :markup="semantics" :config="config"></Playground>
 
---- 
+---
 
 ## Color
+
 Predefined colors associated with its theme are available but also inherit mode can be used to define a custom color.
 
 <Playground :markup="colorMarkup" :config="config">
@@ -71,11 +76,12 @@ Predefined colors associated with its theme are available but also inherit mode 
   </select>
 </Playground>
 
---- 
+---
 
 ## Weight
 
-There are predefined default text weights for copy text. Be aware of using the `thin` variant only with larger text sizes.
+There are predefined default text weights for copy text. Be aware of using the `thin` variant only with larger text
+sizes.
 
 <Playground :markup="weightMarkup" :config="config">
   <select v-model="weight" aria-label="Select weight">
@@ -103,7 +109,9 @@ There are predefined default text weights for copy text. Be aware of using the `
 ---
 
 ## Ellipsis mode
-This will force any text to never wrap into a new line and in case it's to long for a single line then dots (…) at the end are used to visualize it.
+
+This will force any text to never wrap into a new line and in case it's to long for a single line then dots (…) at the
+end are used to visualize it.
 
 <Playground :markup="ellipsis" :config="config"></Playground>
 

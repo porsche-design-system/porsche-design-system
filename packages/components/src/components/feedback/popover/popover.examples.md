@@ -1,23 +1,23 @@
 # Popover
 
-The `p-popover` component can be used to display some additional content on top of another in conjunction with 
-the info <p-popover description="Hello World"></p-popover>-button.
+The `p-popover` component can be used to display some additional content on top of another in conjunction with the info
+<p-popover description="Hello World"></p-popover>-button.
 
 <TableOfContents></TableOfContents>
 
 ## Basic
 
-It's important, that the Popover isn't used within a parent node having e.g. `overflow: hidden` as style defined. 
-Then it might be shown cut-off under certain circumstances because it's placed relative 
-to the info <p-icon name="information" aria="{ 'aria-label': 'Information icon' }"></p-icon>-button node technically.
+It's important, that the Popover isn't used within a parent node having e.g. `overflow: hidden` as style defined. Then
+it might be shown cut-off under certain circumstances because it's placed relative to the info
+<p-icon name="information" aria="{ 'aria-label': 'Information icon' }"></p-icon>-button node technically.
 
 Only one Popover can be opened at the time, by clicking another Popover the opened Popover will be closed.
 
 You can use the `description` or the slot of the Popover to provide content which will be displayed in the open Popover.
 
-**Hint:** The Popover uses a z-index of `{{zIndex}}` to be displayed on top of most elements. This only works if the 
-[stacking context](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context) is not broken and following elements
-have a lower z-index.
+**Hint:** The Popover uses a z-index of `{{zIndex}}` to be displayed on top of most elements. This only works if the
+[stacking context](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context)
+is not broken and following elements have a lower z-index.
 
 <Playground :markup="basicMarkup" :config="config"></Playground>
 
@@ -29,15 +29,16 @@ Through the `aria` property you have the possibility to provide an additional **
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
-- Make sure to provide a **descriptive**, self explaining **label** which could be understood without context to expose a more descriptive experience to screen reader users, 
-telling them what they can expect to read after clicking the info <p-icon name="information" aria="{ 'aria-label': 'Information icon' }"></p-icon>-button.
+- Make sure to provide a **descriptive**, self explaining **label** which could be understood without context to expose
+  a more descriptive experience to screen reader users, telling them what they can expect to read after clicking the
+  info <p-icon name="information" aria="{ 'aria-label': 'Information icon' }"></p-icon>-button.
 
 ---
 
 ## Direction
 
-It's possible to define a preferred direction in which the popover should open, given there is enough space in viewport. Otherwise, 
-it will be opened in the direction with most available space automatically.
+It's possible to define a preferred direction in which the popover should open, given there is enough space in viewport.
+Otherwise, it will be opened in the direction with most available space automatically.
 
 <Playground :markup="directionMarkup" :config="config">
   <select v-model="direction" aria-label="Select direction">

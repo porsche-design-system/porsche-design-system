@@ -4,7 +4,7 @@
 
 ## Breakpoints
 
-We provide a `breakpoint` object with predefined values: `xxs | xs | s | m | l | xl | xxl` 
+We provide a `breakpoint` object with predefined values: `xxs | xs | s | m | l | xl | xxl`
 
 #### Example
 
@@ -20,12 +20,14 @@ if (window.matchMedia(`(min-width: ${breakpoint.m}px)`).matches) {
 
 ## Media Query
 
-The function has two parameter `mediaQuery(minBreakpoint: breakpoint | number, maxBreakpoint?: breakpoints | number)` where the `minBreakpoint` parameter is mandatory.
-You can choose any number as pixel value or our predefined breakpoints as `minBreakpoint` or `maxBreakpoint`.
+The function has two parameter `mediaQuery(minBreakpoint: breakpoint | number, maxBreakpoint?: breakpoints | number)`
+where the `minBreakpoint` parameter is mandatory. You can choose any number as pixel value or our predefined breakpoints
+as `minBreakpoint` or `maxBreakpoint`.
 
 The type `breakpoint` includes predefined breakpoints: `xxs | xs | s | m | l | xl | xxl`
 
-The `mediaQuery()` function returns a `@media (min-width: minBreakpoints) || @media (min-width: minBreakpoint) and (max-width: maxBreakpoint)`
+The `mediaQuery()` function returns a
+`@media (min-width: minBreakpoints) || @media (min-width: minBreakpoint) and (max-width: maxBreakpoint)`
 
 #### Example predefined breakpoint
 
@@ -40,13 +42,9 @@ const StyledDiv = css`{
 
   // from predefined breakpoint m apply color deeppink
   [mediaQuery(breakpoint.m)]: { color: 'deeppink' }
-}`
+}`;
 
-render (
-  <StyledDiv>
-    Styled Text
-  </StyledDiv>
-)
+render(<StyledDiv>Styled Text</StyledDiv>);
 ```
 
 ---
@@ -64,23 +62,22 @@ const StyledDiv = css`{
 
   // from 760px viewport width apply color deeppink
   [mediaQuery(760)]: { color: 'deeppink' }
-}`
+}`;
 
-render (
-  <StyledDiv>
-    Styled Text
-  </StyledDiv>
-)
+render(<StyledDiv>Styled Text</StyledDiv>);
 ```
 
 ---
 
 ## Typography
 
-**Note:** For font-styling it's recommended to use the [`<p-headline>`](components/typography/headline)/[`<p-text>`](components/typography/text) components.
+**Note:** For font-styling it's recommended to use the
+[`<p-headline>`](components/typography/headline)/[`<p-text>`](components/typography/text) components.
 
-The predefined variables for `text` and `headline` **only** work with JSS frameworks like styled-components due to the necessity of font sizes in relation to breakpoints.
-You can follow e.g. [React media queries Hooks](https://medium.com/@ttennant/react-inline-styles-and-media-queries-using-a-custom-react-hook-e76fa9ec89f6) and style your custom component according to [Typography Guidelines](components/typography).
+The predefined variables for `text` and `headline` **only** work with JSS frameworks like styled-components due to the
+necessity of font sizes in relation to breakpoints. You can follow e.g.
+[React media queries Hooks](https://medium.com/@ttennant/react-inline-styles-and-media-queries-using-a-custom-react-hook-e76fa9ec89f6)
+and style your custom component according to [Typography Guidelines](components/typography).
 
 ### Text
 
@@ -102,7 +99,7 @@ const PTextSmall = styled.p`
 
 ```css
 p {
-  font-family: "Porsche Next", "Arial Narrow", Arial, 'Heiti SC', SimHei, sans-serif;
+  font-family: 'Porsche Next', 'Arial Narrow', Arial, 'Heiti SC', SimHei, sans-serif;
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.5;
@@ -129,7 +126,7 @@ const PHeadline = styled.h1`
 
 ```css
 h1 {
-  font-family: "Porsche Next", "Arial Narrow", Arial, 'Heiti SC', SimHei, sans-serif;
+  font-family: 'Porsche Next', 'Arial Narrow', Arial, 'Heiti SC', SimHei, sans-serif;
   font-weight: 600;
   font-size: 1.75rem;
   line-height: 1.4285714286;
@@ -170,13 +167,16 @@ h1 {
 
 ### Focus
 
-The `:focus` state helps the user to navigate through all interactive elements via tab key and is required by accessibility guidelines and law. 
-The provided SCSS mixin ensures focus is shown by keyboard navigation only.
+The `:focus` state helps the user to navigate through all interactive elements via tab key and is required by
+accessibility guidelines and law. The provided SCSS mixin ensures focus is shown by keyboard navigation only.
 
-Given options object keys: 
-* `color`: Can be overwritten when default (`currentColor`) is not sufficient, e.g. a custom button with background-color and white text on a page with white surface.  
-* `offset`: Can be overwritten when default offset is not sufficient.
-* `pseudo`: Needed whenever the invisible clickable and focusable area of an element shall be increased relative to a wrapping element.
+Given options object keys:
+
+- `color`: Can be overwritten when default (`currentColor`) is not sufficient, e.g. a custom button with
+  background-color and white text on a page with white surface.
+- `offset`: Can be overwritten when default offset is not sufficient.
+- `pseudo`: Needed whenever the invisible clickable and focusable area of an element shall be increased relative to a
+  wrapping element.
 
 #### Example
 
@@ -184,16 +184,19 @@ Given options object keys:
 import { color, focus } from '@porsche-design-system/utilities';
 import styled from 'styled-components';
 
-const Anchor = styled.a`${focus()}`;
+const Anchor = styled.a`
+  ${focus()}
+`;
 const Button = styled.div`
   // to control the focusable area of the nested button a proper position needs to be defined
-  position: relative; 
+  position: relative;
   padding: 1rem;
-  
+
   // use '::before' or '::after' if the focusable area needs to be enlarged relative to a wrapping element
   button {
-    ${focus({color: color.state.focus, offset: '1px', pseudo: '::before'})}
-  }`;
+    ${focus({ color: color.state.focus, offset: '1px', pseudo: '::before' })}
+  }
+`;
 
 return (
   <>
@@ -206,21 +209,29 @@ return (
 #### Result
 
 ```css
-a { 
+a {
   outline: transparent solid 1px;
   outline-offset: 2px;
 }
-a::-moz-focus-inner { border: 0; }
-a:focus { outline-color: currentColor; }
-a:focus:not(:focus-visible) { outline-color: transparent; }
+a::-moz-focus-inner {
+  border: 0;
+}
+a:focus {
+  outline-color: currentColor;
+}
+a:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
 
 div {
   position: relative;
   padding: 1rem;
 }
-div button::-moz-focus-inner { border:0; }
-div button::before { 
-  content: "";
+div button::-moz-focus-inner {
+  border: 0;
+}
+div button::before {
+  content: '';
   outline: transparent solid 1px;
   outline-offset: 1px;
   position: absolute;
@@ -229,6 +240,10 @@ div button::before {
   right: 0;
   bottom: 0;
 }
-div button:focus::before { outline-color: currentColor; }
-div button:focus:not(:focus-visible)::before { outline-color: transparent; }
+div button:focus::before {
+  outline-color: currentColor;
+}
+div button:focus:not(:focus-visible)::before {
+  outline-color: transparent;
+}
 ```
