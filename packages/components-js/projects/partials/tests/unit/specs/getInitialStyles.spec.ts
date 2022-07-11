@@ -1,7 +1,7 @@
 import { getInitialStyles } from '../../../src';
 import { render } from '@testing-library/react';
 import { INTERNAL_TAG_NAMES, SKELETON_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
-import { describeIfSkeletonsActive, itIfSkeletonsActive } from '@porsche-design-system/shared/test-helpers';
+import { describeIfSkeletonsActive, itIfSkeletonsActive } from '@porsche-design-system/shared/testing';
 
 const filteredTagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x));
 const tagNames = filteredTagNames.join(',');
