@@ -58,7 +58,7 @@ be implemented in all applications using the Porsche Design System.**
 
 ### Browser Notification
 
-To help inform the user about the **end of support of Microsoft Internet Explorer 11 and EdgeHTML** we provide a
-**Browser Notification Banner** and **Overlay** in form of an npm package `@porsche-design-system/browser-notification`.
+To help inform the user about the **end of support of Microsoft Internet Explorer 11 and EdgeHTML** we provide
+fallbacks.
 
-For information on how to use it, see [Browser Notification](browser-notifications/browser-support-notification).
+For information on how to use it, see [Browser Support Fallback](partials/browser-support-fallback-script).

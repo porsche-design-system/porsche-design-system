@@ -16,5 +16,8 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- prettier-ignore -->
+    <%= require('@porsche-design-system/components-react/partials').getBrowserSupportFallbackScript().replace(/https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g, 'http://localhost:3001') %>
+    <%= require('@porsche-design-system/components-react/partials').getCookiesFallbackScript().replace(/https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g, 'http://localhost:3001') %>
   </body>
 </html>
