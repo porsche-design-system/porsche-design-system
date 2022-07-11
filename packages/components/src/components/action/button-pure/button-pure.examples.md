@@ -29,7 +29,9 @@ Whenever you want to provide navigational elements, stick to the [Link](componen
 ## ARIA attributes and states
 
 Through the `aria` property you have the possibility to provide additional **ARIA** attributes and states to the
-component. <Playground :markup="accessibility" :config="config"></Playground>
+component.
+
+<Playground :markup="accessibility" :config="config"></Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
