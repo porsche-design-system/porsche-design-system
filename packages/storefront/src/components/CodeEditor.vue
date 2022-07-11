@@ -1,11 +1,5 @@
 <template>
-  <p-button
-    type="submit"
-    :theme="theme"
-    :icon-source="stackBlitzIcon"
-    :disabled="framework !== 'vanilla-js'"
-    :title="framework !== 'vanilla-js' && 'CodePen is only available for Vanilla JS'"
-    @click="openInStackBlitz()"
+  <p-button type="submit" :theme="theme" :icon-source="stackBlitzIcon" @click="openInStackBlitz()"
     >Edit in StackBlitz
   </p-button>
 
@@ -22,7 +16,8 @@
   import { Framework, Theme } from '@/models';
   import { themeDark } from '@porsche-design-system/utilities-v2';
   import { codePenConfig } from '@/lib/partialResults';
-  import { openVanillaJS } from '@/utils/stackblitz';
+  import { openReact, openVanillaJS } from '@/utils/stackblitz';
+  import { convertMarkup } from '@/utils';
 
   @Component
   export default class CodeEditor extends Vue {
@@ -34,15 +29,21 @@
     stackBlitzIcon = require('../assets/icon-stackblitz.svg');
 
     openInStackBlitz() {
+      const convertedMarkup = convertMarkup(this.markup, this.framework);
+      const [, componentName] = convertedMarkup.match(/<((?:\w|-)+)(?:.|\n)*>(?:[A-z]| )*<\/?\1>/);
+
       switch (this.framework) {
         case 'angular':
           return;
         case 'react':
-          return;
+          return openReact({
+            markup: convertedMarkup,
+            componentName,
+          });
         default:
           return openVanillaJS({
-            markup: this.markup,
-            framework: this.framework,
+            markup: convertedMarkup,
+            componentName,
             additionalJavaScriptLogic: this.additionalJavaScriptLogic,
           });
       }
