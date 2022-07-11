@@ -73,7 +73,8 @@ export default class Code extends Vue {
 
   public showFallback = (): void => {
     const script = document.createElement('script');
-    script.src = `${FALLBACKS_CDN_BASE_URL}/${FALLBACKS_MANIFEST.browserSupport}`;
+    const src = `${FALLBACKS_CDN_BASE_URL}/${FALLBACKS_MANIFEST.browserSupport}`;
+    script.src = process.env.NODE_ENV === 'production' ? src : src.replace('https://cdn.ui.porsche.com/porsche-design-system', 'http://localhost:3001');
     document.body.appendChild(script);
   };
 }
