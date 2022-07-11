@@ -2,7 +2,7 @@ import type { ThemeColorSet } from './theme-shared';
 
 export const themeDark: ThemeColorSet = {
   brand: '#d5001c',
-  base: '#fff',
+  base: '#ffffff',
   background: {
     base: '#0e1418',
     surface: '#262b2e',

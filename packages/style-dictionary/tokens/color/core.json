@@ -4,9 +4,11 @@
       "brand": {
         "value": "#d5001c"
       },
+      "black": { "value": "#000000" },
+      "white": { "value": "#ffffff" },
       "base": {
         "primary": {
-          "value": "#000"
+          "value": "#0000000"
         },
         "secondary": {
           "value": "{color.core.base.primary}"
@@ -20,7 +22,7 @@
       },
       "background": {
         "base": {
-          "value": "#fff"
+          "value": "#ffffff"
         },
         "surface": {
           "value": "#f2f2f2"

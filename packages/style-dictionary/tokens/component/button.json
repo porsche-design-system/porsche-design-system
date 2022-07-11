@@ -2,19 +2,46 @@
   "component": {
     "button": {
       "primary": {
-        "background-color": {
-          "value": "currentColor",
-          "comment": "// TODO: what do other platforms do with this?"
-        },
-        "color": {
-          "standard": {
+        "standard": {
+          "background": {
+            "value": "{component.button.primary.standard.color.value}"
+          },
+          "border": {
+            "value": "{component.button.primary.standard.color.value}"
+          },
+          "color": {
             "value": "{color.core.brand.value}"
           },
-          "disabled": {
+          "icon": {
+            "value": "{color.core.white.value}"
+          }
+        },
+        "disabled": {
+          "background": {
+            "value": "{component.button.primary.disabled.color.value}"
+          },
+          "border": {
+            "value": "{component.button.primary.disabled.color.value}"
+          },
+          "color": {
             "value": "{color.core.state.disabled.value}"
           },
-          "loading": {
+          "icon": {
+            "value": "{color.core.white.value}"
+          }
+        },
+        "loading": {
+          "background": {
+            "value": "{component.button.primary.loading.color.value}"
+          },
+          "border": {
+            "value": "{component.button.primary.loading.color.value}"
+          },
+          "color": {
             "value": "{color.core.state.disabled.value}"
+          },
+          "icon": {
+            "value": "{color.core.white.value}"
           }
         },
         "hover": {
@@ -29,19 +56,46 @@
         }
       },
       "secondary": {
-        "background-color": {
-          "value": "currentColor",
-          "comment": "// TODO: what do other platforms do with this?"
-        },
-        "color": {
-          "standard": {
+        "standard": {
+          "background": {
+            "value": "{component.button.secondary.standard.color.value}"
+          },
+          "border": {
+            "value": "{component.button.secondary.standard.color.value}"
+          },
+          "color": {
             "value": "{color.core.contrast.high.value}"
           },
-          "disabled": {
+          "icon": {
+            "value": "{color.core.white.value}"
+          }
+        },
+        "disabled": {
+          "background": {
+            "value": "{component.button.secondary.disabled.color.value}"
+          },
+          "border": {
+            "value": "{component.button.secondary.disabled.color.value}"
+          },
+          "color": {
             "value": "{color.core.state.disabled.value}"
           },
-          "loading": {
+          "icon": {
+            "value": "{color.core.white.value}"
+          }
+        },
+        "loading": {
+          "background": {
+            "value": "{component.button.secondary.loading.color.value}"
+          },
+          "border": {
+            "value": "{component.button.secondary.loading.color.value}"
+          },
+          "color": {
             "value": "{color.core.state.disabled.value}"
+          },
+          "icon": {
+            "value": "{color.core.white.value}"
           }
         },
         "hover": {
@@ -56,32 +110,68 @@
         }
       },
       "tertiary": {
-        "background-color": {
-          "value": "{color.core.background.transparent.value}"
-        },
-        "color": {
-          "standard": {
+        "standard": {
+          "background": {
+            "value": "{color.core.background.transparent.value}"
+          },
+          "border": {
+            "value": "{component.button.tertiary.standard.color.value}"
+          },
+          "color": {
             "value": "{color.core.contrast.high.value}"
           },
-          "disabled": {
+          "icon": {
+            "value": "{color.core.black.value}"
+          }
+        },
+        "disabled": {
+          "background": {
+            "value": "{component.button.tertiary.standard.background.value}"
+          },
+          "border": {
+            "value": "{component.button.tertiary.disabled.color.value}"
+          },
+          "color": {
             "value": "{color.core.state.disabled.value}"
           },
-          "loading": {
+          "icon": {
+            "value": "{color.core.state.disabled.value}"
+          }
+        },
+        "loading": {
+          "background": {
+            "value": "{component.button.tertiary.standard.background.value}"
+          },
+          "border": {
+            "value": "{component.button.tertiary.loading.color.value}"
+          },
+          "color": {
+            "value": "{color.core.state.disabled.value}"
+          },
+          "icon": {
             "value": "{color.core.state.disabled.value}"
           }
         },
         "hover": {
-          "color": {
-            "value": "{color.core.contrast.higher.value}"
-          }
-        },
-        "active": {
-          "background-color": {
-            "value": "currentColor",
-            "comment": "// TODO: what do other platforms do with this?"
+          "background": {
+            "value": "{component.button.tertiary.hover.color.value}"
           },
           "color": {
             "value": "{color.core.contrast.higher.value}"
+          },
+          "icon": {
+            "value": "{color.core.black.value}"
+          }
+        },
+        "active": {
+          "background": {
+            "value": "{component.button.tertiary.active.color.value}"
+          },
+          "color": {
+            "value": "{color.core.contrast.higher.value}"
+          },
+          "icon": {
+            "value": "{color.core.black.value}"
           }
         }
       }

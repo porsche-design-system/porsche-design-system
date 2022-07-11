@@ -153,31 +153,27 @@ export const getLinkButtonStyles = (
   hasSlottedAnchor: boolean,
   theme: ThemeExtendedElectric
 ): Styles => {
-  const isDarkTheme = isThemeDark(theme);
+  // const isDarkTheme = isThemeDark(theme);
   const isTertiary = variant === 'tertiary';
-  const {
-    // primaryColor,
-    // primaryColorHover,
-    baseColor,
-  } = getVariantColors(variant, theme);
-  // const { disabledColor } = getThemedColors(theme);
 
   const {
     component: { button },
   } = theme === 'light' ? tokens : tokensDark;
-  console.log(button);
-  console.log('-> button[variant]', button[variant]);
-  // active: { color: activeColor },
+
   const {
     hover: { color: hoverColor },
-    color: buttonColor,
+    // @ts-ignore
+    standard: { color: standardColor },
   } = button[variant];
+
+  // const iconLabelColor = isDisabledOrLoading
+  //   ? isTertiary
+  //     ? buttonColor.disabled
+  //     : 'rgba(255,255,255,0.55)' // when was THIS the case??!
+  //   : baseColor;
+
   const disabledSelector = isDisabledOrLoading ? 'disabled' : 'standard';
-  const iconLabelColor = isDisabledOrLoading
-    ? isTertiary
-      ? buttonColor.disabled
-      : 'rgba(255,255,255,0.55)'
-    : baseColor;
+  const buttonColors = button[variant][disabledSelector];
 
   return {
     '@global': {
@@ -202,7 +198,7 @@ export const getLinkButtonStyles = (
             border: 0,
           },
           '&(a:focus)': {
-            outlineColor: buttonColor.standard,
+            outlineColor: standardColor,
           },
           ...hoverMediaQuery({
             '&(a:hover:focus)': {
@@ -232,22 +228,24 @@ export const getLinkButtonStyles = (
       cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
       textDecoration: 'none',
       textAlign: 'left',
-      border: '1px solid currentColor',
-      backgroundColor: isTertiary ? 'transparent' : 'currentColor',
-      color: buttonColor[disabledSelector],
+      border: `1px solid ${buttonColors.border}`,
+      backgroundColor: buttonColors.background,
+      color: buttonColors,
       transition: ['background-color', 'border-color', 'color'].map(getTransition).join(','),
       ...(!hasSlottedAnchor && {
         ...buildResponsiveStyles(hideLabel, getRootJssStyle),
-        ...getFocusJssStyle(),
+        ...getFocusJssStyle({ color: buttonColors.color }),
       }),
       ...(!isDisabledOrLoading &&
         hoverMediaQuery({
           '&:hover, &:active': {
             color: hoverColor,
             ...(isTertiary && {
-              backgroundColor: 'currentColor',
+              // @ts-ignore
+              backgroundColor: button.tertiary.active.background,
               '& > $label, & > $icon': {
-                color: isDarkTheme ? lightThemeBaseColor : darkThemeBaseColor,
+                // isDarkTheme ? lightThemeBaseColor :
+                color: buttonColors.icon,
               },
             }),
           },
@@ -257,14 +255,14 @@ export const getLinkButtonStyles = (
       position: 'absolute',
       width: pxToRemWithUnit(24),
       height: pxToRemWithUnit(24),
-      color: iconLabelColor,
+      color: buttonColors.icon,
       pointerEvents: 'none',
       ...buildResponsiveStyles(hideLabel, getIconJssStyle),
     },
     label: {
       display: 'block',
       boxSizing: 'border-box',
-      color: iconLabelColor,
+      color: button[variant][disabledSelector].icon,
       ...buildResponsiveStyles(hideLabel, getLabelJssStyle),
     },
   };
