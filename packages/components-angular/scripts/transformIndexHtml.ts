@@ -25,13 +25,11 @@ export default (targetOptions: TargetOptions, indexHtml: string): string => {
         : {}),
     }),
     partials.getFontLinks({ weights: ['thin', 'regular', 'semi-bold', 'bold'] }),
-    partials
-      .getBrowserSupportFallbackScript()
-      .replace(/https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g, 'http://localhost:3001'),
-    partials
-      .getCookiesFallbackScript()
-      .replace(/https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g, 'http://localhost:3001'),
-  ].join('\n');
+    partials.getBrowserSupportFallbackScript(),
+    partials.getCookiesFallbackScript(),
+  ]
+    .join('\n')
+    .replace(/https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g, 'http://localhost:3001');
 
   indexHtml = indexHtml.replace(/(<\/head>)/, `\n${partialContent}$1`);
   console.log('injected partials');
