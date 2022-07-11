@@ -1,7 +1,7 @@
 import { Page } from 'puppeteer';
 import { goto, selectNode } from '../helpers';
 import { PDS_SKELETON_CLASS_PREFIX } from '@porsche-design-system/shared';
-import { describeIfSkeletonsActive } from '@porsche-design-system/shared/test-helpers';
+import { describeIfSkeletonsActive } from '@porsche-design-system/shared/testing';
 
 import { getProperty } from '@porsche-design-system/js/tests/e2e/helpers';
 
