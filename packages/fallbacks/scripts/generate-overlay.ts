@@ -16,15 +16,16 @@ const generateOverlayCssAndHtml = (fallback: Fallbacks): void => {
   const defaultOverlayMarkup = '<p>${content}</p>';
 
   const newContent = `
-  // prettier-ignore
-  const lang = document.getElementsByTagName('html')[0].getAttribute('lang')?.slice(0, 2) as Lang;
-  const locale = lang in locales ? lang : 'en';
+// prettier-ignore
+const lang = document.getElementsByTagName('html')[0].getAttribute('lang')?.slice(0, 2) as Lang;
+const locale = lang in locales ? lang : 'en';
 
-  const { title, content } = locales[locale];
-  const htmlMarkup = \`<strong>\${title}</strong>${isBrowser ? browserOverlayMarkup : defaultOverlayMarkup}\`;
+const { title, content } = locales[locale];
+// prettier-ignore
+const htmlMarkup = \`<strong>\${title}</strong>${isBrowser ? browserOverlayMarkup : defaultOverlayMarkup}\`;
 
-  // prettier-ignore
-  const css = \`${minifyCSS(`
+// prettier-ignore
+const css = \`${minifyCSS(`
   #ID {
     position: fixed;
     display: flex;
@@ -151,24 +152,24 @@ ${
    }
   }
   `).replace('BG_IMG', bgImg)}\`.replace(/#ID/g, \`#$\{ID}\`);
-  // prettier-ignore
-  const html = \`${minifyHTML(`<div>
-    STYLE
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" focusable="false">
-      <path d="M12 3L3 21h18zm0 2.24L19.38 20H4.62z"/>
-      <path d="M12.5 15l.5-5h-2l.49 5h1.01zM11 16h2v2h-2z"/>
-    </svg>
-    CONTENT
-  </div>`)
+// prettier-ignore
+const html = \`${minifyHTML(`<div>
+  STYLE
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" focusable="false">
+    <path d="M12 3L3 21h18zm0 2.24L19.38 20H4.62z"/>
+    <path d="M12.5 15l.5-5h-2l.49 5h1.01zM11 16h2v2h-2z"/>
+  </svg>
+  CONTENT
+</div>`)
     .replace('STYLE', '<style>${css}</style>')
     .replace('CONTENT', '${htmlMarkup}')}\`;
 
-  const bodyMarkup = document.createElement('div');
-  bodyMarkup.id = ID;
-  bodyMarkup.innerHTML = html;
-  document.body.appendChild(bodyMarkup);
+const bodyMarkup = document.createElement('div');
+bodyMarkup.id = ID;
+bodyMarkup.innerHTML = html;
+document.body.appendChild(bodyMarkup);
 
-  document.body.style.overflow = 'hidden';
+document.body.style.overflow = 'hidden';
 `;
 
   fs.writeFileSync(targetFile, updateContent(oldContent, newContent));
