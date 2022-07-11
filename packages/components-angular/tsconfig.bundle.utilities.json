@@ -1,7 +1,0 @@
-{
-  "extends": "./tsconfig.bundle.json",
-  "compilerOptions": {
-    "declarationDir": "dist/components-wrapper/utilities/js"
-  },
-  "include": ["projects/components-wrapper/src/utilities/js.ts"]
-}

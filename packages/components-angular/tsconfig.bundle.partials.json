@@ -1,7 +1,0 @@
-{
-  "extends": "./tsconfig.bundle.json",
-  "compilerOptions": {
-    "declarationDir": "dist/components-wrapper/partials"
-  },
-  "include": ["projects/components-wrapper/src/partials.ts"]
-}
