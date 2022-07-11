@@ -33,7 +33,7 @@
     "@angular/platform-browser": "^13.3.8",
     "@angular/platform-browser-dynamic": "^13.3.8",
     "@angular/router": "^13.3.8",
-    "@porsche-design-system/components-angular": "2.13.0",
+    "@porsche-design-system/components-angular": "2.14.0-rc.0",
     "angular-imask": "^6.4.2",
     "rxjs": "^7.5.5",
     "tslib": "^2.4.0",
