@@ -1,5 +1,7 @@
 import { Page } from 'puppeteer';
 import {
+  FALLBACKS_MANIFEST,
+  FALLBACKS_CDN_BASE_URL,
   FONTS_CDN_BASE_URL,
   FONTS_MANIFEST,
   ICONS_CDN_BASE_URL,
@@ -167,6 +169,11 @@ describe('cdn', () => {
       const chunks = objectToFlatArray(COMPONENT_CHUNKS_MANIFEST);
       const baseUrl = `${CDN_BASE_URL}/${CDN_BASE_PATH_COMPONENTS}`;
       bulkRequestItems(chunks, baseUrl);
+    });
+
+    describe('fallbacks', () => {
+      const fallbacks = objectToFlatArray(FALLBACKS_MANIFEST);
+      bulkRequestItems(fallbacks, FALLBACKS_CDN_BASE_URL);
     });
 
     describe('fonts', () => {

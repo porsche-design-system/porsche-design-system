@@ -12,6 +12,7 @@ export const CDN_BASE_URL_DYNAMIC = `(${CDN_BASE_URL_CN_CONDITION} ? '${CDN_BASE
 const basePath = 'porsche-design-system';
 export const CDN_BASE_PATH_COMPONENTS = `${basePath}/components`;
 export const CDN_BASE_PATH_EMAIL = `${basePath}/email`;
+export const CDN_BASE_PATH_FALLBACKS = `${basePath}/fallbacks`;
 export const CDN_BASE_PATH_FONTS = `${basePath}/fonts`;
 export const CDN_BASE_PATH_ICONS = `${basePath}/icons`;
 export const CDN_BASE_PATH_META_ICONS = `${basePath}/meta-icons`;
