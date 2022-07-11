@@ -1,10 +1,9 @@
 import type { Lang, Locales } from '../types';
 
-((): void => {
-  const ID = 'porsche-design-system-fallbacks-cookies';
+const ID = 'porsche-design-system-fallbacks-cookies';
 
-  // prettier-ignore
-  const locales: Locales = {
+// prettier-ignore
+const locales: Locales = {
     de: {
       title: "Aktivieren Sie Browser Cookies, um diese Webseite zu nutzen",
       content: 'Cookies sind in Ihrem Browser deaktiviert. Um auf diese Seite zuzugreifen, müssen Sie in den Browsereinstellungen Cookies aktivieren, das Fenster schließen und diese Webseite erneut öffnen.',
@@ -98,7 +97,7 @@ import type { Lang, Locales } from '../types';
       content: "Файли cookie вимкнено у вашому браузері. Для доступу до цього сайту необхідно активувати файли cookie в налаштуваннях браузера, закрити вікно та знову відкрити цей сайт.",
     },
   };
-  /* Auto Generated Start */
+/* Auto Generated Start */
 
   // prettier-ignore
   const lang = document.getElementsByTagName('html')[0].getAttribute('lang')?.slice(0, 2) as Lang;
@@ -120,4 +119,3 @@ import type { Lang, Locales } from '../types';
   document.body.style.overflow = 'hidden';
 
   /* Auto Generated End */
-})();

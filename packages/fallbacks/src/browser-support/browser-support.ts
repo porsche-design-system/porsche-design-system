@@ -1,15 +1,14 @@
 import type { Lang, Locales } from '../types';
 
-((): void => {
-  const ID = 'porsche-design-system-fallbacks-browser-support';
+const ID = 'porsche-design-system-fallbacks-browser-support';
 
-  const linkAttributes = 'target=_blank rel="nofollow noopener"';
-  const chrome = `<a href=https://www.google.com/chrome/ ${linkAttributes}>Google Chrome</a>`;
-  const firefox = `<a href=https://www.mozilla.org/firefox/new/ ${linkAttributes}>Mozilla Firefox</a>`;
-  const edge = `<a href=https://www.microsoft.com/edge ${linkAttributes}>Microsoft Edge</a>`;
+const linkAttributes = 'target=_blank rel="nofollow noopener"';
+const chrome = `<a href=https://www.google.com/chrome/ ${linkAttributes}>Google Chrome</a>`;
+const firefox = `<a href=https://www.mozilla.org/firefox/new/ ${linkAttributes}>Mozilla Firefox</a>`;
+const edge = `<a href=https://www.microsoft.com/edge ${linkAttributes}>Microsoft Edge</a>`;
 
-  // prettier-ignore
-  const locales: Locales = {
+// prettier-ignore
+const locales: Locales = {
     de: {
       title: 'Zeit für ein kleines Update',
       content: `Der Browser, den Sie verwenden, wird nicht mehr unterstützt.<br> Am besten wechseln Sie direkt auf die neueste Version von ${chrome}, ${firefox} oder ${edge}.`,
@@ -103,7 +102,7 @@ import type { Lang, Locales } from '../types';
       content: `Браузер, яким ви користуєтесь, більше не підтримується.<br> Радимо одразу перейти на останню версію ${chrome}, ${firefox} або ${edge}.`,
     },
   };
-  /* Auto Generated Start */
+/* Auto Generated Start */
 
   // prettier-ignore
   const lang = document.getElementsByTagName('html')[0].getAttribute('lang')?.slice(0, 2) as Lang;
@@ -125,4 +124,3 @@ import type { Lang, Locales } from '../types';
   document.body.style.overflow = 'hidden';
 
   /* Auto Generated End */
-})();
