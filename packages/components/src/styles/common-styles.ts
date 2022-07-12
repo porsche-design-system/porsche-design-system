@@ -51,6 +51,7 @@ export const getHoverJssStyle = ({ theme }: GetHoverStylesOptions = { theme: 'li
 
 export type GetFocusStylesOptions = {
   color?: string;
+  hoverColor?: string;
   offset?: number;
   pseudo?: '::after' | '::before';
 };
@@ -70,6 +71,7 @@ export const getFocusJssStyle = (opts?: GetFocusStylesOptions): JssStyle => {
     pseudo,
     offset: outlineOffset,
     color: outlineColor,
+    hoverColor,
   }: GetFocusStylesOptions = {
     color: 'currentColor',
     offset: 2,
@@ -107,6 +109,9 @@ export const getFocusJssStyle = (opts?: GetFocusStylesOptions): JssStyle => {
         },
         '&:focus:not(:focus-visible)': {
           outlineColor: 'transparent',
+        },
+        '&:focus:hover,  &:focus:active': {
+          outlineColor: hoverColor,
         },
       };
 };

@@ -2,7 +2,7 @@ import type { Styles, JssStyle } from 'jss';
 import type { BreakpointCustomizable } from '../utils';
 import type { GetJssStyleFunction } from '../utils';
 import type { LinkButtonVariant, ThemeExtendedElectric } from '../types';
-import { buildResponsiveStyles, isThemeDark } from '../utils';
+import { buildResponsiveStyles } from '../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
@@ -10,82 +10,10 @@ import {
   getInsetJssStyle,
   getTransition,
   pxToRemWithUnit,
-  getThemedColors,
 } from './';
 import { hoverMediaQuery } from './hover-media-query';
 import * as tokens from '../../../style-dictionary/build/web/dist/tokens.json';
 import * as tokensDark from '../../../style-dictionary/build/web/dist/tokens-dark.json';
-const { baseColor: darkThemeBaseColor } = getThemedColors('dark');
-const { baseColor: lightThemeBaseColor } = getThemedColors('light');
-
-// @ts-ignore
-const getVariantColors = (
-  variant: LinkButtonVariant,
-  theme: ThemeExtendedElectric
-): { primaryColor: string; primaryColorHover: string; baseColor: string } => {
-  const { brandColor, baseColor, contrastHighColor, hoverColorDarken, contrastHighColorDarken, baseColorDarken } =
-    getThemedColors(theme);
-
-  const colors: {
-    [t in ThemeExtendedElectric]: {
-      [v in LinkButtonVariant]: { primaryColor: string; primaryColorHover: string; baseColor: string };
-    };
-  } = {
-    light: {
-      primary: {
-        primaryColor: brandColor,
-        primaryColorHover: hoverColorDarken,
-        baseColor: darkThemeBaseColor,
-      },
-      secondary: {
-        primaryColor: contrastHighColor,
-        primaryColorHover: contrastHighColorDarken,
-        baseColor: darkThemeBaseColor,
-      },
-      tertiary: {
-        primaryColor: contrastHighColor,
-        primaryColorHover: contrastHighColorDarken,
-        baseColor,
-      },
-    },
-    dark: {
-      primary: {
-        primaryColor: brandColor,
-        primaryColorHover: hoverColorDarken,
-        baseColor: darkThemeBaseColor,
-      },
-      secondary: {
-        primaryColor: darkThemeBaseColor,
-        primaryColorHover: baseColorDarken,
-        baseColor: lightThemeBaseColor,
-      },
-      tertiary: {
-        primaryColor: darkThemeBaseColor,
-        primaryColorHover: darkThemeBaseColor,
-        baseColor,
-      },
-    },
-    'light-electric': {
-      primary: {
-        primaryColor: brandColor,
-        primaryColorHover: hoverColorDarken,
-        baseColor: darkThemeBaseColor,
-      },
-      secondary: {
-        primaryColor: contrastHighColor,
-        primaryColorHover: contrastHighColorDarken,
-        baseColor: darkThemeBaseColor,
-      },
-      tertiary: {
-        primaryColor: contrastHighColor,
-        primaryColorHover: contrastHighColorDarken,
-        baseColor,
-      },
-    },
-  };
-
-  return colors[theme][variant];
-};
 
 const linkButtonPadding = `${pxToRemWithUnit(11)} ${pxToRemWithUnit(15)} ${pxToRemWithUnit(11)} ${pxToRemWithUnit(39)}`;
 
@@ -167,14 +95,9 @@ export const getLinkButtonStyles = (
     standard: { color: standardColor },
   } = button[variant];
 
-  // const iconLabelColor = isDisabledOrLoading
-  //   ? isTertiary
-  //     ? buttonColor.disabled
-  //     : 'rgba(255,255,255,0.55)' // when was THIS the case??!
-  //   : baseColor;
-
   const disabledSelector = isDisabledOrLoading ? 'disabled' : 'standard';
   const buttonColors = button[variant][disabledSelector];
+  console.log('-> buttonColors', variant, disabledSelector, buttonColors);
 
   return {
     '@global': {
@@ -235,14 +158,15 @@ export const getLinkButtonStyles = (
       transition: ['background-color', 'border-color', 'color'].map(getTransition).join(','),
       ...(!hasSlottedAnchor && {
         ...buildResponsiveStyles(hideLabel, getRootJssStyle),
-        ...getFocusJssStyle({ color: buttonColors.color }),
+        // @ts-ignore
+        ...getFocusJssStyle({ color: buttonColors.focus, ...(!isDisabledOrLoading && { hoverColor }) }),
       }),
       ...(!isDisabledOrLoading &&
         hoverMediaQuery({
           '&:hover, &:active': {
             backgroundColor: hoverColor,
             color: hoverColor,
-            outlineColor: hoverColor,
+            borderColor: hoverColor,
             ...(isTertiary && {
               // @ts-ignore
               backgroundColor: button.tertiary.hover.background,

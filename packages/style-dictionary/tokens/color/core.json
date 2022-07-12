@@ -6,6 +6,7 @@
       },
       "black": { "value": "#000000" },
       "white": { "value": "#ffffff" },
+      "white55": { "value": "#ffffff8c" },
       "base": {
         "primary": {
           "value": "#0000000"
