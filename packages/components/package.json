@@ -46,13 +46,11 @@
     "jss": "^10.9.0",
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.9.0",
-    "prop-types": "^15.8.1",
     "throttle-debounce": "^5.0.0"
   },
   "devDependencies": {
     "@juggle/resize-observer": "^3.3.1",
     "@rollup/plugin-replace": "^4.0.0",
-    "@types/prop-types": "^15.7.5",
     "@types/react": "^18.0.12",
     "@types/throttle-debounce": "^4.0.0",
     "@types/tinycolor2": "^1.4.3",
