@@ -1,13 +1,37 @@
-import { JSX, Component, Prop, h, Element, Host } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
+import type { PropTypes } from '../../../../utils';
 import {
-  getHTMLElement,
-  getDataThemeDarkAttribute,
-  attachSlottedCss,
+  AllowedTypes,
   attachComponentCss,
+  attachSlottedCss,
+  getDataThemeDarkAttribute,
+  getHTMLElement,
   setLineHeightOnSizeInherit,
+  validateProps,
 } from '../../../../utils';
-import type { BreakpointCustomizable, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
+import type {
+  BreakpointCustomizable,
+  LinkTarget,
+  TextAlign,
+  TextColor,
+  TextSize,
+  TextWeight,
+  Theme,
+} from '../../../../types';
+import { LINK_TARGETS, TEXT_ALIGNS, TEXT_WEIGHTS, THEMES } from '../../../../types';
 import { getComponentCss, getSlottedCss } from './text-styles';
+import type { TextTag } from './text-utils';
+import { TEXT_SIZES, TEXT_TAGS } from './text-utils';
+
+const propTypes: PropTypes<typeof Text> = {
+  tag: AllowedTypes.oneOf<TextTag>(TEXT_TAGS),
+  size: AllowedTypes.oneOf<TextSize>(TEXT_SIZES),
+  weight: AllowedTypes.oneOf<TextWeight>(TEXT_WEIGHTS),
+  align: AllowedTypes.oneOf<TextAlign>(TEXT_ALIGNS),
+  color: AllowedTypes.oneOf<LinkTarget>(LINK_TARGETS),
+  ellipsis: AllowedTypes.boolean,
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
+};
 
 @Component({
   tag: 'p-text',
@@ -17,8 +41,7 @@ export class Text {
   @Element() public host!: HTMLElement;
 
   /** Sets a custom HTML tag depending of the usage of the text component. */
-  @Prop() public tag?: 'p' | 'span' | 'div' | 'address' | 'blockquote' | 'figcaption' | 'cite' | 'time' | 'legend' =
-    'p';
+  @Prop() public tag?: TextTag = 'p';
 
   /** Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this. */
   @Prop() public size?: BreakpointCustomizable<TextSize> = 'small';
@@ -45,6 +68,7 @@ export class Text {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes, 'p-text');
     attachComponentCss(
       this.host,
       getComponentCss,

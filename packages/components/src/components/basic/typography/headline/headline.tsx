@@ -4,11 +4,24 @@ import {
   attachSlottedCss,
   attachComponentCss,
   setLineHeightOnSizeInherit,
+  AllowedTypes,
+  validateProps,
 } from '../../../../utils';
+import type { PropTypes } from '../../../../utils';
 import type { TextAlign, TextColor, Theme } from '../../../../types';
 import type { HeadlineTag, HeadlineVariant } from './headline-utils';
-import { getHeadlineTagName } from './headline-utils';
+import { getHeadlineTagName, HEADLINE_TAGS } from './headline-utils';
 import { getComponentCss, getSlottedCss } from './headline-styles';
+import { LINK_TARGETS, LinkTarget, TEXT_ALIGNS, THEMES } from '../../../../types';
+
+const propTypes: PropTypes<typeof Headline> = {
+  variant: AllowedTypes.string, // TODO: with all the different values this can't be validated
+  tag: AllowedTypes.oneOf<HeadlineTag>(HEADLINE_TAGS),
+  align: AllowedTypes.oneOf<TextAlign>(TEXT_ALIGNS),
+  color: AllowedTypes.oneOf<LinkTarget>(LINK_TARGETS),
+  ellipsis: AllowedTypes.boolean,
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
+};
 
 @Component({
   tag: 'p-headline',
@@ -42,6 +55,7 @@ export class Headline {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes, 'p-headline');
     attachComponentCss(this.host, getComponentCss, this.variant, this.align, this.color, this.ellipsis, this.theme);
   }
 
