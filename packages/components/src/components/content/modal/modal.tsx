@@ -1,16 +1,28 @@
-import { Component, Element, Event, EventEmitter, Host, JSX, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop, Watch } from '@stencil/core';
 import type { BreakpointCustomizable, SelectedAriaAttributes } from '../../../types';
 import {
+  AllowedTypes,
   attachComponentCss,
   attachSlottedCss,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasNamedSlot,
   parseAndGetAriaAttributes,
+  validateProps,
 } from '../../../utils';
+import type { PropTypes } from '../../../utils';
 import type { ModalAriaAttributes } from './modal-utils';
 import { MODAL_ARIA_ATTRIBUTES, setScrollLock, warnIfAriaAndHeadingPropsAreUndefined } from './modal-utils';
 import { getComponentCss, getSlottedCss } from './modal-styles';
+
+const propTypes: PropTypes<typeof Modal> = {
+  open: AllowedTypes.boolean,
+  disableCloseButton: AllowedTypes.boolean,
+  disableBackdropClick: AllowedTypes.boolean,
+  heading: AllowedTypes.string,
+  fullscreen: AllowedTypes.breakpointCustomizable('boolean'),
+  aria: AllowedTypes.aria<ModalAriaAttributes>(MODAL_ARIA_ATTRIBUTES),
+};
 
 @Component({
   tag: 'p-modal',
@@ -78,6 +90,7 @@ export class Modal {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes, 'p-modal');
     if (this.open) {
       warnIfAriaAndHeadingPropsAreUndefined(this.host, this.heading, this.aria);
     }

@@ -1,6 +1,7 @@
 import type { EventEmitter } from '@stencil/core';
-import { Component, Element, Event, forceUpdate, Host, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Event, forceUpdate, h, Host, Prop, State, Watch } from '@stencil/core';
 import {
+  AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
   observeChildren,
@@ -8,15 +9,28 @@ import {
   removeAttribute,
   setAttribute,
   unobserveChildren,
+  validateProps,
 } from '../../../../utils';
+import type { PropTypes } from '../../../../utils';
 import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../../types';
+import { THEMES_EXTENDED_ELECTRIC } from '../../../../types';
 import type {
   TabChangeEvent,
+  TabGradientColorTheme,
   TabSize,
   TabWeight,
-  TabGradientColorTheme,
 } from '../../../navigation/tabs-bar/tabs-bar-utils';
+import { TAB_SIZES, TAB_WEIGHTS } from '../../../navigation/tabs-bar/tabs-bar-utils';
 import { getComponentCss } from './tabs-styles';
+import { GRADIENT_COLOR_THEMES } from '../../../common/scroller/scroller-utils';
+
+const propTypes: Omit<PropTypes<typeof Tabs>, 'tabsItemElements'> = {
+  size: AllowedTypes.oneOf<TabSize>(TAB_SIZES),
+  weight: AllowedTypes.oneOf<TabWeight>(TAB_WEIGHTS),
+  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  gradientColorScheme: AllowedTypes.oneOf<TabGradientColorTheme>(GRADIENT_COLOR_THEMES),
+  activeTabIndex: AllowedTypes.number,
+};
 
 @Component({
   tag: 'p-tabs',
@@ -63,6 +77,10 @@ export class Tabs {
 
   public componentDidLoad(): void {
     this.setAccessibilityAttributes();
+  }
+
+  public componentWillRender(): void {
+    validateProps(this, propTypes, 'p-tabs');
   }
 
   public componentDidUpdate(): void {
