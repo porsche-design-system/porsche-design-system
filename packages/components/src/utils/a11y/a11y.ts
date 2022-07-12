@@ -41,6 +41,7 @@ export const parseAndGetAriaAttributes = (
     const attributes = parseJSONAttribute(rawAttributes);
     const attributeKeys = Object.keys(attributes);
 
+    // TODO: remove this
     if (allowedAttributes) {
       throwIfAriaAttributesAreInvalid(attributeKeys as (keyof AriaAttributes)[], allowedAttributes);
     }

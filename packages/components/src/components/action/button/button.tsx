@@ -1,23 +1,24 @@
 import type {
-  SelectedAriaAttributes,
   BreakpointCustomizable,
   ButtonType,
   ButtonVariant,
   IconName,
+  SelectedAriaAttributes,
   ThemeExtendedElectric,
 } from '../../../types';
-import type { ButtonAriaAttributes } from '../../../utils';
-import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
+import type { ButtonAriaAttributes, CustomComponentPropTypes } from '../../../utils';
 import {
+  AllowedTypes,
   attachComponentCss,
   BUTTON_ARIA_ATTRIBUTES,
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
+  validateProps,
 } from '../../../utils';
+import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
 import { getButtonAriaAttributes } from './button-utils';
 import { getComponentCss } from './button-styles';
-import { AllowedTypes, CustomComponentPropTypes, validateProps } from '../../../utils/validation/validateProps';
 
 const propTypes: CustomComponentPropTypes<typeof Button> = {
   type: AllowedTypes.oneOf<ButtonType>(['button', 'submit', 'reset']),
@@ -82,10 +83,6 @@ export class Button {
     }
   }
 
-  public componentWillLoad(): void {
-    validateProps(this, propTypes, 'p-button');
-  }
-
   public componentDidLoad(): void {
     improveButtonHandlingForCustomElement(
       this.host,
@@ -95,6 +92,7 @@ export class Button {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes, 'p-button');
     attachComponentCss(this.host, getComponentCss, this.variant, this.hideLabel, this.isDisabledOrLoading, this.theme);
   }
 
