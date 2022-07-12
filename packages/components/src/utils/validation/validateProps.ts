@@ -10,13 +10,28 @@ type Class<T> = Function & {
   new (...args: any[]): T;
 };
 
-type ValidatorFunction = (propName: string, propValue: any, componentName: string) => void;
-type ValidatorFunctionCreator = <T>(
+type ValidatorFunction = (propName: string, propValue: any, componentName: string) => ValidationError;
+type ValidatorFunctionOneOfCreator = <T>(allowedValues: T[] | readonly T[]) => ValidatorFunction;
+type ValidatorFunctionBreakpointCustomizableCreator = <T>(
   allowedValues: Extract<AllowedTypesKeys, 'boolean'> | T[] | readonly T[]
 ) => ValidatorFunction;
-type ValidatorFunctionOrCreator = ValidatorFunction | ValidatorFunctionCreator;
+type ValidatorFunctionShapeCreator = <T>(allowedValues: {
+  [key in keyof T]: ValidatorFunctionOrCreator;
+}) => ValidatorFunction;
+type ValidatorFunctionOrCreator =
+  | ValidatorFunction
+  | ValidatorFunctionOneOfCreator
+  | ValidatorFunctionBreakpointCustomizableCreator
+  | ValidatorFunctionShapeCreator;
 
-const formatObjectOutput = (value: object): string => {
+type ValidationError = {
+  componentName: string;
+  propName: string;
+  propValue: string;
+  propType: string;
+};
+
+const formatObjectOutput = (value: any): string => {
   return JSON.stringify(value)
     .replace(/"([A-z?]+)":/g, '$1:')
     .replace(/([,:{])/g, '$1 ')
@@ -28,10 +43,12 @@ const formatArrayOutput = <T>(value: T[] | readonly T[]): string => {
   return JSON.stringify(value).replace(/'/g, '').replace(/"/g, "'").replace(/,/g, ', ');
 };
 
-const printError = (propName: string, propValue: any, componentName: string, propType: string): void => {
-  propValue = formatObjectOutput(propValue);
+// TODO: prefixing
+const printErrorMessage = ({ propName, propValue, componentName, propType }: ValidationError): void => {
   console.error(
-    `Warning: Invalid property '${propName}' of value '${propValue}' supplied to '${componentName}', expected one of: ${propType}`
+    `Warning: Invalid property '${propName}' with value '${formatObjectOutput(
+      propValue
+    )}' supplied to '${componentName}', expected one of: ${propType}`
   );
 };
 
@@ -39,9 +56,14 @@ const isValueNotOfType = (propValue: any, propType: string): boolean => {
   return propValue !== undefined && typeof propValue !== propType;
 };
 
-const validateValueOfType = (propName: string, propValue: any, componentName: string, propType: string): void => {
+const validateValueOfType = (
+  propName: string,
+  propValue: any,
+  componentName: string,
+  propType: string
+): ValidationError => {
   if (isValueNotOfType(propValue, propType)) {
-    printError(propName, propValue, componentName, propType);
+    return { propName, propValue, componentName, propType };
   }
 };
 
@@ -51,13 +73,33 @@ const breakpointCustomizableTemplate =
     BREAKPOINTS.reduce((prev, key) => ({ ...prev, [key + (key !== 'base' ? '?' : '')]: 'value' }), {})
   ).replace(/"/g, '');
 
-const getBreakpointCustomizableStructureForType = <T>(
+const getBreakpointCustomizableStructure = <T>(
   allowedValues: Extract<AllowedTypesKeys, 'boolean'> | T[] | readonly T[]
 ): string => {
   if (allowedValues !== 'boolean') {
     allowedValues = formatArrayOutput(allowedValues).replace('[', '(').replace(']', ')[]').replace(/,/g, ' |') as any;
   }
   return breakpointCustomizableTemplate.replace(/value/g, allowedValues as string);
+};
+
+const getAriaStructure = <T>(allowedAriaAttributes: readonly T[]): string => {
+  return formatObjectOutput(
+    allowedAriaAttributes.reduce(
+      (prev, key) => ({
+        ...prev,
+        [key as any]: 'string',
+      }),
+      {}
+    )
+  )
+    .replace(/":/g, '"?:')
+    .replace(/"/g, "'");
+};
+
+const getShapeStructure = <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }) => {
+  return formatObjectOutput(
+    Object.keys(shapeStructure).reduce((prev, key) => ({ ...prev, [key]: shapeStructure[key].name || 'string' }), {})
+  ).replace(/"/g, '');
 };
 
 const isBreakpointCustomizableValueInvalid = <T>(
@@ -72,9 +114,10 @@ type AllowedTypesKeys = 'string' | 'number' | 'boolean';
 export const AllowedTypes: {
   [key in AllowedTypesKeys]: ValidatorFunction;
 } & {
-  oneOf: ValidatorFunctionCreator;
-  breakpointCustomizable: ValidatorFunctionCreator;
-  aria: ValidatorFunctionCreator;
+  oneOf: ValidatorFunctionOneOfCreator;
+  aria: ValidatorFunctionOneOfCreator;
+  breakpointCustomizable: ValidatorFunctionBreakpointCustomizableCreator;
+  shape: ValidatorFunctionShapeCreator;
 } = {
   string: (...args) => validateValueOfType(...args, 'string'),
   number: (...args) => validateValueOfType(...args, 'number'),
@@ -83,7 +126,7 @@ export const AllowedTypes: {
     <T>(allowedValues: T[]): ValidatorFunction =>
     (propName, propValue, componentName) => {
       if (!allowedValues.includes(propValue)) {
-        printError(propName, propValue, componentName, formatArrayOutput(allowedValues));
+        return { propName, propValue, componentName, propType: formatArrayOutput(allowedValues) };
       }
     },
   breakpointCustomizable: (allowedValues): ValidatorFunction => {
@@ -106,29 +149,54 @@ export const AllowedTypes: {
       }
 
       if (!isValid) {
-        printError(propName, value, componentName, getBreakpointCustomizableStructureForType(allowedValues));
+        return {
+          propName,
+          propValue: value + '',
+          componentName,
+          propType: getBreakpointCustomizableStructure(allowedValues),
+        };
       }
     };
   },
   aria: <T = keyof AriaAttributes>(allowedAriaAttributes: readonly T[]): ValidatorFunction => {
     return (propName, propValue, componentName) => {
-      const ariaAttributes = parseJSONAttribute(propValue);
+      const ariaAttributes = parseJSONAttribute<AriaAttributes>(propValue);
       if (
         ariaAttributes &&
         Object.keys(ariaAttributes).some((ariaKey) => !allowedAriaAttributes.includes(ariaKey as any))
       ) {
-        printError(
+        return {
           propName,
-          ariaAttributes,
+          propValue: formatObjectOutput(ariaAttributes),
           componentName,
-          formatObjectOutput(allowedAriaAttributes.reduce((prev, key) => ({ ...prev, [key as any]: 'string' }), {}))
-            .replace(/":/g, '"?:')
-            .replace(/"/g, "'")
-        );
+          propType: getAriaStructure(allowedAriaAttributes),
+        };
       }
     };
   },
-  // TODO: validate object, e.g. aria or sort in p-table-head-cell
+  shape: <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): ValidatorFunction => {
+    return (propName, propValue, componentName) => {
+      if (shapeStructure) {
+        const shapeKeys = Object.keys(shapeStructure);
+        if (
+          // check structure
+          Object.keys(propValue).some((key) => !shapeKeys.includes(key)) ||
+          // check values
+          Object.entries(shapeStructure).some(([structureKey, validatorFunc]: [string, ValidatorFunction]) =>
+            validatorFunc(structureKey, propValue[structureKey], componentName)
+          )
+        ) {
+          // TODO: more precise inner errors from value validation could be output
+          return {
+            propName,
+            propValue,
+            componentName,
+            propType: getShapeStructure(shapeStructure),
+          };
+        }
+      }
+    };
+  },
 };
 
 export type CustomComponentPropTypes<T extends Class<any>> = Required<{
@@ -143,7 +211,10 @@ export const validateProps = <T extends Class<any>>(
   propTypes: CustomComponentPropTypes<T>,
   componentName: string
 ): void => {
-  Object.entries(propTypes).forEach(([propKey, validatorFunc]: [string, ValidatorFunction]) => {
-    validatorFunc(propKey, instance[propKey], componentName);
-  });
+  Object.entries(propTypes)
+    .map(([propKey, validatorFunc]: [string, ValidatorFunction]) =>
+      validatorFunc(propKey, instance[propKey], componentName)
+    )
+    .filter((x) => x)
+    .forEach(printErrorMessage);
 };
