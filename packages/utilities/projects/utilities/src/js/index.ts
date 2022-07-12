@@ -2,6 +2,7 @@ export * from './breakpoint';
 export * from './colorExternal';
 export * from './focus';
 export * from './font';
+export * from './grid';
 export * from './mediaQuery';
 export * from './spacing';
 export * from './typography';
