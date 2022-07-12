@@ -4,19 +4,19 @@
       "primary": {
         "standard": {
           "background": {
-            "value": "{component.button.primary.standard.color.value}"
+            "value": "{component.button.primary.standard.text.value}"
           },
           "border": {
-            "value": "{component.button.primary.standard.color.value}"
+            "value": "{component.button.primary.standard.text.value}"
           },
-          "color": {
+          "text": {
             "value": "{color.core.brand.value}"
           },
           "icon": {
             "value": "{color.core.white.value}"
           },
           "focus": {
-            "value": "{component.button.primary.standard.color.value}"
+            "value": "{component.button.primary.standard.text.value}"
           }
         },
         "disabled": {
@@ -26,18 +26,18 @@
           "border": {
             "value": "{component.button.primary.disabled.background.value}"
           },
-          "color": {
+          "text": {
             "value": "{color.core.white55.value}"
           },
           "icon": {
-            "value": "{component.button.primary.disabled.color.value}"
+            "value": "{component.button.primary.disabled.text.value}"
           },
           "focus": {
             "value": "{component.button.primary.disabled.background.value}"
           }
         },
         "hover": {
-          "color": {
+          "text": {
             "value": "{color.core.state.hoverHigh.value}"
           }
         }
@@ -45,12 +45,12 @@
       "secondary": {
         "standard": {
           "background": {
-            "value": "{component.button.secondary.standard.color.value}"
+            "value": "{component.button.secondary.standard.text.value}"
           },
           "border": {
-            "value": "{component.button.secondary.standard.color.value}"
+            "value": "{component.button.secondary.standard.text.value}"
           },
-          "color": {
+          "text": {
             "value": "{color.core.contrast.high.value}"
           },
           "icon": {
@@ -67,18 +67,18 @@
           "border": {
             "value": "{component.button.primary.disabled.background.value}"
           },
-          "color": {
+          "text": {
             "value": "{color.core.white55.value}"
           },
           "icon": {
-            "value": "{component.button.secondary.disabled.color.value}"
+            "value": "{component.button.secondary.disabled.text.value}"
           },
           "focus": {
             "value": "{component.button.secondary.disabled.background.value}"
           }
         },
         "hover": {
-          "color": {
+          "text": {
             "value": "{color.core.contrast.higher.value}"
           }
         }
@@ -89,16 +89,16 @@
             "value": "{color.core.background.transparent.value}"
           },
           "border": {
-            "value": "{component.button.tertiary.standard.color.value}"
+            "value": "{component.button.tertiary.standard.text.value}"
           },
-          "color": {
+          "text": {
             "value": "{color.core.contrast.high.value}"
           },
           "icon": {
             "value": "{color.core.black.value}"
           },
           "focus": {
-            "value": "{component.button.tertiary.standard.color.value}"
+            "value": "{component.button.tertiary.standard.text.value}"
           }
         },
         "disabled": {
@@ -106,23 +106,23 @@
             "value": "{component.button.tertiary.standard.background.value}"
           },
           "border": {
-            "value": "{component.button.tertiary.disabled.color.value}"
+            "value": "{component.button.tertiary.disabled.text.value}"
           },
-          "color": {
+          "text": {
             "value": "{color.core.state.disabled.value}"
           },
           "icon": {
-            "value": "{component.button.tertiary.disabled.color.value}"
+            "value": "{component.button.tertiary.disabled.text.value}"
           },
           "focus": {
-            "value": "{component.button.tertiary.disabled.color.value}"
+            "value": "{component.button.tertiary.disabled.text.value}"
           }
         },
         "hover": {
           "background": {
-            "value": "{component.button.tertiary.hover.color.value}"
+            "value": "{component.button.tertiary.hover.text.value}"
           },
-          "color": {
+          "text": {
             "value": "{color.core.contrast.higher.value}"
           },
           "icon": {

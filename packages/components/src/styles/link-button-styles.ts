@@ -90,9 +90,8 @@ export const getLinkButtonStyles = (
   } = theme === 'light' ? tokens : tokensDark;
 
   const {
-    hover: { color: hoverColor },
-    // @ts-ignore
-    standard: { color: standardColor },
+    hover: { text: hoverColor },
+    standard: { text: standardColor },
   } = button[variant];
 
   const disabledSelector = isDisabledOrLoading ? 'disabled' : 'standard';
