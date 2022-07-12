@@ -12,24 +12,55 @@ type ValidatorFunction = (propName: string, propValue: any, componentName: strin
 type ValidatorFunctionCreator = <T>(allowedValues: Extract<AllowedTypesKeys, 'boolean'> | T[]) => ValidatorFunction;
 type ValidatorFunctionOrCreator = ValidatorFunction | ValidatorFunctionCreator;
 
-const formatValueOutput = (value: any): string =>
-  JSON.stringify(value)
-    .replace(/"/g, '')
-    .replace(/([,:{\[])/g, '$1 ')
-    .replace(/([}\]])/g, ' $1');
+const formatObjectOutput = (value: object): string => {
+  return JSON.stringify(value)
+    .replace(/"([A-z?]+)":/g, '$1:')
+    .replace(/([,:{])/g, '$1 ')
+    .replace(/(})/g, ' $1')
+    .replace(/^"(.+)"$/, '$1');
+};
 
-const printError = (propName: string, propValue: any, componentName: string, propType: any | any[]): void => {
-  propValue = formatValueOutput(propValue);
-  propType = formatValueOutput(propType);
+const formatArrayOutput = <T>(value: T[]): string => {
+  return JSON.stringify(value).replace(/'/g, '').replace(/"/g, "'").replace(/,/g, ', ');
+};
+
+const printError = (propName: string, propValue: any, componentName: string, propType: string): void => {
+  propValue = formatObjectOutput(propValue);
   console.error(
-    `Warning: Invalid property '${propName}' of value '${propValue}' supplied to '${componentName}, expected one of: ${propType}`
+    `Warning: Invalid property '${propName}' of value '${propValue}' supplied to '${componentName}', expected one of: ${propType}`
   );
 };
 
-const throwIfValueIsNotOfType = (propName: string, propValue: any, componentName: string, propType: string): void => {
-  if (propValue !== undefined && typeof propValue !== propType) {
+const isValueNotOfType = (propValue: any, propType: string): boolean => {
+  return propValue !== undefined && typeof propValue !== propType;
+};
+
+const validateValueOfType = (propName: string, propValue: any, componentName: string, propType: string): void => {
+  if (isValueNotOfType(propValue, propType)) {
     printError(propName, propValue, componentName, propType);
   }
+};
+
+const breakpointCustomizableTemplate =
+  'value, ' +
+  formatObjectOutput(
+    BREAKPOINTS.reduce((prev, key) => ({ ...prev, [key + (key !== 'base' ? '?' : '')]: 'value' }), {})
+  ).replace(/"/g, '');
+
+const getBreakpointCustomizableStructureForType = <T>(
+  allowedValues: Extract<AllowedTypesKeys, 'boolean'> | T[]
+): string => {
+  if (allowedValues !== 'boolean') {
+    allowedValues = formatArrayOutput(allowedValues).replace('[', '(').replace(']', ')[]').replace(/,/g, ' |') as any;
+  }
+  return breakpointCustomizableTemplate.replace(/value/g, allowedValues as string);
+};
+
+const isBreakpointCustomizableValueInvalid = <T>(
+  value: any,
+  allowedValues: Extract<AllowedTypesKeys, 'boolean'> | T[]
+): boolean => {
+  return allowedValues === 'boolean' ? isValueNotOfType(value, allowedValues) : !allowedValues.includes(value);
 };
 
 type AllowedTypesKeys = 'string' | 'number' | 'boolean';
@@ -37,48 +68,41 @@ type AllowedTypesKeys = 'string' | 'number' | 'boolean';
 export const AllowedTypes: {
   [key in AllowedTypesKeys]: ValidatorFunction;
 } & { oneOf: ValidatorFunctionCreator; breakpointCustomizable: ValidatorFunctionCreator } = {
-  string: (...args) => throwIfValueIsNotOfType(...args, 'string'),
-  number: (...args) => throwIfValueIsNotOfType(...args, 'number'),
-  boolean: (...args) => throwIfValueIsNotOfType(...args, 'boolean'),
+  string: (...args) => validateValueOfType(...args, 'string'),
+  number: (...args) => validateValueOfType(...args, 'number'),
+  boolean: (...args) => validateValueOfType(...args, 'boolean'),
   oneOf:
     <T>(allowedValues: T[]): ValidatorFunction =>
     (propName, propValue, componentName) => {
       if (!allowedValues.includes(propValue)) {
-        printError(propName, propValue, componentName, allowedValues);
+        printError(propName, propValue, componentName, formatArrayOutput(allowedValues));
       }
     },
   breakpointCustomizable: (allowedValues): ValidatorFunction => {
     return (propName, propValue, componentName) => {
-      // true / false type of breakpoint customizable or array containing possible values
-      const isBooleanValue = allowedValues === 'boolean';
       const value = parseJSON(propValue);
+      let isValid = true;
 
       if (typeof value === 'object') {
-        // check structure
-        const invalidKeys = Object.keys(value).filter((key) => !BREAKPOINTS.includes(key as any));
-        if (invalidKeys.length) {
-          printError(
-            propName,
-            value,
-            componentName,
-            BREAKPOINTS.reduce((prev, key) => ({ ...prev, [key + (key !== 'base' ? '?' : '')]: 'value' }), {})
-          );
-        } else {
+        if (
+          // check structure
+          Object.keys(value).some((key) => !BREAKPOINTS.includes(key as any)) ||
           // check values
-          Object.values(value).forEach((val) =>
-            (isBooleanValue ? AllowedTypes.boolean : AllowedTypes.oneOf(allowedValues))(propName, val, componentName)
-          );
+          Object.values(value).some((val) => isBreakpointCustomizableValueInvalid(val, allowedValues))
+        ) {
+          isValid = false;
         }
-      } else {
+      } else if (isBreakpointCustomizableValueInvalid(value, allowedValues)) {
         // single
-        (isBooleanValue ? AllowedTypes.boolean : AllowedTypes.oneOf(allowedValues))(propName, value, componentName);
+        isValid = false;
       }
 
-      // if (!allowedValues.includes(propValue)) {
-      //   printError(propName, propValue, componentName, allowedValues);
-      // }
+      if (!isValid) {
+        printError(propName, value, componentName, getBreakpointCustomizableStructureForType(allowedValues));
+      }
     };
   },
+  // TODO: validate object, e.g. aria or sort in p-table-head-cell
 };
 
 export type CustomComponentPropTypes<T extends Class<any>> = Required<{
@@ -93,8 +117,7 @@ export const validateProps = <T extends Class<any>>(
   propTypes: CustomComponentPropTypes<T>,
   componentName: string
 ): void => {
-  Object.entries(propTypes).forEach(([key, validatorFunc]: [string, ValidatorFunction]) => {
-    console.log(componentName, key, instance[key]);
-    validatorFunc(key, instance[key], componentName);
+  Object.entries(propTypes).forEach(([propKey, validatorFunc]: [string, ValidatorFunction]) => {
+    validatorFunc(propKey, instance[propKey], componentName);
   });
 };
