@@ -1,14 +1,25 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import type { PropTypes } from '../../../utils';
 import {
+  AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
   parseAndGetAriaAttributes,
   throwIfValueIsInvalid,
+  validateProps,
 } from '../../../utils';
 import { getComponentCss } from './tag-dismissible-styles';
+import type { TagDismissibleAriaAttribute, TagDismissibleColor } from './tag-dismissible-utils';
 import { TAG_DISMISSIBLE_ARIA_ATTRIBUTES, TAG_DISMISSIBLE_COLORS } from './tag-dismissible-utils';
-import type { TagDismissibleColor, TagDismissibleAriaAttribute } from './tag-dismissible-utils';
 import type { SelectedAriaAttributes } from '../../../types';
+import type { TagColor } from '../tag/tag-utils';
+import { TAG_COLORS } from '../tag/tag-utils';
+
+const propTypes: PropTypes<typeof TagDismissible> = {
+  color: AllowedTypes.oneOf<TagColor>(TAG_COLORS),
+  label: AllowedTypes.string,
+  aria: AllowedTypes.aria<TagDismissibleAriaAttribute>(TAG_DISMISSIBLE_ARIA_ATTRIBUTES),
+};
 
 @Component({
   tag: 'p-tag-dismissible',
@@ -27,6 +38,7 @@ export class TagDismissible {
   @Prop() public aria?: SelectedAriaAttributes<TagDismissibleAriaAttribute>;
 
   public componentWillRender(): void {
+    validateProps(this, propTypes, 'p-tag-dismissible');
     throwIfValueIsInvalid(this.color, TAG_DISMISSIBLE_COLORS, 'color');
     attachComponentCss(this.host, getComponentCss, this.color, !!this.label);
   }
