@@ -1,10 +1,20 @@
 import type { LinkTarget, SelectedAriaAttributes } from '../../../types';
 import type { MarqueAriaAttributes, MarqueSize } from './marque-utils';
-import { buildSrcSet, cdnBaseUrl, getInnerManifest, MARQUE_ARIA_ATTRIBUTES } from './marque-utils';
+import { buildSrcSet, cdnBaseUrl, getInnerManifest, MARQUE_ARIA_ATTRIBUTES, MARQUE_SIZES } from './marque-utils';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import { attachComponentCss, parseAndGetAriaAttributes } from '../../../utils';
+import { AllowedTypes, attachComponentCss, parseAndGetAriaAttributes, validateProps } from '../../../utils';
+import type { PropTypes } from '../../../utils';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import { getComponentCss } from './marque-styles';
+import { LINK_TARGETS } from '../../../types';
+
+const propTypes: PropTypes<typeof Marque> = {
+  trademark: AllowedTypes.boolean,
+  size: AllowedTypes.oneOf<MarqueSize>(MARQUE_SIZES),
+  href: AllowedTypes.string,
+  target: AllowedTypes.oneOf<LinkTarget>(LINK_TARGETS),
+  aria: AllowedTypes.aria<MarqueAriaAttributes>(MARQUE_ARIA_ATTRIBUTES),
+};
 
 @Component({
   tag: 'p-marque',
@@ -29,6 +39,7 @@ export class Marque {
   @Prop() public aria?: SelectedAriaAttributes<MarqueAriaAttributes>;
 
   public componentWillRender(): void {
+    validateProps(this, propTypes, 'p-marque');
     attachComponentCss(this.host, getComponentCss, this.size);
   }
 

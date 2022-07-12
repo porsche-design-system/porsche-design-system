@@ -20,7 +20,8 @@ export type TextColor =
   | 'notification-neutral'
   | 'inherit';
 
-export type TextAlign = 'left' | 'center' | 'right';
+export const TEXT_ALIGNS = ['left', 'center', 'right'] as const;
+export type TextAlign = typeof TEXT_ALIGNS[number];
 
 export const THEMES = ['light', 'dark'] as const;
 export type Theme = typeof THEMES[number];
@@ -42,7 +43,9 @@ export const BUTTON_TYPES = ['button', 'submit', 'reset'] as const;
 export type ButtonType = typeof BUTTON_TYPES[number];
 
 export type LinkVariant = LinkButtonVariant;
-export type LinkTarget = '_self' | '_blank' | '_parent' | '_top' | string;
+// TODO: string type got removed here?
+export const LINK_TARGETS = ['_self', '_blank', '_parent', '_top'] as const;
+export type LinkTarget = typeof LINK_TARGETS[number];
 
 export const FORM_STATES = ['none', 'error', 'success'] as const;
 export type FormState = typeof FORM_STATES[number];
