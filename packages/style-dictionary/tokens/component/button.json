@@ -112,7 +112,7 @@
             "value": "{color.core.state.disabled.value}"
           },
           "icon": {
-            "value": "{color.core.state.disabled.value}"
+            "value": "{component.button.tertiary.disabled.color.value}"
           },
           "focus": {
             "value": "{component.button.tertiary.disabled.color.value}"

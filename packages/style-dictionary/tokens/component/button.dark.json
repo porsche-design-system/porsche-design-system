@@ -2,86 +2,131 @@
   "component": {
     "button": {
       "primary": {
-        "background-color": {
-          "value": "currentColor",
-          "comment": "// TODO: what do other platforms do with this?"
-        },
-        "color": {
-          "standard": {
+        "standard": {
+          "background": {
+            "value": "{component.button.primary.standard.color.value}"
+          },
+          "border": {
+            "value": "{component.button.primary.standard.color.value}"
+          },
+          "color": {
             "value": "{color.core.brand.value}"
           },
-          "disabled": {
+          "icon": {
+            "value": "{color.core.white.value}"
+          },
+          "focus": {
+            "value": "{component.button.primary.standard.color.value}"
+          }
+        },
+        "disabled": {
+          "background": {
             "value": "{color.core.state.disabledDark.value}"
           },
-          "loading": {
-            "value": "{color.core.state.disabledDark.value}"
+          "border": {
+            "value": "{component.button.primary.disabled.background.value}"
+          },
+          "color": {
+            "value": "{color.core.white55.value}"
+          },
+          "icon": {
+            "value": "{component.button.primary.disabled.color.value}"
+          },
+          "focus": {
+            "value": "{component.button.primary.disabled.background.value}"
           }
         },
         "hover": {
-          "color": {
-            "value": "{color.core.state.hoverHighDark.value}"
-          }
-        },
-        "active": {
           "color": {
             "value": "{color.core.state.hoverHighDark.value}"
           }
         }
       },
       "secondary": {
-        "background-color": {
-          "value": "currentColor",
-          "comment": "// TODO: what do other platforms do with this?"
+        "standard": {
+          "background": {
+            "value": "{color.core.white.value}"
+          },
+          "border": {
+            "value": "{component.button.secondary.standard.background.value}"
+          },
+          "color": {
+            "value": "{color.core.black.value}"
+          },
+          "icon": {
+            "value": "{component.button.secondary.standard.color.value}"
+          },
+          "focus": {
+            "value": "{component.button.secondary.standard.background.value}"
+          }
         },
-        "color": {
-          "standard": {
-            "value": "{color.core.base.primaryDark.value}"
-          },
-          "disabled": {
+        "disabled": {
+          "background": {
             "value": "{color.core.state.disabledDark.value}"
           },
-          "loading": {
-            "value": "{color.core.state.disabledDark.value}"
+          "border": {
+            "value": "{component.button.primary.disabled.background.value}"
+          },
+          "color": {
+            "value": "{color.core.white55.value}"
+          },
+          "icon": {
+            "value": "{component.button.secondary.disabled.color.value}"
+          },
+          "focus": {
+            "value": "{component.button.secondary.disabled.background.value}"
           }
         },
         "hover": {
-          "color": {
-            "value": "{color.core.base.secondaryDark.value}"
-          }
-        },
-        "active": {
           "color": {
             "value": "{color.core.base.secondaryDark.value}"
           }
         }
       },
       "tertiary": {
-        "background-color": {
-          "value": "{color.core.background.transparentDark.value}"
+        "standard": {
+          "background": {
+            "value": "{color.core.background.transparent.value}"
+          },
+          "border": {
+            "value": "{component.button.tertiary.standard.color.value}"
+          },
+          "color": {
+            "value": "{color.core.white.value}"
+          },
+          "icon": {
+            "value": "{component.button.tertiary.standard.color.value}"
+          },
+          "focus": {
+            "value": "{component.button.tertiary.standard.color.value}"
+          }
         },
-        "color": {
-          "standard": {
-            "value": "{color.core.base.primaryDark.value}"
+        "disabled": {
+          "background": {
+            "value": "{component.button.tertiary.standard.background.value}"
           },
-          "disabled": {
+          "border": {
+            "value": "{component.button.tertiary.disabled.color.value}"
+          },
+          "color": {
             "value": "{color.core.state.disabledDark.value}"
           },
-          "loading": {
-            "value": "{color.core.state.disabledDark.value}"
+          "icon": {
+            "value": "{component.button.tertiary.disabled.color.value}"
+          },
+          "focus": {
+            "value": "{component.button.tertiary.disabled.color.value}"
           }
         },
         "hover": {
-          "color": {
-            "value": "{color.core.base.primaryDark.value}"
-          }
-        },
-        "active": {
-          "background-color": {
-            "value": "currentColor",
-            "comment": "// TODO: what do other platforms do with this?"
+          "background": {
+            "value": "{component.button.tertiary.hover.color.value}"
           },
           "color": {
             "value": "{color.core.base.primaryDark.value}"
+          },
+          "icon": {
+            "value": "{color.core.black.value}"
           }
         }
       }
