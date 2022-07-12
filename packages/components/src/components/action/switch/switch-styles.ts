@@ -1,16 +1,12 @@
 import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable, GetJssStyleFunction } from '../../../utils';
 import type { AlignLabel, AlignLabelType, ThemeExtendedElectric } from '../../../types';
-import { buildResponsiveStyles, getCss, isThemeLightElectric, mergeDeep } from '../../../utils';
-import {
-  addImportantToEachRule,
-  getTextHiddenJssStyle,
-  getTransition,
-  pxToRemWithUnit,
-  getThemedColors,
-} from '../../../styles';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../../utils';
+import { addImportantToEachRule, getTextHiddenJssStyle, getTransition, pxToRemWithUnit } from '../../../styles';
 import { spacing } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
+import * as tokens from '../../../../../style-dictionary/build/web/dist/tokens.json';
+import * as tokensDark from '../../../../../style-dictionary/build/web/dist/tokens-dark.json';
 
 const { small: spacingSmall } = spacing;
 
@@ -28,35 +24,60 @@ const getColors = (
   toggleBackgroundColorHover: string;
   textColor: string;
 } => {
+  // const {
+  //   backgroundColor,
+  //   baseColor,
+  //   contrastHighColor,
+  //   successColor,
+  //   successColorDarken,
+  //   hoverColorDarken,
+  //   disabledColor,
+  //   brandColor,
+  // } = getThemedColors(theme);
+  // const { backgroundColor: lightThemeBackgroundColor } = getThemedColors('light');
+  // const isLightElectricTheme = isThemeLightElectric(theme);
+  // const checkedColor = isLightElectricTheme ? brandColor : successColor;
+  // const disabledOrLoadingColor = isDisabledOrLoading && disabledColor;
+  //
+  // return {
+  //   backgroundColor,
+  //   buttonBorderColor: disabledOrLoadingColor || (checked ? checkedColor : contrastHighColor),
+  //   buttonBorderColorHover: checked ? (isLightElectricTheme ? hoverColorDarken : successColorDarken) : baseColor,
+  //   buttonBackgroundColor: checked ? disabledOrLoadingColor || checkedColor : 'transparent',
+  //   buttonBackgroundColorHover: checked
+  //     ? isLightElectricTheme
+  //       ? hoverColorDarken
+  //       : successColorDarken
+  //     : 'transparent',
+  //   toggleBackgroundColor:
+  //     (!checked && disabledOrLoadingColor) || (checked ? lightThemeBackgroundColor : contrastHighColor),
+  //   toggleBackgroundColorHover: checked ? lightThemeBackgroundColor : baseColor,
+  //   textColor: disabledOrLoadingColor || baseColor,
+  // };
   const {
-    backgroundColor,
-    baseColor,
-    contrastHighColor,
-    successColor,
-    successColorDarken,
-    hoverColorDarken,
-    disabledColor,
-    brandColor,
-  } = getThemedColors(theme);
-  const { backgroundColor: lightThemeBackgroundColor } = getThemedColors('light');
-  const isLightElectricTheme = isThemeLightElectric(theme);
-  const checkedColor = isLightElectricTheme ? brandColor : successColor;
-  const disabledOrLoadingColor = isDisabledOrLoading && disabledColor;
+    // @ts-ignore
+    component: { switchCmp },
+  } = theme === 'light' ? tokens : tokensDark;
+
+  const switchColors = switchCmp[checked ? 'checked' : 'unchecked'];
+  const { background, buttonBorder, buttonBackground, toggleBackground, text } =
+    switchColors[isDisabledOrLoading ? 'disabled' : 'standard'];
+
+  const {
+    buttonBorder: buttonBorderHover,
+    buttonBackground: buttonBackgroundHover,
+    toggleBackground: toggleBackgroundHover,
+  } = switchColors.hover;
 
   return {
-    backgroundColor,
-    buttonBorderColor: disabledOrLoadingColor || (checked ? checkedColor : contrastHighColor),
-    buttonBorderColorHover: checked ? (isLightElectricTheme ? hoverColorDarken : successColorDarken) : baseColor,
-    buttonBackgroundColor: checked ? disabledOrLoadingColor || checkedColor : 'transparent',
-    buttonBackgroundColorHover: checked
-      ? isLightElectricTheme
-        ? hoverColorDarken
-        : successColorDarken
-      : 'transparent',
-    toggleBackgroundColor:
-      (!checked && disabledOrLoadingColor) || (checked ? lightThemeBackgroundColor : contrastHighColor),
-    toggleBackgroundColorHover: checked ? lightThemeBackgroundColor : baseColor,
-    textColor: disabledOrLoadingColor || baseColor,
+    backgroundColor: background,
+    buttonBorderColor: buttonBorder,
+    buttonBackgroundColor: buttonBackground,
+    toggleBackgroundColor: toggleBackground,
+    textColor: text,
+    buttonBorderColorHover: buttonBorderHover,
+    buttonBackgroundColorHover: buttonBackgroundHover,
+    toggleBackgroundColorHover: toggleBackgroundHover,
   };
 };
 
