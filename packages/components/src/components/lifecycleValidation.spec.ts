@@ -7,6 +7,7 @@ import * as attributeObserverUtils from '../utils/attribute-observer';
 import * as childrenObserverUtils from '../utils/children-observer';
 import * as throwIfParentIsNotOfKindUtils from '../utils/validation/throwIfParentIsNotOfKind';
 import * as throwIfRootNodeIsNotOneOfKindUtils from '../utils/validation/throwIfRootNodeIsNotOneOfKind';
+import * as validatePropsUtils from '../utils/validation/validateProps';
 import { addParentAndSetRequiredProps, componentFactory, TAG_NAMES_CONSTRUCTOR_MAP } from '../test-utils';
 import { camelCase } from 'change-case';
 
@@ -17,6 +18,7 @@ const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).
 const tagNamesWithSlottedCss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasSlottedCss);
 const tagNamesWithObserveAttributes = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasObserveAttributes);
 const tagNamesWithObserveChildren = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasObserveChildren);
+const tagNamesPublic = TAG_NAMES.filter((tagName) => !getComponentMeta(tagName).isInternal);
 
 // TODO: group tests by component instead of by feature?
 
@@ -75,6 +77,25 @@ it.each<TagName>(tagNamesWithRequiredRootNode)(
       component.host,
       getComponentMeta(tagName).requiredRootNode.map((tagName) => camelCase(tagName))
     );
+  }
+);
+
+it.each<TagName>(tagNamesPublic)(
+  'should call validateProps() with correct parameters via componentWillRender for %s',
+  (tagName) => {
+    const spy = jest.spyOn(validatePropsUtils, 'validateProps');
+    const component = componentFactory(tagName);
+
+    try {
+      component.componentWillRender();
+    } catch {}
+
+    const propTypes = getComponentMeta(tagName).props.reduce(
+      (prev, prop) => ({ ...prev, [Object.keys(prop)[0]]: expect.any(Function) }),
+      {}
+    );
+
+    expect(spy).toBeCalledWith(component, expect.objectContaining(propTypes), tagName);
   }
 );
 
