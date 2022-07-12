@@ -1,4 +1,6 @@
 import { BREAKPOINTS, parseJSON } from '../breakpoint-customizable';
+import { AriaAttributes } from '../../aria-types';
+import { parseJSONAttribute } from '../json';
 
 type FunctionPropertyNames<T> = {
   [K in keyof T]: T[K] extends Function ? K : never;
@@ -9,7 +11,9 @@ type Class<T> = Function & {
 };
 
 type ValidatorFunction = (propName: string, propValue: any, componentName: string) => void;
-type ValidatorFunctionCreator = <T>(allowedValues: Extract<AllowedTypesKeys, 'boolean'> | T[]) => ValidatorFunction;
+type ValidatorFunctionCreator = <T>(
+  allowedValues: Extract<AllowedTypesKeys, 'boolean'> | T[] | readonly T[]
+) => ValidatorFunction;
 type ValidatorFunctionOrCreator = ValidatorFunction | ValidatorFunctionCreator;
 
 const formatObjectOutput = (value: object): string => {
@@ -20,7 +24,7 @@ const formatObjectOutput = (value: object): string => {
     .replace(/^"(.+)"$/, '$1');
 };
 
-const formatArrayOutput = <T>(value: T[]): string => {
+const formatArrayOutput = <T>(value: T[] | readonly T[]): string => {
   return JSON.stringify(value).replace(/'/g, '').replace(/"/g, "'").replace(/,/g, ', ');
 };
 
@@ -48,7 +52,7 @@ const breakpointCustomizableTemplate =
   ).replace(/"/g, '');
 
 const getBreakpointCustomizableStructureForType = <T>(
-  allowedValues: Extract<AllowedTypesKeys, 'boolean'> | T[]
+  allowedValues: Extract<AllowedTypesKeys, 'boolean'> | T[] | readonly T[]
 ): string => {
   if (allowedValues !== 'boolean') {
     allowedValues = formatArrayOutput(allowedValues).replace('[', '(').replace(']', ')[]').replace(/,/g, ' |') as any;
@@ -58,7 +62,7 @@ const getBreakpointCustomizableStructureForType = <T>(
 
 const isBreakpointCustomizableValueInvalid = <T>(
   value: any,
-  allowedValues: Extract<AllowedTypesKeys, 'boolean'> | T[]
+  allowedValues: Extract<AllowedTypesKeys, 'boolean'> | T[] | readonly T[]
 ): boolean => {
   return allowedValues === 'boolean' ? isValueNotOfType(value, allowedValues) : !allowedValues.includes(value);
 };
@@ -67,7 +71,11 @@ type AllowedTypesKeys = 'string' | 'number' | 'boolean';
 
 export const AllowedTypes: {
   [key in AllowedTypesKeys]: ValidatorFunction;
-} & { oneOf: ValidatorFunctionCreator; breakpointCustomizable: ValidatorFunctionCreator } = {
+} & {
+  oneOf: ValidatorFunctionCreator;
+  breakpointCustomizable: ValidatorFunctionCreator;
+  aria: ValidatorFunctionCreator;
+} = {
   string: (...args) => validateValueOfType(...args, 'string'),
   number: (...args) => validateValueOfType(...args, 'number'),
   boolean: (...args) => validateValueOfType(...args, 'boolean'),
@@ -99,6 +107,24 @@ export const AllowedTypes: {
 
       if (!isValid) {
         printError(propName, value, componentName, getBreakpointCustomizableStructureForType(allowedValues));
+      }
+    };
+  },
+  aria: <T = keyof AriaAttributes>(allowedAriaAttributes: readonly T[]): ValidatorFunction => {
+    return (propName, propValue, componentName) => {
+      const ariaAttributes = parseJSONAttribute(propValue);
+      if (
+        ariaAttributes &&
+        Object.keys(ariaAttributes).some((ariaKey) => !allowedAriaAttributes.includes(ariaKey as any))
+      ) {
+        printError(
+          propName,
+          ariaAttributes,
+          componentName,
+          formatObjectOutput(allowedAriaAttributes.reduce((prev, key) => ({ ...prev, [key as any]: 'string' }), {}))
+            .replace(/":/g, '"?:')
+            .replace(/"/g, "'")
+        );
       }
     };
   },

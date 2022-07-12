@@ -10,6 +10,7 @@ import type { ButtonAriaAttributes } from '../../../utils';
 import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
 import {
   attachComponentCss,
+  BUTTON_ARIA_ATTRIBUTES,
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
@@ -28,16 +29,7 @@ const propTypes: CustomComponentPropTypes<typeof Button> = {
   theme: AllowedTypes.oneOf<ThemeExtendedElectric>(['light', 'dark', 'light-electric']),
   iconSource: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpointCustomizable('boolean'),
-  aria: AllowedTypes.string,
-  // aria: PropTypes.oneOfType([
-  //   PropTypes.shape<{ [key in ButtonAriaAttributes]: PropTypes.Validator<string | boolean> }>({
-  //     'aria-label': PropTypes.string,
-  //     'aria-expanded': PropTypes.bool,
-  //     'aria-haspopup': PropTypes.bool,
-  //     'aria-pressed': PropTypes.bool,
-  //   }),
-  //   PropTypes.string,
-  // ]),
+  aria: AllowedTypes.aria<ButtonAriaAttributes>(BUTTON_ARIA_ATTRIBUTES),
 };
 
 @Component({
