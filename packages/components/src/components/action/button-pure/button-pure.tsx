@@ -1,29 +1,51 @@
-import type { ButtonAriaAttributes } from '../../../utils';
+import type { ButtonAriaAttributes, PropTypes } from '../../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  BUTTON_ARIA_ATTRIBUTES,
+  calcLineHeightForElement,
+  getPrefixedTagNames,
+  hasSlottedSubline,
+  hasVisibleIcon,
+  improveButtonHandlingForCustomElement,
+  isDisabledOrLoading,
+  isSizeInherit,
+  transitionListener,
+  validateProps,
+  warnIfParentIsPTextAndIconIsNone,
+} from '../../../utils';
 import type {
-  SelectedAriaAttributes,
   AlignLabel,
   BreakpointCustomizable,
   ButtonType,
   LinkButtonPureIconName,
+  SelectedAriaAttributes,
   TextSize,
   TextWeight,
   ThemeExtendedElectricDark,
 } from '../../../types';
-import { Host, Component, Element, h, JSX, Prop, Listen } from '@stencil/core';
-import {
-  calcLineHeightForElement,
-  getPrefixedTagNames,
-  hasVisibleIcon,
-  hasSlottedSubline,
-  improveButtonHandlingForCustomElement,
-  isDisabledOrLoading,
-  transitionListener,
-  attachComponentCss,
-  warnIfParentIsPTextAndIconIsNone,
-} from '../../../utils';
+import { ALIGN_LABELS, TEXT_WEIGHTS, THEMES_EXTENDED_ELECTRIC_DARK } from '../../../types';
+import { Component, Element, h, Host, JSX, Listen, Prop } from '@stencil/core';
 import { getButtonAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 import { getComponentCss } from './button-pure-styles';
-import { isSizeInherit } from '../../../utils';
+import { TEXT_SIZES } from '../../basic/typography/text/text-utils';
+
+const propTypes: PropTypes<typeof ButtonPure> = {
+  tabbable: AllowedTypes.boolean,
+  type: AllowedTypes.oneOf(['button', 'submit', 'reset']),
+  disabled: AllowedTypes.boolean,
+  loading: AllowedTypes.boolean,
+  size: AllowedTypes.breakpointCustomizable(TEXT_SIZES),
+  weight: AllowedTypes.oneOf(TEXT_WEIGHTS),
+  icon: AllowedTypes.string,
+  iconSource: AllowedTypes.string,
+  active: AllowedTypes.boolean,
+  hideLabel: AllowedTypes.breakpointCustomizable('boolean'),
+  alignLabel: AllowedTypes.oneOf(ALIGN_LABELS),
+  stretch: AllowedTypes.breakpointCustomizable('boolean'),
+  theme: AllowedTypes.oneOf(THEMES_EXTENDED_ELECTRIC_DARK),
+  aria: AllowedTypes.aria(BUTTON_ARIA_ATTRIBUTES),
+};
 
 @Component({
   tag: 'p-button-pure',
@@ -92,6 +114,7 @@ export class ButtonPure {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes, 'p-button-pure');
     warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon);
     warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
     attachComponentCss(

@@ -6,7 +6,7 @@ import type {
   SelectedAriaAttributes,
   ThemeExtendedElectric,
 } from '../../../types';
-import type { ButtonAriaAttributes, CustomComponentPropTypes } from '../../../utils';
+import type { ButtonAriaAttributes, PropTypes } from '../../../utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -19,15 +19,16 @@ import {
 import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
 import { getButtonAriaAttributes } from './button-utils';
 import { getComponentCss } from './button-styles';
+import { BUTTON_TYPES, LINK_BUTTON_VARIANTS, THEMES_EXTENDED_ELECTRIC } from '../../../types';
 
-const propTypes: CustomComponentPropTypes<typeof Button> = {
-  type: AllowedTypes.oneOf<ButtonType>(['button', 'submit', 'reset']),
-  variant: AllowedTypes.oneOf<ButtonVariant>(['primary', 'secondary', 'tertiary']),
+const propTypes: PropTypes<typeof Button> = {
+  type: AllowedTypes.oneOf<ButtonType>(BUTTON_TYPES),
+  variant: AllowedTypes.oneOf<ButtonVariant>(LINK_BUTTON_VARIANTS),
   tabbable: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
   icon: AllowedTypes.string,
-  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(['light', 'dark', 'light-electric']),
+  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
   iconSource: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpointCustomizable('boolean'),
   aria: AllowedTypes.aria<ButtonAriaAttributes>(BUTTON_ARIA_ATTRIBUTES),

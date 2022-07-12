@@ -1,5 +1,5 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import type { CustomComponentPropTypes } from '../../../../utils';
+import type { PropTypes } from '../../../../utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -13,7 +13,7 @@ import type { Direction, SortingChangeEvent, TableHeadCellSort } from '../table/
 import { SORT_EVENT_NAME } from '../table/table-utils';
 import { getComponentCss } from './table-head-cell-styles';
 
-const propTypes: CustomComponentPropTypes<typeof TableHeadCell> = {
+const propTypes: PropTypes<typeof TableHeadCell> = {
   sort: AllowedTypes.shape<TableHeadCellSort>({
     id: AllowedTypes.string,
     active: AllowedTypes.boolean,

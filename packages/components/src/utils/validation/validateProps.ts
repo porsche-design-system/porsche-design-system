@@ -1,14 +1,8 @@
 import { BREAKPOINTS, parseJSON } from '../breakpoint-customizable';
-import { AriaAttributes } from '../../aria-types';
+import type { AriaAttributes } from '../../aria-types';
 import { parseJSONAttribute } from '../json';
-
-type FunctionPropertyNames<T> = {
-  [K in keyof T]: T[K] extends Function ? K : never;
-}[keyof T];
-
-type Class<T> = Function & {
-  new (...args: any[]): T;
-};
+import type { TagName } from '@porsche-design-system/shared';
+import type { EventEmitter } from '@stencil/core';
 
 type ValidatorFunction = (propName: string, propValue: any, componentName: string) => ValidationError;
 type ValidatorFunctionOneOfCreator = <T>(allowedValues: T[] | readonly T[]) => ValidatorFunction;
@@ -199,7 +193,17 @@ export const AllowedTypes: {
   },
 };
 
-export type CustomComponentPropTypes<T extends Class<any>> = Required<{
+// utility type to return public properties of generic type that are not a function or EventEmitter
+type FunctionPropertyNames<T> = {
+  [K in keyof T]: T[K] extends Function | EventEmitter ? K : never;
+}[keyof T];
+
+type Class<T> = Function & {
+  new (...args: any[]): T;
+};
+
+// utility type to retrieve all props based on a class
+export type PropTypes<T extends Class<any>> = Required<{
   [Property in keyof Omit<
     InstanceType<T>,
     'host' | FunctionPropertyNames<InstanceType<T>>
@@ -208,8 +212,8 @@ export type CustomComponentPropTypes<T extends Class<any>> = Required<{
 
 export const validateProps = <T extends Class<any>>(
   instance: InstanceType<T>,
-  propTypes: CustomComponentPropTypes<T>,
-  componentName: string
+  propTypes: PropTypes<T>,
+  componentName: TagName
 ): void => {
   Object.entries(propTypes)
     .map(([propKey, validatorFunc]: [string, ValidatorFunction]) =>
