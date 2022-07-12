@@ -28,7 +28,6 @@
     "change-case": "^4.1.2",
     "jest": "^27.5.1",
     "madge": "^5.0.1",
-    "prettier": "^2.6.2",
     "react-jss": "^10.9.0",
     "rollup": "^2.75.6",
     "rollup-plugin-copy": "^3.4.0",

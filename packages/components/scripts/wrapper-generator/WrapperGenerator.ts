@@ -7,6 +7,7 @@ type Framework = 'angular' | 'react' | 'uxpin';
 
 export class WrapperGenerator {
   constructor(private config: AbstractWrapperGeneratorConfig) {}
+
   public generate(framework: Framework): void {
     if (framework === 'angular') {
       new AngularWrapperGenerator(this.config).generate();
