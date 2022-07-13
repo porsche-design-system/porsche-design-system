@@ -1,5 +1,6 @@
 import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
 import {
+  AllowedTypes,
   attachComponentCss,
   attachSlottedCss,
   getClosestHTMLElement,
@@ -11,11 +12,21 @@ import {
   observeAttributes,
   setAriaAttributes,
   unobserveAttributes,
+  validateProps,
 } from '../../../utils';
+import type { PropTypes } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 import { getComponentCss, getSlottedCss } from './checkbox-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
 import { Required } from '../../common/required/required';
+import { FORM_STATES } from '../../../types';
+
+const propTypes: PropTypes<typeof CheckboxWrapper> = {
+  label: AllowedTypes.string,
+  state: AllowedTypes.oneOf<FormState>(FORM_STATES),
+  message: AllowedTypes.string,
+  hideLabel: AllowedTypes.breakpointCustomizable('boolean'),
+};
 
 @Component({
   tag: 'p-checkbox-wrapper',
@@ -49,6 +60,7 @@ export class CheckboxWrapper {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes, 'p-checkbox-wrapper');
     attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.input.disabled);
   }
 

@@ -1,5 +1,6 @@
 import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
 import {
+  AllowedTypes,
   attachComponentCss,
   attachSlottedCss,
   getDataThemeDarkAttribute,
@@ -14,13 +15,28 @@ import {
   setAriaAttributes,
   setAttribute,
   unobserveAttributes,
+  validateProps,
 } from '../../../../utils';
+import type { PropTypes } from '../../../../utils';
 import type { BreakpointCustomizable, FormState, Theme } from '../../../../types';
 import type { DropdownDirection } from './select-wrapper-utils';
-import { isCustomDropdown } from './select-wrapper-utils';
+import { DROPDOWN_DIRECTIONS, isCustomDropdown } from './select-wrapper-utils';
 import { getComponentCss, getSlottedCss } from './select-wrapper-styles';
 import { StateMessage } from '../../../common/state-message/state-message';
 import { Required } from '../../../common/required/required';
+import { FORM_STATES, THEMES } from '../../../../types';
+
+const propTypes: PropTypes<typeof SelectWrapper> = {
+  label: AllowedTypes.string,
+  description: AllowedTypes.string,
+  state: AllowedTypes.oneOf<FormState>(FORM_STATES),
+  message: AllowedTypes.string,
+  hideLabel: AllowedTypes.breakpointCustomizable('boolean'),
+  filter: AllowedTypes.boolean,
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
+  dropdownDirection: AllowedTypes.oneOf<DropdownDirection>(DROPDOWN_DIRECTIONS),
+  native: AllowedTypes.boolean,
+};
 
 @Component({
   tag: 'p-select-wrapper',
@@ -78,6 +94,7 @@ export class SelectWrapper {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes, 'p-select-wrapper');
     attachComponentCss(this.host, getComponentCss, this.select.disabled, this.hideLabel, this.state, this.theme);
   }
 
