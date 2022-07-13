@@ -31,8 +31,8 @@ export class Scroller {
   // TODO: remove this property from generated readme and types
   @Prop() public prevNextButtonJssStyle?: PrevNextButtonJssStyle;
 
-  @State() public isPrevHidden = true;
-  @State() public isNextHidden = true;
+  @State() private isPrevHidden = true;
+  @State() private isNextHidden = true;
 
   private intersectionObserver: IntersectionObserver;
   private scrollAreaElement: HTMLElement;

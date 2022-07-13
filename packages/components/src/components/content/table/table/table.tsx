@@ -14,7 +14,7 @@ import { getComponentCss, getSlottedCss } from './table-styles';
 import type { SortingChangeEvent } from './table-utils';
 import { SORT_EVENT_NAME, warnIfCaptionIsUndefined } from './table-utils';
 
-const propTypes: Omit<PropTypes<typeof Table>, 'isScrollIndicatorVisible' | 'isScrollable'> = {
+const propTypes: PropTypes<typeof Table> = {
   caption: AllowedTypes.string,
 };
 
@@ -32,8 +32,8 @@ export class Table {
   /** Emitted when sorting is changed. */
   @Event({ bubbles: false }) public sortingChange: EventEmitter<SortingChangeEvent>;
 
-  @State() public isScrollIndicatorVisible = false;
-  @State() public isScrollable = false;
+  @State() private isScrollIndicatorVisible = false;
+  @State() private isScrollable = false;
 
   private intersectionObserver: IntersectionObserver;
   private scrollAreaElement: HTMLElement;

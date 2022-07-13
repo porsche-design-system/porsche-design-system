@@ -52,7 +52,7 @@ export class Pagination {
   /** Emitted when the page changes. */
   @Event({ bubbles: false }) public pageChange: EventEmitter<PageChangeEvent>;
 
-  @State() public breakpointMaxNumberOfPageLinks: number;
+  @State() private breakpointMaxNumberOfPageLinks: number;
 
   private navigationElement: HTMLElement;
 
