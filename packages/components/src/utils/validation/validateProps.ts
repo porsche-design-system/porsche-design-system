@@ -177,7 +177,7 @@ export const AllowedTypes: {
   },
   shape: <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): ValidatorFunction => {
     return (propName, propValue, componentName) => {
-      if (shapeStructure) {
+      if (propValue) {
         const shapeKeys = Object.keys(shapeStructure);
         if (
           // check structure
