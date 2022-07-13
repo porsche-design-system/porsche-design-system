@@ -176,7 +176,8 @@ const generateComponentMeta = (): void => {
 
     // props
     const props: ComponentMeta['props'] = Array.from(
-      source.matchAll(/@Prop\(\) public ([A-z]+)\??(?:: (.+?))?(?:= (.+))?;/g)
+      // regex can handle value on same line and next line only
+      source.matchAll(/@Prop\(\) public ([A-z]+)\??(?:: (.+?))?(?:=[^>]\s*(.+))?;/g)
     ).map(([, propName, propType, propValue]) => {
       const cleanedValue =
         (propValue === 'true'
