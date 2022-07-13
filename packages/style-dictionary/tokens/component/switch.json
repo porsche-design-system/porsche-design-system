@@ -13,13 +13,16 @@
             "value": "{color.core.background.transparent.value}"
           },
           "toggleBackground": {
-            "value": "{color.core.contrast.high.value}"
+            "value": "{component.switchCmp.unchecked.standard.buttonBorder.value}"
           },
           "text": {
-            "value": "{color.core.background.base.value}"
+            "value": "{color.core.base.primary.value}"
           }
         },
         "disabled": {
+          "background": {
+            "value": "{color.core.background.base.value}"
+          },
           "buttonBorder": {
             "value": "{component.switchCmp.unchecked.disabled.text.value}"
           },
@@ -32,7 +35,7 @@
         },
         "hover": {
           "buttonBorder": {
-            "value": "{color.core.black.value}"
+            "value": "{component.switchCmp.unchecked.hover.toggleBackground.value}"
           },
           "buttonBackground": {
             "value": "{color.core.background.transparent.value}"
@@ -48,16 +51,19 @@
             "value": "{color.core.background.base.value}"
           },
           "buttonBorder": {
-            "value": "{color.core.notification.success.value}"
+            "value": "{component.switchCmp.checked.standard.buttonBackground.value}"
           },
           "buttonBackground": {
             "value": "{color.core.notification.success.value}"
           },
           "toggleBackground": {
-            "value": "{color.core.background.base.value}"
+            "value": "{component.switchCmp.checked.standard.background.value}"
           }
         },
         "disabled": {
+          "background": {
+            "value": "{component.switchCmp.unchecked.disabled.background.value}"
+          },
           "buttonBorder": {
             "value": "{component.switchCmp.unchecked.disabled.text.value}"
           },
@@ -68,12 +74,12 @@
             "value": "{component.switchCmp.unchecked.disabled.text.value}"
           },
           "toggleBackground": {
-            "value": "{color.core.background.base.value}"
+            "value": "{component.switchCmp.unchecked.disabled.background.value}"
           }
         },
         "hover": {
           "buttonBorder": {
-            "value": "{color.core.notification.successHard.value}"
+            "value": "{component.switchCmp.checked.hover.buttonBackground.value}"
           },
           "buttonBackground": {
             "value": "{color.core.notification.successHard.value}"
