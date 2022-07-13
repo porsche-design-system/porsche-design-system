@@ -1,15 +1,26 @@
 import { Component, Element, h, JSX, Listen, Prop, Watch } from '@stencil/core';
 import {
+  AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
   throwIfParentIsNotOfKind,
   throwIfPropIsUndefined,
   updateParent,
+  validateProps,
 } from '../../../utils';
+import type { PropTypes } from '../../../utils';
 import { getComponentCss } from './segmented-control-item-styles';
 import { getButtonAttributes } from './segmented-control-item-utils';
 import type { IconName } from '../../../types';
 import type { SegmentedControlItemInternalHTMLProps } from './segmented-control-item-utils';
+
+const propTypes: PropTypes<typeof SegmentedControlItem> = {
+  value: AllowedTypes.string, // TODO: or number
+  disabled: AllowedTypes.boolean,
+  label: AllowedTypes.boolean,
+  icon: AllowedTypes.boolean,
+  iconSource: AllowedTypes.boolean,
+};
 
 @Component({
   tag: 'p-segmented-control-item',
@@ -53,6 +64,7 @@ export class SegmentedControlItem {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes, 'p-segmented-control-item');
     throwIfPropIsUndefined(this.host, 'value', this.value);
 
     attachComponentCss(
