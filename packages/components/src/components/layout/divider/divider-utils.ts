@@ -4,4 +4,5 @@ export const DIVIDER_COLORS = ['neutral-contrast-high', 'neutral-contrast-medium
 export type DividerColor = typeof DIVIDER_COLORS[number];
 
 export const DIVIDER_ORIENTATIONS = ['vertical', 'horizontal'] as const;
-export type DividerOrientation = BreakpointCustomizable<typeof DIVIDER_ORIENTATIONS[number]>;
+export type DividerOrientationType = typeof DIVIDER_ORIENTATIONS[number];
+export type DividerOrientation = BreakpointCustomizable<DividerOrientationType>;

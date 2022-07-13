@@ -10,6 +10,7 @@ import type {
 } from '../../../types';
 import {
   ALIGN_LABELS,
+  AlignLabelType,
   LINK_TARGETS,
   TEXT_WEIGHTS,
   ThemeExtendedElectric,
@@ -38,9 +39,9 @@ import { throwIfInvalidLinkUsage } from '../link-validation';
 import { TEXT_SIZES } from '../../basic/typography/text/text-utils';
 
 const propTypes: PropTypes<typeof LinkPure> = {
-  alignLabel: AllowedTypes.breakpointCustomizable(ALIGN_LABELS),
+  alignLabel: AllowedTypes.breakpointCustomizable<AlignLabelType>(ALIGN_LABELS),
   stretch: AllowedTypes.breakpointCustomizable('boolean'),
-  size: AllowedTypes.breakpointCustomizable(TEXT_SIZES),
+  size: AllowedTypes.breakpointCustomizable<TextSize>(TEXT_SIZES),
   weight: AllowedTypes.oneOf<TextWeight>(TEXT_WEIGHTS),
   icon: AllowedTypes.string,
   iconSource: AllowedTypes.string,

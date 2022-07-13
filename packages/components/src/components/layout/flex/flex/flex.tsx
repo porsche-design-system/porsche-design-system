@@ -1,11 +1,16 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import type {
   FlexAlignContent,
+  FlexAlignContentType,
   FlexAlignItems,
+  FlexAlignItemsType,
   FlexDirection,
+  FlexDirectionType,
   FlexInline,
   FlexJustifyContent,
+  FlexJustifyContentType,
   FlexWrap,
+  FlexWrapType,
 } from './flex-utils';
 import {
   FLEX_ALIGN_CONTENTS,
@@ -20,11 +25,11 @@ import type { PropTypes } from '../../../../utils';
 
 const propTypes: PropTypes<typeof Flex> = {
   inline: AllowedTypes.breakpointCustomizable('boolean'),
-  wrap: AllowedTypes.breakpointCustomizable(FLEX_WRAPS),
-  direction: AllowedTypes.breakpointCustomizable(FLEX_DIRECTIONS),
-  justifyContent: AllowedTypes.breakpointCustomizable(FLEX_JUSTIFY_CONTENTS),
-  alignItems: AllowedTypes.breakpointCustomizable(FLEX_ALIGN_ITEMS),
-  alignContent: AllowedTypes.breakpointCustomizable(FLEX_ALIGN_CONTENTS),
+  wrap: AllowedTypes.breakpointCustomizable<FlexWrapType>(FLEX_WRAPS),
+  direction: AllowedTypes.breakpointCustomizable<FlexDirectionType>(FLEX_DIRECTIONS),
+  justifyContent: AllowedTypes.breakpointCustomizable<FlexJustifyContentType>(FLEX_JUSTIFY_CONTENTS),
+  alignItems: AllowedTypes.breakpointCustomizable<FlexAlignItemsType>(FLEX_ALIGN_ITEMS),
+  alignContent: AllowedTypes.breakpointCustomizable<FlexAlignContentType>(FLEX_ALIGN_CONTENTS),
 };
 
 @Component({

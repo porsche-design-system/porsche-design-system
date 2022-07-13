@@ -1,10 +1,14 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import type {
   FlexItemAlignSelf,
+  FlexItemAlignSelfType,
   FlexItemFlex,
+  FlexItemFlexType,
   FlexItemGrow,
+  FlexItemGrowType,
   FlexItemOffset,
   FlexItemShrink,
+  FlexItemShrinkType,
   FlexItemWidth,
 } from './flex-item-utils';
 import { getComponentCss } from './flex-item-styles';
@@ -20,12 +24,12 @@ import {
 } from './flex-item-utils';
 
 const propTypes: PropTypes<typeof FlexItem> = {
-  width: AllowedTypes.breakpointCustomizable(FLEX_ITEM_WIDTHS),
-  offset: AllowedTypes.breakpointCustomizable(FLEX_ITEM_OFFSETS),
-  alignSelf: AllowedTypes.breakpointCustomizable(FLEX_ITEM_ALIGN_SELFS),
-  grow: AllowedTypes.breakpointCustomizable(FLEX_ITEM_GROWS),
-  shrink: AllowedTypes.breakpointCustomizable(FLEX_ITEM_SHRINKS),
-  flex: AllowedTypes.breakpointCustomizable(FLEX_ITEM_FLEXS),
+  width: AllowedTypes.breakpointCustomizable<FlexItemWidth>(FLEX_ITEM_WIDTHS),
+  offset: AllowedTypes.breakpointCustomizable<FlexItemOffset>(FLEX_ITEM_OFFSETS),
+  alignSelf: AllowedTypes.breakpointCustomizable<FlexItemAlignSelfType>(FLEX_ITEM_ALIGN_SELFS),
+  grow: AllowedTypes.breakpointCustomizable<FlexItemGrowType>(FLEX_ITEM_GROWS),
+  shrink: AllowedTypes.breakpointCustomizable<FlexItemShrinkType>(FLEX_ITEM_SHRINKS),
+  flex: AllowedTypes.breakpointCustomizable<FlexItemFlexType>(FLEX_ITEM_FLEXS),
 };
 
 @Component({

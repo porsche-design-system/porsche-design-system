@@ -3,7 +3,6 @@ import { BREAKPOINTS, parseJSON } from '../../../utils';
 
 export const SPINNER_SIZES = ['small', 'medium', 'large', 'inherit'] as const;
 export type SpinnerSizeType = typeof SPINNER_SIZES[number];
-
 export type SpinnerSize = BreakpointCustomizable<SpinnerSizeType>;
 
 export const verifySpinnerSize = (spinnerSize: SpinnerSize): void => {
