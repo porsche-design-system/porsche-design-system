@@ -68,7 +68,7 @@ const breakpointCustomizableTemplate =
     BREAKPOINTS.reduce((prev, key) => ({ ...prev, [key + (key !== 'base' ? '?' : '')]: 'value' }), {})
   ).replace(/"/g, '');
 
-const getBreakpointCustomizableStructure = <T>(
+export const getBreakpointCustomizableStructure = <T>(
   allowedValues: Extract<AllowedTypesKeys, 'boolean'> | T[] | readonly T[]
 ): string => {
   if (allowedValues !== 'boolean') {
@@ -77,7 +77,7 @@ const getBreakpointCustomizableStructure = <T>(
   return breakpointCustomizableTemplate.replace(/value/g, allowedValues as string);
 };
 
-const getAriaStructure = <T>(allowedAriaAttributes: readonly T[]): string => {
+export const getAriaStructure = <T>(allowedAriaAttributes: readonly T[]): string => {
   return (
     formatObjectOutput(
       allowedAriaAttributes.reduce(
@@ -94,13 +94,13 @@ const getAriaStructure = <T>(allowedAriaAttributes: readonly T[]): string => {
   );
 };
 
-const getShapeStructure = <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): string => {
+export const getShapeStructure = <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): string => {
   return formatObjectOutput(
     Object.keys(shapeStructure).reduce((prev, key) => ({ ...prev, [key]: shapeStructure[key].name || 'string' }), {})
   ).replace(/"/g, '');
 };
 
-const isBreakpointCustomizableValueInvalid = <T>(
+export const isBreakpointCustomizableValueInvalid = <T>(
   value: any,
   allowedValues: Extract<AllowedTypesKeys, 'boolean'> | T[] | readonly T[]
 ): boolean => {

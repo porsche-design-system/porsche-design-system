@@ -51,3 +51,23 @@ describe('validateValueOfType()', () => {
     });
   });
 });
+
+xdescribe('getBreakpointCustomizableStructure()', () => {});
+
+xdescribe('getAriaStructure()', () => {});
+
+xdescribe('getShapeStructure()', () => {});
+
+xdescribe('isBreakpointCustomizableValueInvalid()', () => {});
+
+xdescribe('validateProps()', () => {});
+
+xdescribe('AllowedTypes', () => {
+  describe('.string', () => {});
+  describe('.number', () => {});
+  describe('.boolean', () => {});
+  describe('.oneOf', () => {});
+  describe('.breakpoint', () => {});
+  describe('.aria', () => {});
+  describe('.shape', () => {});
+});
