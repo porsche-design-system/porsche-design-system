@@ -7,22 +7,22 @@
   {
     "chunkShortName": "banner",
     "size": 8144,
-    "gzipSize": 3024
+    "gzipSize": 3021
   },
   {
     "chunkShortName": "button",
-    "size": 8695,
-    "gzipSize": 3211
+    "size": 8671,
+    "gzipSize": 3202
   },
   {
     "chunkShortName": "button-pure",
-    "size": 9899,
-    "gzipSize": 3924
+    "size": 9863,
+    "gzipSize": 3918
   },
   {
     "chunkShortName": "checkbox-wrapper",
-    "size": 8114,
-    "gzipSize": 3200
+    "size": 8102,
+    "gzipSize": 3194
   },
   {
     "chunkShortName": "content-wrapper",
@@ -31,143 +31,143 @@
   },
   {
     "chunkShortName": "divider",
-    "size": 1950,
-    "gzipSize": 884
+    "size": 1938,
+    "gzipSize": 875
   },
   {
     "chunkShortName": "fieldset-wrapper",
-    "size": 4377,
-    "gzipSize": 1764
+    "size": 4375,
+    "gzipSize": 1760
   },
   {
     "chunkShortName": "flex",
-    "size": 3251,
-    "gzipSize": 1156
+    "size": 3105,
+    "gzipSize": 1141
   },
   {
     "chunkShortName": "grid",
-    "size": 2730,
-    "gzipSize": 1146
+    "size": 2670,
+    "gzipSize": 1134
   },
   {
     "chunkShortName": "headline",
-    "size": 8379,
-    "gzipSize": 3091
+    "size": 8358,
+    "gzipSize": 3083
   },
   {
     "chunkShortName": "icon",
-    "size": 15738,
+    "size": 15740,
     "gzipSize": 7787
   },
   {
     "chunkShortName": "link",
-    "size": 6875,
-    "gzipSize": 2623
+    "size": 6865,
+    "gzipSize": 2616
   },
   {
     "chunkShortName": "link-pure",
-    "size": 9942,
-    "gzipSize": 3957
+    "size": 9896,
+    "gzipSize": 3947
   },
   {
     "chunkShortName": "link-social",
-    "size": 7795,
-    "gzipSize": 2651
+    "size": 7785,
+    "gzipSize": 2645
   },
   {
     "chunkShortName": "main",
-    "size": 64531,
-    "gzipSize": 22036
+    "size": 64452,
+    "gzipSize": 22013
   },
   {
     "chunkShortName": "marque",
     "size": 5770,
-    "gzipSize": 2413
+    "gzipSize": 2412
   },
   {
     "chunkShortName": "modal",
-    "size": 7620,
-    "gzipSize": 3164
+    "size": 7608,
+    "gzipSize": 3154
   },
   {
     "chunkShortName": "pagination",
-    "size": 7363,
-    "gzipSize": 3035
+    "size": 7351,
+    "gzipSize": 3024
   },
   {
     "chunkShortName": "popover",
     "size": 7236,
-    "gzipSize": 2816
+    "gzipSize": 2815
   },
   {
     "chunkShortName": "radio-button-wrapper",
-    "size": 8739,
-    "gzipSize": 3425
+    "size": 8727,
+    "gzipSize": 3420
   },
   {
     "chunkShortName": "scroller",
-    "size": 13083,
-    "gzipSize": 4506
+    "size": 13073,
+    "gzipSize": 4503
   },
   {
     "chunkShortName": "segmented-control",
     "size": 8099,
-    "gzipSize": 3052
+    "gzipSize": 3049
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 24213,
-    "gzipSize": 7763
+    "size": 24201,
+    "gzipSize": 7767
   },
   {
     "chunkShortName": "spinner",
-    "size": 3955,
-    "gzipSize": 1809
+    "size": 3943,
+    "gzipSize": 1800
   },
   {
     "chunkShortName": "stepper-horizontal",
-    "size": 13557,
-    "gzipSize": 5067
+    "size": 13559,
+    "gzipSize": 5068
   },
   {
     "chunkShortName": "switch",
-    "size": 5605,
-    "gzipSize": 2211
+    "size": 5581,
+    "gzipSize": 2203
   },
   {
     "chunkShortName": "table",
-    "size": 10842,
-    "gzipSize": 3745
+    "size": 10835,
+    "gzipSize": 3744
   },
   {
     "chunkShortName": "tabs",
     "size": 7041,
-    "gzipSize": 2689
+    "gzipSize": 2686
   },
   {
     "chunkShortName": "tag",
     "size": 7327,
-    "gzipSize": 2706
+    "gzipSize": 2701
   },
   {
     "chunkShortName": "text",
-    "size": 7107,
-    "gzipSize": 2948
+    "size": 7109,
+    "gzipSize": 2947
   },
   {
     "chunkShortName": "text-field-wrapper",
-    "size": 14240,
-    "gzipSize": 4955
+    "size": 14228,
+    "gzipSize": 4952
   },
   {
     "chunkShortName": "text-list",
     "size": 5193,
-    "gzipSize": 2158
+    "gzipSize": 2157
   },
   {
     "chunkShortName": "textarea-wrapper",
-    "size": 11078,
-    "gzipSize": 4103
+    "size": 11066,
+    "gzipSize": 4098
   },
   {
     "chunkShortName": "toast",
