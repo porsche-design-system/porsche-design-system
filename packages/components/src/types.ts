@@ -8,17 +8,19 @@ export type { HeadlineVariant, VariantType } from './components/basic/typography
 export const TEXT_WEIGHTS = ['thin', 'regular', 'semibold', 'bold'] as const;
 export type TextWeight = typeof TEXT_WEIGHTS[number];
 
-export type TextColor =
-  | 'brand'
-  | 'default'
-  | 'neutral-contrast-high'
-  | 'neutral-contrast-medium'
-  | 'neutral-contrast-low'
-  | 'notification-success'
-  | 'notification-warning'
-  | 'notification-error'
-  | 'notification-neutral'
-  | 'inherit';
+export const TEXT_COLORS = [
+  'brand',
+  'default',
+  'neutral-contrast-high',
+  'neutral-contrast-medium',
+  'neutral-contrast-low',
+  'notification-success',
+  'notification-warning',
+  'notification-error',
+  'notification-neutral',
+  'inherit',
+] as const;
+export type TextColor = typeof TEXT_COLORS[number];
 
 export const TEXT_ALIGNS = ['left', 'center', 'right'] as const;
 export type TextAlign = typeof TEXT_ALIGNS[number];
