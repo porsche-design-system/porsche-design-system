@@ -47,11 +47,11 @@ const printErrorMessage = ({ propName, propValue, componentName, propType }: Val
   );
 };
 
-const isValueNotOfType = (propValue: any, propType: string): boolean => {
+export const isValueNotOfType = (propValue: any, propType: string): boolean => {
   return propValue !== undefined && typeof propValue !== propType;
 };
 
-const validateValueOfType = (
+export const validateValueOfType = (
   propName: string,
   propValue: any,
   componentName: string,
