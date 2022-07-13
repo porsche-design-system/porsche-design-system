@@ -1,9 +1,20 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
+import { AllowedTypes, attachComponentCss, getPrefixedTagNames, PropTypes, validateProps } from '../../../utils';
 import type { BreakpointCustomizable, LinkTarget, Theme } from '../../../types';
+import { LINK_TARGETS, ThemeExtendedElectric, THEMES_EXTENDED_ELECTRIC } from '../../../types';
 import type { SocialIconName } from './link-social-utils';
 import { getComponentCss } from './link-social-styles';
 import { throwIfInvalidLinkUsage } from '../link-validation';
+
+const propTypes: PropTypes<typeof LinkSocial> = {
+  icon: AllowedTypes.string,
+  iconSource: AllowedTypes.string,
+  href: AllowedTypes.string,
+  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  target: AllowedTypes.oneOf<LinkTarget>(LINK_TARGETS),
+  rel: AllowedTypes.string,
+  hideLabel: AllowedTypes.breakpointCustomizable('boolean'),
+};
 
 @Component({
   tag: 'p-link-social',
@@ -38,6 +49,7 @@ export class LinkSocial {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes, 'p-link-social');
     attachComponentCss(this.host, getComponentCss, this.icon, this.hideLabel, !!this.href, this.theme);
   }
 
