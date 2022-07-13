@@ -12,13 +12,13 @@ import type { TextAlign, TextColor, Theme } from '../../../../types';
 import type { HeadlineTag, HeadlineVariant } from './headline-utils';
 import { getHeadlineTagName, HEADLINE_TAGS } from './headline-utils';
 import { getComponentCss, getSlottedCss } from './headline-styles';
-import { LINK_TARGETS, LinkTarget, TEXT_ALIGNS, THEMES } from '../../../../types';
+import { TEXT_ALIGNS, THEMES } from '../../../../types';
 
 const propTypes: PropTypes<typeof Headline> = {
   variant: AllowedTypes.string, // TODO: with all the different values this can't be validated
-  tag: AllowedTypes.oneOf<HeadlineTag>(HEADLINE_TAGS),
+  tag: AllowedTypes.oneOf<HeadlineTag>([...HEADLINE_TAGS, undefined]),
   align: AllowedTypes.oneOf<TextAlign>(TEXT_ALIGNS),
-  color: AllowedTypes.oneOf<LinkTarget>(LINK_TARGETS),
+  color: AllowedTypes.oneOf<Extract<TextColor, 'default' | 'inherit'>>(['default', 'inherit']),
   ellipsis: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };

@@ -19,7 +19,7 @@ import {
 import { getComponentCss } from './stepper-horizontal-item-styles';
 
 const propTypes: PropTypes<typeof StepperHorizontalItem> = {
-  state: AllowedTypes.oneOf<StepperState>(STEPPER_ITEM_STATES),
+  state: AllowedTypes.oneOf<StepperState>([...STEPPER_ITEM_STATES, undefined]),
   disabled: AllowedTypes.boolean,
 };
 
