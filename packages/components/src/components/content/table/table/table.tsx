@@ -1,15 +1,22 @@
 import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop, State } from '@stencil/core';
 import {
+  AllowedTypes,
   attachComponentCss,
   attachSlottedCss,
   getPrefixedTagNames,
   getScrollByX,
   hasNamedSlot,
+  PropTypes,
   scrollElementBy,
+  validateProps,
 } from '../../../../utils';
 import { getComponentCss, getSlottedCss } from './table-styles';
-import { warnIfCaptionIsUndefined, SORT_EVENT_NAME } from './table-utils';
 import type { SortingChangeEvent } from './table-utils';
+import { SORT_EVENT_NAME, warnIfCaptionIsUndefined } from './table-utils';
+
+const propTypes: Omit<PropTypes<typeof Table>, 'isScrollIndicatorVisible' | 'isScrollable'> = {
+  caption: AllowedTypes.string,
+};
 
 @Component({
   tag: 'p-table',
@@ -48,6 +55,10 @@ export class Table {
 
   public componentDidLoad(): void {
     this.initIntersectionObserver();
+  }
+
+  public componentWillRender(): void {
+    validateProps(this, propTypes, 'p-table');
   }
 
   public disconnectedCallback(): void {
