@@ -15,7 +15,7 @@ import { getComponentCss, getSlottedCss } from './headline-styles';
 import { TEXT_ALIGNS, THEMES } from '../../../../types';
 
 const propTypes: Omit<PropTypes<typeof Headline>, 'variant'> = {
-  // variant: AllowedTypes.string, // TODO: with all the different values this can't be validated
+  // variant: AllowedTypes.string, // TODO: with all the different values this can't easily be validated
   tag: AllowedTypes.oneOf<HeadlineTag>([...HEADLINE_TAGS, undefined]),
   align: AllowedTypes.oneOf<TextAlign>(TEXT_ALIGNS),
   color: AllowedTypes.oneOf<Extract<TextColor, 'default' | 'inherit'>>(['default', 'inherit']),
