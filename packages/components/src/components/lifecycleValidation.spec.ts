@@ -90,7 +90,7 @@ it.each<TagName>(tagNamesPublic)(
       component.componentWillRender();
     } catch {}
 
-    const propTypes = getComponentMeta(tagName).props.reduce(
+    const propTypes = (getComponentMeta(tagName).props || []).reduce(
       (prev, prop) => ({ ...prev, [Object.keys(prop)[0]]: expect.any(Function) }),
       {}
     );
