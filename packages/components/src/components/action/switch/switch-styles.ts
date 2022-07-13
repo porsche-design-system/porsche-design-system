@@ -60,6 +60,7 @@ const getColors = (
   } = theme === 'light' ? tokens : tokensDark;
 
   const switchColors = switchCmp[checked ? 'checked' : 'unchecked'];
+  // @ts-ignore
   const { background, buttonBorder, buttonBackground, toggleBackground, text } =
     switchColors[isDisabledOrLoading ? 'disabled' : 'standard'];
 

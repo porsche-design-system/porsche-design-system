@@ -26,6 +26,9 @@
           "buttonBorder": {
             "value": "{component.switchCmp.unchecked.disabled.text.value}"
           },
+          "buttonBackground": {
+            "value": "{component.switchCmp.unchecked.standard.buttonBackground.value}"
+          },
           "toggleBackground": {
             "value": "{component.switchCmp.unchecked.disabled.text.value}"
           },
@@ -58,6 +61,9 @@
           },
           "toggleBackground": {
             "value": "{component.switchCmp.checked.standard.background.value}"
+          },
+          "text": {
+            "value": "{color.core.base.primary.value}"
           }
         },
         "disabled": {
