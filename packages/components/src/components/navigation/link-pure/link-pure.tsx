@@ -39,15 +39,15 @@ import { throwIfInvalidLinkUsage } from '../link-validation';
 import { TEXT_SIZES } from '../../basic/typography/text/text-utils';
 
 const propTypes: PropTypes<typeof LinkPure> = {
-  alignLabel: AllowedTypes.breakpointCustomizable<AlignLabelType>(ALIGN_LABELS),
-  stretch: AllowedTypes.breakpointCustomizable('boolean'),
-  size: AllowedTypes.breakpointCustomizable<TextSize>(TEXT_SIZES),
+  alignLabel: AllowedTypes.breakpoint<AlignLabelType>(ALIGN_LABELS),
+  stretch: AllowedTypes.breakpoint('boolean'),
+  size: AllowedTypes.breakpoint<TextSize>(TEXT_SIZES),
   weight: AllowedTypes.oneOf<TextWeight>(TEXT_WEIGHTS),
   icon: AllowedTypes.string,
   iconSource: AllowedTypes.string,
   href: AllowedTypes.string,
   active: AllowedTypes.boolean,
-  hideLabel: AllowedTypes.breakpointCustomizable('boolean'),
+  hideLabel: AllowedTypes.breakpoint('boolean'),
   theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
   target: AllowedTypes.oneOf<LinkTarget>(LINK_TARGETS),
   download: AllowedTypes.string,

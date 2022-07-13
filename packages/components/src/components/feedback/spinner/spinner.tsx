@@ -8,7 +8,7 @@ import { getComponentCss } from './spinner-styles';
 import { THEMES_EXTENDED_ELECTRIC_DARK } from '../../../types';
 
 const propTypes: PropTypes<typeof Spinner> = {
-  size: AllowedTypes.breakpointCustomizable<SpinnerSizeType>(SPINNER_SIZES),
+  size: AllowedTypes.breakpoint<SpinnerSizeType>(SPINNER_SIZES),
   theme: AllowedTypes.oneOf<ThemeExtendedElectricDark>(THEMES_EXTENDED_ELECTRIC_DARK),
   aria: AllowedTypes.aria<SpinnerAriaAttributes>(SPINNER_ARIA_ATTRIBUTES),
 };

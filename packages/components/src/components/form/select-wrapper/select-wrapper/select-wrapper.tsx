@@ -31,7 +31,7 @@ const propTypes: PropTypes<typeof SelectWrapper> = {
   description: AllowedTypes.string,
   state: AllowedTypes.oneOf<FormState>(FORM_STATES),
   message: AllowedTypes.string,
-  hideLabel: AllowedTypes.breakpointCustomizable('boolean'),
+  hideLabel: AllowedTypes.breakpoint('boolean'),
   filter: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   dropdownDirection: AllowedTypes.oneOf<DropdownDirection>(DROPDOWN_DIRECTIONS),

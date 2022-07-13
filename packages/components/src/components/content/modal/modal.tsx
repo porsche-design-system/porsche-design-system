@@ -20,7 +20,7 @@ const propTypes: PropTypes<typeof Modal> = {
   disableCloseButton: AllowedTypes.boolean,
   disableBackdropClick: AllowedTypes.boolean,
   heading: AllowedTypes.string,
-  fullscreen: AllowedTypes.breakpointCustomizable('boolean'),
+  fullscreen: AllowedTypes.breakpoint('boolean'),
   aria: AllowedTypes.aria<ModalAriaAttributes>(MODAL_ARIA_ATTRIBUTES),
 };
 

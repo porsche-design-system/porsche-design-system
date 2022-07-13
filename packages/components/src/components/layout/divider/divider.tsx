@@ -9,7 +9,7 @@ import { getComponentCss } from './divider-styles';
 
 const propTypes: PropTypes<typeof Divider> = {
   color: AllowedTypes.oneOf<DividerColor>(DIVIDER_COLORS),
-  orientation: AllowedTypes.breakpointCustomizable<DividerOrientationType>(DIVIDER_ORIENTATIONS),
+  orientation: AllowedTypes.breakpoint<DividerOrientationType>(DIVIDER_ORIENTATIONS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 

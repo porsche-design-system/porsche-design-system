@@ -13,7 +13,7 @@ const propTypes: PropTypes<typeof LinkSocial> = {
   theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
   target: AllowedTypes.oneOf<LinkTarget>(LINK_TARGETS),
   rel: AllowedTypes.string,
-  hideLabel: AllowedTypes.breakpointCustomizable('boolean'),
+  hideLabel: AllowedTypes.breakpoint('boolean'),
 };
 
 @Component({

@@ -17,8 +17,8 @@ export type SwitchChangeEvent = { checked: boolean };
 
 const propTypes: PropTypes<typeof Switch> = {
   alignLabel: AllowedTypes.oneOf<AlignLabel>(ALIGN_LABELS),
-  hideLabel: AllowedTypes.breakpointCustomizable('boolean'),
-  stretch: AllowedTypes.breakpointCustomizable('boolean'),
+  hideLabel: AllowedTypes.breakpoint('boolean'),
+  stretch: AllowedTypes.breakpoint('boolean'),
   checked: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
