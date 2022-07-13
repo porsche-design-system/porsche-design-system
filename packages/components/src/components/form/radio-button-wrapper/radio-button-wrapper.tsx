@@ -11,11 +11,22 @@ import {
   isRequiredAndParentNotRequired,
   attachSlottedCss,
   attachComponentCss,
+  AllowedTypes,
+  validateProps,
 } from '../../../utils';
+import type { PropTypes } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
 import { getComponentCss, getSlottedCss } from './radio-button-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
 import { Required } from '../../common/required/required';
+import { FORM_STATES } from '../../../types';
+
+const propTypes: PropTypes<typeof RadioButtonWrapper> = {
+  label: AllowedTypes.string,
+  state: AllowedTypes.oneOf<FormState>(FORM_STATES),
+  message: AllowedTypes.string,
+  hideLabel: AllowedTypes.breakpointCustomizable('boolean'),
+};
 
 @Component({
   tag: 'p-radio-button-wrapper',
@@ -49,6 +60,7 @@ export class RadioButtonWrapper {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes, 'p-radio-button-wrapper');
     attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.input.disabled);
   }
 

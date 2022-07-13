@@ -1,22 +1,35 @@
 import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
+import type { PropTypes } from '../../../utils';
 import {
+  AllowedTypes,
+  attachComponentCss,
+  attachSlottedCss,
   getDirectAndOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   hasDescription,
   hasLabel,
   hasMessage,
-  setAriaAttributes,
-  observeAttributes,
-  unobserveAttributes,
   isRequiredAndParentNotRequired,
-  attachSlottedCss,
-  attachComponentCss,
+  observeAttributes,
+  setAriaAttributes,
+  unobserveAttributes,
+  validateProps,
 } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
+import { FORM_STATES } from '../../../types';
 import { getComponentCss, getSlottedCss } from './textarea-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
-import { hasCounter, addInputEventListener } from '../text-field-wrapper/text-field-wrapper-utils';
+import { addInputEventListener, hasCounter } from '../text-field-wrapper/text-field-wrapper-utils';
 import { Required } from '../../common/required/required';
+
+const propTypes: PropTypes<typeof TextareaWrapper> = {
+  label: AllowedTypes.string,
+  description: AllowedTypes.string,
+  state: AllowedTypes.oneOf<FormState>(FORM_STATES),
+  message: AllowedTypes.string,
+  hideLabel: AllowedTypes.breakpointCustomizable('boolean'),
+  showCharacterCount: AllowedTypes.boolean,
+};
 
 @Component({
   tag: 'p-textarea-wrapper',
@@ -68,6 +81,7 @@ export class TextareaWrapper {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes, 'p-textarea-wrapper');
     attachComponentCss(
       this.host,
       getComponentCss,
