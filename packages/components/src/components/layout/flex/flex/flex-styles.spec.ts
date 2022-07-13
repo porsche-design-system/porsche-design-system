@@ -7,7 +7,13 @@ import type {
   FlexJustifyContent,
   FlexWrap,
 } from './flex-utils';
-import { FLEX_ALIGN_CONTENTS, FLEX_ALIGN_ITEMS, FLEX_DIRECTION, FLEX_JUSTIFY_CONTENTS, FLEX_WRAPS } from './flex-utils';
+import {
+  FLEX_ALIGN_CONTENTS,
+  FLEX_ALIGN_ITEMS,
+  FLEX_DIRECTIONS,
+  FLEX_JUSTIFY_CONTENTS,
+  FLEX_WRAPS,
+} from './flex-utils';
 
 describe('getComponentCss()', () => {
   const dataInline: FlexInline[] = [false, true, { base: true, xs: false, s: false, m: true, l: false, xl: true }];
@@ -24,7 +30,7 @@ describe('getComponentCss()', () => {
   });
 
   const dataDirection: FlexDirection[] = [
-    ...FLEX_DIRECTION,
+    ...FLEX_DIRECTIONS,
     { base: 'row', xs: 'column', s: 'row', m: 'column', l: 'row', xl: 'column' },
   ];
   it.each<FlexDirection>(dataDirection)('should return correct css for direction: %j', (direction) => {
