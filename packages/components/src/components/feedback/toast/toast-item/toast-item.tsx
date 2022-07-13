@@ -3,13 +3,23 @@ import type { Theme } from '../../../../types';
 import type { ToastState } from '../toast/toast-utils';
 import { TOAST_STATES } from '../toast/toast-utils';
 import {
+  AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
   throwIfRootNodeIsNotOneOfKind,
   throwIfValueIsInvalid,
+  validateProps,
 } from '../../../../utils';
+import type { PropTypes } from '../../../../utils';
 import { getComponentCss } from './toast-item-styles';
 import { getIconName } from '../../inline-notification/inline-notification-utils';
+import { THEMES } from '../../../../types';
+
+const propTypes: PropTypes<typeof ToastItem> = {
+  text: AllowedTypes.string,
+  state: AllowedTypes.oneOf<ToastState>(TOAST_STATES),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
+};
 
 @Component({
   tag: 'p-toast-item',
@@ -35,6 +45,8 @@ export class ToastItem {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes, 'p-toast-item');
+    // TODO: remove?
     throwIfValueIsInvalid(this.state, TOAST_STATES, 'state');
     attachComponentCss(this.host, getComponentCss, this.state, this.theme);
   }
