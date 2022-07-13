@@ -1,4 +1,4 @@
-import { JSX, Component, Prop, h, Element } from '@stencil/core';
+import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import type {
   FlexAlignContent,
   FlexAlignItems,
@@ -7,8 +7,25 @@ import type {
   FlexJustifyContent,
   FlexWrap,
 } from './flex-utils';
+import {
+  FLEX_ALIGN_CONTENTS,
+  FLEX_ALIGN_ITEMS,
+  FLEX_DIRECTIONS,
+  FLEX_JUSTIFY_CONTENTS,
+  FLEX_WRAPS,
+} from './flex-utils';
 import { getComponentCss } from './flex-styles';
-import { attachComponentCss } from '../../../../utils';
+import { AllowedTypes, attachComponentCss, validateProps } from '../../../../utils';
+import type { PropTypes } from '../../../../utils';
+
+const propTypes: PropTypes<typeof Flex> = {
+  inline: AllowedTypes.breakpointCustomizable('boolean'),
+  wrap: AllowedTypes.breakpointCustomizable(FLEX_WRAPS),
+  direction: AllowedTypes.breakpointCustomizable(FLEX_DIRECTIONS),
+  justifyContent: AllowedTypes.breakpointCustomizable(FLEX_JUSTIFY_CONTENTS),
+  alignItems: AllowedTypes.breakpointCustomizable(FLEX_ALIGN_ITEMS),
+  alignContent: AllowedTypes.breakpointCustomizable(FLEX_ALIGN_CONTENTS),
+};
 
 @Component({
   tag: 'p-flex',
@@ -36,6 +53,7 @@ export class Flex {
   @Prop() public alignContent?: FlexAlignContent = 'stretch';
 
   public componentWillRender(): void {
+    validateProps(this, propTypes, 'p-flex');
     attachComponentCss(
       this.host,
       getComponentCss,

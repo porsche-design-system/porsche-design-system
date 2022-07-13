@@ -1,7 +1,13 @@
 import { Component, Element, h, Prop } from '@stencil/core';
-import { attachComponentCss } from '../../../utils';
+import { AllowedTypes, attachComponentCss, validateProps } from '../../../utils';
+import type { PropTypes } from '../../../utils';
 import { getComponentCss } from './button-group-styles';
 import type { ButtonGroupDirection } from './button-group-utils';
+import { BUTTON_GROUP_DIRECTIONS } from './button-group-utils';
+
+const propTypes: PropTypes<typeof ButtonGroup> = {
+  direction: AllowedTypes.breakpointCustomizable(BUTTON_GROUP_DIRECTIONS),
+};
 
 @Component({
   tag: 'p-button-group',
@@ -17,6 +23,7 @@ export class ButtonGroup {
   };
 
   public componentWillRender(): void {
+    validateProps(this, propTypes, 'p-button-group');
     attachComponentCss(this.host, getComponentCss, this.direction);
   }
 

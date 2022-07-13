@@ -8,7 +8,25 @@ import type {
   FlexItemWidth,
 } from './flex-item-utils';
 import { getComponentCss } from './flex-item-styles';
-import { attachComponentCss, throwIfParentIsNotOfKind } from '../../../../utils';
+import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../../utils';
+import type { PropTypes } from '../../../../utils';
+import {
+  FLEX_ITEM_ALIGN_SELFS,
+  FLEX_ITEM_FLEXS,
+  FLEX_ITEM_GROWS,
+  FLEX_ITEM_OFFSETS,
+  FLEX_ITEM_SHRINKS,
+  FLEX_ITEM_WIDTHS,
+} from './flex-item-utils';
+
+const propTypes: PropTypes<typeof FlexItem> = {
+  width: AllowedTypes.breakpointCustomizable(FLEX_ITEM_WIDTHS),
+  offset: AllowedTypes.breakpointCustomizable(FLEX_ITEM_OFFSETS),
+  alignSelf: AllowedTypes.breakpointCustomizable(FLEX_ITEM_ALIGN_SELFS),
+  grow: AllowedTypes.breakpointCustomizable(FLEX_ITEM_GROWS),
+  shrink: AllowedTypes.breakpointCustomizable(FLEX_ITEM_SHRINKS),
+  flex: AllowedTypes.breakpointCustomizable(FLEX_ITEM_FLEXS),
+};
 
 @Component({
   tag: 'p-flex-item',
@@ -40,6 +58,7 @@ export class FlexItem {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes, 'p-flex-item');
     attachComponentCss(
       this.host,
       getComponentCss,
