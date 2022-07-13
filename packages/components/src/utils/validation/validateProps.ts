@@ -178,10 +178,10 @@ export const AllowedTypes: {
   shape: <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): ValidatorFunction => {
     return (propName, propValue, componentName) => {
       if (propValue) {
-        const shapeKeys = Object.keys(shapeStructure);
+        const propValueKeys = Object.keys(propValue);
         if (
-          // check structure
-          Object.keys(propValue as object).some((key) => !shapeKeys.includes(key)) ||
+          // check structure, but propValue could contain additional keys
+          Object.keys(shapeStructure).some((key) => !propValueKeys.includes(key)) ||
           // check values
           Object.entries(shapeStructure).some(([structureKey, validatorFunc]: [string, ValidatorFunction]) =>
             validatorFunc(structureKey, propValue[structureKey], componentName)
