@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, JSX, Prop, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@stencil/core';
 import type { Theme } from '../../../../types';
 import type { ToastState } from '../toast/toast-utils';
 import { TOAST_STATES } from '../toast/toast-utils';
