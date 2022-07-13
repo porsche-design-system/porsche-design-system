@@ -1,4 +1,4 @@
-import { BREAKPOINTS, parseJSON } from '../breakpoint-customizable';
+import { BreakpointKey, BREAKPOINTS, BreakpointValues, parseJSON } from '../breakpoint-customizable';
 import type { AriaAttributes } from '../../aria-types';
 import { parseJSONAttribute } from '../json';
 import type { TagName } from '@porsche-design-system/shared';
@@ -34,6 +34,7 @@ const formatObjectOutput = (value: any): string => {
 };
 
 const formatArrayOutput = <T>(value: T[] | readonly T[]): string => {
+  // eslint-disable-next-line @typescript-eslint/quotes
   return JSON.stringify(value).replace(/'/g, '').replace(/"/g, "'").replace(/,/g, ', ');
 };
 
@@ -77,20 +78,23 @@ const getBreakpointCustomizableStructure = <T>(
 };
 
 const getAriaStructure = <T>(allowedAriaAttributes: readonly T[]): string => {
-  return formatObjectOutput(
-    allowedAriaAttributes.reduce(
-      (prev, key) => ({
-        ...prev,
-        [key as any]: 'string',
-      }),
-      {}
+  return (
+    formatObjectOutput(
+      allowedAriaAttributes.reduce(
+        (prev, key) => ({
+          ...prev,
+          [key as any]: 'string',
+        }),
+        {}
+      )
     )
-  )
-    .replace(/":/g, '"?:')
-    .replace(/"/g, "'");
+      .replace(/":/g, '"?:')
+      // eslint-disable-next-line @typescript-eslint/quotes
+      .replace(/"/g, "'")
+  );
 };
 
-const getShapeStructure = <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }) => {
+const getShapeStructure = <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): string => {
   return formatObjectOutput(
     Object.keys(shapeStructure).reduce((prev, key) => ({ ...prev, [key]: shapeStructure[key].name || 'string' }), {})
   ).replace(/"/g, '');
@@ -100,7 +104,7 @@ const isBreakpointCustomizableValueInvalid = <T>(
   value: any,
   allowedValues: Extract<AllowedTypesKeys, 'boolean'> | T[] | readonly T[]
 ): boolean => {
-  return allowedValues === 'boolean' ? isValueNotOfType(value, allowedValues) : !allowedValues.includes(value);
+  return allowedValues === 'boolean' ? isValueNotOfType(value, allowedValues) : !allowedValues.includes(value as T);
 };
 
 type AllowedTypesKeys = 'string' | 'number' | 'boolean';
@@ -113,25 +117,28 @@ export const AllowedTypes: {
   breakpointCustomizable: ValidatorFunctionBreakpointCustomizableCreator;
   shape: ValidatorFunctionShapeCreator;
 } = {
+  // eslint-disable-next-line id-blacklist
   string: (...args) => validateValueOfType(...args, 'string'),
+  // eslint-disable-next-line id-blacklist
   number: (...args) => validateValueOfType(...args, 'number'),
+  // eslint-disable-next-line id-blacklist
   boolean: (...args) => validateValueOfType(...args, 'boolean'),
   oneOf:
     <T>(allowedValues: T[]): ValidatorFunction =>
     (propName, propValue, componentName) => {
-      if (!allowedValues.includes(propValue)) {
+      if (!allowedValues.includes(propValue as T)) {
         return { propName, propValue, componentName, propType: formatArrayOutput(allowedValues) };
       }
     },
   breakpointCustomizable: (allowedValues): ValidatorFunction => {
     return (propName, propValue, componentName) => {
-      const value = parseJSON(propValue);
+      const value = parseJSON(propValue as BreakpointValues<any>);
       let isValid = true;
 
       if (typeof value === 'object') {
         if (
           // check structure
-          Object.keys(value).some((key) => !BREAKPOINTS.includes(key as any)) ||
+          Object.keys(value).some((key) => !BREAKPOINTS.includes(key as BreakpointKey)) ||
           // check values
           Object.values(value).some((val) => isBreakpointCustomizableValueInvalid(val, allowedValues))
         ) {
@@ -145,7 +152,7 @@ export const AllowedTypes: {
       if (!isValid) {
         return {
           propName,
-          propValue: value + '',
+          propValue: `${value}`,
           componentName,
           propType: getBreakpointCustomizableStructure(allowedValues),
         };
@@ -154,10 +161,10 @@ export const AllowedTypes: {
   },
   aria: <T = keyof AriaAttributes>(allowedAriaAttributes: readonly T[]): ValidatorFunction => {
     return (propName, propValue, componentName) => {
-      const ariaAttributes = parseJSONAttribute<AriaAttributes>(propValue);
+      const ariaAttributes = parseJSONAttribute<AriaAttributes>(propValue as string);
       if (
         ariaAttributes &&
-        Object.keys(ariaAttributes).some((ariaKey) => !allowedAriaAttributes.includes(ariaKey as any))
+        Object.keys(ariaAttributes).some((ariaKey) => !allowedAriaAttributes.includes(ariaKey as unknown as T))
       ) {
         return {
           propName,
@@ -174,7 +181,7 @@ export const AllowedTypes: {
         const shapeKeys = Object.keys(shapeStructure);
         if (
           // check structure
-          Object.keys(propValue).some((key) => !shapeKeys.includes(key)) ||
+          Object.keys(propValue as object).some((key) => !shapeKeys.includes(key)) ||
           // check values
           Object.entries(shapeStructure).some(([structureKey, validatorFunc]: [string, ValidatorFunction]) =>
             validatorFunc(structureKey, propValue[structureKey], componentName)
@@ -195,11 +202,13 @@ export const AllowedTypes: {
 
 // utility type to return public properties of generic type that are not a function or EventEmitter
 type FunctionPropertyNames<T> = {
+  // eslint-disable-next-line @typescript-eslint/ban-types
   [K in keyof T]: T[K] extends Function | EventEmitter ? K : never;
 }[keyof T];
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 type Class<T> = Function & {
-  new (...args: any[]): T;
+  new (...args: any[]): T; // eslint-disable-line @typescript-eslint/prefer-function-type
 };
 
 // utility type to retrieve all props based on a class
