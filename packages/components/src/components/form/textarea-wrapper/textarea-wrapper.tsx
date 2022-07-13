@@ -27,7 +27,7 @@ const propTypes: PropTypes<typeof TextareaWrapper> = {
   description: AllowedTypes.string,
   state: AllowedTypes.oneOf<FormState>(FORM_STATES),
   message: AllowedTypes.string,
-  hideLabel: AllowedTypes.breakpointCustomizable('boolean'),
+  hideLabel: AllowedTypes.breakpoint('boolean'),
   showCharacterCount: AllowedTypes.boolean,
 };
 

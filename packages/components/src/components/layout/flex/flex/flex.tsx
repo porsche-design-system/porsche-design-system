@@ -24,12 +24,12 @@ import { AllowedTypes, attachComponentCss, validateProps } from '../../../../uti
 import type { PropTypes } from '../../../../utils';
 
 const propTypes: PropTypes<typeof Flex> = {
-  inline: AllowedTypes.breakpointCustomizable('boolean'),
-  wrap: AllowedTypes.breakpointCustomizable<FlexWrapType>(FLEX_WRAPS),
-  direction: AllowedTypes.breakpointCustomizable<FlexDirectionType>(FLEX_DIRECTIONS),
-  justifyContent: AllowedTypes.breakpointCustomizable<FlexJustifyContentType>(FLEX_JUSTIFY_CONTENTS),
-  alignItems: AllowedTypes.breakpointCustomizable<FlexAlignItemsType>(FLEX_ALIGN_ITEMS),
-  alignContent: AllowedTypes.breakpointCustomizable<FlexAlignContentType>(FLEX_ALIGN_CONTENTS),
+  inline: AllowedTypes.breakpoint('boolean'),
+  wrap: AllowedTypes.breakpoint<FlexWrapType>(FLEX_WRAPS),
+  direction: AllowedTypes.breakpoint<FlexDirectionType>(FLEX_DIRECTIONS),
+  justifyContent: AllowedTypes.breakpoint<FlexJustifyContentType>(FLEX_JUSTIFY_CONTENTS),
+  alignItems: AllowedTypes.breakpoint<FlexAlignItemsType>(FLEX_ALIGN_ITEMS),
+  alignContent: AllowedTypes.breakpoint<FlexAlignContentType>(FLEX_ALIGN_CONTENTS),
 };
 
 @Component({

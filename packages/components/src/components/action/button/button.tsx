@@ -30,7 +30,7 @@ const propTypes: PropTypes<typeof Button> = {
   icon: AllowedTypes.string,
   theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
   iconSource: AllowedTypes.string,
-  hideLabel: AllowedTypes.breakpointCustomizable('boolean'),
+  hideLabel: AllowedTypes.breakpoint('boolean'),
   aria: AllowedTypes.aria<ButtonAriaAttributes>(BUTTON_ARIA_ATTRIBUTES),
 };
 

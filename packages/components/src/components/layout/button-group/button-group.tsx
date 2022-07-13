@@ -6,7 +6,7 @@ import type { ButtonGroupDirection } from './button-group-utils';
 import { BUTTON_GROUP_DIRECTIONS } from './button-group-utils';
 
 const propTypes: PropTypes<typeof ButtonGroup> = {
-  direction: AllowedTypes.breakpointCustomizable<ButtonGroupDirection>(BUTTON_GROUP_DIRECTIONS),
+  direction: AllowedTypes.breakpoint<ButtonGroupDirection>(BUTTON_GROUP_DIRECTIONS),
 };
 
 @Component({

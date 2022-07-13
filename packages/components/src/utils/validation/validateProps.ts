@@ -114,7 +114,7 @@ export const AllowedTypes: {
 } & {
   oneOf: ValidatorFunctionOneOfCreator;
   aria: ValidatorFunctionOneOfCreator;
-  breakpointCustomizable: ValidatorFunctionBreakpointCustomizableCreator;
+  breakpoint: ValidatorFunctionBreakpointCustomizableCreator;
   shape: ValidatorFunctionShapeCreator;
 } = {
   // eslint-disable-next-line id-blacklist
@@ -130,7 +130,7 @@ export const AllowedTypes: {
         return { propName, propValue, componentName, propType: formatArrayOutput(allowedValues) };
       }
     },
-  breakpointCustomizable: (allowedValues): ValidatorFunction => {
+  breakpoint: (allowedValues): ValidatorFunction => {
     return (propName, propValue, componentName) => {
       const value = parseJSON(propValue as BreakpointValues<any>);
       let isValid = true;

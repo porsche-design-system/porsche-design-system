@@ -30,7 +30,7 @@ const propTypes: PropTypes<typeof Link> = {
   target: AllowedTypes.oneOf<LinkTarget>(LINK_TARGETS),
   download: AllowedTypes.string,
   rel: AllowedTypes.string,
-  hideLabel: AllowedTypes.breakpointCustomizable('boolean'),
+  hideLabel: AllowedTypes.breakpoint('boolean'),
   aria: AllowedTypes.aria<LinkAriaAttributes>(LINK_ARIA_ATTRIBUTES),
 };
 

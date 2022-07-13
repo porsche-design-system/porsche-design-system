@@ -19,7 +19,7 @@ const propTypes: PropTypes<typeof TableHeadCell> = {
     active: AllowedTypes.boolean,
     direction: AllowedTypes.oneOf<Direction>(['asc', 'desc']),
   }),
-  hideLabel: AllowedTypes.breakpointCustomizable('boolean'),
+  hideLabel: AllowedTypes.breakpoint('boolean'),
   multiline: AllowedTypes.boolean,
 };
 

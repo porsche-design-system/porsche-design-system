@@ -6,8 +6,8 @@ import type { PropTypes } from '../../../../utils';
 import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../../utils';
 
 const propTypes: PropTypes<typeof GridItem> = {
-  size: AllowedTypes.breakpointCustomizable<GridItemSizeType>(GRID_ITEM_SIZES),
-  offset: AllowedTypes.breakpointCustomizable<GridItemOffsetType>(GRID_ITEM_OFFSETS),
+  size: AllowedTypes.breakpoint<GridItemSizeType>(GRID_ITEM_SIZES),
+  offset: AllowedTypes.breakpoint<GridItemOffsetType>(GRID_ITEM_OFFSETS),
 };
 
 @Component({

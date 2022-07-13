@@ -13,9 +13,9 @@ import type { PropTypes } from '../../../../utils';
 import { GRID_DIRECTIONS, GRID_GUTTERS, GRID_WRAPS } from './grid-utils';
 
 const propTypes: PropTypes<typeof Grid> = {
-  direction: AllowedTypes.breakpointCustomizable<GridDirectionType>(GRID_DIRECTIONS),
-  wrap: AllowedTypes.breakpointCustomizable<GridWrapType>(GRID_WRAPS),
-  gutter: AllowedTypes.breakpointCustomizable<GridGutterType>(GRID_GUTTERS),
+  direction: AllowedTypes.breakpoint<GridDirectionType>(GRID_DIRECTIONS),
+  wrap: AllowedTypes.breakpoint<GridWrapType>(GRID_WRAPS),
+  gutter: AllowedTypes.breakpoint<GridGutterType>(GRID_GUTTERS),
 };
 
 @Component({

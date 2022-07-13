@@ -25,7 +25,7 @@ const propTypes: PropTypes<typeof RadioButtonWrapper> = {
   label: AllowedTypes.string,
   state: AllowedTypes.oneOf<FormState>(FORM_STATES),
   message: AllowedTypes.string,
-  hideLabel: AllowedTypes.breakpointCustomizable('boolean'),
+  hideLabel: AllowedTypes.breakpoint('boolean'),
 };
 
 @Component({
