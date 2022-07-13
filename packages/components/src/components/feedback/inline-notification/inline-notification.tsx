@@ -5,11 +5,26 @@ import {
   attachSlottedCss,
   hasHeading,
   throwIfValueIsInvalid,
+  AllowedTypes,
+  validateProps,
 } from '../../../utils';
+import type { PropTypes } from '../../../utils';
 import type { IconName, Theme } from '../../../types';
 import { getComponentCss, getSlottedCss } from './inline-notification-styles';
 import { INLINE_NOTIFICATION_STATES, getContentAriaAttributes, getIconName } from './inline-notification-utils';
 import type { InlineNotificationState } from './inline-notification-utils';
+import { THEMES } from '../../../types';
+
+const propTypes: PropTypes<typeof InlineNotification> = {
+  heading: AllowedTypes.string,
+  description: AllowedTypes.string,
+  state: AllowedTypes.oneOf<InlineNotificationState>(INLINE_NOTIFICATION_STATES),
+  persistent: AllowedTypes.boolean,
+  actionLabel: AllowedTypes.string,
+  actionLoading: AllowedTypes.boolean,
+  actionIcon: AllowedTypes.string,
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
+};
 
 @Component({
   tag: 'p-inline-notification',
@@ -53,6 +68,8 @@ export class InlineNotification {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes, 'p-inline-notification');
+    // TODO: remove?
     throwIfValueIsInvalid(this.state, INLINE_NOTIFICATION_STATES, 'state');
     attachComponentCss(this.host, getComponentCss, this.state, !!this.actionLabel, !this.persistent, this.theme);
   }

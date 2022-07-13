@@ -1,9 +1,28 @@
 import { JSX, Component, Prop, h, Element, Host, State } from '@stencil/core';
-import { addDocumentEventListener, removeDocumentEventListener, updatePopoverStyles } from './popover-utils';
-import { attachComponentCss, attachSlottedCss, getPrefixedTagNames, parseAndGetAriaAttributes } from '../../../utils';
+import {
+  addDocumentEventListener,
+  POPOVER_DIRECTIONS,
+  removeDocumentEventListener,
+  updatePopoverStyles,
+} from './popover-utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  attachSlottedCss,
+  getPrefixedTagNames,
+  parseAndGetAriaAttributes,
+  validateProps,
+} from '../../../utils';
+import type { PropTypes } from '../../../utils';
 import { getComponentCss, getSlottedCss } from './popover-styles';
 import type { PopoverDirection } from './popover-utils';
 import type { SelectedAriaAttributes } from '../../../types';
+
+const propTypes: Omit<PropTypes<typeof Popover>, 'open'> = {
+  direction: AllowedTypes.oneOf<PopoverDirection>(POPOVER_DIRECTIONS),
+  description: AllowedTypes.string,
+  aria: AllowedTypes.aria<'aria-label'>(['aria-label']),
+};
 
 @Component({
   tag: 'p-popover',
@@ -34,6 +53,7 @@ export class Popover {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes, 'p-popover');
     attachComponentCss(this.host, getComponentCss, this.direction);
   }
 
