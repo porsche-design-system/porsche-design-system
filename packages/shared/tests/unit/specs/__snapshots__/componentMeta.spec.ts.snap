@@ -1504,6 +1504,9 @@ Object {
     "isThemeable": true,
     "props": Array [
       Object {
+        "tag": "p",
+      },
+      Object {
         "size": "small",
       },
       Object {
