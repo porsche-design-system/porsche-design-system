@@ -9,16 +9,8 @@ import {
   setLineHeightOnSizeInherit,
   validateProps,
 } from '../../../../utils';
-import type {
-  BreakpointCustomizable,
-  LinkTarget,
-  TextAlign,
-  TextColor,
-  TextSize,
-  TextWeight,
-  Theme,
-} from '../../../../types';
-import { LINK_TARGETS, TEXT_ALIGNS, TEXT_WEIGHTS, THEMES } from '../../../../types';
+import type { BreakpointCustomizable, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
+import { TEXT_ALIGNS, TEXT_COLORS, TEXT_WEIGHTS, THEMES } from '../../../../types';
 import { getComponentCss, getSlottedCss } from './text-styles';
 import type { TextTag } from './text-utils';
 import { TEXT_SIZES, TEXT_TAGS } from './text-utils';
@@ -28,7 +20,7 @@ const propTypes: PropTypes<typeof Text> = {
   size: AllowedTypes.oneOf<TextSize>(TEXT_SIZES),
   weight: AllowedTypes.oneOf<TextWeight>(TEXT_WEIGHTS),
   align: AllowedTypes.oneOf<TextAlign>(TEXT_ALIGNS),
-  color: AllowedTypes.oneOf<LinkTarget>(LINK_TARGETS),
+  color: AllowedTypes.oneOf<TextColor>(TEXT_COLORS),
   ellipsis: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
