@@ -1,13 +1,13 @@
-import { JSX, Component, Prop, h, Element } from '@stencil/core';
-import type { GridItemOffset, GridItemSize } from './grid-item-utils';
-import { getComponentCss } from './grid-item-styles';
-import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../../utils';
-import type { PropTypes } from '../../../../utils';
+import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import type { GridItemOffset, GridItemOffsetType, GridItemSize, GridItemSizeType } from './grid-item-utils';
 import { GRID_ITEM_OFFSETS, GRID_ITEM_SIZES } from './grid-item-utils';
+import { getComponentCss } from './grid-item-styles';
+import type { PropTypes } from '../../../../utils';
+import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../../utils';
 
 const propTypes: PropTypes<typeof GridItem> = {
-  size: AllowedTypes.breakpointCustomizable(GRID_ITEM_SIZES),
-  offset: AllowedTypes.breakpointCustomizable(GRID_ITEM_OFFSETS),
+  size: AllowedTypes.breakpointCustomizable<GridItemSizeType>(GRID_ITEM_SIZES),
+  offset: AllowedTypes.breakpointCustomizable<GridItemOffsetType>(GRID_ITEM_OFFSETS),
 };
 
 @Component({

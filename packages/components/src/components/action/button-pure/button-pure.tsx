@@ -35,7 +35,7 @@ const propTypes: PropTypes<typeof ButtonPure> = {
   type: AllowedTypes.oneOf(['button', 'submit', 'reset']),
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
-  size: AllowedTypes.breakpointCustomizable(TEXT_SIZES),
+  size: AllowedTypes.breakpointCustomizable<TextSize>(TEXT_SIZES),
   weight: AllowedTypes.oneOf(TEXT_WEIGHTS),
   icon: AllowedTypes.string,
   iconSource: AllowedTypes.string,

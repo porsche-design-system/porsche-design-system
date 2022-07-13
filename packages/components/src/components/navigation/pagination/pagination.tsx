@@ -18,7 +18,7 @@ const propTypes: PropTypes<typeof Pagination> = {
   totalItemsCount: AllowedTypes.number,
   itemsPerPage: AllowedTypes.number,
   activePage: AllowedTypes.number,
-  maxNumberOfPageLinks: AllowedTypes.breakpointCustomizable(PAGINATION_NUMBER_OF_PAGE_LINKS),
+  maxNumberOfPageLinks: AllowedTypes.breakpointCustomizable<NumberOfPageLinks>(PAGINATION_NUMBER_OF_PAGE_LINKS),
   allyLabel: AllowedTypes.string,
   allyLabelPrev: AllowedTypes.string,
   allyLabelPage: AllowedTypes.string,

@@ -1,14 +1,21 @@
 import { JSX, Component, Prop, h, Element, Watch } from '@stencil/core';
-import type { GridDirection, GridGutter, GridWrap } from './grid-utils';
+import type {
+  GridDirection,
+  GridDirectionType,
+  GridGutter,
+  GridGutterType,
+  GridWrap,
+  GridWrapType,
+} from './grid-utils';
 import { getComponentCss } from './grid-styles';
 import { AllowedTypes, attachComponentCss, updateChildren, validateProps } from '../../../../utils';
 import type { PropTypes } from '../../../../utils';
 import { GRID_DIRECTIONS, GRID_GUTTERS, GRID_WRAPS } from './grid-utils';
 
 const propTypes: PropTypes<typeof Grid> = {
-  direction: AllowedTypes.breakpointCustomizable(GRID_DIRECTIONS),
-  wrap: AllowedTypes.breakpointCustomizable(GRID_WRAPS),
-  gutter: AllowedTypes.breakpointCustomizable(GRID_GUTTERS),
+  direction: AllowedTypes.breakpointCustomizable<GridDirectionType>(GRID_DIRECTIONS),
+  wrap: AllowedTypes.breakpointCustomizable<GridWrapType>(GRID_WRAPS),
+  gutter: AllowedTypes.breakpointCustomizable<GridGutterType>(GRID_GUTTERS),
 };
 
 @Component({
