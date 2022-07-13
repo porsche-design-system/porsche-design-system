@@ -1,7 +1,15 @@
 import { JSX, Component, Prop, h, Element, Watch } from '@stencil/core';
 import type { GridDirection, GridGutter, GridWrap } from './grid-utils';
 import { getComponentCss } from './grid-styles';
-import { attachComponentCss, updateChildren } from '../../../../utils';
+import { AllowedTypes, attachComponentCss, updateChildren, validateProps } from '../../../../utils';
+import type { PropTypes } from '../../../../utils';
+import { GRID_DIRECTIONS, GRID_GUTTERS, GRID_WRAPS } from './grid-utils';
+
+const propTypes: PropTypes<typeof Grid> = {
+  direction: AllowedTypes.breakpointCustomizable(GRID_DIRECTIONS),
+  wrap: AllowedTypes.breakpointCustomizable(GRID_WRAPS),
+  gutter: AllowedTypes.breakpointCustomizable(GRID_GUTTERS),
+};
 
 @Component({
   tag: 'p-grid',
@@ -25,6 +33,7 @@ export class Grid {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes, 'p-grid');
     attachComponentCss(this.host, getComponentCss, this.direction, this.wrap, this.gutter);
   }
 

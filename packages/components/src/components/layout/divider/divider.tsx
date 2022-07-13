@@ -1,8 +1,17 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { attachComponentCss } from '../../../utils';
+import { AllowedTypes, attachComponentCss, validateProps } from '../../../utils';
+import type { PropTypes } from '../../../utils';
 import type { Theme } from '../../../types';
+import { THEMES } from '../../../types';
 import type { DividerColor, DividerOrientation } from './divider-utils';
+import { DIVIDER_COLORS, DIVIDER_ORIENTATIONS } from './divider-utils';
 import { getComponentCss } from './divider-styles';
+
+const propTypes: PropTypes<typeof Divider> = {
+  color: AllowedTypes.oneOf<DividerColor>(DIVIDER_COLORS),
+  orientation: AllowedTypes.breakpointCustomizable(DIVIDER_ORIENTATIONS),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
+};
 
 @Component({
   tag: 'p-divider',
@@ -21,6 +30,7 @@ export class Divider {
   @Prop() public theme?: Theme = 'light';
 
   public componentWillRender(): void {
+    validateProps(this, propTypes, 'p-divider');
     attachComponentCss(this.host, getComponentCss, this.color, this.orientation, this.theme);
   }
 
