@@ -9,7 +9,8 @@
  *
  */
 
-export type NumberOfPageLinks = 5 | 7;
+export const PAGINATION_NUMBER_OF_PAGE_LINKS = [5, 7] as const;
+export type NumberOfPageLinks = typeof PAGINATION_NUMBER_OF_PAGE_LINKS[number];
 export type PageChangeEvent = { page: number; previousPage: number };
 
 export type PageItemType = 'PAGE';

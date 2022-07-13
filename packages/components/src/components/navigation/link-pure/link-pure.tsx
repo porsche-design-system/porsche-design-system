@@ -1,30 +1,58 @@
 import type {
-  SelectedAriaAttributes,
   AlignLabel,
   BreakpointCustomizable,
   LinkButtonPureIconName,
   LinkTarget,
+  SelectedAriaAttributes,
+  TextSize,
   TextWeight,
   ThemeExtendedElectricDark,
-  TextSize,
+} from '../../../types';
+import {
+  ALIGN_LABELS,
+  LINK_TARGETS,
+  TEXT_WEIGHTS,
+  ThemeExtendedElectric,
+  THEMES_EXTENDED_ELECTRIC,
 } from '../../../types';
 import type { LinkAriaAttributes } from '../link/link-utils';
-import { Host, Component, Element, h, JSX, Prop } from '@stencil/core';
+import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
+import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {
-  calcLineHeightForElement,
-  getPrefixedTagNames,
-  transitionListener,
-  hasVisibleIcon,
-  hasSlottedSubline,
+  AllowedTypes,
   attachComponentCss,
   attachSlottedCss,
+  calcLineHeightForElement,
+  getPrefixedTagNames,
+  hasSlottedSubline,
+  hasVisibleIcon,
+  isSizeInherit,
   parseAndGetAriaAttributes,
+  PropTypes,
+  transitionListener,
+  validateProps,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../../utils';
 import { getComponentCss, getSlottedCss } from './link-pure-styles';
-import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 import { throwIfInvalidLinkUsage } from '../link-validation';
-import { isSizeInherit } from '../../../utils';
+import { TEXT_SIZES } from '../../basic/typography/text/text-utils';
+
+const propTypes: PropTypes<typeof LinkPure> = {
+  alignLabel: AllowedTypes.breakpointCustomizable(ALIGN_LABELS),
+  stretch: AllowedTypes.breakpointCustomizable('boolean'),
+  size: AllowedTypes.breakpointCustomizable(TEXT_SIZES),
+  weight: AllowedTypes.oneOf<TextWeight>(TEXT_WEIGHTS),
+  icon: AllowedTypes.string,
+  iconSource: AllowedTypes.string,
+  href: AllowedTypes.string,
+  active: AllowedTypes.boolean,
+  hideLabel: AllowedTypes.breakpointCustomizable('boolean'),
+  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  target: AllowedTypes.oneOf<LinkTarget>(LINK_TARGETS),
+  download: AllowedTypes.string,
+  rel: AllowedTypes.string,
+  aria: AllowedTypes.aria<LinkAriaAttributes>(LINK_ARIA_ATTRIBUTES),
+};
 
 @Component({
   tag: 'p-link-pure',
@@ -87,6 +115,7 @@ export class LinkPure {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes, 'p-link-pure');
     warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
     attachComponentCss(
       this.host,
