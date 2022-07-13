@@ -24,7 +24,7 @@ import { TAB_SIZES, TAB_WEIGHTS } from '../../../navigation/tabs-bar/tabs-bar-ut
 import { getComponentCss } from './tabs-styles';
 import { GRADIENT_COLOR_THEMES } from '../../../common/scroller/scroller-utils';
 
-const propTypes: Omit<PropTypes<typeof Tabs>, 'tabsItemElements'> = {
+const propTypes: PropTypes<typeof Tabs> = {
   size: AllowedTypes.oneOf<TabSize>(TAB_SIZES),
   weight: AllowedTypes.oneOf<TabWeight>(TAB_WEIGHTS),
   theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
@@ -57,7 +57,7 @@ export class Tabs {
   /** Emitted when active tab is changed. */
   @Event({ bubbles: false }) public tabChange: EventEmitter<TabChangeEvent>;
 
-  @State() public tabsItemElements: HTMLPTabsItemElement[] = [];
+  @State() private tabsItemElements: HTMLPTabsItemElement[] = [];
 
   @Watch('activeTabIndex')
   public activeTabHandler(newValue: number): void {
