@@ -273,8 +273,13 @@ describe('AllowedTypes', () => {
     describe('for array of validator functions', () => {
       const nestedValidatorFunc1 = jest.fn();
       const nestedValidatorFunc2 = jest.fn();
+      const nestedValidatorFunc3 = jest.fn();
 
-      const validatorFunctionFunctions = AllowedTypes.oneOf([nestedValidatorFunc1, nestedValidatorFunc2]);
+      const validatorFunctionFunctions = AllowedTypes.oneOf([
+        nestedValidatorFunc1,
+        nestedValidatorFunc2,
+        nestedValidatorFunc3,
+      ]);
 
       const error: ValidationError = {
         propName: 'propName',
@@ -287,21 +292,35 @@ describe('AllowedTypes', () => {
         expect(validatorFunctionFunctions).toEqual(expect.any(Function));
       });
 
-      it('should call every nested validator function via anonymous ValidatorFunction', () => {
+      it('should call nested validator functions until first one returns undefined via anonymous ValidatorFunction', () => {
+        nestedValidatorFunc1.mockReturnValueOnce({ ...error, propType: 'string' });
+        nestedValidatorFunc2.mockReturnValueOnce(undefined);
         validatorFunctionFunctions('propName', 'c', 'p-button');
         expect(nestedValidatorFunc1).toBeCalledWith('propName', 'c', 'p-button');
         expect(nestedValidatorFunc2).toBeCalledWith('propName', 'c', 'p-button');
+        expect(nestedValidatorFunc3).not.toBeCalled();
       });
 
-      it('should return error object via anonymous ValidatorFunction if value does not pass all nested validator functions', () => {
+      it('should return error object via anonymous ValidatorFunction if value does not pass any nested validator function', () => {
         nestedValidatorFunc1.mockReturnValueOnce({ ...error, propType: 'string' });
+        nestedValidatorFunc2.mockReturnValueOnce({ ...error, propType: 'boolean' });
+        nestedValidatorFunc3.mockReturnValueOnce({ ...error, propType: 'boolean' });
         const result = validatorFunctionFunctions('propName', 'c', 'p-button');
         expect(result).toMatchObject(error);
+      });
+
+      it('should return undefined via anonymous ValidatorFunction if value does not pass at least one nested validator function', () => {
+        nestedValidatorFunc1.mockReturnValueOnce({ ...error, propType: 'number' });
+        nestedValidatorFunc2.mockReturnValueOnce({ ...error, propType: 'number' });
+        nestedValidatorFunc3.mockReturnValueOnce(undefined);
+        const result = validatorFunctionFunctions('propName', 'c', 'p-button');
+        expect(result).toBe(undefined);
       });
 
       it('should return undefined via anonymous ValidatorFunction if value passes all nested validator functions', () => {
         nestedValidatorFunc1.mockReturnValueOnce(undefined);
         nestedValidatorFunc2.mockReturnValueOnce(undefined);
+        nestedValidatorFunc3.mockReturnValueOnce(undefined);
         const result = validatorFunctionFunctions('propName', 'b', 'p-button');
         expect(result).toBe(undefined);
       });

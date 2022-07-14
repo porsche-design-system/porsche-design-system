@@ -132,8 +132,8 @@ export const AllowedTypes: {
           return { propName, propValue, componentName, propType: formatArrayOutput(allowedValuesOrValidatorFunctions) };
         }
       } else if (
-        allowedValuesOrValidatorFunctions.some((func) =>
-          (func as unknown as ValidatorFunction)(propName, propValue, componentName)
+        !allowedValuesOrValidatorFunctions.some(
+          (func) => (func as unknown as ValidatorFunction)(propName, propValue, componentName) === undefined
         )
       ) {
         return {
