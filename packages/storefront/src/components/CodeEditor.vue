@@ -16,7 +16,7 @@
   import { Framework, Theme } from '@/models';
   import { themeDark } from '@porsche-design-system/utilities-v2';
   import { codePenConfig } from '@/lib/partialResults';
-  import { openReact, openVanillaJS } from '@/utils/stackblitz';
+  import { openAngular, openReact, OpenStackBlitzOptions, openVanillaJS } from '@/utils/stackblitz';
   import { convertMarkup } from '@/utils';
 
   @Component
@@ -30,20 +30,21 @@
 
     openInStackBlitz() {
       const convertedMarkup = convertMarkup(this.markup, this.framework);
-      const [, componentName] = convertedMarkup.match(/<((?:\w|-)+)(?:.|\n)*>(?:[A-z]| )*<\/?\1>/);
+      const [, componentName] = convertedMarkup.match(/<((?:\w|-)+)(?:.|\n)*>(?:[A-z]| )*<\/?\1>/) ?? [];
+
+      const openProps: OpenStackBlitzOptions = {
+        markup: convertedMarkup,
+        componentName,
+      };
 
       switch (this.framework) {
         case 'angular':
-          return;
+          return openAngular(openProps);
         case 'react':
-          return openReact({
-            markup: convertedMarkup,
-            componentName,
-          });
+          return openReact(openProps);
         default:
           return openVanillaJS({
-            markup: convertedMarkup,
-            componentName,
+            ...openProps,
             additionalJavaScriptLogic: this.additionalJavaScriptLogic,
           });
       }
