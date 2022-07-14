@@ -112,7 +112,34 @@ describe('AllowedTypes', () => {
     });
   });
 
-  xdescribe('.oneOf', () => {});
+  describe('.oneOf', () => {
+    const validatorFunction = AllowedTypes.oneOf(['a', 'b']);
+
+    it('should return anonymous ValidatorFunction', () => {
+      expect(validatorFunction).toEqual(expect.any(Function));
+    });
+
+    it('should call formatArrayOutput() via anonymous ValidatorFunction', () => {
+      const spy = jest.spyOn(validatePropsUtils, 'formatArrayOutput');
+      validatorFunction('propName', 'c', 'p-button');
+      expect(spy).toBeCalledWith(['a', 'b']);
+    });
+
+    it('should return error object via anonymous ValidatorFunction if value is not in allowedValues array', () => {
+      const result = validatorFunction('propName', 'c', 'p-button');
+      expect(result).toMatchObject({
+        propName: 'propName',
+        propValue: 'c',
+        componentName: 'p-button',
+        propType: "['a', 'b']",
+      });
+    });
+
+    it('should return undefined via anonymous ValidatorFunction if value is in allowedValues array', () => {
+      const result = validatorFunction('propName', 'b', 'p-button');
+      expect(result).toBe(undefined);
+    });
+  });
 
   xdescribe('.breakpoint', () => {});
 
@@ -120,3 +147,9 @@ describe('AllowedTypes', () => {
 
   xdescribe('.shape', () => {});
 });
+
+xdescribe('formatObjectOutput()', () => {});
+
+xdescribe('formatArrayOutput()', () => {});
+
+xdescribe('printErrorMessage()', () => {});
