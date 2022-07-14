@@ -1,11 +1,12 @@
 # Select
 
-The `p-select-wrapper` component is a styling wrapper for the native HTML `<select>` form element.
-To improve accessibility on devices with touch support, it defaults to the native user interface behaviour.
+The `p-select-wrapper` component is a styling wrapper for the native HTML `<select>` form element. To improve
+accessibility on devices with touch support, it defaults to the native user interface behaviour.
 
-A `label` is a caption which informs the user what information a particular form field is asking for.
-The `p-select-wrapper` component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible.
-When used without a label, it's best practice to provide a descriptive label text for screen readers.  
+A `label` is a caption which informs the user what information a particular form field is asking for. The
+`p-select-wrapper` component can be used with or without a label but it's recommended to keep the label visible for
+better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label
+text for screen readers.
 
 <TableOfContents></TableOfContents>
 
@@ -24,8 +25,8 @@ When used without a label, it's best practice to provide a descriptive label tex
 
 ## Basic example without preselection
 
-To ensure the user makes a conscious choice, use `<option></option>` as placeholder.
-If the select is required, use `<option hidden></option>` to enforce a selection.
+To ensure the user makes a conscious choice, use `<option></option>` as placeholder. If the select is required, use
+`<option hidden></option>` to enforce a selection.
 
 <Playground :markup="basicNoPreselection" :config="config">
   <select v-model="isRequired" aria-label="Select label mode">
@@ -38,8 +39,10 @@ If the select is required, use `<option hidden></option>` to enforce a selection
 ---
 
 ## With filter
-This option enhances the native select filter by providing an additional search field where the user can type their own search string. 
-The filter reduces the amount of option items by searching for the typed characters starting with the first character of the options text.
+
+This option enhances the native select filter by providing an additional search field where the user can type their own
+search string. The filter reduces the amount of option items by searching for the typed characters starting with the
+first character of the options text.
 
 <Playground :markup="withFilter" :config="config"></Playground>
 
@@ -49,7 +52,7 @@ The filter reduces the amount of option items by searching for the typed charact
 
 <Playground :markup="withOptgroups" :config="config"></Playground>
 
---- 
+---
 
 ## Dropdown direction
 
@@ -66,7 +69,8 @@ The filter reduces the amount of option items by searching for the typed charact
 
 ## With description text
 
-A description text can be added to explain the meaning of a specific form field. It's meant to be a textual enhancement of the label text and is technically connected with the `hide-label` property.
+A description text can be added to explain the meaning of a specific form field. It's meant to be a textual enhancement
+of the label text and is technically connected with the `hide-label` property.
 
 <Playground :markup="withDescriptionText" :config="config"></Playground>
 
@@ -83,9 +87,11 @@ A description text can be added to explain the meaning of a specific form field.
 <Playground :markup="disabled" :config="config"></Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
-In general, you should **prevent** using the `disabled="true"` state. Disabled elements are not reachable (focusable) anymore and can be missed by screen reader users.
-They can be confusing for sighted users as well by not pointing out why these elements are disabled.
-A good practice when to use the disabled state is during **form submission** to prevent changes while this process is performed.
+
+In general, you should **prevent** using the `disabled="true"` state. Disabled elements are not reachable (focusable)
+anymore and can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out
+why these elements are disabled. A good practice when to use the disabled state is during **form submission** to prevent
+changes while this process is performed.
 
 ---
 
@@ -107,28 +113,38 @@ The `p-select-wrapper` component supports the visualisation of inline validation
 ## Slots
 
 Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label` or `message`.  
-Therefore, a named slot can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used (because a property definition is preferred over a named slot).
-For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.
+Therefore, a named slot can be used. Make sure **not** to define the corresponding property on the host element when a
+named slot is used (because a property definition is preferred over a named slot). For named slots only
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
+allowed.
 
 <Playground :markup="slots" :config="config"></Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
-If using **slotted contents** to serve form elements, make sure to provide the right **ARIA attributes** to give screen reader users the corresponding information:
+
+If using **slotted contents** to serve form elements, make sure to provide the right **ARIA attributes** to give screen
+reader users the corresponding information:
+
 1. Add a unique ID to the `slot="label"` element
 1. Add a unique ID to the `slot="message"` element (if they are created)
 1. Add corresponding `aria-labelledby="some-label-id"` to the `select` element which points to the `label` ID
-1. Add corresponding `aria-describedby="some-description-id some-message-id"` to the `select` element which points to both, the `description` ID (if set) and the `message` ID when the (error/success) message appears
+1. Add corresponding `aria-describedby="some-description-id some-message-id"` to the `select` element which points to
+   both, the `description` ID (if set) and the `message` ID when the (error/success) message appears
 
 ---
 
 ## Changing the selected option programmatically
-In JS there is no possibility to listen to the `onchange` event or the `mutationObserver` if the selected option is changed programmatically, e.g.:
+
+In JS there is no possibility to listen to the `onchange` event or the `mutationObserver` if the selected option is
+changed programmatically, e.g.:
+
 ```tsx
 //Won't update the custom styled dropdown
 selectElement.options[3].selected = true;
 ```
 
-To force re-rendering of the custom dropdown, the selected option needs to be changed by adding/removing the `selected` attribute, e.g.
+To force re-rendering of the custom dropdown, the selected option needs to be changed by adding/removing the `selected`
+attribute, e.g.
 
 ```tsx
 //Won't update the custom styled dropdown

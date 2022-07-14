@@ -18,7 +18,7 @@
   His dream of the perfect sports car has always driven us – throughout our history. And we get closer to achieving it every day. With every concept, every development and every model. Along the way, we follow a plan, an ideal that unites us all. We refer to it simply as the Porsche Principle. The underlying principle is to always get the most out of everything. From day one, we have strived to translate performance into speed – and success – in the most intelligent way possible. It's no longer all about horsepower, but more ideas per horsepower. This principle originates on the race track and is embodied in every single one of our cars. We call it "Intelligent Performance".
 </p-text>
 
---- 
+---
 
 <p-text size="x-small">
   Text taken from https://www.porsche.com/usa/aboutporsche/principleporsche/

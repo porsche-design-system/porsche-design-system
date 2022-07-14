@@ -18,7 +18,9 @@
 
 ## Icon
 
-The `p-tag` can be displayed with an icon. Choose an icon name from the icon property. Per default, all icons are fetched from the Porsche Design System CDN. If you need to link to another icon hosted somewhere else, just set the whole icon path to the icon-source property.
+The `p-tag` can be displayed with an icon. Choose an icon name from the icon property. Per default, all icons are
+fetched from the Porsche Design System CDN. If you need to link to another icon hosted somewhere else, just set the
+whole icon path to the icon-source property.
 
 <Playground :markup="icon" :config="config"></Playground>
 
@@ -37,14 +39,15 @@ clickable and no other content outside the button or link is allowed.
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
-Make sure to provide a **descriptive**, self explaining **aria-label** on the slotted button to describe the `onClick()` action.
+Make sure to provide a **descriptive**, self explaining **aria-label** on the slotted button to describe the `onClick()`
+action.
 
 <Playground :markup="buttonAccessibility"></Playground>
 
 ## With slotted link
 
-It is possible to add `<a>` tag into the `p-tag` component. If you do this, the entire component becomes
-clickable and no other content outside the button or link is allowed.
+It is possible to add `<a>` tag into the `p-tag` component. If you do this, the entire component becomes clickable and
+no other content outside the button or link is allowed.
 
 <Playground :markup="linkMarkup" :config="{ ...config, colorScheme: backgroundColor }">
   <select v-model="backgroundColor" aria-label="Select background color">
@@ -56,7 +59,8 @@ clickable and no other content outside the button or link is allowed.
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
-Make sure to provide a **descriptive**, self explaining **aria-label** on the slotted anchor to describe where it leads to.
+Make sure to provide a **descriptive**, self explaining **aria-label** on the slotted anchor to describe where it leads
+to.
 
 <Playground :markup="linkAccessibility"></Playground>
 

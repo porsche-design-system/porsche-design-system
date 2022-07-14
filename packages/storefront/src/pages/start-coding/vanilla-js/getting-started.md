@@ -3,10 +3,12 @@
 <TableOfContents></TableOfContents>
 
 ## Quick start
-To build your own (non framework specific) application with **Native Web Components** of the Porsche Design System, follow these steps:
 
-* Follow the instructions at [Introduction](start-coding/introduction) to get the required npm package
-* Install the Porsche Design System
+To build your own (non framework specific) application with **Native Web Components** of the Porsche Design System,
+follow these steps:
+
+- Follow the instructions at [Introduction](start-coding/introduction) to get the required npm package
+- Install the Porsche Design System
 
 ```shell script
 // install with npm:
@@ -18,7 +20,8 @@ yarn add @porsche-design-system/components-js
 
 ## Integration
 
-After adding the `@porsche-design-system/components-js` package to your project, the following page setup is recommended (assuming a web server is running).
+After adding the `@porsche-design-system/components-js` package to your project, the following page setup is recommended
+(assuming a web server is running).
 
 ```html
 <!DOCTYPE html>
@@ -44,11 +47,12 @@ See [componentsReady()](helpers/components-ready) for further information.
 
 ## Sample integration
 
-We provide a public Github repository with a basic sample project setup to show how it is managed in real code.    
-You can find the repository of the Vanilla-JS example project here: [Sample integration Vanilla-JS](https://github.com/porscheui/sample-integration-vanillajs)
+We provide a public Github repository with a basic sample project setup to show how it is managed in real code.  
+You can find the repository of the Vanilla-JS example project here:
+[Sample integration Vanilla-JS](https://github.com/porscheui/sample-integration-vanillajs)
 
 ### Get the project up and running
 
-* Clone the repository by executing  
-`git clone https://github.com/porscheui/sample-integration-vanillajs.git`
-* Follow the installation guidelines in the README.md file
+- Clone the repository by executing  
+  `git clone https://github.com/porscheui/sample-integration-vanillajs.git`
+- Follow the installation guidelines in the README.md file
