@@ -123,12 +123,25 @@ export const AllowedTypes: {
   number: (...args) => validateValueOfType(...args, 'number'),
   // eslint-disable-next-line id-blacklist
   boolean: (...args) => validateValueOfType(...args, 'boolean'),
-  // TODO: extend to accept array of validator functions
   oneOf:
-    <T>(allowedValues: T[]): ValidatorFunction =>
+    <T>(allowedValuesOrValidatorFunctions: T[]): ValidatorFunction =>
     (propName, propValue, componentName) => {
-      if (!allowedValues.includes(propValue as T)) {
-        return { propName, propValue, componentName, propType: formatArrayOutput(allowedValues) };
+      // use first item to determine if we've got primitive types or validator functions
+      if (typeof allowedValuesOrValidatorFunctions[0] !== 'function') {
+        if (!allowedValuesOrValidatorFunctions.includes(propValue as T)) {
+          return { propName, propValue, componentName, propType: formatArrayOutput(allowedValuesOrValidatorFunctions) };
+        }
+      } else if (
+        allowedValuesOrValidatorFunctions.some((func) =>
+          (func as unknown as ValidatorFunction)(propName, propValue, componentName)
+        )
+      ) {
+        return {
+          propName,
+          propValue,
+          componentName,
+          propType: allowedValuesOrValidatorFunctions.map((func) => (func as any).name || 'string').join(', '),
+        };
       }
     },
   breakpoint: (allowedValues): ValidatorFunction => {
@@ -192,7 +205,7 @@ export const AllowedTypes: {
           // TODO: more precise inner errors from value validation could be output
           return {
             propName,
-            propValue,
+            propValue, // TODO: convert to string?
             componentName,
             propType: getShapeStructure(shapeStructure),
           };

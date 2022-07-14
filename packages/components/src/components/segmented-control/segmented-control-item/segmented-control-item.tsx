@@ -15,7 +15,7 @@ import type { IconName } from '../../../types';
 import type { SegmentedControlItemInternalHTMLProps } from './segmented-control-item-utils';
 
 const propTypes: PropTypes<typeof SegmentedControlItem> = {
-  value: AllowedTypes.string, // TODO: or number
+  value: AllowedTypes.oneOf([AllowedTypes.string, AllowedTypes.number]),
   disabled: AllowedTypes.boolean,
   label: AllowedTypes.boolean,
   icon: AllowedTypes.boolean,
