@@ -1,5 +1,5 @@
 <template>
-  <p-button type="submit" :theme="theme" :icon-source="stackBlitzIcon" @click="openInStackBlitz()"
+  <p-button type="submit" :theme="theme" :icon-source="stackBlitzIcon" @click="editInStackBlitz()"
     >Edit in StackBlitz
   </p-button>
 
@@ -16,8 +16,7 @@
   import { Framework, Theme } from '@/models';
   import { themeDark } from '@porsche-design-system/utilities-v2';
   import { codePenConfig } from '@/lib/partialResults';
-  import { openAngular, openReact, OpenStackBlitzOptions, openVanillaJS } from '@/utils/stackblitz';
-  import { convertMarkup } from '@/utils';
+  import { openInStackBlitz } from '@/utils/stackblitz';
 
   @Component
   export default class CodeEditor extends Vue {
@@ -28,26 +27,12 @@
 
     stackBlitzIcon = require('../assets/icon-stackblitz.svg');
 
-    openInStackBlitz() {
-      const convertedMarkup = convertMarkup(this.markup, this.framework);
-      const [, componentName] = convertedMarkup.match(/<((?:\w|-)+)(?:.|\n)*>(?:[A-z]| )*<\/?\1>/) ?? [];
-
-      const openProps: OpenStackBlitzOptions = {
-        markup: convertedMarkup,
-        componentName,
-      };
-
-      switch (this.framework) {
-        case 'angular':
-          return openAngular(openProps);
-        case 'react':
-          return openReact(openProps);
-        default:
-          return openVanillaJS({
-            ...openProps,
-            additionalJavaScriptLogic: this.additionalJavaScriptLogic,
-          });
-      }
+    editInStackBlitz() {
+      openInStackBlitz({
+        markup: this.markup,
+        framework: this.framework,
+        additionalJavaScriptLogic: this.additionalJavaScriptLogic,
+      });
     }
 
     // private mounted(): void {

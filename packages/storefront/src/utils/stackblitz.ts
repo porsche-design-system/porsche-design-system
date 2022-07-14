@@ -3,14 +3,45 @@ import { convertMarkup } from '@/utils/formatting';
 import { Framework } from '@/models';
 import { version } from '../../../components-js/projects/components-wrapper/package.json';
 
-export type OpenStackBlitzOptions = {
+type OpenInStackBlitzOpts = {
   markup: string;
-  componentName: string;
+  framework: Framework;
   additionalJavaScriptLogic?: string;
 };
 
-export const openVanillaJS = (props: OpenStackBlitzOptions) => {
-  const { markup, componentName, additionalJavaScriptLogic } = props;
+type OpenFrameWorkOpts = Omit<OpenInStackBlitzOpts, 'framework'> & {
+  componentName: string;
+  description: string;
+  title: string;
+};
+
+export const openInStackBlitz = (props: OpenInStackBlitzOpts) => {
+  const { markup, additionalJavaScriptLogic, framework } = props;
+  const convertedMarkup = convertMarkup(markup, framework);
+  const [, componentName] = convertedMarkup.match(/<((?:\w|-)+)(?:.|\n)*>(?:[A-z]| )*<\/?\1>/) ?? [];
+
+  const openProps: OpenFrameWorkOpts = {
+    markup: convertedMarkup,
+    componentName,
+    title: `Porsche Design System ${framework} sandbox`,
+    description: `${componentName} component example`,
+  };
+
+  switch (framework) {
+    case 'angular':
+      return openAngular(openProps);
+    case 'react':
+      return openReact(openProps);
+    default:
+      return openVanillaJS({
+        ...openProps,
+        additionalJavaScriptLogic,
+      });
+  }
+};
+
+export const openVanillaJS = (props: OpenFrameWorkOpts) => {
+  const { markup, description, title, additionalJavaScriptLogic } = props;
 
   sdk.openProject(
     {
@@ -25,8 +56,8 @@ ${additionalJavaScriptLogic}
         'style.css': `*:not(:last-child) { margin-right: 0.5rem; margin-bottom: 0.5rem; }`,
       },
       template: 'javascript',
-      title: 'Vanilla JS Example',
-      description: `Porsche Design System ${componentName} example`,
+      title,
+      description,
       dependencies: {
         '@porsche-design-system/components-js': `${version}`,
       },
@@ -37,8 +68,8 @@ ${additionalJavaScriptLogic}
   );
 };
 
-export const openReact = (props: OpenStackBlitzOptions) => {
-  const { markup, componentName } = props;
+export const openReact = (props: OpenFrameWorkOpts) => {
+  const { markup, componentName, description, title } = props;
 
   sdk.openProject(
     {
@@ -73,8 +104,8 @@ export default function App() {
         'style.css': `*:not(:last-child) { margin-right: 0.5rem; margin-bottom: 0.5rem; }`,
       },
       template: 'create-react-app',
-      title: 'React Example',
-      description: `Porsche Design System ${componentName} example`,
+      title,
+      description,
       dependencies: {
         '@porsche-design-system/components-react': `${version}`,
       },
@@ -85,8 +116,8 @@ export default function App() {
   );
 };
 
-export const openAngular = (props: OpenStackBlitzOptions) => {
-  const { markup, componentName } = props;
+export const openAngular = (props: OpenFrameWorkOpts) => {
+  const { markup, description, title } = props;
 
   sdk.openProject({
     files: {
@@ -105,7 +136,7 @@ platformBrowserDynamic()
 @Component({
   selector: 'porsche-design-system-app',
   template: \`
-  ${markup}\`,
+    ${markup}\`,
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent  {}`,
@@ -125,8 +156,8 @@ export class AppModule {}`,
       'app/app.component.css': `*:not(:last-child) { margin-right: 0.5rem; margin-bottom: 0.5rem; }`,
     },
     template: 'angular-cli',
-    title: 'Angular Example',
-    description: `Porsche Design System ${componentName} example`,
+    title,
+    description,
     dependencies: {
       '@porsche-design-system/components-angular': `${version}`,
     },
