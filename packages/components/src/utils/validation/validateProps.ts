@@ -123,6 +123,7 @@ export const AllowedTypes: {
   number: (...args) => validateValueOfType(...args, 'number'),
   // eslint-disable-next-line id-blacklist
   boolean: (...args) => validateValueOfType(...args, 'boolean'),
+  // TODO: extend to accept array of validator functions
   oneOf:
     <T>(allowedValues: T[]): ValidatorFunction =>
     (propName, propValue, componentName) => {
@@ -133,7 +134,7 @@ export const AllowedTypes: {
   breakpoint: (allowedValues): ValidatorFunction => {
     return (propName, propValue, componentName) => {
       const value = parseJSON(propValue as BreakpointValues<any>);
-      let isValid = true;
+      let isInvalid = false;
 
       if (typeof value === 'object') {
         if (
@@ -142,14 +143,14 @@ export const AllowedTypes: {
           // check values
           Object.values(value).some((val) => isBreakpointCustomizableValueInvalid(val, allowedValues))
         ) {
-          isValid = false;
+          isInvalid = true;
         }
       } else if (isBreakpointCustomizableValueInvalid(value, allowedValues)) {
         // single
-        isValid = false;
+        isInvalid = true;
       }
 
-      if (!isValid) {
+      if (isInvalid) {
         return {
           propName,
           propValue: formatObjectOutput(value),
