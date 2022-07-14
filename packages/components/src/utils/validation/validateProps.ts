@@ -25,7 +25,7 @@ export type ValidationError = {
   propType: string;
 };
 
-const formatObjectOutput = (value: any): string => {
+export const formatObjectOutput = (value: any): string => {
   return JSON.stringify(value)
     .replace(/"([A-z?]+)":/g, '$1:')
     .replace(/([,:{])/g, '$1 ')
@@ -33,13 +33,13 @@ const formatObjectOutput = (value: any): string => {
     .replace(/^"(.+)"$/, '$1');
 };
 
-const formatArrayOutput = <T>(value: T[] | readonly T[]): string => {
+export const formatArrayOutput = <T>(value: T[] | readonly T[]): string => {
   // eslint-disable-next-line @typescript-eslint/quotes
   return JSON.stringify(value).replace(/'/g, '').replace(/"/g, "'").replace(/,/g, ', ');
 };
 
 // TODO: prefixing
-const printErrorMessage = ({ propName, propValue, componentName, propType }: ValidationError): void => {
+export const printErrorMessage = ({ propName, propValue, componentName, propType }: ValidationError): void => {
   console.error(
     `Warning: Invalid property '${propName}' with value '${formatObjectOutput(
       propValue
