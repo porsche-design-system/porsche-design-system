@@ -19,7 +19,7 @@ import { getClickedItem } from '../../../utils/dom/getClickedItem';
 const propTypes: PropTypes<typeof SegmentedControl> = {
   backgroundColor: AllowedTypes.oneOf<SegmentedControlBackgroundColor>(SEGMENTED_CONTROL_BACKGROUND_COLORS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
-  value: AllowedTypes.string, // TODO: or number
+  value: AllowedTypes.oneOf([AllowedTypes.string, AllowedTypes.number]),
 };
 
 @Component({

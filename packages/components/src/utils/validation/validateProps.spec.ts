@@ -241,31 +241,70 @@ describe('AllowedTypes', () => {
   });
 
   describe('.oneOf', () => {
-    const validatorFunction = AllowedTypes.oneOf(['a', 'b']);
+    describe('for array of values', () => {
+      const validatorFunctionValues = AllowedTypes.oneOf(['a', 'b']);
 
-    it('should return anonymous ValidatorFunction', () => {
-      expect(validatorFunction).toEqual(expect.any(Function));
-    });
+      it('should return anonymous ValidatorFunction', () => {
+        expect(validatorFunctionValues).toEqual(expect.any(Function));
+      });
 
-    it('should call formatArrayOutput() via anonymous ValidatorFunction', () => {
-      const spy = jest.spyOn(validatePropsUtils, 'formatArrayOutput');
-      validatorFunction('propName', 'c', 'p-button');
-      expect(spy).toBeCalledWith(['a', 'b']);
-    });
+      it('should call formatArrayOutput() via anonymous ValidatorFunction', () => {
+        const spy = jest.spyOn(validatePropsUtils, 'formatArrayOutput');
+        validatorFunctionValues('propName', 'c', 'p-button');
+        expect(spy).toBeCalledWith(['a', 'b']);
+      });
 
-    it('should return error object via anonymous ValidatorFunction if value is not in allowedValues array', () => {
-      const result = validatorFunction('propName', 'c', 'p-button');
-      expect(result).toMatchObject({
-        propName: 'propName',
-        propValue: 'c',
-        componentName: 'p-button',
-        propType: "['a', 'b']",
+      it('should return error object via anonymous ValidatorFunction if value is not in allowedValues array', () => {
+        const result = validatorFunctionValues('propName', 'c', 'p-button');
+        expect(result).toMatchObject({
+          propName: 'propName',
+          propValue: 'c',
+          componentName: 'p-button',
+          propType: "['a', 'b']",
+        });
+      });
+
+      it('should return undefined via anonymous ValidatorFunction if value is in allowedValues array', () => {
+        const result = validatorFunctionValues('propName', 'b', 'p-button');
+        expect(result).toBe(undefined);
       });
     });
 
-    it('should return undefined via anonymous ValidatorFunction if value is in allowedValues array', () => {
-      const result = validatorFunction('propName', 'b', 'p-button');
-      expect(result).toBe(undefined);
+    describe('for array of validator functions', () => {
+      const nestedValidatorFunc1 = jest.fn();
+      const nestedValidatorFunc2 = jest.fn();
+
+      const validatorFunctionFunctions = AllowedTypes.oneOf([nestedValidatorFunc1, nestedValidatorFunc2]);
+
+      const error: ValidationError = {
+        propName: 'propName',
+        propValue: 'c',
+        componentName: 'p-button',
+        propType: expect.any(String),
+      };
+
+      it('should return anonymous ValidatorFunction', () => {
+        expect(validatorFunctionFunctions).toEqual(expect.any(Function));
+      });
+
+      it('should call every nested validator function via anonymous ValidatorFunction', () => {
+        validatorFunctionFunctions('propName', 'c', 'p-button');
+        expect(nestedValidatorFunc1).toBeCalledWith('propName', 'c', 'p-button');
+        expect(nestedValidatorFunc2).toBeCalledWith('propName', 'c', 'p-button');
+      });
+
+      it('should return error object via anonymous ValidatorFunction if value does not pass all nested validator functions', () => {
+        nestedValidatorFunc1.mockReturnValueOnce({ ...error, propType: 'string' });
+        const result = validatorFunctionFunctions('propName', 'c', 'p-button');
+        expect(result).toMatchObject(error);
+      });
+
+      it('should return undefined via anonymous ValidatorFunction if value passes all nested validator functions', () => {
+        nestedValidatorFunc1.mockReturnValueOnce(undefined);
+        nestedValidatorFunc2.mockReturnValueOnce(undefined);
+        const result = validatorFunctionFunctions('propName', 'b', 'p-button');
+        expect(result).toBe(undefined);
+      });
     });
   });
 
