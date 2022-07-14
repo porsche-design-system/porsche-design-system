@@ -8,6 +8,4 @@ if
   [[ "--storefront" == "${1}" ]]
 then
   yarn lint:${1:2}
-else
-  yarn lint
 fi

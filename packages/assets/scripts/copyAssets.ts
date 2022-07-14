@@ -7,6 +7,7 @@ const cdnPathPackageMap = {
   components: '@porsche-design-system/components-js',
   ...(!isComponentsOnly && {
     email: '@porsche-design-system/email',
+    fallbacks: '@porsche-design-system/fallbacks',
     fonts: '@porsche-design-system/fonts',
     icons: '@porsche-design-system/icons',
     marque: '@porsche-design-system/marque',
