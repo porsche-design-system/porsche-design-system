@@ -1,4 +1,5 @@
 import * as validatePropsUtils from './validateProps';
+import * as breakpointCustomizableUtils from '../breakpoint-customizable';
 import { AllowedTypes, isValueNotOfType, validateValueOfType, ValidationError } from './validateProps';
 
 describe('isValueNotOfType()', () => {
@@ -141,7 +142,94 @@ describe('AllowedTypes', () => {
     });
   });
 
-  xdescribe('.breakpoint', () => {});
+  describe('.breakpoint', () => {
+    const validatorFunctionArray = AllowedTypes.breakpoint(['a', 'b']);
+    const validatorFunctionBoolean = AllowedTypes.breakpoint('boolean');
+
+    it('should return anonymous ValidatorFunction', () => {
+      expect(validatorFunctionArray).toEqual(expect.any(Function));
+      expect(validatorFunctionBoolean).toEqual(expect.any(Function));
+    });
+
+    it('should call parseJSON() with correct parameters via anonymous ValidatorFunction', () => {
+      const spy = jest.spyOn(breakpointCustomizableUtils, 'parseJSON');
+      const propValue = { base: 'a', s: 'b' };
+      validatorFunctionArray('propName', propValue, 'p-button');
+      expect(spy).toBeCalledWith(propValue);
+    });
+
+    it('should call isBreakpointCustomizableValueInvalid() with correct parameters for flat value via anonymous ValidatorFunction', () => {
+      const spy = jest.spyOn(validatePropsUtils, 'isBreakpointCustomizableValueInvalid');
+      validatorFunctionArray('propName', 'a', 'p-button');
+      expect(spy).toBeCalledWith('a', ['a', 'b']);
+    });
+
+    it('should call isBreakpointCustomizableValueInvalid() with correct parameters for nested values via anonymous ValidatorFunction', () => {
+      const spy = jest.spyOn(validatePropsUtils, 'isBreakpointCustomizableValueInvalid');
+      const propValue = { base: 'a', s: 'b' };
+      validatorFunctionArray('propName', propValue, 'p-button');
+      expect(spy).toBeCalledTimes(2);
+      expect(spy).toHaveBeenNthCalledWith(1, 'a', ['a', 'b']);
+      expect(spy).toHaveBeenNthCalledWith(2, 'b', ['a', 'b']);
+    });
+
+    it('should call getBreakpointCustomizableStructure() via anonymous ValidatorFunction', () => {
+      const spy = jest.spyOn(validatePropsUtils, 'getBreakpointCustomizableStructure');
+      validatorFunctionArray('propName', 'c', 'p-button');
+      expect(spy).toBeCalledWith(['a', 'b']);
+    });
+
+    it('should call formatObjectOutput() via anonymous ValidatorFunction', () => {
+      const spy = jest.spyOn(validatePropsUtils, 'formatObjectOutput');
+      validatorFunctionArray('propName', 'c', 'p-button');
+      expect(spy).toBeCalledWith('c');
+    });
+
+    describe('returns error object', () => {
+      const error = {
+        propName: 'propName',
+        propValue: 'c',
+        componentName: 'p-button',
+        propType: expect.any(String),
+      };
+
+      it('should return error object via anonymous ValidatorFunction if value is not in allowedValues array', () => {
+        const result1 = validatorFunctionArray('propName', 'c', 'p-button');
+        expect(result1).toEqual(error);
+
+        jest.spyOn(validatePropsUtils, 'formatObjectOutput').mockReturnValue('formattedValue');
+        const result2 = validatorFunctionArray('propName', { base: 'a', s: 'c' }, 'p-button');
+        expect(result2).toEqual({ ...error, propValue: 'formattedValue' });
+      });
+
+      it('should return error object via anonymous ValidatorFunction if value is not boolean', () => {
+        const result1 = validatorFunctionBoolean('propName', 'c', 'p-button');
+        expect(result1).toEqual(error);
+
+        jest.spyOn(validatePropsUtils, 'formatObjectOutput').mockReturnValue('formattedValue');
+        const result2 = validatorFunctionArray('propName', { base: true, s: 'c' }, 'p-button');
+        expect(result2).toEqual({ ...error, propValue: 'formattedValue' });
+      });
+    });
+
+    describe('returns undefined', () => {
+      it('should return undefined via anonymous ValidatorFunction if value is in allowedValues array', () => {
+        const result1 = validatorFunctionArray('propName', 'b', 'p-button');
+        expect(result1).toBe(undefined);
+
+        const result2 = validatorFunctionArray('propName', { base: 'a', s: 'b' }, 'p-button');
+        expect(result2).toBe(undefined);
+      });
+
+      it('should return undefined via anonymous ValidatorFunction if value is boolean', () => {
+        const result1 = validatorFunctionBoolean('propName', true, 'p-button');
+        expect(result1).toBe(undefined);
+
+        const result2 = validatorFunctionBoolean('propName', { base: true, s: false }, 'p-button');
+        expect(result2).toBe(undefined);
+      });
+    });
+  });
 
   xdescribe('.aria', () => {});
 

@@ -152,7 +152,7 @@ export const AllowedTypes: {
       if (!isValid) {
         return {
           propName,
-          propValue: `${value}`,
+          propValue: formatObjectOutput(value),
           componentName,
           propType: getBreakpointCustomizableStructure(allowedValues),
         };
