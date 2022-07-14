@@ -230,12 +230,12 @@ describe('select-wrapper dropdown', () => {
   it('should be visible if select is clicked and hidden again when clicked outside', async () => {
     await initSelect({ markupBefore: '<p-text>Some text</p-text>' });
 
-    const select = await getSelect();
+    const dropdownButton = await getDropdownButton();
     const text = await selectNode(page, 'p-text');
 
     expect(await getDropdownOpacity()).toBe('0');
 
-    await select.click();
+    await dropdownButton.click();
     await waitForStencilLifecycle(page);
     expect(await getDropdownOpacity()).toBe('1');
 
@@ -243,11 +243,11 @@ describe('select-wrapper dropdown', () => {
     await waitForStencilLifecycle(page);
     expect(await getDropdownOpacity()).toBe('0');
 
-    await select.click();
+    await dropdownButton.click();
     await waitForStencilLifecycle(page);
     expect(await getDropdownOpacity()).toBe('1');
 
-    await select.click();
+    await dropdownButton.click();
     await waitForStencilLifecycle(page);
     expect(await getDropdownOpacity()).toBe('0');
   });
@@ -420,8 +420,8 @@ describe('select-wrapper dropdown', () => {
       </p-select-wrapper>`
     );
 
-    const select = await getSelect();
-    await select.click();
+    const dropdownButton = await getDropdownButton();
+    await dropdownButton.click();
     await waitForStencilLifecycle(page);
 
     expect(getPageThrownErrorsAmount(), 'get errorsAmount after click').toBe(0);
@@ -715,14 +715,14 @@ describe('select-wrapper dropdown', () => {
     it('should open/close select on mouseclick', async () => {
       await initSelect();
 
-      const select = await getSelect();
-      await select.click();
+      const dropdownButton = await getDropdownButton();
+      await dropdownButton.click();
       await waitForStencilLifecycle(page);
 
       expect(await getDropdownOpacity(), 'for opacity after 1st click').toBe('1');
       expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option  after 1st click').toBe(0);
 
-      await select.click();
+      await dropdownButton.click();
       await waitForStencilLifecycle(page);
 
       expect(await getDropdownOpacity(), 'for opacity after 2nd click').toBe('0');
@@ -753,10 +753,10 @@ describe('select-wrapper dropdown', () => {
 
     it('should select second option on mouseclick', async () => {
       await initSelect();
-      const select = await getSelect();
+      const dropdownButton = await getDropdownButton();
       const dropdownOption2 = await getDropdownOption2();
 
-      await select.click();
+      await dropdownButton.click();
       await waitForStencilLifecycle(page);
       await dropdownOption2.click();
       await waitForStencilLifecycle(page);
@@ -795,7 +795,10 @@ describe('select-wrapper dropdown', () => {
         ${initCustomElement}
         <${customElementName}></${customElementName}>`
       );
-      const select = await selectNode(page, `${customElementName} >>> p-select-wrapper select`);
+      const dropdownButton = await selectNode(
+        page,
+        `${customElementName} >>> p-select-wrapper >>> p-select-wrapper-dropdown >>> button`
+      );
 
       const nestedDropdownSelector = `${customElementName} >>> ${dropdownSelector}`;
       const dropdownOption2 = await selectNode(page, `${nestedDropdownSelector} >>> .option:nth-child(2)`);
@@ -806,7 +809,7 @@ describe('select-wrapper dropdown', () => {
 
       expect(await getSelectedOptionInCustomElement(), 'initially').toBe(0);
 
-      await select.click();
+      await dropdownButton.click();
       await waitForStencilLifecycle(page);
       await page.mouse.click(dropdownOption2BoundingBox.x + 2, dropdownOption2BoundingBox.y + 2);
       await waitForStencilLifecycle(page);
@@ -884,10 +887,10 @@ describe('select-wrapper dropdown', () => {
 
     it('should work without unnecessary round trips if second option is clicked', async () => {
       await initSelect();
-      const select = await getSelect();
+      const dropdownButton = await getDropdownButton();
       const dropdownOption2 = await getDropdownOption2();
 
-      await select.click();
+      await dropdownButton.click();
       await waitForStencilLifecycle(page);
       const status1 = await getLifecycleStatus(page);
 
@@ -968,14 +971,14 @@ describe('select-wrapper dropdown', () => {
     it('should expose correct accessibility tree on selected custom option on click', async () => {
       await initSelect();
 
-      const select = await getSelect();
+      const dropdownButton = await getDropdownButton();
       const dropdownOption1 = await getDropdownOption1();
       const dropdownOption2 = await getDropdownOption2();
 
       await expectA11yToMatchSnapshot(page, dropdownOption1, { message: 'Initially option A' });
       await expectA11yToMatchSnapshot(page, dropdownOption2, { message: 'Initially option B' });
 
-      await select.click();
+      await dropdownButton.click();
       await waitForStencilLifecycle(page);
       await dropdownOption2.click();
       await waitForStencilLifecycle(page);
