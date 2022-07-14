@@ -1,18 +1,22 @@
 # Loader Script
+
 **Function name:** `getLoaderScript()`
 
 When using `porsche-design-system/components-{angular|react}` our core loader gets bundled into your application.  
-This impacts the loading behavior of Porsche Design System components because the code gets executed **later**, once the framework bootstraps.
+This impacts the loading behavior of Porsche Design System components because the code gets executed **later**, once the
+framework bootstraps.
 
-To achieve this bootstrapping **earlier** we provide a partial in all `@porsche-design-system/components-{js|angular|react}` packages which needs to be injected into the `<body>` of your `index.html`.
+To achieve this bootstrapping **earlier** we provide a partial in all
+`@porsche-design-system/components-{js|angular|react}` packages which needs to be injected into the `<body>` of your
+`index.html`.
 
 ## Supported options
 
-| Option        | Description                                                                                                                                                        | Type          | Default |
-|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------|
-| `prefix`      | Prefix will be added to the component names.                                                                                                                       | `string | string[]`      | `undefined`    |
-| `withoutTags` | <span style='color:#d5001c'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format: 'jsx'` instead.<br/>If true, it returns the loader script as string. | `boolean`     | `false` |
-| `format`      | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements.                                           | `'html' | jsx'`   | `'html'` |
+| Option        | Description                                                                                                                                                                   | Type      | Default   |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | --------- | ----------- |
+| `prefix`      | Prefix will be added to the component names.                                                                                                                                  | `string   | string[]` | `undefined` |
+| `withoutTags` | <span style='color:#d5001c'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format: 'jsx'` instead.<br/>If true, it returns the loader script as string. | `boolean` | `false`   |
+| `format`      | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements.                                                      | `'html'   | jsx'`     | `'html'`    |
 
 ## Examples
 

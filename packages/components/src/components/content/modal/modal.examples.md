@@ -1,11 +1,14 @@
 # Modal
 
-The `p-modal` is a temporary overlay to focus the user's attention on one task while interactions with the underlying page are blocked. It is only used as highly disruptive modal notification to present important information until dismissed. Or as Modal Dialog to confirm critical user actions, such as confirming an irreversible choice. It should be used thoughtfully and sparingly.
+The `p-modal` is a temporary overlay to focus the user's attention on one task while interactions with the underlying
+page are blocked. It is only used as highly disruptive modal notification to present important information until
+dismissed. Or as Modal Dialog to confirm critical user actions, such as confirming an irreversible choice. It should be
+used thoughtfully and sparingly.
 
 Modals are flexible in the context and can include other components of the Porsche Design System.
 
-It is a controlled component.
-This grants you flexible control over the Modal's behavior especially whether it should stay open after user interaction like submission of a form.
+It is a controlled component. This grants you flexible control over the Modal's behavior especially whether it should
+stay open after user interaction like submission of a form.
 
 <p-inline-notification heading="Important note" state="warning" persistent="true">
   This component activates a focus trap to keep the focus within while being open.<br>
@@ -17,13 +20,14 @@ This grants you flexible control over the Modal's behavior especially whether it
 
 ## Basic
 
-It is crucial to note that `p-modal` is displayed within your DOM hierarchy as an overlay through a high `z-index` value. 
-Therefore, you need to ensure any parent elements don't define a `z-index` or have a `transform` style in place. 
+It is crucial to note that `p-modal` is displayed within your DOM hierarchy as an overlay through a high `z-index`
+value. Therefore, you need to ensure any parent elements don't define a `z-index` or have a `transform` style in place.
 Otherwise, the modal might get clipped or overlapped by other elements.
 
-The most important property of `p-modal` is its `open` attribute.  When it is present the Modal will be visible.
-  
-In order to get notified when the Modal gets closed by clicking the `x` button, the backdrop or by pressing the `Escape` key you need to register an event listener for the `close` event which is emitted by `p-modal`.
+The most important property of `p-modal` is its `open` attribute. When it is present the Modal will be visible.
+
+In order to get notified when the Modal gets closed by clicking the `x` button, the backdrop or by pressing the `Escape`
+key you need to register an event listener for the `close` event which is emitted by `p-modal`.
 
 The size of `p-modal` adjusts itself to the content with a predefined min/max width.
 
@@ -35,13 +39,17 @@ The size of `p-modal` adjusts itself to the content with a predefined min/max wi
   </select>
 </Playground>
 
-Note that `.footer` is a custom CSS class in order to responsively style the buttons which is achieved with respect to guidelines for [Buttons](components/button/usage).
+Note that `.footer` is a custom CSS class in order to responsively style the buttons which is achieved with respect to
+guidelines for [Buttons](components/button/usage).
 
 ### <A11yIcon></A11yIcon> Accessibility hints
-To support **keyboard navigation**, please take care of correct **focus handling** after closing the Modal with `ESC` or `Enter` key:
-The trigger element (e.g. a button) which has opened the Modal must **receive focus state again** after the Modal is closed. This is important to keep focus order consistent.
-You can test it out by navigation this example with the keyboard only.    
-To announce the correct heading for **screen reader** users, it is mandatory to set the `heading` property or provide a meaningful heading through **ARIA** with the `aria` property.  
+
+To support **keyboard navigation**, please take care of correct **focus handling** after closing the Modal with `ESC` or
+`Enter` key: The trigger element (e.g. a button) which has opened the Modal must **receive focus state again** after the
+Modal is closed. This is important to keep focus order consistent. You can test it out by navigation this example with
+the keyboard only.  
+To announce the correct heading for **screen reader** users, it is mandatory to set the `heading` property or provide a
+meaningful heading through **ARIA** with the `aria` property.
 
 ### Framework Implementations
 
@@ -55,17 +63,18 @@ If the Modal's content does not fit into the current boundaries the content beco
 
 ## Slotted heading
 
-Sometimes it's useful to be able to render markup for `heading`. Therefore, a named slot can be used. Make sure **not** to define
-the corresponding property on the host element when a named slot is used (because a property definition is preferred over a named slot).  
-Make sure to set the `aria` property with a descriptive `aria-label` value when using slotted heading.  
+Sometimes it's useful to be able to render markup for `heading`. Therefore, a named slot can be used. Make sure **not**
+to define the corresponding property on the host element when a named slot is used (because a property definition is
+preferred over a named slot).  
+Make sure to set the `aria` property with a descriptive `aria-label` value when using slotted heading.
 
 <Playground :markup="slottedHeading"></Playground>
 
 ## Without Heading
 
-Passing a `heading` to the modal is optional.
-Make sure to set the `aria` property with a descriptive `aria-label` value when omitting the heading.
-Make sure to add proper margin or padding to your content, so that the close button does not cover up your content.
+Passing a `heading` to the modal is optional. Make sure to set the `aria` property with a descriptive `aria-label` value
+when omitting the heading. Make sure to add proper margin or padding to your content, so that the close button does not
+cover up your content.
 
 <Playground :markup="withoutHeading"></Playground>
 
@@ -79,16 +88,17 @@ If you want to disable closing the Modal by clicking the backdrop, you can set t
 
 ## Full Width Content
 
-It is possible to make containers or elements (e.g. `div`, `img` etc.) stretch into the padding safe-zone by adding the <code v-text="stretchClassName"></code> class.
-Make sure to set the `aria` property with a descriptive `aria-label` value when omitting the heading.  
+It is possible to make containers or elements (e.g. `div`, `img` etc.) stretch into the padding safe-zone by adding the
+<code v-text="stretchClassName"></code> class. Make sure to set the `aria` property with a descriptive `aria-label`
+value when omitting the heading.
 
 <Playground :markup="fullWidthContent"></Playground>
 
 ## Fullscreen
 
-The Modal supports a `fullscreen` property.
-Due to the size of fullscreen on desktop, it is easy to lose context for the consumer. 
-Furthermore, you lose helpful functionality like backdrop click. This is why fullscreen modals are recommended for mobile devices only.
+The Modal supports a `fullscreen` property. Due to the size of fullscreen on desktop, it is easy to lose context for the
+consumer. Furthermore, you lose helpful functionality like backdrop click. This is why fullscreen modals are recommended
+for mobile devices only.
 
 <Playground :markup="fullscreen"></Playground>
 
@@ -252,10 +262,10 @@ const ModalPage = (): JSX.Element => {
 <style scoped lang="scss">
   @import '~@porsche-design-system/utilities/scss';
 
-  ::v-deep .footer {  
+  :deep(.footer) {  
     padding: p-px-to-rem(32px) 0 0;
   }
-  ::v-deep .fullscreen-container {
+  :deep(.fullscreen-container) {
     flex: 1;
   }
 </style>

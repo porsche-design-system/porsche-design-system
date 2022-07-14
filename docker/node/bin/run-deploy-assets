@@ -24,6 +24,7 @@ function upload {
 
 upload "packages/assets/cdn/components/*" components/
 upload "packages/assets/cdn/email/*" email/
+upload "packages/assets/cdn/fallbacks/*" fallbacks/
 upload "packages/assets/cdn/fonts/*" fonts/
 upload "packages/assets/cdn/icons/*" icons/
 upload "packages/assets/cdn/marque/*" marque/
