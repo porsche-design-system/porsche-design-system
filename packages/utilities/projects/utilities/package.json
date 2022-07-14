@@ -14,7 +14,7 @@
     "build:generateScss": "ts-node scripts/generateScss.ts",
     "build:bundle": "rollup -c rollup.config.js",
     "test": "yarn test:unit",
-    "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
+    "test:unit": "jest --colors -c tests/unit/config/jest.config.js",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist && rm -rf ./src/js/typography/lib"
@@ -26,17 +26,17 @@
     "@types/madge": "^5.0.0",
     "@types/styled-components": "^5.1.25",
     "change-case": "^4.1.2",
-    "jest": "^27.5.1",
+    "jest": "^28.1.2",
     "madge": "^5.0.1",
-    "prettier": "^2.6.2",
+    "prettier": "^2.7.1",
     "react-jss": "^10.9.0",
-    "rollup": "^2.75.6",
+    "rollup": "^2.76.0",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
-    "sass": "^1.52.3",
+    "sass": "^1.53.0",
     "styled-components": "^5.3.5",
-    "ts-jest": "^27.1.4",
-    "ts-node": "^10.8.1",
-    "typescript": "~4.7.3"
+    "ts-jest": "^28.0.5",
+    "ts-node": "^10.8.2",
+    "typescript": "~4.7.4"
   }
 }

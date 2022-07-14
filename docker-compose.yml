@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   design-system:
-    image: ghcr.io/porscheui/porsche-design-system/node:16.14.2-stretch-slim
+    image: ghcr.io/porscheui/porsche-design-system/node:16.15.1-stretch-slim
     working_dir: /opt/porsche-design-system-app
     user: "${RUN_UID}:${RUN_GID}"
     ports:
@@ -43,6 +43,7 @@ services:
       - components-react-uxpin-wrapper-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/uxpin-wrapper/node_modules
       - components-react-nextjs-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/nextjs/node_modules
       - email-node-modules:/opt/porsche-design-system-app/packages/email/node_modules
+      - fallbacks-node-modules:/opt/porsche-design-system-app/packages/fallbacks/node_modules
       - fonts-node-modules:/opt/porsche-design-system-app/packages/fonts/node_modules
       - icons-node-modules:/opt/porsche-design-system-app/packages/icons/node_modules
       - marque-node-modules:/opt/porsche-design-system-app/packages/marque/node_modules
@@ -58,7 +59,7 @@ services:
       - utilities-deprecated-node-modules:/opt/porsche-design-system-app/packages/utilities-deprecated/node_modules
       - utilities-deprecated-utilities-node-modules:/opt/porsche-design-system-app/packages/utilities-deprecated/projects/utilities/node_modules
   change-volume-owner:
-    image: ghcr.io/porscheui/porsche-design-system/node:16.14.2-stretch-slim
+    image: ghcr.io/porscheui/porsche-design-system/node:16.15.1-stretch-slim
     volumes:
       - home:/opt/porsche-design-system-volumes/home
       - monorepo-node-modules:/opt/porsche-design-system-volumes/root-node_modules
@@ -70,6 +71,7 @@ services:
       - components-react-uxpin-wrapper-node-modules:/opt/porsche-design-system-volumes/components-react-uxpin-wrapper-node_modules
       - components-react-nextjs-node-modules:/opt/porsche-design-system-volumes/components-react-nextjs-node_modules
       - email-node-modules:/opt/porsche-design-system-volumes/email-node_modules
+      - fallbacks-node-modules:/opt/porsche-design-system-volumes/fallbacks-node_modules
       - fonts-node-modules:/opt/porsche-design-system-volumes/fonts-node_modules
       - icons-node-modules:/opt/porsche-design-system-volumes/icons-node_modules
       - marque-node-modules:/opt/porsche-design-system-volumes/marque-node_modules
@@ -97,6 +99,7 @@ volumes:
   components-react-uxpin-wrapper-node-modules:
   components-react-nextjs-node-modules:
   email-node-modules:
+  fallbacks-node-modules:
   fonts-node-modules:
   icons-node-modules:
   marque-node-modules:

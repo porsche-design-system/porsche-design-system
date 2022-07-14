@@ -4,7 +4,6 @@
 
 ## Quick start
 
-
 To build your own application with the **React** components of Porsche Design System, follow these steps:
 
 - Follow the instructions at (Introduction)[/start-coding/introduction] to get the required npm package
@@ -34,8 +33,8 @@ You are ready to start building your own application.
 
 ## Integration
 
-The following project is a standard React (Create React App) setup extended by the
-necessary `PorscheDesignSystemProvider` which you can import from `@porsche-design-system/components-react` :
+The following project is a standard React (Create React App) setup extended by the necessary
+`PorscheDesignSystemProvider` which you can import from `@porsche-design-system/components-react` :
 
 ```tsx
 // index.tsx
@@ -78,7 +77,8 @@ See [componentsReady()](helpers/components-ready) for further information.
 ## Sample integration
 
 We provide a public Github repository with a basic sample project setup to show how it is managed in real code.  
-You can find the repository of the React example project here: [Sample integration React](https://github.com/porscheui/sample-integration-react)
+You can find the repository of the React example project here:
+[Sample integration React](https://github.com/porscheui/sample-integration-react)
 
 ### Get the project up and running
 

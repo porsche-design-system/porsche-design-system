@@ -1,7 +1,7 @@
 import * as partials from '@porsche-design-system/components-js/partials';
 
 it('should provide all partials', () => {
-  expect(Object.keys(partials).length).toBe(7);
+  expect(Object.keys(partials).length).toBe(9);
 });
 
 it.each<keyof typeof partials>(Object.keys(partials) as (keyof typeof partials)[])(
