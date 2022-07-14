@@ -124,6 +124,7 @@ export const AllowedTypes: {
   // eslint-disable-next-line id-blacklist
   boolean: (...args) => validateValueOfType(...args, 'boolean'),
   oneOf: <T>(allowedValuesOrValidatorFunctions: T[]): ValidatorFunction =>
+    // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function oneOf(propName, propValue, componentName) {
       // use first item to determine if we've got primitive types or validator functions
       if (typeof allowedValuesOrValidatorFunctions[0] !== 'function') {
@@ -144,6 +145,7 @@ export const AllowedTypes: {
       }
     },
   breakpoint: (allowedValues): ValidatorFunction =>
+    // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function breakpoint(propName, propValue, componentName) {
       const value = parseJSON(propValue as BreakpointValues<any>);
       let isInvalid = false;
@@ -172,6 +174,7 @@ export const AllowedTypes: {
       }
     },
   aria: <T = keyof AriaAttributes>(allowedAriaAttributes: readonly T[]): ValidatorFunction =>
+    // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function aria(propName, propValue, componentName) {
       const ariaAttributes = parseJSONAttribute<AriaAttributes>(propValue as string);
       if (
@@ -187,6 +190,7 @@ export const AllowedTypes: {
       }
     },
   shape: <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): ValidatorFunction =>
+    // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function shape(propName, propValue, componentName) {
       if (propValue) {
         // const propValueKeys = Object.keys(propValue);
