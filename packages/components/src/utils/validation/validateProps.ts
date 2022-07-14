@@ -18,7 +18,7 @@ type ValidatorFunctionOrCreator =
   | ValidatorFunctionBreakpointCustomizableCreator
   | ValidatorFunctionShapeCreator;
 
-type ValidationError = {
+export type ValidationError = {
   componentName: string;
   propName: string;
   propValue: string;
