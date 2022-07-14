@@ -23,51 +23,23 @@ const getColors = (
   toggleBackgroundColor: string;
   toggleBackgroundColorHover: string;
   textColor: string;
+  borderColor: string;
+  borderColorHover: string;
 } => {
-  // const {
-  //   backgroundColor,
-  //   baseColor,
-  //   contrastHighColor,
-  //   successColor,
-  //   successColorDarken,
-  //   hoverColorDarken,
-  //   disabledColor,
-  //   brandColor,
-  // } = getThemedColors(theme);
-  // const { backgroundColor: lightThemeBackgroundColor } = getThemedColors('light');
-  // const isLightElectricTheme = isThemeLightElectric(theme);
-  // const checkedColor = isLightElectricTheme ? brandColor : successColor;
-  // const disabledOrLoadingColor = isDisabledOrLoading && disabledColor;
-  //
-  // return {
-  //   backgroundColor,
-  //   buttonBorderColor: disabledOrLoadingColor || (checked ? checkedColor : contrastHighColor),
-  //   buttonBorderColorHover: checked ? (isLightElectricTheme ? hoverColorDarken : successColorDarken) : baseColor,
-  //   buttonBackgroundColor: checked ? disabledOrLoadingColor || checkedColor : 'transparent',
-  //   buttonBackgroundColorHover: checked
-  //     ? isLightElectricTheme
-  //       ? hoverColorDarken
-  //       : successColorDarken
-  //     : 'transparent',
-  //   toggleBackgroundColor:
-  //     (!checked && disabledOrLoadingColor) || (checked ? lightThemeBackgroundColor : contrastHighColor),
-  //   toggleBackgroundColorHover: checked ? lightThemeBackgroundColor : baseColor,
-  //   textColor: disabledOrLoadingColor || baseColor,
-  // };
   const {
-    // @ts-ignore
     component: { switchCmp },
   } = theme === 'light' ? tokens : tokensDark;
 
   const switchColors = switchCmp[checked ? 'checked' : 'unchecked'];
   // @ts-ignore
-  const { background, buttonBorder, buttonBackground, toggleBackground, text } =
+  const { background, buttonBorder, buttonBackground, toggleBackground, text, border } =
     switchColors[isDisabledOrLoading ? 'disabled' : 'standard'];
 
   const {
     buttonBorder: buttonBorderHover,
     buttonBackground: buttonBackgroundHover,
     toggleBackground: toggleBackgroundHover,
+    border: borderHover,
   } = switchColors.hover;
 
   return {
@@ -79,6 +51,8 @@ const getColors = (
     buttonBorderColorHover: buttonBorderHover,
     buttonBackgroundColorHover: buttonBackgroundHover,
     toggleBackgroundColorHover: toggleBackgroundHover,
+    borderColor: border,
+    borderColorHover: borderHover,
   };
 };
 
@@ -128,6 +102,8 @@ export const getComponentCss = (
     toggleBackgroundColor,
     toggleBackgroundColorHover,
     textColor,
+    borderColor,
+    borderColorHover,
   } = getColors(checked, isDisabledOrLoading, theme);
 
   return getCss({
@@ -147,7 +123,7 @@ export const getComponentCss = (
         appearance: 'none',
         boxSizing: 'border-box',
         color: buttonBorderColor,
-        border: '1px solid currentColor',
+        border: `1px solid ${borderColor}`,
         borderRadius: pxToRemWithUnit(12),
         backgroundColor: buttonBackgroundColor,
         outline: 'none',
@@ -158,13 +134,17 @@ export const getComponentCss = (
             '&:hover': {
               color: buttonBorderColorHover,
               backgroundColor: buttonBackgroundColorHover,
+              borderColor: borderColorHover,
               '& .toggle': {
                 backgroundColor: toggleBackgroundColorHover,
+              },
+              '&:focus': {
+                boxShadow: `0 0 0 2px ${backgroundColor}, 0 0 0 3px ${borderColorHover}`,
               },
             },
           })),
         '&:focus': {
-          boxShadow: `0 0 0 2px ${backgroundColor}, 0 0 0 3px currentColor`,
+          boxShadow: `0 0 0 2px ${backgroundColor}, 0 0 0 3px ${borderColor}`,
         },
         '&:not(:focus-visible)': {
           boxShadow: 'none',

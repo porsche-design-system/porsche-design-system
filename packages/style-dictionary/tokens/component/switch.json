@@ -17,6 +17,9 @@
           },
           "text": {
             "value": "{color.core.base.primary.value}"
+          },
+          "border": {
+            "value": "{component.switchCmp.unchecked.standard.buttonBorder.value}"
           }
         },
         "disabled": {
@@ -34,6 +37,9 @@
           },
           "text": {
             "value": "{color.core.state.disabled.value}"
+          },
+          "border": {
+            "value": "{component.switchCmp.unchecked.disabled.buttonBorder.value}"
           }
         },
         "hover": {
@@ -45,6 +51,9 @@
           },
           "toggleBackground": {
             "value": "{color.core.black.value}"
+          },
+          "border": {
+            "value": "{component.switchCmp.unchecked.hover.buttonBorder.value}"
           }
         }
       },
@@ -64,6 +73,9 @@
           },
           "text": {
             "value": "{color.core.base.primary.value}"
+          },
+          "border": {
+            "value": "{component.switchCmp.checked.standard.buttonBorder.value}"
           }
         },
         "disabled": {
@@ -81,6 +93,9 @@
           },
           "toggleBackground": {
             "value": "{component.switchCmp.unchecked.disabled.background.value}"
+          },
+          "border": {
+            "value": "{component.switchCmp.checked.disabled.buttonBorder.value}"
           }
         },
         "hover": {
@@ -92,6 +107,9 @@
           },
           "toggleBackground": {
             "value": "{color.core.background.base.value}"
+          },
+          "border": {
+            "value": "{component.switchCmp.checked.hover.buttonBorder.value}"
           }
         }
       }
