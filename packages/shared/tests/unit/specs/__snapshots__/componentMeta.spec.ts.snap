@@ -237,8 +237,8 @@ Object {
         "hideLabel": null,
       },
     ],
-    "requiredChild": "input type=\\"checkbox\\"",
-    "requiredChildSelector": "input[type=\\"checkbox\\"]",
+    "requiredChild": "input type=checkbox",
+    "requiredChildSelector": "input[type=checkbox]",
     "shouldPatchSlot": false,
     "skeletonProps": Array [
       Object {
@@ -896,8 +896,8 @@ Object {
         "hideLabel": null,
       },
     ],
-    "requiredChild": "input type=\\"radio\\"",
-    "requiredChildSelector": "input[type=\\"radio\\"]",
+    "requiredChild": "input type=radio",
+    "requiredChildSelector": "input[type=radio]",
     "shouldPatchSlot": false,
     "skeletonProps": Array [
       Object {

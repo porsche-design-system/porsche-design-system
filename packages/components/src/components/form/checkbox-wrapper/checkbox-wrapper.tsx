@@ -55,7 +55,7 @@ export class CheckboxWrapper {
   }
 
   public componentWillLoad(): void {
-    this.input = getDirectAndOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type="checkbox"]');
+    this.input = getDirectAndOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=checkbox]');
     this.observeAttributes(); // once initially
   }
 
