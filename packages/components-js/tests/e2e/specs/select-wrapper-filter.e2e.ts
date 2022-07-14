@@ -290,7 +290,6 @@ describe('select-wrapper filter', () => {
     await waitForStencilLifecycle(page);
     await dropdownOption2.click();
     await waitForStencilLifecycle(page);
-    await waitForStencilLifecycle(page);
 
     const filterPlaceholder = await getFilterPlaceholder();
 

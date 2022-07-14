@@ -753,12 +753,8 @@ describe('select-wrapper dropdown', () => {
 
     it('should select second option on mouseclick', async () => {
       await initSelect();
-
-      const select = await getSelect();
       const dropdownOption2 = await getDropdownOption2();
 
-      await select.click();
-      await waitForStencilLifecycle(page);
       await dropdownOption2.click();
       await waitForStencilLifecycle(page);
 
