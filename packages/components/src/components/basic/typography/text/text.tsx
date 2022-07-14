@@ -17,7 +17,7 @@ import { TEXT_SIZES, TEXT_TAGS } from './text-utils';
 
 const propTypes: PropTypes<typeof Text> = {
   tag: AllowedTypes.oneOf<TextTag>(TEXT_TAGS),
-  size: AllowedTypes.oneOf<TextSize>(TEXT_SIZES),
+  size: AllowedTypes.breakpoint<TextSize>(TEXT_SIZES),
   weight: AllowedTypes.oneOf<TextWeight>(TEXT_WEIGHTS),
   align: AllowedTypes.oneOf<TextAlign>(TEXT_ALIGNS),
   color: AllowedTypes.oneOf<TextColor>(TEXT_COLORS),
