@@ -83,7 +83,7 @@ export const getAriaStructure = <T>(allowedAriaAttributes: readonly T[]): string
       allowedAriaAttributes.reduce(
         (prev, key) => ({
           ...prev,
-          [key as any]: 'string',
+          [key as any]: 'value',
         }),
         {}
       )

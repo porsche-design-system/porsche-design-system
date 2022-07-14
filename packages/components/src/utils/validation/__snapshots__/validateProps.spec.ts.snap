@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getAriaStructure() should return formatted string for array with multiple aria attributes 1`] = `"{ 'aria-label'?: 'value', 'aria-disabled'?: 'value', 'aria-pressed'?: 'value' }"`;
+
+exports[`getAriaStructure() should return formatted string for array with single aria attributes 1`] = `"{ 'aria-label'?: 'value' }"`;
+
+exports[`getBreakpointCustomizableStructure() should return formatted string for array type 1`] = `"('a' | 'b')[], { base: ('a' | 'b')[], xs?: ('a' | 'b')[], s?: ('a' | 'b')[], m?: ('a' | 'b')[], l?: ('a' | 'b')[], xl?: ('a' | 'b')[] }"`;
+
+exports[`getBreakpointCustomizableStructure() should return formatted string for boolean type 1`] = `"boolean, { base: boolean, xs?: boolean, s?: boolean, m?: boolean, l?: boolean, xl?: boolean }"`;
+
+exports[`getShapeStructure() should return formatted string for object 1`] = `"{ id: string, active: boolean, index: number, direction: string }"`;
