@@ -123,9 +123,8 @@ export const AllowedTypes: {
   number: (...args) => validateValueOfType(...args, 'number'),
   // eslint-disable-next-line id-blacklist
   boolean: (...args) => validateValueOfType(...args, 'boolean'),
-  oneOf:
-    <T>(allowedValuesOrValidatorFunctions: T[]): ValidatorFunction =>
-    (propName, propValue, componentName) => {
+  oneOf: <T>(allowedValuesOrValidatorFunctions: T[]): ValidatorFunction =>
+    function oneOf(propName, propValue, componentName) {
       // use first item to determine if we've got primitive types or validator functions
       if (typeof allowedValuesOrValidatorFunctions[0] !== 'function') {
         if (!allowedValuesOrValidatorFunctions.includes(propValue as T)) {
@@ -144,8 +143,8 @@ export const AllowedTypes: {
         };
       }
     },
-  breakpoint: (allowedValues): ValidatorFunction => {
-    return (propName, propValue, componentName) => {
+  breakpoint: (allowedValues): ValidatorFunction =>
+    function breakpoint(propName, propValue, componentName) {
       const value = parseJSON(propValue as BreakpointValues<any>);
       let isInvalid = false;
 
@@ -171,10 +170,9 @@ export const AllowedTypes: {
           propType: getBreakpointCustomizableStructure(allowedValues),
         };
       }
-    };
-  },
-  aria: <T = keyof AriaAttributes>(allowedAriaAttributes: readonly T[]): ValidatorFunction => {
-    return (propName, propValue, componentName) => {
+    },
+  aria: <T = keyof AriaAttributes>(allowedAriaAttributes: readonly T[]): ValidatorFunction =>
+    function aria(propName, propValue, componentName) {
       const ariaAttributes = parseJSONAttribute<AriaAttributes>(propValue as string);
       if (
         ariaAttributes &&
@@ -187,10 +185,9 @@ export const AllowedTypes: {
           propType: getAriaStructure(allowedAriaAttributes),
         };
       }
-    };
-  },
-  shape: <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): ValidatorFunction => {
-    return (propName, propValue, componentName) => {
+    },
+  shape: <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): ValidatorFunction =>
+    function shape(propName, propValue, componentName) {
       if (propValue) {
         // const propValueKeys = Object.keys(propValue);
         if (
@@ -211,8 +208,7 @@ export const AllowedTypes: {
           };
         }
       }
-    };
-  },
+    },
 };
 
 // utility type to return public properties of generic type that are not a function or EventEmitter

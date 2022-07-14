@@ -83,23 +83,40 @@ it.each<TagName>(tagNamesWithRequiredRootNode)(
 it.each<TagName>(tagNamesPublic)(
   'should call validateProps() with correct parameters via componentWillRender for %s',
   (tagName) => {
-    const spy = jest.spyOn(validatePropsUtils, 'validateProps');
+    // extract the structure of the actual propTypes with ValidatorFunctions for a snapshot
+    // this works for first level only, so nested ValidatorFunctions inside .oneOf are not considered
+    // also any validation against allowedValues[] is not verified
+    let propTypes: { [key: string]: string } = {};
+    const spy = jest.spyOn(validatePropsUtils, 'validateProps').mockImplementation(
+      (_instance, props, _tagName) =>
+        (propTypes = Object.entries(props).reduce(
+          (prev, [prop, func]) => ({
+            ...prev,
+            [prop]: func.name || 'unknown', // anonymous functions don't have a name
+          }),
+          {}
+        ))
+    );
     const component = componentFactory(tagName);
 
     try {
       component.componentWillRender();
     } catch {}
 
-    const propTypes = (getComponentMeta(tagName).props || []).reduce(
+    // it would be possible to exclude a prop from propTypes via Omit<...>
+    // to get confidence that isn't the case, we check against components meta which contains all props
+    const propTypesStructure = (getComponentMeta(tagName).props || []).reduce(
       (prev, prop) => ({ ...prev, [Object.keys(prop)[0]]: expect.any(Function) }),
       {}
     );
 
+    // manual exceptions for props that have no validation
     if (tagName === 'p-headline') {
-      delete propTypes.variant; // TODO: with all the different values this can't easily be validated
+      delete propTypesStructure.variant; // TODO: with all the different values this can't easily be validated
     }
 
-    expect(spy).toBeCalledWith(component, expect.objectContaining(propTypes), tagName);
+    expect(spy).toBeCalledWith(component, expect.objectContaining(propTypesStructure), tagName);
+    expect(propTypes).toMatchSnapshot('propTypes with ValidatorFunctions');
   }
 );
 
