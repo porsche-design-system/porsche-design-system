@@ -55,7 +55,7 @@ export class RadioButtonWrapper {
   }
 
   public componentWillLoad(): void {
-    this.input = getDirectAndOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type="radio"]');
+    this.input = getDirectAndOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=radio]');
     this.observeAttributes(); // once initially
   }
 
