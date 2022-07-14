@@ -17,9 +17,9 @@ import type { SegmentedControlItemInternalHTMLProps } from './segmented-control-
 const propTypes: PropTypes<typeof SegmentedControlItem> = {
   value: AllowedTypes.oneOf([AllowedTypes.string, AllowedTypes.number]),
   disabled: AllowedTypes.boolean,
-  label: AllowedTypes.boolean,
-  icon: AllowedTypes.boolean,
-  iconSource: AllowedTypes.boolean,
+  label: AllowedTypes.string,
+  icon: AllowedTypes.string,
+  iconSource: AllowedTypes.string,
 };
 
 @Component({
