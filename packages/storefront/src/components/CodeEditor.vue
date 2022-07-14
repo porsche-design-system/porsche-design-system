@@ -31,6 +31,7 @@
       openInStackBlitz({
         markup: this.markup,
         framework: this.framework,
+        theme: this.theme,
         additionalJavaScriptLogic: this.additionalJavaScriptLogic,
       });
     }

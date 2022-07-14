@@ -1,30 +1,41 @@
 import sdk from '@stackblitz/sdk';
 import { convertMarkup } from '@/utils/formatting';
-import { Framework } from '@/models';
+import { Framework, Theme } from '@/models';
 import { version } from '../../../components-js/projects/components-wrapper/package.json';
+import { themeDark } from '../../../utilities/projects/utilities';
 
 type OpenInStackBlitzOpts = {
   markup: string;
   framework: Framework;
+  theme: Theme;
   additionalJavaScriptLogic?: string;
 };
 
-type OpenFrameWorkOpts = Omit<OpenInStackBlitzOpts, 'framework'> & {
-  componentName: string;
+type OpenFrameWorkOpts = Omit<OpenInStackBlitzOpts, 'framework' | 'theme'> & {
   description: string;
   title: string;
+  css: string;
+  componentNames?: string;
 };
 
 export const openInStackBlitz = (props: OpenInStackBlitzOpts) => {
-  const { markup, additionalJavaScriptLogic, framework } = props;
+  const { markup, framework, theme, additionalJavaScriptLogic } = props;
   const convertedMarkup = convertMarkup(markup, framework);
-  const [, componentName] = convertedMarkup.match(/<((?:\w|-)+)(?:.|\n)*>(?:[A-z]| )*<\/?\1>/) ?? [];
+
+  const componentNamesArray = Array.from(convertedMarkup.matchAll(/<((?:\w|-)+)(?:.|\n)*?>/g) ?? [])
+    .map(([, x]) => x)
+    .filter(
+      (tagName, idx, arr) => arr.findIndex((t) => (t.startsWith('P') || t.startsWith('p')) && t === tagName) === idx
+    );
+  const componentNames = componentNamesArray.join(', ');
 
   const openProps: OpenFrameWorkOpts = {
     markup: convertedMarkup,
-    componentName,
+    componentNames,
     title: `Porsche Design System ${framework} sandbox`,
-    description: `${componentName} component example`,
+    description: `${[componentNamesArray]} component example`,
+    css: `*:not(:last-child) { margin-right: 0.5rem; margin-bottom: 0.5rem; }
+${theme === 'dark' && `body { background: ${themeDark.background.base}; }`}    `,
   };
 
   switch (framework) {
@@ -41,7 +52,7 @@ export const openInStackBlitz = (props: OpenInStackBlitzOpts) => {
 };
 
 export const openVanillaJS = (props: OpenFrameWorkOpts) => {
-  const { markup, description, title, additionalJavaScriptLogic } = props;
+  const { markup, description, title, css, additionalJavaScriptLogic } = props;
 
   sdk.openProject(
     {
@@ -53,7 +64,7 @@ porscheDesignSystem.load();
 
 ${additionalJavaScriptLogic}
 `,
-        'style.css': `*:not(:last-child) { margin-right: 0.5rem; margin-bottom: 0.5rem; }`,
+        'style.css': css,
       },
       template: 'javascript',
       title,
@@ -69,13 +80,13 @@ ${additionalJavaScriptLogic}
 };
 
 export const openReact = (props: OpenFrameWorkOpts) => {
-  const { markup, componentName, description, title } = props;
+  const { markup, componentNames, description, title, css } = props;
 
   sdk.openProject(
     {
       files: {
         'App.tsx': `import * as React from 'react';
-import { ${componentName} } from '@porsche-design-system/components-react'
+import { ${componentNames} } from '@porsche-design-system/components-react'
 export default function App() {
   return (
     <div>
@@ -101,7 +112,7 @@ export default function App() {
               </PorscheDesignSystemProvider>
             </StrictMode>
           );`,
-        'style.css': `*:not(:last-child) { margin-right: 0.5rem; margin-bottom: 0.5rem; }`,
+        'style.css': css,
       },
       template: 'create-react-app',
       title,
@@ -117,7 +128,7 @@ export default function App() {
 };
 
 export const openAngular = (props: OpenFrameWorkOpts) => {
-  const { markup, description, title } = props;
+  const { markup, description, title, css } = props;
 
   sdk.openProject({
     files: {
@@ -153,7 +164,7 @@ import { AppComponent } from './app.component';
   bootstrap: [AppComponent],
 })
 export class AppModule {}`,
-      'app/app.component.css': `*:not(:last-child) { margin-right: 0.5rem; margin-bottom: 0.5rem; }`,
+      'app/app.component.css': css,
     },
     template: 'angular-cli',
     title,
