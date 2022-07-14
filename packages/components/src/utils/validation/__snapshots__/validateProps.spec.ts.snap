@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`formatArrayOutput() should return formatted string for array 1`] = `"['value1', 'value2', true, 1]"`;
+
+exports[`formatObjectOutput() should return formatted string for boolean 1`] = `"true"`;
+
+exports[`formatObjectOutput() should return formatted string for object 1`] = `"{ id: 1, value: \\"string\\", active: true, \\"aria-label\\": \\"label\\", optional?: true }"`;
+
+exports[`formatObjectOutput() should return formatted string for string 1`] = `"string"`;
+
 exports[`getAriaStructure() should return formatted string for array with multiple aria attributes 1`] = `"{ 'aria-label'?: 'value', 'aria-disabled'?: 'value', 'aria-pressed'?: 'value' }"`;
 
 exports[`getAriaStructure() should return formatted string for array with single aria attributes 1`] = `"{ 'aria-label'?: 'value' }"`;
@@ -9,3 +17,5 @@ exports[`getBreakpointCustomizableStructure() should return formatted string for
 exports[`getBreakpointCustomizableStructure() should return formatted string for boolean type 1`] = `"boolean, { base: boolean, xs?: boolean, s?: boolean, m?: boolean, l?: boolean, xl?: boolean }"`;
 
 exports[`getShapeStructure() should return formatted string for object 1`] = `"{ id: string, active: boolean, index: number, direction: string }"`;
+
+exports[`printErrorMessage() should call console.error() with correct parameter 1`] = `"Warning: Invalid property 'href' with value 'a' supplied to 'p-link', expected one of: string"`;
