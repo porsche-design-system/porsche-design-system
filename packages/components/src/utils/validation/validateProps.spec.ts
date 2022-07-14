@@ -1,6 +1,14 @@
 import * as validatePropsUtils from './validateProps';
 import * as breakpointCustomizableUtils from '../breakpoint-customizable';
-import { AllowedTypes, isValueNotOfType, validateValueOfType, ValidationError } from './validateProps';
+import {
+  AllowedTypes,
+  getAriaStructure,
+  getBreakpointCustomizableStructure,
+  getShapeStructure,
+  isValueNotOfType,
+  validateValueOfType,
+  ValidationError,
+} from './validateProps';
 
 describe('isValueNotOfType()', () => {
   it.each<[any, string, boolean]>([
@@ -53,11 +61,38 @@ describe('validateValueOfType()', () => {
   });
 });
 
-xdescribe('getBreakpointCustomizableStructure()', () => {});
+describe('getBreakpointCustomizableStructure()', () => {
+  it('should return formatted string for boolean type', () => {
+    expect(getBreakpointCustomizableStructure('boolean')).toMatchSnapshot();
+  });
 
-xdescribe('getAriaStructure()', () => {});
+  it('should return formatted string for array type', () => {
+    expect(getBreakpointCustomizableStructure(['a', 'b'])).toMatchSnapshot();
+  });
+});
 
-xdescribe('getShapeStructure()', () => {});
+describe('getAriaStructure()', () => {
+  it('should return formatted string for array with single aria attributes', () => {
+    expect(getAriaStructure(['aria-label'])).toMatchSnapshot();
+  });
+
+  it('should return formatted string for array with multiple aria attributes', () => {
+    expect(getAriaStructure(['aria-label', 'aria-disabled', 'aria-pressed'])).toMatchSnapshot();
+  });
+});
+
+describe('getShapeStructure()', () => {
+  it('should return formatted string for object', () => {
+    expect(
+      getShapeStructure({
+        id: AllowedTypes.string,
+        active: AllowedTypes.boolean,
+        index: AllowedTypes.number,
+        direction: AllowedTypes.oneOf(['up', 'down']),
+      })
+    ).toMatchSnapshot();
+  });
+});
 
 xdescribe('isBreakpointCustomizableValueInvalid()', () => {});
 
