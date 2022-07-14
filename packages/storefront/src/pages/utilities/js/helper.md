@@ -4,11 +4,12 @@
 
 ## generateFontDefinition(fontSize, fontWeight)
 
-With the `generateFontDefinition()` function it is possible to get various kinds of font variants (size and weight) by passing two parameters as variables for `fontSize` and `fontWeight`.
-The `fontSize` is freely selectable, for the `fontWeight` one of the predefined weight values must be chosen.
+With the `generateFontDefinition()` function it is possible to get various kinds of font variants (size and weight) by
+passing two parameters as variables for `fontSize` and `fontWeight`. The `fontSize` is freely selectable, for the
+`fontWeight` one of the predefined weight values must be chosen.
 
 Predefined size values are:  
- `12 | 16 | 18 | 20 | 24 | 28 | 30 | 32 | 36 | 42 | 44 | 48 | 52 | 60 | 62 | 72 | 84 | xSmall | small | medium | large | xLarge`  
+ `12 | 16 | 18 | 20 | 24 | 28 | 30 | 32 | 36 | 42 | 44 | 48 | 52 | 60 | 62 | 72 | 84 | xSmall | small | medium | large | xLarge`
 
 Pre defined weight values are:  
  `thin | regular | semibold | bold`
@@ -36,8 +37,8 @@ p {
 
 ## generateTypeScale(fontSize)
 
-Generates font-size and line-height styling definition to fit into Porsche Vertical Grid System.
-The `fontSize` parameter only accepts value in rem or px, e.g. 12px or 1.5rem.
+Generates font-size and line-height styling definition to fit into Porsche Vertical Grid System. The `fontSize`
+parameter only accepts value in rem or px, e.g. 12px or 1.5rem.
 
 #### Example
 
@@ -62,8 +63,8 @@ p {
 
 ## calculateLineHeight(fontSize)
 
-Calculates line-height to fit into Porsche Vertical Grid System. 
-The `fontSize` parameter only accepts value in rem or px, e.g. 12px or 1.5rem.
+Calculates line-height to fit into Porsche Vertical Grid System. The `fontSize` parameter only accepts value in rem or
+px, e.g. 12px or 1.5rem.
 
 #### Example
 

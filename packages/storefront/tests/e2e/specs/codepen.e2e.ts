@@ -25,6 +25,7 @@ it('should have working codepen button', async () => {
 
   // now we're on the codepen website
   await page.waitForNetworkIdle();
+  await page.waitForSelector('.CodeMirror-code');
   const codeMirror = await page.$('.CodeMirror-code');
   // get innerText, strip line numbers and weird ​ special char
   const codeMirrorInnerText = (await codeMirror.evaluate((el: HTMLElement) => el.innerText)).replace(/\d+\n|​/g, '');

@@ -1,18 +1,24 @@
 # Marque
 
-The `p-marque` gives the Porsche brand a distinctive look, sets it apart from others within the overall external image and represents the quality of the product. 
+The `p-marque` gives the Porsche brand a distinctive look, sets it apart from others within the overall external image
+and represents the quality of the product.
 
 <TableOfContents></TableOfContents>
 
 ## Variants
 
 ### Marque with registered trademark (®)
-In web applications for the United States and/or Canada as well as with international purpose *including* United States and/or Canada, the Porsche marque must always be used with the ®. The ® is optimized to match the respective crest size.
+
+In web applications for the United States and/or Canada as well as with international purpose _including_ United States
+and/or Canada, the Porsche marque must always be used with the ®. The ® is optimized to match the respective crest size.
 
 <Playground :markup="basicMarkup"></Playground>
 
 ### Marque without registered trademark (®)
-This variant is to be used whenever the United States and/or Canada are not part of the web application's target markets.
+
+This variant is to be used whenever the United States and/or Canada are not part of the web application's target
+markets.
+
 <Playground :markup="withoutTrademarkMarkup"></Playground>
 
 ## Link
@@ -22,7 +28,9 @@ The Porsche marque will be rendered as `<a>`-tag as soon as an `href` is provide
 <Playground :markup="linkMarkup"></Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
-If the Marque is used with a link, make sure to add a descriptive label to inform screen reader users what the link stands for. This can be done through **ARIA** with the `aria` property.
+
+If the Marque is used with a link, make sure to add a descriptive label to inform screen reader users what the link
+stands for. This can be done through **ARIA** with the `aria` property.
 
 ## Bind events to the link
 
@@ -49,8 +57,8 @@ By default, the sizing is responsive, but can be changed to a static size when n
 
 ## Custom clickable/focusable area
 
-Sometimes it might be useful to enlarge the clickable/focusable area of the Porsche marque.
-Therefore a custom padding can be set on the host element.
+Sometimes it might be useful to enlarge the clickable/focusable area of the Porsche marque. Therefore a custom padding
+can be set on the host element.
 
 <Playground :markup="clickableAreaMarkup"></Playground>
 
