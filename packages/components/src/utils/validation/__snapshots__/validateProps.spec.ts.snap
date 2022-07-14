@@ -16,6 +16,6 @@ exports[`getBreakpointCustomizableStructure() should return formatted string for
 
 exports[`getBreakpointCustomizableStructure() should return formatted string for boolean type 1`] = `"boolean, { base: boolean, xs?: boolean, s?: boolean, m?: boolean, l?: boolean, xl?: boolean }"`;
 
-exports[`getShapeStructure() should return formatted string for object 1`] = `"{ id: string, active: boolean, index: number, direction: string }"`;
+exports[`getShapeStructure() should return formatted string for object 1`] = `"{ id: string, active: boolean, index: number, direction: oneOf }"`;
 
 exports[`printErrorMessage() should call console.error() with correct parameter 1`] = `"Warning: Invalid property 'href' with value 'a' supplied to 'p-link', expected one of: string"`;
