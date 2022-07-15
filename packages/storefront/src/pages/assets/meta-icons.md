@@ -4,7 +4,8 @@
 
 ## Introduction
 
-Meta Icons are a set of icons to be used for the following purposes: **Favicon**, **Apple Touch Icons**, **Android Touch Icons** and **Microsoft Windows Tiles**.
+Meta Icons are a set of icons to be used for the following purposes: **Favicon**, **Apple Touch Icons**, **Android Touch
+Icons** and **Microsoft Windows Tiles**.
 
 To simplify the implementation process we provide a `getMetaTagsAndIconLinks` partial.
 

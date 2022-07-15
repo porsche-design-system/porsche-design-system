@@ -7,7 +7,7 @@
 | States       | Usage                                                                   |
 | ------------ | ----------------------------------------------------------------------- |
 | `current`    | This shows the step that the user is on.                                |
-| `undefined`   | 'Next' Step which is visible but disabled.                              |
+| `undefined`  | 'Next' Step which is visible but disabled.                              |
 | `conmpleted` | The step the user has already completed. Marked with success indicator. |
 | `warning`    | Shown when the system detects a potential issue                         |
 

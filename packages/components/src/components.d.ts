@@ -1088,6 +1088,54 @@ export namespace Components {
         "theme"?: Theme;
     }
 }
+export interface PAccordionCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPAccordionElement;
+}
+export interface PBannerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPBannerElement;
+}
+export interface PInlineNotificationCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPInlineNotificationElement;
+}
+export interface PModalCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPModalElement;
+}
+export interface PPaginationCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPPaginationElement;
+}
+export interface PSegmentedControlCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPSegmentedControlElement;
+}
+export interface PStepperHorizontalCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPStepperHorizontalElement;
+}
+export interface PSwitchCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPSwitchElement;
+}
+export interface PTableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPTableElement;
+}
+export interface PTabsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPTabsElement;
+}
+export interface PTabsBarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPTabsBarElement;
+}
+export interface PToastItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPToastItemElement;
+}
 declare global {
     interface HTMLPAccordionElement extends Components.PAccordion, HTMLStencilElement {
     }
@@ -1469,7 +1517,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when accordion state is changed.
          */
-        "onAccordionChange"?: (event: CustomEvent<AccordionChangeEvent>) => void;
+        "onAccordionChange"?: (event: PAccordionCustomEvent<AccordionChangeEvent>) => void;
         /**
           * Defines if accordion is open.
          */
@@ -1491,7 +1539,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the close button is clicked.
          */
-        "onDismiss"?: (event: CustomEvent<void>) => void;
+        "onDismiss"?: (event: PBannerCustomEvent<void>) => void;
         /**
           * Defines if the banner can be closed/removed by the user.
          */
@@ -1841,11 +1889,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the action button is clicked.
          */
-        "onAction"?: (event: CustomEvent<void>) => void;
+        "onAction"?: (event: PInlineNotificationCustomEvent<void>) => void;
         /**
           * Emitted when the close button is clicked.
          */
-        "onDismiss"?: (event: CustomEvent<void>) => void;
+        "onDismiss"?: (event: PInlineNotificationCustomEvent<void>) => void;
         /**
           * Defines if the inline-notification can be closed/removed by the user.
          */
@@ -2035,7 +2083,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the component requests to be closed.
          */
-        "onClose"?: (event: CustomEvent<void>) => void;
+        "onClose"?: (event: PModalCustomEvent<void>) => void;
         /**
           * If true, the modal is open.
          */
@@ -2073,7 +2121,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the page changes.
          */
-        "onPageChange"?: (event: CustomEvent<PageChangeEvent>) => void;
+        "onPageChange"?: (event: PPaginationCustomEvent<PageChangeEvent>) => void;
         /**
           * Adapts the color when used on dark background.
          */
@@ -2138,7 +2186,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when selected element changes.
          */
-        "onSegmentedControlChange"?: (event: CustomEvent<SegmentedControlChangeEvent>) => void;
+        "onSegmentedControlChange"?: (event: PSegmentedControlCustomEvent<SegmentedControlChangeEvent>) => void;
         /**
           * Adapts the segmented-control color depending on the theme.
          */
@@ -2240,7 +2288,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when active step is changed.
          */
-        "onStepChange"?: (event: CustomEvent<StepChangeEvent>) => void;
+        "onStepChange"?: (event: PStepperHorizontalCustomEvent<StepChangeEvent>) => void;
         /**
           * Adapts the tag color depending on the theme.
          */
@@ -2280,7 +2328,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when checked status is changed.
          */
-        "onSwitchChange"?: (event: CustomEvent<SwitchChangeEvent>) => void;
+        "onSwitchChange"?: (event: PSwitchCustomEvent<SwitchChangeEvent>) => void;
         /**
           * Stretches the contents to max available space.
          */
@@ -2303,7 +2351,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when sorting is changed.
          */
-        "onSortingChange"?: (event: CustomEvent<SortingChangeEvent>) => void;
+        "onSortingChange"?: (event: PTableCustomEvent<SortingChangeEvent>) => void;
     }
     interface PTableBody {
     }
@@ -2345,7 +2393,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when active tab is changed.
          */
-        "onTabChange"?: (event: CustomEvent<TabChangeEvent>) => void;
+        "onTabChange"?: (event: PTabsCustomEvent<TabChangeEvent>) => void;
         /**
           * The text size.
          */
@@ -2371,7 +2419,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when active tab is changed.
          */
-        "onTabChange"?: (event: CustomEvent<TabChangeEvent>) => void;
+        "onTabChange"?: (event: PTabsBarCustomEvent<TabChangeEvent>) => void;
         /**
           * The text size.
          */
@@ -2539,7 +2587,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the close button is clicked.
          */
-        "onDismiss"?: (event: CustomEvent<void>) => void;
+        "onDismiss"?: (event: PToastItemCustomEvent<void>) => void;
         /**
           * State of the toast-item.
          */

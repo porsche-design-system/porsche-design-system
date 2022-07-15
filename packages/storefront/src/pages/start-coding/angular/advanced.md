@@ -12,8 +12,8 @@ register Porsche Design System again it will cause issues especially when differ
 A way of preventing those conflicts is by using a unique custom prefix for the components. Simply pass your desired
 prefix to the parameter of the static `PorscheDesignSystemModule.load()` function.
 
-When using custom prefixed component tags, you've to add
-the [schema `CUSTOM_ELEMENTS_SCHEMA`](https://angular.io/api/core/CUSTOM_ELEMENTS_SCHEMA) to the modules that use the
+When using custom prefixed component tags, you've to add the
+[schema `CUSTOM_ELEMENTS_SCHEMA`](https://angular.io/api/core/CUSTOM_ELEMENTS_SCHEMA) to the modules that use the
 prefixed components.
 
 ```ts
@@ -25,24 +25,17 @@ import { PorscheDesignSystemModule, WEB_COMPONENTS_PREFIX } from '@porsche-desig
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    PorscheDesignSystemModule.load({ prefix: 'sample-prefix' })
-  ],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-  ],
-  bootstrap: [AppComponent]
+  declarations: [AppComponent],
+  imports: [BrowserModule, PorscheDesignSystemModule.load({ prefix: 'sample-prefix' })],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
 
 Be aware, that you still have to set the component name without the prefix as an attribute, otherwise you might get
-unexpected results. The component might display as usual, but it is no longer an Angular component which means
-bindings of inputs and outputs won't work.
+unexpected results. The component might display as usual, but it is no longer an Angular component which means bindings
+of inputs and outputs won't work.
 
 You can now use the prefixed component as follows:
 
@@ -58,7 +51,7 @@ import { Component } from '@angular/core';
       <sample-prefix-p-headline p-headline variant="headline-1">Headline</sample-prefix-p-headline>
     </div>
   `,
-  styles: []
+  styles: [],
 })
 export class AppComponent {}
 ```
@@ -74,18 +67,14 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     PorscheDesignSystemModule.load({ prefix: 'sample-prefix' }),
     PorscheDesignSystemModule.load({ prefix: 'another-prefix' }),
   ],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-  ],
-  bootstrap: [AppComponent]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```

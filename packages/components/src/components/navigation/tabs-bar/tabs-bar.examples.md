@@ -264,21 +264,21 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 <style scoped lang="scss">
   @import '~@porsche-design-system/utilities/scss';
 
-  ::v-deep div[role=tabpanel] {
+  :deep(div[role=tabpanel]) {
     outline: 1px solid transparent;
     outline-offset: 2px;
     margin-top: p-px-to-rem(8px);
   }
 
-  ::v-deep .example--light div[role=tabpanel]:focus {
+  :deep(.example--light div[role=tabpanel]:focus) {
     outline-color: #000;
   }
 
-  ::v-deep .example--dark div[role=tabpanel]:focus {
+  :deep(.example--dark div[role=tabpanel]:focus) {
     outline-color: #FFF;
   }
 
-  ::v-deep div[role=tabpanel]:focus:not(:focus-visible) {
+  :deep(div[role=tabpanel]:focus:not(:focus-visible)) {
     outline-color: transparent;
   }
 </style>

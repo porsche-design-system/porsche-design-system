@@ -1,4 +1,4 @@
-import { ConsoleMessage, Page } from 'puppeteer';
+import { ConsoleMessage, Page, ElementHandle } from 'puppeteer';
 
 const consoleMessages: ConsoleMessage[] = [];
 
@@ -13,3 +13,6 @@ export const initConsoleObserver = (page: Page): void => {
   });
 };
 export const getConsoleErrorsAmount = () => consoleMessages.length;
+
+export const getElementInnerText = (element: ElementHandle): Promise<string> =>
+  element.evaluate((el) => (el as HTMLElement).innerText);

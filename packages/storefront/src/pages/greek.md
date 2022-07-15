@@ -35,7 +35,7 @@
   Η σφραγίδα εγγύησης "Porsche Approved" εγγυάται πιστοποιημένη ποιότητα.
 </p-text>
 
---- 
+---
 
 <p-text size="x-small">
   Text taken from https://www.porsche.com/central-eastern-europe/en/_greece_/aboutporsche/importers/approved/

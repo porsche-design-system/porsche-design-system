@@ -7,16 +7,20 @@
 **Headline component** to specify headline styling and hierarchy in documents.
 
 ## Variant
-Variants for predefined headlines and automated responsive sizing to fit into all major breakpoints. 
-There are multiple predefined styling variants available. 
+
+Variants for predefined headlines and automated responsive sizing to fit into all major breakpoints. There are multiple
+predefined styling variants available.
 
 <Playground :markup="variant" :config="config"></Playground>
 
 ### Default Tags
+
 Default rendered semantic tag hierarchy equals to headline variant.
 
-**Note**: You always have to take care of the **semantic structure** of your HTML tags. This is very important for **SEO** and **Accessibility**.
-Regarding of your **page structure** you need to set a **corresponding headline tag** via the `tag` property. This means, that a headline can look like an `h1` but doesn't need to be an `h1` in the document (see also section "**Custom tag hierarchy**").
+**Note**: You always have to take care of the **semantic structure** of your HTML tags. This is very important for
+**SEO** and **Accessibility**. Regarding of your **page structure** you need to set a **corresponding headline tag** via
+the `tag` property. This means, that a headline can look like an `h1` but doesn't need to be an `h1` in the document
+(see also section "**Custom tag hierarchy**").
 
 | Headline Variant | Rendered HTML Tag |
 | ---------------- | ----------------- |
@@ -28,11 +32,14 @@ Regarding of your **page structure** you need to set a **corresponding headline 
 | `headline-5`     | `<h5>`            |
 
 ## Custom Variant
-If you need more control over sizing and responsiveness, you can use predefined text sizes on different major breakpoints `xs`, `s`, `m`, `l`, `xl` or `inherit` mode.
+
+If you need more control over sizing and responsiveness, you can use predefined text sizes on different major
+breakpoints `xs`, `s`, `m`, `l`, `xl` or `inherit` mode.
 
 **Hint:** When using `inherit` you have to take the **[typeScale](components/typography/usage)** values in account.
 
-**Note:** If you choose a custom responsive size, you have to take care of your **semantic tag hierarchy**. It defaults to `h1` for every combination.
+**Note:** If you choose a custom responsive size, you have to take care of your **semantic tag hierarchy**. It defaults
+to `h1` for every combination.
 
 <Playground :markup="customVariantMarkup" :config="config">
  <select v-model="customVariant" aria-label="Select custom variant">
@@ -45,14 +52,18 @@ If you need more control over sizing and responsiveness, you can use predefined 
 ---
 
 ## Custom tag hierarchy
-If a custom tag hierarchy is needed, **individual headline tags** can be set from `h1` to `h6` either by referencing the corresponding `tag` property or setting the HTML headline tags directly as slots. 
+
+If a custom tag hierarchy is needed, **individual headline tags** can be set from `h1` to `h6` either by referencing the
+corresponding `tag` property or setting the HTML headline tags directly as slots.
 
 <Playground :markup="customTagHierarchy" :config="config"></Playground>
 
 ---
 
 ## Color
-A predefined default color associated with its theme is available but also inherit mode can be used to define a custom color.
+
+A predefined default color associated with its theme is available but also inherit mode can be used to define a custom
+color.
 
 <Playground :markup="colorMarkup" :config="config">
   <select v-model="color" aria-label="Select color">
@@ -78,7 +89,9 @@ A predefined default color associated with its theme is available but also inher
 ---
 
 ## Ellipsis mode
-This will force any text to never wrap into a new line and in case it's too long for a single line then dots (…) at the end are used to visualize it.
+
+This will force any text to never wrap into a new line and in case it's too long for a single line then dots (…) at the
+end are used to visualize it.
 
 <Playground :markup="ellipsisMode" :config="config"></Playground>
 
