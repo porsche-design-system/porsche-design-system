@@ -1,7 +1,10 @@
 # Content Wrapper
 
-When designing a web page you have different possibilities to layout your content – be it limited to a dedicated width with spacings to the left and right of the viewport ("basic" version), stretched to the largest viewport without any spacing ("extended") or even to the largest total screen width ("fluid").
-The `p-content-wrapper` defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
+When designing a web page you have different possibilities to layout your content – be it limited to a dedicated width
+with spacings to the left and right of the viewport ("basic" version), stretched to the largest viewport without any
+spacing ("extended") or even to the largest total screen width ("fluid"). The `p-content-wrapper` defines the outer
+spacings between the content area and the left and right screen sides, as well as centering its content and setting a
+max-width.
 
 Can be used along with [Grid](components/grid), [Flex](components/flex) or with any custom content.
 
@@ -9,9 +12,9 @@ Can be used along with [Grid](components/grid), [Flex](components/flex) or with 
 
 ## Width
 
-* **Basic**: max width 1920px including 7-10% safe zone
-* **Extended**: max width 1920px
-* **Fluid**: full width
+- **Basic**: max width 1920px including 7-10% safe zone
+- **Extended**: max width 1920px
+- **Fluid**: full width
 
 <Playground :markup="basic" :config="config">
   <select v-model="width" aria-label="Select width">
@@ -24,8 +27,8 @@ Can be used along with [Grid](components/grid), [Flex](components/flex) or with 
 
 ## Background color
 
-* **transparent**: does not set any background color
-* **default**: uses surface color depending on theming
+- **transparent**: does not set any background color
+- **default**: uses surface color depending on theming
 
 <Playground :markup="transparent" class="playground-content-wrapper-background-color" :config="config">
   <select v-model="backgroundColor" aria-label="Select background color">
@@ -62,11 +65,11 @@ export default class Code extends Vue {
 <style scoped lang="scss">
   @import '~@porsche-design-system/utilities/scss';
 
-  ::v-deep .playground-content-wrapper-background-color .demo{
+  :deep(.playground-content-wrapper-background-color .demo){
     background-color: deeppink;
   }  
   
-  ::v-deep .example-content {
+  :deep(.example-content) {
     @include p-text-small;
     color: $p-color-theme-light-default;
     text-align: center;

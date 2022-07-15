@@ -5,9 +5,12 @@
 ## Toast
 
 The `p-toast` component manages both the queue and display of toast messages.  
-Therefore, you can only have a single instance of this component within in your application. We recommend rendering it close to the `body`, e.g., in your `App.tsx` or `app.component.ts`. This way you reduce the chance of having issues with its z-index and fixed positioning.  
+Therefore, you can only have a single instance of this component within in your application. We recommend rendering it
+close to the `body`, e.g., in your `App.tsx` or `app.component.ts`. This way you reduce the chance of having issues with
+its z-index and fixed positioning.
 
-Review the [notification decision tree](components/notifications/decision-tree) to determine which notification component is best for a particular scenario.
+Review the [notification decision tree](components/notifications/decision-tree) to determine which notification
+component is best for a particular scenario.
 
 ## Basic
 
@@ -42,10 +45,11 @@ type ToastMessage = {
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
-By their very nature, toast components are **not fully accessibility compliant** and do not meet success criterion 2.2.1 ("Timing Adjustable") because of the default timing of 6 seconds until it automatically disappears.
-This behavior cannot be adjusted and could result in users not being able to interact with Web content in a reasonable amount of time.
-So be careful **not to use toast messages for relevant information**.
-Content and user interactions should always be understandable and usable without a toast message.
+By their very nature, toast components are **not fully accessibility compliant** and do not meet success criterion 2.2.1
+("Timing Adjustable") because of the default timing of 6 seconds until it automatically disappears. This behavior cannot
+be adjusted and could result in users not being able to interact with Web content in a reasonable amount of time. So be
+careful **not to use toast messages for relevant information**. Content and user interactions should always be
+understandable and usable without a toast message.
 
 ## Position
 
@@ -61,6 +65,7 @@ The bottom position of the `p-toast` can be adjusted via the `--p-toast-position
 </Playground>
 
 <!-- shared across playgrounds -->
+
 <p-toast ref="toast" :theme="theme" :style="`--p-toast-position-bottom: ${positionBottom}px`"></p-toast>
 
 <script lang="ts">

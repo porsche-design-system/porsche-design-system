@@ -196,7 +196,7 @@
 
     // Child Layout "height"
     &--height-fixed .demo {
-      ::v-deep > * {
+      :deep(> *) {
         height: 11.25rem;
       }
     }
@@ -210,13 +210,13 @@
         margin-top: -$pds-spacing-medium;
       }
 
-      ::v-deep > * {
+      :deep(> *) {
         margin-top: $pds-spacing-medium;
       }
     }
 
     &--spacing-inline .demo {
-      ::v-deep > * {
+      :deep(> *) {
         &:not(:last-child) {
           margin-right: $pds-spacing-medium;
         }
@@ -230,7 +230,7 @@
         margin-top: -$pds-spacing-small;
       }
 
-      ::v-deep > * {
+      :deep(> *) {
         margin-top: $pds-spacing-small;
       }
     }
@@ -248,7 +248,7 @@
     }
 
     .code-block {
-      &--framework ::v-deep pre {
+      &--framework :deep(pre) {
         max-height: 40rem;
       }
     }

@@ -1,7 +1,7 @@
 # Divider
 
-The `p-divider` is used as 'horizontal or vertical rule' and displays a dividing line.
-The component is self-closing. Slotted content between the component tags won't be displayed. 
+The `p-divider` is used as 'horizontal or vertical rule' and displays a dividing line. The component is self-closing.
+Slotted content between the component tags won't be displayed.
 
 <TableOfContents></TableOfContents>
 
@@ -11,7 +11,8 @@ The component is self-closing. Slotted content between the component tags won't 
 
 ## Vertical
 
-**Hint:** The component has not an implicit vertical height unless we set a container which provides it or define the height on the component itself.
+**Hint:** The component has not an implicit vertical height unless we set a container which provides it or define the
+height on the component itself.
 
 <Playground :markup="vertical" :config="config"></Playground>
 
@@ -64,12 +65,12 @@ export default class Code extends Vue {
 <style scoped lang="scss">
   @import '~@porsche-design-system/utilities/scss';
 
-  ::v-deep .divider-vertical-container-example {
+  :deep(.divider-vertical-container-example) {
     display: flex;
     height: 100px;
   }
   @include p-media-query("l") {
-    ::v-deep .divider-vertical-responsive-container-example {
+    :deep(.divider-vertical-responsive-container-example) {
       display: flex;
       height: 100px;
     }

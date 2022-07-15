@@ -11,12 +11,12 @@ which needs to be injected into the `<head>` of your `index.html`.
 
 ## Supported options
 
-| Option               | Description                                                                                                                                              | Type            | Default |
-|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|---------|
-| `prefix`             | Prefix will be added to the component names.                                                                                                             | `string`        | `''`    |
-| `withoutTags`        | <span style='color:#d5001c'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format: 'jsx'` instead.<br/>If true, it returns css styles. | `boolean`       | `false` |
-| `format`             | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements.                                 | `'html'         | 'jsx'`  | `'html'` |
-| `skeletonTagNames` | <span style='color:#d5001c'>**[EXPERIMENTAL]**</span> Components will have a built-in skeleton solution. By default no skeletons are used.               | `({{this.skeletonTagNamesType}})[]` | `[]`    |
+| Option             | Description                                                                                                                                                  | Type                                | Default |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------- | ------- | -------- |
+| `prefix`           | Prefix will be added to the component names.                                                                                                                 | `string`                            | `''`    |
+| `withoutTags`      | <span style='color:#d5001c'>**[DEPRECATED]**</span> since v2.9.0 and will be removed in v3, use `format: 'jsx'` instead.<br/>If true, it returns css styles. | `boolean`                           | `false` |
+| `format`           | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements.                                     | `'html'                             | 'jsx'`  | `'html'` |
+| `skeletonTagNames` | <span style='color:#d5001c'>**[EXPERIMENTAL]**</span> Components will have a built-in skeleton solution. By default no skeletons are used.                   | `({{this.skeletonTagNamesType}})[]` | `[]`    |
 
 ## Skeleton Behavior
 
@@ -29,15 +29,16 @@ which needs to be injected into the `<head>` of your `index.html`.
 The skeletons provided by this partial cover the timespan between the page load and initialization of each component
 provided in the `skeletonTagNames` array.  
 They are **not** meant to be used as asynchronous loading indicators for content inside the initialized components.  
-To further minimize the time it takes for the components to initialize use
-our [Component Chunk Links Partial](partials/component-chunk-links) to preload the components.
+To further minimize the time it takes for the components to initialize use our
+[Component Chunk Links Partial](partials/component-chunk-links) to preload the components.
 
-Be aware that skeletons do **not** work when wrapped inside any of the following layout components: `Button Group`
-, `Content Wrapper`, `Grid`, `Flex`.  
+Be aware that skeletons do **not** work when wrapped inside any of the following layout components: `Button Group` ,
+`Content Wrapper`, `Grid`, `Flex`.  
 Using them inside said layout components will lead to flashes of skeletons.  
 When using skeletons with `Fieldset Wrapper` be aware that layout shifts will happen, when providing a `label` property.
 
-When using skeletons in an SSR or SSG context, make sure to set `usesSkeletons={true}` on the `PorscheDesignSystemProvider`
+When using skeletons in an SSR or SSG context, make sure to set `usesSkeletons={true}` on the
+`PorscheDesignSystemProvider`
 
 ## Examples
 
