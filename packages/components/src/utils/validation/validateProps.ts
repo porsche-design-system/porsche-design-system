@@ -232,5 +232,5 @@ export const validateProps = <T extends Class<any>>(instance: InstanceType<T>, p
   Object.entries(propTypes)
     .map(([propKey, validatorFunc]: [string, ValidatorFunction]) => validatorFunc(propKey, instance[propKey]))
     .filter((x) => x)
-    .forEach((error) => printErrorMessage({ ...error, componentName: getTagName(instance.host) }));
+    .forEach((error) => printErrorMessage({ ...error, componentName: getTagName(instance.host as HTMLElement) }));
 };
