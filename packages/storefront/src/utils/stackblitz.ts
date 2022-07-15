@@ -3,6 +3,7 @@ import { convertMarkup } from '@/utils/formatting';
 import { themeDark } from '@porsche-design-system/utilities-v2';
 import { version as pdsVersion } from '../../../components-js/projects/components-wrapper/package.json';
 import { devDependencies as reactDevDependencies } from '../../../components-react/package.json';
+import { paramCase } from 'change-case';
 import type { Framework, Theme } from '@/models';
 
 type OpenInStackBlitzOpts = {
@@ -32,13 +33,11 @@ export const openInStackBlitz = (props: OpenInStackBlitzOpts) => {
     .filter(
       (tagName, idx, arr) => arr.findIndex((t) => (t.startsWith('P') || t.startsWith('p')) && t === tagName) === idx
     );
-  const [hostComponent] = componentNamesArray;
   const componentNames = componentNamesArray.join(', ');
   const isThemeDark = theme === 'dark';
 
   const openProps: OpenFrameWorkOpts = {
     markup: convertedMarkup,
-    hostComponentName: hostComponent,
     componentNames,
     title: `Porsche Design System ${framework} sandbox`,
     description: `${[componentNamesArray]} component example`,
@@ -88,7 +87,7 @@ ${additionalJavaScriptLogic}
 };
 
 export const openReact = (props: OpenFrameWorkOpts) => {
-  const { markup, description, title, hasFrameworkMarkup, hostComponentName, isThemeDark, componentNames } = props;
+  const { markup, description, title, hasFrameworkMarkup, isThemeDark, componentNames } = props;
 
   const cleanedFragmentsMarkup = markup.replace(/(<\/?)(>)/g, '$1React.Fragment$2');
 
@@ -104,8 +103,9 @@ export default function App() {
     </div>
   );
 }`;
-  const cleanedComponentName = hostComponentName!.replace('P', '');
-  const reactComponentName = hasFrameworkMarkup ? `${cleanedComponentName}ExamplePage` : 'App';
+
+  const [, extractComponentName] = markup.match(/const ([A-z]+) = \(\): JSX.Element => {/) ?? [];
+  const reactComponentName = hasFrameworkMarkup ? extractComponentName : 'App';
   const reactImport = hasFrameworkMarkup ? `{ ${reactComponentName} }` : reactComponentName;
 
   sdk.openProject(
@@ -148,10 +148,14 @@ root.render(
 };
 
 export const openAngular = (props: OpenFrameWorkOpts) => {
-  const { markup, description, title, hasFrameworkMarkup, hostComponentName, isThemeDark } = props;
-  const cleanComponentName = hostComponentName!.replace('p-', '');
+  const { markup, description, title, hasFrameworkMarkup, isThemeDark } = props;
+
+  const [, matchedClassName] = markup.match(/export class ([A-z]+) {/) ?? [];
+  const className = hasFrameworkMarkup ? matchedClassName : 'AppComponent';
+  const classNameParamCase = paramCase(className);
+
   const selector = hasFrameworkMarkup
-    ? `<page-${cleanComponentName}-example></page-${cleanComponentName}-example>`
+    ? `<${classNameParamCase}></${classNameParamCase}>`
     : '<porsche-design-system-app></porsche-design-system-app>';
 
   const appComponentTs = hasFrameworkMarkup
@@ -164,9 +168,6 @@ export const openAngular = (props: OpenFrameWorkOpts) => {
     ${markup}\`,
 })
 export class AppComponent  {}`;
-
-  const [, matchedClassName] = markup.match(/export class ([A-z]+) {/) ?? [];
-  const className = hasFrameworkMarkup ? matchedClassName : 'AppComponent';
 
   sdk.openProject({
     files: {
