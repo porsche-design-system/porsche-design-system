@@ -64,7 +64,7 @@ export class SegmentedControlItem {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-segmented-control-item');
+    validateProps(this, propTypes);
     throwIfPropIsUndefined(this.host, 'value', this.value);
 
     attachComponentCss(

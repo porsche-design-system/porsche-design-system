@@ -114,7 +114,7 @@ export class ButtonPure {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-button-pure');
+    validateProps(this, propTypes);
     warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon);
     warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
     attachComponentCss(

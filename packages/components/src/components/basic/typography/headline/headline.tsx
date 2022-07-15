@@ -55,7 +55,7 @@ export class Headline {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-headline');
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.variant, this.align, this.color, this.ellipsis, this.theme);
   }
 

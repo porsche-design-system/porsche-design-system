@@ -65,7 +65,7 @@ export class StepperHorizontal {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-stepper-horizontal');
+    validateProps(this, propTypes);
     syncItemsProps(this.host, this.theme);
   }
 

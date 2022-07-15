@@ -18,7 +18,7 @@ export class TableHead {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-table-head');
+    validateProps(this, propTypes);
   }
 
   public render(): JSX.Element {

@@ -53,7 +53,7 @@ export class TextList {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-text-list');
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.theme);
   }
 

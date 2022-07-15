@@ -80,7 +80,7 @@ export class Tabs {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-tabs');
+    validateProps(this, propTypes);
   }
 
   public componentDidUpdate(): void {

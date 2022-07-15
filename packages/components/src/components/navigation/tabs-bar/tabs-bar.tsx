@@ -110,7 +110,7 @@ export class TabsBar {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-tabs-bar');
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size, this.weight, this.theme);
   }
 

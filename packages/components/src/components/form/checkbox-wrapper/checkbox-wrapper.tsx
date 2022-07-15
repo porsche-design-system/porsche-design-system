@@ -60,7 +60,7 @@ export class CheckboxWrapper {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-checkbox-wrapper');
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.input.disabled);
   }
 

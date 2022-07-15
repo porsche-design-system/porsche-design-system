@@ -49,7 +49,7 @@ export class Toast {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-toast');
+    validateProps(this, propTypes);
     this.toastItemElement?.classList.remove(toastCloseClassName);
   }
 

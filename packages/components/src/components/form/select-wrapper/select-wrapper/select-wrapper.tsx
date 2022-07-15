@@ -94,7 +94,7 @@ export class SelectWrapper {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-select-wrapper');
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.select.disabled, this.hideLabel, this.state, this.theme);
   }
 

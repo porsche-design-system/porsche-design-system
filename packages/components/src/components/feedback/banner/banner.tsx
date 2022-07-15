@@ -63,7 +63,7 @@ export class Banner {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-banner');
+    validateProps(this, propTypes);
     throwIfValueIsInvalid(this.state, BANNER_STATES, 'state');
   }
 

@@ -1,10 +1,10 @@
 import { BreakpointKey, BREAKPOINTS, BreakpointValues, parseJSON } from '../breakpoint-customizable';
 import type { AriaAttributes } from '../../aria-types';
 import { parseJSONAttribute } from '../json';
-import type { TagName } from '@porsche-design-system/shared';
 import type { EventEmitter } from '@stencil/core';
+import { getTagName } from '../tag-name';
 
-type ValidatorFunction = (propName: string, propValue: any, componentName: string) => ValidationError;
+type ValidatorFunction = (propName: string, propValue: any) => ValidationError;
 type ValidatorFunctionOneOfCreator = <T>(allowedValues: T[] | readonly T[]) => ValidatorFunction;
 type ValidatorFunctionBreakpointCustomizableCreator = <T>(
   allowedValues: Extract<AllowedTypesKeys, 'boolean'> | T[] | readonly T[]
@@ -19,7 +19,6 @@ type ValidatorFunctionOrCreator =
   | ValidatorFunctionShapeCreator;
 
 export type ValidationError = {
-  componentName: string;
   propName: string;
   propValue: string;
   propType: string;
@@ -38,8 +37,12 @@ export const formatArrayOutput = <T>(value: T[] | readonly T[]): string => {
   return JSON.stringify(value).replace(/'/g, '').replace(/"/g, "'").replace(/,/g, ', ');
 };
 
-// TODO: prefixing
-export const printErrorMessage = ({ propName, propValue, componentName, propType }: ValidationError): void => {
+export const printErrorMessage = ({
+  propName,
+  propValue,
+  propType,
+  componentName,
+}: ValidationError & { componentName: string }): void => {
   console.error(
     `Warning: Invalid property '${propName}' with value '${formatObjectOutput(
       propValue
@@ -51,14 +54,9 @@ export const isValueNotOfType = (propValue: any, propType: string): boolean => {
   return propValue !== undefined && typeof propValue !== propType;
 };
 
-export const validateValueOfType = (
-  propName: string,
-  propValue: any,
-  componentName: string,
-  propType: string
-): ValidationError => {
+export const validateValueOfType = (propName: string, propValue: any, propType: string): ValidationError => {
   if (isValueNotOfType(propValue, propType)) {
-    return { propName, propValue, componentName, propType };
+    return { propName, propValue, propType };
   }
 };
 
@@ -125,28 +123,27 @@ export const AllowedTypes: {
   boolean: (...args) => validateValueOfType(...args, 'boolean'),
   oneOf: <T>(allowedValuesOrValidatorFunctions: T[]): ValidatorFunction =>
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
-    function oneOf(propName, propValue, componentName) {
+    function oneOf(propName, propValue) {
       // use first item to determine if we've got primitive types or validator functions
       if (typeof allowedValuesOrValidatorFunctions[0] !== 'function') {
         if (!allowedValuesOrValidatorFunctions.includes(propValue as T)) {
-          return { propName, propValue, componentName, propType: formatArrayOutput(allowedValuesOrValidatorFunctions) };
+          return { propName, propValue, propType: formatArrayOutput(allowedValuesOrValidatorFunctions) };
         }
       } else if (
         !allowedValuesOrValidatorFunctions.some(
-          (func) => (func as unknown as ValidatorFunction)(propName, propValue, componentName) === undefined
+          (func) => (func as unknown as ValidatorFunction)(propName, propValue) === undefined
         )
       ) {
         return {
           propName,
           propValue,
-          componentName,
           propType: allowedValuesOrValidatorFunctions.map((func) => (func as any).name || 'string').join(', '),
         };
       }
     },
   breakpoint: (allowedValues): ValidatorFunction =>
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
-    function breakpoint(propName, propValue, componentName) {
+    function breakpoint(propName, propValue) {
       const value = parseJSON(propValue as BreakpointValues<any>);
       let isInvalid = false;
 
@@ -168,14 +165,13 @@ export const AllowedTypes: {
         return {
           propName,
           propValue: formatObjectOutput(value),
-          componentName,
           propType: getBreakpointCustomizableStructure(allowedValues),
         };
       }
     },
   aria: <T = keyof AriaAttributes>(allowedAriaAttributes: readonly T[]): ValidatorFunction =>
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
-    function aria(propName, propValue, componentName) {
+    function aria(propName, propValue) {
       const ariaAttributes = parseJSONAttribute<AriaAttributes>(propValue as string);
       if (
         ariaAttributes &&
@@ -184,14 +180,13 @@ export const AllowedTypes: {
         return {
           propName,
           propValue: formatObjectOutput(ariaAttributes),
-          componentName,
           propType: getAriaStructure(allowedAriaAttributes),
         };
       }
     },
   shape: <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): ValidatorFunction =>
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
-    function shape(propName, propValue, componentName) {
+    function shape(propName, propValue) {
       if (propValue) {
         // const propValueKeys = Object.keys(propValue);
         if (
@@ -200,14 +195,13 @@ export const AllowedTypes: {
           // Object.keys(shapeStructure).some((key) => !propValueKeys.includes(key)) ||
           // check values
           Object.entries(shapeStructure).some(([structureKey, validatorFunc]: [string, ValidatorFunction]) =>
-            validatorFunc(structureKey, propValue[structureKey], componentName)
+            validatorFunc(structureKey, propValue[structureKey])
           )
         ) {
           // TODO: more precise inner errors from value validation could be output
           return {
             propName,
             propValue, // TODO: convert to string?
-            componentName,
             propType: getShapeStructure(shapeStructure),
           };
         }
@@ -234,15 +228,9 @@ export type PropTypes<T extends Class<any>> = Required<{
   >]: ValidatorFunctionOrCreator;
 }>;
 
-export const validateProps = <T extends Class<any>>(
-  instance: InstanceType<T>,
-  propTypes: PropTypes<T>,
-  componentName: TagName
-): void => {
+export const validateProps = <T extends Class<any>>(instance: InstanceType<T>, propTypes: PropTypes<T>): void => {
   Object.entries(propTypes)
-    .map(([propKey, validatorFunc]: [string, ValidatorFunction]) =>
-      validatorFunc(propKey, instance[propKey], componentName)
-    )
+    .map(([propKey, validatorFunc]: [string, ValidatorFunction]) => validatorFunc(propKey, instance[propKey]))
     .filter((x) => x)
-    .forEach(printErrorMessage);
+    .forEach((error) => printErrorMessage({ ...error, componentName: getTagName(instance.host) }));
 };

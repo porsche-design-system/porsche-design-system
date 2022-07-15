@@ -30,7 +30,7 @@ export class Divider {
   @Prop() public theme?: Theme = 'light';
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-divider');
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.color, this.orientation, this.theme);
   }
 

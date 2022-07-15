@@ -17,7 +17,7 @@ export class TextListItem {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-text-list-item');
+    validateProps(this, propTypes);
     const list = this.host.parentElement as HTMLPTextListElement;
     if (list) {
       const { listType, orderType } = list;

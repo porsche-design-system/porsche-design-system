@@ -38,7 +38,7 @@ export class TagDismissible {
   @Prop() public aria?: SelectedAriaAttributes<TagDismissibleAriaAttribute>;
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-tag-dismissible');
+    validateProps(this, propTypes);
     throwIfValueIsInvalid(this.color, TAG_DISMISSIBLE_COLORS, 'color');
     attachComponentCss(this.host, getComponentCss, this.color, !!this.label);
   }

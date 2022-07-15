@@ -45,7 +45,7 @@ export class ToastItem {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-toast-item');
+    validateProps(this, propTypes);
     // TODO: remove?
     throwIfValueIsInvalid(this.state, TOAST_STATES, 'state');
     attachComponentCss(this.host, getComponentCss, this.state, this.theme);

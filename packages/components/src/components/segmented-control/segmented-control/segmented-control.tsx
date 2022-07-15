@@ -53,7 +53,7 @@ export class SegmentedControl {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-segmented-control');
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, getItemMaxWidth(this.host));
     syncItemsProps(this.host, this.value, this.backgroundColor, this.theme);
   }

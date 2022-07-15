@@ -60,7 +60,7 @@ export class RadioButtonWrapper {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-radio-button-wrapper');
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.input.disabled);
   }
 

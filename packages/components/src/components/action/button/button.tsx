@@ -93,7 +93,7 @@ export class Button {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-button');
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.variant, this.hideLabel, this.isDisabledOrLoading, this.theme);
   }
 

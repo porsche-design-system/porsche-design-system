@@ -82,7 +82,7 @@ export class Switch {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-switch');
+    validateProps(this, propTypes);
     attachComponentCss(
       this.host,
       getComponentCss,

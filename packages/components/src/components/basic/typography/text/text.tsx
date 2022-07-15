@@ -60,7 +60,7 @@ export class Text {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-text');
+    validateProps(this, propTypes);
     attachComponentCss(
       this.host,
       getComponentCss,

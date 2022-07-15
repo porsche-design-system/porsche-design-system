@@ -88,7 +88,7 @@ it.each<TagName>(tagNamesPublic)(
     // also any validation against allowedValues[] is not verified
     let propTypes: { [key: string]: string } = {};
     const spy = jest.spyOn(validatePropsUtils, 'validateProps').mockImplementation(
-      (_instance, props, _tagName) =>
+      (_instance, props) =>
         (propTypes = Object.entries(props).reduce(
           (prev, [prop, func]) => ({
             ...prev,
@@ -115,7 +115,7 @@ it.each<TagName>(tagNamesPublic)(
       delete propTypesStructure.variant; // TODO: with all the different values this can't easily be validated
     }
 
-    expect(spy).toBeCalledWith(component, expect.objectContaining(propTypesStructure), tagName);
+    expect(spy).toBeCalledWith(component, expect.objectContaining(propTypesStructure));
     expect(propTypes).toMatchSnapshot('propTypes with ValidatorFunctions');
   }
 );

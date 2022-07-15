@@ -39,7 +39,7 @@ export class Spinner {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-spinner');
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size, this.theme);
   }
 

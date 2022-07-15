@@ -81,7 +81,7 @@ export class TextareaWrapper {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-textarea-wrapper');
+    validateProps(this, propTypes);
     attachComponentCss(
       this.host,
       getComponentCss,

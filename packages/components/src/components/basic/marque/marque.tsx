@@ -39,7 +39,7 @@ export class Marque {
   @Prop() public aria?: SelectedAriaAttributes<MarqueAriaAttributes>;
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-marque');
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size);
   }
 

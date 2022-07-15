@@ -77,7 +77,7 @@ export class Pagination {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-pagination');
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.maxNumberOfPageLinks, this.theme);
   }
 
