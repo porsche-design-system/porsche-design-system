@@ -49,7 +49,7 @@ export class LinkSocial {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-link-social');
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.icon, this.hideLabel, !!this.href, this.theme);
   }
 

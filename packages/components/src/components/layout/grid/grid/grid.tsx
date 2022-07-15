@@ -40,7 +40,7 @@ export class Grid {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-grid');
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.direction, this.wrap, this.gutter);
   }
 

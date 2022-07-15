@@ -18,7 +18,7 @@ export class TableRow {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-table-row');
+    validateProps(this, propTypes);
   }
 
   public render(): JSX.Element {

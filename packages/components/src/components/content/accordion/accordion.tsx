@@ -89,7 +89,7 @@ export class Accordion {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-accordion');
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size, this.compact, this.open, this.theme);
   }
 

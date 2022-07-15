@@ -116,7 +116,7 @@ export class LinkPure {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-link-pure');
+    validateProps(this, propTypes);
     warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
     attachComponentCss(
       this.host,

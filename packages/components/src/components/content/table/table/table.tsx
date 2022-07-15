@@ -58,7 +58,7 @@ export class Table {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-table');
+    validateProps(this, propTypes);
   }
 
   public disconnectedCallback(): void {

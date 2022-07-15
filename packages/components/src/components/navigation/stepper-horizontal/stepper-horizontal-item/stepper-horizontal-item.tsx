@@ -53,7 +53,7 @@ export class StepperHorizontalItem {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-stepper-horizontal-item');
+    validateProps(this, propTypes);
     throwIfCurrentAndDisabled(this.host);
     attachComponentCss(this.host, getComponentCss, this.state, this.disabled, this.host.theme || 'light');
   }

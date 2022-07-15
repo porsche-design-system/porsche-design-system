@@ -53,7 +53,7 @@ export class Popover {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-popover');
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.direction);
   }
 

@@ -114,7 +114,7 @@ export class TextFieldWrapper {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-text-field-wrapper');
+    validateProps(this, propTypes);
     throwIfUnitLengthExceeded(this.unit);
     attachComponentCss(
       this.host,

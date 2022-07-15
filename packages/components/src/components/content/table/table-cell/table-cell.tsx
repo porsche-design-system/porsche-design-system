@@ -22,7 +22,7 @@ export class TableCell {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-table-cell');
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.multiline);
   }
 

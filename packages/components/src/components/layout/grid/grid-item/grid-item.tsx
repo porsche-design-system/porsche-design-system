@@ -28,7 +28,7 @@ export class GridItem {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-grid-item');
+    validateProps(this, propTypes);
 
     const grid = this.host.parentElement as HTMLPGridElement;
     if (grid) {

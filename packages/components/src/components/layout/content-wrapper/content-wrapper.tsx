@@ -30,7 +30,7 @@ export class ContentWrapper {
   @Prop() public theme?: Theme = 'light';
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-content-wrapper');
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.width, this.backgroundColor, this.theme);
   }
 

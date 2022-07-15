@@ -45,7 +45,7 @@ export class TableHeadCell {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-table-head-cell');
+    validateProps(this, propTypes);
     const { active, direction } = this.sort || {};
     attachComponentCss(this.host, getComponentCss, active, direction, this.hideLabel, this.multiline);
   }

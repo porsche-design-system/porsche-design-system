@@ -41,7 +41,7 @@ export class Tag {
   @Prop() public iconSource?: string;
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-tag');
+    validateProps(this, propTypes);
     throwIfValueIsInvalid(this.color, TAG_COLORS, 'color');
     attachComponentCss(
       this.host,

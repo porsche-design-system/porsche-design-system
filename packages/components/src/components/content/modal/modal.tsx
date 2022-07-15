@@ -90,7 +90,7 @@ export class Modal {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-modal');
+    validateProps(this, propTypes);
     if (this.open) {
       warnIfAriaAndHeadingPropsAreUndefined(this.host, this.heading, this.aria);
     }

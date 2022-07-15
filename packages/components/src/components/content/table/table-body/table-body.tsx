@@ -18,7 +18,7 @@ export class TableBody {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-table-body');
+    validateProps(this, propTypes);
   }
 
   public render(): JSX.Element {

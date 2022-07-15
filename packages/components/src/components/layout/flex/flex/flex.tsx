@@ -58,7 +58,7 @@ export class Flex {
   @Prop() public alignContent?: FlexAlignContent = 'stretch';
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-flex');
+    validateProps(this, propTypes);
     attachComponentCss(
       this.host,
       getComponentCss,

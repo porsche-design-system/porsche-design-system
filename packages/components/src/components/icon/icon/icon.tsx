@@ -53,7 +53,7 @@ export class Icon {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-icon');
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.color, this.size, this.theme);
   }
 

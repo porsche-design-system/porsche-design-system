@@ -62,7 +62,7 @@ export class FlexItem {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-flex-item');
+    validateProps(this, propTypes);
     attachComponentCss(
       this.host,
       getComponentCss,

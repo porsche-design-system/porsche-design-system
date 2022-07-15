@@ -48,7 +48,7 @@ export class FieldsetWrapper {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-fieldset-wrapper');
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.state, this.labelSize, this.hasLabel);
   }
 

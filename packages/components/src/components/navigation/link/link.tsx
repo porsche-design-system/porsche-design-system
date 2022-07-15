@@ -76,7 +76,7 @@ export class Link {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-link');
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.variant, this.hideLabel, !this.href, this.theme);
   }
 

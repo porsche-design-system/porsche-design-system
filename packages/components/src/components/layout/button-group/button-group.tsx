@@ -23,7 +23,7 @@ export class ButtonGroup {
   };
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-button-group');
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.direction);
   }
 

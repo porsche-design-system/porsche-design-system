@@ -22,7 +22,7 @@ export class TabsItem {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes, 'p-tabs-item');
+    validateProps(this, propTypes);
     const tabs = this.host.parentElement as HTMLPTabsElement;
     if (tabs) {
       attachComponentCss(this.host, getComponentCss, tabs.theme || 'light');
