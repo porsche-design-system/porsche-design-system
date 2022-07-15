@@ -45,12 +45,7 @@ export class Spinner {
 
   public render(): JSX.Element {
     return (
-      <span
-        class="root"
-        role="alert"
-        aria-live="assertive"
-        {...parseAndGetAriaAttributes(this.aria, SPINNER_ARIA_ATTRIBUTES)}
-      >
+      <span class="root" role="alert" aria-live="assertive" {...parseAndGetAriaAttributes(this.aria)}>
         {/* empty element needed to announce aria-label in screen readers */}
         <span class="sr-only">&nbsp;</span>
         <svg viewBox="-16 -16 32 32" width="100%" height="100%" focusable="false" aria-hidden="true">

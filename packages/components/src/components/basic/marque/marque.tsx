@@ -69,7 +69,7 @@ export class Marque {
         {this.href === undefined ? (
           picture
         ) : (
-          <a href={this.href} target={this.target} {...parseAndGetAriaAttributes(this.aria, MARQUE_ARIA_ATTRIBUTES)}>
+          <a href={this.href} target={this.target} {...parseAndGetAriaAttributes(this.aria)}>
             {picture}
           </a>
         )}

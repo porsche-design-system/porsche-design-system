@@ -92,7 +92,7 @@ export class Link {
           target: this.target,
           download: this.download,
           rel: this.rel,
-          ...parseAndGetAriaAttributes(this.aria, LINK_ARIA_ATTRIBUTES),
+          ...parseAndGetAriaAttributes(this.aria),
         })}
       >
         <PrefixedTagNames.pIcon
