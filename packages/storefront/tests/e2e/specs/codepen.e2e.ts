@@ -5,7 +5,7 @@ let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
-it('should have working codepen button', async () => {
+xit('should have working codepen button', async () => {
   await page.goto(`${baseURL}/components/button/examples`, { waitUntil: 'networkidle0' });
 
   const codepenForm = await page.$('.playground form');
