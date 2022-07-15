@@ -1,7 +1,8 @@
 import sdk from '@stackblitz/sdk';
 import { convertMarkup } from '@/utils/formatting';
 import { themeDark } from '@porsche-design-system/utilities-v2';
-import { version } from '../../../components-js/projects/components-wrapper/package.json';
+import { version as pdsVersion } from '../../../components-js/projects/components-wrapper/package.json';
+import { devDependencies as reactDevDependencies } from '../../../components-react/package.json';
 import type { Framework, Theme } from '@/models';
 
 type OpenInStackBlitzOpts = {
@@ -16,7 +17,7 @@ type OpenFrameWorkOpts = Omit<OpenInStackBlitzOpts, 'framework' | 'theme'> & {
   description: string;
   title: string;
   isThemeDark: boolean;
-  hostComponent?: string;
+  hostComponentName?: string;
   componentNames?: string;
 };
 
@@ -37,7 +38,7 @@ export const openInStackBlitz = (props: OpenInStackBlitzOpts) => {
 
   const openProps: OpenFrameWorkOpts = {
     markup: convertedMarkup,
-    hostComponent,
+    hostComponentName: hostComponent,
     componentNames,
     title: `Porsche Design System ${framework} sandbox`,
     description: `${[componentNamesArray]} component example`,
@@ -77,7 +78,7 @@ ${additionalJavaScriptLogic}
       title,
       description,
       dependencies: {
-        '@porsche-design-system/components-js': `${version}`,
+        '@porsche-design-system/components-js': `${pdsVersion}`,
       },
     },
     {
@@ -87,45 +88,57 @@ ${additionalJavaScriptLogic}
 };
 
 export const openReact = (props: OpenFrameWorkOpts) => {
-  const { markup, description, title, isThemeDark, componentNames } = props;
+  const { markup, description, title, hasFrameworkMarkup, hostComponentName, isThemeDark, componentNames } = props;
 
-  sdk.openProject(
-    {
-      files: {
-        'App.tsx': `import * as React from 'react';
+  const cleanedFragmentsMarkup = markup.replace(/(<\/?)(>)/g, '$1React.Fragment$2');
+
+  const appTsx = hasFrameworkMarkup
+    ? `import React from 'react';
+${cleanedFragmentsMarkup}`
+    : `import * as React from 'react';
 import { ${componentNames} } from '@porsche-design-system/components-react'
 export default function App() {
   return (
     <div>
-      ${markup}
+      ${cleanedFragmentsMarkup}
     </div>
   );
-}`,
+}`;
+  const cleanedComponentName = hostComponentName!.replace('P', '');
+  const reactComponentName = hasFrameworkMarkup ? `${cleanedComponentName}ExamplePage` : 'App';
+  const reactImport = hasFrameworkMarkup ? `{ ${reactComponentName} }` : reactComponentName;
+
+  sdk.openProject(
+    {
+      files: {
+        'App.tsx': appTsx,
         'index.html': `<div id="root"></div>`,
         'index.tsx': `import * as React from 'react';
-          import { StrictMode } from "react";
-          import * as ReactDOMClient from "react-dom/client";
-          import App from "./App";
-          import { PorscheDesignSystemProvider } from "@porsche-design-system/components-react";
-          import './style.css';
+import { StrictMode } from "react";
+import * as ReactDOMClient from "react-dom/client";
+import ${reactImport} from "./App";
+import { PorscheDesignSystemProvider } from "@porsche-design-system/components-react";
+import './style.css';
 
-          const rootElement = document.getElementById("root");
-          const root = ReactDOMClient.createRoot(rootElement);
+const rootElement = document.getElementById("root");
+const root = ReactDOMClient.createRoot(rootElement);
 
-          root.render(
-            <StrictMode>
-              <PorscheDesignSystemProvider>
-                <App />
-              </PorscheDesignSystemProvider>
-            </StrictMode>
-          );`,
+root.render(
+  <StrictMode>
+    <PorscheDesignSystemProvider>
+      <${reactComponentName} />
+    </PorscheDesignSystemProvider>
+  </StrictMode>
+);`,
         'style.css': isThemeDark ? bodyStyles : '',
       },
       template: 'create-react-app',
       title,
       description,
       dependencies: {
-        '@porsche-design-system/components-react': `${version}`,
+        '@porsche-design-system/components-react': `${pdsVersion}`,
+        '@types/react': `${reactDevDependencies['@types/react']}`,
+        '@types/react-dom': `${reactDevDependencies['@types/react-dom']}`,
       },
     },
     {
@@ -135,8 +148,8 @@ export default function App() {
 };
 
 export const openAngular = (props: OpenFrameWorkOpts) => {
-  const { markup, description, title, hasFrameworkMarkup, hostComponent, isThemeDark } = props;
-  const cleanComponentName = hostComponent!.replace('p-', '');
+  const { markup, description, title, hasFrameworkMarkup, hostComponentName, isThemeDark } = props;
+  const cleanComponentName = hostComponentName!.replace('p-', '');
   const selector = hasFrameworkMarkup
     ? `<page-${cleanComponentName}-example></page-${cleanComponentName}-example>`
     : '<porsche-design-system-app></porsche-design-system-app>';
@@ -187,7 +200,7 @@ export class AppModule {}`,
     title,
     description,
     dependencies: {
-      '@porsche-design-system/components-angular': `${version}`,
+      '@porsche-design-system/components-angular': `${pdsVersion}`,
     },
   });
 };
