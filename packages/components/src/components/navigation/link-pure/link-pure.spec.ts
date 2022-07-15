@@ -1,11 +1,11 @@
 import { LinkPure } from './link-pure';
 import * as buttonLinkPureUtils from '../../../utils/button-link-pure-utils';
 import * as transitionListenerUtils from '../../../utils/transition-listener';
-import * as linkValidationUtils from '../link-validation';
+import * as throwIfInvalidLinkUsageUtils from '../../../utils/validation/throwIfInvalidLinkUsage';
 
 describe('componentWillLoad', () => {
   it('should call throwIfInvalidLinkUsage() with correct parameters', () => {
-    const spy = jest.spyOn(linkValidationUtils, 'throwIfInvalidLinkUsage');
+    const spy = jest.spyOn(throwIfInvalidLinkUsageUtils, 'throwIfInvalidLinkUsage');
 
     const component = new LinkPure();
     component.host = document.createElement('p-link-pure');
