@@ -30,12 +30,12 @@ import {
   isSizeInherit,
   parseAndGetAriaAttributes,
   PropTypes,
+  throwIfInvalidLinkUsage,
   transitionListener,
   validateProps,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../../utils';
 import { getComponentCss, getSlottedCss } from './link-pure-styles';
-import { throwIfInvalidLinkUsage } from '../link-validation';
 import { TEXT_SIZES } from '../../basic/typography/text/text-utils';
 
 const propTypes: PropTypes<typeof LinkPure> = {

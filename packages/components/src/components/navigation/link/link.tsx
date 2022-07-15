@@ -4,6 +4,7 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   parseAndGetAriaAttributes,
+  throwIfInvalidLinkUsage,
   validateProps,
 } from '../../../utils';
 import type { PropTypes } from '../../../utils';
@@ -18,7 +19,6 @@ import type {
 import { getComponentCss } from './link-styles';
 import type { LinkAriaAttributes } from './link-utils';
 import { LINK_ARIA_ATTRIBUTES } from './link-utils';
-import { throwIfInvalidLinkUsage } from '../link-validation';
 import { LINK_BUTTON_VARIANTS, LINK_TARGETS, THEMES_EXTENDED_ELECTRIC } from '../../../types';
 
 const propTypes: PropTypes<typeof Link> = {
