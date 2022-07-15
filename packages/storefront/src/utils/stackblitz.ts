@@ -1,8 +1,8 @@
 import sdk from '@stackblitz/sdk';
 import { convertMarkup } from '@/utils/formatting';
 import { Framework, Theme } from '@/models';
+import { themeDark } from '@porsche-design-system/utilities-v2';
 import { version } from '../../../components-js/projects/components-wrapper/package.json';
-import { themeDark } from '../../../utilities/projects/utilities';
 
 type OpenInStackBlitzOpts = {
   markup: string;
@@ -14,9 +14,11 @@ type OpenInStackBlitzOpts = {
 type OpenFrameWorkOpts = Omit<OpenInStackBlitzOpts, 'framework' | 'theme'> & {
   description: string;
   title: string;
-  css: string;
+  isThemeDark: boolean;
   componentNames?: string;
 };
+
+const bodyStyles = `body { background: ${themeDark.background.base}; }`;
 
 export const openInStackBlitz = (props: OpenInStackBlitzOpts) => {
   const { markup, framework, theme, additionalJavaScriptLogic } = props;
@@ -28,14 +30,14 @@ export const openInStackBlitz = (props: OpenInStackBlitzOpts) => {
       (tagName, idx, arr) => arr.findIndex((t) => (t.startsWith('P') || t.startsWith('p')) && t === tagName) === idx
     );
   const componentNames = componentNamesArray.join(', ');
+  const isThemeDark = theme === 'dark';
 
   const openProps: OpenFrameWorkOpts = {
     markup: convertedMarkup,
     componentNames,
     title: `Porsche Design System ${framework} sandbox`,
     description: `${[componentNamesArray]} component example`,
-    css: `*:not(:last-child) { margin-right: 0.5rem; margin-bottom: 0.5rem; }
-${theme === 'dark' && `body { background: ${themeDark.background.base}; }`}    `,
+    isThemeDark,
   };
 
   switch (framework) {
@@ -52,7 +54,7 @@ ${theme === 'dark' && `body { background: ${themeDark.background.base}; }`}    `
 };
 
 export const openVanillaJS = (props: OpenFrameWorkOpts) => {
-  const { markup, description, title, css, additionalJavaScriptLogic } = props;
+  const { markup, description, title, isThemeDark, additionalJavaScriptLogic } = props;
 
   sdk.openProject(
     {
@@ -64,7 +66,7 @@ porscheDesignSystem.load();
 
 ${additionalJavaScriptLogic}
 `,
-        'style.css': css,
+        'style.css': isThemeDark ? bodyStyles : '',
       },
       template: 'javascript',
       title,
@@ -80,7 +82,7 @@ ${additionalJavaScriptLogic}
 };
 
 export const openReact = (props: OpenFrameWorkOpts) => {
-  const { markup, componentNames, description, title, css } = props;
+  const { markup, componentNames, description, title, isThemeDark } = props;
 
   sdk.openProject(
     {
@@ -112,7 +114,7 @@ export default function App() {
               </PorscheDesignSystemProvider>
             </StrictMode>
           );`,
-        'style.css': css,
+        'style.css': isThemeDark ? bodyStyles : '',
       },
       template: 'create-react-app',
       title,
@@ -128,12 +130,13 @@ export default function App() {
 };
 
 export const openAngular = (props: OpenFrameWorkOpts) => {
-  const { markup, description, title, css } = props;
+  const { markup, description, title, isThemeDark } = props;
 
   sdk.openProject({
     files: {
       // root folder
-      'index.html': `<porsche-design-system-app></porsche-design-system-app>`,
+      'index.html': `<porsche-design-system-app></porsche-design-system-app>
+${isThemeDark ? `<style>${bodyStyles}</style>` : ''}`,
       'main.ts': `import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import 'zone.js/dist/zone';
@@ -148,7 +151,6 @@ platformBrowserDynamic()
   selector: 'porsche-design-system-app',
   template: \`
     ${markup}\`,
-  styleUrls: [ './app.component.css' ]
 })
 export class AppComponent  {}`,
       'app/app.module.ts': `import { NgModule } from '@angular/core';
@@ -164,7 +166,6 @@ import { AppComponent } from './app.component';
   bootstrap: [AppComponent],
 })
 export class AppModule {}`,
-      'app/app.component.css': css,
     },
     template: 'angular-cli',
     title,
