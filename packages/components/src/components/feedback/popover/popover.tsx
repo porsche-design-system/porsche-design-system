@@ -18,7 +18,7 @@ import { getComponentCss, getSlottedCss } from './popover-styles';
 import type { PopoverDirection } from './popover-utils';
 import type { SelectedAriaAttributes } from '../../../types';
 
-const propTypes: Omit<PropTypes<typeof Popover>, 'open'> = {
+const propTypes: PropTypes<typeof Popover> = {
   direction: AllowedTypes.oneOf<PopoverDirection>(POPOVER_DIRECTIONS),
   description: AllowedTypes.string,
   aria: AllowedTypes.aria<'aria-label'>(['aria-label']),
@@ -41,7 +41,7 @@ export class Popover {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<'aria-label'>;
 
-  @State() public open = false;
+  @State() private open = false;
 
   private spacer: HTMLDivElement;
   private popover: HTMLDivElement;
