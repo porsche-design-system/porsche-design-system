@@ -1,13 +1,14 @@
 import sdk from '@stackblitz/sdk';
 import { convertMarkup } from '@/utils/formatting';
-import { Framework, Theme } from '@/models';
 import { themeDark } from '@porsche-design-system/utilities-v2';
 import { version } from '../../../components-js/projects/components-wrapper/package.json';
+import type { Framework, Theme } from '@/models';
 
 type OpenInStackBlitzOpts = {
   markup: string;
   framework: Framework;
   theme: Theme;
+  hasFrameworkMarkup: boolean;
   additionalJavaScriptLogic?: string;
 };
 
@@ -15,13 +16,14 @@ type OpenFrameWorkOpts = Omit<OpenInStackBlitzOpts, 'framework' | 'theme'> & {
   description: string;
   title: string;
   isThemeDark: boolean;
+  hostComponent?: string;
   componentNames?: string;
 };
 
 const bodyStyles = `body { background: ${themeDark.background.base}; }`;
 
 export const openInStackBlitz = (props: OpenInStackBlitzOpts) => {
-  const { markup, framework, theme, additionalJavaScriptLogic } = props;
+  const { markup, framework, theme, hasFrameworkMarkup, additionalJavaScriptLogic } = props;
   const convertedMarkup = convertMarkup(markup, framework);
 
   const componentNamesArray = Array.from(convertedMarkup.matchAll(/<((?:\w|-)+)(?:.|\n)*?>/g) ?? [])
@@ -29,15 +31,18 @@ export const openInStackBlitz = (props: OpenInStackBlitzOpts) => {
     .filter(
       (tagName, idx, arr) => arr.findIndex((t) => (t.startsWith('P') || t.startsWith('p')) && t === tagName) === idx
     );
+  const [hostComponent] = componentNamesArray;
   const componentNames = componentNamesArray.join(', ');
   const isThemeDark = theme === 'dark';
 
   const openProps: OpenFrameWorkOpts = {
     markup: convertedMarkup,
+    hostComponent,
     componentNames,
     title: `Porsche Design System ${framework} sandbox`,
     description: `${[componentNamesArray]} component example`,
     isThemeDark,
+    hasFrameworkMarkup,
   };
 
   switch (framework) {
@@ -82,7 +87,7 @@ ${additionalJavaScriptLogic}
 };
 
 export const openReact = (props: OpenFrameWorkOpts) => {
-  const { markup, componentNames, description, title, isThemeDark } = props;
+  const { markup, description, title, isThemeDark, componentNames } = props;
 
   sdk.openProject(
     {
@@ -130,12 +135,30 @@ export default function App() {
 };
 
 export const openAngular = (props: OpenFrameWorkOpts) => {
-  const { markup, description, title, isThemeDark } = props;
+  const { markup, description, title, hasFrameworkMarkup, hostComponent, isThemeDark } = props;
+  const cleanComponentName = hostComponent!.replace('p-', '');
+  const selector = hasFrameworkMarkup
+    ? `<page-${cleanComponentName}-example></page-${cleanComponentName}-example>`
+    : '<porsche-design-system-app></porsche-design-system-app>';
+
+  const appComponentTs = hasFrameworkMarkup
+    ? markup
+    : `import { Component } from '@angular/core';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: \`
+    ${markup}\`,
+})
+export class AppComponent  {}`;
+
+  const [, matchedClassName] = markup.match(/export class ([A-z]+) {/) ?? [];
+  const className = hasFrameworkMarkup ? matchedClassName : 'AppComponent';
 
   sdk.openProject({
     files: {
       // root folder
-      'index.html': `<porsche-design-system-app></porsche-design-system-app>
+      'index.html': `${selector}
 ${isThemeDark ? `<style>${bodyStyles}</style>` : ''}`,
       'main.ts': `import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
@@ -145,25 +168,18 @@ platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .catch((err) => console.error(err));`,
       // app folder
-      'app/app.component.ts': `import { Component } from '@angular/core';
-
-@Component({
-  selector: 'porsche-design-system-app',
-  template: \`
-    ${markup}\`,
-})
-export class AppComponent  {}`,
+      'app/app.component.ts': appComponentTs,
       'app/app.module.ts': `import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
-import { AppComponent } from './app.component';
+import { ${className} } from './app.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, PorscheDesignSystemModule.load({ prefix: '' }),],
-  declarations: [AppComponent],
-  bootstrap: [AppComponent],
+  declarations: [${className}],
+  bootstrap: [${className}],
 })
 export class AppModule {}`,
     },
