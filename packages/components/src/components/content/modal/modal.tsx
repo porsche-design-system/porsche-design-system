@@ -121,7 +121,7 @@ export class Modal {
           class="root"
           role="dialog"
           aria-modal="true"
-          {...{ 'aria-label': this.heading, ...parseAndGetAriaAttributes(this.aria, MODAL_ARIA_ATTRIBUTES) }}
+          {...{ 'aria-label': this.heading, ...parseAndGetAriaAttributes(this.aria) }}
           aria-hidden={!this.open ? 'true' : 'false'}
           tabIndex={-1}
           ref={(el) => (this.dialog = el)}

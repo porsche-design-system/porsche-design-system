@@ -78,9 +78,10 @@ export class Popover {
           icon="information"
           hideLabel="true"
           onClick={() => (this.open = !this.open)}
+          // pass string to avoid another update on p-button on each render because of new object reference
           aria={JSON.stringify({
             'aria-expanded': this.open,
-            ...parseAndGetAriaAttributes(this.aria, ['aria-label']),
+            ...parseAndGetAriaAttributes(this.aria),
           })}
           ref={(el) => (this.button = el)}
         >

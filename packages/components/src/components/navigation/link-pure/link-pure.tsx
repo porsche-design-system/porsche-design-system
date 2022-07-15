@@ -158,7 +158,7 @@ export class LinkPure {
             download: this.download,
             rel: this.rel,
             ...(hasSubline && { 'aria-describedby': 'subline' }),
-            ...parseAndGetAriaAttributes(this.aria, LINK_ARIA_ATTRIBUTES),
+            ...parseAndGetAriaAttributes(this.aria),
           })}
           ref={(el) => (this.linkTag = el)}
         >

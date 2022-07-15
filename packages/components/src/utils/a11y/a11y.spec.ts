@@ -1,10 +1,5 @@
 import * as a11yUtils from './a11y';
-import {
-  parseAndGetAriaAttributes,
-  setAriaAttributes,
-  SetAriaAttributesOptions,
-  throwIfAriaAttributesAreInvalid,
-} from './a11y';
+import { parseAndGetAriaAttributes, setAriaAttributes, SetAriaAttributesOptions } from './a11y';
 import * as jsonUtils from '../json';
 import * as setAttributeUtils from '../dom/setAttribute';
 import * as removeAttributeUtils from '../dom/removeAttribute';
@@ -47,24 +42,6 @@ describe('setAriaAttributes()', () => {
   });
 });
 
-describe('throwIfAriaAttributesAreInvalid()', () => {
-  it('should throw error for unsupported attribute', () => {
-    const testFunc = () => {
-      throwIfAriaAttributesAreInvalid(['aria-asd' as any], ['aria-label']);
-    };
-
-    expect(testFunc).toThrowErrorMatchingSnapshot();
-  });
-
-  it('should not throw error for supported attribute', () => {
-    const testFunc = () => {
-      throwIfAriaAttributesAreInvalid(['aria-label'], ['aria-label']);
-    };
-
-    expect(testFunc).not.toThrow();
-  });
-});
-
 describe('parseAndGetAriaAttributes()', () => {
   const rawAttributes = "{ aria-label: 'Some label' }";
 
@@ -73,13 +50,6 @@ describe('parseAndGetAriaAttributes()', () => {
 
     parseAndGetAriaAttributes(rawAttributes);
     expect(spy).toBeCalledWith(rawAttributes);
-  });
-
-  it('should call throwIfAriaAttributesAreInvalid()', () => {
-    const spy = jest.spyOn(a11yUtils, 'throwIfAriaAttributesAreInvalid');
-
-    parseAndGetAriaAttributes(rawAttributes, ['aria-label']);
-    expect(spy).toBeCalledWith(['aria-label'], ['aria-label']);
   });
 
   it.each<AriaAttributes | string>([
@@ -125,6 +95,6 @@ describe('parseAndGetAriaAttributes()', () => {
       }
     } catch (e) {}
 
-    expect(spy).toBeCalledWith(component['aria'], expect.any(Array));
+    expect(spy).toBeCalledWith(component['aria']);
   });
 });
