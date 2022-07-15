@@ -16,7 +16,7 @@ behavior.
 
 ## Basic example
 
-<Playground :frameworkMarkup="codeExample" :config="config" :markup="basic" :additionalJavaScriptLogic="javascriptLogic"></Playground>
+<Playground :frameworkMarkup="codeExample" :config="config" :markup="basic"></Playground>
 
 The accordion width is 100% of the parent container. We do strongly advise you to not use the full display width, as
 this will quickly result in a loss of context. Parent containers with a maximum width of `800px` are recommended.
@@ -50,7 +50,7 @@ preferred over a named slot).
 
 Please **refrain** from using any other than text content as slotted markup.
 
-<Playground :markup="slottedMarkup" :config="config" :additionalJavaScriptLogic="javascriptLogic"></Playground>
+<Playground :markup="slottedMarkup" :config="config"></Playground>
 
 ---
 
@@ -61,7 +61,7 @@ By setting `compact` to `true` you can have a more compact accordion. It removes
 Be aware, that the `size` property will be ignored when `compact` is set to `true`. We recommend using the property in
 case you need a side-navigation with an accordion like behavior.
 
-<Playground :markup="compactMarkup" :config="config" :additionalJavaScriptLogic="javascriptLogic"></Playground>
+<Playground :markup="compactMarkup" :config="config"></Playground>
 
 ---
 
@@ -75,9 +75,6 @@ export default class Code extends Vue {
   config = { themeable: true };
 
   codeExample = getAccordionCodeSamples();
-
-  javascriptLogic = `const accordions = document.querySelectorAll('p-accordion');
-    accordions.forEach(accordionEl => accordionEl.addEventListener('accordionChange', (e) => (e.target.open = e.detail.open)));`;
 
   size = 'small';
   content= `<p-text>

@@ -37,10 +37,10 @@
           :frameworks="frameworks"
         ></CodeBlock>
         <CodeEditor
-          v-if="!hasFrameworkMarkup"
           :markup="cleanedEditorMarkup"
           :theme="theme"
           :framework="activeFramework"
+          :has-framework-markup="hasFrameworkMarkup"
           :additional-java-script-logic="additionalJavaScriptLogic"
         ></CodeEditor>
       </template>
@@ -106,7 +106,7 @@
     }
 
     public get cleanedEditorMarkup(): string {
-      return cleanMarkup(this.codeBlockMarkup);
+      return this.hasFrameworkMarkup ? this.codeBlockMarkup : cleanMarkup(this.codeBlockMarkup);
     }
 
     public get mergedConfig(): PlaygroundConfig {
