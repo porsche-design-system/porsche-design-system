@@ -197,7 +197,7 @@ const generateComponentMeta = (): void => {
       source.matchAll(/@Prop\(\) public ([A-z]+)(?:: (.+?))?(?:= (.+))?;/g)
     ).map(([, propName]) => propName);
 
-    const [, invalidLinkUsageProp] = /throwIfInvalidLinkUsage\(this\.host, this\.(\w+)\);/.exec(source) || [];
+    const [, invalidLinkUsageProp] = /throwIfInvalidLink(?:Pure)?Usage\(this\.host, this\.(\w+)\);/.exec(source) || [];
     if (invalidLinkUsageProp) {
       // const [, propType] = new RegExp(`@Prop\\(\\) public ${invalidLinkUsageProp}\\?: (.+);`).exec(source) || [];
       requiredProps.push(invalidLinkUsageProp);
