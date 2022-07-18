@@ -5,8 +5,8 @@ import { buildResponsiveStyles, getCss, mergeDeep } from '../../../utils';
 import { addImportantToEachRule, getTextHiddenJssStyle, getTransition, pxToRemWithUnit } from '../../../styles';
 import { spacing } from '@porsche-design-system/utilities-v2';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
-import * as tokens from '../../../../../style-dictionary/build/web/dist/tokens.json';
-import * as tokensDark from '../../../../../style-dictionary/build/web/dist/tokens-dark.json';
+import * as tokens from '../../../../../style-dictionary/build/web/dist/switchCmp.json';
+import * as tokensDark from '../../../../../style-dictionary/build/web/dist/switchCmp-dark.json';
 
 const { small: spacingSmall } = spacing;
 
@@ -26,9 +26,7 @@ const getColors = (
   borderColor: string;
   borderColorHover: string;
 } => {
-  const {
-    component: { switchCmp },
-  } = theme === 'light' ? tokens : tokensDark;
+  const switchCmp = theme === 'light' ? tokens : tokensDark;
 
   const switchColors = switchCmp[checked ? 'checked' : 'unchecked'];
   // @ts-ignore

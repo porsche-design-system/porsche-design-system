@@ -12,8 +12,8 @@ import {
   pxToRemWithUnit,
 } from './';
 import { hoverMediaQuery } from './hover-media-query';
-import * as tokens from '../../../style-dictionary/build/web/dist/tokens.json';
-import * as tokensDark from '../../../style-dictionary/build/web/dist/tokens-dark.json';
+import * as tokens from '../../../style-dictionary/build/web/dist/button.json';
+import * as tokensDark from '../../../style-dictionary/build/web/dist/button-dark.json';
 
 const linkButtonPadding = `${pxToRemWithUnit(11)} ${pxToRemWithUnit(15)} ${pxToRemWithUnit(11)} ${pxToRemWithUnit(39)}`;
 
@@ -85,9 +85,7 @@ export const getLinkButtonStyles = (
   // const isDarkTheme = isThemeDark(theme);
   const isTertiary = variant === 'tertiary';
 
-  const {
-    component: { button },
-  } = theme === 'light' ? tokens : tokensDark;
+  const button = theme === 'light' ? tokens : tokensDark;
 
   const {
     hover: { text: hoverColor },

@@ -3,6 +3,8 @@ import { extendSwiftUIColor, extendSwiftUIImage } from '../formats';
 import { attributeCTI, colorRGB, remToFloat } from '../transforms';
 import { colorsets, generateGraphics } from '../actions';
 import { getColor, getDarkFiles, getNonCoreFiles, MODES } from './build-utils';
+import * as fs from 'fs';
+import * as path from 'path';
 
 const IOS_PATH = `build/ios/dist/`;
 const ANDROID_PATH = `build/android/styledictionary/src/main/res/`;
@@ -53,21 +55,20 @@ styleDictionary
     ],
 
     platforms: {
-      scss: {
-        transformGroup: `scss`,
-        buildPath: WEB_PATH,
-        files: [
-          {
-            destination: 'variables.scss',
-            format: 'scss/map-deep',
-            options: {
-              outputReferences: true,
-            },
-          },
-        ],
-      },
-
-      js: {
+      // scss: {
+      //   transformGroup: `scss`,
+      //   buildPath: WEB_PATH,
+      //   files: [
+      //     {
+      //       destination: 'variables.scss',
+      //       format: 'scss/map-deep',
+      //       options: {
+      //         outputReferences: true,
+      //       },
+      //     },
+      //   ],
+      // },
+      json: {
         transformGroup: `web`,
         buildPath: WEB_PATH,
         files: [
@@ -156,23 +157,23 @@ styleDictionary
     include: [`tokens/**/!(*.${MODES.join(`|*.`)}).json`],
     source: [`tokens/**/*.dark.json`],
     platforms: {
-      scss: {
-        transformGroup: `scss`,
-        buildPath: WEB_PATH,
-        files: [
-          {
-            destination: `variables-dark.scss`,
-            format: `scss/map-deep`,
-            // only putting in the tokens from files with '.dark' in the filepath
-            filter: getDarkFiles,
-            options: {
-              outputReferences: true,
-            },
-          },
-        ],
-      },
+      // scss: {
+      //   transformGroup: `scss`,
+      //   buildPath: WEB_PATH,
+      //   files: [
+      //     {
+      //       destination: `variables-dark.scss`,
+      //       format: `scss/map-deep`,
+      //       // only putting in the tokens from files with '.dark' in the filepath
+      //       filter: getDarkFiles,
+      //       options: {
+      //         outputReferences: true,
+      //       },
+      //     },
+      //   ],
+      // },
 
-      js: {
+      json: {
         transformGroup: `web`,
         buildPath: WEB_PATH,
         files: [
@@ -279,3 +280,22 @@ styleDictionary
 //     },
 //   })
 //   .buildAllPlatforms();
+
+// extract components from tokens.json
+const extractComponents = async () => {
+  console.log('Extracting components...');
+  ['tokens', 'tokens-dark'].forEach((file) => {
+    const isDark = file.includes('dark');
+    const tokensPath = path.resolve(`build/web/dist/${file}.json`);
+    const tokens = JSON.parse(fs.readFileSync(tokensPath, 'utf8'));
+
+    Object.keys(tokens.component).forEach((component) => {
+      const fileName = `${component}${isDark ? '-dark' : ''}.json`;
+      console.log(`Writing ${fileName}`);
+      const componentJSONFilePath = path.resolve('build/web/dist', fileName);
+      fs.writeFileSync(componentJSONFilePath, JSON.stringify(tokens.component[component], null, 2));
+    });
+  });
+};
+
+extractComponents().then(() => console.log('Extracting components done.'));
