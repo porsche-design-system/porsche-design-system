@@ -45,7 +45,9 @@ export const attachSlottedCss = (host: HTMLElement, getSlottedCss: (h: HTMLEleme
   const rootNode = host.getRootNode() as HTMLElementOrDocument;
   const elementMap = getElementMap(host);
 
-  if (elementMap.get(rootNode) === undefined) {
+  // isConnected check is needed because component may be removed from DOM in "parallel" and therefore
+  // the style doesn't matter and could produce validation errors because it is appended as a child
+  if (rootNode.isConnected && elementMap.get(rootNode) === undefined) {
     elementMap.set(rootNode, true);
     const style = document.createElement('style');
     style.appendChild(document.createTextNode(css));

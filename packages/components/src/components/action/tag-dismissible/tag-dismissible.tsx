@@ -9,7 +9,7 @@ import {
 } from '../../../utils';
 import { getComponentCss } from './tag-dismissible-styles';
 import type { TagDismissibleAriaAttribute, TagDismissibleColor } from './tag-dismissible-utils';
-import { TAG_DISMISSIBLE_ARIA_ATTRIBUTES, TAG_DISMISSIBLE_COLORS } from './tag-dismissible-utils';
+import { TAG_DISMISSIBLE_ARIA_ATTRIBUTES } from './tag-dismissible-utils';
 import type { SelectedAriaAttributes } from '../../../types';
 import type { TagColor } from '../tag/tag-utils';
 import { TAG_COLORS } from '../tag/tag-utils';
