@@ -8,5 +8,4 @@ export * from './throwIfParentIsNotOfKind';
 export * from './throwIfParentIsNotOneOfKind';
 export * from './throwIfPropIsUndefined';
 export * from './throwIfRootNodeIsNotOneOfKind';
-export * from './throwIfValueIsInvalid';
 export * from './validateProps';
