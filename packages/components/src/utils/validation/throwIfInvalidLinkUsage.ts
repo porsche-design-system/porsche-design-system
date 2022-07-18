@@ -5,7 +5,9 @@ export const throwIfInvalidLinkUsage = (host: HTMLElement, hrefValue: string): v
 
   if (!isInvalid || !hrefValue) {
     try {
-      !hrefValue && getDirectAndOnlyChildOfKindHTMLElementOrThrow(host, 'a');
+      if (!hrefValue) {
+        getDirectAndOnlyChildOfKindHTMLElementOrThrow(host, 'a');
+      }
     } catch {
       isInvalid = true;
     }
