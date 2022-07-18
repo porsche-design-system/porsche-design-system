@@ -6,7 +6,6 @@ import {
   attachComponentCss,
   getDirectChildHTMLElement,
   getPrefixedTagNames,
-  throwIfValueIsInvalid,
   validateProps,
 } from '../../../utils';
 import type { PropTypes } from '../../../utils';
@@ -42,7 +41,6 @@ export class Tag {
 
   public componentWillRender(): void {
     validateProps(this, propTypes);
-    throwIfValueIsInvalid(this.color, TAG_COLORS, 'color');
     attachComponentCss(
       this.host,
       getComponentCss,

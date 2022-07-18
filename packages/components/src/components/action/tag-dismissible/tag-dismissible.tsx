@@ -5,7 +5,6 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   parseAndGetAriaAttributes,
-  throwIfValueIsInvalid,
   validateProps,
 } from '../../../utils';
 import { getComponentCss } from './tag-dismissible-styles';
@@ -39,7 +38,6 @@ export class TagDismissible {
 
   public componentWillRender(): void {
     validateProps(this, propTypes);
-    throwIfValueIsInvalid(this.color, TAG_DISMISSIBLE_COLORS, 'color');
     attachComponentCss(this.host, getComponentCss, this.color, !!this.label);
   }
 

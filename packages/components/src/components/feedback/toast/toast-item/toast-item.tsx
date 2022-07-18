@@ -7,7 +7,6 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   throwIfRootNodeIsNotOneOfKind,
-  throwIfValueIsInvalid,
   validateProps,
 } from '../../../../utils';
 import type { PropTypes } from '../../../../utils';
@@ -46,8 +45,6 @@ export class ToastItem {
 
   public componentWillRender(): void {
     validateProps(this, propTypes);
-    // TODO: remove?
-    throwIfValueIsInvalid(this.state, TOAST_STATES, 'state');
     attachComponentCss(this.host, getComponentCss, this.state, this.theme);
   }
 

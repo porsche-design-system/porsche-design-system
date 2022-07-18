@@ -4,7 +4,6 @@ import {
   attachComponentCss,
   attachSlottedCss,
   hasHeading,
-  throwIfValueIsInvalid,
   AllowedTypes,
   validateProps,
 } from '../../../utils';
@@ -69,8 +68,6 @@ export class InlineNotification {
 
   public componentWillRender(): void {
     validateProps(this, propTypes);
-    // TODO: remove?
-    throwIfValueIsInvalid(this.state, INLINE_NOTIFICATION_STATES, 'state');
     attachComponentCss(this.host, getComponentCss, this.state, !!this.actionLabel, !this.persistent, this.theme);
   }
 

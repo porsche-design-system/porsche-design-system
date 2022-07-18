@@ -4,7 +4,6 @@ import {
   hasNamedSlot,
   attachComponentCss,
   getShadowRootHTMLElement,
-  throwIfValueIsInvalid,
   attachSlottedCss,
   validateProps,
   AllowedTypes,
@@ -64,7 +63,6 @@ export class Banner {
 
   public componentWillRender(): void {
     validateProps(this, propTypes);
-    throwIfValueIsInvalid(this.state, BANNER_STATES, 'state');
   }
 
   public disconnectedCallback(): void {
