@@ -11,7 +11,7 @@
   import { Framework, FrameworkMarkup, Theme } from '@/models';
   import { themeDark } from '@porsche-design-system/utilities-v2';
   import { codePenConfig } from '@/lib/partialResults';
-  import { openInStackBlitz } from '@/utils/stackblitz';
+  import { openInStackBlitz } from '@/utils/stackblitz/openInStackBlitz';
 
   @Component
   export default class CodeEditor extends Vue {
