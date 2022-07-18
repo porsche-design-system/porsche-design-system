@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import type { TabChangeEvent } from '@porsche-design-system/components-angular';
 
 @Component({
-  selector: 'page-tabs-bar-example',
+  selector: 'tabs-bar-example',
   styles: [
     `
       div[role='tabpanel'] {
@@ -40,7 +40,7 @@ import type { TabChangeEvent } from '@porsche-design-system/components-angular';
     </ng-container>
   `,
 })
-export class TabsBarExampleComponent {
+export class TabsBarExample {
   tabIndex: number = 0;
   tabPanels: string[] = ['One', 'Two', 'Three'];
 

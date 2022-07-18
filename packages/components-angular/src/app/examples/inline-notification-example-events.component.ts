@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'page-inline-notification-example-events',
+  selector: 'inline-notification-example-events',
   template: `
     <button type="button" (click)="onShow()">Show Inline Notification</button>
     <p-inline-notification
@@ -13,7 +13,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InlineNotificationExampleEventsComponent {
+export class InlineNotificationExampleEvents {
   isActive = false;
 
   onShow() {
