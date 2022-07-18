@@ -30,7 +30,7 @@ import {
   isSizeInherit,
   parseAndGetAriaAttributes,
   PropTypes,
-  throwIfInvalidLinkUsage,
+  throwIfInvalidLinkPureUsage,
   transitionListener,
   validateProps,
   warnIfParentIsPTextAndIconIsNone,
@@ -112,7 +112,7 @@ export class LinkPure {
   }
 
   public componentWillLoad(): void {
-    throwIfInvalidLinkUsage(this.host, this.href);
+    throwIfInvalidLinkPureUsage(this.host, this.href);
   }
 
   public componentWillRender(): void {
