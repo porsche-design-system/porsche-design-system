@@ -16,7 +16,7 @@ import type { SortingChangeEvent } from '@porsche-design-system/components-react
 import { useCallback, useState } from 'react';
 import { dataAdvanced, DataAdvanced, headAdvanced } from '@porsche-design-system/shared';
 
-export const TableExampleAdvancedPage = (): JSX.Element => {
+export const TableExampleAdvanced = (): JSX.Element => {
   const [head, setHead] = useState(headAdvanced);
   const [data, setData] = useState(dataAdvanced);
 

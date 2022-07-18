@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { dataBasic, headBasic } from '@porsche-design-system/shared';
 
 @Component({
-  selector: 'page-table-example-basic',
+  selector: 'table-example-basic',
   template: `
     <p-table caption="Some caption">
       <p-table-head>
@@ -23,7 +23,7 @@ import { dataBasic, headBasic } from '@porsche-design-system/shared';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableExampleBasicComponent {
+export class TableExampleBasic {
   public head = headBasic;
   public data = dataBasic;
 }

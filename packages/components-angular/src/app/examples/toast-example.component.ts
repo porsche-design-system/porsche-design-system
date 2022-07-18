@@ -2,14 +2,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ToastManager } from '@porsche-design-system/components-angular';
 
 @Component({
-  selector: 'page-toast-example',
+  selector: 'toast-example',
   template: `
     <button type="button" (click)="onButtonClick()">Queue Toast</button>
     <p-toast></p-toast>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ToastExampleComponent {
+export class ToastExample {
   private counter = 1;
 
   constructor(private toastManager: ToastManager) {}

@@ -2,7 +2,7 @@ import { PTabsBar, PText } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 import type { TabChangeEvent } from '@porsche-design-system/components-react';
 
-export const TabsBarExamplePage = (): JSX.Element => {
+export const TabsBarExample = (): JSX.Element => {
   const [tabIndex, setTabIndex] = useState<number>(0);
   const onTabChange = useCallback((e: CustomEvent<TabChangeEvent>) => {
     setTabIndex(e.detail.activeTabIndex);

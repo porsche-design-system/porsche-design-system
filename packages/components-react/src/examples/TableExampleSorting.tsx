@@ -11,7 +11,7 @@ import type { SortingChangeEvent } from '@porsche-design-system/components-react
 import { useCallback, useState } from 'react';
 import { dataSorting, DataSorting, headSorting } from '@porsche-design-system/shared';
 
-export const TableExampleSortingPage = (): JSX.Element => {
+export const TableExampleSorting = (): JSX.Element => {
   const [head, setHead] = useState(headSorting);
   const [data, setData] = useState(dataSorting);
 

@@ -3,7 +3,7 @@ import { dataAdvanced, DataAdvanced, headAdvanced } from '@porsche-design-system
 import type { SortingChangeEvent } from '@porsche-design-system/components-angular';
 
 @Component({
-  selector: 'page-table-example-advanced',
+  selector: 'table-example-advanced',
   template: `
     <p-table (sortingChange)="onSortingChange($event)">
       <p-headline slot="caption" variant="headline-3">Some visual caption</p-headline>
@@ -45,7 +45,7 @@ import type { SortingChangeEvent } from '@porsche-design-system/components-angul
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableExampleAdvancedComponent {
+export class TableExampleAdvanced {
   public head = headAdvanced;
   public data = dataAdvanced;
 
