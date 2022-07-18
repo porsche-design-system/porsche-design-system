@@ -24,9 +24,9 @@ type OpenFrameWorkOpts = Omit<OpenInStackBlitzOpts, 'framework' | 'theme'> & {
 
 const bodyStyles = `body { background: ${themeDark.background.base}; }`;
 
-export const openInStackBlitz = (props: OpenInStackBlitzOpts) => {
+export const openInStackBlitz = (props: OpenInStackBlitzOpts): void => {
   const { markup, framework, theme, hasFrameworkMarkup, additionalJavaScriptLogic } = props;
-  const convertedMarkup = convertMarkup(markup, framework);
+  const convertedMarkup = hasFrameworkMarkup ? markup : convertMarkup(markup, framework);
 
   const componentNamesArray = Array.from(convertedMarkup.matchAll(/<((?:\w|-)+)(?:.|\n)*?>/g) ?? [])
     .map(([, x]) => x)
@@ -58,7 +58,7 @@ export const openInStackBlitz = (props: OpenInStackBlitzOpts) => {
   }
 };
 
-export const openVanillaJS = (props: OpenFrameWorkOpts) => {
+export const openVanillaJS = (props: OpenFrameWorkOpts): void => {
   const { markup, description, title, isThemeDark, additionalJavaScriptLogic } = props;
 
   sdk.openProject(
@@ -86,7 +86,7 @@ ${additionalJavaScriptLogic}
   );
 };
 
-export const openReact = (props: OpenFrameWorkOpts) => {
+export const openReact = (props: OpenFrameWorkOpts): void => {
   const { markup, description, title, hasFrameworkMarkup, isThemeDark, componentNames } = props;
 
   const cleanedFragmentsMarkup = markup.replace(/(<\/?)(>)/g, '$1React.Fragment$2');
@@ -147,7 +147,7 @@ root.render(
   );
 };
 
-export const openAngular = (props: OpenFrameWorkOpts) => {
+export const openAngular = (props: OpenFrameWorkOpts): void => {
   const { markup, description, title, hasFrameworkMarkup, isThemeDark } = props;
 
   const [, matchedClassName] = markup.match(/export class ([A-z]+) {/) ?? [];
