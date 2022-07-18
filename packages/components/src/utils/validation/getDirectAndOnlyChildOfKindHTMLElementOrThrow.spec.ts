@@ -1,22 +1,23 @@
 import { getDirectAndOnlyChildOfKindHTMLElementOrThrow } from './getDirectAndOnlyChildOfKindHTMLElementOrThrow';
-import * as getDirectChildHTMLElementUtils from '../dom/getDirectChildHTMLElement';
+import * as getDirectChildHTMLElementsUtils from '../dom/getDirectChildHTMLElements';
 
-it('should call getDirectChildHTMLElement() with correct parameters and return its result', () => {
+it('should call getDirectChildHTMLElements() with correct parameters and return its first result', () => {
   const parent = document.createElement('div');
-  const child = document.createElement('a');
-  parent.append(child);
+  const child1 = document.createElement('a');
+  const child2 = document.createElement('span');
+  parent.append(child1, child2);
 
-  const spy = jest.spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement').mockReturnValue(child);
+  const spy = jest.spyOn(getDirectChildHTMLElementsUtils, 'getDirectChildHTMLElements').mockReturnValue([child1]);
   const selector = 'a,button';
 
   const result = getDirectAndOnlyChildOfKindHTMLElementOrThrow(parent, selector);
-  expect(result).toBe(child);
+  expect(result).toBe(child1);
   expect(spy).toBeCalledWith(parent, selector);
 });
 
 const errorMessage = '"div has to contain a single direct child of: a"';
 
-it('should throw error if there is more than 1 child same kind', () => {
+it('should throw error if there is more than 1 child of same kind', () => {
   const parent = document.createElement('div');
   const child1 = document.createElement('a');
   const child2 = document.createElement('a');
@@ -27,15 +28,13 @@ it('should throw error if there is more than 1 child same kind', () => {
   );
 });
 
-it('should throw error if there is more than 1 child of other kind', () => {
+it('should not throw error if there is exactly 1 child of kind', () => {
   const parent = document.createElement('div');
   const child1 = document.createElement('a');
   const child2 = document.createElement('span');
   parent.append(child1, child2);
 
-  expect(() => getDirectAndOnlyChildOfKindHTMLElementOrThrow(parent, 'a')).toThrowErrorMatchingInlineSnapshot(
-    errorMessage
-  );
+  expect(() => getDirectAndOnlyChildOfKindHTMLElementOrThrow(parent, 'a')).not.toThrow();
 });
 
 it('should throw error if there is no child', () => {
@@ -46,7 +45,7 @@ it('should throw error if there is no child', () => {
   );
 });
 
-it('should throw error if there is a nested child', () => {
+it('should throw error if there is only a nested child', () => {
   const parent = document.createElement('div');
   const child = document.createElement('div');
   const nestedChild = document.createElement('a');
@@ -55,7 +54,7 @@ it('should throw error if there is a nested child', () => {
 
   // TODO: workaround until jsdom actually returns null for this case
   // https://github.com/jsdom/jsdom/issues/2998
-  jest.spyOn(parent, 'querySelector').mockReturnValue(null);
+  jest.spyOn(parent, 'querySelectorAll').mockReturnValue(document.createDocumentFragment().querySelectorAll('*'));
 
   expect(() => getDirectAndOnlyChildOfKindHTMLElementOrThrow(parent, 'a')).toThrowErrorMatchingInlineSnapshot(
     errorMessage
