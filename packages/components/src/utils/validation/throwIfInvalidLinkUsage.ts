@@ -1,7 +1,7 @@
 import { getDirectAndOnlyChildOfKindHTMLElementOrThrow, getTagName } from '../../utils';
 
 export const throwIfInvalidLinkUsage = (host: HTMLElement, hrefValue: string): void => {
-  let isInvalid = hrefValue && !!host.children.length;
+  let isInvalid = hrefValue && host.children.length > 0;
 
   if (!isInvalid || !hrefValue) {
     try {
