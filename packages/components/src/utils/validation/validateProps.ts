@@ -26,20 +26,25 @@ export type ValidationError = {
 
 export const formatObjectOutput = (value: any): string => {
   return JSON.stringify(value)
-    .replace(/"([A-z?]+)":/g, '$1:')
-    .replace(/([,:{])/g, '$1 ')
-    .replace(/(})/g, ' $1')
-    .replace(/^"(.+)"$/, '$1');
+    .replace(/"([A-z?]+)":/g, '$1:') // remove double quotes from keys
+    .replace(/([,:{])/g, '$1 ') // add space after following: ,:{
+    .replace(/(})/g, ' $1') // add space before following: }
+    .replace(/^"(.+)"$/, '$1'); // remove wrapping double quotes
 };
 
 export const formatArrayOutput = <T>(value: T[] | readonly T[]): string => {
-  // eslint-disable-next-line @typescript-eslint/quotes
-  return JSON.stringify(value).replace(/'/g, '').replace(/"/g, "'").replace(/,/g, ', ');
+  return (
+    JSON.stringify(value)
+      .replace(/'/g, '') // remove single quotes
+      // eslint-disable-next-line @typescript-eslint/quotes
+      .replace(/"/g, "'") // replace double quotes with single quotes
+      .replace(/,/g, ', ') // add space after comma
+  );
 };
 
 export const printErrorMessage = ({
   propName,
-  propValue,
+  propValue, // TODO: might be nicer if this is always a string
   propType,
   componentName,
 }: ValidationError & { componentName: string }): void => {
@@ -70,7 +75,10 @@ export const getBreakpointCustomizableStructure = <T>(
   allowedValues: Extract<AllowedTypesKeys, 'boolean'> | T[] | readonly T[]
 ): string => {
   if (allowedValues !== 'boolean') {
-    allowedValues = formatArrayOutput(allowedValues).replace('[', '(').replace(']', ')[]').replace(/,/g, ' |') as any;
+    allowedValues = formatArrayOutput(allowedValues)
+      .replace('[', '(') // starting inline type literal array
+      .replace(']', ')[]') // ending inline type literal array
+      .replace(/,/g, ' |') as any; // replace commas with a pipe
   }
   return breakpointCustomizableTemplate.replace(/value/g, allowedValues as string);
 };
@@ -86,16 +94,16 @@ export const getAriaStructure = <T>(allowedAriaAttributes: readonly T[]): string
         {}
       )
     )
-      .replace(/":/g, '"?:')
+      .replace(/":/g, '"?:') // add optional modifier on keys before colon
       // eslint-disable-next-line @typescript-eslint/quotes
-      .replace(/"/g, "'")
+      .replace(/"/g, "'") // replace double quotes with single quotes
   );
 };
 
 export const getShapeStructure = <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): string => {
   return formatObjectOutput(
-    Object.keys(shapeStructure).reduce((prev, key) => ({ ...prev, [key]: shapeStructure[key].name || 'string' }), {})
-  ).replace(/"/g, '');
+    Object.keys(shapeStructure).reduce((prev, key) => ({ ...prev, [key]: shapeStructure[key].name }), {})
+  ).replace(/"/g, ''); // remove double quotes
 };
 
 export const isBreakpointCustomizableValueInvalid = <T>(
@@ -107,6 +115,7 @@ export const isBreakpointCustomizableValueInvalid = <T>(
 
 type AllowedTypesKeys = 'string' | 'number' | 'boolean';
 
+// TODO: maybe dissolve object structure and have standalone utils
 export const AllowedTypes: {
   [key in AllowedTypesKeys]: ValidatorFunction;
 } & {
@@ -137,7 +146,7 @@ export const AllowedTypes: {
         return {
           propName,
           propValue,
-          propType: allowedValuesOrValidatorFunctions.map((func) => (func as any).name || 'string').join(', '),
+          propType: allowedValuesOrValidatorFunctions.map((func) => (func as any).name).join(', '),
         };
       }
     },
@@ -149,15 +158,16 @@ export const AllowedTypes: {
 
       if (typeof value === 'object') {
         if (
-          // check structure
+          // check structure keys: base, xs, s, m, l, xl
+          // TODO: check for base key
           Object.keys(value).some((key) => !BREAKPOINTS.includes(key as BreakpointKey)) ||
-          // check values
+          // check actual values of keys, e.g. true, false, 'small' or 5
           Object.values(value).some((val) => isBreakpointCustomizableValueInvalid(val, allowedValues))
         ) {
           isInvalid = true;
         }
       } else if (isBreakpointCustomizableValueInvalid(value, allowedValues)) {
-        // single
+        // single flat value like true, false, 'small' or 5, not breakpoint customizable object
         isInvalid = true;
       }
 
