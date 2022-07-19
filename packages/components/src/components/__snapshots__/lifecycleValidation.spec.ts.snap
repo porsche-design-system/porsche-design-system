@@ -337,15 +337,11 @@ Object {
 }
 `;
 
-exports[`should call validateProps() with correct parameters via componentWillRender for p-table-body: propTypes with ValidatorFunctions 1`] = `Object {}`;
-
 exports[`should call validateProps() with correct parameters via componentWillRender for p-table-cell: propTypes with ValidatorFunctions 1`] = `
 Object {
   "multiline": "boolean",
 }
 `;
-
-exports[`should call validateProps() with correct parameters via componentWillRender for p-table-head: propTypes with ValidatorFunctions 1`] = `Object {}`;
 
 exports[`should call validateProps() with correct parameters via componentWillRender for p-table-head-cell: propTypes with ValidatorFunctions 1`] = `
 Object {
@@ -354,10 +350,6 @@ Object {
   "sort": "shape",
 }
 `;
-
-exports[`should call validateProps() with correct parameters via componentWillRender for p-table-head-row: propTypes with ValidatorFunctions 1`] = `Object {}`;
-
-exports[`should call validateProps() with correct parameters via componentWillRender for p-table-row: propTypes with ValidatorFunctions 1`] = `Object {}`;
 
 exports[`should call validateProps() with correct parameters via componentWillRender for p-tabs: propTypes with ValidatorFunctions 1`] = `
 Object {
@@ -434,8 +426,6 @@ Object {
   "theme": "oneOf",
 }
 `;
-
-exports[`should call validateProps() with correct parameters via componentWillRender for p-text-list-item: propTypes with ValidatorFunctions 1`] = `Object {}`;
 
 exports[`should call validateProps() with correct parameters via componentWillRender for p-textarea-wrapper: propTypes with ValidatorFunctions 1`] = `
 Object {
