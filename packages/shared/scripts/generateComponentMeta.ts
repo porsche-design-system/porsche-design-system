@@ -156,7 +156,7 @@ const generateComponentMeta = (): void => {
         requiredChildSelector = requiredChild;
         requiredChild = cleanSelector(requiredChild);
       } else {
-        // it's a variable or some dynammic value
+        // it's a variable or some dynamic value
         const [, valueRaw] = new RegExp(`const ${requiredChild} = ((?:.|\\s)*?;)`).exec(source) || [];
         const value = eval(valueRaw || requiredChild);
         requiredChild = value.split(',')[0];
