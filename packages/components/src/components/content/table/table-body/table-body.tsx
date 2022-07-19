@@ -1,9 +1,6 @@
 import { Component, Element, h, Host, JSX } from '@stencil/core';
-import { attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../../utils';
-import type { PropTypes } from '../../../../utils';
+import { attachComponentCss, throwIfParentIsNotOfKind } from '../../../../utils';
 import { getComponentCss } from './table-body-styles';
-
-const propTypes: PropTypes<typeof TableBody> = {};
 
 @Component({
   tag: 'p-table-body',
@@ -15,10 +12,6 @@ export class TableBody {
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, 'pTable');
     attachComponentCss(this.host, getComponentCss);
-  }
-
-  public componentWillRender(): void {
-    validateProps(this, propTypes);
   }
 
   public render(): JSX.Element {

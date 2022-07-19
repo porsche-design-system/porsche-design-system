@@ -1,9 +1,6 @@
 import { Component, Element, h, Host, JSX } from '@stencil/core';
-import { attachComponentCss, getAttribute, throwIfParentIsNotOfKind, validateProps } from '../../../../utils';
-import type { PropTypes } from '../../../../utils';
+import { attachComponentCss, getAttribute, throwIfParentIsNotOfKind } from '../../../../utils';
 import { getComponentCss } from './text-list-item-styles';
-
-const propTypes: PropTypes<typeof TextListItem> = {};
 
 @Component({
   tag: 'p-text-list-item',
@@ -17,7 +14,6 @@ export class TextListItem {
   }
 
   public componentWillRender(): void {
-    validateProps(this, propTypes);
     const list = this.host.parentElement as HTMLPTextListElement;
     if (list) {
       const { listType, orderType } = list;
