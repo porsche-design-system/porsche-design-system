@@ -403,9 +403,7 @@ Object {
         "flex": "initial",
       },
     ],
-    "requiredParent": Array [
-      "p-flex",
-    ],
+    "requiredParent": "p-flex",
     "shouldPatchSlot": false,
     "styling": "jss",
   },
@@ -451,9 +449,7 @@ Object {
         "offset": "0",
       },
     ],
-    "requiredParent": Array [
-      "p-grid",
-    ],
+    "requiredParent": "p-grid",
     "shouldPatchSlot": false,
     "styling": "jss",
   },
@@ -993,9 +989,7 @@ Object {
         "iconSource": null,
       },
     ],
-    "requiredParent": Array [
-      "p-segmented-control",
-    ],
+    "requiredParent": "p-segmented-control",
     "requiredProps": Array [
       "value",
     ],
@@ -1185,9 +1179,7 @@ Object {
         "disabled": null,
       },
     ],
-    "requiredParent": Array [
-      "p-stepper-horizontal",
-    ],
+    "requiredParent": "p-stepper-horizontal",
     "shouldPatchSlot": false,
     "styling": "jss",
   },
@@ -1258,9 +1250,7 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
-    "requiredParent": Array [
-      "p-table",
-    ],
+    "requiredParent": "p-table",
     "shouldPatchSlot": false,
     "styling": "jss",
   },
@@ -1279,9 +1269,7 @@ Object {
         "multiline": null,
       },
     ],
-    "requiredParent": Array [
-      "p-table-row",
-    ],
+    "requiredParent": "p-table-row",
     "shouldPatchSlot": false,
     "styling": "jss",
   },
@@ -1295,9 +1283,7 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
-    "requiredParent": Array [
-      "p-table",
-    ],
+    "requiredParent": "p-table",
     "shouldPatchSlot": false,
     "styling": "jss",
   },
@@ -1322,9 +1308,7 @@ Object {
         "multiline": null,
       },
     ],
-    "requiredParent": Array [
-      "p-table-head-row",
-    ],
+    "requiredParent": "p-table-head-row",
     "shouldPatchSlot": false,
     "styling": "jss",
   },
@@ -1338,9 +1322,7 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
-    "requiredParent": Array [
-      "p-table-head",
-    ],
+    "requiredParent": "p-table-head",
     "shouldPatchSlot": false,
     "styling": "jss",
   },
@@ -1354,9 +1336,7 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
-    "requiredParent": Array [
-      "p-table-body",
-    ],
+    "requiredParent": "p-table-body",
     "shouldPatchSlot": false,
     "styling": "jss",
   },
@@ -1432,9 +1412,7 @@ Object {
         "label": null,
       },
     ],
-    "requiredParent": Array [
-      "p-tabs",
-    ],
+    "requiredParent": "p-tabs",
     "requiredProps": Array [
       "label",
     ],
@@ -1622,9 +1600,7 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
-    "requiredParent": Array [
-      "p-text-list",
-    ],
+    "requiredParent": "p-text-list",
     "shouldPatchSlot": true,
     "styling": "jss",
   },

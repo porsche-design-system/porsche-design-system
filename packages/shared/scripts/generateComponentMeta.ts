@@ -48,7 +48,7 @@ const generateComponentMeta = (): void => {
   isDelegatingFocus: boolean;
   isInternal: boolean;
   isThemeable: boolean;
-  requiredParent?: TagName[];
+  requiredParent?: TagName;
   requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
   requiredChild?: string; // direct and only child
   requiredChildSelector?: string; // might contain multiple selectors separated by comma
@@ -74,7 +74,7 @@ const generateComponentMeta = (): void => {
     isDelegatingFocus: boolean;
     isInternal: boolean;
     isThemeable: boolean;
-    requiredParent?: TagName[]; // TODO: why array? we don't have a component that can be used in multiple other components
+    requiredParent?: TagName; // typically components with an `-item` suffix need the right parent in order to work
     requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
     requiredChild?: string; // direct and only child
     requiredChildSelector?: string; // might contain multiple selectors separated by comma
@@ -128,15 +128,6 @@ const generateComponentMeta = (): void => {
     // required parent
     const [, requiredParentCamelCase] = /throwIfParentIsNotOfKind\(.+'(\w+)'\)/.exec(source) || [];
     const requiredParent = requiredParentCamelCase ? (paramCase(requiredParentCamelCase) as TagName) : undefined;
-    const [, requiredParentsCamelCase] = /throwIfParentIsNotOneOfKind\(.+\[([\w,\s']+)\]\)/.exec(source) || [];
-    const requiredParents = requiredParentsCamelCase
-      ? (requiredParentsCamelCase
-          .replace(/['\s]/g, '')
-          .split(',')
-          .map((parent) => paramCase(parent)) as TagName[])
-      : [];
-
-    const allRequiredParents = [requiredParent, ...requiredParents].filter((x) => x);
 
     // required root node
     const [, requiredRootNodesCamelCase] = /throwIfRootNodeIsNotOneOfKind\(.+\[([\w,\s']+)\]\)/.exec(source) || [];
@@ -184,7 +175,8 @@ const generateComponentMeta = (): void => {
           ? true
           : propValue === 'false'
           ? false
-          : // undefined values get lost in JSON.stringify, but null is allowed
+          : // undefined values get lost in JSON.stringif
+            // , but null is allowed
             propValue?.replace(/'/g, '')) || null;
       return {
         [propName]: cleanedValue,
@@ -223,7 +215,7 @@ const generateComponentMeta = (): void => {
       isDelegatingFocus,
       isInternal,
       isThemeable,
-      ...(allRequiredParents.length && { requiredParent: allRequiredParents }),
+      requiredParent,
       ...(requiredRootNodes.length && { requiredRootNode: requiredRootNodes }),
       requiredChild,
       requiredChildSelector,

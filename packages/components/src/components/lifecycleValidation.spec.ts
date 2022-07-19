@@ -59,7 +59,10 @@ it.each<TagName>(tagNamesWithRequiredParent)(
 
     component.connectedCallback();
 
-    expect(spy).toBeCalledWith(component.host, camelCase(getComponentMeta(tagName).requiredParent + ''));
+    expect(spy).toBeCalledWith(
+      component.host,
+      camelCase(getComponentMeta(tagName).requiredParent as unknown as string)
+    );
   }
 );
 
