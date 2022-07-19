@@ -131,6 +131,11 @@ Object {
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
+    "props": Array [
+      Object {
+        "direction": "{ base: column, xs: row }",
+      },
+    ],
     "shouldPatchSlot": false,
     "styling": "jss",
   },
