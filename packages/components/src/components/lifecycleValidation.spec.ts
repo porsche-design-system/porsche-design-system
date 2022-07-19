@@ -18,7 +18,12 @@ const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).
 const tagNamesWithSlottedCss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasSlottedCss);
 const tagNamesWithObserveAttributes = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasObserveAttributes);
 const tagNamesWithObserveChildren = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasObserveChildren);
-const tagNamesPublic = TAG_NAMES.filter((tagName) => !getComponentMeta(tagName).isInternal);
+const tagNamesPublicWithProps = TAG_NAMES.filter(
+  (tagName) => !getComponentMeta(tagName).isInternal && getComponentMeta(tagName).props
+);
+const tagNamesPublicWithoutProps = TAG_NAMES.filter(
+  (tagName) => !getComponentMeta(tagName).isInternal && !getComponentMeta(tagName).props
+);
 
 // TODO: group tests by component instead of by feature?
 
@@ -83,7 +88,7 @@ it.each<TagName>(tagNamesWithRequiredRootNode)(
   }
 );
 
-it.each<TagName>(tagNamesPublic)(
+it.each<TagName>(tagNamesPublicWithProps)(
   'should call validateProps() with correct parameters via componentWillRender for %s',
   (tagName) => {
     // extract the structure of the actual propTypes with ValidatorFunctions for a snapshot
@@ -122,6 +127,17 @@ it.each<TagName>(tagNamesPublic)(
     expect(propTypes).toMatchSnapshot('propTypes with ValidatorFunctions');
   }
 );
+
+it.each<TagName>(tagNamesPublicWithoutProps)('should not call validateProps() for %s', (tagName) => {
+  const spy = jest.spyOn(validatePropsUtils, 'validateProps');
+  const component = componentFactory(tagName);
+
+  try {
+    component.componentWillRender();
+  } catch {}
+
+  expect(spy).not.toBeCalled();
+});
 
 it.each<TagName>(tagNamesWithJss)(
   'should call attachComponentCss() with correct parameters in correct lifecycle for %s',
