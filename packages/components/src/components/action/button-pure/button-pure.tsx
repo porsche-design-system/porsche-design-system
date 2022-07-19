@@ -36,7 +36,7 @@ const propTypes: PropTypes<typeof ButtonPure> = {
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
   size: AllowedTypes.breakpoint<TextSize>(TEXT_SIZES),
-  weight: AllowedTypes.oneOf(TEXT_WEIGHTS),
+  weight: AllowedTypes.oneOf<TextWeight>(TEXT_WEIGHTS),
   icon: AllowedTypes.string,
   iconSource: AllowedTypes.string,
   active: AllowedTypes.boolean,
