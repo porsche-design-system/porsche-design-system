@@ -65,6 +65,7 @@ export class SegmentedControlItem {
 
   public componentWillRender(): void {
     validateProps(this, propTypes);
+    // this additional validation is still needed because undefined is allowed with current propTypes
     throwIfPropIsUndefined(this.host, 'value', this.value);
 
     attachComponentCss(
