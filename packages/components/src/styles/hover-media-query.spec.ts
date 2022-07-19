@@ -4,8 +4,6 @@ import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
 import { addParentAndSetRequiredProps, componentFactory } from '../test-utils';
 
-jest.mock('../utils/validation/validateProps');
-
 const originalEnv = process.env;
 const style = {
   '&:hover, &:focus': {
