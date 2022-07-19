@@ -4,7 +4,7 @@ import { getComponentMeta } from '@porsche-design-system/shared';
 export const addParentAndSetRequiredProps = (tagName: TagName, component: any): void => {
   const meta = getComponentMeta(tagName);
   if (meta.requiredParent) {
-    const parent = document.createElement(meta.requiredParent[0]);
+    const parent = document.createElement(meta.requiredParent);
     parent.append(component.host as HTMLElement);
   }
 
