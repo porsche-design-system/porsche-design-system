@@ -112,6 +112,7 @@ export class LinkPure {
   }
 
   public componentWillLoad(): void {
+    // NOTE: we can't reuse the more precise throwIfInvalidLinkUsage because of subline variations
     throwIfInvalidLinkPureUsage(this.host, this.href);
   }
 
