@@ -7,7 +7,7 @@ export type StepperHorizontalItemInternalHTMLProps = {
 };
 
 export const STEPPER_ITEM_STATES = ['current', 'complete', 'warning'] as const;
-// TODO: should be called StepperItemState
+// TODO: should be called StepperHorizontalItemState
 export type StepperState = typeof STEPPER_ITEM_STATES[number];
 
 export const isStateCompleteOrWarning = (state: StepperState): boolean => {
