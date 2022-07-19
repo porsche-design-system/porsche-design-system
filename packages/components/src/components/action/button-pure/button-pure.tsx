@@ -43,7 +43,7 @@ const propTypes: PropTypes<typeof ButtonPure> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   alignLabel: AllowedTypes.oneOf(ALIGN_LABELS),
   stretch: AllowedTypes.breakpoint('boolean'),
-  theme: AllowedTypes.oneOf(THEMES_EXTENDED_ELECTRIC_DARK),
+  theme: AllowedTypes.oneOf<ThemeExtendedElectricDark>(THEMES_EXTENDED_ELECTRIC_DARK),
   aria: AllowedTypes.aria(BUTTON_ARIA_ATTRIBUTES),
 };
 
