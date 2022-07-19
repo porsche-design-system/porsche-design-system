@@ -307,10 +307,9 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
   };
 
   const buildParentMarkup = (markup: string, { requiredParent }: ComponentMeta): string => {
-    const [firstRequiredParent] = requiredParent || [];
-    if (firstRequiredParent) {
-      const markupWithParent = `<${firstRequiredParent}>${markup}</${firstRequiredParent}>`;
-      return buildParentMarkup(markupWithParent, getComponentMeta(firstRequiredParent));
+    if (requiredParent) {
+      const markupWithParent = `<${requiredParent}>${markup}</${requiredParent}>`;
+      return buildParentMarkup(markupWithParent, getComponentMeta(requiredParent));
     } else {
       return markup;
     }
