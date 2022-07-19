@@ -212,7 +212,7 @@ export const AllowedTypes: {
 // utility type to return public properties of generic type that are not a function or EventEmitter
 type FunctionPropertyNames<T> = {
   // eslint-disable-next-line @typescript-eslint/ban-types
-  [K in keyof T]: T[K] extends Function | EventEmitter ? K : never;
+  [K in keyof T]: T[K] extends Function | EventEmitter ? K : never; // or make `@Event` decorators private maybe?
 }[keyof T];
 
 // eslint-disable-next-line @typescript-eslint/ban-types
