@@ -315,7 +315,7 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
     }
   };
 
-  const attributes = componentMeta.requiredProps?.map((prop) => ` ${prop}="some value"`).join() || '';
+  const attributes = componentMeta.requiredProps?.map((prop) => ` ${prop}="value"`).join() || '';
 
   const componentMarkup = `<${tagName}${attributes}>${buildChildMarkup(componentMeta.requiredChild)}</${tagName}>`;
 

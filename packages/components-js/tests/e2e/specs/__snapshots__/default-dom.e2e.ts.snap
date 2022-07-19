@@ -271,7 +271,7 @@ exports[`should have no basic DOM regression for p-inline-notification 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-link 1`] = `
-"<a class=\\"root\\" href=\\"some value\\" target=\\"_self\\">
+"<a class=\\"root\\" href=\\"value\\" target=\\"_self\\">
   <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
   </p-icon>
   <span>
@@ -336,7 +336,7 @@ exports[`should have no basic DOM regression for p-link-pure 1`] = `
     color: #d5001c !important;
   }
 </style>
-<a class=\\"root\\" href=\\"some value\\" target=\\"_self\\">
+<a class=\\"root\\" href=\\"value\\" target=\\"_self\\">
   <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
   </p-icon>
   <p-text class=\\"label hydrated\\">
@@ -347,7 +347,7 @@ exports[`should have no basic DOM regression for p-link-pure 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-link-social 1`] = `
-"<a class=\\"root\\" href=\\"some value\\" target=\\"_self\\">
+"<a class=\\"root\\" href=\\"value\\" target=\\"_self\\">
   <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
   </p-icon>
   <span>
