@@ -32,7 +32,7 @@ import { TEXT_SIZES } from '../../basic/typography/text/text-utils';
 
 const propTypes: PropTypes<typeof ButtonPure> = {
   tabbable: AllowedTypes.boolean,
-  type: AllowedTypes.oneOf(['button', 'submit', 'reset']),
+  type: AllowedTypes.oneOf<ButtonType>(['button', 'submit', 'reset']),
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
   size: AllowedTypes.breakpoint<TextSize>(TEXT_SIZES),
