@@ -116,7 +116,7 @@ export abstract class AbstractWrapperGenerator {
     const wrapperDefinition = this.generateComponent(
       component,
       extendedProps,
-      hasSkeleton && componentMeta.skeletonProps?.length ? componentMeta.skeletonProps : []
+      (hasSkeleton && componentMeta.skeletonProps) || []
     );
 
     const content = [importsDefinition, propsDefinition, wrapperDefinition].filter((x) => x).join('\n\n');
