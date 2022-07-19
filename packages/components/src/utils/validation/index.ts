@@ -6,7 +6,6 @@ export * from './throwIfElementHasAttribute';
 export * from './throwIfInvalidLinkUsage';
 export * from './throwIfInvalidLinkPureUsage';
 export * from './throwIfParentIsNotOfKind';
-export * from './throwIfParentIsNotOneOfKind';
 export * from './throwIfPropIsUndefined';
 export * from './throwIfRootNodeIsNotOneOfKind';
 export * from './validateProps';
