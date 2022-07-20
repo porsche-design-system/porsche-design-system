@@ -1,5 +1,13 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { attachComponentCss, getPrefixedTagNames, parseAndGetAriaAttributes } from '../../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  getPrefixedTagNames,
+  parseAndGetAriaAttributes,
+  throwIfInvalidLinkUsage,
+  validateProps,
+} from '../../../utils';
+import type { PropTypes } from '../../../utils';
 import type {
   SelectedAriaAttributes,
   BreakpointCustomizable,
@@ -11,7 +19,20 @@ import type {
 import { getComponentCss } from './link-styles';
 import type { LinkAriaAttributes } from './link-utils';
 import { LINK_ARIA_ATTRIBUTES } from './link-utils';
-import { throwIfInvalidLinkUsage } from '../link-validation';
+import { LINK_BUTTON_VARIANTS, THEMES_EXTENDED_ELECTRIC } from '../../../types';
+
+const propTypes: PropTypes<typeof Link> = {
+  variant: AllowedTypes.oneOf<LinkVariant>(LINK_BUTTON_VARIANTS),
+  icon: AllowedTypes.string,
+  iconSource: AllowedTypes.string,
+  href: AllowedTypes.string,
+  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  target: AllowedTypes.string,
+  download: AllowedTypes.string,
+  rel: AllowedTypes.string,
+  hideLabel: AllowedTypes.breakpoint('boolean'),
+  aria: AllowedTypes.aria<LinkAriaAttributes>(LINK_ARIA_ATTRIBUTES),
+};
 
 @Component({
   tag: 'p-link',
@@ -55,6 +76,7 @@ export class Link {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.variant, this.hideLabel, !this.href, this.theme);
   }
 
@@ -70,7 +92,7 @@ export class Link {
           target: this.target,
           download: this.download,
           rel: this.rel,
-          ...parseAndGetAriaAttributes(this.aria, LINK_ARIA_ATTRIBUTES),
+          ...parseAndGetAriaAttributes(this.aria),
         })}
       >
         <PrefixedTagNames.pIcon

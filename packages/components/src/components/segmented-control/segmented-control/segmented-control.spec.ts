@@ -1,21 +1,10 @@
 import { SegmentedControl } from './segmented-control';
-import * as childrenObserverUtils from '../../../utils/children-observer';
 import * as segmentedControlUtils from './segmented-control-utils';
 import * as getClickedItemUtils from '../../../utils/dom/getClickedItem';
-import * as throwIfChildrenAreNotOfKindUtils from '../../../utils/dom/throwIfChildrenAreNotOfKind';
+import * as throwIfChildrenAreNotOfKindUtils from '../../../utils/validation/throwIfChildrenAreNotOfKind';
 import { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 
 describe('connectedCallback', () => {
-  it('should call observeChildren() with correct parameters', () => {
-    const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
-
-    const component = new SegmentedControl();
-    component.host = document.createElement('p-segmented-control');
-
-    component.connectedCallback();
-    expect(spy).toBeCalledWith(component.host, expect.any(Function));
-  });
-
   it('should call throwIfChildrenAreNotOfKind() with correct parameters', () => {
     const spy = jest.spyOn(throwIfChildrenAreNotOfKindUtils, 'throwIfChildrenAreNotOfKind');
 
@@ -68,18 +57,6 @@ describe('componentDidLoad', () => {
 
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(item1);
-  });
-});
-
-describe('disconnectedCallback', () => {
-  it('should call unobserveChildren() with correct parameters', () => {
-    const spy = jest.spyOn(childrenObserverUtils, 'unobserveChildren');
-
-    const component = new SegmentedControl();
-    component.host = document.createElement('p-segmented-control');
-
-    component.disconnectedCallback();
-    expect(spy).toBeCalledWith(component.host);
   });
 });
 

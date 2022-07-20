@@ -63,6 +63,8 @@ describe('Form Wrapper with slotted input', () => {
 
     await page.select('select', 'overview');
     await waitForComponentsReady(page);
+
+    // back and forth navigation seems to be necessary to reproduce a bug
     await page.select('select', 'form-wrapper-binding');
 
     expect(getConsoleErrorsAmount()).toBe(0);

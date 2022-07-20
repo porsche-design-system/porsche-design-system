@@ -137,10 +137,12 @@ export const removeDocumentEventListener = (popover: Popover): void => {
 
 export const onDocumentMousedown = (e: MouseEvent): void => {
   const popover = registeredPopovers.find(
-    (popoverElement) => popoverElement.open && !e.composedPath().includes(popoverElement.host)
+    // eslint-disable-next-line dot-notation
+    (popoverElement) => popoverElement['open'] && !e.composedPath().includes(popoverElement.host)
   );
   if (popover) {
-    popover.open = false;
+    // eslint-disable-next-line dot-notation
+    popover['open'] = false;
   }
 };
 
@@ -149,10 +151,12 @@ export const onDocumentKeydown = (e: KeyboardEvent): void => {
   const isEscape = ['Escape', 'Esc'].includes(key);
   if (isEscape || ['SpaceBar', 'Enter', ' '].includes(key)) {
     const popover = registeredPopovers.find(
-      (popoverElement) => popoverElement.open && (isEscape || !e.composedPath().includes(popoverElement.host))
+      // eslint-disable-next-line dot-notation
+      (popoverElement) => popoverElement['open'] && (isEscape || !e.composedPath().includes(popoverElement.host))
     );
     if (popover) {
-      popover.open = false;
+      // eslint-disable-next-line dot-notation
+      popover['open'] = false;
     }
   }
 };

@@ -53,7 +53,7 @@ export const patchAriaIntoSVG = (
   rawAriaAttributes: SelectedAriaAttributes<IconAriaAttributes>
 ): string => {
   if (rawAriaAttributes) {
-    const ariaAttributes = parseAndGetAriaAttributes(rawAriaAttributes, ICON_ARIA_ATTRIBUTES);
+    const ariaAttributes = parseAndGetAriaAttributes(rawAriaAttributes);
     const attributes = ['role="img"']
       .concat(Object.entries(ariaAttributes).map(([key, val]) => `${key}="${val}"`))
       .join(' ');

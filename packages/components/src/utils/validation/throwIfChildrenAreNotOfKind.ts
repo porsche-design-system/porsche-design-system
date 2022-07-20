@@ -1,9 +1,9 @@
 import type { TagNameCamelCase } from '@porsche-design-system/shared';
-import { areChildrenOfKind } from './areChildrenOfKind';
+import { areAllChildrenOfKind } from '../dom/areAllChildrenOfKind';
 import { getPrefixedTagNames, getTagName } from '../tag-name';
 
 export const throwIfChildrenAreNotOfKind = (element: HTMLElement, tagName: TagNameCamelCase): void => {
-  if (!areChildrenOfKind(element, tagName)) {
+  if (!areAllChildrenOfKind(element, tagName)) {
     const allowedTagName = getPrefixedTagNames(element)[tagName];
     const actualTagNames = Array.from(element.children)
       .map((child: HTMLElement) => getTagName(child))
