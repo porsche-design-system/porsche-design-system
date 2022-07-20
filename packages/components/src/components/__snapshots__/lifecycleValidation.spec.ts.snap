@@ -176,7 +176,7 @@ Object {
   "icon": "string",
   "iconSource": "string",
   "rel": "string",
-  "target": "oneOf",
+  "target": "string",
   "theme": "oneOf",
   "variant": "oneOf",
 }
@@ -195,7 +195,7 @@ Object {
   "rel": "string",
   "size": "breakpoint",
   "stretch": "breakpoint",
-  "target": "oneOf",
+  "target": "string",
   "theme": "oneOf",
   "weight": "oneOf",
 }
@@ -208,7 +208,7 @@ Object {
   "icon": "string",
   "iconSource": "string",
   "rel": "string",
-  "target": "oneOf",
+  "target": "string",
   "theme": "oneOf",
 }
 `;
@@ -218,7 +218,7 @@ Object {
   "aria": "aria",
   "href": "string",
   "size": "oneOf",
-  "target": "oneOf",
+  "target": "string",
   "trademark": "boolean",
 }
 `;
