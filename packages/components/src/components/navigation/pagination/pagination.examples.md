@@ -4,7 +4,8 @@
 
 ## Basic usage
 
-To adapt the pagination to the specific viewport context, the amount of displayed page items varies between either `7` (desktop/tablet) or `5` (mobile). The components handles responsive viewport sizing by default.
+To adapt the pagination to the specific viewport context, the amount of displayed page items varies between either `7`
+(desktop/tablet) or `5` (mobile). The components handles responsive viewport sizing by default.
 
 <Playground :markup="basic()" :config="config"></Playground>
 
@@ -22,10 +23,12 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 <Playground :markup="basic('{ base: 5, s: 7 }')" :config="config"></Playground>
 
---- 
+---
 
 ## Behaviour playground
-By changing values for total amount of items, items to display per page and number of currently active page, the behaviour of the pagination component can be changed.
+
+By changing values for total amount of items, items to display per page and number of currently active page, the
+behaviour of the pagination component can be changed.
 
 <Playground class="playground-pagination" :markup="behaviour" :config="config">
   <template v-slot:default="{ theme }">

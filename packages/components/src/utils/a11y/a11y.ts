@@ -21,29 +21,10 @@ export const setAriaAttributes = (el: HTMLElement, opts: SetAriaAttributesOption
   }
 };
 
-export const throwIfAriaAttributesAreInvalid = (
-  attributeKeys: (keyof AriaAttributes)[],
-  allowedAttributes: readonly (keyof AriaAttributes)[]
-): void => {
-  const invalidAttributes = attributeKeys.filter((x) => !allowedAttributes.includes(x));
-  if (invalidAttributes.length) {
-    throw new TypeError(
-      `${invalidAttributes.join(', ')} is not a valid aria attribute. Valid ones are: ${allowedAttributes.join(', ')}`
-    );
-  }
-};
-
-export const parseAndGetAriaAttributes = (
-  rawAttributes: AriaAttributes | string,
-  allowedAttributes?: readonly (keyof AriaAttributes)[]
-): AriaAttributes => {
+export const parseAndGetAriaAttributes = (rawAttributes: AriaAttributes | string): AriaAttributes => {
   if (rawAttributes) {
     const attributes = parseJSONAttribute(rawAttributes);
     const attributeKeys = Object.keys(attributes);
-
-    if (allowedAttributes) {
-      throwIfAriaAttributesAreInvalid(attributeKeys as (keyof AriaAttributes)[], allowedAttributes);
-    }
 
     // convert booleans to strings so that values are properly set and not just result in attributes without a value when true in jsx
     for (const key of attributeKeys) {

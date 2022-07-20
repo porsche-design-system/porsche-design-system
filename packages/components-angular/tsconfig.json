@@ -9,12 +9,13 @@
     "module": "es2020",
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es5",
+    "target": "es2020",
     "lib": ["es2018", "dom"],
     "paths": {
       "@porsche-design-system/components-angular": ["dist/components-wrapper"],
       "@angular/*": ["node_modules/@angular/*"]
-    }
+    },
+    "types": ["node", "jest"]
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

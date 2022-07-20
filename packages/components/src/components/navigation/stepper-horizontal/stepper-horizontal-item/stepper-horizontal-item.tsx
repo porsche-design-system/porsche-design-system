@@ -1,13 +1,27 @@
-import { Component, Element, JSX, Listen, Prop, Watch, Host, h } from '@stencil/core';
+import { Component, Element, h, Host, JSX, Listen, Prop, Watch } from '@stencil/core';
 import type { StepperHorizontalItemInternalHTMLProps, StepperState } from './stepper-horizontal-item-utils';
 import {
   getIconName,
   isItemClickable,
   isStateCompleteOrWarning,
+  STEPPER_ITEM_STATES,
   throwIfCurrentAndDisabled,
 } from './stepper-horizontal-item-utils';
-import { attachComponentCss, getPrefixedTagNames, throwIfParentIsNotOfKind, updateParent } from '../../../../utils';
+import type { PropTypes } from '../../../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  getPrefixedTagNames,
+  throwIfParentIsNotOfKind,
+  updateParent,
+  validateProps,
+} from '../../../../utils';
 import { getComponentCss } from './stepper-horizontal-item-styles';
+
+const propTypes: PropTypes<typeof StepperHorizontalItem> = {
+  state: AllowedTypes.oneOf<StepperState>([...STEPPER_ITEM_STATES, undefined]),
+  disabled: AllowedTypes.boolean,
+};
 
 @Component({
   tag: 'p-stepper-horizontal-item',
@@ -39,6 +53,7 @@ export class StepperHorizontalItem {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     throwIfCurrentAndDisabled(this.host);
     attachComponentCss(this.host, getComponentCss, this.state, this.disabled, this.host.theme || 'light');
   }

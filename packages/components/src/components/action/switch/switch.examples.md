@@ -1,19 +1,19 @@
 # Switch
 
-The `p-switch` component is a control that is used to quickly switch between two possible states. 
-A switch is only used for these binary actions that occur immediately after the user “flips the switch”. 
-Commonly it is used for “on/off” state.
+The `p-switch` component is a control that is used to quickly switch between two possible states. A switch is only used
+for these binary actions that occur immediately after the user “flips the switch”. Commonly it is used for “on/off”
+state.
 
-It is a controlled component.
-This means it does not contain any internal state, and you got full control over its behavior.
+It is a controlled component. This means it does not contain any internal state, and you got full control over its
+behavior.
 
 <TableOfContents></TableOfContents>
 
 ## Basic example
 
-The `p-switch` component can be used with a visible or hidden label, but it's recommended to keep the label visible for better accessibility whenever possible.
-A `label` is a caption which informs the user which action is followed by interaction.
-When used with hidden label, it's best practice to provide a descriptive label text for screen readers.
+The `p-switch` component can be used with a visible or hidden label, but it's recommended to keep the label visible for
+better accessibility whenever possible. A `label` is a caption which informs the user which action is followed by
+interaction. When used with hidden label, it's best practice to provide a descriptive label text for screen readers.
 
 <Playground :markup="basic" :config="config">
   <select v-model="label" aria-label="Select label mode">
@@ -44,7 +44,8 @@ When used with hidden label, it's best practice to provide a descriptive label t
 
 ## Alignment + Stretch
 
-The `label` can be aligned to the `right` (default) or to the `left` in addition with enabled `stretch` property which is recommended on mobile views.
+The `label` can be aligned to the `right` (default) or to the `left` in addition with enabled `stretch` property which
+is recommended on mobile views.
 
 <Playground :markup="alignment" :config="config">
   <select v-model="alignLabel" aria-label="Select alignment">
@@ -58,6 +59,7 @@ The `label` can be aligned to the `right` (default) or to the `left` in addition
 ---
 
 ## Bind events
+
 You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the **Switch**.
 
 <Playground :markup="events" :config="config"></Playground>

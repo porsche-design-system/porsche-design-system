@@ -1,9 +1,15 @@
 import type { ToastMessage } from './toast-manager';
-import type { Theme } from '../../../../types';
-import { Component, Element, Host, JSX, Method, Prop, h } from '@stencil/core';
-import { getComponentCss, toastCloseClassName } from './toast-styles';
 import { toastManager } from './toast-manager';
-import { attachComponentCss, getPrefixedTagNames } from '../../../../utils';
+import type { Theme } from '../../../../types';
+import { THEMES } from '../../../../types';
+import { Component, Element, h, Host, JSX, Method, Prop } from '@stencil/core';
+import { getComponentCss, toastCloseClassName } from './toast-styles';
+import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../../../utils';
+import type { PropTypes } from '../../../../utils';
+
+const propTypes: PropTypes<typeof Toast> = {
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
+};
 
 @Component({
   tag: 'p-toast',
@@ -43,6 +49,7 @@ export class Toast {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     this.toastItemElement?.classList.remove(toastCloseClassName);
   }
 

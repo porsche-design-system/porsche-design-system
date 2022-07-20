@@ -18,14 +18,14 @@ and consistent options. For other use cases, consider using Radio Button, Checkb
 
 To ensure a seamless UX in all Porsche web applications it is recommended to use the `p-segmented-control` as follows
 
-| Variants | Usage |
-|----|----|
-| Default | For short and consistent text only values. |
-| Icon + value | To improve visual recognition the option value can be paired with an icon. |
-| Icon only | Options can only be used with icons when the icon and context are really clear. We recommend always using additional text. |
-| Label + value | To add more clarity to the shown options a label can be added. |
-| Preselection | If the selection of a value is necessary by default. |
-| No preselection | If the user needs to select a value to see a relevant result. |
+| Variants        | Usage                                                                                                                      |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Default         | For short and consistent text only values.                                                                                 |
+| Icon + value    | To improve visual recognition the option value can be paired with an icon.                                                 |
+| Icon only       | Options can only be used with icons when the icon and context are really clear. We recommend always using additional text. |
+| Label + value   | To add more clarity to the shown options a label can be added.                                                             |
+| Preselection    | If the selection of a value is necessary by default.                                                                       |
+| No preselection | If the user needs to select a value to see a relevant result.                                                              |
 
 ## Usage
 
@@ -46,5 +46,5 @@ to a maximum width.
 
 ## Related components
 
-* [Select](components/select)
-* [Radio Button](components/radio-button)
+- [Select](components/select)
+- [Radio Button](components/radio-button)

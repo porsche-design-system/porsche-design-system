@@ -3,8 +3,8 @@ import { getTagName, observeChildren, unobserveChildren } from '../../../utils';
 import { pxToRemWithUnit } from '../../../styles';
 import { Accordion } from './accordion';
 
-const ACCORDION_SIZE = ['small', 'medium'] as const;
-export type AccordionSize = typeof ACCORDION_SIZE[number];
+export const ACCORDION_SIZES = ['small', 'medium'] as const;
+export type AccordionSize = typeof ACCORDION_SIZES[number];
 export type AccordionChangeEvent = { open: boolean };
 
 export const setCollapsibleElementHeight = (

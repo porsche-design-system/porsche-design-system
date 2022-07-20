@@ -1,30 +1,34 @@
 # Tabs Bar
 
-The `p-tabs-bar` component is a styled button/link list for multiple purposes. You can use it with your framework router to ensure
-your window location updates on tab click, use it for hash routing and displaying content accordingly to the hash, to change the state of another element
-and therefore change the appearance of your content or as skip navigation to move on a longer page.
+The `p-tabs-bar` component is a styled button/link list for multiple purposes. You can use it with your framework router
+to ensure your window location updates on tab click, use it for hash routing and displaying content accordingly to the
+hash, to change the state of another element and therefore change the appearance of your content or as skip navigation
+to move on a longer page.
 
 The component does not handle the display of your content. If you use the component you have to manually care for the
 content to be rendered beneath. To help with this task the component triggers an event called `tabChange` with the index
 of the active tab.
 
-If you intend to only change content on tab-click without location changes and you are fine that the content needs to be pre-rendered then we prepared a component which also
-handles the correct display of content according to the active tab. Have a look at the [Tabs](components/tabs) component.
+If you intend to only change content on tab-click without location changes and you are fine that the content needs to be
+pre-rendered then we prepared a component which also handles the correct display of content according to the active tab.
+Have a look at the [Tabs](components/tabs) component.
 
-**Note**: We use `<button>` tags in the examples below because you have to use anchor tags with `href`
-in your application! Therefore, we avoid messing with the window location.
+**Note**: We use `<button>` tags in the examples below because you have to use anchor tags with `href` in your
+application! Therefore, we avoid messing with the window location.
 
-It is a controlled component.
-This means it does not contain any internal state, and you got full control over its behavior.
+It is a controlled component. This means it does not contain any internal state, and you got full control over its
+behavior.
 
 <TableOfContents></TableOfContents>
 
 ## Basic example
 
-Basic implementation is a tab bar with tabs to switch between the content. Just put `<button>` tags if you need to change e.g. the state on tab-click or `<a>`
-tags, if you also have to manipulate the window location, inside the `<p-tabs-bar>` component and it will handle all styling behaviors.
+Basic implementation is a tab bar with tabs to switch between the content. Just put `<button>` tags if you need to
+change e.g. the state on tab-click or `<a>` tags, if you also have to manipulate the window location, inside the
+`<p-tabs-bar>` component and it will handle all styling behaviors.
 
-In order to get notified when the active tabs change, you need to register an event listener for the `tabChange` event which is emitted by `p-tabs-bar`.
+In order to get notified when the active tabs change, you need to register an event listener for the `tabChange` event
+which is emitted by `p-tabs-bar`.
 
 ### Framework Implementations
 
@@ -40,19 +44,24 @@ In order to get notified when the active tabs change, you need to register an ev
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
-The `p-tabs-bar` component is detached from the content which belongs to the active tab. We provide the necessary `role="tab"`, `tabindex` and `aria-selected` on the tabs inside the component.
+The `p-tabs-bar` component is detached from the content which belongs to the active tab. We provide the necessary
+`role="tab"`, `tabindex` and `aria-selected` on the tabs inside the component.
 
-To be truly accessible you need to provide some more information because every tab needs an `aria-controls` attribute which points to the corresponding `id` of the `tabpanel`.
-The content placeholder needs the `role="tabpanel"` and the attribute `aria-labelledby` which points to the unique id of the corresponding tab (`aria-controls`).
+To be truly accessible you need to provide some more information because every tab needs an `aria-controls` attribute
+which points to the corresponding `id` of the `tabpanel`. The content placeholder needs the `role="tabpanel"` and the
+attribute `aria-labelledby` which points to the unique id of the corresponding tab (`aria-controls`).
 
-You must also take care of the focus handling of the tabpanel. Therefor the active tab panel must have an `tabindex="0"` to receive keyboard focus and the focus indicator must be styled accordingly.
+You must also take care of the focus handling of the tabpanel. Therefor the active tab panel must have an `tabindex="0"`
+to receive keyboard focus and the focus indicator must be styled accordingly.
 
 <Playground class="playground-tabs-bar" :frameworkMarkup="codeExample" :markup="accessibility" :config="config"></Playground>
 
 ---
+
 ## Active Tab
 
-**Note:** Keep in mind that the property `active-tab-index` uses zero-based numbering. Setting `active-tab-index` to `undefined` removes the selection. Make sure to update the `activeTabIndex` when adding or removing elements.
+**Note:** Keep in mind that the property `active-tab-index` uses zero-based numbering. Setting `active-tab-index` to
+`undefined` removes the selection. Make sure to update the `activeTabIndex` when adding or removing elements.
 
 <Playground class="playground-tabs-bar" :markup="activeTab" :config="config"></Playground>
 
@@ -78,8 +87,8 @@ You must also take care of the focus handling of the tabpanel. Therefor the acti
 
 ## Gradient Color Scheme
 
-If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling.
-The background and gradient has to align to your chosen background.
+If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling. The
+background and gradient has to align to your chosen background.
 
 <Playground :markup="gradientMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
   <select v-model="gradientColorScheme" aria-label="Select color scheme">
@@ -244,21 +253,21 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 <style scoped lang="scss">
   @import '~@porsche-design-system/utilities/scss';
 
-  ::v-deep div[role=tabpanel] {
+  :deep(div[role=tabpanel]) {
     outline: 1px solid transparent;
     outline-offset: 2px;
     margin-top: p-px-to-rem(8px);
   }
 
-  ::v-deep .example--light div[role=tabpanel]:focus {
+  :deep(.example--light div[role=tabpanel]:focus) {
     outline-color: #000;
   }
 
-  ::v-deep .example--dark div[role=tabpanel]:focus {
+  :deep(.example--dark div[role=tabpanel]:focus) {
     outline-color: #FFF;
   }
 
-  ::v-deep div[role=tabpanel]:focus:not(:focus-visible) {
+  :deep(div[role=tabpanel]:focus:not(:focus-visible)) {
     outline-color: transparent;
   }
 </style>

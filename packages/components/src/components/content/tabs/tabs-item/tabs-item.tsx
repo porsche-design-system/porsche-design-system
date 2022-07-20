@@ -1,6 +1,11 @@
 import { Component, Element, h, Prop } from '@stencil/core';
-import { attachComponentCss, throwIfParentIsNotOfKind } from '../../../../utils';
+import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../../utils';
+import type { PropTypes } from '../../../../utils';
 import { getComponentCss } from './tabs-item-styles';
+
+const propTypes: PropTypes<typeof TabsItem> = {
+  label: AllowedTypes.string,
+};
 
 @Component({
   tag: 'p-tabs-item',
@@ -17,6 +22,7 @@ export class TabsItem {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     const tabs = this.host.parentElement as HTMLPTabsElement;
     if (tabs) {
       attachComponentCss(this.host, getComponentCss, tabs.theme || 'light');

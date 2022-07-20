@@ -1,20 +1,20 @@
 # Tabs
 
-The `p-tabs` component makes it easy to explore and switch between different views. You can organize and allow navigation
-between groups of content that are related and at the same level of hierarchy. The component handles the display of content
-according to the active tab and all accessibility attributes on your tab and tab content.
+The `p-tabs` component makes it easy to explore and switch between different views. You can organize and allow
+navigation between groups of content that are related and at the same level of hierarchy. The component handles the
+display of content according to the active tab and all accessibility attributes on your tab and tab content.
 
-This variant does not support `a` tags and should not be used for navigation. 
-If you need to update your window location have a look at [Tabs Bar](components/tabs-bar) component.
+This variant does not support `a` tags and should not be used for navigation. If you need to update your window location
+have a look at [Tabs Bar](components/tabs-bar) component.
 
 <TableOfContents></TableOfContents>
 
 ## Basic example
 
-Basic implementation shows a tab list with buttons to switch between the content. For every `p-tabs-item` inside of the `p-tabs` component, a tab
-will be created. The assigned `label` property defines also the name of the button.
+Basic implementation shows a tab list with buttons to switch between the content. For every `p-tabs-item` inside of the
+`p-tabs` component, a tab will be created. The assigned `label` property defines also the name of the button.
 
-Every `p-tabs-item` holds a `slot` to display content which can be individually assigned. 
+Every `p-tabs-item` holds a `slot` to display content which can be individually assigned.
 
 <Playground :markup="basic" :config="config"></Playground>
 
@@ -40,8 +40,8 @@ Every `p-tabs-item` holds a `slot` to display content which can be individually 
 
 ## Gradient Color Scheme
 
-If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling.
-The background and gradient has to align to your chosen background.
+If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling. The
+background and gradient has to align to your chosen background.
 
 <Playground :markup="gradientMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
   <select v-model="gradientColorScheme" aria-label="Select gradient color scheme">
@@ -53,8 +53,8 @@ The background and gradient has to align to your chosen background.
 
 ## Active Tab
 
-You may need to change the initial active tab. To do so, set the `active-tab-index` attribute of `p-tabs`.
-Make sure to update the `activeTabIndex` when adding or removing elements.
+You may need to change the initial active tab. To do so, set the `active-tab-index` attribute of `p-tabs`. Make sure to
+update the `activeTabIndex` when adding or removing elements.
 
 <Playground :markup="activeTab" :config="config"></Playground>
 

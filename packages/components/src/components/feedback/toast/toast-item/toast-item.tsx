@@ -1,15 +1,24 @@
-import { Component, Element, Event, EventEmitter, Host, JSX, Prop, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@stencil/core';
 import type { Theme } from '../../../../types';
 import type { ToastState } from '../toast/toast-utils';
 import { TOAST_STATES } from '../toast/toast-utils';
 import {
+  AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  throwIfRootNodeIsNotOfKind,
-  throwIfValueIsInvalid,
+  throwIfRootNodeIsNotOneOfKind,
+  validateProps,
 } from '../../../../utils';
+import type { PropTypes } from '../../../../utils';
 import { getComponentCss } from './toast-item-styles';
 import { getIconName } from '../../inline-notification/inline-notification-utils';
+import { THEMES } from '../../../../types';
+
+const propTypes: PropTypes<typeof ToastItem> = {
+  text: AllowedTypes.string,
+  state: AllowedTypes.oneOf<ToastState>(TOAST_STATES),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
+};
 
 @Component({
   tag: 'p-toast-item',
@@ -31,11 +40,11 @@ export class ToastItem {
   @Event() public dismiss?: EventEmitter<void>;
 
   public connectedCallback(): void {
-    throwIfRootNodeIsNotOfKind(this.host, 'pToast');
+    throwIfRootNodeIsNotOneOfKind(this.host, ['pToast']);
   }
 
   public componentWillRender(): void {
-    throwIfValueIsInvalid(this.state, TOAST_STATES, 'state');
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.state, this.theme);
   }
 

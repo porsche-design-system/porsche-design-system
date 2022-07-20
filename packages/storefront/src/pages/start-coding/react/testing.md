@@ -41,11 +41,7 @@ export const SingleComponent = (): JSX.Element => {
 
   return (
     <>
-      <PTabsBar
-        activeTabIndex={activeTab}
-        onTabChange={onTabChange}
-        data-testid="host"
-      >
+      <PTabsBar activeTabIndex={activeTab} onTabChange={onTabChange} data-testid="host">
         <button data-testid="button1">Some label</button>
         <button data-testid="button2">Some label</button>
         <button data-testid="button3">Some label</button>
@@ -151,8 +147,8 @@ describe('SomeComponent', () => {
 
 ### Disabling CDN requests from Porsche Design System and components
 
-We provide a utility function `skipPorscheDesignSystemCDNRequestsDuringTests()` that can be used within your tests 
-when you use the `@porsche-design-system/components-react/jsdom-polyfill` in your setup.  
+We provide a utility function `skipPorscheDesignSystemCDNRequestsDuringTests()` that can be used within your tests when
+you use the `@porsche-design-system/components-react/jsdom-polyfill` in your setup.  
 It will suppress all CDN request of the Porsche Design System.
 
 You can apply it globally on every test by calling it once in your test setup:
@@ -190,8 +186,8 @@ describe('SomeComponent', () => {
 ### Form Submission
 
 If you try to submit a form via button click you will encounter issues with `@testing-library/react` and `jsdom`. It is
-simply not provided (see [Github Issue 755](https://github.com/testing-library/react-testing-library/issues/755)
-and [Github Issue 1937](https://github.com/jsdom/jsdom/issues/1937)).
+simply not provided (see [Github Issue 755](https://github.com/testing-library/react-testing-library/issues/755) and
+[Github Issue 1937](https://github.com/jsdom/jsdom/issues/1937)).
 
 If you have to test a form submit use `Simulate`.
 
@@ -205,13 +201,15 @@ Simulate.submit('button');
 
 ### Queries
 
-You are not able to use `getByRole` to query Porsche Design System components when using `@testing-library` because it uses default `roles`.  
-For example a `<button>` gets the role `button` without
-explicitly setting the attribute. To achieve this it uses [aria-query](https://github.com/A11yance/aria-query) internally which replicates
-the [Accessibility Tree](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree),
-see [documentation](https://testing-library.com/docs/guide-which-query/).
+You are not able to use `getByRole` to query Porsche Design System components when using `@testing-library` because it
+uses default `roles`.  
+For example a `<button>` gets the role `button` without explicitly setting the attribute. To achieve this it uses
+[aria-query](https://github.com/A11yance/aria-query) internally which replicates the
+[Accessibility Tree](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree), see
+[documentation](https://testing-library.com/docs/guide-which-query/).
 
-Therefore, we provide the `getByRoleShadowed` utility function that can be used as a drop-in replacement for `getByRole`.
+Therefore, we provide the `getByRoleShadowed` utility function that can be used as a drop-in replacement for
+`getByRole`.
 
 ```tsx
 import { getByRoleShadowed } from '@porsche-design-system/components-react/testing';
@@ -240,4 +238,5 @@ it('should work for PAccordion', async () => {
 });
 ```
 
-We also provide test examples in our [sample integration project](https://github.com/porscheui/sample-integration-react/tree/master/src/tests).
+We also provide test examples in our
+[sample integration project](https://github.com/porscheui/sample-integration-react/tree/master/src/tests).

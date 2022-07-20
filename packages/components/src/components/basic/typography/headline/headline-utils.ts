@@ -16,13 +16,15 @@ type HeadlineVariantCustom = Exclude<BreakpointCustomizable<TextSize>, TextSize>
 
 export type HeadlineVariant = VariantType | HeadlineVariantCustom | Extract<TextSize, 'inherit'>;
 
-export type HeadlineTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+export const HEADLINE_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
+export type HeadlineTag = typeof HEADLINE_TAGS[number];
 
 export const isVariantType = (variant: HeadlineVariant): boolean => {
   return HEADLINE_VARIANTS.includes(variant as VariantType);
 };
 
 export const hasSlottedHeadlineTag = (host: HTMLElement): boolean => {
+  // TODO: needs to be direct and only child
   const el = getHTMLElement(host, ':first-child');
   return el?.matches('h1, h2, h3, h4, h5, h6');
 };

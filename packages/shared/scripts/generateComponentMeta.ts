@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
 import { paramCase } from 'change-case';
-import { TAG_NAMES, SKELETON_TAG_NAMES, TagName } from '../src/lib/tagNames';
+import { TAG_NAMES, INTERNAL_TAG_NAMES, SKELETON_TAG_NAMES, TagName } from '../src/lib/tagNames';
 
 const glue = '\n\n';
 // TODO: typing as component property string
@@ -46,17 +46,25 @@ const generateComponentMeta = (): void => {
   const types = [
     `export type ComponentMeta = {
   isDelegatingFocus: boolean;
+  isInternal: boolean;
   isThemeable: boolean;
-  requiredParent?: TagName[];
-  requiredChild?: string;
-  requiredProps?: {
-    [propName: string]: string;
+  requiredParent?: TagName; // typically components with an \`-item\` suffix need the right parent in order to work
+  requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
+  requiredChild?: string; // direct and only child of kind
+  requiredChildSelector?: string; // might contain multiple selectors separated by comma
+  props?: {
+    [propName: string]: boolean | number | string; // value is the prop's default value
   }[];
+  requiredProps?: string[]; // array of props that are mandatory
+  hasSlot: boolean;
   hasSlottedCss: boolean;
   hasAriaProp: boolean;
+  hasObserveAttributes: boolean;
+  observedAttributes?: string[];
+  hasObserveChildren: boolean;
   hasSkeleton: boolean;
   shouldPatchSlot: boolean;
-  skeletonProps: { propName: string; shouldAddValueToClassName: boolean }[];
+  skeletonProps?: { propName: string; shouldAddValueToClassName: boolean }[];
   styling: 'jss' | 'scss' | 'hybrid';
 };`,
     `type ComponentsMeta = { [key in TagName]: ComponentMeta };`,
@@ -64,17 +72,25 @@ const generateComponentMeta = (): void => {
 
   type ComponentMeta = {
     isDelegatingFocus: boolean;
+    isInternal: boolean;
     isThemeable: boolean;
-    requiredParent?: TagName[];
-    requiredChild?: string;
-    requiredProps?: {
-      [propName: string]: string;
+    requiredParent?: TagName; // typically components with an `-item` suffix need the right parent in order to work
+    requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
+    requiredChild?: string; // direct and only child of kind
+    requiredChildSelector?: string; // might contain multiple selectors separated by comma
+    props?: {
+      [propName: string]: boolean | number | string; // value is the prop's default value
     }[];
+    requiredProps?: string[]; // array of props that are mandatory
+    hasSlot: boolean;
     hasSlottedCss: boolean;
     hasAriaProp: boolean;
+    hasObserveAttributes: boolean;
+    observedAttributes?: string[];
+    hasObserveChildren: boolean;
     hasSkeleton: boolean;
     shouldPatchSlot: boolean;
-    skeletonProps: { propName: string; shouldAddValueToClassName: boolean }[];
+    skeletonProps?: { propName: string; shouldAddValueToClassName: boolean }[];
     styling: 'jss' | 'scss' | 'hybrid';
   };
 
@@ -96,29 +112,36 @@ const generateComponentMeta = (): void => {
   const meta: ComponentsMeta = TAG_NAMES.reduce((result, tagName) => {
     const source = componentSourceCode[tagName];
     const isDelegatingFocus = source.includes('delegatesFocus: true');
+    const isInternal = INTERNAL_TAG_NAMES.includes(tagName);
     const isThemeable = source.includes('public theme?: Theme');
+    const hasSlot = source.includes('<slot');
     const hasSlottedCss = source.includes('attachSlottedCss');
     const hasAriaProp = source.includes('public aria?: SelectedAriaAttributes');
+    const hasObserveAttributes = source.includes('observeAttributes(this.'); // this should be safe enough, but would miss a local variable as first parameter
+    const hasObserveChildren = source.includes('observeChildren(this.'); // this should be safe enough, but would miss a local variable as first parameter
     const hasSkeleton = SKELETON_TAG_NAMES.includes(tagName as any);
     const shouldPatchSlot = TAG_NAMES_TO_ADD_SLOT_TO.includes(tagName);
     const usesScss = source.includes('styleUrl:');
     const usesJss = source.includes('attachComponentCss');
     const styling = usesScss && usesJss ? 'hybrid' : usesJss ? 'jss' : 'scss';
 
-    const [, requiredParentCamelCase] = /throwIfParentIsNotOfKind\(.+'(\w+)'\)/.exec(source) ?? [];
+    // required parent
+    const [, requiredParentCamelCase] = /throwIfParentIsNotOfKind\(.+'(\w+)'\)/.exec(source) || [];
     const requiredParent = requiredParentCamelCase ? (paramCase(requiredParentCamelCase) as TagName) : undefined;
-    const [, requiredParentsCamelCase] = /throwIfParentIsNotOneOfKind\(.+\[([\w,\s']+)\]\)/.exec(source) ?? [];
-    const requiredParents = requiredParentsCamelCase
-      ? (requiredParentsCamelCase
+
+    // required root node
+    const [, requiredRootNodesCamelCase] = /throwIfRootNodeIsNotOneOfKind\(.+\[([\w,\s']+)\]\)/.exec(source) || [];
+    const requiredRootNodes = requiredRootNodesCamelCase
+      ? (requiredRootNodesCamelCase
           .replace(/['\s]/g, '')
           .split(',')
-          .map((requiredParent) => paramCase(requiredParent)) as TagName[])
+          .map((rootNode) => paramCase(rootNode)) as TagName[])
       : [];
 
-    const allRequiredParents = [requiredParent, ...requiredParents].filter((x) => x);
-
-    let [, requiredChild] = /getHTMLElementAndThrowIfUndefined\(\s*this\.host,((?:.|\s)+?)\);/.exec(source) ?? [];
+    // required child
+    let [, requiredChild] = /getOnlyChildOfKindHTMLElementOrThrow\(\s*this\.host,((?:.|\s)+?)\);/.exec(source) || [];
     requiredChild = requiredChild?.trim();
+    let requiredChildSelector: string;
 
     if (requiredChild) {
       const cleanSelector = (markup: string): string =>
@@ -127,43 +150,85 @@ const generateComponentMeta = (): void => {
           .replace(/]/g, ''); // replace closing bracket of attribute selector
 
       if (requiredChild.startsWith("'") && requiredChild.endsWith("'")) {
-        requiredChild = cleanSelector(requiredChild);
+        // it's a simple string
         requiredChild = requiredChild.slice(1, -1);
+        requiredChildSelector = requiredChild;
+        requiredChild = cleanSelector(requiredChild);
       } else {
-        const [, valueRaw] = new RegExp(`const ${requiredChild} = ((?:.|\\s)*?;)`).exec(source) ?? [];
-        const value = eval(`${valueRaw || requiredChild}`);
+        // it's a variable or some dynamic value
+        const [, valueRaw] = new RegExp(`const ${requiredChild} = ((?:.|\\s)*?;)`).exec(source) || [];
+        const value = eval(valueRaw || requiredChild);
         requiredChild = value.split(',')[0];
         requiredChild = cleanSelector(requiredChild);
+        requiredChildSelector = value;
       }
     }
 
-    const [, requiredProp] = /throwIfInvalidLinkUsage\(this\.host, this\.(\w+)\);/.exec(source) ?? [];
+    // props
+    const props: ComponentMeta['props'] = Array.from(
+      // regex can handle value on same line and next line only
+      source.matchAll(/@Prop\(\) public ([A-z]+)\??(?:: (.+?))?(?:=[^>]\s*(.+))?;/g)
+    ).map(([, propName, propType, propValue]) => {
+      const cleanedValue =
+        (propValue === 'true'
+          ? true
+          : propValue === 'false'
+          ? false
+          : // undefined values get lost in JSON.stringif
+            // , but null is allowed
+            propValue?.replace(/'/g, '')) || null;
+      return {
+        [propName]: cleanedValue,
+      };
+    });
 
-    let requiredProps: ComponentMeta['requiredProps'];
-    if (requiredProp) {
-      const [, propType] = new RegExp(`@Prop\\(\\) public ${requiredProp}\\?: (.+);`).exec(source) ?? [];
-      requiredProps = [{ [requiredProp]: propType }];
+    // required props
+    const requiredProps: ComponentMeta['requiredProps'] = Array.from(
+      // same regex as above without optional ? modifier
+      source.matchAll(/@Prop\(\) public ([A-z]+)(?:: (.+?))?(?:= (.+))?;/g)
+    ).map(([, propName]) => propName);
+
+    const [, invalidLinkUsageProp] = /throwIfInvalidLink(?:Pure)?Usage\(this\.host, this\.(\w+)\);/.exec(source) || [];
+    if (invalidLinkUsageProp) {
+      // const [, propType] = new RegExp(`@Prop\\(\\) public ${invalidLinkUsageProp}\\?: (.+);`).exec(source) || [];
+      requiredProps.push(invalidLinkUsageProp);
     }
 
+    // observed attributes
+    let observedAttributes: ComponentMeta['observedAttributes'] = [];
+    const [, rawObservedAttributes] = /observeAttributes\([A-z.]+, (\[.+\]),.+?\);/.exec(source) || [];
+    if (rawObservedAttributes) {
+      observedAttributes = eval(rawObservedAttributes);
+    }
+
+    // skeleton props
     const skeletonProps: ComponentMeta['skeletonProps'] = hasSkeleton
       ? SKELETON_RELEVANT_PROPS.filter(({ propName, shouldAddValueToClassName }) => {
           // extract all matching skeleton relevant props
-          const [match] = new RegExp(`@Prop\\(\\) public ${propName}\\?: .+;`).exec(source) ?? [];
+          const [match] = new RegExp(`@Prop\\(\\) public ${propName}\\?: .+;`).exec(source) || [];
           return match;
         })
       : [];
 
     result[tagName] = {
       isDelegatingFocus,
+      isInternal,
       isThemeable,
-      requiredParent: allRequiredParents,
+      requiredParent,
+      ...(requiredRootNodes.length && { requiredRootNode: requiredRootNodes }),
       requiredChild,
-      requiredProps,
+      requiredChildSelector,
+      ...(props.length && { props: props }),
+      ...(requiredProps.length && { requiredProps: requiredProps }),
+      hasSlot,
       hasSlottedCss,
       hasAriaProp,
+      hasObserveAttributes,
+      ...(observedAttributes.length && { observedAttributes: observedAttributes }),
+      hasObserveChildren,
       hasSkeleton,
       shouldPatchSlot,
-      skeletonProps,
+      ...(skeletonProps.length && { skeletonProps: skeletonProps }),
       styling,
     };
     return result;
