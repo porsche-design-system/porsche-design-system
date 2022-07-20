@@ -19,7 +19,7 @@ import type {
 import { getComponentCss } from './link-styles';
 import type { LinkAriaAttributes } from './link-utils';
 import { LINK_ARIA_ATTRIBUTES } from './link-utils';
-import { LINK_BUTTON_VARIANTS, LINK_TARGETS, THEMES_EXTENDED_ELECTRIC } from '../../../types';
+import { LINK_BUTTON_VARIANTS, THEMES_EXTENDED_ELECTRIC } from '../../../types';
 
 const propTypes: PropTypes<typeof Link> = {
   variant: AllowedTypes.oneOf<LinkVariant>(LINK_BUTTON_VARIANTS),
@@ -27,7 +27,7 @@ const propTypes: PropTypes<typeof Link> = {
   iconSource: AllowedTypes.string,
   href: AllowedTypes.string,
   theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
-  target: AllowedTypes.oneOf<LinkTarget>(LINK_TARGETS),
+  target: AllowedTypes.string,
   download: AllowedTypes.string,
   rel: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),

@@ -6,13 +6,12 @@ import { AllowedTypes, attachComponentCss, parseAndGetAriaAttributes, validatePr
 import type { PropTypes } from '../../../utils';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import { getComponentCss } from './marque-styles';
-import { LINK_TARGETS } from '../../../types';
 
 const propTypes: PropTypes<typeof Marque> = {
   trademark: AllowedTypes.boolean,
   size: AllowedTypes.oneOf<MarqueSize>(MARQUE_SIZES),
   href: AllowedTypes.string,
-  target: AllowedTypes.oneOf<LinkTarget>(LINK_TARGETS),
+  target: AllowedTypes.string,
   aria: AllowedTypes.aria<MarqueAriaAttributes>(MARQUE_ARIA_ATTRIBUTES),
 };
 

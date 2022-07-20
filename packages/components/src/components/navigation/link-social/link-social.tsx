@@ -8,7 +8,7 @@ import {
   validateProps,
 } from '../../../utils';
 import type { BreakpointCustomizable, LinkTarget, Theme } from '../../../types';
-import { LINK_TARGETS, ThemeExtendedElectric, THEMES_EXTENDED_ELECTRIC } from '../../../types';
+import { ThemeExtendedElectric, THEMES_EXTENDED_ELECTRIC } from '../../../types';
 import type { SocialIconName } from './link-social-utils';
 import { getComponentCss } from './link-social-styles';
 
@@ -17,7 +17,7 @@ const propTypes: PropTypes<typeof LinkSocial> = {
   iconSource: AllowedTypes.string,
   href: AllowedTypes.string,
   theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
-  target: AllowedTypes.oneOf<LinkTarget>(LINK_TARGETS),
+  target: AllowedTypes.string,
   rel: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
 };
