@@ -1,3 +1,2 @@
-import type { TextSize } from '../../basic/typography/text/text-utils';
-
-export type FieldsetWrapperLabelSize = Extract<TextSize, 'small' | 'medium'>;
+export const FIELDSET_WRAPPER_LABEL_SIZES = ['small', 'medium'] as const;
+export type FieldsetWrapperLabelSize = typeof FIELDSET_WRAPPER_LABEL_SIZES[number];

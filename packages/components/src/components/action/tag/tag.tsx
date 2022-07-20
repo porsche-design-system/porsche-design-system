@@ -1,14 +1,24 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import type { TagColor } from './tag-utils';
+import { TAG_COLORS } from './tag-utils';
 import {
+  AllowedTypes,
   attachComponentCss,
   getDirectChildHTMLElement,
   getPrefixedTagNames,
-  throwIfValueIsInvalid,
+  validateProps,
 } from '../../../utils';
+import type { PropTypes } from '../../../utils';
 import { getComponentCss } from './tag-styles';
 import type { IconName, Theme } from '../../../types';
-import { TAG_COLORS } from './tag-utils';
+import { THEMES } from '../../../types';
+
+const propTypes: PropTypes<typeof Tag> = {
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
+  color: AllowedTypes.oneOf<TagColor>(TAG_COLORS),
+  icon: AllowedTypes.string,
+  iconSource: AllowedTypes.string,
+};
 
 @Component({
   tag: 'p-tag',
@@ -30,7 +40,7 @@ export class Tag {
   @Prop() public iconSource?: string;
 
   public componentWillRender(): void {
-    throwIfValueIsInvalid(this.color, TAG_COLORS, 'color');
+    validateProps(this, propTypes);
     attachComponentCss(
       this.host,
       getComponentCss,
