@@ -48,14 +48,14 @@ const generateComponentMeta = (): void => {
   isDelegatingFocus: boolean;
   isInternal: boolean;
   isThemeable: boolean;
-  requiredParent?: TagName;
+  requiredParent?: TagName; // typically components with an \`-item\` suffix need the right parent in order to work
   requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
-  requiredChild?: string; // direct and only child
+  requiredChild?: string; // direct and only child of kind
   requiredChildSelector?: string; // might contain multiple selectors separated by comma
   props?: {
     [propName: string]: boolean | number | string; // value is the prop's default value
   }[];
-  requiredProps?: string[];
+  requiredProps?: string[]; // array of props that are mandatory
   hasSlot: boolean;
   hasSlottedCss: boolean;
   hasAriaProp: boolean;
@@ -76,7 +76,7 @@ const generateComponentMeta = (): void => {
     isThemeable: boolean;
     requiredParent?: TagName; // typically components with an `-item` suffix need the right parent in order to work
     requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
-    requiredChild?: string; // direct and only child
+    requiredChild?: string; // direct and only child of kind
     requiredChildSelector?: string; // might contain multiple selectors separated by comma
     props?: {
       [propName: string]: boolean | number | string; // value is the prop's default value
@@ -139,8 +139,7 @@ const generateComponentMeta = (): void => {
       : [];
 
     // required child
-    let [, requiredChild] =
-      /getDirectAndOnlyChildOfKindHTMLElementOrThrow\(\s*this\.host,((?:.|\s)+?)\);/.exec(source) || [];
+    let [, requiredChild] = /getOnlyChildOfKindHTMLElementOrThrow\(\s*this\.host,((?:.|\s)+?)\);/.exec(source) || [];
     requiredChild = requiredChild?.trim();
     let requiredChildSelector: string;
 
