@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlignLabel, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme, ThemeExtendedElectric, ThemeExtendedElectricDark } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/content/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
-import { BannerState } from "./components/feedback/banner/banner-utils";
+import { BannerState, BannerWidth } from "./components/feedback/banner/banner-utils";
 import { ButtonAriaAttributes } from "./utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/layout/content-wrapper/content-wrapper-utils";
@@ -37,6 +37,7 @@ import { SortingChangeEvent, TableHeadCellSort } from "./components/content/tabl
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { TagColor } from "./components/action/tag/tag-utils";
 import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/action/tag-dismissible/tag-dismissible-utils";
+import { TextTag } from "./components/basic/typography/text/text-utils";
 import { TextFieldWrapperUnitPosition } from "./components/form/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 import { ToastMessage } from "./components/feedback/toast/toast/toast-manager";
@@ -84,7 +85,7 @@ export namespace Components {
         /**
           * Defines the width of the banner corresponding to the `content-wrapper` dimensions
          */
-        "width"?: 'basic' | 'extended' | 'fluid';
+        "width"?: BannerWidth;
     }
     interface PButton {
         /**
@@ -980,7 +981,7 @@ export namespace Components {
         /**
           * Sets a custom HTML tag depending of the usage of the text component.
          */
-        "tag"?: 'p' | 'span' | 'div' | 'address' | 'blockquote' | 'figcaption' | 'cite' | 'time' | 'legend';
+        "tag"?: TextTag;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
@@ -1087,6 +1088,54 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+}
+export interface PAccordionCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPAccordionElement;
+}
+export interface PBannerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPBannerElement;
+}
+export interface PInlineNotificationCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPInlineNotificationElement;
+}
+export interface PModalCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPModalElement;
+}
+export interface PPaginationCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPPaginationElement;
+}
+export interface PSegmentedControlCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPSegmentedControlElement;
+}
+export interface PStepperHorizontalCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPStepperHorizontalElement;
+}
+export interface PSwitchCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPSwitchElement;
+}
+export interface PTableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPTableElement;
+}
+export interface PTabsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPTabsElement;
+}
+export interface PTabsBarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPTabsBarElement;
+}
+export interface PToastItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPToastItemElement;
 }
 declare global {
     interface HTMLPAccordionElement extends Components.PAccordion, HTMLStencilElement {
@@ -1469,7 +1518,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when accordion state is changed.
          */
-        "onAccordionChange"?: (event: CustomEvent<AccordionChangeEvent>) => void;
+        "onAccordionChange"?: (event: PAccordionCustomEvent<AccordionChangeEvent>) => void;
         /**
           * Defines if accordion is open.
          */
@@ -1491,7 +1540,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the close button is clicked.
          */
-        "onDismiss"?: (event: CustomEvent<void>) => void;
+        "onDismiss"?: (event: PBannerCustomEvent<void>) => void;
         /**
           * Defines if the banner can be closed/removed by the user.
          */
@@ -1507,7 +1556,7 @@ declare namespace LocalJSX {
         /**
           * Defines the width of the banner corresponding to the `content-wrapper` dimensions
          */
-        "width"?: 'basic' | 'extended' | 'fluid';
+        "width"?: BannerWidth;
     }
     interface PButton {
         /**
@@ -1841,11 +1890,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the action button is clicked.
          */
-        "onAction"?: (event: CustomEvent<void>) => void;
+        "onAction"?: (event: PInlineNotificationCustomEvent<void>) => void;
         /**
           * Emitted when the close button is clicked.
          */
-        "onDismiss"?: (event: CustomEvent<void>) => void;
+        "onDismiss"?: (event: PInlineNotificationCustomEvent<void>) => void;
         /**
           * Defines if the inline-notification can be closed/removed by the user.
          */
@@ -2035,7 +2084,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the component requests to be closed.
          */
-        "onClose"?: (event: CustomEvent<void>) => void;
+        "onClose"?: (event: PModalCustomEvent<void>) => void;
         /**
           * If true, the modal is open.
          */
@@ -2073,7 +2122,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the page changes.
          */
-        "onPageChange"?: (event: CustomEvent<PageChangeEvent>) => void;
+        "onPageChange"?: (event: PPaginationCustomEvent<PageChangeEvent>) => void;
         /**
           * Adapts the color when used on dark background.
          */
@@ -2138,7 +2187,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when selected element changes.
          */
-        "onSegmentedControlChange"?: (event: CustomEvent<SegmentedControlChangeEvent>) => void;
+        "onSegmentedControlChange"?: (event: PSegmentedControlCustomEvent<SegmentedControlChangeEvent>) => void;
         /**
           * Adapts the segmented-control color depending on the theme.
          */
@@ -2240,7 +2289,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when active step is changed.
          */
-        "onStepChange"?: (event: CustomEvent<StepChangeEvent>) => void;
+        "onStepChange"?: (event: PStepperHorizontalCustomEvent<StepChangeEvent>) => void;
         /**
           * Adapts the tag color depending on the theme.
          */
@@ -2280,7 +2329,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when checked status is changed.
          */
-        "onSwitchChange"?: (event: CustomEvent<SwitchChangeEvent>) => void;
+        "onSwitchChange"?: (event: PSwitchCustomEvent<SwitchChangeEvent>) => void;
         /**
           * Stretches the contents to max available space.
          */
@@ -2303,7 +2352,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when sorting is changed.
          */
-        "onSortingChange"?: (event: CustomEvent<SortingChangeEvent>) => void;
+        "onSortingChange"?: (event: PTableCustomEvent<SortingChangeEvent>) => void;
     }
     interface PTableBody {
     }
@@ -2345,7 +2394,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when active tab is changed.
          */
-        "onTabChange"?: (event: CustomEvent<TabChangeEvent>) => void;
+        "onTabChange"?: (event: PTabsCustomEvent<TabChangeEvent>) => void;
         /**
           * The text size.
          */
@@ -2371,7 +2420,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when active tab is changed.
          */
-        "onTabChange"?: (event: CustomEvent<TabChangeEvent>) => void;
+        "onTabChange"?: (event: PTabsBarCustomEvent<TabChangeEvent>) => void;
         /**
           * The text size.
          */
@@ -2443,7 +2492,7 @@ declare namespace LocalJSX {
         /**
           * Sets a custom HTML tag depending of the usage of the text component.
          */
-        "tag"?: 'p' | 'span' | 'div' | 'address' | 'blockquote' | 'figcaption' | 'cite' | 'time' | 'legend';
+        "tag"?: TextTag;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
@@ -2539,7 +2588,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the close button is clicked.
          */
-        "onDismiss"?: (event: CustomEvent<void>) => void;
+        "onDismiss"?: (event: PToastItemCustomEvent<void>) => void;
         /**
           * State of the toast-item.
          */

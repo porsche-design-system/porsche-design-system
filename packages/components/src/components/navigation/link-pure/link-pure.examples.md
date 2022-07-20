@@ -1,10 +1,14 @@
 # Link Pure
 
 The `p-link-pure` component is essential for performing changes in **page routes**.  
-A Link Pure can be used with or without a label, but it's recommended to keep the **label visible** for better **usability** whenever possible.  
-When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers.  
-When overriding the `position` style of the `p-link-pure` component, make sure to not use `position: static`, which would make the click area expand to the entire viewport.    
-In case you want the user to execute an action, you should select the [Button](components/button) or [Button Pure](components/button-pure) component instead.  
+A Link Pure can be used with or without a label, but it's recommended to keep the **label visible** for better **
+usability** whenever possible.  
+When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen
+readers.  
+When overriding the `position` style of the `p-link-pure` component, make sure to not use `position: static`, which
+would make the click area expand to the entire viewport.  
+In case you want the user to execute an action, you should select the [Button](components/button) or
+[Button Pure](components/button-pure) component instead.
 
 <TableOfContents></TableOfContents>
 
@@ -24,13 +28,22 @@ In case you want the user to execute an action, you should select the [Button](c
 
 ## ARIA attributes and states
 
-Through the `aria` property you have the possibility to provide additional **ARIA** attributes and states to the component.
+Through the `aria` property you have the possibility to provide additional **ARIA** attributes and states to the
+component.
+
 <Playground :markup="accessibility" :config="config"></Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
-* Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If short labels are used like **"OK"** make sure to provide additional textual contents to expose a more descriptive experience to screen reader users. This can be done through **ARIA** with the `aria` property or by using the **slotted** approach where you can set the `aria-label` attribute directly on the anchor tag.
-* If implementing the Link Pure with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a **descriptive text** to support **screen reader** users is **mandatory**.
-* In general, preventing opening new windows by default with (`target="_blank"`) is a good choice. Let users choose by themselves how to open links. However, if you choose to implement `target="_blank"`, make sure to provide additional information with ARIA label, e.g.: `aria-label="Porsche Taycan model page (opens in new window)"`
+
+- Make sure to provide **descriptive**, self explaining **labels** which could be understood without context. If short
+  labels are used like **"OK"** make sure to provide additional textual contents to expose a more descriptive experience
+  to screen reader users. This can be done through **ARIA** with the `aria` property or by using the **slotted**
+  approach where you can set the `aria-label` attribute directly on the anchor tag.
+- If implementing the Link Pure with a **hidden label** (`hide-label="true"`), do not omit the label. Providing a **
+  descriptive text** to support **screen reader** users is **mandatory**.
+- In general, preventing opening new windows by default with (`target="_blank"`) is a good choice. Let users choose by
+  themselves how to open links. However, if you choose to implement `target="_blank"`, make sure to provide additional
+  information with ARIA label, e.g.: `aria-label="Porsche Taycan model page (opens in new window)"`
 
 ---
 
@@ -38,21 +51,23 @@ Through the `aria` property you have the possibility to provide additional **ARI
 
 By choosing `icon="none"` the component is shown without icon.
 
-The variant without icon is only recommended in the context of menus, where it is clearly evident that the component is clickable. If it is required in flowing text,
-a native link within the `p-text` component can be used.  
+The variant without icon is only recommended in the context of menus, where it is clearly evident that the component is
+clickable. If it is required in flowing text, a native link within the `p-text` component can be used.  
 See [text documentation](components/typography/text#text-with-a-link-button-and-bold-text-as-children).
 
-**Caution:** You can't combine  this with the prop `hideLabel`
+**Caution:** You can't combine this with the prop `hideLabel`
 
 <Playground :markup="withoutIcon" :config="configInline"></Playground>
 
 ## Size
 
-There are predefined text sizes for the component which should cover most use cases. 
-If a specific text size is needed, the size can be set to `inherit` to specify the text size from outside.  
+There are predefined text sizes for the component which should cover most use cases. If a specific text size is needed,
+the size can be set to `inherit` to specify the text size from outside.
 
-**Hint:** If you are in `hideLabel`-mode, be aware that the box-size of the rendered element will not be the same as the given (font-size) pixel value, 
-e.g. setting a font-size of **"44px"** will not generate a box with a **"44px"** width/height but instead a box size generated out of Porsche type-scaling formula which will end in **"52px"** width/height.
+**Hint:** If you are in `hideLabel`-mode, be aware that the box-size of the rendered element will not be the same as the
+given (font-size) pixel value, e.g. setting a font-size of **"44px"** will not generate a box with a **"44px"**
+width/height but instead a box size generated out of Porsche type-scaling formula which will end in **"52px"**
+width/height.
 
 <Playground :markup="sizeMarkup" :config="config">
   <select v-model="size" aria-label="Select style variant">
@@ -91,7 +106,8 @@ There are predefined default text weights. Be aware of using the `thin` variant 
 
 ## Framework routing (anchor nesting)
 
-To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element** (recommended) of the component.
+To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element** (
+recommended) of the component.
 
 <Playground :markup="routing" :config="config"></Playground>
 
@@ -99,7 +115,7 @@ To support custom anchor tags (e.g. framework specific routing) you can provide 
 
 ## Active state
 
-Providing visually differences if a link changes its state can be achieved by setting the `active` property. 
+Providing visually differences if a link changes its state can be achieved by setting the `active` property.
 
 <Playground :markup="activeHref" :config="config"></Playground>
 
@@ -133,7 +149,9 @@ Providing visually differences if a link changes its state can be achieved by se
 
 ## Link with specific icon
 
-If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
+If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all
+icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to
+link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
 
 <Playground :markup="icon" :config="configInline"></Playground>
 
@@ -156,8 +174,8 @@ The `label` can be aligned to the `right` (default) or to the `left` of the icon
 
 ## Stretch
 
-The `stretch` property extends the area between icon and label to the maximum available space.
-It is recommended to use stretch only on `left` alignment and small viewports, e.g. mobile views.
+The `stretch` property extends the area between icon and label to the maximum available space. It is recommended to use
+stretch only on `left` alignment and small viewports, e.g. mobile views.
 
 <Playground :markup="stretchMarkup" :config="config">
   <select v-model="stretch" aria-label="Select stretch and alignment">
@@ -199,10 +217,13 @@ By setting the `tabindex` attribute to `-1` you can remove the **Link Pure** fro
 
 ## Link Pure with Subline
 
-If you need additional information on your link, we provide a `<p slot="subline" />`.
-The size of the *subline* changes according to the size of the *label*. We do not support `size="inherit"`, `stretch` and `alignLabel`in this pattern so far.
+If you need additional information on your link, we provide a `<p slot="subline" />`. The size of the _subline_ changes
+according to the size of the _label_. We do not support `size="inherit"`, `stretch` and `alignLabel`in this pattern so
+far.
 
-**Note:** If you intend to use a `<a>` tag inside of the `p-link-pure` component, keep in mind that the slot needs to be *outside* of the anchor tag to function properly! Make sure to add an `aria-describedby` attribute to expose the correct accessibility tree.
+**Note:** If you intend to use a `<a>` tag inside of the `p-link-pure` component, keep in mind that the slot needs to be
+_outside_ of the anchor tag to function properly! Make sure to add an `aria-describedby` attribute to expose the correct
+accessibility tree.
 
 <Playground :markup="subline" :config="configInline">
   <select v-model="sublineSize" aria-label="Select size">
@@ -213,7 +234,6 @@ The size of the *subline* changes according to the size of the *label*. We do no
     <option>x-large</option>
   </select>
 </Playground>
-
 
 <script lang="ts">
 import Vue from 'vue';
@@ -324,7 +344,7 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
-  ::v-deep .example-link {
+  :deep(.example-link) {
     display: inline-block;
     outline: none;
     text-decoration: none;

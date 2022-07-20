@@ -2,8 +2,8 @@ export type HeadAdvanced = {
   id: string;
   name: string;
   hideLabel: boolean;
-  active: boolean;
-  direction: 'asc' | 'desc';
+  active?: boolean;
+  direction?: 'asc' | 'desc';
 };
 
 export const headAdvanced: HeadAdvanced[] = [

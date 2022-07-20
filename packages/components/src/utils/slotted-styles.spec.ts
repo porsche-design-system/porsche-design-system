@@ -26,9 +26,6 @@ describe('attachSlottedCss()', () => {
   });
 
   describe('for elements outside of shadow root', () => {
-    beforeEach(() => {
-      slottedCssMap.clear();
-    });
     /**
      * todo: insertSlottedStyles should be a class and we should
      *       work on the instance. Else we can not empty the Map
@@ -74,12 +71,12 @@ describe('attachSlottedCss()', () => {
     let container: HTMLElement;
 
     beforeEach(() => {
-      slottedCssMap.clear();
       container = document.createElement('p-container');
       const shadowRoot = container.attachShadow({ mode: 'open' });
       const style = document.createElement('style');
       style.appendChild(document.createTextNode('.foo { font-weight: strong; }'));
       shadowRoot.appendChild(style);
+      document.body.appendChild(container);
     });
 
     it('should prepend styles to the shadow root', () => {
@@ -119,6 +116,7 @@ describe('attachSlottedCss()', () => {
     it('should prepend for the same tag name for each shadow root', () => {
       const container2 = document.createElement('div');
       container2.attachShadow({ mode: 'open' });
+      document.body.appendChild(container2);
 
       const divElement = document.createElement('p-div');
       const divElement2 = document.createElement('p-div');

@@ -4,18 +4,19 @@
 
 ## Test the application
 
-To set up Jest testing in in NextJS you have to manually set up jest in your project. You find detailed 
-information here: [Get Started with Jest](https://jestjs.io/docs/en/getting-started)
+To set up Jest testing in in NextJS you have to manually set up jest in your project. You find detailed information
+here: [Get Started with Jest](https://jestjs.io/docs/en/getting-started)
 
 **Jest** uses **jsdom**.It is yet not possible to render the functionality of web components in **jsdom**.
 
-To ensure your tests don't fail, we provide mocks for every Porsche Design System component. 
-They are distributed in the `@porsche-design-system/components-react` npm package.
+To ensure your tests don't fail, we provide mocks for every Porsche Design System component. They are distributed in the
+`@porsche-design-system/components-react` npm package.
 
-The mocks must only be used if the functionality of the web component is required within the test.
-As we test and ensure the functionality of our web components extensively, we recommend using the mocks only as a last option.
+The mocks must only be used if the functionality of the web component is required within the test. As we test and ensure
+the functionality of our web components extensively, we recommend using the mocks only as a last option.
 
-To consume the mocks you can set them up via your **setupTest.js** file in your root folder and copy the following snippet into the setup file.
+To consume the mocks you can set them up via your **setupTest.js** file in your root folder and copy the following
+snippet into the setup file.
 
 ```js
 // setupTest.js
@@ -23,16 +24,16 @@ jest.mock('@porsche-design-system/components-react', () => {
   return require('@porsche-design-system/components-react/mocks');
 });
 ```
+
 You have to access the mocks in the Mock-Factory of the `jest.mock()` function.
 
-If you only need a single component mock you can also consume the mock directly in your test. All of our mocks are named like **p-name-mock** for example **p-headline-mock**.
+If you only need a single component mock you can also consume the mock directly in your test. All of our mocks are named
+like **p-name-mock** for example **p-headline-mock**.
 
 ```tsx
 // SingleComponent.tsx
 export function SingleComponent() {
-  return (
-    <PHeadline>Some headline</PHeadline>
-  )
+  return <PHeadline>Some headline</PHeadline>;
 }
 ```
 
@@ -43,7 +44,7 @@ jest.mock('@porsche-design-system/components-react', () => {
 });
 
 test('renders a headline from Porsche Design System', async () => {
-  const {getByText} = render(<SingleComponent/>);
+  const { getByText } = render(<SingleComponent />);
   const headLineElement = getByText('Some headline');
   expect(headLineElement).toBeInTheDocument();
 });
@@ -51,5 +52,6 @@ test('renders a headline from Porsche Design System', async () => {
 
 Use this solution until there is an upgrade to a newer **jsdom** version which provides support for **Web Components**.
 In the meantime, we keep providing mocks.
- 
-You find detailed information on how to use mock functions in **Jest** [here](https://jestjs.io/docs/en/mock-functions.html).
+
+You find detailed information on how to use mock functions in **Jest**
+[here](https://jestjs.io/docs/en/mock-functions.html).

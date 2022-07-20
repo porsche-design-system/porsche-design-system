@@ -23,7 +23,7 @@ export const parseJSON = (
           .replace(/'/g, '"') // convert single quotes to double quotes
           .replace(/[\s"]?([\w]+)[\s"]?:([^//])/g, '"$1":$2') // wrap keys in double quotes if they don't have them but ignore potential urls
       );
-    } catch (e) {
+    } catch {
       // prop is string, e.g. "block" or "inline"
       return prop;
     }
