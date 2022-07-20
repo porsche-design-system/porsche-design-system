@@ -1,14 +1,36 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import type {
   FlexItemAlignSelf,
+  FlexItemAlignSelfType,
   FlexItemFlex,
+  FlexItemFlexType,
   FlexItemGrow,
+  FlexItemGrowType,
   FlexItemOffset,
   FlexItemShrink,
+  FlexItemShrinkType,
   FlexItemWidth,
 } from './flex-item-utils';
 import { getComponentCss } from './flex-item-styles';
-import { attachComponentCss, throwIfParentIsNotOfKind } from '../../../../utils';
+import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../../utils';
+import type { PropTypes } from '../../../../utils';
+import {
+  FLEX_ITEM_ALIGN_SELFS,
+  FLEX_ITEM_FLEXS,
+  FLEX_ITEM_GROWS,
+  FLEX_ITEM_OFFSETS,
+  FLEX_ITEM_SHRINKS,
+  FLEX_ITEM_WIDTHS,
+} from './flex-item-utils';
+
+const propTypes: PropTypes<typeof FlexItem> = {
+  width: AllowedTypes.breakpoint<FlexItemWidth>(FLEX_ITEM_WIDTHS),
+  offset: AllowedTypes.breakpoint<FlexItemOffset>(FLEX_ITEM_OFFSETS),
+  alignSelf: AllowedTypes.breakpoint<FlexItemAlignSelfType>(FLEX_ITEM_ALIGN_SELFS),
+  grow: AllowedTypes.breakpoint<FlexItemGrowType>(FLEX_ITEM_GROWS),
+  shrink: AllowedTypes.breakpoint<FlexItemShrinkType>(FLEX_ITEM_SHRINKS),
+  flex: AllowedTypes.breakpoint<FlexItemFlexType>(FLEX_ITEM_FLEXS),
+};
 
 @Component({
   tag: 'p-flex-item',
@@ -40,6 +62,7 @@ export class FlexItem {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     attachComponentCss(
       this.host,
       getComponentCss,

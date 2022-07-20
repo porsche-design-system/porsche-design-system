@@ -77,7 +77,7 @@ describe('patchAccessibilityIntoSVG()', () => {
     const spy = jest.spyOn(a11yUtils, 'parseAndGetAriaAttributes');
 
     patchAriaIntoSVG('', rawAttributes);
-    expect(spy).toBeCalledWith(rawAttributes, ICON_ARIA_ATTRIBUTES);
+    expect(spy).toBeCalledWith(rawAttributes);
   });
 
   it.each(ICON_ARIA_ATTRIBUTES)('should return patched content for %s', (ariaAttribute) => {

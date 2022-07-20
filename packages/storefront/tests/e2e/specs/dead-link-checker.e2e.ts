@@ -67,7 +67,7 @@ it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
 xit.each(externalUrls.map<[string, number]>((url, i) => [url, i]))(
   'should have valid status code at %s',
   async (url, index) => {
-    console.log(`Checking url ${index + 1}/${externalUrls.length}: ${url}`);
+    console.log(`dead-link-checker url ${index + 1}/${externalUrls.length}: ${url}`);
 
     // TODO: why not use fetch api to retrieve response and status code?
     const response = await page.goto(url);

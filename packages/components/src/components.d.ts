@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlignLabel, BreakpointCustomizable, ButtonType, ButtonVariant, FormState, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme, ThemeExtendedElectric, ThemeExtendedElectricDark } from "./types";
 import { AccordionChangeEvent, AccordionSize } from "./components/content/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
-import { BannerState } from "./components/feedback/banner/banner-utils";
+import { BannerState, BannerWidth } from "./components/feedback/banner/banner-utils";
 import { ButtonAriaAttributes } from "./utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/layout/content-wrapper/content-wrapper-utils";
@@ -37,6 +37,7 @@ import { SortingChangeEvent, TableHeadCellSort } from "./components/content/tabl
 import { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from "./components/navigation/tabs-bar/tabs-bar-utils";
 import { TagColor } from "./components/action/tag/tag-utils";
 import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/action/tag-dismissible/tag-dismissible-utils";
+import { TextTag } from "./components/basic/typography/text/text-utils";
 import { TextFieldWrapperUnitPosition } from "./components/form/text-field-wrapper/text-field-wrapper-utils";
 import { ListType, OrderType } from "./components/content/text-list/text-list/text-list-utils";
 import { ToastMessage } from "./components/feedback/toast/toast/toast-manager";
@@ -84,7 +85,7 @@ export namespace Components {
         /**
           * Defines the width of the banner corresponding to the `content-wrapper` dimensions
          */
-        "width"?: 'basic' | 'extended' | 'fluid';
+        "width"?: BannerWidth;
     }
     interface PButton {
         /**
@@ -980,7 +981,7 @@ export namespace Components {
         /**
           * Sets a custom HTML tag depending of the usage of the text component.
          */
-        "tag"?: 'p' | 'span' | 'div' | 'address' | 'blockquote' | 'figcaption' | 'cite' | 'time' | 'legend';
+        "tag"?: TextTag;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
@@ -1555,7 +1556,7 @@ declare namespace LocalJSX {
         /**
           * Defines the width of the banner corresponding to the `content-wrapper` dimensions
          */
-        "width"?: 'basic' | 'extended' | 'fluid';
+        "width"?: BannerWidth;
     }
     interface PButton {
         /**
@@ -2491,7 +2492,7 @@ declare namespace LocalJSX {
         /**
           * Sets a custom HTML tag depending of the usage of the text component.
          */
-        "tag"?: 'p' | 'span' | 'div' | 'address' | 'blockquote' | 'figcaption' | 'cite' | 'time' | 'legend';
+        "tag"?: TextTag;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
          */

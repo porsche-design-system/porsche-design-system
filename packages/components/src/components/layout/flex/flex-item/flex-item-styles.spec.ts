@@ -9,7 +9,7 @@ import type {
 } from './flex-item-utils';
 import {
   FLEX_ITEM_ALIGN_SELFS,
-  FLEX_ITEM_FLEXES,
+  FLEX_ITEM_FLEXS,
   FLEX_ITEM_GROWS,
   FLEX_ITEM_OFFSETS,
   FLEX_ITEM_SHRINKS,
@@ -52,7 +52,7 @@ describe('getComponentCss()', () => {
   });
 
   const dataFlex: FlexItemFlex[] = [
-    ...FLEX_ITEM_FLEXES,
+    ...FLEX_ITEM_FLEXS,
     { base: 'auto', xs: 'equal', s: 'auto', m: 'equal', l: 'auto', xl: 'equal' },
   ];
   it.each<FlexItemFlex>(dataFlex)('should return correct css for flex: %j', (flex) => {

@@ -1,7 +1,6 @@
 import { StepperHorizontal } from './stepper-horizontal';
-import * as throwIfChildrenAreNotOfKindUtils from '../../../../utils/dom/throwIfChildrenAreNotOfKind';
-import * as throwIfChildCountIsExceededUtils from '../../../../utils/dom/throwIfChildCountIsExceeded';
-import * as childrenObserverUtils from '../../../../utils/children-observer';
+import * as throwIfChildrenAreNotOfKindUtils from '../../../../utils/validation/throwIfChildrenAreNotOfKind';
+import * as throwIfChildCountIsExceededUtils from '../../../../utils/validation/throwIfChildCountIsExceeded';
 import * as stepperHorizontalUtils from './stepper-horizontal-utils';
 
 describe('connectedCallback', () => {
@@ -15,18 +14,6 @@ describe('connectedCallback', () => {
     component.connectedCallback();
 
     expect(spy).toBeCalledTimes(1);
-  });
-
-  it('should call observeChildren() with correct parameters', () => {
-    const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
-
-    const component = new StepperHorizontal();
-    component.host = document.createElement('p-stepper-horizontal');
-    component.host.attachShadow({ mode: 'open' });
-
-    component.connectedCallback();
-
-    expect(spy).toBeCalledWith(component.host, expect.any(Function));
   });
 });
 
@@ -133,16 +120,5 @@ describe('componentDidUpdate', () => {
     component.componentDidUpdate();
 
     expect(spy).toBeCalledWith(component.host, expect.any(Array));
-  });
-});
-
-describe('disconnectedCallback', () => {
-  it('should call unobserveChildren() with correct parameter', () => {
-    const spy = jest.spyOn(childrenObserverUtils, 'unobserveChildren');
-    const component = new StepperHorizontal();
-
-    component.disconnectedCallback();
-
-    expect(spy).toBeCalledWith(component.host);
   });
 });

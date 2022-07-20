@@ -1,6 +1,7 @@
 import { CDN_BASE_URL as MARQUES_CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/marque';
 
-export type MarqueSize = 'responsive' | 'small' | 'medium';
+export const MARQUE_SIZES = ['responsive', 'small', 'medium'] as const;
+export type MarqueSize = typeof MARQUE_SIZES[number];
 type MarqueManifest = typeof MARQUES_MANIFEST;
 export type InnerManifest = MarqueManifest['porscheMarque'];
 export type MarqueFormat = 'png' | 'webp';

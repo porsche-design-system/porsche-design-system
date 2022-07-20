@@ -1,0 +1,445 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-accordion: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "compact": "boolean",
+  "heading": "string",
+  "open": "boolean",
+  "size": "oneOf",
+  "tag": "oneOf",
+  "theme": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-banner: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "persistent": "boolean",
+  "state": "oneOf",
+  "theme": "oneOf",
+  "width": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-button: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "aria": "aria",
+  "disabled": "boolean",
+  "hideLabel": "breakpoint",
+  "icon": "string",
+  "iconSource": "string",
+  "loading": "boolean",
+  "tabbable": "boolean",
+  "theme": "oneOf",
+  "type": "oneOf",
+  "variant": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-button-group: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "direction": "breakpoint",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-button-pure: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "active": "boolean",
+  "alignLabel": "oneOf",
+  "aria": "aria",
+  "disabled": "boolean",
+  "hideLabel": "breakpoint",
+  "icon": "string",
+  "iconSource": "string",
+  "loading": "boolean",
+  "size": "breakpoint",
+  "stretch": "breakpoint",
+  "tabbable": "boolean",
+  "theme": "oneOf",
+  "type": "oneOf",
+  "weight": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-checkbox-wrapper: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "hideLabel": "breakpoint",
+  "label": "string",
+  "message": "string",
+  "state": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-content-wrapper: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "backgroundColor": "oneOf",
+  "theme": "oneOf",
+  "width": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-divider: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "color": "oneOf",
+  "orientation": "breakpoint",
+  "theme": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-fieldset-wrapper: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "label": "string",
+  "labelSize": "oneOf",
+  "message": "string",
+  "required": "boolean",
+  "state": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-flex: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "alignContent": "breakpoint",
+  "alignItems": "breakpoint",
+  "direction": "breakpoint",
+  "inline": "breakpoint",
+  "justifyContent": "breakpoint",
+  "wrap": "breakpoint",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-flex-item: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "alignSelf": "breakpoint",
+  "flex": "breakpoint",
+  "grow": "breakpoint",
+  "offset": "breakpoint",
+  "shrink": "breakpoint",
+  "width": "breakpoint",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-grid: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "direction": "breakpoint",
+  "gutter": "breakpoint",
+  "wrap": "breakpoint",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-grid-item: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "offset": "breakpoint",
+  "size": "breakpoint",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-headline: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "align": "oneOf",
+  "color": "oneOf",
+  "ellipsis": "boolean",
+  "tag": "oneOf",
+  "theme": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-icon: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "aria": "aria",
+  "color": "oneOf",
+  "lazy": "boolean",
+  "name": "string",
+  "size": "oneOf",
+  "source": "string",
+  "theme": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-inline-notification: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "actionIcon": "string",
+  "actionLabel": "string",
+  "actionLoading": "boolean",
+  "description": "string",
+  "heading": "string",
+  "persistent": "boolean",
+  "state": "oneOf",
+  "theme": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-link: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "aria": "aria",
+  "download": "string",
+  "hideLabel": "breakpoint",
+  "href": "string",
+  "icon": "string",
+  "iconSource": "string",
+  "rel": "string",
+  "target": "string",
+  "theme": "oneOf",
+  "variant": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-link-pure: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "active": "boolean",
+  "alignLabel": "breakpoint",
+  "aria": "aria",
+  "download": "string",
+  "hideLabel": "breakpoint",
+  "href": "string",
+  "icon": "string",
+  "iconSource": "string",
+  "rel": "string",
+  "size": "breakpoint",
+  "stretch": "breakpoint",
+  "target": "string",
+  "theme": "oneOf",
+  "weight": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-link-social: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "hideLabel": "breakpoint",
+  "href": "string",
+  "icon": "string",
+  "iconSource": "string",
+  "rel": "string",
+  "target": "string",
+  "theme": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-marque: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "aria": "aria",
+  "href": "string",
+  "size": "oneOf",
+  "target": "string",
+  "trademark": "boolean",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-modal: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "aria": "aria",
+  "disableBackdropClick": "boolean",
+  "disableCloseButton": "boolean",
+  "fullscreen": "breakpoint",
+  "heading": "string",
+  "open": "boolean",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-pagination: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "activePage": "number",
+  "allyLabel": "string",
+  "allyLabelNext": "string",
+  "allyLabelPage": "string",
+  "allyLabelPrev": "string",
+  "itemsPerPage": "number",
+  "maxNumberOfPageLinks": "breakpoint",
+  "theme": "oneOf",
+  "totalItemsCount": "number",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-popover: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "aria": "aria",
+  "description": "string",
+  "direction": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-radio-button-wrapper: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "hideLabel": "breakpoint",
+  "label": "string",
+  "message": "string",
+  "state": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-segmented-control: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "backgroundColor": "oneOf",
+  "theme": "oneOf",
+  "value": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-segmented-control-item: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "disabled": "boolean",
+  "icon": "string",
+  "iconSource": "string",
+  "label": "string",
+  "value": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-select-wrapper: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "description": "string",
+  "dropdownDirection": "oneOf",
+  "filter": "boolean",
+  "hideLabel": "breakpoint",
+  "label": "string",
+  "message": "string",
+  "native": "boolean",
+  "state": "oneOf",
+  "theme": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-spinner: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "aria": "aria",
+  "size": "breakpoint",
+  "theme": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-stepper-horizontal: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "theme": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-stepper-horizontal-item: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "disabled": "boolean",
+  "state": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-switch: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "alignLabel": "oneOf",
+  "checked": "boolean",
+  "disabled": "boolean",
+  "hideLabel": "breakpoint",
+  "loading": "boolean",
+  "stretch": "breakpoint",
+  "tabbable": "boolean",
+  "theme": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-table: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "caption": "string",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-table-cell: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "multiline": "boolean",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-table-head-cell: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "hideLabel": "breakpoint",
+  "multiline": "boolean",
+  "sort": "shape",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-tabs: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "activeTabIndex": "number",
+  "gradientColorScheme": "oneOf",
+  "size": "oneOf",
+  "theme": "oneOf",
+  "weight": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-tabs-bar: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "activeTabIndex": "number",
+  "gradientColorScheme": "oneOf",
+  "size": "breakpoint",
+  "theme": "oneOf",
+  "weight": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-tabs-item: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "label": "string",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-tag: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "color": "oneOf",
+  "icon": "string",
+  "iconSource": "string",
+  "theme": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-tag-dismissible: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "aria": "aria",
+  "color": "oneOf",
+  "label": "string",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-text: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "align": "oneOf",
+  "color": "oneOf",
+  "ellipsis": "boolean",
+  "size": "breakpoint",
+  "tag": "oneOf",
+  "theme": "oneOf",
+  "weight": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-text-field-wrapper: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "description": "string",
+  "hideLabel": "breakpoint",
+  "label": "string",
+  "message": "string",
+  "showCharacterCount": "boolean",
+  "state": "oneOf",
+  "unit": "string",
+  "unitPosition": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-text-list: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "listType": "oneOf",
+  "orderType": "oneOf",
+  "theme": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-textarea-wrapper: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "description": "string",
+  "hideLabel": "breakpoint",
+  "label": "string",
+  "message": "string",
+  "showCharacterCount": "boolean",
+  "state": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via componentWillRender for p-toast: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "theme": "oneOf",
+}
+`;

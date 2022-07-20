@@ -4,7 +4,7 @@ import {
   getHTMLElements,
   getPrefixedTagNames,
   scrollElementTo,
-  throwIfParentIsNotOneOfKind,
+  throwIfRootNodeIsNotOneOfKind,
 } from '../../../utils';
 import { getComponentCss } from './scroller-styles';
 import type { Direction, GradientColorTheme, ScrollToPosition, PrevNextButtonJssStyle } from './scroller-utils';
@@ -31,8 +31,8 @@ export class Scroller {
   // TODO: remove this property from generated readme and types
   @Prop() public prevNextButtonJssStyle?: PrevNextButtonJssStyle;
 
-  @State() public isPrevHidden = true;
-  @State() public isNextHidden = true;
+  @State() private isPrevHidden = true;
+  @State() private isNextHidden = true;
 
   private intersectionObserver: IntersectionObserver;
   private scrollAreaElement: HTMLElement;
@@ -45,8 +45,9 @@ export class Scroller {
       this.scrollAreaElement.scrollLeft = scrollPosition;
     }
   }
+
   public connectedCallback(): void {
-    throwIfParentIsNotOneOfKind(this.host, ['pTabsBar', 'pStepperHorizontal']);
+    throwIfRootNodeIsNotOneOfKind(this.host, ['pTabsBar', 'pStepperHorizontal']);
   }
 
   public componentDidLoad(): void {

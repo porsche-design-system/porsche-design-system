@@ -28,6 +28,6 @@ export const FLEX_ITEM_SHRINKS = [0, 1] as const;
 export type FlexItemShrinkType = typeof FLEX_ITEM_SHRINKS[number];
 export type FlexItemShrink = BreakpointCustomizable<FlexItemShrinkType>;
 
-export const FLEX_ITEM_FLEXES = ['initial', 'auto', 'none', 'equal'] as const;
-export type FlexItemFlexType = typeof FLEX_ITEM_FLEXES[number];
+export const FLEX_ITEM_FLEXS = ['initial', 'auto', 'none', 'equal'] as const;
+export type FlexItemFlexType = typeof FLEX_ITEM_FLEXS[number];
 export type FlexItemFlex = BreakpointCustomizable<FlexItemFlexType>;

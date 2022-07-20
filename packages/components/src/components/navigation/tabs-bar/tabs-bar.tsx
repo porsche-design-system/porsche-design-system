@@ -1,21 +1,40 @@
 import type { EventEmitter } from '@stencil/core';
-import { Component, Element, Event, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Event, h, Prop, State, Watch } from '@stencil/core';
 import {
+  AllowedTypes,
   attachComponentCss,
   getHTMLElements,
   getPrefixedTagNames,
   getScrollActivePosition,
-  isShadowRootParentOfKind,
   observeChildren,
   setAttribute,
   unobserveChildren,
+  validateProps,
 } from '../../../utils';
+import type { PropTypes } from '../../../utils';
+import { isShadowRootParentOfKind } from '../../../utils/dom'; // separate import is needed for lifecycleValidation.spec to pass
 import type { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from './tabs-bar-utils';
-import { getFocusedTabIndex, getPrevNextTabIndex, sanitizeActiveTabIndex, setBarStyle } from './tabs-bar-utils';
+import {
+  getFocusedTabIndex,
+  getPrevNextTabIndex,
+  sanitizeActiveTabIndex,
+  setBarStyle,
+  TAB_SIZES,
+  TAB_WEIGHTS,
+} from './tabs-bar-utils';
 import { getComponentCss } from './tabs-bar-styles';
 import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
+import { THEMES_EXTENDED_ELECTRIC } from '../../../types';
 import type { Direction } from '../../common/scroller/scroller-utils';
-import { getScrollerElements } from '../../common/scroller/scroller-utils';
+import { getScrollerElements, GRADIENT_COLOR_THEMES } from '../../common/scroller/scroller-utils';
+
+const propTypes: PropTypes<typeof TabsBar> = {
+  size: AllowedTypes.breakpoint<TabSize>(TAB_SIZES),
+  weight: AllowedTypes.oneOf<TabWeight>(TAB_WEIGHTS),
+  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  gradientColorScheme: AllowedTypes.oneOf<TabGradientColorTheme>(GRADIENT_COLOR_THEMES),
+  activeTabIndex: AllowedTypes.number,
+};
 
 @Component({
   tag: 'p-tabs-bar',
@@ -91,6 +110,7 @@ export class TabsBar {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size, this.weight, this.theme);
   }
 
