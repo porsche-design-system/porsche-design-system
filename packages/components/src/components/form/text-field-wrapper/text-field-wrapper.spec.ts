@@ -1,7 +1,7 @@
 import * as textFieldWrapperUtils from './text-field-wrapper-utils';
 import { TextFieldWrapper } from './text-field-wrapper';
 import * as a11yUtils from '../../../utils/a11y/a11y';
-import * as getDirectAndOnlyChildOfKindHTMLElementOrThrowUtils from '../../../utils/validation/getDirectAndOnlyChildOfKindHTMLElementOrThrow';
+import * as getOnlyChildOfKindHTMLElementOrThrowUtils from '../../../utils/validation/getOnlyChildOfKindHTMLElementOrThrow';
 
 jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
@@ -12,7 +12,7 @@ describe('componentWillLoad', () => {
     input.type = 'text';
     input.maxLength = 20;
     jest
-      .spyOn(getDirectAndOnlyChildOfKindHTMLElementOrThrowUtils, 'getDirectAndOnlyChildOfKindHTMLElementOrThrow')
+      .spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow')
       .mockReturnValue(input);
 
     const spy = jest.spyOn(textFieldWrapperUtils, 'hasCounterAndIsTypeText');
@@ -31,7 +31,7 @@ describe('componentWillLoad', () => {
     input.type = 'text';
     input.maxLength = 50;
     jest
-      .spyOn(getDirectAndOnlyChildOfKindHTMLElementOrThrowUtils, 'getDirectAndOnlyChildOfKindHTMLElementOrThrow')
+      .spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow')
       .mockReturnValue(input);
 
     const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber');
@@ -51,7 +51,7 @@ describe('componentWillLoad', () => {
     input.type = 'text';
     input.maxLength = 50;
     jest
-      .spyOn(getDirectAndOnlyChildOfKindHTMLElementOrThrowUtils, 'getDirectAndOnlyChildOfKindHTMLElementOrThrow')
+      .spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow')
       .mockReturnValue(input);
 
     const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber');
@@ -78,7 +78,7 @@ describe('componentWillLoad', () => {
       }
 
       jest
-        .spyOn(getDirectAndOnlyChildOfKindHTMLElementOrThrowUtils, 'getDirectAndOnlyChildOfKindHTMLElementOrThrow')
+        .spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow')
         .mockReturnValue(input);
 
       const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber');

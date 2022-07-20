@@ -1,7 +1,7 @@
 import { Component, Element, Host, JSX, h, Prop, forceUpdate } from '@stencil/core';
 import {
   getClosestHTMLElement,
-  getDirectAndOnlyChildOfKindHTMLElementOrThrow,
+  getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   hasLabel,
   hasMessage,
@@ -55,7 +55,7 @@ export class RadioButtonWrapper {
   }
 
   public componentWillLoad(): void {
-    this.input = getDirectAndOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=radio]');
+    this.input = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=radio]');
     this.observeAttributes(); // once initially
   }
 

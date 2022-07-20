@@ -1,4 +1,4 @@
-import { getDirectAndOnlyChildHTMLElementOrThrow } from './getDirectAndOnlyChildHTMLElementOrThrow';
+import { getOnlyChildHTMLElementOrThrow } from './getOnlyChildHTMLElementOrThrow';
 import * as getDirectChildHTMLElementUtils from '../dom/getDirectChildHTMLElement';
 
 it('should call getDirectChildHTMLElement() with correct parameters', () => {
@@ -8,7 +8,7 @@ it('should call getDirectChildHTMLElement() with correct parameters', () => {
   const parent = document.createElement('div');
   const selector = 'a,button';
 
-  getDirectAndOnlyChildHTMLElementOrThrow(parent, selector);
+  getOnlyChildHTMLElementOrThrow(parent, selector);
 
   expect(spy).toBeCalledWith(parent, selector);
 });
@@ -18,7 +18,7 @@ it('should return result of getDirectChildHTMLElement()', () => {
   const child = document.createElement('a');
   jest.spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement').mockReturnValue(child);
 
-  expect(getDirectAndOnlyChildHTMLElementOrThrow(parent, 'a')).toBe(child);
+  expect(getOnlyChildHTMLElementOrThrow(parent, 'a')).toBe(child);
 });
 
 const errorMessage = '"div has to contain a single direct child of: a"';
@@ -29,7 +29,7 @@ it('should throw error if there is a another child before', () => {
   const child2 = document.createElement('a');
   parent.append(child1, child2);
 
-  expect(() => getDirectAndOnlyChildHTMLElementOrThrow(parent, 'a')).toThrowErrorMatchingInlineSnapshot(errorMessage);
+  expect(() => getOnlyChildHTMLElementOrThrow(parent, 'a')).toThrowErrorMatchingInlineSnapshot(errorMessage);
 });
 
 it('should throw error if there is a another child after', () => {
@@ -38,13 +38,13 @@ it('should throw error if there is a another child after', () => {
   const child2 = document.createElement('button');
   parent.append(child1, child2);
 
-  expect(() => getDirectAndOnlyChildHTMLElementOrThrow(parent, 'a')).toThrowErrorMatchingInlineSnapshot(errorMessage);
+  expect(() => getOnlyChildHTMLElementOrThrow(parent, 'a')).toThrowErrorMatchingInlineSnapshot(errorMessage);
 });
 
 it('should throw error if there is no child', () => {
   const parent = document.createElement('div');
 
-  expect(() => getDirectAndOnlyChildHTMLElementOrThrow(parent, 'a')).toThrowErrorMatchingInlineSnapshot(errorMessage);
+  expect(() => getOnlyChildHTMLElementOrThrow(parent, 'a')).toThrowErrorMatchingInlineSnapshot(errorMessage);
 });
 
 it('should throw error if there is a nested child', () => {
@@ -54,5 +54,5 @@ it('should throw error if there is a nested child', () => {
   child.append(nestedChild);
   parent.append(child);
 
-  expect(() => getDirectAndOnlyChildHTMLElementOrThrow(parent, 'a')).toThrowErrorMatchingInlineSnapshot(errorMessage);
+  expect(() => getOnlyChildHTMLElementOrThrow(parent, 'a')).toThrowErrorMatchingInlineSnapshot(errorMessage);
 });

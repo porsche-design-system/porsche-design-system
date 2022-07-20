@@ -4,7 +4,7 @@ import {
   attachComponentCss,
   attachSlottedCss,
   getClosestHTMLElement,
-  getDirectAndOnlyChildOfKindHTMLElementOrThrow,
+  getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   hasLabel,
   hasMessage,
@@ -55,7 +55,7 @@ export class CheckboxWrapper {
   }
 
   public componentWillLoad(): void {
-    this.input = getDirectAndOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=checkbox]');
+    this.input = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=checkbox]');
     this.observeAttributes(); // once initially
   }
 

@@ -3,10 +3,10 @@ import { getTagName } from '../tag-name';
 import { getDirectChildHTMLElement } from '../dom/getDirectChildHTMLElement';
 
 // prettier-ignore
-export function getDirectAndOnlyChildHTMLElementOrThrow<K extends keyof HTMLElementTagNameMap>(element: HTMLElement, selector: K): HTMLElementTagNameMap[K] | null;
+export function getOnlyChildHTMLElementOrThrow<K extends keyof HTMLElementTagNameMap>(element: HTMLElement, selector: K): HTMLElementTagNameMap[K] | null;
 // prettier-ignore
-export function getDirectAndOnlyChildHTMLElementOrThrow<E extends Element = Element>(element: HTMLElement, selector: string): E | null;
-export function getDirectAndOnlyChildHTMLElementOrThrow(element: HTMLElement, selector: string): any {
+export function getOnlyChildHTMLElementOrThrow<E extends Element = Element>(element: HTMLElement, selector: string): E | null;
+export function getOnlyChildHTMLElementOrThrow(element: HTMLElement, selector: string): any {
   const directChild = getDirectChildHTMLElement(element, selector);
 
   // directChild can be null from querySelector()
@@ -14,5 +14,5 @@ export function getDirectAndOnlyChildHTMLElementOrThrow(element: HTMLElement, se
     throw new Error(`${getTagName(element)} has to contain a single direct child of: ${selector}`);
   }
 
-  return directChild;
+  return directChild; // Einzelkind
 }

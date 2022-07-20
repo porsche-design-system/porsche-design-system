@@ -1,6 +1,6 @@
 import { getComponentMeta, TAG_NAMES } from '@porsche-design-system/shared';
 import type { TagName } from '@porsche-design-system/shared';
-import * as getDirectAndOnlyChildOfKindHTMLElementOrThrowUtils from '../utils/validation/getDirectAndOnlyChildOfKindHTMLElementOrThrow';
+import * as getOnlyChildOfKindHTMLElementOrThrowUtils from '../utils/validation/getOnlyChildOfKindHTMLElementOrThrow';
 import * as jssUtils from '../utils/jss';
 import * as slottedStylesUtils from '../utils/slotted-styles';
 import * as attributeObserverUtils from '../utils/attribute-observer';
@@ -32,12 +32,9 @@ it('should have same amount of elements in TAG_NAMES_CONSTRUCTOR_MAP as in TAG_N
 });
 
 it.each<TagName>(tagNamesWithRequiredChild)(
-  'should call getDirectAndOnlyChildOfKindHTMLElementOrThrow() with correct parameters via componentWillLoad for %s',
+  'should call getOnlyChildOfKindHTMLElementOrThrow() with correct parameters via componentWillLoad for %s',
   (tagName) => {
-    const spy = jest.spyOn(
-      getDirectAndOnlyChildOfKindHTMLElementOrThrowUtils,
-      'getDirectAndOnlyChildOfKindHTMLElementOrThrow'
-    );
+    const spy = jest.spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow');
     const component = componentFactory(tagName);
 
     try {
@@ -204,9 +201,7 @@ describe.each<TagName>(tagNamesWithObserveAttributes)('%s', (tagName) => {
   });
 
   it('should call observeAttributes() with correct parameters via componentWillLoad', () => {
-    jest
-      .spyOn(getDirectAndOnlyChildOfKindHTMLElementOrThrowUtils, 'getDirectAndOnlyChildOfKindHTMLElementOrThrow')
-      .mockReturnValue(el);
+    jest.spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow').mockReturnValue(el);
     const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
 
     if (tagName === 'p-select-wrapper') {
@@ -219,9 +214,7 @@ describe.each<TagName>(tagNamesWithObserveAttributes)('%s', (tagName) => {
   });
 
   it('should call unobserveAttributes() with correct parameters via disconnectedCallback', () => {
-    jest
-      .spyOn(getDirectAndOnlyChildOfKindHTMLElementOrThrowUtils, 'getDirectAndOnlyChildOfKindHTMLElementOrThrow')
-      .mockReturnValue(el);
+    jest.spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow').mockReturnValue(el);
     component.componentWillLoad(); // to ensure reference too "el" is in component instance
 
     const spy = jest.spyOn(attributeObserverUtils, 'unobserveAttributes');
