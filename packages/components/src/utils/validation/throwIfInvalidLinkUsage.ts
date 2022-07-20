@@ -1,4 +1,4 @@
-import { getDirectAndOnlyChildOfKindHTMLElementOrThrow, getTagName } from '../../utils';
+import { getOnlyChildOfKindHTMLElementOrThrow, getTagName } from '../../utils';
 
 export const throwIfInvalidLinkUsage = (host: HTMLElement, hrefValue: string): void => {
   let isInvalid = hrefValue && host.children.length > 0;
@@ -6,7 +6,7 @@ export const throwIfInvalidLinkUsage = (host: HTMLElement, hrefValue: string): v
   if (!isInvalid || !hrefValue) {
     try {
       if (!hrefValue) {
-        getDirectAndOnlyChildOfKindHTMLElementOrThrow(host, 'a');
+        getOnlyChildOfKindHTMLElementOrThrow(host, 'a');
       }
     } catch {
       isInvalid = true;

@@ -1,4 +1,4 @@
-import * as getDirectAndOnlyChildOfKindHTMLElementOrThrowUtils from '../../../utils/validation/getDirectAndOnlyChildOfKindHTMLElementOrThrow';
+import * as getOnlyChildOfKindHTMLElementOrThrowUtils from '../../../utils/validation/getOnlyChildOfKindHTMLElementOrThrow';
 import { TextareaWrapper } from './textarea-wrapper';
 import * as textFieldWrapperUtils from '../text-field-wrapper/text-field-wrapper-utils';
 import * as a11yUtils from '../../../utils/a11y/a11y';
@@ -10,7 +10,7 @@ describe('componentWillLoad', () => {
   it('should call hasCounter() with correct parameter and set hasCounter', () => {
     const textarea = document.createElement('textarea');
     jest
-      .spyOn(getDirectAndOnlyChildOfKindHTMLElementOrThrowUtils, 'getDirectAndOnlyChildOfKindHTMLElementOrThrow')
+      .spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow')
       .mockReturnValue(textarea);
 
     const spy = jest.spyOn(textFieldWrapperUtils, 'hasCounter');

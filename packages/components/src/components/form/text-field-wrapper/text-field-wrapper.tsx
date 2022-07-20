@@ -3,7 +3,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   attachSlottedCss,
-  getDirectAndOnlyChildOfKindHTMLElementOrThrow,
+  getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   handleButtonEvent,
   hasDescription,
@@ -89,7 +89,7 @@ export class TextFieldWrapper {
   }
 
   public componentWillLoad(): void {
-    this.input = getDirectAndOnlyChildOfKindHTMLElementOrThrow(
+    this.input = getOnlyChildOfKindHTMLElementOrThrow(
       this.host,
       ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password']
         .map((type) => `input[type=${type}]`)

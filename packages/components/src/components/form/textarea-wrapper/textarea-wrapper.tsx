@@ -4,7 +4,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   attachSlottedCss,
-  getDirectAndOnlyChildOfKindHTMLElementOrThrow,
+  getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   hasDescription,
   hasLabel,
@@ -68,7 +68,7 @@ export class TextareaWrapper {
   }
 
   public componentWillLoad(): void {
-    this.textarea = getDirectAndOnlyChildOfKindHTMLElementOrThrow(this.host, 'textarea');
+    this.textarea = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'textarea');
     this.observeAttributes(); // once initially
     this.hasCounter = hasCounter(this.textarea);
     this.isCounterVisible = this.showCharacterCount && this.hasCounter;
