@@ -1,8 +1,8 @@
 import { throwIfChildrenAreNotOfKind } from './throwIfChildrenAreNotOfKind';
-import * as areChildrenOfKindUtils from './areChildrenOfKind';
+import * as areAllChildrenOfKindUtils from '../dom/areAllChildrenOfKind';
 
 it('should call areChildrenOfKind() with correct parameters', () => {
-  const spy = jest.spyOn(areChildrenOfKindUtils, 'areChildrenOfKind');
+  const spy = jest.spyOn(areAllChildrenOfKindUtils, 'areAllChildrenOfKind');
   const parent = document.createElement('p-grid');
   const allowedTagName = 'pGridItem';
 
@@ -12,7 +12,7 @@ it('should call areChildrenOfKind() with correct parameters', () => {
 });
 
 it('should throw correct error message when areChildrenOfKind() is false', () => {
-  jest.spyOn(areChildrenOfKindUtils, 'areChildrenOfKind').mockReturnValue(false);
+  jest.spyOn(areAllChildrenOfKindUtils, 'areAllChildrenOfKind').mockReturnValue(false);
   const parent = document.createElement('p-grid');
   const child1 = document.createElement('p-grid-item');
   const child2 = document.createElement('div');
@@ -25,7 +25,7 @@ it('should throw correct error message when areChildrenOfKind() is false', () =>
 });
 
 it('should not throw error when areChildrenOfKind() is true', () => {
-  jest.spyOn(areChildrenOfKindUtils, 'areChildrenOfKind').mockReturnValue(true);
+  jest.spyOn(areAllChildrenOfKindUtils, 'areAllChildrenOfKind').mockReturnValue(true);
   const parent = document.createElement('p-grid');
 
   expect(() => throwIfChildrenAreNotOfKind(parent, 'pGridItem')).not.toThrow();

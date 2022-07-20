@@ -1,22 +1,52 @@
 import * as getHTMLElementUtils from './getHTMLElement';
 import { getDirectChildHTMLElement } from './getDirectChildHTMLElement';
+import { transformSelectorToDirectChildSelector } from './transformSelectorToDirectChildSelector';
+import * as transformSelectorToDirectChildSelectorUtils from './transformSelectorToDirectChildSelector';
 
-it('should call getHTMLElement() with element and selector parameter', () => {
-  const element = document.createElement('div');
-  const spy = jest.spyOn(getHTMLElementUtils, 'getHTMLElement');
+it('should call getHTMLElement() with element and result of transformSelectorToDirectChildSelector()', () => {
+  const transformSelectorToDirectChildSelectorSpy = jest.spyOn(
+    transformSelectorToDirectChildSelectorUtils,
+    'transformSelectorToDirectChildSelector'
+  );
+  const getHTMLElementSpy = jest.spyOn(getHTMLElementUtils, 'getHTMLElement').mockImplementation();
+  const parent = document.createElement('div');
+  const selector = 'span,a';
 
-  getDirectChildHTMLElement(element, 'span');
-  expect(spy).toBeCalledWith(element, ':scope>span');
+  getDirectChildHTMLElement(parent, selector);
+
+  expect(transformSelectorToDirectChildSelectorSpy).toBeCalledWith(selector);
+  expect(getHTMLElementSpy).toBeCalledTimes(2);
+  expect(getHTMLElementSpy).toHaveBeenNthCalledWith(1, parent, transformSelectorToDirectChildSelector('span'));
+  expect(getHTMLElementSpy).toHaveBeenNthCalledWith(2, parent, transformSelectorToDirectChildSelector('a'));
 });
 
-it('should return split comma separated selectors', () => {
-  const element = document.createElement('div');
-  const spy = jest.spyOn(getHTMLElementUtils, 'getHTMLElement');
+it('should return direct child element', () => {
+  const parent = document.createElement('div');
+  const child = document.createElement('button');
+  parent.append(child);
 
-  // pseudo-class selector ':scope>*' is missing in jsdom
-  try {
-    getDirectChildHTMLElement(element, 'span,button');
-  } catch {}
+  expect(getDirectChildHTMLElement(parent, 'button')).toBe(child);
+});
 
-  expect(spy).toBeCalledWith(element, ':scope>span,:scope>button');
+it('should return direct child element if first comma separated selector returns null', () => {
+  const parent = document.createElement('div');
+  const child = document.createElement('button');
+  parent.append(child);
+
+  expect(getDirectChildHTMLElement(parent, 'a,button')).toBe(child);
+});
+
+it('should return null if there is no child element', () => {
+  const parent = document.createElement('div');
+  expect(getDirectChildHTMLElement(parent, 'button')).toBe(null);
+});
+
+it('should return null for nested child element', () => {
+  const parent = document.createElement('div');
+  const child = document.createElement('span');
+  const nestedChild = document.createElement('button');
+  child.append(nestedChild);
+  parent.append(child);
+
+  expect(getDirectChildHTMLElement(parent, 'button')).toBe(null);
 });

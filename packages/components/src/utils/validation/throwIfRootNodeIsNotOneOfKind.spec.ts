@@ -1,9 +1,9 @@
-import { throwIfRootNodeIsNotOfKind } from './throwIfRootNodeIsNotOfKind';
+import { throwIfRootNodeIsNotOneOfKind } from './throwIfRootNodeIsNotOneOfKind';
 
 it('should throw error if root node tag does not match', () => {
   const child = document.createElement('p-select-wrapper-dropdown');
 
-  expect(() => throwIfRootNodeIsNotOfKind(child, 'pSelectWrapper')).toThrow();
+  expect(() => throwIfRootNodeIsNotOneOfKind(child, ['pContentWrapper', 'pSelectWrapper'])).toThrow();
 });
 
 it('should not throw error if root node tag matches', () => {
@@ -12,7 +12,7 @@ it('should not throw error if root node tag matches', () => {
   parent.attachShadow({ mode: 'open' });
   parent.shadowRoot.appendChild(child);
 
-  expect(() => throwIfRootNodeIsNotOfKind(child, 'pSelectWrapper')).not.toThrow();
+  expect(() => throwIfRootNodeIsNotOneOfKind(child, ['pContentWrapper', 'pSelectWrapper'])).not.toThrow();
 });
 
 it('should not throw error if prefixed root node tag matches', () => {
@@ -21,5 +21,5 @@ it('should not throw error if prefixed root node tag matches', () => {
   parent.attachShadow({ mode: 'open' });
   parent.shadowRoot.appendChild(child);
 
-  expect(() => throwIfRootNodeIsNotOfKind(child, 'pSelectWrapper')).not.toThrow();
+  expect(() => throwIfRootNodeIsNotOneOfKind(child, ['pSelectWrapper'])).not.toThrow();
 });

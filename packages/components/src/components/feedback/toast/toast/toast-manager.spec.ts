@@ -1,5 +1,4 @@
 import { ToastManager, ToastManagerClass } from './toast-manager';
-import { ToastState } from './toast-utils';
 import * as stencilCore from '@stencil/core';
 
 let toastManager: ToastManager;
@@ -51,12 +50,6 @@ describe('addMessage()', () => {
   it('should set message state to neutral if none was provided', () => {
     toastManager.addMessage({ text: 'Some Message' });
     expect(toastManager['messages'][0]).toEqual({ text: 'Some Message', state: 'neutral' });
-  });
-
-  it('should throw if an invalid message state was provided', () => {
-    expect(() => {
-      toastManager.addMessage({ text: 'Some Message', state: 'wonky' as ToastState });
-    }).toThrowErrorMatchingSnapshot();
   });
 
   it('should add messages to messages array', () => {

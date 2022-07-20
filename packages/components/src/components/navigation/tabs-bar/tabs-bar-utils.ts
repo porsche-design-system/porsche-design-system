@@ -1,12 +1,12 @@
-import type { TextWeight } from '../../../types';
 import { pxToRemWithUnit } from '../../../styles';
 import type { Direction, GradientColorTheme } from '../../common/scroller/scroller-utils';
 import { setAttribute } from '../../../utils';
 
-const TAB_SIZE = ['small', 'medium'] as const;
-export type TabSize = typeof TAB_SIZE[number];
+export const TAB_SIZES = ['small', 'medium'] as const;
+export type TabSize = typeof TAB_SIZES[number];
 
-export type TabWeight = Extract<TextWeight, 'regular' | 'semibold'>;
+export const TAB_WEIGHTS = ['regular', 'semibold'] as const;
+export type TabWeight = typeof TAB_WEIGHTS[number];
 
 export type TabChangeEvent = { activeTabIndex: number };
 

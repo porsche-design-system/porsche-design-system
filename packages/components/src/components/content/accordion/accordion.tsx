@@ -1,9 +1,13 @@
-import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
-import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
+import { Component, Element, Event, EventEmitter, h, Prop, Watch } from '@stencil/core';
+import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../../utils';
+import type { PropTypes } from '../../../utils';
 import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
+import { THEMES_EXTENDED_ELECTRIC } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
+import { HEADLINE_TAGS } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
 import {
+  ACCORDION_SIZES,
   getContentHeight,
   mutationObserverFallback,
   observeResize,
@@ -14,6 +18,15 @@ import {
   warnIfCompactAndSizeIsSet,
 } from './accordion-utils';
 import { getComponentCss } from './accordion-styles';
+
+const propTypes: PropTypes<typeof Accordion> = {
+  size: AllowedTypes.oneOf<AccordionSize>(ACCORDION_SIZES),
+  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  heading: AllowedTypes.string,
+  tag: AllowedTypes.oneOf<HeadlineTag>(HEADLINE_TAGS),
+  open: AllowedTypes.boolean,
+  compact: AllowedTypes.boolean,
+};
 
 @Component({
   tag: 'p-accordion',
@@ -76,6 +89,7 @@ export class Accordion {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size, this.compact, this.open, this.theme);
   }
 

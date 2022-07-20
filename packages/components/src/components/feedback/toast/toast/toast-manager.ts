@@ -1,6 +1,4 @@
 import { forceUpdate } from '@stencil/core';
-import { throwIfValueIsInvalid } from '../../../../utils';
-import { TOAST_STATES } from './toast-utils';
 import type { ToastState } from './toast-utils';
 import { ANIMATION_DURATION } from '../../banner/banner-styles';
 
@@ -46,7 +44,6 @@ export class ToastManagerClass {
     }
 
     const msg: ToastMessage = { state: 'neutral', ...message }; // neutral is our default state
-    throwIfValueIsInvalid(msg.state, TOAST_STATES, 'state');
 
     const { length } = this.messages;
     this.messages.push(msg);

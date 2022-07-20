@@ -1,9 +1,17 @@
 import { JSX, Component, Prop, h, Watch, Element } from '@stencil/core';
 import type { SelectedAriaAttributes, ThemeExtendedElectricDark } from '../../../types';
-import type { SpinnerSize, SpinnerAriaAttributes } from './spinner-utils';
-import { verifySpinnerSize, SPINNER_ARIA_ATTRIBUTES } from './spinner-utils';
-import { attachComponentCss, parseAndGetAriaAttributes } from '../../../utils';
+import type { SpinnerSize, SpinnerAriaAttributes, SpinnerSizeType } from './spinner-utils';
+import { verifySpinnerSize, SPINNER_ARIA_ATTRIBUTES, SPINNER_SIZES } from './spinner-utils';
+import { AllowedTypes, attachComponentCss, parseAndGetAriaAttributes, validateProps } from '../../../utils';
+import type { PropTypes } from '../../../utils';
 import { getComponentCss } from './spinner-styles';
+import { THEMES_EXTENDED_ELECTRIC_DARK } from '../../../types';
+
+const propTypes: PropTypes<typeof Spinner> = {
+  size: AllowedTypes.breakpoint<SpinnerSizeType>(SPINNER_SIZES),
+  theme: AllowedTypes.oneOf<ThemeExtendedElectricDark>(THEMES_EXTENDED_ELECTRIC_DARK),
+  aria: AllowedTypes.aria<SpinnerAriaAttributes>(SPINNER_ARIA_ATTRIBUTES),
+};
 
 @Component({
   tag: 'p-spinner',
@@ -31,17 +39,13 @@ export class Spinner {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size, this.theme);
   }
 
   public render(): JSX.Element {
     return (
-      <span
-        class="root"
-        role="alert"
-        aria-live="assertive"
-        {...parseAndGetAriaAttributes(this.aria, SPINNER_ARIA_ATTRIBUTES)}
-      >
+      <span class="root" role="alert" aria-live="assertive" {...parseAndGetAriaAttributes(this.aria)}>
         {/* empty element needed to announce aria-label in screen readers */}
         <span class="sr-only">&nbsp;</span>
         <svg viewBox="-16 -16 32 32" width="100%" height="100%" focusable="false" aria-hidden="true">
