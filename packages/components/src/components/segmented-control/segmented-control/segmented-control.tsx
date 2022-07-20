@@ -3,11 +3,11 @@ import {
   AllowedTypes,
   attachComponentCss,
   observeChildren,
-  PropTypes,
   throwIfChildrenAreNotOfKind,
   unobserveChildren,
   validateProps,
 } from '../../../utils';
+import type { PropTypes, ValidatorFunction } from '../../../utils';
 import { getComponentCss } from './segmented-control-styles';
 import type { Theme } from '../../../types';
 import { THEMES } from '../../../types';
@@ -19,7 +19,7 @@ import { getClickedItem } from '../../../utils/dom/getClickedItem';
 const propTypes: PropTypes<typeof SegmentedControl> = {
   backgroundColor: AllowedTypes.oneOf<SegmentedControlBackgroundColor>(SEGMENTED_CONTROL_BACKGROUND_COLORS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
-  value: AllowedTypes.oneOf([AllowedTypes.string, AllowedTypes.number]),
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
 };
 
 @Component({

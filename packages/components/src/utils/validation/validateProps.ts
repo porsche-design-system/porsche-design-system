@@ -4,7 +4,7 @@ import { parseJSONAttribute } from '../json';
 import type { EventEmitter } from '@stencil/core';
 import { getTagName } from '../tag-name';
 
-type ValidatorFunction = (propName: string, propValue: any) => ValidationError;
+export type ValidatorFunction = (propName: string, propValue: any) => ValidationError;
 type ValidatorFunctionOneOfCreator = <T>(allowedValues: T[] | readonly T[]) => ValidatorFunction;
 type ValidatorFunctionBreakpointCustomizableCreator = <T>(
   allowedValues: Extract<AllowedTypesKeys, 'boolean'> | T[] | readonly T[]

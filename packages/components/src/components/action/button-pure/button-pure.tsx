@@ -44,7 +44,7 @@ const propTypes: PropTypes<typeof ButtonPure> = {
   alignLabel: AllowedTypes.oneOf<AlignLabel>(ALIGN_LABELS),
   stretch: AllowedTypes.breakpoint('boolean'),
   theme: AllowedTypes.oneOf<ThemeExtendedElectricDark>(THEMES_EXTENDED_ELECTRIC_DARK),
-  aria: AllowedTypes.aria(BUTTON_ARIA_ATTRIBUTES),
+  aria: AllowedTypes.aria<ButtonAriaAttributes>(BUTTON_ARIA_ATTRIBUTES),
 };
 
 @Component({
