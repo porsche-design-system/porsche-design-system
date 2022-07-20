@@ -8,14 +8,14 @@ import {
   updateParent,
   validateProps,
 } from '../../../utils';
-import type { PropTypes } from '../../../utils';
+import type { PropTypes, ValidatorFunction } from '../../../utils';
 import { getComponentCss } from './segmented-control-item-styles';
 import { getButtonAttributes } from './segmented-control-item-utils';
 import type { IconName } from '../../../types';
 import type { SegmentedControlItemInternalHTMLProps } from './segmented-control-item-utils';
 
 const propTypes: PropTypes<typeof SegmentedControlItem> = {
-  value: AllowedTypes.oneOf([AllowedTypes.string, AllowedTypes.number]),
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
   disabled: AllowedTypes.boolean,
   label: AllowedTypes.string,
   icon: AllowedTypes.string,
