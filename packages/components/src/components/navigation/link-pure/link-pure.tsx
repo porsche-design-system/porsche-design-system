@@ -11,7 +11,6 @@ import type {
 import {
   ALIGN_LABELS,
   AlignLabelType,
-  LINK_TARGETS,
   TEXT_WEIGHTS,
   ThemeExtendedElectric,
   THEMES_EXTENDED_ELECTRIC,
@@ -49,7 +48,7 @@ const propTypes: PropTypes<typeof LinkPure> = {
   active: AllowedTypes.boolean,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
-  target: AllowedTypes.oneOf<LinkTarget>(LINK_TARGETS),
+  target: AllowedTypes.string,
   download: AllowedTypes.string,
   rel: AllowedTypes.string,
   aria: AllowedTypes.aria<LinkAriaAttributes>(LINK_ARIA_ATTRIBUTES),
