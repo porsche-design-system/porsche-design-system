@@ -255,7 +255,7 @@ describe('AllowedTypes', () => {
 
       it('should return error object via anonymous ValidatorFunction if value is not in allowedValues array', () => {
         const result = validatorFunctionValues('propName', 'c');
-        expect(result).toMatchObject({
+        expect(result).toEqual({
           propName: 'propName',
           propValue: 'c',
           propType: "['a', 'b']",
@@ -303,7 +303,7 @@ describe('AllowedTypes', () => {
         nestedValidatorFunc2.mockReturnValueOnce({ ...error, propType: 'boolean' });
         nestedValidatorFunc3.mockReturnValueOnce({ ...error, propType: 'boolean' });
         const result = validatorFunctionFunctions('propName', 'c');
-        expect(result).toMatchObject(error);
+        expect(result).toEqual(error);
       });
 
       it('should return undefined via anonymous ValidatorFunction if value does not pass at least one nested validator function', () => {
