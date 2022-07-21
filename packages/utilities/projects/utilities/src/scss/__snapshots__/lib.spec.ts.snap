@@ -54,6 +54,36 @@ $pds-font-variant: normal;
 "
 `;
 
+exports[`should contain correct content for auto generated file ./src/scss/lib/_grid.scss 1`] = `
+"@mixin pds-grid {
+  margin: 0 auto;
+  display: grid;
+  padding: 0;
+  max-width: 120rem;
+  grid-column-gap: max(1rem, min(3.6vw, 2.25rem));
+  grid-template-columns: [grid-start] calc(max(1rem, min(8vw, 12rem)) - max(1rem, min(3.6vw, 2.25rem))) [content-start] repeat(
+      12,
+      minmax(0, 1fr)
+    ) [content-end] calc(max(1rem, min(8vw, 12rem)) - max(1rem, min(3.6vw, 2.25rem))) [grid-end];
+}
+"
+`;
+
+exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-gutter.scss 1`] = `
+"$pds-grid-gutter: max(1rem, min(3.6vw, 2.25rem));
+"
+`;
+
+exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-max-width.scss 1`] = `
+"$pds-grid-max-width: 120rem;
+"
+`;
+
+exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-safe-zone.scss 1`] = `
+"$pds-grid-safe-zone: max(1rem, min(8vw, 12rem));
+"
+`;
+
 exports[`should contain correct content for auto generated file ./src/scss/lib/_heading.scss 1`] = `
 "@mixin pds-heading-xx-large {
   font: normal normal 600 2rem/1.375 \\"Porsche Next\\", \\"Arial Narrow\\", Arial, \\"Heiti SC\\", SimHei, sans-serif;

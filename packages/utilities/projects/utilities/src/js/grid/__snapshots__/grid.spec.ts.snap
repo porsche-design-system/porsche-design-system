@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should contain correct values for grid 1`] = `
+Object {
+  "display": "grid",
+  "gridColumnGap": "max(1rem, min(3.6vw, 2.25rem))",
+  "gridTemplateColumns": "[grid-start] calc(max(1rem, min(8vw, 12rem)) - max(1rem, min(3.6vw, 2.25rem))) [content-start] repeat(12, minmax(0, 1fr)) [content-end] calc(max(1rem, min(8vw, 12rem)) - max(1rem, min(3.6vw, 2.25rem))) [grid-end]",
+  "margin": "0 auto",
+  "maxWidth": "120rem",
+  "padding": 0,
+}
+`;
+
+exports[`should contain correct values for gridGutter 1`] = `"max(1rem, min(3.6vw, 2.25rem))"`;
+
+exports[`should contain correct values for gridMaxWidth 1`] = `"120rem"`;
+
+exports[`should contain correct values for gridSafeZone 1`] = `"max(1rem, min(8vw, 12rem))"`;
