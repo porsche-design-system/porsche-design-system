@@ -132,6 +132,9 @@ export const getSlottedCss = (host: HTMLElement): string => {
           WebkitAppearance: 'none',
           appearance: 'none',
         },
+      '& input[type="search"]::-webkit-search-cancel-button': {
+        display: 'none',
+      },
       '& input[type="text"]': {
         '&::-webkit-contacts-auto-fill-button, &::-webkit-credentials-auto-fill-button': {
           marginRight: '2.4375rem',
