@@ -153,6 +153,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text-field-wrapper [label]="'Type search readonly'">
         <input [type]="'search'" readonly />
       </p-text-field-wrapper>
+      <p-text-field-wrapper [label]="'Type search without native clear button'">
+        <input
+          [type]="'search'"
+          [value]="'some really long password with many words and amazing special characters, letters big and small, numbers'"
+        />
+      </p-text-field-wrapper>
     </div>
 
     <div class="playground light" title="should render with error state and error message">
