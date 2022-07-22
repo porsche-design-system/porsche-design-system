@@ -153,6 +153,12 @@ export const TextFieldWrapperPage = (): JSX.Element => {
         <PTextFieldWrapper label="Type search readonly">
           <input type="search" readOnly />
         </PTextFieldWrapper>
+        <PTextFieldWrapper label="Type search without native clear button">
+          <input
+            type="search"
+            defaultValue="some really long password with many words and amazing special characters, letters big and small, numbers"
+          />
+        </PTextFieldWrapper>
       </div>
 
       <div className="playground light" title="should render with error state and error message">
