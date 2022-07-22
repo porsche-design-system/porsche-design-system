@@ -146,6 +146,11 @@
 <style lang="scss" scoped>
   @import '~@porsche-design-system/components-js/utilities/scss';
 
+  p-button {
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
   .main-content {
     @include pds-grid;
   }
