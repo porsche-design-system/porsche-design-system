@@ -142,7 +142,7 @@
           </template>
         </Card>
         <Card :shading="false" :height="{ min: '35rem', val: '35rem', max: '35rem' }" fit="contain" position="bottom">
-          <img src="./assets/clock.png" alt="" />
+          <img src="./assets/chrono.png" alt="" />
           <template #top>
             <p-headline variant="headline-3">Finde die Porsche Accessoires zu deinem Traumsportwagen</p-headline>
             <p-button variant="tertiary">Zum Porsche Design Shop</p-button>
