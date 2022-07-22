@@ -1,97 +1,7 @@
 <template>
   <div>
-    <div class="main-nav">
-      <p-marque href="https://www.porsche.com"></p-marque>
-      <div class="car-models">
-        <button>
-          <img
-            width="89"
-            height="55"
-            srcset="
-              https://nav.porsche.com/00BC524/series-assets/1366/718.jpg,
-              https://nav.porsche.com/00BC524/series-assets/1366/718@2x.jpg 2x
-            "
-            alt="Porsche 718"
-          />
-          718
-        </button>
-        <button>
-          <img
-            width="92"
-            height="55"
-            srcset="
-              https://nav.porsche.com/00BC524/series-assets/1366/911.jpg,
-              https://nav.porsche.com/00BC524/series-assets/1366/911@2x.jpg 2x
-            "
-            alt="Porsche 911"
-          />
-          911
-        </button>
-        <button>
-          <img
-            width="100"
-            height="55"
-            srcset="
-              https://nav.porsche.com/00BC524/series-assets/1366/taycan.jpg,
-              https://nav.porsche.com/00BC524/series-assets/1366/taycan@2x.jpg 2x
-            "
-            alt="Porsche Taycan"
-          />
-          Taycan
-        </button>
-        <button>
-          <img
-            width="100"
-            height="55"
-            srcset="
-              https://nav.porsche.com/00BC524/series-assets/1366/panamera.jpg,
-              https://nav.porsche.com/00BC524/series-assets/1366/panamera@2x.jpg 2x
-            "
-            alt="Porsche Panamera"
-          />
-          Panamera
-        </button>
-        <button>
-          <img
-            width="98"
-            height="55"
-            srcset="
-              https://nav.porsche.com/00BC524/series-assets/1366/macan.jpg,
-              https://nav.porsche.com/00BC524/series-assets/1366/macan@2x.jpg 2x
-            "
-            alt="Porsche Macan"
-          />
-          Macan
-        </button>
-        <button>
-          <img
-            width="98"
-            height="55"
-            srcset="
-              https://nav.porsche.com/00BC524/series-assets/1366/cayenne.jpg,
-              https://nav.porsche.com/00BC524/series-assets/1366/cayenne@2x.jpg 2x
-            "
-            alt="Porsche Cayenne"
-          />
-          Cayenne
-        </button>
-      </div>
-      <div class="quick-nav">
-        <p-button-pure icon="none">Shop</p-button-pure>
-        <p-link-pure icon="none" href="https://www.porsche.com/usa/dealersearch">Dealers</p-link-pure>
-        <p-link-pure icon="none" href="https://my.porsche.com/core/us/en_US/home">My Porsche</p-link-pure>
-        <p-button-pure hide-label="true" icon="menu-dots-vertical">More</p-button-pure>
-      </div>
-    </div>
-    <div class="main-bar">
-      <p-text theme="dark">
-        Aktuell siehst du die Inhalte für deinen Standort: Deutschland
-        <button>Standort/Sprache ändern</button>
-      </p-text>
-      <p-button-pure hide-label="true" icon="close" theme="dark"
-        >Close location or language switch notification.</p-button-pure
-      >
-    </div>
+    <PorscheHeader />
+    <PorscheMainBar />
     <div class="main-content">
       <div class="teaser">
         <img src="./assets/teaser.jpg" alt="" />
@@ -161,7 +71,7 @@
         </Card>
       </div>
     </div>
-    <div class="main-footer"></div>
+    <PorscheFooter />
   </div>
 </template>
 
@@ -169,10 +79,16 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import Card from '@/components/Card.vue';
+  import PorscheHeader from '@/components/PorscheHeader.vue';
+  import PorscheMainBar from '@/components/PorscheMainBar.vue';
+  import PorscheFooter from '@/components/PorscheFooter.vue';
 
   @Component({
     components: {
       Card,
+      PorscheHeader,
+      PorscheMainBar,
+      PorscheFooter,
     },
   })
   export default class GridExamplePorscheCom extends Vue {
@@ -229,67 +145,6 @@
 
 <style lang="scss" scoped>
   @import '~@porsche-design-system/components-js/utilities/scss';
-
-  .main-nav {
-    background: $pds-theme-light-background-base;
-    padding: $pds-spacing-medium $pds-grid-safe-zone;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto;
-    max-width: $pds-grid-max-width;
-
-    .car-models {
-      display: none;
-
-      @include pds-media-query-min('l') {
-        display: flex;
-        gap: $pds-spacing-small;
-
-        button {
-          @include pds-focus;
-          @include pds-text-small;
-          font-size: 0.875rem;
-          display: inline-flex;
-          flex-direction: column;
-          align-items: center;
-          background: transparent;
-          border: none;
-          cursor: pointer;
-
-          &:hover,
-          &:active {
-            color: $pds-theme-light-state-hover;
-          }
-        }
-      }
-    }
-
-    .quick-nav {
-      display: none;
-
-      @include pds-media-query-min('xs') {
-        display: flex;
-        gap: $pds-spacing-large;
-      }
-    }
-  }
-
-  .main-bar {
-    padding: $pds-spacing-medium $pds-grid-safe-zone;
-    background: $pds-theme-dark-background-surface;
-    display: flex;
-    justify-content: space-between;
-    gap: $pds-spacing-medium;
-    margin: 0 auto;
-    max-width: $pds-grid-max-width;
-  }
-
-  .main-footer {
-    margin-top: $pds-spacing-xx-large;
-    height: 40rem;
-    background: $pds-theme-dark-background-surface;
-  }
 
   .main-content {
     @include pds-grid;
