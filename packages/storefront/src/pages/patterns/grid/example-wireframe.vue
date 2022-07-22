@@ -53,7 +53,7 @@
   import Component from 'vue-class-component';
 
   @Component
-  export default class ExampleGrid extends Vue {}
+  export default class GridExampleWireframe extends Vue {}
 </script>
 
 <style lang="scss" scoped>
