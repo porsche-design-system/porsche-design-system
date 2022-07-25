@@ -26,8 +26,8 @@ describe('componentWillLoad', () => {
 });
 
 describe('componentDidLoad', () => {
-  it('should call addInputEventListener() with correct parameters if hasCounter is true', () => {
-    const addInputEventListenerSpy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListener');
+  it('should call addInputEventListenerForCounter() with correct parameters if hasCounter is true', () => {
+    const spy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListenerForCounter');
 
     const textarea = document.createElement('textarea');
     const counter = document.createElement('span');
@@ -39,11 +39,11 @@ describe('componentDidLoad', () => {
     component['ariaElement'] = ariaElement;
 
     component.componentDidLoad();
-    expect(addInputEventListenerSpy).not.toBeCalled();
+    expect(spy).not.toBeCalled();
 
     component['hasCounter'] = true;
     component.componentDidLoad();
-    expect(addInputEventListenerSpy).toBeCalledWith(textarea, ariaElement, counter);
+    expect(spy).toBeCalledWith(textarea, ariaElement, counter);
   });
 });
 

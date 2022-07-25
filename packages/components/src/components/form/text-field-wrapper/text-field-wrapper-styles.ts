@@ -1,7 +1,7 @@
 import type { FormState, Theme } from '../../../types';
 import type { BreakpointCustomizable } from '../../../utils';
 import { buildSlottedStyles, getCss, isVisibleFormState } from '../../../utils';
-import type { InputType, TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
+import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import {
   addImportantToEachRule,
   getBaseSlottedStyles,
@@ -15,6 +15,7 @@ import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles'
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
+import { isType } from './text-field-wrapper-utils';
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -22,11 +23,14 @@ export const getComponentCss = (
   state: FormState,
   hasUnitOrVisibleCounter: boolean,
   unitPosition: TextFieldWrapperUnitPosition,
-  inputType: InputType
+  inputType: string
 ): string => {
   const theme: Theme = 'light';
   const { baseColor, contrastMediumColor, activeColor, disabledColor, hoverColor } = getThemedColors(theme);
   const hasVisibleState = isVisibleFormState(state);
+  const isSearch = isType(inputType, 'search');
+  const isPassword = isType(inputType, 'password');
+  const isSearchOrPassword = isSearch || isPassword;
 
   return getCss({
     '@global': {
@@ -39,12 +43,12 @@ export const getComponentCss = (
             // padding is set via inline style if unit is present
             padding: pxToRemWithUnit(hasVisibleState ? 10 : 11),
           }),
-          ...(inputType === 'number'
+          ...(isType(inputType, 'number')
             ? {
                 MozAppearance: 'textfield', // hides up/down spin button for Firefox
               }
-            : (inputType === 'password' || inputType === 'search') && {
-                paddingRight: pxToRemWithUnit(48),
+            : isSearchOrPassword && {
+                paddingRight: pxToRemWithUnit(isSearch ? 88 : 48),
               }),
         }),
         // Reset webkit autofill styles
@@ -53,7 +57,7 @@ export const getComponentCss = (
             WebkitBackgroundClip: 'padding-box',
           },
       }),
-      ...((inputType === 'password' || inputType === 'search') && {
+      ...(isSearchOrPassword && {
         button: {
           position: 'absolute',
           bottom: 0,
@@ -84,7 +88,7 @@ export const getComponentCss = (
             color: disabledColor,
             cursor: 'not-allowed',
           },
-          ...(inputType === 'search' && {
+          ...(isSearch && {
             right: pxToRemWithUnit(40),
             '&+ button': {
               right: 0,

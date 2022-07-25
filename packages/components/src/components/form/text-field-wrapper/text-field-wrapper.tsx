@@ -20,11 +20,13 @@ import type { BreakpointCustomizable, FormState } from '../../../types';
 import { FORM_STATES } from '../../../types';
 import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
-import type { TextFieldWrapperUnitPosition, InputType } from './text-field-wrapper-utils';
+import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import {
-  addInputEventListener,
+  addInputEventListenerForCounter,
+  addInputEventListenerForSearch,
   hasCounterAndIsTypeText,
   hasUnitAndIsTypeTextOrNumber,
+  isType,
   setInputStyles,
   throwIfUnitLengthExceeded,
   UNIT_POSITIONS,
@@ -80,7 +82,8 @@ export class TextFieldWrapper {
   private input: HTMLInputElement;
   private unitOrCounterElement: HTMLElement;
   private ariaElement: HTMLSpanElement;
-  private inputType: InputType;
+  private isSearch: boolean;
+  private isPassword: boolean;
   private hasCounter: boolean;
   private isCounterVisible: boolean;
   private hasUnit: boolean;
@@ -98,31 +101,24 @@ export class TextFieldWrapper {
         .join(',')
     );
     this.observeAttributes(); // once initially
-    this.inputType = this.input.type as any;
+    this.isSearch = isType(this.input.type, 'search');
+    this.isPassword = isType(this.input.type, 'password');
     this.hasCounter = hasCounterAndIsTypeText(this.input);
     this.isCounterVisible = this.showCharacterCount && this.hasCounter;
     this.hasUnit = !this.isCounterVisible && hasUnitAndIsTypeTextOrNumber(this.input, this.unit);
-    this.isClearable = this.inputType === 'search' && !!this.input.value;
+    this.isClearable = !!this.input.value;
   }
 
   public componentDidLoad(): void {
     if (this.hasCounter) {
-      addInputEventListener(
+      addInputEventListenerForCounter(
         this.input,
         this.ariaElement,
         this.isCounterVisible && this.unitOrCounterElement,
         this.setInputStyles
       );
-    } else if (this.inputType === 'search') {
-      this.input.addEventListener('input', (e) => {
-        this.isClearable = !!(e.target as any).value;
-      });
-      this.input.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' || e.key === 'Esc') {
-          this.input.value = '';
-          this.isClearable = false;
-        }
-      });
+    } else if (this.isSearch) {
+      addInputEventListenerForSearch(this.input, (isClearable) => (this.isClearable = isClearable));
     }
   }
 
@@ -137,7 +133,7 @@ export class TextFieldWrapper {
       this.state,
       this.hasUnit || this.isCounterVisible,
       this.isCounterVisible ? 'suffix' : this.unitPosition,
-      this.inputType
+      this.input.type
     );
   }
 
@@ -200,7 +196,7 @@ export class TextFieldWrapper {
             <slot />
             {this.hasCounter && <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />}
           </label>
-          {this.inputType === 'password' ? (
+          {this.isPassword ? (
             <button
               type="button"
               onClick={this.togglePassword}
@@ -215,8 +211,7 @@ export class TextFieldWrapper {
               />
             </button>
           ) : (
-            this.inputType === 'search' && [
-              // TODO check if long searchterm is hidden
+            this.isSearch && [
               <button
                 type="button"
                 onClick={this.onClear}
@@ -246,7 +241,7 @@ export class TextFieldWrapper {
   };
 
   private togglePassword = (): void => {
-    this.input.type = this.input.type === 'password' ? 'text' : 'password';
+    this.input.type = isType(this.input.type, 'password') ? 'text' : 'password';
     this.showPassword = !this.showPassword;
     this.onLabelClick();
   };

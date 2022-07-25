@@ -6,7 +6,7 @@ import {
   TextFieldWrapperUnitPosition,
   hasCounterAndIsTypeText,
   setCounterInnerHtml,
-  addInputEventListener,
+  addInputEventListenerForCounter,
   setAriaElementInnerHtml,
   hasUnitAndIsTypeTextOrNumber,
 } from './text-field-wrapper-utils';
@@ -178,7 +178,7 @@ describe('addInputEventListener()', () => {
     const ariaElement = getAriaElement();
     const spy = jest.spyOn(inputElement, 'addEventListener');
 
-    addInputEventListener(inputElement, ariaElement, counterElement);
+    addInputEventListenerForCounter(inputElement, ariaElement, counterElement);
     expect(spy).toBeCalledWith('input', expect.anything());
   });
 
@@ -188,7 +188,7 @@ describe('addInputEventListener()', () => {
     const spy = jest.spyOn(inputElement, 'addEventListener');
     let error = undefined;
     try {
-      addInputEventListener(inputElement, ariaElement);
+      addInputEventListenerForCounter(inputElement, ariaElement);
     } catch (e) {
       error = e;
     }
@@ -203,7 +203,7 @@ describe('addInputEventListener()', () => {
 
     const setCounterInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCounterInnerHtml');
     const setAriaElementInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setAriaElementInnerHtml');
-    addInputEventListener(inputElement, ariaElement, counterElement);
+    addInputEventListenerForCounter(inputElement, ariaElement, counterElement);
 
     expect(setCounterInnerHtmlSpy).toBeCalledWith(inputElement, counterElement);
     expect(setCounterInnerHtmlSpy).toBeCalledTimes(1);
@@ -219,7 +219,7 @@ describe('addInputEventListener()', () => {
 
     const setCounterInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCounterInnerHtml');
     const setAriaElementInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setAriaElementInnerHtml');
-    addInputEventListener(inputElement, ariaElement, counterElement);
+    addInputEventListenerForCounter(inputElement, ariaElement, counterElement);
 
     inputElement.dispatchEvent(new Event('input'));
     expect(setCounterInnerHtmlSpy).toBeCalledWith(inputElement, counterElement);
@@ -234,7 +234,7 @@ describe('addInputEventListener()', () => {
     const counterElement = getCounterElement();
     const ariaElement = getAriaElement();
     const callback = jest.fn();
-    addInputEventListener(inputElement, ariaElement, counterElement, callback);
+    addInputEventListenerForCounter(inputElement, ariaElement, counterElement, callback);
 
     inputElement.dispatchEvent(new Event('input'));
     expect(callback).toBeCalledTimes(1);
