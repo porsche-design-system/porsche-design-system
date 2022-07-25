@@ -7,6 +7,59 @@ jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
 
 describe('componentWillLoad', () => {
+  it('should call isType() with correct parameters and set isSearch', () => {
+    const input = document.createElement('input');
+    jest
+      .spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow')
+      .mockReturnValue(input);
+
+    const component = new TextFieldWrapper();
+    const spy = jest.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(true);
+
+    expect(component['isSearch']).toBe(undefined);
+    component.componentWillLoad();
+    expect(spy).toHaveBeenNthCalledWith(1, input.type, 'search');
+
+    expect(component['isSearch']).toBe(true);
+    spy.mockReturnValue(false);
+    component.componentWillLoad();
+    expect(component['isSearch']).toBe(false);
+  });
+
+  it('should call isType() with correct parameters and set isPassword', () => {
+    const input = document.createElement('input');
+    jest
+      .spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow')
+      .mockReturnValue(input);
+
+    const component = new TextFieldWrapper();
+    const spy = jest.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(true);
+
+    expect(component['isPassword']).toBe(undefined);
+    component.componentWillLoad();
+    expect(spy).toHaveBeenNthCalledWith(2, input.type, 'password');
+
+    expect(component['isPassword']).toBe(true);
+    spy.mockReturnValue(false);
+    component.componentWillLoad();
+    expect(component['isPassword']).toBe(false);
+  });
+
+  it('should set isClearable', () => {
+    const input = document.createElement('input');
+    jest
+      .spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow')
+      .mockReturnValue(input);
+    const component = new TextFieldWrapper();
+    expect(component['isClearable']).toBe(false);
+    input.value = 'search';
+    component.componentWillLoad();
+    expect(component['isClearable']).toBe(true);
+    input.value = '';
+    component.componentWillLoad();
+    expect(component['isClearable']).toBe(false);
+  });
+
   it('should call hasCounterAndIsTypeText() with correct parameter and set hasCounter', () => {
     const input = document.createElement('input');
     input.type = 'text';
@@ -17,7 +70,6 @@ describe('componentWillLoad', () => {
 
     const spy = jest.spyOn(textFieldWrapperUtils, 'hasCounterAndIsTypeText');
     const component = new TextFieldWrapper();
-    component['input'] = input;
 
     expect(component['hasCounter']).toBe(undefined);
     component.componentWillLoad();
@@ -150,6 +202,19 @@ describe('componentDidLoad', () => {
     component['isCounterVisible'] = true;
     component.componentDidLoad();
     expect(spy).toBeCalledWith(input, ariaElement, counter, component['setInputStyles']);
+  });
+
+  it('should call addInputEventListenerForSearch() based on isSearch with correct parameters', () => {
+    const spy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListenerForSearch');
+    const input = document.createElement('input');
+    const component = new TextFieldWrapper();
+    component['input'] = input;
+    component['isSearch'] = true;
+    component.componentDidLoad();
+    expect(spy).toBeCalledWith(input, expect.any(Function));
+    component['isSearch'] = false;
+    component.componentDidLoad();
+    expect(spy).toBeCalledTimes(1);
   });
 });
 
