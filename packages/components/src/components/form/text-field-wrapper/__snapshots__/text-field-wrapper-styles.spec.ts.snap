@@ -927,7 +927,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   padding: 0.6875rem !important;
-  padding-right: 3rem !important;
+  padding-right: 5.5rem !important;
 }
 ::slotted(input:focus) {
   outline-color: #626669 !important;

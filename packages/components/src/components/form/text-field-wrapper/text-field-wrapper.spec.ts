@@ -110,8 +110,8 @@ describe('componentWillRender', () => {
 });
 
 describe('componentDidLoad', () => {
-  it('should call addInputEventListener() with correct parameters if hasCounter is true and isCounterVisible is false', () => {
-    const addInputEventListenerSpy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListener');
+  it('should call addInputEventListenerForCounter() with correct parameters if hasCounter is true and isCounterVisible is false', () => {
+    const spy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListenerForCounter');
 
     const input = document.createElement('input');
     input.type = 'text';
@@ -122,15 +122,16 @@ describe('componentDidLoad', () => {
     component['ariaElement'] = ariaElement;
 
     component.componentDidLoad();
-    expect(addInputEventListenerSpy).not.toBeCalled();
+    expect(spy).not.toBeCalled();
 
     component['hasCounter'] = true;
 
     component.componentDidLoad();
-    expect(addInputEventListenerSpy).toBeCalledWith(input, ariaElement, undefined, component['setInputStyles']);
+    expect(spy).toBeCalledWith(input, ariaElement, undefined, component['setInputStyles']);
   });
-  it('should call addInputEventListener() if hasCounter is true and isCounterVisible is true', () => {
-    const addInputEventListenerSpy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListener');
+
+  it('should call addInputEventListenerForCounter() if hasCounter is true and isCounterVisible is true', () => {
+    const spy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListenerForCounter');
 
     const input = document.createElement('input');
     input.type = 'text';
@@ -143,12 +144,12 @@ describe('componentDidLoad', () => {
     component['ariaElement'] = ariaElement;
 
     component.componentDidLoad();
-    expect(addInputEventListenerSpy).not.toBeCalled();
+    expect(spy).not.toBeCalled();
 
     component['hasCounter'] = true;
     component['isCounterVisible'] = true;
     component.componentDidLoad();
-    expect(addInputEventListenerSpy).toBeCalledWith(input, ariaElement, counter, component['setInputStyles']);
+    expect(spy).toBeCalledWith(input, ariaElement, counter, component['setInputStyles']);
   });
 });
 

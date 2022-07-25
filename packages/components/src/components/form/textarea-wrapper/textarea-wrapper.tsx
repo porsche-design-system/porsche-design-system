@@ -19,7 +19,7 @@ import type { BreakpointCustomizable, FormState } from '../../../types';
 import { FORM_STATES } from '../../../types';
 import { getComponentCss, getSlottedCss } from './textarea-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
-import { addInputEventListener, hasCounter } from '../text-field-wrapper/text-field-wrapper-utils';
+import { addInputEventListenerForCounter, hasCounter } from '../text-field-wrapper/text-field-wrapper-utils';
 import { Required } from '../../common/required/required';
 
 const propTypes: PropTypes<typeof TextareaWrapper> = {
@@ -76,7 +76,7 @@ export class TextareaWrapper {
 
   public componentDidLoad(): void {
     if (this.hasCounter) {
-      addInputEventListener(this.textarea, this.ariaElement, this.counterElement);
+      addInputEventListenerForCounter(this.textarea, this.ariaElement, this.counterElement);
     }
   }
 

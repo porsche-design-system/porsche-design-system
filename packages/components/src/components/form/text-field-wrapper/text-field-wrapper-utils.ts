@@ -4,25 +4,17 @@ import { pxToRemWithUnit } from '../../../styles';
 export const UNIT_POSITIONS = ['prefix', 'suffix'] as const;
 export type TextFieldWrapperUnitPosition = typeof UNIT_POSITIONS[number];
 
-export type InputType =
-  | 'text'
-  | 'number'
-  | 'email'
-  | 'tel'
-  | 'search'
-  | 'url'
-  | 'date'
-  | 'time'
-  | 'month'
-  | 'week'
-  | 'password';
-
 export const hasCounter = (el: HTMLTextAreaElement | HTMLInputElement): boolean => el.maxLength >= 0;
-export const hasCounterAndIsTypeText = (el: HTMLInputElement): boolean => el.type === 'text' && hasCounter(el);
+export const hasCounterAndIsTypeText = (el: HTMLInputElement): boolean => isType(el.type, 'text') && hasCounter(el);
 export const hasUnitAndIsTypeTextOrNumber = (el: HTMLInputElement, unit: string): boolean => {
   const { type } = el;
-  return !!unit && (type === 'text' || type === 'number');
+  return !!unit && (isType(type, 'text') || isType(type, 'number'));
 };
+
+export const isType = (inputType: string, typeToValidate: string): boolean => {
+  return inputType === typeToValidate;
+};
+
 export const setCounterInnerHtml = (el: HTMLTextAreaElement | HTMLInputElement, counterElement: HTMLElement): void => {
   counterElement.innerText = `${el.value.length}/${el.maxLength}`;
 };
@@ -65,7 +57,7 @@ export const throwIfUnitLengthExceeded = (unit: string): void => {
   }
 };
 
-export const addInputEventListener = (
+export const addInputEventListenerForCounter = (
   input: HTMLTextAreaElement | HTMLInputElement,
   characterCountElement: HTMLSpanElement,
   counterElement?: HTMLSpanElement,
@@ -83,6 +75,21 @@ export const addInputEventListener = (
     setAriaElementInnerHtml(e.target as HTMLTextAreaElement | HTMLInputElement, characterCountElement);
     if (inputChangeCallback) {
       inputChangeCallback();
+    }
+  });
+};
+
+export const addInputEventListenerForSearch = (
+  input: HTMLInputElement,
+  inputChangeCallback: (isClearable: boolean) => void
+): void => {
+  input.addEventListener('input', (e: Event & { target: HTMLInputElement }) => {
+    inputChangeCallback(!!e.target.value);
+  });
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' || e.key === 'Esc') {
+      input.value = '';
+      inputChangeCallback(false);
     }
   });
 };
