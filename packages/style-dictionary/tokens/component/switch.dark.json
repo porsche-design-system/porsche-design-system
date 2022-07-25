@@ -4,112 +4,112 @@
       "unchecked": {
         "standard": {
           "background": {
-            "value": "{color.core.background.baseDark.value}"
+            "color": { "value": "{color.core.background.baseDark.value}" }
           },
           "buttonBorder": {
-            "value": "{color.core.contrast.highDark.value}"
+            "color": { "value": "{color.core.contrast.highDark.value}" }
           },
           "buttonBackground": {
-            "value": "{color.core.background.transparent.value}"
+            "color": { "value": "{color.core.background.transparent.value}" }
           },
           "toggleBackground": {
-            "value": "{component.switchCmp.unchecked.standard.buttonBorder.value}"
+            "color": { "value": "{component.switchCmp.unchecked.standard.buttonBorder.color.value}" }
           },
           "text": {
-            "value": "{color.core.base.primaryDark.value}"
+            "color": { "value": "{color.core.base.primaryDark.value}" }
           },
           "border": {
-            "value": "{component.switchCmp.unchecked.standard.buttonBorder.value}"
+            "color": { "value": "{component.switchCmp.unchecked.standard.buttonBorder.color.value}" }
           }
         },
         "disabled": {
           "background": {
-            "value": "{color.core.background.baseDark.value}"
+            "color": { "value": "{color.core.background.baseDark.value}" }
           },
           "buttonBorder": {
-            "value": "{component.switchCmp.unchecked.disabled.text.value}"
+            "color": { "value": "{component.switchCmp.unchecked.disabled.text.color.value}" }
           },
           "buttonBackground": {
-            "value": "{component.switchCmp.unchecked.standard.buttonBackground.value}"
+            "color": { "value": "{component.switchCmp.unchecked.standard.buttonBackground.color.value}" }
           },
           "toggleBackground": {
-            "value": "{component.switchCmp.unchecked.disabled.text.value}"
+            "color": { "value": "{component.switchCmp.unchecked.disabled.text.color.value}" }
           },
           "text": {
-            "value": "{color.core.state.disabledDark.value}"
+            "color": { "value": "{color.core.state.disabledDark.value}" }
           },
           "border": {
-            "value": "{component.switchCmp.unchecked.disabled.buttonBorder.value}"
+            "color": { "value": "{component.switchCmp.unchecked.disabled.buttonBorder.color.value}" }
           }
         },
         "hover": {
           "buttonBorder": {
-            "value": "{component.switchCmp.unchecked.hover.toggleBackground.value}"
+            "color": { "value": "{component.switchCmp.unchecked.hover.toggleBackground.color.value}" }
           },
           "buttonBackground": {
-            "value": "{color.core.background.transparent.value}"
+            "color": { "value": "{color.core.background.transparent.value}" }
           },
           "toggleBackground": {
-            "value": "{color.core.white.value}"
+            "color": { "value": "{color.core.white.value}" }
           },
           "border": {
-            "value": "{component.switchCmp.unchecked.hover.buttonBorder.value}"
+            "color": { "value": "{component.switchCmp.unchecked.hover.buttonBorder.color.value}" }
           }
         }
       },
       "checked": {
         "standard": {
           "background": {
-            "value": "{color.core.background.baseDark.value}"
+            "color": { "value": "{color.core.background.baseDark.value}" }
           },
           "buttonBorder": {
-            "value": "{component.switchCmp.checked.standard.buttonBackground.value}"
+            "color": { "value": "{component.switchCmp.checked.standard.buttonBackground.color.value}" }
           },
           "buttonBackground": {
-            "value": "{color.core.notification.successDark.value}"
+            "color": { "value": "{color.core.notification.successDark.value}" }
           },
           "toggleBackground": {
-            "value": "{color.core.background.base.value}"
+            "color": { "value": "{color.core.background.base.value}" }
           },
           "text": {
-            "value": "{color.core.base.primaryDark.value}"
+            "color": { "value": "{color.core.base.primaryDark.value}" }
           },
           "border": {
-            "value": "{component.switchCmp.checked.standard.buttonBorder.value}"
+            "color": { "value": "{component.switchCmp.checked.standard.buttonBorder.color.value}" }
           }
         },
         "disabled": {
           "background": {
-            "value": "{component.switchCmp.unchecked.disabled.background.value}"
+            "color": { "value": "{component.switchCmp.unchecked.disabled.background.color.value}" }
           },
           "buttonBorder": {
-            "value": "{component.switchCmp.unchecked.disabled.text.value}"
+            "color": { "value": "{component.switchCmp.unchecked.disabled.text.color.value}" }
           },
           "buttonBackground": {
-            "value": "{component.switchCmp.unchecked.disabled.text.value}"
+            "color": { "value": "{component.switchCmp.unchecked.disabled.text.color.value}" }
           },
           "text": {
-            "value": "{component.switchCmp.unchecked.disabled.text.value}"
+            "color": { "value": "{component.switchCmp.unchecked.disabled.text.color.value}" }
           },
           "toggleBackground": {
-            "value": "{component.switchCmp.checked.standard.toggleBackground.value}"
+            "color": { "value": "{component.switchCmp.checked.standard.toggleBackground.color.value}" }
           },
           "border": {
-            "value": "{component.switchCmp.checked.disabled.buttonBorder.value}"
+            "color": { "value": "{component.switchCmp.checked.disabled.buttonBorder.color.value}" }
           }
         },
         "hover": {
           "buttonBorder": {
-            "value": "{component.switchCmp.checked.hover.buttonBackground.value}"
+            "color": { "value": "{component.switchCmp.checked.hover.buttonBackground.color.value}" }
           },
           "buttonBackground": {
-            "value": "{color.core.notification.successHardDark.value}"
+            "color": { "value": "{color.core.notification.successHardDark.value}" }
           },
           "toggleBackground": {
-            "value": "{component.switchCmp.checked.standard.toggleBackground.value}"
+            "color": { "value": "{component.switchCmp.checked.standard.toggleBackground.color.value}" }
           },
           "border": {
-            "value": "{component.switchCmp.checked.hover.buttonBorder.value}"
+            "color": { "value": "{component.switchCmp.checked.hover.buttonBorder.color.value}" }
           }
         }
       }

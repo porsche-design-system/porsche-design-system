@@ -293,9 +293,25 @@ const extractComponents = async () => {
       const fileName = `${component}${isDark ? '-dark' : ''}.json`;
       console.log(`Writing ${fileName}`);
       const componentJSONFilePath = path.resolve('build/web/dist', fileName);
-      fs.writeFileSync(componentJSONFilePath, JSON.stringify(tokens.component[component], null, 2));
+
+      // remove "color" key by flattening the object for web
+      // the color key is required for iOS and Android
+      fs.writeFileSync(
+        componentJSONFilePath,
+        JSON.stringify(flattenKey(tokens.component[component], 'color'), null, 2)
+      );
     });
   });
 };
+
+// flattens nested objects by key
+const flattenKey = (obj, keyToFlatten) =>
+  Object.entries(obj).reduce((prev, [key, value]) => {
+    if (Object.keys(value).includes(keyToFlatten)) {
+      return { ...prev, [key]: value[keyToFlatten] };
+    } else {
+      return { ...prev, [key]: flattenKey(value, keyToFlatten) };
+    }
+  }, []);
 
 extractComponents().then(() => console.log('Extracting components done.'));
