@@ -3,8 +3,8 @@
     <p-content-wrapper>
       <div></div>
     </p-content-wrapper>
-    <PorscheHeader />
-    <PorscheMainBar />
+    <PorscheHeader grid="improved-linear" />
+    <PorscheMainBar grid="improved-linear" />
     <div class="main-content">
       <div class="teaser">
         <img src="./assets/teaser.jpg" alt="" />
@@ -94,7 +94,7 @@
       PorscheFooter,
     },
   })
-  export default class GridExamplePorscheCom extends Vue {
+  export default class GridExamplePorscheComImprovedLinear extends Vue {
     public carRange = [
       {
         label: '718',
@@ -171,7 +171,7 @@
   }
 
   .main-content {
-    @include pds-grid;
+    @include pds-grid-improved-linear;
   }
 
   .teaser {
@@ -190,7 +190,7 @@
     div {
       position: absolute;
       bottom: $pds-spacing-large;
-      left: $pds-grid-safe-zone;
+      left: $pds-grid-safe-zone-improved-linear;
       display: flex;
       flex-direction: column;
       gap: $pds-spacing-medium;
@@ -213,7 +213,7 @@
   .car-compare {
     position: relative;
     margin-top: $pds-spacing-xx-large;
-    padding: 0 $pds-grid-safe-zone;
+    padding: 0 $pds-grid-safe-zone-improved-linear;
     display: grid;
     grid-template-columns: 1fr;
     grid-column: grid-start / grid-end;

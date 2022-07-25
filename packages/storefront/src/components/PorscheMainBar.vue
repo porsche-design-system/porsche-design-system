@@ -1,5 +1,12 @@
 <template>
-  <div class="main-bar">
+  <div
+    :class="{
+      'main-bar': true,
+      'main-bar--7vw-linear': grid === '7vw-linear',
+      'main-bar--improved-linear': grid === 'improved-linear',
+      'main-bar--fluid-interpolation': grid === 'fluid-interpolation',
+    }"
+  >
     <p-text theme="dark">
       Aktuell siehst du die Inhalte für deinen Standort: Deutschland
       <button>Standort/Sprache ändern</button>
@@ -13,9 +20,12 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
+  import { Prop } from 'vue-property-decorator';
 
   @Component
-  export default class PorscheMainBar extends Vue {}
+  export default class PorscheMainBar extends Vue {
+    @Prop({ default: '7vw-linear' }) public grid!: '7vw-linear' | 'improved-linear' | 'fluid-interpolation';
+  }
 </script>
 
 <style scoped lang="scss">
@@ -29,5 +39,21 @@
     gap: $pds-spacing-medium;
     margin: 0 auto;
     max-width: $pds-grid-max-width;
+
+    &--7vw-linear {
+      padding: $pds-spacing-medium $pds-grid-safe-zone;
+    }
+
+    &--improved-linear {
+      padding: $pds-spacing-medium $pds-grid-safe-zone-improved-linear;
+    }
+
+    &--fluid-interpolation {
+      padding: $pds-spacing-medium $pds-grid-safe-zone-fluid-interpolation-base;
+
+      @include pds-media-query-min('xl') {
+        padding: $pds-spacing-medium $pds-grid-safe-zone-fluid-interpolation-xl;
+      }
+    }
   }
 </style>

@@ -19,6 +19,7 @@ Object {
     "grid/grid-gutter.js",
     "grid/grid-max-width.js",
     "grid/grid-safe-zone.js",
+    "mediaQuery.js",
   ],
   "index.js": Array [
     "breakpoint.js",
