@@ -20,7 +20,7 @@ import type { BreakpointCustomizable, FormState } from '../../../types';
 import { FORM_STATES } from '../../../types';
 import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
-import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
+import type { TextFieldWrapperUnitPosition, InputType } from './text-field-wrapper-utils';
 import {
   addInputEventListener,
   hasCounterAndIsTypeText,
@@ -78,7 +78,7 @@ export class TextFieldWrapper {
   private input: HTMLInputElement;
   private unitOrCounterElement: HTMLElement;
   private ariaElement: HTMLSpanElement;
-  private isPassword: boolean;
+  private inputType: InputType;
   private hasCounter: boolean;
   private isCounterVisible: boolean;
   private hasUnit: boolean;
@@ -96,7 +96,7 @@ export class TextFieldWrapper {
         .join(',')
     );
     this.observeAttributes(); // once initially
-    this.isPassword = this.input.type === 'password';
+    this.inputType = this.input.type as any;
     this.hasCounter = hasCounterAndIsTypeText(this.input);
     this.isCounterVisible = this.showCharacterCount && this.hasCounter;
     this.hasUnit = !this.isCounterVisible && hasUnitAndIsTypeTextOrNumber(this.input, this.unit);
@@ -124,7 +124,7 @@ export class TextFieldWrapper {
       this.state,
       this.hasUnit || this.isCounterVisible,
       this.isCounterVisible ? 'suffix' : this.unitPosition,
-      this.isPassword
+      this.inputType
     );
   }
 
@@ -187,7 +187,7 @@ export class TextFieldWrapper {
             <slot />
             {this.hasCounter && <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />}
           </label>
-          {this.isPassword ? (
+          {this.inputType === 'password' ? (
             <button
               type="button"
               onClick={this.togglePassword}
@@ -202,12 +202,17 @@ export class TextFieldWrapper {
               />
             </button>
           ) : (
-            type === 'search' && (
+            type === 'search' && [
+              // TODO check if long searchterm is hidden
+              <button type="button" disabled={disabled || readOnly} hidden={!this.isClearable} tabIndex={-1}>
+                <span class="sr-only">Clear</span>
+                <PrefixedTagNames.pIcon name="close" color="inherit" aria-hidden="true" />
+              </button>,
               <button type="submit" onClick={this.onSubmit} disabled={disabled || readOnly}>
                 <span class="sr-only">Search</span>
                 <PrefixedTagNames.pIcon name="search" color="inherit" aria-hidden="true" />
-              </button>
-            )
+              </button>,
+            ]
           )}
         </div>
         {hasMessage(this.host, this.message, this.state) && (

@@ -4,6 +4,19 @@ import { pxToRemWithUnit } from '../../../styles';
 export const UNIT_POSITIONS = ['prefix', 'suffix'] as const;
 export type TextFieldWrapperUnitPosition = typeof UNIT_POSITIONS[number];
 
+export type InputType =
+  | 'text'
+  | 'number'
+  | 'email'
+  | 'tel'
+  | 'search'
+  | 'url'
+  | 'date'
+  | 'time'
+  | 'month'
+  | 'week'
+  | 'password';
+
 export const hasCounter = (el: HTMLTextAreaElement | HTMLInputElement): boolean => el.maxLength >= 0;
 export const hasCounterAndIsTypeText = (el: HTMLInputElement): boolean => el.type === 'text' && hasCounter(el);
 export const hasUnitAndIsTypeTextOrNumber = (el: HTMLInputElement, unit: string): boolean => {
