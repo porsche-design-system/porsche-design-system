@@ -53,43 +53,45 @@ export const getComponentCss = (
             WebkitBackgroundClip: 'padding-box',
           },
       }),
-      button: {
-        position: 'absolute',
-        bottom: 0,
-        right: 0,
-        margin: 0,
-        width: pxToRemWithUnit(48),
-        height: pxToRemWithUnit(48),
-        padding: pxToRemWithUnit(12),
-        boxSizing: 'border-box',
-        outline: 'transparent none',
-        appearance: 'none',
-        border: 'none',
-        textDecoration: 'none',
-        background: 'transparent',
-        cursor: 'pointer',
-        color: baseColor,
-        transition: getTransition('color'),
-        ...getFocusJssStyle({ offset: hasVisibleState ? -5 : -4 }),
-        ...hoverMediaQuery({
-          '&:hover': {
-            color: hoverColor,
+      ...((inputType === 'password' || inputType === 'search') && {
+        button: {
+          position: 'absolute',
+          bottom: 0,
+          right: 0,
+          margin: 0,
+          width: pxToRemWithUnit(48),
+          height: pxToRemWithUnit(48),
+          padding: pxToRemWithUnit(12),
+          boxSizing: 'border-box',
+          outline: 'transparent none',
+          appearance: 'none',
+          border: 'none',
+          textDecoration: 'none',
+          background: 'transparent',
+          cursor: 'pointer',
+          color: baseColor,
+          transition: getTransition('color'),
+          ...getFocusJssStyle({ offset: hasVisibleState ? -5 : -4 }),
+          ...hoverMediaQuery({
+            '&:hover': {
+              color: hoverColor,
+            },
+          }),
+          '&:active': {
+            color: activeColor,
           },
-        }),
-        '&:active': {
-          color: activeColor,
-        },
-        '&:disabled': {
-          color: disabledColor,
-          cursor: 'not-allowed',
-        },
-        ...(inputType === 'search' && {
-          right: pxToRemWithUnit(40),
-          '&+ button': {
-            right: 0,
+          '&:disabled': {
+            color: disabledColor,
+            cursor: 'not-allowed',
           },
-        }),
-      },
+          ...(inputType === 'search' && {
+            right: pxToRemWithUnit(40),
+            '&+ button': {
+              right: 0,
+            },
+          }),
+        },
+      }),
     },
     root: {
       display: 'block',

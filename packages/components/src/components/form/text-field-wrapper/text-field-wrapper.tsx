@@ -162,7 +162,7 @@ export class TextFieldWrapper {
   }
 
   public render(): JSX.Element {
-    const { readOnly, disabled, type } = this.input;
+    const { readOnly, disabled } = this.input;
 
     const labelProps = {
       tag: 'span',
@@ -215,7 +215,7 @@ export class TextFieldWrapper {
               />
             </button>
           ) : (
-            type === 'search' && [
+            this.inputType === 'search' && [
               // TODO check if long searchterm is hidden
               <button
                 type="button"
