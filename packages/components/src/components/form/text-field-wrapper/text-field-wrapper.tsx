@@ -75,6 +75,8 @@ export class TextFieldWrapper {
 
   @State() private showPassword = false;
 
+  @State() private isClearable = false;
+
   private input: HTMLInputElement;
   private unitOrCounterElement: HTMLElement;
   private ariaElement: HTMLSpanElement;
@@ -100,6 +102,7 @@ export class TextFieldWrapper {
     this.hasCounter = hasCounterAndIsTypeText(this.input);
     this.isCounterVisible = this.showCharacterCount && this.hasCounter;
     this.hasUnit = !this.isCounterVisible && hasUnitAndIsTypeTextOrNumber(this.input, this.unit);
+    this.isClearable = this.inputType === 'search' && !!this.input.value;
   }
 
   public componentDidLoad(): void {
@@ -110,6 +113,16 @@ export class TextFieldWrapper {
         this.isCounterVisible && this.unitOrCounterElement,
         this.setInputStyles
       );
+    } else if (this.inputType === 'search') {
+      this.input.addEventListener('input', (e) => {
+        this.isClearable = !!(e.target as any).value;
+      });
+      this.input.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' || e.key === 'Esc') {
+          this.input.value = '';
+          this.isClearable = false;
+        }
+      });
     }
   }
 
@@ -204,7 +217,13 @@ export class TextFieldWrapper {
           ) : (
             type === 'search' && [
               // TODO check if long searchterm is hidden
-              <button type="button" disabled={disabled || readOnly} hidden={!this.isClearable} tabIndex={-1}>
+              <button
+                type="button"
+                onClick={this.onClear}
+                disabled={disabled || readOnly}
+                hidden={!this.isClearable}
+                tabIndex={-1}
+              >
                 <span class="sr-only">Clear</span>
                 <PrefixedTagNames.pIcon name="close" color="inherit" aria-hidden="true" />
               </button>,
@@ -239,6 +258,12 @@ export class TextFieldWrapper {
       () => 'submit',
       () => this.input.disabled
     );
+  };
+
+  private onClear = (): void => {
+    this.input.value = '';
+    this.isClearable = false;
+    this.onLabelClick();
   };
 
   private observeAttributes = (): void => {
