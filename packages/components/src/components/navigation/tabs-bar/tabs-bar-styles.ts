@@ -24,7 +24,9 @@ export const getComponentCss = (
         display: 'block',
         ...addImportantToEachRule({
           position: 'relative',
-          height: size === 'medium' ? pxToRemWithUnit(52) : pxToRemWithUnit(36),
+          ...buildResponsiveStyles(size, (s: TabSize) => ({
+            height: s === 'medium' ? pxToRemWithUnit(52) : pxToRemWithUnit(36),
+          })),
         }),
       },
       ...addImportantToEachRule({
