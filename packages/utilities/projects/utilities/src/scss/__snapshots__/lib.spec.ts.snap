@@ -61,10 +61,55 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
   padding: 0;
   max-width: 120rem;
   grid-column-gap: max(1rem, min(3.6vw, 2.25rem));
-  grid-template-columns: [grid-start] calc(max(1rem, min(8vw, 12rem)) - max(1rem, min(3.6vw, 2.25rem))) [content-start] repeat(
+  grid-template-columns: [grid-start] calc(max(1rem, min(7vw, 8.4rem)) - max(1rem, min(3.6vw, 2.25rem))) [content-start] repeat(
       12,
       minmax(0, 1fr)
-    ) [content-end] calc(max(1rem, min(8vw, 12rem)) - max(1rem, min(3.6vw, 2.25rem))) [grid-end];
+    ) [content-end] calc(max(1rem, min(7vw, 8.4rem)) - max(1rem, min(3.6vw, 2.25rem))) [grid-end];
+}
+
+@mixin pds-grid7vw-linear {
+  margin: 0 auto;
+  display: grid;
+  padding: 0;
+  max-width: 120rem;
+  grid-column-gap: max(1rem, min(3.6vw, 2.25rem));
+  grid-template-columns: [grid-start] calc(max(1rem, min(7vw, 8.4rem)) - max(1rem, min(3.6vw, 2.25rem))) [content-start] repeat(
+      12,
+      minmax(0, 1fr)
+    ) [content-end] calc(max(1rem, min(7vw, 8.4rem)) - max(1rem, min(3.6vw, 2.25rem))) [grid-end];
+}
+
+@mixin pds-grid-improved-linear {
+  margin: 0 auto;
+  display: grid;
+  padding: 0;
+  max-width: 120rem;
+  grid-column-gap: max(1rem, min(3.6vw, 2.25rem));
+  grid-template-columns: [grid-start] calc(
+      max(1.4rem, min(calc(12vw - 2.4rem), 12rem)) - max(1rem, min(3.6vw, 2.25rem))
+    ) [content-start] repeat(12, minmax(0, 1fr)) [content-end] calc(
+      max(1.4rem, min(calc(12vw - 2.4rem), 12rem)) - max(1rem, min(3.6vw, 2.25rem))
+    ) [grid-end];
+}
+
+@mixin pds-grid-fluid-interpolation {
+  margin: 0 auto;
+  display: grid;
+  padding: 0;
+  max-width: 120rem;
+  grid-column-gap: max(1rem, min(3.6vw, 2.25rem));
+  grid-template-columns: [grid-start] calc(max(1rem, min(7vw, 7.7rem)) - max(1rem, min(3.6vw, 2.25rem))) [content-start] repeat(
+      12,
+      minmax(0, 1fr)
+    ) [content-end] calc(max(1rem, min(7vw, 7.7rem)) - max(1rem, min(3.6vw, 2.25rem))) [grid-end];
+
+  @media (min-width: 1760px) {
+    grid-template-columns: [grid-start] calc(
+        max(7.7rem, min(calc(43vw - 39.6rem), 12rem)) - max(1rem, min(3.6vw, 2.25rem))
+      ) [content-start] repeat(12, minmax(0, 1fr)) [content-end] calc(
+        max(7.7rem, min(calc(43vw - 39.6rem), 12rem)) - max(1rem, min(3.6vw, 2.25rem))
+      ) [grid-end];
+  }
 }
 "
 `;
@@ -80,7 +125,11 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
 `;
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-safe-zone.scss 1`] = `
-"$pds-grid-safe-zone: max(1rem, min(8vw, 12rem));
+"$pds-grid-safe-zone: max(1rem, min(7vw, 8.4rem));
+$pds-grid-safe-zone7vw-linear: max(1rem, min(7vw, 8.4rem));
+$pds-grid-safe-zone-fluid-interpolation-base: max(1rem, min(7vw, 7.7rem));
+$pds-grid-safe-zone-fluid-interpolation-xl: max(7.7rem, min(calc(43vw - 39.6rem), 12rem));
+$pds-grid-safe-zone-improved-linear: max(1.4rem, min(calc(12vw - 2.4rem), 12rem));
 "
 `;
 
