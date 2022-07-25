@@ -46,6 +46,17 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       const childDisabled = child.replace(/((?: \/)?>)/, ' disabled$1');
 
       const getElementsMarkup: GetMarkup = () => `
+          <div>
+          <p-text-field-wrapper label="Default empty">
+            <input type="text" />
+          </p-text-field-wrapper>
+          <p-text-field-wrapper label="Password empty">
+            <input type="password" />
+          </p-text-field-wrapper>
+          <p-text-field-wrapper label="Search empty">
+            <input type="search" />
+          </p-text-field-wrapper>
+        </div>
         <div>
           <p-text-field-wrapper label="Default">
             ${child}
@@ -108,13 +119,13 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-      await forceHoverState(page, '.hover p-text-field-wrapper input[type="text"]'); // other types have button
+      await forceHoverState(page, '.hover p-text-field-wrapper input');
       await forceHoverState(page, '.hover p-text-field-wrapper a');
       await forceHoverState(page, '.hover p-text-field-wrapper >>> button');
-      await forceFocusState(page, '.focus p-text-field-wrapper input[type="text"]'); // other types have button
+      await forceFocusState(page, '.focus p-text-field-wrapper input');
       await forceFocusState(page, '.focus p-text-field-wrapper a');
       await forceFocusState(page, '.focus p-text-field-wrapper >>> button');
-      await forceFocusHoverState(page, '.focus-hover p-text-field-wrapper input[type="text"]'); // other types have button
+      await forceFocusHoverState(page, '.focus-hover p-text-field-wrapper input');
       await forceFocusHoverState(page, '.focus-hover p-text-field-wrapper a');
       await forceFocusHoverState(page, '.focus-hover p-text-field-wrapper >>> button');
     })
