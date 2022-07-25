@@ -189,22 +189,22 @@ styleDictionary
       //   mode: `dark`,
       // }),
       //
-      // iosColors: Object.assign(iosColors, {
-      //   mode: `dark`,
-      // }),
-      //
-      // android: {
-      //   transformGroup: `android`,
-      //   buildPath: ANDROID_PATH,
-      //   files: [
-      //     {
-      //       destination: `values-night/colors.xml`,
-      //       format: `android/resources`,
-      //       // only outputting the tokens from files with '.dark' in the filepath
-      //       filter: getDarkFiles,
-      //     },
-      //   ],
-      // },
+      iosColors: Object.assign(iosColors, {
+        mode: `dark`,
+      }),
+
+      android: {
+        transformGroup: `android`,
+        buildPath: ANDROID_PATH,
+        files: [
+          {
+            destination: `values-night/colors.xml`,
+            format: `android/resources`,
+            // only outputting the tokens from files with '.dark' in the filepath
+            filter: getDarkFiles,
+          },
+        ],
+      },
     },
   })
   .buildAllPlatforms();
