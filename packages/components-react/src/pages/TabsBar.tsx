@@ -100,6 +100,34 @@ export const TabsBarPage = (): JSX.Element => {
         </PTabsBar>
       </div>
 
+      <div className="playground light" title="should render tabs-bar size BreakpointCustomizable on light background">
+        <PTabsBar
+          activeTabIndex={9}
+          size={{ base: 'small', xs: 'small', s: 'medium', m: 'small', l: 'medium', xl: 'small' }}
+        >
+          <button type="button">Tab One</button>
+          <button type="button">Tab Two</button>
+          <button type="button">Tab Three</button>
+          <button type="button">Tab Four</button>
+          <button type="button">Tab Five</button>
+          <button type="button">Tab Six</button>
+          <button type="button">Tab Seven</button>
+          <button type="button">Tab Eight</button>
+          <button type="button">Tab Nine</button>
+          <button type="button">Tab Ten</button>
+          <button type="button">Tab Eleven</button>
+          <button type="button">Tab Twelve</button>
+          <button type="button">Tab Thirteen</button>
+          <button type="button">Tab Fourteen</button>
+          <button type="button">Tab Fifteen</button>
+          <button type="button">Tab Sixteen</button>
+          <button type="button">Tab Seventeen</button>
+          <button type="button">Tab Eighteen</button>
+          <button type="button">Tab Nineteen</button>
+          <button type="button">Tab Twenty</button>
+        </PTabsBar>
+      </div>
+
       <div className="playground light" title="should render tabs-bar semibold on light background">
         <PTabsBar activeTabIndex={0} weight="semibold">
           <a href="#">Tab 1</a>
