@@ -1,7 +1,7 @@
 import type { FormState, Theme } from '../../../types';
 import type { BreakpointCustomizable } from '../../../utils';
 import { buildSlottedStyles, getCss, isVisibleFormState } from '../../../utils';
-import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
+import type { InputType, TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import {
   addImportantToEachRule,
   getBaseSlottedStyles,
@@ -22,7 +22,7 @@ export const getComponentCss = (
   state: FormState,
   hasUnitOrVisibleCounter: boolean,
   unitPosition: TextFieldWrapperUnitPosition,
-  isPassword: boolean
+  inputType: InputType
 ): string => {
   const theme: Theme = 'light';
   const { baseColor, contrastMediumColor, activeColor, disabledColor, hoverColor } = getThemedColors(theme);
@@ -34,31 +34,24 @@ export const getComponentCss = (
         display: 'block',
       },
       ...addImportantToEachRule({
-        ...getBaseChildStyles(
-          'input',
-          state,
-          theme,
-          !hasUnitOrVisibleCounter && {
+        ...getBaseChildStyles('input', state, theme, {
+          ...(!hasUnitOrVisibleCounter && {
             // padding is set via inline style if unit is present
             padding: pxToRemWithUnit(hasVisibleState ? 10 : 11),
-          }
-        ),
-        '::slotted(input[type="number"])': {
-          MozAppearance: 'textfield', // hides up/down spin button for Firefox
-        },
+          }),
+          ...(inputType === 'number'
+            ? {
+                MozAppearance: 'textfield', // hides up/down spin button for Firefox
+              }
+            : (inputType === 'password' || inputType === 'search') && {
+                paddingRight: pxToRemWithUnit(48),
+              }),
+        }),
         // Reset webkit autofill styles
         '::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus)':
           {
             WebkitBackgroundClip: 'padding-box',
           },
-        ...(isPassword && {
-          '::slotted(input[type="password"]),::slotted(input[type="text"])': {
-            paddingRight: pxToRemWithUnit(48),
-          },
-        }),
-        '::slotted(input[type="search"])': {
-          paddingRight: pxToRemWithUnit(48),
-        },
       }),
       button: {
         position: 'absolute',
@@ -90,6 +83,12 @@ export const getComponentCss = (
           color: disabledColor,
           cursor: 'not-allowed',
         },
+        ...(inputType === 'search' && {
+          right: pxToRemWithUnit(40),
+          '&+ button': {
+            right: 0,
+          },
+        }),
       },
     },
     root: {
