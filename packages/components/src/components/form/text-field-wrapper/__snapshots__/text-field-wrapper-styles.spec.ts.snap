@@ -53,47 +53,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  padding: 0.75rem;
-  box-sizing: border-box;
-  outline: 1px solid transparent;
-  appearance: none;
-  border: none;
-  text-decoration: none;
-  background: transparent;
-  cursor: pointer;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  outline-offset: -4px;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-button:active {
-  color: #d5001c;
-}
-button:disabled {
-  color: #96989a;
-  cursor: not-allowed;
-}
 @media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #000 !important;
-  }
-  button:hover {
-    color: #d5001c;
   }
 }
 
@@ -444,47 +406,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  padding: 0.75rem;
-  box-sizing: border-box;
-  outline: 1px solid transparent;
-  appearance: none;
-  border: none;
-  text-decoration: none;
-  background: transparent;
-  cursor: pointer;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  outline-offset: -5px;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-button:active {
-  color: #d5001c;
-}
-button:disabled {
-  color: #96989a;
-  cursor: not-allowed;
-}
 @media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #a30000 !important;
-  }
-  button:hover {
-    color: #d5001c;
   }
 }
 
@@ -602,47 +526,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  padding: 0.75rem;
-  box-sizing: border-box;
-  outline: 1px solid transparent;
-  appearance: none;
-  border: none;
-  text-decoration: none;
-  background: transparent;
-  cursor: pointer;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  outline-offset: -5px;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-button:active {
-  color: #d5001c;
-}
-button:disabled {
-  color: #96989a;
-  cursor: not-allowed;
-}
 @media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #a30000 !important;
-  }
-  button:hover {
-    color: #d5001c;
   }
 }
 
@@ -772,47 +658,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  padding: 0.75rem;
-  box-sizing: border-box;
-  outline: 1px solid transparent;
-  appearance: none;
-  border: none;
-  text-decoration: none;
-  background: transparent;
-  cursor: pointer;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  outline-offset: -5px;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-button:active {
-  color: #d5001c;
-}
-button:disabled {
-  color: #96989a;
-  cursor: not-allowed;
-}
 @media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #a30000 !important;
-  }
-  button:hover {
-    color: #d5001c;
   }
 }
 
@@ -1264,47 +1112,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  padding: 0.75rem;
-  box-sizing: border-box;
-  outline: 1px solid transparent;
-  appearance: none;
-  border: none;
-  text-decoration: none;
-  background: transparent;
-  cursor: pointer;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  outline-offset: -4px;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-button:active {
-  color: #d5001c;
-}
-button:disabled {
-  color: #96989a;
-  cursor: not-allowed;
-}
 @media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #000 !important;
-  }
-  button:hover {
-    color: #d5001c;
   }
 }
 
@@ -1422,47 +1232,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  padding: 0.75rem;
-  box-sizing: border-box;
-  outline: 1px solid transparent;
-  appearance: none;
-  border: none;
-  text-decoration: none;
-  background: transparent;
-  cursor: pointer;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  outline-offset: -4px;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-button:active {
-  color: #d5001c;
-}
-button:disabled {
-  color: #96989a;
-  cursor: not-allowed;
-}
 @media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #000 !important;
-  }
-  button:hover {
-    color: #d5001c;
   }
 }
 
@@ -1591,47 +1363,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  padding: 0.75rem;
-  box-sizing: border-box;
-  outline: 1px solid transparent;
-  appearance: none;
-  border: none;
-  text-decoration: none;
-  background: transparent;
-  cursor: pointer;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  outline-offset: -4px;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-button:active {
-  color: #d5001c;
-}
-button:disabled {
-  color: #96989a;
-  cursor: not-allowed;
-}
 @media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #000 !important;
-  }
-  button:hover {
-    color: #d5001c;
   }
 }
 
@@ -1760,47 +1494,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  padding: 0.75rem;
-  box-sizing: border-box;
-  outline: 1px solid transparent;
-  appearance: none;
-  border: none;
-  text-decoration: none;
-  background: transparent;
-  cursor: pointer;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  outline-offset: -4px;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-button:active {
-  color: #d5001c;
-}
-button:disabled {
-  color: #96989a;
-  cursor: not-allowed;
-}
 @media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #000 !important;
-  }
-  button:hover {
-    color: #d5001c;
   }
 }
 
@@ -2090,47 +1786,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  padding: 0.75rem;
-  box-sizing: border-box;
-  outline: 1px solid transparent;
-  appearance: none;
-  border: none;
-  text-decoration: none;
-  background: transparent;
-  cursor: pointer;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  outline-offset: -5px;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-button:active {
-  color: #d5001c;
-}
-button:disabled {
-  color: #96989a;
-  cursor: not-allowed;
-}
 @media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #014d0c !important;
-  }
-  button:hover {
-    color: #d5001c;
   }
 }
 
@@ -2248,47 +1906,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  padding: 0.75rem;
-  box-sizing: border-box;
-  outline: 1px solid transparent;
-  appearance: none;
-  border: none;
-  text-decoration: none;
-  background: transparent;
-  cursor: pointer;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  outline-offset: -5px;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-button:active {
-  color: #d5001c;
-}
-button:disabled {
-  color: #96989a;
-  cursor: not-allowed;
-}
 @media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #014d0c !important;
-  }
-  button:hover {
-    color: #d5001c;
   }
 }
 
@@ -2418,47 +2038,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  padding: 0.75rem;
-  box-sizing: border-box;
-  outline: 1px solid transparent;
-  appearance: none;
-  border: none;
-  text-decoration: none;
-  background: transparent;
-  cursor: pointer;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  outline-offset: -5px;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-button:active {
-  color: #d5001c;
-}
-button:disabled {
-  color: #96989a;
-  cursor: not-allowed;
-}
 @media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #014d0c !important;
-  }
-  button:hover {
-    color: #d5001c;
   }
 }
 
@@ -2749,47 +2331,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  padding: 0.75rem;
-  box-sizing: border-box;
-  outline: 1px solid transparent;
-  appearance: none;
-  border: none;
-  text-decoration: none;
-  background: transparent;
-  cursor: pointer;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  outline-offset: -5px;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-button:active {
-  color: #d5001c;
-}
-button:disabled {
-  color: #96989a;
-  cursor: not-allowed;
-}
 @media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #a30000 !important;
-  }
-  button:hover {
-    color: #d5001c;
   }
 }
 
@@ -2907,47 +2451,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  padding: 0.75rem;
-  box-sizing: border-box;
-  outline: 1px solid transparent;
-  appearance: none;
-  border: none;
-  text-decoration: none;
-  background: transparent;
-  cursor: pointer;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  outline-offset: -5px;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-button:active {
-  color: #d5001c;
-}
-button:disabled {
-  color: #96989a;
-  cursor: not-allowed;
-}
 @media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #a30000 !important;
-  }
-  button:hover {
-    color: #d5001c;
   }
 }
 
@@ -3078,47 +2584,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  padding: 0.75rem;
-  box-sizing: border-box;
-  outline: 1px solid transparent;
-  appearance: none;
-  border: none;
-  text-decoration: none;
-  background: transparent;
-  cursor: pointer;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  outline-offset: -5px;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-button:active {
-  color: #d5001c;
-}
-button:disabled {
-  color: #96989a;
-  cursor: not-allowed;
-}
 @media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #a30000 !important;
-  }
-  button:hover {
-    color: #d5001c;
   }
 }
 
@@ -3409,47 +2877,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  padding: 0.75rem;
-  box-sizing: border-box;
-  outline: 1px solid transparent;
-  appearance: none;
-  border: none;
-  text-decoration: none;
-  background: transparent;
-  cursor: pointer;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  outline-offset: -4px;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-button:active {
-  color: #d5001c;
-}
-button:disabled {
-  color: #96989a;
-  cursor: not-allowed;
-}
 @media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #000 !important;
-  }
-  button:hover {
-    color: #d5001c;
   }
 }
 
@@ -3566,47 +2996,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  padding: 0.75rem;
-  box-sizing: border-box;
-  outline: 1px solid transparent;
-  appearance: none;
-  border: none;
-  text-decoration: none;
-  background: transparent;
-  cursor: pointer;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  outline-offset: -4px;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-button:active {
-  color: #d5001c;
-}
-button:disabled {
-  color: #96989a;
-  cursor: not-allowed;
-}
 @media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #000 !important;
-  }
-  button:hover {
-    color: #d5001c;
   }
 }
 
@@ -3736,47 +3128,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  padding: 0.75rem;
-  box-sizing: border-box;
-  outline: 1px solid transparent;
-  appearance: none;
-  border: none;
-  text-decoration: none;
-  background: transparent;
-  cursor: pointer;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  outline-offset: -4px;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-button:active {
-  color: #d5001c;
-}
-button:disabled {
-  color: #96989a;
-  cursor: not-allowed;
-}
 @media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #000 !important;
-  }
-  button:hover {
-    color: #d5001c;
   }
 }
 
@@ -4067,47 +3421,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  padding: 0.75rem;
-  box-sizing: border-box;
-  outline: 1px solid transparent;
-  appearance: none;
-  border: none;
-  text-decoration: none;
-  background: transparent;
-  cursor: pointer;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  outline-offset: -5px;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-button:active {
-  color: #d5001c;
-}
-button:disabled {
-  color: #96989a;
-  cursor: not-allowed;
-}
 @media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #014d0c !important;
-  }
-  button:hover {
-    color: #d5001c;
   }
 }
 
@@ -4225,47 +3541,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  padding: 0.75rem;
-  box-sizing: border-box;
-  outline: 1px solid transparent;
-  appearance: none;
-  border: none;
-  text-decoration: none;
-  background: transparent;
-  cursor: pointer;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  outline-offset: -5px;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-button:active {
-  color: #d5001c;
-}
-button:disabled {
-  color: #96989a;
-  cursor: not-allowed;
-}
 @media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #014d0c !important;
-  }
-  button:hover {
-    color: #d5001c;
   }
 }
 
@@ -4396,47 +3674,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 ::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  padding: 0.75rem;
-  box-sizing: border-box;
-  outline: 1px solid transparent;
-  appearance: none;
-  border: none;
-  text-decoration: none;
-  background: transparent;
-  cursor: pointer;
-  color: #000;
-  transition: color var(--p-transition-duration, .24s) ease;
-  outline-offset: -5px;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline-color: currentColor;
-}
-button:focus:not(:focus-visible) {
-  outline-color: transparent;
-}
-button:active {
-  color: #d5001c;
-}
-button:disabled {
-  color: #96989a;
-  cursor: not-allowed;
-}
 @media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #014d0c !important;
-  }
-  button:hover {
-    color: #d5001c;
   }
 }
 
