@@ -3,8 +3,8 @@
     <p-content-wrapper>
       <div></div>
     </p-content-wrapper>
-    <PorscheHeader />
-    <PorscheMainBar />
+    <PorscheHeader grid="fluid-interpolation" />
+    <PorscheMainBar grid="fluid-interpolation" />
     <div class="main-content">
       <div class="teaser">
         <img src="./assets/teaser.jpg" alt="" />
@@ -94,7 +94,7 @@
       PorscheFooter,
     },
   })
-  export default class GridExamplePorscheCom extends Vue {
+  export default class GridExamplePorscheComFluidInterpolation extends Vue {
     public carRange = [
       {
         label: '718',
@@ -171,7 +171,7 @@
   }
 
   .main-content {
-    @include pds-grid;
+    @include pds-grid-fluid-interpolation;
   }
 
   .teaser {
@@ -190,11 +190,15 @@
     div {
       position: absolute;
       bottom: $pds-spacing-large;
-      left: $pds-grid-safe-zone;
+      left: $pds-grid-safe-zone-fluid-interpolation-base;
       display: flex;
       flex-direction: column;
       gap: $pds-spacing-medium;
       align-items: flex-start;
+
+      @include pds-media-query-min('xl') {
+        left: $pds-grid-safe-zone-fluid-interpolation-xl;
+      }
     }
   }
 
@@ -213,11 +217,16 @@
   .car-compare {
     position: relative;
     margin-top: $pds-spacing-xx-large;
-    padding: 0 $pds-grid-safe-zone;
     display: grid;
     grid-template-columns: 1fr;
     grid-column: grid-start / grid-end;
     background: $pds-theme-light-background-surface;
+
+    padding: 0 $pds-grid-safe-zone-fluid-interpolation-base;
+
+    @include pds-media-query-min('xl') {
+      padding: 0 $pds-grid-safe-zone-fluid-interpolation-xl;
+    }
   }
 
   .accessories {
