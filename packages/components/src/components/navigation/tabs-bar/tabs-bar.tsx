@@ -7,8 +7,10 @@ import {
   getHTMLElements,
   getPrefixedTagNames,
   getScrollActivePosition,
+  mutationObserverFallback,
   observeChildren,
   observeResize,
+  removeMutationObserverFallback,
   setAttribute,
   unobserveChildren,
   unobserveResize,
@@ -93,6 +95,12 @@ export class TabsBar {
       this.setBarStyle();
       this.setAccessibilityAttributes();
     });
+    if (useMutationObserverFallback) {
+      mutationObserverFallback(this, () => {
+        this.setBarStyle();
+        this.scrollActiveTabIntoView(false);
+      });
+    }
   }
 
   public componentDidLoad(): void {
@@ -130,11 +138,19 @@ export class TabsBar {
 
   public componentDidRender(): void {
     // needs to happen after render in order to have status bar defined and proper calculation
-    this.setBarStyle();
+    if (useMutationObserverFallback) {
+      this.setBarStyle();
+      this.scrollActiveTabIntoView(false);
+    }
     this.setAccessibilityAttributes();
   }
 
   public disconnectedCallback(): void {
+    if (useMutationObserverFallback) {
+      removeMutationObserverFallback(this);
+    } else {
+      unobserveResize(this.scrollerElement);
+    }
     unobserveChildren(this.host);
     this.intersectionObserver?.disconnect();
   }

@@ -4,7 +4,9 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  mutationObserverFallback,
   observeResize,
+  removeMutationObserverFallback,
   unobserveResize,
   useMutationObserverFallback,
   validateProps,
@@ -17,8 +19,6 @@ import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
 import {
   ACCORDION_SIZES,
   getContentHeight,
-  mutationObserverFallback,
-  removeMutationObserverFallback,
   setCollapsibleElementHeight,
   warnIfCompactAndSizeIsSet,
 } from './accordion-utils';
@@ -72,7 +72,7 @@ export class Accordion {
 
   public connectedCallback(): void {
     if (useMutationObserverFallback) {
-      mutationObserverFallback(this);
+      mutationObserverFallback(this, this.setContentHeight);
     }
   }
 
@@ -111,14 +111,6 @@ export class Accordion {
       unobserveResize(this.content);
     }
   }
-
-  // called via util
-  public setContentHeight = (): void => {
-    if (this.content) {
-      this.contentHeight = getContentHeight(this.content.getBoundingClientRect(), this.compact);
-      this.setCollapsibleElementHeight();
-    }
-  };
 
   public render(): JSX.Element {
     const buttonId = 'accordion-control';
@@ -170,4 +162,11 @@ export class Accordion {
   private setCollapsibleElementHeight(): void {
     setCollapsibleElementHeight(this.collapsibleElement, this.open, this.contentHeight);
   }
+
+  private setContentHeight = (): void => {
+    if (this.content) {
+      this.contentHeight = getContentHeight(this.content.getBoundingClientRect(), this.compact);
+      this.setCollapsibleElementHeight();
+    }
+  };
 }
