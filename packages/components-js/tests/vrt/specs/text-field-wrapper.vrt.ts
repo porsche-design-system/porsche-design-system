@@ -33,8 +33,8 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       const head = `
         <style>
-          .playground div { display: flex; }
-          .playground div > * { width: 40%; }
+          .playground div, .playground form { display: flex; }
+          .playground div > *, .playground form > * { width: 40%; }
           p-text-field-wrapper:not(:last-child) {
             margin-right: 1rem;
             margin-bottom: 1rem;
@@ -46,8 +46,8 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       const childDisabled = child.replace(/((?: \/)?>)/, ' disabled$1');
 
       const getElementsMarkup: GetMarkup = () => `
-          <div>
-          <p-text-field-wrapper label="Default empty">
+        <div>
+          <p-text-field-wrapper label="Text empty">
             <input type="text" />
           </p-text-field-wrapper>
           <p-text-field-wrapper label="Password empty">
@@ -57,6 +57,17 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
             <input type="search" />
           </p-text-field-wrapper>
         </div>
+        <form>
+          <p-text-field-wrapper label="Text in form">
+            ${child}
+          </p-text-field-wrapper>
+          <p-text-field-wrapper label="Password in form">
+            <input type="password" value="Value" />
+          </p-text-field-wrapper>
+          <p-text-field-wrapper label="Search in form">
+            <input type="search" value="Value" />
+          </p-text-field-wrapper>
+        </form>
         <div>
           <p-text-field-wrapper label="Default">
             ${child}
