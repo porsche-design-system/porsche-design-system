@@ -77,8 +77,8 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
 "
 `;
 
-exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-gutter.scss 1`] = `
-"$pds-grid-gutter: max(1rem, min(3.6vw, 2.25rem));
+exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-gap.scss 1`] = `
+"$pds-grid-gap: max(1rem, min(3.6vw, 2.25rem));
 "
 `;
 

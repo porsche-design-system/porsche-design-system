@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <p-content-wrapper>
-      <div></div>
-    </p-content-wrapper>
+  <div class="main-app">
     <PorscheHeader />
     <PorscheMainBar />
     <div class="main-content">
@@ -34,7 +31,13 @@
         </Card>
       </div>
       <div class="car-compare">
-        <Card :shading="false" :height="{ min: '25rem', val: '60vh', max: '40rem' }" fit="contain" position="bottom">
+        <Card
+          :shading="false"
+          :height="{ min: '25rem', val: '60vh', max: '40rem' }"
+          variant="seamless"
+          fit="block"
+          position="bottom"
+        >
           <img src="./assets/compare.png" alt="" />
           <template #top>
             <p-headline variant="headline-3" tag="h2">Vergleichen alle unsere Modelle</p-headline>
@@ -47,14 +50,14 @@
         </Card>
       </div>
       <div class="accessories">
-        <Card :shading="false" :height="{ min: '35rem', val: '35rem', max: '35rem' }" fit="contain" position="bottom">
+        <Card :shading="false" :height="{ min: '35rem', val: '35rem', max: '35rem' }" fit="block" position="bottom">
           <img src="./assets/car-box.png" alt="" />
           <template #top>
             <p-headline variant="headline-3">Immer das richtige Fahrzeugzubehör zur Hand</p-headline>
             <p-button variant="tertiary">Zum Porsche Tequipment Shop</p-button>
           </template>
         </Card>
-        <Card :shading="false" :height="{ min: '35rem', val: '35rem', max: '35rem' }" fit="contain" position="bottom">
+        <Card :shading="false" :height="{ min: '35rem', val: '35rem', max: '35rem' }" fit="block" position="bottom">
           <img src="./assets/chrono.png" alt="" />
           <template #top>
             <p-headline variant="headline-3">Finde die Porsche Accessoires zu deinem Traumsportwagen</p-headline>
@@ -94,7 +97,7 @@
       PorscheFooter,
     },
   })
-  export default class GridExamplePorscheCom extends Vue {
+  export default class ExamplePorscheCom extends Vue {
     public carRange = [
       {
         label: '718',
@@ -134,12 +137,12 @@
       },
     ];
 
-    getImgUrl(car: string) {
+    getImgUrl(car: string): string {
       const images = require.context('./assets/', false, /\.jpg$/);
       return images(`./${car.toLowerCase()}.jpg`);
     }
 
-    getSvgUrl(car: string) {
+    getSvgUrl(car: string): string {
       const images = require.context('./assets/', false, /\.svg$/);
       return images(`./${car.toLowerCase()}.svg`);
     }
@@ -149,25 +152,8 @@
 <style lang="scss" scoped>
   @import '~@porsche-design-system/components-js/utilities/scss';
 
-  p-content-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: deeppink;
-    height: 100px;
-    opacity: 0.5;
-    z-index: 999;
-
-    div {
-      background: deepskyblue;
-      height: 100px;
-    }
-  }
-
-  p-button {
-    border-radius: 4px;
-    overflow: hidden;
+  .main-app {
+    min-width: 20rem;
   }
 
   .main-content {
@@ -178,6 +164,7 @@
     position: relative;
     height: 60vh;
     min-height: 20rem;
+    max-height: 40rem;
     grid-column: grid-start / grid-end;
     margin-bottom: $pds-spacing-x-large;
 
@@ -185,50 +172,58 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
     }
 
     div {
       position: absolute;
       bottom: $pds-spacing-large;
-      left: $pds-grid-safe-zone;
+      left: $pds-grid-safe-zone-base;
       display: flex;
       flex-direction: column;
       gap: $pds-spacing-medium;
       align-items: flex-start;
+
+      @include pds-media-query-min('xl') {
+        left: $pds-grid-safe-zone-xl;
+      }
     }
   }
 
   .car-range {
     margin-top: $pds-spacing-large;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     grid-column: content-start / content-end;
-    grid-gap: $pds-grid-gutter;
+    grid-gap: $pds-grid-gap;
 
     @include pds-media-query-min('m') {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
   .car-compare {
-    position: relative;
     margin-top: $pds-spacing-xx-large;
-    padding: 0 $pds-grid-safe-zone;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     grid-column: grid-start / grid-end;
     background: $pds-theme-light-background-surface;
+    padding: $pds-spacing-large $pds-grid-safe-zone-base;
+
+    @include pds-media-query-min('xl') {
+      padding: $pds-spacing-xx-large $pds-grid-safe-zone-xl;
+    }
   }
 
   .accessories {
     margin-top: $pds-spacing-xx-large;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     grid-column: 3 / -3;
-    grid-gap: $pds-grid-gutter;
+    grid-gap: $pds-grid-gap;
 
     @include pds-media-query-min('m') {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
 
       & > :nth-of-type(1) {
         grid-column: 1 / 2;
