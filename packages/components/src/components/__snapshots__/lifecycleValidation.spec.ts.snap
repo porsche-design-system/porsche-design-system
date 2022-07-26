@@ -355,7 +355,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 Object {
   "activeTabIndex": "number",
   "gradientColorScheme": "oneOf",
-  "size": "oneOf",
+  "size": "breakpoint",
   "theme": "oneOf",
   "weight": "oneOf",
 }
