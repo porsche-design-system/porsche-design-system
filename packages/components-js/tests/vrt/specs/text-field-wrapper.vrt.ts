@@ -72,7 +72,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           <p-text-field-wrapper label="Default">
             ${child}
           </p-text-field-wrapper>
-          <p-text-field-wrapper label="Password">
+          <p-text-field-wrapper class="toggle-password" label="Password">
             <input type="password" value="Value" />
           </p-text-field-wrapper>
           <p-text-field-wrapper label="Search">
@@ -129,6 +129,17 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         </div>`;
 
       await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
+
+      // let's toggle some password fields
+      const textFieldWrappers = await page.$$('.toggle-password');
+      await Promise.all(
+        textFieldWrappers.map(
+          async (item) =>
+            (
+              await item.evaluateHandle((el) => el.shadowRoot.querySelector('button[type=button]'))
+            ).evaluate((el: HTMLElement) => el.click()) // js element.click() instead of puppeteer ElementHandle.click() to workaround element off screen issue
+        )
+      );
 
       await forceHoverState(page, '.hover p-text-field-wrapper input');
       await forceHoverState(page, '.hover p-text-field-wrapper a');
