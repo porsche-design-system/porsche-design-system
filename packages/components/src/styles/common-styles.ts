@@ -16,7 +16,6 @@ export const pxToRemWithUnit = (px: number): string => `${pxToRem(px)}rem`;
 
 export const contentWrapperVars = {
   maxWidth: pxToRemWithUnit(1536),
-  maxWidthExtended: pxToRemWithUnit(1920),
   margin: '7vw',
   marginXl: '10vw',
   marginXxl: pxToRemWithUnit(192),
