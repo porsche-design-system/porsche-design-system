@@ -8,19 +8,14 @@ exports[`getComponentCss() should return correct css for width: basic, backgroun
   margin: 0 auto;
   width: 100%;
   min-width: 0;
-  max-width: 96rem;
-  padding: 0 7vw;
+  max-width: 120rem;
+  box-sizing: border-box;
+  padding: 0 max(1rem, 7vw);
   background-color: #0e1418;
 }
 @media(min-width:1760px) {
   .root {
-    padding: 0 10vw;
-  }
-}
-
-@media(min-width:1920px) {
-  .root {
-    padding: 0 12rem;
+    padding: 0 min(calc(43vw - 39.6rem), 12rem);
   }
 }
 "
@@ -34,19 +29,14 @@ exports[`getComponentCss() should return correct css for width: basic, backgroun
   margin: 0 auto;
   width: 100%;
   min-width: 0;
-  max-width: 96rem;
-  padding: 0 7vw;
+  max-width: 120rem;
+  box-sizing: border-box;
+  padding: 0 max(1rem, 7vw);
   background-color: #fff;
 }
 @media(min-width:1760px) {
   .root {
-    padding: 0 10vw;
-  }
-}
-
-@media(min-width:1920px) {
-  .root {
-    padding: 0 12rem;
+    padding: 0 min(calc(43vw - 39.6rem), 12rem);
   }
 }
 "
@@ -60,19 +50,14 @@ exports[`getComponentCss() should return correct css for width: basic, backgroun
   margin: 0 auto;
   width: 100%;
   min-width: 0;
-  max-width: 96rem;
-  padding: 0 7vw;
+  max-width: 120rem;
+  box-sizing: border-box;
+  padding: 0 max(1rem, 7vw);
   background-color: transparent;
 }
 @media(min-width:1760px) {
   .root {
-    padding: 0 10vw;
-  }
-}
-
-@media(min-width:1920px) {
-  .root {
-    padding: 0 12rem;
+    padding: 0 min(calc(43vw - 39.6rem), 12rem);
   }
 }
 "

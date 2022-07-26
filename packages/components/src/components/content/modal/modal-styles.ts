@@ -133,6 +133,7 @@ export const getComponentCss = (
         },
         [mediaQueryXxl]: {
           padding: pxToRemWithUnit(64),
+          margin: isFullscreenForXlAndXxl ? 0 : `min(10vh, 12rem) ${gridSafeZone.xl}`,
         },
       },
       buildResponsiveStyles(fullscreen, getFullscreenJssStyles) as any
