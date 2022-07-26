@@ -1,5 +1,6 @@
 import type { EventEmitter } from '@stencil/core';
-import { Component, Element, Event, h, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, Prop, State, Watch, h } from '@stencil/core';
+import type { PropTypes } from '../../../utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -7,11 +8,13 @@ import {
   getPrefixedTagNames,
   getScrollActivePosition,
   observeChildren,
+  observeResize,
   setAttribute,
   unobserveChildren,
+  unobserveResize,
+  useMutationObserverFallback,
   validateProps,
 } from '../../../utils';
-import type { PropTypes } from '../../../utils';
 import { isShadowRootParentOfKind } from '../../../utils/dom'; // separate import is needed for lifecycleValidation.spec to pass
 import type { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from './tabs-bar-utils';
 import {
@@ -103,6 +106,17 @@ export class TabsBar {
     }
 
     this.addEventListeners();
+
+    if (!useMutationObserverFallback) {
+      observeResize(
+        this.scrollerElement,
+        () => {
+          this.setBarStyle();
+          this.scrollActiveTabIntoView(false);
+        },
+        { box: 'border-box' }
+      );
+    }
 
     // setBarStyle() is needed when intersection observer does not trigger because all tabs are visible
     // and first call in componentDidRender() is skipped because elements are not defined, yet

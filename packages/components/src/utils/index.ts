@@ -13,6 +13,7 @@ export * from './jss';
 export * from './line-height';
 export * from './pds-fetch';
 export * from './property-observer';
+export * from './resize-observer';
 export * from './scrolling';
 export * from './slotted-styles';
 export * from './ssr-handling';

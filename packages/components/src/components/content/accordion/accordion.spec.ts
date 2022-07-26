@@ -1,6 +1,7 @@
 import { Accordion } from './accordion';
 import * as accordionUtils from './accordion-utils';
-import { isResizeObserverDefined, useMutationObserverFallbackOverride } from './accordion-utils';
+import * as resizeObserverUtils from '../../../utils/resize-observer';
+import { isResizeObserverDefined, useMutationObserverFallbackOverride } from '../../../utils';
 
 jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
@@ -47,7 +48,7 @@ describe('accordion', () => {
 
   describe('componentDidLoad', () => {
     it('should call observeResize() with correct parameters if ResizeObserver is available', () => {
-      const spy = jest.spyOn(accordionUtils, 'observeResize');
+      const spy = jest.spyOn(resizeObserverUtils, 'observeResize');
       const component = new Accordion();
       component.componentDidLoad();
 
@@ -103,7 +104,7 @@ describe('accordion', () => {
     });
 
     it('should call unobserveResize() with correct parameter if ResizeObserver is available', () => {
-      const spy = jest.spyOn(accordionUtils, 'unobserveResize');
+      const spy = jest.spyOn(resizeObserverUtils, 'unobserveResize');
       const component = new Accordion();
       component.disconnectedCallback();
 
