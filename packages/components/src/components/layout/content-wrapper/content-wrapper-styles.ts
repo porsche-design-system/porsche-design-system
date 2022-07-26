@@ -3,11 +3,12 @@ import type { Theme } from '../../../types';
 import type { ContentWrapperWidth, ContentWrapperBackgroundColor } from './content-wrapper-utils';
 import { getCss } from '../../../utils';
 import { getThemedColors } from '../../../styles';
-import { mediaQueryMin } from '@porsche-design-system/utilities-v2';
+import { mediaQueryMin, gridMaxWidth } from '@porsche-design-system/utilities-v2';
 
 const widthMap: { [key in ContentWrapperWidth]?: JssStyle } = {
   basic: {
-    maxWidth: '96rem',
+    maxWidth: gridMaxWidth,
+    boxSizing: 'border-box',
     padding: '0 7vw',
     [mediaQueryMin('xl')]: {
       padding: '0 10vw',
@@ -17,7 +18,7 @@ const widthMap: { [key in ContentWrapperWidth]?: JssStyle } = {
     },
   },
   extended: {
-    maxWidth: '120rem',
+    maxWidth: gridMaxWidth,
   },
 };
 
