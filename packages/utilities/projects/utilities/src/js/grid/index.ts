@@ -1,22 +1,6 @@
-import { grid, grid7vwLinear, gridFluidInterpolation, gridImprovedLinear } from './grid';
+import { grid } from './grid';
 import { gridGutter } from './grid-gutter';
 import { gridMaxWidth } from './grid-max-width';
-import {
-  gridSafeZone,
-  gridSafeZoneImprovedLinear,
-  gridSafeZone7vwLinear,
-  gridSafeZoneFluidInterpolation,
-} from './grid-safe-zone';
+import { gridSafeZone } from './grid-safe-zone';
 
-export {
-  grid,
-  grid7vwLinear,
-  gridFluidInterpolation,
-  gridImprovedLinear,
-  gridGutter,
-  gridMaxWidth,
-  gridSafeZone,
-  gridSafeZoneImprovedLinear,
-  gridSafeZone7vwLinear,
-  gridSafeZoneFluidInterpolation,
-};
+export { grid, gridGutter, gridMaxWidth, gridSafeZone };
