@@ -263,10 +263,12 @@ export class TextFieldWrapper {
     );
   };
 
+  // TODO: unit test
   private onClear = (): void => {
     this.input.value = '';
     this.isClearable = false;
     this.onLabelClick();
+    // TODO: emit event?
   };
 
   private observeAttributes = (): void => {
