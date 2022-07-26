@@ -1,23 +1,23 @@
 import type { FormState } from '../../../types';
 import { pxToRemWithUnit } from '../../../styles';
+import { getClosestHTMLElement } from '../../../utils';
 
 export const UNIT_POSITIONS = ['prefix', 'suffix'] as const;
 export type TextFieldWrapperUnitPosition = typeof UNIT_POSITIONS[number];
 
 export const hasCounter = (el: HTMLTextAreaElement | HTMLInputElement): boolean => el.maxLength >= 0;
 export const hasCounterAndIsTypeText = (el: HTMLInputElement): boolean => isType(el.type, 'text') && hasCounter(el);
-export const hasUnitAndIsTypeTextOrNumber = (el: HTMLInputElement, unit: string): boolean => {
-  const { type } = el;
+export const hasUnitAndIsTypeTextOrNumber = ({ type }: HTMLInputElement, unit: string): boolean => {
   return !!unit && (isType(type, 'text') || isType(type, 'number'));
 };
 
-export const isType = (inputType: string, typeToValidate: string): boolean => {
-  return inputType === typeToValidate;
-};
+export const isType = (inputType: string, typeToValidate: string): boolean => inputType === typeToValidate;
+export const isWithinForm = (host: HTMLElement): boolean => !!getClosestHTMLElement(host, 'form');
 
 export const setCounterInnerHtml = (el: HTMLTextAreaElement | HTMLInputElement, counterElement: HTMLElement): void => {
   counterElement.innerText = `${el.value.length}/${el.maxLength}`;
 };
+
 export const setAriaElementInnerHtml = (
   el: HTMLTextAreaElement | HTMLInputElement,
   ariaElement: HTMLSpanElement

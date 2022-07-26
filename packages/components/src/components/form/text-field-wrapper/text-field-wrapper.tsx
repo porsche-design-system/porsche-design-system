@@ -27,6 +27,7 @@ import {
   hasCounterAndIsTypeText,
   hasUnitAndIsTypeTextOrNumber,
   isType,
+  isWithinForm,
   setInputStyles,
   throwIfUnitLengthExceeded,
   UNIT_POSITIONS,
@@ -84,6 +85,7 @@ export class TextFieldWrapper {
   private ariaElement: HTMLSpanElement;
   private isSearch: boolean;
   private isPassword: boolean;
+  private isWithinForm: boolean;
   private hasCounter: boolean;
   private isCounterVisible: boolean;
   private hasUnit: boolean;
@@ -103,6 +105,7 @@ export class TextFieldWrapper {
     this.observeAttributes(); // once initially
     this.isSearch = isType(this.input.type, 'search');
     this.isPassword = isType(this.input.type, 'password');
+    this.isWithinForm = isWithinForm(this.host);
     this.hasCounter = hasCounterAndIsTypeText(this.input);
     this.isCounterVisible = this.showCharacterCount && this.hasCounter;
     this.hasUnit = !this.isCounterVisible && hasUnitAndIsTypeTextOrNumber(this.input, this.unit);
@@ -133,7 +136,8 @@ export class TextFieldWrapper {
       this.state,
       this.hasUnit || this.isCounterVisible,
       this.isCounterVisible ? 'suffix' : this.unitPosition,
-      this.input.type
+      this.input.type,
+      this.isWithinForm
     );
   }
 
@@ -222,10 +226,14 @@ export class TextFieldWrapper {
                 <span class="sr-only">Clear</span>
                 <PrefixedTagNames.pIcon name="close" color="inherit" aria-hidden="true" />
               </button>,
-              <button type="submit" onClick={this.onSubmit} disabled={disabled || readOnly}>
-                <span class="sr-only">Search</span>
+              this.isWithinForm ? (
+                <button type="submit" onClick={this.onSubmit} disabled={disabled || readOnly}>
+                  <span class="sr-only">Search</span>
+                  <PrefixedTagNames.pIcon name="search" color="inherit" aria-hidden="true" />
+                </button>
+              ) : (
                 <PrefixedTagNames.pIcon name="search" color="inherit" aria-hidden="true" />
-              </button>,
+              ),
             ]
           )}
         </div>

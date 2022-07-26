@@ -23,7 +23,8 @@ export const getComponentCss = (
   state: FormState,
   hasUnitOrVisibleCounter: boolean,
   unitPosition: TextFieldWrapperUnitPosition,
-  inputType: string
+  inputType: string,
+  isWithinForm: boolean
 ): string => {
   const theme: Theme = 'light';
   const { baseColor, contrastMediumColor, activeColor, disabledColor, hoverColor } = getThemedColors(theme);
@@ -49,6 +50,7 @@ export const getComponentCss = (
               }
             : isSearchOrPassword && {
                 paddingRight: pxToRemWithUnit(isSearch ? 88 : 48),
+                ...(isSearch && !isWithinForm && { paddingLeft: pxToRemWithUnit(48) }),
               }),
         }),
         // Reset webkit autofill styles
@@ -88,12 +90,25 @@ export const getComponentCss = (
             color: disabledColor,
             cursor: 'not-allowed',
           },
-          ...(isSearch && {
-            right: pxToRemWithUnit(40),
-            '&+ button': {
-              right: 0,
-            },
-          }),
+          ...(isSearch &&
+            (isWithinForm
+              ? {
+                  right: pxToRemWithUnit(40), // clear button
+                  '&+ button': {
+                    right: 0, // submit button
+                  },
+                }
+              : {
+                  '&+ *': {
+                    // search icon on left side
+                    position: 'absolute',
+                    left: 0,
+                    bottom: 0,
+                    color: contrastMediumColor,
+                    padding: pxToRemWithUnit(12),
+                    pointerEvents: 'none',
+                  },
+                })),
         },
       }),
     },
@@ -132,6 +147,7 @@ export const getSlottedCss = (host: HTMLElement): string => {
   return getCss(
     buildSlottedStyles(host, {
       ...getBaseSlottedStyles(),
+      // the following selectors don't work within ::slotted() pseudo selector, therefore we have to apply them via light DOM
       '& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button, & input[type="search"]::-webkit-search-decoration':
         {
           WebkitAppearance: 'none',
