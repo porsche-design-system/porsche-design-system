@@ -4,22 +4,27 @@
       card: true,
       'card--fit-cover': fit === 'cover',
       'card--fit-contain': fit === 'contain',
+      'card--fit-block': fit === 'block',
       'card--position-top': position === 'top',
       'card--position-center': position === 'center',
       'card--position-bottom': position === 'bottom',
     }"
     :style="{ 'min-height': 'clamp(' + height.min + ', ' + height.val + ', ' + height.max + ')' }"
   >
-    <slot></slot>
     <div
-      :class="{ card__content: true, 'card__content--top': shading }"
-      :style="{ visibility: hasTopSlot() ? 'visible' : 'hidden' }"
+      :class="{ card__content: true, 'card__content--top': shading, 'card__content--seamless': variant === 'seamless' }"
+      v-if="hasTopSlot()"
     >
       <slot name="top"></slot>
     </div>
+    <slot></slot>
     <div
-      :class="{ card__content: true, 'card__content--bottom': shading }"
-      :style="{ visibility: hasBottomSlot() ? 'visible' : 'hidden' }"
+      :class="{
+        card__content: true,
+        'card__content--bottom': shading,
+        'card__content--seamless': variant === 'seamless',
+      }"
+      v-if="hasBottomSlot()"
     >
       <slot name="bottom"></slot>
     </div>
@@ -34,13 +39,14 @@
   @Component
   export default class Card extends Vue {
     @Prop({ default: true }) public shading!: boolean;
-    @Prop({ default: 'cover' }) public fit!: 'cover' | 'contain';
+    @Prop({ default: 'cover' }) public fit!: 'cover' | 'contain' | 'block';
     @Prop({ default: 'center' }) public position!: 'top' | 'center' | 'bottom';
     @Prop({ default: { min: '10rem', val: '40vh', max: '30rem' } }) public height!: {
       min: string;
       val: string;
       max: string;
     };
+    @Prop({ default: 'box' }) public variant!: 'seamless' | 'box';
 
     hasTopSlot() {
       return !!this.$slots.top;
@@ -66,12 +72,20 @@
     background: $pds-theme-light-background-surface;
     border-radius: $border-radius;
 
+    img {
+      max-width: 100%;
+    }
+
     &--fit-cover > img {
       object-fit: cover;
     }
 
     &--fit-contain > img {
       object-fit: contain;
+    }
+
+    &--fit-block > img {
+      display: inline-block;
     }
 
     &--position-top > img {
@@ -86,13 +100,17 @@
       object-position: center bottom;
     }
 
-    & > img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: $border-radius;
+    &--fit-cover,
+    &--fit-contain {
+      & > img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: $border-radius;
+        z-index: 0;
+      }
     }
 
     &__content {
@@ -102,9 +120,14 @@
       flex-direction: column;
       align-items: flex-start;
       gap: $pds-spacing-small;
+      z-index: 1;
 
       & > * {
         position: relative;
+      }
+
+      &--seamless {
+        padding: 0;
       }
 
       &--top {

@@ -1,12 +1,5 @@
 <template>
-  <div
-    :class="{
-      'main-nav': true,
-      'main-nav--7vw-linear': grid === '7vw-linear',
-      'main-nav--improved-linear': grid === 'improved-linear',
-      'main-nav--fluid-interpolation': grid === 'fluid-interpolation',
-    }"
-  >
+  <div class="main-nav">
     <p-marque href="https://www.porsche.com"></p-marque>
     <div class="car-models">
       <button>
@@ -94,12 +87,9 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import { Prop } from 'vue-property-decorator';
 
   @Component
-  export default class PorscheHeader extends Vue {
-    @Prop({ default: '7vw-linear' }) public grid!: '7vw-linear' | 'improved-linear' | 'fluid-interpolation';
-  }
+  export default class PorscheHeader extends Vue {}
 </script>
 
 <style scoped lang="scss">
@@ -112,21 +102,10 @@
     align-items: center;
     margin: 0 auto;
     max-width: $pds-grid-max-width;
+    padding: $pds-spacing-medium $pds-grid-safe-zone-base;
 
-    &--7vw-linear {
-      padding: $pds-spacing-medium $pds-grid-safe-zone;
-    }
-
-    &--improved-linear {
-      padding: $pds-spacing-medium $pds-grid-safe-zone-improved-linear;
-    }
-
-    &--fluid-interpolation {
-      padding: $pds-spacing-medium $pds-grid-safe-zone-fluid-interpolation-base;
-
-      @include pds-media-query-min('xl') {
-        padding: $pds-spacing-medium $pds-grid-safe-zone-fluid-interpolation-xl;
-      }
+    @include pds-media-query-min('xl') {
+      padding: $pds-spacing-medium $pds-grid-safe-zone-xl;
     }
 
     .car-models {
