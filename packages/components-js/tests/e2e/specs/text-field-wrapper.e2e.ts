@@ -159,7 +159,7 @@ describe('input type="password"', () => {
 });
 
 describe('input type="search"', () => {
-  fdescribe('without form', () => {
+  describe('without form', () => {
     it('should not have submit button', async () => {
       await initTextField({ type: 'search' });
       const button = await getSubmitButton();
