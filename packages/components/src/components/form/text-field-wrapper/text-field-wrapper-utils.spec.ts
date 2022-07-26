@@ -330,35 +330,34 @@ describe('addInputEventListenerForSearch()', () => {
     expect(callback).toBeCalledTimes(1);
   });
 
-  it('should on keydown events Escape and ESC call inputChangeCallback() and reset input.value', () => {
+  it('should on keydown event for Escape and Esc key reset input.value and emit input event', () => {
     const inputElement = getInputElement();
-    const callback = jest.fn();
     inputElement.value = 'search-term';
+    const spy = jest.spyOn(inputElement, 'dispatchEvent');
 
-    addInputEventListenerForSearch(inputElement, callback);
+    addInputEventListenerForSearch(inputElement, jest.fn());
     inputElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
     expect(inputElement.value).toBe('');
-    expect(callback).toBeCalledWith(false);
+    expect(spy).toBeCalledWith(new Event('input'));
 
-    inputElement.value = 'search-term2';
+    inputElement.value = 'search-term';
     inputElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Esc' }));
     expect(inputElement.value).toBe('');
-    expect(callback).toBeCalledWith(false);
-    expect(callback).toBeCalledTimes(2);
+    expect(spy).toBeCalledWith(new Event('input'));
   });
 
-  it('should not call inputChangeCallback() on keydown event other then ESC and not reset input.value', () => {
+  it('should not reset input.value and not emit input event on keydown event for other keys than Escape and Esc', () => {
     const inputElement = getInputElement();
-    const callback = jest.fn();
     inputElement.value = 'search-term';
-    addInputEventListenerForSearch(inputElement, callback);
+    const spy = jest.spyOn(inputElement, 'dispatchEvent');
+    addInputEventListenerForSearch(inputElement, jest.fn());
 
     inputElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'A' }));
     expect(inputElement.value).toBe('search-term');
-    expect(callback).toBeCalledTimes(0);
+    expect(spy).not.toBeCalledWith(new Event('input'));
 
     inputElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
     expect(inputElement.value).toBe('search-term');
-    expect(callback).toBeCalledTimes(0);
+    expect(spy).not.toBeCalledWith(new Event('input'));
   });
 });
