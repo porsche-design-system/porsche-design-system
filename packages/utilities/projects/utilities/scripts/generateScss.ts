@@ -68,7 +68,7 @@ const generateMixins = (mixins: Mixins): void => {
       .map(
         ([k, v]) =>
           `@mixin ${paramCase(`pds-${k}`)} {${getCss({ _key_: v }).replace(
-            /\._key_ {([A-Za-z0-9:\-\/.'"\[\]()%,;\s]*)}/g, // search for styles only
+            /\._key_ {([A-Za-z0-9:\-\/.'"\[\]()%,;\s*]*)}/g, // search for styles only
             '$1'
           )}}`
       )

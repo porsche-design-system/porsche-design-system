@@ -11,6 +11,7 @@ const getGridTemplateColumns = (safeZone: string): string => {
 export const grid = {
   display: 'grid',
   gridColumnGap: gridGap,
+  gridRowGap: `calc(${gridGap} * 3)`,
   gridTemplateColumns: getGridTemplateColumns(gridSafeZone.base),
   maxWidth: gridMaxWidth,
   margin: '0 auto',
