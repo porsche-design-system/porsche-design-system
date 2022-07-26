@@ -9,8 +9,10 @@ import {
   addInputEventListenerForCounter,
   setAriaElementInnerHtml,
   hasUnitAndIsTypeTextOrNumber,
+  isWithinForm,
 } from './text-field-wrapper-utils';
 import * as textFieldWrapperUtils from './text-field-wrapper-utils';
+import * as getClosestHTMLElementUtils from '../../../utils/dom/getClosestHTMLElement';
 import { FormState } from '../../../types';
 
 const getInputElement = (): HTMLInputElement => {
@@ -91,6 +93,27 @@ describe('hasUnitAndIsTypeTextOrNumber()', () => {
       expect(hasUnitAndIsTypeTextOrNumber(inputElement, 'EUR')).toBe(false);
     }
   );
+});
+
+describe('isWithinForm()', () => {
+  it('should call getClosestHTMLElement()', () => {
+    const spy = jest.spyOn(getClosestHTMLElementUtils, 'getClosestHTMLElement');
+    const el = document.createElement('input');
+    isWithinForm(el);
+
+    expect(spy).toBeCalledWith(el, 'form');
+  });
+
+  it('should return true or false based on result of getClosestHTMLElement()', () => {
+    const spy = jest.spyOn(getClosestHTMLElementUtils, 'getClosestHTMLElement');
+    const el = document.createElement('input');
+
+    spy.mockReturnValue(null);
+    expect(isWithinForm(el)).toBe(false);
+
+    spy.mockReturnValue(document.createElement('form'));
+    expect(isWithinForm(el)).toBe(true);
+  });
 });
 
 describe('setCounterInnerHtml()', () => {
