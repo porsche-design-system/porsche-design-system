@@ -26,8 +26,8 @@ beforeEach(async () => {
 });
 afterEach(async () => await page.close());
 
-const getAlgoliaHitsWrapper = async () => selectNode(page, '.ais-Hits');
-const getAlgoliaHits = async () =>
+const getAlgoliaHitsWrapper = () => selectNode(page, '.ais-Hits');
+const getAlgoliaHits = () =>
   page.evaluate(() => {
     return Array.from(document.querySelectorAll('.ais-Hits-item'));
   });
