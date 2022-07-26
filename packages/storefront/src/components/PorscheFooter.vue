@@ -77,7 +77,7 @@
 
   .main-footer {
     @include pds-grid;
-    grid-row-gap: $pds-grid-gutter;
+    grid-row-gap: $pds-grid-gap;
     padding: $pds-spacing-x-large 0;
     margin-top: $pds-spacing-xx-large;
     background: $pds-theme-dark-background-base;
@@ -90,11 +90,12 @@
   .country-language-chooser {
     grid-column: content-start / content-end;
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: $pds-spacing-medium;
 
     @include pds-media-query-min('s') {
       grid-column: 4 / -4;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
 
       & > :nth-child(1) {
         grid-column: 1 / 3;
@@ -116,6 +117,7 @@
   .imprint {
     grid-column: content-start / content-end;
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: $pds-spacing-medium;
 
     @include pds-media-query-min('s') {
