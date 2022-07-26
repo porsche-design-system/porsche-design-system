@@ -4,7 +4,6 @@ import { gridSafeZone, mediaQueryMin } from '@porsche-design-system/utilities-v2
 import { BREAKPOINTS, buildResponsiveStyles, getCss, mergeDeep, parseJSON, buildSlottedStyles } from '../../../utils';
 import {
   addImportantToEachRule,
-  contentWrapperVars,
   getBaseSlottedStyles,
   getFocusJssStyle,
   getInsetJssStyle,
@@ -32,10 +31,10 @@ export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean)
         margin: 0,
       }
     : {
-        minWidth: pxToRemWithUnit(272),
-        maxWidth: contentWrapperVars.maxWidth,
+        minWidth: pxToRemWithUnit(275.2), // 320px - 320px * 7% * 2
+        maxWidth: pxToRemWithUnit(1536), // 1920px - 1920px * 10% * 2
         minHeight: 'auto',
-        margin: `7vh ${gridSafeZone.base}`,
+        margin: `max(1rem, 7vh) ${gridSafeZone.base}`,
       };
 };
 
@@ -130,11 +129,10 @@ export const getComponentCss = (
           padding: pxToRemWithUnit(40),
         },
         [mediaQueryXl]: {
-          margin: isFullscreenForXlAndXxl ? 0 : `10vh ${contentWrapperVars.marginXl}`,
+          margin: isFullscreenForXlAndXxl ? 0 : `min(10vh, 12rem) ${gridSafeZone.xl}`,
         },
         [mediaQueryXxl]: {
           padding: pxToRemWithUnit(64),
-          margin: isFullscreenForXlAndXxl ? 0 : `10vh ${contentWrapperVars.marginXxl}`,
         },
       },
       buildResponsiveStyles(fullscreen, getFullscreenJssStyles) as any
