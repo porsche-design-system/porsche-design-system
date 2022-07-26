@@ -141,6 +141,9 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         )
       );
 
+      // get rid of focus from last .toggle-password input
+      await page.mouse.click(0, 0);
+
       await forceHoverState(page, '.hover p-text-field-wrapper input');
       await forceHoverState(page, '.hover p-text-field-wrapper a');
       await forceHoverState(page, '.hover p-text-field-wrapper >>> button');
