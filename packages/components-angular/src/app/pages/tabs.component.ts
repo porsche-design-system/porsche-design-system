@@ -100,6 +100,35 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-tabs>
     </div>
 
+    <div class="playground light" title="should render tabs-bar size BreakpointCustomizable on light background">
+      <p-tabs-bar
+        [activeTabIndex]="9"
+        [size]="{ base: 'small', xs: 'small', s: 'medium', m: 'small', l: 'medium', xl: 'small' }"
+      >
+        <button [type]="'button'">Tab One</button>
+        <button [type]="'button'">Tab Two</button>
+        <button [type]="'button'">Tab Three</button>
+        <button [type]="'button'">Tab Four</button>
+        <button [type]="'button'">Tab Five</button>
+        <button [type]="'button'">Tab Six</button>
+        <button [type]="'button'">Tab Seven</button>
+        <button [type]="'button'">Tab Eight</button>
+        <button [type]="'button'">Tab Nine</button>
+        <button [type]="'button'">Tab Ten</button>
+        <button [type]="'button'">Tab Eleven</button>
+        <button [type]="'button'">Tab Twelve</button>
+        <button [type]="'button'">Tab Thirteen</button>
+        <button [type]="'button'">Tab Fourteen</button>
+        <button [type]="'button'">Tab Fifteen</button>
+        <button [type]="'button'">Tab Sixteen</button>
+        <button [type]="'button'">Tab Seventeen</button>
+        <button [type]="'button'">Tab Eighteen</button>
+        <button [type]="'button'">Tab Nineteen</button>
+        <button [type]="'button'">Tab Twenty</button>
+      </p-tabs-bar>
+    </div>
+c
+
     <div class="playground light" title="should render tabs semibold on light background">
       <p-tabs [weight]="'semibold'">
         <p-tabs-item [label]="'Tab 1'">Tab Content 1</p-tabs-item>
