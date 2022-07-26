@@ -14,13 +14,15 @@ describe('componentWillLoad', () => {
       .mockReturnValue(input);
 
     const component = new TextFieldWrapper();
-    const spy = jest.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(true);
+    const spy = jest.spyOn(textFieldWrapperUtils, 'isType');
 
     expect(component['isSearch']).toBe(undefined);
+
+    spy.mockReturnValue(true);
     component.componentWillLoad();
     expect(spy).toHaveBeenNthCalledWith(1, input.type, 'search');
-
     expect(component['isSearch']).toBe(true);
+
     spy.mockReturnValue(false);
     component.componentWillLoad();
     expect(component['isSearch']).toBe(false);
@@ -33,33 +35,39 @@ describe('componentWillLoad', () => {
       .mockReturnValue(input);
 
     const component = new TextFieldWrapper();
-    const spy = jest.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(true);
+    const spy = jest.spyOn(textFieldWrapperUtils, 'isType');
 
     expect(component['isPassword']).toBe(undefined);
+
+    spy.mockReturnValue(true);
     component.componentWillLoad();
     expect(spy).toHaveBeenNthCalledWith(2, input.type, 'password');
-
     expect(component['isPassword']).toBe(true);
+
     spy.mockReturnValue(false);
     component.componentWillLoad();
     expect(component['isPassword']).toBe(false);
   });
 
-  it('should set isClearable', () => {
+  it('should set isClearable based on input.value', () => {
     const input = document.createElement('input');
     jest
       .spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow')
       .mockReturnValue(input);
+
     const component = new TextFieldWrapper();
     expect(component['isClearable']).toBe(false);
+
     input.value = 'search';
     component.componentWillLoad();
     expect(component['isClearable']).toBe(true);
+
     input.value = '';
     component.componentWillLoad();
     expect(component['isClearable']).toBe(false);
   });
 
+  // TODO: prove connection between util actually setting member value
   it('should call hasCounterAndIsTypeText() with correct parameter and set hasCounter', () => {
     const input = document.createElement('input');
     input.type = 'text';
@@ -78,6 +86,7 @@ describe('componentWillLoad', () => {
     expect(component['hasCounter']).toBe(true);
   });
 
+  // TODO: prove connection between util actually setting member value
   it('should not call hasUnitAndIsTypeTextOrNumber() when counter and unit is set and counter is visible', () => {
     const input = document.createElement('input');
     input.type = 'text';
@@ -89,7 +98,6 @@ describe('componentWillLoad', () => {
     const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber');
     const component = new TextFieldWrapper();
     component.unit = 'EUR';
-    component['input'] = input;
 
     expect(component['hasUnit']).toBe(undefined);
     component.componentWillLoad();
@@ -98,6 +106,7 @@ describe('componentWillLoad', () => {
     expect(component['hasUnit']).toBe(false);
   });
 
+  // TODO: prove connection between util actually setting member value
   it('should call hasUnitAndIsTypeTextOrNumber() with correct parameters when counter and unit is set and counter is not visible', () => {
     const input = document.createElement('input');
     input.type = 'text';
@@ -108,18 +117,17 @@ describe('componentWillLoad', () => {
 
     const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber');
     const component = new TextFieldWrapper();
-    const unit = 'EUR';
-    component.unit = unit;
+    component.unit = 'EUR';
     component.showCharacterCount = false;
-    component['input'] = input;
 
     expect(component['hasUnit']).toBe(undefined);
     component.componentWillLoad();
 
-    expect(spy).toBeCalledWith(input, unit);
+    expect(spy).toBeCalledWith(input, 'EUR');
     expect(component['hasUnit']).toBe(true);
   });
 
+  // TODO: prove connection between util actually setting member value
   it.each<string>(['text', 'number'])(
     'should call hasUnitAndIsTypeTextOrNumber() and set hasUnit when input type="%s"',
     (type) => {
@@ -136,7 +144,6 @@ describe('componentWillLoad', () => {
       const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber');
       const component = new TextFieldWrapper();
       component.unit = 'EUR';
-      component['input'] = input;
 
       expect(component['hasUnit']).toBe(undefined);
       component.componentWillLoad();
