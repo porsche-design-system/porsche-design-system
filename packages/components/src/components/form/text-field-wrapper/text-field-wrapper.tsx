@@ -121,7 +121,7 @@ export class TextFieldWrapper {
         this.setInputStyles
       );
     } else if (this.isSearch) {
-      addInputEventListenerForSearch(this.input, (isClearable) => (this.isClearable = isClearable));
+      addInputEventListenerForSearch(this.input, (hasValue) => (this.isClearable = hasValue));
     }
   }
 
