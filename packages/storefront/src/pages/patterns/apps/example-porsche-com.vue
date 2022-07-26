@@ -158,7 +158,6 @@
 
   .main-content {
     @include pds-grid;
-    grid-row-gap: calc(#{$pds-grid-gap} * 2);
   }
 
   .teaser {
