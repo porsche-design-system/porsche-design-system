@@ -49,6 +49,26 @@ describe('componentWillLoad', () => {
     expect(component['isPassword']).toBe(false);
   });
 
+  it('should call isWithinForm() and set isWithinForm', () => {
+    const input = document.createElement('input');
+    jest
+      .spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow')
+      .mockReturnValue(input);
+
+    const component = new TextFieldWrapper();
+    const spy = jest.spyOn(textFieldWrapperUtils, 'isWithinForm');
+
+    expect(component['isWithinForm']).toBe(undefined);
+
+    spy.mockReturnValue(true);
+    component.componentWillLoad();
+    expect(component['isWithinForm']).toBe(true);
+
+    spy.mockReturnValue(false);
+    component.componentWillLoad();
+    expect(component['isWithinForm']).toBe(false);
+  });
+
   it('should set isClearable based on input.value', () => {
     const input = document.createElement('input');
     jest
