@@ -9,6 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Fixed
+
+- `Tabs` & `Tabs Bar` `size` property when using `BreakpointCustomizable`
+- `Tabs` size property validation to work with `BreakpointCustomizable`
+
 #### Changed
 
 - Font loading strategy for Porsche Next uses `font-display: swap` (FOUT) instead of `font-display: block` for better
