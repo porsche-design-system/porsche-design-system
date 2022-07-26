@@ -68,11 +68,11 @@ export const addInputEventListenerForCounter = (
   }
   setAriaElementInnerHtml(input, characterCountElement); // initial value
 
-  input.addEventListener('input', (e) => {
+  input.addEventListener('input', (e: Event & { target: HTMLTextAreaElement | HTMLInputElement }) => {
     if (counterElement) {
-      setCounterInnerHtml(e.target as HTMLTextAreaElement | HTMLInputElement, counterElement);
+      setCounterInnerHtml(e.target, counterElement);
     }
-    setAriaElementInnerHtml(e.target as HTMLTextAreaElement | HTMLInputElement, characterCountElement);
+    setAriaElementInnerHtml(e.target, characterCountElement);
     if (inputChangeCallback) {
       inputChangeCallback();
     }
