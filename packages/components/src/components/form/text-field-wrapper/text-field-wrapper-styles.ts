@@ -49,7 +49,7 @@ export const getComponentCss = (
                 MozAppearance: 'textfield', // hides up/down spin button for Firefox
               }
             : isSearchOrPassword && {
-                paddingRight: pxToRemWithUnit(isSearch ? 88 : 48),
+                paddingRight: pxToRemWithUnit(isSearch && isWithinForm ? 88 : 48),
                 ...(isSearch && !isWithinForm && { paddingLeft: pxToRemWithUnit(48) }),
               }),
         }),
