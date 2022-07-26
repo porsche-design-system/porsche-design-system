@@ -138,10 +138,7 @@ export class TabsBar {
 
   public componentDidRender(): void {
     // needs to happen after render in order to have status bar defined and proper calculation
-    if (useMutationObserverFallback) {
-      this.setBarStyle();
-      this.scrollActiveTabIntoView(false);
-    }
+    this.setBarStyle();
     this.setAccessibilityAttributes();
   }
 
