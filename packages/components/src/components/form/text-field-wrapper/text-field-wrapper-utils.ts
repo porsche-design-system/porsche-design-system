@@ -81,7 +81,7 @@ export const addInputEventListenerForCounter = (
 
 export const addInputEventListenerForSearch = (
   input: HTMLInputElement,
-  inputChangeCallback: (isClearable: boolean) => void
+  inputChangeCallback: (hasValue: boolean) => void
 ): void => {
   input.addEventListener('input', (e: Event & { target: HTMLInputElement }) => {
     inputChangeCallback(!!e.target.value);
