@@ -136,7 +136,7 @@ export class TextFieldWrapper {
       this.state,
       this.hasUnit || this.isCounterVisible,
       this.isCounterVisible ? 'suffix' : this.unitPosition,
-      this.input.type,
+      this.isPassword ? 'password' : this.input.type,
       this.isWithinForm
     );
   }
