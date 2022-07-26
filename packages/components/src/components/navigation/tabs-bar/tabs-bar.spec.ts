@@ -94,17 +94,15 @@ describe('componentDidLoad', () => {
 });
 
 describe('componentDidRender', () => {
-  it('should call setBarStyle() and scrollActiveTabIntoView() if ResizeObserver is unavailable', () => {
+  it('should call setBarStyle()', () => {
     useMutationObserverFallbackOverride(true);
 
     const component = new TabsBar();
-    const spy1 = jest.spyOn(component, 'setBarStyle' as any);
-    const spy2 = jest.spyOn(component, 'scrollActiveTabIntoView' as any);
+    const spy = jest.spyOn(component, 'setBarStyle' as any);
 
     component.componentDidRender();
 
-    expect(spy1).toBeCalledTimes(1);
-    expect(spy2).toBeCalledTimes(1);
+    expect(spy).toBeCalledTimes(1);
   });
 
   it('should call setAccessibilityAttributes()', () => {
