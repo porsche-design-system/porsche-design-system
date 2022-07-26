@@ -1,6 +1,6 @@
 import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable, GetJssStyleFunction, BreakpointKey } from '../../../utils';
-import { mediaQueryMin } from '@porsche-design-system/utilities-v2';
+import { gridSafeZone, mediaQueryMin } from '@porsche-design-system/utilities-v2';
 import { BREAKPOINTS, buildResponsiveStyles, getCss, mergeDeep, parseJSON, buildSlottedStyles } from '../../../utils';
 import {
   addImportantToEachRule,
@@ -35,7 +35,7 @@ export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean)
         minWidth: pxToRemWithUnit(272),
         maxWidth: contentWrapperVars.maxWidth,
         minHeight: 'auto',
-        margin: `7vh ${contentWrapperVars.margin}`,
+        margin: `7vh ${gridSafeZone.base}`,
       };
 };
 
