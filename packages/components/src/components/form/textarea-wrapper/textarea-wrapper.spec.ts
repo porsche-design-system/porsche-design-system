@@ -7,6 +7,7 @@ jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
 
 describe('componentWillLoad', () => {
+  // TODO: prove connection between util actually setting member value
   it('should call hasCounter() with correct parameter and set hasCounter', () => {
     const textarea = document.createElement('textarea');
     jest
@@ -15,7 +16,6 @@ describe('componentWillLoad', () => {
 
     const spy = jest.spyOn(textFieldWrapperUtils, 'hasCounter');
     const component = new TextareaWrapper();
-    component['textarea'] = textarea;
 
     expect(component['hasCounter']).toBe(undefined);
     component.componentWillLoad();
