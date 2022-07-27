@@ -1,16 +1,6 @@
 import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
 import type { PropTypes } from '../../../utils';
-import {
-  AllowedTypes,
-  attachComponentCss,
-  getPrefixedTagNames,
-  mutationObserverFallback,
-  observeResize,
-  removeMutationObserverFallback,
-  unobserveResize,
-  useMutationObserverFallback,
-  validateProps,
-} from '../../../utils';
+import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../../utils';
 import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
 import { THEMES_EXTENDED_ELECTRIC } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
@@ -19,7 +9,12 @@ import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
 import {
   ACCORDION_SIZES,
   getContentHeight,
+  mutationObserverFallback,
+  observeResize,
+  removeMutationObserverFallback,
   setCollapsibleElementHeight,
+  unobserveResize,
+  useMutationObserverFallback,
   warnIfCompactAndSizeIsSet,
 } from './accordion-utils';
 import { getComponentCss } from './accordion-styles';

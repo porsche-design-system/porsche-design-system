@@ -234,7 +234,7 @@ describe('chunk content', () => {
   });
 
   describe('ResizeObserver', () => {
-    it.each(chunkFileNames.filter((x) => !x.includes('accordion')))(
+    it.each(chunkFileNames.filter((x) => !(x.includes('accordion') || x.includes('scroller'))))(
       'should not contain ResizeObserver in %s',
       (chunkFileName) => {
         const content = getChunkContent(chunkFileName);
@@ -242,7 +242,7 @@ describe('chunk content', () => {
       }
     );
 
-    it.each(chunkFileNames.filter((x) => x.includes('accordion')))(
+    it.each(chunkFileNames.filter((x) => x.includes('accordion') || x.includes('scroller')))(
       'should contain ResizeObserver in %s',
       (chunkFileName) => {
         const content = getChunkContent(chunkFileName);
