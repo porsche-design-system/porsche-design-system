@@ -93,8 +93,8 @@ export class Banner {
     );
   }
 
-  private onKeyboardEvent = ({ key }: KeyboardEvent): void => {
-    if (key === 'Esc' || key === 'Escape') {
+  private onKeyboardEvent = (e: KeyboardEvent): void => {
+    if (e.key === 'Escape') {
       this.removeBanner();
     }
   };
