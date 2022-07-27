@@ -25,6 +25,7 @@ import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import {
   addInputEventListenerForCounter,
   addInputEventListenerForSearch,
+  dispatchInputEvent,
   hasCounterAndIsTypeText,
   hasUnitAndIsTypeTextOrNumber,
   isType,
@@ -269,12 +270,10 @@ export class TextFieldWrapper {
     );
   };
 
-  // TODO: unit test
   private onClear = (): void => {
-    this.input.value = '';
-    this.isClearable = false;
     this.onLabelClick();
-    // TODO: emit event?
+    this.input.value = '';
+    dispatchInputEvent(this.input);
   };
 
   private observeAttributes = (): void => {
