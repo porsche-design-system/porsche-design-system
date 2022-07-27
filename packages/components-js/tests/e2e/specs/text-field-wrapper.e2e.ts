@@ -159,6 +159,53 @@ describe('input type="password"', () => {
 });
 
 describe('input type="search"', () => {
+  describe('events', () => {
+    it('should emit input events for input without text-field-wrapper', async () => {
+      await setContentWithDesignSystem(page, '<input type="search" style="width: 100px; height: 50px">');
+      const input = await selectNode(page, 'input');
+
+      let inputEvents = 0;
+      await addEventListener(input, 'input', () => inputEvents++);
+      await input.focus();
+
+      await setProperty(input, 'value', 'value');
+      await page.keyboard.press('Escape');
+      await waitForEventSerialization(page);
+      expect(await getProperty(input, 'value')).toBe('');
+      expect(inputEvents).toBe(1);
+
+      await setProperty(input, 'value', 'value');
+      await page.mouse.click(90, 25);
+      await waitForEventSerialization(page);
+      expect(await getProperty(input, 'value')).toBe('');
+      expect(inputEvents).toBe(2);
+    });
+
+    it('should emit input events for input with text-field-wrapper', async () => {
+      await initTextField({ type: 'search' });
+      const input = await selectNode(page, 'input');
+
+      let inputEvents = 0;
+      await addEventListener(input, 'input', () => inputEvents++);
+      await input.focus();
+
+      await setProperty(input, 'value', 'value');
+      await page.keyboard.press('a'); // just setting value property is only detected initially
+      await page.keyboard.press('Escape');
+      await waitForEventSerialization(page);
+      expect(await getProperty(input, 'value')).toBe('');
+      expect(inputEvents).toBe(2);
+
+      await setProperty(input, 'value', 'value');
+      await page.keyboard.press('a'); // just setting value property is only detected initially
+      const button = await getToggleOrClearButton();
+      await button.click();
+      await waitForEventSerialization(page);
+      expect(await getProperty(input, 'value')).toBe('');
+      expect(inputEvents).toBe(4);
+    });
+  });
+
   describe('without form', () => {
     it('should not have submit button', async () => {
       await initTextField({ type: 'search' });
