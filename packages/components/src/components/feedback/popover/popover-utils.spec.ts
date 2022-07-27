@@ -553,15 +553,15 @@ describe('onDocumentKeydown()', () => {
     });
   });
 
-  it.each(['Escape', 'Esc'])('should change open to false for key %s', (key) => {
+  it('should change open to false for key Escape', () => {
     popover['open'] = true;
-    document.body.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
+    document.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
 
     expect(spy).toBeCalledTimes(1);
     expect(popover['open']).toBe(false);
   });
 
-  it.each(['Escape', 'Esc', ''])('should not check composedPath for key %s', (key) => {
+  it.each(['Escape', ''])('should not check composedPath for key %s', (key) => {
     const keyboardEvent = new KeyboardEvent('keydown', { key });
     const spy = jest.spyOn(keyboardEvent, 'composedPath');
     onDocumentKeydown(keyboardEvent);

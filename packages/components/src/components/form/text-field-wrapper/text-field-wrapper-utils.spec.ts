@@ -330,7 +330,7 @@ describe('addInputEventListenerForSearch()', () => {
     expect(callback).toBeCalledTimes(1);
   });
 
-  it('should on keydown event for Escape and Esc key reset input.value and emit input event', () => {
+  it('should on keydown event for Escape key reset input.value and emit input event', () => {
     const inputElement = getInputElement();
     inputElement.value = 'search-term';
     const spy = jest.spyOn(inputElement, 'dispatchEvent');
@@ -339,14 +339,9 @@ describe('addInputEventListenerForSearch()', () => {
     inputElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
     expect(inputElement.value).toBe('');
     expect(spy).toBeCalledWith(new Event('input'));
-
-    inputElement.value = 'search-term';
-    inputElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Esc' }));
-    expect(inputElement.value).toBe('');
-    expect(spy).toBeCalledWith(new Event('input'));
   });
 
-  it('should not reset input.value and not emit input event on keydown event for other keys than Escape and Esc', () => {
+  it('should not reset input.value and not emit input event on keydown event for other keys than Escape', () => {
     const inputElement = getInputElement();
     inputElement.value = 'search-term';
     const spy = jest.spyOn(inputElement, 'dispatchEvent');
