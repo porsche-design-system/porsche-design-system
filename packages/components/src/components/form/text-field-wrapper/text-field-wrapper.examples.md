@@ -103,6 +103,10 @@ description of the used unit should be provided to ensure accessibility.
 
 <Playground :markup="typesSearch" :config="config"></Playground>
 
+### Search within Form
+
+<Playground :markup="typesSearchWithinForm" :config="config"></Playground>
+
 ## Validation states
 
 The `p-text-field-wrapper` component supports the visualisation of inline validation. The `message` and `input` is
@@ -226,6 +230,11 @@ codeExample = getTextFieldWrapperCodeSamples();
 </p-text-field-wrapper>`;
 
   typesSearch =
+`<p-text-field-wrapper label="Some label">
+  <input type="search" name="some-name" />
+</p-text-field-wrapper>`;
+
+  typesSearchWithinForm =
 `<form action="#" onsubmit="alert('submit'); return false;">
   <p-text-field-wrapper label="Some label">
     <input type="search" name="some-name" />
