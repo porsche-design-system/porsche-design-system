@@ -1,8 +1,8 @@
 import { TabsBar } from './tabs-bar';
 import * as tabsBarUtils from './tabs-bar-utils';
-import * as resizeObserverUtils from '../../../utils/resize-observer';
+import * as accordionUtils from '../../content/accordion/accordion-utils';
 import * as childrenObserverUtils from '../../../utils/children-observer';
-import { isResizeObserverDefined, useMutationObserverFallbackOverride } from '../../../utils';
+import { isResizeObserverDefined, useMutationObserverFallbackOverride } from '../../content/accordion/accordion-utils';
 
 jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
@@ -34,7 +34,7 @@ describe('connectedCallback', () => {
 
   it('should not add resize event listener to window if ResizeObserver is available', () => {
     const component = new TabsBar();
-    const spy = jest.spyOn(resizeObserverUtils, 'observeWindowResize');
+    const spy = jest.spyOn(accordionUtils, 'observeWindowResize');
 
     component.connectedCallback();
 
@@ -45,7 +45,7 @@ describe('connectedCallback', () => {
   it('should add resize event listener to window if ResizeObserver is unavailable', () => {
     useMutationObserverFallbackOverride(true);
 
-    const utilsSpy = jest.spyOn(resizeObserverUtils, 'mutationObserverFallback');
+    const utilsSpy = jest.spyOn(accordionUtils, 'mutationObserverFallback');
 
     const component = new TabsBar();
     component.host = document.createElement('p-tabs-bar');
@@ -57,7 +57,7 @@ describe('connectedCallback', () => {
 
 describe('componentDidLoad', () => {
   it('should call defineHTMLElements()', () => {
-    const spy = jest.spyOn(resizeObserverUtils, 'observeWindowResize');
+    const spy = jest.spyOn(accordionUtils, 'observeWindowResize');
 
     const component = new TabsBar();
     const scroller = document.createElement('p-scroller');
@@ -80,7 +80,7 @@ describe('componentDidLoad', () => {
   });
 
   it('should call observeResize() with correct parameters if ResizeObserver is available', () => {
-    const spy = jest.spyOn(resizeObserverUtils, 'observeResize');
+    const spy = jest.spyOn(accordionUtils, 'observeResize');
     const component = new TabsBar();
     const scroller = document.createElement('p-scroller');
     component.host = document.createElement('p-tabs-bar');
@@ -121,7 +121,7 @@ describe('disconnectedCallback', () => {
   it('should remove resize event listener if ResizeObserver is unavailable', () => {
     useMutationObserverFallbackOverride(true);
 
-    const utilsSpy = jest.spyOn(resizeObserverUtils, 'removeMutationObserverFallback');
+    const utilsSpy = jest.spyOn(accordionUtils, 'removeMutationObserverFallback');
 
     const component = new TabsBar();
     component.host = document.createElement('p-tabs-bar');
@@ -131,7 +131,7 @@ describe('disconnectedCallback', () => {
   });
 
   it('should call unobserveResize() with correct parameter if ResizeObserver is available', () => {
-    const spy = jest.spyOn(resizeObserverUtils, 'unobserveResize');
+    const spy = jest.spyOn(accordionUtils, 'unobserveResize');
     const component = new TabsBar();
     component.disconnectedCallback();
 

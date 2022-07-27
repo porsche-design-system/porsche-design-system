@@ -1,7 +1,6 @@
 import { Accordion } from './accordion';
 import * as accordionUtils from './accordion-utils';
-import * as resizeObserverUtils from '../../../utils/resize-observer';
-import { isResizeObserverDefined, useMutationObserverFallbackOverride } from '../../../utils';
+import { isResizeObserverDefined, useMutationObserverFallbackOverride } from './accordion-utils';
 
 jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
@@ -25,7 +24,7 @@ describe('accordion', () => {
   describe('connectedCallback', () => {
     it('should not add resize event listener to window if ResizeObserver is available', () => {
       const component = new Accordion();
-      const utilsSpy = jest.spyOn(resizeObserverUtils, 'observeWindowResize');
+      const utilsSpy = jest.spyOn(accordionUtils, 'observeWindowResize');
 
       component.connectedCallback();
 
@@ -36,7 +35,7 @@ describe('accordion', () => {
     it('should add resize event listener to window if ResizeObserver is unavailable', () => {
       useMutationObserverFallbackOverride(true);
 
-      const utilsSpy = jest.spyOn(resizeObserverUtils, 'mutationObserverFallback');
+      const utilsSpy = jest.spyOn(accordionUtils, 'mutationObserverFallback');
 
       const component = new Accordion();
       component.host = document.createElement('p-accordion');
@@ -48,7 +47,7 @@ describe('accordion', () => {
 
   describe('componentDidLoad', () => {
     it('should call observeResize() with correct parameters if ResizeObserver is available', () => {
-      const spy = jest.spyOn(resizeObserverUtils, 'observeResize');
+      const spy = jest.spyOn(accordionUtils, 'observeResize');
       const component = new Accordion();
       component.componentDidLoad();
 
@@ -94,7 +93,7 @@ describe('accordion', () => {
     it('should remove resize event listener if ResizeObserver is unavailable', () => {
       useMutationObserverFallbackOverride(true);
 
-      const utilsSpy = jest.spyOn(resizeObserverUtils, 'removeMutationObserverFallback');
+      const utilsSpy = jest.spyOn(accordionUtils, 'removeMutationObserverFallback');
 
       const component = new Accordion();
       component.host = document.createElement('p-accordion');
@@ -104,7 +103,7 @@ describe('accordion', () => {
     });
 
     it('should call unobserveResize() with correct parameter if ResizeObserver is available', () => {
-      const spy = jest.spyOn(resizeObserverUtils, 'unobserveResize');
+      const spy = jest.spyOn(accordionUtils, 'unobserveResize');
       const component = new Accordion();
       component.disconnectedCallback();
 
