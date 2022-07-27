@@ -206,6 +206,54 @@ describe('input type="search"', () => {
     });
   });
 
+  describe('clear functionality', () => {
+    it('should show clear button when input.value is not empty', async () => {
+      await initTextField({ type: 'search' });
+      const input = await getInput();
+      const clearButton = await getToggleOrClearButton();
+
+      expect(await getProperty(clearButton, 'hidden')).toBe(true);
+
+      await input.focus();
+      await page.keyboard.type('search-term');
+      await waitForStencilLifecycle(page);
+
+      expect(await getProperty(clearButton, 'hidden')).toBe(false);
+    });
+
+    it('should reset input value on keydown Escape', async () => {
+      await initTextField({ type: 'search' });
+      const input = await getInput();
+      const clearButton = await getToggleOrClearButton();
+      await input.focus();
+      await page.keyboard.type('search-term');
+      await waitForStencilLifecycle(page);
+
+      expect(await getProperty(clearButton, 'hidden')).toBe(false);
+
+      await page.keyboard.press('Escape');
+
+      expect(await getProperty(input, 'value')).toBe('');
+      expect(await getProperty(clearButton, 'hidden')).toBe(true);
+    });
+
+    it('should reset input value on button click', async () => {
+      await initTextField({ type: 'search' });
+      const input = await getInput();
+      const clearButton = await getToggleOrClearButton();
+      await input.focus();
+      await page.keyboard.type('search-term');
+      await waitForStencilLifecycle(page);
+
+      expect(await getProperty(clearButton, 'hidden')).toBe(false);
+
+      await clearButton.click();
+
+      expect(await getProperty(input, 'value')).toBe('');
+      expect(await getProperty(clearButton, 'hidden')).toBe(true);
+    });
+  });
+
   describe('without form', () => {
     it('should not have submit button', async () => {
       await initTextField({ type: 'search' });
