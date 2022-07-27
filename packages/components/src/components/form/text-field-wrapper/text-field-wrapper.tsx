@@ -11,6 +11,7 @@ import {
   hasMessage,
   isRequiredAndParentNotRequired,
   observeAttributes,
+  observeProperties,
   setAriaAttributes,
   unobserveAttributes,
   validateProps,
@@ -109,7 +110,12 @@ export class TextFieldWrapper {
     this.hasCounter = hasCounterAndIsTypeText(this.input);
     this.isCounterVisible = this.showCharacterCount && this.hasCounter;
     this.hasUnit = !this.isCounterVisible && hasUnitAndIsTypeTextOrNumber(this.input, this.unit);
-    this.isClearable = !!this.input.value;
+
+    if (this.isSearch) {
+      this.isClearable = !!this.input.value;
+      // detect programmatic value changes like it happens in frameworks
+      observeProperties(this.input, ['value'], () => (this.isClearable = !!this.input.value));
+    }
   }
 
   public componentDidLoad(): void {
