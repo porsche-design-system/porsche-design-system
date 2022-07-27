@@ -148,7 +148,7 @@ export const onDocumentMousedown = (e: MouseEvent): void => {
 
 export const onDocumentKeydown = (e: KeyboardEvent): void => {
   const { key } = e;
-  const isEscape = ['Escape', 'Esc'].includes(key);
+  const isEscape = key === 'Escape';
   if (isEscape || ['SpaceBar', 'Enter', ' '].includes(key)) {
     const popover = registeredPopovers.find(
       // eslint-disable-next-line dot-notation
