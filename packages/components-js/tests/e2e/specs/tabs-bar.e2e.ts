@@ -369,7 +369,7 @@ describe('bar', () => {
       height: 600,
     });
 
-    expect(Math.round(thirdButtonPosition), 'correct offsetLeft page resize').toEqual(
+    expect(Math.round((await getElementPositions(page, thirdButton)).left), 'correct offsetLeft page resize').toEqual(
       Math.floor((await getElementPositions(page, bar)).left)
     );
   });
