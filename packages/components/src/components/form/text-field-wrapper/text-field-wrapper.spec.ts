@@ -287,3 +287,17 @@ describe('componentDidRender', () => {
     expect(spy).toBeCalledWith(input, { label: 'Some label', message: 'Some message', state: 'success' });
   });
 });
+
+describe('onClear()', () => {
+  it('should should clear input.value and dispatchInputEvent() with correct parameters', () => {
+    const component = new TextFieldWrapper();
+    const spy = jest.spyOn(textFieldWrapperUtils, 'dispatchInputEvent');
+    const input = document.createElement('input');
+    component['input'] = input;
+    component['onClear']();
+
+    expect(input.value).toBe('');
+    expect(spy).toBeCalledWith(input);
+    expect(spy).toBeCalledTimes(1);
+  });
+});
