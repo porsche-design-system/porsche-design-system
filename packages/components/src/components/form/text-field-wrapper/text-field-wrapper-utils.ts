@@ -87,10 +87,15 @@ export const addInputEventListenerForSearch = (
     inputChangeCallback(!!e.target.value);
   });
   input.addEventListener('keydown', (e: KeyboardEvent & { target: HTMLInputElement }) => {
-    if (e.key === 'Escape') {
+    if (e.key === 'Escape' && e.target.value) {
+      e.preventDefault();
       e.target.value = '';
       // need to emit event so consumer's change listeners fire for resetting a search, etc.
-      e.target.dispatchEvent(new Event('input'));
+      dispatchInputEvent(e.target);
     }
   });
+};
+
+export const dispatchInputEvent = (el: HTMLInputElement): void => {
+  el.dispatchEvent(new Event('input'));
 };
