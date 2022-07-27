@@ -7,14 +7,9 @@ import {
   getHTMLElements,
   getPrefixedTagNames,
   getScrollActivePosition,
-  mutationObserverFallback,
   observeChildren,
-  observeResize,
-  removeMutationObserverFallback,
   setAttribute,
   unobserveChildren,
-  unobserveResize,
-  useMutationObserverFallback,
   validateProps,
 } from '../../../utils';
 import { isShadowRootParentOfKind } from '../../../utils/dom'; // separate import is needed for lifecycleValidation.spec to pass
@@ -32,6 +27,13 @@ import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../typ
 import { THEMES_EXTENDED_ELECTRIC } from '../../../types';
 import type { Direction } from '../../common/scroller/scroller-utils';
 import { getScrollerElements, GRADIENT_COLOR_THEMES } from '../../common/scroller/scroller-utils';
+import {
+  mutationObserverFallback,
+  observeResize,
+  removeMutationObserverFallback,
+  unobserveResize,
+  useMutationObserverFallback,
+} from '../../content/accordion/accordion-utils';
 
 const propTypes: PropTypes<typeof TabsBar> = {
   size: AllowedTypes.breakpoint<TabSize>(TAB_SIZES),
