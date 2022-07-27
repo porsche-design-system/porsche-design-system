@@ -6,8 +6,8 @@
   },
   {
     "chunkShortName": "banner",
-    "size": 7098,
-    "gzipSize": 2852
+    "size": 7083,
+    "gzipSize": 2844
   },
   {
     "chunkShortName": "button",
@@ -77,7 +77,7 @@
   {
     "chunkShortName": "main",
     "size": 62738,
-    "gzipSize": 21422
+    "gzipSize": 21420
   },
   {
     "chunkShortName": "marque",
@@ -86,8 +86,8 @@
   },
   {
     "chunkShortName": "modal",
-    "size": 7262,
-    "gzipSize": 3072
+    "size": 7251,
+    "gzipSize": 3069
   },
   {
     "chunkShortName": "pagination",
@@ -96,8 +96,8 @@
   },
   {
     "chunkShortName": "popover",
-    "size": 6482,
-    "gzipSize": 2727
+    "size": 6451,
+    "gzipSize": 2715
   },
   {
     "chunkShortName": "radio-button-wrapper",
@@ -116,8 +116,8 @@
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 23265,
-    "gzipSize": 7687
+    "size": 23255,
+    "gzipSize": 7684
   },
   {
     "chunkShortName": "spinner",
@@ -156,8 +156,8 @@
   },
   {
     "chunkShortName": "text-field-wrapper",
-    "size": 14301,
-    "gzipSize": 5169
+    "size": 14773,
+    "gzipSize": 5344
   },
   {
     "chunkShortName": "text-list",
@@ -166,8 +166,8 @@
   },
   {
     "chunkShortName": "textarea-wrapper",
-    "size": 10330,
-    "gzipSize": 4092
+    "size": 10359,
+    "gzipSize": 4100
   },
   {
     "chunkShortName": "toast",
