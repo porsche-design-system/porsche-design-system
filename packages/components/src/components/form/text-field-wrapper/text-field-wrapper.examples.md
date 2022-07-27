@@ -58,15 +58,13 @@ To hide it you can set `showCharacterCount` to `false`.
 
 <Playground :markup="counter" :config="config"></Playground>
 
-## Types
+## Type overview
 
 The following types listed in the configurator below are supported. Browser specific UI helpers (e.g. calendar dropdown
 in Chrome) may occur inside the input field which are explicitly not reset by the `p-text-field-wrapper` component. For
 better accessibility it's recommended to **not** reset these browser default UI helpers.
 
-### Basic
-
-<Playground :markup="typesBasic" :config="config">
+<Playground :markup="typeOverview" :config="config">
   <select v-model="type" aria-label="Select input type">
     <option disabled>Select input type</option>
     <option value="text">Text</option>
@@ -82,12 +80,12 @@ better accessibility it's recommended to **not** reset these browser default UI 
   </select>
 </Playground>
 
-### Number
+## type="number"
 
 Inputs with type number can display a unit (e.g. €, EUR, km/h, etc.) with a **maximum** of five characters. A
 description of the used unit should be provided to ensure accessibility.
 
-<Playground :markup="typesNumber" :config="config">
+<Playground :markup="typeNumber" :config="config">
   <select v-model="unitPosition" aria-label="Select unit position">
     <option disabled>Select unit position</option>
     <option value="prefix">Prefix</option>
@@ -95,17 +93,17 @@ description of the used unit should be provided to ensure accessibility.
   </select>
 </Playground>
 
-### Password
+## type="password"
 
-<Playground :markup="typesPassword" :config="config"></Playground>
+<Playground :markup="typePassword" :config="config"></Playground>
 
-### Search
+## type="search"
 
-<Playground :markup="typesSearch" :config="config"></Playground>
+<Playground :markup="typeSearch" :config="config"></Playground>
 
-### Search within Form
+## type="search" within form
 
-<Playground :markup="typesSearchWithinForm" :config="config"></Playground>
+<Playground :markup="typeSearchWithinForm" :config="config"></Playground>
 
 ## Validation states
 
@@ -212,29 +210,29 @@ codeExample = getTextFieldWrapperCodeSamples();
   <input type="text" name="some-name" value="Some value" maxlength="20" />
 </p-text-field-wrapper>`;
 
-  get typesBasic() {
+  get typeOverview() {
     return `<p-text-field-wrapper label="Some label">
   <input type="${this.type}" name="some-name" />
 </p-text-field-wrapper>`;
   }
 
-  get typesNumber() {
+  get typeNumber() {
     return `<p-text-field-wrapper label="Some label" description="The price in Euro" unit="EUR" unit-position="${this.unitPosition}">
   <input type="number" name="some-name" value="500" />
 </p-text-field-wrapper>`;
   }
   
-  typesPassword =
+  typePassword =
 `<p-text-field-wrapper label="Some label">
   <input type="password" name="some-name" value="some password" />
 </p-text-field-wrapper>`;
 
-  typesSearch =
+  typeSearch =
 `<p-text-field-wrapper label="Some label">
   <input type="search" name="some-name" />
 </p-text-field-wrapper>`;
 
-  typesSearchWithinForm =
+  typeSearchWithinForm =
 `<form action="#" onsubmit="alert('submit'); return false;">
   <p-text-field-wrapper label="Some label">
     <input type="search" name="some-name" />
