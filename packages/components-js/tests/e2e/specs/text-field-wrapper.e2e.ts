@@ -190,51 +190,64 @@ describe('input type="search"', () => {
       await input.focus();
 
       await setProperty(input, 'value', 'value');
-      await page.keyboard.press('a'); // just setting value property is only detected initially
       await page.keyboard.press('Escape');
       await waitForEventSerialization(page);
       expect(await getProperty(input, 'value')).toBe('');
-      expect(inputEvents).toBe(2);
+      expect(inputEvents).toBe(1);
 
       await setProperty(input, 'value', 'value');
-      await page.keyboard.press('a'); // just setting value property is only detected initially
       const button = await getToggleOrClearButton();
       await button.click();
       await waitForEventSerialization(page);
       expect(await getProperty(input, 'value')).toBe('');
-      expect(inputEvents).toBe(4);
+      expect(inputEvents).toBe(2);
     });
   });
 
   describe('clear functionality', () => {
-    it('should show clear button when input.value is not empty', async () => {
+    const isClearButtonVisible = async (): Promise<boolean> => {
+      const clearButton = await getToggleOrClearButton();
+      return !(await getProperty(clearButton, 'hidden'));
+    };
+
+    it('should show clear button on keyboard typed input.value is not empty', async () => {
       await initTextField({ type: 'search' });
       const input = await getInput();
-      const clearButton = await getToggleOrClearButton();
 
-      expect(await getProperty(clearButton, 'hidden')).toBe(true);
+      expect(await isClearButtonVisible()).toBe(false);
 
       await input.focus();
       await page.keyboard.type('search-term');
       await waitForStencilLifecycle(page);
 
-      expect(await getProperty(clearButton, 'hidden')).toBe(false);
+      expect(await isClearButtonVisible()).toBe(true);
+    });
+
+    it('should show clear button on programmatically set input.value', async () => {
+      await initTextField({ type: 'search' });
+      const input = await getInput();
+
+      expect(await isClearButtonVisible()).toBe(false);
+      await setProperty(input, 'value', 'value');
+      await waitForStencilLifecycle(page);
+
+      expect(await isClearButtonVisible()).toBe(true);
     });
 
     it('should reset input value on keydown Escape', async () => {
       await initTextField({ type: 'search' });
       const input = await getInput();
-      const clearButton = await getToggleOrClearButton();
       await input.focus();
       await page.keyboard.type('search-term');
       await waitForStencilLifecycle(page);
 
-      expect(await getProperty(clearButton, 'hidden')).toBe(false);
+      expect(await isClearButtonVisible()).toBe(true);
 
       await page.keyboard.press('Escape');
+      await waitForStencilLifecycle(page);
 
       expect(await getProperty(input, 'value')).toBe('');
-      expect(await getProperty(clearButton, 'hidden')).toBe(true);
+      expect(await isClearButtonVisible()).toBe(false);
     });
 
     it('should reset input value on button click', async () => {
@@ -245,12 +258,13 @@ describe('input type="search"', () => {
       await page.keyboard.type('search-term');
       await waitForStencilLifecycle(page);
 
-      expect(await getProperty(clearButton, 'hidden')).toBe(false);
+      expect(await isClearButtonVisible()).toBe(true);
 
       await clearButton.click();
+      await waitForStencilLifecycle(page);
 
       expect(await getProperty(input, 'value')).toBe('');
-      expect(await getProperty(clearButton, 'hidden')).toBe(true);
+      expect(await isClearButtonVisible()).toBe(false);
     });
   });
 
