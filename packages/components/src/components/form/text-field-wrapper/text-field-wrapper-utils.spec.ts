@@ -359,5 +359,6 @@ describe('addInputEventListenerForSearch()', () => {
     inputElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
     expect(inputElement.value).toBe('search-term');
     expect(spy).not.toBeCalledWith(new Event('input'));
+    expect(spy).toBeCalledTimes(2); // dispatchEvent for keydown
   });
 });
