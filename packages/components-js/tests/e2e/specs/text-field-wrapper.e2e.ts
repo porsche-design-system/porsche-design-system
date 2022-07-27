@@ -174,6 +174,10 @@ describe('input type="search"', () => {
       expect(await getProperty(input, 'value')).toBe('');
       expect(inputEvents).toBe(1);
 
+      await page.keyboard.press('Escape');
+      await waitForEventSerialization(page);
+      expect(inputEvents).toBe(1);
+
       await setProperty(input, 'value', 'value');
       await page.mouse.click(90, 25);
       await waitForEventSerialization(page);
@@ -193,6 +197,10 @@ describe('input type="search"', () => {
       await page.keyboard.press('Escape');
       await waitForEventSerialization(page);
       expect(await getProperty(input, 'value')).toBe('');
+      expect(inputEvents).toBe(1);
+
+      await page.keyboard.press('Escape');
+      await waitForEventSerialization(page);
       expect(inputEvents).toBe(1);
 
       await setProperty(input, 'value', 'value');
