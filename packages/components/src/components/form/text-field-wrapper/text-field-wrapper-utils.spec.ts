@@ -12,6 +12,7 @@ import {
   isWithinForm,
   isType,
   addInputEventListenerForSearch,
+  dispatchInputEvent,
 } from './text-field-wrapper-utils';
 import * as textFieldWrapperUtils from './text-field-wrapper-utils';
 import * as getClosestHTMLElementUtils from '../../../utils/dom/getClosestHTMLElement';
@@ -330,30 +331,63 @@ describe('addInputEventListenerForSearch()', () => {
     expect(callback).toBeCalledTimes(1);
   });
 
-  it('should on keydown event for Escape key reset input.value and emit input event', () => {
+  it('should if input.value is not empty on keydown event for Escape key, call event.preventDefault(), reset input.value, call dispatchInputEvent() with correct parameter', () => {
     const inputElement = getInputElement();
     inputElement.value = 'search-term';
-    const spy = jest.spyOn(inputElement, 'dispatchEvent');
-
     addInputEventListenerForSearch(inputElement, jest.fn());
-    inputElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+
+    const event = new KeyboardEvent('keydown', { key: 'Escape' });
+    const spyPreventDefault = jest.spyOn(event, 'preventDefault');
+    const spyDispatchInputEvent = jest.spyOn(textFieldWrapperUtils, 'dispatchInputEvent');
+    inputElement.dispatchEvent(event);
+
+    expect(spyPreventDefault).toBeCalled();
     expect(inputElement.value).toBe('');
-    expect(spy).toBeCalledWith(new Event('input'));
+    expect(spyDispatchInputEvent).toBeCalledWith(event.target);
   });
 
-  it('should not reset input.value and not emit input event on keydown event for other keys than Escape', () => {
+  it('should not if input.value is empty on keydown event for Escape key call event.preventDefault(), reset input.value and call dispatchInputEvent()', () => {
     const inputElement = getInputElement();
-    inputElement.value = 'search-term';
-    const spy = jest.spyOn(inputElement, 'dispatchEvent');
+    inputElement.value = '';
     addInputEventListenerForSearch(inputElement, jest.fn());
 
-    inputElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'A' }));
-    expect(inputElement.value).toBe('search-term');
-    expect(spy).not.toBeCalledWith(new Event('input'));
+    const event = new KeyboardEvent('keydown', { key: 'Escape' });
+    const spyPreventDefault = jest.spyOn(event, 'preventDefault');
+    const spyDispatchInputEvent = jest.spyOn(textFieldWrapperUtils, 'dispatchInputEvent');
+    inputElement.dispatchEvent(event);
 
-    inputElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+    expect(spyPreventDefault).not.toBeCalled();
+    expect(inputElement.value).toBe('');
+    expect(spyDispatchInputEvent).not.toBeCalled();
+  });
+
+  it('should not emit input event on keydown event for other keys than Escape, not call event.preventDefault(), not reset input.value and not call dispatchInputEvent()', () => {
+    const inputElement = getInputElement();
+    inputElement.value = 'search-term';
+    addInputEventListenerForSearch(inputElement, jest.fn());
+
+    const event1 = new KeyboardEvent('keydown', { key: 'A' });
+    const event2 = new KeyboardEvent('keydown', { key: 'Enter' });
+    const spyPreventDefaultEvent1 = jest.spyOn(event1, 'preventDefault');
+    const spyPreventDefaultEvent2 = jest.spyOn(event2, 'preventDefault');
+    const spyDispatchInputEvent = jest.spyOn(textFieldWrapperUtils, 'dispatchInputEvent');
+
+    inputElement.dispatchEvent(event1);
+    inputElement.dispatchEvent(event2);
+
+    expect(spyPreventDefaultEvent1).not.toBeCalled();
+    expect(spyPreventDefaultEvent2).not.toBeCalled();
     expect(inputElement.value).toBe('search-term');
-    expect(spy).not.toBeCalledWith(new Event('input'));
-    expect(spy).toBeCalledTimes(2); // dispatchEvent for keydown
+    expect(spyDispatchInputEvent).not.toBeCalled();
+  });
+});
+
+describe('dispatchInputEvent()', () => {
+  it('should call element.dispatchEvent() with correct parameters', () => {
+    const inputElement = getInputElement();
+    const spy = jest.spyOn(inputElement, 'dispatchEvent');
+    dispatchInputEvent(inputElement);
+
+    expect(spy).toBeCalled();
   });
 });
