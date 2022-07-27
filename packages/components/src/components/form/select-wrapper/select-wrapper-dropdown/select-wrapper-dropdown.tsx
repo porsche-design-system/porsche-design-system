@@ -291,7 +291,6 @@ export class SelectWrapperDropdown {
         }
         break;
       case 'Escape':
-      case 'Esc':
       case 'Tab':
         this.setDropdownVisibility('hide');
         this.resetHighlightedToSelectedOptionMaps();
