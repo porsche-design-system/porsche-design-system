@@ -76,7 +76,10 @@ export const TabsPage = (): JSX.Element => {
         </PTabs>
       </div>
 
-      <div className="playground light" title="should render tabs size medium with last tab selected on light background">
+      <div
+        className="playground light"
+        title="should render tabs size medium with last tab selected on light background"
+      >
         <PTabs activeTabIndex={6} size="medium">
           <PTabsItem label="Tab 1">Tab Content 1</PTabsItem>
           <PTabsItem label="Tab 2">Tab Content 2</PTabsItem>
@@ -100,8 +103,11 @@ export const TabsPage = (): JSX.Element => {
         </PTabs>
       </div>
 
-      <div className="playground light" title="should render tabs-bar size BreakpointCustomizable on light background">
-        <PTabs activeTabIndex={9} size={{ base: 'small', xs: 'small', s: 'medium', m: 'small', l: 'medium', xl: 'small' }}>
+      <div className="playground light" title="should render tabs size BreakpointCustomizable on light background">
+        <PTabs
+          activeTabIndex={9}
+          size={{ base: 'small', xs: 'small', s: 'medium', m: 'small', l: 'medium', xl: 'small' }}
+        >
           <PTabsItem label="Tab One">Tab Content 1</PTabsItem>
           <PTabsItem label="Tab Two">Tab Content 2</PTabsItem>
           <PTabsItem label="Tab Three">Tab Content 3</PTabsItem>
@@ -173,7 +179,10 @@ export const TabsPage = (): JSX.Element => {
         </PTabs>
       </div>
 
-      <div className="playground light surface" title="should render tabs gradientColorScheme surface on light background">
+      <div
+        className="playground light surface"
+        title="should render tabs gradientColorScheme surface on light background"
+      >
         <PTabs gradientColorScheme="surface">
           <PTabsItem label="Tab 1">Tab Content 1</PTabsItem>
           <PTabsItem label="Tab 2">Tab Content 2</PTabsItem>
@@ -185,7 +194,10 @@ export const TabsPage = (): JSX.Element => {
         </PTabs>
       </div>
 
-      <div className="playground dark surface" title="should render tabs gradientColorScheme surface on dark background">
+      <div
+        className="playground dark surface"
+        title="should render tabs gradientColorScheme surface on dark background"
+      >
         <PTabs theme="dark" gradientColorScheme="surface">
           <PTabsItem label="Tab 1">Tab Content 1</PTabsItem>
           <PTabsItem label="Tab 2">Tab Content 2</PTabsItem>

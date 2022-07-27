@@ -242,7 +242,7 @@ describe('chunk content', () => {
       }
     );
 
-    it.each(chunkFileNames.filter((x) => x.includes('scroller')))(
+    it.each(chunkFileNames.filter((x) => x.includes('accordion') || x.includes('scroller')))(
       'should contain ResizeObserver in %s',
       (chunkFileName) => {
         const content = getChunkContent(chunkFileName);
