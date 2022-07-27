@@ -1,14 +1,14 @@
 import { TabsBar } from './tabs-bar';
 import * as tabsBarUtils from './tabs-bar-utils';
-import * as accordionUtils from '../../content/accordion/accordion-utils';
+import * as resizeObserverUtils from '../../../utils/resize-observer';
 import * as childrenObserverUtils from '../../../utils/children-observer';
-import { isResizeObserverDefined, useMutationObserverFallbackOverride } from '../../content/accordion/accordion-utils';
+import { isResizeObserverDefined, useResizeObserverFallbackOverride } from '../../../utils/resize-observer';
 
 jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
 
 afterEach(() => {
-  useMutationObserverFallbackOverride(!isResizeObserverDefined());
+  useResizeObserverFallbackOverride(!isResizeObserverDefined());
 });
 
 describe('connectedCallback', () => {
@@ -29,12 +29,12 @@ describe('connectedCallback', () => {
 
     component.connectedCallback();
 
-    expect(childrenObserverUtilsSpy).toBeCalledWith(host, expect.anything());
+    expect(childrenObserverUtilsSpy).toBeCalledWith(host, expect.any(Function));
   });
 
   it('should not add resize event listener to window if ResizeObserver is available', () => {
     const component = new TabsBar();
-    const spy = jest.spyOn(accordionUtils, 'observeWindowResize');
+    const spy = jest.spyOn(resizeObserverUtils, 'observeWindowResize');
 
     component.connectedCallback();
 
@@ -42,22 +42,33 @@ describe('connectedCallback', () => {
     expect(spy).not.toBeCalled();
   });
 
-  it('should add resize event listener to window if ResizeObserver is unavailable', () => {
-    useMutationObserverFallbackOverride(true);
-
-    const utilsSpy = jest.spyOn(accordionUtils, 'mutationObserverFallback');
-
+  it('should not add resize event listener to window if size is not BreakpointCustomizable ', () => {
+    const utilsSpy = jest.spyOn(resizeObserverUtils, 'resizeObserverFallback');
+    const host = document.createElement('p-tabs-bar');
     const component = new TabsBar();
-    component.host = document.createElement('p-tabs-bar');
+    component.host = host;
     component.connectedCallback();
 
-    expect(utilsSpy).toBeCalledWith(component, expect.anything());
+    expect(utilsSpy).not.toBeCalled();
+  });
+
+  it('should add resize event listener to window if size is BreakpointCustomizable and ResizeObserver is unavailable', () => {
+    const utilsSpy = jest.spyOn(resizeObserverUtils, 'resizeObserverFallback');
+    useResizeObserverFallbackOverride(true);
+
+    const host = document.createElement('p-tabs-bar');
+    const component = new TabsBar();
+    component.host = host;
+    component.size = "{base: 'small', m: 'medium'}";
+    component.connectedCallback();
+
+    expect(utilsSpy).toBeCalledWith(host, expect.any(Function));
   });
 });
 
 describe('componentDidLoad', () => {
   it('should call defineHTMLElements()', () => {
-    const spy = jest.spyOn(accordionUtils, 'observeWindowResize');
+    const spy = jest.spyOn(resizeObserverUtils, 'observeWindowResize');
 
     const component = new TabsBar();
     const scroller = document.createElement('p-scroller');
@@ -79,23 +90,34 @@ describe('componentDidLoad', () => {
     expect(spy).toBeCalledWith(undefined, 0);
   });
 
-  it('should call observeResize() with correct parameters if ResizeObserver is available', () => {
-    const spy = jest.spyOn(accordionUtils, 'observeResize');
+  it('should call observeResize() with correct parameters if size is BreakpointCustomizable and ResizeObserver is available', () => {
+    const spy = jest.spyOn(resizeObserverUtils, 'observeResize');
     const component = new TabsBar();
     const scroller = document.createElement('p-scroller');
+    component.size = "{base: 'small', m: 'medium'}";
     component.host = document.createElement('p-tabs-bar');
-    component.host.attachShadow({ mode: 'open' });
     component['scrollerElement'] = scroller;
 
     component.componentDidLoad();
 
-    expect(spy).toBeCalledWith(scroller, expect.anything(), { box: 'border-box' });
+    expect(spy).toBeCalledWith(scroller, expect.any(Function), { box: 'border-box' });
+  });
+
+  it('should not call observeResize() if size is not BreakpointCustomizable', () => {
+    const spy = jest.spyOn(resizeObserverUtils, 'observeResize');
+    const component = new TabsBar();
+    const scroller = document.createElement('p-scroller');
+    component['scrollerElement'] = scroller;
+
+    component.componentDidLoad();
+
+    expect(spy).not.toBeCalled();
   });
 });
 
 describe('componentDidRender', () => {
   it('should call setBarStyle()', () => {
-    useMutationObserverFallbackOverride(true);
+    useResizeObserverFallbackOverride(true);
 
     const component = new TabsBar();
     const spy = jest.spyOn(component, 'setBarStyle' as any);
@@ -118,24 +140,53 @@ describe('componentDidRender', () => {
 });
 
 describe('disconnectedCallback', () => {
-  it('should remove resize event listener if ResizeObserver is unavailable', () => {
-    useMutationObserverFallbackOverride(true);
+  // it('should remove resize event listener if size is BreakpointCustomizable and ResizeObserver is unavailable', () => {
+  //   useResizeObserverFallbackOverride(true);
+  //
+  //   const utilsSpy = jest.spyOn(resizeObserverUtils, 'removeResizeObserverFallback');
+  //
+  //   const component = new TabsBar();
+  //   component.host = document.createElement('p-tabs-bar');
+  //   component.size = "{base: 'small', m: 'medium'}";
+  //   component.disconnectedCallback();
+  //
+  //   expect(utilsSpy).toBeCalledWith(component.host);
+  // });
+  //
+  // it('should not remove resize event listener if size is not BreakpointCustomizable', () => {
+  //   useResizeObserverFallbackOverride(true);
+  //
+  //   const utilsSpy = jest.spyOn(resizeObserverUtils, 'removeResizeObserverFallback');
+  //
+  //   const component = new TabsBar();
+  //   component.host = document.createElement('p-tabs-bar');
+  //   component.size = "{base: 'small', m: 'medium'}";
+  //   component.disconnectedCallback();
+  //
+  //   expect(utilsSpy).toBeCalledWith(component.host);
+  // });
 
-    const utilsSpy = jest.spyOn(accordionUtils, 'removeMutationObserverFallback');
-
+  it('should not call unobserveResize() if size is not BreakpointCustomizable', () => {
+    const spy = jest.spyOn(resizeObserverUtils, 'unobserveResize');
     const component = new TabsBar();
-    component.host = document.createElement('p-tabs-bar');
+
     component.disconnectedCallback();
 
-    expect(utilsSpy).toBeCalledWith(component);
+    expect(spy).not.toBeCalled();
   });
 
-  it('should call unobserveResize() with correct parameter if ResizeObserver is available', () => {
-    const spy = jest.spyOn(accordionUtils, 'unobserveResize');
+  it('should call unobserveResize() with correct parameter if size is BreakpointCustomizable and ResizeObserver is available', () => {
+    const spy = jest.spyOn(resizeObserverUtils, 'unobserveResize');
     const component = new TabsBar();
+    const scroller = document.createElement('p-scroller');
+    component.size = "{base: 'small', m: 'medium'}";
+    component.host = document.createElement('p-tabs-bar');
+    component.host.attachShadow({ mode: 'open' });
+    component['scrollerElement'] = scroller;
+
     component.disconnectedCallback();
 
-    expect(spy).toBeCalledWith(undefined);
+    expect(spy).toBeCalledWith(scroller);
   });
 
   it('should call unobserveChildren()', () => {

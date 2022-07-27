@@ -8,6 +8,7 @@ import {
   getPrefixedTagNames,
   getScrollActivePosition,
   observeChildren,
+  parseJSON,
   setAttribute,
   unobserveChildren,
   validateProps,
@@ -28,12 +29,11 @@ import { THEMES_EXTENDED_ELECTRIC } from '../../../types';
 import type { Direction } from '../../common/scroller/scroller-utils';
 import { getScrollerElements, GRADIENT_COLOR_THEMES } from '../../common/scroller/scroller-utils';
 import {
-  mutationObserverFallback,
+  resizeObserverFallback,
   observeResize,
-  removeMutationObserverFallback,
   unobserveResize,
-  useMutationObserverFallback,
-} from '../../content/accordion/accordion-utils';
+  useResizeObserverFallback,
+} from '../../../utils/resize-observer';
 
 const propTypes: PropTypes<typeof TabsBar> = {
   size: AllowedTypes.breakpoint<TabSize>(TAB_SIZES),
@@ -97,11 +97,13 @@ export class TabsBar {
       this.setBarStyle();
       this.setAccessibilityAttributes();
     });
-    if (useMutationObserverFallback) {
-      mutationObserverFallback(this, () => {
-        this.setBarStyle();
-        this.scrollActiveTabIntoView(false);
-      });
+    if (this.isSizeBreakpointCustomizable()) {
+      if (useResizeObserverFallback) {
+        resizeObserverFallback(this.host, () => {
+          this.setBarStyle();
+          this.scrollActiveTabIntoView(false);
+        });
+      }
     }
   }
 
@@ -116,8 +118,7 @@ export class TabsBar {
     }
 
     this.addEventListeners();
-
-    if (!useMutationObserverFallback) {
+    if (this.isSizeBreakpointCustomizable()) {
       observeResize(
         this.scrollerElement,
         () => {
@@ -145,9 +146,7 @@ export class TabsBar {
   }
 
   public disconnectedCallback(): void {
-    if (useMutationObserverFallback) {
-      removeMutationObserverFallback(this);
-    } else {
+    if (this.isSizeBreakpointCustomizable()) {
       unobserveResize(this.scrollerElement);
     }
     unobserveChildren(this.host);
@@ -279,4 +278,5 @@ export class TabsBar {
   private setBarStyle = (): void => {
     setBarStyle(this.tabElements, this.activeTabIndex, this.barElement, this.prevActiveTabIndex);
   };
+  private isSizeBreakpointCustomizable = () => typeof parseJSON(this.size as any) === 'object';
 }

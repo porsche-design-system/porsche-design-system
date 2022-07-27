@@ -9,15 +9,17 @@ import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
 import {
   ACCORDION_SIZES,
   getContentHeight,
-  mutationObserverFallback,
-  observeResize,
-  removeMutationObserverFallback,
   setCollapsibleElementHeight,
-  unobserveResize,
-  useMutationObserverFallback,
   warnIfCompactAndSizeIsSet,
 } from './accordion-utils';
 import { getComponentCss } from './accordion-styles';
+import {
+  resizeObserverFallback,
+  observeResize,
+  removeResizeObserverFallback,
+  unobserveResize,
+  useResizeObserverFallback,
+} from '../../../utils/resize-observer';
 
 const propTypes: PropTypes<typeof Accordion> = {
   size: AllowedTypes.oneOf<AccordionSize>(ACCORDION_SIZES),
@@ -66,8 +68,8 @@ export class Accordion {
   }
 
   public connectedCallback(): void {
-    if (useMutationObserverFallback) {
-      mutationObserverFallback(this, this.setContentHeight);
+    if (useResizeObserverFallback) {
+      resizeObserverFallback(this.host, this.setContentHeight, true);
     }
   }
 
@@ -76,7 +78,7 @@ export class Accordion {
   }
 
   public componentDidLoad(): void {
-    if (!useMutationObserverFallback) {
+    if (!useResizeObserverFallback) {
       observeResize(
         this.content,
         ({ contentRect }) => {
@@ -94,14 +96,14 @@ export class Accordion {
   }
 
   public componentDidRender(): void {
-    if (useMutationObserverFallback) {
+    if (useResizeObserverFallback) {
       this.contentHeight = getContentHeight(this.content.getBoundingClientRect(), this.compact);
     }
   }
 
   public disconnectedCallback(): void {
-    if (useMutationObserverFallback) {
-      removeMutationObserverFallback(this);
+    if (useResizeObserverFallback) {
+      removeResizeObserverFallback(this.host, true);
     } else {
       unobserveResize(this.content);
     }
