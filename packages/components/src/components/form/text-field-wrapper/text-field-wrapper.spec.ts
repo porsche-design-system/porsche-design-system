@@ -2,16 +2,18 @@ import * as textFieldWrapperUtils from './text-field-wrapper-utils';
 import { TextFieldWrapper } from './text-field-wrapper';
 import * as a11yUtils from '../../../utils/a11y/a11y';
 import * as getOnlyChildOfKindHTMLElementOrThrowUtils from '../../../utils/validation/getOnlyChildOfKindHTMLElementOrThrow';
+import * as propertyObserverUtils from '../../../utils/property-observer';
 
 jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
 
+const mockGetOnlyChildOfKindHTMLElementOrThrow = (input: HTMLInputElement) =>
+  jest.spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow').mockReturnValue(input);
+
 describe('componentWillLoad', () => {
   it('should call isType() with correct parameters and set isSearch', () => {
     const input = document.createElement('input');
-    jest
-      .spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow')
-      .mockReturnValue(input);
+    mockGetOnlyChildOfKindHTMLElementOrThrow(input);
 
     const component = new TextFieldWrapper();
     const spy = jest.spyOn(textFieldWrapperUtils, 'isType');
@@ -30,9 +32,7 @@ describe('componentWillLoad', () => {
 
   it('should call isType() with correct parameters and set isPassword', () => {
     const input = document.createElement('input');
-    jest
-      .spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow')
-      .mockReturnValue(input);
+    mockGetOnlyChildOfKindHTMLElementOrThrow(input);
 
     const component = new TextFieldWrapper();
     const spy = jest.spyOn(textFieldWrapperUtils, 'isType');
@@ -51,9 +51,7 @@ describe('componentWillLoad', () => {
 
   it('should call isWithinForm() and set isWithinForm', () => {
     const input = document.createElement('input');
-    jest
-      .spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow')
-      .mockReturnValue(input);
+    mockGetOnlyChildOfKindHTMLElementOrThrow(input);
 
     const component = new TextFieldWrapper();
     const spy = jest.spyOn(textFieldWrapperUtils, 'isWithinForm');
@@ -69,11 +67,27 @@ describe('componentWillLoad', () => {
     expect(component['isWithinForm']).toBe(false);
   });
 
-  it('should set isClearable based on input.value', () => {
+  it('should not set isClearable when isSearch is false', () => {
     const input = document.createElement('input');
-    jest
-      .spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow')
-      .mockReturnValue(input);
+    input.value = 'search';
+    mockGetOnlyChildOfKindHTMLElementOrThrow(input);
+
+    // sets value of this.isSearch
+    jest.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(false);
+
+    const component = new TextFieldWrapper();
+    expect(component['isClearable']).toBe(false);
+
+    component.componentWillLoad();
+    expect(component['isClearable']).toBe(false);
+  });
+
+  it('should set isClearable based on input.value when isSearch is true', () => {
+    const input = document.createElement('input');
+    mockGetOnlyChildOfKindHTMLElementOrThrow(input);
+
+    // sets value of this.isSearch
+    jest.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(true);
 
     const component = new TextFieldWrapper();
     expect(component['isClearable']).toBe(false);
@@ -87,14 +101,26 @@ describe('componentWillLoad', () => {
     expect(component['isClearable']).toBe(false);
   });
 
+  it('should call observeProperties() with correct parameters when isSearch is true', () => {
+    const input = document.createElement('input');
+    mockGetOnlyChildOfKindHTMLElementOrThrow(input);
+
+    // sets value of this.isSearch
+    jest.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(true);
+    const spy = jest.spyOn(propertyObserverUtils, 'observeProperties');
+
+    const component = new TextFieldWrapper();
+    component.componentWillLoad();
+
+    expect(spy).toBeCalledWith(component['input'], ['value'], expect.any(Function));
+  });
+
   // TODO: prove connection between util actually setting member value
   it('should call hasCounterAndIsTypeText() with correct parameter and set hasCounter', () => {
     const input = document.createElement('input');
     input.type = 'text';
     input.maxLength = 20;
-    jest
-      .spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow')
-      .mockReturnValue(input);
+    mockGetOnlyChildOfKindHTMLElementOrThrow(input);
 
     const spy = jest.spyOn(textFieldWrapperUtils, 'hasCounterAndIsTypeText');
     const component = new TextFieldWrapper();
@@ -111,9 +137,7 @@ describe('componentWillLoad', () => {
     const input = document.createElement('input');
     input.type = 'text';
     input.maxLength = 50;
-    jest
-      .spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow')
-      .mockReturnValue(input);
+    mockGetOnlyChildOfKindHTMLElementOrThrow(input);
 
     const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber');
     const component = new TextFieldWrapper();
@@ -131,9 +155,7 @@ describe('componentWillLoad', () => {
     const input = document.createElement('input');
     input.type = 'text';
     input.maxLength = 50;
-    jest
-      .spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow')
-      .mockReturnValue(input);
+    mockGetOnlyChildOfKindHTMLElementOrThrow(input);
 
     const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber');
     const component = new TextFieldWrapper();
@@ -156,10 +178,7 @@ describe('componentWillLoad', () => {
       if (type === 'text') {
         Object.defineProperty(input, 'maxLength', { value: -1 }); // jsdom defaults to 524288 which is 512 KB
       }
-
-      jest
-        .spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow')
-        .mockReturnValue(input);
+      mockGetOnlyChildOfKindHTMLElementOrThrow(input);
 
       const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber');
       const component = new TextFieldWrapper();
