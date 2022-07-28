@@ -18,6 +18,7 @@ describe('connectedCallback', () => {
 
     component.connectedCallback();
 
+    expect(spy).toBeCalledWith();
     expect(spy).toBeCalledTimes(1);
   });
 
@@ -75,6 +76,7 @@ describe('componentDidLoad', () => {
 
     component.componentDidLoad();
 
+    expect(spy).toBeCalledWith();
     expect(spy).toBeCalledTimes(1);
   });
 
@@ -121,6 +123,7 @@ describe('componentDidRender', () => {
 
     component.componentDidRender();
 
+    expect(spy).toBeCalledWith();
     expect(spy).toBeCalledTimes(1);
   });
 
@@ -128,15 +131,17 @@ describe('componentDidRender', () => {
     const host = document.createElement('p-tabs-bar');
     const component = new TabsBar();
     component.host = host;
-    const spy1 = jest.spyOn(component, 'setAccessibilityAttributes' as any);
+    const spy = jest.spyOn(component, 'setAccessibilityAttributes' as any);
 
     component.componentDidRender();
 
-    expect(spy1).toBeCalledTimes(1);
+    expect(spy).toBeCalledWith();
+    expect(spy).toBeCalledTimes(1);
   });
 });
 
 describe('disconnectedCallback', () => {
+  // TODO check if needed
   // it('should remove resize event listener if size is BreakpointCustomizable and ResizeObserver is unavailable', () => {
   //   useResizeObserverFallbackOverride(true);
   //
