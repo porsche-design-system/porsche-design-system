@@ -35,7 +35,7 @@ export const getMinifiedPorscheNextFontFaceCss = (opts: GetMinifiedPorscheNextFo
         fontWeight: fontWeight[camelCase(weight) as keyof typeof fontWeight],
         src: `url('${cdnUrlMap[cdn]}/${resource.woff2}') format('woff2'), url('${cdnUrlMap[cdn]}/${resource.woff}') format('woff')`,
         unicodeRange: unicodeRangeMap[charset.toLowerCase() as keyof typeof unicodeRangeMap],
-        fontDisplay: 'block',
+        fontDisplay: 'swap',
       };
     }),
   };

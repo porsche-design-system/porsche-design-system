@@ -29,7 +29,7 @@ describe('getByRoleShadowed()', () => {
     expect(getByRoleShadowed('button')).toBeInTheDocument();
   });
 
-  it('should work for nested PButton within PTextFieldWrapper', async () => {
+  it('should work for nested button within PTextFieldWrapper', async () => {
     const { container } = render(
       <PTextFieldWrapper>
         <input type="password" />

@@ -8,12 +8,10 @@ import type {
   GridWrapType,
 } from './grid-utils';
 import type { GetJssStyleFunction } from '../../../../utils';
-import { buildResponsiveStyles, getCss, mergeDeep, throwIfValueIsInvalid } from '../../../../utils';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../../../utils';
 import { addImportantToEachRule, pxToRemWithUnit } from '../../../../styles';
-import { GRID_GUTTERS } from './grid-utils';
 
 const getGutterJssStyle: GetJssStyleFunction = (gutter: GridGutterType): JssStyle => {
-  throwIfValueIsInvalid(gutter, GRID_GUTTERS, 'gutter');
   const gutterRem = `-${pxToRemWithUnit(gutter / 2)}`;
 
   return {

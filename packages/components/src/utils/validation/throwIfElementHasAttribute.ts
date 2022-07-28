@@ -1,5 +1,5 @@
-import { getAttribute } from './getAttribute';
-import { hasAttribute } from './hasAttribute';
+import { getAttribute } from '../dom/getAttribute';
+import { hasAttribute } from '../dom/hasAttribute';
 
 export const throwIfElementHasAttribute = (el: HTMLElement, name: string): void => {
   if (hasAttribute(el, name)) {

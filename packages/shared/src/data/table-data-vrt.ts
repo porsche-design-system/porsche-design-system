@@ -2,9 +2,9 @@ export type HeadVrt = {
   id: string;
   name: string;
   hideLabel?: boolean;
-  active: boolean;
+  active?: boolean;
   multiline?: boolean;
-  direction: 'asc' | 'desc';
+  direction?: 'asc' | 'desc';
   style?: React.CSSProperties;
 };
 

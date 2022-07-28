@@ -1,21 +1,38 @@
 import type {
-  SelectedAriaAttributes,
   BreakpointCustomizable,
   ButtonType,
   ButtonVariant,
   IconName,
+  SelectedAriaAttributes,
   ThemeExtendedElectric,
 } from '../../../types';
-import type { ButtonAriaAttributes } from '../../../utils';
-import { JSX, Component, Prop, h, Element, Listen } from '@stencil/core';
+import type { ButtonAriaAttributes, PropTypes } from '../../../utils';
 import {
+  AllowedTypes,
   attachComponentCss,
+  BUTTON_ARIA_ATTRIBUTES,
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
+  validateProps,
 } from '../../../utils';
+import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
 import { getButtonAriaAttributes } from './button-utils';
 import { getComponentCss } from './button-styles';
+import { BUTTON_TYPES, LINK_BUTTON_VARIANTS, THEMES_EXTENDED_ELECTRIC } from '../../../types';
+
+const propTypes: PropTypes<typeof Button> = {
+  type: AllowedTypes.oneOf<ButtonType>(BUTTON_TYPES),
+  variant: AllowedTypes.oneOf<ButtonVariant>(LINK_BUTTON_VARIANTS),
+  tabbable: AllowedTypes.boolean,
+  disabled: AllowedTypes.boolean,
+  loading: AllowedTypes.boolean,
+  icon: AllowedTypes.string,
+  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  iconSource: AllowedTypes.string,
+  hideLabel: AllowedTypes.breakpoint('boolean'),
+  aria: AllowedTypes.aria<ButtonAriaAttributes>(BUTTON_ARIA_ATTRIBUTES),
+};
 
 @Component({
   tag: 'p-button',
@@ -76,6 +93,7 @@ export class Button {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.variant, this.hideLabel, this.isDisabledOrLoading, this.theme);
   }
 

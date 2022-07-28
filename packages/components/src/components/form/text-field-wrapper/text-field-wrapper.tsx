@@ -1,8 +1,9 @@
-import { Component, Element, forceUpdate, Host, JSX, Prop, State, h } from '@stencil/core';
+import { Component, Element, forceUpdate, h, Host, JSX, Prop, State } from '@stencil/core';
 import {
+  AllowedTypes,
   attachComponentCss,
   attachSlottedCss,
-  getHTMLElementAndThrowIfUndefined,
+  getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   handleButtonEvent,
   hasDescription,
@@ -12,8 +13,11 @@ import {
   observeAttributes,
   setAriaAttributes,
   unobserveAttributes,
+  validateProps,
 } from '../../../utils';
+import type { PropTypes } from '../../../utils';
 import type { BreakpointCustomizable, FormState } from '../../../types';
+import { FORM_STATES } from '../../../types';
 import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
@@ -23,8 +27,20 @@ import {
   hasUnitAndIsTypeTextOrNumber,
   setInputStyles,
   throwIfUnitLengthExceeded,
+  UNIT_POSITIONS,
 } from './text-field-wrapper-utils';
 import { Required } from '../../common/required/required';
+
+const propTypes: PropTypes<typeof TextFieldWrapper> = {
+  label: AllowedTypes.string,
+  unit: AllowedTypes.string,
+  unitPosition: AllowedTypes.oneOf<TextFieldWrapperUnitPosition>(UNIT_POSITIONS),
+  description: AllowedTypes.string,
+  state: AllowedTypes.oneOf<FormState>(FORM_STATES),
+  message: AllowedTypes.string,
+  hideLabel: AllowedTypes.breakpoint('boolean'),
+  showCharacterCount: AllowedTypes.boolean,
+};
 
 @Component({
   tag: 'p-text-field-wrapper',
@@ -73,7 +89,7 @@ export class TextFieldWrapper {
   }
 
   public componentWillLoad(): void {
-    this.input = getHTMLElementAndThrowIfUndefined(
+    this.input = getOnlyChildOfKindHTMLElementOrThrow(
       this.host,
       ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password']
         .map((type) => `input[type=${type}]`)
@@ -98,6 +114,7 @@ export class TextFieldWrapper {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     throwIfUnitLengthExceeded(this.unit);
     attachComponentCss(
       this.host,
