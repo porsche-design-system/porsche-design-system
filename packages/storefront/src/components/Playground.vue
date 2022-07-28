@@ -41,6 +41,7 @@
           :theme="theme"
           :framework="activeFramework"
           :has-framework-markup="hasFrameworkMarkup"
+          :additional-dependencies="additionalDependencies"
         ></CodeEditor>
       </template>
     </div>
@@ -90,6 +91,7 @@
     @Prop({ default: () => ({}) }) public config!: Partial<PlaygroundConfig>;
     @Prop({ default: () => ({}) }) public frameworkMarkup!: FrameworkMarkup;
     @Prop({ default: '' }) public markup!: string;
+    @Prop({ default: '' }) public additionalDependencies?: string[];
 
     public mounted(): void {
       this.syncThemeIntoDemoComponents();

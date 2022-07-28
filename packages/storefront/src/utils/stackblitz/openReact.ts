@@ -1,11 +1,20 @@
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
-import { devDependencies as reactDevDependencies } from '../../../../components-react/package.json';
-import { themeDarkBodyStyles } from '@/utils/stackblitz/openInStackBlitz';
-import type { StackBlitzFrameworkOpts } from '@/utils/stackblitz/openInStackBlitz';
+import {
+  devDependencies as reactDevDependencies,
+  dependencies as reactDependencies,
+} from '../../../../components-react/package.json';
+import { getAdditionalDependencies, themeDarkBodyStyles } from '@/utils/stackblitz/openInStackBlitz';
+import type { StackBlitzFrameworkOpts, DependenciesMap } from '@/utils/stackblitz/openInStackBlitz';
 import sdk from '@stackblitz/sdk';
 
 export const openReact = (props: StackBlitzFrameworkOpts): void => {
-  const { markup, description, title, hasFrameworkMarkup, isThemeDark, componentNames } = props;
+  const { markup, description, title, hasFrameworkMarkup, isThemeDark, componentNames, additionalDependencies } = props;
+
+  const dependenciesMap: DependenciesMap = {
+    IMask: {
+      'react-imask': `${reactDependencies['react-imask']}`,
+    },
+  };
 
   const cleanedFragmentsMarkup = markup.replace(/(<\/?)(>)/g, '$1React.Fragment$2');
 
@@ -57,6 +66,7 @@ root.render(
         '@porsche-design-system/components-react': `${pdsVersion}`,
         '@types/react': `${reactDevDependencies['@types/react']}`,
         '@types/react-dom': `${reactDevDependencies['@types/react-dom']}`,
+        ...getAdditionalDependencies(additionalDependencies, dependenciesMap),
       },
     },
     {
