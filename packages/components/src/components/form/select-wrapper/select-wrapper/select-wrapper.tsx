@@ -18,13 +18,15 @@ import {
   validateProps,
 } from '../../../../utils';
 import type { PropTypes } from '../../../../utils';
-import type { BreakpointCustomizable, FormState, Theme } from '../../../../types';
+import type { BreakpointCustomizable, Theme } from '../../../../types';
 import type { DropdownDirection } from './select-wrapper-utils';
 import { DROPDOWN_DIRECTIONS, isCustomDropdown } from './select-wrapper-utils';
 import { getComponentCss, getSlottedCss } from './select-wrapper-styles';
 import { StateMessage } from '../../../common/state-message/state-message';
 import { Required } from '../../../common/required/required';
-import { FORM_STATES, THEMES } from '../../../../types';
+import { THEMES } from '../../../../types';
+import { FORM_STATES } from '../../form-state';
+import type { FormState } from '../../form-state';
 
 const propTypes: PropTypes<typeof SelectWrapper> = {
   label: AllowedTypes.string,

@@ -16,7 +16,7 @@ import {
 } from './text-field-wrapper-utils';
 import * as textFieldWrapperUtils from './text-field-wrapper-utils';
 import * as getClosestHTMLElementUtils from '../../../utils/dom/getClosestHTMLElement';
-import { FormState } from '../../../types';
+import type { FormState } from '../form-state';
 
 const getInputElement = (): HTMLInputElement => {
   const el = document.createElement('input');

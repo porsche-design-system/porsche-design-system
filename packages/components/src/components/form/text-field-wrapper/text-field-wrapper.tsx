@@ -17,8 +17,9 @@ import {
   validateProps,
 } from '../../../utils';
 import type { PropTypes } from '../../../utils';
-import type { BreakpointCustomizable, FormState } from '../../../types';
-import { FORM_STATES } from '../../../types';
+import type { BreakpointCustomizable } from '../../../types';
+import { FORM_STATES } from '../form-state';
+import type { FormState } from '../form-state';
 import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
