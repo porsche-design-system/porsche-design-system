@@ -23,6 +23,7 @@
 
     stackBlitzIcon = require('../assets/icon-stackblitz.svg');
 
+    // TODO: Redundant, how to improve?
     editInStackBlitz() {
       openInStackBlitz({
         markup: this.markup,
