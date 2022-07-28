@@ -103,7 +103,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="playground light" title="should render tabs size BreakpointCustomizable on light background">
       <p-tabs
         [activeTabIndex]="9"
-        [size]="{ base: 'small', xs: 'small', s: 'medium', m: 'small', l: 'medium', xl: 'small' }"
+        [size]="{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }"
       >
         <p-tabs-item [label]="'Tab One'">Tab Content 1</p-tabs-item>
         <p-tabs-item [label]="'Tab Two'">Tab Content 2</p-tabs-item>

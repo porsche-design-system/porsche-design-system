@@ -103,7 +103,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="playground light" title="should render tabs-bar size BreakpointCustomizable on light background">
       <p-tabs-bar
         [activeTabIndex]="9"
-        [size]="{ base: 'small', xs: 'small', s: 'medium', m: 'small', l: 'medium', xl: 'small' }"
+        [size]="{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }"
       >
         <button [type]="'button'">Tab One</button>
         <button [type]="'button'">Tab Two</button>

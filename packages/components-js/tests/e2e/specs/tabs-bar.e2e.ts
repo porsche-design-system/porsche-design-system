@@ -356,7 +356,7 @@ describe('bar', () => {
       activeTabIndex: 2,
       isWrapped: true,
       otherMarkup: clickHandlerScript,
-      size: "{ base: 'small', xs: 'small', s: 'medium', m: 'small', l: 'medium', xl: 'small' }",
+      size: "{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }",
     });
     const [, , thirdButton] = await getAllButtons();
     const bar = await getBar();
