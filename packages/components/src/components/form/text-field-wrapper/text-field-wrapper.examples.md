@@ -151,7 +151,7 @@ user frustration.
   Keep in mind that the definition of the "locale" in the examples below is a very simple use case. You will probably have to distinguish between more than two scenarios.
 </p-inline-notification>
 
-<Playground :markup="maskedInput" :frameworkMarkup="codeExample" :config="config"></Playground>
+<Playground :markup="maskedInput" :frameworkMarkup="codeExample" :config="config" :additionalDependencies="['IMask']"></Playground>
 
 <script lang="ts">
 import Vue from 'vue';

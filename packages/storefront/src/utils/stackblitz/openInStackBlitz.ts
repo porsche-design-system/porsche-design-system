@@ -11,6 +11,7 @@ type OpenInStackBlitzOpts = {
   framework: Framework;
   theme: Theme;
   hasFrameworkMarkup: boolean;
+  additionalDependencies?: string[];
 };
 
 export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | 'theme'> & {
@@ -24,7 +25,7 @@ export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | '
 export const themeDarkBodyStyles = `body { background: ${themeDark.background.base}; }`;
 
 export const openInStackBlitz = (props: OpenInStackBlitzOpts): void => {
-  const { markup, framework, theme, hasFrameworkMarkup } = props;
+  const { markup, framework, theme, hasFrameworkMarkup, additionalDependencies } = props;
   const convertedMarkup = hasFrameworkMarkup ? markup : convertMarkup(markup, framework);
 
   const pdsComponents = Array.from(markup.matchAll(/<((?:\w|-)+)(?:.|\n)*?>/g) ?? [])
@@ -40,6 +41,7 @@ export const openInStackBlitz = (props: OpenInStackBlitzOpts): void => {
     description: `${pdsComponents[0]} component example`,
     isThemeDark,
     bodyStyles: `body { background: ${themeDark.background.base}; }`,
+    additionalDependencies,
   };
 
   switch (framework) {
@@ -54,3 +56,16 @@ export const openInStackBlitz = (props: OpenInStackBlitzOpts): void => {
       return openVanillaJS(openProps);
   }
 };
+
+export type DependenciesMap = { [key: string]: { [key: string]: string } };
+
+// TODO: unit test
+export const getAdditionalDependencies = (
+  additionalDependencies: string[] | undefined,
+  dependenciesMap: DependenciesMap
+) =>
+  additionalDependencies
+    ? additionalDependencies
+        .map((dep) => dependenciesMap[dep])
+        .reduce((result, current) => Object.assign(result, current), {})
+    : {};

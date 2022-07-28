@@ -8,7 +8,7 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
-  import { Framework, FrameworkMarkup, Theme } from '@/models';
+  import { Framework, Theme } from '@/models';
   import { themeDark } from '@porsche-design-system/utilities-v2';
   import { codePenConfig } from '@/lib/partialResults';
   import { openInStackBlitz } from '@/utils/stackblitz/openInStackBlitz';
@@ -19,6 +19,7 @@
     @Prop({ default: 'light' }) public theme!: Theme;
     @Prop({ default: 'vanilla-js' }) public framework!: Framework;
     @Prop({ default: false }) public hasFrameworkMarkup!: boolean;
+    @Prop({ default: '' }) public additionalDependencies?: string[];
 
     stackBlitzIcon = require('../assets/icon-stackblitz.svg');
 
@@ -29,6 +30,7 @@
         framework: this.framework,
         theme: this.theme,
         hasFrameworkMarkup: this.hasFrameworkMarkup,
+        additionalDependencies: this.additionalDependencies,
       });
     }
 

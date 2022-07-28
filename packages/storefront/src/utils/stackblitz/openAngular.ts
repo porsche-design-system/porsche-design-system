@@ -1,11 +1,19 @@
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
-import { themeDarkBodyStyles } from '@/utils/stackblitz/openInStackBlitz';
-import type { StackBlitzFrameworkOpts } from '@/utils/stackblitz/openInStackBlitz';
+import { getAdditionalDependencies, themeDarkBodyStyles } from '@/utils/stackblitz/openInStackBlitz';
+import type { StackBlitzFrameworkOpts, DependenciesMap } from '@/utils/stackblitz/openInStackBlitz';
 import { paramCase } from 'change-case';
 import sdk from '@stackblitz/sdk';
+import { dependencies as angularDependencies } from '../../../../components-angular/package.json';
 
 export const openAngular = (props: StackBlitzFrameworkOpts): void => {
-  const { markup, description, title, hasFrameworkMarkup, isThemeDark } = props;
+  const { markup, description, title, hasFrameworkMarkup, isThemeDark, additionalDependencies } = props;
+
+  const dependenciesMap: DependenciesMap = {
+    IMask: {
+      imask: `${angularDependencies['angular-imask']}`,
+      'angular-imask': `${angularDependencies['angular-imask']}`,
+    },
+  };
 
   const [, matchedClassName] = markup.match(/export class ([A-z]+) {/) ?? [];
   const className = hasFrameworkMarkup ? matchedClassName : 'AppComponent';
@@ -44,11 +52,12 @@ platformBrowserDynamic()
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { IMaskModule } from 'angular-imask';
 
 import { ${className} } from './app.component';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, PorscheDesignSystemModule.load({ prefix: '' }),],
+  imports: [BrowserModule, FormsModule, IMaskModule, PorscheDesignSystemModule.load({ prefix: '' }),],
   declarations: [${className}],
   bootstrap: [${className}],
 })
@@ -59,6 +68,7 @@ export class AppModule {}`,
     description,
     dependencies: {
       '@porsche-design-system/components-angular': `${pdsVersion}`,
+      ...getAdditionalDependencies(additionalDependencies, dependenciesMap),
     },
   });
 };
