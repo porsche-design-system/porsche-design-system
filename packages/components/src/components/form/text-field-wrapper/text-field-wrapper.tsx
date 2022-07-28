@@ -24,7 +24,6 @@ import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import {
-  addInputEventListenerForCounter,
   addInputEventListenerForSearch,
   dispatchInputEvent,
   hasCounterAndIsTypeText,
@@ -36,6 +35,7 @@ import {
   UNIT_POSITIONS,
 } from './text-field-wrapper-utils';
 import { Required } from '../../common/required/required';
+import { addInputEventListenerForCounter } from '../form-utils';
 
 const propTypes: PropTypes<typeof TextFieldWrapper> = {
   label: AllowedTypes.string,

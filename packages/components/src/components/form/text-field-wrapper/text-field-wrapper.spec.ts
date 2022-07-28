@@ -1,4 +1,5 @@
 import * as textFieldWrapperUtils from './text-field-wrapper-utils';
+import * as formUtils from '../form-utils';
 import { TextFieldWrapper } from './text-field-wrapper';
 import * as a11yUtils from '../../../utils/a11y/a11y';
 import * as getOnlyChildOfKindHTMLElementOrThrowUtils from '../../../utils/validation/getOnlyChildOfKindHTMLElementOrThrow';
@@ -209,7 +210,7 @@ describe('componentWillRender', () => {
 
 describe('componentDidLoad', () => {
   it('should call addInputEventListenerForCounter() with correct parameters if hasCounter is true and isCounterVisible is false', () => {
-    const spy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListenerForCounter');
+    const spy = jest.spyOn(formUtils, 'addInputEventListenerForCounter');
 
     const input = document.createElement('input');
     input.type = 'text';
@@ -229,7 +230,7 @@ describe('componentDidLoad', () => {
   });
 
   it('should call addInputEventListenerForCounter() if hasCounter is true and isCounterVisible is true', () => {
-    const spy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListenerForCounter');
+    const spy = jest.spyOn(formUtils, 'addInputEventListenerForCounter');
 
     const input = document.createElement('input');
     input.type = 'text';

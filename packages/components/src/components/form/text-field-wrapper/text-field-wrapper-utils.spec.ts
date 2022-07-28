@@ -1,13 +1,9 @@
 import {
   getInputPadding,
   setInputStyles,
-  hasCounter,
   throwIfUnitLengthExceeded,
   TextFieldWrapperUnitPosition,
   hasCounterAndIsTypeText,
-  setCounterInnerHtml,
-  addInputEventListenerForCounter,
-  setAriaElementInnerHtml,
   hasUnitAndIsTypeTextOrNumber,
   isWithinForm,
   isType,
@@ -15,6 +11,7 @@ import {
   dispatchInputEvent,
 } from './text-field-wrapper-utils';
 import * as textFieldWrapperUtils from './text-field-wrapper-utils';
+import * as formUtils from '../form-utils';
 import * as getClosestHTMLElementUtils from '../../../utils/dom/getClosestHTMLElement';
 import type { FormState } from '../form-state';
 
@@ -29,26 +26,6 @@ const getCounterElement = (): HTMLSpanElement => {
   return el;
 };
 
-const getAriaElement = (): HTMLSpanElement => {
-  const el = document.createElement('span');
-  el.id = 'ariaElement';
-  return el;
-};
-
-describe('hasCounter()', () => {
-  it('should for defined maxLength return true', () => {
-    const inputElement = getInputElement();
-    inputElement.maxLength = 20;
-    expect(hasCounter(inputElement)).toBe(true);
-  });
-
-  it('should for undefined maxLength return false', () => {
-    const inputElement = getInputElement();
-    Object.defineProperty(inputElement, 'maxLength', { value: -1 }); // jsdom defaults to 524288 which is 512 KB
-    expect(hasCounter(inputElement)).toBe(false);
-  });
-});
-
 describe('hasCounterAndIsTypeText()', () => {
   it('should call isType() with correct parameters', () => {
     const inputElement = getInputElement();
@@ -60,7 +37,7 @@ describe('hasCounterAndIsTypeText()', () => {
 
   it('should call hasCounter() with correct parameters', () => {
     const inputElement = getInputElement();
-    const spy = jest.spyOn(textFieldWrapperUtils, 'hasCounter');
+    const spy = jest.spyOn(formUtils, 'hasCounter');
     hasCounterAndIsTypeText(inputElement);
 
     expect(spy).toBeCalledWith(inputElement);
@@ -69,7 +46,7 @@ describe('hasCounterAndIsTypeText()', () => {
   it('should for input type="text" with maxLength return true', () => {
     const inputElement = getInputElement();
     jest.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(true);
-    jest.spyOn(textFieldWrapperUtils, 'hasCounter').mockReturnValue(true);
+    jest.spyOn(formUtils, 'hasCounter').mockReturnValue(true);
 
     expect(hasCounterAndIsTypeText(inputElement)).toBe(true);
   });
@@ -77,7 +54,7 @@ describe('hasCounterAndIsTypeText()', () => {
   it('should for input type="text" without maxLength return false', () => {
     const inputElement = getInputElement();
     jest.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(true);
-    jest.spyOn(textFieldWrapperUtils, 'hasCounter').mockReturnValue(false);
+    jest.spyOn(formUtils, 'hasCounter').mockReturnValue(false);
 
     expect(hasCounterAndIsTypeText(inputElement)).toBe(false);
   });
@@ -164,43 +141,6 @@ describe('isType()', () => {
   });
 });
 
-describe('setCounterInnerHtml()', () => {
-  it('should set correct character count as innerText on element ', () => {
-    const counterElement = getCounterElement();
-    const inputElement = getInputElement();
-
-    inputElement.maxLength = 20;
-    inputElement.value = 'some';
-    setCounterInnerHtml(inputElement, counterElement);
-    expect(counterElement.innerText).toBe('4/20');
-
-    inputElement.maxLength = 25;
-    inputElement.value = 'Hi';
-    setCounterInnerHtml(inputElement, counterElement);
-    expect(counterElement.innerText).toBe('2/25');
-  });
-});
-
-describe('setAriaElementInnerHtml()', () => {
-  const getAccessibilityMessage = (remainingCharacter: number, maxCharacter: number) =>
-    `You have ${remainingCharacter} out of ${maxCharacter} characters left`;
-
-  it('should set correct character count text for screenreader as innerText on element ', () => {
-    const ariaElement = getAriaElement();
-    const inputElement = getInputElement();
-
-    inputElement.maxLength = 20;
-    inputElement.value = 'some';
-    setAriaElementInnerHtml(inputElement, ariaElement);
-    expect(ariaElement.innerText).toBe(getAccessibilityMessage(16, 20));
-
-    inputElement.maxLength = 25;
-    inputElement.value = 'Hi';
-    setAriaElementInnerHtml(inputElement, ariaElement);
-    expect(ariaElement.innerText).toBe(getAccessibilityMessage(23, 25));
-  });
-});
-
 describe('getInputPadding()', () => {
   it.each<[TextFieldWrapperUnitPosition, FormState, string]>([
     ['prefix', 'none', '0.6875rem 0.6875rem 0.6875rem 3.75rem'],
@@ -239,74 +179,6 @@ describe('throwIfUnitLengthExceeded()', () => {
     expect(() => throwIfUnitLengthExceeded('12345')).not.toThrow();
     expect(() => throwIfUnitLengthExceeded('1')).not.toThrow();
     expect(() => throwIfUnitLengthExceeded('')).not.toThrow();
-  });
-});
-
-describe('addInputEventListenerForCounter()', () => {
-  it('should register event listener on element', () => {
-    const inputElement = getInputElement();
-    const counterElement = getCounterElement();
-    const ariaElement = getAriaElement();
-    const spy = jest.spyOn(inputElement, 'addEventListener');
-
-    addInputEventListenerForCounter(inputElement, ariaElement, counterElement);
-    expect(spy).toBeCalledWith('input', expect.anything());
-  });
-
-  it('should register event listener on element without error when no counterElement is provided', () => {
-    const inputElement = getInputElement();
-    const ariaElement = getAriaElement();
-    const spy = jest.spyOn(inputElement, 'addEventListener');
-    let error = undefined;
-    try {
-      addInputEventListenerForCounter(inputElement, ariaElement);
-    } catch (e) {
-      error = e;
-    }
-    expect(error).toBeUndefined();
-    expect(spy).toBeCalledWith('input', expect.anything());
-  });
-
-  it('should initially call setCounterInnerHtml() and setAriaElementInnerHtml()', () => {
-    const inputElement = getInputElement();
-    const counterElement = getCounterElement();
-    const ariaElement = getAriaElement();
-
-    const setCounterInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCounterInnerHtml');
-    const setAriaElementInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setAriaElementInnerHtml');
-    addInputEventListenerForCounter(inputElement, ariaElement, counterElement);
-
-    expect(setCounterInnerHtmlSpy).toBeCalledWith(inputElement, counterElement);
-    expect(setCounterInnerHtmlSpy).toBeCalledTimes(1);
-
-    expect(setAriaElementInnerHtmlSpy).toBeCalledWith(inputElement, ariaElement);
-    expect(setAriaElementInnerHtmlSpy).toBeCalledTimes(1);
-  });
-
-  it('should on input event call setCounterInnerHtml() and setAriaElementInnerHtml()', () => {
-    const inputElement = getInputElement();
-    const counterElement = getCounterElement();
-    const ariaElement = getAriaElement();
-    const setCounterInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCounterInnerHtml');
-    const setAriaElementInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setAriaElementInnerHtml');
-    addInputEventListenerForCounter(inputElement, ariaElement, counterElement);
-
-    inputElement.dispatchEvent(new Event('input'));
-    expect(setCounterInnerHtmlSpy).toBeCalledWith(inputElement, counterElement);
-    expect(setCounterInnerHtmlSpy).toBeCalledTimes(2);
-    expect(setAriaElementInnerHtmlSpy).toBeCalledWith(inputElement, ariaElement);
-    expect(setAriaElementInnerHtmlSpy).toBeCalledTimes(2);
-  });
-
-  it('should on input event call inputChangeCallback() if supplied', () => {
-    const inputElement = getInputElement();
-    const counterElement = getCounterElement();
-    const ariaElement = getAriaElement();
-    const callback = jest.fn();
-    addInputEventListenerForCounter(inputElement, ariaElement, counterElement, callback);
-
-    inputElement.dispatchEvent(new Event('input'));
-    expect(callback).toBeCalledTimes(1);
   });
 });
 

@@ -1,6 +1,6 @@
 import * as getOnlyChildOfKindHTMLElementOrThrowUtils from '../../../utils/validation/getOnlyChildOfKindHTMLElementOrThrow';
 import { TextareaWrapper } from './textarea-wrapper';
-import * as textFieldWrapperUtils from '../text-field-wrapper/text-field-wrapper-utils';
+import * as formUtils from '../form-utils';
 import * as a11yUtils from '../../../utils/a11y/a11y';
 
 jest.mock('../../../utils/dom');
@@ -14,7 +14,7 @@ describe('componentWillLoad', () => {
       .spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow')
       .mockReturnValue(textarea);
 
-    const spy = jest.spyOn(textFieldWrapperUtils, 'hasCounter');
+    const spy = jest.spyOn(formUtils, 'hasCounter');
     const component = new TextareaWrapper();
 
     expect(component['hasCounter']).toBe(undefined);
@@ -27,7 +27,7 @@ describe('componentWillLoad', () => {
 
 describe('componentDidLoad', () => {
   it('should call addInputEventListenerForCounter() with correct parameters if hasCounter is true', () => {
-    const spy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListenerForCounter');
+    const spy = jest.spyOn(formUtils, 'addInputEventListenerForCounter');
 
     const textarea = document.createElement('textarea');
     const counter = document.createElement('span');
