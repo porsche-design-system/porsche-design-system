@@ -278,5 +278,6 @@ export class TabsBar {
   private setBarStyle = (): void => {
     setBarStyle(this.tabElements, this.activeTabIndex, this.barElement, this.prevActiveTabIndex);
   };
-  private isSizeBreakpointCustomizable = () => typeof parseJSON(this.size as any) === 'object';
+
+  private isSizeBreakpointCustomizable = (): boolean => typeof parseJSON(this.size) === 'object';
 }
