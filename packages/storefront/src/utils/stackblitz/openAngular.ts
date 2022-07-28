@@ -15,6 +15,8 @@ export const openAngular = (props: StackBlitzFrameworkOpts): void => {
     },
   };
 
+  const usesIMask = additionalDependencies && additionalDependencies.filter((x) => x === 'IMask');
+
   const [, matchedClassName] = markup.match(/export class ([A-z]+) {/) ?? [];
   const className = hasFrameworkMarkup ? matchedClassName : 'AppComponent';
   const classNameParamCase = paramCase(className);
@@ -52,12 +54,13 @@ platformBrowserDynamic()
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
-import { IMaskModule } from 'angular-imask';
-
+${usesIMask ? `import { IMaskModule } from 'angular-imask';` : ''}
 import { ${className} } from './app.component';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, IMaskModule, PorscheDesignSystemModule.load({ prefix: '' }),],
+  imports: [BrowserModule, FormsModule,${
+    usesIMask ? 'IMaskModule,' : ''
+  } PorscheDesignSystemModule.load({ prefix: '' }),],
   declarations: [${className}],
   bootstrap: [${className}],
 })
