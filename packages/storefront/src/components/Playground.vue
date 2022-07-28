@@ -41,7 +41,6 @@
           :theme="theme"
           :framework="activeFramework"
           :has-framework-markup="hasFrameworkMarkup"
-          :additional-java-script-logic="additionalJavaScriptLogic"
         ></CodeEditor>
       </template>
     </div>
@@ -91,7 +90,6 @@
     @Prop({ default: () => ({}) }) public config!: Partial<PlaygroundConfig>;
     @Prop({ default: () => ({}) }) public frameworkMarkup!: FrameworkMarkup;
     @Prop({ default: '' }) public markup!: string;
-    @Prop({ default: '' }) public additionalJavaScriptLogic?: string;
 
     public mounted(): void {
       this.syncThemeIntoDemoComponents();

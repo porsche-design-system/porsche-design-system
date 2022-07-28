@@ -11,7 +11,6 @@ type OpenInStackBlitzOpts = {
   framework: Framework;
   theme: Theme;
   hasFrameworkMarkup: boolean;
-  additionalJavaScriptLogic?: string;
 };
 
 export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | 'theme'> & {
@@ -25,7 +24,7 @@ export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | '
 export const themeDarkBodyStyles = `body { background: ${themeDark.background.base}; }`;
 
 export const openInStackBlitz = (props: OpenInStackBlitzOpts): void => {
-  const { markup, framework, theme, hasFrameworkMarkup, additionalJavaScriptLogic } = props;
+  const { markup, framework, theme, hasFrameworkMarkup } = props;
   const convertedMarkup = hasFrameworkMarkup ? markup : convertMarkup(markup, framework);
 
   const pdsComponents = Array.from(markup.matchAll(/<((?:\w|-)+)(?:.|\n)*?>/g) ?? [])
@@ -52,9 +51,6 @@ export const openInStackBlitz = (props: OpenInStackBlitzOpts): void => {
         componentNames,
       });
     default:
-      return openVanillaJS({
-        ...openProps,
-        additionalJavaScriptLogic,
-      });
+      return openVanillaJS(openProps);
   }
 };

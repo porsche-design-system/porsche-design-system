@@ -19,7 +19,6 @@
     @Prop({ default: 'light' }) public theme!: Theme;
     @Prop({ default: 'vanilla-js' }) public framework!: Framework;
     @Prop({ default: false }) public hasFrameworkMarkup!: boolean;
-    @Prop({ default: '' }) public additionalJavaScriptLogic?: string;
 
     stackBlitzIcon = require('../assets/icon-stackblitz.svg');
 
@@ -30,7 +29,6 @@
         framework: this.framework,
         theme: this.theme,
         hasFrameworkMarkup: this.hasFrameworkMarkup,
-        additionalJavaScriptLogic: this.additionalJavaScriptLogic,
       });
     }
 
