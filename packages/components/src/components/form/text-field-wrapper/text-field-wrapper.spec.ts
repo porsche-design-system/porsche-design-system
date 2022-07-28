@@ -290,15 +290,18 @@ describe('componentDidRender', () => {
 });
 
 describe('onClear()', () => {
-  it('should clear input.value and call dispatchInputEvent() with correct parameters', () => {
+  it('should call this.onLabelClick(), clear input.value and call dispatchInputEvent() with correct parameters', () => {
     const component = new TextFieldWrapper();
-    const spy = jest.spyOn(textFieldWrapperUtils, 'dispatchInputEvent');
+    const spyDispatchInputEvent = jest.spyOn(textFieldWrapperUtils, 'dispatchInputEvent');
+    const spyOnLabelClick = jest.spyOn(component, 'onLabelClick' as any);
     const input = document.createElement('input');
+    input.value = 'search-term';
     component['input'] = input;
     component['onClear']();
 
+    expect(spyOnLabelClick).toBeCalledWith();
     expect(input.value).toBe('');
-    expect(spy).toBeCalledWith(input);
-    expect(spy).toBeCalledTimes(1);
+    expect(spyDispatchInputEvent).toBeCalledWith(input);
+    expect(spyDispatchInputEvent).toBeCalledTimes(1);
   });
 });
