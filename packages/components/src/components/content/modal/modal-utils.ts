@@ -48,7 +48,7 @@ export const setScrollLock = (
     focusableElements = getFirstAndLastFocusableElement(host, closeBtn);
     documentKeydownListener = (e: KeyboardEvent): void => {
       const { key } = e;
-      if (key === 'Esc' || key === 'Escape') {
+      if (key === 'Escape') {
         closeModal();
       } else if (!focusableElements?.filter((x) => x).length && key === 'Tab') {
         // if we don't have any focusableElements we need to prevent Tab here
