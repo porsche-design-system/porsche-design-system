@@ -4,7 +4,7 @@ import {
   getPrefixedTagNames,
   observeChildren,
   observeProperties,
-  throwIfRootNodeIsNotOfKind,
+  throwIfRootNodeIsNotOneOfKind,
 } from '../../../../utils';
 import type { DropdownDirection, DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import type { DropdownInteractionType, OptionMap } from './select-wrapper-dropdown-utils';
@@ -68,7 +68,7 @@ export class SelectWrapperDropdown {
   }
 
   public connectedCallback(): void {
-    throwIfRootNodeIsNotOfKind(this.host, 'pSelectWrapper');
+    throwIfRootNodeIsNotOneOfKind(this.host, ['pSelectWrapper']);
   }
 
   public componentWillRender(): void {

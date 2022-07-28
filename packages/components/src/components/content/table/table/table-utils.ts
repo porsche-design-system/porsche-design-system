@@ -14,8 +14,8 @@ export type Direction = 'asc' | 'desc';
 
 export type TableHeadCellSort = {
   id: string; // the only way for the consumer to identify which table column has been clicked on event callback
-  active: boolean;
-  direction: Direction;
+  active?: boolean;
+  direction?: Direction;
 };
 export type SortingChangeEvent = TableHeadCellSort; // to have consistent event types
 

@@ -1,6 +1,5 @@
 import { Component, Element, h, Host, JSX } from '@stencil/core';
-import { attachComponentCss } from '../../../../utils';
-import { throwIfParentIsNotOfKind } from '../../../../utils/dom'; // required for lifecycle validation test
+import { attachComponentCss, throwIfParentIsNotOfKind } from '../../../../utils';
 import { getComponentCss } from './table-row-styles';
 
 @Component({

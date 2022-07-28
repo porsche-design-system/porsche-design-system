@@ -1,14 +1,27 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
+import type { PropTypes } from '../../../../utils';
 import {
+  AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
   throwIfElementHasAttribute,
   throwIfParentIsNotOfKind,
+  validateProps,
 } from '../../../../utils';
 import { createSortedEventInitDictDetail, getAriaSort, isSortable } from './table-head-cell-utils';
-import type { TableHeadCellSort, SortingChangeEvent } from '../table/table-utils';
-import { getComponentCss } from './table-head-cell-styles';
+import type { Direction, SortingChangeEvent, TableHeadCellSort } from '../table/table-utils';
 import { SORT_EVENT_NAME } from '../table/table-utils';
+import { getComponentCss } from './table-head-cell-styles';
+
+const propTypes: PropTypes<typeof TableHeadCell> = {
+  sort: AllowedTypes.shape<TableHeadCellSort>({
+    id: AllowedTypes.string,
+    active: AllowedTypes.boolean,
+    direction: AllowedTypes.oneOf<Direction>(['asc', 'desc', undefined]),
+  }),
+  hideLabel: AllowedTypes.breakpoint('boolean'),
+  multiline: AllowedTypes.boolean,
+};
 
 @Component({
   tag: 'p-table-head-cell',
@@ -32,6 +45,7 @@ export class TableHeadCell {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     const { active, direction } = this.sort || {};
     attachComponentCss(this.host, getComponentCss, active, direction, this.hideLabel, this.multiline);
   }

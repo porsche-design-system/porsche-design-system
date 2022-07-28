@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`throwIfAriaAttributesAreInvalid() should throw error for unsupported attribute 1`] = `"aria-asd is not a valid aria attribute. Valid ones are: aria-label"`;
