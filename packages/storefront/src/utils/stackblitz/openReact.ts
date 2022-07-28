@@ -4,7 +4,7 @@ import {
   devDependencies as reactDevDependencies,
   dependencies as reactDependencies,
 } from '../../../../components-react/package.json';
-import { getAdditionalDependencies, themeDarkBodyStyles } from '@/utils/stackblitz/openInStackBlitz';
+import { getAdditionalDependencies } from '@/utils/stackblitz/openInStackBlitz';
 import type { StackBlitzFrameworkOpts, DependenciesMap } from '@/utils/stackblitz/openInStackBlitz';
 
 export const openReact = (props: StackBlitzFrameworkOpts): void => {
@@ -13,7 +13,7 @@ export const openReact = (props: StackBlitzFrameworkOpts): void => {
     description,
     title,
     hasFrameworkMarkup,
-    isThemeDark,
+    bodyStyles,
     reactComponentsToImport,
     additionalDependencies,
   } = props;
@@ -65,7 +65,7 @@ root.render(
     </PorscheDesignSystemProvider>
   </StrictMode>
 );`,
-        'style.css': isThemeDark ? themeDarkBodyStyles : '',
+        'style.css': bodyStyles,
       },
       template: 'create-react-app',
       title,
