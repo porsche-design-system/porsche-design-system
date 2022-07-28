@@ -290,7 +290,7 @@ describe('componentDidRender', () => {
 });
 
 describe('onClear()', () => {
-  it('should should clear input.value and dispatchInputEvent() with correct parameters', () => {
+  it('should clear input.value and call dispatchInputEvent() with correct parameters', () => {
     const component = new TextFieldWrapper();
     const spy = jest.spyOn(textFieldWrapperUtils, 'dispatchInputEvent');
     const input = document.createElement('input');

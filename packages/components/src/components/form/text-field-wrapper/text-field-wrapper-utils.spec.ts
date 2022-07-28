@@ -213,12 +213,12 @@ describe('addInputEventListenerForSearch()', () => {
     const spyDispatchInputEvent = jest.spyOn(textFieldWrapperUtils, 'dispatchInputEvent');
     inputElement.dispatchEvent(event);
 
-    expect(spyPreventDefault).toBeCalled();
+    expect(spyPreventDefault).toBeCalledWith();
     expect(inputElement.value).toBe('');
     expect(spyDispatchInputEvent).toBeCalledWith(event.target);
   });
 
-  it('should not if input.value is empty on keydown event for Escape key call event.preventDefault(), reset input.value and call dispatchInputEvent()', () => {
+  it('should if input.value is empty on keydown event for Escape key not call event.preventDefault(), not reset input.value and not call dispatchInputEvent()', () => {
     const inputElement = getInputElement();
     inputElement.value = '';
     addInputEventListenerForSearch(inputElement, jest.fn());
@@ -233,7 +233,7 @@ describe('addInputEventListenerForSearch()', () => {
     expect(spyDispatchInputEvent).not.toBeCalled();
   });
 
-  it('should not emit input event on keydown event for other keys than Escape, not call event.preventDefault(), not reset input.value and not call dispatchInputEvent()', () => {
+  it('should on keydown event for other keys than Escape, not call event.preventDefault(), not reset input.value and not call dispatchInputEvent()', () => {
     const inputElement = getInputElement();
     inputElement.value = 'search-term';
     addInputEventListenerForSearch(inputElement, jest.fn());
@@ -260,6 +260,6 @@ describe('dispatchInputEvent()', () => {
     const spy = jest.spyOn(inputElement, 'dispatchEvent');
     dispatchInputEvent(inputElement);
 
-    expect(spy).toBeCalled();
+    expect(spy).toBeCalledWith(expect.any(Event));
   });
 });

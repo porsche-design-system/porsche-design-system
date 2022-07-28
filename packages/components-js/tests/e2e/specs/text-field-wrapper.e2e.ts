@@ -219,7 +219,7 @@ describe('input type="search"', () => {
       return !(await getProperty(clearButton, 'hidden'));
     };
 
-    it('should show clear button on keyboard typed input.value is not empty', async () => {
+    it('should show clear button on keyboard typed input.value', async () => {
       await initTextField({ type: 'search' });
       const input = await getInput();
 
@@ -259,7 +259,7 @@ describe('input type="search"', () => {
       expect(await isClearButtonVisible()).toBe(false);
     });
 
-    it('should reset input value on button click', async () => {
+    it('should reset input value on clear-button click', async () => {
       await initTextField({ type: 'search' });
       const input = await getInput();
       const clearButton = await getToggleOrClearButton();
