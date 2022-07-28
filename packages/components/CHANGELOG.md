@@ -9,16 +9,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Changed
+
+- Font loading strategy for Porsche Next uses `font-display: swap` (FOUT) instead of `font-display: block` for better
+  performance and less potential for layout shifts
+
 #### Added
 
 - Validation of properties for all components
 - `Text Field Wrapper` with `input type="search"` is clearable via Escape key and custom clear button across browsers
 
+
 ### [2.14.0-beta.0] - 2022-07-12
 
 #### Changed
 
-- Font loading strategy for Porsche Next uses `font-display: block` instead of `font-display: swap`
+- Font loading strategy for Porsche Next uses `font-display: block` (FOIT) instead of `font-display: swap`
 
 ### [2.14.0] - 2022-07-11
 
