@@ -159,6 +159,7 @@ describe('input type="password"', () => {
 });
 
 describe('input type="search"', () => {
+  // verify wrapped input type="search" behaves the same as without in regards to clearing it and emitting events
   describe('events', () => {
     it('should emit input events for input without text-field-wrapper', async () => {
       await setContentWithDesignSystem(page, '<input type="search" style="width: 100px; height: 50px">');
