@@ -6,7 +6,7 @@ import {
   tempIcon,
   tempLabel,
 } from './segmented-control-utils';
-import type { Theme } from '../../../types';
+import type { Theme } from '../../../utils';
 import type { SegmentedControlItemInternalHTMLProps } from '../segmented-control-item/segmented-control-item-utils';
 import { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import * as stencilCore from '@stencil/core';

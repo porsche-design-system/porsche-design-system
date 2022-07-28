@@ -5,14 +5,15 @@ import {
   attachComponentCss,
   setLineHeightOnSizeInherit,
   AllowedTypes,
+  THEMES,
   validateProps,
 } from '../../../../utils';
-import type { PropTypes } from '../../../../utils';
-import type { TextAlign, TextColor, Theme } from '../../../../types';
+import type { PropTypes, Theme } from '../../../../utils';
+import type { TextAlign, TextColor } from '../../../../types';
 import type { HeadlineTag, HeadlineVariant } from './headline-utils';
 import { getHeadlineTagName, HEADLINE_TAGS } from './headline-utils';
 import { getComponentCss, getSlottedCss } from './headline-styles';
-import { TEXT_ALIGNS, THEMES } from '../../../../types';
+import { TEXT_ALIGNS } from '../../../../types';
 
 const propTypes: Omit<PropTypes<typeof Headline>, 'variant'> = {
   // variant: AllowedTypes.string, // TODO: with all the different values this can't easily be validated

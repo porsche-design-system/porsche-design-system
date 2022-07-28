@@ -1,10 +1,10 @@
 import * as colorsUtils from '../../../styles/colors';
 import * as tagUtils from './tag-utils';
-import * as themeUtils from '../../../utils/theme';
+import * as isThemeDarkUtils from '../../../utils/theme/isThemeDark';
 import * as tagStyles from './tag-styles';
 import { getColors, getComponentCss, getThemedBackgroundColor } from './tag-styles';
 import { getThemedColors } from '../../../styles/colors';
-import type { Theme } from '../../../types';
+import type { Theme } from '../../../utils';
 import type { TagColor } from './tag-utils';
 
 describe('getThemedBackgroundColor()', () => {
@@ -44,7 +44,7 @@ describe('getColors()', () => {
 
   it('should call hasInvertedThemeColor(), isThemeDark() and getThemedColors() with correct parameters', () => {
     const getThemedColorsSpy = jest.spyOn(colorsUtils, 'getThemedColors');
-    const isThemeDarkSpy = jest.spyOn(themeUtils, 'isThemeDark');
+    const isThemeDarkSpy = jest.spyOn(isThemeDarkUtils, 'isThemeDark');
 
     jest.spyOn(tagUtils, 'hasInvertedThemeColor').mockReturnValue(true);
     getColors('background-surface', 'light');

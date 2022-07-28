@@ -1,6 +1,5 @@
 import type { Styles } from 'jss';
-import type { BreakpointCustomizable } from '../../../utils';
-import type { Theme } from '../../../types';
+import type { BreakpointCustomizable, Theme } from '../../../utils';
 import {
   addImportantToEachRule,
   getBaseSlottedStyles,

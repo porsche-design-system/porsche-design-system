@@ -1,11 +1,12 @@
 import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@stencil/core';
-import type { PropTypes } from '../../../../utils';
+import type { PropTypes, Theme } from '../../../../utils';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
   getScrollActivePosition,
   observeChildren,
+  THEMES,
   throwIfChildCountIsExceeded,
   throwIfChildrenAreNotOfKind,
   unobserveChildren,
@@ -18,8 +19,6 @@ import {
   syncItemsProps,
   throwIfMultipleCurrentStates,
 } from './stepper-horizontal-utils';
-import type { Theme } from '../../../../types';
-import { THEMES } from '../../../../types';
 import { getClickedItem } from '../../../../utils/dom/getClickedItem';
 import { getScrollerElements } from '../../../common/scroller/scroller-utils';
 

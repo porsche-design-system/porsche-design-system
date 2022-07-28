@@ -1,5 +1,5 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import type { PropTypes } from '../../../../utils';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../../../utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -7,10 +7,11 @@ import {
   getDataThemeDarkAttribute,
   getHTMLElement,
   setLineHeightOnSizeInherit,
+  THEMES,
   validateProps,
 } from '../../../../utils';
-import type { BreakpointCustomizable, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
-import { TEXT_ALIGNS, TEXT_COLORS, TEXT_WEIGHTS, THEMES } from '../../../../types';
+import type { TextAlign, TextColor, TextSize, TextWeight } from '../../../../types';
+import { TEXT_ALIGNS, TEXT_COLORS, TEXT_WEIGHTS } from '../../../../types';
 import { getComponentCss, getSlottedCss } from './text-styles';
 import type { TextTag } from './text-utils';
 import { TEXT_SIZES, TEXT_TAGS } from './text-utils';

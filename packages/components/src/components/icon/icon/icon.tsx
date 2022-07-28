@@ -1,9 +1,16 @@
 import { Component, Element, h, Prop } from '@stencil/core';
 import { buildIconUrl, getSvgContent, ICON_ARIA_ATTRIBUTES, IconAriaAttributes, patchAriaIntoSVG } from './icon-utils';
-import { AllowedTypes, attachComponentCss, getShadowRootHTMLElement, isBrowser, validateProps } from '../../../utils';
-import type { PropTypes } from '../../../utils';
-import type { IconName, IconSize, SelectedAriaAttributes, TextColor, ThemeExtendedElectricDark } from '../../../types';
-import { ICON_SIZES, TEXT_COLORS, THEMES_EXTENDED_ELECTRIC_DARK } from '../../../types';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  getShadowRootHTMLElement,
+  isBrowser,
+  THEMES_EXTENDED_ELECTRIC_DARK,
+  validateProps,
+} from '../../../utils';
+import type { PropTypes, ThemeExtendedElectricDark } from '../../../utils';
+import type { IconName, IconSize, SelectedAriaAttributes, TextColor } from '../../../types';
+import { ICON_SIZES, TEXT_COLORS } from '../../../types';
 import { getComponentCss } from './icon-styles';
 
 const propTypes: PropTypes<typeof Icon> = {

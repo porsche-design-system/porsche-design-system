@@ -1,19 +1,18 @@
-import { JSX, Component, Prop, h, Element, Event, EventEmitter, Host } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@stencil/core';
+import type { PropTypes, Theme } from '../../../utils';
 import {
-  getPrefixedTagNames,
-  hasNamedSlot,
-  attachComponentCss,
-  getShadowRootHTMLElement,
-  attachSlottedCss,
-  validateProps,
   AllowedTypes,
+  attachComponentCss,
+  attachSlottedCss,
+  getPrefixedTagNames,
+  getShadowRootHTMLElement,
+  hasNamedSlot,
+  THEMES,
+  validateProps,
 } from '../../../utils';
-import type { PropTypes } from '../../../utils';
-import type { Theme } from '../../../types';
 import { getComponentCss, getSlottedCss } from './banner-styles';
 import type { BannerState, BannerWidth } from './banner-utils';
 import { BANNER_STATES, BANNER_WIDTHS } from './banner-utils';
-import { THEMES } from '../../../types';
 
 const propTypes: PropTypes<typeof Banner> = {
   state: AllowedTypes.oneOf<BannerState>(BANNER_STATES),

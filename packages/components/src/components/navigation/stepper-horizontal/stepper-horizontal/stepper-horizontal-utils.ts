@@ -1,5 +1,5 @@
 import { getTagName } from '../../../../utils';
-import type { Theme } from '../../../../types';
+import type { Theme } from '../../../../utils';
 import type { StepperHorizontalItemInternalHTMLProps } from '../stepper-horizontal-item/stepper-horizontal-item-utils';
 import { StepperHorizontalItem } from '../stepper-horizontal-item/stepper-horizontal-item';
 import { forceUpdate } from '@stencil/core';

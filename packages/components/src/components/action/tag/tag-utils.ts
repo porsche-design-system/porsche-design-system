@@ -1,5 +1,5 @@
 import { TAG_DISMISSIBLE_COLORS } from '../tag-dismissible/tag-dismissible-utils';
-import type { Theme } from '../../../types';
+import type { Theme } from '../../../utils';
 import { isThemeDark } from '../../../utils/theme';
 
 export const TAG_COLORS = [

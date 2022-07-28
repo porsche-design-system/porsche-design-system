@@ -1,4 +1,4 @@
-import type { Theme } from '../../../types';
+import type { Theme } from '../../../utils';
 import type { FieldsetWrapperLabelSize } from './fieldset-wrapper-utils';
 import { getCss, mergeDeep } from '../../../utils';
 import { addImportantToRule, getThemedColors } from '../../../styles';

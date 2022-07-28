@@ -5,14 +5,14 @@ import {
   attachSlottedCss,
   hasHeading,
   AllowedTypes,
+  THEMES,
   validateProps,
 } from '../../../utils';
-import type { PropTypes } from '../../../utils';
-import type { IconName, Theme } from '../../../types';
+import type { PropTypes, Theme } from '../../../utils';
+import type { IconName } from '../../../types';
 import { getComponentCss, getSlottedCss } from './inline-notification-styles';
 import { INLINE_NOTIFICATION_STATES, getContentAriaAttributes, getIconName } from './inline-notification-utils';
 import type { InlineNotificationState } from './inline-notification-utils';
-import { THEMES } from '../../../types';
 
 const propTypes: PropTypes<typeof InlineNotification> = {
   heading: AllowedTypes.string,

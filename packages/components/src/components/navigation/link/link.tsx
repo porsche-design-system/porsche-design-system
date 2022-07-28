@@ -4,22 +4,16 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   parseAndGetAriaAttributes,
+  THEMES_EXTENDED_ELECTRIC,
   throwIfInvalidLinkUsage,
   validateProps,
 } from '../../../utils';
-import type { PropTypes } from '../../../utils';
-import type {
-  SelectedAriaAttributes,
-  BreakpointCustomizable,
-  IconName,
-  LinkTarget,
-  LinkVariant,
-  ThemeExtendedElectric,
-} from '../../../types';
+import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../../utils';
+import type { SelectedAriaAttributes, IconName, LinkTarget, LinkVariant } from '../../../types';
 import { getComponentCss } from './link-styles';
 import type { LinkAriaAttributes } from './link-utils';
 import { LINK_ARIA_ATTRIBUTES } from './link-utils';
-import { LINK_BUTTON_VARIANTS, THEMES_EXTENDED_ELECTRIC } from '../../../types';
+import { LINK_BUTTON_VARIANTS } from '../../../types';
 
 const propTypes: PropTypes<typeof Link> = {
   variant: AllowedTypes.oneOf<LinkVariant>(LINK_BUTTON_VARIANTS),

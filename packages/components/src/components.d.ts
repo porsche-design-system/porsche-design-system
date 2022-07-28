@@ -5,11 +5,11 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AlignLabel, BreakpointCustomizable, ButtonType, ButtonVariant, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight, Theme, ThemeExtendedElectric, ThemeExtendedElectricDark } from "./types";
+import { BreakpointCustomizable, ButtonAriaAttributes, Theme, ThemeExtendedElectric, ThemeExtendedElectricDark } from "./utils";
 import { AccordionChangeEvent, AccordionSize } from "./components/content/accordion/accordion-utils";
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { BannerState, BannerWidth } from "./components/feedback/banner/banner-utils";
-import { ButtonAriaAttributes } from "./utils";
+import { AlignLabel, ButtonType, ButtonVariant, IconName, IconSize, LinkButtonPureIconName, LinkTarget, LinkVariant, SelectedAriaAttributes, TextAlign, TextColor, TextSize, TextWeight } from "./types";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
 import { FormState } from "./components/form/form-state";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/layout/content-wrapper/content-wrapper-utils";

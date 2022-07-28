@@ -14,8 +14,7 @@ import {
   unobserveAttributes,
   validateProps,
 } from '../../../utils';
-import type { PropTypes } from '../../../utils';
-import type { BreakpointCustomizable } from '../../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../../utils';
 import { getComponentCss, getSlottedCss } from './checkbox-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
 import { Required } from '../../common/required/required';

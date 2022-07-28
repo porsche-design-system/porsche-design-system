@@ -1,11 +1,9 @@
 import type { ToastMessage } from './toast-manager';
 import { toastManager } from './toast-manager';
-import type { Theme } from '../../../../types';
-import { THEMES } from '../../../../types';
 import { Component, Element, h, Host, JSX, Method, Prop } from '@stencil/core';
 import { getComponentCss, toastCloseClassName } from './toast-styles';
-import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../../../utils';
-import type { PropTypes } from '../../../../utils';
+import { AllowedTypes, attachComponentCss, getPrefixedTagNames, THEMES, validateProps } from '../../../../utils';
+import type { PropTypes, Theme } from '../../../../utils';
 
 const propTypes: PropTypes<typeof Toast> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),

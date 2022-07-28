@@ -1,4 +1,4 @@
-import type { BreakpointCustomizable, Theme } from '../../../types';
+import type { BreakpointCustomizable, Theme } from '../../../utils';
 import type { NumberOfPageLinks } from './pagination-utils';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import { addImportantToRule, getFocusJssStyle, getThemedColors, getTransition, pxToRemWithUnit } from '../../../styles';

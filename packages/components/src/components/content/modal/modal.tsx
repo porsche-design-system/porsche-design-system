@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop, Watch } from '@stencil/core';
-import type { BreakpointCustomizable, SelectedAriaAttributes } from '../../../types';
+import type { SelectedAriaAttributes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -10,7 +10,7 @@ import {
   parseAndGetAriaAttributes,
   validateProps,
 } from '../../../utils';
-import type { PropTypes } from '../../../utils';
+import type { BreakpointCustomizable, PropTypes } from '../../../utils';
 import type { ModalAriaAttributes } from './modal-utils';
 import { MODAL_ARIA_ATTRIBUTES, setScrollLock, warnIfAriaAndHeadingPropsAreUndefined } from './modal-utils';
 import { getComponentCss, getSlottedCss } from './modal-styles';

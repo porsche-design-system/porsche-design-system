@@ -1,7 +1,6 @@
 import type { JssStyle, Styles } from 'jss';
-import type { BreakpointCustomizable } from '../utils';
+import type { BreakpointCustomizable, Theme } from '../utils';
 import { buildResponsiveStyles, isThemeDark, isVisibleFormState } from '../utils';
-import type { Theme } from '../types';
 import {
   addImportantToRule,
   getFormTextHiddenJssStyle,

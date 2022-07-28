@@ -1,8 +1,6 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, validateProps } from '../../../utils';
-import type { PropTypes } from '../../../utils';
-import type { Theme } from '../../../types';
-import { THEMES } from '../../../types';
+import { AllowedTypes, attachComponentCss, THEMES, validateProps } from '../../../utils';
+import type { PropTypes, Theme } from '../../../utils';
 import type { DividerColor, DividerOrientation, DividerOrientationType } from './divider-utils';
 import { DIVIDER_COLORS, DIVIDER_ORIENTATIONS } from './divider-utils';
 import { getComponentCss } from './divider-styles';
