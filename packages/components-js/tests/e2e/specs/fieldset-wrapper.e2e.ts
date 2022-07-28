@@ -8,51 +8,53 @@ import {
 } from '../helpers';
 import { FormState } from '@porsche-design-system/components/src/types';
 
-let page: Page;
-beforeEach(async () => (page = await browser.newPage()));
-afterEach(async () => await page.close());
+describe('fieldset-wrapper', () => {
+  let page: Page;
+  beforeEach(async () => (page = await browser.newPage()));
+  afterEach(async () => await page.close());
 
-type InitOptions = {
-  state?: FormState;
-};
+  type InitOptions = {
+    state?: FormState;
+  };
 
-const initFieldset = async (opts?: InitOptions) => {
-  const { state = 'none' } = opts ?? {};
+  const initFieldset = async (opts?: InitOptions) => {
+    const { state = 'none' } = opts ?? {};
 
-  await setContentWithDesignSystem(
-    page,
-    `<p-fieldset-wrapper state="${state}" message="Some Message"></p-fieldset-wrapper>`
-  );
-};
+    await setContentWithDesignSystem(
+      page,
+      `<p-fieldset-wrapper state="${state}" message="Some Message"></p-fieldset-wrapper>`
+    );
+  };
 
-const getHost = () => selectNode(page, 'p-fieldset-wrapper');
-const getFieldset = () => selectNode(page, 'p-fieldset-wrapper >>> fieldset');
-const getMessage = () => selectNode(page, 'p-fieldset-wrapper >>> .message');
+  const getHost = () => selectNode(page, 'p-fieldset-wrapper');
+  const getFieldset = () => selectNode(page, 'p-fieldset-wrapper >>> fieldset');
+  const getMessage = () => selectNode(page, 'p-fieldset-wrapper >>> .message');
 
-describe('accessibility', () => {
-  it('should expose correct initial accessibility tree', async () => {
-    await initFieldset();
-    const fieldset = await getFieldset();
+  describe('accessibility', () => {
+    it('should expose correct initial accessibility tree', async () => {
+      await initFieldset();
+      const fieldset = await getFieldset();
 
-    await expectA11yToMatchSnapshot(page, fieldset, { interestingOnly: false });
-  });
+      await expectA11yToMatchSnapshot(page, fieldset, { interestingOnly: false });
+    });
 
-  it('should expose correct accessibility tree property in error state', async () => {
-    await initFieldset({ state: 'error' });
-    const fieldset = await getFieldset();
+    it('should expose correct accessibility tree property in error state', async () => {
+      await initFieldset({ state: 'error' });
+      const fieldset = await getFieldset();
 
-    await expectA11yToMatchSnapshot(page, fieldset, { interestingOnly: false });
-  });
+      await expectA11yToMatchSnapshot(page, fieldset, { interestingOnly: false });
+    });
 
-  it('should expose correct accessibility tree property if error state added programmatically', async () => {
-    await initFieldset();
-    const host = await getHost();
+    it('should expose correct accessibility tree property if error state added programmatically', async () => {
+      await initFieldset();
+      const host = await getHost();
 
-    await setProperty(host, 'state', 'error');
-    await waitForStencilLifecycle(page);
+      await setProperty(host, 'state', 'error');
+      await waitForStencilLifecycle(page);
 
-    const fieldset = await getFieldset();
+      const fieldset = await getFieldset();
 
-    await expectA11yToMatchSnapshot(page, fieldset, { interestingOnly: false });
+      await expectA11yToMatchSnapshot(page, fieldset, { interestingOnly: false });
+    });
   });
 });
