@@ -52,7 +52,7 @@ describe('accordion', () => {
       const component = new Accordion();
       component.componentDidLoad();
 
-      expect(spy).toBeCalledWith(undefined, expect.anything(), { box: 'border-box' });
+      expect(spy).toBeCalledWith(undefined, expect.any(Function), { box: 'border-box' });
     });
   });
 

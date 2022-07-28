@@ -68,15 +68,14 @@ describe('connectedCallback', () => {
 
 describe('componentDidLoad', () => {
   it('should call defineHTMLElements()', () => {
-    const spy = jest.spyOn(resizeObserverUtils, 'observeWindowResize');
-
     const component = new TabsBar();
+    const spy = jest.spyOn(component, 'defineHTMLElements' as any);
     const scroller = document.createElement('p-scroller');
     component['scrollerElement'] = scroller;
 
     component.componentDidLoad();
 
-    expect(spy).not.toBeCalled();
+    expect(spy).toBeCalledTimes(1);
   });
 
   it('should call sanitizeActiveTabIndex()', () => {
@@ -117,8 +116,6 @@ describe('componentDidLoad', () => {
 
 describe('componentDidRender', () => {
   it('should call setBarStyle()', () => {
-    useResizeObserverFallbackOverride(true);
-
     const component = new TabsBar();
     const spy = jest.spyOn(component, 'setBarStyle' as any);
 
