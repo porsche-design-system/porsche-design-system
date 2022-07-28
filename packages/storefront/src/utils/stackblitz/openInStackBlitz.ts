@@ -4,6 +4,7 @@ import type { Framework, Theme } from '@/models';
 import { openVanillaJS } from '@/utils/stackblitz/openVanillaJs';
 import { openReact } from '@/utils/stackblitz/openReact';
 import { openAngular } from '@/utils/stackblitz/openAngular';
+import { pascalCase } from 'change-case';
 
 type OpenInStackBlitzOpts = {
   markup: string;
@@ -21,36 +22,35 @@ export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | '
   componentNames?: string;
 };
 
-export const bodyStyles = `body { background: ${themeDark.background.base}; }`;
+export const themeDarkBodyStyles = `body { background: ${themeDark.background.base}; }`;
 
 export const openInStackBlitz = (props: OpenInStackBlitzOpts): void => {
   const { markup, framework, theme, hasFrameworkMarkup, additionalJavaScriptLogic } = props;
   const convertedMarkup = hasFrameworkMarkup ? markup : convertMarkup(markup, framework);
 
-  const componentNamesArray = Array.from(markup.matchAll(/<((?:\w|-)+)(?:.|\n)*?>/g) ?? [])
+  const pdsComponents = Array.from(markup.matchAll(/<((?:\w|-)+)(?:.|\n)*?>/g) ?? [])
     .map(([, x]) => x)
-    .filter(
-      (tagName, idx, arr) => arr.findIndex((t) => (t.startsWith('P') || t.startsWith('p')) && t === tagName) === idx
-    );
-  const componentNames = componentNamesArray.join(', ');
-  console.log(componentNames);
+    .filter((tagName, idx, arr) => arr.findIndex((t) => t.startsWith('p-') && t === tagName) === idx);
+  const componentNames = pdsComponents.map((x) => pascalCase(x)).join(', ');
   const isThemeDark = theme === 'dark';
 
   const openProps: StackBlitzFrameworkOpts = {
     markup: convertedMarkup,
-    componentNames,
+    hasFrameworkMarkup,
     title: `Porsche Design System ${framework} sandbox`,
-    description: `${[componentNamesArray]} component example`,
+    description: `${pdsComponents[0]} component example`,
     isThemeDark,
     bodyStyles: `body { background: ${themeDark.background.base}; }`,
-    hasFrameworkMarkup,
   };
 
   switch (framework) {
     case 'angular':
       return openAngular(openProps);
     case 'react':
-      return openReact(openProps);
+      return openReact({
+        ...openProps,
+        componentNames,
+      });
     default:
       return openVanillaJS({
         ...openProps,

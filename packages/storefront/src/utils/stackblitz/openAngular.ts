@@ -1,5 +1,5 @@
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
-import { bodyStyles } from '@/utils/stackblitz/openInStackBlitz';
+import { themeDarkBodyStyles } from '@/utils/stackblitz/openInStackBlitz';
 import type { StackBlitzFrameworkOpts } from '@/utils/stackblitz/openInStackBlitz';
 import { paramCase } from 'change-case';
 import sdk from '@stackblitz/sdk';
@@ -30,7 +30,7 @@ export class AppComponent  {}`;
     files: {
       // root folder
       'index.html': `${selector}
-${isThemeDark ? `<style>${bodyStyles}</style>` : ''}`,
+${isThemeDark ? `<style>${themeDarkBodyStyles}</style>` : ''}`,
       'main.ts': `import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import 'zone.js/dist/zone';

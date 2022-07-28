@@ -1,6 +1,6 @@
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
 import { devDependencies as reactDevDependencies } from '../../../../components-react/package.json';
-import { bodyStyles } from '@/utils/stackblitz/openInStackBlitz';
+import { themeDarkBodyStyles } from '@/utils/stackblitz/openInStackBlitz';
 import type { StackBlitzFrameworkOpts } from '@/utils/stackblitz/openInStackBlitz';
 import sdk from '@stackblitz/sdk';
 
@@ -48,7 +48,7 @@ root.render(
     </PorscheDesignSystemProvider>
   </StrictMode>
 );`,
-        'style.css': isThemeDark ? bodyStyles : '',
+        'style.css': isThemeDark ? themeDarkBodyStyles : '',
       },
       template: 'create-react-app',
       title,
