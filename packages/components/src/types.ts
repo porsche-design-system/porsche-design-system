@@ -25,13 +25,6 @@ export type TextColor = typeof TEXT_COLORS[number];
 export const TEXT_ALIGNS = ['left', 'center', 'right'] as const;
 export type TextAlign = typeof TEXT_ALIGNS[number];
 
-export const THEMES = ['light', 'dark'] as const;
-export type Theme = typeof THEMES[number];
-export const THEMES_EXTENDED_ELECTRIC = [...THEMES, 'light-electric'] as const;
-export type ThemeExtendedElectric = typeof THEMES_EXTENDED_ELECTRIC[number];
-export const THEMES_EXTENDED_ELECTRIC_DARK = [...THEMES_EXTENDED_ELECTRIC, 'dark-electric'] as const;
-export type ThemeExtendedElectricDark = typeof THEMES_EXTENDED_ELECTRIC_DARK[number];
-
 export type { IconName } from '@porsche-design-system/icons';
 export const ICON_SIZES = ['small', 'medium', 'large', 'inherit'] as const;
 export type IconSize = typeof ICON_SIZES[number];
@@ -47,9 +40,6 @@ export type ButtonType = typeof BUTTON_TYPES[number];
 export type LinkVariant = LinkButtonVariant;
 export const LINK_TARGETS = ['_self', '_blank', '_parent', '_top'] as const;
 export type LinkTarget = typeof LINK_TARGETS[number] | string;
-
-// BreakpointCustomizable Types
-export type { BreakpointKey, BreakpointValues, BreakpointCustomizable } from './utils/breakpoint-customizable';
 
 // ROLLUP_REPLACE_IS_STAGING will be provided via webpack
 declare global {

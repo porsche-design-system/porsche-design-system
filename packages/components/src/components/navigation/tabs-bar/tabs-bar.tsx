@@ -8,10 +8,11 @@ import {
   getScrollActivePosition,
   observeChildren,
   setAttribute,
+  THEMES_EXTENDED_ELECTRIC,
   unobserveChildren,
   validateProps,
 } from '../../../utils';
-import type { PropTypes } from '../../../utils';
+import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../../utils';
 import { isShadowRootParentOfKind } from '../../../utils/dom'; // separate import is needed for lifecycleValidation.spec to pass
 import type { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from './tabs-bar-utils';
 import {
@@ -23,8 +24,6 @@ import {
   TAB_WEIGHTS,
 } from './tabs-bar-utils';
 import { getComponentCss } from './tabs-bar-styles';
-import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
-import { THEMES_EXTENDED_ELECTRIC } from '../../../types';
 import type { Direction } from '../../common/scroller/scroller-utils';
 import { getScrollerElements, GRADIENT_COLOR_THEMES } from '../../common/scroller/scroller-utils';
 

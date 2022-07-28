@@ -1,6 +1,6 @@
 import type { Styles, JssStyle } from 'jss';
-import type { BreakpointCustomizable, GetJssStyleFunction } from '../utils';
-import type { AlignLabel, AlignLabelType, LinkButtonPureIconName, TextSize, ThemeExtendedElectricDark } from '../types';
+import type { BreakpointCustomizable, GetJssStyleFunction, ThemeExtendedElectricDark } from '../utils';
+import type { AlignLabel, AlignLabelType, LinkButtonPureIconName, TextSize } from '../types';
 import {
   buildResponsiveStyles,
   generateTypeScale,

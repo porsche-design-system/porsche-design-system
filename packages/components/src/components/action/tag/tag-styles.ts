@@ -11,7 +11,7 @@ import {
 import { fontStyle, fontWeight, textXSmall } from '@porsche-design-system/utilities-v2';
 import type { TagColor } from './tag-utils';
 import { hasInvertedThemeColor } from './tag-utils';
-import type { Theme } from '../../../types';
+import type { Theme } from '../../../utils';
 import type { JssStyle } from 'jss';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
 

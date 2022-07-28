@@ -1,4 +1,4 @@
-import type { Theme } from '../../../../types';
+import type { Theme } from '../../../../utils';
 import { buildSlottedStyles, getCss } from '../../../../utils';
 import { addImportantToRule, getBaseSlottedStyles, getThemedColors } from '../../../../styles';
 import { textSmall } from '@porsche-design-system/utilities-v2';

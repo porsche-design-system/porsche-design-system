@@ -1,5 +1,5 @@
 import type { DividerColor, DividerOrientation } from './divider-utils';
-import type { Theme } from '../../../types';
+import type { Theme } from '../../../utils';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import { getThemedColors } from '../../../styles';
 

@@ -1,20 +1,13 @@
 import type {
   AlignLabel,
-  BreakpointCustomizable,
   LinkButtonPureIconName,
   LinkTarget,
   SelectedAriaAttributes,
   TextSize,
   TextWeight,
-  ThemeExtendedElectricDark,
 } from '../../../types';
-import {
-  ALIGN_LABELS,
-  AlignLabelType,
-  TEXT_WEIGHTS,
-  ThemeExtendedElectric,
-  THEMES_EXTENDED_ELECTRIC,
-} from '../../../types';
+import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectricDark } from '../../../utils';
+import { ALIGN_LABELS, AlignLabelType, TEXT_WEIGHTS } from '../../../types';
 import type { LinkAriaAttributes } from '../link/link-utils';
 import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
@@ -28,7 +21,6 @@ import {
   hasVisibleIcon,
   isSizeInherit,
   parseAndGetAriaAttributes,
-  PropTypes,
   throwIfInvalidLinkPureUsage,
   transitionListener,
   validateProps,
@@ -36,6 +28,7 @@ import {
 } from '../../../utils';
 import { getComponentCss, getSlottedCss } from './link-pure-styles';
 import { TEXT_SIZES } from '../../basic/typography/text/text-utils';
+import { THEMES_EXTENDED_ELECTRIC_DARK } from '../../../utils';
 
 const propTypes: PropTypes<typeof LinkPure> = {
   alignLabel: AllowedTypes.breakpoint<AlignLabelType>(ALIGN_LABELS),
@@ -47,7 +40,7 @@ const propTypes: PropTypes<typeof LinkPure> = {
   href: AllowedTypes.string,
   active: AllowedTypes.boolean,
   hideLabel: AllowedTypes.breakpoint('boolean'),
-  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  theme: AllowedTypes.oneOf<ThemeExtendedElectricDark>(THEMES_EXTENDED_ELECTRIC_DARK),
   target: AllowedTypes.string,
   download: AllowedTypes.string,
   rel: AllowedTypes.string,

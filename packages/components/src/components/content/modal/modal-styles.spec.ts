@@ -1,5 +1,5 @@
 import { getComponentCss, getSlottedCss, isFullscreenForXl } from './modal-styles';
-import type { BreakpointCustomizable } from '../../../types';
+import type { BreakpointCustomizable } from '../../../utils';
 import * as focusVisibleFallbackUtils from '../../../styles/focus-visible-fallback';
 import { getFocusJssStyle } from '../../../styles';
 

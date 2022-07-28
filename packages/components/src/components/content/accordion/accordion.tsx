@@ -1,8 +1,12 @@
 import { Component, Element, Event, EventEmitter, h, Prop, Watch } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../../utils';
-import type { PropTypes } from '../../../utils';
-import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
-import { THEMES_EXTENDED_ELECTRIC } from '../../../types';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  getPrefixedTagNames,
+  THEMES_EXTENDED_ELECTRIC,
+  validateProps,
+} from '../../../utils';
+import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../../utils';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 import { HEADLINE_TAGS } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';

@@ -1,4 +1,4 @@
-import type { Theme } from '../../../../types';
+import type { Theme } from '../../../../utils';
 import type { ToastState } from '../toast/toast-utils';
 import { getCss } from '../../../../utils';
 import {

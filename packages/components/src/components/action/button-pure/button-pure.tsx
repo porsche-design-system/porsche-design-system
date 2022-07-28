@@ -1,4 +1,9 @@
-import type { ButtonAriaAttributes, PropTypes } from '../../../utils';
+import type {
+  BreakpointCustomizable,
+  ButtonAriaAttributes,
+  PropTypes,
+  ThemeExtendedElectricDark,
+} from '../../../utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -10,21 +15,20 @@ import {
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
   isSizeInherit,
+  THEMES_EXTENDED_ELECTRIC_DARK,
   transitionListener,
   validateProps,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../../utils';
 import type {
   AlignLabel,
-  BreakpointCustomizable,
   ButtonType,
   LinkButtonPureIconName,
   SelectedAriaAttributes,
   TextSize,
   TextWeight,
-  ThemeExtendedElectricDark,
 } from '../../../types';
-import { ALIGN_LABELS, TEXT_WEIGHTS, THEMES_EXTENDED_ELECTRIC_DARK } from '../../../types';
+import { ALIGN_LABELS, TEXT_WEIGHTS } from '../../../types';
 import { Component, Element, h, Host, JSX, Listen, Prop } from '@stencil/core';
 import { getButtonAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 import { getComponentCss } from './button-pure-styles';
