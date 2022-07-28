@@ -1,4 +1,4 @@
-import type { FormState, Theme } from '../../../types';
+import type { Theme } from '../../../types';
 import type { BreakpointCustomizable } from '../../../utils';
 import { buildSlottedStyles, getCss, isVisibleFormState } from '../../../utils';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
@@ -16,6 +16,7 @@ import { getFunctionalComponentRequiredStyles } from '../../common/required/requ
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
 import { isType } from './text-field-wrapper-utils';
+import type { FormState } from '../form-state';
 
 export const getComponentCss = (
   isDisabled: boolean,

@@ -1,5 +1,5 @@
 import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
-import type { FormState, Theme } from '../../../../types';
+import type { Theme } from '../../../../types';
 import type { JssStyle, Styles } from 'jss';
 import { getCss, isThemeDark, mergeDeep } from '../../../../utils';
 import {
@@ -14,6 +14,7 @@ import { OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 import { getThemedFormStateColors } from '../../../../styles/form-state-color-styles';
 import { INPUT_HEIGHT } from '../../../../styles/form-styles';
 import { hoverMediaQuery } from '../../../../styles/hover-media-query';
+import type { FormState } from '../../form-state';
 
 const { baseColor: themeLightBaseColor, backgroundSurfaceColor: themeLightBackgroundSurfaceColor } =
   getThemedColors('light');

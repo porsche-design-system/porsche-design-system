@@ -15,11 +15,12 @@ import {
   validateProps,
 } from '../../../utils';
 import type { PropTypes } from '../../../utils';
-import type { BreakpointCustomizable, FormState } from '../../../types';
+import type { BreakpointCustomizable } from '../../../types';
 import { getComponentCss, getSlottedCss } from './checkbox-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
 import { Required } from '../../common/required/required';
-import { FORM_STATES } from '../../../types';
+import { FORM_STATES } from '../form-state';
+import type { FormState } from '../form-state';
 
 const propTypes: PropTypes<typeof CheckboxWrapper> = {
   label: AllowedTypes.string,

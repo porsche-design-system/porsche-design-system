@@ -1,4 +1,4 @@
-import type { FormState } from '../../../types';
+import type { FormState } from '../form-state';
 import { pxToRemWithUnit } from '../../../styles';
 import { getClosestHTMLElement } from '../../../utils';
 
