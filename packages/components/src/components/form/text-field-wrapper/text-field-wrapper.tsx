@@ -178,6 +178,11 @@ export class TextFieldWrapper {
       onClick: this.onLabelClick,
     };
 
+    const iconProps = {
+      color: 'inherit',
+      'aria-hidden': 'true',
+    };
+
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
@@ -216,11 +221,7 @@ export class TextFieldWrapper {
               aria-pressed={this.showPassword ? 'true' : 'false'}
             >
               <span class="sr-only">Toggle password visibility</span>
-              <PrefixedTagNames.pIcon
-                name={this.showPassword ? 'view-off' : 'view'}
-                color="inherit"
-                aria-hidden="true"
-              />
+              <PrefixedTagNames.pIcon name={this.showPassword ? 'view-off' : 'view'} {...iconProps} />
             </button>
           ) : (
             this.isSearch && [
@@ -232,15 +233,15 @@ export class TextFieldWrapper {
                 tabIndex={-1}
               >
                 <span class="sr-only">Clear</span>
-                <PrefixedTagNames.pIcon name="close" color="inherit" aria-hidden="true" />
+                <PrefixedTagNames.pIcon name="close" {...iconProps} />
               </button>,
               this.isWithinForm ? (
                 <button type="submit" onClick={this.onSubmit} disabled={disabled || readOnly}>
                   <span class="sr-only">Search</span>
-                  <PrefixedTagNames.pIcon name="search" color="inherit" aria-hidden="true" />
+                  <PrefixedTagNames.pIcon name="search" {...iconProps} />
                 </button>
               ) : (
-                <PrefixedTagNames.pIcon name="search" color="inherit" aria-hidden="true" />
+                <PrefixedTagNames.pIcon name="search" {...iconProps} />
               ),
             ]
           )}
