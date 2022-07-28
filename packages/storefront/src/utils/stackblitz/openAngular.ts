@@ -6,7 +6,7 @@ import { getAdditionalDependencies, themeDarkBodyStyles } from '@/utils/stackbli
 import type { StackBlitzFrameworkOpts, DependenciesMap } from '@/utils/stackblitz/openInStackBlitz';
 
 export const openAngular = (props: StackBlitzFrameworkOpts): void => {
-  const { markup, description, title, hasFrameworkMarkup, isThemeDark, additionalDependencies } = props;
+  const { markup, description, title, hasFrameworkMarkup, bodyStyles, additionalDependencies } = props;
 
   const dependenciesMap: DependenciesMap = {
     IMask: {
@@ -40,7 +40,7 @@ export class AppComponent  {}`;
     files: {
       // root folder
       'index.html': `${selector}
-${isThemeDark ? `<style>${themeDarkBodyStyles}</style>` : ''}`,
+${`<style>${bodyStyles}</style>`}`,
       'main.ts': `import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import 'zone.js/dist/zone';

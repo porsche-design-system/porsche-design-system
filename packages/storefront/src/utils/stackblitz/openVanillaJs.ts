@@ -5,7 +5,7 @@ import { getAdditionalDependencies } from '@/utils/stackblitz/openInStackBlitz';
 import type { StackBlitzFrameworkOpts, DependenciesMap } from '@/utils/stackblitz/openInStackBlitz';
 
 export const openVanillaJS = (props: StackBlitzFrameworkOpts): void => {
-  const { markup, description, title, isThemeDark, bodyStyles, additionalDependencies } = props;
+  const { markup, description, title, bodyStyles, additionalDependencies } = props;
 
   const dependenciesMap: DependenciesMap = {
     IMask: {
@@ -28,7 +28,7 @@ IMask`
 
 porscheDesignSystem.load();
 `,
-        'style.css': isThemeDark ? bodyStyles : '',
+        'style.css': bodyStyles,
       },
       template: 'javascript',
       title,

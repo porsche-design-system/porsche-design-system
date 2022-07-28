@@ -42,6 +42,7 @@
           :framework="activeFramework"
           :has-framework-markup="hasFrameworkMarkup"
           :additional-dependencies="additionalDependencies"
+          :colorScheme="config.colorScheme"
         ></CodeEditor>
       </template>
     </div>

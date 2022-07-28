@@ -20,6 +20,7 @@
     @Prop({ default: 'vanilla-js' }) public framework!: Framework;
     @Prop({ default: false }) public hasFrameworkMarkup!: boolean;
     @Prop({ default: '' }) public additionalDependencies?: string[];
+    @Prop({ default: 'default' }) public colorScheme!: 'default' | 'surface';
 
     stackBlitzIcon = require('../assets/icon-stackblitz.svg');
 
@@ -31,6 +32,7 @@
         theme: this.theme,
         hasFrameworkMarkup: this.hasFrameworkMarkup,
         additionalDependencies: this.additionalDependencies,
+        colorScheme: this.colorScheme,
       });
     }
 

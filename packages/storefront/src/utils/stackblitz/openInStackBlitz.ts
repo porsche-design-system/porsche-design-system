@@ -1,5 +1,5 @@
 import { convertMarkup } from '@/utils/formatting';
-import { themeDark } from '@porsche-design-system/utilities-v2';
+import { themeDark, themeLight } from '@porsche-design-system/utilities-v2';
 import { openVanillaJS } from '@/utils/stackblitz/openVanillaJs';
 import { openReact } from '@/utils/stackblitz/openReact';
 import { openAngular } from '@/utils/stackblitz/openAngular';
@@ -11,36 +11,54 @@ type OpenInStackBlitzOpts = {
   framework: Framework;
   theme: Theme;
   hasFrameworkMarkup: boolean;
+  colorScheme: 'default' | 'surface';
   additionalDependencies?: string[];
 };
 
-export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | 'theme'> & {
+export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | 'theme' | 'colorScheme'> & {
   title: string;
   description: string;
-  isThemeDark: boolean;
   bodyStyles: string;
   reactComponentsToImport?: string;
 };
 
 export const themeDarkBodyStyles = `body { background: ${themeDark.background.base}; }`;
 
+// TODO: Unit test
+const getBackgroundColor = (theme: Theme, colorScheme: string) => {
+  const backgroundBase = themeLight.background.base;
+  const backgroundSurface = themeLight.background.surface;
+  const darkBackgroundBase = themeDark.background.base;
+  const darkBackgroundSurface = themeDark.background.surface;
+  const isThemeDark = theme === 'dark';
+
+  let backgroundColor;
+
+  if (colorScheme === 'surface') {
+    backgroundColor = isThemeDark ? darkBackgroundSurface : backgroundSurface;
+  } else {
+    backgroundColor = isThemeDark ? darkBackgroundBase : backgroundBase;
+  }
+
+  return backgroundColor;
+};
+
 export const openInStackBlitz = (props: OpenInStackBlitzOpts): void => {
-  const { markup, framework, theme, hasFrameworkMarkup, additionalDependencies } = props;
+  const { markup, framework, theme, hasFrameworkMarkup, additionalDependencies, colorScheme } = props;
   const convertedMarkup = hasFrameworkMarkup ? markup : convertMarkup(markup, framework);
 
+  // Extract to helper and unit test?
   const pdsComponents = Array.from(markup.matchAll(/<((?:\w|-)+)(?:.|\n)*?>/g) ?? [])
     .map(([, x]) => x)
     .filter((tagName, idx, arr) => arr.findIndex((t) => t.startsWith('p-') && t === tagName) === idx);
   const reactComponentsToImport = pdsComponents.map((x) => pascalCase(x)).join(', ');
-  const isThemeDark = theme === 'dark';
 
   const openProps: StackBlitzFrameworkOpts = {
     markup: convertedMarkup,
     hasFrameworkMarkup,
     title: `Porsche Design System ${framework} sandbox`,
     description: `${pdsComponents[0]} component example`,
-    isThemeDark,
-    bodyStyles: `body { background: ${themeDark.background.base}; }`,
+    bodyStyles: `body { background: ${getBackgroundColor(theme, colorScheme)}; }`,
     additionalDependencies,
   };
 
