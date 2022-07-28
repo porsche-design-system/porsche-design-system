@@ -1,3 +1,4 @@
+import sdk from '@stackblitz/sdk';
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
 import {
   devDependencies as reactDevDependencies,
@@ -5,10 +6,17 @@ import {
 } from '../../../../components-react/package.json';
 import { getAdditionalDependencies, themeDarkBodyStyles } from '@/utils/stackblitz/openInStackBlitz';
 import type { StackBlitzFrameworkOpts, DependenciesMap } from '@/utils/stackblitz/openInStackBlitz';
-import sdk from '@stackblitz/sdk';
 
 export const openReact = (props: StackBlitzFrameworkOpts): void => {
-  const { markup, description, title, hasFrameworkMarkup, isThemeDark, componentNames, additionalDependencies } = props;
+  const {
+    markup,
+    description,
+    title,
+    hasFrameworkMarkup,
+    isThemeDark,
+    reactComponentsToImport,
+    additionalDependencies,
+  } = props;
 
   const dependenciesMap: DependenciesMap = {
     IMask: {
@@ -22,7 +30,8 @@ export const openReact = (props: StackBlitzFrameworkOpts): void => {
     ? `import React from 'react';
 ${cleanedFragmentsMarkup}`
     : `import * as React from 'react';
-import { ${componentNames} } from '@porsche-design-system/components-react'
+import { ${reactComponentsToImport} } from '@porsche-design-system/components-react'
+
 export default function App() {
   return (
     <div>
@@ -30,10 +39,9 @@ export default function App() {
     </div>
   );
 }`;
-
-  const [, extractComponentName] = markup.match(/const ([A-z]+) = \(\): JSX.Element => {/) ?? [];
-  const reactComponentName = hasFrameworkMarkup ? extractComponentName : 'App';
-  const reactImport = hasFrameworkMarkup ? `{ ${reactComponentName} }` : reactComponentName;
+  const [, componentName] = markup.match(/const ([A-z]+) = \(\): JSX.Element => {/) ?? [];
+  const tagName = hasFrameworkMarkup ? componentName : 'App';
+  const reactImport = hasFrameworkMarkup ? `{ ${componentName} }` : 'App';
 
   sdk.openProject(
     {
@@ -53,7 +61,7 @@ const root = ReactDOMClient.createRoot(rootElement);
 root.render(
   <StrictMode>
     <PorscheDesignSystemProvider>
-      <${reactComponentName} />
+      <${tagName} />
     </PorscheDesignSystemProvider>
   </StrictMode>
 );`,
