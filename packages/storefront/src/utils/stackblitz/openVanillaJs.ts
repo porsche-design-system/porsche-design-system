@@ -3,7 +3,7 @@ import type { StackBlitzFrameworkOpts } from '@/utils/stackblitz/openInStackBlit
 import sdk from '@stackblitz/sdk';
 
 export const openVanillaJS = (props: StackBlitzFrameworkOpts): void => {
-  const { markup, description, title, isThemeDark, bodyStyles, additionalJavaScriptLogic } = props;
+  const { markup, description, title, isThemeDark, bodyStyles } = props;
 
   sdk.openProject(
     {
@@ -12,8 +12,6 @@ export const openVanillaJS = (props: StackBlitzFrameworkOpts): void => {
         'index.js': `import './style.css'
 import * as porscheDesignSystem from '@porsche-design-system/components-js'
 porscheDesignSystem.load();
-
-${additionalJavaScriptLogic}
 `,
         'style.css': isThemeDark ? bodyStyles : '',
       },
