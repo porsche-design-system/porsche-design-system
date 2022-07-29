@@ -9,8 +9,6 @@
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
   import { Framework, Theme } from '@/models';
-  import { themeDark } from '@porsche-design-system/utilities-v2';
-  import { codePenConfig } from '@/lib/partialResults';
   import { openInStackBlitz } from '@/utils/stackblitz/openInStackBlitz';
 
   @Component
@@ -19,8 +17,8 @@
     @Prop({ default: 'light' }) public theme!: Theme;
     @Prop({ default: 'vanilla-js' }) public framework!: Framework;
     @Prop({ default: false }) public hasFrameworkMarkup!: boolean;
-    @Prop({ default: '' }) public additionalDependencies?: string[];
     @Prop({ default: 'default' }) public colorScheme!: 'default' | 'surface';
+    @Prop({ default: '' }) public additionalDependencies?: string[];
 
     stackBlitzIcon = require('../assets/icon-stackblitz.svg');
 
@@ -33,18 +31,6 @@
         hasFrameworkMarkup: this.hasFrameworkMarkup,
         additionalDependencies: this.additionalDependencies,
         colorScheme: this.colorScheme,
-      });
-    }
-
-    public get codepen(): string {
-      // https://blog.codepen.io/documentation/prefill/
-      return JSON.stringify({
-        title: 'Porsche Design System',
-        editors: '100', // html open, css closed, js closed
-        html: this.markup,
-        ...codePenConfig,
-        ...(this.theme === 'dark' && { css: codePenConfig.css + `body { background: ${themeDark.background.base}; }` }),
-        // js_external: `${path}${PDS_LOADER_FILENAME}`,
       });
     }
   }

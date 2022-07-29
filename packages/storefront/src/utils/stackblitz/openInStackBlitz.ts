@@ -22,8 +22,6 @@ export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | '
   reactComponentsToImport?: string;
 };
 
-export const themeDarkBodyStyles = `body { background: ${themeDark.background.base}; }`;
-
 // TODO: Unit test
 const getBackgroundColor = (theme: Theme, colorScheme: string) => {
   const backgroundBase = themeLight.background.base;
