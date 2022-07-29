@@ -7,8 +7,7 @@ import {
   throwIfInvalidLinkUsage,
   validateProps,
 } from '../../../utils';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../../utils';
-import type { LinkTarget } from '../../../types';
+import type { BreakpointCustomizable, LinkTarget, PropTypes, Theme } from '../../../types';
 import type { SocialIconName } from './link-social-utils';
 import { getComponentCss } from './link-social-styles';
 

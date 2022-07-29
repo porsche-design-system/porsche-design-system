@@ -1,5 +1,5 @@
 import type { JssStyle } from 'jss';
-import type { Theme } from '../../../utils';
+import type { Theme } from '../../../types';
 import type { ContentWrapperWidth, ContentWrapperBackgroundColor } from './content-wrapper-utils';
 import { getCss } from '../../../utils';
 import { getThemedColors } from '../../../styles';

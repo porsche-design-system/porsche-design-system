@@ -1,4 +1,4 @@
-import type { ThemeExtendedElectric } from '../../../../utils';
+import type { ThemeExtendedElectric } from '../../../../types';
 import { getCss } from '../../../../utils';
 import { addImportantToEachRule, getFocusJssStyle, getThemedColors } from '../../../../styles';
 import { getFocusVisibleFallback } from '../../../../styles/focus-visible-fallback';

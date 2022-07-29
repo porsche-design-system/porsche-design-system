@@ -4,7 +4,7 @@ import * as isThemeDarkUtils from '../../../utils/theme/isThemeDark';
 import * as tagStyles from './tag-styles';
 import { getColors, getComponentCss, getThemedBackgroundColor } from './tag-styles';
 import { getThemedColors } from '../../../styles/colors';
-import type { Theme } from '../../../utils';
+import type { Theme } from '../../../types';
 import type { TagColor } from './tag-utils';
 
 describe('getThemedBackgroundColor()', () => {

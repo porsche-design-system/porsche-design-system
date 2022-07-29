@@ -12,7 +12,7 @@ import {
   unobserveChildren,
   validateProps,
 } from '../../../../utils';
-import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../../../utils';
+import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../../../types';
 import type {
   TabChangeEvent,
   TabGradientColorTheme,

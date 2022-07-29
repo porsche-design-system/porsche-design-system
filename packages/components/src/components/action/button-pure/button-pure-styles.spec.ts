@@ -1,6 +1,11 @@
 import { getComponentCss } from './button-pure-styles';
-import type { BreakpointCustomizable, ThemeExtendedElectricDark } from '../../../utils';
-import type { AlignLabel, LinkButtonPureIconName, TextSize } from '../../../types';
+import type {
+  AlignLabel,
+  BreakpointCustomizable,
+  LinkButtonPureIconName,
+  TextSize,
+  ThemeExtendedElectricDark,
+} from '../../../types';
 
 describe('getComponentCss()', () => {
   const breakpointCustomizableBoolean = { base: true, xs: false, s: true, m: false, l: true, xl: false };

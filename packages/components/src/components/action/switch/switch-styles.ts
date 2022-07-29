@@ -1,6 +1,6 @@
 import type { JssStyle } from 'jss';
-import type { BreakpointCustomizable, GetJssStyleFunction, ThemeExtendedElectric } from '../../../utils';
-import type { AlignLabel, AlignLabelType } from '../../../types';
+import type { GetJssStyleFunction } from '../../../utils';
+import type { AlignLabel, AlignLabelType, BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
 import { buildResponsiveStyles, getCss, isThemeLightElectric, mergeDeep } from '../../../utils';
 import {
   addImportantToEachRule,

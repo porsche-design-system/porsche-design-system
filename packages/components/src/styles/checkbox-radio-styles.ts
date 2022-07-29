@@ -1,4 +1,4 @@
-import type { BreakpointCustomizable, Theme } from '../utils';
+import type { BreakpointCustomizable, Theme } from '../types';
 import type { JssStyle } from 'jss';
 import { buildResponsiveStyles } from '../utils';
 import { getFormCheckboxRadioHiddenJssStyle, getTransition, getThemedColors } from '.';

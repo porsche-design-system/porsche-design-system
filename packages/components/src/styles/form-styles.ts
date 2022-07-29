@@ -1,5 +1,5 @@
 import type { JssStyle, Styles } from 'jss';
-import type { BreakpointCustomizable, Theme } from '../utils';
+import type { BreakpointCustomizable, Theme } from '../types';
 import { buildResponsiveStyles, isThemeDark, isVisibleFormState } from '../utils';
 import {
   addImportantToRule,

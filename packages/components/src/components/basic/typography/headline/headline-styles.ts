@@ -1,6 +1,5 @@
 import type { JssStyle } from 'jss';
-import type { HeadlineVariant, TextAlign, TextColor, TextSize, VariantType } from '../../../../types';
-import type { Theme } from '../../../../utils';
+import type { HeadlineVariant, TextAlign, TextColor, TextSize, Theme, VariantType } from '../../../../types';
 import { buildResponsiveStyles, buildSlottedStyles, getCss, mergeDeep, textMap } from '../../../../utils';
 import { addImportantToEachRule, getBaseSlottedStyles, getThemedColors } from '../../../../styles';
 import {

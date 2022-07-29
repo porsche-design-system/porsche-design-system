@@ -10,7 +10,7 @@ import {
   updateChildren,
   validateProps,
 } from '../../../../utils';
-import { PropTypes, Theme } from '../../../../utils';
+import { PropTypes, Theme } from '../../../../types';
 import type { ListType, OrderType } from './text-list-utils';
 import { LIST_TYPES, ORDER_TYPES } from './text-list-utils';
 import { getComponentCss, getSlottedCss } from './text-list-styles';

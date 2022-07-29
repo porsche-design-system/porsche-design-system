@@ -1,5 +1,5 @@
 import { hasInvertedThemeColor, TagColor } from './tag-utils';
-import type { Theme } from '../../../utils';
+import type { Theme } from '../../../types';
 
 describe('hasInvertedThemeColor()', () => {
   it.each<[TagColor, Theme, boolean]>([

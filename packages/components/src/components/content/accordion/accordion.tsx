@@ -3,12 +3,12 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  HEADLINE_TAGS,
   THEMES_EXTENDED_ELECTRIC,
   validateProps,
 } from '../../../utils';
-import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../../utils';
+import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
-import { HEADLINE_TAGS } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
 import {
   ACCORDION_SIZES,

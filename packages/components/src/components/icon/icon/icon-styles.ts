@@ -1,5 +1,4 @@
-import type { TextColor, IconSize } from '../../../types';
-import type { ThemeExtendedElectricDark } from '../../../utils';
+import type { IconSize, TextColor, ThemeExtendedElectricDark } from '../../../types';
 import { getCss } from '../../../utils';
 import { pxToRemWithUnit } from '../../../styles';
 import { getThemedTextColor } from '../../../styles/text-icon-styles';

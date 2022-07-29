@@ -1,6 +1,6 @@
 import { getCss } from '../../../utils';
 import { addImportantToEachRule, getThemedColors, pxToRemWithUnit } from '../../../styles';
-import type { ThemeExtendedElectric } from '../../../utils';
+import type { ThemeExtendedElectric } from '../../../types';
 import type { GradientColorTheme } from './scroller-utils';
 import type { JssStyle } from 'jss';
 

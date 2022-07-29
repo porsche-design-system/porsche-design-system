@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@stencil/core';
-import type { PropTypes, Theme } from '../../../utils';
+import type { PropTypes, Theme } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,

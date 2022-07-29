@@ -1,5 +1,5 @@
 import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
-import type { Theme } from '../../../../utils';
+import type { Theme } from '../../../../types';
 import type { JssStyle, Styles } from 'jss';
 import { getCss, isThemeDark, mergeDeep } from '../../../../utils';
 import {

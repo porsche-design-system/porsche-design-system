@@ -1,6 +1,6 @@
 import type { JssStyle } from 'jss';
 import type { SpinnerSize, SpinnerSizeType } from './spinner-utils';
-import type { ThemeExtendedElectricDark } from '../../../utils';
+import type { ThemeExtendedElectricDark } from '../../../types';
 import { buildResponsiveStyles, buildSlottedStyles, getCss, isThemeDark, isThemeDarkElectric } from '../../../utils';
 import { getBaseSlottedStyles, pxToRemWithUnit, getThemedColors, getScreenReaderOnlyJssStyle } from '../../../styles';
 

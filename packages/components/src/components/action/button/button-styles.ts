@@ -1,5 +1,4 @@
-import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../utils';
-import type { ButtonVariant } from '../../../types';
+import type { BreakpointCustomizable, ButtonVariant, ThemeExtendedElectric } from '../../../types';
 import { getCss } from '../../../utils';
 import { getLinkButtonStyles } from '../../../styles/link-button-styles';
 

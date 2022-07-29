@@ -13,7 +13,7 @@ import type {
 } from './flex-item-utils';
 import { getComponentCss } from './flex-item-styles';
 import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../../utils';
-import type { PropTypes } from '../../../../utils';
+import type { PropTypes } from '../../../../types';
 import {
   FLEX_ITEM_ALIGN_SELFS,
   FLEX_ITEM_FLEXS,

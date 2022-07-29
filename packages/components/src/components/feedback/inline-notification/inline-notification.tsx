@@ -1,15 +1,14 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter, Host } from '@stencil/core';
 import {
-  getPrefixedTagNames,
+  AllowedTypes,
   attachComponentCss,
   attachSlottedCss,
+  getPrefixedTagNames,
   hasHeading,
-  AllowedTypes,
   THEMES,
   validateProps,
 } from '../../../utils';
-import type { PropTypes, Theme } from '../../../utils';
-import type { IconName } from '../../../types';
+import type { IconName, PropTypes, Theme } from '../../../types';
 import { getComponentCss, getSlottedCss } from './inline-notification-styles';
 import { INLINE_NOTIFICATION_STATES, getContentAriaAttributes, getIconName } from './inline-notification-utils';
 import type { InlineNotificationState } from './inline-notification-utils';

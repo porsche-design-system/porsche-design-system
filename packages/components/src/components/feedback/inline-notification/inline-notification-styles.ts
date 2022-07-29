@@ -1,6 +1,6 @@
 import type { JssStyle } from 'jss';
 import { mediaQueryMin } from '@porsche-design-system/utilities-v2';
-import type { Theme } from '../../../utils';
+import type { Theme } from '../../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
 import { buildSlottedStyles, getCss } from '../../../utils';
 import { addImportantToEachRule, getBaseSlottedStyles, pxToRemWithUnit, getThemedColors } from '../../../styles';

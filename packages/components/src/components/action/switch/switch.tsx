@@ -1,6 +1,7 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter, Listen } from '@stencil/core';
-import type { AlignLabel } from '../../../types';
+import type { AlignLabel, BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../../types';
 import {
+  ALIGN_LABELS,
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
@@ -9,10 +10,8 @@ import {
   THEMES_EXTENDED_ELECTRIC,
   validateProps,
 } from '../../../utils';
-import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../../utils';
 import { getComponentCss } from './switch-styles';
 import { getButtonAriaAttributes } from './switch-utils';
-import { ALIGN_LABELS } from '../../../types';
 
 export type SwitchChangeEvent = { checked: boolean };
 

@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, JSX, Prop, State } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, getPrefixedTagNames, THEMES, validateProps } from '../../../utils';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../../utils';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import type { NumberOfPageLinks, PageChangeEvent } from './pagination-utils';
 import {
   createPaginationModel,

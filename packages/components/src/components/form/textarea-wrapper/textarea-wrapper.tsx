@@ -1,5 +1,5 @@
 import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes } from '../../../utils';
+import type { BreakpointCustomizable, PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
