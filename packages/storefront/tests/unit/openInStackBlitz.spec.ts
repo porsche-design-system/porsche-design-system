@@ -1,4 +1,5 @@
 import {
+  FrameworksWithoutShared,
   getAdditionalDependencies,
   getBackgroundColor,
   getStackBlitzMarkup,
@@ -42,15 +43,17 @@ describe('getAdditionalDependencies()', () => {
 });
 
 describe('getStackBlitzMarkup()', () => {
+  const framework = 'angular' as unknown as FrameworksWithoutShared;
+
   it('should return markup', () => {
     const markup = 'example markup';
 
-    expect(getStackBlitzMarkup(true, markup, 'angular')).toBe(markup);
+    expect(getStackBlitzMarkup(true, markup, framework)).toBe(markup);
   });
 
   it('should call convertMarkup() with correct parameters', () => {
     const markup = 'example markup';
-    const framework = 'angular';
+
     const spy = jest.spyOn(formattingUtils, 'convertMarkup');
 
     getStackBlitzMarkup(false, markup, framework);

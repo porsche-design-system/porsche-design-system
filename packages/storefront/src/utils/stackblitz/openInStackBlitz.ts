@@ -6,9 +6,11 @@ import { openAngular } from '@/utils/stackblitz/openAngular';
 import { pascalCase } from 'change-case';
 import type { Framework, Theme, ColorScheme } from '@/models';
 
+export type FrameworksWithoutShared = Omit<Framework, 'shared'>;
+
 type OpenInStackBlitzOpts = {
   markup: string;
-  framework: Framework;
+  framework: FrameworksWithoutShared;
   theme: Theme;
   hasFrameworkMarkup: boolean;
   colorScheme: ColorScheme;
@@ -40,8 +42,11 @@ export const getBackgroundColor = (theme: Theme, colorScheme: ColorScheme): stri
   return backgroundColor;
 };
 
-export const getStackBlitzMarkup = (hasFrameworkMarkup: boolean, markup: string, framework: Framework): string =>
-  hasFrameworkMarkup ? markup : convertMarkup(markup, framework);
+export const getStackBlitzMarkup = (
+  hasFrameworkMarkup: boolean,
+  markup: string,
+  framework: FrameworksWithoutShared
+): string => (hasFrameworkMarkup ? markup : convertMarkup(markup, framework));
 
 export const openInStackBlitz = (props: OpenInStackBlitzOpts): void => {
   const { markup, framework, theme, hasFrameworkMarkup, additionalDependencies, colorScheme } = props;
