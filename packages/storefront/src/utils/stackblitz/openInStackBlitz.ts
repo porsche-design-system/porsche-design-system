@@ -40,9 +40,11 @@ export const getBackgroundColor = (theme: Theme, colorScheme: ColorScheme): stri
   return backgroundColor;
 };
 
+export const getStackBlitzMarkup = (hasFrameworkMarkup: boolean, markup: string, framework: Framework): string =>
+  hasFrameworkMarkup ? markup : convertMarkup(markup, framework);
+
 export const openInStackBlitz = (props: OpenInStackBlitzOpts): void => {
   const { markup, framework, theme, hasFrameworkMarkup, additionalDependencies, colorScheme } = props;
-  const convertedMarkup = hasFrameworkMarkup ? markup : convertMarkup(markup, framework);
 
   // Extract to helper and unit test?
   const pdsComponents = Array.from(markup.matchAll(/<((?:\w|-)+)(?:.|\n)*?>/g) ?? [])
@@ -51,7 +53,7 @@ export const openInStackBlitz = (props: OpenInStackBlitzOpts): void => {
   const reactComponentsToImport = pdsComponents.map((x) => pascalCase(x)).join(', ');
 
   const openProps: StackBlitzFrameworkOpts = {
-    markup: convertedMarkup,
+    markup: getStackBlitzMarkup(hasFrameworkMarkup, markup, framework),
     hasFrameworkMarkup,
     title: `Porsche Design System ${framework} sandbox`,
     description: `${pdsComponents[0]} component example`,

@@ -1,6 +1,11 @@
-import { getAdditionalDependencies, getBackgroundColor } from './../../src/utils/stackblitz/openInStackBlitz';
+import {
+  getAdditionalDependencies,
+  getBackgroundColor,
+  getStackBlitzMarkup,
+} from './../../src/utils/stackblitz/openInStackBlitz';
 import { themeDark, themeLight } from '@porsche-design-system/utilities-v2';
 import type { Theme, ColorScheme } from './../../src/models/index';
+import * as formattingUtils from '../../src/utils/formatting';
 
 describe('getBackgroundColor()', () => {
   it.each<[Theme, ColorScheme, string]>([
@@ -33,5 +38,23 @@ describe('getAdditionalDependencies()', () => {
       ...dependenciesMap.dependencyAlias1,
       ...dependenciesMap.dependencyAlias2,
     });
+  });
+});
+
+describe('getStackBlitzMarkup()', () => {
+  it('should return markup', () => {
+    const markup = 'example markup';
+
+    expect(getStackBlitzMarkup(true, markup, 'angular')).toBe(markup);
+  });
+
+  it('should call convertMarkup() with correct parameters', () => {
+    const markup = 'example markup';
+    const framework = 'angular';
+    const spy = jest.spyOn(formattingUtils, 'convertMarkup');
+
+    getStackBlitzMarkup(false, markup, framework);
+
+    expect(spy).toBeCalledWith(markup, framework);
   });
 });
