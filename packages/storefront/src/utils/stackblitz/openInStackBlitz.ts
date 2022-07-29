@@ -76,11 +76,9 @@ export type DependenciesMap = { [key: string]: { [key: string]: string } };
 
 // TODO: unit test
 export const getAdditionalDependencies = (
-  additionalDependencies: string[] | undefined,
+  additionalDependencies: string[],
   dependenciesMap: DependenciesMap
-) =>
+): { [key: string]: string } =>
   additionalDependencies
-    ? additionalDependencies
-        .map((dep) => dependenciesMap[dep])
-        .reduce((result, current) => Object.assign(result, current), {})
-    : {};
+    .map((dep) => dependenciesMap[dep])
+    .reduce((result, current) => Object.assign(result, current), {});

@@ -74,7 +74,7 @@ root.render(
         '@porsche-design-system/components-react': `${pdsVersion}`,
         '@types/react': `${reactDevDependencies['@types/react']}`,
         '@types/react-dom': `${reactDevDependencies['@types/react-dom']}`,
-        ...getAdditionalDependencies(additionalDependencies, dependenciesMap),
+        ...(additionalDependencies && getAdditionalDependencies(additionalDependencies, dependenciesMap)),
       },
     },
     {

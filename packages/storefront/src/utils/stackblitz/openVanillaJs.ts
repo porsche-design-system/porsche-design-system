@@ -35,7 +35,7 @@ porscheDesignSystem.load();
       description,
       dependencies: {
         '@porsche-design-system/components-js': `${pdsVersion}`,
-        ...getAdditionalDependencies(additionalDependencies, dependenciesMap),
+        ...(additionalDependencies && getAdditionalDependencies(additionalDependencies, dependenciesMap)),
       },
     },
     {
