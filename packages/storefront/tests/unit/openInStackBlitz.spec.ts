@@ -43,7 +43,7 @@ describe('getAdditionalDependencies()', () => {
 });
 
 describe('getStackBlitzMarkup()', () => {
-  const framework = 'angular' as unknown as FrameworksWithoutShared;
+  const framework = 'angular';
 
   it('should return markup', () => {
     const markup = 'example markup';

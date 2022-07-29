@@ -34,15 +34,14 @@ export const escapeHtml = (input: string): string =>
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 
-// TODO: unit test
 export const convertMarkup = (markup: string, framework: FrameworksWithoutShared): string => {
-  markup = cleanMarkup(markup);
+  const cleanedMarkup = cleanMarkup(markup);
   switch (framework) {
     case 'angular':
-      return convertToAngular(markup);
+      return convertToAngular(cleanedMarkup);
     case 'react':
-      return convertToReact(markup);
+      return convertToReact(cleanedMarkup);
     default:
-      return markup;
+      return cleanedMarkup;
   }
 };

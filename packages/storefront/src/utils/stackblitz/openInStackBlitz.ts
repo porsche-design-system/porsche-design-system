@@ -6,7 +6,7 @@ import { openAngular } from '@/utils/stackblitz/openAngular';
 import { pascalCase } from 'change-case';
 import type { Framework, Theme, ColorScheme } from '@/models';
 
-export type FrameworksWithoutShared = Omit<Framework, 'shared'>;
+export type FrameworksWithoutShared = Exclude<Framework, 'shared'>;
 
 type OpenInStackBlitzOpts = {
   markup: string;
