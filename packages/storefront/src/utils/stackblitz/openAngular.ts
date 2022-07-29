@@ -71,7 +71,7 @@ export class AppModule {}`,
     description,
     dependencies: {
       '@porsche-design-system/components-angular': `${pdsVersion}`,
-      ...getAdditionalDependencies(additionalDependencies, dependenciesMap),
+      ...(additionalDependencies && getAdditionalDependencies(additionalDependencies, dependenciesMap)),
     },
   });
 };
