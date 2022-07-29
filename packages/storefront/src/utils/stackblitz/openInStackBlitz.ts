@@ -6,12 +6,14 @@ import { openAngular } from '@/utils/stackblitz/openAngular';
 import { pascalCase } from 'change-case';
 import type { Framework, Theme } from '@/models';
 
+type ColorScheme = 'default' | 'surface';
+
 type OpenInStackBlitzOpts = {
   markup: string;
   framework: Framework;
   theme: Theme;
   hasFrameworkMarkup: boolean;
-  colorScheme: 'default' | 'surface';
+  colorScheme: ColorScheme;
   additionalDependencies?: string[];
 };
 
@@ -23,7 +25,7 @@ export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | '
 };
 
 // TODO: Unit test
-const getBackgroundColor = (theme: Theme, colorScheme: string) => {
+export const getBackgroundColor = (theme: Theme, colorScheme: ColorScheme) => {
   const backgroundBase = themeLight.background.base;
   const backgroundSurface = themeLight.background.surface;
   const darkBackgroundBase = themeDark.background.base;
