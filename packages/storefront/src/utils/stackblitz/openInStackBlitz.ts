@@ -74,7 +74,6 @@ export const openInStackBlitz = (props: OpenInStackBlitzOpts): void => {
 
 export type DependenciesMap = { [key: string]: { [key: string]: string } };
 
-// TODO: unit test
 export const getAdditionalDependencies = (
   additionalDependencies: string[],
   dependenciesMap: DependenciesMap
