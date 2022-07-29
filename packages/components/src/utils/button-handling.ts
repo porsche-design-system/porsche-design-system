@@ -1,4 +1,5 @@
 import type { ButtonType } from '../types';
+import { getClosestHTMLElement } from './dom';
 
 export const improveButtonHandlingForCustomElement = (
   element: HTMLElement,
@@ -15,7 +16,7 @@ export const handleButtonEvent = (
   getDisabled: () => boolean
 ): void => {
   // Why? That's why: https://www.hjorthhansen.dev/shadow-dom-and-forms/
-  const form = element.closest('form');
+  const form = getClosestHTMLElement(element, 'form');
   if (form && !getDisabled()) {
     /**
      * we've to wait if someone calls preventDefault on the event

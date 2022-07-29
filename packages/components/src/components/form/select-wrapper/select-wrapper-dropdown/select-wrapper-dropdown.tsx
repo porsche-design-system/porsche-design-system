@@ -32,7 +32,8 @@ import {
   setFilteredOptionMaps,
   determineDirection,
 } from './select-wrapper-dropdown-utils';
-import type { FormState, Theme } from '../../../../types';
+import type { Theme } from '../../../../types';
+import type { FormState } from '../../form-state';
 import { getComponentCss } from './select-wrapper-dropdown-styles';
 
 @Component({
@@ -291,7 +292,6 @@ export class SelectWrapperDropdown {
         }
         break;
       case 'Escape':
-      case 'Esc':
       case 'Tab':
         this.setDropdownVisibility('hide');
         this.resetHighlightedToSelectedOptionMaps();

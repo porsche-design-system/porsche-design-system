@@ -1,21 +1,21 @@
 import * as getOnlyChildOfKindHTMLElementOrThrowUtils from '../../../utils/validation/getOnlyChildOfKindHTMLElementOrThrow';
 import { TextareaWrapper } from './textarea-wrapper';
-import * as textFieldWrapperUtils from '../text-field-wrapper/text-field-wrapper-utils';
+import * as formUtils from '../form-utils';
 import * as a11yUtils from '../../../utils/a11y/a11y';
 
 jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
 
 describe('componentWillLoad', () => {
+  // TODO: prove connection between util actually setting member value
   it('should call hasCounter() with correct parameter and set hasCounter', () => {
     const textarea = document.createElement('textarea');
     jest
       .spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow')
       .mockReturnValue(textarea);
 
-    const spy = jest.spyOn(textFieldWrapperUtils, 'hasCounter');
+    const spy = jest.spyOn(formUtils, 'hasCounter');
     const component = new TextareaWrapper();
-    component['textarea'] = textarea;
 
     expect(component['hasCounter']).toBe(undefined);
     component.componentWillLoad();
@@ -26,8 +26,8 @@ describe('componentWillLoad', () => {
 });
 
 describe('componentDidLoad', () => {
-  it('should call addInputEventListener() with correct parameters if hasCounter is true', () => {
-    const addInputEventListenerSpy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListener');
+  it('should call addInputEventListenerForCounter() with correct parameters if hasCounter is true', () => {
+    const spy = jest.spyOn(formUtils, 'addInputEventListenerForCounter');
 
     const textarea = document.createElement('textarea');
     const counter = document.createElement('span');
@@ -39,11 +39,11 @@ describe('componentDidLoad', () => {
     component['ariaElement'] = ariaElement;
 
     component.componentDidLoad();
-    expect(addInputEventListenerSpy).not.toBeCalled();
+    expect(spy).not.toBeCalled();
 
     component['hasCounter'] = true;
     component.componentDidLoad();
-    expect(addInputEventListenerSpy).toBeCalledWith(textarea, ariaElement, counter);
+    expect(spy).toBeCalledWith(textarea, ariaElement, counter);
   });
 });
 
