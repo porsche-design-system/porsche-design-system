@@ -4,9 +4,7 @@ import { openVanillaJS } from '@/utils/stackblitz/openVanillaJs';
 import { openReact } from '@/utils/stackblitz/openReact';
 import { openAngular } from '@/utils/stackblitz/openAngular';
 import { pascalCase } from 'change-case';
-import type { Framework, Theme } from '@/models';
-
-type ColorScheme = 'default' | 'surface';
+import type { Framework, Theme, ColorScheme } from '@/models';
 
 type OpenInStackBlitzOpts = {
   markup: string;
@@ -24,8 +22,7 @@ export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | '
   reactComponentsToImport?: string;
 };
 
-// TODO: Unit test
-export const getBackgroundColor = (theme: Theme, colorScheme: ColorScheme) => {
+export const getBackgroundColor = (theme: Theme, colorScheme: ColorScheme): string => {
   const backgroundBase = themeLight.background.base;
   const backgroundSurface = themeLight.background.surface;
   const darkBackgroundBase = themeDark.background.base;
