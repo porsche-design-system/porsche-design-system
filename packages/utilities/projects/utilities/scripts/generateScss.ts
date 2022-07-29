@@ -4,7 +4,8 @@ import * as prettier from 'prettier';
 import * as font from '../src/js/font';
 import * as grid from '../src/js/grid/grid';
 import * as gridGap from '../src/js/grid/grid-gap';
-import * as gridMaxWidth from '../src/js/grid/grid-max-width';
+import * as gridMinWidth from '../src/js/grid/grid-width';
+import * as gridMaxWidth from '../src/js/grid/grid-width';
 import * as gridSafeZone from '../src/js/grid/grid-safe-zone';
 import * as theme from '../src/js/theme';
 import * as spacing from '../src/js/spacing';
@@ -79,5 +80,15 @@ const generateMixins = (mixins: Mixins): void => {
 };
 
 cleanLib();
-generateVariables({ font, theme, spacing, colorExternal, breakpoint, gridGap, gridMaxWidth, gridSafeZone });
+generateVariables({
+  font,
+  theme,
+  spacing,
+  colorExternal,
+  breakpoint,
+  gridGap,
+  gridMinWidth,
+  gridMaxWidth,
+  gridSafeZone,
+});
 generateMixins({ heading, text, grid });

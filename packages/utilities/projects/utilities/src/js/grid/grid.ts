@@ -1,5 +1,5 @@
 import { gridGap } from './grid-gap';
-import { gridMaxWidth } from './grid-max-width';
+import { gridMaxWidth, gridMinWidth } from './grid-width';
 import { gridSafeZone } from './grid-safe-zone';
 import { mediaQueryMin } from '../mediaQuery';
 
@@ -10,12 +10,13 @@ const getGridTemplateColumns = (safeZone: string): string => {
 
 export const grid = {
   display: 'grid',
-  gridColumnGap: gridGap,
-  gridRowGap: `calc(${gridGap} * 3)`,
+  gridGap: gridGap,
   gridTemplateColumns: getGridTemplateColumns(gridSafeZone.base),
+  minWidth: gridMinWidth,
   maxWidth: gridMaxWidth,
-  margin: '0 auto',
-  padding: 0,
+  margin: 0,
+  padding: `0 calc((100% - ${gridMaxWidth}) / 2)`,
+  boxSizing: 'content-box',
   [mediaQueryMin('xl')]: {
     gridTemplateColumns: getGridTemplateColumns(gridSafeZone.xl),
   },

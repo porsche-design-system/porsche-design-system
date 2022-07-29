@@ -1,12 +1,14 @@
 <template>
   <div class="main-bar">
-    <p-text theme="dark">
-      Aktuell siehst du die Inhalte für deinen Standort: Deutschland
-      <button>Standort/Sprache ändern</button>
-    </p-text>
-    <p-button-pure hide-label="true" icon="close" theme="dark"
-      >Close location or language switch notification.</p-button-pure
-    >
+    <div class="main-bar__notification">
+      <p-text theme="dark">
+        Aktuell siehst du die Inhalte für deinen Standort: Deutschland
+        <button>Standort/Sprache ändern</button>
+      </p-text>
+      <p-button-pure hide-label="true" icon="close" theme="dark"
+        >Close location or language switch notification.</p-button-pure
+      >
+    </div>
   </div>
 </template>
 
@@ -22,16 +24,16 @@
   @import '~@porsche-design-system/components-js/utilities/scss';
 
   .main-bar {
+    @include pds-grid;
     background: $pds-theme-dark-background-surface;
-    display: flex;
-    justify-content: space-between;
-    gap: $pds-spacing-medium;
-    margin: 0 auto;
-    max-width: $pds-grid-max-width;
-    padding: $pds-spacing-medium $pds-grid-safe-zone-base;
+    padding-top: $pds-spacing-medium;
+    padding-bottom: $pds-spacing-medium;
 
-    @include pds-media-query-min('xl') {
-      padding: $pds-spacing-medium $pds-grid-safe-zone-xl;
+    &__notification {
+      grid-column: content-start / content-end;
+      display: flex;
+      justify-content: space-between;
+      gap: $pds-spacing-medium;
     }
   }
 </style>

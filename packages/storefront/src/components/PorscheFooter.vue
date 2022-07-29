@@ -1,6 +1,6 @@
 <template>
   <div class="main-footer">
-    <div class="country-language-chooser">
+    <div class="main-footer__content main-footer__content--country-language-chooser">
       <p-headline theme="dark" variant="headline-4">Andere(s) Land/Region wählen:</p-headline>
       <p-select-wrapper theme="dark" label="Land">
         <select name="country">
@@ -19,7 +19,7 @@
         </select>
       </p-select-wrapper>
     </div>
-    <div class="imprint">
+    <div class="main-footer__content main-footer__content--imprint">
       <p-text theme="dark" size="x-small" color="neutral-contrast-medium">
         © 2022 Dr. Ing. h.c. F. <nobr>Porsche</nobr> AG.<br />
         <a href="#">Impressum und Rechtliche Hinweise</a>,&nbsp;<a href="#">Hinweise zum Datenschutz</a>,&nbsp;<a
@@ -77,51 +77,53 @@
 
   .main-footer {
     @include pds-grid;
-    grid-row-gap: $pds-grid-gap;
-    padding: $pds-spacing-x-large 0;
     margin-top: $pds-spacing-xx-large;
+    padding-top: $pds-spacing-x-large;
+    padding-bottom: $pds-spacing-x-large;
     background: $pds-theme-dark-background-base;
 
     @include pds-media-query-min('s') {
-      padding: $pds-spacing-xx-large 0;
+      padding-top: $pds-spacing-xx-large;
+      padding-bottom: $pds-spacing-xx-large;
     }
-  }
 
-  .country-language-chooser {
-    grid-column: content-start / content-end;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: $pds-spacing-medium;
+    &__content {
+      grid-column: content-start / content-end;
 
-    @include pds-media-query-min('s') {
-      grid-column: 4 / -4;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-
-      & > :nth-child(1) {
-        grid-column: 1 / 3;
-        grid-row: 1;
+      @include pds-media-query-min('s') {
+        grid-column: 4 / -4;
       }
 
-      & > :nth-child(2) {
-        grid-column: 1 / 2;
-        grid-row: 2;
+      &--country-language-chooser {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: $pds-spacing-medium;
+
+        @include pds-media-query-min('s') {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+
+          & > :nth-child(1) {
+            grid-column: 1 / 3;
+            grid-row: 1;
+          }
+
+          & > :nth-child(2) {
+            grid-column: 1 / 2;
+            grid-row: 2;
+          }
+
+          & > :nth-child(3) {
+            grid-column: 2 / 3;
+            grid-row: 2;
+          }
+        }
       }
 
-      & > :nth-child(3) {
-        grid-column: 2 / 3;
-        grid-row: 2;
+      &--imprint {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: $pds-spacing-medium;
       }
-    }
-  }
-
-  .imprint {
-    grid-column: content-start / content-end;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: $pds-spacing-medium;
-
-    @include pds-media-query-min('s') {
-      grid-column: 4 / -4;
     }
   }
 </style>
