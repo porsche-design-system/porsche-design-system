@@ -1,4 +1,8 @@
-import { cleanMarkup, escapeHtml, patchThemeIntoMarkup } from '../../src/utils';
+import { cleanMarkup, convertMarkup, escapeHtml, patchThemeIntoMarkup } from '../../src/utils';
+
+import * as convertToAngularUtils from '../../src/utils/convertToAngular';
+import * as convertToReactUtils from '../../src/utils/convertToReact';
+import * as formattingUtils from '../../src/utils/formatting';
 
 describe('cleanMarkup()', () => {
   it('should replace multiple br tags with new line', () => {
@@ -71,5 +75,37 @@ describe('escapeHtml()', () => {
     expect(escapeHtml(markup)).toBe(
       '&lt;a href=&quot;https://porsche.com?param1=x&amp;param2=y&quot; target=&quot;_blank&quot;&gt;Link&lt;/a&gt;'
     );
+  });
+});
+
+describe('convertMarkup()', () => {
+  const markup = 'some markup';
+  const cleanedMarkup = 'some cleaned markup';
+
+  it('should return correct markup for framework angular', () => {
+    const convertToAngularSpy = jest.spyOn(convertToAngularUtils, 'convertToAngular');
+    const cleanMarkupSpy = jest.spyOn(formattingUtils, 'cleanMarkup');
+
+    convertMarkup(markup, 'angular');
+
+    expect(cleanMarkupSpy).toBeCalledWith(markup);
+    expect(convertToAngularSpy).toBeCalledWith(markup);
+  });
+
+  it('should return correct markup for framework react', () => {
+    const convertToReactSpy = jest.spyOn(convertToReactUtils, 'convertToReact');
+    const cleanMarkupSpy = jest.spyOn(formattingUtils, 'cleanMarkup');
+
+    convertMarkup(markup, 'react');
+
+    expect(cleanMarkupSpy).toBeCalledWith(markup);
+    expect(convertToReactSpy).toBeCalledWith(markup);
+  });
+
+  it('should return correct markup for framework react', () => {
+    const cleanMarkupSpy = jest.spyOn(formattingUtils, 'cleanMarkup').mockImplementationOnce(() => cleanedMarkup);
+
+    expect(cleanMarkupSpy).toBeCalledWith(markup);
+    expect(convertMarkup(markup, 'vanilla-js')).toBe(cleanedMarkup);
   });
 });
