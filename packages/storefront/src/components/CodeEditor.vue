@@ -9,13 +9,13 @@
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
   import { Framework, Theme } from '@/models';
-  import { openInStackBlitz } from '@/utils/stackblitz/openInStackBlitz';
+  import { FrameworksWithoutShared, openInStackBlitz } from '@/utils/stackblitz/openInStackBlitz';
 
   @Component
   export default class CodeEditor extends Vue {
     @Prop({ default: '' }) public markup!: string;
     @Prop({ default: 'light' }) public theme!: Theme;
-    @Prop({ default: 'vanilla-js' }) public framework!: Framework;
+    @Prop({ default: 'vanilla-js' }) public framework!: FrameworksWithoutShared;
     @Prop({ default: false }) public hasFrameworkMarkup!: boolean;
     @Prop({ default: 'default' }) public colorScheme!: 'default' | 'surface';
     @Prop({ default: '' }) public additionalDependencies?: string[];

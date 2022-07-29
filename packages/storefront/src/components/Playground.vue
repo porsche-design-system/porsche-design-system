@@ -37,6 +37,7 @@
           :frameworks="frameworks"
         ></CodeBlock>
         <CodeEditor
+          v-if="activeFramework !== 'shared'"
           :markup="cleanedEditorMarkup"
           :theme="theme"
           :framework="activeFramework"
