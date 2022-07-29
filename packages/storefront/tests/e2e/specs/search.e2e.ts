@@ -26,11 +26,10 @@ beforeEach(async () => {
 });
 afterEach(async () => await page.close());
 
-const getAlgoliaHitsWrapper = async () => selectNode(page, '.ais-Hits');
-const getAlgoliaHits = async () =>
-  page.evaluate(() => {
-    return Array.from(document.querySelectorAll('.ais-Hits-item'));
-  });
+const getAlgoliaHitsWrapper = () => selectNode(page, '.ais-Hits');
+const getAmountOfAlgoliaHits = (): Promise<number> =>
+  page.evaluate(() => document.querySelectorAll('.ais-Hits-item').length);
+const waitForResultsToBeGone = () => page.waitForFunction(() => !document.querySelector('.ais-Hits-item'));
 
 const getNavigation = () => selectNode(page, 'p-accordion');
 const searchInputSelector = 'input[type="search"]';
@@ -44,20 +43,20 @@ const sendAlgoliaRequest = async () =>
 
 describe('search', () => {
   it('should not display hits initially', async () => {
-    const algoliaHitsList = await getAlgoliaHits();
+    const amount = await getAmountOfAlgoliaHits();
     const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
 
     expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('none');
-    expect(algoliaHitsList.length).toBe(0);
+    expect(amount).toBe(0);
   });
 
   it('should display 4 hits after typing "button"', async () => {
     await sendAlgoliaRequest();
     const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
-    const algoliaHitsList = await getAlgoliaHits();
+    const amount = await getAmountOfAlgoliaHits();
 
     expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('block');
-    expect(algoliaHitsList.length).toBe(4);
+    expect(amount).toBe(4);
   });
 
   it('should hide navigation when displaying hits', async () => {
@@ -102,11 +101,12 @@ describe('search', () => {
       await page.keyboard.press('Backspace');
     }
 
+    await waitForResultsToBeGone();
     const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
-    const algoliaHitsList = await getAlgoliaHits();
+    const amount = await getAmountOfAlgoliaHits();
 
     expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('none');
-    expect(algoliaHitsList.length).toBe(4);
+    expect(amount).toBe(0);
     expect(await getNavigation()).not.toBeNull();
   });
 
@@ -115,11 +115,12 @@ describe('search', () => {
     await page.focus(searchInputSelector);
     await page.keyboard.press('Escape');
 
+    await waitForResultsToBeGone();
     const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
-    const algoliaHitsList = await getAlgoliaHits();
+    const amount = await getAmountOfAlgoliaHits();
 
     expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('none');
-    expect(algoliaHitsList.length).toBe(4);
+    expect(amount).toBe(0);
     expect(await getNavigation()).not.toBeNull();
   });
 
@@ -128,13 +129,14 @@ describe('search', () => {
     await page.focus(searchInputSelector);
     await page.keyboard.press('Escape');
 
+    await waitForResultsToBeGone();
     const algoliaHitsWrapper = await getAlgoliaHitsWrapper();
-    const algoliaHitsList = await getAlgoliaHits();
+    const amount = await getAmountOfAlgoliaHits();
 
     await page.focus(searchInputSelector);
 
     expect(await getElementStyle(algoliaHitsWrapper, 'display')).toBe('none');
-    expect(algoliaHitsList.length).toBe(4);
+    expect(amount).toBe(0);
     expect(await getNavigation()).not.toBeNull();
   });
 });
