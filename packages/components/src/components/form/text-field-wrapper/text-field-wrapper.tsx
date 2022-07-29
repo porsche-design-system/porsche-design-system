@@ -16,7 +16,7 @@ import {
   unobserveAttributes,
   validateProps,
 } from '../../../utils';
-import type { BreakpointCustomizable, PropTypes } from '../../../utils';
+import type { BreakpointCustomizable, PropTypes } from '../../../types';
 import { FORM_STATES } from '../form-state';
 import type { FormState } from '../form-state';
 import { getComponentCss, getSlottedCss } from './text-field-wrapper-styles';

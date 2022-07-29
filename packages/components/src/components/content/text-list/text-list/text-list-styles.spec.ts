@@ -1,5 +1,5 @@
 import { getComponentCss, getSlottedCss } from './text-list-styles';
-import type { Theme } from '../../../../utils';
+import type { Theme } from '../../../../types';
 
 describe('getComponentCss()', () => {
   it.each<Theme>(['light', 'dark'])('should return correct css for theme: %s', (theme) => {

@@ -1,6 +1,6 @@
 import type { IconName } from '@porsche-design-system/icons';
 import { getTagName } from '../../../../utils';
-import type { Theme } from '../../../../utils';
+import type { Theme } from '../../../../types';
 
 export type StepperHorizontalItemInternalHTMLProps = {
   theme: Theme;

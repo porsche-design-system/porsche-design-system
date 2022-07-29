@@ -9,7 +9,7 @@ import {
   throwIfRootNodeIsNotOneOfKind,
   validateProps,
 } from '../../../../utils';
-import type { PropTypes, Theme } from '../../../../utils';
+import type { PropTypes, Theme } from '../../../../types';
 import { getComponentCss } from './toast-item-styles';
 import { getIconName } from '../../inline-notification/inline-notification-utils';
 

@@ -8,7 +8,7 @@ import {
 } from '../../../../styles';
 import { textSmall } from '@porsche-design-system/utilities-v2';
 import { getCss, isThemeDark } from '../../../../utils';
-import type { Theme } from '../../../../utils';
+import type { Theme } from '../../../../types';
 import type { StepperState } from './stepper-horizontal-item-utils';
 import { hoverMediaQuery } from '../../../../styles/hover-media-query';
 

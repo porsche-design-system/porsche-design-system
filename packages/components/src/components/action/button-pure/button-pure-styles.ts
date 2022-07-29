@@ -1,5 +1,10 @@
-import type { BreakpointCustomizable, ThemeExtendedElectricDark } from '../../../utils';
-import type { AlignLabel, LinkButtonPureIconName, TextSize } from '../../../types';
+import type {
+  AlignLabel,
+  BreakpointCustomizable,
+  LinkButtonPureIconName,
+  TextSize,
+  ThemeExtendedElectricDark,
+} from '../../../types';
 import { getCss } from '../../../utils';
 import { getLinkButtonPureStyles } from '../../../styles/link-button-pure-styles';
 

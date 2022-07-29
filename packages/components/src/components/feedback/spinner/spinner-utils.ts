@@ -1,4 +1,4 @@
-import type { BreakpointKey, BreakpointCustomizable } from '../../../utils';
+import type { BreakpointKey, BreakpointCustomizable } from '../../../types';
 import { BREAKPOINTS, parseJSON } from '../../../utils';
 
 export const SPINNER_SIZES = ['small', 'medium', 'large', 'inherit'] as const;

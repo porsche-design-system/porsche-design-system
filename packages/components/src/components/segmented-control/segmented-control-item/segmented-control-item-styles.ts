@@ -8,7 +8,7 @@ import {
   pxToRemWithUnit,
 } from '../../../styles';
 import { textSmall, textXSmall } from '@porsche-design-system/utilities-v2';
-import type { Theme } from '../../../utils';
+import type { Theme } from '../../../types';
 import type { SegmentedControlBackgroundColor } from '../segmented-control/segmented-control-utils';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
 

@@ -8,7 +8,7 @@ import {
   unobserveChildren,
   validateProps,
 } from '../../../utils';
-import type { PropTypes, Theme, ValidatorFunction } from '../../../utils';
+import type { PropTypes, Theme, ValidatorFunction } from '../../../types';
 import { getComponentCss } from './segmented-control-styles';
 import type { SegmentedControlBackgroundColor, SegmentedControlChangeEvent } from './segmented-control-utils';
 import { getItemMaxWidth, SEGMENTED_CONTROL_BACKGROUND_COLORS, syncItemsProps } from './segmented-control-utils';

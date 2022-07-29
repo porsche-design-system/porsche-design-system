@@ -1,4 +1,4 @@
-import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../utils';
+import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
 import type { AccordionSize } from './accordion-utils';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import { getFocusJssStyle, getTransition, pxToRemWithUnit, transitionDuration, getThemedColors } from '../../../styles';

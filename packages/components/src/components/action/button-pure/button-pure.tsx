@@ -1,10 +1,5 @@
-import type {
-  BreakpointCustomizable,
-  ButtonAriaAttributes,
-  PropTypes,
-  ThemeExtendedElectricDark,
-} from '../../../utils';
 import {
+  ALIGN_LABELS,
   AllowedTypes,
   attachComponentCss,
   BUTTON_ARIA_ATTRIBUTES,
@@ -15,6 +10,8 @@ import {
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
   isSizeInherit,
+  TEXT_SIZES,
+  TEXT_WEIGHTS,
   THEMES_EXTENDED_ELECTRIC_DARK,
   transitionListener,
   validateProps,
@@ -22,17 +19,19 @@ import {
 } from '../../../utils';
 import type {
   AlignLabel,
+  BreakpointCustomizable,
+  ButtonAriaAttributes,
   ButtonType,
   LinkButtonPureIconName,
+  PropTypes,
   SelectedAriaAttributes,
   TextSize,
   TextWeight,
+  ThemeExtendedElectricDark,
 } from '../../../types';
-import { ALIGN_LABELS, TEXT_WEIGHTS } from '../../../types';
 import { Component, Element, h, Host, JSX, Listen, Prop } from '@stencil/core';
 import { getButtonAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 import { getComponentCss } from './button-pure-styles';
-import { TEXT_SIZES } from '../../basic/typography/text/text-utils';
 
 const propTypes: PropTypes<typeof ButtonPure> = {
   tabbable: AllowedTypes.boolean,

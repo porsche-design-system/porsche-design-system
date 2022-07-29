@@ -1,5 +1,5 @@
 import type { SocialIconName } from './link-social-utils';
-import type { BreakpointCustomizable, Theme } from '../../../utils';
+import type { BreakpointCustomizable, Theme } from '../../../types';
 import { buildResponsiveStyles, getCss, isThemeDark } from '../../../utils';
 import {
   addImportantToEachRule,

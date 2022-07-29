@@ -12,7 +12,7 @@ import {
   unobserveChildren,
   validateProps,
 } from '../../../utils';
-import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../../utils';
+import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../../types';
 import { isShadowRootParentOfKind } from '../../../utils/dom'; // separate import is needed for lifecycleValidation.spec to pass
 import type { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from './tabs-bar-utils';
 import {

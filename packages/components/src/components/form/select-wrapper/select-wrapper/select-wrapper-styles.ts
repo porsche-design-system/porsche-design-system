@@ -1,4 +1,4 @@
-import type { BreakpointCustomizable, Theme } from '../../../../utils';
+import type { BreakpointCustomizable, Theme } from '../../../../types';
 import { buildSlottedStyles, getCss, isThemeDark, isVisibleFormState, mergeDeep } from '../../../../utils';
 import {
   addImportantToEachRule,

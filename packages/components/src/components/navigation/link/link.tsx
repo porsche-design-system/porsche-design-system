@@ -8,12 +8,19 @@ import {
   throwIfInvalidLinkUsage,
   validateProps,
 } from '../../../utils';
-import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../../utils';
-import type { SelectedAriaAttributes, IconName, LinkTarget, LinkVariant } from '../../../types';
+import type {
+  BreakpointCustomizable,
+  IconName,
+  LinkTarget,
+  LinkVariant,
+  PropTypes,
+  SelectedAriaAttributes,
+  ThemeExtendedElectric,
+} from '../../../types';
 import { getComponentCss } from './link-styles';
 import type { LinkAriaAttributes } from './link-utils';
 import { LINK_ARIA_ATTRIBUTES } from './link-utils';
-import { LINK_BUTTON_VARIANTS } from '../../../types';
+import { LINK_BUTTON_VARIANTS } from '../link-button-variant';
 
 const propTypes: PropTypes<typeof Link> = {
   variant: AllowedTypes.oneOf<LinkVariant>(LINK_BUTTON_VARIANTS),

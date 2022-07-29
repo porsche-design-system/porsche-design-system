@@ -1,6 +1,5 @@
 import type { JssStyle } from 'jss';
-import type { BreakpointCustomizable, Theme } from '../../../../utils';
-import type { TextAlign, TextColor, TextSize, TextWeight } from '../../../../types';
+import type { BreakpointCustomizable, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
 import { buildSlottedStyles, getCss, buildResponsiveStyles, textMap } from '../../../../utils';
 import { addImportantToEachRule, getBaseSlottedStyles } from '../../../../styles';
 import { textSmall } from '@porsche-design-system/utilities-v2';

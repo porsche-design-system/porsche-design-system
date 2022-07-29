@@ -1,6 +1,6 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, THEMES, validateProps } from '../../../utils';
-import type { PropTypes, Theme } from '../../../utils';
+import type { PropTypes, Theme } from '../../../types';
 import type { ContentWrapperWidth, ContentWrapperBackgroundColor } from './content-wrapper-utils';
 import { getComponentCss } from './content-wrapper-styles';
 import { CONTENT_WRAPPER_BACKGROUND_COLORS, CONTENT_WRAPPER_WIDTHS } from './content-wrapper-utils';

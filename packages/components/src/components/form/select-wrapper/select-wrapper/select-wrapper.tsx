@@ -18,7 +18,7 @@ import {
   unobserveAttributes,
   validateProps,
 } from '../../../../utils';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../../../utils';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../../../types';
 import type { DropdownDirection } from './select-wrapper-utils';
 import { DROPDOWN_DIRECTIONS, isCustomDropdown } from './select-wrapper-utils';
 import { getComponentCss, getSlottedCss } from './select-wrapper-styles';

@@ -1,5 +1,5 @@
 import type { TabSize, TabWeight } from './tabs-bar-utils';
-import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../utils';
+import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import { addImportantToEachRule, getTransition, getThemedColors, pxToRemWithUnit } from '../../../styles';
 import { getFontWeight } from '../../../styles/font-weight-styles';

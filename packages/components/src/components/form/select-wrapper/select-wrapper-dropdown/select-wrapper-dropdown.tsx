@@ -32,7 +32,7 @@ import {
   setFilteredOptionMaps,
   determineDirection,
 } from './select-wrapper-dropdown-utils';
-import type { Theme } from '../../../../utils';
+import type { Theme } from '../../../../types';
 import type { FormState } from '../../form-state';
 import { getComponentCss } from './select-wrapper-dropdown-styles';
 
