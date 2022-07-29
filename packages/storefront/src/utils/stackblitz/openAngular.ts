@@ -2,7 +2,7 @@ import sdk from '@stackblitz/sdk';
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
 import { dependencies as angularDependencies } from '../../../../components-angular/package.json';
 import { paramCase } from 'change-case';
-import { getAdditionalDependencies, themeDarkBodyStyles } from '@/utils/stackblitz/openInStackBlitz';
+import { getAdditionalDependencies } from '@/utils/stackblitz/openInStackBlitz';
 import type { StackBlitzFrameworkOpts, DependenciesMap } from '@/utils/stackblitz/openInStackBlitz';
 
 export const openAngular = (props: StackBlitzFrameworkOpts): void => {
