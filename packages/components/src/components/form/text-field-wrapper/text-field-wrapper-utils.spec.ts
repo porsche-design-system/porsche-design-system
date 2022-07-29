@@ -1,17 +1,19 @@
 import {
   getInputPadding,
   setInputStyles,
-  hasCounter,
   throwIfUnitLengthExceeded,
   TextFieldWrapperUnitPosition,
   hasCounterAndIsTypeText,
-  setCounterInnerHtml,
-  addInputEventListener,
-  setAriaElementInnerHtml,
   hasUnitAndIsTypeTextOrNumber,
+  isWithinForm,
+  isType,
+  addInputEventListenerForSearch,
+  dispatchInputEvent,
 } from './text-field-wrapper-utils';
 import * as textFieldWrapperUtils from './text-field-wrapper-utils';
-import { FormState } from '../../../types';
+import * as formUtils from '../form-utils';
+import * as getClosestHTMLElementUtils from '../../../utils/dom/getClosestHTMLElement';
+import type { FormState } from '../form-state';
 
 const getInputElement = (): HTMLInputElement => {
   const el = document.createElement('input');
@@ -24,38 +26,36 @@ const getCounterElement = (): HTMLSpanElement => {
   return el;
 };
 
-const getAriaElement = (): HTMLSpanElement => {
-  const el = document.createElement('span');
-  el.id = 'ariaElement';
-  return el;
-};
-
-describe('hasCounter()', () => {
-  it('should for defined maxLength return true', () => {
-    const inputElement = getInputElement();
-    inputElement.maxLength = 20;
-    expect(hasCounter(inputElement)).toBe(true);
-  });
-
-  it('should for undefined maxLength return false', () => {
-    const inputElement = getInputElement();
-    Object.defineProperty(inputElement, 'maxLength', { value: -1 }); // jsdom defaults to 524288 which is 512 KB
-    expect(hasCounter(inputElement)).toBe(false);
-  });
-});
-
 describe('hasCounterAndIsTypeText()', () => {
+  it('should call isType() with correct parameters', () => {
+    const inputElement = getInputElement();
+    const spy = jest.spyOn(textFieldWrapperUtils, 'isType');
+    hasCounterAndIsTypeText(inputElement);
+
+    expect(spy).toBeCalledWith(inputElement.type, 'text');
+  });
+
+  it('should call hasCounter() with correct parameters', () => {
+    const inputElement = getInputElement();
+    const spy = jest.spyOn(formUtils, 'hasCounter');
+    hasCounterAndIsTypeText(inputElement);
+
+    expect(spy).toBeCalledWith(inputElement);
+  });
+
   it('should for input type="text" with maxLength return true', () => {
     const inputElement = getInputElement();
-    inputElement.type = 'text';
-    inputElement.maxLength = 20;
+    jest.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(true);
+    jest.spyOn(formUtils, 'hasCounter').mockReturnValue(true);
+
     expect(hasCounterAndIsTypeText(inputElement)).toBe(true);
   });
 
   it('should for input type="text" without maxLength return false', () => {
     const inputElement = getInputElement();
-    inputElement.type = 'text';
-    Object.defineProperty(inputElement, 'maxLength', { value: -1 }); // jsdom defaults to 524288 which is 512 KB
+    jest.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(true);
+    jest.spyOn(formUtils, 'hasCounter').mockReturnValue(false);
+
     expect(hasCounterAndIsTypeText(inputElement)).toBe(false);
   });
 
@@ -65,21 +65,33 @@ describe('hasCounterAndIsTypeText()', () => {
       const inputElement = getInputElement();
       inputElement.type = type;
       inputElement.maxLength = 20;
+
       expect(hasCounterAndIsTypeText(inputElement)).toBe(false);
     }
   );
 });
 
 describe('hasUnitAndIsTypeTextOrNumber()', () => {
+  it('should call isType() with correct parameters', () => {
+    const inputElement = getInputElement();
+    const spy = jest.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(false);
+    hasUnitAndIsTypeTextOrNumber(inputElement, 'EUR');
+
+    expect(spy).toHaveBeenNthCalledWith(1, inputElement.type, 'text');
+    expect(spy).toHaveBeenNthCalledWith(2, inputElement.type, 'number');
+  });
+
   it.each<string>(['text', 'number'])('should for input type="%s" and unit="EUR" return true', (type) => {
     const inputElement = getInputElement();
     inputElement.type = type;
+
     expect(hasUnitAndIsTypeTextOrNumber(inputElement, 'EUR')).toBe(true);
   });
 
   it.each<string>(['text', 'number'])('should for input type="%s" and unit="" return false', (type) => {
     const inputElement = getInputElement();
     inputElement.type = type;
+
     expect(hasUnitAndIsTypeTextOrNumber(inputElement, '')).toBe(false);
   });
 
@@ -88,45 +100,44 @@ describe('hasUnitAndIsTypeTextOrNumber()', () => {
     (type) => {
       const inputElement = getInputElement();
       inputElement.type = type;
+
       expect(hasUnitAndIsTypeTextOrNumber(inputElement, 'EUR')).toBe(false);
     }
   );
 });
 
-describe('setCounterInnerHtml()', () => {
-  it('should set correct character count as innerText on element ', () => {
-    const counterElement = getCounterElement();
-    const inputElement = getInputElement();
+describe('isWithinForm()', () => {
+  it('should call getClosestHTMLElement()', () => {
+    const spy = jest.spyOn(getClosestHTMLElementUtils, 'getClosestHTMLElement');
+    const el = document.createElement('input');
+    isWithinForm(el);
 
-    inputElement.maxLength = 20;
-    inputElement.value = 'some';
-    setCounterInnerHtml(inputElement, counterElement);
-    expect(counterElement.innerText).toBe('4/20');
+    expect(spy).toBeCalledWith(el, 'form');
+  });
 
-    inputElement.maxLength = 25;
-    inputElement.value = 'Hi';
-    setCounterInnerHtml(inputElement, counterElement);
-    expect(counterElement.innerText).toBe('2/25');
+  it('should return true or false based on result of getClosestHTMLElement()', () => {
+    const spy = jest.spyOn(getClosestHTMLElementUtils, 'getClosestHTMLElement');
+    const el = document.createElement('input');
+
+    spy.mockReturnValue(null);
+    expect(isWithinForm(el)).toBe(false);
+
+    spy.mockReturnValue(document.createElement('form'));
+    expect(isWithinForm(el)).toBe(true);
   });
 });
 
-describe('setAriaElementInnerHtml()', () => {
-  const getAccessibilityMessage = (remainingCharacter: number, maxCharacter: number) =>
-    `You have ${remainingCharacter} out of ${maxCharacter} characters left`;
+describe('isType()', () => {
+  it('should return true for equal parameters', () => {
+    expect(isType('text', 'text')).toBe(true);
+    expect(isType('number', 'number')).toBe(true);
+    expect(isType('password', 'password')).toBe(true);
+  });
 
-  it('should set correct character count text for screenreader as innerText on element ', () => {
-    const ariaElement = getAriaElement();
-    const inputElement = getInputElement();
-
-    inputElement.maxLength = 20;
-    inputElement.value = 'some';
-    setAriaElementInnerHtml(inputElement, ariaElement);
-    expect(ariaElement.innerText).toBe(getAccessibilityMessage(16, 20));
-
-    inputElement.maxLength = 25;
-    inputElement.value = 'Hi';
-    setAriaElementInnerHtml(inputElement, ariaElement);
-    expect(ariaElement.innerText).toBe(getAccessibilityMessage(23, 25));
+  it('should return false for unequal parameters', () => {
+    expect(isType('password', 'search')).toBe(false);
+    expect(isType('text', 'search')).toBe(false);
+    expect(isType('password', 'number')).toBe(false);
   });
 });
 
@@ -171,72 +182,84 @@ describe('throwIfUnitLengthExceeded()', () => {
   });
 });
 
-describe('addInputEventListener()', () => {
-  it('should register event listener on element', () => {
+describe('addInputEventListenerForSearch()', () => {
+  it('should register event listeners on element', () => {
     const inputElement = getInputElement();
-    const counterElement = getCounterElement();
-    const ariaElement = getAriaElement();
     const spy = jest.spyOn(inputElement, 'addEventListener');
+    addInputEventListenerForSearch(inputElement, () => {});
 
-    addInputEventListener(inputElement, ariaElement, counterElement);
-    expect(spy).toBeCalledWith('input', expect.anything());
+    expect(spy).toHaveBeenNthCalledWith(1, 'input', expect.any(Function));
+    expect(spy).toHaveBeenNthCalledWith(2, 'keydown', expect.any(Function));
+    expect(spy).toBeCalledTimes(2);
   });
 
-  it('should register event listener on element without error when no counterElement is provided', () => {
+  it('should on input event call inputChangeCallback()', () => {
     const inputElement = getInputElement();
-    const ariaElement = getAriaElement();
-    const spy = jest.spyOn(inputElement, 'addEventListener');
-    let error = undefined;
-    try {
-      addInputEventListener(inputElement, ariaElement);
-    } catch (e) {
-      error = e;
-    }
-    expect(error).toBeUndefined();
-    expect(spy).toBeCalledWith('input', expect.anything());
-  });
-
-  it('should initially call setCounterInnerHtml() and setAriaElementInnerHtml()', () => {
-    const inputElement = getInputElement();
-    const counterElement = getCounterElement();
-    const ariaElement = getAriaElement();
-
-    const setCounterInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCounterInnerHtml');
-    const setAriaElementInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setAriaElementInnerHtml');
-    addInputEventListener(inputElement, ariaElement, counterElement);
-
-    expect(setCounterInnerHtmlSpy).toBeCalledWith(inputElement, counterElement);
-    expect(setCounterInnerHtmlSpy).toBeCalledTimes(1);
-
-    expect(setAriaElementInnerHtmlSpy).toBeCalledWith(inputElement, ariaElement);
-    expect(setAriaElementInnerHtmlSpy).toBeCalledTimes(1);
-  });
-
-  it('should on input event call setCounterInnerHtml() and setAriaElementInnerHtml()', () => {
-    const inputElement = getInputElement();
-    const counterElement = getCounterElement();
-    const ariaElement = getAriaElement();
-
-    const setCounterInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setCounterInnerHtml');
-    const setAriaElementInnerHtmlSpy = jest.spyOn(textFieldWrapperUtils, 'setAriaElementInnerHtml');
-    addInputEventListener(inputElement, ariaElement, counterElement);
-
-    inputElement.dispatchEvent(new Event('input'));
-    expect(setCounterInnerHtmlSpy).toBeCalledWith(inputElement, counterElement);
-    expect(setCounterInnerHtmlSpy).toBeCalledTimes(2);
-
-    expect(setAriaElementInnerHtmlSpy).toBeCalledWith(inputElement, ariaElement);
-    expect(setAriaElementInnerHtmlSpy).toBeCalledTimes(2);
-  });
-
-  it('should on input event call inputChangeCallback() if supplied', () => {
-    const inputElement = getInputElement();
-    const counterElement = getCounterElement();
-    const ariaElement = getAriaElement();
     const callback = jest.fn();
-    addInputEventListener(inputElement, ariaElement, counterElement, callback);
+    addInputEventListenerForSearch(inputElement, callback);
 
     inputElement.dispatchEvent(new Event('input'));
+    expect(callback).toBeCalledWith(expect.any(Boolean));
     expect(callback).toBeCalledTimes(1);
+  });
+
+  it('should if input.value is not empty on keydown event for Escape key, call event.preventDefault(), reset input.value, call dispatchInputEvent() with correct parameter', () => {
+    const inputElement = getInputElement();
+    inputElement.value = 'search-term';
+    addInputEventListenerForSearch(inputElement, jest.fn());
+
+    const event = new KeyboardEvent('keydown', { key: 'Escape' });
+    const spyPreventDefault = jest.spyOn(event, 'preventDefault');
+    const spyDispatchInputEvent = jest.spyOn(textFieldWrapperUtils, 'dispatchInputEvent');
+    inputElement.dispatchEvent(event);
+
+    expect(spyPreventDefault).toBeCalledWith();
+    expect(inputElement.value).toBe('');
+    expect(spyDispatchInputEvent).toBeCalledWith(event.target);
+  });
+
+  it('should if input.value is empty on keydown event for Escape key not call event.preventDefault(), not reset input.value and not call dispatchInputEvent()', () => {
+    const inputElement = getInputElement();
+    inputElement.value = '';
+    addInputEventListenerForSearch(inputElement, jest.fn());
+
+    const event = new KeyboardEvent('keydown', { key: 'Escape' });
+    const spyPreventDefault = jest.spyOn(event, 'preventDefault');
+    const spyDispatchInputEvent = jest.spyOn(textFieldWrapperUtils, 'dispatchInputEvent');
+    inputElement.dispatchEvent(event);
+
+    expect(spyPreventDefault).not.toBeCalled();
+    expect(inputElement.value).toBe('');
+    expect(spyDispatchInputEvent).not.toBeCalled();
+  });
+
+  it('should on keydown event for other keys than Escape, not call event.preventDefault(), not reset input.value and not call dispatchInputEvent()', () => {
+    const inputElement = getInputElement();
+    inputElement.value = 'search-term';
+    addInputEventListenerForSearch(inputElement, jest.fn());
+
+    const event1 = new KeyboardEvent('keydown', { key: 'A' });
+    const event2 = new KeyboardEvent('keydown', { key: 'Enter' });
+    const spyPreventDefaultEvent1 = jest.spyOn(event1, 'preventDefault');
+    const spyPreventDefaultEvent2 = jest.spyOn(event2, 'preventDefault');
+    const spyDispatchInputEvent = jest.spyOn(textFieldWrapperUtils, 'dispatchInputEvent');
+
+    inputElement.dispatchEvent(event1);
+    inputElement.dispatchEvent(event2);
+
+    expect(spyPreventDefaultEvent1).not.toBeCalled();
+    expect(spyPreventDefaultEvent2).not.toBeCalled();
+    expect(inputElement.value).toBe('search-term');
+    expect(spyDispatchInputEvent).not.toBeCalled();
+  });
+});
+
+describe('dispatchInputEvent()', () => {
+  it('should call element.dispatchEvent() with correct parameters', () => {
+    const inputElement = getInputElement();
+    const spy = jest.spyOn(inputElement, 'dispatchEvent');
+    dispatchInputEvent(inputElement);
+
+    expect(spy).toBeCalledWith(expect.any(Event));
   });
 });

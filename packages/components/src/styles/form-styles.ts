@@ -1,7 +1,7 @@
 import type { JssStyle, Styles } from 'jss';
 import type { BreakpointCustomizable } from '../utils';
 import { buildResponsiveStyles, isThemeDark, isVisibleFormState } from '../utils';
-import type { FormState, Theme } from '../types';
+import type { Theme } from '../types';
 import {
   addImportantToRule,
   getFormTextHiddenJssStyle,
@@ -13,6 +13,7 @@ import {
 import { textSmall } from '@porsche-design-system/utilities-v2';
 import { getThemedFormStateColors } from './form-state-color-styles';
 import { hoverMediaQuery } from './hover-media-query';
+import type { FormState } from '../components/form/form-state';
 
 const { disabledColor: lightThemeDisabledColor } = getThemedColors('light');
 

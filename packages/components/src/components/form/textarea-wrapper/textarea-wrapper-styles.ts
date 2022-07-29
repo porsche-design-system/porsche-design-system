@@ -1,7 +1,7 @@
 import type { Styles } from 'jss';
 import type { BreakpointCustomizable } from '../../../utils';
 import { buildSlottedStyles, getCss, isVisibleFormState, mergeDeep } from '../../../utils';
-import type { FormState, Theme } from '../../../types';
+import type { Theme } from '../../../types';
 import {
   addImportantToEachRule,
   getBaseSlottedStyles,
@@ -12,6 +12,7 @@ import {
 import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
+import type { FormState } from '../form-state';
 
 export const getComponentCss = (
   isDisabled: boolean,

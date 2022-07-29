@@ -48,9 +48,6 @@ export type LinkVariant = LinkButtonVariant;
 export const LINK_TARGETS = ['_self', '_blank', '_parent', '_top'] as const;
 export type LinkTarget = typeof LINK_TARGETS[number] | string;
 
-export const FORM_STATES = ['none', 'error', 'success'] as const;
-export type FormState = typeof FORM_STATES[number];
-
 // BreakpointCustomizable Types
 export type { BreakpointKey, BreakpointValues, BreakpointCustomizable } from './utils/breakpoint-customizable';
 
