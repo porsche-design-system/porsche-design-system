@@ -56,12 +56,13 @@ $pds-font-variant: normal;
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_grid.scss 1`] = `
 "@mixin pds-grid {
-  margin: 0 auto;
+  margin: 0;
   display: grid;
-  padding: 0;
+  padding: 0 calc((100% - 120rem) / 2);
+  grid-gap: max(1rem, min(3.6vw, 2.25rem));
   max-width: 120rem;
-  grid-row-gap: calc(max(1rem, min(3.6vw, 2.25rem)) * 3);
-  grid-column-gap: max(1rem, min(3.6vw, 2.25rem));
+  min-width: 20rem;
+  box-sizing: content-box;
   grid-template-columns: [grid-start] calc(max(1rem, 7vw) - max(1rem, min(3.6vw, 2.25rem))) [content-start] repeat(
       12,
       minmax(0, 1fr)
@@ -83,7 +84,14 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
 `;
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-max-width.scss 1`] = `
-"$pds-grid-max-width: 120rem;
+"$pds-grid-min-width: 20rem;
+$pds-grid-max-width: 120rem;
+"
+`;
+
+exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-min-width.scss 1`] = `
+"$pds-grid-min-width: 20rem;
+$pds-grid-max-width: 120rem;
 "
 `;
 
