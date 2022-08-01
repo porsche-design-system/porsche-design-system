@@ -1,6 +1,6 @@
 import { TAG_DISMISSIBLE_COLORS } from '../tag-dismissible/tag-dismissible-utils';
 import type { Theme } from '../../../types';
-import { isThemeDark } from '../../../utils';
+import { isThemeDark } from '../../../utils/theme/isThemeDark'; // deep import needed since barrel contains MutationObserver and causes VRT to fail because of TAG_COLORS import
 
 export const TAG_COLORS = [
   ...TAG_DISMISSIBLE_COLORS,
