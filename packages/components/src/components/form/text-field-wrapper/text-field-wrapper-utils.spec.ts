@@ -196,11 +196,18 @@ describe('throwIfUnitLengthExceeded()', () => {
 });
 
 describe('throwIfUnsupportedActionIcon()', () => {
-  it('should call hasLocateAction() with correct parameter', () => {
+  it('should if parameter is not undefined call hasLocateAction() with correct parameter', () => {
     const spy = jest.spyOn(textFieldWrapperUtils, 'hasLocateAction');
     throwIfUnsupportedActionIcon('locate');
 
     expect(spy).toBeCalledWith('locate');
+  });
+
+  it('should if parameter is undefined not call hasLocateAction()', () => {
+    const spy = jest.spyOn(textFieldWrapperUtils, 'hasLocateAction');
+    throwIfUnsupportedActionIcon(undefined);
+
+    expect(spy).not.toBeCalled();
   });
 
   it('should throw error if hasLocateAction() returns false', () => {
@@ -211,6 +218,10 @@ describe('throwIfUnsupportedActionIcon()', () => {
   it('should not throw error if hasLocateAction() returns true', () => {
     jest.spyOn(textFieldWrapperUtils, 'hasLocateAction').mockReturnValue(true);
     expect(() => throwIfUnsupportedActionIcon('locate')).not.toThrow();
+  });
+
+  it('should not throw error for undefined', () => {
+    expect(() => throwIfUnsupportedActionIcon(undefined)).not.toThrow();
   });
 });
 

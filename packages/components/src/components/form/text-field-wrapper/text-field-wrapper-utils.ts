@@ -49,7 +49,7 @@ export const throwIfUnitLengthExceeded = (unit: string): void => {
 };
 
 export const throwIfUnsupportedActionIcon = (icon: IconName): void => {
-  if (!hasLocateAction(icon)) {
+  if (icon !== undefined && !hasLocateAction(icon)) {
     throw new Error(`actionIcon: ${icon} passed to 'p-text-field-wrapper' is invalid`);
   }
 };
