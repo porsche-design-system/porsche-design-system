@@ -21,49 +21,41 @@ export const observeResize = <T extends HTMLElement>(
   callback: (entry: ResizeObserverEntry) => void,
   options?: ResizeObserverOptions
 ): void => {
-  if (!useResizeObserverFallback) {
-    // node might not be defined in connectedCallback
-    if (node) {
-      resizeMap.set(node, callback);
-      resizeObserver.observe(node, options);
-    }
-  } else {
-    // TODO: add fallback
+  // node might not be defined in connectedCallback
+  if (node) {
+    resizeMap.set(node, callback);
+    resizeObserver.observe(node, options);
   }
 };
 
 export const unobserveResize = <T extends HTMLElement>(node: T): void => {
-  if (!useResizeObserverFallback) {
-    // node might not be defined in disconnectedCallback
-    if (node) {
-      resizeMap.delete(node);
-      resizeObserver.unobserve(node);
-    }
-  } else {
-    // TODO: add fallback
+  // node might not be defined in disconnectedCallback
+  if (node) {
+    resizeMap.delete(node);
+    resizeObserver.unobserve(node);
   }
 };
 
-export const registeredHosts: Map<HTMLElement, () => void> = new Map();
+export const registeredElements: Map<HTMLElement, () => void> = new Map();
 
 export const onWindowResize = (): void => {
-  registeredHosts.forEach((callback) => {
+  registeredElements.forEach((callback) => {
     callback();
   });
 };
 
-export const observeWindowResize = (host: HTMLElement, callback: () => void): void => {
-  if (!registeredHosts.has(host)) {
-    registeredHosts.set(host, callback);
+export const observeWindowResize = (htmlElement: HTMLElement, callback: () => void): void => {
+  if (!registeredElements.has(htmlElement)) {
+    registeredElements.set(htmlElement, callback);
     window.addEventListener('resize', onWindowResize);
   }
 };
 
-export const unobserveWindowResize = (host: HTMLElement): void => {
-  if (registeredHosts.has(host)) {
-    registeredHosts.delete(host);
+export const unobserveWindowResize = (htmlElement: HTMLElement): void => {
+  if (registeredElements.has(htmlElement)) {
+    registeredElements.delete(htmlElement);
   }
-  if (registeredHosts.size === 0) {
+  if (registeredElements.size === 0) {
     window.removeEventListener('resize', onWindowResize);
   }
 };
@@ -71,19 +63,19 @@ export const unobserveWindowResize = (host: HTMLElement): void => {
 // TODO: accordion resize observer fallback
 // TODO: remove observe children
 export const resizeObserverFallback = (
-  host: HTMLElement,
+  htmlElement: HTMLElement,
   callback: () => void,
   shouldObserveChildren?: boolean
 ): void => {
-  observeWindowResize(host, callback);
+  observeWindowResize(htmlElement, callback);
   if (shouldObserveChildren) {
-    observeChildren(host, callback);
+    observeChildren(htmlElement, callback);
   }
 };
 
-export const removeResizeObserverFallback = (host: HTMLElement, shouldObserveChildren?: boolean): void => {
-  unobserveWindowResize(host);
+export const removeResizeObserverFallback = (htmlElement: HTMLElement, shouldObserveChildren?: boolean): void => {
+  unobserveWindowResize(htmlElement);
   if (shouldObserveChildren) {
-    unobserveChildren(host);
+    unobserveChildren(htmlElement);
   }
 };
