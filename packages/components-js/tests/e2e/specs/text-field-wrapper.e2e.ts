@@ -14,8 +14,8 @@ import {
   getElementInnerText,
   setAttribute,
 } from '../helpers';
-import { ElementHandle, Page } from 'puppeteer';
-import { FormState } from '@porsche-design-system/components/src/types';
+import type { ElementHandle, Page } from 'puppeteer';
+import { FormState } from '@porsche-design-system/components/dist/types/bundle';
 
 let page: Page;
 const CSS_TRANSITION_DURATION = 240;
@@ -27,10 +27,12 @@ beforeEach(async () => {
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-text-field-wrapper');
-const getInput = () => selectNode(page, 'p-text-field-wrapper input');
+const getInput = () => selectNode(page, 'input');
 const getLabel = () => selectNode(page, 'p-text-field-wrapper >>> .label__text');
 const getCounterOrUnit = () => selectNode(page, 'p-text-field-wrapper >>> .unit');
 const getToggleOrClearButton = () => selectNode(page, 'p-text-field-wrapper >>> button[type=button]');
+const getLocateActionButton = () =>
+  selectNode(page, 'p-text-field-wrapper >>> button[type=button] + button[type=button]');
 const getSubmitButton = () => selectNode(page, 'p-text-field-wrapper >>> button[type=submit]');
 const getMessage = () => selectNode(page, 'p-text-field-wrapper >>> .message');
 const getIcon = () => selectNode(page, 'p-text-field-wrapper >>> p-icon');
@@ -46,6 +48,7 @@ type InitOptions = {
   hasUnit?: boolean;
   maxLength?: number;
   isWrappedInForm?: boolean;
+  hasLocateAction?: boolean;
 };
 
 const initTextField = (opts?: InitOptions): Promise<void> => {
@@ -59,6 +62,7 @@ const initTextField = (opts?: InitOptions): Promise<void> => {
     hasUnit = false,
     maxLength,
     isWrappedInForm = false,
+    hasLocateAction = false,
   } = opts || {};
 
   const link = '<a href="#" onclick="return false;">link</a>';
@@ -66,7 +70,12 @@ const initTextField = (opts?: InitOptions): Promise<void> => {
   const slottedDescription = useSlottedDescription ? `<span slot="description">Description with a ${link}</span>` : '';
   const slottedMessage = useSlottedMessage ? `<span slot="message">Message with a ${link}</span>` : '';
 
-  const attrs = [`state="${state}"`, hasLabel && 'label="Some label"', hasUnit && 'unit="km/h"']
+  const attrs = [
+    `state="${state}"`,
+    hasLabel && 'label="Some label"',
+    hasUnit && 'unit="km/h"',
+    hasLocateAction && 'action-icon="locate"',
+  ]
     .filter((x) => x)
     .join(' ');
 
@@ -163,7 +172,7 @@ describe('input type="search"', () => {
   describe('events', () => {
     it('should emit input events for input without text-field-wrapper', async () => {
       await setContentWithDesignSystem(page, '<input type="search" style="width: 100px; height: 50px">');
-      const input = await selectNode(page, 'input');
+      const input = await getInput();
 
       let inputEvents = 0;
       await addEventListener(input, 'input', () => inputEvents++);
@@ -188,7 +197,7 @@ describe('input type="search"', () => {
 
     it('should emit input events for input with text-field-wrapper', async () => {
       await initTextField({ type: 'search' });
-      const input = await selectNode(page, 'input');
+      const input = await getInput();
 
       let inputEvents = 0;
       await addEventListener(input, 'input', () => inputEvents++);
@@ -210,6 +219,19 @@ describe('input type="search"', () => {
       await waitForEventSerialization(page);
       expect(await getProperty(input, 'value')).toBe('');
       expect(inputEvents).toBe(2);
+    });
+
+    it('should emit action event when action button is clicked', async () => {
+      await initTextField({ type: 'search', hasLocateAction: true });
+      const host = await getHost();
+      const button = await getLocateActionButton();
+
+      let actionEvents = 0;
+      await addEventListener(host, 'action', () => actionEvents++);
+
+      await button.click();
+      await waitForEventSerialization(page);
+      expect(actionEvents).toBe(1);
     });
   });
 
