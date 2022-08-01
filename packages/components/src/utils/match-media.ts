@@ -6,38 +6,38 @@ const mediaQueries = [
   '(min-width:1300px) and (max-width:1759px)',
   '(min-width:1760px) and (max-width:1919px)',
 ];
-const mediaQueryLists = mediaQueries.map((mediaQuery) => window.matchMedia(mediaQuery));
+export const mediaQueryLists = mediaQueries.map((mediaQuery) => window.matchMedia(mediaQuery));
 
 let lastBreakpointIndex: number;
 
-const breakpointChangeCallbacks: Map<HTMLElement, () => void> = new Map();
+export const breakpointChangeCallbackMap: Map<HTMLElement, () => void> = new Map();
 
 export const addBreakpointCallback = (node: HTMLElement, callback: () => void): void => {
   // node might not be defined in connectedCallback
   if (node) {
-    if (breakpointChangeCallbacks.size === 0) {
-      mediaQueryLists.forEach((mediaQueryList, index) =>
-        mediaQueryList.addEventListener('change', (e) => handleBreakpointChange(e, index))
-      );
+    if (breakpointChangeCallbackMap.size === 0) {
+      mediaQueryLists.forEach((mediaQueryList, index) => {
+        mediaQueryList.addEventListener('change', (e) => handleBreakpointChange(e, index));
+      });
     }
-    breakpointChangeCallbacks.set(node, callback);
+    breakpointChangeCallbackMap.set(node, callback);
   }
 };
 
 export const removeBreakpointCallback = (node: HTMLElement): void => {
-  if (breakpointChangeCallbacks.has(node)) {
-    breakpointChangeCallbacks.delete(node);
+  if (breakpointChangeCallbackMap.has(node)) {
+    breakpointChangeCallbackMap.delete(node);
   }
-  if (breakpointChangeCallbacks.size === 0) {
-    mediaQueryLists.forEach((mediaQueryList, index) =>
-      mediaQueryList.removeEventListener('change', (e) => handleBreakpointChange(e, index))
-    );
+  if (breakpointChangeCallbackMap.size === 0) {
+    mediaQueryLists.forEach((mediaQueryList, index) => {
+      mediaQueryList.removeEventListener('change', (e) => handleBreakpointChange(e, index));
+    });
   }
 };
 
 const handleBreakpointChange = ({ matches }: MediaQueryListEvent, index: number): void => {
   if (matches && index !== lastBreakpointIndex) {
     lastBreakpointIndex = index;
-    breakpointChangeCallbacks.forEach((breakpointChangeCallback) => breakpointChangeCallback());
+    breakpointChangeCallbackMap.forEach((breakpointChangeCallback) => breakpointChangeCallback());
   }
 };
