@@ -56,13 +56,13 @@
   import { Prop } from 'vue-property-decorator';
   import CodeBlock from '@/components/CodeBlock.vue';
   import CodeEditor from '@/components/CodeEditor.vue';
-  import type { Framework, FrameworkMarkup, Theme } from '@/models';
+  import type { ColorScheme, Framework, FrameworkMarkup, Theme } from '@/models';
   import { cleanMarkup, patchThemeIntoMarkup } from '@/utils';
   import { componentMeta } from '@porsche-design-system/shared';
 
   export type PlaygroundConfig = {
     themeable: boolean;
-    colorScheme: 'default' | 'surface';
+    colorScheme: ColorScheme;
     height: 'auto' | 'fixed';
     spacing: 'none' | 'inline' | 'block' | 'block-small';
     overflowX: 'auto' | 'visible';
