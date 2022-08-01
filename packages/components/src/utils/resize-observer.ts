@@ -15,7 +15,7 @@ const resizeObserver =
     entries.forEach((resizeEntry) => resizeMap.get(resizeEntry.target)?.(resizeEntry));
   });
 
-// TODO: move fallback logic here
+// TODO: Move fallback logic here, to simplify usage in components
 export const observeResize = <T extends HTMLElement>(
   node: T,
   callback: (entry: ResizeObserverEntry) => void,
@@ -60,8 +60,6 @@ export const unobserveWindowResize = (htmlElement: HTMLElement): void => {
   }
 };
 
-// TODO: accordion resize observer fallback
-// TODO: remove observe children
 export const resizeObserverFallback = (
   htmlElement: HTMLElement,
   callback: () => void,
