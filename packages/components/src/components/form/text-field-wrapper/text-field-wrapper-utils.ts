@@ -44,7 +44,13 @@ export const setInputStyles = (
 
 export const throwIfUnitLengthExceeded = (unit: string): void => {
   if (unit.length > 5) {
-    throw new RangeError(`Unit: ${unit} passed to 'PTextFieldWrapper' exceeds the maximum length of 5`);
+    throw new RangeError(`unit: ${unit} passed to 'p-text-field-wrapper' exceeds the maximum length of 5`);
+  }
+};
+
+export const throwIfUnsupportedActionIcon = (icon: IconName): void => {
+  if (!hasLocateAction(icon)) {
+    throw new Error(`actionIcon: ${icon} passed to 'p-text-field-wrapper' is invalid`);
   }
 };
 

@@ -214,15 +214,27 @@ describe('componentWillLoad', () => {
 
 describe('componentWillRender', () => {
   it('should call throwIfUnitLengthExceeded() with correct parameter', () => {
-    const component = new TextFieldWrapper();
     const spy = jest.spyOn(textFieldWrapperUtils, 'throwIfUnitLengthExceeded');
+    const component = new TextFieldWrapper();
     component.unit = '123456';
 
     try {
       component.componentWillRender();
-    } catch (e) {}
+    } catch {}
 
     expect(spy).toBeCalledWith('123456');
+  });
+
+  it('should call throwIfUnsupportedActionIcon() with correct parameter', () => {
+    const spy = jest.spyOn(textFieldWrapperUtils, 'throwIfUnsupportedActionIcon');
+    const component = new TextFieldWrapper();
+    component.actionIcon = 'locate';
+
+    try {
+      component.componentWillRender();
+    } catch {}
+
+    expect(spy).toBeCalledWith('locate');
   });
 });
 
