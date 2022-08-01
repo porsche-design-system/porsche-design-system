@@ -33,6 +33,7 @@ import {
   isWithinForm,
   setInputStyles,
   throwIfUnitLengthExceeded,
+  throwIfUnsupportedActionIcon,
   UNIT_POSITIONS,
 } from './text-field-wrapper-utils';
 import { Required } from '../../common/required/required';
@@ -151,6 +152,8 @@ export class TextFieldWrapper {
   public componentWillRender(): void {
     validateProps(this, propTypes);
     throwIfUnitLengthExceeded(this.unit);
+    throwIfUnsupportedActionIcon(this.actionIcon);
+
     attachComponentCss(
       this.host,
       getComponentCss,
