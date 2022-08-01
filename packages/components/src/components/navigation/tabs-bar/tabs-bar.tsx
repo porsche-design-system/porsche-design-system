@@ -28,12 +28,7 @@ import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../typ
 import { THEMES_EXTENDED_ELECTRIC } from '../../../types';
 import type { Direction } from '../../common/scroller/scroller-utils';
 import { getScrollerElements, GRADIENT_COLOR_THEMES } from '../../common/scroller/scroller-utils';
-import {
-  resizeObserverFallback,
-  observeResize,
-  unobserveResize,
-  useResizeObserverFallback,
-} from '../../../utils/resize-observer';
+import { addBreakpointCallback, removeBreakpointCallback } from '../../../utils/match-media';
 
 const propTypes: PropTypes<typeof TabsBar> = {
   size: AllowedTypes.breakpoint<TabSize>(TAB_SIZES),
@@ -97,14 +92,8 @@ export class TabsBar {
       this.setBarStyle();
       this.setAccessibilityAttributes();
     });
-    if (this.isSizeBreakpointCustomizable()) {
-      if (useResizeObserverFallback) {
-        resizeObserverFallback(this.host, () => {
-          this.setBarStyle();
-          this.scrollActiveTabIntoView(false);
-        });
-      }
-    }
+
+    this.onMatchMediaChange();
   }
 
   public componentDidLoad(): void {
@@ -118,16 +107,7 @@ export class TabsBar {
     }
 
     this.addEventListeners();
-    if (this.isSizeBreakpointCustomizable()) {
-      observeResize(
-        this.scrollerElement,
-        () => {
-          this.setBarStyle();
-          this.scrollActiveTabIntoView(false);
-        },
-        { box: 'border-box' }
-      );
-    }
+    this.onMatchMediaChange();
 
     // setBarStyle() is needed when intersection observer does not trigger because all tabs are visible
     // and first call in componentDidRender() is skipped because elements are not defined, yet
@@ -147,7 +127,7 @@ export class TabsBar {
 
   public disconnectedCallback(): void {
     if (this.isSizeBreakpointCustomizable()) {
-      unobserveResize(this.scrollerElement);
+      removeBreakpointCallback(this.host);
     }
     unobserveChildren(this.host);
     this.intersectionObserver?.disconnect();
@@ -277,6 +257,15 @@ export class TabsBar {
 
   private setBarStyle = (): void => {
     setBarStyle(this.tabElements, this.activeTabIndex, this.barElement, this.prevActiveTabIndex);
+  };
+
+  private onMatchMediaChange = (): void => {
+    if (this.isSizeBreakpointCustomizable()) {
+      addBreakpointCallback(this.host, () => {
+        this.setBarStyle();
+        this.scrollActiveTabIntoView(false);
+      });
+    }
   };
 
   private isSizeBreakpointCustomizable = (): boolean => typeof parseJSON(this.size) === 'object';

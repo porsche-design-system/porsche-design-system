@@ -5,7 +5,7 @@ import {
   observeResize,
   observeWindowResize,
   onWindowResize,
-  registeredHosts,
+  registeredElements,
   resizeMap,
   unobserveResize,
   unobserveWindowResize,
@@ -160,7 +160,7 @@ describe('onWindowResize()', () => {
 
 describe('observeWindowResize()', () => {
   beforeEach(() => {
-    registeredHosts.clear();
+    registeredElements.clear();
   });
 
   it('should push accordion to registeredComponents', () => {
@@ -168,7 +168,7 @@ describe('observeWindowResize()', () => {
     const mockCallback = jest.fn(() => {});
     observeWindowResize(component.host, mockCallback);
 
-    expect(registeredHosts.size).toBe(1);
+    expect(registeredElements.size).toBe(1);
   });
 
   it('should not push accordion to registeredComponents if it is a duplicate', () => {
@@ -177,7 +177,7 @@ describe('observeWindowResize()', () => {
     observeWindowResize(component.host, mockCallback);
     observeWindowResize(component.host, mockCallback);
 
-    expect(registeredHosts.size).toBe(1);
+    expect(registeredElements.size).toBe(1);
   });
 
   it('should add event listener', () => {
@@ -190,7 +190,7 @@ describe('observeWindowResize()', () => {
 
 describe('unobserveWindowResize()', () => {
   beforeEach(() => {
-    registeredHosts.clear();
+    registeredElements.clear();
   });
 
   it('should remove accordion from registeredComponents', () => {
@@ -198,11 +198,11 @@ describe('unobserveWindowResize()', () => {
     const mockCallback = jest.fn(() => {});
     observeWindowResize(component.host, mockCallback);
 
-    expect(registeredHosts.size).toBe(1);
+    expect(registeredElements.size).toBe(1);
 
     unobserveWindowResize(component.host);
 
-    expect(registeredHosts.size).toBe(0);
+    expect(registeredElements.size).toBe(0);
   });
 
   it('should remove event listener if no registeredComponents are defined', () => {
