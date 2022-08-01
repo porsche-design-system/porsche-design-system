@@ -17,8 +17,8 @@ export type { IconSize } from './components/icon/icon-size';
 
 export type LinkButtonPureIconName = IconName | 'none';
 
-import { LinkButtonVariant } from './components/navigation/link-button-variant';
-export { LinkButtonVariant } from './components/navigation/link-button-variant';
+import type { LinkButtonVariant } from './components/navigation/link-button-variant';
+export type { LinkButtonVariant } from './components/navigation/link-button-variant';
 export type ButtonVariant = LinkButtonVariant;
 export type { ButtonType } from './components/action/button-type';
 
