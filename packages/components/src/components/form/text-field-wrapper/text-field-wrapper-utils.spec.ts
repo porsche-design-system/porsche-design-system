@@ -9,6 +9,7 @@ import {
   isType,
   addInputEventListenerForSearch,
   dispatchInputEvent,
+  hasLocateAction,
 } from './text-field-wrapper-utils';
 import * as textFieldWrapperUtils from './text-field-wrapper-utils';
 import * as formUtils from '../form-utils';
@@ -106,6 +107,20 @@ describe('hasUnitAndIsTypeTextOrNumber()', () => {
   );
 });
 
+describe('isType()', () => {
+  it('should return true for equal parameters', () => {
+    expect(isType('text', 'text')).toBe(true);
+    expect(isType('number', 'number')).toBe(true);
+    expect(isType('password', 'password')).toBe(true);
+  });
+
+  it('should return false for unequal parameters', () => {
+    expect(isType('password', 'search')).toBe(false);
+    expect(isType('text', 'search')).toBe(false);
+    expect(isType('password', 'number')).toBe(false);
+  });
+});
+
 describe('isWithinForm()', () => {
   it('should call getClosestHTMLElement()', () => {
     const spy = jest.spyOn(getClosestHTMLElementUtils, 'getClosestHTMLElement');
@@ -127,17 +142,14 @@ describe('isWithinForm()', () => {
   });
 });
 
-describe('isType()', () => {
-  it('should return true for equal parameters', () => {
-    expect(isType('text', 'text')).toBe(true);
-    expect(isType('number', 'number')).toBe(true);
-    expect(isType('password', 'password')).toBe(true);
+describe('hasLocateAction()', () => {
+  it('should return true for parameter: locate', () => {
+    expect(hasLocateAction('locate')).toBe(true);
   });
 
-  it('should return false for unequal parameters', () => {
-    expect(isType('password', 'search')).toBe(false);
-    expect(isType('text', 'search')).toBe(false);
-    expect(isType('password', 'number')).toBe(false);
+  it('should return false for other values', () => {
+    expect(hasLocateAction('search')).toBe(false);
+    expect(hasLocateAction('arrow-head-right')).toBe(false);
   });
 });
 
