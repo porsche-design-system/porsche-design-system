@@ -82,7 +82,7 @@ better accessibility it's recommended to **not** reset these browser default UI 
 
 ## type="number"
 
-Inputs with type number can display a unit (e.g. €, EUR, km/h, etc.) with a **maximum** of five characters. A
+Inputs with `type="number"` can display a unit (e.g. €, EUR, km/h, etc.) with a **maximum** of five characters. A
 description of the used unit should be provided to ensure accessibility.
 
 <Playground :markup="typeNumber" :config="config">
@@ -95,15 +95,30 @@ description of the used unit should be provided to ensure accessibility.
 
 ## type="password"
 
+Inputs with `type="password"` receive a toggle button to display the input's value in clear text.
+
 <Playground :markup="typePassword" :config="config"></Playground>
 
 ## type="search"
+
+Inputs with `type="search"` receive a decorative search icon when used outside a form.  
+If the input contains a value, a clear button becomes visible.
 
 <Playground :markup="typeSearch" :config="config"></Playground>
 
 ## type="search" within form
 
+Inputs with `type="search"` receive a search submit button when within form.  
+If the input contains a value, a clear button becomes visible.
+
 <Playground :markup="typeSearchWithinForm" :config="config"></Playground>
+
+## type="search" with locate action
+
+Inputs with `type="search"` that also have the `actionIcon="locate"` property, always show an action button, no matter
+if used within or outside a form.
+
+<Playground :markup="typeSearchWithLocateAction" :config="config"></Playground>
 
 ## Validation states
 
@@ -235,6 +250,17 @@ codeExample = getTextFieldWrapperCodeSamples();
   typeSearchWithinForm =
 `<form action="#" onsubmit="alert('submit'); return false;">
   <p-text-field-wrapper label="Some label">
+    <input type="search" name="some-name" />
+  </p-text-field-wrapper>
+</form>`;
+
+  typeSearchWithLocateAction = 
+`<p-text-field-wrapper label="Some label" action-icon="locate">
+  <input type="search" name="some-name" />
+</p-text-field-wrapper>
+
+<form action="#" onsubmit="alert('submit'); return false;">
+  <p-text-field-wrapper label="Some label" action-icon="locate">
     <input type="search" name="some-name" />
   </p-text-field-wrapper>
 </form>`;
