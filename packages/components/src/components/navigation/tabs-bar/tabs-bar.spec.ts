@@ -3,14 +3,9 @@ import { TabsBar } from './tabs-bar';
 import * as tabsBarUtils from './tabs-bar-utils';
 import * as matchMediaUtils from '../../../utils/match-media';
 import * as childrenObserverUtils from '../../../utils/children-observer';
-import { isResizeObserverDefined, useResizeObserverFallbackOverride } from '../../../utils/resize-observer';
 
 jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
-
-afterEach(() => {
-  useResizeObserverFallbackOverride(!isResizeObserverDefined());
-});
 
 describe('connectedCallback', () => {
   it('should call setTabElements()', () => {
