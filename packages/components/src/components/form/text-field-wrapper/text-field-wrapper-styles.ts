@@ -17,6 +17,7 @@ import { getFunctionalComponentStateMessageStyles } from '../../common/state-mes
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
 import { isType } from './text-field-wrapper-utils';
 import type { FormState } from '../form-state';
+import type { JssStyle } from 'jss';
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -25,7 +26,9 @@ export const getComponentCss = (
   hasUnitOrVisibleCounter: boolean,
   unitPosition: TextFieldWrapperUnitPosition,
   inputType: string,
-  isWithinForm: boolean
+  isWithinForm: boolean,
+  hasAction: boolean,
+  hasActionLoading: boolean
 ): string => {
   const theme: Theme = 'light';
   const { baseColor, contrastMediumColor, activeColor, disabledColor, hoverColor } = getThemedColors(theme);
@@ -33,6 +36,11 @@ export const getComponentCss = (
   const isSearch = isType(inputType, 'search');
   const isPassword = isType(inputType, 'password');
   const isSearchOrPassword = isSearch || isPassword;
+
+  const disabledJssStyle: JssStyle = {
+    color: disabledColor,
+    cursor: 'not-allowed',
+  };
 
   return getCss({
     '@global': {
@@ -77,43 +85,34 @@ export const getComponentCss = (
           background: 'transparent',
           cursor: 'pointer',
           color: baseColor,
+          ...(hasActionLoading && disabledJssStyle),
           transition: getTransition('color'),
           ...getFocusJssStyle({ offset: hasVisibleState ? -5 : -4 }),
-          ...hoverMediaQuery({
-            '&:hover': {
-              color: hoverColor,
+          ...(!hasActionLoading && {
+            ...hoverMediaQuery({
+              '&:hover': {
+                color: hoverColor,
+              },
+            }),
+            '&:active': {
+              color: activeColor,
             },
           }),
-          '&:active': {
-            color: activeColor,
-          },
-          '&:disabled': {
-            color: disabledColor,
-            cursor: 'not-allowed',
-          },
-          ...(isSearch &&
-            (isWithinForm
-              ? {
-                  right: pxToRemWithUnit(40), // clear button
-                  '&+button': {
-                    right: 0, // submit button
-                  },
-                }
-              : {
-                  '&+*:not(button)': {
-                    // search icon on left side
-                    position: 'absolute',
-                    left: 0,
-                    bottom: 0,
-                    color: contrastMediumColor,
-                    padding: pxToRemWithUnit(12),
-                    pointerEvents: 'none',
-                  },
-                  '&+button': {
-                    left: 'auto', // action button
-                    right: 0,
-                  },
-                })),
+          '&:disabled': disabledJssStyle,
+          ...(isSearch && {
+            ...(isWithinForm && {
+              right: pxToRemWithUnit(40), // clear button
+              '&+button': {
+                right: 0, // submit button
+              },
+            }),
+            ...((hasAction || !isWithinForm) && {
+              '&+button': {
+                left: 'auto', // action button
+                right: 0,
+              },
+            }),
+          }),
         },
       }),
     },
@@ -141,6 +140,18 @@ export const getComponentCss = (
     ),
     ...getFunctionalComponentRequiredStyles(theme),
     ...getFunctionalComponentStateMessageStyles(theme, state),
+    ...(isSearch &&
+      (hasAction || !isWithinForm) && {
+        icon: {
+          // search icon on left side
+          position: 'absolute',
+          left: 0,
+          bottom: 0,
+          color: contrastMediumColor,
+          padding: pxToRemWithUnit(12),
+          pointerEvents: 'none',
+        },
+      }),
     'sr-only': {
       ...getScreenReaderOnlyJssStyle(),
       padding: 0,
