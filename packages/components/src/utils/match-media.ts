@@ -6,7 +6,7 @@ const mediaQueries = [
   '(min-width:1300px) and (max-width:1759px)',
   '(min-width:1760px) and (max-width:1919px)',
 ];
-export const mediaQueryLists = mediaQueries.map((mediaQuery) => window.matchMedia(mediaQuery));
+export const mediaQueryLists = window.matchMedia && mediaQueries.map((mediaQuery) => window.matchMedia(mediaQuery));
 
 let lastBreakpointIndex: number;
 
