@@ -68,6 +68,40 @@ describe('componentWillLoad', () => {
     expect(component['isWithinForm']).toBe(false);
   });
 
+  it('should if isSearch is true call hasLocateAction() with correct parameter and set isSearchWithLocateAction', () => {
+    const input = document.createElement('input');
+    mockGetOnlyChildOfKindHTMLElementOrThrow(input);
+    jest.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(true);
+
+    const component = new TextFieldWrapper();
+    const spy = jest.spyOn(textFieldWrapperUtils, 'hasLocateAction');
+
+    expect(component['isSearchWithLocateAction']).toBe(undefined);
+
+    spy.mockReturnValue(true);
+    component.componentWillLoad();
+    expect(component['isSearchWithLocateAction']).toBe(true);
+
+    spy.mockReturnValue(false);
+    component.componentWillLoad();
+    expect(component['isSearchWithLocateAction']).toBe(false);
+  });
+
+  it('should if isSearch is false not call hasLocateAction() and set isSearchWithLocateAction', () => {
+    const input = document.createElement('input');
+    mockGetOnlyChildOfKindHTMLElementOrThrow(input);
+    jest.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(false);
+
+    const component = new TextFieldWrapper();
+    const spy = jest.spyOn(textFieldWrapperUtils, 'hasLocateAction');
+
+    expect(component['isSearchWithLocateAction']).toBe(undefined);
+
+    component.componentWillLoad();
+    expect(spy).not.toBeCalled();
+    expect(component['isSearchWithLocateAction']).toBe(false);
+  });
+
   it('should not set isClearable when isSearch is false', () => {
     const input = document.createElement('input');
     input.value = 'search';
