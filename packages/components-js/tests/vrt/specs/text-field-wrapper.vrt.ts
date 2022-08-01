@@ -33,8 +33,8 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       const head = `
         <style>
-          .playground div { display: flex; }
-          .playground div > * { width: 40%; }
+          .playground div, .playground form { display: flex; }
+          .playground div > *, .playground form > * { width: 40%; }
           p-text-field-wrapper:not(:last-child) {
             margin-right: 1rem;
             margin-bottom: 1rem;
@@ -47,10 +47,32 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       const getElementsMarkup: GetMarkup = () => `
         <div>
+          <p-text-field-wrapper label="Text empty">
+            <input type="text" />
+          </p-text-field-wrapper>
+          <p-text-field-wrapper label="Password empty">
+            <input type="password" />
+          </p-text-field-wrapper>
+          <p-text-field-wrapper label="Search empty">
+            <input type="search" />
+          </p-text-field-wrapper>
+        </div>
+        <form>
+          <p-text-field-wrapper label="Text in form">
+            ${child}
+          </p-text-field-wrapper>
+          <p-text-field-wrapper label="Password in form">
+            <input type="password" value="Value" />
+          </p-text-field-wrapper>
+          <p-text-field-wrapper label="Search in form">
+            <input type="search" value="Value" />
+          </p-text-field-wrapper>
+        </form>
+        <div>
           <p-text-field-wrapper label="Default">
             ${child}
           </p-text-field-wrapper>
-          <p-text-field-wrapper label="Password">
+          <p-text-field-wrapper class="toggle-password" label="Password">
             <input type="password" value="Value" />
           </p-text-field-wrapper>
           <p-text-field-wrapper label="Search">
@@ -108,13 +130,27 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-      await forceHoverState(page, '.hover p-text-field-wrapper input[type="text"]'); // other types have button
+      // let's toggle some password fields
+      const textFieldWrappers = await page.$$('.toggle-password');
+      await Promise.all(
+        textFieldWrappers.map(
+          async (item) =>
+            (
+              await item.evaluateHandle((el) => el.shadowRoot.querySelector('button[type=button]'))
+            ).evaluate((el: HTMLElement) => el.click()) // js element.click() instead of puppeteer ElementHandle.click() to workaround element off screen issue
+        )
+      );
+
+      // get rid of focus from last .toggle-password input
+      await page.mouse.click(0, 0);
+
+      await forceHoverState(page, '.hover p-text-field-wrapper input');
       await forceHoverState(page, '.hover p-text-field-wrapper a');
       await forceHoverState(page, '.hover p-text-field-wrapper >>> button');
-      await forceFocusState(page, '.focus p-text-field-wrapper input[type="text"]'); // other types have button
+      await forceFocusState(page, '.focus p-text-field-wrapper input');
       await forceFocusState(page, '.focus p-text-field-wrapper a');
       await forceFocusState(page, '.focus p-text-field-wrapper >>> button');
-      await forceFocusHoverState(page, '.focus-hover p-text-field-wrapper input[type="text"]'); // other types have button
+      await forceFocusHoverState(page, '.focus-hover p-text-field-wrapper input');
       await forceFocusHoverState(page, '.focus-hover p-text-field-wrapper a');
       await forceFocusHoverState(page, '.focus-hover p-text-field-wrapper >>> button');
     })
