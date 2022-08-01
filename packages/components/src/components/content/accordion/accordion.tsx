@@ -9,17 +9,15 @@ import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
 import {
   ACCORDION_SIZES,
   getContentHeight,
+  observeResize,
+  removeResizeObserverFallback,
+  resizeObserverFallback,
   setCollapsibleElementHeight,
+  unobserveResize,
+  useResizeObserverFallback,
   warnIfCompactAndSizeIsSet,
 } from './accordion-utils';
 import { getComponentCss } from './accordion-styles';
-import {
-  resizeObserverFallback,
-  observeResize,
-  removeResizeObserverFallback,
-  unobserveResize,
-  useResizeObserverFallback,
-} from '../../../utils/resize-observer';
 
 const propTypes: PropTypes<typeof Accordion> = {
   size: AllowedTypes.oneOf<AccordionSize>(ACCORDION_SIZES),
