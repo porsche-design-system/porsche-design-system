@@ -98,8 +98,8 @@ export class Popover {
     );
   }
 
-  private onKeydown = ({ key }: KeyboardEvent): void => {
-    if (key === 'Escape' || key === 'Esc') {
+  private onKeydown = (e: KeyboardEvent): void => {
+    if (e.key === 'Escape') {
       this.button.focus();
     }
   };

@@ -354,14 +354,12 @@ describe('setScrollLock()', () => {
   });
 
   describe('documentKeydownListener', () => {
-    it('should call closeModal() via Esc and Escape key if it exists', () => {
+    it('should call closeModal() via Escape key if it exists', () => {
       const closeModalMock = jest.fn();
       setScrollLock(host, true, closeBtn, closeModalMock);
 
-      documentKeydownListener(new KeyboardEvent('keydown', { key: 'Esc' }));
-      expect(closeModalMock).toBeCalledWith();
       documentKeydownListener(new KeyboardEvent('keydown', { key: 'Escape' }));
-      expect(closeModalMock).toBeCalledTimes(2);
+      expect(closeModalMock).toBeCalledWith();
     });
 
     it('should call preventDefault() via Tab when no focusableElements exist', () => {

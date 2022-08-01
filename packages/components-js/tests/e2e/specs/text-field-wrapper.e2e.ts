@@ -30,7 +30,8 @@ const getHost = () => selectNode(page, 'p-text-field-wrapper');
 const getInput = () => selectNode(page, 'p-text-field-wrapper input');
 const getLabel = () => selectNode(page, 'p-text-field-wrapper >>> .label__text');
 const getCounterOrUnit = () => selectNode(page, 'p-text-field-wrapper >>> .unit');
-const getButton = () => selectNode(page, 'p-text-field-wrapper >>> button');
+const getToggleOrClearButton = () => selectNode(page, 'p-text-field-wrapper >>> button[type=button]');
+const getSubmitButton = () => selectNode(page, 'p-text-field-wrapper >>> button[type=submit]');
 const getMessage = () => selectNode(page, 'p-text-field-wrapper >>> .message');
 const getIcon = () => selectNode(page, 'p-text-field-wrapper >>> p-icon');
 const getIconName = (icon: ElementHandle) => getProperty(icon, 'name');
@@ -44,6 +45,7 @@ type InitOptions = {
   hasLabel?: boolean;
   hasUnit?: boolean;
   maxLength?: number;
+  isWrappedInForm?: boolean;
 };
 
 const initTextField = (opts?: InitOptions): Promise<void> => {
@@ -56,7 +58,8 @@ const initTextField = (opts?: InitOptions): Promise<void> => {
     hasLabel = false,
     hasUnit = false,
     maxLength,
-  } = opts ?? {};
+    isWrappedInForm = false,
+  } = opts || {};
 
   const link = '<a href="#" onclick="return false;">link</a>';
   const slottedLabel = useSlottedLabel ? `<span slot="label">Label with a ${link}</span>` : '';
@@ -67,16 +70,16 @@ const initTextField = (opts?: InitOptions): Promise<void> => {
     .filter((x) => x)
     .join(' ');
 
-  return setContentWithDesignSystem(
-    page,
-    `
-      <p-text-field-wrapper ${attrs}>
-        ${slottedLabel}
-        ${slottedDescription}
-        <input type="${type}"${maxLength ? ` maxlength="${maxLength}"` : ''} />
-        ${slottedMessage}
-      </p-text-field-wrapper>`
-  );
+  const textFieldWrapper = `<p-text-field-wrapper ${attrs}>
+  ${slottedLabel}
+  ${slottedDescription}
+  <input type="${type}"${maxLength ? ` maxlength="${maxLength}"` : ''} />
+  ${slottedMessage}
+</p-text-field-wrapper>`;
+
+  const content = isWrappedInForm ? `<form onsubmit="return false;">${textFieldWrapper}</form>` : textFieldWrapper;
+
+  return setContentWithDesignSystem(page, content);
 };
 
 it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
@@ -89,8 +92,8 @@ it('should not render label if label prop is not defined but should render if ch
   expect(await getLabel()).not.toBeNull();
 });
 
-describe('input type password', () => {
-  it('should disable input and toggle password button when input is disabled programmatically', async () => {
+describe('input type="password"', () => {
+  it('should disable input when input is disabled programmatically', async () => {
     await initTextField({ type: 'password', hasLabel: true });
     const input = await getInput();
 
@@ -114,38 +117,25 @@ describe('input type password', () => {
 
   it('should toggle icon when password visibility button is clicked', async () => {
     await initTextField({ type: 'password', hasLabel: true });
-    const toggleButton = await getButton();
+    const button = await getToggleOrClearButton();
 
     const icon = await getIcon();
     expect(await getIconName(icon)).toBe('view');
 
-    await toggleButton.click();
+    await button.click();
     await waitForStencilLifecycle(page);
 
     expect(await getIconName(icon)).toBe('view-off');
 
-    await toggleButton.click();
+    await button.click();
     await waitForStencilLifecycle(page);
 
     expect(await getIconName(icon)).toBe('view');
   });
 
-  it('should have padding-right', async () => {
-    await initTextField({ type: 'password', hasLabel: true });
-    const input = await getInput();
-    const toggleButton = await getButton();
-
-    expect(await getElementStyle(input, 'paddingRight'), 'initially').toBe('48px');
-
-    await toggleButton.click();
-    await waitForStencilLifecycle(page);
-
-    expect(await getElementStyle(input, 'paddingRight'), 'after toggleButton click').toBe('48px');
-  });
-
   it('should toggle password visibility and focus input correctly', async () => {
     await initTextField({ type: 'password', hasLabel: true });
-    const button = await getButton();
+    const button = await getToggleOrClearButton();
     const input = await getInput();
 
     let inputFocusCalls = 0;
@@ -168,127 +158,243 @@ describe('input type password', () => {
   });
 });
 
-describe('input type search', () => {
-  it('should disable search button when input is set to disabled programmatically', async () => {
-    await initTextField({ type: 'search', hasLabel: true });
-    const input = await getInput();
-    const button = await getButton();
+describe('input type="search"', () => {
+  // verify wrapped input type="search" behaves the same as without in regards to clearing it and emitting events
+  describe('events', () => {
+    it('should emit input events for input without text-field-wrapper', async () => {
+      await setContentWithDesignSystem(page, '<input type="search" style="width: 100px; height: 50px">');
+      const input = await selectNode(page, 'input');
 
-    const initialCursor = await getElementStyle(input, 'cursor');
-    const initialBorderColor = await getElementStyle(input, 'borderColor');
+      let inputEvents = 0;
+      await addEventListener(input, 'input', () => inputEvents++);
+      await input.focus();
 
-    const isButtonDisabled = () => getProperty(button, 'disabled');
+      await setProperty(input, 'value', 'value');
+      await page.keyboard.press('Escape');
+      await waitForEventSerialization(page);
+      expect(await getProperty(input, 'value')).toBe('');
+      expect(inputEvents).toBe(1);
 
-    await setProperty(input, 'disabled', true);
-    await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_TRANSITION_DURATION);
+      await page.keyboard.press('Escape');
+      await waitForEventSerialization(page);
+      expect(inputEvents).toBe(1);
 
-    expect(await getElementStyle(input, 'cursor'), 'disabled cursor').not.toBe(initialCursor);
-    expect(await getElementStyle(input, 'borderColor'), 'disabled borderColor').not.toBe(initialBorderColor);
-    expect(await isButtonDisabled()).toBe(true);
+      await setProperty(input, 'value', 'value');
+      await page.mouse.click(90, 25);
+      await waitForEventSerialization(page);
+      expect(await getProperty(input, 'value')).toBe('');
+      expect(inputEvents).toBe(2);
+    });
 
-    await setProperty(input, 'disabled', false);
-    await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_TRANSITION_DURATION);
+    it('should emit input events for input with text-field-wrapper', async () => {
+      await initTextField({ type: 'search' });
+      const input = await selectNode(page, 'input');
 
-    expect(await getElementStyle(input, 'cursor'), 'not disabled cursor').toBe(initialCursor);
-    expect(await getElementStyle(input, 'borderColor'), 'not disabled borderColor').toBe(initialBorderColor);
-    expect(await isButtonDisabled()).toBe(false);
+      let inputEvents = 0;
+      await addEventListener(input, 'input', () => inputEvents++);
+      await input.focus();
+
+      await setProperty(input, 'value', 'value');
+      await page.keyboard.press('Escape');
+      await waitForEventSerialization(page);
+      expect(await getProperty(input, 'value')).toBe('');
+      expect(inputEvents).toBe(1);
+
+      await page.keyboard.press('Escape');
+      await waitForEventSerialization(page);
+      expect(inputEvents).toBe(1);
+
+      await setProperty(input, 'value', 'value');
+      const button = await getToggleOrClearButton();
+      await button.click();
+      await waitForEventSerialization(page);
+      expect(await getProperty(input, 'value')).toBe('');
+      expect(inputEvents).toBe(2);
+    });
   });
 
-  it('should disable search button when input is set to readonly programmatically', async () => {
-    await initTextField({ type: 'search', hasLabel: true });
-    const input = await getInput();
-    const button = await getButton();
+  describe('clear functionality', () => {
+    const isClearButtonVisible = async (): Promise<boolean> => {
+      const clearButton = await getToggleOrClearButton();
+      return !(await getProperty(clearButton, 'hidden'));
+    };
 
-    const initialColor = await getElementStyle(input, 'color');
-    const initialBorderColor = await getElementStyle(input, 'borderColor');
-    const initialBackgroundColor = await getElementStyle(input, 'backgroundColor');
+    it('should show clear button on keyboard typed input.value', async () => {
+      await initTextField({ type: 'search' });
+      const input = await getInput();
 
-    const isButtonDisabled = () => getProperty(button, 'disabled');
+      expect(await isClearButtonVisible()).toBe(false);
 
-    await setProperty(input, 'readOnly', true);
-    await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_TRANSITION_DURATION);
+      await input.focus();
+      await page.keyboard.type('search-term');
+      await waitForStencilLifecycle(page);
 
-    expect(await getElementStyle(input, 'color'), 'readonly color').not.toBe(initialColor);
-    expect(await getElementStyle(input, 'borderColor'), 'readonly border').not.toBe(initialBorderColor);
-    expect(await getElementStyle(input, 'backgroundColor'), 'readonly backgroundColor').not.toBe(
-      initialBackgroundColor
-    );
-    expect(await isButtonDisabled()).toBe(true);
+      expect(await isClearButtonVisible()).toBe(true);
+    });
 
-    await setProperty(input, 'readOnly', false);
-    await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_TRANSITION_DURATION);
+    it('should show clear button on programmatically set input.value', async () => {
+      await initTextField({ type: 'search' });
+      const input = await getInput();
 
-    expect(await getElementStyle(input, 'color'), 'not readonly color').toBe(initialColor);
-    expect(await getElementStyle(input, 'borderColor'), 'not readonly border').toBe(initialBorderColor);
-    expect(await getElementStyle(input, 'backgroundColor'), 'not readonly backgroundColor').toBe(
-      initialBackgroundColor
-    );
-    expect(await isButtonDisabled()).toBe(false);
+      expect(await isClearButtonVisible()).toBe(false);
+      await setProperty(input, 'value', 'value');
+      await waitForStencilLifecycle(page);
+
+      expect(await isClearButtonVisible()).toBe(true);
+    });
+
+    it('should reset input value on keydown Escape', async () => {
+      await initTextField({ type: 'search' });
+      const input = await getInput();
+      await input.focus();
+      await page.keyboard.type('search-term');
+      await waitForStencilLifecycle(page);
+
+      expect(await isClearButtonVisible()).toBe(true);
+
+      await page.keyboard.press('Escape');
+      await waitForStencilLifecycle(page);
+
+      expect(await getProperty(input, 'value')).toBe('');
+      expect(await isClearButtonVisible()).toBe(false);
+    });
+
+    it('should reset input value on clear-button click', async () => {
+      await initTextField({ type: 'search' });
+      const input = await getInput();
+      const clearButton = await getToggleOrClearButton();
+      await input.focus();
+      await page.keyboard.type('search-term');
+      await waitForStencilLifecycle(page);
+
+      expect(await isClearButtonVisible()).toBe(true);
+
+      await clearButton.click();
+      await waitForStencilLifecycle(page);
+
+      expect(await getProperty(input, 'value')).toBe('');
+      expect(await isClearButtonVisible()).toBe(false);
+    });
   });
 
-  it('should disable search button when input is set to disabled and readonly programmatically', async () => {
-    await initTextField({ type: 'search', hasLabel: true });
-    const input = await getInput();
-    const button = await getButton();
+  describe('without form', () => {
+    it('should not have submit button', async () => {
+      await initTextField({ type: 'search' });
+      const button = await getSubmitButton();
 
-    const isButtonDisabled = () => getProperty(button, 'disabled');
-
-    await setProperty(input, 'disabled', true);
-    await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_TRANSITION_DURATION);
-
-    const disabledBorderColor = await getElementStyle(input, 'borderColor');
-    const disabledBackgroundColor = await getElementStyle(input, 'backgroundColor');
-
-    expect(await isButtonDisabled()).toBe(true);
-
-    await setProperty(input, 'readOnly', true);
-    await waitForStencilLifecycle(page);
-    await page.waitForTimeout(CSS_TRANSITION_DURATION);
-
-    expect(await getElementStyle(input, 'borderColor'), 'readonly and disabled border').not.toBe(disabledBorderColor);
-    expect(await getElementStyle(input, 'backgroundColor'), 'readonly and disabled backgroundColor').not.toBe(
-      disabledBackgroundColor
-    );
+      expect(button).toBe(null);
+    });
   });
 
-  it('should submit parent form on search button click', async () => {
-    await setContentWithDesignSystem(
-      page,
-      `
-        <form onsubmit="return false;">
-          <p-text-field-wrapper label="Some label">
-            <input type="search">
-          </p-text-field-wrapper>
-        </form>`
-    );
-    const searchButton = await getButton();
-    const form = await selectNode(page, 'form');
+  describe('within form', () => {
+    it('should disable search button when input is set to disabled programmatically', async () => {
+      await initTextField({ type: 'search', isWrappedInForm: true });
+      const input = await getInput();
+      const button = await getSubmitButton();
 
-    let formFocusCalls = 0;
-    await addEventListener(form, 'submit', () => formFocusCalls++);
+      const initialCursor = await getElementStyle(input, 'cursor');
+      const initialBorderColor = await getElementStyle(input, 'borderColor');
 
-    await searchButton.click();
-    await waitForEventSerialization(page);
-    await waitForEventSerialization(page); // 🙈
-    await waitForEventSerialization(page); // 🙈
-    await waitForEventSerialization(page); // 🙈
-    await waitForEventSerialization(page); // 🙈
-    await waitForEventSerialization(page); // 🙈
-    await waitForEventSerialization(page); // 🙈
-    await waitForEventSerialization(page); // 🙈
+      const isButtonDisabled = () => getProperty(button, 'disabled');
 
-    expect(formFocusCalls).toBe(1);
-  });
+      await setProperty(input, 'disabled', true);
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(CSS_TRANSITION_DURATION);
 
-  it('should have padding-right', async () => {
-    await initTextField({ type: 'search', hasLabel: true });
-    const input = await getInput();
-    expect(await getElementStyle(input, 'paddingRight')).toBe('48px');
+      expect(await getElementStyle(input, 'cursor'), 'disabled cursor').not.toBe(initialCursor);
+      expect(await getElementStyle(input, 'borderColor'), 'disabled borderColor').not.toBe(initialBorderColor);
+      expect(await isButtonDisabled()).toBe(true);
+
+      await setProperty(input, 'disabled', false);
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(CSS_TRANSITION_DURATION);
+
+      expect(await getElementStyle(input, 'cursor'), 'not disabled cursor').toBe(initialCursor);
+      expect(await getElementStyle(input, 'borderColor'), 'not disabled borderColor').toBe(initialBorderColor);
+      expect(await isButtonDisabled()).toBe(false);
+    });
+
+    it('should disable search button when input is set to readonly programmatically', async () => {
+      await initTextField({ type: 'search', isWrappedInForm: true });
+      const input = await getInput();
+      const button = await getSubmitButton();
+
+      const initialColor = await getElementStyle(input, 'color');
+      const initialBorderColor = await getElementStyle(input, 'borderColor');
+      const initialBackgroundColor = await getElementStyle(input, 'backgroundColor');
+
+      const isButtonDisabled = () => getProperty(button, 'disabled');
+
+      await setProperty(input, 'readOnly', true);
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(CSS_TRANSITION_DURATION);
+
+      expect(await getElementStyle(input, 'color'), 'readonly color').not.toBe(initialColor);
+      expect(await getElementStyle(input, 'borderColor'), 'readonly border').not.toBe(initialBorderColor);
+      expect(await getElementStyle(input, 'backgroundColor'), 'readonly backgroundColor').not.toBe(
+        initialBackgroundColor
+      );
+      expect(await isButtonDisabled()).toBe(true);
+
+      await setProperty(input, 'readOnly', false);
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(CSS_TRANSITION_DURATION);
+
+      expect(await getElementStyle(input, 'color'), 'not readonly color').toBe(initialColor);
+      expect(await getElementStyle(input, 'borderColor'), 'not readonly border').toBe(initialBorderColor);
+      expect(await getElementStyle(input, 'backgroundColor'), 'not readonly backgroundColor').toBe(
+        initialBackgroundColor
+      );
+      expect(await isButtonDisabled()).toBe(false);
+    });
+
+    it('should disable search button when input is set to disabled and readonly programmatically', async () => {
+      await initTextField({ type: 'search', isWrappedInForm: true });
+      const input = await getInput();
+      const button = await getSubmitButton();
+
+      const isButtonDisabled = () => getProperty(button, 'disabled');
+
+      await setProperty(input, 'disabled', true);
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(CSS_TRANSITION_DURATION);
+
+      const disabledBorderColor = await getElementStyle(input, 'borderColor');
+      const disabledBackgroundColor = await getElementStyle(input, 'backgroundColor');
+
+      expect(await isButtonDisabled()).toBe(true);
+
+      await setProperty(input, 'readOnly', true);
+      await waitForStencilLifecycle(page);
+      await page.waitForTimeout(CSS_TRANSITION_DURATION);
+
+      expect(await getElementStyle(input, 'borderColor'), 'readonly and disabled border').not.toBe(disabledBorderColor);
+      expect(await getElementStyle(input, 'backgroundColor'), 'readonly and disabled backgroundColor').not.toBe(
+        disabledBackgroundColor
+      );
+    });
+
+    it('should submit parent form on search button click', async () => {
+      await initTextField({ type: 'search', isWrappedInForm: true });
+      const searchButton = await getSubmitButton();
+
+      const form = await selectNode(page, 'form');
+
+      let formFocusCalls = 0;
+      await addEventListener(form, 'submit', () => formFocusCalls++);
+
+      await searchButton.click();
+      await waitForEventSerialization(page);
+      await waitForEventSerialization(page); // 🙈
+      await waitForEventSerialization(page); // 🙈
+      await waitForEventSerialization(page); // 🙈
+      await waitForEventSerialization(page); // 🙈
+      await waitForEventSerialization(page); // 🙈
+      await waitForEventSerialization(page); // 🙈
+      await waitForEventSerialization(page); // 🙈
+
+      expect(formFocusCalls).toBe(1);
+    });
   });
 
   it('should have "-webkit-appearance: none" on "::-webkit-search-decoration"', async () => {
@@ -533,18 +639,18 @@ describe('accessibility', () => {
 
   it('should expose correct accessibility tree when password visibility button is clicked', async () => {
     await initTextField({ type: 'password', hasLabel: true });
-    const toggleButton = await getButton();
+    const button = await getToggleOrClearButton();
 
-    await expectA11yToMatchSnapshot(page, toggleButton, { message: 'Initially' });
+    await expectA11yToMatchSnapshot(page, button, { message: 'Initially' });
 
-    await toggleButton.click();
+    await button.click();
     await waitForStencilLifecycle(page);
 
-    await expectA11yToMatchSnapshot(page, toggleButton, { message: 'Pressed' });
+    await expectA11yToMatchSnapshot(page, button, { message: 'Pressed' });
 
-    await toggleButton.click();
+    await button.click();
     await waitForStencilLifecycle(page);
 
-    await expectA11yToMatchSnapshot(page, toggleButton, { message: 'Pressed again' });
+    await expectA11yToMatchSnapshot(page, button, { message: 'Pressed again' });
   });
 });
