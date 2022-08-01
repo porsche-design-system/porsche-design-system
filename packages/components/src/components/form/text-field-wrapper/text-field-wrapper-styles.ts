@@ -95,12 +95,12 @@ export const getComponentCss = (
             (isWithinForm
               ? {
                   right: pxToRemWithUnit(40), // clear button
-                  '&+ button': {
+                  '&+button': {
                     right: 0, // submit button
                   },
                 }
               : {
-                  '&+ *': {
+                  '&+*:not(button)': {
                     // search icon on left side
                     position: 'absolute',
                     left: 0,
@@ -108,6 +108,10 @@ export const getComponentCss = (
                     color: contrastMediumColor,
                     padding: pxToRemWithUnit(12),
                     pointerEvents: 'none',
+                  },
+                  '&+button': {
+                    left: 'auto', // action button
+                    right: 0,
                   },
                 })),
         },

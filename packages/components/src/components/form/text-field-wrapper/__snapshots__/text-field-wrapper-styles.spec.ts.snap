@@ -987,13 +987,17 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-button+ * {
+button+*:not(button) {
   position: absolute;
   left: 0;
   bottom: 0;
   color: #626669;
   padding: 0.75rem;
   pointer-events: none;
+}
+button+button {
+  left: auto;
+  right: 0;
 }
 @media(hover:hover) {
   ::slotted(input:hover) {
@@ -1154,7 +1158,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-button+ button {
+button+button {
   right: 0;
 }
 @media(hover:hover) {

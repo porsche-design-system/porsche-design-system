@@ -994,6 +994,10 @@ export namespace Components {
     }
     interface PTextFieldWrapper {
         /**
+          * Action icon can be set to `locate` for `input type="search"` in order to display an action button.
+         */
+        "actionIcon"?: IconName;
+        /**
           * The description text.
          */
         "description"?: string;
@@ -1133,6 +1137,10 @@ export interface PTabsCustomEvent<T> extends CustomEvent<T> {
 export interface PTabsBarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPTabsBarElement;
+}
+export interface PTextFieldWrapperCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPTextFieldWrapperElement;
 }
 export interface PToastItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2505,6 +2513,10 @@ declare namespace LocalJSX {
     }
     interface PTextFieldWrapper {
         /**
+          * Action icon can be set to `locate` for `input type="search"` in order to display an action button.
+         */
+        "actionIcon"?: IconName;
+        /**
           * The description text.
          */
         "description"?: string;
@@ -2520,6 +2532,10 @@ declare namespace LocalJSX {
           * The message styled depending on validation state.
          */
         "message"?: string;
+        /**
+          * Emitted when the action button is clicked.
+         */
+        "onAction"?: (event: PTextFieldWrapperCustomEvent<void>) => void;
         /**
           * Show or hide max character count.
          */
