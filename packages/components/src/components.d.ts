@@ -996,7 +996,11 @@ export namespace Components {
         /**
           * Action icon can be set to `locate` for `input type="search"` in order to display an action button.
          */
-        "actionIcon"?: IconName;
+        "actionIcon"?: Extract<IconName, 'locate'>;
+        /**
+          * Disables the action button and shows a loading indicator. No events will be triggered while loading state is active.
+         */
+        "actionLoading"?: boolean;
         /**
           * The description text.
          */
@@ -2515,7 +2519,11 @@ declare namespace LocalJSX {
         /**
           * Action icon can be set to `locate` for `input type="search"` in order to display an action button.
          */
-        "actionIcon"?: IconName;
+        "actionIcon"?: Extract<IconName, 'locate'>;
+        /**
+          * Disables the action button and shows a loading indicator. No events will be triggered while loading state is active.
+         */
+        "actionLoading"?: boolean;
         /**
           * The description text.
          */

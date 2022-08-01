@@ -48,7 +48,8 @@ const propTypes: PropTypes<typeof TextFieldWrapper> = {
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   showCharacterCount: AllowedTypes.boolean,
-  actionIcon: AllowedTypes.oneOf<IconName>(['locate', undefined]),
+  actionIcon: AllowedTypes.oneOf<Extract<IconName, 'locate'>>(['locate', undefined]),
+  actionLoading: AllowedTypes.boolean,
 };
 
 @Component({
@@ -83,7 +84,10 @@ export class TextFieldWrapper {
   @Prop() public showCharacterCount?: boolean = true;
 
   /** Action icon can be set to `locate` for `input type="search"` in order to display an action button. */
-  @Prop() public actionIcon?: IconName;
+  @Prop() public actionIcon?: Extract<IconName, 'locate'>;
+
+  /** Disables the action button and shows a loading indicator. No events will be triggered while loading state is active. */
+  @Prop() public actionLoading?: boolean = false;
 
   /** Emitted when the action button is clicked. */
   @Event({ bubbles: false }) public action?: EventEmitter<void>;
@@ -98,7 +102,7 @@ export class TextFieldWrapper {
   private isSearch: boolean;
   private isPassword: boolean;
   private isWithinForm: boolean;
-  private isSearchWithLocateAction: boolean;
+  private hasAction: boolean;
   private hasCounter: boolean;
   private isCounterVisible: boolean;
   private hasUnit: boolean;
@@ -119,7 +123,7 @@ export class TextFieldWrapper {
     this.isSearch = isType(this.input.type, 'search');
     this.isPassword = isType(this.input.type, 'password');
     this.isWithinForm = isWithinForm(this.host);
-    this.isSearchWithLocateAction = this.isSearch && hasLocateAction(this.actionIcon);
+    this.hasAction = hasLocateAction(this.actionIcon);
     this.hasCounter = hasCounterAndIsTypeText(this.input);
     this.isCounterVisible = this.showCharacterCount && this.hasCounter;
     this.hasUnit = !this.isCounterVisible && hasUnitAndIsTypeTextOrNumber(this.input, this.unit);
@@ -156,7 +160,9 @@ export class TextFieldWrapper {
       this.hasUnit || this.isCounterVisible,
       this.isCounterVisible ? 'suffix' : this.unitPosition,
       this.isPassword ? 'password' : this.input.type,
-      !this.isSearchWithLocateAction && this.isWithinForm
+      this.isWithinForm,
+      this.hasAction,
+      this.actionLoading
     );
   }
 
@@ -246,24 +252,28 @@ export class TextFieldWrapper {
               >
                 <PrefixedTagNames.pIcon name="close" {...iconProps} />
               </button>,
-              this.isSearchWithLocateAction && (
+              this.hasAction && (
                 <button
                   type="button"
-                  onClick={() => this.action.emit()}
+                  onClick={!disabledOrReadOnly && !this.actionLoading ? () => this.action.emit() : null}
                   disabled={disabledOrReadOnly}
                   hidden={this.isClearable}
                 >
                   <span class="sr-only">Locate me</span>
-                  <PrefixedTagNames.pIcon name={this.actionIcon} {...iconProps} />
+                  {this.actionLoading ? (
+                    <PrefixedTagNames.pSpinner size="inherit" />
+                  ) : (
+                    <PrefixedTagNames.pIcon name={this.actionIcon} {...iconProps} />
+                  )}
                 </button>
               ),
-              !this.isSearchWithLocateAction && this.isWithinForm ? (
+              !this.hasAction && this.isWithinForm ? (
                 <button type="submit" onClick={this.onSubmit} disabled={disabledOrReadOnly}>
                   <span class="sr-only">Search</span>
                   <PrefixedTagNames.pIcon name="search" {...iconProps} />
                 </button>
               ) : (
-                <PrefixedTagNames.pIcon name="search" {...iconProps} />
+                <PrefixedTagNames.pIcon class="icon" name="search" {...iconProps} />
               ),
             ]
           )}
