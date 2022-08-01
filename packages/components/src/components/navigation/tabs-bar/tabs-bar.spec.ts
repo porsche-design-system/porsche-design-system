@@ -1,6 +1,7 @@
+import '../../../utils/match-media.mock';
 import { TabsBar } from './tabs-bar';
 import * as tabsBarUtils from './tabs-bar-utils';
-import * as resizeObserverUtils from '../../../utils/resize-observer';
+import * as matchMediaUtils from '../../../utils/match-media';
 import * as childrenObserverUtils from '../../../utils/children-observer';
 import { isResizeObserverDefined, useResizeObserverFallbackOverride } from '../../../utils/resize-observer';
 
@@ -33,37 +34,25 @@ describe('connectedCallback', () => {
     expect(childrenObserverUtilsSpy).toBeCalledWith(host, expect.any(Function));
   });
 
-  it('should not add resize event listener to window if ResizeObserver is available', () => {
-    const component = new TabsBar();
-    const spy = jest.spyOn(resizeObserverUtils, 'observeWindowResize');
-
-    component.connectedCallback();
-
-    expect(component['contentObserver']).toBeUndefined();
-    expect(spy).not.toBeCalled();
-  });
-
-  it('should not add resize event listener to window if size is not BreakpointCustomizable ', () => {
-    const utilsSpy = jest.spyOn(resizeObserverUtils, 'resizeObserverFallback');
+  it('should not call addBreakpointCallback() if size is not BreakpointCustomizable ', () => {
+    const spy = jest.spyOn(matchMediaUtils, 'addBreakpointCallback');
     const host = document.createElement('p-tabs-bar');
     const component = new TabsBar();
     component.host = host;
     component.connectedCallback();
 
-    expect(utilsSpy).not.toBeCalled();
+    expect(spy).not.toBeCalled();
   });
 
-  it('should add resize event listener to window if size is BreakpointCustomizable and ResizeObserver is unavailable', () => {
-    const utilsSpy = jest.spyOn(resizeObserverUtils, 'resizeObserverFallback');
-    useResizeObserverFallbackOverride(true);
-
+  it('should call addBreakpointCallback() if size is BreakpointCustomizable', () => {
+    const spy = jest.spyOn(matchMediaUtils, 'addBreakpointCallback');
     const host = document.createElement('p-tabs-bar');
     const component = new TabsBar();
     component.host = host;
     component.size = "{base: 'small', m: 'medium'}";
     component.connectedCallback();
 
-    expect(utilsSpy).toBeCalledWith(host, expect.any(Function));
+    expect(spy).toBeCalledWith(host, expect.any(Function));
   });
 });
 
@@ -91,21 +80,22 @@ describe('componentDidLoad', () => {
     expect(spy).toBeCalledWith(undefined, 0);
   });
 
-  it('should call observeResize() with correct parameters if size is BreakpointCustomizable and ResizeObserver is available', () => {
-    const spy = jest.spyOn(resizeObserverUtils, 'observeResize');
+  it('should call addBreakpointCallback() with correct parameters if size is BreakpointCustomizable', () => {
+    const spy = jest.spyOn(matchMediaUtils, 'addBreakpointCallback');
     const component = new TabsBar();
+    const host = document.createElement('p-tabs-bar');
     const scroller = document.createElement('p-scroller');
     component.size = "{base: 'small', m: 'medium'}";
-    component.host = document.createElement('p-tabs-bar');
+    component.host = host;
     component['scrollerElement'] = scroller;
 
     component.componentDidLoad();
 
-    expect(spy).toBeCalledWith(scroller, expect.any(Function), { box: 'border-box' });
+    expect(spy).toBeCalledWith(host, expect.any(Function));
   });
 
-  it('should not call observeResize() if size is not BreakpointCustomizable', () => {
-    const spy = jest.spyOn(resizeObserverUtils, 'observeResize');
+  it('should not call addBreakpointCallback() if size is not BreakpointCustomizable', () => {
+    const spy = jest.spyOn(matchMediaUtils, 'addBreakpointCallback');
     const component = new TabsBar();
     const scroller = document.createElement('p-scroller');
     component['scrollerElement'] = scroller;
@@ -141,35 +131,8 @@ describe('componentDidRender', () => {
 });
 
 describe('disconnectedCallback', () => {
-  // TODO check if needed
-  // it('should remove resize event listener if size is BreakpointCustomizable and ResizeObserver is unavailable', () => {
-  //   useResizeObserverFallbackOverride(true);
-  //
-  //   const utilsSpy = jest.spyOn(resizeObserverUtils, 'removeResizeObserverFallback');
-  //
-  //   const component = new TabsBar();
-  //   component.host = document.createElement('p-tabs-bar');
-  //   component.size = "{base: 'small', m: 'medium'}";
-  //   component.disconnectedCallback();
-  //
-  //   expect(utilsSpy).toBeCalledWith(component.host);
-  // });
-  //
-  // it('should not remove resize event listener if size is not BreakpointCustomizable', () => {
-  //   useResizeObserverFallbackOverride(true);
-  //
-  //   const utilsSpy = jest.spyOn(resizeObserverUtils, 'removeResizeObserverFallback');
-  //
-  //   const component = new TabsBar();
-  //   component.host = document.createElement('p-tabs-bar');
-  //   component.size = "{base: 'small', m: 'medium'}";
-  //   component.disconnectedCallback();
-  //
-  //   expect(utilsSpy).toBeCalledWith(component.host);
-  // });
-
-  it('should not call unobserveResize() if size is not BreakpointCustomizable', () => {
-    const spy = jest.spyOn(resizeObserverUtils, 'unobserveResize');
+  it('should not call removeBreakpointCallback() if size is not BreakpointCustomizable', () => {
+    const spy = jest.spyOn(matchMediaUtils, 'removeBreakpointCallback');
     const component = new TabsBar();
 
     component.disconnectedCallback();
@@ -177,18 +140,16 @@ describe('disconnectedCallback', () => {
     expect(spy).not.toBeCalled();
   });
 
-  it('should call unobserveResize() with correct parameter if size is BreakpointCustomizable and ResizeObserver is available', () => {
-    const spy = jest.spyOn(resizeObserverUtils, 'unobserveResize');
+  it('should call removeBreakpointCallback() with correct parameter if size is BreakpointCustomizable', () => {
+    const spy = jest.spyOn(matchMediaUtils, 'removeBreakpointCallback');
     const component = new TabsBar();
-    const scroller = document.createElement('p-scroller');
+    const host = document.createElement('p-tabs-bar');
     component.size = "{base: 'small', m: 'medium'}";
-    component.host = document.createElement('p-tabs-bar');
-    component.host.attachShadow({ mode: 'open' });
-    component['scrollerElement'] = scroller;
+    component.host = host;
 
     component.disconnectedCallback();
 
-    expect(spy).toBeCalledWith(scroller);
+    expect(spy).toBeCalledWith(host);
   });
 
   it('should call unobserveChildren()', () => {
