@@ -58,8 +58,8 @@ export const getComponentCss = (
                 MozAppearance: 'textfield', // hides up/down spin button for Firefox
               }
             : isSearchOrPassword && {
-                paddingRight: pxToRemWithUnit(isSearch && isWithinForm ? 88 : 48),
-                ...(isSearch && !isWithinForm && { paddingLeft: pxToRemWithUnit(48) }),
+                paddingRight: pxToRemWithUnit(isSearch && isWithinForm && !hasAction ? 88 : 48),
+                ...(isSearch && (!isWithinForm || hasAction) && { paddingLeft: pxToRemWithUnit(48) }),
               }),
         }),
         // Reset webkit autofill styles
@@ -100,12 +100,13 @@ export const getComponentCss = (
           }),
           '&:disabled': disabledJssStyle,
           ...(isSearch && {
-            ...(isWithinForm && {
-              right: pxToRemWithUnit(40), // clear button
-              '&+button': {
-                right: 0, // submit button
-              },
-            }),
+            ...(isWithinForm &&
+              !hasAction && {
+                right: pxToRemWithUnit(40), // clear button
+                '&+button': {
+                  right: 0, // submit button
+                },
+              }),
             ...((hasAction || !isWithinForm) && {
               '&+button': {
                 left: 'auto', // action button

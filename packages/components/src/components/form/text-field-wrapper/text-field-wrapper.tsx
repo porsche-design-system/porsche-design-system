@@ -248,19 +248,19 @@ export class TextFieldWrapper {
             this.isSearch && [
               <button
                 type="button"
-                onClick={this.onClear}
-                disabled={disabledOrReadOnly}
-                hidden={!this.isClearable}
                 tabIndex={-1}
+                hidden={!this.isClearable}
+                disabled={disabledOrReadOnly}
+                onClick={!this.actionLoading ? this.onClear : null}
               >
                 <PrefixedTagNames.pIcon name="close" {...iconProps} />
               </button>,
               this.hasAction && (
                 <button
                   type="button"
-                  onClick={!disabledOrReadOnly && !this.actionLoading ? () => this.action.emit() : null}
-                  disabled={disabledOrReadOnly}
                   hidden={this.isClearable}
+                  disabled={disabledOrReadOnly}
+                  onClick={!this.actionLoading ? () => this.action.emit() : null}
                 >
                   <span class="sr-only">Locate me</span>
                   {this.actionLoading ? (
@@ -271,7 +271,7 @@ export class TextFieldWrapper {
                 </button>
               ),
               !this.hasAction && this.isWithinForm ? (
-                <button type="submit" onClick={this.onSubmit} disabled={disabledOrReadOnly}>
+                <button type="submit" disabled={disabledOrReadOnly} onClick={this.onSubmit}>
                   <span class="sr-only">Search</span>
                   <PrefixedTagNames.pIcon name="search" {...iconProps} />
                 </button>

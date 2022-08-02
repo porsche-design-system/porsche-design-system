@@ -1261,7 +1261,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   padding: 0.6875rem !important;
-  padding-right: 5.5rem !important;
+  padding-right: 3rem !important;
+  padding-left: 3rem !important;
 }
 ::slotted(input:focus) {
   outline-color: #626669 !important;
@@ -1288,7 +1289,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 button {
   position: absolute;
   bottom: 0;
-  right: 2.5rem;
+  right: 0;
   margin: 0;
   width: 3rem;
   height: 3rem;
@@ -1432,7 +1433,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   padding: 0.6875rem !important;
-  padding-right: 5.5rem !important;
+  padding-right: 3rem !important;
+  padding-left: 3rem !important;
 }
 ::slotted(input:focus) {
   outline-color: #626669 !important;
@@ -1459,7 +1461,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 button {
   position: absolute;
   bottom: 0;
-  right: 2.5rem;
+  right: 0;
   margin: 0;
   width: 3rem;
   height: 3rem;
