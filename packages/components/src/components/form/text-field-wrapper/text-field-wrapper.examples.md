@@ -119,6 +119,12 @@ On top of `actionIcon="locate"` it is possible to put the component into a loadi
 
 <Playground :markup="typeSearchWithLocateActionAndLoading" :config="config"></Playground>
 
+### Demo implementation
+
+<Playground :frameworkMarkup="searchExample" :config="config">
+  yo
+</Playground>
+
 ## Validation states
 
 The `p-text-field-wrapper` component supports the visualisation of inline validation. The `message` and `input` is
@@ -167,7 +173,7 @@ user frustration.
   Keep in mind that the definition of the "locale" in the examples below is a very simple use case. You will probably have to distinguish between more than two scenarios.
 </p-inline-notification>
 
-<Playground :markup="maskedInput" :frameworkMarkup="codeExample" :config="config"></Playground>
+<Playground :markup="maskedInput" :frameworkMarkup="imaskExample" :config="config"></Playground>
 
 <script lang="ts">
 import Vue from 'vue';
@@ -184,7 +190,8 @@ export default class Code extends Vue {
   state = 'error';
   unitPosition = 'prefix';
 
-codeExample = getTextFieldWrapperCodeSamples();
+  imaskExample = getTextFieldWrapperCodeSamples('example-imask');
+  searchExample = getTextFieldWrapperCodeSamples('example-search');
 
   get basic() {
     const labelAttr = ` hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
