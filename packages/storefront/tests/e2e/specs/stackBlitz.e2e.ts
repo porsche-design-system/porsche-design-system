@@ -25,7 +25,7 @@ it.each(<Framework[]>['react', 'vanilla-js', 'angular'])(
     };
 
     frameWorkButtons[frameWorkButtonMap[framework]].click();
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(3000);
     // ensure Framework is switched
     expect(await frameWorkTabsBar.evaluate((el) => (el as any).activeTabIndex)).toBe(frameWorkButtonMap[framework]);
 
@@ -38,7 +38,7 @@ it.each(<Framework[]>['react', 'vanilla-js', 'angular'])(
     await stackBlitzButton.click();
 
     // We have to wait until browser.pages is updated
-    await page.waitForTimeout(4000);
+    await page.waitForTimeout(10000);
     // get stackBlitz tab
     const [, , , stackBlitzPage] = await browser.pages();
 
