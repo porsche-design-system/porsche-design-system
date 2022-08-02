@@ -43,6 +43,7 @@
           :framework="activeFramework"
           :has-framework-markup="hasFrameworkMarkup"
           :additional-dependencies="additionalDependencies"
+          :shared-table-markup="sharedTableMarkup"
           :colorScheme="config.colorScheme"
         ></CodeEditor>
       </template>
@@ -59,6 +60,7 @@
   import type { ColorScheme, Framework, FrameworkMarkup, Theme } from '@/models';
   import { cleanMarkup, patchThemeIntoMarkup } from '@/utils';
   import { componentMeta } from '@porsche-design-system/shared';
+  import { SharedTableMarkup } from '@/utils/stackblitz/openInStackBlitz';
 
   export type PlaygroundConfig = {
     themeable: boolean;
@@ -93,6 +95,7 @@
     @Prop({ default: () => ({}) }) public config!: Partial<PlaygroundConfig>;
     @Prop({ default: () => ({}) }) public frameworkMarkup!: FrameworkMarkup;
     @Prop({ default: '' }) public markup!: string;
+    @Prop({ default: '' }) public sharedTableMarkup?: SharedTableMarkup;
     @Prop({ default: '' }) public additionalDependencies?: string[];
 
     public mounted(): void {
