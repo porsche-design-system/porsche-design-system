@@ -987,10 +987,6 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-button+button {
-  left: auto;
-  right: 0;
-}
 @media(hover:hover) {
   ::slotted(input:hover) {
     border-color: #000 !important;
@@ -1158,7 +1154,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-button+button {
+button+button[type=submit] {
   right: 0;
 }
 @media(hover:hover) {
@@ -1261,8 +1257,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   padding: 0.6875rem !important;
-  padding-right: 3rem !important;
-  padding-left: 3rem !important;
+  padding-right: 5.5rem !important;
 }
 ::slotted(input:focus) {
   outline-color: #626669 !important;
@@ -1289,7 +1284,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 button {
   position: absolute;
   bottom: 0;
-  right: 0;
+  right: 2.5rem;
   margin: 0;
   width: 3rem;
   height: 3rem;
@@ -1321,8 +1316,7 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-button+button {
-  left: auto;
+button+button[type=submit] {
   right: 0;
 }
 @media(hover:hover) {
@@ -1433,8 +1427,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #000 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   padding: 0.6875rem !important;
-  padding-right: 3rem !important;
-  padding-left: 3rem !important;
+  padding-right: 5.5rem !important;
 }
 ::slotted(input:focus) {
   outline-color: #626669 !important;
@@ -1461,7 +1454,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 button {
   position: absolute;
   bottom: 0;
-  right: 0;
+  right: 2.5rem;
   margin: 0;
   width: 3rem;
   height: 3rem;
@@ -1472,8 +1465,8 @@ button {
   border: none;
   text-decoration: none;
   background: transparent;
-  cursor: not-allowed;
-  color: #96989a;
+  cursor: pointer;
+  color: #000;
   transition: color var(--p-transition-duration, .24s) ease;
   outline-offset: -4px;
 }
@@ -1490,8 +1483,11 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-button+button {
-  left: auto;
+button+button[type=button] {
+  color: #96989a;
+  cursor: not-allowed;
+}
+button+button[type=submit] {
   right: 0;
 }
 @media(hover:hover) {
