@@ -10,7 +10,6 @@ import {
   addInputEventListenerForSearch,
   dispatchInputEvent,
   hasLocateAction,
-  throwIfUnsupportedActionIcon,
 } from './text-field-wrapper-utils';
 import * as textFieldWrapperUtils from './text-field-wrapper-utils';
 import * as formUtils from '../form-utils';
@@ -192,36 +191,6 @@ describe('throwIfUnitLengthExceeded()', () => {
     expect(() => throwIfUnitLengthExceeded('12345')).not.toThrow();
     expect(() => throwIfUnitLengthExceeded('1')).not.toThrow();
     expect(() => throwIfUnitLengthExceeded('')).not.toThrow();
-  });
-});
-
-describe('throwIfUnsupportedActionIcon()', () => {
-  it('should if parameter is not undefined call hasLocateAction() with correct parameter', () => {
-    const spy = jest.spyOn(textFieldWrapperUtils, 'hasLocateAction');
-    throwIfUnsupportedActionIcon('locate');
-
-    expect(spy).toBeCalledWith('locate');
-  });
-
-  it('should if parameter is undefined not call hasLocateAction()', () => {
-    const spy = jest.spyOn(textFieldWrapperUtils, 'hasLocateAction');
-    throwIfUnsupportedActionIcon(undefined);
-
-    expect(spy).not.toBeCalled();
-  });
-
-  it('should throw error if hasLocateAction() returns false', () => {
-    jest.spyOn(textFieldWrapperUtils, 'hasLocateAction').mockReturnValue(false);
-    expect(() => throwIfUnsupportedActionIcon('locate')).toThrow();
-  });
-
-  it('should not throw error if hasLocateAction() returns true', () => {
-    jest.spyOn(textFieldWrapperUtils, 'hasLocateAction').mockReturnValue(true);
-    expect(() => throwIfUnsupportedActionIcon('locate')).not.toThrow();
-  });
-
-  it('should not throw error for undefined', () => {
-    expect(() => throwIfUnsupportedActionIcon(undefined)).not.toThrow();
   });
 });
 
