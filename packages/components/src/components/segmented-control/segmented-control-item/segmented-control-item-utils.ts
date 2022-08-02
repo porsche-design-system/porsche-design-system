@@ -1,6 +1,5 @@
 import type { SegmentedControlBackgroundColor } from '../segmented-control/segmented-control-utils';
-import type { Theme } from '../../../types';
-import type { AriaAttributes } from '../../../types';
+import type { AriaAttributes, Theme } from '../../../types';
 import { getButtonBaseAriaAttributes, parseAndGetAriaAttributes } from '../../../utils';
 
 export type SegmentedControlItemInternalHTMLProps = {
