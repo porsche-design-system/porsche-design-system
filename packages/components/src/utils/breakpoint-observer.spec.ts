@@ -1,17 +1,17 @@
 import {
-  addBreakpointCallback,
+  observeBreakpointChange,
   breakpointChangeCallbackMap,
   handleBreakpointChange,
   mediaQueries,
   mediaQueryLists,
-  removeBreakpointCallback,
-} from './match-media';
+  unobserveBreakpointChange,
+} from './breakoint-observer';
 
 it('should match mediaQuery snapshot', () => {
   expect(mediaQueries).toMatchSnapshot();
 });
 
-describe('addBreakpointCallback', () => {
+describe('observeBreakpointChange', () => {
   beforeEach(() => {
     breakpointChangeCallbackMap.clear();
   });
@@ -22,7 +22,7 @@ describe('addBreakpointCallback', () => {
     const node = document.createElement('div');
     const callback = () => {};
 
-    addBreakpointCallback(node, callback);
+    observeBreakpointChange(node, callback);
 
     expect(spies.length).toBe(6);
     spies.forEach((spy) => expect(spy).toBeCalledWith('change', handleBreakpointChange));
@@ -34,10 +34,10 @@ describe('addBreakpointCallback', () => {
     const callback1 = () => {};
     const callback2 = () => {};
 
-    addBreakpointCallback(node1, callback1);
+    observeBreakpointChange(node1, callback1);
     expect(breakpointChangeCallbackMap.size).toBe(1);
 
-    addBreakpointCallback(node2, callback2);
+    observeBreakpointChange(node2, callback2);
     expect(breakpointChangeCallbackMap.size).toBe(2);
 
     expect(breakpointChangeCallbackMap.get(node1)).toEqual(callback1);
@@ -45,7 +45,7 @@ describe('addBreakpointCallback', () => {
   });
 });
 
-describe('removeBreakpointCallback', () => {
+describe('unobserveBreakpointChange', () => {
   beforeEach(() => {
     breakpointChangeCallbackMap.clear();
   });
@@ -55,10 +55,10 @@ describe('removeBreakpointCallback', () => {
     const node2 = document.createElement('div');
     const callback1 = () => {};
     const callback2 = () => {};
-    addBreakpointCallback(node1, callback1);
-    addBreakpointCallback(node2, callback2);
+    observeBreakpointChange(node1, callback1);
+    observeBreakpointChange(node2, callback2);
 
-    removeBreakpointCallback(node2);
+    unobserveBreakpointChange(node2);
 
     expect(breakpointChangeCallbackMap.size).toBe(1);
   });
@@ -67,9 +67,9 @@ describe('removeBreakpointCallback', () => {
     const spies = mediaQueryLists.map((mediaQueryList) => jest.spyOn(mediaQueryList, 'removeEventListener'));
     const node = document.createElement('div');
     const callback = () => {};
-    addBreakpointCallback(node, callback);
+    observeBreakpointChange(node, callback);
 
-    removeBreakpointCallback(node);
+    unobserveBreakpointChange(node);
 
     spies.forEach((spy) => expect(spy).toBeCalledWith('change', handleBreakpointChange));
   });

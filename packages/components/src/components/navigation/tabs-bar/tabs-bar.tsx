@@ -11,7 +11,8 @@ import {
   parseJSON,
   setAttribute,
   unobserveChildren,
-  validateProps,
+  validateProps,,
+  observeBreakpointChange, unobserveBreakpointChange
 } from '../../../utils';
 import { isShadowRootParentOfKind } from '../../../utils/dom'; // separate import is needed for lifecycleValidation.spec to pass
 import type { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from './tabs-bar-utils';
@@ -28,7 +29,6 @@ import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../typ
 import { THEMES_EXTENDED_ELECTRIC } from '../../../types';
 import type { Direction } from '../../common/scroller/scroller-utils';
 import { getScrollerElements, GRADIENT_COLOR_THEMES } from '../../common/scroller/scroller-utils';
-import { addBreakpointCallback, removeBreakpointCallback } from '../../../utils/match-media';
 
 const propTypes: PropTypes<typeof TabsBar> = {
   size: AllowedTypes.breakpoint<TabSize>(TAB_SIZES),
@@ -93,7 +93,7 @@ export class TabsBar {
       this.setAccessibilityAttributes();
     });
 
-    this.onMatchMediaChange();
+    this.observeBreakpointChange();
   }
 
   public componentDidLoad(): void {
@@ -107,7 +107,7 @@ export class TabsBar {
     }
 
     this.addEventListeners();
-    this.onMatchMediaChange();
+    this.observeBreakpointChange();
 
     // setBarStyle() is needed when intersection observer does not trigger because all tabs are visible
     // and first call in componentDidRender() is skipped because elements are not defined, yet
@@ -126,8 +126,8 @@ export class TabsBar {
   }
 
   public disconnectedCallback(): void {
-    if (this.isSizeBreakpointCustomizable()) {
-      removeBreakpointCallback(this.host);
+    if (this.isSizeBreakpointCustomizable) {
+      unobserveBreakpointChange(this.host);
     }
     unobserveChildren(this.host);
     this.intersectionObserver?.disconnect();
@@ -259,14 +259,16 @@ export class TabsBar {
     setBarStyle(this.tabElements, this.activeTabIndex, this.barElement, this.prevActiveTabIndex);
   };
 
-  private onMatchMediaChange = (): void => {
-    if (this.isSizeBreakpointCustomizable()) {
-      addBreakpointCallback(this.host, () => {
+  private observeBreakpointChange = (): void => {
+    if (this.isSizeBreakpointCustomizable) {
+      observeBreakpointChange(this.host, () => {
         this.setBarStyle();
         this.scrollActiveTabIntoView(false);
       });
     }
   };
 
-  private isSizeBreakpointCustomizable = (): boolean => typeof parseJSON(this.size) === 'object';
+  private get isSizeBreakpointCustomizable(): boolean {
+    return typeof parseJSON(this.size) === 'object';
+  }
 }
