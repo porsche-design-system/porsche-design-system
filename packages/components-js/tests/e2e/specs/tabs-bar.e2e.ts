@@ -369,6 +369,8 @@ describe('bar', () => {
       height: 600,
     });
 
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+
     expect(Math.round((await getElementPositions(page, thirdButton)).left), 'correct offsetLeft page resize').toEqual(
       Math.floor((await getElementPositions(page, bar)).left)
     );
