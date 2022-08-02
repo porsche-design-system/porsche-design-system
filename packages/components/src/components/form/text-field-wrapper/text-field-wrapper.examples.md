@@ -102,15 +102,14 @@ Inputs with `type="password"` receive a toggle button to display the input's val
 ## type="search"
 
 Inputs with `type="search"` receive a decorative search icon when used outside a form.  
-Within a form, a submit buttons becomes visible.  
-If the input contains a value, a clear button shows up.
+Within a form, a submit button becomes visible. If the input contains a value, a clear button shows up.
 
 <Playground :markup="typeSearch" :config="config"></Playground>
 
 ## type="search" with locate action
 
-Inputs with `type="search"` that also have the `actionIcon="locate"` property, always show an action button, no matter
-if used within or outside a form.
+Inputs with `type="search"` that also have the `actionIcon="locate"` property always show an action button, no matter if
+used within or outside a form.
 
 <Playground :markup="typeSearchWithLocateAction" :config="config"></Playground>
 
