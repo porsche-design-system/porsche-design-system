@@ -1,5 +1,5 @@
 import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
-import type { PropTypes } from '../../../utils';
+import type { BreakpointCustomizable, PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -15,7 +15,6 @@ import {
   unobserveAttributes,
   validateProps,
 } from '../../../utils';
-import type { BreakpointCustomizable } from '../../../types';
 import { getComponentCss, getSlottedCss } from './textarea-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
 import { addInputEventListenerForCounter, hasCounter } from '../form-utils';

@@ -1,4 +1,4 @@
-import { BreakpointCustomizable } from '../../../../utils';
+import { BreakpointCustomizable } from '../../../../types';
 
 export const GRID_ITEM_SIZES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
 export type GridItemSizeType = typeof GRID_ITEM_SIZES[number];

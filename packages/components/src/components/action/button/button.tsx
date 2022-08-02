@@ -1,25 +1,28 @@
 import type {
   BreakpointCustomizable,
+  ButtonAriaAttributes,
   ButtonType,
   ButtonVariant,
   IconName,
+  PropTypes,
   SelectedAriaAttributes,
   ThemeExtendedElectric,
 } from '../../../types';
-import type { ButtonAriaAttributes, PropTypes } from '../../../utils';
 import {
   AllowedTypes,
   attachComponentCss,
   BUTTON_ARIA_ATTRIBUTES,
+  BUTTON_TYPES,
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
+  LINK_BUTTON_VARIANTS,
+  THEMES_EXTENDED_ELECTRIC,
   validateProps,
 } from '../../../utils';
 import { Component, Element, h, JSX, Listen, Prop } from '@stencil/core';
 import { getButtonAriaAttributes } from './button-utils';
 import { getComponentCss } from './button-styles';
-import { BUTTON_TYPES, LINK_BUTTON_VARIANTS, THEMES_EXTENDED_ELECTRIC } from '../../../types';
 
 const propTypes: PropTypes<typeof Button> = {
   type: AllowedTypes.oneOf<ButtonType>(BUTTON_TYPES),
