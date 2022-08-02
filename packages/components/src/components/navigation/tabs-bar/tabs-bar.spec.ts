@@ -1,4 +1,3 @@
-import '../../../utils/match-media.mock';
 import { TabsBar } from './tabs-bar';
 import * as tabsBarUtils from './tabs-bar-utils';
 import * as breakpointObserverUtils from '../../../utils/breakoint-observer';
