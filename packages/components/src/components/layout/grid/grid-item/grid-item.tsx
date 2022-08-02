@@ -2,7 +2,7 @@ import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import type { GridItemOffset, GridItemOffsetType, GridItemSize, GridItemSizeType } from './grid-item-utils';
 import { GRID_ITEM_OFFSETS, GRID_ITEM_SIZES } from './grid-item-utils';
 import { getComponentCss } from './grid-item-styles';
-import type { PropTypes } from '../../../../utils';
+import type { PropTypes } from '../../../../types';
 import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../../utils';
 
 const propTypes: PropTypes<typeof GridItem> = {

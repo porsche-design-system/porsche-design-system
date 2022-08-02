@@ -6,12 +6,11 @@ import {
   getClosestHTMLElement,
   getDataThemeDarkAttribute,
   getPrefixedTagNames,
+  THEMES,
   updateChildren,
   validateProps,
 } from '../../../../utils';
-import { PropTypes } from '../../../../utils';
-import type { Theme } from '../../../../types';
-import { THEMES } from '../../../../types';
+import { PropTypes, Theme } from '../../../../types';
 import type { ListType, OrderType } from './text-list-utils';
 import { LIST_TYPES, ORDER_TYPES } from './text-list-utils';
 import { getComponentCss, getSlottedCss } from './text-list-styles';

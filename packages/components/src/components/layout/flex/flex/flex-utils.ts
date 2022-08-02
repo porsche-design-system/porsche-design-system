@@ -1,4 +1,4 @@
-import { BreakpointCustomizable } from '../../../../utils';
+import { BreakpointCustomizable } from '../../../../types';
 
 export type FlexInlineType = boolean;
 export type FlexInline = BreakpointCustomizable<FlexInlineType>;
