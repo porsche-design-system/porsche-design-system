@@ -11,8 +11,9 @@ import {
   setAttribute,
   THEMES_EXTENDED_ELECTRIC,
   unobserveChildren,
-  validateProps,,
-  observeBreakpointChange, unobserveBreakpointChange
+  validateProps,
+  observeBreakpointChange,
+  unobserveBreakpointChange,
 } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../../types';
 import { isShadowRootParentOfKind } from '../../../utils/dom'; // separate import is needed for lifecycleValidation.spec to pass
@@ -72,6 +73,10 @@ export class TabsBar {
   private scrollAreaElement: HTMLElement;
   private prevGradientElement: HTMLElement;
   private scrollerElement: HTMLElement;
+
+  private get isSizeBreakpointCustomizable(): boolean {
+    return typeof parseJSON(this.size) === 'object';
+  }
 
   @Watch('activeTabIndex')
   public activeTabHandler(newValue: number, oldValue: number): void {
@@ -266,8 +271,4 @@ export class TabsBar {
       });
     }
   };
-
-  private get isSizeBreakpointCustomizable(): boolean {
-    return typeof parseJSON(this.size) === 'object';
-  }
 }
