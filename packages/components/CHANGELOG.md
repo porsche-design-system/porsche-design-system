@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [2.15.0-beta.0] - 2022-08-02
+
 #### Fixed
 
 - `Tabs` & `Tabs Bar` `size` property when using `BreakpointCustomizable`
@@ -18,8 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `Modal` uses poly fluid sizing for outer spacing
 - `Banner` uses poly fluid sizing for outer spacing
 - `Content Wrapper` uses poly fluid sizing for inner spacing
-- min-width of `Modal` is slightly updated to perfectly fit into content area of `Content Wrapper` at 320px viewport
-  width
+- `Modal` min-width is slightly updated to perfectly fit into content area of `Content Wrapper` at 320px viewport width
 - Font loading strategy for Porsche Next uses `font-display: swap` (FOUT) instead of `font-display: block` for better
   performance and less potential for layout shifts
 
