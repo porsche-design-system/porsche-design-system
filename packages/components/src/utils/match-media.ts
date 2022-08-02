@@ -1,14 +1,15 @@
-const mediaQueries = [
-  '(min-width:0px) and (max-width:479px)',
-  '(min-width:480px) and (max-width:759px)',
-  '(min-width:760px) and (max-width:999px)',
-  '(min-width:1000px) and (max-width:1299px)',
-  '(min-width:1300px) and (max-width:1759px)',
-  '(min-width:1760px) and (max-width:1919px)',
-];
-export const mediaQueryLists = window.matchMedia && mediaQueries.map((mediaQuery) => window.matchMedia(mediaQuery));
+import { breakpoint } from '@porsche-design-system/utilities-v2';
 
-let lastBreakpointIndex: number;
+export const mediaQueries = [
+  `(min-width:${breakpoint.xxs})`,
+  `(min-width:${breakpoint.xs})`,
+  `(min-width:${breakpoint.s})`,
+  `(min-width:${breakpoint.m})`,
+  `(min-width:${breakpoint.l})`,
+  `(min-width:${breakpoint.xl})`,
+];
+
+export const mediaQueryLists = mediaQueries.map((mediaQuery) => window.matchMedia(mediaQuery));
 
 export const breakpointChangeCallbackMap: Map<HTMLElement, () => void> = new Map();
 
@@ -16,8 +17,8 @@ export const addBreakpointCallback = (node: HTMLElement, callback: () => void): 
   // node might not be defined in connectedCallback
   if (node) {
     if (breakpointChangeCallbackMap.size === 0) {
-      mediaQueryLists.forEach((mediaQueryList, index) => {
-        mediaQueryList.addEventListener('change', (e) => handleBreakpointChange(e, index));
+      mediaQueryLists.forEach((mediaQueryList) => {
+        mediaQueryList.addEventListener('change', handleBreakpointChange);
       });
     }
     breakpointChangeCallbackMap.set(node, callback);
@@ -29,15 +30,14 @@ export const removeBreakpointCallback = (node: HTMLElement): void => {
     breakpointChangeCallbackMap.delete(node);
   }
   if (breakpointChangeCallbackMap.size === 0) {
-    mediaQueryLists.forEach((mediaQueryList, index) => {
-      mediaQueryList.removeEventListener('change', (e) => handleBreakpointChange(e, index));
+    mediaQueryLists.forEach((mediaQueryList) => {
+      mediaQueryList.removeEventListener('change', handleBreakpointChange);
     });
   }
 };
 
-const handleBreakpointChange = ({ matches }: MediaQueryListEvent, index: number): void => {
-  if (matches && index !== lastBreakpointIndex) {
-    lastBreakpointIndex = index;
-    breakpointChangeCallbackMap.forEach((breakpointChangeCallback) => breakpointChangeCallback());
-  }
+export const handleBreakpointChange = (): void => {
+  breakpointChangeCallbackMap.forEach((breakpointChangeCallback) => {
+    breakpointChangeCallback();
+  });
 };
