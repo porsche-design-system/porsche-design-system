@@ -54,6 +54,53 @@ $pds-font-variant: normal;
 "
 `;
 
+exports[`should contain correct content for auto generated file ./src/scss/lib/_grid.scss 1`] = `
+"@mixin pds-grid {
+  margin: 0;
+  display: grid;
+  padding: 0 calc((100% - 120rem) / 2);
+  grid-gap: max(1rem, min(3.6vw, 2.25rem));
+  max-width: 120rem;
+  min-width: 20rem;
+  box-sizing: content-box;
+  grid-template-columns: [grid-start] calc(max(1rem, 7vw) - max(1rem, min(3.6vw, 2.25rem))) [content-start] repeat(
+      12,
+      minmax(0, 1fr)
+    ) [content-end] calc(max(1rem, 7vw) - max(1rem, min(3.6vw, 2.25rem))) [grid-end];
+
+  @media (min-width: 1760px) {
+    grid-template-columns: [grid-start] calc(min(calc(43vw - 39.6rem), 12rem) - max(1rem, min(3.6vw, 2.25rem))) [content-start] repeat(
+        12,
+        minmax(0, 1fr)
+      ) [content-end] calc(min(calc(43vw - 39.6rem), 12rem) - max(1rem, min(3.6vw, 2.25rem))) [grid-end];
+  }
+}
+"
+`;
+
+exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-gap.scss 1`] = `
+"$pds-grid-gap: max(1rem, min(3.6vw, 2.25rem));
+"
+`;
+
+exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-max-width.scss 1`] = `
+"$pds-grid-min-width: 20rem;
+$pds-grid-max-width: 120rem;
+"
+`;
+
+exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-min-width.scss 1`] = `
+"$pds-grid-min-width: 20rem;
+$pds-grid-max-width: 120rem;
+"
+`;
+
+exports[`should contain correct content for auto generated file ./src/scss/lib/_grid-safe-zone.scss 1`] = `
+"$pds-grid-safe-zone-base: max(1rem, 7vw);
+$pds-grid-safe-zone-xl: min(calc(43vw - 39.6rem), 12rem);
+"
+`;
+
 exports[`should contain correct content for auto generated file ./src/scss/lib/_heading.scss 1`] = `
 "@mixin pds-heading-xx-large {
   font: normal normal 600 2rem/1.375 \\"Porsche Next\\", \\"Arial Narrow\\", Arial, \\"Heiti SC\\", SimHei, sans-serif;

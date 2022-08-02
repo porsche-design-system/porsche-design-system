@@ -11,6 +11,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
+- `Modal` uses poly fluid sizing for outer spacing
+- `Banner` uses poly fluid sizing for outer spacing
+- `Content Wrapper` uses poly fluid sizing for inner spacing
+- min-width of `Modal` is slightly updated to perfectly fit into content area of `Content Wrapper` at 320px viewport
+  width
 - Font loading strategy for Porsche Next uses `font-display: swap` (FOUT) instead of `font-display: block` for better
   performance and less potential for layout shifts
 
