@@ -7,6 +7,14 @@ import { pascalCase } from 'change-case';
 import type { Framework, Theme, ColorScheme } from '@/models';
 
 export type FrameworksWithoutShared = Exclude<Framework, 'shared'>;
+export type SharedTableMarkup = { [key: string]: [string | { [key: string]: string }] };
+
+export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | 'theme' | 'colorScheme'> & {
+  title: string;
+  description: string;
+  bodyStyles: string;
+  reactComponentsToImport?: string;
+};
 
 type OpenInStackBlitzOpts = {
   markup: string;
@@ -14,14 +22,8 @@ type OpenInStackBlitzOpts = {
   theme: Theme;
   hasFrameworkMarkup: boolean;
   colorScheme: ColorScheme;
+  sharedTableMarkup?: SharedTableMarkup;
   additionalDependencies?: string[];
-};
-
-export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | 'theme' | 'colorScheme'> & {
-  title: string;
-  description: string;
-  bodyStyles: string;
-  reactComponentsToImport?: string;
 };
 
 export const getBackgroundColor = (theme: Theme, colorScheme: ColorScheme): string => {
@@ -49,7 +51,8 @@ export const getStackBlitzMarkup = (
 ): string => (hasFrameworkMarkup ? markup : convertMarkup(markup, framework));
 
 export const openInStackBlitz = (props: OpenInStackBlitzOpts): void => {
-  const { markup, framework, theme, hasFrameworkMarkup, additionalDependencies, colorScheme } = props;
+  const { markup, framework, theme, hasFrameworkMarkup, sharedTableMarkup, additionalDependencies, colorScheme } =
+    props;
 
   // Extract to helper and unit test?
   const pdsComponents = Array.from(markup.matchAll(/<((?:\w|-)+)(?:.|\n)*?>/g) ?? [])
@@ -63,6 +66,7 @@ export const openInStackBlitz = (props: OpenInStackBlitzOpts): void => {
     title: `Porsche Design System ${framework} sandbox`,
     description: `${pdsComponents[0]} component example`,
     bodyStyles: `body { background: ${getBackgroundColor(theme, colorScheme)}; }`,
+    sharedTableMarkup: sharedTableMarkup,
     additionalDependencies,
   };
 
@@ -88,3 +92,17 @@ export const getAdditionalDependencies = (
   additionalDependencies
     .map((dep) => dependenciesMap[dep])
     .reduce((result, current) => Object.assign(result, current), {});
+
+// TODO: Unit test
+export const replaceSharedTableImports = (markup: string, sharedTableMarkup: SharedTableMarkup): string =>
+  markup.replace(
+    /import { (?:[A-z]+,* )+} from '@porsche-design-system\/shared';/,
+    `
+            ${transformSharedTableMarkup(sharedTableMarkup)}
+`
+  );
+// TODO: Unit test
+export const transformSharedTableMarkup = (sharedTableMarkup: SharedTableMarkup): string =>
+  Object.entries(sharedTableMarkup)
+    .map(([key, value]) => `const ${key} = ${JSON.stringify(value)};`)
+    .join('\n');
