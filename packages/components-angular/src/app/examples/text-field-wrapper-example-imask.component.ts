@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { MaskedRange } from 'imask';
 
 @Component({
-  selector: 'text-field-wrapper-example',
+  selector: 'text-field-wrapper-example-imask',
   template: `
     <p-text-field-wrapper [label]="'Some label'" [description]="description">
       <input [type]="'text'" [imask]="mask" />
     </p-text-field-wrapper>
   `,
 })
-export class TextFieldWrapperExampleComponent {
+export class TextFieldWrapperExampleImaskComponent {
   public isDeLocale = Intl.NumberFormat().resolvedOptions().locale.startsWith('de');
   public dateFormat = this.isDeLocale ? 'dd.mm.yyyy' : 'mm/dd/yyyy';
   public dateRange = this.isDeLocale ? '01.01.1900, 01.01.2100' : '01/01/1900, 01/01/2100';
