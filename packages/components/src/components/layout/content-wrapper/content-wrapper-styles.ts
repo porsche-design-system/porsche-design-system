@@ -3,21 +3,19 @@ import type { Theme } from '../../../types';
 import type { ContentWrapperWidth, ContentWrapperBackgroundColor } from './content-wrapper-utils';
 import { getCss } from '../../../utils';
 import { getThemedColors } from '../../../styles';
-import { mediaQueryMin } from '@porsche-design-system/utilities-v2';
+import { mediaQueryMin, gridMaxWidth, gridSafeZone } from '@porsche-design-system/utilities-v2';
 
 const widthMap: { [key in ContentWrapperWidth]?: JssStyle } = {
   basic: {
-    maxWidth: '96rem',
-    padding: '0 7vw',
+    maxWidth: gridMaxWidth,
+    boxSizing: 'border-box',
+    padding: `0 ${gridSafeZone.base}`,
     [mediaQueryMin('xl')]: {
-      padding: '0 10vw',
-    },
-    [mediaQueryMin('xxl')]: {
-      padding: '0 12rem',
+      padding: `0 ${gridSafeZone.xl}`,
     },
   },
   extended: {
-    maxWidth: '120rem',
+    maxWidth: gridMaxWidth,
   },
 };
 

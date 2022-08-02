@@ -71,10 +71,10 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   background-color: #fff;
   outline: 1px solid transparent;
   outline-offset: 2px;
-  min-width: 17rem;
+  min-width: 17.2rem;
   max-width: 96rem;
   min-height: auto;
-  margin: 7vh 7vw;
+  margin: max(1rem, 7vh) max(1rem, 7vw);
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -101,14 +101,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 
 @media(min-width:1760px) {
   .root {
-    margin: 10vh 10vw;
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
 }
 
 @media(min-width:1920px) {
   .root {
     padding: 4rem;
-    margin: 10vh 12rem;
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
 }
 "
@@ -176,10 +176,10 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   background-color: #fff;
   outline: 1px solid transparent;
   outline-offset: 2px;
-  min-width: 17rem;
+  min-width: 17.2rem;
   max-width: 96rem;
   min-height: auto;
-  margin: 7vh 7vw;
+  margin: max(1rem, 7vh) max(1rem, 7vw);
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -213,14 +213,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 
 @media(min-width:1760px) {
   .root {
-    margin: 10vh 10vw;
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
 }
 
 @media(min-width:1920px) {
   .root {
     padding: 4rem;
-    margin: 10vh 12rem;
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
   .header {
     padding: 0 0 2rem;
@@ -292,10 +292,10 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   background-color: #fff;
   outline: 1px solid transparent;
   outline-offset: 2px;
-  min-width: 17rem;
+  min-width: 17.2rem;
   max-width: 96rem;
   min-height: auto;
-  margin: 7vh 7vw;
+  margin: max(1rem, 7vh) max(1rem, 7vw);
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -328,14 +328,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 
 @media(min-width:1760px) {
   .root {
-    margin: 10vh 10vw;
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
 }
 
 @media(min-width:1920px) {
   .root {
     padding: 4rem;
-    margin: 10vh 12rem;
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
   .header {
     padding: 0 0 2rem;
@@ -897,10 +897,10 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 }
 @media(min-width:480px) {
   .root {
-    min-width: 17rem;
+    min-width: 17.2rem;
     max-width: 96rem;
     min-height: auto;
-    margin: 7vh 7vw;
+    margin: max(1rem, 7vh) max(1rem, 7vw);
   }
 }
 
@@ -916,10 +916,10 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 @media(min-width:1000px) {
   .root {
     padding: 2.5rem;
-    min-width: 17rem;
+    min-width: 17.2rem;
     max-width: 96rem;
     min-height: auto;
-    margin: 7vh 7vw;
+    margin: max(1rem, 7vh) max(1rem, 7vw);
   }
 }
 
@@ -934,8 +934,8 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 
 @media(min-width:1760px) {
   .root {
-    margin: 7vh 7vw;
-    min-width: 17rem;
+    margin: max(1rem, 7vh) max(1rem, 7vw);
+    min-width: 17.2rem;
     max-width: 96rem;
     min-height: auto;
   }
@@ -944,7 +944,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 @media(min-width:1920px) {
   .root {
     padding: 4rem;
-    margin: 10vh 12rem;
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
 }
 "
@@ -1021,10 +1021,10 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   background-color: #fff;
   outline: 1px solid transparent;
   outline-offset: 2px;
-  min-width: 17rem;
+  min-width: 17.2rem;
   max-width: 96rem;
   min-height: auto;
-  margin: 7vh 7vw;
+  margin: max(1rem, 7vh) max(1rem, 7vw);
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -1051,14 +1051,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 
 @media(min-width:1760px) {
   .root {
-    margin: 10vh 10vw;
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
 }
 
 @media(min-width:1920px) {
   .root {
     padding: 4rem;
-    margin: 10vh 12rem;
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
 }
 "
@@ -1126,10 +1126,10 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   background-color: #fff;
   outline: 1px solid transparent;
   outline-offset: 2px;
-  min-width: 17rem;
+  min-width: 17.2rem;
   max-width: 96rem;
   min-height: auto;
-  margin: 7vh 7vw;
+  margin: max(1rem, 7vh) max(1rem, 7vw);
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -1163,14 +1163,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 
 @media(min-width:1760px) {
   .root {
-    margin: 10vh 10vw;
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
 }
 
 @media(min-width:1920px) {
   .root {
     padding: 4rem;
-    margin: 10vh 12rem;
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
   .header {
     padding: 0 0 2rem;
@@ -1242,10 +1242,10 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   background-color: #fff;
   outline: 1px solid transparent;
   outline-offset: 2px;
-  min-width: 17rem;
+  min-width: 17.2rem;
   max-width: 96rem;
   min-height: auto;
-  margin: 7vh 7vw;
+  margin: max(1rem, 7vh) max(1rem, 7vw);
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -1278,14 +1278,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 
 @media(min-width:1760px) {
   .root {
-    margin: 10vh 10vw;
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
 }
 
 @media(min-width:1920px) {
   .root {
     padding: 4rem;
-    margin: 10vh 12rem;
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
   .header {
     padding: 0 0 2rem;
