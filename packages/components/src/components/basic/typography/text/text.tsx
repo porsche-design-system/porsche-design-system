@@ -1,5 +1,4 @@
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
-import type { PropTypes } from '../../../../utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -7,13 +6,25 @@ import {
   getDataThemeDarkAttribute,
   getHTMLElement,
   setLineHeightOnSizeInherit,
+  TEXT_COLORS,
+  TEXT_WEIGHTS,
+  TEXT_ALIGNS,
+  TEXT_SIZES,
+  THEMES,
   validateProps,
 } from '../../../../utils';
-import type { BreakpointCustomizable, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../../../types';
-import { TEXT_ALIGNS, TEXT_COLORS, TEXT_WEIGHTS, THEMES } from '../../../../types';
+import type {
+  BreakpointCustomizable,
+  PropTypes,
+  TextAlign,
+  TextColor,
+  TextSize,
+  TextWeight,
+  Theme,
+} from '../../../../types';
 import { getComponentCss, getSlottedCss } from './text-styles';
-import type { TextTag } from './text-utils';
-import { TEXT_SIZES, TEXT_TAGS } from './text-utils';
+import type { TextTag } from './text-tag';
+import { TEXT_TAGS } from './text-tag';
 
 const propTypes: PropTypes<typeof Text> = {
   tag: AllowedTypes.oneOf<TextTag>(TEXT_TAGS),

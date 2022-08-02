@@ -1,5 +1,4 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import type { PropTypes } from '../../../utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -10,7 +9,7 @@ import {
 import { getComponentCss } from './tag-dismissible-styles';
 import type { TagDismissibleAriaAttribute, TagDismissibleColor } from './tag-dismissible-utils';
 import { TAG_DISMISSIBLE_ARIA_ATTRIBUTES } from './tag-dismissible-utils';
-import type { SelectedAriaAttributes } from '../../../types';
+import type { PropTypes, SelectedAriaAttributes } from '../../../types';
 import type { TagColor } from '../tag/tag-utils';
 import { TAG_COLORS } from '../tag/tag-utils';
 

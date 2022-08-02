@@ -1,6 +1,6 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, hasLabel, hasMessage, validateProps } from '../../../utils';
-import type { PropTypes } from '../../../utils';
+import type { PropTypes } from '../../../types';
 import type { FieldsetWrapperLabelSize } from './fieldset-wrapper-utils';
 import { getComponentCss } from './fieldset-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';

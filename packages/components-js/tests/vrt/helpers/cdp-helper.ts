@@ -1,6 +1,6 @@
 import type { Theme } from '@porsche-design-system/utilities-v2';
 import Protocol from 'devtools-protocol';
-import { CDPSession, Page } from 'puppeteer';
+import type { CDPSession, Page } from 'puppeteer';
 import NodeId = Protocol.DOM.NodeId;
 import BackendNodeId = Protocol.DOM.BackendNodeId;
 

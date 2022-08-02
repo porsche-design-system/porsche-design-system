@@ -6,12 +6,11 @@ import {
   attachComponentCss,
   getDirectChildHTMLElement,
   getPrefixedTagNames,
+  THEMES,
   validateProps,
 } from '../../../utils';
-import type { PropTypes } from '../../../utils';
 import { getComponentCss } from './tag-styles';
-import type { IconName, Theme } from '../../../types';
-import { THEMES } from '../../../types';
+import type { IconName, PropTypes, Theme } from '../../../types';
 
 const propTypes: PropTypes<typeof Tag> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
