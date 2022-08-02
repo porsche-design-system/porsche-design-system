@@ -115,7 +115,7 @@
     },
   })
   export default class ExamplePorscheCom extends Vue {
-    public carRange = [
+    public carRange: { label: string; price: string; explore: string; configure: string }[] = [
       {
         label: '718',
         price: 'Ab EUR 59.228,00 inkl. MwSt.',
