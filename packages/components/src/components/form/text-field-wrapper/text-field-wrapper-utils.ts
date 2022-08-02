@@ -48,12 +48,6 @@ export const throwIfUnitLengthExceeded = (unit: string): void => {
   }
 };
 
-export const throwIfUnsupportedActionIcon = (icon: IconName): void => {
-  if (icon !== undefined && !hasLocateAction(icon)) {
-    throw new Error(`actionIcon: ${icon} passed to 'p-text-field-wrapper' is invalid`);
-  }
-};
-
 export const addInputEventListenerForSearch = (
   input: HTMLInputElement,
   inputChangeCallback: (hasValue: boolean) => void

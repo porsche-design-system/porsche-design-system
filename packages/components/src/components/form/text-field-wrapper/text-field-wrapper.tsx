@@ -32,7 +32,6 @@ import {
   isWithinForm,
   setInputStyles,
   throwIfUnitLengthExceeded,
-  throwIfUnsupportedActionIcon,
   UNIT_POSITIONS,
 } from './text-field-wrapper-utils';
 import { Required } from '../../common/required/required';
@@ -151,7 +150,6 @@ export class TextFieldWrapper {
   public componentWillRender(): void {
     validateProps(this, propTypes);
     throwIfUnitLengthExceeded(this.unit);
-    throwIfUnsupportedActionIcon(this.actionIcon);
 
     attachComponentCss(
       this.host,
@@ -265,7 +263,8 @@ export class TextFieldWrapper {
                   {this.actionLoading ? (
                     <PrefixedTagNames.pSpinner size="inherit" />
                   ) : (
-                    <PrefixedTagNames.pIcon name={this.actionIcon} {...iconProps} />
+                    // hardcoded locate icon
+                    <PrefixedTagNames.pIcon name="locate" {...iconProps} />
                   )}
                 </button>
               ),

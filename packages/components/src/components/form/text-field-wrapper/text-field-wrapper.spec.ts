@@ -224,18 +224,6 @@ describe('componentWillRender', () => {
 
     expect(spy).toBeCalledWith('123456');
   });
-
-  it('should call throwIfUnsupportedActionIcon() with correct parameter', () => {
-    const spy = jest.spyOn(textFieldWrapperUtils, 'throwIfUnsupportedActionIcon');
-    const component = new TextFieldWrapper();
-    component.actionIcon = 'locate';
-
-    try {
-      component.componentWillRender();
-    } catch {}
-
-    expect(spy).toBeCalledWith('locate');
-  });
 });
 
 describe('componentDidLoad', () => {
