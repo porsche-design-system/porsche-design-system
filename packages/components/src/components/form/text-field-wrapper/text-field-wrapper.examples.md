@@ -120,6 +120,12 @@ if used within or outside a form.
 
 <Playground :markup="typeSearchWithLocateAction" :config="config"></Playground>
 
+## type="search" with locate action and loading
+
+On top of `actionIcon="locate"` it is possible to put the component into a loading state via `actionLoading="true"`.
+
+<Playground :markup="typeSearchWithLocateActionAndLoading" :config="config"></Playground>
+
 ## Validation states
 
 The `p-text-field-wrapper` component supports the visualisation of inline validation. The `message` and `input` is
@@ -261,6 +267,17 @@ codeExample = getTextFieldWrapperCodeSamples();
 
 <form action="#" onsubmit="alert('submit'); return false;">
   <p-text-field-wrapper label="Some label" action-icon="locate">
+    <input type="search" name="some-name" />
+  </p-text-field-wrapper>
+</form>`;
+
+  typeSearchWithLocateActionAndLoading = 
+`<p-text-field-wrapper label="Some label" action-loading="true">
+  <input type="search" name="some-name" />
+</p-text-field-wrapper>
+
+<form action="#" onsubmit="alert('submit'); return false;">
+  <p-text-field-wrapper label="Some label" action-loading="true">
     <input type="search" name="some-name" />
   </p-text-field-wrapper>
 </form>`;
