@@ -3,12 +3,11 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  PropTypes,
+  THEMES,
   throwIfInvalidLinkUsage,
   validateProps,
 } from '../../../utils';
-import type { BreakpointCustomizable, LinkTarget, Theme } from '../../../types';
-import { ThemeExtendedElectric, THEMES_EXTENDED_ELECTRIC } from '../../../types';
+import type { BreakpointCustomizable, LinkTarget, PropTypes, Theme } from '../../../types';
 import type { SocialIconName } from './link-social-utils';
 import { getComponentCss } from './link-social-styles';
 
@@ -16,7 +15,7 @@ const propTypes: PropTypes<typeof LinkSocial> = {
   icon: AllowedTypes.string,
   iconSource: AllowedTypes.string,
   href: AllowedTypes.string,
-  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
   target: AllowedTypes.string,
   rel: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),

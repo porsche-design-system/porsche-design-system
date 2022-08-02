@@ -1,6 +1,5 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Element, Event, Prop, State, Watch, h } from '@stencil/core';
-import type { PropTypes } from '../../../utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -10,10 +9,12 @@ import {
   observeChildren,
   parseJSON,
   setAttribute,
+  THEMES_EXTENDED_ELECTRIC,
   unobserveChildren,
   validateProps,,
   observeBreakpointChange, unobserveBreakpointChange
 } from '../../../utils';
+import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../../types';
 import { isShadowRootParentOfKind } from '../../../utils/dom'; // separate import is needed for lifecycleValidation.spec to pass
 import type { TabChangeEvent, TabGradientColorTheme, TabSize, TabWeight } from './tabs-bar-utils';
 import {
@@ -25,8 +26,6 @@ import {
   TAB_WEIGHTS,
 } from './tabs-bar-utils';
 import { getComponentCss } from './tabs-bar-styles';
-import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
-import { THEMES_EXTENDED_ELECTRIC } from '../../../types';
 import type { Direction } from '../../common/scroller/scroller-utils';
 import { getScrollerElements, GRADIENT_COLOR_THEMES } from '../../common/scroller/scroller-utils';
 
