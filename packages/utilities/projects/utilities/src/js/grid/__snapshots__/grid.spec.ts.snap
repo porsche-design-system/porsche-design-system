@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should contain correct values for grid 1`] = `
+Object {
+  "@media(min-width:1760px)": Object {
+    "gridTemplateColumns": "[grid-start] calc(min(calc(43vw - 39.6rem), 12rem) - max(1rem, min(3.6vw, 2.25rem))) [content-start] repeat(12, minmax(0, 1fr)) [content-end] calc(min(calc(43vw - 39.6rem), 12rem) - max(1rem, min(3.6vw, 2.25rem))) [grid-end]",
+  },
+  "boxSizing": "content-box",
+  "display": "grid",
+  "gridGap": "max(1rem, min(3.6vw, 2.25rem))",
+  "gridTemplateColumns": "[grid-start] calc(max(1rem, 7vw) - max(1rem, min(3.6vw, 2.25rem))) [content-start] repeat(12, minmax(0, 1fr)) [content-end] calc(max(1rem, 7vw) - max(1rem, min(3.6vw, 2.25rem))) [grid-end]",
+  "margin": 0,
+  "maxWidth": "120rem",
+  "minWidth": "20rem",
+  "padding": "0 calc((100% - 120rem) / 2)",
+}
+`;
+
+exports[`should contain correct values for gridGap 1`] = `"max(1rem, min(3.6vw, 2.25rem))"`;
+
+exports[`should contain correct values for gridMaxWidth 1`] = `"120rem"`;
+
+exports[`should contain correct values for gridMinWidth 1`] = `"20rem"`;
+
+exports[`should contain correct values for gridSafeZone 1`] = `
+Object {
+  "base": "max(1rem, 7vw)",
+  "xl": "min(calc(43vw - 39.6rem), 12rem)",
+}
+`;
