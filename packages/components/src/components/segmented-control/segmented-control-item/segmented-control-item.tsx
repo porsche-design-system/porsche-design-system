@@ -8,10 +8,9 @@ import {
   updateParent,
   validateProps,
 } from '../../../utils';
-import type { PropTypes, ValidatorFunction } from '../../../utils';
 import { getComponentCss } from './segmented-control-item-styles';
 import { getButtonAttributes } from './segmented-control-item-utils';
-import type { IconName } from '../../../types';
+import type { IconName, PropTypes, ValidatorFunction } from '../../../types';
 import type { SegmentedControlItemInternalHTMLProps } from './segmented-control-item-utils';
 
 const propTypes: PropTypes<typeof SegmentedControlItem> = {

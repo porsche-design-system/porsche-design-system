@@ -9,7 +9,7 @@ import type {
 } from './grid-utils';
 import { getComponentCss } from './grid-styles';
 import { AllowedTypes, attachComponentCss, updateChildren, validateProps } from '../../../../utils';
-import type { PropTypes } from '../../../../utils';
+import type { PropTypes } from '../../../../types';
 import { GRID_DIRECTIONS, GRID_GUTTERS, GRID_WRAPS } from './grid-utils';
 
 const propTypes: PropTypes<typeof Grid> = {

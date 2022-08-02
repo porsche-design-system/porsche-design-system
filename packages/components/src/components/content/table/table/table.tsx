@@ -6,10 +6,10 @@ import {
   getPrefixedTagNames,
   getScrollByX,
   hasNamedSlot,
-  PropTypes,
   scrollElementBy,
   validateProps,
 } from '../../../../utils';
+import type { PropTypes } from '../../../../types';
 import { getComponentCss, getSlottedCss } from './table-styles';
 import type { SortingChangeEvent } from './table-utils';
 import { SORT_EVENT_NAME, warnIfCaptionIsUndefined } from './table-utils';

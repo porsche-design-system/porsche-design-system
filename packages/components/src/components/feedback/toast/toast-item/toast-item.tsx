@@ -1,18 +1,17 @@
 import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@stencil/core';
-import type { Theme } from '../../../../types';
 import type { ToastState } from '../toast/toast-utils';
 import { TOAST_STATES } from '../toast/toast-utils';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  THEMES,
   throwIfRootNodeIsNotOneOfKind,
   validateProps,
 } from '../../../../utils';
-import type { PropTypes } from '../../../../utils';
+import type { PropTypes, Theme } from '../../../../types';
 import { getComponentCss } from './toast-item-styles';
 import { getIconName } from '../../inline-notification/inline-notification-utils';
-import { THEMES } from '../../../../types';
 
 const propTypes: PropTypes<typeof ToastItem> = {
   text: AllowedTypes.string,
