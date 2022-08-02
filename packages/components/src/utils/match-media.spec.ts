@@ -1,10 +1,15 @@
-import './match-media.mock';
 import {
   addBreakpointCallback,
   breakpointChangeCallbackMap,
+  handleBreakpointChange,
+  mediaQueries,
   mediaQueryLists,
   removeBreakpointCallback,
 } from './match-media';
+
+it('should match mediaQuery snapshot', () => {
+  expect(mediaQueries).toMatchSnapshot();
+});
 
 describe('addBreakpointCallback', () => {
   beforeEach(() => {
@@ -20,7 +25,7 @@ describe('addBreakpointCallback', () => {
     addBreakpointCallback(node, callback);
 
     expect(spies.length).toBe(6);
-    spies.forEach((spy) => expect(spy).toBeCalledWith('change', expect.any(Function)));
+    spies.forEach((spy) => expect(spy).toBeCalledWith('change', handleBreakpointChange));
   });
 
   it('should add callback and key to breakpointChangeCallbackMap', () => {
@@ -66,6 +71,6 @@ describe('removeBreakpointCallback', () => {
 
     removeBreakpointCallback(node);
 
-    spies.forEach((spy) => expect(spy).toBeCalledWith('change', expect.any(Function)));
+    spies.forEach((spy) => expect(spy).toBeCalledWith('change', handleBreakpointChange));
   });
 });
