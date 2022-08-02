@@ -1,7 +1,7 @@
 import '../../../utils/match-media.mock';
 import { TabsBar } from './tabs-bar';
 import * as tabsBarUtils from './tabs-bar-utils';
-import * as matchMediaUtils from '../../../utils/match-media';
+import * as breakpointObserverUtils from '../../../utils/breakoint-observer';
 import * as childrenObserverUtils from '../../../utils/children-observer';
 
 jest.mock('../../../utils/dom');
@@ -29,8 +29,8 @@ describe('connectedCallback', () => {
     expect(childrenObserverUtilsSpy).toBeCalledWith(host, expect.any(Function));
   });
 
-  it('should not call addBreakpointCallback() if size is not BreakpointCustomizable ', () => {
-    const spy = jest.spyOn(matchMediaUtils, 'addBreakpointCallback');
+  it('should not call observeBreakpointChange() if size is not BreakpointCustomizable ', () => {
+    const spy = jest.spyOn(breakpointObserverUtils, 'observeBreakpointChange');
     const host = document.createElement('p-tabs-bar');
     const component = new TabsBar();
     component.host = host;
@@ -39,8 +39,8 @@ describe('connectedCallback', () => {
     expect(spy).not.toBeCalled();
   });
 
-  it('should call addBreakpointCallback() if size is BreakpointCustomizable', () => {
-    const spy = jest.spyOn(matchMediaUtils, 'addBreakpointCallback');
+  it('should call observeBreakpointChange() if size is BreakpointCustomizable', () => {
+    const spy = jest.spyOn(breakpointObserverUtils, 'observeBreakpointChange');
     const host = document.createElement('p-tabs-bar');
     const component = new TabsBar();
     component.host = host;
@@ -75,8 +75,8 @@ describe('componentDidLoad', () => {
     expect(spy).toBeCalledWith(undefined, 0);
   });
 
-  it('should call addBreakpointCallback() with correct parameters if size is BreakpointCustomizable', () => {
-    const spy = jest.spyOn(matchMediaUtils, 'addBreakpointCallback');
+  it('should call observeBreakpointChange() with correct parameters if size is BreakpointCustomizable', () => {
+    const spy = jest.spyOn(breakpointObserverUtils, 'observeBreakpointChange');
     const component = new TabsBar();
     const host = document.createElement('p-tabs-bar');
     const scroller = document.createElement('p-scroller');
@@ -89,8 +89,8 @@ describe('componentDidLoad', () => {
     expect(spy).toBeCalledWith(host, expect.any(Function));
   });
 
-  it('should not call addBreakpointCallback() if size is not BreakpointCustomizable', () => {
-    const spy = jest.spyOn(matchMediaUtils, 'addBreakpointCallback');
+  it('should not call observeBreakpointChange() if size is not BreakpointCustomizable', () => {
+    const spy = jest.spyOn(breakpointObserverUtils, 'observeBreakpointChange');
     const component = new TabsBar();
     const scroller = document.createElement('p-scroller');
     component['scrollerElement'] = scroller;
@@ -126,8 +126,8 @@ describe('componentDidRender', () => {
 });
 
 describe('disconnectedCallback', () => {
-  it('should not call removeBreakpointCallback() if size is not BreakpointCustomizable', () => {
-    const spy = jest.spyOn(matchMediaUtils, 'removeBreakpointCallback');
+  it('should not call unobserveBreakpointChange() if size is not BreakpointCustomizable', () => {
+    const spy = jest.spyOn(breakpointObserverUtils, 'unobserveBreakpointChange');
     const component = new TabsBar();
 
     component.disconnectedCallback();
@@ -135,8 +135,8 @@ describe('disconnectedCallback', () => {
     expect(spy).not.toBeCalled();
   });
 
-  it('should call removeBreakpointCallback() with correct parameter if size is BreakpointCustomizable', () => {
-    const spy = jest.spyOn(matchMediaUtils, 'removeBreakpointCallback');
+  it('should call unobserveBreakpointChange() with correct parameter if size is BreakpointCustomizable', () => {
+    const spy = jest.spyOn(breakpointObserverUtils, 'unobserveBreakpointChange');
     const component = new TabsBar();
     const host = document.createElement('p-tabs-bar');
     component.size = "{base: 'small', m: 'medium'}";

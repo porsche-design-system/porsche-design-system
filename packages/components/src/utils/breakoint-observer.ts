@@ -13,7 +13,7 @@ export const mediaQueryLists = mediaQueries.map((mediaQuery) => window.matchMedi
 
 export const breakpointChangeCallbackMap: Map<HTMLElement, () => void> = new Map();
 
-export const addBreakpointCallback = (node: HTMLElement, callback: () => void): void => {
+export const observeBreakpointChange = (node: HTMLElement, callback: () => void): void => {
   // node might not be defined in connectedCallback
   if (node) {
     if (breakpointChangeCallbackMap.size === 0) {
@@ -25,7 +25,7 @@ export const addBreakpointCallback = (node: HTMLElement, callback: () => void): 
   }
 };
 
-export const removeBreakpointCallback = (node: HTMLElement): void => {
+export const unobserveBreakpointChange = (node: HTMLElement): void => {
   if (breakpointChangeCallbackMap.has(node)) {
     breakpointChangeCallbackMap.delete(node);
   }

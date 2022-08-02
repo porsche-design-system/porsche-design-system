@@ -24,24 +24,24 @@ describe('accordion', () => {
   describe('connectedCallback', () => {
     it('should not add resize event listener to window if ResizeObserver is available', () => {
       const component = new Accordion();
-      const utilsSpy = jest.spyOn(accordionUtils, 'observeWindowResize');
+      const spy = jest.spyOn(accordionUtils, 'observeWindowResize');
 
       component.connectedCallback();
 
       expect(component['contentObserver']).toBeUndefined();
-      expect(utilsSpy).not.toBeCalled();
+      expect(spy).not.toBeCalled();
     });
 
     it('should add resize event listener to window if ResizeObserver is unavailable', () => {
       useResizeObserverFallbackOverride(true);
 
-      const utilsSpy = jest.spyOn(accordionUtils, 'resizeObserverFallback');
+      const spy = jest.spyOn(accordionUtils, 'resizeObserverFallback');
 
       const component = new Accordion();
       component.host = document.createElement('p-accordion');
       component.connectedCallback();
 
-      expect(utilsSpy).toBeCalledWith(component.host, component['setContentHeight'], true);
+      expect(spy).toBeCalledWith(component.host, component['setContentHeight'], true);
     });
   });
 
@@ -93,13 +93,13 @@ describe('accordion', () => {
     it('should remove resize event listener if ResizeObserver is unavailable', () => {
       useResizeObserverFallbackOverride(true);
 
-      const utilsSpy = jest.spyOn(accordionUtils, 'removeResizeObserverFallback');
+      const spy = jest.spyOn(accordionUtils, 'removeResizeObserverFallback');
 
       const component = new Accordion();
       component.host = document.createElement('p-accordion');
       component.disconnectedCallback();
 
-      expect(utilsSpy).toBeCalledWith(component.host, true);
+      expect(spy).toBeCalledWith(component.host, true);
     });
 
     it('should call unobserveResize() with correct parameter if ResizeObserver is available', () => {

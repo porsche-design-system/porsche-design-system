@@ -102,9 +102,9 @@ export const resizeObserverFallback = (
   }
 };
 
-export const removeResizeObserverFallback = (htmlElement: HTMLElement, shouldObserveChildren?: boolean): void => {
+export const removeResizeObserverFallback = (htmlElement: HTMLElement, shouldUnobserveChildren?: boolean): void => {
   unobserveWindowResize(htmlElement);
-  if (shouldObserveChildren) {
+  if (shouldUnobserveChildren) {
     unobserveChildren(htmlElement);
   }
 };

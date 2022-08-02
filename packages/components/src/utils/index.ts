@@ -1,6 +1,7 @@
 export * from './a11y';
 export * from './attribute-observer';
 export * from './breakpoint-customizable';
+export * from './breakoint-observer';
 export * from './button-handling';
 export * from './button-link-pure-utils';
 export * from './change-case';
