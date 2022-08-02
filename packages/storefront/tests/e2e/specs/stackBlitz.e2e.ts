@@ -38,10 +38,11 @@ it.each(<Framework[]>['react', 'vanilla-js', 'angular'])(
     await stackBlitzButton.click();
 
     // We have to wait until browser.pages is updated
-    await page.waitForTimeout(6000);
+    await page.waitForTimeout(4000);
     // get stackBlitz tab
     const [, , , stackBlitzPage] = await browser.pages();
 
+    await stackBlitzPage.waitForSelector('#PreviewContentWrapper');
     const previewContentWrapper = await stackBlitzPage.$('#PreviewContentWrapper');
 
     await previewContentWrapper.waitForSelector('iframe');
