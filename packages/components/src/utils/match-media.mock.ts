@@ -1,3 +1,4 @@
+// Taken from https://jestjs.io/docs/26.x/manual-mocks
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
   value: jest.fn().mockImplementation((query) => ({
