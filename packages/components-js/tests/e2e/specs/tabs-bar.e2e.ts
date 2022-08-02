@@ -25,7 +25,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import type { TabSize } from '@porsche-design-system/components/src/components/navigation/tabs-bar/tabs-bar-utils';
-import { BreakpointCustomizable } from '@porsche-design-system/components/dist/types/utils';
+import { BreakpointCustomizable } from '@porsche-design-system/components/dist/types/bundle';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
