@@ -101,14 +101,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 
 @media(min-width:1760px) {
   .root {
-    margin: min(10vh, 12rem) min(calc(43vw - 39.6rem), 12rem);
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
 }
 
 @media(min-width:1920px) {
   .root {
     padding: 4rem;
-    margin: min(10vh, 12rem) min(calc(43vw - 39.6rem), 12rem);
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
 }
 "
@@ -213,14 +213,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 
 @media(min-width:1760px) {
   .root {
-    margin: min(10vh, 12rem) min(calc(43vw - 39.6rem), 12rem);
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
 }
 
 @media(min-width:1920px) {
   .root {
     padding: 4rem;
-    margin: min(10vh, 12rem) min(calc(43vw - 39.6rem), 12rem);
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
   .header {
     padding: 0 0 2rem;
@@ -328,14 +328,14 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
 
 @media(min-width:1760px) {
   .root {
-    margin: min(10vh, 12rem) min(calc(43vw - 39.6rem), 12rem);
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
 }
 
 @media(min-width:1920px) {
   .root {
     padding: 4rem;
-    margin: min(10vh, 12rem) min(calc(43vw - 39.6rem), 12rem);
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
   .header {
     padding: 0 0 2rem;
@@ -944,7 +944,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 @media(min-width:1920px) {
   .root {
     padding: 4rem;
-    margin: min(10vh, 12rem) min(calc(43vw - 39.6rem), 12rem);
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
 }
 "
@@ -1051,14 +1051,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 
 @media(min-width:1760px) {
   .root {
-    margin: min(10vh, 12rem) min(calc(43vw - 39.6rem), 12rem);
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
 }
 
 @media(min-width:1920px) {
   .root {
     padding: 4rem;
-    margin: min(10vh, 12rem) min(calc(43vw - 39.6rem), 12rem);
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
 }
 "
@@ -1163,14 +1163,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 
 @media(min-width:1760px) {
   .root {
-    margin: min(10vh, 12rem) min(calc(43vw - 39.6rem), 12rem);
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
 }
 
 @media(min-width:1920px) {
   .root {
     padding: 4rem;
-    margin: min(10vh, 12rem) min(calc(43vw - 39.6rem), 12rem);
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
   .header {
     padding: 0 0 2rem;
@@ -1278,14 +1278,14 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
 
 @media(min-width:1760px) {
   .root {
-    margin: min(10vh, 12rem) min(calc(43vw - 39.6rem), 12rem);
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
 }
 
 @media(min-width:1920px) {
   .root {
     padding: 4rem;
-    margin: min(10vh, 12rem) min(calc(43vw - 39.6rem), 12rem);
+    margin: min(12rem, 10vh) min(calc(43vw - 39.6rem), 12rem);
   }
   .header {
     padding: 0 0 2rem;
