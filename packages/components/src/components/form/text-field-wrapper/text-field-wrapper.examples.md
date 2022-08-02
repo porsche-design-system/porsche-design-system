@@ -102,16 +102,10 @@ Inputs with `type="password"` receive a toggle button to display the input's val
 ## type="search"
 
 Inputs with `type="search"` receive a decorative search icon when used outside a form.  
-If the input contains a value, a clear button becomes visible.
+Within a form, a submit buttons becomes visible.  
+If the input contains a value, a clear button shows up.
 
 <Playground :markup="typeSearch" :config="config"></Playground>
-
-## type="search" within form
-
-Inputs with `type="search"` receive a search submit button when within form.  
-If the input contains a value, a clear button becomes visible.
-
-<Playground :markup="typeSearchWithinForm" :config="config"></Playground>
 
 ## type="search" with locate action
 
@@ -251,10 +245,9 @@ codeExample = getTextFieldWrapperCodeSamples();
   typeSearch =
 `<p-text-field-wrapper label="Some label">
   <input type="search" name="some-name" />
-</p-text-field-wrapper>`;
+</p-text-field-wrapper>
 
-  typeSearchWithinForm =
-`<form action="#" onsubmit="alert('submit'); return false;">
+<form action="#" onsubmit="alert('submit'); return false;">
   <p-text-field-wrapper label="Some label">
     <input type="search" name="some-name" />
   </p-text-field-wrapper>
