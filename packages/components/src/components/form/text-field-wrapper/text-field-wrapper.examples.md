@@ -272,12 +272,12 @@ codeExample = getTextFieldWrapperCodeSamples();
 </form>`;
 
   typeSearchWithLocateActionAndLoading = 
-`<p-text-field-wrapper label="Some label" action-loading="true">
+`<p-text-field-wrapper label="Some label" action-icon="locate" action-loading="true">
   <input type="search" name="some-name" />
 </p-text-field-wrapper>
 
 <form action="#" onsubmit="alert('submit'); return false;">
-  <p-text-field-wrapper label="Some label" action-loading="true">
+  <p-text-field-wrapper label="Some label" action-icon="locate" action-loading="true">
     <input type="search" name="some-name" />
   </p-text-field-wrapper>
 </form>`;
