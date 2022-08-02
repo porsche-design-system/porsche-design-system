@@ -3,5 +3,5 @@ import { hasNamedSlot } from '../dom';
 import type { FormState } from '../../components/form/form-state';
 
 export const hasMessage = (element: HTMLElementOrShadowRoot, message: string, state: FormState): boolean => {
-  return !!(message || hasNamedSlot(element, 'message')) && ['success', 'error'].includes(state);
+  return (message || hasNamedSlot(element, 'message')) && ['success', 'error'].includes(state);
 };
