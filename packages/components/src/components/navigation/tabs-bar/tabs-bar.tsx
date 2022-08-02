@@ -12,8 +12,6 @@ import {
   THEMES_EXTENDED_ELECTRIC,
   unobserveChildren,
   validateProps,
-  observeBreakpointChange,
-  unobserveBreakpointChange,
 } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../../types';
 import { isShadowRootParentOfKind } from '../../../utils/dom'; // separate import is needed for lifecycleValidation.spec to pass
@@ -29,6 +27,7 @@ import {
 import { getComponentCss } from './tabs-bar-styles';
 import type { Direction } from '../../common/scroller/scroller-utils';
 import { getScrollerElements, GRADIENT_COLOR_THEMES } from '../../common/scroller/scroller-utils';
+import { observeBreakpointChange, unobserveBreakpointChange } from '../../../utils/breakoint-observer';
 
 const propTypes: PropTypes<typeof TabsBar> = {
   size: AllowedTypes.breakpoint<TabSize>(TAB_SIZES),
