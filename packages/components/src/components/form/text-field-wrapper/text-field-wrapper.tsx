@@ -165,7 +165,7 @@ export class TextFieldWrapper {
       this.isPassword ? 'password' : this.input.type,
       this.isWithinForm,
       this.hasAction,
-      this.actionLoading
+      this.hasAction && this.actionLoading
     );
   }
 
@@ -192,6 +192,7 @@ export class TextFieldWrapper {
   public render(): JSX.Element {
     const { readOnly, disabled } = this.input;
     const disabledOrReadOnly = disabled || readOnly;
+    const isLoading = this.hasAction && this.actionLoading;
 
     const labelProps = {
       tag: 'span',
@@ -251,7 +252,7 @@ export class TextFieldWrapper {
                 tabIndex={-1}
                 hidden={!this.isClearable}
                 disabled={disabledOrReadOnly}
-                onClick={!this.actionLoading ? this.onClear : null}
+                onClick={!isLoading ? this.onClear : null}
               >
                 <PrefixedTagNames.pIcon name="close" {...iconProps} />
               </button>,
@@ -260,7 +261,7 @@ export class TextFieldWrapper {
                   type="button"
                   hidden={this.isClearable}
                   disabled={disabledOrReadOnly}
-                  onClick={!this.actionLoading ? () => this.action.emit() : null}
+                  onClick={!isLoading ? () => this.action.emit() : null}
                 >
                   <span class="sr-only">Locate me</span>
                   {this.actionLoading ? (
