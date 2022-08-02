@@ -12,7 +12,6 @@ import {
   getHoverJssStyle,
   getTextHiddenJssStyle,
   getTransition,
-  pxToRem,
   pxToRemWithUnit,
 } from './common-styles';
 
@@ -25,22 +24,10 @@ describe('getTransition()', () => {
   });
 });
 
-describe('pxToRem()', () => {
-  it.each([
-    [0, 0],
-    [undefined, NaN],
-    [null, 0],
-    [16, 1],
-    [24, 1.5],
-    [32, 2],
-    [36, 2.25],
-  ])('should for parameter %s return %s', (input, result) => {
-    expect(pxToRem(input)).toBe(result);
-  });
-});
-
 describe('pxToRemWithUnit()', () => {
   it.each([
+    [undefined, NaN + 'rem'],
+    [null, '0rem'],
     [0, '0rem'],
     [16, '1rem'],
     [24, '1.5rem'],
