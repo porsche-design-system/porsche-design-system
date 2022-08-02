@@ -57,8 +57,8 @@ export const getComponentCss = (
                 MozAppearance: 'textfield', // hides up/down spin button for Firefox
               }
             : isSearchOrPassword && {
-                paddingRight: pxToRemWithUnit(isSearch && isWithinForm && !hasAction ? 88 : 48),
-                ...(isSearch && (!isWithinForm || hasAction) && { paddingLeft: pxToRemWithUnit(48) }),
+                paddingRight: pxToRemWithUnit(isSearch && isWithinForm ? 88 : 48),
+                ...(isSearch && !isWithinForm && { paddingLeft: pxToRemWithUnit(48) }),
               }),
         }),
         // Reset webkit autofill styles
@@ -75,7 +75,7 @@ export const getComponentCss = (
           margin: 0,
           width: pxToRemWithUnit(48),
           height: pxToRemWithUnit(48),
-          padding: pxToRemWithUnit(12),
+          padding: pxToRemWithUnit(12), // affects spinner size
           boxSizing: 'border-box',
           outline: 'transparent none',
           appearance: 'none',
@@ -84,7 +84,6 @@ export const getComponentCss = (
           background: 'transparent',
           cursor: 'pointer',
           color: baseColor,
-          ...(hasActionLoading && disabledJssStyle),
           transition: getTransition('color'),
           ...getFocusJssStyle({ offset: hasVisibleState ? -5 : -4 }),
           ...(!hasActionLoading && {
@@ -98,21 +97,16 @@ export const getComponentCss = (
             },
           }),
           '&:disabled': disabledJssStyle,
-          ...(isSearch && {
-            ...(isWithinForm &&
-              !hasAction && {
-                right: pxToRemWithUnit(40), // clear button
-                '&+button': {
-                  right: 0, // submit button
-                },
+          ...(isSearch &&
+            isWithinForm && {
+              right: pxToRemWithUnit(40), // clear button
+              ...(hasActionLoading && {
+                '&+button[type=button]': disabledJssStyle, // action button
               }),
-            ...((hasAction || !isWithinForm) && {
-              '&+button': {
-                left: 'auto', // action button
-                right: 0,
+              '&+button[type=submit]': {
+                right: 0, // submit button
               },
             }),
-          }),
         },
       }),
     },
