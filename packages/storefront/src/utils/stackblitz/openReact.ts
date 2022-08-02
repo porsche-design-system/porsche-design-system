@@ -4,7 +4,7 @@ import {
   devDependencies as reactDevDependencies,
   dependencies as reactDependencies,
 } from '../../../../components-react/package.json';
-import { getAdditionalDependencies } from '@/utils/stackblitz/openInStackBlitz';
+import { getAdditionalDependencies, replaceSharedTableImports } from '@/utils/stackblitz/openInStackBlitz';
 import type { StackBlitzFrameworkOpts, DependenciesMap } from '@/utils/stackblitz/openInStackBlitz';
 
 export const openReact = (props: StackBlitzFrameworkOpts): void => {
@@ -15,6 +15,7 @@ export const openReact = (props: StackBlitzFrameworkOpts): void => {
     hasFrameworkMarkup,
     bodyStyles,
     reactComponentsToImport,
+    sharedTableMarkup,
     additionalDependencies,
   } = props;
 
@@ -26,10 +27,7 @@ export const openReact = (props: StackBlitzFrameworkOpts): void => {
 
   const cleanedFragmentsMarkup = markup.replace(/(<\/?)(>)/g, '$1React.Fragment$2');
 
-  const appTsx = hasFrameworkMarkup
-    ? `import React from 'react';
-${cleanedFragmentsMarkup}`
-    : `import * as React from 'react';
+  const appTsxDefaultMarkup = `import * as React from 'react';
 import { ${reactComponentsToImport} } from '@porsche-design-system/components-react'
 
 export default function App() {
@@ -39,6 +37,10 @@ export default function App() {
     </div>
   );
 }`;
+
+  const appTsxFrameworkMarkup = `import React from 'react';
+${sharedTableMarkup ? replaceSharedTableImports(cleanedFragmentsMarkup, sharedTableMarkup) : cleanedFragmentsMarkup}`;
+
   const [, componentName] = markup.match(/const ([A-z]+) = \(\): JSX.Element => {/) ?? [];
   const tagName = hasFrameworkMarkup ? componentName : 'App';
   const reactImport = hasFrameworkMarkup ? `{ ${componentName} }` : 'App';
@@ -46,7 +48,7 @@ export default function App() {
   sdk.openProject(
     {
       files: {
-        'App.tsx': appTsx,
+        'App.tsx': hasFrameworkMarkup ? appTsxFrameworkMarkup : appTsxDefaultMarkup,
         'index.html': `<div id="root"></div>`,
         'index.tsx': `import * as React from 'react';
 import { StrictMode } from "react";

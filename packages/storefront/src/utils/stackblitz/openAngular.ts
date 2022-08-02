@@ -2,11 +2,12 @@ import sdk from '@stackblitz/sdk';
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
 import { dependencies as angularDependencies } from '../../../../components-angular/package.json';
 import { paramCase } from 'change-case';
-import { getAdditionalDependencies } from '@/utils/stackblitz/openInStackBlitz';
+import { getAdditionalDependencies, replaceSharedTableImports } from '@/utils/stackblitz/openInStackBlitz';
 import type { StackBlitzFrameworkOpts, DependenciesMap } from '@/utils/stackblitz/openInStackBlitz';
 
 export const openAngular = (props: StackBlitzFrameworkOpts): void => {
-  const { markup, description, title, hasFrameworkMarkup, bodyStyles, additionalDependencies } = props;
+  const { markup, description, title, hasFrameworkMarkup, bodyStyles, sharedTableMarkup, additionalDependencies } =
+    props;
 
   const dependenciesMap: DependenciesMap = {
     IMask: {
@@ -25,9 +26,10 @@ export const openAngular = (props: StackBlitzFrameworkOpts): void => {
     ? `<${classNameParamCase}></${classNameParamCase}>`
     : '<porsche-design-system-app></porsche-design-system-app>';
 
-  const appComponentTs = hasFrameworkMarkup
-    ? markup
-    : `import { Component } from '@angular/core';
+  const appComponentTsFrameworkMarkup = sharedTableMarkup
+    ? replaceSharedTableImports(markup, sharedTableMarkup)
+    : markup;
+  const appComponentTsDefaultMarkup = `import { Component } from '@angular/core';
 
 @Component({
   selector: 'porsche-design-system-app',
@@ -49,7 +51,7 @@ platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .catch((err) => console.error(err));`,
       // app folder
-      'app/app.component.ts': appComponentTs,
+      'app/app.component.ts': hasFrameworkMarkup ? appComponentTsFrameworkMarkup : appComponentTsDefaultMarkup,
       'app/app.module.ts': `import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
