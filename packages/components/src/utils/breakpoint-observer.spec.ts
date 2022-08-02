@@ -11,7 +11,7 @@ it('should match mediaQuery snapshot', () => {
   expect(mediaQueries).toMatchSnapshot();
 });
 
-describe('observeBreakpointChange', () => {
+describe('observeBreakpointChange()', () => {
   beforeEach(() => {
     breakpointChangeCallbackMap.clear();
   });
