@@ -1,11 +1,15 @@
 import { JSX, Component, Prop, h, Watch, Element } from '@stencil/core';
-import type { SelectedAriaAttributes, ThemeExtendedElectricDark } from '../../../types';
+import type { PropTypes, SelectedAriaAttributes, ThemeExtendedElectricDark } from '../../../types';
 import type { SpinnerSize, SpinnerAriaAttributes, SpinnerSizeType } from './spinner-utils';
 import { verifySpinnerSize, SPINNER_ARIA_ATTRIBUTES, SPINNER_SIZES } from './spinner-utils';
-import { AllowedTypes, attachComponentCss, parseAndGetAriaAttributes, validateProps } from '../../../utils';
-import type { PropTypes } from '../../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  parseAndGetAriaAttributes,
+  THEMES_EXTENDED_ELECTRIC_DARK,
+  validateProps,
+} from '../../../utils';
 import { getComponentCss } from './spinner-styles';
-import { THEMES_EXTENDED_ELECTRIC_DARK } from '../../../types';
 
 const propTypes: PropTypes<typeof Spinner> = {
   size: AllowedTypes.breakpoint<SpinnerSizeType>(SPINNER_SIZES),

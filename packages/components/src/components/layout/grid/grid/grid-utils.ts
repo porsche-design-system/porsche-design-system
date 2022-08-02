@@ -1,4 +1,4 @@
-import { BreakpointCustomizable } from '../../../../utils';
+import { BreakpointCustomizable } from '../../../../types';
 
 export const GRID_DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'] as const;
 export type GridDirectionType = typeof GRID_DIRECTIONS[number];

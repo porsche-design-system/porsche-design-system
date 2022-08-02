@@ -1,5 +1,6 @@
 import type { JssStyle } from 'jss';
-import type { BreakpointCustomizable, GetJssStyleFunction, BreakpointKey } from '../../../utils';
+import type { GetJssStyleFunction } from '../../../utils';
+import type { BreakpointCustomizable, BreakpointKey } from '../../../types';
 import { mediaQueryMin } from '@porsche-design-system/utilities-v2';
 import { BREAKPOINTS, buildResponsiveStyles, getCss, mergeDeep, parseJSON, buildSlottedStyles } from '../../../utils';
 import {
