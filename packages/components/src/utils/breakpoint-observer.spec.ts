@@ -45,7 +45,7 @@ describe('observeBreakpointChange()', () => {
   });
 });
 
-describe('unobserveBreakpointChange', () => {
+describe('unobserveBreakpointChange()', () => {
   beforeEach(() => {
     breakpointChangeCallbackMap.clear();
   });
