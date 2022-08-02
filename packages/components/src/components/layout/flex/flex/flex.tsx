@@ -21,7 +21,7 @@ import {
 } from './flex-utils';
 import { getComponentCss } from './flex-styles';
 import { AllowedTypes, attachComponentCss, validateProps } from '../../../../utils';
-import type { PropTypes } from '../../../../utils';
+import type { PropTypes } from '../../../../types';
 
 const propTypes: PropTypes<typeof Flex> = {
   inline: AllowedTypes.breakpoint('boolean'),

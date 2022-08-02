@@ -8,12 +8,11 @@ import {
   observeProperties,
   removeAttribute,
   setAttribute,
+  THEMES_EXTENDED_ELECTRIC,
   unobserveChildren,
   validateProps,
 } from '../../../../utils';
-import type { PropTypes } from '../../../../utils';
-import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../../types';
-import { THEMES_EXTENDED_ELECTRIC } from '../../../../types';
+import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../../../types';
 import type {
   TabChangeEvent,
   TabGradientColorTheme,

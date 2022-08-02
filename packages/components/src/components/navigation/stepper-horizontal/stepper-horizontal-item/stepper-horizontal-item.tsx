@@ -7,7 +7,7 @@ import {
   STEPPER_ITEM_STATES,
   throwIfCurrentAndDisabled,
 } from './stepper-horizontal-item-utils';
-import type { PropTypes } from '../../../../utils';
+import type { PropTypes } from '../../../../types';
 import {
   AllowedTypes,
   attachComponentCss,

@@ -1,6 +1,6 @@
 import { Component, Element, h, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../../utils';
-import type { PropTypes } from '../../../../utils';
+import type { PropTypes } from '../../../../types';
 import { getComponentCss } from './tabs-item-styles';
 
 const propTypes: PropTypes<typeof TabsItem> = {
