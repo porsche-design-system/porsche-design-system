@@ -1,23 +1,19 @@
 import { PText, PTextFieldWrapper } from '@porsche-design-system/components-react';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import type { ChangeEvent } from 'react';
 
 export const TextFieldWrapperExampleSearchPage = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState(false);
   const [value, setValue] = useState('');
 
-  useEffect(() => {
-    if (isLoading) {
-      // simulate async request
-      setTimeout(() => {
-        setValue('Stuttgart, Baden-Württemberg');
-        setIsLoading(false);
-      }, 3000);
-    }
-  }, [isLoading]);
-
   const onAction = useCallback(() => {
     setIsLoading(true);
+
+    // simulate async request
+    setTimeout(() => {
+      setValue('Stuttgart, Baden-Württemberg');
+      setIsLoading(false);
+    }, 3000);
   }, []);
 
   const onInput = useCallback(
