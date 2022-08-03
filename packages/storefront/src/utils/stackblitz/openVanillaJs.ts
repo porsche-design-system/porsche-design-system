@@ -1,6 +1,6 @@
 import sdk from '@stackblitz/sdk';
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
-import { dependencies as storefrontDependencies } from '../../../package.json';
+import { dependencies } from '../../../package.json';
 import { getAdditionalDependencies, transformSharedTableMarkup } from '@/utils/stackblitz/openInStackBlitz';
 import type { StackBlitzFrameworkOpts, DependenciesMap } from '@/utils/stackblitz/openInStackBlitz';
 
@@ -9,7 +9,7 @@ export const openVanillaJS = (props: StackBlitzFrameworkOpts): void => {
 
   const dependenciesMap: DependenciesMap = {
     IMask: {
-      imask: `${storefrontDependencies['imask']}`,
+      imask: `${dependencies['imask']}`,
     },
   };
 

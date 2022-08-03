@@ -5,9 +5,14 @@ import { openReact } from '@/utils/stackblitz/openReact';
 import { openAngular } from '@/utils/stackblitz/openAngular';
 import { pascalCase } from 'change-case';
 import type { Framework, Theme, ColorScheme } from '@/models';
+import type { HeadSorting, HeadAdvanced, DataAdvanced, DataBasic, DataSorting } from '@porsche-design-system/shared';
 
 export type FrameworksWithoutShared = Exclude<Framework, 'shared'>;
-export type SharedTableMarkup = { [key: string]: [string | { [key: string]: string }] };
+
+type TableHead = { headBasic?: string[]; headSorting?: HeadSorting[]; headAdvanced?: HeadAdvanced[] };
+type TableData = { dataBasic?: DataBasic[]; dataSorting?: DataSorting[]; dataAdvanced?: DataAdvanced[] };
+
+export type SharedTableMarkup = TableHead & TableData;
 
 export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | 'theme' | 'colorScheme'> & {
   title: string;
@@ -55,9 +60,7 @@ export const openInStackBlitz = (props: OpenInStackBlitzOpts): void => {
     props;
 
   // Extract to helper and unit test?
-  const pdsComponents = Array.from(markup.matchAll(/<((?:\w|-)+)(?:.|\n)*?>/g) ?? [])
-    .map(([, x]) => x)
-    .filter((tagName, idx, arr) => arr.findIndex((t) => t.startsWith('p-') && t === tagName) === idx);
+  const pdsComponents = Array.from(markup.matchAll(/<([P|p-][\w-]*)/g) ?? []).map(([, x]) => x);
   const reactComponentsToImport = pdsComponents.map((x) => pascalCase(x)).join(', ');
 
   const openProps: StackBlitzFrameworkOpts = {
@@ -93,7 +96,6 @@ export const getAdditionalDependencies = (
     .map((dep) => dependenciesMap[dep])
     .reduce((result, current) => Object.assign(result, current), {});
 
-// TODO: Unit test
 export const replaceSharedTableImports = (markup: string, sharedTableMarkup: SharedTableMarkup): string =>
   markup.replace(
     /import { (?:[A-z]+,* )+} from '@porsche-design-system\/shared';/,
@@ -101,7 +103,7 @@ export const replaceSharedTableImports = (markup: string, sharedTableMarkup: Sha
             ${transformSharedTableMarkup(sharedTableMarkup)}
 `
   );
-// TODO: Unit test
+
 export const transformSharedTableMarkup = (sharedTableMarkup: SharedTableMarkup): string =>
   Object.entries(sharedTableMarkup)
     .map(([key, value]) => `const ${key} = ${JSON.stringify(value)};`)
