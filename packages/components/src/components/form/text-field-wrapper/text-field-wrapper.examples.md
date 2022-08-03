@@ -122,7 +122,10 @@ On top of `actionIcon="locate"` it is possible to put the component into a loadi
 ### Demo implementation
 
 <Playground :frameworkMarkup="searchExample" :config="config">
-  yo
+  <p-text-field-wrapper action-icon="locate" :action-loading="demoIsLoading" v-on:action="onDemoAction">
+    <input type="search" :value="demoValue" :placeholder="demoIsLoading ? 'Locating...' : ''" v-on:input="onDemoInput" />
+  </p-text-field-wrapper>
+  <p-text>Value: {{ demoValue }}</p-text>
 </Playground>
 
 ## Validation states
@@ -280,6 +283,24 @@ export default class Code extends Vue {
     <input type="search" name="some-name" />
   </p-text-field-wrapper>
 </form>`;
+
+  demoValue = '';
+  demoIsLoading = false;
+  onDemoAction() {
+    this.demoIsLoading = true;
+
+    // simulate async request
+    setTimeout(() => {
+      this.demoValue = 'Stuttgart, Baden-Württemberg';
+      this.demoIsLoading = false;
+    }, 3000);
+  }
+  onDemoInput(e: InputEvent) {
+    this.demoValue = e.target.value;
+    if (this.demoIsLoading) {
+      this.demoIsLoading = false;
+    }
+  }
 
   get validationStates() {
     const attr = `message="${this.state !== 'none' ? `Some ${this.state} validation message.` : ''}"`;
