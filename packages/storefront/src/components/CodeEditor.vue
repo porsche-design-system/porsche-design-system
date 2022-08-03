@@ -10,7 +10,6 @@
         theme,
         hasFrameworkMarkup,
         additionalDependencies,
-        sharedTableMarkup,
         colorScheme,
       })
     "
@@ -23,7 +22,7 @@
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
   import { Theme } from '@/models';
-  import { SharedTableMarkup, FrameworksWithoutShared, openInStackBlitz } from '@/utils/stackblitz/openInStackBlitz';
+  import { FrameworksWithoutShared, openInStackBlitz } from '@/utils/stackblitz/openInStackBlitz';
 
   @Component
   export default class CodeEditor extends Vue {
@@ -32,7 +31,6 @@
     @Prop({ default: 'vanilla-js' }) public framework!: FrameworksWithoutShared;
     @Prop({ default: false }) public hasFrameworkMarkup!: boolean;
     @Prop({ default: 'default' }) public colorScheme!: 'default' | 'surface';
-    @Prop() public sharedTableMarkup?: SharedTableMarkup;
     @Prop() public additionalDependencies?: string[];
 
     stackBlitzIcon = require('../assets/icon-stackblitz.svg');

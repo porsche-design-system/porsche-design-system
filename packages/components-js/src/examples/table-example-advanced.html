@@ -4,16 +4,16 @@
   const getHeadAndData = async () => {
     const content = await fetch('assets/table-data-advanced.js').then((res) => res.text());
     const [, headStr] = /const headAdvanced = ((.|\s)*?);/.exec(content) || [];
-    const head = eval(headStr);
+    const headAdvanced = eval(headStr);
 
     const [, dataStr] = /const dataAdvanced = ((.|\s)*?);/.exec(content) || [];
-    const data = eval(dataStr);
+    const dataAdvanced = eval(dataStr);
 
-    return { head, data };
+    return { headAdvanced, dataAdvanced };
   };
 
   (async () => {
-    const { head, data } = await getHeadAndData();
+    const { headAdvanced, dataAdvanced } = await getHeadAndData();
 
     const renderTableHeadRow = (items) =>
       [
@@ -54,8 +54,8 @@
 
     const markup = `
 <p-headline slot="caption" variant="headline-3">Some visual caption</p-headline>
-<p-table-head>${renderTableHeadRow(head)}</p-table-head>
-<p-table-body>${renderTableBodyRows(data)}</p-table-body>`;
+<p-table-head>${renderTableHeadRow(headAdvanced)}</p-table-head>
+<p-table-body>${renderTableBodyRows(dataAdvanced)}</p-table-body>`;
 
     const table = document.querySelector('p-table');
     table.innerHTML = markup;
@@ -69,12 +69,12 @@
         el.sort = items[index];
       });
 
-    passHeadItemsToNodes(head); // initial state
+    passHeadItemsToNodes(headAdvanced); // initial state
 
     table.addEventListener('sortingChange', (e) => {
       const { id, direction } = e.detail;
 
-      const sortedHead = head.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) }));
+      const sortedHead = headAdvanced.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) }));
       const sortedData = [...data].sort((a, b) =>
         direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])
       );

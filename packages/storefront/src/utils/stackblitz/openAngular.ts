@@ -2,12 +2,12 @@ import sdk from '@stackblitz/sdk';
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
 import { dependencies } from '../../../../components-angular/package.json';
 import { paramCase } from 'change-case';
-import { getAdditionalDependencies, replaceSharedTableImports } from '@/utils/stackblitz/openInStackBlitz';
-import type { StackBlitzFrameworkOpts, DependenciesMap } from '@/utils/stackblitz/openInStackBlitz';
+import type { StackBlitzFrameworkOpts } from '@/utils/stackblitz/openInStackBlitz';
+import type { DependenciesMap } from '@/utils/stackblitz/helper';
+import { getAdditionalDependencies, isTable, replaceSharedTableImports } from '@/utils/stackblitz/helper';
 
 export const openAngular = (props: StackBlitzFrameworkOpts): void => {
-  const { markup, description, title, hasFrameworkMarkup, bodyStyles, sharedTableMarkup, additionalDependencies } =
-    props;
+  const { markup, description, title, hasFrameworkMarkup, bodyStyles, pdsComponents, additionalDependencies } = props;
 
   const dependenciesMap: DependenciesMap = {
     IMask: {
@@ -26,9 +26,7 @@ export const openAngular = (props: StackBlitzFrameworkOpts): void => {
     ? `<${classNameParamCase}></${classNameParamCase}>`
     : '<porsche-design-system-app></porsche-design-system-app>';
 
-  const appComponentTsFrameworkMarkup = sharedTableMarkup
-    ? replaceSharedTableImports(markup, sharedTableMarkup)
-    : markup;
+  const appComponentTsFrameworkMarkup = isTable(pdsComponents) ? replaceSharedTableImports(markup) : markup;
   const appComponentTsDefaultMarkup = `import { Component } from '@angular/core';
 
 @Component({
