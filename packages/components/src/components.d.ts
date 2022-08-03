@@ -26,7 +26,7 @@ import { MarqueAriaAttributes, MarqueSize } from "./components/basic/marque/marq
 import { ModalAriaAttributes } from "./components/content/modal/modal-utils";
 import { NumberOfPageLinks, PageChangeEvent } from "./components/navigation/pagination/pagination-utils";
 import { PopoverDirection } from "./components/feedback/popover/popover-utils";
-import { GradientColorTheme, PrevNextButtonJssStyle, ScrollToPosition } from "./components/common/scroller/scroller-utils";
+import { GradientColorTheme, ScrollIndicatorPosition, ScrollToPosition } from "./components/common/scroller/scroller-utils";
 import { SegmentedControlBackgroundColor, SegmentedControlChangeEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { DropdownDirection } from "./components/form/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttributes, SpinnerSize } from "./components/feedback/spinner/spinner-utils";
@@ -682,7 +682,7 @@ export namespace Components {
           * Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: GradientColorTheme;
-        "prevNextButtonJssStyle"?: PrevNextButtonJssStyle;
+        "scrollIndicatorPosition"?: ScrollIndicatorPosition;
         /**
           * Scrolls the scroll area to the left either smooth or immediately
          */
@@ -2169,7 +2169,7 @@ declare namespace LocalJSX {
           * Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: GradientColorTheme;
-        "prevNextButtonJssStyle"?: PrevNextButtonJssStyle;
+        "scrollIndicatorPosition"?: ScrollIndicatorPosition;
         /**
           * Scrolls the scroll area to the left either smooth or immediately
          */
