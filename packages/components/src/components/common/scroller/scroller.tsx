@@ -97,7 +97,7 @@ export class Scroller {
     return (
       <div class="root">
         <div class="scroll-area" ref={(el) => (this.scrollAreaElement = el)}>
-          <div class="scroll-wrapper" {...{ tabindex: isScrollable(this.isPrevHidden, this.isNextHidden) ? 1 : null }}>
+          <div class="scroll-wrapper" tabindex={isScrollable(this.isPrevHidden, this.isNextHidden) ? 1 : null}>
             <slot />
             <div class="trigger" />
             <div class="trigger" />

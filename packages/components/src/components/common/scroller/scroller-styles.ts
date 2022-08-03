@@ -32,7 +32,6 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         height: addImportantToRule('inherit'),
-        whiteSpace: 'nowrap',
       },
     },
     root: {

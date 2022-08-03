@@ -40,7 +40,7 @@ export const getComponentCss = (
           fontWeight: 'inherit',
           fontSize: 'inherit',
           lineHeight: 'inherit',
-          whiteSpace: 'inherit',
+          whiteSpace: 'nowrap',
           boxSizing: 'border-box',
           WebkitAppearance: 'none',
           appearance: 'none',
