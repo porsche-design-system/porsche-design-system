@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
 import {
   PAccordion,
   PModal,
@@ -11,6 +11,7 @@ import {
   PTabs,
   PTabsBar,
   PTabsItem,
+  PTextFieldWrapper,
 } from '@porsche-design-system/components-react';
 import type {
   AccordionChangeEvent,
@@ -25,16 +26,17 @@ export const EventsPage = (): JSX.Element => {
   const [pageChangeEventCounter, setPageChangeEventCounter] = useState(0);
   const [tabsBarChangeEventCounter, setTabsBarChangeEventCounter] = useState(0);
   const [tabsChangeEventCounter, setTabsChangeEventCounter] = useState(0);
+  const [textFieldSearchValue, setTextFieldSearchValue] = useState('');
   const [switchChangeEventCounter, setSwitchChangeEventCounter] = useState(0);
   const [modalCloseEventCounter, setModalCloseEventCounter] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tableSortingChangeEventCounter, setTableSortingChangeEventCounter] = useState(0);
 
+  // unused event parameters are used to verify that types can be imported package root
   const onAccordionChange = useCallback(
     (e: CustomEvent<AccordionChangeEvent>) => setAccordionChangeEventCounter((prev) => prev + 1),
     []
   );
-
   const onPageChange = useCallback(
     (e: CustomEvent<PageChangeEvent>) => setPageChangeEventCounter((prev) => prev + 1),
     []
@@ -45,6 +47,10 @@ export const EventsPage = (): JSX.Element => {
   );
   const onTabsChange = useCallback(
     (e: CustomEvent<TabChangeEvent>) => setTabsChangeEventCounter((prev) => prev + 1),
+    []
+  );
+  const onTextFieldSearchChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => setTextFieldSearchValue(e.target.value),
     []
   );
   const onSwitchChange = useCallback(
@@ -63,7 +69,7 @@ export const EventsPage = (): JSX.Element => {
   return (
     <>
       <div className="playground light">
-        <PAccordion heading={'Some heading'} onAccordionChange={onAccordionChange} />
+        <PAccordion heading="Some heading" onAccordionChange={onAccordionChange} />
         <p>{accordionChangeEventCounter}</p>
       </div>
 
@@ -88,6 +94,13 @@ export const EventsPage = (): JSX.Element => {
           <PTabsItem label="Tab 3">Content 3</PTabsItem>
         </PTabs>
         <p>{tabsChangeEventCounter}</p>
+      </div>
+
+      <div className="playground light">
+        <PTextFieldWrapper>
+          <input type="search" value={textFieldSearchValue} onChange={onTextFieldSearchChange} />
+        </PTextFieldWrapper>
+        <p>Value: {textFieldSearchValue}</p>
       </div>
 
       <div className="playground light">
