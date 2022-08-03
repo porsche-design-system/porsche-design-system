@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`isScrollable() should return correct value for isPrevHidden: false, isNextHidden: false 1`] = `true`;
+
+exports[`isScrollable() should return correct value for isPrevHidden: false, isNextHidden: true 1`] = `true`;
+
+exports[`isScrollable() should return correct value for isPrevHidden: true, isNextHidden: false 1`] = `true`;
+
+exports[`isScrollable() should return correct value for isPrevHidden: true, isNextHidden: true 1`] = `false`;
