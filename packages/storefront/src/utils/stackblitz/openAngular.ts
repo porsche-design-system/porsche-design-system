@@ -1,6 +1,6 @@
 import sdk from '@stackblitz/sdk';
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
-import { dependencies as angularDependencies } from '../../../../components-angular/package.json';
+import { dependencies } from '../../../../components-angular/package.json';
 import { paramCase } from 'change-case';
 import { getAdditionalDependencies, replaceSharedTableImports } from '@/utils/stackblitz/openInStackBlitz';
 import type { StackBlitzFrameworkOpts, DependenciesMap } from '@/utils/stackblitz/openInStackBlitz';
@@ -11,8 +11,8 @@ export const openAngular = (props: StackBlitzFrameworkOpts): void => {
 
   const dependenciesMap: DependenciesMap = {
     IMask: {
-      imask: `${angularDependencies['angular-imask']}`,
-      'angular-imask': `${angularDependencies['angular-imask']}`,
+      imask: `${dependencies['angular-imask']}`,
+      'angular-imask': `${dependencies['angular-imask']}`,
     },
   };
 
