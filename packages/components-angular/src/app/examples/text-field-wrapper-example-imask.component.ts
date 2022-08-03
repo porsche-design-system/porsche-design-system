@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MaskedRange } from 'imask';
 
 @Component({
@@ -8,6 +8,7 @@ import { MaskedRange } from 'imask';
       <input [type]="'text'" [imask]="mask" />
     </p-text-field-wrapper>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextFieldWrapperExampleImaskComponent {
   public isDeLocale = Intl.NumberFormat().resolvedOptions().locale.startsWith('de');

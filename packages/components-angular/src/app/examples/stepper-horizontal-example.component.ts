@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import type { StepChangeEvent, StepperState } from '@porsche-design-system/components-angular';
 
 @Component({
@@ -35,6 +35,7 @@ import type { StepChangeEvent, StepperState } from '@porsche-design-system/compo
       </p-button>
     </p-button-group>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StepperHorizontalExampleComponent {
   steps: StepperHorizontalItemProps[] = [
