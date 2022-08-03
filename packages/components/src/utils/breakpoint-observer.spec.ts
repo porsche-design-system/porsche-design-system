@@ -16,7 +16,7 @@ describe('observeBreakpointChange()', () => {
     breakpointChangeCallbackMap.clear();
   });
 
-  it('should call addEventLister()', () => {
+  it('should call addEventLister() for each media query with correct parameters', () => {
     const spies = mediaQueryLists.map((mediaQueryList) => jest.spyOn(mediaQueryList, 'addEventListener'));
 
     const node = document.createElement('div');
@@ -63,7 +63,7 @@ describe('unobserveBreakpointChange()', () => {
     expect(breakpointChangeCallbackMap.size).toBe(1);
   });
 
-  it('should call removeEventListener()', () => {
+  it('should call removeEventListener() for each media query with correct parameters', () => {
     const spies = mediaQueryLists.map((mediaQueryList) => jest.spyOn(mediaQueryList, 'removeEventListener'));
     const node = document.createElement('div');
     const callback = () => {};
