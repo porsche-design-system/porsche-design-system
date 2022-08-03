@@ -25,14 +25,14 @@ export const TextFieldWrapperExampleSearchPage = (): JSX.Element => {
     if (isLoading) {
       setIsLoading(false);
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
       <PTextFieldWrapper actionIcon="locate" actionLoading={isLoading} onAction={onAction}>
-        <input type="search" value={value} placeholder={isLoading ? 'Searching...' : ''} onChange={onChange} />
+        <input type="search" value={value} placeholder={isLoading ? 'Locating...' : ''} onChange={onChange} />
       </PTextFieldWrapper>
-      <input type="search" value={value} placeholder={isLoading ? 'Searching...' : ''} onChange={onChange} />
+      <input type="search" value={value} placeholder={isLoading ? 'Locating...' : ''} onChange={onChange} />
     </>
   );
 };
