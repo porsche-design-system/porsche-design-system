@@ -133,11 +133,8 @@ export class TabsBar {
         role="tablist"
         theme={this.theme}
         gradientColorScheme={this.gradientColorScheme}
+        scrollIndicatorPosition="top"
         ref={(el) => (this.scrollerElement = el)}
-        prevNextButtonJssStyle={{
-          top: 'calc(50% - .5em)',
-          transform: 'translate3d(0,calc(-50% + .375em),0)',
-        }}
       >
         <slot />
         <span class="bar" ref={(el) => (this.barElement = el)} />
