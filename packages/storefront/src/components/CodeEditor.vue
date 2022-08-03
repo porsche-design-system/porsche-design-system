@@ -1,5 +1,19 @@
 <template>
-  <p-button type="submit" :theme="theme" :icon-source="stackBlitzIcon" @click="editInStackBlitz()"
+  <p-button
+    type="submit"
+    :theme="theme"
+    :icon-source="stackBlitzIcon"
+    @click="
+      openInStackBlitz({
+        markup,
+        framework,
+        theme,
+        hasFrameworkMarkup,
+        additionalDependencies,
+        sharedTableMarkup,
+        colorScheme,
+      })
+    "
     >Edit in StackBlitz
   </p-button>
 </template>
@@ -18,22 +32,10 @@
     @Prop({ default: 'vanilla-js' }) public framework!: FrameworksWithoutShared;
     @Prop({ default: false }) public hasFrameworkMarkup!: boolean;
     @Prop({ default: 'default' }) public colorScheme!: 'default' | 'surface';
-    @Prop({ default: '' }) public sharedTableMarkup?: SharedTableMarkup;
-    @Prop({ default: '' }) public additionalDependencies?: string[];
+    @Prop() public sharedTableMarkup?: SharedTableMarkup;
+    @Prop() public additionalDependencies?: string[];
 
     stackBlitzIcon = require('../assets/icon-stackblitz.svg');
-
-    // TODO: Redundant, how to improve?
-    editInStackBlitz() {
-      openInStackBlitz({
-        markup: this.markup,
-        framework: this.framework,
-        theme: this.theme,
-        hasFrameworkMarkup: this.hasFrameworkMarkup,
-        additionalDependencies: this.additionalDependencies,
-        sharedTableMarkup: this.sharedTableMarkup,
-        colorScheme: this.colorScheme,
-      });
-    }
+    openInStackBlitz = openInStackBlitz;
   }
 </script>

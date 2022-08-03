@@ -69,7 +69,7 @@ export const openInStackBlitz = (props: OpenInStackBlitzOpts): void => {
     title: `Porsche Design System ${framework} sandbox`,
     description: `${pdsComponents[0]} component example`,
     bodyStyles: `body { background: ${getBackgroundColor(theme, colorScheme)}; }`,
-    sharedTableMarkup: sharedTableMarkup,
+    sharedTableMarkup,
     additionalDependencies,
   };
 
