@@ -1,4 +1,4 @@
-import { baseURL, waitForAttributeValueOnElement } from '../helpers';
+import { baseURL } from '../helpers';
 import type { Page } from 'puppeteer';
 import { Framework } from '../../../src/models';
 
