@@ -1,5 +1,5 @@
 import type { Direction } from './scroller-utils';
-import { getScrollerElements, getScrollPositionAfterPrevNextClick } from './scroller-utils';
+import { getScrollerElements, getScrollPositionAfterPrevNextClick, isScrollable } from './scroller-utils';
 import * as getShadowRootHTMLElementUtil from '../../../utils/dom/getShadowRootHTMLElement';
 import * as getHTMLElementUtil from '../../../utils/dom/getHTMLElement';
 
@@ -31,6 +31,17 @@ describe('getScrollerElements()', () => {
     getScrollerElements(scroller);
 
     expect(spy).toBeCalledWith(scroller, '.scroll-area');
-    expect(spy).toBeCalledWith(scroller, '.gradient');
+    expect(spy).toBeCalledWith(scroller, '.action-prev');
+  });
+});
+
+describe('isScrollable()', () => {
+  it.each<Parameters<typeof isScrollable>>([
+    [true, true],
+    [false, false],
+    [false, true],
+    [true, false],
+  ])('should return correct value for isPrevHidden: %s, isNextHidden: %s', (...args) => {
+    expect(isScrollable(...args)).toMatchSnapshot();
   });
 });

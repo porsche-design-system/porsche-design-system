@@ -1,22 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: dark, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: undefined  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: dark, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: 'center'  1`] = `
 ":host {
-  display: block !important;
-  height: 100% !important;
+  display: block;
+  height: inherit !important;
+  white-space: nowrap;
 }
 .root {
-  position: relative;
+  display: grid;
+  grid-template-columns: 2em minmax(0, 1fr) 2em;
   margin: 0 -0.25rem;
   height: inherit;
 }
 .scroll-area {
-  height: inherit;
-  box-sizing: border-box;
+  grid-area: 1 / 1 / 1 / -1;
   padding: 0.25rem;
-  overflow-y: hidden;
-  overflow-x: scroll;
-  white-space: nowrap;
+  overflow: scroll hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -24,16 +23,26 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   display: none;
 }
 .scroll-wrapper {
+  outline: transparent solid 1px;
+  outline-offset: 2px;
   position: relative;
-  display: inline-block;
+  display: inline-flex;
   min-width: 100%;
 }
+.scroll-wrapper::-moz-focus-inner {
+  border: 0;
+}
+.scroll-wrapper:focus {
+  outline-color: #fff;
+}
+.scroll-wrapper:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
 .trigger {
-  display: block;
   position: absolute;
   top: 0;
-  height: 100%;
-  width: 0.0625rem;
+  bottom: 0;
+  width: 1px;
   visibility: hidden;
 }
 .trigger:first-of-type {
@@ -43,62 +52,48 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   right: 0;
 }
 .action-prev {
+  position: relative;
+  padding: 0.25rem 0;
+  pointer-events: none;
   display: flex;
-  position: absolute;
-  top: 0;
-  height: 100%;
   align-items: center;
-  left: 0;
+  grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
-  visibility: visible;
-}
-.action-prev .gradient {
   background: linear-gradient(90deg, #0e1418 50%, #0e141800 100%);
+  visibility: visible;
 }
 .action-next {
+  position: relative;
+  padding: 0.25rem 0;
+  pointer-events: none;
   display: flex;
-  position: absolute;
-  top: 0;
-  height: 100%;
   align-items: center;
-  right: 0;
+  grid-area: 1 / 3 / 1 / 3;
   justify-content: flex-end;
+  background: linear-gradient(90deg, #0e141800 0%, #0e1418 50%);
   visibility: visible;
 }
-.action-next .gradient {
-  background: linear-gradient(90deg, #0e141800 0%, #0e1418 50%);
-}
 .button {
-  position: absolute;
-  top: 50%;
-  transform: translate3d(0,-50%,0);
-}
-.gradient {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 2em;
-  pointer-events: none;
+  pointer-events: auto;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: dark, isPrevHidden: false, isNextHidden: true and prevNextButtonJssStyle: undefined  1`] = `
 ":host {
-  display: block !important;
-  height: 100% !important;
+  display: block;
+  height: inherit !important;
+  white-space: nowrap;
 }
 .root {
-  position: relative;
+  display: grid;
+  grid-template-columns: 2em minmax(0, 1fr) 2em;
   margin: 0 -0.25rem;
   height: inherit;
 }
 .scroll-area {
-  height: inherit;
-  box-sizing: border-box;
+  grid-area: 1 / 1 / 1 / -1;
   padding: 0.25rem;
-  overflow-y: hidden;
-  overflow-x: scroll;
-  white-space: nowrap;
+  overflow: scroll hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -106,16 +101,26 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   display: none;
 }
 .scroll-wrapper {
+  outline: transparent solid 1px;
+  outline-offset: 2px;
   position: relative;
-  display: inline-block;
+  display: inline-flex;
   min-width: 100%;
 }
+.scroll-wrapper::-moz-focus-inner {
+  border: 0;
+}
+.scroll-wrapper:focus {
+  outline-color: #fff;
+}
+.scroll-wrapper:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
 .trigger {
-  display: block;
   position: absolute;
   top: 0;
-  height: 100%;
-  width: 0.0625rem;
+  bottom: 0;
+  width: 1px;
   visibility: hidden;
 }
 .trigger:first-of-type {
@@ -125,65 +130,48 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   right: 0;
 }
 .action-prev {
+  position: relative;
+  padding: 0.25rem 0;
+  pointer-events: none;
   display: flex;
-  position: absolute;
-  top: 0;
-  height: 100%;
-  align-items: center;
-  left: 0;
+  align-items: flex-start;
+  grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
-  visibility: hidden;
-}
-.action-prev .gradient {
   background: linear-gradient(90deg, #0e1418 50%, #0e141800 100%);
+  visibility: hidden;
 }
 .action-next {
+  position: relative;
+  padding: 0.25rem 0;
+  pointer-events: none;
   display: flex;
-  position: absolute;
-  top: 0;
-  height: 100%;
-  align-items: center;
-  right: 0;
+  align-items: flex-start;
+  grid-area: 1 / 3 / 1 / 3;
   justify-content: flex-end;
-  visibility: visible;
-}
-.action-next .gradient {
   background: linear-gradient(90deg, #0e141800 0%, #0e1418 50%);
+  visibility: visible;
 }
 .button {
-  position: absolute;
-  top: 50%;
-  transform: translate3d(0,-50%,0);
-}
-.gradient {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 2em;
-  pointer-events: none;
+  pointer-events: auto;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: {
-  top: 'calc(50% - .5em)',
-  transform: 'translate3d(0,calc(-50% + .375em),0)'
-}  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: 'center'  1`] = `
 ":host {
-  display: block !important;
-  height: 100% !important;
+  display: block;
+  height: inherit !important;
+  white-space: nowrap;
 }
 .root {
-  position: relative;
+  display: grid;
+  grid-template-columns: 2em minmax(0, 1fr) 2em;
   margin: 0 -0.25rem;
   height: inherit;
 }
 .scroll-area {
-  height: inherit;
-  box-sizing: border-box;
+  grid-area: 1 / 1 / 1 / -1;
   padding: 0.25rem;
-  overflow-y: hidden;
-  overflow-x: scroll;
-  white-space: nowrap;
+  overflow: scroll hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -191,16 +179,26 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   display: none;
 }
 .scroll-wrapper {
+  outline: transparent solid 1px;
+  outline-offset: 2px;
   position: relative;
-  display: inline-block;
+  display: inline-flex;
   min-width: 100%;
 }
+.scroll-wrapper::-moz-focus-inner {
+  border: 0;
+}
+.scroll-wrapper:focus {
+  outline-color: #000;
+}
+.scroll-wrapper:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
 .trigger {
-  display: block;
   position: absolute;
   top: 0;
-  height: 100%;
-  width: 0.0625rem;
+  bottom: 0;
+  width: 1px;
   visibility: hidden;
 }
 .trigger:first-of-type {
@@ -210,62 +208,48 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   right: 0;
 }
 .action-prev {
+  position: relative;
+  padding: 0.25rem 0;
+  pointer-events: none;
   display: flex;
-  position: absolute;
-  top: 0;
-  height: 100%;
   align-items: center;
-  left: 0;
+  grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
-  visibility: visible;
-}
-.action-prev .gradient {
   background: linear-gradient(90deg, #fff 50%, #fff0 100%);
+  visibility: visible;
 }
 .action-next {
+  position: relative;
+  padding: 0.25rem 0;
+  pointer-events: none;
   display: flex;
-  position: absolute;
-  top: 0;
-  height: 100%;
   align-items: center;
-  right: 0;
+  grid-area: 1 / 3 / 1 / 3;
   justify-content: flex-end;
+  background: linear-gradient(90deg, #fff0 0%, #fff 50%);
   visibility: visible;
 }
-.action-next .gradient {
-  background: linear-gradient(90deg, #fff0 0%, #fff 50%);
-}
 .button {
-  position: absolute;
-  top: calc(50% - .5em);
-  transform: translate3d(0,calc(-50% + .375em),0);
-}
-.gradient {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 2em;
-  pointer-events: none;
+  pointer-events: auto;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: undefined  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: 'top'  1`] = `
 ":host {
-  display: block !important;
-  height: 100% !important;
+  display: block;
+  height: inherit !important;
+  white-space: nowrap;
 }
 .root {
-  position: relative;
+  display: grid;
+  grid-template-columns: 2em minmax(0, 1fr) 2em;
   margin: 0 -0.25rem;
   height: inherit;
 }
 .scroll-area {
-  height: inherit;
-  box-sizing: border-box;
+  grid-area: 1 / 1 / 1 / -1;
   padding: 0.25rem;
-  overflow-y: hidden;
-  overflow-x: scroll;
-  white-space: nowrap;
+  overflow: scroll hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -273,16 +257,26 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   display: none;
 }
 .scroll-wrapper {
+  outline: transparent solid 1px;
+  outline-offset: 2px;
   position: relative;
-  display: inline-block;
+  display: inline-flex;
   min-width: 100%;
 }
+.scroll-wrapper::-moz-focus-inner {
+  border: 0;
+}
+.scroll-wrapper:focus {
+  outline-color: #000;
+}
+.scroll-wrapper:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
 .trigger {
-  display: block;
   position: absolute;
   top: 0;
-  height: 100%;
-  width: 0.0625rem;
+  bottom: 0;
+  width: 1px;
   visibility: hidden;
 }
 .trigger:first-of-type {
@@ -292,62 +286,48 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   right: 0;
 }
 .action-prev {
+  position: relative;
+  padding: 0.25rem 0;
+  pointer-events: none;
   display: flex;
-  position: absolute;
-  top: 0;
-  height: 100%;
-  align-items: center;
-  left: 0;
+  align-items: flex-start;
+  grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
-  visibility: visible;
-}
-.action-prev .gradient {
   background: linear-gradient(90deg, #fff 50%, #fff0 100%);
+  visibility: visible;
 }
 .action-next {
+  position: relative;
+  padding: 0.25rem 0;
+  pointer-events: none;
   display: flex;
-  position: absolute;
-  top: 0;
-  height: 100%;
-  align-items: center;
-  right: 0;
+  align-items: flex-start;
+  grid-area: 1 / 3 / 1 / 3;
   justify-content: flex-end;
+  background: linear-gradient(90deg, #fff0 0%, #fff 50%);
   visibility: visible;
 }
-.action-next .gradient {
-  background: linear-gradient(90deg, #fff0 0%, #fff 50%);
-}
 .button {
-  position: absolute;
-  top: 50%;
-  transform: translate3d(0,-50%,0);
-}
-.gradient {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 2em;
-  pointer-events: none;
+  pointer-events: auto;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light, isPrevHidden: true, isNextHidden: false and prevNextButtonJssStyle: undefined  1`] = `
 ":host {
-  display: block !important;
-  height: 100% !important;
+  display: block;
+  height: inherit !important;
+  white-space: nowrap;
 }
 .root {
-  position: relative;
+  display: grid;
+  grid-template-columns: 2em minmax(0, 1fr) 2em;
   margin: 0 -0.25rem;
   height: inherit;
 }
 .scroll-area {
-  height: inherit;
-  box-sizing: border-box;
+  grid-area: 1 / 1 / 1 / -1;
   padding: 0.25rem;
-  overflow-y: hidden;
-  overflow-x: scroll;
-  white-space: nowrap;
+  overflow: scroll hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -355,16 +335,26 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   display: none;
 }
 .scroll-wrapper {
+  outline: transparent solid 1px;
+  outline-offset: 2px;
   position: relative;
-  display: inline-block;
+  display: inline-flex;
   min-width: 100%;
 }
+.scroll-wrapper::-moz-focus-inner {
+  border: 0;
+}
+.scroll-wrapper:focus {
+  outline-color: #000;
+}
+.scroll-wrapper:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
 .trigger {
-  display: block;
   position: absolute;
   top: 0;
-  height: 100%;
-  width: 0.0625rem;
+  bottom: 0;
+  width: 1px;
   visibility: hidden;
 }
 .trigger:first-of-type {
@@ -374,62 +364,48 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   right: 0;
 }
 .action-prev {
+  position: relative;
+  padding: 0.25rem 0;
+  pointer-events: none;
   display: flex;
-  position: absolute;
-  top: 0;
-  height: 100%;
-  align-items: center;
-  left: 0;
+  align-items: flex-start;
+  grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
+  background: linear-gradient(90deg, #fff 50%, #fff0 100%);
   visibility: visible;
 }
-.action-prev .gradient {
-  background: linear-gradient(90deg, #fff 50%, #fff0 100%);
-}
 .action-next {
+  position: relative;
+  padding: 0.25rem 0;
+  pointer-events: none;
   display: flex;
-  position: absolute;
-  top: 0;
-  height: 100%;
-  align-items: center;
-  right: 0;
+  align-items: flex-start;
+  grid-area: 1 / 3 / 1 / 3;
   justify-content: flex-end;
+  background: linear-gradient(90deg, #fff0 0%, #fff 50%);
   visibility: hidden;
 }
-.action-next .gradient {
-  background: linear-gradient(90deg, #fff0 0%, #fff 50%);
-}
 .button {
-  position: absolute;
-  top: 50%;
-  transform: translate3d(0,-50%,0);
-}
-.gradient {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 2em;
-  pointer-events: none;
+  pointer-events: auto;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light, isPrevHidden: true, isNextHidden: true and prevNextButtonJssStyle: undefined  1`] = `
 ":host {
-  display: block !important;
-  height: 100% !important;
+  display: block;
+  height: inherit !important;
+  white-space: nowrap;
 }
 .root {
-  position: relative;
+  display: grid;
+  grid-template-columns: 2em minmax(0, 1fr) 2em;
   margin: 0 -0.25rem;
   height: inherit;
 }
 .scroll-area {
-  height: inherit;
-  box-sizing: border-box;
+  grid-area: 1 / 1 / 1 / -1;
   padding: 0.25rem;
-  overflow-y: hidden;
-  overflow-x: scroll;
-  white-space: nowrap;
+  overflow: scroll hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -437,98 +413,26 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   display: none;
 }
 .scroll-wrapper {
+  outline: transparent solid 1px;
+  outline-offset: 2px;
   position: relative;
-  display: inline-block;
+  display: inline-flex;
   min-width: 100%;
 }
+.scroll-wrapper::-moz-focus-inner {
+  border: 0;
+}
+.scroll-wrapper:focus {
+  outline-color: #000;
+}
+.scroll-wrapper:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
 .trigger {
-  display: block;
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 0.0625rem;
-  visibility: hidden;
-}
-.trigger:first-of-type {
-  left: 0;
-}
-.trigger:last-of-type {
-  right: 0;
-}
-.action-prev {
-  display: flex;
-  position: absolute;
-  top: 0;
-  height: 100%;
-  align-items: center;
-  left: 0;
-  justify-content: flex-start;
-  visibility: hidden;
-}
-.action-prev .gradient {
-  background: linear-gradient(90deg, #fff 50%, #fff0 100%);
-}
-.action-next {
-  display: flex;
-  position: absolute;
-  top: 0;
-  height: 100%;
-  align-items: center;
-  right: 0;
-  justify-content: flex-end;
-  visibility: hidden;
-}
-.action-next .gradient {
-  background: linear-gradient(90deg, #fff0 0%, #fff 50%);
-}
-.button {
-  position: absolute;
-  top: 50%;
-  transform: translate3d(0,-50%,0);
-}
-.gradient {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 2em;
-  pointer-events: none;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light-electric, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: undefined  1`] = `
-":host {
-  display: block !important;
-  height: 100% !important;
-}
-.root {
-  position: relative;
-  margin: 0 -0.25rem;
-  height: inherit;
-}
-.scroll-area {
-  height: inherit;
-  box-sizing: border-box;
-  padding: 0.25rem;
-  overflow-y: hidden;
-  overflow-x: scroll;
-  white-space: nowrap;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scroll-area::-webkit-scrollbar {
-  display: none;
-}
-.scroll-wrapper {
-  position: relative;
-  display: inline-block;
-  min-width: 100%;
-}
-.trigger {
-  display: block;
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 0.0625rem;
+  width: 1px;
   visibility: hidden;
 }
 .trigger:first-of-type {
@@ -538,79 +442,75 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   right: 0;
 }
 .action-prev {
+  position: relative;
+  padding: 0.25rem 0;
+  pointer-events: none;
   display: flex;
-  position: absolute;
-  top: 0;
-  height: 100%;
-  align-items: center;
-  left: 0;
+  align-items: flex-start;
+  grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
-  visibility: visible;
-}
-.action-prev .gradient {
   background: linear-gradient(90deg, #fff 50%, #fff0 100%);
+  visibility: hidden;
 }
 .action-next {
+  position: relative;
+  padding: 0.25rem 0;
+  pointer-events: none;
   display: flex;
-  position: absolute;
-  top: 0;
-  height: 100%;
-  align-items: center;
-  right: 0;
+  align-items: flex-start;
+  grid-area: 1 / 3 / 1 / 3;
   justify-content: flex-end;
-  visibility: visible;
-}
-.action-next .gradient {
   background: linear-gradient(90deg, #fff0 0%, #fff 50%);
+  visibility: hidden;
 }
 .button {
-  position: absolute;
-  top: 50%;
-  transform: translate3d(0,-50%,0);
+  pointer-events: auto;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light-electric, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: 'center'  1`] = `
+":host {
+  display: block;
+  height: inherit !important;
+  white-space: nowrap;
 }
-.gradient {
+.root {
+  display: grid;
+  grid-template-columns: 2em minmax(0, 1fr) 2em;
+  margin: 0 -0.25rem;
+  height: inherit;
+}
+.scroll-area {
+  grid-area: 1 / 1 / 1 / -1;
+  padding: 0.25rem;
+  overflow: scroll hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroll-area::-webkit-scrollbar {
+  display: none;
+}
+.scroll-wrapper {
+  outline: transparent solid 1px;
+  outline-offset: 2px;
+  position: relative;
+  display: inline-flex;
+  min-width: 100%;
+}
+.scroll-wrapper::-moz-focus-inner {
+  border: 0;
+}
+.scroll-wrapper:focus {
+  outline-color: #000;
+}
+.scroll-wrapper:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+.trigger {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 2em;
-  pointer-events: none;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for gradientColorScheme: surface, theme: dark, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: undefined  1`] = `
-":host {
-  display: block !important;
-  height: 100% !important;
-}
-.root {
-  position: relative;
-  margin: 0 -0.25rem;
-  height: inherit;
-}
-.scroll-area {
-  height: inherit;
-  box-sizing: border-box;
-  padding: 0.25rem;
-  overflow-y: hidden;
-  overflow-x: scroll;
-  white-space: nowrap;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scroll-area::-webkit-scrollbar {
-  display: none;
-}
-.scroll-wrapper {
-  position: relative;
-  display: inline-block;
-  min-width: 100%;
-}
-.trigger {
-  display: block;
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 0.0625rem;
+  width: 1px;
   visibility: hidden;
 }
 .trigger:first-of-type {
@@ -620,62 +520,126 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   right: 0;
 }
 .action-prev {
+  position: relative;
+  padding: 0.25rem 0;
+  pointer-events: none;
   display: flex;
-  position: absolute;
-  top: 0;
-  height: 100%;
   align-items: center;
-  left: 0;
+  grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
+  background: linear-gradient(90deg, #fff 50%, #fff0 100%);
   visibility: visible;
 }
-.action-prev .gradient {
+.action-next {
+  position: relative;
+  padding: 0.25rem 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  grid-area: 1 / 3 / 1 / 3;
+  justify-content: flex-end;
+  background: linear-gradient(90deg, #fff0 0%, #fff 50%);
+  visibility: visible;
+}
+.button {
+  pointer-events: auto;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for gradientColorScheme: surface, theme: dark, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: 'center'  1`] = `
+":host {
+  display: block;
+  height: inherit !important;
+  white-space: nowrap;
+}
+.root {
+  display: grid;
+  grid-template-columns: 2em minmax(0, 1fr) 2em;
+  margin: 0 -0.25rem;
+  height: inherit;
+}
+.scroll-area {
+  grid-area: 1 / 1 / 1 / -1;
+  padding: 0.25rem;
+  overflow: scroll hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroll-area::-webkit-scrollbar {
+  display: none;
+}
+.scroll-wrapper {
+  outline: transparent solid 1px;
+  outline-offset: 2px;
+  position: relative;
+  display: inline-flex;
+  min-width: 100%;
+}
+.scroll-wrapper::-moz-focus-inner {
+  border: 0;
+}
+.scroll-wrapper:focus {
+  outline-color: #fff;
+}
+.scroll-wrapper:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+.trigger {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  visibility: hidden;
+}
+.trigger:first-of-type {
+  left: 0;
+}
+.trigger:last-of-type {
+  right: 0;
+}
+.action-prev {
+  position: relative;
+  padding: 0.25rem 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  grid-area: 1 / 1 / 1 / 1;
+  justify-content: flex-start;
   background: linear-gradient(90deg, #262b2e 50%, #262b2e00 100%);
-}
-.action-next {
-  display: flex;
-  position: absolute;
-  top: 0;
-  height: 100%;
-  align-items: center;
-  right: 0;
-  justify-content: flex-end;
   visibility: visible;
 }
-.action-next .gradient {
+.action-next {
+  position: relative;
+  padding: 0.25rem 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  grid-area: 1 / 3 / 1 / 3;
+  justify-content: flex-end;
   background: linear-gradient(90deg, #262b2e00 0%, #262b2e 50%);
+  visibility: visible;
 }
 .button {
-  position: absolute;
-  top: 50%;
-  transform: translate3d(0,-50%,0);
-}
-.gradient {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 2em;
-  pointer-events: none;
+  pointer-events: auto;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: surface, theme: light, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: undefined  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: surface, theme: light, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: 'center'  1`] = `
 ":host {
-  display: block !important;
-  height: 100% !important;
+  display: block;
+  height: inherit !important;
+  white-space: nowrap;
 }
 .root {
-  position: relative;
+  display: grid;
+  grid-template-columns: 2em minmax(0, 1fr) 2em;
   margin: 0 -0.25rem;
   height: inherit;
 }
 .scroll-area {
-  height: inherit;
-  box-sizing: border-box;
+  grid-area: 1 / 1 / 1 / -1;
   padding: 0.25rem;
-  overflow-y: hidden;
-  overflow-x: scroll;
-  white-space: nowrap;
+  overflow: scroll hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -683,16 +647,26 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   display: none;
 }
 .scroll-wrapper {
+  outline: transparent solid 1px;
+  outline-offset: 2px;
   position: relative;
-  display: inline-block;
+  display: inline-flex;
   min-width: 100%;
 }
+.scroll-wrapper::-moz-focus-inner {
+  border: 0;
+}
+.scroll-wrapper:focus {
+  outline-color: #000;
+}
+.scroll-wrapper:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
 .trigger {
-  display: block;
   position: absolute;
   top: 0;
-  height: 100%;
-  width: 0.0625rem;
+  bottom: 0;
+  width: 1px;
   visibility: hidden;
 }
 .trigger:first-of-type {
@@ -702,62 +676,48 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   right: 0;
 }
 .action-prev {
+  position: relative;
+  padding: 0.25rem 0;
+  pointer-events: none;
   display: flex;
-  position: absolute;
-  top: 0;
-  height: 100%;
   align-items: center;
-  left: 0;
+  grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
-  visibility: visible;
-}
-.action-prev .gradient {
   background: linear-gradient(90deg, #f2f2f2 50%, #f2f2f200 100%);
+  visibility: visible;
 }
 .action-next {
+  position: relative;
+  padding: 0.25rem 0;
+  pointer-events: none;
   display: flex;
-  position: absolute;
-  top: 0;
-  height: 100%;
   align-items: center;
-  right: 0;
+  grid-area: 1 / 3 / 1 / 3;
   justify-content: flex-end;
+  background: linear-gradient(90deg, #f2f2f200 0%, #f2f2f2 50%);
   visibility: visible;
 }
-.action-next .gradient {
-  background: linear-gradient(90deg, #f2f2f200 0%, #f2f2f2 50%);
-}
 .button {
-  position: absolute;
-  top: 50%;
-  transform: translate3d(0,-50%,0);
-}
-.gradient {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 2em;
-  pointer-events: none;
+  pointer-events: auto;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: surface, theme: light-electric, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: undefined  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: surface, theme: light-electric, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: 'center'  1`] = `
 ":host {
-  display: block !important;
-  height: 100% !important;
+  display: block;
+  height: inherit !important;
+  white-space: nowrap;
 }
 .root {
-  position: relative;
+  display: grid;
+  grid-template-columns: 2em minmax(0, 1fr) 2em;
   margin: 0 -0.25rem;
   height: inherit;
 }
 .scroll-area {
-  height: inherit;
-  box-sizing: border-box;
+  grid-area: 1 / 1 / 1 / -1;
   padding: 0.25rem;
-  overflow-y: hidden;
-  overflow-x: scroll;
-  white-space: nowrap;
+  overflow: scroll hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -765,16 +725,26 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   display: none;
 }
 .scroll-wrapper {
+  outline: transparent solid 1px;
+  outline-offset: 2px;
   position: relative;
-  display: inline-block;
+  display: inline-flex;
   min-width: 100%;
 }
+.scroll-wrapper::-moz-focus-inner {
+  border: 0;
+}
+.scroll-wrapper:focus {
+  outline-color: #000;
+}
+.scroll-wrapper:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
 .trigger {
-  display: block;
   position: absolute;
   top: 0;
-  height: 100%;
-  width: 0.0625rem;
+  bottom: 0;
+  width: 1px;
   visibility: hidden;
 }
 .trigger:first-of-type {
@@ -784,41 +754,28 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   right: 0;
 }
 .action-prev {
+  position: relative;
+  padding: 0.25rem 0;
+  pointer-events: none;
   display: flex;
-  position: absolute;
-  top: 0;
-  height: 100%;
   align-items: center;
-  left: 0;
+  grid-area: 1 / 1 / 1 / 1;
   justify-content: flex-start;
-  visibility: visible;
-}
-.action-prev .gradient {
   background: linear-gradient(90deg, #f2f2f2 50%, #f2f2f200 100%);
+  visibility: visible;
 }
 .action-next {
+  position: relative;
+  padding: 0.25rem 0;
+  pointer-events: none;
   display: flex;
-  position: absolute;
-  top: 0;
-  height: 100%;
   align-items: center;
-  right: 0;
+  grid-area: 1 / 3 / 1 / 3;
   justify-content: flex-end;
+  background: linear-gradient(90deg, #f2f2f200 0%, #f2f2f2 50%);
   visibility: visible;
 }
-.action-next .gradient {
-  background: linear-gradient(90deg, #f2f2f200 0%, #f2f2f2 50%);
-}
 .button {
-  position: absolute;
-  top: 50%;
-  transform: translate3d(0,-50%,0);
-}
-.gradient {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 2em;
-  pointer-events: none;
+  pointer-events: auto;
 }"
 `;
