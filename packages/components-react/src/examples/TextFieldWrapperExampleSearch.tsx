@@ -1,4 +1,4 @@
-import { PTextFieldWrapper } from '@porsche-design-system/components-react';
+import { PText, PTextFieldWrapper } from '@porsche-design-system/components-react';
 import { useCallback, useEffect, useState } from 'react';
 import type { ChangeEvent } from 'react';
 
@@ -10,9 +10,9 @@ export const TextFieldWrapperExampleSearchPage = (): JSX.Element => {
     if (isLoading) {
       // simulate async request
       setTimeout(() => {
-        setIsLoading(false);
         setValue('Stuttgart, Baden-Württemberg');
-      }, 5000);
+        setIsLoading(false);
+      }, 3000);
     }
   }, [isLoading]);
 
@@ -20,16 +20,22 @@ export const TextFieldWrapperExampleSearchPage = (): JSX.Element => {
     setIsLoading(true);
   }, []);
 
-  const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-    if (isLoading) {
-      setIsLoading(false);
-    }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  const onInput = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setValue(e.target.value);
+      if (isLoading) {
+        setIsLoading(false);
+      }
+    },
+    [] // eslint-disable-line react-hooks/exhaustive-deps
+  );
 
   return (
-    <PTextFieldWrapper actionIcon="locate" actionLoading={isLoading} onAction={onAction}>
-      <input type="search" value={value} placeholder={isLoading ? 'Locating...' : ''} onChange={onChange} />
-    </PTextFieldWrapper>
+    <>
+      <PTextFieldWrapper actionIcon="locate" actionLoading={isLoading} onAction={onAction}>
+        <input type="search" value={value} placeholder={isLoading ? 'Locating...' : ''} onInput={onInput} />
+      </PTextFieldWrapper>
+      <PText children={'Value: ' + value} />
+    </>
   );
 };
