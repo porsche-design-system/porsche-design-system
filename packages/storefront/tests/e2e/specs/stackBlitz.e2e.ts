@@ -1,4 +1,4 @@
-import { baseURL } from '../helpers';
+import { baseURL, waitForAttributeValueOnElement } from '../helpers';
 import type { Page } from 'puppeteer';
 import { Framework } from '../../../src/models';
 
@@ -23,9 +23,11 @@ it.each(<Framework[]>['react', 'vanilla-js', 'angular'])(
       angular: 1,
       react: 2,
     };
+    const frameWorkButton = frameWorkButtons[frameWorkButtonMap[framework]];
 
-    frameWorkButtons[frameWorkButtonMap[framework]].click();
-    await page.waitForTimeout(1000);
+    frameWorkButton.click();
+    await page.waitForFunction((el) => el.getAttribute('aria-selected') === 'true', {}, frameWorkButton);
+
     // ensure Framework is switched
     expect(await frameWorkTabsBar.evaluate((el) => (el as any).activeTabIndex)).toBe(frameWorkButtonMap[framework]);
 
@@ -34,14 +36,17 @@ it.each(<Framework[]>['react', 'vanilla-js', 'angular'])(
       'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36'
     );
 
+    //save target of original page to know that this was the opener:
+    const pageTarget = page.target();
+
     // now we're on the stackBlitz website
     await stackBlitzButton.click();
 
-    // We have to wait until browser.pages is updated
-    await page.waitForTimeout(3000);
     // get stackBlitz tab
-    const pages = await browser.pages();
-    const stackBlitzPage = pages[pages.length - 1];
+    //check that the first page opened this new page:
+    const newTarget = await browser.waitForTarget((target) => target.opener() === pageTarget);
+    //get the new page object:
+    const stackBlitzPage = await newTarget.page();
 
     await stackBlitzPage.waitForSelector('#PreviewContentWrapper');
     const previewContentWrapper = await stackBlitzPage.$('#PreviewContentWrapper');
