@@ -122,7 +122,7 @@ On top of `actionIcon="locate"` it is possible to put the component into a loadi
 ### Demo implementation
 
 <Playground :frameworkMarkup="searchExample" :config="config">
-  <p-text-field-wrapper action-icon="locate" :action-loading="demoIsLoading" v-on:action="onDemoAction">
+  <p-text-field-wrapper label="Some label" hide-label="true" action-icon="locate" :action-loading="demoIsLoading" v-on:action="onDemoAction">
     <input type="search" :value="demoValue" :placeholder="demoIsLoading ? 'Locating...' : ''" v-on:input="onDemoInput" />
   </p-text-field-wrapper>
   <p-text>Value: {{ demoValue }}</p-text>
