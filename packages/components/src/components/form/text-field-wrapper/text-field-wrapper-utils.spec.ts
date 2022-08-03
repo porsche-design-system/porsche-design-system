@@ -272,6 +272,7 @@ describe('dispatchInputEvent()', () => {
     const spy = jest.spyOn(inputElement, 'dispatchEvent');
     dispatchInputEvent(inputElement);
 
-    expect(spy).toBeCalledWith(expect.any(Event));
+    expect(spy).toBeCalledWith(new Event('input', { bubbles: true }));
+    expect(spy.mock.calls[0][0].bubbles).toBe(true); // toBeCalledWith matcher doesn't verify value of bubbles
   });
 });
