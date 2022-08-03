@@ -11,7 +11,7 @@ behavior.
 
 ## Basic Table
 
-<Playground :frameworkMarkup="basic" :sharedTableMarkup="{'headBasic': headBasic, 'dataBasic': dataBasic}">
+<Playground :frameworkMarkup="basic">
   <p-table caption="Some caption" ref="tableBasic">
     <p-table-head>
       <p-table-head-row>
@@ -71,7 +71,7 @@ type TableHeadCellSort = {
 Upon clicking a sortable `p-table-head-cell` element, the `p-table` emits a `sortingChange` event that you should
 subscribe to.
 
-<Playground :frameworkMarkup="sorting"  :sharedTableMarkup="{'headSorting': headSorting, 'dataSorting': dataSorting}">
+<Playground :frameworkMarkup="sorting">
   <p-table caption="Some caption" ref="tableSorting">
     <p-table-head>
       <p-table-head-row>
@@ -101,7 +101,7 @@ can be achieved by setting the `hide-label` property.
 
 The appearance of a table's contents can be customized as illustrated in the following example.
 
-<Playground :frameworkMarkup="advanced" :sharedTableMarkup="{'headAdvanced': headAdvanced, 'dataAdvanced': dataAdvanced}">
+<Playground :frameworkMarkup="advanced">
   <p-table ref="tableAdvanced">
     <p-headline slot="caption" variant="headline-3">Some visual caption</p-headline>
     <p-table-head>
