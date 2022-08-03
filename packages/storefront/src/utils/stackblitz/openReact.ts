@@ -1,13 +1,13 @@
 import sdk from '@stackblitz/sdk';
+import type { Project, OpenOptions } from '@stackblitz/sdk';
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
-import {
-  devDependencies as reactDevDependencies,
-  dependencies as reactDependencies,
-} from '../../../../components-react/package.json';
+import { devDependencies, dependencies } from '../../../../components-react/package.json';
 import { getAdditionalDependencies, replaceSharedTableImports } from '@/utils/stackblitz/openInStackBlitz';
 import type { StackBlitzFrameworkOpts, DependenciesMap } from '@/utils/stackblitz/openInStackBlitz';
 
-export const openReact = (props: StackBlitzFrameworkOpts): void => {
+export const getReactProjectAndOpenOptions = (
+  props: StackBlitzFrameworkOpts
+): { project: Project; openOptions: OpenOptions } => {
   const {
     markup,
     description,
@@ -21,7 +21,7 @@ export const openReact = (props: StackBlitzFrameworkOpts): void => {
 
   const dependenciesMap: DependenciesMap = {
     IMask: {
-      'react-imask': `${reactDependencies['react-imask']}`,
+      'react-imask': `${dependencies['react-imask']}`,
     },
   };
 
@@ -45,12 +45,11 @@ ${sharedTableMarkup ? replaceSharedTableImports(cleanedFragmentsMarkup, sharedTa
   const tagName = hasFrameworkMarkup ? componentName : 'App';
   const reactImport = hasFrameworkMarkup ? `{ ${componentName} }` : 'App';
 
-  sdk.openProject(
-    {
-      files: {
-        'App.tsx': hasFrameworkMarkup ? appTsxFrameworkMarkup : appTsxDefaultMarkup,
-        'index.html': `<div id="root"></div>`,
-        'index.tsx': `import * as React from 'react';
+  const project: Project = {
+    files: {
+      'App.tsx': hasFrameworkMarkup ? appTsxFrameworkMarkup : appTsxDefaultMarkup,
+      'index.html': `<div id="root"></div>`,
+      'index.tsx': `import * as React from 'react';
 import { StrictMode } from "react";
 import * as ReactDOMClient from "react-dom/client";
 import ${reactImport} from "./App";
@@ -67,20 +66,27 @@ root.render(
     </PorscheDesignSystemProvider>
   </StrictMode>
 );`,
-        'style.css': bodyStyles,
-      },
-      template: 'create-react-app',
-      title,
-      description,
-      dependencies: {
-        '@porsche-design-system/components-react': `${pdsVersion}`,
-        '@types/react': `${reactDevDependencies['@types/react']}`,
-        '@types/react-dom': `${reactDevDependencies['@types/react-dom']}`,
-        ...(additionalDependencies && getAdditionalDependencies(additionalDependencies, dependenciesMap)),
-      },
+      'style.css': bodyStyles,
     },
-    {
-      openFile: 'App.tsx',
-    }
-  );
+    template: 'create-react-app',
+    title,
+    description,
+    dependencies: {
+      '@porsche-design-system/components-react': `${pdsVersion}`,
+      '@types/react': `${devDependencies['@types/react']}`,
+      '@types/react-dom': `${devDependencies['@types/react-dom']}`,
+      ...(additionalDependencies && getAdditionalDependencies(additionalDependencies, dependenciesMap)),
+    },
+  };
+
+  const openOptions: OpenOptions = {
+    openFile: 'App.tsx',
+  };
+
+  return { project, openOptions };
+};
+
+export const openReact = (props: StackBlitzFrameworkOpts) => {
+  const { project, openOptions } = getReactProjectAndOpenOptions(props);
+  sdk.openProject(project, openOptions);
 };
