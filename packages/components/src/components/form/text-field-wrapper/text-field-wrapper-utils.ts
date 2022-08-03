@@ -66,5 +66,6 @@ export const addInputEventListenerForSearch = (
 };
 
 export const dispatchInputEvent = (el: HTMLInputElement): void => {
-  el.dispatchEvent(new Event('input'));
+  // { bubbles: true } is crucial for react onChange callback getting invoked
+  el.dispatchEvent(new Event('input', { bubbles: true }));
 };
