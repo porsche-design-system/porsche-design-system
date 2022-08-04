@@ -22,7 +22,7 @@ const getAppComponentTsDefaultMarkup = (markup: string): string =>
 @Component({
   selector: 'porsche-design-system-app',
   template: \`
-    ${convertMarkup(markup, 'angular')}\`,
+    ${convertMarkup(markup, 'angular').replace(/(\n)(\s*[<A-z\/]+)/g, '$1    $2')}\`,
 })
 export class AppComponent  {}`;
 

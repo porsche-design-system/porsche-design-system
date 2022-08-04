@@ -25,7 +25,9 @@ ${isTable ? replaceSharedTableImports(cleanedMarkup) : cleanedMarkup}`;
 // TODO: unit test
 const getDefaultMarkup = (markup: string, pdsComponents: string[]): string => {
   const reactComponentsToImport = pdsComponents.map((x) => pascalCase(x)).join(', ');
-  const convertedMarkup = convertMarkup(markup, 'react').replace(/(<\/?)(>)/g, '$1React.Fragment$2');
+  const convertedMarkup = convertMarkup(markup, 'react')
+    .replace(/(<\/?)(>)/g, '$1React.Fragment$2')
+    .replace(/(\n)(\s*[<A-z\/]+)/g, '$1      $2'); // Align markup
 
   return `import * as React from 'react';
 import { ${reactComponentsToImport} } from '@porsche-design-system/components-react'
