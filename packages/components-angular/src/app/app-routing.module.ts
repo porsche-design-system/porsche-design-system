@@ -110,9 +110,14 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.TabsBarExampleComponent,
   },
   {
-    name: 'Text Field Wrapper Example',
-    path: 'text-field-wrapper-example',
-    component: fromExamples.TextFieldWrapperExampleComponent,
+    name: 'Text Field Wrapper Example IMask',
+    path: 'text-field-wrapper-example-imask',
+    component: fromExamples.TextFieldWrapperExampleImaskComponent,
+  },
+  {
+    name: 'Text Field Wrapper Example Search',
+    path: 'text-field-wrapper-example-search',
+    component: fromExamples.TextFieldWrapperExampleSearchComponent,
   },
   {
     name: 'Toast Example',

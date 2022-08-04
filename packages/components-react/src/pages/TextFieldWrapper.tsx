@@ -159,8 +159,34 @@ export const TextFieldWrapperPage = (): JSX.Element => {
             defaultValue="some really long password with many words and amazing special characters, letters big and small, numbers"
           />
         </PTextFieldWrapper>
+        <PTextFieldWrapper label="Type search with action-icon" actionIcon="locate">
+          <input type="search" />
+        </PTextFieldWrapper>
+        <PTextFieldWrapper
+          label="Type search with action-icon and action-loading"
+          actionIcon="locate"
+          actionLoading={true}
+        >
+          <input type="search" />
+        </PTextFieldWrapper>
         <form>
           <PTextFieldWrapper label="Type search with long value within form">
+            <input
+              type="search"
+              defaultValue="some really long password with many words and amazing special characters, letters big and small, numbers"
+            />
+          </PTextFieldWrapper>
+          <PTextFieldWrapper label="Type search with action-icon within form" actionIcon="locate">
+            <input type="search" />
+          </PTextFieldWrapper>
+          <PTextFieldWrapper
+            label="Type search with action-icon and action-loading within form"
+            actionIcon="locate"
+            actionLoading={true}
+          >
+            <input type="search" />
+          </PTextFieldWrapper>
+          <PTextFieldWrapper label="Type search with action-icon and long value within form" actionIcon="locate">
             <input
               type="search"
               defaultValue="some really long password with many words and amazing special characters, letters big and small, numbers"

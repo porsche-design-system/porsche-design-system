@@ -7,7 +7,8 @@ import { TableExampleAdvancedComponent } from './table-example-advanced.componen
 import { TableExampleBasicComponent } from './table-example-basic.component';
 import { TableExampleSortingComponent } from './table-example-sorting.component';
 import { TabsBarExampleComponent } from './tabs-bar-example.component';
-import { TextFieldWrapperExampleComponent } from './text-field-wrapper-example.component';
+import { TextFieldWrapperExampleImaskComponent } from './text-field-wrapper-example-imask.component';
+import { TextFieldWrapperExampleSearchComponent } from './text-field-wrapper-example-search.component';
 import { ToastExampleComponent } from './toast-example.component';
 
 export const examples = [
@@ -20,7 +21,8 @@ export const examples = [
   TableExampleBasicComponent,
   TableExampleSortingComponent,
   TabsBarExampleComponent,
-  TextFieldWrapperExampleComponent,
+  TextFieldWrapperExampleImaskComponent,
+  TextFieldWrapperExampleSearchComponent,
   ToastExampleComponent,
 ];
 
@@ -33,5 +35,6 @@ export * from './table-example-advanced.component';
 export * from './table-example-basic.component';
 export * from './table-example-sorting.component';
 export * from './tabs-bar-example.component';
-export * from './text-field-wrapper-example.component';
+export * from './text-field-wrapper-example-imask.component';
+export * from './text-field-wrapper-example-search.component';
 export * from './toast-example.component';
