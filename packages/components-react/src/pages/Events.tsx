@@ -32,7 +32,7 @@ export const EventsPage = (): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tableSortingChangeEventCounter, setTableSortingChangeEventCounter] = useState(0);
 
-  // unused event parameters are used to verify that types can be imported package root
+  // unused event parameters are used to verify that types can be imported from package root
   const onAccordionChange = useCallback(
     (e: CustomEvent<AccordionChangeEvent>) => setAccordionChangeEventCounter((prev) => prev + 1),
     []
