@@ -170,13 +170,13 @@ const generateComponentMeta = (): void => {
       source.matchAll(/@Prop\(\) public ([A-z]+)\??(?:: (.+?))?(?:=[^>]\s*(.+))?;/g)
     ).map(([, propName, propType, propValue]) => {
       const cleanedValue =
-        (propValue === 'true'
+        propValue === 'true'
           ? true
           : propValue === 'false'
           ? false
-          : // undefined values get lost in JSON.stringif
-            // , but null is allowed
-            propValue?.replace(/'/g, '')) || null;
+          : // undefined values get lost in JSON.stringify, but null is allowed
+            propValue?.replace(/'/g, '') || null;
+
       return {
         [propName]: cleanedValue,
       };

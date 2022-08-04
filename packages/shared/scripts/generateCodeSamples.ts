@@ -88,9 +88,14 @@ const generateCodeSamples = (): void => {
       component: 'p-text-field-wrapper',
       samples: [
         [
-          componentsJsPath + '/text-field-wrapper-example.html',
-          componentsAngularPath + '/text-field-wrapper-example.component.ts',
-          componentsReactPath + '/TextFieldWrapperExample.tsx',
+          componentsJsPath + '/text-field-wrapper-example-imask.html',
+          componentsAngularPath + '/text-field-wrapper-example-imask.component.ts',
+          componentsReactPath + '/TextFieldWrapperExampleIMask.tsx',
+        ],
+        [
+          componentsJsPath + '/text-field-wrapper-example-search.html',
+          componentsAngularPath + '/text-field-wrapper-example-search.component.ts',
+          componentsReactPath + '/TextFieldWrapperExampleSearch.tsx',
         ],
       ],
     },

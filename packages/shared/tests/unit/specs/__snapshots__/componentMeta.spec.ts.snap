@@ -50,7 +50,7 @@ Object {
         "state": "neutral",
       },
       Object {
-        "persistent": null,
+        "persistent": false,
       },
       Object {
         "width": "basic",
@@ -80,10 +80,10 @@ Object {
         "type": "submit",
       },
       Object {
-        "disabled": null,
+        "disabled": false,
       },
       Object {
-        "loading": null,
+        "loading": false,
       },
       Object {
         "variant": "secondary",
@@ -95,7 +95,7 @@ Object {
         "iconSource": null,
       },
       Object {
-        "hideLabel": null,
+        "hideLabel": false,
       },
       Object {
         "theme": "light",
@@ -157,10 +157,10 @@ Object {
         "type": "submit",
       },
       Object {
-        "disabled": null,
+        "disabled": false,
       },
       Object {
-        "loading": null,
+        "loading": false,
       },
       Object {
         "size": "small",
@@ -175,16 +175,16 @@ Object {
         "iconSource": null,
       },
       Object {
-        "active": null,
+        "active": false,
       },
       Object {
-        "hideLabel": null,
+        "hideLabel": false,
       },
       Object {
         "alignLabel": "right",
       },
       Object {
-        "stretch": null,
+        "stretch": false,
       },
       Object {
         "theme": "light",
@@ -239,7 +239,7 @@ Object {
         "message": null,
       },
       Object {
-        "hideLabel": null,
+        "hideLabel": false,
       },
     ],
     "requiredChild": "input type=checkbox",
@@ -323,7 +323,7 @@ Object {
         "labelSize": "medium",
       },
       Object {
-        "required": null,
+        "required": false,
       },
       Object {
         "state": "none",
@@ -357,7 +357,7 @@ Object {
     "isThemeable": false,
     "props": Array [
       Object {
-        "inline": null,
+        "inline": false,
       },
       Object {
         "wrap": "nowrap",
@@ -482,7 +482,7 @@ Object {
         "color": "default",
       },
       Object {
-        "ellipsis": null,
+        "ellipsis": false,
       },
       Object {
         "theme": "light",
@@ -515,7 +515,7 @@ Object {
         "size": "small",
       },
       Object {
-        "lazy": null,
+        "lazy": false,
       },
       Object {
         "theme": "light",
@@ -548,13 +548,13 @@ Object {
         "state": "neutral",
       },
       Object {
-        "persistent": null,
+        "persistent": false,
       },
       Object {
         "actionLabel": null,
       },
       Object {
-        "actionLoading": null,
+        "actionLoading": false,
       },
       Object {
         "actionIcon": "arrow-head-right",
@@ -602,7 +602,7 @@ Object {
         "rel": null,
       },
       Object {
-        "hideLabel": null,
+        "hideLabel": false,
       },
       Object {
         "aria": null,
@@ -643,7 +643,7 @@ Object {
         "alignLabel": "right",
       },
       Object {
-        "stretch": null,
+        "stretch": false,
       },
       Object {
         "size": "small",
@@ -661,10 +661,10 @@ Object {
         "href": null,
       },
       Object {
-        "active": null,
+        "active": false,
       },
       Object {
-        "hideLabel": null,
+        "hideLabel": false,
       },
       Object {
         "theme": "light",
@@ -736,7 +736,7 @@ Object {
         "rel": null,
       },
       Object {
-        "hideLabel": null,
+        "hideLabel": false,
       },
     ],
     "requiredProps": Array [
@@ -797,16 +797,16 @@ Object {
     "isThemeable": false,
     "props": Array [
       Object {
-        "disableCloseButton": null,
+        "disableCloseButton": false,
       },
       Object {
-        "disableBackdropClick": null,
+        "disableBackdropClick": false,
       },
       Object {
         "heading": null,
       },
       Object {
-        "fullscreen": null,
+        "fullscreen": false,
       },
       Object {
         "aria": null,
@@ -894,7 +894,7 @@ Object {
         "message": null,
       },
       Object {
-        "hideLabel": null,
+        "hideLabel": false,
       },
     ],
     "requiredChild": "input type=radio",
@@ -982,7 +982,7 @@ Object {
         "value": null,
       },
       Object {
-        "disabled": null,
+        "disabled": false,
       },
       Object {
         "label": null,
@@ -1029,10 +1029,10 @@ Object {
         "message": null,
       },
       Object {
-        "hideLabel": null,
+        "hideLabel": false,
       },
       Object {
-        "filter": null,
+        "filter": false,
       },
       Object {
         "theme": "light",
@@ -1041,7 +1041,7 @@ Object {
         "dropdownDirection": "auto",
       },
       Object {
-        "native": null,
+        "native": false,
       },
     ],
     "requiredChild": "select",
@@ -1100,19 +1100,19 @@ Object {
         "theme": "light",
       },
       Object {
-        "filter": null,
+        "filter": false,
       },
       Object {
-        "required": null,
+        "required": false,
       },
       Object {
-        "disabled": null,
+        "disabled": false,
       },
       Object {
         "onOpenChange": null,
       },
       Object {
-        "isOpenOverride": null,
+        "isOpenOverride": false,
       },
     ],
     "requiredProps": Array [
@@ -1181,7 +1181,7 @@ Object {
         "state": null,
       },
       Object {
-        "disabled": null,
+        "disabled": false,
       },
     ],
     "requiredParent": "p-stepper-horizontal",
@@ -1203,19 +1203,19 @@ Object {
         "alignLabel": "right",
       },
       Object {
-        "hideLabel": null,
+        "hideLabel": false,
       },
       Object {
-        "stretch": null,
+        "stretch": false,
       },
       Object {
-        "checked": null,
+        "checked": false,
       },
       Object {
-        "disabled": null,
+        "disabled": false,
       },
       Object {
-        "loading": null,
+        "loading": false,
       },
       Object {
         "tabbable": true,
@@ -1271,7 +1271,7 @@ Object {
     "isThemeable": false,
     "props": Array [
       Object {
-        "multiline": null,
+        "multiline": false,
       },
     ],
     "requiredParent": "p-table-row",
@@ -1307,10 +1307,10 @@ Object {
         "sort": null,
       },
       Object {
-        "hideLabel": null,
+        "hideLabel": false,
       },
       Object {
-        "multiline": null,
+        "multiline": false,
       },
     ],
     "requiredParent": "p-table-head-row",
@@ -1502,7 +1502,7 @@ Object {
         "color": "default",
       },
       Object {
-        "ellipsis": null,
+        "ellipsis": false,
       },
       Object {
         "theme": "light",
@@ -1546,10 +1546,16 @@ Object {
         "message": null,
       },
       Object {
-        "hideLabel": null,
+        "hideLabel": false,
       },
       Object {
         "showCharacterCount": true,
+      },
+      Object {
+        "actionIcon": null,
+      },
+      Object {
+        "actionLoading": false,
       },
     ],
     "requiredChild": "input type=text",
@@ -1638,7 +1644,7 @@ Object {
         "message": null,
       },
       Object {
-        "hideLabel": null,
+        "hideLabel": false,
       },
       Object {
         "showCharacterCount": true,

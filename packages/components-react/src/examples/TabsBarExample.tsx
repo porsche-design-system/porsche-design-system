@@ -27,7 +27,7 @@ export const TabsBarExamplePage = (): JSX.Element => {
       `}</style>
       <PTabsBar activeTabIndex={tabIndex} onTabChange={onTabChange}>
         {tabPanels.map((tabPanel, i) => (
-          <button type="button" id={`tab-item-${i}`} aria-controls={`tab-panel-${i}`}>
+          <button key={i} type="button" id={`tab-item-${i}`} aria-controls={`tab-panel-${i}`}>
             Tab {tabPanel}
           </button>
         ))}

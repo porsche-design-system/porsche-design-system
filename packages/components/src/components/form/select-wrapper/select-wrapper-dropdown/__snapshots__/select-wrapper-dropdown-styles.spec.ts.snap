@@ -22,7 +22,7 @@ button:disabled {
   cursor: not-allowed;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled) ~ ul {
+  button:not(:disabled):hover ~ ul {
     border-color: #e3e4e5;
   }
 }
@@ -51,7 +51,7 @@ button:disabled {
   cursor: not-allowed;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled) ~ ul {
+  button:not(:disabled):hover ~ ul {
     border-color: #e3e4e5;
   }
 }
@@ -80,7 +80,7 @@ button:disabled {
   cursor: not-allowed;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled) ~ ul {
+  button:not(:disabled):hover ~ ul {
     border-color: #e3e4e5;
   }
 }
@@ -110,7 +110,7 @@ button:disabled {
   cursor: not-allowed;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled) ~ ul {
+  button:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
 }
@@ -140,7 +140,7 @@ button:disabled {
   cursor: not-allowed;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled) ~ ul {
+  button:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
 }
@@ -170,7 +170,7 @@ button:disabled {
   cursor: not-allowed;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled) ~ ul {
+  button:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
 }
@@ -255,7 +255,7 @@ ul::before {
   :host(:hover) {
     color: #000;
   }
-  button:hover:not(:disabled) ~ ul {
+  button:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
   ul:hover {
@@ -439,7 +439,7 @@ ul::before {
   :host(:hover) {
     color: #000;
   }
-  input:hover:not(:disabled) ~ ul {
+  input:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
   ul:hover {
@@ -585,7 +585,7 @@ ul::before {
   top: 0;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled) ~ ul {
+  button:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
   ul:hover {
@@ -766,7 +766,7 @@ ul::before {
   top: 0;
 }
 @media(hover:hover) {
-  input:hover:not(:disabled) ~ ul {
+  input:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
   ul:hover {
@@ -912,7 +912,7 @@ ul::before {
   :host(:hover) {
     color: #000;
   }
-  button:hover:not(:disabled) ~ ul {
+  button:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
   ul:hover {
@@ -1093,7 +1093,7 @@ ul::before {
   :host(:hover) {
     color: #000;
   }
-  input:hover:not(:disabled) ~ ul {
+  input:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
   ul:hover {
@@ -1236,7 +1236,7 @@ ul::before {
   top: 0;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled) ~ ul {
+  button:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
   ul:hover {
@@ -1414,7 +1414,7 @@ ul::before {
   top: 0;
 }
 @media(hover:hover) {
-  input:hover:not(:disabled) ~ ul {
+  input:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
   ul:hover {
@@ -1564,7 +1564,7 @@ ul::after {
   :host(:hover) {
     color: #000;
   }
-  button:hover:not(:disabled) ~ ul {
+  button:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
   ul:hover {
@@ -1749,7 +1749,7 @@ ul::after {
   :host(:hover) {
     color: #000;
   }
-  input:hover:not(:disabled) ~ ul {
+  input:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
   ul:hover {
@@ -1896,7 +1896,7 @@ ul::after {
   bottom: 0;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled) ~ ul {
+  button:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
   ul:hover {
@@ -2078,7 +2078,7 @@ ul::after {
   bottom: 0;
 }
 @media(hover:hover) {
-  input:hover:not(:disabled) ~ ul {
+  input:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
   ul:hover {
@@ -2224,7 +2224,7 @@ ul::after {
   :host(:hover) {
     color: #000;
   }
-  button:hover:not(:disabled) ~ ul {
+  button:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
   ul:hover {
@@ -2405,7 +2405,7 @@ ul::after {
   :host(:hover) {
     color: #000;
   }
-  input:hover:not(:disabled) ~ ul {
+  input:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
   ul:hover {
@@ -2548,7 +2548,7 @@ ul::after {
   bottom: 0;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled) ~ ul {
+  button:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
   ul:hover {
@@ -2726,7 +2726,7 @@ ul::after {
   bottom: 0;
 }
 @media(hover:hover) {
-  input:hover:not(:disabled) ~ ul {
+  input:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
   ul:hover {
@@ -2854,7 +2854,7 @@ input:focus+span {
   outline-color: #fc1717;
 }
 @media(hover:hover) {
-  input:hover:not(:disabled) ~ ul {
+  input:not(:disabled):hover ~ ul {
     border-color: #e3e4e5;
   }
 }
@@ -2918,7 +2918,7 @@ input:focus+span {
   outline-color: #b0b1b2;
 }
 @media(hover:hover) {
-  input:hover:not(:disabled) ~ ul {
+  input:not(:disabled):hover ~ ul {
     border-color: #e3e4e5;
   }
 }
@@ -2982,7 +2982,7 @@ input:focus+span {
   outline-color: #01ba1d;
 }
 @media(hover:hover) {
-  input:hover:not(:disabled) ~ ul {
+  input:not(:disabled):hover ~ ul {
     border-color: #e3e4e5;
   }
 }
@@ -3046,7 +3046,7 @@ input:focus+span {
   outline-color: #fc1717;
 }
 @media(hover:hover) {
-  input:hover:not(:disabled) ~ ul {
+  input:not(:disabled):hover ~ ul {
     border-color: #e3e4e5;
   }
 }
@@ -3110,7 +3110,7 @@ input:focus+span {
   outline-color: #b0b1b2;
 }
 @media(hover:hover) {
-  input:hover:not(:disabled) ~ ul {
+  input:not(:disabled):hover ~ ul {
     border-color: #e3e4e5;
   }
 }
@@ -3174,7 +3174,7 @@ input:focus+span {
   outline-color: #01ba1d;
 }
 @media(hover:hover) {
-  input:hover:not(:disabled) ~ ul {
+  input:not(:disabled):hover ~ ul {
     border-color: #e3e4e5;
   }
 }
@@ -3239,7 +3239,7 @@ input:focus+span {
   outline-color: #e00000;
 }
 @media(hover:hover) {
-  input:hover:not(:disabled) ~ ul {
+  input:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
 }
@@ -3304,7 +3304,7 @@ input:focus+span {
   outline-color: #626669;
 }
 @media(hover:hover) {
-  input:hover:not(:disabled) ~ ul {
+  input:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
 }
@@ -3369,7 +3369,7 @@ input:focus+span {
   outline-color: #018a16;
 }
 @media(hover:hover) {
-  input:hover:not(:disabled) ~ ul {
+  input:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
 }
@@ -3434,7 +3434,7 @@ input:focus+span {
   outline-color: #e00000;
 }
 @media(hover:hover) {
-  input:hover:not(:disabled) ~ ul {
+  input:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
 }
@@ -3499,7 +3499,7 @@ input:focus+span {
   outline-color: #626669;
 }
 @media(hover:hover) {
-  input:hover:not(:disabled) ~ ul {
+  input:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
 }
@@ -3564,7 +3564,7 @@ input:focus+span {
   outline-color: #018a16;
 }
 @media(hover:hover) {
-  input:hover:not(:disabled) ~ ul {
+  input:not(:disabled):hover ~ ul {
     border-color: #323639;
   }
 }
