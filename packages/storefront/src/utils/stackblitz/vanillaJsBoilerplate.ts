@@ -1,7 +1,7 @@
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
 import { dependencies } from '../../../package.json';
 import type { DependenciesMap, StackBlitzFrameworkOpts } from '@/utils/stackblitz/helper';
-import type { Project, OpenOptions } from '@stackblitz/sdk';
+import type { Project, OpenOptions, ProjectDependencies } from '@stackblitz/sdk';
 import {
   headBasic,
   dataBasic,
@@ -11,7 +11,7 @@ import {
   headAdvanced,
 } from '@porsche-design-system/shared';
 import { getAdditionalDependencies, isTable } from '@/utils/stackblitz/helper';
-import { convertMarkup } from '@/utils';
+import { convertMarkup } from '@/utils/formatting';
 
 const sharedImport = {
   headBasic,
@@ -22,11 +22,11 @@ const sharedImport = {
   headAdvanced,
 };
 
-const getIndexHtmlMarkup = (markup: string, isTable: boolean): string => {
+export const getIndexHtmlMarkup = (markup: string, isTable: boolean): string => {
   return isTable ? extendMarkupWithSharedTableData(markup) : convertMarkup(markup, 'vanilla-js');
 };
 
-const getIndexJsMarkup = (markup: string, additionalDependencies?: string[]): string => `import './style.css'
+export const getIndexJsMarkup = (markup: string, additionalDependencies?: string[]): string => `import './style.css'
 import * as porscheDesignSystem from '@porsche-design-system/components-js'
 ${
   additionalDependencies && additionalDependencies.filter((x) => x === 'IMask')
@@ -38,7 +38,7 @@ IMask`
 porscheDesignSystem.load();
 `;
 
-const extendMarkupWithSharedTableData = (markup: string): string => {
+export const extendMarkupWithSharedTableData = (markup: string): string => {
   const [, sharedTableData] = markup.match(/const { ((?:[A-z]+,* )+)} = await getHeadAndData\(\);/) ?? [];
   const importVariables = sharedTableData.replace(/\s/g, '').split(',') as [
     'headBasic' | 'dataBasic' | 'headSorting' | 'dataSorting' | 'dataAdvanced' | 'headAdvanced'
@@ -56,17 +56,23 @@ const getHeadAndData = () => {
   );
 };
 
-export const getVanillaJsProjectAndOpenOptions = (
-  props: StackBlitzFrameworkOpts
-): { project: Project; openOptions: OpenOptions } => {
-  const { markup, description, title, bodyStyles, pdsComponents, additionalDependencies } = props;
-  const [, sharedTableData] = markup.match(/const { ((?:[A-z]+,* )+)} = await getHeadAndData\(\);/) ?? [];
-
+export const getVanillaJsDependencies = (additionalDependencies?: string[]): ProjectDependencies => {
   const dependenciesMap: DependenciesMap = {
     IMask: {
       imask: `${dependencies['imask']}`,
     },
   };
+
+  return {
+    '@porsche-design-system/components-js': `${pdsVersion}`,
+    ...(additionalDependencies && getAdditionalDependencies(additionalDependencies, dependenciesMap)),
+  };
+};
+
+export const getVanillaJsProjectAndOpenOptions = (
+  props: StackBlitzFrameworkOpts
+): { project: Project; openOptions: OpenOptions } => {
+  const { markup, description, title, bodyStyles, pdsComponents, additionalDependencies } = props;
 
   const project: Project = {
     files: {
@@ -77,10 +83,7 @@ export const getVanillaJsProjectAndOpenOptions = (
     template: 'javascript',
     title,
     description,
-    dependencies: {
-      '@porsche-design-system/components-js': `${pdsVersion}`,
-      ...(additionalDependencies && getAdditionalDependencies(additionalDependencies, dependenciesMap)),
-    },
+    dependencies: getVanillaJsDependencies(additionalDependencies),
   };
 
   const openOptions: OpenOptions = {
