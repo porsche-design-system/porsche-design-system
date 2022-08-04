@@ -1,29 +1,23 @@
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
 import { devDependencies, dependencies } from '../../../../components-react/package.json';
-import {
-  getAdditionalDependencies,
-  replaceSharedTableImports,
-  isTable,
-  StackBlitzFrameworkOpts,
-} from '@/utils/stackblitz/helper';
-import { convertMarkup } from '@/utils';
+import { getAdditionalDependencies } from '@/utils';
+import { replaceSharedTableImports, isTable } from './helper';
+import { convertMarkup } from '@/utils/formatting';
 import { pascalCase } from 'change-case';
-import type { Project, OpenOptions } from '@stackblitz/sdk';
-import type { DependenciesMap } from '@/utils/stackblitz/helper';
+import type { Project, OpenOptions, ProjectDependencies } from '@stackblitz/sdk';
+import type { DependenciesMap, StackBlitzFrameworkOpts } from '@/utils';
 
-const getCleanedMarkup = (markup: string): string =>
+export const getCleanedReactMarkup = (markup: string): string =>
   markup.replace(/(const )[A-z]+( = \(\): JSX.Element => {)/, '$1App$2');
 
-// TODO: unit test
-const getAppFrameworkMarkup = (markup: string, isTable: boolean): string => {
-  const cleanedMarkup = getCleanedMarkup(markup);
+export const getAppFrameworkMarkup = (markup: string, isTable: boolean): string => {
+  const cleanedMarkup = getCleanedReactMarkup(markup);
 
   return `import React from 'react';
 ${isTable ? replaceSharedTableImports(cleanedMarkup) : cleanedMarkup}`;
 };
 
-// TODO: unit test
-const getDefaultMarkup = (markup: string, pdsComponents: string[]): string => {
+export const getAppDefaultMarkup = (markup: string, pdsComponents: string[]): string => {
   const reactComponentsToImport = pdsComponents.map((x) => pascalCase(x)).join(', ');
   const convertedMarkup = convertMarkup(markup, 'react')
     .replace(/(<\/?)(>)/g, '$1React.Fragment$2')
@@ -41,33 +35,16 @@ export const App = (): JSX.Fragment => {
 }`;
 };
 
-// TODO: unit test
-const getAppTsxMarkup = (
+export const getAppTsxMarkup = (
   markup: string,
   hasFrameworkMarkup: boolean,
   isTable: boolean,
   pdsComponents: string[]
 ): string => {
-  return hasFrameworkMarkup ? getAppFrameworkMarkup(markup, isTable) : getDefaultMarkup(markup, pdsComponents);
+  return hasFrameworkMarkup ? getAppFrameworkMarkup(markup, isTable) : getAppDefaultMarkup(markup, pdsComponents);
 };
 
-// TODO: unit test
-export const getReactProjectAndOpenOptions = (
-  props: StackBlitzFrameworkOpts
-): { project: Project; openOptions: OpenOptions } => {
-  const { markup, description, title, hasFrameworkMarkup, bodyStyles, pdsComponents, additionalDependencies } = props;
-
-  const dependenciesMap: DependenciesMap = {
-    IMask: {
-      'react-imask': `${dependencies['react-imask']}`,
-    },
-  };
-
-  const project: Project = {
-    files: {
-      'App.tsx': getAppTsxMarkup(markup, hasFrameworkMarkup, isTable(pdsComponents), pdsComponents),
-      'index.html': `<div id="root"></div>`,
-      'index.tsx': `import * as React from 'react';
+export const getIndexTsMarkup = (): string => `import * as React from 'react';
 import { StrictMode } from "react";
 import * as ReactDOMClient from "react-dom/client";
 import { App } from "./App";
@@ -83,20 +60,42 @@ root.render(
       <App />
     </PorscheDesignSystemProvider>
   </StrictMode>
-);`,
+);`;
+
+export const getDependencies = (additionalDependencies?: string[]): ProjectDependencies => {
+  const dependenciesMap: DependenciesMap = {
+    IMask: {
+      'react-imask': `${dependencies['react-imask']}`,
+    },
+  };
+
+  return {
+    '@porsche-design-system/components-react': `${pdsVersion}`,
+    react: `${dependencies['react']}`,
+    'react-dom': `${dependencies['react-dom']}`,
+    '@types/react': `${devDependencies['@types/react']}`,
+    '@types/react-dom': `${devDependencies['@types/react-dom']}`,
+    ...(additionalDependencies && getAdditionalDependencies(additionalDependencies, dependenciesMap)),
+  };
+};
+
+// TODO: unit test
+export const getReactProjectAndOpenOptions = (
+  props: StackBlitzFrameworkOpts
+): { project: Project; openOptions: OpenOptions } => {
+  const { markup, description, title, hasFrameworkMarkup, bodyStyles, pdsComponents, additionalDependencies } = props;
+
+  const project: Project = {
+    files: {
+      'App.tsx': getAppTsxMarkup(markup, hasFrameworkMarkup, isTable(pdsComponents), pdsComponents),
+      'index.html': `<div id="root"></div>`,
+      'index.tsx': getIndexTsMarkup(),
       'style.css': bodyStyles,
     },
     template: 'create-react-app',
     title,
     description,
-    dependencies: {
-      '@porsche-design-system/components-react': `${pdsVersion}`,
-      react: `${dependencies['react']}`,
-      'react-dom': `${dependencies['react-dom']}`,
-      '@types/react': `${devDependencies['@types/react']}`,
-      '@types/react-dom': `${devDependencies['@types/react-dom']}`,
-      ...(additionalDependencies && getAdditionalDependencies(additionalDependencies, dependenciesMap)),
-    },
+    dependencies: getDependencies(additionalDependencies),
   };
 
   const openOptions: OpenOptions = {

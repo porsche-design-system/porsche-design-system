@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getDefaultMarkup() should return correct default markup 1`] = `
+"import * as React from 'react';
+import { PText, PAccordion } from '@porsche-design-system/components-react'
+
+export const App = (): JSX.Fragment => {
+  return (
+    <div>
+      <PText>Some Text</PText><PAccordion>Some value</PAccordion>
+    </div>
+  );
+}"
+`;
+
+exports[`getDependencies() should return correct dependencies object with additionalDependency "IMask" 1`] = `
+Object {
+  "@porsche-design-system/components-react": "2.14.0-beta.0",
+  "@types/react": "^18.0.15",
+  "@types/react-dom": "^18.0.6",
+  "react": "^18.2.0",
+  "react-dom": "^18.2.0",
+  "react-imask": "^6.4.2",
+}
+`;
+
+exports[`getDependencies() should return correct dependencies object without additionalDependencies 1`] = `
+Object {
+  "@porsche-design-system/components-react": "2.14.0-beta.0",
+  "@types/react": "^18.0.15",
+  "@types/react-dom": "^18.0.6",
+  "react": "^18.2.0",
+  "react-dom": "^18.2.0",
+}
+`;
+
+exports[`getIndexTsMarkup() should return correct markup 1`] = `
+"import * as React from 'react';
+import { StrictMode } from \\"react\\";
+import * as ReactDOMClient from \\"react-dom/client\\";
+import { App } from \\"./App\\";
+import { PorscheDesignSystemProvider } from \\"@porsche-design-system/components-react\\";
+import './style.css';
+
+const rootElement = document.getElementById(\\"root\\");
+const root = ReactDOMClient.createRoot(rootElement);
+
+root.render(
+  <StrictMode>
+    <PorscheDesignSystemProvider>
+      <App />
+    </PorscheDesignSystemProvider>
+  </StrictMode>
+);"
+`;
