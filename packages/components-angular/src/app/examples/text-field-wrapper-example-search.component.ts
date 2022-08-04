@@ -3,7 +3,13 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/
 @Component({
   selector: 'text-field-wrapper-example-search',
   template: `
-    <p-text-field-wrapper actionIcon="locate" [actionLoading]="isLoading" (action)="onAction()">
+    <p-text-field-wrapper
+      label="Search location"
+      hideLabel="true"
+      actionIcon="locate"
+      [actionLoading]="isLoading"
+      (action)="onAction()"
+    >
       <input type="search" [value]="value" [placeholder]="isLoading ? 'Locating...' : ''" (input)="onInput($event)" />
     </p-text-field-wrapper>
     <p-text>Value: {{ value }}</p-text>
