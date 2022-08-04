@@ -1,8 +1,7 @@
 import sdk from '@stackblitz/sdk';
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
 import { dependencies } from '../../../package.json';
-import type { StackBlitzFrameworkOpts } from '@/utils/stackblitz/openInStackBlitz';
-import type { DependenciesMap } from '@/utils/stackblitz/helper';
+import type { DependenciesMap, StackBlitzFrameworkOpts } from '@/utils/stackblitz/helper';
 import {
   headBasic,
   dataBasic,

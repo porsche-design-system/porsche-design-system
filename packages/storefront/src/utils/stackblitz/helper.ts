@@ -6,6 +6,9 @@ import {
   dataAdvanced,
   headAdvanced,
 } from '@porsche-design-system/shared';
+import { ColorScheme, Theme } from '@/models';
+import { themeDark, themeLight } from '@porsche-design-system/utilities-v2';
+import { OpenInStackBlitzOpts } from '@/utils/stackblitz/openInStackBlitz';
 
 const sharedImport = {
   headBasic,
@@ -14,6 +17,13 @@ const sharedImport = {
   dataSorting,
   dataAdvanced,
   headAdvanced,
+};
+
+export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | 'theme' | 'colorScheme'> & {
+  title: string;
+  description: string;
+  bodyStyles: string;
+  pdsComponents: string[];
 };
 
 // TODO: unit test
@@ -47,3 +57,27 @@ export const getAdditionalDependencies = (
 
 // TODO: unit test
 export const isTable = (components: string[]): boolean => components[0].includes('table');
+
+// TODO: unit test
+export const getPdsComponents = (markup: string): string[] =>
+  Array.from(markup.matchAll(/<([P|p-][\w-]*)/g) ?? [])
+    .map(([, x]) => x)
+    .filter((tagName, idx, arr) => arr.findIndex((t) => t === tagName) === idx);
+
+export const getBackgroundColor = (theme: Theme, colorScheme: ColorScheme): string => {
+  const backgroundBase = themeLight.background.base;
+  const backgroundSurface = themeLight.background.surface;
+  const darkBackgroundBase = themeDark.background.base;
+  const darkBackgroundSurface = themeDark.background.surface;
+  const isThemeDark = theme === 'dark';
+
+  let backgroundColor;
+
+  if (colorScheme === 'surface') {
+    backgroundColor = isThemeDark ? darkBackgroundSurface : backgroundSurface;
+  } else {
+    backgroundColor = isThemeDark ? darkBackgroundBase : backgroundBase;
+  }
+
+  return backgroundColor;
+};

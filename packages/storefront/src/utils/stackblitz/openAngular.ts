@@ -2,8 +2,7 @@ import sdk from '@stackblitz/sdk';
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
 import { dependencies } from '../../../../components-angular/package.json';
 import { paramCase } from 'change-case';
-import type { StackBlitzFrameworkOpts } from '@/utils/stackblitz/openInStackBlitz';
-import type { DependenciesMap } from '@/utils/stackblitz/helper';
+import type { DependenciesMap, StackBlitzFrameworkOpts } from '@/utils/stackblitz/helper';
 import { getAdditionalDependencies, isTable, replaceSharedTableImports } from '@/utils/stackblitz/helper';
 
 export const openAngular = (props: StackBlitzFrameworkOpts): void => {
@@ -58,9 +57,7 @@ ${usesIMask ? `import { IMaskModule } from 'angular-imask';` : ''}
 import { ${className} } from './app.component';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule,${
-    usesIMask ? 'IMaskModule,' : ''
-  } PorscheDesignSystemModule.load({ prefix: '' }),],
+  imports: [BrowserModule, FormsModule,${usesIMask ? 'IMaskModule,' : ''} PorscheDesignSystemModule,],
   declarations: [${className}],
   bootstrap: [${className}],
 })
