@@ -21,7 +21,7 @@ export const getAppDefaultMarkup = (markup: string, pdsComponents: string[]): st
   const reactComponentsToImport = pdsComponents.map((x) => pascalCase(x)).join(', ');
   const convertedMarkup = convertMarkup(markup, 'react')
     .replace(/(<\/?)(>)/g, '$1React.Fragment$2')
-    .replace(/(\n)(\s*[<A-z\/]+)/g, '$1      $2'); // Align markup
+    .replace(/(\n)(\s*[<A-z/]+)/g, '$1      $2'); // Align markup
 
   return `import * as React from 'react';
 import { ${reactComponentsToImport} } from '@porsche-design-system/components-react'

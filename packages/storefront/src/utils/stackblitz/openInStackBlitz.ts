@@ -1,9 +1,9 @@
 import sdk from '@stackblitz/sdk';
-import { convertMarkup } from '@/utils/formatting';
 import { getVanillaJsProjectAndOpenOptions } from '@/utils/stackblitz/vanillaJsBoilerplate';
 import { getReactProjectAndOpenOptions } from '@/utils/stackblitz/reactBoilerplate';
 import { getAngularProjectAndOpenOptions } from '@/utils/stackblitz/angularBoilerplate';
 import { getBackgroundColor, getPdsComponents } from '@/utils/stackblitz/helper';
+import type { Project, OpenOptions } from '@stackblitz/sdk';
 import type { StackBlitzFrameworkOpts, FrameworksWithoutShared } from '@/utils/stackblitz/helper';
 import type { Theme, ColorScheme } from '@/models';
 
@@ -32,13 +32,17 @@ export const openInStackBlitz = (props: OpenInStackBlitzOpts): void => {
     additionalDependencies,
   };
 
-  const projectAndOpenOptions = {
-    'vanilla-js': getVanillaJsProjectAndOpenOptions(openProps),
-    angular: getAngularProjectAndOpenOptions(openProps),
-    react: getReactProjectAndOpenOptions(openProps),
+  const getProjectAndOpenOptionsCallbackMap = {
+    'vanilla-js': () => getVanillaJsProjectAndOpenOptions(openProps),
+    angular: () => getAngularProjectAndOpenOptions(openProps),
+    react: () => getReactProjectAndOpenOptions(openProps),
   };
 
-  const { project, openOptions } = projectAndOpenOptions[framework];
+  const { project, openOptions } = getProjectAndOpenOptions(getProjectAndOpenOptionsCallbackMap[framework]);
 
   sdk.openProject(project, openOptions);
 };
+
+const getProjectAndOpenOptions = (
+  getProjectAndOpenOptionsCallback: () => { project: Project; openOptions: OpenOptions }
+) => ({ ...getProjectAndOpenOptionsCallback() });
