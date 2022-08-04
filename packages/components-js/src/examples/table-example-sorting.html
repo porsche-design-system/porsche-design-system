@@ -55,7 +55,7 @@
       const { id, direction } = e.detail;
 
       const sortedHead = headSorting.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) }));
-      const sortedData = [...data].sort((a, b) =>
+      const sortedData = [...dataSorting].sort((a, b) =>
         direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])
       );
 
