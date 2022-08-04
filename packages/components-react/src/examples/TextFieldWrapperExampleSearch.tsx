@@ -28,7 +28,13 @@ export const TextFieldWrapperExampleSearchPage = (): JSX.Element => {
 
   return (
     <>
-      <PTextFieldWrapper actionIcon="locate" actionLoading={isLoading} onAction={onAction}>
+      <PTextFieldWrapper
+        label="Search location"
+        hideLabel
+        actionIcon="locate"
+        actionLoading={isLoading}
+        onAction={onAction}
+      >
         <input type="search" value={value} placeholder={isLoading ? 'Locating...' : ''} onInput={onInput} />
       </PTextFieldWrapper>
       <PText children={'Value: ' + value} />
