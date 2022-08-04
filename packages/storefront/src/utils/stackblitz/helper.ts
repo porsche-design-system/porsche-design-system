@@ -6,7 +6,7 @@ import {
   dataAdvanced,
   headAdvanced,
 } from '@porsche-design-system/shared';
-import { ColorScheme, Theme } from '@/models';
+import { ColorScheme, Framework, Theme } from '@/models';
 import { themeDark, themeLight } from '@porsche-design-system/utilities-v2';
 import { OpenInStackBlitzOpts } from '@/utils/stackblitz/openInStackBlitz';
 
@@ -18,6 +18,8 @@ const sharedImport = {
   dataAdvanced,
   headAdvanced,
 };
+
+export type FrameworksWithoutShared = Exclude<Framework, 'shared'>;
 
 export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | 'theme' | 'colorScheme'> & {
   title: string;

@@ -1,11 +1,13 @@
-import sdk from '@stackblitz/sdk';
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
 import { dependencies } from '../../../../components-angular/package.json';
 import { paramCase } from 'change-case';
-import type { DependenciesMap, StackBlitzFrameworkOpts } from '@/utils/stackblitz/helper';
 import { getAdditionalDependencies, isTable, replaceSharedTableImports } from '@/utils/stackblitz/helper';
+import type { DependenciesMap, StackBlitzFrameworkOpts } from '@/utils/stackblitz/helper';
+import type { Project, OpenOptions } from '@stackblitz/sdk';
 
-export const openAngular = (props: StackBlitzFrameworkOpts): void => {
+export const getAngularProjectAndOpenOptions = (
+  props: StackBlitzFrameworkOpts
+): { project: Project; openOptions: OpenOptions } => {
   const { markup, description, title, hasFrameworkMarkup, bodyStyles, pdsComponents, additionalDependencies } = props;
 
   const dependenciesMap: DependenciesMap = {
@@ -35,7 +37,7 @@ export const openAngular = (props: StackBlitzFrameworkOpts): void => {
 })
 export class AppComponent  {}`;
 
-  sdk.openProject({
+  const project: Project = {
     files: {
       // root folder
       'index.html': `${selector}
@@ -70,5 +72,9 @@ export class AppModule {}`,
       '@porsche-design-system/components-angular': `${pdsVersion}`,
       ...(additionalDependencies && getAdditionalDependencies(additionalDependencies, dependenciesMap)),
     },
-  });
+  };
+
+  const openOptions: OpenOptions = {};
+
+  return { project, openOptions };
 };

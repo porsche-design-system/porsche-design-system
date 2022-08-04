@@ -1,7 +1,7 @@
-import sdk from '@stackblitz/sdk';
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
 import { dependencies } from '../../../package.json';
 import type { DependenciesMap, StackBlitzFrameworkOpts } from '@/utils/stackblitz/helper';
+import type { Project, OpenOptions } from '@stackblitz/sdk';
 import {
   headBasic,
   dataBasic,
@@ -38,7 +38,9 @@ const getHeadAndData = () => {
   );
 };
 
-export const openVanillaJS = (props: StackBlitzFrameworkOpts): void => {
+export const getVanillaJsProjectAndOpenOptions = (
+  props: StackBlitzFrameworkOpts
+): { project: Project; openOptions: OpenOptions } => {
   const { markup, description, title, bodyStyles, additionalDependencies } = props;
   const [, sharedTableData] = markup.match(/const { ((?:[A-z]+,* )+)} = await getHeadAndData\(\);/) ?? [];
 
@@ -48,11 +50,10 @@ export const openVanillaJS = (props: StackBlitzFrameworkOpts): void => {
     },
   };
 
-  sdk.openProject(
-    {
-      files: {
-        'index.html': `${sharedTableData ? extendMarkupWithSharedTableData(markup, sharedTableData) : markup}`,
-        'index.js': `import './style.css'
+  const project: Project = {
+    files: {
+      'index.html': `${sharedTableData ? extendMarkupWithSharedTableData(markup, sharedTableData) : markup}`,
+      'index.js': `import './style.css'
 import * as porscheDesignSystem from '@porsche-design-system/components-js'
 ${
   additionalDependencies && additionalDependencies.filter((x) => x === 'IMask')
@@ -63,18 +64,19 @@ IMask`
 
 porscheDesignSystem.load();
 `,
-        'style.css': bodyStyles,
-      },
-      template: 'javascript',
-      title,
-      description,
-      dependencies: {
-        '@porsche-design-system/components-js': `${pdsVersion}`,
-        ...(additionalDependencies && getAdditionalDependencies(additionalDependencies, dependenciesMap)),
-      },
+      'style.css': bodyStyles,
     },
-    {
-      openFile: 'index.html',
-    }
-  );
+    template: 'javascript',
+    title,
+    description,
+    dependencies: {
+      '@porsche-design-system/components-js': `${pdsVersion}`,
+      ...(additionalDependencies && getAdditionalDependencies(additionalDependencies, dependenciesMap)),
+    },
+  };
+
+  const openOptions: OpenOptions = {
+    openFile: 'index.html',
+  };
+  return { project, openOptions };
 };
