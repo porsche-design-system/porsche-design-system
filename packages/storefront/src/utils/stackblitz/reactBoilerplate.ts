@@ -62,7 +62,7 @@ root.render(
   </StrictMode>
 );`;
 
-export const getDependencies = (additionalDependencies?: string[]): ProjectDependencies => {
+export const getReactDependencies = (additionalDependencies?: string[]): ProjectDependencies => {
   const dependenciesMap: DependenciesMap = {
     IMask: {
       'react-imask': `${dependencies['react-imask']}`,
@@ -79,7 +79,6 @@ export const getDependencies = (additionalDependencies?: string[]): ProjectDepen
   };
 };
 
-// TODO: unit test
 export const getReactProjectAndOpenOptions = (
   props: StackBlitzFrameworkOpts
 ): { project: Project; openOptions: OpenOptions } => {
@@ -95,7 +94,7 @@ export const getReactProjectAndOpenOptions = (
     template: 'create-react-app',
     title,
     description,
-    dependencies: getDependencies(additionalDependencies),
+    dependencies: getReactDependencies(additionalDependencies),
   };
 
   const openOptions: OpenOptions = {

@@ -13,27 +13,6 @@ export const App = (): JSX.Fragment => {
 }"
 `;
 
-exports[`getDependencies() should return correct dependencies object with additionalDependency "IMask" 1`] = `
-Object {
-  "@porsche-design-system/components-react": "2.14.0-beta.0",
-  "@types/react": "^18.0.15",
-  "@types/react-dom": "^18.0.6",
-  "react": "^18.2.0",
-  "react-dom": "^18.2.0",
-  "react-imask": "^6.4.2",
-}
-`;
-
-exports[`getDependencies() should return correct dependencies object without additionalDependencies 1`] = `
-Object {
-  "@porsche-design-system/components-react": "2.14.0-beta.0",
-  "@types/react": "^18.0.15",
-  "@types/react-dom": "^18.0.6",
-  "react": "^18.2.0",
-  "react-dom": "^18.2.0",
-}
-`;
-
 exports[`getIndexTsMarkup() should return correct markup 1`] = `
 "import * as React from 'react';
 import { StrictMode } from \\"react\\";
@@ -52,4 +31,25 @@ root.render(
     </PorscheDesignSystemProvider>
   </StrictMode>
 );"
+`;
+
+exports[`getReactDependencies() should return correct dependencies object with additionalDependency "IMask" 1`] = `
+Object {
+  "@porsche-design-system/components-react": "2.14.0-beta.0",
+  "@types/react": "^18.0.15",
+  "@types/react-dom": "^18.0.6",
+  "react": "^18.2.0",
+  "react-dom": "^18.2.0",
+  "react-imask": "^6.4.2",
+}
+`;
+
+exports[`getReactDependencies() should return correct dependencies object without additionalDependencies 1`] = `
+Object {
+  "@porsche-design-system/components-react": "2.14.0-beta.0",
+  "@types/react": "^18.0.15",
+  "@types/react-dom": "^18.0.6",
+  "react": "^18.2.0",
+  "react-dom": "^18.2.0",
+}
 `;
