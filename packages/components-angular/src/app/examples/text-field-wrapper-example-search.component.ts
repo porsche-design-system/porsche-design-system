@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/
   template: `
     <p-text-field-wrapper
       label="Search location"
-      hideLabel="true"
+      hideLabel="'true'"
       actionIcon="locate"
       [actionLoading]="isLoading"
       (action)="onAction()"
