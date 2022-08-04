@@ -160,7 +160,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     // build inline style prop
     cleanedComponent = cleanedComponent.replace(
       /(\.\.\.rest,\n)/,
-      `$1      style: { ...getPaddingStyles({ ${spacings} }) },\n`
+      `$1      style: getPaddingStyles({ ${spacings} }),\n`
     );
 
     // add default children for components that need it
@@ -197,7 +197,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         cleanedComponent = cleanedComponent
           .replace(/(size =) 'small'/, '$1 16') // change destructured size
           .replace(', size,', ", 'inherit',") // always set inherit in propsToSync
-          .replace(/(style: {)/, '$1 fontSize: size,'); // patch inline style
+          .replace(/(style: )(getPaddingStyles.+),/, '$1{ ...$2, fontSize: size },'); // patch inline style
       } else if (component === 'p-link' || component === 'p-link-social') {
         // set default href
         cleanedComponent = cleanedComponent.replace(/(href),(.*?PropsWithChildren)/, "$1 = '#',$2");
@@ -238,7 +238,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
     $1`
         )
-        .replace(/(style: {)/, '$1 minWidth: 100, minHeight: 50,'); // patch inline style
+        .replace(/(style: )(getPaddingStyles.+),/, '$1{ ...$2, minWidth: 100, minHeight: 50 },'); // patch inline style
     }
 
     const removeDestructuredProp = (component: string, prop: string): string => {
