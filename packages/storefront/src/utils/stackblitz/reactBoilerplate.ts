@@ -1,4 +1,3 @@
-import sdk from '@stackblitz/sdk';
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
 import { devDependencies, dependencies } from '../../../../components-react/package.json';
 import {
@@ -100,9 +99,4 @@ root.render(
   };
 
   return { project, openOptions };
-};
-
-export const openReact = (props: StackBlitzFrameworkOpts) => {
-  const { project, openOptions } = getReactProjectAndOpenOptions(props);
-  sdk.openProject(project, openOptions);
 };

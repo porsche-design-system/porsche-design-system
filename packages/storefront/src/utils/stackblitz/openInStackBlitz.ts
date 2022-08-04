@@ -1,12 +1,11 @@
+import sdk from '@stackblitz/sdk';
 import { convertMarkup } from '@/utils/formatting';
-import { openVanillaJS } from '@/utils/stackblitz/openVanillaJs';
-import { openReact } from '@/utils/stackblitz/openReact';
-import { openAngular } from '@/utils/stackblitz/openAngular';
+import { getVanillaJsProjectAndOpenOptions } from '@/utils/stackblitz/vanillaJsBoilerplate';
+import { getReactProjectAndOpenOptions } from '@/utils/stackblitz/reactBoilerplate';
+import { getAngularProjectAndOpenOptions } from '@/utils/stackblitz/angularBoilerplate';
 import { getBackgroundColor, getPdsComponents } from '@/utils/stackblitz/helper';
-import type { StackBlitzFrameworkOpts } from '@/utils/stackblitz/helper';
-import type { Framework, Theme, ColorScheme } from '@/models';
-
-type FrameworksWithoutShared = Exclude<Framework, 'shared'>;
+import type { StackBlitzFrameworkOpts, FrameworksWithoutShared } from '@/utils/stackblitz/helper';
+import type { Theme, ColorScheme } from '@/models';
 
 export type OpenInStackBlitzOpts = {
   markup: string;
@@ -27,7 +26,6 @@ export const getStackBlitzMarkup = (
 export const openInStackBlitz = (props: OpenInStackBlitzOpts): void => {
   const { markup, framework, theme, hasFrameworkMarkup, additionalDependencies, colorScheme } = props;
 
-  // Extract to helper and unit test?
   const pdsComponents = getPdsComponents(markup);
 
   const openProps: StackBlitzFrameworkOpts = {
@@ -40,12 +38,13 @@ export const openInStackBlitz = (props: OpenInStackBlitzOpts): void => {
     additionalDependencies,
   };
 
-  switch (framework) {
-    case 'angular':
-      return openAngular(openProps);
-    case 'react':
-      return openReact(openProps);
-    default:
-      return openVanillaJS(openProps);
-  }
+  const projectAndOpenOptions = {
+    'vanilla-js': getVanillaJsProjectAndOpenOptions(openProps),
+    angular: getAngularProjectAndOpenOptions(openProps),
+    react: getReactProjectAndOpenOptions(openProps),
+  };
+
+  const { project, openOptions } = projectAndOpenOptions[framework];
+
+  sdk.openProject(project, openOptions);
 };
