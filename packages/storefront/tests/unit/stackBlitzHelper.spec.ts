@@ -46,6 +46,9 @@ describe('isTable()', () => {
   it('should be true if first string contains table', () => {
     expect(isTable(['p-table', 'p-text'])).toBe(true);
   });
+  it('should be true if first string contains table', () => {
+    expect(isTable(['PTable', 'PText'])).toBe(true);
+  });
   it('should be false if first string does not contain table', () => {
     expect(isTable(['p-accordion', 'p-text'])).toBe(false);
   });

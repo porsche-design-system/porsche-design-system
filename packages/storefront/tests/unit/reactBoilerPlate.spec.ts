@@ -7,17 +7,11 @@ import {
   getIndexTsMarkup,
   getReactProjectAndOpenOptions,
 } from '../../src/utils/stackblitz/reactBoilerplate';
+import type { StackBlitzFrameworkOpts } from '../../src/utils/stackblitz/helper';
 
 import * as reactBoilerplateUtils from '../../src/utils/stackblitz/reactBoilerplate';
 import * as stackBlitzHelperUtils from '../../src/utils/stackblitz/helper';
 import * as formattingUtils from '../../src/utils/formatting';
-import { StackBlitzFrameworkOpts } from '../../src/utils/stackblitz/helper';
-
-const sharedProps = {
-  description: 'Some description',
-  title: 'Some title',
-  bodyStyles: 'body {}',
-};
 
 describe('getCleanedReactMarkup()', () => {
   it('should replace function name with "App"', () => {
