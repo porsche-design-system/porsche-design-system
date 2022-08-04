@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'inline-notification-example-action-button',
+  selector: 'page-inline-notification-example-action-button',
   template: `
     <p-inline-notification
       [heading]="'Some heading'"
@@ -15,7 +15,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InlineNotificationExampleActionButton {
+export class InlineNotificationExampleActionButtonComponent {
   isLoading = false;
 
   onAction() {

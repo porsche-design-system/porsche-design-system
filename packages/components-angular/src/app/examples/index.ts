@@ -1,27 +1,27 @@
-import { AccordionExample } from './accordion-example.component';
-import { InlineNotificationExampleActionButton } from './inline-notification-example-action-button.component';
-import { InlineNotificationExampleEvents } from './inline-notification-example-events.component';
-import { SegmentedControlExample } from './segmented-control-example.component';
-import { StepperHorizontalExample } from './stepper-horizontal-example.component';
-import { TableExampleAdvanced } from './table-example-advanced.component';
-import { TableExampleBasic } from './table-example-basic.component';
-import { TableExampleSorting } from './table-example-sorting.component';
-import { TabsBarExample } from './tabs-bar-example.component';
-import { TextFieldWrapperExample } from './text-field-wrapper-example.component';
-import { ToastExample } from './toast-example.component';
+import { AccordionExampleComponent } from './accordion-example.component';
+import { InlineNotificationExampleActionButtonComponent } from './inline-notification-example-action-button.component';
+import { InlineNotificationExampleEventsComponent } from './inline-notification-example-events.component';
+import { SegmentedControlExampleComponent } from './segmented-control-example.component';
+import { StepperHorizontalExampleComponent } from './stepper-horizontal-example.component';
+import { TableExampleAdvancedComponent } from './table-example-advanced.component';
+import { TableExampleBasicComponent } from './table-example-basic.component';
+import { TableExampleSortingComponent } from './table-example-sorting.component';
+import { TabsBarExampleComponent } from './tabs-bar-example.component';
+import { TextFieldWrapperExampleComponent } from './text-field-wrapper-example.component';
+import { ToastExampleComponent } from './toast-example.component';
 
 export const examples = [
-  AccordionExample,
-  InlineNotificationExampleActionButton,
-  InlineNotificationExampleEvents,
-  SegmentedControlExample,
-  StepperHorizontalExample,
-  TableExampleAdvanced,
-  TableExampleBasic,
-  TableExampleSorting,
-  TabsBarExample,
-  TextFieldWrapperExample,
-  ToastExample,
+  AccordionExampleComponent,
+  InlineNotificationExampleActionButtonComponent,
+  InlineNotificationExampleEventsComponent,
+  SegmentedControlExampleComponent,
+  StepperHorizontalExampleComponent,
+  TableExampleAdvancedComponent,
+  TableExampleBasicComponent,
+  TableExampleSortingComponent,
+  TabsBarExampleComponent,
+  TextFieldWrapperExampleComponent,
+  ToastExampleComponent,
 ];
 
 export * from './accordion-example.component';

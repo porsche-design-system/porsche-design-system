@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import type { StepChangeEvent, StepperState } from '@porsche-design-system/components-angular';
 
 @Component({
-  selector: 'stepper-horizontal-example',
+  selector: 'page-stepper-horizontal-example',
   template: `
     <p-stepper-horizontal (stepChange)="onStepChange($event)">
       <ng-container *ngFor="let step of steps">
@@ -36,7 +36,7 @@ import type { StepChangeEvent, StepperState } from '@porsche-design-system/compo
     </p-button-group>
   `,
 })
-export class StepperHorizontalExample {
+export class StepperHorizontalExampleComponent {
   steps: StepperHorizontalItemProps[] = [
     {
       state: 'current',

@@ -3,7 +3,7 @@ import { dataSorting, DataSorting, headSorting } from '@porsche-design-system/sh
 import type { SortingChangeEvent } from '@porsche-design-system/components-angular';
 
 @Component({
-  selector: 'table-example-sorting',
+  selector: 'page-table-example-sorting',
   template: `
     <p-table caption="Some caption" (sortingChange)="onSortingChange($event)">
       <p-table-head>
@@ -24,7 +24,7 @@ import type { SortingChangeEvent } from '@porsche-design-system/components-angul
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableExampleSorting {
+export class TableExampleSortingComponent {
   public head = headSorting;
   public data = dataSorting;
 

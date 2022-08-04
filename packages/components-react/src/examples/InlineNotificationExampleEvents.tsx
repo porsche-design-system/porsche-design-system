@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { PInlineNotification } from '@porsche-design-system/components-react';
 
-export const InlineNotificationExampleEvents = (): JSX.Element => {
+export const InlineNotificationExampleEventsPage = (): JSX.Element => {
   const [isActive, setIsActive] = useState<boolean>(false);
   const onShow = useCallback(() => setIsActive(true), []);
   const onDismiss = useCallback(() => setIsActive(false), []);

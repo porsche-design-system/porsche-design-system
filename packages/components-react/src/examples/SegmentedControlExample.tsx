@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import type { SegmentedControlChangeEvent } from '@porsche-design-system/components-react';
 import { PSegmentedControl, PSegmentedControlItem, PText } from '@porsche-design-system/components-react';
 
-export const SegmentedControlExample = (): JSX.Element => {
+export const SegmentedControlExamplePage = (): JSX.Element => {
   const [currentValue, setCurrentValue] = useState(1);
 
   const onSegmentedControlChange = useCallback((e: CustomEvent<SegmentedControlChangeEvent>) => {

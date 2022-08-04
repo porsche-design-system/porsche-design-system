@@ -9,7 +9,7 @@ import {
 } from '@porsche-design-system/components-react';
 import { headBasic, dataBasic } from '@porsche-design-system/shared';
 
-export const TableExampleBasic = (): JSX.Element => {
+export const TableExampleBasicPage = (): JSX.Element => {
   return (
     <PTable caption="Some caption">
       <PTableHead>

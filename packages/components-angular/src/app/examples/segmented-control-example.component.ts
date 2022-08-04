@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import type { SegmentedControlChangeEvent } from '@porsche-design-system/components-angular';
 
 @Component({
-  selector: 'segmented-control-example',
+  selector: 'page-segmented-control-example',
   template: `
     <p-segmented-control [value]="currentValue" (segmentedControlChange)="onSegmentedControlChange($event)">
       <p-segmented-control-item [value]="1">Option 1</p-segmented-control-item>
@@ -16,7 +16,7 @@ import type { SegmentedControlChangeEvent } from '@porsche-design-system/compone
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SegmentedControlExample {
+export class SegmentedControlExampleComponent {
   currentValue = 1;
 
   onSegmentedControlChange(e: CustomEvent<SegmentedControlChangeEvent>) {
