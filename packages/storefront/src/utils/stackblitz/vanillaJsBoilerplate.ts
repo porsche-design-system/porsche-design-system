@@ -22,11 +22,14 @@ const sharedImport = {
   headAdvanced,
 };
 
-export const getIndexHtmlMarkup = (markup: string, isTable: boolean): string => {
-  return isTable ? extendMarkupWithSharedTableData(markup) : convertMarkup(markup, 'vanilla-js');
+export const getFrameworkMarkup = (markup: string, isTable: boolean) =>
+  isTable ? extendMarkupWithSharedTableData(markup) : markup;
+
+export const getIndexHtmlMarkup = (markup: string, hasFrameworkMarkup: boolean, isTable: boolean): string => {
+  return hasFrameworkMarkup ? getFrameworkMarkup(markup, isTable) : convertMarkup(markup, 'vanilla-js');
 };
 
-export const getIndexJsMarkup = (markup: string, additionalDependencies?: string[]): string => `import './style.css'
+export const getIndexJsMarkup = (additionalDependencies?: string[]): string => `import './style.css'
 import * as porscheDesignSystem from '@porsche-design-system/components-js'
 ${
   additionalDependencies && additionalDependencies.filter((x) => x === 'IMask')
@@ -72,12 +75,12 @@ export const getVanillaJsDependencies = (additionalDependencies?: string[]): Pro
 export const getVanillaJsProjectAndOpenOptions = (
   props: StackBlitzFrameworkOpts
 ): { project: Project; openOptions: OpenOptions } => {
-  const { markup, description, title, bodyStyles, pdsComponents, additionalDependencies } = props;
+  const { markup, description, title, bodyStyles, hasFrameworkMarkup, pdsComponents, additionalDependencies } = props;
 
   const project: Project = {
     files: {
-      'index.html': getIndexHtmlMarkup(markup, isTable(pdsComponents)),
-      'index.js': getIndexJsMarkup(markup, additionalDependencies),
+      'index.html': getIndexHtmlMarkup(markup, hasFrameworkMarkup, isTable(pdsComponents)),
+      'index.js': getIndexJsMarkup(additionalDependencies),
       'style.css': bodyStyles,
     },
     template: 'javascript',

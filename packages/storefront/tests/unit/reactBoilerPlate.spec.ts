@@ -148,7 +148,7 @@ describe('getReactProjectAndOpenOptions()', () => {
     const { markup, hasFrameworkMarkup, pdsComponents } = stackBlitzFrameworkOpts;
 
     const getAppTsxMarkupSpy = jest.spyOn(reactBoilerplateUtils, 'getAppTsxMarkup');
-    const isTableSpy = jest.spyOn(stackBlitzHelperUtils, 'isTable');
+    const isTableSpy = jest.spyOn(stackBlitzHelperUtils, 'isTable').mockImplementationOnce(() => false);
     const getIndexTsMarkupSpy = jest.spyOn(reactBoilerplateUtils, 'getIndexTsMarkup');
     const getDependenciesSpy = jest.spyOn(reactBoilerplateUtils, 'getReactDependencies');
 
