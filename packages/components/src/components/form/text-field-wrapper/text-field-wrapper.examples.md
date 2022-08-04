@@ -82,7 +82,7 @@ better accessibility it's recommended to **not** reset these browser default UI 
 
 ## type="number"
 
-Inputs with type number can display a unit (e.g. €, EUR, km/h, etc.) with a **maximum** of five characters. A
+Inputs with `type="number"` can display a unit (e.g. €, EUR, km/h, etc.) with a **maximum** of five characters. A
 description of the used unit should be provided to ensure accessibility.
 
 <Playground :markup="typeNumber" :config="config">
@@ -95,15 +95,38 @@ description of the used unit should be provided to ensure accessibility.
 
 ## type="password"
 
+Inputs with `type="password"` receive a toggle button to display the input's value in clear text.
+
 <Playground :markup="typePassword" :config="config"></Playground>
 
 ## type="search"
 
+Inputs with `type="search"` receive a decorative search icon when used outside a form.  
+Within a form, a submit button becomes visible. If the input contains a value, a clear button shows up.
+
 <Playground :markup="typeSearch" :config="config"></Playground>
 
-## type="search" within form
+## type="search" with locate action
 
-<Playground :markup="typeSearchWithinForm" :config="config"></Playground>
+Inputs with `type="search"` that also have the `actionIcon="locate"` property always show an action button, no matter if
+used within or outside a form.
+
+<Playground :markup="typeSearchWithLocateAction" :config="config"></Playground>
+
+## type="search" with locate action and loading
+
+On top of `actionIcon="locate"` it is possible to put the component into a loading state via `actionLoading="true"`.
+
+<Playground :markup="typeSearchWithLocateActionAndLoading" :config="config"></Playground>
+
+### Demo implementation
+
+<Playground :frameworkMarkup="searchExample" :config="config">
+  <p-text-field-wrapper label="Some label" hide-label="true" action-icon="locate" :action-loading="demoIsLoading" v-on:action="onDemoAction">
+    <input type="search" :value="demoValue" :placeholder="demoIsLoading ? 'Locating...' : ''" v-on:input="onDemoInput" />
+  </p-text-field-wrapper>
+  <p-text>Value: {{ demoValue }}</p-text>
+</Playground>
 
 ## Validation states
 
@@ -153,7 +176,7 @@ user frustration.
   Keep in mind that the definition of the "locale" in the examples below is a very simple use case. You will probably have to distinguish between more than two scenarios.
 </p-inline-notification>
 
-<Playground :markup="maskedInput" :frameworkMarkup="codeExample" :config="config"></Playground>
+<Playground :markup="maskedInput" :frameworkMarkup="imaskExample" :config="config"></Playground>
 
 <script lang="ts">
 import Vue from 'vue';
@@ -170,7 +193,8 @@ export default class Code extends Vue {
   state = 'error';
   unitPosition = 'prefix';
 
-codeExample = getTextFieldWrapperCodeSamples();
+  imaskExample = getTextFieldWrapperCodeSamples('example-imask');
+  searchExample = getTextFieldWrapperCodeSamples('example-search');
 
   get basic() {
     const labelAttr = ` hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
@@ -230,14 +254,53 @@ codeExample = getTextFieldWrapperCodeSamples();
   typeSearch =
 `<p-text-field-wrapper label="Some label">
   <input type="search" name="some-name" />
-</p-text-field-wrapper>`;
+</p-text-field-wrapper>
 
-  typeSearchWithinForm =
-`<form action="#" onsubmit="alert('submit'); return false;">
+<form action="#" onsubmit="alert('submit'); return false;">
   <p-text-field-wrapper label="Some label">
     <input type="search" name="some-name" />
   </p-text-field-wrapper>
 </form>`;
+
+  typeSearchWithLocateAction = 
+`<p-text-field-wrapper label="Some label" action-icon="locate">
+  <input type="search" name="some-name" />
+</p-text-field-wrapper>
+
+<form action="#" onsubmit="alert('submit'); return false;">
+  <p-text-field-wrapper label="Some label" action-icon="locate">
+    <input type="search" name="some-name" />
+  </p-text-field-wrapper>
+</form>`;
+
+  typeSearchWithLocateActionAndLoading = 
+`<p-text-field-wrapper label="Some label" action-icon="locate" action-loading="true">
+  <input type="search" name="some-name" />
+</p-text-field-wrapper>
+
+<form action="#" onsubmit="alert('submit'); return false;">
+  <p-text-field-wrapper label="Some label" action-icon="locate" action-loading="true">
+    <input type="search" name="some-name" />
+  </p-text-field-wrapper>
+</form>`;
+
+  demoValue = '';
+  demoIsLoading = false;
+  onDemoAction() {
+    this.demoIsLoading = true;
+
+    // simulate async request
+    setTimeout(() => {
+      this.demoValue = 'Stuttgart, Baden-Württemberg';
+      this.demoIsLoading = false;
+    }, 3000);
+  }
+  onDemoInput(e: InputEvent) {
+    this.demoValue = e.target.value;
+    if (this.demoIsLoading) {
+      this.demoIsLoading = false;
+    }
+  }
 
   get validationStates() {
     const attr = `message="${this.state !== 'none' ? `Some ${this.state} validation message.` : ''}"`;
