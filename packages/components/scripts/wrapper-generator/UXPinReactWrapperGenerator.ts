@@ -87,6 +87,16 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     } else if (component === 'p-toast') {
       props = addProp(props, 'text: string;');
       props = addProp(props, 'state: ToastState;');
+    } else if (component === 'p-text-field-wrapper') {
+      // TODO: useful for combined component without nested DummyInputs
+      // const typeLiteral = getComponentMeta(component)
+      //   .requiredChildSelector!.split(',')
+      //   .map((x) => `'${x.slice(x.indexOf('=') + 1, -1)}'`)
+      //   .join(' | ');
+      // props = addProp(props, `type?: ${typeLiteral};`);
+
+      props = addProp(props, 'isWithinForm?: boolean;');
+      props = addProp(props, 'onFormSubmit?: () => void;');
     }
 
     // add onClick prop for marque, buttons and links, but not button-group
@@ -150,7 +160,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     // build inline style prop
     cleanedComponent = cleanedComponent.replace(
       /(\.\.\.rest,\n)/,
-      `$1      style: { ...getPaddingStyles({ ${spacings} }) },\n`
+      `$1      style: getPaddingStyles({ ${spacings} }),\n`
     );
 
     // add default children for components that need it
@@ -187,13 +197,32 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         cleanedComponent = cleanedComponent
           .replace(/(size =) 'small'/, '$1 16') // change destructured size
           .replace(', size,', ", 'inherit',") // always set inherit in propsToSync
-          .replace(/(style: {)/, '$1 fontSize: size,'); // patch inline style
+          .replace(/(style: )(getPaddingStyles.+),/, '$1{ ...$2, fontSize: size },'); // patch inline style
       } else if (component === 'p-link' || component === 'p-link-social') {
         // set default href
         cleanedComponent = cleanedComponent.replace(/(href),(.*?PropsWithChildren)/, "$1 = '#',$2");
       } else if (component === 'p-segmented-control-item') {
         // set default value, otherwise validation will throw an error
         cleanedComponent = cleanedComponent.replace(/(, value),/, "$1 = 'value',");
+      } else if (component === 'p-text-field-wrapper') {
+        cleanedComponent = cleanedComponent
+          .replace(/(\.\.\.rest)/, 'isWithinForm, onFormSubmit, $1') // destructure custom props
+          .replace(
+            // patch jsx to wrap component in form
+            /(<Tag {...props} \/>)/,
+            `isWithinForm ? (
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          onFormSubmit && onFormSubmit();
+        }}
+      >
+        $1
+      </form>
+    ) : (
+      $1
+    )`
+          );
       }
     } else if (component === 'p-toast') {
       cleanedComponent = cleanedComponent
@@ -209,7 +238,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
     $1`
         )
-        .replace(/(style: {)/, '$1 minWidth: 100, minHeight: 50,'); // patch inline style
+        .replace(/(style: )(getPaddingStyles.+),/, '$1{ ...$2, minWidth: 100, minHeight: 50 },'); // patch inline style
     }
 
     const removeDestructuredProp = (component: string, prop: string): string => {

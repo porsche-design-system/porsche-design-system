@@ -2,6 +2,7 @@ import type { FormState } from '../form-state';
 import { pxToRemWithUnit } from '../../../styles';
 import { getClosestHTMLElement } from '../../../utils';
 import { hasCounter } from '../form-utils';
+import type { IconName } from '../../../types';
 
 export const UNIT_POSITIONS = ['prefix', 'suffix'] as const;
 export type TextFieldWrapperUnitPosition = typeof UNIT_POSITIONS[number];
@@ -13,6 +14,7 @@ export const hasUnitAndIsTypeTextOrNumber = ({ type }: HTMLInputElement, unit: s
 
 export const isType = (inputType: string, typeToValidate: string): boolean => inputType === typeToValidate;
 export const isWithinForm = (host: HTMLElement): boolean => !!getClosestHTMLElement(host, 'form');
+export const hasLocateAction = (icon: IconName): boolean => icon === 'locate';
 
 export const getInputPadding = (
   unitElementWidth: number,
@@ -42,7 +44,7 @@ export const setInputStyles = (
 
 export const throwIfUnitLengthExceeded = (unit: string): void => {
   if (unit.length > 5) {
-    throw new RangeError(`Unit: ${unit} passed to 'PTextFieldWrapper' exceeds the maximum length of 5`);
+    throw new RangeError(`unit: ${unit} passed to 'p-text-field-wrapper' exceeds the maximum length of 5`);
   }
 };
 
@@ -64,5 +66,6 @@ export const addInputEventListenerForSearch = (
 };
 
 export const dispatchInputEvent = (el: HTMLInputElement): void => {
-  el.dispatchEvent(new Event('input'));
+  // { bubbles: true } is crucial for react onChange callback getting invoked
+  el.dispatchEvent(new Event('input', { bubbles: true }));
 };

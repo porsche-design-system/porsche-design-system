@@ -408,6 +408,8 @@ Object {
 
 exports[`should call validateProps() with correct parameters via componentWillRender for p-text-field-wrapper: propTypes with ValidatorFunctions 1`] = `
 Object {
+  "actionIcon": "oneOf",
+  "actionLoading": "boolean",
   "description": "string",
   "hideLabel": "breakpoint",
   "label": "string",

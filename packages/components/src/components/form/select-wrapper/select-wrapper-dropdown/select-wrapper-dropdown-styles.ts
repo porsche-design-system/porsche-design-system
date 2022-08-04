@@ -47,7 +47,7 @@ export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme)
           outlineColor: formStateColor || contrastMediumColor,
         },
         ...hoverMediaQuery({
-          '&:hover:not(:disabled) ~ ul': {
+          '&:not(:disabled):hover ~ ul': {
             borderColor: contrastHighColor,
           },
         }),
@@ -104,7 +104,7 @@ export const getFilterStyles = (
           },
         },
         ...hoverMediaQuery({
-          '&:hover:not(:disabled) ~ ul': {
+          '&:not(:disabled):hover ~ ul': {
             borderColor: contrastHighColor,
           },
         }),
