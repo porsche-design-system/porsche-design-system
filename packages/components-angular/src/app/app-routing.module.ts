@@ -67,57 +67,57 @@ export const routes: ExtendedRoute[] = [
   {
     name: 'Accordion Example',
     path: 'accordion-example',
-    component: fromExamples.AccordionExample,
+    component: fromExamples.AccordionExampleComponent,
   },
   {
     name: 'Inline Notification Example Events',
     path: 'inline-notification-example-events',
-    component: fromExamples.InlineNotificationExampleEvents,
+    component: fromExamples.InlineNotificationExampleEventsComponent,
   },
   {
     name: 'Inline Notification Example Action Button',
     path: 'inline-notification-example-action-button',
-    component: fromExamples.InlineNotificationExampleActionButton,
+    component: fromExamples.InlineNotificationExampleActionButtonComponent,
   },
   {
     name: 'Segmented Control Example',
     path: 'segmented-control-example',
-    component: fromExamples.SegmentedControlExample,
+    component: fromExamples.SegmentedControlExampleComponent,
   },
   {
     name: 'Stepper Horizontal Example',
     path: 'stepper-horizontal-example',
-    component: fromExamples.StepperHorizontalExample,
+    component: fromExamples.StepperHorizontalExampleComponent,
   },
   {
     name: 'Table Example Basic',
     path: 'table-example-basic',
-    component: fromExamples.TableExampleBasic,
+    component: fromExamples.TableExampleBasicComponent,
   },
   {
     name: 'Table Example Sorting',
     path: 'table-example-sorting',
-    component: fromExamples.TableExampleSorting,
+    component: fromExamples.TableExampleSortingComponent,
   },
   {
     name: 'Table Example Advanced',
     path: 'table-example-advanced',
-    component: fromExamples.TableExampleAdvanced,
+    component: fromExamples.TableExampleAdvancedComponent,
   },
   {
     name: 'Tabs Bar Example',
     path: 'tabs-bar-example',
-    component: fromExamples.TabsBarExample,
+    component: fromExamples.TabsBarExampleComponent,
   },
   {
     name: 'Text Field Wrapper Example',
     path: 'text-field-wrapper-example',
-    component: fromExamples.TextFieldWrapperExample,
+    component: fromExamples.TextFieldWrapperExampleComponent,
   },
   {
     name: 'Toast Example',
     path: 'toast-example',
-    component: fromExamples.ToastExample,
+    component: fromExamples.ToastExampleComponent,
   },
 ];
 

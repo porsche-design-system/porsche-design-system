@@ -9,7 +9,7 @@ import { MaskedRange } from 'imask';
     </p-text-field-wrapper>
   `,
 })
-export class TextFieldWrapperExample {
+export class TextFieldWrapperExampleComponent {
   public isDeLocale = Intl.NumberFormat().resolvedOptions().locale.startsWith('de');
   public dateFormat = this.isDeLocale ? 'dd.mm.yyyy' : 'mm/dd/yyyy';
   public dateRange = this.isDeLocale ? '01.01.1900, 01.01.2100' : '01/01/1900, 01/01/2100';

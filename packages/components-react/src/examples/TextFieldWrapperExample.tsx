@@ -2,7 +2,7 @@ import { PTextFieldWrapper } from '@porsche-design-system/components-react';
 import type { LegacyRef } from 'react';
 import { useIMask, IMask } from 'react-imask';
 
-export const TextFieldWrapperExample = (): JSX.Element => {
+export const TextFieldWrapperExamplePage = (): JSX.Element => {
   const isDeLocale = Intl.NumberFormat().resolvedOptions().locale.startsWith('de');
   const dateFormat = isDeLocale ? 'dd.mm.yyyy' : 'mm/dd/yyyy';
   const dateRange = isDeLocale ? '01.01.1900, 01.01.2100' : '01/01/1900, 01/01/2100';

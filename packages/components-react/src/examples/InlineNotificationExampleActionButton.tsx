@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { PInlineNotification } from '@porsche-design-system/components-react';
 
-export const InlineNotificationExampleActionButton = (): JSX.Element => {
+export const InlineNotificationExampleActionButtonPage = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const onAction = useCallback(() => setIsLoading((prevValue) => !prevValue), []);
 

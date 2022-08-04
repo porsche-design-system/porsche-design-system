@@ -63,22 +63,22 @@ export const routes: RouteType[] = [
   {
     name: 'Accordion Example',
     path: '/accordion-example',
-    element: <fromExamples.AccordionExample />,
+    element: <fromExamples.AccordionExamplePage />,
   },
   {
     name: 'Inline Notification Example Events',
     path: '/inline-notification-example-events',
-    element: <fromExamples.InlineNotificationExampleEvents />,
+    element: <fromExamples.InlineNotificationExampleEventsPage />,
   },
   {
     name: 'Inline Notification Example Action Button',
     path: '/inline-notification-example-action-button',
-    element: <fromExamples.InlineNotificationExampleActionButton />,
+    element: <fromExamples.InlineNotificationExampleActionButtonPage />,
   },
   {
     name: 'Segmented Control Example',
     path: '/segmented-control-example',
-    element: <fromExamples.SegmentedControlExample />,
+    element: <fromExamples.SegmentedControlExamplePage />,
   },
   {
     name: 'Stepper Horizontal Example',
@@ -88,31 +88,31 @@ export const routes: RouteType[] = [
   {
     name: 'Table Example Basic',
     path: '/table-example-basic',
-    element: <fromExamples.TableExampleBasic />,
+    element: <fromExamples.TableExampleBasicPage />,
   },
   {
     name: 'Table Example Sorting',
     path: '/table-example-sorting',
-    element: <fromExamples.TableExampleSorting />,
+    element: <fromExamples.TableExampleSortingPage />,
   },
   {
     name: 'Table Example Advanced',
     path: '/table-example-advanced',
-    element: <fromExamples.TableExampleAdvanced />,
+    element: <fromExamples.TableExampleAdvancedPage />,
   },
   {
     name: 'Tabs Bar Example',
     path: '/tabs-bar-example',
-    element: <fromExamples.TabsBarExample />,
+    element: <fromExamples.TabsBarExamplePage />,
   },
   {
     name: 'Text Field Wrapper Example',
     path: '/text-field-wrapper-example',
-    element: <fromExamples.TextFieldWrapperExample />,
+    element: <fromExamples.TextFieldWrapperExamplePage />,
   },
   {
     name: 'Toast Example',
     path: '/toast-example',
-    element: <fromExamples.ToastExample />,
+    element: <fromExamples.ToastExamplePage />,
   },
 ];

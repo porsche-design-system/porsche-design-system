@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import type { AccordionChangeEvent } from '@porsche-design-system/components-angular';
 
 @Component({
-  selector: 'accordion-example',
+  selector: 'page-accordion-example',
   template: `
     <p-accordion
       heading="Some Heading"
@@ -23,7 +23,7 @@ import type { AccordionChangeEvent } from '@porsche-design-system/components-ang
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AccordionExample {
+export class AccordionExampleComponent {
   isAccordion1Open = false;
   isAccordion2Open = false;
   content =
