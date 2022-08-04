@@ -145,26 +145,7 @@ describe('setBarStyle()', () => {
     barElement = document.createElement('span');
   });
 
-  it(`should remove ${enableTransitionClass} class and set transformation on barElement handling attribute active to removed case`, () => {
-    const spy = jest.spyOn(tabBarUtils, 'removeEnableTransitionClass');
-
-    barElement.classList.add(enableTransitionClass);
-    setBarStyle(
-      [
-        { offsetWidth: 15, offsetLeft: 0 },
-        { offsetWidth: 15, offsetLeft: 30 },
-      ] as HTMLElement[],
-      null,
-      barElement,
-      undefined
-    );
-
-    expect(spy).toHaveBeenCalledWith(barElement);
-    expect(barElement.classList.contains(enableTransitionClass)).toBe(false);
-    expect(barElement.style.cssText).toBe('transform: translate3d(0rem,0,0); width: 0px;');
-  });
-
-  it(`should remove ${enableTransitionClass} class and set transformation on barElement handling property active to removed case`, () => {
+  it(`should remove ${enableTransitionClass} class and set transformation on barElement handling active to removed case`, () => {
     const spy = jest.spyOn(tabBarUtils, 'removeEnableTransitionClass');
 
     barElement.classList.add(enableTransitionClass);
