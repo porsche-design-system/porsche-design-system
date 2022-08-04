@@ -16,18 +16,15 @@ const getComponentTsFrameworkMarkup = (markup: string, isTable: boolean): string
   return isTable ? replaceSharedTableImports(cleanedMarkup) : cleanedMarkup;
 };
 
-const getAppComponentTsDefaultMarkup = (markup: string): string => {
-  const convertedMarkup = convertMarkup(markup, 'angular');
-
-  return `import { Component } from '@angular/core';
+const getAppComponentTsDefaultMarkup = (markup: string): string =>
+  `import { Component } from '@angular/core';
 
 @Component({
   selector: 'porsche-design-system-app',
   template: \`
-    ${convertedMarkup}\`,
+    ${convertMarkup(markup, 'angular')}\`,
 })
 export class AppComponent  {}`;
-};
 
 const getComponentTsMarkup = (markup: string, hasFrameworkMarkup: boolean, isTable: boolean): string =>
   hasFrameworkMarkup ? getComponentTsFrameworkMarkup(markup, isTable) : getAppComponentTsDefaultMarkup(markup);
