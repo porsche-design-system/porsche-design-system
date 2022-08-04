@@ -11,9 +11,12 @@ import { pascalCase } from 'change-case';
 import type { Project, OpenOptions } from '@stackblitz/sdk';
 import type { DependenciesMap } from '@/utils/stackblitz/helper';
 
+const getCleanedMarkup = (markup: string): string =>
+  markup.replace(/(const )[A-z]+( = \(\): JSX.Element => {)/, '$1App$2');
+
 // TODO: unit test
 const getAppFrameworkMarkup = (markup: string, isTable: boolean): string => {
-  const cleanedMarkup = markup.replace(/(const )[A-z]+( = \(\): JSX.Element => {)/, '$1App$2');
+  const cleanedMarkup = getCleanedMarkup(markup);
 
   return `import React from 'react';
 ${isTable ? replaceSharedTableImports(cleanedMarkup) : cleanedMarkup}`;

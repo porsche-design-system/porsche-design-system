@@ -3,7 +3,7 @@ import { getComponentMeta, TagName } from '@porsche-design-system/shared';
 import { convertToAngular } from '@/utils/convertToAngular';
 import { convertToReact } from '@/utils/convertToReact';
 import type { Theme } from '@/models';
-import type { FrameworksWithoutShared } from '@/utils/stackblitz/openInStackBlitz';
+import { FrameworksWithoutShared } from '@/utils/stackblitz/helper';
 
 export * from './convertToAngular';
 export * from './convertToReact';

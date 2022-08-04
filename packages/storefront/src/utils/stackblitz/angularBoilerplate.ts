@@ -1,9 +1,58 @@
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
 import { dependencies } from '../../../../components-angular/package.json';
-import { paramCase } from 'change-case';
 import { getAdditionalDependencies, isTable, replaceSharedTableImports } from '@/utils/stackblitz/helper';
+import { convertMarkup } from '@/utils';
 import type { DependenciesMap, StackBlitzFrameworkOpts } from '@/utils/stackblitz/helper';
 import type { Project, OpenOptions } from '@stackblitz/sdk';
+
+const getCleanedMarkup = (markup: string): string =>
+  markup
+    .replace(/(@Component\({\n\s+selector: ')(?:[A-z]|-)+(',)/, '$1porsche-design-system-app$2')
+    .replace(/(export class )[A-z]+( {)/, '$1AppComponent$2');
+
+const getComponentTsFrameworkMarkup = (markup: string, isTable: boolean): string => {
+  const cleanedMarkup = getCleanedMarkup(markup);
+
+  return isTable ? replaceSharedTableImports(cleanedMarkup) : cleanedMarkup;
+};
+
+const getAppComponentTsDefaultMarkup = (markup: string): string => {
+  const convertedMarkup = convertMarkup(markup, 'angular');
+
+  return `import { Component } from '@angular/core';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: \`
+    ${convertedMarkup}\`,
+})
+export class AppComponent  {}`;
+};
+
+const getComponentTsMarkup = (markup: string, hasFrameworkMarkup: boolean, isTable: boolean): string =>
+  hasFrameworkMarkup ? getComponentTsFrameworkMarkup(markup, isTable) : getAppComponentTsDefaultMarkup(markup);
+
+const getMainTsMarkup = (): string => `import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app/app.module';
+import 'zone.js/dist/zone';
+
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch((err) => console.error(err));`;
+
+const getModuleTsMarkup = (usesIMask: boolean): string => `import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+${usesIMask ? `import { IMaskModule } from 'angular-imask';` : ''}
+import { AppComponent } from './app.component';
+
+@NgModule({
+  imports: [BrowserModule, FormsModule,${usesIMask ? 'IMaskModule,' : ''} PorscheDesignSystemModule,],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}`;
 
 export const getAngularProjectAndOpenOptions = (
   props: StackBlitzFrameworkOpts
@@ -19,51 +68,14 @@ export const getAngularProjectAndOpenOptions = (
 
   const usesIMask = additionalDependencies && additionalDependencies.filter((x) => x === 'IMask');
 
-  const [, matchedClassName] = markup.match(/export class ([A-z]+) {/) ?? [];
-  const className = hasFrameworkMarkup ? matchedClassName : 'AppComponent';
-  const classNameParamCase = paramCase(className);
-
-  const selector = hasFrameworkMarkup
-    ? `<${classNameParamCase}></${classNameParamCase}>`
-    : '<porsche-design-system-app></porsche-design-system-app>';
-
-  const appComponentTsFrameworkMarkup = isTable(pdsComponents) ? replaceSharedTableImports(markup) : markup;
-  const appComponentTsDefaultMarkup = `import { Component } from '@angular/core';
-
-@Component({
-  selector: 'porsche-design-system-app',
-  template: \`
-    ${markup}\`,
-})
-export class AppComponent  {}`;
-
   const project: Project = {
     files: {
       // root folder
-      'index.html': `${selector}
+      'index.html': `<porsche-design-system-app></porsche-design-system-app>
 ${`<style>${bodyStyles}</style>`}`,
-      'main.ts': `import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { AppModule } from './app/app.module';
-import 'zone.js/dist/zone';
-
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
-  .catch((err) => console.error(err));`,
-      // app folder
-      'app/app.component.ts': hasFrameworkMarkup ? appComponentTsFrameworkMarkup : appComponentTsDefaultMarkup,
-      'app/app.module.ts': `import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
-${usesIMask ? `import { IMaskModule } from 'angular-imask';` : ''}
-import { ${className} } from './app.component';
-
-@NgModule({
-  imports: [BrowserModule, FormsModule,${usesIMask ? 'IMaskModule,' : ''} PorscheDesignSystemModule,],
-  declarations: [${className}],
-  bootstrap: [${className}],
-})
-export class AppModule {}`,
+      'main.ts': getMainTsMarkup(),
+      'app/app.component.ts': getComponentTsMarkup(markup, hasFrameworkMarkup, isTable(pdsComponents)),
+      'app/app.module.ts': getModuleTsMarkup(!!usesIMask),
     },
     template: 'angular-cli',
     title,
