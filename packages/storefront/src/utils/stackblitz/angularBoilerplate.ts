@@ -1,22 +1,23 @@
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
 import { dependencies } from '../../../../components-angular/package.json';
-import { getAdditionalDependencies, isTable, replaceSharedTableImports } from '@/utils/stackblitz/helper';
-import { convertMarkup } from '@/utils';
+import { getAdditionalDependencies, isTable } from '@/utils/stackblitz/helper';
+import { replaceSharedTableImports } from './helper';
+import { convertMarkup } from '@/utils/formatting';
 import type { DependenciesMap, StackBlitzFrameworkOpts } from '@/utils/stackblitz/helper';
-import type { Project, OpenOptions } from '@stackblitz/sdk';
+import type { Project, OpenOptions, ProjectDependencies } from '@stackblitz/sdk';
 
-const getCleanedMarkup = (markup: string): string =>
+export const getCleanedAngularMarkup = (markup: string): string =>
   markup
     .replace(/(@Component\({\n\s+selector: ')(?:[A-z]|-)+(',)/, '$1porsche-design-system-app$2')
     .replace(/(export class )[A-z]+( {)/, '$1AppComponent$2');
 
-const getComponentTsFrameworkMarkup = (markup: string, isTable: boolean): string => {
-  const cleanedMarkup = getCleanedMarkup(markup);
+export const getComponentTsFrameworkMarkup = (markup: string, isTable: boolean): string => {
+  const cleanedMarkup = getCleanedAngularMarkup(markup);
 
   return isTable ? replaceSharedTableImports(cleanedMarkup) : cleanedMarkup;
 };
 
-const getAppComponentTsDefaultMarkup = (markup: string): string =>
+export const getAppComponentTsDefaultMarkup = (markup: string): string =>
   `import { Component } from '@angular/core';
 
 @Component({
@@ -26,10 +27,11 @@ const getAppComponentTsDefaultMarkup = (markup: string): string =>
 })
 export class AppComponent  {}`;
 
-const getComponentTsMarkup = (markup: string, hasFrameworkMarkup: boolean, isTable: boolean): string =>
+export const getComponentTsMarkup = (markup: string, hasFrameworkMarkup: boolean, isTable: boolean): string =>
   hasFrameworkMarkup ? getComponentTsFrameworkMarkup(markup, isTable) : getAppComponentTsDefaultMarkup(markup);
 
-const getMainTsMarkup = (): string => `import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+export const getMainTsMarkup =
+  (): string => `import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import 'zone.js/dist/zone';
 
@@ -37,7 +39,7 @@ platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .catch((err) => console.error(err));`;
 
-const getModuleTsMarkup = (usesIMask: boolean): string => `import { NgModule } from '@angular/core';
+export const getModuleTsMarkup = (usesIMask: boolean): string => `import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
@@ -51,11 +53,7 @@ import { AppComponent } from './app.component';
 })
 export class AppModule {}`;
 
-export const getAngularProjectAndOpenOptions = (
-  props: StackBlitzFrameworkOpts
-): { project: Project; openOptions: OpenOptions } => {
-  const { markup, description, title, hasFrameworkMarkup, bodyStyles, pdsComponents, additionalDependencies } = props;
-
+export const getAngularDependencies = (usesImask: boolean, additionalDependencies?: string[]): ProjectDependencies => {
   const dependenciesMap: DependenciesMap = {
     IMask: {
       imask: `${dependencies['angular-imask']}`,
@@ -63,24 +61,35 @@ export const getAngularProjectAndOpenOptions = (
     },
   };
 
-  const usesIMask = additionalDependencies && additionalDependencies.filter((x) => x === 'IMask');
+  return {
+    '@porsche-design-system/components-angular': `${pdsVersion}`,
+    ...(additionalDependencies && getAdditionalDependencies(additionalDependencies, dependenciesMap)),
+  };
+};
+
+export const usesIMask = (additionalDependencies?: string[]): boolean => {
+  return additionalDependencies ? additionalDependencies.filter((x) => x === 'IMask').length > 0 : false;
+};
+
+export const getAngularProjectAndOpenOptions = (
+  props: StackBlitzFrameworkOpts
+): { project: Project; openOptions: OpenOptions } => {
+  const { markup, description, title, hasFrameworkMarkup, bodyStyles, pdsComponents, additionalDependencies } = props;
+
+  const hasIMask = usesIMask(additionalDependencies);
 
   const project: Project = {
     files: {
-      // root folder
       'index.html': `<porsche-design-system-app></porsche-design-system-app>
 ${`<style>${bodyStyles}</style>`}`,
       'main.ts': getMainTsMarkup(),
       'app/app.component.ts': getComponentTsMarkup(markup, hasFrameworkMarkup, isTable(pdsComponents)),
-      'app/app.module.ts': getModuleTsMarkup(!!usesIMask),
+      'app/app.module.ts': getModuleTsMarkup(hasIMask),
     },
     template: 'angular-cli',
     title,
     description,
-    dependencies: {
-      '@porsche-design-system/components-angular': `${pdsVersion}`,
-      ...(additionalDependencies && getAdditionalDependencies(additionalDependencies, dependenciesMap)),
-    },
+    dependencies: getAngularDependencies(hasIMask, additionalDependencies),
   };
 
   const openOptions: OpenOptions = {};

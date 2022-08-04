@@ -3,7 +3,7 @@ import {
   getAppFrameworkMarkup,
   getAppTsxMarkup,
   getCleanedReactMarkup,
-  getDependencies,
+  getReactDependencies,
   getIndexTsMarkup,
   getReactProjectAndOpenOptions,
 } from '../../src/utils/stackblitz/reactBoilerplate';
@@ -28,31 +28,35 @@ describe('getCleanedReactMarkup()', () => {
 });
 
 describe('getAppFrameworkMarkup()', () => {
-  it('should call getCleanedMarkup() with correct parameters and return cleanedMarkup when isTable = false', () => {
+  it('should call getCleanedMarkup() with correct parameters', () => {
     const markup = 'Some Markup';
-    const cleandMarkup = `Cleaned value`;
-    const spy = jest.spyOn(reactBoilerplateUtils, 'getCleanedReactMarkup').mockReturnValue(cleandMarkup);
+    const spy = jest.spyOn(reactBoilerplateUtils, 'getCleanedReactMarkup');
 
-    expect(getAppFrameworkMarkup(markup, false)).toBe(`import React from 'react';
-${cleandMarkup}`);
+    getAppFrameworkMarkup(markup, false);
     expect(spy).toBeCalledWith(markup);
   });
 
-  it('should call getCleanedMarkup() & replaceSharedTableImports() with correct parameters when isTable = true', () => {
+  it('should return cleanedMarkup when isTable = false', () => {
+    const markup = 'Some Markup';
+    const cleanedMarkup = `Cleaned value`;
+    jest.spyOn(reactBoilerplateUtils, 'getCleanedReactMarkup').mockReturnValue(cleanedMarkup);
+
+    expect(getAppFrameworkMarkup(markup, false)).toBe(`import React from 'react';
+${cleanedMarkup}`);
+  });
+
+  it('should call getCleanedMarkup() and replaceSharedTableImports() with correct parameters when isTable = true', () => {
     const markup = 'Some Markup';
     const cleanedMarkup = `Cleaned value`;
 
-    const getCleanedMarkupSpy = jest
-      .spyOn(reactBoilerplateUtils, 'getCleanedReactMarkup')
-      .mockReturnValue(cleanedMarkup);
-    const replaceSharedTableImports = jest
+    jest.spyOn(reactBoilerplateUtils, 'getCleanedReactMarkup').mockReturnValue(cleanedMarkup);
+    const replaceSharedTableImportsSpy = jest
       .spyOn(stackBlitzHelperUtils, 'replaceSharedTableImports')
       .mockImplementationOnce(() => cleanedMarkup);
 
     expect(getAppFrameworkMarkup(markup, true)).toBe(`import React from 'react';
 ${cleanedMarkup}`);
-    expect(getCleanedMarkupSpy).toBeCalledWith(markup);
-    expect(replaceSharedTableImports).toBeCalledWith(cleanedMarkup);
+    expect(replaceSharedTableImportsSpy).toBeCalledWith(cleanedMarkup);
   });
 });
 
@@ -76,7 +80,7 @@ describe('getDefaultMarkup()', () => {
 describe('getAppTsxMarkup()', () => {
   it('should call getAppFrameworkMarkup() with correct parameters when hasFrameworkMarkup is true', () => {
     const spy = jest.spyOn(reactBoilerplateUtils, 'getAppFrameworkMarkup');
-    const markup = 'Some Markup';
+    const markup = 'Some markup';
     getAppTsxMarkup(markup, true, false, ['p-text']);
 
     expect(spy).toBeCalledWith(markup, false);
@@ -98,13 +102,13 @@ describe('getIndexTsMarkup()', () => {
   });
 });
 
-describe('getDependencies()', () => {
+describe('getReactDependencies()', () => {
   it('should return correct dependencies object without additionalDependencies', () => {
-    expect(getDependencies()).toMatchSnapshot();
+    expect(getReactDependencies()).toMatchSnapshot();
   });
 
   it('should return correct dependencies object with additionalDependency "IMask"', () => {
-    expect(getDependencies(['IMask'])).toMatchSnapshot();
+    expect(getReactDependencies(['IMask'])).toMatchSnapshot();
   });
 });
 
@@ -120,22 +124,24 @@ describe('getReactProjectAndOpenOptions()', () => {
 
   it('should return correct project and openOptions', () => {
     const mockValue = 'Some value';
+
     jest.spyOn(reactBoilerplateUtils, 'getAppTsxMarkup').mockImplementationOnce(() => mockValue);
     jest.spyOn(reactBoilerplateUtils, 'getIndexTsMarkup').mockImplementationOnce(() => mockValue);
-    jest.spyOn(reactBoilerplateUtils, 'getDependencies').mockImplementationOnce(() => ({}));
+    jest.spyOn(reactBoilerplateUtils, 'getReactDependencies').mockImplementationOnce(() => ({}));
 
     const { project, openOptions } = getReactProjectAndOpenOptions(stackBlitzFrameworkOpts);
+    const { bodyStyles, title, description } = stackBlitzFrameworkOpts;
 
     expect(project).toEqual({
       files: {
         'App.tsx': mockValue,
         'index.html': `<div id="root"></div>`,
         'index.tsx': mockValue,
-        'style.css': stackBlitzFrameworkOpts.bodyStyles,
+        'style.css': bodyStyles,
       },
       template: 'create-react-app',
-      title: stackBlitzFrameworkOpts.title,
-      description: stackBlitzFrameworkOpts.description,
+      title: title,
+      description: description,
       dependencies: {},
     });
 
@@ -147,15 +153,10 @@ describe('getReactProjectAndOpenOptions()', () => {
   it('should call getAppTsxMarkup(), getIndexTsMarkup() and getDependencies() with correct parameters', () => {
     const { markup, hasFrameworkMarkup, pdsComponents } = stackBlitzFrameworkOpts;
 
-    const mockValue = 'Some value';
-    const getAppTsxMarkupSpy = jest
-      .spyOn(reactBoilerplateUtils, 'getAppTsxMarkup')
-      .mockImplementationOnce(() => mockValue);
-    const isTableSpy = jest.spyOn(stackBlitzHelperUtils, 'isTable').mockImplementationOnce(() => false);
-    const getIndexTsMarkupSpy = jest
-      .spyOn(reactBoilerplateUtils, 'getIndexTsMarkup')
-      .mockImplementationOnce(() => mockValue);
-    const getDependenciesSpy = jest.spyOn(reactBoilerplateUtils, 'getDependencies').mockImplementationOnce(() => ({}));
+    const getAppTsxMarkupSpy = jest.spyOn(reactBoilerplateUtils, 'getAppTsxMarkup');
+    const isTableSpy = jest.spyOn(stackBlitzHelperUtils, 'isTable');
+    const getIndexTsMarkupSpy = jest.spyOn(reactBoilerplateUtils, 'getIndexTsMarkup');
+    const getDependenciesSpy = jest.spyOn(reactBoilerplateUtils, 'getReactDependencies');
 
     getReactProjectAndOpenOptions(stackBlitzFrameworkOpts);
     expect(getAppTsxMarkupSpy).toBeCalledWith(markup, hasFrameworkMarkup, false, pdsComponents);

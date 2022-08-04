@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getAngularDependencies() should return correct dependencies object with additionalDependency "IMask" 1`] = `
+Object {
+  "@porsche-design-system/components-angular": "2.14.0-beta.0",
+  "angular-imask": "^6.4.2",
+  "imask": "^6.4.2",
+}
+`;
+
+exports[`getAngularDependencies() should return correct dependencies object without additionalDependencies 1`] = `
+Object {
+  "@porsche-design-system/components-angular": "2.14.0-beta.0",
+}
+`;
+
+exports[`getAppComponentTsDefaultMarkup() should return correct default markup 1`] = `
+"import { Component } from '@angular/core';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: \`
+    <p-text>Some Text</p-text>
+    <p-accordion>Some value</p-accordion>\`,
+})
+export class AppComponent  {}"
+`;
+
+exports[`getCleanedAngularMarkup() should replace selector and class name correctly 1`] = `
+"@Component({
+  selector: 'porsche-design-system-app',
+  template: '',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class AppComponent {}
+}"
+`;
+
+exports[`getComponentTsMarkup() should return correct markup 1`] = `
+"import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app/app.module';
+import 'zone.js/dist/zone';
+
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch((err) => console.error(err));"
+`;
+
+exports[`getModuleTsMarkup() should return correct markup for usesIMask = false 1`] = `
+"import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  imports: [BrowserModule, FormsModule, PorscheDesignSystemModule,],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}"
+`;
+
+exports[`getModuleTsMarkup() should return correct markup for usesIMask = true 1`] = `
+"import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { IMaskModule } from 'angular-imask';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  imports: [BrowserModule, FormsModule,IMaskModule, PorscheDesignSystemModule,],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}"
+`;
