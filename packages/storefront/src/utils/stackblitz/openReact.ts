@@ -1,10 +1,14 @@
 import sdk from '@stackblitz/sdk';
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
 import { devDependencies, dependencies } from '../../../../components-react/package.json';
-import { getAdditionalDependencies, replaceSharedTableImports, isTable } from '@/utils/stackblitz/helper';
+import {
+  getAdditionalDependencies,
+  replaceSharedTableImports,
+  isTable,
+  StackBlitzFrameworkOpts,
+} from '@/utils/stackblitz/helper';
 import { convertMarkup } from '@/utils';
 import { pascalCase } from 'change-case';
-import type { StackBlitzFrameworkOpts } from '@/utils/stackblitz/openInStackBlitz';
 import type { Project, OpenOptions } from '@stackblitz/sdk';
 import type { DependenciesMap } from '@/utils/stackblitz/helper';
 

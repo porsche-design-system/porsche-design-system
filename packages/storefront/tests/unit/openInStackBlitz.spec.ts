@@ -1,12 +1,8 @@
-import {
-  FrameworksWithoutShared,
-  getAdditionalDependencies,
-  getBackgroundColor,
-  getStackBlitzMarkup,
-} from './../../src/utils/stackblitz/openInStackBlitz';
+import { getStackBlitzMarkup } from './../../src/utils/stackblitz/openInStackBlitz';
 import { themeDark, themeLight } from '@porsche-design-system/utilities-v2';
 import type { Theme, ColorScheme } from './../../src/models/index';
 import * as formattingUtils from '../../src/utils/formatting';
+import { getAdditionalDependencies, getBackgroundColor } from '../../src/utils/stackblitz/helper';
 
 describe('getBackgroundColor()', () => {
   it.each<[Theme, ColorScheme, string]>([
