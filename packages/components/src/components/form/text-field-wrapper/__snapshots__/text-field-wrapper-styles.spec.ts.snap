@@ -1479,6 +1479,9 @@ button:focus {
 button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
+button:active {
+  color: #d5001c;
+}
 button:disabled {
   color: #96989a;
   cursor: not-allowed;
@@ -1493,6 +1496,9 @@ button+button[type=submit] {
 @media(hover:hover) {
   ::slotted(input:not(:disabled):hover) {
     border-color: #000 !important;
+  }
+  button:not(:disabled):hover {
+    color: #d5001c;
   }
 }
 
