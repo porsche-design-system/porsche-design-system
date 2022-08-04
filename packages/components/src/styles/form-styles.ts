@@ -59,7 +59,8 @@ export const getBaseChildStyles = (
       ...additionalDefaultJssStyle,
     },
     ...(hoverMediaQuery({
-      [`::slotted(${child}:hover)`]: {
+      // with the media query the selector has higher priority and overrides disabled styles
+      [`::slotted(${child}:not(:disabled):hover)`]: {
         borderColor: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
       },
     }) as Styles),

@@ -54,7 +54,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #000 !important;
   }
 }
@@ -283,10 +283,10 @@ button:disabled {
   cursor: not-allowed;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #a30000 !important;
   }
-  button:hover {
+  button:not(:disabled):hover {
     color: #d5001c;
   }
 }
@@ -407,7 +407,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #a30000 !important;
   }
 }
@@ -527,7 +527,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #a30000 !important;
   }
 }
@@ -659,7 +659,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #a30000 !important;
   }
 }
@@ -828,10 +828,10 @@ button:disabled {
   cursor: not-allowed;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #000 !important;
   }
-  button:hover {
+  button:not(:disabled):hover {
     color: #d5001c;
   }
 }
@@ -988,10 +988,10 @@ button:disabled {
   cursor: not-allowed;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #000 !important;
   }
-  button:hover {
+  button:not(:disabled):hover {
     color: #d5001c;
   }
 }
@@ -1158,10 +1158,10 @@ button+button[type=submit] {
   right: 0;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #000 !important;
   }
-  button:hover {
+  button:not(:disabled):hover {
     color: #d5001c;
   }
 }
@@ -1320,10 +1320,10 @@ button+button[type=submit] {
   right: 0;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #000 !important;
   }
-  button:hover {
+  button:not(:disabled):hover {
     color: #d5001c;
   }
 }
@@ -1491,7 +1491,7 @@ button+button[type=submit] {
   right: 0;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #000 !important;
   }
 }
@@ -1619,7 +1619,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #000 !important;
   }
 }
@@ -1739,7 +1739,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #000 !important;
   }
 }
@@ -1870,7 +1870,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #000 !important;
   }
 }
@@ -2001,7 +2001,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #000 !important;
   }
 }
@@ -2169,10 +2169,10 @@ button:disabled {
   cursor: not-allowed;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #014d0c !important;
   }
-  button:hover {
+  button:not(:disabled):hover {
     color: #d5001c;
   }
 }
@@ -2293,7 +2293,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #014d0c !important;
   }
 }
@@ -2413,7 +2413,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #014d0c !important;
   }
 }
@@ -2545,7 +2545,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #014d0c !important;
   }
 }
@@ -2714,10 +2714,10 @@ button:disabled {
   cursor: not-allowed;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #a30000 !important;
   }
-  button:hover {
+  button:not(:disabled):hover {
     color: #d5001c;
   }
 }
@@ -2838,7 +2838,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #a30000 !important;
   }
 }
@@ -2958,7 +2958,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #a30000 !important;
   }
 }
@@ -3091,7 +3091,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #a30000 !important;
   }
 }
@@ -3261,10 +3261,10 @@ button:disabled {
   cursor: not-allowed;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #000 !important;
   }
-  button:hover {
+  button:not(:disabled):hover {
     color: #d5001c;
   }
 }
@@ -3384,7 +3384,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #000 !important;
   }
 }
@@ -3503,7 +3503,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #000 !important;
   }
 }
@@ -3635,7 +3635,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #000 !important;
   }
 }
@@ -3804,10 +3804,10 @@ button:disabled {
   cursor: not-allowed;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #014d0c !important;
   }
-  button:hover {
+  button:not(:disabled):hover {
     color: #d5001c;
   }
 }
@@ -3928,7 +3928,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #014d0c !important;
   }
 }
@@ -4048,7 +4048,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #014d0c !important;
   }
 }
@@ -4181,7 +4181,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #014d0c !important;
   }
 }
@@ -4351,10 +4351,10 @@ button:disabled {
   cursor: not-allowed;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):hover) {
     border-color: #a30000 !important;
   }
-  button:hover {
+  button:not(:disabled):hover {
     color: #d5001c;
   }
 }

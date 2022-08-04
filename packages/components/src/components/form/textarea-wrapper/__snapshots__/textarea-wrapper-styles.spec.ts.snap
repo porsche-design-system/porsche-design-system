@@ -52,7 +52,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #626669 !important;
 }
 @media(hover:hover) {
-  ::slotted(textarea:hover) {
+  ::slotted(textarea:not(:disabled):hover) {
     border-color: #000 !important;
   }
 }
@@ -249,7 +249,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #626669 !important;
 }
 @media(hover:hover) {
-  ::slotted(textarea:hover) {
+  ::slotted(textarea:not(:disabled):hover) {
     border-color: #a30000 !important;
   }
 }
@@ -352,7 +352,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #626669 !important;
 }
 @media(hover:hover) {
-  ::slotted(textarea:hover) {
+  ::slotted(textarea:not(:disabled):hover) {
     border-color: #a30000 !important;
   }
 }
@@ -477,7 +477,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #626669 !important;
 }
 @media(hover:hover) {
-  ::slotted(textarea:hover) {
+  ::slotted(textarea:not(:disabled):hover) {
     border-color: #000 !important;
   }
 }
@@ -579,7 +579,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #626669 !important;
 }
 @media(hover:hover) {
-  ::slotted(textarea:hover) {
+  ::slotted(textarea:not(:disabled):hover) {
     border-color: #000 !important;
   }
 }
@@ -693,7 +693,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #626669 !important;
 }
 @media(hover:hover) {
-  ::slotted(textarea:hover) {
+  ::slotted(textarea:not(:disabled):hover) {
     border-color: #000 !important;
   }
 }
@@ -805,7 +805,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #626669 !important;
 }
 @media(hover:hover) {
-  ::slotted(textarea:hover) {
+  ::slotted(textarea:not(:disabled):hover) {
     border-color: #000 !important;
   }
 }
@@ -929,7 +929,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #626669 !important;
 }
 @media(hover:hover) {
-  ::slotted(textarea:hover) {
+  ::slotted(textarea:not(:disabled):hover) {
     border-color: #014d0c !important;
   }
 }
@@ -1032,7 +1032,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #626669 !important;
 }
 @media(hover:hover) {
-  ::slotted(textarea:hover) {
+  ::slotted(textarea:not(:disabled):hover) {
     border-color: #014d0c !important;
   }
 }
@@ -1157,7 +1157,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #626669 !important;
 }
 @media(hover:hover) {
-  ::slotted(textarea:hover) {
+  ::slotted(textarea:not(:disabled):hover) {
     border-color: #a30000 !important;
   }
 }
@@ -1261,7 +1261,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #626669 !important;
 }
 @media(hover:hover) {
-  ::slotted(textarea:hover) {
+  ::slotted(textarea:not(:disabled):hover) {
     border-color: #a30000 !important;
   }
 }
@@ -1387,7 +1387,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #626669 !important;
 }
 @media(hover:hover) {
-  ::slotted(textarea:hover) {
+  ::slotted(textarea:not(:disabled):hover) {
     border-color: #000 !important;
   }
 }
@@ -1490,7 +1490,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #626669 !important;
 }
 @media(hover:hover) {
-  ::slotted(textarea:hover) {
+  ::slotted(textarea:not(:disabled):hover) {
     border-color: #000 !important;
   }
 }
@@ -1615,7 +1615,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #626669 !important;
 }
 @media(hover:hover) {
-  ::slotted(textarea:hover) {
+  ::slotted(textarea:not(:disabled):hover) {
     border-color: #014d0c !important;
   }
 }
@@ -1719,7 +1719,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   color: #626669 !important;
 }
 @media(hover:hover) {
-  ::slotted(textarea:hover) {
+  ::slotted(textarea:not(:disabled):hover) {
     border-color: #014d0c !important;
   }
 }
@@ -1845,7 +1845,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   color: #626669 !important;
 }
 @media(hover:hover) {
-  ::slotted(textarea:hover) {
+  ::slotted(textarea:not(:disabled):hover) {
     border-color: #a30000 !important;
   }
 }

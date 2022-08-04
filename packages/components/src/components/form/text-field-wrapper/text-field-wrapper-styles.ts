@@ -88,7 +88,7 @@ export const getComponentCss = (
           ...getFocusJssStyle({ offset: hasVisibleState ? -5 : -4 }),
           ...(!hasActionLoading && {
             ...hoverMediaQuery({
-              '&:hover': {
+              '&:not(:disabled):hover': {
                 color: hoverColor,
               },
             }),
