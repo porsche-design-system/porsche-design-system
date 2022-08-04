@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MaskedRange } from 'imask';
 
 @Component({
-  selector: 'text-field-wrapper-example-imask',
+  selector: 'page-text-field-wrapper-example-imask',
   template: `
     <p-text-field-wrapper [label]="'Some label'" [description]="description">
       <input [type]="'text'" [imask]="mask" />
