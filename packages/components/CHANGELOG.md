@@ -23,6 +23,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Validation of properties for all components
 - `Text Field Wrapper` with `input type="search"` is clearable via Escape key and custom clear button across browsers
+- `Text Field Wrapper` with `input type="search"` shows a "Locate me" button when `actionIcon="locate"` is set, emits
+  the `action` event on click and can be put into a loading state via `actionLoading="true"`
 
 ### [2.14.0-beta.0] - 2022-07-12
 

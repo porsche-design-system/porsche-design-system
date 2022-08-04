@@ -68,6 +68,24 @@ describe('componentWillLoad', () => {
     expect(component['isWithinForm']).toBe(false);
   });
 
+  it('should call hasLocateAction() with correct parameter and set hasAction', () => {
+    const input = document.createElement('input');
+    mockGetOnlyChildOfKindHTMLElementOrThrow(input);
+
+    const component = new TextFieldWrapper();
+    const spy = jest.spyOn(textFieldWrapperUtils, 'hasLocateAction');
+
+    expect(component['hasAction']).toBe(undefined);
+
+    spy.mockReturnValue(true);
+    component.componentWillLoad();
+    expect(component['hasAction']).toBe(true);
+
+    spy.mockReturnValue(false);
+    component.componentWillLoad();
+    expect(component['hasAction']).toBe(false);
+  });
+
   it('should not set isClearable when isSearch is false', () => {
     const input = document.createElement('input');
     input.value = 'search';
@@ -196,13 +214,13 @@ describe('componentWillLoad', () => {
 
 describe('componentWillRender', () => {
   it('should call throwIfUnitLengthExceeded() with correct parameter', () => {
-    const component = new TextFieldWrapper();
     const spy = jest.spyOn(textFieldWrapperUtils, 'throwIfUnitLengthExceeded');
+    const component = new TextFieldWrapper();
     component.unit = '123456';
 
     try {
       component.componentWillRender();
-    } catch (e) {}
+    } catch {}
 
     expect(spy).toBeCalledWith('123456');
   });
