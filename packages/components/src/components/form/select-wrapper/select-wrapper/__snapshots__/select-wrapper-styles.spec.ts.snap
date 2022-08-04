@@ -46,7 +46,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: #fff !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):hover) {
+  ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #000 !important;
   }
 }
@@ -234,7 +234,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: #fff !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):hover) {
+  ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
 }
@@ -294,10 +294,10 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   margin-right: 0.25rem;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
-  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
 }
@@ -350,7 +350,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: #000 !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):hover) {
+  ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #d30303 !important;
   }
 }
@@ -410,10 +410,10 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   margin-right: 0.25rem;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #d30303 !important;
   }
-  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #d30303 !important;
   }
 }
@@ -466,7 +466,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: #fff !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):hover) {
+  ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #000 !important;
   }
 }
@@ -581,7 +581,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: #000 !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):hover) {
+  ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #e3e4e5 !important;
   }
 }
@@ -696,7 +696,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: #fff !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):hover) {
+  ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
 }
@@ -756,10 +756,10 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   margin-right: 0.25rem;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
-  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
 }
@@ -812,7 +812,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: #000 !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):hover) {
+  ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #017d14 !important;
   }
 }
@@ -872,10 +872,10 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   margin-right: 0.25rem;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #017d14 !important;
   }
-  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #017d14 !important;
   }
 }
@@ -928,7 +928,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: #fff !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):hover) {
+  ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
 }
@@ -989,10 +989,10 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   margin-right: 0.25rem;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
-  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
 }
@@ -1045,7 +1045,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: #000 !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):hover) {
+  ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #d30303 !important;
   }
 }
@@ -1106,10 +1106,10 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   margin-right: 0.25rem;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #d30303 !important;
   }
-  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #d30303 !important;
   }
 }
@@ -1162,7 +1162,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: #fff !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):hover) {
+  ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #000 !important;
   }
 }
@@ -1278,7 +1278,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: #000 !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):hover) {
+  ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #e3e4e5 !important;
   }
 }
@@ -1394,7 +1394,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: #fff !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):hover) {
+  ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
 }
@@ -1455,10 +1455,10 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   margin-right: 0.25rem;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
-  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
 }
@@ -1511,7 +1511,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: #000 !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):hover) {
+  ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #017d14 !important;
   }
 }
@@ -1572,10 +1572,10 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   margin-right: 0.25rem;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #017d14 !important;
   }
-  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #017d14 !important;
   }
 }
@@ -1628,7 +1628,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background: #000 !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):hover) {
+  ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #d30303 !important;
   }
 }
@@ -1690,10 +1690,10 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   margin-right: 0.25rem;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(select:not(:disabled):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #d30303 !important;
   }
-  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:hover:not(:disabled):not([readonly])) {
+  .icon:hover~::slotted(select:not(:disabled):not([readonly])), .icon:hover ::slotted(select:not(:disabled):not([readonly]):hover) {
     border-color: #d30303 !important;
   }
 }

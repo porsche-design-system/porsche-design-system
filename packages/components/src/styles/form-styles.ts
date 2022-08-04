@@ -60,7 +60,7 @@ export const getBaseChildStyles = (
     },
     ...(hoverMediaQuery({
       // with the media query the selector has higher priority and overrides disabled styles
-      [`::slotted(${child}:not(:disabled):hover)`]: {
+      [`::slotted(${child}:not(:disabled):not([readonly]):hover)`]: {
         borderColor: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
       },
     }) as Styles),
@@ -104,7 +104,7 @@ export const getLabelStyles = (
   const labelTextHoverJssStyle: JssStyle = hoverMediaQuery({
     '&:hover': {
       [`&~::slotted(${child}:not(:disabled):not([readonly]))` +
-      (hasVisibleState ? `,::slotted(${child}:hover:not(:disabled):not([readonly]))` : '')]: {
+      (hasVisibleState ? `,::slotted(${child}:not(:disabled):not([readonly]):hover)` : '')]: {
         borderColor: addImportantToRule(hasVisibleState ? formStateHoverColor : baseColor),
       },
     },
