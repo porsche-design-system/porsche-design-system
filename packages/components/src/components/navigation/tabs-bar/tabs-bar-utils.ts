@@ -15,8 +15,7 @@ export type TabGradientColorTheme = GradientColorTheme;
 const ENABLE_TRANSITION_CLASS = 'bar--enable-transition';
 
 export const sanitizeActiveTabIndex = (index: number, tabElementsCount: number): number => {
-  // TODO: Adjust this check when working on the validation / fallback ticket https://github.com/porscheui/porsche-design-system/issues/1235
-  if (index === undefined || index === null || isNaN(index)) {
+  if (index === undefined || index === null) {
     return undefined;
   }
 
