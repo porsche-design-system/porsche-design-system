@@ -93,9 +93,9 @@ export const setBarStyle = (
     return;
   }
   let transformation: string;
-
+  // undefined can be set via property, null is the result of running removeAttribute()
   if (activeTabIndex === undefined || activeTabIndex === null) {
-    if (prevActiveTabIndex === undefined && activeTabIndex === null) {
+    if (prevActiveTabIndex === undefined) {
       // handle active to removed case
       removeEnableTransitionClass(barElement);
       transformation = getTransformationToInactive();
