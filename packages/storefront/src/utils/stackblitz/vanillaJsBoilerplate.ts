@@ -11,6 +11,7 @@ import {
   headAdvanced,
 } from '@porsche-design-system/shared';
 import { getAdditionalDependencies } from '@/utils/stackblitz/helper';
+import { convertMarkup } from '@/utils';
 
 const sharedImport = {
   headBasic,
@@ -20,6 +21,24 @@ const sharedImport = {
   dataAdvanced,
   headAdvanced,
 };
+
+const getIndexHtmlMarkup = (markup: string, sharedTableData?: string): string => {
+  return sharedTableData
+    ? extendMarkupWithSharedTableData(markup, sharedTableData)
+    : convertMarkup(markup, 'vanilla-js');
+};
+
+const getIndexJsMarkup = (markup: string, additionalDependencies?: string[]): string => `import './style.css'
+import * as porscheDesignSystem from '@porsche-design-system/components-js'
+${
+  additionalDependencies && additionalDependencies.filter((x) => x === 'IMask')
+    ? `import IMask from 'imask';
+IMask`
+    : ''
+}
+
+porscheDesignSystem.load();
+`;
 
 const extendMarkupWithSharedTableData = (markup: string, sharedTableData: string): string => {
   const importVariables = sharedTableData.replace(/\s/g, '').split(',') as [
@@ -52,18 +71,8 @@ export const getVanillaJsProjectAndOpenOptions = (
 
   const project: Project = {
     files: {
-      'index.html': `${sharedTableData ? extendMarkupWithSharedTableData(markup, sharedTableData) : markup}`,
-      'index.js': `import './style.css'
-import * as porscheDesignSystem from '@porsche-design-system/components-js'
-${
-  additionalDependencies && additionalDependencies.filter((x) => x === 'IMask')
-    ? `import IMask from 'imask';
-IMask`
-    : ''
-}
-
-porscheDesignSystem.load();
-`,
+      'index.html': getIndexHtmlMarkup(markup, sharedTableData),
+      'index.js': getIndexJsMarkup(markup, additionalDependencies),
       'style.css': bodyStyles,
     },
     template: 'javascript',
