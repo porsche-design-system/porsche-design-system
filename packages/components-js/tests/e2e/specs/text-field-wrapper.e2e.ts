@@ -309,91 +309,52 @@ describe('input type="search"', () => {
   });
 
   describe('within form', () => {
-    it('should disable search button when input is set to disabled programmatically', async () => {
+    const isButtonDisabled = (handle: ElementHandle) => getProperty(handle, 'disabled');
+
+    it('should disable submit button when input is set to disabled programmatically', async () => {
       await initTextField({ type: 'search', isWrappedInForm: true });
       const input = await getInput();
       const button = await getSubmitButton();
 
-      const initialCursor = await getElementStyle(input, 'cursor');
-      const initialBorderColor = await getElementStyle(input, 'borderColor');
-
-      const isButtonDisabled = () => getProperty(button, 'disabled');
+      expect(await isButtonDisabled(button)).toBe(false);
+      expect(await getElementStyle(button, 'cursor'), 'initial cursor').toBe('pointer');
 
       await setProperty(input, 'disabled', true);
       await waitForStencilLifecycle(page);
       await page.waitForTimeout(CSS_TRANSITION_DURATION);
 
-      expect(await getElementStyle(input, 'cursor'), 'disabled cursor').not.toBe(initialCursor);
-      expect(await getElementStyle(input, 'borderColor'), 'disabled borderColor').not.toBe(initialBorderColor);
-      expect(await isButtonDisabled()).toBe(true);
+      expect(await isButtonDisabled(button)).toBe(true);
+      expect(await getElementStyle(button, 'cursor'), 'disabled cursor').toBe('not-allowed');
 
       await setProperty(input, 'disabled', false);
       await waitForStencilLifecycle(page);
       await page.waitForTimeout(CSS_TRANSITION_DURATION);
 
-      expect(await getElementStyle(input, 'cursor'), 'not disabled cursor').toBe(initialCursor);
-      expect(await getElementStyle(input, 'borderColor'), 'not disabled borderColor').toBe(initialBorderColor);
-      expect(await isButtonDisabled()).toBe(false);
+      expect(await isButtonDisabled(button)).toBe(false);
+      expect(await getElementStyle(button, 'cursor'), 'final cursor').toBe('pointer');
     });
 
-    it('should disable search button when input is set to readonly programmatically', async () => {
+    it('should disable submit button when input is set to readonly programmatically', async () => {
       await initTextField({ type: 'search', isWrappedInForm: true });
       const input = await getInput();
       const button = await getSubmitButton();
 
-      const initialColor = await getElementStyle(input, 'color');
-      const initialBorderColor = await getElementStyle(input, 'borderColor');
-      const initialBackgroundColor = await getElementStyle(input, 'backgroundColor');
-
-      const isButtonDisabled = () => getProperty(button, 'disabled');
+      expect(await isButtonDisabled(button)).toBe(false);
+      expect(await getElementStyle(button, 'cursor'), 'initial cursor').toBe('pointer');
 
       await setProperty(input, 'readOnly', true);
       await waitForStencilLifecycle(page);
       await page.waitForTimeout(CSS_TRANSITION_DURATION);
 
-      expect(await getElementStyle(input, 'color'), 'readonly color').not.toBe(initialColor);
-      expect(await getElementStyle(input, 'borderColor'), 'readonly border').not.toBe(initialBorderColor);
-      expect(await getElementStyle(input, 'backgroundColor'), 'readonly backgroundColor').not.toBe(
-        initialBackgroundColor
-      );
-      expect(await isButtonDisabled()).toBe(true);
+      expect(await isButtonDisabled(button)).toBe(true);
+      expect(await getElementStyle(button, 'cursor'), 'disabled cursor').toBe('not-allowed');
 
       await setProperty(input, 'readOnly', false);
       await waitForStencilLifecycle(page);
       await page.waitForTimeout(CSS_TRANSITION_DURATION);
 
-      expect(await getElementStyle(input, 'color'), 'not readonly color').toBe(initialColor);
-      expect(await getElementStyle(input, 'borderColor'), 'not readonly border').toBe(initialBorderColor);
-      expect(await getElementStyle(input, 'backgroundColor'), 'not readonly backgroundColor').toBe(
-        initialBackgroundColor
-      );
-      expect(await isButtonDisabled()).toBe(false);
-    });
-
-    it('should disable search button when input is set to disabled and readonly programmatically', async () => {
-      await initTextField({ type: 'search', isWrappedInForm: true });
-      const input = await getInput();
-      const button = await getSubmitButton();
-
-      const isButtonDisabled = () => getProperty(button, 'disabled');
-
-      await setProperty(input, 'disabled', true);
-      await waitForStencilLifecycle(page);
-      await page.waitForTimeout(CSS_TRANSITION_DURATION);
-
-      const disabledBorderColor = await getElementStyle(input, 'borderColor');
-      const disabledBackgroundColor = await getElementStyle(input, 'backgroundColor');
-
-      expect(await isButtonDisabled()).toBe(true);
-
-      await setProperty(input, 'readOnly', true);
-      await waitForStencilLifecycle(page);
-      await page.waitForTimeout(CSS_TRANSITION_DURATION);
-
-      expect(await getElementStyle(input, 'borderColor'), 'readonly and disabled border').not.toBe(disabledBorderColor);
-      expect(await getElementStyle(input, 'backgroundColor'), 'readonly and disabled backgroundColor').not.toBe(
-        disabledBackgroundColor
-      );
+      expect(await isButtonDisabled(button)).toBe(false);
+      expect(await getElementStyle(button, 'cursor'), 'final cursor').toBe('pointer');
     });
 
     it('should submit parent form on search button click', async () => {
