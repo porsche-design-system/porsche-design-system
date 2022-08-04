@@ -158,7 +158,7 @@ it.each<TagName>(tagNamesWithJss)(
     if (component.componentWillRender) {
       spy.mockClear(); // might contain something from previous call already
 
-      // some components like require a parent and certain props in order to work
+      // some components require a parent and certain props in order to work
       addParentAndSetRequiredProps(tagName, component);
 
       try {

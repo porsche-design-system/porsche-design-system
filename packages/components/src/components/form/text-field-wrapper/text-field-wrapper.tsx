@@ -1,4 +1,4 @@
-import { Component, Element, forceUpdate, h, Host, JSX, Prop, State } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, forceUpdate, h, Host, JSX, Prop, State } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -26,6 +26,7 @@ import {
   addInputEventListenerForSearch,
   dispatchInputEvent,
   hasCounterAndIsTypeText,
+  hasLocateAction,
   hasUnitAndIsTypeTextOrNumber,
   isType,
   isWithinForm,
@@ -35,6 +36,7 @@ import {
 } from './text-field-wrapper-utils';
 import { Required } from '../../common/required/required';
 import { addInputEventListenerForCounter } from '../form-utils';
+import type { IconName } from '../../../types';
 
 const propTypes: PropTypes<typeof TextFieldWrapper> = {
   label: AllowedTypes.string,
@@ -45,6 +47,8 @@ const propTypes: PropTypes<typeof TextFieldWrapper> = {
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   showCharacterCount: AllowedTypes.boolean,
+  actionIcon: AllowedTypes.oneOf<Extract<IconName, 'locate'>>(['locate', undefined]),
+  actionLoading: AllowedTypes.boolean,
 };
 
 @Component({
@@ -78,6 +82,15 @@ export class TextFieldWrapper {
   /** Show or hide max character count. */
   @Prop() public showCharacterCount?: boolean = true;
 
+  /** Action icon can be set to `locate` for `input type="search"` in order to display an action button. */
+  @Prop() public actionIcon?: Extract<IconName, 'locate'>;
+
+  /** Disables the action button and shows a loading indicator. No events will be triggered while loading state is active. */
+  @Prop() public actionLoading?: boolean = false;
+
+  /** Emitted when the action button is clicked. */
+  @Event({ bubbles: false }) public action?: EventEmitter<void>;
+
   @State() private showPassword = false;
 
   @State() private isClearable = false;
@@ -88,6 +101,7 @@ export class TextFieldWrapper {
   private isSearch: boolean;
   private isPassword: boolean;
   private isWithinForm: boolean;
+  private hasAction: boolean;
   private hasCounter: boolean;
   private isCounterVisible: boolean;
   private hasUnit: boolean;
@@ -108,6 +122,7 @@ export class TextFieldWrapper {
     this.isSearch = isType(this.input.type, 'search');
     this.isPassword = isType(this.input.type, 'password');
     this.isWithinForm = isWithinForm(this.host);
+    this.hasAction = hasLocateAction(this.actionIcon);
     this.hasCounter = hasCounterAndIsTypeText(this.input);
     this.isCounterVisible = this.showCharacterCount && this.hasCounter;
     this.hasUnit = !this.isCounterVisible && hasUnitAndIsTypeTextOrNumber(this.input, this.unit);
@@ -135,6 +150,7 @@ export class TextFieldWrapper {
   public componentWillRender(): void {
     validateProps(this, propTypes);
     throwIfUnitLengthExceeded(this.unit);
+
     attachComponentCss(
       this.host,
       getComponentCss,
@@ -144,7 +160,9 @@ export class TextFieldWrapper {
       this.hasUnit || this.isCounterVisible,
       this.isCounterVisible ? 'suffix' : this.unitPosition,
       this.isPassword ? 'password' : this.input.type,
-      this.isWithinForm
+      this.isWithinForm,
+      this.hasAction,
+      this.hasAction && this.actionLoading
     );
   }
 
@@ -170,6 +188,7 @@ export class TextFieldWrapper {
 
   public render(): JSX.Element {
     const { readOnly, disabled } = this.input;
+    const disabledOrReadOnly = disabled || readOnly;
 
     const labelProps = {
       tag: 'span',
@@ -226,21 +245,36 @@ export class TextFieldWrapper {
             this.isSearch && [
               <button
                 type="button"
-                onClick={this.onClear}
-                disabled={disabled || readOnly}
-                hidden={!this.isClearable}
                 tabIndex={-1}
+                hidden={!this.isClearable}
+                disabled={disabledOrReadOnly}
+                onClick={this.onClear}
               >
-                <span class="sr-only">Clear</span>
                 <PrefixedTagNames.pIcon name="close" {...iconProps} />
               </button>,
+              this.hasAction && (
+                <button
+                  type="button"
+                  hidden={this.isClearable}
+                  disabled={disabledOrReadOnly}
+                  onClick={!this.actionLoading ? () => this.action.emit() : null}
+                >
+                  <span class="sr-only">Locate me</span>
+                  {this.actionLoading ? (
+                    <PrefixedTagNames.pSpinner size="inherit" />
+                  ) : (
+                    // hardcoded locate icon
+                    <PrefixedTagNames.pIcon name="locate" {...iconProps} />
+                  )}
+                </button>
+              ),
               this.isWithinForm ? (
-                <button type="submit" onClick={this.onSubmit} disabled={disabled || readOnly}>
+                <button type="submit" disabled={disabledOrReadOnly} onClick={this.onSubmit}>
                   <span class="sr-only">Search</span>
                   <PrefixedTagNames.pIcon name="search" {...iconProps} />
                 </button>
               ) : (
-                <PrefixedTagNames.pIcon name="search" {...iconProps} />
+                <PrefixedTagNames.pIcon class="icon" name="search" {...iconProps} />
               ),
             ]
           )}

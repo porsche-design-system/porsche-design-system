@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import type { TabChangeEvent } from '@porsche-design-system/components-angular';
 
 @Component({
@@ -39,6 +39,7 @@ import type { TabChangeEvent } from '@porsche-design-system/components-angular';
       </div>
     </ng-container>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabsBarExampleComponent {
   tabIndex: number = 0;
