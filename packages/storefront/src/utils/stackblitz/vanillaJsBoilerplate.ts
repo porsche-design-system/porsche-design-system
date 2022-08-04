@@ -10,7 +10,7 @@ import {
   dataAdvanced,
   headAdvanced,
 } from '@porsche-design-system/shared';
-import { getAdditionalDependencies } from '@/utils/stackblitz/helper';
+import { getAdditionalDependencies, isTable } from '@/utils/stackblitz/helper';
 import { convertMarkup } from '@/utils';
 
 const sharedImport = {
@@ -22,10 +22,8 @@ const sharedImport = {
   headAdvanced,
 };
 
-const getIndexHtmlMarkup = (markup: string, sharedTableData?: string): string => {
-  return sharedTableData
-    ? extendMarkupWithSharedTableData(markup, sharedTableData)
-    : convertMarkup(markup, 'vanilla-js');
+const getIndexHtmlMarkup = (markup: string, isTable: boolean): string => {
+  return isTable ? extendMarkupWithSharedTableData(markup) : convertMarkup(markup, 'vanilla-js');
 };
 
 const getIndexJsMarkup = (markup: string, additionalDependencies?: string[]): string => `import './style.css'
@@ -40,7 +38,8 @@ IMask`
 porscheDesignSystem.load();
 `;
 
-const extendMarkupWithSharedTableData = (markup: string, sharedTableData: string): string => {
+const extendMarkupWithSharedTableData = (markup: string): string => {
+  const [, sharedTableData] = markup.match(/const { ((?:[A-z]+,* )+)} = await getHeadAndData\(\);/) ?? [];
   const importVariables = sharedTableData.replace(/\s/g, '').split(',') as [
     'headBasic' | 'dataBasic' | 'headSorting' | 'dataSorting' | 'dataAdvanced' | 'headAdvanced'
   ];
@@ -60,7 +59,7 @@ const getHeadAndData = () => {
 export const getVanillaJsProjectAndOpenOptions = (
   props: StackBlitzFrameworkOpts
 ): { project: Project; openOptions: OpenOptions } => {
-  const { markup, description, title, bodyStyles, additionalDependencies } = props;
+  const { markup, description, title, bodyStyles, pdsComponents, additionalDependencies } = props;
   const [, sharedTableData] = markup.match(/const { ((?:[A-z]+,* )+)} = await getHeadAndData\(\);/) ?? [];
 
   const dependenciesMap: DependenciesMap = {
@@ -71,7 +70,7 @@ export const getVanillaJsProjectAndOpenOptions = (
 
   const project: Project = {
     files: {
-      'index.html': getIndexHtmlMarkup(markup, sharedTableData),
+      'index.html': getIndexHtmlMarkup(markup, isTable(pdsComponents)),
       'index.js': getIndexJsMarkup(markup, additionalDependencies),
       'style.css': bodyStyles,
     },

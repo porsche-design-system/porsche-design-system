@@ -16,12 +16,6 @@ export type OpenInStackBlitzOpts = {
   additionalDependencies?: string[];
 };
 
-export const getStackBlitzMarkup = (
-  hasFrameworkMarkup: boolean,
-  markup: string,
-  framework: FrameworksWithoutShared
-): string => (hasFrameworkMarkup ? markup : convertMarkup(markup, framework));
-
 // TODO: unit test
 export const openInStackBlitz = (props: OpenInStackBlitzOpts): void => {
   const { markup, framework, theme, hasFrameworkMarkup, additionalDependencies, colorScheme } = props;

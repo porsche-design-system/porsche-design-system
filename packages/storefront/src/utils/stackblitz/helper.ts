@@ -28,7 +28,6 @@ export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | '
   pdsComponents: string[];
 };
 
-// TODO: unit test
 export const replaceSharedTableImports = (markup: string): string => {
   const sharedImportRegex = /import { ((?:[A-z]+,* )+)} from '@porsche-design-system\/shared';/;
   const [, sharedImports] = markup.match(sharedImportRegex) ?? [];
@@ -57,12 +56,10 @@ export const getAdditionalDependencies = (
     .map((dep) => dependenciesMap[dep])
     .reduce((result, current) => Object.assign(result, current), {});
 
-// TODO: unit test
 export const isTable = (components: string[]): boolean => components[0].includes('table');
 
-// TODO: unit test
 export const getPdsComponents = (markup: string): string[] =>
-  Array.from(markup.matchAll(/<([P|p-][\w-]*)/g) ?? [])
+  Array.from(markup.matchAll(/<(P|p-[\w-]*)/g) ?? [])
     .map(([, x]) => x)
     .filter((tagName, idx, arr) => arr.findIndex((t) => t === tagName) === idx);
 
