@@ -41,8 +41,7 @@ export const replaceSharedTableImports = (markup: string): string => {
   return markup.replace(
     /import { (?:[A-z]+,* )+} from '@porsche-design-system\/shared';/,
     `
-            ${importVariables.map((x) => `const ${x} = ${JSON.stringify(sharedImport[x])};`).join('\n')}
-`
+${importVariables.map((x) => `const ${x} = ${JSON.stringify(sharedImport[x])};`).join('\n')}`
   );
 };
 
@@ -56,10 +55,10 @@ export const getAdditionalDependencies = (
     .map((dep) => dependenciesMap[dep])
     .reduce((result, current) => Object.assign(result, current), {});
 
-export const isTable = (components: string[]): boolean => components[0].includes('table');
+export const isTable = (components: string[]): boolean => !!components[0].match(/(?:P|p-)[Tt]able/);
 
 export const getPdsComponents = (markup: string): string[] =>
-  Array.from(markup.matchAll(/<(P|p-[\w-]*)/g) ?? [])
+  Array.from(markup.matchAll(/<((?:P|p-)+[\w-]*)/g) ?? [])
     .map(([, x]) => x)
     .filter((tagName, idx, arr) => arr.findIndex((t) => t === tagName) === idx);
 
