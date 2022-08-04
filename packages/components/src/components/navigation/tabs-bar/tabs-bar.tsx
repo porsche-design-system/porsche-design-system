@@ -79,6 +79,10 @@ export class TabsBar {
 
   @Watch('activeTabIndex')
   public activeTabHandler(newValue: number, oldValue: number): void {
+    // can be null if removeAttribute() is used
+    if (newValue === null) {
+      this.activeTabIndex = undefined;
+    }
     this.prevActiveTabIndex = oldValue;
     this.direction = newValue > oldValue || oldValue === undefined ? 'next' : 'prev';
     this.scrollActiveTabIntoView();
