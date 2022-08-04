@@ -1,9 +1,9 @@
 import type { JssStyle, Styles } from 'jss';
-import type { Theme } from '../types';
 import type { PropertiesHyphen } from 'csstype';
 import { fontWeight } from '@porsche-design-system/utilities-v2';
 import { getThemedColors } from './';
 import { hoverMediaQuery } from './hover-media-query';
+import type { Theme } from '../types';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
 const transitionTimingFunction = 'ease';
@@ -11,16 +11,7 @@ const transitionTimingFunction = 'ease';
 export const getTransition = (cssProperty: keyof PropertiesHyphen): string =>
   `${cssProperty} ${transitionDuration} ${transitionTimingFunction}`;
 
-export const pxToRem = (px: number): number => px / 16;
-export const pxToRemWithUnit = (px: number): string => `${pxToRem(px)}rem`;
-
-export const contentWrapperVars = {
-  maxWidth: pxToRemWithUnit(1536),
-  maxWidthExtended: pxToRemWithUnit(1920),
-  margin: '7vw',
-  marginXl: '10vw',
-  marginXxl: pxToRemWithUnit(192),
-};
+export const pxToRemWithUnit = (px: number): string => `${px / 16}rem`;
 
 export const addImportantToRule = (value: any): string => `${value} !important`;
 

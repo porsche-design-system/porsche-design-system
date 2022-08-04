@@ -1,4 +1,4 @@
-import type { BreakpointCustomizable } from '../../../utils';
+import type { BreakpointCustomizable } from '../../../types';
 import { getTagName, observeChildren, unobserveChildren } from '../../../utils';
 import { pxToRemWithUnit } from '../../../styles';
 import { Accordion } from './accordion';

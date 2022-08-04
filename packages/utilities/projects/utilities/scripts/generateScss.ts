@@ -2,6 +2,11 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as prettier from 'prettier';
 import * as font from '../src/js/font';
+import * as grid from '../src/js/grid/grid';
+import * as gridGap from '../src/js/grid/grid-gap';
+import * as gridMinWidth from '../src/js/grid/grid-width';
+import * as gridMaxWidth from '../src/js/grid/grid-width';
+import * as gridSafeZone from '../src/js/grid/grid-safe-zone';
 import * as theme from '../src/js/theme';
 import * as spacing from '../src/js/spacing';
 import * as colorExternal from '../src/js/colorExternal';
@@ -64,7 +69,7 @@ const generateMixins = (mixins: Mixins): void => {
       .map(
         ([k, v]) =>
           `@mixin ${paramCase(`pds-${k}`)} {${getCss({ _key_: v }).replace(
-            /\._key_ {([A-Za-z0-9:\-\/.'"\[\]()%,;\s]*)}/g, // search for styles only
+            /\._key_ {([A-Za-z0-9:\-\/.'"\[\]()%,;\s*]*)}/g, // search for styles only
             '$1'
           )}}`
       )
@@ -75,5 +80,15 @@ const generateMixins = (mixins: Mixins): void => {
 };
 
 cleanLib();
-generateVariables({ font, theme, spacing, colorExternal, breakpoint });
-generateMixins({ heading, text });
+generateVariables({
+  font,
+  theme,
+  spacing,
+  colorExternal,
+  breakpoint,
+  gridGap,
+  gridMinWidth,
+  gridMaxWidth,
+  gridSafeZone,
+});
+generateMixins({ heading, text, grid });

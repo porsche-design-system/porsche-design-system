@@ -1,4 +1,4 @@
-import { BreakpointCustomizable } from '../../../../utils';
+import { BreakpointCustomizable } from '../../../../types';
 
 export const FLEX_ITEM_WIDTHS = [
   'auto',
