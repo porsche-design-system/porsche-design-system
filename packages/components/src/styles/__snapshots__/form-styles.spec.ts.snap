@@ -50,7 +50,7 @@ Object {
     "color": "#626669",
   },
   "@media(hover:hover)": Object {
-    "::slotted(input:hover)": Object {
+    "::slotted(input:not(:disabled):hover)": Object {
       "borderColor": "#a30000",
     },
   },
@@ -107,7 +107,7 @@ Object {
     "color": "#626669",
   },
   "@media(hover:hover)": Object {
-    "::slotted(input:hover)": Object {
+    "::slotted(input:not(:disabled):hover)": Object {
       "borderColor": "#000",
     },
   },
@@ -164,7 +164,7 @@ Object {
     "color": "#626669",
   },
   "@media(hover:hover)": Object {
-    "::slotted(input:hover)": Object {
+    "::slotted(input:not(:disabled):hover)": Object {
       "borderColor": "#014d0c",
     },
   },
@@ -211,7 +211,7 @@ Object {
     "outlineColor": "#fc1717",
   },
   "@media(hover:hover)": Object {
-    "::slotted(select:hover)": Object {
+    "::slotted(select:not(:disabled):hover)": Object {
       "borderColor": "#d30303",
     },
   },
@@ -258,7 +258,7 @@ Object {
     "outlineColor": "#b0b1b2",
   },
   "@media(hover:hover)": Object {
-    "::slotted(select:hover)": Object {
+    "::slotted(select:not(:disabled):hover)": Object {
       "borderColor": "#e3e4e5",
     },
   },
@@ -305,7 +305,7 @@ Object {
     "outlineColor": "#01ba1d",
   },
   "@media(hover:hover)": Object {
-    "::slotted(select:hover)": Object {
+    "::slotted(select:not(:disabled):hover)": Object {
       "borderColor": "#017d14",
     },
   },
@@ -361,7 +361,7 @@ Object {
     "color": "#b0b1b2",
   },
   "@media(hover:hover)": Object {
-    "::slotted(textarea:hover)": Object {
+    "::slotted(textarea:not(:disabled):hover)": Object {
       "borderColor": "#d30303",
     },
   },
@@ -417,7 +417,7 @@ Object {
     "color": "#b0b1b2",
   },
   "@media(hover:hover)": Object {
-    "::slotted(textarea:hover)": Object {
+    "::slotted(textarea:not(:disabled):hover)": Object {
       "borderColor": "#d30303",
     },
   },
@@ -473,7 +473,7 @@ Object {
     "color": "#b0b1b2",
   },
   "@media(hover:hover)": Object {
-    "::slotted(textarea:hover)": Object {
+    "::slotted(textarea:not(:disabled):hover)": Object {
       "borderColor": "#e3e4e5",
     },
   },
@@ -529,7 +529,7 @@ Object {
     "color": "#b0b1b2",
   },
   "@media(hover:hover)": Object {
-    "::slotted(textarea:hover)": Object {
+    "::slotted(textarea:not(:disabled):hover)": Object {
       "borderColor": "#017d14",
     },
   },
