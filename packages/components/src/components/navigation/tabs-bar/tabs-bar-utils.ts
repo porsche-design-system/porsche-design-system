@@ -94,8 +94,8 @@ export const setBarStyle = (
   }
   let transformation: string;
 
-  if (activeTabIndex === undefined) {
-    if (prevActiveTabIndex === undefined) {
+  if (activeTabIndex === undefined || activeTabIndex === null) {
+    if (prevActiveTabIndex === undefined && activeTabIndex === null) {
       // handle active to removed case
       removeEnableTransitionClass(barElement);
       transformation = getTransformationToInactive();
