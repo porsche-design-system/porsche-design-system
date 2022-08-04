@@ -1,6 +1,6 @@
-import { mediaQueryMin } from '@porsche-design-system/utilities-v2';
+import { gridSafeZone, mediaQueryMin } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../../../utils';
-import { addImportantToEachRule, contentWrapperVars, pxToRemWithUnit } from '../../../../styles';
+import { addImportantToEachRule, pxToRemWithUnit } from '../../../../styles';
 import { TOAST_Z_INDEX } from '../../../../constants';
 import { getAnimationIn, getAnimationOut, getKeyframesMobile } from '../../banner/banner-styles';
 import { TOAST_ANIMATION_DURATION_VAR } from './toast-manager';
@@ -9,15 +9,13 @@ const toastPositionBottomVarPublic = '--p-toast-position-bottom'; // CSS custom 
 const toastPositionBottomVarInternal = `${toastPositionBottomVarPublic}-internal`;
 export const toastCloseClassName = 'close';
 
-const { margin } = contentWrapperVars;
-
 export const getComponentCss = (): string => {
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
         position: 'fixed',
-        left: margin,
-        right: margin,
+        left: gridSafeZone.base,
+        right: gridSafeZone.base,
         // Needs a not overwritable internal css variable to cover default position depending on viewport size and to handle animation properly.
         // In addition, a public css variable can be passed to overwrite the default position.
         [toastPositionBottomVarInternal]: `var(${toastPositionBottomVarPublic}, ${pxToRemWithUnit(56)})`,

@@ -1,6 +1,6 @@
 export * from './a11y';
 export * from './attribute-observer';
-export * from './breakpoint-customizable';
+export { BREAKPOINTS, parseJSON } from './breakpoint-customizable';
 export * from './button-handling';
 export * from './button-link-pure-utils';
 export * from './change-case';
@@ -18,7 +18,15 @@ export * from './slotted-styles';
 export * from './ssr-handling';
 export * from './sync';
 export * from './tag-name';
-export * from './theme';
+export {
+  getDataThemeDarkAttribute,
+  isThemeDark,
+  isThemeLightElectric,
+  isThemeDarkElectric,
+  THEMES,
+  THEMES_EXTENDED_ELECTRIC,
+  THEMES_EXTENDED_ELECTRIC_DARK,
+} from './theme';
 export * from './transition-listener';
 export * from './typography';
 export * from './validation';

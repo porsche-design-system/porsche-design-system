@@ -1,9 +1,8 @@
-import type { LinkTarget, SelectedAriaAttributes } from '../../../types';
+import type { LinkTarget, PropTypes, SelectedAriaAttributes } from '../../../types';
 import type { MarqueAriaAttributes, MarqueSize } from './marque-utils';
 import { buildSrcSet, cdnBaseUrl, getInnerManifest, MARQUE_ARIA_ATTRIBUTES, MARQUE_SIZES } from './marque-utils';
 import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, parseAndGetAriaAttributes, validateProps } from '../../../utils';
-import type { PropTypes } from '../../../utils';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import { getComponentCss } from './marque-styles';
 

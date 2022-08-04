@@ -1,6 +1,6 @@
 import { Component, Element, h, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, validateProps } from '../../../utils';
-import type { PropTypes } from '../../../utils';
+import type { PropTypes } from '../../../types';
 import { getComponentCss } from './button-group-styles';
 import type { ButtonGroupDirection } from './button-group-utils';
 import { BUTTON_GROUP_DIRECTIONS } from './button-group-utils';

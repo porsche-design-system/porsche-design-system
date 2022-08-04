@@ -13,10 +13,9 @@ import {
   parseAndGetAriaAttributes,
   validateProps,
 } from '../../../utils';
-import type { PropTypes } from '../../../utils';
 import { getComponentCss, getSlottedCss } from './popover-styles';
 import type { PopoverDirection } from './popover-utils';
-import type { SelectedAriaAttributes } from '../../../types';
+import type { PropTypes, SelectedAriaAttributes } from '../../../types';
 
 const propTypes: PropTypes<typeof Popover> = {
   direction: AllowedTypes.oneOf<PopoverDirection>(POPOVER_DIRECTIONS),

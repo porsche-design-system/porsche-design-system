@@ -14,8 +14,7 @@ import {
   AllowedTypes,
   validateProps,
 } from '../../../utils';
-import type { PropTypes } from '../../../utils';
-import type { BreakpointCustomizable } from '../../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../../types';
 import { getComponentCss, getSlottedCss } from './radio-button-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
 import { Required } from '../../common/required/required';
