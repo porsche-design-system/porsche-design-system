@@ -51,7 +51,7 @@
     "concurrently": "^7.3.0",
     "jest-preset-angular": "^12.2.0",
     "local-web-server": "^5.2.1",
-    "ng-packagr": "^14.0.3",
+    "ng-packagr": "^14.1.0",
     "rollup": "^2.77.2",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
