@@ -17,7 +17,6 @@ describe('sanitizeActiveTabIndex()', () => {
   it.each([
     [undefined, 0, undefined],
     [null, 0, undefined],
-    ['asd', 0, undefined],
     [2, 0, undefined],
     [-5, 2, undefined],
     [5, 2, undefined],

@@ -72,6 +72,7 @@ to receive keyboard focus and the focus indicator must be styled accordingly.
     <option disabled>Select size</option>
     <option value="small">Small</option>
     <option value="medium">Medium</option>
+    <option value="{ base: 'small', l: 'medium' }">Responsive</option>
   </select>
 </Playground>
 

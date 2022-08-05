@@ -25,6 +25,7 @@ Every `p-tabs-item` holds a `slot` to display content which can be individually 
     <option disabled>Select size</option>
     <option value="small">Small</option>
     <option value="medium">Medium</option>
+    <option value="{ base: 'small', l: 'medium' }">Responsive</option>
   </select>
 </Playground>
 

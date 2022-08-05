@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`button-pure accessibility should expose accessibility tree description with slotted subline 1`] = `
+exports[`accessibility should expose accessibility tree description with slotted subline 1`] = `
 Object {
   "description": "Some Subline",
   "name": "Some label",
@@ -8,14 +8,14 @@ Object {
 }
 `;
 
-exports[`button-pure accessibility should expose correct accessibility name when hide-label prop is set 1`] = `
+exports[`accessibility should expose correct accessibility name when hide-label prop is set 1`] = `
 Object {
   "name": "Some label",
   "role": "button",
 }
 `;
 
-exports[`button-pure accessibility should expose correct accessibility tree if accessibility properties are set: Initial 1`] = `
+exports[`accessibility should expose correct accessibility tree if accessibility properties are set: Initial 1`] = `
 Object {
   "expanded": true,
   "haspopup": "menu",
@@ -24,7 +24,7 @@ Object {
 }
 `;
 
-exports[`button-pure accessibility should expose correct accessibility tree if accessibility properties are set: Pressed 1`] = `
+exports[`accessibility should expose correct accessibility tree if accessibility properties are set: Pressed 1`] = `
 Object {
   "name": "Some label",
   "pressed": true,
@@ -32,7 +32,7 @@ Object {
 }
 `;
 
-exports[`button-pure accessibility should expose correct initial accessibility tree properties 1`] = `
+exports[`accessibility should expose correct initial accessibility tree properties 1`] = `
 Object {
   "name": "Some label",
   "role": "button",
