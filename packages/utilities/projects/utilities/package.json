@@ -33,7 +33,7 @@
     "rollup": "^2.77.2",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
-    "sass": "^1.53.0",
+    "sass": "^1.54.3",
     "styled-components": "^5.3.5",
     "ts-jest": "^28.0.7",
     "ts-node": "^10.9.1",
