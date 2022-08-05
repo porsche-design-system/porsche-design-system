@@ -24,7 +24,7 @@ import { getComponentCss } from './tabs-styles';
 import { GRADIENT_COLOR_THEMES } from '../../../common/scroller/scroller-utils';
 
 const propTypes: PropTypes<typeof Tabs> = {
-  size: AllowedTypes.oneOf<TabSize>(TAB_SIZES),
+  size: AllowedTypes.breakpoint<TabSize>(TAB_SIZES),
   weight: AllowedTypes.oneOf<TabWeight>(TAB_WEIGHTS),
   theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
   gradientColorScheme: AllowedTypes.oneOf<TabGradientColorTheme>(GRADIENT_COLOR_THEMES),

@@ -36,7 +36,7 @@ contained in sections titled with a level 2 heading.
     <option disabled>Select size</option>
     <option value="small">Small</option>
     <option value="medium">Medium</option>
-    <option value="responsive">Responsive</option>
+    <option value="{ base: 'small', l: 'medium' }">Responsive</option>
   </select>
 </Playground>
 
@@ -91,12 +91,11 @@ export default class Code extends Vue {
 </p-accordion>`;
     }
   
-  get sizeMarkup() {
-    const size = this.size === 'responsive' ? "{ base: 'small', l: 'medium' }": this.size;
-    return `<p-accordion heading="Some Heading" tag="h3" size="${size}">
+  get sizeMarkup() {    
+    return `<p-accordion heading="Some Heading" tag="h3" size="${this.size}">
   ${this.content}
 </p-accordion>
-<p-accordion heading="Some Heading" tag="h3" size="${size}">
+<p-accordion heading="Some Heading" tag="h3" size="${this.size}">
   ${this.content}
 </p-accordion>`;
     }  

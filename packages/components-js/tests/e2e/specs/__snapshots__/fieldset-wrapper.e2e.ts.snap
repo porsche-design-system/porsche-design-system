@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`fieldset-wrapper accessibility should expose correct accessibility tree property if error state added programmatically 1`] = `
+exports[`accessibility should expose correct accessibility tree property if error state added programmatically 1`] = `
 Object {
   "children": Array [
     Object {
@@ -51,7 +51,7 @@ Object {
 }
 `;
 
-exports[`fieldset-wrapper accessibility should expose correct accessibility tree property in error state 1`] = `
+exports[`accessibility should expose correct accessibility tree property in error state 1`] = `
 Object {
   "children": Array [
     Object {
@@ -102,7 +102,7 @@ Object {
 }
 `;
 
-exports[`fieldset-wrapper accessibility should expose correct initial accessibility tree 1`] = `
+exports[`accessibility should expose correct initial accessibility tree 1`] = `
 Object {
   "name": "",
   "role": "group",

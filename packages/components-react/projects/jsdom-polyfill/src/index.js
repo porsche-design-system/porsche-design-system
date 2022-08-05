@@ -1,6 +1,7 @@
 // polyfills for features used by our components but unsupported within Jest (jsdom)
 require('construct-style-sheets-polyfill');
 require('intersection-observer');
+require('matchmedia-polyfill');
 require('scroll-behavior-polyfill');
 require('whatwg-fetch');
 global.ResizeObserver = require('@juggle/resize-observer').ResizeObserver;

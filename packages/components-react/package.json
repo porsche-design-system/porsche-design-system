@@ -25,9 +25,10 @@
   },
   "dependencies": {
     "@juggle/resize-observer": "^3.3.1",
-    "@porsche-design-system/components-react": "2.14.0-beta.0",
+    "@porsche-design-system/components-react": "2.15.0-beta.0",
     "construct-style-sheets-polyfill": "^3.1.0",
     "intersection-observer": "^0.12.2",
+    "matchmedia-polyfill": "^0.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-imask": "^6.4.2",
