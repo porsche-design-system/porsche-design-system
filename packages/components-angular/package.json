@@ -49,7 +49,7 @@
     "@porsche-design-system/shared": "0.0.0",
     "@types/node": "^18.6.4",
     "concurrently": "^7.2.2",
-    "jest-preset-angular": "^12.1.0",
+    "jest-preset-angular": "^12.2.0",
     "local-web-server": "^5.2.1",
     "ng-packagr": "^14.0.3",
     "rollup": "^2.77.2",
