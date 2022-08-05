@@ -100,6 +100,34 @@ export const TabsPage = (): JSX.Element => {
         </PTabs>
       </div>
 
+      <div className="playground light" title="should render tabs size BreakpointCustomizable on light background">
+        <PTabs
+          activeTabIndex={9}
+          size={{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }}
+        >
+          <PTabsItem label="Tab One">Tab Content 1</PTabsItem>
+          <PTabsItem label="Tab Two">Tab Content 2</PTabsItem>
+          <PTabsItem label="Tab Three">Tab Content 3</PTabsItem>
+          <PTabsItem label="Tab Four">Tab Content 4</PTabsItem>
+          <PTabsItem label="Tab Five">Tab Content 5</PTabsItem>
+          <PTabsItem label="Tab Six">Tab Content 6</PTabsItem>
+          <PTabsItem label="Tab Seven">Tab Content 7</PTabsItem>
+          <PTabsItem label="Tab Eight">Tab Content 8</PTabsItem>
+          <PTabsItem label="Tab Nine">Tab Content 9</PTabsItem>
+          <PTabsItem label="Tab Ten">Tab Content 10</PTabsItem>
+          <PTabsItem label="Tab Eleven">Tab Content 11</PTabsItem>
+          <PTabsItem label="Tab Twelve">Tab Content 12</PTabsItem>
+          <PTabsItem label="Tab Thirteen">Tab Content 13</PTabsItem>
+          <PTabsItem label="Tab Fourteen">Tab Content 14</PTabsItem>
+          <PTabsItem label="Tab Fifteen">Tab Content 15</PTabsItem>
+          <PTabsItem label="Tab Sixteen">Tab Content 16</PTabsItem>
+          <PTabsItem label="Tab Seventeen">Tab Content 17</PTabsItem>
+          <PTabsItem label="Tab Eighteen">Tab Content 18</PTabsItem>
+          <PTabsItem label="Tab Nineteen">Tab Content 19</PTabsItem>
+          <PTabsItem label="Tab Twenty">Tab Content 20</PTabsItem>
+        </PTabs>
+      </div>
+
       <div className="playground light" title="should render tabs semibold on light background">
         <PTabs weight="semibold">
           <PTabsItem label="Tab 1">Tab Content 1</PTabsItem>

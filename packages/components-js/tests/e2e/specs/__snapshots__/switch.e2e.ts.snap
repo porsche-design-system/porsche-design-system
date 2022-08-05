@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`switch accessibility should expose correct initial accessibility tree 1`] = `
+exports[`accessibility should expose correct initial accessibility tree 1`] = `
 Object {
   "children": Array [
     Object {

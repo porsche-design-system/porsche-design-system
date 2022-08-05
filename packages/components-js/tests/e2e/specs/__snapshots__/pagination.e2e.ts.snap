@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`pagination accessibility should expose correct accessibility tree if disabled attribute on button next is toggled: If disabled 1`] = `
+exports[`accessibility should expose correct accessibility tree if disabled attribute on button next is toggled: If disabled 1`] = `
 Object {
   "disabled": true,
   "name": "Next page",
@@ -8,14 +8,14 @@ Object {
 }
 `;
 
-exports[`pagination accessibility should expose correct accessibility tree if disabled attribute on button next is toggled: If not disabled 1`] = `
+exports[`accessibility should expose correct accessibility tree if disabled attribute on button next is toggled: If not disabled 1`] = `
 Object {
   "name": "Next page",
   "role": "button",
 }
 `;
 
-exports[`pagination accessibility should expose correct initial accessibility tree 1`] = `
+exports[`accessibility should expose correct initial accessibility tree 1`] = `
 Object {
   "children": Array [
     Object {
