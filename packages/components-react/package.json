@@ -47,7 +47,7 @@
     "@types/node": "^18.6.4",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
-    "concurrently": "^7.2.2",
+    "concurrently": "^7.3.0",
     "globby": "^11.0.4",
     "local-web-server": "^5.2.1",
     "react-scripts": "^5.0.1",
