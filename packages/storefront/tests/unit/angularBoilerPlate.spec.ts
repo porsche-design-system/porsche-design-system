@@ -9,11 +9,11 @@ import {
   getModuleTsMarkup,
   usesIMask,
 } from '../../src/utils/stackblitz/angularBoilerplate';
+import { StackBlitzFrameworkOpts } from '../../src/utils';
 
 import * as angularBoilerplateUtils from '../../src/utils/stackblitz/angularBoilerplate';
 import * as stackBlitzHelperUtils from '../../src/utils/stackblitz/helper';
 import * as formattingUtils from '../../src/utils/formatting';
-import { StackBlitzFrameworkOpts } from '../../src/utils/stackblitz/helper';
 
 describe('getCleanedAngularMarkup()', () => {
   it('should replace selector and class name correctly', () => {

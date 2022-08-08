@@ -6,7 +6,8 @@ import {
   getVanillaJsDependencies,
   getVanillaJsProjectAndOpenOptions,
 } from '../../src/utils/stackblitz/vanillaJsBoilerplate';
-import { isTable, StackBlitzFrameworkOpts } from '../../src/utils/stackblitz/helper';
+import { isTable } from '../../src/utils/stackblitz/helper';
+import type { StackBlitzFrameworkOpts } from '../../src/utils';
 
 import * as vanillaJsBoilerplateUtils from '../../src/utils/stackblitz/vanillaJsBoilerplate';
 import * as formattingUtils from '../../src/utils/formatting';

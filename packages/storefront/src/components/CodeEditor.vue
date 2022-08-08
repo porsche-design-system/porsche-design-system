@@ -22,8 +22,8 @@
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
   import { Theme } from '@/models';
-  import { openInStackBlitz } from '@/utils/stackblitz/openInStackBlitz';
-  import type { FrameworksWithoutShared } from '@/utils/stackblitz/helper';
+  import { openInStackBlitz } from '@/utils';
+  import type { FrameworksWithoutShared } from '@/utils';
 
   @Component
   export default class CodeEditor extends Vue {
