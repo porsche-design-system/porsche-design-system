@@ -391,12 +391,10 @@ const swiperNavigationCss = `
 }`;
 
 export const getComponentCss = (
-  disablePagination: BreakpointCustomizable<boolean>,
+  _disablePagination: BreakpointCustomizable<boolean>,
   theme: ThemeExtendedElectric
 ): string => {
-  console.log(disablePagination, theme);
   const { brandColor } = getThemedColors(theme);
-  // const border = `1px solid ${contrastLowColor}`;
 
   return (
     getCss({
