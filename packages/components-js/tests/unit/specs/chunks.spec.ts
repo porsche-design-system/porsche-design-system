@@ -234,7 +234,7 @@ describe('chunk content', () => {
   });
 
   describe('ResizeObserver', () => {
-    it.each(chunkFileNames.filter((x) => !x.includes('accordion')))(
+    it.each(chunkFileNames.filter((x) => !x.includes('accordion') && !x.includes('carousel')))(
       'should not contain ResizeObserver in %s',
       (chunkFileName) => {
         const content = getChunkContent(chunkFileName);
@@ -242,7 +242,7 @@ describe('chunk content', () => {
       }
     );
 
-    it.each(chunkFileNames.filter((x) => x.includes('accordion')))(
+    it.each(chunkFileNames.filter((x) => x.includes('accordion') || x.includes('carousel')))(
       'should contain ResizeObserver in %s',
       (chunkFileName) => {
         const content = getChunkContent(chunkFileName);
@@ -259,15 +259,19 @@ describe('chunk content', () => {
   });
 
   describe('lowercase webkit jss property', () => {
-    it.each(chunkFileNames)('should not contain lowercase webkit jss property in %s', (chunkFileName) => {
-      const content = getChunkContent(chunkFileName);
-      expect((content.match(/webkit[A-Z][a-z]+/) || []).length).toBe(0);
-    });
+    it.each(chunkFileNames.filter((x) => !x.includes('carousel')))(
+      'should not contain lowercase webkit jss property in %s',
+      (chunkFileName) => {
+        const content = getChunkContent(chunkFileName);
+        expect((content.match(/webkit[A-Z][a-z]+/) || []).length).toBe(0);
+      }
+    );
   });
 
   describe('hex colors', () => {
     const hexColorRegEx = /#[a-f\d]{3,6}/;
     const componentsWithHexColors: ComponentChunkName[] = [
+      'carousel',
       'link-social',
       'select-wrapper',
       'text-field-wrapper',
