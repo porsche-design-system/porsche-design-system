@@ -41,7 +41,7 @@ import type { TabChangeEvent } from '@porsche-design-system/components-angular';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TabsBarExampleComponent {
+export class TabsBarExampleAccessibilityComponent {
   tabIndex: number = 0;
   tabPanels: string[] = ['One', 'Two', 'Three'];
 
