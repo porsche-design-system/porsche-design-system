@@ -61,8 +61,8 @@ export class AppModule {}`;
 
 const dependenciesMap: StackBlitzDependencyMap = {
   imask: {
-    imask: `${dependencies['angular-imask']}`,
-    'angular-imask': `${dependencies['angular-imask']}`,
+    imask: dependencies['angular-imask'],
+    'angular-imask': dependencies['angular-imask'],
   },
 };
 
