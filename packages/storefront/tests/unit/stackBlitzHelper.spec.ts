@@ -5,7 +5,7 @@ import {
   getBackgroundColor,
   getPdsComponents,
   isTable,
-  replaceSharedTableImports,
+  inlineSharedImports,
 } from '../../src/utils/stackblitz/helper';
 
 describe('getBackgroundColor()', () => {
@@ -57,21 +57,17 @@ describe('isTable()', () => {
 describe('replaceSharedTableImports()', () => {
   it('should correctly replace shared import for table basic', () => {
     expect(
-      replaceSharedTableImports("import { dataBasic, headBasic } from '@porsche-design-system/shared';")
+      inlineSharedImports("import { dataBasic, headBasic } from '@porsche-design-system/shared';")
     ).toMatchSnapshot();
   });
   it('should correctly replace shared import for table sorting', () => {
     expect(
-      replaceSharedTableImports(
-        "import { dataSorting, DataSorting, headSorting } from '@porsche-design-system/shared';"
-      )
+      inlineSharedImports("import { dataSorting, DataSorting, headSorting } from '@porsche-design-system/shared';")
     ).toMatchSnapshot();
   });
   it('should correctly replace shared import for table advanced', () => {
     expect(
-      replaceSharedTableImports(
-        "import { dataAdvanced, DataAdvanced, headAdvanced } from '@porsche-design-system/shared';"
-      )
+      inlineSharedImports("import { dataAdvanced, DataAdvanced, headAdvanced } from '@porsche-design-system/shared';")
     ).toMatchSnapshot();
   });
 });
@@ -79,7 +75,7 @@ describe('replaceSharedTableImports()', () => {
 describe('getPdsComponents()', () => {
   it('should return all Pds components without duplicates', () => {
     const markup =
-      '<p-text>Some Text</p-text><p-accordion><p-text>Some Text</p-text></p-accordion><p-table></p-table><button></button><p></p>';
+      '<p-text>Some Text</p-text><p-accordion><p-text>Some Text</p-text></p-accordion><p-table></p-table><button></button><p></p><PText></PText>';
     expect(getPdsComponents(markup)).toEqual(['p-text', 'p-accordion', 'p-table']);
   });
 });

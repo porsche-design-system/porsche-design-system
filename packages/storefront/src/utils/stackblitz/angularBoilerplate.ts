@@ -1,10 +1,15 @@
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
 import { dependencies } from '../../../../components-angular/package.json';
-import { getAdditionalDependencies, isTable } from '@/utils/stackblitz/helper';
-import { replaceSharedTableImports } from './helper';
+import {
+  AdditionalStackBlitzDependency,
+  getAdditionalDependencies,
+  GetStackblitzProjectAndOpenOptions,
+  isTable,
+} from '@/utils/stackblitz/helper';
+import { inlineSharedImports } from './helper';
 import { convertMarkup } from '@/utils/formatting';
-import type { DependenciesMap, StackBlitzFrameworkOpts } from '@/utils/stackblitz/helper';
-import type { Project, OpenOptions, ProjectDependencies } from '@stackblitz/sdk';
+import type { StackBlitzDependencyMap } from '@/utils/stackblitz/helper';
+import { StackblitzProjectDependencies } from '@/models';
 
 export const getCleanedAngularMarkup = (markup: string): string =>
   markup
@@ -14,7 +19,7 @@ export const getCleanedAngularMarkup = (markup: string): string =>
 export const getComponentTsFrameworkMarkup = (markup: string, isTable: boolean): string => {
   const cleanedMarkup = getCleanedAngularMarkup(markup);
 
-  return isTable ? replaceSharedTableImports(cleanedMarkup) : cleanedMarkup;
+  return isTable ? inlineSharedImports(cleanedMarkup) : cleanedMarkup;
 };
 
 export const getAppComponentTsDefaultMarkup = (markup: string): string =>
@@ -53,17 +58,21 @@ import { AppComponent } from './app.component';
 })
 export class AppModule {}`;
 
-export const getAngularDependencies = (usesImask: boolean, additionalDependencies?: string[]): ProjectDependencies => {
-  const dependenciesMap: DependenciesMap = {
-    IMask: {
-      imask: `${dependencies['angular-imask']}`,
-      'angular-imask': `${dependencies['angular-imask']}`,
-    },
-  };
+const dependenciesMap: StackBlitzDependencyMap = {
+  imask: {
+    imask: `${dependencies['angular-imask']}`,
+    'angular-imask': `${dependencies['angular-imask']}`,
+  },
+};
 
+export const getAngularDependencies = (
+  usesImask: boolean,
+  additionalStackBlitzDependencies?: AdditionalStackBlitzDependency[]
+): StackblitzProjectDependencies => {
   return {
     '@porsche-design-system/components-angular': `${pdsVersion}`,
-    ...(additionalDependencies && getAdditionalDependencies(additionalDependencies, dependenciesMap)),
+    ...(additionalStackBlitzDependencies &&
+      getAdditionalDependencies(additionalStackBlitzDependencies, dependenciesMap)),
   };
 };
 
@@ -71,14 +80,20 @@ export const usesIMask = (additionalDependencies?: string[]): boolean => {
   return additionalDependencies ? additionalDependencies.filter((x) => x === 'IMask').length > 0 : false;
 };
 
-export const getAngularProjectAndOpenOptions = (
-  props: StackBlitzFrameworkOpts
-): { project: Project; openOptions: OpenOptions } => {
-  const { markup, description, title, hasFrameworkMarkup, bodyStyles, pdsComponents, additionalDependencies } = props;
+export const getAngularProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
+  const {
+    markup,
+    description,
+    title,
+    hasFrameworkMarkup,
+    bodyStyles,
+    pdsComponents,
+    additionalStackBlitzDependencies,
+  } = opts;
 
-  const hasIMask = usesIMask(additionalDependencies);
+  const hasIMask = usesIMask(additionalStackBlitzDependencies);
 
-  const project: Project = {
+  return {
     files: {
       'index.html': `<porsche-design-system-app></porsche-design-system-app>
 ${`<style>${bodyStyles}</style>`}`,
@@ -89,10 +104,7 @@ ${`<style>${bodyStyles}</style>`}`,
     template: 'angular-cli',
     title,
     description,
-    dependencies: getAngularDependencies(hasIMask, additionalDependencies),
+    dependencies: getAngularDependencies(hasIMask, additionalStackBlitzDependencies),
+    openOptions: {},
   };
-
-  const openOptions: OpenOptions = {};
-
-  return { project, openOptions };
 };
