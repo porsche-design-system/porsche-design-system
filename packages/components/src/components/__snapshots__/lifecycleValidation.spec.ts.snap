@@ -60,6 +60,13 @@ Object {
 }
 `;
 
+exports[`should call validateProps() with correct parameters via componentWillRender for p-carousel: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "disablePagination": "breakpoint",
+  "theme": "oneOf",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via componentWillRender for p-checkbox-wrapper: propTypes with ValidatorFunctions 1`] = `
 Object {
   "hideLabel": "breakpoint",
