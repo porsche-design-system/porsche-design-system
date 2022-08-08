@@ -1,7 +1,7 @@
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
 import { devDependencies, dependencies } from '../../../../components-react/package.json';
 import { default as tsconfig } from '../../../../components-react/tsconfig.json';
-import { AdditionalStackBlitzDependency, getAdditionalDependencies, GetStackblitzProjectAndOpenOptions } from '@/utils';
+import { ExternalStackBlitzDependency, getExternalDependencies, GetStackblitzProjectAndOpenOptions } from '@/utils';
 import { inlineSharedImports, isTable } from './helper';
 import { convertMarkup } from '@/utils/formatting';
 import { pascalCase } from 'change-case';
@@ -69,7 +69,7 @@ const dependenciesMap: StackBlitzDependencyMap = {
 };
 
 export const getReactDependencies = (
-  additionalStackBlitzDependencies?: AdditionalStackBlitzDependency[]
+  externalStackBlitzDependencies?: ExternalStackBlitzDependency[]
 ): StackblitzProjectDependencies => {
   // TODO: remove interpolation / pick dependencies
   return {
@@ -78,21 +78,13 @@ export const getReactDependencies = (
     'react-dom': `${dependencies['react-dom']}`,
     '@types/react': `${devDependencies['@types/react']}`,
     '@types/react-dom': `${devDependencies['@types/react-dom']}`,
-    ...(additionalStackBlitzDependencies &&
-      getAdditionalDependencies(additionalStackBlitzDependencies, dependenciesMap)),
+    ...(externalStackBlitzDependencies && getExternalDependencies(externalStackBlitzDependencies, dependenciesMap)),
   };
 };
 
 export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
-  const {
-    markup,
-    description,
-    title,
-    hasFrameworkMarkup,
-    bodyStyles,
-    pdsComponents,
-    additionalStackBlitzDependencies,
-  } = opts;
+  const { markup, description, title, hasFrameworkMarkup, bodyStyles, pdsComponents, externalStackBlitzDependencies } =
+    opts;
 
   return {
     files: {
@@ -106,7 +98,7 @@ export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions =
     template: 'create-react-app',
     title,
     description,
-    dependencies: getReactDependencies(additionalStackBlitzDependencies),
+    dependencies: getReactDependencies(externalStackBlitzDependencies),
     openFile: 'App.tsx',
   };
 };

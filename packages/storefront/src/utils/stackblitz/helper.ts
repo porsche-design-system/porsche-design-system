@@ -2,8 +2,6 @@ import * as sharedData from '@porsche-design-system/shared';
 import {
   ColorScheme,
   Framework,
-  StackBlitzOpenOptions,
-  StackBlitzProject,
   StackBlitzProjectAndOpenOptions,
   StackblitzProjectDependencies,
   Theme,
@@ -35,13 +33,13 @@ ${importVariables.map((x) => `const ${x} = ${JSON.stringify(sharedData[x as keyo
   );
 };
 
-export type AdditionalStackBlitzDependency = 'imask';
+export type ExternalStackBlitzDependency = 'imask';
 
-export type StackBlitzDependencyMap = { [key in AdditionalStackBlitzDependency]: StackblitzProjectDependencies };
+export type StackBlitzDependencyMap = { [key in ExternalStackBlitzDependency]: StackblitzProjectDependencies };
 
 // TODO: validate if typing works from md files, otherwise validate
-export const getAdditionalDependencies = (
-  additionalDependencies: AdditionalStackBlitzDependency[],
+export const getExternalDependencies = (
+  additionalDependencies: ExternalStackBlitzDependency[],
   dependenciesMap: StackBlitzDependencyMap
 ): StackblitzProjectDependencies =>
   additionalDependencies.reduce(

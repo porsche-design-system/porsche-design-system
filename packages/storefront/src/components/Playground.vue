@@ -42,7 +42,7 @@
           :theme="theme"
           :framework="activeFramework"
           :has-framework-markup="hasFrameworkMarkup"
-          :additional-stack-blitz-dependencies="additionalStackBlitzDependencies"
+          :external-stack-blitz-dependencies="externalStackBlitzDependencies"
           :colorScheme="config.colorScheme"
         ></CodeEditor>
       </template>
@@ -57,7 +57,7 @@
   import CodeBlock from '@/components/CodeBlock.vue';
   import CodeEditor from '@/components/CodeEditor.vue';
   import type { ColorScheme, Framework, FrameworkMarkup, Theme } from '@/models';
-  import { AdditionalStackBlitzDependency, cleanMarkup, patchThemeIntoMarkup } from '@/utils';
+  import { ExternalStackBlitzDependency, cleanMarkup, patchThemeIntoMarkup } from '@/utils';
   import { componentMeta } from '@porsche-design-system/shared';
 
   export type PlaygroundConfig = {
@@ -93,7 +93,7 @@
     @Prop({ default: () => ({}) }) public config!: Partial<PlaygroundConfig>;
     @Prop({ default: () => ({}) }) public frameworkMarkup!: FrameworkMarkup;
     @Prop({ default: '' }) public markup!: string;
-    @Prop({ default: '' }) public additionalStackBlitzDependencies?: AdditionalStackBlitzDependency[];
+    @Prop({ default: '' }) public externalStackBlitzDependencies?: ExternalStackBlitzDependency[];
 
     public mounted(): void {
       this.syncThemeIntoDemoComponents();
