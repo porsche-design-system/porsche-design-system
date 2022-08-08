@@ -43,18 +43,6 @@ export const getIndexHtmlMarkup = (markup: string, isTable: boolean, bodyStyles:
 </html>`;
 };
 
-export const getIndexJsMarkup = (externalStackBlitzDependencies?: string[]): string => `import './style.css'
-import * as porscheDesignSystem from '@porsche-design-system/components-js'
-${
-  externalStackBlitzDependencies && externalStackBlitzDependencies.filter((x) => x === 'IMask')
-    ? `import IMask from 'imask';
-IMask`
-    : ''
-}
-
-porscheDesignSystem.load();
-`;
-
 export const extendMarkupWithSharedTableData = (markup: string): string => {
   const [, sharedTableData] = markup.match(/const { ((?:[A-z]+,* )+)} = await getHeadAndData\(\);/) ?? [];
   const importVariables = sharedTableData.replace(/\s/g, '').split(',') as [
