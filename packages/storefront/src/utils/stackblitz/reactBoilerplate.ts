@@ -13,8 +13,7 @@ export const getCleanedReactMarkup = (markup: string): string =>
 export const getAppFrameworkMarkup = (markup: string, isTable: boolean): string => {
   const cleanedMarkup = getCleanedReactMarkup(markup);
 
-  return `import React from 'react';
-${isTable ? replaceSharedTableImports(cleanedMarkup) : cleanedMarkup}`;
+  return `${isTable ? replaceSharedTableImports(cleanedMarkup) : cleanedMarkup}`;
 };
 
 export const getAppDefaultMarkup = (markup: string, pdsComponents: string[]): string => {
@@ -23,8 +22,7 @@ export const getAppDefaultMarkup = (markup: string, pdsComponents: string[]): st
     .replace(/(<\/?)(>)/g, '$1React.Fragment$2')
     .replace(/(\n)(\s*[<A-z/]+)/g, '$1      $2'); // Align markup
 
-  return `import * as React from 'react';
-import { ${reactComponentsToImport} } from '@porsche-design-system/components-react'
+  return `import { ${reactComponentsToImport} } from '@porsche-design-system/components-react'
 
 export const App = (): JSX.Fragment => {
   return (
@@ -79,6 +77,29 @@ export const getReactDependencies = (additionalDependencies?: string[]): Project
   };
 };
 
+export const getTsconfigMarkup = (): string => `{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "strictNullChecks": false,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src"]
+}
+`;
+
 export const getReactProjectAndOpenOptions = (
   props: StackBlitzFrameworkOpts
 ): { project: Project; openOptions: OpenOptions } => {
@@ -89,6 +110,7 @@ export const getReactProjectAndOpenOptions = (
       'App.tsx': getAppTsxMarkup(markup, hasFrameworkMarkup, isTable(pdsComponents), pdsComponents),
       'index.html': `<div id="root"></div>`,
       'index.tsx': getIndexTsMarkup(),
+      'tsconfig.json': getTsconfigMarkup(),
       'style.css': bodyStyles,
     },
     template: 'create-react-app',
