@@ -2,7 +2,7 @@
 
 exports[`getAngularDependencies() should return correct dependencies object with additionalDependency "IMask" 1`] = `
 Object {
-  "@porsche-design-system/components-angular": "2.14.0-beta.0",
+  "@porsche-design-system/components-angular": "2.15.0-beta.0",
   "angular-imask": "^6.4.2",
   "imask": "^6.4.2",
 }
@@ -10,7 +10,7 @@ Object {
 
 exports[`getAngularDependencies() should return correct dependencies object without additionalDependencies 1`] = `
 Object {
-  "@porsche-design-system/components-angular": "2.14.0-beta.0",
+  "@porsche-design-system/components-angular": "2.15.0-beta.0",
 }
 `;
 
