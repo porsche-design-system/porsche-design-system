@@ -1,4 +1,4 @@
-import { ElementHandle, Page } from 'puppeteer';
+import type { ElementHandle, Page } from 'puppeteer';
 import { getConsoleErrorsAmount, goto, initConsoleObserver, selectNode, waitForComponentsReady } from '../helpers';
 
 let page: Page;
@@ -82,6 +82,25 @@ describe('tabs', () => {
 
     await clickElement(firstBtn);
     expect(await getCounterValue(tabChangeEventCounter)).toBe('3');
+  });
+});
+
+describe('text-field-wrapper type="search"', () => {
+  it('should have working clear functionality', async () => {
+    await goto(page, 'events');
+
+    const input = await selectNode(page, 'p-text-field-wrapper > input[type=search]');
+    const inputValue = await selectNode(page, 'p-text-field-wrapper + p');
+
+    await input.focus();
+    await page.keyboard.type('hello');
+    expect(await getCounterValue(inputValue)).toBe('Value: hello');
+
+    await page.keyboard.press('Backspace');
+    expect(await getCounterValue(inputValue)).toBe('Value: hell');
+
+    await page.keyboard.press('Escape');
+    expect(await getCounterValue(inputValue)).toBe('Value: ');
   });
 });
 

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import {
+import type {
   AccordionChangeEvent,
   PageChangeEvent,
   SortingChangeEvent,
@@ -47,6 +47,13 @@ import {
     </div>
 
     <div class="playground light">
+      <p-text-field-wrapper>
+        <input type="search" [value]="textFieldSearchValue" (input)="onTextFieldSearchInput($event)" />
+      </p-text-field-wrapper>
+      <p>Value: {{ textFieldSearchValue }}</p>
+    </div>
+
+    <div class="playground light">
       <p-switch (switchChange)="onSwitchChange($event)">Switch</p-switch>
       <p>{{ switchChangeEventCounter }}</p>
     </div>
@@ -70,45 +77,51 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EventsComponent {
-  accordionChangeEventCounter: number = 0;
-  pageChangeEventCounter: number = 0;
-  tabsBarChangeEventCounter: number = 0;
-  tabsChangeEventCounter: number = 0;
-  switchChangeEventCounter: number = 0;
-  modalCloseEventCounter: number = 0;
-  isModalOpen = false;
-  tableSortingChangeEventCounter: number = 0;
+  public accordionChangeEventCounter = 0;
+  public pageChangeEventCounter = 0;
+  public tabsBarChangeEventCounter = 0;
+  public tabsChangeEventCounter = 0;
+  public textFieldSearchValue = '';
+  public switchChangeEventCounter = 0;
+  public modalCloseEventCounter = 0;
+  public isModalOpen = false;
+  public tableSortingChangeEventCounter = 0;
 
-  onAccordionChange(e: CustomEvent<AccordionChangeEvent>) {
+  // unused event parameters are used to verify that types can be imported package root
+  public onAccordionChange(e: CustomEvent<AccordionChangeEvent>) {
     this.accordionChangeEventCounter++;
   }
 
-  onPageChange(e: CustomEvent<PageChangeEvent>) {
+  public onPageChange(e: CustomEvent<PageChangeEvent>) {
     this.pageChangeEventCounter++;
   }
 
-  onTabsBarChange(e: CustomEvent<TabChangeEvent>) {
+  public onTabsBarChange(e: CustomEvent<TabChangeEvent>) {
     this.tabsBarChangeEventCounter++;
   }
 
-  onTabsChange(e: CustomEvent<TabChangeEvent>) {
+  public onTabsChange(e: CustomEvent<TabChangeEvent>) {
     this.tabsChangeEventCounter++;
   }
 
-  onSwitchChange(e: CustomEvent<SwitchChangeEvent>) {
+  public onTextFieldSearchInput(e: Event) {
+    this.textFieldSearchValue = (e.target as HTMLInputElement).value;
+  }
+
+  public onSwitchChange(e: CustomEvent<SwitchChangeEvent>) {
     this.switchChangeEventCounter++;
   }
 
-  openModal() {
+  public openModal() {
     this.isModalOpen = true;
   }
 
-  onModalClose() {
+  public onModalClose() {
     this.modalCloseEventCounter++;
     this.isModalOpen = false;
   }
 
-  onTableSortingChange(e: CustomEvent<SortingChangeEvent>) {
+  public onTableSortingChange(e: CustomEvent<SortingChangeEvent>) {
     this.tableSortingChangeEventCounter++;
   }
 }

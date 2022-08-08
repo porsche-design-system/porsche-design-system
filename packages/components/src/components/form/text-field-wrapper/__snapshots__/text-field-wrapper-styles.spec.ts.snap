@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -54,7 +54,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #000 !important;
   }
 }
@@ -193,7 +193,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -283,10 +283,10 @@ button:disabled {
   cursor: not-allowed;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
-  button:hover {
+  button:not(:disabled):hover {
     color: #d5001c;
   }
 }
@@ -346,14 +346,14 @@ button:disabled {
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -407,7 +407,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
 }
@@ -467,14 +467,14 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -527,7 +527,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
 }
@@ -596,17 +596,17 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -659,7 +659,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
 }
@@ -728,17 +728,17 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -828,10 +828,10 @@ button:disabled {
   cursor: not-allowed;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #000 !important;
   }
-  button:hover {
+  button:not(:disabled):hover {
     color: #d5001c;
   }
 }
@@ -897,7 +897,7 @@ button:disabled {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -987,19 +987,11 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-button+ * {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  color: #626669;
-  padding: 0.75rem;
-  pointer-events: none;
-}
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #000 !important;
   }
-  button:hover {
+  button:not(:disabled):hover {
     color: #d5001c;
   }
 }
@@ -1045,6 +1037,14 @@ button+ * {
 .message__icon {
   margin-right: 0.25rem;
 }
+.icon {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: #626669;
+  padding: 0.75rem;
+  pointer-events: none;
+}
 .sr-only {
   position: absolute;
   height: 1px;
@@ -1065,7 +1065,7 @@ button+ * {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, isWithinForm: true 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, isWithinForm: true, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -1154,14 +1154,14 @@ button:disabled {
   color: #96989a;
   cursor: not-allowed;
 }
-button+ button {
+button+button[type=submit] {
   right: 0;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #000 !important;
   }
-  button:hover {
+  button:not(:disabled):hover {
     color: #d5001c;
   }
 }
@@ -1227,7 +1227,351 @@ button+ button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, isWithinForm: true, hasAction: true, hasActionLoading: false 1`] = `
+":host {
+  display: block;
+}
+::slotted(input) {
+  display: block !important;
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 3rem !important;
+  margin: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  border: 1px solid #626669 !important;
+  border-radius: 0 !important;
+  background-color: #fff !important;
+  opacity: 1 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  text-indent: 0 !important;
+  color: #000 !important;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  padding: 0.6875rem !important;
+  padding-right: 5.5rem !important;
+}
+::slotted(input:focus) {
+  outline-color: #626669 !important;
+}
+::slotted(input:disabled) {
+  cursor: not-allowed !important;
+  color: #96989a !important;
+  border-color: #96989a !important;
+  -webkit-text-fill-color: #96989a !important;
+}
+::slotted(input[readonly]) {
+  border-color: #ebebeb !important;
+  background-color: #ebebeb !important;
+}
+::slotted(input[readonly]:focus) {
+  outline-color: transparent !important;
+}
+::slotted(input[readonly]:not(:disabled)) {
+  color: #626669 !important;
+}
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
+  -webkit-background-clip: padding-box !important;
+}
+button {
+  position: absolute;
+  bottom: 0;
+  right: 2.5rem;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.75rem;
+  box-sizing: border-box;
+  outline: 1px solid transparent;
+  appearance: none;
+  border: none;
+  text-decoration: none;
+  background: transparent;
+  cursor: pointer;
+  color: #000;
+  transition: color var(--p-transition-duration, .24s) ease;
+  outline-offset: -4px;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+button:active {
+  color: #d5001c;
+}
+button:disabled {
+  color: #96989a;
+  cursor: not-allowed;
+}
+button+button[type=submit] {
+  right: 0;
+}
+@media(hover:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
+    border-color: #000 !important;
+  }
+  button:not(:disabled):hover {
+    color: #d5001c;
+  }
+}
+
+.root {
+  display: block;
+  position: relative;
+}
+.label {
+  display: block;
+  position: relative;
+}
+.label__text {
+  position: static;
+  width: fit-content;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+  padding: 0 0 0.25rem;
+  display: block;
+  color: #000;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.label__text+.label__text--description {
+  margin-top: -0.25rem;
+  padding-bottom: 0.5rem;
+}
+.label__text--description {
+  color: #626669;
+}
+.required {
+  user-select: none;
+  color: #e00000;
+}
+.message {
+  display: flex;
+  margin-top: 0.25rem;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.message__icon {
+  margin-right: 0.25rem;
+}
+.icon {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: #626669;
+  padding: 0.75rem;
+  pointer-events: none;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
+}
+@media(hover:hover) {
+  .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
+    border-color: #000 !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: search, isWithinForm: true, hasAction: true, hasActionLoading: true 1`] = `
+":host {
+  display: block;
+}
+::slotted(input) {
+  display: block !important;
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 3rem !important;
+  margin: 0 !important;
+  outline: 1px solid transparent !important;
+  outline-offset: 2px !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  border: 1px solid #626669 !important;
+  border-radius: 0 !important;
+  background-color: #fff !important;
+  opacity: 1 !important;
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  text-indent: 0 !important;
+  color: #000 !important;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  padding: 0.6875rem !important;
+  padding-right: 5.5rem !important;
+}
+::slotted(input:focus) {
+  outline-color: #626669 !important;
+}
+::slotted(input:disabled) {
+  cursor: not-allowed !important;
+  color: #96989a !important;
+  border-color: #96989a !important;
+  -webkit-text-fill-color: #96989a !important;
+}
+::slotted(input[readonly]) {
+  border-color: #ebebeb !important;
+  background-color: #ebebeb !important;
+}
+::slotted(input[readonly]:focus) {
+  outline-color: transparent !important;
+}
+::slotted(input[readonly]:not(:disabled)) {
+  color: #626669 !important;
+}
+::slotted(input:-internal-autofill-selected),::slotted(input:-internal-autofill-previewed),::slotted(input:-webkit-autofill),::slotted(input:-webkit-autofill:focus) {
+  -webkit-background-clip: padding-box !important;
+}
+button {
+  position: absolute;
+  bottom: 0;
+  right: 2.5rem;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.75rem;
+  box-sizing: border-box;
+  outline: 1px solid transparent;
+  appearance: none;
+  border: none;
+  text-decoration: none;
+  background: transparent;
+  cursor: pointer;
+  color: #000;
+  transition: color var(--p-transition-duration, .24s) ease;
+  outline-offset: -4px;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline-color: currentColor;
+}
+button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+button:active {
+  color: #d5001c;
+}
+button:disabled {
+  color: #96989a;
+  cursor: not-allowed;
+}
+button+button[type=button] {
+  color: #96989a;
+  cursor: not-allowed;
+}
+button+button[type=submit] {
+  right: 0;
+}
+@media(hover:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
+    border-color: #000 !important;
+  }
+  button:not(:disabled):hover {
+    color: #d5001c;
+  }
+}
+
+.root {
+  display: block;
+  position: relative;
+}
+.label {
+  display: block;
+  position: relative;
+}
+.label__text {
+  position: static;
+  width: fit-content;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+  padding: 0 0 0.25rem;
+  display: block;
+  color: #000;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.label__text+.label__text--description {
+  margin-top: -0.25rem;
+  padding-bottom: 0.5rem;
+}
+.label__text--description {
+  color: #626669;
+}
+.required {
+  user-select: none;
+  color: #e00000;
+}
+.message {
+  display: flex;
+  margin-top: 0.25rem;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.message__icon {
+  margin-right: 0.25rem;
+}
+.icon {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: #626669;
+  padding: 0.75rem;
+  pointer-events: none;
+}
+.sr-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  padding: 0;
+}
+@media(hover:hover) {
+  .label__text:hover~::slotted(input:not(:disabled):not([readonly])) {
+    border-color: #000 !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -1281,7 +1625,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #000 !important;
   }
 }
@@ -1347,7 +1691,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: number, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: number, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -1401,7 +1745,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #000 !important;
   }
 }
@@ -1479,7 +1823,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -1532,7 +1876,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #000 !important;
   }
 }
@@ -1610,7 +1954,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -1663,7 +2007,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #000 !important;
   }
 }
@@ -1741,7 +2085,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -1831,10 +2175,10 @@ button:disabled {
   cursor: not-allowed;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
-  button:hover {
+  button:not(:disabled):hover {
     color: #d5001c;
   }
 }
@@ -1894,14 +2238,14 @@ button:disabled {
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -1955,7 +2299,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
 }
@@ -2015,14 +2359,14 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -2075,7 +2419,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
 }
@@ -2144,17 +2488,17 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: suffix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -2207,7 +2551,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
 }
@@ -2276,17 +2620,17 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -2376,10 +2720,10 @@ button:disabled {
   cursor: not-allowed;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
-  button:hover {
+  button:not(:disabled):hover {
     color: #d5001c;
   }
 }
@@ -2439,14 +2783,14 @@ button:disabled {
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -2500,7 +2844,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
 }
@@ -2560,14 +2904,14 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -2620,7 +2964,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
 }
@@ -2690,17 +3034,17 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false 2`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: error, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 2`] = `
 ":host {
   display: block;
 }
@@ -2753,7 +3097,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
 }
@@ -2823,17 +3167,17 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -2923,10 +3267,10 @@ button:disabled {
   cursor: not-allowed;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #000 !important;
   }
-  button:hover {
+  button:not(:disabled):hover {
     color: #d5001c;
   }
 }
@@ -2992,7 +3336,7 @@ button:disabled {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -3046,7 +3390,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #000 !important;
   }
 }
@@ -3112,7 +3456,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -3165,7 +3509,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #000 !important;
   }
 }
@@ -3244,7 +3588,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false 2`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: none, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 2`] = `
 ":host {
   display: block;
 }
@@ -3297,7 +3641,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #000 !important;
   }
 }
@@ -3376,7 +3720,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -3466,10 +3810,10 @@ button:disabled {
   cursor: not-allowed;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
-  button:hover {
+  button:not(:disabled):hover {
     color: #d5001c;
   }
 }
@@ -3529,14 +3873,14 @@ button:disabled {
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -3590,7 +3934,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
 }
@@ -3650,14 +3994,14 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -3710,7 +4054,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
 }
@@ -3780,17 +4124,17 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false 2`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: false, state: success, hasUnitOrVisibleCounter: true, unitPosition: prefix, inputType: text, isWithinForm: false, hasAction: false, hasActionLoading: false 2`] = `
 ":host {
   display: block;
 }
@@ -3843,7 +4187,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
 }
@@ -3913,17 +4257,17 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
-  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .unit:hover~::slotted(input:not(:disabled):not([readonly])), .unit:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #014d0c !important;
   }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: true, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: true, state: error, hasUnitOrVisibleCounter: false, unitPosition: prefix, inputType: password, isWithinForm: false, hasAction: false, hasActionLoading: false 1`] = `
 ":host {
   display: block;
 }
@@ -4013,10 +4357,10 @@ button:disabled {
   cursor: not-allowed;
 }
 @media(hover:hover) {
-  ::slotted(input:hover) {
+  ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
-  button:hover {
+  button:not(:disabled):hover {
     color: #d5001c;
   }
 }
@@ -4077,7 +4421,7 @@ button:disabled {
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:hover:not(:disabled):not([readonly])) {
+  .label__text:hover~::slotted(input:not(:disabled):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not([readonly]):hover) {
     border-color: #a30000 !important;
   }
 }

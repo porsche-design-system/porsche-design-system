@@ -1,5 +1,5 @@
 import type { EventEmitter } from '@stencil/core';
-import { Component, Element, Event, h, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, Prop, State, Watch, h } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -7,6 +7,7 @@ import {
   getPrefixedTagNames,
   getScrollActivePosition,
   observeChildren,
+  parseJSON,
   setAttribute,
   THEMES_EXTENDED_ELECTRIC,
   unobserveChildren,
@@ -26,6 +27,7 @@ import {
 import { getComponentCss } from './tabs-bar-styles';
 import type { Direction } from '../../common/scroller/scroller-utils';
 import { getScrollerElements, GRADIENT_COLOR_THEMES } from '../../common/scroller/scroller-utils';
+import { observeBreakpointChange, unobserveBreakpointChange } from '../../../utils/breakoint-observer';
 
 const propTypes: PropTypes<typeof TabsBar> = {
   size: AllowedTypes.breakpoint<TabSize>(TAB_SIZES),
@@ -71,11 +73,18 @@ export class TabsBar {
   private prevGradientElement: HTMLElement;
   private scrollerElement: HTMLElement;
 
+  private get isSizeBreakpointCustomizable(): boolean {
+    return typeof parseJSON(this.size) === 'object';
+  }
+
   @Watch('activeTabIndex')
   public activeTabHandler(newValue: number, oldValue: number): void {
-    this.activeTabIndex = sanitizeActiveTabIndex(newValue, this.tabElements.length);
+    // can be null if removeAttribute() is used
+    if (newValue === null) {
+      this.activeTabIndex = undefined;
+    }
     this.prevActiveTabIndex = oldValue;
-    this.direction = this.activeTabIndex > this.prevActiveTabIndex || oldValue === undefined ? 'next' : 'prev';
+    this.direction = newValue > oldValue || oldValue === undefined ? 'next' : 'prev';
     this.scrollActiveTabIntoView();
   }
 
@@ -89,6 +98,8 @@ export class TabsBar {
       this.setBarStyle();
       this.setAccessibilityAttributes();
     });
+
+    this.observeBreakpointChange();
   }
 
   public componentDidLoad(): void {
@@ -102,6 +113,7 @@ export class TabsBar {
     }
 
     this.addEventListeners();
+    this.observeBreakpointChange();
 
     // setBarStyle() is needed when intersection observer does not trigger because all tabs are visible
     // and first call in componentDidRender() is skipped because elements are not defined, yet
@@ -120,6 +132,9 @@ export class TabsBar {
   }
 
   public disconnectedCallback(): void {
+    if (this.isSizeBreakpointCustomizable) {
+      unobserveBreakpointChange(this.host);
+    }
     unobserveChildren(this.host);
     this.intersectionObserver?.disconnect();
   }
@@ -245,5 +260,14 @@ export class TabsBar {
 
   private setBarStyle = (): void => {
     setBarStyle(this.tabElements, this.activeTabIndex, this.barElement, this.prevActiveTabIndex);
+  };
+
+  private observeBreakpointChange = (): void => {
+    if (this.isSizeBreakpointCustomizable) {
+      observeBreakpointChange(this.host, () => {
+        this.setBarStyle();
+        this.scrollActiveTabIntoView(false);
+      });
+    }
   };
 }
