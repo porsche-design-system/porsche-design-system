@@ -1,7 +1,4 @@
-import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
-import { dependencies } from '../../../package.json';
-import type { DependenciesMap, StackBlitzFrameworkOpts } from '@/utils/stackblitz/helper';
-import type { Project, OpenOptions, ProjectDependencies } from '@stackblitz/sdk';
+import { dependencies } from '../../../../components-js/package.json';
 import {
   headBasic,
   dataBasic,
@@ -11,7 +8,9 @@ import {
   headAdvanced,
 } from '@porsche-design-system/shared';
 import { getAdditionalDependencies, isTable } from '@/utils/stackblitz/helper';
-import { convertMarkup } from '@/utils/formatting';
+import type { AdditionalStackBlitzDependency, GetStackblitzProjectAndOpenOptions } from '@/utils/stackblitz/helper';
+import type { StackblitzProjectDependencies } from '@/models';
+import type { StackBlitzDependencyMap } from '@/utils/stackblitz/helper';
 
 const sharedImport = {
   headBasic,
@@ -22,17 +21,18 @@ const sharedImport = {
   headAdvanced,
 };
 
+// TODO: redundant calls
 export const getFrameworkMarkup = (markup: string, isTable: boolean) =>
   isTable ? extendMarkupWithSharedTableData(markup) : markup;
 
 export const getIndexHtmlMarkup = (markup: string, hasFrameworkMarkup: boolean, isTable: boolean): string => {
-  return hasFrameworkMarkup ? getFrameworkMarkup(markup, isTable) : convertMarkup(markup, 'vanilla-js');
+  return hasFrameworkMarkup ? getFrameworkMarkup(markup, isTable) : markup;
 };
 
-export const getIndexJsMarkup = (additionalDependencies?: string[]): string => `import './style.css'
+export const getIndexJsMarkup = (additionalStackBlitzDependencies?: string[]): string => `import './style.css'
 import * as porscheDesignSystem from '@porsche-design-system/components-js'
 ${
-  additionalDependencies && additionalDependencies.filter((x) => x === 'IMask')
+  additionalStackBlitzDependencies && additionalStackBlitzDependencies.filter((x) => x === 'IMask')
     ? `import IMask from 'imask';
 IMask`
     : ''
@@ -59,38 +59,43 @@ const getHeadAndData = () => {
   );
 };
 
-export const getVanillaJsDependencies = (additionalDependencies?: string[]): ProjectDependencies => {
-  const dependenciesMap: DependenciesMap = {
-    IMask: {
-      imask: `${dependencies['imask']}`,
-    },
-  };
+const dependenciesMap: StackBlitzDependencyMap = {
+  imask: {
+    imask: dependencies['imask'],
+  },
+};
 
+export const getVanillaJsDependencies = (
+  additionalStackBlitzDependencies?: AdditionalStackBlitzDependency[]
+): StackblitzProjectDependencies => {
   return {
-    '@porsche-design-system/components-js': `${pdsVersion}`,
-    ...(additionalDependencies && getAdditionalDependencies(additionalDependencies, dependenciesMap)),
+    '@porsche-design-system/components-js': dependencies['@porsche-design-system/components-js'],
+    ...(additionalStackBlitzDependencies &&
+      getAdditionalDependencies(additionalStackBlitzDependencies, dependenciesMap)),
   };
 };
 
-export const getVanillaJsProjectAndOpenOptions = (
-  props: StackBlitzFrameworkOpts
-): { project: Project; openOptions: OpenOptions } => {
-  const { markup, description, title, bodyStyles, hasFrameworkMarkup, pdsComponents, additionalDependencies } = props;
+export const getVanillaJsProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
+  const {
+    markup,
+    description,
+    title,
+    bodyStyles,
+    hasFrameworkMarkup,
+    pdsComponents,
+    additionalStackBlitzDependencies,
+  } = opts;
 
-  const project: Project = {
+  return {
     files: {
       'index.html': getIndexHtmlMarkup(markup, hasFrameworkMarkup, isTable(pdsComponents)),
-      'index.js': getIndexJsMarkup(additionalDependencies),
+      'index.js': getIndexJsMarkup(additionalStackBlitzDependencies),
       'style.css': bodyStyles,
     },
     template: 'javascript',
     title,
     description,
-    dependencies: getVanillaJsDependencies(additionalDependencies),
-  };
-
-  const openOptions: OpenOptions = {
+    dependencies: getVanillaJsDependencies(additionalStackBlitzDependencies),
     openFile: 'index.html',
   };
-  return { project, openOptions };
 };

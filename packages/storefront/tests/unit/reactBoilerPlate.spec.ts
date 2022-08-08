@@ -4,7 +4,7 @@ import {
   getAppTsxMarkup,
   getCleanedReactMarkup,
   getReactDependencies,
-  getIndexTsMarkup,
+  getIndexTsxMarkup,
   getReactProjectAndOpenOptions,
   getTsconfigMarkup,
 } from '../../src/utils/stackblitz/reactBoilerplate';
@@ -45,7 +45,7 @@ describe('getAppFrameworkMarkup()', () => {
 
     jest.spyOn(reactBoilerplateUtils, 'getCleanedReactMarkup').mockReturnValue(cleanedMarkup);
     const replaceSharedTableImportsSpy = jest
-      .spyOn(stackBlitzHelperUtils, 'replaceSharedTableImports')
+      .spyOn(stackBlitzHelperUtils, 'inlineSharedImports')
       .mockImplementationOnce(() => cleanedMarkup);
 
     expect(getAppFrameworkMarkup(markup, true)).toBe(cleanedMarkup);
@@ -91,7 +91,7 @@ describe('getAppTsxMarkup()', () => {
 
 describe('getIndexTsMarkup()', () => {
   it('should return correct markup', () => {
-    expect(getIndexTsMarkup()).toMatchSnapshot();
+    expect(getIndexTsxMarkup()).toMatchSnapshot();
   });
 });
 
@@ -125,7 +125,7 @@ describe('getReactProjectAndOpenOptions()', () => {
     const mockValue = 'Some value';
 
     jest.spyOn(reactBoilerplateUtils, 'getAppTsxMarkup').mockImplementationOnce(() => mockValue);
-    jest.spyOn(reactBoilerplateUtils, 'getIndexTsMarkup').mockImplementationOnce(() => mockValue);
+    jest.spyOn(reactBoilerplateUtils, 'getIndexTsxMarkup').mockImplementationOnce(() => mockValue);
     jest.spyOn(reactBoilerplateUtils, 'getReactDependencies').mockImplementationOnce(() => ({}));
     jest.spyOn(reactBoilerplateUtils, 'getTsconfigMarkup').mockImplementationOnce(() => '');
 
@@ -156,7 +156,7 @@ describe('getReactProjectAndOpenOptions()', () => {
 
     const getAppTsxMarkupSpy = jest.spyOn(reactBoilerplateUtils, 'getAppTsxMarkup');
     const isTableSpy = jest.spyOn(stackBlitzHelperUtils, 'isTable').mockImplementationOnce(() => false);
-    const getIndexTsMarkupSpy = jest.spyOn(reactBoilerplateUtils, 'getIndexTsMarkup');
+    const getIndexTsMarkupSpy = jest.spyOn(reactBoilerplateUtils, 'getIndexTsxMarkup');
     const getTsconfigMarkupSpy = jest.spyOn(reactBoilerplateUtils, 'getTsconfigMarkup');
     const getDependenciesSpy = jest.spyOn(reactBoilerplateUtils, 'getReactDependencies');
 

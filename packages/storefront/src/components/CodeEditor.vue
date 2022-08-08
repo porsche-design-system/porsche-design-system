@@ -9,7 +9,7 @@
         framework,
         theme,
         hasFrameworkMarkup,
-        additionalDependencies,
+        additionalStackBlitzDependencies,
         colorScheme,
       })
     "
@@ -22,7 +22,7 @@
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
   import { Theme } from '@/models';
-  import { openInStackBlitz } from '@/utils';
+  import { AdditionalStackBlitzDependency, openInStackBlitz } from '@/utils';
   import type { FrameworksWithoutShared } from '@/utils';
 
   @Component
@@ -32,7 +32,7 @@
     @Prop({ default: 'vanilla-js' }) public framework!: FrameworksWithoutShared;
     @Prop({ default: false }) public hasFrameworkMarkup!: boolean;
     @Prop({ default: 'default' }) public colorScheme!: 'default' | 'surface';
-    @Prop() public additionalDependencies?: string[];
+    @Prop() public additionalStackBlitzDependencies?: AdditionalStackBlitzDependency[];
 
     stackBlitzIcon = require('../assets/icon-stackblitz.svg');
     openInStackBlitz = openInStackBlitz;

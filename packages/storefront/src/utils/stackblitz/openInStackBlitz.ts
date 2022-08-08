@@ -2,41 +2,50 @@ import sdk from '@stackblitz/sdk';
 import { getVanillaJsProjectAndOpenOptions } from '@/utils/stackblitz/vanillaJsBoilerplate';
 import { getReactProjectAndOpenOptions } from '@/utils/stackblitz/reactBoilerplate';
 import { getAngularProjectAndOpenOptions } from '@/utils/stackblitz/angularBoilerplate';
-import { getBackgroundColor, getPdsComponents } from '@/utils/stackblitz/helper';
+import {
+  AdditionalStackBlitzDependency,
+  getBackgroundColor,
+  getPdsComponents,
+  GetStackblitzProjectAndOpenOptions,
+} from '@/utils/stackblitz/helper';
 import type { StackBlitzFrameworkOpts, FrameworksWithoutShared } from '@/utils/stackblitz/helper';
-import type { Theme, ColorScheme } from '@/models';
+import type { Theme, ColorScheme, Framework } from '@/models';
 
+// TODO: decide hasFrameworkMarkup in boilerplate
 export type OpenInStackBlitzOpts = {
   markup: string;
   framework: FrameworksWithoutShared;
   theme: Theme;
   hasFrameworkMarkup: boolean;
   colorScheme: ColorScheme;
-  additionalDependencies?: string[];
+  additionalStackBlitzDependencies?: AdditionalStackBlitzDependency[];
 };
 
-export const openInStackBlitz = (props: OpenInStackBlitzOpts): void => {
-  const { markup, framework, theme, hasFrameworkMarkup, additionalDependencies, colorScheme } = props;
+export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
+  const { markup, framework, theme, hasFrameworkMarkup, additionalStackBlitzDependencies, colorScheme } = opts;
 
+  // TODO: move into react
   const pdsComponents = getPdsComponents(markup);
 
   const openProps: StackBlitzFrameworkOpts = {
     markup,
     hasFrameworkMarkup,
     title: `Porsche Design System ${framework} sandbox`,
-    description: `${pdsComponents[0]} component example`,
+    description: 'Porsche Design System component example',
     bodyStyles: `body { background: ${getBackgroundColor(theme, colorScheme)}; }`,
     pdsComponents,
-    additionalDependencies,
+    additionalStackBlitzDependencies,
   };
 
-  const getProjectAndOpenOptionsCallbackMap = {
-    'vanilla-js': () => getVanillaJsProjectAndOpenOptions(openProps),
-    angular: () => getAngularProjectAndOpenOptions(openProps),
-    react: () => getReactProjectAndOpenOptions(openProps),
+  const getProjectAndOpenOptionsCallbackMap: {
+    [key in Exclude<Framework, 'shared'>]: GetStackblitzProjectAndOpenOptions;
+  } = {
+    'vanilla-js': getVanillaJsProjectAndOpenOptions,
+    angular: getAngularProjectAndOpenOptions,
+    react: getReactProjectAndOpenOptions,
   };
 
-  const { project, openOptions } = getProjectAndOpenOptionsCallbackMap[framework]();
+  const { openFile, ...project } = getProjectAndOpenOptionsCallbackMap[framework](openProps);
 
-  sdk.openProject(project, openOptions);
+  sdk.openProject(project, { openFile });
 };

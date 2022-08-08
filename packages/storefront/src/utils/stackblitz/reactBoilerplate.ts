@@ -1,34 +1,35 @@
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
 import { devDependencies, dependencies } from '../../../../components-react/package.json';
-import { getAdditionalDependencies } from '@/utils';
-import { replaceSharedTableImports, isTable } from './helper';
+import { default as tsconfig } from '../../../../components-react/tsconfig.json';
+import { AdditionalStackBlitzDependency, getAdditionalDependencies, GetStackblitzProjectAndOpenOptions } from '@/utils';
+import { inlineSharedImports, isTable } from './helper';
 import { convertMarkup } from '@/utils/formatting';
 import { pascalCase } from 'change-case';
-import type { Project, OpenOptions, ProjectDependencies } from '@stackblitz/sdk';
-import type { DependenciesMap, StackBlitzFrameworkOpts } from '@/utils';
+import type { StackBlitzDependencyMap } from '@/utils';
+import type { StackblitzProjectDependencies } from '@/models';
 
+// TODO: Maybe better inline? If not, naming
 export const getCleanedReactMarkup = (markup: string): string =>
   markup.replace(/(const )[A-z]+( = \(\): JSX.Element => {)/, '$1App$2');
 
 export const getAppFrameworkMarkup = (markup: string, isTable: boolean): string => {
   const cleanedMarkup = getCleanedReactMarkup(markup);
 
-  return `${isTable ? replaceSharedTableImports(cleanedMarkup) : cleanedMarkup}`;
+  return isTable ? inlineSharedImports(cleanedMarkup) : cleanedMarkup;
 };
 
 export const getAppDefaultMarkup = (markup: string, pdsComponents: string[]): string => {
   const reactComponentsToImport = pdsComponents.map((x) => pascalCase(x)).join(', ');
-  const convertedMarkup = convertMarkup(markup, 'react')
-    .replace(/(<\/?)(>)/g, '$1React.Fragment$2')
-    .replace(/(\n)(\s*[<A-z/]+)/g, '$1      $2'); // Align markup
+  // TODO: check if convert is really needed?? Check regex for alignment (button) + include text without tag
+  const convertedMarkup = convertMarkup(markup, 'react').replace(/(\n)+(\s*<\/?[A-z]+)/g, '$1      $2'); // Align markup
 
   return `import { ${reactComponentsToImport} } from '@porsche-design-system/components-react'
 
 export const App = (): JSX.Fragment => {
   return (
-    <div>
+    <>
       ${convertedMarkup}
-    </div>
+    </>
   );
 }`;
 };
@@ -42,12 +43,13 @@ export const getAppTsxMarkup = (
   return hasFrameworkMarkup ? getAppFrameworkMarkup(markup, isTable) : getAppDefaultMarkup(markup, pdsComponents);
 };
 
-export const getIndexTsMarkup = (): string => `import * as React from 'react';
+// TODO: Use single quotes
+export const getIndexTsxMarkup = (): string => `import * as React from 'react';
 import { StrictMode } from "react";
 import * as ReactDOMClient from "react-dom/client";
 import { App } from "./App";
 import { PorscheDesignSystemProvider } from "@porsche-design-system/components-react";
-import './style.css';
+import "./style.css";
 
 const rootElement = document.getElementById("root");
 const root = ReactDOMClient.createRoot(rootElement);
@@ -60,68 +62,51 @@ root.render(
   </StrictMode>
 );`;
 
-export const getReactDependencies = (additionalDependencies?: string[]): ProjectDependencies => {
-  const dependenciesMap: DependenciesMap = {
-    IMask: {
-      'react-imask': `${dependencies['react-imask']}`,
-    },
-  };
+const dependenciesMap: StackBlitzDependencyMap = {
+  imask: {
+    'react-imask': dependencies['react-imask'],
+  },
+};
 
+export const getReactDependencies = (
+  additionalStackBlitzDependencies?: AdditionalStackBlitzDependency[]
+): StackblitzProjectDependencies => {
+  // TODO: remove interpolation / pick dependencies
   return {
-    '@porsche-design-system/components-react': `${pdsVersion}`,
+    '@porsche-design-system/components-react': dependencies['@porsche-design-system/components-react'],
     react: `${dependencies['react']}`,
     'react-dom': `${dependencies['react-dom']}`,
     '@types/react': `${devDependencies['@types/react']}`,
     '@types/react-dom': `${devDependencies['@types/react-dom']}`,
-    ...(additionalDependencies && getAdditionalDependencies(additionalDependencies, dependenciesMap)),
+    ...(additionalStackBlitzDependencies &&
+      getAdditionalDependencies(additionalStackBlitzDependencies, dependenciesMap)),
   };
 };
 
-export const getTsconfigMarkup = (): string => `{
-  "compilerOptions": {
-    "target": "es6",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "strictNullChecks": false,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-    "noFallthroughCasesInSwitch": true
-  },
-  "include": ["src"]
-}
-`;
+export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
+  const {
+    markup,
+    description,
+    title,
+    hasFrameworkMarkup,
+    bodyStyles,
+    pdsComponents,
+    additionalStackBlitzDependencies,
+  } = opts;
 
-export const getReactProjectAndOpenOptions = (
-  props: StackBlitzFrameworkOpts
-): { project: Project; openOptions: OpenOptions } => {
-  const { markup, description, title, hasFrameworkMarkup, bodyStyles, pdsComponents, additionalDependencies } = props;
-
-  const project: Project = {
+  return {
     files: {
       'App.tsx': getAppTsxMarkup(markup, hasFrameworkMarkup, isTable(pdsComponents), pdsComponents),
       'index.html': `<div id="root"></div>`,
-      'index.tsx': getIndexTsMarkup(),
-      'tsconfig.json': getTsconfigMarkup(),
+      'index.tsx': getIndexTsxMarkup(),
+
+      'tsconfig.json': JSON.stringify(tsconfig),
       'style.css': bodyStyles,
     },
     template: 'create-react-app',
     title,
     description,
-    dependencies: getReactDependencies(additionalDependencies),
-  };
-
-  const openOptions: OpenOptions = {
+    dependencies: getReactDependencies(additionalStackBlitzDependencies),
     openFile: 'App.tsx',
   };
-
-  return { project, openOptions };
 };

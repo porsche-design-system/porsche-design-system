@@ -51,7 +51,7 @@ describe('getComponentTsFrameworkMarkup()', () => {
     const cleanedMarkup = `Cleaned value`;
     jest.spyOn(angularBoilerplateUtils, 'getCleanedAngularMarkup').mockImplementationOnce(() => cleanedMarkup);
     const replaceSharedTableImportsSpy = jest
-      .spyOn(stackBlitzHelperUtils, 'replaceSharedTableImports')
+      .spyOn(stackBlitzHelperUtils, 'inlineSharedImports')
       .mockImplementationOnce(() => cleanedMarkup);
 
     expect(getComponentTsFrameworkMarkup(markup, true)).toBe(cleanedMarkup);
