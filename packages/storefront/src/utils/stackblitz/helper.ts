@@ -1,5 +1,5 @@
 import * as sharedData from '@porsche-design-system/shared';
-import {
+import type {
   ColorScheme,
   Framework,
   StackBlitzProjectAndOpenOptions,
@@ -63,3 +63,7 @@ export const getBackgroundColor = (theme: Theme, colorScheme: ColorScheme): stri
 };
 
 export type GetStackblitzProjectAndOpenOptions = (opts: StackBlitzFrameworkOpts) => StackBlitzProjectAndOpenOptions;
+
+export const hastIMaskDependency = (getExternalDependencies?: ExternalStackBlitzDependency[]): boolean => {
+  return getExternalDependencies ? getExternalDependencies.filter((x) => x === 'imask').length > 0 : false;
+};

@@ -7,7 +7,7 @@ import {
   dataAdvanced,
   headAdvanced,
 } from '@porsche-design-system/shared';
-import { getExternalDependencies, isTable } from '@/utils/stackblitz/helper';
+import { getExternalDependencies, hastIMaskDependency, isTable } from '@/utils/stackblitz/helper';
 import type { ExternalStackBlitzDependency, GetStackblitzProjectAndOpenOptions } from '@/utils/stackblitz/helper';
 import type { StackblitzProjectDependencies } from '@/models';
 import type { StackBlitzDependencyMap } from '@/utils/stackblitz/helper';
@@ -22,11 +22,25 @@ const sharedImport = {
 };
 
 // TODO: redundant calls
-export const getFrameworkMarkup = (markup: string, isTable: boolean) =>
-  isTable ? extendMarkupWithSharedTableData(markup) : markup;
-
-export const getIndexHtmlMarkup = (markup: string, hasFrameworkMarkup: boolean, isTable: boolean): string => {
-  return hasFrameworkMarkup ? getFrameworkMarkup(markup, isTable) : markup;
+export const getIndexHtmlMarkup = (markup: string, isTable: boolean, bodyStyles: string, hasIMask: boolean): string => {
+  return `<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <script src="node_modules/@porsche-design-system/components-js/index.js"></script>${
+      hasIMask
+        ? `
+    <script src="node_modules/imask/dist/imask.min.js"></script>`
+        : ''
+    }
+    <style>
+      ${bodyStyles}
+    </style>
+  </head>
+  <body>
+    <script>porscheDesignSystem.load()</script>
+    ${(isTable ? extendMarkupWithSharedTableData(markup) : markup).replace(/(\n)+(\s*<?\/?[A-z})]+)/g, '$1    $2')}
+  </body>
+</html>`;
 };
 
 export const getIndexJsMarkup = (externalStackBlitzDependencies?: string[]): string => `import './style.css'
@@ -75,14 +89,14 @@ export const getVanillaJsDependencies = (
 };
 
 export const getVanillaJsProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
-  const { markup, description, title, bodyStyles, hasFrameworkMarkup, pdsComponents, externalStackBlitzDependencies } =
-    opts;
+  const { markup, description, title, bodyStyles, pdsComponents, externalStackBlitzDependencies } = opts;
+
+  const hasIMask = hastIMaskDependency(externalStackBlitzDependencies);
 
   return {
     files: {
-      'index.html': getIndexHtmlMarkup(markup, hasFrameworkMarkup, isTable(pdsComponents)),
-      'index.js': getIndexJsMarkup(externalStackBlitzDependencies),
-      'style.css': bodyStyles,
+      'index.html': getIndexHtmlMarkup(markup, isTable(pdsComponents), bodyStyles, hasIMask),
+      'index.js': '',
     },
     template: 'javascript',
     title,
