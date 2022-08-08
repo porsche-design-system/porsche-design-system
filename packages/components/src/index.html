@@ -10,20 +10,31 @@
     <script nomodule src="build/porsche-design-system.js"></script>
     <script type="module" src="build/porsche-design-system.esm.js"></script>
 
-    <!--    <style>-->
-    <!--      * {-->
-    <!--        margin: 0;-->
-    <!--        padding: 0;-->
-    <!--        box-sizing: border-box;-->
-    <!--      }-->
-    <!--    </style>-->
+    <style>
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        background: #00b0f4;
+      }
+    </style>
   </head>
   <body>
     <header>
       <h1>Porsche Design System - Playground</h1>
     </header>
 
-    <main></main>
+    <main>
+      <p-carousel style="height: 200px">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+      </p-carousel>
+    </main>
 
     <script>
       <!-- START: keep this snippet to log component lifecycle events -->
