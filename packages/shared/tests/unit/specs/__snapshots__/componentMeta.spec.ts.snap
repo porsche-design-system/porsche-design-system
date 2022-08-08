@@ -214,6 +214,27 @@ Object {
     ],
     "styling": "jss",
   },
+  "p-carousel": Object {
+    "hasAriaProp": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSkeleton": false,
+    "hasSlot": true,
+    "hasSlottedCss": false,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": true,
+    "props": Array [
+      Object {
+        "disablePagination": false,
+      },
+      Object {
+        "theme": "light",
+      },
+    ],
+    "shouldPatchSlot": false,
+    "styling": "jss",
+  },
   "p-checkbox-wrapper": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": true,
