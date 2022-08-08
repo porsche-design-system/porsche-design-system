@@ -1,4 +1,4 @@
-# Dependencies 13.06.22
+# Dependencies 05.08.2022
 
 ## Vue
 
@@ -12,6 +12,7 @@ with Vue **2** and **3**.
 - `vue`
 - `vue-router`
 - `vuex`
+- `@vue/cli-plugin-babel`
 - `@vue/cli-plugin-router`
 - `@vue/cli-plugin-typescript`
 - `@vue/cli-plugin-unit-jest`
