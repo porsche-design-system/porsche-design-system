@@ -76,6 +76,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.InlineNotificationExampleActionButtonPage />,
   },
   {
+    name: 'Modal Example Accessibility',
+    path: '/modal-example-accessibility',
+    element: <fromExamples.ModalExampleAccessibilityPage />,
+  },
+  {
     name: 'Segmented Control Example',
     path: '/segmented-control-example',
     element: <fromExamples.SegmentedControlExamplePage />,

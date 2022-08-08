@@ -1,6 +1,7 @@
 export * from './AccordionExample';
 export * from './InlineNotificationExampleActionButton';
 export * from './InlineNotificationExampleEvents';
+export * from './ModalExampleAccessibility';
 export * from './SegmentedControlExample';
 export * from './StepperHorizontalExample';
 export * from './TableExampleAdvanced';
