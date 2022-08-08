@@ -42,6 +42,16 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-modal',
+      samples: [
+        [
+          componentsJsPath + '/modal-example-accessibility.html',
+          componentsAngularPath + '/modal-example-accessibility.component.ts',
+          componentsReactPath + '/ModalExampleAccessibility.tsx',
+        ],
+      ],
+    },
+    {
       component: 'p-segmented-control',
       samples: [
         [
