@@ -3,7 +3,6 @@ import { getVanillaJsProjectAndOpenOptions } from '@/utils/stackblitz/vanillaJsB
 import { getReactProjectAndOpenOptions } from '@/utils/stackblitz/reactBoilerplate';
 import { getAngularProjectAndOpenOptions } from '@/utils/stackblitz/angularBoilerplate';
 import { getBackgroundColor, getPdsComponents } from '@/utils/stackblitz/helper';
-import type { Project, OpenOptions } from '@stackblitz/sdk';
 import type { StackBlitzFrameworkOpts, FrameworksWithoutShared } from '@/utils/stackblitz/helper';
 import type { Theme, ColorScheme } from '@/models';
 
@@ -16,7 +15,6 @@ export type OpenInStackBlitzOpts = {
   additionalDependencies?: string[];
 };
 
-// TODO: unit test
 export const openInStackBlitz = (props: OpenInStackBlitzOpts): void => {
   const { markup, framework, theme, hasFrameworkMarkup, additionalDependencies, colorScheme } = props;
 
@@ -38,11 +36,7 @@ export const openInStackBlitz = (props: OpenInStackBlitzOpts): void => {
     react: () => getReactProjectAndOpenOptions(openProps),
   };
 
-  const { project, openOptions } = getProjectAndOpenOptions(getProjectAndOpenOptionsCallbackMap[framework]);
+  const { project, openOptions } = getProjectAndOpenOptionsCallbackMap[framework]();
 
   sdk.openProject(project, openOptions);
 };
-
-const getProjectAndOpenOptions = (
-  getProjectAndOpenOptionsCallback: () => { project: Project; openOptions: OpenOptions }
-) => ({ ...getProjectAndOpenOptionsCallback() });

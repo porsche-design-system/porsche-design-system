@@ -7,7 +7,7 @@ import {
   getIndexTsMarkup,
   getReactProjectAndOpenOptions,
 } from '../../src/utils/stackblitz/reactBoilerplate';
-import type { StackBlitzFrameworkOpts } from '../../src/utils/stackblitz/helper';
+import type { StackBlitzFrameworkOpts } from '../../src/utils';
 
 import * as reactBoilerplateUtils from '../../src/utils/stackblitz/reactBoilerplate';
 import * as stackBlitzHelperUtils from '../../src/utils/stackblitz/helper';
