@@ -51,7 +51,7 @@ export const AccordionPage = (): JSX.Element => {
       <div className="playground light" title="should render accordion with breakpoint customizable size on light background">
         <PAccordion
           heading="Some heading responsive size"
-          size={{ base: 'small', xs: 'small', s: 'medium', m: 'small', l: 'medium', xl: 'small' }}
+          size={{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }}
         >
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
           magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -62,7 +62,7 @@ export const AccordionPage = (): JSX.Element => {
         <PAccordion
           heading="Some heading responsive size"
           theme="dark"
-          size={{ base: 'small', xs: 'small', s: 'medium', m: 'small', l: 'medium', xl: 'small' }}
+          size={{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }}
         >
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
           magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -194,7 +194,7 @@ export const AccordionPage = (): JSX.Element => {
         <PAccordion
           heading="Some compact Accordion with ignored size prop"
           compact={true}
-          size={{ base: 'small', xs: 'small', s: 'medium', m: 'small', l: 'medium', xl: 'small' }}
+          size={{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }}
         >
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
           magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.

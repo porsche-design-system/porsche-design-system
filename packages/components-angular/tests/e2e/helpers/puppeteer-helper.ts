@@ -42,3 +42,4 @@ export const initConsoleObserver = (page: Page): void => {
   });
 };
 export const getConsoleErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;
+export const getConsoleWarningsAmount = () => consoleMessages.filter((x) => x.type() === 'warning').length;

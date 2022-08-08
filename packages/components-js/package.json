@@ -59,24 +59,24 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "@porsche-design-system/components": "2.14.0-beta.0",
-    "@porsche-design-system/components-js": "2.14.0-beta.0",
+    "@porsche-design-system/components": "2.15.0-beta.0",
+    "@porsche-design-system/components-js": "2.15.0-beta.0",
     "@porsche-design-system/components-manager-cli": "0.0.0",
     "@porsche-design-system/partials": "0.0.0"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@types/js-beautify": "^1.13.3",
-    "@types/node": "^18.0.3",
-    "concurrently": "^7.2.2",
-    "devtools-protocol": "^0.0.1019158",
+    "@types/node": "^18.6.4",
+    "concurrently": "^7.3.0",
+    "devtools-protocol": "^0.0.1031356",
     "globby": "^11.0.4",
     "js-beautify": "^1.14.4",
     "jsdom": "^20.0.0",
     "local-web-server": "^5.2.1",
-    "ts-node": "^10.8.2",
+    "ts-node": "^10.9.1",
     "typescript": "~4.7.4",
-    "webpack": "^5.73.0",
+    "webpack": "^5.74.0",
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.10.0"
   }
