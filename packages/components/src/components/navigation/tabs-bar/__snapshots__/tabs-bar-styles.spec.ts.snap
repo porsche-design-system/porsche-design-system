@@ -561,6 +561,36 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-right: 1em !important;
 }
+@media(min-width:480px) {
+  :host {
+    height: 3.25rem !important;
+  }
+}
+
+@media(min-width:760px) {
+  :host {
+    height: 2.25rem !important;
+  }
+}
+
+@media(min-width:1000px) {
+  :host {
+    height: 3.25rem !important;
+  }
+}
+
+@media(min-width:1300px) {
+  :host {
+    height: 2.25rem !important;
+  }
+}
+
+@media(min-width:1760px) {
+  :host {
+    height: 3.25rem !important;
+  }
+}
+
 @media(hover:hover) {
   ::slotted(a:hover),::slotted(button:hover) {
     color: #d5001c !important;

@@ -9,15 +9,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [2.15.0-beta.0] - 2022-08-05
+
+#### Fixed
+
+- `Tabs` & `Tabs Bar` `size` property when using `BreakpointCustomizable`
+
 #### Changed
 
 - `Modal` uses poly fluid sizing for outer spacing
 - `Banner` uses poly fluid sizing for outer spacing
 - `Content Wrapper` uses poly fluid sizing for inner spacing
-- min-width of `Modal` is slightly updated to perfectly fit into content area of `Content Wrapper` at 320px viewport
-  width
-- Font loading strategy for Porsche Next uses `font-display: swap` (FOUT) instead of `font-display: block` for better
-  performance and less potential for layout shifts
+- `Modal` min-width is slightly updated to perfectly fit into content area of `Content Wrapper` at 320px viewport width
 
 #### Added
 
@@ -25,12 +28,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `Text Field Wrapper` with `input type="search"` is clearable via Escape key and custom clear button across browsers
 - `Text Field Wrapper` with `input type="search"` shows a "Locate me" button when `actionIcon="locate"` is set, emits
   the `action` event on click and can be put into a loading state via `actionLoading="true"`
-
-### [2.14.0-beta.0] - 2022-07-12
-
-#### Changed
-
-- Font loading strategy for Porsche Next uses `font-display: block` (FOIT) instead of `font-display: swap`
 
 ### [2.14.0] - 2022-07-11
 

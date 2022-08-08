@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`modal accessibility should expose correct initial accessibility tree 1`] = `
+exports[`accessibility should expose correct initial accessibility tree 1`] = `
 Object {
   "children": Array [
     Object {
@@ -101,4 +101,4 @@ Object {
 }
 `;
 
-exports[`modal accessibility should not expose accessibility tree if modal is hidden 1`] = `null`;
+exports[`accessibility should not expose accessibility tree if modal is hidden 1`] = `null`;
