@@ -53,7 +53,7 @@ meaningful heading through **ARIA** with the `aria` property.
 
 ### Framework Implementations
 
-<Playground :frameworkMarkup="frameworks"></Playground>
+<Playground :frameworkMarkup="codeExampleAccessibility" :markup="basic"></Playground>
 
 ## Basic Scrollable
 
@@ -107,42 +107,15 @@ Of course, any combination of the available options is possible.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import {stretchToFullModalWidthClassName} from './modal-styles';
+import {stretchToFullModalWidthClassName} from './modal-styles'; 
+import {getModalCodeSamples} from "@porsche-design-system/shared"; 
 
 @Component
 export default class Code extends Vue {
   modals = [];
   width = 'minWidth';
 
-  frameworks = {
-    'vanilla-js': `modal.addEventListener('close', () => {
-  modal.open = false;
-});`,
-    angular: `import { Component } from '@angular/core';
-
-@Component({
-  selector: 'modal-page',
-  template: \`<p-modal [open]="isModalOpen" (close)="handleModalClose($event)">...</p-modal>\`,
-})
-export class ModalPage {
-  isModalOpen = false;
-
-  handleModalClose(e: CustomEvent<void>) {
-    this.isModalOpen = false;
-  }
-}`,
-    react: `import { useCallback, useState } from 'react';
-import { PModal } from '@porsche-design-system/components-react';
-
-const ModalPage = (): JSX.Element => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const handleModalClose = useCallback(() => {
-    setIsModalOpen(false);
-  }, []);
-
-  return <PModal open={isModalOpen} onClose={handleModalClose}>...</PModal>
-}`,
-  };
+  codeExampleAccessibility = getModalCodeSamples();
 
   mounted() {
     this.registerEvents();
