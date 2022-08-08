@@ -117,7 +117,7 @@ describe('getReactProjectAndOpenOptions()', () => {
     description: 'Some description',
     title: 'Some title',
     hasFrameworkMarkup: false,
-    bodyStyles: 'body {}',
+    globalStyles: 'body {}',
     pdsComponents: ['p-text'],
   };
 
@@ -130,7 +130,7 @@ describe('getReactProjectAndOpenOptions()', () => {
     jest.spyOn(reactBoilerplateUtils, 'getTsconfigMarkup').mockImplementationOnce(() => '');
 
     const { project, openOptions } = getReactProjectAndOpenOptions(stackBlitzFrameworkOpts);
-    const { bodyStyles, title, description } = stackBlitzFrameworkOpts;
+    const { globalStyles, title, description } = stackBlitzFrameworkOpts;
 
     expect(project).toEqual({
       files: {
@@ -138,7 +138,7 @@ describe('getReactProjectAndOpenOptions()', () => {
         'index.html': `<div id="root"></div>`,
         'index.tsx': mockValue,
         'tsconfig.json': '',
-        'style.css': bodyStyles,
+        'style.css': globalStyles,
       },
       template: 'create-react-app',
       title: title,

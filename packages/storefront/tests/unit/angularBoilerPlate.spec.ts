@@ -143,7 +143,7 @@ describe('getAngularProjectAndOpenOptions()', () => {
     description: 'Some description',
     title: 'Some title',
     hasFrameworkMarkup: false,
-    bodyStyles: 'body {}',
+    globalStyles: 'body {}',
     pdsComponents: ['p-text'],
   };
 
@@ -156,12 +156,12 @@ describe('getAngularProjectAndOpenOptions()', () => {
     jest.spyOn(angularBoilerplateUtils, 'getAngularDependencies').mockImplementationOnce(() => ({}));
 
     const { project, openOptions } = getAngularProjectAndOpenOptions(stackBlitzFrameworkOpts);
-    const { bodyStyles, title, description } = stackBlitzFrameworkOpts;
+    const { globalStyles, title, description } = stackBlitzFrameworkOpts;
 
     expect(project).toEqual({
       files: {
         'index.html': `<porsche-design-system-app></porsche-design-system-app>
-${`<style>${bodyStyles}</style>`}`,
+${`<style>${globalStyles}</style>`}`,
         'main.ts': mockValue,
         'app/app.component.ts': mockValue,
         'app/app.module.ts': mockValue,

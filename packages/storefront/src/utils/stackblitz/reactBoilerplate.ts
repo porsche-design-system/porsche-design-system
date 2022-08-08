@@ -83,8 +83,15 @@ export const getReactDependencies = (
 };
 
 export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
-  const { markup, description, title, hasFrameworkMarkup, bodyStyles, pdsComponents, externalStackBlitzDependencies } =
-    opts;
+  const {
+    markup,
+    description,
+    title,
+    hasFrameworkMarkup,
+    globalStyles,
+    pdsComponents,
+    externalStackBlitzDependencies,
+  } = opts;
 
   return {
     files: {
@@ -93,7 +100,7 @@ export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions =
       'index.tsx': getIndexTsxMarkup(),
 
       'tsconfig.json': JSON.stringify(tsconfig),
-      'style.css': bodyStyles,
+      'style.css': globalStyles,
     },
     template: 'create-react-app',
     title,

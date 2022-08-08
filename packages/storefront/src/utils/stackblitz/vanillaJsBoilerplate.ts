@@ -77,13 +77,13 @@ export const getVanillaJsDependencies = (
 };
 
 export const getVanillaJsProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
-  const { markup, description, title, bodyStyles, pdsComponents, externalStackBlitzDependencies } = opts;
+  const { markup, description, title, globalStyles, pdsComponents, externalStackBlitzDependencies } = opts;
 
   const hasIMask = hastIMaskDependency(externalStackBlitzDependencies);
 
   return {
     files: {
-      'index.html': getIndexHtmlMarkup(markup, isTable(pdsComponents), bodyStyles, hasIMask),
+      'index.html': getIndexHtmlMarkup(markup, isTable(pdsComponents), globalStyles, hasIMask),
       'index.js': '',
     },
     template: 'javascript',
