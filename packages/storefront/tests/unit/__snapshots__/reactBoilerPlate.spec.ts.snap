@@ -1,8 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`getDefaultMarkup() should return correct default markup 1`] = `
-"import * as React from 'react';
-import { PText, PAccordion } from '@porsche-design-system/components-react'
+"import { PText, PAccordion } from '@porsche-design-system/components-react'
 
 export const App = (): JSX.Fragment => {
   return (
@@ -52,4 +51,29 @@ Object {
   "react": "^18.2.0",
   "react-dom": "^18.2.0",
 }
+`;
+
+exports[`getTsconfigMarkup() should have correct tsconfig setup 1`] = `
+"{
+  \\"compilerOptions\\": {
+    \\"target\\": \\"es6\\",
+    \\"lib\\": [\\"dom\\", \\"dom.iterable\\", \\"esnext\\"],
+    \\"allowJs\\": true,
+    \\"skipLibCheck\\": true,
+    \\"esModuleInterop\\": true,
+    \\"allowSyntheticDefaultImports\\": true,
+    \\"strict\\": true,
+    \\"strictNullChecks\\": false,
+    \\"forceConsistentCasingInFileNames\\": true,
+    \\"module\\": \\"esnext\\",
+    \\"moduleResolution\\": \\"node\\",
+    \\"resolveJsonModule\\": true,
+    \\"isolatedModules\\": true,
+    \\"noEmit\\": true,
+    \\"jsx\\": \\"react-jsx\\",
+    \\"noFallthroughCasesInSwitch\\": true
+  },
+  \\"include\\": [\\"src\\"]
+}
+"
 `;
