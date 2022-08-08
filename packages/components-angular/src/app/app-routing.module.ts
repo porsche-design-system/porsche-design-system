@@ -80,6 +80,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.InlineNotificationExampleActionButtonComponent,
   },
   {
+    name: 'Modal Example Accessibility',
+    path: 'modal-example-accessibility',
+    component: fromExamples.ModalExampleAccessibilityComponent,
+  },
+  {
     name: 'Segmented Control Example',
     path: 'segmented-control-example',
     component: fromExamples.SegmentedControlExampleComponent,
