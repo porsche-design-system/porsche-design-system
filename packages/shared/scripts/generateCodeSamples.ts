@@ -113,9 +113,14 @@ const generateCodeSamples = (): void => {
       component: 'p-tabs-bar',
       samples: [
         [
-          componentsJsPath + '/tabs-bar-example.html',
-          componentsAngularPath + '/tabs-bar-example.component.ts',
-          componentsReactPath + '/TabsBarExample.tsx',
+          componentsJsPath + '/tabs-bar-example-basic.html',
+          componentsAngularPath + '/tabs-bar-example-basic.component.ts',
+          componentsReactPath + '/TabsBarExampleBasic.tsx',
+        ],
+        [
+          componentsJsPath + '/tabs-bar-example-accessibility.html',
+          componentsAngularPath + '/tabs-bar-example-accessibility.component.ts',
+          componentsReactPath + '/TabsBarExampleAccessibility.tsx',
         ],
       ],
     },
