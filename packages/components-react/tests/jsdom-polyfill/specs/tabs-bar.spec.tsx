@@ -15,6 +15,7 @@ const Sample = (): JSX.Element => {
           setActiveTab(e.detail.activeTabIndex);
           setEventCounter(eventCounter + 1);
         }}
+        size={{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }}
         data-testid="host"
       >
         <button data-testid="button1">Some label</button>
