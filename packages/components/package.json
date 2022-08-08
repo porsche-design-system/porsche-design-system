@@ -46,6 +46,7 @@
     "jss": "^10.9.2",
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.9.2",
+    "swiper": "^8.3.2",
     "throttle-debounce": "^5.0.0"
   },
   "devDependencies": {

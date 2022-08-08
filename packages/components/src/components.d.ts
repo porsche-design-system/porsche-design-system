@@ -195,6 +195,13 @@ export namespace Components {
          */
         "weight"?: TextWeight;
     }
+    interface PCarousel {
+        "disablePagination"?: BreakpointCustomizable<boolean>;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: ThemeExtendedElectric;
+    }
     interface PCheckboxWrapper {
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
@@ -1105,6 +1112,10 @@ export interface PBannerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPBannerElement;
 }
+export interface PCarouselCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPCarouselElement;
+}
 export interface PInlineNotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPInlineNotificationElement;
@@ -1179,6 +1190,12 @@ declare global {
     var HTMLPButtonPureElement: {
         prototype: HTMLPButtonPureElement;
         new (): HTMLPButtonPureElement;
+    };
+    interface HTMLPCarouselElement extends Components.PCarousel, HTMLStencilElement {
+    }
+    var HTMLPCarouselElement: {
+        prototype: HTMLPCarouselElement;
+        new (): HTMLPCarouselElement;
     };
     interface HTMLPCheckboxWrapperElement extends Components.PCheckboxWrapper, HTMLStencilElement {
     }
@@ -1468,6 +1485,7 @@ declare global {
         "p-button": HTMLPButtonElement;
         "p-button-group": HTMLPButtonGroupElement;
         "p-button-pure": HTMLPButtonPureElement;
+        "p-carousel": HTMLPCarouselElement;
         "p-checkbox-wrapper": HTMLPCheckboxWrapperElement;
         "p-content-wrapper": HTMLPContentWrapperElement;
         "p-divider": HTMLPDividerElement;
@@ -1677,6 +1695,17 @@ declare namespace LocalJSX {
           * The weight of the text (only has effect with visible label).
          */
         "weight"?: TextWeight;
+    }
+    interface PCarousel {
+        "disablePagination"?: BreakpointCustomizable<boolean>;
+        /**
+          * Emitted when carousel's position changes.
+         */
+        "onCarouselChange"?: (event: PCarouselCustomEvent<void>) => void;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: ThemeExtendedElectric;
     }
     interface PCheckboxWrapper {
         /**
@@ -2632,6 +2661,7 @@ declare namespace LocalJSX {
         "p-button": PButton;
         "p-button-group": PButtonGroup;
         "p-button-pure": PButtonPure;
+        "p-carousel": PCarousel;
         "p-checkbox-wrapper": PCheckboxWrapper;
         "p-content-wrapper": PContentWrapper;
         "p-divider": PDivider;
@@ -2690,6 +2720,7 @@ declare module "@stencil/core" {
             "p-button": LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
             "p-button-group": LocalJSX.PButtonGroup & JSXBase.HTMLAttributes<HTMLPButtonGroupElement>;
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
+            "p-carousel": LocalJSX.PCarousel & JSXBase.HTMLAttributes<HTMLPCarouselElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
             "p-content-wrapper": LocalJSX.PContentWrapper & JSXBase.HTMLAttributes<HTMLPContentWrapperElement>;
             "p-divider": LocalJSX.PDivider & JSXBase.HTMLAttributes<HTMLPDividerElement>;
