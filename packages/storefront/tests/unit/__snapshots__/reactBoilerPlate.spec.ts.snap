@@ -34,7 +34,7 @@ root.render(
 
 exports[`getReactDependencies() should return correct dependencies object with additionalDependency "IMask" 1`] = `
 Object {
-  "@porsche-design-system/components-react": "2.14.0-beta.0",
+  "@porsche-design-system/components-react": "2.15.0-beta.0",
   "@types/react": "^18.0.15",
   "@types/react-dom": "^18.0.6",
   "react": "^18.2.0",
@@ -45,7 +45,7 @@ Object {
 
 exports[`getReactDependencies() should return correct dependencies object without additionalDependencies 1`] = `
 Object {
-  "@porsche-design-system/components-react": "2.14.0-beta.0",
+  "@porsche-design-system/components-react": "2.15.0-beta.0",
   "@types/react": "^18.0.15",
   "@types/react-dom": "^18.0.6",
   "react": "^18.2.0",
