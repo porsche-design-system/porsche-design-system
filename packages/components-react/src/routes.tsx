@@ -101,9 +101,14 @@ export const routes: RouteType[] = [
     element: <fromExamples.TableExampleAdvancedPage />,
   },
   {
-    name: 'Tabs Bar Example',
-    path: '/tabs-bar-example',
-    element: <fromExamples.TabsBarExamplePage />,
+    name: 'Tabs Bar Example Accessibility',
+    path: '/tabs-bar-example-accessibility',
+    element: <fromExamples.TabsBarExampleAccessibilityPage />,
+  },
+  {
+    name: 'Tabs Bar Example Basic',
+    path: '/tabs-bar-example-basic',
+    element: <fromExamples.TabsBarExampleBasicPage />,
   },
   {
     name: 'Text Field Wrapper Example IMask',
