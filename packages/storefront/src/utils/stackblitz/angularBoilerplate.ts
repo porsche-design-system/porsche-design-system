@@ -4,6 +4,7 @@ import {
   ExternalStackBlitzDependency,
   getExternalDependencies,
   GetStackblitzProjectAndOpenOptions,
+  hastIMaskDependency,
   isTable,
 } from '@/utils/stackblitz/helper';
 import { inlineSharedImports } from './helper';
@@ -75,15 +76,11 @@ export const getAngularDependencies = (
   };
 };
 
-export const usesIMask = (additionalDependencies?: string[]): boolean => {
-  return additionalDependencies ? additionalDependencies.filter((x) => x === 'IMask').length > 0 : false;
-};
-
 export const getAngularProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
   const { markup, description, title, hasFrameworkMarkup, bodyStyles, pdsComponents, externalStackBlitzDependencies } =
     opts;
 
-  const hasIMask = usesIMask(externalStackBlitzDependencies);
+  const hasIMask = hastIMaskDependency(externalStackBlitzDependencies);
 
   return {
     files: {
