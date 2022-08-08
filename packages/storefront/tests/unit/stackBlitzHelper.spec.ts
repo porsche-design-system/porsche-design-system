@@ -1,7 +1,7 @@
 import { themeDark, themeLight } from '@porsche-design-system/utilities-v2';
 import type { Theme, ColorScheme } from './../../src/models/index';
 import {
-  getAdditionalDependencies,
+  getExternalDependencies,
   getBackgroundColor,
   getPdsComponents,
   isTable,
@@ -32,10 +32,10 @@ describe('getAdditionalDependencies()', () => {
   };
 
   it('should map correct values depending on additionalDependencies array', () => {
-    expect(getAdditionalDependencies(['dependencyAlias1'], dependenciesMap)).toEqual({
+    expect(getExternalDependencies(['dependencyAlias1'], dependenciesMap)).toEqual({
       ...dependenciesMap.dependencyAlias1,
     });
-    expect(getAdditionalDependencies(['dependencyAlias1', 'dependencyAlias2'], dependenciesMap)).toEqual({
+    expect(getExternalDependencies(['dependencyAlias1', 'dependencyAlias2'], dependenciesMap)).toEqual({
       ...dependenciesMap.dependencyAlias1,
       ...dependenciesMap.dependencyAlias2,
     });

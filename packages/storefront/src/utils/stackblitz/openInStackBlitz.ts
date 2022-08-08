@@ -3,7 +3,7 @@ import { getVanillaJsProjectAndOpenOptions } from '@/utils/stackblitz/vanillaJsB
 import { getReactProjectAndOpenOptions } from '@/utils/stackblitz/reactBoilerplate';
 import { getAngularProjectAndOpenOptions } from '@/utils/stackblitz/angularBoilerplate';
 import {
-  AdditionalStackBlitzDependency,
+  ExternalStackBlitzDependency,
   getBackgroundColor,
   getPdsComponents,
   GetStackblitzProjectAndOpenOptions,
@@ -18,11 +18,11 @@ export type OpenInStackBlitzOpts = {
   theme: Theme;
   hasFrameworkMarkup: boolean;
   colorScheme: ColorScheme;
-  additionalStackBlitzDependencies?: AdditionalStackBlitzDependency[];
+  externalStackBlitzDependencies?: ExternalStackBlitzDependency[];
 };
 
 export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
-  const { markup, framework, theme, hasFrameworkMarkup, additionalStackBlitzDependencies, colorScheme } = opts;
+  const { markup, framework, theme, hasFrameworkMarkup, externalStackBlitzDependencies, colorScheme } = opts;
 
   // TODO: move into react
   const pdsComponents = getPdsComponents(markup);
@@ -34,7 +34,7 @@ export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
     description: 'Porsche Design System component example',
     bodyStyles: `body { background: ${getBackgroundColor(theme, colorScheme)}; }`,
     pdsComponents,
-    additionalStackBlitzDependencies,
+    externalStackBlitzDependencies,
   };
 
   const getProjectAndOpenOptionsCallbackMap: {

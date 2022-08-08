@@ -7,8 +7,8 @@ import {
   dataAdvanced,
   headAdvanced,
 } from '@porsche-design-system/shared';
-import { getAdditionalDependencies, isTable } from '@/utils/stackblitz/helper';
-import type { AdditionalStackBlitzDependency, GetStackblitzProjectAndOpenOptions } from '@/utils/stackblitz/helper';
+import { getExternalDependencies, isTable } from '@/utils/stackblitz/helper';
+import type { ExternalStackBlitzDependency, GetStackblitzProjectAndOpenOptions } from '@/utils/stackblitz/helper';
 import type { StackblitzProjectDependencies } from '@/models';
 import type { StackBlitzDependencyMap } from '@/utils/stackblitz/helper';
 
@@ -29,10 +29,10 @@ export const getIndexHtmlMarkup = (markup: string, hasFrameworkMarkup: boolean, 
   return hasFrameworkMarkup ? getFrameworkMarkup(markup, isTable) : markup;
 };
 
-export const getIndexJsMarkup = (additionalStackBlitzDependencies?: string[]): string => `import './style.css'
+export const getIndexJsMarkup = (externalStackBlitzDependencies?: string[]): string => `import './style.css'
 import * as porscheDesignSystem from '@porsche-design-system/components-js'
 ${
-  additionalStackBlitzDependencies && additionalStackBlitzDependencies.filter((x) => x === 'IMask')
+  externalStackBlitzDependencies && externalStackBlitzDependencies.filter((x) => x === 'IMask')
     ? `import IMask from 'imask';
 IMask`
     : ''
@@ -66,36 +66,28 @@ const dependenciesMap: StackBlitzDependencyMap = {
 };
 
 export const getVanillaJsDependencies = (
-  additionalStackBlitzDependencies?: AdditionalStackBlitzDependency[]
+  externalStackBlitzDependencies?: ExternalStackBlitzDependency[]
 ): StackblitzProjectDependencies => {
   return {
     '@porsche-design-system/components-js': dependencies['@porsche-design-system/components-js'],
-    ...(additionalStackBlitzDependencies &&
-      getAdditionalDependencies(additionalStackBlitzDependencies, dependenciesMap)),
+    ...(externalStackBlitzDependencies && getExternalDependencies(externalStackBlitzDependencies, dependenciesMap)),
   };
 };
 
 export const getVanillaJsProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
-  const {
-    markup,
-    description,
-    title,
-    bodyStyles,
-    hasFrameworkMarkup,
-    pdsComponents,
-    additionalStackBlitzDependencies,
-  } = opts;
+  const { markup, description, title, bodyStyles, hasFrameworkMarkup, pdsComponents, externalStackBlitzDependencies } =
+    opts;
 
   return {
     files: {
       'index.html': getIndexHtmlMarkup(markup, hasFrameworkMarkup, isTable(pdsComponents)),
-      'index.js': getIndexJsMarkup(additionalStackBlitzDependencies),
+      'index.js': getIndexJsMarkup(externalStackBlitzDependencies),
       'style.css': bodyStyles,
     },
     template: 'javascript',
     title,
     description,
-    dependencies: getVanillaJsDependencies(additionalStackBlitzDependencies),
+    dependencies: getVanillaJsDependencies(externalStackBlitzDependencies),
     openFile: 'index.html',
   };
 };

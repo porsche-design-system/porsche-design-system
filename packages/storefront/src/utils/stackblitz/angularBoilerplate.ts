@@ -1,8 +1,8 @@
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
 import { dependencies } from '../../../../components-angular/package.json';
 import {
-  AdditionalStackBlitzDependency,
-  getAdditionalDependencies,
+  ExternalStackBlitzDependency,
+  getExternalDependencies,
   GetStackblitzProjectAndOpenOptions,
   isTable,
 } from '@/utils/stackblitz/helper';
@@ -67,12 +67,11 @@ const dependenciesMap: StackBlitzDependencyMap = {
 
 export const getAngularDependencies = (
   usesImask: boolean,
-  additionalStackBlitzDependencies?: AdditionalStackBlitzDependency[]
+  externalStackBlitzDependencies?: ExternalStackBlitzDependency[]
 ): StackblitzProjectDependencies => {
   return {
     '@porsche-design-system/components-angular': `${pdsVersion}`,
-    ...(additionalStackBlitzDependencies &&
-      getAdditionalDependencies(additionalStackBlitzDependencies, dependenciesMap)),
+    ...(externalStackBlitzDependencies && getExternalDependencies(externalStackBlitzDependencies, dependenciesMap)),
   };
 };
 
@@ -81,17 +80,10 @@ export const usesIMask = (additionalDependencies?: string[]): boolean => {
 };
 
 export const getAngularProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
-  const {
-    markup,
-    description,
-    title,
-    hasFrameworkMarkup,
-    bodyStyles,
-    pdsComponents,
-    additionalStackBlitzDependencies,
-  } = opts;
+  const { markup, description, title, hasFrameworkMarkup, bodyStyles, pdsComponents, externalStackBlitzDependencies } =
+    opts;
 
-  const hasIMask = usesIMask(additionalStackBlitzDependencies);
+  const hasIMask = usesIMask(externalStackBlitzDependencies);
 
   return {
     files: {
@@ -104,7 +96,7 @@ ${`<style>${bodyStyles}</style>`}`,
     template: 'angular-cli',
     title,
     description,
-    dependencies: getAngularDependencies(hasIMask, additionalStackBlitzDependencies),
+    dependencies: getAngularDependencies(hasIMask, externalStackBlitzDependencies),
     openOptions: {},
   };
 };
