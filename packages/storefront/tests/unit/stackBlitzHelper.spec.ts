@@ -50,7 +50,7 @@ describe('isTable()', () => {
     expect(isTable(['PTable', 'PText'])).toBe(true);
   });
   it('should be false if first string does not contain table', () => {
-    expect(isTable(['p-accordion', 'p-text'])).toBe(false);
+    expect(isTable(['p-accordion', 'p-text', 'PAccordion', 'PText'])).toBe(false);
   });
 });
 
