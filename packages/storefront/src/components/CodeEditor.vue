@@ -1,8 +1,9 @@
 <template>
   <p-button
-    type="submit"
+    type="button"
     :theme="theme"
     :icon-source="stackBlitzIcon"
+    :disabled="framework === 'shared'"
     @click="
       openInStackBlitz({
         markup,
@@ -10,7 +11,7 @@
         theme,
         hasFrameworkMarkup,
         externalStackBlitzDependencies,
-        colorScheme,
+        backgroundColorScheme: colorScheme,
       })
     "
     >Edit in StackBlitz
@@ -21,17 +22,17 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
-  import { Theme } from '@/models';
-  import { ExternalStackBlitzDependency, openInStackBlitz } from '@/utils';
-  import type { FrameworksWithoutShared } from '@/utils';
+  import type { ColorScheme, Framework, Theme } from '@/models';
+  import { openInStackBlitz } from '@/utils';
+  import type { ExternalStackBlitzDependency } from '@/utils';
 
   @Component
   export default class CodeEditor extends Vue {
     @Prop({ default: '' }) public markup!: string;
     @Prop({ default: 'light' }) public theme!: Theme;
-    @Prop({ default: 'vanilla-js' }) public framework!: FrameworksWithoutShared;
+    @Prop({ default: 'vanilla-js' }) public framework!: Framework;
     @Prop({ default: false }) public hasFrameworkMarkup!: boolean;
-    @Prop({ default: 'default' }) public colorScheme!: 'default' | 'surface';
+    @Prop({ default: 'default' }) public colorScheme!: ColorScheme;
     @Prop() public externalStackBlitzDependencies?: ExternalStackBlitzDependency[];
 
     stackBlitzIcon = require('../assets/icon-stackblitz.svg');

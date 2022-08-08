@@ -77,15 +77,22 @@ export const getAngularDependencies = (
 };
 
 export const getAngularProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
-  const { markup, description, title, hasFrameworkMarkup, bodyStyles, pdsComponents, externalStackBlitzDependencies } =
-    opts;
+  const {
+    markup,
+    description,
+    title,
+    hasFrameworkMarkup,
+    globalStyles,
+    pdsComponents,
+    externalStackBlitzDependencies,
+  } = opts;
 
   const hasIMask = hastIMaskDependency(externalStackBlitzDependencies);
 
   return {
     files: {
       'index.html': `<porsche-design-system-app></porsche-design-system-app>
-${`<style>${bodyStyles}</style>`}`,
+${`<style>${globalStyles}</style>`}`,
       'main.ts': getMainTsMarkup(),
       'app/app.component.ts': getComponentTsMarkup(markup, hasFrameworkMarkup, isTable(pdsComponents)),
       'app/app.module.ts': getModuleTsMarkup(hasIMask),

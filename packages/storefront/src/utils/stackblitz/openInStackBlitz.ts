@@ -17,12 +17,12 @@ export type OpenInStackBlitzOpts = {
   framework: FrameworksWithoutShared;
   theme: Theme;
   hasFrameworkMarkup: boolean;
-  colorScheme: ColorScheme;
+  backgroundColorScheme: ColorScheme;
   externalStackBlitzDependencies?: ExternalStackBlitzDependency[];
 };
 
 export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
-  const { markup, framework, theme, hasFrameworkMarkup, externalStackBlitzDependencies, colorScheme } = opts;
+  const { markup, framework, theme, hasFrameworkMarkup, externalStackBlitzDependencies, backgroundColorScheme } = opts;
 
   // TODO: move into react
   const pdsComponents = getPdsComponents(markup);
@@ -32,7 +32,7 @@ export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
     hasFrameworkMarkup,
     title: `Porsche Design System ${framework} sandbox`,
     description: 'Porsche Design System component example',
-    bodyStyles: `body { background: ${getBackgroundColor(theme, colorScheme)}; }`,
+    globalStyles: `body { background: ${getBackgroundColor(theme, backgroundColorScheme)}; }`,
     pdsComponents,
     externalStackBlitzDependencies,
   };

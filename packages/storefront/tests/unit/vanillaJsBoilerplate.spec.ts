@@ -110,12 +110,12 @@ describe('getVanillaJsProjectAndOpenOptions()', () => {
     description: 'Some description',
     title: 'Some title',
     hasFrameworkMarkup: false,
-    bodyStyles: 'body {}',
+    globalStyles: 'body {}',
     pdsComponents: ['p-text'],
   };
 
   it('should return correct project and openOptions', () => {
-    const { bodyStyles, title, description } = stackBlitzFrameworkOpts;
+    const { globalStyles, title, description } = stackBlitzFrameworkOpts;
     const mockValue = 'Some value';
 
     jest.spyOn(vanillaJsBoilerplateUtils, 'getIndexHtmlMarkup').mockImplementationOnce(() => mockValue);
@@ -128,7 +128,7 @@ describe('getVanillaJsProjectAndOpenOptions()', () => {
       files: {
         'index.html': mockValue,
         'index.js': mockValue,
-        'style.css': bodyStyles,
+        'style.css': globalStyles,
       },
       template: 'javascript',
       title,

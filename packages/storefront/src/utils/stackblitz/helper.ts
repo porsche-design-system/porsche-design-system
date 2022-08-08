@@ -11,10 +11,10 @@ import { OpenInStackBlitzOpts } from '@/utils/stackblitz/openInStackBlitz';
 
 export type FrameworksWithoutShared = Exclude<Framework, 'shared'>;
 
-export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | 'theme' | 'colorScheme'> & {
+export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | 'theme' | 'backgroundColorScheme'> & {
   title: string;
   description: string;
-  bodyStyles: string;
+  globalStyles: string;
   pdsComponents: string[];
 };
 
