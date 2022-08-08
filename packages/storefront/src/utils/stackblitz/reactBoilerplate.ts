@@ -74,10 +74,10 @@ export const getReactDependencies = (
   // TODO: remove interpolation / pick dependencies
   return {
     '@porsche-design-system/components-react': dependencies['@porsche-design-system/components-react'],
-    react: `${dependencies['react']}`,
-    'react-dom': `${dependencies['react-dom']}`,
-    '@types/react': `${devDependencies['@types/react']}`,
-    '@types/react-dom': `${devDependencies['@types/react-dom']}`,
+    react: dependencies['react'],
+    'react-dom': dependencies['react-dom'],
+    '@types/react': devDependencies['@types/react'],
+    '@types/react-dom': devDependencies['@types/react-dom'],
     ...(externalStackBlitzDependencies && getExternalDependencies(externalStackBlitzDependencies, dependenciesMap)),
   };
 };
