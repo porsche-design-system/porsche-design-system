@@ -40,6 +40,9 @@ export class Carousel {
       spaceBetween: 10,
       // cssMode: true,
       modules: [A11y, Navigation, Pagination],
+      a11y: {
+        id: 'swiper', // for stable dom snapshots
+      },
       navigation: {
         nextEl: this.swiperNextBtn,
         prevEl: this.swiperPrevBtn,
