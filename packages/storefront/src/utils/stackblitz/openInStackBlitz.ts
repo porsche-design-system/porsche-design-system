@@ -19,33 +19,22 @@ export type OpenInStackBlitzOpts = {
   theme: Theme;
   hasFrameworkMarkup: boolean;
   backgroundColorScheme: ColorScheme;
-  sharedImportKeys?: SharedImportKey[];
-  externalStackBlitzDependencies?: ExternalStackBlitzDependency[];
+  externalStackBlitzDependencies: ExternalStackBlitzDependency[];
+  sharedImportKeys: SharedImportKey[];
 };
 
 export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
-  const {
-    markup,
-    framework,
-    theme,
-    hasFrameworkMarkup,
-    externalStackBlitzDependencies,
-    backgroundColorScheme,
-    sharedImportKeys,
-  } = opts;
+  const { framework, theme, backgroundColorScheme, ...rest } = opts;
 
   // TODO: move into react
-  const pdsComponents = getPdsComponents(markup);
+  const pdsComponents = getPdsComponents('markup');
 
   const stackBlitzFrameworkOpts: StackBlitzFrameworkOpts = {
-    markup,
-    hasFrameworkMarkup,
+    ...rest,
     title: `Porsche Design System ${framework} sandbox`,
     description: 'Porsche Design System component example',
     globalStyles: `body { background: ${getBackgroundColor(theme, backgroundColorScheme)}; }`,
     pdsComponents,
-    sharedImportKeys,
-    externalStackBlitzDependencies,
   };
 
   const getProjectAndOpenOptionsCallbackMap: {

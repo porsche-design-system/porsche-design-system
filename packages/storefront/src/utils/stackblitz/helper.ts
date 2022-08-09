@@ -7,7 +7,7 @@ import type {
   Theme,
 } from '@/models';
 import { themeDark, themeLight } from '@porsche-design-system/utilities-v2';
-import { OpenInStackBlitzOpts } from '@/utils/stackblitz/openInStackBlitz';
+import type { OpenInStackBlitzOpts } from '@/utils/stackblitz/openInStackBlitz';
 
 export type FrameworksWithoutShared = Exclude<Framework, 'shared'>;
 
@@ -23,10 +23,15 @@ export type SharedImportKey = Exclude<keyof typeof sharedData, 'headVrt' | 'data
 export const removeSharedImport = (markup: string): string =>
   markup.replace(/import { .+ } from '@porsche-design-system\/shared';/, '');
 
-export const inlineSharedImports = (sharedImportKeys: SharedImportKey[]): string =>
-  sharedImportKeys.map((x) => `const ${x} = ${JSON.stringify(sharedData[x], null, 2)};`).join('\n');
+export const getSharedImportConstants = (sharedImportKeys: SharedImportKey[]): string => {
+  const sharedImportConstants = sharedImportKeys
+    .map((x) => `const ${x} = ${JSON.stringify(sharedData[x], null, 2)};`)
+    .join('\n\n');
 
+  return sharedImportConstants ? `${sharedImportConstants}\n\n` : '';
+};
 export type ExternalStackBlitzDependency = 'imask';
+export type ExternalDependenciesToSrcMap = { [key in ExternalStackBlitzDependency]: string };
 export type StackBlitzDependencyMap = { [key in ExternalStackBlitzDependency]: StackblitzProjectDependencies };
 
 // TODO: validate if typing works from md files, otherwise validate
