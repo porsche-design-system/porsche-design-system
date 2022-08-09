@@ -44,6 +44,15 @@ export default [
     plugins: [typescript()],
   },
   {
+    input: 'src/data/index.ts',
+    external,
+    output: {
+      dir: 'dist/data',
+      format: 'esm',
+    },
+    plugins: [typescript()],
+  },
+  {
     input: 'src/testing.ts',
     external,
     output: {
