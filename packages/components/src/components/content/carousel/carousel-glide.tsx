@@ -50,7 +50,7 @@ export class CarouselGlide {
       gap: 16,
     });
 
-    this.glide.on('mount.after', (): void => {
+    this.glide.on('mount.before', (): void => {
       const { index } = this.glide;
       this.btnPrev.disabled = index === 0;
       this.btnNext.disabled = index === this.slides.length - 1;
@@ -58,7 +58,7 @@ export class CarouselGlide {
       this.pagination.children[index].classList.add('bullet--active');
     });
 
-    this.glide.on('move.after', (): void => {
+    this.glide.on('move', (): void => {
       const { index } = this.glide;
       this.btnPrev.disabled = index === 0;
       this.btnNext.disabled = index === this.slides.length - 1;
