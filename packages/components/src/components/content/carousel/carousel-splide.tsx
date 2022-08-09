@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, getPrefixedTagNames, THEMES, validateProps } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
-import { getComponentCss } from './carousel-styles';
+import { getComponentCss } from './carousel-splide-styles';
 import { Splide } from '@splidejs/splide';
 import { ButtonPure } from '../../action/button-pure/button-pure';
 
