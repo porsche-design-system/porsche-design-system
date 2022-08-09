@@ -48,7 +48,7 @@ export default [
     external,
     output: {
       dir: 'dist/data',
-      format: 'esm',
+      format: 'cjs',
     },
     plugins: [typescript()],
   },
