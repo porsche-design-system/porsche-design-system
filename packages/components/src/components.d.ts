@@ -200,14 +200,14 @@ export namespace Components {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
     }
     interface PCarouselAlt {
         "disablePagination"?: BreakpointCustomizable<boolean>;
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
     }
     interface PCheckboxWrapper {
         /**
@@ -1723,7 +1723,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
     }
     interface PCarouselAlt {
         "disablePagination"?: BreakpointCustomizable<boolean>;
@@ -1734,7 +1734,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the color when used on dark background.
          */
-        "theme"?: ThemeExtendedElectric;
+        "theme"?: Theme;
     }
     interface PCheckboxWrapper {
         /**
