@@ -202,13 +202,6 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
-    interface PCarouselAlt {
-        "disablePagination"?: BreakpointCustomizable<boolean>;
-        /**
-          * Adapts the color when used on dark background.
-         */
-        "theme"?: Theme;
-    }
     interface PCheckboxWrapper {
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
@@ -1123,10 +1116,6 @@ export interface PCarouselCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPCarouselElement;
 }
-export interface PCarouselAltCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLPCarouselAltElement;
-}
 export interface PInlineNotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPInlineNotificationElement;
@@ -1207,12 +1196,6 @@ declare global {
     var HTMLPCarouselElement: {
         prototype: HTMLPCarouselElement;
         new (): HTMLPCarouselElement;
-    };
-    interface HTMLPCarouselAltElement extends Components.PCarouselAlt, HTMLStencilElement {
-    }
-    var HTMLPCarouselAltElement: {
-        prototype: HTMLPCarouselAltElement;
-        new (): HTMLPCarouselAltElement;
     };
     interface HTMLPCheckboxWrapperElement extends Components.PCheckboxWrapper, HTMLStencilElement {
     }
@@ -1503,7 +1486,6 @@ declare global {
         "p-button-group": HTMLPButtonGroupElement;
         "p-button-pure": HTMLPButtonPureElement;
         "p-carousel": HTMLPCarouselElement;
-        "p-carousel-alt": HTMLPCarouselAltElement;
         "p-checkbox-wrapper": HTMLPCheckboxWrapperElement;
         "p-content-wrapper": HTMLPContentWrapperElement;
         "p-divider": HTMLPDividerElement;
@@ -1720,17 +1702,6 @@ declare namespace LocalJSX {
           * Emitted when carousel's position changes.
          */
         "onCarouselChange"?: (event: PCarouselCustomEvent<void>) => void;
-        /**
-          * Adapts the color when used on dark background.
-         */
-        "theme"?: Theme;
-    }
-    interface PCarouselAlt {
-        "disablePagination"?: BreakpointCustomizable<boolean>;
-        /**
-          * Emitted when carousel's position changes.
-         */
-        "onCarouselChange"?: (event: PCarouselAltCustomEvent<void>) => void;
         /**
           * Adapts the color when used on dark background.
          */
@@ -2691,7 +2662,6 @@ declare namespace LocalJSX {
         "p-button-group": PButtonGroup;
         "p-button-pure": PButtonPure;
         "p-carousel": PCarousel;
-        "p-carousel-alt": PCarouselAlt;
         "p-checkbox-wrapper": PCheckboxWrapper;
         "p-content-wrapper": PContentWrapper;
         "p-divider": PDivider;
@@ -2751,7 +2721,6 @@ declare module "@stencil/core" {
             "p-button-group": LocalJSX.PButtonGroup & JSXBase.HTMLAttributes<HTMLPButtonGroupElement>;
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
             "p-carousel": LocalJSX.PCarousel & JSXBase.HTMLAttributes<HTMLPCarouselElement>;
-            "p-carousel-alt": LocalJSX.PCarouselAlt & JSXBase.HTMLAttributes<HTMLPCarouselAltElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
             "p-content-wrapper": LocalJSX.PContentWrapper & JSXBase.HTMLAttributes<HTMLPContentWrapperElement>;
             "p-divider": LocalJSX.PDivider & JSXBase.HTMLAttributes<HTMLPDividerElement>;
