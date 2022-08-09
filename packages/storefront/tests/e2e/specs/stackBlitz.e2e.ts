@@ -12,7 +12,7 @@ it.each(<Framework[]>['react', 'vanilla-js', 'angular'])(
     await page.goto(`${baseURL}/components/button/examples`, { waitUntil: 'networkidle0' });
 
     const playground = await page.$('.playground');
-    const stackBlitzButton = await playground.$('p-button[type=submit]');
+    const stackBlitzButton = await playground.$('p-button[type=button]');
 
     const codeBlock = await page.$('.code-block');
     const frameWorkTabsBar = await codeBlock.$('p-tabs-bar');
