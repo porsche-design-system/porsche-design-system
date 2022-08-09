@@ -202,6 +202,13 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    interface PCarouselGlide {
+        "disablePagination"?: BreakpointCustomizable<boolean>;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
+    }
     interface PCarouselSplide {
         "disablePagination"?: BreakpointCustomizable<boolean>;
         /**
@@ -1123,6 +1130,10 @@ export interface PCarouselCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPCarouselElement;
 }
+export interface PCarouselGlideCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPCarouselGlideElement;
+}
 export interface PCarouselSplideCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPCarouselSplideElement;
@@ -1207,6 +1218,12 @@ declare global {
     var HTMLPCarouselElement: {
         prototype: HTMLPCarouselElement;
         new (): HTMLPCarouselElement;
+    };
+    interface HTMLPCarouselGlideElement extends Components.PCarouselGlide, HTMLStencilElement {
+    }
+    var HTMLPCarouselGlideElement: {
+        prototype: HTMLPCarouselGlideElement;
+        new (): HTMLPCarouselGlideElement;
     };
     interface HTMLPCarouselSplideElement extends Components.PCarouselSplide, HTMLStencilElement {
     }
@@ -1503,6 +1520,7 @@ declare global {
         "p-button-group": HTMLPButtonGroupElement;
         "p-button-pure": HTMLPButtonPureElement;
         "p-carousel": HTMLPCarouselElement;
+        "p-carousel-glide": HTMLPCarouselGlideElement;
         "p-carousel-splide": HTMLPCarouselSplideElement;
         "p-checkbox-wrapper": HTMLPCheckboxWrapperElement;
         "p-content-wrapper": HTMLPContentWrapperElement;
@@ -1720,6 +1738,17 @@ declare namespace LocalJSX {
           * Emitted when carousel's position changes.
          */
         "onCarouselChange"?: (event: PCarouselCustomEvent<void>) => void;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
+    }
+    interface PCarouselGlide {
+        "disablePagination"?: BreakpointCustomizable<boolean>;
+        /**
+          * Emitted when carousel's position changes.
+         */
+        "onCarouselChange"?: (event: PCarouselGlideCustomEvent<void>) => void;
         /**
           * Adapts the color when used on dark background.
          */
@@ -2691,6 +2720,7 @@ declare namespace LocalJSX {
         "p-button-group": PButtonGroup;
         "p-button-pure": PButtonPure;
         "p-carousel": PCarousel;
+        "p-carousel-glide": PCarouselGlide;
         "p-carousel-splide": PCarouselSplide;
         "p-checkbox-wrapper": PCheckboxWrapper;
         "p-content-wrapper": PContentWrapper;
@@ -2751,6 +2781,7 @@ declare module "@stencil/core" {
             "p-button-group": LocalJSX.PButtonGroup & JSXBase.HTMLAttributes<HTMLPButtonGroupElement>;
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
             "p-carousel": LocalJSX.PCarousel & JSXBase.HTMLAttributes<HTMLPCarouselElement>;
+            "p-carousel-glide": LocalJSX.PCarouselGlide & JSXBase.HTMLAttributes<HTMLPCarouselGlideElement>;
             "p-carousel-splide": LocalJSX.PCarouselSplide & JSXBase.HTMLAttributes<HTMLPCarouselSplideElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
             "p-content-wrapper": LocalJSX.PContentWrapper & JSXBase.HTMLAttributes<HTMLPContentWrapperElement>;
