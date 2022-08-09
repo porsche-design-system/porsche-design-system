@@ -1,25 +1,26 @@
 import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
 import { dependencies } from '../../../../components-angular/package.json';
-import {
-  ExternalStackBlitzDependency,
-  getExternalDependencies,
-  GetStackblitzProjectAndOpenOptions,
-  isTable,
-} from '@/utils/stackblitz/helper';
-import { getSharedImportConstants } from './helper';
+import { getExternalDependencies, removeSharedImport, getSharedImportConstants } from '@/utils/stackblitz/helper';
 import { convertMarkup } from '@/utils/formatting';
-import type { StackBlitzDependencyMap } from '@/utils/stackblitz/helper';
+import type {
+  StackBlitzDependencyMap,
+  SharedImportKey,
+  GetStackblitzProjectAndOpenOptions,
+  ExternalStackBlitzDependency,
+} from '@/utils';
 import { StackblitzProjectDependencies } from '@/models';
 
-export const getCleanedAngularMarkup = (markup: string): string =>
-  markup
-    .replace(/(@Component\({\n\s+selector: ')(?:[A-z]|-)+(',)/, '$1porsche-design-system-app$2')
-    .replace(/(export class )[A-z]+( {)/, '$1AppComponent$2');
+export const getComponentTsFrameworkMarkup = (markup: string, sharedImportKeys: SharedImportKey[]): string => {
+  const sharedImportConstants = getSharedImportConstants(sharedImportKeys);
 
-export const getComponentTsFrameworkMarkup = (markup: string, isTable: boolean): string => {
-  const cleanedMarkup = getCleanedAngularMarkup(markup);
-
-  return cleanedMarkup;
+  return removeSharedImport(
+    markup
+      .replace(
+        /(@Component\({\n\s+selector: ')(?:[A-z]|-)+(',)/,
+        `${sharedImportConstants}$1porsche-design-system-app$2`
+      )
+      .replace(/(export class )[A-z]+( {)/, '$1AppComponent$2')
+  );
 };
 
 export const getAppComponentTsDefaultMarkup = (markup: string): string =>
@@ -31,9 +32,6 @@ export const getAppComponentTsDefaultMarkup = (markup: string): string =>
     ${convertMarkup(markup, 'angular')}\`,
 })
 export class AppComponent  {}`;
-
-export const getComponentTsMarkup = (markup: string, hasFrameworkMarkup: boolean, isTable: boolean): string =>
-  hasFrameworkMarkup ? getComponentTsFrameworkMarkup(markup, isTable) : getAppComponentTsDefaultMarkup(markup);
 
 export const getMainTsMarkup =
   (): string => `import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -98,7 +96,7 @@ export const getAngularProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions
     title,
     hasFrameworkMarkup,
     globalStyles,
-    pdsComponents,
+    sharedImportKeys,
     externalStackBlitzDependencies,
   } = opts;
 
@@ -107,7 +105,9 @@ export const getAngularProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions
       'index.html': `<porsche-design-system-app></porsche-design-system-app>
 ${`<style>${globalStyles}</style>`}`,
       'main.ts': getMainTsMarkup(),
-      'app/app.component.ts': getComponentTsMarkup(markup, hasFrameworkMarkup, isTable(pdsComponents)),
+      'app/app.component.ts': hasFrameworkMarkup
+        ? getComponentTsFrameworkMarkup(markup, sharedImportKeys)
+        : getAppComponentTsDefaultMarkup(markup),
       'app/app.module.ts': getModuleTsMarkup(externalStackBlitzDependencies),
     },
     template: 'angular-cli',

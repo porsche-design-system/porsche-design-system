@@ -15,7 +15,6 @@ export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | '
   title: string;
   description: string;
   globalStyles: string;
-  pdsComponents: string[];
 };
 
 export type SharedImportKey = Exclude<keyof typeof sharedData, 'headVrt' | 'dataVrt'>;
@@ -42,8 +41,6 @@ export const getExternalDependencies = (
     (result, current) => ({ ...result, ...dependenciesMap[current] }),
     {} as StackblitzProjectDependencies
   );
-
-export const isTable = (components: string[]): boolean => !!components[0].match(/(?:P|p-)[Tt]able/);
 
 export const getBackgroundColor = (theme: Theme, colorScheme: ColorScheme): string => {
   const {

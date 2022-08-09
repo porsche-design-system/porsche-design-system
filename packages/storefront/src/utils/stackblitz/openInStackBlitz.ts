@@ -2,7 +2,7 @@ import sdk from '@stackblitz/sdk';
 import { getVanillaJsProjectAndOpenOptions } from '@/utils/stackblitz/vanillaJsBoilerplate';
 import { getReactProjectAndOpenOptions } from '@/utils/stackblitz/reactBoilerplate';
 import { getAngularProjectAndOpenOptions } from '@/utils/stackblitz/angularBoilerplate';
-import { getBackgroundColor, getPdsComponents } from '@/utils/stackblitz/helper';
+import { getBackgroundColor } from '@/utils/stackblitz/helper';
 import type {
   StackBlitzFrameworkOpts,
   FrameworksWithoutShared,
@@ -26,15 +26,11 @@ export type OpenInStackBlitzOpts = {
 export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
   const { framework, theme, backgroundColorScheme, ...rest } = opts;
 
-  // TODO: move into react
-  const pdsComponents = getPdsComponents('markup');
-
   const stackBlitzFrameworkOpts: StackBlitzFrameworkOpts = {
     ...rest,
     title: `Porsche Design System ${framework} sandbox`,
     description: 'Porsche Design System component example',
     globalStyles: `body { background: ${getBackgroundColor(theme, backgroundColorScheme)}; }`,
-    pdsComponents,
   };
 
   const getProjectAndOpenOptionsCallbackMap: {
