@@ -1,27 +1,28 @@
-import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
 import { devDependencies, dependencies } from '../../../../components-react/package.json';
 import { default as tsconfig } from '../../../../components-react/tsconfig.json';
-import { ExternalStackBlitzDependency, getExternalDependencies, GetStackblitzProjectAndOpenOptions } from '@/utils';
-import { inlineSharedImports, isTable } from './helper';
+import { getExternalDependencies, removeSharedImport } from '@/utils';
+import { getSharedImportConstants } from './helper';
 import { convertMarkup } from '@/utils/formatting';
 import { pascalCase } from 'change-case';
-import type { StackBlitzDependencyMap } from '@/utils';
+import type {
+  StackBlitzDependencyMap,
+  GetStackblitzProjectAndOpenOptions,
+  SharedImportKey,
+  ExternalStackBlitzDependency,
+} from '@/utils';
 import type { StackblitzProjectDependencies } from '@/models';
 
-// TODO: Maybe better inline? If not, naming
-export const getCleanedReactMarkup = (markup: string): string =>
-  markup.replace(/(const )[A-z]+( = \(\): JSX.Element => {)/, '$1App$2');
+export const getAppFrameworkMarkup = (markup: string, sharedImportKeys: SharedImportKey[]): string => {
+  const sharedImportConstants = getSharedImportConstants(sharedImportKeys);
 
-export const getAppFrameworkMarkup = (markup: string, isTable: boolean): string => {
-  const cleanedMarkup = getCleanedReactMarkup(markup);
-
-  return isTable ? inlineSharedImports(cleanedMarkup) : cleanedMarkup;
+  return removeSharedImport(
+    markup.replace(/(export const )[A-z]+( = \(\): JSX.Element => {)/, `${sharedImportConstants}$1App$2`)
+  );
 };
 
 export const getAppDefaultMarkup = (markup: string, pdsComponents: string[]): string => {
   const reactComponentsToImport = pdsComponents.map((x) => pascalCase(x)).join(', ');
-  // TODO: check if convert is really needed?? Check regex for alignment (button) + include text without tag
-  const convertedMarkup = convertMarkup(markup, 'react').replace(/(\n)+(\s*<\/?[A-z]+)/g, '$1      $2'); // Align markup
+  const convertedMarkup = convertMarkup(markup, 'react');
 
   return `import { ${reactComponentsToImport} } from '@porsche-design-system/components-react'
 
@@ -37,21 +38,21 @@ export const App = (): JSX.Fragment => {
 export const getAppTsxMarkup = (
   markup: string,
   hasFrameworkMarkup: boolean,
-  isTable: boolean,
-  pdsComponents: string[]
+  pdsComponents: string[],
+  sharedImportKeys: SharedImportKey[]
 ): string => {
-  return hasFrameworkMarkup ? getAppFrameworkMarkup(markup, isTable) : getAppDefaultMarkup(markup, pdsComponents);
+  return hasFrameworkMarkup
+    ? getAppFrameworkMarkup(markup, sharedImportKeys)
+    : getAppDefaultMarkup(markup, pdsComponents);
 };
 
-// TODO: Use single quotes
-export const getIndexTsxMarkup = (): string => `import * as React from 'react';
-import { StrictMode } from "react";
-import * as ReactDOMClient from "react-dom/client";
-import { App } from "./App";
-import { PorscheDesignSystemProvider } from "@porsche-design-system/components-react";
-import "./style.css";
+export const getIndexTsxMarkup = (): string => `import { StrictMode } from 'react';
+import * as ReactDOMClient from 'react-dom/client';
+import { App } from './App';
+import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
+import './style.css';
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
 const root = ReactDOMClient.createRoot(rootElement);
 
 root.render(
@@ -71,7 +72,7 @@ const dependenciesMap: StackBlitzDependencyMap = {
 export const getReactDependencies = (
   externalStackBlitzDependencies?: ExternalStackBlitzDependency[]
 ): StackblitzProjectDependencies => {
-  // TODO: remove interpolation / pick dependencies
+  // TODO: pick dependencies
   return {
     '@porsche-design-system/components-react': dependencies['@porsche-design-system/components-react'],
     react: dependencies['react'],
@@ -90,16 +91,16 @@ export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions =
     hasFrameworkMarkup,
     globalStyles,
     pdsComponents,
+    sharedImportKeys,
     externalStackBlitzDependencies,
   } = opts;
 
   return {
     files: {
-      'App.tsx': getAppTsxMarkup(markup, hasFrameworkMarkup, isTable(pdsComponents), pdsComponents),
+      'App.tsx': getAppTsxMarkup(markup, hasFrameworkMarkup, pdsComponents, sharedImportKeys),
       'index.html': `<div id="root"></div>`,
       'index.tsx': getIndexTsxMarkup(),
-
-      'tsconfig.json': JSON.stringify(tsconfig),
+      'tsconfig.json': JSON.stringify(tsconfig, null, 2),
       'style.css': globalStyles,
     },
     template: 'create-react-app',

@@ -34,8 +34,8 @@
     @Prop({ default: 'vanilla-js' }) public framework!: Exclude<Framework, 'shared'>;
     @Prop({ default: false }) public hasFrameworkMarkup!: boolean;
     @Prop({ default: 'default' }) public colorScheme!: ColorScheme;
-    @Prop() public sharedImportKeys?: SharedImportKey[];
-    @Prop() public externalStackBlitzDependencies?: ExternalStackBlitzDependency[];
+    @Prop() public externalStackBlitzDependencies!: ExternalStackBlitzDependency[];
+    @Prop() public sharedImportKeys!: SharedImportKey[];
 
     stackBlitzIcon = require('../assets/icon-stackblitz.svg');
     openInStackBlitz = openInStackBlitz;

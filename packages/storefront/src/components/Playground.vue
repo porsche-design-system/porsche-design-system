@@ -93,8 +93,8 @@
   export default class Playground extends Vue {
     @Prop({ default: () => ({}) }) public config!: Partial<PlaygroundConfig>;
     @Prop({ default: () => ({}) }) public frameworkMarkup!: FrameworkMarkup;
+    @Prop({ default: () => [] }) public externalStackBlitzDependencies!: ExternalStackBlitzDependency[];
     @Prop({ default: '' }) public markup!: string;
-    @Prop({ default: '' }) public externalStackBlitzDependencies?: ExternalStackBlitzDependency[];
 
     public mounted(): void {
       this.syncThemeIntoDemoComponents();
@@ -154,13 +154,15 @@
       return this.config.themeable ? this.$store.getters.theme : 'light';
     }
 
-    public get sharedImportKeys(): SharedImportKey[] | undefined {
+    public get sharedImportKeys(): SharedImportKey[] {
       if (this.hasFrameworkMarkup && this.frameworks.includes('shared')) {
         return (
           (this.frameworkMarkup
             .react!.match(/import { (.+) } from '@porsche-design-system\/shared';/)?.[1]
             .match(/\b([a-z][A-z]+)/g) as SharedImportKey[]) || []
         ); // extract consts, ignore types;
+      } else {
+        return [];
       }
     }
 
