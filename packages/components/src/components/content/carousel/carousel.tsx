@@ -36,11 +36,11 @@ export class Carousel {
 
   public componentWillLoad(): void {
     this.slides = Array.from(this.host.children) as HTMLElement[];
-    this.slides.forEach((el, i) => el.setAttribute('slot', 'slide-' + i));
+    this.slides.forEach((el, i) => el.setAttribute('slot', `slide-${i}`));
   }
 
   public componentDidLoad(): void {
-    const handleEvent = ({ activeIndex, previousIndex = 0, isBeginning, isEnd }: Swiper) => {
+    const handleEvent = ({ activeIndex, previousIndex = 0, isBeginning, isEnd }: Swiper): void => {
       this.btnPrev.disabled = isBeginning;
       this.btnNext.disabled = isEnd;
 
@@ -79,7 +79,7 @@ export class Carousel {
           <div class="swiper-wrapper">
             {this.slides.map((_, i) => (
               <div class="swiper-slide">
-                <slot name={'slide-' + i} />
+                <slot name={`slide-${i}`} />
               </div>
             ))}
           </div>
