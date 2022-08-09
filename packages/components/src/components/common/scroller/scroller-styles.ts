@@ -6,16 +6,6 @@ import type { JssStyle } from 'jss';
 import { getFocus } from '@porsche-design-system/utilities-v2';
 import type { ScrollIndicatorPosition } from './scroller-utils';
 
-const actionPrevNextStyles = (scrollIndicatorPosition: ScrollIndicatorPosition): JssStyle => {
-  return {
-    position: 'relative',
-    padding: `${pxToRemWithUnit(4)} 0`,
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: scrollIndicatorPosition === 'center' ? 'center' : 'flex-start',
-  };
-};
-
 export const getComponentCss = (
   gradientColorScheme: GradientColorTheme,
   theme: ThemeExtendedElectric,
@@ -26,6 +16,16 @@ export const getComponentCss = (
   const { backgroundColor, backgroundSurfaceColor, baseColor } = getThemedColors(theme);
   const gradientColor = gradientColorScheme === 'surface' ? backgroundSurfaceColor : backgroundColor;
   const gradientColorTransparent = gradientColor + (gradientColor.length === 4 ? '0' : '00');
+
+  const actionPrevNextStyles = (scrollIndicatorPosition: ScrollIndicatorPosition): JssStyle => {
+    return {
+      position: 'relative',
+      padding: `${pxToRemWithUnit(4)} 0`,
+      pointerEvents: 'none',
+      display: 'flex',
+      alignItems: scrollIndicatorPosition === 'center' ? 'center' : 'flex-start',
+    };
+  };
 
   return getCss({
     '@global': {

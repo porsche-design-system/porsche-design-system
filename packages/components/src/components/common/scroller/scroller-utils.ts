@@ -1,6 +1,5 @@
 import { getScrollByX, getShadowRootHTMLElement } from '../../../utils';
 
-export type ActiveElementChange = { activeElementIndex: number };
 export type Direction = 'prev' | 'next';
 export const GRADIENT_COLOR_THEMES = ['default', 'surface'] as const;
 export type GradientColorTheme = typeof GRADIENT_COLOR_THEMES[number];
