@@ -37,6 +37,7 @@
     "clean:build": "rm -rf ./.stencil && rm -rf ./dist && rm -rf ./www"
   },
   "dependencies": {
+    "@glidejs/glide": "^3.5.2",
     "@porsche-design-system/icons": "0.0.0",
     "@porsche-design-system/marque": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
@@ -53,6 +54,7 @@
   "devDependencies": {
     "@juggle/resize-observer": "^3.3.1",
     "@rollup/plugin-replace": "^4.0.0",
+    "@types/glidejs__glide": "^3.4.2",
     "@types/react": "^18.0.15",
     "@types/throttle-debounce": "^5.0.0",
     "@types/tinycolor2": "^1.4.3",

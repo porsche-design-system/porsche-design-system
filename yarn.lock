@@ -1782,6 +1782,11 @@
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.3.tgz#555193ab2e3bb3b6adc3d551c9c030d9e860daf6"
   integrity sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
 
+"@glidejs/glide@^3.5.2":
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/@glidejs/glide/-/glide-3.5.2.tgz#7012c5920ecf202bbda44d8526fc979984b6dd54"
+  integrity sha512-7jGciNJ2bQ4eZLSNlSZ+VAyW63kALf420CvkEpK4lEsUfWJq9odqimci0YCiyNyMUFB+pWHwLYyNc57dijYsCg==
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -3002,6 +3007,11 @@
   integrity sha512-SvSrYXfWSc7R4eqnOzbQF4TZmfpNSM9FrSWLU3EUnWBuyZqNBOrv1B1JA3byUDPUl9z4Ab3jeZG2eDdySlgNMg==
   dependencies:
     "@types/node" "*"
+
+"@types/glidejs__glide@^3.4.2":
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/@types/glidejs__glide/-/glidejs__glide-3.4.2.tgz#fb486e376aab88788e09bbdeb81f89dcf363be1c"
+  integrity sha512-RM095h5dzR4645Z2moR1kFEEyr26BteRySLsAsUXWvI1Nxh4z2SU3qhNx68uYutvLbRIHCIve40ItylC8r+kEw==
 
 "@types/glob@^7.1.1", "@types/glob@^7.2.0":
   version "7.2.0"
