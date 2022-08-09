@@ -1,12 +1,12 @@
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, THEMES_EXTENDED_ELECTRIC, validateProps } from '../../../utils';
-import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../../types';
+import { AllowedTypes, attachComponentCss, THEMES, validateProps } from '../../../utils';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import { getComponentCss } from './carousel-styles';
 import { A11y, Navigation, Pagination, Swiper } from 'swiper';
 
 const propTypes: PropTypes<typeof Carousel> = {
   disablePagination: AllowedTypes.breakpoint('boolean'),
-  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 @Component({
@@ -19,7 +19,7 @@ export class Carousel {
   @Prop() public disablePagination?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the color when used on dark background. */
-  @Prop() public theme?: ThemeExtendedElectric = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Emitted when carousel's position changes. */
   @Event({ bubbles: false }) public carouselChange: EventEmitter<void>;
@@ -29,10 +29,7 @@ export class Carousel {
   private swiperPrevBtn: HTMLElement;
 
   public componentDidLoad(): void {
-    this.host.shadowRoot
-      .querySelector('slot')
-      .assignedElements()
-      .forEach((el) => el.classList.add('swiper-slide'));
+    Array.from(this.host.children).forEach((el) => el.classList.add('swiper-slide'));
 
     new Swiper(this.host, {
       slidesPerView: 2,

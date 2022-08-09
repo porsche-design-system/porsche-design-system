@@ -1,12 +1,12 @@
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, THEMES_EXTENDED_ELECTRIC, validateProps } from '../../../utils';
-import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../../types';
+import { AllowedTypes, attachComponentCss, THEMES, validateProps } from '../../../utils';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import { getComponentCss } from './carousel-styles';
 import { A11y, Navigation, Pagination, Swiper } from 'swiper';
 
 const propTypes: PropTypes<typeof CarouselAlt> = {
   disablePagination: AllowedTypes.breakpoint('boolean'),
-  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 @Component({
@@ -19,7 +19,7 @@ export class CarouselAlt {
   @Prop() public disablePagination?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the color when used on dark background. */
-  @Prop() public theme?: ThemeExtendedElectric = 'light';
+  @Prop() public theme?: Theme = 'light';
 
   /** Emitted when carousel's position changes. */
   @Event({ bubbles: false }) public carouselChange: EventEmitter<void>;
@@ -37,8 +37,8 @@ export class CarouselAlt {
 
   public componentDidLoad(): void {
     new Swiper(this.swiperContainer, {
-      slidesPerView: 2,
-      // slidesPerGroup: 2,
+      slidesPerView: 1,
+      // slidesPerGroup: 3,
       spaceBetween: 10,
       // cssMode: true,
       modules: [A11y, Navigation, Pagination],
