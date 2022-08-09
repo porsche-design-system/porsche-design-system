@@ -2,7 +2,8 @@ import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil
 import { AllowedTypes, attachComponentCss, getPrefixedTagNames, THEMES, validateProps } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import { getComponentCss } from './carousel-styles';
-import { A11y, Pagination, Swiper } from 'swiper';
+import { A11y, Swiper } from 'swiper';
+import { ButtonPure } from '../../action/button-pure/button-pure';
 
 const propTypes: PropTypes<typeof Carousel> = {
   disablePagination: AllowedTypes.breakpoint('boolean'),
@@ -26,8 +27,12 @@ export class Carousel {
 
   private swiper: Swiper;
   private swiperContainer: HTMLElement;
-  private swiperPagination: HTMLElement;
+  private btnPrev: ButtonPure;
+  private btnNext: ButtonPure;
+  private pagination: HTMLElement;
   private slides: HTMLElement[];
+  private slidesPerView = 1; // 1
+  private slidesPerGroup = 1; // 1
 
   public componentWillLoad(): void {
     this.slides = Array.from(this.host.children) as HTMLElement[];
@@ -35,18 +40,27 @@ export class Carousel {
   }
 
   public componentDidLoad(): void {
+    const handleEvent = ({ activeIndex, previousIndex = 0, isBeginning, isEnd }: Swiper) => {
+      this.btnPrev.disabled = isBeginning;
+      this.btnNext.disabled = isEnd;
+
+      const { children } = this.pagination;
+      children[previousIndex].classList.remove('bullet--active');
+      children[activeIndex].classList.add('bullet--active');
+    };
+
     this.swiper = new Swiper(this.swiperContainer, {
-      slidesPerView: 2,
-      // slidesPerGroup: 3,
+      slidesPerView: this.slidesPerView,
+      slidesPerGroup: this.slidesPerGroup,
       spaceBetween: 16,
       // cssMode: true,
-      modules: [A11y, Pagination],
+      modules: [A11y],
       a11y: {
         id: 'swiper', // for stable dom snapshots
       },
-      pagination: {
-        el: this.swiperPagination,
-        clickable: true,
+      on: {
+        init: handleEvent,
+        slideChange: handleEvent,
       },
     });
   }
@@ -74,6 +88,7 @@ export class Carousel {
             class="btn btn--prev"
             icon="arrow-head-left"
             hide-label="true"
+            ref={(ref) => (this.btnPrev = ref)}
             onClick={() => this.swiper.slidePrev()}
           >
             Previous slide
@@ -82,12 +97,17 @@ export class Carousel {
             class="btn btn--next"
             icon="arrow-head-right"
             hide-label="true"
+            ref={(ref) => (this.btnNext = ref)}
             onClick={() => this.swiper.slideNext()}
           >
             Next slide
           </PrefixedTagNames.pButtonPure>
 
-          <div class="swiper-pagination" ref={(ref) => (this.swiperPagination = ref)}></div>
+          <div class="pagination" ref={(ref) => (this.pagination = ref)}>
+            {this.slides.map(() => (
+              <span class="bullet"></span>
+            ))}
+          </div>
         </div>
       </Host>
     );
