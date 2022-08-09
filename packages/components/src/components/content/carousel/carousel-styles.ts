@@ -13,7 +13,7 @@ const swiperCss = `
 :root {
   --swiper-theme-color: #007aff;
 }
-/*
+*/
 
 .swiper {
   margin-left: auto;
@@ -23,6 +23,7 @@ const swiperCss = `
   list-style: none;
   padding: 0;
   z-index: 1;
+  height: inherit;
 }
 
 /*
