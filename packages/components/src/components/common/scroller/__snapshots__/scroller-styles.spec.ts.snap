@@ -1,10 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: dark, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: 'center'  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: dark, isPrevHidden: false, isNextHidden: false and scrollIndicatorPosition: 'center'  1`] = `
 ":host {
   display: block;
   height: inherit !important;
-  white-space: nowrap;
 }
 .root {
   display: grid;
@@ -78,11 +77,10 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: dark, isPrevHidden: false, isNextHidden: true and prevNextButtonJssStyle: undefined  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: dark, isPrevHidden: false, isNextHidden: true and scrollIndicatorPosition: undefined  1`] = `
 ":host {
   display: block;
   height: inherit !important;
-  white-space: nowrap;
 }
 .root {
   display: grid;
@@ -156,11 +154,10 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: 'center'  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light, isPrevHidden: false, isNextHidden: false and scrollIndicatorPosition: 'center'  1`] = `
 ":host {
   display: block;
   height: inherit !important;
-  white-space: nowrap;
 }
 .root {
   display: grid;
@@ -234,11 +231,10 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: 'top'  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light, isPrevHidden: false, isNextHidden: false and scrollIndicatorPosition: 'top'  1`] = `
 ":host {
   display: block;
   height: inherit !important;
-  white-space: nowrap;
 }
 .root {
   display: grid;
@@ -312,11 +308,10 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light, isPrevHidden: true, isNextHidden: false and prevNextButtonJssStyle: undefined  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light, isPrevHidden: true, isNextHidden: false and scrollIndicatorPosition: undefined  1`] = `
 ":host {
   display: block;
   height: inherit !important;
-  white-space: nowrap;
 }
 .root {
   display: grid;
@@ -390,11 +385,10 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light, isPrevHidden: true, isNextHidden: true and prevNextButtonJssStyle: undefined  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light, isPrevHidden: true, isNextHidden: true and scrollIndicatorPosition: undefined  1`] = `
 ":host {
   display: block;
   height: inherit !important;
-  white-space: nowrap;
 }
 .root {
   display: grid;
@@ -468,11 +462,10 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light-electric, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: 'center'  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: default, theme: light-electric, isPrevHidden: false, isNextHidden: false and scrollIndicatorPosition: 'center'  1`] = `
 ":host {
   display: block;
   height: inherit !important;
-  white-space: nowrap;
 }
 .root {
   display: grid;
@@ -546,11 +539,10 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: surface, theme: dark, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: 'center'  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: surface, theme: dark, isPrevHidden: false, isNextHidden: false and scrollIndicatorPosition: 'center'  1`] = `
 ":host {
   display: block;
   height: inherit !important;
-  white-space: nowrap;
 }
 .root {
   display: grid;
@@ -624,11 +616,10 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: surface, theme: light, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: 'center'  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: surface, theme: light, isPrevHidden: false, isNextHidden: false and scrollIndicatorPosition: 'center'  1`] = `
 ":host {
   display: block;
   height: inherit !important;
-  white-space: nowrap;
 }
 .root {
   display: grid;
@@ -702,11 +693,10 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
 }"
 `;
 
-exports[`getComponentCss() should return correct css for gradientColorScheme: surface, theme: light-electric, isPrevHidden: false, isNextHidden: false and prevNextButtonJssStyle: 'center'  1`] = `
+exports[`getComponentCss() should return correct css for gradientColorScheme: surface, theme: light-electric, isPrevHidden: false, isNextHidden: false and scrollIndicatorPosition: 'center'  1`] = `
 ":host {
   display: block;
   height: inherit !important;
-  white-space: nowrap;
 }
 .root {
   display: grid;
