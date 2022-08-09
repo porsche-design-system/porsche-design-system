@@ -1,4 +1,3 @@
-import { version as pdsVersion } from '../../../../components-js/projects/components-wrapper/package.json';
 import { dependencies } from '../../../../components-angular/package.json';
 import { getExternalDependencies, removeSharedImport, getSharedImportConstants } from '@/utils/stackblitz/helper';
 import { convertMarkup } from '@/utils/formatting';
@@ -13,14 +12,12 @@ import { StackblitzProjectDependencies } from '@/models';
 export const getComponentTsFrameworkMarkup = (markup: string, sharedImportKeys: SharedImportKey[]): string => {
   const sharedImportConstants = getSharedImportConstants(sharedImportKeys);
 
-  return removeSharedImport(
-    markup
-      .replace(
-        /(@Component\({\n\s+selector: ')(?:[A-z]|-)+(',)/,
-        `${sharedImportConstants}$1porsche-design-system-app$2`
-      )
-      .replace(/(export class )[A-z]+( {)/, '$1AppComponent$2')
-  );
+  return `// @ts-nocheck
+${removeSharedImport(
+  markup
+    .replace(/(@Component\({\n\s+selector: ')(?:[A-z]|-)+(',)/, `${sharedImportConstants}$1porsche-design-system-app$2`)
+    .replace(/(export class )[A-z]+( {)/, '$1AppComponent$2')
+)}`;
 };
 
 export const getAppComponentTsDefaultMarkup = (markup: string): string =>
@@ -84,7 +81,18 @@ export const getAngularDependencies = (
   externalStackBlitzDependencies: ExternalStackBlitzDependency[]
 ): StackblitzProjectDependencies => {
   return {
-    '@porsche-design-system/components-angular': pdsVersion,
+    '@angular/animations': dependencies['@angular/animations'],
+    '@angular/common': dependencies['@angular/common'],
+    '@angular/compiler': dependencies['@angular/compiler'],
+    '@angular/core': dependencies['@angular/core'],
+    '@angular/forms': dependencies['@angular/forms'],
+    '@angular/platform-browser': dependencies['@angular/platform-browser'],
+    '@angular/platform-browser-dynamic': dependencies['@angular/platform-browser-dynamic'],
+    '@angular/router': dependencies['@angular/router'],
+    rxjs: dependencies['rxjs'],
+    tslib: dependencies['tslib'],
+    'zone.js': dependencies['zone.js'],
+    '@porsche-design-system/components-angular': dependencies['@porsche-design-system/components-angular'],
     ...getExternalDependencies(externalStackBlitzDependencies, dependenciesMap),
   };
 };
@@ -102,13 +110,15 @@ export const getAngularProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions
 
   return {
     files: {
-      'index.html': `<porsche-design-system-app></porsche-design-system-app>
+      'src/index.html': `<porsche-design-system-app></porsche-design-system-app>
 ${`<style>${globalStyles}</style>`}`,
-      'main.ts': getMainTsMarkup(),
-      'app/app.component.ts': hasFrameworkMarkup
+      'src/main.ts': getMainTsMarkup(),
+      'src/polyfill.ts': "import 'zone.js/dist/zone';  // Included with Angular CLI.",
+      'src/styles.css': '',
+      'src/app/app.component.ts': hasFrameworkMarkup
         ? getComponentTsFrameworkMarkup(markup, sharedImportKeys)
         : getAppComponentTsDefaultMarkup(markup),
-      'app/app.module.ts': getModuleTsMarkup(externalStackBlitzDependencies),
+      'src/app/app.module.ts': getModuleTsMarkup(externalStackBlitzDependencies),
     },
     template: 'angular-cli',
     title,
