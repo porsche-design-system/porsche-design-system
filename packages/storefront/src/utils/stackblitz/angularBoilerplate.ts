@@ -4,10 +4,9 @@ import {
   ExternalStackBlitzDependency,
   getExternalDependencies,
   GetStackblitzProjectAndOpenOptions,
-  hastIMaskDependency,
   isTable,
 } from '@/utils/stackblitz/helper';
-import { inlineSharedImports } from './helper';
+import { getSharedImportConstants } from './helper';
 import { convertMarkup } from '@/utils/formatting';
 import type { StackBlitzDependencyMap } from '@/utils/stackblitz/helper';
 import { StackblitzProjectDependencies } from '@/models';
@@ -20,7 +19,7 @@ export const getCleanedAngularMarkup = (markup: string): string =>
 export const getComponentTsFrameworkMarkup = (markup: string, isTable: boolean): string => {
   const cleanedMarkup = getCleanedAngularMarkup(markup);
 
-  return isTable ? inlineSharedImports(cleanedMarkup) : cleanedMarkup;
+  return cleanedMarkup;
 };
 
 export const getAppComponentTsDefaultMarkup = (markup: string): string =>
@@ -29,7 +28,7 @@ export const getAppComponentTsDefaultMarkup = (markup: string): string =>
 @Component({
   selector: 'porsche-design-system-app',
   template: \`
-    ${convertMarkup(markup, 'angular').replace(/(\n)(\s*[<A-z/]+)/g, '$1    $2')}\`,
+    ${convertMarkup(markup, 'angular')}\`,
 })
 export class AppComponent  {}`;
 
@@ -45,19 +44,36 @@ platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .catch((err) => console.error(err));`;
 
-export const getModuleTsMarkup = (usesIMask: boolean): string => `import { NgModule } from '@angular/core';
+const externalStackBlitzDependencyModuleImportMap: {
+  [key in ExternalStackBlitzDependency]: { module: string; import: string };
+} = {
+  imask: {
+    module: 'IMaskModule',
+    import: "import { IMaskModule } from 'angular-imask';",
+  },
+};
+
+export const getModuleTsMarkup = (externalStackBlitzDependencies: ExternalStackBlitzDependency[]): string => {
+  const imports = externalStackBlitzDependencies
+    .map((dependency) => `\n${externalStackBlitzDependencyModuleImportMap[dependency].import}`)
+    .join('\n');
+  const modules = externalStackBlitzDependencies
+    .map((dependency) => ` ${externalStackBlitzDependencyModuleImportMap[dependency].module},`)
+    .join();
+
+  return `import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
-${usesIMask ? `import { IMaskModule } from 'angular-imask';` : ''}
-import { AppComponent } from './app.component';
+import { AppComponent } from './app.component';${imports}
 
 @NgModule({
-  imports: [BrowserModule, FormsModule,${usesIMask ? 'IMaskModule,' : ''} PorscheDesignSystemModule,],
+  imports: [BrowserModule, FormsModule,${modules} PorscheDesignSystemModule,],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}`;
+};
 
 const dependenciesMap: StackBlitzDependencyMap = {
   imask: {
@@ -67,12 +83,11 @@ const dependenciesMap: StackBlitzDependencyMap = {
 };
 
 export const getAngularDependencies = (
-  usesImask: boolean,
-  externalStackBlitzDependencies?: ExternalStackBlitzDependency[]
+  externalStackBlitzDependencies: ExternalStackBlitzDependency[]
 ): StackblitzProjectDependencies => {
   return {
-    '@porsche-design-system/components-angular': `${pdsVersion}`,
-    ...(externalStackBlitzDependencies && getExternalDependencies(externalStackBlitzDependencies, dependenciesMap)),
+    '@porsche-design-system/components-angular': pdsVersion,
+    ...getExternalDependencies(externalStackBlitzDependencies, dependenciesMap),
   };
 };
 
@@ -87,20 +102,18 @@ export const getAngularProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions
     externalStackBlitzDependencies,
   } = opts;
 
-  const hasIMask = hastIMaskDependency(externalStackBlitzDependencies);
-
   return {
     files: {
       'index.html': `<porsche-design-system-app></porsche-design-system-app>
 ${`<style>${globalStyles}</style>`}`,
       'main.ts': getMainTsMarkup(),
       'app/app.component.ts': getComponentTsMarkup(markup, hasFrameworkMarkup, isTable(pdsComponents)),
-      'app/app.module.ts': getModuleTsMarkup(hasIMask),
+      'app/app.module.ts': getModuleTsMarkup(externalStackBlitzDependencies),
     },
     template: 'angular-cli',
     title,
     description,
-    dependencies: getAngularDependencies(hasIMask, externalStackBlitzDependencies),
+    dependencies: getAngularDependencies(externalStackBlitzDependencies),
     openOptions: {},
   };
 };
