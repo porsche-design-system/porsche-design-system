@@ -42,6 +42,7 @@
           :framework="activeFramework"
           :has-framework-markup="hasFrameworkMarkup"
           :external-stack-blitz-dependencies="externalStackBlitzDependencies"
+          :shared-import-keys="sharedImportKeys"
           :colorScheme="config.colorScheme"
         ></CodeEditor>
       </template>
@@ -55,9 +56,10 @@
   import { Prop } from 'vue-property-decorator';
   import CodeBlock from '@/components/CodeBlock.vue';
   import CodeEditor from '@/components/CodeEditor.vue';
-  import type { ColorScheme, Framework, FrameworkMarkup, Theme } from '@/models';
-  import { ExternalStackBlitzDependency, cleanMarkup, patchThemeIntoMarkup } from '@/utils';
+  import { cleanMarkup, patchThemeIntoMarkup } from '@/utils';
   import { componentMeta } from '@porsche-design-system/shared';
+  import type { ColorScheme, Framework, FrameworkMarkup, Theme } from '@/models';
+  import type { ExternalStackBlitzDependency, SharedImportKey } from '@/utils';
 
   export type PlaygroundConfig = {
     themeable: boolean;
@@ -150,6 +152,16 @@
 
     public get theme(): Theme {
       return this.config.themeable ? this.$store.getters.theme : 'light';
+    }
+
+    public get sharedImportKeys(): SharedImportKey[] | undefined {
+      if (this.hasFrameworkMarkup && this.frameworks.includes('shared')) {
+        return (
+          (this.frameworkMarkup
+            .react!.match(/import { (.+) } from '@porsche-design-system\/shared';/)?.[1]
+            .match(/\b([a-z][A-z]+)/g) as SharedImportKey[]) || []
+        ); // extract consts, ignore types;
+      }
     }
 
     private syncThemeIntoDemoComponents(): void {

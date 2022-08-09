@@ -12,6 +12,7 @@
         hasFrameworkMarkup,
         externalStackBlitzDependencies,
         backgroundColorScheme: colorScheme,
+        sharedImportKeys,
       })
     "
     >Edit in StackBlitz
@@ -24,15 +25,16 @@
   import { Prop } from 'vue-property-decorator';
   import type { ColorScheme, Framework, Theme } from '@/models';
   import { openInStackBlitz } from '@/utils';
-  import type { ExternalStackBlitzDependency } from '@/utils';
+  import type { ExternalStackBlitzDependency, SharedImportKey } from '@/utils';
 
   @Component
   export default class CodeEditor extends Vue {
     @Prop({ default: '' }) public markup!: string;
     @Prop({ default: 'light' }) public theme!: Theme;
-    @Prop({ default: 'vanilla-js' }) public framework!: Framework;
+    @Prop({ default: 'vanilla-js' }) public framework!: Exclude<Framework, 'shared'>;
     @Prop({ default: false }) public hasFrameworkMarkup!: boolean;
     @Prop({ default: 'default' }) public colorScheme!: ColorScheme;
+    @Prop() public sharedImportKeys?: SharedImportKey[];
     @Prop() public externalStackBlitzDependencies?: ExternalStackBlitzDependency[];
 
     stackBlitzIcon = require('../assets/icon-stackblitz.svg');

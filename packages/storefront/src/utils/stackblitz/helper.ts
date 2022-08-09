@@ -1,4 +1,4 @@
-import * as sharedData from '@porsche-design-system/shared';
+import * as sharedData from '@porsche-design-system/shared/data';
 import type {
   ColorScheme,
   Framework,
@@ -18,23 +18,15 @@ export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | '
   pdsComponents: string[];
 };
 
-export const inlineSharedImports = (markup: string): string => {
-  const sharedImportRegex = /import { ((?:[A-z]+,* )+)} from '@porsche-design-system\/shared';/;
-  const [, sharedImports] = markup.match(sharedImportRegex) || [];
-  const importVariables = sharedImports
-    .replace(/\s/g, '')
-    .split(',')
-    .filter((x) => x[0] === x[0].toLowerCase());
+export type SharedImportKey = Exclude<keyof typeof sharedData, 'headVrt' | 'dataVrt'>;
 
-  return markup.replace(
-    sharedImportRegex,
-    `
-${importVariables.map((x) => `const ${x} = ${JSON.stringify(sharedData[x as keyof typeof sharedData])};`).join('\n')}`
-  );
-};
+export const removeSharedImport = (markup: string): string =>
+  markup.replace(/import { .+ } from '@porsche-design-system\/shared';/, '');
+
+export const inlineSharedImports = (sharedImportKeys: SharedImportKey[]): string =>
+  sharedImportKeys.map((x) => `const ${x} = ${JSON.stringify(sharedData[x], null, 2)};`).join('\n');
 
 export type ExternalStackBlitzDependency = 'imask';
-
 export type StackBlitzDependencyMap = { [key in ExternalStackBlitzDependency]: StackblitzProjectDependencies };
 
 // TODO: validate if typing works from md files, otherwise validate

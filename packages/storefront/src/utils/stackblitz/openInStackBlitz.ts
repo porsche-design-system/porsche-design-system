@@ -2,13 +2,14 @@ import sdk from '@stackblitz/sdk';
 import { getVanillaJsProjectAndOpenOptions } from '@/utils/stackblitz/vanillaJsBoilerplate';
 import { getReactProjectAndOpenOptions } from '@/utils/stackblitz/reactBoilerplate';
 import { getAngularProjectAndOpenOptions } from '@/utils/stackblitz/angularBoilerplate';
-import {
-  ExternalStackBlitzDependency,
-  getBackgroundColor,
-  getPdsComponents,
+import { getBackgroundColor, getPdsComponents } from '@/utils/stackblitz/helper';
+import type {
+  StackBlitzFrameworkOpts,
+  FrameworksWithoutShared,
   GetStackblitzProjectAndOpenOptions,
-} from '@/utils/stackblitz/helper';
-import type { StackBlitzFrameworkOpts, FrameworksWithoutShared } from '@/utils/stackblitz/helper';
+  SharedImportKey,
+  ExternalStackBlitzDependency,
+} from '@/utils';
 import type { Theme, ColorScheme, Framework } from '@/models';
 
 // TODO: decide hasFrameworkMarkup in boilerplate
@@ -18,22 +19,32 @@ export type OpenInStackBlitzOpts = {
   theme: Theme;
   hasFrameworkMarkup: boolean;
   backgroundColorScheme: ColorScheme;
+  sharedImportKeys?: SharedImportKey[];
   externalStackBlitzDependencies?: ExternalStackBlitzDependency[];
 };
 
 export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
-  const { markup, framework, theme, hasFrameworkMarkup, externalStackBlitzDependencies, backgroundColorScheme } = opts;
+  const {
+    markup,
+    framework,
+    theme,
+    hasFrameworkMarkup,
+    externalStackBlitzDependencies,
+    backgroundColorScheme,
+    sharedImportKeys,
+  } = opts;
 
   // TODO: move into react
   const pdsComponents = getPdsComponents(markup);
 
-  const openProps: StackBlitzFrameworkOpts = {
+  const stackBlitzFrameworkOpts: StackBlitzFrameworkOpts = {
     markup,
     hasFrameworkMarkup,
     title: `Porsche Design System ${framework} sandbox`,
     description: 'Porsche Design System component example',
     globalStyles: `body { background: ${getBackgroundColor(theme, backgroundColorScheme)}; }`,
     pdsComponents,
+    sharedImportKeys,
     externalStackBlitzDependencies,
   };
 
@@ -45,7 +56,7 @@ export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
     react: getReactProjectAndOpenOptions,
   };
 
-  const { openFile, ...project } = getProjectAndOpenOptionsCallbackMap[framework](openProps);
+  const { openFile, ...project } = getProjectAndOpenOptionsCallbackMap[framework](stackBlitzFrameworkOpts);
 
   sdk.openProject(project, { openFile });
 };
