@@ -3,7 +3,6 @@ import { default as tsconfig } from '../../../../components-react/tsconfig.json'
 import { getExternalDependencies, removeSharedImport } from '@/utils';
 import { getSharedImportConstants } from './helper';
 import { convertMarkup } from '@/utils/formatting';
-import { pascalCase } from 'change-case';
 import type {
   StackBlitzDependencyMap,
   GetStackblitzProjectAndOpenOptions,
@@ -20,9 +19,12 @@ export const getAppFrameworkMarkup = (markup: string, sharedImportKeys: SharedIm
   );
 };
 
-export const getAppDefaultMarkup = (markup: string, pdsComponents: string[]): string => {
-  const reactComponentsToImport = pdsComponents.map((x) => pascalCase(x)).join(', ');
+export const getAppDefaultMarkup = (markup: string): string => {
   const convertedMarkup = convertMarkup(markup, 'react');
+  const reactComponentsToImport = Array.from(convertedMarkup.matchAll(/<(P[A-z]+)/g) || [])
+    .map(([, x]) => x)
+    .filter((tagName, idx, arr) => arr.findIndex((t) => t === tagName) === idx)
+    .join(', ');
 
   return `import { ${reactComponentsToImport} } from '@porsche-design-system/components-react'
 
@@ -38,12 +40,9 @@ export const App = (): JSX.Fragment => {
 export const getAppTsxMarkup = (
   markup: string,
   hasFrameworkMarkup: boolean,
-  pdsComponents: string[],
   sharedImportKeys: SharedImportKey[]
 ): string => {
-  return hasFrameworkMarkup
-    ? getAppFrameworkMarkup(markup, sharedImportKeys)
-    : getAppDefaultMarkup(markup, pdsComponents);
+  return hasFrameworkMarkup ? getAppFrameworkMarkup(markup, sharedImportKeys) : getAppDefaultMarkup(markup);
 };
 
 export const getIndexTsxMarkup = (): string => `import { StrictMode } from 'react';
@@ -90,14 +89,13 @@ export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions =
     title,
     hasFrameworkMarkup,
     globalStyles,
-    pdsComponents,
     sharedImportKeys,
     externalStackBlitzDependencies,
   } = opts;
 
   return {
     files: {
-      'App.tsx': getAppTsxMarkup(markup, hasFrameworkMarkup, pdsComponents, sharedImportKeys),
+      'App.tsx': getAppTsxMarkup(markup, hasFrameworkMarkup, sharedImportKeys),
       'index.html': `<div id="root"></div>`,
       'index.tsx': getIndexTsxMarkup(),
       'tsconfig.json': JSON.stringify(tsconfig, null, 2),

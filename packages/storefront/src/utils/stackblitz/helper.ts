@@ -31,7 +31,6 @@ export const getSharedImportConstants = (sharedImportKeys: SharedImportKey[]): s
   return sharedImportConstants ? `${sharedImportConstants}\n\n` : '';
 };
 export type ExternalStackBlitzDependency = 'imask';
-export type ExternalDependenciesToSrcMap = { [key in ExternalStackBlitzDependency]: string };
 export type StackBlitzDependencyMap = { [key in ExternalStackBlitzDependency]: StackblitzProjectDependencies };
 
 // TODO: validate if typing works from md files, otherwise validate
@@ -46,11 +45,6 @@ export const getExternalDependencies = (
 
 export const isTable = (components: string[]): boolean => !!components[0].match(/(?:P|p-)[Tt]able/);
 
-export const getPdsComponents = (markup: string): string[] =>
-  Array.from(markup.matchAll(/<((?:P|p-)[\w-]*)/g) || [])
-    .map(([, x]) => x)
-    .filter((tagName, idx, arr) => arr.findIndex((t) => t === tagName) === idx);
-
 export const getBackgroundColor = (theme: Theme, colorScheme: ColorScheme): string => {
   const {
     background: { base, surface },
@@ -60,7 +54,3 @@ export const getBackgroundColor = (theme: Theme, colorScheme: ColorScheme): stri
 };
 
 export type GetStackblitzProjectAndOpenOptions = (opts: StackBlitzFrameworkOpts) => StackBlitzProjectAndOpenOptions;
-
-export const hastIMaskDependency = (getExternalDependencies?: ExternalStackBlitzDependency[]): boolean => {
-  return getExternalDependencies ? getExternalDependencies.filter((x) => x === 'imask').length > 0 : false;
-};
