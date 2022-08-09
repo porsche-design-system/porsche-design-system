@@ -6,10 +6,9 @@ import type {
   SharedImportKey,
   ExternalStackBlitzDependency,
   GetStackblitzProjectAndOpenOptions,
-  ExternalDependenciesToSrcMap,
 } from '@/utils';
 
-const externalDependencyToSrcMap: ExternalDependenciesToSrcMap = {
+const externalStackBlitzDependencyToSrcMap: { [key in ExternalStackBlitzDependency]: string } = {
   imask: 'node_modules/imask/dist/imask.min.js',
 };
 
@@ -21,7 +20,7 @@ export const getIndexHtmlMarkup = (
   sharedImportKeys?: SharedImportKey[]
 ): string => {
   const scriptWithExternalDependency = externalStackBlitzDependencies.map(
-    (dependency) => `\n<script src="${externalDependencyToSrcMap[dependency]}"></script>\n`
+    (dependency) => `\n<script src="${externalStackBlitzDependencyToSrcMap[dependency]}"></script>\n`
   );
 
   return `<!DOCTYPE html>
