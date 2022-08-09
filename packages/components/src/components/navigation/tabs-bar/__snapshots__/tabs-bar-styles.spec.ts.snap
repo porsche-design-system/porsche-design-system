@@ -17,7 +17,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  white-space: inherit !important;
+  white-space: nowrap !important;
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -91,7 +91,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  white-space: inherit !important;
+  white-space: nowrap !important;
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -165,7 +165,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  white-space: inherit !important;
+  white-space: nowrap !important;
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -239,7 +239,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  white-space: inherit !important;
+  white-space: nowrap !important;
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -313,7 +313,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  white-space: inherit !important;
+  white-space: nowrap !important;
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -387,7 +387,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  white-space: inherit !important;
+  white-space: nowrap !important;
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -461,7 +461,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  white-space: inherit !important;
+  white-space: nowrap !important;
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
@@ -535,7 +535,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   font-weight: inherit !important;
   font-size: inherit !important;
   line-height: inherit !important;
-  white-space: inherit !important;
+  white-space: nowrap !important;
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
   appearance: none !important;
