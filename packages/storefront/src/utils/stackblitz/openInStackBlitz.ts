@@ -5,7 +5,6 @@ import { getAngularProjectAndOpenOptions } from '@/utils/stackblitz/angularBoile
 import { getBackgroundColor } from '@/utils/stackblitz/helper';
 import type {
   StackBlitzFrameworkOpts,
-  FrameworksWithoutShared,
   GetStackblitzProjectAndOpenOptions,
   SharedImportKey,
   ExternalStackBlitzDependency,
@@ -14,7 +13,7 @@ import type { Theme, ColorScheme, Framework } from '@/models';
 
 export type OpenInStackBlitzOpts = {
   markup: string;
-  framework: FrameworksWithoutShared;
+  framework: Exclude<Framework, 'shared'>;
   theme: Theme;
   backgroundColorScheme: ColorScheme;
   externalStackBlitzDependencies: ExternalStackBlitzDependency[];
