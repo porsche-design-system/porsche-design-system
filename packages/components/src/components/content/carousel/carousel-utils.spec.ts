@@ -31,15 +31,18 @@ describe('toSplideBreakpoints()', () => {
     expect(spy).toBeCalledWith(10);
   });
 
-  it('should return basic object for flat BreakpointCustomizable parameter', () => {
-    expect(toSplideBreakpoints('gap', 10)).toEqual({ gap: 10 });
-    expect(toSplideBreakpoints('perMove', 2)).toEqual({ perMove: 2 });
+  it('should return correct correct object for flat BreakpointCustomizable parameter', () => {
+    expect(toSplideBreakpoints('gap', 10)).toEqual({ 0: { gap: 10 } });
+    expect(toSplideBreakpoints('perMove', 2)).toEqual({ 0: { perMove: 2 } });
   });
 
   it('should return correct breakpoints object for nested BreakpointCustomizable parameter', () => {
-    expect(toSplideBreakpoints('gap', { base: 5, s: 10 })).toEqual({ gap: 5, 760: { gap: 10 } });
+    expect(toSplideBreakpoints('gap', { base: 5, s: 10 })).toEqual({
+      0: { gap: 5 },
+      760: { gap: 10 },
+    });
     expect(toSplideBreakpoints('perMove', { base: 1, xs: 2, s: 3, m: 4, l: 5, xl: 6 })).toEqual({
-      perMove: 1,
+      0: { perMove: 1 },
       480: { perMove: 2 },
       760: { perMove: 3 },
       1000: { perMove: 4 },
