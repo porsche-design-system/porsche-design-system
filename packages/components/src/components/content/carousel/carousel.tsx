@@ -88,6 +88,7 @@ export class Carousel {
       this.btnPrev.disabled = start === 0;
       this.btnNext.disabled = start === this.slides.length - 1;
 
+      // TODO: calculation of amount of bullets
       this.pagination.children[start].classList.add('bullet--active');
     });
 
@@ -115,16 +116,8 @@ export class Carousel {
 
     return (
       <Host>
-        <div class="splide" ref={(ref) => (this.container = ref)}>
-          <div class="splide__track">
-            <div class="splide__list">
-              {this.slides.map((_, i) => (
-                <div class="splide__slide">
-                  <slot name={`slide-${i}`} />
-                </div>
-              ))}
-            </div>
-          </div>
+        <div class="header">
+          {this.heading && <h2>{this.heading}</h2>}
 
           <PrefixedTagNames.pButtonPure
             class="btn btn--prev"
@@ -144,6 +137,18 @@ export class Carousel {
           >
             Next slide
           </PrefixedTagNames.pButtonPure>
+        </div>
+
+        <div class="splide" ref={(ref) => (this.container = ref)}>
+          <div class="splide__track">
+            <div class="splide__list">
+              {this.slides.map((_, i) => (
+                <div class="splide__slide">
+                  <slot name={`slide-${i}`} />
+                </div>
+              ))}
+            </div>
+          </div>
 
           <div class="pagination" ref={(ref) => (this.pagination = ref)}>
             {this.slides.map(() => (

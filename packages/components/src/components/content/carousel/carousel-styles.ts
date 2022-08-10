@@ -1,6 +1,7 @@
 import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors } from '../../../styles';
+import { getScreenReaderOnlyJssStyle, getThemedColors, pxToRemWithUnit } from '../../../styles';
+import { headingMedium } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
   _disablePagination: BreakpointCustomizable<boolean>,
@@ -12,15 +13,20 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
+        padding: '0 0 15px',
       },
-      '::slotted(*)': addImportantToEachRule({
-        // position: 'relative',
-        // width: '100%',
-        // height: '100%',
-        // flexShrink: 0,
-        // transitionProperty: 'transform',
-        // boxSizing: 'border-box',
-      }),
+      // '::slotted(*)': addImportantToEachRule({
+      // position: 'relative',
+      // width: '100%',
+      // height: '100%',
+      // flexShrink: 0,
+      // transitionProperty: 'transform',
+      // boxSizing: 'border-box',
+      // }),
+      h2: {
+        ...headingMedium,
+        margin: `0 ${pxToRemWithUnit(8)} 0 0 `,
+      },
     },
     splide: {
       position: 'relative',
@@ -54,9 +60,6 @@ export const getComponentCss = (
         WebkitBackfaceVisibility: 'hidden',
         backfaceVisibility: 'hidden',
       },
-      // '&__slide img' {
-      //     vertical-align: bottom,
-      //   }
       '&__sr': getScreenReaderOnlyJssStyle(),
     },
     // .splide.is-initialized,
@@ -66,15 +69,14 @@ export const getComponentCss = (
     // .splide.is-initialized:not(.is-active) .splide__list {
     //     display: block,
     //   }
+    header: {
+      display: 'flex',
+      alignItems: 'flex-end',
+      margin: `0 0 ${pxToRemWithUnit(12)}`,
+    },
     btn: {
-      position: 'absolute',
-      top: '50%',
-      transform: 'translate3d(0,-50%,0)',
       '&--prev': {
-        left: 0,
-      },
-      '&--next': {
-        right: 0,
+        margin: '0 0 0 auto',
       },
     },
     pagination: {
@@ -84,7 +86,7 @@ export const getComponentCss = (
       position: 'absolute',
       gap: '3px',
       height: '7px',
-      bottom: 0,
+      bottom: '-15px',
       left: '50%',
       transform: 'translate3d(-50%,0,0)',
     },
