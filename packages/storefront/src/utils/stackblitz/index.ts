@@ -1,5 +1,5 @@
 export * from './helper';
-export * from './vanillaJsBoilerplate';
-export * from './angularBoilerplate';
-export * from './reactBoilerplate';
-export * from './openInStackBlitz';
+export { getVanillaJsProjectAndOpenOptions } from './vanillaJsBoilerplate';
+export { getAngularProjectAndOpenOptions } from './angularBoilerplate';
+export { getReactProjectAndOpenOptions } from './reactBoilerplate';
+export { openInStackBlitz } from './openInStackBlitz';

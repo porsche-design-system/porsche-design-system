@@ -3,30 +3,25 @@ import { default as tsconfig } from '../../../../components-react/tsconfig.json'
 import { getExternalDependencies, removeSharedImport } from '@/utils';
 import { getSharedImportConstants } from './helper';
 import { convertMarkup } from '@/utils/formatting';
-import type {
-  StackBlitzDependencyMap,
-  GetStackblitzProjectAndOpenOptions,
-  SharedImportKey,
-  ExternalStackBlitzDependency,
-} from '@/utils';
+import type { DependencyMap, GetStackblitzProjectAndOpenOptions, SharedImportKey, ExternalDependency } from '@/utils';
 import type { StackblitzProjectDependencies } from '@/models';
 
 const componentNameRegex = /(export const )[A-z]+( = \(\): JSX.Element => {)/;
 
-export const getAppFrameworkMarkup = (markup: string, sharedImportKeys: SharedImportKey[]): string => {
+export const replaceSharedImportsWithConstants = (markup: string, sharedImportKeys: SharedImportKey[]): string => {
   const sharedImportConstants = getSharedImportConstants(sharedImportKeys);
 
   return removeSharedImport(markup.replace(componentNameRegex, `${sharedImportConstants}$1App$2`));
 };
 
-export const getAppDefaultMarkup = (markup: string): string => {
-  const convertedMarkup = convertMarkup(markup, 'react');
-  const reactComponentsToImport = Array.from(convertedMarkup.matchAll(/<(P[A-z]+)/g) || [])
-    .map(([, x]) => x)
-    .filter((tagName, idx, arr) => arr.findIndex((t) => t === tagName) === idx)
+export const extendMarkupWithAppComponent = (markup: string): string => {
+  const convertedMarkup = convertMarkup(markup, 'react').replace(/(\n)/g, '$1      ');
+  const reactComponentsToImport = Array.from(convertedMarkup.matchAll(/<(P[A-z]+)/g)) // Returns array of all matches and captured groups
+    .map(([, reactComponentName]) => reactComponentName)
+    .filter((reactComponentName, idx, arr) => arr.findIndex((t) => t === reactComponentName) === idx) // Remove duplicates
     .join(', ');
 
-  return `import { ${reactComponentsToImport} } from '@porsche-design-system/components-react'
+  return `import { ${reactComponentsToImport} } from '@porsche-design-system/components-react';
 
 export const App = (): JSX.Fragment => {
   return (
@@ -54,15 +49,13 @@ root.render(
   </StrictMode>
 );`;
 
-const dependenciesMap: StackBlitzDependencyMap = {
+const dependenciesMap: DependencyMap = {
   imask: {
     'react-imask': dependencies['react-imask'],
   },
 };
 
-export const getReactDependencies = (
-  externalStackBlitzDependencies?: ExternalStackBlitzDependency[]
-): StackblitzProjectDependencies => {
+export const getReactDependencies = (externalDependencies: ExternalDependency[]): StackblitzProjectDependencies => {
   // TODO: pick dependencies?
   return {
     '@porsche-design-system/components-react': dependencies['@porsche-design-system/components-react'],
@@ -70,18 +63,20 @@ export const getReactDependencies = (
     'react-dom': dependencies['react-dom'],
     '@types/react': devDependencies['@types/react'],
     '@types/react-dom': devDependencies['@types/react-dom'],
-    ...(externalStackBlitzDependencies && getExternalDependencies(externalStackBlitzDependencies, dependenciesMap)),
+    ...getExternalDependencies(externalDependencies, dependenciesMap),
   };
 };
 
 export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
-  const { markup, description, title, globalStyles, sharedImportKeys, externalStackBlitzDependencies } = opts;
+  const { markup, description, title, globalStyles, sharedImportKeys, externalDependencies } = opts;
 
-  const isFrameworkMarkup = !!markup.match(componentNameRegex);
+  const isExampleMarkup = !!markup.match(componentNameRegex);
 
   return {
     files: {
-      'App.tsx': isFrameworkMarkup ? getAppFrameworkMarkup(markup, sharedImportKeys) : getAppDefaultMarkup(markup),
+      'App.tsx': isExampleMarkup
+        ? replaceSharedImportsWithConstants(markup, sharedImportKeys)
+        : extendMarkupWithAppComponent(markup),
       'index.html': `<div id="root"></div>`,
       'index.tsx': getIndexTsxMarkup(),
       'tsconfig.json': JSON.stringify(tsconfig, null, 2),
@@ -90,7 +85,7 @@ export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions =
     template: 'create-react-app',
     title,
     description,
-    dependencies: getReactDependencies(externalStackBlitzDependencies),
+    dependencies: getReactDependencies(externalDependencies),
     openFile: 'App.tsx',
   };
 };

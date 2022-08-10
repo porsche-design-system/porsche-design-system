@@ -1,82 +1,83 @@
 import { dependencies } from '../../../../components-js/package.json';
-import { getExternalDependencies, getSharedImportConstants } from '@/utils/stackblitz/helper';
+import { getExternalDependencies, getSharedImportConstants } from './helper';
 import type { StackblitzProjectDependencies } from '@/models';
-import type {
-  StackBlitzDependencyMap,
-  SharedImportKey,
-  ExternalStackBlitzDependency,
-  GetStackblitzProjectAndOpenOptions,
-} from '@/utils';
+import type { DependencyMap, SharedImportKey, ExternalDependency, GetStackblitzProjectAndOpenOptions } from './helper';
 
-const externalStackBlitzDependencyToSrcMap: { [key in ExternalStackBlitzDependency]: string } = {
+const externalDependencyToSrcMap: { [key in ExternalDependency]: string } = {
   imask: 'node_modules/imask/dist/imask.min.js',
 };
 
+// TODO: Use getLoader partial to inject core chunk to enable issue branches on stackblitz
+
 export const getIndexHtmlMarkup = (
   markup: string,
-  bodyStyles: string,
-  externalStackBlitzDependencies: ExternalStackBlitzDependency[],
-  sharedImportKeys?: SharedImportKey[]
+  globalStyles: string,
+  externalDependencies: ExternalDependency[],
+  sharedImportKeys: SharedImportKey[]
 ): string => {
-  const scriptWithExternalDependency = externalStackBlitzDependencies.map(
-    (dependency) => `\n<script src="${externalStackBlitzDependencyToSrcMap[dependency]}"></script>\n`
-  );
+  const externalScripts = externalDependencies
+    .map((dependency) => `<script src="${externalDependencyToSrcMap[dependency]}"></script>`)
+    .join('\n    ');
 
-  const hasScript = markup.match(/<script>/);
-  const extendedMarkupWithLoadFunction = hasScript
-    ? markup.replace(/<script>/, '<script>\n  porscheDesignSystem.load();\n')
-    : `${markup}\n  <script>porscheDesignSystem.load();</script>`;
+  const loadFunction = 'porscheDesignSystem.load();';
+  const hasScriptTag = !!markup.match(/<script>/);
+  const extendedMarkupWithLoadFunction = hasScriptTag
+    ? markup.replace(/<script>/, `<script>\n  ${loadFunction}\n`)
+    : markup + `\n    <script>${loadFunction}</script>`;
+
+  // TODO: Improve alignment of inlined shared data (look into table)
+  const bodyContent = replaceSharedAsyncFunctionWithConstants(extendedMarkupWithLoadFunction, sharedImportKeys).replace(
+    /(\n)/g,
+    '$1    '
+  );
 
   return `<!DOCTYPE html>
 <html dir="ltr" lang="en">
   <head>
-    <script src="node_modules/@porsche-design-system/components-js/index.js"></script>${scriptWithExternalDependency}
-
+    <script src="node_modules/@porsche-design-system/components-js/index.js"></script>
+    ${externalScripts}
     <style>
-      ${bodyStyles}
+      ${globalStyles}
     </style>
   </head>
   <body>
-    ${
-      sharedImportKeys
-        ? inlineSharedData(extendedMarkupWithLoadFunction, sharedImportKeys)
-        : extendedMarkupWithLoadFunction
-    }
+    ${bodyContent}
   </body>
 </html>`;
 };
 
-export const inlineSharedData = (markup: string, sharedImportKeys: SharedImportKey[]): string => {
+export const replaceSharedAsyncFunctionWithConstants = (
+  markup: string,
+  sharedImportKeys: SharedImportKey[]
+): string => {
   return markup.replace(/const { .* } = await [A-z]+\(\);/, getSharedImportConstants(sharedImportKeys));
 };
 
-const dependencyMap: StackBlitzDependencyMap = {
+const dependencyMap: DependencyMap = {
   imask: {
     imask: dependencies['imask'],
   },
 };
 
-export const getVanillaJsDependencies = (
-  externalStackBlitzDependencies: ExternalStackBlitzDependency[]
-): StackblitzProjectDependencies => {
+export const getVanillaJsDependencies = (externalDependencies: ExternalDependency[]): StackblitzProjectDependencies => {
   return {
     '@porsche-design-system/components-js': dependencies['@porsche-design-system/components-js'],
-    ...getExternalDependencies(externalStackBlitzDependencies, dependencyMap),
+    ...getExternalDependencies(externalDependencies, dependencyMap),
   };
 };
 
 export const getVanillaJsProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
-  const { markup, description, title, globalStyles, sharedImportKeys, externalStackBlitzDependencies } = opts;
+  const { markup, description, title, globalStyles, sharedImportKeys, externalDependencies } = opts;
 
   return {
     files: {
-      'index.html': getIndexHtmlMarkup(markup, globalStyles, externalStackBlitzDependencies, sharedImportKeys),
-      'index.js': '',
+      'index.html': getIndexHtmlMarkup(markup, globalStyles, externalDependencies, sharedImportKeys),
+      'index.js': '', // StackBlitz javascript template requires a index.js file
     },
     template: 'javascript',
     title,
     description,
-    dependencies: getVanillaJsDependencies(externalStackBlitzDependencies),
+    dependencies: getVanillaJsDependencies(externalDependencies),
     openFile: 'index.html',
   };
 };

@@ -22,18 +22,21 @@ export const removeSharedImport = (markup: string): string =>
 
 export const getSharedImportConstants = (sharedImportKeys: SharedImportKey[]): string => {
   const sharedImportConstants = sharedImportKeys
-    .map((x) => `const ${x} = ${JSON.stringify(sharedData[x], null, 2)};`)
+    .map((x) => `const ${x} = ${JSON.stringify(sharedData[x], null, 1)};`)
     .join('\n\n');
 
   return sharedImportConstants ? `${sharedImportConstants}\n\n` : '';
 };
-export type ExternalStackBlitzDependency = 'imask';
-export type StackBlitzDependencyMap = { [key in ExternalStackBlitzDependency]: StackblitzProjectDependencies };
+
+export const EXTERNAL_STACK_BLITZ_DEPENDENCIES = ['imask'] as const;
+export type ExternalDependency = typeof EXTERNAL_STACK_BLITZ_DEPENDENCIES[number];
+
+export type DependencyMap = { [key in ExternalDependency]: StackblitzProjectDependencies };
 
 // TODO: validate if typing works from md files, otherwise validate
 export const getExternalDependencies = (
-  additionalDependencies: ExternalStackBlitzDependency[],
-  dependenciesMap: StackBlitzDependencyMap
+  additionalDependencies: ExternalDependency[],
+  dependenciesMap: DependencyMap
 ): StackblitzProjectDependencies =>
   additionalDependencies.reduce(
     (result, current) => ({ ...result, ...dependenciesMap[current] }),
