@@ -10,6 +10,7 @@ import { AccordionChangeEvent, AccordionSize } from "./components/content/accord
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { BannerState, BannerWidth } from "./components/feedback/banner/banner-utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
+import { CarouselChangeEvent, CarouselI18n } from "./components/content/carousel/carousel-utils";
 import { FormState } from "./components/form/form-state";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/layout/content-wrapper/content-wrapper-utils";
 import { DividerColor, DividerOrientation } from "./components/layout/divider/divider-utils";
@@ -210,7 +211,26 @@ export namespace Components {
         "theme"?: Theme;
     }
     interface PCarouselSplide {
+        /**
+          * If true, the carousel will not show pagination bullets at the bottom.
+         */
         "disablePagination"?: BreakpointCustomizable<boolean>;
+        /**
+          * Defines the heading used in carousel.
+         */
+        "heading"?: string;
+        /**
+          * Override the default wordings that are used for aria-labels on the next/prev buttons and pagination.
+         */
+        "i18n"?: CarouselI18n;
+        /**
+          * Sets the amount of slides that move on a single prev/next click.
+         */
+        "slidesPerMove"?: number;
+        /**
+          * Sets the amount of slides visible at the same time.
+         */
+        "slidesPerPage"?: number;
         /**
           * Adapts the color when used on dark background.
          */
@@ -1755,11 +1775,30 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     interface PCarouselSplide {
+        /**
+          * If true, the carousel will not show pagination bullets at the bottom.
+         */
         "disablePagination"?: BreakpointCustomizable<boolean>;
         /**
-          * Emitted when carousel's position changes.
+          * Defines the heading used in carousel.
          */
-        "onCarouselChange"?: (event: PCarouselSplideCustomEvent<void>) => void;
+        "heading"?: string;
+        /**
+          * Override the default wordings that are used for aria-labels on the next/prev buttons and pagination.
+         */
+        "i18n"?: CarouselI18n;
+        /**
+          * Emitted when carousel's content slides.
+         */
+        "onCarouselChange"?: (event: PCarouselSplideCustomEvent<CarouselChangeEvent>) => void;
+        /**
+          * Sets the amount of slides that move on a single prev/next click.
+         */
+        "slidesPerMove"?: number;
+        /**
+          * Sets the amount of slides visible at the same time.
+         */
+        "slidesPerPage"?: number;
         /**
           * Adapts the color when used on dark background.
          */
