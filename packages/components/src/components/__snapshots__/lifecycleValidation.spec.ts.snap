@@ -63,6 +63,10 @@ Object {
 exports[`should call validateProps() with correct parameters via componentWillRender for p-carousel: propTypes with ValidatorFunctions 1`] = `
 Object {
   "disablePagination": "breakpoint",
+  "heading": "string",
+  "i18n": "shape",
+  "slidesPerMove": "breakpoint",
+  "slidesPerPage": "breakpoint",
   "theme": "oneOf",
 }
 `;
