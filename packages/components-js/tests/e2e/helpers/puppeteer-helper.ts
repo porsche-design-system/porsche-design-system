@@ -273,8 +273,19 @@ export const initConsoleObserver = (page: Page): void => {
     }
   });
 };
-export const getConsoleErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;
-export const getConsoleWarningsAmount = () => consoleMessages.filter((x) => x.type() === 'warning').length;
+
+const getConsoleErrors = () => consoleMessages.filter((x) => x.type() === 'error');
+const getConsoleWarnings = () => consoleMessages.filter((x) => x.type() === 'warning');
+export const getConsoleErrorsAmount = () => getConsoleErrors().length;
+export const getConsoleErrorMessages = () =>
+  getConsoleErrors()
+    .map((msg) => '- ' + msg.text())
+    .join('\n');
+export const getConsoleWarningsAmount = () => getConsoleWarnings().length;
+export const getConsoleWarningMessages = () =>
+  getConsoleWarnings()
+    .map((msg) => '- ' + msg.text())
+    .join('\n');
 
 const thrownErrors: string[] = [];
 
