@@ -6,25 +6,41 @@ import {
   getSharedImportConstants,
   removeSharedImport,
   validateExternalDependencies,
-  ExternalDependency,
 } from '../../src/utils/stackblitz/helper';
-import type { SharedImportKey } from '../../src/utils';
+import type { SharedImportKey, ExternalDependency } from '../../src/utils';
+
+jest.mock('@porsche-design-system/shared/data', () => ({
+  headBasic: 'mockedHeadBasic',
+  dataBasic: 'mockedDataBasic',
+}));
 
 describe('removeSharedImport()', () => {
-  it('should remove shared import from markup', () => {
-    const sharedImportMarkup = "import { headBasic, dataBasic } from '@porsche-design-system/shared';";
-    expect(removeSharedImport(sharedImportMarkup)).toBe('');
+  const markup = 'Some markup';
+
+  it('should call replace() with correct parameters', () => {
+    const replaceMockValue = 'Some mock value';
+    const spy = jest.spyOn(String.prototype, 'replace').mockReturnValue(replaceMockValue);
+
+    removeSharedImport(markup);
+
+    expect(spy).toBeCalledWith(/import { .+ } from '@porsche-design-system\/shared';/, '');
   });
 
-  it('should not change markup if no shared import is present', () => {
-    const someMarkup = 'Some Markup';
-    expect(removeSharedImport(someMarkup)).toBe(someMarkup);
+  it('should return unmodified markup parameter if regex does not match', () => {
+    expect(removeSharedImport(markup)).toBe(markup);
   });
 });
 
 describe('getSharedImportConstants()', () => {
-  it('should return empty string if no sharedImportKeys are passed', () => {
+  it('should return empty string for [] as sharedImportKeys', () => {
     expect(getSharedImportConstants([])).toBe('');
+  });
+
+  // TODO: which approach is better?
+  it('should return constants and value for', () => {
+    const expected = 'const headBasic = "mockedHeadBasic";\n\nconst dataBasic = "mockedDataBasic";\n\n';
+
+    expect(getSharedImportConstants(['headBasic', 'dataBasic'])).toBe(expected);
   });
 
   it.each<SharedImportKey[][]>([
@@ -55,7 +71,7 @@ describe('getExternalDependencies()', () => {
     },
   };
 
-  it('should map correct values depending on additionalDependencies array', () => {
+  it('should return correct ExternalDependency[]', () => {
     expect(getExternalDependencies(['imask'], dependenciesMap)).toEqual({
       ...dependenciesMap.imask,
     });
