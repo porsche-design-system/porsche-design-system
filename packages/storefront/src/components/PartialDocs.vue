@@ -1,6 +1,6 @@
 <template>
   <div class="partial-docs">
-    <Playground :frameworkMarkup="frameworkMarkup"></Playground>
+    <Playground :frameworkMarkup="frameworkMarkup" :show-code-editor="false"></Playground>
     <p-text>
       You can find an implemented example in our
       <a href="https://github.com/porscheui/sample-integration-vanillajs">Sample Integration VanillaJS</a>,
