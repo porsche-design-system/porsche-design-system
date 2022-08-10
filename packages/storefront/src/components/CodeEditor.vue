@@ -9,7 +9,7 @@
         markup,
         framework,
         theme,
-        externalStackBlitzDependencies,
+        externalDependencies: externalStackBlitzDependencies,
         backgroundColorScheme: colorScheme,
         sharedImportKeys,
       })
@@ -24,7 +24,7 @@
   import { Prop } from 'vue-property-decorator';
   import type { ColorScheme, Framework, Theme } from '@/models';
   import { openInStackBlitz } from '@/utils';
-  import type { ExternalStackBlitzDependency, SharedImportKey } from '@/utils';
+  import type { ExternalDependency, SharedImportKey } from '@/utils';
 
   @Component
   export default class CodeEditor extends Vue {
@@ -32,7 +32,7 @@
     @Prop({ default: 'light' }) public theme!: Theme;
     @Prop({ default: 'vanilla-js' }) public framework!: Framework;
     @Prop({ default: 'default' }) public colorScheme!: ColorScheme;
-    @Prop() public externalStackBlitzDependencies!: ExternalStackBlitzDependency[];
+    @Prop() public externalStackBlitzDependencies!: ExternalDependency[];
     @Prop() public sharedImportKeys!: SharedImportKey[];
 
     stackBlitzIcon = require('../assets/icon-stackblitz.svg');

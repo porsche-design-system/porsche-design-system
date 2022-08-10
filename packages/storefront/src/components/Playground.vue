@@ -37,6 +37,7 @@
           :frameworks="frameworks"
         ></CodeBlock>
         <CodeEditor
+          v-if="showCodeEditor"
           :markup="cleanedEditorMarkup"
           :theme="theme"
           :framework="activeFramework"
@@ -55,10 +56,10 @@
   import { Prop } from 'vue-property-decorator';
   import CodeBlock from '@/components/CodeBlock.vue';
   import CodeEditor from '@/components/CodeEditor.vue';
-  import { cleanMarkup, patchThemeIntoMarkup } from '@/utils';
+  import { cleanMarkup, EXTERNAL_STACK_BLITZ_DEPENDENCIES, patchThemeIntoMarkup } from '@/utils';
   import { componentMeta } from '@porsche-design-system/shared';
   import type { ColorScheme, Framework, FrameworkMarkup, Theme } from '@/models';
-  import type { ExternalStackBlitzDependency, SharedImportKey } from '@/utils';
+  import type { ExternalDependency, SharedImportKey } from '@/utils';
 
   export type PlaygroundConfig = {
     themeable: boolean;
@@ -92,7 +93,8 @@
   export default class Playground extends Vue {
     @Prop({ default: () => ({}) }) public config!: Partial<PlaygroundConfig>;
     @Prop({ default: () => ({}) }) public frameworkMarkup!: FrameworkMarkup;
-    @Prop({ default: () => [] }) public externalStackBlitzDependencies!: ExternalStackBlitzDependency[];
+    @Prop({ default: () => [] }) public externalStackBlitzDependencies!: ExternalDependency[];
+    @Prop({ default: true }) public showCodeEditor!: boolean;
     @Prop({ default: '' }) public markup!: string;
 
     public mounted(): void {
