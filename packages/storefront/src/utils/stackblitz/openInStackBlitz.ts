@@ -12,12 +12,10 @@ import type {
 } from '@/utils';
 import type { Theme, ColorScheme, Framework } from '@/models';
 
-// TODO: decide hasFrameworkMarkup in boilerplate
 export type OpenInStackBlitzOpts = {
   markup: string;
   framework: FrameworksWithoutShared;
   theme: Theme;
-  hasFrameworkMarkup: boolean;
   backgroundColorScheme: ColorScheme;
   externalStackBlitzDependencies: ExternalStackBlitzDependency[];
   sharedImportKeys: SharedImportKey[];

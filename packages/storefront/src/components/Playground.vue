@@ -40,7 +40,6 @@
           :markup="cleanedEditorMarkup"
           :theme="theme"
           :framework="activeFramework"
-          :has-framework-markup="hasFrameworkMarkup"
           :external-stack-blitz-dependencies="externalStackBlitzDependencies"
           :shared-import-keys="sharedImportKeys"
           :colorScheme="config.colorScheme"

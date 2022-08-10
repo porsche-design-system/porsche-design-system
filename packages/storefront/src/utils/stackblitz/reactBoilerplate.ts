@@ -11,12 +11,12 @@ import type {
 } from '@/utils';
 import type { StackblitzProjectDependencies } from '@/models';
 
+const componentNameRegex = /(export const )[A-z]+( = \(\): JSX.Element => {)/;
+
 export const getAppFrameworkMarkup = (markup: string, sharedImportKeys: SharedImportKey[]): string => {
   const sharedImportConstants = getSharedImportConstants(sharedImportKeys);
 
-  return removeSharedImport(
-    markup.replace(/(export const )[A-z]+( = \(\): JSX.Element => {)/, `${sharedImportConstants}$1App$2`)
-  );
+  return removeSharedImport(markup.replace(componentNameRegex, `${sharedImportConstants}$1App$2`));
 };
 
 export const getAppDefaultMarkup = (markup: string): string => {
@@ -35,14 +35,6 @@ export const App = (): JSX.Fragment => {
     </>
   );
 }`;
-};
-
-export const getAppTsxMarkup = (
-  markup: string,
-  hasFrameworkMarkup: boolean,
-  sharedImportKeys: SharedImportKey[]
-): string => {
-  return hasFrameworkMarkup ? getAppFrameworkMarkup(markup, sharedImportKeys) : getAppDefaultMarkup(markup);
 };
 
 export const getIndexTsxMarkup = (): string => `import { StrictMode } from 'react';
@@ -71,7 +63,7 @@ const dependenciesMap: StackBlitzDependencyMap = {
 export const getReactDependencies = (
   externalStackBlitzDependencies?: ExternalStackBlitzDependency[]
 ): StackblitzProjectDependencies => {
-  // TODO: pick dependencies
+  // TODO: pick dependencies?
   return {
     '@porsche-design-system/components-react': dependencies['@porsche-design-system/components-react'],
     react: dependencies['react'],
@@ -83,19 +75,13 @@ export const getReactDependencies = (
 };
 
 export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
-  const {
-    markup,
-    description,
-    title,
-    hasFrameworkMarkup,
-    globalStyles,
-    sharedImportKeys,
-    externalStackBlitzDependencies,
-  } = opts;
+  const { markup, description, title, globalStyles, sharedImportKeys, externalStackBlitzDependencies } = opts;
+
+  const isFrameworkMarkup = !!markup.match(componentNameRegex);
 
   return {
     files: {
-      'App.tsx': getAppTsxMarkup(markup, hasFrameworkMarkup, sharedImportKeys),
+      'App.tsx': isFrameworkMarkup ? getAppFrameworkMarkup(markup, sharedImportKeys) : getAppDefaultMarkup(markup),
       'index.html': `<div id="root"></div>`,
       'index.tsx': getIndexTsxMarkup(),
       'tsconfig.json': JSON.stringify(tsconfig, null, 2),

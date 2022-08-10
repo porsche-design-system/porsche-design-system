@@ -9,6 +9,8 @@ import type {
 } from '@/utils';
 import { StackblitzProjectDependencies } from '@/models';
 
+const classNameRegex = /(export class )[A-z]+( {)/;
+
 export const getComponentTsFrameworkMarkup = (markup: string, sharedImportKeys: SharedImportKey[]): string => {
   const sharedImportConstants = getSharedImportConstants(sharedImportKeys);
 
@@ -16,7 +18,7 @@ export const getComponentTsFrameworkMarkup = (markup: string, sharedImportKeys: 
 ${removeSharedImport(
   markup
     .replace(/(@Component\({\n\s+selector: ')(?:[A-z]|-)+(',)/, `${sharedImportConstants}$1porsche-design-system-app$2`)
-    .replace(/(export class )[A-z]+( {)/, '$1AppComponent$2')
+    .replace(classNameRegex, '$1AppComponent$2')
 )}`;
 };
 
@@ -98,15 +100,9 @@ export const getAngularDependencies = (
 };
 
 export const getAngularProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
-  const {
-    markup,
-    description,
-    title,
-    hasFrameworkMarkup,
-    globalStyles,
-    sharedImportKeys,
-    externalStackBlitzDependencies,
-  } = opts;
+  const { markup, description, title, globalStyles, sharedImportKeys, externalStackBlitzDependencies } = opts;
+
+  const isFrameworkMarkup = !!markup.match(classNameRegex);
 
   return {
     files: {
@@ -115,7 +111,7 @@ ${`<style>${globalStyles}</style>`}`,
       'src/main.ts': getMainTsMarkup(),
       'src/polyfill.ts': "import 'zone.js/dist/zone';  // Included with Angular CLI.",
       'src/styles.css': '',
-      'src/app/app.component.ts': hasFrameworkMarkup
+      'src/app/app.component.ts': isFrameworkMarkup
         ? getComponentTsFrameworkMarkup(markup, sharedImportKeys)
         : getAppComponentTsDefaultMarkup(markup),
       'src/app/app.module.ts': getModuleTsMarkup(externalStackBlitzDependencies),
