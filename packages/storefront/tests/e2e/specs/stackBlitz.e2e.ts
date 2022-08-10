@@ -57,7 +57,6 @@ it.each(<Framework[]>['react', 'vanilla-js', 'angular'])(
 
     // go to iframeSource link to avoid cross origin restrictions
     await page.goto(iframeSource, { waitUntil: 'networkidle0' });
-    await page.waitForSelector('.hydrated');
 
     const documentPDS = await page.evaluate(() => (document as any).porscheDesignSystem);
 
