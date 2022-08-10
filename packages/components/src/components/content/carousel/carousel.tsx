@@ -2,11 +2,30 @@ import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil
 import { AllowedTypes, attachComponentCss, getPrefixedTagNames, THEMES, validateProps } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import { getComponentCss } from './carousel-styles';
-import { A11y, Swiper } from 'swiper';
+import { Splide } from '@splidejs/splide';
 import { ButtonPure } from '../../action/button-pure/button-pure';
+import type { CarouselChangeEvent, CarouselI18n } from './carousel-utils';
+import { getSplideBreakpoints } from './carousel-utils';
 
 const propTypes: PropTypes<typeof Carousel> = {
+  heading: AllowedTypes.string,
+  slidesPerPage: AllowedTypes.breakpoint('number'),
+  slidesPerMove: AllowedTypes.breakpoint('number'),
   disablePagination: AllowedTypes.breakpoint('boolean'),
+  i18n: AllowedTypes.shape<CarouselI18n>({
+    prev: AllowedTypes.string,
+    next: AllowedTypes.string,
+    first: AllowedTypes.string,
+    last: AllowedTypes.string,
+    slideX: AllowedTypes.string,
+    pageX: AllowedTypes.string,
+    play: AllowedTypes.string,
+    pause: AllowedTypes.string,
+    carousel: AllowedTypes.string,
+    slide: AllowedTypes.string,
+    select: AllowedTypes.string,
+    slideLabel: AllowedTypes.string,
+  }),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -17,22 +36,33 @@ const propTypes: PropTypes<typeof Carousel> = {
 export class Carousel {
   @Element() public host!: HTMLElement;
 
+  /** Defines the heading used in carousel. */
+  @Prop() public heading?: string;
+
+  /** Sets the amount of slides visible at the same time. */
+  @Prop() public slidesPerPage?: BreakpointCustomizable<number> = 1;
+
+  /** Sets the amount of slides that move on a single prev/next click. */
+  @Prop() public slidesPerMove?: BreakpointCustomizable<number> = 1;
+
+  /** If true, the carousel will not show pagination bullets at the bottom. */
   @Prop() public disablePagination?: BreakpointCustomizable<boolean> = false;
+
+  /** Override the default wordings that are used for aria-labels on the next/prev buttons and pagination. */
+  @Prop() public i18n?: CarouselI18n = {};
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
-  /** Emitted when carousel's position changes. */
-  @Event({ bubbles: false }) public carouselChange: EventEmitter<void>;
+  /** Emitted when carousel's content slides. */
+  @Event({ bubbles: false }) public carouselChange: EventEmitter<CarouselChangeEvent>;
 
-  private swiper: Swiper;
-  private swiperContainer: HTMLElement;
+  private splide: Splide;
+  private container: HTMLElement;
   private btnPrev: ButtonPure;
   private btnNext: ButtonPure;
   private pagination: HTMLElement;
   private slides: HTMLElement[];
-  private slidesPerView = 1; // 1
-  private slidesPerGroup = 1; // 1
 
   public componentWillLoad(): void {
     this.slides = Array.from(this.host.children) as HTMLElement[];
@@ -40,29 +70,38 @@ export class Carousel {
   }
 
   public componentDidLoad(): void {
-    const handleEvent = ({ activeIndex, previousIndex = 0, isBeginning, isEnd }: Swiper): void => {
-      this.btnPrev.disabled = isBeginning;
-      this.btnNext.disabled = isEnd;
+    this.splide = new Splide(this.container, {
+      arrows: false,
+      pagination: false,
+      dragMinThreshold: {
+        mouse: 1000, // should be disabled
+        touch: 10,
+      },
+      mediaQuery: 'min',
+      breakpoints: getSplideBreakpoints(this.slidesPerPage, this.slidesPerMove),
+      gap: 16,
+      i18n: this.i18n,
+    });
+
+    this.splide.on('mounted', () => {
+      const { start = 0 } = this.splide.options;
+      this.btnPrev.disabled = start === 0;
+      this.btnNext.disabled = start === this.slides.length - 1;
+
+      this.pagination.children[start].classList.add('bullet--active');
+    });
+
+    this.splide.on('move', (newIndex, prevIndex): void => {
+      this.btnPrev.disabled = newIndex === 0;
+      this.btnNext.disabled = newIndex === this.slides.length - 1;
 
       const { children } = this.pagination;
-      children[previousIndex].classList.remove('bullet--active');
-      children[activeIndex].classList.add('bullet--active');
-    };
-
-    this.swiper = new Swiper(this.swiperContainer, {
-      slidesPerView: this.slidesPerView,
-      slidesPerGroup: this.slidesPerGroup,
-      spaceBetween: 16,
-      // cssMode: true,
-      modules: [A11y],
-      a11y: {
-        id: 'swiper', // for stable dom snapshots
-      },
-      on: {
-        init: handleEvent,
-        slideChange: handleEvent,
-      },
+      children[prevIndex].classList.remove('bullet--active');
+      children[newIndex].classList.add('bullet--active');
+      this.carouselChange.emit({ activeIndex: newIndex, previousIndex: prevIndex });
     });
+
+    this.splide.mount();
   }
 
   public componentWillRender(): void {
@@ -75,13 +114,15 @@ export class Carousel {
 
     return (
       <Host>
-        <div class="swiper" ref={(ref) => (this.swiperContainer = ref)}>
-          <div class="swiper-wrapper">
-            {this.slides.map((_, i) => (
-              <div class="swiper-slide">
-                <slot name={`slide-${i}`} />
-              </div>
-            ))}
+        <div class="splide" ref={(ref) => (this.container = ref)}>
+          <div class="splide__track">
+            <div class="splide__list">
+              {this.slides.map((_, i) => (
+                <div class="splide__slide">
+                  <slot name={`slide-${i}`} />
+                </div>
+              ))}
+            </div>
           </div>
 
           <PrefixedTagNames.pButtonPure
@@ -89,7 +130,7 @@ export class Carousel {
             icon="arrow-head-left"
             hide-label="true"
             ref={(ref) => (this.btnPrev = ref)}
-            onClick={() => this.swiper.slidePrev()}
+            onClick={() => this.splide.go('<')}
           >
             Previous slide
           </PrefixedTagNames.pButtonPure>
@@ -98,7 +139,7 @@ export class Carousel {
             icon="arrow-head-right"
             hide-label="true"
             ref={(ref) => (this.btnNext = ref)}
-            onClick={() => this.swiper.slideNext()}
+            onClick={() => this.splide.go('>')}
           >
             Next slide
           </PrefixedTagNames.pButtonPure>
@@ -112,8 +153,4 @@ export class Carousel {
       </Host>
     );
   }
-
-  // private onButtonClick = (): void => {
-  //   this.carouselChange.emit();
-  // };
 }
