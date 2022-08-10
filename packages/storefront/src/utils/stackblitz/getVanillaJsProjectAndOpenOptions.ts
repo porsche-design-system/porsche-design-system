@@ -19,11 +19,7 @@ export const getIndexHtmlMarkup = (
     .map((dependency) => `<script src="${externalDependencyToSrcMap[dependency]}"></script>`)
     .join('\n    ');
 
-  const loadFunction = 'porscheDesignSystem.load();';
-  const hasScriptTag = !!markup.match(/<script>/);
-  const extendedMarkupWithLoadFunction = hasScriptTag
-    ? markup.replace(/<script>/, `<script>\n  ${loadFunction}\n`)
-    : markup + `\n    <script>${loadFunction}</script>`;
+  const extendedMarkupWithLoadFunction = getExtendedMarkupWithLoadFunction(markup);
 
   // TODO: Improve alignment of inlined shared data (look into table)
   const bodyContent = replaceSharedAsyncFunctionWithConstants(extendedMarkupWithLoadFunction, sharedImportKeys).replace(
@@ -46,6 +42,14 @@ export const getIndexHtmlMarkup = (
 </html>`;
 };
 
+export const getExtendedMarkupWithLoadFunction = (markup: string): string => {
+  const loadFunction = 'porscheDesignSystem.load();';
+  const hasScriptTag = !!markup.match(/<script>/);
+  return hasScriptTag
+    ? markup.replace(/<script>/, `<script>\n  ${loadFunction}\n\n`)
+    : markup + `\n\n<script>${loadFunction}</script>`;
+};
+
 export const replaceSharedAsyncFunctionWithConstants = (
   markup: string,
   sharedImportKeys: SharedImportKey[]
@@ -53,7 +57,7 @@ export const replaceSharedAsyncFunctionWithConstants = (
   return markup.replace(/const { .* } = await [A-z]+\(\);/, getSharedImportConstants(sharedImportKeys));
 };
 
-const dependencyMap: DependencyMap = {
+export const dependencyMap: DependencyMap = {
   imask: {
     imask: dependencies['imask'],
   },
