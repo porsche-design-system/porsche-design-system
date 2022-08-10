@@ -102,6 +102,7 @@ export class Carousel {
     });
 
     this.splide.mount();
+    // TODO: update on slide addition/removal or prop change?
   }
 
   public componentWillRender(): void {
