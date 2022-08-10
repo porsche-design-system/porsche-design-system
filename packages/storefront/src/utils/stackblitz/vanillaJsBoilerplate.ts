@@ -12,7 +12,6 @@ const externalStackBlitzDependencyToSrcMap: { [key in ExternalStackBlitzDependen
   imask: 'node_modules/imask/dist/imask.min.js',
 };
 
-// TODO: move load() into script of framework examples
 export const getIndexHtmlMarkup = (
   markup: string,
   bodyStyles: string,
@@ -22,6 +21,11 @@ export const getIndexHtmlMarkup = (
   const scriptWithExternalDependency = externalStackBlitzDependencies.map(
     (dependency) => `\n<script src="${externalStackBlitzDependencyToSrcMap[dependency]}"></script>\n`
   );
+
+  const hasScript = markup.match(/<script>/);
+  const extendedMarkupWithLoadFunction = hasScript
+    ? markup.replace(/<script>/, '<script>\n  porscheDesignSystem.load();\n')
+    : `${markup}\n  <script>porscheDesignSystem.load();</script>`;
 
   return `<!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -33,8 +37,11 @@ export const getIndexHtmlMarkup = (
     </style>
   </head>
   <body>
-    ${sharedImportKeys ? inlineSharedData(markup, sharedImportKeys) : markup}
-    <script>porscheDesignSystem.load();</script>
+    ${
+      sharedImportKeys
+        ? inlineSharedData(extendedMarkupWithLoadFunction, sharedImportKeys)
+        : extendedMarkupWithLoadFunction
+    }
   </body>
 </html>`;
 };
