@@ -9,8 +9,6 @@ import type {
 import { themeDark, themeLight } from '@porsche-design-system/utilities-v2';
 import type { OpenInStackBlitzOpts } from '@/utils/stackblitz/openInStackBlitz';
 
-export type FrameworksWithoutShared = Exclude<Framework, 'shared'>;
-
 export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | 'theme' | 'backgroundColorScheme'> & {
   title: string;
   description: string;

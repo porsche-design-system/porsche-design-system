@@ -30,7 +30,7 @@
   export default class CodeEditor extends Vue {
     @Prop({ default: '' }) public markup!: string;
     @Prop({ default: 'light' }) public theme!: Theme;
-    @Prop({ default: 'vanilla-js' }) public framework!: Exclude<Framework, 'shared'>;
+    @Prop({ default: 'vanilla-js' }) public framework!: Framework;
     @Prop({ default: 'default' }) public colorScheme!: ColorScheme;
     @Prop() public externalStackBlitzDependencies!: ExternalStackBlitzDependency[];
     @Prop() public sharedImportKeys!: SharedImportKey[];

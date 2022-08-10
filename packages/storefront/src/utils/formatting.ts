@@ -2,8 +2,7 @@ import { paramCase } from 'change-case';
 import { getComponentMeta, TagName } from '@porsche-design-system/shared';
 import { convertToAngular } from '@/utils/convertToAngular';
 import { convertToReact } from '@/utils/convertToReact';
-import type { Theme } from '@/models';
-import type { FrameworksWithoutShared } from '@/utils';
+import type { Framework, Theme } from '@/models';
 
 export * from './convertToAngular';
 export * from './convertToReact';
@@ -34,7 +33,7 @@ export const escapeHtml = (input: string): string =>
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 
-export const convertMarkup = (markup: string, framework: FrameworksWithoutShared): string => {
+export const convertMarkup = (markup: string, framework: Framework): string => {
   const cleanedMarkup = cleanMarkup(markup);
   switch (framework) {
     case 'angular':
