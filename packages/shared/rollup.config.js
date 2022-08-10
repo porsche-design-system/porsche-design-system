@@ -47,6 +47,15 @@ export default [
     input: 'src/data/index.ts',
     external,
     output: {
+      dir: 'dist/esm/data',
+      format: 'esm',
+    },
+    plugins: [typescript()],
+  },
+  {
+    input: 'src/data/index.ts',
+    external,
+    output: {
       dir: 'dist/data',
       format: 'cjs',
     },
