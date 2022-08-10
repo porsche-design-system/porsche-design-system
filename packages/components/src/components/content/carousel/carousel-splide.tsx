@@ -9,8 +9,8 @@ import { getSplideBreakpoints } from './carousel-utils';
 
 const propTypes: PropTypes<typeof CarouselSplide> = {
   heading: AllowedTypes.string,
-  slidesPerPage: AllowedTypes.number,
-  slidesPerMove: AllowedTypes.number,
+  slidesPerPage: AllowedTypes.breakpoint('number'),
+  slidesPerMove: AllowedTypes.breakpoint('number'),
   disablePagination: AllowedTypes.breakpoint('boolean'),
   i18n: AllowedTypes.shape<CarouselI18n>({
     prev: AllowedTypes.string,

@@ -7,7 +7,7 @@ import { getTagName } from '../tag-name';
 export type ValidatorFunction = (propName: string, propValue: any) => ValidationError;
 type ValidatorFunctionOneOfCreator = <T>(allowedValues: T[] | readonly T[]) => ValidatorFunction;
 type ValidatorFunctionBreakpointCustomizableCreator = <T>(
-  allowedValues: Extract<AllowedTypesKeys, 'boolean'> | T[] | readonly T[]
+  allowedValues: Exclude<AllowedTypeKey, 'string'> | T[] | readonly T[]
 ) => ValidatorFunction;
 type ValidatorFunctionShapeCreator = <T>(allowedValues: {
   [key in keyof T]: ValidatorFunctionOrCreator;
@@ -72,9 +72,9 @@ const breakpointCustomizableTemplate =
   ).replace(/"/g, '');
 
 export const getBreakpointCustomizableStructure = <T>(
-  allowedValues: Extract<AllowedTypesKeys, 'boolean'> | T[] | readonly T[]
+  allowedValues: Exclude<AllowedTypeKey, 'string'> | T[] | readonly T[]
 ): string => {
-  if (allowedValues !== 'boolean') {
+  if (allowedValues !== 'boolean' && allowedValues !== 'number') {
     allowedValues = formatArrayOutput(allowedValues)
       .replace('[', '(') // starting inline type literal array
       .replace(']', ')[]') // ending inline type literal array
@@ -108,16 +108,18 @@ export const getShapeStructure = <T>(shapeStructure: { [key in keyof T]: Validat
 
 export const isBreakpointCustomizableValueInvalid = <T>(
   value: any,
-  allowedValues: Extract<AllowedTypesKeys, 'boolean'> | T[] | readonly T[]
+  allowedValues: Exclude<AllowedTypeKey, 'string'> | T[] | readonly T[]
 ): boolean => {
-  return allowedValues === 'boolean' ? isValueNotOfType(value, allowedValues) : !allowedValues.includes(value as T);
+  return allowedValues === 'boolean' || allowedValues === 'number'
+    ? isValueNotOfType(value, allowedValues)
+    : !allowedValues.includes(value as T);
 };
 
-type AllowedTypesKeys = 'string' | 'number' | 'boolean';
+type AllowedTypeKey = 'string' | 'number' | 'boolean';
 
 // TODO: maybe dissolve object structure and have standalone utils
 export const AllowedTypes: {
-  [key in AllowedTypesKeys]: ValidatorFunction;
+  [key in AllowedTypeKey]: ValidatorFunction;
 } & {
   oneOf: ValidatorFunctionOneOfCreator;
   aria: ValidatorFunctionOneOfCreator;
