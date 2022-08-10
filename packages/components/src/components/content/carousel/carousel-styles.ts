@@ -25,6 +25,39 @@ export const getComponentCss = (
     splide: {
       position: 'relative',
       // visibility: 'hidden',
+      '&__track': {
+        overflow: 'hidden',
+        position: 'relative',
+        zIndex: 0,
+        '&--draggable': {
+          WebkitTouchCallout: 'none',
+          WebkitUserSelect: 'none',
+          // -ms-user-select: 'none',
+          userSelect: 'none',
+        },
+      },
+      '&__list': {
+        WebkitBackfaceVisibility: 'hidden',
+        backfaceVisibility: 'hidden',
+        // display: -ms-flexbox,
+        display: 'flex',
+        height: '100%',
+        margin: 0,
+        padding: 0,
+      },
+      '&__slide': {
+        position: 'relative',
+        boxSizing: 'border-box',
+        // -ms-flex-negative: 0,
+        flexShrink: 0,
+        margin: 0,
+        WebkitBackfaceVisibility: 'hidden',
+        backfaceVisibility: 'hidden',
+      },
+      // '&__slide img' {
+      //     vertical-align: bottom,
+      //   }
+      '&__sr': getScreenReaderOnlyJssStyle(),
     },
     // .splide.is-initialized,
     // .splide.is-rendered {
@@ -33,39 +66,6 @@ export const getComponentCss = (
     // .splide.is-initialized:not(.is-active) .splide__list {
     //     display: block,
     //   }
-    splide__track: {
-      overflow: 'hidden',
-      position: 'relative',
-      zIndex: 0,
-      '&--draggable': {
-        WebkitTouchCallout: 'none',
-        WebkitUserSelect: 'none',
-        // -ms-user-select: 'none',
-        userSelect: 'none',
-      },
-    },
-    splide__list: {
-      WebkitBackfaceVisibility: 'hidden',
-      backfaceVisibility: 'hidden',
-      // display: -ms-flexbox,
-      display: 'flex',
-      height: '100%',
-      margin: 0,
-      padding: 0,
-    },
-    splide__slide: {
-      position: 'relative',
-      boxSizing: 'border-box',
-      // -ms-flex-negative: 0,
-      flexShrink: 0,
-      margin: 0,
-      WebkitBackfaceVisibility: 'hidden',
-      backfaceVisibility: 'hidden',
-    },
-    // .splide__slide img {
-    //     vertical-align: bottom,
-    //   }
-    splide__sr: getScreenReaderOnlyJssStyle(),
     btn: {
       position: 'absolute',
       top: '50%',
