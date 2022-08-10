@@ -145,17 +145,17 @@ exports[`should have no basic DOM regression for p-button-pure 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-carousel 1`] = `
-"<div class=\\"swiper-wrapper\\" id=\\"swiper\\" aria-live=\\"polite\\">
-  <slot>
-  </slot>
-</div>
-<div class=\\"swiper-button-prev swiper-button-disabled swiper-button-lock\\" tabindex=\\"-1\\" role=\\"button\\" aria-label=\\"Previous slide\\" aria-controls=\\"swiper\\" aria-disabled=\\"true\\">
-</div>
-<div class=\\"swiper-button-next swiper-button-disabled swiper-button-lock\\" tabindex=\\"-1\\" role=\\"button\\" aria-label=\\"Next slide\\" aria-controls=\\"swiper\\" aria-disabled=\\"true\\">
-</div>
-<div class=\\"swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal swiper-pagination-lock\\">
-  <span class=\\"swiper-pagination-bullet swiper-pagination-bullet-active\\" tabindex=\\"0\\" role=\\"button\\" aria-label=\\"Go to slide 1\\" aria-current=\\"true\\">
-  </span>
+"<div class=\\"splide splide--slide splide--ltr splide--draggable is-active is-initialized\\" id=\\"splide01\\" role=\\"region\\" aria-roledescription=\\"carousel\\">
+  <div class=\\"splide__track splide__track--slide splide__track--ltr splide__track--draggable\\" id=\\"splide01-track\\" aria-live=\\"polite\\" aria-atomic=\\"true\\" style=\\"padding-left: 0px; padding-right: 0px;\\">
+    <div class=\\"splide__list\\" id=\\"splide01-list\\" role=\\"presentation\\" style=\\"transform: translateX(0px);\\">
+    </div>
+  </div>
+  <p-button-pure class=\\"btn btn--prev hydrated\\" hide-label=\\"true\\">
+    Previous slide</p-button-pure>
+  <p-button-pure class=\\"btn btn--next hydrated\\" hide-label=\\"true\\">
+    Next slide</p-button-pure>
+  <div class=\\"pagination\\">
+  </div>
 </div>"
 `;
 
