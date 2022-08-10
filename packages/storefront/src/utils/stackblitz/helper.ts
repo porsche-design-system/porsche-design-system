@@ -1,11 +1,5 @@
 import * as sharedData from '@porsche-design-system/shared/data';
-import type {
-  ColorScheme,
-  Framework,
-  StackBlitzProjectAndOpenOptions,
-  StackblitzProjectDependencies,
-  Theme,
-} from '@/models';
+import type { ColorScheme, StackBlitzProjectAndOpenOptions, StackblitzProjectDependencies, Theme } from '@/models';
 import { themeDark, themeLight } from '@porsche-design-system/utilities-v2';
 import type { OpenInStackBlitzOpts } from '@/utils/stackblitz/openInStackBlitz';
 
@@ -28,8 +22,8 @@ export const getSharedImportConstants = (sharedImportKeys: SharedImportKey[]): s
   return sharedImportConstants ? `${sharedImportConstants}\n\n` : '';
 };
 
-export const EXTERNAL_STACK_BLITZ_DEPENDENCIES = ['imask'] as const;
-export type ExternalDependency = typeof EXTERNAL_STACK_BLITZ_DEPENDENCIES[number];
+export const EXTERNAL_DEPENDENCIES = ['imask'] as const;
+export type ExternalDependency = typeof EXTERNAL_DEPENDENCIES[number];
 
 export type DependencyMap = { [key in ExternalDependency]: StackblitzProjectDependencies };
 
@@ -52,3 +46,14 @@ export const getBackgroundColor = (theme: Theme, colorScheme: ColorScheme): stri
 };
 
 export type GetStackblitzProjectAndOpenOptions = (opts: StackBlitzFrameworkOpts) => StackBlitzProjectAndOpenOptions;
+
+export const validateExternalDependencies = (externalDependencies: ExternalDependency[]): ExternalDependency[] => {
+  if (externalDependencies.some((x) => !EXTERNAL_DEPENDENCIES.includes(x))) {
+    throw new Error(
+      `Passed 'externalStackBlitzDependencies[]' contains invalid value. Allowed are '${EXTERNAL_DEPENDENCIES.join(
+        ', '
+      )}'.`
+    );
+  }
+  return externalDependencies;
+};
