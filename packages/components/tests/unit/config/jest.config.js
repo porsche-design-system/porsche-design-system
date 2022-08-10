@@ -8,7 +8,6 @@ module.exports = {
   modulePathIgnorePatterns: ['<rootDir>/dist'],
   moduleNameMapper: {
     '^@stencil/core$': '<rootDir>/tests/unit/mocks/stencil-decorator.mocks.ts',
-    '^swiper$': '<rootDir>/../../node_modules/swiper/swiper-bundle.js',
   },
   globals: {
     ROLLUP_REPLACE_IS_STAGING: 'production',

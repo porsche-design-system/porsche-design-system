@@ -46,9 +46,7 @@ it('should return wrapped style in test environment', () => {
   expect(hoverMediaQuery(style)).toEqual(wrappedStyle);
 });
 
-const tagNamesWithJss = TAG_NAMES.filter(
-  (tagName) => tagName !== 'p-carousel' && getComponentMeta(tagName).styling === 'jss'
-);
+const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).styling === 'jss');
 
 it.each<TagName>(tagNamesWithJss)(
   'should wrap ":hover" pseudo selector in "@media (hover: hover)" query for %s',
