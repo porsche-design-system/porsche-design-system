@@ -1,48 +1,34 @@
 import { dependencies } from '../../../../components-angular/package.json';
 import { getExternalDependencies, removeSharedImport, getSharedImportConstants } from '@/utils/stackblitz/helper';
 import { convertMarkup } from '@/utils/formatting';
-import type {
-  StackBlitzDependencyMap,
-  SharedImportKey,
-  GetStackblitzProjectAndOpenOptions,
-  ExternalStackBlitzDependency,
-} from '@/utils';
-import { StackblitzProjectDependencies } from '@/models';
+import type { DependencyMap, SharedImportKey, GetStackblitzProjectAndOpenOptions, ExternalDependency } from '@/utils';
+import type { StackblitzProjectDependencies } from '@/models';
 
 const classNameRegex = /(export class )[A-z]+( {)/;
 
-export const getComponentTsFrameworkMarkup = (markup: string, sharedImportKeys: SharedImportKey[]): string => {
+export const replaceSharedImportsWithConstants = (markup: string, sharedImportKeys: SharedImportKey[]): string => {
   const sharedImportConstants = getSharedImportConstants(sharedImportKeys);
 
-  return `// @ts-nocheck
-${removeSharedImport(
-  markup
-    .replace(/(@Component\({\n\s+selector: ')(?:[A-z]|-)+(',)/, `${sharedImportConstants}$1porsche-design-system-app$2`)
-    .replace(classNameRegex, '$1AppComponent$2')
-)}`;
+  // ts-nocheck is needed for examples that use types from shared
+  return `${!sharedImportKeys ? '// @ts-nocheck\n' : ''}${removeSharedImport(
+    markup
+      .replace(/(@Component\({\n\s{2}selector: ')[a-z-]+/, `${sharedImportConstants}$1porsche-design-system-app`)
+      .replace(classNameRegex, '$1AppComponent$2')
+  )}`;
 };
 
-export const getAppComponentTsDefaultMarkup = (markup: string): string =>
+export const extendMarkupWithAppComponent = (markup: string): string =>
   `import { Component } from '@angular/core';
 
 @Component({
   selector: 'porsche-design-system-app',
   template: \`
-    ${convertMarkup(markup, 'angular')}\`,
+    ${convertMarkup(markup, 'angular').replace(/(\n)/g, '$1    ')}\`,
 })
-export class AppComponent  {}`;
+export class AppComponent {}`;
 
-export const getMainTsMarkup =
-  (): string => `import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { AppModule } from './app/app.module';
-import 'zone.js/dist/zone';
-
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
-  .catch((err) => console.error(err));`;
-
-const externalStackBlitzDependencyModuleImportMap: {
-  [key in ExternalStackBlitzDependency]: { module: string; import: string };
+const externalDependencyModuleImportMap: {
+  [key in ExternalDependency]: { module: string; import: string };
 } = {
   imask: {
     module: 'IMaskModule',
@@ -50,38 +36,36 @@ const externalStackBlitzDependencyModuleImportMap: {
   },
 };
 
-export const getModuleTsMarkup = (externalStackBlitzDependencies: ExternalStackBlitzDependency[]): string => {
-  const imports = externalStackBlitzDependencies
-    .map((dependency) => `\n${externalStackBlitzDependencyModuleImportMap[dependency].import}`)
+export const getAppModuleTsMarkup = (externalDependencies: ExternalDependency[]): string => {
+  const imports = externalDependencies
+    .map((dependency) => externalDependencyModuleImportMap[dependency].import)
     .join('\n');
-  const modules = externalStackBlitzDependencies
-    .map((dependency) => ` ${externalStackBlitzDependencyModuleImportMap[dependency].module},`)
-    .join();
+  const modules = externalDependencies
+    .map((dependency) => externalDependencyModuleImportMap[dependency].module)
+    .join(', ');
 
   return `import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
-import { AppComponent } from './app.component';${imports}
-
+import { AppComponent } from './app.component';
+${imports}
 @NgModule({
-  imports: [BrowserModule, FormsModule,${modules} PorscheDesignSystemModule,],
+  imports: [BrowserModule, FormsModule, ${modules ? modules + ', ' : ''}PorscheDesignSystemModule],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}`;
 };
 
-const dependenciesMap: StackBlitzDependencyMap = {
+const dependenciesMap: DependencyMap = {
   imask: {
     imask: dependencies['angular-imask'],
     'angular-imask': dependencies['angular-imask'],
   },
 };
 
-export const getAngularDependencies = (
-  externalStackBlitzDependencies: ExternalStackBlitzDependency[]
-): StackblitzProjectDependencies => {
+export const getAngularDependencies = (externalDependencies: ExternalDependency[]): StackblitzProjectDependencies => {
   return {
     '@angular/animations': dependencies['@angular/animations'],
     '@angular/common': dependencies['@angular/common'],
@@ -95,31 +79,51 @@ export const getAngularDependencies = (
     tslib: dependencies['tslib'],
     'zone.js': dependencies['zone.js'],
     '@porsche-design-system/components-angular': dependencies['@porsche-design-system/components-angular'],
-    ...getExternalDependencies(externalStackBlitzDependencies, dependenciesMap),
+    ...getExternalDependencies(externalDependencies, dependenciesMap),
   };
 };
 
 export const getAngularProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
-  const { markup, description, title, globalStyles, sharedImportKeys, externalStackBlitzDependencies } = opts;
+  const { markup, description, title, globalStyles, sharedImportKeys, externalDependencies } = opts;
 
   const isFrameworkMarkup = !!markup.match(classNameRegex);
 
+  const mainTsMarkup = `import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app/app.module';
+import 'zone.js/dist/zone';
+
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch((err) => console.error(err));`;
+
+  const indexHtmlMarkup = `<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Porsche Design System - Angular</title>
+
+    <style>
+      ${globalStyles}
+    </style>
+  </head>
+  <body>
+    <porsche-design-system-app></porsche-design-system-app>
+  </body>
+</html>`;
+
   return {
     files: {
-      'src/index.html': `<porsche-design-system-app></porsche-design-system-app>
-${`<style>${globalStyles}</style>`}`,
-      'src/main.ts': getMainTsMarkup(),
-      'src/polyfill.ts': "import 'zone.js/dist/zone';  // Included with Angular CLI.",
-      'src/styles.css': '',
+      'src/index.html': indexHtmlMarkup,
+      'src/main.ts': mainTsMarkup,
       'src/app/app.component.ts': isFrameworkMarkup
-        ? getComponentTsFrameworkMarkup(markup, sharedImportKeys)
-        : getAppComponentTsDefaultMarkup(markup),
-      'src/app/app.module.ts': getModuleTsMarkup(externalStackBlitzDependencies),
+        ? replaceSharedImportsWithConstants(markup, sharedImportKeys)
+        : extendMarkupWithAppComponent(markup),
+      'src/app/app.module.ts': getAppModuleTsMarkup(externalDependencies),
     },
     template: 'angular-cli',
     title,
     description,
-    dependencies: getAngularDependencies(externalStackBlitzDependencies),
+    dependencies: getAngularDependencies(externalDependencies),
     openOptions: {},
   };
 };
