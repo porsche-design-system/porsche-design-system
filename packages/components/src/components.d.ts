@@ -226,11 +226,11 @@ export namespace Components {
         /**
           * Sets the amount of slides that move on a single prev/next click.
          */
-        "slidesPerMove"?: number;
+        "slidesPerMove"?: BreakpointCustomizable<number>;
         /**
           * Sets the amount of slides visible at the same time.
          */
-        "slidesPerPage"?: number;
+        "slidesPerPage"?: BreakpointCustomizable<number>;
         /**
           * Adapts the color when used on dark background.
          */
@@ -1794,11 +1794,11 @@ declare namespace LocalJSX {
         /**
           * Sets the amount of slides that move on a single prev/next click.
          */
-        "slidesPerMove"?: number;
+        "slidesPerMove"?: BreakpointCustomizable<number>;
         /**
           * Sets the amount of slides visible at the same time.
          */
-        "slidesPerPage"?: number;
+        "slidesPerPage"?: BreakpointCustomizable<number>;
         /**
           * Adapts the color when used on dark background.
          */

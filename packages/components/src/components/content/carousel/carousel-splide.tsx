@@ -5,6 +5,7 @@ import { getComponentCss } from './carousel-splide-styles';
 import { Splide } from '@splidejs/splide';
 import { ButtonPure } from '../../action/button-pure/button-pure';
 import type { CarouselChangeEvent, CarouselI18n } from './carousel-utils';
+import { getSplideBreakpoints } from './carousel-utils';
 
 const propTypes: PropTypes<typeof CarouselSplide> = {
   heading: AllowedTypes.string,
@@ -39,10 +40,10 @@ export class CarouselSplide {
   @Prop() public heading?: string;
 
   /** Sets the amount of slides visible at the same time. */
-  @Prop() public slidesPerPage?: number = 1; // TODO: BreakpointCustomizable
+  @Prop() public slidesPerPage?: BreakpointCustomizable<number> = 1;
 
   /** Sets the amount of slides that move on a single prev/next click. */
-  @Prop() public slidesPerMove?: number = 1; // TODO: BreakpointCustomizable
+  @Prop() public slidesPerMove?: BreakpointCustomizable<number> = 1;
 
   /** If true, the carousel will not show pagination bullets at the bottom. */
   @Prop() public disablePagination?: BreakpointCustomizable<boolean> = false;
@@ -73,11 +74,11 @@ export class CarouselSplide {
       arrows: false,
       pagination: false,
       dragMinThreshold: {
-        mouse: 1000, // should be disabled like this
+        mouse: 1000, // should be disabled
         touch: 10,
       },
-      perPage: this.slidesPerPage,
-      perMove: this.slidesPerMove,
+      mediaQuery: 'min',
+      breakpoints: getSplideBreakpoints(this.slidesPerPage, this.slidesPerMove),
       gap: 16,
       i18n: this.i18n,
     });
