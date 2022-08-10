@@ -1,12 +1,14 @@
 import { themeDark, themeLight } from '@porsche-design-system/utilities-v2';
-import type { Theme, ColorScheme } from './../../src/models/index';
+import type { Theme, ColorScheme } from '../../src/models';
 import {
   getExternalDependencies,
   getBackgroundColor,
   getSharedImportConstants,
   removeSharedImport,
-  SharedImportKey,
+  validateExternalDependencies,
+  ExternalDependency,
 } from '../../src/utils/stackblitz/helper';
+import type { SharedImportKey } from '../../src/utils';
 
 describe('removeSharedImport()', () => {
   it('should remove shared import from markup', () => {
@@ -57,5 +59,17 @@ describe('getExternalDependencies()', () => {
     expect(getExternalDependencies(['imask'], dependenciesMap)).toEqual({
       ...dependenciesMap.imask,
     });
+  });
+});
+
+describe('validateExternalDependencies()', () => {
+  it('should throw error if invalid externalDependency is passed', () => {
+    // @ts-ignore
+    expect(() => validateExternalDependencies(['invalid'])).toThrowErrorMatchingSnapshot();
+  });
+
+  it('should return passed externalDependencies[] if values are valid', () => {
+    const externalDependencies: ExternalDependency[] = ['imask'];
+    expect(validateExternalDependencies(externalDependencies)).toBe(externalDependencies);
   });
 });
