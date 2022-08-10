@@ -226,6 +226,15 @@ Object {
     "isThemeable": true,
     "props": Array [
       Object {
+        "heading": null,
+      },
+      Object {
+        "slidesPerPage": "1",
+      },
+      Object {
+        "slidesPerMove": "1",
+      },
+      Object {
         "disablePagination": false,
       },
       Object {
