@@ -72,7 +72,10 @@ export class CarouselSplide {
     this.splide = new Splide(this.container, {
       arrows: false,
       pagination: false,
-      drag: false,
+      dragMinThreshold: {
+        mouse: 1000, // should be disabled like this
+        touch: 10,
+      },
       perPage: this.slidesPerPage,
       perMove: this.slidesPerMove,
       gap: 16,

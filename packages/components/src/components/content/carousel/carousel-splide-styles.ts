@@ -2,60 +2,21 @@ import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../typ
 import { getCss } from '../../../utils';
 import { addImportantToEachRule, getThemedColors } from '../../../styles';
 
-// const swiperCss = `
-// .swiper-css-mode > .swiper-wrapper {
-//   overflow: auto;
-//   scrollbar-width: none;
-//   -ms-overflow-style: none;
-// }
-// .swiper-css-mode > .swiper-wrapper::-webkit-scrollbar {
-//   display: none;
-// }
-// .swiper-css-mode > .swiper-wrapper > .swiper-slide {
-//   scroll-snap-align: start start;
-// }
-// .swiper-horizontal.swiper-css-mode > .swiper-wrapper {
-//   scroll-snap-type: x mandatory;
-// }`;
-
-const splideCss = `@keyframes splide-loading {
-  0% {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(1turn);
-  }
+const splideCss = `
+.splide {
+  position: relative;
+  visibility: hidden;
+}
+.splide__track {
+  overflow: hidden;
+  position: relative;
+  z-index: 0;
 }
 .splide__track--draggable {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-.splide__track--fade > .splide__list {
-  display: block;
-}
-.splide__track--fade > .splide__list > .splide__slide {
-  left: 0;
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  z-index: 0;
-}
-.splide__track--fade > .splide__list > .splide__slide.is-active {
-  opacity: 1;
-  position: relative;
-  z-index: 1;
-}
-.splide--rtl {
-  direction: rtl;
-}
-.splide__track--ttb > .splide__list {
-  display: block;
-}
-.splide__container {
-  box-sizing: border-box;
-  position: relative;
 }
 .splide__list {
   -webkit-backface-visibility: hidden;
@@ -88,13 +49,6 @@ const splideCss = `@keyframes splide-loading {
   margin: 0;
   pointer-events: auto;
 }
-.splide__progress__bar {
-  width: 0;
-}
-.splide {
-  position: relative;
-  visibility: hidden;
-}
 .splide.is-initialized,
 .splide.is-rendered {
   visibility: visible;
@@ -112,22 +66,6 @@ const splideCss = `@keyframes splide-loading {
 .splide__slide img {
   vertical-align: bottom;
 }
-.splide__spinner {
-  animation: splide-loading 1s linear infinite;
-  border: 2px solid #999;
-  border-left-color: transparent;
-  border-radius: 50%;
-  bottom: 0;
-  contain: strict;
-  display: inline-block;
-  height: 20px;
-  left: 0;
-  margin: auto;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 20px;
-}
 .splide__sr {
   clip: rect(0 0 0 0);
   border: 0;
@@ -137,18 +75,6 @@ const splideCss = `@keyframes splide-loading {
   padding: 0;
   position: absolute;
   width: 1px;
-}
-.splide__toggle.is-active .splide__toggle__play,
-.splide__toggle__pause {
-  display: none;
-}
-.splide__toggle.is-active .splide__toggle__pause {
-  display: inline;
-}
-.splide__track {
-  overflow: hidden;
-  position: relative;
-  z-index: 0;
 }`;
 
 export const getComponentCss = (
