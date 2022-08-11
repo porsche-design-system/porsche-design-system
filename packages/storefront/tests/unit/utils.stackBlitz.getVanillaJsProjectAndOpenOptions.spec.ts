@@ -28,10 +28,10 @@ describe('getIndexHtmlMarkup()', () => {
   it('should call extendMarkupWithLoadFunction() and replaceSharedAsyncFunctionWithConstants() with correct parameters', () => {
     const getExtendMarkupWithLoadFunctionSpy = jest
       .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
-      .mockReturnValue(mockedMarkupWithLoadFunction);
+      .mockReturnValueOnce(mockedMarkupWithLoadFunction);
     const replaceSharedAsyncFunctionWithConstantsSpy = jest
       .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
-      .mockReturnValue(mockedMarkup);
+      .mockReturnValueOnce(mockedMarkup);
 
     getIndexHtmlMarkup(mockedMarkup, '', [], sharedImportKeys);
 
@@ -42,10 +42,10 @@ describe('getIndexHtmlMarkup()', () => {
   it('should return correct markup without externalDependencies', () => {
     jest
       .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
-      .mockReturnValue(mockedMarkupWithLoadFunction);
+      .mockReturnValueOnce(mockedMarkupWithLoadFunction);
     jest
       .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
-      .mockReturnValue(mockedMarkup);
+      .mockReturnValueOnce(mockedMarkup);
 
     expect(getIndexHtmlMarkup(mockedMarkup, mockedGlobalStyles, [], sharedImportKeys)).toMatchSnapshot();
   });
@@ -53,10 +53,10 @@ describe('getIndexHtmlMarkup()', () => {
   it('should return correct markup with externalDependencies', () => {
     jest
       .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
-      .mockReturnValue(mockedMarkupWithLoadFunction);
+      .mockReturnValueOnce(mockedMarkupWithLoadFunction);
     jest
       .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
-      .mockReturnValue(mockedMarkup);
+      .mockReturnValueOnce(mockedMarkup);
 
     expect(getIndexHtmlMarkup(mockedMarkup, mockedGlobalStyles, ['imask'], sharedImportKeys)).toMatchSnapshot();
   });
@@ -93,8 +93,8 @@ describe('replaceSharedAsyncFunctionWithConstants()', () => {
     const getSharedImportConstantsMock = 'Some mock value';
     const replaceMockValue = 'Some mock value';
 
-    const spy = jest.spyOn(String.prototype, 'replace').mockReturnValue(replaceMockValue);
-    jest.spyOn(stackBlitzHelperUtils, 'getSharedImportConstants').mockReturnValue(getSharedImportConstantsMock);
+    const spy = jest.spyOn(String.prototype, 'replace').mockReturnValueOnce(replaceMockValue);
+    jest.spyOn(stackBlitzHelperUtils, 'getSharedImportConstants').mockReturnValueOnce(getSharedImportConstantsMock);
 
     expect(replaceSharedAsyncFunctionWithConstants(markup, sharedImportKeys)).toBe(replaceMockValue);
     expect(spy).toBeCalledWith(/const { .* } = await [A-z]+\(\);/, getSharedImportConstantsMock);
@@ -123,7 +123,7 @@ describe('getVanillaJsDependencies()', () => {
 
   it('should return correct StackblitzProjectDependencies with externalDependency', () => {
     const mockedDependency = { mockedImask: '0.0.0' };
-    jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
+    jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValueOnce(mockedDependency);
 
     expect(getVanillaJsDependencies(['imask'])).toEqual({
       '@porsche-design-system/components-js': '0.0.0',
@@ -158,8 +158,10 @@ describe('getVanillaJsProjectAndOpenOptions()', () => {
     const mockedMarkup = 'Some value';
     const mockedDependencies = { mockedDependency: '0.0.0' };
 
-    jest.spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getIndexHtmlMarkup').mockReturnValue(mockedMarkup);
-    jest.spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getVanillaJsDependencies').mockReturnValue(mockedDependencies);
+    jest.spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getIndexHtmlMarkup').mockReturnValueOnce(mockedMarkup);
+    jest
+      .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getVanillaJsDependencies')
+      .mockReturnValueOnce(mockedDependencies);
 
     const result = getVanillaJsProjectAndOpenOptions(stackBlitzFrameworkOpts);
 

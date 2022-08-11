@@ -42,16 +42,27 @@ describe('replaceSharedImportsWithConstants()', () => {
     const mockedReplaceValue = 'Some mocked markup';
 
     const spy = jest.spyOn(stackBlitzHelperUtils, 'removeSharedImport');
-    jest.spyOn(String.prototype, 'replace').mockReturnValue(mockedReplaceValue);
+    jest.spyOn(String.prototype, 'replace').mockReturnValueOnce(mockedReplaceValue);
 
     replaceSharedImportsWithConstants(markup, sharedImportKeys);
 
     expect(spy).toBeCalledWith(mockedReplaceValue);
   });
 
+  it('should call replace() with correct parameters', () => {
+    const mockedGetSharedImportConstants = 'Some mocked markup';
+
+    jest.spyOn(stackBlitzHelperUtils, 'getSharedImportConstants').mockReturnValueOnce(mockedGetSharedImportConstants);
+    const spy = jest.spyOn(String.prototype, 'replace');
+
+    replaceSharedImportsWithConstants(markup, sharedImportKeys);
+
+    expect(spy).toBeCalledWith(componentNameRegex, `${mockedGetSharedImportConstants}$1App$2`);
+  });
+
   it('should return correct markup', () => {
     const mockedRemoveSharedImport = 'Markup with removed import';
-    jest.spyOn(stackBlitzHelperUtils, 'removeSharedImport').mockReturnValue(mockedRemoveSharedImport);
+    jest.spyOn(stackBlitzHelperUtils, 'removeSharedImport').mockReturnValueOnce(mockedRemoveSharedImport);
 
     expect(replaceSharedImportsWithConstants(markup, sharedImportKeys)).toBe(mockedRemoveSharedImport);
   });
@@ -71,7 +82,7 @@ describe('extendMarkupWithAppComponent()', () => {
   it('should return correct app markup', () => {
     const mockedConvertedMarkup =
       '<PButton></PButton>\n<PText></PText>\n<PButton></PButton>\n<p></p>\n<button></button>';
-    jest.spyOn(formattingUtils, 'convertMarkup').mockReturnValue(mockedConvertedMarkup);
+    jest.spyOn(formattingUtils, 'convertMarkup').mockReturnValueOnce(mockedConvertedMarkup);
 
     expect(extendMarkupWithAppComponent(markup)).toMatchSnapshot();
   });
@@ -99,7 +110,7 @@ describe('getReactDependencies()', () => {
 
   it('should return correct StackblitzProjectDependencies with externalDependency', () => {
     const mockedDependency = { mockedImask: '0.0.0' };
-    jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
+    jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValueOnce(mockedDependency);
 
     expect(getReactDependencies(['imask'])).toEqual({
       '@porsche-design-system/components-react': '0.0.0',
@@ -127,7 +138,7 @@ describe('getReactProjectAndOpenOptions()', () => {
       getReactProjectAndOpenOptionsUtils,
       'replaceSharedImportsWithConstants'
     );
-    const matchSpy = jest.spyOn(String.prototype, 'match').mockReturnValue(['Some example markup']);
+    const matchSpy = jest.spyOn(String.prototype, 'match').mockReturnValueOnce(['Some example markup']);
 
     getReactProjectAndOpenOptions(stackBlitzFrameworkOpts);
 
@@ -140,7 +151,7 @@ describe('getReactProjectAndOpenOptions()', () => {
 
   it('should call extendMarkupWithAppComponent() with correct parameters when isExampleMarkup is false', () => {
     const spy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'extendMarkupWithAppComponent');
-    jest.spyOn(String.prototype, 'match').mockReturnValue(null);
+    jest.spyOn(String.prototype, 'match').mockReturnValueOnce(null);
 
     getReactProjectAndOpenOptions(stackBlitzFrameworkOpts);
 
@@ -160,9 +171,9 @@ describe('getReactProjectAndOpenOptions()', () => {
     const mockedMarkup = 'Some mocked markup';
     const mockedJSONString = 'Some String';
 
-    jest.spyOn(getReactProjectAndOpenOptionsUtils, 'extendMarkupWithAppComponent').mockReturnValue(mockedMarkup);
-    jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getReactDependencies').mockReturnValue(mockedDependencies);
-    jest.spyOn(JSON, 'stringify').mockReturnValue(mockedJSONString);
+    jest.spyOn(getReactProjectAndOpenOptionsUtils, 'extendMarkupWithAppComponent').mockReturnValueOnce(mockedMarkup);
+    jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getReactDependencies').mockReturnValueOnce(mockedDependencies);
+    jest.spyOn(JSON, 'stringify').mockReturnValueOnce(mockedJSONString);
 
     expect(getReactProjectAndOpenOptions(stackBlitzFrameworkOpts)).toEqual({
       files: {
