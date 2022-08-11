@@ -4,7 +4,7 @@ import type { BreakpointCustomizable, BreakpointKey } from '../../../types';
 import { mergeDeep, parseJSON } from '../../../utils';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 
-export type CarouselI18n = Options['i18n']; // TODO: pick relevant ones
+export type CarouselI18n = Partial<Pick<Options['i18n'], 'slideLabel' | 'prev' | 'next' | 'first' | 'last'>>;
 export type CarouselChangeEvent = { activeIndex: number; previousIndex: number };
 
 type ResponsiveOpts = Pick<ResponsiveOptions, 'gap' | 'perPage' | 'perMove'>;

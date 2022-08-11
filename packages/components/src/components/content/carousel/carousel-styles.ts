@@ -3,6 +3,8 @@ import { getCss } from '../../../utils';
 import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors, pxToRemWithUnit } from '../../../styles';
 import { headingMedium, mediaQueryMin } from '@porsche-design-system/utilities-v2';
 
+export const bulletActiveClass = 'bullet--active';
+
 const mediaQueryS = mediaQueryMin('s');
 const mediaQueryXxl = mediaQueryMin('xxl');
 
@@ -94,9 +96,9 @@ export const getComponentCss = (_disablePagination: BreakpointCustomizable<boole
     bullet: {
       borderRadius: '4px',
       background: contrastLowColor,
-      '&--active': {
-        background: contrastHighColor,
-      },
+    },
+    [bulletActiveClass]: {
+      background: contrastHighColor,
     },
   });
 };
