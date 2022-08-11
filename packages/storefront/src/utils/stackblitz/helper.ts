@@ -25,11 +25,11 @@ export const getSharedImportConstants = (sharedImportKeys: SharedImportKey[]): s
 export const EXTERNAL_DEPENDENCIES = ['imask'] as const;
 export type ExternalDependency = typeof EXTERNAL_DEPENDENCIES[number];
 
-export type DependencyMap = { [key in ExternalDependency]: StackblitzProjectDependencies };
+export type DependencyMap<T> = { [key in ExternalDependency]: { [K in keyof T]?: T[K] } };
 
-export const getExternalDependencies = (
+export const getExternalDependencies = <T>(
   additionalDependencies: ExternalDependency[],
-  dependenciesMap: DependencyMap
+  dependenciesMap: DependencyMap<T>
 ): StackblitzProjectDependencies =>
   additionalDependencies.reduce(
     (result, current) => ({ ...result, ...dependenciesMap[current] }),
@@ -46,7 +46,7 @@ export const getBackgroundColor = (theme: Theme, colorScheme: ColorScheme): stri
 
 export type GetStackblitzProjectAndOpenOptions = (opts: StackBlitzFrameworkOpts) => StackBlitzProjectAndOpenOptions;
 
-export const validateExternalDependencies = (externalDependencies: ExternalDependency[]): ExternalDependency[] => {
+export const getExternalDependenciesOrThrow = (externalDependencies: ExternalDependency[]): ExternalDependency[] => {
   if (externalDependencies.some((x) => !EXTERNAL_DEPENDENCIES.includes(x))) {
     throw new Error(
       `Passed 'externalStackBlitzDependencies[]' contains invalid value. Allowed are '${EXTERNAL_DEPENDENCIES.join(
