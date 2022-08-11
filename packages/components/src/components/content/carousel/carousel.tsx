@@ -48,6 +48,8 @@ export class Carousel {
   /** If true, the carousel will not show pagination bullets at the bottom. */
   @Prop() public disablePagination?: BreakpointCustomizable<boolean> = false;
 
+  // @Prop() public currentSlide?:number = 1;
+
   /** Override the default wordings that are used for aria-labels on the next/prev buttons and pagination. */
   @Prop() public i18n?: CarouselI18n = {};
 
@@ -120,7 +122,7 @@ export class Carousel {
           {this.heading && <h2>{this.heading}</h2>}
 
           <PrefixedTagNames.pButtonPure
-            class="btn btn--prev"
+            class="btn"
             icon="arrow-head-left"
             hide-label="true"
             ref={(ref) => (this.btnPrev = ref)}
@@ -129,7 +131,7 @@ export class Carousel {
             Previous slide
           </PrefixedTagNames.pButtonPure>
           <PrefixedTagNames.pButtonPure
-            class="btn btn--next"
+            class="btn"
             icon="arrow-head-right"
             hide-label="true"
             ref={(ref) => (this.btnNext = ref)}
@@ -149,12 +151,12 @@ export class Carousel {
               ))}
             </div>
           </div>
+        </div>
 
-          <div class="pagination" ref={(ref) => (this.pagination = ref)}>
-            {this.slides.map(() => (
-              <span class="bullet"></span>
-            ))}
-          </div>
+        <div class="pagination" ref={(ref) => (this.pagination = ref)}>
+          {this.slides.map(() => (
+            <span class="bullet"></span>
+          ))}
         </div>
       </Host>
     );
