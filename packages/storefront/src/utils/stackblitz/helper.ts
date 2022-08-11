@@ -1,7 +1,7 @@
 import * as sharedData from '@porsche-design-system/shared/data';
-import type { ColorScheme, StackBlitzProjectAndOpenOptions, StackblitzProjectDependencies, Theme } from '@/models';
 import { themeDark, themeLight } from '@porsche-design-system/utilities-v2';
-import type { OpenInStackBlitzOpts } from '@/utils/stackblitz/openInStackBlitz';
+import type { ColorScheme, StackBlitzProjectAndOpenOptions, StackblitzProjectDependencies, Theme } from '../../models';
+import type { OpenInStackBlitzOpts } from './openInStackBlitz';
 
 export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | 'theme' | 'backgroundColorScheme'> & {
   title: string;
