@@ -103,10 +103,10 @@ describe('convertMarkup()', () => {
     expect(convertToReactSpy).toBeCalledWith(cleanedMarkup);
   });
 
-  it('should call cleanMarkup() and return correct markup for framework vanilla-js', () => {
+  it('should call cleanMarkup() with correct parameters and return correct markup for framework vanilla-js', () => {
     const cleanMarkupSpy = jest.spyOn(formattingUtils, 'cleanMarkup').mockReturnValue(cleanedMarkup);
 
-    expect(cleanMarkupSpy).toBeCalledWith(markup);
     expect(convertMarkup(markup, 'vanilla-js')).toBe(cleanedMarkup);
+    expect(cleanMarkupSpy).toBeCalledWith(markup);
   });
 });
