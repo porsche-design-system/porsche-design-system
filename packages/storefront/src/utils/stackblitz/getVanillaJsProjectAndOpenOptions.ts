@@ -57,7 +57,7 @@ export const replaceSharedAsyncFunctionWithConstants = (
   return markup.replace(/const { .* } = await [A-z]+\(\);/, getSharedImportConstants(sharedImportKeys));
 };
 
-export const dependencyMap: DependencyMap = {
+export const dependencyMap: DependencyMap<typeof dependencies> = {
   imask: {
     imask: dependencies['imask'],
   },

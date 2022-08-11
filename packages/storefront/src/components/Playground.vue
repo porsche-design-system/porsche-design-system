@@ -41,7 +41,7 @@
           :markup="cleanedEditorMarkup"
           :theme="theme"
           :framework="activeFramework"
-          :external-stack-blitz-dependencies="validateExternalDependencies(this.externalStackBlitzDependencies)"
+          :external-stack-blitz-dependencies="getExternalDependenciesOrThrow(this.externalStackBlitzDependencies)"
           :shared-import-keys="sharedImportKeys"
           :colorScheme="config.colorScheme"
         ></CodeEditor>
@@ -56,7 +56,7 @@
   import { Prop } from 'vue-property-decorator';
   import CodeBlock from '@/components/CodeBlock.vue';
   import CodeEditor from '@/components/CodeEditor.vue';
-  import { cleanMarkup, validateExternalDependencies, patchThemeIntoMarkup } from '@/utils';
+  import { cleanMarkup, getExternalDependenciesOrThrow, patchThemeIntoMarkup } from '@/utils';
   import { componentMeta } from '@porsche-design-system/shared';
   import type { ColorScheme, Framework, FrameworkMarkup, Theme } from '@/models';
   import type { ExternalDependency, SharedImportKey } from '@/utils';
@@ -97,7 +97,7 @@
     @Prop({ default: true }) public showCodeEditor!: boolean;
     @Prop({ default: '' }) public markup!: string;
 
-    validateExternalDependencies = validateExternalDependencies;
+    getExternalDependenciesOrThrow = getExternalDependenciesOrThrow;
 
     public mounted(): void {
       this.syncThemeIntoDemoComponents();

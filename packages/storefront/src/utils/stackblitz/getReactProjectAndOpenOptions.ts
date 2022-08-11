@@ -10,7 +10,7 @@ import type {
 } from '../../utils';
 import type { StackblitzProjectDependencies } from '../../models';
 
-export const componentNameRegex = /(export const )[A-z]+( = \(\): JSX.Element => {)/;
+const componentNameRegex = /(export const )[A-z]+( = \(\): JSX.Element => {)/;
 
 export const replaceSharedImportsWithConstants = (markup: string, sharedImportKeys: SharedImportKey[]): string => {
   const sharedImportConstants = getSharedImportConstants(sharedImportKeys);
@@ -36,7 +36,7 @@ export const App = (): JSX.Fragment => {
 }`;
 };
 
-export const dependencyMap: DependencyMap = {
+export const dependencyMap: DependencyMap<typeof dependencies> = {
   imask: {
     'react-imask': dependencies['react-imask'],
   },

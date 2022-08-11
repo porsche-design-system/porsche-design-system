@@ -9,7 +9,7 @@ import type {
 } from '../../utils';
 import type { StackblitzProjectDependencies } from '../../models';
 
-export const classNameRegex = /(export class )[A-z]+( {)/;
+const classNameRegex = /(export class )[A-z]+( {)/;
 
 export const replaceSharedImportsWithConstants = (markup: string, sharedImportKeys: SharedImportKey[]): string => {
   const sharedImportConstants = getSharedImportConstants(sharedImportKeys);
@@ -63,9 +63,9 @@ ${imports}
 export class AppModule {}`;
 };
 
-export const dependencyMap: DependencyMap = {
+export const dependencyMap: DependencyMap<typeof dependencies> = {
   imask: {
-    imask: dependencies['angular-imask'],
+    imask: dependencies['imask'],
     'angular-imask': dependencies['angular-imask'],
   },
 };
