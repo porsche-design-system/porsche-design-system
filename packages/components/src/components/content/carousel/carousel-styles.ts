@@ -1,27 +1,30 @@
-import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
+import type { BreakpointCustomizable, Theme } from '../../../types';
 import { getCss } from '../../../utils';
-import { getScreenReaderOnlyJssStyle, getThemedColors, pxToRemWithUnit } from '../../../styles';
-import { headingMedium } from '@porsche-design-system/utilities-v2';
+import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors, pxToRemWithUnit } from '../../../styles';
+import { headingMedium, mediaQueryMin } from '@porsche-design-system/utilities-v2';
 
-export const getComponentCss = (
-  _disablePagination: BreakpointCustomizable<boolean>,
-  theme: ThemeExtendedElectric
-): string => {
-  const { brandColor, contrastLowColor } = getThemedColors(theme);
+const mediaQueryS = mediaQueryMin('s');
+const mediaQueryXxl = mediaQueryMin('xxl');
+
+export const getComponentCss = (_disablePagination: BreakpointCustomizable<boolean>, theme: Theme): string => {
+  const { contrastLowColor, contrastHighColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
-      ':host': {
-        display: 'block',
-        padding: '0 0 15px',
-      },
+      ':host': addImportantToEachRule({
+        display: 'grid',
+        width: '100%',
+        gap: pxToRemWithUnit(24),
+        gridAutoFlow: 'row',
+        [mediaQueryS]: {
+          gap: pxToRemWithUnit(40),
+        },
+        [mediaQueryXxl]: {
+          gap: pxToRemWithUnit(62),
+        },
+      }),
       // '::slotted(*)': addImportantToEachRule({
-      // position: 'relative',
-      // width: '100%',
-      // height: '100%',
-      // flexShrink: 0,
-      // transitionProperty: 'transform',
-      // boxSizing: 'border-box',
+      //   boxSizing: 'border-box',
       // }),
       h2: {
         ...headingMedium,
@@ -30,34 +33,25 @@ export const getComponentCss = (
     },
     splide: {
       position: 'relative',
+      minWidth: 0,
       // visibility: 'hidden',
       '&__track': {
-        overflow: 'hidden',
         position: 'relative',
-        zIndex: 0,
+        // overflow: 'hidden',
         '&--draggable': {
-          WebkitTouchCallout: 'none',
-          WebkitUserSelect: 'none',
-          // -ms-user-select: 'none',
           userSelect: 'none',
+          WebkitTouchCallout: 'none',
         },
       },
       '&__list': {
-        WebkitBackfaceVisibility: 'hidden',
-        backfaceVisibility: 'hidden',
-        // display: -ms-flexbox,
         display: 'flex',
         height: '100%',
-        margin: 0,
-        padding: 0,
+        backfaceVisibility: 'hidden',
       },
       '&__slide': {
         position: 'relative',
         boxSizing: 'border-box',
-        // -ms-flex-negative: 0,
         flexShrink: 0,
-        margin: 0,
-        WebkitBackfaceVisibility: 'hidden',
         backfaceVisibility: 'hidden',
       },
       '&__sr': getScreenReaderOnlyJssStyle(),
@@ -70,31 +64,38 @@ export const getComponentCss = (
     //     display: block,
     //   }
     header: {
-      display: 'flex',
-      alignItems: 'flex-end',
-      margin: `0 0 ${pxToRemWithUnit(12)}`,
+      display: 'grid',
+      gridTemplateColumns: 'auto 0 0',
+      [mediaQueryS]: {
+        gridTemplateColumns: 'auto min-content min-content',
+        alignItems: 'end',
+        gap: pxToRemWithUnit(8),
+      },
     },
     btn: {
-      '&--prev': {
-        margin: '0 0 0 auto',
+      visibility: 'hidden',
+      height: 0,
+      [mediaQueryS]: {
+        visibility: 'visible',
+        height: 'auto',
+      },
+      '&:first-of-type': {
+        gridColumn: 2,
       },
     },
     pagination: {
       display: 'grid',
-      gridAutoColumns: '7px',
+      gridAutoColumns: '8px',
       gridAutoFlow: 'column',
-      position: 'absolute',
-      gap: '3px',
-      height: '7px',
-      bottom: '-15px',
-      left: '50%',
-      transform: 'translate3d(-50%,0,0)',
+      justifyContent: 'center',
+      gap: '8px',
+      height: '8px',
     },
     bullet: {
-      borderRadius: '50%',
+      borderRadius: '4px',
       background: contrastLowColor,
       '&--active': {
-        background: brandColor,
+        background: contrastHighColor,
       },
     },
   });

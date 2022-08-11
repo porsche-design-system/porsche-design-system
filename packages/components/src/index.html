@@ -11,6 +11,19 @@
     <script type="module" src="build/porsche-design-system.esm.js"></script>
 
     <style>
+      body {
+        margin: 0;
+      }
+
+      p-carousel {
+        background: teal;
+        margin-top: 20px;
+      }
+
+      main {
+        overflow-x: hidden;
+      }
+
       main div {
         display: flex;
         align-items: center;
@@ -18,10 +31,6 @@
         padding: 10px;
         background: #00b0f4;
         height: 100px;
-      }
-
-      main > * {
-        margin-top: 20px;
       }
     </style>
   </head>
@@ -60,6 +69,38 @@
         <div>slide 5</div>
         <div>slide 6</div>
       </p-carousel>
+
+      <p-content-wrapper>
+        <p-carousel heading="Some Heading">
+          <div>slide 1</div>
+          <div>slide 2</div>
+          <div>slide 3</div>
+          <div>slide 4</div>
+          <div>slide 5</div>
+          <div>slide 6</div>
+        </p-carousel>
+
+        <p-carousel
+          heading="Multiline Heading could be quite long especially on smaller screens but how would the carousel be accessible with out one?"
+          slides-per-page="2"
+        >
+          <div>slide 1</div>
+          <div>slide 2</div>
+          <div>slide 3</div>
+          <div>slide 4</div>
+          <div>slide 5</div>
+          <div>slide 6</div>
+        </p-carousel>
+
+        <p-carousel slides-per-page="{base: 3, s: 1, m: 3}">
+          <div>slide 1</div>
+          <div>slide 2</div>
+          <div>slide 3</div>
+          <div>slide 4</div>
+          <div>slide 5</div>
+          <div>slide 6</div>
+        </p-carousel>
+      </p-content-wrapper>
     </main>
 
     <script>
