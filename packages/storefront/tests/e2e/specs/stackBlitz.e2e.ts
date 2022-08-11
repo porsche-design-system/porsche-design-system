@@ -53,10 +53,12 @@ it.each(<Framework[]>['react', 'vanilla-js', 'angular'])(
     await previewContentWrapper.waitForSelector('iframe');
 
     // Wait for StackBlitz dev-server to be done
-    await stackBlitzPage.waitForFunction(() =>
-      (
-        document.querySelector('#PreviewContentWrapper iframe') as HTMLIFrameElement
-      ).contentWindow.document.querySelector('html .hydrated')
+    await stackBlitzPage.waitForFunction(
+      () =>
+        (
+          document.querySelector('#PreviewContentWrapper iframe') as HTMLIFrameElement
+        ).contentWindow.document.querySelector('html .hydrated'),
+      { timeout: 50000 }
     );
 
     const documentPDS = await stackBlitzPage.evaluate(
