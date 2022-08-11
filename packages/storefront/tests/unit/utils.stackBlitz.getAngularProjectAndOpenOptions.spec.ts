@@ -49,7 +49,7 @@ describe('replaceSharedImportsWithConstants()', () => {
   it('should call removeSharedImport() with correct parameters', () => {
     const mockedReplaceValue = 'Some mocked value';
     const spy = jest.spyOn(stackBlitzHelperUtils, 'removeSharedImport');
-    jest.spyOn(String.prototype, 'replace').mockReturnValueOnce(mockedReplaceValue);
+    jest.spyOn(String.prototype, 'replace').mockReturnValue(mockedReplaceValue);
 
     replaceSharedImportsWithConstants(markup, sharedImportKeys);
 
@@ -58,7 +58,7 @@ describe('replaceSharedImportsWithConstants()', () => {
 
   it('should call replace() with correct parameters', () => {
     const mockedsetSharedImportConstants = 'Some mocked constants';
-    jest.spyOn(stackBlitzHelperUtils, 'getSharedImportConstants').mockReturnValueOnce(mockedsetSharedImportConstants);
+    jest.spyOn(stackBlitzHelperUtils, 'getSharedImportConstants').mockReturnValue(mockedsetSharedImportConstants);
     const spy = jest.spyOn(String.prototype, 'replace');
 
     replaceSharedImportsWithConstants(markup, sharedImportKeys);
@@ -73,14 +73,14 @@ describe('replaceSharedImportsWithConstants()', () => {
 
   it('should return correct string without sharedImportKeys', () => {
     const mockedRemoveSharedImport = 'Markup with removed import';
-    jest.spyOn(stackBlitzHelperUtils, 'removeSharedImport').mockReturnValueOnce(mockedRemoveSharedImport);
+    jest.spyOn(stackBlitzHelperUtils, 'removeSharedImport').mockReturnValue(mockedRemoveSharedImport);
 
     expect(replaceSharedImportsWithConstants(markup, sharedImportKeys)).toBe(mockedRemoveSharedImport);
   });
 
   it('should return correct string with sharedImportKeys', () => {
     const mockedRemoveSharedImport = 'Markup with removed import';
-    jest.spyOn(stackBlitzHelperUtils, 'removeSharedImport').mockReturnValueOnce(mockedRemoveSharedImport);
+    jest.spyOn(stackBlitzHelperUtils, 'removeSharedImport').mockReturnValue(mockedRemoveSharedImport);
 
     expect(replaceSharedImportsWithConstants(markup, ['headBasic'])).toBe(
       `// @ts-nocheck
@@ -110,7 +110,7 @@ describe('extendMarkupWithAppComponent()', () => {
   it('should return correct markup', () => {
     const mockedConvertMarkup = 'Some mocked markup';
 
-    jest.spyOn(formattingUtils, 'convertMarkup').mockReturnValueOnce(mockedConvertMarkup);
+    jest.spyOn(formattingUtils, 'convertMarkup').mockReturnValue(mockedConvertMarkup);
     expect(extendMarkupWithAppComponent('Some Markup')).toMatchSnapshot();
   });
 });
@@ -156,7 +156,7 @@ describe('getAngularDependencies()', () => {
 
   it('should return correctStackblitzProjectDependencies with externalDependency', () => {
     const mockedDependency = { mockedImask: '0.0.0' };
-    jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValueOnce(mockedDependency);
+    jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
 
     expect(getAngularDependencies(['imask'])).toEqual({ ...expectedDefaultDependencies, ...mockedDependency });
   });
@@ -181,7 +181,7 @@ describe('getAngularProjectAndOpenOptions()', () => {
   });
 
   it('should call replaceSharedImportsWithConstants() with correct parameters if isExampleMarkup = true', () => {
-    jest.spyOn(String.prototype, 'match').mockReturnValueOnce(['Some example markup']);
+    jest.spyOn(String.prototype, 'match').mockReturnValue(['Some example markup']);
     const spy = jest.spyOn(getAngularProjectAndOpenOptionsUtils, 'replaceSharedImportsWithConstants');
 
     getAngularProjectAndOpenOptions(stackBlitzFrameworkOpts);
@@ -190,7 +190,7 @@ describe('getAngularProjectAndOpenOptions()', () => {
   });
 
   it('should call extendMarkupWithAppComponent() with correct parameters if isExampleMarkup = false', () => {
-    jest.spyOn(String.prototype, 'match').mockReturnValueOnce(null);
+    jest.spyOn(String.prototype, 'match').mockReturnValue(null);
     const spy = jest.spyOn(getAngularProjectAndOpenOptionsUtils, 'extendMarkupWithAppComponent');
 
     getAngularProjectAndOpenOptions(stackBlitzFrameworkOpts);
@@ -220,16 +220,14 @@ describe('getAngularProjectAndOpenOptions()', () => {
     const mockedExtendMarkupWithAppComponent = 'Some mocked markup';
     const mockedGetAppModuleTsMarkup = 'Some mocked markup';
 
-    jest
-      .spyOn(getAngularProjectAndOpenOptionsUtils, 'getIndexHtmlMarkup')
-      .mockReturnValueOnce(mockedGetIndexHtmlMarkup);
+    jest.spyOn(getAngularProjectAndOpenOptionsUtils, 'getIndexHtmlMarkup').mockReturnValue(mockedGetIndexHtmlMarkup);
     jest
       .spyOn(getAngularProjectAndOpenOptionsUtils, 'extendMarkupWithAppComponent')
-      .mockReturnValueOnce(mockedExtendMarkupWithAppComponent);
+      .mockReturnValue(mockedExtendMarkupWithAppComponent);
     jest
       .spyOn(getAngularProjectAndOpenOptionsUtils, 'getAppModuleTsMarkup')
-      .mockReturnValueOnce(mockedGetAppModuleTsMarkup);
-    jest.spyOn(getAngularProjectAndOpenOptionsUtils, 'getAngularDependencies').mockReturnValueOnce(mockedDependencies);
+      .mockReturnValue(mockedGetAppModuleTsMarkup);
+    jest.spyOn(getAngularProjectAndOpenOptionsUtils, 'getAngularDependencies').mockReturnValue(mockedDependencies);
 
     expect(getAngularProjectAndOpenOptions(stackBlitzFrameworkOpts)).toEqual({
       files: {
