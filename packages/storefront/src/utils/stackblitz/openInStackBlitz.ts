@@ -1,17 +1,15 @@
 import sdk from '@stackblitz/sdk';
-import {
-  getVanillaJsProjectAndOpenOptions,
-  getReactProjectAndOpenOptions,
-  getAngularProjectAndOpenOptions,
-  getBackgroundColor,
-} from './';
+import { getBackgroundColor } from './helper';
+import { getVanillaJsProjectAndOpenOptions } from './getVanillaJsProjectAndOpenOptions';
+import { getAngularProjectAndOpenOptions } from './getAngularProjectAndOpenOptions';
+import { getReactProjectAndOpenOptions } from './getReactProjectAndOpenOptions';
 import type {
   StackBlitzFrameworkOpts,
   GetStackblitzProjectAndOpenOptions,
   SharedImportKey,
   ExternalDependency,
-} from '@/utils';
-import type { Theme, ColorScheme, Framework } from '@/models';
+} from '../../utils';
+import type { Theme, ColorScheme, Framework } from '../../models';
 
 export type OpenInStackBlitzOpts = {
   markup: string;
