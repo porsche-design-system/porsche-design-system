@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`extendMarkupWithAppComponent() should return correct app markup 1`] = `
+"import { PButton, PText } from '@porsche-design-system/components-react';
+
+export const App = (): JSX.Fragment => {
+  return (
+    <>
+      <PButton></PButton>
+      <PText></PText>
+      <PButton></PButton>
+      <p></p>
+      <button></button>
+    </>
+  );
+}"
+`;
