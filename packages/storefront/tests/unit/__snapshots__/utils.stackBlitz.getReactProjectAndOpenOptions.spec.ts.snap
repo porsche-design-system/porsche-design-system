@@ -6,11 +6,16 @@ exports[`extendMarkupWithAppComponent() should return correct app markup 1`] = `
 export const App = (): JSX.Fragment => {
   return (
     <>
-      <PButton></PButton>
-      <PText></PText>
-      <PButton></PButton>
-      <p></p>
-      <button></button>
+      <PButton />
+      <PText>
+        Some Text
+      </PText>
+      <PButton>
+        <p>
+          Some Text
+        </p>
+      </PButton>
+      <button />
     </>
   );
 }"

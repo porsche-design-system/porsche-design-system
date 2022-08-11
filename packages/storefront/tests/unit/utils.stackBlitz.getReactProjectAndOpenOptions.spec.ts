@@ -1,5 +1,4 @@
 import {
-  componentNameRegex,
   extendMarkupWithAppComponent,
   getReactDependencies,
   getReactProjectAndOpenOptions,
@@ -57,10 +56,13 @@ describe('replaceSharedImportsWithConstants()', () => {
 
     replaceSharedImportsWithConstants(markup, sharedImportKeys);
 
-    expect(spy).toBeCalledWith(componentNameRegex, `${mockedGetSharedImportConstants}$1App$2`);
+    expect(spy).toBeCalledWith(
+      /(export const )[A-z]+( = \(\): JSX.Element => {)/,
+      `${mockedGetSharedImportConstants}$1App$2`
+    );
   });
 
-  it('should return correct markup', () => {
+  it('should return result of removeSharedImport()', () => {
     const mockedRemoveSharedImport = 'Markup with removed import';
     jest.spyOn(stackBlitzHelperUtils, 'removeSharedImport').mockReturnValue(mockedRemoveSharedImport);
 
@@ -80,8 +82,16 @@ describe('extendMarkupWithAppComponent()', () => {
   });
 
   it('should return correct app markup', () => {
-    const mockedConvertedMarkup =
-      '<PButton></PButton>\n<PText></PText>\n<PButton></PButton>\n<p></p>\n<button></button>';
+    const mockedConvertedMarkup = `<PButton />
+<PText>
+  Some Text
+</PText>
+<PButton>
+  <p>
+    Some Text
+  </p>
+</PButton>
+<button />`;
     jest.spyOn(formattingUtils, 'convertMarkup').mockReturnValue(mockedConvertedMarkup);
 
     expect(extendMarkupWithAppComponent(markup)).toMatchSnapshot();
@@ -142,7 +152,7 @@ describe('getReactProjectAndOpenOptions()', () => {
 
     getReactProjectAndOpenOptions(stackBlitzFrameworkOpts);
 
-    expect(matchSpy).toBeCalledWith(componentNameRegex);
+    expect(matchSpy).toBeCalledWith(/(export const )[A-z]+( = \(\): JSX.Element => {)/);
     expect(replaceSharedImportsWithConstantsSpy).toBeCalledWith(
       stackBlitzFrameworkOpts.markup,
       stackBlitzFrameworkOpts.sharedImportKeys
