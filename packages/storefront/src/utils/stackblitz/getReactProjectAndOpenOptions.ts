@@ -6,7 +6,7 @@ import { convertMarkup } from '@/utils/formatting';
 import type { DependencyMap, GetStackblitzProjectAndOpenOptions, SharedImportKey, ExternalDependency } from '@/utils';
 import type { StackblitzProjectDependencies } from '@/models';
 
-const componentNameRegex = /(export const )[A-z]+( = \(\): JSX.Element => {)/;
+export const componentNameRegex = /(export const )[A-z]+( = \(\): JSX.Element => {)/;
 
 export const replaceSharedImportsWithConstants = (markup: string, sharedImportKeys: SharedImportKey[]): string => {
   const sharedImportConstants = getSharedImportConstants(sharedImportKeys);
@@ -32,23 +32,6 @@ export const App = (): JSX.Fragment => {
 }`;
 };
 
-export const getIndexTsxMarkup = (): string => `import { StrictMode } from 'react';
-import * as ReactDOMClient from 'react-dom/client';
-import { App } from './App';
-import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
-import './style.css';
-
-const rootElement = document.getElementById('root');
-const root = ReactDOMClient.createRoot(rootElement);
-
-root.render(
-  <StrictMode>
-    <PorscheDesignSystemProvider>
-      <App />
-    </PorscheDesignSystemProvider>
-  </StrictMode>
-);`;
-
 const dependenciesMap: DependencyMap = {
   imask: {
     'react-imask': dependencies['react-imask'],
@@ -67,6 +50,23 @@ export const getReactDependencies = (externalDependencies: ExternalDependency[])
   };
 };
 
+export const indexTsMarkup = `import { StrictMode } from 'react';
+import * as ReactDOMClient from 'react-dom/client';
+import { App } from './App';
+import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
+import './style.css';
+
+const rootElement = document.getElementById('root');
+const root = ReactDOMClient.createRoot(rootElement);
+
+root.render(
+  <StrictMode>
+    <PorscheDesignSystemProvider>
+      <App />
+    </PorscheDesignSystemProvider>
+  </StrictMode>
+);`;
+
 export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
   const { markup, description, title, globalStyles, sharedImportKeys, externalDependencies } = opts;
 
@@ -77,8 +77,8 @@ export const getReactProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions =
       'App.tsx': isExampleMarkup
         ? replaceSharedImportsWithConstants(markup, sharedImportKeys)
         : extendMarkupWithAppComponent(markup),
-      'index.html': `<div id="root"></div>`,
-      'index.tsx': getIndexTsxMarkup(),
+      'index.html': '<div id="root"></div>',
+      'index.tsx': indexTsMarkup,
       'tsconfig.json': JSON.stringify(tsconfig, null, 2),
       'style.css': globalStyles,
     },
