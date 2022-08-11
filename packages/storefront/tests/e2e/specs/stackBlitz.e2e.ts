@@ -50,15 +50,20 @@ it.each(<Framework[]>['react', 'vanilla-js', 'angular'])(
 
     await stackBlitzPage.waitForSelector('#PreviewContentWrapper');
     const previewContentWrapper = await stackBlitzPage.$('#PreviewContentWrapper');
-
     await previewContentWrapper.waitForSelector('iframe');
-    const iframe = await previewContentWrapper.$('iframe');
-    const iframeSource = await iframe.evaluate((iframe) => iframe.src);
 
-    // go to iframeSource link to avoid cross origin restrictions
-    await page.goto(iframeSource, { waitUntil: 'networkidle0' });
+    // Wait for StackBlitz dev-server to be done
+    await stackBlitzPage.waitForFunction(() =>
+      (
+        document.querySelector('#PreviewContentWrapper iframe') as HTMLIFrameElement
+      ).contentWindow.document.querySelector('html .hydrated')
+    );
 
-    const documentPDS = await page.evaluate(() => (document as any).porscheDesignSystem);
+    const documentPDS = await stackBlitzPage.evaluate(
+      () =>
+        ((document.querySelector('#PreviewContentWrapper iframe') as HTMLIFrameElement).contentWindow.document as any)
+          .porscheDesignSystem
+    );
 
     expect(documentPDS).toBeDefined();
     await stackBlitzPage.close();
