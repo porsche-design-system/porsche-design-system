@@ -2,6 +2,8 @@
 
 The `p-carousel` is...
 
+<p-link href="patterns/apps/example/carousel">Go to pattern</p-link>
+
 <TableOfContents></TableOfContents>
 
 ## Basic
