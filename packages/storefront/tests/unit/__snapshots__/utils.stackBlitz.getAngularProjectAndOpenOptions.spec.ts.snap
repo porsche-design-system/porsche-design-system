@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`extendMarkupWithAppComponent() should return correct markup 1`] = `
+"import { Component } from '@angular/core';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: \`
+    Some mocked markup\`,
+})
+export class AppComponent {}"
+`;
+
+exports[`getAppModuleTsMarkup() should return correct markup for [] as externalDependencies 1`] = `
+"import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  imports: [BrowserModule, FormsModule, PorscheDesignSystemModule],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}"
+`;
+
+exports[`getAppModuleTsMarkup() should return correct markup with externalDependencies 1`] = `
+"import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { AppComponent } from './app.component';
+import { IMaskModule } from 'angular-imask';
+@NgModule({
+  imports: [BrowserModule, FormsModule, IMaskModule, PorscheDesignSystemModule],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}"
+`;
