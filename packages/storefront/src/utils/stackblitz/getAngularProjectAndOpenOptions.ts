@@ -15,7 +15,7 @@ export const replaceSharedImportsWithConstants = (markup: string, sharedImportKe
   const sharedImportConstants = getSharedImportConstants(sharedImportKeys);
 
   // ts-nocheck is needed for examples that use types from shared
-  return `${!!sharedImportKeys.length ? '// @ts-nocheck\n' : ''}${removeSharedImport(
+  return `${sharedImportKeys.length ? '// @ts-nocheck\n' : ''}${removeSharedImport(
     markup
       .replace(/(@Component\({\n\s{2}selector: ')[a-z-]+/, `${sharedImportConstants}$1porsche-design-system-app`)
       .replace(classNameRegex, '$1AppComponent$2')
