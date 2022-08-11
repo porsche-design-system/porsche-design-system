@@ -3,7 +3,6 @@ import { AllowedTypes, attachComponentCss, getPrefixedTagNames, THEMES, validate
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import { getComponentCss } from './carousel-styles';
 import { Splide } from '@splidejs/splide';
-import { ButtonPure } from '../../action/button-pure/button-pure';
 import type { CarouselChangeEvent, CarouselI18n } from './carousel-utils';
 import { getSplideBreakpoints } from './carousel-utils';
 
@@ -61,8 +60,6 @@ export class Carousel {
 
   private splide: Splide;
   private container: HTMLElement;
-  private btnPrev: ButtonPure;
-  private btnNext: ButtonPure;
   private pagination: HTMLElement;
   private slides: HTMLElement[];
 
@@ -73,10 +70,11 @@ export class Carousel {
 
   public componentDidLoad(): void {
     this.splide = new Splide(this.container, {
+      start: 0,
       arrows: false,
       pagination: false,
       dragMinThreshold: {
-        mouse: 1000, // should be disabled
+        mouse: 1000, // shoulw be enough to disable mouse dragging
         touch: 10,
       },
       mediaQuery: 'min',
@@ -86,18 +84,11 @@ export class Carousel {
     });
 
     this.splide.on('mounted', () => {
-      const { start = 0 } = this.splide.options;
-      this.btnPrev.disabled = start === 0;
-      this.btnNext.disabled = start === this.slides.length - 1;
-
       // TODO: calculation of amount of bullets
-      this.pagination.children[start].classList.add('bullet--active');
+      this.pagination.children[this.splide.options.start].classList.add('bullet--active');
     });
 
     this.splide.on('move', (newIndex, prevIndex): void => {
-      this.btnPrev.disabled = newIndex === 0;
-      this.btnNext.disabled = newIndex === this.slides.length - 1;
-
       const { children } = this.pagination;
       children[prevIndex].classList.remove('bullet--active');
       children[newIndex].classList.add('bullet--active');
@@ -116,27 +107,17 @@ export class Carousel {
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
+    const btnProps = { class: 'btn', hideLabel: true };
+
     return (
       <Host>
         <div class="header">
           {this.heading && <h2>{this.heading}</h2>}
 
-          <PrefixedTagNames.pButtonPure
-            class="btn"
-            icon="arrow-head-left"
-            hide-label="true"
-            ref={(ref) => (this.btnPrev = ref)}
-            onClick={() => this.splide.go('<')}
-          >
+          <PrefixedTagNames.pButtonPure {...btnProps} icon="arrow-head-left" onClick={this.onPrevClick}>
             Previous slide
           </PrefixedTagNames.pButtonPure>
-          <PrefixedTagNames.pButtonPure
-            class="btn"
-            icon="arrow-head-right"
-            hide-label="true"
-            ref={(ref) => (this.btnNext = ref)}
-            onClick={() => this.splide.go('>')}
-          >
+          <PrefixedTagNames.pButtonPure {...btnProps} icon="arrow-head-right" onClick={this.onNextClick}>
             Next slide
           </PrefixedTagNames.pButtonPure>
         </div>
@@ -155,10 +136,18 @@ export class Carousel {
 
         <div class="pagination" ref={(ref) => (this.pagination = ref)}>
           {this.slides.map(() => (
-            <span class="bullet"></span>
+            <span class="bullet" />
           ))}
         </div>
       </Host>
     );
   }
+
+  private onPrevClick = (): void => {
+    this.splide.go(this.splide.index === 0 ? this.slides.length - 1 : '<');
+  };
+
+  private onNextClick = (): void => {
+    this.splide.go(this.splide.index === this.slides.length - 1 ? 0 : '>');
+  };
 }
