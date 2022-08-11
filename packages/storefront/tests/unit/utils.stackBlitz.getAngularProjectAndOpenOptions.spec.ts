@@ -7,7 +7,6 @@ import {
   mainTsMarkup,
   dependencyMap,
   replaceSharedImportsWithConstants,
-  classNameRegex,
 } from '../../src/utils/stackblitz/getAngularProjectAndOpenOptions';
 import type { ExternalDependency, SharedImportKey, StackBlitzFrameworkOpts } from '../../src/utils';
 
@@ -68,7 +67,7 @@ describe('replaceSharedImportsWithConstants()', () => {
       /(@Component\({\n\s{2}selector: ')[a-z-]+/,
       `${mockedsetSharedImportConstants}$1porsche-design-system-app`
     );
-    expect(spy).toHaveBeenNthCalledWith(2, classNameRegex, '$1AppComponent$2');
+    expect(spy).toHaveBeenNthCalledWith(2, /(export class )[A-z]+( {)/, '$1AppComponent$2');
   });
 
   it('should return correct string without sharedImportKeys', () => {
@@ -181,12 +180,19 @@ describe('getAngularProjectAndOpenOptions()', () => {
   });
 
   it('should call replaceSharedImportsWithConstants() with correct parameters if isExampleMarkup = true', () => {
-    jest.spyOn(String.prototype, 'match').mockReturnValue(['Some example markup']);
-    const spy = jest.spyOn(getAngularProjectAndOpenOptionsUtils, 'replaceSharedImportsWithConstants');
+    const matchSpy = jest.spyOn(String.prototype, 'match').mockReturnValue(['Some example markup']);
+    const replaceSharedImportsWithConstantsSpy = jest.spyOn(
+      getAngularProjectAndOpenOptionsUtils,
+      'replaceSharedImportsWithConstants'
+    );
 
     getAngularProjectAndOpenOptions(stackBlitzFrameworkOpts);
 
-    expect(spy).toBeCalledWith(stackBlitzFrameworkOpts.markup, stackBlitzFrameworkOpts.sharedImportKeys);
+    expect(matchSpy).toBeCalledWith(/(export class )[A-z]+( {)/);
+    expect(replaceSharedImportsWithConstantsSpy).toBeCalledWith(
+      stackBlitzFrameworkOpts.markup,
+      stackBlitzFrameworkOpts.sharedImportKeys
+    );
   });
 
   it('should call extendMarkupWithAppComponent() with correct parameters if isExampleMarkup = false', () => {

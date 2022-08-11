@@ -5,9 +5,9 @@ import {
   getBackgroundColor,
   getSharedImportConstants,
   removeSharedImport,
-  validateExternalDependencies,
+  getExternalDependenciesOrThrow,
 } from '../../src/utils/stackblitz/helper';
-import type { SharedImportKey, ExternalDependency } from '../../src/utils';
+import type { ExternalDependency } from '../../src/utils';
 
 jest.mock('@porsche-design-system/shared/data', () => ({
   headBasic: 'mockedHeadBasic',
@@ -18,12 +18,18 @@ describe('removeSharedImport()', () => {
   const markup = 'Some markup';
 
   it('should call replace() with correct parameters', () => {
-    const replaceMockValue = 'Some mock value';
-    const spy = jest.spyOn(String.prototype, 'replace').mockReturnValue(replaceMockValue);
+    const spy = jest.spyOn(String.prototype, 'replace');
 
     removeSharedImport(markup);
 
     expect(spy).toBeCalledWith(/import { .+ } from '@porsche-design-system\/shared';/, '');
+  });
+
+  it('should return result of replace()', () => {
+    const replaceMockValue = 'Some mock value';
+    jest.spyOn(String.prototype, 'replace').mockReturnValue(replaceMockValue);
+
+    expect(removeSharedImport(markup)).toBe(replaceMockValue);
   });
 
   it('should return unmodified markup parameter if regex does not match', () => {
@@ -36,19 +42,26 @@ describe('getSharedImportConstants()', () => {
     expect(getSharedImportConstants([])).toBe('');
   });
 
-  // TODO: which approach is better?
   it('should return constants and value for', () => {
     const expected = 'const headBasic = "mockedHeadBasic";\n\nconst dataBasic = "mockedDataBasic";\n\n';
 
     expect(getSharedImportConstants(['headBasic', 'dataBasic'])).toBe(expected);
   });
+});
 
-  it.each<SharedImportKey[][]>([
-    [['headBasic', 'dataBasic']],
-    [['headAdvanced', 'dataAdvanced']],
-    [['headSorting', 'dataSorting']],
-  ])('should for %o return correct const name and value', (sharedImportKeys) => {
-    expect(getSharedImportConstants(sharedImportKeys)).toMatchSnapshot();
+describe('getExternalDependencies()', () => {
+  const dependenciesMap = {
+    imask: {
+      imask: '0.0.0',
+      'imask-react': '0.0.0',
+    },
+    externalDep: {
+      temp: '0.0.0',
+    },
+  };
+
+  it('should return correct ExternalDependency[]', () => {
+    expect(getExternalDependencies(['imask'], dependenciesMap)).toEqual(dependenciesMap.imask);
   });
 });
 
@@ -63,29 +76,14 @@ describe('getBackgroundColor()', () => {
   });
 });
 
-describe('getExternalDependencies()', () => {
-  const dependenciesMap = {
-    imask: {
-      imask: '0.0.0',
-      'imask-react': '0.0.0',
-    },
-  };
-
-  it('should return correct ExternalDependency[]', () => {
-    expect(getExternalDependencies(['imask'], dependenciesMap)).toEqual({
-      ...dependenciesMap.imask,
-    });
-  });
-});
-
 describe('validateExternalDependencies()', () => {
   it('should throw error if invalid externalDependency is passed', () => {
-    // @ts-ignore
-    expect(() => validateExternalDependencies(['invalid'])).toThrowErrorMatchingSnapshot();
+    expect(() => getExternalDependenciesOrThrow(['invalid'] as any)).toThrowErrorMatchingSnapshot();
+    expect(() => getExternalDependenciesOrThrow(['imask', 'something-else'] as any)).toThrowError();
   });
 
   it('should return passed externalDependencies[] if values are valid', () => {
     const externalDependencies: ExternalDependency[] = ['imask'];
-    expect(validateExternalDependencies(externalDependencies)).toBe(externalDependencies);
+    expect(getExternalDependenciesOrThrow(externalDependencies)).toBe(externalDependencies);
   });
 });
