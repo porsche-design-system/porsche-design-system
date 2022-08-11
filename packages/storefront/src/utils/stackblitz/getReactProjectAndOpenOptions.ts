@@ -1,10 +1,14 @@
 import { devDependencies, dependencies } from '../../../../components-react/package.json';
 import { default as tsconfig } from '../../../../components-react/tsconfig.json';
-import { getExternalDependencies, removeSharedImport } from '@/utils';
-import { getSharedImportConstants } from './helper';
-import { convertMarkup } from '@/utils/formatting';
-import type { DependencyMap, GetStackblitzProjectAndOpenOptions, SharedImportKey, ExternalDependency } from '@/utils';
-import type { StackblitzProjectDependencies } from '@/models';
+import { getSharedImportConstants, getExternalDependencies, removeSharedImport } from './helper';
+import { convertMarkup } from '../../utils/formatting';
+import type {
+  DependencyMap,
+  GetStackblitzProjectAndOpenOptions,
+  SharedImportKey,
+  ExternalDependency,
+} from '../../utils';
+import type { StackblitzProjectDependencies } from '../../models';
 
 export const componentNameRegex = /(export const )[A-z]+( = \(\): JSX.Element => {)/;
 
@@ -32,7 +36,7 @@ export const App = (): JSX.Fragment => {
 }`;
 };
 
-const dependenciesMap: DependencyMap = {
+export const dependencyMap: DependencyMap = {
   imask: {
     'react-imask': dependencies['react-imask'],
   },
@@ -46,7 +50,7 @@ export const getReactDependencies = (externalDependencies: ExternalDependency[])
     'react-dom': dependencies['react-dom'],
     '@types/react': devDependencies['@types/react'],
     '@types/react-dom': devDependencies['@types/react-dom'],
-    ...getExternalDependencies(externalDependencies, dependenciesMap),
+    ...getExternalDependencies(externalDependencies, dependencyMap),
   };
 };
 

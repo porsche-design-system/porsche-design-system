@@ -1,6 +1,6 @@
 import { dependencies } from '../../../../components-js/package.json';
 import { getExternalDependencies, getSharedImportConstants } from './helper';
-import type { StackblitzProjectDependencies } from '@/models';
+import type { StackblitzProjectDependencies } from '../../models';
 import type { DependencyMap, SharedImportKey, ExternalDependency, GetStackblitzProjectAndOpenOptions } from './helper';
 
 const externalDependencyToSrcMap: { [key in ExternalDependency]: string } = {
