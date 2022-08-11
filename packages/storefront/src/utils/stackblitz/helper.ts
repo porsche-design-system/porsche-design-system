@@ -27,7 +27,6 @@ export type ExternalDependency = typeof EXTERNAL_DEPENDENCIES[number];
 
 export type DependencyMap = { [key in ExternalDependency]: StackblitzProjectDependencies };
 
-// TODO: validate if typing works from md files, otherwise validate
 export const getExternalDependencies = (
   additionalDependencies: ExternalDependency[],
   dependenciesMap: DependencyMap
