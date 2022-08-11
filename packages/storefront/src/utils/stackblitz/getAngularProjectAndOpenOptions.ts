@@ -1,16 +1,21 @@
 import { dependencies } from '../../../../components-angular/package.json';
-import { getExternalDependencies, removeSharedImport, getSharedImportConstants } from '@/utils/stackblitz/helper';
-import { convertMarkup } from '@/utils/formatting';
-import type { DependencyMap, SharedImportKey, GetStackblitzProjectAndOpenOptions, ExternalDependency } from '@/utils';
-import type { StackblitzProjectDependencies } from '@/models';
+import { getExternalDependencies, removeSharedImport, getSharedImportConstants } from './helper';
+import { convertMarkup } from '../../utils/formatting';
+import type {
+  DependencyMap,
+  SharedImportKey,
+  GetStackblitzProjectAndOpenOptions,
+  ExternalDependency,
+} from '../../utils';
+import type { StackblitzProjectDependencies } from '../../models';
 
-const classNameRegex = /(export class )[A-z]+( {)/;
+export const classNameRegex = /(export class )[A-z]+( {)/;
 
 export const replaceSharedImportsWithConstants = (markup: string, sharedImportKeys: SharedImportKey[]): string => {
   const sharedImportConstants = getSharedImportConstants(sharedImportKeys);
 
   // ts-nocheck is needed for examples that use types from shared
-  return `${!sharedImportKeys ? '// @ts-nocheck\n' : ''}${removeSharedImport(
+  return `${!!sharedImportKeys.length ? '// @ts-nocheck\n' : ''}${removeSharedImport(
     markup
       .replace(/(@Component\({\n\s{2}selector: ')[a-z-]+/, `${sharedImportConstants}$1porsche-design-system-app`)
       .replace(classNameRegex, '$1AppComponent$2')
@@ -58,7 +63,7 @@ ${imports}
 export class AppModule {}`;
 };
 
-const dependenciesMap: DependencyMap = {
+export const dependencyMap: DependencyMap = {
   imask: {
     imask: dependencies['angular-imask'],
     'angular-imask': dependencies['angular-imask'],
@@ -79,16 +84,11 @@ export const getAngularDependencies = (externalDependencies: ExternalDependency[
     tslib: dependencies['tslib'],
     'zone.js': dependencies['zone.js'],
     '@porsche-design-system/components-angular': dependencies['@porsche-design-system/components-angular'],
-    ...getExternalDependencies(externalDependencies, dependenciesMap),
+    ...getExternalDependencies(externalDependencies, dependencyMap),
   };
 };
 
-export const getAngularProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
-  const { markup, description, title, globalStyles, sharedImportKeys, externalDependencies } = opts;
-
-  const isFrameworkMarkup = !!markup.match(classNameRegex);
-
-  const mainTsMarkup = `import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+export const mainTsMarkup = `import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import 'zone.js/dist/zone';
 
@@ -96,7 +96,7 @@ platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .catch((err) => console.error(err));`;
 
-  const indexHtmlMarkup = `<!DOCTYPE html>
+export const getIndexHtmlMarkup = (globalStyles: string): string => `<!DOCTYPE html>
 <html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
@@ -111,11 +111,16 @@ platformBrowserDynamic()
   </body>
 </html>`;
 
+export const getAngularProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions = (opts) => {
+  const { markup, description, title, globalStyles, sharedImportKeys, externalDependencies } = opts;
+
+  const isExampleMarkup = !!markup.match(classNameRegex);
+
   return {
     files: {
-      'src/index.html': indexHtmlMarkup,
+      'src/index.html': getIndexHtmlMarkup(globalStyles),
       'src/main.ts': mainTsMarkup,
-      'src/app/app.component.ts': isFrameworkMarkup
+      'src/app/app.component.ts': isExampleMarkup
         ? replaceSharedImportsWithConstants(markup, sharedImportKeys)
         : extendMarkupWithAppComponent(markup),
       'src/app/app.module.ts': getAppModuleTsMarkup(externalDependencies),
