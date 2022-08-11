@@ -2,7 +2,7 @@ import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil
 import { AllowedTypes, attachComponentCss, getPrefixedTagNames, THEMES, validateProps } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import { bulletActiveClass, getComponentCss } from './carousel-styles';
-import { Splide, Options as SplideOptions } from '@splidejs/splide';
+import { Splide } from '@splidejs/splide';
 import type { CarouselChangeEvent, CarouselI18n } from './carousel-utils';
 import { getSplideBreakpoints } from './carousel-utils';
 import { ButtonPure } from '../../action/button-pure/button-pure';
