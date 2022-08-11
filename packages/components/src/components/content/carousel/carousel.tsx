@@ -59,6 +59,14 @@ export class Carousel {
   private pagination: HTMLElement;
   private slides: HTMLElement[];
 
+  private get isFirstSlide(): boolean {
+    return this.splide.index === 0;
+  }
+
+  private get isLastSlide(): boolean {
+    return this.splide.index === this.slides.length - 1;
+  }
+
   public componentWillLoad(): void {
     this.slides = Array.from(this.host.children) as HTMLElement[];
     this.slides.forEach((el, i) => el.setAttribute('slot', `slide-${i}`));
@@ -150,14 +158,6 @@ export class Carousel {
     );
   }
 
-  private get isFirstSlide(): boolean {
-    return this.splide.index === 0;
-  }
-
-  private get isLastSlide(): boolean {
-    return this.splide.index === this.slides.length - 1;
-  }
-
   private onPrevClick = (): void => {
     this.splide.go(this.isFirstSlide ? this.slides.length - 1 : '<');
   };
@@ -172,7 +172,7 @@ export class Carousel {
     this.btnNext.aria = { 'aria-label': i18n[this.isLastSlide ? 'first' : 'next'] };
   };
 
-  private updatePagination = (newIndex: number, prevIndex: number = 0): void => {
+  private updatePagination = (newIndex: number, prevIndex = 0): void => {
     // TODO: calculation of amount of bullets
     const { children } = this.pagination;
     children[prevIndex].classList.remove(bulletActiveClass);
