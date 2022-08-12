@@ -5,7 +5,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'page-stepper-horizontal',
   styles: [
     `
-      .reset-children > *,
       .reset-children > :before {
         width: 2rem;
         height: 2rem;
@@ -123,7 +122,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render correct styles when overrides are set">
-      <p-stepper-horizontal>
+      <p-stepper-horizontal class="reset-children">
         <p-stepper-horizontal-item [state]="'complete'">Step 1</p-stepper-horizontal-item>
         <p-stepper-horizontal-item [state]="'warning'">Step 2</p-stepper-horizontal-item>
         <p-stepper-horizontal-item [state]="'current'">Step 3</p-stepper-horizontal-item>

@@ -3,7 +3,6 @@ import { PStepperHorizontal, PStepperHorizontalItem } from '@porsche-design-syst
 
 export const StepperHorizontalPage = (): JSX.Element => {
   const style = `
-    .reset-children > *,
     .reset-children > :before {
       width: 2rem;
       height: 2rem;
@@ -124,7 +123,7 @@ export const StepperHorizontalPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render correct styles when overrides are set">
-        <PStepperHorizontal>
+        <PStepperHorizontal className="reset-children">
           <PStepperHorizontalItem state="complete">Step 1</PStepperHorizontalItem>
           <PStepperHorizontalItem state="warning">Step 2</PStepperHorizontalItem>
           <PStepperHorizontalItem state="current">Step 3</PStepperHorizontalItem>
