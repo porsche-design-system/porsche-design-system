@@ -44,6 +44,7 @@ export default [
     plugins: [typescript()],
   },
   {
+    // is needed for deep import of shared/data
     input: 'src/data/index.ts',
     external,
     output: {
@@ -53,6 +54,7 @@ export default [
     plugins: [typescript()],
   },
   {
+    // additional cjs bundle is needed for jest unit tests
     input: 'src/data/index.ts',
     external,
     output: {
