@@ -23,12 +23,14 @@ export const replaceSharedImportsWithConstants = (markup: string, sharedImportKe
 };
 
 export const extendMarkupWithAppComponent = (markup: string): string =>
-  `import { Component } from '@angular/core';
+  `import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'porsche-design-system-app',
   template: \`
-    ${convertMarkup(markup, 'angular').replace(/(\n)/g, '$1    ')}\`,
+    ${convertMarkup(markup, 'angular').replace(/(\n)/g, '$1    ')}
+  \`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {}`;
 
