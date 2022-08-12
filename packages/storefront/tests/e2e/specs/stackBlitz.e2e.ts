@@ -6,67 +6,60 @@ let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
-it.each(<Framework[]>['react', 'vanilla-js', 'angular'])(
-  'should have working stackBlitz button for framework: %s',
-  async (framework) => {
-    await page.goto(`${baseURL}/components/button/examples`, { waitUntil: 'networkidle0' });
+it('should have working stackBlitz button', async () => {
+  await page.goto(`${baseURL}/components/button/examples`, { waitUntil: 'networkidle0' });
 
-    const playground = await page.$('.playground');
-    const stackBlitzButton = await playground.$('p-button[type=button]');
+  const frameWorkButtons = await getFrameworkButtons(page);
 
-    const frameWorkTabsBar = await page.$('.code-block p-tabs-bar');
-    const frameWorkButtons = await getFrameworkButtons(page);
+  if (frameWorkButtons.length) {
+    expect(frameWorkButtons.length).toBe(3);
 
-    const frameWorkButtonMap = {
-      'vanilla-js': 0,
-      angular: 1,
-      react: 2,
-    };
-    const frameWorkButton = frameWorkButtons[frameWorkButtonMap[framework]];
+    for (let i = 0; i < frameWorkButtons.length; i++) {
+      const frameworkButton = frameWorkButtons[i];
 
-    await frameWorkButton.click();
-    await page.waitForFunction((el) => el.getAttribute('aria-selected') === 'true', {}, frameWorkButton);
+      await frameworkButton.click();
+      await page.waitForFunction((el) => el.getAttribute('aria-selected') === 'true', {}, frameworkButton);
 
-    // ensure Framework is switched
-    expect(await frameWorkTabsBar.evaluate((el) => (el as any).activeTabIndex)).toBe(frameWorkButtonMap[framework]);
+      // bypass captcha in headless chrome
+      await page.setUserAgent(
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36'
+      );
 
-    // bypass captcha in headless chrome
-    await page.setUserAgent(
-      'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36'
-    );
+      // save target of original page to know that this was the opener
+      const pageTarget = page.target();
 
-    // save target of original page to know that this was the opener
-    const pageTarget = page.target();
+      const stackBlitzButton = await page.$('.playground p-button[type=button]');
 
-    await stackBlitzButton.click();
+      await stackBlitzButton.click();
 
-    // now we're on the stackBlitz website
-    // get stackBlitz tab
-    // check that the first page opened this new page
-    const newTarget = await browser.waitForTarget((target) => target.opener() === pageTarget);
-    // get the new page object
-    const stackBlitzPage = await newTarget.page();
+      // now we're on the stackBlitz website
+      // get stackBlitz tab
+      // check that the first page opened this new page
+      const newTarget = await browser.waitForTarget((target) => target.opener() === pageTarget);
+      // get the new page object
+      const stackBlitzPage = await newTarget.page();
 
-    await stackBlitzPage.waitForSelector('#PreviewContentWrapper');
-    const previewContentWrapper = await stackBlitzPage.$('#PreviewContentWrapper');
-    await previewContentWrapper.waitForSelector('iframe');
+      await stackBlitzPage.waitForSelector('#PreviewContentWrapper');
+      const previewContentWrapper = await stackBlitzPage.$('#PreviewContentWrapper');
+      await previewContentWrapper.waitForSelector('iframe');
 
-    // Wait for StackBlitz dev-server to be done
-    await stackBlitzPage.waitForFunction(
-      () =>
-        (
-          document.querySelector('#PreviewContentWrapper iframe') as HTMLIFrameElement
-        ).contentWindow.document.querySelector('html .hydrated'),
-      { timeout: 60000 }
-    );
+      // Wait for StackBlitz dev-server to be done
+      await stackBlitzPage.waitForFunction(
+        () =>
+          (
+            document.querySelector('#PreviewContentWrapper iframe') as HTMLIFrameElement
+          ).contentWindow.document.querySelector('html .hydrated'),
+        { timeout: 60000 }
+      );
 
-    const documentPDS = await stackBlitzPage.evaluate(
-      () =>
-        ((document.querySelector('#PreviewContentWrapper iframe') as HTMLIFrameElement).contentWindow.document as any)
-          .porscheDesignSystem
-    );
+      const documentPDS = await stackBlitzPage.evaluate(
+        () =>
+          ((document.querySelector('#PreviewContentWrapper iframe') as HTMLIFrameElement).contentWindow.document as any)
+            .porscheDesignSystem
+      );
 
-    expect(documentPDS).toBeDefined();
-    await stackBlitzPage.close();
+      expect(documentPDS).toBeDefined();
+      await stackBlitzPage.close();
+    }
   }
-);
+});
