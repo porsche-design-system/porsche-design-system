@@ -87,7 +87,7 @@ describe('convertMarkup()', () => {
     const convertToAngularSpy = jest.spyOn(convertToAngularUtils, 'convertToAngular').mockReturnValue(convertedMarkup);
     const cleanMarkupSpy = jest.spyOn(formattingUtils, 'cleanMarkup').mockImplementationOnce(() => cleanedMarkup);
 
-    expect(convertMarkup(markup, 'angular')).toBe(convertedMarkup);
+    expect(convertedMarkup).toBe(convertMarkup(markup, 'angular'));
 
     expect(cleanMarkupSpy).toBeCalledWith(markup);
     expect(convertToAngularSpy).toBeCalledWith(cleanedMarkup);
@@ -97,7 +97,7 @@ describe('convertMarkup()', () => {
     const convertToReactSpy = jest.spyOn(convertToReactUtils, 'convertToReact').mockReturnValue(convertedMarkup);
     const cleanMarkupSpy = jest.spyOn(formattingUtils, 'cleanMarkup').mockReturnValue(cleanedMarkup);
 
-    expect(convertMarkup(markup, 'react')).toBe(convertedMarkup);
+    expect(convertedMarkup).toBe(convertMarkup(markup, 'react'));
 
     expect(cleanMarkupSpy).toBeCalledWith(markup);
     expect(convertToReactSpy).toBeCalledWith(cleanedMarkup);
@@ -106,7 +106,7 @@ describe('convertMarkup()', () => {
   it('should call cleanMarkup() with correct parameters and return correct markup for framework vanilla-js', () => {
     const cleanMarkupSpy = jest.spyOn(formattingUtils, 'cleanMarkup').mockReturnValue(cleanedMarkup);
 
-    expect(convertMarkup(markup, 'vanilla-js')).toBe(cleanedMarkup);
+    expect(cleanedMarkup).toBe(convertMarkup(markup, 'vanilla-js'));
     expect(cleanMarkupSpy).toBeCalledWith(markup);
   });
 });
