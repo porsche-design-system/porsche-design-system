@@ -6,7 +6,7 @@ import {
   getVanillaJsProjectAndOpenOptions,
   replaceSharedAsyncFunctionWithConstants,
 } from '../../src/utils/stackblitz/getVanillaJsProjectAndOpenOptions';
-import { getSharedImportConstants } from '../../src/utils';
+import { getSharedImportConstants } from '../../src/utils/stackblitz/helper';
 import type { SharedImportKey, StackBlitzFrameworkOpts, ExternalDependency } from '../../src/utils';
 
 import * as getVanillaJsProjectAndOpenOptionsUtils from '../../src/utils/stackblitz/getVanillaJsProjectAndOpenOptions';

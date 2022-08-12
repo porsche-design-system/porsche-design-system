@@ -246,7 +246,6 @@ describe('getAngularProjectAndOpenOptions()', () => {
       title: stackBlitzFrameworkOpts.title,
       description: stackBlitzFrameworkOpts.description,
       dependencies: mockedDependencies,
-      openOptions: {},
     });
   });
 });
