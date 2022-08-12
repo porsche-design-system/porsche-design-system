@@ -129,6 +129,5 @@ export const getAngularProjectAndOpenOptions: GetStackblitzProjectAndOpenOptions
     title,
     description,
     dependencies: getAngularDependencies(externalDependencies),
-    openOptions: {},
   };
 };
