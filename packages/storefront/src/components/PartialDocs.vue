@@ -1,6 +1,6 @@
 <template>
   <div class="partial-docs">
-    <Playground :frameworkMarkup="frameworkMarkup" :show-code-editor="false"></Playground>
+    <Playground :frameworkMarkup="frameworkMarkup" :showCodeEditor="false"></Playground>
     <p-text>
       You can find an implemented example in our
       <a href="https://github.com/porscheui/sample-integration-vanillajs">Sample Integration VanillaJS</a>,
@@ -16,7 +16,7 @@
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
   import { constantCase } from 'change-case';
-  import { Framework, FrameworkMarkup } from '@/models';
+  import type { Framework, FrameworkMarkup } from '@/models';
 
   type Param = {
     value: string;
