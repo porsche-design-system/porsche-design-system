@@ -56,10 +56,11 @@
   import { Prop } from 'vue-property-decorator';
   import CodeBlock from '@/components/CodeBlock.vue';
   import CodeEditor from '@/components/CodeEditor.vue';
-  import { cleanMarkup, getExternalDependenciesOrThrow, patchThemeIntoMarkup } from '@/utils';
+  import { cleanMarkup, patchThemeIntoMarkup } from '../utils';
   import { componentMeta } from '@porsche-design-system/shared';
-  import type { ColorScheme, Framework, FrameworkMarkup, Theme } from '@/models';
-  import type { ExternalDependency, SharedImportKey } from '@/utils';
+  import type { ColorScheme, Framework, FrameworkMarkup, Theme } from '../models';
+  import type { ExternalDependency, SharedImportKey } from '../utils';
+  import { getExternalDependenciesOrThrow } from '../utils/stackblitz/helper';
 
   export type PlaygroundConfig = {
     themeable: boolean;
