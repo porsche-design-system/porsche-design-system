@@ -41,8 +41,8 @@
           :markup="cleanedEditorMarkup"
           :theme="theme"
           :framework="activeFramework"
-          :external-stack-blitz-dependencies="getExternalDependenciesOrThrow(this.externalStackBlitzDependencies)"
-          :shared-import-keys="sharedImportKeys"
+          :externalStackBlitzDependencies="getExternalDependenciesOrThrow(this.externalStackBlitzDependencies)"
+          :sharedImportKeys="sharedImportKeys"
           :colorScheme="config.colorScheme"
         ></CodeEditor>
       </template>
