@@ -107,8 +107,8 @@ Of course, any combination of the available options is possible.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import {stretchToFullModalWidthClassName} from './modal-styles'; 
-import {getModalCodeSamples} from "@porsche-design-system/shared"; 
+import { stretchToFullModalWidthClassName } from './modal-styles'; 
+import { getModalCodeSamples } from "@porsche-design-system/shared"; 
 
 @Component
 export default class Code extends Vue {
