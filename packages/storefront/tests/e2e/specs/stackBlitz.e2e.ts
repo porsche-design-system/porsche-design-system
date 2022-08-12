@@ -58,7 +58,7 @@ it.each(<Framework[]>['react', 'vanilla-js', 'angular'])(
         (
           document.querySelector('#PreviewContentWrapper iframe') as HTMLIFrameElement
         ).contentWindow.document.querySelector('html .hydrated'),
-      { timeout: 50000 }
+      { timeout: 60000 }
     );
 
     const documentPDS = await stackBlitzPage.evaluate(
