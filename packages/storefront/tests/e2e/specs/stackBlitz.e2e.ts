@@ -1,4 +1,4 @@
-import { baseURL } from '../helpers';
+import { baseURL, getFrameworkButtons } from '../helpers';
 import type { Page } from 'puppeteer';
 import { Framework } from '../../../src/models';
 
@@ -14,9 +14,8 @@ it.each(<Framework[]>['react', 'vanilla-js', 'angular'])(
     const playground = await page.$('.playground');
     const stackBlitzButton = await playground.$('p-button[type=button]');
 
-    const codeBlock = await page.$('.code-block');
-    const frameWorkTabsBar = await codeBlock.$('p-tabs-bar');
-    const frameWorkButtons = await frameWorkTabsBar.$$('button');
+    const frameWorkTabsBar = await page.$('.code-block p-tabs-bar');
+    const frameWorkButtons = await getFrameworkButtons(page);
 
     const frameWorkButtonMap = {
       'vanilla-js': 0,
@@ -25,7 +24,7 @@ it.each(<Framework[]>['react', 'vanilla-js', 'angular'])(
     };
     const frameWorkButton = frameWorkButtons[frameWorkButtonMap[framework]];
 
-    frameWorkButton.click();
+    await frameWorkButton.click();
     await page.waitForFunction((el) => el.getAttribute('aria-selected') === 'true', {}, frameWorkButton);
 
     // ensure Framework is switched
@@ -36,16 +35,16 @@ it.each(<Framework[]>['react', 'vanilla-js', 'angular'])(
       'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36'
     );
 
-    //save target of original page to know that this was the opener:
+    // save target of original page to know that this was the opener
     const pageTarget = page.target();
 
-    // now we're on the stackBlitz website
     await stackBlitzButton.click();
 
+    // now we're on the stackBlitz website
     // get stackBlitz tab
-    //check that the first page opened this new page:
+    // check that the first page opened this new page
     const newTarget = await browser.waitForTarget((target) => target.opener() === pageTarget);
-    //get the new page object:
+    // get the new page object
     const stackBlitzPage = await newTarget.page();
 
     await stackBlitzPage.waitForSelector('#PreviewContentWrapper');
