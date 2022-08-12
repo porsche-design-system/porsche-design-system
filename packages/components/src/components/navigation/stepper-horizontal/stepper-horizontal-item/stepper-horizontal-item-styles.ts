@@ -1,4 +1,5 @@
 import {
+  addImportantToEachRule,
   getFocusJssStyle,
   getHoverJssStyle,
   getScreenReaderOnlyJssStyle,
@@ -56,33 +57,31 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
       ':host': {
         display: 'flex',
         position: 'relative',
-        ...(isCurrentOrUndefined && {
-          '&::before': {
-            display: 'block',
-            position: 'absolute',
-            content: '""',
-            backgroundColor: isDisabled ? 'none' : baseColor,
-            width: pxToRemWithUnit(18),
-            height: pxToRemWithUnit(18),
-            margin: `${pxToRemWithUnit(3)} ${pxToRemWithUnit(7)} ${pxToRemWithUnit(3)} ${pxToRemWithUnit(3)}`,
-            borderRadius: '50%',
-            boxSizing: 'border-box',
-            ...(isDisabled && {
-              border: `1px solid ${disabledColor}`,
-            }),
-          },
-          ...Array.from(Array(9)).reduce(
-            (result, _, i) => ({
+        ...(isCurrentOrUndefined &&
+          addImportantToEachRule({
+            '&::before': {
+              display: 'block',
+              position: 'absolute',
+              content: '""',
+              backgroundColor: isDisabled ? 'none' : baseColor,
+              width: pxToRemWithUnit(18),
+              height: pxToRemWithUnit(18),
+              margin: `${pxToRemWithUnit(3)} ${pxToRemWithUnit(7)} ${pxToRemWithUnit(3)} ${pxToRemWithUnit(3)}`,
+              borderRadius: '50%',
+              boxSizing: 'border-box',
+              ...(isDisabled && {
+                border: `1px solid ${disabledColor}`,
+              }),
+            },
+            ...Array.from(Array(9)).reduce((result, _, i) => ({
               ...result,
               [`&(:nth-of-type(${i + 1}))`]: {
                 '& $button::before': {
                   background: `${getSvg(svgColor)} no-repeat ${pxToRemWithUnit(9 - i * 20)} ${pxToRemWithUnit(7)}`,
                 },
               },
-            }),
-            {}
-          ),
-        }),
+            })),
+          })),
       },
       button: {
         display: 'flex',
