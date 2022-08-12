@@ -1,12 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`extendMarkupWithAppComponent() should return correct markup 1`] = `
-"import { Component } from '@angular/core';
+"import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'porsche-design-system-app',
   template: \`
-    Some mocked markup\`,
+    Some mocked markup
+  \`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {}"
 `;
