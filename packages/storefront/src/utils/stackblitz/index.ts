@@ -1,4 +1,10 @@
-export * from './helper';
+export type {
+  StackBlitzFrameworkOpts,
+  SharedImportKey,
+  ExternalDependency,
+  DependencyMap,
+  GetStackblitzProjectAndOpenOptions,
+} from './helper';
 export { getVanillaJsProjectAndOpenOptions } from './getVanillaJsProjectAndOpenOptions';
 export { getAngularProjectAndOpenOptions } from './getAngularProjectAndOpenOptions';
 export { getReactProjectAndOpenOptions } from './getReactProjectAndOpenOptions';
