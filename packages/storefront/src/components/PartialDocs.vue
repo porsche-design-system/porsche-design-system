@@ -56,31 +56,31 @@
         .join('\n\n  ');
 
       const exampleAngular = `<!-- prerequisite -->
-  <!-- docs: https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack#index-transform -->
-  npm install --save-dev @angular-builders/custom-webpack
-  <!-- or via yarn -->
-  yarn add --dev @angular-builders/custom-webpack
+<!-- docs: https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack#index-transform -->
+npm install --save-dev @angular-builders/custom-webpack
+<!-- or via yarn -->
+yarn add --dev @angular-builders/custom-webpack
 
-  <!-- angular.json -->
-  ...
-  "architect": {
-    "build": {
-  -   "builder": "@angular-devkit/build-angular:browser",
-  +   "builder": "@angular-builders/custom-webpack:browser",
-      "options": {
-        "outputPath": "dist/components-angular",
-  +     "indexTransform": "./scripts/transformIndexHtml.ts",
-        ...
+<!-- angular.json -->
+...
+"architect": {
+  "build": {
+-   "builder": "@angular-devkit/build-angular:browser",
++   "builder": "@angular-builders/custom-webpack:browser",
+    "options": {
+      "outputPath": "dist/components-angular",
++     "indexTransform": "./scripts/transformIndexHtml.ts",
+      ...
 
-  <!-- ./scripts/transformIndexHtml.ts -->
-  import type { TargetOptions } from '@angular-builders/custom-webpack';
-  import { ${this.name} } from '${partialPackage}';
+<!-- ./scripts/transformIndexHtml.ts -->
+import type { TargetOptions } from '@angular-builders/custom-webpack';
+import { ${this.name} } from '${partialPackage}';
 
-  export default (targetOptions: TargetOptions, indexHtml: string): string => {
-    let partialContent = ${angularPartials}
+export default (targetOptions: TargetOptions, indexHtml: string): string => {
+  let partialContent = ${angularPartials}
 
-    return indexHtml.replace(/(<\\/${this.location}>)/, \`\\n\${partialContent}$1\`);
-  };`;
+  return indexHtml.replace(/(<\\/${this.location}>)/, \`\\n\${partialContent}$1\`);
+};`;
 
       const partialRequirePath = `require('${partialPackage}').${this.name}`;
       const partialRequirePathJs = partialRequirePath.replace('vanilla-js', 'js');
@@ -110,16 +110,16 @@
         .join(glue);
 
       const exampleJs = `<!-- index.html -->
-  <${this.location}>
-    <!--${placeholder}-->
-  </${this.location}>
+<${this.location}>
+  <!--${placeholder}-->
+</${this.location}>
 
-  <!-- package.json (tested on macOS, the script may need to be adjusted depending on the operating system used) -->
-  <!-- make sure to adjust the path to the index.html file -->
-  "scripts": {
-    "prestart": "yarn replace",
-    ${jsPartials}
-  }`;
+<!-- package.json (tested on macOS, the script may need to be adjusted depending on the operating system used) -->
+<!-- make sure to adjust the path to the index.html file -->
+"scripts": {
+  "prestart": "yarn replace",
+  ${jsPartials}
+}`;
 
       return {
         'vanilla-js': exampleJs,
