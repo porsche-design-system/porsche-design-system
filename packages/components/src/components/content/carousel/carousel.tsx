@@ -15,6 +15,7 @@ import { ButtonPure } from '../../action/button-pure/button-pure';
 
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
+  wrapHeading: AllowedTypes.boolean,
   slidesPerPage: AllowedTypes.breakpoint('number'),
   slidesPerMove: AllowedTypes.breakpoint('number'),
   disablePagination: AllowedTypes.breakpoint('boolean'),
@@ -36,7 +37,10 @@ export class Carousel {
   @Element() public host!: HTMLElement;
 
   /** Defines the heading used in carousel. */
-  @Prop() public heading?: string;
+  @Prop() public heading: string;
+
+  /** Whether the heading should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper. */
+  @Prop() public wrapHeading?: boolean;
 
   /** Sets the amount of slides visible at the same time. */
   @Prop() public slidesPerPage?: BreakpointCustomizable<number> = 1;
@@ -46,8 +50,6 @@ export class Carousel {
 
   /** If true, the carousel will not show pagination bullets at the bottom. */
   @Prop() public disablePagination?: BreakpointCustomizable<boolean> = false;
-
-  // @Prop() public startSlide?:number = 1;
 
   /** Override the default wordings that are used for aria-labels on the next/prev buttons and pagination. */
   @Prop() public i18n?: CarouselI18n = {};
@@ -67,7 +69,7 @@ export class Carousel {
 
   public componentWillLoad(): void {
     this.slides = Array.from(this.host.children) as HTMLElement[];
-    this.slides.forEach((el, i) => el.setAttribute('slot', `slide-${i}`));
+    this.slides.filter((el) => !el.slot).forEach((el, i) => el.setAttribute('slot', `slide-${i}`));
   }
 
   public componentDidLoad(): void {
@@ -102,7 +104,8 @@ export class Carousel {
 
   public componentWillRender(): void {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.disablePagination, this.theme);
+    // TODO: validate heading.. !!this.heading || hasNamedSlot(this.host, 'heading')
+    attachComponentCss(this.host, getComponentCss, this.wrapHeading, this.disablePagination, this.theme);
   }
 
   public render(): JSX.Element {
@@ -120,7 +123,7 @@ export class Carousel {
     return (
       <Host>
         <div class="header">
-          {this.heading && <h2>{this.heading}</h2>}
+          {this.heading ? <h2>{this.heading}</h2> : <slot name="heading" />}
 
           <PrefixedTagNames.pButtonPure
             {...btnProps}

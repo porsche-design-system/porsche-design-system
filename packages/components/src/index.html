@@ -40,6 +40,7 @@
     </header>
 
     <main>
+      some content
       <p-carousel heading="Some Heading">
         <div>slide 1</div>
         <div>slide 2</div>
@@ -48,20 +49,8 @@
         <div>slide 5</div>
         <div>slide 6</div>
       </p-carousel>
-
-      <!--<p-carousel
-        heading="Multiline Heading could be quite long especially on smaller screens but how would the carousel be accessible with out one?"
-        slides-per-page="2"
-      >
-        <div>slide 1</div>
-        <div>slide 2</div>
-        <div>slide 3</div>
-        <div>slide 4</div>
-        <div>slide 5</div>
-        <div>slide 6</div>
-      </p-carousel>
-
-      <p-carousel slides-per-page="{base: 3, s: 1, m: 3}">
+      some more content
+      <p-carousel heading="Some Heading" wrap-heading="true">
         <div>slide 1</div>
         <div>slide 2</div>
         <div>slide 3</div>
@@ -71,7 +60,10 @@
       </p-carousel>
 
       <p-content-wrapper>
-        <p-carousel heading="Some Heading">
+        some content within content-wrapper
+
+        <p-carousel>
+          <h1 slot="heading">Some heading</h1>
           <div>slide 1</div>
           <div>slide 2</div>
           <div>slide 3</div>
@@ -80,10 +72,8 @@
           <div>slide 6</div>
         </p-carousel>
 
-        <p-carousel
-          heading="Multiline Heading could be quite long especially on smaller screens but how would the carousel be accessible with out one?"
-          slides-per-page="2"
-        >
+        <p-carousel wrap-heading="true">
+          <h1 slot="heading">Some heading</h1>
           <div>slide 1</div>
           <div>slide 2</div>
           <div>slide 3</div>
@@ -92,15 +82,8 @@
           <div>slide 6</div>
         </p-carousel>
 
-        <p-carousel slides-per-page="{base: 3, s: 1, m: 3}">
-          <div>slide 1</div>
-          <div>slide 2</div>
-          <div>slide 3</div>
-          <div>slide 4</div>
-          <div>slide 5</div>
-          <div>slide 6</div>
-        </p-carousel>
-      </p-content-wrapper>-->
+        some more content within content-wrapper
+      </p-content-wrapper>
     </main>
 
     <script>
