@@ -27,7 +27,6 @@ jest.mock('../../../components-angular/package.json', () => ({
     rxjs: '0.0.0',
     tslib: '0.0.0',
     'zone.js': '0.0.0',
-    '@porsche-design-system/components-angular': '0.0.0',
     imask: '0.0.0',
     'angular-imask': '0.0.0',
   },
@@ -137,7 +136,7 @@ describe('getAngularDependencies()', () => {
     rxjs: '0.0.0',
     tslib: '0.0.0',
     'zone.js': '0.0.0',
-    '@porsche-design-system/components-angular': '0.0.0',
+    '@porsche-design-system/components-angular': 'latest',
   };
 
   it('should call getExternalDependencies() with correct parameters', () => {
