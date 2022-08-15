@@ -204,7 +204,7 @@ export namespace Components {
         /**
           * Defines the heading used in carousel.
          */
-        "heading": string;
+        "heading"?: string;
         /**
           * Override the default wordings that are used for aria-labels on the next/prev buttons and pagination.
          */

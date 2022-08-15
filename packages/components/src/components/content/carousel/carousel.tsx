@@ -44,7 +44,7 @@ export class Carousel {
   @Element() public host!: HTMLElement;
 
   /** Defines the heading used in carousel. */
-  @Prop() public heading: string;
+  @Prop() public heading?: string;
 
   /** Whether the heading should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper. */
   @Prop() public wrapHeading?: boolean;
