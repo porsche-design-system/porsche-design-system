@@ -86,6 +86,15 @@
   <div>Slide 4</div>
   <div>Slide 5</div>
   <div>Slide 6</div>
+</p-carousel>
+
+<p-carousel heading="Some Heading" disable-pagination="{base: true, s: false}">
+  <div>Slide 1</div>
+  <div>Slide 2</div>
+  <div>Slide 3</div>
+  <div>Slide 4</div>
+  <div>Slide 5</div>
+  <div>Slide 6</div>
 </p-carousel>`;
   }
 </script>
