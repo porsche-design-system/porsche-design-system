@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Fixed
+
+- `Popover` visual shadow bug in Safari
+
 ### [2.15.0-beta.0] - 2022-08-05
 
 #### Fixed

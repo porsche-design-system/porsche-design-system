@@ -14,22 +14,22 @@ const directionPositionMap: { [key in PopoverDirection]: JssStyle } = {
   top: {
     bottom: '100%',
     left: '50%',
-    transform: 'translateX(-50%)',
+    transform: 'translate3d(-50%, 0, 0)', // translate3d used to fix Safari shadow bug
   },
   right: {
     top: '50%',
     left: '100%',
-    transform: 'translateY(-50%)',
+    transform: 'translate3d(0, -50%, 0)',
   },
   bottom: {
     top: '100%',
     left: '50%',
-    transform: 'translateX(-50%)',
+    transform: 'translate3d(-50%, 0, 0)',
   },
   left: {
     top: '50%',
     right: '100%',
-    transform: 'translateY(-50%)',
+    transform: 'translate3d(0, -50%, 0)',
   },
 };
 
