@@ -1,10 +1,16 @@
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, getPrefixedTagNames, THEMES, validateProps } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
-import { bulletActiveClass, getComponentCss } from './carousel-styles';
+import { getComponentCss } from './carousel-styles';
 import { Splide } from '@splidejs/splide';
 import type { CarouselChangeEvent, CarouselI18n } from './carousel-utils';
-import { getSplideBreakpoints } from './carousel-utils';
+import {
+  getSplideBreakpoints,
+  slideNext,
+  slidePrev,
+  updatePagination,
+  updatePrevNextButtonAria,
+} from './carousel-utils';
 import { ButtonPure } from '../../action/button-pure/button-pure';
 
 const propTypes: PropTypes<typeof Carousel> = {
@@ -59,14 +65,6 @@ export class Carousel {
   private pagination: HTMLElement;
   private slides: HTMLElement[];
 
-  private get isFirstSlide(): boolean {
-    return this.splide.index === 0;
-  }
-
-  private get isLastSlide(): boolean {
-    return this.splide.index === this.slides.length - 1;
-  }
-
   public componentWillLoad(): void {
     this.slides = Array.from(this.host.children) as HTMLElement[];
     this.slides.forEach((el, i) => el.setAttribute('slot', `slide-${i}`));
@@ -87,14 +85,14 @@ export class Carousel {
       i18n: this.i18n,
     });
 
-    this.splide.on('mounted', () => {
-      this.updateAria();
-      this.updatePagination(this.splide.options.start);
+    this.splide.on('mounted move', () => {
+      updatePrevNextButtonAria(this.btnPrev, this.btnNext, this.splide);
+      updatePagination(this.pagination, this.splide.options.start);
     });
 
     this.splide.on('move', (newIndex, prevIndex): void => {
-      this.updateAria();
-      this.updatePagination(newIndex, prevIndex);
+      updatePrevNextButtonAria(this.btnPrev, this.btnNext, this.splide);
+      updatePagination(this.pagination, newIndex, prevIndex);
     });
 
     this.splide.mount();
@@ -128,13 +126,13 @@ export class Carousel {
             {...btnProps}
             icon="arrow-head-left"
             ref={(ref) => (this.btnPrev = ref)}
-            onClick={this.onPrevClick}
+            onClick={() => slidePrev(this.splide)}
           />
           <PrefixedTagNames.pButtonPure
             {...btnProps}
             icon="arrow-head-right"
             ref={(ref) => (this.btnNext = ref)}
-            onClick={this.onNextClick}
+            onClick={() => slideNext(this.splide)}
           />
         </div>
 
@@ -158,29 +156,4 @@ export class Carousel {
       </Host>
     );
   }
-
-  private onPrevClick = (): void => {
-    this.splide.go(this.isFirstSlide ? this.slides.length - 1 : '<');
-  };
-
-  private onNextClick = (): void => {
-    this.splide.go(this.isLastSlide ? 0 : '>');
-  };
-
-  private updateAria = (): void => {
-    const { i18n } = this.splide.options;
-    this.btnPrev.aria = { 'aria-label': i18n[this.isFirstSlide ? 'last' : 'prev'] };
-    this.btnNext.aria = { 'aria-label': i18n[this.isLastSlide ? 'first' : 'next'] };
-  };
-
-  private updatePagination = (newIndex: number, prevIndex?: number): void => {
-    // TODO: calculation of amount of bullets
-    const { children } = this.pagination;
-    children[newIndex].classList.add(bulletActiveClass);
-
-    if (prevIndex >= 0) {
-      children[prevIndex].classList.remove(bulletActiveClass);
-      this.carouselChange.emit({ activeIndex: newIndex, previousIndex: prevIndex });
-    }
-  };
 }
