@@ -54,23 +54,7 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
   return getCss({
     '@global': {
       ':host': {
-        display: 'flex',
         ...(isCurrentOrUndefined && {
-          '& $button::before': {
-            position: 'absolute',
-            top: pxToRemWithUnit(9),
-            left: pxToRemWithUnit(9),
-            content: '""',
-            backgroundColor: isDisabled ? 'none' : baseColor,
-            width: pxToRemWithUnit(18),
-            height: pxToRemWithUnit(18),
-            margin: `${pxToRemWithUnit(3)} ${pxToRemWithUnit(7)} ${pxToRemWithUnit(3)} ${pxToRemWithUnit(3)}`,
-            borderRadius: '50%',
-            boxSizing: 'border-box',
-            ...(isDisabled && {
-              border: `1px solid ${disabledColor}`,
-            }),
-          },
           ...Array.from(Array(9)).reduce(
             (result, _, i) => ({
               ...result,
@@ -107,14 +91,19 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
         ...(isCurrentOrUndefined
           ? {
               '&::before': {
-                display: 'block',
                 position: 'absolute',
+                top: 0,
+                left: 0,
                 content: '""',
-                top: pxToRemWithUnit(12),
-                left: pxToRemWithUnit(12),
-                transform: 'translate3d(-50%, -50%, 0)',
-                width: pxToRemWithUnit(24),
-                height: pxToRemWithUnit(24),
+                backgroundColor: isDisabled ? 'none' : baseColor,
+                width: pxToRemWithUnit(18),
+                height: pxToRemWithUnit(18),
+                margin: `${pxToRemWithUnit(3)} ${pxToRemWithUnit(7)} ${pxToRemWithUnit(3)} ${pxToRemWithUnit(3)}`,
+                borderRadius: '50%',
+                boxSizing: 'border-box',
+                ...(isDisabled && {
+                  border: `1px solid ${disabledColor}`,
+                }),
               },
             }
           : {
