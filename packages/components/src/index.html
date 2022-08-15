@@ -49,7 +49,7 @@
         <div>slide 6</div>
       </p-carousel>
 
-      <p-carousel
+      <!--<p-carousel
         heading="Multiline Heading could be quite long especially on smaller screens but how would the carousel be accessible with out one?"
         slides-per-page="2"
       >
@@ -100,10 +100,12 @@
           <div>slide 5</div>
           <div>slide 6</div>
         </p-carousel>
-      </p-content-wrapper>
+      </p-content-wrapper>-->
     </main>
 
     <script>
+      document.querySelector('p-carousel').addEventListener('carouselChange', console.log);
+
       <!-- START: keep this snippet to log component lifecycle events -->
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {

@@ -41,7 +41,7 @@ export class Carousel {
   /** If true, the carousel will not show pagination bullets at the bottom. */
   @Prop() public disablePagination?: BreakpointCustomizable<boolean> = false;
 
-  // @Prop() public currentSlide?:number = 1;
+  // @Prop() public startSlide?:number = 1;
 
   /** Override the default wordings that are used for aria-labels on the next/prev buttons and pagination. */
   @Prop() public i18n?: CarouselI18n = {};
@@ -99,6 +99,7 @@ export class Carousel {
 
     this.splide.mount();
     // TODO: update on slide addition/removal or prop change?
+    // TODO: focus/keyboard handling?
   }
 
   public componentWillRender(): void {
@@ -114,7 +115,7 @@ export class Carousel {
       type: 'button',
       hideLabel: true,
       // aria: {
-      //   'aria-controls': 'splide-track',
+      //   'aria-controls': 'splide-track', // TODO: cross shadow dom? use native button tag instead of p-button-pure?
       // },
     };
 
@@ -172,12 +173,14 @@ export class Carousel {
     this.btnNext.aria = { 'aria-label': i18n[this.isLastSlide ? 'first' : 'next'] };
   };
 
-  private updatePagination = (newIndex: number, prevIndex = 0): void => {
+  private updatePagination = (newIndex: number, prevIndex?: number): void => {
     // TODO: calculation of amount of bullets
     const { children } = this.pagination;
-    children[prevIndex].classList.remove(bulletActiveClass);
     children[newIndex].classList.add(bulletActiveClass);
-    // TODO: probably emitted initially
-    this.carouselChange.emit({ activeIndex: newIndex, previousIndex: prevIndex });
+
+    if (prevIndex >= 0) {
+      children[prevIndex].classList.remove(bulletActiveClass);
+      this.carouselChange.emit({ activeIndex: newIndex, previousIndex: prevIndex });
+    }
   };
 }
