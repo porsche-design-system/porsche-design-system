@@ -1,6 +1,5 @@
 import { getSplideBreakpoints, toSplideBreakpoints } from './carousel-utils';
 import * as carouselUtils from './carousel-utils';
-import * as breakpointCustomizableUtils from '../../../utils/breakpoint-customizable';
 import * as jssUtils from '../../../utils/jss';
 
 describe('getSplideBreakpoints()', () => {
