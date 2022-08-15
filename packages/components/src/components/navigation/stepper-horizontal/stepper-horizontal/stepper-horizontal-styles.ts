@@ -7,7 +7,6 @@ export const getComponentCss = (): string => {
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          position: 'relative',
           height: pxToRemWithUnit(32),
         }),
       },
