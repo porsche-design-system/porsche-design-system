@@ -2,20 +2,8 @@
 import { PStepperHorizontal, PStepperHorizontalItem } from '@porsche-design-system/components-react';
 
 export const StepperHorizontalPage = (): JSX.Element => {
-  const style = `
-    .reset-children > :before {
-      width: 2rem;
-      height: 2rem;
-      margin: 2rem;
-      border-radius: unset;
-      border: none;
-    }
-  `;
-
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: style }} />
-
       <div className="playground light" title="should render all numbers from 1 to 9 on light background">
         <PStepperHorizontal>
           <PStepperHorizontalItem>Step 1</PStepperHorizontalItem>
@@ -119,15 +107,6 @@ export const StepperHorizontalPage = (): JSX.Element => {
           <PStepperHorizontalItem>Step 7</PStepperHorizontalItem>
           <PStepperHorizontalItem>Step 8</PStepperHorizontalItem>
           <PStepperHorizontalItem>Step 9</PStepperHorizontalItem>
-        </PStepperHorizontal>
-      </div>
-
-      <div className="playground light" title="should render correct styles when overrides are set">
-        <PStepperHorizontal className="reset-children">
-          <PStepperHorizontalItem state="complete">Step 1</PStepperHorizontalItem>
-          <PStepperHorizontalItem state="warning">Step 2</PStepperHorizontalItem>
-          <PStepperHorizontalItem state="current">Step 3</PStepperHorizontalItem>
-          <PStepperHorizontalItem>Step 4</PStepperHorizontalItem>
         </PStepperHorizontal>
       </div>
     </>
