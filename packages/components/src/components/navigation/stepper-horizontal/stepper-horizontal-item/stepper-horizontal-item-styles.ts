@@ -1,5 +1,4 @@
 import {
-  addImportantToEachRule,
   getFocusJssStyle,
   getHoverJssStyle,
   getScreenReaderOnlyJssStyle,
@@ -56,11 +55,11 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
     '@global': {
       ':host': {
         display: 'flex',
-        position: 'relative',
         ...(isCurrentOrUndefined && {
-          '&::before': addImportantToEachRule({
-            display: 'block',
+          '& $button::before': {
             position: 'absolute',
+            top: pxToRemWithUnit(9),
+            left: pxToRemWithUnit(9),
             content: '""',
             backgroundColor: isDisabled ? 'none' : baseColor,
             width: pxToRemWithUnit(18),
@@ -71,13 +70,18 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
             ...(isDisabled && {
               border: `1px solid ${disabledColor}`,
             }),
-          }),
+          },
           ...Array.from(Array(9)).reduce(
             (result, _, i) => ({
               ...result,
               [`&(:nth-of-type(${i + 1}))`]: {
-                '& $button::before': {
-                  background: `${getSvg(svgColor)} no-repeat ${pxToRemWithUnit(9 - i * 20)} ${pxToRemWithUnit(7)}`,
+                '& $button::after': {
+                  position: 'absolute',
+                  left: 0,
+                  content: '""',
+                  width: pxToRemWithUnit(24),
+                  height: pxToRemWithUnit(24),
+                  background: `${getSvg(svgColor)} no-repeat ${pxToRemWithUnit(9 - i * 20)}`,
                 },
               },
             }),
