@@ -37,7 +37,7 @@ exports[`getComponentCss() should return correct css for direction: bottom 1`] =
   pointer-events: auto;
   top: 100%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate3d(-50%, 0, 0);
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -109,7 +109,7 @@ exports[`getComponentCss() should return correct css for direction: left 1`] = `
   pointer-events: auto;
   top: 50%;
   right: 100%;
-  transform: translateY(-50%);
+  transform: translate3d(0, -50%, 0);
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -181,7 +181,7 @@ exports[`getComponentCss() should return correct css for direction: right 1`] = 
   pointer-events: auto;
   top: 50%;
   left: 100%;
-  transform: translateY(-50%);
+  transform: translate3d(0, -50%, 0);
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -253,7 +253,7 @@ exports[`getComponentCss() should return correct css for direction: top 1`] = `
   pointer-events: auto;
   bottom: 100%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate3d(-50%, 0, 0);
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;

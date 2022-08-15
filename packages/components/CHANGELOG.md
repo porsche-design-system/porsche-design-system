@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
+- `Popover` visual shadow bug in Safari
 - `Stepper Horizontal Item` bug where pseudo styles of the counter element were overridable
 
 ### [2.15.0-beta.0] - 2022-08-05
