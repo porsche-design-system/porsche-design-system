@@ -60,11 +60,6 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
               ...result,
               [`&(:nth-of-type(${i + 1}))`]: {
                 '& $button::after': {
-                  position: 'absolute',
-                  left: 0,
-                  content: '""',
-                  width: pxToRemWithUnit(24),
-                  height: pxToRemWithUnit(24),
                   background: `${getSvg(svgColor)} no-repeat ${pxToRemWithUnit(9 - i * 20)}`,
                 },
               },
@@ -81,43 +76,49 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
         color: isDisabled ? disabledColor : baseColor,
         transition: getTransition('color'),
         margin: 0,
-        padding: `0 0 0 ${pxToRemWithUnit(28)}`,
         background: 0,
         border: 0,
         ...textSmall,
         whiteSpace: 'nowrap',
-        cursor: isDisabled ? 'not-allowed' : 'auto',
         ...getFocusJssStyle(),
         ...(isCurrentOrUndefined
           ? {
+              padding: `0 0 0 ${pxToRemWithUnit(28)}`,
+              cursor: isDisabled ? 'not-allowed' : 'auto',
               '&::before': {
+                // circle of counter element
                 position: 'absolute',
-                top: 0,
-                left: 0,
+                left: pxToRemWithUnit(3),
                 content: '""',
-                backgroundColor: isDisabled ? 'none' : baseColor,
+                background: isDisabled ? 'none' : baseColor,
                 width: pxToRemWithUnit(18),
                 height: pxToRemWithUnit(18),
-                margin: `${pxToRemWithUnit(3)} ${pxToRemWithUnit(7)} ${pxToRemWithUnit(3)} ${pxToRemWithUnit(3)}`,
                 borderRadius: '50%',
                 boxSizing: 'border-box',
                 ...(isDisabled && {
                   border: `1px solid ${disabledColor}`,
                 }),
               },
+              '&::after': {
+                // unit of counter element
+                position: 'absolute',
+                left: 0,
+                content: '""',
+                width: pxToRemWithUnit(24),
+                height: pxToRemWithUnit(24),
+              },
             }
           : {
               padding: 0,
               cursor: isDisabled ? 'not-allowed' : 'pointer',
               textDecoration: isDisabled ? 'none' : 'underline',
-              ...(!isDisabled && {
-                ...hoverMediaQuery({
+              ...(!isDisabled &&
+                hoverMediaQuery({
                   ...hoverJssStyles,
                   '&:hover .icon': {
                     color: hoverColor,
                   },
-                }),
-              }),
+                })),
             }),
       },
     },
