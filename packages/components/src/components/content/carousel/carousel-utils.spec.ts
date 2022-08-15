@@ -24,13 +24,6 @@ describe('getSplideBreakpoints()', () => {
 });
 
 describe('toSplideBreakpoints()', () => {
-  it('should call parseJSON() with correct parameter', () => {
-    const spy = jest.spyOn(breakpointCustomizableUtils, 'parseJSON');
-
-    toSplideBreakpoints('gap', 10);
-    expect(spy).toBeCalledWith(10);
-  });
-
   it('should return correct correct object for flat BreakpointCustomizable parameter', () => {
     expect(toSplideBreakpoints('gap', 10)).toEqual({ 0: { gap: 10 } });
     expect(toSplideBreakpoints('perMove', 2)).toEqual({ 0: { perMove: 2 } });
