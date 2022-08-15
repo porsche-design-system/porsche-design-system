@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
-- `Popover` visual shadow bug in Safari >= 15.5
+- `Popover` visual shadow bug in Safari
 
 ### [2.15.0-beta.0] - 2022-08-05
 
