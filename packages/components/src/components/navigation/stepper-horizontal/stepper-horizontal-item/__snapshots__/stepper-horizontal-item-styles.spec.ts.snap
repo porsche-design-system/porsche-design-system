@@ -1,10 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`getComponentCss() should return correct css for state: complete, isDisabled: false and theme: dark 1`] = `
-":host {
-  display: flex;
-}
-button {
+"button {
   display: flex;
   position: relative;
   align-items: center;
@@ -66,10 +63,7 @@ button:focus:not(:focus-visible) {
 `;
 
 exports[`getComponentCss() should return correct css for state: complete, isDisabled: false and theme: light 1`] = `
-":host {
-  display: flex;
-}
-button {
+"button {
   display: flex;
   position: relative;
   align-items: center;
@@ -131,10 +125,7 @@ button:focus:not(:focus-visible) {
 `;
 
 exports[`getComponentCss() should return correct css for state: complete, isDisabled: true and theme: dark 1`] = `
-":host {
-  display: flex;
-}
-button {
+"button {
   display: flex;
   position: relative;
   align-items: center;
@@ -184,10 +175,7 @@ button:focus:not(:focus-visible) {
 `;
 
 exports[`getComponentCss() should return correct css for state: complete, isDisabled: true and theme: light 1`] = `
-":host {
-  display: flex;
-}
-button {
+"button {
   display: flex;
   position: relative;
   align-items: center;
@@ -237,22 +225,7 @@ button:focus:not(:focus-visible) {
 `;
 
 exports[`getComponentCss() should return correct css for state: current, isDisabled: false and theme: dark 1`] = `
-":host {
-  display: flex;
-}
-:host button::before {
-  position: absolute;
-  top: 0.5625rem;
-  left: 0.5625rem;
-  content: \\"\\";
-  background-color: #fff;
-  width: 1.125rem;
-  height: 1.125rem;
-  margin: 0.1875rem 0.4375rem 0.1875rem 0.1875rem;
-  border-radius: 50%;
-  box-sizing: border-box;
-}
-:host(:nth-of-type(9)) button::after {
+":host(:nth-of-type(9)) button::after {
   position: absolute;
   left: 0;
   content: \\"\\";
@@ -355,14 +328,16 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 button::before {
-  display: block;
   position: absolute;
+  top: 0;
+  left: 0;
   content: \\"\\";
-  top: 0.75rem;
-  left: 0.75rem;
-  transform: translate3d(-50%, -50%, 0);
-  width: 1.5rem;
-  height: 1.5rem;
+  background-color: #fff;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin: 0.1875rem 0.4375rem 0.1875rem 0.1875rem;
+  border-radius: 50%;
+  box-sizing: border-box;
 }
 .sr-only {
   position: absolute;
@@ -378,22 +353,7 @@ button::before {
 `;
 
 exports[`getComponentCss() should return correct css for state: current, isDisabled: false and theme: light 1`] = `
-":host {
-  display: flex;
-}
-:host button::before {
-  position: absolute;
-  top: 0.5625rem;
-  left: 0.5625rem;
-  content: \\"\\";
-  background-color: #000;
-  width: 1.125rem;
-  height: 1.125rem;
-  margin: 0.1875rem 0.4375rem 0.1875rem 0.1875rem;
-  border-radius: 50%;
-  box-sizing: border-box;
-}
-:host(:nth-of-type(9)) button::after {
+":host(:nth-of-type(9)) button::after {
   position: absolute;
   left: 0;
   content: \\"\\";
@@ -496,14 +456,16 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 button::before {
-  display: block;
   position: absolute;
+  top: 0;
+  left: 0;
   content: \\"\\";
-  top: 0.75rem;
-  left: 0.75rem;
-  transform: translate3d(-50%, -50%, 0);
-  width: 1.5rem;
-  height: 1.5rem;
+  background-color: #000;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin: 0.1875rem 0.4375rem 0.1875rem 0.1875rem;
+  border-radius: 50%;
+  box-sizing: border-box;
 }
 .sr-only {
   position: absolute;
@@ -519,23 +481,7 @@ button::before {
 `;
 
 exports[`getComponentCss() should return correct css for state: current, isDisabled: true and theme: dark 1`] = `
-":host {
-  display: flex;
-}
-:host button::before {
-  position: absolute;
-  top: 0.5625rem;
-  left: 0.5625rem;
-  content: \\"\\";
-  background-color: none;
-  width: 1.125rem;
-  height: 1.125rem;
-  margin: 0.1875rem 0.4375rem 0.1875rem 0.1875rem;
-  border-radius: 50%;
-  box-sizing: border-box;
-  border: 1px solid #7c7f81;
-}
-:host(:nth-of-type(9)) button::after {
+":host(:nth-of-type(9)) button::after {
   position: absolute;
   left: 0;
   content: \\"\\";
@@ -638,14 +584,17 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 button::before {
-  display: block;
   position: absolute;
+  top: 0;
+  left: 0;
   content: \\"\\";
-  top: 0.75rem;
-  left: 0.75rem;
-  transform: translate3d(-50%, -50%, 0);
-  width: 1.5rem;
-  height: 1.5rem;
+  background-color: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin: 0.1875rem 0.4375rem 0.1875rem 0.1875rem;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 1px solid #7c7f81;
 }
 .sr-only {
   position: absolute;
@@ -661,23 +610,7 @@ button::before {
 `;
 
 exports[`getComponentCss() should return correct css for state: current, isDisabled: true and theme: light 1`] = `
-":host {
-  display: flex;
-}
-:host button::before {
-  position: absolute;
-  top: 0.5625rem;
-  left: 0.5625rem;
-  content: \\"\\";
-  background-color: none;
-  width: 1.125rem;
-  height: 1.125rem;
-  margin: 0.1875rem 0.4375rem 0.1875rem 0.1875rem;
-  border-radius: 50%;
-  box-sizing: border-box;
-  border: 1px solid #96989a;
-}
-:host(:nth-of-type(9)) button::after {
+":host(:nth-of-type(9)) button::after {
   position: absolute;
   left: 0;
   content: \\"\\";
@@ -780,14 +713,17 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 button::before {
-  display: block;
   position: absolute;
+  top: 0;
+  left: 0;
   content: \\"\\";
-  top: 0.75rem;
-  left: 0.75rem;
-  transform: translate3d(-50%, -50%, 0);
-  width: 1.5rem;
-  height: 1.5rem;
+  background-color: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin: 0.1875rem 0.4375rem 0.1875rem 0.1875rem;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 1px solid #96989a;
 }
 .sr-only {
   position: absolute;
@@ -803,23 +739,7 @@ button::before {
 `;
 
 exports[`getComponentCss() should return correct css for state: undefined, isDisabled: false and theme: dark 1`] = `
-":host {
-  display: flex;
-}
-:host button::before {
-  position: absolute;
-  top: 0.5625rem;
-  left: 0.5625rem;
-  content: \\"\\";
-  background-color: none;
-  width: 1.125rem;
-  height: 1.125rem;
-  margin: 0.1875rem 0.4375rem 0.1875rem 0.1875rem;
-  border-radius: 50%;
-  box-sizing: border-box;
-  border: 1px solid #7c7f81;
-}
-:host(:nth-of-type(9)) button::after {
+":host(:nth-of-type(9)) button::after {
   position: absolute;
   left: 0;
   content: \\"\\";
@@ -922,14 +842,17 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 button::before {
-  display: block;
   position: absolute;
+  top: 0;
+  left: 0;
   content: \\"\\";
-  top: 0.75rem;
-  left: 0.75rem;
-  transform: translate3d(-50%, -50%, 0);
-  width: 1.5rem;
-  height: 1.5rem;
+  background-color: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin: 0.1875rem 0.4375rem 0.1875rem 0.1875rem;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 1px solid #7c7f81;
 }
 .sr-only {
   position: absolute;
@@ -945,23 +868,7 @@ button::before {
 `;
 
 exports[`getComponentCss() should return correct css for state: undefined, isDisabled: false and theme: light 1`] = `
-":host {
-  display: flex;
-}
-:host button::before {
-  position: absolute;
-  top: 0.5625rem;
-  left: 0.5625rem;
-  content: \\"\\";
-  background-color: none;
-  width: 1.125rem;
-  height: 1.125rem;
-  margin: 0.1875rem 0.4375rem 0.1875rem 0.1875rem;
-  border-radius: 50%;
-  box-sizing: border-box;
-  border: 1px solid #96989a;
-}
-:host(:nth-of-type(9)) button::after {
+":host(:nth-of-type(9)) button::after {
   position: absolute;
   left: 0;
   content: \\"\\";
@@ -1064,14 +971,17 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 button::before {
-  display: block;
   position: absolute;
+  top: 0;
+  left: 0;
   content: \\"\\";
-  top: 0.75rem;
-  left: 0.75rem;
-  transform: translate3d(-50%, -50%, 0);
-  width: 1.5rem;
-  height: 1.5rem;
+  background-color: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin: 0.1875rem 0.4375rem 0.1875rem 0.1875rem;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 1px solid #96989a;
 }
 .sr-only {
   position: absolute;
@@ -1087,23 +997,7 @@ button::before {
 `;
 
 exports[`getComponentCss() should return correct css for state: undefined, isDisabled: true and theme: dark 1`] = `
-":host {
-  display: flex;
-}
-:host button::before {
-  position: absolute;
-  top: 0.5625rem;
-  left: 0.5625rem;
-  content: \\"\\";
-  background-color: none;
-  width: 1.125rem;
-  height: 1.125rem;
-  margin: 0.1875rem 0.4375rem 0.1875rem 0.1875rem;
-  border-radius: 50%;
-  box-sizing: border-box;
-  border: 1px solid #7c7f81;
-}
-:host(:nth-of-type(9)) button::after {
+":host(:nth-of-type(9)) button::after {
   position: absolute;
   left: 0;
   content: \\"\\";
@@ -1206,14 +1100,17 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 button::before {
-  display: block;
   position: absolute;
+  top: 0;
+  left: 0;
   content: \\"\\";
-  top: 0.75rem;
-  left: 0.75rem;
-  transform: translate3d(-50%, -50%, 0);
-  width: 1.5rem;
-  height: 1.5rem;
+  background-color: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin: 0.1875rem 0.4375rem 0.1875rem 0.1875rem;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 1px solid #7c7f81;
 }
 .sr-only {
   position: absolute;
@@ -1229,23 +1126,7 @@ button::before {
 `;
 
 exports[`getComponentCss() should return correct css for state: undefined, isDisabled: true and theme: light 1`] = `
-":host {
-  display: flex;
-}
-:host button::before {
-  position: absolute;
-  top: 0.5625rem;
-  left: 0.5625rem;
-  content: \\"\\";
-  background-color: none;
-  width: 1.125rem;
-  height: 1.125rem;
-  margin: 0.1875rem 0.4375rem 0.1875rem 0.1875rem;
-  border-radius: 50%;
-  box-sizing: border-box;
-  border: 1px solid #96989a;
-}
-:host(:nth-of-type(9)) button::after {
+":host(:nth-of-type(9)) button::after {
   position: absolute;
   left: 0;
   content: \\"\\";
@@ -1348,14 +1229,17 @@ button:focus:not(:focus-visible) {
   outline-color: transparent;
 }
 button::before {
-  display: block;
   position: absolute;
+  top: 0;
+  left: 0;
   content: \\"\\";
-  top: 0.75rem;
-  left: 0.75rem;
-  transform: translate3d(-50%, -50%, 0);
-  width: 1.5rem;
-  height: 1.5rem;
+  background-color: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin: 0.1875rem 0.4375rem 0.1875rem 0.1875rem;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 1px solid #96989a;
 }
 .sr-only {
   position: absolute;
@@ -1371,10 +1255,7 @@ button::before {
 `;
 
 exports[`getComponentCss() should return correct css for state: warning, isDisabled: false and theme: dark 1`] = `
-":host {
-  display: flex;
-}
-button {
+"button {
   display: flex;
   position: relative;
   align-items: center;
@@ -1436,10 +1317,7 @@ button:focus:not(:focus-visible) {
 `;
 
 exports[`getComponentCss() should return correct css for state: warning, isDisabled: false and theme: light 1`] = `
-":host {
-  display: flex;
-}
-button {
+"button {
   display: flex;
   position: relative;
   align-items: center;
@@ -1501,10 +1379,7 @@ button:focus:not(:focus-visible) {
 `;
 
 exports[`getComponentCss() should return correct css for state: warning, isDisabled: true and theme: dark 1`] = `
-":host {
-  display: flex;
-}
-button {
+"button {
   display: flex;
   position: relative;
   align-items: center;
@@ -1554,10 +1429,7 @@ button:focus:not(:focus-visible) {
 `;
 
 exports[`getComponentCss() should return correct css for state: warning, isDisabled: true and theme: light 1`] = `
-":host {
-  display: flex;
-}
-button {
+"button {
   display: flex;
   position: relative;
   align-items: center;
