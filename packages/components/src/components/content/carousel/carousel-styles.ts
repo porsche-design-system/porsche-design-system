@@ -1,14 +1,18 @@
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import { getCss } from '../../../utils';
 import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors, pxToRemWithUnit } from '../../../styles';
-import { headingMedium, mediaQueryMin } from '@porsche-design-system/utilities-v2';
+import { headingMedium, mediaQueryMin, gridSafeZone } from '@porsche-design-system/utilities-v2';
 
 export const bulletActiveClass = 'bullet--active';
 
 const mediaQueryS = mediaQueryMin('s');
 const mediaQueryXxl = mediaQueryMin('xxl');
 
-export const getComponentCss = (_disablePagination: BreakpointCustomizable<boolean>, theme: Theme): string => {
+export const getComponentCss = (
+  wrapHeading: boolean,
+  _disablePagination: BreakpointCustomizable<boolean>,
+  theme: Theme
+): string => {
   const { contrastLowColor, contrastHighColor } = getThemedColors(theme);
 
   return getCss({
@@ -30,7 +34,7 @@ export const getComponentCss = (_disablePagination: BreakpointCustomizable<boole
       // }),
       h2: {
         ...headingMedium,
-        margin: `0 ${pxToRemWithUnit(8)} 0 0 `,
+        margin: 0,
       },
     },
     splide: {
@@ -73,6 +77,12 @@ export const getComponentCss = (_disablePagination: BreakpointCustomizable<boole
         alignItems: 'end',
         gap: pxToRemWithUnit(8),
       },
+      ...(wrapHeading && {
+        padding: `0 ${gridSafeZone.base}`,
+        [mediaQueryMin('xl')]: {
+          padding: `0 ${gridSafeZone.xl}`,
+        },
+      }),
     },
     btn: {
       visibility: 'hidden',

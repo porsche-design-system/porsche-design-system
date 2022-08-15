@@ -204,7 +204,7 @@ export namespace Components {
         /**
           * Defines the heading used in carousel.
          */
-        "heading"?: string;
+        "heading": string;
         /**
           * Override the default wordings that are used for aria-labels on the next/prev buttons and pagination.
          */
@@ -221,6 +221,10 @@ export namespace Components {
           * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
+        /**
+          * Whether the heading should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper.
+         */
+        "wrapHeading"?: boolean;
     }
     interface PCheckboxWrapper {
         /**
@@ -1745,6 +1749,10 @@ declare namespace LocalJSX {
           * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
+        /**
+          * Whether the heading should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper.
+         */
+        "wrapHeading"?: boolean;
     }
     interface PCheckboxWrapper {
         /**
