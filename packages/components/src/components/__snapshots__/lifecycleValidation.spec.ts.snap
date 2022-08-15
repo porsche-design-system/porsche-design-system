@@ -68,6 +68,7 @@ Object {
   "slidesPerMove": "breakpoint",
   "slidesPerPage": "breakpoint",
   "theme": "oneOf",
+  "wrapHeading": "boolean",
 }
 `;
 
