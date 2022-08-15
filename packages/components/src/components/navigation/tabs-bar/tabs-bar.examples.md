@@ -32,7 +32,7 @@ which is emitted by `p-tabs-bar`.
 
 ### Framework Implementations
 
-<Playground :frameworkMarkup="frameworks"></Playground>
+<Playground :frameworkMarkup="codeExampleBasic" :markup="basicButton"></Playground>
 
 ### Buttons
 
@@ -54,7 +54,7 @@ attribute `aria-labelledby` which points to the unique id of the corresponding t
 You must also take care of the focus handling of the tabpanel. Therefor the active tab panel must have an `tabindex="0"`
 to receive keyboard focus and the focus indicator must be styled accordingly.
 
-<Playground class="playground-tabs-bar" :frameworkMarkup="codeExample" :markup="accessibility" :config="config"></Playground>
+<Playground class="playground-tabs-bar" :frameworkMarkup="codeExampleAccessibility" :markup="accessibility" :config="config"></Playground>
 
 ---
 
@@ -114,39 +114,8 @@ const buildTabPanel = (id: number) => `<div id="tab-panel-${id}" hidden tabindex
 export default class Code extends Vue {
   config = { themeable: true };
 
-  codeExample = getTabsBarCodeSamples();
-
-  frameworks = {
-    'vanilla-js': `tabsBar.addEventListener('tabChange', (e) => {
-  e.target.activeTabIndex = e.detail.activeTabIndex;
-});`,
-    angular: `import { Component } from '@angular/core';
-import type { TabChangeEvent } from '@porsche-design-system/components-angular';
-
-@Component({
-  selector: 'tabs-bar-page',
-  template: \`<p-tabs-bar [activeTabIndex]="tabIndex" (tabChange)="onTabChange($event)">...</p-tabs-bar>\`,
-})
-export class TabsBarPage {
-  tabIndex: number;
-
-  onTabChange(e: CustomEvent<TabChangeEvent>) {
-    this.tabIndex = e.detail.activeTabIndex;
-  }
-}`,
-    react: `import { useCallback, useState } from 'react';
-import { PTabsBar } from '@porsche-design-system/components-react';
-import type { TabChangeEvent } from '@porsche-design-system/components-react';
-
-const TabsBarPage = (): JSX.Element => {
-  const [tabIndex, setTabIndex] = useState<number>();
-  const onTabChange = useCallback((e: CustomEvent<TabChangeEvent>) => {
-    setTabIndex(e.detail.activeTabIndex);
-  }, []);
-
-  return <PTabsBar activeTabIndex={tabIndex} onTabChange={onTabChange}>...</PTabsBar>
-}`,
-    };
+  codeExampleAccessibility = getTabsBarCodeSamples('example-accessibility');
+  codeExampleBasic = getTabsBarCodeSamples('example-basic');
 
   weight = 'semibold';
   size = 'medium';

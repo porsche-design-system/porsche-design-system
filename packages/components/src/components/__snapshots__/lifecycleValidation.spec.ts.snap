@@ -5,7 +5,7 @@ Object {
   "compact": "boolean",
   "heading": "string",
   "open": "boolean",
-  "size": "oneOf",
+  "size": "breakpoint",
   "tag": "oneOf",
   "theme": "oneOf",
 }
