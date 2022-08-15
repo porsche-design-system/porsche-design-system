@@ -1,7 +1,7 @@
 import type { Options } from '@splidejs/splide';
 import type { ResponsiveOptions } from '@splidejs/splide';
 import type { BreakpointCustomizable, BreakpointKey } from '../../../types';
-import { mergeDeep, parseJSON } from '../../../utils';
+import { mergeDeep } from '../../../utils';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import type { Splide } from '@splidejs/splide';
 import { ButtonPure } from '../../action/button-pure/button-pure';
