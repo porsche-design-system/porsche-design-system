@@ -1,5 +1,5 @@
 import type { BreakpointCustomizable, Theme } from '../../../types';
-import { getCss } from '../../../utils';
+import { buildResponsiveStyles, getCss } from '../../../utils';
 import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors, pxToRemWithUnit } from '../../../styles';
 import { headingMedium, mediaQueryMin, gridSafeZone } from '@porsche-design-system/utilities-v2';
 
@@ -10,7 +10,7 @@ const mediaQueryXxl = mediaQueryMin('xxl');
 
 export const getComponentCss = (
   wrapHeading: boolean,
-  _disablePagination: BreakpointCustomizable<boolean>,
+  disablePagination: BreakpointCustomizable<boolean>,
   theme: Theme
 ): string => {
   const { contrastLowColor, contrastHighColor } = getThemedColors(theme);
@@ -96,7 +96,7 @@ export const getComponentCss = (
       },
     },
     pagination: {
-      display: 'grid',
+      ...buildResponsiveStyles(disablePagination, (value: boolean) => ({ display: value ? 'none' : 'grid' })),
       gridAutoColumns: '8px',
       gridAutoFlow: 'column',
       justifyContent: 'center',

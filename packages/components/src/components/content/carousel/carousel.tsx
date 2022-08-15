@@ -1,5 +1,12 @@
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, getPrefixedTagNames, THEMES, validateProps } from '../../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  getPrefixedTagNames,
+  parseJSON,
+  THEMES,
+  validateProps,
+} from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import { getComponentCss } from './carousel-styles';
 import { Splide } from '@splidejs/splide';
@@ -73,6 +80,9 @@ export class Carousel {
   }
 
   public componentDidLoad(): void {
+    this.slidesPerPage = parseJSON(this.slidesPerPage) as any;
+    this.slidesPerMove = parseJSON(this.slidesPerMove) as any;
+
     this.splide = new Splide(this.container, {
       start: 0,
       arrows: false,
@@ -104,6 +114,8 @@ export class Carousel {
 
   public componentWillRender(): void {
     validateProps(this, propTypes);
+    this.disablePagination = parseJSON(this.disablePagination) as any;
+
     // TODO: validate heading.. !!this.heading || hasNamedSlot(this.host, 'heading')
     attachComponentCss(this.host, getComponentCss, this.wrapHeading, this.disablePagination, this.theme);
   }
@@ -151,11 +163,13 @@ export class Carousel {
           </div>
         </div>
 
-        <div class="pagination" ref={(ref) => (this.pagination = ref)}>
-          {this.slides.map(() => (
-            <span class="bullet" />
-          ))}
-        </div>
+        {this.disablePagination !== true && (
+          <div class="pagination" ref={(ref) => (this.pagination = ref)}>
+            {this.slides.map(() => (
+              <span class="bullet" />
+            ))}
+          </div>
+        )}
       </Host>
     );
   }

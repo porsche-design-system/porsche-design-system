@@ -26,8 +26,6 @@ export const toSplideBreakpoints = (
   propName: ResponsiveOptsKey,
   value: BreakpointCustomizable<number>
 ): SplideBreakpoints => {
-  value = parseJSON(value) as any; // TODO: parse only once initially?
-
   return typeof value === 'object'
     ? Object.entries(value).reduce(
         (result, [key, val]: [BreakpointKey, number]) => ({
@@ -67,10 +65,12 @@ export const updatePrevNextButtonAria = (btnPrev: ButtonPure, btnNext: ButtonPur
 
 export const updatePagination = (paginationEl: HTMLElement, newIndex: number, prevIndex?: number): void => {
   // TODO: calculation of amount of bullets
-  const { children } = paginationEl;
-  children[newIndex].classList.add(bulletActiveClass);
+  if (paginationEl) {
+    const { children } = paginationEl;
+    children[newIndex].classList.add(bulletActiveClass);
 
-  if (prevIndex >= 0) {
-    children[prevIndex].classList.remove(bulletActiveClass);
+    if (prevIndex >= 0) {
+      children[prevIndex].classList.remove(bulletActiveClass);
+    }
   }
 };
