@@ -1,4 +1,8 @@
-import { cleanMarkup, escapeHtml, patchThemeIntoMarkup } from '../../src/utils';
+import { cleanMarkup, convertMarkup, escapeHtml, patchThemeIntoMarkup } from '../../src/utils';
+
+import * as convertToAngularUtils from '../../src/utils/convertToAngular';
+import * as convertToReactUtils from '../../src/utils/convertToReact';
+import * as formattingUtils from '../../src/utils/formatting';
 
 describe('cleanMarkup()', () => {
   it('should replace multiple br tags with new line', () => {
@@ -71,5 +75,38 @@ describe('escapeHtml()', () => {
     expect(escapeHtml(markup)).toBe(
       '&lt;a href=&quot;https://porsche.com?param1=x&amp;param2=y&quot; target=&quot;_blank&quot;&gt;Link&lt;/a&gt;'
     );
+  });
+});
+
+describe('convertMarkup()', () => {
+  const markup = 'some markup';
+  const cleanedMarkup = 'some cleaned markup';
+  const convertedMarkup = 'someConvertedMarkup';
+
+  it('should call convertToAngular() and cleanMarkup() with correct parameters and return correct markup for framework angular', () => {
+    const convertToAngularSpy = jest.spyOn(convertToAngularUtils, 'convertToAngular').mockReturnValue(convertedMarkup);
+    const cleanMarkupSpy = jest.spyOn(formattingUtils, 'cleanMarkup').mockImplementationOnce(() => cleanedMarkup);
+
+    expect(convertedMarkup).toBe(convertMarkup(markup, 'angular'));
+
+    expect(cleanMarkupSpy).toBeCalledWith(markup);
+    expect(convertToAngularSpy).toBeCalledWith(cleanedMarkup);
+  });
+
+  it('should call convertToReact() and cleanMarkup() with correct parameters and return correct markup for framework react', () => {
+    const convertToReactSpy = jest.spyOn(convertToReactUtils, 'convertToReact').mockReturnValue(convertedMarkup);
+    const cleanMarkupSpy = jest.spyOn(formattingUtils, 'cleanMarkup').mockReturnValue(cleanedMarkup);
+
+    expect(convertedMarkup).toBe(convertMarkup(markup, 'react'));
+
+    expect(cleanMarkupSpy).toBeCalledWith(markup);
+    expect(convertToReactSpy).toBeCalledWith(cleanedMarkup);
+  });
+
+  it('should call cleanMarkup() with correct parameters and return correct markup for framework vanilla-js', () => {
+    const cleanMarkupSpy = jest.spyOn(formattingUtils, 'cleanMarkup').mockReturnValue(cleanedMarkup);
+
+    expect(cleanedMarkup).toBe(convertMarkup(markup, 'vanilla-js'));
+    expect(cleanMarkupSpy).toBeCalledWith(markup);
   });
 });
