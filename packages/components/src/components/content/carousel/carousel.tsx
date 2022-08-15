@@ -19,6 +19,7 @@ import {
   updatePrevNextButtonAria,
 } from './carousel-utils';
 import { ButtonPure } from '../../action/button-pure/button-pure';
+import { gridGap } from '@porsche-design-system/utilities-v2';
 
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
@@ -93,7 +94,7 @@ export class Carousel {
       },
       mediaQuery: 'min',
       breakpoints: getSplideBreakpoints(this.slidesPerPage, this.slidesPerMove),
-      gap: 16,
+      gap: gridGap,
       i18n: this.i18n,
     });
 
