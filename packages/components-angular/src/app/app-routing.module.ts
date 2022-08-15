@@ -80,6 +80,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.InlineNotificationExampleActionButtonComponent,
   },
   {
+    name: 'Modal Example Accessibility',
+    path: 'modal-example-accessibility',
+    component: fromExamples.ModalExampleAccessibilityComponent,
+  },
+  {
     name: 'Segmented Control Example',
     path: 'segmented-control-example',
     component: fromExamples.SegmentedControlExampleComponent,
@@ -105,9 +110,14 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.TableExampleAdvancedComponent,
   },
   {
-    name: 'Tabs Bar Example',
-    path: 'tabs-bar-example',
-    component: fromExamples.TabsBarExampleComponent,
+    name: 'Tabs Bar Example Accessibility',
+    path: 'tabs-bar-example-accessibility',
+    component: fromExamples.TabsBarExampleAccessibilityComponent,
+  },
+  {
+    name: 'Tabs Bar Example Basic',
+    path: 'tabs-bar-example-basic',
+    component: fromExamples.TabsBarExampleBasicComponent,
   },
   {
     name: 'Text Field Wrapper Example IMask',

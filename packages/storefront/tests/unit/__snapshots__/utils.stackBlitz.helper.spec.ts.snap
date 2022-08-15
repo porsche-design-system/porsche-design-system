@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`validateExternalDependencies() should throw error if invalid externalDependency is passed 1`] = `"Passed 'externalStackBlitzDependencies[]' contains invalid value. Allowed are 'imask'."`;
