@@ -10,14 +10,14 @@ const getBar = () => selectNode(page, 'p-tabs-bar >>> .bar');
 const getBarWidth = async (bar: ElementHandle) => await getElementStyle(bar, 'width');
 
 it('should have correct bar width after reattaching', async () => {
-  await goto(page, 'tabs-bar-example');
+  await goto(page, 'tabs-bar-example-accessibility');
   await waitForComponentsReady(page);
 
   // @ts-ignore
   expect(await getBarWidth(await getBar()), 'before navigation').toBe('54px');
 
   await page.select('select', 'overview');
-  await page.select('select', 'tabs-bar-example');
+  await page.select('select', 'tabs-bar-example-accessibility');
   await page.waitForTimeout(CSS_ANIMATION_DURATION);
 
   // @ts-ignore
