@@ -229,6 +229,9 @@ Object {
         "heading": null,
       },
       Object {
+        "wrapHeading": null,
+      },
+      Object {
         "slidesPerPage": "1",
       },
       Object {
