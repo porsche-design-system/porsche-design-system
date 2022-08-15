@@ -3,17 +3,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-stepper-horizontal',
-  styles: [
-    `
-      .reset-children > :before {
-        width: 2rem;
-        height: 2rem;
-        margin: 2rem;
-        border-radius: unset;
-        border: none;
-      }
-    `,
-  ],
   template: `
     <div class="playground light" title="should render all numbers from 1 to 9 on light background">
       <p-stepper-horizontal>
@@ -118,15 +107,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-stepper-horizontal-item>Step 7</p-stepper-horizontal-item>
         <p-stepper-horizontal-item>Step 8</p-stepper-horizontal-item>
         <p-stepper-horizontal-item>Step 9</p-stepper-horizontal-item>
-      </p-stepper-horizontal>
-    </div>
-
-    <div class="playground light" title="should render correct styles when overrides are set">
-      <p-stepper-horizontal class="reset-children">
-        <p-stepper-horizontal-item [state]="'complete'">Step 1</p-stepper-horizontal-item>
-        <p-stepper-horizontal-item [state]="'warning'">Step 2</p-stepper-horizontal-item>
-        <p-stepper-horizontal-item [state]="'current'">Step 3</p-stepper-horizontal-item>
-        <p-stepper-horizontal-item>Step 4</p-stepper-horizontal-item>
       </p-stepper-horizontal>
     </div>
   `,
