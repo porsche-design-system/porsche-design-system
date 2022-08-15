@@ -15,7 +15,6 @@ import * as formattingUtils from '../../src/utils/formatting';
 jest.mock('../../../components-react/package.json', () => ({
   dependencies: {
     'react-imask': '0.0.0',
-    '@porsche-design-system/components-react': '0.0.0',
     react: '0.0.0',
     'react-dom': '0.0.0',
   },
@@ -110,7 +109,7 @@ describe('getReactDependencies()', () => {
 
   it('should return correct StackblitzProjectDependencies for [] as externalDependencies', () => {
     expect(getReactDependencies([])).toEqual({
-      '@porsche-design-system/components-react': '0.0.0',
+      '@porsche-design-system/components-react': 'latest',
       react: '0.0.0',
       'react-dom': '0.0.0',
       '@types/react': '0.0.0',
@@ -123,7 +122,7 @@ describe('getReactDependencies()', () => {
     jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
 
     expect(getReactDependencies(['imask'])).toEqual({
-      '@porsche-design-system/components-react': '0.0.0',
+      '@porsche-design-system/components-react': 'latest',
       react: '0.0.0',
       'react-dom': '0.0.0',
       '@types/react': '0.0.0',
