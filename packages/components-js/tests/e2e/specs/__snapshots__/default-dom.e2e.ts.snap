@@ -146,8 +146,8 @@ exports[`should have no basic DOM regression for p-button-pure 1`] = `
 
 exports[`should have no basic DOM regression for p-carousel 1`] = `
 "<div class=\\"header\\">
-  <h2>
-    value</h2>
+  <slot name=\\"heading\\">
+  </slot>
   <p-button-pure class=\\"btn hydrated\\">
   </p-button-pure>
   <p-button-pure class=\\"btn hydrated\\">
