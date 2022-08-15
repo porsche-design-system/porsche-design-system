@@ -19,4 +19,6 @@ module.exports = {
       babelConfig: false,
     },
   },
+  clearMocks: true,
+  restoreMocks: true,
 };
