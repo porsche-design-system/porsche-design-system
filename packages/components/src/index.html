@@ -42,44 +42,44 @@
     <main>
       some content
       <p-carousel heading="Some Heading" disable-pagination="true">
-        <div>slide 1</div>
-        <div>slide 2</div>
-        <div>slide 3</div>
-        <div>slide 4</div>
-        <div>slide 5</div>
-        <div>slide 6</div>
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+        <div>Slide 4</div>
+        <div>Slide 5</div>
+        <div>Slide 6</div>
       </p-carousel>
       some more content
-      <p-carousel heading="Some Heading" disable-pagination="{base: true, s: false}" wrap-heading="true">
-        <div>slide 1</div>
-        <div>slide 2</div>
-        <div>slide 3</div>
-        <div>slide 4</div>
-        <div>slide 5</div>
-        <div>slide 6</div>
+      <p-carousel slides-per-page="2" disable-pagination="{base: true, s: false}" wrap-heading="true">
+        <h1 slot="heading">Slotted heading</h1>
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+        <div>Slide 4</div>
+        <div>Slide 5</div>
+        <div>Slide 6</div>
       </p-carousel>
 
       <p-content-wrapper>
         some content within content-wrapper
 
-        <p-carousel>
-          <h1 slot="heading">Some heading</h1>
-          <div>slide 1</div>
-          <div>slide 2</div>
-          <div>slide 3</div>
-          <div>slide 4</div>
-          <div>slide 5</div>
-          <div>slide 6</div>
+        <p-carousel heading="Some Heading">
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+          <div>Slide 4</div>
+          <div>Slide 5</div>
+          <div>Slide 6</div>
         </p-carousel>
 
-        <p-carousel wrap-heading="true">
-          <h1 slot="heading">Some heading</h1>
-          <div>slide 1</div>
-          <div>slide 2</div>
-          <div>slide 3</div>
-          <div>slide 4</div>
-          <div>slide 5</div>
-          <div>slide 6</div>
+        <p-carousel slides-per-page="2" wrap-heading="true">
+          <h1 slot="heading">Slotted heading</h1>
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+          <div>Slide 4</div>
+          <div>Slide 5</div>
+          <div>Slide 6</div>
         </p-carousel>
 
         some more content within content-wrapper

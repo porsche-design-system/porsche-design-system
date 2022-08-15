@@ -14,7 +14,6 @@ type ResponsiveOpts = Pick<ResponsiveOptions, 'gap' | 'perPage' | 'perMove'>;
 type ResponsiveOptsKey = keyof ResponsiveOpts;
 export type SplideBreakpoints = Options['breakpoints'];
 
-// TODO: gap?
 export const getSplideBreakpoints = (
   perPage: BreakpointCustomizable<number>,
   perMove: BreakpointCustomizable<number>
