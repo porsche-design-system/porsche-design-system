@@ -9,11 +9,11 @@
     const [, dataStr] = /const dataSorting = ((.|\s)*?);/.exec(content) || [];
     const data = eval(dataStr);
 
-    return { head, data };
+    return { headSorting, dataSorting };
   };
 
   (async () => {
-    const { head, data } = await getHeadAndData();
+    const { headSorting, dataSorting } = await getHeadAndData();
 
     const renderTableHeadRow = (items) =>
       [
@@ -35,8 +35,8 @@
         .join('');
 
     const markup = `
-  <p-table-head>${renderTableHeadRow(head)}</p-table-head>
-  <p-table-body>${renderTableBodyRows(data)}</p-table-body>`;
+  <p-table-head>${renderTableHeadRow(headSorting)}</p-table-head>
+  <p-table-body>${renderTableBodyRows(dataSorting)}</p-table-body>`;
 
     const table = document.querySelector('p-table');
     table.innerHTML = markup;
@@ -49,13 +49,13 @@
         el.sort = items[index];
       });
 
-    passHeadItemsToNodes(head); // initial state
+    passHeadItemsToNodes(headSorting); // initial state
 
     table.addEventListener('sortingChange', (e) => {
       const { id, direction } = e.detail;
 
-      const sortedHead = head.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) }));
-      const sortedData = [...data].sort((a, b) =>
+      const sortedHead = headSorting.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) }));
+      const sortedData = [...dataSorting].sort((a, b) =>
         direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])
       );
 
