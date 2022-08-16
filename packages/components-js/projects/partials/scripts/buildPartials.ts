@@ -1,5 +1,9 @@
 import '../../../../components/scripts/mockMutationObserver';
 
+// patch window usage in cross imports from utils of components package via skeletno styles
+// @ts-ignore
+global.window = { matchMedia: () => undefined };
+
 import * as fs from 'fs';
 import * as path from 'path';
 import { CDN_BASE_URL, CDN_BASE_URL_CN } from '../../../../../cdn.config';
