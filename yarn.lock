@@ -2652,6 +2652,11 @@
   resolved "https://registry.yarnpkg.com/@soda/get-current-script/-/get-current-script-1.0.2.tgz#a53515db25d8038374381b73af20bb4f2e508d87"
   integrity sha512-T7VNNlYVM1SgQ+VsMYhnDkcGmWhQdL0bDyGm5TlQ3GBXnJscEClUUOKduWTmm2zCnvNLC1hc3JpuXjs/nFOc5w==
 
+"@stackblitz/sdk@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@stackblitz/sdk/-/sdk-1.8.0.tgz#9bd5f028ccfc1a921d66f914d1e7ea2761139c1e"
+  integrity sha512-hbS4CpQVF3bxJ+ZD8qu8lAjTZVLTPToLbMtgxbxUmp1AIgqm7i0gMFM1POBA8BqY84CT1A3z74gdCd1bsro7qA==
+
 "@stencil/core@~2.17.3":
   version "2.17.3"
   resolved "https://registry.yarnpkg.com/@stencil/core/-/core-2.17.3.tgz#b86cb76eb57231ce1f04014c2a51d1690c64325d"
