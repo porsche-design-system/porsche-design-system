@@ -1,15 +1,11 @@
 import { breakpoint } from '@porsche-design-system/utilities-v2';
+import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 
-export const mediaQueries = [
-  `(min-width:${breakpoint.xxs})`,
-  `(min-width:${breakpoint.xs})`,
-  `(min-width:${breakpoint.s})`,
-  `(min-width:${breakpoint.m})`,
-  `(min-width:${breakpoint.l})`,
-  `(min-width:${breakpoint.xl})`,
-];
+export const mediaQueries = Object.entries(breakpoint)
+  .filter(([key]: [Breakpoint, string]) => key !== 'xxl')
+  .map(([, val]) => `(min-width:${val})`);
 
-export const mediaQueryLists = mediaQueries.map((mediaQuery) => window.matchMedia(mediaQuery));
+export const mediaQueryLists = mediaQueries.map(window.matchMedia);
 
 export const breakpointChangeCallbackMap: Map<HTMLElement, () => void> = new Map();
 

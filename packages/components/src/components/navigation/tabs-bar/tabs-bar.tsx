@@ -1,15 +1,17 @@
 import type { EventEmitter } from '@stencil/core';
-import { Component, Element, Event, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Event, h, Prop, State, Watch } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   getHTMLElements,
   getPrefixedTagNames,
   getScrollActivePosition,
+  observeBreakpointChange,
   observeChildren,
   parseJSON,
   setAttribute,
   THEMES_EXTENDED_ELECTRIC,
+  unobserveBreakpointChange,
   unobserveChildren,
   validateProps,
 } from '../../../utils';
@@ -27,7 +29,6 @@ import {
 import { getComponentCss } from './tabs-bar-styles';
 import type { Direction } from '../../common/scroller/scroller-utils';
 import { getScrollerElements, GRADIENT_COLOR_THEMES } from '../../common/scroller/scroller-utils';
-import { observeBreakpointChange, unobserveBreakpointChange } from '../../../utils/breakoint-observer';
 
 const propTypes: PropTypes<typeof TabsBar> = {
   size: AllowedTypes.breakpoint<TabSize>(TAB_SIZES),

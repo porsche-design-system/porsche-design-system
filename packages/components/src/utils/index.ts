@@ -1,6 +1,7 @@
 export * from './a11y';
 export * from './attribute-observer';
 export { BREAKPOINTS, parseJSON } from './breakpoint-customizable';
+export { observeBreakpointChange, unobserveBreakpointChange } from './breakpoint-observer';
 export * from './button-handling';
 export * from './button-link-pure-utils';
 export * from './change-case';

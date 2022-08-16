@@ -1,13 +1,13 @@
 import {
-  observeBreakpointChange,
   breakpointChangeCallbackMap,
   handleBreakpointChange,
   mediaQueries,
   mediaQueryLists,
+  observeBreakpointChange,
   unobserveBreakpointChange,
-} from './breakoint-observer';
+} from './breakpoint-observer';
 
-it('should match mediaQuery snapshot', () => {
+it('should match mediaQueries snapshot', () => {
   expect(mediaQueries).toMatchSnapshot();
 });
 
