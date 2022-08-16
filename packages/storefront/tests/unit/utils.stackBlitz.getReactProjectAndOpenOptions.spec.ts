@@ -99,6 +99,14 @@ describe('extendMarkupWithAppComponent()', () => {
 });
 
 describe('getReactDependencies()', () => {
+  const expectedDefaultDependencies = {
+    react: '0.0.0',
+    'react-dom': '0.0.0',
+    '@types/react': '0.0.0',
+    '@types/react-dom': '0.0.0',
+    '@porsche-design-system/components-react': '0.0.0',
+  };
+
   it('should call getExternalDependencies() with correct parameters', () => {
     const externalDependencies: ExternalDependency[] = ['imask'];
     const spy = jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies');
@@ -108,14 +116,21 @@ describe('getReactDependencies()', () => {
     expect(spy).toBeCalledWith(externalDependencies, dependencyMap);
   });
 
-  it('should return correct StackblitzProjectDependencies for [] as externalDependencies', () => {
+  it('should return correct StackblitzProjectDependencies for [] as externalDependencies process.env.NODE_ENV = "test"', () => {
+    expect(process.env.NODE_ENV).toBe('test');
+    expect(getReactDependencies([])).toEqual(expectedDefaultDependencies);
+  });
+
+  it('should return correct StackblitzProjectDependencies for [] as externalDependencies and process.env.NODE_ENV = "development"', () => {
+    const initialNodeEnvValue = process.env.NODE_ENV;
+    process.env.NODE_ENV = 'development';
+
     expect(getReactDependencies([])).toEqual({
-      '@porsche-design-system/components-react': '0.0.0',
-      react: '0.0.0',
-      'react-dom': '0.0.0',
-      '@types/react': '0.0.0',
-      '@types/react-dom': '0.0.0',
+      ...expectedDefaultDependencies,
+      '@porsche-design-system/components-react': 'latest',
     });
+
+    process.env.NODE_ENV = initialNodeEnvValue;
   });
 
   it('should return correct StackblitzProjectDependencies with externalDependency', () => {
@@ -123,11 +138,7 @@ describe('getReactDependencies()', () => {
     jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
 
     expect(getReactDependencies(['imask'])).toEqual({
-      '@porsche-design-system/components-react': '0.0.0',
-      react: '0.0.0',
-      'react-dom': '0.0.0',
-      '@types/react': '0.0.0',
-      '@types/react-dom': '0.0.0',
+      ...expectedDefaultDependencies,
       ...mockedDependency,
     });
   });

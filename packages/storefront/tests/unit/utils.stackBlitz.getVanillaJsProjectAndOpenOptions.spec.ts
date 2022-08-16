@@ -115,10 +115,22 @@ describe('getVanillaJsDependencies()', () => {
     expect(spy).toBeCalledWith(externalDependencies, dependencyMap);
   });
 
-  it('should return correct StackblitzProjectDependencies for [] as externalDependencies', () => {
+  it('should return correct StackblitzProjectDependencies for [] as externalDependencies and process.env.NODE_ENV = "test"', () => {
+    expect(process.env.NODE_ENV).toBe('test');
     expect(getVanillaJsDependencies([])).toEqual({
       '@porsche-design-system/components-js': '0.0.0',
     });
+  });
+
+  it('should return correct StackblitzProjectDependencies for [] as externalDependencies and process.env.NODE_ENV = "development"', () => {
+    const initialNodeEnvValue = process.env.NODE_ENV;
+    process.env.NODE_ENV = 'development';
+
+    expect(getVanillaJsDependencies([])).toEqual({
+      '@porsche-design-system/components-js': 'latest',
+    });
+
+    process.env.NODE_ENV = initialNodeEnvValue;
   });
 
   it('should return correct StackblitzProjectDependencies with externalDependency', () => {
