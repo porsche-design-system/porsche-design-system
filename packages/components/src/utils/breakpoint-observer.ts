@@ -26,9 +26,7 @@ export const observeBreakpointChange = (node: HTMLElement, callback: () => void)
 };
 
 export const unobserveBreakpointChange = (node: HTMLElement): void => {
-  // if (breakpointChangeCallbackMap.has(node)) {
   breakpointChangeCallbackMap.delete(node);
-  // }
   if (breakpointChangeCallbackMap.size === 0) {
     mediaQueryLists.forEach((mediaQueryList) => {
       mediaQueryList.removeEventListener('change', handleBreakpointChange);
