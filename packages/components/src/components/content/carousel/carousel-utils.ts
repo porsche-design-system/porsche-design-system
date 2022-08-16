@@ -69,17 +69,21 @@ export const updatePrevNextButtonAria = (btnPrev: ButtonPure, btnNext: ButtonPur
   };
 };
 
-export const renderPagination = (paginationEl: HTMLElement, amountOfPages: number): void => {
-  paginationEl.innerHTML = Array.from(Array(amountOfPages))
-    .map(() => '<span class="bullet"></span>')
-    .join('');
+export const renderPagination = (paginationEl: HTMLElement, amountOfPages: number, activeIndex: number): void => {
+  if (paginationEl) {
+    paginationEl.innerHTML = Array.from(Array(amountOfPages))
+      .map((_, i) => `<span class='bullet${i === activeIndex ? ' ' + bulletActiveClass : ''}'></span>`)
+      .join('');
+  }
 };
 
 export const updatePagination = (paginationEl: HTMLElement, newIndex: number, prevIndex?: number): void => {
-  const { children } = paginationEl;
-  children[newIndex].classList.add(bulletActiveClass);
+  if (paginationEl) {
+    const { children } = paginationEl;
+    children[newIndex].classList.add(bulletActiveClass);
 
-  if (prevIndex >= 0) {
-    children[prevIndex].classList.remove(bulletActiveClass);
+    if (prevIndex >= 0) {
+      children[prevIndex].classList.remove(bulletActiveClass);
+    }
   }
 };
