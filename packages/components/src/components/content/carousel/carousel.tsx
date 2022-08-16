@@ -12,7 +12,9 @@ import { getComponentCss } from './carousel-styles';
 import { Splide } from '@splidejs/splide';
 import type { CarouselChangeEvent, CarouselI18n } from './carousel-utils';
 import {
+  getAmountOfPages,
   getSplideBreakpoints,
+  renderPagination,
   slideNext,
   slidePrev,
   updatePagination,
@@ -74,16 +76,18 @@ export class Carousel {
   private btnNext: ButtonPure;
   private pagination: HTMLElement;
   private slides: HTMLElement[];
+  private amountOfPages: number;
 
   public componentWillLoad(): void {
-    this.slides = Array.from(this.host.children) as HTMLElement[];
-    this.slides.filter((el) => !el.slot).forEach((el, i) => el.setAttribute('slot', `slide-${i}`));
-  }
-
-  public componentDidLoad(): void {
     this.slidesPerPage = parseJSON(this.slidesPerPage) as any;
     this.slidesPerMove = parseJSON(this.slidesPerMove) as any;
 
+    this.slides = Array.from(this.host.children) as HTMLElement[];
+    this.slides.filter((el) => !el.slot).forEach((el, i) => el.setAttribute('slot', `slide-${i}`));
+    this.amountOfPages = getAmountOfPages(this.slides.length, this.slidesPerPage as number); // TODO: correct breakpoint
+  }
+
+  public componentDidLoad(): void {
     this.splide = new Splide(this.container, {
       start: 0,
       arrows: false,
@@ -98,14 +102,19 @@ export class Carousel {
       i18n: this.i18n,
     });
 
-    this.splide.on('mounted move', () => {
+    this.splide.on('mounted', () => {
       updatePrevNextButtonAria(this.btnPrev, this.btnNext, this.splide);
-      updatePagination(this.pagination, this.splide.options.start);
+      if (this.pagination) {
+        renderPagination(this.pagination, this.amountOfPages);
+        updatePagination(this.pagination, 0);
+      }
     });
 
     this.splide.on('move', (newIndex, prevIndex): void => {
       updatePrevNextButtonAria(this.btnPrev, this.btnNext, this.splide);
-      updatePagination(this.pagination, newIndex, prevIndex);
+      if (this.pagination) {
+        updatePagination(this.pagination, newIndex, prevIndex);
+      }
     });
 
     this.splide.mount();
@@ -142,13 +151,13 @@ export class Carousel {
             {...btnProps}
             icon="arrow-head-left"
             ref={(ref) => (this.btnPrev = ref)}
-            onClick={() => slidePrev(this.splide)}
+            onClick={() => slidePrev(this.splide, this.amountOfPages)}
           />
           <PrefixedTagNames.pButtonPure
             {...btnProps}
             icon="arrow-head-right"
             ref={(ref) => (this.btnNext = ref)}
-            onClick={() => slideNext(this.splide)}
+            onClick={() => slideNext(this.splide, this.amountOfPages)}
           />
         </div>
 
@@ -164,13 +173,7 @@ export class Carousel {
           </div>
         </div>
 
-        {this.disablePagination !== true && (
-          <div class="pagination" ref={(ref) => (this.pagination = ref)}>
-            {this.slides.map(() => (
-              <span class="bullet" />
-            ))}
-          </div>
-        )}
+        {this.disablePagination !== true && <div class="pagination" ref={(ref) => (this.pagination = ref)} />}
       </Host>
     );
   }
