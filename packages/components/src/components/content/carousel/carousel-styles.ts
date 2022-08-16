@@ -6,6 +6,7 @@ import { headingMedium, mediaQueryMin, gridSafeZone } from '@porsche-design-syst
 export const bulletActiveClass = 'bullet--active';
 
 const mediaQueryS = mediaQueryMin('s');
+const mediaQueryXl = mediaQueryMin('xl');
 const mediaQueryXxl = mediaQueryMin('xxl');
 
 export const getComponentCss = (
@@ -79,7 +80,7 @@ export const getComponentCss = (
       },
       ...(wrapHeading && {
         padding: `0 ${gridSafeZone.base}`,
-        [mediaQueryMin('xl')]: {
+        [mediaQueryXl]: {
           padding: `0 ${gridSafeZone.xl}`,
         },
       }),
@@ -95,20 +96,22 @@ export const getComponentCss = (
         gridColumn: 2,
       },
     },
-    pagination: {
-      ...buildResponsiveStyles(disablePagination, (value: boolean) => ({ display: value ? 'none' : 'grid' })),
-      gridAutoColumns: '8px',
-      gridAutoFlow: 'column',
-      justifyContent: 'center',
-      gap: '8px',
-      height: '8px',
-    },
-    bullet: {
-      borderRadius: '4px',
-      background: contrastLowColor,
-    },
-    [bulletActiveClass]: {
-      background: contrastHighColor,
-    },
+    ...(disablePagination !== true && {
+      pagination: {
+        ...buildResponsiveStyles(disablePagination, (value: boolean) => ({ display: value ? 'none' : 'grid' })),
+        gridAutoColumns: '8px',
+        gridAutoFlow: 'column',
+        justifyContent: 'center',
+        gap: '8px',
+        height: '8px',
+      },
+      bullet: {
+        borderRadius: '4px',
+        background: contrastLowColor,
+      },
+      [bulletActiveClass]: {
+        background: contrastHighColor,
+      },
+    }),
   });
 };

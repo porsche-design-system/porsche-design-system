@@ -43,23 +43,35 @@ export const toSplideBreakpoints = (
       };
 };
 
-export const getAmountOfSlides = (splide: Splide): number => splide.Components.Slides.getLength();
-
-export const isFirstSlide = (splide: Splide): boolean => splide.index === 0;
-export const isLastSlide = (splide: Splide): boolean => splide.index === getAmountOfSlides(splide) - 1;
-
-export const slidePrev = (splide: Splide): void => {
-  splide.go(isFirstSlide(splide) ? getAmountOfSlides(splide) - 1 : '<');
+export const getAmountOfPages = (amountOfSlides: number, slidesPerPage: number, _slidesPerMove?: number): number => {
+  // TODO: respect slidesPerMove
+  return Math.ceil(amountOfSlides / slidesPerPage);
 };
 
-export const slideNext = (splide: Splide): void => {
-  splide.go(isLastSlide(splide) ? 0 : '>');
+export const isFirstPage = (splide: Splide): boolean => splide.index === 0;
+export const isLastPage = (splide: Splide, amountOfPages: number): boolean => splide.index === amountOfPages - 1;
+
+export const slidePrev = (splide: Splide, amountOfPages: number): void => {
+  splide.go(isFirstPage(splide) ? amountOfPages - 1 : '<');
+};
+
+export const slideNext = (splide: Splide, amountOfPages: number): void => {
+  splide.go(isLastPage(splide, amountOfPages) ? 0 : '>');
 };
 
 export const updatePrevNextButtonAria = (btnPrev: ButtonPure, btnNext: ButtonPure, splide: Splide): void => {
   const { i18n } = splide.options;
-  btnPrev.aria = { 'aria-label': i18n[isFirstSlide(splide) ? 'last' : 'prev'] };
-  btnNext.aria = { 'aria-label': i18n[isLastSlide(splide) ? 'first' : 'next'] };
+  btnPrev.aria = { 'aria-label': i18n[isFirstPage(splide) ? 'last' : 'prev'] };
+  btnNext.aria = {
+    'aria-label':
+      i18n[isLastPage(splide, getAmountOfPages(splide.splides.length, splide.options.perPage)) ? 'first' : 'next'],
+  };
+};
+
+export const renderPagination = (paginationEl: HTMLElement, amountOfPages: number): void => {
+  paginationEl.innerHTML = Array.from(Array(amountOfPages))
+    .map(() => '<span class="bullet"></span>')
+    .join('');
 };
 
 export const updatePagination = (paginationEl: HTMLElement, newIndex: number, prevIndex?: number): void => {
