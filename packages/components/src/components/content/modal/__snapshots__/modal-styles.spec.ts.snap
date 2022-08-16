@@ -13,8 +13,6 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   justify-content: center !important;
   flex-wrap: wrap !important;
   transition: opacity .2s cubic-bezier(.16,1,.3,1),visibility 0s linear .2s !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
   overflow-y: auto;
 }
 :host::before {
@@ -127,8 +125,6 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   justify-content: center !important;
   flex-wrap: wrap !important;
   transition: opacity .2s cubic-bezier(.16,1,.3,1),visibility 0s linear .2s !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
   overflow-y: auto;
 }
 :host::before {
@@ -243,8 +239,6 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   justify-content: center !important;
   flex-wrap: wrap !important;
   transition: opacity .2s cubic-bezier(.16,1,.3,1),visibility 0s linear .2s !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
   overflow-y: auto;
 }
 :host::before {
@@ -357,8 +351,6 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   justify-content: center !important;
   flex-wrap: wrap !important;
   transition: opacity .2s cubic-bezier(.16,1,.3,1),visibility 0s linear .2s !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
   overflow-y: auto;
 }
 :host::before {
@@ -471,8 +463,6 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   justify-content: center !important;
   flex-wrap: wrap !important;
   transition: opacity .2s cubic-bezier(.16,1,.3,1),visibility 0s linear .2s !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
   overflow-y: auto;
 }
 :host::before {
@@ -587,8 +577,6 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   justify-content: center !important;
   flex-wrap: wrap !important;
   transition: opacity .2s cubic-bezier(.16,1,.3,1),visibility 0s linear .2s !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
   overflow-y: auto;
 }
 :host::before {
@@ -701,8 +689,6 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   justify-content: center !important;
   flex-wrap: wrap !important;
   transition: opacity .2s cubic-bezier(.16,1,.3,1),visibility 0s linear .2s !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
   overflow-y: auto;
 }
 :host::before {
@@ -815,8 +801,6 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   justify-content: center !important;
   flex-wrap: wrap !important;
   transition: opacity .6s cubic-bezier(.16,1,.3,1) !important;
-  opacity: 1 !important;
-  visibility: inherit !important;
   overflow-y: auto;
 }
 :host::before {
@@ -963,8 +947,6 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   justify-content: center !important;
   flex-wrap: wrap !important;
   transition: opacity .6s cubic-bezier(.16,1,.3,1) !important;
-  opacity: 1 !important;
-  visibility: inherit !important;
   overflow-y: auto;
 }
 :host::before {
@@ -1077,8 +1059,6 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   justify-content: center !important;
   flex-wrap: wrap !important;
   transition: opacity .6s cubic-bezier(.16,1,.3,1) !important;
-  opacity: 1 !important;
-  visibility: inherit !important;
   overflow-y: auto;
 }
 :host::before {
@@ -1193,8 +1173,6 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   justify-content: center !important;
   flex-wrap: wrap !important;
   transition: opacity .6s cubic-bezier(.16,1,.3,1) !important;
-  opacity: 1 !important;
-  visibility: inherit !important;
   overflow-y: auto;
 }
 :host::before {
@@ -1307,8 +1285,6 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   justify-content: center !important;
   flex-wrap: wrap !important;
   transition: opacity .6s cubic-bezier(.16,1,.3,1) !important;
-  opacity: 1 !important;
-  visibility: inherit !important;
   overflow-y: auto;
 }
 :host::before {
@@ -1421,8 +1397,6 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   justify-content: center !important;
   flex-wrap: wrap !important;
   transition: opacity .6s cubic-bezier(.16,1,.3,1) !important;
-  opacity: 1 !important;
-  visibility: inherit !important;
   overflow-y: auto;
 }
 :host::before {
@@ -1537,8 +1511,6 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   justify-content: center !important;
   flex-wrap: wrap !important;
   transition: opacity .6s cubic-bezier(.16,1,.3,1) !important;
-  opacity: 1 !important;
-  visibility: inherit !important;
   overflow-y: auto;
 }
 :host::before {
@@ -1651,8 +1623,6 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   justify-content: center !important;
   flex-wrap: wrap !important;
   transition: opacity .6s cubic-bezier(.16,1,.3,1) !important;
-  opacity: 1 !important;
-  visibility: inherit !important;
   overflow-y: auto;
 }
 :host::before {
