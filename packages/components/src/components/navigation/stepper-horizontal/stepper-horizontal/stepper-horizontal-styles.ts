@@ -1,15 +1,12 @@
 import { getCss } from '../../../../utils';
-import { addImportantToEachRule, addImportantToRule, pxToRemWithUnit } from '../../../../styles';
+import { addImportantToRule, pxToRemWithUnit } from '../../../../styles';
 
 export const getComponentCss = (): string => {
   return getCss({
     '@global': {
       ':host': {
         display: 'block',
-        ...addImportantToEachRule({
-          position: 'relative',
-          height: pxToRemWithUnit(32),
-        }),
+        height: addImportantToRule(pxToRemWithUnit(32)),
       },
       '::slotted(*:not(:last-child))': {
         marginRight: addImportantToRule('1em'),

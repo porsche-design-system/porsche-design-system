@@ -65,7 +65,8 @@ export const dependencyMap: DependencyMap<typeof dependencies> = {
 
 export const getVanillaJsDependencies = (externalDependencies: ExternalDependency[]): StackblitzProjectDependencies => {
   return {
-    '@porsche-design-system/components-js': dependencies['@porsche-design-system/components-js'],
+    '@porsche-design-system/components-js':
+      process.env.NODE_ENV === 'development' ? 'latest' : dependencies['@porsche-design-system/components-js'],
     ...getExternalDependencies(externalDependencies, dependencyMap),
   };
 };
