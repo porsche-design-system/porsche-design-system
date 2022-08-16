@@ -85,7 +85,8 @@ export const getAngularDependencies = (externalDependencies: ExternalDependency[
     rxjs: dependencies['rxjs'],
     tslib: dependencies['tslib'],
     'zone.js': dependencies['zone.js'],
-    '@porsche-design-system/components-angular': dependencies['@porsche-design-system/components-angular'],
+    '@porsche-design-system/components-angular':
+      process.env.NODE_ENV === 'development' ? 'latest' : dependencies['@porsche-design-system/components-angular'],
     ...getExternalDependencies(externalDependencies, dependencyMap),
   };
 };
