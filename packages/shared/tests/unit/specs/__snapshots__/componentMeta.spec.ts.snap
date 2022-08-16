@@ -860,6 +860,9 @@ Object {
     "isThemeable": true,
     "props": Array [
       Object {
+        "activePage": "1",
+      },
+      Object {
         "allyLabel": "Pagination",
       },
       Object {
@@ -1400,6 +1403,9 @@ Object {
       },
       Object {
         "gradientColorScheme": "default",
+      },
+      Object {
+        "activeTabIndex": "0",
       },
     ],
     "shouldPatchSlot": false,
