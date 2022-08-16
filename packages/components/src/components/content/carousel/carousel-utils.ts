@@ -43,17 +43,27 @@ export const toSplideBreakpoints = (
       };
 };
 
+export const getSlides = (host: HTMLElement): HTMLElement[] => {
+  const slides = Array.from(host.children).filter((el) => el.slot !== 'heading') as HTMLElement[];
+  slides.forEach((el, i) => el.setAttribute('slot', `slide-${i}`));
+
+  return slides;
+};
+
 export const getAmountOfPages = (amountOfSlides: number, slidesPerPage: number): number => {
   // TODO: respect slidesPerMove
+  // TODO: what about 0 slides?
   // const naturalAmount = Math.floor(amountOfSlides / slidesPerPage);
   return amountOfSlides < slidesPerPage ? 1 : amountOfSlides - slidesPerPage + 1;
 };
 
 export const isFirstPage = (splide: Splide): boolean => splide.index === 0;
-export const isLastPage = (splide: Splide, amountOfPages: number): boolean => splide.index === amountOfPages - 1;
+export const isLastPage = (splide: Splide, amountOfPages: number): boolean => splide.index >= amountOfPages - 1; // catch removal of slide
 
 export const slidePrev = (splide: Splide, amountOfPages: number): void => {
-  splide.go(isFirstPage(splide) ? amountOfPages - 1 : '<');
+  // sanitize in case of removal of slide since splide.index seems to be from before splide.refresh()
+  const prevSlide = splide.index === amountOfPages ? splide.index - 2 : '<';
+  splide.go(isFirstPage(splide) ? amountOfPages - 1 : prevSlide);
 };
 
 export const slideNext = (splide: Splide, amountOfPages: number): void => {
@@ -71,19 +81,17 @@ export const updatePrevNextButtonAria = (btnPrev: ButtonPure, btnNext: ButtonPur
 
 export const renderPagination = (paginationEl: HTMLElement, amountOfPages: number, activeIndex: number): void => {
   if (paginationEl) {
+    // sanitize in case of removal of slide since activeIndex is from before splide.refresh()
+    activeIndex = activeIndex > amountOfPages - 1 ? amountOfPages - 1 : activeIndex;
     paginationEl.innerHTML = Array.from(Array(amountOfPages))
       .map((_, i) => `<span class='bullet${i === activeIndex ? ' ' + bulletActiveClass : ''}'></span>`)
       .join('');
   }
 };
 
-export const updatePagination = (paginationEl: HTMLElement, newIndex: number, prevIndex?: number): void => {
+export const updatePagination = (paginationEl: HTMLElement, newIndex: number): void => {
   if (paginationEl) {
-    const { children } = paginationEl;
-    children[newIndex].classList.add(bulletActiveClass);
-
-    if (prevIndex >= 0) {
-      children[prevIndex].classList.remove(bulletActiveClass);
-    }
+    paginationEl.querySelector('.' + bulletActiveClass).classList.remove(bulletActiveClass);
+    paginationEl.children[newIndex].classList.add(bulletActiveClass);
   }
 };
