@@ -51,13 +51,13 @@ export class Carousel {
   @Prop() public wrapHeading?: boolean;
 
   /** Sets the amount of slides visible at the same time. */
-  @Prop() public slidesPerPage?: BreakpointCustomizable<number> = 1;
+  @Prop({ mutable: true }) public slidesPerPage?: BreakpointCustomizable<number> = 1;
 
   /** Sets the amount of slides that move on a single prev/next click. */
-  @Prop() public slidesPerMove?: BreakpointCustomizable<number> = 1;
+  @Prop({ mutable: true }) public slidesPerMove?: BreakpointCustomizable<number> = 1;
 
   /** If true, the carousel will not show pagination bullets at the bottom. */
-  @Prop() public disablePagination?: BreakpointCustomizable<boolean> = false;
+  @Prop({ mutable: true }) public disablePagination?: BreakpointCustomizable<boolean> = false;
 
   /** Override the default wordings that are used for aria-labels on the next/prev buttons and pagination. */
   @Prop() public i18n?: CarouselI18n = {};
