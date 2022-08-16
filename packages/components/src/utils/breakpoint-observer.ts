@@ -5,7 +5,7 @@ export const mediaQueries = Object.entries(breakpoint)
   .filter(([key]: [Breakpoint, string]) => key !== 'xxl')
   .map(([, val]) => `(min-width:${val})`);
 
-export let mediaQueryLists = mediaQueries.map((mediaQuery) => window.matchMedia(mediaQuery));
+export let mediaQueryLists = mediaQueries.map(window.matchMedia);
 
 // for unit tests
 // TODO: check tree shaking
