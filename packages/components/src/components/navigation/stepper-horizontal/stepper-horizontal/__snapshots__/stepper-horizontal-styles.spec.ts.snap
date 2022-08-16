@@ -3,7 +3,6 @@
 exports[`getComponentCss() should return correct css 1`] = `
 ":host {
   display: block;
-  position: relative !important;
   height: 2rem !important;
 }
 ::slotted(*:not(:last-child)) {
