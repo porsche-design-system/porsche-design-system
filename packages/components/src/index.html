@@ -40,17 +40,7 @@
     </header>
 
     <main>
-      some content
-      <p-carousel heading="Some Heading" disable-pagination="true">
-        <div>Slide 1</div>
-        <div>Slide 2</div>
-        <div>Slide 3</div>
-        <div>Slide 4</div>
-        <div>Slide 5</div>
-        <div>Slide 6</div>
-      </p-carousel>
-      some more content
-      <p-carousel slides-per-page="2" disable-pagination="{base: true, s: false}" wrap-heading="true">
+      <p-carousel slides-per-page="{base: 2, s: 3}">
         <h1 slot="heading">Slotted heading</h1>
         <div>Slide 1</div>
         <div>Slide 2</div>
@@ -60,34 +50,21 @@
         <div>Slide 6</div>
       </p-carousel>
 
-      <p-content-wrapper>
-        some content within content-wrapper
-
-        <p-carousel heading="Some Heading">
-          <div>Slide 1</div>
-          <div>Slide 2</div>
-          <div>Slide 3</div>
-          <div>Slide 4</div>
-          <div>Slide 5</div>
-          <div>Slide 6</div>
-        </p-carousel>
-
-        <p-carousel slides-per-page="2" wrap-heading="true">
-          <h1 slot="heading">Slotted heading</h1>
-          <div>Slide 1</div>
-          <div>Slide 2</div>
-          <div>Slide 3</div>
-          <div>Slide 4</div>
-          <div>Slide 5</div>
-          <div>Slide 6</div>
-        </p-carousel>
-
-        some more content within content-wrapper
-      </p-content-wrapper>
+      <button id="btn-add">add slide</button>
+      <button id="btn-remove">remove slide</button>
     </main>
 
     <script>
-      document.querySelector('p-carousel').addEventListener('carouselChange', console.log);
+      const carousel = document.querySelector('p-carousel');
+      carousel.addEventListener('carouselChange', console.log);
+      document.querySelector('#btn-add').addEventListener('click', () => {
+        const child = document.createElement('div');
+        child.innerText = 'another child';
+        carousel.append(child);
+      });
+      document.querySelector('#btn-remove').addEventListener('click', () => {
+        carousel.children[carousel.children.length - 1].remove();
+      });
 
       <!-- START: keep this snippet to log component lifecycle events -->
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>

@@ -5,9 +5,11 @@ import {
   getCurrentMatchingBreakpointValue,
   getPrefixedTagNames,
   observeBreakpointChange,
+  observeChildren,
   parseJSON,
   THEMES,
   unobserveBreakpointChange,
+  unobserveChildren,
   validateProps,
 } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
@@ -16,6 +18,7 @@ import { Splide } from '@splidejs/splide';
 import type { CarouselChangeEvent, CarouselI18n } from './carousel-utils';
 import {
   getAmountOfPages,
+  getSlides,
   getSplideBreakpoints,
   renderPagination,
   slideNext,
@@ -84,17 +87,15 @@ export class Carousel {
   private slides: HTMLElement[];
 
   public connectedCallback(): void {
+    observeChildren(this.host, this.updateSlidesAndPagination);
     this.observeBreakpointChanges();
   }
 
   public componentWillLoad(): void {
-    this.slidesPerPage = parseJSON(this.slidesPerPage) as any;
-    this.slidesPerMove = parseJSON(this.slidesPerMove) as any;
+    this.slidesPerPage = parseJSON(this.slidesPerPage) as any; // TODO: what about changes?
+    this.slidesPerMove = parseJSON(this.slidesPerMove) as any; // TODO: what about changes?
 
-    this.slides = Array.from(this.host.children).filter((el) => !el.slot) as HTMLElement[];
-    this.slides.forEach((el, i) => el.setAttribute('slot', `slide-${i}`));
-
-    this.updateAmountOfPages();
+    this.updateSlidesAndPagination();
     this.observeBreakpointChanges();
   }
 
@@ -115,17 +116,17 @@ export class Carousel {
 
     this.splide.on('mounted', () => {
       updatePrevNextButtonAria(this.btnPrev, this.btnNext, this.splide);
-      renderPagination(this.pagination, this.amountOfPages, 0);
+      renderPagination(this.pagination, this.amountOfPages, 0); // initial pagination
     });
 
-    this.splide.on('move', (newIndex, prevIndex): void => {
+    this.splide.on('move', (newIndex): void => {
       updatePrevNextButtonAria(this.btnPrev, this.btnNext, this.splide);
-      updatePagination(this.pagination, newIndex, prevIndex);
+      updatePagination(this.pagination, newIndex);
     });
 
     this.splide.mount();
-    // TODO: update on slide addition/removal or prop change?
-    // TODO: focus/keyboard handling?
+    // TODO: update pagination and arias on slide addition/removal
+    // TODO: focus/keyboard handling
   }
 
   public componentWillRender(): void {
@@ -136,7 +137,12 @@ export class Carousel {
     attachComponentCss(this.host, getComponentCss, this.wrapHeading, this.disablePagination, this.theme);
   }
 
+  public componentDidUpdate(): void {
+    this.splide.refresh();
+  }
+
   public disconnectedCallback(): void {
+    unobserveChildren(this.host);
     unobserveBreakpointChange(this.host);
   }
 
@@ -192,6 +198,11 @@ export class Carousel {
     if (typeof this.slidesPerPage === 'object') {
       observeBreakpointChange(this.host, this.updateAmountOfPages);
     }
+  };
+
+  private updateSlidesAndPagination = (): void => {
+    this.slides = getSlides(this.host);
+    this.updateAmountOfPages();
   };
 
   private updateAmountOfPages = (): void => {
