@@ -149,12 +149,12 @@ describe('getAngularDependencies()', () => {
     expect(spy).toBeCalledWith(externalDependencies, dependencyMap);
   });
 
-  it('should return correct StackblitzProjectDependencies for [] as externalDependencies process.env.NODE_ENV = "test"', () => {
+  it('should return correct StackblitzProjectDependencies for [] as externalDependencies process.env.NODE_ENV=test', () => {
     expect(process.env.NODE_ENV).toBe('test');
     expect(getAngularDependencies([])).toEqual(expectedDefaultDependencies);
   });
 
-  it('should return correct StackblitzProjectDependencies for [] as externalDependencies and process.env.NODE_ENV = "development"', () => {
+  it('should return correct StackblitzProjectDependencies for [] as externalDependencies and process.env.NODE_ENV=development', () => {
     const initialNodeEnvValue = process.env.NODE_ENV;
     process.env.NODE_ENV = 'development';
 
