@@ -82,8 +82,8 @@ export class Carousel {
     this.slidesPerPage = parseJSON(this.slidesPerPage) as any;
     this.slidesPerMove = parseJSON(this.slidesPerMove) as any;
 
-    this.slides = Array.from(this.host.children) as HTMLElement[];
-    this.slides.filter((el) => !el.slot).forEach((el, i) => el.setAttribute('slot', `slide-${i}`));
+    this.slides = Array.from(this.host.children).filter((el) => !el.slot) as HTMLElement[];
+    this.slides.forEach((el, i) => el.setAttribute('slot', `slide-${i}`));
     this.amountOfPages = getAmountOfPages(this.slides.length, this.slidesPerPage as number); // TODO: correct breakpoint
   }
 
