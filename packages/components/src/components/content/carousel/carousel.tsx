@@ -74,14 +74,14 @@ export class Carousel {
   /** Emitted when carousel's content slides. */
   @Event({ bubbles: false }) public carouselChange: EventEmitter<CarouselChangeEvent>;
 
+  @State() private amountOfPages: number;
+
   private splide: Splide;
   private container: HTMLElement;
   private btnPrev: ButtonPure;
   private btnNext: ButtonPure;
   private pagination: HTMLElement;
   private slides: HTMLElement[];
-
-  @State() private amountOfPages: number;
 
   public connectedCallback(): void {
     this.observeBreakpointChanges();
