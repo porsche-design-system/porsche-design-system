@@ -45,7 +45,8 @@ export const dependencyMap: DependencyMap<typeof dependencies> = {
 export const getReactDependencies = (externalDependencies: ExternalDependency[]): StackblitzProjectDependencies => {
   // TODO: pick dependencies?
   return {
-    '@porsche-design-system/components-react': dependencies['@porsche-design-system/components-react'],
+    '@porsche-design-system/components-react':
+      process.env.NODE_ENV === 'development' ? 'latest' : dependencies['@porsche-design-system/components-react'],
     react: dependencies['react'],
     'react-dom': dependencies['react-dom'],
     '@types/react': devDependencies['@types/react'],
