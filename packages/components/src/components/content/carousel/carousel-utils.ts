@@ -10,7 +10,7 @@ import { bulletActiveClass } from './carousel-styles';
 export type CarouselI18n = Partial<Pick<Options['i18n'], 'slideLabel' | 'prev' | 'next' | 'first' | 'last'>>;
 export type CarouselChangeEvent = { activeIndex: number; previousIndex: number };
 
-type ResponsiveOpts = Pick<ResponsiveOptions, 'gap' | 'perPage' | 'perMove'>;
+type ResponsiveOpts = Pick<ResponsiveOptions, 'perPage' | 'perMove'>;
 type ResponsiveOptsKey = keyof ResponsiveOpts;
 export type SplideBreakpoints = Options['breakpoints'];
 
@@ -45,7 +45,8 @@ export const toSplideBreakpoints = (
 
 export const getAmountOfPages = (amountOfSlides: number, slidesPerPage: number): number => {
   // TODO: respect slidesPerMove
-  return Math.ceil(amountOfSlides / slidesPerPage);
+  // const naturalAmount = Math.floor(amountOfSlides / slidesPerPage);
+  return amountOfSlides < slidesPerPage ? 1 : amountOfSlides - slidesPerPage + 1;
 };
 
 export const isFirstPage = (splide: Splide): boolean => splide.index === 0;
