@@ -160,6 +160,8 @@ exports[`should have no basic DOM regression for p-carousel 1`] = `
   </div>
 </div>
 <div class=\\"pagination\\">
+  <span class=\\"bullet bullet--active\\">
+  </span>
 </div>"
 `;
 
