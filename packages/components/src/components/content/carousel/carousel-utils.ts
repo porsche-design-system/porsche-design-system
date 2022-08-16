@@ -43,7 +43,7 @@ export const toSplideBreakpoints = (
       };
 };
 
-export const getAmountOfPages = (amountOfSlides: number, slidesPerPage: number, _slidesPerMove?: number): number => {
+export const getAmountOfPages = (amountOfSlides: number, slidesPerPage: number): number => {
   // TODO: respect slidesPerMove
   return Math.ceil(amountOfSlides / slidesPerPage);
 };
@@ -75,13 +75,10 @@ export const renderPagination = (paginationEl: HTMLElement, amountOfPages: numbe
 };
 
 export const updatePagination = (paginationEl: HTMLElement, newIndex: number, prevIndex?: number): void => {
-  // TODO: calculation of amount of bullets
-  if (paginationEl) {
-    const { children } = paginationEl;
-    children[newIndex].classList.add(bulletActiveClass);
+  const { children } = paginationEl;
+  children[newIndex].classList.add(bulletActiveClass);
 
-    if (prevIndex >= 0) {
-      children[prevIndex].classList.remove(bulletActiveClass);
-    }
+  if (prevIndex >= 0) {
+    children[prevIndex].classList.remove(bulletActiveClass);
   }
 };
