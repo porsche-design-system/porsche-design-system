@@ -5,7 +5,11 @@ export const mediaQueries = Object.entries(breakpoint)
   .filter(([key]: [Breakpoint, string]) => key !== 'xxl')
   .map(([, val]) => `(min-width:${val})`);
 
-export const mediaQueryLists = mediaQueries.map(window.matchMedia);
+export let mediaQueryLists = mediaQueries.map(window.matchMedia);
+
+// for unit tests
+// TODO: check tree shaking
+export const overrideMediaQueryLists = (override: MediaQueryList[]) => (mediaQueryLists = override);
 
 export const breakpointChangeCallbackMap: Map<HTMLElement, () => void> = new Map();
 
@@ -22,9 +26,9 @@ export const observeBreakpointChange = (node: HTMLElement, callback: () => void)
 };
 
 export const unobserveBreakpointChange = (node: HTMLElement): void => {
-  if (breakpointChangeCallbackMap.has(node)) {
-    breakpointChangeCallbackMap.delete(node);
-  }
+  // if (breakpointChangeCallbackMap.has(node)) {
+  breakpointChangeCallbackMap.delete(node);
+  // }
   if (breakpointChangeCallbackMap.size === 0) {
     mediaQueryLists.forEach((mediaQueryList) => {
       mediaQueryList.removeEventListener('change', handleBreakpointChange);
