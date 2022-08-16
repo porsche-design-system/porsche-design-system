@@ -9,7 +9,9 @@ export let mediaQueryLists = mediaQueries.map(window.matchMedia);
 
 // for unit tests
 // TODO: check tree shaking
-export const overrideMediaQueryLists = (override: MediaQueryList[]) => (mediaQueryLists = override);
+export const overrideMediaQueryLists = (override: MediaQueryList[]): void => {
+  mediaQueryLists = override;
+};
 
 export const breakpointChangeCallbackMap: Map<HTMLElement, () => void> = new Map();
 
