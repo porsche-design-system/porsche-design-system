@@ -1,10 +1,13 @@
-import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Prop, State } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
+  getCurrentMatchingBreakpointValue,
   getPrefixedTagNames,
+  observeBreakpointChange,
   parseJSON,
   THEMES,
+  unobserveBreakpointChange,
   validateProps,
 } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
@@ -55,6 +58,7 @@ export class Carousel {
   /** Sets the amount of slides visible at the same time. */
   @Prop({ mutable: true }) public slidesPerPage?: BreakpointCustomizable<number> = 1;
 
+  // TODO: remove?
   /** Sets the amount of slides that move on a single prev/next click. */
   @Prop({ mutable: true }) public slidesPerMove?: BreakpointCustomizable<number> = 1;
 
@@ -76,7 +80,12 @@ export class Carousel {
   private btnNext: ButtonPure;
   private pagination: HTMLElement;
   private slides: HTMLElement[];
-  private amountOfPages: number;
+
+  @State() private amountOfPages: number;
+
+  public connectedCallback(): void {
+    this.observeBreakpointChanges();
+  }
 
   public componentWillLoad(): void {
     this.slidesPerPage = parseJSON(this.slidesPerPage) as any;
@@ -84,7 +93,9 @@ export class Carousel {
 
     this.slides = Array.from(this.host.children).filter((el) => !el.slot) as HTMLElement[];
     this.slides.forEach((el, i) => el.setAttribute('slot', `slide-${i}`));
-    this.amountOfPages = getAmountOfPages(this.slides.length, this.slidesPerPage as number); // TODO: correct breakpoint
+
+    this.updateAmountOfPages();
+    this.observeBreakpointChanges();
   }
 
   public componentDidLoad(): void {
@@ -104,17 +115,12 @@ export class Carousel {
 
     this.splide.on('mounted', () => {
       updatePrevNextButtonAria(this.btnPrev, this.btnNext, this.splide);
-      if (this.pagination) {
-        renderPagination(this.pagination, this.amountOfPages);
-        updatePagination(this.pagination, 0);
-      }
+      renderPagination(this.pagination, this.amountOfPages, 0);
     });
 
     this.splide.on('move', (newIndex, prevIndex): void => {
       updatePrevNextButtonAria(this.btnPrev, this.btnNext, this.splide);
-      if (this.pagination) {
-        updatePagination(this.pagination, newIndex, prevIndex);
-      }
+      updatePagination(this.pagination, newIndex, prevIndex);
     });
 
     this.splide.mount();
@@ -128,6 +134,10 @@ export class Carousel {
 
     // TODO: validate heading.. !!this.heading || hasNamedSlot(this.host, 'heading')
     attachComponentCss(this.host, getComponentCss, this.wrapHeading, this.disablePagination, this.theme);
+  }
+
+  public disconnectedCallback(): void {
+    unobserveBreakpointChange(this.host);
   }
 
   public render(): JSX.Element {
@@ -177,4 +187,15 @@ export class Carousel {
       </Host>
     );
   }
+
+  private observeBreakpointChanges = (): void => {
+    if (typeof this.slidesPerPage === 'object') {
+      observeBreakpointChange(this.host, this.updateAmountOfPages);
+    }
+  };
+
+  private updateAmountOfPages = (): void => {
+    this.amountOfPages = getAmountOfPages(this.slides.length, getCurrentMatchingBreakpointValue(this.slidesPerPage));
+    renderPagination(this.pagination, this.amountOfPages, this.splide?.index || 0);
+  };
 }

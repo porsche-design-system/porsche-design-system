@@ -2,7 +2,7 @@ export * from './a11y';
 export * from './attribute-observer';
 export { BREAKPOINTS, parseJSON } from './breakpoint-customizable';
 export { observeBreakpointChange, unobserveBreakpointChange } from './breakpoint-observer';
-export { getCurrentBreakpointKey } from './breakpoint-observer-utils';
+export { getCurrentMatchingBreakpointValue } from './breakpoint-observer-utils';
 export * from './button-handling';
 export * from './button-link-pure-utils';
 export * from './change-case';
