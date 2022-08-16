@@ -167,7 +167,7 @@ const generateComponentMeta = (): void => {
     // props
     const props: ComponentMeta['props'] = Array.from(
       // regex can handle value on same line and next line only
-      source.matchAll(/@Prop\(\) public ([A-z]+)\??(?:: (.+?))?(?:=[^>]\s*(.+))?;/g)
+      source.matchAll(/@Prop\(.*\) public ([A-z]+)\??(?:: (.+?))?(?:=[^>]\s*(.+))?;/g)
     ).map(([, propName, propType, propValue]) => {
       const cleanedValue =
         propValue === 'true'
@@ -185,7 +185,7 @@ const generateComponentMeta = (): void => {
     // required props
     const requiredProps: ComponentMeta['requiredProps'] = Array.from(
       // same regex as above without optional ? modifier
-      source.matchAll(/@Prop\(\) public ([A-z]+)(?:: (.+?))?(?:= (.+))?;/g)
+      source.matchAll(/@Prop\(.*\) public ([A-z]+)(?:: (.+?))?(?:= (.+))?;/g)
     ).map(([, propName]) => propName);
 
     const [, invalidLinkUsageProp] = /throwIfInvalidLink(?:Pure)?Usage\(this\.host, this\.(\w+)\);/.exec(source) || [];
