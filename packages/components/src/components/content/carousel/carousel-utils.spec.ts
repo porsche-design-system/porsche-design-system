@@ -24,7 +24,7 @@ describe('getSplideBreakpoints()', () => {
 
 describe('toSplideBreakpoints()', () => {
   it('should return correct correct object for flat BreakpointCustomizable parameter', () => {
-    expect(toSplideBreakpoints('perPage', 10)).toEqual({ 0: { gap: 10 } });
+    expect(toSplideBreakpoints('perPage', 10)).toEqual({ 0: { perPage: 10 } });
     expect(toSplideBreakpoints('perMove', 2)).toEqual({ 0: { perMove: 2 } });
   });
 
