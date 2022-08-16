@@ -61,7 +61,7 @@
   <div>Slide 6</div>
 </p-carousel>
 
-<p-carousel heading="Responsive slides per page" slides-per-page="{base: 3, s: 1, m: 3}">
+<p-carousel heading="Responsive slides per page" slides-per-page="{base: 3, s: 1, m: 2}">
   <div>Slide 1</div>
   <div>Slide 2</div>
   <div>Slide 3</div>
@@ -70,7 +70,7 @@
   <div>Slide 6</div>
 </p-carousel>
 
-<p-carousel heading="Some Heading" slides-per-page="1.2">
+<p-carousel heading="Floating slides per page" slides-per-page="1.2">
   <div>Slide 1</div>
   <div>Slide 2</div>
   <div>Slide 3</div>
@@ -79,7 +79,7 @@
   <div>Slide 6</div>
 </p-carousel>
 
-<p-carousel heading="Some Heading" disable-pagination="true">
+<p-carousel heading="Disabled pagination" disable-pagination="true">
   <div>Slide 1</div>
   <div>Slide 2</div>
   <div>Slide 3</div>
@@ -88,7 +88,7 @@
   <div>Slide 6</div>
 </p-carousel>
 
-<p-carousel heading="Some Heading" disable-pagination="{base: true, s: false}">
+<p-carousel heading="Responsive disabled pagination" disable-pagination="{base: true, s: false, m: true}">
   <div>Slide 1</div>
   <div>Slide 2</div>
   <div>Slide 3</div>
