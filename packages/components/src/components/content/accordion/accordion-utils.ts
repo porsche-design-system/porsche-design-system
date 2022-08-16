@@ -83,9 +83,7 @@ export const observeWindowResize = (htmlElement: HTMLElement, callback: () => vo
 };
 
 export const unobserveWindowResize = (htmlElement: HTMLElement): void => {
-  if (registeredElements.has(htmlElement)) {
-    registeredElements.delete(htmlElement);
-  }
+  registeredElements.delete(htmlElement);
   if (registeredElements.size === 0) {
     window.removeEventListener('resize', onWindowResize);
   }
