@@ -217,7 +217,7 @@ Object {
   "p-carousel": Object {
     "hasAriaProp": false,
     "hasObserveAttributes": false,
-    "hasObserveChildren": false,
+    "hasObserveChildren": true,
     "hasSkeleton": false,
     "hasSlot": true,
     "hasSlottedCss": false,
