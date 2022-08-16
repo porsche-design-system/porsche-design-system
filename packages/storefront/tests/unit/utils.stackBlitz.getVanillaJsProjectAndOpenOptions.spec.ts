@@ -15,6 +15,7 @@ import * as stackBlitzHelperUtils from '../../src/utils/stackblitz/helper';
 jest.mock('../../../components-js/package.json', () => ({
   dependencies: {
     imask: '0.0.0',
+    '@porsche-design-system/components-js': '0.0.0',
   },
 }));
 
@@ -116,7 +117,7 @@ describe('getVanillaJsDependencies()', () => {
 
   it('should return correct StackblitzProjectDependencies for [] as externalDependencies', () => {
     expect(getVanillaJsDependencies([])).toEqual({
-      '@porsche-design-system/components-js': 'latest',
+      '@porsche-design-system/components-js': '0.0.0',
     });
   });
 
@@ -125,7 +126,7 @@ describe('getVanillaJsDependencies()', () => {
     jest.spyOn(stackBlitzHelperUtils, 'getExternalDependencies').mockReturnValue(mockedDependency);
 
     expect(getVanillaJsDependencies(['imask'])).toEqual({
-      '@porsche-design-system/components-js': 'latest',
+      '@porsche-design-system/components-js': '0.0.0',
       ...mockedDependency,
     });
   });
