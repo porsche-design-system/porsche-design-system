@@ -8,9 +8,9 @@ import { ButtonPure } from '../../action/button-pure/button-pure';
 import { bulletActiveClass } from './carousel-styles';
 
 // https://splidejs.com/guides/i18n/#default-texts
-export type CarouselInternationalization = Partial<
-  Pick<Options['i18n'], 'prev' | 'next' | 'first' | 'last' | 'slideLabel' | 'slide'>
->;
+export type CarouselInternationalization =
+  | Partial<Pick<Options['i18n'], 'prev' | 'next' | 'first' | 'last' | 'slideLabel' | 'slide'>>
+  | string; // string to support attribute, gets removed via InputParser
 export type CarouselChangeEvent = { activeIndex: number; previousIndex: number };
 
 type ResponsiveOpts = Pick<ResponsiveOptions, 'perPage' | 'perMove'>;

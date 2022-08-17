@@ -208,7 +208,7 @@ export namespace Components {
         /**
           * Override the default wordings that are used for aria-labels on the next/prev buttons and pagination.
          */
-        "internationalization"?: CarouselInternationalization | string;
+        "internationalization"?: CarouselInternationalization;
         /**
           * Sets the amount of slides that move on a single prev/next click.
          */
@@ -1732,7 +1732,7 @@ declare namespace LocalJSX {
         /**
           * Override the default wordings that are used for aria-labels on the next/prev buttons and pagination.
          */
-        "internationalization"?: CarouselInternationalization | string;
+        "internationalization"?: CarouselInternationalization;
         /**
           * Emitted when carousel's content slides.
          */
