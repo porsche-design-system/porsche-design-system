@@ -7,7 +7,10 @@ import type { Splide } from '@splidejs/splide';
 import { ButtonPure } from '../../action/button-pure/button-pure';
 import { bulletActiveClass } from './carousel-styles';
 
-export type CarouselI18n = Partial<Pick<Options['i18n'], 'slideLabel' | 'prev' | 'next' | 'first' | 'last'>>;
+// https://splidejs.com/guides/i18n/#default-texts
+export type CarouselInternationalization = Partial<
+  Pick<Options['i18n'], 'prev' | 'next' | 'first' | 'last' | 'slideLabel' | 'slide'>
+>;
 export type CarouselChangeEvent = { activeIndex: number; previousIndex: number };
 
 type ResponsiveOpts = Pick<ResponsiveOptions, 'perPage' | 'perMove'>;

@@ -40,7 +40,10 @@
     </header>
 
     <main>
-      <p-carousel slides-per-page="{base: 2, s: 3}">
+      <p-carousel
+        slides-per-page="{base: 2, s: 3}"
+        internationalization="{ slide: 'product', slideLabel: 'Slide %s von %s', prev: 'Vorheriger Slide', next: 'Nächster Slide', first: 'Zum ersten Slide', last: 'Zum letzten Slide' }"
+      >
         <h1 slot="heading">Slotted heading</h1>
         <div>Slide 1</div>
         <div>Slide 2</div>
