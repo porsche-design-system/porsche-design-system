@@ -55,12 +55,12 @@ The pagination indicators underneath the slides can be removed via `disablePagin
   </select>
 </Playground>
 
-## Change Event
+## Event Handling
 
 Whenever the `p-carousel` slides, the `carouselChange` is emitted containing both, the `activeIndex` and
 `previousIndex`.
 
-<Playground :frameworkMarkup="changeEventExamples" :config="{ withoutDemo: true }">
+<Playground :frameworkMarkup="eventHandlingExamples" :config="{ withoutDemo: true }">
   <p-carousel :heading="basicHeading" v-html="getSlides(3)" @carouselChange="(e) => lastEventDetail = e.detail" style="margin: 0 0 1rem">
   </p-carousel>
   <p-text>Last event detail: {{lastEventDetail}}</p-text>
@@ -139,7 +139,7 @@ export default class Code extends Vue {
 }
 
   lastEventDetail = 'none';
-  changeEventExamples = getCarouselCodeSamples('example-events');
+  eventHandlingExamples = getCarouselCodeSamples('example-events');
 
   amountOfSlides = 3;
   addRemoveSlidesExamples = getCarouselCodeSamples('example-dynamic-slides');
