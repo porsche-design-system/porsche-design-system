@@ -60,6 +60,7 @@ export class Scroller {
     return true;
   }
 
+  // TODO: Validation of props is missing
   public componentWillRender(): void {
     attachComponentCss(
       this.host,
