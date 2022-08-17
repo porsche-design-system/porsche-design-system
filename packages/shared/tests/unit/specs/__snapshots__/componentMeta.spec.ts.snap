@@ -241,6 +241,9 @@ Object {
         "disablePagination": false,
       },
       Object {
+        "internationalization": "{}",
+      },
+      Object {
         "theme": "light",
       },
     ],
