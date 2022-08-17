@@ -27,6 +27,21 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-carousel',
+      samples: [
+        [
+          componentsJsPath + '/carousel-example-events.html',
+          componentsAngularPath + '/carousel-example-events.component.ts',
+          componentsReactPath + '/carouselExampleEvents.tsx',
+        ],
+        [
+          componentsJsPath + '/carousel-example-dynamic-slides.html',
+          componentsAngularPath + '/carousel-example-dynamic-slides.component.ts',
+          componentsReactPath + '/carouselExampleDynamicSlides.tsx',
+        ],
+      ],
+    },
+    {
       component: 'p-inline-notification',
       samples: [
         [

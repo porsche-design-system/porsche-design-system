@@ -60,17 +60,17 @@ The pagination indicators underneath the slides can be removed via `disablePagin
 Whenever the `p-carousel` slides, the `carouselChange` is emitted containing both, the `activeIndex` and
 `previousIndex`.
 
-<Playground :markup="changeEvent" :config="{ withoutDemo: true }">
-  <p-carousel :heading="basicHeading" v-html="getSlides(3)" @carouselChange="(e) => lastChangeEvent = e.detail" style="margin: 0 0 1rem">
+<Playground :frameworkMarkup="changeEventExamples" :config="{ withoutDemo: true }">
+  <p-carousel :heading="basicHeading" v-html="getSlides(3)" @carouselChange="(e) => lastEventDetail = e.detail" style="margin: 0 0 1rem">
   </p-carousel>
-  <p-text>Last event: {{lastChangeEvent}}</p-text>
+  <p-text>Last event detail: {{lastEventDetail}}</p-text>
 </Playground>
 
 ## Add/remove slides
 
 Slides can be added and removed dynamically.
 
-<Playground :markup="addRemoveSlides" :config="{ withoutDemo: true }">
+<Playground :frameworkMarkup="addRemoveSlidesExamples" :config="{ withoutDemo: true }">
   <p-carousel :heading="basicHeading" slides-per-page="2" v-html="getSlides(amountOfSlides)" style="margin: 0 0 1rem">
   </p-carousel>
   <button type="button" @click="amountOfSlides++">Add Slide</button>
@@ -99,6 +99,7 @@ type CarouselInternationalization = {
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { getCarouselCodeSamples } from '@porsche-design-system/shared';
 
 @Component
 export default class Code extends Vue {
@@ -137,11 +138,11 @@ export default class Code extends Vue {
 </p-carousel>`;
 }
 
-  lastChangeEvent = 'none';
-  changeEvent = `TOOD: example markup`;
+  lastEventDetail = 'none';
+  changeEventExamples = getCarouselCodeSamples('example-events');
 
   amountOfSlides = 3;
-  addRemoveSlides = `TOOD: example markup`;
+  addRemoveSlidesExamples = getCarouselCodeSamples('example-dynamic-slides');
 
   internationalization = `<p-carousel internationalization="{ slideLabel: 'Slide %s von %s', prev: 'Vorheriger Slide', next: 'Nächster Slide', first: 'Zum ersten Slide', last: 'Zum letzten Slide' }">
   ${this.getSlides(3)}
