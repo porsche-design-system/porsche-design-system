@@ -71,7 +71,7 @@ export class Carousel {
   @Prop({ mutable: true }) public disablePagination?: BreakpointCustomizable<boolean> = false;
 
   /** Override the default wordings that are used for aria-labels on the next/prev buttons and pagination. */
-  @Prop() public internationalization?: CarouselInternationalization | string = {}; // TODO: remove string type for wrappers
+  @Prop() public internationalization?: CarouselInternationalization = {};
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
