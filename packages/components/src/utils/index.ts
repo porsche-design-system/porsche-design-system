@@ -12,6 +12,7 @@ export * from './dom';
 export * from './form';
 export * from './inject-global-style'; // to trick bundling and avoid separate jss chunk 🤷
 export * from './jss';
+export { parseJSONAttribute } from './json';
 export * from './line-height';
 export * from './pds-fetch';
 export * from './property-observer';

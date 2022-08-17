@@ -7,6 +7,7 @@ import {
   observeBreakpointChange,
   observeChildren,
   parseJSON,
+  parseJSONAttribute,
   THEMES,
   unobserveBreakpointChange,
   unobserveChildren,
@@ -15,7 +16,7 @@ import {
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import { getComponentCss } from './carousel-styles';
 import { Splide } from '@splidejs/splide';
-import type { CarouselChangeEvent, CarouselI18n } from './carousel-utils';
+import type { CarouselChangeEvent, CarouselInternationalization } from './carousel-utils';
 import {
   getAmountOfPages,
   getSlides,
@@ -35,12 +36,13 @@ const propTypes: PropTypes<typeof Carousel> = {
   slidesPerPage: AllowedTypes.breakpoint('number'),
   slidesPerMove: AllowedTypes.breakpoint('number'),
   disablePagination: AllowedTypes.breakpoint('boolean'),
-  i18n: AllowedTypes.shape<CarouselI18n>({
+  internationalization: AllowedTypes.shape<Required<CarouselInternationalization>>({
     prev: AllowedTypes.string,
     next: AllowedTypes.string,
     first: AllowedTypes.string,
     last: AllowedTypes.string,
     slideLabel: AllowedTypes.string,
+    slide: AllowedTypes.string,
   }),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
@@ -69,7 +71,7 @@ export class Carousel {
   @Prop({ mutable: true }) public disablePagination?: BreakpointCustomizable<boolean> = false;
 
   /** Override the default wordings that are used for aria-labels on the next/prev buttons and pagination. */
-  @Prop() public i18n?: CarouselI18n = {};
+  @Prop() public internationalization?: CarouselInternationalization | string = {}; // TODO: remove string type for wrappers
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
@@ -111,7 +113,8 @@ export class Carousel {
       mediaQuery: 'min',
       breakpoints: getSplideBreakpoints(this.slidesPerPage, this.slidesPerMove),
       gap: gridGap,
-      i18n: this.i18n,
+      // https://splidejs.com/guides/i18n/#default-texts
+      i18n: parseJSONAttribute(this.internationalization),
     });
 
     this.splide.on('mounted', () => {
