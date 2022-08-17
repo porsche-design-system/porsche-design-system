@@ -122,9 +122,10 @@ export class Carousel {
       renderPagination(this.pagination, this.amountOfPages, 0); // initial pagination
     });
 
-    this.splide.on('move', (newIndex): void => {
+    this.splide.on('move', (activeIndex, previousIndex): void => {
       updatePrevNextButtonAria(this.btnPrev, this.btnNext, this.splide);
-      updatePagination(this.pagination, newIndex);
+      updatePagination(this.pagination, activeIndex);
+      this.carouselChange.emit({ activeIndex, previousIndex });
     });
 
     this.splide.mount();
