@@ -66,14 +66,24 @@ export const routes: RouteType[] = [
     element: <fromExamples.AccordionExamplePage />,
   },
   {
-    name: 'Inline Notification Example Events',
-    path: '/inline-notification-example-events',
-    element: <fromExamples.InlineNotificationExampleEventsPage />,
+    name: 'Carousel Example Events',
+    path: '/carousel-example-events',
+    element: <fromExamples.CarouselExampleEventsPage />,
+  },
+  {
+    name: 'Carousel Example Dynamic Slides',
+    path: '/carousel-example-dynamic-slides',
+    element: <fromExamples.CarouselExampleDynamicSlidesPage />,
   },
   {
     name: 'Inline Notification Example Action Button',
     path: '/inline-notification-example-action-button',
     element: <fromExamples.InlineNotificationExampleActionButtonPage />,
+  },
+  {
+    name: 'Inline Notification Example Events',
+    path: '/inline-notification-example-events',
+    element: <fromExamples.InlineNotificationExampleEventsPage />,
   },
   {
     name: 'Modal Example Accessibility',
