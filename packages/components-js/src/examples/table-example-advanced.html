@@ -1,4 +1,8 @@
-<p-table></p-table>
+<p-table>
+  <p-headline slot="caption" variant="headline-3">Some visual caption</p-headline>
+  <p-table-head></p-table-head>
+  <p-table-body></p-table-body>
+</p-table>
 
 <script>
   const getHeadAndData = async () => {
@@ -52,22 +56,21 @@
         )
         .join('');
 
-    const markup = `
-<p-headline slot="caption" variant="headline-3">Some visual caption</p-headline>
-<p-table-head>${renderTableHeadRow(headAdvanced)}</p-table-head>
-<p-table-body>${renderTableBodyRows(dataAdvanced)}</p-table-body>`;
-
     const table = document.querySelector('p-table');
-    table.innerHTML = markup;
-    const tableHeadCells = table.querySelectorAll('p-table-head-cell');
+    const tableHead = table.querySelector('p-table-head');
+    tableHead.innerHTML = renderTableHeadRow(headAdvanced);
     const tableBody = table.querySelector('p-table-body');
+    tableBody.innerHTML = renderTableBodyRows(dataAdvanced);
+
+    const tableHeadCells = table.querySelectorAll('p-table-head-cell');
 
     // pass head items via property
-    const passHeadItemsToNodes = (items) =>
+    const passHeadItemsToNodes = (items) => {
       tableHeadCells.forEach((el, index) => {
         el.hideLabel = items[index].hideLabel;
         el.sort = items[index];
       });
+    };
 
     passHeadItemsToNodes(headAdvanced); // initial state
 
