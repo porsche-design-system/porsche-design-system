@@ -32,12 +32,12 @@ const generateCodeSamples = (): void => {
         [
           componentsJsPath + '/carousel-example-events.html',
           componentsAngularPath + '/carousel-example-events.component.ts',
-          componentsReactPath + '/carouselExampleEvents.tsx',
+          componentsReactPath + '/CarouselExampleEvents.tsx',
         ],
         [
           componentsJsPath + '/carousel-example-dynamic-slides.html',
           componentsAngularPath + '/carousel-example-dynamic-slides.component.ts',
-          componentsReactPath + '/carouselExampleDynamicSlides.tsx',
+          componentsReactPath + '/CarouselExampleDynamicSlides.tsx',
         ],
       ],
     },
