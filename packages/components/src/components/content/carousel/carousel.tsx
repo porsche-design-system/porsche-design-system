@@ -112,6 +112,7 @@ export class Carousel {
         touch: 10,
       },
       mediaQuery: 'min',
+      // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
       breakpoints: getSplideBreakpoints(this.slidesPerPage, this.slidesPerMove),
       gap: gridGap,
       // https://splidejs.com/guides/i18n/#default-texts
