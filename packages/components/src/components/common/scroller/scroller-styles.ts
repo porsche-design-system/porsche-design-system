@@ -24,6 +24,7 @@ export const getComponentCss = (
       pointerEvents: 'none',
       display: 'flex',
       alignItems: scrollIndicatorPosition === 'center' ? 'center' : 'flex-start',
+      minWidth: pxToRemWithUnit(40),
     };
   };
 
