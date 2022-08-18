@@ -128,7 +128,6 @@ it('should render and be visible when open', async () => {
 
 it('should not be visible when not open', async () => {
   await initBasicModal({ isOpen: false });
-  await page.waitForTimeout(CSS_TRANSITION_DURATION); // wait for visibility transition to finish
   expect(await getModalVisibility()).toBe('hidden');
 });
 
