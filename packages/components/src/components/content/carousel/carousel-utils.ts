@@ -77,8 +77,7 @@ export const updatePrevNextButtonAria = (btnPrev: ButtonPure, btnNext: ButtonPur
   const { i18n } = splide.options;
   btnPrev.aria = { 'aria-label': i18n[isFirstPage(splide) ? 'last' : 'prev'] };
   btnNext.aria = {
-    'aria-label':
-      i18n[isLastPage(splide, getAmountOfPages(splide.splides.length, splide.options.perPage)) ? 'first' : 'next'],
+    'aria-label': i18n[isLastPage(splide, getAmountOfPages(splide.length, splide.options.perPage)) ? 'first' : 'next'],
   };
 };
 
