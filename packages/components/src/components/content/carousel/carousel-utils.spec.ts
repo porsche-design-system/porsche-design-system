@@ -1,6 +1,18 @@
-import { getAmountOfPages, getSplideBreakpoints, toSplideBreakpoints } from './carousel-utils';
+import {
+  getAmountOfPages,
+  getSlides,
+  getSplideBreakpoints,
+  isFirstPage,
+  isLastPage,
+  slideNext,
+  slidePrev,
+  toSplideBreakpoints,
+  warnIfHeadingIsMissing,
+} from './carousel-utils';
 import * as carouselUtils from './carousel-utils';
 import * as jssUtils from '../../../utils/jss';
+import * as hasNamedSlotUtils from '../../../utils/dom/hasNamedSlot';
+import type { Splide } from '@splidejs/splide';
 
 describe('getSplideBreakpoints()', () => {
   it('should call toSplideBreakpoints() with correct parameters', () => {
@@ -44,6 +56,96 @@ describe('toSplideBreakpoints()', () => {
   });
 });
 
+describe('warnIfHeadingIsMissing()', () => {
+  it('should call hasNamedSlot() with correct parameters', () => {
+    jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+    const spy = jest.spyOn(hasNamedSlotUtils, 'hasNamedSlot');
+    const host = document.createElement('p-carousel');
+
+    warnIfHeadingIsMissing(host, '');
+    expect(spy).toBeCalledWith(host, 'heading');
+  });
+
+  it('should call console.warn with correct parameter if heading prop is not set or slotted heading does not exist', () => {
+    const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+    jest.spyOn(hasNamedSlotUtils, 'hasNamedSlot').mockReturnValue(false);
+    const host = document.createElement('p-carousel');
+
+    warnIfHeadingIsMissing(host, undefined);
+    expect(spy).toBeCalledWith(
+      'A heading has to be set via property or named slot on p-carousel in order to ensure accessibility.'
+    );
+
+    warnIfHeadingIsMissing(host, null);
+    expect(spy).toBeCalledTimes(2);
+
+    warnIfHeadingIsMissing(host, '');
+    expect(spy).toBeCalledTimes(3);
+  });
+
+  it('should not call console.warn if heading prop is set', () => {
+    const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+    const host = document.createElement('p-carousel');
+
+    warnIfHeadingIsMissing(host, 'some heading');
+    expect(spy).not.toBeCalled();
+  });
+
+  it('should not call console.warn if slotted heading exists', () => {
+    const spy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+    jest.spyOn(hasNamedSlotUtils, 'hasNamedSlot').mockReturnValue(true);
+    const host = document.createElement('p-carousel');
+
+    warnIfHeadingIsMissing(host, '');
+    expect(spy).not.toBeCalled();
+  });
+});
+
+describe('getSlides()', () => {
+  const getChildren = (): HTMLElement[] => {
+    const child1 = document.createElement('div');
+    child1.id = 'child1';
+
+    const child2 = document.createElement('span');
+    child2.id = 'child2';
+
+    const child3 = document.createElement('p');
+    child3.id = 'child3';
+
+    return [child1, child2, child3];
+  };
+
+  it('should return parameters children as array ', () => {
+    const host = document.createElement('p-carousel');
+    expect(getSlides(host)).toEqual([]);
+
+    const children = getChildren();
+    host.append(...children);
+    expect(getSlides(host)).toEqual(children);
+  });
+
+  it('should not return parameters children with slot="heading"', () => {
+    const host = document.createElement('p-carousel');
+
+    const [child1, child2, child3] = getChildren();
+    child2.slot = 'heading';
+
+    host.append(child1, child2, child3);
+    expect(getSlides(host)).toEqual([child1, child3]);
+  });
+
+  it('should add incremental slot="slide-x" attribute on each child', () => {
+    const host = document.createElement('p-carousel');
+    const children = getChildren();
+    host.append(...children);
+
+    const result = getSlides(host);
+    result.forEach((child, i) => {
+      expect(child.slot).toBe(`slide-${i}`);
+    });
+  });
+});
+
 describe('getAmountOfPages()', () => {
   it.each<[number, number, number]>([
     [0, 1, 0],
@@ -74,10 +176,97 @@ describe('getAmountOfPages()', () => {
   });
 });
 
-xdescribe('getAmountOfSlides()', () => {});
-xdescribe('isFirstPage()', () => {});
-xdescribe('isLastPage()', () => {});
-xdescribe('slidePrev()', () => {});
-xdescribe('slideNext()', () => {});
+describe('isFirstPage()', () => {
+  it('should return true if splide.index === 0', () => {
+    expect(isFirstPage({ index: 0 } as Splide)).toBe(true);
+  });
+
+  it('should return false for splide.index !== 0', () => {
+    expect(isFirstPage({ index: 1 } as Splide)).toBe(false);
+    expect(isFirstPage({ index: 2 } as Splide)).toBe(false);
+    expect(isFirstPage({ index: 5 } as Splide)).toBe(false);
+  });
+});
+
+describe('isLastPage()', () => {
+  it('should return true for splide.index >= amountOfPages - 1', () => {
+    expect(isLastPage({ index: 0 } as Splide, 1)).toBe(true);
+    expect(isLastPage({ index: 1 } as Splide, 1)).toBe(true);
+    expect(isLastPage({ index: 1 } as Splide, 2)).toBe(true);
+
+    expect(isLastPage({ index: 4 } as Splide, 5)).toBe(true);
+    expect(isLastPage({ index: 5 } as Splide, 5)).toBe(true);
+    expect(isLastPage({ index: 6 } as Splide, 5)).toBe(true);
+  });
+
+  it('should return false for splide.index < amountOfPages - 1', () => {
+    expect(isLastPage({ index: 0 } as Splide, 2)).toBe(false);
+
+    expect(isLastPage({ index: 0 } as Splide, 5)).toBe(false);
+    expect(isLastPage({ index: 1 } as Splide, 5)).toBe(false);
+    expect(isLastPage({ index: 2 } as Splide, 5)).toBe(false);
+    expect(isLastPage({ index: 3 } as Splide, 5)).toBe(false);
+  });
+});
+
+describe('slidePrev()', () => {
+  it('should call isFirstPage() with correct parameter', () => {
+    const spy = jest.spyOn(carouselUtils, 'isFirstPage');
+    const splide = { index: 1, go: (_: string | number) => {} } as Splide;
+    slidePrev(splide, 5);
+
+    expect(spy).toBeCalledWith(splide);
+  });
+
+  it.each<[number, number, string | number]>([
+    [5, 5, 3],
+    [4, 5, '<'],
+    [3, 5, '<'],
+    [2, 5, '<'],
+    [1, 5, '<'],
+    [0, 5, 4],
+    [1, 2, '<'],
+    [0, 2, 1],
+  ])(
+    'should for splide.index: %s and amountOfPages: %s call splide.go() with: %s',
+    (index, amountOfPages, expected) => {
+      const go: (page: string | number) => Splide = jest.fn();
+      const splide = { index, go } as Splide;
+
+      slidePrev(splide, amountOfPages);
+      expect(go).toBeCalledWith(expected);
+    }
+  );
+});
+
+fdescribe('slideNext()', () => {
+  it('should call isLastPage() with correct parameter', () => {
+    const spy = jest.spyOn(carouselUtils, 'isLastPage');
+    const splide = { index: 1, go: (_: string | number) => {} } as Splide;
+    slideNext(splide, 5);
+
+    expect(spy).toBeCalledWith(splide, 5);
+  });
+
+  it.each<[number, number, string | number]>([
+    [0, 5, '>'],
+    [1, 5, '>'],
+    [2, 5, '>'],
+    [3, 5, '>'],
+    [5, 5, 0],
+    [4, 5, 0],
+  ])(
+    'should for splide.index: %s and amountOfPages: %s call splide.go() with: %s',
+    (index, amountOfPages, expected) => {
+      const go: (page: string | number) => Splide = jest.fn();
+      const splide = { index, go } as Splide;
+
+      slideNext(splide, amountOfPages);
+      expect(go).toBeCalledWith(expected);
+    }
+  );
+});
+
 xdescribe('updatePrevNextButtonAria()', () => {});
+
 xdescribe('updatePagination()', () => {});
