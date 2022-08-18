@@ -63,9 +63,8 @@ export const getSlides = (host: HTMLElement): HTMLElement[] => {
 
 export const getAmountOfPages = (amountOfSlides: number, slidesPerPage: number): number => {
   // TODO: respect slidesPerMove
-  // TODO: what about 0 slides?
   // const naturalAmount = Math.floor(amountOfSlides / slidesPerPage);
-  return amountOfSlides < slidesPerPage ? 1 : amountOfSlides - slidesPerPage + 1;
+  return amountOfSlides === 0 ? 0 : amountOfSlides < slidesPerPage ? 1 : amountOfSlides - slidesPerPage + 1;
 };
 
 export const isFirstPage = (splide: Splide): boolean => splide.index === 0;
