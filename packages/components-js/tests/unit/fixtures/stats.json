@@ -21,8 +21,8 @@
   },
   {
     "chunkShortName": "carousel",
-    "size": 35947,
-    "gzipSize": 14746
+    "size": 36234,
+    "gzipSize": 14876
   },
   {
     "chunkShortName": "checkbox-wrapper",
@@ -82,7 +82,7 @@
   {
     "chunkShortName": "main",
     "size": 63740,
-    "gzipSize": 21768
+    "gzipSize": 21767
   },
   {
     "chunkShortName": "marque",
