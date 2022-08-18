@@ -54,29 +54,13 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
   return getCss({
     '@global': {
       ':host': {
-        display: 'flex',
-        position: 'relative',
         ...(isCurrentOrUndefined && {
-          '&::before': {
-            display: 'block',
-            position: 'absolute',
-            content: '""',
-            backgroundColor: isDisabled ? 'none' : baseColor,
-            width: pxToRemWithUnit(18),
-            height: pxToRemWithUnit(18),
-            margin: `${pxToRemWithUnit(3)} ${pxToRemWithUnit(7)} ${pxToRemWithUnit(3)} ${pxToRemWithUnit(3)}`,
-            borderRadius: '50%',
-            boxSizing: 'border-box',
-            ...(isDisabled && {
-              border: `1px solid ${disabledColor}`,
-            }),
-          },
           ...Array.from(Array(9)).reduce(
             (result, _, i) => ({
               ...result,
               [`&(:nth-of-type(${i + 1}))`]: {
-                '& $button::before': {
-                  background: `${getSvg(svgColor)} no-repeat ${pxToRemWithUnit(9 - i * 20)} ${pxToRemWithUnit(7)}`,
+                '& $button::after': {
+                  background: `${getSvg(svgColor)} no-repeat ${pxToRemWithUnit(9 - i * 20)}`,
                 },
               },
             }),
@@ -92,22 +76,34 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
         color: isDisabled ? disabledColor : baseColor,
         transition: getTransition('color'),
         margin: 0,
-        padding: `0 0 0 ${pxToRemWithUnit(28)}`,
         background: 0,
         border: 0,
         ...textSmall,
         whiteSpace: 'nowrap',
-        cursor: isDisabled ? 'not-allowed' : 'auto',
         ...getFocusJssStyle(),
         ...(isCurrentOrUndefined
           ? {
+              padding: `0 0 0 ${pxToRemWithUnit(28)}`,
+              cursor: isDisabled ? 'not-allowed' : 'auto',
               '&::before': {
-                display: 'block',
+                // circle of counter element
                 position: 'absolute',
+                left: pxToRemWithUnit(3),
                 content: '""',
-                top: pxToRemWithUnit(12),
-                left: pxToRemWithUnit(12),
-                transform: 'translate3d(-50%, -50%, 0)',
+                background: isDisabled ? 'none' : baseColor,
+                width: pxToRemWithUnit(18),
+                height: pxToRemWithUnit(18),
+                borderRadius: '50%',
+                boxSizing: 'border-box',
+                ...(isDisabled && {
+                  border: `1px solid ${disabledColor}`,
+                }),
+              },
+              '&::after': {
+                // unit of counter element
+                position: 'absolute',
+                left: 0,
+                content: '""',
                 width: pxToRemWithUnit(24),
                 height: pxToRemWithUnit(24),
               },
@@ -116,14 +112,13 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
               padding: 0,
               cursor: isDisabled ? 'not-allowed' : 'pointer',
               textDecoration: isDisabled ? 'none' : 'underline',
-              ...(!isDisabled && {
-                ...hoverMediaQuery({
+              ...(!isDisabled &&
+                hoverMediaQuery({
                   ...hoverJssStyles,
                   '&:hover .icon': {
                     color: hoverColor,
                   },
-                }),
-              }),
+                })),
             }),
       },
     },
