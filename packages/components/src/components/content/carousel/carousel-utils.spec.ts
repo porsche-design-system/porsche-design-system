@@ -4,15 +4,19 @@ import {
   getSplideBreakpoints,
   isFirstPage,
   isLastPage,
+  renderPagination,
   slideNext,
   slidePrev,
   toSplideBreakpoints,
+  updatePagination,
+  updatePrevNextButtonAria,
   warnIfHeadingIsMissing,
 } from './carousel-utils';
 import * as carouselUtils from './carousel-utils';
 import * as jssUtils from '../../../utils/jss';
 import * as hasNamedSlotUtils from '../../../utils/dom/hasNamedSlot';
 import type { Splide } from '@splidejs/splide';
+import { ButtonPure } from '../../action/button-pure/button-pure';
 
 describe('getSplideBreakpoints()', () => {
   it('should call toSplideBreakpoints() with correct parameters', () => {
@@ -239,7 +243,7 @@ describe('slidePrev()', () => {
   );
 });
 
-fdescribe('slideNext()', () => {
+describe('slideNext()', () => {
   it('should call isLastPage() with correct parameter', () => {
     const spy = jest.spyOn(carouselUtils, 'isLastPage');
     const splide = { index: 1, go: (_: string | number) => {} } as Splide;
@@ -253,8 +257,8 @@ fdescribe('slideNext()', () => {
     [1, 5, '>'],
     [2, 5, '>'],
     [3, 5, '>'],
-    [5, 5, 0],
     [4, 5, 0],
+    [5, 5, 0],
   ])(
     'should for splide.index: %s and amountOfPages: %s call splide.go() with: %s',
     (index, amountOfPages, expected) => {
@@ -267,6 +271,127 @@ fdescribe('slideNext()', () => {
   );
 });
 
-xdescribe('updatePrevNextButtonAria()', () => {});
+describe('updatePrevNextButtonAria()', () => {
+  const getButtons = (): [ButtonPure, ButtonPure] => {
+    const btnPrev = document.createElement('button') as HTMLButtonElement & ButtonPure;
+    btnPrev.id = 'btnPrev';
+    const btnNext = document.createElement('button') as HTMLButtonElement & ButtonPure;
+    btnNext.id = 'btnNext';
 
-xdescribe('updatePagination()', () => {});
+    return [btnPrev, btnNext];
+  };
+
+  const getSplide = (): Splide =>
+    ({
+      index: 1,
+      length: 3,
+      options: {
+        i18n: {
+          next: 'custom next',
+          prev: 'custom prev',
+          last: 'custom last',
+          first: 'custom first',
+        } as Splide['options']['i18n'],
+        perPage: 1,
+      },
+    } as Splide);
+
+  it('should call isFirstPage() with correct parameter', () => {
+    const spy = jest.spyOn(carouselUtils, 'isFirstPage');
+    const splide = getSplide();
+
+    updatePrevNextButtonAria(...getButtons(), splide);
+    expect(spy).toBeCalledWith(splide);
+  });
+
+  it('should call isLastPage() with correct parameters', () => {
+    const spy = jest.spyOn(carouselUtils, 'isLastPage');
+    jest.spyOn(carouselUtils, 'getAmountOfPages').mockReturnValue(5);
+    const splide = getSplide();
+
+    updatePrevNextButtonAria(...getButtons(), splide);
+    expect(spy).toBeCalledWith(splide, 5);
+  });
+
+  it('should call getAmountOfPages() with correct parameters', () => {
+    const spy = jest.spyOn(carouselUtils, 'getAmountOfPages');
+    const splide = getSplide();
+
+    updatePrevNextButtonAria(...getButtons(), splide);
+    expect(spy).toBeCalledWith(3, 1);
+  });
+
+  it('should correctly set aria property on btnNext and btnPrev parameter', () => {
+    const isFirstPageSpy = jest.spyOn(carouselUtils, 'isFirstPage');
+    const isLastPageSpy = jest.spyOn(carouselUtils, 'isLastPage');
+    const [btnPrev, btnNext] = getButtons();
+    const splide = getSplide();
+
+    isFirstPageSpy.mockReturnValue(false);
+    isLastPageSpy.mockReturnValue(false);
+    updatePrevNextButtonAria(btnPrev, btnNext, splide);
+    expect(btnPrev.aria).toEqual({ 'aria-label': 'custom prev' });
+    expect(btnNext.aria).toEqual({ 'aria-label': 'custom next' });
+
+    isFirstPageSpy.mockReturnValue(true);
+    isLastPageSpy.mockReturnValue(true);
+    updatePrevNextButtonAria(btnPrev, btnNext, splide);
+    expect(btnPrev.aria).toEqual({ 'aria-label': 'custom last' });
+    expect(btnNext.aria).toEqual({ 'aria-label': 'custom first' });
+  });
+});
+
+const bulletMarkup = '<span class="bullet"></span>';
+const bulletActiveMarkup = '<span class="bullet bullet--active"></span>';
+
+describe('renderPagination()', () => {
+  it('should render correct children of pagination', () => {
+    const el = document.createElement('div');
+
+    renderPagination(el, 1, -1);
+    expect(el.innerHTML).toBe(bulletMarkup);
+
+    renderPagination(el, 2, -1);
+    expect(el.innerHTML).toBe([bulletMarkup, bulletMarkup].join(''));
+
+    renderPagination(el, 3, -1);
+    expect(el.innerHTML).toBe([bulletMarkup, bulletMarkup, bulletMarkup].join(''));
+  });
+
+  it('should render correct children of pagination with activeIndex', () => {
+    const el = document.createElement('div');
+
+    renderPagination(el, 1, 0);
+    expect(el.innerHTML).toBe(bulletActiveMarkup);
+
+    renderPagination(el, 2, 1);
+    expect(el.innerHTML).toBe([bulletMarkup, bulletActiveMarkup].join(''));
+
+    renderPagination(el, 3, 1);
+    expect(el.innerHTML).toBe([bulletMarkup, bulletActiveMarkup, bulletMarkup].join(''));
+  });
+});
+
+describe('updatePagination()', () => {
+  it('should remove bullet--active class from child', () => {
+    const el = document.createElement('div');
+    el.innerHTML = [bulletMarkup, bulletMarkup, bulletActiveMarkup].join('');
+    const spy = jest.spyOn(el.children[2].classList, 'remove');
+
+    expect(el.children[2].outerHTML).toBe(bulletActiveMarkup);
+    updatePagination(el, 0);
+    expect(spy).toBeCalledWith('bullet--active');
+    expect(el.children[2].outerHTML).toBe(bulletMarkup);
+  });
+
+  it('should add bullet--active class to child on newIndex', () => {
+    const el = document.createElement('div');
+    el.innerHTML = [bulletMarkup, bulletActiveMarkup, bulletMarkup].join('');
+    const spy = jest.spyOn(el.children[2].classList, 'add');
+
+    expect(el.children[2].outerHTML).toBe(bulletMarkup);
+    updatePagination(el, 2);
+    expect(spy).toBeCalledWith('bullet--active');
+    expect(el.children[2].outerHTML).toBe(bulletActiveMarkup);
+  });
+});
