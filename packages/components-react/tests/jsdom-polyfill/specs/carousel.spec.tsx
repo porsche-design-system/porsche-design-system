@@ -9,7 +9,7 @@ const Sample = (): JSX.Element => {
 
   return (
     <>
-      <PCarousel data-testid="host">
+      <PCarousel data-testid="host" onCarouselChange={() => setEventCounter((prev) => prev + 1)}>
         <div>1</div>
         <div>2</div>
         <div>3</div>
@@ -26,15 +26,15 @@ it('should have initialized shadow dom', async () => {
   expect(getByTestId('host').shadowRoot).not.toBeNull();
 });
 
-xit('should have working events', async () => {
+it('should have working events', async () => {
   const { getByTestId } = render(<Sample />);
   await componentsReady();
 
   const debug = getByTestId('debug');
   const button = getByRoleShadowed('button');
 
-  expect(debug.innerHTML).toBe('Event Counter: 0;');
+  expect(debug.innerHTML).toBe('Event Counter: 0');
 
   await userEvent.click(button);
-  expect(debug.innerHTML).toBe('Event Counter: 1;');
+  expect(debug.innerHTML).toBe('Event Counter: 1');
 });
