@@ -22,7 +22,7 @@
       body {
         margin: 30px;
       }
-      span,
+      div,
       div {
         line-height: 24px;
       }
@@ -48,99 +48,82 @@
     </header>
 
     <main>
-      <p-scroller>
-        <div style="width: 130vw">
-          <h2>Lorem ipsum dolor sit amet, consetetur sadipscing elitr</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-            clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-            consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-            sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-            sea takimata sanctus est Lorem ipsum dolor sit amet.
-          </p>
-        </div>
+      <!-- Examples with a / button / text / div / tag -->
+
+      <!-- Theme light + button -->
+      <p-scroller theme="light">
+        <button>Button</button>
+        <button>Button</button>
+        <button>Button</button>
+        <button>Button</button>
+        <button>Button</button>
+        <button>Button</button>
+        <button>Button</button>
+        <button>Button</button>
+        <button>Button</button>
+        <button>Button</button>
+        <button>Button</button>
+        <button>Button</button>
+        <button>Button</button>
+        <button>Button</button>
       </p-scroller>
 
-      <p-scroller style="white-space: nowrap">
-        <span>Hello</span>
-        <span>Hello</span>
-        <span>Hello</span>
-      </p-scroller>
-      <br />
-      <br />
-      <p-scroller style="white-space: nowrap" scroll-indicator-position="top">
-        <button>Huhu</button>
-        <span>Hello</span>
-        <div>World</div>
-        <span>World</span>
-        <br />
-        <div>World</div>
-        <span>World</span>
-        <span>World</span>
-        <div>World</div>
-        <div>World</div>
-        <span>World</span>
-        <span>World</span>
-        <div>World</div>
-        <span>World</span>
-        <span>World</span>
-        <span>World</span>
-        <span>World</span>
-        <span>Lorem ipsum dolor sit amet, consetetur sadipscing elitr</span>
-        <span>Lorem ipsum dolor sit amet, consetetur sadipscing elitr</span>
-        <span>Lorem ipsum dolor sit amet, consetetur sadipscing elitr</span>
-        <span>Lorem ipsum dolor sit amet, consetetur sadipscing elitr</span>
-        <span>Lorem ipsum dolor sit amet, consetetur sadipscing elitr</span>
-        <span>Lorem ipsum dolor sit amet, consetetur sadipscing elitr</span>
+      <!-- Theme dark + a -->
+      <p-scroller theme="dark">
+        <a>Link</a>
+        <a>Link</a>
+        <a>Link</a>
+        <a>Link</a>
+        <a>Link</a>
+        <a>Link</a>
+        <a>Link</a>
+        <a>Link</a>
+        <a>Link</a>
+        <a>Link</a>
+        <a>Link</a>
+        <a>Link</a>
+        <a>Link</a>
+        <a>Link</a>
+        <a>Link</a>
+        <a>Link</a>
+        <a>Link</a>
+        <a>Link</a>
       </p-scroller>
 
-      <div style="max-width: 600px">
-        <p-tabs-bar active-tab-index="5">
-          <button type="button">Tab One</button>
-          <button type="button">Tab Two</button>
-          <button type="button">Tab Three</button>
-          <button type="button">Tab Three</button>
-          <button type="button">Tab Three</button>
-          <button type="button">Tab Three</button>
-          <button type="button">Tab Three</button>
-          <button type="button">Tab Three</button>
-          <button type="button">Tab Three</button>
-          <button type="button">Tab Three</button>
-        </p-tabs-bar>
-      </div>
-      <div style="max-width: 600px">
-        <p-tabs-bar size="medium" active-tab-index="5">
-          <button type="button">Tab One</button>
-          <button type="button">Tab Two</button>
-          <button type="button">Tab Three</button>
-          <button type="button">Tab Three</button>
-          <button type="button">Tab Three</button>
-          <button type="button">Tab Three</button>
-          <button type="button">Tab Three</button>
-          <button type="button">Tab Three</button>
-          <button type="button">Tab Three</button>
-          <button type="button">Tab Three</button>
-        </p-tabs-bar>
-      </div>
-      <div style="max-width: 600px">
-        <p-stepper-horizontal>
-          <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item state="complete">Step 2</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item state="complete">Step 3</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item state="complete">Step 4</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item state="complete">Step 5</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item state="current">Step 6</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item>Step 7</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item>Step 8</p-stepper-horizontal-item>
-          <p-stepper-horizontal-item>Step 9</p-stepper-horizontal-item>
-        </p-stepper-horizontal>
-      </div>
+      <!-- Theme light-electric + tag -->
+      <p-scroller theme="light-electric">
+        <p>p-tag</p>
+        <p>p-tag</p>
+        <p>p-tag</p>
+        <p>p-tag</p>
+        <p>p-tag</p>
+        <p>p-tag</p>
+        <p>p-tag</p>
+        <p>p-tag</p>
+        <p>p-tag</p>
+        <p>p-tag</p>
+        <p>p-tag</p>
+        <p>p-tag</p>
+        <p>p-tag</p>
+        <p>p-tag</p>
+        <p>p-tag</p>
+        <p>p-tag</p>
+      </p-scroller>
 
-      <!-- Examples with a / button / text / span -->
-      <!-- Theme light -->
-      <!-- Theme dark -->
-      <!-- Theme electric -->
+      <!-- Theme dark-electric + div -->
+      <p-scroller theme="dark-electric">
+        <div>div element</div>
+        <div>div element</div>
+        <div>div element</div>
+        <div>div element</div>
+        <div>div element</div>
+        <div>div element</div>
+        <div>div element</div>
+        <div>div element</div>
+        <div>div element</div>
+        <div>div element</div>
+      </p-scroller>
+
       <!-- scrolled to mid element -->
 
       <!-- background-color-scheme light-->
@@ -148,6 +131,7 @@
 
       <!-- different font size -->
       <!-- font size inherit -->
+      <!--    default font size and large content  -->
 
       <!-- scroll indicator position top -->
 
