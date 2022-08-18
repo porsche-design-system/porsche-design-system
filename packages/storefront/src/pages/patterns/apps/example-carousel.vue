@@ -20,81 +20,44 @@
 
   @Component()
   export default class ExampleCarousel extends Vue {
+    slides = Array.from(Array(6))
+      .map((_, i) => `<div>Slide ${i + 1}</div>`)
+      .join('');
     content = `
-<p-carousel heading="Some Heading">
-  <div>Slide 1</div>
-  <div>Slide 2</div>
-  <div>Slide 3</div>
-  <div>Slide 4</div>
-  <div>Slide 5</div>
-  <div>Slide 6</div>
+<p-carousel heading="Some Heading" slides-per-page="3">
+  ${this.slides}
 </p-carousel>
 
-<p-carousel>
+<p-carousel slides-per-page="3">
   <h2 slot="heading">Slotted Heading with default styles</h2>
-  <div>Slide 1</div>
-  <div>Slide 2</div>
-  <div>Slide 3</div>
-  <div>Slide 4</div>
-  <div>Slide 5</div>
-  <div>Slide 6</div>
+  ${this.slides}
 </p-carousel>
 
-<p-carousel heading="Some wrapped Heading" wrap-heading="true">
-  <div>Slide 1</div>
-  <div>Slide 2</div>
-  <div>Slide 3</div>
-  <div>Slide 4</div>
-  <div>Slide 5</div>
-  <div>Slide 6</div>
+<p-carousel heading="Some wrapped Heading" wrap-heading="true" slides-per-page="3">
+  ${this.slides}
 </p-carousel>
 
 <p-carousel
   heading="Multiline Heading could be quite long especially on smaller screens but how would the carousel be accessible with out one?"
-  slides-per-page="2"
+  slides-per-page="3"
 >
-  <div>Slide 1</div>
-  <div>Slide 2</div>
-  <div>Slide 3</div>
-  <div>Slide 4</div>
-  <div>Slide 5</div>
-  <div>Slide 6</div>
+  ${this.slides}
 </p-carousel>
 
 <p-carousel heading="Responsive slides per page" slides-per-page="{base: 3, s: 1, m: 2}">
-  <div>Slide 1</div>
-  <div>Slide 2</div>
-  <div>Slide 3</div>
-  <div>Slide 4</div>
-  <div>Slide 5</div>
-  <div>Slide 6</div>
+  ${this.slides}
 </p-carousel>
 
-<p-carousel heading="Floating slides per page" slides-per-page="1.2">
-  <div>Slide 1</div>
-  <div>Slide 2</div>
-  <div>Slide 3</div>
-  <div>Slide 4</div>
-  <div>Slide 5</div>
-  <div>Slide 6</div>
+<p-carousel heading="Floating slides per page" slides-per-page="3.3">
+  ${this.slides}
 </p-carousel>
 
-<p-carousel heading="Disabled pagination" disable-pagination="true">
-  <div>Slide 1</div>
-  <div>Slide 2</div>
-  <div>Slide 3</div>
-  <div>Slide 4</div>
-  <div>Slide 5</div>
-  <div>Slide 6</div>
+<p-carousel heading="Disabled pagination" slides-per-page="3" disable-pagination="true">
+  ${this.slides}
 </p-carousel>
 
-<p-carousel heading="Responsive disabled pagination" disable-pagination="{base: true, s: false, m: true}">
-  <div>Slide 1</div>
-  <div>Slide 2</div>
-  <div>Slide 3</div>
-  <div>Slide 4</div>
-  <div>Slide 5</div>
-  <div>Slide 6</div>
+<p-carousel heading="Responsive disabled pagination" slides-per-page="3" disable-pagination="{base: true, s: false, m: true}">
+  ${this.slides}
 </p-carousel>`;
   }
 </script>
