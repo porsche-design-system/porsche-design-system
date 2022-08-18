@@ -94,9 +94,7 @@ export class Modal {
       warnIfAriaAndHeadingPropsAreUndefined(this.host, this.heading, this.aria);
     }
     this.hasHeader = !!this.heading || hasNamedSlot(this.host, 'heading');
-    console.log('-> cC PRE attach visibility', getComputedStyle(this.host).visibility);
     attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen, this.disableCloseButton, this.hasHeader);
-    console.log('-> cC POST attach visibility', getComputedStyle(this.host).visibility);
   }
 
   public componentDidRender(): void {
@@ -115,9 +113,7 @@ export class Modal {
 
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    console.log('-> render visibility', getComputedStyle(this.host).visibility);
-    this.host.style.setProperty('visibility', `${this.open ? 'inherit' : 'hidden'}`, 'important');
-    this.host.style.setProperty('opacity', `${this.open ? 1 : 0}`, 'important');
+
     return (
       <Host onMouseDown={!this.disableBackdropClick && this.onMouseDown}>
         <div
