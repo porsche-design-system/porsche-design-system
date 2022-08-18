@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`componentDidLoad should call Splide constructor with correct parameters and set this.splide 1`] = `
+Array [
+  undefined,
+  Object {
+    "arrows": false,
+    "breakpoints": Object {
+      "0": Object {
+        "perMove": 1,
+        "perPage": 1,
+      },
+    },
+    "dragMinThreshold": Object {
+      "mouse": 1000,
+      "touch": 10,
+    },
+    "gap": "max(1rem, min(3.6vw, 2.25rem))",
+    "i18n": Object {},
+    "mediaQuery": "min",
+    "pagination": false,
+    "start": 0,
+  },
+]
+`;
