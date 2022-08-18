@@ -26,6 +26,7 @@ import {
   slidePrev,
   updatePagination,
   updatePrevNextButtonAria,
+  warnIfHeadingIsMissing,
 } from './carousel-utils';
 import { ButtonPure } from '../../action/button-pure/button-pure';
 import { gridGap } from '@porsche-design-system/utilities-v2';
@@ -135,9 +136,9 @@ export class Carousel {
 
   public componentWillRender(): void {
     validateProps(this, propTypes);
+    warnIfHeadingIsMissing(this.host, this.heading);
     this.disablePagination = parseJSON(this.disablePagination) as any;
 
-    // TODO: validate heading.. !!this.heading || hasNamedSlot(this.host, 'heading')
     attachComponentCss(this.host, getComponentCss, this.wrapHeading, this.disablePagination, this.theme);
   }
 

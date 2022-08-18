@@ -97,6 +97,7 @@ export const warnIfAriaAndHeadingPropsAreUndefined = (
   heading: string,
   aria: SelectedAriaAttributes<ModalAriaAttributes>
 ): void => {
+  // TODO: slotted heading doesn't count?
   if (!heading && !aria) {
     console.warn(
       `Either heading or aria attributes on ${getTagName(host)} have to be set in order to ensure accessibility.`
