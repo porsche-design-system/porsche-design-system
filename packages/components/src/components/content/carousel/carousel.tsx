@@ -91,7 +91,7 @@ export class Carousel {
 
   public connectedCallback(): void {
     observeChildren(this.host, this.updateSlidesAndPagination);
-    this.observeBreakpointChanges();
+    this.observeBreakpointChange();
   }
 
   public componentWillLoad(): void {
@@ -99,7 +99,7 @@ export class Carousel {
     this.slidesPerMove = parseJSON(this.slidesPerMove) as any; // TODO: what about changes?
 
     this.updateSlidesAndPagination();
-    this.observeBreakpointChanges();
+    this.observeBreakpointChange();
   }
 
   public componentDidLoad(): void {
@@ -200,7 +200,7 @@ export class Carousel {
     );
   }
 
-  private observeBreakpointChanges = (): void => {
+  private observeBreakpointChange = (): void => {
     if (typeof this.slidesPerPage === 'object') {
       observeBreakpointChange(this.host, this.updateAmountOfPages);
     }
