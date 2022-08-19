@@ -1,11 +1,5 @@
 import { Component, Element, Prop, State, Watch, h } from '@stencil/core';
-import {
-  attachComponentCss,
-  getHTMLElements,
-  getPrefixedTagNames,
-  scrollElementTo,
-  throwIfRootNodeIsNotOneOfKind,
-} from '../../../utils';
+import { attachComponentCss, getHTMLElements, getPrefixedTagNames, scrollElementTo } from '../../../utils';
 import { getComponentCss } from './scroller-styles';
 import type { Direction, GradientColorTheme, ScrollToPosition, ScrollIndicatorPosition } from './scroller-utils';
 import { getScrollPositionAfterPrevNextClick, isScrollable } from './scroller-utils';
@@ -46,10 +40,6 @@ export class Scroller {
     } else {
       this.scrollAreaElement.scrollLeft = scrollPosition;
     }
-  }
-
-  public connectedCallback(): void {
-    throwIfRootNodeIsNotOneOfKind(this.host, ['pTabsBar', 'pStepperHorizontal']);
   }
 
   public componentDidLoad(): void {
