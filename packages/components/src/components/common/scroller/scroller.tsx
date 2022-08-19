@@ -27,7 +27,11 @@ export class Scroller {
   /** Scrolls the scroll area to the left either smooth or immediately */
   @Prop() public scrollToPosition?: ScrollToPosition;
 
+  /** Sets the vertical position of scroll indicator icon */
   @Prop() public scrollIndicatorPosition?: ScrollIndicatorPosition = 'center';
+
+  /** If true the component becomes focusable */
+  @Prop() public isFocusable?: boolean = false;
 
   @State() private isPrevHidden = true;
   @State() private isNextHidden = true;
@@ -95,10 +99,14 @@ export class Scroller {
       );
     };
 
+    // TODO: E2E test isFocusable
     return (
       <div class="root">
         <div class="scroll-area" ref={(el) => (this.scrollAreaElement = el)}>
-          <div class="scroll-wrapper" tabindex={isScrollable(this.isPrevHidden, this.isNextHidden) ? 1 : null}>
+          <div
+            class="scroll-wrapper"
+            tabindex={this.isFocusable && isScrollable(this.isPrevHidden, this.isNextHidden) ? 1 : null}
+          >
             <slot />
             <div class="trigger" />
             <div class="trigger" />
