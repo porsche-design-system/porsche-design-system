@@ -235,13 +235,13 @@ Object {
         "slidesPerPage": "1",
       },
       Object {
-        "slidesPerMove": "1",
-      },
-      Object {
         "disablePagination": false,
       },
       Object {
         "internationalization": "{}",
+      },
+      Object {
+        "overflowVisible": false,
       },
       Object {
         "theme": "light",
