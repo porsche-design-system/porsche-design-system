@@ -30,7 +30,31 @@ with Vue **2** and **3**.
 Angular Compiler decides by itself which TypeScript version it supports. As soon as an unsupported TypeScript version is
 installed, the Angular build will fail.
 
+As mentioned here https://angular.io/guide/creating-libraries#ensuring-library-version-compatibility, if building
+component-libraries, the Angular version used to build an application should always be the same or greater than the
+Angular versions used to build any of its dependent libraries.
+
+This means if we upgrade to `Angular v14`, all of our consumers are forced to use `Angular v14` too, because there were
+breaking changes in `@angular/core` that are not backwards compatible. We have decided to stay on `Angular v13` because
+it is forward compatible and wait for feedback of our consuming teams on when they are ready to upgrade to `Angular v14`
+before we upgrade to it.
+
 ### Affected dependencies:
+
+- `@angular/animations`
+- `@angular/common`
+- `@angular/compiler`
+- `@angular/core`
+- `@angular/forms`
+- `@angular/platform-browser`
+- `@angular/platform-browser-dynamic`
+- `@angular/router`
+- `@angular-builders/custom-webpack`
+- `@angular-devkit/build-angular`
+- `@angular/cli`
+- `@angular/compiler-cli`
+- `@angular/language-service`
+- `ng-packagr`
 
 - `typescript`
 
