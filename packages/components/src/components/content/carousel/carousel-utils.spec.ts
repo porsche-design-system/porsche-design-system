@@ -21,20 +21,18 @@ import { ButtonPure } from '../../action/button-pure/button-pure';
 describe('getSplideBreakpoints()', () => {
   it('should call toSplideBreakpoints() with correct parameters', () => {
     const spy = jest.spyOn(carouselUtils, 'toSplideBreakpoints');
-    getSplideBreakpoints(3, 5);
+    getSplideBreakpoints(3);
 
-    expect(spy).toBeCalledTimes(2);
-    expect(spy).toHaveBeenNthCalledWith(1, 'perPage', 3);
-    expect(spy).toHaveBeenNthCalledWith(2, 'perMove', 5);
+    expect(spy).toBeCalledWith('perPage', 3);
   });
+
   it('should call mergeDeep() with results of toSplideBreakpoints() calls', () => {
     const spy = jest.spyOn(jssUtils, 'mergeDeep');
-    const mockResult1 = { 0: { perPage: 5 } };
-    const mockResult2 = { 0: { perPage: 5 } };
-    jest.spyOn(carouselUtils, 'toSplideBreakpoints').mockReturnValueOnce(mockResult1).mockReturnValueOnce(mockResult2);
+    const mockResult = { 0: { perPage: 5 } };
+    jest.spyOn(carouselUtils, 'toSplideBreakpoints').mockReturnValue(mockResult);
 
-    getSplideBreakpoints(1, 2);
-    expect(spy).toBeCalledWith(mockResult1, mockResult2);
+    getSplideBreakpoints(1);
+    expect(spy).toBeCalledWith(mockResult);
   });
 });
 
