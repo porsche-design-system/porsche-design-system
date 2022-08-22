@@ -3,7 +3,7 @@
     <section>
       <h2>Within content-wrapper</h2>
 
-      <div v-html="content"></div>
+      <div v-html="content.replace(/(<p-carousel)/g, `$1 overflow-visible='true'`)"></div>
     </section>
 
     <section>
