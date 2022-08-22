@@ -29,6 +29,7 @@ import { ButtonGroupComponent } from './button-group.component';
 import { ButtonPureComponent } from './button-pure.component';
 import { ButtonPureSkeletonComponent } from './button-pure-skeleton.component';
 import { ButtonSkeletonComponent } from './button-skeleton.component';
+import { CarouselComponent } from './carousel.component';
 import { CheckboxWrapperComponent } from './checkbox-wrapper.component';
 import { CheckboxWrapperSkeletonComponent } from './checkbox-wrapper-skeleton.component';
 import { ContentWrapperComponent } from './content-wrapper.component';
@@ -95,6 +96,7 @@ export const generatedPages = [
   ButtonPureComponent,
   ButtonPureSkeletonComponent,
   ButtonSkeletonComponent,
+  CarouselComponent,
   CheckboxWrapperComponent,
   CheckboxWrapperSkeletonComponent,
   ContentWrapperComponent,
@@ -189,6 +191,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Button Skeleton',
     path: 'button-skeleton',
     component: ButtonSkeletonComponent,
+  },
+  {
+    name: 'Carousel',
+    path: 'carousel',
+    component: CarouselComponent,
   },
   {
     name: 'Checkbox Wrapper',

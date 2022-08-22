@@ -18,6 +18,7 @@ import { ButtonGroupPage } from './ButtonGroup';
 import { ButtonPurePage } from './ButtonPure';
 import { ButtonPureSkeletonPage } from './ButtonPureSkeleton';
 import { ButtonSkeletonPage } from './ButtonSkeleton';
+import { CarouselPage } from './Carousel';
 import { CheckboxWrapperPage } from './CheckboxWrapper';
 import { CheckboxWrapperSkeletonPage } from './CheckboxWrapperSkeleton';
 import { ContentWrapperPage } from './ContentWrapper';
@@ -109,6 +110,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Button Skeleton',
     path: '/button-skeleton',
     element: <ButtonSkeletonPage />,
+  },
+  {
+    name: 'Carousel',
+    path: '/carousel',
+    element: <CarouselPage />,
   },
   {
     name: 'Checkbox Wrapper',
