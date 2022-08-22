@@ -1,10 +1,17 @@
 # Carousel
 
-The `p-carousel` is...
+The `p-carousel` component allows related or similar content to be consumed on a step by step basis with a better
+overview than just showing them in a grid or as a list. The reason for this is, that only a certain amount of slides is
+visible at the same time.
+
+Therefore, the `p-carousel`'s content has to be divided into multiple parts or slides.  
+The amount of slides visible can be specified on a per-breakpoint basis.
 
 <TableOfContents></TableOfContents>
 
 ## Basic
+
+Without any additional configuration, the `p-carousel` displays a single slide simultaneously.
 
 <Playground :markup="basic" :config="config"></Playground>
 
@@ -45,7 +52,7 @@ which internally applies the padding of `p-content-wrapper`.
 ## Overflow visible
 
 If you want to see the previous and next slide that are naturally outside the component, you can set
-`overflowVisible="true"`.  
+`overflow-visible="true"`.  
 But make sure, that your entire page does not become horizontally scrollable by specifying the style
 `overflow-x: hidden` somewhere up your DOM hierarchy.
 
