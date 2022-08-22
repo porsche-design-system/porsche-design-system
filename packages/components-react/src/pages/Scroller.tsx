@@ -3,9 +3,15 @@ import { PScroller } from '@porsche-design-system/components-react';
 
 export const ScrollerPage = (): JSX.Element => {
   const style = `
-    p-scroller > * {
-      padding: 40px;
-      border: 1px solid deeppink;
+    p-scroller {
+      white-space: nowrap;
+      max-width: 600px;
+    }
+    p-scroller > *:not(:last-child) {
+      margin-right: 0.5rem;
+    }
+    p-scroller > button {
+      font-size: 16px;
     }
   `;
 
@@ -13,7 +19,7 @@ export const ScrollerPage = (): JSX.Element => {
     <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
-      <div className="playground light" title="should render scroller" style={{ maxWidth: '600px' }}>
+      <div className="playground light" title="should render scroller">
         <PScroller>
           <button>Button</button>
           <button>Button</button>
@@ -31,20 +37,20 @@ export const ScrollerPage = (): JSX.Element => {
           <button>Button</button>
         </PScroller>
         <PScroller>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
+          <a href="#">Some link</a>
+          <a href="#">Some link</a>
+          <a href="#">Some link</a>
+          <a href="#">Some link</a>
+          <a href="#">Some link</a>
+          <a href="#">Some link</a>
+          <a href="#">Some link</a>
+          <a href="#">Some link</a>
+          <a href="#">Some link</a>
+          <a href="#">Some link</a>
+          <a href="#">Some link</a>
+          <a href="#">Some link</a>
+          <a href="#">Some link</a>
+          <a href="#">Some link</a>
         </PScroller>
         <PScroller>
           <p>Paragraph</p>
@@ -64,7 +70,7 @@ export const ScrollerPage = (): JSX.Element => {
         </PScroller>
       </div>
 
-      <div className="playground dark" title="should render scroller on dark theme" style={{ maxWidth: '600px' }}>
+      <div className="playground dark" title="should render scroller on dark theme">
         <PScroller theme="dark">
           <button>Button</button>
           <button>Button</button>
@@ -81,73 +87,9 @@ export const ScrollerPage = (): JSX.Element => {
           <button>Button</button>
           <button>Button</button>
         </PScroller>
-        <PScroller theme="dark">
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-          <a href="#">Link</a>
-        </PScroller>
-        <PScroller theme="dark">
-          <p>Paragraph</p>
-          <p>Paragraph</p>
-          <p>Paragraph</p>
-          <p>Paragraph</p>
-          <p>Paragraph</p>
-          <p>Paragraph</p>
-          <p>Paragraph</p>
-          <p>Paragraph</p>
-          <p>Paragraph</p>
-          <p>Paragraph</p>
-          <p>Paragraph</p>
-          <p>Paragraph</p>
-          <p>Paragraph</p>
-          <p>Paragraph</p>
-        </PScroller>
       </div>
 
-      <div
-        className="playground light surface"
-        title="should render scroller gradientColorScheme surface on light background"
-        style={{ maxWidth: '600px' }}
-      >
-        <PScroller gradientColorScheme="surface">
-          <button>Light surface</button>
-          <button>Light surface</button>
-          <button>Light surface</button>
-          <button>Light surface</button>
-          <button>Light surface</button>
-          <button>Light surface</button>
-          <button>Light surface</button>
-        </PScroller>
-      </div>
-
-      <div
-        className="playground dark surface"
-        title="should render scroller gradientColorScheme surface on dark background"
-        style={{ maxWidth: '600px' }}
-      >
-        <PScroller theme="dark" gradientColorScheme="surface">
-          <button>Dark surface</button>
-          <button>Dark surface</button>
-          <button>Dark surface</button>
-          <button>Dark surface</button>
-          <button>Dark surface</button>
-          <button>Dark surface</button>
-          <button>Dark surface</button>
-        </PScroller>
-      </div>
-
-      <div className="playground light-electric" title="should render scroller light-electric" style={{ maxWidth: '600px' }}>
+      <div className="playground light-electric" title="should render scroller light-electric">
         <PScroller theme="light-electric">
           <button>Light electric</button>
           <button>Light electric</button>
@@ -159,7 +101,7 @@ export const ScrollerPage = (): JSX.Element => {
         </PScroller>
       </div>
 
-      <div className="playground dark-electric" title="should render scroller dark-electric" style={{ maxWidth: '600px' }}>
+      <div className="playground dark-electric" title="should render scroller dark-electric">
         <PScroller theme="dark-electric">
           <button>Dark electric</button>
           <button>Dark electric</button>
@@ -171,185 +113,88 @@ export const ScrollerPage = (): JSX.Element => {
         </PScroller>
       </div>
 
-      <div className="playground" title="should render scroller with 500px scrolled to position" style={{ maxWidth: '600px' }}>
-        <PScroller scrollToPosition={{ scrollPosition: 500 }}>
-          <button>Scrolled to position x</button>
-          <button>Scrolled to position x</button>
-          <button>Scrolled to position x</button>
-          <button>Scrolled to position x</button>
-          <button>Scrolled to position x</button>
-          <button>Scrolled to position x</button>
-          <button>Scrolled to position x</button>
+      <div className="playground light surface" title="should render scroller gradientColorScheme surface on light background">
+        <PScroller gradientColorScheme="surface">
+          <button>Light surface</button>
+          <button>Light surface</button>
+          <button>Light surface</button>
+          <button>Light surface</button>
+          <button>Light surface</button>
+          <button>Light surface</button>
+          <button>Light surface</button>
         </PScroller>
       </div>
 
-      <div
-        className="playground dark"
-        title="should render scroller with 500px scrolled to position on dark background"
-        style={{ maxWidth: '600px' }}
-      >
-        <PScroller theme="dark" scrollToPosition={{ scrollPosition: 500 }}>
-          <button>Scrolled to position x</button>
-          <button>Scrolled to position x</button>
-          <button>Scrolled to position x</button>
-          <button>Scrolled to position x</button>
-          <button>Scrolled to position x</button>
-          <button>Scrolled to position x</button>
-          <button>Scrolled to position x</button>
+      <div className="playground dark surface" title="should render scroller gradientColorScheme surface on dark background">
+        <PScroller theme="dark" gradientColorScheme="surface">
+          <button>Dark surface</button>
+          <button>Dark surface</button>
+          <button>Dark surface</button>
+          <button>Dark surface</button>
+          <button>Dark surface</button>
+          <button>Dark surface</button>
+          <button>Dark surface</button>
         </PScroller>
       </div>
 
-      <div className="playground" title="should render scroller with scroll indicator position top" style={{ maxWidth: '600px' }}>
-        <PScroller scrollIndicatorPosition="top">
-          <button>Scroll indicator position top</button>
-          <button>Scroll indicator position top</button>
-          <button>Scroll indicator position top</button>
-          <button>Scroll indicator position top</button>
-          <button>Scroll indicator position top</button>
-          <button>Scroll indicator position top</button>
-          <button>Scroll indicator position top</button>
+      <div className="playground" title="should render scroller with scroll indicator position top">
+        <div style={{ height: '50px', border: '1px solid deeppink', maxWidth: '600px' }}>
+          <PScroller scrollIndicatorPosition="top">
+            <a href="#">Scroll indicator position top</a>
+            <a href="#">Scroll indicator position top</a>
+            <a href="#">Scroll indicator position top</a>
+            <a href="#">Scroll indicator position top</a>
+            <a href="#">Scroll indicator position top</a>
+            <a href="#">Scroll indicator position top</a>
+            <a href="#">Scroll indicator position top</a>
+          </PScroller>
+        </div>
+      </div>
+
+      <div className="playground light" title="should render scroller with scroll indicator size according to fontsize large">
+        <PScroller style={{ fontSize: 'large' }}>
+          <a href="#">Medium font</a>
+          <a href="#">Medium font</a>
+          <a href="#">Medium font</a>
+          <a href="#">Medium font</a>
+          <a href="#">Medium font</a>
+          <a href="#">Medium font</a>
+          <a href="#">Medium font</a>
         </PScroller>
       </div>
 
-      <div
-        className="playground dark"
-        title="should render scroller with scroll indicator position top on dark background"
-        style={{ maxWidth: '600px' }}
-      >
-        <PScroller theme="dark" scrollIndicatorPosition="top">
-          <button>Scroll indicator position top</button>
-          <button>Scroll indicator position top</button>
-          <button>Scroll indicator position top</button>
-          <button>Scroll indicator position top</button>
-          <button>Scroll indicator position top</button>
-          <button>Scroll indicator position top</button>
-          <button>Scroll indicator position top</button>
-        </PScroller>
+      <div className="playground light" title="should render scroller with scroll indicator size according to inherit size">
+        <div style={{ fontSize: 'large' }}>
+          <PScroller style={{ fontSize: 'inherit' }}>
+            <a href="#">Size inherit</a>
+            <a href="#">Size inherit</a>
+            <a href="#">Size inherit</a>
+            <a href="#">Size inherit</a>
+            <a href="#">Size inherit</a>
+            <a href="#">Size inherit</a>
+            <a href="#">Size inherit</a>
+          </PScroller>
+        </div>
       </div>
 
-      <div
-        className="playground light"
-        title="should render scroller with scroll indicator size according to medium fontsize"
-        style={{ maxWidth: '600px' }}
-      >
-        <PScroller>
-          <button style={{ fontSize: 'medium' }}>Medium font</button>
-          <button style={{ fontSize: 'medium' }}>Medium font</button>
-          <button style={{ fontSize: 'medium' }}>Medium font</button>
-          <button style={{ fontSize: 'medium' }}>Medium font</button>
-          <button style={{ fontSize: 'medium' }}>Medium font</button>
-          <button style={{ fontSize: 'medium' }}>Medium font</button>
-          <button style={{ fontSize: 'medium' }}>Medium font</button>
-        </PScroller>
-      </div>
-
-      <div
-        className="playground dark"
-        title="should render scroller with scroll indicator size according to medium fontsize on dark background"
-        style={{ maxWidth: '600px' }}
-      >
-        <PScroller theme="dark">
-          <button style={{ fontSize: 'medium' }}>Medium font</button>
-          <button style={{ fontSize: 'medium' }}>Medium font</button>
-          <button style={{ fontSize: 'medium' }}>Medium font</button>
-          <button style={{ fontSize: 'medium' }}>Medium font</button>
-          <button style={{ fontSize: 'medium' }}>Medium font</button>
-          <button style={{ fontSize: 'medium' }}>Medium font</button>
-          <button style={{ fontSize: 'medium' }}>Medium font</button>
-        </PScroller>
-      </div>
-
-      <div
-        className="playground light"
-        title="should render scroller with scroll indicator size according to large fontsize"
-        style={{ maxWidth: '600px' }}
-      >
-        <PScroller>
-          <button style={{ fontSize: 'large' }}>Large font</button>
-          <button style={{ fontSize: 'large' }}>Large font</button>
-          <button style={{ fontSize: 'large' }}>Large font</button>
-          <button style={{ fontSize: 'large' }}>Large font</button>
-          <button style={{ fontSize: 'large' }}>Large font</button>
-          <button style={{ fontSize: 'large' }}>Large font</button>
-          <button style={{ fontSize: 'large' }}>Large font</button>
-        </PScroller>
-      </div>
-
-      <div
-        className="playground dark"
-        title="should render scroller with scroll indicator size according to medium fontsize on dark background"
-        style={{ maxWidth: '600px' }}
-      >
-        <PScroller theme="dark">
-          <button style={{ fontSize: 'large' }}>Large font</button>
-          <button style={{ fontSize: 'large' }}>Large font</button>
-          <button style={{ fontSize: 'large' }}>Large font</button>
-          <button style={{ fontSize: 'large' }}>Large font</button>
-          <button style={{ fontSize: 'large' }}>Large font</button>
-          <button style={{ fontSize: 'large' }}>Large font</button>
-          <button style={{ fontSize: 'large' }}>Large font</button>
-        </PScroller>
-      </div>
-
-      <div
-        className="playground light"
-        title="should render scroller with scroll indicator size according to inherit size"
-        style={{ maxWidth: '600px' }}
-      >
-        <PScroller>
-          <button size="inherit">Size inherit</button>
-          <button size="inherit">Size inherit</button>
-          <button size="inherit">Size inherit</button>
-          <button size="inherit">Size inherit</button>
-          <button size="inherit">Size inherit</button>
-          <button size="inherit">Size inherit</button>
-          <button size="inherit">Size inherit</button>
-        </PScroller>
-      </div>
-
-      <div
-        className="playground dark"
-        title="should render scroller with scroll indicator size according to inherit size on dark background"
-        style={{ maxWidth: '600px' }}
-      >
-        <PScroller theme="dark">
-          <button size="inherit">Size inherit</button>
-          <button size="inherit">Size inherit</button>
-          <button size="inherit">Size inherit</button>
-          <button size="inherit">Size inherit</button>
-          <button size="inherit">Size inherit</button>
-          <button size="inherit">Size inherit</button>
-          <button size="inherit">Size inherit</button>
+      <div className="playground light" title="should render scroller only on screen size too small to show 8 buttons">
+        <PScroller style={{ maxWidth: 'none' }}>
+          <button>Without max width</button>
+          <button>Without max width</button>
+          <button>Without max width</button>
+          <button>Without max width</button>
+          <button>Without max width</button>
+          <button>Without max width</button>
+          <button>Without max width</button>
+          <button>Without max width</button>
         </PScroller>
       </div>
 
       <div className="playground light" title="should render scroller only on screen size too small to show 8 buttons">
-        <PScroller>
-          <button>Without max width</button>
-          <button>Without max width</button>
-          <button>Without max width</button>
-          <button>Without max width</button>
-          <button>Without max width</button>
-          <button>Without max width</button>
-          <button>Without max width</button>
-          <button>Without max width</button>
-        </PScroller>
-      </div>
-
-      <div
-        className="playground dark"
-        style={{ maxWidth: 'none !important' }}
-        title="should render scroller only on screen size too small to show 8 buttons on dark background"
-      >
-        <PScroller theme="dark">
-          <button>Without max width</button>
-          <button>Without max width</button>
-          <button>Without max width</button>
-          <button>Without max width</button>
-          <button>Without max width</button>
-          <button>Without max width</button>
-          <button>Without max width</button>
-          <button>Without max width</button>
+        <PScroller style={{ whiteSpace: 'normal' }}>
+          <button>Button text that breaks line</button>
+          <button>Button text that breaks line</button>
+          <button>Button text that breaks line</button>
         </PScroller>
       </div>
     </>
