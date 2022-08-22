@@ -210,9 +210,9 @@ export namespace Components {
          */
         "internationalization"?: CarouselInternationalization;
         /**
-          * Sets the amount of slides that move on a single prev/next click.
+          * Whether overflowing slides should be visible. Default is `false`.
          */
-        "slidesPerMove"?: BreakpointCustomizable<number>;
+        "overflowVisible"?: boolean;
         /**
           * Sets the amount of slides visible at the same time.
          */
@@ -1738,9 +1738,9 @@ declare namespace LocalJSX {
          */
         "onCarouselChange"?: (event: PCarouselCustomEvent<CarouselChangeEvent>) => void;
         /**
-          * Sets the amount of slides that move on a single prev/next click.
+          * Whether overflowing slides should be visible. Default is `false`.
          */
-        "slidesPerMove"?: BreakpointCustomizable<number>;
+        "overflowVisible"?: boolean;
         /**
           * Sets the amount of slides visible at the same time.
          */

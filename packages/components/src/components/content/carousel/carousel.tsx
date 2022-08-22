@@ -29,13 +29,12 @@ import {
   warnIfHeadingIsMissing,
 } from './carousel-utils';
 import { ButtonPure } from '../../action/button-pure/button-pure';
-import { gridGap } from '@porsche-design-system/utilities-v2';
+import { spacing } from '@porsche-design-system/utilities-v2';
 
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
   wrapHeading: AllowedTypes.boolean,
   slidesPerPage: AllowedTypes.breakpoint('number'),
-  slidesPerMove: AllowedTypes.breakpoint('number'),
   disablePagination: AllowedTypes.breakpoint('boolean'),
   internationalization: AllowedTypes.shape<Required<CarouselInternationalization>>({
     prev: AllowedTypes.string,
@@ -45,6 +44,7 @@ const propTypes: PropTypes<typeof Carousel> = {
     slideLabel: AllowedTypes.string,
     slide: AllowedTypes.string,
   }),
+  overflowVisible: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -64,15 +64,14 @@ export class Carousel {
   /** Sets the amount of slides visible at the same time. */
   @Prop({ mutable: true }) public slidesPerPage?: BreakpointCustomizable<number> = 1;
 
-  // TODO: remove?
-  /** Sets the amount of slides that move on a single prev/next click. */
-  @Prop({ mutable: true }) public slidesPerMove?: BreakpointCustomizable<number> = 1;
-
   /** If true, the carousel will not show pagination bullets at the bottom. */
   @Prop({ mutable: true }) public disablePagination?: BreakpointCustomizable<boolean> = false;
 
   /** Override the default wordings that are used for aria-labels on the next/prev buttons and pagination. */
   @Prop() public internationalization?: CarouselInternationalization = {};
+
+  /** Whether overflowing slides should be visible. Default is `false`. */
+  @Prop() public overflowVisible?: boolean = false;
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
@@ -96,7 +95,6 @@ export class Carousel {
 
   public componentWillLoad(): void {
     this.slidesPerPage = parseJSON(this.slidesPerPage) as any; // TODO: what about changes?
-    this.slidesPerMove = parseJSON(this.slidesPerMove) as any; // TODO: what about changes?
 
     this.updateSlidesAndPagination();
     this.observeBreakpointChange();
@@ -107,14 +105,15 @@ export class Carousel {
       start: 0,
       arrows: false,
       pagination: false,
-      dragMinThreshold: {
-        mouse: 1000, // should be enough to disable mouse dragging
-        touch: 10,
-      },
+      perMove: 1,
+      // dragMinThreshold: {
+      //   mouse: 5, // should be enough to disable mouse dragging
+      //   touch: 10,
+      // },
       mediaQuery: 'min',
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
-      breakpoints: getSplideBreakpoints(this.slidesPerPage, this.slidesPerMove),
-      gap: gridGap,
+      breakpoints: getSplideBreakpoints(this.slidesPerPage), // TODO: add responsive gap
+      gap: spacing.medium, // TODO: bigger on larger viewports s: , m: , l:
       // https://splidejs.com/guides/i18n/#default-texts
       i18n: parseJSONAttribute(this.internationalization),
     });
@@ -140,7 +139,14 @@ export class Carousel {
     warnIfHeadingIsMissing(this.host, this.heading);
     this.disablePagination = parseJSON(this.disablePagination) as any;
 
-    attachComponentCss(this.host, getComponentCss, this.wrapHeading, this.disablePagination, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.wrapHeading,
+      this.disablePagination,
+      this.overflowVisible,
+      this.theme
+    );
   }
 
   public componentDidUpdate(): void {

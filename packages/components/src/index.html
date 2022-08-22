@@ -13,15 +13,12 @@
     <style>
       body {
         margin: 0;
+        padding: 0 50px;
+        overflow-x: hidden;
       }
 
       p-carousel {
-        background: teal;
         margin-top: 20px;
-      }
-
-      main {
-        overflow-x: hidden;
       }
 
       main div {
@@ -40,35 +37,40 @@
     </header>
 
     <main>
-      <p-carousel
-        slides-per-page="{base: 2, s: 3}"
-        internationalization="{ slide: 'product', slideLabel: 'Slide %s von %s', prev: 'Vorheriger Slide', next: 'Nächster Slide', first: 'Zum ersten Slide', last: 'Zum letzten Slide' }"
-      >
+      <p-carousel heading="Heading" slides-per-page="{ base: 2, l: 4}" overflow-visible="true">
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+        <div>Slide 4</div>
+      </p-carousel>
+
+      <p-carousel slides-per-page="{ base: 2, l: 4}">
         <h1 slot="heading">Slotted heading</h1>
         <div>Slide 1</div>
         <div>Slide 2</div>
         <div>Slide 3</div>
         <div>Slide 4</div>
-        <div>Slide 5</div>
-        <div>Slide 6</div>
       </p-carousel>
 
-      <button id="btn-add">add slide</button>
-      <button id="btn-remove">remove slide</button>
+      <section style="background: black">
+        <p-carousel heading="Heading" theme="dark" slides-per-page="{ base: 2, l: 4}" overflow-visible="true">
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+          <div>Slide 4</div>
+        </p-carousel>
+
+        <p-carousel theme="dark" slides-per-page="{ base: 2, l: 4}">
+          <h1 slot="heading">Slotted heading</h1>
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+          <div>Slide 4</div>
+        </p-carousel>
+      </section>
     </main>
 
     <script>
-      const carousel = document.querySelector('p-carousel');
-      carousel.addEventListener('carouselChange', console.log);
-      document.querySelector('#btn-add').addEventListener('click', () => {
-        const child = document.createElement('div');
-        child.innerText = 'another child';
-        carousel.append(child);
-      });
-      document.querySelector('#btn-remove').addEventListener('click', () => {
-        carousel.children[carousel.children.length - 1].remove();
-      });
-
       <!-- START: keep this snippet to log component lifecycle events -->
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
