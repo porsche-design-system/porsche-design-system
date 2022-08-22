@@ -2,6 +2,7 @@ import { ElementHandle, Page } from 'puppeteer';
 import {
   CSS_ANIMATION_DURATION,
   expectA11yToMatchSnapshot,
+  getAttribute,
   getElementStyle,
   getLifecycleStatus,
   getProperty,
@@ -21,17 +22,18 @@ type InitOptions = {
   isWrapped?: boolean;
   otherMarkup?: string;
   tag?: 'a' | 'button';
+  isFocusable?: boolean;
 };
 
 const initScroller = async (opts?: InitOptions) => {
-  const { amount = 8, isWrapped, otherMarkup = '', tag = 'button' } = opts ?? {};
+  const { amount = 8, isWrapped, otherMarkup = '', tag = 'button', isFocusable = false } = opts ?? {};
 
   const elementAttributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
   const elements = Array.from(Array(amount))
     .map((_, i) => `<${tag}${elementAttributes}>Button ${i + 1}</${tag}>`)
     .join('');
 
-  const content = `<p-scroller>
+  const content = `<p-scroller${isFocusable ? ' is-focusable' : ''}>
   ${elements}
 </p-scroller>${otherMarkup}`;
 
@@ -41,6 +43,7 @@ const initScroller = async (opts?: InitOptions) => {
 const getHost = () => selectNode(page, 'p-scroller');
 const getAllButtons = () => page.$$('button');
 const getScrollArea = () => selectNode(page, 'p-scroller >>> .scroll-area');
+const getScrollWrapper = () => selectNode(page, 'p-scroller >>> .scroll-wrapper');
 const getActionContainers = async () => {
   const actionPrev = await selectNode(page, 'p-scroller >>> .action-prev');
   const actionNext = await selectNode(page, 'p-scroller >>> .action-next');
@@ -315,5 +318,26 @@ describe('accessibility', () => {
       message: 'After change',
       interestingOnly: false,
     });
+  });
+
+  it('should have correct tabindex on scroll-wrapper if isScrollable() and isFocusable are true', async () => {
+    await initScroller({ isWrapped: true, isFocusable: true });
+    const scrollWrapper = await getScrollWrapper();
+
+    expect(await getAttribute(scrollWrapper, 'tabindex')).toBe('1');
+  });
+
+  it('should have correct tabindex on scroll-wrapper if isScrollable() is false and isFocusable is true', async () => {
+    await initScroller({ isFocusable: true });
+    const scrollWrapper = await getScrollWrapper();
+
+    expect(await getAttribute(scrollWrapper, 'tabindex')).toBeNull();
+  });
+
+  it('should have correct tabindex on scroll-wrapper if isScrollable() is true and isFocusable is not set', async () => {
+    await initScroller({ isWrapped: true });
+    const scrollWrapper = await getScrollWrapper();
+
+    expect(await getAttribute(scrollWrapper, 'tabindex')).toBeNull();
   });
 });
