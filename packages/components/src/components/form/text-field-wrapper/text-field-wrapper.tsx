@@ -119,7 +119,6 @@ export class TextFieldWrapper {
     this.observeAttributes(); // once initially
 
     observeProperties(this.input, ['type'], () => {
-      console.log('type change!', this.input.type);
       this.initInput();
     });
 
@@ -282,7 +281,7 @@ export class TextFieldWrapper {
     );
   }
 
-  private initInput = () => {
+  private initInput = (): void => {
     this.input = getOnlyChildOfKindHTMLElementOrThrow(
       this.host,
       ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password']
