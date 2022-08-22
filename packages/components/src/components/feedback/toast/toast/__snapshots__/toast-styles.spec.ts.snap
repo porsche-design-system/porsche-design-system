@@ -3,8 +3,8 @@
 exports[`getComponentCss() should return correct css 1`] = `
 ":host {
   position: fixed !important;
-  left: 7vw !important;
-  right: 7vw !important;
+  left: max(1rem, 7vw) !important;
+  right: max(1rem, 7vw) !important;
   --p-toast-position-bottom-internal: var(--p-toast-position-bottom, 3.5rem) !important;
   bottom: var(--p-toast-position-bottom-internal) !important;
   max-width: 42rem !important;

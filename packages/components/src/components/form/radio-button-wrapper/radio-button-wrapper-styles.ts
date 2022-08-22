@@ -1,6 +1,5 @@
 import type { Styles } from 'jss';
-import type { BreakpointCustomizable } from '../../../utils';
-import type { FormState, Theme } from '../../../types';
+import type { BreakpointCustomizable, Theme } from '../../../types';
 import {
   addImportantToEachRule,
   getBaseSlottedStyles,
@@ -14,6 +13,7 @@ import { getFunctionalComponentStateMessageStyles } from '../../common/state-mes
 import { buildSlottedStyles, getCss, isVisibleFormState } from '../../../utils';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
+import type { FormState } from '../form-state';
 
 const theme: Theme = 'light';
 

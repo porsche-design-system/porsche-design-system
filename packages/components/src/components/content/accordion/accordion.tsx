@@ -1,19 +1,36 @@
-import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
-import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
-import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
+import { Component, Element, Event, EventEmitter, h, Prop, Watch } from '@stencil/core';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  getPrefixedTagNames,
+  HEADLINE_TAGS,
+  THEMES_EXTENDED_ELECTRIC,
+  validateProps,
+} from '../../../utils';
+import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../../types';
 import type { HeadlineTag } from '../../basic/typography/headline/headline-utils';
 import type { AccordionChangeEvent, AccordionSize } from './accordion-utils';
 import {
+  ACCORDION_SIZES,
   getContentHeight,
-  mutationObserverFallback,
   observeResize,
-  removeMutationObserverFallback,
+  removeResizeObserverFallback,
+  resizeObserverFallback,
   setCollapsibleElementHeight,
   unobserveResize,
-  useMutationObserverFallback,
+  useResizeObserverFallback,
   warnIfCompactAndSizeIsSet,
 } from './accordion-utils';
 import { getComponentCss } from './accordion-styles';
+
+const propTypes: PropTypes<typeof Accordion> = {
+  size: AllowedTypes.breakpoint<AccordionSize>(ACCORDION_SIZES),
+  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  heading: AllowedTypes.string,
+  tag: AllowedTypes.oneOf<HeadlineTag>(HEADLINE_TAGS),
+  open: AllowedTypes.boolean,
+  compact: AllowedTypes.boolean,
+};
 
 @Component({
   tag: 'p-accordion',
@@ -53,8 +70,8 @@ export class Accordion {
   }
 
   public connectedCallback(): void {
-    if (useMutationObserverFallback) {
-      mutationObserverFallback(this);
+    if (useResizeObserverFallback) {
+      resizeObserverFallback(this.host, this.setContentHeight, true);
     }
   }
 
@@ -63,7 +80,7 @@ export class Accordion {
   }
 
   public componentDidLoad(): void {
-    if (!useMutationObserverFallback) {
+    if (!useResizeObserverFallback) {
       observeResize(
         this.content,
         ({ contentRect }) => {
@@ -76,30 +93,23 @@ export class Accordion {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size, this.compact, this.open, this.theme);
   }
 
   public componentDidRender(): void {
-    if (useMutationObserverFallback) {
+    if (useResizeObserverFallback) {
       this.contentHeight = getContentHeight(this.content.getBoundingClientRect(), this.compact);
     }
   }
 
   public disconnectedCallback(): void {
-    if (useMutationObserverFallback) {
-      removeMutationObserverFallback(this);
+    if (useResizeObserverFallback) {
+      removeResizeObserverFallback(this.host, true);
     } else {
       unobserveResize(this.content);
     }
   }
-
-  // called via util
-  public setContentHeight = (): void => {
-    if (this.content) {
-      this.contentHeight = getContentHeight(this.content.getBoundingClientRect(), this.compact);
-      this.setCollapsibleElementHeight();
-    }
-  };
 
   public render(): JSX.Element {
     const buttonId = 'accordion-control';
@@ -151,4 +161,11 @@ export class Accordion {
   private setCollapsibleElementHeight(): void {
     setCollapsibleElementHeight(this.collapsibleElement, this.open, this.contentHeight);
   }
+
+  private setContentHeight = (): void => {
+    if (this.content) {
+      this.contentHeight = getContentHeight(this.content.getBoundingClientRect(), this.compact);
+      this.setCollapsibleElementHeight();
+    }
+  };
 }

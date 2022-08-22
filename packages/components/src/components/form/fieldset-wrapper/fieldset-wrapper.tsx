@@ -1,10 +1,21 @@
 import { JSX, Component, Prop, h, Element } from '@stencil/core';
-import { attachComponentCss, hasLabel, hasMessage } from '../../../utils';
-import type { FormState } from '../../../types';
+import { AllowedTypes, attachComponentCss, hasLabel, hasMessage, validateProps } from '../../../utils';
+import type { PropTypes } from '../../../types';
 import type { FieldsetWrapperLabelSize } from './fieldset-wrapper-utils';
 import { getComponentCss } from './fieldset-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
 import { Required } from '../../common/required/required';
+import { FORM_STATES } from '../form-state';
+import type { FormState } from '../form-state';
+import { FIELDSET_WRAPPER_LABEL_SIZES } from './fieldset-wrapper-utils';
+
+const propTypes: PropTypes<typeof FieldsetWrapper> = {
+  label: AllowedTypes.string,
+  labelSize: AllowedTypes.oneOf<FieldsetWrapperLabelSize>(FIELDSET_WRAPPER_LABEL_SIZES),
+  required: AllowedTypes.boolean,
+  state: AllowedTypes.oneOf<FormState>(FORM_STATES),
+  message: AllowedTypes.string,
+};
 
 @Component({
   tag: 'p-fieldset-wrapper',
@@ -37,6 +48,7 @@ export class FieldsetWrapper {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.state, this.labelSize, this.hasLabel);
   }
 

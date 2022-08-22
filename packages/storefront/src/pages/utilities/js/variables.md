@@ -23,20 +23,20 @@ A light (default) and dark theme is available depending on which background it's
 
 #### Background colors
 
-|                                                 |                |                                                             |
-| ----------------------------------------------- | -------------- | ----------------------------------------------------------- |
-| <ColorBadge :theme="theme" color="background-default"/>    | **Default**    | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}background.default` |
-| <ColorBadge :theme="theme" color="background-surface"/>    | **Surface**    | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}background.surface`    |
-| <ColorBadge :theme="theme" color="background-shading"/>    | **Shading**    | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}background.shading`    |
+|                                                         |             |                                                                     |
+| ------------------------------------------------------- | ----------- | ------------------------------------------------------------------- |
+| <ColorBadge :theme="theme" color="background-default"/> | **Default** | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}background.default` |
+| <ColorBadge :theme="theme" color="background-surface"/> | **Surface** | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}background.surface` |
+| <ColorBadge :theme="theme" color="background-shading"/> | **Shading** | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}background.shading` |
 
 #### Background notification colors
 
-|                                                   |                |      	             |
-|---------------------------------------------------|----------------|--------------------| 
+|                                                                |                  |                                                                           |
+| -------------------------------------------------------------- | ---------------- | ------------------------------------------------------------------------- |
 | <ColorBadge :theme="theme" color="notification-error-soft"/>   | **Error Soft**   | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.errorSoft`   |
-| <ColorBadge :theme="theme" color="notification-success-soft"/>   | **Success Soft**   | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.successSoft`   |
-| <ColorBadge :theme="theme" color="notification-warning-soft"/>   | **Warning Soft**   | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.warningSoft`   |
-| <ColorBadge :theme="theme" color="notification-neutral-soft"/>   | **Neutral Soft**   | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.neutralSoft`   |
+| <ColorBadge :theme="theme" color="notification-success-soft"/> | **Success Soft** | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.successSoft` |
+| <ColorBadge :theme="theme" color="notification-warning-soft"/> | **Warning Soft** | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.warningSoft` |
+| <ColorBadge :theme="theme" color="notification-neutral-soft"/> | **Neutral Soft** | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.neutralSoft` |
 
 #### Base color
 
@@ -54,8 +54,8 @@ A light (default) and dark theme is available depending on which background it's
 
 #### Notification colors
 
-|                                                          |             |                                                                       |
-| -------------------------------------------------------- | ----------- | --------------------------------------------------------------------- |
+|                                                           |             |                                                                       |
+| --------------------------------------------------------- | ----------- | --------------------------------------------------------------------- |
 | <ColorBadge :theme="theme" color="notification-error"/>   | **Error**   | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.error`   |
 | <ColorBadge :theme="theme" color="notification-success"/> | **Success** | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.success` |
 | <ColorBadge :theme="theme" color="notification-warning"/> | **Warning** | `color{{theme === 'dark' ? '.darkTheme.' : '.'}}notification.warning` |
@@ -74,22 +74,22 @@ A light (default) and dark theme is available depending on which background it's
 
 ### External brand colors
 
-|                                           |               |                            |
-| ----------------------------------------- | ------------- | -------------------------- |
-| <ColorBadge color="external-facebook"/>   | **Facebook**  | `color.external.facebook`  |
-| <ColorBadge color="external-google"/>     | **Google**    | `color.external.google`    |
-| <ColorBadge color="external-instagram"/>  | **Instagram** | `color.external.instagram` |
+|                                          |               |                            |
+| ---------------------------------------- | ------------- | -------------------------- |
+| <ColorBadge color="external-facebook"/>  | **Facebook**  | `color.external.facebook`  |
+| <ColorBadge color="external-google"/>    | **Google**    | `color.external.google`    |
+| <ColorBadge color="external-instagram"/> | **Instagram** | `color.external.instagram` |
 | <ColorBadge color="external-kakaotalk"/> | **KakaoTalk** | `color.external.kakaotalk` |
-| <ColorBadge color="external-linkedin"/>   | **LinkedIn**  | `color.external.linkedin`  |
-| <ColorBadge color="external-naver"/>      | **Naver**     | `color.external.naver`     |
-| <ColorBadge color="external-pinterest"/>  | **Pinterest** | `color.external.pinterest` |
-| <ColorBadge color="external-reddit"/>     | **Reddit**    | `color.external.reddit`    |
-| <ColorBadge color="external-tiktok"/>     | **TikTok**    | `color.external.tiktok`    |
-| <ColorBadge color="external-twitter"/>    | **Twitter**   | `color.external.twitter`   |
-| <ColorBadge color="external-wechat"/>     | **WeChat**    | `color.external.wechat`    |
-| <ColorBadge color="external-whatsapp"/>   | **WhatsApp**  | `color.external.whatsapp`  |
-| <ColorBadge color="external-xing"/>       | **XING**      | `color.external.xing`      |
-| <ColorBadge color="external-youtube"/>    | **YouTube**   | `color.external.youtube`   |
+| <ColorBadge color="external-linkedin"/>  | **LinkedIn**  | `color.external.linkedin`  |
+| <ColorBadge color="external-naver"/>     | **Naver**     | `color.external.naver`     |
+| <ColorBadge color="external-pinterest"/> | **Pinterest** | `color.external.pinterest` |
+| <ColorBadge color="external-reddit"/>    | **Reddit**    | `color.external.reddit`    |
+| <ColorBadge color="external-tiktok"/>    | **TikTok**    | `color.external.tiktok`    |
+| <ColorBadge color="external-twitter"/>   | **Twitter**   | `color.external.twitter`   |
+| <ColorBadge color="external-wechat"/>    | **WeChat**    | `color.external.wechat`    |
+| <ColorBadge color="external-whatsapp"/>  | **WhatsApp**  | `color.external.whatsapp`  |
+| <ColorBadge color="external-xing"/>      | **XING**      | `color.external.xing`      |
+| <ColorBadge color="external-youtube"/>   | **YouTube**   | `color.external.youtube`   |
 
 ---
 
@@ -125,7 +125,9 @@ layout[v]
 
 ## Font
 
-For font styling it's recommended to use the [`<p-headline>`](components/typography/headline)/[`<p-text>`](components/typography/text) component or [text/headline js functions](utilities/js/functions).
+For font styling it's recommended to use the
+[`<p-headline>`](components/typography/headline)/[`<p-text>`](components/typography/text) component or
+[text/headline js functions](utilities/js/functions).
 
 ### Family
 
@@ -175,6 +177,7 @@ font.size[v]
 ```
 
 **Example specific:**
+
 ```
 import { font } from '@porsche-design-system/utilities';
 

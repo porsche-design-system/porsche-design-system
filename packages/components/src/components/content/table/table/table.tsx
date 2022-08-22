@@ -1,15 +1,22 @@
 import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop, State } from '@stencil/core';
 import {
+  AllowedTypes,
   attachComponentCss,
   attachSlottedCss,
   getPrefixedTagNames,
   getScrollByX,
   hasNamedSlot,
   scrollElementBy,
+  validateProps,
 } from '../../../../utils';
+import type { PropTypes } from '../../../../types';
 import { getComponentCss, getSlottedCss } from './table-styles';
-import { warnIfCaptionIsUndefined, SORT_EVENT_NAME } from './table-utils';
 import type { SortingChangeEvent } from './table-utils';
+import { SORT_EVENT_NAME, warnIfCaptionIsUndefined } from './table-utils';
+
+const propTypes: PropTypes<typeof Table> = {
+  caption: AllowedTypes.string,
+};
 
 @Component({
   tag: 'p-table',
@@ -25,8 +32,8 @@ export class Table {
   /** Emitted when sorting is changed. */
   @Event({ bubbles: false }) public sortingChange: EventEmitter<SortingChangeEvent>;
 
-  @State() public isScrollIndicatorVisible = false;
-  @State() public isScrollable = false;
+  @State() private isScrollIndicatorVisible = false;
+  @State() private isScrollable = false;
 
   private intersectionObserver: IntersectionObserver;
   private scrollAreaElement: HTMLElement;
@@ -48,6 +55,10 @@ export class Table {
 
   public componentDidLoad(): void {
     this.initIntersectionObserver();
+  }
+
+  public componentWillRender(): void {
+    validateProps(this, propTypes);
   }
 
   public disconnectedCallback(): void {

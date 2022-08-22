@@ -1,22 +1,35 @@
 import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes } from '../../../types';
 import {
-  getHTMLElementAndThrowIfUndefined,
+  AllowedTypes,
+  attachComponentCss,
+  attachSlottedCss,
+  getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   hasDescription,
   hasLabel,
   hasMessage,
-  setAriaAttributes,
-  observeAttributes,
-  unobserveAttributes,
   isRequiredAndParentNotRequired,
-  attachSlottedCss,
-  attachComponentCss,
+  observeAttributes,
+  setAriaAttributes,
+  unobserveAttributes,
+  validateProps,
 } from '../../../utils';
-import type { BreakpointCustomizable, FormState } from '../../../types';
 import { getComponentCss, getSlottedCss } from './textarea-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
-import { hasCounter, addInputEventListener } from '../text-field-wrapper/text-field-wrapper-utils';
+import { addInputEventListenerForCounter, hasCounter } from '../form-utils';
 import { Required } from '../../common/required/required';
+import { FORM_STATES } from '../form-state';
+import type { FormState } from '../form-state';
+
+const propTypes: PropTypes<typeof TextareaWrapper> = {
+  label: AllowedTypes.string,
+  description: AllowedTypes.string,
+  state: AllowedTypes.oneOf<FormState>(FORM_STATES),
+  message: AllowedTypes.string,
+  hideLabel: AllowedTypes.breakpoint('boolean'),
+  showCharacterCount: AllowedTypes.boolean,
+};
 
 @Component({
   tag: 'p-textarea-wrapper',
@@ -55,7 +68,7 @@ export class TextareaWrapper {
   }
 
   public componentWillLoad(): void {
-    this.textarea = getHTMLElementAndThrowIfUndefined(this.host, 'textarea');
+    this.textarea = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'textarea');
     this.observeAttributes(); // once initially
     this.hasCounter = hasCounter(this.textarea);
     this.isCounterVisible = this.showCharacterCount && this.hasCounter;
@@ -63,11 +76,12 @@ export class TextareaWrapper {
 
   public componentDidLoad(): void {
     if (this.hasCounter) {
-      addInputEventListener(this.textarea, this.ariaElement, this.counterElement);
+      addInputEventListenerForCounter(this.textarea, this.ariaElement, this.counterElement);
     }
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     attachComponentCss(
       this.host,
       getComponentCss,

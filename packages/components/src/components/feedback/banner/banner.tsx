@@ -1,16 +1,25 @@
-import { JSX, Component, Prop, h, Element, Event, EventEmitter, Host } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@stencil/core';
+import type { PropTypes, Theme } from '../../../types';
 import {
-  getPrefixedTagNames,
-  hasNamedSlot,
+  AllowedTypes,
   attachComponentCss,
-  getShadowRootHTMLElement,
-  throwIfValueIsInvalid,
   attachSlottedCss,
+  getPrefixedTagNames,
+  getShadowRootHTMLElement,
+  hasNamedSlot,
+  THEMES,
+  validateProps,
 } from '../../../utils';
-import type { Theme } from '../../../types';
 import { getComponentCss, getSlottedCss } from './banner-styles';
-import type { BannerState } from './banner-utils';
-import { BANNER_STATES } from './banner-utils';
+import type { BannerState, BannerWidth } from './banner-utils';
+import { BANNER_STATES, BANNER_WIDTHS } from './banner-utils';
+
+const propTypes: PropTypes<typeof Banner> = {
+  state: AllowedTypes.oneOf<BannerState>(BANNER_STATES),
+  persistent: AllowedTypes.boolean,
+  width: AllowedTypes.oneOf<BannerWidth>(BANNER_WIDTHS),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
+};
 
 @Component({
   tag: 'p-banner',
@@ -26,7 +35,7 @@ export class Banner {
   @Prop() public persistent?: boolean = false;
 
   /** Defines the width of the banner corresponding to the `content-wrapper` dimensions */
-  @Prop() public width?: 'basic' | 'extended' | 'fluid' = 'basic';
+  @Prop() public width?: BannerWidth = 'basic';
 
   /** Adapts the banner color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -52,7 +61,7 @@ export class Banner {
   }
 
   public componentWillRender(): void {
-    throwIfValueIsInvalid(this.state, BANNER_STATES, 'state');
+    validateProps(this, propTypes);
   }
 
   public disconnectedCallback(): void {
@@ -83,8 +92,8 @@ export class Banner {
     );
   }
 
-  private onKeyboardEvent = ({ key }: KeyboardEvent): void => {
-    if (key === 'Esc' || key === 'Escape') {
+  private onKeyboardEvent = (e: KeyboardEvent): void => {
+    if (e.key === 'Escape') {
       this.removeBanner();
     }
   };

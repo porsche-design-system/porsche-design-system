@@ -16,7 +16,7 @@
     "build:generateCodeSamples": "ts-node scripts/generateCodeSamples.ts",
     "build:bundle": "rollup -c rollup.config.js",
     "test": "yarn test:unit",
-    "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
+    "test:unit": "jest --colors -c tests/unit/config/jest.config.js",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
@@ -25,28 +25,29 @@
     "@alex_neo/jest-expect-message": "^1.0.5",
     "@porsche-design-system/visual-regression-tester": "^4.3.0",
     "@signed/jest-alphabetical-sequencer": "^0.1.1",
-    "@types/jest": "^27.5.1",
+    "@types/jest": "^28.1.6",
     "@types/jest-environment-puppeteer": "^5.0.2",
-    "@types/jest-expect-message": "^1.0.3",
-    "jest": "^27.5.1",
-    "jest-puppeteer": "^6.1.0",
-    "jss": "^10.9.0",
+    "@types/jest-expect-message": "^1.0.4",
+    "jest": "^28.1.3",
+    "jest-environment-jsdom": "^28.1.3",
+    "jest-puppeteer": "^6.1.1",
+    "jss": "^10.9.2",
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
-    "jss-preset-default": "^10.9.0",
-    "puppeteer": "~14.3.0",
-    "ts-jest": "^27.1.4"
+    "jss-preset-default": "^10.9.2",
+    "puppeteer": "~15.3.2",
+    "ts-jest": "^28.0.7"
   },
   "devDependencies": {
-    "@rollup/plugin-typescript": "^8.3.3",
+    "@rollup/plugin-typescript": "^8.3.4",
     "@types/madge": "^5.0.0",
-    "@types/node": "^17.0.42",
+    "@types/node": "^18.6.4",
     "change-case": "^4.1.2",
     "globby": "^11.0.4",
     "madge": "^5.0.1",
-    "rollup": "^2.75.6",
+    "rollup": "^2.77.2",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
-    "ts-node": "^10.8.1",
-    "typescript": "~4.7.3"
+    "ts-node": "^10.9.1",
+    "typescript": "~4.7.4"
   }
 }

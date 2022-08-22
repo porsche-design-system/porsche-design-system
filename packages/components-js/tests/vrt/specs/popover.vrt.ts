@@ -13,7 +13,7 @@ import {
   getBodyMarkup,
   setContentWithDesignSystem,
 } from '../helpers';
-import { PopoverDirection } from '@porsche-design-system/components/src/components/feedback/popover/popover-utils';
+import type { PopoverDirection } from '@porsche-design-system/components/src/components/feedback/popover/popover-utils';
 
 it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(

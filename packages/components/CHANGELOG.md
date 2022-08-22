@@ -9,6 +9,41 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [2.15.0] - 2022-08-22
+
+### [2.15.0-rc.1] - 2022-08-18
+
+#### Changed
+
+- Downgraded `@angular` to `v13` to ensure backwards compatibility of `@porsche-design-system/components-angular`
+
+### [2.15.0-rc.0] - 2022-08-16
+
+#### Fixed
+
+- `Popover` visual shadow bug in Safari
+- `Stepper Horizontal Item` bug where pseudo styles of the counter element were overridable
+
+### [2.15.0-beta.0] - 2022-08-05
+
+#### Fixed
+
+- `Tabs` & `Tabs Bar` `size` property when using `BreakpointCustomizable`
+
+#### Changed
+
+- `Modal` uses poly fluid sizing for outer spacing
+- `Banner` uses poly fluid sizing for outer spacing
+- `Content Wrapper` uses poly fluid sizing for inner spacing
+- `Modal` min-width is slightly updated to perfectly fit into content area of `Content Wrapper` at 320px viewport width
+
+#### Added
+
+- Validation of properties for all components
+- `Text Field Wrapper` with `input type="search"` is clearable via Escape key and custom clear button across browsers
+- `Text Field Wrapper` with `input type="search"` shows a "Locate me" button when `actionIcon="locate"` is set, emits
+  the `action` event on click and can be put into a loading state via `actionLoading="true"`
+
 ### [2.14.0] - 2022-07-11
 
 ### [2.14.0-rc.1] - 2022-07-11

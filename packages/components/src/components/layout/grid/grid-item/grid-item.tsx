@@ -1,7 +1,14 @@
-import { JSX, Component, Prop, h, Element } from '@stencil/core';
-import type { GridItemOffset, GridItemSize } from './grid-item-utils';
+import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import type { GridItemOffset, GridItemOffsetType, GridItemSize, GridItemSizeType } from './grid-item-utils';
+import { GRID_ITEM_OFFSETS, GRID_ITEM_SIZES } from './grid-item-utils';
 import { getComponentCss } from './grid-item-styles';
-import { attachComponentCss, throwIfParentIsNotOfKind } from '../../../../utils';
+import type { PropTypes } from '../../../../types';
+import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../../utils';
+
+const propTypes: PropTypes<typeof GridItem> = {
+  size: AllowedTypes.breakpoint<GridItemSizeType>(GRID_ITEM_SIZES),
+  offset: AllowedTypes.breakpoint<GridItemOffsetType>(GRID_ITEM_OFFSETS),
+};
 
 @Component({
   tag: 'p-grid-item',
@@ -21,6 +28,8 @@ export class GridItem {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
+
     const grid = this.host.parentElement as HTMLPGridElement;
     if (grid) {
       attachComponentCss(this.host, getComponentCss, this.size, this.offset, grid.gutter);

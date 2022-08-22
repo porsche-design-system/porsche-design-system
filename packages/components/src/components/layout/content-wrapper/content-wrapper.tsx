@@ -1,8 +1,15 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
-import { attachComponentCss } from '../../../utils';
-import type { Theme } from '../../../types';
+import { AllowedTypes, attachComponentCss, THEMES, validateProps } from '../../../utils';
+import type { PropTypes, Theme } from '../../../types';
 import type { ContentWrapperWidth, ContentWrapperBackgroundColor } from './content-wrapper-utils';
 import { getComponentCss } from './content-wrapper-styles';
+import { CONTENT_WRAPPER_BACKGROUND_COLORS, CONTENT_WRAPPER_WIDTHS } from './content-wrapper-utils';
+
+const propTypes: PropTypes<typeof ContentWrapper> = {
+  width: AllowedTypes.oneOf<ContentWrapperWidth>(CONTENT_WRAPPER_WIDTHS),
+  backgroundColor: AllowedTypes.oneOf<ContentWrapperBackgroundColor>(CONTENT_WRAPPER_BACKGROUND_COLORS),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
+};
 
 @Component({
   tag: 'p-content-wrapper',
@@ -21,6 +28,7 @@ export class ContentWrapper {
   @Prop() public theme?: Theme = 'light';
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.width, this.backgroundColor, this.theme);
   }
 

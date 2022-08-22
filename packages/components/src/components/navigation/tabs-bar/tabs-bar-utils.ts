@@ -1,12 +1,12 @@
-import type { TextWeight } from '../../../types';
 import { pxToRemWithUnit } from '../../../styles';
 import type { Direction, GradientColorTheme } from '../../common/scroller/scroller-utils';
 import { setAttribute } from '../../../utils';
 
-const TAB_SIZE = ['small', 'medium'] as const;
-export type TabSize = typeof TAB_SIZE[number];
+export const TAB_SIZES = ['small', 'medium'] as const;
+export type TabSize = typeof TAB_SIZES[number];
 
-export type TabWeight = Extract<TextWeight, 'regular' | 'semibold'>;
+export const TAB_WEIGHTS = ['regular', 'semibold'] as const;
+export type TabWeight = typeof TAB_WEIGHTS[number];
 
 export type TabChangeEvent = { activeTabIndex: number };
 
@@ -15,8 +15,7 @@ export type TabGradientColorTheme = GradientColorTheme;
 const ENABLE_TRANSITION_CLASS = 'bar--enable-transition';
 
 export const sanitizeActiveTabIndex = (index: number, tabElementsCount: number): number => {
-  // TODO: Adjust this check when working on the validation / fallback ticket https://github.com/porscheui/porsche-design-system/issues/1235
-  if (index === undefined || index === null || isNaN(index)) {
+  if (index === undefined || index === null) {
     return undefined;
   }
 
@@ -94,7 +93,6 @@ export const setBarStyle = (
     return;
   }
   let transformation: string;
-
   if (activeTabIndex === undefined) {
     if (prevActiveTabIndex === undefined) {
       // handle active to removed case

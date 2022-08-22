@@ -1,14 +1,23 @@
 import { Component, Element, h, JSX, Prop } from '@stencil/core';
 import {
+  AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
   parseAndGetAriaAttributes,
-  throwIfValueIsInvalid,
+  validateProps,
 } from '../../../utils';
 import { getComponentCss } from './tag-dismissible-styles';
-import { TAG_DISMISSIBLE_ARIA_ATTRIBUTES, TAG_DISMISSIBLE_COLORS } from './tag-dismissible-utils';
-import type { TagDismissibleColor, TagDismissibleAriaAttribute } from './tag-dismissible-utils';
-import type { SelectedAriaAttributes } from '../../../types';
+import type { TagDismissibleAriaAttribute, TagDismissibleColor } from './tag-dismissible-utils';
+import { TAG_DISMISSIBLE_ARIA_ATTRIBUTES } from './tag-dismissible-utils';
+import type { PropTypes, SelectedAriaAttributes } from '../../../types';
+import type { TagColor } from '../tag/tag-utils';
+import { TAG_COLORS } from '../tag/tag-utils';
+
+const propTypes: PropTypes<typeof TagDismissible> = {
+  color: AllowedTypes.oneOf<TagColor>(TAG_COLORS),
+  label: AllowedTypes.string,
+  aria: AllowedTypes.aria<TagDismissibleAriaAttribute>(TAG_DISMISSIBLE_ARIA_ATTRIBUTES),
+};
 
 @Component({
   tag: 'p-tag-dismissible',
@@ -27,14 +36,14 @@ export class TagDismissible {
   @Prop() public aria?: SelectedAriaAttributes<TagDismissibleAriaAttribute>;
 
   public componentWillRender(): void {
-    throwIfValueIsInvalid(this.color, TAG_DISMISSIBLE_COLORS, 'color');
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.color, !!this.label);
   }
 
   public render(): JSX.Element {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
-      <button type="button" {...parseAndGetAriaAttributes(this.aria, TAG_DISMISSIBLE_ARIA_ATTRIBUTES)}>
+      <button type="button" {...parseAndGetAriaAttributes(this.aria)}>
         <span class="sr-only">Remove:</span>
         {this.label && <span class="label">{this.label}</span>}
         <slot />

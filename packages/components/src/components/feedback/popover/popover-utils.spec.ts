@@ -451,7 +451,7 @@ describe('onDocumentMousedown()', () => {
   let spy: jest.SpyInstance;
 
   beforeEach(() => {
-    popover.open = false;
+    popover['open'] = false;
     registeredPopovers.length = 0;
     registeredPopovers.push(popover);
     spy = jest.spyOn(popoverUtils, 'onDocumentMousedown');
@@ -462,19 +462,19 @@ describe('onDocumentMousedown()', () => {
   });
 
   it('should do nothing when composedPath contains host', () => {
-    popover.open = true;
+    popover['open'] = true;
     popover.host.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
 
     expect(spy).toBeCalledTimes(1);
-    expect(popover.open).toBe(true);
+    expect(popover['open']).toBe(true);
   });
 
   it('should change open to false when composedPath does not include host', () => {
-    popover.open = true;
+    popover['open'] = true;
     document.body.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
 
     expect(spy).toBeCalledTimes(1);
-    expect(popover.open).toBe(false);
+    expect(popover['open']).toBe(false);
   });
 
   it('should check composedPath only when open', () => {
@@ -483,14 +483,14 @@ describe('onDocumentMousedown()', () => {
     onDocumentMousedown(clickEvent);
     expect(spy1).not.toBeCalled();
 
-    popover.open = true;
+    popover['open'] = true;
     onDocumentMousedown(clickEvent);
     expect(spy1).toBeCalledTimes(1);
   });
 
   it('should close correct popover', () => {
     const popover1 = new Popover();
-    popover1.open = true;
+    popover1['open'] = true;
     popover1.host = document.createElement('p-popover');
     document.body.appendChild(popover1.host);
 
@@ -501,9 +501,9 @@ describe('onDocumentMousedown()', () => {
     document.body.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
 
     expect(spy).toBeCalledTimes(1);
-    expect(popover.open).toBe(false);
-    expect(popover1.open).toBe(false);
-    expect(popover2.open).toBe(false);
+    expect(popover['open']).toBe(false);
+    expect(popover1['open']).toBe(false);
+    expect(popover2['open']).toBe(false);
   });
 });
 
@@ -514,7 +514,7 @@ describe('onDocumentKeydown()', () => {
   let spy: jest.SpyInstance;
 
   beforeEach(() => {
-    popover.open = false;
+    popover['open'] = false;
     registeredPopovers.length = 0;
     registeredPopovers.push(popover);
     spy = jest.spyOn(popoverUtils, 'onDocumentKeydown');
@@ -526,19 +526,19 @@ describe('onDocumentKeydown()', () => {
 
   ['SpaceBar', 'Enter', ' '].forEach((key) => {
     it(`should change open to false when composedPath does not include host for key ${key}`, () => {
-      popover.open = true;
+      popover['open'] = true;
       document.body.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
 
       expect(spy).toBeCalledTimes(1);
-      expect(popover.open).toBe(false);
+      expect(popover['open']).toBe(false);
     });
 
     it(`should do nothing when composedPath contains host for key ${key}`, () => {
-      popover.open = true;
+      popover['open'] = true;
       popover.host.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
 
       expect(spy).toBeCalledTimes(1);
-      expect(popover.open).toBe(true);
+      expect(popover['open']).toBe(true);
     });
 
     it(`should check composedPath only when open for key ${key}`, () => {
@@ -547,21 +547,21 @@ describe('onDocumentKeydown()', () => {
       onDocumentKeydown(keyboardEvent);
       expect(spy1).not.toBeCalled();
 
-      popover.open = true;
+      popover['open'] = true;
       onDocumentKeydown(keyboardEvent);
       expect(spy1).toBeCalledTimes(1);
     });
   });
 
-  it.each(['Escape', 'Esc'])('should change open to false for key %s', (key) => {
-    popover.open = true;
-    document.body.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
+  it('should change open to false for key Escape', () => {
+    popover['open'] = true;
+    document.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
 
     expect(spy).toBeCalledTimes(1);
-    expect(popover.open).toBe(false);
+    expect(popover['open']).toBe(false);
   });
 
-  it.each(['Escape', 'Esc', ''])('should not check composedPath for key %s', (key) => {
+  it.each(['Escape', ''])('should not check composedPath for key %s', (key) => {
     const keyboardEvent = new KeyboardEvent('keydown', { key });
     const spy = jest.spyOn(keyboardEvent, 'composedPath');
     onDocumentKeydown(keyboardEvent);
@@ -571,7 +571,7 @@ describe('onDocumentKeydown()', () => {
 
   it('should close correct popover', () => {
     const popover1 = new Popover();
-    popover1.open = true;
+    popover1['open'] = true;
     popover1.host = document.createElement('p-popover');
     document.body.appendChild(popover1.host);
 
@@ -582,8 +582,8 @@ describe('onDocumentKeydown()', () => {
     document.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
 
     expect(spy).toBeCalledTimes(1);
-    expect(popover.open).toBe(false);
-    expect(popover1.open).toBe(false);
-    expect(popover2.open).toBe(false);
+    expect(popover['open']).toBe(false);
+    expect(popover1['open']).toBe(false);
+    expect(popover2['open']).toBe(false);
   });
 });

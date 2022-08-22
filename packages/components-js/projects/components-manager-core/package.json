@@ -8,17 +8,17 @@
   "scripts": {
     "build": "yarn clean:build && tsc --build tsconfig.json",
     "test": "yarn test:unit",
-    "test:unit": "jest --coverage",
+    "test:unit": "jest",
     "test:unit:watch": "yarn test --watch",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist"
   },
   "devDependencies": {
-    "@types/jest": "^27.5.1",
-    "jest": "^27.5.1",
-    "ts-jest": "^27.1.4",
+    "@types/jest": "^28.1.6",
+    "jest": "^28.1.3",
+    "ts-jest": "^28.0.7",
     "tslib": "^2.4.0",
-    "typescript": "~4.7.3"
+    "typescript": "~4.7.4"
   }
 }

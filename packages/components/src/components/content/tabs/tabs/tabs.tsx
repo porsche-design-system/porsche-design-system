@@ -1,22 +1,35 @@
 import type { EventEmitter } from '@stencil/core';
-import { Component, Element, Event, forceUpdate, Host, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Event, forceUpdate, h, Host, Prop, State, Watch } from '@stencil/core';
 import {
+  AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
   observeChildren,
   observeProperties,
   removeAttribute,
   setAttribute,
+  THEMES_EXTENDED_ELECTRIC,
   unobserveChildren,
+  validateProps,
 } from '../../../../utils';
-import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../../types';
+import type { BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../../../types';
 import type {
   TabChangeEvent,
+  TabGradientColorTheme,
   TabSize,
   TabWeight,
-  TabGradientColorTheme,
 } from '../../../navigation/tabs-bar/tabs-bar-utils';
+import { TAB_SIZES, TAB_WEIGHTS } from '../../../navigation/tabs-bar/tabs-bar-utils';
 import { getComponentCss } from './tabs-styles';
+import { GRADIENT_COLOR_THEMES } from '../../../common/scroller/scroller-utils';
+
+const propTypes: PropTypes<typeof Tabs> = {
+  size: AllowedTypes.breakpoint<TabSize>(TAB_SIZES),
+  weight: AllowedTypes.oneOf<TabWeight>(TAB_WEIGHTS),
+  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  gradientColorScheme: AllowedTypes.oneOf<TabGradientColorTheme>(GRADIENT_COLOR_THEMES),
+  activeTabIndex: AllowedTypes.number,
+};
 
 @Component({
   tag: 'p-tabs',
@@ -43,7 +56,7 @@ export class Tabs {
   /** Emitted when active tab is changed. */
   @Event({ bubbles: false }) public tabChange: EventEmitter<TabChangeEvent>;
 
-  @State() public tabsItemElements: HTMLPTabsItemElement[] = [];
+  @State() private tabsItemElements: HTMLPTabsItemElement[] = [];
 
   @Watch('activeTabIndex')
   public activeTabHandler(newValue: number): void {
@@ -63,6 +76,10 @@ export class Tabs {
 
   public componentDidLoad(): void {
     this.setAccessibilityAttributes();
+  }
+
+  public componentWillRender(): void {
+    validateProps(this, propTypes);
   }
 
   public componentDidUpdate(): void {
@@ -96,6 +113,7 @@ export class Tabs {
   }
 
   private defineTabsItemElements = (): void => {
+    // TODO: validation? this could be any kind of dom node
     this.tabsItemElements = Array.from(this.host.children) as HTMLPTabsItemElement[];
   };
 

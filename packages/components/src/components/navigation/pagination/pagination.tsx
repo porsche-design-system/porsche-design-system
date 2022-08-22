@@ -1,16 +1,29 @@
-import { Component, Event, Element, EventEmitter, h, JSX, Prop, State } from '@stencil/core';
-import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
+import { Component, Element, Event, EventEmitter, h, JSX, Prop, State } from '@stencil/core';
+import { AllowedTypes, attachComponentCss, getPrefixedTagNames, THEMES, validateProps } from '../../../utils';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
+import type { NumberOfPageLinks, PageChangeEvent } from './pagination-utils';
 import {
   createPaginationModel,
   getCounterResetValue,
   getCurrentActivePage,
   getTotalPages,
   itemTypes,
+  PAGINATION_NUMBER_OF_PAGE_LINKS,
 } from './pagination-utils';
-import type { NumberOfPageLinks, PageChangeEvent } from './pagination-utils';
-import type { BreakpointCustomizable, Theme } from '../../../types';
 import { listenResize } from '../../../utils/window-resize-listener';
 import { getComponentCss } from './pagination-styles';
+
+const propTypes: PropTypes<typeof Pagination> = {
+  totalItemsCount: AllowedTypes.number,
+  itemsPerPage: AllowedTypes.number,
+  activePage: AllowedTypes.number,
+  maxNumberOfPageLinks: AllowedTypes.breakpoint<NumberOfPageLinks>(PAGINATION_NUMBER_OF_PAGE_LINKS),
+  allyLabel: AllowedTypes.string,
+  allyLabelPrev: AllowedTypes.string,
+  allyLabelPage: AllowedTypes.string,
+  allyLabelNext: AllowedTypes.string,
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
+};
 
 @Component({
   tag: 'p-pagination',
@@ -52,7 +65,7 @@ export class Pagination {
   /** Emitted when the page changes. */
   @Event({ bubbles: false }) public pageChange: EventEmitter<PageChangeEvent>;
 
-  @State() public breakpointMaxNumberOfPageLinks: number;
+  @State() private breakpointMaxNumberOfPageLinks: number;
 
   private navigationElement: HTMLElement;
 
@@ -63,6 +76,7 @@ export class Pagination {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.maxNumberOfPageLinks, this.theme);
   }
 

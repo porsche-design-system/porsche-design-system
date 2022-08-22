@@ -18,7 +18,7 @@
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
   import type { Framework, FrameworkMarkup, Theme } from '@/models';
-  import { cleanMarkup, convertToAngular, convertToReact, getHighlightedCode, getHighlightedLanguage } from '@/utils';
+  import { convertMarkup, getHighlightedCode, getHighlightedLanguage } from '@/utils';
 
   @Component
   export default class CodeBlock extends Vue {
@@ -71,20 +71,8 @@
     }
 
     get highlightedMarkup(): string {
-      const markup = this.convertMarkup ? this.convert(this.markup) : this.markup;
+      const markup = this.convertMarkup ? convertMarkup(this.markup, this.framework) : this.markup;
       return getHighlightedCode(markup, this.framework);
-    }
-
-    private convert(markup: string): string {
-      markup = cleanMarkup(markup);
-      switch (this.framework) {
-        case 'angular':
-          return convertToAngular(markup);
-        case 'react':
-          return convertToReact(markup);
-        default:
-          return markup;
-      }
     }
   }
 </script>
@@ -101,7 +89,7 @@
       }
 
       pre {
-        code ::v-deep {
+        :deep(code) {
           // source: https://github.com/ericwbailey/a11y-syntax-highlighting/blob/main/dist/prism/a11y-light.css#L52-L107
 
           .token.comment,
@@ -167,7 +155,7 @@
       // extracted from chrome dev tools contrast utility
       &.code-block--surface {
         pre {
-          code ::v-deep {
+          :deep(code) {
             .token.selector,
             .token.attr-name,
             .token.string,
@@ -194,7 +182,7 @@
       }
 
       pre {
-        code ::v-deep {
+        :deep(code) {
           // source: https://github.com/ericwbailey/a11y-syntax-highlighting/blob/main/dist/prism/a11y-dark.css#L52-L107
 
           .token.comment,
@@ -279,7 +267,7 @@
     margin-top: $pds-spacing-medium;
     @include pds-focus;
 
-    code ::v-deep {
+    :deep(code) {
       .token.important,
       .token.bold {
         font-weight: bold;

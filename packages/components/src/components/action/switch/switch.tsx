@@ -1,15 +1,30 @@
 import { JSX, Component, Prop, h, Element, Event, EventEmitter, Listen } from '@stencil/core';
-import type { AlignLabel, BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
+import type { AlignLabel, BreakpointCustomizable, PropTypes, ThemeExtendedElectric } from '../../../types';
 import {
+  ALIGN_LABELS,
+  AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
+  THEMES_EXTENDED_ELECTRIC,
+  validateProps,
 } from '../../../utils';
 import { getComponentCss } from './switch-styles';
 import { getButtonAriaAttributes } from './switch-utils';
 
 export type SwitchChangeEvent = { checked: boolean };
+
+const propTypes: PropTypes<typeof Switch> = {
+  alignLabel: AllowedTypes.oneOf<AlignLabel>(ALIGN_LABELS),
+  hideLabel: AllowedTypes.breakpoint('boolean'),
+  stretch: AllowedTypes.breakpoint('boolean'),
+  checked: AllowedTypes.boolean,
+  disabled: AllowedTypes.boolean,
+  loading: AllowedTypes.boolean,
+  tabbable: AllowedTypes.boolean,
+  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+};
 
 @Component({
   tag: 'p-switch',
@@ -67,6 +82,7 @@ export class Switch {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     attachComponentCss(
       this.host,
       getComponentCss,

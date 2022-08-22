@@ -1,6 +1,5 @@
-import type { BreakpointCustomizable } from '../../../types';
 import type { TabSize, TabWeight } from './tabs-bar-utils';
-import type { ThemeExtendedElectric } from '../../../types';
+import type { BreakpointCustomizable, ThemeExtendedElectric } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import { addImportantToEachRule, getTransition, getThemedColors, pxToRemWithUnit } from '../../../styles';
 import { getFontWeight } from '../../../styles/font-weight-styles';
@@ -24,7 +23,9 @@ export const getComponentCss = (
         display: 'block',
         ...addImportantToEachRule({
           position: 'relative',
-          height: size === 'medium' ? pxToRemWithUnit(52) : pxToRemWithUnit(36),
+          ...buildResponsiveStyles(size, (s: TabSize) => ({
+            height: s === 'medium' ? pxToRemWithUnit(52) : pxToRemWithUnit(36),
+          })),
         }),
       },
       ...addImportantToEachRule({

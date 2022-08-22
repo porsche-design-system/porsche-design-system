@@ -1,30 +1,55 @@
 import type {
-  SelectedAriaAttributes,
   AlignLabel,
+  AlignLabelType,
   BreakpointCustomizable,
   LinkButtonPureIconName,
   LinkTarget,
+  PropTypes,
+  SelectedAriaAttributes,
+  TextSize,
   TextWeight,
   ThemeExtendedElectricDark,
-  TextSize,
 } from '../../../types';
 import type { LinkAriaAttributes } from '../link/link-utils';
-import { Host, Component, Element, h, JSX, Prop } from '@stencil/core';
+import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
+import { Component, Element, h, Host, JSX, Prop } from '@stencil/core';
 import {
-  calcLineHeightForElement,
-  getPrefixedTagNames,
-  transitionListener,
-  hasVisibleIcon,
-  hasSlottedSubline,
+  ALIGN_LABELS,
+  AllowedTypes,
   attachComponentCss,
   attachSlottedCss,
+  calcLineHeightForElement,
+  getPrefixedTagNames,
+  hasSlottedSubline,
+  hasVisibleIcon,
+  isSizeInherit,
   parseAndGetAriaAttributes,
+  TEXT_SIZES,
+  TEXT_WEIGHTS,
+  THEMES_EXTENDED_ELECTRIC_DARK,
+  throwIfInvalidLinkPureUsage,
+  transitionListener,
+  validateProps,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../../utils';
 import { getComponentCss, getSlottedCss } from './link-pure-styles';
-import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
-import { throwIfInvalidLinkUsage } from '../link-validation';
-import { isSizeInherit } from '../../../utils';
+
+const propTypes: PropTypes<typeof LinkPure> = {
+  alignLabel: AllowedTypes.breakpoint<AlignLabelType>(ALIGN_LABELS),
+  stretch: AllowedTypes.breakpoint('boolean'),
+  size: AllowedTypes.breakpoint<TextSize>(TEXT_SIZES),
+  weight: AllowedTypes.oneOf<TextWeight>(TEXT_WEIGHTS),
+  icon: AllowedTypes.string,
+  iconSource: AllowedTypes.string,
+  href: AllowedTypes.string,
+  active: AllowedTypes.boolean,
+  hideLabel: AllowedTypes.breakpoint('boolean'),
+  theme: AllowedTypes.oneOf<ThemeExtendedElectricDark>(THEMES_EXTENDED_ELECTRIC_DARK),
+  target: AllowedTypes.string,
+  download: AllowedTypes.string,
+  rel: AllowedTypes.string,
+  aria: AllowedTypes.aria<LinkAriaAttributes>(LINK_ARIA_ATTRIBUTES),
+};
 
 @Component({
   tag: 'p-link-pure',
@@ -83,10 +108,12 @@ export class LinkPure {
   }
 
   public componentWillLoad(): void {
-    throwIfInvalidLinkUsage(this.host, this.href);
+    // NOTE: we can't reuse the more precise throwIfInvalidLinkUsage because of subline variations
+    throwIfInvalidLinkPureUsage(this.host, this.href);
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     warnIfParentIsPTextAndIconIsNone(this.host, this.icon);
     attachComponentCss(
       this.host,
@@ -128,7 +155,7 @@ export class LinkPure {
             download: this.download,
             rel: this.rel,
             ...(hasSubline && { 'aria-describedby': 'subline' }),
-            ...parseAndGetAriaAttributes(this.aria, LINK_ARIA_ATTRIBUTES),
+            ...parseAndGetAriaAttributes(this.aria),
           })}
           ref={(el) => (this.linkTag = el)}
         >

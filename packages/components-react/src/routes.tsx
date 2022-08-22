@@ -76,6 +76,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.InlineNotificationExampleActionButtonPage />,
   },
   {
+    name: 'Modal Example Accessibility',
+    path: '/modal-example-accessibility',
+    element: <fromExamples.ModalExampleAccessibilityPage />,
+  },
+  {
     name: 'Segmented Control Example',
     path: '/segmented-control-example',
     element: <fromExamples.SegmentedControlExamplePage />,
@@ -101,14 +106,24 @@ export const routes: RouteType[] = [
     element: <fromExamples.TableExampleAdvancedPage />,
   },
   {
-    name: 'Tabs Bar Example',
-    path: '/tabs-bar-example',
-    element: <fromExamples.TabsBarExamplePage />,
+    name: 'Tabs Bar Example Accessibility',
+    path: '/tabs-bar-example-accessibility',
+    element: <fromExamples.TabsBarExampleAccessibilityPage />,
   },
   {
-    name: 'Text Field Wrapper Example',
-    path: '/text-field-wrapper-example',
-    element: <fromExamples.TextFieldWrapperExamplePage />,
+    name: 'Tabs Bar Example Basic',
+    path: '/tabs-bar-example-basic',
+    element: <fromExamples.TabsBarExampleBasicPage />,
+  },
+  {
+    name: 'Text Field Wrapper Example IMask',
+    path: '/text-field-wrapper-example-imask',
+    element: <fromExamples.TextFieldWrapperExampleIMaskPage />,
+  },
+  {
+    name: 'Text Field Wrapper Example Search',
+    path: '/text-field-wrapper-example-search',
+    element: <fromExamples.TextFieldWrapperExampleSearchPage />,
   },
   {
     name: 'Toast Example',

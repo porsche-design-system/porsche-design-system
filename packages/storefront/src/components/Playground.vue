@@ -37,10 +37,13 @@
           :frameworks="frameworks"
         ></CodeBlock>
         <CodeEditor
-          v-if="!hasFrameworkMarkup"
+          v-if="showCodeEditor"
           :markup="cleanedEditorMarkup"
           :theme="theme"
           :framework="activeFramework"
+          :externalStackBlitzDependencies="getExternalDependenciesOrThrow(this.externalStackBlitzDependencies)"
+          :sharedImportKeys="sharedImportKeys"
+          :colorScheme="config.colorScheme"
         ></CodeEditor>
       </template>
     </div>
@@ -53,13 +56,15 @@
   import { Prop } from 'vue-property-decorator';
   import CodeBlock from '@/components/CodeBlock.vue';
   import CodeEditor from '@/components/CodeEditor.vue';
-  import type { Framework, FrameworkMarkup, Theme } from '@/models';
-  import { cleanMarkup, patchThemeIntoMarkup } from '@/utils';
+  import { cleanMarkup, patchThemeIntoMarkup } from '../utils';
   import { componentMeta } from '@porsche-design-system/shared';
+  import type { ColorScheme, Framework, FrameworkMarkup, Theme } from '../models';
+  import type { ExternalDependency, SharedImportKey } from '../utils';
+  import { getExternalDependenciesOrThrow } from '../utils/stackblitz/helper';
 
   export type PlaygroundConfig = {
     themeable: boolean;
-    colorScheme: 'default' | 'surface';
+    colorScheme: ColorScheme;
     height: 'auto' | 'fixed';
     spacing: 'none' | 'inline' | 'block' | 'block-small';
     overflowX: 'auto' | 'visible';
@@ -89,7 +94,11 @@
   export default class Playground extends Vue {
     @Prop({ default: () => ({}) }) public config!: Partial<PlaygroundConfig>;
     @Prop({ default: () => ({}) }) public frameworkMarkup!: FrameworkMarkup;
+    @Prop({ default: () => [] }) public externalStackBlitzDependencies!: ExternalDependency[];
+    @Prop({ default: true }) public showCodeEditor!: boolean;
     @Prop({ default: '' }) public markup!: string;
+
+    getExternalDependenciesOrThrow = getExternalDependenciesOrThrow;
 
     public mounted(): void {
       this.syncThemeIntoDemoComponents();
@@ -104,7 +113,7 @@
     }
 
     public get cleanedEditorMarkup(): string {
-      return cleanMarkup(this.codeBlockMarkup);
+      return this.hasFrameworkMarkup ? this.codeBlockMarkup : cleanMarkup(this.codeBlockMarkup);
     }
 
     public get mergedConfig(): PlaygroundConfig {
@@ -147,6 +156,18 @@
 
     public get theme(): Theme {
       return this.config.themeable ? this.$store.getters.theme : 'light';
+    }
+
+    public get sharedImportKeys(): SharedImportKey[] {
+      if (this.hasFrameworkMarkup && this.frameworks.includes('shared')) {
+        return (
+          (this.frameworkMarkup
+            .react!.match(/import { (.+) } from '@porsche-design-system\/shared';/)?.[1]
+            .match(/\b([a-z][A-z]+)/g) as SharedImportKey[]) || []
+        ); // extract consts, ignore types;
+      } else {
+        return [];
+      }
     }
 
     private syncThemeIntoDemoComponents(): void {
@@ -194,7 +215,7 @@
 
     // Child Layout "height"
     &--height-fixed .demo {
-      ::v-deep > * {
+      :deep(> *) {
         height: 11.25rem;
       }
     }
@@ -208,13 +229,13 @@
         margin-top: -$pds-spacing-medium;
       }
 
-      ::v-deep > * {
+      :deep(> *) {
         margin-top: $pds-spacing-medium;
       }
     }
 
     &--spacing-inline .demo {
-      ::v-deep > * {
+      :deep(> *) {
         &:not(:last-child) {
           margin-right: $pds-spacing-medium;
         }
@@ -228,7 +249,7 @@
         margin-top: -$pds-spacing-small;
       }
 
-      ::v-deep > * {
+      :deep(> *) {
         margin-top: $pds-spacing-small;
       }
     }
@@ -241,12 +262,12 @@
       margin-top: $pds-spacing-large;
     }
 
-    .code-block ~ form {
+    .code-block ~ p-button {
       margin-top: $pds-spacing-medium;
     }
 
     .code-block {
-      &--framework ::v-deep pre {
+      &--framework :deep(pre) {
         max-height: 40rem;
       }
     }

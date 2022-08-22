@@ -153,6 +153,46 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-text-field-wrapper [label]="'Type search readonly'">
         <input [type]="'search'" readonly />
       </p-text-field-wrapper>
+      <p-text-field-wrapper [label]="'Type search with long value'">
+        <input
+          [type]="'search'"
+          [value]="'some really long password with many words and amazing special characters, letters big and small, numbers'"
+        />
+      </p-text-field-wrapper>
+      <p-text-field-wrapper [label]="'Type search with action-icon'" [actionIcon]="'locate'">
+        <input [type]="'search'" />
+      </p-text-field-wrapper>
+      <p-text-field-wrapper
+        [label]="'Type search with action-icon and action-loading'"
+        [actionIcon]="'locate'"
+        [actionLoading]="true"
+      >
+        <input [type]="'search'" />
+      </p-text-field-wrapper>
+      <form>
+        <p-text-field-wrapper [label]="'Type search with long value within form'">
+          <input
+            [type]="'search'"
+            [value]="'some really long password with many words and amazing special characters, letters big and small, numbers'"
+          />
+        </p-text-field-wrapper>
+        <p-text-field-wrapper [label]="'Type search with action-icon within form'" [actionIcon]="'locate'">
+          <input [type]="'search'" />
+        </p-text-field-wrapper>
+        <p-text-field-wrapper
+          [label]="'Type search with action-icon and action-loading within form'"
+          [actionIcon]="'locate'"
+          [actionLoading]="true"
+        >
+          <input [type]="'search'" />
+        </p-text-field-wrapper>
+        <p-text-field-wrapper [label]="'Type search with action-icon and long value within form'" [actionIcon]="'locate'">
+          <input
+            [type]="'search'"
+            [value]="'some really long password with many words and amazing special characters, letters big and small, numbers'"
+          />
+        </p-text-field-wrapper>
+      </form>
     </div>
 
     <div class="playground light" title="should render with error state and error message">

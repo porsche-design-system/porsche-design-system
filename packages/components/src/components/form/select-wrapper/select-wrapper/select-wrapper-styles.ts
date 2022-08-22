@@ -1,6 +1,5 @@
-import type { BreakpointCustomizable } from '../../../../utils';
+import type { BreakpointCustomizable, Theme } from '../../../../types';
 import { buildSlottedStyles, getCss, isThemeDark, isVisibleFormState, mergeDeep } from '../../../../utils';
-import type { FormState, Theme } from '../../../../types';
 import {
   addImportantToEachRule,
   getBaseSlottedStyles,
@@ -11,6 +10,7 @@ import {
 import { getBaseChildStyles, getLabelStyles } from '../../../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../../common/state-message/state-message-styles';
+import { FormState } from '../../form-state';
 
 const { baseColor: themeLightBaseColor } = getThemedColors('light');
 

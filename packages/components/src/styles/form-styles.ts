@@ -1,7 +1,6 @@
 import type { JssStyle, Styles } from 'jss';
-import type { BreakpointCustomizable } from '../utils';
+import type { BreakpointCustomizable, Theme } from '../types';
 import { buildResponsiveStyles, isThemeDark, isVisibleFormState } from '../utils';
-import type { FormState, Theme } from '../types';
 import {
   addImportantToRule,
   getFormTextHiddenJssStyle,
@@ -13,6 +12,7 @@ import {
 import { textSmall } from '@porsche-design-system/utilities-v2';
 import { getThemedFormStateColors } from './form-state-color-styles';
 import { hoverMediaQuery } from './hover-media-query';
+import type { FormState } from '../components/form/form-state';
 
 const { disabledColor: lightThemeDisabledColor } = getThemedColors('light');
 
@@ -59,7 +59,8 @@ export const getBaseChildStyles = (
       ...additionalDefaultJssStyle,
     },
     ...(hoverMediaQuery({
-      [`::slotted(${child}:hover)`]: {
+      // with the media query the selector has higher priority and overrides disabled styles
+      [`::slotted(${child}:not(:disabled):not([readonly]):hover)`]: {
         borderColor: formStateHoverColor || (isThemeDark(theme) ? contrastHighColor : baseColor),
       },
     }) as Styles),
@@ -103,7 +104,7 @@ export const getLabelStyles = (
   const labelTextHoverJssStyle: JssStyle = hoverMediaQuery({
     '&:hover': {
       [`&~::slotted(${child}:not(:disabled):not([readonly]))` +
-      (hasVisibleState ? `,::slotted(${child}:hover:not(:disabled):not([readonly]))` : '')]: {
+      (hasVisibleState ? `,::slotted(${child}:not(:disabled):not([readonly]):hover)` : '')]: {
         borderColor: addImportantToRule(hasVisibleState ? formStateHoverColor : baseColor),
       },
     },

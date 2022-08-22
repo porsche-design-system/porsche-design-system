@@ -1,16 +1,27 @@
-import { Component, Element, Event, EventEmitter, Host, JSX, Prop, Watch, h } from '@stencil/core';
-import type { BreakpointCustomizable, SelectedAriaAttributes } from '../../../types';
+import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop, Watch } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../../types';
 import {
+  AllowedTypes,
   attachComponentCss,
   attachSlottedCss,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasNamedSlot,
   parseAndGetAriaAttributes,
+  validateProps,
 } from '../../../utils';
 import type { ModalAriaAttributes } from './modal-utils';
 import { MODAL_ARIA_ATTRIBUTES, setScrollLock, warnIfAriaAndHeadingPropsAreUndefined } from './modal-utils';
 import { getComponentCss, getSlottedCss } from './modal-styles';
+
+const propTypes: PropTypes<typeof Modal> = {
+  open: AllowedTypes.boolean,
+  disableCloseButton: AllowedTypes.boolean,
+  disableBackdropClick: AllowedTypes.boolean,
+  heading: AllowedTypes.string,
+  fullscreen: AllowedTypes.breakpoint('boolean'),
+  aria: AllowedTypes.aria<ModalAriaAttributes>(MODAL_ARIA_ATTRIBUTES),
+};
 
 @Component({
   tag: 'p-modal',
@@ -78,6 +89,7 @@ export class Modal {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     if (this.open) {
       warnIfAriaAndHeadingPropsAreUndefined(this.host, this.heading, this.aria);
     }
@@ -108,7 +120,7 @@ export class Modal {
           class="root"
           role="dialog"
           aria-modal="true"
-          {...{ 'aria-label': this.heading, ...parseAndGetAriaAttributes(this.aria, MODAL_ARIA_ATTRIBUTES) }}
+          {...{ 'aria-label': this.heading, ...parseAndGetAriaAttributes(this.aria) }}
           aria-hidden={!this.open ? 'true' : 'false'}
           tabIndex={-1}
           ref={(el) => (this.dialog = el)}

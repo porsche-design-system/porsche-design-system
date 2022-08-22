@@ -1,9 +1,27 @@
 import { JSX, Component, Prop, h, Element, Host, State } from '@stencil/core';
-import { addDocumentEventListener, removeDocumentEventListener, updatePopoverStyles } from './popover-utils';
-import { attachComponentCss, attachSlottedCss, getPrefixedTagNames, parseAndGetAriaAttributes } from '../../../utils';
+import {
+  addDocumentEventListener,
+  POPOVER_DIRECTIONS,
+  removeDocumentEventListener,
+  updatePopoverStyles,
+} from './popover-utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  attachSlottedCss,
+  getPrefixedTagNames,
+  parseAndGetAriaAttributes,
+  validateProps,
+} from '../../../utils';
 import { getComponentCss, getSlottedCss } from './popover-styles';
 import type { PopoverDirection } from './popover-utils';
-import type { SelectedAriaAttributes } from '../../../types';
+import type { PropTypes, SelectedAriaAttributes } from '../../../types';
+
+const propTypes: PropTypes<typeof Popover> = {
+  direction: AllowedTypes.oneOf<PopoverDirection>(POPOVER_DIRECTIONS),
+  description: AllowedTypes.string,
+  aria: AllowedTypes.aria<'aria-label'>(['aria-label']),
+};
 
 @Component({
   tag: 'p-popover',
@@ -22,7 +40,7 @@ export class Popover {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<'aria-label'>;
 
-  @State() public open = false;
+  @State() private open = false;
 
   private spacer: HTMLDivElement;
   private popover: HTMLDivElement;
@@ -34,6 +52,7 @@ export class Popover {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.direction);
   }
 
@@ -58,9 +77,10 @@ export class Popover {
           icon="information"
           hideLabel="true"
           onClick={() => (this.open = !this.open)}
+          // pass string to avoid another update on p-button on each render because of new object reference
           aria={JSON.stringify({
             'aria-expanded': this.open,
-            ...parseAndGetAriaAttributes(this.aria, ['aria-label']),
+            ...parseAndGetAriaAttributes(this.aria),
           })}
           ref={(el) => (this.button = el)}
         >
@@ -77,8 +97,8 @@ export class Popover {
     );
   }
 
-  private onKeydown = ({ key }: KeyboardEvent): void => {
-    if (key === 'Escape' || key === 'Esc') {
+  private onKeydown = (e: KeyboardEvent): void => {
+    if (e.key === 'Escape') {
       this.button.focus();
     }
   };

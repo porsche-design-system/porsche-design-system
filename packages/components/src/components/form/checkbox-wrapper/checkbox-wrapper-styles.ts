@@ -1,5 +1,4 @@
-import type { BreakpointCustomizable } from '../../../utils';
-import type { FormState, Theme } from '../../../types';
+import type { BreakpointCustomizable, Theme } from '../../../types';
 import { buildSlottedStyles, getCss, isVisibleFormState } from '../../../utils';
 import {
   addImportantToEachRule,
@@ -13,6 +12,7 @@ import { getFunctionalComponentStateMessageStyles } from '../../common/state-mes
 import { getCheckboxRadioLabelJssStyle } from '../../../styles/checkbox-radio-styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { hoverMediaQuery } from '../../../styles/hover-media-query';
+import type { FormState } from '../form-state';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,

@@ -1,10 +1,9 @@
-import type { BreakpointCustomizable } from '../../../utils';
+import type { BreakpointCustomizable } from '../../../types';
 import { getTagName, observeChildren, unobserveChildren } from '../../../utils';
 import { pxToRemWithUnit } from '../../../styles';
-import { Accordion } from './accordion';
 
-const ACCORDION_SIZE = ['small', 'medium'] as const;
-export type AccordionSize = typeof ACCORDION_SIZE[number];
+export const ACCORDION_SIZES = ['small', 'medium'] as const;
+export type AccordionSize = typeof ACCORDION_SIZES[number];
 export type AccordionChangeEvent = { open: boolean };
 
 export const setCollapsibleElementHeight = (
@@ -36,10 +35,10 @@ export const resizeMap: Map<Node, (entry: ResizeObserverEntry) => void> = new Ma
 
 export const isResizeObserverDefined = (): boolean => 'ResizeObserver' in window;
 
-export let useMutationObserverFallback = !isResizeObserverDefined();
+export let useResizeObserverFallback = !isResizeObserverDefined();
 
-export const useMutationObserverFallbackOverride = (overrideValue: boolean): boolean =>
-  (useMutationObserverFallback = overrideValue);
+export const useResizeObserverFallbackOverride = (overrideValue: boolean): boolean =>
+  (useResizeObserverFallback = overrideValue);
 
 const resizeObserver =
   isResizeObserverDefined() &&
@@ -47,6 +46,7 @@ const resizeObserver =
     entries.forEach((resizeEntry) => resizeMap.get(resizeEntry.target)?.(resizeEntry));
   });
 
+// TODO: Move fallback logic here, to simplify usage in components
 export const observeResize = <T extends HTMLElement>(
   node: T,
   callback: (entry: ResizeObserverEntry) => void,
@@ -67,37 +67,44 @@ export const unobserveResize = <T extends HTMLElement>(node: T): void => {
   }
 };
 
-export const registeredAccordions: Accordion[] = [];
+export const registeredElements: Map<HTMLElement, () => void> = new Map();
 
 export const onWindowResize = (): void => {
-  registeredAccordions.forEach((accordion) => {
-    accordion.setContentHeight();
+  registeredElements.forEach((callback) => {
+    callback();
   });
 };
 
-export const observeWindowResize = (accordion: Accordion): void => {
-  if (!registeredAccordions.includes(accordion)) {
-    registeredAccordions.push(accordion);
+export const observeWindowResize = (htmlElement: HTMLElement, callback: () => void): void => {
+  if (!registeredElements.has(htmlElement)) {
+    registeredElements.set(htmlElement, callback);
     window.addEventListener('resize', onWindowResize);
   }
 };
 
-export const unobserveWindowResize = (accordion: Accordion): void => {
-  const index = registeredAccordions.indexOf(accordion);
-  if (index > -1) {
-    registeredAccordions.splice(index, 1);
+export const unobserveWindowResize = (htmlElement: HTMLElement): void => {
+  if (registeredElements.has(htmlElement)) {
+    registeredElements.delete(htmlElement);
   }
-  if (registeredAccordions.length === 0) {
+  if (registeredElements.size === 0) {
     window.removeEventListener('resize', onWindowResize);
   }
 };
 
-export const mutationObserverFallback = (accordion: Accordion): void => {
-  observeWindowResize(accordion);
-  observeChildren(accordion.host, accordion.setContentHeight);
+export const resizeObserverFallback = (
+  htmlElement: HTMLElement,
+  callback: () => void,
+  shouldObserveChildren?: boolean
+): void => {
+  observeWindowResize(htmlElement, callback);
+  if (shouldObserveChildren) {
+    observeChildren(htmlElement, callback);
+  }
 };
 
-export const removeMutationObserverFallback = (accordion: Accordion): void => {
-  unobserveWindowResize(accordion);
-  unobserveChildren(accordion.host);
+export const removeResizeObserverFallback = (htmlElement: HTMLElement, shouldUnobserveChildren?: boolean): void => {
+  unobserveWindowResize(htmlElement);
+  if (shouldUnobserveChildren) {
+    unobserveChildren(htmlElement);
+  }
 };

@@ -40,6 +40,7 @@
   import DebouncedSearchBox from '@/components/DebouncedSearchBox.vue';
   import { Prop } from 'vue-property-decorator';
   import type { AlgoliaRecord, AlgoliaRequest, AlgoliaResult } from '@/models';
+  import { SearchClient } from 'algoliasearch/lite';
 
   @Component({
     components: {
@@ -58,9 +59,9 @@
 
     public searchClient = {
       ...this.algoliaClient,
-      algoliaClient: this.algoliaClient,
-      search(requests: AlgoliaRequest[]) {
+      search: (requests: AlgoliaRequest[]): ReturnType<SearchClient['search']> => {
         // remove initial search
+        // https://www.algolia.com/doc/guides/building-search-ui/going-further/conditional-requests/vue/#detecting-empty-search-requests
         if (requests.every(({ params }: AlgoliaRequest) => !params?.query.trim())) {
           return Promise.resolve({
             results: requests.map(() => ({
@@ -70,9 +71,10 @@
               page: 0,
               processingTimeMS: 0,
             })),
-          });
+          }) as any;
+        } else {
+          return this.algoliaClient.search(requests);
         }
-        return this.algoliaClient.search(requests);
       },
     };
 
@@ -136,7 +138,7 @@
     padding-bottom: $pds-spacing-small;
   }
 
-  ::v-deep .hits__item {
+  :deep(.hits__item) {
     padding: $pds-spacing-small $pds-spacing-large $pds-spacing-small;
   }
 </style>

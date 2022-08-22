@@ -1,4 +1,4 @@
-# Dependencies 13.06.22
+# Dependencies 05.08.2022
 
 ## Vue
 
@@ -12,6 +12,7 @@ with Vue **2** and **3**.
 - `vue`
 - `vue-router`
 - `vuex`
+- `@vue/cli-plugin-babel`
 - `@vue/cli-plugin-router`
 - `@vue/cli-plugin-typescript`
 - `@vue/cli-plugin-unit-jest`
@@ -29,20 +30,17 @@ with Vue **2** and **3**.
 Angular Compiler decides by itself which TypeScript version it supports. As soon as an unsupported TypeScript version is
 installed, the Angular build will fail.
 
-### Affected dependencies:
+As mentioned here https://angular.io/guide/creating-libraries#ensuring-library-version-compatibility, if building
+component-libraries, the Angular version used to build an application should always be the same or greater than the
+Angular versions used to build any of its dependent libraries.
 
-- `typescript`
-
----
-
-## Angular v14
-
-`@angular-builders/custom-webpack` does not support Angular 14 yet. A beta version supporting it is available, but we
-should wait for a stable to update.
+This means if we upgrade to `Angular v14`, all of our consumers are forced to use `Angular v14` too, because there were
+breaking changes in `@angular/core` that are not backwards compatible. We have decided to stay on `Angular v13` because
+it is forward compatible and wait for feedback of our consuming teams on when they are ready to upgrade to `Angular v14`
+before we upgrade to it.
 
 ### Affected dependencies:
 
-- `@angular-builders/custom-webpack`
 - `@angular/animations`
 - `@angular/common`
 - `@angular/compiler`
@@ -50,6 +48,15 @@ should wait for a stable to update.
 - `@angular/forms`
 - `@angular/platform-browser`
 - `@angular/platform-browser-dynamic`
+- `@angular/router`
+- `@angular-builders/custom-webpack`
+- `@angular-devkit/build-angular`
+- `@angular/cli`
+- `@angular/compiler-cli`
+- `@angular/language-service`
+- `ng-packagr`
+
+- `typescript`
 
 ---
 
@@ -64,9 +71,3 @@ of using it with Node or TS-Node.
 ### Affected dependencies:
 
 - `globby`
-
----
-
-## Jest
-
-Since v28 just came out, typings like `@types/jest-environment-puppeteer` but also `ts-jest` aren't quite there, yet.

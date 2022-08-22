@@ -1,8 +1,35 @@
 import { Component, Element, h, Prop } from '@stencil/core';
-import { buildIconUrl, getSvgContent, patchAriaIntoSVG, IconAriaAttributes } from './icon-utils';
-import { attachComponentCss, getShadowRootHTMLElement, isBrowser } from '../../../utils';
-import type { IconName, TextColor, IconSize, SelectedAriaAttributes, ThemeExtendedElectricDark } from '../../../types';
+import { buildIconUrl, getSvgContent, ICON_ARIA_ATTRIBUTES, patchAriaIntoSVG } from './icon-utils';
+import type { IconAriaAttributes } from './icon-utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  getShadowRootHTMLElement,
+  ICON_SIZES,
+  isBrowser,
+  TEXT_COLORS,
+  THEMES_EXTENDED_ELECTRIC_DARK,
+  validateProps,
+} from '../../../utils';
+import type {
+  IconName,
+  IconSize,
+  PropTypes,
+  SelectedAriaAttributes,
+  TextColor,
+  ThemeExtendedElectricDark,
+} from '../../../types';
 import { getComponentCss } from './icon-styles';
+
+const propTypes: PropTypes<typeof Icon> = {
+  name: AllowedTypes.string,
+  source: AllowedTypes.string,
+  color: AllowedTypes.oneOf<TextColor>(TEXT_COLORS),
+  size: AllowedTypes.oneOf<IconSize>(ICON_SIZES),
+  lazy: AllowedTypes.boolean,
+  theme: AllowedTypes.oneOf<ThemeExtendedElectricDark>(THEMES_EXTENDED_ELECTRIC_DARK),
+  aria: AllowedTypes.aria<IconAriaAttributes>(ICON_ARIA_ATTRIBUTES),
+};
 
 @Component({
   tag: 'p-icon',
@@ -41,6 +68,7 @@ export class Icon {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.color, this.size, this.theme);
   }
 

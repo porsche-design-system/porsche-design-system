@@ -25,6 +25,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import type { TabSize } from '@porsche-design-system/components/src/components/navigation/tabs-bar/tabs-bar-utils';
+import { BreakpointCustomizable } from '@porsche-design-system/components/dist/types/bundle';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -41,7 +42,7 @@ const clickHandlerScript = `
 type InitOptions = {
   amount?: number;
   activeTabIndex?: number;
-  size?: TabSize;
+  size?: BreakpointCustomizable<TabSize>;
   isWrapped?: boolean;
   otherMarkup?: string;
   tag?: 'a' | 'button';
@@ -343,6 +344,38 @@ describe('bar', () => {
       Math.floor((await getElementPositions(page, bar)).left)
     );
   });
+
+  it('should have same offsetLeft on bar and active tab when size is responsive', async () => {
+    await page.setViewport({
+      width: 760,
+      height: 600,
+    });
+
+    await initTabsBar({
+      amount: 6,
+      activeTabIndex: 2,
+      isWrapped: true,
+      otherMarkup: clickHandlerScript,
+      size: "{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }",
+    });
+    const [, , thirdButton] = await getAllButtons();
+    const bar = await getBar();
+    const thirdButtonPosition = (await getElementPositions(page, thirdButton)).left;
+
+    expect(Math.round(thirdButtonPosition)).toEqual(Math.floor((await getElementPositions(page, bar)).left));
+
+    await page.setViewport({
+      width: 1000,
+      height: 600,
+    });
+
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+
+    expect(Math.round((await getElementPositions(page, thirdButton)).left), 'correct offsetLeft page resize').toEqual(
+      Math.floor((await getElementPositions(page, bar)).left)
+    );
+  });
+
   it('should have offsetLeft on bar as the center of unset tab', async () => {
     await initTabsBar({ amount: 6, activeTabIndex: 0, isWrapped: true, otherMarkup: clickHandlerScript });
     const [firstButton, , thirdButton] = await getAllButtons();

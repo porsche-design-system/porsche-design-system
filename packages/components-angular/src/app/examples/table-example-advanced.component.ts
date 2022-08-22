@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { dataAdvanced, DataAdvanced, headAdvanced } from '@porsche-design-system/shared';
 import type { SortingChangeEvent } from '@porsche-design-system/components-angular';
+import { dataAdvanced, DataAdvanced, headAdvanced } from '@porsche-design-system/shared';
 
 @Component({
   selector: 'page-table-example-advanced',

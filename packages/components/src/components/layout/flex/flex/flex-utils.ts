@@ -1,14 +1,14 @@
-import { BreakpointCustomizable } from '../../../../utils';
+import { BreakpointCustomizable } from '../../../../types';
 
-export type FlexInlineType = BreakpointCustomizable<boolean>;
-export type FlexInline = FlexInlineType;
+export type FlexInlineType = boolean;
+export type FlexInline = BreakpointCustomizable<FlexInlineType>;
 
 export const FLEX_WRAPS = ['nowrap', 'wrap', 'wrap-reverse'] as const;
 export type FlexWrapType = typeof FLEX_WRAPS[number];
 export type FlexWrap = BreakpointCustomizable<FlexWrapType>;
 
-export const FLEX_DIRECTION = ['row', 'row-reverse', 'column', 'column-reverse'] as const;
-export type FlexDirectionType = typeof FLEX_DIRECTION[number];
+export const FLEX_DIRECTIONS = ['row', 'row-reverse', 'column', 'column-reverse'] as const;
+export type FlexDirectionType = typeof FLEX_DIRECTIONS[number];
 export type FlexDirection = BreakpointCustomizable<FlexDirectionType>;
 
 export const FLEX_JUSTIFY_CONTENTS = [

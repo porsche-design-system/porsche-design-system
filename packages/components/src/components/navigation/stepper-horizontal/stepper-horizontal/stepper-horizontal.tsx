@@ -1,12 +1,16 @@
-import { Component, Element, Event, EventEmitter, Host, JSX, Prop, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, JSX, Prop } from '@stencil/core';
+import type { PropTypes, Theme } from '../../../../types';
 import {
+  AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
   getScrollActivePosition,
   observeChildren,
+  THEMES,
   throwIfChildCountIsExceeded,
   throwIfChildrenAreNotOfKind,
   unobserveChildren,
+  validateProps,
 } from '../../../../utils';
 import { getComponentCss } from './stepper-horizontal-styles';
 import type { StepChangeEvent } from './stepper-horizontal-utils';
@@ -15,9 +19,12 @@ import {
   syncItemsProps,
   throwIfMultipleCurrentStates,
 } from './stepper-horizontal-utils';
-import type { Theme } from '../../../../types';
 import { getClickedItem } from '../../../../utils/dom/getClickedItem';
 import { getScrollerElements } from '../../../common/scroller/scroller-utils';
+
+const propTypes: PropTypes<typeof StepperHorizontal> = {
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
+};
 
 @Component({
   tag: 'p-stepper-horizontal',
@@ -57,6 +64,7 @@ export class StepperHorizontal {
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     syncItemsProps(this.host, this.theme);
   }
 
@@ -127,6 +135,7 @@ export class StepperHorizontal {
   };
 
   private defineStepperHorizontalItemElements = (): void => {
+    // TODO: validation? this could be any kind of dom node
     this.stepperHorizontalItems = Array.from(this.host.children) as HTMLPStepperHorizontalItemElement[];
   };
 

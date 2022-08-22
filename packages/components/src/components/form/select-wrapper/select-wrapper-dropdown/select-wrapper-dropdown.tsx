@@ -4,7 +4,7 @@ import {
   getPrefixedTagNames,
   observeChildren,
   observeProperties,
-  throwIfRootNodeIsNotOfKind,
+  throwIfRootNodeIsNotOneOfKind,
 } from '../../../../utils';
 import type { DropdownDirection, DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import type { DropdownInteractionType, OptionMap } from './select-wrapper-dropdown-utils';
@@ -32,7 +32,8 @@ import {
   setFilteredOptionMaps,
   determineDirection,
 } from './select-wrapper-dropdown-utils';
-import type { FormState, Theme } from '../../../../types';
+import type { Theme } from '../../../../types';
+import type { FormState } from '../../form-state';
 import { getComponentCss } from './select-wrapper-dropdown-styles';
 
 @Component({
@@ -68,7 +69,7 @@ export class SelectWrapperDropdown {
   }
 
   public connectedCallback(): void {
-    throwIfRootNodeIsNotOfKind(this.host, 'pSelectWrapper');
+    throwIfRootNodeIsNotOneOfKind(this.host, ['pSelectWrapper']);
   }
 
   public componentWillRender(): void {
@@ -291,7 +292,6 @@ export class SelectWrapperDropdown {
         }
         break;
       case 'Escape':
-      case 'Esc':
       case 'Tab':
         this.setDropdownVisibility('hide');
         this.resetHighlightedToSelectedOptionMaps();

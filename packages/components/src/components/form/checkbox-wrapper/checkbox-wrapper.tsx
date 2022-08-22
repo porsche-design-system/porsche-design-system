@@ -1,9 +1,10 @@
 import { Component, Element, forceUpdate, h, Host, JSX, Prop } from '@stencil/core';
 import {
+  AllowedTypes,
   attachComponentCss,
   attachSlottedCss,
   getClosestHTMLElement,
-  getHTMLElementAndThrowIfUndefined,
+  getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   hasLabel,
   hasMessage,
@@ -11,11 +12,21 @@ import {
   observeAttributes,
   setAriaAttributes,
   unobserveAttributes,
+  validateProps,
 } from '../../../utils';
-import type { BreakpointCustomizable, FormState } from '../../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../../types';
 import { getComponentCss, getSlottedCss } from './checkbox-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
 import { Required } from '../../common/required/required';
+import { FORM_STATES } from '../form-state';
+import type { FormState } from '../form-state';
+
+const propTypes: PropTypes<typeof CheckboxWrapper> = {
+  label: AllowedTypes.string,
+  state: AllowedTypes.oneOf<FormState>(FORM_STATES),
+  message: AllowedTypes.string,
+  hideLabel: AllowedTypes.breakpoint('boolean'),
+};
 
 @Component({
   tag: 'p-checkbox-wrapper',
@@ -44,11 +55,12 @@ export class CheckboxWrapper {
   }
 
   public componentWillLoad(): void {
-    this.input = getHTMLElementAndThrowIfUndefined(this.host, 'input[type="checkbox"]');
+    this.input = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=checkbox]');
     this.observeAttributes(); // once initially
   }
 
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.input.disabled);
   }
 

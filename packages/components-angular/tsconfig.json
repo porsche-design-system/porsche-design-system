@@ -14,7 +14,8 @@
     "paths": {
       "@porsche-design-system/components-angular": ["dist/components-wrapper"],
       "@angular/*": ["node_modules/@angular/*"]
-    }
+    },
+    "types": ["node", "jest"]
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

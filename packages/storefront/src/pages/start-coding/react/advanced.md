@@ -36,7 +36,5 @@ In the following example the `PHeadline` component will render as `<sample-prefi
 
 import { PHeadline } from '@porsche-design-system/components-react';
 
-export const App = (): JSX.Element => (
-  <PHeadline>Some headline</PHeadline>
-)
+export const App = (): JSX.Element => <PHeadline>Some headline</PHeadline>;
 ```

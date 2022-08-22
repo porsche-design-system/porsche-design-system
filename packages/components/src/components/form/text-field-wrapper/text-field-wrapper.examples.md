@@ -1,10 +1,15 @@
 # Text Field
 
-The `p-text-field-wrapper` component is a styling wrapper for the native HTML input types and is essential for mostly any form.
+The `p-text-field-wrapper` component is a styling wrapper for the native HTML input types and is essential for mostly
+any form.
 
-A `label` is a caption which informs the user what information a particular form field is asking for. The `p-text-field-wrapper` component can be used with or without a label but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.  
+A `label` is a caption which informs the user what information a particular form field is asking for. The
+`p-text-field-wrapper` component can be used with or without a label but it's recommended to keep the label visible for
+better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label
+text for screen readers.
 
-While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to give the user visual cues to fill out the form.
+While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
+give the user visual cues to fill out the form.
 
 <TableOfContents></TableOfContents>
 
@@ -21,7 +26,8 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 
 ## With description text
 
-A description text can be added to explain the meaning of a specific form field. It's meant to be a textual enhancement of the label text and is technically connected with the `hide-label` property.
+A description text can be added to explain the meaning of a specific form field. It's meant to be a textual enhancement
+of the label text and is technically connected with the `hide-label` property.
 
 <Playground :markup="withDescriptionText" :config="config"></Playground>
 
@@ -34,9 +40,11 @@ A description text can be added to explain the meaning of a specific form field.
 <Playground :markup="disabled" :config="config"></Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
-In general, you should **prevent** using the `disabled="true"` state. Disabled elements are not reachable (focusable) anymore and can be missed by screen reader users. 
-They can be confusing for sighted users as well by not pointing out why these elements are disabled. 
-A good practice when to use the disabled state is during **form submission** to prevent changes while this process is performed.
+
+In general, you should **prevent** using the `disabled="true"` state. Disabled elements are not reachable (focusable)
+anymore and can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out
+why these elements are disabled. A good practice when to use the disabled state is during **form submission** to prevent
+changes while this process is performed.
 
 ## Read only
 
@@ -50,14 +58,13 @@ To hide it you can set `showCharacterCount` to `false`.
 
 <Playground :markup="counter" :config="config"></Playground>
 
-## Types
+## Type overview
 
-The following types listed in the configurator below are supported. Browser specific UI helpers (e.g. calendar dropdown in Chrome) may occur inside the input field which are explicitly not reset by the `p-text-field-wrapper` component.
-For better accessibility it's recommended to **not** reset these browser default UI helpers.
+The following types listed in the configurator below are supported. Browser specific UI helpers (e.g. calendar dropdown
+in Chrome) may occur inside the input field which are explicitly not reset by the `p-text-field-wrapper` component. For
+better accessibility it's recommended to **not** reset these browser default UI helpers.
 
-### Basic
-
-<Playground :markup="typesBasic" :config="config">
+<Playground :markup="typeOverview" :config="config">
   <select v-model="type" aria-label="Select input type">
     <option disabled>Select input type</option>
     <option value="text">Text</option>
@@ -73,12 +80,12 @@ For better accessibility it's recommended to **not** reset these browser default
   </select>
 </Playground>
 
-### Number
+## type="number"
 
-Inputs with type number can display a unit (e.g. €, EUR, km/h, etc.) with a **maximum** of five characters.
-A description of the used unit should be provided to ensure accessibility.
+Inputs with `type="number"` can display a unit (e.g. €, EUR, km/h, etc.) with a **maximum** of five characters. A
+description of the used unit should be provided to ensure accessibility.
 
-<Playground :markup="typesNumber" :config="config">
+<Playground :markup="typeNumber" :config="config">
   <select v-model="unitPosition" aria-label="Select unit position">
     <option disabled>Select unit position</option>
     <option value="prefix">Prefix</option>
@@ -86,17 +93,45 @@ A description of the used unit should be provided to ensure accessibility.
   </select>
 </Playground>
 
-### Password
+## type="password"
 
-<Playground :markup="typesPassword" :config="config"></Playground>
+Inputs with `type="password"` receive a toggle button to display the input's value in clear text.
 
-### Search
+<Playground :markup="typePassword" :config="config"></Playground>
 
-<Playground :markup="typesSearch" :config="config"></Playground>
+## type="search"
+
+Inputs with `type="search"` receive a decorative search icon when used outside a form.  
+Within a form, a submit button becomes visible. If the input contains a value, a clear button shows up.
+
+<Playground :markup="typeSearch" :config="config"></Playground>
+
+## type="search" with locate action
+
+Inputs with `type="search"` that also have the `actionIcon="locate"` property always show an action button, no matter if
+used within or outside a form.
+
+<Playground :markup="typeSearchWithLocateAction" :config="config"></Playground>
+
+## type="search" with locate action and loading
+
+On top of `actionIcon="locate"` it is possible to put the component into a loading state via `actionLoading="true"`.
+
+<Playground :markup="typeSearchWithLocateActionAndLoading" :config="config"></Playground>
+
+### Demo implementation
+
+<Playground :frameworkMarkup="searchExample" :config="config">
+  <p-text-field-wrapper label="Some label" hide-label="true" action-icon="locate" :action-loading="demoIsLoading" v-on:action="onDemoAction">
+    <input type="search" :value="demoValue" :placeholder="demoIsLoading ? 'Locating...' : ''" v-on:input="onDemoInput" />
+  </p-text-field-wrapper>
+  <p-text>Value: {{ demoValue }}</p-text>
+</Playground>
 
 ## Validation states
 
-The `p-text-field-wrapper` component supports the visualisation of inline validation. The `message` and `input` is colored and visible/hidden depending on the defined `state`.
+The `p-text-field-wrapper` component supports the visualisation of inline validation. The `message` and `input` is
+colored and visible/hidden depending on the defined `state`.
 
 <Playground :markup="validationStates" :config="config">
   <select v-model="state" aria-label="Select validation state">
@@ -109,20 +144,31 @@ The `p-text-field-wrapper` component supports the visualisation of inline valida
 
 ## Slots
 
-Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label`, `description` or `message`. Therefore a named slot can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used (because a property definition is preferred over a named slot).
-For named slots only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.
+Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label`, `description` or `message`.
+Therefore a named slot can be used. Make sure **not** to define the corresponding property on the host element when a
+named slot is used (because a property definition is preferred over a named slot). For named slots only
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
+allowed.
 
 <Playground :markup="slots" :config="config"></Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
-If using **slotted contents** to serve form elements, make sure to provide the right **ARIA attributes** to give screen reader users the corresponding information:
+
+If using **slotted contents** to serve form elements, make sure to provide the right **ARIA attributes** to give screen
+reader users the corresponding information:
+
 1. Add a unique ID to the `slot="label"` element
 2. Add a unique ID to the `slot="message"` element (if they are created)
 3. Add corresponding `aria-labelledby="some-label-id"` to the `input` element which points to the `label` ID
-4. Add corresponding `aria-describedby="some-description-id some-message-id"` to the `input` element which points to both, the `description` ID (if set) and the `message` ID when the (error/success) message appears
+4. Add corresponding `aria-describedby="some-description-id some-message-id"` to the `input` element which points to
+   both, the `description` ID (if set) and the `message` ID when the (error/success) message appears
 
 ## Masked Input
-If you want to use localized input masks to improve the user experience we recommend using <a href="https://imask.js.org/" target="_blank">iMask</a>. Make sure to handle potential drawbacks (e.g. auto-formatting /-correction, styling to distinguish between masked input, placeholder and input value, error handling etc.) to avoid user frustration.
+
+If you want to use localized input masks to improve the user experience we recommend using
+<a href="https://imask.js.org/" target="_blank">iMask</a>. Make sure to handle potential drawbacks (e.g. auto-formatting
+/-correction, styling to distinguish between masked input, placeholder and input value, error handling etc.) to avoid
+user frustration.
 
 <p-inline-notification heading="Important note" state="warning" persistent="true">
   Be aware that if you provide masked input you will lose all benefits which you might have using type "date" (e.g. native date-picker) since masked inputs always require input type "text". Same applies to other types with native handling.<br>
@@ -130,7 +176,7 @@ If you want to use localized input masks to improve the user experience we recom
   Keep in mind that the definition of the "locale" in the examples below is a very simple use case. You will probably have to distinguish between more than two scenarios.
 </p-inline-notification>
 
-<Playground :markup="maskedInput" :frameworkMarkup="codeExample" :config="config"></Playground>
+<Playground :markup="maskedInput" :frameworkMarkup="imaskExample" :config="config" :externalStackBlitzDependencies="['imask']"></Playground>
 
 <script lang="ts">
 import Vue from 'vue';
@@ -147,7 +193,8 @@ export default class Code extends Vue {
   state = 'error';
   unitPosition = 'prefix';
 
-codeExample = getTextFieldWrapperCodeSamples();
+  imaskExample = getTextFieldWrapperCodeSamples('example-imask');
+  searchExample = getTextFieldWrapperCodeSamples('example-search');
 
   get basic() {
     const labelAttr = ` hide-label="${this.label === 'hide' ? 'true' : this.label === 'responsive' ? '{ base: true, l: false }' : 'false'}"`;
@@ -187,29 +234,73 @@ codeExample = getTextFieldWrapperCodeSamples();
   <input type="text" name="some-name" value="Some value" maxlength="20" />
 </p-text-field-wrapper>`;
 
-  get typesBasic() {
+  get typeOverview() {
     return `<p-text-field-wrapper label="Some label">
   <input type="${this.type}" name="some-name" />
 </p-text-field-wrapper>`;
   }
 
-  get typesNumber() {
+  get typeNumber() {
     return `<p-text-field-wrapper label="Some label" description="The price in Euro" unit="EUR" unit-position="${this.unitPosition}">
   <input type="number" name="some-name" value="500" />
 </p-text-field-wrapper>`;
   }
   
-  typesPassword =
+  typePassword =
 `<p-text-field-wrapper label="Some label">
   <input type="password" name="some-name" value="some password" />
 </p-text-field-wrapper>`;
 
-  typesSearch =
-`<form action="#" onsubmit="alert('submit'); return false;">
+  typeSearch =
+`<p-text-field-wrapper label="Some label">
+  <input type="search" name="some-name" />
+</p-text-field-wrapper>
+
+<form action="#" onsubmit="alert('submit'); return false;">
   <p-text-field-wrapper label="Some label">
     <input type="search" name="some-name" />
   </p-text-field-wrapper>
 </form>`;
+
+  typeSearchWithLocateAction = 
+`<p-text-field-wrapper label="Some label" action-icon="locate">
+  <input type="search" name="some-name" />
+</p-text-field-wrapper>
+
+<form action="#" onsubmit="alert('submit'); return false;">
+  <p-text-field-wrapper label="Some label" action-icon="locate">
+    <input type="search" name="some-name" />
+  </p-text-field-wrapper>
+</form>`;
+
+  typeSearchWithLocateActionAndLoading = 
+`<p-text-field-wrapper label="Some label" action-icon="locate" action-loading="true">
+  <input type="search" name="some-name" />
+</p-text-field-wrapper>
+
+<form action="#" onsubmit="alert('submit'); return false;">
+  <p-text-field-wrapper label="Some label" action-icon="locate" action-loading="true">
+    <input type="search" name="some-name" />
+  </p-text-field-wrapper>
+</form>`;
+
+  demoValue = '';
+  demoIsLoading = false;
+  onDemoAction() {
+    this.demoIsLoading = true;
+
+    // simulate async request
+    setTimeout(() => {
+      this.demoValue = 'Stuttgart, Baden-Württemberg';
+      this.demoIsLoading = false;
+    }, 3000);
+  }
+  onDemoInput(e: InputEvent) {
+    this.demoValue = e.target.value;
+    if (this.demoIsLoading) {
+      this.demoIsLoading = false;
+    }
+  }
 
   get validationStates() {
     const attr = `message="${this.state !== 'none' ? `Some ${this.state} validation message.` : ''}"`;

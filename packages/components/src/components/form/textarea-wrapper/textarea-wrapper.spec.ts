@@ -1,52 +1,21 @@
-import * as domUtils from '../../../utils/dom';
+import * as getOnlyChildOfKindHTMLElementOrThrowUtils from '../../../utils/validation/getOnlyChildOfKindHTMLElementOrThrow';
 import { TextareaWrapper } from './textarea-wrapper';
-import * as attributeObserverUtils from '../../../utils/attribute-observer';
-import * as textFieldWrapperUtils from '../text-field-wrapper/text-field-wrapper-utils';
+import * as formUtils from '../form-utils';
 import * as a11yUtils from '../../../utils/a11y/a11y';
 
 jest.mock('../../../utils/dom');
 jest.mock('../../../utils/slotted-styles');
 
-describe('connectedCallback', () => {
-  it('should call observeAttributes() with correct parameters', () => {
-    const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
-    const component = new TextareaWrapper();
-    component.connectedCallback();
-
-    expect(spy).toBeCalledWith(undefined, ['disabled', 'readonly', 'required'], expect.anything());
-  });
-});
-
 describe('componentWillLoad', () => {
-  it('should call getHTMLElementAndThrowIfUndefined() with correct parameters', () => {
-    const spy = jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined');
-    const component = new TextareaWrapper();
-
-    try {
-      component.componentWillLoad();
-    } catch (e) {}
-
-    expect(spy).toBeCalledWith(undefined, 'textarea');
-  });
-
-  it('should call observeAttributes() with correct parameters', () => {
-    const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
-    const component = new TextareaWrapper();
-
-    try {
-      component.componentWillLoad();
-    } catch (e) {}
-
-    expect(spy).toBeCalledWith(undefined, ['disabled', 'readonly', 'required'], expect.anything());
-  });
-
+  // TODO: prove connection between util actually setting member value
   it('should call hasCounter() with correct parameter and set hasCounter', () => {
     const textarea = document.createElement('textarea');
-    jest.spyOn(domUtils, 'getHTMLElementAndThrowIfUndefined').mockImplementation(() => textarea);
+    jest
+      .spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow')
+      .mockReturnValue(textarea);
 
-    const spy = jest.spyOn(textFieldWrapperUtils, 'hasCounter');
+    const spy = jest.spyOn(formUtils, 'hasCounter');
     const component = new TextareaWrapper();
-    component['textarea'] = textarea;
 
     expect(component['hasCounter']).toBe(undefined);
     component.componentWillLoad();
@@ -57,8 +26,8 @@ describe('componentWillLoad', () => {
 });
 
 describe('componentDidLoad', () => {
-  it('should call addInputEventListener() with correct parameters if hasCounter is true', () => {
-    const addInputEventListenerSpy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListener');
+  it('should call addInputEventListenerForCounter() with correct parameters if hasCounter is true', () => {
+    const spy = jest.spyOn(formUtils, 'addInputEventListenerForCounter');
 
     const textarea = document.createElement('textarea');
     const counter = document.createElement('span');
@@ -70,11 +39,11 @@ describe('componentDidLoad', () => {
     component['ariaElement'] = ariaElement;
 
     component.componentDidLoad();
-    expect(addInputEventListenerSpy).not.toBeCalled();
+    expect(spy).not.toBeCalled();
 
     component['hasCounter'] = true;
     component.componentDidLoad();
-    expect(addInputEventListenerSpy).toBeCalledWith(textarea, ariaElement, counter);
+    expect(spy).toBeCalledWith(textarea, ariaElement, counter);
   });
 });
 
@@ -90,15 +59,5 @@ describe('componentDidRender', () => {
 
     component.componentDidRender();
     expect(spy).toBeCalledWith(textarea, { label: 'Some label', message: 'Some message', state: 'success' });
-  });
-});
-
-describe('disconnectedCallback', () => {
-  it('should call unobserveAttributes() with correct parameter', () => {
-    const spy = jest.spyOn(attributeObserverUtils, 'unobserveAttributes');
-    const component = new TextareaWrapper();
-    component.disconnectedCallback();
-
-    expect(spy).toBeCalledWith(undefined);
   });
 });
