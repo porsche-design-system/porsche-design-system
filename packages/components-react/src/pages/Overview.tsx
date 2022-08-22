@@ -1,5 +1,5 @@
 /* Auto Generated File */
-import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCheckboxWrapper, PContentWrapper, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react';
+import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PDivider, PFieldsetWrapper, PFlex, PFlexItem, PGrid, PGridItem, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem } from '@porsche-design-system/components-react';
 import { useEffect, useState } from 'react';
 import { pollComponentsReady } from '../pollComponentsReady';
 
@@ -259,6 +259,14 @@ export const OverviewPage = (): JSX.Element => {
               <PStepperHorizontalItem>Step 9</PStepperHorizontalItem>
             </PStepperHorizontal>
           </div>
+
+          <div className="playground light" title="should render default carousel">
+            <PCarousel heading="Heading">
+              <div>Slide 1</div>
+              <div>Slide 2</div>
+              <div>Slide 3</div>
+            </PCarousel>
+          </div>
         </div>
 
         <PorscheDesignSystemProvider prefix="my-prefix">
@@ -475,6 +483,14 @@ export const OverviewPage = (): JSX.Element => {
                 <PStepperHorizontalItem>Step 8</PStepperHorizontalItem>
                 <PStepperHorizontalItem>Step 9</PStepperHorizontalItem>
               </PStepperHorizontal>
+            </div>
+
+            <div className="playground light" title="should render default carousel with custom prefix">
+              <PCarousel heading="Heading">
+                <div>Slide 1</div>
+                <div>Slide 2</div>
+                <div>Slide 3</div>
+              </PCarousel>
             </div>
           </div>
         </PorscheDesignSystemProvider>
