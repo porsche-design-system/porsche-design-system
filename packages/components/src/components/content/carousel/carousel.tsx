@@ -159,6 +159,7 @@ export class Carousel {
       class: 'btn',
       type: 'button',
       hideLabel: true,
+      theme: this.theme,
       // aria: {
       //   'aria-controls': 'splide-track', // TODO: cross shadow dom? use native button tag instead of p-button-pure?
       // },

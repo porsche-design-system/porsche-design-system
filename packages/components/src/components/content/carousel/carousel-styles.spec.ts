@@ -2,6 +2,7 @@ import { getComponentCss } from './carousel-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
+    [false, false, 'dark'],
     [false, false, 'light'],
     [false, true, 'light'],
     [true, false, 'light'],

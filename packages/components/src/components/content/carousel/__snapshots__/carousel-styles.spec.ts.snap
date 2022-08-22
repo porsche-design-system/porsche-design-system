@@ -12,6 +12,7 @@ h2 {
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   margin: 0;
+  color: #000;
 }
 @media(min-width:760px) {
   :host {
@@ -107,10 +108,10 @@ h2 {
 }
 .bullet {
   border-radius: 4px;
-  background: #e3e4e5;
+  background: #96989a;
 }
 .bullet--active {
-  background: #323639;
+  background: #000;
 }
 @media(min-width:480px) {
   .pagination {
@@ -153,7 +154,7 @@ h2 {
 "
 `;
 
-exports[`getComponentCss() should return correct css for wrapHeading: false, disablePagination: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for wrapHeading: false, disablePagination: false and theme: dark 1`] = `
 ":host {
   display: grid !important;
   width: 100% !important;
@@ -165,6 +166,7 @@ h2 {
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   margin: 0;
+  color: #fff;
 }
 @media(min-width:760px) {
   :host {
@@ -260,10 +262,137 @@ h2 {
 }
 .bullet {
   border-radius: 4px;
-  background: #e3e4e5;
+  background: #7c7f81;
 }
 .bullet--active {
-  background: #323639;
+  background: #fff;
+}
+@media(min-width:760px) {
+  .header {
+    grid-template-columns: auto min-content min-content;
+    align-items: end;
+    gap: 0.5rem;
+  }
+  .btn {
+    visibility: visible;
+    height: auto;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for wrapHeading: false, disablePagination: false and theme: light 1`] = `
+":host {
+  display: grid !important;
+  width: 100% !important;
+  gap: 1.5rem !important;
+  grid-auto-flow: row !important;
+}
+h2 {
+  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  color: #000;
+}
+@media(min-width:760px) {
+  :host {
+    gap: 2.5rem !important;
+  }
+}
+
+@media(min-width:760px) and (max-width:999px) {
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+}
+
+@media(min-width:1000px) and (max-width:1299px) {
+  h2 {
+    font-size: 1.75rem;
+    line-height: 1.4285714286;
+  }
+}
+
+@media(min-width:1300px) and (max-width:1759px) {
+  h2 {
+    font-size: 2rem;
+    line-height: 1.375;
+  }
+}
+
+@media(min-width:1760px) {
+  h2 {
+    font-size: 2.25rem;
+    line-height: 1.3333333333;
+  }
+}
+
+@media(min-width:1920px) {
+  :host {
+    gap: 3.875rem !important;
+  }
+}
+
+.splide {
+  position: relative;
+  min-width: 0;
+}
+.splide__track {
+  position: relative;
+}
+.splide__list {
+  display: flex;
+  height: 100%;
+  backface-visibility: hidden;
+}
+.splide__slide {
+  position: relative;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  backface-visibility: hidden;
+}
+.splide__sr {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.splide__track--draggable {
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+.header {
+  display: grid;
+  grid-template-columns: auto 0 0;
+}
+.btn {
+  visibility: hidden;
+  height: 0;
+}
+.btn:first-of-type {
+  grid-column: 2;
+}
+.pagination {
+  display: grid;
+  grid-auto-columns: 8px;
+  grid-auto-flow: column;
+  justify-content: center;
+  gap: 8px;
+  height: 8px;
+}
+.bullet {
+  border-radius: 4px;
+  background: #96989a;
+}
+.bullet--active {
+  background: #000;
 }
 @media(min-width:760px) {
   .header {
@@ -291,6 +420,7 @@ h2 {
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   margin: 0;
+  color: #000;
 }
 @media(min-width:760px) {
   :host {
@@ -402,6 +532,7 @@ h2 {
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   margin: 0;
+  color: #000;
 }
 @media(min-width:760px) {
   :host {
@@ -498,10 +629,10 @@ h2 {
 }
 .bullet {
   border-radius: 4px;
-  background: #e3e4e5;
+  background: #96989a;
 }
 .bullet--active {
-  background: #323639;
+  background: #000;
 }
 @media(min-width:760px) {
   .header {
@@ -535,6 +666,7 @@ h2 {
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
   margin: 0;
+  color: #000;
 }
 @media(min-width:760px) {
   :host {
