@@ -21,7 +21,10 @@ import type { PropTypes, ThemeExtendedElectric } from '../../../types';
 const propTypes: PropTypes<typeof Scroller> = {
   theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
   gradientColorScheme: AllowedTypes.oneOf<GradientColorTheme>(GRADIENT_COLOR_THEMES),
-
+  scrollToPosition: AllowedTypes.shape<ScrollToPosition>({
+    scrollPosition: AllowedTypes.number,
+    isSmooth: AllowedTypes.boolean,
+  }),
   scrollIndicatorPosition: AllowedTypes.oneOf<ScrollIndicatorPosition>(SCROLL_INDICATOR_POSITIONS),
   isFocusable: AllowedTypes.boolean,
 };
@@ -75,7 +78,6 @@ export class Scroller {
     return true;
   }
 
-  // TODO: Validation of props is missing
   public componentWillRender(): void {
     validateProps(this, propTypes);
     attachComponentCss(
