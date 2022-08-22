@@ -14,6 +14,13 @@ h2 {
   margin: 0;
   color: #000;
 }
+::slotted([slot=heading]) {
+  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
 @media(min-width:760px) {
   :host {
     gap: 2.5rem !important;
@@ -25,12 +32,20 @@ h2 {
     font-size: 1.5rem;
     line-height: 1.5;
   }
+  ::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
   h2 {
     font-size: 1.75rem;
     line-height: 1.4285714286;
+  }
+  ::slotted([slot=heading]) {
+    font-size: 1.75rem !important;
+    line-height: 1.4285714286 !important;
   }
 }
 
@@ -39,12 +54,20 @@ h2 {
     font-size: 2rem;
     line-height: 1.375;
   }
+  ::slotted([slot=heading]) {
+    font-size: 2rem !important;
+    line-height: 1.375 !important;
+  }
 }
 
 @media(min-width:1760px) {
   h2 {
     font-size: 2.25rem;
     line-height: 1.3333333333;
+  }
+  ::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
   }
 }
 
@@ -169,6 +192,13 @@ h2 {
   margin: 0;
   color: #fff;
 }
+::slotted([slot=heading]) {
+  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #fff !important;
+}
 @media(min-width:760px) {
   :host {
     gap: 2.5rem !important;
@@ -180,12 +210,20 @@ h2 {
     font-size: 1.5rem;
     line-height: 1.5;
   }
+  ::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
   h2 {
     font-size: 1.75rem;
     line-height: 1.4285714286;
+  }
+  ::slotted([slot=heading]) {
+    font-size: 1.75rem !important;
+    line-height: 1.4285714286 !important;
   }
 }
 
@@ -194,12 +232,20 @@ h2 {
     font-size: 2rem;
     line-height: 1.375;
   }
+  ::slotted([slot=heading]) {
+    font-size: 2rem !important;
+    line-height: 1.375 !important;
+  }
 }
 
 @media(min-width:1760px) {
   h2 {
     font-size: 2.25rem;
     line-height: 1.3333333333;
+  }
+  ::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
   }
 }
 
@@ -297,6 +343,13 @@ h2 {
   margin: 0;
   color: #000;
 }
+::slotted([slot=heading]) {
+  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
 @media(min-width:760px) {
   :host {
     gap: 2.5rem !important;
@@ -308,12 +361,20 @@ h2 {
     font-size: 1.5rem;
     line-height: 1.5;
   }
+  ::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
   h2 {
     font-size: 1.75rem;
     line-height: 1.4285714286;
+  }
+  ::slotted([slot=heading]) {
+    font-size: 1.75rem !important;
+    line-height: 1.4285714286 !important;
   }
 }
 
@@ -322,12 +383,20 @@ h2 {
     font-size: 2rem;
     line-height: 1.375;
   }
+  ::slotted([slot=heading]) {
+    font-size: 2rem !important;
+    line-height: 1.375 !important;
+  }
 }
 
 @media(min-width:1760px) {
   h2 {
     font-size: 2.25rem;
     line-height: 1.3333333333;
+  }
+  ::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
   }
 }
 
@@ -425,6 +494,13 @@ h2 {
   margin: 0;
   color: #000;
 }
+::slotted([slot=heading]) {
+  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
 @media(min-width:760px) {
   :host {
     gap: 2.5rem !important;
@@ -436,12 +512,20 @@ h2 {
     font-size: 1.5rem;
     line-height: 1.5;
   }
+  ::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
   h2 {
     font-size: 1.75rem;
     line-height: 1.4285714286;
+  }
+  ::slotted([slot=heading]) {
+    font-size: 1.75rem !important;
+    line-height: 1.4285714286 !important;
   }
 }
 
@@ -450,12 +534,20 @@ h2 {
     font-size: 2rem;
     line-height: 1.375;
   }
+  ::slotted([slot=heading]) {
+    font-size: 2rem !important;
+    line-height: 1.375 !important;
+  }
 }
 
 @media(min-width:1760px) {
   h2 {
     font-size: 2.25rem;
     line-height: 1.3333333333;
+  }
+  ::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
   }
 }
 
@@ -538,6 +630,13 @@ h2 {
   margin: 0;
   color: #000;
 }
+::slotted([slot=heading]) {
+  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
 @media(min-width:760px) {
   :host {
     gap: 2.5rem !important;
@@ -549,12 +648,20 @@ h2 {
     font-size: 1.5rem;
     line-height: 1.5;
   }
+  ::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
   h2 {
     font-size: 1.75rem;
     line-height: 1.4285714286;
+  }
+  ::slotted([slot=heading]) {
+    font-size: 1.75rem !important;
+    line-height: 1.4285714286 !important;
   }
 }
 
@@ -563,12 +670,20 @@ h2 {
     font-size: 2rem;
     line-height: 1.375;
   }
+  ::slotted([slot=heading]) {
+    font-size: 2rem !important;
+    line-height: 1.375 !important;
+  }
 }
 
 @media(min-width:1760px) {
   h2 {
     font-size: 2.25rem;
     line-height: 1.3333333333;
+  }
+  ::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
   }
 }
 
@@ -673,6 +788,13 @@ h2 {
   margin: 0;
   color: #000;
 }
+::slotted([slot=heading]) {
+  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
 @media(min-width:760px) {
   :host {
     gap: 2.5rem !important;
@@ -684,12 +806,20 @@ h2 {
     font-size: 1.5rem;
     line-height: 1.5;
   }
+  ::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
   h2 {
     font-size: 1.75rem;
     line-height: 1.4285714286;
+  }
+  ::slotted([slot=heading]) {
+    font-size: 1.75rem !important;
+    line-height: 1.4285714286 !important;
   }
 }
 
@@ -698,12 +828,20 @@ h2 {
     font-size: 2rem;
     line-height: 1.375;
   }
+  ::slotted([slot=heading]) {
+    font-size: 2rem !important;
+    line-height: 1.375 !important;
+  }
 }
 
 @media(min-width:1760px) {
   h2 {
     font-size: 2.25rem;
     line-height: 1.3333333333;
+  }
+  ::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
   }
 }
 
@@ -793,6 +931,13 @@ h2 {
   margin: 0;
   color: #000;
 }
+::slotted([slot=heading]) {
+  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
 @media(min-width:760px) {
   :host {
     gap: 2.5rem !important;
@@ -804,12 +949,20 @@ h2 {
     font-size: 1.5rem;
     line-height: 1.5;
   }
+  ::slotted([slot=heading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
   h2 {
     font-size: 1.75rem;
     line-height: 1.4285714286;
+  }
+  ::slotted([slot=heading]) {
+    font-size: 1.75rem !important;
+    line-height: 1.4285714286 !important;
   }
 }
 
@@ -818,12 +971,20 @@ h2 {
     font-size: 2rem;
     line-height: 1.375;
   }
+  ::slotted([slot=heading]) {
+    font-size: 2rem !important;
+    line-height: 1.375 !important;
+  }
 }
 
 @media(min-width:1760px) {
   h2 {
     font-size: 2.25rem;
     line-height: 1.3333333333;
+  }
+  ::slotted([slot=heading]) {
+    font-size: 2.25rem !important;
+    line-height: 1.3333333333 !important;
   }
 }
 
