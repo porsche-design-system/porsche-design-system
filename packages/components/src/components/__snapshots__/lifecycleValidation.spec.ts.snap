@@ -265,6 +265,16 @@ Object {
 }
 `;
 
+exports[`should call validateProps() with correct parameters via componentWillRender for p-scroller: propTypes with ValidatorFunctions 1`] = `
+Object {
+  "gradientColorScheme": "oneOf",
+  "isFocusable": "boolean",
+  "scrollIndicatorPosition": "oneOf",
+  "scrollToPosition": "shape",
+  "theme": "oneOf",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via componentWillRender for p-segmented-control: propTypes with ValidatorFunctions 1`] = `
 Object {
   "backgroundColor": "oneOf",
