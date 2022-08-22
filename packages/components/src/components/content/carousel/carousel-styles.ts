@@ -14,7 +14,7 @@ export const getComponentCss = (
   disablePagination: BreakpointCustomizable<boolean>,
   theme: Theme
 ): string => {
-  const { contrastLowColor, contrastHighColor } = getThemedColors(theme);
+  const { baseColor, disabledColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -36,6 +36,7 @@ export const getComponentCss = (
       h2: {
         ...headingMedium,
         margin: 0,
+        color: baseColor,
       },
     },
     splide: {
@@ -107,10 +108,10 @@ export const getComponentCss = (
       },
       bullet: {
         borderRadius: '4px',
-        background: contrastLowColor,
+        background: disabledColor,
       },
       [bulletActiveClass]: {
-        background: contrastHighColor,
+        background: baseColor,
       },
     }),
   });
