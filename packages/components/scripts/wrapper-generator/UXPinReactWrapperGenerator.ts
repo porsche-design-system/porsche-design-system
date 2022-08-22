@@ -450,6 +450,10 @@ export default (
         ],
       },
       {
+        name: 'Form components',
+        include: ['src/form/*/*.tsx'],
+      },
+      {
         name: 'Dummy',
         include: ['src/dummy/*.tsx'],
       },
