@@ -65,7 +65,7 @@ Object {
   "disablePagination": "breakpoint",
   "heading": "string",
   "internationalization": "shape",
-  "slidesPerMove": "breakpoint",
+  "overflowVisible": "boolean",
   "slidesPerPage": "breakpoint",
   "theme": "oneOf",
   "wrapHeading": "boolean",
