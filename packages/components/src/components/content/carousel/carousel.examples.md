@@ -72,7 +72,7 @@ Whenever the `p-carousel` slides, the `carouselChange` is emitted containing bot
 <Playground :frameworkMarkup="eventHandlingExamples" :config="{ ...config, withoutDemo: true }">
   <p-carousel :theme="theme" :heading="basicHeading" v-html="getSlides(3)" @carouselChange="(e) => lastEventDetail = e.detail" style="margin: 0 0 1rem">
   </p-carousel>
-  <p-text>Last event detail: {{lastEventDetail}}</p-text>
+  <p-text :theme="theme">Last event detail: {{lastEventDetail}}</p-text>
 </Playground>
 
 ## Add/remove slides
