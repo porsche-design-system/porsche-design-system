@@ -8,8 +8,6 @@ import * as jsonUtils from '../../../utils/json';
 import { Splide } from '@splidejs/splide';
 import * as splideModule from '@splidejs/splide';
 
-// jest.mock('@splidejs/splide');
-
 describe('connectedCallback', () => {
   it('should call this.observeBreakpointChange()', () => {
     const component = new Carousel();
@@ -21,20 +19,16 @@ describe('connectedCallback', () => {
 });
 
 describe('componentWillLoad', () => {
-  it('should call parseJSON() twice with correct parameters, then set slidesPerPage and slidesPerMove', () => {
+  it('should call parseJSON() with correct parameters and set slidesPerPage', () => {
     const spy = jest.spyOn(breakpointCustomizableUtils, 'parseJSON').mockReturnValueOnce(5).mockReturnValueOnce(10);
     const component = new Carousel();
     component.host = document.createElement('p-carousel');
     component.slidesPerPage = 2;
-    component.slidesPerMove = 1;
 
     component.componentWillLoad();
-    expect(spy).toBeCalledTimes(2);
-    expect(spy).toHaveBeenNthCalledWith(1, 2);
-    expect(spy).toHaveBeenNthCalledWith(2, 1);
+    expect(spy).toBeCalledWith(2);
 
     expect(component.slidesPerPage).toBe(5);
-    expect(component.slidesPerMove).toBe(10);
   });
 
   it('should call this.updateSlidesAndPagination()', () => {
@@ -84,10 +78,9 @@ describe('componentDidLoad', () => {
     const spy = jest.spyOn(carouselUtils, 'getSplideBreakpoints');
     const component = new Carousel();
     component.slidesPerPage = 3;
-    component.slidesPerMove = 1;
 
     component.componentDidLoad();
-    expect(spy).toBeCalledWith(3, 1);
+    expect(spy).toBeCalledWith(3);
   });
 
   it('should call parseJSONAttribute() with correct parameter', () => {
