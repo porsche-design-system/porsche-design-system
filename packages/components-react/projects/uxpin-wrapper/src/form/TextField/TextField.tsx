@@ -74,7 +74,6 @@ export type PTextFieldProps = HTMLAttributes<{}> & {
 
 export const TextField = /*#__PURE__*/ forwardRef(
   (props: PropsWithChildren<PTextFieldProps>, ref: ForwardedRef<HTMLElement>): JSX.Element => {
-
     const {
       actionIcon,
       actionLoading = false,
@@ -93,7 +92,6 @@ export const TextField = /*#__PURE__*/ forwardRef(
       spacingBottom,
       isWithinForm,
       onFormSubmit,
-      // inner input box
       type = 'text',
       disabled,
       placeholder,
@@ -102,9 +100,9 @@ export const TextField = /*#__PURE__*/ forwardRef(
       value,
       onChange,
       onFocus,
-      onBlur
-      
-    } = props
+      onBlur,
+      ...rest
+    } = props;
 
     const elementRef = useRef<HTMLElement>();
     useEventCallback(elementRef, 'action', onAction as any);
@@ -139,19 +137,7 @@ export const TextField = /*#__PURE__*/ forwardRef(
     }, propsToSync);
 
     const outerProps = {
-      actionIcon,
-      actionLoading,
-      description,
-      hideLabel,
-      label,
-      message,
-      onAction,
-      showCharacterCount,
-      state,
-      unit,
-      unitPosition,
-      isWithinForm,
-      onFormSubmit,
+      ...rest,
       style: getPaddingStyles({ spacingTop, spacingLeft, spacingRight, spacingBottom }),
       ref: syncRef(elementRef, ref),
     };
@@ -165,8 +151,8 @@ export const TextField = /*#__PURE__*/ forwardRef(
       value,
       onChange,
       onFocus,
-      onBlur
-    }
+      onBlur,
+    };
 
     return isWithinForm ? (
       <form

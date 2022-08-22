@@ -63,7 +63,6 @@ export const Textarea = /*#__PURE__*/ forwardRef(
       spacingLeft,
       spacingRight,
       spacingBottom,
-      // inner textarea props
       disabled,
       placeholder,
       readOnly,

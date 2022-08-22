@@ -54,7 +54,6 @@ export const RadioButton = /*#__PURE__*/ forwardRef(
       spacingLeft,
       spacingRight,
       spacingBottom,
-      // inner radio props
       disabled,
       readOnly,
       required,
