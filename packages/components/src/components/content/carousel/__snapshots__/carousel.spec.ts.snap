@@ -7,10 +7,16 @@ Array [
     "arrows": false,
     "breakpoints": Object {
       "0": Object {
+        "gap": "0.5rem",
         "perPage": 1,
       },
+      "1300": Object {
+        "gap": "2rem",
+      },
+      "760": Object {
+        "gap": "1rem",
+      },
     },
-    "gap": "1rem",
     "i18n": Object {},
     "mediaQuery": "min",
     "pagination": false,

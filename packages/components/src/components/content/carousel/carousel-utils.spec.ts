@@ -19,27 +19,30 @@ import type { Splide } from '@splidejs/splide';
 import { ButtonPure } from '../../action/button-pure/button-pure';
 
 describe('getSplideBreakpoints()', () => {
-  it('should call toSplideBreakpoints() with correct parameters', () => {
+  it('should call toSplideBreakpoints() twice with correct parameters', () => {
     const spy = jest.spyOn(carouselUtils, 'toSplideBreakpoints');
-    getSplideBreakpoints(3);
+    getSplideBreakpoints(3, '5rem');
 
-    expect(spy).toBeCalledWith('perPage', 3);
+    expect(spy).toBeCalledTimes(2);
+    expect(spy).toHaveBeenNthCalledWith(1, 'perPage', 3);
+    expect(spy).toHaveBeenNthCalledWith(2, 'gap', '5rem');
   });
 
   it('should call mergeDeep() with results of toSplideBreakpoints() calls', () => {
     const spy = jest.spyOn(jssUtils, 'mergeDeep');
-    const mockResult = { 0: { perPage: 5 } };
-    jest.spyOn(carouselUtils, 'toSplideBreakpoints').mockReturnValue(mockResult);
+    const mockResult1 = { 0: { perPage: 5 } };
+    const mockResult2 = { 0: { gap: '5rem' } };
+    jest.spyOn(carouselUtils, 'toSplideBreakpoints').mockReturnValueOnce(mockResult1).mockReturnValueOnce(mockResult2);
 
-    getSplideBreakpoints(1);
-    expect(spy).toBeCalledWith(mockResult);
+    getSplideBreakpoints(1, '1rem');
+    expect(spy).toBeCalledWith(mockResult1, mockResult2);
   });
 });
 
 describe('toSplideBreakpoints()', () => {
   it('should return correct correct object for flat BreakpointCustomizable parameter', () => {
     expect(toSplideBreakpoints('perPage', 10)).toEqual({ 0: { perPage: 10 } });
-    expect(toSplideBreakpoints('perMove', 2)).toEqual({ 0: { perMove: 2 } });
+    expect(toSplideBreakpoints('gap', '2rem')).toEqual({ 0: { gap: '2rem' } });
   });
 
   it('should return correct breakpoints object for nested BreakpointCustomizable parameter', () => {
@@ -47,13 +50,15 @@ describe('toSplideBreakpoints()', () => {
       0: { perPage: 5 },
       760: { perPage: 10 },
     });
-    expect(toSplideBreakpoints('perMove', { base: 1, xs: 2, s: 3, m: 4, l: 5, xl: 6 })).toEqual({
-      0: { perMove: 1 },
-      480: { perMove: 2 },
-      760: { perMove: 3 },
-      1000: { perMove: 4 },
-      1300: { perMove: 5 },
-      1760: { perMove: 6 },
+    expect(
+      toSplideBreakpoints('gap', { base: '1rem', xs: '2rem', s: '3rem', m: '4rem', l: '5rem', xl: '6rem' })
+    ).toEqual({
+      0: { gap: '1rem' },
+      480: { gap: '2rem' },
+      760: { gap: '3rem' },
+      1000: { gap: '4rem' },
+      1300: { gap: '5rem' },
+      1760: { gap: '6rem' },
     });
   });
 });

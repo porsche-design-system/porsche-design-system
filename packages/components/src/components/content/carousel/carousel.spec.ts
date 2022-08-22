@@ -80,7 +80,7 @@ describe('componentDidLoad', () => {
     component.slidesPerPage = 3;
 
     component.componentDidLoad();
-    expect(spy).toBeCalledWith(3);
+    expect(spy).toBeCalledWith(3, { base: '0.5rem', l: '2rem', s: '1rem' });
   });
 
   it('should call parseJSONAttribute() with correct parameter', () => {

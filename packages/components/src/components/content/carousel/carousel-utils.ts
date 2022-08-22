@@ -13,17 +13,20 @@ export type CarouselInternationalization =
   | string; // string to support attribute, gets removed via InputParser
 export type CarouselChangeEvent = { activeIndex: number; previousIndex: number };
 
-type ResponsiveOpts = Pick<ResponsiveOptions, 'perPage' | 'perMove'>;
+type ResponsiveOpts = Pick<ResponsiveOptions, 'perPage' | 'gap'>;
 type ResponsiveOptsKey = keyof ResponsiveOpts;
 export type SplideBreakpoints = Options['breakpoints'];
 
-export const getSplideBreakpoints = (perPage: BreakpointCustomizable<number>): SplideBreakpoints => {
-  return mergeDeep(toSplideBreakpoints('perPage', perPage));
+export const getSplideBreakpoints = (
+  perPage: BreakpointCustomizable<number>,
+  gap: BreakpointCustomizable<string>
+): SplideBreakpoints => {
+  return mergeDeep(toSplideBreakpoints('perPage', perPage), toSplideBreakpoints('gap', gap));
 };
 
-export const toSplideBreakpoints = (
+export const toSplideBreakpoints = <T>(
   propName: ResponsiveOptsKey,
-  value: BreakpointCustomizable<number>
+  value: BreakpointCustomizable<T>
 ): SplideBreakpoints => {
   return typeof value === 'object'
     ? Object.entries(value).reduce(

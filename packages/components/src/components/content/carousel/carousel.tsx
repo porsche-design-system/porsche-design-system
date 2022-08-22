@@ -112,8 +112,11 @@ export class Carousel {
       // },
       mediaQuery: 'min',
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
-      breakpoints: getSplideBreakpoints(this.slidesPerPage), // TODO: add responsive gap
-      gap: spacing.medium, // TODO: bigger on larger viewports s: , m: , l:
+      breakpoints: getSplideBreakpoints(this.slidesPerPage, {
+        base: spacing.small,
+        s: spacing.medium,
+        l: spacing.large,
+      }),
       // https://splidejs.com/guides/i18n/#default-texts
       i18n: parseJSONAttribute(this.internationalization),
     });
