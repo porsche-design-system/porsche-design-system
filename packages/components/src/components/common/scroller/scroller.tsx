@@ -113,7 +113,6 @@ export class Scroller {
       );
     };
 
-    // TODO: E2E test isFocusable
     return (
       <div class="root">
         <div class="scroll-area" ref={(el) => (this.scrollAreaElement = el)}>
