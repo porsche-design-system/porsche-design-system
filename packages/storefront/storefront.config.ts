@@ -111,7 +111,7 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/content/carousel/carousel.examples.md')],
       // @ts-ignore
-      // Usage: [() => import('@/../../components/src/components/content/carousel/carousel.usage.md')],
+      Usage: [() => import('@/../../components/src/components/content/carousel/carousel.usage.md')],
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/content/carousel/carousel.props.md')],
     },
