@@ -79,7 +79,6 @@ export const Select = /*#__PURE__*/ forwardRef(
       spacingLeft,
       spacingRight,
       spacingBottom,
-      // inner props
       disabled,
       placeholder,
       readOnly,

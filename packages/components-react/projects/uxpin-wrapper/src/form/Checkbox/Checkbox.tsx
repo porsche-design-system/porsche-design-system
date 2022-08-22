@@ -55,13 +55,13 @@ export const Checkbox = /*#__PURE__*/ forwardRef(
       spacingLeft,
       spacingRight,
       spacingBottom,
-      // dummy checkbox props
       disabled,
       readOnly,
       required,
       checked,
       onChange,
       onFocus,
+      ...rest
     } = props;
 
     const propsToSync = [hideLabel, label, message, state];
@@ -73,10 +73,7 @@ export const Checkbox = /*#__PURE__*/ forwardRef(
     }, propsToSync);
 
     const outerProps = {
-      hideLabel,
-      label,
-      message,
-      state,
+      ...rest,
       style: { ...getPaddingStyles({ spacingTop, spacingLeft, spacingRight, spacingBottom }) },
       ref: syncRef(elementRef, ref),
     };
