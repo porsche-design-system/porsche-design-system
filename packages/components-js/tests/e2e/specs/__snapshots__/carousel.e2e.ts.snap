@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`accessibility should expose correct initial accessibility tree and aria properties: buttonNext 1`] = `
+Object {
+  "name": "Next slide",
+  "role": "button",
+}
+`;
+
+exports[`accessibility should expose correct initial accessibility tree and aria properties: buttonPrev 1`] = `
+Object {
+  "name": "Go to last slide",
+  "role": "button",
+}
+`;
+
+exports[`accessibility should expose correct initial accessibility tree and aria properties: splide 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "name": "Slide 1",
+                      "role": "StaticText",
+                    },
+                  ],
+                  "name": "",
+                  "role": "generic",
+                },
+              ],
+              "role": "none",
+            },
+          ],
+          "name": "1 of 3",
+          "role": "group",
+          "roledescription": "slide",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+          ],
+          "role": "none",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [
+                    Object {
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+          ],
+          "role": "none",
+        },
+      ],
+      "name": "",
+      "role": "generic",
+    },
+  ],
+  "name": "",
+  "role": "region",
+  "roledescription": "carousel",
+}
+`;

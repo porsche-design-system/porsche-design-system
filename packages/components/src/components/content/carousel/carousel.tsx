@@ -94,6 +94,7 @@ export class Carousel {
   }
 
   public componentWillLoad(): void {
+    // TODO: validation/sanitization
     this.slidesPerPage = parseJSON(this.slidesPerPage) as any; // TODO: what about changes?
 
     this.updateSlidesAndPagination();
