@@ -95,6 +95,9 @@ export class TextFieldWrapper {
 
   @State() private isClearable = false;
 
+  // We need to trigger a re-render if the input `type` changes after being mounted so we track the input type
+  @State() private inputType = 'text';
+
   private input: HTMLInputElement;
   private unitOrCounterElement: HTMLElement;
   private ariaElement: HTMLSpanElement;
@@ -112,20 +115,13 @@ export class TextFieldWrapper {
   }
 
   public componentWillLoad(): void {
-    this.input = getOnlyChildOfKindHTMLElementOrThrow(
-      this.host,
-      ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password']
-        .map((type) => `input[type=${type}]`)
-        .join(',')
-    );
+    this.initInput();
     this.observeAttributes(); // once initially
-    this.isSearch = isType(this.input.type, 'search');
-    this.isPassword = isType(this.input.type, 'password');
-    this.isWithinForm = isWithinForm(this.host);
-    this.hasAction = hasLocateAction(this.actionIcon);
-    this.hasCounter = hasCounterAndIsTypeText(this.input);
-    this.isCounterVisible = this.showCharacterCount && this.hasCounter;
-    this.hasUnit = !this.isCounterVisible && hasUnitAndIsTypeTextOrNumber(this.input, this.unit);
+
+    observeProperties(this.input, ['type'], () => {
+      console.log('type change!', this.input.type);
+      this.initInput();
+    });
 
     if (this.isSearch) {
       this.isClearable = !!this.input.value;
@@ -285,6 +281,23 @@ export class TextFieldWrapper {
       </Host>
     );
   }
+
+  private initInput = () => {
+    this.input = getOnlyChildOfKindHTMLElementOrThrow(
+      this.host,
+      ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password']
+        .map((type) => `input[type=${type}]`)
+        .join(',')
+    );
+    this.inputType = this.input.type;
+    this.isSearch = isType(this.inputType, 'search');
+    this.isPassword = isType(this.inputType, 'password');
+    this.isWithinForm = isWithinForm(this.host);
+    this.hasAction = hasLocateAction(this.actionIcon);
+    this.hasCounter = hasCounterAndIsTypeText(this.input);
+    this.isCounterVisible = this.showCharacterCount && this.hasCounter;
+    this.hasUnit = !this.isCounterVisible && hasUnitAndIsTypeTextOrNumber(this.input, this.unit);
+  };
 
   private onLabelClick = (): void => {
     this.input.focus();
