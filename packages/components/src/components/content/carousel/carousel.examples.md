@@ -146,7 +146,7 @@ export default class Code extends Vue {
   ${this.getSlides(3)}
 </p-carousel>`;
 
-  overflowVisible = `<p-carousel overflow-visible="true" heading="${this.basicHeading}">
+  overflowVisible = `<p-carousel overflow-visible="true" heading="${this.basicHeading}" style="padding: 0 5vw">
   ${this.getSlides(3)}
 </p-carousel>`;
 
