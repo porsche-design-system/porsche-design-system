@@ -15,6 +15,7 @@
         'example--spacing-block': mergedConfig.spacing === 'block',
         'example--spacing-block-small': mergedConfig.spacing === 'block-small',
         'example--overflow-x-visible': mergedConfig.overflowX === 'visible',
+        'example--overflow-x-hidden': mergedConfig.overflowX === 'hidden',
       }"
     >
       <div
@@ -67,7 +68,7 @@
     colorScheme: ColorScheme;
     height: 'auto' | 'fixed';
     spacing: 'none' | 'inline' | 'block' | 'block-small';
-    overflowX: 'auto' | 'visible';
+    overflowX: 'auto' | 'visible' | 'hidden';
     withoutDemo: boolean;
   };
 
@@ -211,6 +212,10 @@
 
     &--overflow-x-visible {
       overflow-x: visible;
+    }
+
+    &--overflow-x-hidden {
+      overflow-x: hidden;
     }
 
     // Child Layout "height"
