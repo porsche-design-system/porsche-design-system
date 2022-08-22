@@ -42,6 +42,15 @@ which internally applies the padding of `p-content-wrapper`.
 
 <Playground :markup="wrapHeading" :config="config"></Playground>
 
+## Overflow visible
+
+If you want to see the previous and next slide that are naturally outside the component, you can set
+`overflowVisible="true"`.  
+But make sure, that your entire page does not become horizontally scrollable by specifying the style
+`overflow-x: hidden` somewhere up your DOM hierarchy.
+
+<Playground :markup="overflowVisible" :config="{ ...config, overflowX: 'hidden' }"></Playground>
+
 ## Disable Pagination
 
 The pagination indicators underneath the slides can be removed via `disablePagination`. Also, on a per-breakpoint basis.
@@ -134,6 +143,10 @@ export default class Code extends Vue {
 </p-carousel>`;
 
   wrapHeading = `<p-carousel wrap-heading="true" heading="${this.basicHeading}">
+  ${this.getSlides(3)}
+</p-carousel>`;
+
+  overflowVisible = `<p-carousel overflow-visible="true" heading="${this.basicHeading}">
   ${this.getSlides(3)}
 </p-carousel>`;
 
