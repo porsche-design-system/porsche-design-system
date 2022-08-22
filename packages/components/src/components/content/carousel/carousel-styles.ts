@@ -12,6 +12,7 @@ const mediaQueryXxl = mediaQueryMin('xxl');
 export const getComponentCss = (
   wrapHeading: boolean,
   disablePagination: BreakpointCustomizable<boolean>,
+  overflowVisible: boolean,
   theme: Theme
 ): string => {
   const { baseColor, disabledColor } = getThemedColors(theme);
@@ -45,7 +46,7 @@ export const getComponentCss = (
       // visibility: 'hidden',
       '&__track': {
         position: 'relative',
-        // overflow: 'hidden',
+        ...(!overflowVisible && { overflow: 'hidden' }),
         '&--draggable': {
           userSelect: 'none',
           WebkitTouchCallout: 'none',

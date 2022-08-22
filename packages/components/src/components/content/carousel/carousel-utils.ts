@@ -17,11 +17,8 @@ type ResponsiveOpts = Pick<ResponsiveOptions, 'perPage' | 'perMove'>;
 type ResponsiveOptsKey = keyof ResponsiveOpts;
 export type SplideBreakpoints = Options['breakpoints'];
 
-export const getSplideBreakpoints = (
-  perPage: BreakpointCustomizable<number>,
-  perMove: BreakpointCustomizable<number>
-): SplideBreakpoints => {
-  return mergeDeep(toSplideBreakpoints('perPage', perPage), toSplideBreakpoints('perMove', perMove));
+export const getSplideBreakpoints = (perPage: BreakpointCustomizable<number>): SplideBreakpoints => {
+  return mergeDeep(toSplideBreakpoints('perPage', perPage));
 };
 
 export const toSplideBreakpoints = (
