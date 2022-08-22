@@ -2,6 +2,7 @@ import type { BreakpointCustomizable, Theme } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors, pxToRemWithUnit } from '../../../styles';
 import { headingMedium, mediaQueryMin, gridSafeZone } from '@porsche-design-system/utilities-v2';
+import type { JssStyle } from 'jss';
 
 export const bulletActiveClass = 'bullet--active';
 
@@ -16,6 +17,11 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { baseColor, disabledColor } = getThemedColors(theme);
+  const headingStyles: JssStyle = {
+    ...headingMedium,
+    margin: 0,
+    color: baseColor,
+  };
 
   return getCss({
     '@global': {
@@ -34,11 +40,8 @@ export const getComponentCss = (
       // '::slotted(*)': addImportantToEachRule({
       //   boxSizing: 'border-box',
       // }),
-      h2: {
-        ...headingMedium,
-        margin: 0,
-        color: baseColor,
-      },
+      h2: headingStyles,
+      '::slotted([slot=heading])': addImportantToEachRule(headingStyles),
     },
     splide: {
       position: 'relative',
