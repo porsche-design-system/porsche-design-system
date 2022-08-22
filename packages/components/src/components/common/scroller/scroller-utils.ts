@@ -4,7 +4,8 @@ export type Direction = 'prev' | 'next';
 export const GRADIENT_COLOR_THEMES = ['default', 'surface'] as const;
 export type GradientColorTheme = typeof GRADIENT_COLOR_THEMES[number];
 export type ScrollToPosition = { scrollPosition: number; isSmooth?: boolean };
-export type ScrollIndicatorPosition = 'top' | 'center';
+export const SCROLL_INDICATOR_POSITIONS = ['top', 'center'] as const;
+export type ScrollIndicatorPosition = typeof SCROLL_INDICATOR_POSITIONS[number];
 
 export const getScrollPositionAfterPrevNextClick = (scrollAreaElement: HTMLElement, direction: string): number => {
   const { scrollLeft } = scrollAreaElement;
