@@ -1,9 +1,30 @@
 import { Component, Element, Prop, State, Watch, h } from '@stencil/core';
-import { attachComponentCss, getHTMLElements, getPrefixedTagNames, scrollElementTo } from '../../../utils';
+import {
+  attachComponentCss,
+  getHTMLElements,
+  getPrefixedTagNames,
+  scrollElementTo,
+  validateProps,
+  AllowedTypes,
+  THEMES_EXTENDED_ELECTRIC,
+} from '../../../utils';
 import { getComponentCss } from './scroller-styles';
+import {
+  getScrollPositionAfterPrevNextClick,
+  GRADIENT_COLOR_THEMES,
+  isScrollable,
+  SCROLL_INDICATOR_POSITIONS,
+} from './scroller-utils';
 import type { Direction, GradientColorTheme, ScrollToPosition, ScrollIndicatorPosition } from './scroller-utils';
-import { getScrollPositionAfterPrevNextClick, isScrollable } from './scroller-utils';
-import type { ThemeExtendedElectric } from '../../../types';
+import type { PropTypes, ThemeExtendedElectric } from '../../../types';
+
+const propTypes: PropTypes<typeof Scroller> = {
+  theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
+  gradientColorScheme: AllowedTypes.oneOf<GradientColorTheme>(GRADIENT_COLOR_THEMES),
+
+  scrollIndicatorPosition: AllowedTypes.oneOf<ScrollIndicatorPosition>(SCROLL_INDICATOR_POSITIONS),
+  isFocusable: AllowedTypes.boolean,
+};
 
 @Component({
   tag: 'p-scroller',
@@ -56,6 +77,7 @@ export class Scroller {
 
   // TODO: Validation of props is missing
   public componentWillRender(): void {
+    validateProps(this, propTypes);
     attachComponentCss(
       this.host,
       getComponentCss,
