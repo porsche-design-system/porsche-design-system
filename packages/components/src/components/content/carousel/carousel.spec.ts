@@ -187,12 +187,22 @@ describe('componentWillRender', () => {
 
 describe('componentDidUpdate', () => {
   it('should call this.splide.refresh()', () => {
+    jest.spyOn(carouselUtils, 'updatePrevNextButtonAria').mockImplementation(() => {});
     const refreshSpy: () => Splide = jest.fn();
     const component = new Carousel();
     component['splide'] = { refresh: refreshSpy } as Splide;
 
     component.componentDidUpdate();
     expect(refreshSpy).toBeCalledWith();
+  });
+
+  it('should call updatePrevNextButtonAria() with correct parameters', () => {
+    const spy = jest.spyOn(carouselUtils, 'updatePrevNextButtonAria').mockImplementation(() => {});
+    const component = new Carousel();
+    component['splide'] = { refresh: () => {} } as Splide;
+
+    component.componentDidUpdate();
+    expect(spy).toBeCalledWith(component['btnPrev'], component['btnNext'], component['splide']);
   });
 });
 

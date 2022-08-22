@@ -133,7 +133,6 @@ export class Carousel {
     });
 
     this.splide.mount();
-    // TODO: update pagination and arias on slide addition/removal
     // TODO: focus/keyboard handling
   }
 
@@ -153,7 +152,8 @@ export class Carousel {
   }
 
   public componentDidUpdate(): void {
-    this.splide.refresh();
+    this.splide.refresh(); // needs to happen after render to detect new and removed slides
+    updatePrevNextButtonAria(this.btnPrev, this.btnNext, this.splide); // go to last/first slide aria might be wrong
   }
 
   public disconnectedCallback(): void {
