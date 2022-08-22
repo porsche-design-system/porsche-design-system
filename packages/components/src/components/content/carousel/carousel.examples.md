@@ -6,14 +6,14 @@ The `p-carousel` is...
 
 ## Basic
 
-<Playground :markup="basic"></Playground>
+<Playground :markup="basic" :config="config"></Playground>
 
 ## Slides per Page
 
 The amount of slides visible at the same time can be specified by setting the `slidesPerPage` property.  
 The value can either be a static number, or a breakpoint customizable object.
 
-<Playground :markup="slidesPerPage">
+<Playground :markup="slidesPerPage" :config="config">
   <select v-model="slidesPerPageModel" aria-label="Select slidesPerPage mode">
     <option disabled>Select slidesPerPage mode</option>
     <option value="1">1</option>
@@ -30,7 +30,7 @@ The value can either be a static number, or a breakpoint customizable object.
 In order to have an accessible `p-carousel`, it is mandatory to have a `heading` either set via property or by having a
 named slot.
 
-<Playground :markup="heading"></Playground>
+<Playground :markup="heading" :config="config"></Playground>
 
 ## Wrap Heading
 
@@ -40,13 +40,13 @@ In case its parent either does not provide some padding or the `p-carousel` real
 heading and navigation controls would be positioned right on the edge. Do avoid this, use the `wrapHeading` property
 which internally applies the padding of `p-content-wrapper`.
 
-<Playground :markup="wrapHeading"></Playground>
+<Playground :markup="wrapHeading" :config="config"></Playground>
 
 ## Disable Pagination
 
 The pagination indicators underneath the slides can be removed via `disablePagination`. Also, on a per-breakpoint basis.
 
-<Playground :markup="disablePagination">
+<Playground :markup="disablePagination" :config="config">
   <select v-model="disablePaginationModel" aria-label="Select disablePagination mode">
     <option disabled>Select disablePagination mode</option>
     <option value="true">true</option>
@@ -60,8 +60,8 @@ The pagination indicators underneath the slides can be removed via `disablePagin
 Whenever the `p-carousel` slides, the `carouselChange` is emitted containing both, the `activeIndex` and
 `previousIndex`.
 
-<Playground :frameworkMarkup="eventHandlingExamples" :config="{ withoutDemo: true }">
-  <p-carousel :heading="basicHeading" v-html="getSlides(3)" @carouselChange="(e) => lastEventDetail = e.detail" style="margin: 0 0 1rem">
+<Playground :frameworkMarkup="eventHandlingExamples" :config="{ ...config, withoutDemo: true }">
+  <p-carousel :theme="theme" :heading="basicHeading" v-html="getSlides(3)" @carouselChange="(e) => lastEventDetail = e.detail" style="margin: 0 0 1rem">
   </p-carousel>
   <p-text>Last event detail: {{lastEventDetail}}</p-text>
 </Playground>
@@ -70,8 +70,8 @@ Whenever the `p-carousel` slides, the `carouselChange` is emitted containing bot
 
 Slides can be added and removed dynamically.
 
-<Playground :frameworkMarkup="addRemoveSlidesExamples" :config="{ withoutDemo: true }">
-  <p-carousel :heading="basicHeading" slides-per-page="2" v-html="getSlides(amountOfSlides)" style="margin: 0 0 1rem">
+<Playground :frameworkMarkup="addRemoveSlidesExamples" :config="{ ...config, withoutDemo: true }">
+  <p-carousel :theme="theme" :heading="basicHeading" slides-per-page="2" v-html="getSlides(amountOfSlides)" style="margin: 0 0 1rem">
   </p-carousel>
   <button type="button" @click="amountOfSlides++">Add Slide</button>
   <button type="button" @click="amountOfSlides--">Remove Slide</button>
@@ -94,16 +94,22 @@ type CarouselInternationalization = {
 };
 ```
 
-<Playground :markup="internationalization"></Playground>
+<Playground :markup="internationalization" :config="config"></Playground>
 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import type { Theme } from '@/models';
 import { getCarouselCodeSamples } from '@porsche-design-system/shared';
 
 @Component
 export default class Code extends Vue {
-  // TODO: playground config?
+  config = { themeable: true };
+
+  get theme(): Theme {
+    return this.$store.getters.theme;
+  }
+
   basicHeading = "Some Heading";
   getSlides = (amount = 6) => Array.from(Array(amount)).map((_, i) => `<div>Slide ${i+1}</div>`).join('\n  ');
 
@@ -144,7 +150,7 @@ export default class Code extends Vue {
   amountOfSlides = 3;
   addRemoveSlidesExamples = getCarouselCodeSamples('example-dynamic-slides');
 
-  internationalization = `<p-carousel internationalization="{ slideLabel: 'Slide %s von %s', prev: 'Vorheriger Slide', next: 'Nächster Slide', first: 'Zum ersten Slide', last: 'Zum letzten Slide' }">
+  internationalization = `<p-carousel internationalization="{ slideLabel: 'Slide %s von %s', prev: 'Vorheriger Slide', next: 'Nächster Slide', first: 'Zum ersten Slide', last: 'Zum letzten Slide' }" heading="${this.basicHeading}">
   ${this.getSlides(3)}
 </p-carousel>
 `;
