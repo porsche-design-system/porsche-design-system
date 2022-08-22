@@ -78,6 +78,9 @@ export const getComponentCss = (
       justifyContent: 'flex-start',
       background: `linear-gradient(90deg, ${gradientColor} 50%, ${gradientColorTransparent} 100%)`,
       visibility: isPrevHidden ? 'hidden' : 'visible',
+      '& .button': {
+        paddingRight: pxToRemWithUnit(4),
+      },
     },
     'action-next': {
       ...actionPrevNextStyles(scrollIndicatorPosition),
@@ -85,6 +88,9 @@ export const getComponentCss = (
       justifyContent: 'flex-end',
       background: `linear-gradient(90deg, ${gradientColorTransparent} 0%, ${gradientColor} 50%)`,
       visibility: isNextHidden ? 'hidden' : 'visible',
+      '& .button': {
+        paddingLeft: pxToRemWithUnit(4),
+      },
     },
     button: {
       pointerEvents: 'auto',
