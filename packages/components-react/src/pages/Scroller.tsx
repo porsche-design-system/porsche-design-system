@@ -101,18 +101,6 @@ export const ScrollerPage = (): JSX.Element => {
         </PScroller>
       </div>
 
-      <div className="playground dark-electric" title="should render scroller dark-electric">
-        <PScroller theme="dark-electric">
-          <button>Dark electric</button>
-          <button>Dark electric</button>
-          <button>Dark electric</button>
-          <button>Dark electric</button>
-          <button>Dark electric</button>
-          <button>Dark electric</button>
-          <button>Dark electric</button>
-        </PScroller>
-      </div>
-
       <div className="playground light surface" title="should render scroller gradientColorScheme surface on light background">
         <PScroller gradientColorScheme="surface">
           <button>Light surface</button>
@@ -135,6 +123,20 @@ export const ScrollerPage = (): JSX.Element => {
           <button>Dark surface</button>
           <button>Dark surface</button>
         </PScroller>
+      </div>
+
+      <div className="playground" title="should render scroller with scroll indicator position center">
+        <div style={{ height: '50px', border: '1px solid deeppink', maxWidth: '600px' }}>
+          <PScroller scrollIndicatorPosition="center">
+            <a href="#">Scroll indicator position center</a>
+            <a href="#">Scroll indicator position center</a>
+            <a href="#">Scroll indicator position center</a>
+            <a href="#">Scroll indicator position center</a>
+            <a href="#">Scroll indicator position center</a>
+            <a href="#">Scroll indicator position center</a>
+            <a href="#">Scroll indicator position center</a>
+          </PScroller>
+        </div>
       </div>
 
       <div className="playground" title="should render scroller with scroll indicator position top">
