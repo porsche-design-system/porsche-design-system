@@ -31,8 +31,10 @@ export const a11yAnalyze = async (page: Page, suffix?: string) => {
 
     const output = result.violations
       .map((item) => {
-        const title = `${item.id} (${item.impact})` + suffix ? `on ${suffix}` : '';
-        const selectors = item.nodes.map((node) => '– ' + node.target.join(' >>> ')).join('\n');
+        const title = `${item.id} (${item.impact})` + (suffix ? ` on ${suffix}` : '');
+        const selectors = item.nodes
+          .map((node) => '– ' + (node.target as unknown as string[][])[0].join(' >>> '))
+          .join('\n');
         return `${title}:\n${selectors}`;
       })
       .join('\n');
@@ -40,5 +42,14 @@ export const a11yAnalyze = async (page: Page, suffix?: string) => {
     console.log(output);
   }
 
-  expect(amountOfViolations).toBe(0);
+  // temporary workaround until axe supports inert attribute
+  // https://github.com/dequelabs/axe-core/issues/3448
+  if (pageUrl.includes('components/carousel/examples')) {
+    const { length: amountOfFilteredViolations } = result.violations.filter(
+      (violation) => violation.id !== 'aria-hidden-focus'
+    );
+    expect(amountOfFilteredViolations).toBe(0);
+  } else {
+    expect(amountOfViolations).toBe(0);
+  }
 };
