@@ -1,6 +1,6 @@
 import { ChangeEvent, FocusEvent } from 'react';
 
-type Props = {
+export type DummyCheckboxProps = {
   disabled?: boolean;
   readOnly?: boolean;
   required?: boolean;
@@ -16,3 +16,19 @@ type Props = {
 export const DummyCheckbox = (props: Props): JSX.Element => {
   return <input type="checkbox" {...props} />;
 };
+
+// We use a TS `Record` rather than exporting directly a hard-coded array of string
+// to ensure that no prop will be missing
+const propsAsRecord: Record<keyof DummyCheckboxProps, null> = {
+  disabled: null,
+  readOnly: null,
+  required: null,
+  checked: null,
+  onChange: null,
+  onFocus: null,
+  onBlur: null,
+}
+
+// Export the prop keys to be able filter props in the form components
+export const dummyCheckboxPropsKeys = Object.keys(propsAsRecord);
+
