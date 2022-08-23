@@ -37,17 +37,15 @@ const cycleFrameworkTabs = async (theme: string): Promise<void> => {
   if (buttons.length) {
     expect(buttons.length).toBe(2);
 
-    for (let i = 0; i < buttons.length; i++) {
-      const button = buttons[i];
-
+    for (const button of buttons) {
       // angular and react can't be selected initially
-      expect(await button.evaluate((el) => el.getAttribute('aria-selected'))).toBe('false');
+      expect(await button.evaluate((el: HTMLElement) => el.getAttribute('aria-selected'))).toBe('false');
 
       await button.click();
-      await page.waitForFunction((el) => el.getAttribute('aria-selected') === 'true', {}, button);
+      await page.waitForFunction((el: HTMLElement) => el.getAttribute('aria-selected') === 'true', {}, button);
 
-      const innerText = await button.evaluate((el) => (el as HTMLElement).innerText);
-      const ariaSelected = await button.evaluate((el) => el.getAttribute('aria-selected'));
+      const innerText = await button.evaluate((el: HTMLElement) => el.innerText);
+      const ariaSelected = await button.evaluate((el: HTMLElement) => el.getAttribute('aria-selected'));
 
       expect(ariaSelected).toBe('true');
 
