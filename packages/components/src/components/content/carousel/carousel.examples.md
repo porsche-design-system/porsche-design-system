@@ -182,9 +182,9 @@ export default class Code extends Vue {
   focusBehavior = `<p-carousel heading="${this.basicHeading}">
   ${this.getSlides(4)
     .replace(/Slide 1/, '$& with a <p-link href="#">Link</p-link>')
-    .replace(/Slide 2/, '$& with a <p-button>Button</p-button>')
+    .replace(/Slide 2/, '$& with a <p-button type="button">Button</p-button>')
     .replace(/Slide 3/, '$& with a <a href="#">Link</a>')
-    .replace(/Slide 4/, '$& with a <button>button</button>')
+    .replace(/Slide 4/, '$& with a <button type="button">button</button>')
   }
 </p-carousel>`;
 
