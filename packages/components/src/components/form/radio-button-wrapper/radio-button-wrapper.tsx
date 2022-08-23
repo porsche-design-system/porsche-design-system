@@ -65,6 +65,7 @@ export class RadioButtonWrapper {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.input.disabled);
   }
+  
   public componentDidRender(): void {
     /*
      * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
