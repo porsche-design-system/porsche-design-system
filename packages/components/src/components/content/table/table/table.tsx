@@ -94,7 +94,7 @@ export class Table {
                 class="scroll-button"
                 aria-hidden="true"
                 type="button"
-                tabbable={false}
+                tabindex="-1"
                 hide-label="true"
                 size="inherit"
                 icon="arrow-head-right"
