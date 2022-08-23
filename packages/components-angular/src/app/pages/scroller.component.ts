@@ -100,18 +100,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-scroller>
     </div>
 
-    <div class="playground dark-electric" title="should render scroller dark-electric">
-      <p-scroller [theme]="'dark-electric'">
-        <button>Dark electric</button>
-        <button>Dark electric</button>
-        <button>Dark electric</button>
-        <button>Dark electric</button>
-        <button>Dark electric</button>
-        <button>Dark electric</button>
-        <button>Dark electric</button>
-      </p-scroller>
-    </div>
-
     <div class="playground light surface" title="should render scroller gradientColorScheme surface on light background">
       <p-scroller [gradientColorScheme]="'surface'">
         <button>Light surface</button>
@@ -134,6 +122,20 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <button>Dark surface</button>
         <button>Dark surface</button>
       </p-scroller>
+    </div>
+
+    <div class="playground" title="should render scroller with scroll indicator position center">
+      <div style="height: 50px; border: 1px solid deeppink; max-width: 600px">
+        <p-scroller [scrollIndicatorPosition]="'center'">
+          <a [href]="'#'">Scroll indicator position center</a>
+          <a [href]="'#'">Scroll indicator position center</a>
+          <a [href]="'#'">Scroll indicator position center</a>
+          <a [href]="'#'">Scroll indicator position center</a>
+          <a [href]="'#'">Scroll indicator position center</a>
+          <a [href]="'#'">Scroll indicator position center</a>
+          <a [href]="'#'">Scroll indicator position center</a>
+        </p-scroller>
+      </div>
     </div>
 
     <div class="playground" title="should render scroller with scroll indicator position top">
