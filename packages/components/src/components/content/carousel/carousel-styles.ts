@@ -46,6 +46,7 @@ export const getComponentCss = (
     splide: {
       position: 'relative',
       minWidth: 0,
+      cursor: 'grab',
       // visibility: 'hidden',
       '&__track': {
         position: 'relative',

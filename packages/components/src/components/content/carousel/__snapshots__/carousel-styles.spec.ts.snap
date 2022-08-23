@@ -80,6 +80,7 @@ h2 {
 .splide {
   position: relative;
   min-width: 0;
+  cursor: grab;
 }
 .splide__track {
   position: relative;
@@ -258,6 +259,7 @@ h2 {
 .splide {
   position: relative;
   min-width: 0;
+  cursor: grab;
 }
 .splide__track {
   position: relative;
@@ -409,6 +411,7 @@ h2 {
 .splide {
   position: relative;
   min-width: 0;
+  cursor: grab;
 }
 .splide__track {
   position: relative;
@@ -560,6 +563,7 @@ h2 {
 .splide {
   position: relative;
   min-width: 0;
+  cursor: grab;
 }
 .splide__track {
   position: relative;
@@ -696,6 +700,7 @@ h2 {
 .splide {
   position: relative;
   min-width: 0;
+  cursor: grab;
 }
 .splide__track {
   position: relative;
@@ -854,6 +859,7 @@ h2 {
 .splide {
   position: relative;
   min-width: 0;
+  cursor: grab;
 }
 .splide__track {
   position: relative;
@@ -997,6 +1003,7 @@ h2 {
 .splide {
   position: relative;
   min-width: 0;
+  cursor: grab;
 }
 .splide__track {
   position: relative;
