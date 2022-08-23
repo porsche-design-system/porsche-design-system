@@ -114,9 +114,10 @@ export const overrideHasInertSupport = (override: boolean): void => {
   hasInertSupport = override;
 };
 
-export const updateSlidesInert = (slides: HTMLElement[], splide: Splide): void => {
-  // splide doesn't exist yet on first run but on later reconnects
-  if (slides.length && splide) {
+export const updateSlidesInert = (splide: Splide): void => {
+  // splide doesn't exist yet on first run but on later reconnects or update calls
+  if (splide) {
+    const slides = splide.Components.Slides.get().map((slide) => slide.slide);
     const {
       index,
       options: { perPage },
@@ -124,19 +125,20 @@ export const updateSlidesInert = (slides: HTMLElement[], splide: Splide): void =
     const maxIndex = index + perPage;
 
     if (hasInertSupport) {
+      // add inert attribute on slides in shadowDOM
       // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
       // https://caniuse.com/?search=inert
       slides.forEach((slide, i) =>
         i >= index && i < maxIndex ? slide.removeAttribute('inert') : slide.setAttribute('inert', '')
       );
     } else {
-      // fallback with tabindex handling for certain elements
-      const prefix = getTagName(slides[0].parentElement).replace('carousel', '');
+      // fallback with tabindex handling for certain elements in lightDOM
+      const prefix = getTagName((splide.root.getRootNode() as ShadowRoot).host as HTMLElement).replace('carousel', '');
       const tagNames: TagName[] = ['p-button', 'p-button-pure', 'p-link', 'p-link-pure'];
       const pdsSelectors = tagNames.map((tagName) => tagName.replace(/^p-/, prefix)).join(',');
 
       slides.forEach((slide, i) =>
-        slide
+        ((slide.firstChild as HTMLSlotElement).assignedNodes()[0] as HTMLElement)
           .querySelectorAll(`[href],button,${pdsSelectors}`)
           .forEach((el) =>
             i >= index && i < maxIndex ? el.removeAttribute('tabindex') : el.setAttribute('tabindex', '-1')

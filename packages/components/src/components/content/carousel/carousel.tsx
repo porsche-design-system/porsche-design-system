@@ -125,13 +125,13 @@ export class Carousel {
 
     this.splide.on('mounted', () => {
       updatePrevNextButtonAria(this.btnPrev, this.btnNext, this.splide);
-      updateSlidesInert(this.slides, this.splide);
+      updateSlidesInert(this.splide);
       renderPagination(this.pagination, this.amountOfPages, 0); // initial pagination
     });
 
     this.splide.on('move', (activeIndex, previousIndex): void => {
       updatePrevNextButtonAria(this.btnPrev, this.btnNext, this.splide);
-      updateSlidesInert(this.slides, this.splide);
+      updateSlidesInert(this.splide);
       updatePagination(this.pagination, activeIndex);
       this.carouselChange.emit({ activeIndex, previousIndex });
     });
@@ -158,7 +158,7 @@ export class Carousel {
   public componentDidUpdate(): void {
     this.splide.refresh(); // needs to happen after render to detect new and removed slides
     updatePrevNextButtonAria(this.btnPrev, this.btnNext, this.splide); // go to last/first slide aria might be wrong
-    updateSlidesInert(this.slides, this.splide);
+    updateSlidesInert(this.splide);
   }
 
   public disconnectedCallback(): void {
@@ -227,6 +227,6 @@ export class Carousel {
   private updateAmountOfPages = (): void => {
     this.amountOfPages = getAmountOfPages(this.slides.length, getCurrentMatchingBreakpointValue(this.slidesPerPage));
     renderPagination(this.pagination, this.amountOfPages, this.splide?.index || 0);
-    updateSlidesInert(this.slides, this.splide);
+    updateSlidesInert(this.splide);
   };
 }

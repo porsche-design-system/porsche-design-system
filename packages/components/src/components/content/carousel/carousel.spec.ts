@@ -128,7 +128,7 @@ describe('componentDidLoad', () => {
 
     component['splide'].emit('mounted');
     expect(updatePrevNextButtonAriaSpy).toBeCalledWith(component['btnPrev'], component['btnNext'], component['splide']);
-    expect(updateSlidesInertSpy).toBeCalledWith(component['slides'], component['splide']);
+    expect(updateSlidesInertSpy).toBeCalledWith(component['splide']);
     expect(renderPaginationSpy).toBeCalledWith(component['pagination'], component['amountOfPages'], 0);
   });
 
@@ -146,7 +146,7 @@ describe('componentDidLoad', () => {
 
     component['splide'].emit('move', 1, 0);
     expect(updatePrevNextButtonAriaSpy).toBeCalledWith(component['btnPrev'], component['btnNext'], component['splide']);
-    expect(updateSlidesInertSpy).toBeCalledWith(component['slides'], component['splide']);
+    expect(updateSlidesInertSpy).toBeCalledWith(component['splide']);
     expect(updatePaginationSpy).toBeCalledWith(component['pagination'], 1);
     expect(carouselChangeEmitSpy).toBeCalledWith({ activeIndex: 1, previousIndex: 0 });
   });
@@ -219,7 +219,7 @@ describe('componentDidUpdate', () => {
 
     component.componentDidUpdate();
 
-    expect(spy).toBeCalledWith(component['slides'], component['splide']);
+    expect(spy).toBeCalledWith(component['splide']);
   });
 });
 
@@ -306,6 +306,6 @@ describe('updateAmountOfPages()', () => {
     component['slides'] = [];
 
     component['updateAmountOfPages']();
-    expect(spy).toBeCalledWith(component['slides'], component['splide']);
+    expect(spy).toBeCalledWith(component['splide']);
   });
 });
