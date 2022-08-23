@@ -20,7 +20,7 @@ import { StateMessage } from '../../common/state-message/state-message';
 import { Required } from '../../common/required/required';
 import { FORM_STATES } from '../form-state';
 import type { FormState } from '../form-state';
-import { updateRadioButtonsWithSameName } from './radio-button-wrapper-utils';
+import { addChangeListener } from './radio-button-wrapper-utils';
 
 const propTypes: PropTypes<typeof RadioButtonWrapper> = {
   label: AllowedTypes.string,
@@ -57,18 +57,13 @@ export class RadioButtonWrapper {
 
   public componentWillLoad(): void {
     this.input = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=radio]');
+    addChangeListener(this.input);
     this.observeAttributes(); // once initially
   }
 
   public componentWillRender(): void {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.input.disabled);
-  }
-  public componentDidLoad(): void {
-    // Sometimes lifecycle gets called after disconnectedCallback()
-    if (this.input) {
-      this.addEventListeners();
-    }
   }
   public componentDidRender(): void {
     /*
@@ -119,10 +114,5 @@ export class RadioButtonWrapper {
 
   private observeAttributes = (): void => {
     observeAttributes(this.input, ['disabled', 'required'], () => forceUpdate(this.host));
-  };
-
-  // workaround for Safari >= 15.5 which stopped re-rendering slotted input type radio upon removing checked attribute
-  private addEventListeners = (): void => {
-    this.input.addEventListener('change', () => updateRadioButtonsWithSameName(this.input.name));
   };
 }
