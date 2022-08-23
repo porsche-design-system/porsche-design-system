@@ -2,9 +2,9 @@ import { CheckboxWrapper, PCheckboxWrapperProps } from '../../lib/components/Che
 import { DummyCheckbox, DummyCheckboxProps, dummyCheckboxPropsKeys } from '../../dummy/DummyCheckbox';
 import { partitionProps } from '../../form-utils';
 
-export type PCheckboxProps = PCheckboxWrapperProps & DummyCheckboxProps;
+export type CheckboxProps = PCheckboxWrapperProps & DummyCheckboxProps;
 
-export const Checkbox = (props: PCheckboxProps): JSX.Element => {
+export const Checkbox = (props: CheckboxProps): JSX.Element => {
   const [dummyCheckboxProps, wrapperProps] = partitionProps(props, dummyCheckboxPropsKeys);
 
   return (
