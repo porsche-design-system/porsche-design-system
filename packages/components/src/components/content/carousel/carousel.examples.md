@@ -21,15 +21,18 @@ The amount of slides visible at the same time can be specified by setting the `s
 The value can either be a static number, or a breakpoint customizable object.
 
 <Playground :markup="slidesPerPage" :config="config">
-  <select v-model="slidesPerPageModel" aria-label="Select slidesPerPage mode">
-    <option disabled>Select slidesPerPage mode</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="{ base: 1, s: 2, m: 3 }">{ base: 1, m: 2, l: 3 }</option>
-  </select>
+  <label>
+    slidesPerPage:
+    <select v-model="slidesPerPageModel" aria-label="Select slidesPerPage mode">
+      <option disabled>Select slidesPerPage mode</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="{ base: 1, s: 2, m: 3 }">{ base: 1, m: 2, l: 3 }</option>
+    </select>
+  </label>
 </Playground>
 
 ## Heading
@@ -63,13 +66,26 @@ But make sure, that your entire page does not become horizontally scrollable by 
 The pagination indicators underneath the slides can be removed via `disablePagination`. Also, on a per-breakpoint basis.
 
 <Playground :markup="disablePagination" :config="config">
-  <select v-model="disablePaginationModel" aria-label="Select disablePagination mode">
-    <option disabled>Select disablePagination mode</option>
-    <option value="true">true</option>
-    <option value="false">false</option>
-    <option value="{ base: true, m: false }">{ base: true, m: false }</option>
-  </select>
+  <label>
+    disablePagination:
+    <select v-model="disablePaginationModel" aria-label="Select disablePagination mode">
+      <option disabled>Select disablePagination mode</option>
+      <option value="true">true</option>
+      <option value="false">false</option>
+      <option value="{ base: true, m: false }">{ base: true, m: false }</option>
+    </select>
+  </label>
 </Playground>
+
+## Focus Behavior
+
+In order to not have focusable elements that are offscreen, the `p-carousel` adds the
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert" target="_blank">`inert`</a> attribute on
+them.  
+For browsers that don't support the `inert` attribute, yet, the component adds a `tabindex="-1"` attribute on `a`,
+`button`, `p-button`, `p-button-pure`, `p-link` and `p-link-pure` elements as a fallback
+
+<Playground :markup="focusBehavior" :config="config"></Playground>
 
 ## Event Handling
 
@@ -164,6 +180,15 @@ export default class Code extends Vue {
 </p-carousel>`;
 }
 
+  focusBehavior = `<p-carousel heading="${this.basicHeading}">
+  ${this.getSlides(4)
+    .replace(/Slide 1/, '$& with a <p-link href="#">Link</p-link>')
+    .replace(/Slide 2/, '$& with a <p-button>Button</p-button>')
+    .replace(/Slide 3/, '$& with a <a href="#">Link</a>')
+    .replace(/Slide 4/, '$& with a <button>button</button>')
+  }
+</p-carousel>`;
+
   lastEventDetail = 'none';
   eventHandlingExamples = getCarouselCodeSamples('example-events');
 
@@ -182,6 +207,7 @@ export default class Code extends Vue {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     background: #00b0f4;
     height: 150px;
   }
