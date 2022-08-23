@@ -22,6 +22,7 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   outline: 0;
+  white-space: nowrap;
 }
 button::before {
   content: \\"\\";
@@ -97,6 +98,7 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   outline: 0;
+  white-space: nowrap;
 }
 button::before {
   content: \\"\\";
@@ -179,6 +181,7 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   outline: 0;
+  white-space: nowrap;
 }
 button::before {
   content: \\"\\";
