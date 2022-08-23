@@ -94,7 +94,9 @@ const forceStateOnElements = async (page: Page, selector: string, states: Forced
 export const resolveSelector = (
   selector: string
 ): { hostElementSelector: string; shadowRootNodeName: string; deepShadowRootNodeName: string } => {
-  const [hostElementSelector, shadowRootNodeName, deepShadowRootNodeName] = selector.split('>>>').map((x) => x.trim());
+  const [hostElementSelector, shadowRootNodeName, deepShadowRootNodeName] = selector
+    .split('>>>')
+    .map((x) => x.replace(/\.(?!focus|hover)/, '').trim());
 
   if (shadowRootNodeName && !shadowRootNodeName.match(/^[a-z-]+(:first-child)?$/)) {
     throw new Error(`">>> ${shadowRootNodeName}" selector has to be an "Element.localName" in shadow-root`);
@@ -121,7 +123,8 @@ const getHostElementNodeIds = async (cdp: CDPSession, selector: string): Promise
 };
 
 export const findBackendNodeIds = (currentNode: Protocol.DOM.Node, localNodeName: string): BackendNodeId[] => {
-  if (currentNode.localName === localNodeName) {
+  // support tag names & class names
+  if (currentNode.localName === localNodeName || currentNode.attributes?.includes(localNodeName)) {
     return [currentNode.backendNodeId];
   } else {
     return currentNode.children
