@@ -1,6 +1,6 @@
 import { ChangeEvent, FocusEvent } from 'react';
 
-type Props = {
+export type DummySelectProps = {
   disabled?: boolean;
   placeholder?: string;
   readOnly?: boolean;
@@ -18,7 +18,7 @@ type Props = {
 export const DummySelect = ({
   options = Array.from(Array(3)).map((_, i) => `Option ${i + 1}`),
   ...props
-}: Props): JSX.Element => {
+}: DummySelectProps): JSX.Element => {
   return (
     <select {...props}>
       {options.map((item, i) => (
@@ -27,3 +27,20 @@ export const DummySelect = ({
     </select>
   );
 };
+
+// We use a TS `Record` rather than exporting directly a hard-coded array of string
+// to ensure that no prop will be missing
+const propsAsRecord: Record<keyof DummySelectProps, null> = {
+  disabled: null,
+  placeholder: null,
+  readOnly: null,
+  required: null,
+  value: null,
+  onChange: null,
+  onFocus: null,
+  onBlur: null,
+  options: null,
+};
+
+// Export the prop keys to be able filter props in the form components
+export const dummySelectPropsKeys = Object.keys(propsAsRecord);
