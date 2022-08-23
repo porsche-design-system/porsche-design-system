@@ -407,46 +407,75 @@ describe('updateSlidesInert()', () => {
 
   afterEach(() => overrideHasInertSupport(defaultHasInertSupport));
 
+  const getHostAndSplideRoot = (opts?: { withPrefix: boolean }): [HTMLElement, HTMLElement] => {
+    const slide1 = document.createElement('div');
+    slide1.innerHTML = '<slot name="slide1">';
+    const slide2 = document.createElement('div');
+    slide2.innerHTML = '<slot name="slide2">';
+    const slide3 = document.createElement('div');
+    slide3.innerHTML = '<slot name="slide3">';
+
+    // const slot1 = document.createElement('slot');
+    // slot1.name = 'slide1';
+    // const slot2 = document.createElement('slot');
+    // slot2.name = 'slide2';
+    // const slot3 = document.createElement('slot');
+    // slot3.name = 'slide3';
+
+    const splideRoot = document.createElement('div');
+    splideRoot.id = 'splide';
+    splideRoot.append(slide1, slide2, slide3);
+
+    const host = document.createElement((opts?.withPrefix ? 'some-prefix-' : '') + 'p-carousel');
+    host.attachShadow({ mode: 'open' });
+    host.shadowRoot.append(splideRoot);
+
+    return [host, splideRoot];
+  };
+
+  const getMockedSplide = (index: number, perPage: number, root: HTMLElement): Splide =>
+    ({
+      index,
+      root,
+      options: { perPage },
+      Components: { Slides: { get: () => Array.from(root.children).map((slide) => ({ slide })) } },
+    } as Splide);
+
   describe('for hasInertSupport=true', () => {
     beforeEach(() => overrideHasInertSupport(true));
 
-    it('should correctly add and remove inert attributes on slides', () => {
+    it('should correctly add and remove inert attributes on shadowDOM slides', () => {
       expect(hasInertSupport).toBe(true);
 
-      const slide1 = document.createElement('div');
-      slide1.id = 'slide1';
-      const slide2 = document.createElement('div');
-      slide2.id = 'slide2';
-      const slide3 = document.createElement('div');
-      slide3.id = 'slide3';
-      const slides = [slide1, slide2, slide3];
+      const [, splideRoot] = getHostAndSplideRoot();
+      const [slide1, slide2, slide3] = Array.from(splideRoot.children);
 
-      updateSlidesInert(slides, { index: 0, options: { perPage: 1 } } as Splide);
+      updateSlidesInert(getMockedSplide(0, 1, splideRoot));
       expect(slide1.getAttribute('inert')).toBe(null);
       expect(slide2.getAttribute('inert')).toBe('');
       expect(slide3.getAttribute('inert')).toBe('');
 
-      updateSlidesInert(slides, { index: 1, options: { perPage: 1 } } as Splide);
+      updateSlidesInert(getMockedSplide(1, 1, splideRoot));
       expect(slide1.getAttribute('inert')).toBe('');
       expect(slide2.getAttribute('inert')).toBe(null);
       expect(slide3.getAttribute('inert')).toBe('');
 
-      updateSlidesInert(slides, { index: 2, options: { perPage: 1 } } as Splide);
+      updateSlidesInert(getMockedSplide(2, 1, splideRoot));
       expect(slide1.getAttribute('inert')).toBe('');
       expect(slide2.getAttribute('inert')).toBe('');
       expect(slide3.getAttribute('inert')).toBe(null);
 
-      updateSlidesInert(slides, { index: 0, options: { perPage: 2 } } as Splide);
+      updateSlidesInert(getMockedSplide(0, 2, splideRoot));
       expect(slide1.getAttribute('inert')).toBe(null);
       expect(slide2.getAttribute('inert')).toBe(null);
       expect(slide3.getAttribute('inert')).toBe('');
 
-      updateSlidesInert(slides, { index: 1, options: { perPage: 2 } } as Splide);
+      updateSlidesInert(getMockedSplide(1, 2, splideRoot));
       expect(slide1.getAttribute('inert')).toBe('');
       expect(slide2.getAttribute('inert')).toBe(null);
       expect(slide3.getAttribute('inert')).toBe(null);
 
-      updateSlidesInert(slides, { index: 0, options: { perPage: 3 } } as Splide);
+      updateSlidesInert(getMockedSplide(0, 3, splideRoot));
       expect(slide1.getAttribute('inert')).toBe(null);
       expect(slide2.getAttribute('inert')).toBe(null);
       expect(slide3.getAttribute('inert')).toBe(null);
@@ -456,104 +485,111 @@ describe('updateSlidesInert()', () => {
   describe('for hasInertSupport=false', () => {
     beforeEach(() => overrideHasInertSupport(false));
 
-    const getSlides = (opts?: { withPrefix: boolean }): HTMLElement[] => {
+    const getLightDOMSlides = (): HTMLElement[] => {
       const slide1 = document.createElement('div');
-      slide1.id = 'slide1';
+      slide1.slot = 'slide1';
       slide1.innerHTML = 'Slide 1 with a <a href="#">link</a>';
       const slide2 = document.createElement('div');
-      slide2.id = 'slide2';
+      slide2.slot = 'slide2';
       slide2.innerHTML = 'Slide 1 with a <button>button</button>';
       const slide3 = document.createElement('div');
-      slide3.id = 'slide3';
+      slide3.slot = 'slide3';
       slide3.innerHTML = 'Slide 1 with a <p-link>link</p-link>';
-
-      const parent = document.createElement((opts?.withPrefix ? 'some-prefix-' : '') + 'p-carousel');
-      parent.append(slide1, slide2, slide3);
 
       return [slide1, slide2, slide3];
     };
 
-    it('should not add inert attributes on slides', () => {
+    it('should not add inert attribute on shadowDOM slides', () => {
       expect(hasInertSupport).toBe(false);
 
-      const slides = getSlides();
-      const [slide1, slide2, slide3] = slides;
+      const [host, splideRoot] = getHostAndSplideRoot();
+      const [slide1, slide2, slide3] = Array.from(splideRoot.children);
+      const lightDOMSlides = getLightDOMSlides();
+      host.append(...lightDOMSlides);
 
-      updateSlidesInert(slides, { index: 0, options: { perPage: 1 } } as Splide);
+      updateSlidesInert(getMockedSplide(0, 1, splideRoot));
       expect(slide1.getAttribute('inert')).toBe(null);
       expect(slide2.getAttribute('inert')).toBe(null);
       expect(slide3.getAttribute('inert')).toBe(null);
     });
 
-    it('should call querySelectorAll() with correct parameters on each slide without prefix', () => {
+    it('should call querySelectorAll() with correct parameters on each lightDOM slide without prefix', () => {
       expect(hasInertSupport).toBe(false);
 
-      const slides = getSlides();
-      const [slide1, slide2, slide3] = slides;
+      const [host, splideRoot] = getHostAndSplideRoot();
+      const lightDOMSlides = getLightDOMSlides();
+      const [slide1, slide2, slide3] = lightDOMSlides;
+      host.append(slide1, slide2, slide3);
+
       const spy1 = jest.spyOn(slide1, 'querySelectorAll');
       const spy2 = jest.spyOn(slide2, 'querySelectorAll');
       const spy3 = jest.spyOn(slide3, 'querySelectorAll');
       const selector = '[href],button,p-button,p-button-pure,p-link,p-link-pure';
 
-      updateSlidesInert(slides, { index: 0, options: { perPage: 1 } } as Splide);
+      updateSlidesInert(getMockedSplide(0, 1, splideRoot));
       expect(spy1).toBeCalledWith(selector);
       expect(spy2).toBeCalledWith(selector);
       expect(spy3).toBeCalledWith(selector);
     });
 
-    it('should call querySelectorAll() with correct parameters on each slide with prefix', () => {
+    it('should call querySelectorAll() with correct parameters on each lightDOM slide with prefix', () => {
       expect(hasInertSupport).toBe(false);
 
-      const slides = getSlides({ withPrefix: true });
-      const [slide1, slide2, slide3] = slides;
+      const [host, splideRoot] = getHostAndSplideRoot({ withPrefix: true });
+      const lightDOMSlides = getLightDOMSlides();
+      const [slide1, slide2, slide3] = lightDOMSlides;
+      host.append(slide1, slide2, slide3);
+
       const spy1 = jest.spyOn(slide1, 'querySelectorAll');
       const spy2 = jest.spyOn(slide2, 'querySelectorAll');
       const spy3 = jest.spyOn(slide3, 'querySelectorAll');
       const selector =
         '[href],button,some-prefix-p-button,some-prefix-p-button-pure,some-prefix-p-link,some-prefix-p-link-pure';
 
-      updateSlidesInert(slides, { index: 0, options: { perPage: 1 } } as Splide);
+      updateSlidesInert(getMockedSplide(0, 1, splideRoot));
       expect(spy1).toBeCalledWith(selector);
       expect(spy2).toBeCalledWith(selector);
       expect(spy3).toBeCalledWith(selector);
     });
 
-    it('should correctly add and remove tabindex attributes on slides children', () => {
+    it('should correctly add and remove tabindex attributes on lightDOM slides children', () => {
       expect(hasInertSupport).toBe(false);
 
-      const slides = getSlides();
-      const [slide1, slide2, slide3] = slides;
+      const [host, splideRoot] = getHostAndSplideRoot();
+      const lightDOMSlides = getLightDOMSlides();
+      const [slide1, slide2, slide3] = lightDOMSlides;
+      host.append(slide1, slide2, slide3);
 
       const child1 = slide1.children[0];
       const child2 = slide2.children[0];
       const child3 = slide3.children[0];
 
-      updateSlidesInert(slides, { index: 0, options: { perPage: 1 } } as Splide);
+      updateSlidesInert(getMockedSplide(0, 1, splideRoot));
       expect(child1.getAttribute('tabindex')).toBe(null);
       expect(child2.getAttribute('tabindex')).toBe('-1');
       expect(child3.getAttribute('tabindex')).toBe('-1');
 
-      updateSlidesInert(slides, { index: 1, options: { perPage: 1 } } as Splide);
+      updateSlidesInert(getMockedSplide(1, 1, splideRoot));
       expect(child1.getAttribute('tabindex')).toBe('-1');
       expect(child2.getAttribute('tabindex')).toBe(null);
       expect(child3.getAttribute('tabindex')).toBe('-1');
 
-      updateSlidesInert(slides, { index: 2, options: { perPage: 1 } } as Splide);
+      updateSlidesInert(getMockedSplide(2, 1, splideRoot));
       expect(child1.getAttribute('tabindex')).toBe('-1');
       expect(child2.getAttribute('tabindex')).toBe('-1');
       expect(child3.getAttribute('tabindex')).toBe(null);
 
-      updateSlidesInert(slides, { index: 0, options: { perPage: 2 } } as Splide);
+      updateSlidesInert(getMockedSplide(0, 2, splideRoot));
       expect(child1.getAttribute('tabindex')).toBe(null);
       expect(child2.getAttribute('tabindex')).toBe(null);
       expect(child3.getAttribute('tabindex')).toBe('-1');
 
-      updateSlidesInert(slides, { index: 1, options: { perPage: 2 } } as Splide);
+      updateSlidesInert(getMockedSplide(1, 2, splideRoot));
       expect(child1.getAttribute('tabindex')).toBe('-1');
       expect(child2.getAttribute('tabindex')).toBe(null);
       expect(child3.getAttribute('tabindex')).toBe(null);
 
-      updateSlidesInert(slides, { index: 0, options: { perPage: 3 } } as Splide);
+      updateSlidesInert(getMockedSplide(0, 3, splideRoot));
       expect(child1.getAttribute('tabindex')).toBe(null);
       expect(child2.getAttribute('tabindex')).toBe(null);
       expect(child3.getAttribute('tabindex')).toBe(null);
