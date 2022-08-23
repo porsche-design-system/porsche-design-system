@@ -36,7 +36,7 @@ const propTypes: PropTypes<typeof Carousel> = {
   wrapHeading: AllowedTypes.boolean,
   slidesPerPage: AllowedTypes.breakpoint('number'),
   disablePagination: AllowedTypes.breakpoint('boolean'),
-  internationalization: AllowedTypes.shape<Required<CarouselInternationalization>>({
+  intl: AllowedTypes.shape<Required<CarouselInternationalization>>({
     prev: AllowedTypes.string,
     next: AllowedTypes.string,
     first: AllowedTypes.string,
@@ -68,7 +68,7 @@ export class Carousel {
   @Prop({ mutable: true }) public disablePagination?: BreakpointCustomizable<boolean> = false;
 
   /** Override the default wordings that are used for aria-labels on the next/prev buttons and pagination. */
-  @Prop() public internationalization?: CarouselInternationalization = {};
+  @Prop() public intl?: CarouselInternationalization = {};
 
   /** Whether overflowing slides should be visible. Default is `false`. */
   @Prop() public overflowVisible?: boolean = false;
@@ -119,7 +119,7 @@ export class Carousel {
         l: spacing.large,
       }),
       // https://splidejs.com/guides/i18n/#default-texts
-      i18n: parseJSONAttribute(this.internationalization),
+      i18n: parseJSONAttribute(this.intl),
     });
 
     this.splide.on('mounted', () => {
@@ -170,9 +170,7 @@ export class Carousel {
       type: 'button',
       hideLabel: true,
       theme: this.theme,
-      // aria: {
-      //   'aria-controls': 'splide-track', // TODO: cross shadow dom? use native button tag instead of p-button-pure?
-      // },
+      'aria-controls': 'splide-track', // TODO: cross shadow dom? use native button tag instead of p-button-pure?
     };
 
     return (

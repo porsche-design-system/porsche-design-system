@@ -238,7 +238,7 @@ Object {
         "disablePagination": false,
       },
       Object {
-        "internationalization": "{}",
+        "intl": "{}",
       },
       Object {
         "overflowVisible": false,
