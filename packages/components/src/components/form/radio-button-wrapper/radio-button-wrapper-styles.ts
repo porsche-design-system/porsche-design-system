@@ -44,11 +44,6 @@ export const getComponentCss = (
   const { baseColor, backgroundColor, contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
 
-  // TODO: Possible safari solutions?
-  // light dom styles?
-  // select all radios by name attribute, add event listener
-  // slotted selector alternative for safari? sibling?
-
   return getCss({
     '@global': {
       ':host': {
