@@ -48,6 +48,8 @@ xdescribe('viewport change', () => {
   it('should update visible amount of slides for BreakpointCustomizable slidesPerPage', async () => {});
 });
 
+xdescribe('focus behavior', () => {});
+
 describe('events', () => {
   beforeEach(async () => await initAddEventListener(page));
 
