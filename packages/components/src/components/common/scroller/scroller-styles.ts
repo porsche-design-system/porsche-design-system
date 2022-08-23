@@ -2,7 +2,6 @@ import { getCss } from '../../../utils';
 import { addImportantToRule, getThemedColors, pxToRemWithUnit } from '../../../styles';
 import type { ThemeExtendedElectric } from '../../../types';
 import type { GradientColorTheme } from './scroller-utils';
-import type { JssStyle } from 'jss';
 import { getFocus } from '@porsche-design-system/utilities-v2';
 import type { ScrollIndicatorPosition } from './scroller-utils';
 
@@ -17,15 +16,13 @@ export const getComponentCss = (
   const gradientColor = gradientColorScheme === 'surface' ? backgroundSurfaceColor : backgroundColor;
   const gradientColorTransparent = gradientColor + (gradientColor.length === 4 ? '0' : '00');
 
-  const actionPrevNextStyles = (scrollIndicatorPosition: ScrollIndicatorPosition): JssStyle => {
-    return {
-      position: 'relative',
-      padding: `${pxToRemWithUnit(4)} 0`,
-      pointerEvents: 'none',
-      display: 'flex',
-      alignItems: scrollIndicatorPosition === 'center' ? 'center' : 'flex-start',
-      minWidth: pxToRemWithUnit(40),
-    };
+  const actionPrevNextStyles = {
+    position: 'relative',
+    padding: `${pxToRemWithUnit(4)} 0`,
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: scrollIndicatorPosition === 'center' ? 'center' : 'flex-start',
+    minWidth: pxToRemWithUnit(40),
   };
 
   return getCss({
@@ -73,7 +70,7 @@ export const getComponentCss = (
       },
     },
     'action-prev': {
-      ...actionPrevNextStyles(scrollIndicatorPosition),
+      ...actionPrevNextStyles,
       gridArea: '1 / 1 / 1 / 1',
       justifyContent: 'flex-start',
       background: `linear-gradient(90deg, ${gradientColor} 50%, ${gradientColorTransparent} 100%)`,
@@ -83,7 +80,7 @@ export const getComponentCss = (
       },
     },
     'action-next': {
-      ...actionPrevNextStyles(scrollIndicatorPosition),
+      ...actionPrevNextStyles,
       gridArea: '1 / 3 / 1 / 3',
       justifyContent: 'flex-end',
       background: `linear-gradient(90deg, ${gradientColorTransparent} 0%, ${gradientColor} 50%)`,
