@@ -22,7 +22,7 @@ The value can either be a static number, or a breakpoint customizable object.
 
 <Playground :markup="slidesPerPage" :config="config">
   <label>
-    slidesPerPage:
+    <p-text :theme="theme">slidesPerPage:</p-text>
     <select v-model="slidesPerPageModel" aria-label="Select slidesPerPage mode">
       <option disabled>Select slidesPerPage mode</option>
       <option value="1">1</option>
@@ -67,7 +67,7 @@ The pagination indicators underneath the slides can be removed via `disablePagin
 
 <Playground :markup="disablePagination" :config="config">
   <label>
-    disablePagination:
+    <p-text :theme="theme">disablePagination:</p-text>
     <select v-model="disablePaginationModel" aria-label="Select disablePagination mode">
       <option disabled>Select disablePagination mode</option>
       <option value="true">true</option>
