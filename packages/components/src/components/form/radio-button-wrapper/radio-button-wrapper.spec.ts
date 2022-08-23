@@ -1,17 +1,20 @@
 import { RadioButtonWrapper } from './radio-button-wrapper';
+import * as radioButtonWrapperUtils from './radio-button-wrapper-utils';
 
-describe('componentDidLoad', () => {
-  it('should call addEventListeners()', () => {
+describe('componentWillLoad', () => {
+  it('should call addChangeListener', () => {
+    const spy = jest.spyOn(radioButtonWrapperUtils, 'addChangeListener');
+
     const component = new RadioButtonWrapper();
+    component.host = document.createElement('p-radio-button-wrapper');
+    component.host.attachShadow({ mode: 'open' });
     // needs to be mocked for component lifecycle flow to work
-    component['input'] = document.createElement('input');
+    const input = document.createElement('input');
+    input.type = 'radio';
+    component.host.appendChild(input);
 
-    const spy = jest.spyOn(component, 'addEventListeners' as any).mockImplementationOnce(() => {});
+    component.componentWillLoad();
 
-    try {
-      component.componentDidLoad();
-    } catch (e) {}
-
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toBeCalledWith(input);
   });
 });
