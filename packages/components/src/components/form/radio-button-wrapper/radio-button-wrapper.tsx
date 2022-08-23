@@ -114,7 +114,7 @@ export class RadioButtonWrapper {
   };
 
   private observeAttributes = (): void => {
-    observeAttributes(this.input, ['disabled', 'required', 'checked'], () => forceUpdate(this.host));
+    observeAttributes(this.input, ['disabled', 'required'], () => forceUpdate(this.host));
   };
 
   // workaround for Safari >= 15.5 which stopped re-rendering slotted input type radio upon removing checked attribute
