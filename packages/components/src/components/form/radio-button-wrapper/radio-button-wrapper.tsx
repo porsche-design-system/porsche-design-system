@@ -49,11 +49,6 @@ export class RadioButtonWrapper {
 
   private input: HTMLInputElement;
 
-  private get radioGroup() {
-    // TODO: dynamically added radio buttons are not covered?
-    return document.querySelectorAll(`input[type=radio][name=${this.input.name}]`);
-  }
-
   public connectedCallback(): void {
     attachSlottedCss(this.host, getSlottedCss);
     this.observeAttributes(); // on every reconnect
@@ -85,7 +80,7 @@ export class RadioButtonWrapper {
 
   public disconnectedCallback(): void {
     unobserveAttributes(this.input);
-    this.radioGroup.forEach((radio) => radio.removeEventListener('change', this.forceUpdateHost));
+    this.input.removeEventListener('change', this.updateRadioButtonsWithSameName);
   }
 
   public render(): JSX.Element {
@@ -119,15 +114,17 @@ export class RadioButtonWrapper {
   };
 
   private observeAttributes = (): void => {
-    observeAttributes(this.input, ['disabled', 'required', 'checked'], this.forceUpdateHost);
+    observeAttributes(this.input, ['disabled', 'required', 'checked'], () => forceUpdate(this.host));
   };
 
   // workaround for Safari >= 15.5 which stopped re-rendering slotted input type radio upon removing checked attribute
   private addEventListeners = (): void => {
-    this.radioGroup.forEach((radio) => radio.addEventListener('change', this.forceUpdateHost));
+    this.input.addEventListener('change', this.updateRadioButtonsWithSameName);
   };
 
-  private forceUpdateHost = (): void => {
-    forceUpdate(this.host);
-  };
+  private updateRadioButtonsWithSameName = (): void =>
+    document.querySelectorAll(`input[type=radio][name=${this.input.name}]`).forEach((radio) => {
+      radio.setAttribute('hidden', '');
+      radio.removeAttribute('hidden');
+    });
 }
