@@ -64,7 +64,7 @@ exports[`should call validateProps() with correct parameters via componentWillRe
 Object {
   "disablePagination": "breakpoint",
   "heading": "string",
-  "internationalization": "shape",
+  "intl": "shape",
   "overflowVisible": "boolean",
   "slidesPerPage": "breakpoint",
   "theme": "oneOf",

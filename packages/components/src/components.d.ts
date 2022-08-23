@@ -208,7 +208,7 @@ export namespace Components {
         /**
           * Override the default wordings that are used for aria-labels on the next/prev buttons and pagination.
          */
-        "internationalization"?: CarouselInternationalization;
+        "intl"?: CarouselInternationalization;
         /**
           * Whether overflowing slides should be visible. Default is `false`.
          */
@@ -1732,7 +1732,7 @@ declare namespace LocalJSX {
         /**
           * Override the default wordings that are used for aria-labels on the next/prev buttons and pagination.
          */
-        "internationalization"?: CarouselInternationalization;
+        "intl"?: CarouselInternationalization;
         /**
           * Emitted when carousel's content slides.
          */
