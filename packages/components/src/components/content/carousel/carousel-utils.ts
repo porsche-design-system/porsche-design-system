@@ -6,6 +6,7 @@ import { breakpoint } from '@porsche-design-system/utilities-v2';
 import type { Splide } from '@splidejs/splide';
 import { ButtonPure } from '../../action/button-pure/button-pure';
 import { bulletActiveClass } from './carousel-styles';
+import type { TagName } from '@porsche-design-system/shared';
 
 // https://splidejs.com/guides/i18n/#default-texts
 export type CarouselInternationalization =
@@ -102,5 +103,45 @@ export const updatePagination = (paginationEl: HTMLElement, newIndex: number): v
   if (paginationEl) {
     paginationEl.querySelector('.' + bulletActiveClass).classList.remove(bulletActiveClass);
     paginationEl.children[newIndex].classList.add(bulletActiveClass);
+  }
+};
+
+export let hasInertSupport = HTMLElement.prototype.hasOwnProperty('inert');
+
+// for unit tests
+// TODO: check tree shaking
+export const overrideHasInertSupport = (override: boolean): void => {
+  hasInertSupport = override;
+};
+
+export const updateSlidesInert = (slides: HTMLElement[], splide: Splide): void => {
+  // splide doesn't exist yet on first run but on later reconnects
+  if (slides.length && splide) {
+    const {
+      index,
+      options: { perPage },
+    } = splide;
+    const maxIndex = index + perPage;
+
+    if (hasInertSupport) {
+      // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
+      // https://caniuse.com/?search=inert
+      slides.forEach((slide, i) =>
+        i >= index && i < maxIndex ? slide.removeAttribute('inert') : slide.setAttribute('inert', '')
+      );
+    } else {
+      // fallback with tabindex handling for certain elements
+      const prefix = getTagName(slides[0].parentElement).replace('carousel', '');
+      const tagNames: TagName[] = ['p-button', 'p-button-pure', 'p-link', 'p-link-pure'];
+      const pdsSelectors = tagNames.map((tagName) => tagName.replace(/^p-/, prefix)).join(',');
+
+      slides.forEach((slide, i) =>
+        slide
+          .querySelectorAll(`[href],button,${pdsSelectors}`)
+          .forEach((el) =>
+            i >= index && i < maxIndex ? el.removeAttribute('tabindex') : el.setAttribute('tabindex', '-1')
+          )
+      );
+    }
   }
 };

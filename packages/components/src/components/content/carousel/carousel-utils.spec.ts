@@ -2,14 +2,17 @@ import {
   getAmountOfPages,
   getSlides,
   getSplideBreakpoints,
+  hasInertSupport,
   isFirstPage,
   isLastPage,
+  overrideHasInertSupport,
   renderPagination,
   slideNext,
   slidePrev,
   toSplideBreakpoints,
   updatePagination,
   updatePrevNextButtonAria,
+  updateSlidesInert,
   warnIfHeadingIsMissing,
 } from './carousel-utils';
 import * as carouselUtils from './carousel-utils';
@@ -396,5 +399,164 @@ describe('updatePagination()', () => {
     updatePagination(el, 2);
     expect(spy).toBeCalledWith('bullet--active');
     expect(el.children[2].outerHTML).toBe(bulletActiveMarkup);
+  });
+});
+
+describe('updateSlidesInert()', () => {
+  const defaultHasInertSupport = hasInertSupport;
+
+  afterEach(() => overrideHasInertSupport(defaultHasInertSupport));
+
+  describe('for hasInertSupport=true', () => {
+    beforeEach(() => overrideHasInertSupport(true));
+
+    it('should correctly add and remove inert attributes on slides', () => {
+      expect(hasInertSupport).toBe(true);
+
+      const slide1 = document.createElement('div');
+      slide1.id = 'slide1';
+      const slide2 = document.createElement('div');
+      slide2.id = 'slide2';
+      const slide3 = document.createElement('div');
+      slide3.id = 'slide3';
+      const slides = [slide1, slide2, slide3];
+
+      updateSlidesInert(slides, { index: 0, options: { perPage: 1 } } as Splide);
+      expect(slide1.getAttribute('inert')).toBe(null);
+      expect(slide2.getAttribute('inert')).toBe('');
+      expect(slide3.getAttribute('inert')).toBe('');
+
+      updateSlidesInert(slides, { index: 1, options: { perPage: 1 } } as Splide);
+      expect(slide1.getAttribute('inert')).toBe('');
+      expect(slide2.getAttribute('inert')).toBe(null);
+      expect(slide3.getAttribute('inert')).toBe('');
+
+      updateSlidesInert(slides, { index: 2, options: { perPage: 1 } } as Splide);
+      expect(slide1.getAttribute('inert')).toBe('');
+      expect(slide2.getAttribute('inert')).toBe('');
+      expect(slide3.getAttribute('inert')).toBe(null);
+
+      updateSlidesInert(slides, { index: 0, options: { perPage: 2 } } as Splide);
+      expect(slide1.getAttribute('inert')).toBe(null);
+      expect(slide2.getAttribute('inert')).toBe(null);
+      expect(slide3.getAttribute('inert')).toBe('');
+
+      updateSlidesInert(slides, { index: 1, options: { perPage: 2 } } as Splide);
+      expect(slide1.getAttribute('inert')).toBe('');
+      expect(slide2.getAttribute('inert')).toBe(null);
+      expect(slide3.getAttribute('inert')).toBe(null);
+
+      updateSlidesInert(slides, { index: 0, options: { perPage: 3 } } as Splide);
+      expect(slide1.getAttribute('inert')).toBe(null);
+      expect(slide2.getAttribute('inert')).toBe(null);
+      expect(slide3.getAttribute('inert')).toBe(null);
+    });
+  });
+
+  describe('for hasInertSupport=false', () => {
+    beforeEach(() => overrideHasInertSupport(false));
+
+    const getSlides = (opts?: { withPrefix: boolean }): HTMLElement[] => {
+      const slide1 = document.createElement('div');
+      slide1.id = 'slide1';
+      slide1.innerHTML = 'Slide 1 with a <a href="#">link</a>';
+      const slide2 = document.createElement('div');
+      slide2.id = 'slide2';
+      slide2.innerHTML = 'Slide 1 with a <button>button</button>';
+      const slide3 = document.createElement('div');
+      slide3.id = 'slide3';
+      slide3.innerHTML = 'Slide 1 with a <p-link>link</p-link>';
+
+      const parent = document.createElement((opts?.withPrefix ? 'some-prefix-' : '') + 'p-carousel');
+      parent.append(slide1, slide2, slide3);
+
+      return [slide1, slide2, slide3];
+    };
+
+    it('should not add inert attributes on slides', () => {
+      expect(hasInertSupport).toBe(false);
+
+      const slides = getSlides();
+      const [slide1, slide2, slide3] = slides;
+
+      updateSlidesInert(slides, { index: 0, options: { perPage: 1 } } as Splide);
+      expect(slide1.getAttribute('inert')).toBe(null);
+      expect(slide2.getAttribute('inert')).toBe(null);
+      expect(slide3.getAttribute('inert')).toBe(null);
+    });
+
+    it('should call querySelectorAll() with correct parameters on each slide without prefix', () => {
+      expect(hasInertSupport).toBe(false);
+
+      const slides = getSlides();
+      const [slide1, slide2, slide3] = slides;
+      const spy1 = jest.spyOn(slide1, 'querySelectorAll');
+      const spy2 = jest.spyOn(slide2, 'querySelectorAll');
+      const spy3 = jest.spyOn(slide3, 'querySelectorAll');
+      const selector = '[href],button,p-button,p-button-pure,p-link,p-link-pure';
+
+      updateSlidesInert(slides, { index: 0, options: { perPage: 1 } } as Splide);
+      expect(spy1).toBeCalledWith(selector);
+      expect(spy2).toBeCalledWith(selector);
+      expect(spy3).toBeCalledWith(selector);
+    });
+
+    it('should call querySelectorAll() with correct parameters on each slide with prefix', () => {
+      expect(hasInertSupport).toBe(false);
+
+      const slides = getSlides({ withPrefix: true });
+      const [slide1, slide2, slide3] = slides;
+      const spy1 = jest.spyOn(slide1, 'querySelectorAll');
+      const spy2 = jest.spyOn(slide2, 'querySelectorAll');
+      const spy3 = jest.spyOn(slide3, 'querySelectorAll');
+      const selector =
+        '[href],button,some-prefix-p-button,some-prefix-p-button-pure,some-prefix-p-link,some-prefix-p-link-pure';
+
+      updateSlidesInert(slides, { index: 0, options: { perPage: 1 } } as Splide);
+      expect(spy1).toBeCalledWith(selector);
+      expect(spy2).toBeCalledWith(selector);
+      expect(spy3).toBeCalledWith(selector);
+    });
+
+    it('should correctly add and remove tabindex attributes on slides children', () => {
+      expect(hasInertSupport).toBe(false);
+
+      const slides = getSlides();
+      const [slide1, slide2, slide3] = slides;
+
+      const child1 = slide1.children[0];
+      const child2 = slide2.children[0];
+      const child3 = slide3.children[0];
+
+      updateSlidesInert(slides, { index: 0, options: { perPage: 1 } } as Splide);
+      expect(child1.getAttribute('tabindex')).toBe(null);
+      expect(child2.getAttribute('tabindex')).toBe('-1');
+      expect(child3.getAttribute('tabindex')).toBe('-1');
+
+      updateSlidesInert(slides, { index: 1, options: { perPage: 1 } } as Splide);
+      expect(child1.getAttribute('tabindex')).toBe('-1');
+      expect(child2.getAttribute('tabindex')).toBe(null);
+      expect(child3.getAttribute('tabindex')).toBe('-1');
+
+      updateSlidesInert(slides, { index: 2, options: { perPage: 1 } } as Splide);
+      expect(child1.getAttribute('tabindex')).toBe('-1');
+      expect(child2.getAttribute('tabindex')).toBe('-1');
+      expect(child3.getAttribute('tabindex')).toBe(null);
+
+      updateSlidesInert(slides, { index: 0, options: { perPage: 2 } } as Splide);
+      expect(child1.getAttribute('tabindex')).toBe(null);
+      expect(child2.getAttribute('tabindex')).toBe(null);
+      expect(child3.getAttribute('tabindex')).toBe('-1');
+
+      updateSlidesInert(slides, { index: 1, options: { perPage: 2 } } as Splide);
+      expect(child1.getAttribute('tabindex')).toBe('-1');
+      expect(child2.getAttribute('tabindex')).toBe(null);
+      expect(child3.getAttribute('tabindex')).toBe(null);
+
+      updateSlidesInert(slides, { index: 0, options: { perPage: 3 } } as Splide);
+      expect(child1.getAttribute('tabindex')).toBe(null);
+      expect(child2.getAttribute('tabindex')).toBe(null);
+      expect(child3.getAttribute('tabindex')).toBe(null);
+    });
   });
 });
