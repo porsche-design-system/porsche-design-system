@@ -111,8 +111,7 @@ Slides can be added and removed dynamically.
 
 ## Internationalization (i18n)
 
-Default wordings for screen readers can be overridden or translated by passing an object to the `internationalization`
-property.  
+Default wordings for screen readers can be overridden or translated by passing an object to the `intl` property.  
 It has the following defaults:
 
 ```ts
@@ -195,7 +194,7 @@ export default class Code extends Vue {
   amountOfSlides = 3;
   addRemoveSlidesExamples = getCarouselCodeSamples('example-dynamic-slides');
 
-  internationalization = `<p-carousel internationalization="{ slideLabel: 'Slide %s von %s', prev: 'Vorheriger Slide', next: 'Nächster Slide', first: 'Zum ersten Slide', last: 'Zum letzten Slide' }" heading="${this.basicHeading}">
+  internationalization = `<p-carousel intl="{ slideLabel: 'Slide %s von %s', prev: 'Vorheriger Slide', next: 'Nächster Slide', first: 'Zum ersten Slide', last: 'Zum letzten Slide' }" heading="${this.basicHeading}">
   ${this.getSlides(3)}
 </p-carousel>
 `;
