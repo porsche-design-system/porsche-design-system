@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [2.16.0-rc.0] - 2022-08-23
+
 #### Fixed
 
 - `Radio Button Wrapper` visual selection change bug in Safari >= 15.5
