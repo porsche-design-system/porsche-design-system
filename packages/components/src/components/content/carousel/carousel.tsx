@@ -92,6 +92,11 @@ export class Carousel {
   public connectedCallback(): void {
     observeChildren(this.host, this.updateSlidesAndPagination);
     this.observeBreakpointChange();
+
+    if (this.splide) {
+      this.updateSlidesAndPagination();
+      this.registerSplideHandlers(this.splide);
+    }
   }
 
   public componentWillLoad(): void {
@@ -122,21 +127,7 @@ export class Carousel {
       i18n: parseJSONAttribute(this.intl),
     });
 
-    this.splide.on('mounted', () => {
-      updatePrevNextButtonAria(this.btnPrev, this.btnNext, this.splide);
-      updateSlidesInert(this.splide);
-      renderPagination(this.pagination, this.amountOfPages, 0); // initial pagination
-    });
-
-    this.splide.on('move', (activeIndex, previousIndex): void => {
-      updatePrevNextButtonAria(this.btnPrev, this.btnNext, this.splide);
-      updateSlidesInert(this.splide);
-      updatePagination(this.pagination, activeIndex);
-      this.carouselChange.emit({ activeIndex, previousIndex });
-    });
-
-    this.splide.mount();
-    // TODO: focus/keyboard handling
+    this.registerSplideHandlers(this.splide);
   }
 
   public componentWillRender(): void {
@@ -163,6 +154,7 @@ export class Carousel {
   public disconnectedCallback(): void {
     unobserveChildren(this.host);
     unobserveBreakpointChange(this.host);
+    this.splide.destroy();
   }
 
   public render(): JSX.Element {
@@ -214,16 +206,33 @@ export class Carousel {
     );
   }
 
-  private observeBreakpointChange = (): void => {
+  private registerSplideHandlers(splide: Splide): void {
+    splide.on('mounted', () => {
+      updatePrevNextButtonAria(this.btnPrev, this.btnNext, splide);
+      updateSlidesInert(splide);
+      renderPagination(this.pagination, this.amountOfPages, 0); // initial pagination
+    });
+
+    splide.on('move', (activeIndex, previousIndex): void => {
+      updatePrevNextButtonAria(this.btnPrev, this.btnNext, splide);
+      updateSlidesInert(splide);
+      updatePagination(this.pagination, activeIndex);
+      this.carouselChange.emit({ activeIndex, previousIndex });
+    });
+
+    splide.mount();
+  }
+
+  private observeBreakpointChange(): void {
     if (typeof this.slidesPerPage === 'object') {
       observeBreakpointChange(this.host, this.updateAmountOfPages);
     }
-  };
+  }
 
-  private updateSlidesAndPagination = (): void => {
+  private updateSlidesAndPagination(): void {
     this.slides = getSlides(this.host);
     this.updateAmountOfPages();
-  };
+  }
 
   private updateAmountOfPages = (): void => {
     this.amountOfPages = getAmountOfPages(
