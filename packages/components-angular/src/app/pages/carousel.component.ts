@@ -49,25 +49,52 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-carousel>
     </div>
 
-    <div class="playground light" title="should render carousel with wrapped heading on light background">
-      <p-carousel [heading]="'Wrapped heading'" [wrapHeading]="true">
+    <div class="playground light" title="should render carousel with slotted subheading on light background">
+      <p-carousel [heading]="'Heading'">
+        <p slot="subheading">Slotted subheading</p>
         <div>Slide 1</div>
         <div>Slide 2</div>
         <div>Slide 3</div>
       </p-carousel>
     </div>
 
-    <div class="playground light" title="should render carousel with wrapped slotted heading on light background">
+    <div class="playground dark" title="should render carousel with slotted subheading on dark background">
+      <p-carousel [heading]="'Heading'" [theme]="'dark'">
+        <p slot="subheading">Slotted subheading</p>
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+      </p-carousel>
+    </div>
+
+    <div
+      class="playground light"
+      title="should render carousel with wrapped heading and slotted subheading on light background"
+    >
+      <p-carousel [heading]="'Wrapped heading'" [wrapHeading]="true">
+        <p slot="subheading">Slotted subheading</p>
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+      </p-carousel>
+    </div>
+
+    <div
+      class="playground light"
+      title="should render carousel with wrapped slotted heading and slotted subheading on light background"
+    >
       <p-carousel [wrapHeading]="true">
         <h2 slot="heading">Wrapped slotted heading</h2>
+        <p slot="subheading">Slotted subheading</p>
         <div>Slide 1</div>
         <div>Slide 2</div>
         <div>Slide 3</div>
       </p-carousel>
     </div>
 
-    <div class="playground light" title="should render carousel with multiline heading on light background">
+    <div class="playground light" title="should render carousel with multiline heading and subheading on light background">
       <p-carousel [heading]="'Multiline heading could be quite long especially on smaller screens but it wraps luckily'">
+        <p slot="subheading">Multiline subheading could be quite long especially on smaller screens but it wraps luckily</p>
         <div>Slide 1</div>
         <div>Slide 2</div>
         <div>Slide 3</div>
