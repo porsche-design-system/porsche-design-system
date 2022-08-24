@@ -32,7 +32,7 @@ thus have a minimum height of 24px to ensure visual alignment of the scroll indi
 The `p-scroller` only takes care of the horizontal alignment. Spacing and custom css properties must be handled by the
 consumer e.g. `white-space: nowrap` to avoid linebreaks inside the elements.
 
-<Playground :markup="isFocusable" :config="config"></Playground>
+<Playground :markup="isFocusable" :config="{themable: false}"></Playground>
 
 ## Scroll indicator size
 
