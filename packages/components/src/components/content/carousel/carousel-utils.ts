@@ -19,7 +19,7 @@ type ResponsiveOptsKey = keyof ResponsiveOpts;
 export type SplideBreakpoints = Options['breakpoints'];
 
 export const getSplideBreakpoints = (
-  perPage: BreakpointCustomizable<number>,
+  perPage: Exclude<BreakpointCustomizable<number>, string>,
   gap: BreakpointCustomizable<string>
 ): SplideBreakpoints => {
   return mergeDeep(toSplideBreakpoints('perPage', perPage), toSplideBreakpoints('gap', gap));
@@ -35,14 +35,14 @@ export const toSplideBreakpoints = <T>(
           ...result,
           // cut off 'px' suffix
           [key === 'base' ? 0 : breakpoint[key].slice(0, -2)]: {
-            [propName]: val,
+            [propName]: propName === 'perPage' ? Math.round(val) : val,
           },
         }),
         {}
       )
     : {
         0: {
-          [propName]: value,
+          [propName]: propName === 'perPage' ? Math.round(value as unknown as number) : value,
         },
       };
 };

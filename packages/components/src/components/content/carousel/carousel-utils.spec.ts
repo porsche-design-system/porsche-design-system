@@ -43,12 +43,12 @@ describe('getSplideBreakpoints()', () => {
 });
 
 describe('toSplideBreakpoints()', () => {
-  it('should return correct correct object for flat BreakpointCustomizable parameter', () => {
+  it('should return correct result for flat BreakpointCustomizable parameter', () => {
     expect(toSplideBreakpoints('perPage', 10)).toEqual({ 0: { perPage: 10 } });
     expect(toSplideBreakpoints('gap', '2rem')).toEqual({ 0: { gap: '2rem' } });
   });
 
-  it('should return correct breakpoints object for nested BreakpointCustomizable parameter', () => {
+  it('should return correct result for nested BreakpointCustomizable parameter', () => {
     expect(toSplideBreakpoints('perPage', { base: 5, s: 10 })).toEqual({
       0: { perPage: 5 },
       760: { perPage: 10 },
@@ -62,6 +62,20 @@ describe('toSplideBreakpoints()', () => {
       1000: { gap: '4rem' },
       1300: { gap: '5rem' },
       1760: { gap: '6rem' },
+    });
+  });
+
+  it('should return correct result for flat floating number BreakpointCustomizable parameter', () => {
+    expect(toSplideBreakpoints('perPage', 2.2)).toEqual({ 0: { perPage: 2 } });
+    expect(toSplideBreakpoints('perPage', 2.5)).toEqual({ 0: { perPage: 3 } });
+    expect(toSplideBreakpoints('perPage', 2.9)).toEqual({ 0: { perPage: 3 } });
+  });
+
+  it('should return correct result for nested floating number BreakpointCustomizable parameter', () => {
+    expect(toSplideBreakpoints('perPage', { base: 2.2, xs: 2.5, s: 2.9 })).toEqual({
+      0: { perPage: 2 },
+      480: { perPage: 3 },
+      760: { perPage: 3 },
     });
   });
 });
