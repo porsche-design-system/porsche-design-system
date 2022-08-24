@@ -15,7 +15,7 @@ export type DummyTextareaProps = {
   onBlur?: (e: FocusEvent<HTMLTextAreaElement>) => void;
 };
 
-export const DummyTextarea = (props: Props): JSX.Element => {
+export const DummyTextarea = (props: DummyTextareaProps): JSX.Element => {
   return <textarea {...props} />;
 };
 

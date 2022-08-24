@@ -14,7 +14,7 @@ export type DummyCheckboxProps = {
   onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
 };
 
-export const DummyCheckbox = (props: Props): JSX.Element => {
+export const DummyCheckbox = (props: DummyCheckboxProps): JSX.Element => {
   return <input type="checkbox" {...props} />;
 };
 

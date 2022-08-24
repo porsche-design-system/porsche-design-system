@@ -20,5 +20,5 @@ export function partitionProps<T extends { [key: string]: any }>(props: T, selec
  * to ensure that no key is missing
  */
 export function extractPropsKeys<T>(propsAsRecord: Record<keyof T, null>) {
-  return Object.keys(propsAsRecord);
+  return Object.keys(propsAsRecord) as (keyof T)[];
 }

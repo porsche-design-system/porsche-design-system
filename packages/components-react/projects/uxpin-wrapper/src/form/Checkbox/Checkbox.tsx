@@ -9,7 +9,7 @@ export const Checkbox = (props: CheckboxProps): JSX.Element => {
 
   return (
     <CheckboxWrapper {...wrapperProps}>
-      <DummyCheckbox type="checkbox" {...dummyCheckboxProps} />
+      <DummyCheckbox {...dummyCheckboxProps} />
     </CheckboxWrapper>
   );
 };
