@@ -36,7 +36,6 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
         textAlign: 'left',
         ...textSmall,
         outline: 0,
-        whiteSpace: 'nowrap',
         ...getTagFocusJssStyle(baseColor, hoverColor),
         ...hoverMediaQuery({
           '&:hover > .icon': {
