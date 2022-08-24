@@ -67,7 +67,6 @@ export const getSlides = (host: HTMLElement): HTMLElement[] => {
 };
 
 export const getAmountOfPages = (amountOfSlides: number, slidesPerPage: number): number => {
-  // TODO: respect slidesPerMove
   // const naturalAmount = Math.floor(amountOfSlides / slidesPerPage);
   return amountOfSlides === 0 ? 0 : amountOfSlides < slidesPerPage ? 1 : amountOfSlides - slidesPerPage + 1;
 };
