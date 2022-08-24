@@ -114,11 +114,12 @@ h2,::slotted([slot=heading]) {
 }
 .header {
   display: grid;
-  grid-template-columns: auto 0 0;
+  grid-template-columns: minmax(0px, 1fr) 0 0;
 }
 .btn {
   visibility: hidden;
   height: 0;
+  padding: 0.5rem;
 }
 .btn:first-of-type {
   grid-column: 2;
@@ -146,7 +147,7 @@ h2,::slotted([slot=heading]) {
 
 @media(min-width:760px) {
   .header {
-    grid-template-columns: auto min-content min-content;
+    grid-template-columns: minmax(0px, 1fr) min-content min-content;
     align-items: end;
     gap: 0.5rem;
   }
@@ -293,11 +294,12 @@ h2,::slotted([slot=heading]) {
 }
 .header {
   display: grid;
-  grid-template-columns: auto 0 0;
+  grid-template-columns: minmax(0px, 1fr) 0 0;
 }
 .btn {
   visibility: hidden;
   height: 0;
+  padding: 0.5rem;
 }
 .btn:first-of-type {
   grid-column: 2;
@@ -319,7 +321,7 @@ h2,::slotted([slot=heading]) {
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: auto min-content min-content;
+    grid-template-columns: minmax(0px, 1fr) min-content min-content;
     align-items: end;
     gap: 0.5rem;
   }
@@ -445,11 +447,12 @@ h2,::slotted([slot=heading]) {
 }
 .header {
   display: grid;
-  grid-template-columns: auto 0 0;
+  grid-template-columns: minmax(0px, 1fr) 0 0;
 }
 .btn {
   visibility: hidden;
   height: 0;
+  padding: 0.5rem;
 }
 .btn:first-of-type {
   grid-column: 2;
@@ -471,7 +474,7 @@ h2,::slotted([slot=heading]) {
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: auto min-content min-content;
+    grid-template-columns: minmax(0px, 1fr) min-content min-content;
     align-items: end;
     gap: 0.5rem;
   }
@@ -597,18 +600,19 @@ h2,::slotted([slot=heading]) {
 }
 .header {
   display: grid;
-  grid-template-columns: auto 0 0;
+  grid-template-columns: minmax(0px, 1fr) 0 0;
 }
 .btn {
   visibility: hidden;
   height: 0;
+  padding: 0.5rem;
 }
 .btn:first-of-type {
   grid-column: 2;
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: auto min-content min-content;
+    grid-template-columns: minmax(0px, 1fr) min-content min-content;
     align-items: end;
     gap: 0.5rem;
   }
@@ -734,12 +738,13 @@ h2,::slotted([slot=heading]) {
 }
 .header {
   display: grid;
-  grid-template-columns: auto 0 0;
+  grid-template-columns: minmax(0px, 1fr) 0 0;
   padding: 0 max(1rem, 7vw);
 }
 .btn {
   visibility: hidden;
   height: 0;
+  padding: 0.5rem;
 }
 .btn:first-of-type {
   grid-column: 2;
@@ -761,7 +766,7 @@ h2,::slotted([slot=heading]) {
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: auto min-content min-content;
+    grid-template-columns: minmax(0px, 1fr) min-content min-content;
     align-items: end;
     gap: 0.5rem;
   }
@@ -893,19 +898,20 @@ h2,::slotted([slot=heading]) {
 }
 .header {
   display: grid;
-  grid-template-columns: auto 0 0;
+  grid-template-columns: minmax(0px, 1fr) 0 0;
   padding: 0 max(1rem, 7vw);
 }
 .btn {
   visibility: hidden;
   height: 0;
+  padding: 0.5rem;
 }
 .btn:first-of-type {
   grid-column: 2;
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: auto min-content min-content;
+    grid-template-columns: minmax(0px, 1fr) min-content min-content;
     align-items: end;
     gap: 0.5rem;
   }
@@ -1036,19 +1042,20 @@ h2,::slotted([slot=heading]) {
 }
 .header {
   display: grid;
-  grid-template-columns: auto 0 0;
+  grid-template-columns: minmax(0px, 1fr) 0 0;
   padding: 0 max(1rem, 7vw);
 }
 .btn {
   visibility: hidden;
   height: 0;
+  padding: 0.5rem;
 }
 .btn:first-of-type {
   grid-column: 2;
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: auto min-content min-content;
+    grid-template-columns: minmax(0px, 1fr) min-content min-content;
     align-items: end;
     gap: 0.5rem;
   }

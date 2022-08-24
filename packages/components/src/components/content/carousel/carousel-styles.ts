@@ -74,9 +74,9 @@ export const getComponentCss = (
     //   }
     header: {
       display: 'grid',
-      gridTemplateColumns: 'auto 0 0',
+      gridTemplateColumns: 'minmax(0px, 1fr) 0 0',
       [mediaQueryS]: {
-        gridTemplateColumns: 'auto min-content min-content',
+        gridTemplateColumns: 'minmax(0px, 1fr) min-content min-content',
         alignItems: 'end',
         gap: pxToRemWithUnit(8),
       },
@@ -90,6 +90,7 @@ export const getComponentCss = (
     btn: {
       visibility: 'hidden',
       height: 0,
+      padding: pxToRemWithUnit(8),
       [mediaQueryS]: {
         visibility: 'visible',
         height: 'auto',
