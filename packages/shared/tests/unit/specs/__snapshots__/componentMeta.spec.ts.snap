@@ -920,7 +920,7 @@ Object {
     "hasSlot": true,
     "hasSlottedCss": false,
     "isDelegatingFocus": false,
-    "isInternal": true,
+    "isInternal": false,
     "isThemeable": true,
     "props": Array [
       Object {
@@ -933,12 +933,11 @@ Object {
         "scrollToPosition": null,
       },
       Object {
-        "prevNextButtonJssStyle": null,
+        "scrollIndicatorPosition": "center",
       },
-    ],
-    "requiredRootNode": Array [
-      "p-tabs-bar",
-      "p-stepper-horizontal",
+      Object {
+        "isFocusable": false,
+      },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
