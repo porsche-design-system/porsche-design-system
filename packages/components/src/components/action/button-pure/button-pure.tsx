@@ -170,7 +170,7 @@ export class ButtonPure {
           {...getButtonAriaAttributes(this.disabled, this.loading, hasSubline, this.aria)}
           class="root"
           type={this.type}
-          tabindex={this.tabbable ? this.host.getAttribute('tabindex') : -1}
+          {...(!this.tabbable && { tabindex: -1 })}
           ref={(el) => (this.buttonTag = el)}
         >
           {hasIcon &&
