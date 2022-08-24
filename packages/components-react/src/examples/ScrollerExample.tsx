@@ -1,5 +1,5 @@
 import { PButton, PScroller } from '@porsche-design-system/components-react';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 
 export const ScrollerExamplePage = (): JSX.Element => {
   const style = `
@@ -17,26 +17,28 @@ export const ScrollerExamplePage = (): JSX.Element => {
     }
 
     p-button {
-      padding: 1rem 1rem 1rem 0;
+      margin: 0 1rem 1rem 0;
     }
   `;
 
-  const ref = useRef(null);
+  const [scrollPosition, setScrollPosition] = useState<number>(290);
+  const [isSmooth, setIsSmooth] = useState<boolean>(false);
 
-  const [scrollPosition, setScrollPosition] = useState<number>(400);
-
-  const clickHandler = useCallback((scrollPosition: number) => {
+  const clickHandler = (scrollPosition: number, isSmooth: boolean) => {
+    setIsSmooth(isSmooth);
     setScrollPosition(scrollPosition);
-  }, []);
+  };
 
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
-      <PButton onClick={() => clickHandler(0)}>Scroll to start</PButton>
-      <PButton onClick={() => clickHandler(290)}>Scroll to middle</PButton>
-      <PButton onClick={() => clickHandler(900)}>Scroll to end</PButton>
+
+      <PButton onClick={() => clickHandler(0, true)}>Scroll to start</PButton>
+      <PButton onClick={() => clickHandler(290, true)}>Scroll to middle</PButton>
+      <PButton onClick={() => clickHandler(900, true)}>Scroll to end</PButton>
+
       <div style={{ maxWidth: '600px' }}>
-        <PScroller isFocusable scrollToPosition={{ scrollPosition }}>
+        <PScroller isFocusable scrollToPosition={{ scrollPosition, isSmooth }}>
           <span>Start</span>
           <span>Middle</span>
           <span>End</span>
