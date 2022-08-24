@@ -95,7 +95,6 @@ export class Carousel {
   }
 
   public componentWillLoad(): void {
-    // TODO: validation/sanitization
     this.slidesPerPage = parseJSON(this.slidesPerPage) as any; // TODO: what about changes?
 
     this.updateSlidesAndPagination();
@@ -114,7 +113,7 @@ export class Carousel {
       // },
       mediaQuery: 'min',
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
-      breakpoints: getSplideBreakpoints(this.slidesPerPage, {
+      breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number>, string>, {
         base: spacing.small,
         s: spacing.medium,
         l: spacing.large,
