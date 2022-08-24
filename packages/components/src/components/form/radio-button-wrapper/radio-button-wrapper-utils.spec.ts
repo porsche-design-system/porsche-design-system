@@ -45,7 +45,7 @@ describe('changeHandler()', () => {
 });
 
 describe('addChangeListener()', () => {
-  it('should call addEventListener with correct parameters', () => {
+  it('should call addEventListener() with correct parameters', () => {
     const radio = document.createElement('input');
     radio.type = 'radio';
     radio.name = 'some-name';
