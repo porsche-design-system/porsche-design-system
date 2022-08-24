@@ -1,4 +1,5 @@
 import { ChangeEvent, FocusEvent, InputHTMLAttributes } from 'react';
+import { extractPropsKeys } from '../form-utils';
 
 export type DummyTextFieldProps = {
   type?: 'text' | 'number' | 'email' | 'tel' | 'search' | 'url' | 'date' | 'time' | 'month' | 'week' | 'password';
@@ -24,9 +25,7 @@ export const DummyTextField = ({ type = 'text', ...rest }: Props): JSX.Element =
   return <input {...props} />;
 };
 
-// We use a TS `Record` rather than exporting directly a hard-coded array of string
-// to ensure that no prop will be missing
-const propsAsRecord: Record<keyof DummyTextFieldProps, null> = {
+export const dummyTextFieldPropsKeys = extractPropsKeys<DummyTextFieldProps>({
   type: null,
   disabled: null,
   placeholder: null,
@@ -36,7 +35,4 @@ const propsAsRecord: Record<keyof DummyTextFieldProps, null> = {
   onChange: null,
   onFocus: null,
   onBlur: null,
-}
-
-// Export the prop keys to be able filter props in the form components
-export const dummyTextFieldPropsKeys = Object.keys(propsAsRecord);
+});
