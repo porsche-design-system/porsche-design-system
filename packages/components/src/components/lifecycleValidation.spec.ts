@@ -236,7 +236,11 @@ describe.each<TagName>(tagNamesWithObserveChildren)('%s', (tagName) => {
 
   it('should call unobserveChildren() with correct parameters via disconnectedCallback', () => {
     const spy = jest.spyOn(childrenObserverUtils, 'unobserveChildren');
-    component.disconnectedCallback();
+
+    try {
+      // carousel's splide.destroy() gets caught here
+      component.disconnectedCallback();
+    } catch {}
 
     expect(spy).toBeCalledWith(component.host);
   });
