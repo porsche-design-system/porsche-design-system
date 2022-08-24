@@ -277,6 +277,7 @@ describe('updateAmountOfPages()', () => {
     const getCurrentMatchingBreakpointValueSpy = jest
       .spyOn(breakpointObserverUtilsUtils, 'getCurrentMatchingBreakpointValue')
       .mockReturnValue(11);
+    const mathRoundSpy = jest.spyOn(Math, 'round').mockReturnValue(12);
     const component = new Carousel();
     component.slidesPerPage = 1;
     component['slides'] = Array(2);
@@ -284,7 +285,8 @@ describe('updateAmountOfPages()', () => {
 
     component['updateAmountOfPages']();
     expect(getCurrentMatchingBreakpointValueSpy).toBeCalledWith(1);
-    expect(getAmountOfPagesSpy).toBeCalledWith(2, 11);
+    expect(mathRoundSpy).toBeCalledWith(11);
+    expect(getAmountOfPagesSpy).toBeCalledWith(2, 12);
     expect(component['amountOfPages']).toBe(5);
   });
 
