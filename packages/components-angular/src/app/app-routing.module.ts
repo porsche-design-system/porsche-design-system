@@ -85,6 +85,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.ModalExampleAccessibilityComponent,
   },
   {
+    name: 'Scroller Example',
+    path: 'scroller-example',
+    component: fromExamples.ScrollerExampleComponent,
+  },
+  {
     name: 'Segmented Control Example',
     path: 'segmented-control-example',
     component: fromExamples.SegmentedControlExampleComponent,
