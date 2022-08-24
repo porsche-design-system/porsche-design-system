@@ -81,6 +81,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.ModalExampleAccessibilityPage />,
   },
   {
+    name: 'Scroller Example',
+    path: '/scroller-example',
+    element: <fromExamples.ScrollerExamplePage />,
+  },
+  {
     name: 'Segmented Control Example',
     path: '/segmented-control-example',
     element: <fromExamples.SegmentedControlExamplePage />,
