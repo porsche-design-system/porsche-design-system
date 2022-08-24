@@ -12,12 +12,14 @@ import { TabsBarExampleBasicComponent } from './tabs-bar-example-basic.component
 import { TextFieldWrapperExampleImaskComponent } from './text-field-wrapper-example-imask.component';
 import { TextFieldWrapperExampleSearchComponent } from './text-field-wrapper-example-search.component';
 import { ToastExampleComponent } from './toast-example.component';
+import { ScrollerExampleComponent } from './scroller-example.component';
 
 export const examples = [
   AccordionExampleComponent,
   InlineNotificationExampleActionButtonComponent,
   InlineNotificationExampleEventsComponent,
   ModalExampleAccessibilityComponent,
+  ScrollerExampleComponent,
   SegmentedControlExampleComponent,
   StepperHorizontalExampleComponent,
   TableExampleAdvancedComponent,
@@ -34,6 +36,7 @@ export * from './accordion-example.component';
 export * from './inline-notification-example-events.component';
 export * from './inline-notification-example-action-button.component';
 export * from './modal-example-accessibility.component';
+export * from './scroller-example.component';
 export * from './segmented-control-example.component';
 export * from './stepper-horizontal-example.component';
 export * from './table-example-advanced.component';
