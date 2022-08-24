@@ -37,29 +37,21 @@
     </header>
 
     <main>
-      <p-carousel slides-per-page="{ base: 2, l: 4}">
+      <p-carousel slides-per-page="{ base: 2, m: 3}">
         <h1 slot="heading">Slotted heading</h1>
-        <div>Slide 1</div>
-        <div>Slide 2</div>
-        <div>Slide 3</div>
-        <div>Slide 4</div>
+        <h1 slot="subheading">Slotted subheading</h1>
+        <div>Slide 1<p-button>button 1</p-button></div>
+        <div>Slide 2<p-button-pure>button 2</p-button-pure></div>
+        <div>Slide 3<button>button 3</button></div>
+        <div>Slide 4<p-link href="#">link 4</p-link></div>
+        <div>Slide 5<p-link-pure href="#">link 5</p-link-pure></div>
+        <div>Slide 6<a href="#">link 6</a></div>
       </p-carousel>
-      <button id="btn-add">add slide</button>
-      <button id="btn-remove">remove slide</button>
+
+      <button>button</button>
     </main>
 
     <script>
-      const carousel = document.querySelector('p-carousel');
-      carousel.addEventListener('carouselChange', console.log);
-      document.querySelector('#btn-add').addEventListener('click', () => {
-        const child = document.createElement('div');
-        child.innerText = 'another child';
-        carousel.append(child);
-      });
-      document.querySelector('#btn-remove').addEventListener('click', () => {
-        carousel.children[carousel.children.length - 1].remove();
-      });
-
       <!-- START: keep this snippet to log component lifecycle events -->
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
