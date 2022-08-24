@@ -1,4 +1,5 @@
 import { ChangeEvent, FocusEvent } from 'react';
+import { extractPropsKeys } from '../form-utils';
 
 export type DummyTextareaProps = {
   disabled?: boolean;
@@ -18,9 +19,7 @@ export const DummyTextarea = (props: Props): JSX.Element => {
   return <textarea {...props} />;
 };
 
-// We use a TS `Record` rather than exporting directly a hard-coded array of string
-// to ensure that no prop will be missing
-const propsAsRecord: Record<keyof DummyTextareaProps, null> = {
+export const dummyTextareaPropsKeys = extractPropsKeys<DummyTextareaProps>({
   disabled: null,
   placeholder: null,
   readOnly: null,
@@ -29,7 +28,4 @@ const propsAsRecord: Record<keyof DummyTextareaProps, null> = {
   onChange: null,
   onFocus: null,
   onBlur: null,
-}
-
-// Export the prop keys to be able filter props in the form components
-export const dummyTextareaPropsKeys = Object.keys(propsAsRecord);
+});

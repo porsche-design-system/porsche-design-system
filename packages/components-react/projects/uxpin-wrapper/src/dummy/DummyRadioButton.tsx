@@ -1,4 +1,5 @@
 import { ChangeEvent, FocusEvent } from 'react';
+import { extractPropsKeys } from '../form-utils';
 
 export type DummyRadioButtonProps = {
   disabled?: boolean;
@@ -18,9 +19,7 @@ export const DummyRadioButton = (props: Props): JSX.Element => {
   return <input type="radio" {...props} />;
 };
 
-// We use a TS `Record` rather than exporting directly a hard-coded array of string
-// to ensure that no prop will be missing
-const propsAsRecord: Record<keyof DummyRadioButtonProps, null> = {
+export const dummyRadioButtonPropsKeys = extractPropsKeys<DummyRadioButtonProps>({
   disabled: null,
   readOnly: null,
   required: null,
@@ -29,7 +28,4 @@ const propsAsRecord: Record<keyof DummyRadioButtonProps, null> = {
   onChange: null,
   onFocus: null,
   onBlur: null,
-}
-
-// Export the prop keys to be able filter props in the form components
-export const dummyRadioButtonPropsKeys = Object.keys(propsAsRecord);
+});
