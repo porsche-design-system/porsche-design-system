@@ -50,25 +50,52 @@ export const CarouselPage = (): JSX.Element => {
         </PCarousel>
       </div>
 
-      <div className="playground light" title="should render carousel with wrapped heading on light background">
-        <PCarousel heading="Wrapped heading" wrapHeading={true}>
+      <div className="playground light" title="should render carousel with slotted subheading on light background">
+        <PCarousel heading="Heading">
+          <p slot="subheading">Slotted subheading</p>
           <div>Slide 1</div>
           <div>Slide 2</div>
           <div>Slide 3</div>
         </PCarousel>
       </div>
 
-      <div className="playground light" title="should render carousel with wrapped slotted heading on light background">
+      <div className="playground dark" title="should render carousel with slotted subheading on dark background">
+        <PCarousel heading="Heading" theme="dark">
+          <p slot="subheading">Slotted subheading</p>
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+        </PCarousel>
+      </div>
+
+      <div
+        className="playground light"
+        title="should render carousel with wrapped heading and slotted subheading on light background"
+      >
+        <PCarousel heading="Wrapped heading" wrapHeading={true}>
+          <p slot="subheading">Slotted subheading</p>
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+        </PCarousel>
+      </div>
+
+      <div
+        className="playground light"
+        title="should render carousel with wrapped slotted heading and slotted subheading on light background"
+      >
         <PCarousel wrapHeading={true}>
           <h2 slot="heading">Wrapped slotted heading</h2>
+          <p slot="subheading">Slotted subheading</p>
           <div>Slide 1</div>
           <div>Slide 2</div>
           <div>Slide 3</div>
         </PCarousel>
       </div>
 
-      <div className="playground light" title="should render carousel with multiline heading on light background">
+      <div className="playground light" title="should render carousel with multiline heading and subheading on light background">
         <PCarousel heading="Multiline heading could be quite long especially on smaller screens but it wraps luckily">
+          <p slot="subheading">Multiline subheading could be quite long especially on smaller screens but it wraps luckily</p>
           <div>Slide 1</div>
           <div>Slide 2</div>
           <div>Slide 3</div>
