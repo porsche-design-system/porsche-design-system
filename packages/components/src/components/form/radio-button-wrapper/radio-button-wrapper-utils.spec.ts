@@ -1,7 +1,9 @@
 import { addChangeListener, changeHandler } from './radio-button-wrapper-utils';
 
 describe('changeHandler()', () => {
-  it('should set and immediately remove hidden attribute on input type=radio with same name', () => {
+  it('should use correct selector and set and immediately remove hidden attribute on input type=radio with the same name', () => {
+    const spyQuerySelectorAll = jest.spyOn(document, 'querySelectorAll');
+
     const radio1 = document.createElement('input');
     radio1.type = 'radio';
     radio1.name = 'some-name';
@@ -33,6 +35,7 @@ describe('changeHandler()', () => {
 
     changeHandler({ target: { name: 'some-name' } } as unknown as Event);
 
+    expect(spyQuerySelectorAll).toBeCalledWith('input[type=radio][name=some-name]');
     expect(spySetAttribute1).toBeCalledWith('hidden', '');
     expect(spyRemoveAttribute1).toBeCalledWith('hidden');
     expect(spySetAttribute2).toBeCalledWith('hidden', '');
