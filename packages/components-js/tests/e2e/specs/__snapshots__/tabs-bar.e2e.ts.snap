@@ -69,9 +69,6 @@ Object {
         Object {
           "children": Array [
             Object {
-              "role": "none",
-            },
-            Object {
               "children": Array [
                 Object {
                   "children": Array [
@@ -128,9 +125,6 @@ Object {
         Object {
           "children": Array [
             Object {
-              "role": "none",
-            },
-            Object {
               "children": Array [
                 Object {
                   "children": Array [
@@ -185,8 +179,7 @@ Object {
           "role": "none",
         },
       ],
-      "name": "",
-      "role": "generic",
+      "role": "none",
     },
   ],
   "name": "",
@@ -264,9 +257,6 @@ Object {
         Object {
           "children": Array [
             Object {
-              "role": "none",
-            },
-            Object {
               "children": Array [
                 Object {
                   "children": Array [
@@ -323,9 +313,6 @@ Object {
         Object {
           "children": Array [
             Object {
-              "role": "none",
-            },
-            Object {
               "children": Array [
                 Object {
                   "children": Array [
@@ -380,8 +367,7 @@ Object {
           "role": "none",
         },
       ],
-      "name": "",
-      "role": "generic",
+      "role": "none",
     },
   ],
   "name": "",
@@ -460,9 +446,6 @@ Object {
         Object {
           "children": Array [
             Object {
-              "role": "none",
-            },
-            Object {
               "children": Array [
                 Object {
                   "children": Array [
@@ -519,9 +502,6 @@ Object {
         Object {
           "children": Array [
             Object {
-              "role": "none",
-            },
-            Object {
               "children": Array [
                 Object {
                   "children": Array [
@@ -576,8 +556,7 @@ Object {
           "role": "none",
         },
       ],
-      "name": "",
-      "role": "generic",
+      "role": "none",
     },
   ],
   "name": "",
@@ -657,9 +636,6 @@ Object {
         Object {
           "children": Array [
             Object {
-              "role": "none",
-            },
-            Object {
               "children": Array [
                 Object {
                   "children": Array [
@@ -716,9 +692,6 @@ Object {
         Object {
           "children": Array [
             Object {
-              "role": "none",
-            },
-            Object {
               "children": Array [
                 Object {
                   "children": Array [
@@ -773,8 +746,7 @@ Object {
           "role": "none",
         },
       ],
-      "name": "",
-      "role": "generic",
+      "role": "none",
     },
   ],
   "name": "",
@@ -853,9 +825,6 @@ Object {
         Object {
           "children": Array [
             Object {
-              "role": "none",
-            },
-            Object {
               "children": Array [
                 Object {
                   "children": Array [
@@ -912,9 +881,6 @@ Object {
         Object {
           "children": Array [
             Object {
-              "role": "none",
-            },
-            Object {
               "children": Array [
                 Object {
                   "children": Array [
@@ -969,8 +935,7 @@ Object {
           "role": "none",
         },
       ],
-      "name": "",
-      "role": "generic",
+      "role": "none",
     },
   ],
   "name": "",
@@ -1059,9 +1024,6 @@ Object {
         Object {
           "children": Array [
             Object {
-              "role": "none",
-            },
-            Object {
               "children": Array [
                 Object {
                   "children": Array [
@@ -1118,9 +1080,6 @@ Object {
         Object {
           "children": Array [
             Object {
-              "role": "none",
-            },
-            Object {
               "children": Array [
                 Object {
                   "children": Array [
@@ -1175,8 +1134,7 @@ Object {
           "role": "none",
         },
       ],
-      "name": "",
-      "role": "generic",
+      "role": "none",
     },
   ],
   "name": "",
@@ -1265,9 +1223,6 @@ Object {
         Object {
           "children": Array [
             Object {
-              "role": "none",
-            },
-            Object {
               "children": Array [
                 Object {
                   "children": Array [
@@ -1324,9 +1279,6 @@ Object {
         Object {
           "children": Array [
             Object {
-              "role": "none",
-            },
-            Object {
               "children": Array [
                 Object {
                   "children": Array [
@@ -1381,8 +1333,7 @@ Object {
           "role": "none",
         },
       ],
-      "name": "",
-      "role": "generic",
+      "role": "none",
     },
   ],
   "name": "",

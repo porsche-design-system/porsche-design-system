@@ -71,7 +71,7 @@ const getHost = () => selectNode(page, 'p-tabs-bar');
 const getAllButtons = () => page.$$('button');
 const getScrollArea = () => selectNode(page, 'p-tabs-bar >>> p-scroller >>> .scroll-area');
 const getBar = () => selectNode(page, 'p-tabs-bar >>> .bar');
-const getGradientNext = () => selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action-next .gradient');
+const getGradientNext = () => selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action-next');
 
 const getPrevNextButton = async () => {
   const prevButton = await selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action-prev p-button-pure');
@@ -140,7 +140,7 @@ describe('slotted content changes', () => {
     const [, secondButton] = await getAllButtons();
     await clickElement(secondButton);
 
-    expect(Math.floor((await getElementPositions(page, bar)).left), 'final position').toEqual(107);
+    expect(Math.floor((await getElementPositions(page, bar)).left), 'final position').toEqual(103);
   });
 
   it('should stay selected and have same bar style when tab after current active tab is removed', async () => {
@@ -283,7 +283,7 @@ describe('active index position', () => {
     );
 
     await clickElement(prevButton);
-    expect(await getScrollLeft(scrollArea), 'scroll left active button after second prev click').toBe(58);
+    expect(await getScrollLeft(scrollArea), 'scroll left active button after second prev click').toBe(50);
   });
 
   it('should have correct scroll position after tab click and next button click', async () => {
@@ -548,7 +548,7 @@ describe('keyboard', () => {
         </div>`
     );
     const allButtons = await (await selectNode(page, 'p-tabs >>> p-tabs-bar')).$$('button');
-    const gradientNext = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> p-scroller >>> .action-next .gradient');
+    const gradientNext = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> p-scroller >>> .action-next');
     const gradientWidth = await getOffsetWidth(gradientNext);
     const scrollArea = await selectNode(page, 'p-tabs >>> p-tabs-bar >>> p-scroller >>> .scroll-area');
     const scrollAreaWidth = await getOffsetWidth(scrollArea);
@@ -719,10 +719,9 @@ describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(1);
-    expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 });
 
