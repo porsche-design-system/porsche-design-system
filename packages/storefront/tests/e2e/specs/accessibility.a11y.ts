@@ -51,7 +51,8 @@ const cycleFrameworkTabs = async (theme: string): Promise<void> => {
 
       expect(ariaSelected).toBe('true');
 
-      await a11yAnalyze(page, theme + '-' + paramCase(innerText));
+      // TODO: a11yAnalyze is temporarily disabled due to https://github.com/porscheui/porsche-design-system/issues/2019. Enable when fixed!
+      // await a11yAnalyze(page, theme + '-' + paramCase(innerText));
     }
   }
 };
