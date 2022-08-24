@@ -115,7 +115,7 @@ export default class Code extends Vue {
 </div>`;
 
   basicTagDismissibleMarkup = `<div style="max-width: 600px">
-  <p-scroller>
+  <p-scroller style="white-space: nowrap">
     <p-tag-dismissible>Some tag content</p-tag-dismissible>
     <p-tag-dismissible>Some tag content</p-tag-dismissible>
     <p-tag-dismissible>Some tag content</p-tag-dismissible>
