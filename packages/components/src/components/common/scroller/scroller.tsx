@@ -17,6 +17,7 @@ import {
 } from './scroller-utils';
 import type { Direction, GradientColorTheme, ScrollToPosition, ScrollIndicatorPosition } from './scroller-utils';
 import type { PropTypes, ThemeExtendedElectric } from '../../../types';
+import { parseJSONAttribute } from '../../../utils/json';
 
 const propTypes: PropTypes<typeof Scroller> = {
   theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
@@ -58,24 +59,20 @@ export class Scroller {
   private scrollAreaElement: HTMLElement;
 
   @Watch('scrollToPosition')
-  public scrollToPositionHandler({ scrollPosition, isSmooth }: ScrollToPosition): void {
-    if (isSmooth) {
-      scrollElementTo(this.scrollAreaElement, scrollPosition);
-    } else {
-      this.scrollAreaElement.scrollLeft = scrollPosition;
-    }
+  public scrollToPositionHandler(): void {
+    this.scrollHandler();
   }
 
   public componentDidLoad(): void {
     this.initIntersectionObserver();
+    if (this.scrollToPosition && !!(this.isNextHidden || this.isPrevHidden)) {
+      this.scrollHandler();
+    }
   }
 
   // should only update if scrollable
   public componentShouldUpdate(_newVal, _oldVal, propName): boolean {
-    if (propName === 'scrollToPosition' && (this.isPrevHidden || this.isNextHidden)) {
-      return false;
-    }
-    return true;
+    return !(propName === 'scrollToPosition' && (this.isPrevHidden || this.isNextHidden));
   }
 
   public componentWillRender(): void {
@@ -158,5 +155,15 @@ export class Scroller {
   private scrollOnPrevNextClick = (direction: Direction): void => {
     const scrollPosition = getScrollPositionAfterPrevNextClick(this.scrollAreaElement, direction);
     scrollElementTo(this.scrollAreaElement, scrollPosition);
+  };
+
+  private scrollHandler = (): void => {
+    const { scrollPosition, isSmooth } = parseJSONAttribute(this.scrollToPosition);
+
+    if (isSmooth) {
+      scrollElementTo(this.scrollAreaElement, scrollPosition);
+    } else {
+      this.scrollAreaElement.scrollLeft = scrollPosition;
+    }
   };
 }
