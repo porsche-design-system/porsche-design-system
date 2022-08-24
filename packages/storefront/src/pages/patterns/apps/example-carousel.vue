@@ -24,7 +24,7 @@
       .map((_, i) => `<div>Slide ${i + 1}</div>`)
       .join('');
     content = `
-<p-carousel class="demo" heading="Einstieg bei Porsche" slides-per-page="{base: 2, s: 2, l: 3}">
+<p-carousel class="demo" heading="Einstieg bei Porsche" slides-per-page="{base: 1, s: 2, l: 3}">
   <p-tabs-bar slot="subheading" active-tab-index="0">
     <button>Schüler</button>
     <button>Studierende & Absolventen</button>
