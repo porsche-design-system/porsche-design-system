@@ -35,6 +35,7 @@ export const toSplideBreakpoints = <T>(
           ...result,
           // cut off 'px' suffix
           [key === 'base' ? 0 : breakpoint[key].slice(0, -2)]: {
+            // round to sanitize floating numbers
             [propName]: propName === 'perPage' ? Math.round(val) : val,
           },
         }),
@@ -42,6 +43,7 @@ export const toSplideBreakpoints = <T>(
       )
     : {
         0: {
+          // round to sanitize floating numbers
           [propName]: propName === 'perPage' ? Math.round(value as unknown as number) : value,
         },
       };

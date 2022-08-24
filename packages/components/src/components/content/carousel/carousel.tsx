@@ -226,7 +226,11 @@ export class Carousel {
   };
 
   private updateAmountOfPages = (): void => {
-    this.amountOfPages = getAmountOfPages(this.slides.length, getCurrentMatchingBreakpointValue(this.slidesPerPage));
+    this.amountOfPages = getAmountOfPages(
+      this.slides.length,
+      // round to sanitize floating numbers
+      Math.round(getCurrentMatchingBreakpointValue(this.slidesPerPage))
+    );
     renderPagination(this.pagination, this.amountOfPages, this.splide?.index || 0);
     updateSlidesInert(this.splide);
   };
