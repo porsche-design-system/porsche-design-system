@@ -5,6 +5,8 @@
 
 /tests/vrt/results
 /tests/unit/results
+/playwright-report/
+/playwright/.cache/
 
 *~
 *.sw[mnpcod]
