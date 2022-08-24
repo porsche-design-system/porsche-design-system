@@ -13,7 +13,11 @@ viewport / their respective container, scroll indicators are shown.
 If the component is accessed by keyboard navigation and an element is focused, scrolling via `arrow right` and
 `arrow left` is possible.
 
-<Playground :markup="basicMarkup" :config="config"></Playground>
+<Playground :markup="basicTagMarkup" :config="config"></Playground>
+
+The height of `p-scroller` depends on its content height.
+
+<Playground :markup="basicTagDismissibleMarkup" :config="config"></Playground>
 
 ## With not focusable elements
 
@@ -26,7 +30,7 @@ Keep in mind that the content passed to the `p-scroller` must be within the size
 thus have a minimum height of 24px to ensure visual alignment of the scroll indicators.
 
 The `p-scroller` only takes care of the horizontal alignment. Spacing and custom css properties must be handled by the
-consumer.
+consumer e.g. `white-space: nowrap` to avoid linebreaks inside the elements.
 
 <Playground :markup="isFocusable" :config="config"></Playground>
 
@@ -34,14 +38,32 @@ consumer.
 
 The size of the scroll indicator arrows depends on the `font-size` set onto the `p-scroller` component.
 
+<Playground :markup="scrollIndicatorSize" :config="config"></Playground>
+
 ## Scroll indicator position
 
 Per default the scroll indicators are vertically centered. The `scrollIndicatorPosition` property lets you change the
 position to top.
 
+<Playground :markup="scrollIndicatorPositionMarkup" :config="config">
+  <select v-model="scrollIndicatorPosition" aria-label="Select scroll indicator position">
+    <option disabled>Select scroll-indicator-position</option>
+    <option value="center">Center</option>
+    <option value="top">Top</option>
+  </select>
+</Playground>
+
 ## Gradient color scheme
 
 The background and gradient has to align to your chosen background.
+
+<Playground :markup="gradientMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
+  <select v-model="gradientColorScheme" aria-label="Select color scheme">
+    <option disabled>Select gradient-color-scheme</option>
+    <option value="default">Default</option>
+    <option value="surface">Surface</option>
+  </select>
+</Playground>
 
 ## Scroll API
 
@@ -50,7 +72,7 @@ set the initial scroll position or enable `onClick` scrolling.
 
 `scrollToPosition` accepts `{ scrollPosition: number, isSmooth?: boolean }`.  
 If `scrollToPosition` is set with `isSmooth: true` the scrolling is animated.  
-`scrollToPosition` has to be accessed as property and can´t be set as attribute onto the `p-scroller` component
+`scrollToPosition` has to be accessed as property and can´t be set as attribute onto the `p-scroller` component.
 
 <script lang="ts">
 import Vue from 'vue';
@@ -60,7 +82,10 @@ import Component from 'vue-class-component';
 export default class Code extends Vue {
   config = { themeable: true };
 
-  basicMarkup = `<div style="max-width: 600px">
+  gradientColorScheme = 'surface';
+  scrollIndicatorPosition = 'top';
+
+  basicTagMarkup = `<div style="max-width: 600px">
   <p-scroller>
     <p-tag color="neutral-contrast-high">
       <button type="button">Some tag content</button>
@@ -88,21 +113,75 @@ export default class Code extends Vue {
     </p-tag>
   </p-scroller>
 </div>`;
-  
-  isFocusable = `<div style="max-width: 600px">
-  <p-scroller is-focusable="true">
-    <span style="white-space: nowrap; height: 24px;">Some element 1</span>
-    <span style="white-space: nowrap; height: 24px;">Some element 2</span>
-    <span style="white-space: nowrap; height: 24px;">Some element 3</span>
-    <span style="white-space: nowrap; height: 24px;">Some element 4</span>
-    <span style="white-space: nowrap; height: 24px;">Some element 5</span>
-    <span style="white-space: nowrap; height: 24px;">Some element 6</span>
-    <span style="white-space: nowrap; height: 24px;">Some element 7</span>
-    <span style="white-space: nowrap; height: 24px;">Some element 8</span>
-    <span style="white-space: nowrap; height: 24px;">Some element 9</span>
-    <span style="white-space: nowrap; height: 24px;">Some element 10</span>
+
+  basicTagDismissibleMarkup = `<div style="max-width: 600px">
+  <p-scroller>
+    <p-tag-dismissible>Some tag content</p-tag-dismissible>
+    <p-tag-dismissible>Some tag content</p-tag-dismissible>
+    <p-tag-dismissible>Some tag content</p-tag-dismissible>
+    <p-tag-dismissible>Some tag content</p-tag-dismissible>
+    <p-tag-dismissible>Some tag content</p-tag-dismissible>
   </p-scroller>
 </div>`;
+  
+  isFocusable = `<div style="max-width: 600px">
+  <p-scroller is-focusable="true" style="white-space: nowrap">
+    <span style="height: 24px">Some element 1</span>
+    <span style="height: 24px">Some element 2</span>
+    <span style="height: 24px">Some element 3</span>
+    <span style="height: 24px">Some element 4</span>
+    <span style="height: 24px">Some element 5</span>
+    <span style="height: 24px">Some element 6</span>
+    <span style="height: 24px">Some element 7</span>
+    <span style="height: 24px">Some element 8</span>
+    <span style="height: 24px">Some element 9</span>
+    <span style="height: 24px">Some element 10</span>
+  </p-scroller>
+</div>`;
+
+  scrollIndicatorSize = `<div style="max-width: 600px">
+  <p-scroller style="font-size: 24px; white-space: nowrap">
+    <p-button>Some button</p-button>
+    <p-button>Some button</p-button>
+    <p-button>Some button</p-button>
+    <p-button>Some button</p-button>
+    <p-button>Some button</p-button>
+    <p-button>Some button</p-button>
+    <p-button>Some button</p-button>
+    <p-button>Some button</p-button>
+  </p-scroller>
+</div>`;
+
+  get scrollIndicatorPositionMarkup() { 
+    return `<div style="max-width: 600px">
+  <p-scroller scroll-indicator-position="${this.scrollIndicatorPosition}" style="white-space: nowrap">
+    <p-button>Some button</p-button>
+    <p-button>Some button</p-button>
+    <p-button>Some button</p-button>
+    <p-button>Some button</p-button>
+    <p-button>Some button</p-button>
+    <p-button>Some button</p-button>
+    <p-button>Some button</p-button>
+    <p-button>Some button</p-button>
+  </p-scroller>
+</div>`;
+  };
+
+  get gradientMarkup() {
+    return `<div style="max-width: 600px">
+  <p-scroller gradient-color-scheme="${this.gradientColorScheme}" style="white-space: nowrap">
+    <p-button>Some button</p-button>
+    <p-button>Some button</p-button>
+    <p-button>Some button</p-button>
+    <p-button>Some button</p-button>
+    <p-button>Some button</p-button>
+    <p-button>Some button</p-button>
+    <p-button>Some button</p-button>
+    <p-button>Some button</p-button>
+  </p-scroller>
+</div>`;
+  }
+  
 }
 </script>
 
