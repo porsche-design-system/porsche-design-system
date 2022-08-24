@@ -62,7 +62,7 @@ exports[`should have no basic DOM regression for p-banner 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-button 1`] = `
-"<button class=\\"root\\" type=\\"submit\\" tabindex=\\"0\\">
+"<button class=\\"root\\" type=\\"submit\\">
   <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
   </p-icon>
   <span>
@@ -134,7 +134,7 @@ exports[`should have no basic DOM regression for p-button-pure 1`] = `
     color: #d5001c !important;
   }
 </style>
-<button class=\\"root\\" type=\\"submit\\" tabindex=\\"0\\">
+<button class=\\"root\\" type=\\"submit\\">
   <p-icon class=\\"icon hydrated\\" aria-hidden=\\"true\\">
   </p-icon>
   <p-text class=\\"label hydrated\\">
@@ -548,7 +548,7 @@ exports[`should have no basic DOM regression for p-switch 1`] = `
     <slot>
     </slot>
   </p-text>
-  <button aria-checked=\\"false\\" aria-labelledby=\\"label\\" type=\\"button\\" role=\\"switch\\" tabindex=\\"0\\">
+  <button aria-checked=\\"false\\" aria-labelledby=\\"label\\" type=\\"button\\" role=\\"switch\\">
     <span class=\\"toggle\\">
     </span>
   </button>
