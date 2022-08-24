@@ -189,7 +189,7 @@ export class Carousel {
           <slot name="subheading" />
         </div>
 
-        <div id="splide" class="splide" aria-label={} ref={(ref) => (this.container = ref)}>
+        <div id="splide" class="splide" ref={(ref) => (this.container = ref)}>
           <div class="splide__track">
             <div class="splide__list">
               {this.slides.map((_, i) => (
