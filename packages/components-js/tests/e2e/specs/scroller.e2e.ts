@@ -12,6 +12,7 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
+import type { ScrollToPosition } from '../../../../components-angular/dist/components-wrapper/lib/types';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -23,19 +24,24 @@ type InitOptions = {
   otherMarkup?: string;
   tag?: 'a' | 'button';
   isFocusable?: boolean;
+  scrollToPosition?: ScrollToPosition;
 };
 
 const initScroller = async (opts?: InitOptions) => {
-  const { amount = 8, isWrapped, otherMarkup = '', tag = 'button', isFocusable = false } = opts ?? {};
+  const { amount = 8, isWrapped, otherMarkup = '', tag = 'button', isFocusable = false, scrollToPosition } = opts ?? {};
+  const { scrollPosition, isSmooth = false } = scrollToPosition;
 
   const elementAttributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
   const elements = Array.from(Array(amount))
     .map((_, i) => `<${tag}${elementAttributes}>Button ${i + 1}</${tag}>`)
     .join('');
 
-  const content = `<p-scroller${isFocusable ? ' is-focusable' : ''}>
+  const content = `<p-scroller${isFocusable ? ' is-focusable' : ''}${
+    scrollToPosition ? ` scroll-to-position="{ scrollPosition: ${scrollPosition}, isSmooth: ${isSmooth} }"` : ''
+  }>
   ${elements}
 </p-scroller>${otherMarkup}`;
+  console.log(content);
 
   await setContentWithDesignSystem(page, isWrapped ? `<div style="width: 200px">${content}</div>` : content);
 };
@@ -73,6 +79,17 @@ const addNewButton = async () => {
     scroller.append(element);
   });
 };
+
+describe('scrolling', () => {
+  it('should have correct initial scroll position when scrollToPosition is set', async () => {
+    await initScroller({ isWrapped: true, scrollToPosition: { scrollPosition: 50, isSmooth: false } });
+
+    const scrollDistance = await getScrollLeft(await getScrollArea());
+
+    await page.waitForTimeout(CSS_ANIMATION_DURATION);
+    expect(scrollDistance).toBe(50);
+  });
+});
 
 describe('slotted content changes', () => {
   it('should show next button after adding a button', async () => {
@@ -258,6 +275,21 @@ describe('lifecycle', () => {
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+  });
+
+  it('should work without unnecessary round trips on init when scrollToPosition is set', async () => {
+    await initScroller({ isWrapped: true, tag: 'a', scrollToPosition: { scrollPosition: 100 } });
+    const status = await getLifecycleStatus(page);
+
+    expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(1);
+
+    expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
+    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
+    expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(2);
+
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 
   it('should work without unnecessary round trips on prop change', async () => {
