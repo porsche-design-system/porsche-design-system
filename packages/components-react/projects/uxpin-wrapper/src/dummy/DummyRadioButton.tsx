@@ -15,7 +15,7 @@ export type DummyRadioButtonProps = {
   onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
 };
 
-export const DummyRadioButton = (props: Props): JSX.Element => {
+export const DummyRadioButton = (props: DummyRadioButtonProps): JSX.Element => {
   return <input type="radio" {...props} />;
 };
 
