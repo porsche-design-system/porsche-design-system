@@ -11,6 +11,7 @@ import { getCss, isThemeDark } from '../../../../utils';
 import type { Theme } from '../../../../types';
 import type { StepperState } from './stepper-horizontal-item-utils';
 import { hoverMediaQuery } from '../../../../styles/hover-media-query';
+import type { JssStyle } from 'jss';
 
 const getSvg = (color: string): string =>
   `url("data:image/svg+xml,${encodeURIComponent(`
@@ -53,21 +54,19 @@ export const getComponentCss = (state: StepperState, disabled: boolean, theme: T
 
   return getCss({
     '@global': {
-      ':host': {
-        ...(isCurrentOrUndefined && {
-          ...Array.from(Array(9)).reduce(
-            (result, _, i) => ({
-              ...result,
-              [`&(:nth-of-type(${i + 1}))`]: {
-                '& $button::after': {
-                  background: `${getSvg(svgColor)} no-repeat ${pxToRemWithUnit(9 - i * 20)}`,
-                },
+      ':host':
+        isCurrentOrUndefined &&
+        Array.from(Array(9)).reduce(
+          (result, _, i) => ({
+            ...result,
+            [`&(:nth-of-type(${i + 1}))`]: {
+              '& $button::after': {
+                background: `${getSvg(svgColor)} no-repeat ${pxToRemWithUnit(9 - i * 20)}`,
               },
-            }),
-            {}
-          ),
-        }),
-      },
+            },
+          }),
+          {} as JssStyle
+        ),
       button: {
         display: 'flex',
         position: 'relative',
