@@ -52,6 +52,13 @@ which internally applies the padding of `p-content-wrapper`.
 
 <Playground :markup="wrapHeading" :config="config"></Playground>
 
+## Sub Heading
+
+If you want to place any additional elements between heading and slider, you can use the `subheading` slot.  
+When combined with `wrapHeading`, the `subheading` also respects the padding of `p-content-wrapper`.
+
+<Playground :markup="subHeading" :config="config"></Playground>
+
 ## Overflow visible
 
 If you want to see the previous and next slide that are naturally outside the component, you can set
@@ -165,6 +172,17 @@ export default class Code extends Vue {
 </p-carousel>`;
 
   wrapHeading = `<p-carousel wrap-heading="true" heading="${this.basicHeading}">
+  ${this.getSlides(3)}
+</p-carousel>`;
+
+  subHeading = `<p-carousel heading="${this.basicHeading}">
+  <p slot="subheading">Some slotted subheading</p>
+  ${this.getSlides(3)}
+</p-carousel>
+
+<p-carousel wrap-heading="true">
+  <h3 slot="heading">Some slotted Heading</h3>
+  <p slot="subheading">Some slotted subheading</p>
   ${this.getSlides(3)}
 </p-carousel>`;
 
