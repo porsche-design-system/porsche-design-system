@@ -29,7 +29,6 @@ type InitOptions = {
 
 const initScroller = async (opts?: InitOptions) => {
   const { amount = 8, isWrapped, otherMarkup = '', tag = 'button', isFocusable = false, scrollToPosition } = opts ?? {};
-  const { scrollPosition, isSmooth = false } = scrollToPosition;
 
   const elementAttributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
   const elements = Array.from(Array(amount))
@@ -37,11 +36,10 @@ const initScroller = async (opts?: InitOptions) => {
     .join('');
 
   const content = `<p-scroller${isFocusable ? ' is-focusable' : ''}${
-    scrollToPosition ? ` scroll-to-position="{ scrollPosition: ${scrollPosition}, isSmooth: ${isSmooth} }"` : ''
+    scrollToPosition ? ` scroll-to-position="{ scrollPosition: ${scrollToPosition.scrollPosition} }"` : ''
   }>
   ${elements}
 </p-scroller>${otherMarkup}`;
-  console.log(content);
 
   await setContentWithDesignSystem(page, isWrapped ? `<div style="width: 200px">${content}</div>` : content);
 };
@@ -82,11 +80,10 @@ const addNewButton = async () => {
 
 describe('scrolling', () => {
   it('should have correct initial scroll position when scrollToPosition is set', async () => {
-    await initScroller({ isWrapped: true, scrollToPosition: { scrollPosition: 50, isSmooth: false } });
+    await initScroller({ isWrapped: true, scrollToPosition: { scrollPosition: 50 } });
 
     const scrollDistance = await getScrollLeft(await getScrollArea());
 
-    await page.waitForTimeout(CSS_ANIMATION_DURATION);
     expect(scrollDistance).toBe(50);
   });
 });
