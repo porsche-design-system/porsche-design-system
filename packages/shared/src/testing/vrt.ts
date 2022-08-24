@@ -9,12 +9,12 @@ export type {
 
 export const defaultViewports = [320, 480, 760, 1000, 1300, 1760] as const;
 export const extendedViewports = [...defaultViewports, 1920, 2560] as const;
-type Viewport = typeof extendedViewports[number];
+export type Viewport = typeof extendedViewports[number];
 
 export const marqueViewports = [1299, 1300] as const;
 type MarqueViewport = typeof marqueViewports[number];
 
-const defaultOptions: VisualRegressionTestOptions = {
+export const defaultOptions: VisualRegressionTestOptions = {
   viewports: defaultViewports as unknown as number[],
   fixturesDir: 'tests/vrt/fixtures',
   resultsDir: 'tests/vrt/results',
@@ -87,7 +87,12 @@ type VRTestOptions = TestOptions & {
   scenario?: (page: Page) => Promise<void>;
 };
 
-export const vrtTest = (vrt: VisualRegressionTester, snapshotId: string, url: string, options?: VRTestOptions) => {
+export const vrtTest = (
+  vrt: VisualRegressionTester,
+  snapshotId: string,
+  url: string,
+  options?: VRTestOptions
+): Promise<boolean> => {
   const { scenario, ...otherOptions } = options || {};
   const { baseUrl } = customOptions ?? defaultOptions;
 
