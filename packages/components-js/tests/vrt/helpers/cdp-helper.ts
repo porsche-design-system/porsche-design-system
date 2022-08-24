@@ -94,16 +94,14 @@ const forceStateOnElements = async (page: Page, selector: string, states: Forced
 export const resolveSelector = (
   selector: string
 ): { hostElementSelector: string; shadowRootNodeName: string; deepShadowRootNodeName: string } => {
-  const [hostElementSelector, shadowRootNodeName, deepShadowRootNodeName] = selector
-    .split('>>>')
-    .map((x) => x.replace(/\.(?!focus|hover)/, '').trim());
+  const [hostElementSelector, shadowRootNodeName, deepShadowRootNodeName] = selector.split('>>>').map((x) => x.trim());
 
-  if (shadowRootNodeName && !shadowRootNodeName.match(/^[a-z-]+(:first-child)?$/)) {
-    throw new Error(`">>> ${shadowRootNodeName}" selector has to be an "Element.localName" in shadow-root`);
-  }
-  if (deepShadowRootNodeName && !deepShadowRootNodeName.match(/^[a-z-]+(:first-child)?$/)) {
-    throw new Error(`">>> ${deepShadowRootNodeName}" selector has to be an "Element.localName" in shadow-root`);
-  }
+  // if (shadowRootNodeName && !shadowRootNodeName.match(/^[a-z-]+(:first-child)?$/)) {
+  //   throw new Error(`">>> ${shadowRootNodeName}" selector has to be an "Element.localName" in shadow-root`);
+  // }
+  // if (deepShadowRootNodeName && !deepShadowRootNodeName.match(/^[a-z-]+(:first-child)?$/)) {
+  //   throw new Error(`">>> ${deepShadowRootNodeName}" selector has to be an "Element.localName" in shadow-root`);
+  // }
 
   return { hostElementSelector, shadowRootNodeName, deepShadowRootNodeName };
 };
