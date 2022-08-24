@@ -1,7 +1,7 @@
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors, pxToRemWithUnit } from '../../../styles';
-import { headingMedium, mediaQueryMin, gridSafeZone } from '@porsche-design-system/utilities-v2';
+import { gridSafeZone, headingMedium, headingSmall, mediaQueryMin } from '@porsche-design-system/utilities-v2';
 import type { JssStyle } from 'jss';
 
 export const bulletActiveClass = 'bullet--active';
@@ -17,8 +17,7 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { baseColor, disabledColor } = getThemedColors(theme);
-  const headingStyles: JssStyle = {
-    ...headingMedium,
+  const headingResetStyles: JssStyle = {
     margin: 0,
     color: baseColor,
   };
@@ -37,11 +36,8 @@ export const getComponentCss = (
           gap: pxToRemWithUnit(62),
         },
       }),
-      // '::slotted(*)': addImportantToEachRule({
-      //   boxSizing: 'border-box',
-      // }),
-      h2: headingStyles,
-      '::slotted([slot=heading])': addImportantToEachRule(headingStyles),
+      'h2,::slotted([slot=heading])': addImportantToEachRule({ ...headingMedium, ...headingResetStyles }),
+      '::slotted([slot=subheading])': addImportantToEachRule({ ...headingSmall, ...headingResetStyles }),
     },
     splide: {
       position: 'relative',

@@ -7,15 +7,15 @@ exports[`getComponentCss() should return correct css for wrapHeading: false, dis
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
 }
-h2 {
-  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  margin: 0;
-  color: #000;
-}
-::slotted([slot=heading]) {
+h2,::slotted([slot=heading]) {
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+::slotted([slot=subheading]) {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
@@ -28,46 +28,46 @@ h2 {
 }
 
 @media(min-width:760px) and (max-width:999px) {
-  h2 {
-    font-size: 1.5rem;
-    line-height: 1.5;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
     line-height: 1.5 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.125rem !important;
+    line-height: 1.5555555556 !important;
   }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
-  h2 {
-    font-size: 1.75rem;
-    line-height: 1.4285714286;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 1.75rem !important;
     line-height: 1.4285714286 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.25rem !important;
+    line-height: 1.4 !important;
   }
 }
 
 @media(min-width:1300px) and (max-width:1759px) {
-  h2 {
-    font-size: 2rem;
-    line-height: 1.375;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 2rem !important;
     line-height: 1.375 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.375rem !important;
+    line-height: 1.4545454545 !important;
   }
 }
 
 @media(min-width:1760px) {
-  h2 {
-    font-size: 2.25rem;
-    line-height: 1.3333333333;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
     line-height: 1.3333333333 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
   }
 }
 
@@ -186,15 +186,15 @@ exports[`getComponentCss() should return correct css for wrapHeading: false, dis
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
 }
-h2 {
-  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  margin: 0;
-  color: #fff;
-}
-::slotted([slot=heading]) {
+h2,::slotted([slot=heading]) {
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #fff !important;
+}
+::slotted([slot=subheading]) {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
@@ -207,46 +207,46 @@ h2 {
 }
 
 @media(min-width:760px) and (max-width:999px) {
-  h2 {
-    font-size: 1.5rem;
-    line-height: 1.5;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
     line-height: 1.5 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.125rem !important;
+    line-height: 1.5555555556 !important;
   }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
-  h2 {
-    font-size: 1.75rem;
-    line-height: 1.4285714286;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 1.75rem !important;
     line-height: 1.4285714286 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.25rem !important;
+    line-height: 1.4 !important;
   }
 }
 
 @media(min-width:1300px) and (max-width:1759px) {
-  h2 {
-    font-size: 2rem;
-    line-height: 1.375;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 2rem !important;
     line-height: 1.375 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.375rem !important;
+    line-height: 1.4545454545 !important;
   }
 }
 
 @media(min-width:1760px) {
-  h2 {
-    font-size: 2.25rem;
-    line-height: 1.3333333333;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
     line-height: 1.3333333333 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
   }
 }
 
@@ -338,15 +338,15 @@ exports[`getComponentCss() should return correct css for wrapHeading: false, dis
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
 }
-h2 {
-  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  margin: 0;
-  color: #000;
-}
-::slotted([slot=heading]) {
+h2,::slotted([slot=heading]) {
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+::slotted([slot=subheading]) {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
@@ -359,46 +359,46 @@ h2 {
 }
 
 @media(min-width:760px) and (max-width:999px) {
-  h2 {
-    font-size: 1.5rem;
-    line-height: 1.5;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
     line-height: 1.5 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.125rem !important;
+    line-height: 1.5555555556 !important;
   }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
-  h2 {
-    font-size: 1.75rem;
-    line-height: 1.4285714286;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 1.75rem !important;
     line-height: 1.4285714286 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.25rem !important;
+    line-height: 1.4 !important;
   }
 }
 
 @media(min-width:1300px) and (max-width:1759px) {
-  h2 {
-    font-size: 2rem;
-    line-height: 1.375;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 2rem !important;
     line-height: 1.375 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.375rem !important;
+    line-height: 1.4545454545 !important;
   }
 }
 
 @media(min-width:1760px) {
-  h2 {
-    font-size: 2.25rem;
-    line-height: 1.3333333333;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
     line-height: 1.3333333333 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
   }
 }
 
@@ -490,15 +490,15 @@ exports[`getComponentCss() should return correct css for wrapHeading: false, dis
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
 }
-h2 {
-  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  margin: 0;
-  color: #000;
-}
-::slotted([slot=heading]) {
+h2,::slotted([slot=heading]) {
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+::slotted([slot=subheading]) {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
@@ -511,46 +511,46 @@ h2 {
 }
 
 @media(min-width:760px) and (max-width:999px) {
-  h2 {
-    font-size: 1.5rem;
-    line-height: 1.5;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
     line-height: 1.5 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.125rem !important;
+    line-height: 1.5555555556 !important;
   }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
-  h2 {
-    font-size: 1.75rem;
-    line-height: 1.4285714286;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 1.75rem !important;
     line-height: 1.4285714286 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.25rem !important;
+    line-height: 1.4 !important;
   }
 }
 
 @media(min-width:1300px) and (max-width:1759px) {
-  h2 {
-    font-size: 2rem;
-    line-height: 1.375;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 2rem !important;
     line-height: 1.375 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.375rem !important;
+    line-height: 1.4545454545 !important;
   }
 }
 
 @media(min-width:1760px) {
-  h2 {
-    font-size: 2.25rem;
-    line-height: 1.3333333333;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
     line-height: 1.3333333333 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
   }
 }
 
@@ -627,15 +627,15 @@ exports[`getComponentCss() should return correct css for wrapHeading: true, disa
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
 }
-h2 {
-  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  margin: 0;
-  color: #000;
-}
-::slotted([slot=heading]) {
+h2,::slotted([slot=heading]) {
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+::slotted([slot=subheading]) {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
@@ -648,46 +648,46 @@ h2 {
 }
 
 @media(min-width:760px) and (max-width:999px) {
-  h2 {
-    font-size: 1.5rem;
-    line-height: 1.5;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
     line-height: 1.5 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.125rem !important;
+    line-height: 1.5555555556 !important;
   }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
-  h2 {
-    font-size: 1.75rem;
-    line-height: 1.4285714286;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 1.75rem !important;
     line-height: 1.4285714286 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.25rem !important;
+    line-height: 1.4 !important;
   }
 }
 
 @media(min-width:1300px) and (max-width:1759px) {
-  h2 {
-    font-size: 2rem;
-    line-height: 1.375;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 2rem !important;
     line-height: 1.375 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.375rem !important;
+    line-height: 1.4545454545 !important;
   }
 }
 
 @media(min-width:1760px) {
-  h2 {
-    font-size: 2.25rem;
-    line-height: 1.3333333333;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
     line-height: 1.3333333333 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
   }
 }
 
@@ -786,15 +786,15 @@ exports[`getComponentCss() should return correct css for wrapHeading: true, disa
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
 }
-h2 {
-  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  margin: 0;
-  color: #000;
-}
-::slotted([slot=heading]) {
+h2,::slotted([slot=heading]) {
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+::slotted([slot=subheading]) {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
@@ -807,46 +807,46 @@ h2 {
 }
 
 @media(min-width:760px) and (max-width:999px) {
-  h2 {
-    font-size: 1.5rem;
-    line-height: 1.5;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
     line-height: 1.5 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.125rem !important;
+    line-height: 1.5555555556 !important;
   }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
-  h2 {
-    font-size: 1.75rem;
-    line-height: 1.4285714286;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 1.75rem !important;
     line-height: 1.4285714286 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.25rem !important;
+    line-height: 1.4 !important;
   }
 }
 
 @media(min-width:1300px) and (max-width:1759px) {
-  h2 {
-    font-size: 2rem;
-    line-height: 1.375;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 2rem !important;
     line-height: 1.375 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.375rem !important;
+    line-height: 1.4545454545 !important;
   }
 }
 
 @media(min-width:1760px) {
-  h2 {
-    font-size: 2.25rem;
-    line-height: 1.3333333333;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
     line-height: 1.3333333333 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
   }
 }
 
@@ -930,15 +930,15 @@ exports[`getComponentCss() should return correct css for wrapHeading: true, disa
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
 }
-h2 {
-  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  margin: 0;
-  color: #000;
-}
-::slotted([slot=heading]) {
+h2,::slotted([slot=heading]) {
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-size-adjust: none !important;
+  -webkit-text-size-adjust: none !important;
+  margin: 0 !important;
+  color: #000 !important;
+}
+::slotted([slot=subheading]) {
+  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   margin: 0 !important;
@@ -951,46 +951,46 @@ h2 {
 }
 
 @media(min-width:760px) and (max-width:999px) {
-  h2 {
-    font-size: 1.5rem;
-    line-height: 1.5;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
     line-height: 1.5 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.125rem !important;
+    line-height: 1.5555555556 !important;
   }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
-  h2 {
-    font-size: 1.75rem;
-    line-height: 1.4285714286;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 1.75rem !important;
     line-height: 1.4285714286 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.25rem !important;
+    line-height: 1.4 !important;
   }
 }
 
 @media(min-width:1300px) and (max-width:1759px) {
-  h2 {
-    font-size: 2rem;
-    line-height: 1.375;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 2rem !important;
     line-height: 1.375 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.375rem !important;
+    line-height: 1.4545454545 !important;
   }
 }
 
 @media(min-width:1760px) {
-  h2 {
-    font-size: 2.25rem;
-    line-height: 1.3333333333;
-  }
-  ::slotted([slot=heading]) {
+  h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
     line-height: 1.3333333333 !important;
+  }
+  ::slotted([slot=subheading]) {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
   }
 }
 

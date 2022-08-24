@@ -134,14 +134,15 @@ describe('getSlides()', () => {
     expect(getSlides(host)).toEqual(children);
   });
 
-  it('should not return parameters children with slot="heading"', () => {
+  it('should not return parameters children with slot="heading" or slot="subheading"', () => {
     const host = document.createElement('p-carousel');
 
     const [child1, child2, child3] = getChildren();
     child2.slot = 'heading';
+    child3.slot = 'subheading';
 
     host.append(child1, child2, child3);
-    expect(getSlides(host)).toEqual([child1, child3]);
+    expect(getSlides(host)).toEqual([child1]);
   });
 
   it('should add incremental slot="slide-x" attribute on each child', () => {

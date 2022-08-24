@@ -194,6 +194,8 @@ export class Carousel {
             ref={(ref) => (this.btnNext = ref)}
             onClick={() => slideNext(this.splide, this.amountOfPages)}
           />
+
+          <slot name="subheading" />
         </div>
 
         <div id="splide" class="splide" ref={(ref) => (this.container = ref)}>
