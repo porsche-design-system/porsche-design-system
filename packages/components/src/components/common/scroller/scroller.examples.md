@@ -67,10 +67,9 @@ The background and gradient has to align to your chosen background.
 
 ## Scroll API
 
-The `p-scroller` component provides the `scrollToPosition` property. This operates as a scroll API and can be used to
-set the initial scroll position or enable `onClick` scrolling.
+The `p-scroller` component provides the `scrollToPosition` property. It accepts
+`{ scrollPosition: number, isSmooth?: boolean }`.
 
-`scrollToPosition` accepts `{ scrollPosition: number, isSmooth?: boolean }`.  
 If `scrollToPosition` is set with `isSmooth: true` the scrolling is animated.  
 `scrollToPosition` has to be accessed as property and can´t be set as attribute onto the `p-scroller` component.
 
