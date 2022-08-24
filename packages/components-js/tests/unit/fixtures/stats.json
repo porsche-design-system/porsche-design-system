@@ -21,8 +21,8 @@
   },
   {
     "chunkShortName": "carousel",
-    "size": 37077,
-    "gzipSize": 15164
+    "size": 37621,
+    "gzipSize": 15274
   },
   {
     "chunkShortName": "checkbox-wrapper",
@@ -41,8 +41,8 @@
   },
   {
     "chunkShortName": "fieldset-wrapper",
-    "size": 3281,
-    "gzipSize": 1452
+    "size": 3346,
+    "gzipSize": 1462
   },
   {
     "chunkShortName": "flex",
@@ -56,8 +56,8 @@
   },
   {
     "chunkShortName": "headline",
-    "size": 7407,
-    "gzipSize": 2880
+    "size": 7472,
+    "gzipSize": 2886
   },
   {
     "chunkShortName": "icon",
@@ -82,7 +82,7 @@
   {
     "chunkShortName": "main",
     "size": 63694,
-    "gzipSize": 21732
+    "gzipSize": 21740
   },
   {
     "chunkShortName": "marque",
