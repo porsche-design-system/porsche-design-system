@@ -33,25 +33,40 @@ const getSplideTrack = () => selectNode(page, 'p-carousel >>> .splide__track');
 const getSlide1 = () => selectNode(page, 'p-carousel >>> #splide-slide01');
 const getSlide2 = () => selectNode(page, 'p-carousel >>> #splide-slide02');
 const getSlide3 = () => selectNode(page, 'p-carousel >>> #splide-slide03');
+const getPrevButtonPure = () => selectNode(page, 'p-carousel >>> p-button-pure:first-of-type');
+const getNextButtonPure = () => selectNode(page, 'p-carousel >>> p-button-pure:last-of-type');
 const getPrevButton = () => selectNode(page, 'p-carousel >>> p-button-pure:first-of-type >>> button');
 const getNextButton = () => selectNode(page, 'p-carousel >>> p-button-pure:last-of-type >>> button');
 const getPagination = () => selectNode(page, 'p-carousel >>> .pagination');
 
+xit('should move slides on prev/next button click', async () => {});
+
 xit('should update pagination on prev/next button click', async () => {});
+
+xit('should have working pagination and prev/next buttons after reconnect', async () => {});
 
 xdescribe('adding/removing slides', () => {
   it('should update pagination', async () => {});
+
   it('should update aria-labels of prev/next buttons', async () => {});
 });
 
 xdescribe('viewport change', () => {
   it('should update visible amount of slides for BreakpointCustomizable slidesPerPage', async () => {});
+
+  it('should update pagination for BreakpointCustomizable slidesPerPage', async () => {});
 });
 
-xdescribe('focus behavior', () => {});
+xdescribe('focus behavior', () => {
+  it('should disable focusing for invisible slides initially', async () => {});
+
+  it('should disable focusing for invisible slides after sliding', async () => {});
+});
 
 describe('events', () => {
   beforeEach(async () => await initAddEventListener(page));
+
+  it('should not emit carouselChange event initially', async () => {});
 
   it('should emit carouselChange event on slide change', async () => {
     await initCarousel();
@@ -102,6 +117,8 @@ describe('lifecycle', () => {
 });
 
 describe('accessibility', () => {
+  it('should update prev/next buttons aria-labels on slide change', async () => {});
+
   it('should expose correct initial accessibility tree and aria properties', async () => {
     await initCarousel();
     const buttonPrev = await getPrevButton();
