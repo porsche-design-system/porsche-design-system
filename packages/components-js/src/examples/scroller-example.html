@@ -15,17 +15,17 @@
 
   const scrollToStart = document.querySelector('#start');
   scrollToStart.addEventListener('click', () => {
-    scroller.setAttribute('scroll-to-position', '{scrollPosition: 0, isSmooth: true}');
+    scroller.scrollToPosition = { scrollPosition: 0, isSmooth: true };
   });
 
   const scrollToMiddle = document.querySelector('#middle');
   scrollToMiddle.addEventListener('click', () => {
-    scroller.setAttribute('scroll-to-position', '{scrollPosition: 290, isSmooth: true}');
+    scroller.scrollToPosition = { scrollPosition: 290, isSmooth: true };
   });
 
   const scrollToEnd = document.querySelector('#end');
   scrollToEnd.addEventListener('click', () => {
-    scroller.setAttribute('scroll-to-position', '{scrollPosition: 900, isSmooth: true}');
+    scroller.scrollToPosition = { scrollPosition: 900, isSmooth: true };
   });
 </script>
 
