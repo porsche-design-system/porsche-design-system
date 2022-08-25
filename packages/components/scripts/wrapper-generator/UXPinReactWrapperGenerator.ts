@@ -1,8 +1,10 @@
-import type { TagName } from '@porsche-design-system/shared';
+import { getComponentMeta, TagName } from '@porsche-design-system/shared';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import { ExtendedProp } from './DataStructureBuilder';
 import type { AdditionalFile, SkeletonProps } from './AbstractWrapperGenerator';
 import { paramCase, pascalCase } from 'change-case';
+
+type FormComponentName = 'Checkbox' | 'RadioButton' | 'Select' | 'TextField' | 'Textarea';
 
 const addNestedIndentation = (x: string): string => `  ${x}`;
 
@@ -428,6 +430,8 @@ export default (
       }
     );
 
+    const formComponentPresetFiles = generateAllFormComponentPresets();
+
     const componentsBasePath = 'src/lib/components/';
     const componentPaths = this.relevantComponentTagNames
       .map((component) => {
@@ -466,7 +470,65 @@ export default (
 
     return [
       ...componentPresetFiles,
+      ...formComponentPresetFiles,
       { name: 'uxpin.config.js', relativePath: '../../..', content: uxPinConfigContent },
     ];
+  }
+}
+
+
+function generateAllFormComponentPresets() {
+  const formComponentsSetUp = new Map<FormComponentName, TagName>([
+    ['Checkbox', 'p-checkbox-wrapper'],
+    ['RadioButton', 'p-radio-button-wrapper'],
+    ['Select', 'p-select-wrapper'],
+    ['TextField', 'p-text-field-wrapper'],
+    ['Textarea', 'p-textarea-wrapper'],
+  ]);
+
+  return Array.from(formComponentsSetUp).map(([formComponentName, wrapperTagName]) => {
+    return generateSingleFormComponentPreset(wrapperTagName, formComponentName);
+  });
+}
+
+function generateSingleFormComponentPreset(wrapperComponent: TagName, combinedFormComponent: FormComponentName) {
+  const { props } = getComponentMeta(wrapperComponent);
+
+  const uxpId = combinedFormComponent.toLocaleLowerCase();
+
+  const defaultProps =
+    props?.map((prop) => {
+      const key = Object.keys(prop)[0];
+      const value = Object.values(prop)[0];
+      return [key, value];
+    }) || [];
+
+  const stringifiedProps = [['uxpId', uxpId], ...defaultProps]
+    .map(([key, value]) => `${key}=${wrapAttributeWithDelimiter(value)}`)
+    .join(' ');
+
+  const content = `import { ${combinedFormComponent} } from '../${combinedFormComponent}';
+  
+export default <${combinedFormComponent} ${stringifiedProps} />;  
+`;
+
+  const presetsFile: AdditionalFile = {
+    name: '0-default.jsx',
+    relativePath: '../../form/' + combinedFormComponent + '/presets',
+    content,
+  };
+
+  return presetsFile;
+}
+
+function wrapAttributeWithDelimiter(attribute: string | number | boolean) {
+  if (!isNaN(Number(attribute))) return '{' + attribute + '}';
+  switch (attribute) {
+    case true:
+    case false:
+    case null:
+      return '{' + attribute + '}';
+    default:
+      return `"` + attribute + `"`;
   }
 }
