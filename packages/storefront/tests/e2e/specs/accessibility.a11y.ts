@@ -95,7 +95,7 @@ it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
 
       // TODO: a11yAnalyze is temporarily disabled due to https://github.com/porscheui/porsche-design-system/issues/2019. Enable when fixed!
       // await a11yAnalyze(page, 'dark');
-      await cycleFrameworkTabs('dark');
+      // await cycleFrameworkTabs('dark');
     }
   }
 );
