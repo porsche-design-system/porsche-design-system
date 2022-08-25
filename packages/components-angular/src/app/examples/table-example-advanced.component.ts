@@ -9,7 +9,11 @@ import { dataAdvanced, DataAdvanced, headAdvanced } from '@porsche-design-system
       <p-headline slot="caption" variant="headline-3">Some visual caption</p-headline>
       <p-table-head>
         <p-table-head-row>
-          <p-table-head-cell *ngFor="let item of head" [sort]="item" [hideLabel]="item.hideLabel">
+          <p-table-head-cell
+            *ngFor="let item of head"
+            [sort]="{ id: item.id, direction: item.direction, active: item.active }"
+            [hideLabel]="item.hideLabel"
+          >
             {{ item.name }}
           </p-table-head-cell>
         </p-table-head-row>
