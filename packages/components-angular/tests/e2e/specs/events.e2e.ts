@@ -192,4 +192,20 @@ describe('accordion', () => {
   });
 });
 
-xdescribe('carousel', () => {});
+describe('carousel', () => {
+  it('should emit events once', async () => {
+    await goto(page, 'events');
+
+    const prevButton = await selectNode(page, 'p-carousel >>> p-button-pure');
+    const carouselChangeEventCounter = await selectNode(page, 'p-carousel + p');
+
+    await clickElement(prevButton);
+    expect(await getCounterValue(carouselChangeEventCounter)).toBe('1');
+
+    await clickElement(prevButton);
+    expect(await getCounterValue(carouselChangeEventCounter)).toBe('2');
+
+    await clickElement(prevButton);
+    expect(await getCounterValue(carouselChangeEventCounter)).toBe('3');
+  });
+});
