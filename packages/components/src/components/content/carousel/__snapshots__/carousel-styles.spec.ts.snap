@@ -18,8 +18,9 @@ h2,::slotted([slot=heading]) {
   font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
-  margin: 0 !important;
+  margin: 0.5rem 0 0 !important;
   color: #000 !important;
+  grid-column: 1 !important;
 }
 @media(min-width:760px) {
   :host {
@@ -118,11 +119,6 @@ h2,::slotted([slot=heading]) {
 }
 .btn {
   visibility: hidden;
-  height: 0;
-  padding: 0.5rem;
-}
-.btn:first-of-type {
-  grid-column: 2;
 }
 .pagination {
   display: none;
@@ -153,7 +149,7 @@ h2,::slotted([slot=heading]) {
   }
   .btn {
     visibility: visible;
-    height: auto;
+    padding: 0.5rem;
   }
   .pagination {
     display: none;
@@ -198,8 +194,9 @@ h2,::slotted([slot=heading]) {
   font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
-  margin: 0 !important;
+  margin: 0.5rem 0 0 !important;
   color: #fff !important;
+  grid-column: 1 !important;
 }
 @media(min-width:760px) {
   :host {
@@ -298,11 +295,6 @@ h2,::slotted([slot=heading]) {
 }
 .btn {
   visibility: hidden;
-  height: 0;
-  padding: 0.5rem;
-}
-.btn:first-of-type {
-  grid-column: 2;
 }
 .pagination {
   display: grid;
@@ -327,7 +319,7 @@ h2,::slotted([slot=heading]) {
   }
   .btn {
     visibility: visible;
-    height: auto;
+    padding: 0.5rem;
   }
 }
 "
@@ -351,8 +343,9 @@ h2,::slotted([slot=heading]) {
   font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
-  margin: 0 !important;
+  margin: 0.5rem 0 0 !important;
   color: #000 !important;
+  grid-column: 1 !important;
 }
 @media(min-width:760px) {
   :host {
@@ -451,11 +444,6 @@ h2,::slotted([slot=heading]) {
 }
 .btn {
   visibility: hidden;
-  height: 0;
-  padding: 0.5rem;
-}
-.btn:first-of-type {
-  grid-column: 2;
 }
 .pagination {
   display: grid;
@@ -480,7 +468,7 @@ h2,::slotted([slot=heading]) {
   }
   .btn {
     visibility: visible;
-    height: auto;
+    padding: 0.5rem;
   }
 }
 "
@@ -504,8 +492,9 @@ h2,::slotted([slot=heading]) {
   font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
-  margin: 0 !important;
+  margin: 0.5rem 0 0 !important;
   color: #000 !important;
+  grid-column: 1 !important;
 }
 @media(min-width:760px) {
   :host {
@@ -604,11 +593,6 @@ h2,::slotted([slot=heading]) {
 }
 .btn {
   visibility: hidden;
-  height: 0;
-  padding: 0.5rem;
-}
-.btn:first-of-type {
-  grid-column: 2;
 }
 @media(min-width:760px) {
   .header {
@@ -618,7 +602,7 @@ h2,::slotted([slot=heading]) {
   }
   .btn {
     visibility: visible;
-    height: auto;
+    padding: 0.5rem;
   }
 }
 "
@@ -642,8 +626,9 @@ h2,::slotted([slot=heading]) {
   font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
-  margin: 0 !important;
+  margin: 0.5rem 0 0 !important;
   color: #000 !important;
+  grid-column: 1 !important;
 }
 @media(min-width:760px) {
   :host {
@@ -743,11 +728,6 @@ h2,::slotted([slot=heading]) {
 }
 .btn {
   visibility: hidden;
-  height: 0;
-  padding: 0.5rem;
-}
-.btn:first-of-type {
-  grid-column: 2;
 }
 .pagination {
   display: grid;
@@ -772,7 +752,7 @@ h2,::slotted([slot=heading]) {
   }
   .btn {
     visibility: visible;
-    height: auto;
+    padding: 0.5rem;
   }
 }
 
@@ -802,8 +782,9 @@ h2,::slotted([slot=heading]) {
   font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
-  margin: 0 !important;
+  margin: 0.5rem 0 0 !important;
   color: #000 !important;
+  grid-column: 1 !important;
 }
 @media(min-width:760px) {
   :host {
@@ -903,11 +884,6 @@ h2,::slotted([slot=heading]) {
 }
 .btn {
   visibility: hidden;
-  height: 0;
-  padding: 0.5rem;
-}
-.btn:first-of-type {
-  grid-column: 2;
 }
 @media(min-width:760px) {
   .header {
@@ -917,7 +893,7 @@ h2,::slotted([slot=heading]) {
   }
   .btn {
     visibility: visible;
-    height: auto;
+    padding: 0.5rem;
   }
 }
 
@@ -947,8 +923,9 @@ h2,::slotted([slot=heading]) {
   font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
-  margin: 0 !important;
+  margin: 0.5rem 0 0 !important;
   color: #000 !important;
+  grid-column: 1 !important;
 }
 @media(min-width:760px) {
   :host {
@@ -1047,11 +1024,6 @@ h2,::slotted([slot=heading]) {
 }
 .btn {
   visibility: hidden;
-  height: 0;
-  padding: 0.5rem;
-}
-.btn:first-of-type {
-  grid-column: 2;
 }
 @media(min-width:760px) {
   .header {
@@ -1061,7 +1033,7 @@ h2,::slotted([slot=heading]) {
   }
   .btn {
     visibility: visible;
-    height: auto;
+    padding: 0.5rem;
   }
 }
 
