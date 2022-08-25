@@ -13,20 +13,20 @@
 
 <div class="playground light" title="should render scroller">
   <p-scroller>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
+    <button>Default Light</button>
+    <button>Default Light</button>
+    <button>Default Light</button>
+    <button>Default Light</button>
+    <button>Default Light</button>
+    <button>Default Light</button>
+    <button>Default Light</button>
+    <button>Default Light</button>
+    <button>Default Light</button>
+    <button>Default Light</button>
+    <button>Default Light</button>
+    <button>Default Light</button>
+    <button>Default Light</button>
+    <button>Default Light</button>
   </p-scroller>
   <p-scroller>
     <a href="#">Some link</a>
@@ -64,20 +64,20 @@
 
 <div class="playground dark" title="should render scroller on dark theme">
   <p-scroller theme="dark">
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
-    <button>Button</button>
+    <button>Default dark</button>
+    <button>Default dark</button>
+    <button>Default dark</button>
+    <button>Default dark</button>
+    <button>Default dark</button>
+    <button>Default dark</button>
+    <button>Default dark</button>
+    <button>Default dark</button>
+    <button>Default dark</button>
+    <button>Default dark</button>
+    <button>Default dark</button>
+    <button>Default dark</button>
+    <button>Default dark</button>
+    <button>Default dark</button>
   </p-scroller>
 </div>
 
@@ -147,13 +147,13 @@
 
 <div class="playground light" title="should render scroller with scroll indicator size according to fontsize large">
   <p-scroller style="font-size: large">
-    <a href="#">Medium font</a>
-    <a href="#">Medium font</a>
-    <a href="#">Medium font</a>
-    <a href="#">Medium font</a>
-    <a href="#">Medium font</a>
-    <a href="#">Medium font</a>
-    <a href="#">Medium font</a>
+    <a href="#">Large font</a>
+    <a href="#">Large font</a>
+    <a href="#">Large font</a>
+    <a href="#">Large font</a>
+    <a href="#">Large font</a>
+    <a href="#">Large font</a>
+    <a href="#">Large font</a>
   </p-scroller>
 </div>
 
@@ -184,10 +184,18 @@
   </p-scroller>
 </div>
 
-<div class="playground light" title="should render scroller only on screen size too small to show 8 buttons">
+<div class="playground light" title="should render scroller items with linebreaks">
   <p-scroller style="white-space: normal">
     <button>Button text that breaks line</button>
     <button>Button text that breaks line</button>
     <button>Button text that breaks line</button>
+  </p-scroller>
+</div>
+
+<div class="playground light" title="should render scroller with scroll position 290px">
+  <p-scroller class="scroller" scroll-to-position="{scrollPosition: 290}">
+    <span>Start</span>
+    <span>Middle</span>
+    <span>End</span>
   </p-scroller>
 </div>

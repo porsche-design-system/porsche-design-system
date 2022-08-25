@@ -21,20 +21,20 @@ export const ScrollerPage = (): JSX.Element => {
 
       <div className="playground light" title="should render scroller">
         <PScroller>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
+          <button>Default Light</button>
+          <button>Default Light</button>
+          <button>Default Light</button>
+          <button>Default Light</button>
+          <button>Default Light</button>
+          <button>Default Light</button>
+          <button>Default Light</button>
+          <button>Default Light</button>
+          <button>Default Light</button>
+          <button>Default Light</button>
+          <button>Default Light</button>
+          <button>Default Light</button>
+          <button>Default Light</button>
+          <button>Default Light</button>
         </PScroller>
         <PScroller>
           <a href="#">Some link</a>
@@ -72,20 +72,20 @@ export const ScrollerPage = (): JSX.Element => {
 
       <div className="playground dark" title="should render scroller on dark theme">
         <PScroller theme="dark">
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
+          <button>Default dark</button>
+          <button>Default dark</button>
+          <button>Default dark</button>
+          <button>Default dark</button>
+          <button>Default dark</button>
+          <button>Default dark</button>
+          <button>Default dark</button>
+          <button>Default dark</button>
+          <button>Default dark</button>
+          <button>Default dark</button>
+          <button>Default dark</button>
+          <button>Default dark</button>
+          <button>Default dark</button>
+          <button>Default dark</button>
         </PScroller>
       </div>
 
@@ -155,13 +155,13 @@ export const ScrollerPage = (): JSX.Element => {
 
       <div className="playground light" title="should render scroller with scroll indicator size according to fontsize large">
         <PScroller style={{ fontSize: 'large' }}>
-          <a href="#">Medium font</a>
-          <a href="#">Medium font</a>
-          <a href="#">Medium font</a>
-          <a href="#">Medium font</a>
-          <a href="#">Medium font</a>
-          <a href="#">Medium font</a>
-          <a href="#">Medium font</a>
+          <a href="#">Large font</a>
+          <a href="#">Large font</a>
+          <a href="#">Large font</a>
+          <a href="#">Large font</a>
+          <a href="#">Large font</a>
+          <a href="#">Large font</a>
+          <a href="#">Large font</a>
         </PScroller>
       </div>
 
@@ -192,11 +192,19 @@ export const ScrollerPage = (): JSX.Element => {
         </PScroller>
       </div>
 
-      <div className="playground light" title="should render scroller only on screen size too small to show 8 buttons">
+      <div className="playground light" title="should render scroller items with linebreaks">
         <PScroller style={{ whiteSpace: 'normal' }}>
           <button>Button text that breaks line</button>
           <button>Button text that breaks line</button>
           <button>Button text that breaks line</button>
+        </PScroller>
+      </div>
+
+      <div className="playground light" title="should render scroller with scroll position 290px">
+        <PScroller className="scroller" scrollToPosition={{scrollPosition: 290}}>
+          <span>Start</span>
+          <span>Middle</span>
+          <span>End</span>
         </PScroller>
       </div>
     </>
