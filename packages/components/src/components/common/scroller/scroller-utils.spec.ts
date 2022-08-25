@@ -36,12 +36,12 @@ describe('getScrollerElements()', () => {
 });
 
 describe('isScrollable()', () => {
-  it.each<Parameters<typeof isScrollable>>([
-    [true, true],
-    [false, false],
-    [false, true],
-    [true, false],
-  ])('should return correct value for isPrevHidden: %s, isNextHidden: %s', (...args) => {
-    expect(isScrollable(...args)).toMatchSnapshot();
+  it.each<[{ isPrevHidden: boolean; isNextHidden: boolean }, boolean]>([
+    [{ isPrevHidden: true, isNextHidden: true }, false],
+    [{ isPrevHidden: false, isNextHidden: false }, true],
+    [{ isPrevHidden: false, isNextHidden: true }, true],
+    [{ isPrevHidden: true, isNextHidden: false }, true],
+  ])('should return for %o %s', ({ isPrevHidden, isNextHidden }, expected) => {
+    expect(isScrollable(isPrevHidden, isNextHidden)).toBe(expected);
   });
 });

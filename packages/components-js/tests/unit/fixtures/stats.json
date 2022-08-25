@@ -11,13 +11,13 @@
   },
   {
     "chunkShortName": "button",
-    "size": 7582,
-    "gzipSize": 2938
+    "size": 7613,
+    "gzipSize": 2945
   },
   {
     "chunkShortName": "button-pure",
-    "size": 8763,
-    "gzipSize": 3648
+    "size": 8792,
+    "gzipSize": 3655
   },
   {
     "chunkShortName": "checkbox-wrapper",
@@ -76,8 +76,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 62658,
-    "gzipSize": 21378
+    "size": 62678,
+    "gzipSize": 21385
   },
   {
     "chunkShortName": "marque",
@@ -106,8 +106,8 @@
   },
   {
     "chunkShortName": "scroller",
-    "size": 5297,
-    "gzipSize": 2186
+    "size": 5467,
+    "gzipSize": 2214
   },
   {
     "chunkShortName": "segmented-control",
@@ -131,8 +131,8 @@
   },
   {
     "chunkShortName": "switch",
-    "size": 4951,
-    "gzipSize": 2027
+    "size": 4980,
+    "gzipSize": 2043
   },
   {
     "chunkShortName": "table",
