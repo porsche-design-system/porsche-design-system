@@ -65,17 +65,19 @@ The background and gradient has to align to your chosen background.
   </select>
 </Playground>
 
-## Scroll API
+## Scroll to position
 
 The `p-scroller` component provides the `scrollToPosition` property. It accepts
 `{ scrollPosition: number, isSmooth?: boolean }`.
 
-If `scrollToPosition` is set with `isSmooth: true` the scrolling is animated.  
-`scrollToPosition` has to be accessed as property and can´t be set as attribute onto the `p-scroller` component.
+If `scrollToPosition` is set with `isSmooth: true` the scrolling is animated.
+
+<Playground :frameworkMarkup="codeExample" :config="config" :markup="frameworkExample"></Playground>
 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { getScrollerCodeSamples } from '@porsche-design-system/shared';
   
 @Component
 export default class Code extends Vue {
@@ -83,6 +85,8 @@ export default class Code extends Vue {
 
   gradientColorScheme = 'surface';
   scrollIndicatorPosition = 'top';
+
+  codeExample = getScrollerCodeSamples();
 
   basicTagMarkup = `<div style="max-width: 600px">
   <p-scroller>
@@ -180,8 +184,55 @@ export default class Code extends Vue {
   </p-scroller>
 </div>`;
   }
+
+  frameworkExample = `<p-button id="start">Scroll to start</p-button>
+<p-button id="middle">Scroll to middle</p-button>
+<p-button id="end">Scroll to end</p-button>
+
+<div style="max-width: 600px">
+  <p-scroller class="scroller" scroll-to-position="{scrollPosition: 290}">
+    <span>Start</span>
+    <span>Middle</span>
+    <span>End</span>
+  </p-scroller>
+</div>
+`
+ 
+  mounted() {
+    /* initially update accordion with open attribute in playground */
+    this.registerEvents();
   
+    /* theme switch needs to register event listeners again */
+    const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');
+    themeTabs.forEach(tab => tab.addEventListener('tabChange', () => {
+      this.registerEvents();
+    }));
+  }
+  
+  updated(){
+    this.registerEvents();
+  }
+  
+  registerEvents() {
+    const scroller = document.querySelector('.scroller');
+
+    const scrollToStart = document.querySelector('#start');
+    scrollToStart.addEventListener('click', () => {
+      scroller.scrollToPosition = {scrollPosition: 0, isSmooth: true};
+    });
+  
+    const scrollToMiddle = document.querySelector('#middle');
+    scrollToMiddle.addEventListener('click',  () => {
+      scroller.scrollToPosition = {scrollPosition: 290, isSmooth: true};
+    });
+  
+    const scrollToEnd = document.querySelector('#end');
+    scrollToEnd.addEventListener('click',  () => {
+      scroller.scrollToPosition = {scrollPosition: 900, isSmooth: true};
+    });
+  }
 }
+
 </script>
 
 <style lang="scss">
@@ -192,5 +243,17 @@ export default class Code extends Vue {
   }
   p-scroller > span {
     border: 1px solid deeppink;
+  }
+
+  .scroller > span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 300px;
+  }
+
+  .demo > p-button {
+    margin: 0 1rem 1rem 0;
   }
 </style>
