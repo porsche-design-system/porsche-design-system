@@ -3,7 +3,7 @@
 <p-button id="end">Scroll to end</p-button>
 
 <div style="max-width: 600px">
-  <p-scroller scroll-to-position="{scrollPosition: 290}">
+  <p-scroller class="scroller" scroll-to-position="{scrollPosition: 290}">
     <span>Start</span>
     <span>Middle</span>
     <span>End</span>
@@ -11,26 +11,26 @@
 </div>
 
 <script>
-  const scroller = document.querySelector('p-scroller');
+  const scroller = document.querySelector('.scroller');
 
-  const scrollToStart = document.querySelector('p-button');
-  scrollToStart.addEventListener('click', function () {
+  const scrollToStart = document.querySelector('#start');
+  scrollToStart.addEventListener('click', () => {
     scroller.setAttribute('scroll-to-position', '{scrollPosition: 0, isSmooth: true}');
   });
 
   const scrollToMiddle = document.querySelector('#middle');
-  scrollToMiddle.addEventListener('click', function () {
+  scrollToMiddle.addEventListener('click', () => {
     scroller.setAttribute('scroll-to-position', '{scrollPosition: 290, isSmooth: true}');
   });
 
   const scrollToEnd = document.querySelector('#end');
-  scrollToEnd.addEventListener('click', function () {
+  scrollToEnd.addEventListener('click', () => {
     scroller.setAttribute('scroll-to-position', '{scrollPosition: 900, isSmooth: true}');
   });
 </script>
 
 <style>
-  p-scroller > span {
+  .scroller > span {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,7 +39,7 @@
     border: 1px solid deeppink;
   }
 
-  p-scroller > span:not(:last-child) {
+  .scroller > span:not(:last-child) {
     margin-right: 1rem;
   }
 
