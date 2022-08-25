@@ -6,6 +6,14 @@ import { paramCase, pascalCase } from 'change-case';
 
 type FormComponentName = 'Checkbox' | 'RadioButton' | 'Select' | 'TextField' | 'Textarea';
 
+type ExtraProps = { [key: string]: number | string | boolean | string[] };
+
+type FormSetupItem = {
+  formComponentName: FormComponentName;
+  tagName: TagName;
+  extraProps: ExtraProps;
+};
+
 const addNestedIndentation = (x: string): string => `  ${x}`;
 
 export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
@@ -476,53 +484,80 @@ export default (
   }
 }
 
+const formComponentSetup: FormSetupItem[] = [
+  {
+    formComponentName: 'Checkbox',
+    tagName: 'p-checkbox-wrapper',
+    extraProps: { label: 'My Checkbox', checked: true },
+  },
+  {
+    formComponentName: 'RadioButton',
+    tagName: 'p-radio-button-wrapper',
+    extraProps: { label: 'My RadioButton', checked: true },
+  },
+  {
+    formComponentName: 'Select',
+    tagName: 'p-select-wrapper',
+    extraProps: { label: 'My Select', options: ['Option 1', 'Option 2', 'Option 3'] },
+  },
+  {
+    formComponentName: 'TextField',
+    tagName: 'p-text-field-wrapper',
+    extraProps: { label: 'My TextField' },
+  },
+  {
+    formComponentName: 'Textarea',
+    tagName: 'p-textarea-wrapper',
+    extraProps: { label: 'My Textarea' },
+  },
+];
 
 function generateAllFormComponentPresets() {
-  const formComponentsSetUp = new Map<FormComponentName, TagName>([
-    ['Checkbox', 'p-checkbox-wrapper'],
-    ['RadioButton', 'p-radio-button-wrapper'],
-    ['Select', 'p-select-wrapper'],
-    ['TextField', 'p-text-field-wrapper'],
-    ['Textarea', 'p-textarea-wrapper'],
-  ]);
-
-  return Array.from(formComponentsSetUp).map(([formComponentName, wrapperTagName]) => {
-    return generateSingleFormComponentPreset(wrapperTagName, formComponentName);
+  return formComponentSetup.map(({ formComponentName, tagName, extraProps }) => {
+    return generateSingleFormComponentPreset(formComponentName, tagName, extraProps);
   });
 }
 
-function generateSingleFormComponentPreset(wrapperComponent: TagName, combinedFormComponent: FormComponentName) {
-  const { props } = getComponentMeta(wrapperComponent);
+function generateSingleFormComponentPreset(
+  formComponentName: FormComponentName,
+  tagName: TagName,
+  extraProps: ExtraProps
+) {
+  const { props: propsAsArray } = getComponentMeta(tagName);
 
-  const uxpId = combinedFormComponent.toLocaleLowerCase();
+  const defaultProps = convertComponentMetaPropsToObject(propsAsArray);
+  const uxpId = formComponentName.toLocaleLowerCase();
+  const props = {
+    uxpId,
+    ...defaultProps,
+    ...extraProps,
+  };
 
-  const defaultProps =
-    props?.map((prop) => {
-      const key = Object.keys(prop)[0];
-      const value = Object.values(prop)[0];
-      return [key, value];
-    }) || [];
-
-  const stringifiedProps = [['uxpId', uxpId], ...defaultProps]
+  const stringifiedProps = Object.entries(props)
     .map(([key, value]) => `${key}=${wrapAttributeWithDelimiter(value)}`)
     .join(' ');
 
-  const content = `import { ${combinedFormComponent} } from '../${combinedFormComponent}';
+  const content = `import { ${formComponentName} } from '../${formComponentName}';
   
-export default <${combinedFormComponent} ${stringifiedProps} />;  
+export default <${formComponentName} ${stringifiedProps} />;  
 `;
 
   const presetsFile: AdditionalFile = {
     name: '0-default.jsx',
-    relativePath: '../../form/' + combinedFormComponent + '/presets',
+    relativePath: '../../form/' + formComponentName + '/presets',
     content,
   };
 
   return presetsFile;
 }
 
-function wrapAttributeWithDelimiter(attribute: string | number | boolean) {
-  if (!isNaN(Number(attribute))) return '{' + attribute + '}';
+function wrapAttributeWithDelimiter(attribute: string | number | boolean | string[]) {
+  if (!isNaN(Number(attribute))) {
+    return '{' + attribute + '}';
+  }
+  if (Array.isArray(attribute)) {
+    return '{' + JSON.stringify(attribute) + '}';
+  }
   switch (attribute) {
     case true:
     case false:
@@ -531,4 +566,14 @@ function wrapAttributeWithDelimiter(attribute: string | number | boolean) {
     default:
       return `"` + attribute + `"`;
   }
+}
+
+function convertComponentMetaPropsToObject(props: ReturnType<typeof getComponentMeta>['props']) {
+  return (
+    props?.reduce((acc, prop) => {
+      const key = Object.keys(prop)[0];
+      const value = Object.values(prop)[0];
+      return value !== null ? { ...acc, [key]: value } : {}; // filter out `null` values that trigger errors in UXPin editor
+    }, {}) || {}
+  );
 }
