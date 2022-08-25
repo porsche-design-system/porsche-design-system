@@ -102,13 +102,6 @@ export const resolveSelector = (
     }
   });
 
-  // if (shadowRootNodeName && !shadowRootNodeName.match(/^[a-z-]+(:first-child)?$/)) {
-  //   throw new Error(`">>> ${shadowRootNodeName}" selector has to be an "Element.localName" in shadow-root`);
-  // }
-  // if (deepShadowRootNodeName && !deepShadowRootNodeName.match(/^[a-z-]+(:first-child)?$/)) {
-  //   throw new Error(`">>> ${deepShadowRootNodeName}" selector has to be an "Element.localName" in shadow-root`);
-  // }
-
   return { hostElementSelector, shadowRootNodeName, deepShadowRootNodeName };
 };
 
