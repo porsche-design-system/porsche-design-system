@@ -5,7 +5,10 @@ import { partitionProps } from '../../form-utils';
 export type TextFieldProps = PTextFieldWrapperProps & DummyTextFieldProps;
 
 export const TextField = (props: TextFieldProps): JSX.Element => {
-  const [dummyTextFieldProps, wrapperProps] = partitionProps(props, dummyTextFieldPropsKeys);
+  const [dummyTextFieldProps, wrapperProps] = partitionProps<TextFieldProps, DummyTextFieldProps>(
+    props,
+    dummyTextFieldPropsKeys
+  );
 
   return (
     <TextFieldWrapper {...wrapperProps}>

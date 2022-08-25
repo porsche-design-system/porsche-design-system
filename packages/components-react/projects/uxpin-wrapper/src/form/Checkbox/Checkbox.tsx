@@ -5,7 +5,10 @@ import { partitionProps } from '../../form-utils';
 export type CheckboxProps = PCheckboxWrapperProps & DummyCheckboxProps;
 
 export const Checkbox = (props: CheckboxProps): JSX.Element => {
-  const [dummyCheckboxProps, wrapperProps] = partitionProps(props, dummyCheckboxPropsKeys);
+  const [dummyCheckboxProps, wrapperProps] = partitionProps<CheckboxProps, DummyCheckboxProps>(
+    props,
+    dummyCheckboxPropsKeys
+  );
 
   return (
     <CheckboxWrapper {...wrapperProps}>
