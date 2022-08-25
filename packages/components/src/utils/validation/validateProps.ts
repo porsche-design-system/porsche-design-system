@@ -197,16 +197,21 @@ export const AllowedTypes: {
   shape: <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): ValidatorFunction =>
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function shape(propName, propValue) {
-      if (propValue) {
+      const value = parseJSONAttribute(propValue);
+      if (value) {
         // const propValueKeys = Object.keys(propValue);
         if (
           // check structure, but propValue could contain additional keys
           // but how to handle optional keys like in table-head-cell's sort property?
           // Object.keys(shapeStructure).some((key) => !propValueKeys.includes(key)) ||
           // check values
-          Object.entries(shapeStructure).some(([structureKey, validatorFunc]: [string, ValidatorFunction]) =>
-            validatorFunc(structureKey, propValue[structureKey])
-          )
+          Object.entries(shapeStructure).some(([structureKey, validatorFunc]: [string, ValidatorFunction]) => {
+            if (structureKey in value) {
+              return validatorFunc(structureKey, value[structureKey]);
+            } else {
+              return true;
+            }
+          })
         ) {
           // TODO: more precise inner errors from value validation could be output
           return {
