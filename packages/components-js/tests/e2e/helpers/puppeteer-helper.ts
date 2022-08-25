@@ -130,13 +130,14 @@ export const selectNode = async (page: Page, selector: string): Promise<ElementH
   ).asElement();
 };
 
-export const getShadowRoot = async (element: ElementHandle): Promise<ElementHandle> =>
-  (await element.evaluateHandle((el) => el.shadowRoot)).asElement();
+export const getShadowRoot = async (element: ElementHandle): Promise<ElementHandle<ShadowRoot>> => {
+  return (await element.evaluateHandle((el) => el.shadowRoot)).asElement();
+};
 
 const containsCapitalChar = (key: string): boolean => /[A-Z]/.test(key);
 
-export const getAttribute = async (element: ElementHandle, attribute: string): Promise<string> => {
-  return await element.evaluate((el: HTMLElement, attr: string) => el.getAttribute(attr), attribute);
+export const getAttribute = (element: ElementHandle, attribute: string): Promise<string> => {
+  return element.evaluate((el: HTMLElement, attr: string) => el.getAttribute(attr), attribute);
 };
 
 export const setAttribute = async (element: ElementHandle, key: string, value: string): Promise<void> => {
@@ -240,10 +241,17 @@ export const getElementPositions = (
 
 export const reattachElement = async (page: Page, selector: string): Promise<void> => {
   await page.evaluate((selector: string) => {
-    const [element] = Array.from(document.getElementsByTagName(selector));
+    const [element] = Array.from(document.getElementsByTagName(selector)); // ???
     element.remove();
     document.body.appendChild(element);
   }, selector);
+};
+
+export const reattachElementHandle = (page: Page, handle: ElementHandle): Promise<void> => {
+  return handle.evaluate((el) => {
+    el.remove();
+    document.body.appendChild(el);
+  });
 };
 
 export const enableBrowserLogging = (page: Page): void => {

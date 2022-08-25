@@ -1,12 +1,15 @@
-import { Page } from 'puppeteer';
+import type { ElementHandle, Page } from 'puppeteer';
 import {
   addEventListener,
   expectA11yToMatchSnapshot,
   getAttribute,
+  getCssClasses,
   getLifecycleStatus,
   initAddEventListener,
+  reattachElementHandle,
   selectNode,
   setContentWithDesignSystem,
+  waitForComponentsReady,
   waitForEventSerialization,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -15,13 +18,19 @@ let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
-type InitOptions = {};
+type InitOptions = {
+  amountOfSlides?: number;
+};
 
 const initCarousel = async (opts?: InitOptions) => {
+  const { amountOfSlides = 3 } = opts || {};
+
+  const slides = Array.from(Array(amountOfSlides))
+    .map((_, i) => `<div>Slide ${i + 1}</div>`)
+    .join('\n  ');
+
   const content = `<p-carousel heading="Heading">
-  <div>Slide 1</div>
-  <div>Slide 2</div>
-  <div>Slide 3</div>
+  ${slides}
 </p-carousel>`;
 
   await setContentWithDesignSystem(page, content);
@@ -39,14 +48,165 @@ const getPrevButton = () => selectNode(page, 'p-carousel >>> p-button-pure:first
 const getNextButton = () => selectNode(page, 'p-carousel >>> p-button-pure:last-of-type >>> button');
 const getPagination = () => selectNode(page, 'p-carousel >>> .pagination');
 
-xit('should move slides on prev/next button click', async () => {});
+const waitForSlideToBeActive = (slide: ElementHandle) =>
+  page.waitForFunction((el) => el.classList.contains('is-active'), {}, slide);
 
-xit('should update pagination on prev/next button click', async () => {});
+it('should move slides on prev button clicks', async () => {
+  await initCarousel();
+  const buttonPrev = await getPrevButton();
+  const slide1 = await getSlide1();
+  const slide2 = await getSlide2();
+  const slide3 = await getSlide3();
 
-xit('should have working pagination and prev/next buttons after reconnect', async () => {});
+  expect(await slide1.isIntersectingViewport()).toBe(true);
+  expect(await slide2.isIntersectingViewport()).toBe(false);
+  expect(await slide3.isIntersectingViewport()).toBe(false);
 
-xdescribe('adding/removing slides', () => {
-  it('should update pagination', async () => {});
+  await buttonPrev.click();
+  await waitForSlideToBeActive(slide3);
+  expect(await slide1.isIntersectingViewport()).toBe(false);
+  expect(await slide2.isIntersectingViewport()).toBe(false);
+  expect(await slide3.isIntersectingViewport()).toBe(true);
+
+  await buttonPrev.click();
+  await waitForSlideToBeActive(slide2);
+  expect(await slide1.isIntersectingViewport()).toBe(false);
+  expect(await slide2.isIntersectingViewport()).toBe(true);
+  expect(await slide3.isIntersectingViewport()).toBe(false);
+
+  await buttonPrev.click();
+  await waitForSlideToBeActive(slide1);
+  expect(await slide1.isIntersectingViewport()).toBe(true);
+  expect(await slide2.isIntersectingViewport()).toBe(false);
+  expect(await slide3.isIntersectingViewport()).toBe(false);
+});
+
+it('should move slides on next button clicks', async () => {
+  await initCarousel();
+  const buttonNext = await getNextButton();
+  const slide1 = await getSlide1();
+  const slide2 = await getSlide2();
+  const slide3 = await getSlide3();
+
+  expect(await slide1.isIntersectingViewport()).toBe(true);
+  expect(await slide2.isIntersectingViewport()).toBe(false);
+  expect(await slide3.isIntersectingViewport()).toBe(false);
+
+  await buttonNext.click();
+  await waitForSlideToBeActive(slide2);
+  expect(await slide1.isIntersectingViewport()).toBe(false);
+  expect(await slide2.isIntersectingViewport()).toBe(true);
+  expect(await slide3.isIntersectingViewport()).toBe(false);
+
+  await buttonNext.click();
+  await waitForSlideToBeActive(slide3);
+  expect(await slide1.isIntersectingViewport()).toBe(false);
+  expect(await slide2.isIntersectingViewport()).toBe(false);
+  expect(await slide3.isIntersectingViewport()).toBe(true);
+
+  await buttonNext.click();
+  await waitForSlideToBeActive(slide1);
+  expect(await slide1.isIntersectingViewport()).toBe(true);
+  expect(await slide2.isIntersectingViewport()).toBe(false);
+  expect(await slide3.isIntersectingViewport()).toBe(false);
+});
+
+it('should update pagination on prev button clicks', async () => {
+  await initCarousel();
+  const buttonPrev = await getPrevButton();
+  const pagination = await getPagination();
+  const [bullet1, bullet2, bullet3] = await pagination.$$('span');
+
+  expect(await getCssClasses(bullet1)).toBe('bullet bullet--active');
+  expect(await getCssClasses(bullet2)).toBe('bullet');
+  expect(await getCssClasses(bullet3)).toBe('bullet');
+
+  await buttonPrev.click();
+  expect(await getCssClasses(bullet1)).toBe('bullet');
+  expect(await getCssClasses(bullet2)).toBe('bullet');
+  expect(await getCssClasses(bullet3)).toBe('bullet bullet--active');
+
+  await buttonPrev.click();
+  expect(await getCssClasses(bullet1)).toBe('bullet');
+  expect(await getCssClasses(bullet2)).toBe('bullet bullet--active');
+  expect(await getCssClasses(bullet3)).toBe('bullet');
+
+  await buttonPrev.click();
+  expect(await getCssClasses(bullet1)).toBe('bullet bullet--active');
+  expect(await getCssClasses(bullet2)).toBe('bullet');
+  expect(await getCssClasses(bullet3)).toBe('bullet');
+});
+
+it('should update pagination on next button clicks', async () => {
+  await initCarousel();
+  const buttonNext = await getNextButton();
+  const pagination = await getPagination();
+  const [bullet1, bullet2, bullet3] = await pagination.$$('span');
+
+  expect(await getCssClasses(bullet1)).toBe('bullet bullet--active');
+  expect(await getCssClasses(bullet2)).toBe('bullet');
+  expect(await getCssClasses(bullet3)).toBe('bullet');
+
+  await buttonNext.click();
+  expect(await getCssClasses(bullet1)).toBe('bullet');
+  expect(await getCssClasses(bullet2)).toBe('bullet bullet--active');
+  expect(await getCssClasses(bullet3)).toBe('bullet');
+
+  await buttonNext.click();
+  expect(await getCssClasses(bullet1)).toBe('bullet');
+  expect(await getCssClasses(bullet2)).toBe('bullet');
+  expect(await getCssClasses(bullet3)).toBe('bullet bullet--active');
+
+  await buttonNext.click();
+  expect(await getCssClasses(bullet1)).toBe('bullet bullet--active');
+  expect(await getCssClasses(bullet2)).toBe('bullet');
+  expect(await getCssClasses(bullet3)).toBe('bullet');
+});
+
+it('should have working pagination and prev/next buttons after reconnect', async () => {
+  await initCarousel();
+  const host = await getHost();
+  const buttonPrev = await getPrevButton();
+  const buttonNext = await getNextButton();
+  const pagination = await getPagination();
+  const slide1 = await getSlide1();
+  const slide2 = await getSlide2();
+  const slide3 = await getSlide3();
+
+  await reattachElementHandle(page, host);
+  // different refs after reconnect, so we have to select them here
+  const [bullet1, bullet2, bullet3] = await pagination.$$('span');
+
+  expect(await slide1.isIntersectingViewport()).toBe(true);
+  expect(await slide2.isIntersectingViewport()).toBe(false);
+  expect(await slide3.isIntersectingViewport()).toBe(false);
+  expect(await getCssClasses(bullet1)).toBe('bullet bullet--active');
+  expect(await getCssClasses(bullet2)).toBe('bullet');
+  expect(await getCssClasses(bullet3)).toBe('bullet');
+
+  await buttonNext.click();
+  await waitForSlideToBeActive(slide2);
+  expect(await slide1.isIntersectingViewport()).toBe(false);
+  expect(await slide2.isIntersectingViewport()).toBe(true);
+  expect(await slide3.isIntersectingViewport()).toBe(false);
+  expect(await getCssClasses(bullet1)).toBe('bullet');
+  expect(await getCssClasses(bullet2)).toBe('bullet bullet--active');
+  expect(await getCssClasses(bullet3)).toBe('bullet');
+
+  await buttonPrev.click();
+  await waitForSlideToBeActive(slide1);
+  expect(await slide1.isIntersectingViewport()).toBe(true);
+  expect(await slide2.isIntersectingViewport()).toBe(false);
+  expect(await slide3.isIntersectingViewport()).toBe(false);
+  expect(await getCssClasses(bullet1)).toBe('bullet bullet--active');
+  expect(await getCssClasses(bullet2)).toBe('bullet');
+  expect(await getCssClasses(bullet3)).toBe('bullet');
+});
+
+describe('adding/removing slides', () => {
+  fit('should update pagination', async () => {
+    await initCarousel();
+  });
 
   it('should update aria-labels of prev/next buttons', async () => {});
 });
@@ -66,15 +226,53 @@ xdescribe('focus behavior', () => {
 describe('events', () => {
   beforeEach(async () => await initAddEventListener(page));
 
-  it('should not emit carouselChange event initially', async () => {});
+  it('should not emit carouselChange event initially', async () => {
+    await setContentWithDesignSystem(page, '');
+    await page.evaluate(() => {
+      (document as any).eventCounter = 0;
+      const carousel = document.createElement('p-carousel');
+      carousel.innerHTML = '<div>Slide 1</div><div>Slide 2</div>';
+      carousel.addEventListener('carouselChange', () => (document as any).eventCounter++);
+      document.body.append(carousel);
+    });
+
+    await waitForComponentsReady(page);
+    expect(await page.evaluate(() => (document as any).eventCounter)).toBe(0);
+
+    const nextButton = await getNextButton();
+    await nextButton.click();
+    expect(await page.evaluate(() => (document as any).eventCounter)).toBe(1);
+  });
 
   it('should emit carouselChange event on slide change', async () => {
     await initCarousel();
-    let eventCounter = 0;
     const host = await getHost();
     const prevButton = await getPrevButton();
     const nextButton = await getNextButton();
+
+    let eventCounter = 0;
     await addEventListener(host, 'carouselChange', () => eventCounter++);
+    expect(eventCounter).toBe(0);
+
+    await nextButton.click();
+    await waitForEventSerialization(page);
+    expect(eventCounter).toBe(1);
+
+    await prevButton.click();
+    await waitForEventSerialization(page);
+    expect(eventCounter).toBe(2);
+  });
+
+  it('should correctly emit carouselChange event after reconnect', async () => {
+    await initCarousel();
+    const host = await getHost();
+    const prevButton = await getPrevButton();
+    const nextButton = await getNextButton();
+
+    let eventCounter = 0;
+    await addEventListener(host, 'carouselChange', () => eventCounter++);
+
+    await reattachElementHandle(page, host);
     expect(eventCounter).toBe(0);
 
     await nextButton.click();
@@ -117,7 +315,29 @@ describe('lifecycle', () => {
 });
 
 describe('accessibility', () => {
-  it('should update prev/next buttons aria-labels on slide change', async () => {});
+  it('should update prev/next buttons aria-labels on slide change', async () => {
+    await initCarousel({ amountOfSlides: 2 });
+    const buttonPrev = await getPrevButton();
+    const buttonNext = await getNextButton();
+
+    expect(await getAttribute(buttonPrev, 'aria-label')).toBe('Go to last slide');
+    expect(await getAttribute(buttonNext, 'aria-label')).toBe('Next slide');
+
+    await buttonNext.click();
+    await waitForStencilLifecycle(page);
+    expect(await getAttribute(buttonPrev, 'aria-label')).toBe('Previous slide');
+    expect(await getAttribute(buttonNext, 'aria-label')).toBe('Go to first slide');
+
+    await buttonNext.click();
+    await waitForStencilLifecycle(page);
+    expect(await getAttribute(buttonPrev, 'aria-label')).toBe('Go to last slide');
+    expect(await getAttribute(buttonNext, 'aria-label')).toBe('Next slide');
+
+    await buttonPrev.click();
+    await waitForStencilLifecycle(page);
+    expect(await getAttribute(buttonPrev, 'aria-label')).toBe('Previous slide');
+    expect(await getAttribute(buttonNext, 'aria-label')).toBe('Go to first slide');
+  });
 
   it('should expose correct initial accessibility tree and aria properties', async () => {
     await initCarousel();
