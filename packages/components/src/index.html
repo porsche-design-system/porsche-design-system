@@ -37,9 +37,19 @@
     </header>
 
     <main>
-      <p-carousel slides-per-page="{ base: 2, m: 3}">
+      <p-carousel slides-per-page="{base: 1, s: 3.2}">
         <h1 slot="heading">Slotted heading</h1>
         <h1 slot="subheading">Slotted subheading</h1>
+        <div>Slide 1<p-button>button 1</p-button></div>
+        <div>Slide 2<p-button-pure>button 2</p-button-pure></div>
+        <div>Slide 3<button>button 3</button></div>
+        <div>Slide 4<p-link href="#">link 4</p-link></div>
+        <div>Slide 5<p-link-pure href="#">link 5</p-link-pure></div>
+        <div>Slide 6<a href="#">link 6</a></div>
+      </p-carousel>
+
+      <p-carousel slides-per-page="{base: 1, s: 3.2}">
+        <h1 slot="heading">Slotted heading</h1>
         <div>Slide 1<p-button>button 1</p-button></div>
         <div>Slide 2<p-button-pure>button 2</p-button-pure></div>
         <div>Slide 3<button>button 3</button></div>

@@ -36,8 +36,16 @@ export const getComponentCss = (
           gap: pxToRemWithUnit(62),
         },
       }),
-      'h2,::slotted([slot=heading])': addImportantToEachRule({ ...headingMedium, ...headingResetStyles }),
-      '::slotted([slot=subheading])': addImportantToEachRule({ ...headingSmall, ...headingResetStyles }),
+      'h2,::slotted([slot=heading])': addImportantToEachRule({
+        ...headingMedium,
+        ...headingResetStyles,
+      }),
+      '::slotted([slot=subheading])': addImportantToEachRule({
+        ...headingSmall,
+        ...headingResetStyles,
+        gridColumn: 1,
+        margin: `${pxToRemWithUnit(8)} 0 0`,
+      }),
     },
     splide: {
       position: 'relative',
@@ -89,14 +97,9 @@ export const getComponentCss = (
     },
     btn: {
       visibility: 'hidden',
-      height: 0,
-      padding: pxToRemWithUnit(8),
       [mediaQueryS]: {
         visibility: 'visible',
-        height: 'auto',
-      },
-      '&:first-of-type': {
-        gridColumn: 2,
+        padding: pxToRemWithUnit(8),
       },
     },
     ...(disablePagination !== true && {

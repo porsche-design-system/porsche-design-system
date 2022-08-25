@@ -172,6 +172,7 @@ export class Carousel {
       <Host>
         <div class="header">
           {this.heading ? <h2>{this.heading}</h2> : <slot name="heading" />}
+          <slot name="subheading" />
 
           <PrefixedTagNames.pButtonPure
             {...btnProps}
@@ -185,8 +186,6 @@ export class Carousel {
             ref={(ref) => (this.btnNext = ref)}
             onClick={() => slideNext(this.splide, this.amountOfPages)}
           />
-
-          <slot name="subheading" />
         </div>
 
         {/* TODO: aria-label or aria-labelledby */}
