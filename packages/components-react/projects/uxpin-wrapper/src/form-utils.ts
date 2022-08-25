@@ -1,5 +1,5 @@
 /**
- * Split a set of component "Props" into a tuple of 1 subsets, given an array of props names
+ * Split a set of component "Props" into a tuple of 2 subsets, given an array of props names
  * Used to split form component props into "wrapper" and "dummy" props.
  */
 export function partitionProps<InputProps extends { [key: string]: any }, SelectedProps extends { [key: string]: any }>(
