@@ -2,7 +2,6 @@
 
 /src/lib
 /src/form/*/presets
-/src/form/Checkbox/presets
 /src/provider.tsx
 /src/hooks.ts
 /src/utils.ts
