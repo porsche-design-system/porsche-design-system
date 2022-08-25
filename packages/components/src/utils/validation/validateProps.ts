@@ -205,13 +205,9 @@ export const AllowedTypes: {
           // but how to handle optional keys like in table-head-cell's sort property?
           // Object.keys(shapeStructure).some((key) => !propValueKeys.includes(key)) ||
           // check values
-          Object.entries(shapeStructure).some(([structureKey, validatorFunc]: [string, ValidatorFunction]) => {
-            if (structureKey in value) {
-              return validatorFunc(structureKey, value[structureKey]);
-            } else {
-              return true;
-            }
-          })
+          Object.entries(shapeStructure).some(([structureKey, validatorFunc]: [string, ValidatorFunction]) =>
+            validatorFunc(structureKey, value[structureKey])
+          )
         ) {
           // TODO: more precise inner errors from value validation could be output
           return {
