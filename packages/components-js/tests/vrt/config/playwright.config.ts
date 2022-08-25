@@ -34,7 +34,7 @@ const config: PlaywrightTestConfig = {
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  workers: process.env.CI ? 4 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'list',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -68,10 +68,10 @@ const config: PlaywrightTestConfig = {
   outputDir: '../results/vr-cbt',
 
   /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'yarn start',
-  //   port: 3000,
-  // },
+  webServer: {
+    command: 'yarn start',
+    port: 8575,
+  },
 };
 
 export default config;
