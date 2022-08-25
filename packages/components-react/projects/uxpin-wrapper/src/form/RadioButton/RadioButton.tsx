@@ -8,7 +8,10 @@ import { partitionProps } from '../../form-utils';
 export type RadioButtonProps = PRadioButtonWrapperProps & DummyRadioButtonProps;
 
 export const RadioButton = (props: RadioButtonProps): JSX.Element => {
-  const [dummyRadioButtonProps, wrapperProps] = partitionProps(props, dummyRadioButtonPropsKeys);
+  const [dummyRadioButtonProps, wrapperProps] = partitionProps<RadioButtonProps, DummyRadioButtonProps>(
+    props,
+    dummyRadioButtonPropsKeys
+  );
 
   return (
     <RadioButtonWrapper {...wrapperProps}>

@@ -5,7 +5,10 @@ import { partitionProps } from '../../form-utils';
 export type TextareaProps = PTextareaWrapperProps & DummyTextareaProps;
 
 export const Textarea = (props: TextareaProps): JSX.Element => {
-  const [dummyTextareaProps, wrapperProps] = partitionProps(props, dummyTextareaPropsKeys);
+  const [dummyTextareaProps, wrapperProps] = partitionProps<TextareaProps, DummyTextareaProps>(
+    props,
+    dummyTextareaPropsKeys
+  );
 
   return (
     <TextareaWrapper {...wrapperProps}>

@@ -5,7 +5,7 @@ import { partitionProps } from '../../form-utils';
 export type SelectProps = PSelectWrapperProps & DummySelectProps;
 
 export const Select = (props: SelectProps): JSX.Element => {
-  const [dummySelectProps, wrapperProps] = partitionProps(props, dummySelectPropsKeys);
+  const [dummySelectProps, wrapperProps] = partitionProps<SelectProps, DummySelectProps>(props, dummySelectPropsKeys);
 
   return (
     <SelectWrapper {...wrapperProps}>
