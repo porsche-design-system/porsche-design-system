@@ -191,3 +191,5 @@ describe('accordion', () => {
     expect(await getCounterValue(accordionChangeEventCounter)).toBe('3');
   });
 });
+
+xdescribe('carousel', () => {});
