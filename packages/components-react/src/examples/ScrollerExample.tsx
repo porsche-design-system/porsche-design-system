@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 export const ScrollerExamplePage = (): JSX.Element => {
   const style = `
-    p-scroller > span {
+    .scroller > span {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -12,7 +12,7 @@ export const ScrollerExamplePage = (): JSX.Element => {
       border: 1px solid deeppink;
     }
 
-    p-scroller > span:not(:last-child) {
+    .scroller > span:not(:last-child) {
       margin-right: 1rem;
     }
 
@@ -38,7 +38,7 @@ export const ScrollerExamplePage = (): JSX.Element => {
       <PButton onClick={() => clickHandler(900, true)}>Scroll to end</PButton>
 
       <div style={{ maxWidth: '600px' }}>
-        <PScroller isFocusable scrollToPosition={{ scrollPosition, isSmooth }}>
+        <PScroller className="scroller" isFocusable scrollToPosition={{ scrollPosition, isSmooth }}>
           <span>Start</span>
           <span>Middle</span>
           <span>End</span>
