@@ -501,11 +501,6 @@ describe('AllowedTypes', () => {
       expect(spy).toBeCalledWith(shapeStructure);
     });
 
-    it('should return error object via anonymous ValidatorFunction if passed propValue keys do not match shapeStructure keys', () => {
-      const result = validatorFunction('sort', { id: '1', inActive: true });
-      expect(result).toEqual(mockError);
-    });
-
     it('should return error object via anonymous ValidatorFunction if a nested validator function returns an error', () => {
       nestedValidatorFunction2.mockReturnValueOnce({ ...mockError, propName: 'something else' });
       const result = validatorFunction('sort', { id: '1', active: true });
