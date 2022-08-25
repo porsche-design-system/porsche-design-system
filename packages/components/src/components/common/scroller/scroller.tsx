@@ -72,7 +72,7 @@ export class Scroller {
 
   // should only update if scrollable
   public componentShouldUpdate(_newVal, _oldVal, propName): boolean {
-    return !(propName === 'scrollToPosition' && isScrollable(this.isNextHidden, this.isPrevHidden));
+    return !(propName === 'scrollToPosition' && !isScrollable(this.isNextHidden, this.isPrevHidden));
   }
 
   public componentWillRender(): void {
