@@ -65,14 +65,14 @@ export class Scroller {
 
   public componentDidLoad(): void {
     this.initIntersectionObserver();
-    if (this.scrollToPosition && !!(this.isNextHidden || this.isPrevHidden)) {
+    if (this.scrollToPosition) {
       this.scrollHandler();
     }
   }
 
   // should only update if scrollable
   public componentShouldUpdate(_newVal, _oldVal, propName): boolean {
-    return !(propName === 'scrollToPosition' && (this.isPrevHidden || this.isNextHidden));
+    return !(propName === 'scrollToPosition' && isScrollable(this.isNextHidden, this.isPrevHidden));
   }
 
   public componentWillRender(): void {
