@@ -475,6 +475,13 @@ describe('AllowedTypes', () => {
       expect(validatorFunction).toEqual(expect.any(Function));
     });
 
+    it('should call parseJSONAttribute() with correct parameters via anonymous ValidatorFunction', () => {
+      const spy = jest.spyOn(jsonUtils, 'parseJSONAttribute');
+      const propValue = '{ scrollPosition: 900 }';
+      validatorFunction('aria', propValue);
+      expect(spy).toBeCalledWith(propValue);
+    });
+
     it('should call each nested validator function if propValue is defined', () => {
       validatorFunction('sort', { id: '1', active: true });
       expect(nestedValidatorFunction1).toBeCalledWith('id', '1');
@@ -492,6 +499,11 @@ describe('AllowedTypes', () => {
       nestedValidatorFunction1.mockReturnValueOnce(mockError);
       validatorFunction('sort', { id: '1' });
       expect(spy).toBeCalledWith(shapeStructure);
+    });
+
+    it('should return error object via anonymous ValidatorFunction if passed propValue keys do not match shapeStructure keys', () => {
+      const result = validatorFunction('sort', { id: '1', inActive: true });
+      expect(result).toEqual(mockError);
     });
 
     it('should return error object via anonymous ValidatorFunction if a nested validator function returns an error', () => {

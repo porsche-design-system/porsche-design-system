@@ -82,9 +82,7 @@ describe('scrolling', () => {
   it('should have correct initial scroll position when scrollToPosition is set', async () => {
     await initScroller({ isWrapped: true, scrollToPosition: { scrollPosition: 50 } });
 
-    const scrollDistance = await getScrollLeft(await getScrollArea());
-
-    expect(scrollDistance).toBe(50);
+    expect(await getScrollLeft(await getScrollArea())).toBe(50);
   });
 });
 
