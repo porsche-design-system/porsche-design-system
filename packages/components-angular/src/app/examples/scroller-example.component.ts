@@ -8,7 +8,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 48px;
+        height: 3rem;
         width: 300px;
         border: 1px solid deeppink;
       }
