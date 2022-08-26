@@ -478,8 +478,19 @@ describe('AllowedTypes', () => {
     it('should call parseJSONAttribute() with correct parameters via anonymous ValidatorFunction', () => {
       const spy = jest.spyOn(jsonUtils, 'parseJSONAttribute');
       const propValue = '{ scrollPosition: 900 }';
-      validatorFunction('aria', propValue);
+      validatorFunction('scrollToPosition', propValue);
       expect(spy).toBeCalledWith(propValue);
+    });
+
+    it('should call  nested validator function with result of parseJSONAttribute()', () => {
+      const parseJSONAttributeMock = { scrollPosition: 900 };
+      jest.spyOn(jsonUtils, 'parseJSONAttribute').mockReturnValueOnce(parseJSONAttributeMock);
+      AllowedTypes.shape({
+        scrollToPosition: {
+          scrollPosition: nestedValidatorFunction1,
+        },
+      })('scrollToPosition', '{ scrollPosition: 900 }');
+      expect(nestedValidatorFunction1).toBeCalledWith(parseJSONAttributeMock);
     });
 
     it('should call each nested validator function if propValue is defined', () => {
