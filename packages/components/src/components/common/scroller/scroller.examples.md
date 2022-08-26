@@ -112,28 +112,44 @@ export default class Code extends Vue {
 
   scrollIndicatorSize = `<div style="max-width: 600px">
   <p-scroller style="font-size: 24px; white-space: nowrap">
-    <p-button>Some button</p-button>
-    <p-button>Some button</p-button>
-    <p-button>Some button</p-button>
-    <p-button>Some button</p-button>
-    <p-button>Some button</p-button>
-    <p-button>Some button</p-button>
-    <p-button>Some button</p-button>
-    <p-button>Some button</p-button>
+    <p-tag-dismissible>Some button</p-tag-dismissible>
+    <p-tag-dismissible>Some button</p-tag-dismissible>
+    <p-tag-dismissible>Some button</p-tag-dismissible>
+    <p-tag-dismissible>Some button</p-tag-dismissible>
+    <p-tag-dismissible>Some button</p-tag-dismissible>
+    <p-tag-dismissible>Some button</p-tag-dismissible>
+    <p-tag-dismissible>Some button</p-tag-dismissible>
+    <p-tag-dismissible>Some button</p-tag-dismissible>
   </p-scroller>
 </div>`;
 
   get gradientMarkup() {
     return `<div style="max-width: 600px">
   <p-scroller gradient-color-scheme="${this.gradientColorScheme}" style="white-space: nowrap">
-    <p-button>Some button</p-button>
-    <p-button>Some button</p-button>
-    <p-button>Some button</p-button>
-    <p-button>Some button</p-button>
-    <p-button>Some button</p-button>
-    <p-button>Some button</p-button>
-    <p-button>Some button</p-button>
-    <p-button>Some button</p-button>
+    <p-tag color="neutral-contrast-high">
+      <button type="button">Some tag content</button>
+    </p-tag>
+    <p-tag color="notification-neutral">
+      <button type="button">Some tag content</button>
+    </p-tag>
+    <p-tag color="notification-warning">
+      <button type="button">Some tag content</button>
+    </p-tag>
+    <p-tag color="neutral-contrast-high">
+      <button type="button">Some tag content</button>
+    </p-tag>
+    <p-tag color="notification-neutral">
+      <button type="button">Some tag content</button>
+    </p-tag>
+    <p-tag color="notification-warning">
+      <button type="button">Some tag content</button>
+    </p-tag>
+    <p-tag color="neutral-contrast-high">
+      <button type="button">Some tag content</button>
+    </p-tag>
+    <p-tag color="notification-neutral">
+      <button type="button">Some tag content</button>
+    </p-tag>
   </p-scroller>
 </div>`;
   }
