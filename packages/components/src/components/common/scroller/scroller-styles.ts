@@ -22,7 +22,6 @@ export const getComponentCss = (
     pointerEvents: 'none',
     display: 'flex',
     alignItems: scrollIndicatorPosition === 'center' ? 'center' : 'flex-start',
-    minWidth: pxToRemWithUnit(40),
   };
 
   return getCss({
@@ -34,7 +33,7 @@ export const getComponentCss = (
     },
     root: {
       display: 'grid',
-      gridTemplateColumns: '2em minmax(0, 1fr) 2em',
+      gridTemplateColumns: '2.5em minmax(0, 1fr) 2.5em',
       margin: `0 ${pxToRemWithUnit(-4)}`,
       height: 'inherit',
     },
