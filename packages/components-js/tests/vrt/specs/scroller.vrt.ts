@@ -24,7 +24,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       const getElementsMarkup: GetThemedMarkup = (theme) =>
         `<div style="max-width: 400px">
-  <p-scroller theme="${theme}" isFocusable="true" style="white-space: nowrap; line-height: 1.5">
+  <p-scroller theme="${theme}" style="white-space: nowrap; line-height: 1.5">
     <a href="#">Some anchor</a>
     <a href="#">Some anchor</a>
     <a href="#">Some anchor</a>

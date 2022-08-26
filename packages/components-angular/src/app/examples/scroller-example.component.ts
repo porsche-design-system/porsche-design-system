@@ -27,7 +27,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <button (click)="clickHandler(290, true)">Scroll to middle</button>
     <button (click)="clickHandler(900, true)">Scroll to end</button>
     <div style="max-width: 600px">
-      <p-scroller class="scroller" [isFocusable]="true" [scrollToPosition]="{scrollPosition, isSmooth}">
+      <p-scroller class="scroller" [scrollToPosition]="{scrollPosition, isSmooth}">
         <span>Start</span>
         <span>Middle</span>
         <span>End</span>
