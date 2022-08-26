@@ -8,9 +8,9 @@ type FormComponentName = 'Checkbox' | 'RadioButton' | 'Select' | 'TextField' | '
 
 type ExtraProps = { [key: string]: number | string | boolean | string[] };
 
-type FormSetupItem = {
+type FormPresetsSetupItem = {
   formComponentName: FormComponentName;
-  tagName: TagName;
+  wrapperTagName: TagName;
   extraProps: ExtraProps;
 };
 
@@ -484,49 +484,43 @@ export default (
   }
 }
 
-const formComponentSetup: FormSetupItem[] = [
+const formPresetsSetup: FormPresetsSetupItem[] = [
   {
     formComponentName: 'Checkbox',
-    tagName: 'p-checkbox-wrapper',
+    wrapperTagName: 'p-checkbox-wrapper',
     extraProps: { label: 'My Checkbox', checked: true },
   },
   {
     formComponentName: 'RadioButton',
-    tagName: 'p-radio-button-wrapper',
+    wrapperTagName: 'p-radio-button-wrapper',
     extraProps: { label: 'My RadioButton', checked: true },
   },
   {
     formComponentName: 'Select',
-    tagName: 'p-select-wrapper',
+    wrapperTagName: 'p-select-wrapper',
     extraProps: { label: 'My Select', options: ['Option 1', 'Option 2', 'Option 3'] },
   },
   {
     formComponentName: 'TextField',
-    tagName: 'p-text-field-wrapper',
+    wrapperTagName: 'p-text-field-wrapper',
     extraProps: { label: 'My TextField' },
   },
   {
     formComponentName: 'Textarea',
-    tagName: 'p-textarea-wrapper',
+    wrapperTagName: 'p-textarea-wrapper',
     extraProps: { label: 'My Textarea' },
   },
 ];
 
 function generateAllFormComponentPresets() {
-  return formComponentSetup.map(({ formComponentName, tagName, extraProps }) => {
-    return generateSingleFormComponentPreset(formComponentName, tagName, extraProps);
-  });
+  return formPresetsSetup.map(generateFormComponentPreset);
 }
 
-function generateSingleFormComponentPreset(
-  formComponentName: FormComponentName,
-  tagName: TagName,
-  extraProps: ExtraProps
-) {
-  const { props: propsAsArray } = getComponentMeta(tagName);
+function generateFormComponentPreset({ formComponentName, wrapperTagName, extraProps }: FormPresetsSetupItem) {
+  const { props: propsAsArray } = getComponentMeta(wrapperTagName);
 
   const defaultProps = convertComponentMetaPropsToObject(propsAsArray);
-  const uxpId = formComponentName.toLocaleLowerCase();
+  const uxpId = formComponentName.toLowerCase();
   const props = {
     uxpId,
     ...defaultProps,
@@ -538,7 +532,7 @@ function generateSingleFormComponentPreset(
     .join(' ');
 
   const content = `import { ${formComponentName} } from '../${formComponentName}';
-  
+
 export default <${formComponentName} ${stringifiedProps} />;  
 `;
 
@@ -552,19 +546,10 @@ export default <${formComponentName} ${stringifiedProps} />;
 }
 
 function wrapAttributeWithDelimiter(attribute: string | number | boolean | string[]) {
-  if (!isNaN(Number(attribute))) {
-    return '{' + attribute + '}';
-  }
-  if (Array.isArray(attribute)) {
+  if (typeof attribute === 'string') {
+    return `"` + attribute + `"`;
+  } else {
     return '{' + JSON.stringify(attribute) + '}';
-  }
-  switch (attribute) {
-    case true:
-    case false:
-    case null:
-      return '{' + attribute + '}';
-    default:
-      return `"` + attribute + `"`;
   }
 }
 
