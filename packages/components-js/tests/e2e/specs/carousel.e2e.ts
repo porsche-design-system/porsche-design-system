@@ -308,6 +308,7 @@ describe('viewport change', () => {
     const pagination = await getPagination();
 
     await page.setViewport({ height: 1000, width: 350 });
+    await waitForStencilLifecycle(page);
     expect(await pagination.evaluate((el) => el.children.length)).toBe(6);
 
     await page.setViewport({ height: 1000, width: 760 });
