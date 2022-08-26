@@ -13,6 +13,19 @@ export const ScrollerPage = (): JSX.Element => {
     p-scroller > button {
       font-size: 16px;
     }
+
+    .scroller > span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 48px;
+      width: 300px;
+      border: 1px solid deeppink;
+    }
+
+    .scroller > span:not(:last-child) {
+      margin-right: 1rem;
+    }
   `;
 
   return (
@@ -200,12 +213,14 @@ export const ScrollerPage = (): JSX.Element => {
         </PScroller>
       </div>
 
-      <div className="playground light" title="should render scroller with scroll position 290px">
-        <PScroller className="scroller" scrollToPosition={{scrollPosition: 290}}>
-          <span>Start</span>
-          <span>Middle</span>
-          <span>End</span>
-        </PScroller>
+      <div className="playground light" title="should render scroller with initial scroll position">
+        <div style={{ maxWidth: '600px' }}>
+          <PScroller className="scroller" scrollToPosition={{scrollPosition: 290}}>
+            <span>Start</span>
+            <span>Middle</span>
+            <span>End</span>
+          </PScroller>
+        </div>
       </div>
     </>
   );
