@@ -37,14 +37,11 @@ export const TableExampleAdvancedPage = (): JSX.Element => {
       </PHeadline>
       <PTableHead>
         <PTableHeadRow>
-          {head.map((item, i) => {
-            const { id, direction, active } = item;
-            return (
-              <PTableHeadCell key={i} sort={{ id, direction, active }} hideLabel={item.hideLabel}>
-                {item.name}
-              </PTableHeadCell>
-            );
-          })}
+          {head.map((item, i) => (
+            <PTableHeadCell key={i} sort={item} hideLabel={item.hideLabel}>
+              {item.name}
+            </PTableHeadCell>
+          ))}
         </PTableHeadRow>
       </PTableHead>
       <PTableBody>

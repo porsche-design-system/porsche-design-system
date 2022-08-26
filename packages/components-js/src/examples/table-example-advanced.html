@@ -66,8 +66,7 @@
     const passHeadItemsToNodes = (items) =>
       tableHeadCells.forEach((el, index) => {
         el.hideLabel = items[index].hideLabel;
-        const { id, direction, active } = items[index];
-        el.sort = { id, direction, active };
+        el.sort = items[index];
       });
 
     passHeadItemsToNodes(headAdvanced); // initial state

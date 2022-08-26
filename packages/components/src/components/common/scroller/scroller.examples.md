@@ -72,7 +72,7 @@ The `p-scroller` component provides the `scrollToPosition` property. It accepts
 
 If `scrollToPosition` is set with `isSmooth: true` the scrolling is animated.
 
-<Playground :frameworkMarkup="codeExample" :config="config" :markup="frameworkExample"></Playground>
+<Playground :frameworkMarkup="codeExample" :config="{ themable: false }" :markup="frameworkExample"></Playground>
 
 <script lang="ts">
 import Vue from 'vue';
@@ -190,7 +190,7 @@ export default class Code extends Vue {
 <p-button id="end">Scroll to end</p-button>
 
 <div style="max-width: 600px">
-  <p-scroller class="scroller" scroll-to-position="{scrollPosition: 290}">
+  <p-scroller class="scroller" is-focusable="true" scroll-to-position="{scrollPosition: 290}">
     <span>Start</span>
     <span>Middle</span>
     <span>End</span>
