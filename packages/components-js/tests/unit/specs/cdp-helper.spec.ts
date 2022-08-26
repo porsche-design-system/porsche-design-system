@@ -122,11 +122,5 @@ describe('cdp-helper', () => {
         shadowRootNodeName: undefined,
       });
     });
-
-    it('should throw error if shadowRootNodeName is not an "Element.localName"', () => {
-      expect(() => resolveSelector('.hover > p-checkbox-wrapper >>> .tabs-bar')).toThrowErrorMatchingInlineSnapshot(
-        '"\\">>> .tabs-bar\\" selector has to be an \\"Element.localName\\" in shadow-root"'
-      );
-    });
   });
 });

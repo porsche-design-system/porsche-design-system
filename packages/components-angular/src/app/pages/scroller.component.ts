@@ -13,7 +13,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         margin-right: 0.5rem;
       }
       p-scroller > button {
+        line-height: 1.5;
         font-size: 16px;
+      }
+    
+      .scroller > span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 48px;
+        width: 300px;
+        border: 1px solid deeppink;
+      }
+    
+      .scroller > span:not(:last-child) {
+        margin-right: 1rem;
       }
     `,
   ],
@@ -34,38 +48,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <button>Default Light</button>
         <button>Default Light</button>
         <button>Default Light</button>
-      </p-scroller>
-      <p-scroller>
-        <a [href]="'#'">Some link</a>
-        <a [href]="'#'">Some link</a>
-        <a [href]="'#'">Some link</a>
-        <a [href]="'#'">Some link</a>
-        <a [href]="'#'">Some link</a>
-        <a [href]="'#'">Some link</a>
-        <a [href]="'#'">Some link</a>
-        <a [href]="'#'">Some link</a>
-        <a [href]="'#'">Some link</a>
-        <a [href]="'#'">Some link</a>
-        <a [href]="'#'">Some link</a>
-        <a [href]="'#'">Some link</a>
-        <a [href]="'#'">Some link</a>
-        <a [href]="'#'">Some link</a>
-      </p-scroller>
-      <p-scroller>
-        <p>Paragraph</p>
-        <p>Paragraph</p>
-        <p>Paragraph</p>
-        <p>Paragraph</p>
-        <p>Paragraph</p>
-        <p>Paragraph</p>
-        <p>Paragraph</p>
-        <p>Paragraph</p>
-        <p>Paragraph</p>
-        <p>Paragraph</p>
-        <p>Paragraph</p>
-        <p>Paragraph</p>
-        <p>Paragraph</p>
-        <p>Paragraph</p>
       </p-scroller>
     </div>
 
@@ -127,13 +109,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="playground" title="should render scroller with scroll indicator position center">
       <div style="height: 50px; border: 1px solid deeppink; max-width: 600px">
         <p-scroller [scrollIndicatorPosition]="'center'">
-          <a [href]="'#'">Scroll indicator position center</a>
-          <a [href]="'#'">Scroll indicator position center</a>
-          <a [href]="'#'">Scroll indicator position center</a>
-          <a [href]="'#'">Scroll indicator position center</a>
-          <a [href]="'#'">Scroll indicator position center</a>
-          <a [href]="'#'">Scroll indicator position center</a>
-          <a [href]="'#'">Scroll indicator position center</a>
+          <button>Scroll indicator position center</button>
+          <button>Scroll indicator position center</button>
+          <button>Scroll indicator position center</button>
+          <button>Scroll indicator position center</button>
+          <button>Scroll indicator position center</button>
+          <button>Scroll indicator position center</button>
+          <button>Scroll indicator position center</button>
         </p-scroller>
       </div>
     </div>
@@ -141,19 +123,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="playground" title="should render scroller with scroll indicator position top">
       <div style="height: 50px; border: 1px solid deeppink; max-width: 600px">
         <p-scroller [scrollIndicatorPosition]="'top'">
-          <a [href]="'#'">Scroll indicator position top</a>
-          <a [href]="'#'">Scroll indicator position top</a>
-          <a [href]="'#'">Scroll indicator position top</a>
-          <a [href]="'#'">Scroll indicator position top</a>
-          <a [href]="'#'">Scroll indicator position top</a>
-          <a [href]="'#'">Scroll indicator position top</a>
-          <a [href]="'#'">Scroll indicator position top</a>
+          <button>Scroll indicator position top</button>
+          <button>Scroll indicator position top</button>
+          <button>Scroll indicator position top</button>
+          <button>Scroll indicator position top</button>
+          <button>Scroll indicator position top</button>
+          <button>Scroll indicator position top</button>
+          <button>Scroll indicator position top</button>
         </p-scroller>
       </div>
     </div>
 
     <div class="playground light" title="should render scroller with scroll indicator size according to fontsize large">
-      <p-scroller style="font-size: large">
+      <p-scroller style="font-size: 2.25rem; line-height: 1.3333333333">
         <a [href]="'#'">Large font</a>
         <a [href]="'#'">Large font</a>
         <a [href]="'#'">Large font</a>
@@ -165,7 +147,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render scroller with scroll indicator size according to inherit size">
-      <div style="font-size: large">
+      <div style="font-size: 2.25rem; line-height: 1.3333333333">
         <p-scroller style="font-size: inherit">
           <a [href]="'#'">Size inherit</a>
           <a [href]="'#'">Size inherit</a>
@@ -199,12 +181,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-scroller>
     </div>
 
-    <div class="playground light" title="should render scroller with scroll position 290px">
-      <p-scroller class="scroller" [scrollToPosition]="{scrollPosition: 290}">
-        <span>Start</span>
-        <span>Middle</span>
-        <span>End</span>
-      </p-scroller>
+    <div class="playground light" title="should render scroller with initial scroll position">
+      <div style="max-width: 600px">
+        <p-scroller class="scroller" [scrollToPosition]="{scrollPosition: 290}">
+          <span>Start</span>
+          <span>Middle</span>
+          <span>End</span>
+        </p-scroller>
+      </div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

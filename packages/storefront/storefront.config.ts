@@ -274,10 +274,8 @@ export const config: StorefrontConfig = {
       Examples: [() => import('@/../../components/src/components/common/scroller/scroller.examples.md')],
       // @ts-ignore
       Usage: [() => import('@/../../components/src/components/common/scroller/scroller.usage.md')],
-      Props: [
-        // @ts-ignore
-        () => import('@/../../components/src/components/common/scroller/scroller.props.md'),
-      ],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/common/scroller/scroller.props.md')],
     },
     Select: {
       Examples: [
