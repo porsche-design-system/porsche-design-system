@@ -15,6 +15,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       p-scroller > button {
         font-size: 16px;
       }
+    
+      .scroller > span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 48px;
+        width: 300px;
+        border: 1px solid deeppink;
+      }
+    
+      .scroller > span:not(:last-child) {
+        margin-right: 1rem;
+      }
     `,
   ],
   template: `
@@ -199,12 +212,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-scroller>
     </div>
 
-    <div class="playground light" title="should render scroller with scroll position 290px">
-      <p-scroller class="scroller" [scrollToPosition]="{scrollPosition: 290}">
-        <span>Start</span>
-        <span>Middle</span>
-        <span>End</span>
-      </p-scroller>
+    <div class="playground light" title="should render scroller with initial scroll position">
+      <div style="max-width: 600px">
+        <p-scroller class="scroller" [scrollToPosition]="{scrollPosition: 290}">
+          <span>Start</span>
+          <span>Middle</span>
+          <span>End</span>
+        </p-scroller>
+      </div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

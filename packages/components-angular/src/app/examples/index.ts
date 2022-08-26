@@ -2,6 +2,7 @@ import { AccordionExampleComponent } from './accordion-example.component';
 import { InlineNotificationExampleActionButtonComponent } from './inline-notification-example-action-button.component';
 import { InlineNotificationExampleEventsComponent } from './inline-notification-example-events.component';
 import { ModalExampleAccessibilityComponent } from './modal-example-accessibility.component';
+import { ScrollerExampleComponent } from './scroller-example.component';
 import { SegmentedControlExampleComponent } from './segmented-control-example.component';
 import { StepperHorizontalExampleComponent } from './stepper-horizontal-example.component';
 import { TableExampleAdvancedComponent } from './table-example-advanced.component';
@@ -12,7 +13,6 @@ import { TabsBarExampleBasicComponent } from './tabs-bar-example-basic.component
 import { TextFieldWrapperExampleImaskComponent } from './text-field-wrapper-example-imask.component';
 import { TextFieldWrapperExampleSearchComponent } from './text-field-wrapper-example-search.component';
 import { ToastExampleComponent } from './toast-example.component';
-import { ScrollerExampleComponent } from './scroller-example.component';
 
 export const examples = [
   AccordionExampleComponent,

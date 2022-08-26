@@ -683,7 +683,7 @@ export namespace Components {
          */
         "gradientColorScheme"?: GradientColorTheme;
         /**
-          * If true the component becomes focusable
+          * If true the scroller becomes focusable
          */
         "isFocusable"?: boolean;
         /**
@@ -2189,7 +2189,7 @@ declare namespace LocalJSX {
          */
         "gradientColorScheme"?: GradientColorTheme;
         /**
-          * If true the component becomes focusable
+          * If true the scroller becomes focusable
          */
         "isFocusable"?: boolean;
         /**
