@@ -12,6 +12,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   height: inherit;
 }
 .scroll-area {
+  min-height: 1.5rem;
   grid-area: 1 / 1 / 1 / -1;
   padding: 0.25rem;
   overflow: scroll hidden;
@@ -95,6 +96,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   height: inherit;
 }
 .scroll-area {
+  min-height: 1.5rem;
   grid-area: 1 / 1 / 1 / -1;
   padding: 0.25rem;
   overflow: scroll hidden;
@@ -178,6 +180,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   height: inherit;
 }
 .scroll-area {
+  min-height: 1.5rem;
   grid-area: 1 / 1 / 1 / -1;
   padding: 0.25rem;
   overflow: scroll hidden;
@@ -261,6 +264,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   height: inherit;
 }
 .scroll-area {
+  min-height: 1.5rem;
   grid-area: 1 / 1 / 1 / -1;
   padding: 0.25rem;
   overflow: scroll hidden;
@@ -344,6 +348,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   height: inherit;
 }
 .scroll-area {
+  min-height: 1.5rem;
   grid-area: 1 / 1 / 1 / -1;
   padding: 0.25rem;
   overflow: scroll hidden;
@@ -427,6 +432,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   height: inherit;
 }
 .scroll-area {
+  min-height: 1.5rem;
   grid-area: 1 / 1 / 1 / -1;
   padding: 0.25rem;
   overflow: scroll hidden;
@@ -510,6 +516,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   height: inherit;
 }
 .scroll-area {
+  min-height: 1.5rem;
   grid-area: 1 / 1 / 1 / -1;
   padding: 0.25rem;
   overflow: scroll hidden;
@@ -593,6 +600,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   height: inherit;
 }
 .scroll-area {
+  min-height: 1.5rem;
   grid-area: 1 / 1 / 1 / -1;
   padding: 0.25rem;
   overflow: scroll hidden;
@@ -676,6 +684,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   height: inherit;
 }
 .scroll-area {
+  min-height: 1.5rem;
   grid-area: 1 / 1 / 1 / -1;
   padding: 0.25rem;
   overflow: scroll hidden;
@@ -759,6 +768,7 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   height: inherit;
 }
 .scroll-area {
+  min-height: 1.5rem;
   grid-area: 1 / 1 / 1 / -1;
   padding: 0.25rem;
   overflow: scroll hidden;
