@@ -1,27 +1,6 @@
 import { getTagName } from '../../../utils';
 import type { SelectedAriaAttributes } from '../../../types';
-
-export const unpackChildren = (el: HTMLElement | ShadowRoot): HTMLElement[] => {
-  return (Array.from(el.children) as HTMLElement[])
-    .map((child) => (child.children ? [child].concat(unpackChildren(child)) : child))
-    .flat()
-    .map((child) => (child.shadowRoot ? [child].concat(unpackChildren(child.shadowRoot)) : child))
-    .flat();
-};
-
-// TODO: could be extended by audio[controls], video[controls], [contenteditable]:not([contenteditable="false"]) or iframe
-export const isFocusableElement = (el: HTMLInputElement): boolean => {
-  const { nodeName } = el;
-  return (
-    ((nodeName === 'INPUT' && el.type !== 'hidden') ||
-      nodeName === 'TEXTAREA' ||
-      nodeName === 'SELECT' ||
-      nodeName === 'BUTTON' ||
-      (nodeName === 'A' && !!(el as any).href)) &&
-    el.tabIndex >= 0 &&
-    !el.disabled
-  );
-};
+import { isFocusableElement, unpackChildren } from '../../../utils/focus-utils';
 
 export type FirstAndLastFocusableElement = [HTMLElement, HTMLElement] | [];
 export const getFirstAndLastFocusableElement = (
