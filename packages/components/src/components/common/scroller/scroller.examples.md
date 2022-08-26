@@ -129,16 +129,16 @@ export default class Code extends Vue {
   
   isFocusable = `<div style="max-width: 600px">
   <p-scroller is-focusable="true" style="white-space: nowrap">
-    <span style="height: 24px">Some element 1</span>
-    <span style="height: 24px">Some element 2</span>
-    <span style="height: 24px">Some element 3</span>
-    <span style="height: 24px">Some element 4</span>
-    <span style="height: 24px">Some element 5</span>
-    <span style="height: 24px">Some element 6</span>
-    <span style="height: 24px">Some element 7</span>
-    <span style="height: 24px">Some element 8</span>
-    <span style="height: 24px">Some element 9</span>
-    <span style="height: 24px">Some element 10</span>
+    <span style="line-height: 1.5">Some element 1</span>
+    <span style="line-height: 1.5">Some element 2</span>
+    <span style="line-height: 1.5">Some element 3</span>
+    <span style="line-height: 1.5">Some element 4</span>
+    <span style="line-height: 1.5">Some element 5</span>
+    <span style="line-height: 1.5">Some element 6</span>
+    <span style="line-height: 1.5">Some element 7</span>
+    <span style="line-height: 1.5">Some element 8</span>
+    <span style="line-height: 1.5">Some element 9</span>
+    <span style="line-height: 1.5">Some element 10</span>
   </p-scroller>
 </div>`;
 
