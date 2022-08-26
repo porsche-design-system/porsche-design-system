@@ -49,10 +49,10 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           .forEach((scroller) => ((scroller as any).scrollToPosition = { scrollPosition: 100 }))
       );
 
-      await forceFocusState(page, '.hover p-scroller >>> p-button-pure >>> button'); // Scroll indicator hover
-      await forceHoverState(page, '.hover p-scroller >>> .scroll-wrapper'); // ensure scroll indicators are not hovered
+      await forceHoverState(page, '.hover p-scroller >>> p-button-pure >>> button'); // Scroll indicator hover
       await forceFocusState(page, '.focus p-scroller >>> .scroll-wrapper');
-      await forceFocusHoverState(page, '.focus-hover p-scroller >>> .scroll-wrapper');
+      await forceHoverState(page, '.focus-hover p-scroller >>> p-button-pure >>> button');
+      await forceFocusState(page, '.focus-hover p-scroller >>> .scroll-wrapper');
     })
   ).toBeFalsy();
 });
