@@ -683,10 +683,6 @@ export namespace Components {
          */
         "gradientColorScheme"?: GradientColorTheme;
         /**
-          * If true the scroller becomes focusable
-         */
-        "isFocusable"?: boolean;
-        /**
           * Sets the vertical position of scroll indicator icon
          */
         "scrollIndicatorPosition"?: ScrollIndicatorPosition;
@@ -2188,10 +2184,6 @@ declare namespace LocalJSX {
           * Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: GradientColorTheme;
-        /**
-          * If true the scroller becomes focusable
-         */
-        "isFocusable"?: boolean;
         /**
           * Sets the vertical position of scroll indicator icon
          */
