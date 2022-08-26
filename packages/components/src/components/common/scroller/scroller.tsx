@@ -49,7 +49,7 @@ export class Scroller {
   /** Sets the vertical position of scroll indicator icon */
   @Prop() public scrollIndicatorPosition?: ScrollIndicatorPosition = 'center';
 
-  /** If true the component becomes focusable */
+  /** If true the scroller becomes focusable */
   @Prop() public isFocusable?: boolean = false;
 
   @State() private isPrevHidden = true;
