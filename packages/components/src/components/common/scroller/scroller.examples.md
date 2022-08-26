@@ -7,7 +7,7 @@ viewport space is given a clickable scroll indicator is shown and the elements b
 
 ## Basic example
 
-The `p-scroller` should always be used with elements that can be focused. As soon as the slotted elements exceed the
+The `p-scroller` should always be used with a element or elements that can be focused. As soon as the slotted element(s) exceed the
 viewport / their respective container, scroll indicators are shown.
 
 If the component is accessed by keyboard navigation and an element is focused, scrolling via `arrow right` and

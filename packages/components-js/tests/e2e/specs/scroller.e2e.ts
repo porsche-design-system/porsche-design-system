@@ -8,6 +8,7 @@ import {
   getProperty,
   SCROLL_PERCENTAGE,
   selectNode,
+  setAttribute,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
@@ -22,20 +23,19 @@ type InitOptions = {
   amount?: number;
   isWrapped?: boolean;
   otherMarkup?: string;
-  tag?: 'a' | 'button';
-  isFocusable?: boolean;
+  tag?: 'a' | 'button' | 'span';
   scrollToPosition?: ScrollToPosition;
 };
 
 const initScroller = async (opts?: InitOptions) => {
-  const { amount = 8, isWrapped, otherMarkup = '', tag = 'button', isFocusable = false, scrollToPosition } = opts ?? {};
+  const { amount = 8, isWrapped, otherMarkup = '', tag = 'button', scrollToPosition } = opts ?? {};
 
   const elementAttributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
   const elements = Array.from(Array(amount))
     .map((_, i) => `<${tag}${elementAttributes}>Button ${i + 1}</${tag}>`)
     .join('');
 
-  const content = `<p-scroller${isFocusable ? ' is-focusable' : ''}${
+  const content = `<p-scroller${
     scrollToPosition ? ` scroll-to-position="{ scrollPosition: ${scrollToPosition.scrollPosition} }"` : ''
   }>
   ${elements}
@@ -347,23 +347,45 @@ describe('accessibility', () => {
     });
   });
 
-  it('should have correct tabindex on scroll-wrapper if isScrollable() and isFocusable are true', async () => {
-    await initScroller({ isWrapped: true, isFocusable: true });
+  it('should have correct tabindex on scroll-wrapper if scroller is Scrollable and has no focusable elements', async () => {
+    await initScroller({ isWrapped: true, tag: 'span' });
     const scrollWrapper = await getScrollWrapper();
 
     expect(await getAttribute(scrollWrapper, 'tabindex')).toBe('1');
   });
 
-  it('should have correct tabindex on scroll-wrapper if isScrollable() is false and isFocusable is true', async () => {
-    await initScroller({ isFocusable: true });
+  it('should have correct tabindex on scroll-wrapper if scroller is Scrollable and has focusable elements', async () => {
+    await initScroller({ isWrapped: true });
     const scrollWrapper = await getScrollWrapper();
 
     expect(await getAttribute(scrollWrapper, 'tabindex')).toBeNull();
   });
 
-  it('should have correct tabindex on scroll-wrapper if isScrollable() is true and isFocusable is undefined', async () => {
-    await initScroller({ isWrapped: true });
+  it('should have correct tabindex on scroll-wrapper if scroller has initially no focusable elements but a focusable element gets added', async () => {
+    await initScroller({ isWrapped: true, tag: 'span' });
+    const host = await getHost();
     const scrollWrapper = await getScrollWrapper();
+
+    expect(await getAttribute(scrollWrapper, 'tabindex')).toBe('1');
+
+    await host.evaluate((host) => {
+      const button = document.createElement('button');
+      host.appendChild(button);
+    });
+    await waitForStencilLifecycle(page);
+
+    expect(await getAttribute(scrollWrapper, 'tabindex')).toBeNull();
+  });
+
+  it('should have correct tabindex on scroll-wrapper if scroller has initially no focusable elements but a element gets tabindex added', async () => {
+    await initScroller({ isWrapped: true, tag: 'span' });
+    const scrollWrapper = await getScrollWrapper();
+    const [firstSpan] = await page.$$('span');
+
+    expect(await getAttribute(scrollWrapper, 'tabindex')).toBe('1');
+
+    await setAttribute(firstSpan, 'tabindex', '1');
+    await waitForStencilLifecycle(page);
 
     expect(await getAttribute(scrollWrapper, 'tabindex')).toBeNull();
   });

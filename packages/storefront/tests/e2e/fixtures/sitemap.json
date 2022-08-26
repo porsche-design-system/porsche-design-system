@@ -100,6 +100,7 @@
   "/components/radio-button/usage",
   "/components/scroller",
   "/components/scroller/examples",
+  "/components/scroller/props",
   "/components/scroller/usage",
   "/components/segmented-control",
   "/components/segmented-control/examples",
