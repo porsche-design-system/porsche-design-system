@@ -38,6 +38,7 @@ export const getComponentCss = (
       height: 'inherit',
     },
     'scroll-area': {
+      minHeight: pxToRemWithUnit(24),
       gridArea: '1 / 1 / 1 / -1',
       padding: pxToRemWithUnit(4),
       overflow: 'scroll hidden',
