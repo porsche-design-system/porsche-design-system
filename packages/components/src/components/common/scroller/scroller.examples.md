@@ -166,9 +166,9 @@ export default class Code extends Vue {
 </div>`;
   }
 
-  frameworkExample = `<p-button id="start">Scroll to start</p-button>
-<p-button id="middle">Scroll to middle</p-button>
-<p-button id="end">Scroll to end</p-button>
+  frameworkExample = `<button id="start">Scroll to start</button>
+<button id="middle">Scroll to middle</button>
+<button id="end">Scroll to end</button>
 
 <div style="max-width: 600px">
   <p-scroller class="scroller" is-focusable="true" scroll-to-position="{scrollPosition: 290}">
@@ -234,7 +234,7 @@ export default class Code extends Vue {
     width: 300px;
   }
 
-  .demo > p-button {
+  .demo > button {
     margin: 0 1rem 1rem 0;
   }
 </style>
