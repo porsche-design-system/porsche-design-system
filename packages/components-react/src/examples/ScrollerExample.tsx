@@ -38,7 +38,7 @@ export const ScrollerExamplePage = (): JSX.Element => {
       <button onClick={() => clickHandler(900, true)}>Scroll to end</button>
 
       <div style={{ maxWidth: '600px' }}>
-        <PScroller className="scroller" isFocusable scrollToPosition={{ scrollPosition, isSmooth }}>
+        <PScroller className="scroller" scrollToPosition={{ scrollPosition, isSmooth }}>
           <span>Start</span>
           <span>Middle</span>
           <span>End</span>

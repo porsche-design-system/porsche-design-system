@@ -159,7 +159,7 @@ export default class Code extends Vue {
 <button id="end">Scroll to end</button>
 
 <div style="max-width: 600px">
-  <p-scroller class="scroller" is-focusable="true" scroll-to-position="{scrollPosition: 290}">
+  <p-scroller class="scroller" scroll-to-position="{scrollPosition: 290}">
     <span>Start</span>
     <span>Middle</span>
     <span>End</span>
