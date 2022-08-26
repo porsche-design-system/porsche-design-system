@@ -33,9 +33,9 @@ export const ScrollerExamplePage = (): JSX.Element => {
     <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
-      <PButton onClick={() => clickHandler(0, true)}>Scroll to start</PButton>
-      <PButton onClick={() => clickHandler(290, true)}>Scroll to middle</PButton>
-      <PButton onClick={() => clickHandler(900, true)}>Scroll to end</PButton>
+      <button onClick={() => clickHandler(0, true)}>Scroll to start</button>
+      <button onClick={() => clickHandler(290, true)}>Scroll to middle</button>
+      <button onClick={() => clickHandler(900, true)}>Scroll to end</button>
 
       <div style={{ maxWidth: '600px' }}>
         <PScroller className="scroller" isFocusable scrollToPosition={{ scrollPosition, isSmooth }}>
