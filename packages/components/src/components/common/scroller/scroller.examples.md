@@ -36,19 +36,6 @@ The size of the scroll indicator arrows depends on the `font-size` set onto the 
 
 <Playground :markup="scrollIndicatorSize" :config="config"></Playground>
 
-## Scroll indicator position
-
-Per default the scroll indicators are vertically centered. The `scrollIndicatorPosition` property lets you change the
-position to top.
-
-<Playground :markup="scrollIndicatorPositionMarkup" :config="config">
-  <select v-model="scrollIndicatorPosition" aria-label="Select scroll indicator position">
-    <option disabled>Select scroll-indicator-position</option>
-    <option value="center">Center</option>
-    <option value="top">Top</option>
-  </select>
-</Playground>
-
 ## Gradient color scheme
 
 The background and gradient has to align to your chosen background.
@@ -135,21 +122,6 @@ export default class Code extends Vue {
     <p-button>Some button</p-button>
   </p-scroller>
 </div>`;
-
-  get scrollIndicatorPositionMarkup() { 
-    return `<div style="max-width: 600px">
-  <p-scroller scroll-indicator-position="${this.scrollIndicatorPosition}" style="white-space: nowrap">
-    <p-button>Some button</p-button>
-    <p-button>Some button</p-button>
-    <p-button>Some button</p-button>
-    <p-button>Some button</p-button>
-    <p-button>Some button</p-button>
-    <p-button>Some button</p-button>
-    <p-button>Some button</p-button>
-    <p-button>Some button</p-button>
-  </p-scroller>
-</div>`;
-  };
 
   get gradientMarkup() {
     return `<div style="max-width: 600px">
