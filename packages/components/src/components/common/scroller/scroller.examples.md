@@ -7,8 +7,8 @@ viewport space is given a clickable scroll indicator is shown and the elements b
 
 ## Basic example
 
-The `p-scroller` should always be used with a element or elements that can be focused. As soon as the slotted element(s) exceed the
-viewport / their respective container, scroll indicators are shown.
+The `p-scroller` should always be used with an element or elements that can be focused. As soon as the slotted
+element(s) exceed the viewport / their respective container, scroll indicators are shown.
 
 If the component is accessed by keyboard navigation and an element is focused, scrolling via `arrow right` and
 `arrow left` is possible.
@@ -19,20 +19,16 @@ The height of `p-scroller` depends on its content height.
 
 <Playground :markup="basicTagDismissibleMarkup" :config="config"></Playground>
 
-## With not focusable elements
-
 The `p-scroller` accepts any child node. It is not recommended using the component with not focusable elements.
 
-If absolutely necessary the component provides a `isFocusable` property which makes the scroller component focusable and
-accessible via keyboard. When the `p-scroller` is focused, scrolling via `arrow right` and `arrow left` is possible.
+If absolutely necessary the component is though focusable and accessible via keyboard. When the `p-scroller` is focused,
+scrolling via `arrow right` and `arrow left` is possible.
 
 Keep in mind that the content passed to the `p-scroller` must be within the size definition of the design system and
 thus have a minimum height of 24px to ensure visual alignment of the scroll indicators.
 
 The `p-scroller` only takes care of the horizontal alignment. Spacing and custom css properties must be handled by the
 consumer e.g. `white-space: nowrap` to avoid linebreaks inside the elements.
-
-<Playground :markup="isFocusable" :config="{themable: false}"></Playground>
 
 ## Scroll indicator size
 
@@ -124,21 +120,6 @@ export default class Code extends Vue {
     <p-tag-dismissible>Some tag content</p-tag-dismissible>
     <p-tag-dismissible>Some tag content</p-tag-dismissible>
     <p-tag-dismissible>Some tag content</p-tag-dismissible>
-  </p-scroller>
-</div>`;
-  
-  isFocusable = `<div style="max-width: 600px">
-  <p-scroller is-focusable="true" style="white-space: nowrap">
-    <span style="line-height: 1.5">Some element 1</span>
-    <span style="line-height: 1.5">Some element 2</span>
-    <span style="line-height: 1.5">Some element 3</span>
-    <span style="line-height: 1.5">Some element 4</span>
-    <span style="line-height: 1.5">Some element 5</span>
-    <span style="line-height: 1.5">Some element 6</span>
-    <span style="line-height: 1.5">Some element 7</span>
-    <span style="line-height: 1.5">Some element 8</span>
-    <span style="line-height: 1.5">Some element 9</span>
-    <span style="line-height: 1.5">Some element 10</span>
   </p-scroller>
 </div>`;
 
