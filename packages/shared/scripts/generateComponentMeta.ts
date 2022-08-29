@@ -118,7 +118,7 @@ const generateComponentMeta = (): void => {
     const hasSlottedCss = source.includes('attachSlottedCss');
     const hasAriaProp = source.includes('public aria?: SelectedAriaAttributes');
     const hasObserveAttributes = source.includes('observeAttributes(this.'); // this should be safe enough, but would miss a local variable as first parameter
-    const hasObserveChildren = source.includes('observeChildren(this.'); // this should be safe enough, but would miss a local variable as first parameter
+    const hasObserveChildren = !!source.match(/\bobserveChildren\(\s*this./); // this should be safe enough, but would miss a local variable as first parameter
     const hasSkeleton = SKELETON_TAG_NAMES.includes(tagName as any);
     const shouldPatchSlot = TAG_NAMES_TO_ADD_SLOT_TO.includes(tagName);
     const usesScss = source.includes('styleUrl:');
