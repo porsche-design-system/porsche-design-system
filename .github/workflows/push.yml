@@ -891,6 +891,7 @@ jobs:
       - components-js-unit
       - components-js-e2e
       - components-js-vrt
+      - components-js-cb-vrt
       - components-angular
       - components-react
       - fallbacks
@@ -933,6 +934,7 @@ jobs:
       - components-js-unit
       - components-js-e2e
       - components-js-vrt
+      - components-js-cb-vrt
       - components-angular
       - components-react
       - fallbacks
