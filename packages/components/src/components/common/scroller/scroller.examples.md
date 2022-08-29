@@ -21,7 +21,7 @@ Keep in mind that the content passed to the `p-scroller` must be within the size
 thus have a minimum height of 24px to ensure visual alignment of the scroll indicators.
 
 The `p-scroller` only takes care of the horizontal alignment. Spacing and custom css properties must be handled by the
-consumer e.g. `white-space: nowrap` to avoid linebreaks inside the elements.
+consumer e.g. `white-space: nowrap` to avoid line breaks inside the elements.
 
 <Playground :markup="basicTagDismissibleMarkup" :config="config"></Playground>
 
