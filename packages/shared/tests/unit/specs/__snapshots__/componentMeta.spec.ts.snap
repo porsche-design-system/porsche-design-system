@@ -935,9 +935,6 @@ Object {
       Object {
         "scrollIndicatorPosition": "center",
       },
-      Object {
-        "isFocusable": false,
-      },
     ],
     "shouldPatchSlot": false,
     "styling": "jss",
