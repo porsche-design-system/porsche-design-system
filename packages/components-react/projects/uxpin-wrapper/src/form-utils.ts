@@ -24,6 +24,6 @@ export function partitionProps<WrapperProps extends { [key: string]: any }, Dumm
  * Used to export the "Dummy" component props keys passing a `Record` instead of an array of strings
  * to ensure that no key is missing
  */
-export function extractPropsKeys<T>(propsAsRecord: Record<keyof T, null>) {
+export function extractPropsKeys<T>(propsAsRecord: Record<keyof T, null>): (keyof T)[] {
   return Object.keys(propsAsRecord) as (keyof T)[];
 }
