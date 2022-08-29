@@ -20,7 +20,9 @@ export const isFocusableElement = (el: HTMLInputElement): boolean => {
     el.tabIndex >= 0
   ) {
     return true;
-  } else return !nodeNames.includes(nodeName) && el.tabIndex >= 0;
+  } else {
+    return !nodeNames.includes(nodeName) && el.tabIndex >= 0;
+  }
 };
 
 export const hasFocusableElements = (host: HTMLElement): boolean => unpackChildren(host).some(isFocusableElement);
