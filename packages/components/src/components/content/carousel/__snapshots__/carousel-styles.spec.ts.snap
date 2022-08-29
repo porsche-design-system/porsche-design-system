@@ -8,6 +8,7 @@ exports[`getComponentCss() should return correct css for wrapContent: false, dis
   margin: 0 auto !important;
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
+  overflow: hidden !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -70,7 +71,6 @@ h2,::slotted([slot=heading]) {
   position: relative;
   min-width: 0;
   cursor: grab;
-  overflow: hidden;
 }
 .splide__track {
   position: relative;
@@ -172,6 +172,7 @@ exports[`getComponentCss() should return correct css for wrapContent: false, dis
   margin: 0 auto !important;
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
+  overflow: hidden !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -234,7 +235,6 @@ h2,::slotted([slot=heading]) {
   position: relative;
   min-width: 0;
   cursor: grab;
-  overflow: hidden;
 }
 .splide__track {
   position: relative;
@@ -309,6 +309,7 @@ exports[`getComponentCss() should return correct css for wrapContent: false, dis
   margin: 0 auto !important;
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
+  overflow: hidden !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -371,7 +372,6 @@ h2,::slotted([slot=heading]) {
   position: relative;
   min-width: 0;
   cursor: grab;
-  overflow: hidden;
 }
 .splide__track {
   position: relative;
@@ -446,6 +446,7 @@ exports[`getComponentCss() should return correct css for wrapContent: false, dis
   margin: 0 auto !important;
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
+  overflow: hidden !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -508,7 +509,6 @@ h2,::slotted([slot=heading]) {
   position: relative;
   min-width: 0;
   cursor: grab;
-  overflow: hidden;
 }
 .splide__track {
   position: relative;
@@ -568,6 +568,7 @@ exports[`getComponentCss() should return correct css for wrapContent: true, disa
   margin: 0 auto !important;
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
+  overflow: hidden !important;
   padding: 0 max(1rem, 7vw) !important;
 }
 h2,::slotted([slot=heading]) {
@@ -634,7 +635,6 @@ h2,::slotted([slot=heading]) {
   position: relative;
   min-width: 0;
   cursor: grab;
-  overflow: hidden;
 }
 .splide__track {
   position: relative;
@@ -709,6 +709,7 @@ exports[`getComponentCss() should return correct css for wrapContent: true, disa
   margin: 0 auto !important;
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
+  overflow: hidden !important;
   padding: 0 max(1rem, 7vw) !important;
 }
 h2,::slotted([slot=heading]) {
@@ -775,7 +776,6 @@ h2,::slotted([slot=heading]) {
   position: relative;
   min-width: 0;
   cursor: grab;
-  overflow: hidden;
 }
 .splide__track {
   position: relative;
