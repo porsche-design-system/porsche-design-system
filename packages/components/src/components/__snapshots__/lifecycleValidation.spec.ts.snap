@@ -65,11 +65,9 @@ Object {
   "disablePagination": "breakpoint",
   "heading": "string",
   "intl": "shape",
-  "overflowVisible": "boolean",
-  "peakingSlide": "boolean",
   "slidesPerPage": "breakpoint",
   "theme": "oneOf",
-  "wrapHeading": "boolean",
+  "wrapContent": "boolean",
 }
 `;
 

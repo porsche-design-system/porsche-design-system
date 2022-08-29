@@ -210,14 +210,6 @@ export namespace Components {
          */
         "intl"?: CarouselInternationalization;
         /**
-          * Whether overflowing slides should be visible. Default is `false`.
-         */
-        "overflowVisible"?: boolean;
-        /**
-          * If true, an additional slide is partially visible next to the amount of slides specified via `slidesPerPage`. Default is `false`
-         */
-        "peakingSlide"?: boolean;
-        /**
           * Sets the amount of slides visible at the same time.
          */
         "slidesPerPage"?: BreakpointCustomizable<number>;
@@ -226,9 +218,9 @@ export namespace Components {
          */
         "theme"?: Theme;
         /**
-          * Whether the heading should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper.
+          * Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper.
          */
-        "wrapHeading"?: boolean;
+        "wrapContent"?: boolean;
     }
     interface PCheckboxWrapper {
         /**
@@ -1742,14 +1734,6 @@ declare namespace LocalJSX {
          */
         "onCarouselChange"?: (event: PCarouselCustomEvent<CarouselChangeEvent>) => void;
         /**
-          * Whether overflowing slides should be visible. Default is `false`.
-         */
-        "overflowVisible"?: boolean;
-        /**
-          * If true, an additional slide is partially visible next to the amount of slides specified via `slidesPerPage`. Default is `false`
-         */
-        "peakingSlide"?: boolean;
-        /**
           * Sets the amount of slides visible at the same time.
          */
         "slidesPerPage"?: BreakpointCustomizable<number>;
@@ -1758,9 +1742,9 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
         /**
-          * Whether the heading should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper.
+          * Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper.
          */
-        "wrapHeading"?: boolean;
+        "wrapContent"?: boolean;
     }
     interface PCheckboxWrapper {
         /**

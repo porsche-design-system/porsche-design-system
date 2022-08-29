@@ -229,7 +229,7 @@ Object {
         "heading": null,
       },
       Object {
-        "wrapHeading": null,
+        "wrapContent": null,
       },
       Object {
         "slidesPerPage": "1",
@@ -239,12 +239,6 @@ Object {
       },
       Object {
         "intl": "{}",
-      },
-      Object {
-        "overflowVisible": false,
-      },
-      Object {
-        "peakingSlide": false,
       },
       Object {
         "theme": "light",
