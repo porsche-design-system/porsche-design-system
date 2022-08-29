@@ -8,10 +8,7 @@ extendedViewports.forEach(async (viewport) => {
   await cbVRT('modal-scrollable', viewport, {
     scenario: (page) =>
       page.evaluate(() => {
-        // screenshot triggers resize, so we need to scroll the modal after that
-        window.addEventListener('resize', () => {
-          document.querySelector('p-modal').scrollTo(0, 10000);
-        });
+        document.querySelector('p-modal').scrollTo(0, 10000);
       }),
   });
 });
