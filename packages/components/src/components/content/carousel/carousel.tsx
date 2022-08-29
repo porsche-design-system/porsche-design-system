@@ -46,6 +46,7 @@ const propTypes: PropTypes<typeof Carousel> = {
     slide: AllowedTypes.string,
   }),
   overflowVisible: AllowedTypes.boolean,
+  peakingSlide: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -73,6 +74,9 @@ export class Carousel {
 
   /** Whether overflowing slides should be visible. Default is `false`. */
   @Prop() public overflowVisible?: boolean = false;
+
+  /** If true, an additional slide is partially visible next to the amount of slides specified via `slidesPerPage`. Default is `false` */
+  @Prop() public peakingSlide?: boolean = false;
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
@@ -112,11 +116,12 @@ export class Carousel {
       arrows: false,
       pagination: false,
       perMove: 1,
-      // dragMinThreshold: {
-      //   mouse: 5, // should be enough to disable mouse dragging
-      //   touch: 10,
-      // },
       mediaQuery: 'min',
+      ...(this.peakingSlide && {
+        padding: {
+          right: '10%',
+        },
+      }),
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
       breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number>, string>, {
         base: spacing.small,
