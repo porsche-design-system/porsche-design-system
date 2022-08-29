@@ -159,8 +159,7 @@ export default class Code extends Vue {
     <p-tag-dismissible>MIDDLE - some tag content</p-tag-dismissible>
     <p-tag-dismissible>END - some tag content</p-tag-dismissible>
   </p-scroller>
-</div>
-`
+</div>`;
  
   mounted() {
     /* initially update accordion with open attribute in playground */
