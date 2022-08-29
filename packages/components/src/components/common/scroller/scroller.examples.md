@@ -33,7 +33,7 @@ The size of the scroll indicator arrows depends on the `font-size` set onto the 
 
 ## Gradient color scheme
 
-The background and gradient has to align to your chosen background.
+The background and gradient has to align with your chosen background.
 
 <Playground :markup="gradientMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
   <select v-model="gradientColorScheme" aria-label="Select color scheme">
