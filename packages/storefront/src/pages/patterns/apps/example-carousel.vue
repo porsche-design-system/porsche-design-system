@@ -3,7 +3,7 @@
     <section>
       <h2>Within content-wrapper</h2>
 
-      <div v-html="content.replace(/(<p-carousel)/g, `$1 overflow-visible='true'`)"></div>
+      <div v-html="content"></div>
     </section>
 
     <section>
@@ -25,7 +25,7 @@
       .join('');
     content = `
 <p-carousel class="demo" heading="Einstieg bei Porsche" slides-per-page="{base: 1, s: 2, l: 3}">
-  <p-tabs-bar slot="subheading" active-tab-index="0">
+  <p-tabs-bar slot="description" active-tab-index="0">
     <button>Schüler</button>
     <button>Studierende & Absolventen</button>
     <button>Berufserfahrene</button>
@@ -96,39 +96,15 @@
   </div>
 </p-carousel>
 
+<p-carousel heading="Some Heading" slides-per-page="1">
+  ${this.slides}
+</p-carousel>
+
+<p-carousel heading="Some Heading" slides-per-page="2">
+  ${this.slides}
+</p-carousel>
+
 <p-carousel heading="Some Heading" slides-per-page="3">
-  ${this.slides}
-</p-carousel>
-
-<p-carousel slides-per-page="3">
-  <h2 slot="heading">Slotted Heading with default styles</h2>
-  ${this.slides}
-</p-carousel>
-
-<p-carousel heading="Some wrapped Heading" wrap-heading="true" slides-per-page="3">
-  ${this.slides}
-</p-carousel>
-
-<p-carousel
-  heading="Multiline Heading could be quite long especially on smaller screens but how would the carousel be accessible with out one?"
-  slides-per-page="3"
->
-  ${this.slides}
-</p-carousel>
-
-<p-carousel heading="Responsive slides per page" slides-per-page="{base: 3, s: 1, m: 2}">
-  ${this.slides}
-</p-carousel>
-
-<p-carousel heading="Floating slides per page" slides-per-page="3.3">
-  ${this.slides}
-</p-carousel>
-
-<p-carousel heading="Disabled pagination" slides-per-page="3" disable-pagination="true">
-  ${this.slides}
-</p-carousel>
-
-<p-carousel heading="Responsive disabled pagination" slides-per-page="3" disable-pagination="{base: true, s: false, m: true}">
   ${this.slides}
 </p-carousel>`;
   }
