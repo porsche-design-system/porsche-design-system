@@ -2,25 +2,22 @@
  * Split a set of component "Props" into a tuple of 2 subsets, given an array of props names
  * Used to split form component props into "wrapper" and "dummy" props.
  */
-export function partitionProps<InputProps extends { [key: string]: any }, SelectedProps extends { [key: string]: any }>(
-  props: InputProps,
-  selectedPropNames: (keyof SelectedProps)[]
-) {
-  type UnselectedProps = Omit<InputProps, keyof SelectedProps>;
-
-  const selected = {} as SelectedProps;
-  const unselected = {} as UnselectedProps;
+export function partitionProps<WrapperProps extends { [key: string]: any }, DummyProps extends { [key: string]: any }>(
+  props: WrapperProps & DummyProps,
+  selectedPropNames: (keyof DummyProps)[]
+): [WrapperProps, DummyProps] {
+  const dummyProps = {} as DummyProps;
+  const wrapperProps = {} as WrapperProps;
 
   Object.entries(props).forEach(([key, value]) => {
     if (selectedPropNames.includes(key)) {
-      selected[key as keyof SelectedProps] = value;
+      dummyProps[key as keyof DummyProps] = value;
     } else {
-      unselected[key as keyof UnselectedProps] = value;
+      wrapperProps[key as keyof WrapperProps] = value;
     }
   });
 
-  const result: [SelectedProps, UnselectedProps] = [selected, unselected];
-  return result;
+  return [wrapperProps, dummyProps];
 }
 
 /**
