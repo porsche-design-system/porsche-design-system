@@ -59,6 +59,12 @@ When combined with `wrapHeading`, the `subheading` also respects the padding of 
 
 <Playground :markup="subHeading" :config="config"></Playground>
 
+## Peaking Slide
+
+To get a cut off slide on the right side, you can use the `peakingSlide` property.
+
+<Playground :markup="peakingSlide" :config="config"></Playground>
+
 ## Overflow visible
 
 If you want to see the previous and next slide that are naturally outside the component, you can set
@@ -183,6 +189,10 @@ export default class Code extends Vue {
 <p-carousel wrap-heading="true">
   <h3 slot="heading">Some slotted Heading</h3>
   <p slot="subheading">Some slotted subheading</p>
+  ${this.getSlides(3)}
+</p-carousel>`;
+
+  peakingSlide = `<p-carousel peaking-slide="true" heading="${this.basicHeading}">
   ${this.getSlides(3)}
 </p-carousel>`;
 
