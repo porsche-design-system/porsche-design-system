@@ -42,37 +42,20 @@ named slot.
 
 <Playground :markup="heading" :config="config"></Playground>
 
-## Wrap Heading
+## Wrap Content
 
 By default, the `p-carousel` takes up the available space which works for all scenarios where its parent has some
 padding, e.g., when used within `p-content-wrapper`.  
-In case its parent either does not provide some padding or the `p-carousel` really should go edge to edge, both the
-heading and navigation controls would be positioned right on the edge. Do avoid this, use the `wrapHeading` property
-which internally applies the padding of `p-content-wrapper`.
+In case its parent either does not provide some padding or the `p-carousel` really should go edge to edge, you cann use
+the `wrapContent` property which internally applies the padding of `p-content-wrapper`.
 
-<Playground :markup="wrapHeading" :config="config"></Playground>
+<Playground :markup="wrapContent" :config="config"></Playground>
 
-## Sub Heading
+## Description
 
-If you want to place any additional elements between heading and slider, you can use the `subheading` slot.  
-When combined with `wrapHeading`, the `subheading` also respects the padding of `p-content-wrapper`.
+If you want to place any additional elements between heading and slider, you can use the `description` slot.
 
-<Playground :markup="subHeading" :config="config"></Playground>
-
-## Peaking Slide
-
-To get a cut off slide on the right side, you can use the `peakingSlide` property.
-
-<Playground :markup="peakingSlide" :config="config"></Playground>
-
-## Overflow visible
-
-If you want to see the previous and next slide that are naturally outside the component, you can set
-`overflow-visible="true"`.  
-But make sure, that your entire page does not become horizontally scrollable by specifying the style
-`overflow-x: hidden` somewhere up your DOM hierarchy.
-
-<Playground :markup="overflowVisible" :config="{ ...config, overflowX: 'hidden' }"></Playground>
+<Playground :markup="description" :config="config"></Playground>
 
 ## Disable Pagination
 
@@ -177,26 +160,12 @@ export default class Code extends Vue {
   ${this.getSlides(3)}
 </p-carousel>`;
 
-  wrapHeading = `<p-carousel wrap-heading="true" heading="${this.basicHeading}">
+  wrapContent = `<p-carousel wrap-content="true" heading="${this.basicHeading}">
   ${this.getSlides(3)}
 </p-carousel>`;
 
-  subHeading = `<p-carousel heading="${this.basicHeading}">
-  <p slot="subheading">Some slotted subheading</p>
-  ${this.getSlides(3)}
-</p-carousel>
-
-<p-carousel wrap-heading="true">
-  <h3 slot="heading">Some slotted Heading</h3>
-  <p slot="subheading">Some slotted subheading</p>
-  ${this.getSlides(3)}
-</p-carousel>`;
-
-  peakingSlide = `<p-carousel peaking-slide="true" heading="${this.basicHeading}">
-  ${this.getSlides(3)}
-</p-carousel>`;
-
-  overflowVisible = `<p-carousel overflow-visible="true" heading="${this.basicHeading}" style="padding: 0 5vw">
+  description = `<p-carousel heading="${this.basicHeading}">
+  <p slot="description">Some slotted description</p>
   ${this.getSlides(3)}
 </p-carousel>`;
 
