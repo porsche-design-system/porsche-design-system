@@ -7,28 +7,23 @@ viewport space is given a clickable scroll indicator is shown and the elements b
 
 ## Basic example
 
-The `p-scroller` should always be used with an element or elements that can be focused. As soon as the slotted
-element(s) exceed the viewport / their respective container, scroll indicators are shown.
+As soon as the slotted element(s) exceed the viewport / their respective container, scroll indicators are shown.
 
-If the component is accessed by keyboard navigation and an element is focused, scrolling via `arrow right` and
-`arrow left` is possible.
+If the `p-scroller` component is accessed by keyboard navigation and is focused, scrolling via `arrow right` and
+`arrow left` is possible. If `p-scroller` contains focusable element(s) these can be also accessed by keyboard
+navigation.
 
 <Playground :markup="basicTagMarkup" :config="config"></Playground>
 
 The height of `p-scroller` depends on its content height.
-
-<Playground :markup="basicTagDismissibleMarkup" :config="config"></Playground>
-
-The `p-scroller` accepts any child node. It is not recommended using the component with not focusable elements.
-
-If absolutely necessary the component is though focusable and accessible via keyboard. When the `p-scroller` is focused,
-scrolling via `arrow right` and `arrow left` is possible.
 
 Keep in mind that the content passed to the `p-scroller` must be within the size definition of the design system and
 thus have a minimum height of 24px to ensure visual alignment of the scroll indicators.
 
 The `p-scroller` only takes care of the horizontal alignment. Spacing and custom css properties must be handled by the
 consumer e.g. `white-space: nowrap` to avoid linebreaks inside the elements.
+
+<Playground :markup="basicTagDismissibleMarkup" :config="config"></Playground>
 
 ## Scroll indicator size
 
