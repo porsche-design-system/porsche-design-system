@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   design-system:
-    image: ghcr.io/porscheui/porsche-design-system/node:16.15.1-stretch-slim
+    image: ghcr.io/porscheui/porsche-design-system/node:16.15.1-stretch-slim-playwright
     working_dir: /opt/porsche-design-system-app
     user: "${RUN_UID}:${RUN_GID}"
     ports:
@@ -59,7 +59,7 @@ services:
       - utilities-deprecated-node-modules:/opt/porsche-design-system-app/packages/utilities-deprecated/node_modules
       - utilities-deprecated-utilities-node-modules:/opt/porsche-design-system-app/packages/utilities-deprecated/projects/utilities/node_modules
   change-volume-owner:
-    image: ghcr.io/porscheui/porsche-design-system/node:16.15.1-stretch-slim
+    image: ghcr.io/porscheui/porsche-design-system/node:16.15.1-stretch-slim-playwright
     volumes:
       - home:/opt/porsche-design-system-volumes/home
       - monorepo-node-modules:/opt/porsche-design-system-volumes/root-node_modules
