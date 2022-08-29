@@ -358,35 +358,6 @@ describe('accessibility', () => {
     await initScroller({ isWrapped: true });
     const scrollWrapper = await getScrollWrapper();
 
-    expect(await getAttribute(scrollWrapper, 'tabindex')).toBeNull();
-  });
-
-  it('should have correct tabindex on scroll-wrapper if scroller has initially no focusable elements but a focusable element gets added', async () => {
-    await initScroller({ isWrapped: true, tag: 'span' });
-    const host = await getHost();
-    const scrollWrapper = await getScrollWrapper();
-
     expect(await getAttribute(scrollWrapper, 'tabindex')).toBe('1');
-
-    await host.evaluate((host) => {
-      const button = document.createElement('button');
-      host.appendChild(button);
-    });
-    await waitForStencilLifecycle(page);
-
-    expect(await getAttribute(scrollWrapper, 'tabindex')).toBeNull();
-  });
-
-  it('should have correct tabindex on scroll-wrapper if scroller has initially no focusable elements but a element gets tabindex added', async () => {
-    await initScroller({ isWrapped: true, tag: 'span' });
-    const scrollWrapper = await getScrollWrapper();
-    const [firstSpan] = await page.$$('span');
-
-    expect(await getAttribute(scrollWrapper, 'tabindex')).toBe('1');
-
-    await setAttribute(firstSpan, 'tabindex', '1');
-    await waitForStencilLifecycle(page);
-
-    expect(await getAttribute(scrollWrapper, 'tabindex')).toBeNull();
   });
 });
