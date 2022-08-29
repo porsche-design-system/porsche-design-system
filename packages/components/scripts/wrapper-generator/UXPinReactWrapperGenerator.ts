@@ -4,15 +4,9 @@ import { ExtendedProp } from './DataStructureBuilder';
 import type { AdditionalFile, SkeletonProps } from './AbstractWrapperGenerator';
 import { paramCase, pascalCase } from 'change-case';
 
-type FormComponentName = 'Checkbox' | 'RadioButton' | 'Select' | 'TextField' | 'Textarea';
+type PresetsProps = { [key: string]: number | string | boolean | string[] };
 
-type ExtraProps = { [key: string]: number | string | boolean | string[] };
-
-type FormPresetsSetupItem = {
-  formComponentName: FormComponentName;
-  wrapperTagName: TagName;
-  extraProps: ExtraProps;
-};
+type FormComponentName = 'Checkbox' | 'RadioButton' | 'Select' | 'TextField' | 'Textarea'; // the 5 form components created "manually" in uxpin-wrapper project
 
 const addNestedIndentation = (x: string): string => `  ${x}`;
 
@@ -291,9 +285,15 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   public getAdditionalFiles(): AdditionalFile[] {
     const glue = '\n    ';
 
-    const componentsWithPresetChildrenMap: { [key in TagName]?: { props?: string; children?: string } } = {
+    const componentsWithPresetChildrenMap: {
+      [key in TagName]?: {
+        props?: PresetsProps;
+        children?: string;
+        formComponent?: { name: FormComponentName; extraProps: PresetsProps };
+      };
+    } = {
       'p-accordion': {
-        props: 'heading="Heading"',
+        props: { heading: 'Heading' },
         children: '<Text uxpId="accordion-text" children="Content" />',
       },
       'p-button-group': {
@@ -303,11 +303,15 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         ].join(glue),
       },
       'p-checkbox-wrapper': {
-        props: 'label="CheckboxWrapper"',
+        props: { label: 'CheckboxWrapper' },
         children: '<DummyCheckbox uxpId="dummy-checkbox" />',
+        formComponent: {
+          name: 'Checkbox',
+          extraProps: { label: 'My Checkbox', checked: true },
+        },
       },
       'p-modal': {
-        props: 'heading="Heading" open',
+        props: { heading: 'Heading', open: true },
         children: [
           '<Text uxpId="modal-text">Some Content</Text>',
           '<ButtonGroup uxpId="modal-button-group" spacingTop={32}>',
@@ -319,11 +323,15 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         ].join(glue),
       },
       'p-radio-button-wrapper': {
-        props: 'label="RadioButtonWrapper"',
+        props: { label: 'RadioButtonWrapper' },
         children: '<DummyRadioButton uxpId="dummy-radio-button" />',
+        formComponent: {
+          name: 'RadioButton',
+          extraProps: { label: 'My RadioButton', checked: true },
+        },
       },
       'p-segmented-control': {
-        props: 'value={1}',
+        props: { value: 1 },
         children: Array.from(Array(3))
           .map(
             (_, i) =>
@@ -334,9 +342,13 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           .join(glue),
       },
       'p-select-wrapper': {
-        props: 'label="SelectWrapper"',
+        props: { label: 'SelectWrapper' },
         children:
           '<DummySelect uxpId="dummy-select" options={Array.from(Array(3)).map((_, i) => `Option ${i + 1}`)} />',
+        formComponent: {
+          name: 'Select',
+          extraProps: { label: 'My Select', options: ['Option 1', 'Option 2', 'Option 3'] },
+        },
       },
       'p-stepper-horizontal': {
         children: [
@@ -346,12 +358,20 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         ].join(glue),
       },
       'p-text-field-wrapper': {
-        props: 'label="TextFieldWrapper"',
+        props: { label: 'TextFieldWrapper' },
         children: '<DummyTextField uxpId="dummy-text-field" />',
+        formComponent: {
+          name: 'TextField',
+          extraProps: { label: 'My TextField' },
+        },
       },
       'p-textarea-wrapper': {
-        props: 'label="TextareaWrapper"',
+        props: { label: 'TextareaWrapper' },
         children: '<DummyTextarea uxpId="dummy-textarea" />',
+        formComponent: {
+          name: 'Textarea',
+          extraProps: { label: 'My Textarea' },
+        },
       },
       'p-table': {
         children: [
@@ -382,13 +402,13 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         ].join(glue),
       },
       'p-tabs': {
-        props: 'activeTabIndex={0}',
+        props: { activeTabIndex: 0 },
         children: Array.from(Array(2))
           .map((_, i) => `<TabsItem label="Tab ${i + 1}" uxpId="tabs-item-${i + 1}" children="Content ${i + 1}" />`)
           .join(glue),
       },
       'p-tabs-bar': {
-        props: 'activeTabIndex={0}',
+        props: { activeTabIndex: 0 },
         children: Array.from(Array(3))
           .map((_, i) => `<DummyButton uxpId="dummy-button-${i + 1}" children="Tab ${i + 1}" />`)
           .join(glue),
@@ -400,46 +420,93 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       },
     };
 
-    const componentPresetFiles: AdditionalFile[] = Object.entries(componentsWithPresetChildrenMap).map(
-      ([component, { props, children = '' }]) => {
-        const componentName = this.getComponentFileName(component as TagName, true);
+    const componentPresetFiles: AdditionalFile[] = Object.entries(componentsWithPresetChildrenMap).reduce(
+      (acc, [component, { props, children = '', formComponent }]) => {
+        const mainPresetsFile = this.generateMainComponentPreset(component as TagName, props, children);
 
-        // extract other components and get rid of duplicates
-        const allComponents: string[] = (children?.match(/<([A-Za-z]+)/g) || [])
-          .map((x) => x.replace('<', ''))
-          .filter((x, i, a) => a.indexOf(x) === i);
+        const formPresetsFile =
+          formComponent &&
+          this.generateFormComponentPreset(component as TagName, formComponent.name, formComponent.extraProps);
 
-        const otherComponents = allComponents.filter((x) => !x.startsWith('Dummy'));
-        const dummyComponents = allComponents.filter((x) => x.startsWith('Dummy'));
-
-        const otherImports = otherComponents.length ? `import { ${otherComponents.join(', ')} } from '../..';` : '';
-        const dummyImports = dummyComponents.length
-          ? `import { ${dummyComponents.join(', ')} } from '../../../../dummy';`
-          : '';
-
-        const imports = [`import { ${componentName} } from '../${componentName}';`, otherImports, dummyImports]
-          .filter((x) => x)
-          .join('\n');
-
-        const content = `${imports}
-
-export default (
-  <${componentName} uxpId="${paramCase(componentName)}"${props ? ' ' + props : ''}>
-    ${children}
-  </${componentName}>
-);`;
-
-        const additionalFile: AdditionalFile = {
-          name: '0-default.jsx',
-          relativePath: componentName + '/presets',
-          content,
-        };
-        return additionalFile;
-      }
+        return [...acc, ...([mainPresetsFile, formPresetsFile].filter((x) => x) as AdditionalFile[])];
+      },
+      [] as AdditionalFile[]
     );
 
-    const formComponentPresetFiles = generateAllFormComponentPresets();
+    const configFile = this.generateUXPinConfigFile();
 
+    return [...componentPresetFiles, configFile];
+  }
+
+  private generateMainComponentPreset(component: TagName, props?: PresetsProps, children?: string): AdditionalFile {
+    const componentName = this.getComponentFileName(component as TagName, true);
+
+    // extract other components and get rid of duplicates
+    const allComponents: string[] = (children?.match(/<([A-Za-z]+)/g) || [])
+      .map((x) => x.replace('<', ''))
+      .filter((x, i, a) => a.indexOf(x) === i);
+
+    const otherComponents = allComponents.filter((x) => !x.startsWith('Dummy'));
+    const dummyComponents = allComponents.filter((x) => x.startsWith('Dummy'));
+
+    const otherImports = otherComponents.length ? `import { ${otherComponents.join(', ')} } from '../..';` : '';
+    const dummyImports = dummyComponents.length
+      ? `import { ${dummyComponents.join(', ')} } from '../../../../dummy';`
+      : '';
+
+    const imports = [`import { ${componentName} } from '../${componentName}';`, otherImports, dummyImports]
+      .filter((x) => x)
+      .join('\n');
+
+    const stringifiedProps = getStringifiedProps({
+      uxpId: paramCase(componentName),
+      ...props,
+    });
+
+    const content = `${imports}
+  
+  export default (
+  <${componentName} ${stringifiedProps}>
+  ${children}
+  </${componentName}>
+  );`;
+
+    return this.generatePresetsFile(componentName, content);
+  }
+
+  private generateFormComponentPreset(
+    wrapperTagName: TagName,
+    formComponentName: FormComponentName,
+    extraProps: PresetsProps
+  ): AdditionalFile {
+    const { props: propsAsArray } = getComponentMeta(wrapperTagName);
+
+    const defaultProps = convertComponentMetaPropsToObject(propsAsArray);
+
+    const stringifiedProps = getStringifiedProps({
+      uxpId: paramCase(formComponentName),
+      ...defaultProps,
+      ...extraProps,
+    });
+
+    const content = `import { ${formComponentName} } from '../${formComponentName}';
+  
+  export default <${formComponentName} ${stringifiedProps} />;  
+  `;
+
+    return this.generatePresetsFile('../../form/' + formComponentName, content);
+  }
+
+  private generatePresetsFile(relativePath: string, content: string): AdditionalFile {
+    const presetsFile: AdditionalFile = {
+      name: '0-default.jsx',
+      relativePath: relativePath + '/presets',
+      content,
+    };
+    return presetsFile;
+  }
+
+  private generateUXPinConfigFile(): AdditionalFile {
     const componentsBasePath = 'src/lib/components/';
     const componentPaths = this.relevantComponentTagNames
       .map((component) => {
@@ -452,7 +519,7 @@ export default (
       .map((path) => `'${path}'`)
       .join(',\n          ');
 
-    const uxPinConfigContent = `module.exports = {
+    const content = `module.exports = {
   components: {
     categories: [
       {
@@ -476,73 +543,14 @@ export default (
   name: 'Porsche Design System',
 };`;
 
-    return [
-      ...componentPresetFiles,
-      ...formComponentPresetFiles,
-      { name: 'uxpin.config.js', relativePath: '../../..', content: uxPinConfigContent },
-    ];
+    return { name: 'uxpin.config.js', relativePath: '../../..', content };
   }
 }
 
-const formPresetsSetup: FormPresetsSetupItem[] = [
-  {
-    formComponentName: 'Checkbox',
-    wrapperTagName: 'p-checkbox-wrapper',
-    extraProps: { label: 'My Checkbox', checked: true },
-  },
-  {
-    formComponentName: 'RadioButton',
-    wrapperTagName: 'p-radio-button-wrapper',
-    extraProps: { label: 'My RadioButton', checked: true },
-  },
-  {
-    formComponentName: 'Select',
-    wrapperTagName: 'p-select-wrapper',
-    extraProps: { label: 'My Select', options: ['Option 1', 'Option 2', 'Option 3'] },
-  },
-  {
-    formComponentName: 'TextField',
-    wrapperTagName: 'p-text-field-wrapper',
-    extraProps: { label: 'My TextField' },
-  },
-  {
-    formComponentName: 'Textarea',
-    wrapperTagName: 'p-textarea-wrapper',
-    extraProps: { label: 'My Textarea' },
-  },
-];
-
-function generateAllFormComponentPresets() {
-  return formPresetsSetup.map(generateFormComponentPreset);
-}
-
-function generateFormComponentPreset({ formComponentName, wrapperTagName, extraProps }: FormPresetsSetupItem) {
-  const { props: propsAsArray } = getComponentMeta(wrapperTagName);
-
-  const defaultProps = convertComponentMetaPropsToObject(propsAsArray);
-  const uxpId = formComponentName.toLowerCase();
-  const props = {
-    uxpId,
-    ...defaultProps,
-    ...extraProps,
-  };
-
-  const stringifiedProps = Object.entries(props)
+function getStringifiedProps(props: PresetsProps) {
+  return Object.entries(props)
     .map(([key, value]) => `${key}=${wrapAttributeWithDelimiter(value)}`)
     .join(' ');
-
-  const content = `import { ${formComponentName} } from '../${formComponentName}';
-
-export default <${formComponentName} ${stringifiedProps} />;  
-`;
-
-  const presetsFile: AdditionalFile = {
-    name: '0-default.jsx',
-    relativePath: '../../form/' + formComponentName + '/presets',
-    content,
-  };
-
-  return presetsFile;
 }
 
 function wrapAttributeWithDelimiter(attribute: string | number | boolean | string[]) {
@@ -553,12 +561,12 @@ function wrapAttributeWithDelimiter(attribute: string | number | boolean | strin
   }
 }
 
-function convertComponentMetaPropsToObject(props: ReturnType<typeof getComponentMeta>['props']) {
+function convertComponentMetaPropsToObject(props: ReturnType<typeof getComponentMeta>['props']): PresetsProps {
   return (
     props?.reduce((acc, prop) => {
       const key = Object.keys(prop)[0];
       const value = Object.values(prop)[0];
-      return value !== null ? { ...acc, [key]: value } : {}; // filter out `null` values that trigger errors in UXPin editor
+      return value !== null ? { ...acc, [key]: value } : acc; // filter out `null` values that trigger errors in UXPin editor
     }, {}) || {}
   );
 }
