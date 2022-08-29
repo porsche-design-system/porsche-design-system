@@ -59,7 +59,7 @@ export const warnIfHeadingIsMissing = (host: HTMLElement, heading: string): void
 
 export const getSlides = (host: HTMLElement): HTMLElement[] => {
   const slides = Array.from(host.children).filter(
-    (el) => el.slot !== 'heading' && el.slot !== 'subheading'
+    (el) => el.slot !== 'heading' && el.slot !== 'description'
   ) as HTMLElement[];
   slides.forEach((el, i) => el.setAttribute('slot', `slide-${i}`));
 

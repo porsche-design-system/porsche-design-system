@@ -148,12 +148,12 @@ describe('getSlides()', () => {
     expect(getSlides(host)).toEqual(children);
   });
 
-  it('should not return parameters children with slot="heading" or slot="subheading"', () => {
+  it('should not return parameters children with slot="heading" or slot="description"', () => {
     const host = document.createElement('p-carousel');
 
     const [child1, child2, child3] = getChildren();
     child2.slot = 'heading';
-    child3.slot = 'subheading';
+    child3.slot = 'description';
 
     host.append(child1, child2, child3);
     expect(getSlides(host)).toEqual([child1]);

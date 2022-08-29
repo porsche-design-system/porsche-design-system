@@ -1,11 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for wrapHeading: false, disablePagination: {"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false}, overflowVisible: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for wrapContent: false, disablePagination: {"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false} and theme: light 1`] = `
 ":host {
   display: grid !important;
-  width: 100% !important;
+  max-width: 120rem !important;
+  box-sizing: border-box !important;
+  margin: 0 auto !important;
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
+  overflow: hidden !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -14,13 +17,15 @@ h2,::slotted([slot=heading]) {
   margin: 0 !important;
   color: #000 !important;
 }
-::slotted([slot=subheading]) {
-  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+::slotted([slot=description]) {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  grid-column: 1 !important;
   margin: 0.5rem 0 0 !important;
   color: #000 !important;
-  grid-column: 1 !important;
 }
 @media(min-width:760px) {
   :host {
@@ -33,20 +38,12 @@ h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
     line-height: 1.5 !important;
   }
-  ::slotted([slot=subheading]) {
-    font-size: 1.125rem !important;
-    line-height: 1.5555555556 !important;
-  }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
   h2,::slotted([slot=heading]) {
     font-size: 1.75rem !important;
     line-height: 1.4285714286 !important;
-  }
-  ::slotted([slot=subheading]) {
-    font-size: 1.25rem !important;
-    line-height: 1.4 !important;
   }
 }
 
@@ -55,20 +52,12 @@ h2,::slotted([slot=heading]) {
     font-size: 2rem !important;
     line-height: 1.375 !important;
   }
-  ::slotted([slot=subheading]) {
-    font-size: 1.375rem !important;
-    line-height: 1.4545454545 !important;
-  }
 }
 
 @media(min-width:1760px) {
   h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
     line-height: 1.3333333333 !important;
-  }
-  ::slotted([slot=subheading]) {
-    font-size: 1.5rem !important;
-    line-height: 1.5 !important;
   }
 }
 
@@ -85,7 +74,6 @@ h2,::slotted([slot=heading]) {
 }
 .splide__track {
   position: relative;
-  overflow: hidden;
 }
 .splide__list {
   display: flex;
@@ -176,12 +164,15 @@ h2,::slotted([slot=heading]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for wrapHeading: false, disablePagination: false, overflowVisible: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for wrapContent: false, disablePagination: false and theme: dark 1`] = `
 ":host {
   display: grid !important;
-  width: 100% !important;
+  max-width: 120rem !important;
+  box-sizing: border-box !important;
+  margin: 0 auto !important;
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
+  overflow: hidden !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -190,13 +181,15 @@ h2,::slotted([slot=heading]) {
   margin: 0 !important;
   color: #fff !important;
 }
-::slotted([slot=subheading]) {
-  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+::slotted([slot=description]) {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  grid-column: 1 !important;
   margin: 0.5rem 0 0 !important;
   color: #fff !important;
-  grid-column: 1 !important;
 }
 @media(min-width:760px) {
   :host {
@@ -209,20 +202,12 @@ h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
     line-height: 1.5 !important;
   }
-  ::slotted([slot=subheading]) {
-    font-size: 1.125rem !important;
-    line-height: 1.5555555556 !important;
-  }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
   h2,::slotted([slot=heading]) {
     font-size: 1.75rem !important;
     line-height: 1.4285714286 !important;
-  }
-  ::slotted([slot=subheading]) {
-    font-size: 1.25rem !important;
-    line-height: 1.4 !important;
   }
 }
 
@@ -231,20 +216,12 @@ h2,::slotted([slot=heading]) {
     font-size: 2rem !important;
     line-height: 1.375 !important;
   }
-  ::slotted([slot=subheading]) {
-    font-size: 1.375rem !important;
-    line-height: 1.4545454545 !important;
-  }
 }
 
 @media(min-width:1760px) {
   h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
     line-height: 1.3333333333 !important;
-  }
-  ::slotted([slot=subheading]) {
-    font-size: 1.5rem !important;
-    line-height: 1.5 !important;
   }
 }
 
@@ -261,7 +238,6 @@ h2,::slotted([slot=heading]) {
 }
 .splide__track {
   position: relative;
-  overflow: hidden;
 }
 .splide__list {
   display: flex;
@@ -325,12 +301,15 @@ h2,::slotted([slot=heading]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for wrapHeading: false, disablePagination: false, overflowVisible: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for wrapContent: false, disablePagination: false and theme: light 1`] = `
 ":host {
   display: grid !important;
-  width: 100% !important;
+  max-width: 120rem !important;
+  box-sizing: border-box !important;
+  margin: 0 auto !important;
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
+  overflow: hidden !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -339,13 +318,15 @@ h2,::slotted([slot=heading]) {
   margin: 0 !important;
   color: #000 !important;
 }
-::slotted([slot=subheading]) {
-  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+::slotted([slot=description]) {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  grid-column: 1 !important;
   margin: 0.5rem 0 0 !important;
   color: #000 !important;
-  grid-column: 1 !important;
 }
 @media(min-width:760px) {
   :host {
@@ -358,20 +339,12 @@ h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
     line-height: 1.5 !important;
   }
-  ::slotted([slot=subheading]) {
-    font-size: 1.125rem !important;
-    line-height: 1.5555555556 !important;
-  }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
   h2,::slotted([slot=heading]) {
     font-size: 1.75rem !important;
     line-height: 1.4285714286 !important;
-  }
-  ::slotted([slot=subheading]) {
-    font-size: 1.25rem !important;
-    line-height: 1.4 !important;
   }
 }
 
@@ -380,20 +353,12 @@ h2,::slotted([slot=heading]) {
     font-size: 2rem !important;
     line-height: 1.375 !important;
   }
-  ::slotted([slot=subheading]) {
-    font-size: 1.375rem !important;
-    line-height: 1.4545454545 !important;
-  }
 }
 
 @media(min-width:1760px) {
   h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
     line-height: 1.3333333333 !important;
-  }
-  ::slotted([slot=subheading]) {
-    font-size: 1.5rem !important;
-    line-height: 1.5 !important;
   }
 }
 
@@ -410,7 +375,6 @@ h2,::slotted([slot=heading]) {
 }
 .splide__track {
   position: relative;
-  overflow: hidden;
 }
 .splide__list {
   display: flex;
@@ -474,12 +438,15 @@ h2,::slotted([slot=heading]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for wrapHeading: false, disablePagination: true, overflowVisible: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for wrapContent: false, disablePagination: true and theme: light 1`] = `
 ":host {
   display: grid !important;
-  width: 100% !important;
+  max-width: 120rem !important;
+  box-sizing: border-box !important;
+  margin: 0 auto !important;
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
+  overflow: hidden !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -488,13 +455,15 @@ h2,::slotted([slot=heading]) {
   margin: 0 !important;
   color: #000 !important;
 }
-::slotted([slot=subheading]) {
-  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+::slotted([slot=description]) {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  grid-column: 1 !important;
   margin: 0.5rem 0 0 !important;
   color: #000 !important;
-  grid-column: 1 !important;
 }
 @media(min-width:760px) {
   :host {
@@ -507,20 +476,12 @@ h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
     line-height: 1.5 !important;
   }
-  ::slotted([slot=subheading]) {
-    font-size: 1.125rem !important;
-    line-height: 1.5555555556 !important;
-  }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
   h2,::slotted([slot=heading]) {
     font-size: 1.75rem !important;
     line-height: 1.4285714286 !important;
-  }
-  ::slotted([slot=subheading]) {
-    font-size: 1.25rem !important;
-    line-height: 1.4 !important;
   }
 }
 
@@ -529,20 +490,12 @@ h2,::slotted([slot=heading]) {
     font-size: 2rem !important;
     line-height: 1.375 !important;
   }
-  ::slotted([slot=subheading]) {
-    font-size: 1.375rem !important;
-    line-height: 1.4545454545 !important;
-  }
 }
 
 @media(min-width:1760px) {
   h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
     line-height: 1.3333333333 !important;
-  }
-  ::slotted([slot=subheading]) {
-    font-size: 1.5rem !important;
-    line-height: 1.5 !important;
   }
 }
 
@@ -559,7 +512,6 @@ h2,::slotted([slot=heading]) {
 }
 .splide__track {
   position: relative;
-  overflow: hidden;
 }
 .splide__list {
   display: flex;
@@ -608,12 +560,16 @@ h2,::slotted([slot=heading]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for wrapHeading: true, disablePagination: false, overflowVisible: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for wrapContent: true, disablePagination: false and theme: light 1`] = `
 ":host {
   display: grid !important;
-  width: 100% !important;
+  max-width: 120rem !important;
+  box-sizing: border-box !important;
+  margin: 0 auto !important;
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
+  overflow: hidden !important;
+  padding: 0 max(1rem, 7vw) !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -622,13 +578,15 @@ h2,::slotted([slot=heading]) {
   margin: 0 !important;
   color: #000 !important;
 }
-::slotted([slot=subheading]) {
-  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+::slotted([slot=description]) {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  grid-column: 1 !important;
   margin: 0.5rem 0 0 !important;
   color: #000 !important;
-  grid-column: 1 !important;
 }
 @media(min-width:760px) {
   :host {
@@ -641,20 +599,12 @@ h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
     line-height: 1.5 !important;
   }
-  ::slotted([slot=subheading]) {
-    font-size: 1.125rem !important;
-    line-height: 1.5555555556 !important;
-  }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
   h2,::slotted([slot=heading]) {
     font-size: 1.75rem !important;
     line-height: 1.4285714286 !important;
-  }
-  ::slotted([slot=subheading]) {
-    font-size: 1.25rem !important;
-    line-height: 1.4 !important;
   }
 }
 
@@ -663,20 +613,15 @@ h2,::slotted([slot=heading]) {
     font-size: 2rem !important;
     line-height: 1.375 !important;
   }
-  ::slotted([slot=subheading]) {
-    font-size: 1.375rem !important;
-    line-height: 1.4545454545 !important;
-  }
 }
 
 @media(min-width:1760px) {
+  :host {
+    padding: 0 min(calc(43vw - 39.6rem), 12rem) !important;
+  }
   h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
     line-height: 1.3333333333 !important;
-  }
-  ::slotted([slot=subheading]) {
-    font-size: 1.5rem !important;
-    line-height: 1.5 !important;
   }
 }
 
@@ -693,7 +638,6 @@ h2,::slotted([slot=heading]) {
 }
 .splide__track {
   position: relative;
-  overflow: hidden;
 }
 .splide__list {
   display: flex;
@@ -724,7 +668,6 @@ h2,::slotted([slot=heading]) {
 .header {
   display: grid;
   grid-template-columns: minmax(0px, 1fr) 0 0;
-  padding: 0 max(1rem, 7vw);
 }
 .btn {
   visibility: hidden;
@@ -755,21 +698,19 @@ h2,::slotted([slot=heading]) {
     padding: 0.5rem;
   }
 }
-
-@media(min-width:1760px) {
-  .header {
-    padding: 0 min(calc(43vw - 39.6rem), 12rem);
-  }
-}
 "
 `;
 
-exports[`getComponentCss() should return correct css for wrapHeading: true, disablePagination: true, overflowVisible: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for wrapContent: true, disablePagination: true and theme: light 1`] = `
 ":host {
   display: grid !important;
-  width: 100% !important;
+  max-width: 120rem !important;
+  box-sizing: border-box !important;
+  margin: 0 auto !important;
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
+  overflow: hidden !important;
+  padding: 0 max(1rem, 7vw) !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -778,13 +719,15 @@ h2,::slotted([slot=heading]) {
   margin: 0 !important;
   color: #000 !important;
 }
-::slotted([slot=subheading]) {
-  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+::slotted([slot=description]) {
+  font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  grid-column: 1 !important;
   margin: 0.5rem 0 0 !important;
   color: #000 !important;
-  grid-column: 1 !important;
 }
 @media(min-width:760px) {
   :host {
@@ -797,20 +740,12 @@ h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
     line-height: 1.5 !important;
   }
-  ::slotted([slot=subheading]) {
-    font-size: 1.125rem !important;
-    line-height: 1.5555555556 !important;
-  }
 }
 
 @media(min-width:1000px) and (max-width:1299px) {
   h2,::slotted([slot=heading]) {
     font-size: 1.75rem !important;
     line-height: 1.4285714286 !important;
-  }
-  ::slotted([slot=subheading]) {
-    font-size: 1.25rem !important;
-    line-height: 1.4 !important;
   }
 }
 
@@ -819,161 +754,15 @@ h2,::slotted([slot=heading]) {
     font-size: 2rem !important;
     line-height: 1.375 !important;
   }
-  ::slotted([slot=subheading]) {
-    font-size: 1.375rem !important;
-    line-height: 1.4545454545 !important;
-  }
 }
 
 @media(min-width:1760px) {
+  :host {
+    padding: 0 min(calc(43vw - 39.6rem), 12rem) !important;
+  }
   h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
     line-height: 1.3333333333 !important;
-  }
-  ::slotted([slot=subheading]) {
-    font-size: 1.5rem !important;
-    line-height: 1.5 !important;
-  }
-}
-
-@media(min-width:1920px) {
-  :host {
-    gap: 3.875rem !important;
-  }
-}
-
-.splide {
-  position: relative;
-  min-width: 0;
-  cursor: grab;
-}
-.splide__track {
-  position: relative;
-  overflow: hidden;
-}
-.splide__list {
-  display: flex;
-  height: 100%;
-  backface-visibility: hidden;
-}
-.splide__slide {
-  position: relative;
-  box-sizing: border-box;
-  flex-shrink: 0;
-  backface-visibility: hidden;
-}
-.splide__sr {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-.splide__track--draggable {
-  user-select: none;
-  -webkit-touch-callout: none;
-}
-.header {
-  display: grid;
-  grid-template-columns: minmax(0px, 1fr) 0 0;
-  padding: 0 max(1rem, 7vw);
-}
-.btn {
-  visibility: hidden;
-}
-@media(min-width:760px) {
-  .header {
-    grid-template-columns: minmax(0px, 1fr) min-content min-content;
-    align-items: end;
-    gap: 0.5rem;
-  }
-  .btn {
-    visibility: visible;
-    padding: 0.5rem;
-  }
-}
-
-@media(min-width:1760px) {
-  .header {
-    padding: 0 min(calc(43vw - 39.6rem), 12rem);
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for wrapHeading: true, disablePagination: true, overflowVisible: true and theme: light 1`] = `
-":host {
-  display: grid !important;
-  width: 100% !important;
-  gap: 1.5rem !important;
-  grid-auto-flow: row !important;
-}
-h2,::slotted([slot=heading]) {
-  font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
-  margin: 0 !important;
-  color: #000 !important;
-}
-::slotted([slot=subheading]) {
-  font: normal normal 600 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-size-adjust: none !important;
-  -webkit-text-size-adjust: none !important;
-  margin: 0.5rem 0 0 !important;
-  color: #000 !important;
-  grid-column: 1 !important;
-}
-@media(min-width:760px) {
-  :host {
-    gap: 2.5rem !important;
-  }
-}
-
-@media(min-width:760px) and (max-width:999px) {
-  h2,::slotted([slot=heading]) {
-    font-size: 1.5rem !important;
-    line-height: 1.5 !important;
-  }
-  ::slotted([slot=subheading]) {
-    font-size: 1.125rem !important;
-    line-height: 1.5555555556 !important;
-  }
-}
-
-@media(min-width:1000px) and (max-width:1299px) {
-  h2,::slotted([slot=heading]) {
-    font-size: 1.75rem !important;
-    line-height: 1.4285714286 !important;
-  }
-  ::slotted([slot=subheading]) {
-    font-size: 1.25rem !important;
-    line-height: 1.4 !important;
-  }
-}
-
-@media(min-width:1300px) and (max-width:1759px) {
-  h2,::slotted([slot=heading]) {
-    font-size: 2rem !important;
-    line-height: 1.375 !important;
-  }
-  ::slotted([slot=subheading]) {
-    font-size: 1.375rem !important;
-    line-height: 1.4545454545 !important;
-  }
-}
-
-@media(min-width:1760px) {
-  h2,::slotted([slot=heading]) {
-    font-size: 2.25rem !important;
-    line-height: 1.3333333333 !important;
-  }
-  ::slotted([slot=subheading]) {
-    font-size: 1.5rem !important;
-    line-height: 1.5 !important;
   }
 }
 
@@ -1020,7 +809,6 @@ h2,::slotted([slot=heading]) {
 .header {
   display: grid;
   grid-template-columns: minmax(0px, 1fr) 0 0;
-  padding: 0 max(1rem, 7vw);
 }
 .btn {
   visibility: hidden;
@@ -1034,12 +822,6 @@ h2,::slotted([slot=heading]) {
   .btn {
     visibility: visible;
     padding: 0.5rem;
-  }
-}
-
-@media(min-width:1760px) {
-  .header {
-    padding: 0 min(calc(43vw - 39.6rem), 12rem);
   }
 }
 "

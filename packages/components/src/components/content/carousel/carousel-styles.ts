@@ -1,8 +1,13 @@
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors, pxToRemWithUnit } from '../../../styles';
-import { gridSafeZone, headingMedium, headingSmall, mediaQueryMin } from '@porsche-design-system/utilities-v2';
-import type { JssStyle } from 'jss';
+import {
+  gridMaxWidth,
+  gridSafeZone,
+  headingMedium,
+  textSmall,
+  mediaQueryMin,
+} from '@porsche-design-system/utilities-v2';
 
 export const bulletActiveClass = 'bullet--active';
 
@@ -11,24 +16,28 @@ const mediaQueryXl = mediaQueryMin('xl');
 const mediaQueryXxl = mediaQueryMin('xxl');
 
 export const getComponentCss = (
-  wrapHeading: boolean,
+  wrapContent: boolean,
   disablePagination: BreakpointCustomizable<boolean>,
-  overflowVisible: boolean,
   theme: Theme
 ): string => {
   const { baseColor, disabledColor } = getThemedColors(theme);
-  const headingResetStyles: JssStyle = {
-    margin: 0,
-    color: baseColor,
-  };
 
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
         display: 'grid',
-        width: '100%',
+        maxWidth: gridMaxWidth,
+        boxSizing: 'border-box',
+        margin: '0 auto',
         gap: pxToRemWithUnit(24),
         gridAutoFlow: 'row',
+        overflow: 'hidden',
+        ...(wrapContent && {
+          padding: `0 ${gridSafeZone.base}`,
+          [mediaQueryXl]: {
+            padding: `0 ${gridSafeZone.xl}`,
+          },
+        }),
         [mediaQueryS]: {
           gap: pxToRemWithUnit(40),
         },
@@ -38,13 +47,14 @@ export const getComponentCss = (
       }),
       'h2,::slotted([slot=heading])': addImportantToEachRule({
         ...headingMedium,
-        ...headingResetStyles,
+        margin: 0,
+        color: baseColor,
       }),
-      '::slotted([slot=subheading])': addImportantToEachRule({
-        ...headingSmall,
-        ...headingResetStyles,
+      '::slotted([slot=description])': addImportantToEachRule({
+        ...textSmall,
         gridColumn: 1,
         margin: `${pxToRemWithUnit(8)} 0 0`,
+        color: baseColor,
       }),
     },
     splide: {
@@ -54,7 +64,6 @@ export const getComponentCss = (
       // visibility: 'hidden',
       '&__track': {
         position: 'relative',
-        ...(!overflowVisible && { overflow: 'hidden' }),
         '&--draggable': {
           userSelect: 'none',
           WebkitTouchCallout: 'none',
@@ -88,12 +97,6 @@ export const getComponentCss = (
         alignItems: 'end',
         gap: pxToRemWithUnit(8),
       },
-      ...(wrapHeading && {
-        padding: `0 ${gridSafeZone.base}`,
-        [mediaQueryXl]: {
-          padding: `0 ${gridSafeZone.xl}`,
-        },
-      }),
     },
     btn: {
       visibility: 'hidden',

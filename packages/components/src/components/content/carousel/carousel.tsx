@@ -35,7 +35,7 @@ import { spacing } from '@porsche-design-system/utilities-v2';
 
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
-  wrapHeading: AllowedTypes.boolean,
+  wrapContent: AllowedTypes.boolean,
   slidesPerPage: AllowedTypes.breakpoint('number'),
   disablePagination: AllowedTypes.breakpoint('boolean'),
   intl: AllowedTypes.shape<Required<CarouselInternationalization>>({
@@ -46,8 +46,6 @@ const propTypes: PropTypes<typeof Carousel> = {
     slideLabel: AllowedTypes.string,
     slide: AllowedTypes.string,
   }),
-  overflowVisible: AllowedTypes.boolean,
-  peakingSlide: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -61,8 +59,8 @@ export class Carousel {
   /** Defines the heading used in carousel. */
   @Prop() public heading?: string;
 
-  /** Whether the heading should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper. */
-  @Prop() public wrapHeading?: boolean;
+  /** Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper. */
+  @Prop() public wrapContent?: boolean;
 
   /** Sets the amount of slides visible at the same time. */
   @Prop({ mutable: true }) public slidesPerPage?: BreakpointCustomizable<number> = 1;
@@ -72,12 +70,6 @@ export class Carousel {
 
   /** Override the default wordings that are used for aria-labels on the next/prev buttons and pagination. */
   @Prop() public intl?: CarouselInternationalization = {};
-
-  /** Whether overflowing slides should be visible. Default is `false`. */
-  @Prop() public overflowVisible?: boolean = false;
-
-  /** If true, an additional slide is partially visible next to the amount of slides specified via `slidesPerPage`. Default is `false` */
-  @Prop() public peakingSlide?: boolean = false;
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
@@ -118,11 +110,9 @@ export class Carousel {
       pagination: false,
       perMove: 1,
       mediaQuery: 'min',
-      ...(this.peakingSlide && {
-        padding: {
-          right: '10%',
-        },
-      }),
+      padding: {
+        right: '7%',
+      },
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
       breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number>, string>, {
         base: spacing.small,
@@ -141,14 +131,7 @@ export class Carousel {
     warnIfHeadingIsMissing(this.host, this.heading);
     this.disablePagination = parseJSON(this.disablePagination) as any;
 
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.wrapHeading,
-      this.disablePagination,
-      this.overflowVisible,
-      this.theme
-    );
+    attachComponentCss(this.host, getComponentCss, this.wrapContent, this.disablePagination, this.theme);
   }
 
   public componentDidUpdate(): void {
@@ -178,7 +161,7 @@ export class Carousel {
       <Host>
         <div class="header">
           {this.heading ? <h2>{this.heading}</h2> : <slot name="heading" />}
-          <slot name="subheading" />
+          <slot name="description" />
 
           <PrefixedTagNames.pButtonPure
             {...btnProps}
