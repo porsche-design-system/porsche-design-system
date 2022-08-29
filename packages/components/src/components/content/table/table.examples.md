@@ -219,7 +219,6 @@ export default class Code extends Vue {
   syncHeadCellProperties(): void {
     this.$refs.headCellsAdvanced.forEach((cell, i) => {
       cell.sort = this.headAdvanced[i];
-      cell.sort = {id, active, direction};
       cell.hideLabel = this.headAdvanced[i].hideLabel;
     });
 
