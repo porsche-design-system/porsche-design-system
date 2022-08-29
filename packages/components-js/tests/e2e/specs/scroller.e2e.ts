@@ -351,13 +351,13 @@ describe('accessibility', () => {
     await initScroller({ isWrapped: true, tag: 'span' });
     const scrollWrapper = await getScrollWrapper();
 
-    expect(await getAttribute(scrollWrapper, 'tabindex')).toBe('1');
+    expect(await getAttribute(scrollWrapper, 'tabindex')).toBe('0');
   });
 
   it('should have correct tabindex on scroll-wrapper if scroller is Scrollable and has focusable elements', async () => {
     await initScroller({ isWrapped: true });
     const scrollWrapper = await getScrollWrapper();
 
-    expect(await getAttribute(scrollWrapper, 'tabindex')).toBe('1');
+    expect(await getAttribute(scrollWrapper, 'tabindex')).toBe('0');
   });
 });
