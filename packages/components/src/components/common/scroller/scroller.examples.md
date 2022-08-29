@@ -112,14 +112,14 @@ export default class Code extends Vue {
 
   scrollIndicatorSize = `<div style="max-width: 600px">
   <p-scroller style="font-size: 24px; white-space: nowrap">
-    <p-tag-dismissible>Some button</p-tag-dismissible>
-    <p-tag-dismissible>Some button</p-tag-dismissible>
-    <p-tag-dismissible>Some button</p-tag-dismissible>
-    <p-tag-dismissible>Some button</p-tag-dismissible>
-    <p-tag-dismissible>Some button</p-tag-dismissible>
-    <p-tag-dismissible>Some button</p-tag-dismissible>
-    <p-tag-dismissible>Some button</p-tag-dismissible>
-    <p-tag-dismissible>Some button</p-tag-dismissible>
+    <p-tag-dismissible>Some tag content</p-tag-dismissible>
+    <p-tag-dismissible>Some tag content</p-tag-dismissible>
+    <p-tag-dismissible>Some tag content</p-tag-dismissible>
+    <p-tag-dismissible>Some tag content</p-tag-dismissible>
+    <p-tag-dismissible>Some tag content</p-tag-dismissible>
+    <p-tag-dismissible>Some tag content</p-tag-dismissible>
+    <p-tag-dismissible>Some tag content</p-tag-dismissible>
+    <p-tag-dismissible>Some tag content</p-tag-dismissible>
   </p-scroller>
 </div>`;
 
@@ -158,11 +158,11 @@ export default class Code extends Vue {
 <button id="middle">Scroll to middle</button>
 <button id="end">Scroll to end</button>
 
-<div style="max-width: 600px">
-  <p-scroller class="scroller" scroll-to-position="{scrollPosition: 290}">
-    <span>Start</span>
-    <span>Middle</span>
-    <span>End</span>
+<div style="max-width: 400px">
+  <p-scroller class="scroller" scroll-to-position="{scrollPosition: 220}" style="white-space: nowrap">
+    <p-tag-dismissible>START - some tag content</p-tag-dismissible>
+    <p-tag-dismissible>MIDDLE - some tag content</p-tag-dismissible>
+    <p-tag-dismissible>END - some tag content</p-tag-dismissible>
   </p-scroller>
 </div>
 `
@@ -192,12 +192,12 @@ export default class Code extends Vue {
   
     const scrollToMiddle = document.querySelector('#middle');
     scrollToMiddle.addEventListener('click',  () => {
-      scroller.scrollToPosition = {scrollPosition: 290, isSmooth: true};
+      scroller.scrollToPosition = {scrollPosition: 220, isSmooth: true};
     });
   
     const scrollToEnd = document.querySelector('#end');
     scrollToEnd.addEventListener('click',  () => {
-      scroller.scrollToPosition = {scrollPosition: 900, isSmooth: true};
+      scroller.scrollToPosition = {scrollPosition: 720, isSmooth: true};
     });
   }
 }
@@ -209,17 +209,6 @@ export default class Code extends Vue {
     &:not(:last-child) {
       margin-right: 1rem;
     }
-  }
-  p-scroller > span {
-    border: 1px solid deeppink;
-  }
-
-  .scroller > span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 48px;
-    width: 300px;
   }
 
   .demo > button {
