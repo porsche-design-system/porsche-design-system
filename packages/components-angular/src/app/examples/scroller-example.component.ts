@@ -4,40 +4,31 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'page-scroller-example',
   styles: [
     `
-      .scroller > span {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 3rem;
-        width: 300px;
-        border: 1px solid deeppink;
-      }
-
-      .scroller > span:not(:last-child) {
+      .scroller > *:not(:last-child) {
         margin-right: 1rem;
       }
 
-      p-button {
-        padding: 0 1rem 1rem 0;
+      #app > button {
+        margin: 0 1rem 1rem 0;
       }
     `,
   ],
   template: `
     <button (click)="clickHandler(0, true)">Scroll to start</button>
-    <button (click)="clickHandler(290, true)">Scroll to middle</button>
-    <button (click)="clickHandler(900, true)">Scroll to end</button>
-    <div style="max-width: 600px">
+    <button (click)="clickHandler(220, true)">Scroll to middle</button>
+    <button (click)="clickHandler(720, true)">Scroll to end</button>
+    <div style="max-width: 400px; white-space: nowrap">
       <p-scroller class="scroller" [scrollToPosition]="{scrollPosition, isSmooth}">
-        <span>Start</span>
-        <span>Middle</span>
-        <span>End</span>
+        <p-tag-dismissible>START - some tag content</p-tag-dismissible>
+        <p-tag-dismissible>MIDDLE - some tag content</p-tag-dismissible>
+        <p-tag-dismissible>END - some tag content</p-tag-dismissible>
       </p-scroller>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScrollerExampleComponent {
-  scrollPosition: number = 290;
+  scrollPosition: number = 220;
   isSmooth: boolean = false;
 
   clickHandler = (scrollPosition: number, isSmooth: boolean) => {
