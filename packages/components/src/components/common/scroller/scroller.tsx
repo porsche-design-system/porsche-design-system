@@ -7,8 +7,6 @@ import {
   validateProps,
   AllowedTypes,
   THEMES_EXTENDED_ELECTRIC,
-  observeChildren,
-  unobserveChildren,
 } from '../../../utils';
 import { getComponentCss } from './scroller-styles';
 import {
@@ -20,7 +18,6 @@ import {
 import type { Direction, GradientColorTheme, ScrollToPosition, ScrollIndicatorPosition } from './scroller-utils';
 import type { PropTypes, ThemeExtendedElectric } from '../../../types';
 import { parseJSONAttribute } from '../../../utils/json';
-import { hasFocusableElements } from '../../../utils/focus-utils';
 
 const propTypes: PropTypes<typeof Scroller> = {
   theme: AllowedTypes.oneOf<ThemeExtendedElectric>(THEMES_EXTENDED_ELECTRIC),
@@ -30,7 +27,6 @@ const propTypes: PropTypes<typeof Scroller> = {
     isSmooth: AllowedTypes.boolean,
   }),
   scrollIndicatorPosition: AllowedTypes.oneOf<ScrollIndicatorPosition>(SCROLL_INDICATOR_POSITIONS),
-  isFocusable: AllowedTypes.boolean,
 };
 
 @Component({
@@ -52,7 +48,6 @@ export class Scroller {
   /** Sets the vertical position of scroll indicator icon */
   @Prop() public scrollIndicatorPosition?: ScrollIndicatorPosition = 'center';
 
-  @State() public isFocusable = false;
   @State() private isPrevHidden = true;
   @State() private isNextHidden = true;
 
@@ -62,17 +57,6 @@ export class Scroller {
   @Watch('scrollToPosition')
   public scrollToPositionHandler(): void {
     this.scrollHandler();
-  }
-
-  public connectedCallback(): void {
-    this.isFocusable = !hasFocusableElements(this.host); // initial check for focusable elements
-    observeChildren(
-      this.host,
-      () => {
-        this.isFocusable = !hasFocusableElements(this.host); // if slotted children change
-      },
-      ['tabindex']
-    );
   }
 
   public componentDidLoad(): void {
@@ -100,10 +84,6 @@ export class Scroller {
     );
   }
 
-  public disconnectedCallback(): void {
-    unobserveChildren(this.host);
-  }
-
   public render(): JSX.Element {
     const renderPrevNextButton = (direction: Direction): JSX.Element => {
       const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -129,10 +109,7 @@ export class Scroller {
     return (
       <div class="root">
         <div class="scroll-area" ref={(el) => (this.scrollAreaElement = el)}>
-          <div
-            class="scroll-wrapper"
-            tabindex={this.isFocusable && isScrollable(this.isPrevHidden, this.isNextHidden) ? 1 : null}
-          >
+          <div class="scroll-wrapper" tabIndex={isScrollable(this.isPrevHidden, this.isNextHidden) ? 1 : null}>
             <slot />
             <div class="trigger" />
             <div class="trigger" />
