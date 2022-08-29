@@ -102,7 +102,7 @@ export const CarouselPage = (): JSX.Element => {
         </PCarousel>
       </div>
 
-      <div className="playground light" title="should render carousel with slidesPerPage=2 light background">
+      <div className="playground light" title="should render carousel with slidesPerPage=2 on light background">
         <PCarousel heading="Slides per page: 2" slidesPerPage={2}>
           <div>Slide 1</div>
           <div>Slide 2</div>
@@ -113,7 +113,7 @@ export const CarouselPage = (): JSX.Element => {
         </PCarousel>
       </div>
 
-      <div className="playground light" title="should render carousel with slidesPerPage=3 light background">
+      <div className="playground light" title="should render carousel with slidesPerPage=3 on light background">
         <PCarousel heading="Slides per page: 3" slidesPerPage={3}>
           <div>Slide 1</div>
           <div>Slide 2</div>
@@ -124,7 +124,7 @@ export const CarouselPage = (): JSX.Element => {
         </PCarousel>
       </div>
 
-      <div className="playground light" title="should render carousel with slidesPerPage=4 light background">
+      <div className="playground light" title="should render carousel with slidesPerPage=4 on light background">
         <PCarousel heading="Slides per page: 4" slidesPerPage={4}>
           <div>Slide 1</div>
           <div>Slide 2</div>
@@ -135,8 +135,8 @@ export const CarouselPage = (): JSX.Element => {
         </PCarousel>
       </div>
 
-      <div className="playground light" title="should render carousel with slidesPerPage=5 light background">
-        <PCarousel heading="Slides per page: 5" slidesPerPage={4}>
+      <div className="playground light" title="should render carousel with slidesPerPage=5 on light background">
+        <PCarousel heading="Slides per page: 5" slidesPerPage={5}>
           <div>Slide 1</div>
           <div>Slide 2</div>
           <div>Slide 3</div>
@@ -148,6 +148,39 @@ export const CarouselPage = (): JSX.Element => {
 
       <div className="playground light" title="should render carousel with responsive slidesPerPage on light background">
         <PCarousel heading="Responsive slides per page" slidesPerPage={{base: 2, s: 3, m: 4, l: 5, xl: 6}}>
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+          <div>Slide 4</div>
+          <div>Slide 5</div>
+          <div>Slide 6</div>
+        </PCarousel>
+      </div>
+
+      <div className="playground light" title="should render carousel with peakingSlide and slidesPerPage=1 on light background">
+        <PCarousel heading="Peaking Slide, Slides per page: 1" peakingSlide={true}>
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+          <div>Slide 4</div>
+          <div>Slide 5</div>
+          <div>Slide 6</div>
+        </PCarousel>
+      </div>
+
+      <div className="playground light" title="should render carousel with peakingSlide and slidesPerPage=2 on light background">
+        <PCarousel heading="Peaking Slide, Slides per page: 2" slidesPerPage={2} peakingSlide={true}>
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+          <div>Slide 4</div>
+          <div>Slide 5</div>
+          <div>Slide 6</div>
+        </PCarousel>
+      </div>
+
+      <div className="playground light" title="should render carousel with peakingSlide and slidesPerPage=3 on light background">
+        <PCarousel heading="Peaking Slide, Slides per page: 3" slidesPerPage={3} peakingSlide={true}>
           <div>Slide 1</div>
           <div>Slide 2</div>
           <div>Slide 3</div>
