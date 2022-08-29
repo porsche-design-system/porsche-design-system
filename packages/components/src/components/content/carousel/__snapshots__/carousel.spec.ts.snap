@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`componentDidLoad should call Splide constructor with correct parameters and set this.splide 1`] = `
+exports[`componentDidLoad should call Splide constructor with correct parameters and set this.splide for peakingSlide=false 1`] = `
 Array [
   undefined,
   Object {
@@ -19,6 +19,35 @@ Array [
     },
     "i18n": Object {},
     "mediaQuery": "min",
+    "pagination": false,
+    "perMove": 1,
+    "start": 0,
+  },
+]
+`;
+
+exports[`componentDidLoad should call Splide constructor with correct parameters and set this.splide for peakingSlide=true 1`] = `
+Array [
+  undefined,
+  Object {
+    "arrows": false,
+    "breakpoints": Object {
+      "0": Object {
+        "gap": "0.5rem",
+        "perPage": 1,
+      },
+      "1300": Object {
+        "gap": "2rem",
+      },
+      "760": Object {
+        "gap": "1rem",
+      },
+    },
+    "i18n": Object {},
+    "mediaQuery": "min",
+    "padding": Object {
+      "right": "10%",
+    },
     "pagination": false,
     "perMove": 1,
     "start": 0,

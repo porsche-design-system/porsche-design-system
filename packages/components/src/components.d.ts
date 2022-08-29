@@ -214,6 +214,10 @@ export namespace Components {
          */
         "overflowVisible"?: boolean;
         /**
+          * If true, an additional slide is partially visible next to the amount of slides specified via `slidesPerPage`. Default is `false`
+         */
+        "peakingSlide"?: boolean;
+        /**
           * Sets the amount of slides visible at the same time.
          */
         "slidesPerPage"?: BreakpointCustomizable<number>;
@@ -1741,6 +1745,10 @@ declare namespace LocalJSX {
           * Whether overflowing slides should be visible. Default is `false`.
          */
         "overflowVisible"?: boolean;
+        /**
+          * If true, an additional slide is partially visible next to the amount of slides specified via `slidesPerPage`. Default is `false`
+         */
+        "peakingSlide"?: boolean;
         /**
           * Sets the amount of slides visible at the same time.
          */

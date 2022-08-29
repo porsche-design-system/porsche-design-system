@@ -98,10 +98,23 @@ describe('componentDidLoad', () => {
     expect(spy).toBeCalledWith(component.intl);
   });
 
-  it('should call Splide constructor with correct parameters and set this.splide', () => {
+  it('should call Splide constructor with correct parameters and set this.splide for peakingSlide=false', () => {
     const spy = jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
 
     const component = new Carousel();
+    expect(component['splide']).toBeUndefined();
+
+    component.componentDidLoad();
+    expect(spy).toBeCalledTimes(1);
+    expect(spy.mock.calls[0]).toMatchSnapshot();
+    expect(component['splide']).toBe(splideMock);
+  });
+
+  it('should call Splide constructor with correct parameters and set this.splide for peakingSlide=true', () => {
+    const spy = jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
+
+    const component = new Carousel();
+    component.peakingSlide = true;
     expect(component['splide']).toBeUndefined();
 
     component.componentDidLoad();

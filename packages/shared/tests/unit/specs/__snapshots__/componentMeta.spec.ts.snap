@@ -244,6 +244,9 @@ Object {
         "overflowVisible": false,
       },
       Object {
+        "peakingSlide": false,
+      },
+      Object {
         "theme": "light",
       },
     ],
