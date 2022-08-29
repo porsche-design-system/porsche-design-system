@@ -1,5 +1,7 @@
 FROM node:16.15.1-stretch-slim
 
+FROM mcr.microsoft.com/playwright:focal
+
 ENV PATH="/opt/porsche-design-system/bin:${PATH}"
 
 RUN apt-get update && \
