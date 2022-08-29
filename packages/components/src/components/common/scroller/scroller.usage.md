@@ -38,7 +38,7 @@ A scroller can contain one (such as a table) or more elements (filter chips). Al
 
 Keep in mind that with a high amount of elements within the scroller, elements on the far right might be not seen or
 missed by the user. Therefore no important actions or information for the customer flow should be placed within the
-scroller. Text that shouldn't linebreak is also not recommended within the component.
+scroller. Text that should not have line breaks is also not recommended in the component.
 
 ### Responsive
 
