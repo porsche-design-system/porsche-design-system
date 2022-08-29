@@ -134,6 +134,8 @@ h2,::slotted([slot=heading]) {
     grid-template-columns: minmax(0px, 1fr) min-content min-content;
     align-items: end;
     gap: 0.5rem;
+    min-height: 2.625rem;
+    padding: 0 2px 0 0;
   }
   .btn {
     visibility: visible;
@@ -292,6 +294,8 @@ h2,::slotted([slot=heading]) {
     grid-template-columns: minmax(0px, 1fr) min-content min-content;
     align-items: end;
     gap: 0.5rem;
+    min-height: 2.625rem;
+    padding: 0 2px 0 0;
   }
   .btn {
     visibility: visible;
@@ -429,6 +433,8 @@ h2,::slotted([slot=heading]) {
     grid-template-columns: minmax(0px, 1fr) min-content min-content;
     align-items: end;
     gap: 0.5rem;
+    min-height: 2.625rem;
+    padding: 0 2px 0 0;
   }
   .btn {
     visibility: visible;
@@ -551,6 +557,8 @@ h2,::slotted([slot=heading]) {
     grid-template-columns: minmax(0px, 1fr) min-content min-content;
     align-items: end;
     gap: 0.5rem;
+    min-height: 2.625rem;
+    padding: 0 2px 0 0;
   }
   .btn {
     visibility: visible;
@@ -692,6 +700,8 @@ h2,::slotted([slot=heading]) {
     grid-template-columns: minmax(0px, 1fr) min-content min-content;
     align-items: end;
     gap: 0.5rem;
+    min-height: 2.625rem;
+    padding: 0 2px 0 0;
   }
   .btn {
     visibility: visible;
@@ -818,6 +828,8 @@ h2,::slotted([slot=heading]) {
     grid-template-columns: minmax(0px, 1fr) min-content min-content;
     align-items: end;
     gap: 0.5rem;
+    min-height: 2.625rem;
+    padding: 0 2px 0 0;
   }
   .btn {
     visibility: visible;

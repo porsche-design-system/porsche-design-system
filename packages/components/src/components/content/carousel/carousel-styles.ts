@@ -96,6 +96,8 @@ export const getComponentCss = (
         gridTemplateColumns: 'minmax(0px, 1fr) min-content min-content',
         alignItems: 'end',
         gap: pxToRemWithUnit(8),
+        minHeight: pxToRemWithUnit(42), // actual height of prev/next buttons to prevent cut off focus outline
+        padding: '0 2px 0 0', // offset of button focus outline so it isn't cut off when padding on parent exists
       },
     },
     btn: {
