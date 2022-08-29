@@ -66,6 +66,7 @@ Object {
   "heading": "string",
   "intl": "shape",
   "overflowVisible": "boolean",
+  "peakingSlide": "boolean",
   "slidesPerPage": "breakpoint",
   "theme": "oneOf",
   "wrapHeading": "boolean",
