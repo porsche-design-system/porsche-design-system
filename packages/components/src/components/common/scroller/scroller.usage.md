@@ -27,7 +27,7 @@ A scroller has a minimum height of 24px. Smaller elements within the component a
 
 ### Layout
 
-A scroller should only contain elements of the same type, appearance, and function to give the user a better idea of
+A scroller should only contain elements of the same type, appearance and function to give the user a better idea of
 what to expect when scrolling. All elements are horizontally aligned.
 
 ### Amount
