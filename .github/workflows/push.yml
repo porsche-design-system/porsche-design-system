@@ -258,7 +258,7 @@ jobs:
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-cb-vrt
-          args: --components-js
+          args: --components-js -- --project=${{ matrix.project }} --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v2
