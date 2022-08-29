@@ -116,6 +116,13 @@ describe('cdp-helper', () => {
       });
     });
 
+    it('should support classes in shadow root and split string to object with hostElementSelector and shadowRootNodeName', () => {
+      expect(resolveSelector('.focus p-scroller >>> .scroll-wrapper')).toEqual({
+        hostElementSelector: '.focus p-scroller',
+        shadowRootNodeName: 'scroll-wrapper',
+      });
+    });
+
     it('should split string to object with hostElementSelector and undefined shadowRootNodeName', () => {
       expect(resolveSelector('.hover > p-checkbox-wrapper input[type="checkbox"]')).toEqual({
         hostElementSelector: '.hover > p-checkbox-wrapper input[type="checkbox"]',
