@@ -206,6 +206,8 @@ export class SelectWrapperDropdown {
     this.observeOptions(); // initial
 
     observeProperties(this.selectRef, ['value', 'selectedIndex'], this.syncSelectedIndex);
+    // TODO: shouldn't this be called via connectedCallback() so be identical to other components?
+    // TODO: also unobserveChildren() is missing?
     observeChildren(
       this.selectRef,
       () => {
