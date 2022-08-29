@@ -31,7 +31,6 @@ export const getComponentCss = (
         margin: '0 auto',
         gap: pxToRemWithUnit(24),
         gridAutoFlow: 'row',
-        overflow: 'hidden',
         ...(wrapContent && {
           padding: `0 ${gridSafeZone.base}`,
           [mediaQueryXl]: {
@@ -61,6 +60,7 @@ export const getComponentCss = (
       position: 'relative',
       minWidth: 0,
       cursor: 'grab',
+      overflow: 'hidden',
       // visibility: 'hidden',
       '&__track': {
         position: 'relative',
