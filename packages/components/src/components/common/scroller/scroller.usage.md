@@ -17,7 +17,7 @@ To ensure a seamless UX in all Porsche web applications it is recommended to use
 
 | Variant               | Usage                                                                             |
 | --------------------- | --------------------------------------------------------------------------------- |
-| Basic                 | To make an element(s) that fit not into the viewport width horizontal scrollable. |
+| Basic                 | To make an element(s) that does not fit within the width of the viewport scrollable horizontally.|
 | Scroll Indicator Size | For larger element(s) the icon can be adjusted in size to be more visible.        |
 | Surface               | If the component is used on the surface background.                               |
 
