@@ -231,7 +231,9 @@ describe.each<TagName>(tagNamesWithObserveChildren)('%s', (tagName) => {
     const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
     component.connectedCallback();
 
-    expect(spy).toBeCalledWith(component.host, expect.any(Function));
+    tagName === 'p-scroller'
+      ? expect(spy).toBeCalledWith(component.host, expect.any(Function), expect.anything())
+      : expect(spy).toBeCalledWith(component.host, expect.any(Function));
   });
 
   it('should call unobserveChildren() with correct parameters via disconnectedCallback', () => {
