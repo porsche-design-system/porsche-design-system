@@ -4,6 +4,7 @@ import {
   attachComponentCss,
   getCurrentMatchingBreakpointValue,
   getPrefixedTagNames,
+  getSlotTextContent,
   observeBreakpointChange,
   observeChildren,
   parseJSON,
@@ -170,7 +171,7 @@ export class Carousel {
       type: 'button',
       hideLabel: true,
       theme: this.theme,
-      'aria-controls': 'splide-track', // TODO: cross shadow dom? use native button tag instead of p-button-pure?
+      // 'aria-controls': 'splide-track', // TODO: cross shadow dom? use native button tag instead of p-button-pure?
     };
 
     return (
@@ -193,8 +194,12 @@ export class Carousel {
           />
         </div>
 
-        {/* TODO: aria-label or aria-labelledby */}
-        <div id="splide" class="splide" ref={(ref) => (this.container = ref)}>
+        <div
+          id="splide"
+          class="splide"
+          aria-label={this.heading || getSlotTextContent(this.host, 'heading')}
+          ref={(ref) => (this.container = ref)}
+        >
           <div class="splide__track">
             <div class="splide__list">
               {this.slides.map((_, i) => (

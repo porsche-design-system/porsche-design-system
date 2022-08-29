@@ -150,9 +150,9 @@ exports[`should have no basic DOM regression for p-carousel 1`] = `
   </slot>
   <slot name=\\"subheading\\">
   </slot>
-  <p-button-pure class=\\"btn hydrated\\" aria-controls=\\"splide-track\\">
+  <p-button-pure class=\\"btn hydrated\\">
   </p-button-pure>
-  <p-button-pure class=\\"btn hydrated\\" aria-controls=\\"splide-track\\">
+  <p-button-pure class=\\"btn hydrated\\">
   </p-button-pure>
 </div>
 <div id=\\"splide\\" class=\\"splide splide--slide splide--ltr splide--draggable is-active is-initialized\\" role=\\"region\\" aria-roledescription=\\"carousel\\">

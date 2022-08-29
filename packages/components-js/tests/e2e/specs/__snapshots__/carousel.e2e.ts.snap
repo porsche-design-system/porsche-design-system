@@ -82,7 +82,7 @@ Object {
       "role": "generic",
     },
   ],
-  "name": "",
+  "name": "Heading",
   "role": "region",
   "roledescription": "carousel",
 }
