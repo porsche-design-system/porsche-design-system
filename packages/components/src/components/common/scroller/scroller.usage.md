@@ -6,7 +6,7 @@
 
 ## When to use
 
-When a single element or a group of elements in a row do not fit into the viewport width, the scroller enables
+When a single element or a group of elements in a row does not fit into the viewport width, the scroller enables
 horizontal scrolling without moving elements to the next row below.
 
 ---
