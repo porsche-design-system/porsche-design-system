@@ -9,7 +9,7 @@
     <section>
       <h2>Without content-wrapper</h2>
 
-      <div v-html="content"></div>
+      <div v-html="content.replace(/(<p-carousel)/g, `$1 wrap-content='true'`)"></div>
     </section>
   </main>
 </template>
@@ -25,11 +25,15 @@
       .join('');
     content = `
 <p-carousel class="demo" heading="Einstieg bei Porsche" slides-per-page="{base: 1, s: 2, l: 3}">
-  <p-tabs-bar slot="description" active-tab-index="0">
-    <button>Schüler</button>
-    <button>Studierende & Absolventen</button>
-    <button>Berufserfahrene</button>
-  </p-tabs-bar>
+  <div slot="description">
+    <p-tabs-bar active-tab-index="0">
+      <button>Schüler</button>
+      <button>Studierende & Absolventen</button>
+      <button>Berufserfahrene</button>
+    </p-tabs-bar>
+
+    <p-link-pure href="#">Alle anzeigen</p-link-pure>
+  </div>
 
   <div class="card">
     <picture>
@@ -135,13 +139,21 @@
       border-bottom: 1px solid darkcyan;
     }
 
-    > div:not(.card) {
+    > div:not([slot]):not(.card) {
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 10px;
       background: #00b0f4;
       height: 100px;
+    }
+
+    [slot='description'] {
+      display: flex;
+
+      p-link-pure {
+        margin: 4px 0 0 auto;
+      }
     }
 
     .demo {
