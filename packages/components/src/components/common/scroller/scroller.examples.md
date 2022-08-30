@@ -17,7 +17,7 @@ navigation.
 
 The height of `p-scroller` depends on its content height.
 
-Keep in mind that the content passed to the `p-scroller` must be within the size definition of the design system and
+Keep in mind that the content passed to the `p-scroller` should be within the size definition of the design system and
 thus have a minimum height of 24px to ensure visual alignment of the scroll indicators.
 
 The `p-scroller` only takes care of the horizontal alignment. Spacing and custom css properties must be handled by the
