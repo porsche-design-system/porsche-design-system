@@ -15,7 +15,7 @@ export const ScrollerPage = (): JSX.Element => {
       font-size: 16px;
     }
 
-    .scroller > span {
+    span {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -33,7 +33,7 @@ export const ScrollerPage = (): JSX.Element => {
     <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
-      <div className="playground light" title="should render scroller">
+      <div className="playground light" title="should render scroller on light background">
         <PScroller>
           <button>Default Light</button>
           <button>Default Light</button>
@@ -52,7 +52,7 @@ export const ScrollerPage = (): JSX.Element => {
         </PScroller>
       </div>
 
-      <div className="playground dark" title="should render scroller on dark theme">
+      <div className="playground dark" title="should render scroller on dark background">
         <PScroller theme="dark">
           <button>Default dark</button>
           <button>Default dark</button>
@@ -71,7 +71,7 @@ export const ScrollerPage = (): JSX.Element => {
         </PScroller>
       </div>
 
-      <div className="playground light-electric" title="should render scroller light-electric">
+      <div className="playground light-electric" title="should render scroller on light-electric background">
         <PScroller theme="light-electric">
           <button>Light electric</button>
           <button>Light electric</button>
@@ -83,7 +83,10 @@ export const ScrollerPage = (): JSX.Element => {
         </PScroller>
       </div>
 
-      <div className="playground light surface" title="should render scroller gradientColorScheme surface on light background">
+      <div
+        className="playground light surface"
+        title="should render scroller gradientColorScheme surface on light surface background"
+      >
         <PScroller gradientColorScheme="surface">
           <button>Light surface</button>
           <button>Light surface</button>
@@ -107,7 +110,7 @@ export const ScrollerPage = (): JSX.Element => {
         </PScroller>
       </div>
 
-      <div className="playground" title="should render scroller with scroll indicator position center">
+      <div className="playground light" title="should render scroller with scroll indicator position center on light background">
         <div style={{ height: '50px', border: '1px solid deeppink', maxWidth: '600px' }}>
           <PScroller scrollIndicatorPosition="center">
             <button>Scroll indicator position center</button>
@@ -121,7 +124,7 @@ export const ScrollerPage = (): JSX.Element => {
         </div>
       </div>
 
-      <div className="playground" title="should render scroller with scroll indicator position top">
+      <div className="playground light" title="should render scroller with scroll indicator position top on light background">
         <div style={{ height: '50px', border: '1px solid deeppink', maxWidth: '600px' }}>
           <PScroller scrollIndicatorPosition="top">
             <button>Scroll indicator position top</button>
@@ -135,7 +138,10 @@ export const ScrollerPage = (): JSX.Element => {
         </div>
       </div>
 
-      <div className="playground light" title="should render scroller with scroll indicator size according to fontsize large">
+      <div
+        className="playground light"
+        title="should render scroller with scroll indicator size according to fontsize large on light background"
+      >
         <PScroller style={{ fontSize: '2.25rem', lineHeight: 1.3333333333 }}>
           <a href="#">Large font</a>
           <a href="#">Large font</a>
@@ -147,7 +153,10 @@ export const ScrollerPage = (): JSX.Element => {
         </PScroller>
       </div>
 
-      <div className="playground light" title="should render scroller with scroll indicator size according to inherit size">
+      <div
+        className="playground light"
+        title="should render scroller with scroll indicator size according to inherit size on light background"
+      >
         <div style={{ fontSize: '2.25rem', lineHeight: 1.3333333333 }}>
           <PScroller style={{ fontSize: 'inherit' }}>
             <a href="#">Size inherit</a>
@@ -161,7 +170,10 @@ export const ScrollerPage = (): JSX.Element => {
         </div>
       </div>
 
-      <div className="playground light" title="should render scroller only on screen size too small to show 8 buttons">
+      <div
+        className="playground light"
+        title="should render scroller only on screen size too small to show 8 buttons on light background"
+      >
         <PScroller style={{ maxWidth: 'none' }}>
           <button>Without max width</button>
           <button>Without max width</button>
@@ -174,7 +186,7 @@ export const ScrollerPage = (): JSX.Element => {
         </PScroller>
       </div>
 
-      <div className="playground light" title="should render scroller items with linebreaks">
+      <div className="playground light" title="should render scroller items with linebreaks on light background">
         <PScroller style={{ whiteSpace: 'normal' }}>
           <button>Button text that breaks line</button>
           <button>Button text that breaks line</button>
@@ -182,7 +194,7 @@ export const ScrollerPage = (): JSX.Element => {
         </PScroller>
       </div>
 
-      <div className="playground light" title="should render scroller with initial scroll position">
+      <div className="playground light" title="should render scroller with initial scroll position on light background">
         <div style={{ maxWidth: '600px' }}>
           <PScroller className="scroller" scrollToPosition={{scrollPosition: 290}}>
             <span>Start</span>
