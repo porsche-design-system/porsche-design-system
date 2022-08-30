@@ -547,13 +547,13 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   }
 }
 
-function getStringifiedProps(props: PresetsProps) {
+function getStringifiedProps(props: PresetsProps): string {
   return Object.entries(props)
     .map(([key, value]) => `${key}=${wrapAttributeWithDelimiter(value)}`)
     .join(' ');
 }
 
-function wrapAttributeWithDelimiter(attribute: string | number | boolean | string[]) {
+function wrapAttributeWithDelimiter(attribute: string | number | boolean | string[]): string {
   if (typeof attribute === 'string') {
     return `"` + attribute + `"`;
   } else {
