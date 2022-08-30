@@ -86,17 +86,6 @@ h2,::slotted([slot=heading]) {
   flex-shrink: 0;
   backface-visibility: hidden;
 }
-.splide__sr {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
 .splide__track--draggable {
   user-select: none;
   -webkit-touch-callout: none;
@@ -252,17 +241,6 @@ h2,::slotted([slot=heading]) {
   flex-shrink: 0;
   backface-visibility: hidden;
 }
-.splide__sr {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
 .splide__track--draggable {
   user-select: none;
   -webkit-touch-callout: none;
@@ -390,17 +368,6 @@ h2,::slotted([slot=heading]) {
   box-sizing: border-box;
   flex-shrink: 0;
   backface-visibility: hidden;
-}
-.splide__sr {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
 }
 .splide__track--draggable {
   user-select: none;
@@ -530,17 +497,6 @@ h2,::slotted([slot=heading]) {
   flex-shrink: 0;
   backface-visibility: hidden;
 }
-.splide__sr {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
 .splide__track--draggable {
   user-select: none;
   -webkit-touch-callout: none;
@@ -657,17 +613,6 @@ h2,::slotted([slot=heading]) {
   box-sizing: border-box;
   flex-shrink: 0;
   backface-visibility: hidden;
-}
-.splide__sr {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
 }
 .splide__track--draggable {
   user-select: none;
@@ -800,17 +745,6 @@ h2,::slotted([slot=heading]) {
   box-sizing: border-box;
   flex-shrink: 0;
   backface-visibility: hidden;
-}
-.splide__sr {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  border: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(1px,1px,1px,1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
 }
 .splide__track--draggable {
   user-select: none;

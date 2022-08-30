@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
-import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors, pxToRemWithUnit } from '../../../styles';
+import { addImportantToEachRule, getThemedColors, pxToRemWithUnit } from '../../../styles';
 import {
   gridMaxWidth,
   gridSafeZone,
@@ -80,7 +80,6 @@ export const getComponentCss = (
         flexShrink: 0,
         backfaceVisibility: 'hidden',
       },
-      '&__sr': getScreenReaderOnlyJssStyle(),
     },
     // .splide.is-initialized,
     // .splide.is-rendered {
