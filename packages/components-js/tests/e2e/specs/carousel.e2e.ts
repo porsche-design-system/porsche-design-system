@@ -59,32 +59,35 @@ const getPaginationBullets = async () => (await getPagination()).$$('span');
 const waitForSlideToBeActive = (slide: ElementHandle) =>
   page.waitForFunction((el) => el.classList.contains('is-active'), {}, slide);
 
+const isElementCompletelyInViewport = (handle: ElementHandle): Promise<boolean> =>
+  handle.isIntersectingViewport({ threshold: 1 });
+
 it('should move slides on prev button clicks', async () => {
   await initCarousel();
   const buttonPrev = await getButtonPrev();
   const [slide1, slide2, slide3] = await getSlides();
 
-  expect(await slide1.isIntersectingViewport()).toBe(true);
-  expect(await slide2.isIntersectingViewport()).toBe(false);
-  expect(await slide3.isIntersectingViewport()).toBe(false);
+  expect(await isElementCompletelyInViewport(slide1)).toBe(true);
+  expect(await isElementCompletelyInViewport(slide2)).toBe(false);
+  expect(await isElementCompletelyInViewport(slide3)).toBe(false);
 
   await buttonPrev.click();
   await waitForSlideToBeActive(slide3);
-  expect(await slide1.isIntersectingViewport()).toBe(false);
-  expect(await slide2.isIntersectingViewport()).toBe(false);
-  expect(await slide3.isIntersectingViewport()).toBe(true);
+  expect(await isElementCompletelyInViewport(slide1)).toBe(false);
+  expect(await isElementCompletelyInViewport(slide2)).toBe(false);
+  expect(await isElementCompletelyInViewport(slide3)).toBe(true);
 
   await buttonPrev.click();
   await waitForSlideToBeActive(slide2);
-  expect(await slide1.isIntersectingViewport()).toBe(false);
-  expect(await slide2.isIntersectingViewport()).toBe(true);
-  expect(await slide3.isIntersectingViewport()).toBe(false);
+  expect(await isElementCompletelyInViewport(slide1)).toBe(false);
+  expect(await isElementCompletelyInViewport(slide2)).toBe(true);
+  expect(await isElementCompletelyInViewport(slide3)).toBe(false);
 
   await buttonPrev.click();
   await waitForSlideToBeActive(slide1);
-  expect(await slide1.isIntersectingViewport()).toBe(true);
-  expect(await slide2.isIntersectingViewport()).toBe(false);
-  expect(await slide3.isIntersectingViewport()).toBe(false);
+  expect(await isElementCompletelyInViewport(slide1)).toBe(true);
+  expect(await isElementCompletelyInViewport(slide2)).toBe(false);
+  expect(await isElementCompletelyInViewport(slide3)).toBe(false);
 });
 
 it('should move slides on next button clicks', async () => {
@@ -92,27 +95,27 @@ it('should move slides on next button clicks', async () => {
   const buttonNext = await getButtonNext();
   const [slide1, slide2, slide3] = await getSlides();
 
-  expect(await slide1.isIntersectingViewport()).toBe(true);
-  expect(await slide2.isIntersectingViewport()).toBe(false);
-  expect(await slide3.isIntersectingViewport()).toBe(false);
+  expect(await isElementCompletelyInViewport(slide1)).toBe(true);
+  expect(await isElementCompletelyInViewport(slide2)).toBe(false);
+  expect(await isElementCompletelyInViewport(slide3)).toBe(false);
 
   await buttonNext.click();
   await waitForSlideToBeActive(slide2);
-  expect(await slide1.isIntersectingViewport()).toBe(false);
-  expect(await slide2.isIntersectingViewport()).toBe(true);
-  expect(await slide3.isIntersectingViewport()).toBe(false);
+  expect(await isElementCompletelyInViewport(slide1)).toBe(false);
+  expect(await isElementCompletelyInViewport(slide2)).toBe(true);
+  expect(await isElementCompletelyInViewport(slide3)).toBe(false);
 
   await buttonNext.click();
   await waitForSlideToBeActive(slide3);
-  expect(await slide1.isIntersectingViewport()).toBe(false);
-  expect(await slide2.isIntersectingViewport()).toBe(false);
-  expect(await slide3.isIntersectingViewport()).toBe(true);
+  expect(await isElementCompletelyInViewport(slide1)).toBe(false);
+  expect(await isElementCompletelyInViewport(slide2)).toBe(false);
+  expect(await isElementCompletelyInViewport(slide3)).toBe(true);
 
   await buttonNext.click();
   await waitForSlideToBeActive(slide1);
-  expect(await slide1.isIntersectingViewport()).toBe(true);
-  expect(await slide2.isIntersectingViewport()).toBe(false);
-  expect(await slide3.isIntersectingViewport()).toBe(false);
+  expect(await isElementCompletelyInViewport(slide1)).toBe(true);
+  expect(await isElementCompletelyInViewport(slide2)).toBe(false);
+  expect(await isElementCompletelyInViewport(slide3)).toBe(false);
 });
 
 it('should update pagination on prev button clicks', async () => {
@@ -176,27 +179,27 @@ it('should have working pagination and prev/next buttons after reconnect', async
   // different refs after reconnect, so we have to select them here
   const [bullet1, bullet2, bullet3] = await getPaginationBullets();
 
-  expect(await slide1.isIntersectingViewport()).toBe(true);
-  expect(await slide2.isIntersectingViewport()).toBe(false);
-  expect(await slide3.isIntersectingViewport()).toBe(false);
+  expect(await isElementCompletelyInViewport(slide1)).toBe(true);
+  expect(await isElementCompletelyInViewport(slide2)).toBe(false);
+  expect(await isElementCompletelyInViewport(slide3)).toBe(false);
   expect(await getCssClasses(bullet1)).toBe('bullet bullet--active');
   expect(await getCssClasses(bullet2)).toBe('bullet');
   expect(await getCssClasses(bullet3)).toBe('bullet');
 
   await buttonNext.click();
   await waitForSlideToBeActive(slide2);
-  expect(await slide1.isIntersectingViewport()).toBe(false);
-  expect(await slide2.isIntersectingViewport()).toBe(true);
-  expect(await slide3.isIntersectingViewport()).toBe(false);
+  expect(await isElementCompletelyInViewport(slide1)).toBe(false);
+  expect(await isElementCompletelyInViewport(slide2)).toBe(true);
+  expect(await isElementCompletelyInViewport(slide3)).toBe(false);
   expect(await getCssClasses(bullet1)).toBe('bullet');
   expect(await getCssClasses(bullet2)).toBe('bullet bullet--active');
   expect(await getCssClasses(bullet3)).toBe('bullet');
 
   await buttonPrev.click();
   await waitForSlideToBeActive(slide1);
-  expect(await slide1.isIntersectingViewport()).toBe(true);
-  expect(await slide2.isIntersectingViewport()).toBe(false);
-  expect(await slide3.isIntersectingViewport()).toBe(false);
+  expect(await isElementCompletelyInViewport(slide1)).toBe(true);
+  expect(await isElementCompletelyInViewport(slide2)).toBe(false);
+  expect(await isElementCompletelyInViewport(slide3)).toBe(false);
   expect(await getCssClasses(bullet1)).toBe('bullet bullet--active');
   expect(await getCssClasses(bullet2)).toBe('bullet');
   expect(await getCssClasses(bullet3)).toBe('bullet');
@@ -279,28 +282,28 @@ describe('viewport change', () => {
     const [slide1, slide2, slide3, slide4, slide5, slide6] = await getSlides();
 
     await page.setViewport({ height: 1000, width: 350 });
-    expect(await slide1.isIntersectingViewport()).toBe(true);
-    expect(await slide2.isIntersectingViewport()).toBe(false);
-    expect(await slide3.isIntersectingViewport()).toBe(false);
-    expect(await slide4.isIntersectingViewport()).toBe(false);
-    expect(await slide5.isIntersectingViewport()).toBe(false);
-    expect(await slide6.isIntersectingViewport()).toBe(false);
+    expect(await isElementCompletelyInViewport(slide1)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide4)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide5)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide6)).toBe(false);
 
     await page.setViewport({ height: 1000, width: 760 });
-    expect(await slide1.isIntersectingViewport()).toBe(true);
-    expect(await slide2.isIntersectingViewport()).toBe(true);
-    expect(await slide3.isIntersectingViewport()).toBe(false);
-    expect(await slide4.isIntersectingViewport()).toBe(false);
-    expect(await slide5.isIntersectingViewport()).toBe(false);
-    expect(await slide6.isIntersectingViewport()).toBe(false);
+    expect(await isElementCompletelyInViewport(slide1)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide4)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide5)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide6)).toBe(false);
 
     await page.setViewport({ height: 1000, width: 1000 });
-    expect(await slide1.isIntersectingViewport()).toBe(true);
-    expect(await slide2.isIntersectingViewport()).toBe(true);
-    expect(await slide3.isIntersectingViewport()).toBe(true);
-    expect(await slide4.isIntersectingViewport()).toBe(false);
-    expect(await slide5.isIntersectingViewport()).toBe(false);
-    expect(await slide6.isIntersectingViewport()).toBe(false);
+    expect(await isElementCompletelyInViewport(slide1)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide2)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide3)).toBe(true);
+    expect(await isElementCompletelyInViewport(slide4)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide5)).toBe(false);
+    expect(await isElementCompletelyInViewport(slide6)).toBe(false);
   });
 
   it('should update pagination for BreakpointCustomizable slidesPerPage', async () => {
