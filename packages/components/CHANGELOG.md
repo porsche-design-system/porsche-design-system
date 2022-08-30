@@ -11,8 +11,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- `Stepper` if used within scroller component the scroller becomes focusable
-- `Tabs-Bar` if used within scroller component the scroller becomes focusable
+- `Stepper Horizontal` uses improved focus behavior in case it becomes scrollable.
+- `Tabs-Bar` uses improved focus behavior in case it becomes scrollable.
 
 #### Added
 
