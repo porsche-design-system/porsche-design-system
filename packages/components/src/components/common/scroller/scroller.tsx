@@ -77,10 +77,10 @@ export class Scroller {
       this.host,
       getComponentCss,
       this.gradientColorScheme,
-      this.theme,
       this.isNextHidden,
       this.isPrevHidden,
-      this.scrollIndicatorPosition
+      this.scrollIndicatorPosition,
+      this.theme
     );
   }
 
