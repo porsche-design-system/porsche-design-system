@@ -354,7 +354,7 @@ describe('accessibility', () => {
     expect(await getAttribute(scrollWrapper, 'tabindex')).toBe('0');
   });
 
-  it('should have correct tabindex on scroll-wrapper if scroller is Scrollable and has focusable elements', async () => {
+  it('should have correct tabindex on scroll-wrapper if scroller is scrollable and has focusable elements', async () => {
     await initScroller({ isWrapped: true });
     const scrollWrapper = await getScrollWrapper();
 
