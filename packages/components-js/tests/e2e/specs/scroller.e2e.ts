@@ -347,7 +347,7 @@ describe('accessibility', () => {
     });
   });
 
-  it('should have correct tabindex on scroll-wrapper if scroller is Scrollable and has no focusable elements', async () => {
+  it('should have correct tabindex on scroll-wrapper if scroller is scrollable and has no focusable elements', async () => {
     await initScroller({ isWrapped: true, tag: 'span' });
     const scrollWrapper = await getScrollWrapper();
 
