@@ -139,7 +139,7 @@
       border-bottom: 1px solid darkcyan;
     }
 
-    > div:not([slot]):not(.card) {
+    > div:not([slot='description']):not(.card) {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -150,6 +150,7 @@
 
     [slot='description'] {
       display: flex;
+      align-items: self-start;
 
       p-link-pure {
         margin: 4px 0 0 auto;
