@@ -12,12 +12,12 @@ export const ScrollerExamplePage = (): JSX.Element => {
       }
   `;
 
-  const [scrollPosition, setScrollPosition] = useState<number>(220);
-  const [isSmooth, setIsSmooth] = useState<boolean>(false);
+  type ScrollToPosition = { scrollPosition: number; isSmooth?: boolean };
+
+  const [scrollToPosition, setScrollToPosition] = useState<ScrollToPosition>({ scrollPosition: 220, isSmooth: false });
 
   const onClick = (scrollPosition: number) => {
-    setIsSmooth(true);
-    setScrollPosition(scrollPosition);
+    setScrollToPosition({ scrollPosition: scrollPosition, isSmooth: true });
   };
 
   return (
@@ -35,7 +35,7 @@ export const ScrollerExamplePage = (): JSX.Element => {
       </button>
 
       <div style={{ maxWidth: '400px', whiteSpace: 'nowrap' }}>
-        <PScroller className="scroller" scrollToPosition={{ scrollPosition, isSmooth }}>
+        <PScroller className="scroller" scrollToPosition={scrollToPosition}>
           <PTagDismissible>START - some tag content</PTagDismissible>
           <PTagDismissible>MIDDLE - some tag content</PTagDismissible>
           <PTagDismissible>END - some tag content</PTagDismissible>
