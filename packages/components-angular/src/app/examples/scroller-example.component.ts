@@ -8,15 +8,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         margin-right: 1rem;
       }
 
-      #app > button {
+      button {
         margin: 0 1rem 1rem 0;
       }
     `,
   ],
   template: `
-    <button (click)="clickHandler(0, true)">Scroll to start</button>
-    <button (click)="clickHandler(220, true)">Scroll to middle</button>
-    <button (click)="clickHandler(720, true)">Scroll to end</button>
+    <button type="button" (click)="onClick(0)">Scroll to start</button>
+    <button type="button" (click)="onClick(220)">Scroll to middle</button>
+    <button type="button" (click)="onClick(720)">Scroll to end</button>
     <div style="max-width: 400px; white-space: nowrap">
       <p-scroller class="scroller" [scrollToPosition]="{scrollPosition, isSmooth}">
         <p-tag-dismissible>START - some tag content</p-tag-dismissible>
@@ -31,8 +31,8 @@ export class ScrollerExampleComponent {
   scrollPosition: number = 220;
   isSmooth: boolean = false;
 
-  clickHandler = (scrollPosition: number, isSmooth: boolean) => {
+  onClick = (scrollPosition: number) => {
     this.scrollPosition = scrollPosition;
-    this.isSmooth = isSmooth;
+    this.isSmooth = true;
   };
 }
