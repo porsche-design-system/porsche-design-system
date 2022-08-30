@@ -28,7 +28,7 @@ type InitOptions = {
 };
 
 const initScroller = async (opts?: InitOptions) => {
-  const { amount = 8, isWrapped, otherMarkup = '', tag = 'button', scrollToPosition } = opts ?? {};
+  const { amount = 8, isWrapped, otherMarkup = '', tag = 'button', scrollToPosition } = opts || {};
 
   const elementAttributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
   const elements = Array.from(Array(amount))
