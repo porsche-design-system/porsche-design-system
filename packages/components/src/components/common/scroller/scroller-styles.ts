@@ -7,10 +7,10 @@ import type { ScrollIndicatorPosition } from './scroller-utils';
 
 export const getComponentCss = (
   gradientColorScheme: GradientColorTheme,
-  theme: ThemeExtendedElectric,
   isNextHidden: boolean,
   isPrevHidden: boolean,
-  scrollIndicatorPosition: ScrollIndicatorPosition
+  scrollIndicatorPosition: ScrollIndicatorPosition,
+  theme: ThemeExtendedElectric
 ): string => {
   const { backgroundColor, backgroundSurfaceColor, baseColor } = getThemedColors(theme);
   const gradientColor = gradientColorScheme === 'surface' ? backgroundSurfaceColor : backgroundColor;
