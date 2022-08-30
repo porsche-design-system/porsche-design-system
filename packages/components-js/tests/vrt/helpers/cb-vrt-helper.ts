@@ -23,6 +23,7 @@ export const cbVRT = async (route: string, viewport: Viewport = 1000, options?: 
       height: viewport,
     });
     await page.goto(`${baseUrl}/#${route}`, { waitUntil: 'networkidle' });
+    await page.evaluate(() => (window as any).componentsReady());
 
     if (scenario) {
       await scenario(page);
