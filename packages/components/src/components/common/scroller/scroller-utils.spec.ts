@@ -41,7 +41,7 @@ describe('isScrollable()', () => {
     [{ isPrevHidden: false, isNextHidden: false }, true],
     [{ isPrevHidden: false, isNextHidden: true }, true],
     [{ isPrevHidden: true, isNextHidden: false }, true],
-  ])('should return for %o %s', ({ isPrevHidden, isNextHidden }, expected) => {
+  ])('should for %o return %s', ({ isPrevHidden, isNextHidden }, expected) => {
     expect(isScrollable(isPrevHidden, isNextHidden)).toBe(expected);
   });
 });
