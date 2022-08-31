@@ -57,7 +57,9 @@ const cycleFrameworkTabs = async (theme: string): Promise<void> => {
 };
 
 // filter out files from public/assets directory
-const internalUrls = getInternalUrls().filter((url) => !url.match(/^\/assets\/.*\.\w{3,4}$/));
+const internalUrls = getInternalUrls()
+  .filter((url) => !url.match(/^\/assets\/.*\.\w{3,4}$/))
+  .filter((url) => url.includes('tabs'));
 
 it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
   'should have no accessibility issues at %s',
@@ -93,9 +95,8 @@ it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
         await vanillaJsButton.click();
       }
 
-      // TODO: a11yAnalyze is temporarily disabled due to https://github.com/porscheui/porsche-design-system/issues/2019. Enable when fixed!
-      // await a11yAnalyze(page, 'dark');
-      // await cycleFrameworkTabs('dark');
+      await a11yAnalyze(page, 'dark');
+      await cycleFrameworkTabs('dark');
     }
   }
 );
