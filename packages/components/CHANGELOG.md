@@ -11,8 +11,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- `Stepper Horizontal` uses improved focus behavior in case it becomes scrollable.
-- `Tabs-Bar` uses improved focus behavior in case it becomes scrollable.
+- `Stepper Horizontal` uses improved focus behavior in case it becomes scrollable and scroll indicators are centered
+  correctly.
+- `Tabs-Bar` uses improved focus behavior in case it becomes scrollable and scroll indicators are centered correctly.
 
 #### Added
 
