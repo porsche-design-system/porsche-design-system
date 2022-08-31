@@ -121,6 +121,7 @@ h2,::slotted([slot=heading]) {
     grid-template-columns: minmax(0px, 1fr) 5rem;
     gap: 1rem;
     position: relative;
+    min-height: 2.5rem;
   }
   .nav {
     display: grid;
@@ -272,6 +273,7 @@ h2,::slotted([slot=heading]) {
     grid-template-columns: minmax(0px, 1fr) 5rem;
     gap: 1rem;
     position: relative;
+    min-height: 2.5rem;
   }
   .nav {
     display: grid;
@@ -405,6 +407,7 @@ h2,::slotted([slot=heading]) {
     grid-template-columns: minmax(0px, 1fr) 5rem;
     gap: 1rem;
     position: relative;
+    min-height: 2.5rem;
   }
   .nav {
     display: grid;
@@ -523,6 +526,7 @@ h2,::slotted([slot=heading]) {
     grid-template-columns: minmax(0px, 1fr) 5rem;
     gap: 1rem;
     position: relative;
+    min-height: 2.5rem;
   }
   .nav {
     display: grid;
@@ -660,6 +664,7 @@ h2,::slotted([slot=heading]) {
     grid-template-columns: minmax(0px, 1fr) 5rem;
     gap: 1rem;
     position: relative;
+    min-height: 2.5rem;
   }
   .nav {
     display: grid;
@@ -788,6 +793,7 @@ h2,::slotted([slot=heading]) {
     grid-template-columns: minmax(0px, 1fr) 5rem;
     gap: 1rem;
     position: relative;
+    min-height: 2.5rem;
   }
   .nav {
     display: grid;
