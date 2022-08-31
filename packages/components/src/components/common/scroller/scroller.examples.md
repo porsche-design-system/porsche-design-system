@@ -53,7 +53,19 @@ The `p-scroller` component provides the `scrollToPosition` property. It accepts
 
 If `scrollToPosition` is set with `isSmooth: true` the scrolling is animated.
 
-<Playground :frameworkMarkup="codeExample" :config="{ themable: false }" :markup="frameworkExample"></Playground>
+<Playground :frameworkMarkup="codeExample" :config="{ themable: false }">
+<button id="start" @click="scrollToPosition = '{scrollPosition: 0, isSmooth: true }'">Scroll to start</button>
+  <button id="middle" @click="scrollToPosition = '{scrollPosition: 220, isSmooth: true }'">Scroll to middle</button>
+  <button id="end" @click="scrollToPosition = '{scrollPosition: 720, isSmooth: true }'">Scroll to end</button>
+
+<div style="max-width: 400px">
+  <p-scroller class="scroller" :scroll-to-position="scrollToPosition" style="white-space: nowrap">
+    <p-tag-dismissible>START - some tag content</p-tag-dismissible>
+    <p-tag-dismissible>MIDDLE - some tag content</p-tag-dismissible>
+    <p-tag-dismissible>END - some tag content</p-tag-dismissible>
+  </p-scroller>
+ <p-text :theme="theme">{{scrollToPosition}}</p-text>
+</div></Playground>
 
 <script lang="ts">
 import Vue from 'vue';
@@ -71,6 +83,8 @@ export default class Code extends Vue {
 
   gradientColorScheme = 'surface';
   scrollIndicatorPosition = 'top';
+
+  scrollToPosition = '{scrollPosition: 220}';
 
   codeExample = getScrollerCodeSamples();
 
@@ -155,52 +169,6 @@ export default class Code extends Vue {
     </p-tag>
   </p-scroller>
 </div>`;
-  }
-
-  frameworkExample = `<button id="start">Scroll to start</button>
-<button id="middle">Scroll to middle</button>
-<button id="end">Scroll to end</button>
-
-<div style="max-width: 400px">
-  <p-scroller class="scroller" scroll-to-position="{scrollPosition: 220}" style="white-space: nowrap">
-    <p-tag-dismissible>START - some tag content</p-tag-dismissible>
-    <p-tag-dismissible>MIDDLE - some tag content</p-tag-dismissible>
-    <p-tag-dismissible>END - some tag content</p-tag-dismissible>
-  </p-scroller>
-</div>`;
- 
-  mounted() {
-    /* initially update accordion with open attribute in playground */
-    this.registerEvents();
-  
-    /* theme switch needs to register event listeners again */
-    const themeTabs = this.$el.querySelectorAll('.playground > p-tabs-bar');
-    themeTabs.forEach(tab => tab.addEventListener('tabChange', () => {
-      this.registerEvents();
-    }));
-  }
-  
-  updated(){
-    this.registerEvents();
-  }
-  
-  registerEvents() {
-    const scroller = document.querySelector('.scroller');
-
-    const scrollToStart = document.querySelector('#start');
-    scrollToStart.addEventListener('click', () => {
-      scroller.scrollToPosition = {scrollPosition: 0, isSmooth: true};
-    });
-  
-    const scrollToMiddle = document.querySelector('#middle');
-    scrollToMiddle.addEventListener('click',  () => {
-      scroller.scrollToPosition = {scrollPosition: 220, isSmooth: true};
-    });
-  
-    const scrollToEnd = document.querySelector('#end');
-    scrollToEnd.addEventListener('click',  () => {
-      scroller.scrollToPosition = {scrollPosition: 720, isSmooth: true};
-    });
   }
 }
 
