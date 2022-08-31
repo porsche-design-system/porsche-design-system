@@ -44,21 +44,16 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           ${slides}
         </p-carousel>
         <p-carousel theme="${theme}">
-          <h2 slot="heading">Slotted heading with a <a href="#">link</a></h2>
-          <p slot="description">Slotted description with a <a href="#">link</a></p>
+          <h2 slot="heading">Slotted heading</h2>
+          <p slot="description">Slotted description</p>
           ${slides}
         </p-carousel>`;
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
       await forceHoverState(page, '.hover p-carousel >>> p-button-pure >>> button');
-      await forceHoverState(page, '.hover p-carousel a');
-
       await forceFocusState(page, '.focus p-carousel >>> p-button-pure >>> button');
-      await forceFocusState(page, '.focus p-carousel a');
-
       await forceFocusHoverState(page, '.focus-hover p-carousel >>> p-button-pure >>> button');
-      await forceFocusHoverState(page, '.focus-hover p-carousel a');
     })
   ).toBeFalsy();
 });
