@@ -45,7 +45,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         </p-carousel>
         <p-carousel theme="${theme}">
           <h2 slot="heading">Slotted heading</h2>
-          <p slot="description">Slotted description</p>
+          <p slot="post-heading">Slotted description</p>
           ${slides}
         </p-carousel>`;
 
