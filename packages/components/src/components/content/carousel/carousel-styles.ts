@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
-import { addImportantToEachRule, getThemedColors, pxToRemWithUnit } from '../../../styles';
+import { addImportantToEachRule, getScreenReaderOnlyJssStyle, getThemedColors, pxToRemWithUnit } from '../../../styles';
 import {
   gridMaxWidth,
   gridSafeZone,
@@ -80,6 +80,7 @@ export const getComponentCss = (
         flexShrink: 0,
         backfaceVisibility: 'hidden',
       },
+      '&__sr': getScreenReaderOnlyJssStyle(), // appears in the DOM when sliding
     },
     // .splide.is-initialized,
     // .splide.is-rendered {
@@ -109,14 +110,14 @@ export const getComponentCss = (
     ...(disablePagination !== true && {
       pagination: {
         ...buildResponsiveStyles(disablePagination, (value: boolean) => ({ display: value ? 'none' : 'grid' })),
-        gridAutoColumns: '8px',
+        gridAutoColumns: pxToRemWithUnit(8),
         gridAutoFlow: 'column',
         justifyContent: 'center',
-        gap: '8px',
-        height: '8px',
+        gap: pxToRemWithUnit(8),
+        height: pxToRemWithUnit(8),
       },
       bullet: {
-        borderRadius: '4px',
+        borderRadius: pxToRemWithUnit(4),
         background: disabledColor,
       },
       [bulletActiveClass]: {
