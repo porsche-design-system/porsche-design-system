@@ -163,18 +163,20 @@ export class Carousel {
           {this.heading ? <h2>{this.heading}</h2> : <slot name="heading" />}
           <slot name="post-heading" />
 
-          <PrefixedTagNames.pButtonPure
-            {...btnProps}
-            icon="arrow-head-left"
-            ref={(ref) => (this.btnPrev = ref)}
-            onClick={() => slidePrev(this.splide, this.amountOfPages)}
-          />
-          <PrefixedTagNames.pButtonPure
-            {...btnProps}
-            icon="arrow-head-right"
-            ref={(ref) => (this.btnNext = ref)}
-            onClick={() => slideNext(this.splide, this.amountOfPages)}
-          />
+          <div class="nav">
+            <PrefixedTagNames.pButtonPure
+              {...btnProps}
+              icon="arrow-head-left"
+              ref={(ref) => (this.btnPrev = ref)}
+              onClick={() => slidePrev(this.splide, this.amountOfPages)}
+            />
+            <PrefixedTagNames.pButtonPure
+              {...btnProps}
+              icon="arrow-head-right"
+              ref={(ref) => (this.btnNext = ref)}
+              onClick={() => slideNext(this.splide, this.amountOfPages)}
+            />
+          </div>
         </div>
 
         <div

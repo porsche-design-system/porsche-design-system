@@ -14,7 +14,6 @@ export const bulletActiveClass = 'bullet--active';
 
 const mediaQueryS = mediaQueryMin('s');
 const mediaQueryXl = mediaQueryMin('xl');
-const mediaQueryXxl = mediaQueryMin('xxl');
 
 export const getComponentCss = (
   wrapContent: boolean,
@@ -35,14 +34,12 @@ export const getComponentCss = (
       ':host': addImportantToEachRule({
         display: 'grid',
         maxWidth: gridMaxWidth,
-        margin: '0 auto',
+        marginLeft: 'auto',
+        marginRight: 'auto',
         gap: pxToRemWithUnit(24),
         gridAutoFlow: 'row',
-        [mediaQueryS]: {
-          gap: pxToRemWithUnit(40),
-        },
-        [mediaQueryXxl]: {
-          gap: pxToRemWithUnit(62),
+        [mediaQueryXl]: {
+          gap: pxToRemWithUnit(32),
         },
       }),
       'h2,::slotted([slot=heading])': addImportantToEachRule({
@@ -52,15 +49,14 @@ export const getComponentCss = (
       }),
       '::slotted([slot=post-heading])': addImportantToEachRule({
         ...textSmall,
-        gridColumn: 1,
-        margin: `${pxToRemWithUnit(8)} 0 0`,
+        margin: 0,
         color: baseColor,
+        gridColumn: 1, // to force it into 2nd line
       }),
     },
     splide: {
       position: 'relative',
       minWidth: 0,
-      cursor: 'grab',
       overflow: 'hidden',
       ...safeZonePadding,
       // visibility: 'hidden',
@@ -75,6 +71,7 @@ export const getComponentCss = (
         display: 'flex',
         height: '100%',
         backfaceVisibility: 'hidden',
+        cursor: 'grab',
       },
       '&__slide': {
         position: 'relative',
@@ -92,23 +89,30 @@ export const getComponentCss = (
     //     display: block,
     //   }
     header: {
-      display: 'grid',
-      gridTemplateColumns: 'minmax(0px, 1fr) 0 0',
       ...safeZonePadding,
       [mediaQueryS]: {
-        gridTemplateColumns: 'minmax(0px, 1fr) min-content min-content',
-        alignItems: 'end',
-        gap: pxToRemWithUnit(8),
-        minHeight: pxToRemWithUnit(42), // actual height of prev/next buttons to prevent cut off focus outline
-        // padding: '0 2px 0 0', // offset of button focus outline so it isn't cut off when padding on parent exists
+        display: 'grid',
+        gridTemplateColumns: `minmax(0px, 1fr) ${pxToRemWithUnit(80)}`, // 2nd row has width of nav buttons
+        gap: pxToRemWithUnit(16),
+        position: 'relative',
+      },
+      [mediaQueryXl]: {
+        gap: pxToRemWithUnit(24),
+      },
+    },
+    nav: {
+      display: 'none',
+      [mediaQueryS]: {
+        display: 'grid',
+        gridAutoFlow: 'column',
+        position: 'absolute', // we can't span across multiple rows with implicit grid
+        right: 0,
+        bottom: 0,
+        background: 'purple',
       },
     },
     btn: {
-      visibility: 'hidden',
-      [mediaQueryS]: {
-        visibility: 'visible',
-        padding: pxToRemWithUnit(8),
-      },
+      padding: pxToRemWithUnit(8),
     },
     ...(disablePagination !== true && {
       pagination: {

@@ -4,7 +4,8 @@ exports[`getComponentCss() should return correct css for wrapContent: false, dis
 ":host {
   display: grid !important;
   max-width: 120rem !important;
-  margin: 0 auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
 }
@@ -15,22 +16,16 @@ h2,::slotted([slot=heading]) {
   margin: 0 !important;
   color: #000 !important;
 }
-::slotted([slot=description]) {
+::slotted([slot=post-heading]) {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
-  grid-column: 1 !important;
-  margin: 0.5rem 0 0 !important;
+  margin: 0 !important;
   color: #000 !important;
+  grid-column: 1 !important;
 }
-@media(min-width:760px) {
-  :host {
-    gap: 2.5rem !important;
-  }
-}
-
 @media(min-width:760px) and (max-width:999px) {
   h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
@@ -53,22 +48,18 @@ h2,::slotted([slot=heading]) {
 }
 
 @media(min-width:1760px) {
+  :host {
+    gap: 2rem !important;
+  }
   h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
     line-height: 1.3333333333 !important;
   }
 }
 
-@media(min-width:1920px) {
-  :host {
-    gap: 3.875rem !important;
-  }
-}
-
 .splide {
   position: relative;
   min-width: 0;
-  cursor: grab;
   overflow: hidden;
 }
 .splide__track {
@@ -78,6 +69,7 @@ h2,::slotted([slot=heading]) {
   display: flex;
   height: 100%;
   backface-visibility: hidden;
+  cursor: grab;
 }
 .splide__slide {
   position: relative;
@@ -100,12 +92,11 @@ h2,::slotted([slot=heading]) {
   user-select: none;
   -webkit-touch-callout: none;
 }
-.header {
-  display: grid;
-  grid-template-columns: minmax(0px, 1fr) 0 0;
+.nav {
+  display: none;
 }
 .btn {
-  visibility: hidden;
+  padding: 0.5rem;
 }
 .pagination {
   display: none;
@@ -130,14 +121,18 @@ h2,::slotted([slot=heading]) {
 
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) min-content min-content;
-    align-items: end;
-    gap: 0.5rem;
-    min-height: 2.625rem;
+    display: grid;
+    grid-template-columns: minmax(0px, 1fr) 5rem;
+    gap: 1rem;
+    position: relative;
   }
-  .btn {
-    visibility: visible;
-    padding: 0.5rem;
+  .nav {
+    display: grid;
+    grid-auto-flow: column;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: purple;
   }
   .pagination {
     display: none;
@@ -157,6 +152,9 @@ h2,::slotted([slot=heading]) {
 }
 
 @media(min-width:1760px) {
+  .header {
+    gap: 1.5rem;
+  }
   .pagination {
     display: grid;
   }
@@ -168,7 +166,8 @@ exports[`getComponentCss() should return correct css for wrapContent: false, dis
 ":host {
   display: grid !important;
   max-width: 120rem !important;
-  margin: 0 auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
 }
@@ -179,22 +178,16 @@ h2,::slotted([slot=heading]) {
   margin: 0 !important;
   color: #fff !important;
 }
-::slotted([slot=description]) {
+::slotted([slot=post-heading]) {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
-  grid-column: 1 !important;
-  margin: 0.5rem 0 0 !important;
+  margin: 0 !important;
   color: #fff !important;
+  grid-column: 1 !important;
 }
-@media(min-width:760px) {
-  :host {
-    gap: 2.5rem !important;
-  }
-}
-
 @media(min-width:760px) and (max-width:999px) {
   h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
@@ -217,22 +210,18 @@ h2,::slotted([slot=heading]) {
 }
 
 @media(min-width:1760px) {
+  :host {
+    gap: 2rem !important;
+  }
   h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
     line-height: 1.3333333333 !important;
   }
 }
 
-@media(min-width:1920px) {
-  :host {
-    gap: 3.875rem !important;
-  }
-}
-
 .splide {
   position: relative;
   min-width: 0;
-  cursor: grab;
   overflow: hidden;
 }
 .splide__track {
@@ -242,6 +231,7 @@ h2,::slotted([slot=heading]) {
   display: flex;
   height: 100%;
   backface-visibility: hidden;
+  cursor: grab;
 }
 .splide__slide {
   position: relative;
@@ -264,12 +254,11 @@ h2,::slotted([slot=heading]) {
   user-select: none;
   -webkit-touch-callout: none;
 }
-.header {
-  display: grid;
-  grid-template-columns: minmax(0px, 1fr) 0 0;
+.nav {
+  display: none;
 }
 .btn {
-  visibility: hidden;
+  padding: 0.5rem;
 }
 .pagination {
   display: grid;
@@ -288,14 +277,24 @@ h2,::slotted([slot=heading]) {
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) min-content min-content;
-    align-items: end;
-    gap: 0.5rem;
-    min-height: 2.625rem;
+    display: grid;
+    grid-template-columns: minmax(0px, 1fr) 5rem;
+    gap: 1rem;
+    position: relative;
   }
-  .btn {
-    visibility: visible;
-    padding: 0.5rem;
+  .nav {
+    display: grid;
+    grid-auto-flow: column;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: purple;
+  }
+}
+
+@media(min-width:1760px) {
+  .header {
+    gap: 1.5rem;
   }
 }
 "
@@ -305,7 +304,8 @@ exports[`getComponentCss() should return correct css for wrapContent: false, dis
 ":host {
   display: grid !important;
   max-width: 120rem !important;
-  margin: 0 auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
 }
@@ -316,22 +316,16 @@ h2,::slotted([slot=heading]) {
   margin: 0 !important;
   color: #000 !important;
 }
-::slotted([slot=description]) {
+::slotted([slot=post-heading]) {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
-  grid-column: 1 !important;
-  margin: 0.5rem 0 0 !important;
+  margin: 0 !important;
   color: #000 !important;
+  grid-column: 1 !important;
 }
-@media(min-width:760px) {
-  :host {
-    gap: 2.5rem !important;
-  }
-}
-
 @media(min-width:760px) and (max-width:999px) {
   h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
@@ -354,22 +348,18 @@ h2,::slotted([slot=heading]) {
 }
 
 @media(min-width:1760px) {
+  :host {
+    gap: 2rem !important;
+  }
   h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
     line-height: 1.3333333333 !important;
   }
 }
 
-@media(min-width:1920px) {
-  :host {
-    gap: 3.875rem !important;
-  }
-}
-
 .splide {
   position: relative;
   min-width: 0;
-  cursor: grab;
   overflow: hidden;
 }
 .splide__track {
@@ -379,6 +369,7 @@ h2,::slotted([slot=heading]) {
   display: flex;
   height: 100%;
   backface-visibility: hidden;
+  cursor: grab;
 }
 .splide__slide {
   position: relative;
@@ -401,12 +392,11 @@ h2,::slotted([slot=heading]) {
   user-select: none;
   -webkit-touch-callout: none;
 }
-.header {
-  display: grid;
-  grid-template-columns: minmax(0px, 1fr) 0 0;
+.nav {
+  display: none;
 }
 .btn {
-  visibility: hidden;
+  padding: 0.5rem;
 }
 .pagination {
   display: grid;
@@ -425,14 +415,24 @@ h2,::slotted([slot=heading]) {
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) min-content min-content;
-    align-items: end;
-    gap: 0.5rem;
-    min-height: 2.625rem;
+    display: grid;
+    grid-template-columns: minmax(0px, 1fr) 5rem;
+    gap: 1rem;
+    position: relative;
   }
-  .btn {
-    visibility: visible;
-    padding: 0.5rem;
+  .nav {
+    display: grid;
+    grid-auto-flow: column;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: purple;
+  }
+}
+
+@media(min-width:1760px) {
+  .header {
+    gap: 1.5rem;
   }
 }
 "
@@ -442,7 +442,8 @@ exports[`getComponentCss() should return correct css for wrapContent: false, dis
 ":host {
   display: grid !important;
   max-width: 120rem !important;
-  margin: 0 auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
 }
@@ -453,22 +454,16 @@ h2,::slotted([slot=heading]) {
   margin: 0 !important;
   color: #000 !important;
 }
-::slotted([slot=description]) {
+::slotted([slot=post-heading]) {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
-  grid-column: 1 !important;
-  margin: 0.5rem 0 0 !important;
+  margin: 0 !important;
   color: #000 !important;
+  grid-column: 1 !important;
 }
-@media(min-width:760px) {
-  :host {
-    gap: 2.5rem !important;
-  }
-}
-
 @media(min-width:760px) and (max-width:999px) {
   h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
@@ -491,22 +486,18 @@ h2,::slotted([slot=heading]) {
 }
 
 @media(min-width:1760px) {
+  :host {
+    gap: 2rem !important;
+  }
   h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
     line-height: 1.3333333333 !important;
   }
 }
 
-@media(min-width:1920px) {
-  :host {
-    gap: 3.875rem !important;
-  }
-}
-
 .splide {
   position: relative;
   min-width: 0;
-  cursor: grab;
   overflow: hidden;
 }
 .splide__track {
@@ -516,6 +507,7 @@ h2,::slotted([slot=heading]) {
   display: flex;
   height: 100%;
   backface-visibility: hidden;
+  cursor: grab;
 }
 .splide__slide {
   position: relative;
@@ -538,23 +530,32 @@ h2,::slotted([slot=heading]) {
   user-select: none;
   -webkit-touch-callout: none;
 }
-.header {
-  display: grid;
-  grid-template-columns: minmax(0px, 1fr) 0 0;
+.nav {
+  display: none;
 }
 .btn {
-  visibility: hidden;
+  padding: 0.5rem;
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) min-content min-content;
-    align-items: end;
-    gap: 0.5rem;
-    min-height: 2.625rem;
+    display: grid;
+    grid-template-columns: minmax(0px, 1fr) 5rem;
+    gap: 1rem;
+    position: relative;
   }
-  .btn {
-    visibility: visible;
-    padding: 0.5rem;
+  .nav {
+    display: grid;
+    grid-auto-flow: column;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: purple;
+  }
+}
+
+@media(min-width:1760px) {
+  .header {
+    gap: 1.5rem;
   }
 }
 "
@@ -564,7 +565,8 @@ exports[`getComponentCss() should return correct css for wrapContent: true, disa
 ":host {
   display: grid !important;
   max-width: 120rem !important;
-  margin: 0 auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
 }
@@ -575,22 +577,16 @@ h2,::slotted([slot=heading]) {
   margin: 0 !important;
   color: #000 !important;
 }
-::slotted([slot=description]) {
+::slotted([slot=post-heading]) {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
-  grid-column: 1 !important;
-  margin: 0.5rem 0 0 !important;
+  margin: 0 !important;
   color: #000 !important;
+  grid-column: 1 !important;
 }
-@media(min-width:760px) {
-  :host {
-    gap: 2.5rem !important;
-  }
-}
-
 @media(min-width:760px) and (max-width:999px) {
   h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
@@ -613,22 +609,18 @@ h2,::slotted([slot=heading]) {
 }
 
 @media(min-width:1760px) {
+  :host {
+    gap: 2rem !important;
+  }
   h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
     line-height: 1.3333333333 !important;
   }
 }
 
-@media(min-width:1920px) {
-  :host {
-    gap: 3.875rem !important;
-  }
-}
-
 .splide {
   position: relative;
   min-width: 0;
-  cursor: grab;
   overflow: hidden;
   padding: 0 max(1rem, 7vw);
 }
@@ -639,6 +631,7 @@ h2,::slotted([slot=heading]) {
   display: flex;
   height: 100%;
   backface-visibility: hidden;
+  cursor: grab;
 }
 .splide__slide {
   position: relative;
@@ -662,12 +655,13 @@ h2,::slotted([slot=heading]) {
   -webkit-touch-callout: none;
 }
 .header {
-  display: grid;
-  grid-template-columns: minmax(0px, 1fr) 0 0;
   padding: 0 max(1rem, 7vw);
 }
+.nav {
+  display: none;
+}
 .btn {
-  visibility: hidden;
+  padding: 0.5rem;
 }
 .pagination {
   display: grid;
@@ -686,14 +680,18 @@ h2,::slotted([slot=heading]) {
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) min-content min-content;
-    align-items: end;
-    gap: 0.5rem;
-    min-height: 2.625rem;
+    display: grid;
+    grid-template-columns: minmax(0px, 1fr) 5rem;
+    gap: 1rem;
+    position: relative;
   }
-  .btn {
-    visibility: visible;
-    padding: 0.5rem;
+  .nav {
+    display: grid;
+    grid-auto-flow: column;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: purple;
   }
 }
 
@@ -702,7 +700,7 @@ h2,::slotted([slot=heading]) {
     padding: 0 min(calc(43vw - 39.6rem), 12rem);
   }
   .header {
-    padding: 0 min(calc(43vw - 39.6rem), 12rem);
+    gap: 1.5rem;
   }
 }
 "
@@ -712,7 +710,8 @@ exports[`getComponentCss() should return correct css for wrapContent: true, disa
 ":host {
   display: grid !important;
   max-width: 120rem !important;
-  margin: 0 auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
 }
@@ -723,22 +722,16 @@ h2,::slotted([slot=heading]) {
   margin: 0 !important;
   color: #000 !important;
 }
-::slotted([slot=description]) {
+::slotted([slot=post-heading]) {
   font: normal normal 400 1rem/1.5 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-size-adjust: none !important;
   -webkit-text-size-adjust: none !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
-  grid-column: 1 !important;
-  margin: 0.5rem 0 0 !important;
+  margin: 0 !important;
   color: #000 !important;
+  grid-column: 1 !important;
 }
-@media(min-width:760px) {
-  :host {
-    gap: 2.5rem !important;
-  }
-}
-
 @media(min-width:760px) and (max-width:999px) {
   h2,::slotted([slot=heading]) {
     font-size: 1.5rem !important;
@@ -761,22 +754,18 @@ h2,::slotted([slot=heading]) {
 }
 
 @media(min-width:1760px) {
+  :host {
+    gap: 2rem !important;
+  }
   h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
     line-height: 1.3333333333 !important;
   }
 }
 
-@media(min-width:1920px) {
-  :host {
-    gap: 3.875rem !important;
-  }
-}
-
 .splide {
   position: relative;
   min-width: 0;
-  cursor: grab;
   overflow: hidden;
   padding: 0 max(1rem, 7vw);
 }
@@ -787,6 +776,7 @@ h2,::slotted([slot=heading]) {
   display: flex;
   height: 100%;
   backface-visibility: hidden;
+  cursor: grab;
 }
 .splide__slide {
   position: relative;
@@ -810,23 +800,28 @@ h2,::slotted([slot=heading]) {
   -webkit-touch-callout: none;
 }
 .header {
-  display: grid;
-  grid-template-columns: minmax(0px, 1fr) 0 0;
   padding: 0 max(1rem, 7vw);
 }
+.nav {
+  display: none;
+}
 .btn {
-  visibility: hidden;
+  padding: 0.5rem;
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) min-content min-content;
-    align-items: end;
-    gap: 0.5rem;
-    min-height: 2.625rem;
+    display: grid;
+    grid-template-columns: minmax(0px, 1fr) 5rem;
+    gap: 1rem;
+    position: relative;
   }
-  .btn {
-    visibility: visible;
-    padding: 0.5rem;
+  .nav {
+    display: grid;
+    grid-auto-flow: column;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: purple;
   }
 }
 
@@ -835,7 +830,7 @@ h2,::slotted([slot=heading]) {
     padding: 0 min(calc(43vw - 39.6rem), 12rem);
   }
   .header {
-    padding: 0 min(calc(43vw - 39.6rem), 12rem);
+    gap: 1.5rem;
   }
 }
 "
