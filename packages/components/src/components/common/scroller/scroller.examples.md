@@ -59,10 +59,15 @@ If `scrollToPosition` is set with `isSmooth: true` the scrolling is animated.
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getScrollerCodeSamples } from '@porsche-design-system/shared';
+import type { Theme } from '@/models';
   
 @Component
 export default class Code extends Vue {
   config = { themeable: true };
+
+  get theme(): Theme {
+    return this.$store.getters.theme;
+  }
 
   gradientColorScheme = 'surface';
   scrollIndicatorPosition = 'top';
