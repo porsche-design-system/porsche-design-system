@@ -51,11 +51,11 @@ the `wrapContent` property which internally applies the padding of `p-content-wr
 
 <Playground :markup="wrapContent" :config="config"></Playground>
 
-## Description
+## Post Heading
 
-If you want to place any additional elements between heading and slider, you can use the `description` slot.
+If you want to place any additional elements between heading and slider, you can use the `post-heading` slot.
 
-<Playground :markup="description" :config="config"></Playground>
+<Playground :markup="postHeading" :config="config"></Playground>
 
 ## Disable Pagination
 
@@ -164,8 +164,8 @@ export default class Code extends Vue {
   ${this.getSlides(3)}
 </p-carousel>`;
 
-  description = `<p-carousel heading="${this.basicHeading}">
-  <p slot="description">Some slotted description</p>
+  postHeading = `<p-carousel heading="${this.basicHeading}">
+  <p slot="post-heading">Some slotted content between heading and slider</p>
   ${this.getSlides(3)}
 </p-carousel>`;
 

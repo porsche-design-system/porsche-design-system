@@ -161,7 +161,7 @@ export class Carousel {
       <Host>
         <div class="header">
           {this.heading ? <h2>{this.heading}</h2> : <slot name="heading" />}
-          <slot name="description" />
+          <slot name="post-heading" />
 
           <PrefixedTagNames.pButtonPure
             {...btnProps}
