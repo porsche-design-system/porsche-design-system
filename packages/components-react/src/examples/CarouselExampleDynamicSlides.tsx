@@ -14,8 +14,8 @@ export const CarouselExampleDynamicSlidesPage = (): JSX.Element => {
         ))}
       </PCarousel>
 
-      <button type="button" onClick={onAddClick} children="Add Slide" />
-      <button type="button" onClick={onRemoveClick} children="Remove Slide" />
+      <button type="button" onClick={onAddClick} children="Add slide" />
+      <button type="button" onClick={onRemoveClick} children="Remove last slide" />
     </>
   );
 };

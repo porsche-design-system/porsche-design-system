@@ -7,8 +7,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <div *ngFor="let _ of [].constructor(amountOfSlides); let i = index">Slide {{ i + 1 }}</div>
     </p-carousel>
 
-    <button type="button" (click)="amountOfSlides = amountOfSlides + 1">Add Slide</button>
-    <button type="button" (click)="amountOfSlides = amountOfSlides === 0 ? 0 : amountOfSlides - 1">Remove Slide</button>
+    <button type="button" (click)="amountOfSlides = amountOfSlides + 1">Add slide</button>
+    <button type="button" (click)="amountOfSlides = amountOfSlides === 0 ? 0 : amountOfSlides - 1">
+      Remove last slide
+    </button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
