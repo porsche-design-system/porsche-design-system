@@ -24,13 +24,13 @@ export const ScrollerExamplePage = (): JSX.Element => {
     <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
-      <button type={'button'} onClick={() => onClick(0)}>
+      <button type="button" onClick={onClick(0)}>
         Scroll to start
       </button>
-      <button type={'button'} onClick={() => onClick(220)}>
+      <button type="button" onClick={onClick(220)}>
         Scroll to middle
       </button>
-      <button type={'button'} onClick={() => onClick(720)}>
+      <button type="button" onClick={onClick(720)}>
         Scroll to end
       </button>
 
