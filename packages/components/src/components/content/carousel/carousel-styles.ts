@@ -8,6 +8,7 @@ import {
   textSmall,
   mediaQueryMin,
 } from '@porsche-design-system/utilities-v2';
+import type { JssStyle } from 'jss';
 
 export const bulletActiveClass = 'bullet--active';
 
@@ -22,22 +23,21 @@ export const getComponentCss = (
 ): string => {
   const { baseColor, disabledColor } = getThemedColors(theme);
 
+  const safeZonePadding: JssStyle = wrapContent && {
+    padding: `0 ${gridSafeZone.base}`,
+    [mediaQueryXl]: {
+      padding: `0 ${gridSafeZone.xl}`,
+    },
+  };
+
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
         display: 'grid',
         maxWidth: gridMaxWidth,
-        boxSizing: 'border-box',
         margin: '0 auto',
         gap: pxToRemWithUnit(24),
         gridAutoFlow: 'row',
-        overflow: 'hidden',
-        ...(wrapContent && {
-          padding: `0 ${gridSafeZone.base}`,
-          [mediaQueryXl]: {
-            padding: `0 ${gridSafeZone.xl}`,
-          },
-        }),
         [mediaQueryS]: {
           gap: pxToRemWithUnit(40),
         },
@@ -61,6 +61,8 @@ export const getComponentCss = (
       position: 'relative',
       minWidth: 0,
       cursor: 'grab',
+      overflow: 'hidden',
+      ...safeZonePadding,
       // visibility: 'hidden',
       '&__track': {
         position: 'relative',
@@ -92,12 +94,13 @@ export const getComponentCss = (
     header: {
       display: 'grid',
       gridTemplateColumns: 'minmax(0px, 1fr) 0 0',
+      ...safeZonePadding,
       [mediaQueryS]: {
         gridTemplateColumns: 'minmax(0px, 1fr) min-content min-content',
         alignItems: 'end',
         gap: pxToRemWithUnit(8),
         minHeight: pxToRemWithUnit(42), // actual height of prev/next buttons to prevent cut off focus outline
-        padding: '0 2px 0 0', // offset of button focus outline so it isn't cut off when padding on parent exists
+        // padding: '0 2px 0 0', // offset of button focus outline so it isn't cut off when padding on parent exists
       },
     },
     btn: {
