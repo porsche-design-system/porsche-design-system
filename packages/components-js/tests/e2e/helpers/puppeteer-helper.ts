@@ -238,12 +238,12 @@ export const getElementPositions = (
   }, element);
 };
 
-export const reattachElement = async (page: Page, selector: string): Promise<void> => {
-  await page.evaluate((selector: string) => {
-    const [element] = Array.from(document.getElementsByTagName(selector));
+export const reattachElement = async (page: Page, tagName: TagName): Promise<void> => {
+  await page.evaluate((tagName: TagName) => {
+    const element = document.querySelector(tagName);
     element.remove();
     document.body.appendChild(element);
-  }, selector);
+  }, tagName);
 };
 
 export const enableBrowserLogging = (page: Page): void => {
