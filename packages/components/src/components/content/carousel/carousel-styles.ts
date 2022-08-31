@@ -50,7 +50,7 @@ export const getComponentCss = (
         margin: 0,
         color: baseColor,
       }),
-      '::slotted([slot=description])': addImportantToEachRule({
+      '::slotted([slot=post-heading])': addImportantToEachRule({
         ...textSmall,
         gridColumn: 1,
         margin: `${pxToRemWithUnit(8)} 0 0`,
