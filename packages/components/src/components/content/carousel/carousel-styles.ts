@@ -55,13 +55,10 @@ export const getComponentCss = (
       }),
     },
     splide: {
-      position: 'relative',
-      minWidth: 0,
       overflow: 'hidden',
-      ...safeZonePadding,
       // visibility: 'hidden',
       '&__track': {
-        position: 'relative',
+        cursor: 'grab',
         '&--draggable': {
           userSelect: 'none',
           WebkitTouchCallout: 'none',
@@ -71,11 +68,11 @@ export const getComponentCss = (
         display: 'flex',
         height: '100%',
         backfaceVisibility: 'hidden',
-        cursor: 'grab',
+        ...safeZonePadding,
       },
       '&__slide': {
         position: 'relative',
-        boxSizing: 'border-box',
+        // boxSizing: 'border-box',
         flexShrink: 0,
         backfaceVisibility: 'hidden',
       },
@@ -106,9 +103,12 @@ export const getComponentCss = (
         display: 'grid',
         gridAutoFlow: 'column',
         position: 'absolute', // we can't span across multiple rows with implicit grid
-        right: 0,
+        right: gridSafeZone.base,
         bottom: 0,
         background: 'purple',
+      },
+      [mediaQueryXl]: {
+        right: gridSafeZone.xl,
       },
     },
     btn: {
