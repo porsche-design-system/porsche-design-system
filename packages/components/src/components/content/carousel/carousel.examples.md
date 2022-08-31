@@ -101,8 +101,8 @@ Slides can be added and removed dynamically.
 <Playground :frameworkMarkup="addRemoveSlidesExamples" :config="{ ...config, withoutDemo: true }">
   <p-carousel :theme="theme" :heading="basicHeading" slides-per-page="2" v-html="getSlides(amountOfSlides)" style="margin: 0 0 1rem">
   </p-carousel>
-  <button type="button" @click="amountOfSlides++">Add Slide</button>
-  <button type="button" @click="amountOfSlides--">Remove Slide</button>
+  <button type="button" @click="amountOfSlides++">Add slide</button>
+  <button type="button" @click="amountOfSlides--">Remove last slide</button>
 </Playground>
 
 ## Internationalization (i18n)
