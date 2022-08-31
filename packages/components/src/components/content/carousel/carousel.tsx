@@ -20,7 +20,7 @@ import { Splide } from '@splidejs/splide';
 import type { CarouselChangeEvent, CarouselInternationalization } from './carousel-utils';
 import {
   getAmountOfPages,
-  getSlides,
+  getSlidesAndAddNamedSlots,
   getSplideBreakpoints,
   renderPagination,
   slideNext,
@@ -223,7 +223,7 @@ export class Carousel {
   }
 
   private updateSlidesAndPagination = (): void => {
-    this.slides = getSlides(this.host);
+    this.slides = getSlidesAndAddNamedSlots(this.host);
     this.updateAmountOfPages();
   };
 

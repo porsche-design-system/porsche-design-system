@@ -1,6 +1,6 @@
 import {
   getAmountOfPages,
-  getSlides,
+  getSlidesAndAddNamedSlots,
   getSplideBreakpoints,
   hasInertSupport,
   isFirstPage,
@@ -125,7 +125,7 @@ describe('warnIfHeadingIsMissing()', () => {
   });
 });
 
-describe('getSlides()', () => {
+describe('getSlidesAndAddNamedSlots()', () => {
   const getChildren = (): HTMLElement[] => {
     const child1 = document.createElement('div');
     child1.id = 'child1';
@@ -141,11 +141,11 @@ describe('getSlides()', () => {
 
   it('should return parameters children as array ', () => {
     const host = document.createElement('p-carousel');
-    expect(getSlides(host)).toEqual([]);
+    expect(getSlidesAndAddNamedSlots(host)).toEqual([]);
 
     const children = getChildren();
     host.append(...children);
-    expect(getSlides(host)).toEqual(children);
+    expect(getSlidesAndAddNamedSlots(host)).toEqual(children);
   });
 
   it('should not return parameters children with slot="heading" or slot="description"', () => {
@@ -156,7 +156,7 @@ describe('getSlides()', () => {
     child3.slot = 'description';
 
     host.append(child1, child2, child3);
-    expect(getSlides(host)).toEqual([child1]);
+    expect(getSlidesAndAddNamedSlots(host)).toEqual([child1]);
   });
 
   it('should add incremental slot="slide-x" attribute on each child', () => {
@@ -164,7 +164,7 @@ describe('getSlides()', () => {
     const children = getChildren();
     host.append(...children);
 
-    const result = getSlides(host);
+    const result = getSlidesAndAddNamedSlots(host);
     result.forEach((child, i) => {
       expect(child.slot).toBe(`slide-${i}`);
     });
