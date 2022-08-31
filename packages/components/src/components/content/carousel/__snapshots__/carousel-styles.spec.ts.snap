@@ -58,22 +58,18 @@ h2,::slotted([slot=heading]) {
 }
 
 .splide {
-  position: relative;
-  min-width: 0;
   overflow: hidden;
 }
 .splide__track {
-  position: relative;
+  cursor: grab;
 }
 .splide__list {
   display: flex;
   height: 100%;
   backface-visibility: hidden;
-  cursor: grab;
 }
 .splide__slide {
   position: relative;
-  box-sizing: border-box;
   flex-shrink: 0;
   backface-visibility: hidden;
 }
@@ -130,7 +126,7 @@ h2,::slotted([slot=heading]) {
     display: grid;
     grid-auto-flow: column;
     position: absolute;
-    right: 0;
+    right: max(1rem, 7vw);
     bottom: 0;
     background: purple;
   }
@@ -154,6 +150,9 @@ h2,::slotted([slot=heading]) {
 @media(min-width:1760px) {
   .header {
     gap: 1.5rem;
+  }
+  .nav {
+    right: min(calc(43vw - 39.6rem), 12rem);
   }
   .pagination {
     display: grid;
@@ -220,22 +219,18 @@ h2,::slotted([slot=heading]) {
 }
 
 .splide {
-  position: relative;
-  min-width: 0;
   overflow: hidden;
 }
 .splide__track {
-  position: relative;
+  cursor: grab;
 }
 .splide__list {
   display: flex;
   height: 100%;
   backface-visibility: hidden;
-  cursor: grab;
 }
 .splide__slide {
   position: relative;
-  box-sizing: border-box;
   flex-shrink: 0;
   backface-visibility: hidden;
 }
@@ -286,7 +281,7 @@ h2,::slotted([slot=heading]) {
     display: grid;
     grid-auto-flow: column;
     position: absolute;
-    right: 0;
+    right: max(1rem, 7vw);
     bottom: 0;
     background: purple;
   }
@@ -295,6 +290,9 @@ h2,::slotted([slot=heading]) {
 @media(min-width:1760px) {
   .header {
     gap: 1.5rem;
+  }
+  .nav {
+    right: min(calc(43vw - 39.6rem), 12rem);
   }
 }
 "
@@ -358,22 +356,18 @@ h2,::slotted([slot=heading]) {
 }
 
 .splide {
-  position: relative;
-  min-width: 0;
   overflow: hidden;
 }
 .splide__track {
-  position: relative;
+  cursor: grab;
 }
 .splide__list {
   display: flex;
   height: 100%;
   backface-visibility: hidden;
-  cursor: grab;
 }
 .splide__slide {
   position: relative;
-  box-sizing: border-box;
   flex-shrink: 0;
   backface-visibility: hidden;
 }
@@ -424,7 +418,7 @@ h2,::slotted([slot=heading]) {
     display: grid;
     grid-auto-flow: column;
     position: absolute;
-    right: 0;
+    right: max(1rem, 7vw);
     bottom: 0;
     background: purple;
   }
@@ -433,6 +427,9 @@ h2,::slotted([slot=heading]) {
 @media(min-width:1760px) {
   .header {
     gap: 1.5rem;
+  }
+  .nav {
+    right: min(calc(43vw - 39.6rem), 12rem);
   }
 }
 "
@@ -496,22 +493,18 @@ h2,::slotted([slot=heading]) {
 }
 
 .splide {
-  position: relative;
-  min-width: 0;
   overflow: hidden;
 }
 .splide__track {
-  position: relative;
+  cursor: grab;
 }
 .splide__list {
   display: flex;
   height: 100%;
   backface-visibility: hidden;
-  cursor: grab;
 }
 .splide__slide {
   position: relative;
-  box-sizing: border-box;
   flex-shrink: 0;
   backface-visibility: hidden;
 }
@@ -547,7 +540,7 @@ h2,::slotted([slot=heading]) {
     display: grid;
     grid-auto-flow: column;
     position: absolute;
-    right: 0;
+    right: max(1rem, 7vw);
     bottom: 0;
     background: purple;
   }
@@ -556,6 +549,9 @@ h2,::slotted([slot=heading]) {
 @media(min-width:1760px) {
   .header {
     gap: 1.5rem;
+  }
+  .nav {
+    right: min(calc(43vw - 39.6rem), 12rem);
   }
 }
 "
@@ -619,23 +615,19 @@ h2,::slotted([slot=heading]) {
 }
 
 .splide {
-  position: relative;
-  min-width: 0;
   overflow: hidden;
-  padding: 0 max(1rem, 7vw);
 }
 .splide__track {
-  position: relative;
+  cursor: grab;
 }
 .splide__list {
   display: flex;
   height: 100%;
   backface-visibility: hidden;
-  cursor: grab;
+  padding: 0 max(1rem, 7vw);
 }
 .splide__slide {
   position: relative;
-  box-sizing: border-box;
   flex-shrink: 0;
   backface-visibility: hidden;
 }
@@ -689,18 +681,21 @@ h2,::slotted([slot=heading]) {
     display: grid;
     grid-auto-flow: column;
     position: absolute;
-    right: 0;
+    right: max(1rem, 7vw);
     bottom: 0;
     background: purple;
   }
 }
 
 @media(min-width:1760px) {
-  .splide {
+  .splide__list {
     padding: 0 min(calc(43vw - 39.6rem), 12rem);
   }
   .header {
     gap: 1.5rem;
+  }
+  .nav {
+    right: min(calc(43vw - 39.6rem), 12rem);
   }
 }
 "
@@ -764,23 +759,19 @@ h2,::slotted([slot=heading]) {
 }
 
 .splide {
-  position: relative;
-  min-width: 0;
   overflow: hidden;
-  padding: 0 max(1rem, 7vw);
 }
 .splide__track {
-  position: relative;
+  cursor: grab;
 }
 .splide__list {
   display: flex;
   height: 100%;
   backface-visibility: hidden;
-  cursor: grab;
+  padding: 0 max(1rem, 7vw);
 }
 .splide__slide {
   position: relative;
-  box-sizing: border-box;
   flex-shrink: 0;
   backface-visibility: hidden;
 }
@@ -819,18 +810,21 @@ h2,::slotted([slot=heading]) {
     display: grid;
     grid-auto-flow: column;
     position: absolute;
-    right: 0;
+    right: max(1rem, 7vw);
     bottom: 0;
     background: purple;
   }
 }
 
 @media(min-width:1760px) {
-  .splide {
+  .splide__list {
     padding: 0 min(calc(43vw - 39.6rem), 12rem);
   }
   .header {
     gap: 1.5rem;
+  }
+  .nav {
+    right: min(calc(43vw - 39.6rem), 12rem);
   }
 }
 "
