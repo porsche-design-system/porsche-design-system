@@ -4,11 +4,9 @@ exports[`getComponentCss() should return correct css for wrapContent: false, dis
 ":host {
   display: grid !important;
   max-width: 120rem !important;
-  box-sizing: border-box !important;
   margin: 0 auto !important;
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
-  overflow: hidden !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -71,6 +69,7 @@ h2,::slotted([slot=heading]) {
   position: relative;
   min-width: 0;
   cursor: grab;
+  overflow: hidden;
 }
 .splide__track {
   position: relative;
@@ -135,7 +134,6 @@ h2,::slotted([slot=heading]) {
     align-items: end;
     gap: 0.5rem;
     min-height: 2.625rem;
-    padding: 0 2px 0 0;
   }
   .btn {
     visibility: visible;
@@ -170,11 +168,9 @@ exports[`getComponentCss() should return correct css for wrapContent: false, dis
 ":host {
   display: grid !important;
   max-width: 120rem !important;
-  box-sizing: border-box !important;
   margin: 0 auto !important;
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
-  overflow: hidden !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -237,6 +233,7 @@ h2,::slotted([slot=heading]) {
   position: relative;
   min-width: 0;
   cursor: grab;
+  overflow: hidden;
 }
 .splide__track {
   position: relative;
@@ -295,7 +292,6 @@ h2,::slotted([slot=heading]) {
     align-items: end;
     gap: 0.5rem;
     min-height: 2.625rem;
-    padding: 0 2px 0 0;
   }
   .btn {
     visibility: visible;
@@ -309,11 +305,9 @@ exports[`getComponentCss() should return correct css for wrapContent: false, dis
 ":host {
   display: grid !important;
   max-width: 120rem !important;
-  box-sizing: border-box !important;
   margin: 0 auto !important;
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
-  overflow: hidden !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -376,6 +370,7 @@ h2,::slotted([slot=heading]) {
   position: relative;
   min-width: 0;
   cursor: grab;
+  overflow: hidden;
 }
 .splide__track {
   position: relative;
@@ -434,7 +429,6 @@ h2,::slotted([slot=heading]) {
     align-items: end;
     gap: 0.5rem;
     min-height: 2.625rem;
-    padding: 0 2px 0 0;
   }
   .btn {
     visibility: visible;
@@ -448,11 +442,9 @@ exports[`getComponentCss() should return correct css for wrapContent: false, dis
 ":host {
   display: grid !important;
   max-width: 120rem !important;
-  box-sizing: border-box !important;
   margin: 0 auto !important;
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
-  overflow: hidden !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -515,6 +507,7 @@ h2,::slotted([slot=heading]) {
   position: relative;
   min-width: 0;
   cursor: grab;
+  overflow: hidden;
 }
 .splide__track {
   position: relative;
@@ -558,7 +551,6 @@ h2,::slotted([slot=heading]) {
     align-items: end;
     gap: 0.5rem;
     min-height: 2.625rem;
-    padding: 0 2px 0 0;
   }
   .btn {
     visibility: visible;
@@ -572,12 +564,9 @@ exports[`getComponentCss() should return correct css for wrapContent: true, disa
 ":host {
   display: grid !important;
   max-width: 120rem !important;
-  box-sizing: border-box !important;
   margin: 0 auto !important;
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
-  overflow: hidden !important;
-  padding: 0 max(1rem, 7vw) !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -624,9 +613,6 @@ h2,::slotted([slot=heading]) {
 }
 
 @media(min-width:1760px) {
-  :host {
-    padding: 0 min(calc(43vw - 39.6rem), 12rem) !important;
-  }
   h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
     line-height: 1.3333333333 !important;
@@ -643,6 +629,8 @@ h2,::slotted([slot=heading]) {
   position: relative;
   min-width: 0;
   cursor: grab;
+  overflow: hidden;
+  padding: 0 max(1rem, 7vw);
 }
 .splide__track {
   position: relative;
@@ -676,6 +664,7 @@ h2,::slotted([slot=heading]) {
 .header {
   display: grid;
   grid-template-columns: minmax(0px, 1fr) 0 0;
+  padding: 0 max(1rem, 7vw);
 }
 .btn {
   visibility: hidden;
@@ -701,11 +690,19 @@ h2,::slotted([slot=heading]) {
     align-items: end;
     gap: 0.5rem;
     min-height: 2.625rem;
-    padding: 0 2px 0 0;
   }
   .btn {
     visibility: visible;
     padding: 0.5rem;
+  }
+}
+
+@media(min-width:1760px) {
+  .splide {
+    padding: 0 min(calc(43vw - 39.6rem), 12rem);
+  }
+  .header {
+    padding: 0 min(calc(43vw - 39.6rem), 12rem);
   }
 }
 "
@@ -715,12 +712,9 @@ exports[`getComponentCss() should return correct css for wrapContent: true, disa
 ":host {
   display: grid !important;
   max-width: 120rem !important;
-  box-sizing: border-box !important;
   margin: 0 auto !important;
   gap: 1.5rem !important;
   grid-auto-flow: row !important;
-  overflow: hidden !important;
-  padding: 0 max(1rem, 7vw) !important;
 }
 h2,::slotted([slot=heading]) {
   font: normal normal 600 1.25rem/1.4 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -767,9 +761,6 @@ h2,::slotted([slot=heading]) {
 }
 
 @media(min-width:1760px) {
-  :host {
-    padding: 0 min(calc(43vw - 39.6rem), 12rem) !important;
-  }
   h2,::slotted([slot=heading]) {
     font-size: 2.25rem !important;
     line-height: 1.3333333333 !important;
@@ -786,6 +777,8 @@ h2,::slotted([slot=heading]) {
   position: relative;
   min-width: 0;
   cursor: grab;
+  overflow: hidden;
+  padding: 0 max(1rem, 7vw);
 }
 .splide__track {
   position: relative;
@@ -819,6 +812,7 @@ h2,::slotted([slot=heading]) {
 .header {
   display: grid;
   grid-template-columns: minmax(0px, 1fr) 0 0;
+  padding: 0 max(1rem, 7vw);
 }
 .btn {
   visibility: hidden;
@@ -829,11 +823,19 @@ h2,::slotted([slot=heading]) {
     align-items: end;
     gap: 0.5rem;
     min-height: 2.625rem;
-    padding: 0 2px 0 0;
   }
   .btn {
     visibility: visible;
     padding: 0.5rem;
+  }
+}
+
+@media(min-width:1760px) {
+  .splide {
+    padding: 0 min(calc(43vw - 39.6rem), 12rem);
+  }
+  .header {
+    padding: 0 min(calc(43vw - 39.6rem), 12rem);
   }
 }
 "
