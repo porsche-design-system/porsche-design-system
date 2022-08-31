@@ -8,7 +8,6 @@ export const mediaQueries = Object.entries(breakpoint)
 export let mediaQueryLists = mediaQueries.map(window.matchMedia);
 
 // for unit tests
-// TODO: check tree shaking
 export const overrideMediaQueryLists = (override: MediaQueryList[]): void => {
   mediaQueryLists = override;
 };

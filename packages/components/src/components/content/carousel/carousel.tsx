@@ -91,13 +91,14 @@ export class Carousel {
     this.observeBreakpointChange();
 
     if (this.splide) {
+      // on reconnect we can reuse the splide instance
       this.updateSlidesAndPagination();
       this.registerSplideHandlers(this.splide);
     }
   }
 
   public componentWillLoad(): void {
-    this.slidesPerPage = parseJSON(this.slidesPerPage) as any; // TODO: what about changes?
+    this.slidesPerPage = parseJSON(this.slidesPerPage) as any; // dynamic change is not supported right now
 
     this.updateSlidesAndPagination();
     this.observeBreakpointChange();
@@ -128,7 +129,7 @@ export class Carousel {
   public componentWillRender(): void {
     validateProps(this, propTypes);
     warnIfHeadingIsMissing(this.host, this.heading);
-    this.disablePagination = parseJSON(this.disablePagination) as any;
+    this.disablePagination = parseJSON(this.disablePagination) as any; // parsing the value just once per lifecycle
 
     attachComponentCss(this.host, getComponentCss, this.wrapContent, this.disablePagination, this.theme);
   }
