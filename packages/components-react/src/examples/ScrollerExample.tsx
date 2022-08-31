@@ -1,5 +1,5 @@
 import { PScroller, PTagDismissible } from '@porsche-design-system/components-react';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 export const ScrollerExamplePage = (): JSX.Element => {
   const style = `
@@ -16,9 +16,9 @@ export const ScrollerExamplePage = (): JSX.Element => {
 
   const [scrollToPosition, setScrollToPosition] = useState<ScrollToPosition>({ scrollPosition: 220, isSmooth: false });
 
-  const onClick = (scrollPosition: number) => {
+  const onClick = useCallback((scrollPosition: number) => {
     setScrollToPosition({ scrollPosition: scrollPosition, isSmooth: true });
-  };
+  }, []);
 
   return (
     <>
