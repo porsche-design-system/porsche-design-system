@@ -155,6 +155,7 @@ export const AllowedTypes: {
   breakpoint: (allowedValues): ValidatorFunction =>
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function breakpoint(propName, propValue) {
+      // TODO: do parseJSON once in the component, currently it is happening multiple times in a single lifecycle
       const value = parseJSON(propValue as BreakpointValues<any>);
       let isInvalid = false;
 
