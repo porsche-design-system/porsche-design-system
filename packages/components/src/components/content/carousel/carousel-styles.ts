@@ -59,6 +59,14 @@ export const getComponentCss = (
       // visibility: 'hidden',
       '&__track': {
         cursor: 'grab',
+        // to override inline styles set by splide library
+        ...(wrapContent &&
+          addImportantToEachRule({
+            padding: `0 calc(${gridSafeZone.base} + 7%) 0 ${gridSafeZone.base}`,
+            [mediaQueryXl]: {
+              padding: `0 calc(${gridSafeZone.xl} + 7%) 0 ${gridSafeZone.xl}`,
+            },
+          })),
         '&--draggable': {
           userSelect: 'none',
           WebkitTouchCallout: 'none',
@@ -68,11 +76,9 @@ export const getComponentCss = (
         display: 'flex',
         height: '100%',
         backfaceVisibility: 'hidden',
-        ...safeZonePadding,
       },
       '&__slide': {
         position: 'relative',
-        // boxSizing: 'border-box',
         flexShrink: 0,
         backfaceVisibility: 'hidden',
       },
@@ -103,13 +109,14 @@ export const getComponentCss = (
         display: 'grid',
         gridAutoFlow: 'column',
         position: 'absolute', // we can't span across multiple rows with implicit grid
-        right: gridSafeZone.base,
+        right: wrapContent ? gridSafeZone.base : 0,
         bottom: 0,
-        background: 'purple',
       },
-      [mediaQueryXl]: {
-        right: gridSafeZone.xl,
-      },
+      ...(wrapContent && {
+        [mediaQueryXl]: {
+          right: gridSafeZone.xl,
+        },
+      }),
     },
     btn: {
       padding: pxToRemWithUnit(8),

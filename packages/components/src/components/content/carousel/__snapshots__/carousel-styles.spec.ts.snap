@@ -126,9 +126,8 @@ h2,::slotted([slot=heading]) {
     display: grid;
     grid-auto-flow: column;
     position: absolute;
-    right: max(1rem, 7vw);
+    right: 0;
     bottom: 0;
-    background: purple;
   }
   .pagination {
     display: none;
@@ -150,9 +149,6 @@ h2,::slotted([slot=heading]) {
 @media(min-width:1760px) {
   .header {
     gap: 1.5rem;
-  }
-  .nav {
-    right: min(calc(43vw - 39.6rem), 12rem);
   }
   .pagination {
     display: grid;
@@ -281,18 +277,14 @@ h2,::slotted([slot=heading]) {
     display: grid;
     grid-auto-flow: column;
     position: absolute;
-    right: max(1rem, 7vw);
+    right: 0;
     bottom: 0;
-    background: purple;
   }
 }
 
 @media(min-width:1760px) {
   .header {
     gap: 1.5rem;
-  }
-  .nav {
-    right: min(calc(43vw - 39.6rem), 12rem);
   }
 }
 "
@@ -418,18 +410,14 @@ h2,::slotted([slot=heading]) {
     display: grid;
     grid-auto-flow: column;
     position: absolute;
-    right: max(1rem, 7vw);
+    right: 0;
     bottom: 0;
-    background: purple;
   }
 }
 
 @media(min-width:1760px) {
   .header {
     gap: 1.5rem;
-  }
-  .nav {
-    right: min(calc(43vw - 39.6rem), 12rem);
   }
 }
 "
@@ -540,18 +528,14 @@ h2,::slotted([slot=heading]) {
     display: grid;
     grid-auto-flow: column;
     position: absolute;
-    right: max(1rem, 7vw);
+    right: 0;
     bottom: 0;
-    background: purple;
   }
 }
 
 @media(min-width:1760px) {
   .header {
     gap: 1.5rem;
-  }
-  .nav {
-    right: min(calc(43vw - 39.6rem), 12rem);
   }
 }
 "
@@ -619,12 +603,12 @@ h2,::slotted([slot=heading]) {
 }
 .splide__track {
   cursor: grab;
+  padding: 0 calc(max(1rem, 7vw) + 7%) 0 max(1rem, 7vw) !important;
 }
 .splide__list {
   display: flex;
   height: 100%;
   backface-visibility: hidden;
-  padding: 0 max(1rem, 7vw);
 }
 .splide__slide {
   position: relative;
@@ -683,13 +667,12 @@ h2,::slotted([slot=heading]) {
     position: absolute;
     right: max(1rem, 7vw);
     bottom: 0;
-    background: purple;
   }
 }
 
 @media(min-width:1760px) {
-  .splide__list {
-    padding: 0 min(calc(43vw - 39.6rem), 12rem);
+  .splide__track {
+    padding: 0 calc(min(calc(43vw - 39.6rem), 12rem) + 7%) 0 min(calc(43vw - 39.6rem), 12rem) !important;
   }
   .header {
     gap: 1.5rem;
@@ -763,12 +746,12 @@ h2,::slotted([slot=heading]) {
 }
 .splide__track {
   cursor: grab;
+  padding: 0 calc(max(1rem, 7vw) + 7%) 0 max(1rem, 7vw) !important;
 }
 .splide__list {
   display: flex;
   height: 100%;
   backface-visibility: hidden;
-  padding: 0 max(1rem, 7vw);
 }
 .splide__slide {
   position: relative;
@@ -812,13 +795,12 @@ h2,::slotted([slot=heading]) {
     position: absolute;
     right: max(1rem, 7vw);
     bottom: 0;
-    background: purple;
   }
 }
 
 @media(min-width:1760px) {
-  .splide__list {
-    padding: 0 min(calc(43vw - 39.6rem), 12rem);
+  .splide__track {
+    padding: 0 calc(min(calc(43vw - 39.6rem), 12rem) + 7%) 0 min(calc(43vw - 39.6rem), 12rem) !important;
   }
   .header {
     gap: 1.5rem;
