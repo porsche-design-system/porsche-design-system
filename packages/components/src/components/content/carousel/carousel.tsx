@@ -105,7 +105,6 @@ export class Carousel {
 
   public componentDidLoad(): void {
     this.splide = new Splide(this.container, {
-      start: 0,
       arrows: false,
       pagination: false,
       perMove: 1,

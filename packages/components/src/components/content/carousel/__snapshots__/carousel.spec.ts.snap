@@ -24,7 +24,6 @@ Array [
     },
     "pagination": false,
     "perMove": 1,
-    "start": 0,
   },
 ]
 `;
