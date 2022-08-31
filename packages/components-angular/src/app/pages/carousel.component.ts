@@ -94,7 +94,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light" title="should render carousel with multiline heading on light background">
       <p-carousel
-        [heading]="'Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let's see if the alignment with prev/next buttons is correct.'"
+        [heading]="'Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct.'"
       >
         <div>Slide 1</div>
         <div>Slide 2</div>
@@ -105,7 +105,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="playground light" title="should render carousel with multiline heading and description on light background">
       <p-carousel [heading]="'Multiline heading could be quite long especially on smaller screens but it wraps luckily'">
         <p slot="description">
-          Multiline description could be quite long especially on smaller screens but it wraps luckily. Let's see if the
+          Multiline description could be quite long especially on smaller screens but it wraps luckily. Let us see if the
           alignment with prev/next buttons is correct.
         </p>
         <div>Slide 1</div>
