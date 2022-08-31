@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'page-scroller-example',
   styles: [
     `
-      .scroller > *:not(:last-child) {
+      p-scroller > *:not(:last-child) {
         margin-right: 1rem;
       }
 
