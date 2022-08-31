@@ -111,7 +111,7 @@ export class Carousel {
       perMove: 1,
       mediaQuery: 'min',
       padding: {
-        right: '7%',
+        right: '7%', // together with wrapContent this is overridden via css
       },
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
       breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number>, string>, {
