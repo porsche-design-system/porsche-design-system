@@ -465,11 +465,11 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
     const content = `${imports}
   
-  export default (
+export default (
   <${componentName} ${stringifiedProps}>
-  ${children}
+    ${children}
   </${componentName}>
-  );`;
+);`;
 
     return this.generatePresetsFile(componentName, content);
   }
@@ -491,7 +491,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
     const content = `import { ${formComponentName} } from '../${formComponentName}';
   
-  export default <${formComponentName} ${stringifiedProps} />;  
+export default <${formComponentName} ${stringifiedProps} />;
   `;
 
     return this.generatePresetsFile('../../form/' + formComponentName, content);
