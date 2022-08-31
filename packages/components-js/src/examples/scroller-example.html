@@ -3,7 +3,7 @@
 <button type="button" id="end">Scroll to end</button>
 
 <div style="max-width: 400px; white-space: nowrap">
-  <p-scroller class="scroller" scroll-to-position="{scrollPosition: 220}">
+  <p-scroller scroll-to-position="{scrollPosition: 220}">
     <p-tag-dismissible>START - some tag content</p-tag-dismissible>
     <p-tag-dismissible>MIDDLE - some tag content</p-tag-dismissible>
     <p-tag-dismissible>END - some tag content</p-tag-dismissible>
@@ -30,7 +30,7 @@
 </script>
 
 <style>
-  .scroller > *:not(:last-child) {
+  p-scroller > *:not(:last-child) {
     margin-right: 1rem;
   }
 

@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'page-scroller-example',
   styles: [
     `
-      .scroller > *:not(:last-child) {
+      p-scroller > *:not(:last-child) {
         margin-right: 1rem;
       }
 
@@ -18,7 +18,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <button type="button" (click)="onClick(220)">Scroll to middle</button>
     <button type="button" (click)="onClick(720)">Scroll to end</button>
     <div style="max-width: 400px; white-space: nowrap">
-      <p-scroller class="scroller" [scrollToPosition]="{scrollPosition, isSmooth}">
+      <p-scroller [scrollToPosition]="{scrollPosition, isSmooth}">
         <p-tag-dismissible>START - some tag content</p-tag-dismissible>
         <p-tag-dismissible>MIDDLE - some tag content</p-tag-dismissible>
         <p-tag-dismissible>END - some tag content</p-tag-dismissible>

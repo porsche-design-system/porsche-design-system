@@ -24,18 +24,18 @@ export const ScrollerExamplePage = (): JSX.Element => {
     <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
-      <button type="button" onClick={onClick(0)}>
+      <button type="button" onClick={() => onClick(0)}>
         Scroll to start
       </button>
-      <button type="button" onClick={onClick(220)}>
+      <button type="button" onClick={() => onClick(290)}>
         Scroll to middle
       </button>
-      <button type="button" onClick={onClick(720)}>
+      <button type="button" onClick={() => onClick(720)}>
         Scroll to end
       </button>
 
       <div style={{ maxWidth: '400px', whiteSpace: 'nowrap' }}>
-        <PScroller className="scroller" scrollToPosition={scrollToPosition}>
+        <PScroller scrollToPosition={scrollToPosition}>
           <PTagDismissible>START - some tag content</PTagDismissible>
           <PTagDismissible>MIDDLE - some tag content</PTagDismissible>
           <PTagDismissible>END - some tag content</PTagDismissible>
