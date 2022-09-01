@@ -83,26 +83,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-carousel>
     </div>
 
-    <!--
-    <div class="playground light" title="should render carousel with slotted post-heading on light background">
-      <p-carousel [heading]="'Heading'">
-        <p slot="post-heading">Slotted post-heading</p>
-        <div>Slide 1</div>
-        <div>Slide 2</div>
-        <div>Slide 3</div>
-      </p-carousel>
-    </div>
-
-    <div class="playground dark" title="should render carousel with slotted post-heading on dark background">
-      <p-carousel [heading]="'Heading'" [theme]="'dark'">
-        <p slot="post-heading">Slotted post-heading</p>
-        <div>Slide 1</div>
-        <div>Slide 2</div>
-        <div>Slide 3</div>
-      </p-carousel>
-    </div>
--->
-
     <div class="playground light" title="should render carousel with wrapped content and description on light background">
       <p-carousel [heading]="'Wrapped content heading'" [description]="'Description'" [wrapContent]="true">
         <p slot="post-heading">Slotted post-heading</p>
@@ -147,23 +127,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <div>Slide 3</div>
       </p-carousel>
     </div>
-
-    <!--
-    <div
-      class="playground light"
-      title="should render carousel with multiline heading and post-heading on light background"
-    >
-      <p-carousel [heading]="'Multiline heading could be quite long especially on smaller screens but it wraps luckily'">
-        <p slot="post-heading">
-          Multiline post-heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the
-          alignment with prev/next buttons is correct.
-        </p>
-        <div>Slide 1</div>
-        <div>Slide 2</div>
-        <div>Slide 3</div>
-      </p-carousel>
-    </div>
--->
 
     <div class="playground light" title="should render carousel with slidesPerPage=2 on light background">
       <p-carousel [heading]="'Slides per page: 2'" [slidesPerPage]="2">
