@@ -52,12 +52,13 @@ export const getComponentCss = (
         margin: 0,
         color: baseColor,
       }),
-      '::slotted([slot=post-heading])': addImportantToEachRule({
+      // NOTE: might come back in later version '::slotted([slot=post-heading])'
+      p: {
         ...textSmall,
         margin: 0,
         color: baseColor,
         gridColumn: 1, // to force it into 2nd line
-      }),
+      },
     },
     splide: {
       overflow: 'hidden',
