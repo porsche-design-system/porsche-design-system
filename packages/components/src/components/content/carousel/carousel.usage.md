@@ -15,7 +15,6 @@
 
 | Variants            | Usage                                                                            |
 | ------------------- | -------------------------------------------------------------------------------- |
-| Post Heading        | To place any additional elements between heading and slider                      |
 | Wrap Content        | To apply padding if there is no padding inherited, e.g. from the content wrapper |
 | Disabled Pagination | to remove the pagination indicators underneath the slides                        |
 
