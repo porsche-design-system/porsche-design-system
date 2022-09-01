@@ -42,6 +42,12 @@ named slot.
 
 <Playground :markup="heading" :config="config"></Playground>
 
+## Description
+
+Right after the `heading`, an additional `description` can be added.
+
+<Playground :markup="description" :config="config"></Playground>
+
 ## Wrap Content
 
 By default, the `p-carousel` takes up the available space which works for all scenarios where its parent has some
@@ -51,11 +57,13 @@ the `wrapContent` property which internally applies the padding of `p-content-wr
 
 <Playground :markup="wrapContent" :config="config"></Playground>
 
+<!--
 ## Post Heading
 
 If you want to place any additional elements between heading and slider, you can use the `post-heading` slot.
 
 <Playground :markup="postHeading" :config="config"></Playground>
+-->
 
 ## Disable Pagination
 
@@ -138,6 +146,7 @@ export default class Code extends Vue {
   }
 
   basicHeading = "Some Heading";
+  basicDescription = "Some Description";
   getSlides = (amount = 6) => Array.from(Array(amount)).map((_, i) => `<div>Slide ${i+1}</div>`).join('\n  ');
 
   basic = `<p-carousel heading="${this.basicHeading}">
@@ -160,14 +169,18 @@ export default class Code extends Vue {
   ${this.getSlides(3)}
 </p-carousel>`;
 
-  wrapContent = `<p-carousel wrap-content="true" heading="${this.basicHeading}">
+  description = `<p-carousel heading="${this.basicHeading}" description="${this.basicDescription}">
   ${this.getSlides(3)}
 </p-carousel>`;
 
-  postHeading = `<p-carousel heading="${this.basicHeading}">
-  <p slot="post-heading">Some slotted content between heading and slider</p>
+  wrapContent = `<p-carousel wrap-content="true" heading="${this.basicHeading}" description="${this.basicDescription}">
   ${this.getSlides(3)}
 </p-carousel>`;
+
+//   postHeading = `<p-carousel heading="${this.basicHeading}">
+//   <p slot="post-heading">Some slotted content between heading and slider</p>
+//   ${this.getSlides(3)}
+// </p-carousel>`;
 
   disablePaginationModel = true;
   get disablePagination() {
