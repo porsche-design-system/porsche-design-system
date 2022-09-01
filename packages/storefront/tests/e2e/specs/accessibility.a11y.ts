@@ -57,9 +57,7 @@ const cycleFrameworkTabs = async (theme: string): Promise<void> => {
 };
 
 // filter out files from public/assets directory
-const internalUrls = getInternalUrls()
-  .filter((url) => !url.match(/^\/assets\/.*\.\w{3,4}$/))
-  .filter((url) => url.includes('tabs'));
+const internalUrls = getInternalUrls().filter((url) => !url.match(/^\/assets\/.*\.\w{3,4}$/));
 
 it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
   'should have no accessibility issues at %s',
