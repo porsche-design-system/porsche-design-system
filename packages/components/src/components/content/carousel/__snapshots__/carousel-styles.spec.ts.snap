@@ -92,6 +92,10 @@ p {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
+.header {
+  display: grid;
+  gap: 1rem;
+}
 .nav {
   display: none;
 }
@@ -121,9 +125,7 @@ p {
 
 @media(min-width:760px) {
   .header {
-    display: grid;
     grid-template-columns: minmax(0px, 1fr) 5rem;
-    gap: 1rem;
     position: relative;
     min-height: 2.5rem;
   }
@@ -254,6 +256,10 @@ p {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
+.header {
+  display: grid;
+  gap: 1rem;
+}
 .nav {
   display: none;
 }
@@ -277,9 +283,7 @@ p {
 }
 @media(min-width:760px) {
   .header {
-    display: grid;
     grid-template-columns: minmax(0px, 1fr) 5rem;
-    gap: 1rem;
     position: relative;
     min-height: 2.5rem;
   }
@@ -392,6 +396,10 @@ p {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
+.header {
+  display: grid;
+  gap: 1rem;
+}
 .nav {
   display: none;
 }
@@ -415,9 +423,7 @@ p {
 }
 @media(min-width:760px) {
   .header {
-    display: grid;
     grid-template-columns: minmax(0px, 1fr) 5rem;
-    gap: 1rem;
     position: relative;
     min-height: 2.5rem;
   }
@@ -530,6 +536,10 @@ p {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
+.header {
+  display: grid;
+  gap: 1rem;
+}
 .nav {
   display: none;
 }
@@ -538,9 +548,7 @@ p {
 }
 @media(min-width:760px) {
   .header {
-    display: grid;
     grid-template-columns: minmax(0px, 1fr) 5rem;
-    gap: 1rem;
     position: relative;
     min-height: 2.5rem;
   }
@@ -655,6 +663,8 @@ p {
   -webkit-touch-callout: none;
 }
 .header {
+  display: grid;
+  gap: 1rem;
   padding: 0 max(1rem, 7vw);
 }
 .nav {
@@ -680,9 +690,7 @@ p {
 }
 @media(min-width:760px) {
   .header {
-    display: grid;
     grid-template-columns: minmax(0px, 1fr) 5rem;
-    gap: 1rem;
     position: relative;
     min-height: 2.5rem;
   }
@@ -803,6 +811,8 @@ p {
   -webkit-touch-callout: none;
 }
 .header {
+  display: grid;
+  gap: 1rem;
   padding: 0 max(1rem, 7vw);
 }
 .nav {
@@ -813,9 +823,7 @@ p {
 }
 @media(min-width:760px) {
   .header {
-    display: grid;
     grid-template-columns: minmax(0px, 1fr) 5rem;
-    gap: 1rem;
     position: relative;
     min-height: 2.5rem;
   }

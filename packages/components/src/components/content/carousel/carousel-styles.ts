@@ -100,11 +100,11 @@ export const getComponentCss = (
     //     display: block,
     //   }
     header: {
+      display: 'grid',
+      gap: pxToRemWithUnit(16),
       ...safeZonePadding,
       [mediaQueryS]: {
-        display: 'grid',
         gridTemplateColumns: `minmax(0px, 1fr) ${pxToRemWithUnit(80)}`, // 2nd row has width of nav buttons
-        gap: pxToRemWithUnit(16),
         position: 'relative',
         minHeight: pxToRemWithUnit(40), // actual height of prev/next buttons
       },
