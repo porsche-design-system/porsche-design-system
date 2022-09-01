@@ -9,7 +9,7 @@ import {
   resolveSelector,
 } from '../../vrt/helpers/cdp-helper';
 
-type Node = Pick<Protocol.DOM.Node, 'localName' | 'backendNodeId'>;
+type Node = Pick<Protocol.DOM.Node, 'localName' | 'backendNodeId' | 'attributes'>;
 type NodeWithChildren = Node & { children?: NodeWithChildren[] };
 type TestCase = {
   node: NodeWithChildren;
@@ -51,6 +51,33 @@ describe('cdp-helper', () => {
         },
         selector: 'test',
         expect: [],
+      },
+      {
+        node: {
+          localName: 'test1',
+          attributes: ['test', 'node', 'attribute'],
+          backendNodeId: 1,
+          children: [{ localName: 'test2', backendNodeId: 2, children: [{ localName: 'test3', backendNodeId: 3 }] }],
+        },
+        selector: 'test',
+        expect: [1],
+      },
+      {
+        node: {
+          localName: 'test1',
+          attributes: ['node', 'attribute'],
+          backendNodeId: 1,
+          children: [
+            {
+              localName: 'test2',
+              attributes: ['test', 'attribute'],
+              backendNodeId: 2,
+              children: [{ localName: 'test3', attributes: ['test'], backendNodeId: 3 }],
+            },
+          ],
+        },
+        selector: 'test',
+        expect: [2],
       },
     ];
 
