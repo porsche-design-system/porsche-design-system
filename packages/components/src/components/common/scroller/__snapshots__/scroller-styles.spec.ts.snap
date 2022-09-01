@@ -62,9 +62,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   background: linear-gradient(90deg, #0e1418 50%, #0e141800 100%);
   visibility: visible;
 }
-.action-prev .button {
-  padding-right: 0.25rem;
-}
 .action-next {
   position: relative;
   padding: 0.25rem 0;
@@ -76,11 +73,17 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   background: linear-gradient(90deg, #0e141800 0%, #0e1418 50%);
   visibility: visible;
 }
-.action-next .button {
-  padding-left: 0.25rem;
-}
 .button {
   pointer-events: auto;
+  position: static;
+}
+.button::before {
+  content: \\"\\";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: max(2rem, 80%);
+  left: 0;
 }"
 `;
 
@@ -146,9 +149,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   background: linear-gradient(90deg, #fff 50%, #fff0 100%);
   visibility: visible;
 }
-.action-prev .button {
-  padding-right: 0.25rem;
-}
 .action-next {
   position: relative;
   padding: 0.25rem 0;
@@ -160,11 +160,17 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   background: linear-gradient(90deg, #fff0 0%, #fff 50%);
   visibility: visible;
 }
-.action-next .button {
-  padding-left: 0.25rem;
-}
 .button {
   pointer-events: auto;
+  position: static;
+}
+.button::before {
+  content: \\"\\";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: max(2rem, 80%);
+  left: 0;
 }"
 `;
 
@@ -230,9 +236,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   background: linear-gradient(90deg, #fff 50%, #fff0 100%);
   visibility: visible;
 }
-.action-prev .button {
-  padding-right: 0.25rem;
-}
 .action-next {
   position: relative;
   padding: 0.25rem 0;
@@ -244,11 +247,17 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   background: linear-gradient(90deg, #fff0 0%, #fff 50%);
   visibility: visible;
 }
-.action-next .button {
-  padding-left: 0.25rem;
-}
 .button {
   pointer-events: auto;
+  position: static;
+}
+.button::before {
+  content: \\"\\";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: max(2rem, 80%);
+  left: 0;
 }"
 `;
 
@@ -314,9 +323,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   background: linear-gradient(90deg, #fff 50%, #fff0 100%);
   visibility: visible;
 }
-.action-prev .button {
-  padding-right: 0.25rem;
-}
 .action-next {
   position: relative;
   padding: 0.25rem 0;
@@ -328,11 +334,17 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   background: linear-gradient(90deg, #fff0 0%, #fff 50%);
   visibility: visible;
 }
-.action-next .button {
-  padding-left: 0.25rem;
-}
 .button {
   pointer-events: auto;
+  position: static;
+}
+.button::before {
+  content: \\"\\";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: max(2rem, 80%);
+  left: 0;
 }"
 `;
 
@@ -398,9 +410,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   background: linear-gradient(90deg, #0e1418 50%, #0e141800 100%);
   visibility: hidden;
 }
-.action-prev .button {
-  padding-right: 0.25rem;
-}
 .action-next {
   position: relative;
   padding: 0.25rem 0;
@@ -412,11 +421,17 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   background: linear-gradient(90deg, #0e141800 0%, #0e1418 50%);
   visibility: visible;
 }
-.action-next .button {
-  padding-left: 0.25rem;
-}
 .button {
   pointer-events: auto;
+  position: static;
+}
+.button::before {
+  content: \\"\\";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: max(2rem, 80%);
+  left: 0;
 }"
 `;
 
@@ -482,9 +497,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   background: linear-gradient(90deg, #fff 50%, #fff0 100%);
   visibility: visible;
 }
-.action-prev .button {
-  padding-right: 0.25rem;
-}
 .action-next {
   position: relative;
   padding: 0.25rem 0;
@@ -496,11 +508,17 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   background: linear-gradient(90deg, #fff0 0%, #fff 50%);
   visibility: hidden;
 }
-.action-next .button {
-  padding-left: 0.25rem;
-}
 .button {
   pointer-events: auto;
+  position: static;
+}
+.button::before {
+  content: \\"\\";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: max(2rem, 80%);
+  left: 0;
 }"
 `;
 
@@ -566,9 +584,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   background: linear-gradient(90deg, #fff 50%, #fff0 100%);
   visibility: hidden;
 }
-.action-prev .button {
-  padding-right: 0.25rem;
-}
 .action-next {
   position: relative;
   padding: 0.25rem 0;
@@ -580,11 +595,17 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: de
   background: linear-gradient(90deg, #fff0 0%, #fff 50%);
   visibility: hidden;
 }
-.action-next .button {
-  padding-left: 0.25rem;
-}
 .button {
   pointer-events: auto;
+  position: static;
+}
+.button::before {
+  content: \\"\\";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: max(2rem, 80%);
+  left: 0;
 }"
 `;
 
@@ -650,9 +671,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   background: linear-gradient(90deg, #262b2e 50%, #262b2e00 100%);
   visibility: visible;
 }
-.action-prev .button {
-  padding-right: 0.25rem;
-}
 .action-next {
   position: relative;
   padding: 0.25rem 0;
@@ -664,11 +682,17 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   background: linear-gradient(90deg, #262b2e00 0%, #262b2e 50%);
   visibility: visible;
 }
-.action-next .button {
-  padding-left: 0.25rem;
-}
 .button {
   pointer-events: auto;
+  position: static;
+}
+.button::before {
+  content: \\"\\";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: max(2rem, 80%);
+  left: 0;
 }"
 `;
 
@@ -734,9 +758,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   background: linear-gradient(90deg, #f2f2f2 50%, #f2f2f200 100%);
   visibility: visible;
 }
-.action-prev .button {
-  padding-right: 0.25rem;
-}
 .action-next {
   position: relative;
   padding: 0.25rem 0;
@@ -748,11 +769,17 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   background: linear-gradient(90deg, #f2f2f200 0%, #f2f2f2 50%);
   visibility: visible;
 }
-.action-next .button {
-  padding-left: 0.25rem;
-}
 .button {
   pointer-events: auto;
+  position: static;
+}
+.button::before {
+  content: \\"\\";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: max(2rem, 80%);
+  left: 0;
 }"
 `;
 
@@ -818,9 +845,6 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   background: linear-gradient(90deg, #f2f2f2 50%, #f2f2f200 100%);
   visibility: visible;
 }
-.action-prev .button {
-  padding-right: 0.25rem;
-}
 .action-next {
   position: relative;
   padding: 0.25rem 0;
@@ -832,10 +856,16 @@ exports[`getComponentCss() should return correct css for gradientColorScheme: su
   background: linear-gradient(90deg, #f2f2f200 0%, #f2f2f2 50%);
   visibility: visible;
 }
-.action-next .button {
-  padding-left: 0.25rem;
-}
 .button {
   pointer-events: auto;
+  position: static;
+}
+.button::before {
+  content: \\"\\";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: max(2rem, 80%);
+  left: 0;
 }"
 `;
