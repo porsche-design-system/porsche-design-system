@@ -140,7 +140,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     >
       <p-carousel
         [heading]="'Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct.'"
-        [description]="'Multiline post-heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct.'"
+        [description]="'Multiline description could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct.'"
       >
         <div>Slide 1</div>
         <div>Slide 2</div>
