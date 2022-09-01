@@ -24,10 +24,6 @@ body {
   font-variant: small-caps;
 }
 
-body::-webkit-scrollbar {
-  display: none;
-}
-
 body > select {
   position: relative;
   z-index: 999999;
