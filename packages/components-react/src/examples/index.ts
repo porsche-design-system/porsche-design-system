@@ -1,4 +1,6 @@
 export * from './AccordionExample';
+export * from './CarouselExampleDynamicSlides';
+export * from './CarouselExampleEvents';
 export * from './InlineNotificationExampleActionButton';
 export * from './InlineNotificationExampleEvents';
 export * from './ModalExampleAccessibility';

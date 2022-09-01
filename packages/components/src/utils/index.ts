@@ -1,6 +1,8 @@
 export * from './a11y';
 export * from './attribute-observer';
 export { BREAKPOINTS, parseJSON } from './breakpoint-customizable';
+export { observeBreakpointChange, unobserveBreakpointChange } from './breakpoint-observer';
+export { getCurrentMatchingBreakpointValue } from './breakpoint-observer-utils';
 export * from './button-handling';
 export * from './button-link-pure-utils';
 export * from './change-case';
@@ -10,6 +12,7 @@ export * from './dom';
 export * from './form';
 export * from './inject-global-style'; // to trick bundling and avoid separate jss chunk 🤷
 export * from './jss';
+export { parseJSONAttribute } from './json';
 export * from './line-height';
 export * from './pds-fetch';
 export * from './property-observer';
