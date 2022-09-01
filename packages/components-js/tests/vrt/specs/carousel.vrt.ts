@@ -42,11 +42,6 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
       const getElementsMarkup: GetThemedMarkup = (theme: Theme) => `
         <p-carousel theme="${theme}" heading="Heading">
           ${slides}
-        </p-carousel>
-        <p-carousel theme="${theme}">
-          <h2 slot="heading">Slotted heading</h2>
-          <p slot="post-heading">Slotted description</p>
-          ${slides}
         </p-carousel>`;
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
