@@ -198,11 +198,15 @@ export namespace Components {
     }
     interface PCarousel {
         /**
+          * Defines the description used in the carousel.
+         */
+        "description"?: string;
+        /**
           * If true, the carousel will not show pagination bullets at the bottom.
          */
         "disablePagination"?: BreakpointCustomizable<boolean>;
         /**
-          * Defines the heading used in carousel.
+          * Defines the heading used in the carousel.
          */
         "heading"?: string;
         /**
@@ -1718,11 +1722,15 @@ declare namespace LocalJSX {
     }
     interface PCarousel {
         /**
+          * Defines the description used in the carousel.
+         */
+        "description"?: string;
+        /**
           * If true, the carousel will not show pagination bullets at the bottom.
          */
         "disablePagination"?: BreakpointCustomizable<boolean>;
         /**
-          * Defines the heading used in carousel.
+          * Defines the heading used in the carousel.
          */
         "heading"?: string;
         /**

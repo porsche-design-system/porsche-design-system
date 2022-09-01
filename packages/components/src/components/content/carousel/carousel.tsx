@@ -35,6 +35,7 @@ import { spacing } from '@porsche-design-system/utilities-v2';
 
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
+  description: AllowedTypes.string,
   wrapContent: AllowedTypes.boolean,
   slidesPerPage: AllowedTypes.breakpoint('number'),
   disablePagination: AllowedTypes.breakpoint('boolean'),
@@ -56,8 +57,11 @@ const propTypes: PropTypes<typeof Carousel> = {
 export class Carousel {
   @Element() public host!: HTMLElement;
 
-  /** Defines the heading used in carousel. */
+  /** Defines the heading used in the carousel. */
   @Prop() public heading?: string;
+
+  /** Defines the description used in the carousel. */
+  @Prop() public description?: string;
 
   /** Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper. */
   @Prop() public wrapContent?: boolean;
@@ -161,7 +165,10 @@ export class Carousel {
       <Host>
         <div class="header">
           {this.heading ? <h2>{this.heading}</h2> : <slot name="heading" />}
-          <slot name="post-heading" />
+          {this.description && <p>{this.description}</p>}
+
+          {/* NOTE: might come back in later version */}
+          {/*<slot name="post-heading" />*/}
 
           <div class="nav">
             <PrefixedTagNames.pButtonPure
