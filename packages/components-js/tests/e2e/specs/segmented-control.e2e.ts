@@ -1,20 +1,19 @@
 import {
+  addEventListener,
   expectA11yToMatchSnapshot,
   getLifecycleStatus,
+  getOffsetWidth,
+  getProperty,
+  hasFocus,
   initAddEventListener,
+  reattachElementHandle,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
-  waitForStencilLifecycle,
-  addEventListener,
-  reattachElement,
-  isElementAtIndexFocused,
-  getProperty,
-  getOffsetWidth,
   waitForEventSerialization,
-  hasFocus,
+  waitForStencilLifecycle,
 } from '../helpers';
-import type { ElementHandle, Page } from 'puppeteer';
+import type { Page } from 'puppeteer';
 
 let page: Page;
 
@@ -151,7 +150,7 @@ describe('events', () => {
     await addEventListener(host, 'segmentedControlChange', () => eventCounter++);
 
     // Remove and re-attach component to check if events are duplicated / fire at all
-    await reattachElement(page, 'p-segmented-control');
+    await reattachElementHandle(host);
 
     await button2.click();
     await waitForEventSerialization(page);

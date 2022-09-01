@@ -4,7 +4,7 @@ import {
   getAttribute,
   getLifecycleStatus,
   initAddEventListener,
-  reattachElement,
+  reattachElementHandle,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -90,7 +90,7 @@ describe('close button', () => {
     await addEventListener(host, 'dismiss', () => calls++);
 
     // Remove and re-attach component to check if events are duplicated / fire at all
-    await reattachElement(page, 'p-inline-notification');
+    await reattachElementHandle(host);
 
     await closeButton.click();
     await waitForEventSerialization(page);
