@@ -67,11 +67,14 @@ h2,::slotted([slot=heading]) {
   display: flex;
   height: 100%;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 .splide__slide {
   position: relative;
   flex-shrink: 0;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
 }
 .splide__sr {
   position: absolute;
@@ -86,6 +89,7 @@ h2,::slotted([slot=heading]) {
 }
 .splide__track--draggable {
   user-select: none;
+  -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
 .nav {
@@ -225,11 +229,14 @@ h2,::slotted([slot=heading]) {
   display: flex;
   height: 100%;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 .splide__slide {
   position: relative;
   flex-shrink: 0;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
 }
 .splide__sr {
   position: absolute;
@@ -244,6 +251,7 @@ h2,::slotted([slot=heading]) {
 }
 .splide__track--draggable {
   user-select: none;
+  -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
 .nav {
@@ -359,11 +367,14 @@ h2,::slotted([slot=heading]) {
   display: flex;
   height: 100%;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 .splide__slide {
   position: relative;
   flex-shrink: 0;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
 }
 .splide__sr {
   position: absolute;
@@ -378,6 +389,7 @@ h2,::slotted([slot=heading]) {
 }
 .splide__track--draggable {
   user-select: none;
+  -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
 .nav {
@@ -493,11 +505,14 @@ h2,::slotted([slot=heading]) {
   display: flex;
   height: 100%;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 .splide__slide {
   position: relative;
   flex-shrink: 0;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
 }
 .splide__sr {
   position: absolute;
@@ -512,6 +527,7 @@ h2,::slotted([slot=heading]) {
 }
 .splide__track--draggable {
   user-select: none;
+  -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
 .nav {
@@ -613,11 +629,14 @@ h2,::slotted([slot=heading]) {
   display: flex;
   height: 100%;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 .splide__slide {
   position: relative;
   flex-shrink: 0;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
 }
 .splide__sr {
   position: absolute;
@@ -632,6 +651,7 @@ h2,::slotted([slot=heading]) {
 }
 .splide__track--draggable {
   user-select: none;
+  -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
 .header {
@@ -757,11 +777,14 @@ h2,::slotted([slot=heading]) {
   display: flex;
   height: 100%;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 .splide__slide {
   position: relative;
   flex-shrink: 0;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
 }
 .splide__sr {
   position: absolute;
@@ -776,6 +799,7 @@ h2,::slotted([slot=heading]) {
 }
 .splide__track--draggable {
   user-select: none;
+  -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
 .header {
