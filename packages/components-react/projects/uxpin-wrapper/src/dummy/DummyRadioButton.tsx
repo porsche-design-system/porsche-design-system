@@ -1,6 +1,7 @@
 import { ChangeEvent, FocusEvent } from 'react';
+import { extractPropsKeys } from '../form-utils';
 
-type Props = {
+export type DummyRadioButtonProps = {
   disabled?: boolean;
   readOnly?: boolean;
   required?: boolean;
@@ -14,6 +15,17 @@ type Props = {
   onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
 };
 
-export const DummyRadioButton = (props: Props): JSX.Element => {
+export const DummyRadioButton = (props: DummyRadioButtonProps): JSX.Element => {
   return <input type="radio" {...props} />;
 };
+
+export const dummyRadioButtonPropsKeys = extractPropsKeys<DummyRadioButtonProps>({
+  disabled: null,
+  readOnly: null,
+  required: null,
+  checked: null,
+  name: null,
+  onChange: null,
+  onFocus: null,
+  onBlur: null,
+});
