@@ -56,13 +56,25 @@ export class Scroller {
 
   @Watch('scrollToPosition')
   public scrollToPositionHandler(): void {
-    this.scrollHandler();
+    this.scrollToPosition = parseJSONAttribute(this.scrollToPosition);
+    const { scrollPosition, isSmooth } = this.scrollToPosition;
+    if (isSmooth) {
+      scrollElementTo(this.scrollAreaElement, scrollPosition);
+    } else {
+      this.scrollAreaElement.scrollLeft = scrollPosition;
+    }
+  }
+
+  public connectedCallback(): void {
+    if (this.scrollAreaElement) {
+      this.scrollToPosition = parseJSONAttribute(this.scrollToPosition);
+    }
   }
 
   public componentDidLoad(): void {
     this.initIntersectionObserver();
     if (this.scrollToPosition) {
-      this.scrollHandler();
+      this.scrollToPositionHandler();
     }
   }
 
@@ -148,15 +160,5 @@ export class Scroller {
   private scrollOnPrevNextClick = (direction: Direction): void => {
     const scrollPosition = getScrollPositionAfterPrevNextClick(this.scrollAreaElement, direction);
     scrollElementTo(this.scrollAreaElement, scrollPosition);
-  };
-
-  private scrollHandler = (): void => {
-    const { scrollPosition, isSmooth } = parseJSONAttribute(this.scrollToPosition);
-
-    if (isSmooth) {
-      scrollElementTo(this.scrollAreaElement, scrollPosition);
-    } else {
-      this.scrollAreaElement.scrollLeft = scrollPosition;
-    }
   };
 }
