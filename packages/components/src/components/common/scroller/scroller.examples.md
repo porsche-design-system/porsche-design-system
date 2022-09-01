@@ -36,14 +36,14 @@ The size of the scroll indicator arrows depends on the `font-size` set onto the 
 The background and gradient has to align with your chosen background.
 
 <Playground :markup="gradientMarkup" :config="{ ...config, colorScheme: gradientColorScheme }">
-<label>
-  <p-text :theme="theme">Select color scheme:</p-text>
-  <select v-model="gradientColorScheme" aria-label="Select color scheme">
-    <option disabled>Select gradient-color-scheme</option>
-    <option value="default">Default</option>
-    <option value="surface">Surface</option>
-  </select>
-</label>
+  <label>
+    <p-text :theme="theme">Select color scheme:</p-text>
+    <select v-model="gradientColorScheme" aria-label="Select color scheme">
+      <option disabled>Select gradient-color-scheme</option>
+      <option value="default">Default</option>
+      <option value="surface">Surface</option>
+    </select>
+  </label>
 </Playground>
 
 ## Scroll to position
