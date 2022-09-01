@@ -168,7 +168,7 @@ export class Carousel {
           {this.description && <p>{this.description}</p>}
 
           {/* NOTE: might come back in later version */}
-          {/*<slot name="post-heading" />*/}
+          {/* <slot name="post-heading" /> */}
 
           <div class="nav">
             <PrefixedTagNames.pButtonPure
