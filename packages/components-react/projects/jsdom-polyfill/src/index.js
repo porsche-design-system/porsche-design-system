@@ -2,6 +2,7 @@
 require('construct-style-sheets-polyfill');
 require('intersection-observer');
 require('matchmedia-polyfill');
+require('matchmedia-polyfill/matchMedia.addListener');
 require('scroll-behavior-polyfill');
 require('whatwg-fetch');
 global.ResizeObserver = require('@juggle/resize-observer').ResizeObserver;
