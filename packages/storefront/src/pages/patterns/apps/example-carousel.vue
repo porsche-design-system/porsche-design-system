@@ -176,6 +176,7 @@
       }
 
       h3 {
+        @include pds-heading-small;
         margin: 0 0 $pds-spacing-small;
       }
 
