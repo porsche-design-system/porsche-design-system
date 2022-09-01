@@ -25,7 +25,7 @@
       .join('');
     content = `
 <p-carousel class="demo" heading="Einstieg bei Porsche" slides-per-page="{base: 1, s: 2, l: 3}">
-  <div slot="description">
+  <div slot="post-heading">
     <p-tabs-bar active-tab-index="0">
       <button>Schüler</button>
       <button>Studierende & Absolventen</button>
@@ -139,7 +139,7 @@
       border-bottom: 1px solid darkcyan;
     }
 
-    > div:not([slot='description']):not(.card) {
+    > div:not([slot='post-heading']):not(.card) {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -148,7 +148,7 @@
       height: 100px;
     }
 
-    [slot='description'] {
+    [slot='post-heading'] {
       display: flex;
       align-items: self-start;
 
