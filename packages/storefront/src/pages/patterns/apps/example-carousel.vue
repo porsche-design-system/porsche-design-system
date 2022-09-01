@@ -100,15 +100,15 @@
   </div>
 </p-carousel>
 
-<p-carousel heading="Some Heading" slides-per-page="1">
+<p-carousel heading="Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct." slides-per-page="1">
   ${this.slides}
 </p-carousel>
 
-<p-carousel heading="Some Heading" slides-per-page="2">
+<p-carousel heading="Some Heading" description="Some description" slides-per-page="2">
   ${this.slides}
 </p-carousel>
 
-<p-carousel heading="Some Heading" slides-per-page="3">
+<p-carousel heading="Some Heading" description="Multiline description could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct." slides-per-page="3">
   ${this.slides}
 </p-carousel>`;
   }
@@ -133,8 +133,6 @@
   }
 
   :deep(p-carousel) {
-    background: lightsalmon;
-
     &:not(:last-of-type) {
       border-bottom: 1px solid darkcyan;
     }
