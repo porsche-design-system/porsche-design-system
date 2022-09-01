@@ -10,6 +10,7 @@ import { AccordionChangeEvent, AccordionSize } from "./components/content/accord
 import { HeadlineTag, HeadlineVariant } from "./components/basic/typography/headline/headline-utils";
 import { BannerState, BannerWidth } from "./components/feedback/banner/banner-utils";
 import { ButtonGroupDirection } from "./components/layout/button-group/button-group-utils";
+import { CarouselChangeEvent, CarouselInternationalization } from "./components/content/carousel/carousel-utils";
 import { FormState } from "./components/form/form-state";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/layout/content-wrapper/content-wrapper-utils";
 import { DividerColor, DividerOrientation } from "./components/layout/divider/divider-utils";
@@ -194,6 +195,36 @@ export namespace Components {
           * The weight of the text (only has effect with visible label).
          */
         "weight"?: TextWeight;
+    }
+    interface PCarousel {
+        /**
+          * Defines the description used in the carousel.
+         */
+        "description"?: string;
+        /**
+          * If true, the carousel will not show pagination bullets at the bottom.
+         */
+        "disablePagination"?: BreakpointCustomizable<boolean>;
+        /**
+          * Defines the heading used in the carousel.
+         */
+        "heading"?: string;
+        /**
+          * Override the default wordings that are used for aria-labels on the next/prev buttons and pagination.
+         */
+        "intl"?: CarouselInternationalization;
+        /**
+          * Sets the amount of slides visible at the same time.
+         */
+        "slidesPerPage"?: BreakpointCustomizable<number>;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
+        /**
+          * Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper.
+         */
+        "wrapContent"?: boolean;
     }
     interface PCheckboxWrapper {
         /**
@@ -1108,6 +1139,10 @@ export interface PBannerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPBannerElement;
 }
+export interface PCarouselCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPCarouselElement;
+}
 export interface PInlineNotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPInlineNotificationElement;
@@ -1182,6 +1217,12 @@ declare global {
     var HTMLPButtonPureElement: {
         prototype: HTMLPButtonPureElement;
         new (): HTMLPButtonPureElement;
+    };
+    interface HTMLPCarouselElement extends Components.PCarousel, HTMLStencilElement {
+    }
+    var HTMLPCarouselElement: {
+        prototype: HTMLPCarouselElement;
+        new (): HTMLPCarouselElement;
     };
     interface HTMLPCheckboxWrapperElement extends Components.PCheckboxWrapper, HTMLStencilElement {
     }
@@ -1471,6 +1512,7 @@ declare global {
         "p-button": HTMLPButtonElement;
         "p-button-group": HTMLPButtonGroupElement;
         "p-button-pure": HTMLPButtonPureElement;
+        "p-carousel": HTMLPCarouselElement;
         "p-checkbox-wrapper": HTMLPCheckboxWrapperElement;
         "p-content-wrapper": HTMLPContentWrapperElement;
         "p-divider": HTMLPDividerElement;
@@ -1680,6 +1722,40 @@ declare namespace LocalJSX {
           * The weight of the text (only has effect with visible label).
          */
         "weight"?: TextWeight;
+    }
+    interface PCarousel {
+        /**
+          * Defines the description used in the carousel.
+         */
+        "description"?: string;
+        /**
+          * If true, the carousel will not show pagination bullets at the bottom.
+         */
+        "disablePagination"?: BreakpointCustomizable<boolean>;
+        /**
+          * Defines the heading used in the carousel.
+         */
+        "heading"?: string;
+        /**
+          * Override the default wordings that are used for aria-labels on the next/prev buttons and pagination.
+         */
+        "intl"?: CarouselInternationalization;
+        /**
+          * Emitted when carousel's content slides.
+         */
+        "onCarouselChange"?: (event: PCarouselCustomEvent<CarouselChangeEvent>) => void;
+        /**
+          * Sets the amount of slides visible at the same time.
+         */
+        "slidesPerPage"?: BreakpointCustomizable<number>;
+        /**
+          * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
+        /**
+          * Whether the content should receive a padding to the sides to be aligned on the grid when used full width and not within content-wrapper.
+         */
+        "wrapContent"?: boolean;
     }
     interface PCheckboxWrapper {
         /**
@@ -2638,6 +2714,7 @@ declare namespace LocalJSX {
         "p-button": PButton;
         "p-button-group": PButtonGroup;
         "p-button-pure": PButtonPure;
+        "p-carousel": PCarousel;
         "p-checkbox-wrapper": PCheckboxWrapper;
         "p-content-wrapper": PContentWrapper;
         "p-divider": PDivider;
@@ -2696,6 +2773,7 @@ declare module "@stencil/core" {
             "p-button": LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
             "p-button-group": LocalJSX.PButtonGroup & JSXBase.HTMLAttributes<HTMLPButtonGroupElement>;
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
+            "p-carousel": LocalJSX.PCarousel & JSXBase.HTMLAttributes<HTMLPCarouselElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
             "p-content-wrapper": LocalJSX.PContentWrapper & JSXBase.HTMLAttributes<HTMLPContentWrapperElement>;
             "p-divider": LocalJSX.PDivider & JSXBase.HTMLAttributes<HTMLPDividerElement>;
