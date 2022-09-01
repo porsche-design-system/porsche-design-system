@@ -211,12 +211,6 @@ jobs:
   components-js-cb-vrt:
     name: 'Components JS CB VRT'
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        project: [WebKit, Mobile Safari]
-        shardIndex: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-        shardTotal: [10]
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
@@ -258,7 +252,7 @@ jobs:
         uses: ./.github/actions/docker-run
         with:
           entrypoint: run-test-cb-vrt
-          args: --components-js -- --project=${{ matrix.project }} --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+          args: --components-js
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v2
