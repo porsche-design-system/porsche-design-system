@@ -18,6 +18,7 @@ export const getComponentCss = (
 
   const actionPrevNextStyles = {
     position: 'relative',
+
     padding: `${pxToRemWithUnit(4)} 0`,
     pointerEvents: 'none',
     display: 'flex',
@@ -75,9 +76,6 @@ export const getComponentCss = (
       justifyContent: 'flex-start',
       background: `linear-gradient(90deg, ${gradientColor} 50%, ${gradientColorTransparent} 100%)`,
       visibility: isPrevHidden ? 'hidden' : 'visible',
-      '& .button': {
-        paddingRight: pxToRemWithUnit(4),
-      },
     },
     'action-next': {
       ...actionPrevNextStyles,
@@ -85,12 +83,19 @@ export const getComponentCss = (
       justifyContent: 'flex-end',
       background: `linear-gradient(90deg, ${gradientColorTransparent} 0%, ${gradientColor} 50%)`,
       visibility: isNextHidden ? 'hidden' : 'visible',
-      '& .button': {
-        paddingLeft: pxToRemWithUnit(4),
-      },
     },
     button: {
       pointerEvents: 'auto',
+      position: 'static',
+      // Pseudo-element to stretch the click-area to full height
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        width: 'max(2rem, 80%)',
+        left: 0,
+      },
     },
   });
 };
