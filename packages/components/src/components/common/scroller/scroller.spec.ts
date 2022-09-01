@@ -1,4 +1,56 @@
 import { Scroller } from './scroller';
+import * as jsonUtils from '../../../utils/json';
+import * as scrollingUtils from '../../../utils/scrolling';
+
+describe('scrollToPositionHandler', () => {
+  it('should call parseJSONAttribute() with correct parameters and set scrollPosition', () => {
+    const component = new Scroller();
+    component.scrollToPosition = { scrollPosition: 100 };
+    component['scrollAreaElement'] = document.createElement('p-scroller');
+    const spy = jest.spyOn(jsonUtils, 'parseJSONAttribute').mockReturnValue({ scrollPosition: 200 });
+    jest.spyOn(scrollingUtils, 'scrollElementTo' as any).mockImplementation(() => {});
+
+    component.scrollToPositionHandler();
+
+    expect(spy).toBeCalledWith({ scrollPosition: 100 });
+    expect(component.scrollToPosition).toStrictEqual({ scrollPosition: 200 });
+  });
+
+  it('should call scrollElementTo() with correct parameters if isSmooth', () => {
+    const component = new Scroller();
+    component.scrollToPosition = { scrollPosition: 100, isSmooth: true };
+    component['scrollAreaElement'] = document.createElement('p-scroller');
+    const spy = jest.spyOn(scrollingUtils, 'scrollElementTo').mockImplementation(() => {});
+
+    component.scrollToPositionHandler();
+
+    expect(spy).toBeCalledTimes(1);
+  });
+
+  it('should set scrollAreaElement.scrollLeft if !isSmooth', () => {
+    const component = new Scroller();
+    component.scrollToPosition = { scrollPosition: 100 };
+    component['scrollAreaElement'] = document.createElement('p-scroller');
+
+    component.scrollToPositionHandler();
+
+    expect(component['scrollAreaElement'].scrollLeft).toBe(component.scrollToPosition.scrollPosition);
+  });
+});
+
+describe('connectedCallback', () => {
+  it('should call parseJSONAttribute() with correct parameter and set scrollPosition', () => {
+    const component = new Scroller();
+    component.scrollToPosition = { scrollPosition: 100 };
+    component['scrollAreaElement'] = document.createElement('p-scroller');
+    const spy = jest.spyOn(jsonUtils, 'parseJSONAttribute').mockReturnValue({ scrollPosition: 200 });
+
+    component.connectedCallback();
+
+    expect(spy).toBeCalledWith({ scrollPosition: 100 });
+    expect(component.scrollToPosition).toStrictEqual({ scrollPosition: 200 });
+  });
+});
 
 describe('componentDidLoad', () => {
   it('should call initIntersectionObserver()', () => {
@@ -8,6 +60,17 @@ describe('componentDidLoad', () => {
     try {
       component.componentDidLoad();
     } catch {}
+
+    expect(spy).toBeCalledTimes(1);
+  });
+  it('should call scrollToPositionHandler() if scrollToPosition', () => {
+    const component = new Scroller();
+    jest.spyOn(component, 'initIntersectionObserver' as any).mockImplementation(() => {});
+    component.scrollToPosition = { scrollPosition: 100 };
+    component['scrollAreaElement'] = document.createElement('p-scroller');
+    const spy = jest.spyOn(component, 'scrollToPositionHandler');
+
+    component.componentDidLoad();
 
     expect(spy).toBeCalledTimes(1);
   });

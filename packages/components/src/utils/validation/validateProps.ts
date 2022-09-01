@@ -200,8 +200,7 @@ export const AllowedTypes: {
   shape: <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): ValidatorFunction =>
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function shape(propName, propValue) {
-      const value = parseJSONAttribute(propValue);
-      if (value) {
+      if (propValue) {
         // const propValueKeys = Object.keys(propValue);
         if (
           // check structure, but propValue could contain additional keys
@@ -209,7 +208,7 @@ export const AllowedTypes: {
           // Object.keys(shapeStructure).some((key) => !propValueKeys.includes(key)) ||
           // check values
           Object.entries(shapeStructure).some(([structureKey, validatorFunc]: [string, ValidatorFunction]) =>
-            validatorFunc(structureKey, value[structureKey])
+            validatorFunc(structureKey, propValue[structureKey])
           )
         ) {
           // TODO: more precise inner errors from value validation could be output
