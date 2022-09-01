@@ -32,6 +32,22 @@ export const CarouselPage = (): JSX.Element => {
         </PCarousel>
       </div>
 
+      <div className="playground light" title="should render carousel with description on light background">
+        <PCarousel heading="Heading" description="Description">
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+        </PCarousel>
+      </div>
+
+      <div className="playground dark" title="should render carousel with description on dark background">
+        <PCarousel heading="Heading" description="Description" theme="dark">
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+        </PCarousel>
+      </div>
+
       <div className="playground light" title="should render carousel with slotted heading on light background">
         <PCarousel>
           <h2 slot="heading">Slotted heading</h2>
@@ -50,6 +66,25 @@ export const CarouselPage = (): JSX.Element => {
         </PCarousel>
       </div>
 
+      <div className="playground light" title="should render carousel with slotted heading and description on light background">
+        <PCarousel description="Description">
+          <h2 slot="heading">Slotted heading</h2>
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+        </PCarousel>
+      </div>
+
+      <div className="playground dark" title="should render carousel with slotted heading and description on dark background">
+        <PCarousel description="Description" theme="dark">
+          <h2 slot="heading">Slotted heading</h2>
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+        </PCarousel>
+      </div>
+
+      <!--
       <div className="playground light" title="should render carousel with slotted post-heading on light background">
         <PCarousel heading="Heading">
           <p slot="post-heading">Slotted post-heading</p>
@@ -67,12 +102,10 @@ export const CarouselPage = (): JSX.Element => {
           <div>Slide 3</div>
         </PCarousel>
       </div>
+-->
 
-      <div
-        className="playground light"
-        title="should render carousel with wrapped heading and slotted post-heading on light background"
-      >
-        <PCarousel heading="Wrapped heading" wrapContent={true}>
+      <div className="playground light" title="should render carousel with wrapped content and description on light background">
+        <PCarousel heading="Wrapped content heading" description="Description" wrapContent={true}>
           <p slot="post-heading">Slotted post-heading</p>
           <div>Slide 1</div>
           <div>Slide 2</div>
@@ -82,11 +115,10 @@ export const CarouselPage = (): JSX.Element => {
 
       <div
         className="playground light"
-        title="should render carousel with wrapped slotted heading and slotted post-heading on light background"
+        title="should render carousel with wrapped slotted heading and description on light background"
       >
-        <PCarousel wrapContent={true}>
-          <h2 slot="heading">Wrapped slotted heading</h2>
-          <p slot="post-heading">Slotted post-heading</p>
+        <PCarousel wrapContent={true} description="Description">
+          <h2 slot="heading">Wrapped content slotted heading</h2>
           <div>Slide 1</div>
           <div>Slide 2</div>
           <div>Slide 3</div>
@@ -105,6 +137,21 @@ export const CarouselPage = (): JSX.Element => {
 
       <div
         className="playground light"
+        title="should render carousel with multiline heading and multiline description on light background"
+      >
+        <PCarousel
+          heading="Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct."
+          description="Multiline post-heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct."
+        >
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+        </PCarousel>
+      </div>
+
+      <!--
+      <div
+        className="playground light"
         title="should render carousel with multiline heading and post-heading on light background"
       >
         <PCarousel heading="Multiline heading could be quite long especially on smaller screens but it wraps luckily">
@@ -117,6 +164,7 @@ export const CarouselPage = (): JSX.Element => {
           <div>Slide 3</div>
         </PCarousel>
       </div>
+-->
 
       <div className="playground light" title="should render carousel with slidesPerPage=2 on light background">
         <PCarousel heading="Slides per page: 2" slidesPerPage={2}>
