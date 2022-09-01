@@ -34,7 +34,7 @@ export const getComponentCss = (
     },
     root: {
       display: 'grid',
-      gridTemplateColumns: '2.5em minmax(0, 1fr) 2.5em',
+      gridTemplateColumns: '2em minmax(0, 1fr) 2em',
       margin: `0 ${pxToRemWithUnit(-4)}`,
       height: 'inherit',
     },
@@ -76,6 +76,9 @@ export const getComponentCss = (
       justifyContent: 'flex-start',
       background: `linear-gradient(90deg, ${gradientColor} 50%, ${gradientColorTransparent} 100%)`,
       visibility: isPrevHidden ? 'hidden' : 'visible',
+      '& .button::before': {
+        left: 0,
+      },
     },
     'action-next': {
       ...actionPrevNextStyles,
@@ -83,6 +86,9 @@ export const getComponentCss = (
       justifyContent: 'flex-end',
       background: `linear-gradient(90deg, ${gradientColorTransparent} 0%, ${gradientColor} 50%)`,
       visibility: isNextHidden ? 'hidden' : 'visible',
+      '& .button::before': {
+        right: 0,
+      },
     },
     button: {
       pointerEvents: 'auto',
@@ -94,7 +100,6 @@ export const getComponentCss = (
         top: 0,
         bottom: 0,
         width: 'max(2rem, 80%)',
-        left: 0,
       },
     },
   });
