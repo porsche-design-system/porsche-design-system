@@ -134,7 +134,7 @@
 
   :deep(p-carousel) {
     &:not(:last-of-type) {
-      border-bottom: 1px solid darkcyan;
+      border-bottom: 1px solid deeppink;
     }
 
     > div:not([slot='post-heading']):not(.card) {
@@ -155,7 +155,7 @@
       }
     }
 
-    .demo {
+    &.demo {
       background: $pds-theme-light-background-surface;
     }
 
